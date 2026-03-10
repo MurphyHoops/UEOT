@@ -6,6 +6,13 @@ repo_root="$(cd "${script_dir}/../../.." && pwd)"
 agent_home="${UEOT_AGENT_HOME:-/home/ubuntu/ueot-agents}"
 config_file="${OPENCLAW_CONFIG_PATH:-${HOME}/.openclaw/openclaw.json}"
 telegram_target="${UEOT_TELEGRAM_TARGET:-}"
+main_workspace=""
+for candidate in "${HOME}/.openclaw/workspace-main" "${HOME}/.openclaw/workspace"; do
+  if [[ -d "${candidate}" ]]; then
+    main_workspace="${candidate}"
+    break
+  fi
+done
 
 agents=(
   ueot-architect
@@ -104,6 +111,23 @@ for agent in "${agents[@]}"; do
 done
 
 "${script_dir}/install_local_skills.sh"
+python3 "${script_dir}/build_shared_memory_registry.py" >/dev/null
+
+link_main_workspace() {
+  [[ -n "${main_workspace}" ]] || return 0
+  local item
+  for item in AGENTS.md README.md LICENSE constitution source domains council book ops skills memory UEOT_v3_top.pdf "UEOT_v3_top[1].zip"; do
+    local src="${repo_root}/${item}"
+    local dest="${main_workspace}/${item}"
+    [[ -e "${src}" || -L "${src}" ]] || continue
+    if [[ -e "${dest}" && ! -L "${dest}" ]]; then
+      continue
+    fi
+    ln -sfn "${src}" "${dest}"
+  done
+}
+
+link_main_workspace
 
 python3 - "${config_file}" "${agent_home}" <<'PY'
 import json
@@ -143,9 +167,6 @@ memory["sync"] = {
     "intervalMinutes": 15,
 }
 memory["query"] = {"maxResults": 8, "minScore": 0.0}
-
-tools = defaults.setdefault("tools", {})
-tools.setdefault("fs", {})["workspaceOnly"] = True
 
 agent_models = {
     "ueot-architect": "newcli-claude-aws/claude-opus-4-6",
@@ -194,7 +215,13 @@ openclaw config validate >/dev/null
 bind_architect() {
   if ! openclaw agents bindings --json | python3 - <<'PY' >/dev/null
 import json, sys
-data = json.load(sys.stdin)
+raw = sys.stdin.read()
+start = min([i for i in (raw.find("["), raw.find("{")) if i != -1], default=-1)
+if start == -1:
+    sys.exit(1)
+data = json.loads(raw[start:])
+if isinstance(data, dict):
+    data = data.get("bindings", [])
 sys.exit(0 if any(item.get("agentId") == "ueot-architect" for item in data) else 1)
 PY
   then
@@ -213,7 +240,11 @@ upsert_cron() {
 import json
 import sys
 target = sys.argv[1]
-data = json.load(sys.stdin)
+raw = sys.stdin.read()
+start = min([i for i in (raw.find("{"), raw.find("[")) if i != -1], default=-1)
+if start == -1:
+    sys.exit(0)
+data = json.loads(raw[start:])
 for job in data.get("jobs", []):
     if job.get("name") == target:
         print(job["id"])
@@ -299,7 +330,11 @@ if [[ -n "${telegram_target}" ]]; then
   daily_id="$(
     openclaw cron list --json | python3 - <<'PY'
 import json, sys
-data = json.load(sys.stdin)
+raw = sys.stdin.read()
+start = min([i for i in (raw.find("{"), raw.find("[")) if i != -1], default=-1)
+if start == -1:
+    sys.exit(0)
+data = json.loads(raw[start:])
 for job in data.get("jobs", []):
     if job.get("name") == "ueot-architect-daily":
         print(job["id"])

@@ -4,7 +4,21 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/../../.." && pwd)"
 src_dir="${repo_root}/ops/skills"
-dst_dir="${HOME}/.openclaw/workspace/skills"
+
+workspace_root=""
+for candidate in "${HOME}/.openclaw/workspace-main" "${HOME}/.openclaw/workspace"; do
+  if [[ -d "${candidate}" ]]; then
+    workspace_root="${candidate}"
+    break
+  fi
+done
+
+if [[ -z "${workspace_root}" ]]; then
+  echo "could not locate an OpenClaw main workspace" >&2
+  exit 1
+fi
+
+dst_dir="${workspace_root}/skills"
 
 mkdir -p "${dst_dir}"
 

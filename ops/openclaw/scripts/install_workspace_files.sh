@@ -37,6 +37,7 @@ fi
 
 gitdir="$(git -C "${workspace_dir}" rev-parse --git-dir)"
 exclude_file="${gitdir}/info/exclude"
+mkdir -p "$(dirname "${exclude_file}")"
 touch "${exclude_file}"
 for path in USER.md HEARTBEAT.md MEMORY.md SOUL.md IDENTITY.md memory/; do
   if ! rg -qxF "${path}" "${exclude_file}" >/dev/null 2>&1; then

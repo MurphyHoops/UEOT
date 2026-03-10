@@ -14,10 +14,14 @@ System.
 - `scripts/install_local_skills.sh`
   Symlinks repo-local UEOT skills into the OpenClaw main workspace.
 - `scripts/reindex_ueot_memory.sh`
-  Rebuilds memory indexes for all UEOT agents.
+  Rebuilds OpenClaw memory indexes for all UEOT agents when a remote embedding
+  provider is available.
+- `scripts/build_shared_memory_registry.py`
+  Rebuilds the file-first shared memory registry used when embedding-backed
+  memory search is unavailable or quota-limited.
 - `scripts/validate_ueot_system.sh`
   Verifies repo structure, OpenClaw agent registration, cron inventory, and
-  memory status.
+  the shared-memory registry.
 
 ## Runtime Notes
 
@@ -25,6 +29,9 @@ System.
 - Agent worktrees: `/home/ubuntu/ueot-agents/<agent-id>`
 - Canonical docs remain in the repo; role files are copied into each worktree
   as local operational files.
+- This environment does not rely on local embedding models. Shared memory is
+  anchored by `memory/shared/UEOT_MEMORY_REGISTRY.yaml`, and OpenClaw memory
+  search is treated as an optional remote enhancement.
 - Docker sandboxing is not enabled by default in this environment. Filesystem
   scope is still constrained via workspace-only tool policy and isolated
   worktrees.

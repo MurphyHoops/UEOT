@@ -9,14 +9,17 @@ Use this skill before any substantive UEOT reasoning.
 
 ## Load Order
 
-1. `constitution/UEOT_CONSTITUTION.md`
-2. `constitution/UEOT_METHOD.md`
-3. `constitution/UEOT_GLOSSARY.md`
-4. The relevant file from `source/extracted/`
+1. `memory/shared/UEOT_MEMORY_REGISTRY.yaml`
+2. `constitution/UEOT_CONSTITUTION.md`
+3. `constitution/UEOT_METHOD.md`
+4. `constitution/UEOT_GLOSSARY.md`
+5. The relevant file from `source/extracted/`
 
 ## Rules
 
 - Treat the original paper as the baseline constitution.
+- Assume file-first navigation. Do not assume embedding-backed memory search is
+  available.
 - Do not rewrite canon silently.
 - Escalate potential core-theory changes into RFC + architect resolution flow.
 

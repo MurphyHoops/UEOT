@@ -9,7 +9,9 @@ required_paths=(
   "${repo_root}/constitution/UEOT_METHOD.md"
   "${repo_root}/source/extracted/CHAPTER_SUMMARIES.md"
   "${repo_root}/memory/shared/UEOT_SHARED_MEMORY.md"
+  "${repo_root}/memory/shared/UEOT_MEMORY_REGISTRY.yaml"
   "${repo_root}/ops/openclaw/scripts/provision_ueot_openclaw.sh"
+  "${repo_root}/ops/openclaw/scripts/build_shared_memory_registry.py"
   "${repo_root}/ops/skills/ueot-domain-research/SKILL.md"
   "${repo_root}/book/chapters/12-falsifiability-objections-and-research-roadmap.md"
 )
@@ -57,5 +59,10 @@ for job in \
 done
 
 openclaw memory status --json >/dev/null
+grep -F -- 'shared_memory_mode: "file-registry-first"' \
+  "${repo_root}/memory/shared/UEOT_MEMORY_REGISTRY.yaml" >/dev/null || {
+  echo "shared memory registry mode missing or stale" >&2
+  exit 1
+}
 
 echo "UEOT Omega validation passed"
