@@ -10,24 +10,6 @@ final theory; it is explicitly framed as an **open research program** with
 clear conceptual commitments, proposed formal directions, and falsifiable
 empirical ambitions.
 
-## UEOT Omega Research System
-
-This repository now also contains the **UEOT Omega Research System** on top of
-OpenClaw:
-
-- a constitutional layer for the non-negotiable UEOT core
-- six domain tracks for fractal expansion
-- architect resolutions and council review channels
-- a book-first scaffold for turning the paper into a monograph
-- local OpenClaw skills, runbooks, and provisioning scripts
-
-Operational entry points:
-
-- `ops/openclaw/scripts/provision_ueot_openclaw.sh`
-- `ops/openclaw/scripts/validate_ueot_system.sh`
-- `constitution/UEOT_CONSTITUTION.md`
-- `book/chapters/`
-
 ## What UEOT Claims
 
 At the center of the manuscript are two foundational postulates.

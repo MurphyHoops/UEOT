@@ -1,7 +1,6 @@
 # Source Paper Layer
 
-This directory anchors the canonical paper artifacts used by the UEOT Omega
-system.
+This directory anchors the canonical paper artifacts for UEOT.
 
 - [UEOT_v3_top.pdf](./UEOT_v3_top.pdf): compiled manuscript
 - [UEOT_v3_top[1].zip](./UEOT_v3_top%5B1%5D.zip): LaTeX source archive

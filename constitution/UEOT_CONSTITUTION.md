@@ -2,10 +2,9 @@
 
 ## Purpose
 
-This document defines the non-negotiable constitutional core of the UEOT Omega
-Research System. All agents, memos, reviews, resolutions, and book chapters
-must remain consistent with this layer unless a formal architect RFC and
-resolution explicitly changes it.
+This document defines the non-negotiable constitutional core of UEOT. All
+memos, reviews, resolutions, and book chapters must remain consistent with this
+layer unless a formal RFC and resolution explicitly changes it.
 
 ## Foundational Commitments
 

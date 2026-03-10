@@ -27,15 +27,6 @@ Required:
 - architect approval
 - updated chapter dossier
 
-### Class D: Operational
-Changes to agent templates, skills, runbooks, cron jobs, or automation scripts.
-
-Required:
-
-- TechOps note
-- verification record
-- architect notification if research behavior changes materially
-
 ## RFC Template
 
 - RFC id
