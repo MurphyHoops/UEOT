@@ -217,7 +217,7 @@ theorem mapHistory_appendHistory
 theorem appendHistory_prefix_next
     (n : ℕ) (x : ℕ → X) :
     appendHistory n (Preorder.frestrictLe n x, x (n + 1)) =
-      Preorder.Preorder.frestrictLe (n + 1) x := by
+      Preorder.frestrictLe (n + 1) x := by
   ext i
   by_cases hi : (i : ℕ) ≤ n
   · simp [appendHistory, IicProdIoc_def, Preorder.frestrictLe_apply, hi]
@@ -241,7 +241,7 @@ theorem homTrajMeasure_prefix_succ
     (n : ℕ) :
     (((homTrajMeasure μ P).map (Preorder.frestrictLe n)) ⊗ₘ homHistoryKernel P n).map
         (appendHistory n) =
-      (homTrajMeasure μ P).map (Preorder.Preorder.frestrictLe (n + 1)) := by
+      (homTrajMeasure μ P).map (Preorder.frestrictLe (n + 1)) := by
   letI : ∀ k, IsMarkovKernel (homHistoryKernel P k) :=
     fun k => isMarkovKernel_homHistoryKernel P k
   have hstep :=
