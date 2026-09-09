@@ -16,7 +16,7 @@ obligation and no P-ID promotion is claimed here.
 
 namespace UEOT.V3.RecoveryContinuous
 
-open Set Real
+open Set Real MeasureTheory
 
 /-- Fundamental AC/a.e. comparison lemma needed by the exact source version:
 an absolutely continuous scalar function whose derivative is nonpositive
