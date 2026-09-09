@@ -135,8 +135,8 @@ theorem iterateKernel_preimage
 
 /-- Coordinatewise map of a finite history. -/
 def mapHistory (f : X → M) (n : ℕ)
-    (x : (i : Set.Iic n) → X) :
-    (i : Set.Iic n) → M :=
+    (x : (i : Finset.Iic n) → X) :
+    (i : Finset.Iic n) → M :=
   fun i => f (x i)
 
 theorem measurable_mapHistory
@@ -146,14 +146,14 @@ theorem measurable_mapHistory
   intro i
   exact hf.comp (measurable_pi_apply i)
 
-def lastHistoryIndex (n : ℕ) : Set.Iic n :=
-  ⟨n, Set.mem_Iic.2 le_rfl⟩
+def lastHistoryIndex (n : ℕ) : Finset.Iic n :=
+  ⟨n, Finset.mem_Iic.mpr le_rfl⟩
 
 /-- A homogeneous Markov kernel viewed as a history kernel: only the last
 coordinate of the history is read. -/
 noncomputable def homHistoryKernel
     (P : Kernel X X) (n : ℕ) :
-    Kernel ((i : Set.Iic n) → X) X :=
+    Kernel ((i : Finset.Iic n) → X) X :=
   Kernel.comap P
     (fun x => x (lastHistoryIndex n))
     (measurable_pi_apply (lastHistoryIndex n))
@@ -183,8 +183,8 @@ theorem homHistoryKernel_intertwines
 
 /-- Append one sampled state to a finite history. -/
 def appendHistory (n : ℕ)
-    (p : ((i : Set.Iic n) → X) × X) :
-    (i : Set.Iic (n + 1)) → X :=
+    (p : ((i : Finset.Iic n) → X) × X) :
+    (i : Finset.Iic (n + 1)) → X :=
   IicProdIoc (X := fun _ : ℕ => X) n (n + 1)
     (p.1, MeasurableEquiv.piSingleton (X := fun _ : ℕ => X) n p.2)
 
@@ -194,7 +194,7 @@ theorem measurable_appendHistory (n : ℕ) :
 
 theorem mapHistory_appendHistory
     (f : X → M) (n : ℕ)
-    (x : (i : Set.Iic n) → X) (y : X) :
+    (x : (i : Finset.Iic n) → X) (y : X) :
     mapHistory f (n + 1) (appendHistory n (x, y)) =
       appendHistory n (mapHistory f n x, f y) := by
   ext i
@@ -206,11 +206,11 @@ theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
     (h : StrongLumpability P Pbar f hf)
-    (n : ℕ) (x : (i : Set.Iic n) → X) :
+    (n : ℕ) (x : (i : Finset.Iic n) → X) :
     (homHistoryKernel P n x).map f =
       homHistoryKernel Pbar n (mapHistory f n x) := by
   have hk := congrArg
-    (fun K : Kernel ((i : Set.Iic n) → X) M => K x)
+    (fun K : Kernel ((i : Finset.Iic n) → X) M => K x)
     (homHistoryKernel_intertwines P Pbar f hf h n)
   rw [Kernel.map_apply _ hf, Kernel.comap_apply] at hk
   exact hk
