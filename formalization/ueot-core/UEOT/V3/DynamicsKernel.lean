@@ -1,5 +1,5 @@
 import Mathlib.Probability.Kernel.Composition.CompMap
-import Mathlib.Probability.Kernel.IonescuTulcea.PartialTraj
+import Mathlib.Probability.Kernel.IonescuTulcea.Traj
 
 /-!
 # P-DYN-01 — general Markov-kernel lumpability
@@ -15,6 +15,7 @@ source-level obligation.
 namespace UEOT.V3.DynamicsKernel
 
 open MeasureTheory ProbabilityTheory
+open Finset Function MeasurableEquiv
 open scoped ProbabilityTheory
 
 universe uX uM
@@ -230,7 +231,7 @@ theorem appendHistory_prefix_next
 noncomputable def homTrajMeasure
     (μ : Measure X) (P : Kernel X X) [IsMarkovKernel P] :
     Measure (ℕ → X) :=
-  Kernel.trajMeasure (X := fun _ : ℕ => X) μ (homHistoryKernel P)
+  ProbabilityTheory.Kernel.trajMeasure (X := fun _ : ℕ => X) μ (homHistoryKernel P)
 
 theorem homTrajMeasure_prefix_succ
     (μ : Measure X) [IsProbabilityMeasure μ]
@@ -240,7 +241,7 @@ theorem homTrajMeasure_prefix_succ
         (appendHistory n) =
       (homTrajMeasure μ P).map (frestrictLe (n + 1)) := by
   have hstep :=
-    Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
+    ProbabilityTheory.Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
       (μ₀ := μ) (κ := homHistoryKernel P) (a := n)
   rw [← hstep]
   rw [← Measure.map_map (measurable_appendHistory n) (by fun_prop)]
