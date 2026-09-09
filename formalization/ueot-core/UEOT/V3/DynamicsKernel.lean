@@ -435,7 +435,7 @@ theorem pathMeasure_eq_of_prefix_eq
             ((Finset.Iic (I.sup id)).restrict (π := fun _ : ℕ => M))).map
             (Finset.restrict₂ (π := fun _ : ℕ => M) hsub) := by
         rw [Measure.map_map
-          (Finset.measurable_restrict₂ (π := fun _ : ℕ => M) hsub)
+          (Finset.measurable_restrict₂ (X := fun _ : ℕ => M) hsub)
           (Finset.measurable_restrict (Finset.Iic (I.sup id)))]
         rfl
       _ =
@@ -445,7 +445,7 @@ theorem pathMeasure_eq_of_prefix_eq
         rw [hp]
       _ = μpath.map (I.restrict (π := fun _ : ℕ => M)) := by
         rw [Measure.map_map
-          (Finset.measurable_restrict₂ (π := fun _ : ℕ => M) hsub)
+          (Finset.measurable_restrict₂ (X := fun _ : ℕ => M) hsub)
           (Finset.measurable_restrict (Finset.Iic (I.sup id)))]
         rfl
   have hμ :
