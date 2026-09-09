@@ -146,14 +146,17 @@ theorem measurable_mapHistory
   intro i
   exact hf.comp (measurable_pi_apply i)
 
+def lastHistoryIndex (n : ℕ) : Set.Iic n :=
+  ⟨n, Set.mem_Iic.2 le_rfl⟩
+
 /-- A homogeneous Markov kernel viewed as a history kernel: only the last
 coordinate of the history is read. -/
 noncomputable def homHistoryKernel
     (P : Kernel X X) (n : ℕ) :
     Kernel ((i : Set.Iic n) → X) X :=
   Kernel.comap P
-    (fun x => x ⟨n, Set.mem_Iic.2 le_rfl⟩)
-    (measurable_pi_apply ⟨n, Set.mem_Iic.2 le_rfl⟩)
+    (fun x => x (lastHistoryIndex n))
+    (measurable_pi_apply (lastHistoryIndex n))
 
 theorem isMarkovKernel_homHistoryKernel
     (P : Kernel X X) [IsMarkovKernel P] (n : ℕ) :
@@ -175,7 +178,7 @@ theorem homHistoryKernel_intertwines
   rw [Kernel.comap_apply', Kernel.comap_apply']
   exact
     (strongLumpability_iff_preimage P Pbar f hf).1 h
-      (x ⟨n, Set.mem_Iic.2 le_rfl⟩) B hB
+      (x (lastHistoryIndex n)) B hB
 
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
