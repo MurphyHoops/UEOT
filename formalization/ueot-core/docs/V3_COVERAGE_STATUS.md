@@ -87,17 +87,55 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 18 |
-| partial | 2 |
+| proved | 19 |
+| partial | 1 |
 | pending | 86 |
 | total | 106 |
 
-The two remaining partial P-IDs are:
+The one remaining partial P-ID is:
 
 - P-DYN-01
-- P-REF-05
 
 The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
+
+## 2026-09-09 advance: P-REF-05
+
+P-REF-05 has been promoted from `partial` to `proved`.
+
+The source claim is policy-set monotonicity under a fixed real-valued
+evaluation `J` and feasible-set inclusion.
+
+The formalization now provides two aligned forms:
+
+- `feasibleValue_mono`: a total `EReal` formulation requiring no hidden
+  nonempty/boundedness assumptions;
+- `feasibleValueReal_mono`: the ordinary real-`sSup` formulation under the
+  standard conditions that the smaller feasible set is nonempty and the
+  enlarged image is bounded above.
+
+It also packages the source's “same evaluation, larger implementable policy
+set” condition as `FeasibleDecision.Extends`.
+
+Key declarations:
+
+- `UEOT.V3.Agency.feasibleValue`
+- `feasibleValue_mono`
+- `feasibleValueReal`
+- `feasibleValueReal_mono`
+- `FeasibleDecision`
+- `Extends`
+- `extension_optimalValue_mono`
+
+Verification evidence:
+
+- source-aligned module:
+  `0a1242ec2b4b92ebfec9f9d79e1134f8ac2f5631`
+- evaluation rewrite repair:
+  `bce7615e4342bf7fe5cfd5855019202b0642ff9e`
+- direct real-supremum theorem:
+  `c64b8983e36990c9f9d7730aff55a40b673f446c`
+- successful full-repository CI:
+  `34350690356`
 
 ## 2026-09-09 advance: P-TEL-01
 

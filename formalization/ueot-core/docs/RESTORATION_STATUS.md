@@ -34,15 +34,14 @@ Restoration and source coverage are separate ledgers.
 
 Current v3 source coverage remains:
 
-- proved: 18
-- partial: 2
+- proved: 19
+- partial: 1
 - pending: 86
 - total P-IDs: 106
 
-The two partial P-IDs are:
+The one partial P-ID is:
 
 - P-DYN-01
-- P-REF-05
 
 ## Restored and reverified modules
 
@@ -164,3 +163,16 @@ maximizer preservation.
   `03aaf987efc74635bba5e4b35fcdaf191f132639`
 - successful full-repository run:
   `34350610211`
+
+
+## P-REF-05 closure
+
+P-REF-05 is now source-matched as `proved`.
+
+The repository contains both the total extended-real version and the classical
+real-supremum version under explicit nonempty/boundedness conditions.
+
+- final source-strength commit:
+  `c64b8983e36990c9f9d7730aff55a40b673f446c`
+- successful full-repository run:
+  `34350690356`
