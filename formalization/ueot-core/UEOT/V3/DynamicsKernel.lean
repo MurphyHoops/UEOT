@@ -388,6 +388,87 @@ theorem homTrajMeasure_prefix_naturality
       rw [ih]
       exact homTrajMeasure_prefix_succ (μ.map f) Pbar n
 
+
+def mapPath (f : X → M) (x : ℕ → X) : ℕ → M :=
+  fun k => f (x k)
+
+theorem measurable_mapPath
+    (f : X → M) (hf : Measurable f) :
+    Measurable (mapPath f) := by
+  apply measurable_pi_iff.mpr
+  intro k
+  exact hf.comp (measurable_pi_apply k)
+
+theorem frestrictLe_mapPath
+    (f : X → M) (n : ℕ) :
+    Preorder.frestrictLe n ∘ mapPath f =
+      mapHistory f n ∘ Preorder.frestrictLe n := by
+  rfl
+
+theorem pathMeasure_eq_of_prefix_eq
+    (μpath νpath : Measure (ℕ → M))
+    [IsProbabilityMeasure μpath] [IsProbabilityMeasure νpath]
+    (hprefix : ∀ n,
+      μpath.map (Preorder.frestrictLe n) =
+        νpath.map (Preorder.frestrictLe n)) :
+    μpath = νpath := by
+  let ρ : (n : ℕ) → Measure ((i : Finset.Iic n) → M) :=
+    fun n => μpath.map (Preorder.frestrictLe n)
+  letI : ∀ n, IsProbabilityMeasure (ρ n) := fun n => by
+    dsimp [ρ]
+    exact Measure.isProbabilityMeasure_map
+      (Preorder.measurable_frestrictLe n).aemeasurable
+  have hρ :
+      ∀ a b : ℕ, ∀ hab : a ≤ b,
+        (ρ b).map (Preorder.frestrictLe₂ hab) = ρ a := by
+    intro a b hab
+    dsimp [ρ]
+    rw [Measure.map_map
+      (Preorder.measurable_frestrictLe₂ hab)
+      (Preorder.measurable_frestrictLe b)]
+    rw [Preorder.frestrictLe₂_comp_frestrictLe hab]
+  have hproj :
+      MeasureTheory.IsProjectiveMeasureFamily
+        (MeasureTheory.inducedFamily ρ) :=
+    MeasureTheory.isProjectiveMeasureFamily_inducedFamily ρ hρ
+  have hμ :
+      MeasureTheory.IsProjectiveLimit μpath
+        (MeasureTheory.inducedFamily ρ) := by
+    rw [MeasureTheory.isProjectiveLimit_nat_iff hproj μpath]
+    intro n
+    rw [MeasureTheory.inducedFamily_Iic]
+  have hν :
+      MeasureTheory.IsProjectiveLimit νpath
+        (MeasureTheory.inducedFamily ρ) := by
+    rw [MeasureTheory.isProjectiveLimit_nat_iff hproj νpath]
+    intro n
+    rw [MeasureTheory.inducedFamily_Iic]
+    exact (hprefix n).symm
+  exact hμ.unique hν
+
+theorem homTrajMeasure_path_naturality
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f)
+    (h : StrongLumpability P Pbar f hf) :
+    (homTrajMeasure μ P).map (mapPath f) =
+      homTrajMeasure (μ.map f) Pbar := by
+  letI : IsProbabilityMeasure (μ.map f) :=
+    (Measure.isProbabilityMeasure_map_iff hf.aemeasurable).2 inferInstance
+  letI : IsProbabilityMeasure ((homTrajMeasure μ P).map (mapPath f)) :=
+    Measure.isProbabilityMeasure_map (measurable_mapPath f hf).aemeasurable
+  apply pathMeasure_eq_of_prefix_eq
+  intro n
+  rw [Measure.map_map
+    (Preorder.measurable_frestrictLe n)
+    (measurable_mapPath f hf)]
+  rw [frestrictLe_mapPath f n]
+  rw [← Measure.map_map
+    (measurable_mapHistory f hf n)
+    (Preorder.measurable_frestrictLe n)]
+  exact homTrajMeasure_prefix_naturality μ P Pbar f hf h n
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
