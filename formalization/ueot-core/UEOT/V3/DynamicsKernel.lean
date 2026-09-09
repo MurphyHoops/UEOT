@@ -245,6 +245,13 @@ noncomputable def homTrajMeasure
     fun n => isMarkovKernel_homHistoryKernel P n
   ProbabilityTheory.Kernel.trajMeasure (X := fun _ : ℕ => X) μ (homHistoryKernel P)
 
+instance isProbabilityMeasure_homTrajMeasure
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (P : Kernel X X) [IsMarkovKernel P] :
+    IsProbabilityMeasure (homTrajMeasure μ P) := by
+  unfold homTrajMeasure
+  infer_instance
+
 
 theorem homTrajMeasure_prefix_zero
     (μ : Measure X) [IsProbabilityMeasure μ]
@@ -373,7 +380,8 @@ theorem homTrajMeasure_prefix_naturality
         (measurable_appendHistory n)]
       rw [mapHistory_comp_appendHistory f n]
       rw [← Measure.map_map
-        (measurable_appendHistory (X := M) n) (by fun_prop)]
+        (measurable_appendHistory (X := M) n)
+        ((measurable_mapHistory f hf n).prodMap hf)]
       rw [homHistory_compProd_naturality
         (μh := (homTrajMeasure μ P).map (Preorder.frestrictLe n))
         P Pbar f hf h]
