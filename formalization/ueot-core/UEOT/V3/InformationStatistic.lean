@@ -38,7 +38,9 @@ theorem statisticJoint_fst
     (X := fun z : H × Y => f z.1)
     (Y := fun z : H × Y => z.2)
     measurable_snd.aemeasurable]
+  unfold Measure.fst
   rw [Measure.map_map hf measurable_fst]
+  rfl
 
 theorem statisticJoint_snd
     (μ : Measure (H × Y)) (f : H → M) (hf : Measurable f) :
@@ -49,7 +51,8 @@ theorem statisticJoint_snd
     (X := fun z : H × Y => f z.1)
     (Y := fun z : H × Y => z.2)
     (hf.comp measurable_fst).aemeasurable]
-  simp
+  unfold Measure.snd
+  rfl
 
 theorem productMarginals_statisticJoint
     (μ : Measure (H × Y)) [SFinite μ]
