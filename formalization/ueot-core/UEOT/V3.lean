@@ -25,6 +25,7 @@ import UEOT.V3.MarkovBoundary
 import UEOT.V3.RecoveryDiscrete
 import UEOT.V3.RecoveryProbability
 import UEOT.V3.InformationPacking
+import UEOT.V3.InformationStatistic
 import UEOT.V3.InformationEntropy
 import UEOT.V3.ConcreteHistoryMarkovization
 import UEOT.V3.PredictionUpdate
