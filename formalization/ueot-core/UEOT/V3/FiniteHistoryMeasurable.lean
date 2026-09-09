@@ -15,6 +15,7 @@ Z_t = (t,H_t), without imposing a finite-memory assumption.
 
 namespace UEOT.V3.FiniteHistoryMeasurable
 
+open UEOT.V3.FiniteHistory
 open MeasurableSpace
 
 universe uX uA uY
