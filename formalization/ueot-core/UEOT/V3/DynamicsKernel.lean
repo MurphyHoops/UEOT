@@ -180,6 +180,28 @@ theorem homHistoryKernel_intertwines
     (strongLumpability_iff_preimage P Pbar f hf).1 h
       (x (lastHistoryIndex n)) B hB
 
+
+/-- Append one sampled state to a finite history. -/
+def appendHistory (n : ℕ)
+    (p : ((i : Set.Iic n) → X) × X) :
+    (i : Set.Iic (n + 1)) → X :=
+  IicProdIoc (X := fun _ : ℕ => X) n (n + 1)
+    (p.1, MeasurableEquiv.piSingleton (X := fun _ : ℕ => X) n p.2)
+
+theorem measurable_appendHistory (n : ℕ) :
+    Measurable (appendHistory (X := X) n) := by
+  fun_prop
+
+theorem mapHistory_appendHistory
+    (f : X → M) (n : ℕ)
+    (x : (i : Set.Iic n) → X) (y : X) :
+    mapHistory f (n + 1) (appendHistory n (x, y)) =
+      appendHistory n (mapHistory f n x, f y) := by
+  ext i
+  simp only [mapHistory, appendHistory, IicProdIoc_def,
+    MeasurableEquiv.piSingleton, MeasurableEquiv.coe_mk]
+  split_ifs <;> rfl
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
