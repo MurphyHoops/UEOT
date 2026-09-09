@@ -77,7 +77,6 @@ theorem behavior_equiv_positive_ratio_preserved
     (B.behavior_equiv_fitness_eq h).symm
   simp only [selectionWeight, hfit']
   field_simp [hmass, ne_of_gt hfit]
-  ring
 
 end ReplicationBridge
 
