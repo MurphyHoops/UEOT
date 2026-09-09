@@ -87,12 +87,58 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 24 |
+| proved | 25 |
 | partial | 0 |
-| pending | 82 |
+| pending | 81 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-INFO-05
+
+P-INFO-05 has been promoted from `pending` to `proved`.
+
+The source theorem has two linked layers.  First, if two histories induce
+predictive laws separated by total variation distance `δ` but a deterministic
+representation merges them and therefore forces one decoder law, at least one
+of the two decoder errors is at least `δ / 2`.  Second, if an `N`-point
+packing has pairwise predictive separation greater than `2 ε` while every
+represented history is decoded within `ε`, the representation must distinguish
+all `N` histories; under the uniform distribution on the packing, its Shannon
+entropy is therefore at least `log N`.
+
+The Lean formalization now contains the complete chain:
+
+- `UEOT.V3.InformationPacking.tvDist_symm`;
+- `tvDist_triangle`;
+- `common_decoder_half_distance`;
+- `merged_histories_decoder_lower_bound`;
+- `packing_forces_injective`;
+- `packing_ncard_image`;
+- `UEOT.V3.InformationEntropy.pmfShannonEntropy_map_uniform_injOn`;
+- `p_info_05_uniform_entropy`.
+
+The final entropy theorem is slightly stronger than the written lower bound:
+for the uniform law on the finite packing, injectivity makes the pushforward
+exactly uniform on an `N`-point image, so Lean proves
+
+[
+H(R_\#\operatorname{Unif}(F))=\log N,
+]
+
+and the source inequality follows immediately.
+
+Verification evidence:
+
+- pre-rebase complete branch head:
+  `8290ebfcb066378b10f452491d4c783fd170e814`,
+  full-target CI run `34388486107` (#223): success;
+- clean-rebased branch head:
+  `d6a70f335aa5a89a792c28f3c7e096d74a422ad8`;
+- clean branch full-target CI run `34389495626` (#237): success;
+- main squash merge:
+  `3a809a86b43769172079926318e1f0ab6afb2c0d`;
+- post-merge full-target CI run `34389817372` (#240): success.
 
 ## 2026-09-10 advance: P-REC-01
 
