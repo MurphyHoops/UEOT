@@ -51,7 +51,7 @@ theorem isMarkovKernel_markovized
     (M : HistoryMachine H A X) [IsMarkovKernel M.step] :
     IsMarkovKernel M.markovized := by
   unfold markovized
-  exact IsMarkovKernel.map _ M.measurable_advance
+  exact Kernel.IsMarkovKernel.map _ M.measurable_advance
 
 theorem read_comp_advance
     (M : HistoryMachine H A X) :
@@ -65,7 +65,7 @@ theorem markovized_readout_eq_step
   unfold markovized
   rw [← Kernel.map_comp_right _ M.measurable_advance M.measurable_read]
   rw [M.read_comp_advance]
-  change Kernel.snd (Kernel.id ×ₖ M.step) = M.step
+  rw [← Kernel.snd_eq]
   simpa using Kernel.snd_prod Kernel.id M.step
 
 theorem markovized_readout_apply
