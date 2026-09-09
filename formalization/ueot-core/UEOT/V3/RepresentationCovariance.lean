@@ -426,13 +426,10 @@ theorem pmfExtend_map_equiv
         (fun h' => (K (eH.symm h')).map eZ) := by
   unfold pmfExtend
   rw [PMF.map_bind, PMF.bind_map]
-  apply congrArg
+  congr 1
   funext h
   simp only [Function.comp_apply, Equiv.symm_apply_apply]
   rw [PMF.map_comp, PMF.map_comp]
-  congr
-  funext z
-  rfl
 
 /-- Exact finite-horizon path-law naturality. -/
 theorem causalLaw_transport_equiv
@@ -461,6 +458,6 @@ theorem causalLaw_transport_equiv
       congr
       funext h'
       have hh := hK n ((causalHistoryEquiv e₀ eZ n).symm h')
-      simpa using hh
+      simpa using hh.symm
 
 end UEOT.V3.RepresentationCovariance
