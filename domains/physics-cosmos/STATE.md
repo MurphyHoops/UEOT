@@ -1,5 +1,13 @@
 # Physics and Cosmos State
 
+> **Migration status: LEGACY PRECURSOR.**
+>
+> This file records the early 2026 domain-council state. Active physics work is
+> now routed through `physics/`. See `physics/status/CURRENT.md`.
+>
+> The historical content below is retained for provenance and should not be
+> treated as the current UEOT-QM/physics roadmap.
+
 ## Active Questions
 
 - How should UEOT translate from ontological loops to particle and field

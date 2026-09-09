@@ -1,5 +1,14 @@
 # Formal Foundations State
 
+> **Migration status: LEGACY PRECURSOR.**
+>
+> This file records the early 2026 domain-council state. Active domain-neutral
+> mathematical work is now routed through `core/` and
+> `formalization/ueot-core/`. See `core/status/CURRENT.md`.
+>
+> The historical content below is retained for provenance and should not be
+> treated as the current formal-foundations roadmap.
+
 ## Active Questions
 
 - How should `Omega`-loop persistence be formalized without collapsing into a
