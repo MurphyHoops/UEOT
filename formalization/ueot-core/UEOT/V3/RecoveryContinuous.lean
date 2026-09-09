@@ -44,7 +44,11 @@ theorem exponential_recovery_bound_core
       t ht
   have hne : -a ≠ 0 := neg_ne_zero.mpr ha.ne'
   rw [gronwallBound_of_K_ne_0 hne] at hG
-  simpa [sub_zero, neg_mul, div_neg] using hG
+  have hraw :
+      m t + (b / a) * (Real.exp (-a * t) - 1) ≤
+        m 0 * Real.exp (-a * t) := by
+    simpa [sub_zero, neg_mul, div_neg] using hG
+  nlinarith [hraw]
 
 /-- If a nonnegative energy dominates c times squared distance and c>0, any
 upper bound on the energy immediately gives the corresponding mean-square
