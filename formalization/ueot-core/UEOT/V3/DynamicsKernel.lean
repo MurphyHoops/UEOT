@@ -265,6 +265,49 @@ theorem homTrajMeasure_prefix_succ
     exact appendHistory_prefix_next n x
   rw [hcomp]
 
+
+theorem homHistory_compProd_naturality
+    (μh : Measure ((i : Finset.Iic n) → X)) [SFinite μh]
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f)
+    (h : StrongLumpability P Pbar f hf)
+    (n : ℕ) :
+    (μh ⊗ₘ homHistoryKernel P n).map
+        (Prod.map (mapHistory f n) f) =
+      (μh.map (mapHistory f n)) ⊗ₘ homHistoryKernel Pbar n := by
+  have hF : Measurable (mapHistory f n) :=
+    measurable_mapHistory f hf n
+  have hk :
+      Kernel.map (homHistoryKernel P n) f =
+        Kernel.comap (homHistoryKernel Pbar n)
+          (mapHistory f n) hF :=
+    homHistoryKernel_intertwines P Pbar f hf h n
+  calc
+    (μh ⊗ₘ homHistoryKernel P n).map
+        (Prod.map (mapHistory f n) f)
+        =
+      ((μh ⊗ₘ homHistoryKernel P n).map (Prod.map id f)).map
+        (Prod.map (mapHistory f n) id) := by
+          rw [Measure.map_map (by fun_prop) (by fun_prop)]
+          rfl
+    _ =
+      (μh ⊗ₘ (homHistoryKernel P n).map f).map
+        (Prod.map (mapHistory f n) id) := by
+          rw [← Measure.compProd_map hf]
+    _ =
+      (μh ⊗ₘ Kernel.comap (homHistoryKernel Pbar n)
+          (mapHistory f n) hF).map
+        (Prod.map (mapHistory f n) id) := by
+          rw [hk]
+    _ = (μh.map (mapHistory f n)) ⊗ₘ homHistoryKernel Pbar n := by
+      ext s hs
+      rw [Measure.map_apply (by fun_prop) hs,
+        Measure.compProd_apply (by measurability),
+        Measure.compProd_apply hs,
+        lintegral_map (Kernel.measurable_kernel_prodMk_left hs) hF]
+      rfl
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
