@@ -114,37 +114,24 @@ theorem generator_intertwines_of_semigroup
         blockIndicator block * NormedSpace.exp (t • Lbar)) :
     L * blockIndicator block =
       blockIndicator block * Lbar := by
-  have hL :
-      HasDerivAt (fun t : ℝ => NormedSpace.exp (t • L)) L 0 := by
-    simpa using (hasDerivAt_exp_smul_const L (0 : ℝ))
-  have hR :
-      HasDerivAt (fun t : ℝ => NormedSpace.exp (t • Lbar)) Lbar 0 := by
-    simpa using (hasDerivAt_exp_smul_const Lbar (0 : ℝ))
+  let R := rightMulIndicatorCLM block
+  let S := leftMulIndicatorCLM block
+  have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
+  have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
   have hleftF :=
-    (rightMulIndicatorCLM block).hasFDerivAt.comp 0 hL.hasFDerivAt
+    R.hasFDerivAt.comp 0 hL.hasFDerivAt
   have hrightF :=
-    (leftMulIndicatorCLM block).hasFDerivAt.comp 0 hR.hasFDerivAt
-  have hleft :
-      HasDerivAt
-        (fun t : ℝ =>
-          NormedSpace.exp (t • L) * blockIndicator block)
-        (L * blockIndicator block) 0 := by
-    simpa [rightMulIndicatorCLM_apply] using hleftF.hasDerivAt
-  have hright :
-      HasDerivAt
-        (fun t : ℝ =>
-          blockIndicator block * NormedSpace.exp (t • Lbar))
-        (blockIndicator block * Lbar) 0 := by
-    simpa [leftMulIndicatorCLM_apply] using hrightF.hasDerivAt
+    S.hasFDerivAt.comp 0 hR.hasFDerivAt
   have hfun :
-      (fun t : ℝ =>
-        NormedSpace.exp (t • L) * blockIndicator block) =
-      (fun t : ℝ =>
-        blockIndicator block * NormedSpace.exp (t • Lbar)) := by
+      (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
+        (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
     funext t
-    exact hsem t
-  rw [hfun] at hleft
-  exact hleft.unique hright
+    simpa [R, S] using hsem t
+  rw [hfun] at hleftF
+  have hderivEq := hleftF.unique hrightF
+  have hone := congrArg (fun D => D (1 : ℝ)) hderivEq
+  simpa [R, S, rightMulIndicatorCLM_apply,
+    leftMulIndicatorCLM_apply] using hone
 
 /-- Exact finite-CTMC semigroup quotient is equivalent to generator
 intertwining. -/
