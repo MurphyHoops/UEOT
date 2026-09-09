@@ -19,7 +19,7 @@ theorem terminal_potential_vanishes
     (hβ : |β| < 1)
     (hψ : ∀ n, |ψ n| ≤ C) :
     Tendsto (fun n : ℕ => β ^ n * ψ n) atTop (𝓝 0) := by
-  apply squeeze_zero_norm'
+  refine squeeze_zero_norm' (a := fun n : ℕ => |β| ^ n * C) ?_ ?_
   · exact Filter.Eventually.of_forall (fun n => by
       rw [Real.norm_eq_abs, abs_mul, abs_pow]
       exact mul_le_mul_of_nonneg_left (hψ n) (pow_nonneg (abs_nonneg β) n))
