@@ -134,13 +134,17 @@ theorem generator_intertwines_of_semigroup
   have hleftAsRight := hleftF.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightF
   have hone := congrArg (fun D => D (1 : ℝ)) hderivEq
+  have hone0 :
+      (R ∘SL ContinuousLinearMap.toSpanSingleton ℝ L) 1 =
+        (S ∘SL ContinuousLinearMap.toSpanSingleton ℝ Lbar) 1 := by
+    simpa using hone
   have hstage :
       R L = S Lbar := by
     change
       (R.comp (ContinuousLinearMap.toSpanSingleton ℝ L)) 1 =
-        (S.comp (ContinuousLinearMap.toSpanSingleton ℝ Lbar)) 1 at hone
+        (S.comp (ContinuousLinearMap.toSpanSingleton ℝ Lbar)) 1 at hone0
     simpa only [ContinuousLinearMap.comp_apply,
-      ContinuousLinearMap.toSpanSingleton_apply, one_smul] using hone
+      ContinuousLinearMap.toSpanSingleton_apply, one_smul] using hone0
   simpa [R, S, rightMulIndicatorCLM_apply,
     leftMulIndicatorCLM_apply] using hstage
 
