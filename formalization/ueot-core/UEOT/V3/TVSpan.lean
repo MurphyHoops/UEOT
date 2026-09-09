@@ -100,4 +100,34 @@ theorem abs_integral_sub_le_span_tvDist
     UEOT.V3.VariationBridge.signedDiff_totalVariation_univ_eq_two_tvDist] at hvar
   nlinarith [UEOT.V3.TotalVariation.tvDist_nonneg μ ν]
 
+
+/-- Source-facing span of a bounded real observable. -/
+noncomputable def span (g : X → ℝ) : ℝ :=
+  sSup (Set.range g) - sInf (Set.range g)
+
+/-- Exact P-MET-02 wrapper: for a bounded measurable real observable, the
+expectation gap is controlled by its literal supremum-minus-infimum span. -/
+theorem abs_integral_sub_le_span
+    (μ ν : Measure X)
+    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
+    (g : X → ℝ) (hg : Measurable g)
+    (hbelow : BddBelow (Set.range g))
+    (habove : BddAbove (Set.range g)) :
+    |(∫ x, g x ∂μ) - ∫ x, g x ∂ν| ≤
+      span g * UEOT.V3.TotalVariation.tvDist μ ν := by
+  let x₀ : X := Classical.choice (nonempty_of_isProbabilityMeasure μ)
+  have ha : ∀ x, sInf (Set.range g) ≤ g x := by
+    intro x
+    exact csInf_le hbelow (Set.mem_range_self x)
+  have hb : ∀ x, g x ≤ sSup (Set.range g) := by
+    intro x
+    exact le_csSup habove (Set.mem_range_self x)
+  have hab : sInf (Set.range g) ≤ sSup (Set.range g) :=
+    (ha x₀).trans (hb x₀)
+  simpa [span] using
+    abs_integral_sub_le_span_tvDist
+      μ ν g hg
+      (sInf (Set.range g)) (sSup (Set.range g))
+      hab ha hb
+
 end UEOT.V3.TVSpan
