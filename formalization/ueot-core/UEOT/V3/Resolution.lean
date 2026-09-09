@@ -205,4 +205,103 @@ theorem pushFamily_realization_interval {V W : Type*} (π : V → W)
         UpClosure C ⊆ upper π (UpClosure D) :=
       clutter_realization_interval π C D hD
 
+
+/-! ## P-RES-06: object-relative uniqueness
+
+A coarse point is active when it occurs in at least one coarse minimal edge.
+`UniqueFiber π w` is the cardinality-one condition on the fiber over `w`,
+expressed without choosing a finite-cardinality representation.
+-/
+
+def Active {W : Type*} (D : Set (Set W)) (w : W) : Prop :=
+  ∃ d ∈ D, w ∈ d
+
+def UniqueFiber {V W : Type*} (π : V → W) (w : W) : Prop :=
+  ∃ v : V, π v = w ∧ ∀ v' : V, π v' = w → v' = v
+
+theorem endpoint_equality_iff_unique_active_fibers {V W : Type*}
+    (π : V → W) (D : Set (Set W))
+    (surj : Function.Surjective π) (hD : IsAntichain D) :
+    lower π (UpClosure D) = upper π (UpClosure D) ↔
+      ∀ w, Active D w → UniqueFiber π w := by
+  classical
+  constructor
+  · intro hEq w hw
+    rcases hw with ⟨d, hd, hwd⟩
+    let σ : W → V := fun y => Classical.choose (surj y)
+    have hσ : ∀ y : W, π (σ y) = y := by
+      intro y
+      exact Classical.choose_spec (surj y)
+    let S : Set V := σ '' d
+    have hImg : π '' S = d := by
+      ext y
+      constructor
+      · rintro ⟨x, ⟨z, hzd, hx⟩, hxy⟩
+        subst x
+        rw [hσ z] at hxy
+        simpa [hxy] using hzd
+      · intro hyd
+        exact ⟨σ y, ⟨y, hyd, rfl⟩, hσ y⟩
+    have hup : S ∈ upper π (UpClosure D) := by
+      change π '' S ∈ UpClosure D
+      exact ⟨d, hd, by rw [hImg]⟩
+    have hlow : S ∈ lower π (UpClosure D) := by
+      rw [hEq]
+      exact hup
+    rcases hlow with ⟨B, hB, hpreB⟩
+    rcases hB with ⟨d', hd', hd'B⟩
+    have hd'd : d' ⊆ d := by
+      intro y hy
+      obtain ⟨x, hx⟩ := surj y
+      have hxpre : x ∈ π ⁻¹' B := hd'B hy
+      have hxS : x ∈ S := hpreB hxpre
+      rcases hxS with ⟨z, hzd, hxz⟩
+      have hyz : y = z := by
+        calc
+          y = π x := hx.symm
+          _ = π (σ z) := by rw [hxz]
+          _ = z := hσ z
+      simpa [hyz] using hzd
+    have hdd' : d' = d := hD hd' hd hd'd
+    have hpreD : π ⁻¹' d ⊆ S := by
+      intro x hx
+      apply hpreB
+      apply hd'B
+      rw [hdd']
+      exact hx
+    refine ⟨σ w, hσ w, ?_⟩
+    intro v hv
+    have hvpre : v ∈ π ⁻¹' d := by
+      simpa [hv] using hwd
+    have hvS : v ∈ S := hpreD hvpre
+    rcases hvS with ⟨z, hzd, hvz⟩
+    have hzw : z = w := by
+      calc
+        z = π (σ z) := (hσ z).symm
+        _ = π v := by rw [← hvz]
+        _ = w := hv
+    simpa [hzw] using hvz
+  · intro huniq
+    ext S
+    constructor
+    · rintro ⟨B, ⟨d, hd, hdB⟩, hpreB⟩
+      change π '' S ∈ UpClosure D
+      refine ⟨d, hd, ?_⟩
+      intro w hwd
+      rcases huniq w ⟨d, hd, hwd⟩ with ⟨v, hv, _⟩
+      refine ⟨v, ?_, hv⟩
+      apply hpreB
+      exact hdB hwd
+    · intro hup
+      change π '' S ∈ UpClosure D at hup
+      rcases hup with ⟨d, hd, hdImg⟩
+      refine ⟨d, ⟨d, hd, Set.Subset.rfl⟩, ?_⟩
+      intro v hv
+      have hactive : Active D (π v) := ⟨d, hd, hv⟩
+      rcases huniq (π v) hactive with ⟨u, hu, hunique⟩
+      rcases hdImg hv with ⟨s, hsS, hsπ⟩
+      have hvu : v = u := hunique v rfl
+      have hsu : s = u := hunique s hsπ
+      simpa [hvu, hsu] using hsS
+
 end UEOT.V3.Resolution
