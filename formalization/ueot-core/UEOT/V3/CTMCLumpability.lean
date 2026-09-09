@@ -136,4 +136,6 @@ theorem pow_intertwines
         _ = blockIndicator block * (Lbar ^ n * Lbar) := by
               rw [Matrix.mul_assoc]
 
+end
+
 end UEOT.V3.CTMCLumpability
