@@ -32,9 +32,10 @@ theorem candidates_nonempty (L : ClosureSystem V) (S : Set V) :
 theorem subset_closure (L : ClosureSystem V) (S : Set V) :
     S ⊆ closure L S := by
   intro x hx
-  apply Set.mem_sInter
-  intro A hA
-  exact hA.2 hx
+  change x ∈ ⋂₀ {A : Set V | A ∈ L.carrier ∧ S ⊆ A}
+  exact (Set.mem_sInter).2 (by
+    intro A hA
+    exact hA.2 hx)
 
 theorem closure_mem (L : ClosureSystem V) (S : Set V) :
     closure L S ∈ L.carrier := by
