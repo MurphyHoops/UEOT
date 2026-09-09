@@ -21,7 +21,7 @@ noncomputable section
 open Matrix
 open NormedSpace
 open UEOT.V3.CTMCLumpability
-open scoped Matrix.Norms.Frobenius
+open scoped Nat Matrix.Norms.Frobenius
 
 universe uX uB
 
@@ -35,12 +35,14 @@ local instance : DecidableEq B := Classical.decEq B
 a continuous linear map on the finite-dimensional real matrix space. -/
 noncomputable def rightMulIndicatorCLM (block : X → B) :
     Matrix X X ℝ →L[ℝ] Matrix X B ℝ :=
-  (Matrix.mulRightLinearMap X ℝ (blockIndicator block)).toContinuousLinearMap
+  LinearMap.toContinuousLinearMap
+    (mulRightLinearMap X ℝ (blockIndicator block))
 
 /-- Left multiplication by the rectangular partition indicator. -/
 noncomputable def leftMulIndicatorCLM (block : X → B) :
     Matrix B B ℝ →L[ℝ] Matrix X B ℝ :=
-  (Matrix.mulLeftLinearMap B ℝ (blockIndicator block)).toContinuousLinearMap
+  LinearMap.toContinuousLinearMap
+    (mulLeftLinearMap B ℝ (blockIndicator block))
 
 @[simp] theorem rightMulIndicatorCLM_apply
     (block : X → B) (A : Matrix X X ℝ) :
@@ -59,24 +61,24 @@ theorem exp_intertwines
   let R := rightMulIndicatorCLM block
   let S := leftMulIndicatorCLM block
   have hsumL :
-      Summable (fun n : ℕ => (n !⁻¹ : ℝ) • L ^ n) :=
+      Summable (fun n : ℕ => (n.factorial⁻¹ : ℝ) • L ^ n) :=
     NormedSpace.expSeries_summable' (𝕂 := ℝ) L
   have hsumB :
-      Summable (fun n : ℕ => (n !⁻¹ : ℝ) • Lbar ^ n) :=
+      Summable (fun n : ℕ => (n.factorial⁻¹ : ℝ) • Lbar ^ n) :=
     NormedSpace.expSeries_summable' (𝕂 := ℝ) Lbar
   have hexpL :
-      NormedSpace.exp L = ∑' n : ℕ, (n !⁻¹ : ℝ) • L ^ n := by
+      NormedSpace.exp L = ∑' n : ℕ, (n.factorial⁻¹ : ℝ) • L ^ n := by
     exact congrFun (NormedSpace.exp_eq_tsum ℝ) L
   have hexpB :
-      NormedSpace.exp Lbar = ∑' n : ℕ, (n !⁻¹ : ℝ) • Lbar ^ n := by
+      NormedSpace.exp Lbar = ∑' n : ℕ, (n.factorial⁻¹ : ℝ) • Lbar ^ n := by
     exact congrFun (NormedSpace.exp_eq_tsum ℝ) Lbar
   change R (NormedSpace.exp L) = S (NormedSpace.exp Lbar)
   rw [hexpL, hexpB, R.map_tsum hsumL, S.map_tsum hsumB]
   apply tsum_congr
   intro n
   change
-    ((n !⁻¹ : ℝ) • L ^ n) * blockIndicator block =
-      blockIndicator block * ((n !⁻¹ : ℝ) • Lbar ^ n)
+    ((n.factorial⁻¹ : ℝ) • L ^ n) * blockIndicator block =
+      blockIndicator block * ((n.factorial⁻¹ : ℝ) • Lbar ^ n)
   rw [Matrix.smul_mul, Matrix.mul_smul,
     CTMCLumpability.pow_intertwines L Lbar block h n]
 
