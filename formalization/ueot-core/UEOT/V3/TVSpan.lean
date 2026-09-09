@@ -1,0 +1,95 @@
+import UEOT.V3.VariationBridge
+import Mathlib.MeasureTheory.VectorMeasure.Integral
+
+/-!
+# P-MET-02 — total-variation span bound
+
+This module derives the bounded-observable dual bound from the exact
+event-supremum TV metric.  The proof goes through the signed-measure
+variation bridge, and centers the observable at the midpoint of a bounding
+interval so that the factor two cancels exactly.
+-/
+
+namespace UEOT.V3.TVSpan
+
+open MeasureTheory
+open scoped ENNReal
+
+universe uX
+
+variable {X : Type uX} [MeasurableSpace X]
+
+theorem integrable_of_interval
+    (μ : Measure X) [IsFiniteMeasure μ]
+    (g : X → ℝ) (hg : Measurable g)
+    (a b : ℝ)
+    (ha : ∀ x, a ≤ g x) (hb : ∀ x, g x ≤ b) :
+    Integrable g μ := by
+  refine (integrable_const (μ := μ) (max |a| |b|)).mono'
+    hg.aestronglyMeasurable ?_
+  filter_upwards with x
+  simpa [Real.norm_eq_abs] using abs_le_max_abs_abs (ha x) (hb x)
+
+theorem centered_norm_le_half_span
+    (g : X → ℝ) (a b : ℝ) (hab : a ≤ b)
+    (ha : ∀ x, a ≤ g x) (hb : ∀ x, g x ≤ b) (x : X) :
+    ‖g x - (a + b) / 2‖ ≤ (b - a) / 2 := by
+  rw [Real.norm_eq_abs, abs_le]
+  constructor <;> linarith [ha x, hb x]
+
+theorem abs_integral_sub_le_span_tvDist
+    (μ ν : Measure X)
+    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
+    (g : X → ℝ) (hg : Measurable g)
+    (a b : ℝ) (hab : a ≤ b)
+    (ha : ∀ x, a ≤ g x) (hb : ∀ x, g x ≤ b) :
+    |(∫ x, g x ∂μ) - ∫ x, g x ∂ν| ≤
+      (b - a) * UEOT.V3.TotalVariation.tvDist μ ν := by
+  let c : ℝ := (a + b) / 2
+  let centered : X → ℝ := fun x => g x - c
+  have hgμ : Integrable g μ :=
+    integrable_of_interval μ g hg a b ha hb
+  have hgν : Integrable g ν :=
+    integrable_of_interval ν g hg a b ha hb
+  have hcμ : Integrable (fun _ : X => c) μ := integrable_const c
+  have hcν : Integrable (fun _ : X => c) ν := integrable_const c
+  have hcenterμ : Integrable centered μ := by
+    simpa [centered] using hgμ.sub hcμ
+  have hcenterν : Integrable centered ν := by
+    simpa [centered] using hgν.sub hcν
+  have hvec :
+      (∫ᵛ x, centered x ∂<•UEOT.V3.VariationBridge.signedDiff μ ν) =
+        (∫ x, centered x ∂μ) - ∫ x, centered x ∂ν := by
+    unfold UEOT.V3.VariationBridge.signedDiff
+    rw [integral_sub_vectorMeasure]
+    · simp
+    · simpa [VectorMeasure.Integrable,
+        Measure.variation_toSignedMeasure] using hcenterμ
+    · simpa [VectorMeasure.Integrable,
+        Measure.variation_toSignedMeasure] using hcenterν
+  have hcenter_diff :
+      (∫ x, centered x ∂μ) - ∫ x, centered x ∂ν =
+        (∫ x, g x ∂μ) - ∫ x, g x ∂ν := by
+    simp only [centered]
+    rw [integral_sub hgμ hcμ, integral_sub hgν hcν]
+    simp
+  have hvar :
+      ‖∫ᵛ x, centered x ∂<•UEOT.V3.VariationBridge.signedDiff μ ν‖ ≤
+        ((b - a) / 2) *
+          (UEOT.V3.VariationBridge.signedDiff μ ν).variation.real Set.univ := by
+    have hbound :=
+      VectorMeasure.norm_integral_le_of_norm_le_const
+        (μ := UEOT.V3.VariationBridge.signedDiff μ ν)
+        (B := (ContinuousLinearMap.lsmul ℝ ℝ (E := ℝ)).flip)
+        (f := centered)
+        (C := (b - a) / 2)
+        (ae_of_all _ fun x => by
+          simpa [centered, c] using
+            centered_norm_le_half_span g a b hab ha hb x)
+    simpa using hbound
+  rw [hvec, hcenter_diff, Real.norm_eq_abs] at hvar
+  rw [← SignedMeasure.totalVariation_eq_variation,
+    UEOT.V3.VariationBridge.signedDiff_totalVariation_univ_eq_two_tvDist] at hvar
+  nlinarith [UEOT.V3.TotalVariation.tvDist_nonneg μ ν]
+
+end UEOT.V3.TVSpan
