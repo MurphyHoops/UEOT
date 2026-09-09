@@ -87,12 +87,47 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 26 |
+| proved | 27 |
 | partial | 0 |
-| pending | 80 |
+| pending | 79 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-PRED-03
+
+P-PRED-03 has been promoted from `pending` to `proved`.
+
+The source assumes one causal process, finite action/observation alphabets,
+closure of the protocol family under allowed continuations after
+positive-probability observations, and storage of the corresponding joint
+future-cylinder probabilities.  The next canonical state is obtained by the
+Bayes ratio
+
+[
+P(B\mid h,a,o)=\frac{P(o,B\mid h,a)}{P(o\mid h,a)}.
+]
+
+The Lean module `UEOT.V3.PredictionUpdate` encodes that source proof through:
+
+- `historyBayesResponse` / `stateBayesUpdate`;
+- coordinate and vector factorization through the current canonical state;
+- `RecursiveCoordinateClosure`, which supplies the observation-marginal and
+  observation-plus-continuation coordinates required by protocol closure;
+- a mathematically arbitrary zero-probability extension, matching the source
+  caveat that such branches are not empirically certified;
+- `measurable_coordinateBayesUpdate_joint` for finite alphabets;
+- `p_pred_03_recursive_update`, which proves both preservation of predictive
+  equivalence and existence of a jointly measurable update map.
+
+Verification evidence:
+
+- clean source-facing branch head:
+  `48bf6266820e379f184020c1ef83666cf94a8abd`;
+- pinned Lean full-target branch CI run `34398365622` (#267): success;
+- main squash merge:
+  `747753929a6b71e4cea830e37ccf2d92b9d81519`;
+- post-merge full-target CI run `34400192573` (#270): success.
 
 ## 2026-09-10 advance: P-PROC-01
 
