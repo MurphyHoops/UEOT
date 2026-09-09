@@ -511,6 +511,7 @@ theorem homTrajMeasure_dirac_time_one
           (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) := by
       symm
       rw [Measure.map_map
+        (μ := μpath)
         (measurable_pi_apply (lastHistoryIndex 1))
         (Preorder.measurable_frestrictLe 1)]
       rfl
