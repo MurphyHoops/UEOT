@@ -104,7 +104,11 @@ theorem tvDist_map_measurableEquiv
     tvDist (μ.map e) (ν.map e) = tvDist μ ν := by
   apply le_antisymm
   · exact tvDist_map_le μ ν e e.measurable
-  · have hrev :=
+  · letI : IsProbabilityMeasure (μ.map e) :=
+      (Measure.isProbabilityMeasure_map_iff e.measurable.aemeasurable).2 inferInstance
+    letI : IsProbabilityMeasure (ν.map e) :=
+      (Measure.isProbabilityMeasure_map_iff e.measurable.aemeasurable).2 inferInstance
+    have hrev :=
       tvDist_map_le (μ.map e) (ν.map e) e.symm e.symm.measurable
     simpa [Measure.map_map, Function.comp_def] using hrev
 
