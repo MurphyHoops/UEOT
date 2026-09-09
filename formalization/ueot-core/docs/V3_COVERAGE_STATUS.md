@@ -90,12 +90,40 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 30 |
+| proved | 31 |
 | partial | 0 |
-| pending | 76 |
+| pending | 75 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-QSD-02
+
+P-QSD-02 has been promoted from `pending` to `proved`.
+
+The finite killed-kernel theorem keeps the source's Perron–Frobenius
+existence/positivity statement as the standard K-PF-01 input and machine-checks
+the UEOT consequences from those data:
+
+- the Perron eigenvalue satisfies `ρ ≤ 1` under substochastic rows;
+- the normalized left Perron law is quasi-stationary at every finite step;
+- survival mass is exactly `ρ^n`;
+- the Doob transform is nonnegative and row-stochastic;
+- `varpi_i = q_i h_i` is normalized, nonnegative, and invariant.
+
+The source-facing wrapper is
+`UEOT.V3.QSDPerron.p_qsd_02_killed`. No theorem here claims a new proof of
+Perron–Frobenius existence; that remains the source's standard input.
+
+Verification evidence:
+
+- branch head:
+  `a5562d8462a5487638018c53db49f17c2b677918`;
+- pinned full-target branch CI run #354: success;
+- PR #16 squash merge:
+  `f3aaa623f0f5805604d0cb4860216a6aa8648670`;
+- post-merge full-target main CI run #358
+  (`34414021707`): success.
 
 ## 2026-09-10 advance: P-DYN-03
 
