@@ -111,4 +111,36 @@ theorem coordinate_ae_sigma_le_canonical {H I Y : Type*}
     AESigmaLE μ (fun h => K i h) (fun h j => K j h) :=
   aeFactors_sigmaLE μ (coordinate_ae_sufficient μ K i)
 
+
+/-! ## Canonical state is itself protocol-sufficient
+
+For each protocol coordinate, evaluation of the canonical measure-valued state
+is itself a measurable kernel. Thus the original history kernel is recovered
+exactly, not merely almost everywhere, from the canonical state.
+-/
+
+def coordinateKernel {I Y : Type*} [MeasurableSpace Y] (i : I) :
+    Kernel (I → Measure Y) Y where
+  toFun c := c i
+  measurable' := measurable_pi_apply i
+
+theorem coordinateKernel_apply {I Y : Type*} [MeasurableSpace Y]
+    (i : I) (c : I → Measure Y) :
+    coordinateKernel i c = c i := rfl
+
+theorem canonical_coordinate_sufficient {H I Y : Type*}
+    [MeasurableSpace H] [MeasurableSpace Y]
+    (K : I → Kernel H Y) (i : I) :
+    ∀ h, K i h = coordinateKernel i (fun j => K j h) := by
+  intro h
+  rfl
+
+theorem canonical_kernel_sufficient {H I Y : Type*}
+    [MeasurableSpace H] [MeasurableSpace Y]
+    (K : I → Kernel H Y) :
+    ∀ i, ∃ L : Kernel (I → Measure Y) Y,
+      ∀ h, K i h = L (fun j => K j h) := by
+  intro i
+  exact ⟨coordinateKernel i, canonical_coordinate_sufficient K i⟩
+
 end UEOT.V3.PredictionAE
