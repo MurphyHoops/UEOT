@@ -12,7 +12,7 @@ only after all of the following hold:
 2. Lean semantics match the source or are explicitly stronger;
 3. the declaration is imported by the official `UEOT` target;
 4. pinned Lean/Mathlib branch CI passes;
-5. the branch is clean-rebased onto the latest green `main`;
+5. the branch is based on the latest green **Lean-affecting** main state; a later docs-only commit does not force proof replay;
 6. the branch is merged into `main`;
 7. post-merge `lake build UEOT` passes;
 8. no `sorry`, `sorryAx`, UEOT-specific axiom, `native_decide`, or source weakening;
@@ -302,7 +302,8 @@ Before merge:
 - full `lake build UEOT`;
 - source-facing theorem present;
 - no prohibited proof escape;
-- branch clean-rebased to latest green `main`.
+- branch includes the latest green Lean-affecting main changes;
+- docs-only commits after that Lean base do not force a rebase, provided the PR is conflict-free and the proof environment is unchanged.
 
 ### L3 — main promotion gate
 After merge:
@@ -354,8 +355,8 @@ The target steady state is:
 2. close P-FAC-01 value covariance;
 3. run Slots C-F in parallel from current green main;
 4. merge whichever lane reaches source-level green first;
-5. after every two merges, rebase remaining HOT lanes once, not after every
-   documentation-only commit;
+5. after every Lean-affecting merge, advance/rebase dependent HOT lanes in a batch;
+   never replay proofs merely because a coverage/roadmap-only commit moved main;
 6. open Factories G-K progressively while keeping at most six HOT proof lanes.
 
 This converts the project from branch-by-branch proof work into a controlled
