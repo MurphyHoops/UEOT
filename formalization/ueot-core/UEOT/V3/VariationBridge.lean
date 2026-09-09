@@ -126,13 +126,13 @@ theorem signedDiff_posMass_le_tvDist
     s.nonneg_of_zero_le_restrict hpos
   have hpos_mass :
       s.toJordanDecomposition.posPart.real Set.univ = s A := by
-    rw [hp, SignedMeasure.toMeasureOfZeroLE_real_apply hpos hA MeasurableSet.univ]
+    rw [hp, SignedMeasure.toMeasureOfZeroLE_real_apply s hpos hA MeasurableSet.univ]
     simp
   have htv := UEOT.V3.TotalVariation.tvEvent_le μ ν A hA
   have hsA : s A = μ.real A - ν.real A := by
     simpa [s] using signedDiff_apply μ ν A hA
-  rw [← hpos_mass, hsA] at hA_nonneg
-  rw [← hpos_mass]
+  rw [hsA] at hA_nonneg
+  rw [hpos_mass, hsA]
   simpa [abs_of_nonneg hA_nonneg] using htv
 
 theorem tvDist_eq_signedDiff_posMass
