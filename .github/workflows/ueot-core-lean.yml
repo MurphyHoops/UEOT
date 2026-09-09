@@ -39,5 +39,8 @@ jobs:
       - name: Verify dependency lock exists
         run: test -s lake-manifest.json
 
+      - name: Restore Mathlib cache from lock
+        run: lake exe cache get
+
       - name: Build UEOT from lock
         run: lake build UEOT
