@@ -33,17 +33,17 @@ theorem statisticJoint_fst
     (μ : Measure (H × Y)) (f : H → M) (hf : Measurable f) :
     (statisticJoint μ f hf).fst = μ.fst.map f := by
   unfold statisticJoint
-  rw [Measure.fst_map_prodMk
-    (hf.comp measurable_fst) measurable_snd]
+  rw [Measure.fst_map_prodMk₀
+    (hf.comp measurable_fst).aemeasurable measurable_snd.aemeasurable]
   rw [Measure.map_map hf measurable_fst]
 
 theorem statisticJoint_snd
     (μ : Measure (H × Y)) (f : H → M) (hf : Measurable f) :
     (statisticJoint μ f hf).snd = μ.snd := by
   unfold statisticJoint
-  rw [Measure.snd_map_prodMk
-    (hf.comp measurable_fst) measurable_snd]
-  rfl
+  rw [Measure.snd_map_prodMk₀
+    (hf.comp measurable_fst).aemeasurable measurable_snd.aemeasurable]
+  simp
 
 theorem productMarginals_statisticJoint
     (μ : Measure (H × Y)) [SFinite μ]
@@ -51,8 +51,7 @@ theorem productMarginals_statisticJoint
     (statisticJoint μ f hf).fst.prod (statisticJoint μ f hf).snd =
       (μ.fst.prod μ.snd).map (Prod.map f id) := by
   rw [statisticJoint_fst μ f hf, statisticJoint_snd μ f hf]
-  symm
-  exact Measure.map_prod_map μ.fst μ.snd hf measurable_id
+  simpa using Measure.map_prod_map μ.fst μ.snd hf measurable_id
 
 /-- Deterministic statistics cannot increase mutual information with Y. -/
 theorem mutualInfo_statistic_le
