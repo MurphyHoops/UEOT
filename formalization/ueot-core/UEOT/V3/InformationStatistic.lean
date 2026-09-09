@@ -187,6 +187,9 @@ noncomputable def conditionalMutualInfoStatistic
     ENNReal :=
   let ρ := liftedStatisticJoint μ f
   let σ := liftedStatisticReference μ f
+  letI : IsFiniteMeasure σ := by
+    dsimp [σ, liftedStatisticReference]
+    infer_instance
   InformationTheory.klDiv ρ (ρ.fst ⊗ₘ σ.condKernel)
 
 theorem liftedStatisticJoint_fst
