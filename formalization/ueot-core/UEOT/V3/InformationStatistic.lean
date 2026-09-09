@@ -37,7 +37,6 @@ theorem statisticJoint_fst
     (μ := μ)
     (X := fun z : H × Y => f z.1)
     (Y := fun z : H × Y => z.2)
-    (hf.comp measurable_fst).aemeasurable
     measurable_snd.aemeasurable]
   rw [Measure.map_map hf measurable_fst]
 
@@ -49,8 +48,7 @@ theorem statisticJoint_snd
     (μ := μ)
     (X := fun z : H × Y => f z.1)
     (Y := fun z : H × Y => z.2)
-    (hf.comp measurable_fst).aemeasurable
-    measurable_snd.aemeasurable]
+    (hf.comp measurable_fst).aemeasurable]
   simp
 
 theorem productMarginals_statisticJoint
