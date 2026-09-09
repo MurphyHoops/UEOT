@@ -431,6 +431,7 @@ theorem pathMeasure_eq_of_prefix_eq
       (π := fun _ : ℕ => M) hab]
   have hproj :
       MeasureTheory.IsProjectiveMeasureFamily
+        (ι := ℕ) (α := fun _ : ℕ => M)
         (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) := by
     intro I J hJI
     have sls : J.sup id ≤ I.sup id := Finset.sup_mono hJI
