@@ -134,10 +134,13 @@ theorem generator_intertwines_of_semigroup
   have hleftAsRight := hleftF.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightF
   have hone := congrArg (fun D => D (1 : ℝ)) hderivEq
-  change
-    rightMulIndicatorCLM block ((1 : ℝ) • L) =
-      leftMulIndicatorCLM block ((1 : ℝ) • Lbar) at hone
-  simpa using hone
+  have hstage :
+      R (NormedSpace.exp ((0 : ℝ) • L) * L) =
+        S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar) := by
+    simpa [ContinuousLinearMap.comp_apply,
+      ContinuousLinearMap.toSpanSingleton_apply] using hone
+  simpa [R, S, rightMulIndicatorCLM_apply,
+    leftMulIndicatorCLM_apply] using hstage
 
 /-- Exact finite-CTMC semigroup quotient is equivalent to generator
 intertwining. -/
