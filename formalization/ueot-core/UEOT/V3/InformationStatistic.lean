@@ -94,15 +94,17 @@ theorem klDiv_map_eq_of_measurable_leftInverse
     have hμ :
         (μ.map f).map g = μ := by
       rw [Measure.map_map hg hf]
-      convert Measure.map_id μ using 1
-      funext x
-      exact hleft x
+      have hgf : g ∘ f = id := by
+        funext x
+        exact hleft x
+      rw [hgf, Measure.map_id]
     have hν :
         (ν.map f).map g = ν := by
       rw [Measure.map_map hg hf]
-      convert Measure.map_id ν using 1
-      funext x
-      exact hleft x
+      have hgf : g ∘ f = id := by
+        funext x
+        exact hleft x
+      rw [hgf, Measure.map_id]
     simpa [hμ, hν] using hback
 
 /-- Lift a sample (H,Y) to ((M,Y),H), retaining the original history while
@@ -122,13 +124,15 @@ theorem measurable_statisticLift
     [MeasurableSpace H] [MeasurableSpace Y] [MeasurableSpace M]
     (f : H → M) (hf : Measurable f) :
     Measurable (statisticLift (Y := Y) f) := by
-  fun_prop
+  unfold statisticLift
+  exact ((hf.comp measurable_fst).prodMk measurable_snd).prodMk measurable_fst
 
 theorem measurable_statisticForget
     {H : Type*} {Y : Type*} {M : Type*}
     [MeasurableSpace H] [MeasurableSpace Y] [MeasurableSpace M] :
     Measurable (statisticForget (H := H) (Y := Y) (M := M)) := by
-  fun_prop
+  unfold statisticForget
+  exact measurable_snd.prodMk (measurable_snd.comp measurable_fst)
 
 theorem statisticForget_leftInverse
     {H : Type*} {Y : Type*} {M : Type*}
