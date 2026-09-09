@@ -6,6 +6,29 @@ This document defines the non-negotiable constitutional core of UEOT. All
 memos, reviews, resolutions, and book chapters must remain consistent with this
 layer unless a formal RFC and resolution explicitly changes it.
 
+## Canonical Routing and Epistemic Layers
+
+UEOT is maintained as a derivational research program with distinct authority
+layers:
+
+1. `constitution/` governs protected concepts and change control.
+2. `core/` contains the active domain-neutral theory and mathematical source
+   specifications.
+3. `formalization/` contains machine proofs of identified Core statements.
+4. `physics/` and other realization layers may add explicitly declared sector
+   assumptions and bridge theorems.
+5. `validation/` records benchmark, experimental, and falsification evidence.
+6. `publications/` are snapshots of a theory state and do not override a newer
+   approved Core specification or proof ledger.
+
+No layer may silently inherit the epistemic status of another. A constitutional
+commitment is not automatically a theorem; a Lean theorem is not automatically
+a physical law; an empirical fit is not automatically a proof of the generic
+Core.
+
+Repository-wide maturity labels are: `canonical`, `proved`, `partial`,
+`pending`, `conjecture`, `empirical`, and `deprecated`.
+
 ## Foundational Commitments
 
 1. **Objecthood is processual, not merely substantial.**
@@ -73,6 +96,8 @@ Domain agents may not:
 
 - rewrite the meaning of `Omega`-loop, `Pi`, `Phi`, `GOD`, or `GOA`
 - declare conjectural claims canonical without resolution
+- import domain- or sector-specific assumptions into the generic Core without explicit reclassification
+- claim a physical result follows from generic UEOT when an unlisted bridge or sector-selection assumption is required
 - erase unresolved objections
 - silently replace UEOT language with another framework
 
