@@ -87,14 +87,42 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 19 |
+| proved | 21 |
 | partial | 1 |
-| pending | 86 |
+| pending | 84 |
 | total | 106 |
 
 The one remaining partial P-ID is:
 
 - P-DYN-01
+
+## 2026-09-10 advance: P-MET-01 and P-MET-02
+
+P-MET-01 and P-MET-02 have been promoted from `pending` to `proved`.
+
+P-MET-01 now matches all three source clauses:
+
+- measurable readout contraction:
+  `UEOT.V3.TotalVariation.tvDist_map_le`;
+- common Markov-kernel contraction:
+  `UEOT.V3.TVKernel.tvDist_comp_le`;
+- equality under a bimeasurable bijection:
+  `UEOT.V3.TotalVariation.tvDist_map_measurableEquiv`.
+
+P-MET-02 now uses the literal source span
+`sSup (Set.range g) - sInf (Set.range g)` for a bounded measurable real
+observable and proves the source expectation-gap inequality through
+`UEOT.V3.TVSpan.abs_integral_sub_le_span`.
+
+Verification evidence:
+
+- P-MET-01 branch CI: run `34379217252` success;
+- P-MET-01 main merge: `dfd55b52629ea0c6d4435ece2b17cb84abc5b705`;
+- post-merge full-target CI: run `34379654659` success;
+- P-MET-02 exact-span branch CI: run `34379825486` success;
+- P-MET-02 main merge: `0a6ead35c9abc9e2ef47005b3120c5c8a84b9c6c`;
+- post-merge full-target CI: run `34380492671` success.
+
 
 The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
 
