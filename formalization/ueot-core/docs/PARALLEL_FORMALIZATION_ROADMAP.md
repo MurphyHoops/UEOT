@@ -24,21 +24,21 @@ A helper theorem or a green isolated file never promotes a source P-ID by itself
 
 Current source-level status on green `main`:
 
-- proved: **29**
+- proved: **30**
 - partial: **0**
-- pending: **77**
+- pending: **76**
 - total: **106**
 
-Current green main checkpoint: `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177` (full-target CI #337 success).
+Current repository main checkpoint before this roadmap edit: `8b1667036182c69bdcd44b2391cb03f237ddb569` (full-target CI #343 success). Latest Lean-affecting proved-theorem checkpoint: `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177` (P-DYN-03, full-target CI #337 success).
 
-The 28 proved P-IDs are:
+The 30 proved P-IDs are:
 
 - P-MET-01, P-MET-02
 - P-PROC-01
 - P-PRED-01, P-PRED-02, P-PRED-03
 - P-INFO-05
 - P-INT-02, P-INT-03
-- P-DYN-01, P-DYN-04
+- P-DYN-01, P-DYN-03, P-DYN-04
 - P-REC-01
 - P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
