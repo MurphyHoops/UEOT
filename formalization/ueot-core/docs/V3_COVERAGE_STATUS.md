@@ -87,19 +87,54 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 16 |
-| partial | 4 |
+| proved | 17 |
+| partial | 3 |
 | pending | 86 |
 | total | 106 |
 
-The four remaining partial P-IDs are:
+The three remaining partial P-IDs are:
 
 - P-DYN-01
 - P-TEL-01
-- P-BRG-02
 - P-REF-05
 
 The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
+
+## 2026-09-09 advance: P-BRG-02
+
+P-BRG-02 has been promoted from `partial` to `proved`.
+
+Source-matched bridge:
+
+- controller/type response `Q_θ^e` is represented by `ReplicationBridge.response`;
+- the common reproduction functional `ℛ_e` is represented by
+  `ReplicationBridge.replicate`;
+- fitness is exactly the composition
+  `replicate (response θ)`.
+
+Key declarations:
+
+- `UEOT.V3.SelectionBridge.ReplicationBridge.fitness`
+- `BehaviorEquivalent`
+- `behavior_equiv_fitness_eq`
+- `behavior_equiv_same_multiplier`
+- `behavior_equiv_selection_cross_eq`
+- `behavior_equiv_positive_ratio_preserved`
+
+Thus equal behavioral/path-law responses cannot be differentially selected by
+this bridge alone. Type-dependent mutation, costs, or extra replication
+channels remain explicitly outside the theorem, matching the source caveat.
+
+Verification evidence:
+
+- source-matched module commit:
+  `fe42139899423c09491ab6fc26d3d54473864b0f`
+- tactic repair:
+  `70261610de6efc206b1d635661598893b499fc32`
+- final repair:
+  `e78367705edd19a986df6cd97e666766e5ca556c`
+- successful full-repository CI run:
+  `34350490496`
 
 ## 2026-09-09 advance: P-PRED-02
 

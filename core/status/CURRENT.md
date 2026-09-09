@@ -13,8 +13,8 @@ the full mathematical specification.
 
 Current source-level Lean status:
 
-- proved: 16
-- partial: 4
+- proved: 17
+- partial: 3
 - pending: 86
 - total source P-IDs: 106
 
@@ -24,6 +24,7 @@ Authoritative detailed ledger:
 
 Recently promoted:
 
+- P-BRG-02
 - P-PRED-02
 - P-PRED-01
 

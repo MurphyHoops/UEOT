@@ -34,16 +34,15 @@ Restoration and source coverage are separate ledgers.
 
 Current v3 source coverage remains:
 
-- proved: 16
-- partial: 4
+- proved: 17
+- partial: 3
 - pending: 86
 - total P-IDs: 106
 
-The four partial P-IDs are:
+The three partial P-IDs are:
 
 - P-DYN-01
 - P-TEL-01
-- P-BRG-02
 - P-REF-05
 
 ## Restored and reverified modules
@@ -137,3 +136,17 @@ P-PRED-02 is now source-matched as `proved`.
 
 The formal sigma-union result does not need the source's monotonicity
 assumption, so the source statement follows as a direct specialization.
+
+
+## P-BRG-02 closure
+
+P-BRG-02 is now source-matched as `proved`.
+
+- module: `UEOT/V3/SelectionBridge.lean`
+- final proof commit:
+  `e78367705edd19a986df6cd97e666766e5ca556c`
+- successful full-repository run:
+  `34350490496`
+
+The theorem includes equality of the common reproductive multiplier and the
+resulting absence of differential selection through that bridge alone.
