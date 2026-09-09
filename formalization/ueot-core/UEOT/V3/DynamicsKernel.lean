@@ -294,8 +294,7 @@ theorem homHistory_compProd_naturality
     (P : Kernel X X) (Pbar : Kernel M M)
     [IsMarkovKernel P] [IsMarkovKernel Pbar]
     (f : X → M) (hf : Measurable f)
-    (h : StrongLumpability P Pbar f hf)
-    (n : ℕ) :
+    (h : StrongLumpability P Pbar f hf) :
     (μh ⊗ₘ homHistoryKernel P n).map
         (Prod.map (mapHistory f n) f) =
       (μh.map (mapHistory f n)) ⊗ₘ homHistoryKernel Pbar n := by
@@ -305,7 +304,7 @@ theorem homHistory_compProd_naturality
       Kernel.map (homHistoryKernel P n) f =
         Kernel.comap (homHistoryKernel Pbar n)
           (mapHistory f n) hF :=
-    homHistoryKernel_intertwines P Pbar f hf h n
+    homHistoryKernel_intertwines P Pbar f hf h
   calc
     (μh ⊗ₘ homHistoryKernel P n).map
         (Prod.map (mapHistory f n) f)
@@ -340,7 +339,7 @@ theorem homHistoryKernel_apply_pushforward
       homHistoryKernel Pbar n (mapHistory f n x) := by
   have hk := congrArg
     (fun K : Kernel ((i : Finset.Iic n) → X) M => K x)
-    (homHistoryKernel_intertwines P Pbar f hf h n)
+    (homHistoryKernel_intertwines P Pbar f hf h)
   rw [Kernel.map_apply _ hf, Kernel.comap_apply] at hk
   exact hk
 
