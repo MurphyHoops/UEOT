@@ -184,4 +184,74 @@ theorem resolutionMap_comp
   apply minimalFamily_eq_of_upClosure_eq
   exact (upClosure_imageClosure_resolutionMap Lr Ls hrs hM).symm
 
+
+def admissibleMin (L : ClosureSystem V) (A : Set (Set V)) : Set (Set V) :=
+  MinimalFamily (A ∩ L.carrier)
+
+theorem closure_admissible
+    (L : ClosureSystem V) {A : Set (Set V)}
+    (hA : UEOT.Resolution.Upward A)
+    {M : Set V} (hM : M ∈ A) :
+    closure L M ∈ A ∩ L.carrier := by
+  constructor
+  · exact hA M hM (closure L M) (subset_closure L M)
+  · exact closure_mem L M
+
+/-! P-RES-01: coarse-graining of minimal admissible properties. -/
+theorem minimal_property_coarse_graining
+    (Lr Ls : ClosureSystem V)
+    (hrs : Lr.carrier ⊆ Ls.carrier)
+    {A : Set (Set V)}
+    (hA : UEOT.Resolution.Upward A)
+    (hFinite : (A ∩ Ls.carrier).Finite) :
+    admissibleMin Lr A =
+      resolutionMap Lr (admissibleMin Ls A) := by
+  ext S
+  constructor
+  · intro hS
+    have hSfine : S ∈ A ∩ Ls.carrier :=
+      ⟨hS.prop.1, hrs hS.prop.2⟩
+    obtain ⟨M, hM, hMS⟩ :=
+      minimalFamily_cofinal hFinite hSfine
+    have hclS : closure Lr M ⊆ S :=
+      closure_least Lr hS.prop.2 hMS
+    have hclAdm : closure Lr M ∈ A ∩ Lr.carrier :=
+      closure_admissible Lr hA hM.prop.1
+    have hScl : S ⊆ closure Lr M :=
+      hS.le_of_le hclAdm hclS
+    have hEq : closure Lr M = S :=
+      Set.Subset.antisymm hclS hScl
+    change Minimal
+      (fun T => T ∈ imageClosure Lr (admissibleMin Ls A)) S
+    refine ⟨⟨M, hM, hEq⟩, ?_⟩
+    intro T hT hTS
+    rcases hT with ⟨M', hM', rfl⟩
+    have hTAdm : closure Lr M' ∈ A ∩ Lr.carrier :=
+      closure_admissible Lr hA hM'.prop.1
+    exact hS.le_of_le hTAdm hTS
+  · intro hS
+    change Minimal
+      (fun T => T ∈ imageClosure Lr (admissibleMin Ls A)) S at hS
+    rcases hS.prop with ⟨M, hM, hEq⟩
+    have hSAdm : S ∈ A ∩ Lr.carrier := by
+      rw [← hEq]
+      exact closure_admissible Lr hA hM.prop.1
+    change Minimal (fun T => T ∈ A ∩ Lr.carrier) S
+    refine ⟨hSAdm, ?_⟩
+    intro B hB hBS
+    have hBfine : B ∈ A ∩ Ls.carrier :=
+      ⟨hB.1, hrs hB.2⟩
+    obtain ⟨M', hM', hM'B⟩ :=
+      minimalFamily_cofinal hFinite hBfine
+    have hclB : closure Lr M' ⊆ B :=
+      closure_least Lr hB.2 hM'B
+    have hImg :
+        closure Lr M' ∈ imageClosure Lr (admissibleMin Ls A) :=
+      ⟨M', hM', rfl⟩
+    have hclS : closure Lr M' ⊆ S :=
+      hclB.trans hBS
+    have hScl : S ⊆ closure Lr M' :=
+      hS.le_of_le hImg hclS
+    exact hScl.trans hclB
+
 end UEOT.V3.ClosureResolution
