@@ -119,22 +119,10 @@ theorem generator_intertwines_of_semigroup
   let S := leftMulIndicatorCLM block
   have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
   have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
-  have hleftD :
-      HasDerivAt
-        (R ∘ fun t : ℝ => NormedSpace.exp (t • L))
-        (R (NormedSpace.exp ((0 : ℝ) • L) * L)) 0 :=
-    by
-      simpa only [ContinuousLinearMap.comp_apply,
-        ContinuousLinearMap.toSpanSingleton_apply, one_smul] using
-        (R.hasFDerivAt.comp 0 hL.hasFDerivAt).hasDerivAt
-  have hrightD :
-      HasDerivAt
-        (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar))
-        (S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar)) 0 :=
-    by
-      simpa only [ContinuousLinearMap.comp_apply,
-        ContinuousLinearMap.toSpanSingleton_apply, one_smul] using
-        (S.hasFDerivAt.comp 0 hR.hasFDerivAt).hasDerivAt
+  have hleftD :=
+    (R.hasFDerivAt.comp 0 hL.hasFDerivAt).hasDerivAt
+  have hrightD :=
+    (S.hasFDerivAt.comp 0 hR.hasFDerivAt).hasDerivAt
   have hfun :
       (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
@@ -146,6 +134,9 @@ theorem generator_intertwines_of_semigroup
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
   have hleftAsRight := hleftD.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightD
+  rw [ContinuousLinearMap.compSL_apply,
+    ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.toSpanSingleton_apply, one_smul] at hderivEq
   simpa [R, S, rightMulIndicatorCLM_apply,
     leftMulIndicatorCLM_apply] using hderivEq
 
