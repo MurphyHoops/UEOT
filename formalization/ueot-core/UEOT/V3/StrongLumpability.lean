@@ -80,4 +80,38 @@ theorem one_step_law_commutes
   rw [h]
   exact comap_comp_measure μ f hf Pbar
 
+
+def evolve
+    {X : Type*} [MeasurableSpace X]
+    (P : Kernel X X) : ℕ → Measure X → Measure X
+  | 0, μ => μ
+  | n + 1, μ => P ∘ₘ evolve P n μ
+
+@[simp]
+theorem evolve_zero
+    {X : Type*} [MeasurableSpace X]
+    (P : Kernel X X) (μ : Measure X) :
+    evolve P 0 μ = μ := rfl
+
+@[simp]
+theorem evolve_succ
+    {X : Type*} [MeasurableSpace X]
+    (P : Kernel X X) (n : ℕ) (μ : Measure X) :
+    evolve P (n + 1) μ = P ∘ₘ evolve P n μ := rfl
+
+theorem n_step_law_commutes
+    {X M : Type*}
+    [MeasurableSpace X] [MeasurableSpace M]
+    (μ : Measure X)
+    (P : Kernel X X) (f : X → M) (hf : Measurable f)
+    (Pbar : Kernel M M)
+    (h : StrongLumpable P f hf Pbar) :
+    ∀ n, (evolve P n μ).map f = evolve Pbar n (μ.map f) := by
+  intro n
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+      rw [evolve_succ, evolve_succ,
+        one_step_law_commutes (evolve P n μ) P f hf Pbar h, ih]
+
 end UEOT.V3.StrongLumpability
