@@ -298,6 +298,10 @@ theorem homHistory_compProd_naturality
     (μh ⊗ₘ homHistoryKernel P n).map
         (Prod.map (mapHistory f n) f) =
       (μh.map (mapHistory f n)) ⊗ₘ homHistoryKernel Pbar n := by
+  letI : IsMarkovKernel (homHistoryKernel P n) :=
+    isMarkovKernel_homHistoryKernel P n
+  letI : IsMarkovKernel (homHistoryKernel Pbar n) :=
+    isMarkovKernel_homHistoryKernel Pbar n
   have hF : Measurable (mapHistory f n) :=
     measurable_mapHistory f hf n
   have hk :
