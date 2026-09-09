@@ -25,7 +25,7 @@ theorem bounded_potential_tail
   · exact Filter.Eventually.of_forall (fun n => by
       rw [Real.norm_eq_abs, abs_mul, abs_pow]
       exact mul_le_mul_of_nonneg_left (hψ n) (pow_nonneg (abs_nonneg β) n))
-  · exact
+  · simpa using
       (tendsto_pow_atTop_nhds_zero_of_lt_one (abs_nonneg β) hβ).mul_const M
 
 theorem discounted_one_tendsto
