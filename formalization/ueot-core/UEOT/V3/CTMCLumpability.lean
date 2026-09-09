@@ -17,6 +17,8 @@ is the next layer and is not claimed here.
 
 namespace UEOT.V3.CTMCLumpability
 
+noncomputable section
+
 open Matrix
 
 universe uX uB
