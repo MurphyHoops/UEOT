@@ -429,9 +429,7 @@ theorem pathMeasure_eq_of_prefix_eq
       (Preorder.measurable_frestrictLe (X := fun _ : ℕ => M) b)]
     rw [Preorder.frestrictLe₂_comp_frestrictLe
       (π := fun _ : ℕ => M) hab]
-  have hproj :
-      MeasureTheory.IsProjectiveMeasureFamily
-        (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) :=
+  have hproj :=
     MeasureTheory.isProjectiveMeasureFamily_inducedFamily
       (X := fun _ : ℕ => M) ρ hρ
   have hμ :
