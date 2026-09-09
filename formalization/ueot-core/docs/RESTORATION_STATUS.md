@@ -34,14 +34,13 @@ Restoration and source coverage are separate ledgers.
 
 Current v3 source coverage remains:
 
-- proved: 14
-- partial: 6
+- proved: 15
+- partial: 5
 - pending: 86
 - total P-IDs: 106
 
-The six partial P-IDs are:
+The five partial P-IDs are:
 
-- P-PRED-01
 - P-PRED-02
 - P-DYN-01
 - P-TEL-01
@@ -110,3 +109,19 @@ audit of the minimal mod-null sigma factor.
 - restoring a theorem already counted as proved does not increase P-ID coverage;
 - failed intermediate commits/runs remain in history;
 - natural-language source strength is not weakened to make restoration easier.
+
+
+## P-PRED-01 closure
+
+P-PRED-01 is now source-matched as `proved`.
+
+New current-repository evidence:
+
+- `UEOT/V3/PredictionAE.lean` — AE factor preorder, mod-null sigma order,
+  canonical coordinate kernels, event-level conditional expectation;
+- `UEOT/V3/PredictionDependent.lean` — protocol-dependent future spaces;
+- final dependent-space commit `d6ac587403ad0dd900c8752ba46fa7e2c65a8fec`;
+- successful run `34343117149`.
+
+This promotion changes source coverage; unlike restoration-only work it reduces
+the partial count.

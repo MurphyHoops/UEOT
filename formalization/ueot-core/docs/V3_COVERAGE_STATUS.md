@@ -87,14 +87,13 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 14 |
-| partial | 6 |
+| proved | 15 |
+| partial | 5 |
 | pending | 86 |
 | total | 106 |
 
-The six remaining partial P-IDs are:
+The five remaining partial P-IDs are:
 
-- P-PRED-01
 - P-PRED-02
 - P-DYN-01
 - P-TEL-01
@@ -102,6 +101,45 @@ The six remaining partial P-IDs are:
 - P-REF-05
 
 The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
+
+## 2026-09-09 advance: P-PRED-01
+
+P-PRED-01 has been promoted from `partial` to `proved`.
+
+The exact source permits a countable protocol family with protocol-dependent
+future spaces. The current formalization therefore includes both the original
+common-codomain layer and the stronger source-matched dependent layer.
+
+Key declarations:
+
+- `UEOT.V3.PredictionAE.common_factorization`
+- `UEOT.V3.PredictionAE.canonical_ae_minimal`
+- `UEOT.V3.PredictionAE.canonical_ae_sigma_minimal`
+- `UEOT.V3.PredictionAE.canonical_kernel_sufficient`
+- `UEOT.V3.PredictionAE.canonical_event_condExp`
+- `UEOT.V3.PredictionDependent.common_factorization`
+- `UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal`
+- `UEOT.V3.PredictionDependent.canonical_kernel_sufficient`
+- `UEOT.V3.PredictionDependent.canonical_event_condExp`
+
+The source assumes standard-Borel statistic/future spaces. Once the measurable
+response kernels are supplied, the Lean factorization theorem only uses the
+measurable-space structure, so the formal result is more general at this stage;
+it does not claim existence of regular conditional probabilities without the
+source hypotheses.
+
+Verification evidence:
+
+- AE factor/minimality work: `b3f7faea...`, `794d1aeb...`
+- measurable-space repair: `eb4b6440...`, CI run `34341861473` success
+- canonical coordinate kernel: `860193ba...`, run `34342312233` success
+- conditional-expectation layer: `986babdd...`
+- sigma-notation repair: `9d7b118a...`, run `34342707993` success
+- dependent-future-space closure: `d6ac5874...`, run `34343117149`,
+  full `lake build UEOT` success (8724 jobs)
+
+The two failed intermediate runs are retained as audit history and were not used
+as proof evidence.
 
 ## 2026-09-09 advance: P-RES-01
 

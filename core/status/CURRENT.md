@@ -13,8 +13,8 @@ the full mathematical specification.
 
 Current source-level Lean status:
 
-- proved: 14
-- partial: 6
+- proved: 15
+- partial: 5
 - pending: 86
 - total source P-IDs: 106
 
@@ -23,6 +23,8 @@ Authoritative detailed ledger:
 - `formalization/ueot-core/docs/V3_COVERAGE_STATUS.md`
 
 Recently promoted:
+
+- P-PRED-01
 
 - P-RES-05
 - P-RES-06
