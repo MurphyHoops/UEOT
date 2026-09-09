@@ -24,12 +24,12 @@ variable {X : Type uX} {A : Type uA} {Y : Type uY}
 variable [MeasurableSpace X] [MeasurableSpace A]
 
 
-instance instMeasurableSpaceHistoryFiber (n : ℕ) :
+@[instance_reducible] instance instMeasurableSpaceHistoryFiber (n : ℕ) :
     MeasurableSpace (HistoryFiber X A n) := by
   unfold HistoryFiber
   infer_instance
 
-instance instMeasurableSpaceCarrier :
+@[instance_reducible] instance instMeasurableSpaceCarrier :
     MeasurableSpace (Carrier X A) := by
   unfold Carrier
   infer_instance
@@ -51,8 +51,9 @@ theorem measurable_of_forall_historyFiber
     ⨅ n, (inferInstance : MeasurableSpace (HistoryFiber X A n)).map
       (Sigma.mk n)
   refine le_iInf fun n => ?_
-  rw [MeasurableSpace.comap_le_iff_le_map, MeasurableSpace.map_comp]
-  exact (hf n).le_map
+  apply MeasurableSpace.comap_le_iff_le_map.1
+  rw [MeasurableSpace.comap_comp]
+  exact (hf n).comap_le
 
 theorem measurable_time :
     Measurable (Carrier.time : Carrier X A → ℕ) := by
@@ -76,8 +77,8 @@ theorem measurable_singleton :
   have hpayload :
       Measurable
         (fun x : X =>
-          ((fun _ : Fin 1 => x), (Fin.elim0 : Fin 0 → A)) :
-            HistoryFiber X A 0) := by
+          (((fun _ : Fin 1 => x), (Fin.elim0 : Fin 0 → A)) :
+            HistoryFiber X A 0)) := by
     fun_prop
   simpa [Carrier.singleton] using
     (measurable_sigmaMk_history (X := X) (A := A) 0).comp hpayload
