@@ -43,7 +43,8 @@ theorem extension_optimalValue_mono
     {D₁ D₂ : FeasibleDecision P} (h : Extends D₁ D₂) :
     optimalValue D₁ ≤ optimalValue D₂ := by
   rcases h with ⟨hJ, hS⟩
-  subst hJ
+  unfold optimalValue
+  rw [hJ]
   exact feasibleValue_mono D₂.value hS
 
 end UEOT.V3.Agency
