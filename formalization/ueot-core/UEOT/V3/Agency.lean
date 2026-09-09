@@ -1,4 +1,5 @@
 import Mathlib.Data.EReal.Basic
+import Mathlib.Order.ConditionallyCompleteLattice.Basic
 
 /-!
 # P-REF-05 — monotonicity under feasible policy-set expansion
@@ -28,6 +29,19 @@ theorem feasibleValue_mono
   refine iSup_le ?_
   intro p
   exact le_iSup_of_le ⟨p.1, hST p.2⟩ le_rfl
+
+
+noncomputable def feasibleValueReal (J : P → ℝ) (S : Set P) : ℝ :=
+  sSup (J '' S)
+
+theorem feasibleValueReal_mono
+    (J : P → ℝ) {S T : Set P}
+    (hS : S.Nonempty)
+    (hT : BddAbove (J '' T))
+    (hST : S ⊆ T) :
+    feasibleValueReal J S ≤ feasibleValueReal J T := by
+  unfold feasibleValueReal
+  exact csSup_le_csSup hT (hS.image J) (Set.image_mono hST)
 
 structure FeasibleDecision (P : Type uP) where
   feasible : Set P
