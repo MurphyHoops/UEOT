@@ -22,7 +22,10 @@ open Matrix
 universe uX uB
 
 variable {X : Type uX} {B : Type uB}
-variable [Fintype X] [Fintype B] [DecidableEq B]
+variable [Fintype X] [Fintype B]
+
+local instance : DecidableEq X := Classical.decEq X
+local instance : DecidableEq B := Classical.decEq B
 
 /-- Partition indicator matrix. -/
 def blockIndicator (block : X → B) : Matrix X B ℝ :=
