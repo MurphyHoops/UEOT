@@ -1,6 +1,7 @@
 import UEOT.V3.TotalVariation
 import Mathlib.MeasureTheory.VectorMeasure.Decomposition.Jordan
 import Mathlib.MeasureTheory.VectorMeasure.Variation.SignedMeasure
+import Mathlib.MeasureTheory.VectorMeasure.Integral
 
 /-!
 # P-MET-01 / P-MET-02 — signed-measure bridge
@@ -142,5 +143,16 @@ theorem tvDist_eq_signedDiff_posMass
       (signedDiff μ ν).toJordanDecomposition.posPart.real Set.univ :=
   le_antisymm (tvDist_le_signedDiff_posMass μ ν)
     (signedDiff_posMass_le_tvDist μ ν)
+
+
+theorem signedDiff_totalVariation_univ_eq_two_tvDist
+    (μ ν : Measure X)
+    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν] :
+    (signedDiff μ ν).totalVariation.real Set.univ =
+      2 * UEOT.V3.TotalVariation.tvDist μ ν := by
+  rw [SignedMeasure.totalVariation, measureReal_add_apply,
+    ← signedDiff_posMass_eq_negMass μ ν,
+    ← tvDist_eq_signedDiff_posMass μ ν]
+  ring
 
 end UEOT.V3.VariationBridge
