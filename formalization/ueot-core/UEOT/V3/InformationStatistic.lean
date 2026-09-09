@@ -265,6 +265,7 @@ theorem mutualInfo_statistic_ge_sub_of_conditional_le
     (hε : conditionalMutualInfoStatistic μ f ≤ ε) :
     mutualInfo μ ≤ mutualInfo (statisticJoint μ f hf) + ε := by
   rw [mutualInfo_eq_statistic_add_conditional μ f hf]
-  exact add_le_add_left hε _
+  simpa [add_comm] using
+    add_le_add_left hε (mutualInfo (statisticJoint μ f hf))
 
 end UEOT.V3.InformationStatistic
