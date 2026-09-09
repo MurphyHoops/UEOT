@@ -29,15 +29,15 @@ def canonicalState [MeasurableSpace H] [MeasurableSpace Y₂]
   fun h i => K i h
 
 def pushTarget [MeasurableSpace H] [MeasurableSpace Y₁] [MeasurableSpace Y₂]
-    (K : I → Kernel H Y₂) (T : Y₂ → Y₁) (hT : Measurable T) :
+    (K : I → Kernel H Y₂) (T : Y₂ → Y₁) (_hT : Measurable T) :
     I → Kernel H Y₁ :=
-  fun i => Kernel.map (K i) T hT
+  fun i => Kernel.map (K i) T
 
 theorem pushTarget_apply [MeasurableSpace H] [MeasurableSpace Y₁] [MeasurableSpace Y₂]
     (K : I → Kernel H Y₂) (T : Y₂ → Y₁) (hT : Measurable T)
     (i : I) (h : H) :
     pushTarget K T hT i h = (K i h).map T := by
-  exact Kernel.map_apply (K i) hT h
+  simpa [pushTarget] using Kernel.map_apply (K i) hT h
 
 theorem canonical_target_pushforward
     [MeasurableSpace H] [MeasurableSpace Y₁] [MeasurableSpace Y₂]
@@ -90,7 +90,8 @@ theorem sigmaCanonical_iUnion
                   (fun j : S n =>
                     MeasurableSpace.comap (fun h => K j.1 h) inferInstance)
                   ⟨i.1, hin⟩)
-      _ ≤ ⨆ n, sigmaCanonical K (S n) := le_iSup _ n
+      _ ≤ ⨆ n, sigmaCanonical K (S n) :=
+        le_iSup (fun n => sigmaCanonical K (S n)) n
   · refine iSup_le ?_
     intro n
     exact protocol_refinement_sigma_le (K := K)
