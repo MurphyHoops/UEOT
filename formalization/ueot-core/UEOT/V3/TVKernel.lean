@@ -26,9 +26,11 @@ theorem comp_measureReal_eq_integral
     (B : Set Y) (hB : MeasurableSet B) :
     (κ ∘ₘ μ).real B = ∫ x, (κ x).real B ∂μ := by
   rw [measureReal_def, Measure.bind_apply hB κ.aemeasurable]
+  simp_rw [measureReal_def]
   symm
-  rw [integral_toReal (κ.measurable_coe hB).aemeasurable]
-  exact ae_of_all μ fun x => measure_lt_top (κ x) B
+  exact integral_toReal
+    (κ.measurable_coe hB).aemeasurable
+    (ae_of_all μ fun x => measure_lt_top (κ x) B)
 
 theorem tvDist_comp_le
     (μ ν : Measure X)
