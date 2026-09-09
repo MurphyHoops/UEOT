@@ -430,6 +430,9 @@ theorem pmfExtend_map_equiv
   funext h
   simp only [Function.comp_apply, Equiv.symm_apply_apply]
   rw [PMF.map_comp, PMF.map_comp]
+  apply congrArg (fun q : Z → H' × Z' => (K h).map q)
+  funext z
+  rfl
 
 /-- Exact finite-horizon path-law naturality. -/
 theorem causalLaw_transport_equiv
