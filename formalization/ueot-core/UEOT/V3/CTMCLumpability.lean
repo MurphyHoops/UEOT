@@ -103,4 +103,32 @@ theorem macro_unique
   have hs₂ := (generator_intertwines_iff_blockSum L Lbar₂ block).1 h₂ x bj
   simpa [hx] using hs₁.symm.trans hs₂
 
+
+/-- Generator intertwining propagates to every matrix power.  This is the
+finite-dimensional algebraic induction used in the reverse half of P-DYN-02. -/
+theorem pow_intertwines
+    (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B)
+    (h : L * blockIndicator block = blockIndicator block * Lbar) :
+    ∀ n : ℕ,
+      L ^ n * blockIndicator block =
+        blockIndicator block * Lbar ^ n := by
+  intro n
+  induction n with
+  | zero =>
+      simp
+  | succ n ih =>
+      rw [pow_succ, pow_succ]
+      calc
+        (L ^ n * L) * blockIndicator block =
+            L ^ n * (L * blockIndicator block) := by
+              rw [Matrix.mul_assoc]
+        _ = L ^ n * (blockIndicator block * Lbar) := by
+              rw [h]
+        _ = (L ^ n * blockIndicator block) * Lbar := by
+              rw [Matrix.mul_assoc]
+        _ = (blockIndicator block * Lbar ^ n) * Lbar := by
+              rw [ih]
+        _ = blockIndicator block * (Lbar ^ n * Lbar) := by
+              rw [Matrix.mul_assoc]
+
 end UEOT.V3.CTMCLumpability
