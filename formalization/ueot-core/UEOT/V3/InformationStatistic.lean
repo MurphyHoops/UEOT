@@ -34,7 +34,11 @@ theorem statisticJoint_fst
     (statisticJoint μ f hf).fst = μ.fst.map f := by
   unfold statisticJoint
   rw [Measure.fst_map_prodMk₀
-    (hf.comp measurable_fst).aemeasurable measurable_snd.aemeasurable]
+    (μ := μ)
+    (X := fun z : H × Y => f z.1)
+    (Y := fun z : H × Y => z.2)
+    (hf.comp measurable_fst).aemeasurable
+    measurable_snd.aemeasurable]
   rw [Measure.map_map hf measurable_fst]
 
 theorem statisticJoint_snd
@@ -42,7 +46,11 @@ theorem statisticJoint_snd
     (statisticJoint μ f hf).snd = μ.snd := by
   unfold statisticJoint
   rw [Measure.snd_map_prodMk₀
-    (hf.comp measurable_fst).aemeasurable measurable_snd.aemeasurable]
+    (μ := μ)
+    (X := fun z : H × Y => f z.1)
+    (Y := fun z : H × Y => z.2)
+    (hf.comp measurable_fst).aemeasurable
+    measurable_snd.aemeasurable]
   simp
 
 theorem productMarginals_statisticJoint
