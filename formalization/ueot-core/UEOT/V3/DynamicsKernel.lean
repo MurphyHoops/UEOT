@@ -1,4 +1,5 @@
 import Mathlib.Probability.Kernel.Composition.CompMap
+import Mathlib.Probability.Kernel.IonescuTulcea.PartialTraj
 
 /-!
 # P-DYN-01 — general Markov-kernel lumpability
@@ -130,5 +131,63 @@ theorem iterateKernel_preimage
   exact
     (strongLumpability_iff_preimage (iterateKernel P n) (iterateKernel Pbar n) f hf).1
       (iterateKernel_strongLumpability P Pbar f hf h n) x B hB
+
+
+/-- Coordinatewise map of a finite history. -/
+def mapHistory (f : X → M) (n : ℕ)
+    (x : (i : Set.Iic n) → X) :
+    (i : Set.Iic n) → M :=
+  fun i => f (x i)
+
+theorem measurable_mapHistory
+    (f : X → M) (hf : Measurable f) (n : ℕ) :
+    Measurable (mapHistory f n) := by
+  apply measurable_pi_iff.mpr
+  intro i
+  exact hf.comp (measurable_pi_apply i)
+
+/-- A homogeneous Markov kernel viewed as a history kernel: only the last
+coordinate of the history is read. -/
+noncomputable def homHistoryKernel
+    (P : Kernel X X) (n : ℕ) :
+    Kernel ((i : Set.Iic n) → X) X :=
+  Kernel.comap P
+    (fun x => x ⟨n, Set.mem_Iic.2 le_rfl⟩)
+    (measurable_pi_apply ⟨n, Set.mem_Iic.2 le_rfl⟩)
+
+theorem isMarkovKernel_homHistoryKernel
+    (P : Kernel X X) [IsMarkovKernel P] (n : ℕ) :
+    IsMarkovKernel (homHistoryKernel P n) := by
+  unfold homHistoryKernel
+  infer_instance
+
+theorem homHistoryKernel_intertwines
+    (P : Kernel X X) (Pbar : Kernel M M)
+    (f : X → M) (hf : Measurable f)
+    (h : StrongLumpability P Pbar f hf)
+    (n : ℕ) :
+    Kernel.map (homHistoryKernel P n) f =
+      Kernel.comap (homHistoryKernel Pbar n)
+        (mapHistory f n) (measurable_mapHistory f hf n) := by
+  ext x B hB
+  rw [Kernel.map_apply' _ hf _ hB, Kernel.comap_apply']
+  unfold homHistoryKernel
+  rw [Kernel.comap_apply', Kernel.comap_apply']
+  exact
+    (strongLumpability_iff_preimage P Pbar f hf).1 h
+      (x ⟨n, Set.mem_Iic.2 le_rfl⟩) B hB
+
+theorem homHistoryKernel_apply_pushforward
+    (P : Kernel X X) (Pbar : Kernel M M)
+    (f : X → M) (hf : Measurable f)
+    (h : StrongLumpability P Pbar f hf)
+    (n : ℕ) (x : (i : Set.Iic n) → X) :
+    (homHistoryKernel P n x).map f =
+      homHistoryKernel Pbar n (mapHistory f n x) := by
+  have hk := congrArg
+    (fun K : Kernel ((i : Set.Iic n) → X) M => K x)
+    (homHistoryKernel_intertwines P Pbar f hf h n)
+  rw [Kernel.map_apply _ hf, Kernel.comap_apply] at hk
+  exact hk
 
 end UEOT.V3.DynamicsKernel
