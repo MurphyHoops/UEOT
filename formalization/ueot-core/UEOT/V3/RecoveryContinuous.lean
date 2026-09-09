@@ -1,4 +1,5 @@
 import Mathlib.Analysis.ODE.Gronwall
+import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.AbsolutelyContinuousFun
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Ring
@@ -51,6 +52,78 @@ theorem le_initial_of_ac_ae_deriv_nonpos
   rw [hzero] at hint
   linarith
 
+/-- Exact scalar Grönwall bridge at the source regularity: absolute
+continuity plus an almost-everywhere differential inequality.  The proof uses
+the integrating factor exp(a t), reducing the claim to the preceding
+AC/a.e. monotonicity lemma. -/
+theorem exponential_recovery_bound_ac_ae
+    (m : ℝ → ℝ) (a b T : ℝ)
+    (ha : 0 < a) (hT : 0 ≤ T)
+    (hm : AbsolutelyContinuousOnInterval m 0 T)
+    (hbound :
+      ∀ᵐ t ∂volume.restrict (Icc 0 T),
+        deriv m t ≤ -a * m t + b) :
+    ∀ t ∈ Icc 0 T,
+      m t ≤
+        Real.exp (-a * t) * m 0 +
+          (b / a) * (1 - Real.exp (-a * t)) := by
+  let g : ℝ → ℝ := fun t =>
+    Real.exp (a * t) * (m t - b / a)
+  have hexpAC :
+      AbsolutelyContinuousOnInterval (fun t : ℝ => Real.exp (a * t)) 0 T := by
+    apply ContDiffOn.absolutelyContinuousOnInterval
+    fun_prop
+  have hconstAC :
+      AbsolutelyContinuousOnInterval (fun _t : ℝ => b / a) 0 T := by
+    apply ContDiffOn.absolutelyContinuousOnInterval
+    fun_prop
+  have hgAC : AbsolutelyContinuousOnInterval g 0 T := by
+    exact hexpAC.mul (hm.sub hconstAC)
+  have hmDiff :
+      ∀ᵐ x ∂volume.restrict (Icc 0 T), DifferentiableAt ℝ m x := by
+    filter_upwards [ae_restrict_mem measurableSet_Icc,
+      ae_restrict_of_ae hm.ae_differentiableAt] with x hx hxd
+    exact hxd (by simpa [uIcc_of_le hT] using hx)
+  have hgDeriv :
+      ∀ᵐ x ∂volume.restrict (Icc 0 T), deriv g x ≤ 0 := by
+    filter_upwards [hmDiff, hbound] with x hmd hmx
+    have hexp :
+        HasDerivAt (fun t : ℝ => Real.exp (a * t))
+          (Real.exp (a * x) * a) x :=
+      (hasDerivAt_const_mul x a).exp
+    have hmSub :
+        HasDerivAt (fun t : ℝ => m t - b / a) (deriv m x) x :=
+      hmd.hasDerivAt.sub_const (b / a)
+    have hprod := hexp.mul hmSub
+    have ha0 : a ≠ 0 := ne_of_gt ha
+    have hlin : a * (m x - b / a) = a * m x - b := by
+      field_simp [ha0]
+    have hinner : a * (m x - b / a) + deriv m x ≤ 0 := by
+      rw [hlin]
+      linarith
+    have hform :
+        deriv g x =
+          Real.exp (a * x) *
+            (a * (m x - b / a) + deriv m x) := by
+      dsimp [g]
+      rw [hprod.deriv]
+      ring
+    rw [hform]
+    exact mul_nonpos_of_nonneg_of_nonpos (Real.exp_nonneg _) hinner
+  have hmono := le_initial_of_ac_ae_deriv_nonpos g T hT hgAC hgDeriv
+  intro t ht
+  have hg := hmono t ht
+  have hpos : 0 < Real.exp (a * t) := Real.exp_pos _
+  have hdiv :
+      m t - b / a ≤ (m 0 - b / a) / Real.exp (a * t) := by
+    apply (le_div_iff₀ hpos).2
+    simpa [g, mul_comm] using hg
+  have hinv : (Real.exp (a * t))⁻¹ = Real.exp (-a * t) := by
+    rw [← Real.exp_neg]
+    congr 1
+    ring
+  rw [div_eq_mul_inv, hinv] at hdiv
+  nlinarith
 /-- Exact exponential recovery bound from the scalar differential inequality
 m' <= -a m + b on a compact time interval. -/
 theorem exponential_recovery_bound_core
