@@ -87,9 +87,9 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 12 |
+| proved | 13 |
 | partial | 6 |
-| pending | 88 |
+| pending | 87 |
 | total | 106 |
 
 The six remaining partial P-IDs are:
@@ -101,7 +101,53 @@ The six remaining partial P-IDs are:
 - P-BRG-02
 - P-REF-05
 
-The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, and **P-CAR-04**.
+The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, and **P-RES-02**.
+
+## 2026-09-09 advance: P-RES-02
+
+P-RES-02 has been promoted from `pending` to `proved`.
+
+The source has two composition statements:
+
+[
+\operatorname{cl}_r\operatorname{cl}_s=\operatorname{cl}_r
+]
+
+for nested closure systems, and
+
+[
+\mathcal R_{r\leftarrow t}
+=
+\mathcal R_{r\leftarrow s}\mathcal R_{s\leftarrow t}
+]
+
+for minimal families.
+
+Lean module `UEOT.V3.ClosureResolution` now contains:
+
+- `ClosureSystem`
+- `closure`
+- `closure_comp_of_nested`
+- `imageClosure`
+- `resolutionMap`
+- `minimalFamily_cofinal`
+- `resolutionMap_comp`
+
+The formal closure system is represented as a Moore family. On the finite
+carrier of the source specification this is equivalent to closure under finite
+intersections. The minimal-family theorem assumes the source-relevant finiteness
+of the input family and is stronger than the written three-scale form because
+the top-scale family need not be separately declared closed.
+
+Verification evidence:
+
+- operator theorem commit: `703bd7972318e440d9c23230729cbde5dba09846`
+- syntax repair: `849ca9d470197cedf9a8fd1adedb8b141a8568a7`
+- minimal-family theorem commit: `386086c234aeb2adedd8ef0b2083c977e88cdbf2`
+- successful CI run for the complete module: `34338838686`
+
+The failed intermediate run is retained and was caused by using the
+`Set.mem_sInter` equivalence as a tactic without first unfolding `closure`.
 
 ## 2026-09-09 advance: P-CAR-04
 
