@@ -21,10 +21,9 @@ theorem bounded_potential_tail
     (hβ : |β| < 1)
     (hψ : ∀ n, |ψ n| ≤ M) :
     Tendsto (fun n => β ^ n * ψ n) atTop (𝓝 0) := by
-  apply squeeze_zero'
-  · exact Filter.Eventually.of_forall (fun n => abs_nonneg (β ^ n * ψ n))
+  apply squeeze_zero_norm'
   · exact Filter.Eventually.of_forall (fun n => by
-      rw [abs_mul, abs_pow]
+      rw [Real.norm_eq_abs, abs_mul, abs_pow]
       exact mul_le_mul_of_nonneg_left (hψ n) (pow_nonneg (abs_nonneg β) n))
   · simpa using
       (tendsto_pow_atTop_nhds_zero_of_lt_one (abs_nonneg β) hβ).mul_const M
