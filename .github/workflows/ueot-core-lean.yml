@@ -2,7 +2,7 @@ name: UEOT Core Lean
 
 on:
   push:
-    branches: [main]
+    branches: [main, "formal/**"]
     paths:
       - "formalization/ueot-core/**"
       - ".github/workflows/ueot-core-lean.yml"
@@ -44,3 +44,13 @@ jobs:
 
       - name: Build UEOT from lock
         run: lake build UEOT
+
+      - name: Compile every UEOT Lean module
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r file; do
+            echo "::group::lean $file"
+            lake env lean "$file"
+            echo "::endgroup::"
+          done < <(find UEOT -type f -name '*.lean' | sort)
