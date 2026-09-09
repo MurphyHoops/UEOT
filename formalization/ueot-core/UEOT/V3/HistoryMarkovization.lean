@@ -68,6 +68,18 @@ theorem markovized_readout_eq_step
   rw [← Kernel.snd_eq]
   simpa using Kernel.snd_prod Kernel.id M.step
 
+/-- Existence form matching P-PROC-01: once the complete history carrier is
+used as state, the history-dependent one-step law is represented by one
+time-homogeneous Markov kernel on the augmented state, and the physical
+next-state law is recovered by the measurable readout. -/
+theorem exists_markovized_kernel
+    (M : HistoryMachine H A X) [IsMarkovKernel M.step] :
+    ∃ Q : Kernel (H × A) H,
+      IsMarkovKernel Q ∧ Q.map M.read = M.step := by
+  exact ⟨M.markovized,
+    isMarkovKernel_markovized M,
+    M.markovized_readout_eq_step⟩
+
 theorem markovized_readout_apply
     (M : HistoryMachine H A X) [IsMarkovKernel M.step]
     (h : H) (a : A) :
@@ -84,6 +96,16 @@ theorem markovized_readout_event
   have hEq := congrArg (fun μ : Measure X => μ B)
     (M.markovized_readout_apply h a)
   simpa [Measure.map_apply M.measurable_read hB] using hEq
+
+
+/-- Pointwise source-facing form of the Markovization witness: after augmenting
+the state by history, one Markov step followed by the physical readout
+recovers exactly the original history-dependent one-step law. -/
+theorem markovized_kernel_readout_apply
+    (M : HistoryMachine H A X) [IsMarkovKernel M.step]
+    (h : H) (a : A) :
+    (M.markovized (h, a)).map M.read = M.step (h, a) :=
+  M.markovized_readout_apply h a
 
 end HistoryMachine
 

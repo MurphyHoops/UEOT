@@ -67,6 +67,16 @@ theorem measurable_time :
   simpa [Carrier.time] using
     (measurable_const : Measurable (fun _ : HistoryFiber X A n => n))
 
+theorem measurable_historyFiber_states (n : ℕ) :
+    Measurable (fun h : HistoryFiber X A n => h.1) := by
+  unfold HistoryFiber
+  exact measurable_fst
+
+theorem measurable_historyFiber_actions (n : ℕ) :
+    Measurable (fun h : HistoryFiber X A n => h.2) := by
+  unfold HistoryFiber
+  exact measurable_snd
+
 theorem measurable_current :
     Measurable (Carrier.current : Carrier X A → X) := by
   apply measurable_of_forall_historyFiber
@@ -88,5 +98,61 @@ theorem measurable_singleton :
       (⟨0, ((fun _ : Fin 1 => x), (Fin.elim0 : Fin 0 → A))⟩ :
         Carrier X A))
   exact (measurable_sigmaMk_history (X := X) (A := A) 0).comp hpayload
+
+
+/-- Appending one action and one state to a fixed-time history fiber is
+measurable.  This is the local measurable transition map needed to realize the
+source augmented state `Z_t = (t,H_t)`. -/
+theorem measurable_advance_fixed (n : ℕ) :
+    Measurable
+      (fun p : (HistoryFiber X A n × A) × X =>
+        Carrier.advance
+          (⟨n, p.1.1⟩ : Carrier X A) p.1.2 p.2) := by
+  have hstates :
+      Measurable
+        (fun p : (HistoryFiber X A n × A) × X =>
+          (Fin.snoc p.1.1.1 p.2 : Fin (n + 2) → X)) := by
+    rw [measurable_pi_iff]
+    intro i
+    refine Fin.lastCases ?_ (fun j => ?_) i
+    · simpa only [Fin.snoc_last] using
+        (measurable_snd :
+          Measurable (fun p : (HistoryFiber X A n × A) × X => p.2))
+    · have hh :
+          Measurable
+            (fun p : (HistoryFiber X A n × A) × X => p.1.1.1) :=
+        (measurable_historyFiber_states (X := X) (A := A) n).comp
+          (measurable_fst.comp measurable_fst)
+      simpa only [Fin.snoc_castSucc, Function.comp_def] using
+        (measurable_pi_apply j).comp hh
+  have hactions :
+      Measurable
+        (fun p : (HistoryFiber X A n × A) × X =>
+          (Fin.snoc p.1.1.2 p.1.2 : Fin (n + 1) → A)) := by
+    rw [measurable_pi_iff]
+    intro i
+    refine Fin.lastCases ?_ (fun j => ?_) i
+    · simpa only [Fin.snoc_last, Function.comp_def] using
+        (measurable_snd.comp measurable_fst :
+          Measurable (fun p : (HistoryFiber X A n × A) × X => p.1.2))
+    · have hh :
+          Measurable
+            (fun p : (HistoryFiber X A n × A) × X => p.1.1.2) :=
+        (measurable_historyFiber_actions (X := X) (A := A) n).comp
+          (measurable_fst.comp measurable_fst)
+      simpa only [Fin.snoc_castSucc, Function.comp_def] using
+        (measurable_pi_apply j).comp hh
+  have hpayload :
+      Measurable
+        (fun p : (HistoryFiber X A n × A) × X =>
+          ((Fin.snoc p.1.1.1 p.2, Fin.snoc p.1.1.2 p.1.2) :
+            HistoryFiber X A (n + 1))) :=
+    hstates.prodMk hactions
+  change Measurable
+    (fun p : (HistoryFiber X A n × A) × X =>
+      (⟨n + 1,
+        ((Fin.snoc p.1.1.1 p.2, Fin.snoc p.1.1.2 p.1.2) :
+          HistoryFiber X A (n + 1))⟩ : Carrier X A))
+  exact (measurable_sigmaMk_history (X := X) (A := A) (n + 1)).comp hpayload
 
 end UEOT.V3.FiniteHistoryMeasurable
