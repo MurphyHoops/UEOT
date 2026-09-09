@@ -482,6 +482,166 @@ theorem homTrajMeasure_path_naturality
     (Preorder.measurable_frestrictLe n)]
   exact homTrajMeasure_prefix_naturality μ P Pbar f hf h n
 
+
+/-- The first-time marginal of a homogeneous trajectory started from a Dirac
+microscopic state is exactly the one-step transition measure.  This is the
+key recovery bridge for the reverse implication in P-DYN-01. -/
+theorem homTrajMeasure_dirac_time_one
+    (P : Kernel X X) [IsMarkovKernel P] (x : X) :
+    (homTrajMeasure (Measure.dirac x) P).map (fun z : ℕ → X => z 1) =
+      P x := by
+  letI : IsProbabilityMeasure (Measure.dirac x) := by infer_instance
+  let μpath := homTrajMeasure (Measure.dirac x) P
+  have hstep :=
+    homTrajMeasure_prefix_succ (Measure.dirac x) P 0
+  have hzero :=
+    homTrajMeasure_prefix_zero (Measure.dirac x) P
+  letI : IsMarkovKernel (homHistoryKernel P 0) :=
+    isMarkovKernel_homHistoryKernel P 0
+  have hlast_append :
+      (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) ∘
+          appendHistory 0 =
+        Prod.snd := by
+    funext p
+    simp [appendHistory, lastHistoryIndex, IicProdIoc_def,
+      MeasurableEquiv.piSingleton]
+  calc
+    μpath.map (fun z : ℕ → X => z 1) =
+        (μpath.map (Preorder.frestrictLe 1)).map
+          (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) := by
+      symm
+      rw [Measure.map_map
+        (μ := μpath)
+        (measurable_pi_apply (lastHistoryIndex 1))
+        (Preorder.measurable_frestrictLe 1)]
+      rfl
+    _ =
+        ((((μpath.map (Preorder.frestrictLe 0)) ⊗ₘ homHistoryKernel P 0).map
+          (appendHistory 0))).map
+          (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) := by
+      rw [hstep]
+    _ =
+        ((μpath.map (Preorder.frestrictLe 0)) ⊗ₘ homHistoryKernel P 0).map
+          Prod.snd := by
+      rw [Measure.map_map
+        (measurable_pi_apply (lastHistoryIndex 1))
+        (measurable_appendHistory 0)]
+      rw [hlast_append]
+    _ =
+        homHistoryKernel P 0 ∘ₘ (μpath.map (Preorder.frestrictLe 0)) := by
+      simpa [Measure.snd] using
+        (Measure.snd_compProd (μpath.map (Preorder.frestrictLe 0))
+          (homHistoryKernel P 0))
+    _ =
+        homHistoryKernel P 0 ∘ₘ
+          ((Measure.dirac x).map
+            (MeasurableEquiv.piUnique
+              (fun _ : Finset.Iic 0 => X)).symm) := by
+      rw [hzero]
+    _ = P x := by
+      rw [Measure.map_dirac'
+        (MeasurableEquiv.piUnique
+          (fun _ : Finset.Iic 0 => X)).symm.measurable]
+      unfold homHistoryKernel
+      rw [Measure.dirac_bind (Kernel.measurable _)]
+      rfl
+
+/-- Source clause (1) of P-DYN-01 expressed at the level of complete path laws:
+for every microscopic probability initial law, the coordinatewise macro
+pushforward of the microscopic Markov trajectory is exactly the trajectory of
+one common macro kernel started from the pushed-forward initial law. -/
+def PathLawLumpability
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f) : Prop :=
+  ∀ (μ : Measure X), IsProbabilityMeasure μ →
+    (homTrajMeasure μ P).map (mapPath f) =
+      homTrajMeasure (μ.map f) Pbar
+
+theorem strongLumpability_implies_pathLaw
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f)
+    (h : StrongLumpability P Pbar f hf) :
+    PathLawLumpability P Pbar f hf := by
+  unfold PathLawLumpability
+  intro μ hμ
+  letI : IsProbabilityMeasure μ := hμ
+  exact homTrajMeasure_path_naturality μ P Pbar f hf h
+
+
+/-- Reverse half of P-DYN-01: if every microscopic probability initial law
+induces exactly the path law of one common macro Markov kernel, then the
+one-step kernels intertwine.  The proof uses the source-prescribed Dirac
+initial law and recovers the first-step marginal. -/
+theorem pathLaw_implies_strongLumpability
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f)
+    (h : PathLawLumpability P Pbar f hf) :
+    StrongLumpability P Pbar f hf := by
+  rw [strongLumpability_iff_apply]
+  intro x
+  letI : IsProbabilityMeasure (Measure.dirac x) := by infer_instance
+  have hpath := h (Measure.dirac x) (by infer_instance)
+  have htime := congrArg
+    (fun μ : Measure (ℕ → M) => μ.map (fun z : ℕ → M => z 1))
+    hpath
+  have hleft :
+      ((homTrajMeasure (Measure.dirac x) P).map (mapPath f)).map
+          (fun z : ℕ → M => z 1) =
+        (P x).map f := by
+    calc
+      ((homTrajMeasure (Measure.dirac x) P).map (mapPath f)).map
+          (fun z : ℕ → M => z 1) =
+          (homTrajMeasure (Measure.dirac x) P).map
+            ((fun z : ℕ → M => z 1) ∘ mapPath f) := by
+        rw [Measure.map_map
+          (measurable_pi_apply 1)
+          (measurable_mapPath f hf)]
+      _ =
+          (homTrajMeasure (Measure.dirac x) P).map
+            (f ∘ fun z : ℕ → X => z 1) := by
+        rfl
+      _ =
+          ((homTrajMeasure (Measure.dirac x) P).map
+            (fun z : ℕ → X => z 1)).map f := by
+        symm
+        rw [Measure.map_map hf (measurable_pi_apply 1)]
+      _ = (P x).map f := by
+        rw [homTrajMeasure_dirac_time_one P x]
+  have hright :
+      (homTrajMeasure ((Measure.dirac x).map f) Pbar).map
+          (fun z : ℕ → M => z 1) =
+        Pbar (f x) := by
+    rw [Measure.map_dirac' hf]
+    exact homTrajMeasure_dirac_time_one Pbar (f x)
+  exact hleft.symm.trans (htime.trans hright)
+
+/-- Full source-facing equivalence for P-DYN-01.  The source additionally
+assumes that the readout is surjective; the equivalence itself does not need
+surjectivity once the candidate macro kernel is already supplied. -/
+theorem strongLumpability_iff_pathLaw
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f) :
+    StrongLumpability P Pbar f hf ↔
+      PathLawLumpability P Pbar f hf :=
+  ⟨strongLumpability_implies_pathLaw P Pbar f hf,
+    pathLaw_implies_strongLumpability P Pbar f hf⟩
+
+/-- Literal P-DYN-01 wrapper retaining the source's measurable-surjection
+hypothesis.  Surjectivity is needed when constructing a macro kernel from
+fiber-constant rows; it is not needed for the equivalence against an already
+given candidate macro kernel. -/
+theorem strongLumpability_iff_pathLaw_of_surjective
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f) (_hsurj : Function.Surjective f) :
+    StrongLumpability P Pbar f hf ↔
+      PathLawLumpability P Pbar f hf :=
+  strongLumpability_iff_pathLaw P Pbar f hf
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
