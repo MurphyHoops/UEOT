@@ -420,13 +420,15 @@ theorem pathMeasure_eq_of_prefix_eq
       (Preorder.measurable_frestrictLe n).aemeasurable
   have hρ :
       ∀ a b : ℕ, ∀ hab : a ≤ b,
-        (ρ b).map (Preorder.frestrictLe₂ hab) = ρ a := by
+        (ρ b).map
+          (Preorder.frestrictLe₂ (π := fun _ : ℕ => M) hab) = ρ a := by
     intro a b hab
     dsimp [ρ]
     rw [Measure.map_map
-      (Preorder.measurable_frestrictLe₂ hab)
-      (Preorder.measurable_frestrictLe b)]
-    rw [Preorder.frestrictLe₂_comp_frestrictLe hab]
+      (Preorder.measurable_frestrictLe₂ (X := fun _ : ℕ => M) hab)
+      (Preorder.measurable_frestrictLe (X := fun _ : ℕ => M) b)]
+    rw [Preorder.frestrictLe₂_comp_frestrictLe
+      (π := fun _ : ℕ => M) hab]
   have hproj :
       MeasureTheory.IsProjectiveMeasureFamily
         (MeasureTheory.inducedFamily ρ) :=
