@@ -1,4 +1,5 @@
 import UEOT.Core.Resolution
+import Mathlib.Order.Preorder.Finite
 
 namespace UEOT.V3.Resolution
 open UEOT.Resolution
@@ -105,5 +106,103 @@ theorem clutter_realization_interval {V W : Type*} (π : V → W)
         UpClosure C ⊆ upper π (UpClosure D) :=
       realization_interval π (UpClosure D) (UpClosure C)
         (upClosure_upward D) (upClosure_upward C)
+
+
+/-! ### Exact `π_*` bridge
+
+The source definition of `π_* C` is the family of inclusion-minimal members of
+the image family `{π '' c | c ∈ C}`.  The next definitions encode that
+literally, rather than treating `PushMin` as an informal abbreviation.
+-/
+
+def imageFamily {V W : Type*} (π : V → W) (C : Set (Set V)) : Set (Set W) :=
+  (fun c : Set V => π '' c) '' C
+
+def MinimalFamily {X : Type*} (F : Set (Set X)) : Set (Set X) :=
+  {S | Minimal (fun T => T ∈ F) S}
+
+def pushFamily {V W : Type*} (π : V → W) (C : Set (Set V)) : Set (Set W) :=
+  MinimalFamily (imageFamily π C)
+
+theorem imageFamily_finite {V W : Type*} (π : V → W)
+    {C : Set (Set V)} (hC : C.Finite) :
+    (imageFamily π C).Finite := by
+  exact hC.image (fun c : Set V => π '' c)
+
+theorem pushFamily_antichain {V W : Type*} (π : V → W)
+    (C : Set (Set V)) :
+    IsAntichain (pushFamily π C) := by
+  intro A B hA hB hAB
+  exact Set.Subset.antisymm hAB (hB.le_of_le hA.prop hAB)
+
+theorem image_contains_pushFamily {V W : Type*} (π : V → W)
+    {C : Set (Set V)} (hC : C.Finite) {c : Set V} (hc : c ∈ C) :
+    ∃ d ∈ pushFamily π C, d ⊆ π '' c := by
+  have hfin : (imageFamily π C).Finite := imageFamily_finite π hC
+  have himg : π '' c ∈ imageFamily π C := ⟨c, hc, rfl⟩
+  obtain ⟨d, hdsub, hdmin⟩ := hfin.exists_le_minimal himg
+  exact ⟨d, hdmin, hdsub⟩
+
+theorem pushFamily_eq_iff_pushMin {V W : Type*} (π : V → W)
+    (C : Set (Set V)) (D : Set (Set W))
+    (hC : C.Finite) (hD : IsAntichain D) :
+    pushFamily π C = D ↔ PushMin π C D := by
+  constructor
+  · intro hEq
+    constructor
+    · intro d hd
+      have hdmin : d ∈ pushFamily π C := by
+        rw [hEq]
+        exact hd
+      rcases hdmin.prop with ⟨c, hc, himg⟩
+      exact ⟨c, hc, himg⟩
+    · intro c hc
+      obtain ⟨d, hdmin, hdsub⟩ := image_contains_pushFamily π hC hc
+      have hd : d ∈ D := by
+        rw [← hEq]
+        exact hdmin
+      exact ⟨d, hd, hdsub⟩
+  · rintro ⟨hattain, hcover⟩
+    ext d
+    constructor
+    · intro hdmin
+      rcases hdmin.prop with ⟨c, hc, himg⟩
+      rcases hcover c hc with ⟨d', hd', hd'sub⟩
+      have hd'img : d' ∈ imageFamily π C := by
+        rcases hattain d' hd' with ⟨c', hc', himg'⟩
+        exact ⟨c', hc', himg'⟩
+      have hd'subd : d' ⊆ d := by
+        rw [← himg]
+        exact hd'sub
+      have hdsub' : d ⊆ d' := hdmin.le_of_le hd'img hd'subd
+      have hdd' : d = d' := Set.Subset.antisymm hdsub' hd'subd
+      rw [hdd']
+      exact hd'
+    · intro hd
+      rcases hattain d hd with ⟨c, hc, himg⟩
+      refine ⟨⟨c, hc, himg⟩, ?_⟩
+      intro y hy hySub
+      rcases hy with ⟨cy, hcy, hyimg⟩
+      rcases hcover cy hcy with ⟨d', hd', hd'sub⟩
+      have hd'suby : d' ⊆ y := by
+        rw [← hyimg]
+        exact hd'sub
+      have hd'subd : d' ⊆ d := hd'suby.trans hySub
+      have hEq : d' = d := hD hd' hd hd'subd
+      rw [← hEq]
+      exact hd'suby
+
+theorem pushFamily_realization_interval {V W : Type*} (π : V → W)
+    (C : Set (Set V)) (D : Set (Set W))
+    (hC : C.Finite) (hD : IsAntichain D) :
+    pushFamily π C = D ↔
+      lower π (UpClosure D) ⊆ UpClosure C ∧
+      UpClosure C ⊆ upper π (UpClosure D) := by
+  calc
+    pushFamily π C = D ↔ PushMin π C D :=
+      pushFamily_eq_iff_pushMin π C D hC hD
+    _ ↔ lower π (UpClosure D) ⊆ UpClosure C ∧
+        UpClosure C ⊆ upper π (UpClosure D) :=
+      clutter_realization_interval π C D hD
 
 end UEOT.V3.Resolution
