@@ -25,18 +25,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Install pinned Lean
-        uses: leanprover/lean-action@v1
-        with:
-          lake-package-directory: formalization/ueot-core
-          auto-config: false
-          use-mathlib-cache: false
-          build: false
-          test: false
-          lint: false
+      - name: Install Elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Verify pinned Lean
+        run: |
+          lean --version
+          lake --version
 
       - name: Resolve pinned dependencies
-        run: ~/.elan/bin/lake update
+        run: |
+          lake update
+          echo "===== BEGIN lake-manifest.json ====="
+          cat lake-manifest.json
+          echo "===== END lake-manifest.json ====="
 
       - name: Build UEOT
-        run: ~/.elan/bin/lake build UEOT
+        run: lake build UEOT
