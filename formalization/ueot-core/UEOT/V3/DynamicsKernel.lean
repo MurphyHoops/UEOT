@@ -496,6 +496,8 @@ theorem homTrajMeasure_dirac_time_one
     homTrajMeasure_prefix_succ (Measure.dirac x) P 0
   have hzero :=
     homTrajMeasure_prefix_zero (Measure.dirac x) P
+  letI : IsMarkovKernel (homHistoryKernel P 0) :=
+    isMarkovKernel_homHistoryKernel P 0
   have hlast_append :
       (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) ∘
           appendHistory 0 =
@@ -507,6 +509,7 @@ theorem homTrajMeasure_dirac_time_one
     μpath.map (fun z : ℕ → X => z 1) =
         (μpath.map (Preorder.frestrictLe 1)).map
           (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) := by
+      symm
       rw [Measure.map_map
         (measurable_pi_apply (lastHistoryIndex 1))
         (Preorder.measurable_frestrictLe 1)]
