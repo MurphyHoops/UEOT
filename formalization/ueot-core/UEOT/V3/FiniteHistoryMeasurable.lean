@@ -30,9 +30,9 @@ variable [MeasurableSpace X] [MeasurableSpace A]
   infer_instance
 
 @[instance_reducible] instance instMeasurableSpaceCarrier :
-    MeasurableSpace (Carrier X A) := by
-  unfold Carrier
-  infer_instance
+    MeasurableSpace (Carrier X A) :=
+  ⨅ n, (instMeasurableSpaceHistoryFiber (X := X) (A := A) n).map
+    (fun h : HistoryFiber X A n => (⟨n, h⟩ : Carrier X A))
 
 theorem measurable_sigmaMk_history (n : ℕ) :
     Measurable
@@ -49,7 +49,7 @@ theorem measurable_of_forall_historyFiber
   rw [measurable_iff_comap_le]
   change _ ≤
     ⨅ n, (inferInstance : MeasurableSpace (HistoryFiber X A n)).map
-      (Sigma.mk n)
+      (fun h : HistoryFiber X A n => (⟨n, h⟩ : Carrier X A))
   refine le_iInf fun n => ?_
   apply MeasurableSpace.comap_le_iff_le_map.1
   rw [MeasurableSpace.comap_comp]
@@ -66,11 +66,9 @@ theorem measurable_current :
     Measurable (Carrier.current : Carrier X A → X) := by
   apply measurable_of_forall_historyFiber
   intro n
-  simpa [Carrier.current] using
-    (measurable_pi_apply (Fin.last n)).comp
-      (measurable_fst :
-        Measurable
-          (fun h : HistoryFiber X A n => h.1))
+  change Measurable (fun h : HistoryFiber X A n => h.1 (Fin.last n))
+  unfold HistoryFiber
+  exact (measurable_pi_apply (Fin.last n)).comp measurable_fst
 
 theorem measurable_singleton :
     Measurable (Carrier.singleton (A := A) : X → Carrier X A) := by
@@ -80,7 +78,10 @@ theorem measurable_singleton :
           (((fun _ : Fin 1 => x), (Fin.elim0 : Fin 0 → A)) :
             HistoryFiber X A 0)) := by
     fun_prop
-  simpa [Carrier.singleton] using
-    (measurable_sigmaMk_history (X := X) (A := A) 0).comp hpayload
+  change Measurable
+    (fun x : X =>
+      (⟨0, ((fun _ : Fin 1 => x), (Fin.elim0 : Fin 0 → A))⟩ :
+        Carrier X A))
+  exact (measurable_sigmaMk_history (X := X) (A := A) 0).comp hpayload
 
 end UEOT.V3.FiniteHistoryMeasurable
