@@ -87,12 +87,61 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 29 |
+| proved | 30 |
 | partial | 0 |
-| pending | 77 |
+| pending | 76 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-DYN-03
+
+P-DYN-03 has been promoted from `pending` to `proved`.
+
+The source theorem concerns two finite-alphabet causal record processes with
+the same initial record, the same causal strategy, and per-step next-record
+total-variation error at most `ε_t ∈ [0,1]` whenever the already-realized
+history is the same.  It concludes
+
+[
+D_{\rm TV}(P_{0:T},\widehat P_{0:T})
+\le 1-\prod_{t<T}(1-\epsilon_t)
+\le \sum_{t<T}\epsilon_t.
+]
+
+The Lean formalization matches this finite causal structure through
+`CausalHistory`, `causalLaw`, and the source-facing theorem
+`p_dyn_03_finite_path_error`.  The theorem takes a common initial PMF
+`p₀` (slightly stronger than a common deterministic initial record) and two
+history-indexed next-record PMF families `K/L`; a common causal strategy may
+be composed into these record kernels before applying the theorem.
+
+The proof chain is fully machine-checked:
+
+- finite-PMF overlap / TV identity:
+  `tvDist_eq_one_sub_pmfCommonMass`;
+- one-step overlap survival under the same history:
+  `pmfCommonMass_extend_of_tv`;
+- recursive finite causal path law:
+  `causalLaw`;
+- product survival bound:
+  `causalLaw_commonMass_lower_bound`;
+- sharp path-TV bound:
+  `causalLaw_tv_bound`;
+- additive union bound:
+  `one_sub_prod_one_sub_le_sum`;
+- exact source wrapper:
+  `p_dyn_03_finite_path_error`.
+
+Verification evidence:
+
+- final clean branch head:
+  `15f65d830c2982f4bd2d86de32c82c06541b08d5`;
+- branch full-target push CI #334 and PR CI #335: success;
+- main squash merge:
+  `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177`;
+- post-merge full-target main CI #337
+  (`34409597312`): success.
 
 ## 2026-09-10 advance: P-DYN-04
 
