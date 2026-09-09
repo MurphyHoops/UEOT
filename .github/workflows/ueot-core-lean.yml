@@ -18,12 +18,25 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formalization/ueot-core
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Build pinned UEOT Core Lean package
+      - name: Install pinned Lean
         uses: leanprover/lean-action@v1
         with:
           lake-package-directory: formalization/ueot-core
-          build-args: "UEOT"
+          auto-config: false
+          use-mathlib-cache: false
+          build: false
+          test: false
+          lint: false
+
+      - name: Resolve pinned dependencies
+        run: ~/.elan/bin/lake update
+
+      - name: Build UEOT
+        run: ~/.elan/bin/lake build UEOT
