@@ -1,0 +1,29 @@
+name: UEOT Core Lean
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "formalization/ueot-core/**"
+      - ".github/workflows/ueot-core-lean.yml"
+  pull_request:
+    paths:
+      - "formalization/ueot-core/**"
+      - ".github/workflows/ueot-core-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Build pinned UEOT Core Lean package
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formalization/ueot-core
+          build-args: "UEOT"
