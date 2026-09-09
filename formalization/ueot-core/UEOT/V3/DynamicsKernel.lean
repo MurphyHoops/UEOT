@@ -413,41 +413,49 @@ theorem pathMeasure_eq_of_prefix_eq
         νpath.map (Preorder.frestrictLe n)) :
     μpath = νpath := by
   let Pfin : (I : Finset ℕ) → Measure ((i : I) → M) :=
-    fun I => μpath.map I.restrict
+    fun I => μpath.map (I.restrict (π := fun _ : ℕ => M))
   letI : ∀ I, IsProbabilityMeasure (Pfin I) := fun I => by
     dsimp [Pfin]
     exact Measure.isProbabilityMeasure_map
       (Finset.measurable_restrict I).aemeasurable
   have hνfin :
-      ∀ I : Finset ℕ, νpath.map I.restrict = Pfin I := by
+      ∀ I : Finset ℕ,
+        νpath.map (I.restrict (π := fun _ : ℕ => M)) = Pfin I := by
     intro I
     dsimp [Pfin]
     have hsub : I ⊆ Finset.Iic (I.sup id) := I.subset_Iic_sup_id
+    have hp := hprefix (I.sup id)
+    change
+      μpath.map ((Finset.Iic (I.sup id)).restrict (π := fun _ : ℕ => M)) =
+        νpath.map ((Finset.Iic (I.sup id)).restrict (π := fun _ : ℕ => M))
+      at hp
     calc
-      νpath.map I.restrict =
-          (νpath.map (Preorder.frestrictLe (I.sup id))).map
-            (Finset.restrict₂ hsub) := by
+      νpath.map (I.restrict (π := fun _ : ℕ => M)) =
+          (νpath.map
+            ((Finset.Iic (I.sup id)).restrict (π := fun _ : ℕ => M))).map
+            (Finset.restrict₂ (π := fun _ : ℕ => M) hsub) := by
         rw [Measure.map_map
-          (Finset.measurable_restrict₂ hsub)
-          (Preorder.measurable_frestrictLe
-            (X := fun _ : ℕ => M) (I.sup id))]
-        rw [Finset.restrict₂_comp_restrict hsub]
+          (Finset.measurable_restrict₂ (π := fun _ : ℕ => M) hsub)
+          (Finset.measurable_restrict (Finset.Iic (I.sup id)))]
+        rfl
       _ =
-          (μpath.map (Preorder.frestrictLe (I.sup id))).map
-            (Finset.restrict₂ hsub) := by
-        rw [hprefix (I.sup id)]
-      _ = μpath.map I.restrict := by
+          (μpath.map
+            ((Finset.Iic (I.sup id)).restrict (π := fun _ : ℕ => M))).map
+            (Finset.restrict₂ (π := fun _ : ℕ => M) hsub) := by
+        rw [hp]
+      _ = μpath.map (I.restrict (π := fun _ : ℕ => M)) := by
         rw [Measure.map_map
-          (Finset.measurable_restrict₂ hsub)
-          (Preorder.measurable_frestrictLe
-            (X := fun _ : ℕ => M) (I.sup id))]
-        rw [Finset.restrict₂_comp_restrict hsub]
+          (Finset.measurable_restrict₂ (π := fun _ : ℕ => M) hsub)
+          (Finset.measurable_restrict (Finset.Iic (I.sup id)))]
+        rfl
   have hμ :
-      MeasureTheory.IsProjectiveLimit μpath Pfin := by
+      MeasureTheory.IsProjectiveLimit
+        (ι := ℕ) (α := fun _ : ℕ => M) μpath Pfin := by
     intro I
     rfl
   have hν :
-      MeasureTheory.IsProjectiveLimit νpath Pfin :=
+      MeasureTheory.IsProjectiveLimit
+        (ι := ℕ) (α := fun _ : ℕ => M) νpath Pfin :=
     hνfin
   exact hμ.unique hν
 
