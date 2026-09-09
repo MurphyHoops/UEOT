@@ -90,7 +90,7 @@ theorem exponential_recovery_bound_ac_ae
     have hexp :
         HasDerivAt (fun t : ℝ => Real.exp (a * t))
           (Real.exp (a * x) * a) x :=
-      (hasDerivAt_const_mul x a).exp
+      (hasDerivAt_const_mul a).exp
     have hmSub :
         HasDerivAt (fun t : ℝ => m t - b / a) (deriv m x) x :=
       hmd.hasDerivAt.sub_const (b / a)
@@ -105,7 +105,11 @@ theorem exponential_recovery_bound_ac_ae
         deriv g x =
           Real.exp (a * x) *
             (a * (m x - b / a) + deriv m x) := by
-      dsimp [g]
+      change
+        deriv ((fun t : ℝ => Real.exp (a * t)) *
+          (fun t : ℝ => m t - b / a)) x =
+            Real.exp (a * x) *
+              (a * (m x - b / a) + deriv m x)
       rw [hprod.deriv]
       ring
     rw [hform]
@@ -122,7 +126,7 @@ theorem exponential_recovery_bound_ac_ae
     rw [← Real.exp_neg]
     congr 1
     ring
-  rw [div_eq_mul_inv, hinv] at hdiv
+  simp only [div_eq_mul_inv, hinv] at hdiv
   nlinarith
 /-- Exact exponential recovery bound from the scalar differential inequality
 m' <= -a m + b on a compact time interval. -/
