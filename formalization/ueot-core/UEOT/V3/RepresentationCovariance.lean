@@ -1,4 +1,5 @@
 import UEOT.V3.DynamicsKernel
+import UEOT.V3.PathError
 import Mathlib.Probability.Kernel.Composition.MapComap
 import Mathlib.MeasureTheory.Integral.Bochner.Basic
 import Mathlib.Data.EReal.Basic
@@ -383,5 +384,83 @@ theorem p_fac_01_covariance_bundle
           Qbar e (transportReadout f T x')) := by
   exact ⟨controlledStrongLumpability_transport_iff P Pbar f hf T,
     predictive_family_factorization_transport_iff Q Qbar f T⟩
+
+/-! ## Finite causal path-law transport
+
+This is the induction layer needed to remove the external path-law equality
+assumption from the control-value part of P-FAC-01. -/
+
+universe uHist
+
+open UEOT.V3.PathError
+
+/-- Coordinatewise equivalence between recursively nested finite causal
+histories. -/
+def causalHistoryEquiv
+    {H₀ H₀' Z Z' : Type uHist}
+    (e₀ : H₀ ≃ H₀') (eZ : Z ≃ Z') :
+    ∀ n, CausalHistory H₀ Z n ≃ CausalHistory H₀' Z' n
+  | 0 => e₀
+  | n + 1 => (causalHistoryEquiv e₀ eZ n).prodCongr eZ
+
+@[simp] theorem causalHistoryEquiv_zero
+    {H₀ H₀' Z Z' : Type uHist}
+    (e₀ : H₀ ≃ H₀') (eZ : Z ≃ Z') :
+    causalHistoryEquiv e₀ eZ 0 = e₀ := rfl
+
+@[simp] theorem causalHistoryEquiv_succ_apply
+    {H₀ H₀' Z Z' : Type uHist}
+    (e₀ : H₀ ≃ H₀') (eZ : Z ≃ Z')
+    (n : ℕ) (h : CausalHistory H₀ Z (n + 1)) :
+    causalHistoryEquiv e₀ eZ (n + 1) h =
+      (causalHistoryEquiv e₀ eZ n h.1, eZ h.2) := rfl
+
+/-- One causal-extension step commutes with bijective coordinate transport. -/
+theorem pmfExtend_map_equiv
+    {H H' Z Z' : Type uHist}
+    [Fintype H] [Fintype H'] [Fintype Z] [Fintype Z']
+    (p : PMF H) (K : H → PMF Z)
+    (eH : H ≃ H') (eZ : Z ≃ Z') :
+    (pmfExtend p K).map (eH.prodCongr eZ) =
+      pmfExtend (p.map eH)
+        (fun h' => (K (eH.symm h')).map eZ) := by
+  unfold pmfExtend
+  rw [PMF.map_bind, PMF.bind_map]
+  apply congrArg
+  funext h
+  simp only [Function.comp_apply, Equiv.symm_apply_apply]
+  rw [PMF.map_comp, PMF.map_comp]
+  congr
+  funext z
+  rfl
+
+/-- Exact finite-horizon path-law naturality. -/
+theorem causalLaw_transport_equiv
+    {H₀ H₀' Z Z' : Type uHist}
+    [Fintype H₀] [Fintype H₀'] [Fintype Z] [Fintype Z']
+    (p₀ : PMF H₀)
+    (K : ∀ n, CausalHistory H₀ Z n → PMF Z)
+    (K' : ∀ n, CausalHistory H₀' Z' n → PMF Z')
+    (e₀ : H₀ ≃ H₀') (eZ : Z ≃ Z')
+    (hK : ∀ n h,
+      K' n (causalHistoryEquiv e₀ eZ n h) = (K n h).map eZ) :
+    ∀ n,
+      (causalLaw p₀ K n).map (causalHistoryEquiv e₀ eZ n) =
+        causalLaw (p₀.map e₀) K' n := by
+  intro n
+  induction n with
+  | zero =>
+      rfl
+  | succ n ih =>
+      change
+        (pmfExtend (causalLaw p₀ K n) (K n)).map
+            ((causalHistoryEquiv e₀ eZ n).prodCongr eZ) =
+          pmfExtend (causalLaw (p₀.map e₀) K' n) (K' n)
+      rw [pmfExtend_map_equiv]
+      rw [ih]
+      congr
+      funext h'
+      have hh := hK n ((causalHistoryEquiv e₀ eZ n).symm h')
+      simpa using hh
 
 end UEOT.V3.RepresentationCovariance
