@@ -32,3 +32,4 @@ import UEOT.V3.DynamicsCrossScale
 import UEOT.V3.StructuredQuotient
 import UEOT.V3.PathError
 import UEOT.V3.QSDPerron
+import UEOT.V3.RepresentationCovariance
