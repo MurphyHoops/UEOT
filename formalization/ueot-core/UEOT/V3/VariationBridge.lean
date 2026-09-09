@@ -55,4 +55,22 @@ theorem tvEvent_le_norm_signedDiff
   simpa [abs_signedDiff_apply_eq_tvEvent μ ν A hA] using
     UEOT.V3.TotalVariation.tvEvent_le μ ν A hA
 
+
+theorem tvDist_le_signedDiff_totalVariation_univ
+    (μ ν : Measure X)
+    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν] :
+    UEOT.V3.TotalVariation.tvDist μ ν ≤
+      (signedDiff μ ν).totalVariation.real Set.univ := by
+  unfold UEOT.V3.TotalVariation.tvDist
+  refine csSup_le (UEOT.V3.TotalVariation.tvEventSet_nonempty μ ν) ?_
+  intro r hr
+  rcases hr with ⟨A, hA, rfl⟩
+  calc
+    |μ.real A - ν.real A| = ‖signedDiff μ ν A‖ := by
+      rw [signedDiff_apply μ ν A hA, Real.norm_eq_abs]
+    _ ≤ (signedDiff μ ν).totalVariation.real A :=
+      SignedMeasure.norm_le_totalVariation (signedDiff μ ν) A
+    _ ≤ (signedDiff μ ν).totalVariation.real Set.univ :=
+      measureReal_mono (Set.subset_univ A)
+
 end UEOT.V3.VariationBridge
