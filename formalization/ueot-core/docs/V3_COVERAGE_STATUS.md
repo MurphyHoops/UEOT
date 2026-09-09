@@ -87,12 +87,40 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 22 |
+| proved | 23 |
 | partial | 0 |
-| pending | 84 |
+| pending | 83 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-INT-03
+
+P-INT-03 has been promoted from `pending` to `proved`.
+
+The source theorem assumes a finite variable universe and conditional
+independence satisfying the semigraphoid rules plus intersection.  The Lean
+formalization isolates the exact proof laws used by the manuscript:
+
+- `CIAxioms.decomposition`;
+- `CIAxioms.weakUnion`;
+- `CIAxioms.contraction`;
+- `CIAxioms.intersection`.
+
+It defines `IsBlanket CI B := CI Bᶜ B` and inclusion-minimal blankets via
+`IsBoundary`.  The theorem `boundary_unique` proves uniqueness in a
+slightly stronger arbitrary-universe setting once those laws are supplied, and
+the wrapper `p_int_03_boundary_unique` restores the source's finite-universe
+hypothesis literally through `[Fintype W]`.
+
+Verification evidence:
+
+- clean-rebased branch head:
+  `36f6208979e9c69c09cb76b8b2c076564d78f55b`;
+- pinned Lean branch push CI run `34384468119` (#191): success;
+- main merge commit:
+  `50390ebac91981a3d020868f21ed5c7838debeaa`;
+- post-merge full-target CI run `34384869497` (#195): success.
 
 ## 2026-09-10 advance: P-DYN-01
 
