@@ -19,3 +19,4 @@ import UEOT.V3.TVSpan
 import UEOT.V3.TVKernel
 import UEOT.V3.FiniteHistory
 import UEOT.V3.FiniteHistoryMeasurable
+\nimport UEOT.V3.InformationCore\n
