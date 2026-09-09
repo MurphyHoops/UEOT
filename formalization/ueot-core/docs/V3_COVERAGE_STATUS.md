@@ -87,14 +87,41 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 21 |
-| partial | 1 |
+| proved | 22 |
+| partial | 0 |
 | pending | 84 |
 | total | 106 |
 
-The one remaining partial P-ID is:
+There are currently no partial P-IDs.
 
-- P-DYN-01
+## 2026-09-10 advance: P-DYN-01
+
+P-DYN-01 has been promoted from `partial` to `proved`.
+
+The formalization now matches both source clauses for a supplied measurable
+candidate macro kernel:
+
+- `StrongLumpability P Pbar f hf` is the one-step kernel intertwining
+  statement, equivalent to the source event-preimage equality;
+- `PathLawLumpability P Pbar f hf` states that for every microscopic
+  probability initial law, the coordinatewise macro pushforward is exactly
+  the trajectory law of the same macro Markov kernel;
+- `strongLumpability_iff_pathLaw` proves the two formulations equivalent;
+- `strongLumpability_iff_pathLaw_of_surjective` retains the source's
+  measurable-surjection hypothesis literally.
+
+The reverse implication follows the source proof: choose the Dirac initial law
+at a microscopic state, recover the time-one marginal through
+`homTrajMeasure_dirac_time_one`, and obtain the one-step pushed kernel.
+
+Verification evidence:
+
+- full iff branch commit:
+  `6c8685f6ac7f453ea9ce57cb35f9bad89cbae032`;
+- branch CI run `34380983198`: success;
+- main merge commit:
+  `697b0b1537295b999cb671106bf026866d49114a`;
+- post-merge full-target CI run `34381567831`: success.
 
 ## 2026-09-10 advance: P-MET-01 and P-MET-02
 
