@@ -276,7 +276,8 @@ Parallel lanes should edit disjoint files.
 Preferred pattern:
 - one P-ID family -> one new module;
 - source-facing wrapper stays in the same family module;
-- only the integration commit edits `UEOT/V3.lean`;
+- a feature branch may edit `UEOT/V3.lean` only to add its own import line, so the official target compiles that module in branch CI;
+- no feature branch performs unrelated/shared refactors in `UEOT/V3.lean`;
 - only `main` promotion commits edit `docs/V3_COVERAGE_STATUS.md`.
 
 If two lanes need the same reusable lemma:
