@@ -87,12 +87,64 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 25 |
+| proved | 26 |
 | partial | 0 |
-| pending | 81 |
+| pending | 80 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-PROC-01
+
+P-PROC-01 has been promoted from `pending` to `proved`.
+
+The source construction starts from the exact growing controlled history
+
+[
+H_t=(X_0,A_0,\ldots,A_{t-1},X_t)
+]
+
+and an arbitrary history-dependent next-state kernel
+`q_t(dx' | h,a)`.  It augments the state by the internal clock,
+`Z_t=(t,H_t)`, and uses the single transition rule
+
+[
+((t,h),a)\longmapsto (t+1,h,a,x'),
+\qquad x'\sim q_t(\cdot\mid h,a).
+]
+
+The resulting controlled process is time-homogeneous because the external time
+index has become part of the state.  No finite-memory claim is made; the
+history fiber is allowed to grow without bound.
+
+The Lean formalization matches this construction literally:
+
+- `UEOT.V3.FiniteHistory.HistoryFiber X A n` stores `n+1` states and
+  `n` actions;
+- `FiniteHistory.Carrier X A` is the dependent sum over all times;
+- `FiniteHistoryMeasurable.measurable_advance_fixed` proves measurable
+  append of one action and one next state;
+- `ConcreteHistoryMarkovization.ControlCarrier` internalizes the time tag
+  in the state-action domain;
+- `controlStep` glues the family `q_t` into one measurable kernel;
+- `fixedAugmented` implements sample-then-append at one time slice;
+- `augmentedKernel` is the single global augmented transition;
+- `augmentedStep_time` proves the definitional `t -> t+1` transition;
+- `isMarkovKernel_augmentedKernel` proves the global kernel is Markov when
+  every `q_t` is Markov;
+- `fixedAugmented_current_eq` and
+  `augmentedKernel_current_apply` recover the original next-state law after
+  reading the newest physical state;
+- `p_proc_01_history_markovization` packages the source-facing theorem.
+
+Verification evidence:
+
+- final clean-rebased branch head:
+  `aeb82e64ca76cb04d47e42e59ab4806cef4ee695`;
+- clean branch full-target CI run `34390325702` (#252): success;
+- main squash merge:
+  `90a4ddfb7bd938e77bea08d0415dfd546f7f0112`;
+- post-merge full-target CI run `34390671904` (#254): success.
 
 ## 2026-09-10 advance: P-INFO-05
 
