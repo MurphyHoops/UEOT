@@ -1,4 +1,4 @@
-import Mathlib.LinearAlgebra.Matrix
+import Mathlib.Data.Matrix.Mul
 import Mathlib.Tactic
 
 /-!
