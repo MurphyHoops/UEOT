@@ -123,12 +123,18 @@ theorem generator_intertwines_of_semigroup
       HasDerivAt
         (R ∘ fun t : ℝ => NormedSpace.exp (t • L))
         (R (NormedSpace.exp ((0 : ℝ) • L) * L)) 0 :=
-    R.hasFDerivAt.comp_hasDerivAt hL
+    by
+      simpa only [ContinuousLinearMap.comp_apply,
+        ContinuousLinearMap.toSpanSingleton_apply, one_smul] using
+        (R.hasFDerivAt.comp 0 hL.hasFDerivAt).hasDerivAt
   have hrightD :
       HasDerivAt
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar))
         (S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar)) 0 :=
-    S.hasFDerivAt.comp_hasDerivAt hR
+    by
+      simpa only [ContinuousLinearMap.comp_apply,
+        ContinuousLinearMap.toSpanSingleton_apply, one_smul] using
+        (S.hasFDerivAt.comp 0 hR.hasFDerivAt).hasDerivAt
   have hfun :
       (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
