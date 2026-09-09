@@ -224,7 +224,10 @@ theorem appendHistory_prefix_next
   · have hin : (i : ℕ) = n + 1 := by
       have hle : (i : ℕ) ≤ n + 1 := Finset.mem_Iic.mp i.2
       omega
-    subst i
+    have hieq :
+        i = (⟨n + 1, Finset.mem_Iic.mpr le_rfl⟩ : Finset.Iic (n + 1)) :=
+      Subtype.ext hin
+    rw [hieq]
     simp [appendHistory, IicProdIoc_def, Preorder.frestrictLe_apply,
       MeasurableEquiv.piSingleton]
 
@@ -254,8 +257,13 @@ theorem homTrajMeasure_prefix_succ
     simpa [homTrajMeasure] using hstep
   rw [hstep']
   rw [Measure.map_map (measurable_appendHistory n) (by fun_prop)]
-  congr with x
-  exact appendHistory_prefix_next n x
+  have hcomp :
+      appendHistory n ∘
+          (fun x : ℕ → X => (Preorder.frestrictLe n x, x (n + 1))) =
+        Preorder.frestrictLe (n + 1) := by
+    funext x
+    exact appendHistory_prefix_next n x
+  rw [hcomp]
 
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
