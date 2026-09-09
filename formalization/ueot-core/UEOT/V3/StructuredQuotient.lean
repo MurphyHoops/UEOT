@@ -80,7 +80,7 @@ theorem canonical_factorization
       K i x e =
         quotientResponse K i (internalClass K x) (environmentClass K e) := by
   intro i x e
-  rfl
+  exact (quotientResponse_mk K i x e).symm
 
 /-- Any exact separated representation identifies only internally equivalent
 microscopic states. Hence it refines the canonical internal quotient. -/
@@ -89,7 +89,7 @@ theorem internal_refinement
     (K : I → X → E → R)
     (f : X → S) (g : E → U) (Q : I → S → U → R)
     (hfac : ∀ i x e, K i x e = Q i (f x) (g e)) :
-    ∀ {x x'}, f x = f x' → (internalSetoid K).Rel x x' := by
+    ∀ {x x'}, f x = f x' → (internalSetoid K).r x x' := by
   intro x x' hxx e i
   rw [hfac i x e, hfac i x' e, hxx]
 
@@ -100,7 +100,7 @@ theorem environment_refinement
     (K : I → X → E → R)
     (f : X → S) (g : E → U) (Q : I → S → U → R)
     (hfac : ∀ i x e, K i x e = Q i (f x) (g e)) :
-    ∀ {e e'}, g e = g e' → (environmentSetoid K).Rel e e' := by
+    ∀ {e e'}, g e = g e' → (environmentSetoid K).r e e' := by
   intro e e' hee x i
   rw [hfac i x e, hfac i x e', hee]
 
@@ -114,8 +114,8 @@ theorem p_int_02
     (∀ {S : Type uS} {U : Type uU}
       (f : X → S) (g : E → U) (Q : I → S → U → R),
       (∀ i x e, K i x e = Q i (f x) (g e)) →
-      (∀ {x x'}, f x = f x' → (internalSetoid K).Rel x x') ∧
-      (∀ {e e'}, g e = g e' → (environmentSetoid K).Rel e e')) := by
+      (∀ {x x'}, f x = f x' → (internalSetoid K).r x x') ∧
+      (∀ {e e'}, g e = g e' → (environmentSetoid K).r e e')) := by
   refine ⟨canonical_factorization K, ?_⟩
   intro S U f g Q hfac
   exact ⟨internal_refinement K f g Q hfac,
