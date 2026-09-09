@@ -40,3 +40,11 @@ to make the completion gate pass.
 The first resumed proof target is `P-RES-05` (exact microscopic uncertainty
 interval), whose upward-family interval was already formalized while the finite
 clutter / `J^-`, `J^+`, and `pi_*` bridge remained incomplete.
+
+
+## Remote branch note
+
+Formalization development is committed to `main`. Because the repository's GitHub
+default-branch setting still reports `master`, `master` may temporarily be fast-forward
+mirrored to the same commit solely so GitHub Actions can register the workflow. No
+separate formalization development is performed on `master`.
