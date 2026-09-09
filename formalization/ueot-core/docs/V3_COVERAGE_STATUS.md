@@ -87,9 +87,9 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 10 |
+| proved | 11 |
 | partial | 6 |
-| pending | 90 |
+| pending | 89 |
 | total | 106 |
 
 The six remaining partial P-IDs are:
@@ -101,7 +101,31 @@ The six remaining partial P-IDs are:
 - P-BRG-02
 - P-REF-05
 
-The newly proved set is the previous nine plus **P-RES-05**.
+The newly proved set is the previous nine plus **P-RES-05** and **P-RES-06**.
+
+## 2026-09-09 advance: P-RES-06
+
+P-RES-06 has been promoted from `pending` to `proved`.
+
+Lean theorem:
+
+- `UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers`
+
+The source fiber-cardinality condition `|π⁻¹(w)| = 1` is represented by
+`UniqueFiber π w`: an inhabitant of the fiber exists and every other
+inhabitant is equal to it. `Active D w` means that `w` occurs in some coarse
+minimal edge. Under surjectivity of `π` and antichain minimality of `D`, Lean
+proves that the lower and upper realization endpoints coincide exactly when
+every active fiber is unique.
+
+Verification evidence:
+
+- theorem commit: `430202b81bedae8bfb10a0778f9e6071c2080fb5`
+- equality-transport repair: `9baa0b95892293167cf212d4875138da4f665a46`
+- successful locked/cache CI run: `34337047643`
+
+The failed intermediate run is intentionally retained in Git history; it
+reported three equality-transport type errors and led to the repair commit.
 
 ## Synchronization note
 
