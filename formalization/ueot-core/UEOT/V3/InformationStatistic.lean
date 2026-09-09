@@ -183,7 +183,7 @@ independence reference.  Under the reference law, conditioning H on (M,Y)
 reduces to conditioning H on M because Y is independent of H. -/
 noncomputable def conditionalMutualInfoStatistic
     [StandardBorelSpace H] [Nonempty H]
-    (μ : Measure (H × Y)) (f : H → M) :
+    (μ : Measure (H × Y)) [IsProbabilityMeasure μ] (f : H → M) :
     ENNReal :=
   let ρ := liftedStatisticJoint μ f
   let σ := liftedStatisticReference μ f
@@ -252,7 +252,7 @@ theorem mutualInfo_eq_statistic_add_conditional
       InformationTheory.klDiv ρ
           (ρ.fst ⊗ₘ σ.condKernel) =
         conditionalMutualInfoStatistic μ f := by
-    rfl
+    simp [conditionalMutualInfoStatistic, ρ, σ]
   rw [htotal, hfirst, hres] at hchain
   exact hchain
 
