@@ -87,18 +87,59 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 17 |
-| partial | 3 |
+| proved | 18 |
+| partial | 2 |
 | pending | 86 |
 | total | 106 |
 
-The three remaining partial P-IDs are:
+The two remaining partial P-IDs are:
 
 - P-DYN-01
-- P-TEL-01
 - P-REF-05
 
 The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
+
+## 2026-09-09 advance: P-TEL-01
+
+P-TEL-01 has been promoted from `partial` to `proved`.
+
+The final proof chain now matches the source's infinite-horizon discounted
+potential-shaping statement rather than only the finite deterministic
+telescoping identity.
+
+Key declarations:
+
+- `UEOT.Reward.potential_telescope`
+- `UEOT.Reward.shaping_finite`
+- `UEOT.Reward.shaping_terminal_corrected`
+- `UEOT.V3.RewardInfinite.bounded_potential_integrable`
+- `bounded_expected_potential`
+- `expectedPotential_bounded`
+- `bounded_potential_tail`
+- `discounted_one_tendsto`
+- `shaping_tendsto`
+- `policy_values_affine`
+- `policy_values_affine_from_bounded_state_potential`
+
+The final wrapper starts from a common bounded state potential
+`ψ : X → ℝ`, policy-induced probability marginals, and a common initial
+state. It derives the uniformly bounded expected potential sequence, the
+vanishing discounted terminal term, the value identity
+
+`V' p = a * V p - ψ x + c * (1 - β)⁻¹`
+
+and preservation of maximizers for `a > 0`.
+
+Verification evidence:
+
+- analytic infinite-horizon core:
+  `d8653802cf2f8a35b332e29b6372c14e73f86ec8`,
+  run `34349445220` success
+- state-potential expectation bridge:
+  `174077e2d1868800c88a16b0b28ae8915aabbcee`
+- final source-level wrapper:
+  `03aaf987efc74635bba5e4b35fcdaf191f132639`,
+  full-repository run `34350610211` success
 
 ## 2026-09-09 advance: P-BRG-02
 

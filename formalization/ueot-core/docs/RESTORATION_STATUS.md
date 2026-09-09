@@ -34,15 +34,14 @@ Restoration and source coverage are separate ledgers.
 
 Current v3 source coverage remains:
 
-- proved: 17
-- partial: 3
+- proved: 18
+- partial: 2
 - pending: 86
 - total P-IDs: 106
 
-The three partial P-IDs are:
+The two partial P-IDs are:
 
 - P-DYN-01
-- P-TEL-01
 - P-REF-05
 
 ## Restored and reverified modules
@@ -150,3 +149,18 @@ P-BRG-02 is now source-matched as `proved`.
 
 The theorem includes equality of the common reproductive multiplier and the
 resulting absence of differential selection through that bridge alone.
+
+
+## P-TEL-01 closure
+
+P-TEL-01 is now source-matched as `proved`.
+
+The formal chain covers finite telescoping, the infinite discounted limit,
+bounded measurable state potentials under policy probability marginals, the
+common initial-state term, the positive affine value transformation, and
+maximizer preservation.
+
+- final source-level commit:
+  `03aaf987efc74635bba5e4b35fcdaf191f132639`
+- successful full-repository run:
+  `34350610211`

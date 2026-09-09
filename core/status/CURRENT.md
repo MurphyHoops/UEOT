@@ -13,8 +13,8 @@ the full mathematical specification.
 
 Current source-level Lean status:
 
-- proved: 17
-- partial: 3
+- proved: 18
+- partial: 2
 - pending: 86
 - total source P-IDs: 106
 
@@ -24,6 +24,7 @@ Authoritative detailed ledger:
 
 Recently promoted:
 
+- P-TEL-01
 - P-BRG-02
 - P-PRED-02
 - P-PRED-01
@@ -55,5 +56,3 @@ and historical hash; no regenerated substitute should be called canonical.
 
 - P-DYN-01: general Markov strong lumpability + finite-step kernel consistency
   is currently in CI; full conditional-history equivalence is still required.
-- P-TEL-01: infinite-horizon reward-shaping analytic core is currently in CI;
-  stochastic expectation/source bridge remains subject to audit.
