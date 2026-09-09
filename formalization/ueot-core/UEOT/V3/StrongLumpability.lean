@@ -1,4 +1,5 @@
 import Mathlib.Probability.Kernel.Composition.MapComap
+import Mathlib.Probability.Kernel.Composition.MeasureComp
 
 /-!
 P-DYN-01, kernel-level strong lumpability.
@@ -52,5 +53,31 @@ theorem strongLumpable_pointwise
     Kernel.map P f x = Pbar (f x) := by
   have hx := congrArg (fun K : Kernel X M => K x) h
   simpa [StrongLumpable, Kernel.comap_apply] using hx
+
+
+theorem comap_comp_measure
+    {X M : Type*}
+    [MeasurableSpace X] [MeasurableSpace M]
+    (μ : Measure X) (f : X → M) (hf : Measurable f)
+    (Pbar : Kernel M M) :
+    (Kernel.comap Pbar f hf) ∘ₘ μ = Pbar ∘ₘ (μ.map f) := by
+  ext B hB
+  rw [Measure.bind_apply hB (Kernel.aemeasurable _),
+    Measure.bind_apply hB (Kernel.aemeasurable _)]
+  rw [lintegral_map (Pbar.measurable_coe hB) hf]
+  rfl
+
+theorem one_step_law_commutes
+    {X M : Type*}
+    [MeasurableSpace X] [MeasurableSpace M]
+    (μ : Measure X)
+    (P : Kernel X X) (f : X → M) (hf : Measurable f)
+    (Pbar : Kernel M M)
+    (h : StrongLumpable P f hf Pbar) :
+    (P ∘ₘ μ).map f = Pbar ∘ₘ (μ.map f) := by
+  rw [Measure.map_comp μ P hf]
+  change (Kernel.map P f) ∘ₘ μ = Pbar ∘ₘ (μ.map f)
+  rw [h]
+  exact comap_comp_measure μ f hf Pbar
 
 end UEOT.V3.StrongLumpability
