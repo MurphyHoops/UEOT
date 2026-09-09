@@ -45,24 +45,27 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
 ### A. P-DYN-02 — active reverse-derivative closure
 
 - branch: `formal/pdyn02-ctmc`
-- head: `afed47db0e78f42db2e7d1bb66c7015c0ef25896`
-- latest submitted proof repair: zero-time Fréchet derivative comparison via
-  `HasFDerivAt.congr_of_eventuallyEq`, avoiding incompatible Matrix topology annotations.
-- latest observed Action: #369 on `afed47db`, **in progress** at snapshot.
+- head: `268a5585953dfb262f7460bae862044783b283e3`
+- latest submitted proof repair evaluates the derivative CLM composition at
+  scalar direction `1` using explicit `ContinuousLinearMap.comp_apply` and
+  `toSpanSingleton_apply`.
+- latest observed Action: #372 on `268a5585`, **in progress** at snapshot.
 - green foundation: finite CTMC block-sum criterion ↔ generator intertwining;
   macro construction/uniqueness under surjective partition; power propagation;
   generator ⇒ matrix-exponential semigroup intertwining.
 - blocker: verify reverse semigroup ⇒ generator under pinned Mathlib, then
   package the exact source iff theorem.
-- next: inspect #369; if green, source-audit + PR/merge train; if red, repair
-  only the residual elaboration/API error.
+- next: inspect #372; if green, source-audit + PR/merge train; if red, repair
+  only the residual final simplification.
 
 ### B. P-INFO-01 — exact conditional-KL chain active
 
 - branch: `formal/pinfo01-04-chain`
-- head: `2ba8cfec9e6bb913bb5ba27bdc2d720dfe0552f2`
+- head: `6a5db0dc519c07a1f93c43fcf482f94db03c343a`
 - latest submitted theorem: `mutualInfo_eq_statistic_add_conditional`.
-- latest observed Action: #368 on `2ba8cfec`, **in progress** at snapshot.
+- latest repair opens the scoped probability/ENNReal notation required by
+  pinned Mathlib and uses `ENNReal` explicitly where parser ambiguity arose.
+- latest observed Action: #373 on `6a5db0dc`, **in progress** at snapshot.
 - green foundation: deterministic statistic joint/marginal transport;
   data processing; reversible measurable lift preserving KL (#359 success).
 - semantic design: conditional information is represented by standard-Borel
@@ -70,7 +73,7 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
   defined as a subtraction residual.
 - blocker: pinned-Mathlib verification of the exact chain identity, then the
   ε-retention and discrete-entropy consequences.
-- next: inspect #368 and repair disintegration/compProd API if required.
+- next: inspect #373 and repair only genuine disintegration/typeclass issues.
 
 ### C. P-FAC-01 — feedback-policy covariance pending
 
@@ -105,12 +108,15 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
 - head: `45eb9a1bd35c98a245ca55c885bd45d800a8c5e7`
 - PR: **#18 draft**
 - module-only CI #366: success.
-- official-target import CI #367: failure only at final algebraic normalization.
-- latest repair: `45eb9a1b`
-  reshapes the raw Grönwall inequality into the source exponential formula.
-- semantic blocker after compilation: bridge local absolute continuity +
-  a.e. Dynkin drift to the scalar bound without strengthening the P-ID statement.
-- next: verify the algebra repair, then build the AC/a.e.-derivative bridge.
+- official-target CI #370 on `45eb9a1b`: **success**.
+- green theorem layer: exact source-shaped exponential scalar recovery bound
+  under pointwise right-derivative hypotheses, plus energy-to-square-distance
+  conversion.
+- semantic blocker: bridge the source's local absolute continuity + a.e.
+  Dynkin drift inequality to the scalar bound without strengthening the final
+  P-ID statement.
+- next: formalize an AC/a.e. Grönwall bridge, then instantiate it with
+  `m(t)=E[W(X_t)]`.
 
 ## 4. Integrated / archive lanes
 
