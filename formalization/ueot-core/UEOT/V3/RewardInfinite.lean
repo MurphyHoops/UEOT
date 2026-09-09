@@ -1,5 +1,6 @@
 import UEOT.Core.Reward
 import Mathlib.Analysis.SpecificLimits.Normed
+import Mathlib.MeasureTheory.Integral.Bochner.Basic
 
 /-!
 # P-TEL-01 — infinite-horizon analytic core
@@ -15,6 +16,56 @@ namespace UEOT.V3.RewardInfinite
 
 open Filter Topology
 open UEOT.Reward
+
+open MeasureTheory
+
+theorem bounded_potential_integrable
+    {X : Type*} [MeasurableSpace X]
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (ψ : X → ℝ) (M : ℝ)
+    (hψm : StronglyMeasurable ψ)
+    (hψ : ∀ x, |ψ x| ≤ M) :
+    Integrable ψ μ := by
+  refine Integrable.of_bound hψm.aestronglyMeasurable M ?_
+  exact Filter.Eventually.of_forall (fun x => by
+    simpa [Real.norm_eq_abs] using hψ x)
+
+theorem bounded_expected_potential
+    {X : Type*} [MeasurableSpace X]
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (ψ : X → ℝ) (M : ℝ)
+    (hψm : StronglyMeasurable ψ)
+    (hψ : ∀ x, |ψ x| ≤ M) :
+    |∫ x, ψ x ∂μ| ≤ M := by
+  have hb :
+      ‖∫ x, ψ x ∂μ‖ ≤ M * μ.real Set.univ :=
+    norm_integral_le_of_norm_le_const
+      (μ := μ)
+      (Filter.Eventually.of_forall (fun x => by
+        simpa [Real.norm_eq_abs] using hψ x))
+  simpa [Real.norm_eq_abs] using hb
+
+noncomputable def expectedPotential
+    {X : Type*} [MeasurableSpace X]
+    (μ : ℕ → Measure X) (ψ : X → ℝ) (n : ℕ) : ℝ :=
+  ∫ x, ψ x ∂μ n
+
+theorem expectedPotential_bounded
+    {X : Type*} [MeasurableSpace X]
+    (μ : ℕ → Measure X)
+    [∀ n, IsProbabilityMeasure (μ n)]
+    (ψ : X → ℝ) (M : ℝ)
+    (hψm : StronglyMeasurable ψ)
+    (hψ : ∀ x, |ψ x| ≤ M) :
+    ∀ n, |expectedPotential μ ψ n| ≤ M := by
+  intro n
+  exact bounded_expected_potential (μ n) ψ M hψm hψ
+
+theorem expectedPotential_dirac
+    {X : Type*} [MeasurableSpace X]
+    (ψ : X → ℝ) (hψm : StronglyMeasurable ψ) (x : X) :
+    expectedPotential (fun _ => Measure.dirac x) ψ 0 = ψ x := by
+  simp [expectedPotential, integral_dirac' ψ x hψm]
 
 theorem bounded_potential_tail
     (β M : ℝ) (ψ : ℕ → ℝ)
