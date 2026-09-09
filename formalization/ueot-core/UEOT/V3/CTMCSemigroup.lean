@@ -1,5 +1,5 @@
 import UEOT.V3.CTMCLumpability
-import Mathlib.Analysis.Normed.Algebra.MatrixExponential
+import Mathlib.Analysis.Normed.Algebra.MatrixExponential\nimport Mathlib.Analysis.Calculus.Deriv.Comp
 import Mathlib.Analysis.SpecialFunctions.Exponential
 import Mathlib.LinearAlgebra.Matrix.Bilinear
 import Mathlib.Analysis.Normed.Module.FiniteDimension
@@ -122,12 +122,12 @@ theorem generator_intertwines_of_semigroup
       HasDerivAt
         (R ∘ fun t : ℝ => NormedSpace.exp (t • L))
         (R (NormedSpace.exp ((0 : ℝ) • L) * L)) 0 :=
-    R.hasFDerivAt.comp_hasDerivAt 0 hL
+    HasFDerivAt.comp_hasDerivAt R.hasFDerivAt 0 hL
   have hrightD :
       HasDerivAt
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar))
         (S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar)) 0 :=
-    S.hasFDerivAt.comp_hasDerivAt 0 hR
+    HasFDerivAt.comp_hasDerivAt S.hasFDerivAt 0 hR
   have hfun :
       (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
