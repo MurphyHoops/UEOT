@@ -109,6 +109,60 @@ theorem macro_unique
   simpa [hx] using hs₁.symm.trans hs₂
 
 
+/-- Elementary finite-state CTMC generator predicate used by the source-facing
+macro-generator clause of P-DYN-02. -/
+def IsCTMCGenerator (L : Matrix X X ℝ) : Prop :=
+  (∀ x y, x ≠ y → 0 ≤ L x y) ∧
+    ∀ x, ∑ y : X, L x y = 0
+
+/-- If a microscopic CTMC generator has block sums constant on the fibers of a
+surjective partition, the common block sums define a genuine macroscopic CTMC
+generator, not merely an arbitrary real matrix. -/
+theorem exists_macro_ctmcGenerator_of_blockSum_constant
+    (L : Matrix X X ℝ) (block : X → B)
+    (hsurj : Function.Surjective block)
+    (hgen : IsCTMCGenerator L)
+    (hconst : ∀ {x x'}, block x = block x' →
+      ∀ b, blockSum L block x b = blockSum L block x' b) :
+    ∃ Lbar : Matrix B B ℝ,
+      L * blockIndicator block = blockIndicator block * Lbar ∧
+        IsCTMCGenerator Lbar := by
+  classical
+  choose rep hrep using hsurj
+  let Lbar : Matrix B B ℝ := fun bi bj => blockSum L block (rep bi) bj
+  have hinter : L * blockIndicator block = blockIndicator block * Lbar := by
+    apply (generator_intertwines_iff_blockSum L Lbar block).2
+    intro x b
+    unfold Lbar
+    exact hconst (hrep (block x)).symm b
+  refine ⟨Lbar, hinter, ?_⟩
+  constructor
+  · intro bi bj hne
+    unfold Lbar blockSum
+    apply Finset.sum_nonneg
+    intro y hy
+    split_ifs with hby
+    · exact hgen.1 (rep bi) y (by
+        intro heq
+        apply hne
+        calc
+          bi = block (rep bi) := (hrep bi).symm
+          _ = block y := congrArg block heq
+          _ = bj := hby)
+    · exact le_rfl
+  · intro bi
+    unfold Lbar blockSum
+    calc
+      (∑ bj : B, ∑ y : X, if block y = bj then L (rep bi) y else 0)
+          = ∑ y : X, ∑ bj : B,
+              if block y = bj then L (rep bi) y else 0 := by
+              rw [Finset.sum_comm]
+      _ = ∑ y : X, L (rep bi) y := by
+            apply Finset.sum_congr rfl
+            intro y hy
+            simp
+      _ = 0 := hgen.2 (rep bi)
+
 /-- Generator intertwining propagates to every matrix power.  This is the
 finite-dimensional algebraic induction used in the reverse half of P-DYN-02. -/
 theorem pow_intertwines
