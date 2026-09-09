@@ -212,6 +212,41 @@ theorem mapHistory_appendHistory
     simp [mapHistory, appendHistory, IicProdIoc_def,
       MeasurableEquiv.piSingleton]
 
+
+theorem appendHistory_prefix_next
+    (n : ℕ) (x : ℕ → X) :
+    appendHistory n (frestrictLe n x, x (n + 1)) =
+      frestrictLe (n + 1) x := by
+  ext i
+  by_cases hi : (i : ℕ) ≤ n
+  · simp [appendHistory, IicProdIoc_def, frestrictLe_apply, hi]
+  · have hin : (i : ℕ) = n + 1 := by
+      have hle : (i : ℕ) ≤ n + 1 := Finset.mem_Iic.mp i.2
+      omega
+    subst i
+    simp [appendHistory, IicProdIoc_def, frestrictLe_apply,
+      MeasurableEquiv.piSingleton]
+
+noncomputable def homTrajMeasure
+    (μ : Measure X) (P : Kernel X X) [IsMarkovKernel P] :
+    Measure (ℕ → X) :=
+  Kernel.trajMeasure (X := fun _ : ℕ => X) μ (homHistoryKernel P)
+
+theorem homTrajMeasure_prefix_succ
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (P : Kernel X X) [IsMarkovKernel P]
+    (n : ℕ) :
+    (((homTrajMeasure μ P).map (frestrictLe n)) ⊗ₘ homHistoryKernel P n).map
+        (appendHistory n) =
+      (homTrajMeasure μ P).map (frestrictLe (n + 1)) := by
+  have hstep :=
+    Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
+      (μ₀ := μ) (κ := homHistoryKernel P) (a := n)
+  rw [← hstep]
+  rw [← Measure.map_map (measurable_appendHistory n) (by fun_prop)]
+  congr with x
+  exact appendHistory_prefix_next n x
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
