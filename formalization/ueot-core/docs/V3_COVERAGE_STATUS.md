@@ -87,9 +87,9 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 11 |
+| proved | 12 |
 | partial | 6 |
-| pending | 89 |
+| pending | 88 |
 | total | 106 |
 
 The six remaining partial P-IDs are:
@@ -101,7 +101,40 @@ The six remaining partial P-IDs are:
 - P-BRG-02
 - P-REF-05
 
-The newly proved set is the previous nine plus **P-RES-05** and **P-RES-06**.
+The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, and **P-CAR-04**.
+
+## 2026-09-09 advance: P-CAR-04
+
+P-CAR-04 has been promoted from `pending` to `proved`.
+
+Source statement:
+
+[
+\tfrac12 e(S) \le r(S) \le e(S).
+]
+
+The Lean module `UEOT.V3.DecoderRadius` proves the metric theorem in a more
+general pseudometric setting. `FiberDistances` is the set of all response
+distances inside one readout fiber and `DecoderBounds` is the set of all
+uniform decoder error bounds. If `e` is their least upper bound and `r` is
+the greatest lower bound of decoder bounds, Lean proves
+
+- `diameter_half_le_decoder_radius`
+- `decoder_radius_le_diameter`
+- `decoder_radius_bounds`
+
+The source TV-distance result is the direct specialization of this metric
+argument. No attainment assumption for the decoder infimum is added.
+
+Verification evidence:
+
+- theorem commit: `8115eb3f38c71d9f5b7027e1939448c9d88f408f`
+- official-target import commit: `ac5b6db04924db2d52b521ad97c60fba2351f8aa`
+- successful CI run after official import: `34337696868`
+
+The earlier green run for `8115eb3f...` is not used as proof evidence because
+the new module had not yet been imported by the default `UEOT` target. This
+verification gap was detected and repaired before status promotion.
 
 ## 2026-09-09 advance: P-RES-06
 
