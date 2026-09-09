@@ -36,12 +36,8 @@ jobs:
           lean --version
           lake --version
 
-      - name: Resolve pinned dependencies
-        run: |
-          lake update
-          echo "===== BEGIN lake-manifest.json ====="
-          cat lake-manifest.json
-          echo "===== END lake-manifest.json ====="
+      - name: Verify dependency lock exists
+        run: test -s lake-manifest.json
 
-      - name: Build UEOT
+      - name: Build UEOT from lock
         run: lake build UEOT
