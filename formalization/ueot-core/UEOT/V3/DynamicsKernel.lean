@@ -470,6 +470,27 @@ theorem homTrajMeasure_path_naturality
     (Preorder.measurable_frestrictLe n)]
   exact homTrajMeasure_prefix_naturality μ P Pbar f hf h n
 
+/-- Source clause (1) of P-DYN-01 expressed at the level of complete path laws:
+for every microscopic probability initial law, the coordinatewise macro
+pushforward of the microscopic Markov trajectory is exactly the trajectory of
+one common macro kernel started from the pushed-forward initial law. -/
+def PathLawLumpability
+    (P : Kernel X X) (Pbar : Kernel M M)
+    (f : X → M) (hf : Measurable f) : Prop :=
+  ∀ (μ : Measure X), IsProbabilityMeasure μ →
+    (homTrajMeasure μ P).map (mapPath f) =
+      homTrajMeasure (μ.map f) Pbar
+
+theorem strongLumpability_implies_pathLaw
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f)
+    (h : StrongLumpability P Pbar f hf) :
+    PathLawLumpability P Pbar f hf := by
+  intro μ hμ
+  letI : IsProbabilityMeasure μ := hμ
+  exact homTrajMeasure_path_naturality μ P Pbar f hf h
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
