@@ -190,7 +190,11 @@ def appendHistory (n : ℕ)
 
 theorem measurable_appendHistory (n : ℕ) :
     Measurable (appendHistory (X := X) n) := by
-  fun_prop
+  unfold appendHistory
+  exact measurable_IicProdIoc.comp
+    (measurable_fst.prodMk
+      ((MeasurableEquiv.piSingleton (X := fun _ : ℕ => X) n).measurable.comp
+        measurable_snd))
 
 theorem mapHistory_appendHistory
     (f : X → M) (n : ℕ)
@@ -198,9 +202,15 @@ theorem mapHistory_appendHistory
     mapHistory f (n + 1) (appendHistory n (x, y)) =
       appendHistory n (mapHistory f n x, f y) := by
   ext i
-  simp only [mapHistory, appendHistory, IicProdIoc_def,
-    MeasurableEquiv.piSingleton, MeasurableEquiv.coe_mk]
-  split_ifs <;> rfl
+  by_cases hi : (i : ℕ) ≤ n
+  · simp [mapHistory, appendHistory, IicProdIoc_def, hi]
+  · have hin : (i : ℕ) = n + 1 := by
+      have hle : (i : ℕ) ≤ n + 1 := Finset.mem_Iic.mp i.2
+      omega
+    have hieq : i = ⟨n + 1, Finset.mem_Iic.mpr le_rfl⟩ := Subtype.ext hin
+    subst i
+    simp [mapHistory, appendHistory, IicProdIoc_def,
+      MeasurableEquiv.piSingleton]
 
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
