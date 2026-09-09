@@ -34,18 +34,18 @@ needed by P-PRED-01.  It is intentionally weaker than declaring equality of
 completed sigma-algebras; that bridge is proved separately.
 -/
 
-def AEFactors {H S T : Type*} [MeasurableSpace S] [MeasurableSpace T]
+def AEFactors {H S T : Type*} [MeasurableSpace H] [MeasurableSpace S] [MeasurableSpace T]
     (μ : Measure H) (f : H → T) (g : H → S) : Prop :=
   ∃ d : S → T, Measurable d ∧ ∀ᵐ h ∂μ, f h = d (g h)
 
-theorem aeFactors_refl {H T : Type*} [MeasurableSpace T]
+theorem aeFactors_refl {H T : Type*} [MeasurableSpace H] [MeasurableSpace T]
     (μ : Measure H) (f : H → T) :
     AEFactors μ f f := by
   refine ⟨id, measurable_id, ?_⟩
   exact Filter.Eventually.of_forall (fun _ => rfl)
 
 theorem aeFactors_trans {H S T U : Type*}
-    [MeasurableSpace S] [MeasurableSpace T] [MeasurableSpace U]
+    [MeasurableSpace H] [MeasurableSpace S] [MeasurableSpace T] [MeasurableSpace U]
     (μ : Measure H) {f : H → U} {g : H → T} {h : H → S}
     (hfg : AEFactors μ f g) (hgh : AEFactors μ g h) :
     AEFactors μ f h := by
@@ -82,14 +82,14 @@ theorem canonical_aemeasurable_of_factorization {H I S Y : Type*} [Countable I]
 /-! `AESigmaLE μ f g` means that an almost-everywhere version of `f`
 generates no more sigma-information than `g`. This is the explicit mod-null
 sigma-factor order used for the minimal-embedding clause of P-PRED-01. -/
-def AESigmaLE {H S T : Type*} [MeasurableSpace S] [MeasurableSpace T]
+def AESigmaLE {H S T : Type*} [MeasurableSpace H] [MeasurableSpace S] [MeasurableSpace T]
     (μ : Measure H) (f : H → T) (g : H → S) : Prop :=
   ∃ f' : H → T, (∀ᵐ h ∂μ, f h = f' h) ∧
     MeasurableSpace.comap f' inferInstance ≤
       MeasurableSpace.comap g inferInstance
 
 theorem aeFactors_sigmaLE {H S T : Type*}
-    [MeasurableSpace S] [MeasurableSpace T]
+    [MeasurableSpace H] [MeasurableSpace S] [MeasurableSpace T]
     (μ : Measure H) {f : H → T} {g : H → S}
     (hfg : AEFactors μ f g) :
     AESigmaLE μ f g := by
