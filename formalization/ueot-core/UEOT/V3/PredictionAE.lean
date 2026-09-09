@@ -26,4 +26,56 @@ theorem transported_decoder_measurable {H I S Y : Type*}
     Measurable (fun h i => L i (s h)) :=
   (canonical_measurable L).comp hs
 
+
+/-! ## A measurable almost-everywhere factor preorder
+
+This packages the exact "embedding factor modulo a common null set" relation
+needed by P-PRED-01.  It is intentionally weaker than declaring equality of
+completed sigma-algebras; that bridge is proved separately.
+-/
+
+def AEFactors {H S T : Type*} [MeasurableSpace S] [MeasurableSpace T]
+    (μ : Measure H) (f : H → T) (g : H → S) : Prop :=
+  ∃ d : S → T, Measurable d ∧ ∀ᵐ h ∂μ, f h = d (g h)
+
+theorem aeFactors_refl {H T : Type*} [MeasurableSpace T]
+    (μ : Measure H) (f : H → T) :
+    AEFactors μ f f := by
+  refine ⟨id, measurable_id, ?_⟩
+  exact Filter.Eventually.of_forall (fun _ => rfl)
+
+theorem aeFactors_trans {H S T U : Type*}
+    [MeasurableSpace S] [MeasurableSpace T] [MeasurableSpace U]
+    (μ : Measure H) {f : H → U} {g : H → T} {h : H → S}
+    (hfg : AEFactors μ f g) (hgh : AEFactors μ g h) :
+    AEFactors μ f h := by
+  rcases hfg with ⟨d, hd, hdf⟩
+  rcases hgh with ⟨e, he, heg⟩
+  refine ⟨d ∘ e, hd.comp he, ?_⟩
+  exact (hdf.and heg).mono (fun x hx => by rw [hx.1, hx.2]; rfl)
+
+theorem canonical_ae_minimal {H I S Y : Type*} [Countable I]
+    [MeasurableSpace H] [MeasurableSpace S] [MeasurableSpace Y]
+    (μ : Measure H) (K : I → Kernel H Y) (s : H → S) (L : I → Kernel S Y)
+    (hL : ∀ i, ∀ᵐ h ∂μ, K i h = L i (s h)) :
+    AEFactors μ (fun h i => K i h) s := by
+  rcases common_factorization μ K s L hL with ⟨d, hd, hEq⟩
+  exact ⟨d, hd, hEq⟩
+
+theorem coordinate_ae_sufficient {H I Y : Type*}
+    [MeasurableSpace H] [MeasurableSpace Y]
+    (μ : Measure H) (K : I → Kernel H Y) (i : I) :
+    AEFactors μ (fun h => K i h) (fun h j => K j h) := by
+  refine ⟨fun c => c i, measurable_pi_apply i, ?_⟩
+  exact Filter.Eventually.of_forall (fun _ => rfl)
+
+theorem canonical_aemeasurable_of_factorization {H I S Y : Type*} [Countable I]
+    [MeasurableSpace H] [MeasurableSpace S] [MeasurableSpace Y]
+    (μ : Measure H) (K : I → Kernel H Y) (s : H → S) (hs : Measurable s)
+    (L : I → Kernel S Y)
+    (hL : ∀ i, ∀ᵐ h ∂μ, K i h = L i (s h)) :
+    AEMeasurable (fun h i => K i h) μ := by
+  rcases common_factorization μ K s L hL with ⟨d, hd, hEq⟩
+  exact ⟨d ∘ s, hd.comp hs, hEq⟩
+
 end UEOT.V3.PredictionAE
