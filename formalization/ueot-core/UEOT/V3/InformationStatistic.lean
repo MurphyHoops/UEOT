@@ -18,6 +18,7 @@ and conditional-information residual are separate next-layer obligations.
 namespace UEOT.V3.InformationStatistic
 
 open MeasureTheory InformationTheory
+open scoped ENNReal MeasureTheory ProbabilityTheory
 open UEOT.V3.InformationCore
 
 universe uH uM uY
@@ -183,7 +184,7 @@ reduces to conditioning H on M because Y is independent of H. -/
 noncomputable def conditionalMutualInfoStatistic
     [StandardBorelSpace H] [Nonempty H]
     (μ : Measure (H × Y)) (f : H → M) :
-    ℝ≥0∞ :=
+    ENNReal :=
   let ρ := liftedStatisticJoint μ f
   let σ := liftedStatisticReference μ f
   InformationTheory.klDiv ρ (ρ.fst ⊗ₘ σ.condKernel)
@@ -260,7 +261,7 @@ theorem mutualInfo_statistic_ge_sub_of_conditional_le
     [StandardBorelSpace H] [Nonempty H]
     (μ : Measure (H × Y)) [IsProbabilityMeasure μ]
     (f : H → M) (hf : Measurable f)
-    {ε : ℝ≥0∞}
+    {ε : ENNReal}
     (hε : conditionalMutualInfoStatistic μ f ≤ ε) :
     mutualInfo μ ≤ mutualInfo (statisticJoint μ f hf) + ε := by
   rw [mutualInfo_eq_statistic_add_conditional μ f hf]
