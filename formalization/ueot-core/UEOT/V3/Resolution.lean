@@ -253,7 +253,10 @@ theorem endpoint_equality_iff_unique_active_fibers {V W : Type*}
     have hd'd : d' ⊆ d := by
       intro y hy
       obtain ⟨x, hx⟩ := surj y
-      have hxpre : x ∈ π ⁻¹' B := hd'B hy
+      have hxpre : x ∈ π ⁻¹' B := by
+        apply hd'B
+        rw [hx]
+        exact hy
       have hxS : x ∈ S := hpreB hxpre
       rcases hxS with ⟨z, hzd, hxz⟩
       have hyz : y = z := by
@@ -280,7 +283,8 @@ theorem endpoint_equality_iff_unique_active_fibers {V W : Type*}
         z = π (σ z) := (hσ z).symm
         _ = π v := by rw [← hvz]
         _ = w := hv
-    simpa [hzw] using hvz
+    have : σ w = v := by simpa [hzw] using hvz
+    exact this.symm
   · intro huniq
     ext S
     constructor
@@ -291,7 +295,9 @@ theorem endpoint_equality_iff_unique_active_fibers {V W : Type*}
       rcases huniq w ⟨d, hd, hwd⟩ with ⟨v, hv, _⟩
       refine ⟨v, ?_, hv⟩
       apply hpreB
-      exact hdB hwd
+      apply hdB
+      rw [hv]
+      exact hwd
     · intro hup
       change π '' S ∈ UpClosure D at hup
       rcases hup with ⟨d, hd, hdImg⟩
