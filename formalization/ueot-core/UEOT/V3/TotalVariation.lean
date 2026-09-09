@@ -88,12 +88,12 @@ theorem tvDist_map_le
     [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
     (f : X → Y) (hf : Measurable f) :
     tvDist (μ.map f) (ν.map f) ≤ tvDist μ ν := by
-  unfold tvDist
+  change sSup (tvEventSet (μ.map f) (ν.map f)) ≤ tvDist μ ν
   refine csSup_le (tvEventSet_nonempty (μ.map f) (ν.map f)) ?_
   intro r hr
   rcases hr with ⟨B, hB, rfl⟩
   have hpre : MeasurableSet (f ⁻¹' B) := hf hB
   have hle := tvEvent_le μ ν (f ⁻¹' B) hpre
-  simpa [tvDist, measureReal_def, Measure.map_apply hf hB] using hle
+  simpa [measureReal_def, Measure.map_apply hf hB] using hle
 
 end UEOT.V3.TotalVariation
