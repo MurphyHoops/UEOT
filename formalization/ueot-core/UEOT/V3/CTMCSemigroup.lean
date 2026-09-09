@@ -118,10 +118,16 @@ theorem generator_intertwines_of_semigroup
   let S := leftMulIndicatorCLM block
   have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
   have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
-  have hleftF :=
-    R.hasFDerivAt.comp 0 hL.hasFDerivAt
-  have hrightF :=
-    S.hasFDerivAt.comp 0 hR.hasFDerivAt
+  have hleftD :
+      HasDerivAt
+        (R ∘ fun t : ℝ => NormedSpace.exp (t • L))
+        (R (NormedSpace.exp ((0 : ℝ) • L) * L)) 0 :=
+    R.hasFDerivAt.comp_hasDerivAt 0 hL
+  have hrightD :
+      HasDerivAt
+        (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar))
+        (S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar)) 0 :=
+    S.hasFDerivAt.comp_hasDerivAt 0 hR
   have hfun :
       (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
@@ -131,22 +137,10 @@ theorem generator_intertwines_of_semigroup
       (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[nhds 0]
         (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) :=
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
-  have hleftAsRight := hleftF.congr_of_eventuallyEq heq
-  have hderivEq := hleftAsRight.unique hrightF
-  have hone := congrArg (fun D => D (1 : ℝ)) hderivEq
-  have hone0 :
-      (R ∘SL ContinuousLinearMap.toSpanSingleton ℝ L) 1 =
-        (S ∘SL ContinuousLinearMap.toSpanSingleton ℝ Lbar) 1 := by
-    simpa using hone
-  have hstage :
-      R L = S Lbar := by
-    change
-      (R.comp (ContinuousLinearMap.toSpanSingleton ℝ L)) 1 =
-        (S.comp (ContinuousLinearMap.toSpanSingleton ℝ Lbar)) 1 at hone0
-    simpa only [ContinuousLinearMap.comp_apply,
-      ContinuousLinearMap.toSpanSingleton_apply, one_smul] using hone0
+  have hleftAsRight := hleftD.congr_of_eventuallyEq heq
+  have hderivEq := hleftAsRight.unique hrightD
   simpa [R, S, rightMulIndicatorCLM_apply,
-    leftMulIndicatorCLM_apply] using hstage
+    leftMulIndicatorCLM_apply] using hderivEq
 
 /-- Exact finite-CTMC semigroup quotient is equivalent to generator
 intertwining. -/
