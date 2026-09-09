@@ -28,7 +28,7 @@ def canonicalState [MeasurableSpace H] [MeasurableSpace Y₂]
     (K : I → Kernel H Y₂) : H → (I → Measure Y₂) :=
   fun h i => K i h
 
-def pushTarget [MeasurableSpace H] [MeasurableSpace Y₁] [MeasurableSpace Y₂]
+noncomputable def pushTarget [MeasurableSpace H] [MeasurableSpace Y₁] [MeasurableSpace Y₂]
     (K : I → Kernel H Y₂) (T : Y₂ → Y₁) (_hT : Measurable T) :
     I → Kernel H Y₁ :=
   fun i => Kernel.map (K i) T
