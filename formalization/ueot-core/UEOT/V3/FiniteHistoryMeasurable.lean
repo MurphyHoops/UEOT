@@ -23,6 +23,17 @@ universe uX uA uY
 variable {X : Type uX} {A : Type uA} {Y : Type uY}
 variable [MeasurableSpace X] [MeasurableSpace A]
 
+
+instance instMeasurableSpaceHistoryFiber (n : ℕ) :
+    MeasurableSpace (HistoryFiber X A n) := by
+  unfold HistoryFiber
+  infer_instance
+
+instance instMeasurableSpaceCarrier :
+    MeasurableSpace (Carrier X A) := by
+  unfold Carrier
+  infer_instance
+
 theorem measurable_sigmaMk_history (n : ℕ) :
     Measurable
       (fun h : HistoryFiber X A n =>
