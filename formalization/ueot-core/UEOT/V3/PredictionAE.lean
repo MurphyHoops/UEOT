@@ -78,4 +78,37 @@ theorem canonical_aemeasurable_of_factorization {H I S Y : Type*} [Countable I]
   rcases common_factorization μ K s L hL with ⟨d, hd, hEq⟩
   exact ⟨d ∘ s, hd.comp hs, hEq⟩
 
+
+/-! `AESigmaLE μ f g` means that an almost-everywhere version of `f`
+generates no more sigma-information than `g`. This is the explicit mod-null
+sigma-factor order used for the minimal-embedding clause of P-PRED-01. -/
+def AESigmaLE {H S T : Type*} [MeasurableSpace S] [MeasurableSpace T]
+    (μ : Measure H) (f : H → T) (g : H → S) : Prop :=
+  ∃ f' : H → T, (∀ᵐ h ∂μ, f h = f' h) ∧
+    MeasurableSpace.comap f' inferInstance ≤
+      MeasurableSpace.comap g inferInstance
+
+theorem aeFactors_sigmaLE {H S T : Type*}
+    [MeasurableSpace S] [MeasurableSpace T]
+    (μ : Measure H) {f : H → T} {g : H → S}
+    (hfg : AEFactors μ f g) :
+    AESigmaLE μ f g := by
+  rcases hfg with ⟨d, hd, hEq⟩
+  refine ⟨d ∘ g, ?_, ?_⟩
+  · exact hEq
+  · exact MeasurableSpace.comap_le_comap_of_eq_comp d hd rfl
+
+theorem canonical_ae_sigma_minimal {H I S Y : Type*} [Countable I]
+    [MeasurableSpace H] [MeasurableSpace S] [MeasurableSpace Y]
+    (μ : Measure H) (K : I → Kernel H Y) (s : H → S) (L : I → Kernel S Y)
+    (hL : ∀ i, ∀ᵐ h ∂μ, K i h = L i (s h)) :
+    AESigmaLE μ (fun h i => K i h) s :=
+  aeFactors_sigmaLE μ (canonical_ae_minimal μ K s L hL)
+
+theorem coordinate_ae_sigma_le_canonical {H I Y : Type*}
+    [MeasurableSpace H] [MeasurableSpace Y]
+    (μ : Measure H) (K : I → Kernel H Y) (i : I) :
+    AESigmaLE μ (fun h => K i h) (fun h j => K j h) :=
+  aeFactors_sigmaLE μ (coordinate_ae_sufficient μ K i)
+
 end UEOT.V3.PredictionAE
