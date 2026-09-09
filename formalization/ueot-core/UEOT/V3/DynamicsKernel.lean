@@ -168,8 +168,7 @@ theorem isMarkovKernel_homHistoryKernel
 theorem homHistoryKernel_intertwines
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
-    (h : StrongLumpability P Pbar f hf)
-    (n : ℕ) :
+    (h : StrongLumpability P Pbar f hf) :
     Kernel.map (homHistoryKernel P n) f =
       Kernel.comap (homHistoryKernel Pbar n)
         (mapHistory f n) (measurable_mapHistory f hf n) := by
@@ -256,7 +255,8 @@ theorem homTrajMeasure_prefix_zero
           (fun _ : Finset.Iic 0 => X)).symm := by
   letI : ∀ k, IsMarkovKernel (homHistoryKernel P k) :=
     fun k => isMarkovKernel_homHistoryKernel P k
-  rw [homTrajMeasure, Measure.map_comp _ _ (by fun_prop),
+  rw [homTrajMeasure, ProbabilityTheory.Kernel.trajMeasure,
+    Measure.map_comp _ _ (by fun_prop),
     ProbabilityTheory.Kernel.traj_map_frestrictLe,
     ProbabilityTheory.Kernel.partialTraj_self,
     Measure.id_comp]
