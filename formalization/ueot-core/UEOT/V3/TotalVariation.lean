@@ -96,4 +96,16 @@ theorem tvDist_map_le
   have hle := tvEvent_le μ ν (f ⁻¹' B) hpre
   simpa [measureReal_def, Measure.map_apply hf hB] using hle
 
+
+theorem tvDist_map_measurableEquiv
+    (μ ν : Measure X)
+    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
+    (e : X ≃ᵐ Y) :
+    tvDist (μ.map e) (ν.map e) = tvDist μ ν := by
+  apply le_antisymm
+  · exact tvDist_map_le μ ν e e.measurable
+  · have hrev :=
+      tvDist_map_le (μ.map e) (ν.map e) e.symm e.symm.measurable
+    simpa [Measure.map_map, Function.comp_def] using hrev
+
 end UEOT.V3.TotalVariation
