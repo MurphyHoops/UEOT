@@ -1,0 +1,72 @@
+schema_version: 1
+claim:
+  required:
+    - id
+    - layer
+    - title
+    - maturity
+    - source
+  fields:
+    id:
+      type: string
+      rule: stable_and_never_recycled
+    layer:
+      enum:
+        - constitution
+        - core
+        - bridge
+        - physics
+        - validation
+        - application
+        - publication
+    title:
+      type: string
+    maturity:
+      enum:
+        - canonical
+        - proved
+        - partial
+        - pending
+        - conjecture
+        - empirical
+        - deprecated
+    source:
+      fields:
+        path: string
+        version: string
+        hash: string
+        anchor: string
+    dependencies:
+      type: list
+      item: stable_claim_or_assumption_id
+    formalization:
+      fields:
+        package: string
+        declarations: list
+        official_target: string
+        verification_run: string
+    physical_interface:
+      fields:
+        bridges: list
+        sector_inputs: list
+        standard_inputs: list
+        effective_assumptions: list
+    validation:
+      fields:
+        benchmark_ids: list
+        experiment_ids: list
+        falsification_ids: list
+        report_ids: list
+    notes:
+      type: string
+status_rules:
+  proved:
+    require_source_match: true
+    require_official_formal_target: true
+    require_successful_pinned_build: true
+    prohibit_proof_holes: true
+  empirical:
+    require_observable: true
+    require_provenance: true
+    require_uncertainty_method: true
+    require_failure_criterion: true
