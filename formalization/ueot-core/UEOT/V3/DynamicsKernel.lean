@@ -238,6 +238,21 @@ noncomputable def homTrajMeasure
     fun n => isMarkovKernel_homHistoryKernel P n
   ProbabilityTheory.Kernel.trajMeasure (X := fun _ : ℕ => X) μ (homHistoryKernel P)
 
+
+theorem homTrajMeasure_prefix_zero
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (P : Kernel X X) [IsMarkovKernel P] :
+    (homTrajMeasure μ P).map (Preorder.frestrictLe 0) =
+      μ.map
+        (MeasurableEquiv.piUnique
+          (fun _ : Finset.Iic 0 => X)).symm := by
+  letI : ∀ k, IsMarkovKernel (homHistoryKernel P k) :=
+    fun k => isMarkovKernel_homHistoryKernel P k
+  rw [homTrajMeasure, Measure.map_comp _ _ (by fun_prop),
+    ProbabilityTheory.Kernel.traj_map_frestrictLe,
+    ProbabilityTheory.Kernel.partialTraj_self,
+    Measure.id_comp]
+
 theorem homTrajMeasure_prefix_succ
     (μ : Measure X) [IsProbabilityMeasure μ]
     (P : Kernel X X) [IsMarkovKernel P]
