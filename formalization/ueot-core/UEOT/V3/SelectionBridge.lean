@@ -1,4 +1,6 @@
 import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.FieldSimp
 
 /-!
 # P-BRG-02 — behavioral equivalence and selection indistinguishability
