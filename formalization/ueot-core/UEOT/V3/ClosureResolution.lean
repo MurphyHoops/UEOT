@@ -1,4 +1,5 @@
 import Mathlib
+import UEOT.V3.Resolution
 
 /-!
 # UEOT Core v3 — closure systems and resolution composition
@@ -78,5 +79,109 @@ theorem closure_comp_of_nested
     · exact subset_closure Lr S
   · apply closure_mono Lr
     exact subset_closure Ls S
+
+
+open UEOT.V3.Resolution
+
+def imageClosure (L : ClosureSystem V) (M : Set (Set V)) : Set (Set V) :=
+  (closure L) '' M
+
+def resolutionMap (L : ClosureSystem V) (M : Set (Set V)) : Set (Set V) :=
+  MinimalFamily (imageClosure L M)
+
+theorem imageClosure_finite (L : ClosureSystem V) {M : Set (Set V)}
+    (hM : M.Finite) :
+    (imageClosure L M).Finite := by
+  exact hM.image (closure L)
+
+theorem minimalFamily_cofinal {F : Set (Set V)}
+    (hF : F.Finite) {S : Set V} (hS : S ∈ F) :
+    ∃ M ∈ MinimalFamily F, M ⊆ S := by
+  obtain ⟨M, hMS, hMmin⟩ := hF.exists_le_minimal hS
+  exact ⟨M, hMmin, hMS⟩
+
+theorem upClosure_resolutionMap (L : ClosureSystem V)
+    {M : Set (Set V)} (hM : M.Finite) :
+    UpClosure (resolutionMap L M) = UpClosure (imageClosure L M) := by
+  ext S
+  constructor
+  · rintro ⟨E, hE, hES⟩
+    exact ⟨E, hE.prop, hES⟩
+  · rintro ⟨E, hE, hES⟩
+    obtain ⟨D, hD, hDE⟩ :=
+      minimalFamily_cofinal (imageClosure_finite L hM) hE
+    exact ⟨D, hD, hDE.trans hES⟩
+
+theorem minimalFamily_subset_of_upClosure_eq
+    {F G : Set (Set V)}
+    (hFG : UpClosure F = UpClosure G) :
+    MinimalFamily F ⊆ MinimalFamily G := by
+  intro S hS
+  have hSUF : S ∈ UpClosure F := ⟨S, hS.prop, Set.Subset.rfl⟩
+  have hSUG : S ∈ UpClosure G := by
+    rw [← hFG]
+    exact hSUF
+  rcases hSUG with ⟨G0, hG0, hG0S⟩
+  have hG0UF : G0 ∈ UpClosure F := by
+    rw [hFG]
+    exact ⟨G0, hG0, Set.Subset.rfl⟩
+  rcases hG0UF with ⟨F0, hF0, hF0G0⟩
+  have hF0S : F0 ⊆ S := hF0G0.trans hG0S
+  have hSF0 : S ⊆ F0 := hS.le_of_le hF0 hF0S
+  have hSG0 : S ⊆ G0 := hSF0.trans hF0G0
+  have hG0eq : G0 = S := Set.Subset.antisymm hG0S hSG0
+  subst G0
+  refine ⟨hG0, ?_⟩
+  intro T hT hTS
+  have hTUF : T ∈ UpClosure F := by
+    rw [hFG]
+    exact ⟨T, hT, Set.Subset.rfl⟩
+  rcases hTUF with ⟨F1, hF1, hF1T⟩
+  exact (hS.le_of_le hF1 (hF1T.trans hTS)).trans hF1T
+
+theorem minimalFamily_eq_of_upClosure_eq
+    {F G : Set (Set V)}
+    (hFG : UpClosure F = UpClosure G) :
+    MinimalFamily F = MinimalFamily G := by
+  apply Set.Subset.antisymm
+  · exact minimalFamily_subset_of_upClosure_eq hFG
+  · exact minimalFamily_subset_of_upClosure_eq hFG.symm
+
+theorem upClosure_imageClosure_resolutionMap
+    (Lr Ls : ClosureSystem V)
+    (hrs : Lr.carrier ⊆ Ls.carrier)
+    {M : Set (Set V)} (hM : M.Finite) :
+    UpClosure (imageClosure Lr (resolutionMap Ls M)) =
+      UpClosure (imageClosure Lr M) := by
+  ext S
+  constructor
+  · rintro ⟨E, ⟨D, hD, rfl⟩, hES⟩
+    rcases hD.prop with ⟨m, hm, rfl⟩
+    refine ⟨closure Lr m, ⟨m, hm, rfl⟩, ?_⟩
+    rw [← closure_comp_of_nested Lr Ls hrs m]
+    exact hES
+  · rintro ⟨E, ⟨m, hm, rfl⟩, hES⟩
+    have hImg : closure Ls m ∈ imageClosure Ls M := ⟨m, hm, rfl⟩
+    obtain ⟨D, hD, hDsub⟩ :=
+      minimalFamily_cofinal (imageClosure_finite Ls hM) hImg
+    refine ⟨closure Lr D, ⟨D, hD, rfl⟩, ?_⟩
+    have hmono :
+        closure Lr D ⊆ closure Lr (closure Ls m) :=
+      closure_mono Lr hDsub
+    rw [closure_comp_of_nested Lr Ls hrs m] at hmono
+    exact hmono.trans hES
+
+/-! P-RES-02, minimal-family part.  This theorem is stronger than the
+three-scale source statement: the top-scale family need only be finite; it does
+not need an additional closedness assumption for the composition identity. -/
+theorem resolutionMap_comp
+    (Lr Ls : ClosureSystem V)
+    (hrs : Lr.carrier ⊆ Ls.carrier)
+    {M : Set (Set V)} (hM : M.Finite) :
+    resolutionMap Lr M =
+      resolutionMap Lr (resolutionMap Ls M) := by
+  unfold resolutionMap
+  apply minimalFamily_eq_of_upClosure_eq
+  exact (upClosure_imageClosure_resolutionMap Lr Ls hrs hM).symm
 
 end UEOT.V3.ClosureResolution
