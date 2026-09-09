@@ -87,12 +87,58 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 23 |
+| proved | 24 |
 | partial | 0 |
-| pending | 83 |
+| pending | 82 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-REC-01
+
+P-REC-01 has been promoted from `pending` to `proved`.
+
+The source hypothesis is a nonnegative conditional drift inequality
+
+[
+\mathbb E[R_{t+1}\mid \mathcal F_t] \le \kappa R_t + \eta,
+\qquad 0\le \kappa <1,\; \eta\ge0,
+]
+
+with finite initial mean.  The source conclusions are the geometric mean bound
+
+[
+\mathbb E R_t
+\le
+\kappa^t \mathbb E R_0
++
+\eta\frac{1-\kappa^t}{1-\kappa},
+]
+
+and the corresponding Markov tail bound obtained by dividing the same
+right-hand side by a positive threshold.
+
+The Lean implementation separates the algebraic and probabilistic layers:
+
+- `UEOT.V3.RecoveryDiscrete.affine_recurrence_closed_bound` proves the exact
+  scalar geometric recursion;
+- `UEOT.V3.RecoveryProbability.ennMean_succ_le` derives total-expectation
+  recursion from the conditional-Lebesgue inequality;
+- `ennMean_lt_top` propagates finiteness from the initial mean rather than
+  assuming future integrability in advance;
+- `realMean_succ_le` converts the finite ENNReal recursion to the literal
+  real affine recursion;
+- `p_rec_01_mean_bound` proves the source mean formula;
+- `p_rec_01_tail_bound` proves the source Markov tail formula.
+
+Verification evidence:
+
+- clean-rebased branch head:
+  `8d6daa8590b209b50761a97d19b8924bfe633cd9`;
+- clean branch full-target CI run `34388552652` (#227): success;
+- main squash merge:
+  `28d8a9a8e4e7a937567e7cf51185163cd0dae2b7`;
+- post-merge full-target CI run `34388913585` (#232): success.
 
 ## 2026-09-10 advance: P-INT-03
 
