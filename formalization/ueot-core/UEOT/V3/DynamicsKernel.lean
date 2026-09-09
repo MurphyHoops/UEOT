@@ -33,11 +33,15 @@ theorem strongLumpability_iff_apply
   constructor
   · intro h x
     have hx := congrArg (fun κ : Kernel X M => κ x) h
-    simpa [StrongLumpability, Kernel.map_apply, Kernel.comap_apply] using hx
+    unfold StrongLumpability at h
+    rw [Kernel.map_apply _ hf, Kernel.comap_apply] at hx
+    exact hx
   · intro h
     unfold StrongLumpability
-    ext x
-    simpa [Kernel.map_apply, Kernel.comap_apply] using h x
+    ext x B hB
+    rw [Kernel.map_apply' _ hf _ hB, Kernel.comap_apply']
+    have hx := congrArg (fun μ : Measure M => μ B) (h x)
+    simpa [Measure.map_apply hf hB] using hx
 
 theorem strongLumpability_iff_preimage
     (P : Kernel X X) (Pbar : Kernel M M)
