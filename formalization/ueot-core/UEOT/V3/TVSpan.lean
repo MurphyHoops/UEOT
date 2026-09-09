@@ -46,7 +46,7 @@ theorem abs_integral_sub_le_span_tvDist
     |(∫ x, g x ∂μ) - ∫ x, g x ∂ν| ≤
       (b - a) * UEOT.V3.TotalVariation.tvDist μ ν := by
   let c : ℝ := (a + b) / 2
-  let centered : X → ℝ := fun x => g x - c
+  let centered : X → ℝ := g - fun _ => c
   have hgμ : Integrable g μ :=
     integrable_of_interval μ g hg a b ha hb
   have hgν : Integrable g ν :=
@@ -57,22 +57,30 @@ theorem abs_integral_sub_le_span_tvDist
     simpa [centered] using hgμ.sub hcμ
   have hcenterν : Integrable centered ν := by
     simpa [centered] using hgν.sub hcν
+  have hcenterSignedμ :
+      μ.toSignedMeasure.Integrable centered := by
+    simpa only [VectorMeasure.Integrable,
+      Measure.variation_toSignedMeasure] using hcenterμ
+  have hcenterSignedν :
+      ν.toSignedMeasure.Integrable centered := by
+    simpa only [VectorMeasure.Integrable,
+      Measure.variation_toSignedMeasure] using hcenterν
   have hvec :
       (∫ᵛ x, centered x ∂<•UEOT.V3.VariationBridge.signedDiff μ ν) =
         (∫ x, centered x ∂μ) - ∫ x, centered x ∂ν := by
     unfold UEOT.V3.VariationBridge.signedDiff
-    rw [integral_sub_vectorMeasure]
-    · simp
-    · simpa [VectorMeasure.Integrable,
-        Measure.variation_toSignedMeasure] using hcenterμ
-    · simpa [VectorMeasure.Integrable,
-        Measure.variation_toSignedMeasure] using hcenterν
+    rw [VectorMeasure.integral_sub_vectorMeasure hcenterSignedμ hcenterSignedν]
+    simp
   have hcenter_diff :
       (∫ x, centered x ∂μ) - ∫ x, centered x ∂ν =
         (∫ x, g x ∂μ) - ∫ x, g x ∂ν := by
     simp only [centered]
     rw [integral_sub hgμ hcμ, integral_sub hgν hcν]
     simp
+  letI : IsFiniteMeasure
+      (UEOT.V3.VariationBridge.signedDiff μ ν).variation := by
+    rw [← SignedMeasure.totalVariation_eq_variation]
+    infer_instance
   have hvar :
       ‖∫ᵛ x, centered x ∂<•UEOT.V3.VariationBridge.signedDiff μ ν‖ ≤
         ((b - a) / 2) *

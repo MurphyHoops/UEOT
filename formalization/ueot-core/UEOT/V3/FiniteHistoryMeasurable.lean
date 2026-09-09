@@ -52,6 +52,11 @@ theorem measurable_of_forall_historyFiber
       (fun h : HistoryFiber X A n => (⟨n, h⟩ : Carrier X A))
   refine le_iInf fun n => ?_
   apply MeasurableSpace.comap_le_iff_le_map.1
+  change
+    MeasurableSpace.comap
+        (fun h : HistoryFiber X A n => (⟨n, h⟩ : Carrier X A))
+        (MeasurableSpace.comap f (inferInstance : MeasurableSpace Y)) ≤
+      (inferInstance : MeasurableSpace (HistoryFiber X A n))
   rw [MeasurableSpace.comap_comp]
   exact (hf n).comap_le
 
