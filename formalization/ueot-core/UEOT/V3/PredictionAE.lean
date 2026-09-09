@@ -166,7 +166,7 @@ theorem condExp_eq_of_exact_factor {H S : Type*}
   let mS : MeasurableSpace H := MeasurableSpace.comap s inferInstance
   have hs_comap : @Measurable H S mS inferInstance s :=
     measurable_iff_comap_le.mpr le_rfl
-  have hcomp : @StronglyMeasurable H ℝ mS inferInstance inferInstance (d ∘ s) :=
+  have hcomp : StronglyMeasurable[mS] (d ∘ s) :=
     hd.comp_measurable hs_comap
   have heq : f = d ∘ s := funext hfd
   rw [heq]
