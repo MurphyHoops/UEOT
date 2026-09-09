@@ -137,7 +137,8 @@ theorem generator_intertwines_of_semigroup
   have hstage :
       R (NormedSpace.exp ((0 : ℝ) • L) * L) =
         S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar) := by
-    simpa [ContinuousLinearMap.comp_apply,
+    simpa [ContinuousLinearMap.compSL_apply,
+      ContinuousLinearMap.comp_apply,
       ContinuousLinearMap.toSpanSingleton_apply] using hone
   simpa [R, S, rightMulIndicatorCLM_apply,
     leftMulIndicatorCLM_apply] using hstage
