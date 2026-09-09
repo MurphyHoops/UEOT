@@ -25,16 +25,16 @@ Promotion requires exact source matching, official-target CI, merge to
 
 | status | count |
 |---|---:|
-| proved | **30** |
+| proved | **31** |
 | partial | **0** |
-| pending | **76** |
+| pending | **75** |
 | total | **106** |
 
 Snapshot parent main:
-- commit: `e4e690d68863c5ef18ac9a3dc3afdbcd43ca43b7`
+- commit: `35abc35c9eb9b209a3fb75699f79c893cdb3165c`
 - latest observed main Action: #350
   `completed/success`
-- latest ledger promotion: **P-DYN-03**
+- latest ledger promotion: **P-QSD-02**
 - theorem-bearing green checkpoint: `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177`
   (P-DYN-03; main CI #337 success)
 
@@ -42,22 +42,7 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
 
 ## 3. HOT proof lanes
 
-### A. P-QSD-02 — ready for integration
-
-- branch: `formal/persistence-qsd`
-- head: `a5562d8462a5487638018c53db49f17c2b677918`
-- latest Action: #354
-  `completed/success`
-- module: `UEOT/V3/QSDPerron.lean`
-- source wrapper: `p_qsd_02_killed`
-- state: **source audit passed; official-target branch CI green**
-- semantics: Perron existence/uniqueness is retained as the source's K-PF-01
-  input. The theorem proves QSD at every finite step, survival mass `ρ^n`,
-  stochastic Doob transform, invariant law `q_i h_i`, and derives
-  `ρ ≤ 1` from substochastic rows.
-- next: clean PR/merge, post-merge CI, then promote to **31/106**.
-
-### B. P-DYN-02 — active repair
+### A. P-DYN-02 — active repair
 
 - branch: `formal/pdyn02-ctmc`
 - head: `8de6126dd03f5b87b565bac16a16820d996409a4`
@@ -72,7 +57,7 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
   `ContinuousLinearMap`s; do not use same-algebra `.mul_const/.const_mul`.
 - target: source-exact finite CTMC generator criterion iff semigroup quotient.
 
-### C. P-INFO-01 — active closure
+### B. P-INFO-01 — active closure
 
 - branch: `formal/pinfo01-04-chain`
 - head: `0feab7b610891d25181358577062424ff33b588b`
@@ -86,7 +71,7 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
   attempt is not green.
 - no promotion from data processing alone.
 
-### D. P-FAC-01 — infrastructure green, source theorem pending
+### C. P-FAC-01 — infrastructure green, source theorem pending
 
 - branch: `formal/pfac01-covariance`
 - head: `9df57aed56d76f89240b09e97aefd8634c8d891f`
@@ -98,6 +83,28 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
   expected reward/policy/optimal value under transported policy laws.
 - blocker: full feedback-policy path-law transport.
 - status remains **pending**.
+
+### D. P-PER-01 — new omega-limit lane
+
+- branch: `formal/pper01-omega-limit`
+- source target: continuous semiflow + closed persistence domain + precompact
+  orbit imply a nonempty compact omega-limit set contained in the domain and
+  strongly invariant under the semiflow.
+- Mathlib foundation: `Mathlib.Dynamics.OmegaLimit`.
+- semantic gate: Mathlib's generic monoid `IsInvariant` only gives forward
+  inclusion; the source equality `phi_s(omega)=omega` still requires the
+  reverse inclusion from precompactness.
+- state: active foundation.
+
+### E. P-REC-02 — new continuous-recovery lane
+
+- branch: `formal/prec02-continuous-recovery`
+- source target: Dynkin/local-AC assumptions plus
+  `L W <= -a W + b` imply the exact exponential mean bound and the
+  mean-square distance bound from `W >= c d^2`.
+- Mathlib foundation: `Mathlib.Analysis.ODE.Gronwall` plus
+  absolutely-continuous/integral APIs.
+- state: active analytic foundation.
 
 ## 4. Integrated / archive lanes
 
@@ -131,11 +138,12 @@ When chat/context is missing:
 
 ## 6. Immediate order
 
-1. **P-QSD-02** — integrate first.
-2. **P-DYN-02** — repair reverse semigroup/generator bridge.
-3. **P-INFO-01** — complete exact information chain.
-4. **P-FAC-01** — finish feedback-policy path-law covariance.
-5. Refill HOT slots from `PARALLEL_FORMALIZATION_ROADMAP.md`.
+1. **P-DYN-02** — repair reverse semigroup/generator bridge.
+2. **P-INFO-01** — complete exact information chain.
+3. **P-FAC-01** — finish feedback-policy path-law covariance.
+4. **P-PER-01** — omega-limit compact invariant core.
+5. **P-REC-02** — continuous Lyapunov recovery.
+6. Keep 5–8 independent HOT lanes active and refill only from pending P-IDs.
 
 ## 7. Repository truth hierarchy
 
