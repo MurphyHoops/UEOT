@@ -87,9 +87,9 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 28 |
+| proved | 29 |
 | partial | 0 |
-| pending | 78 |
+| pending | 77 |
 | total | 106 |
 
 There are currently no partial P-IDs.
@@ -308,6 +308,40 @@ Verification evidence:
 - main squash merge:
   `28d8a9a8e4e7a937567e7cf51185163cd0dae2b7`;
 - post-merge full-target CI run `34388913585` (#232): success.
+
+## 2026-09-10 advance: P-INT-02
+
+P-INT-02 has been promoted from `pending` to `proved`.
+
+For a finite pointwise response family `K i x e`, the Lean formalization
+defines the source's two canonical equivalence relations literally:
+
+- `internalSetoid K`: two internal states agree under every environment and
+  protocol;
+- `environmentSetoid K`: two environments agree under every internal state
+  and protocol.
+
+It then constructs the corresponding quotient classes and the descended
+response `quotientResponse`, proves the exact factorization
+
+[
+K_i(x,e)=Q_i(M^*(x),U^*(e)),
+]
+
+and proves the source minimality statement: every other exact separated
+representation `K i x e = Q i (f x) (g e)` can identify only pairs already
+identified by the corresponding canonical quotient.  The wrapper `p_int_02`
+retains the source's finite `X/E/I` assumptions explicitly.
+
+Verification evidence:
+
+- final branch head:
+  `68db42f650cc06d4dfbe2d214e4d6d15b931d32e`;
+- branch full-target CI run `34407920197` (#320): success;
+- PR #15 full-target CI run `34408221102` (#323): success;
+- main squash merge:
+  `2d26456a31dbbb59656641c393f97ef620def269`;
+- post-merge full-target CI run `34408527616` (#328): success.
 
 ## 2026-09-10 advance: P-INT-03
 
