@@ -87,9 +87,9 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 13 |
+| proved | 14 |
 | partial | 6 |
-| pending | 87 |
+| pending | 86 |
 | total | 106 |
 
 The six remaining partial P-IDs are:
@@ -101,7 +101,40 @@ The six remaining partial P-IDs are:
 - P-BRG-02
 - P-REF-05
 
-The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, and **P-RES-02**.
+The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
+
+## 2026-09-09 advance: P-RES-01
+
+P-RES-01 has been promoted from `pending` to `proved`.
+
+Source statement:
+
+[
+\mathcal M_r=
+\min_{\subseteq}\{\operatorname{cl}_r(M):M\in\mathcal M_s\}.
+]
+
+Lean theorem:
+
+- `UEOT.V3.ClosureResolution.minimal_property_coarse_graining`
+
+Definitions:
+
+- `admissibleMin L A = min(A ∩ L)`
+- `resolutionMap L M = min{closure L M | M ∈ M}`
+
+The proof assumes upward closure of the admissible property and explicit
+finiteness of the fine admissible family. The source works over a finite carrier,
+so this is the source-relevant minimal-existence assumption rather than a new
+physical/mathematical restriction.
+
+Verification evidence:
+
+- theorem commit: `09196536122e5976161dbfc5db04f3d0c86731fa`
+- successful official-target CI run: `34339206795`
+
+With this promotion, P-RES-01 through P-RES-06 are all source-matched as
+`proved`.
 
 ## 2026-09-09 advance: P-RES-02
 

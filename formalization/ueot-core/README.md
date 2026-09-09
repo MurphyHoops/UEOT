@@ -58,20 +58,21 @@ The authoritative current ledger is:
 
 As of the completed P-RES-02 promotion:
 
-- 13 `proved`
+- 14 `proved`
 - 6 `partial`
-- 87 `pending`
+- 86 `pending`
 - 106 total source P-IDs
 
 Newly completed since the recovered baseline include:
 
 - P-CAR-04 — decoder-radius / fiber-diameter inequality
+- P-RES-01 — coarse-graining of minimal admissible properties
 - P-RES-02 — closure and minimal-family resolution composition
 - P-RES-05 — exact microscopic realization interval
 - P-RES-06 — object-relative uniqueness from active fibers
 
-P-RES-01 is the current in-flight target and remains pending until its source
-statement is machine-checked and its status documentation is updated.
+The complete P-RES-01..06 resolution block is now source-matched as proved.
+The next priority is restoration of the previously verified package modules, followed by closure of the remaining six partial P-IDs.
 
 ## Current synchronized modules
 

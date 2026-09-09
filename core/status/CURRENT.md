@@ -13,9 +13,9 @@ the full mathematical specification.
 
 Current source-level Lean status:
 
-- proved: 13
+- proved: 14
 - partial: 6
-- pending: 87
+- pending: 86
 - total source P-IDs: 106
 
 Authoritative detailed ledger:
@@ -28,13 +28,13 @@ Recently promoted:
 - P-RES-06
 - P-CAR-04
 - P-RES-02
+- P-RES-01
 
-P-RES-02 is now source-matched and machine-checked in both its closure-operator and minimal-family composition forms.
+P-RES-01 and P-RES-02 are now source-matched and machine-checked on the shared closure-system layer. Together with the previously proved P-RES-03..06, the complete P-RES-01..06 resolution block is now proved.
 
 ## Immediate priorities
 
-1. complete P-RES-01 using the same closure-system layer;
-2. restore the remaining previously verified Lean modules from the historical
+1. restore the remaining previously verified Lean modules from the historical
    package;
 4. return to the six partial probability/dynamics/teleology/bridge items;
 5. keep the 106-item completion gate intact.
