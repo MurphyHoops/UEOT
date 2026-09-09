@@ -31,8 +31,8 @@ Promotion requires exact source matching, official-target CI, merge to
 | total | **106** |
 
 Snapshot parent main:
-- commit: `35abc35c9eb9b209a3fb75699f79c893cdb3165c`
-- latest observed main Action: #350
+- commit: `bfb711a54eb38f5df5c1a025153c118e833daa8e`
+- latest observed main Action: #362
   `completed/success`
 - latest ledger promotion: **P-QSD-02**
 - theorem-bearing green checkpoint: `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177`
@@ -42,69 +42,75 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
 
 ## 3. HOT proof lanes
 
-### A. P-DYN-02 — active repair
+### A. P-DYN-02 — active reverse-derivative closure
 
 - branch: `formal/pdyn02-ctmc`
-- head: `8de6126dd03f5b87b565bac16a16820d996409a4`
-- latest Action: #351
-  `completed/failure`
-- modules: `CTMCLumpability.lean`, `CTMCSemigroup.lean`
-- green foundation: block-sum ↔ generator intertwining; macro construction
-  and uniqueness on a surjective partition; power propagation; generator ⇒
-  matrix-exponential semigroup intertwining.
-- blocker: pinned-Mathlib proof of the reverse zero-time derivative
-  `semigroup ⇒ generator`. Use the rectangular multiplication
-  `ContinuousLinearMap`s; do not use same-algebra `.mul_const/.const_mul`.
-- target: source-exact finite CTMC generator criterion iff semigroup quotient.
+- head: `afed47db0e78f42db2e7d1bb66c7015c0ef25896`
+- latest submitted proof repair: zero-time Fréchet derivative comparison via
+  `HasFDerivAt.congr_of_eventuallyEq`, avoiding incompatible Matrix topology annotations.
+- latest observed Action: #369 on `afed47db`, **in progress** at snapshot.
+- green foundation: finite CTMC block-sum criterion ↔ generator intertwining;
+  macro construction/uniqueness under surjective partition; power propagation;
+  generator ⇒ matrix-exponential semigroup intertwining.
+- blocker: verify reverse semigroup ⇒ generator under pinned Mathlib, then
+  package the exact source iff theorem.
+- next: inspect #369; if green, source-audit + PR/merge train; if red, repair
+  only the residual elaboration/API error.
 
-### B. P-INFO-01 — active closure
+### B. P-INFO-01 — exact conditional-KL chain active
 
 - branch: `formal/pinfo01-04-chain`
-- head: `0feab7b610891d25181358577062424ff33b588b`
-- latest Action: #355
-  `completed/failure`
-- module: `InformationStatistic.lean`
-- green core: deterministic statistic joint/marginal transport and
-  `I(f(H);Y) ≤ I(H;Y)`.
-- blocker: exact chain identity
-  `I(H;Y)=I(M;Y)+I(H;Y|M)` with `M=f(H)`; the latest reversible-KL lift
-  attempt is not green.
-- no promotion from data processing alone.
+- head: `2ba8cfec9e6bb913bb5ba27bdc2d720dfe0552f2`
+- latest submitted theorem: `mutualInfo_eq_statistic_add_conditional`.
+- latest observed Action: #368 on `2ba8cfec`, **in progress** at snapshot.
+- green foundation: deterministic statistic joint/marginal transport;
+  data processing; reversible measurable lift preserving KL (#359 success).
+- semantic design: conditional information is represented by standard-Borel
+  disintegration and conditional KL after the reversible lift; it is not
+  defined as a subtraction residual.
+- blocker: pinned-Mathlib verification of the exact chain identity, then the
+  ε-retention and discrete-entropy consequences.
+- next: inspect #368 and repair disintegration/compProd API if required.
 
-### C. P-FAC-01 — infrastructure green, source theorem pending
+### C. P-FAC-01 — feedback-policy covariance pending
 
 - branch: `formal/pfac01-covariance`
 - head: `9df57aed56d76f89240b09e97aefd8634c8d891f`
 - PR: **#14 draft**
-- latest observed branch Action: #n/a
-  `unknown/unknown`
-- green: kernel/readout transport, strong-lumpability covariance,
-  homogeneous path-law covariance, predictive factorization covariance,
-  expected reward/policy/optimal value under transported policy laws.
-- blocker: full feedback-policy path-law transport.
-- status remains **pending**.
+- latest verified branch/PR CI: #321/#322, success.
+- green foundation: representation transport for kernels/readouts,
+  strong-lumpability covariance, homogeneous path-law covariance, predictive
+  factorization covariance, and reward/policy/optimal-value transport.
+- blocker: full feedback-policy finite path-law covariance must be derived,
+  not assumed as an external policy-law equality.
+- reuse target: main's `PathError.causalLaw` finite causal-record machinery.
+- next: define transported history policy and prove law pushforward by horizon induction.
 
-### D. P-PER-01 — new omega-limit lane
+### D. P-PER-01 — omega-limit strong invariance active
 
 - branch: `formal/pper01-omega-limit`
-- source target: continuous semiflow + closed persistence domain + precompact
-  orbit imply a nonempty compact omega-limit set contained in the domain and
-  strongly invariant under the semiflow.
-- Mathlib foundation: `Mathlib.Dynamics.OmegaLimit`.
-- semantic gate: Mathlib's generic monoid `IsInvariant` only gives forward
-  inclusion; the source equality `phi_s(omega)=omega` still requires the
-  reverse inclusion from precompactness.
-- state: active foundation.
+- head: `03079c3fdcdecfd1321afce973e3f204dd6b4e3f`
+- PR: **#17 draft**
+- latest full-target branch CI: #365, **success**.
+- green theorem layer: nonempty compact omega-limit; containment in a closed
+  persistence domain; forward invariance under the continuous semiflow.
+- semantic blocker: the source requires `φ_s '' ω(x) = ω(x)`; Mathlib's
+  generic monoid invariant theorem gives only forward inclusion.
+- next: formalize the precompact-subsequence reverse inclusion while keeping
+  genuine semiflow semantics.
 
-### E. P-REC-02 — new continuous-recovery lane
+### E. P-REC-02 — continuous recovery active
 
 - branch: `formal/prec02-continuous-recovery`
-- source target: Dynkin/local-AC assumptions plus
-  `L W <= -a W + b` imply the exact exponential mean bound and the
-  mean-square distance bound from `W >= c d^2`.
-- Mathlib foundation: `Mathlib.Analysis.ODE.Gronwall` plus
-  absolutely-continuous/integral APIs.
-- state: active analytic foundation.
+- head: `45eb9a1bd35c98a245ca55c885bd45d800a8c5e7`
+- PR: **#18 draft**
+- module-only CI #366: success.
+- official-target import CI #367: failure only at final algebraic normalization.
+- latest repair: `45eb9a1b`
+  reshapes the raw Grönwall inequality into the source exponential formula.
+- semantic blocker after compilation: bridge local absolute continuity +
+  a.e. Dynkin drift to the scalar bound without strengthening the P-ID statement.
+- next: verify the algebra repair, then build the AC/a.e.-derivative bridge.
 
 ## 4. Integrated / archive lanes
 
