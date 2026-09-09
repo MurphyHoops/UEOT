@@ -429,9 +429,19 @@ theorem pathMeasure_eq_of_prefix_eq
       (Preorder.measurable_frestrictLe (X := fun _ : ℕ => M) b)]
     rw [Preorder.frestrictLe₂_comp_frestrictLe
       (π := fun _ : ℕ => M) hab]
-  have hproj :=
-    MeasureTheory.isProjectiveMeasureFamily_inducedFamily
-      (X := fun _ : ℕ => M) ρ hρ
+  have hproj :
+      MeasureTheory.IsProjectiveMeasureFamily
+        (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) := by
+    intro I J hJI
+    have sls : J.sup id ≤ I.sup id := Finset.sup_mono hJI
+    simp only [MeasureTheory.inducedFamily]
+    rw [Measure.map_map, Finset.restrict₂_comp_restrict₂,
+      ← Finset.restrict₂_comp_restrict₂ J.subset_Iic_sup_id
+        (Finset.Iic_subset_Iic.2 sls),
+      ← Measure.map_map,
+      ← Preorder.frestrictLe₂.eq_def sls,
+      hρ (J.sup id) (I.sup id) sls]
+    all_goals fun_prop
   have hμ :
       MeasureTheory.IsProjectiveLimit μpath
         (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) := by
