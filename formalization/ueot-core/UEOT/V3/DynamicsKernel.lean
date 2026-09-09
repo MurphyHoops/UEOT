@@ -412,39 +412,43 @@ theorem pathMeasure_eq_of_prefix_eq
       μpath.map (Preorder.frestrictLe n) =
         νpath.map (Preorder.frestrictLe n)) :
     μpath = νpath := by
-  let ρ : (n : ℕ) → Measure ((i : Finset.Iic n) → M) :=
-    fun n => μpath.map (Preorder.frestrictLe n)
-  letI : ∀ n, IsProbabilityMeasure (ρ n) := fun n => by
-    dsimp [ρ]
+  let Pfin : (I : Finset ℕ) → Measure ((i : I) → M) :=
+    fun I => μpath.map I.restrict
+  letI : ∀ I, IsProbabilityMeasure (Pfin I) := fun I => by
+    dsimp [Pfin]
     exact Measure.isProbabilityMeasure_map
-      (Preorder.measurable_frestrictLe n).aemeasurable
-  have hρ :
-      ∀ a b : ℕ, ∀ hab : a ≤ b,
-        (ρ b).map
-          (Preorder.frestrictLe₂ (π := fun _ : ℕ => M) hab) = ρ a := by
-    intro a b hab
-    dsimp [ρ]
-    rw [Measure.map_map
-      (Preorder.measurable_frestrictLe₂ (X := fun _ : ℕ => M) hab)
-      (Preorder.measurable_frestrictLe (X := fun _ : ℕ => M) b)]
-    rw [Preorder.frestrictLe₂_comp_frestrictLe
-      (π := fun _ : ℕ => M) hab]
-  have hproj :=
-    MeasureTheory.isProjectiveMeasureFamily_inducedFamily
-      (X := fun _ : ℕ => M) ρ hρ
+      (Finset.measurable_restrict I).aemeasurable
+  have hνfin :
+      ∀ I : Finset ℕ, νpath.map I.restrict = Pfin I := by
+    intro I
+    dsimp [Pfin]
+    have hsub : I ⊆ Finset.Iic (I.sup id) := I.subset_Iic_sup_id
+    calc
+      νpath.map I.restrict =
+          (νpath.map (Preorder.frestrictLe (I.sup id))).map
+            (Finset.restrict₂ hsub) := by
+        rw [Measure.map_map
+          (Finset.measurable_restrict₂ hsub)
+          (Preorder.measurable_frestrictLe
+            (X := fun _ : ℕ => M) (I.sup id))]
+        rw [Finset.restrict₂_comp_restrict hsub]
+      _ =
+          (μpath.map (Preorder.frestrictLe (I.sup id))).map
+            (Finset.restrict₂ hsub) := by
+        rw [hprefix (I.sup id)]
+      _ = μpath.map I.restrict := by
+        rw [Measure.map_map
+          (Finset.measurable_restrict₂ hsub)
+          (Preorder.measurable_frestrictLe
+            (X := fun _ : ℕ => M) (I.sup id))]
+        rw [Finset.restrict₂_comp_restrict hsub]
   have hμ :
-      MeasureTheory.IsProjectiveLimit μpath
-        (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) := by
-    rw [MeasureTheory.isProjectiveLimit_nat_iff hproj μpath]
-    intro n
-    rw [MeasureTheory.inducedFamily_Iic]
+      MeasureTheory.IsProjectiveLimit μpath Pfin := by
+    intro I
+    rfl
   have hν :
-      MeasureTheory.IsProjectiveLimit νpath
-        (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) := by
-    rw [MeasureTheory.isProjectiveLimit_nat_iff hproj νpath]
-    intro n
-    rw [MeasureTheory.inducedFamily_Iic]
-    exact (hprefix n).symm
+      MeasureTheory.IsProjectiveLimit νpath Pfin :=
+    hνfin
   exact hμ.unique hν
 
 theorem homTrajMeasure_path_naturality
@@ -476,6 +480,7 @@ pushforward of the microscopic Markov trajectory is exactly the trajectory of
 one common macro kernel started from the pushed-forward initial law. -/
 def PathLawLumpability
     (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
     (f : X → M) (hf : Measurable f) : Prop :=
   ∀ (μ : Measure X), IsProbabilityMeasure μ →
     (homTrajMeasure μ P).map (mapPath f) =
@@ -487,6 +492,7 @@ theorem strongLumpability_implies_pathLaw
     (f : X → M) (hf : Measurable f)
     (h : StrongLumpability P Pbar f hf) :
     PathLawLumpability P Pbar f hf := by
+  unfold PathLawLumpability
   intro μ hμ
   letI : IsProbabilityMeasure μ := hμ
   exact homTrajMeasure_path_naturality μ P Pbar f hf h
