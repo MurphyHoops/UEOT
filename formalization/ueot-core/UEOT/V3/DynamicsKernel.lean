@@ -214,6 +214,14 @@ theorem mapHistory_appendHistory
       MeasurableEquiv.piSingleton]
 
 
+
+theorem mapHistory_comp_appendHistory
+    (f : X → M) (n : ℕ) :
+    mapHistory f (n + 1) ∘ appendHistory n =
+      appendHistory n ∘ Prod.map (mapHistory f n) f := by
+  funext p
+  exact mapHistory_appendHistory f n p.1 p.2
+
 theorem appendHistory_prefix_next
     (n : ℕ) (x : ℕ → X) :
     appendHistory n (Preorder.frestrictLe n x, x (n + 1)) =
