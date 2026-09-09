@@ -216,33 +216,37 @@ theorem mapHistory_appendHistory
 
 theorem appendHistory_prefix_next
     (n : ℕ) (x : ℕ → X) :
-    appendHistory n (frestrictLe n x, x (n + 1)) =
-      frestrictLe (n + 1) x := by
+    appendHistory n (Preorder.frestrictLe n x, x (n + 1)) =
+      Preorder.Preorder.frestrictLe (n + 1) x := by
   ext i
   by_cases hi : (i : ℕ) ≤ n
-  · simp [appendHistory, IicProdIoc_def, frestrictLe_apply, hi]
+  · simp [appendHistory, IicProdIoc_def, Preorder.frestrictLe_apply, hi]
   · have hin : (i : ℕ) = n + 1 := by
       have hle : (i : ℕ) ≤ n + 1 := Finset.mem_Iic.mp i.2
       omega
     subst i
-    simp [appendHistory, IicProdIoc_def, frestrictLe_apply,
+    simp [appendHistory, IicProdIoc_def, Preorder.frestrictLe_apply,
       MeasurableEquiv.piSingleton]
 
 noncomputable def homTrajMeasure
     (μ : Measure X) (P : Kernel X X) [IsMarkovKernel P] :
     Measure (ℕ → X) :=
+  letI : ∀ n, IsMarkovKernel (homHistoryKernel P n) :=
+    fun n => isMarkovKernel_homHistoryKernel P n
   ProbabilityTheory.Kernel.trajMeasure (X := fun _ : ℕ => X) μ (homHistoryKernel P)
 
 theorem homTrajMeasure_prefix_succ
     (μ : Measure X) [IsProbabilityMeasure μ]
     (P : Kernel X X) [IsMarkovKernel P]
     (n : ℕ) :
-    (((homTrajMeasure μ P).map (frestrictLe n)) ⊗ₘ homHistoryKernel P n).map
+    (((homTrajMeasure μ P).map (Preorder.frestrictLe n)) ⊗ₘ homHistoryKernel P n).map
         (appendHistory n) =
-      (homTrajMeasure μ P).map (frestrictLe (n + 1)) := by
+      (homTrajMeasure μ P).map (Preorder.Preorder.frestrictLe (n + 1)) := by
+  letI : ∀ k, IsMarkovKernel (homHistoryKernel P k) :=
+    fun k => isMarkovKernel_homHistoryKernel P k
   have hstep :=
     ProbabilityTheory.Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
-      (μ₀ := μ) (κ := homHistoryKernel P) (a := n)
+      (X := fun _ : ℕ => X) (μ₀ := μ) (κ := homHistoryKernel P) (a := n)
   rw [← hstep]
   rw [← Measure.map_map (measurable_appendHistory n) (by fun_prop)]
   congr with x
