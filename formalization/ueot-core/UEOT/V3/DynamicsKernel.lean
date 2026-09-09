@@ -334,6 +334,52 @@ theorem homHistory_compProd_naturality
         lintegral_map (Kernel.measurable_kernel_prodMk_left hs) hF]
       rfl
 
+
+theorem mapHistory_piUnique_zero
+    (f : X → M) :
+    mapHistory f 0 ∘
+        (MeasurableEquiv.piUnique
+          (fun _ : Finset.Iic 0 => X)).symm =
+      (MeasurableEquiv.piUnique
+        (fun _ : Finset.Iic 0 => M)).symm ∘ f := by
+  funext x
+  ext i
+  rfl
+
+theorem homTrajMeasure_prefix_naturality
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f)
+    (h : StrongLumpability P Pbar f hf)
+    (n : ℕ) :
+    ((homTrajMeasure μ P).map (Preorder.frestrictLe n)).map
+        (mapHistory f n) =
+      (homTrajMeasure (μ.map f) Pbar).map
+        (Preorder.frestrictLe n) := by
+  letI : IsProbabilityMeasure (μ.map f) :=
+    (Measure.isProbabilityMeasure_map_iff hf.aemeasurable).2 inferInstance
+  induction n with
+  | zero =>
+      rw [homTrajMeasure_prefix_zero μ P,
+        homTrajMeasure_prefix_zero (μ.map f) Pbar,
+        Measure.map_map (measurable_mapHistory f hf 0) (by fun_prop),
+        Measure.map_map (by fun_prop) hf,
+        mapHistory_piUnique_zero f]
+  | succ n ih =>
+      rw [← homTrajMeasure_prefix_succ μ P n]
+      rw [Measure.map_map
+        (measurable_mapHistory f hf (n + 1))
+        (measurable_appendHistory n)]
+      rw [mapHistory_comp_appendHistory f n]
+      rw [← Measure.map_map
+        (measurable_appendHistory (X := M) n) (by fun_prop)]
+      rw [homHistory_compProd_naturality
+        (μh := (homTrajMeasure μ P).map (Preorder.frestrictLe n))
+        P Pbar f hf h]
+      rw [ih]
+      exact homTrajMeasure_prefix_succ (μ.map f) Pbar n
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
