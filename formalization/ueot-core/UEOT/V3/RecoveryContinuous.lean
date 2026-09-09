@@ -1,4 +1,4 @@
-import Mathlib.Analysis.ODE.Gronwall
+import Mathlib.Analysis.ODE.Gronwall\nimport Mathlib.MeasureTheory.Integral.IntervalIntegral.AbsolutelyContinuousFun
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Ring
 
@@ -16,6 +16,39 @@ obligation and no P-ID promotion is claimed here.
 namespace UEOT.V3.RecoveryContinuous
 
 open Set Real
+
+/-- Fundamental AC/a.e. comparison lemma needed by the exact source version:
+an absolutely continuous scalar function whose derivative is nonpositive
+almost everywhere cannot rise above its initial value. -/
+theorem le_initial_of_ac_ae_deriv_nonpos
+    (g : ℝ → ℝ) (T : ℝ)
+    (hT : 0 ≤ T)
+    (hg : AbsolutelyContinuousOnInterval g 0 T)
+    (hderiv :
+      ∀ᵐ t ∂MeasureTheory.volume.restrict (Icc 0 T),
+        deriv g t ≤ 0) :
+    ∀ t ∈ Icc 0 T, g t ≤ g 0 := by
+  intro t ht
+  have hsub : uIcc (0 : ℝ) t ⊆ uIcc (0 : ℝ) T := by
+    rw [uIcc_of_le ht.1, uIcc_of_le hT]
+    exact Icc_subset_Icc_right ht.2
+  have hgt : AbsolutelyContinuousOnInterval g 0 t :=
+    hg.mono hsub
+  have hderiv_t :
+      ∀ᵐ x ∂MeasureTheory.volume.restrict (Icc 0 t),
+        deriv g x ≤ 0 := by
+    exact hderiv.filter_mono
+      (ae_mono (MeasureTheory.Measure.restrict_mono
+        (Icc_subset_Icc_right ht.2) le_rfl))
+  have hint :
+      (∫ x in (0 : ℝ)..t, deriv g x) ≤
+        ∫ x in (0 : ℝ)..t, (0 : ℝ) := by
+    exact intervalIntegral.integral_mono_ae_restrict
+      ht.1 hgt.intervalIntegrable_deriv intervalIntegrable_const hderiv_t
+  have hftc := hgt.integral_deriv_eq_sub
+  have hzero : (∫ _x in (0 : ℝ)..t, (0 : ℝ)) = 0 := by simp
+  rw [hzero] at hint
+  linarith
 
 /-- Exact exponential recovery bound from the scalar differential inequality
 m' <= -a m + b on a compact time interval. -/
