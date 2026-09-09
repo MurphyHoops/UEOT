@@ -162,4 +162,108 @@ theorem klDiv_statisticLift_eq
     measurable_statisticForget
     (statisticForget_leftInverse f)
 
+
+/-- Lifted true joint law on `((M,Y),H)`. -/
+noncomputable def liftedStatisticJoint
+    (μ : Measure (H × Y)) (f : H → M) :
+    Measure ((M × Y) × H) :=
+  μ.map (statisticLift (Y := Y) f)
+
+/-- Lifted independence reference.  This is obtained from the product
+`P_H ⊗ P_Y` by the same reversible embedding `(h,y) ↦ ((f h,y),h)`. -/
+noncomputable def liftedStatisticReference
+    (μ : Measure (H × Y)) (f : H → M) :
+    Measure ((M × Y) × H) :=
+  (μ.fst.prod μ.snd).map (statisticLift (Y := Y) f)
+
+/-- Conditional mutual information residual for a deterministic statistic,
+realized in the standard conditional-KL form after disintegrating the lifted
+independence reference.  Under the reference law, conditioning H on (M,Y)
+reduces to conditioning H on M because Y is independent of H. -/
+noncomputable def conditionalMutualInfoStatistic
+    [StandardBorelSpace H] [Nonempty H]
+    (μ : Measure (H × Y)) (f : H → M) :
+    ℝ≥0∞ :=
+  let ρ := liftedStatisticJoint μ f
+  let σ := liftedStatisticReference μ f
+  InformationTheory.klDiv ρ (ρ.fst ⊗ₘ σ.condKernel)
+
+theorem liftedStatisticJoint_fst
+    (μ : Measure (H × Y)) [IsFiniteMeasure μ]
+    (f : H → M) (hf : Measurable f) :
+    (liftedStatisticJoint μ f).fst = statisticJoint μ f hf := by
+  unfold liftedStatisticJoint statisticJoint Measure.fst
+  rw [Measure.map_map measurable_fst (measurable_statisticLift f hf)]
+  rfl
+
+theorem liftedStatisticReference_fst
+    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]
+    (f : H → M) (hf : Measurable f) :
+    (liftedStatisticReference μ f).fst =
+      (statisticJoint μ f hf).fst.prod (statisticJoint μ f hf).snd := by
+  unfold liftedStatisticReference Measure.fst
+  rw [Measure.map_map measurable_fst (measurable_statisticLift f hf)]
+  change
+    (μ.fst.prod μ.snd).map (Prod.map f id) =
+      (statisticJoint μ f hf).fst.prod (statisticJoint μ f hf).snd
+  exact (productMarginals_statisticJoint μ f hf).symm
+
+/-- Exact information-retention chain identity for a deterministic statistic.
+The conditional term is the conditional-KL residual obtained from standard
+Borel disintegration, rather than a residual defined by subtraction. -/
+theorem mutualInfo_eq_statistic_add_conditional
+    [StandardBorelSpace H] [Nonempty H]
+    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]
+    (f : H → M) (hf : Measurable f) :
+    mutualInfo μ =
+      mutualInfo (statisticJoint μ f hf) +
+        conditionalMutualInfoStatistic μ f := by
+  let ρ := liftedStatisticJoint μ f
+  let σ := liftedStatisticReference μ f
+  have hρfin : IsFiniteMeasure ρ := by
+    dsimp [ρ, liftedStatisticJoint]
+    infer_instance
+  have hσfin : IsFiniteMeasure σ := by
+    dsimp [σ, liftedStatisticReference]
+    infer_instance
+  letI : IsFiniteMeasure ρ := hρfin
+  letI : IsFiniteMeasure σ := hσfin
+  have hρdis : ρ.fst ⊗ₘ ρ.condKernel = ρ :=
+    Measure.disintegrate ρ ρ.condKernel
+  have hσdis : σ.fst ⊗ₘ σ.condKernel = σ :=
+    Measure.disintegrate σ σ.condKernel
+  have hchain :=
+    InformationTheory.klDiv_compProd_eq_add
+      ρ.fst σ.fst ρ.condKernel σ.condKernel
+  rw [hρdis, hσdis] at hchain
+  have htotal :
+      InformationTheory.klDiv ρ σ = mutualInfo μ := by
+    dsimp [ρ, σ, liftedStatisticJoint, liftedStatisticReference]
+    simpa [mutualInfo] using
+      klDiv_statisticLift_eq μ (μ.fst.prod μ.snd) f hf
+  have hfirst :
+      InformationTheory.klDiv ρ.fst σ.fst =
+        mutualInfo (statisticJoint μ f hf) := by
+    rw [liftedStatisticJoint_fst μ f hf,
+      liftedStatisticReference_fst μ f hf]
+    rfl
+  have hres :
+      InformationTheory.klDiv ρ
+          (ρ.fst ⊗ₘ σ.condKernel) =
+        conditionalMutualInfoStatistic μ f := by
+    rfl
+  rw [htotal, hfirst, hres] at hchain
+  exact hchain
+
+/-- Quantitative retention corollary of the exact chain identity. -/
+theorem mutualInfo_statistic_ge_sub_of_conditional_le
+    [StandardBorelSpace H] [Nonempty H]
+    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]
+    (f : H → M) (hf : Measurable f)
+    {ε : ℝ≥0∞}
+    (hε : conditionalMutualInfoStatistic μ f ≤ ε) :
+    mutualInfo μ ≤ mutualInfo (statisticJoint μ f hf) + ε := by
+  rw [mutualInfo_eq_statistic_add_conditional μ f hf]
+  exact add_le_add_left hε _
+
 end UEOT.V3.InformationStatistic
