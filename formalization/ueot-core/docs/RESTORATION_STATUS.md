@@ -34,14 +34,13 @@ Restoration and source coverage are separate ledgers.
 
 Current v3 source coverage remains:
 
-- proved: 15
-- partial: 5
+- proved: 16
+- partial: 4
 - pending: 86
 - total P-IDs: 106
 
-The five partial P-IDs are:
+The four partial P-IDs are:
 
-- P-PRED-02
 - P-DYN-01
 - P-TEL-01
 - P-BRG-02
@@ -125,3 +124,16 @@ New current-repository evidence:
 
 This promotion changes source coverage; unlike restoration-only work it reduces
 the partial count.
+
+
+## P-PRED-02 closure
+
+P-PRED-02 is now source-matched as `proved`.
+
+- final dependent-protocol commit:
+  `da33abaf7c079472a1d95c15d1b91c3b2b35361c`
+- successful current CI run:
+  `34344159704`
+
+The formal sigma-union result does not need the source's monotonicity
+assumption, so the source statement follows as a direct specialization.

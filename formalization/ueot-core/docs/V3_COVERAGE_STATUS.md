@@ -87,20 +87,61 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 15 |
-| partial | 5 |
+| proved | 16 |
+| partial | 4 |
 | pending | 86 |
 | total | 106 |
 
-The five remaining partial P-IDs are:
+The four remaining partial P-IDs are:
 
-- P-PRED-02
 - P-DYN-01
 - P-TEL-01
 - P-BRG-02
 - P-REF-05
 
 The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
+
+## 2026-09-09 advance: P-PRED-02
+
+P-PRED-02 has been promoted from `partial` to `proved`.
+
+Source clauses:
+
+1. measurable deterministic target transformation pushes the predictive kernels;
+2. enlarging the protocol family refines the generated sigma-factor;
+3. for a countable increasing protocol family, the union sigma-factor equals
+   the supremum of the individual factors.
+
+Lean module:
+
+- `UEOT.V3.PredictionRefinement`
+
+Key declarations:
+
+- `pushTarget`, `pushTarget_apply`,
+  `canonical_target_pushforward`
+- `sigmaCanonical`, `protocol_refinement_sigma_le`,
+  `sigmaCanonical_iUnion`
+- `pushTargetDependent`,
+  `sigmaCanonicalDependent`,
+  `protocol_refinement_sigma_le_dependent`,
+  `sigmaCanonicalDependent_iUnion`
+
+The sigma-union theorem is slightly stronger than the written source statement:
+the identity holds for an arbitrary countable family, so the source's
+monotonicity assumption is unnecessary for this equality.
+
+Verification evidence:
+
+- initial theorem commit: `8760dce625550e38aec30beee81bb0f2c0f69618`
+- map/iSup elaboration repair: `599ed0201be7cba0d1e91535c6a16fb780b8b9c9`
+- noncomputable map repair: `165aa3cb86cfb93938e8f9782457af43147255ac`,
+  run `34343887865` success
+- dependent-future-space closure:
+  `da33abaf7c079472a1d95c15d1b91c3b2b35361c`,
+  run `34344159704` success
+
+The two failed intermediate runs are retained as audit evidence.
 
 ## 2026-09-09 advance: P-PRED-01
 

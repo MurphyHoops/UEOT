@@ -13,8 +13,8 @@ the full mathematical specification.
 
 Current source-level Lean status:
 
-- proved: 15
-- partial: 5
+- proved: 16
+- partial: 4
 - pending: 86
 - total source P-IDs: 106
 
@@ -24,6 +24,7 @@ Authoritative detailed ledger:
 
 Recently promoted:
 
+- P-PRED-02
 - P-PRED-01
 
 - P-RES-05
@@ -47,3 +48,11 @@ The exact UEOT Core Mathematics v3.0 source used by the formal coverage ledger
 must be synchronized under `core/specifications/` byte-for-byte. Until that
 migration is completed, the coverage ledger records the exact source identity
 and historical hash; no regenerated substitute should be called canonical.
+
+
+## Active parallel lanes
+
+- P-DYN-01: general Markov strong lumpability + finite-step kernel consistency
+  is currently in CI; full conditional-history equivalence is still required.
+- P-TEL-01: infinite-horizon reward-shaping analytic core is currently in CI;
+  stochastic expectation/source bridge remains subject to audit.
