@@ -1,6 +1,7 @@
 import UEOT.Core.Reward
 import Mathlib.Analysis.SpecificLimits.Normed
 import Mathlib.MeasureTheory.Integral.Bochner.Basic
+import Mathlib.MeasureTheory.Integral.IntegrableOn
 
 /-!
 # P-TEL-01 — infinite-horizon analytic core
@@ -37,6 +38,8 @@ theorem bounded_expected_potential
     (hψm : StronglyMeasurable ψ)
     (hψ : ∀ x, |ψ x| ≤ M) :
     |∫ x, ψ x ∂μ| ≤ M := by
+  have hint : Integrable ψ μ :=
+    bounded_potential_integrable μ ψ M hψm hψ
   have hb :
       ‖∫ x, ψ x ∂μ‖ ≤ M * μ.real Set.univ :=
     norm_integral_le_of_norm_le_const
