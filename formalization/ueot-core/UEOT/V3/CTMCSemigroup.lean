@@ -127,8 +127,12 @@ theorem generator_intertwines_of_semigroup
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
     funext t
     simpa [R, S] using hsem t
-  rw [hfun] at hleftF
-  have hderivEq := hleftF.unique hrightF
+  have heq :
+      (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[𝓝 0]
+        (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) :=
+    Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
+  have hleftAsRight := hleftF.congr_of_eventuallyEq heq
+  have hderivEq := hleftAsRight.unique hrightF
   have hone := congrArg (fun D => D (1 : ℝ)) hderivEq
   simpa [R, S, rightMulIndicatorCLM_apply,
     leftMulIndicatorCLM_apply] using hone
