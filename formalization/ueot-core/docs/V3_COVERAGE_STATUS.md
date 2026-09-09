@@ -87,12 +87,48 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 27 |
+| proved | 28 |
 | partial | 0 |
-| pending | 79 |
+| pending | 78 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-DYN-04
+
+P-DYN-04 has been promoted from `pending` to `proved`.
+
+The source assumes two readouts of the same microscopic process with
+`f_r = c_{sr} ∘ f_s`, and separate approximation errors `ε_s` and `ε_r`
+for the two macro kernels.  The conclusion is deliberately restricted to the
+reachable fine-scale image `f_s(X)`:
+
+[
+D_{\rm TV}\bigl((c_{sr})_\# P_s(m,a),
+P_r(c_{sr}(m),a)\bigr) \le ε_s + ε_r.
+]
+
+The Lean theorem `UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv`
+matches that reachable-image condition literally through
+`m ∈ Set.range fs`.  Its proof inserts the common microscopic pushforward,
+uses `tvDist_map_le` on the fine-scale approximation, and closes with
+`tvDist_triangle`.  No statement is made outside the reachable image.
+
+The exact source clause is separately formalized as
+`p_dyn_04_exact_intertwining`, proving the corresponding pushforward
+intertwining identity when both scale descriptions are exact.
+
+Verification evidence:
+
+- pre-rebase branch head:
+  `5b94920d53cf7720b9e91c8eba5d95a60413a2fa`;
+- pre-rebase full-target push CI #274 and PR CI #275: success;
+- clean-rebased branch head:
+  `58e7a84b0da851dee63751bbf4a0d16dde561eac`;
+- clean branch full-target CI run `34401036500` (#278): success;
+- main squash merge:
+  `385bcac642694a3ede6d8e4d679c90ac1bc8de6e`;
+- post-merge full-target CI run `34401380097` (#281): success.
 
 ## 2026-09-10 advance: P-PRED-03
 
