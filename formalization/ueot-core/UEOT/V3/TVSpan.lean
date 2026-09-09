@@ -74,7 +74,7 @@ theorem abs_integral_sub_le_span_tvDist
   have hcenter_diff :
       (∫ x, centered x ∂μ) - ∫ x, centered x ∂ν =
         (∫ x, g x ∂μ) - ∫ x, g x ∂ν := by
-    simp only [centered]
+    simp only [centered, Pi.sub_apply]
     rw [integral_sub hgμ hcμ, integral_sub hgν hcν]
     simp
   letI : IsFiniteMeasure

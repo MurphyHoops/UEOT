@@ -21,7 +21,7 @@ universe uX uA
 def HistoryFiber (X : Type uX) (A : Type uA) (n : ℕ) : Type (max uX uA) :=
   (Fin (n + 1) → X) × (Fin n → A)
 
-def Carrier (X : Type uX) (A : Type uA) : Type (max uX uA) :=
+abbrev Carrier (X : Type uX) (A : Type uA) : Type (max uX uA) :=
   Sigma (HistoryFiber X A)
 
 namespace Carrier

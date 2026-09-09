@@ -431,18 +431,18 @@ theorem pathMeasure_eq_of_prefix_eq
       (π := fun _ : ℕ => M) hab]
   have hproj :
       MeasureTheory.IsProjectiveMeasureFamily
-        (MeasureTheory.inducedFamily ρ) :=
+        (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) :=
     MeasureTheory.isProjectiveMeasureFamily_inducedFamily
       (X := fun _ : ℕ => M) ρ hρ
   have hμ :
       MeasureTheory.IsProjectiveLimit μpath
-        (MeasureTheory.inducedFamily ρ) := by
+        (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) := by
     rw [MeasureTheory.isProjectiveLimit_nat_iff hproj μpath]
     intro n
     rw [MeasureTheory.inducedFamily_Iic]
   have hν :
       MeasureTheory.IsProjectiveLimit νpath
-        (MeasureTheory.inducedFamily ρ) := by
+        (MeasureTheory.inducedFamily (X := fun _ : ℕ => M) ρ) := by
     rw [MeasureTheory.isProjectiveLimit_nat_iff hproj νpath]
     intro n
     rw [MeasureTheory.inducedFamily_Iic]
