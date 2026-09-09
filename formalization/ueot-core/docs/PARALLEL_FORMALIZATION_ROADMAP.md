@@ -24,12 +24,12 @@ A helper theorem or a green isolated file never promotes a source P-ID by itself
 
 Current source-level status on green `main`:
 
-- proved: **28**
+- proved: **29**
 - partial: **0**
-- pending: **78**
+- pending: **77**
 - total: **106**
 
-Current green main checkpoint: `2bdc67dce18f487fa4cecfe0b33b9e021f2b3fbb`.
+Current green main checkpoint: `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177` (full-target CI #337 success).
 
 The 28 proved P-IDs are:
 
@@ -37,7 +37,7 @@ The 28 proved P-IDs are:
 - P-PROC-01
 - P-PRED-01, P-PRED-02, P-PRED-03
 - P-INFO-05
-- P-INT-03
+- P-INT-02, P-INT-03
 - P-DYN-01, P-DYN-04
 - P-REC-01
 - P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
@@ -92,28 +92,24 @@ Remaining closure:
 - optimal value equality;
 - source-facing wrapper and semantic audit.
 
-### Slot B — immediate closure / finite causal path error
+### Slot B — completed / finite causal path error
 
-Branch: `formal/pdyn03-path-error`
+Branch: `formal/pdyn03-path-error` (archive after merge)
 
 Target:
-- P-DYN-03
+- P-DYN-03 — **proved**
 
-Already available:
-- sharp product error algebra;
-- additive union bound;
-- coupling mismatch inequality;
-- finite-PMF TV/overlap machinery;
-- causal PMF extension;
-- one-step overlap survival.
+Integrated on main:
+- sharp product error algebra and additive union bound;
+- finite-PMF TV/overlap identity;
+- causal PMF path-law recursion;
+- source-facing finite causal path-error wrapper.
 
-Remaining closure:
-- finish current Lean scripting errors;
-- finite-horizon recursive path-law theorem;
-- source-facing wrapper for common causal strategy and equal initial record;
-- clean rebase and merge.
+Merge:
+- `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177`;
+- main full-target CI #337: success.
 
-If A and B close, coverage becomes **30 proved / 76 pending**.
+The freed HOT slot is reassigned to P-DYN-02 / QSD-02 closure work.
 
 ### Slot C — information chain factory
 
