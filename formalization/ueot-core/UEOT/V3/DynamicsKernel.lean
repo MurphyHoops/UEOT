@@ -569,6 +569,79 @@ theorem strongLumpability_implies_pathLaw
   letI : IsProbabilityMeasure μ := hμ
   exact homTrajMeasure_path_naturality μ P Pbar f hf h
 
+
+/-- Reverse half of P-DYN-01: if every microscopic probability initial law
+induces exactly the path law of one common macro Markov kernel, then the
+one-step kernels intertwine.  The proof uses the source-prescribed Dirac
+initial law and recovers the first-step marginal. -/
+theorem pathLaw_implies_strongLumpability
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f)
+    (h : PathLawLumpability P Pbar f hf) :
+    StrongLumpability P Pbar f hf := by
+  rw [strongLumpability_iff_apply]
+  intro x
+  letI : IsProbabilityMeasure (Measure.dirac x) := by infer_instance
+  have hpath := h (Measure.dirac x) (by infer_instance)
+  have htime := congrArg
+    (fun μ : Measure (ℕ → M) => μ.map (fun z : ℕ → M => z 1))
+    hpath
+  have hleft :
+      ((homTrajMeasure (Measure.dirac x) P).map (mapPath f)).map
+          (fun z : ℕ → M => z 1) =
+        (P x).map f := by
+    calc
+      ((homTrajMeasure (Measure.dirac x) P).map (mapPath f)).map
+          (fun z : ℕ → M => z 1) =
+          (homTrajMeasure (Measure.dirac x) P).map
+            ((fun z : ℕ → M => z 1) ∘ mapPath f) := by
+        rw [Measure.map_map
+          (measurable_pi_apply 1)
+          (measurable_mapPath f hf)]
+      _ =
+          (homTrajMeasure (Measure.dirac x) P).map
+            (f ∘ fun z : ℕ → X => z 1) := by
+        rfl
+      _ =
+          ((homTrajMeasure (Measure.dirac x) P).map
+            (fun z : ℕ → X => z 1)).map f := by
+        symm
+        rw [Measure.map_map hf (measurable_pi_apply 1)]
+      _ = (P x).map f := by
+        rw [homTrajMeasure_dirac_time_one P x]
+  have hright :
+      (homTrajMeasure ((Measure.dirac x).map f) Pbar).map
+          (fun z : ℕ → M => z 1) =
+        Pbar (f x) := by
+    rw [Measure.map_dirac' hf]
+    exact homTrajMeasure_dirac_time_one Pbar (f x)
+  exact hleft.symm.trans (htime.trans hright)
+
+/-- Full source-facing equivalence for P-DYN-01.  The source additionally
+assumes that the readout is surjective; the equivalence itself does not need
+surjectivity once the candidate macro kernel is already supplied. -/
+theorem strongLumpability_iff_pathLaw
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f) :
+    StrongLumpability P Pbar f hf ↔
+      PathLawLumpability P Pbar f hf :=
+  ⟨strongLumpability_implies_pathLaw P Pbar f hf,
+    pathLaw_implies_strongLumpability P Pbar f hf⟩
+
+/-- Literal P-DYN-01 wrapper retaining the source's measurable-surjection
+hypothesis.  Surjectivity is needed when constructing a macro kernel from
+fiber-constant rows; it is not needed for the equivalence against an already
+given candidate macro kernel. -/
+theorem strongLumpability_iff_pathLaw_of_surjective
+    (P : Kernel X X) (Pbar : Kernel M M)
+    [IsMarkovKernel P] [IsMarkovKernel Pbar]
+    (f : X → M) (hf : Measurable f) (_hsurj : Function.Surjective f) :
+    StrongLumpability P Pbar f hf ↔
+      PathLawLumpability P Pbar f hf :=
+  strongLumpability_iff_pathLaw P Pbar f hf
+
 theorem homHistoryKernel_apply_pushforward
     (P : Kernel X X) (Pbar : Kernel M M)
     (f : X → M) (hf : Measurable f)
