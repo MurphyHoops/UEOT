@@ -78,16 +78,19 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
 ### C. P-FAC-01 — feedback-policy covariance pending
 
 - branch: `formal/pfac01-covariance`
-- head: `9df57aed56d76f89240b09e97aefd8634c8d891f`
+- head: `6015673a7fd3b1f27ab41ddea2c2f3bbea9f5065`
 - PR: **#14 draft**
-- latest verified branch/PR CI: #321/#322, success.
-- green foundation: representation transport for kernels/readouts,
+- clean-rebased onto main `8d0b40b0`: **ahead 2 / behind 0**.
+- previous verified branch/PR CI before rebase: #321/#322, success.
+- latest clean-rebase CI: running/queued at this snapshot.
+- green foundation retained: representation transport for kernels/readouts,
   strong-lumpability covariance, homogeneous path-law covariance, predictive
   factorization covariance, and reward/policy/optimal-value transport.
 - blocker: full feedback-policy finite path-law covariance must be derived,
   not assumed as an external policy-law equality.
 - reuse target: main's `PathError.causalLaw` finite causal-record machinery.
-- next: define transported history policy and prove law pushforward by horizon induction.
+- next: after clean CI, define transported history policy and prove law
+  pushforward by horizon induction; only then source-audit and merge.
 
 ### D. P-PER-01 — omega-limit strong invariance active
 
@@ -117,6 +120,22 @@ The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
   P-ID statement.
 - next: formalize an AC/a.e. Grönwall bridge, then instantiate it with
   `m(t)=E[W(X_t)]`.
+
+## 3.1 Open-PR policy snapshot
+
+Current open/draft PRs are intentionally **not merge-ready** unless their full
+source theorem is closed:
+
+- **#14 / P-FAC-01**: clean-rebased to current main because its next proof step
+  depends on the already integrated P-DYN-03 causal-law machinery.
+- **#17 / P-PER-01**: keep draft; branch layer is green but source strong
+  invariance equality still lacks reverse inclusion.
+- **#18 / P-REC-02**: keep draft; branch layer is green but source AC/a.e.
+  Dynkin-to-Gronwall bridge remains.
+
+A draft PR is therefore a CI/workstream surface, not evidence of P-ID
+completion. Promotion still requires source match, clean full-target CI, merge,
+and post-merge main CI.
 
 ## 4. Integrated / archive lanes
 
