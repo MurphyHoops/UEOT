@@ -1,4 +1,5 @@
 import UEOT.V3.InformationCore
+import Mathlib.Probability.Kernel.Disintegration.StandardBorel
 import Mathlib.MeasureTheory.Measure.Prod
 
 /-!
@@ -71,5 +72,90 @@ theorem mutualInfo_statistic_le
   rw [productMarginals_statisticJoint μ f hf]
   exact InformationTheory.klDiv_map_le
     μ (μ.fst.prod μ.snd) (hf.prodMap measurable_id)
+
+
+/-- KL divergence is preserved by a measurable map that admits a measurable
+left inverse.  This is the exact reversible-embedding bridge used below to
+carry the deterministic statistic M=f(H) as an explicit coordinate without
+changing information. -/
+theorem klDiv_map_eq_of_measurable_leftInverse
+    {A : Type*} {B : Type*}
+    [MeasurableSpace A] [MeasurableSpace B]
+    (μ ν : Measure A) [IsFiniteMeasure μ] [IsFiniteMeasure ν]
+    (f : A → B) (g : B → A)
+    (hf : Measurable f) (hg : Measurable g)
+    (hleft : Function.LeftInverse g f) :
+    InformationTheory.klDiv (μ.map f) (ν.map f) =
+      InformationTheory.klDiv μ ν := by
+  apply le_antisymm
+  · exact InformationTheory.klDiv_map_le μ ν hf
+  · have hback :=
+      InformationTheory.klDiv_map_le (μ.map f) (ν.map f) hg
+    have hμ :
+        (μ.map f).map g = μ := by
+      rw [Measure.map_map hg hf]
+      convert Measure.map_id μ using 1
+      funext x
+      exact hleft x
+    have hν :
+        (ν.map f).map g = ν := by
+      rw [Measure.map_map hg hf]
+      convert Measure.map_id ν using 1
+      funext x
+      exact hleft x
+    simpa [hμ, hν] using hback
+
+/-- Lift a sample (H,Y) to ((M,Y),H), retaining the original history while
+making the deterministic statistic M=f(H) part of the leading coordinate. -/
+def statisticLift {H : Type*} {Y : Type*} {M : Type*}
+    (f : H → M) : H × Y → (M × Y) × H :=
+  fun p => ((f p.1, p.2), p.1)
+
+/-- Measurable left inverse of statisticLift: forget the redundant statistic
+coordinate. -/
+def statisticForget {H : Type*} {Y : Type*} {M : Type*} :
+    (M × Y) × H → H × Y :=
+  fun p => (p.2, p.1.2)
+
+theorem measurable_statisticLift
+    {H : Type*} {Y : Type*} {M : Type*}
+    [MeasurableSpace H] [MeasurableSpace Y] [MeasurableSpace M]
+    (f : H → M) (hf : Measurable f) :
+    Measurable (statisticLift (Y := Y) f) := by
+  fun_prop
+
+theorem measurable_statisticForget
+    {H : Type*} {Y : Type*} {M : Type*}
+    [MeasurableSpace H] [MeasurableSpace Y] [MeasurableSpace M] :
+    Measurable (statisticForget (H := H) (Y := Y) (M := M)) := by
+  fun_prop
+
+theorem statisticForget_leftInverse
+    {H : Type*} {Y : Type*} {M : Type*}
+    (f : H → M) :
+    Function.LeftInverse
+      (statisticForget (H := H) (Y := Y) (M := M))
+      (statisticLift (Y := Y) f) := by
+  intro p
+  rfl
+
+/-- Adding the deterministic statistic coordinate to a joint law preserves
+its KL information against any finite reference law. -/
+theorem klDiv_statisticLift_eq
+    {H : Type*} {Y : Type*} {M : Type*}
+    [MeasurableSpace H] [MeasurableSpace Y] [MeasurableSpace M]
+    (μ ν : Measure (H × Y))
+    [IsFiniteMeasure μ] [IsFiniteMeasure ν]
+    (f : H → M) (hf : Measurable f) :
+    InformationTheory.klDiv
+        (μ.map (statisticLift (Y := Y) f))
+        (ν.map (statisticLift (Y := Y) f)) =
+      InformationTheory.klDiv μ ν :=
+  klDiv_map_eq_of_measurable_leftInverse μ ν
+    (statisticLift (Y := Y) f)
+    (statisticForget (H := H) (Y := Y) (M := M))
+    (measurable_statisticLift f hf)
+    measurable_statisticForget
+    (statisticForget_leftInverse f)
 
 end UEOT.V3.InformationStatistic
