@@ -157,4 +157,46 @@ theorem policy_values_affine
   rw [hfun]
   exact positive_affine_maximizer V a (-ψ0 + c * (1 - β)⁻¹) ha p
 
+
+theorem policy_values_affine_from_bounded_state_potential
+    {P X : Type*} [MeasurableSpace X]
+    (μ : P → ℕ → Measure X)
+    [∀ p n, IsProbabilityMeasure (μ p n)]
+    (ψState : X → ℝ) (x : X)
+    (β a c M : ℝ)
+    (r : P → ℕ → ℝ)
+    (V V' : P → ℝ)
+    (hβ : |β| < 1)
+    (ha : 0 < a)
+    (hψm : StronglyMeasurable ψState)
+    (hψ : ∀ y, |ψState y| ≤ M)
+    (hμ0 : ∀ p, μ p 0 = Measure.dirac x)
+    (hr : ∀ p,
+      Tendsto (fun n => discounted β (r p) n) atTop (𝓝 (V p)))
+    (hr' : ∀ p,
+      Tendsto
+        (fun n => discounted β
+          (fun t =>
+            a * r p t
+              + β * expectedPotential (μ p) ψState (t + 1)
+              - expectedPotential (μ p) ψState t
+              + c) n)
+        atTop (𝓝 (V' p))) :
+    (∀ p, V' p = a * V p - ψState x + c * (1 - β)⁻¹) ∧
+      ∀ p, IsMaximizer V' p ↔ IsMaximizer V p := by
+  have hbound :
+      ∀ p n, |expectedPotential (μ p) ψState n| ≤ M := by
+    intro p n
+    exact bounded_expected_potential (μ p n) ψState M hψm hψ
+  have hinit :
+      ∀ p, expectedPotential (μ p) ψState 0 = ψState x := by
+    intro p
+    rw [expectedPotential, hμ0 p]
+    exact integral_dirac' ψState x hψm
+  exact policy_values_affine
+    β a c M (ψState x)
+    r
+    (fun p n => expectedPotential (μ p) ψState n)
+    V V' hβ ha hinit hbound hr hr'
+
 end UEOT.V3.RewardInfinite
