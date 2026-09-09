@@ -123,12 +123,12 @@ theorem generator_intertwines_of_semigroup
       HasDerivAt
         (R ∘ fun t : ℝ => NormedSpace.exp (t • L))
         (R (NormedSpace.exp ((0 : ℝ) • L) * L)) 0 :=
-    HasFDerivAt.comp_hasDerivAt R.hasFDerivAt 0 hL
+    HasFDerivAt.comp_hasDerivAt R.hasFDerivAt hL
   have hrightD :
       HasDerivAt
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar))
         (S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar)) 0 :=
-    HasFDerivAt.comp_hasDerivAt S.hasFDerivAt 0 hR
+    HasFDerivAt.comp_hasDerivAt S.hasFDerivAt hR
   have hfun :
       (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
