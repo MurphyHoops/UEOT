@@ -3,6 +3,10 @@
 This document is the execution plan for completing the machine-checked
 formalization of all 106 source P-IDs in `UEOT_Core_Mathematics_v3.0_Complete.md`.
 
+> **Live state is not maintained here.** Read `docs/FORMALIZATION_STATE.md`
+> first for branch heads, Actions, PRs, and recovery state. Source-level truth
+> remains in `docs/V3_COVERAGE_STATUS.md`.
+
 ## 1. Non-negotiable proof gate
 
 The source manuscript remains authoritative. A P-ID is promoted to `proved`

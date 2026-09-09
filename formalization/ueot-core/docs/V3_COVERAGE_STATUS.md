@@ -1,5 +1,8 @@
 # UEOT Core v3.0 Lean Coverage Status
 
+Operational branch/CI recovery snapshot: `docs/FORMALIZATION_STATE.md`.
+This file remains the authoritative source-level P-ID status ledger.
+
 This document records the source-level P-ID coverage state separately from the
 subset of Lean modules currently synchronized into this public repository.
 

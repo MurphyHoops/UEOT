@@ -50,45 +50,19 @@ Before public-repository synchronization, the verified v3 package baseline was:
 
 Historical theorem count is not a completion percentage.
 
-## Current source-level status
+## Start here: current state
 
-The authoritative current ledger is:
+Use these files in this order when resuming work:
 
-- `docs/V3_COVERAGE_STATUS.md`
+1. `docs/FORMALIZATION_STATE.md` — live branch / CI / PR / integration state.
+2. `docs/V3_COVERAGE_STATUS.md` — authoritative source-level P-ID ledger.
+3. `docs/PARALLEL_FORMALIZATION_ROADMAP.md` — forward execution plan.
 
-As of the completed P-RES-02 promotion:
+At the 2026-09-10 synchronized checkpoint the integrated count is
+**30 proved / 0 partial / 76 pending** out of 106 source P-IDs.
 
-- 14 `proved`
-- 6 `partial`
-- 86 `pending`
-- 106 total source P-IDs
-
-Newly completed since the recovered baseline include:
-
-- P-CAR-04 — decoder-radius / fiber-diameter inequality
-- P-RES-01 — coarse-graining of minimal admissible properties
-- P-RES-02 — closure and minimal-family resolution composition
-- P-RES-05 — exact microscopic realization interval
-- P-RES-06 — object-relative uniqueness from active fibers
-
-The complete P-RES-01..06 resolution block is now source-matched as proved.
-The next priority is restoration of the previously verified package modules, followed by closure of the remaining six partial P-IDs.
-
-## Current synchronized modules
-
-The public package currently includes the resumed resolution/decoder layer and
-is still a subset of the previously verified 16-module package.
-
-Important current modules include:
-
-- `UEOT/Core/Resolution.lean`
-- `UEOT/V3/Resolution.lean`
-- `UEOT/V3/DecoderRadius.lean`
-- `UEOT/V3/ClosureResolution.lean`
-
-Previously verified prediction, dynamics, access, blocker, threshold, decision,
-reward, and boundary-case modules still need full restoration from the
-historical package.
+Do not infer current status from historical counts or stale feature branches.
+The official imported module graph is `UEOT/V3.lean`.
 
 ## Proof-status gate
 
@@ -124,8 +98,12 @@ documented in `docs/PROJECT_ARCHITECTURE.md`.
 
 ## Branch policy
 
-Active development is committed to `main`.
+`main` is the serialized integration branch and the only merged state that
+contributes to the source-level coverage ledger.
 
-GitHub still reports `master` as the repository default-branch setting. No
-independent formalization development is maintained on `master`; changing the
-repository default-branch setting remains an administrative follow-up.
+Independent proof packets may run concurrently on `formal/*` branches. A
+green feature branch is candidate evidence, not a proved P-ID, until semantic
+audit, merge, and green post-merge main CI are complete.
+
+The current HOT/archive branch map is maintained in
+`docs/FORMALIZATION_STATE.md`.
