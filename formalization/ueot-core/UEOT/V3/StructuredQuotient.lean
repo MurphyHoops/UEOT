@@ -45,10 +45,10 @@ abbrev InternalClass (K : I → X → E → R) := Quotient (internalSetoid K)
 abbrev EnvironmentClass (K : I → X → E → R) := Quotient (environmentSetoid K)
 
 def internalClass (K : I → X → E → R) (x : X) : InternalClass K :=
-  Quotient.mk' x
+  Quotient.mk (internalSetoid K) x
 
 def environmentClass (K : I → X → E → R) (e : E) : EnvironmentClass K :=
-  Quotient.mk' e
+  Quotient.mk (environmentSetoid K) e
 
 /-- The response descends to the pair of canonical quotient classes. -/
 def quotientResponse (K : I → X → E → R) (i : I) :
@@ -70,7 +70,8 @@ def quotientResponse (K : I → X → E → R) (i : I) :
 @[simp] theorem quotientResponse_mk
     (K : I → X → E → R) (i : I) (x : X) (e : E) :
     quotientResponse K i (internalClass K x) (environmentClass K e) =
-      K i x e := rfl
+      K i x e := by
+  simp [quotientResponse, internalClass, environmentClass]
 
 /-- Exact source factorization through the canonical internal/environment
 quotients. -/
