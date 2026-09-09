@@ -94,6 +94,6 @@ theorem tvDist_map_le
   rcases hr with ⟨B, hB, rfl⟩
   have hpre : MeasurableSet (f ⁻¹' B) := hf hB
   have hle := tvEvent_le μ ν (f ⁻¹' B) hpre
-  simpa [measureReal_def, Measure.map_apply hf hB] using hle
+  simpa [tvDist, measureReal_def, Measure.map_apply hf hB] using hle
 
 end UEOT.V3.TotalVariation
