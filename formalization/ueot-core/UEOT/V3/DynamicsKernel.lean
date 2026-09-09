@@ -247,8 +247,13 @@ theorem homTrajMeasure_prefix_succ
   have hstep :=
     ProbabilityTheory.Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
       (X := fun _ : ℕ => X) (μ₀ := μ) (κ := homHistoryKernel P) (a := n)
-  rw [← hstep]
-  rw [← Measure.map_map (measurable_appendHistory n) (by fun_prop)]
+  have hstep' :
+      ((homTrajMeasure μ P).map (Preorder.frestrictLe n)) ⊗ₘ homHistoryKernel P n =
+        (homTrajMeasure μ P).map
+          (fun x => (Preorder.frestrictLe n x, x (n + 1))) := by
+    simpa [homTrajMeasure] using hstep
+  rw [hstep']
+  rw [Measure.map_map (measurable_appendHistory n) (by fun_prop)]
   congr with x
   exact appendHistory_prefix_next n x
 
