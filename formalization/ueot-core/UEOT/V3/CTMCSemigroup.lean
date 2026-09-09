@@ -1,5 +1,6 @@
 import UEOT.V3.CTMCLumpability
-import Mathlib.Analysis.Normed.Algebra.MatrixExponential\nimport Mathlib.Analysis.Calculus.Deriv.Comp
+import Mathlib.Analysis.Normed.Algebra.MatrixExponential
+import Mathlib.Analysis.Calculus.Deriv.Comp
 import Mathlib.Analysis.SpecialFunctions.Exponential
 import Mathlib.LinearAlgebra.Matrix.Bilinear
 import Mathlib.Analysis.Normed.Module.FiniteDimension
