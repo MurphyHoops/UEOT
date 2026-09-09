@@ -482,6 +482,66 @@ theorem homTrajMeasure_path_naturality
     (Preorder.measurable_frestrictLe n)]
   exact homTrajMeasure_prefix_naturality μ P Pbar f hf h n
 
+
+/-- The first-time marginal of a homogeneous trajectory started from a Dirac
+microscopic state is exactly the one-step transition measure.  This is the
+key recovery bridge for the reverse implication in P-DYN-01. -/
+theorem homTrajMeasure_dirac_time_one
+    (P : Kernel X X) [IsMarkovKernel P] (x : X) :
+    (homTrajMeasure (Measure.dirac x) P).map (fun z : ℕ → X => z 1) =
+      P x := by
+  letI : IsProbabilityMeasure (Measure.dirac x) := by infer_instance
+  let μpath := homTrajMeasure (Measure.dirac x) P
+  have hstep :=
+    homTrajMeasure_prefix_succ (Measure.dirac x) P 0
+  have hzero :=
+    homTrajMeasure_prefix_zero (Measure.dirac x) P
+  have hlast_append :
+      (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) ∘
+          appendHistory 0 =
+        Prod.snd := by
+    funext p
+    simp [appendHistory, lastHistoryIndex, IicProdIoc_def,
+      MeasurableEquiv.piSingleton]
+  calc
+    μpath.map (fun z : ℕ → X => z 1) =
+        (μpath.map (Preorder.frestrictLe 1)).map
+          (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) := by
+      rw [Measure.map_map
+        (measurable_pi_apply (lastHistoryIndex 1))
+        (Preorder.measurable_frestrictLe 1)]
+      rfl
+    _ =
+        ((((μpath.map (Preorder.frestrictLe 0)) ⊗ₘ homHistoryKernel P 0).map
+          (appendHistory 0))).map
+          (fun h : (i : Finset.Iic 1) → X => h (lastHistoryIndex 1)) := by
+      rw [hstep]
+    _ =
+        ((μpath.map (Preorder.frestrictLe 0)) ⊗ₘ homHistoryKernel P 0).map
+          Prod.snd := by
+      rw [Measure.map_map
+        (measurable_pi_apply (lastHistoryIndex 1))
+        (measurable_appendHistory 0)]
+      rw [hlast_append]
+    _ =
+        homHistoryKernel P 0 ∘ₘ (μpath.map (Preorder.frestrictLe 0)) := by
+      simpa [Measure.snd] using
+        (Measure.snd_compProd (μpath.map (Preorder.frestrictLe 0))
+          (homHistoryKernel P 0))
+    _ =
+        homHistoryKernel P 0 ∘ₘ
+          ((Measure.dirac x).map
+            (MeasurableEquiv.piUnique
+              (fun _ : Finset.Iic 0 => X)).symm) := by
+      rw [hzero]
+    _ = P x := by
+      rw [Measure.map_dirac'
+        (MeasurableEquiv.piUnique
+          (fun _ : Finset.Iic 0 => X)).symm.measurable]
+      unfold homHistoryKernel
+      rw [Measure.dirac_bind (Kernel.measurable _)]
+      rfl
+
 /-- Source clause (1) of P-DYN-01 expressed at the level of complete path laws:
 for every microscopic probability initial law, the coordinatewise macro
 pushforward of the microscopic Markov trajectory is exactly the trajectory of
