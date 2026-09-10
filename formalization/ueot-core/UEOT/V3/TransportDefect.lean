@@ -47,7 +47,7 @@ theorem tvDist_triangle {X : Type u} [MeasurableSpace X]
         (μ.real A - ν.real A) + (ν.real A - ρ.real A) := by
     ring
   rw [hsplit]
-  exact (abs_add _ _).trans <|
+  exact (abs_add_le _ _).trans <|
     add_le_add (tvEvent_le μ ν A hA) (tvEvent_le ν ρ A hA)
 
 /-- Frozen endpoint kernels with coherent measurable transports between their
@@ -139,7 +139,8 @@ theorem p_id_01
         _ ≤ tvDist ((μ0.map (S.Γ 0 n)).map γ) (μn.map γ) +
               tvDist (μn.map γ) μnext := htri
         _ ≤ tvDist (μ0.map (S.Γ 0 n)) μn + ε n := add_le_add hold hnew
-        _ ≤ (∑ i ∈ Finset.range n, ε i) + ε n := add_le_add_right hind _
+        _ ≤ (∑ i ∈ Finset.range n, ε i) + ε n :=
+          add_le_add hind (le_refl (ε n))
         _ = ∑ i ∈ Finset.range (n + 1), ε i := by
           rw [Finset.sum_range_succ]
 
