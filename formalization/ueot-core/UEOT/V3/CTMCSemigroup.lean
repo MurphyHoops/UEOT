@@ -134,14 +134,12 @@ theorem generator_intertwines_of_semigroup
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
   have hleftAsRight := hleftD.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightD
-  have hderivEq' :
-      R (NormedSpace.exp ((0 : ℝ) • L) * L) =
-        S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar) := by
-    simpa only [ContinuousLinearMap.compSL_apply,
-      ContinuousLinearMap.comp_apply,
-      ContinuousLinearMap.toSpanSingleton_apply, one_smul] using hderivEq
+  rw [ContinuousLinearMap.compSL_apply,
+    ContinuousLinearMap.compSL_apply] at hderivEq
+  simp only [ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.toSpanSingleton_apply, one_smul] at hderivEq
   simpa [R, S, rightMulIndicatorCLM_apply,
-    leftMulIndicatorCLM_apply] using hderivEq'
+    leftMulIndicatorCLM_apply] using hderivEq
 
 /-- Exact finite-CTMC semigroup quotient is equivalent to generator
 intertwining. -/
