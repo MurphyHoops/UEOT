@@ -54,6 +54,44 @@ noncomputable def leftMulIndicatorCLM (block : X → B) :
     (block : X → B) (A : Matrix B B ℝ) :
     leftMulIndicatorCLM block A = blockIndicator block * A := rfl
 
+/-- Scalar matrix-entry readout of right multiplication.  Using a real-valued
+codomain avoids exposing the norm/topology instance chosen for the rectangular
+matrix space in derivative uniqueness. -/
+noncomputable def rightMulEntryCLM
+    (block : X → B) (x : X) (b : B) : Matrix X X ℝ →L[ℝ] ℝ :=
+  LinearMap.toContinuousLinearMap
+    { toFun := fun A => (A * blockIndicator block) x b
+      map_add' := by
+        intro A C
+        rw [Matrix.add_mul]
+        rfl
+      map_smul' := by
+        intro c A
+        rw [Matrix.smul_mul]
+        rfl }
+
+/-- Scalar matrix-entry readout of left multiplication. -/
+noncomputable def leftMulEntryCLM
+    (block : X → B) (x : X) (b : B) : Matrix B B ℝ →L[ℝ] ℝ :=
+  LinearMap.toContinuousLinearMap
+    { toFun := fun A => (blockIndicator block * A) x b
+      map_add' := by
+        intro A C
+        rw [Matrix.mul_add]
+        rfl
+      map_smul' := by
+        intro c A
+        rw [Matrix.mul_smul]
+        rfl }
+
+@[simp] theorem rightMulEntryCLM_apply
+    (block : X → B) (x : X) (b : B) (A : Matrix X X ℝ) :
+    rightMulEntryCLM block x b A = (A * blockIndicator block) x b := rfl
+
+@[simp] theorem leftMulEntryCLM_apply
+    (block : X → B) (x : X) (b : B) (A : Matrix B B ℝ) :
+    leftMulEntryCLM block x b A = (blockIndicator block * A) x b := rfl
+
 /-- Generator intertwining propagates through the full matrix exponential. -/
 theorem exp_intertwines
     (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B)
@@ -106,8 +144,9 @@ theorem semigroup_intertwines_of_generator
     (smul_generator_intertwines L Lbar block h t)
 
 /-- Algebraic forward implication: an exact exponential intertwining for all
-real times forces generator intertwining.  The source-facing CTMC theorem will
-separately restrict the hypothesis to nonnegative semigroup times. -/
+real times forces generator intertwining.  The proof differentiates each
+matrix coordinate as an `ℝ`-valued function, so derivative uniqueness is
+independent of the auxiliary norm instance on rectangular matrices. -/
 theorem generator_intertwines_of_semigroup
     (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B)
     (hsem : ∀ t : ℝ,
@@ -115,30 +154,30 @@ theorem generator_intertwines_of_semigroup
         blockIndicator block * NormedSpace.exp (t • Lbar)) :
     L * blockIndicator block =
       blockIndicator block * Lbar := by
+  ext x b
   have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
   have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
   have hleftD :=
-    (rightMulIndicatorCLM block).hasFDerivAt.comp_hasDerivAt 0 hL
+    (rightMulEntryCLM block x b).hasFDerivAt.comp_hasDerivAt 0 hL
   have hrightD :=
-    (leftMulIndicatorCLM block).hasFDerivAt.comp_hasDerivAt 0 hR
+    (leftMulEntryCLM block x b).hasFDerivAt.comp_hasDerivAt 0 hR
   have hfun :
-      ((rightMulIndicatorCLM block) ∘
+      ((rightMulEntryCLM block x b) ∘
           fun t : ℝ => NormedSpace.exp (t • L)) =
-        ((leftMulIndicatorCLM block) ∘
+        ((leftMulEntryCLM block x b) ∘
           fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
     funext t
-    simpa only [Function.comp_apply, rightMulIndicatorCLM_apply,
-      leftMulIndicatorCLM_apply] using hsem t
+    exact congrArg (fun A : Matrix X B ℝ => A x b) (hsem t)
   have heq :
-      ((leftMulIndicatorCLM block) ∘
+      ((leftMulEntryCLM block x b) ∘
           fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[nhds 0]
-        ((rightMulIndicatorCLM block) ∘
+        ((rightMulEntryCLM block x b) ∘
           fun t : ℝ => NormedSpace.exp (t • L)) :=
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
   have hleftAsRight := hleftD.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightD
   simpa only [zero_smul, NormedSpace.exp_zero, one_mul,
-    rightMulIndicatorCLM_apply, leftMulIndicatorCLM_apply] using hderivEq
+    rightMulEntryCLM_apply, leftMulEntryCLM_apply] using hderivEq
 
 /-- Exact all-real exponential quotient is equivalent to generator
 intertwining.  This algebraic helper is stronger in its time-domain hypothesis
