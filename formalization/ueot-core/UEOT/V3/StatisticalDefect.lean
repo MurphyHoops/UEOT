@@ -147,6 +147,9 @@ theorem responseDefect_error
     have hright : tvDist (pHat h' i) (p h' i) ≤ η := by
       simpa [tvDist_symm] using hresp h' i
     have hbase := responseDistance_le_defect (i := i) readout p hp S hfiber
+    have hbase' :
+        tvDist (p h i) (p h' i) ≤ sSup (responseDiameterSet readout p S) := by
+      simpa [responseDefect] using hbase
     rw [abs_le] at hpair
     linarith
   have hTrue_le :
@@ -164,6 +167,9 @@ theorem responseDefect_error
     have hleft := hresp h i
     have hright := hresp h' i
     have hbase := responseDistance_le_defect (i := i) readout pHat hpHat S hfiber
+    have hbase' :
+        tvDist (pHat h i) (pHat h' i) ≤ sSup (responseDiameterSet readout pHat S) := by
+      simpa [responseDefect] using hbase
     rw [abs_le] at hpair
     linarith
   rw [abs_le]
