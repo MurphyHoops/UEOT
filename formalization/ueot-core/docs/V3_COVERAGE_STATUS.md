@@ -34,9 +34,9 @@ is not a source-level proof promotion.
 
 | status | count |
 |---|---:|
-| **proved** | **38** |
+| **proved** | **39** |
 | **partial** | **0** |
-| **pending** | **68** |
+| **pending** | **67** |
 | **total** | **106** |
 
 There are currently **no partial P-IDs**. Every unresolved source P-ID remains
@@ -44,7 +44,7 @@ explicitly pending until it passes the full gate above.
 
 ## 3. Proved P-ID set
 
-The 38 source-matched, machine-checked P-IDs are:
+The 39 source-matched, machine-checked P-IDs are:
 
 - **Carrier / representation:** P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
@@ -57,7 +57,7 @@ The 38 source-matched, machine-checked P-IDs are:
 - **Bridge:** P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
 - **Internal/external factorization:** P-INT-02, P-INT-03
-- **Information:** P-INFO-05
+- **Information:** P-INFO-01, P-INFO-05
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02
@@ -65,7 +65,7 @@ The 38 source-matched, machine-checked P-IDs are:
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 3 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 2 + 1 + 1 = 38`.
+Count check: `4 + 6 + 3 + 4 + 3 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 39`.
 
 ## 4. 2026-09-10 promotion — P-FAC-01
 
@@ -219,7 +219,35 @@ Verification evidence:
 - squash merge: `5886c7baa4d9b4936e21dbd5639d7c893af22053`
 - post-merge main CI #563 (`34542472419`): success
 
-## 10. Prior promotion evidence
+## 10. 2026-09-11 promotion — P-INFO-01
+
+P-INFO-01 is promoted from `pending` to `proved`.
+
+The integrated proof matches the frozen information-retention chain for a
+deterministic statistic `M=f(H)`. It proves the exact standard-Borel identity
+`I(H;Y)=I(M;Y)+I(H;Y|M)`, the epsilon-retention inequality, and the source's
+discrete entropy corollary without silently restricting `M` to a finite type.
+
+For the discrete step the Lean development constructs the copied-state law,
+uses channel data processing, proves the countable-discrete Radon--Nikodym
+density and exact `copy-KL = H(M)` identity in `ℝ≥0∞`, and therefore preserves
+the legitimate `H(M)=∞` case. Standard-Borel disintegration then yields
+`I(M;Y) <= H(M)`, and the source-facing wrapper concludes
+`I(H;Y)-epsilon <= H(M)` using ordered subtraction rather than an invalid
+real-valued infinity subtraction. A finite-state specialization recovers the
+existing PMF Shannon sum.
+
+Verification evidence:
+
+- final development head: `315a0aeafdc2807f65d68ada7b2be6c70c09eedf`
+- development full-target CI #562 (`34542278658`): success
+- clean-port head: `cfddeca9a99dc6466b69807940720aaafc48a119`
+- clean-port branch CI #570 (`34542970826`): success
+- PR #28 CI #571 (`34543199236`): success
+- squash merge: `0dd65bc8ae40fdd1afbfdf0cf61c155585a5a2ac`
+- post-merge main CI #572 (`34543427529`): success
+
+## 11. Prior promotion evidence
 
 The full theorem-by-theorem narratives and CI evidence for the previous
 32-proof checkpoint are preserved in:
@@ -233,25 +261,29 @@ P-PRED-01/02, P-RES-01/02/05/06, P-CAR-04, and the recovered baseline.
 
 No previously proved P-ID is removed or downgraded by this ledger compaction.
 
-## 11. Active unresolved front
+## 12. Active unresolved front
 
-The highest-priority pending lane after this checkpoint is:
+The highest-priority pending lane after this checkpoint is **P-STAT-01**.
+The canonical v3.0 source has now been recovered from the user's File Library
+and its exact statement is grounded: for `L` fixed conditional responses on a
+finite alphabet of size `K`, with `N` independent samples per response,
 
-- **P-INFO-01**: the complete development branch now passes full-target CI #562.
-  The proof contains the deterministic-statistic chain identity, epsilon
-  retention, channel data processing, a countable-discrete extended-real
-  Shannon entropy bridge preserving `H(M)=∞`, the general bound
-  `I(M;Y) <= H(M)` by standard-Borel disintegration, and the source-facing
-  approximate predictive-memory lower bound `I(H;Y)-epsilon <= H(M)`.
-  Because the development branch predates newer main proofs, it must now be
-  clean-ported onto the newest green `main` before PR promotion.
+`P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`.
 
-After P-INFO-01 is promoted, refill parallel lanes from the remaining source
-P-IDs by dependency depth and proof proximity. P-STAT-01 is the natural next
-statistics dependency, but its exact constants and hypotheses must be grounded
-in the canonical source before a source-facing wrapper is created.
+The source proof is the finite-event argument: for each subset of the response
+alphabet the empirical mass is a Bernoulli average; two-sided Hoeffding gives
+`2*exp(-2*N*eta^2)`, followed by union bounds over at most `2^K` subsets and
+`L` response cells. The source also states the clipped confidence radius
 
-## 12. Completion rule
+`min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
+
+Pinned Mathlib 4.33.1 already supplies the needed sub-Gaussian Hoeffding lemma,
+independent-sum tail bound, and measure union bound. The next proof packet must
+formalize this exact finite-alphabet simultaneous event and connect it directly
+to `UEOT.V3.StatisticalDefect.p_stat_02` without introducing an extra carrier
+union bound.
+
+## 13. Completion rule
 
 The v3.0 formalization is complete only when **all 106 source P-IDs** have been
 semantically matched and machine-checked under the frozen source. A green
