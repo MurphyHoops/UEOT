@@ -176,6 +176,7 @@ theorem generator_intertwines_of_semigroup
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
   have hleftAsRight := hleftD.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightD
+  simp only [zero_smul, NormedSpace.exp_zero, one_mul] at hderivEq
   unfold rightMulEntryCLM leftMulEntryCLM at hderivEq
   change (L * blockIndicator block) x b =
     (blockIndicator block * Lbar) x b at hderivEq
