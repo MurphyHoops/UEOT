@@ -81,7 +81,13 @@ theorem omegaLimit_persistence_core
 
 section NNRealSemiflow
 
-variable [MetricSpace X]
+variable [FirstCountableTopology X]
+
+private theorem nnreal_add_left_tendsto_atTop (s : ℝ≥0) :
+    Tendsto (fun t : ℝ≥0 => s + t) atTop atTop := by
+  refine tendsto_atTop.2 fun b => ?_
+  filter_upwards [eventually_ge_atTop b] with t ht
+  exact ht.trans (le_add_left le_rfl)
 
 private theorem nnreal_tsub_tendsto_atTop
     {t : ℕ → ℝ≥0} (ht : Tendsto t atTop atTop) (s : ℝ≥0) :
@@ -103,7 +109,7 @@ theorem image_omegaLimit_eq_of_precompact_orbit
   apply Subset.antisymm
   · have htrans : ∀ r : ℝ≥0,
         Tendsto (r + ·) (atTop : Filter ℝ≥0) atTop := fun r =>
-      tendsto_atTop_add_const_left atTop r tendsto_id
+      nnreal_add_left_tendsto_atTop r
     exact mapsTo_iff_image_subset.mp
       ((Flow.isInvariant_omegaLimit (atTop : Filter ℝ≥0)
         φ ({x} : Set X) htrans) s)
@@ -169,7 +175,7 @@ theorem p_per_01
           ω (atTop : Filter ℝ≥0) φ ({x} : Set X) := by
   have htrans : ∀ r : ℝ≥0,
       Tendsto (r + ·) (atTop : Filter ℝ≥0) atTop := fun r =>
-    tendsto_atTop_add_const_left atTop r tendsto_id
+    nnreal_add_left_tendsto_atTop r
   have habs : ∃ v ∈ (atTop : Filter ℝ≥0),
       closure (image2 φ v ({x} : Set X)) ⊆
         closure (range fun t : ℝ≥0 => φ t x) := by
