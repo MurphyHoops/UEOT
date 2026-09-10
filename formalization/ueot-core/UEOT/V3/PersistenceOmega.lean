@@ -76,4 +76,34 @@ theorem omegaLimit_persistence_core
   · exact omegaLimit_subset_closed_of_eventually_mem f φ x hV hstay
   · exact Flow.isInvariant_omegaLimit f φ ({x} : Set X) htrans
 
+/-- Forward invariance upgrades to exact set invariance at a time `s` whenever
+that time has a right inverse `r` in the acting time monoid.  This isolates the
+precise algebraic ingredient missing from a genuinely one-sided semiflow. -/
+theorem image_eq_of_isInvariant_of_rightInverseTime
+    (φ : Flow τ X) {S : Set X}
+    (hS : IsInvariant φ S)
+    (s r : τ) (hsr : s + r = 0) :
+    φ s '' S = S := by
+  apply Set.Subset.antisymm
+  · exact (isInvariant_iff_image φ S).1 hS s
+  · intro y hy
+    refine ⟨φ r y, hS r hy, ?_⟩
+    rw [← φ.map_add s r y, hsr]
+    exact φ.map_zero_apply y
+
+/-- Exact omega-limit invariance for any time monoid in which every time has a
+right inverse.  In particular this applies to two-sided additive-group flows;
+it intentionally does not assert the reverse inclusion for a merely positive
+semiflow. -/
+theorem omegaLimit_exact_invariant_of_rightInverseTimes
+    (f : Filter τ) (φ : Flow τ X) (x : X)
+    (htrans : ∀ s : τ, Tendsto (s + ·) f f)
+    (hinv : ∀ s : τ, ∃ r : τ, s + r = 0) :
+    ∀ s : τ, φ s '' ω f φ ({x} : Set X) = ω f φ ({x} : Set X) := by
+  have hω : IsInvariant φ (ω f φ ({x} : Set X)) :=
+    Flow.isInvariant_omegaLimit f φ ({x} : Set X) htrans
+  intro s
+  obtain ⟨r, hsr⟩ := hinv s
+  exact image_eq_of_isInvariant_of_rightInverseTime φ hω s r hsr
+
 end UEOT.V3.PersistenceOmega
