@@ -103,7 +103,9 @@ theorem toReal_copy_kl_eq_shannon
       pmfShannonEntropy μ.toPMF := by
   have hAC : copyJoint μ ≪ μ.prod μ := copyJoint_absolutelyContinuous_prod μ
   have hmass : copyJoint μ Set.univ = (μ.prod μ) Set.univ := by
-    simp [copyJoint]
+    unfold copyJoint
+    rw [Measure.map_apply (measurable_of_finite _) MeasurableSet.univ]
+    simp
   rw [InformationTheory.toReal_klDiv_of_measure_eq hAC hmass]
   have hrn :
       (copyJoint μ).rnDeriv (μ.prod μ) =ᵐ[copyJoint μ] copyDensity μ :=
@@ -117,16 +119,20 @@ theorem toReal_copy_kl_eq_shannon
   rw [integral_congr_ae hllr]
   unfold copyJoint
   rw [integral_map]
-  · rw [← Measure.toPMF_toMeasure (μ := μ)]
-    rw [PMF.integral_eq_sum]
-    unfold pmfShannonEntropy
-    rw [tsum_fintype]
-    apply Finset.sum_congr rfl
-    intro m hm
-    simp only [copyDensity, if_pos rfl, ENNReal.toReal_inv, smul_eq_mul,
-      Measure.toPMF_apply]
-    rw [Real.log_inv]
-    simp [Real.negMulLog]
+  · calc
+      (∫ (x : M), Real.log (copyDensity μ (x, x)).toReal ∂μ) =
+          ∑ x, (μ.toPMF x).toReal * Real.log (copyDensity μ (x, x)).toReal := by
+        simpa only [Measure.toPMF_toMeasure, smul_eq_mul] using
+          (PMF.integral_eq_sum (p := μ.toPMF)
+            (f := fun x : M => Real.log (copyDensity μ (x, x)).toReal))
+      _ = pmfShannonEntropy μ.toPMF := by
+        unfold pmfShannonEntropy
+        rw [tsum_fintype]
+        apply Finset.sum_congr rfl
+        intro m hm
+        simp only [copyDensity, if_pos rfl, ENNReal.toReal_inv]
+        rw [Real.log_inv]
+        simp [Real.negMulLog]
   · exact (measurable_of_finite _).aemeasurable
   · exact (measurable_of_finite _).aestronglyMeasurable
 
