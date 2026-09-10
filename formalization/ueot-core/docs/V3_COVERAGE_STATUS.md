@@ -34,9 +34,9 @@ is not a source-level proof promotion.
 
 | status | count |
 |---|---:|
-| **proved** | **35** |
+| **proved** | **36** |
 | **partial** | **0** |
-| **pending** | **71** |
+| **pending** | **70** |
 | **total** | **106** |
 
 There are currently **no partial P-IDs**. Every unresolved source P-ID remains
@@ -44,7 +44,7 @@ explicitly pending until it passes the full gate above.
 
 ## 3. Proved P-ID set
 
-The 35 source-matched, machine-checked P-IDs are:
+The 36 source-matched, machine-checked P-IDs are:
 
 - **Carrier / representation:** P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
@@ -61,10 +61,10 @@ The 35 source-matched, machine-checked P-IDs are:
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02
-- **Persistence:** P-PER-03
+- **Persistence:** P-PER-01, P-PER-03
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 1 + 1 + 1 = 35`.
+Count check: `4 + 6 + 3 + 4 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 2 + 1 = 36`.
 
 ## 4. 2026-09-10 promotion — P-FAC-01
 
@@ -143,7 +143,34 @@ Verification evidence:
 
 The older divergent PR #18 was closed and was not used for integration.
 
-## 7. Prior promotion evidence
+## 7. 2026-09-11 promotion — P-PER-01
+
+P-PER-01 is promoted from `pending` to `proved`.
+
+The integrated theorem matches the frozen source's one-sided continuous
+semiflow statement: eventual residence in a closed persistence domain and
+precompactness of the orbit imply a nonempty compact omega-limit contained in
+the domain, with exact invariance under every nonnegative-time map.
+
+The reverse inclusion is not obtained by adding negative time or assuming a
+right inverse.  It follows the source proof: for `phi_(t_n)(x) -> y` with
+`t_n -> infinity`, shift by a fixed `s`, use precompactness to extract a
+convergent subsequence of `phi_(t_n-s)(x)`, show the limit remains in the
+omega-limit, and pass the semiflow law through continuity to obtain a
+predecessor `z` with `phi_s(z)=y`.
+
+Verification evidence:
+
+- clean feature head: `16c7a614c03b9404737b1b524d1abfbec2e3cb57`
+- branch full-target CI #533 (`34507651005`): success
+- PR #25 full-target CI #536 (`34508338456`): success
+- squash merge: `3d3ecb46416ea156e06fffd70684937f8d94caf3`
+- post-merge main CI #540 (`34508718076`): success
+
+The older incomplete PR #17 was closed as superseded and was not used for
+integration.
+
+## 8. Prior promotion evidence
 
 The full theorem-by-theorem narratives and CI evidence for the previous
 32-proof checkpoint are preserved in:
@@ -157,22 +184,23 @@ P-PRED-01/02, P-RES-01/02/05/06, P-CAR-04, and the recovered baseline.
 
 No previously proved P-ID is removed or downgraded by this ledger compaction.
 
-## 8. Active unresolved front
+## 9. Active unresolved front
 
 The highest-priority pending lanes after this checkpoint are:
 
-- **P-INFO-01**: the finite/discrete RN-density precursor is now machine-checked;
-  close `copy KL = Shannon entropy`, then combine it with the already verified
-  channel data processing and information-retention chain;
-- **P-PER-01**: classification corrected to **F0 proof engineering**. The frozen
-  source's one-sided semiflow proof explicitly obtains the reverse inclusion by
-  extracting a convergent subsequence from the precompact shifted orbit
-  `phi_(t_n-s)(x)`; no two-sided-flow assumption is licensed or needed.
+- **P-INFO-01**: deterministic-statistic chain identity, epsilon retention,
+  channel data processing, joint/product-law identification, and the finite
+  copy-KL/Shannon bridge all compile. The remaining source audit is the literal
+  `M` discrete clause: do not silently replace countable discrete states or
+  infinite Shannon entropy by a finite `Fintype` special case.
+- **P-ID-01**: the literal finite-horizon supremum TCIC accumulation theorem is
+  green on its feature branch. Clean-port it onto current `main` before PR
+  promotion so the integrated proof contains no stale branch history.
 
 Additional pending P-IDs are refilled only after near-closure lanes are not left
 half-integrated.
 
-## 9. Completion rule
+## 10. Completion rule
 
 The v3.0 formalization is complete only when **all 106 source P-IDs** have been
 semantically matched and machine-checked under the frozen source. A green
