@@ -104,7 +104,7 @@ theorem measure_tvBadEvent_le_of_subset_bound
     _ ≤ ∑ _A : Finset Y, B := by
       exact Finset.sum_le_sum fun A _ => hB A
     _ = (2 ^ Fintype.card Y : ℝ) * B := by
-      rw [Finset.sum_const, nsmul_eq_mul, Fintype.card_finset]
+      rw [Finset.sum_const, nsmul_eq_mul, Finset.card_univ, Fintype.card_finset]
       norm_cast
 
 /-- A uniform one-cell TV tail bound `B` yields a simultaneous bound over `L`
