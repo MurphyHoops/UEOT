@@ -133,7 +133,8 @@ theorem generator_intertwines_of_semigroup
   have hleftAsRight := hleftF.congr_of_eventuallyEq heq
   have hFDerivEq := hleftAsRight.unique hrightF
   have hone := congrArg (fun D : ℝ →L[ℝ] Matrix X B ℝ => D 1) hFDerivEq
-  simpa only [ContinuousLinearMap.comp_apply,
+  simpa only [ContinuousLinearMap.compSL_apply,
+    ContinuousLinearMap.comp_apply,
     ContinuousLinearMap.toSpanSingleton_apply, one_smul,
     NormedSpace.exp_zero, one_mul,
     rightMulIndicatorCLM_apply, leftMulIndicatorCLM_apply] using hone
