@@ -34,9 +34,9 @@ is not a source-level proof promotion.
 
 | status | count |
 |---|---:|
-| **proved** | **36** |
+| **proved** | **37** |
 | **partial** | **0** |
-| **pending** | **70** |
+| **pending** | **69** |
 | **total** | **106** |
 
 There are currently **no partial P-IDs**. Every unresolved source P-ID remains
@@ -44,7 +44,7 @@ explicitly pending until it passes the full gate above.
 
 ## 3. Proved P-ID set
 
-The 36 source-matched, machine-checked P-IDs are:
+The 37 source-matched, machine-checked P-IDs are:
 
 - **Carrier / representation:** P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
@@ -62,9 +62,10 @@ The 36 source-matched, machine-checked P-IDs are:
 - **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02
 - **Persistence:** P-PER-01, P-PER-03
+- **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 2 + 1 = 36`.
+Count check: `4 + 6 + 3 + 4 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 2 + 1 + 1 = 37`.
 
 ## 4. 2026-09-10 promotion — P-FAC-01
 
@@ -153,7 +154,7 @@ precompactness of the orbit imply a nonempty compact omega-limit contained in
 the domain, with exact invariance under every nonnegative-time map.
 
 The reverse inclusion is not obtained by adding negative time or assuming a
-right inverse.  It follows the source proof: for `phi_(t_n)(x) -> y` with
+right inverse. It follows the source proof: for `phi_(t_n)(x) -> y` with
 `t_n -> infinity`, shift by a fixed `s`, use precompactness to extract a
 convergent subsequence of `phi_(t_n-s)(x)`, show the limit remains in the
 omega-limit, and pass the semiflow law through continuity to obtain a
@@ -170,7 +171,30 @@ Verification evidence:
 The older incomplete PR #17 was closed as superseded and was not used for
 integration.
 
-## 8. Prior promotion evidence
+## 8. 2026-09-11 promotion — P-ID-01
+
+P-ID-01 is promoted from `pending` to `proved`.
+
+The integrated proof matches the frozen source's finite-horizon TCIC
+defect-accumulation estimate. It models each `K_t` as the source's frozen
+endpoint predictive kernel, assumes coherent measurable transports
+`Γ_{s→t}`, and proves the endpoint total-variation defect by induction. The
+induction step uses only total-variation triangle inequality, contraction under
+measurable pushforward, the adjacent TCIC bound, and transport composition.
+
+The source's literal supremum over initial macrostates is exposed directly as
+`FrozenTransportSystem.p_id_01`; it is not inferred merely from an unexported
+pointwise helper. The module is reachable through `UEOT.V3`.
+
+Verification evidence:
+
+- clean feature head: `ea6bb69d92f505f2662ad4eac64405470370246f`
+- clean branch full-target CI #544: success
+- PR #26 full-target CI #545 (`34509874478`): success
+- squash merge: `72b0703270df84d5a92f90d5e01c034777ff37dc`
+- post-merge main CI #547 (`34510479466`): success
+
+## 9. Prior promotion evidence
 
 The full theorem-by-theorem narratives and CI evidence for the previous
 32-proof checkpoint are preserved in:
@@ -184,23 +208,23 @@ P-PRED-01/02, P-RES-01/02/05/06, P-CAR-04, and the recovered baseline.
 
 No previously proved P-ID is removed or downgraded by this ledger compaction.
 
-## 9. Active unresolved front
+## 10. Active unresolved front
 
-The highest-priority pending lanes after this checkpoint are:
+The highest-priority pending lane after this checkpoint is:
 
 - **P-INFO-01**: deterministic-statistic chain identity, epsilon retention,
-  channel data processing, joint/product-law identification, and the finite
-  copy-KL/Shannon bridge all compile. The remaining source audit is the literal
-  `M` discrete clause: do not silently replace countable discrete states or
-  infinite Shannon entropy by a finite `Fintype` special case.
-- **P-ID-01**: the literal finite-horizon supremum TCIC accumulation theorem is
-  green on its feature branch. Clean-port it onto current `main` before PR
-  promotion so the integrated proof contains no stale branch history.
+  channel data processing, and joint/product-law identification compile. The
+  frozen source says `M` is **discrete**, not merely finite; the active proof
+  therefore extends the copy-KL/Shannon bridge to countable discrete states
+  with extended-real entropy so that the infinite-entropy case is represented
+  correctly. After that bridge, close `I(M;Y) <= H(M)` through standard-Borel
+  disintegration and compose it with epsilon retention to obtain the literal
+  approximate predictive-memory lower bound.
 
-Additional pending P-IDs are refilled only after near-closure lanes are not left
-half-integrated.
+After P-INFO-01 is closed, refill parallel lanes from the remaining 68 source
+P-IDs by dependency depth and proof proximity rather than by file order.
 
-## 10. Completion rule
+## 11. Completion rule
 
 The v3.0 formalization is complete only when **all 106 source P-IDs** have been
 semantically matched and machine-checked under the frozen source. A green
