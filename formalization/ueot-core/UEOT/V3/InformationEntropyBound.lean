@@ -43,6 +43,15 @@ instance retainFirstSendSecond_isMarkov
   unfold retainFirstSendSecond
   infer_instance
 
+/-- The copied law is finite whenever its source law is finite.  This explicit
+bridge is needed because typeclass search deliberately does not unfold the
+project-local `copyJoint` abbreviation. -/
+instance copyJoint_isFinite
+    (μ : Measure M) [IsFiniteMeasure μ] :
+    IsFiniteMeasure (copyJoint μ) := by
+  unfold copyJoint
+  infer_instance
+
 /-- Channel data processing: the KL separation remaining after retaining the
 first copy and processing the second through `κ` cannot exceed the KL
 separation of the original diagonal copy law from two independent copies. -/
