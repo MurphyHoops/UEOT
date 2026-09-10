@@ -31,111 +31,126 @@ Promotion requires exact source matching, official-target CI, merge to
 | total | **106** |
 
 Snapshot parent main:
-- commit: `bfb711a54eb38f5df5c1a025153c118e833daa8e`
-- latest observed main Action: #362
-  `completed/success`
+- commit: `f8ad303ed9b5116425af44e674f6d2b3256ce5e2`
+- latest observed main Action: **#378**, `completed/success`
 - latest ledger promotion: **P-QSD-02**
-- theorem-bearing green checkpoint: `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177`
-  (P-DYN-03; main CI #337 success)
 
-The complete proved list is maintained in `V3_COVERAGE_STATUS.md`.
+The counts above intentionally remain unchanged while the current feature
+branches are being closed. Branch-green or source-facing closure is not yet an
+integrated `proved` promotion.
 
 ## 3. HOT proof lanes
 
-### A. P-DYN-02 — active reverse-derivative closure
+### A. P-DYN-02 — CTMC semigroup/generator closure
 
 - branch: `formal/pdyn02-ctmc`
-- head: `268a5585953dfb262f7460bae862044783b283e3`
-- latest submitted proof repair evaluates the derivative CLM composition at
-  scalar direction `1` using explicit `ContinuousLinearMap.comp_apply` and
-  `toSpanSingleton_apply`.
-- latest observed Action: #372 on `268a5585`, **in progress** at snapshot.
-- green foundation: finite CTMC block-sum criterion ↔ generator intertwining;
-  macro construction/uniqueness under surjective partition; power propagation;
-  generator ⇒ matrix-exponential semigroup intertwining.
-- blocker: verify reverse semigroup ⇒ generator under pinned Mathlib, then
-  package the exact source iff theorem.
-- next: inspect #372; if green, source-audit + PR/merge train; if red, repair
-  only the residual final simplification.
+- current head: `b1434bdd93d4c91b92bf3186e8b8e9b6390fe4e1`
+- current push Action: **#469**, in progress at this snapshot.
+- green foundation: finite block-sum criterion ↔ generator intertwining;
+  macro construction/uniqueness under a surjective partition; power-series
+  propagation; generator ⇒ matrix-exponential semigroup intertwining.
+- source-facing layer already exists in `CTMCSemigroupNonnegative.lean`:
+  nonnegative-time semigroup equality implies generator equality by the right
+  derivative at zero, and common block sums generate a genuine macro CTMC
+  generator under the source hypotheses.
+- current residual blocker is proof-engineering only (**F0**): the all-real
+  helper's derivative equality captured hidden norm/topology instances inside
+  bundled continuous-linear multiplication maps. The latest repair unfolds
+  those maps to the underlying matrix multiplication after zero-time
+  normalization.
+- next: inspect #469; if green, run exact source audit and PR/integration gate.
 
-### B. P-INFO-01 — exact conditional-KL chain active
+### B. P-PER-03 — viability to genuine pathwise persistence
+
+- branch: `formal/pper03-viability`
+- current head: `e41461ed07bb328a2b3920a4750e8ed4bcb772eb`
+- PR: **#21 draft**
+- prior head `e75cecebf676802a4f857ba70bd5a061457803e3` passed both push and PR CI.
+- established bridge: the PMF stationary recursion is exactly the
+  measure/kernel composition recursion induced by the stationary Markov
+  kernel.
+- latest submitted closure proves the stronger semantic bridge that the
+  `n`-th coordinate marginal of the Ionescu--Tulcea path law equals
+  `stationaryStateLaw n` exactly.
+- current push/PR Actions: **#470/#471**, in progress at this snapshot.
+- next: if the coordinate-marginal theorem is green, derive the all-times
+  nonexit event directly from the viability recursion and remove the supplied
+  coordinate-safety hypothesis from the source-facing wrapper.
+
+### C. P-INFO-01 — predictive information lower bound
 
 - branch: `formal/pinfo01-04-chain`
-- head: `6a5db0dc519c07a1f93c43fcf482f94db03c343a`
-- latest submitted theorem: `mutualInfo_eq_statistic_add_conditional`.
-- latest repair opens the scoped probability/ENNReal notation required by
-  pinned Mathlib and uses `ENNReal` explicitly where parser ambiguity arose.
-- latest observed Action: #373 on `6a5db0dc`, **in progress** at snapshot.
-- green foundation: deterministic statistic joint/marginal transport;
-  data processing; reversible measurable lift preserving KL (#359 success).
-- semantic design: conditional information is represented by standard-Borel
-  disintegration and conditional KL after the reversible lift; it is not
-  defined as a subtraction residual.
-- blocker: pinned-Mathlib verification of the exact chain identity, then the
-  ε-retention and discrete-entropy consequences.
-- next: inspect #373 and repair only genuine disintegration/typeclass issues.
+- current verified head: `74ebe33e2b7260f6081246b2b54df49b007957e5`
+- official-target Action: **#385, success**.
+- closed layer: deterministic statistic data processing, measurable reversible
+  lift, standard-Borel disintegration, the exact identity
+  `I(H;Y) = I(M;Y) + I(H;Y|M)`, and the epsilon-retention consequence.
+- exact source audit confirms that the remaining discrete conclusion is the
+  standard bound `I(M;Y) <= H(M)` when `M` is discrete; the source does not
+  require `Y` itself to be discrete.
+- implementation direction: use Mathlib's Markov-kernel KL data-processing
+  theorem `klDiv_comp_right_le`, reducing the bound to the self-information of
+  a copied discrete variable, then bridge that self-information to the existing
+  Shannon entropy implementation. Do not add a UEOT information axiom.
+- blocker: machine-check the discrete self-information/entropy bridge with
+  compatible `ENNReal`/`Real` codomains.
 
-### C. P-FAC-01 — feedback-policy covariance pending
+### D. P-FAC-01 — representation covariance
 
 - branch: `formal/pfac01-covariance`
-- head: `6015673a7fd3b1f27ab41ddea2c2f3bbea9f5065`
-- PR: **#14 draft**
-- clean-rebased onto main `8d0b40b0`: **ahead 2 / behind 0**.
-- previous verified branch/PR CI before rebase: #321/#322, success.
-- latest clean-rebase CI: running/queued at this snapshot.
-- green foundation retained: representation transport for kernels/readouts,
-  strong-lumpability covariance, homogeneous path-law covariance, predictive
-  factorization covariance, and reward/policy/optimal-value transport.
-- blocker: full feedback-policy finite path-law covariance must be derived,
-  not assumed as an external policy-law equality.
-- reuse target: main's `PathError.causalLaw` finite causal-record machinery.
-- next: after clean CI, define transported history policy and prove law
-  pushforward by horizon induction; only then source-audit and merge.
+- current head: `8c5e451c10f58fa032af73c66b1bd52f2fee7620`
+- branch and PR CI at the current source-facing chain are green.
+- source-facing dependency is now derived in the correct direction:
+  transported primitive kernels → finite causal feedback path law → transported
+  rewards → policy-by-policy values → optimal supremum.
+- previous blocker is closed: final path-law equality is no longer an
+  independent source hypothesis.
+- next: exact source audit, then merge/integration gate; do not promote before
+  green post-merge main CI.
 
-### D. P-PER-01 — omega-limit strong invariance active
+### E. P-PER-01 — omega-limit strong invariance audit
 
 - branch: `formal/pper01-omega-limit`
-- head: `03079c3fdcdecfd1321afce973e3f204dd6b4e3f`
-- PR: **#17 draft**
-- latest full-target branch CI: #365, **success**.
-- green theorem layer: nonempty compact omega-limit; containment in a closed
-  persistence domain; forward invariance under the continuous semiflow.
-- semantic blocker: the source requires `φ_s '' ω(x) = ω(x)`; Mathlib's
-  generic monoid invariant theorem gives only forward inclusion.
-- next: formalize the precompact-subsequence reverse inclusion while keeping
-  genuine semiflow semantics.
+- current head: `94ddd8d0bbf231982c772968a985c4347cd46901`
+- the branch now explicitly isolates exact omega-limit equality when inverse
+  times are available.
+- semantic status: unresolved **F2** for the one-sided semiflow source theorem.
+  Forward invariance does not by itself imply `φ_s '' ω(x) = ω(x)`; no hidden
+  upgrade to a two-sided flow is permitted.
+- next: either prove the reverse inclusion from the exact v3 semiflow
+  hypotheses or record a v3.1 wording correction if it is genuinely missing.
 
-### E. P-REC-02 — continuous recovery active
+### F. P-REC-02 — continuous stochastic recovery
 
 - branch: `formal/prec02-continuous-recovery`
-- head: `45eb9a1bd35c98a245ca55c885bd45d800a8c5e7`
-- PR: **#18 draft**
-- module-only CI #366: success.
-- official-target CI #370 on `45eb9a1b`: **success**.
-- green theorem layer: exact source-shaped exponential scalar recovery bound
-  under pointwise right-derivative hypotheses, plus energy-to-square-distance
-  conversion.
-- semantic blocker: bridge the source's local absolute continuity + a.e.
-  Dynkin drift inequality to the scalar bound without strengthening the final
-  P-ID statement.
-- next: formalize an AC/a.e. Grönwall bridge, then instantiate it with
-  `m(t)=E[W(X_t)]`.
+- current head: `fc4ad64059c2f84324fc7c66312198c0151f3381`
+- source audit cleared the earlier possible regularity concern: v3.0 already
+  states the generator-domain/Dynkin/localization/integrability conditions
+  needed for local absolute continuity and the a.e. drift inequality.
+- current architecture separates the process-level Dynkin certificate, a.e.
+  scalar inequality, AC/a.e. Grönwall step, and energy-to-distance conversion.
+- status: **F0**, not a source defect.
+- next: instantiate the process-level certificate for the exact source process
+  class without strengthening the final theorem to pointwise differentiability.
 
-## 3.1 Open-PR policy snapshot
+## 3.1 Theory-maintenance feedback
 
-Current open/draft PRs are intentionally **not merge-ready** unless their full
-source theorem is closed:
+Canonical v3.0 is frozen during formal verification. Theory-facing findings are
+recorded separately under `core/v3-maintenance`, especially
+`core/status/FORMALIZATION_FEEDBACK_2026-09-10.md`.
 
-- **#14 / P-FAC-01**: clean-rebased to current main because its next proof step
-  depends on the already integrated P-DYN-03 causal-law machinery.
-- **#17 / P-PER-01**: keep draft; branch layer is green but source strong
-  invariance equality still lacks reverse inclusion.
-- **#18 / P-REC-02**: keep draft; branch layer is green but source AC/a.e.
-  Dynkin-to-Gronwall bridge remains.
+Current high-value feedback:
 
-A draft PR is therefore a CI/workstream surface, not evidence of P-ID
-completion. Promotion still requires source match, clean full-target CI, merge,
-and post-merge main CI.
+1. CTMC time is one-sided; source exposition should say explicitly “right
+   derivative at `t = 0`”.
+2. Marginal persistence and pathwise persistence are distinct propositions and
+   should be connected by an explicit measure-theoretic bridge.
+3. Representation covariance should flow from primitive transported dynamics,
+   not from a supplied final value/path-law equality.
+4. One-sided semiflow forward invariance must not be silently strengthened to
+   exact image equality.
+
+No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
 ## 4. Integrated / archive lanes
 
@@ -148,9 +163,9 @@ already integrated on `main`:
 - `formal/pdyn03-path-error` — P-DYN-03 proved
 - `formal/pproc01-history` — P-PROC-01 proved
 
-Older branches such as `formal/dyn01`, `formal/pred02`,
-`formal/tel01`, `formal/parallel-ci`, and old wave branches are archive
-evidence unless a specific result is deliberately recovered.
+Older branches such as `formal/dyn01`, `formal/pred02`, `formal/tel01`,
+`formal/parallel-ci`, and old wave branches are archive evidence unless a
+specific result is deliberately recovered.
 
 ## 5. Mandatory recovery procedure
 
@@ -167,14 +182,17 @@ When chat/context is missing:
 8. After every material branch-state change or promotion, update this file in
    the same work session.
 
-## 6. Immediate order
+## 6. Immediate parallel order
 
-1. **P-DYN-02** — repair reverse semigroup/generator bridge.
-2. **P-INFO-01** — complete exact information chain.
-3. **P-FAC-01** — finish feedback-policy path-law covariance.
-4. **P-PER-01** — omega-limit compact invariant core.
-5. **P-REC-02** — continuous Lyapunov recovery.
-6. Keep 5–8 independent HOT lanes active and refill only from pending P-IDs.
+1. **P-DYN-02** — finish the remaining F0 CTMC reverse-derivative interface.
+2. **P-PER-03** — close exact coordinate marginal → all-times nonexit.
+3. **P-INFO-01** — prove discrete `I(M;Y) <= H(M)` without new axioms.
+4. **P-FAC-01** — source audit and integration gate for the now-green causal
+   feedback covariance chain.
+5. **P-PER-01** — resolve the semiflow reverse-inclusion semantic question.
+6. **P-REC-02** — instantiate the exact Dynkin/AC process certificate.
+7. Refill free lanes only after these near-closure branches are not left
+   half-finished.
 
 ## 7. Repository truth hierarchy
 
