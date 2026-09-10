@@ -16,6 +16,7 @@ import UEOT.V3.HistoryMarkovization
 import UEOT.V3.TotalVariation
 import UEOT.V3.VariationBridge
 import UEOT.V3.ViabilityKernel
+import UEOT.V3.ViabilityPath
 import UEOT.V3.TVSpan
 import UEOT.V3.TVKernel
 import UEOT.V3.FiniteHistory
