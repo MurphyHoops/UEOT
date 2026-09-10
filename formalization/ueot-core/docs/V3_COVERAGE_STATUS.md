@@ -34,9 +34,9 @@ is not a source-level proof promotion.
 
 | status | count |
 |---|---:|
-| **proved** | **34** |
+| **proved** | **35** |
 | **partial** | **0** |
-| **pending** | **72** |
+| **pending** | **71** |
 | **total** | **106** |
 
 There are currently **no partial P-IDs**. Every unresolved source P-ID remains
@@ -44,7 +44,7 @@ explicitly pending until it passes the full gate above.
 
 ## 3. Proved P-ID set
 
-The 34 source-matched, machine-checked P-IDs are:
+The 35 source-matched, machine-checked P-IDs are:
 
 - **Carrier / representation:** P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
@@ -59,12 +59,12 @@ The 34 source-matched, machine-checked P-IDs are:
 - **Internal/external factorization:** P-INT-02, P-INT-03
 - **Information:** P-INFO-05
 - **Process:** P-PROC-01
-- **Recovery:** P-REC-01
+- **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02
 - **Persistence:** P-PER-03
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 1 + 1 + 1 + 1 = 34`.
+Count check: `4 + 6 + 3 + 4 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 1 + 1 + 1 = 35`.
 
 ## 4. 2026-09-10 promotion — P-FAC-01
 
@@ -72,19 +72,10 @@ P-FAC-01 is promoted from `pending` to `proved`.
 
 The source-facing covariance chain is derived from primitive transported
 objects rather than assuming final path/value equality. The integrated Lean
-proof covers:
-
-- bimeasurable microscopic coordinate transport of kernels and readouts;
-- exact macro pushforward and homogeneous trajectory-law covariance;
-- predictive-family factorization/sufficiency covariance;
-- controlled strong-lumpability / exact dynamic-closure covariance;
-- finite causal feedback path-law naturality derived horizon-by-horizon from
-  transported primitive causal kernels;
-- transported rewards, policy-by-policy value equality, and equality of the
-  optimal supremum.
-
-The key source-safety point is that feedback-policy path-law covariance is a
-**derived theorem**, not an independent hypothesis.
+proof covers bimeasurable microscopic coordinate transport, exact macro
+pushforward and trajectory-law covariance, predictive sufficiency covariance,
+exact dynamic-closure covariance, feedback path-law naturality, transported
+rewards, policy-by-policy value equality, and equality of the optimal supremum.
 
 Verification evidence:
 
@@ -98,30 +89,11 @@ Verification evidence:
 
 P-DYN-02 is promoted from `pending` to `proved`.
 
-The integrated proof matches the finite continuous-time Markov-chain source
-criterion:
-
-- the block-sum criterion is equivalent to generator intertwining
-  `L F = F Lbar`;
-- under a surjective partition and fiber-constant block sums, the common values
-  define a unique macro matrix;
-- if `L` is a CTMC generator, the constructed macro matrix is also a CTMC
-  generator;
-- generator intertwining propagates to all powers and hence to the matrix
-  exponential semigroup;
-- the converse uses the **right derivative at `t = 0` on `Ici 0`**, matching
-  physical CTMC time `t >= 0` rather than silently assuming negative times;
-- derivative uniqueness is performed entrywise in `ℝ`, eliminating a Lean-only
-  hidden norm-instance mismatch on rectangular matrix spaces.
-
-The source-facing declarations are centered on:
-
-- `UEOT.V3.CTMCLumpability.generator_intertwines_iff_blockSum`
-- `exists_macro_ctmcGenerator_of_blockSum_constant`
-- `UEOT.V3.CTMCSemigroup.semigroup_intertwines_of_generator`
-- `UEOT.V3.CTMCSemigroupNonnegative.generator_intertwines_of_semigroup_nonneg`
-- `p_dyn_02_nonnegative_semigroup_iff_blockSum`
-- `exists_macro_ctmc_semigroup_of_blockSum_constant`
+The integrated proof matches the finite CTMC source criterion: block-sum
+criterion iff generator intertwining, construction and uniqueness of the macro
+generator, preservation of the CTMC-generator conditions, propagation through
+the matrix exponential, and the converse through the right derivative at
+`t = 0` on nonnegative time.
 
 Verification evidence:
 
@@ -131,11 +103,47 @@ Verification evidence:
 - squash merge: `8ac668253c4d8bc62ab22f250701bc0a190b6049`
 - post-merge main CI #506 (`34497930427`): success
 
-The earlier diverged development PR #22 is retained as audit history but was
-not used for integration; its verified proof content was transplanted onto the
-clean branch directly from current `main`.
+## 6. 2026-09-10 promotion — P-REC-02
 
-## 6. Prior promotion evidence
+P-REC-02 is promoted from `pending` to `proved`.
+
+The source theorem assumes the usual generator-domain / Dynkin / localization /
+integrability conditions that make `m(t) = E[W(X_t)]` locally absolutely
+continuous with a.e. derivative `E[(L W)(X_t)]`, together with the pointwise
+bounds
+
+`L W(x) <= -a W(x) + b` and `c d(x,V)^2 <= W(x)`.
+
+The integrated Lean chain matches those layers without strengthening the source
+to pointwise differentiability:
+
+- `UEOT.V3.RecoveryContinuous.le_initial_of_ac_ae_deriv_nonpos` proves the
+  fundamental absolutely-continuous/a.e.-derivative comparison lemma;
+- `exponential_recovery_bound_ac_ae` proves the exact integrating-factor /
+  Grönwall estimate at the source regularity;
+- `UEOT.V3.RecoveryDynkin.DynkinExpectationCertificate` records exactly the
+  analytic output supplied by the source's Dynkin/localization assumptions;
+- `expected_generator_drift_of_pointwise` integrates the source's pointwise
+  generator drift inequality;
+- `expected_distance_domination_of_pointwise` integrates the pointwise
+  Lyapunov-distance domination;
+- `UEOT.V3.RecoveryDynkin.p_rec_02` combines those ingredients into the literal
+  source-facing mean-square recovery bound.
+
+No process-specific Dynkin theorem is silently postulated inside Core; such a
+model-specific theorem is precisely what discharges the explicit certificate.
+
+Verification evidence:
+
+- clean integration head: `4cfe8aad3f19070942e167fea9749595f1f196ee`
+- clean branch full-target CI #515 (`34500846267`): success
+- PR #24 full-target CI #517 (`34501636481`): success
+- squash merge: `189fa6b476b0199b321c8d8c2b521f744c0b64ef`
+- post-merge main CI #519 (`34502013388`): success
+
+The older divergent PR #18 was closed and was not used for integration.
+
+## 7. Prior promotion evidence
 
 The full theorem-by-theorem narratives and CI evidence for the previous
 32-proof checkpoint are preserved in:
@@ -149,23 +157,22 @@ P-PRED-01/02, P-RES-01/02/05/06, P-CAR-04, and the recovered baseline.
 
 No previously proved P-ID is removed or downgraded by this ledger compaction.
 
-## 7. Active unresolved front
+## 8. Active unresolved front
 
 The highest-priority pending lanes after this checkpoint are:
 
-- **P-INFO-01**: close the finite/discrete `copy KL = Shannon entropy` bridge,
-  then combine it with the already machine-checked statistic data processing
-  and chain identity;
-- **P-REC-02**: instantiate the continuous stochastic recovery certificate from
-  the literal Dynkin/localization/absolute-continuity hypotheses;
-- **P-PER-01**: resolve the reverse-inclusion issue for omega-limit strong
-  invariance under a one-sided semiflow without silently strengthening the
-  source to a two-sided flow.
+- **P-INFO-01**: the finite/discrete RN-density precursor is now machine-checked;
+  close `copy KL = Shannon entropy`, then combine it with the already verified
+  channel data processing and information-retention chain;
+- **P-PER-01**: classification corrected to **F0 proof engineering**. The frozen
+  source's one-sided semiflow proof explicitly obtains the reverse inclusion by
+  extracting a convergent subsequence from the precompact shifted orbit
+  `phi_(t_n-s)(x)`; no two-sided-flow assumption is licensed or needed.
 
 Additional pending P-IDs are refilled only after near-closure lanes are not left
 half-integrated.
 
-## 8. Completion rule
+## 9. Completion rule
 
 The v3.0 formalization is complete only when **all 106 source P-IDs** have been
 semantically matched and machine-checked under the frozen source. A green
