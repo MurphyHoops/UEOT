@@ -55,7 +55,9 @@ theorem causalLaw_toMeasure_transport_equiv
         (causalHistoryMeasurableEquiv e₀ eZ n) =
       (causalLaw (p₀.map e₀) K' n).toMeasure := by
   rw [PMF.toMeasure_map]
-  rw [causalLaw_transport_equiv p₀ K K' e₀ eZ hK n]
+  exact congrArg PMF.toMeasure (by
+    simpa [causalHistoryMeasurableEquiv] using
+      causalLaw_transport_equiv p₀ K K' e₀ eZ hK n)
 
 /-- Finite-horizon expected reward is invariant under the same primitive
 causal-kernel transport assumptions. -/
@@ -71,7 +73,7 @@ theorem causalLaw_expectedReward_transport
         ∂(causalLaw (p₀.map e₀) K' n).toMeasure) =
       ∫ h, reward h ∂(causalLaw p₀ K n).toMeasure := by
   rw [← causalLaw_toMeasure_transport_equiv p₀ K K' e₀ eZ hK n]
-  exact MeasureTheory.integral_map_equiv
+  simpa using MeasureTheory.integral_map_equiv
     (μ := (causalLaw p₀ K n).toMeasure)
     (causalHistoryMeasurableEquiv e₀ eZ n)
     (fun h' => reward ((causalHistoryMeasurableEquiv e₀ eZ n).symm h'))
@@ -107,7 +109,7 @@ theorem causalPolicyValue_transport_bundle
     (T := causalHistoryMeasurableEquiv e₀ eZ n)
     (reward := reward)
   intro π
-  exact causalLaw_toMeasure_transport_equiv
-    p₀ (K π) (K' π) e₀ eZ (hK π) n
+  exact (causalLaw_toMeasure_transport_equiv
+    p₀ (K π) (K' π) e₀ eZ (hK π) n).symm
 
 end UEOT.V3.RepresentationCovariance
