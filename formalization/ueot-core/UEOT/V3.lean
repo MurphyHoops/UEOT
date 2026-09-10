@@ -39,3 +39,6 @@ import UEOT.V3.PathError
 import UEOT.V3.QSDPerron
 import UEOT.V3.RepresentationCovariance
 import UEOT.V3.RepresentationCovarianceFiniteValue
+import UEOT.V3.CTMCLumpability
+import UEOT.V3.CTMCSemigroup
+import UEOT.V3.CTMCSemigroupNonnegative
