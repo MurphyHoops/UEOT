@@ -54,7 +54,10 @@ theorem causalLaw_toMeasure_transport_equiv
     (causalLaw p₀ K n).toMeasure.map
         (causalHistoryMeasurableEquiv e₀ eZ n) =
       (causalLaw (p₀.map e₀) K' n).toMeasure := by
-  rw [PMF.toMeasure_map (causalLaw p₀ K n)
+  rw [PMF.toMeasure_map
+    (f := (causalHistoryMeasurableEquiv e₀ eZ n :
+      CausalHistory H₀ Z n → CausalHistory H₀' Z' n))
+    (p := causalLaw p₀ K n)
     (causalHistoryMeasurableEquiv e₀ eZ n).measurable]
   exact congrArg PMF.toMeasure (by
     simpa [causalHistoryMeasurableEquiv] using
