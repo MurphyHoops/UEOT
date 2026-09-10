@@ -44,3 +44,4 @@ import UEOT.V3.CTMCSemigroup
 import UEOT.V3.CTMCSemigroupNonnegative
 import UEOT.V3.RecoveryContinuous
 import UEOT.V3.RecoveryDynkin
+import UEOT.V3.PersistenceOmega
