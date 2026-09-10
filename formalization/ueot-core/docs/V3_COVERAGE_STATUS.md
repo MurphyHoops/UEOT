@@ -90,12 +90,60 @@ minimality to force the exact coarse edge.
 
 | Status | Count |
 |---|---:|
-| proved | 31 |
+| proved | 32 |
 | partial | 0 |
-| pending | 75 |
+| pending | 74 |
 | total | 106 |
 
 There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-PER-03
+
+P-PER-03 has been promoted from `pending` to `proved`.
+
+The source theorem is the finite stochastic viability-kernel statement. Starting
+from `K₀ = V`, one repeatedly deletes states for which no action keeps the
+next-state law inside the current set with probability one. The source requires
+finite stabilization, identifies the stabilized set with exactly those initial
+states from which some admissible strategy can remain in `V` almost surely for
+all times, and states that a deterministic stationary preserving selector
+exists on that kernel.
+
+The Lean formalization closes all of those layers rather than only the one-step
+invariance condition:
+
+- `UEOT.V3.ViabilityKernel.viabilityStep` and `viabilityIter` implement the
+  deletion recursion with genuine PMFs;
+- `exists_viabilityIter_fixed` proves finite stabilization;
+- `UEOT.V3.ViabilityStrategy.winningSet` quantifies over finite-history-dependent
+  strategies and support-reachable trajectories;
+- `exists_stabilized_eq_winningSet` proves the exact winning-set equality;
+- `exists_stationary_policy_of_fixed` extracts a deterministic stationary
+  preserving policy;
+- `UEOT.V3.ViabilityTrajectory.stationaryTrajMeasure` realizes that policy as
+  a genuine Ionescu--Tulcea infinite path law;
+- `exists_stationary_policy_all_times_of_fixed` proves probability-one
+  all-times persistence;
+- `UEOT.V3.ViabilitySource.p_per_03` packages the complete source-facing theorem.
+
+For finite PMF dynamics the support-tree semantics used by `winningSet` is
+exactly the almost-sure safety semantics: any unsafe finite prefix whose edges
+all have positive PMF mass has positive path probability, while exclusion of
+all such prefixes gives probability-one nonexit. No finite-memory assumption is
+added to the strategy class; the policy supplied by the theorem is then shown
+to admit the stronger stationary deterministic realization required by the
+source.
+
+Verification evidence:
+
+- exact source-facing branch head:
+  `eb0d0305ab7acab73ea9f3ac06957273f50936be`;
+- branch full-target push CI #492: success;
+- PR #21 full-target CI #493: success;
+- main squash merge:
+  `cb665eb3716024e3f677b4ba651e9ef95ea95664`;
+- post-merge full-target main CI #494
+  (`34482798255`): success.
 
 ## 2026-09-10 advance: P-QSD-02
 
