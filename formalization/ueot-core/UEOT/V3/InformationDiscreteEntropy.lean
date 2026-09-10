@@ -34,6 +34,7 @@ variable {M : Type uM}
 variable [Countable M] [MeasurableSpace M] [MeasurableSingletonClass M]
 
 local instance : DecidableEq M := Classical.decEq M
+local instance classicalDecidable (p : Prop) : Decidable p := Classical.propDecidable p
 
 /-- Radon--Nikodym density of the diagonal copy law relative to two independent
 copies, on a countable discrete state space. -/
@@ -150,9 +151,8 @@ theorem copy_kl_eq_discreteShannonEntropy
     rw [integral_congr_ae hllr]
     unfold copyJoint
     rw [integral_map]
-    · rfl
     · exact hdiag
-    · exact (measurable_of_countable g).aestronglyMeasurable
+    · exact hg
   have hmass : copyJoint μ Set.univ = (μ.prod μ) Set.univ := by
     unfold copyJoint
     rw [Measure.map_apply (measurable_of_countable _) MeasurableSet.univ]
