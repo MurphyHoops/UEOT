@@ -55,17 +55,19 @@ instance stationaryTrajMeasure_isProbability
   unfold stationaryTrajMeasure
   infer_instance
 
-/-- The path-level probability-one nonexit bridge can now be applied directly
-to the stationary trajectory measure once coordinate safety has been derived
-from the viability recursion. -/
-theorem all_times_safe_of_coordinate_null
+/-- Once every coordinate marginal is safe with probability one, the genuine
+stationary path law never exits the viability set at any discrete time with
+probability one. -/
+theorem all_times_safe_of_coordinate_one
     (P : X → A → PMF X) (π : X → A) (μ : PMF X)
     (K : Set X)
-    (hbad : ∀ n : ℕ,
-      stationaryTrajMeasure P π μ
-        {ω | ω n ∉ K} = 0) :
+    (hone : ∀ n : ℕ,
+      stationaryTrajMeasure P π μ {ω | ω n ∈ K} = 1) :
     stationaryTrajMeasure P π μ {ω | ∀ n : ℕ, ω n ∈ K} = 1 := by
-  exact UEOT.V3.ViabilityPath.all_times_safe_of_each_time_bad_null
-    (μ := stationaryTrajMeasure P π μ) K hbad
+  exact UEOT.V3.ViabilityPath.all_times_safe_eq_one
+    (μ := stationaryTrajMeasure P π μ)
+    (Xn := fun n ω => ω n)
+    K (Set.toFinite K).measurableSet
+    (fun n => measurable_pi_apply n) hone
 
 end UEOT.V3.ViabilityTrajectory
