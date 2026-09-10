@@ -119,8 +119,8 @@ theorem generator_intertwines_of_semigroup
   let S := leftMulIndicatorCLM block
   have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
   have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
-  have hleftF := R.hasFDerivAt.comp 0 hL.hasFDerivAt
-  have hrightF := S.hasFDerivAt.comp 0 hR.hasFDerivAt
+  have hleftD := R.hasFDerivAt.comp_hasDerivAt 0 hL
+  have hrightD := S.hasFDerivAt.comp_hasDerivAt 0 hR
   have hfun :
       (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
         (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
@@ -130,14 +130,10 @@ theorem generator_intertwines_of_semigroup
       (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[nhds 0]
         (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) :=
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
-  have hleftAsRight := hleftF.congr_of_eventuallyEq heq
-  have hFDerivEq := hleftAsRight.unique hrightF
-  have hone := congrArg (fun D : ℝ →L[ℝ] Matrix X B ℝ => D 1) hFDerivEq
-  simpa only [ContinuousLinearMap.compSL_apply,
-    ContinuousLinearMap.comp_apply,
-    ContinuousLinearMap.toSpanSingleton_apply, one_smul,
-    NormedSpace.exp_zero, one_mul,
-    rightMulIndicatorCLM_apply, leftMulIndicatorCLM_apply] using hone
+  have hleftAsRight := hleftD.congr_of_eventuallyEq heq
+  have hderivEq := hleftAsRight.unique hrightD
+  simpa [R, S, rightMulIndicatorCLM_apply,
+    leftMulIndicatorCLM_apply] using hderivEq
 
 /-- Exact all-real exponential quotient is equivalent to generator
 intertwining.  This algebraic helper is stronger in its time-domain hypothesis
