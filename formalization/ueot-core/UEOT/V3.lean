@@ -42,3 +42,5 @@ import UEOT.V3.RepresentationCovarianceFiniteValue
 import UEOT.V3.CTMCLumpability
 import UEOT.V3.CTMCSemigroup
 import UEOT.V3.CTMCSemigroupNonnegative
+import UEOT.V3.RecoveryContinuous
+import UEOT.V3.RecoveryDynkin
