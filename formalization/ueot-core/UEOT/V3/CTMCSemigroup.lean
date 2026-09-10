@@ -117,8 +117,10 @@ theorem generator_intertwines_of_semigroup
       blockIndicator block * Lbar := by
   let R := rightMulIndicatorCLM block
   let S := leftMulIndicatorCLM block
-  have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
-  have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
+  have hL : HasDerivAt (fun t : ℝ => NormedSpace.exp (t • L)) L 0 := by
+    simpa using hasDerivAt_exp_smul_const L (0 : ℝ)
+  have hR : HasDerivAt (fun t : ℝ => NormedSpace.exp (t • Lbar)) Lbar 0 := by
+    simpa using hasDerivAt_exp_smul_const Lbar (0 : ℝ)
   have hleftD := R.hasFDerivAt.comp_hasDerivAt 0 hL
   have hrightD := S.hasFDerivAt.comp_hasDerivAt 0 hR
   have hfun :
