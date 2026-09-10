@@ -16,6 +16,8 @@ built on top of this identity rather than postulated.
 
 namespace UEOT.V3.InformationDiscreteEntropy
 
+noncomputable section
+
 open MeasureTheory InformationTheory
 open UEOT.V3.InformationEntropyBound
 open scoped ENNReal
@@ -29,7 +31,7 @@ local instance : DecidableEq M := Classical.decEq M
 
 /-- Radon--Nikodym density of the diagonal copy law relative to two independent
 copies, on a finite discrete state space. -/
-noncomputable def copyDensity (μ : Measure M) : M × M → ℝ≥0∞ :=
+def copyDensity (μ : Measure M) : M × M → ℝ≥0∞ :=
   fun z => if z.1 = z.2 then (μ {z.1})⁻¹ else 0
 
 lemma measurable_copyDensity (μ : Measure M) : Measurable (copyDensity μ) := by
@@ -58,12 +60,17 @@ theorem prod_withDensity_copyDensity_eq_copyJoint
       simp]
     by_cases ha : μ {a} = 0
     · simp [ha]
-    · rw [← mul_assoc, ENNReal.inv_mul_cancel ha (measure_ne_top μ {a})]
+    · rw [ENNReal.inv_mul_cancel ha (measure_ne_top μ {a})]
       simp
   · simp only [copyDensity, if_neg hab]
     rw [show ((fun m : M => (m, m)) ⁻¹' ({(a, b)} : Set (M × M))) = (∅ : Set M) by
       ext m
-      simp [hab]]
+      simp only [Set.mem_preimage, Set.mem_singleton_iff, Set.not_mem_empty, iff_false]
+      intro hpair
+      apply hab
+      calc
+        a = m := (congrArg Prod.fst hpair).symm
+        _ = b := congrArg Prod.snd hpair]
     simp
 
 /-- Absolute continuity needed by the KL/Radon--Nikodym API follows from the
@@ -81,5 +88,7 @@ theorem rnDeriv_copyJoint_prod
     (copyJoint μ).rnDeriv (μ.prod μ) =ᵐ[μ.prod μ] copyDensity μ := by
   rw [← prod_withDensity_copyDensity_eq_copyJoint μ]
   exact Measure.rnDeriv_withDensity (μ.prod μ) (measurable_copyDensity μ)
+
+end
 
 end UEOT.V3.InformationDiscreteEntropy
