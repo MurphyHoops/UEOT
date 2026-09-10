@@ -115,27 +115,30 @@ theorem generator_intertwines_of_semigroup
         blockIndicator block * NormedSpace.exp (t • Lbar)) :
     L * blockIndicator block =
       blockIndicator block * Lbar := by
-  let R := rightMulIndicatorCLM block
-  let S := leftMulIndicatorCLM block
   have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
   have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
-  have hleftD := R.hasFDerivAt.comp_hasDerivAt 0 hL
-  have hrightD := S.hasFDerivAt.comp_hasDerivAt 0 hR
+  have hleftD :=
+    (rightMulIndicatorCLM block).hasFDerivAt.comp_hasDerivAt 0 hL
+  have hrightD :=
+    (leftMulIndicatorCLM block).hasFDerivAt.comp_hasDerivAt 0 hR
   have hfun :
-      (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) =
-        (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
+      ((rightMulIndicatorCLM block) ∘
+          fun t : ℝ => NormedSpace.exp (t • L)) =
+        ((leftMulIndicatorCLM block) ∘
+          fun t : ℝ => NormedSpace.exp (t • Lbar)) := by
     funext t
-    simpa [R, S] using hsem t
+    simpa only [Function.comp_apply, rightMulIndicatorCLM_apply,
+      leftMulIndicatorCLM_apply] using hsem t
   have heq :
-      (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[nhds 0]
-        (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) :=
+      ((leftMulIndicatorCLM block) ∘
+          fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[nhds 0]
+        ((rightMulIndicatorCLM block) ∘
+          fun t : ℝ => NormedSpace.exp (t • L)) :=
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
   have hleftAsRight := hleftD.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightD
-  have hRS : R L = S Lbar := by
-    simpa only [zero_smul, NormedSpace.exp_zero, one_mul] using hderivEq
-  change rightMulIndicatorCLM block L = leftMulIndicatorCLM block Lbar at hRS
-  simpa only [rightMulIndicatorCLM_apply, leftMulIndicatorCLM_apply] using hRS
+  simpa only [zero_smul, NormedSpace.exp_zero, one_mul,
+    rightMulIndicatorCLM_apply, leftMulIndicatorCLM_apply] using hderivEq
 
 /-- Exact all-real exponential quotient is equivalent to generator
 intertwining.  This algebraic helper is stronger in its time-domain hypothesis
