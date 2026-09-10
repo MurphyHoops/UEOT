@@ -105,9 +105,9 @@ theorem semigroup_intertwines_of_generator
   exact exp_intertwines (t • L) (t • Lbar) block
     (smul_generator_intertwines L Lbar block h t)
 
-/-- Source-facing forward implication of P-DYN-02: an exact semigroup quotient
-for every real time forces the generator intertwining relation.  This is the
-formal zero-time differentiation step in the manuscript proof. -/
+/-- Algebraic forward implication: an exact exponential intertwining for all
+real times forces generator intertwining.  The source-facing CTMC theorem will
+separately restrict the hypothesis to nonnegative semigroup times. -/
 theorem generator_intertwines_of_semigroup
     (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B)
     (hsem : ∀ t : ℝ,
@@ -134,15 +134,18 @@ theorem generator_intertwines_of_semigroup
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
   have hleftAsRight := hleftD.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightD
-  rw [ContinuousLinearMap.compSL_apply,
-    ContinuousLinearMap.compSL_apply] at hderivEq
-  simp only [ContinuousLinearMap.comp_apply,
-    ContinuousLinearMap.toSpanSingleton_apply, one_smul] at hderivEq
+  have hderivEq' :
+      R (NormedSpace.exp ((0 : ℝ) • L) * L) =
+        S (NormedSpace.exp ((0 : ℝ) • Lbar) * Lbar) := by
+    simpa only [ContinuousLinearMap.compSL_apply,
+      ContinuousLinearMap.comp_apply,
+      ContinuousLinearMap.toSpanSingleton_apply, one_smul] using hderivEq
   simpa [R, S, rightMulIndicatorCLM_apply,
-    leftMulIndicatorCLM_apply] using hderivEq
+    leftMulIndicatorCLM_apply] using hderivEq'
 
-/-- Exact finite-CTMC semigroup quotient is equivalent to generator
-intertwining. -/
+/-- Exact all-real exponential quotient is equivalent to generator
+intertwining.  This algebraic helper is stronger in its time-domain hypothesis
+than the probabilistic CTMC semigroup statement in Core v3. -/
 theorem semigroup_intertwines_iff_generator
     (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B) :
     (∀ t : ℝ,
@@ -152,9 +155,8 @@ theorem semigroup_intertwines_iff_generator
   ⟨generator_intertwines_of_semigroup L Lbar block,
     semigroup_intertwines_of_generator L Lbar block⟩
 
-/-- Literal block-sum criterion of P-DYN-02.  Combining zero-time
-differentiation with the algebraic block-indicator identity gives the exact
-iff stated in the source. -/
+/-- Algebraic all-real block-sum criterion.  A separate source-facing wrapper
+must use nonnegative CTMC semigroup time before P-DYN-02 is promoted. -/
 theorem p_dyn_02_semigroup_iff_blockSum
     (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B) :
     (∀ t : ℝ,
@@ -163,7 +165,6 @@ theorem p_dyn_02_semigroup_iff_blockSum
       ∀ x b, blockSum L block x b = Lbar (block x) b :=
   (semigroup_intertwines_iff_generator L Lbar block).trans
     (CTMCLumpability.generator_intertwines_iff_blockSum L Lbar block)
-
 
 end
 
