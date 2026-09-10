@@ -14,6 +14,7 @@ import UEOT.V3.SelectionBridge
 import UEOT.V3.Agency
 import UEOT.V3.HistoryMarkovization
 import UEOT.V3.TotalVariation
+import UEOT.V3.TransportDefect
 import UEOT.V3.VariationBridge
 import UEOT.V3.ViabilityKernel
 import UEOT.V3.ViabilityPath
