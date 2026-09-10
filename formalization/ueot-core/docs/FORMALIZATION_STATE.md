@@ -26,116 +26,104 @@ Promotion requires exact source matching, official-target CI, merge to
 
 | status | count |
 |---|---:|
-| proved | **31** |
+| proved | **32** |
 | partial | **0** |
-| pending | **75** |
+| pending | **74** |
 | total | **106** |
 
-Current main checkpoint before this status synchronization:
-- commit: `5fa4b6ce4eeef96349c9dd00b2b7ea4fd352bc9f`
-- latest integrated proof ledger remains **31 / 0 / 75**.
+Latest completed proof promotion:
+- **P-PER-03**
+- source-facing branch head: `eb0d0305ab7acab73ea9f3ac06957273f50936be`
+- branch push CI #492: success
+- PR #21 CI #493: success
+- squash merge: `cb665eb3716024e3f677b4ba651e9ef95ea95664`
+- post-merge main CI #494 (`34482798255`): success
+- ledger synchronization commit: `ea7b62cfebcc866d0dbe8b1a011aacaeec688375`
 
-The counts intentionally remain unchanged while feature branches are being
-closed. Branch-green or even a source-facing theorem is not yet an integrated
-`proved` promotion.
+The authoritative ledger therefore records **32 / 0 / 74**. Branch-green or
+even a source-facing theorem is not an integrated `proved` promotion until the
+full gate above is complete.
 
 ## 3. HOT proof lanes
 
 ### A. P-DYN-02 — CTMC semigroup/generator closure
 
 - branch: `formal/pdyn02-ctmc`
-- current head: `8eb663c502c2f581f2be94a7f841a42ec702e7bb`
-- current push Action: **#482**, in progress at this synchronization.
+- current submitted head: `4f61bc19e054a7cd670b0acbf1283094e6922c4b`
 - green foundation: finite block-sum criterion ↔ generator intertwining;
   macro construction/uniqueness under a surjective partition; power-series
   propagation; generator ⇒ matrix-exponential semigroup intertwining.
 - source-facing nonnegative-time layer exists in
   `CTMCSemigroupNonnegative.lean`, including the right-derivative-at-zero route
   and construction of the macro CTMC generator under the source hypotheses.
-- residual blocker classification: **F0 proof engineering**. Prior runs showed
-  a hidden norm/topology instance identity problem in the all-real derivative
-  helper: Lean printed both equality types identically while rejecting them as
-  definitionally unequal. The current repair removes local CLM aliases so the
-  derivative proof uses the project-local bundled multiplication maps directly.
-- next: inspect #482. If hidden instances remain, switch the reverse direction
-  to scalar matrix-coordinate derivatives, eliminating bundled matrix codomain
-  identity from derivative uniqueness entirely.
+- blocker classification remains **F0 proof engineering**. Runs through #495
+  showed that even after scalarizing derivative uniqueness to individual real
+  matrix entries, project-local `ContinuousLinearMap` definitions retained
+  hidden domain norm-instance parameters. Lean consequently printed the actual
+  and expected scalar equality types identically while rejecting them as
+  definitionally unequal.
+- latest repair removes the bundled readout from the resulting derivative
+  equality itself: after uniqueness, unfold `rightMulEntryCLM` and
+  `leftMulEntryCLM` in-place and change directly to the bare matrix-entry
+  equality. This is intended to erase the hidden norm instance before the
+  source-facing algebra is recovered.
+- next: inspect the CI for `4f61bc19...`; if green, immediately audit the
+  nonnegative-time source wrapper and enter the integration gate.
 
-### B. P-PER-03 — finite viability kernel and genuine pathwise persistence
-
-- branch: `formal/pper03-viability`
-- current head: `8703bbcbbb7cbf93f422daab34637159b1d895e6`
-- PR: **#21 draft**
-- push CI **#478: success**; PR CI **#479: success**.
-- machine-checked chain now includes:
-  finite decreasing viability recursion and finite stabilization; fixed-point
-  controlled invariance; maximality among controlled-invariant subsets;
-  deterministic stationary preserving policy; PMF-to-kernel bridge; genuine
-  Ionescu--Tulcea infinite trajectory; exact coordinate marginal equality; and
-  probability-one all-times nonexit from a fixed viability kernel.
-- exact v3.0 source audit exposed one remaining semantic gate. The manuscript
-  states that the stabilized `K∞` is **exactly** the set of initial states from
-  which there exists a strategy keeping the system in `V` forever almost
-  surely, and separately states existence of a stationary deterministic
-  strategy preserving `K∞`. Current Lean proves the stationary/all-times
-  direction and greatest controlled-invariant characterization, but has not yet
-  explicitly represented an arbitrary history-dependent strategy and proved
-  the reverse implication `sure-safe strategy -> survives every deletion
-  round`.
-- classification: **F0/F1 interface gap**, not a counterexample. Do not promote
-  yet.
-- next: formalize the general sure-safe strategy predicate on finite histories,
-  prove its winning set is controlled invariant / survives every viability
-  iteration, then package exact `K∞` equality and rerun PR CI.
-
-### C. P-INFO-01 — information retention identity and entropy lower bound
+### B. P-INFO-01 — information retention identity and entropy lower bound
 
 - branch: `formal/pinfo01-04-chain`
 - current head: `a62f5d44d0a1af4b592a750877a2580b1ee3be8b`
-- previous verified chain already proves deterministic-statistic data
-  processing, measurable reversible lift, standard-Borel disintegration,
+- official-target CI #483: **success**.
+- existing verified chain proves deterministic-statistic data processing,
+  measurable reversible lift, standard-Borel disintegration,
   `I(H;Y) = I(M;Y) + I(H;Y|M)`, and the epsilon-retention consequence.
-- exact source statement additionally requires, for discrete `M`,
-  `H(M) >= I(H;Y) - ε`, using the standard inequality `I(M;Y) <= H(M)`;
-  `Y` need not be discrete.
-- new module `InformationEntropyBound.lean` reduces the entropy inequality to
-  a standard KL data-processing step from a diagonal copied state versus two
-  independent copies. It is imported by the official `UEOT/V3.lean` graph.
-- integration-graph CI **#481** exposed a missing explicit
-  `IsFiniteMeasure (copyJoint μ)` instance; this was a real coverage check that
-  the earlier isolated branch build had not exercised.
-- current repair adds the finite-measure bridge for the project-local
-  `copyJoint` abbreviation; Action **#483** is in progress.
-- remaining mathematical bridge after CI: for discrete `M`, machine-check
-  `D_KL(P_(M,M) || P_M × P_M) = H(M)` with compatible `ENNReal`/`Real`
-  codomains. No new UEOT information axiom is permitted.
+- exact v3.0 source additionally requires, for discrete `M`,
+  `H(M) >= I(H;Y) - ε`, using `I(M;Y) <= H(M)`; the source does not require
+  `Y` to be discrete.
+- `InformationEntropyBound.lean` is now genuinely reachable from the official
+  `UEOT/V3.lean` graph. It proves the KL data-processing half by comparing a
+  copied/diagonal state with two independent copies and includes the explicit
+  finite-measure instance needed for the project-local `copyJoint` definition.
+- remaining mathematical bridge: machine-check
+  `D_KL(P_(M,M) || P_M × P_M) = H(M)` for discrete `M`, reconciling Mathlib's
+  `ENNReal` KL codomain with the existing real-valued `pmfShannonEntropy`.
+- preferred route: express diagonal and independent-copy laws as composition
+  products with equal first marginal, use Mathlib's KL chain rule, reduce to
+  the discrete one-point identity `D_KL(δ_m || μ) = -log μ(m)`, then sum under
+  `μ`. No new UEOT information axiom is permitted.
 
-### D. P-FAC-01 — representation covariance
+### C. P-FAC-01 — representation covariance
 
 - branch: `formal/pfac01-covariance`
-- current head: `8c5e451c10f58fa032af73c66b1bd52f2fee7620`
+- last audited head: `8c5e451c10f58fa032af73c66b1bd52f2fee7620`
 - branch and PR CI at the current source-facing chain are green.
 - transported primitive kernels → finite causal feedback path law → transported
   rewards → policy-by-policy values → optimal supremum is derived in the
   correct direction; the previous independent-final-path-law hypothesis has
   been removed.
-- next: exact source audit and integration gate after the two active F0 CI
-  repairs are resolved.
+- exact source audit has found the expected four covariance layers:
+  macro path law, predictive sufficiency, exact dynamic closure, and control
+  value under a bimeasurable microscopic coordinate change with transported
+  primitives.
+- next: refresh branch-vs-main state after the P-PER-03 merge, complete the
+  declaration-by-declaration source audit, then integrate only if the rebased
+  official target remains green.
 
-### E. P-PER-01 — omega-limit strong invariance audit
+### D. P-PER-01 — omega-limit strong invariance audit
 
 - branch: `formal/pper01-omega-limit`
-- current head: `94ddd8d0bbf231982c772968a985c4347cd46901`
+- last observed head: `94ddd8d0bbf231982c772968a985c4347cd46901`
 - semantic status: unresolved **F2** for a one-sided semiflow if exact image
   equality `φ_s '' ω(x) = ω(x)` is claimed without enough reverse-time
   structure. Forward invariance alone is insufficient.
 - next: prove reverse inclusion from the literal v3.0 hypotheses or record a
   v3.1 wording correction; do not silently strengthen semiflow to flow.
 
-### F. P-REC-02 — continuous stochastic recovery
+### E. P-REC-02 — continuous stochastic recovery
 
 - branch: `formal/prec02-continuous-recovery`
-- current head: `fc4ad64059c2f84324fc7c66312198c0151f3381`
+- last observed head: `fc4ad64059c2f84324fc7c66312198c0151f3381`
 - source already contains the Dynkin/localization/integrability regularity
   needed for the intended a.e./AC argument.
 - status: **F0**, not a source defect.
@@ -152,25 +140,27 @@ Current high-value findings:
 
 1. CTMC time is one-sided; source exposition should explicitly use the right
    derivative at `t = 0`.
-2. Marginal persistence and pathwise persistence are distinct and need the
-   explicit path-law bridge now present on P-PER-03.
-3. P-PER-03 source-level equality also requires the reverse arbitrary-strategy
-   winning-set characterization, not only existence of a stationary policy on
-   the fixed kernel.
+2. Marginal persistence and pathwise persistence are distinct; P-PER-03 now
+   contains an explicit Ionescu--Tulcea path-law bridge.
+3. P-PER-03 also requires the arbitrary-history-strategy winning-set equality;
+   that reverse characterization is now machine-checked and integrated.
 4. Representation covariance should be derived from primitive transported
    dynamics, not assumed as final path/value equality.
 5. One-sided semiflow forward invariance must not be silently strengthened to
    exact image equality.
 6. Import-graph inclusion is part of the formalization test: a green commit for
    an unimported module is not evidence that `lake build UEOT` checked it.
+7. Lean can hide norm-instance mismatches under identical pretty-printed types;
+   source-facing proofs should eliminate auxiliary bundled analytic structures
+   before the final algebraic equality whenever possible.
 
 No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
 ## 4. Integrated / archive lanes
 
 Do not resume proof development from stale heads whose target work is already
-integrated on `main`, including P-INT-02, P-PRED-03, P-DYN-04, P-DYN-03,
-P-PROC-01, P-QSD-02, P-INFO-05 and P-REC-01.
+integrated on `main`, including P-PER-03, P-INT-02, P-PRED-03, P-DYN-04,
+P-DYN-03, P-PROC-01, P-QSD-02, P-INFO-05 and P-REC-01.
 
 Older branches such as `formal/dyn01`, `formal/pred02`, `formal/tel01`,
 `formal/parallel-ci`, and old wave branches are archive evidence unless a
@@ -195,15 +185,17 @@ When chat/context is missing:
 
 ## 6. Immediate parallel order
 
-1. **P-DYN-02** — close hidden-instance derivative interface; scalarize if the
-   direct bundled-map repair is not green.
-2. **P-PER-03** — add arbitrary-strategy reverse characterization required by
-   the exact source wording; only then integrate PR #21.
-3. **P-INFO-01** — make the copied-law data-processing module official-target
-   green, then prove discrete copy-KL = Shannon entropy.
-4. **P-FAC-01** — exact source audit and integration gate.
-5. **P-PER-01** — resolve the semiflow reverse-inclusion semantic question.
-6. **P-REC-02** — instantiate the exact Dynkin/AC process certificate.
+1. **P-DYN-02** — inspect `4f61bc19...`; if the hidden-instance boundary is
+   gone, source-audit and integrate immediately.
+2. **P-INFO-01** — close discrete copy-KL = Shannon entropy and then the source
+   entropy lower bound.
+3. **P-FAC-01** — refresh against current main, exact source audit, integration
+   gate.
+4. **P-REC-02** — instantiate the exact Dynkin/AC process certificate.
+5. **P-PER-01** — resolve the one-sided semiflow reverse-inclusion issue without
+   silently strengthening the source.
+6. Refill free lanes from the pending P-ID set only after these near-closure
+   lanes are not left half-finished.
 
 ## 7. Repository truth hierarchy
 
