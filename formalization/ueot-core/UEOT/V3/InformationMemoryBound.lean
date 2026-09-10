@@ -69,9 +69,10 @@ theorem predictive_info_le_entropy_add
   calc
     mutualInfo μ ≤ mutualInfo (statisticJoint μ f hf) + ε :=
       mutualInfo_statistic_ge_sub_of_conditional_le μ f hf hε
-    _ ≤ discreteShannonEntropy (statisticJoint μ f hf).fst + ε :=
-      add_le_add_right
-        (mutualInfo_le_discreteShannonEntropy (statisticJoint μ f hf)) ε
+    _ ≤ discreteShannonEntropy (statisticJoint μ f hf).fst + ε := by
+      simpa [add_comm] using
+        add_le_add_right
+          (mutualInfo_le_discreteShannonEntropy (statisticJoint μ f hf)) ε
 
 /-- **P-INFO-01, discrete entropy corollary.**  This is the literal frozen
 source inequality, written with the ordered subtraction on `ℝ≥0∞` so that the
