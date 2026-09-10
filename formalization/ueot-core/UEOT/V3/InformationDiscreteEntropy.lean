@@ -130,9 +130,8 @@ theorem toReal_copy_kl_eq_shannon
         rw [tsum_fintype]
         apply Finset.sum_congr rfl
         intro m hm
-        simp only [copyDensity, if_pos rfl, ENNReal.toReal_inv]
-        rw [Real.log_inv]
-        simp [Real.negMulLog]
+        simp [copyDensity, Measure.toPMF_apply, ENNReal.toReal_inv,
+          Real.log_inv, Real.negMulLog]
   · exact (measurable_of_finite _).aemeasurable
   · exact (measurable_of_finite _).aestronglyMeasurable
 
