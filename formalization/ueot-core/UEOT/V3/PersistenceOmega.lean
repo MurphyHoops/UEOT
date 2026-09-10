@@ -7,7 +7,7 @@ import Mathlib.Topology.Sequences
 
 This module formalizes the persistence theorem used by Core 3.  The generic
 filter-level lemmas establish nonemptiness, compactness, persistence-domain
-containment, and forward invariance.  The final `ℝ≥0` theorem proves the
+containment, and forward invariance.  The final `NNReal` theorem proves the
 missing reverse inclusion without introducing negative time or a right inverse:
 for a precompact one-sided orbit, every omega-limit point has a shifted
 precompact subsequence whose limit is a predecessor inside the same omega-limit.
@@ -81,7 +81,7 @@ section NNRealSemiflow
 variable [MetricSpace X]
 
 private theorem nnreal_tsub_tendsto_atTop
-    {t : ℕ → ℝ≥0} (ht : Tendsto t atTop atTop) (s : ℝ≥0) :
+    {t : ℕ → NNReal} (ht : Tendsto t atTop atTop) (s : NNReal) :
     Tendsto (fun n => t n - s) atTop atTop := by
   refine tendsto_atTop.2 fun b => ?_
   exact (tendsto_atTop.1 ht (b + s)).mono fun _n hn =>
@@ -92,42 +92,42 @@ semiflow.  The reverse inclusion is obtained by shifting a sequence of times
 `tₙ → ∞` by `s`, extracting a convergent subsequence from the precompact
 orbit, and passing the semiflow identity through the limit. -/
 theorem image_omegaLimit_eq_of_precompact_orbit
-    (φ : Flow ℝ≥0 X) (x : X)
-    (hpre : IsCompact (closure (range fun t : ℝ≥0 => φ t x)))
-    (s : ℝ≥0) :
-    φ s '' ω (atTop : Filter ℝ≥0) φ ({x} : Set X) =
-      ω (atTop : Filter ℝ≥0) φ ({x} : Set X) := by
+    (φ : Flow NNReal X) (x : X)
+    (hpre : IsCompact (closure (range fun t : NNReal => φ t x)))
+    (s : NNReal) :
+    φ s '' ω (atTop : Filter NNReal) φ ({x} : Set X) =
+      ω (atTop : Filter NNReal) φ ({x} : Set X) := by
   apply Subset.antisymm
-  · have htrans : ∀ r : ℝ≥0,
-        Tendsto (r + ·) (atTop : Filter ℝ≥0) atTop := fun r =>
+  · have htrans : ∀ r : NNReal,
+        Tendsto (r + ·) (atTop : Filter NNReal) atTop := fun r =>
       tendsto_atTop_add_const_left atTop r tendsto_id
     exact mapsTo_iff_image_subset.mp
-      ((Flow.isInvariant_omegaLimit (atTop : Filter ℝ≥0)
+      ((Flow.isInvariant_omegaLimit (atTop : Filter NNReal)
         φ ({x} : Set X) htrans) s)
   · intro y hy
     have hcluster :
-        MapClusterPt y (atTop : Filter ℝ≥0) (fun t : ℝ≥0 => φ t x) :=
+        MapClusterPt y (atTop : Filter NNReal) (fun t : NNReal => φ t x) :=
       (mem_omegaLimit_singleton_iff_mapClusterPt
-        (atTop : Filter ℝ≥0) φ x y).1 hy
+        (atTop : Filter NNReal) φ x y).1 hy
     obtain ⟨t, hty, htTop⟩ := hcluster.exists_seq_tendsto
-    have huTop : Tendsto (fun n => t n - s) atTop (atTop : Filter ℝ≥0) :=
+    have huTop : Tendsto (fun n => t n - s) atTop (atTop : Filter NNReal) :=
       nnreal_tsub_tendsto_atTop htTop s
     have hmem : ∀ n : ℕ,
-        φ (t n - s) x ∈ closure (range fun r : ℝ≥0 => φ r x) := by
+        φ (t n - s) x ∈ closure (range fun r : NNReal => φ r x) := by
       intro n
       exact subset_closure ⟨t n - s, rfl⟩
     obtain ⟨z, hzpre, q, hqmono, hqz⟩ := hpre.isSeqCompact hmem
     have hqTop : Tendsto q atTop atTop := hqmono.tendsto_atTop
-    have huqTop : Tendsto (fun n => t (q n) - s) atTop (atTop : Filter ℝ≥0) := by
+    have huqTop : Tendsto (fun n => t (q n) - s) atTop (atTop : Filter NNReal) := by
       simpa [Function.comp_def] using huTop.comp hqTop
     have hzcluster :
-        MapClusterPt z (atTop : Filter ℝ≥0) (fun r : ℝ≥0 => φ r x) := by
+        MapClusterPt z (atTop : Filter NNReal) (fun r : NNReal => φ r x) := by
       apply MapClusterPt.of_comp huqTop
       simpa [Function.comp_def] using hqz.mapClusterPt
-    have hzomega : z ∈ ω (atTop : Filter ℝ≥0) φ ({x} : Set X) :=
+    have hzomega : z ∈ ω (atTop : Filter NNReal) φ ({x} : Set X) :=
       (mem_omegaLimit_singleton_iff_mapClusterPt
-        (atTop : Filter ℝ≥0) φ x z).2 hzcluster
-    have htqTop : Tendsto (fun n => t (q n)) atTop (atTop : Filter ℝ≥0) := by
+        (atTop : Filter NNReal) φ x z).2 hzcluster
+    have htqTop : Tendsto (fun n => t (q n)) atTop (atTop : Filter NNReal) := by
       simpa [Function.comp_def] using htTop.comp hqTop
     have hge : ∀ᶠ n in atTop, s ≤ t (q n) :=
       tendsto_atTop.1 htqTop s
@@ -153,23 +153,23 @@ that is eventually contained in a closed persistence domain has a nonempty,
 compact omega-limit inside that domain, and every nonnegative time map sends
 that omega-limit onto itself. -/
 theorem p_per_01
-    (φ : Flow ℝ≥0 X) (x : X)
+    (φ : Flow NNReal X) (x : X)
     {V : Set X}
     (hV : IsClosed V)
-    (hstay : ∀ᶠ t in (atTop : Filter ℝ≥0), φ t x ∈ V)
-    (hpre : IsCompact (closure (range fun t : ℝ≥0 => φ t x))) :
-    (ω (atTop : Filter ℝ≥0) φ ({x} : Set X)).Nonempty ∧
-      IsCompact (ω (atTop : Filter ℝ≥0) φ ({x} : Set X)) ∧
-      ω (atTop : Filter ℝ≥0) φ ({x} : Set X) ⊆ V ∧
-      ∀ s : ℝ≥0,
-        φ s '' ω (atTop : Filter ℝ≥0) φ ({x} : Set X) =
-          ω (atTop : Filter ℝ≥0) φ ({x} : Set X) := by
-  have htrans : ∀ r : ℝ≥0,
-      Tendsto (r + ·) (atTop : Filter ℝ≥0) atTop := fun r =>
+    (hstay : ∀ᶠ t in (atTop : Filter NNReal), φ t x ∈ V)
+    (hpre : IsCompact (closure (range fun t : NNReal => φ t x))) :
+    (ω (atTop : Filter NNReal) φ ({x} : Set X)).Nonempty ∧
+      IsCompact (ω (atTop : Filter NNReal) φ ({x} : Set X)) ∧
+      ω (atTop : Filter NNReal) φ ({x} : Set X) ⊆ V ∧
+      ∀ s : NNReal,
+        φ s '' ω (atTop : Filter NNReal) φ ({x} : Set X) =
+          ω (atTop : Filter NNReal) φ ({x} : Set X) := by
+  have htrans : ∀ r : NNReal,
+      Tendsto (r + ·) (atTop : Filter NNReal) atTop := fun r =>
     tendsto_atTop_add_const_left atTop r tendsto_id
-  have habs : ∃ v ∈ (atTop : Filter ℝ≥0),
+  have habs : ∃ v ∈ (atTop : Filter NNReal),
       closure (image2 φ v ({x} : Set X)) ⊆
-        closure (range fun t : ℝ≥0 => φ t x) := by
+        closure (range fun t : NNReal => φ t x) := by
     refine ⟨Set.univ, univ_mem, ?_⟩
     apply closure_mono
     rintro y ⟨t, _ht, z, hz, rfl⟩
@@ -177,7 +177,7 @@ theorem p_per_01
     subst z
     exact ⟨t, rfl⟩
   have hcore := omegaLimit_persistence_core
-    (atTop : Filter ℝ≥0) φ x hV hstay hpre habs htrans
+    (atTop : Filter NNReal) φ x hV hstay hpre habs htrans
   exact ⟨hcore.1, hcore.2.1, hcore.2.2.1,
     fun s => image_omegaLimit_eq_of_precompact_orbit φ x hpre s⟩
 
