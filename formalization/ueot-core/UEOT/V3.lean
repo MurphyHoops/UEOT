@@ -47,3 +47,4 @@ import UEOT.V3.RecoveryDynkin
 import UEOT.V3.InformationStatistic
 import UEOT.V3.InformationEntropyBound
 import UEOT.V3.InformationDiscreteEntropy
+import UEOT.V3.InformationMemoryBound
