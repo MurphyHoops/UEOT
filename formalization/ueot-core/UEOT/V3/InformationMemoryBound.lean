@@ -24,6 +24,7 @@ namespace UEOT.V3.InformationMemoryBound
 
 open MeasureTheory InformationTheory
 open scoped ENNReal ProbabilityTheory
+open UEOT.V3.InformationCore
 open UEOT.V3.InformationEntropyBound
 open UEOT.V3.InformationDiscreteEntropy
 open UEOT.V3.InformationStatistic
@@ -61,6 +62,10 @@ theorem predictive_info_le_entropy_add
     (hε : conditionalMutualInfoStatistic μ f ≤ ε) :
     mutualInfo μ ≤
       discreteShannonEntropy (statisticJoint μ f hf).fst + ε := by
+  letI : IsProbabilityMeasure (statisticJoint μ f hf) := by
+    unfold statisticJoint
+    exact (Measure.isProbabilityMeasure_map_iff
+      ((hf.comp measurable_fst).prodMk measurable_snd).aemeasurable).2 inferInstance
   calc
     mutualInfo μ ≤ mutualInfo (statisticJoint μ f hf) + ε :=
       mutualInfo_statistic_ge_sub_of_conditional_le μ f hf hε
