@@ -71,10 +71,9 @@ def AdjacentBound (S : FrozenTransportSystem M) (ε : ℕ → ℝ) : Prop :=
     tvDist ((S.K n m).map (S.Γ n (n + 1)))
       (S.K (n + 1) (S.Γ n (n + 1) m)) ≤ ε n
 
-/-- P-ID-01: endpoint transport defect is bounded by the sum of adjacent
-transport defects.  The source supremum-over-initial-state statement follows
-pointwise from this theorem. -/
-theorem p_id_01
+/-- Pointwise endpoint transport defect is bounded by the sum of adjacent
+transport defects. -/
+theorem p_id_01_pointwise
     (S : FrozenTransportSystem M) (ε : ℕ → ℝ)
     (hadj : S.AdjacentBound ε) :
     ∀ n (m : M 0),
@@ -143,6 +142,21 @@ theorem p_id_01
           add_le_add hind (le_refl (ε n))
         _ = ∑ i ∈ Finset.range (n + 1), ε i := by
           rw [Finset.sum_range_succ]
+
+/-- Literal supremum form of Core 3 P-ID-01.  The state space at the initial
+endpoint is assumed nonempty so that the source `sup_m` is an ordinary
+supremum over actual initial macrostates. -/
+theorem p_id_01
+    (S : FrozenTransportSystem M) (ε : ℕ → ℝ)
+    [Nonempty (M 0)] (hadj : S.AdjacentBound ε) (n : ℕ) :
+    sSup (Set.range fun m : M 0 =>
+      tvDist ((S.K 0 m).map (S.Γ 0 n))
+        (S.K n (S.Γ 0 n m))) ≤
+      ∑ i ∈ Finset.range n, ε i := by
+  refine csSup_le (Set.range_nonempty _) ?_
+  intro d hd
+  rcases hd with ⟨m, rfl⟩
+  exact p_id_01_pointwise S ε hadj n m
 
 end FrozenTransportSystem
 
