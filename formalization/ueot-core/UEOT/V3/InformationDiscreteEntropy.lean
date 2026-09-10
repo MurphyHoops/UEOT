@@ -25,6 +25,8 @@ universe uM
 variable {M : Type uM}
 variable [Fintype M] [MeasurableSpace M] [MeasurableSingletonClass M]
 
+local instance : DecidableEq M := Classical.decEq M
+
 /-- Radon--Nikodym density of the diagonal copy law relative to two independent
 copies, on a finite discrete state space. -/
 noncomputable def copyDensity (μ : Measure M) : M × M → ℝ≥0∞ :=
@@ -40,7 +42,7 @@ theorem prod_withDensity_copyDensity_eq_copyJoint
     (μ.prod μ).withDensity (copyDensity μ) = copyJoint μ := by
   apply Measure.ext_of_singleton
   rintro ⟨a, b⟩
-  rw [Measure.withDensity_apply _ (measurableSet_singleton (a, b))]
+  rw [withDensity_apply _ (measurableSet_singleton (a, b))]
   rw [lintegral_singleton]
   have hprod : (μ.prod μ) ({(a, b)} : Set (M × M)) = μ {a} * μ {b} := by
     rw [show ({(a, b)} : Set (M × M)) = ({a} : Set M) ×ˢ ({b} : Set M) by ext z; simp]
@@ -56,7 +58,7 @@ theorem prod_withDensity_copyDensity_eq_copyJoint
       simp]
     by_cases ha : μ {a} = 0
     · simp [ha]
-    · rw [ENNReal.inv_mul_cancel ha (measure_ne_top μ {a})]
+    · rw [← mul_assoc, ENNReal.inv_mul_cancel ha (measure_ne_top μ {a})]
       simp
   · simp only [copyDensity, if_neg hab]
     rw [show ((fun m : M => (m, m)) ⁻¹' ({(a, b)} : Set (M × M))) = (∅ : Set M) by
@@ -70,7 +72,7 @@ theorem copyJoint_absolutelyContinuous_prod
     (μ : Measure M) [IsProbabilityMeasure μ] :
     copyJoint μ ≪ μ.prod μ := by
   rw [← prod_withDensity_copyDensity_eq_copyJoint μ]
-  exact Measure.withDensity_absolutelyContinuous _ _
+  exact withDensity_absolutelyContinuous _ _
 
 /-- The abstract Mathlib Radon--Nikodym derivative agrees almost everywhere
 with the explicit finite-discrete copy density. -/
