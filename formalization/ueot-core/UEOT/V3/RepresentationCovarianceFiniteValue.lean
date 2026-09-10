@@ -54,7 +54,7 @@ theorem causalLaw_toMeasure_transport_equiv
     (causalLaw p₀ K n).toMeasure.map
         (causalHistoryMeasurableEquiv e₀ eZ n) =
       (causalLaw (p₀.map e₀) K' n).toMeasure := by
-  rw [PMF.toMeasure_map]
+  rw [PMF.toMeasure_map (causalHistoryMeasurableEquiv e₀ eZ n).measurable]
   exact congrArg PMF.toMeasure (by
     simpa [causalHistoryMeasurableEquiv] using
       causalLaw_transport_equiv p₀ K K' e₀ eZ hK n)
@@ -73,7 +73,7 @@ theorem causalLaw_expectedReward_transport
         ∂(causalLaw (p₀.map e₀) K' n).toMeasure) =
       ∫ h, reward h ∂(causalLaw p₀ K n).toMeasure := by
   rw [← causalLaw_toMeasure_transport_equiv p₀ K K' e₀ eZ hK n]
-  simpa using MeasureTheory.integral_map_equiv
+  simpa [causalHistoryMeasurableEquiv] using MeasureTheory.integral_map_equiv
     (μ := (causalLaw p₀ K n).toMeasure)
     (causalHistoryMeasurableEquiv e₀ eZ n)
     (fun h' => reward ((causalHistoryMeasurableEquiv e₀ eZ n).symm h'))
