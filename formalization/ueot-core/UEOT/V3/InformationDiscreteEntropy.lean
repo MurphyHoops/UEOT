@@ -54,24 +54,27 @@ theorem prod_withDensity_copyDensity_eq_copyJoint
   rw [Measure.map_apply (measurable_of_finite _) (measurableSet_singleton (a, b))]
   by_cases hab : a = b
   · subst b
-    simp only [copyDensity, if_pos rfl]
+    simp only [copyDensity, Prod.fst, Prod.snd, if_pos rfl]
     rw [show ((fun m : M => (m, m)) ⁻¹' ({(a, a)} : Set (M × M))) = ({a} : Set M) by
       ext m
       simp]
     by_cases ha : μ {a} = 0
     · simp [ha]
-    · rw [ENNReal.inv_mul_cancel ha (measure_ne_top μ {a})]
+    · rw [← mul_assoc, ENNReal.inv_mul_cancel ha (measure_ne_top μ {a})]
       simp
-  · simp only [copyDensity, if_neg hab]
-    rw [show ((fun m : M => (m, m)) ⁻¹' ({(a, b)} : Set (M × M))) = (∅ : Set M) by
+  · have hpre :
+        ((fun m : M => (m, m)) ⁻¹' ({(a, b)} : Set (M × M))) = (∅ : Set M) := by
       ext m
-      simp only [Set.mem_preimage, Set.mem_singleton_iff, Set.not_mem_empty, iff_false]
-      intro hpair
-      apply hab
-      calc
-        a = m := (congrArg Prod.fst hpair).symm
-        _ = b := congrArg Prod.snd hpair]
-    simp
+      simp only [Set.mem_preimage, Set.mem_singleton_iff, Set.mem_empty_iff_false]
+      constructor
+      · intro hpair
+        have hma : m = a := congrArg Prod.fst hpair
+        have hmb : m = b := congrArg Prod.snd hpair
+        exact (hab (hma.symm.trans hmb)).elim
+      · intro hfalse
+        exact False.elim hfalse
+    rw [hpre]
+    simp [copyDensity, hab]
 
 /-- Absolute continuity needed by the KL/Radon--Nikodym API follows from the
 explicit density representation. -/
