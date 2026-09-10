@@ -129,7 +129,7 @@ theorem exponential_recovery_bound_ac_ae
   simp only [div_eq_mul_inv, hinv] at hdiv
   calc
     m t ≤ b / a + (m 0 - b / a) * Real.exp (-a * t) := by
-      linarith
+      simpa [div_eq_mul_inv, add_comm] using (sub_le_iff_le_add).mp hdiv
     _ = Real.exp (-a * t) * m 0 +
           (b / a) * (1 - Real.exp (-a * t)) := by
       ring
