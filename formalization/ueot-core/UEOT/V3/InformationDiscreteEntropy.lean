@@ -1,17 +1,17 @@
 import UEOT.V3.InformationEntropyBound
 import UEOT.V3.InformationEntropy
 import Mathlib.Probability.ProbabilityMassFunction.Basic
+import Mathlib.Probability.ProbabilityMassFunction.Integrals
 import Mathlib.MeasureTheory.Integral.Lebesgue.Countable
 import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
 
 /-!
 # P-INFO-01 finite discrete copy-KL / Shannon bridge
 
-This module isolates the only genuinely discrete step left in the entropy
-bound.  For a finite measurable state space, the diagonal/copy law is written
-as a density with respect to the independent product law.  The density is
-`1 / μ {m}` on the diagonal and zero off it.  The KL-to-Shannon calculation is
-built on top of this identity rather than postulated.
+This module isolates the genuinely discrete step in the P-INFO-01 entropy
+bound. For a finite measurable state space, the diagonal/copy law is written
+as a density with respect to the independent product law, and its KL divergence
+is reduced to the ordinary Shannon entropy of the marginal PMF.
 -/
 
 namespace UEOT.V3.InformationDiscreteEntropy
@@ -20,6 +20,7 @@ noncomputable section
 
 open MeasureTheory InformationTheory
 open UEOT.V3.InformationEntropyBound
+open UEOT.V3.InformationEntropy
 open scoped ENNReal
 
 universe uM
@@ -38,7 +39,7 @@ lemma measurable_copyDensity (μ : Measure M) : Measurable (copyDensity μ) := b
   exact measurable_of_finite _
 
 /-- The diagonal law is exactly the independent product law tilted by the
-copy density.  This is the measure-level core of the discrete entropy bridge. -/
+copy density. -/
 theorem prod_withDensity_copyDensity_eq_copyJoint
     (μ : Measure M) [IsProbabilityMeasure μ] :
     (μ.prod μ).withDensity (copyDensity μ) = copyJoint μ := by
@@ -92,6 +93,42 @@ theorem rnDeriv_copyJoint_prod
     (copyJoint μ).rnDeriv (μ.prod μ) =ᵐ[μ.prod μ] copyDensity μ := by
   rw [← prod_withDensity_copyDensity_eq_copyJoint μ]
   exact Measure.rnDeriv_withDensity (μ.prod μ) (measurable_copyDensity μ)
+
+/-- The copied-state KL divergence is exactly the Shannon entropy of the
+finite discrete marginal. This is the missing scalar identity behind
+`I(M;Y) ≤ H(M)` in P-INFO-01. -/
+theorem toReal_copy_kl_eq_shannon
+    (μ : Measure M) [IsProbabilityMeasure μ] :
+    (klDiv (copyJoint μ) (μ.prod μ)).toReal =
+      pmfShannonEntropy μ.toPMF := by
+  have hAC : copyJoint μ ≪ μ.prod μ := copyJoint_absolutelyContinuous_prod μ
+  have hmass : copyJoint μ Set.univ = (μ.prod μ) Set.univ := by
+    simp [copyJoint]
+  rw [InformationTheory.toReal_klDiv_of_measure_eq hAC hmass]
+  have hrn :
+      (copyJoint μ).rnDeriv (μ.prod μ) =ᵐ[copyJoint μ] copyDensity μ :=
+    hAC.ae_le (rnDeriv_copyJoint_prod μ)
+  have hllr :
+      llr (copyJoint μ) (μ.prod μ) =ᵐ[copyJoint μ]
+        fun z => Real.log (copyDensity μ z).toReal := by
+    filter_upwards [hrn] with z hz
+    simp only [llr]
+    rw [hz]
+  rw [integral_congr_ae hllr]
+  unfold copyJoint
+  rw [integral_map]
+  · rw [← Measure.toPMF_toMeasure (μ := μ)]
+    rw [PMF.integral_eq_sum]
+    unfold pmfShannonEntropy
+    rw [tsum_fintype]
+    apply Finset.sum_congr rfl
+    intro m hm
+    simp only [copyDensity, if_pos rfl, ENNReal.toReal_inv, smul_eq_mul,
+      Measure.toPMF_apply]
+    rw [Real.log_inv]
+    simp [Real.negMulLog]
+  · exact (measurable_of_finite _).aemeasurable
+  · exact (measurable_of_finite _).aestronglyMeasurable
 
 end
 
