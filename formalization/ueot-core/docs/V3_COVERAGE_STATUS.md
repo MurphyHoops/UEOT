@@ -34,9 +34,9 @@ is not a source-level proof promotion.
 
 | status | count |
 |---|---:|
-| **proved** | **37** |
+| **proved** | **38** |
 | **partial** | **0** |
-| **pending** | **69** |
+| **pending** | **68** |
 | **total** | **106** |
 
 There are currently **no partial P-IDs**. Every unresolved source P-ID remains
@@ -44,13 +44,13 @@ explicitly pending until it passes the full gate above.
 
 ## 3. Proved P-ID set
 
-The 37 source-matched, machine-checked P-IDs are:
+The 38 source-matched, machine-checked P-IDs are:
 
 - **Carrier / representation:** P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
 - **Prediction:** P-PRED-01, P-PRED-02, P-PRED-03
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
-- **Statistics:** P-STAT-03, P-STAT-04
+- **Statistics:** P-STAT-02, P-STAT-03, P-STAT-04
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -65,7 +65,7 @@ The 37 source-matched, machine-checked P-IDs are:
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 2 + 1 + 1 = 37`.
+Count check: `4 + 6 + 3 + 4 + 3 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 1 + 2 + 1 + 2 + 1 + 1 = 38`.
 
 ## 4. 2026-09-10 promotion — P-FAC-01
 
@@ -194,7 +194,32 @@ Verification evidence:
 - squash merge: `72b0703270df84d5a92f90d5e01c034777ff37dc`
 - post-merge main CI #547 (`34510479466`): success
 
-## 9. Prior promotion evidence
+## 9. 2026-09-11 promotion — P-STAT-02
+
+P-STAT-02 is promoted from `pending` to `proved`.
+
+The integrated theorem isolates the deterministic finite-sample propagation
+step: on one simultaneous response-level total-variation error event, the
+carrier response diameter changes by at most the sum of the two endpoint
+errors. Consequently every carrier defect satisfies
+`|eHat(S) - e(S)| <= 2 * eta` on that same event, with no second union bound
+over the family of carriers.
+
+The Lean implementation proves the endpoint TV perturbation inequality from
+the triangle inequality, defines the carrier defect as the supremum of
+response distances inside one readout fiber at a fixed protocol, and proves
+supremum stability in both directions. P-STAT-01 remains the separate
+probabilistic layer that supplies the simultaneous response event.
+
+Verification evidence:
+
+- feature head: `0275f7ad43f8505eefeefaefa0fb29052cf5b523`
+- branch full-target CI #560 (`34542020196`): success
+- PR #27 full-target CI #561 (`34542249026`): success
+- squash merge: `5886c7baa4d9b4936e21dbd5639d7c893af22053`
+- post-merge main CI #563 (`34542472419`): success
+
+## 10. Prior promotion evidence
 
 The full theorem-by-theorem narratives and CI evidence for the previous
 32-proof checkpoint are preserved in:
@@ -208,23 +233,25 @@ P-PRED-01/02, P-RES-01/02/05/06, P-CAR-04, and the recovered baseline.
 
 No previously proved P-ID is removed or downgraded by this ledger compaction.
 
-## 10. Active unresolved front
+## 11. Active unresolved front
 
 The highest-priority pending lane after this checkpoint is:
 
-- **P-INFO-01**: deterministic-statistic chain identity, epsilon retention,
-  channel data processing, and joint/product-law identification compile. The
-  frozen source says `M` is **discrete**, not merely finite; the active proof
-  therefore extends the copy-KL/Shannon bridge to countable discrete states
-  with extended-real entropy so that the infinite-entropy case is represented
-  correctly. After that bridge, close `I(M;Y) <= H(M)` through standard-Borel
-  disintegration and compose it with epsilon retention to obtain the literal
-  approximate predictive-memory lower bound.
+- **P-INFO-01**: the complete development branch now passes full-target CI #562.
+  The proof contains the deterministic-statistic chain identity, epsilon
+  retention, channel data processing, a countable-discrete extended-real
+  Shannon entropy bridge preserving `H(M)=∞`, the general bound
+  `I(M;Y) <= H(M)` by standard-Borel disintegration, and the source-facing
+  approximate predictive-memory lower bound `I(H;Y)-epsilon <= H(M)`.
+  Because the development branch predates newer main proofs, it must now be
+  clean-ported onto the newest green `main` before PR promotion.
 
-After P-INFO-01 is closed, refill parallel lanes from the remaining 68 source
-P-IDs by dependency depth and proof proximity rather than by file order.
+After P-INFO-01 is promoted, refill parallel lanes from the remaining source
+P-IDs by dependency depth and proof proximity. P-STAT-01 is the natural next
+statistics dependency, but its exact constants and hypotheses must be grounded
+in the canonical source before a source-facing wrapper is created.
 
-## 11. Completion rule
+## 12. Completion rule
 
 The v3.0 formalization is complete only when **all 106 source P-IDs** have been
 semantically matched and machine-checked under the frozen source. A green
