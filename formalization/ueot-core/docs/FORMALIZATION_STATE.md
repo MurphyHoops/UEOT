@@ -1,203 +1,191 @@
 # UEOT Core Lean — Live Formalization State
 
-> **Recovery entry point.** Read this file first when resuming formalization work.
-> It records the current integrated checkpoint, active proof lanes, CI state,
-> semantic gates, and next integration order. The source-level truth ledger is
-> `V3_COVERAGE_STATUS.md`; the execution plan is
+> **Recovery entry point.** Read this file first when resuming formalization
+> work. Source-level truth is `V3_COVERAGE_STATUS.md`; execution order is
 > `PARALLEL_FORMALIZATION_ROADMAP.md`.
 
 Last synchronized: **2026-09-10 (Asia/Taipei)**
 
-## 1. Canonical source and proof environment
+## 1. Canonical source and environment
 
-- Canonical source: `UEOT_Core_Mathematics_v3.0_Complete.md`
-- Source P-IDs: **106**
-- Canonical source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`
+- canonical source: `UEOT_Core_Mathematics_v3.0_Complete.md`
+- source P-IDs: **106**
+- canonical source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`
 - Lean: **4.33.1**
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
-- Official target: `lake build UEOT`
-- Integration branch: `main`
+- official target: `lake build UEOT`
+- integration branch: `main`
 
-No P-ID is promoted merely because a helper theorem or feature branch builds.
-Promotion requires exact source matching, official-target CI, merge to
-`main`, post-merge CI, and ledger update.
+Promotion requires exact source matching, official-target branch/PR CI, merge
+to `main`, green post-merge CI, and ledger synchronization.
 
 ## 2. Current integrated checkpoint
 
 | status | count |
 |---|---:|
-| proved | **32** |
+| proved | **34** |
 | partial | **0** |
-| pending | **74** |
+| pending | **72** |
 | total | **106** |
 
-Latest completed proof promotion:
-- **P-PER-03**
-- source-facing branch head: `eb0d0305ab7acab73ea9f3ac06957273f50936be`
-- branch push CI #492: success
-- PR #21 CI #493: success
-- squash merge: `cb665eb3716024e3f677b4ba651e9ef95ea95664`
-- post-merge main CI #494 (`34482798255`): success
-- ledger synchronization commit: `ea7b62cfebcc866d0dbe8b1a011aacaeec688375`
+Current integrated main checkpoint:
 
-The authoritative ledger therefore records **32 / 0 / 74**. Branch-green or
-even a source-facing theorem is not an integrated `proved` promotion until the
-full gate above is complete.
+- main proof head: `8ac668253c4d8bc62ab22f250701bc0a190b6049`
+- P-DYN-02 post-merge main CI #506 (`34497930427`): **success**
+- immediately preceding P-FAC-01 merge: `29bb6b3fb55cde2d7a87577f4d0ff15c14e29aa0`
+- P-FAC-01 post-merge main CI #502 (`34493839447`): **success**
+
+The two newest completed promotions are therefore **P-FAC-01** and
+**P-DYN-02**. The authoritative ledger records **34 / 0 / 72**.
 
 ## 3. HOT proof lanes
 
-### A. P-DYN-02 — CTMC semigroup/generator closure
-
-- branch: `formal/pdyn02-ctmc`
-- current submitted head: `4f61bc19e054a7cd670b0acbf1283094e6922c4b`
-- green foundation: finite block-sum criterion ↔ generator intertwining;
-  macro construction/uniqueness under a surjective partition; power-series
-  propagation; generator ⇒ matrix-exponential semigroup intertwining.
-- source-facing nonnegative-time layer exists in
-  `CTMCSemigroupNonnegative.lean`, including the right-derivative-at-zero route
-  and construction of the macro CTMC generator under the source hypotheses.
-- blocker classification remains **F0 proof engineering**. Runs through #495
-  showed that even after scalarizing derivative uniqueness to individual real
-  matrix entries, project-local `ContinuousLinearMap` definitions retained
-  hidden domain norm-instance parameters. Lean consequently printed the actual
-  and expected scalar equality types identically while rejecting them as
-  definitionally unequal.
-- latest repair removes the bundled readout from the resulting derivative
-  equality itself: after uniqueness, unfold `rightMulEntryCLM` and
-  `leftMulEntryCLM` in-place and change directly to the bare matrix-entry
-  equality. This is intended to erase the hidden norm instance before the
-  source-facing algebra is recovered.
-- next: inspect the CI for `4f61bc19...`; if green, immediately audit the
-  nonnegative-time source wrapper and enter the integration gate.
-
-### B. P-INFO-01 — information retention identity and entropy lower bound
+### A. P-INFO-01 — information retention identity and entropy lower bound
 
 - branch: `formal/pinfo01-04-chain`
-- current head: `a62f5d44d0a1af4b592a750877a2580b1ee3be8b`
-- official-target CI #483: **success**.
-- existing verified chain proves deterministic-statistic data processing,
-  measurable reversible lift, standard-Borel disintegration,
-  `I(H;Y) = I(M;Y) + I(H;Y|M)`, and the epsilon-retention consequence.
-- exact v3.0 source additionally requires, for discrete `M`,
-  `H(M) >= I(H;Y) - ε`, using `I(M;Y) <= H(M)`; the source does not require
-  `Y` to be discrete.
-- `InformationEntropyBound.lean` is now genuinely reachable from the official
-  `UEOT/V3.lean` graph. It proves the KL data-processing half by comparing a
-  copied/diagonal state with two independent copies and includes the explicit
-  finite-measure instance needed for the project-local `copyJoint` definition.
-- remaining mathematical bridge: machine-check
-  `D_KL(P_(M,M) || P_M × P_M) = H(M)` for discrete `M`, reconciling Mathlib's
-  `ENNReal` KL codomain with the existing real-valued `pmfShannonEntropy`.
-- preferred route: express diagonal and independent-copy laws as composition
-  products with equal first marginal, use Mathlib's KL chain rule, reduce to
-  the discrete one-point identity `D_KL(δ_m || μ) = -log μ(m)`, then sum under
-  `μ`. No new UEOT information axiom is permitted.
+- pre-discrete-bridge green head: `a62f5d44d0a1af4b592a750877a2580b1ee3be8b`
+- prior official-target CI #483: **success**
+- current discrete-bridge import head: `4077cd42c8c46941019802e61034d2ebc0231858`
+- CI #508 (`34498908550`): running at this synchronization point
 
-### C. P-FAC-01 — representation covariance
+Already machine-checked on the branch:
 
-- branch: `formal/pfac01-covariance`
-- last audited head: `8c5e451c10f58fa032af73c66b1bd52f2fee7620`
-- branch and PR CI at the current source-facing chain are green.
-- transported primitive kernels → finite causal feedback path law → transported
-  rewards → policy-by-policy values → optimal supremum is derived in the
-  correct direction; the previous independent-final-path-law hypothesis has
-  been removed.
-- exact source audit has found the expected four covariance layers:
-  macro path law, predictive sufficiency, exact dynamic closure, and control
-  value under a bimeasurable microscopic coordinate change with transported
-  primitives.
-- next: refresh branch-vs-main state after the P-PER-03 merge, complete the
-  declaration-by-declaration source audit, then integrate only if the rebased
-  official target remains green.
+- deterministic-statistic data processing;
+- reversible measurable statistic lift;
+- standard-Borel disintegration;
+- exact chain identity
+  `I(H;Y) = I(M;Y) + I(H;Y|M)`;
+- epsilon-retention consequence;
+- channel/data-processing reduction from arbitrary output `Y` to the copied
+  state KL divergence.
 
-### D. P-PER-01 — omega-limit strong invariance audit
+Current mathematical target:
 
-- branch: `formal/pper01-omega-limit`
-- last observed head: `94ddd8d0bbf231982c772968a985c4347cd46901`
-- semantic status: unresolved **F2** for a one-sided semiflow if exact image
-  equality `φ_s '' ω(x) = ω(x)` is claimed without enough reverse-time
-  structure. Forward invariance alone is insufficient.
-- next: prove reverse inclusion from the literal v3.0 hypotheses or record a
-  v3.1 wording correction; do not silently strengthen semiflow to flow.
+`D_KL(P_(M,M) || P_M × P_M) = H(M)`
 
-### E. P-REC-02 — continuous stochastic recovery
+for finite/discrete `M`, with Mathlib's `ENNReal` KL reconciled with the
+project's real `pmfShannonEntropy`.
+
+The new module `InformationDiscreteEntropy.lean` begins the exact measure-level
+bridge. It defines the diagonal density
+
+`copyDensity(m,n) = if m=n then (μ {m})⁻¹ else 0`
+
+and aims to prove:
+
+1. `(μ.prod μ).withDensity copyDensity = copyJoint μ`;
+2. `copyJoint μ ≪ μ.prod μ`;
+3. the abstract RN derivative agrees a.e. with this explicit density;
+4. the KL integral reduces to the finite Shannon sum;
+5. combining with the existing channel bound gives `I(M;Y) ≤ H(M)`;
+6. combining with the statistic chain gives the literal P-INFO-01 lower bound.
+
+No new UEOT information axiom is permitted.
+
+### B. P-REC-02 — continuous stochastic recovery
 
 - branch: `formal/prec02-continuous-recovery`
 - last observed head: `fc4ad64059c2f84324fc7c66312198c0151f3381`
-- source already contains the Dynkin/localization/integrability regularity
-  needed for the intended a.e./AC argument.
-- status: **F0**, not a source defect.
+- source contains the Dynkin/localization/integrability regularity required for
+  the intended a.e./absolutely-continuous argument
+- classification: **F0 proof engineering**, not an identified source defect
 - next: instantiate the process-level certificate without strengthening the
-  manuscript to pointwise differentiability.
+  manuscript to pointwise differentiability
 
-## 3.1 Theory-maintenance feedback
+### C. P-PER-01 — omega-limit strong invariance audit
 
-Canonical v3.0 remains frozen during formal verification. Theory-facing
-findings go under `core/v3-maintenance`, especially
+- branch: `formal/pper01-omega-limit`
+- last observed head: `94ddd8d0bbf231982c772968a985c4347cd46901`
+- classification: unresolved **F2 source/statement issue** if a one-sided
+  semiflow is required to satisfy exact image equality
+  `φ_s '' ω(x) = ω(x)` without enough reverse-time structure
+- forward invariance alone is insufficient
+- next: derive reverse inclusion from the literal v3.0 assumptions or record a
+  v3.1 wording correction; do not silently replace semiflow by flow
+
+## 4. Newly integrated / archive lanes
+
+### P-FAC-01 — integrated
+
+- final feature head: `8c5e451c10f58fa032af73c66b1bd52f2fee7620`
+- branch + PR official-target CI: green
+- source blocker closed: finite causal feedback path-law transport is derived
+  from transported primitive kernels rather than assumed
+- squash merge: `29bb6b3fb55cde2d7a87577f4d0ff15c14e29aa0`
+- post-merge main CI #502: green
+
+### P-DYN-02 — integrated
+
+- old development branch: `formal/pdyn02-ctmc`; retained as audit history
+- old PR #22 closed because the branch was heavily diverged from `main`
+- clean branch: `formal/pdyn02-ctmc-clean`
+- clean proof head: `8c0212f4bfbd0e7bf9ed0c445e4662eb02cf04ef`
+- branch CI #504: green
+- clean PR #23 CI #505: green
+- squash merge: `8ac668253c4d8bc62ab22f250701bc0a190b6049`
+- post-merge main CI #506: green
+
+The source-facing CTMC converse uses the right derivative at zero on `Ici 0`;
+no negative-time CTMC assumption is introduced.
+
+Other already integrated lanes include P-PER-03, P-INT-02, P-PRED-03,
+P-DYN-04, P-DYN-03, P-PROC-01, P-QSD-02, P-INFO-05, P-REC-01,
+P-DYN-01, P-MET-01/02 and the earlier recovered proof set. Do not resume from
+stale feature heads unless deliberately recovering an unmerged theorem.
+
+## 5. Theory-maintenance feedback
+
+Canonical v3.0 remains frozen during verification. Theory-facing findings go
+under `core/v3-maintenance`, especially
 `core/status/FORMALIZATION_FEEDBACK_2026-09-10.md`.
 
 Current high-value findings:
 
-1. CTMC time is one-sided; source exposition should explicitly use the right
-   derivative at `t = 0`.
-2. Marginal persistence and pathwise persistence are distinct; P-PER-03 now
-   contains an explicit Ionescu--Tulcea path-law bridge.
-3. P-PER-03 also requires the arbitrary-history-strategy winning-set equality;
-   that reverse characterization is now machine-checked and integrated.
-4. Representation covariance should be derived from primitive transported
+1. CTMC time is one-sided; the source-facing proof should explicitly use the
+   right derivative at `t = 0`.
+2. Marginal persistence and pathwise persistence are distinct; P-PER-03 now has
+   an explicit Ionescu--Tulcea path-law bridge.
+3. Representation covariance must be derived from transported primitive
    dynamics, not assumed as final path/value equality.
-5. One-sided semiflow forward invariance must not be silently strengthened to
+4. One-sided semiflow forward invariance must not be silently strengthened to
    exact image equality.
-6. Import-graph inclusion is part of the formalization test: a green commit for
-   an unimported module is not evidence that `lake build UEOT` checked it.
-7. Lean can hide norm-instance mismatches under identical pretty-printed types;
-   source-facing proofs should eliminate auxiliary bundled analytic structures
-   before the final algebraic equality whenever possible.
+5. Import-graph inclusion is part of verification: an unimported green module
+   is not proof evidence for the official target.
+6. Lean can hide norm-instance mismatches behind identical pretty-printed
+   types; eliminate auxiliary bundled analytic structures before the final
+   source-facing algebraic equality when possible.
+7. P-INFO-01 currently exposes a useful boundary between abstract measure KL
+   and finite discrete Shannon entropy; keep that bridge modular rather than
+   baking discreteness into the general mutual-information layer.
 
 No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
-## 4. Integrated / archive lanes
+## 6. Mandatory recovery procedure
 
-Do not resume proof development from stale heads whose target work is already
-integrated on `main`, including P-PER-03, P-INT-02, P-PRED-03, P-DYN-04,
-P-DYN-03, P-PROC-01, P-QSD-02, P-INFO-05 and P-REC-01.
-
-Older branches such as `formal/dyn01`, `formal/pred02`, `formal/tel01`,
-`formal/parallel-ci`, and old wave branches are archive evidence unless a
-specific result is deliberately recovered.
-
-## 5. Mandatory recovery procedure
-
-When chat/context is missing:
-
-1. Read this file first.
-2. Read `V3_COVERAGE_STATUS.md` for proved/partial/pending truth.
+1. Read this file.
+2. Read `V3_COVERAGE_STATUS.md`.
 3. Fetch current `main` SHA and latest main Action.
-4. If main moved past the SHA recorded here, inspect every intervening commit.
-5. Compare every HOT branch to current `main` and inspect its latest Action.
+4. Inspect every main commit newer than the checkpoint recorded here.
+5. Compare every HOT branch to current `main` and inspect its latest CI.
 6. Never overwrite a newer branch head with an older remembered version.
-7. Green feature branch ≠ proved P-ID until semantic audit + merge + green
-   post-merge CI.
-8. A module must be reachable from the official `UEOT`/`UEOT.V3` import graph;
-   otherwise a green official-target run may simply not have compiled it.
-9. After every material branch-state change or promotion, update this file in
+7. Feature-green is not `proved` until semantic audit + integration + green
+   post-merge CI + ledger sync.
+8. New modules must be reachable from `UEOT` / `UEOT.V3`.
+9. After material branch-state changes or promotions, update this snapshot in
    the same work session.
 
-## 6. Immediate parallel order
+## 7. Immediate parallel order
 
-1. **P-DYN-02** — inspect `4f61bc19...`; if the hidden-instance boundary is
-   gone, source-audit and integrate immediately.
-2. **P-INFO-01** — close discrete copy-KL = Shannon entropy and then the source
-   entropy lower bound.
-3. **P-FAC-01** — refresh against current main, exact source audit, integration
-   gate.
-4. **P-REC-02** — instantiate the exact Dynkin/AC process certificate.
-5. **P-PER-01** — resolve the one-sided semiflow reverse-inclusion issue without
-   silently strengthening the source.
-6. Refill free lanes from the pending P-ID set only after these near-closure
-   lanes are not left half-finished.
+1. **P-INFO-01** — finish copy-KL = Shannon entropy; close the source entropy
+   lower bound and then audit whether adjacent P-INFO-02/03/04 can reuse the
+   same KL infrastructure.
+2. **P-REC-02** — instantiate the literal continuous Dynkin/AC certificate.
+3. **P-PER-01** — resolve the one-sided semiflow reverse-inclusion issue without
+   source strengthening.
+4. Refill free lanes from pending P-IDs only after these near-closure lanes are
+   not left half-finished.
 
-## 7. Repository truth hierarchy
+## 8. Repository truth hierarchy
 
 - live operational snapshot: `docs/FORMALIZATION_STATE.md`
 - source-level P-ID ledger: `docs/V3_COVERAGE_STATUS.md`
@@ -205,6 +193,6 @@ When chat/context is missing:
 - official import graph: `UEOT/V3.lean`
 - canonical source identity: `../../core/specifications/manifest.yaml`
 
-If documentation disagrees, canonical source manuscript + merged Lean
-declarations + green main CI + the proof-status gate take precedence. Repair
-documentation drift before continuing proof work.
+If documentation disagrees, the frozen source manuscript + merged Lean
+statements + green main CI + promotion gate take precedence; repair
+documentation drift before further integration.

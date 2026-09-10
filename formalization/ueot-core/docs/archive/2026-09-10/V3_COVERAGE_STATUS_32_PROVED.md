@@ -1,0 +1,909 @@
+# UEOT Core v3.0 Lean Coverage Status
+
+Operational branch/CI recovery snapshot: `docs/FORMALIZATION_STATE.md`.
+This file remains the authoritative source-level P-ID status ledger.
+
+This document records the source-level P-ID coverage state separately from the
+subset of Lean modules currently synchronized into this public repository.
+
+The mathematical source of truth remains
+`UEOT_Core_Mathematics_v3.0_Complete.md` with 106 P-IDs. Historical verification
+documents and earlier package states are preserved; no P-ID is deleted or
+downgraded merely to simplify the completion gate.
+
+## Recovered baseline before remote synchronization
+
+The verified 2026-09-06 baseline contained:
+
+- 9 proved
+- 7 partial
+- 90 pending
+- 106 total P-IDs
+- 81 named Lean theorems
+- no `sorry`, no `sorryAx`, no UEOT-specific proof axioms
+
+The proved P-IDs were:
+
+- P-CAR-01
+- P-CAR-02
+- P-CAR-03
+- P-RES-03
+- P-RES-04
+- P-STAT-03
+- P-STAT-04
+- P-QUO-03
+- P-REF-04
+
+The partial P-IDs were:
+
+- P-PRED-01
+- P-PRED-02
+- P-DYN-01
+- P-RES-05
+- P-TEL-01
+- P-BRG-02
+- P-REF-05
+
+## 2026-09-09 advance: P-RES-05
+
+P-RES-05 has been promoted from `partial` to `proved`.
+
+The source statement is the exact microscopic-realization interval
+
+[
+\pi_*\mathcal C=\mathcal D
+\iff
+\uparrow J^-_\pi(\mathcal D)
+\subseteq\uparrow\mathcal C
+\subseteq\uparrow J^+_\pi(\mathcal D).
+]
+
+The resumed Lean track now contains:
+
+- `UEOT.V3.Resolution.UpClosure`
+- `UEOT.V3.Resolution.IsAntichain`
+- `UEOT.V3.Resolution.PushMin`
+- `UEOT.V3.Resolution.imageFamily`
+- `UEOT.V3.Resolution.MinimalFamily`
+- `UEOT.V3.Resolution.pushFamily`
+- `UEOT.V3.Resolution.restrict_upClosure_iff_pushMin`
+- `UEOT.V3.Resolution.pushFamily_eq_iff_pushMin`
+- `UEOT.V3.Resolution.clutter_realization_interval`
+- `UEOT.V3.Resolution.pushFamily_realization_interval`
+
+Here `pushFamily π C` literally encodes the inclusion-minimal members of
+`{π '' c | c ∈ C}`, i.e. the source definition of `π_* C`.  The proof uses
+finiteness only to obtain a minimal image below each image, and antichain
+minimality to force the exact coarse edge.
+
+### Verification evidence
+
+- finite-clutter interval bridge commit:
+  `b65ad3e54397927f0aa563a246abf5766404a38b`
+- literal `π_*` / minimal-image bridge commit:
+  `fa3161688cb1248cee0d1cc1f938893c298ac206`
+- GitHub Actions run for `fa316168...`:
+  `34336212073`
+- result: pinned Lean verified, dependencies resolved, `lake build UEOT` passed.
+
+## Current source-level coverage
+
+| Status | Count |
+|---|---:|
+| proved | 32 |
+| partial | 0 |
+| pending | 74 |
+| total | 106 |
+
+There are currently no partial P-IDs.
+
+## 2026-09-10 advance: P-PER-03
+
+P-PER-03 has been promoted from `pending` to `proved`.
+
+The source theorem is the finite stochastic viability-kernel statement. Starting
+from `K₀ = V`, one repeatedly deletes states for which no action keeps the
+next-state law inside the current set with probability one. The source requires
+finite stabilization, identifies the stabilized set with exactly those initial
+states from which some admissible strategy can remain in `V` almost surely for
+all times, and states that a deterministic stationary preserving selector
+exists on that kernel.
+
+The Lean formalization closes all of those layers rather than only the one-step
+invariance condition:
+
+- `UEOT.V3.ViabilityKernel.viabilityStep` and `viabilityIter` implement the
+  deletion recursion with genuine PMFs;
+- `exists_viabilityIter_fixed` proves finite stabilization;
+- `UEOT.V3.ViabilityStrategy.winningSet` quantifies over finite-history-dependent
+  strategies and support-reachable trajectories;
+- `exists_stabilized_eq_winningSet` proves the exact winning-set equality;
+- `exists_stationary_policy_of_fixed` extracts a deterministic stationary
+  preserving policy;
+- `UEOT.V3.ViabilityTrajectory.stationaryTrajMeasure` realizes that policy as
+  a genuine Ionescu--Tulcea infinite path law;
+- `exists_stationary_policy_all_times_of_fixed` proves probability-one
+  all-times persistence;
+- `UEOT.V3.ViabilitySource.p_per_03` packages the complete source-facing theorem.
+
+For finite PMF dynamics the support-tree semantics used by `winningSet` is
+exactly the almost-sure safety semantics: any unsafe finite prefix whose edges
+all have positive PMF mass has positive path probability, while exclusion of
+all such prefixes gives probability-one nonexit. No finite-memory assumption is
+added to the strategy class; the policy supplied by the theorem is then shown
+to admit the stronger stationary deterministic realization required by the
+source.
+
+Verification evidence:
+
+- exact source-facing branch head:
+  `eb0d0305ab7acab73ea9f3ac06957273f50936be`;
+- branch full-target push CI #492: success;
+- PR #21 full-target CI #493: success;
+- main squash merge:
+  `cb665eb3716024e3f677b4ba651e9ef95ea95664`;
+- post-merge full-target main CI #494
+  (`34482798255`): success.
+
+## 2026-09-10 advance: P-QSD-02
+
+P-QSD-02 has been promoted from `pending` to `proved`.
+
+The finite killed-kernel theorem keeps the source's Perron–Frobenius
+existence/positivity statement as the standard K-PF-01 input and machine-checks
+the UEOT consequences from those data:
+
+- the Perron eigenvalue satisfies `ρ ≤ 1` under substochastic rows;
+- the normalized left Perron law is quasi-stationary at every finite step;
+- survival mass is exactly `ρ^n`;
+- the Doob transform is nonnegative and row-stochastic;
+- `varpi_i = q_i h_i` is normalized, nonnegative, and invariant.
+
+The source-facing wrapper is
+`UEOT.V3.QSDPerron.p_qsd_02_killed`. No theorem here claims a new proof of
+Perron–Frobenius existence; that remains the source's standard input.
+
+Verification evidence:
+
+- branch head:
+  `a5562d8462a5487638018c53db49f17c2b677918`;
+- pinned full-target branch CI run #354: success;
+- PR #16 squash merge:
+  `f3aaa623f0f5805604d0cb4860216a6aa8648670`;
+- post-merge full-target main CI run #358
+  (`34414021707`): success.
+
+## 2026-09-10 advance: P-DYN-03
+
+P-DYN-03 has been promoted from `pending` to `proved`.
+
+The source theorem concerns two finite-alphabet causal record processes with
+the same initial record, the same causal strategy, and per-step next-record
+total-variation error at most `ε_t ∈ [0,1]` whenever the already-realized
+history is the same.  It concludes
+
+[
+D_{\rm TV}(P_{0:T},\widehat P_{0:T})
+\le 1-\prod_{t<T}(1-\epsilon_t)
+\le \sum_{t<T}\epsilon_t.
+]
+
+The Lean formalization matches this finite causal structure through
+`CausalHistory`, `causalLaw`, and the source-facing theorem
+`p_dyn_03_finite_path_error`.  The theorem takes a common initial PMF
+`p₀` (slightly stronger than a common deterministic initial record) and two
+history-indexed next-record PMF families `K/L`; a common causal strategy may
+be composed into these record kernels before applying the theorem.
+
+The proof chain is fully machine-checked:
+
+- finite-PMF overlap / TV identity:
+  `tvDist_eq_one_sub_pmfCommonMass`;
+- one-step overlap survival under the same history:
+  `pmfCommonMass_extend_of_tv`;
+- recursive finite causal path law:
+  `causalLaw`;
+- product survival bound:
+  `causalLaw_commonMass_lower_bound`;
+- sharp path-TV bound:
+  `causalLaw_tv_bound`;
+- additive union bound:
+  `one_sub_prod_one_sub_le_sum`;
+- exact source wrapper:
+  `p_dyn_03_finite_path_error`.
+
+Verification evidence:
+
+- final clean branch head:
+  `15f65d830c2982f4bd2d86de32c82c06541b08d5`;
+- branch full-target push CI #334 and PR CI #335: success;
+- main squash merge:
+  `a5d1cd06d16483cfcc6805089fe7bd1bb5a34177`;
+- post-merge full-target main CI #337
+  (`34409597312`): success.
+
+## 2026-09-10 advance: P-DYN-04
+
+P-DYN-04 has been promoted from `pending` to `proved`.
+
+The source assumes two readouts of the same microscopic process with
+`f_r = c_{sr} ∘ f_s`, and separate approximation errors `ε_s` and `ε_r`
+for the two macro kernels.  The conclusion is deliberately restricted to the
+reachable fine-scale image `f_s(X)`:
+
+[
+D_{\rm TV}\bigl((c_{sr})_\# P_s(m,a),
+P_r(c_{sr}(m),a)\bigr) \le ε_s + ε_r.
+]
+
+The Lean theorem `UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv`
+matches that reachable-image condition literally through
+`m ∈ Set.range fs`.  Its proof inserts the common microscopic pushforward,
+uses `tvDist_map_le` on the fine-scale approximation, and closes with
+`tvDist_triangle`.  No statement is made outside the reachable image.
+
+The exact source clause is separately formalized as
+`p_dyn_04_exact_intertwining`, proving the corresponding pushforward
+intertwining identity when both scale descriptions are exact.
+
+Verification evidence:
+
+- pre-rebase branch head:
+  `5b94920d53cf7720b9e91c8eba5d95a60413a2fa`;
+- pre-rebase full-target push CI #274 and PR CI #275: success;
+- clean-rebased branch head:
+  `58e7a84b0da851dee63751bbf4a0d16dde561eac`;
+- clean branch full-target CI run `34401036500` (#278): success;
+- main squash merge:
+  `385bcac642694a3ede6d8e4d679c90ac1bc8de6e`;
+- post-merge full-target CI run `34401380097` (#281): success.
+
+## 2026-09-10 advance: P-PRED-03
+
+P-PRED-03 has been promoted from `pending` to `proved`.
+
+The source assumes one causal process, finite action/observation alphabets,
+closure of the protocol family under allowed continuations after
+positive-probability observations, and storage of the corresponding joint
+future-cylinder probabilities.  The next canonical state is obtained by the
+Bayes ratio
+
+[
+P(B\mid h,a,o)=\frac{P(o,B\mid h,a)}{P(o\mid h,a)}.
+]
+
+The Lean module `UEOT.V3.PredictionUpdate` encodes that source proof through:
+
+- `historyBayesResponse` / `stateBayesUpdate`;
+- coordinate and vector factorization through the current canonical state;
+- `RecursiveCoordinateClosure`, which supplies the observation-marginal and
+  observation-plus-continuation coordinates required by protocol closure;
+- a mathematically arbitrary zero-probability extension, matching the source
+  caveat that such branches are not empirically certified;
+- `measurable_coordinateBayesUpdate_joint` for finite alphabets;
+- `p_pred_03_recursive_update`, which proves both preservation of predictive
+  equivalence and existence of a jointly measurable update map.
+
+Verification evidence:
+
+- clean source-facing branch head:
+  `48bf6266820e379f184020c1ef83666cf94a8abd`;
+- pinned Lean full-target branch CI run `34398365622` (#267): success;
+- main squash merge:
+  `747753929a6b71e4cea830e37ccf2d92b9d81519`;
+- post-merge full-target CI run `34400192573` (#270): success.
+
+## 2026-09-10 advance: P-PROC-01
+
+P-PROC-01 has been promoted from `pending` to `proved`.
+
+The source construction starts from the exact growing controlled history
+
+[
+H_t=(X_0,A_0,\ldots,A_{t-1},X_t)
+]
+
+and an arbitrary history-dependent next-state kernel
+`q_t(dx' | h,a)`.  It augments the state by the internal clock,
+`Z_t=(t,H_t)`, and uses the single transition rule
+
+[
+((t,h),a)\longmapsto (t+1,h,a,x'),
+\qquad x'\sim q_t(\cdot\mid h,a).
+]
+
+The resulting controlled process is time-homogeneous because the external time
+index has become part of the state.  No finite-memory claim is made; the
+history fiber is allowed to grow without bound.
+
+The Lean formalization matches this construction literally:
+
+- `UEOT.V3.FiniteHistory.HistoryFiber X A n` stores `n+1` states and
+  `n` actions;
+- `FiniteHistory.Carrier X A` is the dependent sum over all times;
+- `FiniteHistoryMeasurable.measurable_advance_fixed` proves measurable
+  append of one action and one next state;
+- `ConcreteHistoryMarkovization.ControlCarrier` internalizes the time tag
+  in the state-action domain;
+- `controlStep` glues the family `q_t` into one measurable kernel;
+- `fixedAugmented` implements sample-then-append at one time slice;
+- `augmentedKernel` is the single global augmented transition;
+- `augmentedStep_time` proves the definitional `t -> t+1` transition;
+- `isMarkovKernel_augmentedKernel` proves the global kernel is Markov when
+  every `q_t` is Markov;
+- `fixedAugmented_current_eq` and
+  `augmentedKernel_current_apply` recover the original next-state law after
+  reading the newest physical state;
+- `p_proc_01_history_markovization` packages the source-facing theorem.
+
+Verification evidence:
+
+- final clean-rebased branch head:
+  `aeb82e64ca76cb04d47e42e59ab4806cef4ee695`;
+- clean branch full-target CI run `34390325702` (#252): success;
+- main squash merge:
+  `90a4ddfb7bd938e77bea08d0415dfd546f7f0112`;
+- post-merge full-target CI run `34390671904` (#254): success.
+
+## 2026-09-10 advance: P-INFO-05
+
+P-INFO-05 has been promoted from `pending` to `proved`.
+
+The source theorem has two linked layers.  First, if two histories induce
+predictive laws separated by total variation distance `δ` but a deterministic
+representation merges them and therefore forces one decoder law, at least one
+of the two decoder errors is at least `δ / 2`.  Second, if an `N`-point
+packing has pairwise predictive separation greater than `2 ε` while every
+represented history is decoded within `ε`, the representation must distinguish
+all `N` histories; under the uniform distribution on the packing, its Shannon
+entropy is therefore at least `log N`.
+
+The Lean formalization now contains the complete chain:
+
+- `UEOT.V3.InformationPacking.tvDist_symm`;
+- `tvDist_triangle`;
+- `common_decoder_half_distance`;
+- `merged_histories_decoder_lower_bound`;
+- `packing_forces_injective`;
+- `packing_ncard_image`;
+- `UEOT.V3.InformationEntropy.pmfShannonEntropy_map_uniform_injOn`;
+- `p_info_05_uniform_entropy`.
+
+The final entropy theorem is slightly stronger than the written lower bound:
+for the uniform law on the finite packing, injectivity makes the pushforward
+exactly uniform on an `N`-point image, so Lean proves
+
+[
+H(R_\#\operatorname{Unif}(F))=\log N,
+]
+
+and the source inequality follows immediately.
+
+Verification evidence:
+
+- pre-rebase complete branch head:
+  `8290ebfcb066378b10f452491d4c783fd170e814`,
+  full-target CI run `34388486107` (#223): success;
+- clean-rebased branch head:
+  `d6a70f335aa5a89a792c28f3c7e096d74a422ad8`;
+- clean branch full-target CI run `34389495626` (#237): success;
+- main squash merge:
+  `3a809a86b43769172079926318e1f0ab6afb2c0d`;
+- post-merge full-target CI run `34389817372` (#240): success.
+
+## 2026-09-10 advance: P-REC-01
+
+P-REC-01 has been promoted from `pending` to `proved`.
+
+The source hypothesis is a nonnegative conditional drift inequality
+
+[
+\mathbb E[R_{t+1}\mid \mathcal F_t] \le \kappa R_t + \eta,
+\qquad 0\le \kappa <1,\; \eta\ge0,
+]
+
+with finite initial mean.  The source conclusions are the geometric mean bound
+
+[
+\mathbb E R_t
+\le
+\kappa^t \mathbb E R_0
++
+\eta\frac{1-\kappa^t}{1-\kappa},
+]
+
+and the corresponding Markov tail bound obtained by dividing the same
+right-hand side by a positive threshold.
+
+The Lean implementation separates the algebraic and probabilistic layers:
+
+- `UEOT.V3.RecoveryDiscrete.affine_recurrence_closed_bound` proves the exact
+  scalar geometric recursion;
+- `UEOT.V3.RecoveryProbability.ennMean_succ_le` derives total-expectation
+  recursion from the conditional-Lebesgue inequality;
+- `ennMean_lt_top` propagates finiteness from the initial mean rather than
+  assuming future integrability in advance;
+- `realMean_succ_le` converts the finite ENNReal recursion to the literal
+  real affine recursion;
+- `p_rec_01_mean_bound` proves the source mean formula;
+- `p_rec_01_tail_bound` proves the source Markov tail formula.
+
+Verification evidence:
+
+- clean-rebased branch head:
+  `8d6daa8590b209b50761a97d19b8924bfe633cd9`;
+- clean branch full-target CI run `34388552652` (#227): success;
+- main squash merge:
+  `28d8a9a8e4e7a937567e7cf51185163cd0dae2b7`;
+- post-merge full-target CI run `34388913585` (#232): success.
+
+## 2026-09-10 advance: P-INT-02
+
+P-INT-02 has been promoted from `pending` to `proved`.
+
+For a finite pointwise response family `K i x e`, the Lean formalization
+defines the source's two canonical equivalence relations literally:
+
+- `internalSetoid K`: two internal states agree under every environment and
+  protocol;
+- `environmentSetoid K`: two environments agree under every internal state
+  and protocol.
+
+It then constructs the corresponding quotient classes and the descended
+response `quotientResponse`, proves the exact factorization
+
+[
+K_i(x,e)=Q_i(M^*(x),U^*(e)),
+]
+
+and proves the source minimality statement: every other exact separated
+representation `K i x e = Q i (f x) (g e)` can identify only pairs already
+identified by the corresponding canonical quotient.  The wrapper `p_int_02`
+retains the source's finite `X/E/I` assumptions explicitly.
+
+Verification evidence:
+
+- final branch head:
+  `68db42f650cc06d4dfbe2d214e4d6d15b931d32e`;
+- branch full-target CI run `34407920197` (#320): success;
+- PR #15 full-target CI run `34408221102` (#323): success;
+- main squash merge:
+  `2d26456a31dbbb59656641c393f97ef620def269`;
+- post-merge full-target CI run `34408527616` (#328): success.
+
+## 2026-09-10 advance: P-INT-03
+
+P-INT-03 has been promoted from `pending` to `proved`.
+
+The source theorem assumes a finite variable universe and conditional
+independence satisfying the semigraphoid rules plus intersection.  The Lean
+formalization isolates the exact proof laws used by the manuscript:
+
+- `CIAxioms.decomposition`;
+- `CIAxioms.weakUnion`;
+- `CIAxioms.contraction`;
+- `CIAxioms.intersection`.
+
+It defines `IsBlanket CI B := CI Bᶜ B` and inclusion-minimal blankets via
+`IsBoundary`.  The theorem `boundary_unique` proves uniqueness in a
+slightly stronger arbitrary-universe setting once those laws are supplied, and
+the wrapper `p_int_03_boundary_unique` restores the source's finite-universe
+hypothesis literally through `[Fintype W]`.
+
+Verification evidence:
+
+- clean-rebased branch head:
+  `36f6208979e9c69c09cb76b8b2c076564d78f55b`;
+- pinned Lean branch push CI run `34384468119` (#191): success;
+- main merge commit:
+  `50390ebac91981a3d020868f21ed5c7838debeaa`;
+- post-merge full-target CI run `34384869497` (#195): success.
+
+## 2026-09-10 advance: P-DYN-01
+
+P-DYN-01 has been promoted from `partial` to `proved`.
+
+The formalization now matches both source clauses for a supplied measurable
+candidate macro kernel:
+
+- `StrongLumpability P Pbar f hf` is the one-step kernel intertwining
+  statement, equivalent to the source event-preimage equality;
+- `PathLawLumpability P Pbar f hf` states that for every microscopic
+  probability initial law, the coordinatewise macro pushforward is exactly
+  the trajectory law of the same macro Markov kernel;
+- `strongLumpability_iff_pathLaw` proves the two formulations equivalent;
+- `strongLumpability_iff_pathLaw_of_surjective` retains the source's
+  measurable-surjection hypothesis literally.
+
+The reverse implication follows the source proof: choose the Dirac initial law
+at a microscopic state, recover the time-one marginal through
+`homTrajMeasure_dirac_time_one`, and obtain the one-step pushed kernel.
+
+Verification evidence:
+
+- full iff branch commit:
+  `6c8685f6ac7f453ea9ce57cb35f9bad89cbae032`;
+- branch CI run `34380983198`: success;
+- main merge commit:
+  `697b0b1537295b999cb671106bf026866d49114a`;
+- post-merge full-target CI run `34381567831`: success.
+
+## 2026-09-10 advance: P-MET-01 and P-MET-02
+
+P-MET-01 and P-MET-02 have been promoted from `pending` to `proved`.
+
+P-MET-01 now matches all three source clauses:
+
+- measurable readout contraction:
+  `UEOT.V3.TotalVariation.tvDist_map_le`;
+- common Markov-kernel contraction:
+  `UEOT.V3.TVKernel.tvDist_comp_le`;
+- equality under a bimeasurable bijection:
+  `UEOT.V3.TotalVariation.tvDist_map_measurableEquiv`.
+
+P-MET-02 now uses the literal source span
+`sSup (Set.range g) - sInf (Set.range g)` for a bounded measurable real
+observable and proves the source expectation-gap inequality through
+`UEOT.V3.TVSpan.abs_integral_sub_le_span`.
+
+Verification evidence:
+
+- P-MET-01 branch CI: run `34379217252` success;
+- P-MET-01 main merge: `dfd55b52629ea0c6d4435ece2b17cb84abc5b705`;
+- post-merge full-target CI: run `34379654659` success;
+- P-MET-02 exact-span branch CI: run `34379825486` success;
+- P-MET-02 main merge: `0a6ead35c9abc9e2ef47005b3120c5c8a84b9c6c`;
+- post-merge full-target CI: run `34380492671` success.
+
+
+The newly proved set is the previous nine plus **P-RES-05**, **P-RES-06**, **P-CAR-04**, **P-RES-02**, and **P-RES-01**.
+
+## 2026-09-09 advance: P-REF-05
+
+P-REF-05 has been promoted from `partial` to `proved`.
+
+The source claim is policy-set monotonicity under a fixed real-valued
+evaluation `J` and feasible-set inclusion.
+
+The formalization now provides two aligned forms:
+
+- `feasibleValue_mono`: a total `EReal` formulation requiring no hidden
+  nonempty/boundedness assumptions;
+- `feasibleValueReal_mono`: the ordinary real-`sSup` formulation under the
+  standard conditions that the smaller feasible set is nonempty and the
+  enlarged image is bounded above.
+
+It also packages the source's “same evaluation, larger implementable policy
+set” condition as `FeasibleDecision.Extends`.
+
+Key declarations:
+
+- `UEOT.V3.Agency.feasibleValue`
+- `feasibleValue_mono`
+- `feasibleValueReal`
+- `feasibleValueReal_mono`
+- `FeasibleDecision`
+- `Extends`
+- `extension_optimalValue_mono`
+
+Verification evidence:
+
+- source-aligned module:
+  `0a1242ec2b4b92ebfec9f9d79e1134f8ac2f5631`
+- evaluation rewrite repair:
+  `bce7615e4342bf7fe5cfd5855019202b0642ff9e`
+- direct real-supremum theorem:
+  `c64b8983e36990c9f9d7730aff55a40b673f446c`
+- successful full-repository CI:
+  `34350690356`
+
+## 2026-09-09 advance: P-TEL-01
+
+P-TEL-01 has been promoted from `partial` to `proved`.
+
+The final proof chain now matches the source's infinite-horizon discounted
+potential-shaping statement rather than only the finite deterministic
+telescoping identity.
+
+Key declarations:
+
+- `UEOT.Reward.potential_telescope`
+- `UEOT.Reward.shaping_finite`
+- `UEOT.Reward.shaping_terminal_corrected`
+- `UEOT.V3.RewardInfinite.bounded_potential_integrable`
+- `bounded_expected_potential`
+- `expectedPotential_bounded`
+- `bounded_potential_tail`
+- `discounted_one_tendsto`
+- `shaping_tendsto`
+- `policy_values_affine`
+- `policy_values_affine_from_bounded_state_potential`
+
+The final wrapper starts from a common bounded state potential
+`ψ : X → ℝ`, policy-induced probability marginals, and a common initial
+state. It derives the uniformly bounded expected potential sequence, the
+vanishing discounted terminal term, the value identity
+
+`V' p = a * V p - ψ x + c * (1 - β)⁻¹`
+
+and preservation of maximizers for `a > 0`.
+
+Verification evidence:
+
+- analytic infinite-horizon core:
+  `d8653802cf2f8a35b332e29b6372c14e73f86ec8`,
+  run `34349445220` success
+- state-potential expectation bridge:
+  `174077e2d1868800c88a16b0b28ae8915aabbcee`
+- final source-level wrapper:
+  `03aaf987efc74635bba5e4b35fcdaf191f132639`,
+  full-repository run `34350610211` success
+
+## 2026-09-09 advance: P-BRG-02
+
+P-BRG-02 has been promoted from `partial` to `proved`.
+
+Source-matched bridge:
+
+- controller/type response `Q_θ^e` is represented by `ReplicationBridge.response`;
+- the common reproduction functional `ℛ_e` is represented by
+  `ReplicationBridge.replicate`;
+- fitness is exactly the composition
+  `replicate (response θ)`.
+
+Key declarations:
+
+- `UEOT.V3.SelectionBridge.ReplicationBridge.fitness`
+- `BehaviorEquivalent`
+- `behavior_equiv_fitness_eq`
+- `behavior_equiv_same_multiplier`
+- `behavior_equiv_selection_cross_eq`
+- `behavior_equiv_positive_ratio_preserved`
+
+Thus equal behavioral/path-law responses cannot be differentially selected by
+this bridge alone. Type-dependent mutation, costs, or extra replication
+channels remain explicitly outside the theorem, matching the source caveat.
+
+Verification evidence:
+
+- source-matched module commit:
+  `fe42139899423c09491ab6fc26d3d54473864b0f`
+- tactic repair:
+  `70261610de6efc206b1d635661598893b499fc32`
+- final repair:
+  `e78367705edd19a986df6cd97e666766e5ca556c`
+- successful full-repository CI run:
+  `34350490496`
+
+## 2026-09-09 advance: P-PRED-02
+
+P-PRED-02 has been promoted from `partial` to `proved`.
+
+Source clauses:
+
+1. measurable deterministic target transformation pushes the predictive kernels;
+2. enlarging the protocol family refines the generated sigma-factor;
+3. for a countable increasing protocol family, the union sigma-factor equals
+   the supremum of the individual factors.
+
+Lean module:
+
+- `UEOT.V3.PredictionRefinement`
+
+Key declarations:
+
+- `pushTarget`, `pushTarget_apply`,
+  `canonical_target_pushforward`
+- `sigmaCanonical`, `protocol_refinement_sigma_le`,
+  `sigmaCanonical_iUnion`
+- `pushTargetDependent`,
+  `sigmaCanonicalDependent`,
+  `protocol_refinement_sigma_le_dependent`,
+  `sigmaCanonicalDependent_iUnion`
+
+The sigma-union theorem is slightly stronger than the written source statement:
+the identity holds for an arbitrary countable family, so the source's
+monotonicity assumption is unnecessary for this equality.
+
+Verification evidence:
+
+- initial theorem commit: `8760dce625550e38aec30beee81bb0f2c0f69618`
+- map/iSup elaboration repair: `599ed0201be7cba0d1e91535c6a16fb780b8b9c9`
+- noncomputable map repair: `165aa3cb86cfb93938e8f9782457af43147255ac`,
+  run `34343887865` success
+- dependent-future-space closure:
+  `da33abaf7c079472a1d95c15d1b91c3b2b35361c`,
+  run `34344159704` success
+
+The two failed intermediate runs are retained as audit evidence.
+
+## 2026-09-09 advance: P-PRED-01
+
+P-PRED-01 has been promoted from `partial` to `proved`.
+
+The exact source permits a countable protocol family with protocol-dependent
+future spaces. The current formalization therefore includes both the original
+common-codomain layer and the stronger source-matched dependent layer.
+
+Key declarations:
+
+- `UEOT.V3.PredictionAE.common_factorization`
+- `UEOT.V3.PredictionAE.canonical_ae_minimal`
+- `UEOT.V3.PredictionAE.canonical_ae_sigma_minimal`
+- `UEOT.V3.PredictionAE.canonical_kernel_sufficient`
+- `UEOT.V3.PredictionAE.canonical_event_condExp`
+- `UEOT.V3.PredictionDependent.common_factorization`
+- `UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal`
+- `UEOT.V3.PredictionDependent.canonical_kernel_sufficient`
+- `UEOT.V3.PredictionDependent.canonical_event_condExp`
+
+The source assumes standard-Borel statistic/future spaces. Once the measurable
+response kernels are supplied, the Lean factorization theorem only uses the
+measurable-space structure, so the formal result is more general at this stage;
+it does not claim existence of regular conditional probabilities without the
+source hypotheses.
+
+Verification evidence:
+
+- AE factor/minimality work: `b3f7faea...`, `794d1aeb...`
+- measurable-space repair: `eb4b6440...`, CI run `34341861473` success
+- canonical coordinate kernel: `860193ba...`, run `34342312233` success
+- conditional-expectation layer: `986babdd...`
+- sigma-notation repair: `9d7b118a...`, run `34342707993` success
+- dependent-future-space closure: `d6ac5874...`, run `34343117149`,
+  full `lake build UEOT` success (8724 jobs)
+
+The two failed intermediate runs are retained as audit history and were not used
+as proof evidence.
+
+## 2026-09-09 advance: P-RES-01
+
+P-RES-01 has been promoted from `pending` to `proved`.
+
+Source statement:
+
+[
+\mathcal M_r=
+\min_{\subseteq}\{\operatorname{cl}_r(M):M\in\mathcal M_s\}.
+]
+
+Lean theorem:
+
+- `UEOT.V3.ClosureResolution.minimal_property_coarse_graining`
+
+Definitions:
+
+- `admissibleMin L A = min(A ∩ L)`
+- `resolutionMap L M = min{closure L M | M ∈ M}`
+
+The proof assumes upward closure of the admissible property and explicit
+finiteness of the fine admissible family. The source works over a finite carrier,
+so this is the source-relevant minimal-existence assumption rather than a new
+physical/mathematical restriction.
+
+Verification evidence:
+
+- theorem commit: `09196536122e5976161dbfc5db04f3d0c86731fa`
+- successful official-target CI run: `34339206795`
+
+With this promotion, P-RES-01 through P-RES-06 are all source-matched as
+`proved`.
+
+## 2026-09-09 advance: P-RES-02
+
+P-RES-02 has been promoted from `pending` to `proved`.
+
+The source has two composition statements:
+
+[
+\operatorname{cl}_r\operatorname{cl}_s=\operatorname{cl}_r
+]
+
+for nested closure systems, and
+
+[
+\mathcal R_{r\leftarrow t}
+=
+\mathcal R_{r\leftarrow s}\mathcal R_{s\leftarrow t}
+]
+
+for minimal families.
+
+Lean module `UEOT.V3.ClosureResolution` now contains:
+
+- `ClosureSystem`
+- `closure`
+- `closure_comp_of_nested`
+- `imageClosure`
+- `resolutionMap`
+- `minimalFamily_cofinal`
+- `resolutionMap_comp`
+
+The formal closure system is represented as a Moore family. On the finite
+carrier of the source specification this is equivalent to closure under finite
+intersections. The minimal-family theorem assumes the source-relevant finiteness
+of the input family and is stronger than the written three-scale form because
+the top-scale family need not be separately declared closed.
+
+Verification evidence:
+
+- operator theorem commit: `703bd7972318e440d9c23230729cbde5dba09846`
+- syntax repair: `849ca9d470197cedf9a8fd1adedb8b141a8568a7`
+- minimal-family theorem commit: `386086c234aeb2adedd8ef0b2083c977e88cdbf2`
+- successful CI run for the complete module: `34338838686`
+
+The failed intermediate run is retained and was caused by using the
+`Set.mem_sInter` equivalence as a tactic without first unfolding `closure`.
+
+## 2026-09-09 advance: P-CAR-04
+
+P-CAR-04 has been promoted from `pending` to `proved`.
+
+Source statement:
+
+[
+\tfrac12 e(S) \le r(S) \le e(S).
+]
+
+The Lean module `UEOT.V3.DecoderRadius` proves the metric theorem in a more
+general pseudometric setting. `FiberDistances` is the set of all response
+distances inside one readout fiber and `DecoderBounds` is the set of all
+uniform decoder error bounds. If `e` is their least upper bound and `r` is
+the greatest lower bound of decoder bounds, Lean proves
+
+- `diameter_half_le_decoder_radius`
+- `decoder_radius_le_diameter`
+- `decoder_radius_bounds`
+
+The source TV-distance result is the direct specialization of this metric
+argument. No attainment assumption for the decoder infimum is added.
+
+Verification evidence:
+
+- theorem commit: `8115eb3f38c71d9f5b7027e1939448c9d88f408f`
+- official-target import commit: `ac5b6db04924db2d52b521ad97c60fba2351f8aa`
+- successful CI run after official import: `34337696868`
+
+The earlier green run for `8115eb3f...` is not used as proof evidence because
+the new module had not yet been imported by the default `UEOT` target. This
+verification gap was detected and repaired before status promotion.
+
+## 2026-09-09 advance: P-RES-06
+
+P-RES-06 has been promoted from `pending` to `proved`.
+
+Lean theorem:
+
+- `UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers`
+
+The source fiber-cardinality condition `|π⁻¹(w)| = 1` is represented by
+`UniqueFiber π w`: an inhabitant of the fiber exists and every other
+inhabitant is equal to it. `Active D w` means that `w` occurs in some coarse
+minimal edge. Under surjectivity of `π` and antichain minimality of `D`, Lean
+proves that the lower and upper realization endpoints coincide exactly when
+every active fiber is unique.
+
+Verification evidence:
+
+- theorem commit: `430202b81bedae8bfb10a0778f9e6071c2080fb5`
+- equality-transport repair: `9baa0b95892293167cf212d4875138da4f665a46`
+- successful locked/cache CI run: `34337047643`
+
+The failed intermediate run is intentionally retained in Git history; it
+reported three equality-transport type errors and led to the repair commit.
+
+## Synchronization note
+
+Only a subset of the earlier 16-module Lean package has been restored to the
+public repository so far. Therefore the source-level coverage table above must
+not be confused with “number of modules currently present on GitHub.” The
+remaining verified historical modules and their documentation will be restored
+incrementally without replacing the UEOT manuscript/research materials already
+in the repository.
+
+## Completion rule
+
+The complete v3.0 formalization is not finished until all 106 source P-IDs have
+been semantically matched and machine-checked. A green build proves the Lean
+statements currently imported; it does not by itself prove that every natural
+language source statement has been covered.
