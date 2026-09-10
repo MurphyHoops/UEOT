@@ -23,67 +23,85 @@ to `main`, green post-merge CI, and ledger synchronization.
 
 | status | count |
 |---|---:|
-| proved | **35** |
+| proved | **36** |
 | partial | **0** |
-| pending | **71** |
+| pending | **70** |
 | total | **106** |
 
-Latest completed proof promotion: **P-REC-02**.
+Latest completed proof promotion: **P-PER-01**.
 
-- clean proof head: `4cfe8aad3f19070942e167fea9749595f1f196ee`
-- clean branch CI #515 (`34500846267`): success
-- clean PR #24 CI #517 (`34501636481`): success
-- squash merge: `189fa6b476b0199b321c8d8c2b521f744c0b64ef`
-- post-merge main CI #519 (`34502013388`): success
-- ledger synchronization commit: `56aba1b5b008688036f3a2daf222262b1264536b`
+- clean proof head: `16c7a614c03b9404737b1b524d1abfbec2e3cb57`
+- clean branch CI #533 (`34507651005`): success
+- PR #25 CI #536 (`34508338456`): success
+- squash merge: `3d3ecb46416ea156e06fffd70684937f8d94caf3`
+- post-merge main CI #540 (`34508718076`): success
+- ledger synchronization commit: `1abdf6a35fbfb7995c80364784869d79c1627340`
 
-P-REC-02 now starts from the source's pointwise generator and Lyapunov
-inequalities, derives the expectation inequalities by integration, and applies
-an explicit Dynkin/localization certificate plus AC/a.e. Grönwall. No
-process-specific Dynkin theorem is hidden inside Core.
+P-PER-01 now contains the literal one-sided persistence theorem: a precompact
+continuous nonnegative-time orbit eventually contained in a closed persistence
+domain has a nonempty compact omega-limit inside that domain and every
+nonnegative-time map sends the omega-limit exactly onto itself.  The reverse
+inclusion uses the source shifted-subsequence argument; no negative-time flow or
+right inverse is assumed.
 
 ## 3. HOT proof lanes
 
 ### A. P-INFO-01 — information retention identity and entropy lower bound
 
-- branch: `formal/pinfo01-04-chain`
-- existing general chain: deterministic-statistic data processing, measurable
-  reversible lift, standard-Borel disintegration, exact
-  `I(H;Y)=I(M;Y)+I(H;Y|M)`, and epsilon retention
-- arbitrary output `Y` is retained; only `M` is made finite/discrete for the
-  Shannon bridge, matching the frozen source
-- `InformationEntropyBound.lean` already proves the channel/data-processing
-  reduction to the copied-state KL divergence
-- `InformationDiscreteEntropy.lean` now proves the explicit diagonal density,
-  absolute continuity, and the RN derivative formula
-- latest RN-density head: `91d08bd12d896e62209a4fc830d2a8a8f18de0c7`
-- official-target CI #518 (`34501748368`): **success**
+- clean branch: `formal/pinfo01-clean-main`
+- latest verified head: `ba5cfb82437feca00f73ba77cadadbf56013ebad`
+- official-target CI #538 (`34508656414`): **success**
+- general deterministic-statistic layer already proves
+  `I(H;Y)=I(M;Y)+I(H;Y|M)` and the epsilon-retention inequality
+- `InformationEntropyBound.lean` now identifies the copied-pair channel outputs
+  with the actual joint law `μ ⊗ₘ κ` and the product of its marginals, so data
+  processing gives the genuine mutual-information upper bound by copy-KL
+- `InformationDiscreteEntropy.lean` proves, for finite discrete `M`, the
+  explicit diagonal density, RN derivative, and
+  `(klDiv (copyJoint μ) (μ.prod μ)).toReal = pmfShannonEntropy μ.toPMF`
 
 Immediate target:
 
-`(klDiv (copyJoint μ) (μ.prod μ)).toReal = pmfShannonEntropy μ.toPMF`.
+close the **literal source clause “if M is discrete”**, not merely a `Fintype M`
+special case.  The source does not assume finite Shannon entropy.  Therefore a
+real-valued `tsum` cannot silently represent the `H(M)=+∞` case; either introduce
+an extended nonnegative Shannon entropy and prove the countable-discrete
+copy-KL identity, or derive an equivalent source-complete split into finite- and
+infinite-entropy cases.  No new information axiom is permitted.
 
-After this equality, combine with `channel_kl_le_copy_kl` to obtain the source
-`I(M;Y) <= H(M)` and then close the P-INFO-01 entropy lower bound. No new UEOT
-information axiom is permitted.
+### B. P-ID-01 — TCIC transport-defect accumulation
 
-### B. P-PER-01 — omega-limit strong invariance
+- development branch: `formal/pid01-transport-defect`
+- latest verified head: `2cb273937c58198e7da5dc97f94618cd9cc5a848`
+- official-target CI #539 (`34508693482`): **success**
+- the module distinguishes frozen endpoint kernels from one-step physical
+  transition kernels
+- reusable TV self-distance and triangle lemmas are machine-checked
+- the pointwise induction uses measurable pushforward contraction + adjacent
+  defect + coherent transport composition
+- the source-facing wrapper proves the literal supremum bound
+  `sup_m defect(0,n,m) <= sum_{t<n} epsilon_t`
 
-- branch: `formal/pper01-omega-limit`
-- classification corrected from the earlier F2 diagnosis to **F0 proof
-  engineering** after literal source re-audit
-- already proved on the branch: compactness, nonemptiness, closed-domain
-  containment, and forward invariance of the omega-limit
-- the old auxiliary right-inverse/group-time workaround is not source-facing
-  evidence and must not be used for promotion
-- frozen source explicitly proves the reverse inclusion for a one-sided
-  semiflow: if `phi_(t_n)(x) -> y` with `t_n > s`, precompactness supplies a
-  convergent subsequence of `phi_(t_n-s)(x)`; its limit `z` lies in the
-  omega-limit and continuity gives `phi_s(z)=y`
-- next: machine-check that compact/subsequence reverse-inclusion argument
-  without adding negative-time structure
+Immediate target:
+
+clean-port only `TransportDefect.lean` plus its import edge onto the latest
+`main`, rerun full branch CI, then source audit -> PR CI -> merge -> post-main CI.
+Do not merge the older-base branch directly.
 
 ## 4. Newly integrated / archive lanes
+
+### P-PER-01 — integrated
+
+The clean integration contains:
+
+- compact-tail omega-limit compactness;
+- eventual closed-domain containment;
+- nonempty omega-limit under precompact absorption;
+- one-sided `atTop` translation for nonnegative time;
+- shifted-subsequence reverse inclusion;
+- source-facing `p_per_01` exact invariance theorem.
+
+Old PR #17 was closed as superseded; clean PR #25 is the integration evidence.
 
 ### P-REC-02 — integrated
 
@@ -106,7 +124,7 @@ Old PR #18 was closed as divergent; clean PR #24 is the integration evidence.
 ### P-DYN-02 — integrated
 
 - clean proof head: `8c0212f4bfbd0e7bf9ed0c445e4662eb02cf04ef`
-- branch CI #504: success
+- clean branch CI #504: success
 - PR #23 CI #505: success
 - squash merge: `8ac668253c4d8bc62ab22f250701bc0a190b6049`
 - post-merge main CI #506: success
@@ -127,15 +145,16 @@ Current high-value findings:
    explicit infinite-path-law bridge.
 3. Representation covariance must be derived from transported primitive
    dynamics, not assumed at the final path/value layer.
-4. **Correction:** P-PER-01 exact omega-limit image equality is compatible with
-   a one-sided continuous semiflow under the source's orbit-precompactness
-   hypothesis. The reverse inclusion uses shifted orbit subsequences; a
-   two-sided flow is not required.
+4. P-PER-01 confirms exact omega-limit invariance for the one-sided source
+   semiflow under orbit precompactness; no two-sided extension is required.
 5. Import-graph inclusion is part of verification: an unimported green module
    is not proof evidence for the official target.
-6. P-INFO-01 exposes a clean modular boundary between general measure-theoretic
-   mutual information and finite/discrete Shannon entropy; keep discreteness
-   confined to the final entropy bridge.
+6. P-INFO-01 exposes a clean boundary between general measure-theoretic mutual
+   information and discrete Shannon entropy.  The remaining issue is genuinely
+   countable/infinite-entropy semantics, not the MI chain or channel law.
+7. P-ID-01 is structurally independent of physical transition dynamics: its
+   `K_t` objects are frozen endpoint kernels and the accumulation is a pure
+   transport/TV theorem.
 
 No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
@@ -155,12 +174,14 @@ No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
 ## 7. Immediate parallel order
 
-1. **P-INFO-01** — prove copy-KL = Shannon entropy and close the literal entropy
+1. **P-ID-01** — clean-port the green literal theorem onto current `main` and
+   push through the full promotion pipeline.
+2. **P-INFO-01** — extend the finite copy-KL/Shannon bridge to the literal
+   countable-discrete/infinite-entropy semantics and close the final entropy
    lower bound.
-2. **P-PER-01** — machine-check the shifted-subsequence reverse inclusion under
-   one-sided semiflow + orbit precompactness.
-3. Audit adjacent pending information/recovery/persistence P-IDs for direct
-   reuse only after these near-closure lanes are not left half-finished.
+3. **Refill one independent HOT lane** only after P-ID clean branch CI is
+   running; prioritize a low-coupling theorem that reuses existing TV,
+   persistence, recovery, or finite-state infrastructure.
 
 ## 8. Repository truth hierarchy
 
