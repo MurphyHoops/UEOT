@@ -19,79 +19,97 @@ Last synchronized: **2026-09-11 (Asia/Taipei)**
 Promotion requires exact source matching, official-target branch/PR CI, merge
 to `main`, green post-merge CI, and ledger synchronization.
 
-The repository manifest currently records `content_sync: pending` for the
-canonical v3.0 manuscript body. The exact canonical filename, SHA-256, and 106
-P-ID ledger are preserved. Do not reconstruct an unresolved source theorem
-from memory when the exact frozen wording is unavailable.
+The repository manifest still records `content_sync: pending` for the canonical
+v3.0 manuscript body. However, the exact canonical file has now been recovered
+from the user's File Library and can be used for source audits. New theorem
+wrappers must quote/check that recovered canonical source rather than memory.
 
 ## 2. Current integrated checkpoint
 
 | status | count |
 |---|---:|
-| proved | **38** |
+| proved | **39** |
 | partial | **0** |
-| pending | **68** |
+| pending | **67** |
 | total | **106** |
 
-Latest completed proof promotion: **P-STAT-02**.
+Latest completed proof promotion: **P-INFO-01**.
 
-- feature head: `0275f7ad43f8505eefeefaefa0fb29052cf5b523`
-- branch CI #560 (`34542020196`): success
-- PR #27 CI #561 (`34542249026`): success
-- squash merge: `5886c7baa4d9b4936e21dbd5639d7c893af22053`
-- post-merge main CI #563 (`34542472419`): success
-- ledger synchronization commit: `1a21f170da43c5fdc6f2dcbae569889464e07935`
+- final development head: `315a0aeafdc2807f65d68ada7b2be6c70c09eedf`
+- development CI #562 (`34542278658`): success
+- clean-port head: `cfddeca9a99dc6466b69807940720aaafc48a119`
+- clean-port branch CI #570 (`34542970826`): success
+- PR #28 CI #571 (`34543199236`): success
+- squash merge: `0dd65bc8ae40fdd1afbfdf0cf61c155585a5a2ac`
+- post-merge main CI #572 (`34543427529`): success
+- ledger synchronization commit: `f73f8e6793c287380d05a7ca00b34bd4d87ce944`
 
-P-STAT-02 now exposes the deterministic response-error -> carrier-defect error
-bridge. On one simultaneous response-level TV event, every carrier satisfies
-`|eHat(S)-e(S)| <= 2 * eta`; there is no additional union bound over carriers.
-P-STAT-01 remains the distinct probabilistic layer that must supply that
-simultaneous event.
+P-INFO-01 now exposes the exact deterministic-statistic information chain and
+the source's discrete predictive-memory lower bound. The discrete layer is
+countable rather than artificially finite, and uses `ℝ≥0∞` Shannon entropy so
+that `H(M)=∞` is not collapsed through `toReal`.
 
 ## 3. HOT proof lanes
 
-### A. P-INFO-01 — information retention identity and entropy lower bound
+### A. P-STAT-01 — finite-alphabet simultaneous TV concentration
 
-- development branch: `formal/pinfo01-clean-main`
-- current development head: `315a0aeafdc2807f65d68ada7b2be6c70c09eedf`
-- full-target CI #562 (`34542278658`): **success**
-- branch is proof-complete but stale/diverged relative to current main and must
-  be clean-ported before PR promotion
+The canonical source has been recovered and the exact theorem is grounded.
+For `L` fixed conditional responses on a finite response alphabet of size `K`,
+with `N` independent samples per response, the source states
 
-The complete green development proof contains:
+`P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`.
 
-1. deterministic statistic law `M=f(H)` and exact chain identity
-   `I(H;Y)=I(M;Y)+I(H;Y|M)`;
-2. epsilon retention `I(H;Y) <= I(M;Y)+epsilon`;
-3. copied-pair/channel data processing giving `I(M;Y) <= copy-KL`;
-4. a countable-discrete Radon--Nikodym density calculation;
-5. extended-real Shannon entropy, preserving the source-allowed `H(M)=∞` case;
-6. exact `copy-KL = H(M)` for countable discrete probability laws;
-7. standard-Borel disintegration of arbitrary `(M,Y)` laws yielding
-   `I(M;Y) <= H(M)`;
-8. source-facing approximate memory lower bound
-   `I(H;Y)-epsilon <= H(M)` in `ℝ≥0∞` ordered subtraction.
+It also gives the clipped confidence radius
 
-The finite-state specialization also recovers the existing real-valued PMF
-Shannon sum used by P-INFO-05.
+`eta_NKL(alpha) = min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
 
-Immediate action: clean-port exactly the four information modules plus their
-`UEOT.V3` imports onto the newest green main, rerun full branch CI, then proceed
-through PR CI -> squash merge -> post-merge main CI -> ledger synchronization.
+Source proof structure:
 
-### B. P-STAT-01 — source audit only
+1. for each response cell `j` and each alphabet subset `A`, empirical mass of
+   `A` is a Bernoulli average;
+2. two-sided Hoeffding contributes `2 * exp(-2*N*eta^2)`;
+3. union over at most `2^K` subsets;
+4. union over `L` response cells;
+5. finite-space TV is the maximum event-mass difference;
+6. if the analytic radius exceeds one, use deterministic `TV <= 1`.
 
-P-STAT-02/03/04 are now integrated. P-STAT-01 is the natural remaining front of
-the finite statistics chain, responsible for the concentration/union-bound
-layer that produces the simultaneous response-error event consumed by
-P-STAT-02.
+Pinned Mathlib audit:
 
-Do **not** create its source-facing Lean theorem until the exact canonical v3.0
-constants and hypotheses are grounded. The repository manifest currently says
-`content_sync: pending`, so memory-level reconstruction is not acceptable for a
-proof promotion.
+- `ProbabilityTheory.hasSubgaussianMGF_of_mem_Icc` gives Hoeffding's lemma for
+  bounded variables;
+- `ProbabilityTheory.measure_sum_ge_le_of_iIndepFun` gives the independent-sum
+  Hoeffding tail;
+- `MeasureTheory.measure_iUnion_le` supplies the union bound.
+
+Implementation rule: model only the independence actually required by the
+source—within each response cell across its `N` samples. No independence across
+cells is needed for the union bound. The source-facing theorem must feed the
+single simultaneous response event directly into P-STAT-02; it must not add a
+second union bound over carriers.
+
+### B. Next independent source-audit lane
+
+While P-STAT-01 compiles, audit the exact frozen statements immediately adjacent
+to the now-completed statistics infrastructure, prioritizing P-STAT-05/06/07
+only when their dependencies can remain disjoint from the P-STAT-01 file.
+Do not claim a new source P-ID from a helper theorem alone.
 
 ## 4. Newly integrated / archive lanes
+
+### P-INFO-01 — integrated
+
+The integrated proof contains:
+
+- deterministic statistic law `M=f(H)` and exact chain identity
+  `I(H;Y)=I(M;Y)+I(H;Y|M)`;
+- epsilon retention `I(H;Y) <= I(M;Y)+epsilon`;
+- copied-pair/channel data processing giving `I(M;Y) <= copy-KL`;
+- countable-discrete Radon--Nikodym density calculation;
+- extended-real Shannon entropy preserving `H(M)=∞`;
+- exact `copy-KL = H(M)`;
+- standard-Borel disintegration yielding `I(M;Y) <= H(M)`;
+- source-facing ordered-subtraction lower bound
+  `I(H;Y)-epsilon <= H(M)`.
 
 ### P-STAT-02 — integrated
 
@@ -175,10 +193,15 @@ Current high-value findings:
 7. P-STAT-02 confirms that once one simultaneous response-level event is
    available, all carrier defects are controlled deterministically by `2η`;
    carrier multiplicity belongs in P-STAT-01 only if the source puts it there.
-8. Import-graph inclusion remains part of proof evidence; an unimported green
+8. P-STAT-01 source recovery confirms that its statistical complexity depends
+   on response alphabet size `K` and number of response cells `L`, not the
+   number of candidate carriers.
+9. Import-graph inclusion remains part of proof evidence; an unimported green
    module is not a source-level promotion.
-9. Canonical source body sync is a verification-infrastructure task: unresolved
-   theorem wrappers must not be invented while `content_sync: pending`.
+10. Repository source-body synchronization is still desirable even though the
+    exact canonical file is now recoverable from File Library; the manifest
+    should not be changed to `content_sync: complete` until the matching body is
+    actually committed into the repository.
 
 No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
@@ -195,18 +218,17 @@ No active lane has produced an F3 counterexample to the UEOT Core architecture.
 8. New modules must be reachable from `UEOT` / `UEOT.V3`.
 9. After material branch-state changes or promotions, update this snapshot in
    the same work session.
+10. For unresolved theorem wording, use the recovered canonical v3.0 source;
+    never reconstruct constants or hypotheses from memory.
 
 ## 7. Immediate parallel order
 
-1. **P-INFO-01** — clean-port the green proof packet onto newest green main and
-   drive it through promotion.
-2. **Canonical source sync audit** — recover/verify the exact v3.0 manuscript
-   body corresponding to the manifest hash before creating new unresolved
-   source-facing wrappers such as P-STAT-01.
-3. **Refill independent lanes** from the 68 pending source P-IDs only where the
-   exact source statement is already grounded, prioritizing low-dependency
-   theorems that reuse existing TV, finite-state, recovery, persistence, or
-   information infrastructure.
+1. **P-STAT-01** — formalize the exact finite-alphabet simultaneous TV bound
+   and the clipped confidence-radius corollary from the recovered source.
+2. Connect its simultaneous event to the already integrated P-STAT-02
+   deterministic carrier-defect bridge, without any extra carrier union bound.
+3. While its CI runs, source-audit the next low-dependency statistics theorem
+   packet, preferring P-STAT-05/06/07 when their dependencies are isolated.
 4. Every near-complete theorem must be clean-ported onto the newest green main
    before promotion; no stale-base PRs.
 
