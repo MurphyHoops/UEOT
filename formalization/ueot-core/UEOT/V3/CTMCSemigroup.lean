@@ -132,7 +132,8 @@ theorem generator_intertwines_of_semigroup
     Filter.Eventually.of_forall fun t => (congrFun hfun t).symm
   have hleftAsRight := hleftD.congr_of_eventuallyEq heq
   have hderivEq := hleftAsRight.unique hrightD
-  simpa only [rightMulIndicatorCLM_apply, leftMulIndicatorCLM_apply] using hderivEq
+  dsimp only [R, S] at hderivEq
+  simpa using hderivEq
 
 /-- Exact all-real exponential quotient is equivalent to generator
 intertwining.  This algebraic helper is stronger in its time-domain hypothesis
