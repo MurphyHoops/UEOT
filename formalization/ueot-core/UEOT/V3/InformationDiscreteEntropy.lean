@@ -54,10 +54,11 @@ theorem prod_withDensity_copyDensity_eq_copyJoint
   rw [Measure.map_apply (measurable_of_finite _) (measurableSet_singleton (a, b))]
   by_cases hab : a = b
   · subst b
-    simp only [copyDensity, Prod.fst, Prod.snd, if_pos rfl]
     rw [show ((fun m : M => (m, m)) ⁻¹' ({(a, a)} : Set (M × M))) = ({a} : Set M) by
       ext m
       simp]
+    change (if a = a then (μ {a})⁻¹ else 0) * (μ {a} * μ {a}) = μ {a}
+    rw [if_pos rfl]
     by_cases ha : μ {a} = 0
     · simp [ha]
     · rw [← mul_assoc, ENNReal.inv_mul_cancel ha (measure_ne_top μ {a})]
