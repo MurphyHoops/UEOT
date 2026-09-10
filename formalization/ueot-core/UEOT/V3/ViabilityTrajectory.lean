@@ -76,6 +76,117 @@ instance stationaryTrajMeasure_isProbability
   unfold stationaryTrajMeasure
   infer_instance
 
+/-- Composing a homogeneous history kernel with a prefix law depends only on
+the last-coordinate marginal of that prefix. -/
+theorem homHistoryKernel_comp_eq_last_marginal
+    (P : Kernel X X) [IsMarkovKernel P]
+    (n : ℕ) (ν : Measure ((i : Finset.Iic n) → X)) [SFinite ν] :
+    homHistoryKernel P n ∘ₘ ν =
+      P ∘ₘ ν.map (fun h => h (lastHistoryIndex n)) := by
+  ext s hs
+  rw [Measure.bind_apply hs (Kernel.aemeasurable _)]
+  rw [Measure.bind_apply hs (Kernel.aemeasurable _)]
+  unfold homHistoryKernel
+  simp_rw [Kernel.comap_apply']
+  rw [lintegral_map (Kernel.measurable_coe P hs)
+    (measurable_pi_apply (lastHistoryIndex n))]
+
+/-- The time-zero coordinate marginal of the Ionescu--Tulcea homogeneous
+trajectory is exactly its initial law. -/
+theorem homTrajMeasure_time_zero
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (P : Kernel X X) [IsMarkovKernel P] :
+    (homTrajMeasure μ P).map (fun z : ℕ → X => z 0) = μ := by
+  let μpath := homTrajMeasure μ P
+  have hzero := homTrajMeasure_prefix_zero μ P
+  calc
+    μpath.map (fun z : ℕ → X => z 0) =
+        (μpath.map (Preorder.frestrictLe 0)).map
+          (fun h => h (lastHistoryIndex 0)) := by
+      symm
+      rw [Measure.map_map
+        (measurable_pi_apply (lastHistoryIndex 0))
+        (Preorder.measurable_frestrictLe 0)]
+      rfl
+    _ =
+        (μ.map
+          (MeasurableEquiv.piUnique
+            (fun _ : Finset.Iic 0 => X)).symm).map
+          (fun h => h (lastHistoryIndex 0)) := by
+      rw [hzero]
+    _ = μ := by
+      rw [Measure.map_map
+        (measurable_pi_apply (lastHistoryIndex 0))
+        (MeasurableEquiv.piUnique
+          (fun _ : Finset.Iic 0 => X)).symm.measurable]
+      simpa [Function.comp_def] using (Measure.map_id μ)
+
+/-- Successive coordinate marginals of a homogeneous trajectory obey the same
+measure/kernel recursion as the underlying Markov chain. -/
+theorem homTrajMeasure_time_succ
+    (μ : Measure X) [IsProbabilityMeasure μ]
+    (P : Kernel X X) [IsMarkovKernel P] (n : ℕ) :
+    (homTrajMeasure μ P).map (fun z : ℕ → X => z (n + 1)) =
+      P ∘ₘ (homTrajMeasure μ P).map (fun z : ℕ → X => z n) := by
+  letI : ∀ k, IsMarkovKernel (homHistoryKernel P k) :=
+    fun k => isMarkovKernel_homHistoryKernel P k
+  let μpath := homTrajMeasure μ P
+  have hstep :=
+    ProbabilityTheory.Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
+      (X := fun _ : ℕ => X) (μ₀ := μ) (κ := homHistoryKernel P) (a := n)
+  have hstep' :
+      (μpath.map (Preorder.frestrictLe n)) ⊗ₘ homHistoryKernel P n =
+        μpath.map
+          (fun x => (Preorder.frestrictLe n x, x (n + 1))) := by
+    simpa [μpath, homTrajMeasure] using hstep
+  have hnext :
+      μpath.map (fun z : ℕ → X => z (n + 1)) =
+        homHistoryKernel P n ∘ₘ μpath.map (Preorder.frestrictLe n) := by
+    calc
+      μpath.map (fun z : ℕ → X => z (n + 1)) =
+          (μpath.map
+            (fun x => (Preorder.frestrictLe n x, x (n + 1)))).map
+            Prod.snd := by
+        symm
+        rw [Measure.map_map measurable_snd (by fun_prop)]
+        rfl
+      _ =
+          ((μpath.map (Preorder.frestrictLe n)) ⊗ₘ
+            homHistoryKernel P n).map Prod.snd := by
+        rw [hstep']
+      _ = homHistoryKernel P n ∘ₘ
+          μpath.map (Preorder.frestrictLe n) := by
+        simpa [Measure.snd] using
+          (Measure.snd_compProd
+            (μpath.map (Preorder.frestrictLe n))
+            (homHistoryKernel P n))
+  rw [hnext]
+  rw [homHistoryKernel_comp_eq_last_marginal]
+  congr 1
+  rw [Measure.map_map
+    (measurable_pi_apply (lastHistoryIndex n))
+    (Preorder.measurable_frestrictLe n)]
+  rfl
+
+/-- Every coordinate marginal of the genuine stationary trajectory is exactly
+the PMF viability recursion at the same time. -/
+theorem stationaryTrajMeasure_coordinate
+    (P : X → A → PMF X) (π : X → A) (μ : PMF X) (n : ℕ) :
+    (stationaryTrajMeasure P π μ).map (fun z : ℕ → X => z n) =
+      (stationaryStateLaw P π μ n).toMeasure := by
+  induction n with
+  | zero =>
+      unfold stationaryTrajMeasure
+      simpa [stationaryStateLaw] using
+        homTrajMeasure_time_zero μ.toMeasure (stationaryKernel P π)
+  | succ n ih =>
+      rw [stationaryTrajMeasure]
+      rw [homTrajMeasure_time_succ μ.toMeasure (stationaryKernel P π) n]
+      change stationaryKernel P π ∘ₘ
+          (stationaryTrajMeasure P π μ).map (fun z : ℕ → X => z n) = _
+      rw [ih]
+      exact (stationaryStateLaw_succ_toMeasure P π μ n).symm
+
 /-- Once every coordinate marginal is safe with probability one, the genuine
 stationary path law never exits the viability set at any discrete time with
 probability one. -/
