@@ -49,22 +49,24 @@ theorem abs_tvDist_sub_tvDist_le
     [IsProbabilityMeasure ν₁] [IsProbabilityMeasure ν₂] :
     |tvDist μ₁ μ₂ - tvDist ν₁ ν₂| ≤
       tvDist μ₁ ν₁ + tvDist μ₂ ν₂ := by
+  have hforward₁ := tvDist_triangle μ₁ ν₁ μ₂
+  have hforward₂ := tvDist_triangle ν₁ ν₂ μ₂
   have hforward :
       tvDist μ₁ μ₂ ≤
         tvDist μ₁ ν₁ + tvDist ν₁ ν₂ + tvDist ν₂ μ₂ := by
-    exact (tvDist_triangle μ₁ ν₁ μ₂).trans <|
-      add_le_add_left (tvDist_triangle ν₁ ν₂ μ₂) _
+    linarith
+  have hbackward₁ := tvDist_triangle ν₁ μ₁ ν₂
+  have hbackward₂ := tvDist_triangle μ₁ μ₂ ν₂
   have hbackward :
       tvDist ν₁ ν₂ ≤
         tvDist ν₁ μ₁ + tvDist μ₁ μ₂ + tvDist μ₂ ν₂ := by
-    exact (tvDist_triangle ν₁ μ₁ ν₂).trans <|
-      add_le_add_left (tvDist_triangle μ₁ μ₂ ν₂) _
+    linarith
+  have hbackward' := hbackward
+  rw [tvDist_symm ν₁ μ₁] at hbackward'
+  have hforward' := hforward
+  rw [tvDist_symm ν₂ μ₂] at hforward'
   rw [abs_le]
-  constructor
-  · rw [tvDist_symm ν₁ μ₁]
-    linarith
-  · rw [tvDist_symm ν₂ μ₂] at hforward
-    linarith
+  constructor <;> linarith
 
 /-- Distances entering the carrier defect: two histories must have the same
 carrier readout and the protocol index must agree. -/
@@ -144,7 +146,7 @@ theorem responseDefect_error
       simpa [tvDist_symm] using hresp h i
     have hright : tvDist (pHat h' i) (p h' i) ≤ η := by
       simpa [tvDist_symm] using hresp h' i
-    have hbase := responseDistance_le_defect readout p hp S hfiber
+    have hbase := responseDistance_le_defect (i := i) readout p hp S hfiber
     rw [abs_le] at hpair
     linarith
   have hTrue_le :
@@ -161,7 +163,7 @@ theorem responseDefect_error
       (p h i) (p h' i) (pHat h i) (pHat h' i)
     have hleft := hresp h i
     have hright := hresp h' i
-    have hbase := responseDistance_le_defect readout pHat hpHat S hfiber
+    have hbase := responseDistance_le_defect (i := i) readout pHat hpHat S hfiber
     rw [abs_le] at hpair
     linarith
   rw [abs_le]
