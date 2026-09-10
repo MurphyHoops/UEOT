@@ -166,7 +166,6 @@ theorem copy_kl_eq_discreteShannonEntropy
     rw [InformationTheory.klDiv_of_ac_of_integrable hAC hllrInt]
     simp only [discreteShannonEntropy, info, hinfo, ↓reduceIte]
     rw [hintegral, hmassReal, add_sub_cancel_right]
-    rfl
   · have hllrNot : ¬ Integrable (llr (copyJoint μ) (μ.prod μ)) (copyJoint μ) := by
       intro h
       exact hinfo (hint.mp h)
