@@ -26,6 +26,7 @@ import UEOT.V3.RecoveryDiscrete
 import UEOT.V3.RecoveryProbability
 import UEOT.V3.InformationPacking
 import UEOT.V3.InformationEntropy
+import UEOT.V3.InformationEntropyBound
 import UEOT.V3.ConcreteHistoryMarkovization
 import UEOT.V3.PredictionUpdate
 import UEOT.V3.DynamicsCrossScale
