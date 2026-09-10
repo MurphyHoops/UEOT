@@ -105,6 +105,7 @@ theorem homTrajMeasure_time_zero
           (fun h => h (lastHistoryIndex 0)) := by
       symm
       rw [Measure.map_map
+        (μ := μpath)
         (measurable_pi_apply (lastHistoryIndex 0))
         (Preorder.measurable_frestrictLe 0)]
       rfl
@@ -164,6 +165,7 @@ theorem homTrajMeasure_time_succ
   rw [homHistoryKernel_comp_eq_last_marginal]
   congr 1
   rw [Measure.map_map
+    (μ := μpath)
     (measurable_pi_apply (lastHistoryIndex n))
     (Preorder.measurable_frestrictLe n)]
   rfl
