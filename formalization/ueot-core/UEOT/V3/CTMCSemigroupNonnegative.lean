@@ -42,8 +42,10 @@ theorem generator_intertwines_of_semigroup_nonneg
   have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
   have hleftD :=
     ((rightMulEntryCLM block x b).hasFDerivAt.comp_hasDerivAt 0 hL).hasDerivWithinAt
+      (s := Ici 0)
   have hrightD :=
     ((leftMulEntryCLM block x b).hasFDerivAt.comp_hasDerivAt 0 hR).hasDerivWithinAt
+      (s := Ici 0)
   have hEqOn :
       Set.EqOn
         ((leftMulEntryCLM block x b) ∘
