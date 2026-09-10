@@ -5,8 +5,8 @@ import Mathlib.Analysis.Calculus.TangentCone.Real
 # P-DYN-02 source-facing nonnegative-time CTMC semigroup criterion
 
 A CTMC is a one-sided semigroup in probabilistic time.  This module removes the
-stronger all-real-time hypothesis used by the algebraic helper and formalizes
-the manuscript's zero-time argument as uniqueness of the right derivative on
+stronger all-real-time hypothesis used by the algebraic helper and formalizes the
+manuscript's zero-time argument as uniqueness of the right derivative on
 `Ici 0`.
 -/
 
@@ -28,45 +28,47 @@ local instance : DecidableEq X := Classical.decEq X
 local instance : DecidableEq B := Classical.decEq B
 
 /-- A nonnegative-time semigroup intertwining already determines the generator.
-This is the literal right-derivative version of the source proof. -/
+This is the literal right-derivative version of the source proof.  Derivative
+uniqueness is taken entrywise in `ℝ`, so no auxiliary norm instance on the
+rectangular matrix space survives into the uniqueness argument. -/
 theorem generator_intertwines_of_semigroup_nonneg
     (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B)
     (hsem : ∀ t : ℝ, 0 ≤ t →
       NormedSpace.exp (t • L) * blockIndicator block =
         blockIndicator block * NormedSpace.exp (t • Lbar)) :
     L * blockIndicator block = blockIndicator block * Lbar := by
-  let R := rightMulIndicatorCLM block
-  let S := leftMulIndicatorCLM block
+  ext x b
   have hL := hasDerivAt_exp_smul_const L (0 : ℝ)
   have hR := hasDerivAt_exp_smul_const Lbar (0 : ℝ)
-  have hleftD :
-      HasDerivWithinAt
-        (R ∘ fun t : ℝ => NormedSpace.exp (t • L))
-        (R L) (Ici 0) 0 :=
-    (R.hasFDerivAt.comp_hasDerivAt 0 hL).hasDerivWithinAt
-  have hrightD :
-      HasDerivWithinAt
-        (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar))
-        (S Lbar) (Ici 0) 0 :=
-    (S.hasFDerivAt.comp_hasDerivAt 0 hR).hasDerivWithinAt
+  have hleftD :=
+    ((rightMulEntryCLM block x b).hasFDerivAt.comp_hasDerivAt 0 hL).hasDerivWithinAt
+  have hrightD :=
+    ((leftMulEntryCLM block x b).hasFDerivAt.comp_hasDerivAt 0 hR).hasDerivWithinAt
   have hEqOn :
       Set.EqOn
-        (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar))
-        (R ∘ fun t : ℝ => NormedSpace.exp (t • L))
+        ((leftMulEntryCLM block x b) ∘
+          fun t : ℝ => NormedSpace.exp (t • Lbar))
+        ((rightMulEntryCLM block x b) ∘
+          fun t : ℝ => NormedSpace.exp (t • L))
         (Ici 0) := by
     intro t ht
-    simpa [R, S] using (hsem t ht).symm
+    exact congrArg (fun A : Matrix X B ℝ => A x b) (hsem t ht).symm
   have heq :
-      (S ∘ fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[nhdsWithin 0 (Ici 0)]
-        (R ∘ fun t : ℝ => NormedSpace.exp (t • L)) :=
+      ((leftMulEntryCLM block x b) ∘
+          fun t : ℝ => NormedSpace.exp (t • Lbar)) =ᶠ[nhdsWithin 0 (Ici 0)]
+        ((rightMulEntryCLM block x b) ∘
+          fun t : ℝ => NormedSpace.exp (t • L)) :=
     hEqOn.eventuallyEq_of_mem self_mem_nhdsWithin
   have hleftAsRight :=
     hleftD.congr_of_eventuallyEq_of_mem heq Set.self_mem_Ici
-  have hderivEq : S Lbar = R L :=
+  have hderivEq :=
     (uniqueDiffOn_Ici (0 : ℝ) 0 Set.self_mem_Ici).eq_deriv
       (Ici 0) hleftAsRight hrightD
-  dsimp [R, S] at hderivEq
-  exact hderivEq.symm
+  simp only [zero_smul, NormedSpace.exp_zero, one_mul] at hderivEq
+  unfold rightMulEntryCLM leftMulEntryCLM at hderivEq
+  change (L * blockIndicator block) x b =
+    (blockIndicator block * Lbar) x b at hderivEq
+  exact hderivEq
 
 /-- Exact finite-CTMC semigroup quotient for nonnegative times is equivalent
 to generator intertwining. -/
