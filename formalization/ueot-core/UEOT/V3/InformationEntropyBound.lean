@@ -67,7 +67,10 @@ theorem copyJoint_eq_copy_comp
     (μ : Measure M) [SFinite μ] :
     copyJoint μ = Kernel.copy M ∘ₘ μ := by
   unfold copyJoint
-  rw [← Measure.compProd_id, Measure.compProd_id_eq_copy_comp]
+  calc
+    μ.map (fun m => (m, m)) = μ.map Function.diag := by rfl
+    _ = μ ⊗ₘ Kernel.id := (Measure.compProd_id (μ := μ)).symm
+    _ = Kernel.copy M ∘ₘ μ := Measure.compProd_id_eq_copy_comp
 
 /-- Sending the second component of a diagonal copy through `κ` gives the
 ordinary composition-product joint law `μ ⊗ₘ κ`. -/
