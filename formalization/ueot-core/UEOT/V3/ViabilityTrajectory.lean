@@ -204,4 +204,26 @@ theorem all_times_safe_of_coordinate_one
     K (Set.toFinite K).measurableSet
     (fun n => measurable_pi_apply n) hone
 
+/-- Source-facing P-PER-03 closure: a fixed finite viability kernel admits a
+deterministic stationary policy whose genuine infinite Ionescu--Tulcea path
+remains in the kernel at every discrete time with probability one. -/
+theorem exists_stationary_policy_all_times_of_fixed
+    [Nonempty A]
+    (P : X → A → PMF X) {K : Set X}
+    (hfix : viabilityStep P K = K)
+    (μ : PMF X) (hμ : StaysIn μ K)
+    (hK : MeasurableSet K) :
+    ∃ π : X → A,
+      stationaryTrajMeasure P π μ {ω | ∀ n : ℕ, ω n ∈ K} = 1 := by
+  obtain ⟨π, hmarg⟩ :=
+    exists_stationary_policy_all_marginals_of_fixed P hfix μ hμ hK
+  refine ⟨π, all_times_safe_of_coordinate_one P π μ K ?_⟩
+  intro n
+  have hcoord :
+      (stationaryTrajMeasure P π μ).map (fun z : ℕ → X => z n) K = 1 := by
+    rw [stationaryTrajMeasure_coordinate P π μ n]
+    exact hmarg n
+  rw [Measure.map_apply (measurable_pi_apply n) hK] at hcoord
+  exact hcoord
+
 end UEOT.V3.ViabilityTrajectory
