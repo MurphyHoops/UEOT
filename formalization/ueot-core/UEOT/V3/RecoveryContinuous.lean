@@ -127,7 +127,13 @@ theorem exponential_recovery_bound_ac_ae
     congr 1
     ring
   simp only [div_eq_mul_inv, hinv] at hdiv
-  nlinarith
+  calc
+    m t ≤ b / a + (m 0 - b / a) * Real.exp (-a * t) := by
+      linarith
+    _ = Real.exp (-a * t) * m 0 +
+          (b / a) * (1 - Real.exp (-a * t)) := by
+      ring
+
 /-- Exact exponential recovery bound from the scalar differential inequality
 m' <= -a m + b on a compact time interval. -/
 theorem exponential_recovery_bound_core
