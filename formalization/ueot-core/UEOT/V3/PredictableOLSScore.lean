@@ -44,9 +44,15 @@ proxy `N * (sigma * B)^2`. -/
 theorem sum_incrementParam_range (N : ℕ) (sigma B : ℝ) :
     (∑ _i ∈ Finset.range N, incrementParam sigma B) =
       scoreParam N sigma B := by
-  rw [Finset.sum_const]
-  apply NNReal.eq
-  simp [NNReal.coe_nsmul, incrementParam, scoreParam, nsmul_eq_mul]
+  induction N with
+  | zero =>
+      apply NNReal.eq
+      simp [scoreParam]
+  | succ N ih =>
+      rw [Finset.sum_range_succ, ih]
+      apply NNReal.eq
+      simp [scoreParam, Nat.cast_succ]
+      ring
 
 /-- Conditional sub-Gaussian score increments accumulate to the exact frozen
 coordinate proxy `N * (sigma * B)^2`.
