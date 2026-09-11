@@ -33,7 +33,7 @@ theorem integral_inner_eq_zero_of_indep_centered
     (hY0 : (∫ ω, Y ω ∂μ) = 0) :
     (∫ ω, inner ℝ (X ω) (Y ω) ∂μ) = 0 := by
   have hfactor := hXY.integral_bilin hX hY (innerSL ℝ)
-  simpa [hX0, hY0] using hfactor
+  simpa only [innerSL_apply_apply, hX0, hY0, map_zero] using hfactor
 
 /-- In an independent finite family of centered Hilbert-valued random
 variables, every off-diagonal cross inner product has expectation zero. -/
