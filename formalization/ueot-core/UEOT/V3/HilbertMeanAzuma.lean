@@ -36,7 +36,7 @@ theorem azuma_parameterized
   exact measure_sum_ge_le_of_hasCondSubgaussianMGF h_adapted h0 n h_subG hε
 
 /-- The per-coordinate variance proxy induced by a `2/N` bounded difference. -/
-def invSqParam (N : ℕ) : ℝ≥0 :=
+noncomputable def invSqParam (N : ℕ) : ℝ≥0 :=
   ((N : ℝ≥0)⁻¹) ^ 2
 
 /-- Exact constant normalization used by frozen P-STAT-06: summing `N` copies
