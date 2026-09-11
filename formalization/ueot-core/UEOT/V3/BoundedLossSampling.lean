@@ -16,7 +16,7 @@ selection are deliberately kept in later layers.
 namespace UEOT.V3.BoundedLossSampling
 
 open MeasureTheory ProbabilityTheory Real
-open scoped BigOperators
+open scoped BigOperators ENNReal NNReal
 
 universe uΩ uZ
 
@@ -43,7 +43,7 @@ theorem integral_loss_sample_eq
     ∫ ω, loss (X ω) ∂μ = trueRisk P loss := by
   unfold trueRisk
   rw [← hlaw]
-  exact integral_map hX.aemeasurable hloss.aestronglyMeasurable
+  exact (integral_map hX.aemeasurable hloss.aestronglyMeasurable).symm
 
 /-- One-sided Hoeffding inequality for the empirical risk of a fixed candidate. -/
 theorem measure_empiricalRisk_upper_le
