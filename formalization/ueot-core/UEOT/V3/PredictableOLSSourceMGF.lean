@@ -56,10 +56,14 @@ theorem hasCondSubgaussianMGF_predictable_mul
     (hX : HasCondSubgaussianMGF m hm X (noiseParam sigma) μ) :
     HasCondSubgaussianMGF m hm (fun ω => A ω * X ω)
       (incrementParam sigma B) μ := by
-  have hfreeze := predictable_ae_eq_const (μ := μ) hm A hA
+  have hfreeze := predictable_ae_eq_const
+    (Ω := Ω) (mΩ := mΩ) (μ := μ) (m := m) hm A hA
   have hint : ∀ t : ℝ, Integrable (fun ω => Real.exp (t * (A ω * X ω))) μ :=
-    fun t => integrable_exp_predictable_mul hm A X B hB0 hA hbound hX t
+    fun t => integrable_exp_predictable_mul
+      (Ω := Ω) (mΩ := mΩ) (μ := μ) (m := m)
+      hm A X B hB0 hA hbound hX t
   have hmul := hasCondSubgaussianMGF_predictable_mul_of_freeze
+    (Ω := Ω) (mΩ := mΩ) (μ := μ) (m := m)
     hm A X B hB0 hbound hX hfreeze hint
   rw [predictable_mul_param_eq_incrementParam sigma B] at hmul
   exact hmul
