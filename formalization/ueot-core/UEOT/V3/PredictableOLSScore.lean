@@ -47,11 +47,13 @@ theorem sum_incrementParam_range (N : ℕ) (sigma B : ℝ) :
   induction N with
   | zero =>
       apply NNReal.eq
-      simp [scoreParam]
+      rw [coe_scoreParam]
+      norm_num
   | succ N ih =>
       rw [Finset.sum_range_succ, ih]
       apply NNReal.eq
-      simp [scoreParam, Nat.cast_succ]
+      rw [NNReal.coe_add, coe_scoreParam, coe_incrementParam, coe_scoreParam]
+      push_cast
       ring
 
 /-- Conditional sub-Gaussian score increments accumulate to the exact frozen
