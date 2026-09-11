@@ -131,4 +131,55 @@ theorem gram_coercive_normalEq_sqNorm_bound
       _ ≤ sqNorm err * sqNorm Z := hcombined
   exact le_of_mul_le_mul_left hmul hqpos
 
+/-- Uniform coordinate control implies the standard `d R²` control of the
+squared Euclidean norm. -/
+theorem sqNorm_le_natCast_mul_sq_of_abs_le
+    {d : ℕ} (Z : Fin d → ℝ) (R : ℝ) (hR : 0 ≤ R)
+    (hcoord : ∀ j, |Z j| ≤ R) :
+    sqNorm Z ≤ (d : ℝ) * R ^ 2 := by
+  unfold sqNorm
+  calc
+    (∑ j, (Z j) ^ 2) ≤ ∑ _j : Fin d, R ^ 2 := by
+      apply Finset.sum_le_sum
+      intro j hj
+      exact (sq_le_sq).2 (by simpa [abs_of_nonneg hR] using hcoord j)
+    _ = (d : ℝ) * R ^ 2 := by simp
+
+/-- The deterministic P-INV-05 bridge in coordinate-threshold form. -/
+theorem gram_coercive_normalEq_sqNorm_bound_of_abs_score_le
+    {N d : ℕ} (hN : 0 < N)
+    (kappa : ℝ) (hkappa : 0 < kappa)
+    (phi : Fin N → Fin d → ℝ)
+    (err Z : Fin d → ℝ)
+    (hcoercive :
+      (N : ℝ) * kappa * sqNorm err ≤ gramQuadratic phi err)
+    (hnormal : gramAction phi err = Z)
+    (R : ℝ) (hR : 0 ≤ R)
+    (hscore : ∀ j, |Z j| ≤ R) :
+    (((N : ℝ) * kappa) ^ 2) * sqNorm err ≤ (d : ℝ) * R ^ 2 := by
+  exact (gram_coercive_normalEq_sqNorm_bound hN kappa hkappa phi err Z
+    hcoercive hnormal).trans
+      (sqNorm_le_natCast_mul_sq_of_abs_le Z R hR hscore)
+
+/-- Dividing the deterministic bound by the strictly positive Gram scale gives
+an explicit squared-error estimate. -/
+theorem sqNorm_error_le_of_abs_score_le
+    {N d : ℕ} (hN : 0 < N)
+    (kappa : ℝ) (hkappa : 0 < kappa)
+    (phi : Fin N → Fin d → ℝ)
+    (err Z : Fin d → ℝ)
+    (hcoercive :
+      (N : ℝ) * kappa * sqNorm err ≤ gramQuadratic phi err)
+    (hnormal : gramAction phi err = Z)
+    (R : ℝ) (hR : 0 ≤ R)
+    (hscore : ∀ j, |Z j| ≤ R) :
+    sqNorm err ≤ ((d : ℝ) * R ^ 2) / (((N : ℝ) * kappa) ^ 2) := by
+  have hcore := gram_coercive_normalEq_sqNorm_bound_of_abs_score_le
+    hN kappa hkappa phi err Z hcoercive hnormal R hR hscore
+  have hden : 0 < (((N : ℝ) * kappa) ^ 2) := by
+    have hNreal : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
+    positivity
+  rw [le_div_iff₀ hden]
+  simpa [mul_comm] using hcore
+
 end UEOT.V3.PredictableOLS
