@@ -24,6 +24,7 @@ import UEOT.V3.FiniteAlphabetPStat01Radius
 import UEOT.V3.FiniteCandidateDiscovery
 import UEOT.V3.BoundedLossSampling
 import UEOT.V3.BoundedLossTwoSided
+import UEOT.V3.FiniteCandidatePStat08
 import UEOT.V3.VariationBridge
 import UEOT.V3.ViabilityKernel
 import UEOT.V3.ViabilityPath
