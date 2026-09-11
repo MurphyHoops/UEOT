@@ -37,20 +37,14 @@ theorem integrable_exp_predictable_mul
     (t : ℝ) :
     Integrable (fun ω => exp (t * (A ω * X ω))) μ := by
   have hAΩ : @Measurable Ω ℝ mΩ inferInstance A := hA.mono hm le_rfl
-  have hExp1 : Integrable (fun ω : Ω => exp (1 * X ω)) μ :=
-    hX.integrable_exp_mul 1
-  have hXae : @AEMeasurable Ω ℝ mΩ inferInstance X μ := by
-    apply aemeasurable_of_aemeasurable_exp
-    simpa using hExp1.aemeasurable
-  have hXsm : @AEStronglyMeasurable Ω ℝ _ mΩ inferInstance X μ :=
-    hXae.aestronglyMeasurable
-  have hAX : @AEStronglyMeasurable Ω ℝ _ mΩ inferInstance
-      (fun ω => A ω * X ω) μ := by
-    simpa only [Pi.mul_apply] using hAΩ.aestronglyMeasurable.mul hXsm
-  have htAX : @AEStronglyMeasurable Ω ℝ _ mΩ inferInstance
-      (fun ω => t * (A ω * X ω)) μ := by
-    simpa only [Pi.mul_apply] using hAX.const_mul t
-  have htarget : @AEStronglyMeasurable Ω ℝ _ mΩ inferInstance
+  have hXsm : AEStronglyMeasurable X μ := by
+    rw [← condExpKernel_comp_trim (mΩ := mΩ) (μ := μ) hm]
+    exact hX.aestronglyMeasurable
+  have hAX : AEStronglyMeasurable (fun ω => A ω * X ω) μ := by
+    exact hAΩ.aestronglyMeasurable.mul hXsm
+  have htAX : AEStronglyMeasurable (fun ω => t * (A ω * X ω)) μ := by
+    exact hAX.const_mul t
+  have htarget : AEStronglyMeasurable
       (fun ω => exp (t * (A ω * X ω))) μ :=
     Real.continuous_exp.comp_aestronglyMeasurable htAX
   let q : ℝ := |t| * B
@@ -59,6 +53,7 @@ theorem integrable_exp_predictable_mul
   have hminus : Integrable (fun ω => exp ((-q) * X ω)) μ := hX.integrable_exp_mul (-q)
   refine (hplus.add hminus).mono' htarget ?_
   filter_upwards with ω
+  simp only [Pi.add_apply]
   have hu : t * (A ω * X ω) ≤ q * |X ω| := by
     calc
       t * (A ω * X ω) ≤ |t * (A ω * X ω)| := le_abs_self _
@@ -71,7 +66,6 @@ theorem integrable_exp_predictable_mul
         exact hbound ω
   have hexp : exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) :=
     Real.exp_le_exp.mpr hu
-  change ‖exp (t * (A ω * X ω))‖ ≤ ‖exp (q * X ω) + exp ((-q) * X ω)‖
   rw [Real.norm_eq_abs, abs_of_pos (Real.exp_pos _)]
   have hsum_pos : 0 < exp (q * X ω) + exp ((-q) * X ω) :=
     add_pos (Real.exp_pos _) (Real.exp_pos _)
