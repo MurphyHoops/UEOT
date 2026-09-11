@@ -18,6 +18,7 @@ import UEOT.V3.BinaryTesting
 import UEOT.V3.FisherGauge
 import UEOT.V3.DesignIdentifiability
 import UEOT.V3.PredictableOLS
+import UEOT.V3.PredictableOLSNormalEquation
 import UEOT.V3.PredictableOLSTail
 import UEOT.V3.PredictableOLSRadius
 import UEOT.V3.PredictableOLSScore
