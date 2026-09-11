@@ -29,72 +29,33 @@ the matching body is actually committed to the repository.
 
 | status | count |
 |---|---:|
-| proved | **41** |
+| proved | **44** |
 | partial | **0** |
-| pending | **65** |
+| pending | **62** |
 | total | **106** |
 
-Latest completed proof promotion: **P-STAT-01**.
+Latest completed proof promotion: **P-STAT-08**.
 
-- final feature head: `c1cf34443572b0d7934f472d69018078fd24930a`
-- feature branch CI #596 (`34547929445`): success
-- clean-port head: `954186a82d7be781a19cfd2e26fb1da0c8cee1bf`
-- clean-port branch CI #597 (`34548185047`): success
-- PR #30 CI #598 (`34548405598`): success
-- squash merge: `9b3a65ee836e32fa99f6670530e3f7afe72ab070`
-- post-merge main CI #599 (`34548608501`): success
+Recent promotion train:
 
-P-STAT-01 now exposes the exact frozen finite-alphabet simultaneous TV tail
-bound
+- P-STAT-07 — squash merge `97533726d71e28b8f4aac1d956db7f65fe98ebda`; post-main CI #629 success.
+- P-STAT-09 — squash merge `b21f91f233e7cb65c6f1d6ec928b4870ceee3db4`; post-main CI #641 success.
+- P-STAT-08 — squash merge `f03ea2ae9996228d86c742d7f787b95a85ad5898`; post-main CI #648 success.
 
-`P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`
+P-STAT-08 exposes the frozen finite-candidate bound with
 
-and the clipped confidence radius
+`u = sqrt(log(2*m/alpha)/(2*N))`
 
-`min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
-
-The proof uses only within-cell independence across the `N` samples. It does
-not assume independence across response cells, and it does not add any carrier
-candidate union factor. The clipped branch is discharged by the deterministic
-probability-measure bound `D_TV <= 1`.
+and proves that an empirical-risk minimizer has true risk at most the finite
+class optimum plus `2*u`, with failure probability at most `alpha` for `[0,1]`
+losses and `N` independent validation observations. Candidatewise independence
+is not assumed.
 
 ## 3. Active parallel proof lanes
 
 Formal proof development is parallel; only promotion into `main` is serialized.
-All current lanes branch from `main@9b3a65ee836e32fa99f6670530e3f7afe72ab070`.
 
-### Lane A — P-STAT-07: MMD kernel-transport covariance
-
-Branch: `formal/pstat07-mmd-covariance`
-
-Frozen source target: for a bimeasurable bijection `T`, synchronously transport
-`k` by `k_T(Tx,Ty)=k(x,y)` and prove
-
-`MMD_{k_T}(T#P,T#Q) = MMD_k(P,Q)`.
-
-Implementation rule: formalize genuine MMD/kernel expectations or kernel means;
-do not substitute TV covariance. The proof must make the three transported
-kernel expectations explicit or prove the equivalent kernel-mean identity.
-
-### Lane B — P-STAT-08: finite-candidate discovery
-
-Branch: `formal/pstat08-finite-discovery`
-
-Frozen source target: for `m` candidates, losses in `[0,1]`, and `N` independent
-validation samples, with
-
-`u = sqrt(log(2*m/alpha)/(2*N))`,
-
-the empirical-risk minimizer satisfies
-
-`R(fHat) <= min_f R(f) + 2*u`
-
-with probability at least `1-alpha`.
-
-This lane may reuse the already verified Hoeffding/finite-union infrastructure,
-but must keep the finite-candidate ERM argument source-matched.
-
-### Lane C — P-STAT-06: RKHS/MMD simultaneous embedding error
+### Lane A — P-STAT-06: RKHS/MMD simultaneous embedding error
 
 Branch: `formal/pstat06-mmd-concentration`
 
@@ -105,9 +66,29 @@ law, separable RKHS, `k(y,y)<=1`, and Bochner-integrable feature map,
 
 with probability at least `1-alpha`.
 
-This is the heavy infrastructure lane: Hilbert-valued empirical means,
-Bochner expectation, bounded-difference/McDiarmid concentration, and the final
-finite union. Do not weaken the source theorem to a finite-dimensional proxy.
+Machine-checked helper layers currently include:
+
+- exact one-replacement sensitivity `2/N`;
+- independent centered Hilbert off-diagonal inner expectation equals zero;
+- deterministic double-inner-product expansion of the empirical-mean squared norm.
+
+The branch is now testing the exact second-moment estimate
+`E||mean Z_i||^2 <= 1/N`. The source P-ID remains pending until the
+second-moment/Jensen/McDiarmid/finite-union chain is complete and promoted.
+
+### Lane B — P-INV-01: equal-prior binary testing
+
+Branch: `formal/pinv01-binary-testing`
+
+Frozen source target:
+
+`R* = (1/2) * (1 - D_TV(P0,P1))`.
+
+The universal lower bound is already machine-checked. The branch now contains a
+general-space Hahn-decomposition attainability proof, which is the
+measure-theoretic equivalent of selecting the source density-comparison event
+relative to `P0+P1`. It remains pending until the source-facing optimum theorem
+is green and passes the promotion train.
 
 ## 4. Promotion protocol for parallel lanes
 
@@ -139,10 +120,13 @@ Recent source-level promotions after the archived 32-proof checkpoint:
 - P-STAT-02 — main CI #563 success;
 - P-INFO-01 — main CI #572 success;
 - P-STAT-05 — main CI #584 success;
-- P-STAT-01 — main CI #599 success.
+- P-STAT-01 — main CI #599 success;
+- P-STAT-07 — main CI #629 success;
+- P-STAT-09 — main CI #641 success;
+- P-STAT-08 — main CI #648 success.
 
 Detailed older narratives remain in the source-level coverage archive and Git
-history. No already proved P-ID is downgraded by this state-file compaction.
+history. No already proved P-ID is downgraded by this state-file synchronization.
 
 ## 6. Theory-maintenance findings
 
@@ -165,10 +149,12 @@ Current high-value constraints:
    defects by `2*eta`; carrier multiplicity must not be reintroduced in P-STAT-01.
 8. P-STAT-01 complexity depends on response alphabet size `K` and response-cell
    count `L`, not the number of candidate carriers.
-9. MMD-small does not imply TV-small in general; P-STAT-06/07 must keep the RKHS
+9. MMD-small does not imply TV-small in general; P-STAT-06/07 keep the RKHS
    error scale distinct from TV.
-10. Import-graph reachability is part of proof evidence.
-11. No active lane has produced an F3 counterexample to the UEOT Core architecture.
+10. P-STAT-09 keeps the source Radon–Nikodym density-ratio assumption rather
+    than replacing it with stronger measure domination.
+11. Import-graph reachability is part of proof evidence.
+12. No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
 ## 7. Mandatory recovery procedure
 
@@ -189,9 +175,9 @@ Current high-value constraints:
 
 Parallel now:
 
-- P-STAT-07: build genuine MMD transport infrastructure and prove covariance;
-- P-STAT-08: reuse verified finite-sample concentration to close finite ERM;
-- P-STAT-06: build the separable-RKHS/Bochner/McDiarmid stack.
+- P-STAT-06: finish exact Hilbert second moment, Jensen, McDiarmid and finite union;
+- P-INV-01: validate Hahn attainability and then clean-port onto current main;
+- audit the next shallow-dependency pending P-ID so a new lane is ready before either current lane reaches promotion.
 
 Promote whichever source-matched lane becomes green first, then clean-port the
 remaining lanes onto the new `main` before their own PR gates.
