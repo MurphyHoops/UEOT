@@ -82,7 +82,8 @@ theorem integral_norm_empiricalMean_le_one_div_sqrt
     integrable_finsetSum _ (fun i _hi => hint i)
   have hemp : Integrable (fun ω => empiricalMean (fun i => Z i ω)) μ := by
     unfold empiricalMean
-    simpa only [Pi.smul_apply] using hsum.smul ((N : ℝ)⁻¹)
+    change Integrable (((N : ℝ)⁻¹) • (fun ω => ∑ i : Fin N, Z i ω)) μ
+    exact hsum.smul ((N : ℝ)⁻¹)
   have hfirst := integral_le_sqrt_integral_sq μ
     (fun ω => ‖empiricalMean (fun i => Z i ω)‖)
     hemp.norm.aestronglyMeasurable hnormSq
