@@ -52,4 +52,35 @@ theorem coe_sum_invSqParam_eq_one_div
   simp [invSqParam, NNReal.coe_inv]
   field_simp [hN0]
 
+/-- With the exact P-STAT-06 variance proxy `1/N²` at every Doob increment,
+Azuma simplifies to the source tail `exp (-N ε² / 2)`. -/
+theorem azuma_invSqParam_tail
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    {Y : ℕ → Ω → ℝ}
+    {ℱ : Filtration ℕ (inferInstance : MeasurableSpace Ω)}
+    (N : ℕ) (hN : 0 < N)
+    (h_adapted : StronglyAdapted ℱ Y)
+    (h0 : HasSubgaussianMGF (Y 0) (invSqParam N) μ)
+    (h_subG : ∀ (i : ℕ), i < N - 1 →
+      HasCondSubgaussianMGF (ℱ i) (ℱ.le i) (Y (i + 1)) (invSqParam N) μ)
+    {ε : ℝ} (hε : 0 ≤ ε) :
+    μ.real {ω | ε ≤ ∑ i ∈ Finset.range N, Y i ω}
+      ≤ Real.exp (-(N : ℝ) * ε ^ 2 / 2) := by
+  have h := azuma_parameterized (μ := μ)
+    (cY := fun _ => invSqParam N) h_adapted h0 N h_subG hε
+  calc
+    μ.real {ω | ε ≤ ∑ i ∈ Finset.range N, Y i ω}
+        ≤ Real.exp (-ε ^ 2 /
+          (2 * ∑ i ∈ Finset.range N, (fun _ => invSqParam N) i)) := h
+    _ = Real.exp (-(N : ℝ) * ε ^ 2 / 2) := by
+      have hN0 : (N : ℝ) ≠ 0 := by
+        exact_mod_cast (Nat.ne_of_gt hN)
+      have hsum := coe_sum_invSqParam_eq_one_div (N := N) hN
+      congr 1
+      rw [show
+        (((∑ i ∈ Finset.range N, (fun _ => invSqParam N) i : ℝ≥0) : ℝ)) =
+          1 / (N : ℝ) by simpa using hsum]
+      field_simp [hN0]
+      ring
+
 end UEOT.V3.HilbertMeanAzuma
