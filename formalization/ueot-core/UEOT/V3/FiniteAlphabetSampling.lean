@@ -24,7 +24,7 @@ open scoped BigOperators ENNReal NNReal
 universe uΩ uJ uY
 
 variable {Ω : Type uΩ} {J : Type uJ} {Y : Type uY}
-variable [MeasurableSpace Ω] [MeasurableSpace Y]
+variable [MeasurableSpace Ω] [MeasurableSpace Y] [MeasurableSingletonClass Y]
 
 /-- Empirical response law of `N` observed samples. -/
 noncomputable def empiricalMeasure {N : ℕ} (hN : 0 < N)
@@ -43,9 +43,29 @@ theorem empiricalMeasure_isProbability {N : ℕ} (hN : 0 < N)
   unfold empiricalMeasure
   exact (Measure.isProbabilityMeasure_map_iff hf.aemeasurable).2 inferInstance
 
-/-- Indicator of a finite-alphabet event after one response sample. -/
-def sampleIndicator (A : Finset Y) (X : Ω → Y) : Ω → ℝ :=
-  fun ω => if X ω ∈ A then 1 else 0
+/-- Indicator of one finite-alphabet event on the response space. -/
+noncomputable def eventIndicator (A : Finset Y) : Y → ℝ :=
+  (A : Set Y).indicator (fun _ => (1 : ℝ))
+
+/-- Event indicator after one response sample. -/
+noncomputable def sampleIndicator (A : Finset Y) (X : Ω → Y) : Ω → ℝ :=
+  eventIndicator A ∘ X
+
+private theorem measurable_eventIndicator (A : Finset Y) :
+    Measurable (eventIndicator A) := by
+  exact measurable_const.indicator A.measurableSet
+
+private theorem measurable_sampleIndicator
+    (A : Finset Y) (X : Ω → Y) (hX : Measurable X) :
+    Measurable (sampleIndicator A X) := by
+  exact (measurable_eventIndicator A).comp hX
+
+private theorem sampleIndicator_mem_Icc
+    (A : Finset Y) (X : Ω → Y) :
+    ∀ ω, sampleIndicator A X ω ∈ Set.Icc (0 : ℝ) 1 := by
+  intro ω
+  classical
+  by_cases h : X ω ∈ A <;> simp [sampleIndicator, eventIndicator, h]
 
 /-- The expectation of a sampled event indicator is the event probability of
 the sample law. -/
@@ -59,11 +79,12 @@ theorem integral_sampleIndicator_eq
   classical
   have hA : MeasurableSet (A : Set Y) := A.measurableSet
   have hpre : MeasurableSet (X ⁻¹' (A : Set Y)) := hX hA
-  rw [show sampleIndicator A X = (X ⁻¹' (A : Set Y)).indicator (fun _ => (1 : ℝ)) by
+  have hrepr :
+      sampleIndicator A X =
+        (X ⁻¹' (A : Set Y)).indicator (fun _ => (1 : ℝ)) := by
     funext ω
-    simp [sampleIndicator]]
-  rw [integral_indicator_one hpre]
-  simp only [measureReal_def]
+    by_cases h : X ω ∈ A <;> simp [sampleIndicator, eventIndicator, h]
+  rw [hrepr, integral_indicator_one hpre]
   rw [← hlaw, Measure.map_apply hX hA]
 
 /-- Event mass of the empirical measure equals the arithmetic mean of the
@@ -77,28 +98,29 @@ theorem empiricalMeasure_real_finset {N : ℕ} (hN : 0 < N)
   letI : MeasurableSpace (Fin N) := ⊤
   have hf : Measurable (fun n : Fin N => sample n ω) := measurable_of_finite _
   have hA : MeasurableSet (A : Set Y) := A.measurableSet
+  have hcount :
+      ((Finset.univ.filter fun n : Fin N => sample n ω ∈ A).card : ℝ) =
+        ∑ n : Fin N, sampleIndicator A (sample n) ω := by
+    calc
+      ((Finset.univ.filter fun n : Fin N => sample n ω ∈ A).card : ℝ)
+          = ∑ _n in (Finset.univ.filter fun n : Fin N => sample n ω ∈ A), (1 : ℝ) := by
+              simp
+      _ = ∑ n : Fin N, if sample n ω ∈ A then (1 : ℝ) else 0 := by
+              rw [Finset.sum_filter]
+      _ = ∑ n : Fin N, sampleIndicator A (sample n) ω := by
+              apply Finset.sum_congr rfl
+              intro n hn
+              by_cases h : sample n ω ∈ A <;>
+                simp [sampleIndicator, eventIndicator, h]
   unfold empiricalMeasure
   rw [measureReal_def, Measure.map_apply hf hA]
   rw [PMF.toMeasure_uniformOfFintype_apply]
   simp only [Fintype.card_fin, ENNReal.toReal_div, ENNReal.toReal_natCast]
   rw [Fintype.card_subtype]
-  simp [sampleIndicator, Finset.card_eq_sum_ones, div_eq_mul_inv]
-
-private theorem measurable_sampleIndicator
-    (A : Finset Y) (X : Ω → Y) (hX : Measurable X) :
-    Measurable (sampleIndicator A X) := by
-  classical
-  have hA : MeasurableSet (A : Set Y) := A.measurableSet
-  rw [show sampleIndicator A X = (X ⁻¹' (A : Set Y)).indicator (fun _ => (1 : ℝ)) by
-    funext ω
-    simp [sampleIndicator]]
-  exact measurable_const.indicator (hX hA)
-
-private theorem sampleIndicator_mem_Icc
-    (A : Finset Y) (X : Ω → Y) :
-    ∀ ω, sampleIndicator A X ω ∈ Set.Icc (0 : ℝ) 1 := by
-  intro ω
-  simp [sampleIndicator]
+  rw [show (Finset.univ.filter fun n : Fin N => sample n ω ∈ (A : Set Y)) =
+      Finset.univ.filter fun n : Fin N => sample n ω ∈ A by rfl]
+  rw [Nat.cast_ofNat]
+  simpa [hcount]
 
 /-- One-sided upper Hoeffding bound for a fixed finite-alphabet event. -/
 theorem measure_empirical_event_upper_le
@@ -116,40 +138,42 @@ theorem measure_empirical_event_upper_le
       exp (-2 * (N : ℝ) * η ^ 2) := by
   classical
   let X : Fin N → Ω → ℝ := fun n => sampleIndicator A (sample n)
-  have hXmeas : ∀ n, Measurable (X n) := fun n => measurable_sampleIndicator A _ (hmeas n)
+  let Z : Fin N → Ω → ℝ := fun n ω => X n ω - μ[X n]
+  have hXmeas : ∀ n, Measurable (X n) :=
+    fun n => measurable_sampleIndicator A _ (hmeas n)
   have hXindep : iIndepFun X μ := by
-    simpa [X, Function.comp_def] using
-      hindep.comp (fun _ y => if y ∈ A then (1 : ℝ) else 0)
-        (fun _ => by
-          have hA : MeasurableSet (A : Set Y) := A.measurableSet
-          exact measurable_const.indicator hA)
+    simpa [X, sampleIndicator, Function.comp_def] using
+      hindep.comp (fun _ => eventIndicator A) (fun _ => measurable_eventIndicator A)
+  have hZindep : iIndepFun Z μ := by
+    simpa [Z, Function.comp_def] using
+      hXindep.comp (fun n x => x - μ[X n])
+        (fun _ => measurable_id.sub measurable_const)
   have hmean : ∀ n, ∫ ω, X n ω ∂μ = p.real (A : Set Y) := by
     intro n
-    simpa [X] using integral_sampleIndicator_eq μ p (sample n) (hmeas n) (hlaw n) A
+    simpa [X] using
+      integral_sampleIndicator_eq μ p (sample n) (hmeas n) (hlaw n) A
   have hsub : ∀ n ∈ (Finset.univ : Finset (Fin N)),
-      HasSubgaussianMGF (fun ω => X n ω - μ[X n]) ((1 / 2 : ℝ≥0) ^ 2) μ := by
+      HasSubgaussianMGF (Z n) ((1 / 2 : ℝ≥0) ^ 2) μ := by
     intro n hn
-    apply hasSubgaussianMGF_of_mem_Icc (hXmeas n).aemeasurable
-    filter_upwards [] with ω
-    exact sampleIndicator_mem_Icc A (sample n) ω
-  have htail := measure_sum_ge_le_of_iIndepFun
-    (h_indep := hXindep.comp (fun _ x => x - μ[X _])
-      (fun _ => measurable_id.sub measurable_const))
+    have hs := ProbabilityTheory.hasSubgaussianMGF_of_mem_Icc
+      (μ := μ) (X := X n) (a := (0 : ℝ)) (b := (1 : ℝ))
+      (hXmeas n).aemeasurable
+      (ae_of_all μ (sampleIndicator_mem_Icc A (sample n)))
+    simpa [Z] using hs
+  have htail := ProbabilityTheory.measure_sum_ge_le_of_iIndepFun
+    (h_indep := hZindep)
     (s := (Finset.univ : Finset (Fin N)))
-    (h_subG := by
-      intro n hn
-      simpa [Function.comp_def] using hsub n hn)
+    (h_subG := hsub)
     (ε := (N : ℝ) * η)
     (mul_nonneg (Nat.cast_nonneg N) hη)
   have hset :
       {ω | p.real (A : Set Y) + η ≤
         (empiricalMeasure hN sample ω).real (A : Set Y)} ⊆
       {ω | (N : ℝ) * η ≤
-        ∑ n ∈ (Finset.univ : Finset (Fin N)),
-          (X n ω - μ[X n])} := by
+        ∑ n ∈ (Finset.univ : Finset (Fin N)), Z n ω} := by
     intro ω hω
     rw [empiricalMeasure_real_finset hN sample ω A] at hω
-    simp only [Finset.sum_const_zero, Finset.sum_sub_distrib]
+    simp only [Z, Finset.sum_sub_distrib]
     simp_rw [hmean]
     simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
     have hNreal : (0 : ℝ) < N := by exact_mod_cast hN
@@ -158,7 +182,7 @@ theorem measure_empirical_event_upper_le
   refine (measureReal_mono hset).trans ?_
   calc
     μ.real {ω | (N : ℝ) * η ≤
-        ∑ n ∈ (Finset.univ : Finset (Fin N)), (X n ω - μ[X n])}
+        ∑ n ∈ (Finset.univ : Finset (Fin N)), Z n ω}
       ≤ exp (-((N : ℝ) * η) ^ 2 /
           (2 * ∑ n ∈ (Finset.univ : Finset (Fin N)), ((1 / 2 : ℝ≥0) ^ 2))) := htail
     _ = exp (-2 * (N : ℝ) * η ^ 2) := by
