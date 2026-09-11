@@ -30,7 +30,10 @@ theorem HasCondSubgaussianMGF.toHasSubgaussianMGF
   have hzero : HasSubgaussianMGF (fun _ : Ω => (0 : ℝ)) 0 (μ.trim hm) :=
     HasSubgaussianMGF.fun_zero
   have hsum := HasSubgaussianMGF.add_of_hasCondSubgaussianMGF hm hzero hX
-  refine hsum.congr (Eventually.of_forall fun ω => ?_)
+  have hsum' :
+      HasSubgaussianMGF ((fun _ : Ω => (0 : ℝ)) + X) c μ := by
+    simpa only [zero_add] using hsum
+  refine hsum'.congr (Eventually.of_forall fun ω => ?_)
   change 0 + X ω = X ω
   exact zero_add _
 
