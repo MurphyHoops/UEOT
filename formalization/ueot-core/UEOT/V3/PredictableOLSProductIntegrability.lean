@@ -37,14 +37,17 @@ theorem integrable_exp_predictable_mul
     (t : ℝ) :
     Integrable (fun ω => exp (t * (A ω * X ω))) μ := by
   have hAΩ : @Measurable Ω ℝ mΩ inferInstance A := hA.mono hm le_rfl
-  have hXsm : AEStronglyMeasurable X μ := by
-    rw [← condExpKernel_comp_trim (mΩ := mΩ) (μ := μ) hm]
-    exact hX.aestronglyMeasurable
-  have hAX : AEStronglyMeasurable (fun ω => A ω * X ω) μ := by
-    exact hAΩ.aestronglyMeasurable.mul hXsm
-  have htAX : AEStronglyMeasurable (fun ω => t * (A ω * X ω)) μ := by
-    exact hAX.const_mul t
-  have htarget : AEStronglyMeasurable
+  have hXsm0 : @AEStronglyMeasurable Ω ℝ _ mΩ mΩ X
+      (condExpKernel (mΩ := mΩ) μ m ∘ₘ μ.trim hm) := hX.aestronglyMeasurable
+  have hXsm : @AEStronglyMeasurable Ω ℝ _ mΩ mΩ X μ := by
+    rwa [condExpKernel_comp_trim (mΩ := mΩ) (μ := μ) hm] at hXsm0
+  have hAX : @AEStronglyMeasurable Ω ℝ _ mΩ mΩ
+      (fun ω => A ω * X ω) μ :=
+    hAΩ.aestronglyMeasurable.mul hXsm
+  have htAX : @AEStronglyMeasurable Ω ℝ _ mΩ mΩ
+      (fun ω => t * (A ω * X ω)) μ :=
+    hAX.const_mul t
+  have htarget : @AEStronglyMeasurable Ω ℝ _ mΩ mΩ
       (fun ω => exp (t * (A ω * X ω))) μ :=
     Real.continuous_exp.comp_aestronglyMeasurable htAX
   let q : ℝ := |t| * B
@@ -66,10 +69,6 @@ theorem integrable_exp_predictable_mul
         exact hbound ω
   have hexp : exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) :=
     Real.exp_le_exp.mpr hu
-  rw [Real.norm_eq_abs, abs_of_pos (Real.exp_pos _)]
-  have hsum_pos : 0 < exp (q * X ω) + exp ((-q) * X ω) :=
-    add_pos (Real.exp_pos _) (Real.exp_pos _)
-  rw [Real.norm_eq_abs, abs_of_pos hsum_pos]
   calc
     exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) := hexp
     _ ≤ exp (q * X ω) + exp ((-q) * X ω) := by
