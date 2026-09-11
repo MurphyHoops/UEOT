@@ -28,14 +28,15 @@ increments coverage.
 
 As of 2026-09-11:
 
-- proved: **46**
+- proved: **47**
 - partial: **0**
-- pending: **60**
+- pending: **59**
 - total: **106**
-- latest proved P-ID: **P-INV-02**
-- latest Lean-affecting proved checkpoint: `cbfe8eff494a558f113d2e79136655b9ddb61ca7`
-- current main may be ahead by docs-only synchronization commits; that does not
-  invalidate a clean proof branch based on the same Lean tree.
+- latest proved P-ID: **P-INV-04**
+- latest Lean-affecting proved checkpoint: `efd1f529e739aecd4b1331f7324ce5660384cd8c`
+- the subsequent main synchronization commits are documentation-only unless
+  otherwise stated; they do not invalidate a clean proof branch based on the
+  same Lean tree.
 
 ## 3. Branch classes
 
@@ -52,23 +53,7 @@ lemmas by clean-porting only the source-matched minimal delta.
 
 ## 4. Current parallel wave
 
-### Lane A — P-INV-04 promotion [PROMOTION]
-
-Branch: `formal/pinv04-promote`
-
-Frozen claim: in the noiseless full-parameter linear model, the fixed design
-uniquely identifies the parameter iff its Gram matrix is positive definite.
-
-Current implementation uses the equivalent quadratic form
-`sum_t (phi_t^T v)^2`; `p_inv_04` proves injectivity iff strict positivity for
-all nonzero `v`. The old development branch was green but behind main, so the
-proof has been clean-ported to a branch created from current main with only the
-module and one official import.
-
-Promotion rule: merge only after clean CI + PR CI, then post-main CI and ledger
-update.
-
-### Lane B — P-INV-03 Fisher accumulation [HOT]
+### Lane A — P-INV-03 Fisher accumulation [HOT]
 
 Branch: `formal/pinv03-fisher-intersection`
 
@@ -82,19 +67,21 @@ Machine-checked already:
 
 - abstract PSD kernel-intersection mechanism;
 - independent centered experiment score coordinates have zero cross Fisher
-  integrals.
+  integrals;
+- the cross-term bridge is full-target green at
+  `3d0ae444ef810f2f0d8808c966f6982cf1860c4e`.
 
-Remaining source closure:
+Current closure sequence:
 
-1. finite score-sum / Fisher-entry expansion;
-2. use zero cross terms to prove `I_total = sum_e I_e`;
+1. finite score-sum / Fisher-entry expansion and cross-term cancellation;
+2. lift entrywise equality to Fisher-action equality;
 3. instantiate the PSD kernel theorem with those Fisher blocks;
 4. expose a single source-facing `p_inv_03` wrapper;
 5. run clean promotion train.
 
 Do **not** promote the abstract intersection lemma alone.
 
-### Lane C — P-STAT-06 RKHS/MMD concentration [HOT]
+### Lane B — P-STAT-06 RKHS/MMD concentration [HOT]
 
 Branch: `formal/pstat06-mmd-concentration`
 
@@ -109,21 +96,42 @@ Machine-checked layers already include:
 - empirical squared-norm expansion;
 - `E||mean Z_i||^2 <= 1/N`;
 - direct Hilbert first-moment bound;
-- Azuma/Hoeffding scalar tail algebra.
+- stable wrapper around pinned Mathlib's conditional-sub-Gaussian Azuma bound,
+  full-target green at `237f5c0ccc18166977ba0143e3763de5ab7e767d`.
 
-Current integration repair: normalize the constant sub-Gaussian parameter sum
-in the imported Azuma layer. After this compiles, finish the explicit
-bounded-difference/Doob bridge and the finite `L` union bound. No replacement by
-an assumed McDiarmid theorem without a source-semantic audit.
+Current closure sequence:
+
+1. build the Doob/bounded-difference increment bridge from the exact `2/N`
+   sensitivity;
+2. obtain per-increment sub-Gaussian parameter `1/N^2` and normalize the sum to
+   `1/N`, yielding the source tail `exp(-N t^2/2)`;
+3. combine with the exact first-moment `1/sqrt(N)` bound;
+4. perform the finite `L` union bound and substitute
+   `t = sqrt(2 log(L/alpha)/N)`;
+5. expose the source-facing `p_stat_06` theorem and run promotion.
+
+No replacement by an assumed McDiarmid theorem without a source-semantic audit.
+
+### Lane C — P-INV-05 predictable-design OLS concentration [WARM]
+
+The source has now been audited. Required ingredients are predictable bounded
+design, conditionally sub-Gaussian noise, the samplewise Gram lower bound
+`G_N >= N*kappa*I`, and the exact Euclidean error rate. Development starts from
+the newest green main checkpoint when a HOT slot is released or a reusable
+martingale concentration lemma can be shared without branch coupling.
+
+P-INV-04 is no longer an active lane; it was promoted and post-main verified as
+P-ID #47.
 
 ## 5. Next WARM pool
 
-Open new lanes only as current HOT/PROMOTION lanes vacate slots. Maintain 4–6
-active proof lanes, but do not create branches just to fill a quota.
+Open new lanes only as current HOT lanes vacate slots. Maintain 4–6 active proof
+lanes when there is genuinely independent work, but do not create branches just
+to fill a quota.
 
 Priority order:
 
-1. **P-INV-05 and remaining inverse/identifiability packet** after P-INV-04;
+1. **P-INV-05 and remaining inverse/identifiability packet**;
 2. **P-INFO-02/03/04** using the already integrated information infrastructure;
 3. **P-INT-01** structured sufficiency iff, reusing P-PRED-01 and information
    modules rather than duplicating them;
@@ -137,7 +145,7 @@ Old branches containing useful experiments are evidence sources only. Every new
 promotion candidate starts from current green main and ports the smallest
 source-matched delta.
 
-## 6. Dependency factories for the remaining 60
+## 6. Dependency factories for the remaining 59
 
 ### Factory G — finite certification and inverse problems
 
