@@ -17,7 +17,7 @@ variable on the trimmed measure.
 
 namespace UEOT.V3.PredictableOLSConditionalLift
 
-open MeasureTheory ProbabilityTheory
+open MeasureTheory ProbabilityTheory Filter
 open scoped NNReal
 
 universe uΩ
@@ -33,9 +33,9 @@ theorem HasCondSubgaussianMGF.toHasSubgaussianMGF
     {X : Ω → ℝ} {c : ℝ≥0}
     (hX : HasCondSubgaussianMGF m hm X c μ) :
     HasSubgaussianMGF X c μ := by
-  have hzero : HasSubgaussianMGF (fun _ : Ω => (0 : ℝ)) 0 (μ.trim hm) := by
-    simp
+  have hzero : HasSubgaussianMGF (fun _ : Ω => (0 : ℝ)) 0 (μ.trim hm) :=
+    HasSubgaussianMGF.fun_zero
   have hsum := HasSubgaussianMGF.add_of_hasCondSubgaussianMGF hm hzero hX
-  simpa using hsum
+  exact hsum.congr (Eventually.of_forall fun ω => by simp)
 
 end UEOT.V3.PredictableOLSConditionalLift
