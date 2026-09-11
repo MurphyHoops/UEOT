@@ -116,14 +116,17 @@ theorem p_stat_01_radius
     (((((Fintype.card Y + 1 : ℕ) : ℝ) * log 2 +
         log ((Fintype.card J : ℝ) / α)) /
       (2 * (N : ℝ))))
+  have hraw_nonneg : 0 ≤ raw := by
+    dsimp [raw]
+    exact Real.sqrt_nonneg _
   by_cases hclip : raw ≤ 1
   · have hradius :
         pStat01Radius N (Fintype.card Y) (Fintype.card J) α = raw := by
       change min 1 raw = raw
       exact min_eq_right hclip
     rw [hradius]
-    have htail := p_stat_01_tail
-      hN μ p hp sample hmeas hindep hlaw (Real.sqrt_nonneg _)
+    have htail := p_stat_01_tail (η := raw)
+      hN μ p hp sample hmeas hindep hlaw hraw_nonneg
     exact htail.trans_eq (raw_tail_factor_eq_alpha hN hα0 hα1)
   · have hone_raw : (1 : ℝ) ≤ raw := le_of_lt (lt_of_not_ge hclip)
     have hradius :
