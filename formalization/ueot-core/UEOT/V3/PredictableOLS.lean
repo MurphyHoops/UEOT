@@ -61,10 +61,21 @@ theorem dot_gramAction_eq_gramQuadratic {N d : ℕ}
   rw [Finset.sum_comm]
   apply Finset.sum_congr rfl
   intro t ht
-  rw [← Finset.sum_mul]
-  unfold designMap
-  congr 1
-  ring
+  have hsum : (∑ x, v x * phi t x) = designMap phi v t := by
+    unfold designMap
+    apply Finset.sum_congr rfl
+    intro x hx
+    ring
+  calc
+    ∑ x, v x * (phi t x * designMap phi v t)
+        = ∑ x, (v x * phi t x) * designMap phi v t := by
+          apply Finset.sum_congr rfl
+          intro x hx
+          ring
+    _ = (∑ x, v x * phi t x) * designMap phi v t := by
+          rw [Finset.sum_mul]
+    _ = designMap phi v t * designMap phi v t := by rw [hsum]
+    _ = designMap phi v t ^ 2 := by ring
 
 /-- Finite-dimensional Cauchy-Schwarz in the squared-norm notation used by
 P-INV-05. -/
@@ -89,7 +100,6 @@ theorem gram_coercive_normalEq_sqNorm_bound
     (hnormal : gramAction phi err = Z) :
     (((N : ℝ) * kappa) ^ 2) * sqNorm err ≤ sqNorm Z := by
   have hNreal : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
-  have ha : 0 < (N : ℝ) * kappa := mul_pos hNreal hkappa
   have hq : 0 ≤ sqNorm err := sqNorm_nonneg err
   by_cases hq0 : sqNorm err = 0
   · simp [hq0, sqNorm_nonneg Z]
@@ -101,11 +111,12 @@ theorem gram_coercive_normalEq_sqNorm_bound
       (N : ℝ) * kappa * sqNorm err ≤ dot err Z := by
     rw [hdot]
     exact hcoercive
-  have hdot_nonneg : 0 ≤ dot err Z := by
-    exact (mul_nonneg (mul_nonneg hNreal.le hkappa.le) hq).trans hlower
+  have hleft_nonneg : 0 ≤ (N : ℝ) * kappa * sqNorm err :=
+    mul_nonneg (mul_nonneg hNreal.le hkappa.le) hq
+  have hdot_nonneg : 0 ≤ dot err Z := hleft_nonneg.trans hlower
   have hsquare_lower :
-      (((N : ℝ) * kappa * sqNorm err) ^ 2) ≤ (dot err Z) ^ 2 := by
-    nlinarith
+      (((N : ℝ) * kappa * sqNorm err) ^ 2) ≤ (dot err Z) ^ 2 :=
+    (sq_le_sq₀ hleft_nonneg hdot_nonneg).2 hlower
   have hcauchy := dot_sq_le_sqNorm_mul_sqNorm err Z
   have hcombined :
       (((N : ℝ) * kappa * sqNorm err) ^ 2) ≤
@@ -118,6 +129,6 @@ theorem gram_coercive_normalEq_sqNorm_bound
       sqNorm err * ((((N : ℝ) * kappa) ^ 2) * sqNorm err)
           = (((N : ℝ) * kappa * sqNorm err) ^ 2) := by ring
       _ ≤ sqNorm err * sqNorm Z := hcombined
-  exact (mul_le_mul_left hqpos).mp hmul
+  exact le_of_mul_le_mul_left hmul hqpos
 
 end UEOT.V3.PredictableOLS
