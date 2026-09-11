@@ -38,7 +38,8 @@ theorem measure_exists_bad_le_alpha
       exact Finset.sum_le_sum fun j _ => h_each j
     _ = alpha := by
       have hLreal : (0 : ℝ) < (L : ℝ) := by exact_mod_cast hL
-      rw [Finset.sum_const, nsmul_eq_mul]
+      rw [Finset.sum_const, nsmul_eq_mul, Finset.card_univ, Fintype.card_fin]
       field_simp [ne_of_gt hLreal]
+      ring
 
 end UEOT.V3.HilbertMeanUnion
