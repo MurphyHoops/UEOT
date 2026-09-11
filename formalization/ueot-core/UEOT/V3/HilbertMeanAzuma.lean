@@ -12,7 +12,7 @@ bounded-difference/Doob bridge are added only after this imported core is green.
 namespace UEOT.V3.HilbertMeanAzuma
 
 open MeasureTheory ProbabilityTheory
-open scoped BigOperators
+open scoped BigOperators NNReal
 
 universe uΩ
 
