@@ -33,9 +33,13 @@ theorem HasCondSubgaussianMGF.toHasSubgaussianMGF
     {X : Ω → ℝ} {c : ℝ≥0}
     (hX : HasCondSubgaussianMGF m hm X c μ) :
     HasSubgaussianMGF X c μ := by
+  letI : IsProbabilityMeasure (μ.trim hm) :=
+    ⟨by
+      rw [trim_measurableSet_eq hm MeasurableSet.univ]
+      exact measure_univ⟩
   have hzero : HasSubgaussianMGF (fun _ : Ω => (0 : ℝ)) 0 (μ.trim hm) :=
     HasSubgaussianMGF.fun_zero
   have hsum := HasSubgaussianMGF.add_of_hasCondSubgaussianMGF hm hzero hX
-  exact hsum.congr (Eventually.of_forall fun ω => by simp)
+  simpa only [Pi.add_apply, zero_add] using hsum
 
 end UEOT.V3.PredictableOLSConditionalLift
