@@ -76,7 +76,9 @@ theorem independent_centered_cross_integral_eq_zero
     (hX0 : ∫ ω, X ω ∂μ = 0)
     (hY0 : ∫ ω, Y ω ∂μ = 0) :
     ∫ ω, X ω * Y ω ∂μ = 0 := by
-  rw [hXY.integral_mul_eq_mul_integral hX hY, hX0, hY0]
-  simp
+  calc
+    ∫ ω, X ω * Y ω ∂μ = (∫ ω, X ω ∂μ) * (∫ ω, Y ω ∂μ) := by
+      simpa only [Pi.mul_apply] using hXY.integral_mul_eq_mul_integral hX hY
+    _ = 0 := by rw [hX0, hY0]; norm_num
 
 end UEOT.V3.FisherIntersection
