@@ -37,6 +37,8 @@ theorem scoreVector_finSource_eq_range
     scoreVector (finDesign (N := N) phi ω) (finNoise (N := N) xi ω) j =
       ∑ t ∈ Finset.range N, phi (t + 1) ω j * xi (t + 1) ω := by
   unfold scoreVector finDesign finNoise
-  rw [Fin.sum_univ_eq_sum_range]
+  simpa using
+    (Fin.sum_univ_eq_sum_range
+      (fun t : ℕ => phi (t + 1) ω j * xi (t + 1) ω))
 
 end UEOT.V3.PredictableOLSSourceIndex
