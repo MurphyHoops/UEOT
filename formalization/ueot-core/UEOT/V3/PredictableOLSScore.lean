@@ -44,7 +44,9 @@ proxy `N * (sigma * B)^2`. -/
 theorem sum_incrementParam_range (N : ℕ) (sigma B : ℝ) :
     (∑ _i ∈ Finset.range N, incrementParam sigma B) =
       scoreParam N sigma B := by
-  ext
+  apply NNReal.eq
+  change (∑ _i ∈ Finset.range N, (incrementParam sigma B : ℝ)) =
+    (scoreParam N sigma B : ℝ)
   simp [incrementParam, scoreParam]
 
 /-- Conditional sub-Gaussian score increments accumulate to the exact frozen
@@ -73,6 +75,7 @@ theorem coordScore_hasSubgaussianMGF
       (fun ω => ∑ t ∈ Finset.range N, phi t ω j * xi t ω)
       (scoreParam N sigma B) μ := by
   have hsum := HasSubgaussianMGF.sum_of_hasCondSubgaussianMGF
+    (μ := μ) (cY := fun _ => incrementParam sigma B)
     h_adapted h0 N h_subG
   rw [sum_incrementParam_range N sigma B] at hsum
   simpa [scoreProcess] using hsum
