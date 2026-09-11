@@ -1,10 +1,10 @@
 # UEOT Core Lean — Live Formalization State
 
 > **Recovery entry point.** Read this file first when resuming formalization
-> work. Source-level truth is `V3_COVERAGE_STATUS.md`; execution order is
-> `PARALLEL_FORMALIZATION_ROADMAP.md`.
+> work. Source-level truth is `V3_COVERAGE_STATUS.md`; the broader execution
+> model is `PARALLEL_FORMALIZATION_ROADMAP.md`.
 
-Last synchronized: **2026-09-11 (Asia/Taipei)**
+Last synchronized: **2026-09-11**
 
 ## 1. Canonical source and environment
 
@@ -17,195 +17,157 @@ Last synchronized: **2026-09-11 (Asia/Taipei)**
 - integration branch: `main`
 
 Promotion requires exact source matching, official-target branch/PR CI, merge
-to `main`, green post-merge CI, and ledger synchronization.
+to `main`, green post-merge CI, and ledger synchronization. A helper theorem or
+green feature branch alone is never counted as a source-level proof.
 
 The repository manifest still records `content_sync: pending` for the canonical
-v3.0 manuscript body. However, the exact canonical file has now been recovered
-from the user's File Library and can be used for source audits. New theorem
-wrappers must quote/check that recovered canonical source rather than memory.
+v3.0 manuscript body. The exact canonical file is available through the user's
+File Library for semantic audits; do not change the manifest to complete until
+the matching body is actually committed to the repository.
 
 ## 2. Current integrated checkpoint
 
 | status | count |
 |---|---:|
-| proved | **39** |
+| proved | **40** |
 | partial | **0** |
-| pending | **67** |
+| pending | **66** |
 | total | **106** |
 
-Latest completed proof promotion: **P-INFO-01**.
+Latest completed proof promotion: **P-STAT-05**.
 
-- final development head: `315a0aeafdc2807f65d68ada7b2be6c70c09eedf`
-- development CI #562 (`34542278658`): success
-- clean-port head: `cfddeca9a99dc6466b69807940720aaafc48a119`
-- clean-port branch CI #570 (`34542970826`): success
-- PR #28 CI #571 (`34543199236`): success
-- squash merge: `0dd65bc8ae40fdd1afbfdf0cf61c155585a5a2ac`
-- post-merge main CI #572 (`34543427529`): success
-- ledger synchronization commit: `f73f8e6793c287380d05a7ca00b34bd4d87ce944`
+- final feature head: `259b69ece2be22ead8e22b04c02fcf0bd9170da8`
+- branch CI #580 (`34544593542`): success
+- PR #29 CI #583 (`34544873693`): success
+- squash merge: `5e5071820a5e30554b23f8344b3315841b0e4b6a`
+- post-merge main CI #584 (`34545279143`): success
+- source-level ledger synchronization commit: `5214fe5cff18adca6b37ed4c30e72098592034f3`
 
-P-INFO-01 now exposes the exact deterministic-statistic information chain and
-the source's discrete predictive-memory lower bound. The discrete layer is
-countable rather than artificially finite, and uses `ℝ≥0∞` Shannon entropy so
-that `H(M)=∞` is not collapsed through `toReal`.
+P-STAT-05 now exposes exact finite-history predictive-class recovery under the
+source gap condition. It proves same-class empirical distance is at most
+`2*eta`, different-class empirical distance is at least `gamma-2*eta`, and the
+`gamma/2` threshold exactly coincides with true predictive equivalence. It does
+not infer class identity by uncontrolled transitive closure.
 
-## 3. HOT proof lanes
+## 3. HOT proof lane A — P-STAT-01
 
-### A. P-STAT-01 — finite-alphabet simultaneous TV concentration
+Branch: `formal/pstat01-finite-tv`
 
-The canonical source has been recovered and the exact theorem is grounded.
-For `L` fixed conditional responses on a finite response alphabet of size `K`,
-with `N` independent samples per response, the source states
+Target: **P-STAT-01 — finite-alphabet simultaneous TV concentration**.
+
+Frozen source statement for `L` fixed response cells, response alphabet size
+`K`, and `N` independent samples per cell:
 
 `P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`.
 
-It also gives the clipped confidence radius
+Clipped source radius:
 
 `eta_NKL(alpha) = min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
 
-Source proof structure:
+Source proof structure is frozen:
 
-1. for each response cell `j` and each alphabet subset `A`, empirical mass of
-   `A` is a Bernoulli average;
+1. each response-cell/subset empirical mass is a Bernoulli average;
 2. two-sided Hoeffding contributes `2 * exp(-2*N*eta^2)`;
-3. union over at most `2^K` subsets;
+3. union over at most `2^K` alphabet subsets;
 4. union over `L` response cells;
-5. finite-space TV is the maximum event-mass difference;
-6. if the analytic radius exceeds one, use deterministic `TV <= 1`.
+5. finite-space TV is the maximum event-mass discrepancy;
+6. when the analytic radius exceeds one, use deterministic `TV <= 1`.
 
-Pinned Mathlib audit:
+No independence across response cells is required; only the `N` samples inside
+each cell need independence. No carrier-candidate union bound is permitted:
+P-STAT-02 already propagates one simultaneous response event deterministically
+to all carrier defects.
 
-- `ProbabilityTheory.hasSubgaussianMGF_of_mem_Icc` gives Hoeffding's lemma for
-  bounded variables;
-- `ProbabilityTheory.measure_sum_ge_le_of_iIndepFun` gives the independent-sum
-  Hoeffding tail;
-- `MeasureTheory.measure_iUnion_le` supplies the union bound.
+### Current implementation state
 
-Implementation rule: model only the independence actually required by the
-source—within each response cell across its `N` samples. No independence across
-cells is needed for the union bound. The source-facing theorem must feed the
-single simultaneous response event directly into P-STAT-02; it must not add a
-second union bound over carriers.
+Two modules are active:
 
-### B. Next independent source-audit lane
+- `UEOT/V3/FiniteAlphabetConcentration.lean` — deterministic finite-event/union layer;
+- `UEOT/V3/FiniteAlphabetSampling.lean` — empirical law and Hoeffding sampling layer.
 
-While P-STAT-01 compiles, audit the exact frozen statements immediately adjacent
-to the now-completed statistics infrastructure, prioritizing P-STAT-05/06/07
-only when their dependencies can remain disjoint from the P-STAT-01 file.
-Do not claim a new source P-ID from a helper theorem alone.
+The deterministic layer has already passed the official target on branch CI
+#579 (`34544379413`), including the exact `2^K` subset factor and `L` response
+factor.
 
-## 4. Newly integrated / archive lanes
+Sampling development history:
 
-### P-INFO-01 — integrated
+- structural sampling head `7c8ac7e5ebf04138a6e75c9921995e4fff685eb7`;
+- CI #585 (`34545387234`) failed only in the sampling module;
+- #585 narrowed the remaining issues to indicator-constant normalization,
+  finite empirical-count coercion syntax, and the exact pinned-Mathlib
+  namespace for the independent-sum Hoeffding theorem;
+- exact pinned Mathlib audit established the tail theorem as
+  `ProbabilityTheory.HasSubgaussianMGF.measure_sum_ge_le_of_iIndepFun`;
+- current repair head: `686786cf8f9c91234fd4f6d49528ea6e9bac450e`;
+- current branch CI #586 (`34545870759`) is the next verification run.
 
-The integrated proof contains:
+The accepted part of #585 already includes measurable Bernoulli indicators,
+i.i.d.-within-cell independence transport to centered variables, exact event
+means, and the `[0,1]` Hoeffding sub-Gaussian certificate. No source theorem
+constant has been changed.
 
-- deterministic statistic law `M=f(H)` and exact chain identity
-  `I(H;Y)=I(M;Y)+I(H;Y|M)`;
-- epsilon retention `I(H;Y) <= I(M;Y)+epsilon`;
-- copied-pair/channel data processing giving `I(M;Y) <= copy-KL`;
-- countable-discrete Radon--Nikodym density calculation;
-- extended-real Shannon entropy preserving `H(M)=∞`;
-- exact `copy-KL = H(M)`;
-- standard-Borel disintegration yielding `I(M;Y) <= H(M)`;
-- source-facing ordered-subtraction lower bound
-  `I(H;Y)-epsilon <= H(M)`.
+### Promotion constraint after P-STAT-05
 
-### P-STAT-02 — integrated
+P-STAT-01 was opened before the P-STAT-05 Lean-affecting merge. Therefore even
+if its current feature CI becomes green, it must be clean-ported/rebased onto
+the newest green Lean-affecting `main` before PR promotion. Feature-green is not
+source-level `proved`.
 
-- feature head: `0275f7ad43f8505eefeefaefa0fb29052cf5b523`
-- branch CI #560: success
-- PR #27 CI #561: success
-- squash merge: `5886c7baa4d9b4936e21dbd5639d7c893af22053`
-- post-merge main CI #563: success
+## 4. HOT proof lane B — next independent statistics audit
 
-The integrated module provides TV symmetry, two-endpoint TV perturbation
-stability, carrier response-diameter/defect definitions, supremum stability,
-and the simultaneous-all-carriers source wrapper `p_stat_02`.
+The next low-collision target is **P-STAT-07** after P-STAT-01 stabilizes.
+The frozen source states exact MMD covariance under a bimeasurable bijection
+`T` with synchronously transported kernel `k_T(Tx,Ty)=k(x,y)`:
 
-### P-ID-01 — integrated
+`MMD_{k_T}(T#P,T#Q) = MMD_k(P,Q)`.
 
-- clean proof head: `ea6bb69d92f505f2662ad4eac64405470370246f`
-- clean branch CI #544: success
-- PR #26 CI #545: success
-- squash merge: `72b0703270df84d5a92f90d5e01c034777ff37dc`
-- post-merge main CI #547: success
+This should be developed as a separate MMD/kernel infrastructure packet. The
+repository does not currently expose a dedicated MMD module, so do not fake the
+theorem by renaming TV covariance. P-STAT-06 is heavier because it requires the
+separable-RKHS/Bochner/McDiarmid concentration layer and should not block
+P-STAT-07.
 
-The integration contains `TransportDefect.tvDist_self`, TV triangle inequality,
-`FrozenTransportSystem` with coherent measurable transports,
-`p_id_01_pointwise`, and the literal source supremum theorem.
+## 5. Recent integrated promotions
 
-### P-PER-01 — integrated
+Recent source-level promotions after the archived 32-proof checkpoint:
 
-- clean feature head: `16c7a614c03b9404737b1b524d1abfbec2e3cb57`
-- branch CI #533: success
-- PR #25 CI #536: success
-- squash merge: `3d3ecb46416ea156e06fffd70684937f8d94caf3`
-- post-merge main CI #540: success
+- P-FAC-01 — main CI #502 success;
+- P-DYN-02 — main CI #506 success;
+- P-REC-02 — main CI #519 success;
+- P-PER-01 — main CI #540 success;
+- P-ID-01 — main CI #547 success;
+- P-STAT-02 — main CI #563 success;
+- P-INFO-01 — main CI #572 success;
+- P-STAT-05 — main CI #584 success.
 
-The proof uses the one-sided shifted-subsequence argument and does not assume a
-two-sided flow or right inverse.
+Detailed older narratives remain in the source-level coverage archive and Git
+history. No already proved P-ID is downgraded by this state-file compaction.
 
-### P-REC-02 — integrated
-
-- clean proof head: `4cfe8aad3f19070942e167fea9749595f1f196ee`
-- branch CI #515: success
-- PR #24 CI #517: success
-- squash merge: `189fa6b476b0199b321c8d8c2b521f744c0b64ef`
-- post-merge main CI #519: success
-
-### P-FAC-01 — integrated
-
-- squash merge: `29bb6b3fb55cde2d7a87577f4d0ff15c14e29aa0`
-- post-merge main CI #502: success
-
-### P-DYN-02 — integrated
-
-- clean proof head: `8c0212f4bfbd0e7bf9ed0c445e4662eb02cf04ef`
-- clean branch CI #504: success
-- PR #23 CI #505: success
-- squash merge: `8ac668253c4d8bc62ab22f250701bc0a190b6049`
-- post-merge main CI #506: success
-
-Other already integrated lanes include P-PER-03, P-INT-02, P-PRED-03,
-P-DYN-04, P-DYN-03, P-PROC-01, P-QSD-02, P-INFO-05, P-REC-01,
-P-DYN-01, P-MET-01/02 and the earlier recovered proof set.
-
-## 5. Theory-maintenance feedback
+## 6. Theory-maintenance findings
 
 Canonical v3.0 remains frozen during verification.
 
-Current high-value findings:
+Current high-value constraints:
 
-1. CTMC time is one-sided; P-DYN-02 correctly uses the right derivative at
-   `t=0`.
+1. CTMC time is one-sided; P-DYN-02 uses the right derivative at `t=0`.
 2. Marginal persistence and pathwise persistence are distinct; P-PER-03 has an
    explicit infinite-path-law bridge.
-3. P-PER-01 shows exact omega-limit invariance does not require negative time
-   under the source's precompactness hypothesis.
-4. Representation covariance must be derived from primitive transported
-   dynamics rather than postulated at the final path/value layer.
-5. P-ID-01 is a pure transport/TV theorem about frozen endpoint kernels and must
-   not be conflated with the physical one-step dynamics.
-6. P-INFO-01 requires genuine countable-discrete entropy semantics: using
-   `ENNReal.toReal` at `∞` would silently map infinite entropy to zero and would
-   not match the frozen source.
-7. P-STAT-02 confirms that once one simultaneous response-level event is
-   available, all carrier defects are controlled deterministically by `2η`;
-   carrier multiplicity belongs in P-STAT-01 only if the source puts it there.
-8. P-STAT-01 source recovery confirms that its statistical complexity depends
-   on response alphabet size `K` and number of response cells `L`, not the
-   number of candidate carriers.
-9. Import-graph inclusion remains part of proof evidence; an unimported green
-   module is not a source-level promotion.
-10. Repository source-body synchronization is still desirable even though the
-    exact canonical file is now recoverable from File Library; the manifest
-    should not be changed to `content_sync: complete` until the matching body is
-    actually committed into the repository.
+3. P-PER-01 exact omega-limit invariance does not require negative time under
+   the source precompactness hypothesis.
+4. Representation covariance is derived from transported primitive dynamics,
+   not postulated at final value/path level.
+5. P-ID-01 is a frozen endpoint-kernel transport theorem and is not the physical
+   one-step dynamics itself.
+6. P-INFO-01 preserves genuine countable-discrete `ENNReal` entropy semantics,
+   including `H(M)=infinity`.
+7. P-STAT-02 proves that one simultaneous response event controls all carrier
+   defects by `2*eta`; carrier multiplicity must not be reintroduced in P-STAT-01.
+8. P-STAT-01 complexity depends on response alphabet size `K` and response-cell
+   count `L`, not the number of candidate carriers.
+9. Import-graph reachability is part of proof evidence.
+10. No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
-No active lane has produced an F3 counterexample to the UEOT Core architecture.
-
-## 6. Mandatory recovery procedure
+## 7. Mandatory recovery procedure
 
 1. Read this file.
 2. Read `V3_COVERAGE_STATUS.md`.
@@ -221,18 +183,19 @@ No active lane has produced an F3 counterexample to the UEOT Core architecture.
 10. For unresolved theorem wording, use the recovered canonical v3.0 source;
     never reconstruct constants or hypotheses from memory.
 
-## 7. Immediate parallel order
+## 8. Immediate execution order
 
-1. **P-STAT-01** — formalize the exact finite-alphabet simultaneous TV bound
-   and the clipped confidence-radius corollary from the recovered source.
-2. Connect its simultaneous event to the already integrated P-STAT-02
-   deterministic carrier-defect bridge, without any extra carrier union bound.
-3. While its CI runs, source-audit the next low-dependency statistics theorem
-   packet, preferring P-STAT-05/06/07 when their dependencies are isolated.
-4. Every near-complete theorem must be clean-ported onto the newest green main
-   before promotion; no stale-base PRs.
+1. Close P-STAT-01 sampling/Hoeffding compile errors on its feature branch.
+2. Add the lower-tail/two-sided event theorem, then feed it through the already
+   green subset and response-cell union layer.
+3. Prove the exact source-facing P-STAT-01 probability bound and clipped radius.
+4. Connect that single simultaneous response event directly to P-STAT-02.
+5. Clean-port the completed packet onto newest green Lean-affecting `main`.
+6. Run branch CI -> PR CI -> squash merge -> post-merge main CI -> ledger sync.
+7. In a disjoint lane, begin P-STAT-07 MMD covariance infrastructure only after
+   the P-STAT-01 sampling API is stable.
 
-## 8. Repository truth hierarchy
+## 9. Repository truth hierarchy
 
 - live operational snapshot: `docs/FORMALIZATION_STATE.md`
 - source-level P-ID ledger: `docs/V3_COVERAGE_STATUS.md`
@@ -241,5 +204,5 @@ No active lane has produced an F3 counterexample to the UEOT Core architecture.
 - canonical source identity: `../../core/specifications/manifest.yaml`
 
 If documentation disagrees, the frozen source manuscript + merged Lean
-statements + green main CI + promotion gate take precedence; repair
-documentation drift before further integration.
+statements + green main CI + promotion gate take precedence; repair document
+drift before further integration.
