@@ -38,7 +38,7 @@ theorem azuma_constant_parameter
       ≤ Real.exp (-ε ^ 2 / (2 * n * c)) := by
   have h := measure_sum_ge_le_of_hasCondSubgaussianMGF
     (μ := μ) (cY := fun _ => c) h_adapted h0 n (by simpa using h_subG) hε
-  simpa [← mul_assoc] using h
+  simpa [Finset.sum_const, Finset.card_range, nsmul_eq_mul, ← mul_assoc] using h
 
 /-- If there are exactly `N` Doob increments and each has sub-Gaussian
 parameter `1/N^2`, the exponent is the frozen P-STAT-06 constant
