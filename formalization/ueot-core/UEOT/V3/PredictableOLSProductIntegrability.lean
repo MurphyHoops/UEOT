@@ -37,14 +37,12 @@ theorem integrable_exp_predictable_mul
     (t : ℝ) :
     Integrable (fun ω => exp (t * (A ω * X ω))) μ := by
   have hAΩ : @Measurable Ω ℝ mΩ inferInstance A := hA.mono hm le_rfl
-  have hXsm : AEStronglyMeasurable X μ := by
+  have hXsm := by
     have hi := hX.integrable_exp_mul 1
-    simpa using
-      (aemeasurable_of_aemeasurable_exp hi.1.aemeasurable).aestronglyMeasurable
-  have hAX : AEStronglyMeasurable (fun ω => A ω * X ω) μ :=
-    hAΩ.aestronglyMeasurable.mul hXsm
-  have htarget : AEStronglyMeasurable (fun ω => exp (t * (A ω * X ω))) μ := by
-    exact Real.continuous_exp.comp_aestronglyMeasurable
+    exact (aemeasurable_of_aemeasurable_exp hi.1.aemeasurable).aestronglyMeasurable
+  have hAX := hAΩ.aestronglyMeasurable.mul hXsm
+  have htarget :=
+    Real.continuous_exp.comp_aestronglyMeasurable
       (aestronglyMeasurable_const.mul hAX)
   let q : ℝ := |t| * B
   have hq0 : 0 ≤ q := mul_nonneg (abs_nonneg t) hB0
