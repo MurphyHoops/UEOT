@@ -4,49 +4,43 @@ import Mathlib.Tactic
 /-!
 # P-INV-05 — conditional-kernel freezing
 
-A predictable coefficient is random globally but constant on the conditional
-fibres determined by the past sigma-algebra.  This module isolates that fact at
-the kernel level: mapping the conditional-expectation kernel through a
-past-measurable real-valued function gives the deterministic kernel at its
-current value.
+A predictable coefficient is random globally but constant on conditional
+fibres determined by the past sigma-algebra.  The clean route is through the
+joint law of the conditioning point and its conditional copy:
+
+`(μ.trim hm) ⊗ₘ condExpKernel μ m = μ.map Function.diag`.
+
+The right-hand side is concentrated on the diagonal, so every `m`-measurable
+coefficient has the same value at the conditioning point and at the conditional
+copy, almost everywhere.
 -/
 
 namespace UEOT.V3.PredictableOLSKernelFreeze
 
-open MeasureTheory ProbabilityTheory
+open MeasureTheory ProbabilityTheory Filter
 
 universe uΩ
 
 variable {Ω : Type uΩ} [mΩ : MeasurableSpace Ω] [StandardBorelSpace Ω]
 
-/-- A function measurable with respect to the conditioning sigma-algebra is
-frozen on the fibres of `condExpKernel`.
-
-Equivalently, conditionally on the past, its conditional law is the Dirac mass
-at the already-observed value. -/
-theorem condExpKernel_map_eq_deterministic
+/-- A past-measurable coefficient is constant on almost every fibre of the
+conditional-expectation kernel.  This is the precise freezing statement needed
+for predictable random multipliers in the P-INV-05 conditional-MGF proof. -/
+theorem predictable_ae_eq_const
     {μ : Measure Ω} [IsFiniteMeasure μ]
-    {m : MeasurableSpace Ω} (hm : m ≤ mΩ) [Nonempty Ω]
+    {m : MeasurableSpace Ω} (hm : m ≤ mΩ)
     (A : Ω → ℝ) (hA : @Measurable Ω ℝ m inferInstance A) :
-    Kernel.map (condExpKernel (mΩ := mΩ) μ m) A =ᵐ[μ.trim hm]
-      @Kernel.deterministic Ω ℝ m inferInstance A hA := by
-  have hinf : m ⊓ mΩ = m := inf_of_le_left hm
-  have hminf : m ≤ m ⊓ mΩ := le_inf le_rfl hm
-  have hAΩ : @Measurable Ω ℝ mΩ inferInstance A := by
-    exact hA.mono hm le_rfl
-  have hAinf : @Measurable Ω ℝ (m ⊓ mΩ) inferInstance A := by
-    exact hA.mono hminf le_rfl
-  have hcomp :=
-    condDistrib_comp (μ := μ) (mβ := m ⊓ mΩ)
-      (Y := (id : Ω → Ω))
-      (id : Ω → Ω) measurable_id.aemeasurable hAΩ
-  have hself :=
-    condDistrib_comp_self (μ := μ) (mβ := m ⊓ mΩ) (Ω := ℝ)
-      (id : Ω → Ω) hAinf
-  have hmap := hcomp.symm.trans hself
-  rw [condExpKernel_eq]
-  rw [Kernel.comap_map_comm _ (measurable_id'' inf_le_left) hAΩ]
-  rw [trim_eq_map hm]
-  simpa [hinf] using hmap
+    ∀ᵐ ω ∂(μ.trim hm), ∀ᵐ y ∂(condExpKernel (mΩ := mΩ) μ m ω), A y = A ω := by
+  have hAΩ : @Measurable Ω ℝ mΩ inferInstance A := hA.mono hm le_rfl
+  letI mprod : MeasurableSpace (Ω × Ω) := m.prod mΩ
+  have hdiag : @Measurable Ω (Ω × Ω) mΩ mprod Function.diag := by
+    exact (measurable_id'' hm).prodMk measurable_id
+  have hfst : Measurable (fun p : Ω × Ω => A p.1) := hA.comp measurable_fst
+  have hsnd : Measurable (fun p : Ω × Ω => A p.2) := hAΩ.comp measurable_snd
+  have hp : MeasurableSet {p : Ω × Ω | A p.2 = A p.1} :=
+    measurableSet_eq_fun hsnd hfst
+  apply Measure.ae_ae_of_ae_compProd
+  rw [compProd_trim_condExpKernel hm]
+  exact (ae_map_iff hdiag.aemeasurable hp).2 (Eventually.of_forall fun ω => rfl)
 
 end UEOT.V3.PredictableOLSKernelFreeze
