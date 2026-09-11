@@ -27,20 +27,25 @@ at the already-observed value. -/
 theorem condExpKernel_map_eq_deterministic
     {μ : Measure Ω} [IsFiniteMeasure μ]
     {m : MeasurableSpace Ω} (hm : m ≤ mΩ) [Nonempty Ω]
-    (A : Ω → ℝ) (hA : Measurable[m] A) :
-    (condExpKernel μ m).map A =ᵐ[μ.trim hm]
-      Kernel.deterministic A hA := by
-  have hAΩ : Measurable A := hA.mono hm le_rfl
-  have hcomp :=
-    condDistrib_comp (μ := μ) (mβ := m)
-      (Y := (id : Ω → Ω)) (id : Ω → Ω)
-      measurable_id.aemeasurable hAΩ
-  have hself :=
-    condDistrib_comp_self (μ := μ) (mβ := m) (Ω := ℝ)
-      (id : Ω → Ω) hA
-  have hmap := hcomp.symm.trans hself
-  rw [trim_eq_map hm, condExpKernel_eq]
+    (A : Ω → ℝ) (hA : @Measurable Ω ℝ m inferInstance A) :
+    Kernel.map (condExpKernel (mΩ := mΩ) μ m) A =ᵐ[μ.trim hm]
+      @Kernel.deterministic Ω ℝ m inferInstance A hA := by
   have hinf : m ⊓ mΩ = m := inf_of_le_left hm
+  have hAΩ : @Measurable Ω ℝ mΩ inferInstance A := by
+    exact hA.mono hm le_rfl
+  have hAinf : @Measurable Ω ℝ (m ⊓ mΩ) inferInstance A := by
+    simpa [hinf] using hA
+  have hcomp :=
+    condDistrib_comp (μ := μ) (mβ := m ⊓ mΩ)
+      (X := (id : Ω → Ω)) (Y := (id : Ω → Ω))
+      (id : Ω → Ω) measurable_id.aemeasurable hAΩ
+  have hself :=
+    condDistrib_comp_self (μ := μ) (mβ := m ⊓ mΩ) (Ω := ℝ)
+      (X := (id : Ω → Ω)) (f := A) hAinf
+  have hmap := hcomp.symm.trans hself
+  rw [condExpKernel_eq]
+  rw [Kernel.comap_map_comm _ (measurable_id'' inf_le_left) hAΩ]
+  rw [trim_eq_map hm]
   simpa [hinf] using hmap
 
 end UEOT.V3.PredictableOLSKernelFreeze
