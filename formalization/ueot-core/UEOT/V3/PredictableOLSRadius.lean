@@ -27,6 +27,9 @@ noncomputable def scoreParam (N : ℕ) (sigma B : ℝ) : ℝ≥0 :=
   ⟨(N : ℝ) * (sigma * B) ^ 2,
     mul_nonneg (Nat.cast_nonneg N) (sq_nonneg (sigma * B))⟩
 
+@[simp] theorem coe_scoreParam (N : ℕ) (sigma B : ℝ) :
+    (scoreParam N sigma B : ℝ) = (N : ℝ) * (sigma * B) ^ 2 := rfl
+
 /-- Frozen P-INV-05 coordinate threshold. -/
 noncomputable def scoreRadius (N d : ℕ) (sigma B alpha : ℝ) : ℝ :=
   sigma * B * sqrt (2 * (N : ℝ) * log ((2 * (d : ℝ)) / alpha))
@@ -49,21 +52,19 @@ theorem raw_score_union_tail_eq_alpha
   have hratio_one : 1 ≤ (2 * (d : ℝ)) / alpha := by
     rw [le_div_iff₀ halpha0]
     have htwo_d : (1 : ℝ) ≤ 2 * (d : ℝ) := by nlinarith
-    exact halpha1.trans htwo_d
+    simpa using halpha1.trans htwo_d
   have hlog : 0 ≤ log ((2 * (d : ℝ)) / alpha) := Real.log_nonneg hratio_one
   have hrad : 0 ≤ 2 * (N : ℝ) * log ((2 * (d : ℝ)) / alpha) := by positivity
   have hexponent :
       -(scoreRadius N d sigma B alpha) ^ 2 /
           (2 * (scoreParam N sigma B : ℝ)) =
         -log ((2 * (d : ℝ)) / alpha) := by
-    unfold scoreRadius scoreParam
-    simp only [NNReal.coe_mk]
-    rw [mul_pow, Real.sq_sqrt hrad]
+    unfold scoreRadius
+    rw [coe_scoreParam, mul_pow, Real.sq_sqrt hrad]
     have hsigma0 : sigma ≠ 0 := ne_of_gt hsigma
     have hB0 : B ≠ 0 := ne_of_gt hB
     have hN0 : (N : ℝ) ≠ 0 := ne_of_gt hNreal
     field_simp [hsigma0, hB0, hN0]
-    ring
   rw [hexponent, Real.exp_neg, Real.exp_log hratio_pos]
   have hd0 : (d : ℝ) ≠ 0 := ne_of_gt hdreal
   have halpha_ne : alpha ≠ 0 := ne_of_gt halpha0
