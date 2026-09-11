@@ -21,9 +21,9 @@ post-main CI, and ledger synchronization.
 
 | status | count |
 |---|---:|
-| **proved** | **46** |
+| **proved** | **47** |
 | **partial** | **0** |
-| **pending** | **60** |
+| **pending** | **59** |
 | **total** | **106** |
 
 There are no partial P-IDs.
@@ -35,7 +35,7 @@ There are no partial P-IDs.
 - **Prediction:** P-PRED-01, P-PRED-02, P-PRED-03
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-07, P-STAT-08, P-STAT-09
-- **Invariant / identifiability:** P-INV-01, P-INV-02
+- **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-04
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -50,29 +50,28 @@ There are no partial P-IDs.
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 8 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 46`.
+Count check: `4 + 6 + 3 + 4 + 8 + 3 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 47`.
 
-## Latest promotion — P-INV-02
+## Latest promotion — P-INV-04
 
-Frozen statement: a tangent to a smooth likelihood-invariant group orbit lies
-in the kernel of Fisher information.
+Frozen statement: in the noiseless fixed linear model on the full parameter
+space `R^d`, the design uniquely identifies the parameter iff the Gram matrix
+`G_N` is positive definite.
 
-The integrated Lean theorem represents the orbit locally by a real parameter,
-uses the regular-model derivative identification with the directional score
-`vᵀs`, proves likelihood invariance forces that directional score to vanish
-almost everywhere, and then proves the Fisher action `I v = E[s (sᵀv)]`
-vanishes exactly.
+The integrated Lean theorem uses the equivalent Gram quadratic form
+`sum_t (phi_t^T v)^2` and proves that injectivity of the design map is
+equivalent to strict positivity for every nonzero direction.
 
 Verification evidence:
 
-- feature head: `945d58c9ba35c71f319f37e2fa7ffbec06304397`
-- feature CI #671: success
-- clean promotion head: `b4ef000384a581400ebcf132e86adcfa14926849`
-- clean CI #677: success
-- PR #37 CI #679: success
-- squash merge: `cbfe8eff494a558f113d2e79136655b9ddb61ca7`
-- post-main CI #682 (`34560253864`): success
-- integrated module: `UEOT/V3/FisherGauge.lean`
+- clean feature commit: `2be89cd8e750ba24bbf5b29066e203aa423aca2c`
+- feature CI #688: success
+- official-import head: `8e0522d6376832109956843b6dfa5e4119724449`
+- official-import CI #689: success
+- PR #38 CI #693: success
+- squash merge: `efd1f529e739aecd4b1331f7324ce5660384cd8c`
+- post-main CI #697 (`34561611406`): success
+- integrated module: `UEOT/V3/DesignIdentifiability.lean`
 
 ## Recent promotion evidence
 
@@ -92,6 +91,7 @@ Verification evidence:
 | P-STAT-08 | `f03ea2ae9996228d86c742d7f787b95a85ad5898` | #648 success |
 | P-INV-01 | `e653401b51594d86f03c317bdd12decae1c27159` | #666 success |
 | P-INV-02 | `cbfe8eff494a558f113d2e79136655b9ddb61ca7` | #682 success |
+| P-INV-04 | `efd1f529e739aecd4b1331f7324ce5660384cd8c` | #697 success |
 
 ## Active unresolved parallel front
 
@@ -105,8 +105,8 @@ with probability at least `1-alpha`.
 
 Machine-checked layers already include exact `2/N` replacement sensitivity,
 off-diagonal cancellation, empirical-mean squared-norm expansion,
-`E||mean Z_i||^2 <= 1/N`, the Hilbert first-moment bound, and scalar/Azuma
-tail algebra. The newest official-import integration attempt is currently red;
+`E||mean Z_i||^2 <= 1/N`, and the direct Hilbert first-moment bound. The
+Azuma wrapper integration is being repaired against the pinned Mathlib API;
 the bounded-difference/Doob bridge and final finite-union source wrapper remain
 unpromoted.
 
@@ -114,20 +114,17 @@ unpromoted.
 
 Branch: `formal/pinv03-fisher-intersection`.
 
-The PSD kernel-intersection half is machine-checked and branch CI is green. The
-remaining source obligation is the probabilistic bridge: conditional
-independence plus zero-mean experiment scores must yield additive Fisher
-information by cancellation of cross terms. P-INV-03 is not promoted until
-that bridge and a source-facing wrapper pass the full train.
+The PSD kernel-intersection half is machine-checked. A reusable probability
+lemma for centered independent scalar score cross terms is now under CI. The
+remaining source obligation is to expand the finite total score/Fisher entries,
+prove Fisher additivity, instantiate the PSD kernel theorem, and expose one
+source-facing P-INV-03 wrapper.
 
-### P-INV-04 — noiseless design identifiability
+### P-INV-05 — predictable-design OLS concentration
 
-Development branch: `formal/pinv04-design-identifiability`.
-
-The source-facing algebraic theorem is implemented and its branch CI is green:
-the fixed noiseless design is injective iff the Gram quadratic form is strictly
-positive away from zero. The branch is behind current main and must be clean-
-ported before promotion.
+Queued next from the newest green main checkpoint. The frozen theorem requires
+predictable bounded design, conditionally sub-Gaussian noise, and a Gram lower
+bound; the static noiseless P-INV-04 theorem alone is not sufficient.
 
 ## Completion rule
 
