@@ -65,6 +65,7 @@ theorem gramAction_error_eq_scoreVector
       apply Finset.sum_congr rfl
       intro t ht
       rw [congrFun (designMap_sub phi thetaHat thetaStar) t]
+      simp only [Pi.sub_apply]
     _ = ∑ t : Fin N, phi t j * xi t := sub_eq_zero.mp hj'
 
 end UEOT.V3.PredictableOLSNormalEquation
