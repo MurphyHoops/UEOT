@@ -11,8 +11,8 @@ The frozen theorem has two steps:
 2. since every Fisher block is positive semidefinite, the kernel of that sum is
    exactly the intersection of the individual kernels.
 
-This file machine-checks step 2 and starts the probabilistic bridge for step 1:
-independent centered experiment scores have zero cross Fisher entries.
+This file machine-checks step 2 and a reusable probabilistic lemma for step 1:
+centered independent scalar scores have zero cross expectation.
 -/
 
 namespace UEOT.V3.FisherIntersection
@@ -64,29 +64,19 @@ theorem total_kernel_iff_forall_kernel {E d : ℕ}
 universe uΩ
 variable {Ω : Type uΩ} [MeasurableSpace Ω]
 
-/-- Probabilistic cross-term bridge for P-INV-03.  At a fixed parameter value,
-independent experiments with centered score coordinates have zero off-diagonal
-Fisher cross entries. -/
-theorem independent_centered_cross_score_integral_eq_zero
-    {E d : ℕ} (μ : Measure Ω) [IsProbabilityMeasure μ]
-    (score : Fin E → Ω → (Fin d → ℝ))
-    (hindep : iIndepFun score μ)
-    (hmeas : ∀ e, Measurable (score e))
-    (hmean : ∀ e i, ∫ ω, score e ω i ∂μ = 0)
-    {e f : Fin E} (hef : e ≠ f) (i j : Fin d) :
-    ∫ ω, score e ω i * score f ω j ∂μ = 0 := by
-  have hpairVec : score e ⟂ᵢ[μ] score f := hindep.indepFun hef
-  have hei : Measurable (fun ω => score e ω i) :=
-    (measurable_pi_apply i).comp (hmeas e)
-  have hfj : Measurable (fun ω => score f ω j) :=
-    (measurable_pi_apply j).comp (hmeas f)
-  have hpair :
-      (fun ω => score e ω i) ⟂ᵢ[μ] (fun ω => score f ω j) := by
-    change ((fun x : Fin d → ℝ => x i) ∘ score e) ⟂ᵢ[μ]
-      ((fun x : Fin d → ℝ => x j) ∘ score f)
-    exact hpairVec.comp (measurable_pi_apply i) (measurable_pi_apply j)
-  rw [hpair.integral_mul_eq_mul_integral hei.aestronglyMeasurable hfj.aestronglyMeasurable,
-    hmean e i, hmean f j]
+/-- If two scalar experiment scores are independent and centered, their Fisher
+cross term vanishes.  This is the exact probabilistic cancellation used when
+expanding the square of the total score. -/
+theorem independent_centered_cross_integral_eq_zero
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    {X Y : Ω → ℝ}
+    (hXY : X ⟂ᵢ[μ] Y)
+    (hX : AEStronglyMeasurable X μ)
+    (hY : AEStronglyMeasurable Y μ)
+    (hX0 : ∫ ω, X ω ∂μ = 0)
+    (hY0 : ∫ ω, Y ω ∂μ = 0) :
+    ∫ ω, X ω * Y ω ∂μ = 0 := by
+  rw [hXY.integral_mul_eq_mul_integral hX hY, hX0, hY0]
   simp
 
 end UEOT.V3.FisherIntersection
