@@ -15,86 +15,82 @@ Last synchronized: **2026-09-11**
 - integration branch: `main`
 
 Promotion requires semantic source match, official import reachability, green
-feature and clean-port CI, green PR CI, merge to `main`, green post-main CI,
-and ledger synchronization.
+feature and clean-port CI, merge/integration to `main`, green post-main CI, and
+ledger synchronization.
 
 ## Current integrated checkpoint
 
 | status | count |
 |---|---:|
-| proved | **47** |
+| proved | **48** |
 | partial | **0** |
-| pending | **59** |
+| pending | **58** |
 | total | **106** |
 
-Latest completed proof promotion: **P-INV-04**.
+Latest completed proof promotion: **P-INV-03**.
 
 Evidence:
-- clean feature commit `2be89cd8e750ba24bbf5b29066e203aa423aca2c`
-- feature CI #688: success
-- official-import head `8e0522d6376832109956843b6dfa5e4119724449`
-- official-import CI #689: success
-- PR #38 CI #693: success
-- squash merge `efd1f529e739aecd4b1331f7324ce5660384cd8c`
-- post-main CI #697: success
-- ledger synchronization commit `2e1bbcbd7163cb63b7f695b2352330b8e1a8bd0f`
+- source-facing feature head `94541d36fd401d9779892446379ebb12d30f00f0`
+- clean promotion head `93de8c70353566e806a65afa3f29330cd69da29e`
+- clean CI run `34573930115`: success
+- integrated main contains `UEOT/V3/FisherIntersection.lean`
+- combined main head with P-STAT-06 infrastructure `dd77d56dd2c5d35440e4f3023ac7a22ab94830c3`
+- post-main CI run `34576124342`: success
+- ledger synchronization commit `16ebf4c201d3abd21b3dfba808eeefa8ae51b5d5`
 
-P-INV-04 machine-checks the frozen noiseless full-parameter linear-design
-statement: the fixed design is injective iff its Gram quadratic form is
-strictly positive for every nonzero direction.
+P-INV-03 machine-checks the frozen Fisher accumulation statement: zero-mean
+independent experiment score cross terms cancel, Fisher information adds, each
+Fisher block is PSD, and the kernel of the total Fisher information equals the
+intersection of the individual kernels.
 
 ## Active parallel lanes
 
-### P-STAT-06 — RKHS/MMD simultaneous embedding error
+### P-STAT-06 — RKHS/MMD simultaneous embedding error [HOT]
 
-Branch: `formal/pstat06-mmd-concentration`.
-
-Frozen target:
-`max_j ||muHat_j-mu_j|| <= (1 + sqrt(2*log(L/alpha)))/sqrt(N)`
-with probability at least `1-alpha`.
-
-Implemented layers:
+Main now contains green reusable infrastructure:
 - exact one-replacement sensitivity `2/N`;
 - independent centered Hilbert off-diagonal cancellation;
 - empirical-mean squared-norm expansion;
 - exact second moment `E||mean Z_i||^2 <= 1/N`;
-- direct Hilbert first-moment bound;
-- imported Mathlib conditional-sub-Gaussian Azuma wrapper.
+- direct first-moment bound `E||mean Z_i|| <= 1/sqrt(N)`;
+- conditional-sub-Gaussian Azuma wrapper;
+- exact parameter normalization `N*(1/N^2)=1/N`;
+- exact scalar tail `exp(-N*epsilon^2/2)`.
 
-The pinned-Mathlib Azuma wrapper is green at
-`237f5c0ccc18166977ba0143e3763de5ab7e767d` (full official target). Remaining
-source closure is the explicit bounded-difference/Doob increment bridge,
-normalization of the `1/N^2` sub-Gaussian parameter sum to the source tail
-`exp(-N t^2/2)`, and the finite `L` union wrapper yielding the exact source
-radius.
+Remaining source closure:
+1. construct the concrete Doob increments for the RKHS norm statistic from the
+   `2/N` bounded-difference lemma;
+2. discharge the required conditional Hoeffding/sub-Gaussian hypotheses;
+3. take the finite `L` union bound;
+4. expose the exact source-facing radius
+   `(1 + sqrt(2*log(L/alpha)))/sqrt(N)`.
 
-### P-INV-03 — Fisher information accumulation
+P-STAT-06 is intentionally **not** counted proved yet.
 
-Branch: `formal/pinv03-fisher-intersection`.
+### P-INV-05 — predictable-design OLS concentration [HOT]
 
-Frozen claim:
-- conditionally/independently generated experiment scores with zero mean have
-  additive Fisher information;
-- for PSD Fisher blocks, `ker(sum I_e) = intersection_e ker(I_e)`.
+Branch: `formal/pinv05-predictable-ols`.
 
-Machine-checked and green:
-- abstract PSD kernel-intersection mechanism;
-- centered independent scalar score cross terms have zero integral;
-- cross-term helper full-target CI at
-  `3d0ae444ef810f2f0d8808c966f6982cf1860c4e`.
+Frozen target:
+`||thetaHat-thetaStar||_2 <= (sigma*B/kappa) * sqrt(2*d*log(2*d/alpha)/N)`
+except on an event of probability at most `alpha`, under predictable bounded
+design, conditionally sub-Gaussian noise, and the samplewise Gram lower bound.
 
-Current development head
-`be6140d0c9ad0aceb83c53660498f35a15af9ad1` expands finite summed scores into
-Fisher matrix entries and cancels off-diagonal experiment terms. After that
-layer is green, finish the Fisher-action equality, instantiate the PSD kernel
-mechanism, and expose one source-facing `p_inv_03` wrapper before promotion.
+Green machine-checked layers:
+- Gram action/quadratic identity;
+- finite-dimensional Cauchy-Schwarz;
+- deterministic normal-equation/coercivity estimate
+  `(N*kappa)^2 ||err||_2^2 <= ||Z||_2^2`;
+- uniform coordinate threshold implies `||Z||_2^2 <= d*R^2`;
+- resulting deterministic squared-error threshold bridge.
 
-### P-INV-05 — predictable-design OLS concentration [WARM]
-
-Queued from the P-INV-04 checkpoint. The frozen source theorem requires
-predictable bounded design, conditionally sub-Gaussian noise, a samplewise Gram
-lower bound, and the exact `sqrt(2 d log(2d/alpha)/N)` rate. The static
-P-INV-04 identifiability result alone is not sufficient.
+Next proof layers:
+1. coordinate score sub-Gaussian theorem from predictable multipliers and
+   conditional sub-Gaussian noise;
+2. two-sided coordinate tail;
+3. finite-`d` union bound;
+4. exact frozen threshold substitution and square-root conversion;
+5. source-facing `p_inv_05` wrapper and clean promotion.
 
 ## Promotion protocol
 
@@ -102,10 +98,9 @@ P-INV-04 identifiability result alone is not sufficient.
 2. feature full-target CI;
 3. clean-port onto newest green Lean-affecting `main`;
 4. clean-port CI;
-5. PR CI;
-6. squash merge;
-7. post-main CI;
-8. ledger synchronization.
+5. serialized main integration;
+6. post-main CI;
+7. ledger synchronization.
 
 Parallel proof development is allowed; main promotion remains serialized.
 
@@ -126,6 +121,7 @@ Parallel proof development is allowed; main promotion remains serialized.
 - P-INV-01 — #666
 - P-INV-02 — #682
 - P-INV-04 — #697
+- P-INV-03 — post-main run `34576124342`
 
 ## Mandatory recovery procedure
 
