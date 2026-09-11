@@ -1,3 +1,4 @@
+import UEOT.V3.FisherGauge
 import Mathlib.Algebra.Order.BigOperators.Ring.Finset
 import Mathlib.Probability.Independence.Integration
 import Mathlib.Tactic
@@ -12,12 +13,14 @@ The frozen theorem has two steps:
    exactly the intersection of the individual kernels.
 
 This file machine-checks the PSD kernel mechanism, centered independent cross
-term cancellation, and the finite-dimensional Fisher-entry accumulation step.
+term cancellation, finite-dimensional Fisher-entry accumulation, and the
+corresponding Fisher-operator additivity.
 -/
 
 namespace UEOT.V3.FisherIntersection
 
 open MeasureTheory ProbabilityTheory
+open UEOT.V3.FisherGauge
 open scoped BigOperators
 
 /-- Pointwise sum of finitely many linear/Fisher actions. -/
@@ -122,5 +125,67 @@ theorem fisherEntry_scoreSum_eq_sum
       exact h_int e f i j
   · intro e he
     exact integrable_finsetSum _ (fun f hf => h_int e f i j)
+
+/-- Pairwise score-product integrability implies integrability of every product
+of two coordinates of the summed score. -/
+theorem integrable_scoreSum_mul_scoreSum
+    {E d : ℕ}
+    (μ : Measure Ω)
+    (s : Fin E → Ω → Fin d → ℝ)
+    (h_int : ∀ e f i j,
+      Integrable (fun ω => s e ω i * s f ω j) μ)
+    (i j : Fin d) :
+    Integrable (fun ω => scoreSum s ω i * scoreSum s ω j) μ := by
+  simp only [scoreSum]
+  simp_rw [Finset.sum_mul, Finset.mul_sum]
+  exact integrable_finsetSum _ (fun e _ =>
+    integrable_finsetSum _ (fun f _ => h_int e f i j))
+
+/-- Coordinate form of Fisher action: `I v` is matrix-vector multiplication by
+the Fisher entries. -/
+theorem fisherAction_apply_eq_sum_fisherEntry_mul
+    {d : ℕ}
+    (μ : Measure Ω)
+    (s : Ω → Fin d → ℝ)
+    (h_int : ∀ i j, Integrable (fun ω => s ω i * s ω j) μ)
+    (v : Fin d → ℝ) (i : Fin d) :
+    fisherAction μ s v i = ∑ j, fisherEntry μ s i j * v j := by
+  unfold fisherAction directionalScore fisherEntry
+  simp_rw [Finset.mul_sum]
+  rw [integral_finsetSum]
+  · apply Finset.sum_congr rfl
+    intro j hj
+    simpa [mul_assoc] using
+      (integral_mul_const (v j) (fun ω => s ω i * s ω j) :
+        (∫ ω, (s ω i * s ω j) * v j ∂μ) =
+          (∫ ω, s ω i * s ω j ∂μ) * v j)
+  · intro j hj
+    simpa [mul_assoc] using (h_int i j).mul_const (v j)
+
+/-- Fisher information is additive as an operator under the same centered
+cross-experiment independence hypotheses used for entry-wise additivity. -/
+theorem fisherAction_scoreSum_eq_totalAction
+    {E d : ℕ}
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    (s : Fin E → Ω → Fin d → ℝ)
+    (h_int : ∀ e f i j,
+      Integrable (fun ω => s e ω i * s f ω j) μ)
+    (h_indep : ∀ e f, e ≠ f → ∀ i j,
+      (fun ω => s e ω i) ⟂ᵢ[μ] (fun ω => s f ω j))
+    (h_meas : ∀ e i, AEStronglyMeasurable (fun ω => s e ω i) μ)
+    (h_centered : ∀ e i, ∫ ω, s e ω i ∂μ = 0)
+    (v : Fin d → ℝ) :
+    fisherAction μ (scoreSum s) v =
+      totalAction (fun e => fisherAction μ (s e)) v := by
+  funext i
+  rw [fisherAction_apply_eq_sum_fisherEntry_mul μ (scoreSum s)
+    (fun a b => integrable_scoreSum_mul_scoreSum μ s h_int a b) v i]
+  simp_rw [fisherEntry_scoreSum_eq_sum μ s h_int h_indep h_meas h_centered]
+  simp_rw [Finset.sum_mul]
+  unfold totalAction
+  simp_rw [fisherAction_apply_eq_sum_fisherEntry_mul μ]
+  · rw [Finset.sum_comm]
+  · intro e a b
+    exact h_int e e a b
 
 end UEOT.V3.FisherIntersection
