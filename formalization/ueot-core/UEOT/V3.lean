@@ -17,6 +17,7 @@ import UEOT.V3.TotalVariation
 import UEOT.V3.BinaryTesting
 import UEOT.V3.FisherGauge
 import UEOT.V3.DesignIdentifiability
+import UEOT.V3.PredictableOLS
 import UEOT.V3.TransportDefect
 import UEOT.V3.StatisticalDefect
 import UEOT.V3.PredictiveClassRecovery
