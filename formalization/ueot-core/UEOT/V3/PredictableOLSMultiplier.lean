@@ -50,14 +50,15 @@ fiber" fact used by the P-INV-05 source proof. -/
 theorem condDistrib_self_map
     {α β γ : Type*}
     [MeasurableSpace α]
-    [MeasurableSpace β] [StandardBorelSpace β] [Nonempty β]
+    [mβ : MeasurableSpace β] [StandardBorelSpace β] [Nonempty β]
     [MeasurableSpace γ] [StandardBorelSpace γ] [Nonempty γ]
     {μ : Measure α} [IsFiniteMeasure μ]
     (X : α → β) (hX : AEMeasurable X μ)
     (f : β → γ) (hf : Measurable f) :
     (condDistrib X X μ).map f =ᵐ[μ.map X] Kernel.deterministic f hf := by
-  have hcomp := condDistrib_comp (μ := μ) (Y := X) X hX hf
-  have hself := condDistrib_comp_self (μ := μ) X hf
+  have hcomp :=
+    condDistrib_comp (μ := μ) (mβ := mβ) (Y := X) X hX hf
+  have hself := condDistrib_comp_self (μ := μ) (mβ := mβ) X hf
   exact hcomp.symm.trans hself
 
 end UEOT.V3.PredictableOLSMultiplier
