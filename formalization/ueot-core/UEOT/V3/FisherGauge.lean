@@ -45,6 +45,7 @@ theorem fisherAction_eq_zero_of_orbitTangentScoreZero {d : ℕ}
     fisherAction μ score v = 0 := by
   funext i
   unfold fisherAction
+  change (∫ ω, score ω i * directionalScore score v ω ∂μ) = 0
   apply integral_congr_ae
   filter_upwards [hzero] with ω hω
   simp [directionalScore, hω]
