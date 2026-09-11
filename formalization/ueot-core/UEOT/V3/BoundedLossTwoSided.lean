@@ -36,7 +36,7 @@ theorem measure_empiricalRisk_lower_le
       exp (-2 * (N : ℝ) * u ^ 2) := by
   let X : Fin N → Ω → ℝ := fun n ω => loss (sample n ω)
   let C : Fin N → Ω → ℝ := fun n ω => X n ω - trueRisk P loss
-  let D : Fin N → Ω → ℝ := fun n => - C n
+  let D : Fin N → Ω → ℝ := fun n ω => - C n ω
   have hXmeas : ∀ n, Measurable (X n) := fun n => hloss.comp (hmeas n)
   have hXindep : iIndepFun X μ := by
     simpa [X, Function.comp_def] using
@@ -46,8 +46,8 @@ theorem measure_empiricalRisk_lower_le
       hXindep.comp (fun _ x => x - trueRisk P loss)
         (fun _ => measurable_id.sub measurable_const)
   have hDindep : iIndepFun D μ := by
-    simpa [D, Function.comp_def] using
-      hCindep.comp (fun _ x => -x) (fun _ => measurable_id.neg)
+    change iIndepFun (fun n ω => - C n ω) μ
+    exact hCindep.comp (fun _ x => -x) (fun _ => measurable_id.neg)
   have hmean : ∀ n, ∫ ω, X n ω ∂μ = trueRisk P loss := by
     intro n
     simpa [X] using
@@ -80,7 +80,7 @@ theorem measure_empiricalRisk_lower_le
       trueRisk P loss at hω
     change (N : ℝ) * u ≤
       ∑ n ∈ (Finset.univ : Finset (Fin N)), D n ω
-    simp only [D, C, X, Pi.neg_apply, neg_sub, Finset.sum_sub_distrib]
+    simp only [D, C, X, neg_sub, Finset.sum_sub_distrib]
     simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
     have hNreal : (0 : ℝ) < N := by exact_mod_cast hN
     field_simp [ne_of_gt hNreal] at hω ⊢
