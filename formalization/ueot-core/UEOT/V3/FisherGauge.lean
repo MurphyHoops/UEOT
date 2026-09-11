@@ -45,10 +45,13 @@ theorem fisherAction_eq_zero_of_orbitTangentScoreZero {d : ℕ}
     fisherAction μ score v = 0 := by
   funext i
   unfold fisherAction
-  change (∫ ω, score ω i * directionalScore score v ω ∂μ) = 0
-  apply integral_congr_ae
-  filter_upwards [hzero] with ω hω
-  simp [directionalScore, hω]
+  calc
+    (∫ ω, score ω i * directionalScore score v ω ∂μ)
+        = ∫ _ω : Ω, (0 : ℝ) ∂μ := by
+          apply integral_congr_ae
+          filter_upwards [hzero] with ω hω
+          simp [hω]
+    _ = 0 := by simp
 
 /-- A likelihood-invariant smooth orbit has zero score in its tangent
 direction. `logLik t ω` is the log likelihood along the orbit, and `hderiv`
