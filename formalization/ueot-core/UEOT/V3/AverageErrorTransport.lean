@@ -58,11 +58,11 @@ theorem expectation_le_of_rnDeriv_le
     (hC : ∀ᵐ x ∂μ, (ν.rnDeriv μ x).toReal ≤ C) :
     (∫ x, e x ∂ν) ≤ C * (∫ x, e x ∂μ) := by
   have heμ : Integrable e μ :=
-    integrable_of_interval μ e he 0 1 (by norm_num) he0 he1
+    integrable_of_interval μ e he 0 1 (by norm_num) he1 he0
   have heν : Integrable e ν :=
-    integrable_of_interval ν e he 0 1 (by norm_num) he0 he1
+    integrable_of_interval ν e he 0 1 (by norm_num) he1 he0
   have hleft : Integrable (fun x => (ν.rnDeriv μ x).toReal * e x) μ :=
-    (Measure.integrable_rnDeriv_mul_iff hAC).2 heν
+    (integrable_toReal_rnDeriv_mul_iff hAC).2 heν
   have hright : Integrable (fun x => C * e x) μ := heμ.const_mul C
   have hmono :
       (∫ x, (ν.rnDeriv μ x).toReal * e x ∂μ) ≤
@@ -70,7 +70,7 @@ theorem expectation_le_of_rnDeriv_le
     apply integral_mono_ae hleft hright
     filter_upwards [hC] with x hx
     exact mul_le_mul_of_nonneg_right hx (he0 x)
-  rw [Measure.integral_toReal_rnDeriv_mul hAC] at hmono
+  rw [integral_toReal_rnDeriv_mul hAC] at hmono
   simpa only [integral_const_mul] using hmono
 
 /-- Literal source wrapper exposing both branches of P-STAT-09 together. -/
