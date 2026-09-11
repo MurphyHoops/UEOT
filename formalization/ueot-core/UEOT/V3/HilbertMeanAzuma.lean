@@ -81,6 +81,5 @@ theorem azuma_invSqParam_tail
         (((∑ i ∈ Finset.range N, (fun _ => invSqParam N) i : ℝ≥0) : ℝ)) =
           1 / (N : ℝ) by simpa using hsum]
       field_simp [hN0]
-      ring
 
 end UEOT.V3.HilbertMeanAzuma
