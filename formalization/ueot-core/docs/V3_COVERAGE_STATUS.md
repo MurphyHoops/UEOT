@@ -21,9 +21,9 @@ post-main CI, and ledger synchronization.
 
 | status | count |
 |---|---:|
-| **proved** | **45** |
+| **proved** | **46** |
 | **partial** | **0** |
-| **pending** | **61** |
+| **pending** | **60** |
 | **total** | **106** |
 
 There are no partial P-IDs.
@@ -35,7 +35,7 @@ There are no partial P-IDs.
 - **Prediction:** P-PRED-01, P-PRED-02, P-PRED-03
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-07, P-STAT-08, P-STAT-09
-- **Invariant / identifiability:** P-INV-01
+- **Invariant / identifiability:** P-INV-01, P-INV-02
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -50,29 +50,29 @@ There are no partial P-IDs.
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 8 + 1 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 45`.
+Count check: `4 + 6 + 3 + 4 + 8 + 2 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 46`.
 
-## Latest promotion — P-INV-01
+## Latest promotion — P-INV-02
 
-Frozen statement: for equal-prior binary testing on a general measurable space,
+Frozen statement: a tangent to a smooth likelihood-invariant group orbit lies
+in the kernel of Fisher information.
 
-`R* = (1/2) * (1 - D_TV(P0,P1))`.
-
-The integrated Lean theorem defines the measurable decision-event risk, proves
-the universal TV lower bound, constructs a measurable Hahn event attaining the
-TV supremum, and proves that event is optimal against every measurable test.
-The Hahn construction is the measure-theoretic equivalent of the frozen
-source's density-comparison event relative to `P0 + P1`.
+The integrated Lean theorem represents the orbit locally by a real parameter,
+uses the regular-model derivative identification with the directional score
+`vᵀs`, proves likelihood invariance forces that directional score to vanish
+almost everywhere, and then proves the Fisher action `I v = E[s (sᵀv)]`
+vanishes exactly.
 
 Verification evidence:
 
-- feature source theorem CI #653: success
-- clean promotion head: `e5d185cafc6897981b4d70b664dd30cc4ab7774e`
-- clean promotion CI #659: success
-- PR #35 CI #664: success
-- squash merge: `e653401b51594d86f03c317bdd12decae1c27159`
-- post-main CI #666 (`34558106870`): success
-- integrated module: `UEOT/V3/BinaryTesting.lean`
+- feature head: `945d58c9ba35c71f319f37e2fa7ffbec06304397`
+- feature CI #671: success
+- clean promotion head: `b4ef000384a581400ebcf132e86adcfa14926849`
+- clean CI #677: success
+- PR #37 CI #679: success
+- squash merge: `cbfe8eff494a558f113d2e79136655b9ddb61ca7`
+- post-main CI #682 (`34560253864`): success
+- integrated module: `UEOT/V3/FisherGauge.lean`
 
 ## Recent promotion evidence
 
@@ -91,6 +91,7 @@ Verification evidence:
 | P-STAT-09 | `b21f91f233e7cb65c6f1d6ec928b4870ceee3db4` | #641 success |
 | P-STAT-08 | `f03ea2ae9996228d86c742d7f787b95a85ad5898` | #648 success |
 | P-INV-01 | `e653401b51594d86f03c317bdd12decae1c27159` | #666 success |
+| P-INV-02 | `cbfe8eff494a558f113d2e79136655b9ddb61ca7` | #682 success |
 
 ## Active unresolved parallel front
 
@@ -104,19 +105,29 @@ with probability at least `1-alpha`.
 
 Machine-checked layers already include exact `2/N` replacement sensitivity,
 off-diagonal cancellation, empirical-mean squared-norm expansion,
-`E||mean Z_i||^2 <= 1/N`, and the scalar exact first/second-moment bridge.
-The Hilbert first-moment instantiation and then McDiarmid/finite-union layers
-remain active.
+`E||mean Z_i||^2 <= 1/N`, the Hilbert first-moment bound, and scalar/Azuma
+tail algebra. The newest official-import integration attempt is currently red;
+the bounded-difference/Doob bridge and final finite-union source wrapper remain
+unpromoted.
 
-### P-INV-02 — Fisher gauge zero directions
+### P-INV-03 — Fisher information accumulation
 
-Branch: `formal/pinv02-fisher-gauge`.
+Branch: `formal/pinv03-fisher-intersection`.
 
-Target: likelihood invariance along a smooth group orbit implies the orbit
-tangent has zero directional score and hence lies in the kernel of Fisher
-information. The Fisher kernel core and local smooth-orbit wrapper are active;
-this P-ID remains pending until the full source-facing theorem and promotion
-train pass.
+The PSD kernel-intersection half is machine-checked and branch CI is green. The
+remaining source obligation is the probabilistic bridge: conditional
+independence plus zero-mean experiment scores must yield additive Fisher
+information by cancellation of cross terms. P-INV-03 is not promoted until
+that bridge and a source-facing wrapper pass the full train.
+
+### P-INV-04 — noiseless design identifiability
+
+Development branch: `formal/pinv04-design-identifiability`.
+
+The source-facing algebraic theorem is implemented and its branch CI is green:
+the fixed noiseless design is injective iff the Gram quadratic form is strictly
+positive away from zero. The branch is behind current main and must be clean-
+ported before promotion.
 
 ## Completion rule
 
