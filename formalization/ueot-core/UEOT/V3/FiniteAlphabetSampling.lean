@@ -45,7 +45,7 @@ theorem empiricalMeasure_isProbability {N : ℕ} (hN : 0 < N)
 
 /-- Indicator of one finite-alphabet event on the response space. -/
 noncomputable def eventIndicator (A : Finset Y) : Y → ℝ :=
-  (A : Set Y).indicator (fun _ => (1 : ℝ))
+  (A : Set Y).indicator (1 : Y → ℝ)
 
 /-- Event indicator after one response sample. -/
 noncomputable def sampleIndicator (A : Finset Y) (X : Ω → Y) : Ω → ℝ :=
@@ -81,7 +81,7 @@ theorem integral_sampleIndicator_eq
   have hpre : MeasurableSet (X ⁻¹' (A : Set Y)) := hX hA
   have hrepr :
       sampleIndicator A X =
-        (X ⁻¹' (A : Set Y)).indicator (fun _ => (1 : ℝ)) := by
+        (X ⁻¹' (A : Set Y)).indicator (1 : Ω → ℝ) := by
     funext ω
     by_cases h : X ω ∈ A <;> simp [sampleIndicator, eventIndicator, h]
   rw [hrepr, integral_indicator_one hpre]
@@ -98,12 +98,14 @@ theorem empiricalMeasure_real_finset {N : ℕ} (hN : 0 < N)
   letI : MeasurableSpace (Fin N) := ⊤
   have hf : Measurable (fun n : Fin N => sample n ω) := measurable_of_finite _
   have hA : MeasurableSet (A : Set Y) := A.measurableSet
+  let S : Set (Fin N) := (fun n : Fin N => sample n ω) ⁻¹' (A : Set Y)
+  have hS : MeasurableSet S := MeasurableSpace.measurableSet_top
   have hcount :
-      ((Finset.univ.filter fun n : Fin N => sample n ω ∈ A).card : ℝ) =
+      ((Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)).card : ℝ) =
         ∑ n : Fin N, sampleIndicator A (sample n) ω := by
     calc
-      ((Finset.univ.filter fun n : Fin N => sample n ω ∈ A).card : ℝ)
-          = ∑ _n in (Finset.univ.filter fun n : Fin N => sample n ω ∈ A), (1 : ℝ) := by
+      ((Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)).card : ℝ)
+          = ∑ _n in (Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)), (1 : ℝ) := by
               simp
       _ = ∑ n : Fin N, if sample n ω ∈ A then (1 : ℝ) else 0 := by
               rw [Finset.sum_filter]
@@ -112,15 +114,24 @@ theorem empiricalMeasure_real_finset {N : ℕ} (hN : 0 < N)
               intro n hn
               by_cases h : sample n ω ∈ A <;>
                 simp [sampleIndicator, eventIndicator, h]
+  have hcardNat :
+      Fintype.card S =
+        (Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)).card := by
+    rw [Fintype.card_subtype]
+    congr 1
+    ext n
+    simp [S]
+  have hcardReal :
+      (Fintype.card S : ℝ) =
+        ∑ n : Fin N, sampleIndicator A (sample n) ω := by
+    rw [hcardNat]
+    exact hcount
   unfold empiricalMeasure
   rw [measureReal_def, Measure.map_apply hf hA]
-  rw [PMF.toMeasure_uniformOfFintype_apply]
+  change ((PMF.uniformOfFintype (Fin N)).toMeasure S).toReal = _
+  rw [PMF.toMeasure_uniformOfFintype_apply hS]
   simp only [Fintype.card_fin, ENNReal.toReal_div, ENNReal.toReal_natCast]
-  rw [Fintype.card_subtype]
-  rw [show (Finset.univ.filter fun n : Fin N => sample n ω ∈ (A : Set Y)) =
-      Finset.univ.filter fun n : Fin N => sample n ω ∈ A by rfl]
-  rw [Nat.cast_ofNat]
-  simpa [hcount]
+  rw [hcardReal]
 
 /-- One-sided upper Hoeffding bound for a fixed finite-alphabet event. -/
 theorem measure_empirical_event_upper_le
@@ -160,7 +171,7 @@ theorem measure_empirical_event_upper_le
       (hXmeas n).aemeasurable
       (ae_of_all μ (sampleIndicator_mem_Icc A (sample n)))
     simpa [Z] using hs
-  have htail := ProbabilityTheory.measure_sum_ge_le_of_iIndepFun
+  have htail := ProbabilityTheory.HasSubgaussianMGF.measure_sum_ge_le_of_iIndepFun
     (h_indep := hZindep)
     (s := (Finset.univ : Finset (Fin N)))
     (h_subG := hsub)
