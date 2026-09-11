@@ -39,6 +39,7 @@ import UEOT.V3.TVSpan
 import UEOT.V3.TVKernel
 import UEOT.V3.FiniteHistory
 import UEOT.V3.FiniteHistoryMeasurable
+import UEOT.V3.DesignIdentifiability
 
 import UEOT.V3.InformationCore
 import UEOT.V3.MarkovBoundary
