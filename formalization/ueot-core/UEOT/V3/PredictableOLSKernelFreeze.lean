@@ -39,7 +39,9 @@ theorem predictable_ae_eq_const
   have hsnd : Measurable (fun p : Ω × Ω => A p.2) := hAΩ.comp measurable_snd
   have hp : MeasurableSet {p : Ω × Ω | A p.2 = A p.1} :=
     measurableSet_eq_fun hsnd hfst
-  apply Measure.ae_ae_of_ae_compProd
+  refine Measure.ae_ae_of_ae_compProd
+    (μ := μ.trim hm) (κ := condExpKernel (mΩ := mΩ) μ m)
+    (p := fun p : Ω × Ω => A p.2 = A p.1) ?_
   rw [compProd_trim_condExpKernel hm]
   exact (ae_map_iff hdiag.aemeasurable hp).2 (Eventually.of_forall fun ω => rfl)
 
