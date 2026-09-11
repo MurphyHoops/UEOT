@@ -23,6 +23,7 @@ import UEOT.V3.FiniteAlphabetPStat01
 import UEOT.V3.FiniteAlphabetPStat01Radius
 import UEOT.V3.HilbertMeanConcentration
 import UEOT.V3.HilbertMeanSecondMoment
+import UEOT.V3.HilbertMeanFirstMoment
 import UEOT.V3.VariationBridge
 import UEOT.V3.ViabilityKernel
 import UEOT.V3.ViabilityPath
