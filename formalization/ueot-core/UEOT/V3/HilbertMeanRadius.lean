@@ -34,7 +34,7 @@ theorem raw_union_tail_eq_alpha
   have hratio_pos : 0 < (L : ℝ) / alpha := div_pos hLreal halpha0
   have hratio_one : 1 ≤ (L : ℝ) / alpha := by
     rw [le_div_iff₀ halpha0]
-    exact halpha1.trans hLone
+    simpa using halpha1.trans hLone
   have hlog : 0 ≤ log ((L : ℝ) / alpha) := Real.log_nonneg hratio_one
   have hrad : 0 ≤ 2 * log ((L : ℝ) / alpha) / (N : ℝ) := by
     exact div_nonneg (mul_nonneg (by norm_num) hlog) hNreal.le
@@ -44,7 +44,6 @@ theorem raw_union_tail_eq_alpha
     unfold pStat06Deviation
     rw [Real.sq_sqrt hrad]
     field_simp [ne_of_gt hNreal]
-    ring
   rw [hexponent, Real.exp_neg, Real.exp_log hratio_pos]
   have hLne : (L : ℝ) ≠ 0 := ne_of_gt hLreal
   have halphane : alpha ≠ 0 := ne_of_gt halpha0
