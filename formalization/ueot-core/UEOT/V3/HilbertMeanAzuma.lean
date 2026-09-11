@@ -36,8 +36,8 @@ theorem azuma_parameterized
   exact measure_sum_ge_le_of_hasCondSubgaussianMGF h_adapted h0 n h_subG hε
 
 /-- The per-coordinate variance proxy induced by a `2/N` bounded difference. -/
-noncomputable def invSqParam (N : ℕ) : ℝ≥0 :=
-  ⟨((N : ℝ)⁻¹) ^ 2, sq_nonneg _⟩
+def invSqParam (N : ℕ) : ℝ≥0 :=
+  ((N : ℝ≥0)⁻¹) ^ 2
 
 /-- Exact constant normalization used by frozen P-STAT-06: summing `N` copies
 of `1/N²` gives `1/N`. -/
@@ -48,7 +48,8 @@ theorem coe_sum_invSqParam_eq_one_div
   have hN0 : (N : ℝ) ≠ 0 := by
     exact_mod_cast (Nat.ne_of_gt hN)
   rw [NNReal.coe_sum]
-  simp [invSqParam]
+  simp only [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
+  simp [invSqParam, NNReal.coe_inv]
   field_simp [hN0]
 
 end UEOT.V3.HilbertMeanAzuma
