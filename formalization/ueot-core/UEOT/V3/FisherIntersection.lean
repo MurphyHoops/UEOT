@@ -160,7 +160,7 @@ theorem fisherAction_apply_eq_sum_fisherEntry_mul
         (∫ ω, (s ω i * s ω j) * v j ∂μ) =
           (∫ ω, s ω i * s ω j ∂μ) * v j)
   · intro j hj
-    simpa [mul_assoc] using (h_int i j).mul_const (v j)
+    exact (h_int i j).mul_const (v j)
 
 /-- Fisher information is additive as an operator under the same centered
 cross-experiment independence hypotheses used for entry-wise additivity. -/
