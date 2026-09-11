@@ -11,33 +11,34 @@ source-level count belongs in `V3_COVERAGE_STATUS.md`.
 A P-ID is `proved` only after all of the following hold:
 
 1. exact frozen source statement/hypotheses identified;
-2. Lean theorem source-faithful or explicitly stronger;
+2. Lean theorem source-faithful or any source correction explicitly audited;
 3. theorem reachable from the official `UEOT` target;
 4. feature full-target CI green;
 5. minimal clean-port onto newest green Lean-affecting `main`;
 6. clean-port CI green;
-7. serialized main integration;
-8. post-main `lake build UEOT` green;
-9. no `sorry`, UEOT-specific axiom, `native_decide`, or hidden weakening;
-10. authoritative ledgers synchronized.
+7. PR CI green;
+8. serialized main integration;
+9. post-main `lake build UEOT` green;
+10. no `sorry`, UEOT-specific axiom, `native_decide`, or hidden weakening;
+11. authoritative ledgers synchronized.
 
 Helpers and isolated green files do not increment source coverage.
 
 ## 2. Current checkpoint
 
-As of 2026-09-11:
+As of 2026-09-12:
 
-- proved: **48**
+- proved: **49**
 - partial: **0**
-- pending: **58**
+- pending: **57**
 - total: **106**
-- latest proved P-ID: **P-INV-03**
-- current integrated Lean head containing P-INV-03 and P-STAT-06 infrastructure:
-  `dd77d56dd2c5d35440e4f3023ac7a22ab94830c3`
-- post-main CI run `34576124342`: success
+- latest proved P-ID: **P-INV-05**
+- current integrated Lean head: `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d`
+- post-main CI run `34626175917`: success
 
-P-INV-03 is closed. P-STAT-06 infrastructure is integrated but the P-ID remains
-pending until the exact frozen simultaneous RKHS radius theorem is closed.
+P-INV-01 through P-INV-05 are closed. P-STAT-06 infrastructure is integrated
+but that P-ID remains pending until the exact frozen simultaneous RKHS radius
+theorem is closed.
 
 ## 3. Branch classes
 
@@ -68,7 +69,7 @@ Active source-closure branch: `formal/pstat06-union-closure`.
 
 Current closure sequence:
 
-1. machine-check finite `L` union wrapper in the exact `alpha/L` form;
+1. machine-check the finite `L` union wrapper in the exact `alpha/L` form;
 2. build the concrete Doob increments for the RKHS norm statistic from the
    `2/N` bounded-difference theorem;
 3. prove the conditional Hoeffding/sub-Gaussian increment hypotheses;
@@ -76,68 +77,45 @@ Current closure sequence:
 5. substitute `t = sqrt(2*log(L/alpha)/N)`;
 6. expose exact source-facing
    `max_j ||muHat_j-mu_j|| <= (1 + sqrt(2*log(L/alpha)))/sqrt(N)`;
-7. clean promotion and post-main verification.
+7. clean promotion, PR CI and post-main verification.
 
 Do not count the integrated infrastructure alone as P-STAT-06.
 
-### Lane B — P-INV-05 predictable-design OLS concentration [HOT]
+### Lane B — information packet [WARM]
 
-Active branch: `formal/pinv05-predictable-ols`.
+Open a fresh source audit for P-INFO-02, P-INFO-03 and P-INFO-04. Reuse the
+already integrated information/KL/entropy modules and establish one canonical
+conditional-information interface rather than creating another entropy stack.
 
-Frozen target:
-`||thetaHat-thetaStar||_2 <= (sigma*B/kappa) * sqrt(2*d*log(2*d/alpha)/N)`
-except on an event of probability at most `alpha`.
+Execution order:
 
-Green layers:
+1. identify exact frozen statements and dependency order;
+2. map each source notion to the existing `Information*` modules;
+3. prove the smallest missing reusable lemmas;
+4. expose source-facing wrappers one P-ID at a time;
+5. promote independently through the full gate.
 
-- matrix-free Gram action/quadratic identity;
-- finite-dimensional Cauchy-Schwarz;
-- deterministic normal-equation/coercivity bound
-  `(N*kappa)^2 ||err||_2^2 <= ||Z||_2^2`;
-- coordinate threshold `|Z_j| <= R` implies `||Z||_2^2 <= d*R^2`;
-- deterministic squared-error threshold bridge.
+### Lane C — P-INT-01 structured sufficiency [WARM]
 
-Under current CI:
+Start only after the P-INFO audit fixes the canonical conditional-information
+interface. Reuse prediction, Markov-boundary and information infrastructure.
+The critical rule is to prove the frozen iff/bridge statement rather than a
+one-direction surrogate.
 
-- one-coordinate two-sided sub-Gaussian tail;
-- finite-`d` union bound;
-- failure-budget wrapper.
+### Lane D — next inverse/identifiability packet [WARM]
 
-Critical remaining source bridge:
-
-1. for predictable random multiplier `phi_tj` measurable with respect to
-   `F_{t-1}`, prove `phi_tj * xi_t` is conditionally sub-Gaussian with parameter
-   bounded by `(sigma*B)^2` from `|phi_tj| <= B`;
-2. sum the conditional parameters to `N*(sigma*B)^2`;
-3. instantiate the coordinate union bound with the exact
-   `sqrt(2*N*(sigma*B)^2*log(2d/alpha))` score threshold;
-4. feed that threshold into the deterministic Gram bound;
-5. simplify to the frozen Euclidean rate and expose `p_inv_05`;
-6. clean-port onto latest main and promote.
-
-Important semantic guard: the predictable multiplier is random/adapted, not a
-constant design coefficient. Mathlib's constant-scaling sub-Gaussian lemma
-cannot be used as a silent replacement for this bridge.
-
-### Lane C — information/structural interfaces [WARM]
-
-Next independent lane after a source audit:
-
-- P-INFO-02/03/04 first, reusing the already integrated information/KL/entropy
-  layer;
-- then P-INT-01 structured sufficiency iff, reusing prediction and information
-  modules rather than defining a second conditional-independence stack.
-
-This lane may be opened while A/B compile because it has low code ownership
-conflict.
+P-INV-01..05 are now fully promoted. Select the next inverse-family source P-ID
+only after a fresh source/dependency audit. Reuse both the Fisher intersection
+library and the predictable-OLS concentration library; do not rebuild a second
+linear-algebra or concentration stack.
 
 ## 5. Next WARM pool
 
 Priority after the current wave:
 
-1. remaining inverse/identifiability packet after P-INV-05;
-2. P-INFO-02/03/04;
-3. P-INT-01;
+1. P-INFO-02/03/04;
+2. P-INT-01;
+3. remaining inverse/identifiability packet after P-INV-05;
 4. remaining QSD/persistence theorems, separating finite Perron/Markov results
    from diffusion/spectral analysis;
 5. finite implementation/composition packet;
@@ -145,12 +123,12 @@ Priority after the current wave:
 7. KL/variational/dual-drive packet;
 8. evolution/reflexivity/final assembly only after prerequisites are closed.
 
-## 6. Dependency factories for the remaining 58
+## 6. Dependency factories for the remaining 57
 
 ### Factory G — statistics / inverse problems
 
-P-STAT / P-INV remainder. Reuse finite concentration, Fisher, variation and
-response-defect infrastructure already on main.
+P-STAT / P-INV remainder. Reuse finite concentration, Fisher, predictable-OLS,
+variation and response-defect infrastructure already on main.
 
 ### Factory H — implementation / composition
 
@@ -181,7 +159,7 @@ statements never mask missing prerequisites.
 
 - one P-ID family owns one module or tight module group;
 - feature branches edit `UEOT/V3.lean` only for their own import reachability;
-- only main synchronization commits edit source-coverage ledgers;
+- only synchronization commits edit source-coverage ledgers;
 - shared infrastructure is proved and merged once, never duplicated across
   stale branches;
 - proof development is parallel; main promotion is serialized;
@@ -198,15 +176,20 @@ Compile the official `UEOT`/`UEOT.V3` target with the new module imported.
 Use newest green Lean-affecting main, minimal delta, full build, source-facing
 theorem, semantic audit and prohibited-proof audit.
 
+### L2.5 — PR verification
+
+Run the official full target on the actual PR head/base combination before
+integration.
+
 ### L3 — post-main
 
-Run full build/audits. Coverage changes only after success.
+Run the full build/audits. Coverage changes only after success.
 
 ## 9. Merge train
 
 For every P-ID:
 
-`source audit -> helpers -> source wrapper -> official import -> feature CI -> clean port -> clean CI -> serialized main integration -> post-main CI -> ledger sync`.
+`source audit -> helpers -> source wrapper -> official import -> feature CI -> clean port -> clean CI -> PR CI -> serialized main integration -> post-main CI -> ledger sync`.
 
 While one lane waits in CI, another lane continues proof development.
 

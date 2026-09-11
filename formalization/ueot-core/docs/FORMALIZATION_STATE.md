@@ -2,7 +2,7 @@
 
 > Recovery entry point. Source-level truth is `V3_COVERAGE_STATUS.md`.
 
-Last synchronized: **2026-09-11**
+Last synchronized: **2026-09-12**
 
 ## Environment
 
@@ -15,39 +15,42 @@ Last synchronized: **2026-09-11**
 - integration branch: `main`
 
 Promotion requires semantic source match, official import reachability, green
-feature and clean-port CI, merge/integration to `main`, green post-main CI, and
-ledger synchronization.
+feature CI, clean-port CI, PR CI, merge/integration to `main`, green post-main
+CI, and ledger synchronization.
 
 ## Current integrated checkpoint
 
 | status | count |
 |---|---:|
-| proved | **48** |
+| proved | **49** |
 | partial | **0** |
-| pending | **58** |
+| pending | **57** |
 | total | **106** |
 
-Latest completed proof promotion: **P-INV-03**.
+Latest completed proof promotion: **P-INV-05**.
 
 Evidence:
-- source-facing feature head `94541d36fd401d9779892446379ebb12d30f00f0`
-- clean promotion head `93de8c70353566e806a65afa3f29330cd69da29e`
-- clean CI run `34573930115`: success
-- integrated main contains `UEOT/V3/FisherIntersection.lean`
-- combined main head with P-STAT-06 infrastructure `dd77d56dd2c5d35440e4f3023ac7a22ab94830c3`
-- post-main CI run `34576124342`: success
-- ledger synchronization commit `16ebf4c201d3abd21b3dfba808eeefa8ae51b5d5`
+- source-facing feature head `1a698c743bce27d0e3d914cf3cec707a984eefb8`
+- feature CI run `34614373920`: success
+- clean promotion head `d6750f42a2994dadacc7678642518a7129f22e43`
+- clean CI run `34625357569`: success
+- PR #39 CI run `34625787902`: success
+- integrated main commit `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d`
+- post-main CI run `34626175917`: success
+- integrated source-facing module `UEOT/V3/PredictableOLSSourceConfidence.lean`
 
-P-INV-03 machine-checks the frozen Fisher accumulation statement: zero-mean
-independent experiment score cross terms cancel, Fisher information adds, each
-Fisher block is PSD, and the kernel of the total Fisher information equals the
-intersection of the individual kernels.
+P-INV-05 machine-checks the predictable-design OLS concentration theorem all
+the way from source-time stochastic assumptions to the exact frozen Euclidean
+radius. The promoted theorem explicitly adds the standard adaptedness condition
+that `xi (n+1)` is `F (n+1)`-measurable; this is required for conditional-MGF
+iteration and is documented as a source correction rather than hidden behind a
+final-score black-box assumption.
 
 ## Active parallel lanes
 
 ### P-STAT-06 — RKHS/MMD simultaneous embedding error [HOT]
 
-Main now contains green reusable infrastructure:
+Main contains green reusable infrastructure:
 - exact one-replacement sensitivity `2/N`;
 - independent centered Hilbert off-diagonal cancellation;
 - empirical-mean squared-norm expansion;
@@ -67,30 +70,21 @@ Remaining source closure:
 
 P-STAT-06 is intentionally **not** counted proved yet.
 
-### P-INV-05 — predictable-design OLS concentration [HOT]
+### Information / structural packet [WARM]
 
-Branch: `formal/pinv05-predictable-ols`.
+Next low-overlap source audit:
+- P-INFO-02, P-INFO-03, P-INFO-04 using the integrated KL/entropy/information
+  stack;
+- P-INT-01 after the information packet, reusing the existing prediction and
+  conditional-information infrastructure rather than introducing a duplicate
+  independence formalism.
 
-Frozen target:
-`||thetaHat-thetaStar||_2 <= (sigma*B/kappa) * sqrt(2*d*log(2*d/alpha)/N)`
-except on an event of probability at most `alpha`, under predictable bounded
-design, conditionally sub-Gaussian noise, and the samplewise Gram lower bound.
+### Remaining inverse / identifiability packet [WARM]
 
-Green machine-checked layers:
-- Gram action/quadratic identity;
-- finite-dimensional Cauchy-Schwarz;
-- deterministic normal-equation/coercivity estimate
-  `(N*kappa)^2 ||err||_2^2 <= ||Z||_2^2`;
-- uniform coordinate threshold implies `||Z||_2^2 <= d*R^2`;
-- resulting deterministic squared-error threshold bridge.
-
-Next proof layers:
-1. coordinate score sub-Gaussian theorem from predictable multipliers and
-   conditional sub-Gaussian noise;
-2. two-sided coordinate tail;
-3. finite-`d` union bound;
-4. exact frozen threshold substitution and square-root conversion;
-5. source-facing `p_inv_05` wrapper and clean promotion.
+P-INV-01 through P-INV-05 are now fully promoted. The next inverse-problem work
+should be selected from the remaining frozen source P-IDs only after a fresh
+source/dependency audit, reusing the Fisher and predictable-OLS libraries now on
+`main`.
 
 ## Promotion protocol
 
@@ -98,9 +92,10 @@ Next proof layers:
 2. feature full-target CI;
 3. clean-port onto newest green Lean-affecting `main`;
 4. clean-port CI;
-5. serialized main integration;
-6. post-main CI;
-7. ledger synchronization.
+5. PR CI;
+6. serialized main integration;
+7. post-main CI;
+8. ledger synchronization.
 
 Parallel proof development is allowed; main promotion remains serialized.
 
@@ -122,6 +117,7 @@ Parallel proof development is allowed; main promotion remains serialized.
 - P-INV-02 — #682
 - P-INV-04 — #697
 - P-INV-03 — post-main run `34576124342`
+- P-INV-05 — PR #39, post-main run `34626175917`
 
 ## Mandatory recovery procedure
 

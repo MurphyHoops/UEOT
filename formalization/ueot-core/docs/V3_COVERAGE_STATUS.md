@@ -14,16 +14,16 @@ promotion narratives remain in Git and in `docs/archive/`.
 - integration branch: `main`
 
 A P-ID is counted as `proved` only after semantic source matching, official
-import reachability, feature CI, clean-port CI, main integration, green
+import reachability, feature CI, clean-port CI, PR CI, main integration, green
 post-main CI, and ledger synchronization.
 
 ## Current source-level coverage
 
 | status | count |
 |---|---:|
-| **proved** | **48** |
+| **proved** | **49** |
 | **partial** | **0** |
-| **pending** | **58** |
+| **pending** | **57** |
 | **total** | **106** |
 
 There are no partial P-IDs.
@@ -35,7 +35,7 @@ There are no partial P-IDs.
 - **Prediction:** P-PRED-01, P-PRED-02, P-PRED-03
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-07, P-STAT-08, P-STAT-09
-- **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04
+- **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -50,32 +50,43 @@ There are no partial P-IDs.
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 8 + 4 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 48`.
+Count check: `4 + 6 + 3 + 4 + 8 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 49`.
 
-## Latest promotion — P-INV-03
+## Latest promotion — P-INV-05
 
-Frozen statement: independent/conditionally separated experiment scores with
-zero mean have additive Fisher information, and for positive-semidefinite
-Fisher blocks the kernel of the total information equals the intersection of
-the individual kernels.
+Frozen statement: for bounded predictable linear design and conditionally
+sub-Gaussian noise, on the samplewise Gram event `G_N ⪰ N*kappa*I`, the OLS
+estimation error obeys
 
-The integrated Lean development machine-checks the score cross-term
-cancellation, Fisher entry/action additivity, the Fisher quadratic-form PSD
-certificate, the zero-quadratic/kernel equivalence, and the final finite
-kernel-intersection theorem.
+`||thetaHat-thetaStar||_2 <= (sigma*B/kappa) * sqrt(2*d*log(2*d/alpha)/N)`
+
+outside an event of probability at most `alpha`.
+
+The integrated Lean development machine-checks the full source-facing chain:
+predictable random multiplier conditional-MGF control, product integrability,
+strong adaptedness, martingale score accumulation, two-sided coordinate tails,
+finite-`d` union control, exact threshold/radius normalization, source-time to
+`Fin N` index identification, the OLS normal equation, the full matrix-form
+good-Gram predicate, and the final Euclidean confidence theorem.
+
+Semantic correction: the formal source theorem makes explicit that `xi (n+1)`
+is measurable with respect to `F (n+1)`. This adaptedness is required for the
+conditional-MGF iteration and is implicit in the standard filtered-process
+formulation. No final-score sub-Gaussian black box is assumed in the promoted
+source theorem.
 
 Verification evidence:
 
-- feature branch: `formal/pinv03-fisher-intersection`
-- source-facing feature head: `94541d36fd401d9779892446379ebb12d30f00f0`
-- feature full-target CI: success
-- clean promotion branch: `formal/pinv03-promote`
-- clean official-import head: `93de8c70353566e806a65afa3f29330cd69da29e`
-- clean CI run `34573930115`: success
-- integrated main ancestor: `93de8c70353566e806a65afa3f29330cd69da29e`
-- combined post-main head after P-STAT-06 infrastructure: `dd77d56dd2c5d35440e4f3023ac7a22ab94830c3`
-- post-main CI run `34576124342`: success
-- integrated module: `UEOT/V3/FisherIntersection.lean`
+- source-facing feature branch: `formal/pinv05-source-confidence`
+- source-facing feature head: `1a698c743bce27d0e3d914cf3cec707a984eefb8`
+- feature full-target CI run `34614373920`: success
+- clean promotion branch: `formal/pinv05-clean-port`
+- clean promotion head: `d6750f42a2994dadacc7678642518a7129f22e43`
+- clean-port CI run `34625357569`: success
+- PR #39 CI run `34625787902`: success
+- integrated main commit: `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d`
+- post-main CI run `34626175917`: success
+- source-facing module: `UEOT/V3/PredictableOLSSourceConfidence.lean`
 
 ## Recent promotion evidence
 
@@ -97,13 +108,13 @@ Verification evidence:
 | P-INV-02 | `cbfe8eff494a558f113d2e79136655b9ddb61ca7` | #682 success |
 | P-INV-04 | `efd1f529e739aecd4b1331f7324ce5660384cd8c` | #697 success |
 | P-INV-03 | `93de8c70353566e806a65afa3f29330cd69da29e` | `34576124342` success |
+| P-INV-05 | `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d` | `34626175917` success |
 
 ## Active unresolved parallel front
 
 ### P-STAT-06 — simultaneous RKHS embedding error
 
-The main branch now contains and compiles the four reusable infrastructure
-layers:
+The main branch contains and compiles the four reusable infrastructure layers:
 
 - exact one-replacement sensitivity `2/N`;
 - independent centered Hilbert second-moment cancellation and
@@ -117,25 +128,6 @@ counted proved**. The remaining source obligation is the concrete
 bounded-difference/Doob increment construction for the RKHS statistic plus the
 finite-`L` union wrapper yielding exactly
 `(1 + sqrt(2*log(L/alpha)))/sqrt(N)`.
-
-### P-INV-05 — predictable-design OLS concentration
-
-Active branch: `formal/pinv05-predictable-ols`.
-
-Machine-checked green layers currently include:
-
-- matrix-free Gram action identity;
-- finite-dimensional Cauchy-Schwarz;
-- deterministic OLS normal-equation/coercivity bound
-  `(N*kappa)^2 ||err||_2^2 <= ||Z||_2^2`;
-- coordinate-threshold bridge `|Z_j| <= R` for all `j` implies
-  `||Z||_2^2 <= d R^2` and the corresponding squared-error bound.
-
-The remaining source obligation is to derive the coordinate score tail from
-predictability plus conditional sub-Gaussian noise, take the two-sided finite
-`d` union bound, insert the frozen threshold, and expose the exact source-facing
-rate
-`(sigma*B/kappa) * sqrt(2*d*log(2*d/alpha)/N)`.
 
 ## Completion rule
 
