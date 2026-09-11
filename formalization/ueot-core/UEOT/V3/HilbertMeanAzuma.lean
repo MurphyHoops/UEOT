@@ -4,9 +4,10 @@ import Mathlib.Probability.Moments.SubGaussian
 /-!
 # P-STAT-06 — Azuma tail layer
 
-This file intentionally isolates the exact Mathlib Azuma theorem before adding
-any constant-parameter normalization.  The source-level specialization and the
-bounded-difference/Doob bridge are added only after this imported core is green.
+This file isolates the exact pinned-Mathlib Azuma theorem and the constant
+normalization required by the frozen P-STAT-06 proof.  The source
+bounded-difference constant is `2/N`; Hoeffding therefore assigns each Doob
+increment the sub-Gaussian variance proxy `(2/N)^2 / 4 = 1/N^2`.
 -/
 
 namespace UEOT.V3.HilbertMeanAzuma
@@ -33,5 +34,20 @@ theorem azuma_parameterized
     μ.real {ω | ε ≤ ∑ i ∈ Finset.range n, Y i ω}
       ≤ Real.exp (-ε ^ 2 / (2 * ∑ i ∈ Finset.range n, cY i)) := by
   exact measure_sum_ge_le_of_hasCondSubgaussianMGF h_adapted h0 n h_subG hε
+
+/-- The per-coordinate variance proxy induced by a `2/N` bounded difference. -/
+def invSqParam (N : ℕ) : ℝ≥0 :=
+  ⟨((N : ℝ)⁻¹) ^ 2, sq_nonneg _⟩
+
+/-- Exact constant normalization used by frozen P-STAT-06: summing `N` copies
+of `1/N²` gives `1/N`. -/
+theorem coe_sum_invSqParam_eq_one_div
+    {N : ℕ} (hN : 0 < N) :
+    (((∑ _i ∈ Finset.range N, invSqParam N : ℝ≥0) : ℝ)) =
+      1 / (N : ℝ) := by
+  have hN0 : (N : ℝ) ≠ 0 := by
+    exact_mod_cast (Nat.ne_of_gt hN)
+  simp [invSqParam]
+  field_simp [hN0]
 
 end UEOT.V3.HilbertMeanAzuma
