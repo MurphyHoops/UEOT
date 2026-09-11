@@ -42,7 +42,7 @@ theorem predictable_ae_eq_const
   refine Measure.ae_ae_of_ae_compProd
     (μ := μ.trim hm) (κ := condExpKernel (mΩ := mΩ) μ m)
     (p := fun p : Ω × Ω => A p.2 = A p.1) ?_
-  rw [compProd_trim_condExpKernel hm]
+  rw [compProd_trim_condExpKernel (mΩ := mΩ) (μ := μ) hm]
   exact (ae_map_iff hdiag.aemeasurable hp).2 (Eventually.of_forall fun ω => rfl)
 
 end UEOT.V3.PredictableOLSKernelFreeze
