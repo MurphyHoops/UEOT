@@ -1,8 +1,9 @@
 import Mathlib.Algebra.Order.BigOperators.Ring.Finset
+import Mathlib.Probability.Independence.Integration
 import Mathlib.Tactic
 
 /-!
-# P-INV-03 foundation — kernel of a sum of PSD Fisher blocks
+# P-INV-03 foundation — Fisher accumulation and kernel intersection
 
 The frozen theorem has two steps:
 1. conditional independence plus zero-mean scores makes total Fisher equal the
@@ -10,12 +11,13 @@ The frozen theorem has two steps:
 2. since every Fisher block is positive semidefinite, the kernel of that sum is
    exactly the intersection of the individual kernels.
 
-This file machine-checks step 2 in a representation-independent form. The
-probabilistic score-additivity bridge remains a separate source obligation.
+This file machine-checks step 2 and starts the probabilistic bridge for step 1:
+independent centered experiment scores have zero cross Fisher entries.
 -/
 
 namespace UEOT.V3.FisherIntersection
 
+open MeasureTheory ProbabilityTheory
 open scoped BigOperators
 
 /-- Pointwise sum of finitely many linear/Fisher actions. -/
@@ -58,5 +60,32 @@ theorem total_kernel_iff_forall_kernel {E d : ℕ}
     apply Finset.sum_eq_zero
     intro e he
     exact (F.quad_zero_iff e v).2 (h_each e)
+
+universe uΩ
+variable {Ω : Type uΩ} [MeasurableSpace Ω]
+
+/-- Probabilistic cross-term bridge for P-INV-03.  At a fixed parameter value,
+independent experiments with centered score coordinates have zero off-diagonal
+Fisher cross entries. -/
+theorem independent_centered_cross_score_integral_eq_zero
+    {E d : ℕ} (μ : Measure Ω) [IsProbabilityMeasure μ]
+    (score : Fin E → Ω → (Fin d → ℝ))
+    (hindep : iIndepFun score μ)
+    (hmeas : ∀ e, Measurable (score e))
+    (hmean : ∀ e i, ∫ ω, score e ω i ∂μ = 0)
+    {e f : Fin E} (hef : e ≠ f) (i j : Fin d) :
+    ∫ ω, score e ω i * score f ω j ∂μ = 0 := by
+  have hpairVec : score e ⟂ᵢ[μ] score f := hindep.indepFun hef
+  have hpair :
+      (fun ω => score e ω i) ⟂ᵢ[μ] (fun ω => score f ω j) := by
+    change ((fun x : Fin d → ℝ => x i) ∘ score e) ⟂ᵢ[μ]
+      ((fun x : Fin d → ℝ => x j) ∘ score f)
+    exact hpairVec.comp (by fun_prop) (by fun_prop)
+  have hmeas_i : AEStronglyMeasurable (fun ω => score e ω i) μ :=
+    ((by fun_prop : Measurable (fun ω => score e ω i))).aestronglyMeasurable
+  have hmeas_j : AEStronglyMeasurable (fun ω => score f ω j) μ :=
+    ((by fun_prop : Measurable (fun ω => score f ω j))).aestronglyMeasurable
+  rw [hpair.integral_mul_eq_mul_integral hmeas_i hmeas_j, hmean e i, hmean f j]
+  simp
 
 end UEOT.V3.FisherIntersection
