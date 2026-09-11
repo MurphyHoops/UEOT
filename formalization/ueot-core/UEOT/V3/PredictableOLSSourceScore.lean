@@ -8,7 +8,7 @@ import Mathlib.Tactic
 # P-INV-05 — source assumptions imply score sub-Gaussianity
 
 This module composes the source-facing one-step multiplier theorem with the
-martingale accumulation theorem.  Source time starts at `t = 1`, while
+martingale accumulation theorem. Source time starts at `t = 1`, while
 Mathlib's sequence starts at zero, so we use the shifted filtration from
 `PredictableOLSSourceAdapted`.
 
@@ -21,10 +21,10 @@ is not introduced merely for formalization.
 namespace UEOT.V3.PredictableOLSSourceScore
 
 open MeasureTheory ProbabilityTheory
+open UEOT.V3.PredictableOLSRadius
 open UEOT.V3.PredictableOLSScore
 open UEOT.V3.PredictableOLSSourceAdapted
 open UEOT.V3.PredictableOLSSourceMGF
-open UEOT.V3.PredictableOLSConditionalLift
 open scoped BigOperators NNReal
 
 universe uΩ
@@ -59,8 +59,8 @@ theorem allCoord_sourceScore_hasSubgaussianMGF
   have hadapt : ∀ j : Fin d,
       StronglyAdapted (succFiltration F) (scoreProcess phiS xiS j) := by
     intro j
-    have h := shiftedScore_stronglyAdapted F phi xi j hphi hxi_meas
-    simpa [phiS, xiS, scoreProcess, shiftedScoreProcess] using h
+    change StronglyAdapted (succFiltration F) (shiftedScoreProcess phi xi j)
+    exact shiftedScore_stronglyAdapted F phi xi j hphi hxi_meas
   have h0 : ∀ j : Fin d,
       HasSubgaussianMGF
         (scoreProcess phiS xiS j 0) (incrementParam sigma B) μ := by
@@ -68,8 +68,12 @@ theorem allCoord_sourceScore_hasSubgaussianMGF
     have hcond := hasCondSubgaussianMGF_predictable_mul
       (μ := μ) (F.le 0)
       (fun ω => phi 1 ω j) (xi 1) sigma B hB0
-      (hphi 0 j) (hbound 0) (hnoise 0)
-    have huncond := hcond.toHasSubgaussianMGF (F.le 0)
+      (hphi 0 j) (fun ω => hbound 0 ω j) (hnoise 0)
+    have huncond :=
+      UEOT.V3.PredictableOLSConditionalLift.HasCondSubgaussianMGF.toHasSubgaussianMGF
+        (μ := μ) (F.le 0) hcond
+    change HasSubgaussianMGF
+      (fun ω => phi 1 ω j * xi 1 ω) (incrementParam sigma B) μ
     simpa [phiS, xiS, scoreProcess] using huncond
   have hsub : ∀ j : Fin d, ∀ i < N - 1,
       HasCondSubgaussianMGF (succFiltration F i) ((succFiltration F).le i)
@@ -78,8 +82,11 @@ theorem allCoord_sourceScore_hasSubgaussianMGF
     have hcond := hasCondSubgaussianMGF_predictable_mul
       (μ := μ) (F.le (i + 1))
       (fun ω => phi ((i + 1) + 1) ω j) (xi ((i + 1) + 1)) sigma B hB0
-      (hphi (i + 1) j) (hbound (i + 1)) (hnoise (i + 1))
-    simpa [succFiltration, phiS, xiS, scoreProcess] using hcond
+      (hphi (i + 1) j) (fun ω => hbound (i + 1) ω j) (hnoise (i + 1))
+    change HasCondSubgaussianMGF (F (i + 1)) (F.le (i + 1))
+      (fun ω => phi ((i + 1) + 1) ω j * xi ((i + 1) + 1) ω)
+      (incrementParam sigma B) μ
+    exact hcond
   have hall := allCoordScore_hasSubgaussianMGF
     μ (succFiltration F) phiS xiS sigma B hadapt h0 hsub
   intro j
