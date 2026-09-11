@@ -21,7 +21,9 @@ variable {Ω : Type uΩ} [MeasurableSpace Ω] [StandardBorelSpace Ω]
 /-- Stable wrapper around Mathlib's conditional-sub-Gaussian Azuma bound. -/
 theorem azuma_parameterized
     (μ : Measure Ω) [IsProbabilityMeasure μ]
-    {Y : ℕ → Ω → ℝ} {ℱ : Filtration ℕ _} {cY : ℕ → ℝ≥0}
+    {Y : ℕ → Ω → ℝ}
+    {ℱ : Filtration ℕ (inferInstance : MeasurableSpace Ω)}
+    {cY : ℕ → ℝ≥0}
     (h_adapted : StronglyAdapted ℱ Y)
     (h0 : HasSubgaussianMGF (Y 0) (cY 0) μ)
     (n : ℕ)
