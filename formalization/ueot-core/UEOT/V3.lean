@@ -20,6 +20,7 @@ import UEOT.V3.DesignIdentifiability
 import UEOT.V3.PredictableOLS
 import UEOT.V3.PredictableOLSTail
 import UEOT.V3.PredictableOLSRadius
+import UEOT.V3.PredictableOLSScore
 import UEOT.V3.PredictableOLSConfidence
 import UEOT.V3.TransportDefect
 import UEOT.V3.StatisticalDefect
