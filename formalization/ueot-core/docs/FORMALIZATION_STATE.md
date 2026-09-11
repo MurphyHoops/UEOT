@@ -22,25 +22,26 @@ and ledger synchronization.
 
 | status | count |
 |---|---:|
-| proved | **46** |
+| proved | **47** |
 | partial | **0** |
-| pending | **60** |
+| pending | **59** |
 | total | **106** |
 
-Latest completed proof promotion: **P-INV-02**.
+Latest completed proof promotion: **P-INV-04**.
 
 Evidence:
-- feature head `945d58c9ba35c71f319f37e2fa7ffbec06304397`
-- feature CI #671: success
-- clean head `b4ef000384a581400ebcf132e86adcfa14926849`
-- clean CI #677: success
-- PR #37 CI #679: success
-- squash merge `cbfe8eff494a558f113d2e79136655b9ddb61ca7`
-- post-main CI #682: success
+- clean feature commit `2be89cd8e750ba24bbf5b29066e203aa423aca2c`
+- feature CI #688: success
+- official-import head `8e0522d6376832109956843b6dfa5e4119724449`
+- official-import CI #689: success
+- PR #38 CI #693: success
+- squash merge `efd1f529e739aecd4b1331f7324ce5660384cd8c`
+- post-main CI #697: success
+- ledger synchronization commit `2e1bbcbd7163cb63b7f695b2352330b8e1a8bd0f`
 
-P-INV-02 now machine-checks the frozen Fisher gauge statement: likelihood
-invariance along a smooth orbit forces zero directional score almost
-everywhere, hence the Fisher action annihilates the orbit tangent.
+P-INV-04 machine-checks the frozen noiseless full-parameter linear-design
+statement: the fixed design is injective iff its Gram quadratic form is
+strictly positive for every nonzero direction.
 
 ## Active parallel lanes
 
@@ -58,32 +59,42 @@ Implemented layers:
 - empirical-mean squared-norm expansion;
 - exact second moment `E||mean Z_i||^2 <= 1/N`;
 - direct Hilbert first-moment bound;
-- exact scalar/Azuma tail algebra.
+- imported Mathlib conditional-sub-Gaussian Azuma wrapper.
 
-Current state: the pre-import Azuma commit CI #680 is green, but importing the
-Azuma layer into the official V3 target at head `9fb2da89...` makes CI #681
-fail during `lake build UEOT`. Repair this integration before adding the final
-bounded-difference/Doob bridge and finite union wrapper.
+The pinned-Mathlib Azuma wrapper is green at
+`237f5c0ccc18166977ba0143e3763de5ab7e767d` (full official target). Remaining
+source closure is the explicit bounded-difference/Doob increment bridge,
+normalization of the `1/N^2` sub-Gaussian parameter sum to the source tail
+`exp(-N t^2/2)`, and the finite `L` union wrapper yielding the exact source
+radius.
 
 ### P-INV-03 — Fisher information accumulation
 
 Branch: `formal/pinv03-fisher-intersection`.
 
-Current head is based directly on the P-INV-02 main checkpoint. CI #683 and
-#684 are green. `FisherIntersection.lean` proves the PSD kernel-intersection
-mechanism. Remaining source obligation: derive total Fisher additivity from
-conditional independence and zero-mean experiment scores, then connect it to
-the kernel theorem in one source-facing wrapper.
+Frozen claim:
+- conditionally/independently generated experiment scores with zero mean have
+  additive Fisher information;
+- for PSD Fisher blocks, `ker(sum I_e) = intersection_e ker(I_e)`.
 
-### P-INV-04 — noiseless design identifiability
+Machine-checked and green:
+- abstract PSD kernel-intersection mechanism;
+- centered independent scalar score cross terms have zero integral;
+- cross-term helper full-target CI at
+  `3d0ae444ef810f2f0d8808c966f6982cf1860c4e`.
 
-Development branch: `formal/pinv04-design-identifiability`.
+Current development head
+`be6140d0c9ad0aceb83c53660498f35a15af9ad1` expands finite summed scores into
+Fisher matrix entries and cancels off-diagonal experiment terms. After that
+layer is green, finish the Fisher-action equality, instantiate the PSD kernel
+mechanism, and expose one source-facing `p_inv_03` wrapper before promotion.
 
-The source-facing theorem `p_inv_04` is implemented and latest branch CI #678
-is green. It proves injectivity of the fixed noiseless design map iff the Gram
-quadratic form is strictly positive away from zero, exactly matching
-`G_N ≻ 0`. The development branch is behind current main and is queued for a
-clean promotion port.
+### P-INV-05 — predictable-design OLS concentration [WARM]
+
+Queued from the P-INV-04 checkpoint. The frozen source theorem requires
+predictable bounded design, conditionally sub-Gaussian noise, a samplewise Gram
+lower bound, and the exact `sqrt(2 d log(2d/alpha)/N)` rate. The static
+P-INV-04 identifiability result alone is not sufficient.
 
 ## Promotion protocol
 
@@ -114,6 +125,7 @@ Parallel proof development is allowed; main promotion remains serialized.
 - P-STAT-08 — #648
 - P-INV-01 — #666
 - P-INV-02 — #682
+- P-INV-04 — #697
 
 ## Mandatory recovery procedure
 
