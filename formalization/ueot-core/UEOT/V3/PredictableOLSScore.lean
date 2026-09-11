@@ -45,7 +45,8 @@ theorem sum_incrementParam_range (N : ℕ) (sigma B : ℝ) :
     (∑ _i ∈ Finset.range N, incrementParam sigma B) =
       scoreParam N sigma B := by
   rw [Finset.sum_const]
-  simp [incrementParam, scoreParam, nsmul_eq_mul]
+  ext
+  simp [incrementParam, scoreParam]
 
 /-- Conditional sub-Gaussian score increments accumulate to the exact frozen
 coordinate proxy `N * (sigma * B)^2`.
