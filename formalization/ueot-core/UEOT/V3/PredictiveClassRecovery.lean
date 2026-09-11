@@ -137,7 +137,7 @@ theorem protocolDistance_eq_zero_of_equivalent
     rcases hd with ⟨i, rfl⟩
     letI : IsProbabilityMeasure (p h i) := hp h i
     rw [heq i]
-    simpa using tvDist_self (p h' i)
+    exact le_of_eq (tvDist_self (p h' i))
   · let i : I := Classical.choice (inferInstance : Nonempty I)
     letI : IsProbabilityMeasure (p h i) := hp h i
     letI : IsProbabilityMeasure (p h' i) := hp h' i
