@@ -24,6 +24,7 @@ import UEOT.V3.PredictableOLSScore
 import UEOT.V3.PredictableOLSSourceAdapted
 import UEOT.V3.PredictableOLSMultiplier
 import UEOT.V3.PredictableOLSKernelFreeze
+import UEOT.V3.PredictableOLSProductIntegrability
 import UEOT.V3.PredictableOLSPredictableMGF
 import UEOT.V3.PredictableOLSConfidence
 import UEOT.V3.TransportDefect
