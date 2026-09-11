@@ -35,9 +35,9 @@ is not a source-level proof promotion.
 
 | status | count |
 |---|---:|
-| **proved** | **41** |
+| **proved** | **44** |
 | **partial** | **0** |
-| **pending** | **65** |
+| **pending** | **62** |
 | **total** | **106** |
 
 There are currently **no partial P-IDs**. Every unresolved source P-ID remains
@@ -45,13 +45,13 @@ explicitly pending until it passes the full gate above.
 
 ## 3. Proved P-ID set
 
-The 41 source-matched, machine-checked P-IDs are:
+The 44 source-matched, machine-checked P-IDs are:
 
 - **Carrier / representation:** P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
 - **Prediction:** P-PRED-01, P-PRED-02, P-PRED-03
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
-- **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05
+- **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-07, P-STAT-08, P-STAT-09
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -66,7 +66,7 @@ The 41 source-matched, machine-checked P-IDs are:
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 41`.
+Count check: `4 + 6 + 3 + 4 + 8 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 44`.
 
 ## 4. 2026-09-11 promotion — P-STAT-01
 
@@ -109,7 +109,70 @@ Verification evidence:
   - `UEOT/V3/FiniteAlphabetPStat01.lean`
   - `UEOT/V3/FiniteAlphabetPStat01Radius.lean`
 
-## 5. Recent promotion evidence since the archived 32-proof checkpoint
+## 5. 2026-09-11 promotions — P-STAT-07, P-STAT-08, P-STAT-09
+
+### P-STAT-07 — kernel-transport covariance
+
+The source-matched theorem formalizes genuine MMD covariance under a
+bimeasurable bijection and synchronously transported kernel; it does not replace
+MMD by total variation.
+
+Verification evidence:
+
+- clean promotion branch full-target CI #622: success
+- PR #31 full-target CI #625: success
+- squash merge: `97533726d71e28b8f4aac1d956db7f65fe98ebda`
+- post-merge main full-target CI #629: success
+- integrated modules:
+  - `UEOT/V3/MMDTransport.lean`
+  - `UEOT/V3/MMDTransportSource.lean`
+
+### P-STAT-08 — finite-candidate discovery
+
+For a finite candidate class, `[0,1]` losses and `N` independent validation
+observations, the integrated proof establishes the exact source radius
+
+`u = sqrt(log(2*m/alpha)/(2*N))`
+
+and proves that an empirical-risk minimizer has true risk at most the finite
+class optimum plus `2*u`, with failure probability at most `alpha`. The proof
+uses candidatewise two-sided Hoeffding concentration plus a finite union bound;
+it assumes no independence between different candidates.
+
+Verification evidence:
+
+- source-complete feature head: `c681bd8208ac52d5a015ae2486162b506232af4f`
+- feature branch full-target CI #640: success
+- clean promotion head: `62b2007831659fa49cd04eb7b2babd4758f9c0a0`
+- clean promotion full-target CI #643: success
+- PR #33 full-target CI #644: success
+- squash merge: `f03ea2ae9996228d86c742d7f787b95a85ad5898`
+- post-merge main full-target CI #648: success
+- integrated modules:
+  - `UEOT/V3/FiniteCandidateDiscovery.lean`
+  - `UEOT/V3/BoundedLossSampling.lean`
+  - `UEOT/V3/BoundedLossTwoSided.lean`
+  - `UEOT/V3/FiniteCandidatePStat08.lean`
+
+### P-STAT-09 — average-error transport
+
+The source-matched theorem proves both deployment-transport clauses: the
+Radon–Nikodym density-ratio bound `E_nu[e] <= C E_mu[e]` under
+`nu << mu, dnu/dmu <= C`, and the TV/span bound
+`E_nu[e] <= E_mu[e] + delta` for `0 <= e <= 1` and
+`D_TV(nu,mu) <= delta`. The RN branch does not replace the source assumption by
+a stronger measure-domination hypothesis.
+
+Verification evidence:
+
+- feature branch full-target CI #630: success
+- clean promotion full-target CI #633: success
+- PR #32 full-target CI #637: success
+- squash merge: `b21f91f233e7cb65c6f1d6ec928b4870ceee3db4`
+- post-merge main full-target CI #641: success
+- integrated module: `UEOT/V3/AverageErrorTransport.lean`
+
+## 6. Recent promotion evidence since the archived 32-proof checkpoint
 
 | P-ID | squash merge | post-merge main CI |
 |---|---|---|
@@ -122,45 +185,19 @@ Verification evidence:
 | P-INFO-01 | `0dd65bc8ae40fdd1afbfdf0cf61c155585a5a2ac` | #572 success |
 | P-STAT-05 | `5e5071820a5e30554b23f8344b3315841b0e4b6a` | #584 success |
 | P-STAT-01 | `9b3a65ee836e32fa99f6670530e3f7afe72ab070` | #599 success |
+| P-STAT-07 | `97533726d71e28b8f4aac1d956db7f65fe98ebda` | #629 success |
+| P-STAT-09 | `b21f91f233e7cb65c6f1d6ec928b4870ceee3db4` | #641 success |
+| P-STAT-08 | `f03ea2ae9996228d86c742d7f787b95a85ad5898` | #648 success |
 
 The full theorem-by-theorem narratives and CI evidence for the earlier
 32-proof checkpoint remain in
 `docs/archive/2026-09-10/V3_COVERAGE_STATUS_32_PROVED.md`. No previously proved
-P-ID is removed or downgraded by this ledger compaction.
+P-ID is removed or downgraded by this ledger synchronization.
 
-## 6. Active unresolved parallel front
+## 7. Active unresolved parallel front
 
-Three disjoint proof-development lanes are active from
-`main@9b3a65ee836e32fa99f6670530e3f7afe72ab070`:
-
-### P-STAT-07 — kernel-transport covariance
-
-Branch: `formal/pstat07-mmd-covariance`.
-
-Frozen source statement: for a bimeasurable bijection `T` and synchronously
-transported kernel `k_T(Tx,Ty)=k(x,y)`,
-
-`MMD_{k_T}(T#P,T#Q) = MMD_k(P,Q)`.
-
-This lane must formalize genuine MMD/kernel transport and may not substitute TV
-covariance.
-
-### P-STAT-08 — finite-candidate discovery
-
-Branch: `formal/pstat08-finite-discovery`.
-
-Frozen source statement: for `m` candidates with losses in `[0,1]` and `N`
-independent validation samples, define
-
-`u = sqrt(log(2*m/alpha)/(2*N))`.
-
-Then the empirical-risk minimizer `fHat` satisfies
-
-`R(fHat) <= min_f R(f) + 2*u`
-
-with probability at least `1-alpha`.
-
-This lane can reuse the already verified Hoeffding and finite-union machinery.
+Proof development remains parallel while main promotion remains serialized.
+The current high-priority lanes are:
 
 ### P-STAT-06 — simultaneous RKHS embedding error
 
@@ -173,14 +210,25 @@ samples, a separable RKHS, `k(y,y)<=1`, and Bochner-integrable feature map,
 
 with probability at least `1-alpha`.
 
-This is the heavy Hilbert-valued concentration lane and remains pending until
-the full source theorem, not a finite-dimensional surrogate, passes all gates.
+The completed helper layers include exact `2/N` replacement sensitivity,
+independent centered Hilbert off-diagonal cancellation, and the deterministic
+empirical-mean squared-norm expansion. The full source theorem remains pending
+until the second-moment/Jensen/McDiarmid/finite-union chain is machine checked.
 
-Proof development is intentionally parallel. Promotion into `main` remains
-serialized: a lane that loses the integration race must clean-port onto the
-newest green Lean-affecting `main` before its PR gate.
+### P-INV-01 — equal-prior binary testing
 
-## 7. Completion rule
+Branch: `formal/pinv01-binary-testing`.
+
+Frozen source statement:
+
+`R* = (1/2) * (1 - D_TV(P0,P1))`.
+
+The universal TV lower bound is machine-checked on the feature branch. The
+general-space attainability layer is being proved via Hahn decomposition, the
+measure-theoretic equivalent of the source density-comparison event. This P-ID
+remains pending until the optimal event theorem and all promotion gates pass.
+
+## 8. Completion rule
 
 The v3.0 formalization is complete only when **all 106 source P-IDs** have been
 semantically matched and machine-checked under the frozen source. A green
