@@ -117,7 +117,6 @@ theorem measure_source_goodGram_and_euclidean_error_gt_le_alpha
         change scoreVector (finDesign (N := N) phi ω)
             (finNoise (N := N) xi ω) j = Z j ω
         rw [scoreVector_finSource_eq_range]
-        rfl
 
   have htail := measure_goodGram_and_euclidean_error_gt_le_alpha
     hN hd μ phiFin err Z hsigma hB hkappa halpha0 halpha1 hnormal hZ
