@@ -86,7 +86,7 @@ def scoreSum {E d : ℕ} (s : Fin E → Ω → Fin d → ℝ) : Ω → Fin d →
 
 /-- A finite-dimensional Fisher matrix entry written directly as a score
 second moment. -/
-def fisherEntry {d : ℕ} (μ : Measure Ω) (s : Ω → Fin d → ℝ)
+noncomputable def fisherEntry {d : ℕ} (μ : Measure Ω) (s : Ω → Fin d → ℝ)
     (i j : Fin d) : ℝ :=
   ∫ ω, s ω i * s ω j ∂μ
 
@@ -113,10 +113,9 @@ theorem fisherEntry_scoreSum_eq_sum
     intro e he
     rw [integral_finsetSum]
     · rw [Finset.sum_eq_single e]
-      · rfl
       · intro f hf hfe
         exact independent_centered_cross_integral_eq_zero μ
-          (h_indep e f hfe i j) (h_meas e i) (h_meas f j)
+          (h_indep e f (Ne.symm hfe) i j) (h_meas e i) (h_meas f j)
           (h_centered e i) (h_centered f j)
       · simp
     · intro f hf
