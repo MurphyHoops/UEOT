@@ -35,9 +35,9 @@ is not a source-level proof promotion.
 
 | status | count |
 |---|---:|
-| **proved** | **40** |
+| **proved** | **41** |
 | **partial** | **0** |
-| **pending** | **66** |
+| **pending** | **65** |
 | **total** | **106** |
 
 There are currently **no partial P-IDs**. Every unresolved source P-ID remains
@@ -45,13 +45,13 @@ explicitly pending until it passes the full gate above.
 
 ## 3. Proved P-ID set
 
-The 40 source-matched, machine-checked P-IDs are:
+The 41 source-matched, machine-checked P-IDs are:
 
 - **Carrier / representation:** P-CAR-01, P-CAR-02, P-CAR-03, P-CAR-04
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
 - **Prediction:** P-PRED-01, P-PRED-02, P-PRED-03
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
-- **Statistics:** P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05
+- **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -66,34 +66,48 @@ The 40 source-matched, machine-checked P-IDs are:
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 4 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 40`.
+Count check: `4 + 6 + 3 + 4 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 41`.
 
-## 4. 2026-09-11 promotion — P-STAT-05
+## 4. 2026-09-11 promotion — P-STAT-01
 
-P-STAT-05 is promoted from `pending` to `proved`.
+P-STAT-01 is promoted from `pending` to `proved`.
 
-The frozen source defines the finite-history response distance
+The frozen source states that for `L` fixed conditional response laws on a
+finite response alphabet of size `K`, with `N` independent samples inside each
+response cell,
 
-`d(h,h') = max_i D_TV(p_{h,i}, p_{h',i})`
+`P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`.
 
-and states that if distinct true predictive classes are separated by at least
-`gamma > 0`, every response law is estimated within TV error `eta`, and
-`2*eta < gamma/2`, then empirical threshold `gamma/2` recovers exactly the true
-predictive equivalence classes.
+It also gives the clipped confidence radius
 
-The integrated Lean development defines the protocol-distance supremum, proves
-its perturbation by at most `2*eta`, proves true-equivalent histories have zero
-true distance, and derives the exact threshold equivalence. It does not use
-single-linkage transitive closure or an uncontrolled nearest-neighbour step.
+`eta_NKL(alpha) = min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
+
+The integrated Lean proof constructs the empirical finite-alphabet probability
+measure, proves the one-sided Bernoulli/Hoeffding event bound under the pinned
+Mathlib API, obtains the lower tail by complement, derives the exact two-sided
+factor `2`, unions over all finite alphabet subsets and fixed response cells,
+and then performs the exact analytic inversion to the source radius. The
+clipping branch is discharged using the deterministic probability-measure bound
+`D_TV <= 1`.
+
+The formal theorem deliberately assumes independence only among the `N` samples
+within each response cell. No independence across response cells is assumed,
+and no extra union factor over carrier candidates is introduced.
 
 Verification evidence:
 
-- final feature head: `259b69ece2be22ead8e22b04c02fcf0bd9170da8`
-- branch full-target CI #580 (`34544593542`): success
-- PR #29 full-target CI #583 (`34544873693`): success
-- squash merge: `5e5071820a5e30554b23f8344b3315841b0e4b6a`
-- post-merge main CI #584 (`34545279143`): success
-- integrated module: `UEOT/V3/PredictiveClassRecovery.lean`
+- final feature head: `c1cf34443572b0d7934f472d69018078fd24930a`
+- feature branch full-target CI #596 (`34547929445`): success
+- clean-port head: `954186a82d7be781a19cfd2e26fb1da0c8cee1bf`
+- clean-port branch full-target CI #597 (`34548185047`): success
+- PR #30 full-target CI #598 (`34548405598`): success
+- squash merge: `9b3a65ee836e32fa99f6670530e3f7afe72ab070`
+- post-merge main full-target CI #599 (`34548608501`): success
+- integrated modules:
+  - `UEOT/V3/FiniteAlphabetConcentration.lean`
+  - `UEOT/V3/FiniteAlphabetSampling.lean`
+  - `UEOT/V3/FiniteAlphabetPStat01.lean`
+  - `UEOT/V3/FiniteAlphabetPStat01Radius.lean`
 
 ## 5. Recent promotion evidence since the archived 32-proof checkpoint
 
@@ -107,31 +121,64 @@ Verification evidence:
 | P-STAT-02 | `5886c7baa4d9b4936e21dbd5639d7c893af22053` | #563 success |
 | P-INFO-01 | `0dd65bc8ae40fdd1afbfdf0cf61c155585a5a2ac` | #572 success |
 | P-STAT-05 | `5e5071820a5e30554b23f8344b3315841b0e4b6a` | #584 success |
+| P-STAT-01 | `9b3a65ee836e32fa99f6670530e3f7afe72ab070` | #599 success |
 
 The full theorem-by-theorem narratives and CI evidence for the earlier
 32-proof checkpoint remain in
 `docs/archive/2026-09-10/V3_COVERAGE_STATUS_32_PROVED.md`. No previously proved
 P-ID is removed or downgraded by this ledger compaction.
 
-## 6. Active unresolved front — P-STAT-01
+## 6. Active unresolved parallel front
 
-The highest-priority pending lane is **P-STAT-01**, the exact finite-alphabet
-simultaneous TV concentration theorem. For `L` fixed conditional responses on a
-finite response alphabet of size `K`, with `N` independent samples per response,
-the frozen source states
+Three disjoint proof-development lanes are active from
+`main@9b3a65ee836e32fa99f6670530e3f7afe72ab070`:
 
-`P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`.
+### P-STAT-07 — kernel-transport covariance
 
-The source proof is the finite-event argument: each subset mass is a Bernoulli
-average; two-sided Hoeffding gives `2*exp(-2*N*eta^2)`; union over at most `2^K`
-subsets and then `L` response cells. The source also states the clipped radius
+Branch: `formal/pstat07-mmd-covariance`.
 
-`min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
+Frozen source statement: for a bimeasurable bijection `T` and synchronously
+transported kernel `k_T(Tx,Ty)=k(x,y)`,
 
-The deterministic `2^K`/`L` union layer has already compiled on its development
-branch. The sampling/Hoeffding layer remains under active CI and is **not**
-counted as proved. Once the simultaneous response event is established it must
-feed directly into P-STAT-02, with no extra union bound over carrier candidates.
+`MMD_{k_T}(T#P,T#Q) = MMD_k(P,Q)`.
+
+This lane must formalize genuine MMD/kernel transport and may not substitute TV
+covariance.
+
+### P-STAT-08 — finite-candidate discovery
+
+Branch: `formal/pstat08-finite-discovery`.
+
+Frozen source statement: for `m` candidates with losses in `[0,1]` and `N`
+independent validation samples, define
+
+`u = sqrt(log(2*m/alpha)/(2*N))`.
+
+Then the empirical-risk minimizer `fHat` satisfies
+
+`R(fHat) <= min_f R(f) + 2*u`
+
+with probability at least `1-alpha`.
+
+This lane can reuse the already verified Hoeffding and finite-union machinery.
+
+### P-STAT-06 — simultaneous RKHS embedding error
+
+Branch: `formal/pstat06-mmd-concentration`.
+
+Frozen source statement: for `L` fixed response laws, each with `N` independent
+samples, a separable RKHS, `k(y,y)<=1`, and Bochner-integrable feature map,
+
+`max_j ||muHat_j-mu_j|| <= (1 + sqrt(2*log(L/alpha)))/sqrt(N)`
+
+with probability at least `1-alpha`.
+
+This is the heavy Hilbert-valued concentration lane and remains pending until
+the full source theorem, not a finite-dimensional surrogate, passes all gates.
+
+Proof development is intentionally parallel. Promotion into `main` remains
+serialized: a lane that loses the integration race must clean-port onto the
+newest green Lean-affecting `main` before its PR gate.
 
 ## 7. Completion rule
 

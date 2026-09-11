@@ -29,103 +29,103 @@ the matching body is actually committed to the repository.
 
 | status | count |
 |---|---:|
-| proved | **40** |
+| proved | **41** |
 | partial | **0** |
-| pending | **66** |
+| pending | **65** |
 | total | **106** |
 
-Latest completed proof promotion: **P-STAT-05**.
+Latest completed proof promotion: **P-STAT-01**.
 
-- final feature head: `259b69ece2be22ead8e22b04c02fcf0bd9170da8`
-- branch CI #580 (`34544593542`): success
-- PR #29 CI #583 (`34544873693`): success
-- squash merge: `5e5071820a5e30554b23f8344b3315841b0e4b6a`
-- post-merge main CI #584 (`34545279143`): success
-- source-level ledger synchronization commit: `5214fe5cff18adca6b37ed4c30e72098592034f3`
+- final feature head: `c1cf34443572b0d7934f472d69018078fd24930a`
+- feature branch CI #596 (`34547929445`): success
+- clean-port head: `954186a82d7be781a19cfd2e26fb1da0c8cee1bf`
+- clean-port branch CI #597 (`34548185047`): success
+- PR #30 CI #598 (`34548405598`): success
+- squash merge: `9b3a65ee836e32fa99f6670530e3f7afe72ab070`
+- post-merge main CI #599 (`34548608501`): success
 
-P-STAT-05 now exposes exact finite-history predictive-class recovery under the
-source gap condition. It proves same-class empirical distance is at most
-`2*eta`, different-class empirical distance is at least `gamma-2*eta`, and the
-`gamma/2` threshold exactly coincides with true predictive equivalence. It does
-not infer class identity by uncontrolled transitive closure.
+P-STAT-01 now exposes the exact frozen finite-alphabet simultaneous TV tail
+bound
 
-## 3. HOT proof lane A — P-STAT-01
+`P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`
 
-Branch: `formal/pstat01-finite-tv`
+and the clipped confidence radius
 
-Target: **P-STAT-01 — finite-alphabet simultaneous TV concentration**.
+`min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
 
-Frozen source statement for `L` fixed response cells, response alphabet size
-`K`, and `N` independent samples per cell:
+The proof uses only within-cell independence across the `N` samples. It does
+not assume independence across response cells, and it does not add any carrier
+candidate union factor. The clipped branch is discharged by the deterministic
+probability-measure bound `D_TV <= 1`.
 
-`P(max_j D_TV(p_j,pHat_j) > eta) <= L * 2^(K+1) * exp(-2*N*eta^2)`.
+## 3. Active parallel proof lanes
 
-Clipped source radius:
+Formal proof development is parallel; only promotion into `main` is serialized.
+All current lanes branch from `main@9b3a65ee836e32fa99f6670530e3f7afe72ab070`.
 
-`eta_NKL(alpha) = min 1 (sqrt (((K+1)*log 2 + log(L/alpha))/(2*N)))`.
+### Lane A — P-STAT-07: MMD kernel-transport covariance
 
-Source proof structure is frozen:
+Branch: `formal/pstat07-mmd-covariance`
 
-1. each response-cell/subset empirical mass is a Bernoulli average;
-2. two-sided Hoeffding contributes `2 * exp(-2*N*eta^2)`;
-3. union over at most `2^K` alphabet subsets;
-4. union over `L` response cells;
-5. finite-space TV is the maximum event-mass discrepancy;
-6. when the analytic radius exceeds one, use deterministic `TV <= 1`.
-
-No independence across response cells is required; only the `N` samples inside
-each cell need independence. No carrier-candidate union bound is permitted:
-P-STAT-02 already propagates one simultaneous response event deterministically
-to all carrier defects.
-
-### Current implementation state
-
-Two modules are active:
-
-- `UEOT/V3/FiniteAlphabetConcentration.lean` — deterministic finite-event/union layer;
-- `UEOT/V3/FiniteAlphabetSampling.lean` — empirical law and Hoeffding sampling layer.
-
-The deterministic layer has already passed the official target on branch CI
-#579 (`34544379413`), including the exact `2^K` subset factor and `L` response
-factor.
-
-Sampling development history:
-
-- structural sampling head `7c8ac7e5ebf04138a6e75c9921995e4fff685eb7`;
-- CI #585 (`34545387234`) failed only in the sampling module;
-- #585 narrowed the remaining issues to indicator-constant normalization,
-  finite empirical-count coercion syntax, and the exact pinned-Mathlib
-  namespace for the independent-sum Hoeffding theorem;
-- exact pinned Mathlib audit established the tail theorem as
-  `ProbabilityTheory.HasSubgaussianMGF.measure_sum_ge_le_of_iIndepFun`;
-- current repair head: `686786cf8f9c91234fd4f6d49528ea6e9bac450e`;
-- current branch CI #586 (`34545870759`) is the next verification run.
-
-The accepted part of #585 already includes measurable Bernoulli indicators,
-i.i.d.-within-cell independence transport to centered variables, exact event
-means, and the `[0,1]` Hoeffding sub-Gaussian certificate. No source theorem
-constant has been changed.
-
-### Promotion constraint after P-STAT-05
-
-P-STAT-01 was opened before the P-STAT-05 Lean-affecting merge. Therefore even
-if its current feature CI becomes green, it must be clean-ported/rebased onto
-the newest green Lean-affecting `main` before PR promotion. Feature-green is not
-source-level `proved`.
-
-## 4. HOT proof lane B — next independent statistics audit
-
-The next low-collision target is **P-STAT-07** after P-STAT-01 stabilizes.
-The frozen source states exact MMD covariance under a bimeasurable bijection
-`T` with synchronously transported kernel `k_T(Tx,Ty)=k(x,y)`:
+Frozen source target: for a bimeasurable bijection `T`, synchronously transport
+`k` by `k_T(Tx,Ty)=k(x,y)` and prove
 
 `MMD_{k_T}(T#P,T#Q) = MMD_k(P,Q)`.
 
-This should be developed as a separate MMD/kernel infrastructure packet. The
-repository does not currently expose a dedicated MMD module, so do not fake the
-theorem by renaming TV covariance. P-STAT-06 is heavier because it requires the
-separable-RKHS/Bochner/McDiarmid concentration layer and should not block
-P-STAT-07.
+Implementation rule: formalize genuine MMD/kernel expectations or kernel means;
+do not substitute TV covariance. The proof must make the three transported
+kernel expectations explicit or prove the equivalent kernel-mean identity.
+
+### Lane B — P-STAT-08: finite-candidate discovery
+
+Branch: `formal/pstat08-finite-discovery`
+
+Frozen source target: for `m` candidates, losses in `[0,1]`, and `N` independent
+validation samples, with
+
+`u = sqrt(log(2*m/alpha)/(2*N))`,
+
+the empirical-risk minimizer satisfies
+
+`R(fHat) <= min_f R(f) + 2*u`
+
+with probability at least `1-alpha`.
+
+This lane may reuse the already verified Hoeffding/finite-union infrastructure,
+but must keep the finite-candidate ERM argument source-matched.
+
+### Lane C — P-STAT-06: RKHS/MMD simultaneous embedding error
+
+Branch: `formal/pstat06-mmd-concentration`
+
+Frozen source target: for `L` fixed response laws, `N` independent samples per
+law, separable RKHS, `k(y,y)<=1`, and Bochner-integrable feature map,
+
+`max_j ||muHat_j-mu_j|| <= (1 + sqrt(2*log(L/alpha)))/sqrt(N)`
+
+with probability at least `1-alpha`.
+
+This is the heavy infrastructure lane: Hilbert-valued empirical means,
+Bochner expectation, bounded-difference/McDiarmid concentration, and the final
+finite union. Do not weaken the source theorem to a finite-dimensional proxy.
+
+## 4. Promotion protocol for parallel lanes
+
+Each lane may compile, repair, and accumulate commits independently. Promotion
+into `main` remains a single-writer train:
+
+1. semantic source audit;
+2. feature full-target CI;
+3. clean-port/rebase onto newest green Lean-affecting `main`;
+4. clean-port branch full-target CI;
+5. PR full-target CI;
+6. squash merge;
+7. post-merge main full-target CI;
+8. ledger synchronization.
+
+A later lane must clean-port if another Lean-affecting lane reaches `main` first.
+This is how proof work stays parallel without letting integration races corrupt
+source-level accounting.
 
 ## 5. Recent integrated promotions
 
@@ -138,7 +138,8 @@ Recent source-level promotions after the archived 32-proof checkpoint:
 - P-ID-01 — main CI #547 success;
 - P-STAT-02 — main CI #563 success;
 - P-INFO-01 — main CI #572 success;
-- P-STAT-05 — main CI #584 success.
+- P-STAT-05 — main CI #584 success;
+- P-STAT-01 — main CI #599 success.
 
 Detailed older narratives remain in the source-level coverage archive and Git
 history. No already proved P-ID is downgraded by this state-file compaction.
@@ -164,8 +165,10 @@ Current high-value constraints:
    defects by `2*eta`; carrier multiplicity must not be reintroduced in P-STAT-01.
 8. P-STAT-01 complexity depends on response alphabet size `K` and response-cell
    count `L`, not the number of candidate carriers.
-9. Import-graph reachability is part of proof evidence.
-10. No active lane has produced an F3 counterexample to the UEOT Core architecture.
+9. MMD-small does not imply TV-small in general; P-STAT-06/07 must keep the RKHS
+   error scale distinct from TV.
+10. Import-graph reachability is part of proof evidence.
+11. No active lane has produced an F3 counterexample to the UEOT Core architecture.
 
 ## 7. Mandatory recovery procedure
 
@@ -173,27 +176,25 @@ Current high-value constraints:
 2. Read `V3_COVERAGE_STATUS.md`.
 3. Fetch current `main` SHA and latest main Action.
 4. Inspect every main commit newer than the checkpoint recorded here.
-5. Compare every HOT branch to current `main` and inspect its latest CI.
+5. Compare every active branch to current `main` and inspect its latest CI.
 6. Never overwrite a newer branch head with an older remembered version.
 7. Feature-green is not `proved` until semantic audit + integration + green
    post-merge CI + ledger sync.
 8. New modules must be reachable from `UEOT` / `UEOT.V3`.
-9. After material branch-state changes or promotions, update this snapshot in
-   the same work session.
+9. Keep proof development parallel but serialize main promotion.
 10. For unresolved theorem wording, use the recovered canonical v3.0 source;
     never reconstruct constants or hypotheses from memory.
 
 ## 8. Immediate execution order
 
-1. Close P-STAT-01 sampling/Hoeffding compile errors on its feature branch.
-2. Add the lower-tail/two-sided event theorem, then feed it through the already
-   green subset and response-cell union layer.
-3. Prove the exact source-facing P-STAT-01 probability bound and clipped radius.
-4. Connect that single simultaneous response event directly to P-STAT-02.
-5. Clean-port the completed packet onto newest green Lean-affecting `main`.
-6. Run branch CI -> PR CI -> squash merge -> post-merge main CI -> ledger sync.
-7. In a disjoint lane, begin P-STAT-07 MMD covariance infrastructure only after
-   the P-STAT-01 sampling API is stable.
+Parallel now:
+
+- P-STAT-07: build genuine MMD transport infrastructure and prove covariance;
+- P-STAT-08: reuse verified finite-sample concentration to close finite ERM;
+- P-STAT-06: build the separable-RKHS/Bochner/McDiarmid stack.
+
+Promote whichever source-matched lane becomes green first, then clean-port the
+remaining lanes onto the new `main` before their own PR gates.
 
 ## 9. Repository truth hierarchy
 
