@@ -6,7 +6,7 @@ import Mathlib.Tactic
 # P-INV-05 — coordinate sub-Gaussian tail layer
 
 This module isolates the probability step after the predictable-design score
-coordinates have been shown to be sub-Gaussian.  It proves a two-sided tail for
+coordinates have been shown to be sub-Gaussian. It proves a two-sided tail for
 one coordinate and a finite-dimensional union bound over all `d` coordinates.
 
 The remaining source-specific bridge is to derive the coordinate
@@ -36,6 +36,7 @@ theorem measure_abs_gt_le_of_hasSubgaussianMGF
   let lower : Set Ω := {ω | R ≤ -X ω}
   have hbad : {ω | R < |X ω|} ⊆ upper ∪ lower := by
     intro ω hω
+    change R < |X ω| at hω
     change ω ∈ upper ∪ lower
     by_cases hx : 0 ≤ X ω
     · left
@@ -83,8 +84,7 @@ theorem measure_exists_coord_abs_gt_le
       exact Finset.sum_le_sum fun j _ =>
         measure_abs_gt_le_of_hasSubgaussianMGF μ (Z j) (hZ j) hR
     _ = (d : ℝ) * (2 * exp (-R ^ 2 / (2 * c))) := by
-      rw [Finset.sum_const, nsmul_eq_mul]
-      norm_cast
+      rw [Finset.sum_const, nsmul_eq_mul, Finset.card_univ, Fintype.card_fin]
 
 /-- A convenient failure-probability wrapper: any threshold whose union-bound
 right-hand side is at most `alpha` gives simultaneous coordinate control except
