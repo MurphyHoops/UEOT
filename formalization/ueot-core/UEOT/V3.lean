@@ -23,6 +23,7 @@ import UEOT.V3.FiniteAlphabetPStat01
 import UEOT.V3.FiniteAlphabetPStat01Radius
 import UEOT.V3.MMDTransport
 import UEOT.V3.MMDTransportSource
+import UEOT.V3.AverageErrorTransport
 import UEOT.V3.VariationBridge
 import UEOT.V3.ViabilityKernel
 import UEOT.V3.ViabilityPath
