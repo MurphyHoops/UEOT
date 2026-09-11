@@ -160,7 +160,7 @@ theorem fisherAction_apply_eq_sum_fisherEntry_mul
         (∫ ω, (s ω i * s ω j) * v j ∂μ) =
           (∫ ω, s ω i * s ω j ∂μ) * v j)
   · intro j hj
-    exact (h_int i j).mul_const (v j)
+    simpa only [mul_assoc] using (h_int i j).mul_const (v j)
 
 /-- Fisher information is additive as an operator under the same centered
 cross-experiment independence hypotheses used for entry-wise additivity. -/
@@ -178,14 +178,25 @@ theorem fisherAction_scoreSum_eq_totalAction
     fisherAction μ (scoreSum s) v =
       totalAction (fun e => fisherAction μ (s e)) v := by
   funext i
-  rw [fisherAction_apply_eq_sum_fisherEntry_mul μ (scoreSum s)
-    (fun a b => integrable_scoreSum_mul_scoreSum μ s h_int a b) v i]
-  simp_rw [fisherEntry_scoreSum_eq_sum μ s h_int h_indep h_meas h_centered]
-  simp_rw [Finset.sum_mul]
-  unfold totalAction
-  simp_rw [fisherAction_apply_eq_sum_fisherEntry_mul μ]
-  · rw [Finset.sum_comm]
-  · intro e a b
-    exact h_int e e a b
+  calc
+    fisherAction μ (scoreSum s) v i
+        = ∑ j, fisherEntry μ (scoreSum s) i j * v j :=
+      fisherAction_apply_eq_sum_fisherEntry_mul μ (scoreSum s)
+        (fun a b => integrable_scoreSum_mul_scoreSum μ s h_int a b) v i
+    _ = ∑ j, (∑ e, fisherEntry μ (s e) i j) * v j := by
+      apply Finset.sum_congr rfl
+      intro j hj
+      rw [fisherEntry_scoreSum_eq_sum μ s h_int h_indep h_meas h_centered]
+    _ = ∑ j, ∑ e, fisherEntry μ (s e) i j * v j := by
+      simp_rw [Finset.sum_mul]
+    _ = ∑ e, ∑ j, fisherEntry μ (s e) i j * v j := by
+      rw [Finset.sum_comm]
+    _ = ∑ e, fisherAction μ (s e) v i := by
+      apply Finset.sum_congr rfl
+      intro e he
+      symm
+      exact fisherAction_apply_eq_sum_fisherEntry_mul μ (s e)
+        (fun a b => h_int e e a b) v i
+    _ = totalAction (fun e => fisherAction μ (s e)) v i := by rfl
 
 end UEOT.V3.FisherIntersection
