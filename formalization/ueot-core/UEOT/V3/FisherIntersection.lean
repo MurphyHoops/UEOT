@@ -11,8 +11,8 @@ The frozen theorem has two steps:
 2. since every Fisher block is positive semidefinite, the kernel of that sum is
    exactly the intersection of the individual kernels.
 
-This file machine-checks step 2 and a reusable probabilistic lemma for step 1:
-centered independent scalar scores have zero cross expectation.
+This file machine-checks the PSD kernel mechanism, centered independent cross
+term cancellation, and the finite-dimensional Fisher-entry accumulation step.
 -/
 
 namespace UEOT.V3.FisherIntersection
@@ -26,9 +26,8 @@ def totalAction {E d : ℕ}
     (v : Fin d → ℝ) : Fin d → ℝ :=
   fun i => ∑ e, A e v i
 
-/-- Abstract PSD quadratic data for a family of Fisher blocks.  `q e v` is the
-quadratic form of block `e`; the final field records the standard PSD fact that
-a zero quadratic form value is equivalent to annihilation of `v`. -/
+/-- Abstract PSD quadratic data for a family of Fisher blocks. `quad e v` is the
+quadratic form of block `e`. -/
 structure PSDActionFamily (E d : ℕ) where
   action : Fin E → (Fin d → ℝ) → (Fin d → ℝ)
   quad : Fin E → (Fin d → ℝ) → ℝ
@@ -65,7 +64,7 @@ universe uΩ
 variable {Ω : Type uΩ} [MeasurableSpace Ω]
 
 /-- If two scalar experiment scores are independent and centered, their Fisher
-cross term vanishes.  This is the exact probabilistic cancellation used when
+cross term vanishes. This is the exact probabilistic cancellation used when
 expanding the square of the total score. -/
 theorem independent_centered_cross_integral_eq_zero
     (μ : Measure Ω) [IsProbabilityMeasure μ]
@@ -80,5 +79,49 @@ theorem independent_centered_cross_integral_eq_zero
     ∫ ω, X ω * Y ω ∂μ = (∫ ω, X ω ∂μ) * (∫ ω, Y ω ∂μ) := by
       simpa only [Pi.mul_apply] using hXY.integral_mul_eq_mul_integral hX hY
     _ = 0 := by rw [hX0, hY0]; norm_num
+
+/-- Coordinatewise sum of finitely many experiment scores. -/
+def scoreSum {E d : ℕ} (s : Fin E → Ω → Fin d → ℝ) : Ω → Fin d → ℝ :=
+  fun ω i => ∑ e, s e ω i
+
+/-- A finite-dimensional Fisher matrix entry written directly as a score
+second moment. -/
+def fisherEntry {d : ℕ} (μ : Measure Ω) (s : Ω → Fin d → ℝ)
+    (i j : Fin d) : ℝ :=
+  ∫ ω, s ω i * s ω j ∂μ
+
+/-- Under coordinatewise independence across distinct experiments and centered
+scores, the Fisher matrix of the summed score is the sum of experiment Fisher
+matrices. Pairwise integrability is stated explicitly so the Bochner integral
+linearity step is fully justified. -/
+theorem fisherEntry_scoreSum_eq_sum
+    {E d : ℕ}
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    (s : Fin E → Ω → Fin d → ℝ)
+    (h_int : ∀ e f i j,
+      Integrable (fun ω => s e ω i * s f ω j) μ)
+    (h_indep : ∀ e f, e ≠ f → ∀ i j,
+      (fun ω => s e ω i) ⟂ᵢ[μ] (fun ω => s f ω j))
+    (h_meas : ∀ e i, AEStronglyMeasurable (fun ω => s e ω i) μ)
+    (h_centered : ∀ e i, ∫ ω, s e ω i ∂μ = 0)
+    (i j : Fin d) :
+    fisherEntry μ (scoreSum s) i j = ∑ e, fisherEntry μ (s e) i j := by
+  unfold fisherEntry scoreSum
+  simp_rw [Finset.sum_mul, Finset.mul_sum]
+  rw [integral_finsetSum]
+  · apply Finset.sum_congr rfl
+    intro e he
+    rw [integral_finsetSum]
+    · rw [Finset.sum_eq_single e]
+      · rfl
+      · intro f hf hfe
+        exact independent_centered_cross_integral_eq_zero μ
+          (h_indep e f hfe i j) (h_meas e i) (h_meas f j)
+          (h_centered e i) (h_centered f j)
+      · simp
+    · intro f hf
+      exact h_int e f i j
+  · intro e he
+    exact integrable_finsetSum _ (fun f hf => h_int e f i j)
 
 end UEOT.V3.FisherIntersection
