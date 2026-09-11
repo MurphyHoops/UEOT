@@ -22,24 +22,25 @@ and ledger synchronization.
 
 | status | count |
 |---|---:|
-| proved | **45** |
+| proved | **46** |
 | partial | **0** |
-| pending | **61** |
+| pending | **60** |
 | total | **106** |
 
-Latest completed proof promotion: **P-INV-01**.
+Latest completed proof promotion: **P-INV-02**.
 
 Evidence:
-- feature CI #653: success
-- clean head `e5d185cafc6897981b4d70b664dd30cc4ab7774e`
-- clean CI #659: success
-- PR #35 CI #664: success
-- squash merge `e653401b51594d86f03c317bdd12decae1c27159`
-- post-main CI #666: success
+- feature head `945d58c9ba35c71f319f37e2fa7ffbec06304397`
+- feature CI #671: success
+- clean head `b4ef000384a581400ebcf132e86adcfa14926849`
+- clean CI #677: success
+- PR #37 CI #679: success
+- squash merge `cbfe8eff494a558f113d2e79136655b9ddb61ca7`
+- post-main CI #682: success
 
-P-INV-01 now machine-checks the exact equal-prior general-space identity
-`R* = (1/2) * (1 - D_TV(P0,P1))`, including existence and optimality of a
-measurable attaining event.
+P-INV-02 now machine-checks the frozen Fisher gauge statement: likelihood
+invariance along a smooth orbit forces zero directional score almost
+everywhere, hence the Fisher action annihilates the orbit tangent.
 
 ## Active parallel lanes
 
@@ -51,27 +52,38 @@ Frozen target:
 `max_j ||muHat_j-mu_j|| <= (1 + sqrt(2*log(L/alpha)))/sqrt(N)`
 with probability at least `1-alpha`.
 
-Green layers:
+Implemented layers:
 - exact one-replacement sensitivity `2/N`;
 - independent centered Hilbert off-diagonal cancellation;
 - empirical-mean squared-norm expansion;
-- exact second moment `E||mean Z_i||^2 <= 1/N` (CI #649);
-- exact scalar first/second moment bridge (CI #660).
+- exact second moment `E||mean Z_i||^2 <= 1/N`;
+- direct Hilbert first-moment bound;
+- exact scalar/Azuma tail algebra.
 
-Current work: direct Hilbert first-moment theorem
-`E||mean Z_i|| <= 1/sqrt(N)`, followed by McDiarmid and finite union.
+Current state: the pre-import Azuma commit CI #680 is green, but importing the
+Azuma layer into the official V3 target at head `9fb2da89...` makes CI #681
+fail during `lake build UEOT`. Repair this integration before adding the final
+bounded-difference/Doob bridge and finite union wrapper.
 
-### P-INV-02 — Fisher gauge zero directions
+### P-INV-03 — Fisher information accumulation
 
-Branch: `formal/pinv02-fisher-gauge`.
+Branch: `formal/pinv03-fisher-intersection`.
 
-Frozen target: a tangent to a smooth likelihood-invariant group orbit has zero
-directional score and is annihilated by Fisher information.
+Current head is based directly on the P-INV-02 main checkpoint. CI #683 and
+#684 are green. `FisherIntersection.lean` proves the PSD kernel-intersection
+mechanism. Remaining source obligation: derive total Fisher additivity from
+conditional independence and zero-mean experiment scores, then connect it to
+the kernel theorem in one source-facing wrapper.
 
-Current work: the Fisher-action kernel core and local smooth-orbit derivative
-bridge are implemented. The previous CI failure was only pointwise zero-function
-normalization; commit `c5146ed0b3827d2c4fa2b0b116c39651ad91fb28` repairs it.
-P-INV-02 remains pending until source audit and the entire promotion train pass.
+### P-INV-04 — noiseless design identifiability
+
+Development branch: `formal/pinv04-design-identifiability`.
+
+The source-facing theorem `p_inv_04` is implemented and latest branch CI #678
+is green. It proves injectivity of the fixed noiseless design map iff the Gram
+quadratic form is strictly positive away from zero, exactly matching
+`G_N ≻ 0`. The development branch is behind current main and is queued for a
+clean promotion port.
 
 ## Promotion protocol
 
@@ -101,6 +113,7 @@ Parallel proof development is allowed; main promotion remains serialized.
 - P-STAT-09 — #641
 - P-STAT-08 — #648
 - P-INV-01 — #666
+- P-INV-02 — #682
 
 ## Mandatory recovery procedure
 
