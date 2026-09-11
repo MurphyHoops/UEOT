@@ -69,16 +69,21 @@ theorem integrable_exp_predictable_mul
         exact hbound ω
   have hexp : exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) :=
     Real.exp_le_exp.mpr hu
-  calc
-    exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) := hexp
-    _ ≤ exp (q * X ω) + exp ((-q) * X ω) := by
-      by_cases hx : 0 ≤ X ω
-      · rw [abs_of_nonneg hx]
-        exact le_add_of_nonneg_right (Real.exp_pos _).le
-      · have hx' : X ω ≤ 0 := le_of_not_ge hx
-        rw [abs_of_nonpos hx']
-        have heq : q * (-X ω) = (-q) * X ω := by ring
-        rw [heq]
-        exact le_add_of_nonneg_left (Real.exp_pos _).le
+  have hcalc :
+      exp (t * (A ω * X ω)) ≤ exp (q * X ω) + exp ((-q) * X ω) := by
+    calc
+      exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) := hexp
+      _ ≤ exp (q * X ω) + exp ((-q) * X ω) := by
+        by_cases hx : 0 ≤ X ω
+        · rw [abs_of_nonneg hx]
+          exact le_add_of_nonneg_right (Real.exp_pos _).le
+        · have hx' : X ω ≤ 0 := le_of_not_ge hx
+          rw [abs_of_nonpos hx']
+          have heq : q * (-X ω) = (-q) * X ω := by ring
+          rw [heq]
+          exact le_add_of_nonneg_left (Real.exp_pos _).le
+  have hsum_pos : 0 < exp (q * X ω) + exp ((-q) * X ω) :=
+    add_pos (Real.exp_pos _) (Real.exp_pos _)
+  simpa only [Real.norm_eq_abs, abs_of_pos (Real.exp_pos _), abs_of_pos hsum_pos] using hcalc
 
 end UEOT.V3.PredictableOLSProductIntegrability
