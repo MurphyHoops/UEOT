@@ -27,7 +27,7 @@ theorem azuma_parameterized
     (h_adapted : StronglyAdapted ℱ Y)
     (h0 : HasSubgaussianMGF (Y 0) (cY 0) μ)
     (n : ℕ)
-    (h_subG : ∀ i < n - 1,
+    (h_subG : ∀ (i : ℕ), i < n - 1 →
       HasCondSubgaussianMGF (ℱ i) (ℱ.le i) (Y (i + 1)) (cY (i + 1)) μ)
     {ε : ℝ} (hε : 0 ≤ ε) :
     μ.real {ω | ε ≤ ∑ i ∈ Finset.range n, Y i ω}
