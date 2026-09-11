@@ -37,7 +37,7 @@ theorem hasCondSubgaussianMGF_predictable_mul_of_freeze
       ∀ᵐ y ∂(condExpKernel (mΩ := mΩ) μ m ω), A y = A ω)
     (hint : ∀ t : ℝ, Integrable (fun ω => exp (t * (A ω * X ω))) μ) :
     HasCondSubgaussianMGF m hm (fun ω => A ω * X ω)
-      (NNReal.ofReal (B ^ 2) * c) μ := by
+      (Real.toNNReal (B ^ 2) * c) μ := by
   unfold HasCondSubgaussianMGF
   refine
     { integrable_exp_mul := ?_
@@ -56,12 +56,12 @@ theorem hasCondSubgaussianMGF_predictable_mul_of_freeze
     calc
       mgf X (condExpKernel (mΩ := mΩ) μ m ω) (A ω * t)
           ≤ exp ((c : ℝ) * (A ω * t) ^ 2 / 2) := hmgf _
-      _ ≤ exp (((NNReal.ofReal (B ^ 2) * c : ℝ≥0) : ℝ) * t ^ 2 / 2) := by
+      _ ≤ exp ((((Real.toNNReal (B ^ 2)) * c : ℝ≥0) : ℝ) * t ^ 2 / 2) := by
         apply Real.exp_le_exp.mpr
         have hsq : (A ω) ^ 2 ≤ B ^ 2 := by
           rw [sq_le_sq]
           simpa [abs_of_nonneg hB0] using hbound ω
-        rw [NNReal.coe_mul, NNReal.coe_ofReal (sq_nonneg B)]
+        rw [NNReal.coe_mul, Real.coe_toNNReal (B ^ 2) (sq_nonneg B)]
         calc
           (c : ℝ) * (A ω * t) ^ 2 / 2
               = ((c : ℝ) * (A ω) ^ 2) * t ^ 2 / 2 := by ring
