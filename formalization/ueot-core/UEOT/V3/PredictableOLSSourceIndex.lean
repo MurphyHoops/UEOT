@@ -5,7 +5,7 @@ import Mathlib.Tactic
 # P-INV-05 — source time / finite-sample index bridge
 
 The source theorem is naturally indexed by times `1, ..., N`, while the
-finite-dimensional OLS algebra uses `Fin N`.  This module makes that change of
+finite-dimensional OLS algebra uses `Fin N`. This module makes that change of
 index explicit and proves that the finite OLS score is exactly the shifted
 source-time score used by the martingale concentration layer.
 -/
@@ -37,6 +37,8 @@ theorem scoreVector_finSource_eq_range
     scoreVector (finDesign (N := N) phi ω) (finNoise (N := N) xi ω) j =
       ∑ t ∈ Finset.range N, phi (t + 1) ω j * xi (t + 1) ω := by
   unfold scoreVector finDesign finNoise
-  rw [Fin.sum_univ_eq_sum_range]
+  simpa using
+    (Fin.sum_univ_eq_sum_range
+      (fun t : ℕ => phi (t + 1) ω j * xi (t + 1) ω))
 
 end UEOT.V3.PredictableOLSSourceIndex
