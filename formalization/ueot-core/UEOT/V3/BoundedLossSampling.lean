@@ -61,14 +61,14 @@ theorem measure_empiricalRisk_upper_le
       trueRisk P loss + u ≤ empiricalRisk loss sample ω} ≤
       exp (-2 * (N : ℝ) * u ^ 2) := by
   let X : Fin N → Ω → ℝ := fun n ω => loss (sample n ω)
-  let C : Fin N → Ω → ℝ := fun n ω => X n ω - μ[X n]
+  let C : Fin N → Ω → ℝ := fun n ω => X n ω - trueRisk P loss
   have hXmeas : ∀ n, Measurable (X n) := fun n => hloss.comp (hmeas n)
   have hXindep : iIndepFun X μ := by
     simpa [X, Function.comp_def] using
       hindep.comp (fun _ => loss) (fun _ => hloss)
   have hCindep : iIndepFun C μ := by
     simpa [C, Function.comp_def] using
-      hXindep.comp (fun n x => x - μ[X n])
+      hXindep.comp (fun _ x => x - trueRisk P loss)
         (fun _ => measurable_id.sub measurable_const)
   have hmean : ∀ n, ∫ ω, X n ω ∂μ = trueRisk P loss := by
     intro n
@@ -81,7 +81,7 @@ theorem measure_empiricalRisk_upper_le
       (μ := μ) (X := X n) (a := (0 : ℝ)) (b := (1 : ℝ))
       (hXmeas n).aemeasurable
       (ae_of_all μ fun ω => hloss01 (sample n ω))
-    simpa [C] using hs
+    simpa [C, hmean n] using hs
   have htail := ProbabilityTheory.HasSubgaussianMGF.measure_sum_ge_le_of_iIndepFun
     (h_indep := hCindep)
     (s := (Finset.univ : Finset (Fin N)))
@@ -98,7 +98,6 @@ theorem measure_empiricalRisk_upper_le
     change (N : ℝ) * u ≤
       ∑ n ∈ (Finset.univ : Finset (Fin N)), C n ω
     simp only [C, X, Finset.sum_sub_distrib]
-    simp_rw [hmean]
     simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
     have hNreal : (0 : ℝ) < N := by exact_mod_cast hN
     field_simp [ne_of_gt hNreal] at hω ⊢
