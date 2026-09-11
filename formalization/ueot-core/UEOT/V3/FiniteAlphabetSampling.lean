@@ -130,7 +130,7 @@ theorem empiricalMeasure_real_finset {N : ℕ} (hN : 0 < N)
   unfold empiricalMeasure
   rw [measureReal_def, Measure.map_apply hf hA]
   change ((PMF.uniformOfFintype (Fin N)).toMeasure S).toReal = _
-  rw [PMF.toMeasure_uniformOfFintype_apply hS]
+  rw [PMF.toMeasure_uniformOfFintype_apply S hS]
   simp only [Fintype.card_fin, ENNReal.toReal_div, ENNReal.toReal_natCast]
   rw [hcardReal]
 
