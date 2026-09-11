@@ -69,6 +69,10 @@ theorem integrable_exp_predictable_mul
         exact hbound ω
   have hexp : exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) :=
     Real.exp_le_exp.mpr hu
+  have hsum_pos : 0 < exp (q * X ω) + exp ((-q) * X ω) :=
+    add_pos (Real.exp_pos _) (Real.exp_pos _)
+  rw [Real.norm_eq_abs, abs_of_pos (Real.exp_pos _),
+    Real.norm_eq_abs, abs_of_pos hsum_pos]
   calc
     exp (t * (A ω * X ω)) ≤ exp (q * |X ω|) := hexp
     _ ≤ exp (q * X ω) + exp ((-q) * X ω) := by
