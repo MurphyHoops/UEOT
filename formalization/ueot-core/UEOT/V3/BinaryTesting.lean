@@ -88,32 +88,30 @@ theorem exists_event_gap_eq_tvDist
     exact measureReal_le_of_le P₁ P₀ T hraw
   have hgap_nonneg : 0 ≤ P₁.real S - P₀.real S := by
     exact sub_nonneg.mpr (hpos S hS.measurableSet subset_rfl)
-  have hall : ∀ A : Set X, MeasurableSet A →
-      |P₀.real A - P₁.real A| ≤ P₁.real S - P₀.real S := by
+  have hsigned : ∀ A : Set X, MeasurableSet A →
+      P₁.real A - P₀.real A ≤ P₁.real S - P₀.real S := by
     intro A hA
     have hA0 := measureReal_inter_add_sdiff (μ := P₀) (s := A) hS.measurableSet
     have hA1 := measureReal_inter_add_sdiff (μ := P₁) (s := A) hS.measurableSet
     have hS0 := measureReal_inter_add_sdiff (μ := P₀) (s := S) hA
     have hS1 := measureReal_inter_add_sdiff (μ := P₁) (s := S) hA
-    have hSc0 := measureReal_inter_add_sdiff (μ := P₀) (s := Sᶜ) hA
-    have hSc1 := measureReal_inter_add_sdiff (μ := P₁) (s := Sᶜ) hA
-    have hpos_inter : P₀.real (A ∩ S) ≤ P₁.real (A ∩ S) :=
-      hpos (A ∩ S) (hA.inter hS.measurableSet) inter_subset_right
     have hpos_rest : P₀.real (S \ A) ≤ P₁.real (S \ A) :=
-      hpos (S \ A) (hS.measurableSet.sdiff hA) sdiff_subset
+      hpos (S \ A) (MeasurableSet.diff hS.measurableSet hA) Set.sdiff_subset
     have hneg_inter : P₁.real (A \ S) ≤ P₀.real (A \ S) := by
-      apply hneg (A \ S) (hA.sdiff hS.measurableSet)
+      apply hneg (A \ S) (MeasurableSet.diff hA hS.measurableSet)
       intro x hx
       exact hx.2
-    have hneg_rest : P₁.real (Sᶜ \ A) ≤ P₀.real (Sᶜ \ A) :=
-      hneg (Sᶜ \ A) (hS.measurableSet.compl.sdiff hA) sdiff_subset
-    have hcompl0 := probReal_add_probReal_compl (μ := P₀) hS.measurableSet
-    have hcompl1 := probReal_add_probReal_compl (μ := P₁) hS.measurableSet
+    simp only [Set.inter_comm S A] at hS0 hS1
+    linarith
+  have hall : ∀ A : Set X, MeasurableSet A →
+      |P₀.real A - P₁.real A| ≤ P₁.real S - P₀.real S := by
+    intro A hA
+    have hforward := hsigned A hA
+    have hbackward := hsigned Aᶜ hA.compl
+    have hcompl0 := probReal_add_probReal_compl (μ := P₀) hA
+    have hcompl1 := probReal_add_probReal_compl (μ := P₁) hA
     rw [abs_le]
-    constructor <;>
-      simp only [Set.inter_comm S A] at hS0 hS1 <;>
-      simp only [Set.inter_comm (Sᶜ) A] at hSc0 hSc1 <;>
-      linarith
+    constructor <;> linarith
   have htv_le : tvDist P₀ P₁ ≤ P₁.real S - P₀.real S := by
     unfold tvDist
     refine csSup_le (tvEventSet_nonempty P₀ P₁) ?_
