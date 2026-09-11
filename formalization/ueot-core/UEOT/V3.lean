@@ -19,6 +19,7 @@ import UEOT.V3.StatisticalDefect
 import UEOT.V3.FiniteAlphabetConcentration
 import UEOT.V3.FiniteAlphabetSampling
 import UEOT.V3.FiniteAlphabetPStat01
+import UEOT.V3.FiniteAlphabetPStat01Radius
 import UEOT.V3.VariationBridge
 import UEOT.V3.ViabilityKernel
 import UEOT.V3.ViabilityPath
