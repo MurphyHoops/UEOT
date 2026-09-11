@@ -58,9 +58,9 @@ theorem expectation_le_of_rnDeriv_le
     (hC : ∀ᵐ x ∂μ, (ν.rnDeriv μ x).toReal ≤ C) :
     (∫ x, e x ∂ν) ≤ C * (∫ x, e x ∂μ) := by
   have heμ : Integrable e μ :=
-    integrable_of_interval μ e he 0 1 (by norm_num) he1 he0
+    integrable_of_interval μ e he 0 1 he0 he1
   have heν : Integrable e ν :=
-    integrable_of_interval ν e he 0 1 (by norm_num) he1 he0
+    integrable_of_interval ν e he 0 1 he0 he1
   have hleft : Integrable (fun x => (ν.rnDeriv μ x).toReal * e x) μ :=
     (integrable_toReal_rnDeriv_mul_iff hAC).2 heν
   have hright : Integrable (fun x => C * e x) μ := heμ.const_mul C
