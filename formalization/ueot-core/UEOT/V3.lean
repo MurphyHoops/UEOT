@@ -31,6 +31,7 @@ import UEOT.V3.PredictableOLSConditionalLift
 import UEOT.V3.PredictableOLSNormalEquation
 import UEOT.V3.PredictableOLSConfidence
 import UEOT.V3.PredictableOLSGoodGramConfidence
+import UEOT.V3.PredictableOLSSourceIndex
 import UEOT.V3.TransportDefect
 import UEOT.V3.StatisticalDefect
 import UEOT.V3.PredictiveClassRecovery
