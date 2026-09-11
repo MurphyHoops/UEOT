@@ -85,7 +85,9 @@ theorem integral_sampleIndicator_eq
     funext ω
     by_cases h : X ω ∈ A <;> simp [sampleIndicator, eventIndicator, h]
   rw [hrepr, integral_indicator_one hpre]
-  rw [← hlaw, Measure.map_apply hX hA]
+  rw [← hlaw]
+  simp only [measureReal_def]
+  rw [Measure.map_apply hX hA]
 
 /-- Event mass of the empirical measure equals the arithmetic mean of the
 sample event indicators. -/
@@ -100,20 +102,19 @@ theorem empiricalMeasure_real_finset {N : ℕ} (hN : 0 < N)
   have hA : MeasurableSet (A : Set Y) := A.measurableSet
   let S : Set (Fin N) := (fun n : Fin N => sample n ω) ⁻¹' (A : Set Y)
   have hS : MeasurableSet S := MeasurableSpace.measurableSet_top
+  have hsum :
+      (∑ n : Fin N, if sample n ω ∈ A then (1 : ℝ) else 0) =
+        ((Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)).card : ℝ) := by
+    simpa using
+      (Finset.sum_boole (R := ℝ) (fun n : Fin N => sample n ω ∈ A) Finset.univ)
   have hcount :
       ((Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)).card : ℝ) =
         ∑ n : Fin N, sampleIndicator A (sample n) ω := by
-    calc
-      ((Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)).card : ℝ)
-          = ∑ _n in (Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)), (1 : ℝ) := by
-              simp
-      _ = ∑ n : Fin N, if sample n ω ∈ A then (1 : ℝ) else 0 := by
-              rw [Finset.sum_filter]
-      _ = ∑ n : Fin N, sampleIndicator A (sample n) ω := by
-              apply Finset.sum_congr rfl
-              intro n hn
-              by_cases h : sample n ω ∈ A <;>
-                simp [sampleIndicator, eventIndicator, h]
+    rw [← hsum]
+    apply Finset.sum_congr rfl
+    intro n hn
+    by_cases h : sample n ω ∈ A <;>
+      simp [sampleIndicator, eventIndicator, h]
   have hcardNat :
       Fintype.card S =
         (Finset.univ.filter (fun n : Fin N => sample n ω ∈ A)).card := by
@@ -183,6 +184,10 @@ theorem measure_empirical_event_upper_le
       {ω | (N : ℝ) * η ≤
         ∑ n ∈ (Finset.univ : Finset (Fin N)), Z n ω} := by
     intro ω hω
+    change p.real (A : Set Y) + η ≤
+      (empiricalMeasure hN sample ω).real (A : Set Y) at hω
+    change (N : ℝ) * η ≤
+      ∑ n ∈ (Finset.univ : Finset (Fin N)), Z n ω
     rw [empiricalMeasure_real_finset hN sample ω A] at hω
     simp only [Z, Finset.sum_sub_distrib]
     simp_rw [hmean]
