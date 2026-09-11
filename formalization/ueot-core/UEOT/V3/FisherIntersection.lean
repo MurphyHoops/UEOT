@@ -76,16 +76,17 @@ theorem independent_centered_cross_score_integral_eq_zero
     {e f : Fin E} (hef : e ≠ f) (i j : Fin d) :
     ∫ ω, score e ω i * score f ω j ∂μ = 0 := by
   have hpairVec : score e ⟂ᵢ[μ] score f := hindep.indepFun hef
+  have hei : Measurable (fun ω => score e ω i) :=
+    (measurable_pi_apply i).comp (hmeas e)
+  have hfj : Measurable (fun ω => score f ω j) :=
+    (measurable_pi_apply j).comp (hmeas f)
   have hpair :
       (fun ω => score e ω i) ⟂ᵢ[μ] (fun ω => score f ω j) := by
     change ((fun x : Fin d → ℝ => x i) ∘ score e) ⟂ᵢ[μ]
       ((fun x : Fin d → ℝ => x j) ∘ score f)
-    exact hpairVec.comp (by fun_prop) (by fun_prop)
-  have hmeas_i : AEStronglyMeasurable (fun ω => score e ω i) μ :=
-    ((by fun_prop : Measurable (fun ω => score e ω i))).aestronglyMeasurable
-  have hmeas_j : AEStronglyMeasurable (fun ω => score f ω j) μ :=
-    ((by fun_prop : Measurable (fun ω => score f ω j))).aestronglyMeasurable
-  rw [hpair.integral_mul_eq_mul_integral hmeas_i hmeas_j, hmean e i, hmean f j]
+    exact hpairVec.comp (measurable_pi_apply i) (measurable_pi_apply j)
+  rw [hpair.integral_mul_eq_mul_integral hei.aestronglyMeasurable hfj.aestronglyMeasurable,
+    hmean e i, hmean f j]
   simp
 
 end UEOT.V3.FisherIntersection
