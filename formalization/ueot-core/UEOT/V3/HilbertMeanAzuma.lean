@@ -58,15 +58,14 @@ theorem azuma_one_div_N_sq
     (by simpa [cN] using h0) N (by simpa [cN] using h_subG) hε
   have hsum :
       (↑(∑ i ∈ Finset.range N, cN) : ℝ) = 1 / (N : ℝ) := by
-    simp [cN, Finset.sum_const, nsmul_eq_mul]
-    field_simp [hNreal]
+    simp [cN, Finset.sum_const, nsmul_eq_mul] <;>
+      field_simp [hNreal] <;> ring
   calc
     μ.real {ω | ε ≤ ∑ i ∈ Finset.range N, Y i ω}
         ≤ Real.exp (-ε ^ 2 / (2 * ∑ i ∈ Finset.range N, cN)) := h
     _ = Real.exp (-(N : ℝ) * ε ^ 2 / 2) := by
       rw [hsum]
       congr 1
-      field_simp [hNreal]
-      ring
+      field_simp [hNreal] <;> ring
 
 end UEOT.V3.HilbertMeanAzuma
