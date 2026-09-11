@@ -73,7 +73,7 @@ variable [NormedAddCommGroup H] [InnerProductSpace ℝ H]
 /-- Scalar kernel realized by a Hilbert feature map.  In the source RKHS one
 uses the canonical section feature `phi x = k(x, ·)`. -/
 def featureKernel (phi : X → H) : X → X → ℝ :=
-  fun x y => ⟪phi x, phi y⟫_ℝ
+  fun x y => inner ℝ (phi x) (phi y)
 
 /-- Pulling back the feature map realizes exactly the synchronously transported
 kernel `k_T(Tx,Ty)=k(x,y)`. -/
