@@ -66,11 +66,15 @@ theorem p_inv_04 {N d : ℕ} (phi : Fin N → Fin d → ℝ) :
     have hne : gramQuadratic phi v ≠ 0 := by
       intro hz
       have hz_each : ∀ t : Fin N, designMap phi v t = 0 := by
+        have hsum : ∑ t : Fin N, (designMap phi v t) ^ 2 = 0 := by
+          simpa [gramQuadratic] using hz
         have h :=
-          (Finset.sum_sq_eq_zero_iff (s := Finset.univ)
-            (f := fun t : Fin N => designMap phi v t)).mp (by simpa [gramQuadratic] using hz)
+          (Finset.sum_eq_zero_iff_of_nonneg
+            (s := Finset.univ)
+            (f := fun t : Fin N => (designMap phi v t) ^ 2)
+            (fun t ht => sq_nonneg (designMap phi v t))).mp hsum
         intro t
-        exact h t (Finset.mem_univ t)
+        exact sq_eq_zero_iff.mp (h t (Finset.mem_univ t))
       have hmap : designMap phi v = designMap phi 0 := by
         funext t
         simp [hz_each t]
