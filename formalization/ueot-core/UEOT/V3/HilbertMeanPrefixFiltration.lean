@@ -45,6 +45,12 @@ theorem univ_sdiff_prefixBlock_val_eq_future {N : ℕ} (i : Fin N) :
   ext j
   simp [mem_prefixBlock_iff, mem_future_iff, not_le]
 
+/-- The revealed prefix through `i` is disjoint from the strict future. -/
+theorem prefixBlock_disjoint_future {N : ℕ} (i : Fin N) :
+    Disjoint (prefixBlock i.1) (future i) := by
+  rw [prefixBlock_val_eq_revealed]
+  exact revealed_disjoint_future i
+
 /-- Restriction from a larger prefix block to a smaller one. -/
 def restrictPrefix {N : ℕ} {n m : ℕ} (hnm : n ≤ m) :
     (prefixBlock (N := N) m → H) → (prefixBlock (N := N) n → H) :=
@@ -98,5 +104,28 @@ def prefixFiltration {N : ℕ} :
 
 @[simp] theorem prefixFiltration_apply {N : ℕ} (n : ℕ) :
     prefixFiltration (H := H) (N := N) n = prefixSigma (H := H) (N := N) n := rfl
+
+/-- Source-facing prefix/future conditional-expectation bridge. At a genuine
+sample index `i`, conditioning a function of the revealed prefix and strict
+future on the prefix filtration is exactly integration over the unconditional
+future-block law. -/
+theorem condExp_prefix_future_ae_eq_integral
+    [StandardBorelSpace H] [Nonempty H]
+    {N : ℕ}
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (i : Fin N)
+    (f : (prefixBlock i.1 → H) × (future i → H) → ℝ)
+    (hf : StronglyMeasurable f)
+    (hf_int : Integrable
+      (fun (ω : Fin N → H) =>
+        f (blockProjection (prefixBlock i.1) ω, blockProjection (future i) ω))
+      (Measure.pi μ)) :
+    (Measure.pi μ)[fun (ω : Fin N → H) =>
+        f (blockProjection (prefixBlock i.1) ω, blockProjection (future i) ω) |
+      prefixSigma (H := H) (N := N) i.1] =ᵐ[Measure.pi μ]
+      fun ω => ∫ y,
+        f (blockProjection (prefixBlock i.1) ω, y) ∂blockLaw μ (future i) := by
+  exact condExp_blocks_ae_eq_integral_second
+    μ (prefixBlock i.1) (future i) (prefixBlock_disjoint_future i) f hf hf_int
 
 end UEOT.V3.HilbertMeanPrefixFiltration
