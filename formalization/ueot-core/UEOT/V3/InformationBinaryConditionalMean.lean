@@ -42,6 +42,12 @@ theorem integral_posteriorBitOneProb_eq_marginal
     (f := fun _ : X × Fin 2 => (1 : ℝ))
     (measurableSet_singleton (1 : Fin 2))
     ((integrable_const (1 : ℝ)).integrableOn)
+  have hset :
+      (Set.univ : Set X) ×ˢ ({1} : Set (Fin 2)) =
+        Prod.snd ⁻¹' ({1} : Set (Fin 2)) := by
+    ext z
+    simp
+  rw [hset] at h
   simpa [posteriorBitOneProb, Measure.snd_apply, measureReal_def] using h
 
 end UEOT.V3.InformationBinaryConditionalMean
