@@ -41,22 +41,35 @@ theorem hasCondSubgaussianMGF_sourceClippedIncrement_invSqParam
       (sourceClippedIncrement μ i μH)
       (invSqParam N)
       (Measure.pi μ) := by
-  letI : IsProbabilityMeasure (Measure.pi μ) := by infer_instance
-  apply hasCondSubgaussianMGF_of_rat_condExp_le
-    (m := sourcePastSigma (H := H) i)
-    (μ := Measure.pi μ)
-    (X := sourceClippedIncrement μ i μH)
-    (c := invSqParam N)
-    (sourcePastSigma_le (H := H) i)
-  · intro t
-    exact integrable_exp_mul_sourceClippedIncrement
-      hN μ i μH hμH hunit t
-  · intro q
+  let P : Measure (Fin N → H) := Measure.pi μ
+  let m : MeasurableSpace (Fin N → H) := sourcePastSigma (H := H) i
+  let X : (Fin N → H) → ℝ := sourceClippedIncrement μ i μH
+  let c : ℝ≥0 := invSqParam N
+  have hm : m ≤ (inferInstance : MeasurableSpace (Fin N → H)) := by
+    simpa [m] using sourcePastSigma_le (H := H) i
+  have h_int : ∀ t : ℝ, Integrable (fun ω => exp (t * X ω)) P := by
+    intro t
+    simpa [P, X] using
+      integrable_exp_mul_sourceClippedIncrement
+        hN μ i μH hμH hunit t
+  have h_rat : ∀ q : ℚ, ∀ᵐ ω ∂(P.trim hm),
+      P[fun y => exp ((q : ℝ) * X y) | m] ω ≤
+        exp ((c : ℝ) * (q : ℝ) ^ 2 / 2) := by
+    intro q
     apply ae_trim_condExp_le_of_ae_condExp_le
-      (μ := Measure.pi μ)
-      (m := sourcePastSigma (H := H) i)
-      (sourcePastSigma_le (H := H) i)
-    exact ae_condExp_exp_sourceClippedIncrement_le
-      hN μ i μH hμH hunit q
+      (μ := P) (m := m) hm
+    simpa [P, m, X, c] using
+      ae_condExp_exp_sourceClippedIncrement_le
+        hN μ i μH hμH hunit q
+  change HasCondSubgaussianMGF m hm X c P
+  apply Kernel.HasSubgaussianMGF.of_rat
+  · intro t
+    rw [condExpKernel_comp_trim (μ := P) hm]
+    exact h_int t
+  · intro q
+    have heq := condExp_ae_eq_trim_integral_condExpKernel hm (h_int (q : ℝ))
+    filter_upwards [h_rat q, heq] with ω hbound hEq
+    rw [hEq] at hbound
+    simpa [mgf] using hbound
 
 end UEOT.V3.HilbertMeanSourceConditionalMGF
