@@ -82,7 +82,7 @@ private theorem hasSubgaussianMGF_centeredClippedActiveSection_of_data
   have hwidth : ‖b0 - a0‖₊ ≤ (2 : ℝ≥0) / (N : ℝ≥0) := by
     simpa [q, qc, m, a0, b0] using
       centered_unitClip_exact_interval_nnnorm_le
-        (μ i) q hq hunit hoscNN
+        (μ i) q (c := (2 : ℝ≥0) / (N : ℝ≥0)) hq hunit hoscNN
   have hparam :
       (‖b0 - a0‖₊ / 2) ^ 2 ≤ HilbertMeanAzuma.invSqParam N := by
     have hNnn : (N : ℝ≥0) ≠ 0 := by
