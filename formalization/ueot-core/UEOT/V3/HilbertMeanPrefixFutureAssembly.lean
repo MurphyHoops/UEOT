@@ -79,4 +79,20 @@ theorem blockProjection_future_assemble
   funext j
   exact assemblePrefixFuture_future i x y j
 
+/-- The canonical prefix/future assembly is measurable for the product
+measurable structures. -/
+theorem measurable_assemblePrefixFuture
+    [MeasurableSpace H] {N : ℕ} (i : Fin N) :
+    Measurable (fun xy : (prefixBlock i.1 → H) × (future i → H) =>
+      assemblePrefixFuture i xy.1 xy.2) := by
+  rw [measurable_pi_iff]
+  intro j
+  by_cases h : j.1 ≤ i.1
+  · simp only [assemblePrefixFuture, dif_pos h]
+    exact (measurable_pi_apply ⟨j, (mem_prefixBlock_iff i.1 j).2 h⟩).comp measurable_fst
+  · simp only [assemblePrefixFuture, dif_neg h]
+    exact (measurable_pi_apply
+      ⟨j, (mem_future_iff i j).2
+        (Fin.lt_iff_val_lt_val.2 (Nat.lt_of_not_ge h))⟩).comp measurable_snd
+
 end UEOT.V3.HilbertMeanPrefixFutureAssembly
