@@ -40,8 +40,8 @@ theorem coordinateErrorSection_pairwise_le_two_div
       (Function.update base i a) (Function.update base i b) i
   · intro j hji
     simp [Function.update, hji]
-  · simpa [Function.update_same] using ha
-  · simpa [Function.update_same] using hb
+  · simpa using ha
+  · simpa using hb
 
 /-- If the active-coordinate feature space is uniformly norm-bounded by one,
 the entire active-coordinate section has pairwise oscillation `2/N`. -/
