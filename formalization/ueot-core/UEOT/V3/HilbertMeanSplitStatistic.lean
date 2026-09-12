@@ -26,7 +26,7 @@ variable [NormedAddCommGroup H] [InnerProductSpace ℝ H]
 /-- Hilbert empirical-mean error written as a function of the revealed prefix
 and strict future blocks at a genuine sample index `i`. -/
 noncomputable def splitMeanError {N : ℕ} (i : Fin N) (μH : H)
-    (xy : (prefixBlock i.1 → H) × (future i → H)) : ℝ :=
+    (xy : (prefixBlock (N := N) i.1 → H) × (future i → H)) : ℝ :=
   ‖empiricalMean (assemblePrefixFuture i xy.1 xy.2) - μH‖
 
 /-- Exact source reconstruction: projecting a full sample into prefix/future
@@ -35,7 +35,7 @@ error, with no almost-everywhere qualification. -/
 @[simp] theorem splitMeanError_blockProjections
     {N : ℕ} (i : Fin N) (μH : H) (ω : Fin N → H) :
     splitMeanError i μH
-      (blockProjection (prefixBlock i.1) ω, blockProjection (future i) ω) =
+      (blockProjection (prefixBlock (N := N) i.1) ω, blockProjection (future i) ω) =
       ‖empiricalMean ω - μH‖ := by
   unfold splitMeanError
   rw [assemblePrefixFuture_blockProjections]
@@ -67,8 +67,7 @@ theorem measurable_splitMeanError
   exact ((hm.comp ha).sub measurable_const).norm
 
 /-- Since the codomain is real, measurability upgrades directly to strong
-measurability.  This discharges the analytic measurability hypothesis of the
-source Doob continuation bridge. -/
+measurability. -/
 theorem stronglyMeasurable_splitMeanError
     [MeasurableSpace H] [BorelSpace H]
     {N : ℕ} (i : Fin N) (μH : H) :
@@ -89,9 +88,26 @@ theorem ae_unit_all_of_marginals
     (measurePreserving_eval μ i).hasLaw
   exact (hLaw.ae_iff (by fun_prop)).2 (hunit i)
 
-/-- Under the source unit-ball assumptions, the Hilbert mean-error statistic is
-integrable on the canonical product law.  The only probabilistic support input
-needed is the simultaneous almost-everywhere unit bound on all coordinates. -/
+/-- Every finite coordinate-block law inherits the marginal unit-ball support. -/
+theorem ae_block_unit_of_marginals
+    [MeasurableSpace H] [BorelSpace H]
+    {N : ℕ}
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (S : Finset (Fin N))
+    (hunit : ∀ i, ∀ᵐ x ∂μ i, ‖x‖ ≤ 1) :
+    ∀ᵐ y ∂blockLaw μ S, ∀ j, ‖y j‖ ≤ 1 := by
+  apply ae_all_iff.2
+  intro j
+  have hLaw := block_hasLaw μ S
+  have hfull : ∀ᵐ ω ∂Measure.pi μ, ‖blockProjection S ω j‖ ≤ 1 := by
+    have hcoord : HasLaw (fun ω : Fin N → H => ω (j : Fin N))
+        (μ (j : Fin N)) (Measure.pi μ) :=
+      (measurePreserving_eval μ (j : Fin N)).hasLaw
+    exact (hcoord.ae_iff (by fun_prop)).2 (hunit (j : Fin N))
+  exact (hLaw.ae_iff (by fun_prop)).1 hfull
+
+/-- Under simultaneous unit-ball support, the full source statistic is
+integrable on the canonical product law. -/
 theorem integrable_meanError_of_ae_unit
     [MeasurableSpace H] [BorelSpace H]
     {N : ℕ} (hN : 0 < N)
@@ -116,5 +132,29 @@ theorem integrable_meanError_of_marginal_ae_unit
     Integrable (fun ω : Fin N → H => ‖empiricalMean ω - μH‖) (Measure.pi μ) := by
   exact integrable_meanError_of_ae_unit hN μ μH hμH
     (ae_unit_all_of_marginals μ hunit)
+
+/-- For any fixed unit-ball prefix, the source split statistic is integrable
+over the strict-future block law. -/
+theorem integrable_splitMeanError_future_of_unit
+    [MeasurableSpace H] [BorelSpace H]
+    {N : ℕ} (hN : 0 < N)
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (i : Fin N) (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (x : prefixBlock (N := N) i.1 → H) (hx : ∀ j, ‖x j‖ ≤ 1)
+    (hunit : ∀ j, ∀ᵐ z ∂μ j, ‖z‖ ≤ 1) :
+    Integrable (fun y : future i → H => splitMeanError i μH (x, y))
+      (blockLaw μ (future i)) := by
+  letI : IsProbabilityMeasure (blockLaw μ (future i)) :=
+    blockLaw_isProbability μ (future i)
+  have hy := ae_block_unit_of_marginals μ (future i) hunit
+  have hmeas : Measurable (fun y : future i → H => splitMeanError i μH (x, y)) := by
+    exact (measurable_splitMeanError (H := H) i μH).comp
+      (measurable_const.prod_mk measurable_id)
+  refine Integrable.of_bound hmeas.aestronglyMeasurable 2 ?_
+  filter_upwards [hy] with y hy
+  have hall : ∀ j, ‖assemblePrefixFuture i x y j‖ ≤ 1 :=
+    assemblePrefixFuture_norm_le_one i x y hx hy
+  simpa [splitMeanError, Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _)] using
+    norm_empiricalMean_sub_le_two hN (assemblePrefixFuture i x y) hall μH hμH
 
 end UEOT.V3.HilbertMeanSplitStatistic
