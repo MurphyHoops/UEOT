@@ -5,7 +5,7 @@ import UEOT.V3.HilbertMeanConcentration
 
 The frozen McDiarmid proof varies one sample coordinate while all other
 coordinates, including any particular realization of the unrevealed future,
-are held fixed.  This file packages the source statistic as such a one-coordinate
+are held fixed. This file packages the source statistic as such a one-coordinate
 section and proves the exact `2/N` pairwise oscillation bound uniformly in the
 fixed background configuration.
 -/
@@ -39,9 +39,9 @@ theorem coordinateErrorSection_pairwise_le_two_div
   apply abs_norm_sub_mean_diff_le_two_div hN
       (Function.update base i a) (Function.update base i b) i
   · intro j hji
-    simp [Function.update_noteq hji]
-  · simpa using ha
-  · simpa using hb
+    simp [Function.update, hji]
+  · simpa [Function.update_same] using ha
+  · simpa [Function.update_same] using hb
 
 /-- If the active-coordinate feature space is uniformly norm-bounded by one,
 the entire active-coordinate section has pairwise oscillation `2/N`. -/
