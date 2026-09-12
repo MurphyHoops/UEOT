@@ -51,6 +51,7 @@ import UEOT.V3.HilbertMeanAzuma
 import UEOT.V3.HilbertMeanConditionalHoeffding
 import UEOT.V3.HilbertMeanMcDiarmidCore
 import UEOT.V3.HilbertMeanProductLaw
+import UEOT.V3.HilbertMeanFeatureProductBridge
 import UEOT.V3.HilbertMeanIntegralContraction
 import UEOT.V3.HilbertMeanRangeWidth
 import UEOT.V3.HilbertMeanContinuationWidth
