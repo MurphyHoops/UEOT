@@ -68,7 +68,14 @@ theorem sourceContinuation_first_eq_activeSection
       sourceActiveSection μ (firstIndex hN) μH
         (zeroSample (H := H)) (ω (firstIndex hN)) := by
   unfold sourceActiveSection sourceContinuation
-  rw [blockProjection_prefixBlock_zero_eq_update_zero hN ω]
+  have hblock :
+      blockProjection (prefixBlock (N := N) (firstIndex hN).1) ω =
+        blockProjection (prefixBlock (N := N) (firstIndex hN).1)
+          (Function.update (zeroSample (H := H)) (firstIndex hN)
+            (ω (firstIndex hN))) := by
+    simpa [firstIndex] using
+      blockProjection_prefixBlock_zero_eq_update_zero (H := H) hN ω
+  rw [hblock]
 
 /-- Raw first-coordinate continuation centered by its original marginal mean. -/
 noncomputable def firstRawCentered
@@ -100,14 +107,13 @@ theorem doobIncrement_zero_ae_eq_firstRawCentered
   let F : (Fin N → H) → ℝ := fun ω => ‖empiricalMean ω - μH‖
   let q : H → ℝ :=
     sourceActiveSection μ i0 μH (zeroSample (H := H))
-  have hpast : ∀ j : past i0,
-      ‖zeroSample (H := H) (j : Fin N)‖ ≤ 1 := by
+  have hzero : ∀ j : Fin N, ‖zeroSample (H := H) j‖ ≤ 1 := by
     intro j
     simp [zeroSample]
   have hqint : Integrable q (μ i0) := by
     simpa [q] using
-      integrable_sourceActiveSection_of_pastUnit
-        hN μ (zeroSample (H := H)) i0 hpast μH hμH hunit
+      integrable_sourceActiveSection_of_unit
+        hN μ (zeroSample (H := H)) hzero i0 μH hμH hunit
   have hdoob :=
     doobValue_meanError_ae_eq_sourceContinuation_of_unit
       hN μ i0 μH hμH hunit
