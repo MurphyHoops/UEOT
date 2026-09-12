@@ -116,7 +116,7 @@ theorem sourceContinuation_update_pairwise_le_two_div
 marginal unit-ball support, the future-section integrability conditions are
 automatic. -/
 theorem sourceContinuation_update_pairwise_le_two_div_of_unit
-    [BorelSpace H]
+    [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (ω : Fin N → H) (hω : ∀ j, ‖ω j‖ ≤ 1)
