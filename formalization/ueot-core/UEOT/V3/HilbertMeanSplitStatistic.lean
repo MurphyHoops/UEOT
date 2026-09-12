@@ -39,4 +39,32 @@ error, with no almost-everywhere qualification. -/
   unfold splitMeanError
   rw [assemblePrefixFuture_blockProjections]
 
+/-- The finite Hilbert empirical mean is measurable for the canonical product
+Borel structure. -/
+theorem measurable_empiricalMean
+    [MeasurableSpace H] [BorelSpace H] {N : ℕ} :
+    Measurable (empiricalMean : (Fin N → H) → H) := by
+  unfold empiricalMean
+  fun_prop
+
+/-- The source split statistic is measurable. -/
+theorem measurable_splitMeanError
+    [MeasurableSpace H] [BorelSpace H]
+    {N : ℕ} (i : Fin N) (μH : H) :
+    Measurable (splitMeanError i μH) := by
+  unfold splitMeanError
+  have ha := measurable_assemblePrefixFuture (H := H) i
+  have hm : Measurable (empiricalMean : (Fin N → H) → H) :=
+    measurable_empiricalMean (H := H)
+  exact ((hm.comp ha).sub measurable_const).norm
+
+/-- Since the codomain is real, measurability upgrades directly to strong
+measurability.  This discharges the analytic measurability hypothesis of the
+source Doob continuation bridge. -/
+theorem stronglyMeasurable_splitMeanError
+    [MeasurableSpace H] [BorelSpace H]
+    {N : ℕ} (i : Fin N) (μH : H) :
+    StronglyMeasurable (splitMeanError i μH) := by
+  exact (measurable_splitMeanError (H := H) i μH).stronglyMeasurable
+
 end UEOT.V3.HilbertMeanSplitStatistic
