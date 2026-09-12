@@ -118,6 +118,7 @@ import UEOT.V3.InformationPinsker
 import UEOT.V3.InformationKernelTV
 import UEOT.V3.InformationKernelKL
 import UEOT.V3.InformationKernelPinsker
+import UEOT.V3.InformationBernoulliKL
 import UEOT.V3.MarkovBoundary
 import UEOT.V3.RecoveryDiscrete
 import UEOT.V3.RecoveryProbability
