@@ -17,6 +17,7 @@ source marginal unit-ball support assumption.
 namespace UEOT.V3.HilbertMeanPastActiveClippedFiber
 
 open MeasureTheory ProbabilityTheory
+open UEOT.V3.HilbertMeanAzuma
 open UEOT.V3.HilbertMeanDoobBlocks
 open UEOT.V3.HilbertMeanPastActiveContinuation
 open UEOT.V3.HilbertMeanProductBlockIndependence
@@ -87,29 +88,80 @@ theorem stronglyMeasurable_pastCenteredClippedActiveSection
     exact hclip.integral_prod_right'
   exact hclip.sub (hmean.comp_measurable measurable_fst)
 
-/-- For a full sample, the filtration-native clipped fiber is exactly the
-previous full-sample centered clipped active section. -/
+/-- The filtration-native fiber agrees with the full-sample centered clipped
+section at every active value, once the same strict past is fixed. -/
+theorem pastCenteredClippedActiveSection_blockProjection_apply
+    [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
+    {N : ℕ} (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (i : Fin N) (μH : H) (ω : Fin N → H) (a : H) :
+    pastCenteredClippedActiveSection μ i μH
+        (blockProjection (past i) ω, a) =
+      centeredClippedActiveSection μ i μH ω a := by
+  have hpoint (b : H) :
+      pastActiveClippedContinuation μ i μH
+          (blockProjection (past i) ω, b) =
+        unitClip (sourceActiveSection μ i μH ω) b := by
+    by_cases hb : ‖b‖ ≤ 1
+    · simp [pastActiveClippedContinuation, unitClip, hb,
+        sourceActiveSection, pastActiveContinuation_blockProjection_update]
+    · simp [pastActiveClippedContinuation, unitClip, hb,
+        sourceActiveSection, pastActiveContinuation_blockProjection_update]
+  unfold pastCenteredClippedActiveSection centeredClippedActiveSection
+  rw [hpoint a]
+  congr 1
+  apply integral_congr_ae
+  filter_upwards with b
+  exact hpoint b
+
+/-- The observed active coordinate is the previous special case. -/
 theorem pastCenteredClippedActiveSection_blockProjection
     [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (i : Fin N) (μH : H) (ω : Fin N → H) :
     pastCenteredClippedActiveSection μ i μH
         (blockProjection (past i) ω, ω i) =
-      centeredClippedActiveSection μ i μH ω (ω i) := by
-  have hpoint (a : H) :
-      pastActiveClippedContinuation μ i μH
-          (blockProjection (past i) ω, a) =
-        unitClip (sourceActiveSection μ i μH ω) a := by
-    by_cases ha : ‖a‖ ≤ 1
-    · simp [pastActiveClippedContinuation, unitClip, ha,
-        sourceActiveSection, pastActiveContinuation_blockProjection_update]
-    · simp [pastActiveClippedContinuation, unitClip, ha,
-        sourceActiveSection, pastActiveContinuation_blockProjection_update]
-  unfold pastCenteredClippedActiveSection centeredClippedActiveSection
-  rw [hpoint (ω i)]
-  congr 1
-  apply integral_congr_ae
-  filter_upwards with a
-  exact hpoint a
+      centeredClippedActiveSection μ i μH ω (ω i) :=
+  pastCenteredClippedActiveSection_blockProjection_apply μ i μH ω (ω i)
+
+/-- Canonically extend a strict-past block to a full sample by filling all
+unrevealed coordinates with zero.  Only the past projection matters below. -/
+def pastExtension {N : ℕ} (i : Fin N) (x : past i → H) : Fin N → H :=
+  fun j => if h : j ∈ past i then x ⟨j, h⟩ else 0
+
+@[simp] theorem blockProjection_pastExtension
+    {N : ℕ} (i : Fin N) (x : past i → H) :
+    blockProjection (past i) (pastExtension i x) = x := by
+  funext j
+  simp [blockProjection, pastExtension, j.2]
+
+/-- A unit strict-past block gives an exact `1/N²` ordinary sub-Gaussian active
+fiber, now stated entirely in filtration-native coordinates. -/
+theorem hasSubgaussianMGF_pastCenteredClippedActiveSection_invSqParam
+    [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
+    {N : ℕ} (hN : 0 < N)
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (i : Fin N) (x : past i → H)
+    (hx : ∀ j, ‖x j‖ ≤ 1)
+    (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (hunit : ∀ j, ∀ᵐ z ∂μ j, ‖z‖ ≤ 1) :
+    HasSubgaussianMGF
+      (fun a => pastCenteredClippedActiveSection μ i μH (x, a))
+      (invSqParam N)
+      (μ i) := by
+  let ω : Fin N → H := pastExtension i x
+  have hpast : ∀ j : past i, ‖ω (j : Fin N)‖ ≤ 1 := by
+    intro j
+    simpa [ω, pastExtension, j.2] using hx j
+  have hsg :=
+    hasSubgaussianMGF_centeredClippedActiveSection_invSqParam_of_pastUnit
+      hN μ ω i hpast μH hμH hunit
+  have heq :
+      (fun a => pastCenteredClippedActiveSection μ i μH (x, a)) =
+        centeredClippedActiveSection μ i μH ω := by
+    funext a
+    rw [← blockProjection_pastExtension i x]
+    exact pastCenteredClippedActiveSection_blockProjection_apply μ i μH ω a
+  rw [heq]
+  exact hsg
 
 end UEOT.V3.HilbertMeanPastActiveClippedFiber
