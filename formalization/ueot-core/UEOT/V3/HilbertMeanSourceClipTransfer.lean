@@ -43,6 +43,7 @@ noncomputable def observedCenteredRawActiveSection {N : ℕ}
 /-- Under the frozen marginal unit-ball support assumption, clipping is exactly
 an almost-everywhere no-op on the observed centered source fiber. -/
 theorem observedCenteredClippedActiveSection_ae_eq_raw
+    [BorelSpace H]
     {N : ℕ}
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (i : Fin N) (μH : H)
