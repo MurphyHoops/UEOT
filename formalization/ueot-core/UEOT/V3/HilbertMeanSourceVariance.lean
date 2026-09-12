@@ -23,7 +23,7 @@ universe uH
 
 variable {H : Type uH}
 variable [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-variable [MeasurableSpace H] [BorelSpace H] [CompleteSpace H]
+variable [MeasurableSpace H] [BorelSpace H] [StandardBorelSpace H] [CompleteSpace H]
 
 /-- Unit-ball support makes the identity map integrable. -/
 theorem integrable_id_of_ae_norm_le_one
@@ -89,10 +89,12 @@ theorem integral_norm_sub_mean_sq_eq
       (∫ x : H, inner ℝ x μH ∂ν)
           = ∫ x : H, inner ℝ μH x ∂ν := by
               apply integral_congr_ae
-              exact ae_of_all ν (fun x => real_inner_comm x μH)
+              exact ae_of_all ν (fun x => (real_inner_comm x μH).symm)
       _ = inner ℝ μH (∫ x : H, x ∂ν) := integral_inner hxint μH
       _ = inner ℝ μH μH := by rw [hmean]
-      _ = ‖μH‖ ^ 2 := real_inner_self_eq_norm_sq
+      _ = ‖μH‖ ^ 2 := real_inner_self_eq_norm_sq μH
+  have hleft : Integrable (fun x : H => ‖x‖ ^ 2 - 2 * inner ℝ x μH) ν :=
+    hraw.sub (hinner.const_mul 2)
   have hconst : Integrable (fun _x : H => ‖μH‖ ^ 2) ν := integrable_const _
   calc
     (∫ x : H, ‖x - μH‖ ^ 2 ∂ν)
@@ -100,8 +102,8 @@ theorem integral_norm_sub_mean_sq_eq
             apply integral_congr_ae
             exact ae_of_all ν (fun x => norm_sub_sq_real x μH)
     _ = (∫ x : H, ‖x‖ ^ 2 - 2 * inner ℝ x μH ∂ν) + ‖μH‖ ^ 2 := by
-          rw [integral_add (hraw.sub (hinner.const_mul 2)) hconst]
-          simp
+          have hadd := integral_add hleft hconst
+          simpa using hadd
     _ = (∫ x : H, ‖x‖ ^ 2 ∂ν) - 2 * (∫ x : H, inner ℝ x μH ∂ν) + ‖μH‖ ^ 2 := by
           rw [integral_sub hraw (hinner.const_mul 2), integral_const_mul]
     _ = (∫ x : H, ‖x‖ ^ 2 ∂ν) - ‖μH‖ ^ 2 := by
