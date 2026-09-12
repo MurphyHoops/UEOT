@@ -14,6 +14,7 @@ increment with the exact proxy `1/N²`.
 namespace UEOT.V3.HilbertMeanSourceConditionalMGF
 
 open MeasureTheory ProbabilityTheory Real
+open scoped NNReal
 open UEOT.V3.HilbertMeanAzuma
 open UEOT.V3.HilbertMeanConditionalSubGaussianLift
 open UEOT.V3.HilbertMeanSourceClippedIncrement
@@ -41,34 +42,31 @@ theorem hasCondSubgaussianMGF_sourceClippedIncrement_invSqParam
       (sourceClippedIncrement μ i μH)
       (invSqParam N)
       (Measure.pi μ) := by
-  let P : Measure (Fin N → H) := Measure.pi μ
-  let m : MeasurableSpace (Fin N → H) := sourcePastSigma (H := H) i
-  let X : (Fin N → H) → ℝ := sourceClippedIncrement μ i μH
-  let c : ℝ≥0 := invSqParam N
-  have hm : m ≤ (inferInstance : MeasurableSpace (Fin N → H)) := by
-    simpa [m] using sourcePastSigma_le (H := H) i
-  have h_int : ∀ t : ℝ, Integrable (fun ω => exp (t * X ω)) P := by
-    intro t
-    simpa [P, X] using
-      integrable_exp_mul_sourceClippedIncrement
-        hN μ i μH hμH hunit t
-  have h_rat : ∀ q : ℚ, ∀ᵐ ω ∂(P.trim hm),
-      P[fun y => exp ((q : ℝ) * X y) | m] ω ≤
-        exp ((c : ℝ) * (q : ℝ) ^ 2 / 2) := by
-    intro q
-    apply ae_trim_condExp_le_of_ae_condExp_le
-      (μ := P) (m := m) hm
-    simpa [P, m, X, c] using
-      ae_condExp_exp_sourceClippedIncrement_le
-        hN μ i μH hμH hunit q
-  change HasCondSubgaussianMGF m hm X c P
+  letI : IsProbabilityMeasure (Measure.pi μ) := by infer_instance
   apply Kernel.HasSubgaussianMGF.of_rat
   · intro t
-    rw [condExpKernel_comp_trim (μ := P) hm]
-    exact h_int t
+    rw [condExpKernel_comp_trim
+      (μ := Measure.pi μ) (sourcePastSigma_le (H := H) i)]
+    exact integrable_exp_mul_sourceClippedIncrement
+      hN μ i μH hμH hunit t
   · intro q
-    have heq := condExp_ae_eq_trim_integral_condExpKernel hm (h_int (q : ℝ))
-    filter_upwards [h_rat q, heq] with ω hbound hEq
+    have hrat :
+        ((Measure.pi μ)[fun y =>
+            exp ((q : ℝ) * sourceClippedIncrement μ i μH y) |
+          sourcePastSigma (H := H) i])
+          ≤ᵐ[(Measure.pi μ).trim (sourcePastSigma_le (H := H) i)]
+          (fun _ => exp (((invSqParam N : ℝ≥0) : ℝ) * (q : ℝ) ^ 2 / 2)) := by
+      apply ae_trim_condExp_le_of_ae_condExp_le
+        (μ := Measure.pi μ)
+        (m := sourcePastSigma (H := H) i)
+        (sourcePastSigma_le (H := H) i)
+      exact ae_condExp_exp_sourceClippedIncrement_le
+        hN μ i μH hμH hunit q
+    have heq := condExp_ae_eq_trim_integral_condExpKernel
+      (sourcePastSigma_le (H := H) i)
+      (integrable_exp_mul_sourceClippedIncrement
+        hN μ i μH hμH hunit (q : ℝ))
+    filter_upwards [hrat, heq] with ω hbound hEq
     rw [hEq] at hbound
     simpa [mgf] using hbound
 
