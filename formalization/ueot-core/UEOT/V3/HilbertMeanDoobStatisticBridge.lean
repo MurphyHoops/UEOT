@@ -6,9 +6,8 @@ import UEOT.V3.HilbertMeanSplitStatistic
 
 This module specializes the generic Doob prefix bridge to the actual source
 statistic `‖empiricalMean ω - μH‖`.  The finite block reconstruction is exact,
-so the only analytic inputs left explicit here are strong measurability of the
-split statistic and integrability of the source statistic under the canonical
-product law.
+and the source unit-ball assumptions discharge both measurability and
+integrability of the statistic under the canonical product law.
 -/
 
 namespace UEOT.V3.HilbertMeanDoobStatisticBridge
@@ -85,5 +84,24 @@ theorem doobValue_meanError_ae_eq_sourceContinuation_of_integrable
       sourceContinuation μ i μH := by
   exact doobValue_meanError_ae_eq_sourceContinuation
     μ i μH (stronglyMeasurable_splitMeanError (H := H) i μH) hint
+
+/-- Fully source-facing continuation identity.  The frozen unit-ball assumptions
+on each marginal and on the target mean automatically provide integrability,
+so no auxiliary analytic hypothesis remains in the statement. -/
+theorem doobValue_meanError_ae_eq_sourceContinuation_of_unit
+    [BorelSpace H] [StandardBorelSpace H] [Nonempty H]
+    {N : ℕ} (hN : 0 < N)
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (i : Fin N) (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (hunit : ∀ j, ∀ᵐ x ∂μ j, ‖x‖ ≤ 1) :
+    doobValue
+        (Measure.pi μ)
+        (prefixFiltration (H := H) (N := N))
+        (fun ω : Fin N → H => ‖empiricalMean ω - μH‖)
+        i.1
+      =ᵐ[Measure.pi μ]
+      sourceContinuation μ i μH := by
+  apply doobValue_meanError_ae_eq_sourceContinuation_of_integrable μ i μH
+  exact integrable_meanError_of_marginal_ae_unit hN μ μH hμH hunit
 
 end UEOT.V3.HilbertMeanDoobStatisticBridge
