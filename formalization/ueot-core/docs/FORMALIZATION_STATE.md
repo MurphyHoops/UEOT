@@ -1,6 +1,7 @@
 # UEOT Core Lean — Live Formalization State
 
-> Recovery entry point. Source-level truth is `V3_COVERAGE_STATUS.md`.
+> Recovery entry point. Machine-readable lane state is `PID_STATUS.yaml`.
+> Integrated source-count truth is `V3_COVERAGE_STATUS.md`.
 
 Last synchronized: **2026-09-12**
 
@@ -15,124 +16,96 @@ Last synchronized: **2026-09-12**
 - integration branch: `main`
 
 Promotion requires semantic source match, official import reachability, green
-feature CI, clean-port CI, PR CI, merge/integration to `main`, green post-main
-CI, and ledger synchronization.
+feature CI, clean-port CI, PR CI, main integration, green post-main CI, and
+ledger synchronization.
 
 ## Current integrated checkpoint
 
-| status | count |
+| state | count |
 |---|---:|
-| proved | **49** |
-| partial | **0** |
-| pending | **57** |
-| total | **106** |
+| integrated proved | **49** |
+| promotion running | **1** |
+| source audit | **3** |
+| blocked warm lane | **1** |
+| source P-IDs total | **106** |
 
-Latest completed proof promotion: **P-INV-05**.
+The coverage ledger remains **49 proved / 57 pending** until P-STAT-06 finishes
+promotion. `pending` does not mean "needs a new proof".
 
-Evidence:
-- source-facing feature head `1a698c743bce27d0e3d914cf3cec707a984eefb8`
-- feature CI run `34614373920`: success
-- clean promotion head `d6750f42a2994dadacc7678642518a7129f22e43`
-- clean CI run `34625357569`: success
-- PR #39 CI run `34625787902`: success
-- integrated main commit `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d`
-- post-main CI run `34626175917`: success
-- integrated source-facing module `UEOT/V3/PredictableOLSSourceConfidence.lean`
+## Lane A — P-STAT-06 [PROMOTION]
 
-P-INV-05 machine-checks the predictable-design OLS concentration theorem all
-the way from source-time stochastic assumptions to the exact frozen Euclidean
-radius. The promoted theorem explicitly adds the standard adaptedness condition
-that `xi (n+1)` is `F (n+1)`-measurable; this is required for conditional-MGF
-iteration and is documented as a source correction rather than hidden behind a
-final-score black-box assumption.
+P-STAT-06 is mathematically/source complete. Do not add another theorem/helper
+unless PR/post-main CI exposes a real defect or a frozen-source mismatch.
 
-## Active parallel lanes
+Current evidence:
 
-### P-STAT-06 — RKHS/MMD simultaneous embedding error [HOT]
+- feature head `5a5cb89d600059525cb775c9561aa50d031da38d`;
+- feature full-repo CI `34684444280`: success;
+- clean-port branch `formal/pstat06-clean-port`;
+- clean-port head `2338d5fe7a5e9ae8a08cdfd469d0eacd35a80205`;
+- clean-port CI `34684655595`: success;
+- PR #40 against `main`;
+- PR CI `34685272294`: running at this synchronization.
 
-Main contains green reusable infrastructure:
-- exact one-replacement sensitivity `2/N`;
-- independent centered Hilbert off-diagonal cancellation;
-- empirical-mean squared-norm expansion;
-- exact second moment `E||mean Z_i||^2 <= 1/N`;
-- direct first-moment bound `E||mean Z_i|| <= 1/sqrt(N)`;
-- conditional-sub-Gaussian Azuma wrapper;
-- exact parameter normalization `N*(1/N^2)=1/N`;
-- exact scalar tail `exp(-N*epsilon^2/2)`.
+Canonical source theorem:
+`UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions`.
 
-Remaining source closure:
-1. construct the concrete Doob increments for the RKHS norm statistic from the
-   `2/N` bounded-difference lemma;
-2. discharge the required conditional Hoeffding/sub-Gaussian hypotheses;
-3. take the finite `L` union bound;
-4. expose the exact source-facing radius
-   `(1 + sqrt(2*log(L/alpha)))/sqrt(N)`.
+Frozen radius:
+`(1 + sqrt(2*log(L/alpha)))/sqrt(N)`.
 
-P-STAT-06 is intentionally **not** counted proved yet.
+Next actions are promotion only:
+`PR CI -> merge main -> post-main CI -> ledger sync -> 50/106`.
 
-### Information / structural packet [WARM]
+## Lane B — P-INFO-02/03/04 [SOURCE_AUDIT]
 
-Next low-overlap source audit:
-- P-INFO-02, P-INFO-03, P-INFO-04 using the integrated KL/entropy/information
-  stack;
-- P-INT-01 after the information packet, reusing the existing prediction and
-  conditional-information infrastructure rather than introducing a duplicate
-  independence formalism.
+Existing integrated reusable stack includes:
 
-### Remaining inverse / identifiability packet [WARM]
+- `InformationCore.lean`: KL-backed MI/residual and KL data processing;
+- `InformationStatistic.lean`: deterministic-statistic MI data processing,
+  exact MI chain identity and conditional-information residual;
+- `InformationDiscreteEntropy.lean`: discrete Shannon/KL bridge;
+- `InformationMemoryBound.lean`: P-INFO-01 predictive-memory lower bound;
+- `InformationEntropy.lean`: finite/uniform entropy results.
 
-P-INV-01 through P-INV-05 are now fully promoted. The next inverse-problem work
-should be selected from the remaining frozen source P-IDs only after a fresh
-source/dependency audit, reusing the Fisher and predictable-OLS libraries now on
-`main`.
+Source-audit result:
 
-## Promotion protocol
+- **P-INFO-02:** CMI-to-average-TV theorem; missing the canonical conditional
+  kernel TV expectation bridge and source wrapper. Likely a small proof lane.
+- **P-INFO-04:** Fano identity-memory lower bound; existing entropy machinery is
+  reusable, but the source-matched Fano theorem is not yet present. Likely a
+  small/medium proof lane.
+- **P-INFO-03:** zero-distortion predictive rate-distortion equality with random
+  encoders; requires a genuine random-encoder/conditional-entropy interface.
+  This is the main information-theory proof lane and must not be replaced by
+  another deterministic wrapper.
 
-1. source audit;
-2. feature full-target CI;
-3. clean-port onto newest green Lean-affecting `main`;
-4. clean-port CI;
-5. PR CI;
-6. serialized main integration;
-7. post-main CI;
-8. ledger synchronization.
+Recommended proof order: **P-INFO-02 -> P-INFO-04 -> P-INFO-03**.
 
-Parallel proof development is allowed; main promotion remains serialized.
+## Lane C — P-INT-01 [BLOCKED]
 
-## Recent main promotions
+Blocked until the information packet fixes the canonical conditional-information
+interface. Reuse prediction and information infrastructure; do not create a
+second conditional-independence stack.
 
-- P-FAC-01 — #502
-- P-DYN-02 — #506
-- P-REC-02 — #519
-- P-PER-01 — #540
-- P-ID-01 — #547
-- P-STAT-02 — #563
-- P-INFO-01 — #572
-- P-STAT-05 — #584
-- P-STAT-01 — #599
-- P-STAT-07 — #629
-- P-STAT-09 — #641
-- P-STAT-08 — #648
-- P-INV-01 — #666
-- P-INV-02 — #682
-- P-INV-04 — #697
-- P-INV-03 — post-main run `34576124342`
-- P-INV-05 — PR #39, post-main run `34626175917`
+## Recovery protocol
 
-## Mandatory recovery procedure
-
-1. Read this file and `V3_COVERAGE_STATUS.md`.
-2. Fetch current `main` SHA and latest main Action.
-3. Compare every active branch with current main and inspect its latest CI.
-4. Never count feature-green work as proved.
-5. New proof modules must be reachable from `UEOT` / `UEOT.V3`.
-6. For theorem wording/constants, use the frozen canonical source, never memory.
-7. If documentation and merged green Lean disagree, repair the documentation
-   before the next proof promotion.
+1. Read `PID_STATUS.yaml`, then this file, then `V3_COVERAGE_STATUS.md`.
+2. Fetch current `main` SHA and latest relevant Actions.
+3. For each active P-ID, distinguish `source_audit`, `proof`, `integration`,
+   `promotion`, `blocked`, and `proved`.
+4. Never infer "needs proof" from coverage `pending` alone.
+5. Read the frozen proof contract before writing Lean.
+6. Prove only listed missing obligations and reuse integrated infrastructure.
+7. New proof modules must be reachable from `UEOT` / `UEOT.V3`.
+8. Feature green is not coverage. Count only after post-main green + ledger sync.
+9. If documentation and merged green Lean disagree, repair state documentation
+   before opening another proof lane.
 
 ## Repository truth hierarchy
 
-- source ledger: `docs/V3_COVERAGE_STATUS.md`
-- live state: `docs/FORMALIZATION_STATE.md`
-- official import graph: `UEOT/V3.lean`
-- execution roadmap: `docs/PARALLEL_FORMALIZATION_ROADMAP.md`
+1. frozen source specification;
+2. `docs/V3_COVERAGE_STATUS.md` for counted integrated coverage;
+3. `docs/PID_STATUS.yaml` for machine-readable per-lane state;
+4. `docs/FORMALIZATION_STATE.md` for human recovery;
+5. `UEOT/V3.lean` for official import reachability;
+6. `docs/PARALLEL_FORMALIZATION_ROADMAP.md` for execution order.
