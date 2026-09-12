@@ -9,14 +9,17 @@ The frozen P-INFO-02 source theorem ultimately needs the measure-level bound
 `2 * D_TV(μ,ν)^2 ≤ KL(μ || ν)`.
 
 Pinned Mathlib provides measure-theoretic KL and its data-processing theorem,
-but currently no directly reusable Pinsker theorem.  This module proves the
-analytic two-point core without introducing an information-theory axiom.
-The next module will combine it with KL data processing along measurable event
-indicators and then take the supremum over events.
+but no directly reusable measure-level Pinsker theorem was found.  This module
+proves the analytic two-point core without introducing an information-theory
+axiom.  The next layer reduces arbitrary measurable events to this binary case
+and then takes the event supremum.
 
-The calculus proof architecture follows the standard convexity proof of binary
-Pinsker and was cross-checked against the Apache-2.0 implementation in
-`szl-holdings/lutar-lean`, `Lutar/Wave17/BinaryPinsker.lean` (2026).
+Proof architecture: the standard convexity proof of binary Pinsker, adapted and
+cross-checked against the Apache-2.0 implementation
+`szl-holdings/lutar-lean/Lutar/Wave17/BinaryPinsker.lean` (Copyright © 2026
+Lutar, Stephen P. / SZL Holdings).  The UEOT version is adjusted for the pinned
+Lean 4.33.1 / Mathlib API and kept as a local reusable lemma rather than treated
+as a UEOT-original information-theory result.
 -/
 
 namespace UEOT.V3.InformationBinaryPinsker
@@ -43,28 +46,33 @@ theorem hasDerivAt_gapBin (q p : ℝ) (hp : 0 < p) (hp1 : p < 1) :
     have h :=
       (hasDerivAt_id p).mul
         ((Real.hasDerivAt_log (ne_of_gt hp)).sub_const (Real.log q))
-    convert h using 1 <;> field_simp
+    convert h using 1
+    field_simp
   have hrp :
       HasDerivAt
         (fun x => (1 - x) * (Real.log (1 - x) - Real.log (1 - q)))
         (-(Real.log (1 - p) - Real.log (1 - q) + 1)) p := by
     have hin : HasDerivAt (fun x : ℝ => 1 - x) (-1) p := by
-      simpa using (hasDerivAt_const p (1 : ℝ)).sub (hasDerivAt_id p)
+      simpa using (hasDerivAt_id p).const_sub (1 : ℝ)
     have hlog :
         HasDerivAt (fun x => Real.log (1 - x) - Real.log (1 - q))
           ((1 - p)⁻¹ * (-1)) p :=
       ((Real.hasDerivAt_log (ne_of_gt h1p)).comp p hin).sub_const
         (Real.log (1 - q))
     have h := hin.mul hlog
-    convert h using 1 <;> field_simp <;> ring
+    convert h using 1
+    field_simp
+    ring
   have hquad :
       HasDerivAt (fun x => 2 * (x - q) ^ 2) (4 * (p - q)) p := by
     have hb : HasDerivAt (fun x : ℝ => x - q) 1 p :=
       (hasDerivAt_id p).sub_const q
     have h := (hb.pow 2).const_mul (2 : ℝ)
-    convert h using 1 <;> ring
+    convert h using 1
+    ring
   have h := (hlp.add hrp).sub hquad
-  convert h using 1 <;> ring
+  convert h using 1
+  ring
 
 theorem hasDerivAt_gapBinDeriv (q p : ℝ) (hp : 0 < p) (hp1 : p < 1) :
     HasDerivAt (gapBinDeriv q) (p⁻¹ + (1 - p)⁻¹ - 4) p := by
@@ -73,7 +81,7 @@ theorem hasDerivAt_gapBinDeriv (q p : ℝ) (hp : 0 < p) (hp1 : p < 1) :
   have hlog1 : HasDerivAt (fun x => Real.log x) p⁻¹ p :=
     Real.hasDerivAt_log (ne_of_gt hp)
   have hin : HasDerivAt (fun x : ℝ => 1 - x) (-1) p := by
-    simpa using (hasDerivAt_const p (1 : ℝ)).sub (hasDerivAt_id p)
+    simpa using (hasDerivAt_id p).const_sub (1 : ℝ)
   have hlog2 : HasDerivAt (fun x => Real.log (1 - x))
       ((1 - p)⁻¹ * (-1)) p :=
     (Real.hasDerivAt_log (ne_of_gt h1p)).comp p hin
@@ -81,28 +89,27 @@ theorem hasDerivAt_gapBinDeriv (q p : ℝ) (hp : 0 < p) (hp1 : p < 1) :
     have hb : HasDerivAt (fun x : ℝ => x - q) 1 p :=
       (hasDerivAt_id p).sub_const q
     simpa using hb.const_mul 4
-  have h1 :
-      HasDerivAt (fun x => Real.log x - Real.log q) p⁻¹ p :=
+  have step1 : HasDerivAt (fun x => Real.log x - Real.log q) p⁻¹ p :=
     hlog1.sub_const _
-  have h2 :
-      HasDerivAt
-        (fun x => Real.log x - Real.log q - Real.log (1 - x))
+  have step2 :
+      HasDerivAt (fun x => Real.log x - Real.log q - Real.log (1 - x))
         (p⁻¹ - (1 - p)⁻¹ * (-1)) p :=
-    h1.sub hlog2
-  have h3 :
+    step1.sub hlog2
+  have step3 :
       HasDerivAt
         (fun x => Real.log x - Real.log q - Real.log (1 - x) +
           Real.log (1 - q))
         (p⁻¹ - (1 - p)⁻¹ * (-1)) p :=
-    h2.add_const _
-  have h4 := h3.sub hquad
-  convert h4 using 1 <;> ring
+    step2.add_const _
+  have step4 := step3.sub hquad
+  convert step4 using 1
+  ring
 
-@[simp] theorem gapBinDeriv_diag (q : ℝ) : gapBinDeriv q q = 0 := by
+theorem gapBinDeriv_diag (q : ℝ) : gapBinDeriv q q = 0 := by
   unfold gapBinDeriv
   ring
 
-@[simp] theorem gapBin_diag (q : ℝ) : gapBin q q = 0 := by
+theorem gapBin_diag (q : ℝ) : gapBin q q = 0 := by
   unfold gapBin
   ring
 
@@ -161,8 +168,7 @@ theorem gapBin_nonneg
     (hp : 0 < p) (hp1 : p < 1) :
     0 ≤ gapBin q p := by
   rcases le_total q p with hqp | hpq
-  · have hderiv_nonneg :
-        ∀ x ∈ Set.Ioo q p, 0 ≤ deriv (gapBin q) x := by
+  · have hderiv_nonneg : ∀ x ∈ Set.Ioo q p, 0 ≤ deriv (gapBin q) x := by
       intro x hx
       rw [Set.mem_Ioo] at hx
       have hx0 : 0 < x := lt_trans hq hx.1
@@ -175,7 +181,7 @@ theorem gapBin_nonneg
           (Set.mem_Icc.mpr ⟨le_refl q, hqp⟩)
           (Set.mem_Icc.mpr ⟨le_of_lt hx.1, le_of_lt hx.2⟩)
           (le_of_lt hx.1)
-      simpa using hle
+      rwa [gapBinDeriv_diag] at hle
     have hmono : MonotoneOn (gapBin q) (Set.Icc q p) := by
       apply monotoneOn_of_deriv_nonneg (convex_Icc q p)
       · intro x hx
@@ -195,9 +201,8 @@ theorem gapBin_nonneg
       hmono
         (Set.mem_Icc.mpr ⟨le_refl q, hqp⟩)
         (Set.mem_Icc.mpr ⟨hqp, le_refl p⟩) hqp
-    simpa using hle
-  · have hderiv_nonpos :
-        ∀ x ∈ Set.Ioo p q, deriv (gapBin q) x ≤ 0 := by
+    rwa [gapBin_diag] at hle
+  · have hderiv_nonpos : ∀ x ∈ Set.Ioo p q, deriv (gapBin q) x ≤ 0 := by
       intro x hx
       rw [Set.mem_Ioo] at hx
       have hx0 : 0 < x := lt_trans hp hx.1
@@ -210,7 +215,7 @@ theorem gapBin_nonneg
           (Set.mem_Icc.mpr ⟨le_of_lt hx.1, le_of_lt hx.2⟩)
           (Set.mem_Icc.mpr ⟨hpq, le_refl q⟩)
           (le_of_lt hx.2)
-      simpa using hle
+      rwa [gapBinDeriv_diag] at hle
     have hanti : AntitoneOn (gapBin q) (Set.Icc p q) := by
       apply antitoneOn_of_deriv_nonpos (convex_Icc p q)
       · intro x hx
@@ -230,7 +235,7 @@ theorem gapBin_nonneg
       hanti
         (Set.mem_Icc.mpr ⟨le_refl p, hpq⟩)
         (Set.mem_Icc.mpr ⟨hpq, le_refl q⟩) hpq
-    simpa using hle
+    rwa [gapBin_diag] at hle
 
 /-- Binary Pinsker on the open probability simplex. -/
 theorem binary_pinsker_open
