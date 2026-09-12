@@ -12,10 +12,13 @@ promotion narratives remain in Git and in `docs/archive/`.
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
 - official target: `lake build UEOT`
 - integration branch: `main`
+- exact frozen source bytes in public repo: **pending synchronization**
 
 A P-ID is counted as `proved` only after semantic source matching, official
 import reachability, feature CI, clean-port CI, PR CI, main integration, green
-post-main CI, and ledger synchronization.
+post-main CI, and ledger synchronization. While the canonical source artifact is
+not synchronized into the repository, mathematically complete new P-IDs remain
+uncounted until the exact-hash source audit can be executed.
 
 ## Current source-level coverage
 
@@ -27,7 +30,8 @@ post-main CI, and ledger synchronization.
 | **total** | **106** |
 
 There are no partial P-IDs. `pending` means only “not yet counted proved”; it
-does not imply that no mathematical or Lean proof exists on a feature branch.
+does not imply that no mathematical or Lean proof exists on a feature branch or
+on `main`.
 
 ## Proved P-ID set
 
@@ -53,28 +57,13 @@ does not imply that no mathematical or Lean proof exists on a feature branch.
 
 Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 50`.
 
-## Latest promotion — P-STAT-06
+## Latest counted promotion — P-STAT-06
 
 Frozen source-facing result: for a finite family of Hilbert/RKHS empirical-mean
 errors on a common raw sample, the simultaneous failure probability is at most
 `alpha` at the exact radius
 
 `(1 + sqrt(2*log(L/alpha))) / sqrt(N)`.
-
-The integrated Lean chain now machine-checks the full source route rather than
-only reusable concentration infrastructure:
-
-- raw feature-map pullback to Hilbert-valued product marginals;
-- one-coordinate replacement width `2/N`;
-- exact second-moment cancellation and first-moment shift `1/sqrt(N)`;
-- concrete Doob filtration and increment identification;
-- first-increment and non-first-increment conditional sub-Gaussian control with
-  exact proxy `1/N^2`, including the rational-MGF-to-real lift;
-- terminal Doob bridge and Azuma assembly;
-- centered and uncentered tails;
-- exact frozen-radius substitution;
-- finite-`L` simultaneous union on a common raw sample, allowing heterogeneous
-  Hilbert/RKHS candidate spaces.
 
 Canonical source-facing theorem:
 `UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions`.
@@ -90,9 +79,7 @@ Verification evidence:
 - integrated main commit: `d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092`
 - post-main CI run `34685534516`: success
 
-P-STAT-06 is therefore **closed and counted**. No new Doob/Hoeffding/MGF/radius/
-union/feature wrapper should be added under this P-ID unless a future source
-audit discovers a substantive mismatch.
+P-STAT-06 is **closed and counted**.
 
 ## Recent promotion evidence
 
@@ -117,12 +104,46 @@ audit discovers a substantive mismatch.
 | P-INV-05 | `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d` | `34626175917` success |
 | P-STAT-06 | `d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092` | `34685534516` success |
 
+## Integrated but not yet source-counted information work
+
+### P-INFO-02
+
+The source-faithful predictive-TV theorem is mathematically complete and
+integrated on `main`:
+
+- canonical theorem: `UEOT.V3.InformationPInfo02.p_info_02_ennreal`;
+- all-cases main commit: `c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`;
+- post-main CI `34692828935`: success.
+
+It remains outside the proved count solely because the exact frozen source
+artifact is not yet synchronized into the repository for the final literal
+source/hash audit.
+
+### P-INFO-04 multiway clause
+
+The sharp multiway Fano theorem is also integrated and post-main green:
+
+- canonical theorem: `UEOT.V3.InformationPInfo04.p_info_04`;
+- main commit: `94e16dfb9cc9a2db6e000d8f5394c1b07869ce40`;
+- post-main CI `34693509298`: success.
+
+P-INFO-04 itself is not countable yet because its frozen contract also contains
+a conditional-binary identity-information clause. That remaining clause is the
+active proof lane.
+
 ## Active unresolved parallel front
 
-The active information-theory front is governed by `docs/PID_STATUS.yaml`.
-P-INFO-02 is in proof after source audit identified a genuine measure-level
-Pinsker dependency; P-INFO-03 and P-INFO-04 remain source-audit lanes, and
-P-INT-01 is blocked on the canonical conditional-information interface.
+- **P-INFO-04 — PROOF:** conditional binary Fano and the finite-binary
+  `I(M;B|U)=H(B|U)-H(B|M,U)` bridge remain to close the full P-ID.
+- **P-INFO-03 — SOURCE_AUDIT:** extend the same disintegration architecture to
+  countable discrete conditional entropy and the random-encoder zero-distortion
+  rate-distortion theorem.
+- **P-INFO-02 — SOURCE-ARTIFACT BLOCKED:** no further proof work; wait only for
+  exact source-byte synchronization and final literal audit.
+- **P-INT-01 — BLOCKED:** reuse the canonical conditional-information bridge
+  produced by the P-INFO packet; do not build a duplicate stack.
+
+The machine-readable live details are in `docs/PID_STATUS.yaml`.
 
 ## Completion rule
 
