@@ -30,28 +30,19 @@ variable [MeasurableSpace H]
 /-- The final valid sample index. -/
 def lastIndex {N : ℕ} (hN : 0 < N) : Fin N := ⟨N - 1, by omega⟩
 
-/-- The final sample index has no strict-future coordinates. -/
-theorem future_lastIndex_eq_empty {N : ℕ} (hN : 0 < N) :
-    future (lastIndex hN) = ∅ := by
-  ext j
-  simp only [mem_future_iff, Finset.mem_empty]
-  have hj : j.1 < N := j.2
-  change ¬(N - 1 < j.1)
-  omega
-
 /-- Every function on the strict-future block of the final coordinate is the
-same, since that block is empty. -/
+same, since no valid coordinate lies strictly after `N-1`. -/
 theorem subsingleton_future_lastIndex_fun
     {N : ℕ} (hN : 0 < N) :
     Subsingleton (future (lastIndex hN) → H) := by
   constructor
   intro y z
   funext j
-  have hj : (j : Fin N) ∈ future (lastIndex hN) := j.2
-  have hfalse : False := by
-    rw [future_lastIndex_eq_empty hN] at hj
-    simpa using hj
-  exact hfalse.elim
+  have hlt : lastIndex hN < (j : Fin N) :=
+    (mem_future_iff (lastIndex hN) (j : Fin N)).1 j.2
+  have hj : (j : Fin N).1 < N := (j : Fin N).2
+  change N - 1 < (j : Fin N).1 at hlt
+  omega
 
 /-- At the final coordinate, the source continuation is exactly the original
 Hilbert mean-error statistic: the strict-future integral is an integral of a
@@ -102,7 +93,6 @@ theorem doobValue_last_ae_eq_meanError
   have hdoob :=
     doobValue_meanError_ae_eq_sourceContinuation_of_unit
       hN μ i μH hμH hunit
-  have hival : i.1 = N - 1 := by rfl
   have hdoob' :
       doobValue
           (Measure.pi μ)
@@ -111,7 +101,7 @@ theorem doobValue_last_ae_eq_meanError
           (N - 1)
         =ᵐ[Measure.pi μ]
         sourceContinuation μ i μH := by
-    simpa [hival] using hdoob
+    simpa [i, lastIndex] using hdoob
   refine hdoob'.trans (Filter.Eventually.of_forall ?_)
   intro ω
   simpa [i] using sourceContinuation_last_eq_meanError hN μ μH ω
