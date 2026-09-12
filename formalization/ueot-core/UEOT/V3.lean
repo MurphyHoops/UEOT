@@ -77,6 +77,7 @@ import UEOT.V3.HilbertMeanPastActiveContinuation
 import UEOT.V3.HilbertMeanSourceIncrementIdentification
 import UEOT.V3.HilbertMeanSourcePastFiber
 import UEOT.V3.HilbertMeanSourceFiberHoeffding
+import UEOT.V3.HilbertMeanSourceFirstIncrement
 import UEOT.V3.MMDTransport
 import UEOT.V3.MMDTransportSource
 import UEOT.V3.AverageErrorTransport
