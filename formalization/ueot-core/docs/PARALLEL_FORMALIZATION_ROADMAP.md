@@ -1,204 +1,135 @@
 # UEOT Core v3.0 — Parallel Lean Completion Roadmap
 
-This is the execution plan for completing all 106 source P-IDs in
+This is the execution plan for completing all 106 frozen source P-IDs in
 `UEOT_Core_Mathematics_v3.0_Complete.md`.
 
-Live branch/CI state belongs in `FORMALIZATION_STATE.md`; the authoritative
-source-level count belongs in `V3_COVERAGE_STATUS.md`.
+Machine-readable live state belongs in `PID_STATUS.yaml`. Human recovery state
+belongs in `FORMALIZATION_STATE.md`. The authoritative integrated source count
+belongs in `V3_COVERAGE_STATUS.md`.
 
 ## 1. Promotion gate
 
-A P-ID is `proved` only after all of the following hold:
-
-1. exact frozen source statement/hypotheses identified;
-2. Lean theorem source-faithful or any source correction explicitly audited;
-3. theorem reachable from the official `UEOT` target;
-4. feature full-target CI green;
-5. minimal clean-port onto newest green Lean-affecting `main`;
-6. clean-port CI green;
-7. PR CI green;
-8. serialized main integration;
-9. post-main `lake build UEOT` green;
-10. no `sorry`, UEOT-specific axiom, `native_decide`, or hidden weakening;
-11. authoritative ledgers synchronized.
+A P-ID is counted `proved` only after: exact source audit, source-faithful Lean
+closure, official import reachability, feature full-target CI, minimal clean
+port, clean-port CI, PR CI, serialized `main` integration, post-main
+`lake build UEOT`, prohibited-proof audit, and ledger synchronization.
 
 Helpers and isolated green files do not increment source coverage.
 
-## 2. Current checkpoint
+## 2. State semantics
 
-As of 2026-09-12:
+Do not collapse all unfinished work into `pending`.
 
-- proved: **49**
-- partial: **0**
-- pending: **57**
-- total: **106**
-- latest proved P-ID: **P-INV-05**
-- current integrated Lean head: `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d`
-- post-main CI run `34626175917`: success
-
-P-INV-01 through P-INV-05 are closed. P-STAT-06 infrastructure is integrated
-but that P-ID remains pending until the exact frozen simultaneous RKHS radius
-theorem is closed.
-
-## 3. Branch classes
-
-- **HOT** — actively changing proof lane.
-- **PROMOTION** — source-complete minimal clean port waiting for serialized main integration.
-- **WARM** — source-audited next packet with no duplicated proof work.
+- **SOURCE_AUDIT** — frozen statement and existing-library coverage are being mapped.
+- **PROOF** — at least one source-essential missing lemma remains.
+- **INTEGRATION** — proof is complete but official import/clean-port work remains.
+- **PROMOTION** — source-complete clean port is moving through CI/PR/main.
+- **BLOCKED** — dependency or source ambiguity prevents correct proof work.
+- **PROVED** — passed the full gate and is counted in `V3_COVERAGE_STATUS.md`.
 - **ARCHIVE** — merged/superseded/historical evidence only.
 
-Never rebase stale branches merely to make their names look current; clean-port
-only the verified source-matched delta.
+`pending` in the coverage ledger means only “not yet counted proved”. Before
+writing Lean for any P-ID, read its proof contract in `PID_STATUS.yaml` and
+prove only the listed `missing` obligations.
 
-## 4. Current parallel wave
+## 3. Current checkpoint — 2026-09-12
 
-### Lane A — P-STAT-06 RKHS/MMD concentration [HOT]
+- integrated proved: **50/106**
+- P-STAT-06: **PROVED/CLOSED**
+- P-INFO-02: **PROOF**
+- P-INFO-03/04: **SOURCE_AUDIT**
+- P-INT-01: **BLOCKED** on canonical conditional-information interface
 
-Integrated green infrastructure on `main`:
+### Lane A — P-STAT-06 [CLOSED]
 
-- exact `2/N` one-sample replacement sensitivity;
-- centered Hilbert off-diagonal cancellation;
-- empirical squared-norm expansion;
-- `E||mean Z_i||^2 <= 1/N`;
-- exact first-moment bridge `E||mean Z_i|| <= 1/sqrt(N)`;
-- conditional-sub-Gaussian Azuma wrapper;
-- exact parameter normalization `N*(1/N^2)=1/N`;
-- scalar tail `exp(-N*epsilon^2/2)`.
+Promotion completed through post-main CI:
 
-Active source-closure branch: `formal/pstat06-union-closure`.
+- feature CI `34684444280`: success;
+- clean-port CI `34684655595`: success;
+- PR #40 CI `34685272294`: success;
+- main commit `d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092`;
+- post-main CI `34685534516`: success.
 
-Current closure sequence:
+No new Doob/Hoeffding/MGF/radius/union/feature wrapper belongs under P-STAT-06
+unless a future frozen-source audit finds a substantive mismatch.
 
-1. machine-check the finite `L` union wrapper in the exact `alpha/L` form;
-2. build the concrete Doob increments for the RKHS norm statistic from the
-   `2/N` bounded-difference theorem;
-3. prove the conditional Hoeffding/sub-Gaussian increment hypotheses;
-4. combine with the first-moment `1/sqrt(N)` term;
-5. substitute `t = sqrt(2*log(L/alpha)/N)`;
-6. expose exact source-facing
-   `max_j ||muHat_j-mu_j|| <= (1 + sqrt(2*log(L/alpha)))/sqrt(N)`;
-7. clean promotion, PR CI and post-main verification.
+### Lane B1 — P-INFO-02 [PROOF]
 
-Do not count the integrated infrastructure alone as P-STAT-06.
+Frozen target:
 
-### Lane B — information packet [WARM]
+`E TV(P(Y|H), P(Y|M,U)) <= sqrt(I(H;Y|M,U)/2)`.
 
-Open a fresh source audit for P-INFO-02, P-INFO-03 and P-INFO-04. Reuse the
-already integrated information/KL/entropy modules and establish one canonical
-conditional-information interface rather than creating another entropy stack.
+The source audit corrected the earlier “wrapper-only” diagnosis. Pinned Mathlib
+has measure-theoretic KL chain/data-processing, but no directly reusable
+measure-level Pinsker theorem was found. The proof contract is therefore:
 
-Execution order:
+1. binary Pinsker analytic core;
+2. boundary cases for event probabilities 0 or 1;
+3. event-indicator KL data-processing reduction;
+4. supremum over measurable events to obtain `2*TV^2 <= KL`;
+5. conditional-kernel averaging;
+6. Jensen square-root step;
+7. one canonical source-facing P-INFO-02 theorem.
 
-1. identify exact frozen statements and dependency order;
-2. map each source notion to the existing `Information*` modules;
-3. prove the smallest missing reusable lemmas;
-4. expose source-facing wrappers one P-ID at a time;
-5. promote independently through the full gate.
+Active branch: `formal/pinfo02-pinsker`.
 
-### Lane C — P-INT-01 structured sufficiency [WARM]
+Current completed layer: `UEOT.V3.InformationBinaryPinsker`, proving the open
+binary-simplex analytic inequality and imported by the official `UEOT.V3`
+target. Current feature CI: `34685655814`.
 
-Start only after the P-INFO audit fixes the canonical conditional-information
-interface. Reuse prediction, Markov-boundary and information infrastructure.
-The critical rule is to prove the frozen iff/bridge statement rather than a
-one-direction surrogate.
+### Lane B2 — P-INFO-04 [SOURCE_AUDIT]
 
-### Lane D — next inverse/identifiability packet [WARM]
+Frozen target is the identity-memory Fano lower bound
 
-P-INV-01..05 are now fully promoted. Select the next inverse-family source P-ID
-only after a fresh source/dependency audit. Reuse both the Fisher intersection
-library and the predictable-OLS concentration library; do not rebuild a second
-linear-algebra or concentration stack.
+`I(J;Y_T) >= log K - h2(e) - e*log(K-1)`.
 
-## 5. Next WARM pool
+Mathlib has no directly reusable Fano theorem. Existing external Lean prior art
+covers a finite single-distribution entropy inequality, but the frozen source
+still needs the joint/conditional Fano statement, decoder data processing, and
+the repository's measure-theoretic mutual-information bridge. Do not replace
+that contract with a weaker finite entropy wrapper.
 
-Priority after the current wave:
+### Lane B3 — P-INFO-03 [SOURCE_AUDIT]
 
-1. P-INFO-02/03/04;
-2. P-INT-01;
-3. remaining inverse/identifiability packet after P-INV-05;
-4. remaining QSD/persistence theorems, separating finite Perron/Markov results
-   from diffusion/spectral analysis;
-5. finite implementation/composition packet;
-6. finite control/quotient packet before continuous HJB/spectral GOA work;
-7. KL/variational/dual-drive packet;
-8. evolution/reflexivity/final assembly only after prerequisites are closed.
+Frozen target:
 
-## 6. Dependency factories for the remaining 57
+`R_obj(0) = H(C|U)` for discrete canonical predictive core
+`C=P(Y in . | H,U)`, with random encoders allowed.
 
-### Factory G — statistics / inverse problems
+The integrated deterministic-statistic stack is reusable, but it does not by
+itself prove the random-encoder rate-distortion statement. The missing work is
+the genuine predictive-rate-distortion interface, zero-distortion
+recoverability, conditional DPI lower bound, and attainability by `M=C`.
 
-P-STAT / P-INV remainder. Reuse finite concentration, Fisher, predictable-OLS,
-variation and response-defect infrastructure already on main.
+### Lane C — P-INT-01 [BLOCKED]
 
-### Factory H — implementation / composition
+Do not start another conditional-independence formalism. Reuse the canonical
+conditional-information interface produced by the P-INFO packet. The frozen
+target is an iff/bridge statement, not a one-direction surrogate.
 
-P-ID / P-OMG / P-COMP remainder. Separate finite hypergraph/Booleanization
-proofs from prediction-information parent-emergence claims.
+### Lane D — remaining pending families [SOURCE-AUDIT POOL]
 
-### Factory I — information / structural interfaces
+QSD/persistence, implementation/composition, control/quotient, KL/variational,
+and final assembly work may enter PROOF only after a source/dependency audit
+records a concrete missing obligation in `PID_STATUS.yaml`.
 
-P-INFO / P-INT remainder. One canonical KL/MI/conditional-information layer;
-no duplicate entropy stacks.
+## 4. Concurrency discipline
 
-### Factory J — control / quotient / GOA
-
-Dependency direction is fixed:
-process -> predictive state -> dynamic quotient -> policy/value -> GOA.
-
-### Factory K — KL / variational / dual-drive
-
-Separate exact algebraic gauge theorems, finite Markov path-KL, and genuinely
-analytic/Girsanov statements.
-
-### Factory L — evolution / reflexivity / final assembly
-
-P-EVO, remaining P-BRG/P-REF, then P-API/P-ALG/P-CORE assembly. Assembly
-statements never mask missing prerequisites.
-
-## 7. Concurrency discipline
-
+- proof development may be parallel; main promotion is serialized;
 - one P-ID family owns one module or tight module group;
-- feature branches edit `UEOT/V3.lean` only for their own import reachability;
-- only synchronization commits edit source-coverage ledgers;
-- shared infrastructure is proved and merged once, never duplicated across
-  stale branches;
-- proof development is parallel; main promotion is serialized;
-- aim for 3–5 genuinely independent HOT/WARM lanes, not artificial branch count.
+- no second entropy/KL/concentration stack when an integrated one already exists;
+- while one lane waits in CI, work on another lane's source audit or actual
+  missing lemma; repeated CI polling is not proof progress;
+- do not rebase stale experimental branches merely to make them look current;
+  clean-port only the verified source-matched delta.
 
-## 8. CI hierarchy
+## 5. Merge train
 
-### L1 — feature branch
+`source audit -> proof contract -> only missing helpers -> canonical source theorem -> official import -> feature CI -> clean port -> clean CI -> PR CI -> serialized main integration -> post-main CI -> ledger sync`.
 
-Compile the official `UEOT`/`UEOT.V3` target with the new module imported.
+## 6. Completion condition
 
-### L2 — clean promotion
-
-Use newest green Lean-affecting main, minimal delta, full build, source-facing
-theorem, semantic audit and prohibited-proof audit.
-
-### L2.5 — PR verification
-
-Run the official full target on the actual PR head/base combination before
-integration.
-
-### L3 — post-main
-
-Run the full build/audits. Coverage changes only after success.
-
-## 9. Merge train
-
-For every P-ID:
-
-`source audit -> helpers -> source wrapper -> official import -> feature CI -> clean port -> clean CI -> PR CI -> serialized main integration -> post-main CI -> ledger sync`.
-
-While one lane waits in CI, another lane continues proof development.
-
-## 10. Completion condition
-
-UEOT Core v3.0 is machine-complete only at:
-
-- **106 proved / 0 partial / 0 pending**;
-- full `lake build UEOT` green on main;
-- source-to-ledger consistency green;
-- transitive axiom/prohibited-proof audit green;
-- no source P-ID counted through a helper theorem alone.
+UEOT Core v3.0 is machine-complete only at **106 proved / 0 partial / 0 pending**,
+with full `lake build UEOT` green on `main`, source-to-ledger consistency green,
+transitive prohibited-proof/axiom audit green, and no P-ID counted through a
+helper theorem alone.

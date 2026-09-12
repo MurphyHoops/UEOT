@@ -21,12 +21,13 @@ post-main CI, and ledger synchronization.
 
 | status | count |
 |---|---:|
-| **proved** | **49** |
+| **proved** | **50** |
 | **partial** | **0** |
-| **pending** | **57** |
+| **pending** | **56** |
 | **total** | **106** |
 
-There are no partial P-IDs.
+There are no partial P-IDs. `pending` means only “not yet counted proved”; it
+does not imply that no mathematical or Lean proof exists on a feature branch.
 
 ## Proved P-ID set
 
@@ -34,7 +35,7 @@ There are no partial P-IDs.
 - **Resolution:** P-RES-01, P-RES-02, P-RES-03, P-RES-04, P-RES-05, P-RES-06
 - **Prediction:** P-PRED-01, P-PRED-02, P-PRED-03
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
-- **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-07, P-STAT-08, P-STAT-09
+- **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
@@ -50,43 +51,48 @@ There are no partial P-IDs.
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 8 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 49`.
+Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 50`.
 
-## Latest promotion — P-INV-05
+## Latest promotion — P-STAT-06
 
-Frozen statement: for bounded predictable linear design and conditionally
-sub-Gaussian noise, on the samplewise Gram event `G_N ⪰ N*kappa*I`, the OLS
-estimation error obeys
+Frozen source-facing result: for a finite family of Hilbert/RKHS empirical-mean
+errors on a common raw sample, the simultaneous failure probability is at most
+`alpha` at the exact radius
 
-`||thetaHat-thetaStar||_2 <= (sigma*B/kappa) * sqrt(2*d*log(2*d/alpha)/N)`
+`(1 + sqrt(2*log(L/alpha))) / sqrt(N)`.
 
-outside an event of probability at most `alpha`.
+The integrated Lean chain now machine-checks the full source route rather than
+only reusable concentration infrastructure:
 
-The integrated Lean development machine-checks the full source-facing chain:
-predictable random multiplier conditional-MGF control, product integrability,
-strong adaptedness, martingale score accumulation, two-sided coordinate tails,
-finite-`d` union control, exact threshold/radius normalization, source-time to
-`Fin N` index identification, the OLS normal equation, the full matrix-form
-good-Gram predicate, and the final Euclidean confidence theorem.
+- raw feature-map pullback to Hilbert-valued product marginals;
+- one-coordinate replacement width `2/N`;
+- exact second-moment cancellation and first-moment shift `1/sqrt(N)`;
+- concrete Doob filtration and increment identification;
+- first-increment and non-first-increment conditional sub-Gaussian control with
+  exact proxy `1/N^2`, including the rational-MGF-to-real lift;
+- terminal Doob bridge and Azuma assembly;
+- centered and uncentered tails;
+- exact frozen-radius substitution;
+- finite-`L` simultaneous union on a common raw sample, allowing heterogeneous
+  Hilbert/RKHS candidate spaces.
 
-Semantic correction: the formal source theorem makes explicit that `xi (n+1)`
-is measurable with respect to `F (n+1)`. This adaptedness is required for the
-conditional-MGF iteration and is implicit in the standard filtered-process
-formulation. No final-score sub-Gaussian black box is assumed in the promoted
-source theorem.
+Canonical source-facing theorem:
+`UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions`.
 
 Verification evidence:
 
-- source-facing feature branch: `formal/pinv05-source-confidence`
-- source-facing feature head: `1a698c743bce27d0e3d914cf3cec707a984eefb8`
-- feature full-target CI run `34614373920`: success
-- clean promotion branch: `formal/pinv05-clean-port`
-- clean promotion head: `d6750f42a2994dadacc7678642518a7129f22e43`
-- clean-port CI run `34625357569`: success
-- PR #39 CI run `34625787902`: success
-- integrated main commit: `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d`
-- post-main CI run `34626175917`: success
-- source-facing module: `UEOT/V3/PredictableOLSSourceConfidence.lean`
+- source-facing feature head: `5a5cb89d600059525cb775c9561aa50d031da38d`
+- feature full-target CI run `34684444280`: success
+- clean promotion branch: `formal/pstat06-clean-port`
+- clean promotion head: `2338d5fe7a5e9ae8a08cdfd469d0eacd35a80205`
+- clean-port CI run `34684655595`: success
+- PR #40 CI run `34685272294`: success
+- integrated main commit: `d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092`
+- post-main CI run `34685534516`: success
+
+P-STAT-06 is therefore **closed and counted**. No new Doob/Hoeffding/MGF/radius/
+union/feature wrapper should be added under this P-ID unless a future source
+audit discovers a substantive mismatch.
 
 ## Recent promotion evidence
 
@@ -109,25 +115,14 @@ Verification evidence:
 | P-INV-04 | `efd1f529e739aecd4b1331f7324ce5660384cd8c` | #697 success |
 | P-INV-03 | `93de8c70353566e806a65afa3f29330cd69da29e` | `34576124342` success |
 | P-INV-05 | `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d` | `34626175917` success |
+| P-STAT-06 | `d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092` | `34685534516` success |
 
 ## Active unresolved parallel front
 
-### P-STAT-06 — simultaneous RKHS embedding error
-
-The main branch contains and compiles the four reusable infrastructure layers:
-
-- exact one-replacement sensitivity `2/N`;
-- independent centered Hilbert second-moment cancellation and
-  `E||mean Z_i||^2 <= 1/N`;
-- exact first-moment bridge `E||mean Z_i|| <= 1/sqrt(N)`;
-- conditional-sub-Gaussian Azuma wrapper with the exact `1/N^2` increment
-  parameter sum and tail `exp(-N epsilon^2/2)`.
-
-These layers are integrated and post-main green, but **P-STAT-06 is not yet
-counted proved**. The remaining source obligation is the concrete
-bounded-difference/Doob increment construction for the RKHS statistic plus the
-finite-`L` union wrapper yielding exactly
-`(1 + sqrt(2*log(L/alpha)))/sqrt(N)`.
+The active information-theory front is governed by `docs/PID_STATUS.yaml`.
+P-INFO-02 is in proof after source audit identified a genuine measure-level
+Pinsker dependency; P-INFO-03 and P-INFO-04 remain source-audit lanes, and
+P-INT-01 is blocked on the canonical conditional-information interface.
 
 ## Completion rule
 
