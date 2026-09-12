@@ -41,7 +41,10 @@ theorem measurable_activePrefix
   rw [measurable_pi_iff]
   intro j
   by_cases hji : (j : Fin N) = i
-  · change Measurable (fun a : H => a)
+  · have heq : (fun a : H => activePrefix ω i a j) = fun a : H => a := by
+      funext a
+      simp [activePrefix, blockProjection, Function.update, hji]
+    rw [heq]
     exact measurable_id
   · simpa [activePrefix, blockProjection, Function.update, hji] using
       (measurable_const : Measurable (fun _ : H => ω (j : Fin N)))
@@ -81,7 +84,7 @@ theorem integrable_activeFutureMeanError_of_unit
   have hset : MeasurableSet
       {z : H × (future i → H) | ‖activeFutureMeanError ω i μH z‖ ≤ 2} :=
     measurableSet_le hmeas.norm measurable_const
-  apply (ae_prod_iff_ae_ae hset).2
+  apply (Measure.ae_prod_mem_iff_ae_ae_mem hset).2
   filter_upwards [hunit i] with a ha
   filter_upwards [hy] with y hy
   have hx : ∀ j, ‖activePrefix ω i a j‖ ≤ 1 := by
