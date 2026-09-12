@@ -103,7 +103,7 @@ theorem measurable_conditionalBinaryEntropyFiber
     (ρ : Measure (U × (M × Fin 2))) [IsProbabilityMeasure ρ] :
     Measurable (conditionalBinaryEntropyFiber ρ) := by
   unfold conditionalBinaryEntropyFiber
-  exact Real.continuous_binEntropy.measurable.comp
+  exact Real.binEntropy_continuous.measurable.comp
     (measurable_conditionalBitOneProb ρ)
 
 theorem conditionalBinaryEntropyFiber_nonneg
