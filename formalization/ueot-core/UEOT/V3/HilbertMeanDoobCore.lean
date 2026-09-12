@@ -39,7 +39,8 @@ theorem doobValue_martingale
     (μ : Measure Ω) (ℱ : Filtration ℕ mΩ) [SigmaFiniteFiltration μ ℱ]
     (F : Ω → ℝ) :
     Martingale (doobValue μ ℱ F) ℱ μ := by
-  simpa [doobValue] using martingale_condExp F ℱ μ
+  change Martingale (fun i => μ[F | ℱ i]) ℱ μ
+  exact martingale_condExp F ℱ μ
 
 /-- The Doob increment sequence is strongly adapted to the same filtration. -/
 theorem doobIncrement_stronglyAdapted
