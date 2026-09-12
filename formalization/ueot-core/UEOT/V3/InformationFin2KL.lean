@@ -169,4 +169,35 @@ theorem fin2_klDiv_toReal_of_ac
         lt_of_le_of_ne measureReal_le_one hq1
       exact fin2_klDiv_toReal_of_reference_interior μ ν hq0' hq1'
 
+/-- Binary KL is always finite under absolute continuity.  This theorem closes
+the `ENNReal` boundary issue needed when converting the fiberwise KL integral
+back to an ordinary real integral. -/
+theorem fin2_klDiv_ne_top_of_ac
+    (μ ν : Measure (Fin 2))
+    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
+    (hμν : μ ≪ ν) :
+    klDiv μ ν ≠ ∞ := by
+  by_cases hq0 : ν.real ({1} : Set (Fin 2)) = 0
+  · rw [fin2_klDiv_eq_zero_of_reference_zero μ ν hμν hq0]
+    simp
+  · by_cases hq1 : ν.real ({1} : Set (Fin 2)) = 1
+    · rw [fin2_klDiv_eq_zero_of_reference_one μ ν hμν hq1]
+      simp
+    · have hp0 : 0 ≤ μ.real ({1} : Set (Fin 2)) := measureReal_nonneg
+      have hp1 : μ.real ({1} : Set (Fin 2)) ≤ 1 := measureReal_le_one
+      have hq0' : 0 < ν.real ({1} : Set (Fin 2)) :=
+        lt_of_le_of_ne measureReal_nonneg (Ne.symm hq0)
+      have hq1' : ν.real ({1} : Set (Fin 2)) < 1 :=
+        lt_of_le_of_ne measureReal_le_one hq1
+      rw [klDiv_fin2_eq_bernoulliLaw μ ν]
+      letI : IsProbabilityMeasure
+          (bernoulliLaw (μ.real ({1} : Set (Fin 2)))) :=
+        bernoulliLaw_isProbabilityMeasure hp0 hp1
+      letI : IsProbabilityMeasure
+          (bernoulliLaw (ν.real ({1} : Set (Fin 2)))) :=
+        bernoulliLaw_isProbabilityMeasure hq0'.le hq1'.le
+      exact InformationTheory.klDiv_ne_top
+        (bernoulliLaw_ac_of_reference_interior hq0' hq1')
+        bernoulliLaw_llr_integrable
+
 end UEOT.V3.InformationFin2KL
