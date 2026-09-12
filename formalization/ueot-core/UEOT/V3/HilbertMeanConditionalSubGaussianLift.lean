@@ -48,7 +48,6 @@ theorem hasCondSubgaussianMGF_of_rat_condExp_le
     exact h_int t
   · intro q
     have heq := condExp_ae_eq_trim_integral_condExpKernel hm (h_int (q : ℝ))
-    rw [condExpKernel_comp_trim (μ := μ) hm] at heq
     filter_upwards [h_rat q, heq] with ω hbound hEq
     rw [hEq] at hbound
     simpa [mgf] using hbound
