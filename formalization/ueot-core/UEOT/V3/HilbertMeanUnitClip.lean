@@ -15,6 +15,7 @@ pairwise oscillation bound.
 namespace UEOT.V3.HilbertMeanUnitClip
 
 open MeasureTheory
+open scoped NNReal
 
 universe uH
 
@@ -41,6 +42,23 @@ theorem unitClip_ae_eq
   filter_upwards [hunit] with a ha
   exact unitClip_eq_of_norm_le q ha
 
+/-- Integrability is preserved by clipping when the measure is supported on the
+unit ball. -/
+theorem integrable_unitClip_iff
+    [MeasurableSpace H]
+    (ν : Measure H) (q : H → ℝ)
+    (hunit : ∀ᵐ a ∂ν, ‖a‖ ≤ 1) :
+    Integrable (unitClip q) ν ↔ Integrable q ν := by
+  exact integrable_congr (unitClip_ae_eq ν q hunit)
+
+/-- Clipping leaves the integral unchanged under unit-ball support. -/
+theorem integral_unitClip_eq
+    [MeasurableSpace H]
+    (ν : Measure H) (q : H → ℝ)
+    (hunit : ∀ᵐ a ∂ν, ‖a‖ ≤ 1) :
+    (∫ a, unitClip q a ∂ν) = ∫ a, q a ∂ν := by
+  exact integral_congr_ae (unitClip_ae_eq ν q hunit)
+
 /-- A pairwise oscillation bound required only on unit-ball arguments becomes a
 fully global oscillation bound after clipping. -/
 theorem unitClip_pairwise_abs_sub_le
@@ -64,5 +82,22 @@ theorem measurable_unitClip
   have hs : MeasurableSet {a : H | ‖a‖ ≤ 1} :=
     measurableSet_le continuous_norm.measurable measurable_const
   exact hq.ite hs measurable_const
+
+/-- The exact centered support interval of the clipped section inherits the same
+`NNReal` oscillation width. This is the source-compatible adapter into the
+existing centered-fiber Hoeffding layer. -/
+theorem centered_unitClip_exact_interval_nnnorm_le
+    [MeasurableSpace H]
+    (ν : Measure H) [IsProbabilityMeasure ν]
+    (q : H → ℝ) {c : ℝ≥0}
+    (hq : Integrable q ν)
+    (hunit : ∀ᵐ a ∂ν, ‖a‖ ≤ 1)
+    (hosc : ∀ a b, ‖a‖ ≤ 1 → ‖b‖ ≤ 1 → |q a - q b| ≤ (c : ℝ)) :
+    ‖(sSup (Set.range (unitClip q)) - ∫ a, unitClip q a ∂ν) -
+      (sInf (Set.range (unitClip q)) - ∫ a, unitClip q a ∂ν)‖₊ ≤ c := by
+  have hclip : Integrable (unitClip q) ν :=
+    (integrable_unitClip_iff ν q hunit).2 hq
+  exact UEOT.V3.HilbertMeanCenteredFiber.centered_exact_interval_nnnorm_le
+    ν (unitClip q) hclip (unitClip_pairwise_abs_sub_le q hosc)
 
 end UEOT.V3.HilbertMeanUnitClip
