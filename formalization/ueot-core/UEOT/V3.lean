@@ -48,6 +48,8 @@ import UEOT.V3.HilbertMeanFirstMoment
 import UEOT.V3.HilbertMeanAzuma
 import UEOT.V3.HilbertMeanConditionalHoeffding
 import UEOT.V3.HilbertMeanMcDiarmidCore
+import UEOT.V3.HilbertMeanProductLaw
+import UEOT.V3.HilbertMeanIntegralContraction
 import UEOT.V3.MMDTransport
 import UEOT.V3.MMDTransportSource
 import UEOT.V3.AverageErrorTransport
