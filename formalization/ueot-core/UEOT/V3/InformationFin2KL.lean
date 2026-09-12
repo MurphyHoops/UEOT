@@ -118,6 +118,8 @@ theorem fin2_klDiv_eq_zero_of_reference_zero
     klDiv μ ν = 0 := by
   have hp0 := fin2_successProb_eq_zero_of_ac μ ν hμν hq0
   rw [klDiv_fin2_eq_bernoulliLaw μ ν, hp0, hq0]
+  haveI : IsProbabilityMeasure (bernoulliLaw (0 : ℝ)) :=
+    bernoulliLaw_isProbabilityMeasure (by norm_num) (by norm_num)
   exact klDiv_self _
 
 /-- If the reference binary law is degenerate at `1`, absolute continuity
@@ -130,6 +132,8 @@ theorem fin2_klDiv_eq_zero_of_reference_one
     klDiv μ ν = 0 := by
   have hp1 := fin2_successProb_eq_one_of_ac μ ν hμν hq1
   rw [klDiv_fin2_eq_bernoulliLaw μ ν, hp1, hq1]
+  haveI : IsProbabilityMeasure (bernoulliLaw (1 : ℝ)) :=
+    bernoulliLaw_isProbabilityMeasure (by norm_num) (by norm_num)
   exact klDiv_self _
 
 /-- **Exact scalar KL formula for arbitrary binary probability laws under
@@ -147,14 +151,13 @@ theorem fin2_klDiv_toReal_of_ac
         (1 - μ.real ({1} : Set (Fin 2))) *
           Real.log ((1 - μ.real ({1} : Set (Fin 2))) /
             (1 - ν.real ({1} : Set (Fin 2)))) := by
-  let q := ν.real ({1} : Set (Fin 2))
-  by_cases hq0 : q = 0
+  by_cases hq0 : ν.real ({1} : Set (Fin 2)) = 0
   · have hp0 : μ.real ({1} : Set (Fin 2)) = 0 :=
       fin2_successProb_eq_zero_of_ac μ ν hμν hq0
     have hkl := fin2_klDiv_eq_zero_of_reference_zero μ ν hμν hq0
     rw [hkl, hp0, hq0]
     simp
-  · by_cases hq1 : q = 1
+  · by_cases hq1 : ν.real ({1} : Set (Fin 2)) = 1
     · have hp1 : μ.real ({1} : Set (Fin 2)) = 1 :=
         fin2_successProb_eq_one_of_ac μ ν hμν hq1
       have hkl := fin2_klDiv_eq_zero_of_reference_one μ ν hμν hq1
