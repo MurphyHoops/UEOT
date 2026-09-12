@@ -6,7 +6,7 @@ import UEOT.V3.HilbertMeanRangeWidth
 
 After future coordinates have been averaged out, a Doob increment is the
 active-coordinate continuation value minus its average under the active
-coordinate law.  This file records the deterministic/probabilistic facts
+coordinate law. This file records the deterministic/probabilistic facts
 needed by conditional Hoeffding: absolute envelope, zero mean, and a support
 interval whose width is no larger than the original oscillation constant.
 -/
@@ -107,7 +107,7 @@ theorem centered_exact_interval_nnnorm_le
       (sSup (Set.range q) - ∫ y, q y ∂ν) -
         (sInf (Set.range q) - ∫ y, q y ∂ν) ≤ (c : ℝ) :=
     centered_exact_interval_width_le ν q hq hosc
-  apply NNReal.coe_le_coe.mp
-  simpa [Real.norm_eq_abs, abs_of_nonneg hnon] using hreal
+  rw [← NNReal.coe_le_coe, coe_nnnorm, Real.norm_eq_abs, abs_of_nonneg hnon]
+  exact hreal
 
 end UEOT.V3.HilbertMeanCenteredFiber
