@@ -6,14 +6,15 @@ import UEOT.V3.HilbertMeanRangeWidth
 
 After future coordinates have been averaged out, a Doob increment is the
 active-coordinate continuation value minus its average under the active
-coordinate law.  This file records the three deterministic/probabilistic facts
+coordinate law.  This file records the deterministic/probabilistic facts
 needed by conditional Hoeffding: absolute envelope, zero mean, and a support
-interval whose real width is no larger than the original oscillation constant.
+interval whose width is no larger than the original oscillation constant.
 -/
 
 namespace UEOT.V3.HilbertMeanCenteredFiber
 
 open MeasureTheory Real
+open scoped NNReal
 
 universe uβ
 
@@ -69,7 +70,7 @@ theorem centered_mem_exact_Icc
       (sSup (Set.range q) - ∫ y, q y ∂ν) := by
   exact HilbertMeanRangeWidth.centered_mem_Icc_sInf_sSup q hosc x
 
-/-- The exact centered support interval has the same width bound `c`. -/
+/-- The exact centered support interval has the same real width bound `c`. -/
 theorem centered_exact_interval_width_le
     [Nonempty β]
     (ν : Measure β) [IsProbabilityMeasure ν]
@@ -79,5 +80,34 @@ theorem centered_exact_interval_width_le
     (sSup (Set.range q) - ∫ y, q y ∂ν) -
       (sInf (Set.range q) - ∫ y, q y ∂ν) ≤ c := by
   exact HilbertMeanRangeWidth.centered_interval_width_le q hosc
+
+/-- `NNReal` form of the exact interval-width bound, matching the support-width
+input expected by `HilbertMeanConditionalHoeffding`. -/
+theorem centered_exact_interval_nnnorm_le
+    [Nonempty β]
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    (q : β → ℝ) {c : ℝ≥0}
+    (hq : Integrable q ν)
+    (hosc : ∀ x y, |q x - q y| ≤ (c : ℝ)) :
+    ‖(sSup (Set.range q) - ∫ y, q y ∂ν) -
+      (sInf (Set.range q) - ∫ y, q y ∂ν)‖₊ ≤ c := by
+  classical
+  let x₀ : β := Classical.choice (inferInstance : Nonempty β)
+  have hbelow := HilbertMeanRangeWidth.bddBelow_range_of_pairwise_abs_sub_le q hosc
+  have habove := HilbertMeanRangeWidth.bddAbove_range_of_pairwise_abs_sub_le q hosc
+  have hlow : sInf (Set.range q) ≤ q x₀ :=
+    csInf_le hbelow (Set.mem_range_self x₀)
+  have hupp : q x₀ ≤ sSup (Set.range q) :=
+    le_csSup habove (Set.mem_range_self x₀)
+  have hnon : 0 ≤
+      (sSup (Set.range q) - ∫ y, q y ∂ν) -
+        (sInf (Set.range q) - ∫ y, q y ∂ν) := by
+    linarith
+  have hreal :
+      (sSup (Set.range q) - ∫ y, q y ∂ν) -
+        (sInf (Set.range q) - ∫ y, q y ∂ν) ≤ (c : ℝ) :=
+    centered_exact_interval_width_le ν q hq hosc
+  apply NNReal.coe_le_coe.mp
+  simpa [Real.norm_eq_abs, abs_of_nonneg hnon] using hreal
 
 end UEOT.V3.HilbertMeanCenteredFiber
