@@ -51,9 +51,20 @@ theorem stronglyMeasurable_pastActiveClippedContinuation
   have hzero : StronglyMeasurable
       (fun z : (past i → H) × H =>
         pastActiveContinuation μ i μH (z.1, 0)) := by
-    exact hbase.comp_measurable (measurable_fst.prod_mk measurable_const)
-  simpa [pastActiveClippedContinuation] using
+    exact hbase.comp_measurable
+      (Measurable.prodMk measurable_fst measurable_const)
+  have hpiece : StronglyMeasurable
+      ({z : (past i → H) × H | ‖z.2‖ ≤ 1}.piecewise
+        (pastActiveContinuation μ i μH)
+        (fun z => pastActiveContinuation μ i μH (z.1, 0))) :=
     hbase.piecewise hset hzero
+  rw [show pastActiveClippedContinuation μ i μH =
+      {z : (past i → H) × H | ‖z.2‖ ≤ 1}.piecewise
+        (pastActiveContinuation μ i μH)
+        (fun z => pastActiveContinuation μ i μH (z.1, 0)) by
+      funext z
+      simp [pastActiveClippedContinuation, Set.piecewise]]
+  exact hpiece
 
 /-- Center the clipped active continuation by its active-marginal mean, keeping
 strict past fixed. -/
