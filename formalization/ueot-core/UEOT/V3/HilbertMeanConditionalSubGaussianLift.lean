@@ -34,6 +34,7 @@ theorem ae_trim_condExp_le_of_ae_condExp_le
 /-- Construct conditional sub-Gaussianity from rational conditional-expectation
 MGF bounds.  The passage from rationals to all reals is delegated to Mathlib's
 kernel-level `of_rat`, avoiding any uncountable intersection of a.e. sets. -/
+include ‹StandardBorelSpace Ω› in
 theorem hasCondSubgaussianMGF_of_rat_condExp_le
     [IsFiniteMeasure μ]
     (hm : m ≤ (inferInstance : MeasurableSpace Ω))
