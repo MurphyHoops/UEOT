@@ -100,6 +100,20 @@ theorem hasCondSubgaussianMGF_doobIncrement_invSqParam
           (fun ω : Fin N → H => ‖empiricalMean ω - μH‖)
           i.1 :=
     hclipraw.trans hdoob.symm
+  have hclipdoob_kernel :
+      sourceClippedIncrement μ i μH =ᵐ[
+        condExpKernel
+            (Measure.pi μ)
+            (sourcePastSigma (H := H) i) ∘ₘ
+          (Measure.pi μ).trim (sourcePastSigma_le (H := H) i)]
+        doobIncrement
+          (Measure.pi μ)
+          (prefixFiltration (H := H) (N := N))
+          (fun ω : Fin N → H => ‖empiricalMean ω - μH‖)
+          i.1 := by
+    rw [condExpKernel_comp_trim
+      (μ := Measure.pi μ) (sourcePastSigma_le (H := H) i)]
+    exact hclipdoob
   have hdoob_sourcePast :
       HasCondSubgaussianMGF
         (sourcePastSigma (H := H) i)
@@ -111,7 +125,8 @@ theorem hasCondSubgaussianMGF_doobIncrement_invSqParam
           i.1)
         (invSqParam N)
         (Measure.pi μ) := by
-    exact (ProbabilityTheory.Kernel.HasSubgaussianMGF_congr hclipdoob).mp hclip
+    exact
+      (ProbabilityTheory.Kernel.HasSubgaussianMGF_congr hclipdoob_kernel).mp hclip
   have hsigma := prefixFiltration_pred_eq_pastComap (H := H) i hi
   have hsigma' :
       sourcePastSigma (H := H) i =
