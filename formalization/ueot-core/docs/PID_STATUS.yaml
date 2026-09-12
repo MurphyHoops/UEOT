@@ -11,11 +11,12 @@ coverage:
   promotion_running: 1
   active_proof: 0
   source_audit: 3
-  pending_unclassified: 53
+  blocked: 1
+  pending_unclassified: 52
   note: >-
     Coverage is counted only after main integration, post-main green CI, and
-    ledger synchronization. promotion_running and source_audit are not counted
-    as integrated_proved.
+    ledger synchronization. promotion_running, source_audit, blocked, and
+    pending_unclassified are not counted as integrated_proved.
 state_vocabulary:
   - source_audit
   - proof
