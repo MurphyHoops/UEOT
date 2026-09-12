@@ -53,9 +53,11 @@ private theorem measureReal_sub_le_toReal_lintegral_tsub
   have hLle : L ≤ ∫⁻ y, p y ∂base := by
     dsimp [L]
     exact lintegral_mono fun y => tsub_le_self
-  have hLtop : L ≠ ∞ := by
-    apply ne_top_of_le_ne_top (by simpa [hpint] using (show (1 : ℝ≥0∞) ≠ ∞ from ENNReal.one_ne_top))
-    exact hLle
+  have hpTop : (∫⁻ y, p y ∂base) ≠ ∞ := by
+    rw [hpint]
+    exact ENNReal.one_ne_top
+  have hLtop : L ≠ ∞ :=
+    ne_top_of_le_ne_top hpTop hLle
   have hENN : μ A - ν A ≤ L := by
     dsimp [μ, ν, L]
     rw [withDensity_apply _ hA, withDensity_apply _ hA]
