@@ -40,31 +40,36 @@ error, with no almost-everywhere qualification. -/
   unfold splitMeanError
   rw [assemblePrefixFuture_blockProjections]
 
+/-- The finite Hilbert empirical mean is continuous for the product topology. -/
+theorem continuous_empiricalMean {N : ℕ} :
+    Continuous (empiricalMean : (Fin N → H) → H) := by
+  unfold empiricalMean
+  have hsum : Continuous (fun x : Fin N → H => ∑ i, x i) := by
+    exact continuous_finsetSum Finset.univ (fun i _ => continuous_apply i)
+  exact hsum.const_smul ((N : ℝ)⁻¹)
+
 /-- The finite Hilbert empirical mean is measurable for the canonical product
 Borel structure. -/
 theorem measurable_empiricalMean
     [MeasurableSpace H] [BorelSpace H] {N : ℕ} :
     Measurable (empiricalMean : (Fin N → H) → H) := by
-  unfold empiricalMean
-  fun_prop
+  exact (continuous_empiricalMean (H := H) (N := N)).measurable
 
 /-- The source mean-error statistic is measurable. -/
 theorem measurable_meanError
     [MeasurableSpace H] [BorelSpace H]
     {N : ℕ} (μH : H) :
     Measurable (fun ω : Fin N → H => ‖empiricalMean ω - μH‖) := by
-  exact ((measurable_empiricalMean (H := H)).sub measurable_const).norm
+  exact (((continuous_empiricalMean (H := H) (N := N)).sub continuous_const).norm).measurable
 
 /-- The source split statistic is measurable. -/
 theorem measurable_splitMeanError
     [MeasurableSpace H] [BorelSpace H]
     {N : ℕ} (i : Fin N) (μH : H) :
     Measurable (splitMeanError i μH) := by
-  unfold splitMeanError
-  have ha := measurable_assemblePrefixFuture (H := H) i
-  have hm : Measurable (empiricalMean : (Fin N → H) → H) :=
-    measurable_empiricalMean (H := H)
-  exact ((hm.comp ha).sub measurable_const).norm
+  have h := (measurable_meanError (H := H) (N := N) μH).comp
+    (measurable_assemblePrefixFuture (H := H) i)
+  simpa [splitMeanError] using h
 
 /-- Since the codomain is real, measurability upgrades directly to strong
 measurability. -/
