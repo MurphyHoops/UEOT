@@ -48,6 +48,9 @@ theorem source_meanError_tail_from_first_moment
         ε ≤ ‖empiricalMean ω - μH‖ -
           ∫ x, ‖empiricalMean x - μH‖ ∂Measure.pi μ} := by
     intro ω hω
+    change 1 / Real.sqrt (N : ℝ) + ε ≤ ‖empiricalMean ω - μH‖ at hω
+    change ε ≤ ‖empiricalMean ω - μH‖ -
+      ∫ x, ‖empiricalMean x - μH‖ ∂Measure.pi μ
     linarith
   calc
     (Measure.pi μ).real
