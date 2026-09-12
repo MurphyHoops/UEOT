@@ -20,6 +20,16 @@ universe uΩ
 variable {Ω : Type uΩ} {mΩ m : MeasurableSpace Ω}
 variable {μ : Measure Ω} {X : Ω → ℝ} {c : ℝ≥0}
 
+/-- Since conditional expectations and constants are `m`-strongly measurable,
+a μ-a.e. conditional-MGF bound can be promoted to the trimmed measure.  This
+is the legitimate reverse direction unavailable for arbitrary predicates. -/
+theorem ae_trim_condExp_le_of_ae_condExp_le
+    (hm : m ≤ mΩ) {f : Ω → ℝ} {b : ℝ}
+    (h : (μ[f | m]) ≤ᵐ[μ] (fun _ => b)) :
+    (μ[f | m]) ≤ᵐ[μ.trim hm] (fun _ => b) := by
+  exact StronglyMeasurable.ae_le_trim_of_stronglyMeasurable
+    hm stronglyMeasurable_condExp stronglyMeasurable_const h
+
 /-- Construct conditional sub-Gaussianity from rational conditional-expectation
 MGF bounds.  The passage from rationals to all reals is delegated to Mathlib's
 kernel-level `of_rat`, avoiding any uncountable intersection of a.e. sets. -/
