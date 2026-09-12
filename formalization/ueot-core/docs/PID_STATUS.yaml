@@ -53,7 +53,11 @@ pids:
       pr: 40
       pr_ci:
         run: 34685272294
-        status: in_progress
+        status: success
+      main_commit: d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092
+      post_main_ci:
+        run: 34685534516
+        status: queued
     coverage_counted: false
     forbidden_work:
       - new_doob_theorem
@@ -74,12 +78,21 @@ pids:
       conclusion: E TV(P(Y|H),P(Y|M,U)) <= sqrt(epsilon/2)
       proof_route:
         - conditional_mutual_information_as_average_conditional_KL
-        - Pinsker
+        - measure_level_Pinsker
         - Jensen
     reuse:
       - UEOT.V3.InformationCore
       - UEOT.V3.InformationStatistic
-    missing: canonical conditional-kernel TV expectation bridge and source-facing wrapper
+      - UEOT.V3.TotalVariation
+      - Mathlib.InformationTheory.KullbackLeibler.DataProcessing
+    audit_finding: >-
+      Pinned Mathlib supplies KL chain/data-processing but no directly reusable
+      measure-level Pinsker theorem was found. Do not classify this as a wrapper-only gap.
+    missing:
+      - source-faithful measure-level Pinsker bridge for tvDist versus klDiv
+      - conditional kernel KL-to-TV averaging interface
+      - Jensen square-root step
+      - one canonical source-facing theorem
     coverage_counted: false
   P-INFO-03:
     state: source_audit
