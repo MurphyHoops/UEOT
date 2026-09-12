@@ -29,6 +29,12 @@ noncomputable def swappedBinaryJoint
     (ρ : Measure (X × Fin 2)) : Measure (Fin 2 × X) :=
   ρ.map Prod.swap
 
+instance swappedBinaryJoint_isProbability
+    (ρ : Measure (X × Fin 2)) [IsProbabilityMeasure ρ] :
+    IsProbabilityMeasure (swappedBinaryJoint ρ) := by
+  unfold swappedBinaryJoint
+  exact (Measure.isProbabilityMeasure_map_iff measurable_swap.aemeasurable).2 inferInstance
+
 /-- Likelihood kernel `P(X | B)` obtained by disintegrating the swapped law. -/
 noncomputable def binaryLikelihood
     (ρ : Measure (X × Fin 2)) [IsProbabilityMeasure ρ] : Kernel (Fin 2) X :=
@@ -69,7 +75,8 @@ theorem condKernel_ae_eq_binaryPosterior
               rw [binaryLikelihood_comp_snd_eq_fst]
       _ = ρ := Measure.disintegrate ρ ρ.condKernel
       _ = (swappedBinaryJoint ρ).map Prod.swap := by
-              simp [swappedBinaryJoint, Measure.map_map, Function.comp_def]
+              unfold swappedBinaryJoint
+              rw [Measure.map_map, Prod.swap_swap_eq, Measure.map_id] <;> measurability
       _ = (ρ.snd ⊗ₘ binaryLikelihood ρ).map Prod.swap := by rw [hdis]
   have hpost := ae_eq_posterior_of_compProd_eq
     (κ := binaryLikelihood ρ) (μ := ρ.snd) (η := ρ.condKernel) hjoint
