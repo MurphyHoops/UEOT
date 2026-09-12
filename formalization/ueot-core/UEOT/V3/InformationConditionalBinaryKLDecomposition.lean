@@ -86,12 +86,8 @@ theorem fiberKL_eq_mutualInfo
     klDiv (conditionalBinaryKernel ρ u)
         (conditionalBinaryReferenceKernel ρ u) =
       mutualInfo (conditionalBinaryKernel ρ u) := by
-  change
-    klDiv (conditionalBinaryKernel ρ u)
-      ((conditionalBinaryKernel ρ u).fst.prod
-        (conditionalBinaryKernel ρ u).snd) =
-      mutualInfo (conditionalBinaryKernel ρ u)
-  rfl
+  unfold conditionalBinaryReferenceKernel mutualInfo
+  rw [Kernel.prod_apply, Kernel.fst_apply, Kernel.snd_apply]
 
 /-- Finite canonical conditional binary mutual information is the `U`-average
 of the ordinary mutual information of each true conditional fiber. -/
