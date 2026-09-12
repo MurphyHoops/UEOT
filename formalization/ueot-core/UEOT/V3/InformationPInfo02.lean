@@ -132,22 +132,16 @@ section SourceExact
 
 variable [StandardBorelSpace H] [StandardBorelSpace Y]
 variable [StandardBorelSpace M] [StandardBorelSpace U]
-variable (μ : Measure (H × Y)) [IsProbabilityMeasure μ]
-
-/-- A probability law on `H × Y` already implies that the target type `Y` is
-nonempty.  Keeping this as a local instance removes the implementation-only
-`[Nonempty Y]` premise from the canonical frozen-source theorem. -/
-noncomputable local instance sourceTargetNonempty : Nonempty Y :=
-  ⟨(nonempty_of_isProbabilityMeasure μ).some.2⟩
 
 /-- **P-INFO-02, canonical frozen-source theorem.**
 
 This theorem exposes exactly the source assumptions: standard-Borel variables,
 a probability experiment law, and measurable deterministic history statistics
-`M=fM(H)` and `U=fU(H)`.  Target nonemptiness is derived from the probability
-law rather than added as an assumption.  The conclusion is the all-cases
-extended-real form of `E TV ≤ sqrt(I(H;Y|M,U)/2)`. -/
+`M=fM(H)` and `U=fU(H)`.  Target nonemptiness is derived locally from the
+probability law rather than added as an assumption.  The conclusion is the
+all-cases extended-real form of `E TV ≤ sqrt(I(H;Y|M,U)/2)`. -/
 theorem p_info_02_source
+    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]
     (fM : H → M) (fU : H → U)
     (hfM : Measurable fM) (hfU : Measurable fU) :
     ENNReal.ofReal
@@ -160,6 +154,8 @@ theorem p_info_02_source
           (historyInterfaceStatistic fM fU)
           (measurable_historyInterfaceStatistic hfM hfU) / 2) ^
         (1 / 2 : ℝ) := by
+  letI : Nonempty (H × Y) := nonempty_of_isProbabilityMeasure μ
+  letI : Nonempty Y := ⟨Classical.choose ‹Nonempty (H × Y)› |>.2⟩
   exact p_info_02_ennreal μ fM fU hfM hfU
 
 end SourceExact
