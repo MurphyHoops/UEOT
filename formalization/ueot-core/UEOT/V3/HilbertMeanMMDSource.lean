@@ -33,13 +33,15 @@ theorem source_featureMMD_tail_exact_radius
     (P : Measure Y) [IsProbabilityMeasure P]
     (φ : Y → H) (hφ : Measurable φ)
     (hInt : Integrable φ P)
-    (hunit : ∀ᵐ y ∂P, ‖φ y‖ ≤ 1)
-    (hmeanUnit : ‖meanEmbedding φ P‖ ≤ 1) :
+    (hunit : ∀ᵐ y ∂P, ‖φ y‖ ≤ 1) :
     (Measure.pi (fun _ : Fin N => P)).real
       {y : Fin N → Y |
         pStat06SourceRadius N L alpha ≤
           ‖empiricalMean (fun i => φ (y i)) - meanEmbedding φ P‖}
       ≤ alpha / (L : ℝ) := by
+  have hmeanUnit : ‖meanEmbedding φ P‖ ≤ 1 := by
+    unfold meanEmbedding
+    simpa using (norm_integral_le_of_norm_le_const (μ := P) hunit)
   let ν : Fin N → Measure Y := fun _ => P
   have hraw := source_feature_tail_exact_radius_raw_assumptions
     (Y := Y) (H := H)
