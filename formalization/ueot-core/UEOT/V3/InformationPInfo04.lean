@@ -80,7 +80,7 @@ lemma correctProb_eq_one_sub_error {K : ℕ}
 
 lemma uniformIdentityLaw_singleton
     {K : ℕ} [NeZero K] (j : Fin K) :
-    uniformIdentityLaw K {j} = (K : ℝ≥0∞)⁻¹ := by
+    uniformIdentityLaw K {j} = (K : ENNReal)⁻¹ := by
   unfold uniformIdentityLaw
   rw [PMF.toMeasure_apply_singleton _ _ (measurableSet_singleton j)]
   simp [PMF.uniformOfFintype_apply, Fintype.card_fin]
@@ -94,7 +94,7 @@ theorem uniform_prod_correctProb
     ((uniformIdentityLaw K).prod ν).real (correctEvent d) = (K : ℝ)⁻¹ := by
   have hA : MeasurableSet (correctEvent d) := measurableSet_correctEvent d hd
   have hraw :
-      ((uniformIdentityLaw K).prod ν) (correctEvent d) = (K : ℝ≥0∞)⁻¹ := by
+      ((uniformIdentityLaw K).prod ν) (correctEvent d) = (K : ENNReal)⁻¹ := by
     rw [Measure.prod_apply_symm hA]
     have hsection : ∀ y : Y,
         ((fun j : Fin K => (j, y)) ⁻¹' correctEvent d) = {d y} := by
