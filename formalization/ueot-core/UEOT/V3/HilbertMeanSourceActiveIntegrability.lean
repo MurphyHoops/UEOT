@@ -40,8 +40,8 @@ theorem measurable_activePrefix
   rw [measurable_pi_iff]
   intro j
   by_cases hji : (j : Fin N) = i
-  · subst hji
-    simpa [activePrefix, blockProjection] using (measurable_id : Measurable (fun a : H => a))
+  · simpa [activePrefix, blockProjection, Function.update, hji] using
+      (measurable_id : Measurable (fun a : H => a))
   · simpa [activePrefix, blockProjection, Function.update, hji] using
       (measurable_const : Measurable (fun _ : H => ω (j : Fin N)))
 
