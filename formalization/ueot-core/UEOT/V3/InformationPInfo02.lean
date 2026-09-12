@@ -154,8 +154,8 @@ theorem p_info_02_source
           (historyInterfaceStatistic fM fU)
           (measurable_historyInterfaceStatistic hfM hfU) / 2) ^
         (1 / 2 : ℝ) := by
-  letI : Nonempty (H × Y) := nonempty_of_isProbabilityMeasure μ
-  letI : Nonempty Y := ⟨Classical.choose ‹Nonempty (H × Y)› |>.2⟩
+  letI hHY : Nonempty (H × Y) := nonempty_of_isProbabilityMeasure μ
+  letI : Nonempty Y := ⟨(Classical.choice hHY).2⟩
   exact p_info_02_ennreal μ fM fU hfM hfU
 
 end SourceExact
