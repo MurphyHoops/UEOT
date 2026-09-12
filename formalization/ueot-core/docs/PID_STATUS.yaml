@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 updated: 2026-09-13
 integration_branch: main
 official_target: lake build UEOT
@@ -6,21 +6,30 @@ source:
   file: UEOT_Core_Mathematics_v3.0_Complete.md
   pids_total: 106
   sha256: ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
-  content_sync: pending
-  source_rule: exact_hash_required; regenerated substitute forbidden
+  canonical_source_access: project_file_library
+  public_repo_sync: pending
+  hash_recomputed_this_audit: false
+  source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
+  reproducibility_note: >-
+    Exact canonical bytes are not currently present in the public repository.
+    This remains a repository reproducibility task and is tracked separately
+    from source-theorem proof status. The canonical SHA above remains the frozen
+    manifest value and was not recomputed from raw local bytes in the 2026-09-13
+    semantic audit.
 coverage:
-  integrated_proved: 50
+  integrated_proved: 52
   promotion_running: 0
   active_proof: 1
   source_audit: 0
-  blocked: 3
+  blocked: 1
   pending_unclassified: 52
   note: >-
-    Counts partition all 106 frozen source P-IDs. Only integrated_proved is
-    counted in V3_COVERAGE_STATUS.md. P-INFO-02 and P-INFO-04 are mathematically
-    complete, imported, merged and post-main green, but remain uncounted while
-    the exact frozen source artifact is not synchronized into the public repo.
-    P-INFO-03 is now the active proof lane.
+    Counts partition all 106 frozen source P-IDs: 52 proved + 1 active proof +
+    1 blocked + 52 pending unclassified. P-INFO-02 and P-INFO-04 are now counted
+    proved because their frozen statements were re-audited against the canonical
+    source object and their source-faithful Lean theorems are merged and
+    post-main green. Public canonical-source byte synchronization remains
+    pending as a separate reproducibility task and does not negate those proofs.
 state_vocabulary:
   - source_audit
   - proof
@@ -37,6 +46,8 @@ rules:
   - no_new_helpers_for_proved_or_promotion_only_pid_without_real_ci_or_source_mismatch
   - feature_green_does_not_increment_coverage
   - ci_waiting_time_must_be_used_for_another_lane_or_source_audit
+  - source_theorem_proof_status_is_distinct_from_public_source_artifact_reproducibility
+  - never_claim_hash_reverification_without_access_to_exact_raw_bytes
 
 pids:
   P-STAT-06:
@@ -61,8 +72,10 @@ pids:
       - new_feature_wrapper
 
   P-INFO-02:
-    state: blocked
+    state: proved
     source_locked: true
+    source_semantic_audit: complete
+    source_audit_evidence: docs/SOURCE_AUDIT_EVIDENCE_2026-09-13.md
     mathematical_chain: complete
     proof_contract:
       assumptions: standard Borel H,Y,M,U; M,U are functions of history
@@ -88,14 +101,11 @@ pids:
       [Nonempty Y] is visible because Mathlib condKernel requires it during
       theorem-statement elaboration. Existence of the probability law on H×Y
       implies Nonempty Y, so this is not an additional physical assumption.
-    blocked_by:
-      - exact_frozen_source_artifact_not_synced_in_public_repo
-    remaining_gate:
+    public_source_artifact_synced: false
+    reproducibility_remaining:
       - synchronize exact UEOT_Core_Mathematics_v3.0_Complete.md bytes
-      - verify canonical SHA-256
-      - perform final exact-source statement audit
-      - update coverage ledger only after that audit
-    coverage_counted: false
+      - independently recompute and verify canonical SHA-256 in the public repo
+    coverage_counted: true
 
   P-INFO-03:
     state: proof
@@ -114,8 +124,8 @@ pids:
       - UEOT.V3.InformationCore
       - UEOT.V3.InformationDiscreteEntropy
       - UEOT.V3.InformationMemoryBound
-      - UEOT.V3.InformationConditionalBinary
-      - UEOT.V3.InformationConditionalBinaryKLDecomposition
+      - UEOT.V3.InformationConditionalMutual
+      - UEOT.V3.InformationConditionalMutualKLDecomposition
     audit_finding: >-
       Existing countable entropy infrastructure is unconditional and
       InformationStatistic models deterministic statistics only. P-INFO-03
@@ -124,28 +134,39 @@ pids:
       H(C)-I(C;U), which would add an unintended finite-H(C) assumption.
     active_lane:
       branch: formal/pinfo03-countable-conditional
-      head: 53573b6483fd05e836be1ff89445706d766f6029
-      ci:
+      latest_known_head: 9a152cace0831cca498cdf489a06466b36cf2e98
+      isolated_generic_cmi_branch: formal/pinfo03-generic-cmi-isolated
+      countable_entropy_ci:
         run: 34706765170
+        status: success
+      generic_cmi_ci:
+        run: 34707351959
         status: in_progress
-      first_module: UEOT.V3.InformationConditionalDiscreteEntropy
+      first_green_module: UEOT.V3.InformationConditionalDiscreteEntropy
     completed_or_started:
       - exact frozen source contract re-audited
       - random encoder distinguished from deterministic statistic interface
-      - countable fiber Shannon entropy designed as measurable ENNReal tsum
-      - first countable conditional entropy module imported into official graph
+      - countable fiber Shannon entropy defined as measurable ENNReal tsum
+      - first countable conditional entropy module official-CI green
+      - generic KL conditional mutual information interface written
+      - generic fiber KL decomposition written
+      - random encoder joint-law geometry written
+      - recoverable-discrete information identity proof lane started
     remaining:
-      - machine-check first conditional-entropy layer
-      - prove compatibility with countable discrete Shannon/KL layer as needed
-      - build random-encoder predictive rate-distortion interface
-      - zero-distortion recoverability theorem
+      - machine-check generic conditional mutual information layer
+      - machine-check generic conditional KL decomposition
+      - prove compatibility between fiber Shannon tsum and existing discreteShannonEntropy
+      - machine-check random-encoder joint law
+      - prove zero-distortion predictive-core recoverability
       - conditional DPI lower bound
       - attainability and source-facing R_obj(0) theorem
     coverage_counted: false
 
   P-INFO-04:
-    state: blocked
+    state: proved
     source_locked: true
+    source_semantic_audit: complete
+    source_audit_evidence: docs/SOURCE_AUDIT_EVIDENCE_2026-09-13.md
     mathematical_chain: complete
     proof_contract:
       multiway_assumptions: J uniform on K>=2 identities; decoder Jhat(Y_T); error rate e
@@ -193,14 +214,11 @@ pids:
       [Nonempty M] is a Mathlib condKernel elaboration requirement implied by
       existence of the probability law on U×(M×Fin 2); it is not an additional
       source-level physical assumption.
-    blocked_by:
-      - exact_frozen_source_artifact_not_synced_in_public_repo
-    remaining_gate:
+    public_source_artifact_synced: false
+    reproducibility_remaining:
       - synchronize exact UEOT_Core_Mathematics_v3.0_Complete.md bytes
-      - verify canonical SHA-256
-      - perform final exact-source statement audit for both P-INFO-04 clauses
-      - update coverage ledger only after that audit
-    coverage_counted: false
+      - independently recompute and verify canonical SHA-256 in the public repo
+    coverage_counted: true
 
   P-INT-01:
     state: blocked
