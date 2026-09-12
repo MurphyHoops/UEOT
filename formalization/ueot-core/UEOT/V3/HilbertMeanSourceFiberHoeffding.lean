@@ -91,6 +91,14 @@ theorem hasSubgaussianMGF_centeredClippedActiveSection_invSqParam
       field_simp [hNnn]
     rw [HilbertMeanAzuma.invSqParam, ← hhalf]
     gcongr
-  exact hbase.mono hparam
+  refine ⟨hbase.integrable_exp_mul, ?_⟩
+  intro t
+  calc
+    mgf (centeredClippedActiveSection μ i μH ω) (μ i) t
+        ≤ exp ((((‖b0 - a0‖₊ / 2) ^ 2 : ℝ≥0) : ℝ) * t ^ 2 / 2) :=
+      hbase.mgf_le t
+    _ ≤ exp (((HilbertMeanAzuma.invSqParam N : ℝ≥0) : ℝ) * t ^ 2 / 2) := by
+      apply Real.exp_le_exp.mpr
+      gcongr
 
 end UEOT.V3.HilbertMeanSourceFiberHoeffding
