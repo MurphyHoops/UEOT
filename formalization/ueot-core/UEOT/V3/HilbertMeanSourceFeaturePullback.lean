@@ -38,9 +38,7 @@ theorem measurableSet_sourceRadiusBad
     (measurable_meanError (H := H) (N := N) μH)
 
 /-- One source channel pulled back to the common raw sample law.  The marginal
-Hilbert assumptions are stated on the pushed-forward laws; a later source
-wrapper can derive these from raw feature assumptions without changing the
-probability argument. -/
+Hilbert assumptions are stated on the pushed-forward laws. -/
 theorem source_feature_tail_exact_radius_raw
     [BorelSpace H] [StandardBorelSpace H] [CompleteSpace H]
     [MeasurableAdd₂ H] [MeasurableSub H] [Nonempty H]
@@ -85,5 +83,40 @@ theorem source_feature_tail_exact_radius_raw
     (Measure.pi ν) (Measure.pi μ)
     (fun y : Fin N → Y => fun i => φ (y i)) hpres _ hbad]
   exact htarget
+
+/-- Source-facing form in which the feature mean and unit-ball support are
+stated on the raw observation law.  Only Bochner integrability of the identity
+under the pushed-forward feature law is kept explicit; this is exactly the
+mean-embedding domain condition and avoids imposing separability on `H` merely
+for a transport lemma. -/
+theorem source_feature_tail_exact_radius_of_raw_mean_support
+    [BorelSpace H] [StandardBorelSpace H] [CompleteSpace H]
+    [MeasurableAdd₂ H] [MeasurableSub H] [Nonempty H]
+    {N L : ℕ} (hN : 0 < N) (hL : 0 < L)
+    {alpha : ℝ} (halpha0 : 0 < alpha) (halpha1 : alpha ≤ 1)
+    (ν : Fin N → Measure Y) [∀ i, IsProbabilityMeasure (ν i)]
+    (φ : Y → H) (hφ : Measurable φ)
+    (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (hInt : ∀ i, Integrable (fun x : H => x) ((ν i).map φ))
+    (hmeanRaw : ∀ i, (∫ y : Y, φ y ∂ν i) = μH)
+    (hunitRaw : ∀ i, ∀ᵐ y ∂ν i, ‖φ y‖ ≤ 1) :
+    (Measure.pi ν).real
+      ((fun y : Fin N → Y => fun i => φ (y i)) ⁻¹'
+        {ω : Fin N → H |
+          pStat06SourceRadius N L alpha ≤ ‖empiricalMean ω - μH‖})
+      ≤ alpha / (L : ℝ) := by
+  have hmean : ∀ i, (∫ x : H, x ∂((ν i).map φ)) = μH := by
+    intro i
+    calc
+      (∫ x : H, x ∂((ν i).map φ)) = ∫ y : Y, φ y ∂ν i := by
+        simpa using
+          (MeasureTheory.integral_map hφ.aemeasurable (hInt i).aestronglyMeasurable)
+      _ = μH := hmeanRaw i
+  have hunit : ∀ i, ∀ᵐ x ∂((ν i).map φ), ‖x‖ ≤ 1 := by
+    intro i
+    exact (ae_map_iff hφ.aemeasurable
+      (measurableSet_le measurable_id.norm measurable_const)).2 (hunitRaw i)
+  exact source_feature_tail_exact_radius_raw
+    hN hL halpha0 halpha1 ν φ hφ μH hμH hInt hmean hunit
 
 end UEOT.V3.HilbertMeanSourceFeaturePullback
