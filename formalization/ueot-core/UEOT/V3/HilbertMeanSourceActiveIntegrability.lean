@@ -13,6 +13,7 @@ last auxiliary integrability assumption from the centered-fiber layer.
 namespace UEOT.V3.HilbertMeanSourceActiveIntegrability
 
 open MeasureTheory ProbabilityTheory
+open scoped NNReal
 open UEOT.V3.HilbertMeanConcentration
 open UEOT.V3.HilbertMeanDoobBlocks
 open UEOT.V3.HilbertMeanPrefixFiltration
@@ -40,8 +41,8 @@ theorem measurable_activePrefix
   rw [measurable_pi_iff]
   intro j
   by_cases hji : (j : Fin N) = i
-  · simpa [activePrefix, blockProjection, Function.update, hji] using
-      (measurable_id : Measurable (fun a : H => a))
+  · change Measurable (fun a : H => a)
+    exact measurable_id
   · simpa [activePrefix, blockProjection, Function.update, hji] using
       (measurable_const : Measurable (fun _ : H => ω (j : Fin N)))
 
@@ -79,7 +80,7 @@ theorem integrable_activeFutureMeanError_of_unit
   refine Integrable.of_bound hmeas.aestronglyMeasurable 2 ?_
   have hset : MeasurableSet
       {z : H × (future i → H) | ‖activeFutureMeanError ω i μH z‖ ≤ 2} :=
-    hmeas.norm.le measurable_const
+    measurableSet_le hmeas.norm measurable_const
   apply (ae_prod_iff_ae_ae hset).2
   filter_upwards [hunit i] with a ha
   filter_upwards [hy] with y hy
@@ -108,8 +109,12 @@ theorem integrable_sourceActiveSection_of_unit
   have hjoint := integrable_activeFutureMeanError_of_unit
     hN μ ω hω i μH hμH hunit
   have houter := hjoint.integral_prod_left
-  simpa [sourceActiveSection, UEOT.V3.HilbertMeanDoobStatisticBridge.sourceContinuation,
-    activeFutureMeanError, activePrefix] using houter
+  change Integrable
+    (fun x : H => ∫ y,
+      splitMeanError i μH
+        (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i x), y)
+      ∂blockLaw μ (future i)) (μ i)
+  exact houter
 
 /-- Fully source-facing exact centered width: no auxiliary integrability input. -/
 theorem centered_sourceActiveSection_exact_width_nnnorm_le_of_unit
