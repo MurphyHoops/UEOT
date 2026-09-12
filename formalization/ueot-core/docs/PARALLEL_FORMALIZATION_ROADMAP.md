@@ -18,113 +18,134 @@ The exact frozen source artifact is still absent from the public repository, so
 mathematically complete information P-IDs remain uncounted until their final
 literal source-match gate can be executed against the canonical bytes/hash.
 
-## 2. Current checkpoint — 2026-09-12
+## 2. Current checkpoint — 2026-09-13
 
 - integrated proved: **50/106**
 - P-STAT-06: **PROVED/CLOSED**
 - P-INFO-02: **mathematically complete; source-artifact blocked**
-- P-INFO-04: **PROOF; multiway integrated, conditional binary active**
-- P-INFO-03: **SOURCE_AUDIT**
-- P-INT-01: **BLOCKED** on the canonical conditional-information bridge
+- P-INFO-04: **mathematically complete; source-artifact blocked**
+- P-INFO-03: **ACTIVE PROOF**
+- P-INT-01: **BLOCKED** on the general conditional-information interface
 
 ## 3. Priority lanes
 
-### Lane A — P-INFO-04 conditional binary [highest priority]
+### Lane A — P-INFO-03 countable zero-distortion complexity [highest priority]
 
-The multiway sharp Fano theorem is already integrated on `main` and passed
-post-main CI. Do not reopen it.
+Frozen target:
 
-Active branch: `formal/pinfo04-conditional-binary`.
+`R_obj(0)=H(C|U)`
 
-Completed layers:
+for the discrete canonical predictive core `C=P(Y|H,U)` with
+`H(C|U)<∞`, allowing random encoders `P(M|H,U)` that cannot access future `Y`.
 
-1. true disintegration `P(M,B|U)`;
-2. fiberwise reference `P(M|U)×P(B|U)`;
-3. genuine binary conditional entropy `H(B|U)`;
-4. arbitrary-decoder sharp pointwise Fano;
-5. arbitrary-decoder conditional Fano after integration and Jensen;
-6. source geometry `(U,(M,B)) -> ((U,M),B)`;
-7. posterior `P(B|U,M)`;
-8. source epsilon inequality `H(B|M,U) <= h2(epsilon)` under
-   `P_e <= epsilon <= 1/2`.
+The exact source proof contract is:
 
-Remaining source-critical work:
+1. zero average TV implies the predictive core `C` is recoverable from `(M,U)`;
+2. conditional DPI gives
+   `I(H;M|U) >= I(C;M|U)=H(C|U)`;
+3. choose `M=C` and decode the canonical predictive kernel to attain equality.
 
-1. machine-check the latest source-facing stack in the official graph;
-2. prove the finite-binary information identity
-   `I(M;B|U)=H(B|U)-H(B|M,U)` without introducing an `∞-∞` subtraction;
-3. derive the frozen lower bound
-   `I(M;B|U) >= H(B|U)-h2(epsilon)`;
-4. clean-port only the verified delta from latest `main`;
-5. clean CI -> PR -> main -> post-main.
+Dependency audit findings:
 
-Do not make a fully general extended-real kernel-KL decomposition a prerequisite
-unless the finite-binary bridge genuinely needs it. The binary entropy route is
-both source-faithful and mathematically safer.
+- `InformationDiscreteEntropy` already provides unconditional countable
+  extended Shannon entropy;
+- `InformationStatistic` is deterministic-statistic infrastructure and cannot
+  represent the source's random encoder;
+- the random encoder must be built as a Markov-kernel/joint-law object;
+- `H(C|U)` must be a genuine disintegration average, not `H(C)-I(C;U)`;
+- because `C` is countable, use a measurable singleton-probability Shannon
+  `tsum` inside each `U` fiber rather than building a new generic
+  parameterized-KL measurability theory.
 
-### Lane B — P-INFO-02 [no further proof work]
+Active branch: `formal/pinfo03-countable-conditional`.
+Current head: `53573b6483fd05e836be1ff89445706d766f6029`.
+Current CI: `34706765170`.
+First official-graph module:
+`UEOT.V3.InformationConditionalDiscreteEntropy`.
+
+Execution order inside Lane A:
+
+1. machine-check countable conditional entropy foundation;
+2. prove the required bridge to the existing countable Shannon/KL layer;
+3. construct random-encoder joint law `P(U,H,M,...)` without deterministic
+   statistic substitution;
+4. define the source-faithful predictive rate-distortion feasible class;
+5. prove zero-TV recoverability of `C` from `(M,U)`;
+6. prove conditional DPI lower bound;
+7. prove attainability by `M=C`;
+8. expose exact source-facing `R_obj(0)=H(C|U)` theorem;
+9. clean-port -> clean CI -> PR -> main -> post-main.
+
+### Lane B — P-INFO-04 [proof frozen; source-artifact blocked]
+
+Both source clauses are machine-checked and integrated. Do not reopen the proof
+stack.
+
+Canonical theorems:
+
+- multiway: `UEOT.V3.InformationPInfo04.p_info_04`;
+- conditional binary:
+  `UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary`.
+
+Conditional closure evidence:
+
+- compose CI `34705230951`: success;
+- clean commit `8c76777e78e8d7f73b0d71397f8c81aeaa6e9c54`;
+- clean CI `34705560077`: success;
+- PR #51 CI `34706303512`: success;
+- main `e19eee7082418f1826650316b533c0380a9a451f`;
+- post-main CI `34706528781`: success.
+
+Only the exact frozen source-byte/hash/literal audit remains before source-level
+counting. No new Fano, binary KL, posterior or entropy helper is permitted absent
+a real regression or substantive source mismatch.
+
+### Lane C — P-INFO-02 [proof frozen; source-artifact blocked]
 
 Canonical theorem:
 `UEOT.V3.InformationPInfo02.p_info_02_ennreal`.
 
-The predictive-kernel/Pinsker/Jensen chain is complete, imported, merged, and
-post-main green. The all-cases theorem includes infinite conditional
-information. Do not reopen Pinsker, kernel KL, or wrapper layers.
-
-The only remaining gate is repository synchronization of the exact frozen
-source bytes followed by literal statement/hash audit. `[Nonempty Y]` is a
-Mathlib disintegration implementation requirement that is mathematically
-implied by existence of the probability experiment; do not spend another proof
-lane on hiding this typeclass from theorem elaboration.
-
-### Lane C — P-INFO-03 [next mathematical lane]
-
-Start only after the P-INFO-04 binary conditional interface is stable.
-
-Target:
-`R_obj(0)=H(C|U)` for countable-discrete predictive core `C`, allowing random
-encoders.
-
-Build by extending, not duplicating, the conditional disintegration stack:
-
-1. countable-discrete conditional entropy `H(C|U)` as an actual fiber average;
-2. measurability/integrability of the entropy fibers under the source
-   finite-conditional-entropy hypothesis;
-3. random-encoder predictive rate-distortion interface;
-4. zero-TV recoverability of `C` from `(M,U)`;
-5. conditional DPI lower bound;
-6. attainability with `M=C`.
-
-Do not define `H(C|U)` as `H(C)-I(C;U)` in the general source theorem.
+The predictive-kernel/Pinsker/Jensen chain is complete, imported, merged and
+post-main green, including the infinite-information case. Do not reopen its
+proof infrastructure. Only exact source synchronization/hash/literal audit
+remains.
 
 ### Lane D — P-INT-01 [blocked, then immediately next]
 
-Once P-INFO-03/P-INFO-04 establish one canonical conditional-information
-interface, use that interface for the frozen conditional-independence iff/bridge.
-Do not create a second KL/entropy/independence stack.
+Frozen target:
 
-### Lane E — remaining pending families [source-audit pool]
+`Y_f^+ ⟂ H | (M,U) ↔ C^f = Ψ(M,U) a.s.`
 
-While a proof lane waits on CI, source-audit one additional P-ID family, but do
-not begin implementation until its exact proof contract and reuse map are
-recorded in `PID_STATUS.yaml`.
+for the common countable intervention version.
 
-Prefer families that reuse already integrated machinery over new foundational
-stacks. Main promotion remains serialized even when proof development is
-parallel.
+P-INFO-04 supplies the finite-binary design precedent, but P-INT-01 should wait
+for P-INFO-03's general countable conditional-information layer. Reuse that
+interface; do not create a second conditional independence/KL/entropy stack.
+
+### Lane E — exact-source artifact synchronization [parallel governance lane]
+
+The canonical source is known by name and SHA, but its exact bytes are not yet
+present in the public repository. This lane is **not a proof lane**.
+
+Required steps:
+
+1. synchronize the exact canonical bytes without regeneration;
+2. verify SHA-256
+   `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`;
+3. literal-audit P-INFO-02 and both P-INFO-04 clauses against those bytes;
+4. only then promote source-level coverage if every other gate is satisfied.
 
 ## 4. Concurrency model
 
-The productive parallel layout from this checkpoint is:
+The productive parallel layout is now:
 
-- **Thread 1:** P-INFO-04 conditional source closure;
-- **Thread 2:** P-INFO-03 countable-discrete source/dependency audit;
-- **Thread 3:** governance/source-artifact synchronization and exact-hash gate;
-- **Thread 4:** one carefully selected remaining P-ID source audit only.
+- **Thread 1:** P-INFO-03 countable conditional entropy / random encoder proof;
+- **Thread 2:** exact-source artifact synchronization and hash/literal audits;
+- **Thread 3:** P-INT-01 dependency/reuse audit only, no duplicate implementation;
+- **Thread 4:** one carefully selected remaining P-ID source audit while CI runs.
 
-Do not run four independent foundational implementations. The purpose of
-parallelism is to hide CI/audit latency while preserving one canonical
-information-theory stack.
+Do not run four independent foundational implementations. Parallelism hides
+CI/audit latency while preserving one canonical information-theory stack.
 
 ## 5. Merge train
 
@@ -138,9 +159,12 @@ but source-mismatched statements do not increment coverage.
 - P-STAT-06 is frozen closed.
 - P-INFO-02 proof infrastructure is frozen unless a real CI regression or
   source mismatch appears.
-- P-INFO-04 multiway direct Fano is frozen integrated; only the conditional
-  clause remains active.
-- No posterior/MAP replacement may be used to weaken arbitrary-decoder Fano.
+- P-INFO-04 multiway and conditional-binary proof infrastructure are frozen;
+  no MAP replacement, second Fano stack or duplicate binary KL layer.
+- P-INFO-03 random encoders must be represented at kernel/joint-law level, not
+  silently replaced by deterministic `M=f(H)` statistics.
+- P-INFO-03 conditional entropy must use genuine disintegration; no general
+  source theorem may define it as `H(C)-I(C;U)`.
 - No second conditional-information formalism may be created for P-INT-01.
 - No regenerated substitute may stand in for the canonical frozen source file.
 
