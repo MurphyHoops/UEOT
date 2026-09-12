@@ -1,4 +1,5 @@
 import Mathlib.Analysis.ODE.DiscreteGronwall
+import Mathlib.Algebra.Field.GeomSum
 import Mathlib.Topology.MetricSpace.Pseudo.Basic
 
 /-!
@@ -87,5 +88,79 @@ theorem development_pipeline
           ∑ k ∈ Finset.range n,
             ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := by
       rw [mul_comm (dist (θ 0) (θbar 0))]
+
+/-- Uniform-coefficient version used to expose the geometric-series corollary
+that immediately follows P-ID-02 in the frozen source. -/
+theorem development_pipeline_uniform_geom
+    (θ θbar : ℕ → X)
+    (Ψ : ℕ → X → X)
+    (L ε : ℕ → ℝ)
+    (Lbar εbar : ℝ)
+    (href : ∀ t, θbar (t + 1) = Ψ t (θbar t))
+    (hres : ∀ t, dist (θ (t + 1)) (Ψ t (θ t)) ≤ ε t)
+    (hlip : ∀ t x y, dist (Ψ t x) (Ψ t y) ≤ L t * dist x y)
+    (hLbar0 : 0 ≤ Lbar)
+    (hL : ∀ t, L t ≤ Lbar)
+    (hε : ∀ t, ε t ≤ εbar)
+    (n : ℕ) :
+    dist (θ n) (θbar n) ≤
+      Lbar ^ n * dist (θ 0) (θbar 0) +
+        εbar * ∑ i ∈ Finset.range n, Lbar ^ i := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+      calc
+        dist (θ (n + 1)) (θbar (n + 1))
+            ≤ L n * dist (θ n) (θbar n) + ε n :=
+              development_error_step θ θbar Ψ L ε href hres hlip n
+        _ ≤ Lbar * dist (θ n) (θbar n) + εbar := by
+              exact add_le_add
+                (mul_le_mul_of_nonneg_right (hL n) dist_nonneg)
+                (hε n)
+        _ ≤ Lbar *
+              (Lbar ^ n * dist (θ 0) (θbar 0) +
+                εbar * ∑ i ∈ Finset.range n, Lbar ^ i) + εbar := by
+              exact add_le_add_right (mul_le_mul_of_nonneg_left ih hLbar0) εbar
+        _ = Lbar ^ (n + 1) * dist (θ 0) (θbar 0) +
+              εbar * ∑ i ∈ Finset.range (n + 1), Lbar ^ i := by
+              rw [Finset.sum_range_succ, pow_succ]
+              ring
+
+/-- Frozen-source contraction corollary.
+
+If all local Lipschitz constants are bounded by one constant `Lbar < 1` and all
+residuals are bounded by `εbar`, then
+
+`e_n ≤ Lbar^n e_0 + εbar (1 - Lbar^n)/(1 - Lbar)`.
+-/
+theorem development_pipeline_uniform_contraction
+    (θ θbar : ℕ → X)
+    (Ψ : ℕ → X → X)
+    (L ε : ℕ → ℝ)
+    (Lbar εbar : ℝ)
+    (href : ∀ t, θbar (t + 1) = Ψ t (θbar t))
+    (hres : ∀ t, dist (θ (t + 1)) (Ψ t (θ t)) ≤ ε t)
+    (hlip : ∀ t x y, dist (Ψ t x) (Ψ t y) ≤ L t * dist x y)
+    (hLbar0 : 0 ≤ Lbar)
+    (hLbar1 : Lbar < 1)
+    (hL : ∀ t, L t ≤ Lbar)
+    (hε : ∀ t, ε t ≤ εbar)
+    (n : ℕ) :
+    dist (θ n) (θbar n) ≤
+      Lbar ^ n * dist (θ 0) (θbar 0) +
+        εbar * (1 - Lbar ^ n) / (1 - Lbar) := by
+  have h := development_pipeline_uniform_geom
+    θ θbar Ψ L ε Lbar εbar href hres hlip hLbar0 hL hε n
+  calc
+    dist (θ n) (θbar n)
+        ≤ Lbar ^ n * dist (θ 0) (θbar 0) +
+            εbar * ∑ i ∈ Finset.range n, Lbar ^ i := h
+    _ = Lbar ^ n * dist (θ 0) (θbar 0) +
+          εbar * (1 - Lbar ^ n) / (1 - Lbar) := by
+      rw [geom_sum_eq (ne_of_lt hLbar1) n]
+      have h₁ : Lbar - 1 ≠ 0 := sub_ne_zero.mpr (ne_of_lt hLbar1)
+      have h₂ : 1 - Lbar ≠ 0 := sub_ne_zero.mpr (ne_of_gt hLbar1)
+      field_simp [h₁, h₂]
+      ring
 
 end UEOT.V3.DevelopmentTransport
