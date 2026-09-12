@@ -120,10 +120,11 @@ theorem development_pipeline_uniform_geom
         _ ≤ Lbar *
               (Lbar ^ n * dist (θ 0) (θbar 0) +
                 εbar * ∑ i ∈ Finset.range n, Lbar ^ i) + εbar := by
-              exact add_le_add_right (mul_le_mul_of_nonneg_left ih hLbar0) εbar
+              simpa [add_comm] using
+                (add_le_add_right (mul_le_mul_of_nonneg_left ih hLbar0) εbar)
         _ = Lbar ^ (n + 1) * dist (θ 0) (θbar 0) +
               εbar * ∑ i ∈ Finset.range (n + 1), Lbar ^ i := by
-              rw [Finset.sum_range_succ, pow_succ]
+              rw [geom_sum_succ, pow_succ]
               ring
 
 /-- Frozen-source contraction corollary.
