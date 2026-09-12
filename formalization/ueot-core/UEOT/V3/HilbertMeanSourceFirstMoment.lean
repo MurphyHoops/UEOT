@@ -82,13 +82,17 @@ theorem source_meanError_first_moment_le_one_div_sqrt
         (fun i => (hmargInt i).aestronglyMeasurable.aemeasurable))
   have hint : ∀ i, Integrable (Z i) P := by
     intro i
-    simpa [Z, P] using (integrable_comp_eval (hmargInt i))
+    have hi := integrable_comp_eval
+      (μ := μ) (i := i) (f := fun x : H => x - μH) (hmargInt i)
+    simpa [Z, P] using hi
   have hmean0 : ∀ i, (∫ ω, Z i ω ∂P) = 0 := by
     intro i
     have hprod :
         (∫ ω : Fin N → H, ω i - μH ∂Measure.pi μ) =
           ∫ x : H, x - μH ∂μ i := by
-      exact integral_comp_eval (hmargInt i).aestronglyMeasurable
+      exact integral_comp_eval
+        (μ := μ) (i := i) (f := fun x : H => x - μH)
+        (hmargInt i).aestronglyMeasurable
     have hmarg0 : (∫ x : H, x - μH ∂μ i) = 0 := by
       rw [integral_sub (hInt i) (integrable_const μH), hmean i]
       simp
@@ -97,13 +101,17 @@ theorem source_meanError_first_moment_le_one_div_sqrt
     exact hmarg0
   have hdiagInt : ∀ i, Integrable (fun ω => ‖Z i ω‖ ^ 2) P := by
     intro i
-    simpa [Z, P] using (integrable_comp_eval (hmargSqInt i))
+    have hi := integrable_comp_eval
+      (μ := μ) (i := i) (f := fun x : H => ‖x - μH‖ ^ 2) (hmargSqInt i)
+    simpa [Z, P] using hi
   have hdiag : ∀ i, (∫ ω, ‖Z i ω‖ ^ 2 ∂P) ≤ 1 := by
     intro i
     have hprod :
         (∫ ω : Fin N → H, ‖ω i - μH‖ ^ 2 ∂Measure.pi μ) =
           ∫ x : H, ‖x - μH‖ ^ 2 ∂μ i := by
-      exact integral_comp_eval (hmargSqInt i).aestronglyMeasurable
+      exact integral_comp_eval
+        (μ := μ) (i := i) (f := fun x : H => ‖x - μH‖ ^ 2)
+        (hmargSqInt i).aestronglyMeasurable
     rw [show (∫ ω, ‖Z i ω‖ ^ 2 ∂P) =
         ∫ x : H, ‖x - μH‖ ^ 2 ∂μ i by simpa [Z, P] using hprod]
     exact integral_norm_sub_mean_sq_le_one
@@ -115,8 +123,8 @@ theorem source_meanError_first_moment_le_one_div_sqrt
         = ∫ ω : Fin N → H, ‖empiricalMean (fun i => Z i ω)‖ ∂P := by
             apply integral_congr_ae
             exact ae_of_all P (fun ω => by
-              rw [empiricalMean_centered_eq_sub hN ω μH]
-              rfl)
+              simpa [Z] using
+                congrArg norm (empiricalMean_centered_eq_sub hN ω μH).symm)
     _ ≤ 1 / Real.sqrt (N : ℝ) := hgeneric
 
 end UEOT.V3.HilbertMeanSourceFirstMoment
