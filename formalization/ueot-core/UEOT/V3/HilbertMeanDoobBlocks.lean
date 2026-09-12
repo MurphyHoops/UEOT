@@ -7,7 +7,7 @@ import Mathlib.Tactic
 
 For an active coordinate `i : Fin N`, the Doob decomposition splits the sample
 indices into coordinates strictly before `i`, the singleton active coordinate,
-and coordinates strictly after `i`.  This file records the finite-set algebra
+and coordinates strictly after `i`. This file records the finite-set algebra
 needed by the source-facing continuation construction.
 -/
 
@@ -46,8 +46,8 @@ theorem past_disjoint_active {N : ℕ} (i : Fin N) :
   intro j hjp hja
   have hji : j < i := (mem_past_iff i j).1 hjp
   have hEq : j = i := (mem_active_iff i j).1 hja
-  subst hEq
-  exact (lt_irrefl i) hji
+  have : i < i := by simpa [hEq] using hji
+  exact (lt_irrefl i) this
 
 /-- Active and future blocks are disjoint. -/
 theorem active_disjoint_future {N : ℕ} (i : Fin N) :
@@ -56,8 +56,8 @@ theorem active_disjoint_future {N : ℕ} (i : Fin N) :
   intro j hja hjf
   have hEq : j = i := (mem_active_iff i j).1 hja
   have hij : i < j := (mem_future_iff i j).1 hjf
-  subst hEq
-  exact (lt_irrefl i) hij
+  have : i < i := by simpa [hEq] using hij
+  exact (lt_irrefl i) this
 
 /-- Past and future blocks are disjoint. -/
 theorem past_disjoint_future {N : ℕ} (i : Fin N) :
@@ -66,7 +66,7 @@ theorem past_disjoint_future {N : ℕ} (i : Fin N) :
   intro j hjp hjf
   have hji : j < i := (mem_past_iff i j).1 hjp
   have hij : i < j := (mem_future_iff i j).1 hjf
-  exact (lt_asymm hji hij) hij
+  exact lt_asymm hji hij
 
 /-- Every coordinate lies either strictly before, at, or strictly after the
 active index. -/
@@ -87,7 +87,13 @@ def revealed {N : ℕ} (i : Fin N) : Finset (Fin N) :=
 @[simp] theorem mem_revealed_iff {N : ℕ} (i j : Fin N) :
     j ∈ revealed i ↔ j ≤ i := by
   simp only [revealed, Finset.mem_union, mem_past_iff, mem_active_iff]
-  exact lt_or_eq_iff
+  constructor
+  · intro h
+    rcases h with hlt | heq
+    · exact hlt.le
+    · simpa [heq]
+  · intro h
+    exact lt_or_eq_of_le h
 
 /-- The strict future is disjoint from everything revealed through the active
 coordinate. -/
