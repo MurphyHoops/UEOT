@@ -96,7 +96,7 @@ theorem hasCondSubgaussianMGF_invSqParam_of_fiber_range
   · convert hbase using 1
     simp only [HilbertMeanAzuma.invSqParam]
     exact (congrArg (fun x : ℝ≥0 => x ^ 2) hfrac).symm
-  · norm_num [NNReal.coe_div]
-    exact hglobal
+  · filter_upwards [hglobal] with ω hω
+    simpa [NNReal.coe_div] using hω
 
 end UEOT.V3.HilbertMeanConditionalHoeffding
