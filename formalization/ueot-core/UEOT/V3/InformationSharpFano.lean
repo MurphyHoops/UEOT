@@ -1,6 +1,6 @@
 import UEOT.V3.InformationEntropy
 import Mathlib.Analysis.SpecialFunctions.BinaryEntropy
-import Mathlib.Tactic.Omega
+import Mathlib.Tactic
 
 /-!
 # P-INFO-04 foundation — sharp pointwise Fano entropy inequality
