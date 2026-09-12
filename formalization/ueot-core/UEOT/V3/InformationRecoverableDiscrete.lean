@@ -56,8 +56,10 @@ theorem decoded_marginal_eq
   have hright : (copyJoint ρ.fst).snd = ρ.fst := by
     unfold copyJoint Measure.snd
     rw [Measure.map_map measurable_snd]
-    simp
-  simpa [hleft, hright] using hsnd
+    change ρ.fst.map (fun c : C => c) = ρ.fst
+    exact Measure.map_id'
+  rw [hleft, hright] at hsnd
+  exact hsnd
 
 /-- The independent-product reference pushed through the decoder becomes two
 independent copies of the `C` marginal. -/
@@ -69,7 +71,7 @@ theorem product_reference_map_decodedCopy
       ρ.fst.prod ρ.fst := by
   have hmarg : ρ.snd.map d = ρ.fst := decoded_marginal_eq ρ d hd hrec
   have hmap := Measure.map_prod_map ρ.fst ρ.snd measurable_id hd
-  simpa [decodedCopyMap, hmarg] using hmap
+  simpa [decodedCopyMap, hmarg] using hmap.symm
 
 /-- Recoverability gives the entropy lower bound `H(C) ≤ I(C;M)` by KL data
 processing through the decoder. -/
