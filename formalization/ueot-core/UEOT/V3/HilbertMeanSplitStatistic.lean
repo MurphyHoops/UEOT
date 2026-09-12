@@ -75,6 +75,20 @@ theorem stronglyMeasurable_splitMeanError
     StronglyMeasurable (splitMeanError i μH) := by
   exact (measurable_splitMeanError (H := H) i μH).stronglyMeasurable
 
+/-- Marginal almost-everywhere unit-ball support lifts to simultaneous
+unit-ball support under the canonical finite product law. -/
+theorem ae_unit_all_of_marginals
+    [MeasurableSpace H] [BorelSpace H]
+    {N : ℕ}
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (hunit : ∀ i, ∀ᵐ x ∂μ i, ‖x‖ ≤ 1) :
+    ∀ᵐ ω ∂Measure.pi μ, ∀ i, ‖ω i‖ ≤ 1 := by
+  apply ae_all_iff.2
+  intro i
+  have hLaw : HasLaw (fun ω : Fin N → H => ω i) (μ i) (Measure.pi μ) :=
+    (measurePreserving_eval μ i).hasLaw
+  exact (hLaw.ae_iff (by fun_prop)).2 (hunit i)
+
 /-- Under the source unit-ball assumptions, the Hilbert mean-error statistic is
 integrable on the canonical product law.  The only probabilistic support input
 needed is the simultaneous almost-everywhere unit bound on all coordinates. -/
@@ -90,5 +104,17 @@ theorem integrable_meanError_of_ae_unit
   filter_upwards [hunit] with ω hω
   simpa only [Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _)] using
     norm_empiricalMean_sub_le_two hN ω hω μH hμH
+
+/-- Marginal source support is enough to obtain integrability of the full
+Hilbert mean-error statistic; no extra joint-support assumption is required. -/
+theorem integrable_meanError_of_marginal_ae_unit
+    [MeasurableSpace H] [BorelSpace H]
+    {N : ℕ} (hN : 0 < N)
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (hunit : ∀ i, ∀ᵐ x ∂μ i, ‖x‖ ≤ 1) :
+    Integrable (fun ω : Fin N → H => ‖empiricalMean ω - μH‖) (Measure.pi μ) := by
+  exact integrable_meanError_of_ae_unit hN μ μH hμH
+    (ae_unit_all_of_marginals μ hunit)
 
 end UEOT.V3.HilbertMeanSplitStatistic
