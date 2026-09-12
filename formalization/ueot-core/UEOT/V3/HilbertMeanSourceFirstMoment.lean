@@ -32,8 +32,10 @@ theorem empiricalMean_centered_eq_sub
   rw [Finset.sum_sub_distrib]
   simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin]
   rw [smul_sub]
+  rw [← Nat.cast_smul_eq_nsmul ℝ N μH]
+  rw [smul_smul]
   have hscale : ((N : ℝ)⁻¹ * (N : ℝ)) = 1 := by
     field_simp [hNreal]
-  simpa [nsmul_eq_mul, smul_smul, hscale]
+  rw [hscale, one_smul]
 
 end UEOT.V3.HilbertMeanSourceFirstMoment
