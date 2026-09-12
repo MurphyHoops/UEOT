@@ -65,6 +65,15 @@ theorem doobValue_meanError_ae_eq_sourceContinuation
     simpa using hint
   have h := doobValue_prefix_ae_eq_integral
     (H := H) μ i (splitMeanError i μH) hsm hintSplit
+  have hfun :
+      (fun (ω : Fin N → H) =>
+        splitMeanError i μH
+          (blockProjection (prefixBlock (N := N) i.1) ω,
+            blockProjection (future i) ω)) =
+      (fun ω : Fin N → H => ‖empiricalMean ω - μH‖) := by
+    funext ω
+    exact splitMeanError_blockProjections i μH ω
+  rw [hfun] at h
   change doobValue
         (Measure.pi μ)
         (prefixFiltration (H := H) (N := N))
