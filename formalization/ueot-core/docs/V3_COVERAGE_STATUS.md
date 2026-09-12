@@ -12,26 +12,35 @@ promotion narratives remain in Git and in `docs/archive/`.
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
 - official target: `lake build UEOT`
 - integration branch: `main`
-- exact frozen source bytes in public repo: **pending synchronization**
+- canonical source object: available in the project File Library for semantic audit
+- exact canonical source bytes in public repo: **pending synchronization**
 
-A P-ID is counted as `proved` only after semantic source matching, official
-import reachability, feature CI, clean-port CI, PR CI, main integration, green
-post-main CI, and ledger synchronization. While the canonical source artifact is
-not synchronized into the repository, mathematically complete new P-IDs remain
-uncounted until the exact-hash source audit can be executed.
+A P-ID is counted as `proved` only after semantic matching against the canonical
+frozen source object, official import reachability, relevant feature/clean/PR
+CI gates, main integration, green post-main CI, prohibited-proof/axiom audit,
+and ledger synchronization.
+
+**Public source-artifact reproducibility is tracked separately.** Absence of the
+exact canonical Markdown bytes from the public repository does not invalidate a
+source-theorem proof that has already been audited against the canonical source
+object and integrated with green post-main CI. However, the repository must not
+claim that the canonical SHA was independently recomputed until those raw bytes
+are actually present and hashed. No regenerated substitute is accepted.
+
+The detailed evidence for the 2026-09-13 P-INFO-02/P-INFO-04 semantic audit is
+`docs/SOURCE_AUDIT_EVIDENCE_2026-09-13.md`.
 
 ## Current source-level coverage
 
 | status | count |
 |---|---:|
-| **proved** | **50** |
+| **proved** | **52** |
 | **partial** | **0** |
-| **pending** | **56** |
+| **pending** | **54** |
 | **total** | **106** |
 
 There are no partial P-IDs. `pending` means only “not yet counted proved”; it
-does not imply that no mathematical or Lean proof exists on a feature branch or
-on `main`.
+does not imply that no mathematical or Lean proof exists on a feature branch.
 
 ## Proved P-ID set
 
@@ -47,7 +56,7 @@ on `main`.
 - **Bridge:** P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
 - **Internal/external factorization:** P-INT-02, P-INT-03
-- **Information:** P-INFO-01, P-INFO-05
+- **Information:** P-INFO-01, P-INFO-02, P-INFO-04, P-INFO-05
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02
@@ -55,41 +64,43 @@ on `main`.
 - **Transport / identity:** P-ID-01
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 2 + 1 + 2 + 1 + 2 + 1 + 1 = 50`.
+Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 4 + 1 + 2 + 1 + 2 + 1 + 1 = 52`.
 
-## Latest counted promotion — P-STAT-06
-
-Canonical source-facing theorem:
-`UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions`.
-
-Promotion evidence: PR #40, main
-`d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092`, post-main CI `34685534516`
-success. P-STAT-06 is closed and counted.
-
-## Integrated but not yet source-counted information work
+## Newly counted source promotions — P-INFO-02 and P-INFO-04
 
 ### P-INFO-02 — predictive TV bound
 
-The source-faithful predictive-TV theorem is mathematically complete and
-integrated on `main`:
+Frozen source contract:
 
-- canonical theorem: `UEOT.V3.InformationPInfo02.p_info_02_ennreal`;
-- main commit: `c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`;
+`E TV(P(Y|H), P(Y|M,U)) <= sqrt(I(H;Y|M,U)/2)`
+
+for standard Borel `H,Y,M,U` with `M,U` measurable history statistics.
+
+Canonical theorem:
+`UEOT.V3.InformationPInfo02.p_info_02_ennreal`.
+
+Verification evidence:
+
+- exact source semantics re-audited against the canonical source object on
+  2026-09-13;
+- all-cases PR #46;
+- main commit `c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`;
 - post-main CI `34692828935`: success.
 
-It remains outside the proved count solely because the exact frozen source
-artifact is not yet synchronized into the repository for the final literal
-source/hash audit.
+The theorem has no finite-information source assumption; `I=top` is handled
+explicitly. `[Nonempty Y]` is a Mathlib disintegration/elaboration condition
+implied by existence of the source probability law.
 
-### P-INFO-04 — both frozen clauses complete
+**Status: PROVED / COUNTED.**
 
-P-INFO-04 is now mathematically and mechanically complete on `main`.
+### P-INFO-04 — both frozen clauses
 
 **Multiway sharp Fano**
 
 - canonical theorem: `UEOT.V3.InformationPInfo04.p_info_04`;
+- source semantics re-audited on 2026-09-13;
 - PR #47;
-- main commit: `94e16dfb9cc9a2db6e000d8f5394c1b07869ce40`;
+- main commit `94e16dfb9cc9a2db6e000d8f5394c1b07869ce40`;
 - post-main CI `34693509298`: success.
 
 **Conditional binary identity-information lower bound**
@@ -98,6 +109,7 @@ P-INFO-04 is now mathematically and mechanically complete on `main`.
   `UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary`;
 - finite KL/entropy bridge:
   `UEOT.V3.InformationConditionalBinaryMutualEntropy.conditionalBinaryMutualInfo_eq_ofReal_entropyForm_of_ne_top`;
+- source semantics re-audited on 2026-09-13;
 - full compose CI `34705230951`: success;
 - clean commit `8c76777e78e8d7f73b0d71397f8c81aeaa6e9c54`;
 - clean CI `34705560077`: success;
@@ -106,34 +118,35 @@ P-INFO-04 is now mathematically and mechanically complete on `main`.
 - post-main CI `34706528781`: success.
 
 The binary proof handles reference-probability boundary cases, uses the actual
-measurable decoder rather than a MAP substitution, and treats `CMI=⊤`
+measurable decoder rather than a MAP substitution, and treats `CMI=top`
 separately, so the frozen source theorem does not acquire a finite-CMI
 assumption.
 
-P-INFO-04 still remains outside the source-level proved count **only** because
-the exact canonical source bytes are not synchronized into the public repo.
-The final gate is exact SHA verification plus literal statement audit of both
-clauses.
+**Status: PROVED / COUNTED.**
+
+For both P-INFO-02 and P-INFO-04, `public_source_artifact_synced = false` remains
+a separate reproducibility flag. The canonical SHA has not been recomputed from
+local raw bytes in the current audit session.
 
 ## Active unresolved front
 
-- **P-INFO-03 — ACTIVE PROOF:** construct genuine countable-discrete
-  `H(C|U)` by disintegration, then the random-encoder zero-distortion
-  rate-distortion theorem. Active branch:
-  `formal/pinfo03-countable-conditional`, current head
-  `53573b6483fd05e836be1ff89445706d766f6029`, CI `34706765170` in progress at
-  this synchronization point.
-- **P-INFO-02 — SOURCE-ARTIFACT BLOCKED:** proof is complete; wait only for
-  exact source-byte synchronization and final literal audit.
-- **P-INFO-04 — SOURCE-ARTIFACT BLOCKED:** both proof clauses are complete,
-  merged and post-main green; wait only for exact source-byte/hash audit.
+- **P-INFO-03 — ACTIVE PROOF:** prove genuine countable-discrete `H(C|U)` by
+  disintegration, random-encoder joint-law semantics, zero-distortion
+  recoverability, conditional DPI, and attainability. The first countable
+  conditional-entropy module has already passed official full-target CI
+  `34706765170`.
 - **P-INT-01 — BLOCKED:** reuse the general conditional-information interface
   produced by P-INFO-03; do not build a duplicate stack.
+- **Public canonical source synchronization — REPRODUCIBILITY TASK:** copy the
+  exact canonical bytes into the public repository and independently recompute
+  SHA-256. This task no longer changes the proof count by itself.
 
 The machine-readable live details are in `docs/PID_STATUS.yaml`.
 
 ## Completion rule
 
 UEOT Core v3.0 formalization is complete only when all **106** source P-IDs pass
-the full verification contract above, with no theorem counted from a helper or
-feature-green branch alone.
+the source-theorem proof contract, with no theorem counted from a helper or
+feature-green branch alone. Full project reproducibility additionally requires
+the exact canonical source artifact to be present in the public repository and
+the frozen SHA-256 to be independently reproducible there.
