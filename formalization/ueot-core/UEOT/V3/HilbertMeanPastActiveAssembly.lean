@@ -44,6 +44,18 @@ coordinate reproduces its revealed-prefix projection exactly. -/
   · simp [hji]
   · simp [hji]
 
+/-- Replacing the active value while keeping the same strict past is exactly the
+revealed prefix of the coordinate-updated full sample. -/
+@[simp] theorem assemblePastActive_blockProjection_update
+    {N : ℕ} (i : Fin N) (ω : Fin N → H) (a : H) :
+    assemblePastActive i (blockProjection (past i) ω) a =
+      blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a) := by
+  funext j
+  unfold assemblePastActive blockProjection
+  by_cases hji : (j : Fin N) = i
+  · simp [hji]
+  · simp [Function.update, hji]
+
 /-- Past/active assembly is measurable as a map into the finite product prefix. -/
 theorem measurable_assemblePastActive {N : ℕ} (i : Fin N) :
     Measurable (fun z : (past i → H) × H => assemblePastActive i z.1 z.2) := by
