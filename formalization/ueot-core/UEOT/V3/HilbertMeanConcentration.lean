@@ -25,6 +25,37 @@ variable [NormedAddCommGroup H] [InnerProductSpace ℝ H]
 noncomputable def empiricalMean {N : ℕ} (x : Fin N → H) : H :=
   (N : ℝ)⁻¹ • ∑ i, x i
 
+/-- Averages of unit-ball-valued Hilbert samples stay in the unit ball. -/
+theorem norm_empiricalMean_le_one
+    {N : ℕ} (hN : 0 < N)
+    (x : Fin N → H) (hx : ∀ i, ‖x i‖ ≤ 1) :
+    ‖empiricalMean x‖ ≤ 1 := by
+  have hNreal : (0 : ℝ) < (N : ℝ) := by exact_mod_cast hN
+  have hinv : 0 ≤ (N : ℝ)⁻¹ := (inv_nonneg.mpr hNreal.le)
+  have hsum : ‖∑ i, x i‖ ≤ (N : ℝ) := by
+    calc
+      ‖∑ i, x i‖ ≤ ∑ i, ‖x i‖ := norm_sum_le _ _
+      _ ≤ ∑ _i : Fin N, (1 : ℝ) := Finset.sum_le_sum fun i _ => hx i
+      _ = (N : ℝ) := by simp
+  unfold empiricalMean
+  rw [norm_smul, Real.norm_eq_abs, abs_of_pos (inv_pos.mpr hNreal)]
+  calc
+    (N : ℝ)⁻¹ * ‖∑ i, x i‖ ≤ (N : ℝ)⁻¹ * (N : ℝ) :=
+      mul_le_mul_of_nonneg_left hsum hinv
+    _ = 1 := by field_simp [ne_of_gt hNreal]
+
+/-- If both the empirical mean and target mean are in the unit ball, the source
+mean-error statistic is uniformly bounded by two. -/
+theorem norm_empiricalMean_sub_le_two
+    {N : ℕ} (hN : 0 < N)
+    (x : Fin N → H) (hx : ∀ i, ‖x i‖ ≤ 1)
+    (μ : H) (hμ : ‖μ‖ ≤ 1) :
+    ‖empiricalMean x - μ‖ ≤ 2 := by
+  calc
+    ‖empiricalMean x - μ‖ ≤ ‖empiricalMean x‖ + ‖μ‖ := norm_sub_le _ _
+    _ ≤ 1 + 1 := add_le_add (norm_empiricalMean_le_one hN x hx) hμ
+    _ = 2 := by norm_num
+
 /-- If two samples differ in at most one coordinate, the difference of their
 empirical means is exactly the scaled difference at that coordinate. -/
 theorem empiricalMean_sub_of_eq_off
