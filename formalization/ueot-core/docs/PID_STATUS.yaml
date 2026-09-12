@@ -1,0 +1,117 @@
+schema_version: 1
+updated: 2026-09-12
+integration_branch: main
+official_target: lake build UEOT
+source:
+  file: UEOT_Core_Mathematics_v3.0_Complete.md
+  pids_total: 106
+  sha256: ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
+coverage:
+  integrated_proved: 49
+  promotion_running: 1
+  active_proof: 0
+  source_audit: 3
+  pending_unclassified: 53
+  note: >-
+    Coverage is counted only after main integration, post-main green CI, and
+    ledger synchronization. promotion_running and source_audit are not counted
+    as integrated_proved.
+state_vocabulary:
+  - source_audit
+  - proof
+  - integration
+  - promotion
+  - blocked
+  - proved
+  - archive
+rules:
+  - pending_does_not_mean_unproved
+  - read_this_file_before_opening_a_proof_lane
+  - prove_only_missing_lemmas_from_the_proof_contract
+  - no_new_helpers_for_promotion_only_pid_without_real_ci_or_source_mismatch
+  - feature_green_does_not_increment_coverage
+pids:
+  P-STAT-06:
+    state: promotion
+    source_locked: true
+    mathematical_chain: complete
+    canonical_theorem: UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions
+    exact_radius: (1 + sqrt(2*log(L/alpha)))/sqrt(N)
+    feature:
+      head: 5a5cb89d600059525cb775c9561aa50d031da38d
+      full_repo_ci:
+        run: 34684444280
+        status: success
+    clean_port:
+      branch: formal/pstat06-clean-port
+      commit: 2338d5fe7a5e9ae8a08cdfd469d0eacd35a80205
+      ci:
+        run: 34684655595
+        status: success
+    promotion:
+      pr: 40
+      pr_ci:
+        run: 34685272294
+        status: in_progress
+    coverage_counted: false
+    forbidden_work:
+      - new_doob_theorem
+      - new_hoeffding_theorem
+      - new_mgf_theorem
+      - new_radius_theorem
+      - new_union_theorem
+      - new_feature_wrapper
+    reopen_only_if:
+      - pr_or_post_main_ci_exposes_real_lean_error
+      - frozen_source_audit_finds_substantive_statement_mismatch
+  P-INFO-02:
+    state: source_audit
+    source_locked: true
+    proof_contract:
+      assumptions: standard Borel H,Y,M,U; M,U are functions of history
+      epsilon: I(H;Y|M,U)
+      conclusion: E TV(P(Y|H),P(Y|M,U)) <= sqrt(epsilon/2)
+      proof_route:
+        - conditional_mutual_information_as_average_conditional_KL
+        - Pinsker
+        - Jensen
+    reuse:
+      - UEOT.V3.InformationCore
+      - UEOT.V3.InformationStatistic
+    missing: canonical conditional-kernel TV expectation bridge and source-facing wrapper
+    coverage_counted: false
+  P-INFO-03:
+    state: source_audit
+    source_locked: true
+    proof_contract:
+      assumptions: C=P(Y|H,U) discrete; H(C|U)<infinity; random encoder allowed
+      conclusion: R_obj(0)=H(C|U)
+      proof_route:
+        - zero_TV_implies_C_recoverable_from_M_U
+        - conditional_data_processing_lower_bound
+        - attainability_by_M_equals_C
+    reuse:
+      - UEOT.V3.InformationCore
+      - UEOT.V3.InformationDiscreteEntropy
+      - UEOT.V3.InformationMemoryBound
+    missing: predictive-rate-distortion interface with random encoders and conditional entropy
+    coverage_counted: false
+  P-INFO-04:
+    state: source_audit
+    source_locked: true
+    proof_contract:
+      assumptions: J uniform on K>=2 identities; decoder Jhat(Y_T); error rate e
+      conclusion: I(J;Y_T) >= log K - h2(e) - e*log(K-1)
+      proof_route:
+        - Fano_via_error_indicator
+      additional_source_clause: conditional binary identity-information lower bound
+    reuse:
+      - UEOT.V3.InformationCore
+      - UEOT.V3.InformationEntropy
+    missing: source-matched Fano theorem/wrapper
+    coverage_counted: false
+  P-INT-01:
+    state: blocked
+    blocked_by:
+      - P-INFO-02 canonical conditional-information interface
+    rule: do not start a duplicate independence/information stack
