@@ -53,6 +53,7 @@ import UEOT.V3.HilbertMeanMcDiarmidCore
 import UEOT.V3.HilbertMeanProductLaw
 import UEOT.V3.HilbertMeanFeatureProductBridge
 import UEOT.V3.HilbertMeanCommonSampleUnion
+import UEOT.V3.HilbertMeanSourceFeaturePullback
 import UEOT.V3.HilbertMeanIntegralContraction
 import UEOT.V3.HilbertMeanRangeWidth
 import UEOT.V3.HilbertMeanContinuationWidth
