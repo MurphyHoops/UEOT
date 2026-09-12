@@ -79,6 +79,19 @@ theorem blockProjection_future_assemble
   funext j
   exact assemblePrefixFuture_future i x y j
 
+/-- Unit-ball bounds on both blocks pass coordinatewise through the canonical
+assembly. -/
+theorem assemblePrefixFuture_norm_le_one
+    [Norm H] {N : ℕ} (i : Fin N)
+    (x : prefixBlock (N := N) i.1 → H) (y : future i → H)
+    (hx : ∀ j, ‖x j‖ ≤ 1) (hy : ∀ j, ‖y j‖ ≤ 1) :
+    ∀ j, ‖assemblePrefixFuture i x y j‖ ≤ 1 := by
+  intro j
+  unfold assemblePrefixFuture
+  split
+  · exact hx _
+  · exact hy _
+
 /-- The canonical prefix/future assembly is measurable for the product
 measurable structures. -/
 theorem measurable_assemblePrefixFuture
