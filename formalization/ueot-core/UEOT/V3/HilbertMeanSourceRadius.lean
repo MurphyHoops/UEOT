@@ -71,12 +71,19 @@ theorem source_meanError_tail_exact_radius
         pStat06Deviation N L alpha := rfl
   have hradius := one_div_sqrt_add_deviation_eq_sourceRadius
     hN hL halpha0 halpha1
+  have htail' :
+      (Measure.pi μ).real
+        {ω | 1 / Real.sqrt (N : ℝ) + pStat06Deviation N L alpha ≤
+          ‖empiricalMean ω - μH‖}
+        ≤ Real.exp (-(N : ℝ) * (pStat06Deviation N L alpha) ^ 2 / 2) := by
+    simpa [hdev] using htail
   calc
     (Measure.pi μ).real
         {ω | pStat06SourceRadius N L alpha ≤ ‖empiricalMean ω - μH‖}
-        ≤ Real.exp
-          (-(N : ℝ) * (pStat06Deviation N L alpha) ^ 2 / 2) := by
-            simpa [hdev, hradius] using htail
+        = (Measure.pi μ).real
+          {ω | 1 / Real.sqrt (N : ℝ) + pStat06Deviation N L alpha ≤
+            ‖empiricalMean ω - μH‖} := by rw [hradius]
+    _ ≤ Real.exp (-(N : ℝ) * (pStat06Deviation N L alpha) ^ 2 / 2) := htail'
     _ = alpha / (L : ℝ) := scalar_tail_eq_alpha_div hN hL halpha0 halpha1
 
 end UEOT.V3.HilbertMeanSourceRadius
