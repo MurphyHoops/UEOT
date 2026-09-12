@@ -139,6 +139,7 @@ theorem conditionalBinaryEntropyGivenUM_eq_integral_posteriorEntropyFiber
     (ρ : Measure (U × (M × Fin 2))) [IsProbabilityMeasure ρ] :
     conditionalBinaryEntropyGivenUM ρ =
       ∫ u, conditionalBinaryPosteriorEntropyFiber ρ u ∂ρ.fst := by
+  letI : Nonempty U := ⟨(nonempty_of_isProbabilityMeasure ρ).some.1⟩
   have hpost := posteriorBitGivenUM_ae_eq_kernelCondKernel ρ
   rw [binaryUMJoint_fst_eq_compProd] at hpost
   have hglobal :
