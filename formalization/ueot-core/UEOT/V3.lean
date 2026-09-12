@@ -137,7 +137,11 @@ import UEOT.V3.InformationBinaryEntropy
 import UEOT.V3.InformationBinaryKLEntropy
 import UEOT.V3.InformationBinaryMutualEntropy
 import UEOT.V3.InformationBinaryMutualFinite
+import UEOT.V3.InformationConditionalBinaryFiberBridge
+import UEOT.V3.InformationConditionalBinaryKLDecomposition
+import UEOT.V3.InformationConditionalBinaryEntropyLift
 import UEOT.V3.InformationConditionalBinaryFiberMI
+import UEOT.V3.InformationConditionalBinaryMutualEntropy
 import UEOT.V3.InformationBernoulliKL
 import UEOT.V3.InformationEventBernoulli
 import UEOT.V3.InformationBernoulliFano
