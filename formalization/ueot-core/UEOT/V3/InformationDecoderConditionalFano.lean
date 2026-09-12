@@ -28,8 +28,6 @@ universe uY
 
 variable {Y : Type uY} [MeasurableSpace Y]
 
-local instance classicalDecidable (p : Prop) : Decidable p := Classical.propDecidable p
-
 /-- Correct-decoding posterior mass, written as a finite measurable selector. -/
 noncomputable def decoderCorrectProb {M : ℕ}
     (π : Kernel Y (Fin M)) (d : Y → Fin M) (y : Y) : ℝ :=
@@ -62,8 +60,10 @@ lemma measurable_decoderCorrectProb {M : ℕ}
     hd (measurableSet_singleton j)
   have hm : Measurable (fun y => (π y {j}).toReal) :=
     (Kernel.measurable_coe π (measurableSet_singleton j)).ennreal_toReal
-  simpa [Set.mem_preimage, Set.mem_singleton_iff] using
-    (Measurable.ite hs hm measurable_const)
+  have hita : Measurable
+      (fun y => if d y ∈ ({j} : Set (Fin M)) then (π y {j}).toReal else 0) :=
+    Measurable.ite hs hm measurable_const
+  simpa [Set.mem_singleton_iff] using hita
 
 lemma decoderCorrectProb_mem_Icc {M : ℕ}
     (π : Kernel Y (Fin M)) [IsMarkovKernel π]
