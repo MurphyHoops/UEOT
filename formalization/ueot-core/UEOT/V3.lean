@@ -130,6 +130,9 @@ import UEOT.V3.InformationDecoderFano
 import UEOT.V3.InformationDecoderConditionalFano
 import UEOT.V3.InformationConditionalBinary
 import UEOT.V3.InformationPInfo04Conditional
+import UEOT.V3.InformationBinaryPosterior
+import UEOT.V3.InformationFin2KL
+import UEOT.V3.InformationBinaryConditionalMean
 import UEOT.V3.InformationBernoulliKL
 import UEOT.V3.InformationEventBernoulli
 import UEOT.V3.InformationBernoulliFano
