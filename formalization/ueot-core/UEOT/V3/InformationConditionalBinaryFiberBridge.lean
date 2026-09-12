@@ -52,11 +52,13 @@ theorem binaryUMJoint_eq_iteratedCompProd
       rw [hk]
     _ = (ρ.fst ⊗ₘ (conditionalBinaryKernel ρ).fst) ⊗ₘ
           Kernel.condKernel (conditionalBinaryKernel ρ) := by
-      simpa [reassocUMB] using
-        (Measure.compProd_assoc
-          (μ := ρ.fst)
-          (κ := (conditionalBinaryKernel ρ).fst)
-          (η := Kernel.condKernel (conditionalBinaryKernel ρ)))
+      change
+        (ρ.fst ⊗ₘ ((conditionalBinaryKernel ρ).fst ⊗ₖ
+          Kernel.condKernel (conditionalBinaryKernel ρ))).map
+            MeasurableEquiv.prodAssoc.symm =
+          (ρ.fst ⊗ₘ (conditionalBinaryKernel ρ).fst) ⊗ₘ
+            Kernel.condKernel (conditionalBinaryKernel ρ)
+      exact Measure.compProd_assoc
 
 /-- The `(U,M)` marginal of the reassociated joint is the composition product
 `P_U ⊗ P(M|U)`. -/
