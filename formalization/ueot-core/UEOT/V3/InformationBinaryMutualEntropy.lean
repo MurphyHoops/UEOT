@@ -61,15 +61,24 @@ theorem mutualInfo_eq_lintegral_binaryPosteriorKL
       ∫⁻ x, klDiv (ρ.condKernel x) ρ.snd ∂ρ.fst := by
   have hdis : ρ.fst ⊗ₘ ρ.condKernel = ρ :=
     Measure.disintegrate ρ ρ.condKernel
+  have hconst :
+      ρ.fst ⊗ₘ Kernel.const X ρ.snd = ρ.fst.prod ρ.snd :=
+    Measure.compProd_const
   have hac :
       ∀ᵐ x ∂ρ.fst, ρ.condKernel x ≪ (Kernel.const X ρ.snd) x := by
     simpa using condKernel_ac_snd_ae ρ
   unfold mutualInfo
-  rw [← hdis, ← Measure.compProd_const]
-  simpa using
-    (klDiv_compProd_right_eq_lintegral
-      (μ := ρ.fst) (κ := ρ.condKernel)
-      (η := Kernel.const X ρ.snd) hac)
+  calc
+    klDiv ρ (ρ.fst.prod ρ.snd) =
+        klDiv (ρ.fst ⊗ₘ ρ.condKernel)
+          (ρ.fst ⊗ₘ Kernel.const X ρ.snd) := by
+      rw [hdis, hconst]
+    _ = ∫⁻ x, klDiv (ρ.condKernel x) ((Kernel.const X ρ.snd) x) ∂ρ.fst :=
+      klDiv_compProd_right_eq_lintegral
+        (μ := ρ.fst) (κ := ρ.condKernel)
+        (η := Kernel.const X ρ.snd) hac
+    _ = ∫⁻ x, klDiv (ρ.condKernel x) ρ.snd ∂ρ.fst := by
+      simp
 
 /-- In the interior marginal case, each fiber KL has the explicit
 entropy/cross-entropy real form. -/
@@ -84,9 +93,17 @@ theorem binaryPosteriorKL_toReal_ae_eq_integrand
   have halg := binaryKLScalar_eq_negEntropy_cross
     (posteriorBitOneProb ρ x) (binaryMarginalOneProb ρ)
     measureReal_nonneg measureReal_le_one hq0 hq1
-  unfold posteriorBitOneProb binaryMarginalOneProb at halg ⊢
-  rw [hscalar]
-  exact halg
+  calc
+    (klDiv (ρ.condKernel x) ρ.snd).toReal =
+        (ρ.condKernel x).real ({1} : Set (Fin 2)) *
+            Real.log ((ρ.condKernel x).real ({1} : Set (Fin 2)) /
+              ρ.snd.real ({1} : Set (Fin 2))) +
+          (1 - (ρ.condKernel x).real ({1} : Set (Fin 2))) *
+            Real.log ((1 - (ρ.condKernel x).real ({1} : Set (Fin 2))) /
+              (1 - ρ.snd.real ({1} : Set (Fin 2)))) := hscalar
+    _ = binaryKLEntropyIntegrand ρ x := by
+      simpa [posteriorBitOneProb, binaryMarginalOneProb,
+        binaryKLEntropyIntegrand] using halg
 
 /-- The explicit interior KL integrand is integrable. -/
 theorem integrable_binaryKLEntropyIntegrand
@@ -144,12 +161,38 @@ theorem integral_binaryKLEntropyIntegrand_eq_entropy_drop
     rw [integral_sub (integrable_const (1 : ℝ)) hp_int]
     simp [hpmean, binaryMarginalOneProb]
   unfold binaryKLEntropyIntegrand
-  rw [integral_sub (hH_int.neg.sub (hp_int.mul_const _)) (h1p_int.mul_const _),
-    integral_sub hH_int.neg (hp_int.mul_const _), integral_neg,
-    integral_mul_const, integral_mul_const, hpmean, h1pmean]
-  unfold binaryMarginalOneProb
-  rw [Real.binEntropy, Real.log_inv, Real.log_inv]
-  ring
+  calc
+    (∫ x,
+        (-Real.binEntropy (posteriorBitOneProb ρ x) -
+          posteriorBitOneProb ρ x * Real.log (binaryMarginalOneProb ρ)) -
+          (1 - posteriorBitOneProb ρ x) *
+            Real.log (1 - binaryMarginalOneProb ρ) ∂ρ.fst) =
+        (∫ x,
+            -Real.binEntropy (posteriorBitOneProb ρ x) -
+              posteriorBitOneProb ρ x * Real.log (binaryMarginalOneProb ρ) ∂ρ.fst) -
+          ∫ x,
+            (1 - posteriorBitOneProb ρ x) *
+              Real.log (1 - binaryMarginalOneProb ρ) ∂ρ.fst := by
+      exact integral_sub
+        (hH_int.neg.sub (hp_int.mul_const _)) (h1p_int.mul_const _)
+    _ =
+        ((∫ x, -Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) -
+          ∫ x, posteriorBitOneProb ρ x *
+            Real.log (binaryMarginalOneProb ρ) ∂ρ.fst) -
+          ∫ x, (1 - posteriorBitOneProb ρ x) *
+            Real.log (1 - binaryMarginalOneProb ρ) ∂ρ.fst := by
+      rw [integral_sub hH_int.neg (hp_int.mul_const _)]
+    _ =
+        (-(∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) -
+          binaryMarginalOneProb ρ * Real.log (binaryMarginalOneProb ρ)) -
+          (1 - binaryMarginalOneProb ρ) *
+            Real.log (1 - binaryMarginalOneProb ρ) := by
+      rw [integral_neg, integral_mul_const, integral_mul_const, hpmean, h1pmean]
+    _ = Real.binEntropy (binaryMarginalOneProb ρ) -
+          ∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst := by
+      unfold binaryMarginalOneProb
+      rw [Real.binEntropy, Real.log_inv, Real.log_inv]
+      ring
 
 /-- Interior-marginal binary mutual information is exactly the binary entropy
 drop from the marginal to the posterior. -/
@@ -203,12 +246,17 @@ theorem mutualInfo_toReal_eq_entropy_drop_of_marginal_zero
   have hmi : mutualInfo ρ = 0 := by
     unfold mutualInfo
     exact (InformationTheory.klDiv_eq_zero_iff).2 hprod
-  rw [hmi, hq0]
-  simp only [ENNReal.toReal_zero, Real.binEntropy_zero, zero_sub]
-  rw [integral_congr_ae]
-  · simp
-  · filter_upwards [hp0] with x hx
-    rw [hx, Real.binEntropy_zero]
+  have hH0 :
+      (∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) = 0 := by
+    calc
+      (∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) =
+          ∫ _x : X, (0 : ℝ) ∂ρ.fst := by
+        apply integral_congr_ae
+        filter_upwards [hp0] with x hx
+        simp [hx]
+      _ = 0 := by simp
+  rw [hmi, hq0, hH0]
+  simp
 
 /-- Degenerate marginal `P(B=1)=1` is the symmetric boundary case. -/
 theorem mutualInfo_toReal_eq_entropy_drop_of_marginal_one
@@ -232,12 +280,17 @@ theorem mutualInfo_toReal_eq_entropy_drop_of_marginal_one
   have hmi : mutualInfo ρ = 0 := by
     unfold mutualInfo
     exact (InformationTheory.klDiv_eq_zero_iff).2 hprod
-  rw [hmi, hq1]
-  simp only [ENNReal.toReal_zero, Real.binEntropy_one, zero_sub]
-  rw [integral_congr_ae]
-  · simp
-  · filter_upwards [hp1] with x hx
-    rw [hx, Real.binEntropy_one]
+  have hH1 :
+      (∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) = 0 := by
+    calc
+      (∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) =
+          ∫ _x : X, (0 : ℝ) ∂ρ.fst := by
+        apply integral_congr_ae
+        filter_upwards [hp1] with x hx
+        simp [hx]
+      _ = 0 := by simp
+  rw [hmi, hq1, hH1]
+  simp
 
 /-- **Exact binary mutual-information identity, all boundary cases included.** -/
 theorem mutualInfo_toReal_eq_binaryEntropy_sub_posteriorEntropy
