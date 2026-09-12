@@ -153,6 +153,7 @@ import UEOT.V3.InformationConditionalMutual
 import UEOT.V3.InformationConditionalMutualKLDecomposition
 import UEOT.V3.InformationConditionalDiscreteEntropy
 import UEOT.V3.InformationRandomEncoder
+import UEOT.V3.InformationRecoverableDiscrete
 import UEOT.V3.InformationMemoryBound
 import UEOT.V3.ConcreteHistoryMarkovization
 import UEOT.V3.PredictionUpdate
