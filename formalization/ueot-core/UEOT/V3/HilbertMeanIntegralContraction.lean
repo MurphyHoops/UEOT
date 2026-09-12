@@ -26,10 +26,14 @@ theorem abs_integral_sub_integral_le_const
     (hf : Integrable f μ) (hg : Integrable g μ)
     (hfg : ∀ᵐ x ∂μ, |f x - g x| ≤ c) :
     |(∫ x, f x ∂μ) - ∫ x, g x ∂μ| ≤ c := by
-  have hnorm : ‖∫ x, (f x - g x) ∂μ‖ ≤ c := by
-    apply norm_integral_le_of_norm_le_const
+  have hbound : ∀ᵐ x ∂μ, ‖f x - g x‖ ≤ c := by
     filter_upwards [hfg] with x hx
     simpa [Real.norm_eq_abs] using hx
+  have hmass : μ.real Set.univ = 1 := by
+    simp [Measure.real]
+  have hnorm : ‖∫ x, (f x - g x) ∂μ‖ ≤ c := by
+    have hraw := norm_integral_le_of_norm_le_const (μ := μ) hbound
+    simpa [hmass] using hraw
   rw [integral_sub hf hg] at hnorm
   simpa [Real.norm_eq_abs] using hnorm
 
