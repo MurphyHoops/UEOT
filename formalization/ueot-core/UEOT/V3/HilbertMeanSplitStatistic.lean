@@ -48,10 +48,12 @@ theorem continuous_empiricalMean {N : ℕ} :
     exact continuous_finsetSum Finset.univ (fun i _ => continuous_apply i)
   exact hsum.const_smul ((N : ℝ)⁻¹)
 
-/-- The finite Hilbert empirical mean is measurable for the canonical product
-Borel structure. -/
+/-- The finite Hilbert empirical mean is measurable for a product measurable
+structure on which finite addition is measurable.  This assumption is kept
+explicit rather than silently imposing separability on `H`. -/
 theorem measurable_empiricalMean
-    [MeasurableSpace H] [BorelSpace H] {N : ℕ} :
+    [MeasurableSpace H] [BorelSpace H] [MeasurableAdd₂ H]
+    {N : ℕ} :
     Measurable (empiricalMean : (Fin N → H) → H) := by
   unfold empiricalMean
   have hsum : Measurable (fun x : Fin N → H => ∑ i, x i) := by
@@ -60,26 +62,27 @@ theorem measurable_empiricalMean
 
 /-- The source mean-error statistic is measurable. -/
 theorem measurable_meanError
-    [MeasurableSpace H] [BorelSpace H]
+    [MeasurableSpace H] [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (μH : H) :
     Measurable (fun ω : Fin N → H => ‖empiricalMean ω - μH‖) := by
-  exact ((measurable_empiricalMean (H := H) (N := N)).sub measurable_const).norm
+  exact (measurable_empiricalMean (H := H) (N := N)).sub_const μH |>.norm
 
 /-- The source split statistic is measurable. -/
 theorem measurable_splitMeanError
-    [MeasurableSpace H] [BorelSpace H]
+    [MeasurableSpace H] [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (i : Fin N) (μH : H) :
     Measurable (splitMeanError i μH) := by
   change Measurable
     ((fun ω : Fin N → H => ‖empiricalMean ω - μH‖) ∘
-      fun xy => assemblePrefixFuture i xy.1 xy.2)
+      (fun xy : (prefixBlock (N := N) i.1 → H) × (future i → H) =>
+        assemblePrefixFuture i xy.1 xy.2))
   exact (measurable_meanError (H := H) (N := N) μH).comp
     (measurable_assemblePrefixFuture (H := H) i)
 
 /-- Since the codomain is real, measurability upgrades directly to strong
 measurability. -/
 theorem stronglyMeasurable_splitMeanError
-    [MeasurableSpace H] [BorelSpace H]
+    [MeasurableSpace H] [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (i : Fin N) (μH : H) :
     StronglyMeasurable (splitMeanError i μH) := by
   exact (measurable_splitMeanError (H := H) i μH).stronglyMeasurable
@@ -119,7 +122,7 @@ theorem ae_block_unit_of_marginals
 /-- Under simultaneous unit-ball support, the full source statistic is
 integrable on the canonical product law. -/
 theorem integrable_meanError_of_ae_unit
-    [MeasurableSpace H] [BorelSpace H]
+    [MeasurableSpace H] [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (μH : H) (hμH : ‖μH‖ ≤ 1)
@@ -134,7 +137,7 @@ theorem integrable_meanError_of_ae_unit
 /-- Marginal source support is enough to obtain integrability of the full
 Hilbert mean-error statistic; no extra joint-support assumption is required. -/
 theorem integrable_meanError_of_marginal_ae_unit
-    [MeasurableSpace H] [BorelSpace H]
+    [MeasurableSpace H] [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (μH : H) (hμH : ‖μH‖ ≤ 1)
@@ -146,7 +149,7 @@ theorem integrable_meanError_of_marginal_ae_unit
 /-- For any fixed unit-ball prefix, the source split statistic is integrable
 over the strict-future block law. -/
 theorem integrable_splitMeanError_future_of_unit
-    [MeasurableSpace H] [BorelSpace H]
+    [MeasurableSpace H] [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (i : Fin N) (μH : H) (hμH : ‖μH‖ ≤ 1)
