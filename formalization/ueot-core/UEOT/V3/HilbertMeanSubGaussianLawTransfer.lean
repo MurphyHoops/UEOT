@@ -40,4 +40,19 @@ theorem HasSubgaussianMGF.comp_hasLaw
     rw [hmgf]
     exact hsg.mgf_le t
 
+/-- Ordinary sub-Gaussianity is invariant under almost-everywhere equality. -/
+theorem HasSubgaussianMGF.congr_ae
+    {Y Z : Ω → ℝ}
+    (hsg : HasSubgaussianMGF Y c P)
+    (hYZ : Y =ᵐ[P] Z) :
+    HasSubgaussianMGF Z c P := by
+  constructor
+  · intro t
+    refine (integrable_congr ?_).mpr (hsg.integrable_exp_mul t)
+    filter_upwards [hYZ] with ω hω
+    rw [hω]
+  · intro t
+    rw [mgf_congr (Filter.EventuallyEq.symm hYZ)]
+    exact hsg.mgf_le t
+
 end UEOT.V3.HilbertMeanSubGaussianLawTransfer
