@@ -22,7 +22,7 @@ universe uH
 variable {H : Type uH} [NormedAddCommGroup H]
 
 /-- Replace a section outside the closed unit ball by its value at zero. -/
-def unitClip (q : H → ℝ) (a : H) : ℝ :=
+noncomputable def unitClip (q : H → ℝ) (a : H) : ℝ :=
   if ‖a‖ ≤ 1 then q a else q 0
 
 @[simp] theorem unitClip_eq_of_norm_le (q : H → ℝ) {a : H} (ha : ‖a‖ ≤ 1) :
