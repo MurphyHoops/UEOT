@@ -5,9 +5,9 @@ import Mathlib.MeasureTheory.Integral.Bochner.Basic
 # P-STAT-06 — canonical product-law transport
 
 McDiarmid's bounded-difference argument is cleanest on the canonical finite
-product of the sample marginals.  For an arbitrary independent sample family,
+product of the sample marginals. For an arbitrary independent sample family,
 Mathlib's `iIndepFun.map_fun_eq_pi_map` identifies the law of the full sample
-vector with exactly that product measure.  This file packages the identification
+vector with exactly that product measure. This file packages the identification
 and the two transports needed by the source proof: measurable tail events and
 Bochner expectations.
 -/
@@ -50,7 +50,7 @@ theorem measure_preimage_eq_pi_marginals
     (hindep : iIndepFun Z μ)
     (A : Set (Fin N → H)) (hA : MeasurableSet A) :
     μ (sampleVector Z ⁻¹' A) = Measure.pi (fun i => μ.map (Z i)) A := by
-  have hvec : AEMeasurable (sampleVector Z) μ := AEMeasurable.of_eval hZ
+  have hvec : AEMeasurable (sampleVector Z) μ := aemeasurable_pi_lambda hZ
   calc
     μ (sampleVector Z ⁻¹' A) = μ.map (sampleVector Z) A :=
       (Measure.map_apply_of_aemeasurable hvec hA).symm
@@ -85,7 +85,7 @@ theorem integral_statistic_eq_pi_marginals
     (hF : AEStronglyMeasurable F (Measure.pi (fun i => μ.map (Z i)))) :
     (∫ ω, F (sampleVector Z ω) ∂μ) =
       ∫ x, F x ∂Measure.pi (fun i => μ.map (Z i)) := by
-  have hvec : AEMeasurable (sampleVector Z) μ := AEMeasurable.of_eval hZ
+  have hvec : AEMeasurable (sampleVector Z) μ := aemeasurable_pi_lambda hZ
   have hmap := map_sampleVector_eq_pi_marginals μ Z hZ hindep
   have hFmap : AEStronglyMeasurable F (μ.map (sampleVector Z)) := by
     simpa [hmap] using hF
