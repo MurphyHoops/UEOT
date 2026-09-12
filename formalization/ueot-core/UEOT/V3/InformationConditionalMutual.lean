@@ -77,8 +77,11 @@ theorem conditionalMutualInfo_eq_zero_of_eq_reference
     (hρ : ρ = ρ.fst ⊗ₘ conditionalIndependenceKernel ρ) :
     conditionalMutualInfo ρ = 0 := by
   unfold conditionalMutualInfo
-  rw [hρ]
-  simp
+  have href : ρ.fst ⊗ₘ conditionalIndependenceKernel ρ = ρ := hρ.symm
+  calc
+    klDiv ρ (ρ.fst ⊗ₘ conditionalIndependenceKernel ρ) = klDiv ρ ρ :=
+      congrArg (klDiv ρ) href
+    _ = 0 := klDiv_self ρ
 
 end
 
