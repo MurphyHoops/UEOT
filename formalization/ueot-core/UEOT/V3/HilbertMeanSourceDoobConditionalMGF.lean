@@ -1,6 +1,8 @@
 import UEOT.V3.HilbertMeanSourceConditionalMGF
 import UEOT.V3.HilbertMeanSourceIncrementIdentification
 import UEOT.V3.HilbertMeanPrefixPredecessor
+import UEOT.V3.HilbertMeanDoobStatisticBridge
+import UEOT.V3.HilbertMeanSourceFiberHoeffding
 import Mathlib.Probability.Moments.SubGaussian
 import Mathlib.Tactic
 
@@ -8,7 +10,7 @@ import Mathlib.Tactic
 # P-STAT-06 — actual noninitial Doob increments are conditionally sub-Gaussian
 
 The probability-theory work has already been completed for the clipped
-filtration-native source increment.  Here we remove that proof device under the
+filtration-native source increment. Here we remove that proof device under the
 frozen unit-ball source assumption, identify the resulting raw centered source
 increment with the actual Doob increment, and rewrite the strict-past sigma
 algebra as the predecessor prefix filtration.
@@ -21,12 +23,14 @@ open scoped NNReal
 open UEOT.V3.HilbertMeanAzuma
 open UEOT.V3.HilbertMeanConcentration
 open UEOT.V3.HilbertMeanDoobCore
+open UEOT.V3.HilbertMeanDoobStatisticBridge
 open UEOT.V3.HilbertMeanPastActiveClippedFiber
 open UEOT.V3.HilbertMeanPrefixFiltration
 open UEOT.V3.HilbertMeanPrefixPredecessor
 open UEOT.V3.HilbertMeanSourceCenteredFiber
 open UEOT.V3.HilbertMeanSourceClippedIncrement
 open UEOT.V3.HilbertMeanSourceConditionalMGF
+open UEOT.V3.HilbertMeanSourceFiberHoeffding
 open UEOT.V3.HilbertMeanSourceIncrementIdentification
 open UEOT.V3.HilbertMeanSourceRationalMGF
 open UEOT.V3.HilbertMeanSplitStatistic
@@ -74,7 +78,7 @@ theorem hasCondSubgaussianMGF_doobIncrement_invSqParam
     (hunit : ∀ j, ∀ᵐ z ∂μ j, ‖z‖ ≤ 1) :
     HasCondSubgaussianMGF
       (prefixFiltration (H := H) (N := N) (i.1 - 1))
-      (prefixFiltration (H := H) (N := N)).le (i.1 - 1)
+      (by exact (prefixFiltration (H := H) (N := N)).le (i.1 - 1))
       (doobIncrement
         (Measure.pi μ)
         (prefixFiltration (H := H) (N := N))
