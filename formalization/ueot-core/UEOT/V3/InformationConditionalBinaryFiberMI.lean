@@ -14,6 +14,7 @@ namespace UEOT.V3.InformationConditionalBinaryFiberMI
 
 open MeasureTheory ProbabilityTheory InformationTheory
 open scoped ENNReal ProbabilityTheory
+open UEOT.V3.InformationCore
 open UEOT.V3.InformationConditionalBinary
 open UEOT.V3.InformationBinaryConditionalMean
 open UEOT.V3.InformationBinaryMutualEntropy
