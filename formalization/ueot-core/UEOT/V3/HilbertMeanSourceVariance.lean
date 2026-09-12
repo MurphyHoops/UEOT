@@ -13,6 +13,10 @@ its Bochner mean does not cost the crude factor two.  The exact identity
 
 therefore gives the sharp bound `E ‖X - EX‖² ≤ 1` required by the frozen
 P-STAT-06 first-moment constant.
+
+We keep Bochner integrability of the identity map explicit.  This is the
+minimal analytic hypothesis needed for the mean embedding itself; we do not
+silently impose separability or second-countability on the Hilbert space.
 -/
 
 namespace UEOT.V3.HilbertMeanSourceVariance
@@ -23,66 +27,65 @@ universe uH
 
 variable {H : Type uH}
 variable [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-variable [MeasurableSpace H] [BorelSpace H] [StandardBorelSpace H] [CompleteSpace H]
+variable [MeasurableSpace H] [BorelSpace H] [CompleteSpace H]
 
-/-- Unit-ball support makes the identity map integrable. -/
-theorem integrable_id_of_ae_norm_le_one
-    (ν : Measure H) [IsProbabilityMeasure ν]
-    (hunit : ∀ᵐ x ∂ν, ‖x‖ ≤ 1) :
-    Integrable (fun x : H => x) ν := by
-  exact Integrable.of_bound aestronglyMeasurable_id 1 hunit
-
-/-- The centered squared norm is integrable under unit-ball support.  The
-finite domination constant here is used only for integrability; the sharp
-second-moment constant is proved separately by the variance identity. -/
+/-- Centered squared norm is integrable under unit-ball support once the
+identity map is Bochner integrable.  The finite domination constant here is
+used only for integrability; the sharp second-moment constant is proved
+separately by the variance identity. -/
 theorem integrable_norm_sub_const_sq_of_ae_norm_le_one
     (ν : Measure H) [IsProbabilityMeasure ν]
     (μH : H)
+    (hint : Integrable (fun x : H => x) ν)
     (hunit : ∀ᵐ x ∂ν, ‖x‖ ≤ 1) :
     Integrable (fun x : H => ‖x - μH‖ ^ 2) ν := by
+  have hcenter : Integrable (fun x : H => x - μH) ν :=
+    hint.sub (integrable_const μH)
   have hmeas : AEStronglyMeasurable (fun x : H => ‖x - μH‖ ^ 2) ν := by
-    fun_prop
+    exact hcenter.aestronglyMeasurable.norm.pow 2
   refine Integrable.of_bound hmeas ((1 + ‖μH‖) ^ 2) ?_
   filter_upwards [hunit] with x hx
   rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg ‖x - μH‖)]
-  have hsub : ‖x - μH‖ ≤ 1 + ‖μH‖ :=
-    (norm_sub_le x μH).trans (add_le_add_right hx ‖μH‖)
-  have hnonneg : 0 ≤ 1 + ‖μH‖ := by positivity
-  nlinarith [norm_nonneg (x - μH)]
+  have hnormsub := norm_sub_le x μH
+  have hμnonneg : 0 ≤ ‖μH‖ := norm_nonneg μH
+  have hxnonneg : 0 ≤ ‖x‖ := norm_nonneg x
+  have hsubnonneg : 0 ≤ ‖x - μH‖ := norm_nonneg (x - μH)
+  nlinarith
 
 /-- Unit-ball support gives an integrable raw squared norm with expectation at
-most one. -/
+most one, assuming the identity map is Bochner integrable. -/
 theorem integral_norm_sq_le_one_of_ae_norm_le_one
     (ν : Measure H) [IsProbabilityMeasure ν]
+    (hint : Integrable (fun x : H => x) ν)
     (hunit : ∀ᵐ x ∂ν, ‖x‖ ≤ 1) :
     Integrable (fun x : H => ‖x‖ ^ 2) ν ∧
       (∫ x : H, ‖x‖ ^ 2 ∂ν) ≤ 1 := by
   have hmeas : AEStronglyMeasurable (fun x : H => ‖x‖ ^ 2) ν := by
-    fun_prop
-  have hint : Integrable (fun x : H => ‖x‖ ^ 2) ν := by
+    exact hint.aestronglyMeasurable.norm.pow 2
+  have hintSq : Integrable (fun x : H => ‖x‖ ^ 2) ν := by
     refine Integrable.of_bound hmeas 1 ?_
     filter_upwards [hunit] with x hx
     rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg ‖x‖)]
     nlinarith [norm_nonneg x]
   have hmono :
       (∫ x : H, ‖x‖ ^ 2 ∂ν) ≤ ∫ _x : H, (1 : ℝ) ∂ν := by
-    refine integral_mono_ae hint (integrable_const 1) ?_
+    refine integral_mono_ae hintSq (integrable_const 1) ?_
     filter_upwards [hunit] with x hx
     nlinarith [norm_nonneg x]
-  simpa using And.intro hint hmono
+  simpa using And.intro hintSq hmono
 
 /-- Exact Hilbert variance identity around the Bochner mean. -/
 theorem integral_norm_sub_mean_sq_eq
     (ν : Measure H) [IsProbabilityMeasure ν]
     (μH : H)
+    (hint : Integrable (fun x : H => x) ν)
     (hmean : (∫ x : H, x ∂ν) = μH)
     (hunit : ∀ᵐ x ∂ν, ‖x‖ ≤ 1) :
     (∫ x : H, ‖x - μH‖ ^ 2 ∂ν) =
       (∫ x : H, ‖x‖ ^ 2 ∂ν) - ‖μH‖ ^ 2 := by
-  have hxint := integrable_id_of_ae_norm_le_one ν hunit
-  have hraw := (integral_norm_sq_le_one_of_ae_norm_le_one ν hunit).1
+  have hraw := (integral_norm_sq_le_one_of_ae_norm_le_one ν hint hunit).1
   have hinner : Integrable (fun x : H => inner ℝ x μH) ν :=
-    hxint.inner_const μH
+    hint.inner_const μH
   have hinnerInt :
       (∫ x : H, inner ℝ x μH ∂ν) = ‖μH‖ ^ 2 := by
     calc
@@ -90,7 +93,7 @@ theorem integral_norm_sub_mean_sq_eq
           = ∫ x : H, inner ℝ μH x ∂ν := by
               apply integral_congr_ae
               exact ae_of_all ν (fun x => (real_inner_comm x μH).symm)
-      _ = inner ℝ μH (∫ x : H, x ∂ν) := integral_inner hxint μH
+      _ = inner ℝ μH (∫ x : H, x ∂ν) := integral_inner hint μH
       _ = inner ℝ μH μH := by rw [hmean]
       _ = ‖μH‖ ^ 2 := real_inner_self_eq_norm_sq μH
   have hleft : Integrable (fun x : H => ‖x‖ ^ 2 - 2 * inner ℝ x μH) ν :=
@@ -114,11 +117,12 @@ theorem integral_norm_sub_mean_sq_eq
 theorem integral_norm_sub_mean_sq_le_one
     (ν : Measure H) [IsProbabilityMeasure ν]
     (μH : H)
+    (hint : Integrable (fun x : H => x) ν)
     (hmean : (∫ x : H, x ∂ν) = μH)
     (hunit : ∀ᵐ x ∂ν, ‖x‖ ≤ 1) :
     (∫ x : H, ‖x - μH‖ ^ 2 ∂ν) ≤ 1 := by
-  rw [integral_norm_sub_mean_sq_eq ν μH hmean hunit]
-  have hraw := (integral_norm_sq_le_one_of_ae_norm_le_one ν hunit).2
+  rw [integral_norm_sub_mean_sq_eq ν μH hint hmean hunit]
+  have hraw := (integral_norm_sq_le_one_of_ae_norm_le_one ν hint hunit).2
   have hsq : 0 ≤ ‖μH‖ ^ 2 := sq_nonneg _
   linarith
 
