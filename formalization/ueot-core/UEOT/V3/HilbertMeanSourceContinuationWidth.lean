@@ -1,5 +1,5 @@
 import UEOT.V3.HilbertMeanDoobStatisticBridge
-import UEOT.V3.HilbertMeanContinuationWidth
+import UEOT.V3.HilbertMeanIntegralContraction
 
 /-!
 # P-STAT-06 — exact active-coordinate width of the source continuation
@@ -20,7 +20,7 @@ open UEOT.V3.HilbertMeanPrefixFutureAssembly
 open UEOT.V3.HilbertMeanProductBlockIndependence
 open UEOT.V3.HilbertMeanSplitStatistic
 open UEOT.V3.HilbertMeanDoobStatisticBridge
-open UEOT.V3.HilbertMeanContinuationWidth
+open UEOT.V3.HilbertMeanIntegralContraction
 
 universe uH
 
@@ -72,28 +72,32 @@ theorem splitMeanError_updatedPrefix_pairwise_le_two_div
   · simpa using hb
 
 /-- Exact `2/N` active-coordinate oscillation of the explicit source
-continuation.  Integrability of each future section is kept explicit here and
-will be discharged separately from the source unit-ball support. -/
+continuation. Only the two compared active values are required to lie in the
+unit ball. -/
 theorem sourceContinuation_update_pairwise_le_two_div
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (ω : Fin N → H) (i : Fin N) (μH : H)
     (a b : H) (ha : ‖a‖ ≤ 1) (hb : ‖b‖ ≤ 1)
-    (hint : ∀ v : H, Integrable
+    (hinta : Integrable
       (fun y => splitMeanError i μH
-        (blockProjection (prefixBlock i.1) (Function.update ω i v), y))
+        (blockProjection (prefixBlock i.1) (Function.update ω i a), y))
+      (blockLaw μ (future i)))
+    (hintb : Integrable
+      (fun y => splitMeanError i μH
+        (blockProjection (prefixBlock i.1) (Function.update ω i b), y))
       (blockLaw μ (future i))) :
     |sourceContinuation μ i μH (Function.update ω i a) -
       sourceContinuation μ i μH (Function.update ω i b)| ≤
       2 / (N : ℝ) := by
   unfold sourceContinuation
-  apply continuation_pairwise_abs_sub_le
+  apply abs_integral_section_sub_integral_section_le
     (blockLaw μ (future i))
     (fun v y => splitMeanError i μH
-      (blockProjection (prefixBlock i.1) (Function.update ω i v), y)) hint
-  intro v w
+      (blockProjection (prefixBlock i.1) (Function.update ω i v), y))
+    hinta hintb
   filter_upwards with y
   exact splitMeanError_updatedPrefix_pairwise_le_two_div
-    hN ω i μH v w (by assumption) (by assumption) y
+    hN ω i μH a b ha hb y
 
 end UEOT.V3.HilbertMeanSourceContinuationWidth
