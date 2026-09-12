@@ -46,6 +46,7 @@ import UEOT.V3.HilbertMeanConcentration
 import UEOT.V3.HilbertMeanSecondMoment
 import UEOT.V3.HilbertMeanFirstMoment
 import UEOT.V3.HilbertMeanSourceFirstMoment
+import UEOT.V3.HilbertMeanSourceVariance
 import UEOT.V3.HilbertMeanAzuma
 import UEOT.V3.HilbertMeanConditionalHoeffding
 import UEOT.V3.HilbertMeanMcDiarmidCore
