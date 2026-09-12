@@ -82,6 +82,7 @@ import UEOT.V3.HilbertMeanSourceRationalMGF
 import UEOT.V3.HilbertMeanConditionalSubGaussianLift
 import UEOT.V3.HilbertMeanSourceConditionalMGF
 import UEOT.V3.HilbertMeanSourceDoobConditionalMGF
+import UEOT.V3.HilbertMeanSourceTerminalDoob
 import UEOT.V3.MMDTransport
 import UEOT.V3.MMDTransportSource
 import UEOT.V3.AverageErrorTransport
