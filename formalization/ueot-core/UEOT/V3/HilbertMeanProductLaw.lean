@@ -50,7 +50,8 @@ theorem measure_preimage_eq_pi_marginals
     (hindep : iIndepFun Z μ)
     (A : Set (Fin N → H)) (hA : MeasurableSet A) :
     μ (sampleVector Z ⁻¹' A) = Measure.pi (fun i => μ.map (Z i)) A := by
-  have hvec : AEMeasurable (sampleVector Z) μ := aemeasurable_pi_lambda hZ
+  have hvec : AEMeasurable (sampleVector Z) μ :=
+    aemeasurable_pi_lambda (sampleVector Z) hZ
   calc
     μ (sampleVector Z ⁻¹' A) = μ.map (sampleVector Z) A :=
       (Measure.map_apply_of_aemeasurable hvec hA).symm
@@ -85,7 +86,8 @@ theorem integral_statistic_eq_pi_marginals
     (hF : AEStronglyMeasurable F (Measure.pi (fun i => μ.map (Z i)))) :
     (∫ ω, F (sampleVector Z ω) ∂μ) =
       ∫ x, F x ∂Measure.pi (fun i => μ.map (Z i)) := by
-  have hvec : AEMeasurable (sampleVector Z) μ := aemeasurable_pi_lambda hZ
+  have hvec : AEMeasurable (sampleVector Z) μ :=
+    aemeasurable_pi_lambda (sampleVector Z) hZ
   have hmap := map_sampleVector_eq_pi_marginals μ Z hZ hindep
   have hFmap : AEStronglyMeasurable F (μ.map (sampleVector Z)) := by
     simpa [hmap] using hF
