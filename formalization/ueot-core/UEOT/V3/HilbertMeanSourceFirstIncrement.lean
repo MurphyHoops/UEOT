@@ -16,6 +16,7 @@ exact `1/N²` Hoeffding proxy from the active marginal to the full product law.
 namespace UEOT.V3.HilbertMeanSourceFirstIncrement
 
 open MeasureTheory ProbabilityTheory Real
+open scoped NNReal
 open UEOT.V3.HilbertMeanAzuma
 open UEOT.V3.HilbertMeanConcentration
 open UEOT.V3.HilbertMeanDoobBlocks
@@ -148,5 +149,51 @@ theorem doobIncrement_zero_ae_eq_firstRawCentered
   simp only [doobIncrement]
   rw [hω, hmean]
   rfl
+
+/-- Exact ordinary sub-Gaussian proxy `1/N²` for the first source Doob
+increment.  This is the `h0` input required by the Azuma layer. -/
+theorem hasSubgaussianMGF_doobIncrement_zero_invSqParam
+    [BorelSpace H] [StandardBorelSpace H] [Nonempty H]
+    [MeasurableAdd₂ H] [MeasurableSub H]
+    {N : ℕ} (hN : 0 < N)
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (hunit : ∀ j, ∀ᵐ x ∂μ j, ‖x‖ ≤ 1) :
+    HasSubgaussianMGF
+      (doobIncrement
+        (Measure.pi μ)
+        (prefixFiltration (H := H) (N := N))
+        (fun ω : Fin N → H => ‖empiricalMean ω - μH‖)
+        0)
+      (invSqParam N)
+      (Measure.pi μ) := by
+  let i0 : Fin N := firstIndex hN
+  let q : H → ℝ := sourceActiveSection μ i0 μH (zeroSample (H := H))
+  have hzero : ∀ j : Fin N, ‖zeroSample (H := H) j‖ ≤ 1 := by
+    intro j
+    simp [zeroSample]
+  have hfiber :=
+    hasSubgaussianMGF_centeredClippedActiveSection_invSqParam
+      hN μ (zeroSample (H := H)) hzero i0 μH hμH hunit
+  have hclipraw :
+      centeredClippedActiveSection μ i0 μH (zeroSample (H := H))
+        =ᵐ[μ i0]
+      firstRawCentered hN μ μH := by
+    have hclip := unitClip_ae_eq (μ i0) q (hunit i0)
+    have hint := integral_unitClip_eq (μ i0) q (hunit i0)
+    filter_upwards [hclip] with a ha
+    simp [centeredClippedActiveSection, firstRawCentered, q, i0, ha, hint]
+  have hraw : HasSubgaussianMGF
+      (firstRawCentered hN μ μH) (invSqParam N) (μ i0) := by
+    exact hfiber.congr_ae hclipraw
+  have hcoord := activeCoordinate_hasLaw μ i0
+  have hprod : HasSubgaussianMGF
+      (fun ω : Fin N → H => firstRawCentered hN μ μH (ω i0))
+      (invSqParam N) (Measure.pi μ) := by
+    exact hraw.comp_hasLaw hcoord
+  have hdoob := doobIncrement_zero_ae_eq_firstRawCentered
+    hN μ μH hμH hunit
+  exact hprod.congr_ae (by
+    simpa [i0] using hdoob.symm)
 
 end UEOT.V3.HilbertMeanSourceFirstIncrement
