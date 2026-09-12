@@ -53,6 +53,7 @@ import UEOT.V3.HilbertMeanIntegralContraction
 import UEOT.V3.HilbertMeanRangeWidth
 import UEOT.V3.HilbertMeanContinuationWidth
 import UEOT.V3.HilbertMeanCenteredFiber
+import UEOT.V3.HilbertMeanUnitClip
 import UEOT.V3.HilbertMeanCoordinateSection
 import UEOT.V3.HilbertMeanFutureAveragedSection
 import UEOT.V3.HilbertMeanIndependentCondDistrib
