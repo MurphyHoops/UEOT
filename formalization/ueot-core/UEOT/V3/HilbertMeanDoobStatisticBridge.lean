@@ -34,7 +34,8 @@ noncomputable def sourceContinuation {N : ℕ}
     (μ : Fin N → Measure H) (i : Fin N) (μH : H)
     (ω : Fin N → H) : ℝ :=
   ∫ y,
-    splitMeanError i μH (blockProjection (prefixBlock i.1) ω, y)
+    splitMeanError i μH
+      (blockProjection (prefixBlock (N := N) i.1) ω, y)
     ∂blockLaw μ (future i)
 
 /-- The source Doob value at time `i` is almost everywhere the explicit future
@@ -58,17 +59,30 @@ theorem doobValue_meanError_ae_eq_sourceContinuation
   have hintSplit : Integrable
       (fun (ω : Fin N → H) =>
         splitMeanError i μH
-          (blockProjection (prefixBlock i.1) ω, blockProjection (future i) ω))
+          (blockProjection (prefixBlock (N := N) i.1) ω,
+            blockProjection (future i) ω))
       (Measure.pi μ) := by
     simpa using hint
   have h := doobValue_prefix_ae_eq_integral
     (H := H) μ i (splitMeanError i μH) hsm hintSplit
-  simpa [sourceContinuation] using h
+  change doobValue
+        (Measure.pi μ)
+        (prefixFiltration (H := H) (N := N))
+        (fun ω : Fin N → H => ‖empiricalMean ω - μH‖)
+        i.1
+      =ᵐ[Measure.pi μ]
+      (fun ω => ∫ y,
+        splitMeanError i μH
+          (blockProjection (prefixBlock (N := N) i.1) ω, y)
+        ∂blockLaw μ (future i))
+  exact h
 
-/-- Borel Hilbert spaces discharge the split-statistic measurability condition
-automatically; only source integrability remains. -/
+/-- Borel Hilbert spaces plus measurable additive structure discharge the
+split-statistic measurability condition automatically; only source
+integrability remains. -/
 theorem doobValue_meanError_ae_eq_sourceContinuation_of_integrable
     [BorelSpace H] [StandardBorelSpace H] [Nonempty H]
+    [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ}
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (i : Fin N) (μH : H)
@@ -90,6 +104,7 @@ on each marginal and on the target mean automatically provide integrability,
 so no auxiliary analytic hypothesis remains in the statement. -/
 theorem doobValue_meanError_ae_eq_sourceContinuation_of_unit
     [BorelSpace H] [StandardBorelSpace H] [Nonempty H]
+    [MeasurableAdd₂ H] [MeasurableSub H]
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (i : Fin N) (μH : H) (hμH : ‖μH‖ ≤ 1)
