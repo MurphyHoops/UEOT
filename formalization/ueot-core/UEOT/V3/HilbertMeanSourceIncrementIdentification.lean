@@ -28,6 +28,7 @@ open UEOT.V3.HilbertMeanDoobStatisticBridge
 open UEOT.V3.HilbertMeanPastActiveContinuation
 open UEOT.V3.HilbertMeanPastActiveIndependence
 open UEOT.V3.HilbertMeanSourceCenteredFiber
+open UEOT.V3.HilbertMeanProductBlockIndependence
 
 universe uH
 
@@ -87,7 +88,10 @@ theorem doobIncrement_meanError_ae_eq_centeredActiveSection
   have hpast' :
       P[C | ℱ (i.1 - 1)] =ᵐ[P]
         fun ω => ∫ a, sourceActiveSection μ i μH ω a ∂μ i := by
-    dsimp [P, ℱ, C]
+    change
+      (Measure.pi μ)[sourceContinuation μ i μH |
+        prefixFiltration (H := H) (N := N) (i.1 - 1)] =ᵐ[Measure.pi μ]
+        fun ω => ∫ a, sourceActiveSection μ i μH ω a ∂μ i
     rw [hsigma]
     rw [hrep] at hpast
     simpa [sourceActiveSection] using hpast
@@ -98,7 +102,13 @@ theorem doobIncrement_meanError_ae_eq_centeredActiveSection
       P ℱ F C (i.1 - 1) (by simpa [hsucc] using hC)
     simpa [hsucc] using hbase
   filter_upwards [hinc, hpast'] with ω hincω hpastω
+  have hpastω' :
+      (Measure.pi μ)[sourceContinuation μ i μH |
+          prefixFiltration (H := H) (N := N) (i.1 - 1)] ω =
+        ∫ a, sourceActiveSection μ i μH ω a ∂μ i := by
+    simpa [P, ℱ, C] using hpastω
   dsimp [P, ℱ, F, C] at hincω ⊢
-  rw [hincω, hpastω]
+  rw [hincω]
+  exact congrArg (fun t => sourceContinuation μ i μH ω - t) hpastω'
 
 end UEOT.V3.HilbertMeanSourceIncrementIdentification
