@@ -87,7 +87,7 @@ theorem conditionalBinaryEntropyGivenUM_le_errorEntropy
   have h := posteriorConditionalEntropy_le_decoderError
     (M := 2) (by norm_num)
     (binaryUMJoint ρ).fst (posteriorBitGivenUM ρ) d hd
-  have hlog : Real.log ((2 : ℝ) - 1) = 0 := by norm_num
+  have hlog : Real.log (((2 : ℕ) : ℝ) - 1) = 0 := by norm_num
   rw [hlog, mul_zero, add_zero] at h
   simpa [conditionalBinaryEntropyGivenUM, conditionalBinaryDecoderError] using h
 
