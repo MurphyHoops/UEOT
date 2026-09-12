@@ -124,6 +124,7 @@ import UEOT.V3.RecoveryProbability
 import UEOT.V3.InformationPacking
 import UEOT.V3.InformationEntropy
 import UEOT.V3.InformationSharpFano
+import UEOT.V3.InformationRightStatistic
 import UEOT.V3.InformationStatistic
 import UEOT.V3.InformationEntropyBound
 import UEOT.V3.InformationDiscreteEntropy
