@@ -130,6 +130,7 @@ theorem integral_tvDist_le_sqrt_klDiv_compProd
     refine Integrable.mono'
       (hk_int.add (integrable_const (1 : ℝ))) hsqrt_meas ?_
     filter_upwards [hk_nonneg] with x hx
+    rw [Real.norm_eq_abs, abs_of_nonneg (Real.sqrt_nonneg _)]
     change Real.sqrt (k x) ≤ k x + 1
     have hs2 : (Real.sqrt (k x)) ^ 2 = k x := Real.sq_sqrt hx
     nlinarith [sq_nonneg (Real.sqrt (k x) - 1)]
@@ -140,6 +141,7 @@ theorem integral_tvDist_le_sqrt_klDiv_compProd
     refine Integrable.mono' (integrable_const (1 : ℝ))
       htv_meas.aestronglyMeasurable ?_
     exact Filter.Eventually.of_forall fun x => by
+      rw [Real.norm_eq_abs, abs_of_nonneg (tvDist_nonneg (κ x) (η x))]
       exact tvDist_le_one (κ x) (η x)
 
   have hpoint : ∀ᵐ x ∂μ, tvDist (κ x) (η x) ≤ Real.sqrt (k x) := by
