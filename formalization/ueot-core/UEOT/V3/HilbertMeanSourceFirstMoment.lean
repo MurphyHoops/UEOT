@@ -47,7 +47,8 @@ theorem empiricalMean_centered_eq_sub
 marginal is supported in the Hilbert unit ball and has common Bochner mean
 `μH`, then the expected empirical-mean error is at most `1 / sqrt N`. -/
 theorem source_meanError_first_moment_le_one_div_sqrt
-    [MeasurableSpace H] [BorelSpace H] [CompleteSpace H] [MeasurableSub H]
+    [MeasurableSpace H] [BorelSpace H] [StandardBorelSpace H]
+    [CompleteSpace H] [MeasurableSub H]
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (μH : H)
