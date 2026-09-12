@@ -33,7 +33,7 @@ theorem binaryKLScalar_eq_negEntropy_cross
     · have hp0' : 0 < p := lt_of_le_of_ne hp0 (Ne.symm hpz)
       have hp1' : p < 1 := lt_of_le_of_ne hp1 hpo
       have hpnz : p ≠ 0 := hpz
-      have h1pnz : 1 - p ≠ 0 := sub_ne_zero.mpr hpo.symm
+      have h1pnz : 1 - p ≠ 0 := sub_ne_zero.mpr (Ne.symm hpo)
       have hqnz : q ≠ 0 := ne_of_gt hq0
       have h1qnz : 1 - q ≠ 0 := ne_of_gt (sub_pos.mpr hq1)
       rw [Real.log_div hpnz hqnz, Real.log_div h1pnz h1qnz]
