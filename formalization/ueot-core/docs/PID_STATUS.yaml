@@ -12,12 +12,14 @@ coverage:
   integrated_proved: 50
   promotion_running: 0
   active_proof: 1
-  source_audit: 2
-  blocked: 1
+  source_audit: 1
+  blocked: 2
   pending_unclassified: 52
   note: >-
     Counts partition all 106 frozen source P-IDs. Only integrated_proved is
-    counted in V3_COVERAGE_STATUS.md. pending does not mean unproved.
+    counted in V3_COVERAGE_STATUS.md. pending does not mean unproved. P-INFO-02
+    is mathematically and operationally integrated but remains uncounted while
+    the exact frozen source artifact is not synchronized into the public repo.
 state_vocabulary:
   - source_audit
   - proof
@@ -73,64 +75,71 @@ pids:
       - future_ci_exposes_real_lean_error
       - frozen_source_audit_finds_substantive_statement_mismatch
   P-INFO-02:
-    state: proof
+    state: blocked
     source_locked: true
-    branch: formal/pinfo02-pinsker
-    current_head: c389f6a838c6d6cd85c824fbb4cd98c4084f1bcb
-    current_ci:
-      run: 34686343205
-      status: in_progress
-    failed_experiments:
-      - run: 34685655814
-        reason: custom binary Pinsker calculus module failed Lean API/proof normalization
-      - run: 34685968771
-        reason: repaired custom binary module still failed localized normalization tactics
+    mathematical_chain: complete
     proof_contract:
       assumptions: standard Borel H,Y,M,U; M,U are functions of history
       epsilon: I(H;Y|M,U)
       conclusion: E TV(P(Y|H),P(Y|M,U)) <= sqrt(epsilon/2)
       proof_route:
-        - conditional_mutual_information_as_average_conditional_KL
+        - predictive_conditional_information_as_shared_base_KL
         - general_measure_level_Pinsker
-        - a.e._finite_conditional_KL_when_the_average_is_finite
-        - conditional_kernel_KL_to_TV_averaging
+        - finite_KL_implies_ae_fiber_absolute_continuity
+        - exact_shared_base_kernel_KL_integral
+        - conditional_kernel_TV_averaging
         - Jensen_square_root
+        - ENNReal_infinite_information_case
+    canonical_theorem: UEOT.V3.InformationPInfo02.p_info_02_ennreal
+    finite_theorem: UEOT.V3.InformationPInfo02.p_info_02_finite
+    semantic_correction: >-
+      The older posterior-oriented statistic residual is not the canonical
+      source primitive because the relevant joint law can be singular with
+      respect to the product of its marginals. P-INFO-02 therefore uses the
+      predictive kernels P(Y|H) and P(Y|M,U) under the true history marginal.
     reuse:
       - UEOT.V3.InformationCore
-      - UEOT.V3.InformationStatistic
+      - UEOT.V3.InformationPinsker
+      - UEOT.V3.InformationKernelKL
+      - UEOT.V3.InformationKernelTV
+      - UEOT.V3.InformationKernelPinsker
+      - UEOT.V3.InformationPredictiveCMI
       - UEOT.V3.TotalVariation
-      - Mathlib.InformationTheory.KullbackLeibler.Basic
-      - Mathlib.InformationTheory.KullbackLeibler.DataProcessing
     external_prior_art:
       - project: CausalSmith
         license: Apache-2.0
-        lean: 4.33.0
-        result: general probability-measure Pinsker plus Scheffe bridge
-        compatibility: source tvDist is mathematically the same measurable-event absolute-difference supremum as UEOT tvDist
+        result: attributed general measure Pinsker and shared-base KL ingredients
       - project: StatLean
         license: Apache-2.0
-        result: general probability-measure Pinsker in an alternative total-variation encoding
-    audit_finding: >-
-      Pinned Mathlib supplies KL primitives but no directly reusable Pinsker
-      theorem. External 2026 Lean prior art already formalizes the general
-      measure-level theorem. The original custom binary-calculus route was
-      therefore classified as duplicate infrastructure, removed from the
-      official target, and deleted from the feature branch.
-    current_module: UEOT.V3.InformationPinsker
-    current_strategy: >-
-      Minimal attributed adaptation of CausalSmith's Scheffe + general Pinsker
-      proof onto UEOT.V3.TotalVariation.tvDist; no new dependency and no second
-      UEOT total-variation definition.
-    completed_missing:
-      - external prior-art audit for general measure-level Pinsker
-      - removal of superseded InformationBinaryPinsker module
-      - attributed InformationPinsker measure-level port submitted to official target
-    missing:
-      - compile and repair the minimal measure-level Pinsker port against pinned Mathlib
-      - handle conditional fibers with infinite KL without an invalid toReal-top shortcut
-      - conditional kernel KL-to-TV averaging interface
-      - Jensen square-root step
-      - one canonical source-facing theorem
+        result: independently confirms general measure Pinsker formalizability
+    promotion:
+      source_layer_main_commit: ec27125594f82550a07975ccb20ceca90654d9a6
+      source_layer_post_main_ci:
+        run: 34692122098
+        status: success
+      all_cases_pr: 46
+      all_cases_main_commit: c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f
+      all_cases_feature_ci:
+        run: 34692511062
+        status: success
+      all_cases_post_main_ci:
+        run: 34692828935
+        status: success
+    implementation_note: >-
+      The source-facing theorem retains [Nonempty Y] because Mathlib's
+      condKernel definitions require it at statement elaboration time. This is
+      not an additional physical assumption: existence of the probability law
+      on H×Y implies Nonempty Y via nonempty_of_isProbabilityMeasure. A cosmetic
+      attempt to hide the instance was intentionally not promoted because the
+      theorem statement must elaborate before a proof-body local instance can
+      be installed.
+    blocked_by:
+      - exact_frozen_source_artifact_not_synced_in_public_repo
+    remaining_gate:
+      - synchronize exact UEOT_Core_Mathematics_v3.0_Complete.md bytes
+      - verify canonical SHA-256
+      - perform final exact-source statement audit
+      - update coverage ledger only after that audit
     coverage_counted: false
   P-INFO-03:
     state: source_audit
@@ -146,44 +155,71 @@ pids:
       - UEOT.V3.InformationCore
       - UEOT.V3.InformationDiscreteEntropy
       - UEOT.V3.InformationMemoryBound
+      - UEOT.V3.InformationConditionalBinary as finite-disintegration design precedent
     audit_finding: >-
-      Existing UEOT entropy infrastructure is unconditional. Neither the
-      current repository nor pinned Mathlib provides the required conditional
-      discrete entropy H(C|U) interface for discrete C with general U. Defining
-      it only as H(C)-I(C;U) would add an unintended finite-H(C) assumption and
-      is not source-faithful in the general case.
+      Existing UEOT entropy infrastructure is unconditional. H(C|U) must be
+      constructed by genuine disintegration for countable discrete C; defining
+      it as H(C)-I(C;U) would add an unintended finite-H(C) assumption. The new
+      P-INFO-04 binary conditional layer validates the intended disintegration
+      architecture but is not yet the countable-discrete theorem P-INFO-03 needs.
     missing:
-      - source-faithful conditional discrete entropy or disintegration interface
+      - countable-discrete conditional entropy/disintegration interface
       - predictive-rate-distortion interface with random encoders
       - zero-distortion recoverability theorem
       - conditional DPI lower bound and attainability
     coverage_counted: false
   P-INFO-04:
-    state: source_audit
+    state: proof
     source_locked: true
     proof_contract:
       assumptions: J uniform on K>=2 identities; decoder Jhat(Y_T); error rate e
       conclusion: I(J;Y_T) >= log K - h2(e) - e*log(K-1)
       proof_route:
-        - decoder_data_processing
-        - conditional_Fano_via_error_indicator
-        - uniform_identity_entropy
+        - correctness_event_as_binary_statistic
+        - KL_data_processing
+        - exact_Bernoulli_KL
+        - sharp_Fano_algebra
       additional_source_clause: conditional binary identity-information lower bound
-    reuse:
-      - UEOT.V3.InformationCore
-      - UEOT.V3.InformationEntropy
-    audit_finding: >-
-      Pinned Mathlib has no directly reusable Fano theorem. External Lean prior
-      art proves a finite single-distribution Fano entropy inequality, but the
-      frozen source still needs a joint/conditional Fano theorem plus decoder
-      DPI and the repository's measure-theoretic mutual-information interface.
-    missing:
-      - conditional or joint Fano inequality for the decoder error variable
-      - bridge to UEOT measure-theoretic mutualInfo
-      - decoder data-processing source wrapper
+    multiway:
+      mathematical_chain: complete
+      canonical_theorem: UEOT.V3.InformationPInfo04.p_info_04
+      modules:
+        - UEOT.V3.InformationBernoulliKL
+        - UEOT.V3.InformationEventBernoulli
+        - UEOT.V3.InformationBernoulliFano
+        - UEOT.V3.InformationPInfo04
+      clean_branch: formal/pinfo04-multiway-clean
+      clean_head: c961fefa7c7b68905f6b5f9d063ec6a59202e1fc
+      clean_ci:
+        run: 34692978791
+        status: success
+      pr: 47
+      main_commit: 94e16dfb9cc9a2db6e000d8f5394c1b07869ce40
+      post_main_ci:
+        run: 34693509298
+        status: success
+    conditional_binary:
+      branch: formal/pinfo04-conditional-binary
+      current_head: 0dfa192ab9d63704845fa7dae0d1278867f3269f
+      current_ci:
+        run: 34693774790
+        status: in_progress
+      completed:
+        - true conditional kernel P(M,B|U) by standard-Borel disintegration
+        - fiberwise conditional-independence reference P(M|U)×P(B|U)
+        - finite binary conditional entropy H(B|U)
+        - arbitrary-decoder pointwise sharp Fano at the actual decoded index
+        - integrated arbitrary-decoder conditional Fano theorem
+        - source geometry U×(M×B) to (U×M)×B and posterior P(B|U,M)
+        - source epsilon form H(B|M,U) <= h2(epsilon) for Pe<=epsilon<=1/2
+      remaining:
+        - machine-check latest source-facing conditional stack
+        - prove finite-binary bridge I(M;B|U)=H(B|U)-H(B|M,U)
+        - expose final conditional identity-information lower bound
+        - clean-port conditional delta from latest main and promote
     coverage_counted: false
   P-INT-01:
     state: blocked
     blocked_by:
-      - P-INFO-02 canonical conditional-information interface
+      - canonical_conditional_information_bridge_from_P-INFO_packet
     rule: do not start a duplicate independence/information stack

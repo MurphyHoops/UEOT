@@ -9,7 +9,8 @@ Last synchronized: **2026-09-12**
 
 - canonical source: `UEOT_Core_Mathematics_v3.0_Complete.md`
 - source P-IDs: **106**
-- source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`
+- canonical source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`
+- exact source bytes in public repo: **pending synchronization**
 - Lean: **4.33.1**
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
 - official target: `lake build UEOT`
@@ -21,99 +22,157 @@ Last synchronized: **2026-09-12**
 |---|---:|
 | integrated proved | **50** |
 | active proof | **1** |
-| source audit | **2** |
-| blocked | **1** |
+| source audit | **1** |
+| blocked | **2** |
 | pending unclassified | **52** |
 | total | **106** |
 
-The authoritative coverage ledger is now **50 proved / 56 pending**. `pending`
-means “not yet counted proved”, not “no proof exists”.
+The authoritative coverage ledger remains **50 proved / 56 pending**. `pending`
+means “not yet counted proved”, not “no proof exists”. In particular,
+P-INFO-02 already has its mathematical and Lean chain on `main`, but final
+source-level counting is blocked by the exact frozen-source artifact gate.
 
 ## P-STAT-06 [PROVED / CLOSED]
 
-P-STAT-06 passed the complete promotion contract:
+P-STAT-06 passed the complete promotion contract and must not be reopened merely
+because old branches contain historical TODOs.
 
-- feature CI `34684444280`: success;
-- clean-port CI `34684655595`: success;
-- PR #40 CI `34685272294`: success;
-- main commit `d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092`;
-- post-main CI `34685534516`: success.
-
-Canonical source theorem:
+Canonical theorem:
 `UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions`.
 
-Frozen radius:
-`(1 + sqrt(2*log(L/alpha)))/sqrt(N)`.
+Promotion evidence: PR #40, main `d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092`,
+post-main CI `34685534516` success.
 
-Do not reopen this proof family merely because old roadmaps or branches still
-contain historical TODOs.
+## P-INFO-02 [MATHEMATICALLY COMPLETE / SOURCE-ARTIFACT BLOCKED]
 
-## P-INFO-02 [PROOF]
+Frozen target:
 
-Existing integrated infrastructure is reused:
+`E TV(P(Y|H), P(Y|M,U)) <= sqrt(I(H;Y|M,U)/2)`.
 
-- `InformationCore.lean`: KL-backed MI/residual and KL data processing;
-- `InformationStatistic.lean`: exact statistic MI chain identity and
-  conditional-information residual;
-- `TotalVariation.lean`: source TV definition and deterministic TV DPI.
+The proof architecture is now complete and integrated:
 
-Source audit found a real missing theorem: pinned Mathlib has the required KL
-chain/data-processing machinery but no directly reusable measure-level Pinsker
-bridge. Therefore this is not a wrapper-only task.
+1. source-faithful predictive kernels `P(Y|H)` and `P(Y|M,U)`;
+2. attributed general measure-level Pinsker;
+3. exact shared-base kernel KL integral;
+4. finite KL implies a.e. fiber absolute continuity;
+5. conditional TV averaging + Jensen;
+6. all-cases `ENNReal` theorem, including infinite conditional information.
 
-Active branch: `formal/pinfo02-pinsker`.
-Current head: `ddc2b1fe4630dfe02e89844c83bd7cad03206cfb`.
-Current CI: `34685655814`.
+Canonical theorem:
+`UEOT.V3.InformationPInfo02.p_info_02_ennreal`.
 
-Completed first layer:
-`UEOT/V3/InformationBinaryPinsker.lean`, which proves the analytic binary
-Pinsker inequality on the open two-point simplex and is reachable from the
-official `UEOT.V3` target.
+Promotion evidence:
 
-Remaining proof contract:
+- predictive source layer main commit `ec27125594f82550a07975ccb20ceca90654d9a6`;
+- post-main CI `34692122098`: success;
+- all-cases PR #46;
+- all-cases main commit `c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`;
+- all-cases post-main CI `34692828935`: success.
 
-1. close event-probability boundary cases;
-2. use event-indicator KL data processing to obtain eventwise Pinsker;
-3. take the measurable-event supremum to obtain measure-level `2*TV^2 <= KL`;
-4. build the conditional-kernel averaging bridge;
-5. apply Jensen to obtain the exact square-root constant;
-6. expose one canonical P-INFO-02 source theorem.
+`[Nonempty Y]` remains visible because Mathlib disintegration requires it while
+the theorem statement elaborates. It is not an extra physical assumption:
+existence of the probability law on `H × Y` implies `Nonempty Y`. A cosmetic
+attempt to hide this instance was not promoted because proof-body instances are
+too late to elaborate the statement itself.
 
-## P-INFO-04 [SOURCE_AUDIT]
+Remaining gate: synchronize the exact frozen source bytes, verify the canonical
+SHA, perform the final literal source-match audit, then update coverage.
 
-A direct Mathlib Fano theorem was not found. External Lean prior art confirms a
-finite single-distribution Fano entropy inequality is formalizable, but the
-frozen UEOT statement still requires the joint/conditional version, decoder
-data processing, and the repository's measure-theoretic mutual-information
-interface. It must not be counted as a wrapper-only gap.
+## P-INFO-04 [PROOF — MULTIWAY COMPLETE, CONDITIONAL CLAUSE ACTIVE]
+
+### Multiway sharp Fano — integrated
+
+Canonical theorem:
+`UEOT.V3.InformationPInfo04.p_info_04`.
+
+The proof uses the correctness event directly:
+
+`KL(P_JY || P_J⊗P_Y)` → event data processing → Bernoulli KL between `1-e`
+and `1/K` → exact sharp Fano expression.
+
+This avoids MAP substitution and posterior-finiteness assumptions.
+
+Promotion evidence:
+
+- clean branch `formal/pinfo04-multiway-clean`;
+- clean CI `34692978791`: success;
+- PR #47;
+- main commit `94e16dfb9cc9a2db6e000d8f5394c1b07869ce40`;
+- post-main CI `34693509298`: success.
+
+### Conditional binary source clause — active
+
+Branch: `formal/pinfo04-conditional-binary`.
+
+Completed architecture:
+
+- standard-Borel disintegration for `P(M,B|U)`;
+- fiberwise conditional-independence reference `P(M|U)×P(B|U)`;
+- genuine fiber definition of `H(B|U)`;
+- arbitrary-decoder pointwise sharp Fano at the actual decoded index;
+- integrated arbitrary-decoder conditional Fano theorem;
+- source reassociation `U×(M×B) -> (U×M)×B`;
+- posterior `P(B|U,M)`;
+- source epsilon theorem `H(B|M,U) <= h2(epsilon)` for
+  `P_e <= epsilon <= 1/2`.
+
+Current source-facing head: `0dfa192ab9d63704845fa7dae0d1278867f3269f`.
+Current official CI: `34693774790`.
+
+Remaining mathematical bridge:
+`I(M;B|U) = H(B|U) - H(B|M,U)` for finite binary `B`, followed by the final
+source lower bound `I(M;B|U) >= H(B|U)-h2(epsilon)`.
 
 ## P-INFO-03 [SOURCE_AUDIT]
 
-The deterministic-statistic information stack is reusable, but the frozen
-zero-distortion predictive rate-distortion equality allows random encoders.
-The missing work is therefore the real random-encoder/conditional-entropy
-interface, zero-TV recoverability, conditional DPI lower bound, and attainability
-by the canonical predictive core.
+Frozen target:
+`R_obj(0) = H(C|U)` for a discrete canonical predictive core with random
+encoders allowed.
+
+The P-INFO-04 conditional-binary work validates the correct disintegration
+architecture, but P-INFO-03 needs its countable-discrete extension. Do not use
+`H(C)-I(C;U)`, which would introduce an unintended finite-`H(C)` assumption.
+
+Next obligations after P-INFO-04 stabilizes:
+
+1. countable-discrete conditional entropy via disintegration;
+2. random-encoder predictive rate-distortion object;
+3. zero-TV recoverability;
+4. conditional DPI lower bound;
+5. attainability by the canonical predictive core.
 
 ## P-INT-01 [BLOCKED]
 
-Blocked on the canonical conditional-information interface. Do not build a
-second independence/information stack.
+Blocked on the canonical conditional-information bridge produced by the P-INFO
+packet. Do not create a second independence/information formalism.
+
+## Execution order from this checkpoint
+
+1. Finish and machine-check the P-INFO-04 conditional binary source clause.
+2. Clean-port only its verified delta from the latest `main`; promote through PR
+   and post-main CI.
+3. Synchronize governance docs immediately after the transition.
+4. Extend the same disintegration design from binary to countable discrete for
+   P-INFO-03.
+5. Use the resulting canonical conditional-information interface to unblock
+   P-INT-01.
+6. Keep source-level coverage at 50 until the exact frozen-source artifact gate
+   permits source-count promotion.
 
 ## Mandatory recovery procedure
 
 1. Read `PID_STATUS.yaml`, then this file, then `V3_COVERAGE_STATUS.md`.
-2. Fetch current `main` SHA and the latest relevant Actions.
-3. Distinguish `source_audit`, `proof`, `integration`, `promotion`, `blocked`,
-   and `proved`; never infer proof state from coverage `pending` alone.
+2. Fetch current `main` SHA and latest relevant Actions.
+3. Distinguish mathematical completion, official import reachability, CI green,
+   main integration, and source-level P-ID closure.
 4. Read the frozen proof contract before writing Lean.
-5. Prove only listed missing obligations and reuse integrated infrastructure.
+5. Prove only missing obligations and reuse integrated infrastructure.
 6. New proof modules must be reachable from `UEOT` / `UEOT.V3`.
-7. Feature green is not coverage; count only after post-main green + ledger sync.
-8. While CI runs, move to another lane's source audit or actual proof gap rather
-   than repeatedly polling the same run.
-9. If documentation and merged green Lean disagree, repair state documentation
-   before opening another proof lane.
+7. Feature green is not coverage; count only after the entire promotion and
+   exact-source contract passes.
+8. While CI runs, use the time on another real proof gap or source audit.
+9. If documentation and merged green Lean disagree, repair documentation before
+   opening another proof lane.
 
 ## Repository truth hierarchy
 
