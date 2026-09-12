@@ -53,23 +53,28 @@ Borel structure. -/
 theorem measurable_empiricalMean
     [MeasurableSpace H] [BorelSpace H] {N : ℕ} :
     Measurable (empiricalMean : (Fin N → H) → H) := by
-  exact (continuous_empiricalMean (H := H) (N := N)).measurable
+  unfold empiricalMean
+  have hsum : Measurable (fun x : Fin N → H => ∑ i, x i) := by
+    exact Finset.measurable_sum Finset.univ (fun i _ => measurable_pi_apply i)
+  exact hsum.const_smul ((N : ℝ)⁻¹)
 
 /-- The source mean-error statistic is measurable. -/
 theorem measurable_meanError
     [MeasurableSpace H] [BorelSpace H]
     {N : ℕ} (μH : H) :
     Measurable (fun ω : Fin N → H => ‖empiricalMean ω - μH‖) := by
-  exact (((continuous_empiricalMean (H := H) (N := N)).sub continuous_const).norm).measurable
+  exact ((measurable_empiricalMean (H := H) (N := N)).sub measurable_const).norm
 
 /-- The source split statistic is measurable. -/
 theorem measurable_splitMeanError
     [MeasurableSpace H] [BorelSpace H]
     {N : ℕ} (i : Fin N) (μH : H) :
     Measurable (splitMeanError i μH) := by
-  have h := (measurable_meanError (H := H) (N := N) μH).comp
+  change Measurable
+    ((fun ω : Fin N → H => ‖empiricalMean ω - μH‖) ∘
+      fun xy => assemblePrefixFuture i xy.1 xy.2)
+  exact (measurable_meanError (H := H) (N := N) μH).comp
     (measurable_assemblePrefixFuture (H := H) i)
-  simpa [splitMeanError] using h
 
 /-- Since the codomain is real, measurability upgrades directly to strong
 measurability. -/
@@ -154,7 +159,7 @@ theorem integrable_splitMeanError_future_of_unit
   have hy := ae_block_unit_of_marginals μ (future i) hunit
   have hmeas : Measurable (fun y : future i → H => splitMeanError i μH (x, y)) := by
     exact (measurable_splitMeanError (H := H) i μH).comp
-      (measurable_const.prod_mk measurable_id)
+      (measurable_const.prodMk measurable_id)
   refine Integrable.of_bound hmeas.aestronglyMeasurable 2 ?_
   filter_upwards [hy] with y hy
   have hall : ∀ j, ‖assemblePrefixFuture i x y j‖ ≤ 1 :=
