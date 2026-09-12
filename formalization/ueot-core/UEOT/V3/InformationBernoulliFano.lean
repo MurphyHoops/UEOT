@@ -50,7 +50,7 @@ theorem bernoulli_correct_kl_eq_fano
   have hKr : (1 : ℝ) < (K : ℝ) := by exact_mod_cast hK
   have hK0 : (0 : ℝ) < (K : ℝ) := lt_trans zero_lt_one hKr
   have hq0 : (0 : ℝ) < (K : ℝ)⁻¹ := inv_pos.mpr hK0
-  have hq1 : (K : ℝ)⁻¹ < 1 := inv_lt_one₀ hKr
+  have hq1 : (K : ℝ)⁻¹ < 1 := (inv_lt_one₀ hK0).2 hKr
   rw [bernoulliLaw_klDiv_eq_ofReal
     (sub_nonneg.mpr he1) (by linarith) hq0 hq1]
   congr 1
