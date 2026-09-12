@@ -129,6 +129,7 @@ import UEOT.V3.InformationSharpFano
 import UEOT.V3.InformationDecoderFano
 import UEOT.V3.InformationDecoderConditionalFano
 import UEOT.V3.InformationConditionalBinary
+import UEOT.V3.InformationConditionalBinaryKLDecomposition
 import UEOT.V3.InformationPInfo04Conditional
 import UEOT.V3.InformationBernoulliKL
 import UEOT.V3.InformationEventBernoulli
