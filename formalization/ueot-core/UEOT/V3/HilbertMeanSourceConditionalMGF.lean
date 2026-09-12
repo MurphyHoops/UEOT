@@ -43,6 +43,7 @@ theorem hasCondSubgaussianMGF_sourceClippedIncrement_invSqParam
       (Measure.pi μ) := by
   letI : IsProbabilityMeasure (Measure.pi μ) := by infer_instance
   apply hasCondSubgaussianMGF_of_rat_condExp_le
+    (m := sourcePastSigma (H := H) i)
     (μ := Measure.pi μ)
     (X := sourceClippedIncrement μ i μH)
     (c := invSqParam N)
