@@ -42,7 +42,7 @@ theorem one_div_sqrt_add_deviation_eq_sourceRadius
   have hLone : (1 : ℝ) ≤ (L : ℝ) := by exact_mod_cast hLoneNat
   have hratio_one : 1 ≤ (L : ℝ) / alpha := by
     rw [le_div_iff₀ halpha0]
-    exact halpha1.trans hLone
+    simpa using halpha1.trans hLone
   have hlog : 0 ≤ Real.log ((L : ℝ) / alpha) := Real.log_nonneg hratio_one
   have hnum : 0 ≤ 2 * Real.log ((L : ℝ) / alpha) := mul_nonneg (by norm_num) hlog
   unfold pStat06Deviation pStat06SourceRadius
@@ -66,6 +66,9 @@ theorem source_meanError_tail_exact_radius
   have htail := source_meanError_tail_from_first_moment
     hN μ μH hμH hInt hmean hunit
     (Real.sqrt_nonneg (2 * Real.log ((L : ℝ) / alpha) / (N : ℝ)))
+  have hdev :
+      Real.sqrt (2 * Real.log ((L : ℝ) / alpha) / (N : ℝ)) =
+        pStat06Deviation N L alpha := rfl
   have hradius := one_div_sqrt_add_deviation_eq_sourceRadius
     hN hL halpha0 halpha1
   calc
@@ -73,7 +76,7 @@ theorem source_meanError_tail_exact_radius
         {ω | pStat06SourceRadius N L alpha ≤ ‖empiricalMean ω - μH‖}
         ≤ Real.exp
           (-(N : ℝ) * (pStat06Deviation N L alpha) ^ 2 / 2) := by
-            simpa [hradius] using htail
+            simpa [hdev, hradius] using htail
     _ = alpha / (L : ℝ) := scalar_tail_eq_alpha_div hN hL halpha0 halpha1
 
 end UEOT.V3.HilbertMeanSourceRadius
