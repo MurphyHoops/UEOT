@@ -152,8 +152,14 @@ theorem conditionalBinaryEntropyGivenUM_eq_integral_posteriorEntropyFiber
     rw [binaryUMJoint_fst_eq_compProd]
     apply integral_congr_ae
     filter_upwards [hpost] with z hz
-    simp [posteriorBitOneProb, nestedPosteriorBinaryEntropy,
-      nestedPosteriorBitOneProb, posteriorBitGivenUM, hz]
+    have hz' :
+        (binaryUMJoint ρ).condKernel z =
+          (conditionalBinaryKernel ρ).condKernel z := by
+      change posteriorBitGivenUM ρ z =
+        (conditionalBinaryKernel ρ).condKernel z
+      exact hz
+    unfold nestedPosteriorBinaryEntropy nestedPosteriorBitOneProb posteriorBitOneProb
+    rw [hz']
   rw [hglobal]
   exact Measure.integral_compProd (integrable_nestedPosteriorBinaryEntropy ρ)
 
