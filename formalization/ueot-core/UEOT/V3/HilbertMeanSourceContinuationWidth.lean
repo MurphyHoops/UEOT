@@ -35,9 +35,9 @@ theorem assembled_updatedPrefix_eq_off
     (y : future i → H) :
     ∀ j, j ≠ i →
       assemblePrefixFuture i
-          (blockProjection (prefixBlock i.1) (Function.update ω i a)) y j =
+          (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a)) y j =
         assemblePrefixFuture i
-          (blockProjection (prefixBlock i.1) (Function.update ω i b)) y j := by
+          (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i b)) y j := by
   intro j hji
   unfold assemblePrefixFuture blockProjection
   split
@@ -50,9 +50,21 @@ revealed prefix. -/
     {N : ℕ} (ω : Fin N → H) (i : Fin N) (a : H)
     (y : future i → H) :
     assemblePrefixFuture i
-      (blockProjection (prefixBlock i.1) (Function.update ω i a)) y i = a := by
+      (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a)) y i = a := by
   unfold assemblePrefixFuture blockProjection
   simp
+
+/-- Updating one coordinate of a unit sample by another unit vector leaves the
+revealed prefix inside the unit ball. -/
+theorem updated_prefix_norm_le_one
+    {N : ℕ} (ω : Fin N → H) (hω : ∀ j, ‖ω j‖ ≤ 1)
+    (i : Fin N) (a : H) (ha : ‖a‖ ≤ 1) :
+    ∀ j : prefixBlock (N := N) i.1,
+      ‖blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a) j‖ ≤ 1 := by
+  intro j
+  by_cases hji : (j : Fin N) = i
+  · simpa [blockProjection, Function.update, hji] using ha
+  · simpa [blockProjection, Function.update, hji] using hω (j : Fin N)
 
 /-- Pointwise-in-future source sensitivity for the split statistic. -/
 theorem splitMeanError_updatedPrefix_pairwise_le_two_div
@@ -61,9 +73,9 @@ theorem splitMeanError_updatedPrefix_pairwise_le_two_div
     (a b : H) (ha : ‖a‖ ≤ 1) (hb : ‖b‖ ≤ 1)
     (y : future i → H) :
     |splitMeanError i μH
-        (blockProjection (prefixBlock i.1) (Function.update ω i a), y) -
+        (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a), y) -
       splitMeanError i μH
-        (blockProjection (prefixBlock i.1) (Function.update ω i b), y)| ≤
+        (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i b), y)| ≤
       2 / (N : ℝ) := by
   unfold splitMeanError
   apply abs_norm_sub_mean_diff_le_two_div hN _ _ i
@@ -81,11 +93,11 @@ theorem sourceContinuation_update_pairwise_le_two_div
     (a b : H) (ha : ‖a‖ ≤ 1) (hb : ‖b‖ ≤ 1)
     (hinta : Integrable
       (fun y => splitMeanError i μH
-        (blockProjection (prefixBlock i.1) (Function.update ω i a), y))
+        (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a), y))
       (blockLaw μ (future i)))
     (hintb : Integrable
       (fun y => splitMeanError i μH
-        (blockProjection (prefixBlock i.1) (Function.update ω i b), y))
+        (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i b), y))
       (blockLaw μ (future i))) :
     |sourceContinuation μ i μH (Function.update ω i a) -
       sourceContinuation μ i μH (Function.update ω i b)| ≤
@@ -94,10 +106,32 @@ theorem sourceContinuation_update_pairwise_le_two_div
   apply abs_integral_section_sub_integral_section_le
     (blockLaw μ (future i))
     (fun v y => splitMeanError i μH
-      (blockProjection (prefixBlock i.1) (Function.update ω i v), y))
+      (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i v), y))
     hinta hintb
   filter_upwards with y
   exact splitMeanError_updatedPrefix_pairwise_le_two_div
     hN ω i μH a b ha hb y
+
+/-- Fully source-facing active-coordinate width.  For a unit sample and source
+marginal unit-ball support, the future-section integrability conditions are
+automatic. -/
+theorem sourceContinuation_update_pairwise_le_two_div_of_unit
+    [BorelSpace H]
+    {N : ℕ} (hN : 0 < N)
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (ω : Fin N → H) (hω : ∀ j, ‖ω j‖ ≤ 1)
+    (i : Fin N) (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (a b : H) (ha : ‖a‖ ≤ 1) (hb : ‖b‖ ≤ 1)
+    (hunit : ∀ j, ∀ᵐ z ∂μ j, ‖z‖ ≤ 1) :
+    |sourceContinuation μ i μH (Function.update ω i a) -
+      sourceContinuation μ i μH (Function.update ω i b)| ≤
+      2 / (N : ℝ) := by
+  apply sourceContinuation_update_pairwise_le_two_div hN μ ω i μH a b ha hb
+  · exact integrable_splitMeanError_future_of_unit hN μ i μH hμH
+      (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a))
+      (updated_prefix_norm_le_one ω hω i a ha) hunit
+  · exact integrable_splitMeanError_future_of_unit hN μ i μH hμH
+      (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i b))
+      (updated_prefix_norm_le_one ω hω i b hb) hunit
 
 end UEOT.V3.HilbertMeanSourceContinuationWidth
