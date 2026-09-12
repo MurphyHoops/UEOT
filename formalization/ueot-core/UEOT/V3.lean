@@ -149,6 +149,7 @@ import UEOT.V3.InformationPInfo04
 import UEOT.V3.InformationStatistic
 import UEOT.V3.InformationEntropyBound
 import UEOT.V3.InformationDiscreteEntropy
+import UEOT.V3.InformationConditionalMutual
 import UEOT.V3.InformationConditionalDiscreteEntropy
 import UEOT.V3.InformationMemoryBound
 import UEOT.V3.ConcreteHistoryMarkovization
