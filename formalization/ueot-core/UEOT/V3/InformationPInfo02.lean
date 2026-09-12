@@ -96,7 +96,7 @@ theorem p_info_02_ennreal
           (historyInterfaceStatistic fM fU)
           (measurable_historyInterfaceStatistic hfM hfU) / 2) ^
         (1 / 2 : ℝ) := by
-  let ε : ℝ≥0∞ :=
+  let ε : ENNReal :=
     predictiveConditionalInfoStatistic μ
       (historyInterfaceStatistic fM fU)
       (measurable_historyInterfaceStatistic hfM hfU)
@@ -108,7 +108,7 @@ theorem p_info_02_ennreal
           (measurable_historyInterfaceStatistic hfM hfU) h) ∂μ.fst) ≤
     (ε / 2) ^ (1 / 2 : ℝ)
   by_cases htop : ε = ⊤
-  · rw [htop, ENNReal.top_div_of_ne_top (by norm_num : (2 : ℝ≥0∞) ≠ ⊤),
+  · rw [htop, ENNReal.top_div_of_ne_top (by norm_num : (2 : ENNReal) ≠ ⊤),
       ENNReal.top_rpow_of_pos (by norm_num : 0 < (1 / 2 : ℝ))]
     exact le_top
   · have hreal := p_info_02_finite μ fM fU hfM hfU (by simpa [ε] using htop)
