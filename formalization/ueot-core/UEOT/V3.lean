@@ -74,6 +74,7 @@ import UEOT.V3.HilbertMeanSourceCenteredFiber
 import UEOT.V3.HilbertMeanSourceActiveIntegrability
 import UEOT.V3.HilbertMeanPastActiveContinuation
 import UEOT.V3.HilbertMeanSourceIncrementIdentification
+import UEOT.V3.HilbertMeanSourceFiberHoeffding
 import UEOT.V3.MMDTransport
 import UEOT.V3.MMDTransportSource
 import UEOT.V3.AverageErrorTransport
