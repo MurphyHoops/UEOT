@@ -34,10 +34,9 @@ def lastIndex {N : ℕ} (hN : 0 < N) : Fin N := ⟨N - 1, by omega⟩
 theorem future_lastIndex_eq_empty {N : ℕ} (hN : 0 < N) :
     future (lastIndex hN) = ∅ := by
   ext j
-  simp only [mem_future_iff, Finset.not_mem_empty, iff_false]
-  intro hlt
+  simp only [mem_future_iff, Finset.mem_empty]
   have hj : j.1 < N := j.2
-  change N - 1 < j.1 at hlt
+  change ¬(N - 1 < j.1)
   omega
 
 /-- Every function on the strict-future block of the final coordinate is the
@@ -49,8 +48,10 @@ theorem subsingleton_future_lastIndex_fun
   intro y z
   funext j
   have hj : (j : Fin N) ∈ future (lastIndex hN) := j.2
-  rw [future_lastIndex_eq_empty (H := H) hN] at hj
-  exact (Finset.not_mem_empty _ hj).elim
+  have hfalse : False := by
+    rw [future_lastIndex_eq_empty hN] at hj
+    simpa using hj
+  exact hfalse.elim
 
 /-- At the final coordinate, the source continuation is exactly the original
 Hilbert mean-error statistic: the strict-future integral is an integral of a
