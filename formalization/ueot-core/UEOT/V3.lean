@@ -63,6 +63,7 @@ import UEOT.V3.HilbertMeanPrefixFiltration
 import UEOT.V3.HilbertMeanDoobPrefixBridge
 import UEOT.V3.HilbertMeanPrefixFutureAssembly
 import UEOT.V3.HilbertMeanSplitStatistic
+import UEOT.V3.HilbertMeanDoobStatisticBridge
 import UEOT.V3.MMDTransport
 import UEOT.V3.MMDTransportSource
 import UEOT.V3.AverageErrorTransport
