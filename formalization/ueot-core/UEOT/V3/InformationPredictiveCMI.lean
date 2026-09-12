@@ -44,8 +44,11 @@ base so that it can be compared fiberwise with `P(Y | H)`. -/
 noncomputable def statisticPredictiveKernel
     [StandardBorelSpace Y] [Nonempty Y]
     (μ : Measure (H × Y)) [IsFiniteMeasure μ]
-    (f : H → S) (hf : Measurable f) : Kernel H Y :=
-  Kernel.comap (statisticJoint μ f hf).condKernel f hf
+    (f : H → S) (hf : Measurable f) : Kernel H Y := by
+  letI : IsFiniteMeasure (statisticJoint μ f hf) := by
+    unfold statisticJoint
+    infer_instance
+  exact Kernel.comap (statisticJoint μ f hf).condKernel f hf
 
 instance historyPredictiveKernel_isMarkov
     [StandardBorelSpace Y] [Nonempty Y]
