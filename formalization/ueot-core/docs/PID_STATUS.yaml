@@ -1,0 +1,151 @@
+schema_version: 1
+updated: 2026-09-12
+integration_branch: main
+official_target: lake build UEOT
+source:
+  file: UEOT_Core_Mathematics_v3.0_Complete.md
+  pids_total: 106
+  sha256: ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
+coverage:
+  integrated_proved: 50
+  promotion_running: 0
+  active_proof: 1
+  source_audit: 2
+  blocked: 1
+  pending_unclassified: 52
+  note: >-
+    Counts partition all 106 frozen source P-IDs. Only integrated_proved is
+    counted in V3_COVERAGE_STATUS.md. pending does not mean unproved.
+state_vocabulary:
+  - source_audit
+  - proof
+  - integration
+  - promotion
+  - blocked
+  - proved
+  - archive
+rules:
+  - pending_does_not_mean_unproved
+  - read_this_file_before_opening_a_proof_lane
+  - prove_only_missing_lemmas_from_the_proof_contract
+  - no_new_helpers_for_proved_or_promotion_only_pid_without_real_ci_or_source_mismatch
+  - feature_green_does_not_increment_coverage
+  - ci_waiting_time_must_be_used_for_another_lane_or_source_audit
+pids:
+  P-STAT-06:
+    state: proved
+    source_locked: true
+    mathematical_chain: complete
+    canonical_theorem: UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions
+    exact_radius: (1 + sqrt(2*log(L/alpha)))/sqrt(N)
+    feature:
+      head: 5a5cb89d600059525cb775c9561aa50d031da38d
+      full_repo_ci:
+        run: 34684444280
+        status: success
+    clean_port:
+      branch: formal/pstat06-clean-port
+      commit: 2338d5fe7a5e9ae8a08cdfd469d0eacd35a80205
+      ci:
+        run: 34684655595
+        status: success
+    promotion:
+      pr: 40
+      pr_ci:
+        run: 34685272294
+        status: success
+      main_commit: d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092
+      post_main_ci:
+        run: 34685534516
+        status: success
+    coverage_counted: true
+    forbidden_work:
+      - new_doob_theorem
+      - new_hoeffding_theorem
+      - new_mgf_theorem
+      - new_radius_theorem
+      - new_union_theorem
+      - new_feature_wrapper
+    reopen_only_if:
+      - future_ci_exposes_real_lean_error
+      - frozen_source_audit_finds_substantive_statement_mismatch
+  P-INFO-02:
+    state: proof
+    source_locked: true
+    branch: formal/pinfo02-pinsker
+    current_head: ddc2b1fe4630dfe02e89844c83bd7cad03206cfb
+    current_ci:
+      run: 34685655814
+      status: in_progress
+    proof_contract:
+      assumptions: standard Borel H,Y,M,U; M,U are functions of history
+      epsilon: I(H;Y|M,U)
+      conclusion: E TV(P(Y|H),P(Y|M,U)) <= sqrt(epsilon/2)
+      proof_route:
+        - conditional_mutual_information_as_average_conditional_KL
+        - measure_level_Pinsker
+        - Jensen
+    reuse:
+      - UEOT.V3.InformationCore
+      - UEOT.V3.InformationStatistic
+      - UEOT.V3.TotalVariation
+      - Mathlib.InformationTheory.KullbackLeibler.DataProcessing
+    audit_finding: >-
+      Pinned Mathlib supplies KL chain/data-processing but no directly reusable
+      measure-level Pinsker theorem was found. This is a genuine proof gap, not
+      a wrapper-only task.
+    completed_missing:
+      - binary Pinsker analytic core on the open two-point simplex
+    current_module: UEOT.V3.InformationBinaryPinsker
+    missing:
+      - close binary boundary cases needed by arbitrary event probabilities
+      - source-faithful measure-level Pinsker bridge for tvDist versus klDiv
+      - conditional kernel KL-to-TV averaging interface
+      - Jensen square-root step
+      - one canonical source-facing theorem
+    coverage_counted: false
+  P-INFO-03:
+    state: source_audit
+    source_locked: true
+    proof_contract:
+      assumptions: C=P(Y|H,U) discrete; H(C|U)<infinity; random encoder allowed
+      conclusion: R_obj(0)=H(C|U)
+      proof_route:
+        - zero_TV_implies_C_recoverable_from_M_U
+        - conditional_data_processing_lower_bound
+        - attainability_by_M_equals_C
+    reuse:
+      - UEOT.V3.InformationCore
+      - UEOT.V3.InformationDiscreteEntropy
+      - UEOT.V3.InformationMemoryBound
+    missing: predictive-rate-distortion interface with random encoders and conditional entropy
+    coverage_counted: false
+  P-INFO-04:
+    state: source_audit
+    source_locked: true
+    proof_contract:
+      assumptions: J uniform on K>=2 identities; decoder Jhat(Y_T); error rate e
+      conclusion: I(J;Y_T) >= log K - h2(e) - e*log(K-1)
+      proof_route:
+        - decoder_data_processing
+        - conditional_Fano_via_error_indicator
+        - uniform_identity_entropy
+      additional_source_clause: conditional binary identity-information lower bound
+    reuse:
+      - UEOT.V3.InformationCore
+      - UEOT.V3.InformationEntropy
+    audit_finding: >-
+      Pinned Mathlib has no directly reusable Fano theorem. External Lean prior
+      art proves the finite single-distribution entropy bound, but the frozen
+      source still needs a joint/conditional Fano theorem plus decoder DPI and
+      the repository's measure-theoretic mutual-information interface.
+    missing:
+      - conditional or joint Fano inequality for the decoder error variable
+      - bridge to UEOT measure-theoretic mutualInfo
+      - decoder data-processing source wrapper
+    coverage_counted: false
+  P-INT-01:
+    state: blocked
+    blocked_by:
+      - P-INFO-02 canonical conditional-information interface
+    rule: do not start a duplicate independence/information stack
