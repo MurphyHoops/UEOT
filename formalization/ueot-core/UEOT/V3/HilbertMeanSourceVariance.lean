@@ -32,6 +32,24 @@ theorem integrable_id_of_ae_norm_le_one
     Integrable (fun x : H => x) ν := by
   exact Integrable.of_bound aestronglyMeasurable_id 1 hunit
 
+/-- The centered squared norm is integrable under unit-ball support.  The
+finite domination constant here is used only for integrability; the sharp
+second-moment constant is proved separately by the variance identity. -/
+theorem integrable_norm_sub_const_sq_of_ae_norm_le_one
+    (ν : Measure H) [IsProbabilityMeasure ν]
+    (μH : H)
+    (hunit : ∀ᵐ x ∂ν, ‖x‖ ≤ 1) :
+    Integrable (fun x : H => ‖x - μH‖ ^ 2) ν := by
+  have hmeas : AEStronglyMeasurable (fun x : H => ‖x - μH‖ ^ 2) ν := by
+    fun_prop
+  refine Integrable.of_bound hmeas ((1 + ‖μH‖) ^ 2) ?_
+  filter_upwards [hunit] with x hx
+  rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg ‖x - μH‖)]
+  have hsub : ‖x - μH‖ ≤ 1 + ‖μH‖ :=
+    (norm_sub_le x μH).trans (add_le_add_right hx ‖μH‖)
+  have hnonneg : 0 ≤ 1 + ‖μH‖ := by positivity
+  nlinarith [norm_nonneg (x - μH)]
+
 /-- Unit-ball support gives an integrable raw squared norm with expectation at
 most one. -/
 theorem integral_norm_sq_le_one_of_ae_norm_le_one
