@@ -200,7 +200,9 @@ theorem mutualInfo_toReal_eq_entropy_drop_of_marginal_zero
       ρ = ρ.fst ⊗ₘ ρ.condKernel := (Measure.disintegrate ρ ρ.condKernel).symm
       _ = ρ.fst ⊗ₘ Kernel.const X ρ.snd := Measure.compProd_congr heq
       _ = ρ.fst.prod ρ.snd := Measure.compProd_const
-  have hmi : mutualInfo ρ = 0 := (mutualInfo_eq_zero_iff ρ).2 hprod
+  have hmi : mutualInfo ρ = 0 := by
+    unfold mutualInfo
+    exact (InformationTheory.klDiv_eq_zero_iff).2 hprod
   rw [hmi, hq0]
   simp only [ENNReal.toReal_zero, Real.binEntropy_zero, zero_sub]
   rw [integral_congr_ae]
@@ -227,7 +229,9 @@ theorem mutualInfo_toReal_eq_entropy_drop_of_marginal_one
       ρ = ρ.fst ⊗ₘ ρ.condKernel := (Measure.disintegrate ρ ρ.condKernel).symm
       _ = ρ.fst ⊗ₘ Kernel.const X ρ.snd := Measure.compProd_congr heq
       _ = ρ.fst.prod ρ.snd := Measure.compProd_const
-  have hmi : mutualInfo ρ = 0 := (mutualInfo_eq_zero_iff ρ).2 hprod
+  have hmi : mutualInfo ρ = 0 := by
+    unfold mutualInfo
+    exact (InformationTheory.klDiv_eq_zero_iff).2 hprod
   rw [hmi, hq1]
   simp only [ENNReal.toReal_zero, Real.binEntropy_one, zero_sub]
   rw [integral_congr_ae]
