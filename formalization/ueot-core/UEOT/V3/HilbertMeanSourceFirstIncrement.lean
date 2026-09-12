@@ -185,15 +185,18 @@ theorem hasSubgaussianMGF_doobIncrement_zero_invSqParam
     simp [centeredClippedActiveSection, firstRawCentered, q, i0, ha, hint]
   have hraw : HasSubgaussianMGF
       (firstRawCentered hN μ μH) (invSqParam N) (μ i0) := by
-    exact hfiber.congr_ae hclipraw
+    exact UEOT.V3.HilbertMeanSubGaussianLawTransfer.HasSubgaussianMGF.congr_ae
+      hfiber hclipraw
   have hcoord := activeCoordinate_hasLaw μ i0
   have hprod : HasSubgaussianMGF
       (fun ω : Fin N → H => firstRawCentered hN μ μH (ω i0))
       (invSqParam N) (Measure.pi μ) := by
-    exact hraw.comp_hasLaw hcoord
+    exact UEOT.V3.HilbertMeanSubGaussianLawTransfer.HasSubgaussianMGF.comp_hasLaw
+      hraw hcoord
   have hdoob := doobIncrement_zero_ae_eq_firstRawCentered
     hN μ μH hμH hunit
-  exact hprod.congr_ae (by
-    simpa [i0] using hdoob.symm)
+  exact UEOT.V3.HilbertMeanSubGaussianLawTransfer.HasSubgaussianMGF.congr_ae
+    hprod (by
+      simpa [i0] using hdoob.symm)
 
 end UEOT.V3.HilbertMeanSourceFirstIncrement
