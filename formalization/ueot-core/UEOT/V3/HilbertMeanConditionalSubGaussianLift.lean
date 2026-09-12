@@ -17,7 +17,7 @@ open scoped NNReal
 
 universe uΩ
 
-variable {Ω : Type uΩ} [MeasurableSpace Ω] [StandardBorelSpace Ω]
+variable {Ω : Type uΩ} [MeasurableSpace Ω]
 variable {m : MeasurableSpace Ω}
 variable {μ : Measure Ω} {X : Ω → ℝ} {c : ℝ≥0}
 
@@ -34,9 +34,8 @@ theorem ae_trim_condExp_le_of_ae_condExp_le
 /-- Construct conditional sub-Gaussianity from rational conditional-expectation
 MGF bounds.  The passage from rationals to all reals is delegated to Mathlib's
 kernel-level `of_rat`, avoiding any uncountable intersection of a.e. sets. -/
-include ‹StandardBorelSpace Ω› in
 theorem hasCondSubgaussianMGF_of_rat_condExp_le
-    [IsFiniteMeasure μ]
+    [StandardBorelSpace Ω] [IsFiniteMeasure μ]
     (hm : m ≤ (inferInstance : MeasurableSpace Ω))
     (h_int : ∀ t : ℝ, Integrable (fun ω => exp (t * X ω)) μ)
     (h_rat : ∀ q : ℚ, ∀ᵐ ω ∂(μ.trim hm),
