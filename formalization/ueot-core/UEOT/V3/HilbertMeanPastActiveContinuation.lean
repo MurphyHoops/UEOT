@@ -59,6 +59,16 @@ existing source continuation exactly. -/
   unfold pastActiveContinuation prefixContinuation sourceContinuation
   rw [assemblePastActive_blockProjection]
 
+/-- Keeping the strict past fixed and inserting an arbitrary active value `a`
+produces exactly the source continuation of the coordinate-updated sample. -/
+@[simp] theorem pastActiveContinuation_blockProjection_update
+    {N : ℕ} (μ : Fin N → Measure H) (i : Fin N) (μH : H)
+    (ω : Fin N → H) (a : H) :
+    pastActiveContinuation μ i μH (blockProjection (past i) ω, a) =
+      sourceContinuation μ i μH (Function.update ω i a) := by
+  unfold pastActiveContinuation prefixContinuation sourceContinuation
+  rw [assemblePastActive_blockProjection_update]
+
 /-- The past/active continuation is strongly measurable.  Future integration
 preserves strong measurability because the strict-future block law is finite. -/
 theorem stronglyMeasurable_pastActiveContinuation
