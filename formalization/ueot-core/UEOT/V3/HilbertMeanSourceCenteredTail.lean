@@ -62,7 +62,8 @@ theorem source_meanError_centered_tail
         (∑ k ∈ Finset.range N, Y k ω) =
           doobValue P ℱ F (N - 1) ω - m := by
       simpa [Y, m, hNsplit] using hsum
-    simp only [Set.mem_setOf_eq]
+    change (ε ≤ F ω - m) ↔
+      (ε ≤ ∑ k ∈ Finset.range N, Y k ω)
     rw [hsum', hterm]
   have htail := source_doob_increment_sum_tail
     hN μ μH hμH hunit hε
