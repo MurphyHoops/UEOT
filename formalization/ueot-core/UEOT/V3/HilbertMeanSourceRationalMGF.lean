@@ -87,7 +87,13 @@ theorem ae_condExp_exp_sourceClippedIncrement_le
     hasSubgaussianMGF_pastCenteredClippedActiveSection_invSqParam
       hN μ i (blockProjection (past i) ω) hpast μH hμH hunit
   have hmgf := hsg.mgf_le (q : ℝ)
+  change
+    (Measure.pi μ)[fun ω => f (blockProjection (past i) ω, ω i) |
+      MeasurableSpace.comap
+        (blockProjection (H := H) (past i))
+        (inferInstance : MeasurableSpace (past i → H))] ω
+      ≤ exp (((invSqParam N : ℝ≥0) : ℝ) * (q : ℝ) ^ 2 / 2)
   rw [hcondω]
-  simpa [sourcePastSigma, f, G, mgf] using hmgf
+  simpa [f, G, mgf] using hmgf
 
 end UEOT.V3.HilbertMeanSourceRationalMGF
