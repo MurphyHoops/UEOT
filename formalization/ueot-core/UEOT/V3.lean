@@ -135,6 +135,7 @@ import UEOT.V3.InformationFin2KL
 import UEOT.V3.InformationBinaryConditionalMean
 import UEOT.V3.InformationBinaryEntropy
 import UEOT.V3.InformationBinaryKLEntropy
+import UEOT.V3.InformationBinaryMutualEntropy
 import UEOT.V3.InformationBernoulliKL
 import UEOT.V3.InformationEventBernoulli
 import UEOT.V3.InformationBernoulliFano
