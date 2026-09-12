@@ -50,18 +50,19 @@ theorem hasCondSubgaussianMGF_sourceClippedIncrement_invSqParam
     exact integrable_exp_mul_sourceClippedIncrement
       hN μ i μH hμH hunit t
   · intro q
+    have hbase := ae_condExp_exp_sourceClippedIncrement_le
+      hN μ i μH hμH hunit q
     have hrat :
         ((Measure.pi μ)[fun y =>
             exp ((q : ℝ) * sourceClippedIncrement μ i μH y) |
           sourcePastSigma (H := H) i])
           ≤ᵐ[(Measure.pi μ).trim (sourcePastSigma_le (H := H) i)]
           (fun _ => exp (((invSqParam N : ℝ≥0) : ℝ) * (q : ℝ) ^ 2 / 2)) := by
-      apply ae_trim_condExp_le_of_ae_condExp_le
-        (μ := Measure.pi μ)
-        (m := sourcePastSigma (H := H) i)
+      exact StronglyMeasurable.ae_le_trim_of_stronglyMeasurable
         (sourcePastSigma_le (H := H) i)
-      exact ae_condExp_exp_sourceClippedIncrement_le
-        hN μ i μH hμH hunit q
+        stronglyMeasurable_condExp
+        stronglyMeasurable_const
+        hbase
     have heq := condExp_ae_eq_trim_integral_condExpKernel
       (sourcePastSigma_le (H := H) i)
       (integrable_exp_mul_sourceClippedIncrement
