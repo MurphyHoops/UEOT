@@ -41,13 +41,18 @@ theorem source_feature_tail_exact_radius_raw_assumptions
         {ω : Fin N → H |
           pStat06SourceRadius N L alpha ≤ ‖empiricalMean ω - μH‖})
       ≤ alpha / (L : ℝ) := by
+  have hid : ∀ i, AEStronglyMeasurable (fun x : H => x) ((ν i).map φ) := by
+    intro i
+    simpa only [id_eq] using (hInt i).aestronglyMeasurable.aestronglyMeasurable_id_map
   have hIntMap : ∀ i, Integrable (fun x : H => x) ((ν i).map φ) := by
     intro i
-    exact (integrable_map_measure measurable_id.aestronglyMeasurable hφ.aemeasurable).2
-      (by simpa only [Function.comp_id] using hInt i)
+    apply (integrable_map_measure (hid i) hφ.aemeasurable).2
+    change Integrable φ (ν i)
+    exact hInt i
   have hmeanMap : ∀ i, (∫ x : H, x ∂((ν i).map φ)) = μH := by
     intro i
-    rw [integral_map hφ.aemeasurable measurable_id.aestronglyMeasurable]
+    rw [integral_map hφ.aemeasurable (hid i)]
+    change (∫ y, φ y ∂ν i) = μH
     exact hmean i
   have hunitMap : ∀ i, ∀ᵐ x ∂((ν i).map φ), ‖x‖ ≤ 1 := by
     intro i
