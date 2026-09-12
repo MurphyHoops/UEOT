@@ -36,4 +36,20 @@ theorem doobIncrement_succ_ae_eq_condCentered
   simp only [doobIncrement]
   rw [hω]
 
+/-- If the current Doob value is represented almost everywhere by an explicit
+continuation `C`, the corresponding noninitial increment is `C` centered by
+its previous conditional expectation. -/
+theorem doobIncrement_succ_ae_eq_explicitCentered
+    (μ : Measure Ω) (ℱ : Filtration ℕ mΩ) [SigmaFiniteFiltration μ ℱ]
+    (F C : Ω → ℝ) (n : ℕ)
+    (hC : doobValue μ ℱ F (n + 1) =ᵐ[μ] C) :
+    doobIncrement μ ℱ F (n + 1) =ᵐ[μ]
+      fun ω => C ω - μ[C | ℱ n] ω := by
+  have hbase := doobIncrement_succ_ae_eq_condCentered μ ℱ F n
+  have hcond :
+      μ[doobValue μ ℱ F (n + 1) | ℱ n] =ᵐ[μ] μ[C | ℱ n] :=
+    condExp_congr_ae hC
+  filter_upwards [hbase, hC, hcond] with ω hbaseω hCω hcondω
+  rw [hbaseω, hCω, hcondω]
+
 end UEOT.V3.HilbertMeanDoobTower
