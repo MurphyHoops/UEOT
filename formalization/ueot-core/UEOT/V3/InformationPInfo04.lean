@@ -4,7 +4,6 @@ import UEOT.V3.InformationBernoulliFano
 import Mathlib.Probability.Distributions.Uniform
 import Mathlib.MeasureTheory.Measure.Prod
 import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.Omega
 
 /-!
 # P-INFO-04 — sharp Fano lower bound via the error indicator
@@ -110,7 +109,7 @@ theorem uniform_prod_correctProb
 /-- **P-INFO-04, sharp Fano bound.**  The identity prior is uniform over
 `K ≥ 2` alternatives and `d` is any measurable decoder. -/
 theorem p_info_04
-    {K : ℕ} (hK : 2 ≤ K)
+    {K : ℕ} [NeZero K] (hK : 2 ≤ K)
     (ρ : Measure (Fin K × Y)) [IsProbabilityMeasure ρ]
     (d : Y → Fin K) (hd : Measurable d)
     (hJ : ρ.fst = (uniformIdentityLaw K : Measure (Fin K))) :
@@ -118,7 +117,6 @@ theorem p_info_04
         (Real.log (K : ℝ) - Real.binEntropy (decoderError ρ d) -
           decoderError ρ d * Real.log ((K : ℝ) - 1)) ≤
       mutualInfo ρ := by
-  letI : NeZero K := ⟨by omega⟩
   let A : Set (Fin K × Y) := correctEvent d
   have hA : MeasurableSet A := by
     simpa [A] using measurableSet_correctEvent d hd
