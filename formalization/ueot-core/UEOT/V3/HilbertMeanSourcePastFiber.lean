@@ -20,7 +20,9 @@ open UEOT.V3.HilbertMeanConcentration
 open UEOT.V3.HilbertMeanDoobBlocks
 open UEOT.V3.HilbertMeanPrefixFiltration
 open UEOT.V3.HilbertMeanProductBlockIndependence
+open UEOT.V3.HilbertMeanPrefixFutureAssembly
 open UEOT.V3.HilbertMeanSplitStatistic
+open UEOT.V3.HilbertMeanDoobStatisticBridge
 open UEOT.V3.HilbertMeanSourceContinuationWidth
 open UEOT.V3.HilbertMeanSourceCenteredFiber
 open UEOT.V3.HilbertMeanSourceActiveIntegrability
