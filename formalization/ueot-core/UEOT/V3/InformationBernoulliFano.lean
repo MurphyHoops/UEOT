@@ -51,6 +51,9 @@ theorem bernoulli_correct_kl_eq_fano
   have hK0 : (0 : ℝ) < (K : ℝ) := lt_trans zero_lt_one hKr
   have hq0 : (0 : ℝ) < (K : ℝ)⁻¹ := inv_pos.mpr hK0
   have hq1 : (K : ℝ)⁻¹ < 1 := (inv_lt_one₀ hK0).2 hKr
+  have hKm1 : (0 : ℝ) < (K : ℝ) - 1 := by linarith
+  have hqcomp : 1 - (K : ℝ)⁻¹ = ((K : ℝ) - 1) / (K : ℝ) := by
+    field_simp [hK0.ne']
   rw [bernoulliLaw_klDiv_eq_ofReal
     (sub_nonneg.mpr he1) (by linarith) hq0 hq1]
   congr 1
@@ -59,28 +62,20 @@ theorem bernoulli_correct_kl_eq_fano
     simp [Real.binEntropy_zero, hK0.ne']
   by_cases he_one : e = 1
   · subst e
-    have hKm1 : (0 : ℝ) < (K : ℝ) - 1 := by linarith
     rw [Real.binEntropy_one]
-    simp only [sub_self, zero_mul, zero_div, one_sub_zero, one_mul, sub_zero]
-    rw [show 1 - (K : ℝ)⁻¹ = ((K : ℝ) - 1) / (K : ℝ) by
-      field_simp [hK0.ne']; ring]
-    rw [one_div_div, Real.log_div hK0.ne' hKm1.ne']
+    simp only [sub_self, zero_mul, zero_div, sub_zero, one_mul]
+    rw [hqcomp, one_div_div, Real.log_div hK0.ne' hKm1.ne']
     ring
   have he_pos : 0 < e := lt_of_le_of_ne he0 (Ne.symm he_zero)
   have he_lt : e < 1 := lt_of_le_of_ne he1 he_one
   have h1e_pos : 0 < 1 - e := sub_pos.mpr he_lt
-  have hKm1 : (0 : ℝ) < (K : ℝ) - 1 := by linarith
-  have hqcomp : 1 - (K : ℝ)⁻¹ = ((K : ℝ) - 1) / (K : ℝ) := by
-    field_simp [hK0.ne']
-    ring
-  rw [Real.binEntropy]
+  have hecomp : 1 - (1 - e) = e := by ring
+  rw [Real.binEntropy, hecomp]
   rw [Real.log_div h1e_pos.ne' hq0.ne',
     Real.log_div he_pos.ne' (sub_pos.mpr hq1).ne',
-    Real.log_inv,
     hqcomp,
-    Real.log_div hKm1.ne' hK0.ne',
-    Real.log_inv,
-    Real.log_inv]
+    Real.log_div hKm1.ne' hK0.ne']
+  simp only [Real.log_inv]
   ring
 
 end UEOT.V3.InformationBernoulliFano
