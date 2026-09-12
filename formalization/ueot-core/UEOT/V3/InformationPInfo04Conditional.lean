@@ -87,6 +87,8 @@ theorem conditionalBinaryEntropyGivenUM_le_errorEntropy
   have h := posteriorConditionalEntropy_le_decoderError
     (M := 2) (by norm_num)
     (binaryUMJoint ρ).fst (posteriorBitGivenUM ρ) d hd
+  have hlog : Real.log ((2 : ℝ) - 1) = 0 := by norm_num
+  rw [hlog, mul_zero, add_zero] at h
   simpa [conditionalBinaryEntropyGivenUM, conditionalBinaryDecoderError] using h
 
 /-- The source error is a genuine probability and is therefore nonnegative. -/
@@ -95,11 +97,11 @@ theorem conditionalBinaryDecoderError_nonneg
     (d : U × M → Fin 2) (hd : Measurable d) :
     0 ≤ conditionalBinaryDecoderError ρ d := by
   unfold conditionalBinaryDecoderError decoderError
-  have hc := measurable_decoderCorrectProb (posteriorBitGivenUM ρ) d hd
   apply integral_nonneg
   intro x
   have hx := decoderCorrectProb_mem_Icc (posteriorBitGivenUM ρ) d x
-  linarith [hx.2]
+  change 0 ≤ 1 - decoderCorrectProb (posteriorBitGivenUM ρ) d x
+  exact sub_nonneg.mpr hx.2
 
 /-- **Frozen-source epsilon form of conditional binary Fano.**
 
