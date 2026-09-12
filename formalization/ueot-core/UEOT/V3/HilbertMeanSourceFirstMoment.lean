@@ -12,6 +12,10 @@ canonical product-law source statistic.  The deterministic bridge records that
 centering every sample coordinate by the common mean commutes exactly with the
 empirical mean; the source theorem then transports independence, zero mean, and
 the sharp unit second-moment bound from the marginals to the product law.
+
+Bochner integrability of each marginal identity map is explicit.  This is the
+minimal analytic condition needed for the mean embedding and avoids silently
+adding separability/second-countability assumptions on the Hilbert space.
 -/
 
 namespace UEOT.V3.HilbertMeanSourceFirstMoment
@@ -44,14 +48,15 @@ theorem empiricalMean_centered_eq_sub
   rw [hscale, one_smul]
 
 /-- Exact source first moment for the canonical finite product law.  If every
-marginal is supported in the Hilbert unit ball and has common Bochner mean
-`μH`, then the expected empirical-mean error is at most `1 / sqrt N`. -/
+marginal is supported in the Hilbert unit ball, is Bochner integrable, and has
+common Bochner mean `μH`, then the expected empirical-mean error is at most
+`1 / sqrt N`. -/
 theorem source_meanError_first_moment_le_one_div_sqrt
-    [MeasurableSpace H] [BorelSpace H] [StandardBorelSpace H]
-    [CompleteSpace H] [MeasurableSub H]
+    [MeasurableSpace H] [BorelSpace H] [CompleteSpace H] [MeasurableSub H]
     {N : ℕ} (hN : 0 < N)
     (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
     (μH : H)
+    (hInt : ∀ j, Integrable (fun x : H => x) (μ j))
     (hmean : ∀ j, (∫ x : H, x ∂μ j) = μH)
     (hunit : ∀ j, ∀ᵐ x ∂μ j, ‖x‖ ≤ 1) :
     (∫ ω : Fin N → H, ‖empiricalMean ω - μH‖ ∂Measure.pi μ) ≤
@@ -63,17 +68,18 @@ theorem source_meanError_first_moment_le_one_div_sqrt
     infer_instance
   have hmargInt : ∀ i, Integrable (fun x : H => x - μH) (μ i) := by
     intro i
-    exact (integrable_id_of_ae_norm_le_one (μ i) (hunit i)).sub (integrable_const μH)
+    exact (hInt i).sub (integrable_const μH)
   have hmargSqInt : ∀ i, Integrable (fun x : H => ‖x - μH‖ ^ 2) (μ i) := by
     intro i
-    exact integrable_norm_sub_const_sq_of_ae_norm_le_one (μ i) μH (hunit i)
+    exact integrable_norm_sub_const_sq_of_ae_norm_le_one
+      (μ i) μH (hInt i) (hunit i)
   have hindep : iIndepFun Z P := by
     dsimp [Z, P]
     simpa only [Function.comp_apply] using
       (iIndepFun_pi
         (μ := μ)
         (X := fun _i (x : H) => x - μH)
-        (fun _i => (measurable_id.sub_const μH).aemeasurable))
+        (fun i => (hmargInt i).aestronglyMeasurable.aemeasurable))
   have hint : ∀ i, Integrable (Z i) P := by
     intro i
     simpa [Z, P] using (integrable_comp_eval (hmargInt i))
@@ -82,12 +88,13 @@ theorem source_meanError_first_moment_le_one_div_sqrt
     have hprod :
         (∫ ω : Fin N → H, ω i - μH ∂Measure.pi μ) =
           ∫ x : H, x - μH ∂μ i := by
-      exact integral_comp_eval (by fun_prop)
+      exact integral_comp_eval (hmargInt i).aestronglyMeasurable
     have hmarg0 : (∫ x : H, x - μH ∂μ i) = 0 := by
-      rw [integral_sub (integrable_id_of_ae_norm_le_one (μ i) (hunit i))
-        (integrable_const μH), hmean i]
+      rw [integral_sub (hInt i) (integrable_const μH), hmean i]
       simp
-    simpa [Z, P, hprod] using hmarg0
+    rw [show (∫ ω, Z i ω ∂P) = ∫ x : H, x - μH ∂μ i by
+      simpa [Z, P] using hprod]
+    exact hmarg0
   have hdiagInt : ∀ i, Integrable (fun ω => ‖Z i ω‖ ^ 2) P := by
     intro i
     simpa [Z, P] using (integrable_comp_eval (hmargSqInt i))
@@ -96,10 +103,11 @@ theorem source_meanError_first_moment_le_one_div_sqrt
     have hprod :
         (∫ ω : Fin N → H, ‖ω i - μH‖ ^ 2 ∂Measure.pi μ) =
           ∫ x : H, ‖x - μH‖ ^ 2 ∂μ i := by
-      exact integral_comp_eval (by fun_prop)
+      exact integral_comp_eval (hmargSqInt i).aestronglyMeasurable
     rw [show (∫ ω, ‖Z i ω‖ ^ 2 ∂P) =
         ∫ x : H, ‖x - μH‖ ^ 2 ∂μ i by simpa [Z, P] using hprod]
-    exact integral_norm_sub_mean_sq_le_one (μ i) μH (hmean i) (hunit i)
+    exact integral_norm_sub_mean_sq_le_one
+      (μ i) μH (hInt i) (hmean i) (hunit i)
   have hgeneric := integral_norm_empiricalMean_le_one_div_sqrt
     hN P Z hindep hint hmean0 hdiagInt hdiag
   calc
