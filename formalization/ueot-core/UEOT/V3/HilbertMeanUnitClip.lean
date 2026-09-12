@@ -83,6 +83,36 @@ theorem measurable_unitClip
     measurableSet_le continuous_norm.measurable measurable_const
   exact hq.ite hs measurable_const
 
+/-- The clipped centered section has mean exactly zero. -/
+theorem integral_centered_unitClip_eq_zero
+    [MeasurableSpace H]
+    (ν : Measure H) [IsProbabilityMeasure ν]
+    (q : H → ℝ)
+    (hq : Integrable q ν)
+    (hunit : ∀ᵐ a ∂ν, ‖a‖ ≤ 1) :
+    (∫ a, (unitClip q a - ∫ b, unitClip q b ∂ν) ∂ν) = 0 := by
+  have hclip : Integrable (unitClip q) ν :=
+    (integrable_unitClip_iff ν q hunit).2 hq
+  exact UEOT.V3.HilbertMeanCenteredFiber.integral_centered_eq_zero ν (unitClip q) hclip
+
+/-- Every centered clipped value lies in the exact infimum/supremum support
+interval used by the conditional Hoeffding bridge. -/
+theorem centered_unitClip_mem_exact_Icc
+    [MeasurableSpace H]
+    (ν : Measure H) [IsProbabilityMeasure ν]
+    (q : H → ℝ) {c : ℝ}
+    (hq : Integrable q ν)
+    (hunit : ∀ᵐ a ∂ν, ‖a‖ ≤ 1)
+    (hosc : ∀ a b, ‖a‖ ≤ 1 → ‖b‖ ≤ 1 → |q a - q b| ≤ c)
+    (a : H) :
+    unitClip q a - (∫ b, unitClip q b ∂ν) ∈ Set.Icc
+      (sInf (Set.range (unitClip q)) - ∫ b, unitClip q b ∂ν)
+      (sSup (Set.range (unitClip q)) - ∫ b, unitClip q b ∂ν) := by
+  have hclip : Integrable (unitClip q) ν :=
+    (integrable_unitClip_iff ν q hunit).2 hq
+  exact UEOT.V3.HilbertMeanCenteredFiber.centered_mem_exact_Icc
+    ν (unitClip q) hclip (unitClip_pairwise_abs_sub_le q hosc) a
+
 /-- The exact centered support interval of the clipped section inherits the same
 `NNReal` oscillation width. This is the source-compatible adapter into the
 existing centered-fiber Hoeffding layer. -/
