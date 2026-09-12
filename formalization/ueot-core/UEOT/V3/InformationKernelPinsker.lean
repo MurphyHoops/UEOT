@@ -41,7 +41,9 @@ variable [MeasurableSpace X] [MeasurableSpace Y]
 
 /-- A jointly measurable RN-density representation of the fiber KL.  Under
 `κ x ≪ η x` it agrees with `klDiv (κ x) (η x)`. -/
-noncomputable def fiberKL (κ η : Kernel X Y) (x : X) : ℝ≥0∞ :=
+noncomputable def fiberKL
+    [MeasurableSpace.CountableOrCountablyGenerated X Y]
+    (κ η : Kernel X Y) (x : X) : ℝ≥0∞ :=
   ∫⁻ y,
     ENNReal.ofReal
       (klFun ((Kernel.rnDeriv κ η x y).toReal)) ∂(η x)
@@ -106,6 +108,9 @@ theorem integral_tvDist_le_sqrt_klDiv_compProd
     integrable_toReal_of_lintegral_ne_top hKmeas.aemeasurable hKlin_fin
   have hk_int : Integrable k μ := by
     simpa [k] using hKreal_int.div_const 2
+  have hk_meas : Measurable k := by
+    dsimp [k]
+    exact hKmeas.ennreal_toReal.div_const 2
   have hk_nonneg : ∀ᵐ x ∂μ, 0 ≤ k x := by
     exact Filter.Eventually.of_forall fun x => by
       dsimp [k]
@@ -120,16 +125,13 @@ theorem integral_tvDist_le_sqrt_klDiv_compProd
     rw [htoReal, hKLlin]
 
   have hsqrt_meas : AEStronglyMeasurable (fun x => Real.sqrt (k x)) μ :=
-    (Real.continuous_sqrt.measurable.comp
-      hk_int.aestronglyMeasurable.measurable).aestronglyMeasurable
+    (Real.continuous_sqrt.measurable.comp hk_meas).aestronglyMeasurable
   have hsqrt_int : Integrable (fun x => Real.sqrt (k x)) μ := by
     refine Integrable.mono'
       (hk_int.add (integrable_const (1 : ℝ))) hsqrt_meas ?_
     filter_upwards [hk_nonneg] with x hx
-    have hs0 : 0 ≤ Real.sqrt (k x) := Real.sqrt_nonneg _
+    change Real.sqrt (k x) ≤ k x + 1
     have hs2 : (Real.sqrt (k x)) ^ 2 = k x := Real.sq_sqrt hx
-    rw [Real.norm_eq_abs, abs_of_nonneg hs0,
-      Real.norm_eq_abs, abs_of_nonneg (by linarith : 0 ≤ k x + 1)]
     nlinarith [sq_nonneg (Real.sqrt (k x) - 1)]
 
   have htv_meas : Measurable fun x => tvDist (κ x) (η x) :=
@@ -138,10 +140,7 @@ theorem integral_tvDist_le_sqrt_klDiv_compProd
     refine Integrable.mono' (integrable_const (1 : ℝ))
       htv_meas.aestronglyMeasurable ?_
     exact Filter.Eventually.of_forall fun x => by
-      have h0 : 0 ≤ tvDist (κ x) (η x) := tvDist_nonneg _ _
-      have h1 : tvDist (κ x) (η x) ≤ 1 := tvDist_le_one _ _
-      rw [Real.norm_eq_abs, abs_of_nonneg h0, norm_one]
-      exact h1
+      exact tvDist_le_one (κ x) (η x)
 
   have hpoint : ∀ᵐ x ∂μ, tvDist (κ x) (η x) ≤ Real.sqrt (k x) := by
     filter_upwards [hκη, hKae, hKlt] with x hac hEq hLt
