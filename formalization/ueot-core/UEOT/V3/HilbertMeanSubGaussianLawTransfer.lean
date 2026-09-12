@@ -13,6 +13,7 @@ ordinary sub-Gaussianity transports without any loss in the proxy constant.
 namespace UEOT.V3.HilbertMeanSubGaussianLawTransfer
 
 open MeasureTheory ProbabilityTheory Real
+open scoped NNReal
 
 universe uΩ uX
 
@@ -29,8 +30,9 @@ theorem HasSubgaussianMGF.comp_hasLaw
   constructor
   · intro t
     have hν := hsg.integrable_exp_mul t
-    simpa [Function.comp_def] using
-      hX.integrable_comp hν
+    have hmap : Integrable (fun x => exp (t * g x)) (Measure.map X P) := by
+      simpa [hX.map_eq] using hν
+    exact (integrable_map_measure hmap.1 hX.aemeasurable).1 hmap
   · intro t
     have hν := hsg.integrable_exp_mul t
     have hint := hX.integral_comp hν.1
