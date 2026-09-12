@@ -92,12 +92,7 @@ noncomputable def conditionalDiscreteEntropy
 lemma conditionalDiscreteEntropy_ne_top_iff_lt_top
     (ρ : Measure (U × C)) [IsProbabilityMeasure ρ] :
     conditionalDiscreteEntropy ρ ≠ ⊤ ↔ conditionalDiscreteEntropy ρ < ⊤ := by
-  exact ENNReal.ne_top_iff_exists_between.trans <| by
-    constructor
-    · intro h
-      exact h
-    · intro h
-      exact h
+  exact lt_top_iff_ne_top.symm
 
 end
 
