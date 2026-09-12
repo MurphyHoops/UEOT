@@ -66,4 +66,24 @@ theorem doobValue_meanError_ae_eq_sourceContinuation
     (H := H) μ i (splitMeanError i μH) hsm hintSplit
   simpa [sourceContinuation] using h
 
+/-- Borel Hilbert spaces discharge the split-statistic measurability condition
+automatically; only source integrability remains. -/
+theorem doobValue_meanError_ae_eq_sourceContinuation_of_integrable
+    [BorelSpace H] [StandardBorelSpace H] [Nonempty H]
+    {N : ℕ}
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (i : Fin N) (μH : H)
+    (hint : Integrable
+      (fun ω : Fin N → H => ‖empiricalMean ω - μH‖)
+      (Measure.pi μ)) :
+    doobValue
+        (Measure.pi μ)
+        (prefixFiltration (H := H) (N := N))
+        (fun ω : Fin N → H => ‖empiricalMean ω - μH‖)
+        i.1
+      =ᵐ[Measure.pi μ]
+      sourceContinuation μ i μH := by
+  exact doobValue_meanError_ae_eq_sourceContinuation
+    μ i μH (stronglyMeasurable_splitMeanError (H := H) i μH) hint
+
 end UEOT.V3.HilbertMeanDoobStatisticBridge
