@@ -21,11 +21,13 @@ universe uX
 
 variable {X : Type uX} [MeasurableSpace X]
 
-noncomputable def eventIndicator (A : Set X) : X → ℝ :=
-  fun x => if x ∈ A then 1 else 0
+noncomputable def eventIndicator (A : Set X) : X → ℝ := by
+  classical
+  exact fun x => if x ∈ A then 1 else 0
 
 lemma measurable_eventIndicator {A : Set X} (hA : MeasurableSet A) :
     Measurable (eventIndicator A) := by
+  classical
   unfold eventIndicator
   exact Measurable.ite hA measurable_const measurable_const
 
@@ -35,6 +37,7 @@ theorem map_eventIndicator_eq_bernoulliLaw
     (μ : Measure X) [IsProbabilityMeasure μ]
     (A : Set X) (hA : MeasurableSet A) :
     μ.map (eventIndicator A) = bernoulliLaw (μ.real A) := by
+  classical
   ext s hs
   rw [Measure.map_apply (measurable_eventIndicator hA) hs]
   unfold bernoulliLaw
@@ -54,7 +57,8 @@ theorem map_eventIndicator_eq_bernoulliLaw
         ext x
         by_cases hx : x ∈ A <;> simp [eventIndicator, hx, h1, h0]
       rw [hpre]
-      simp [Measure.dirac_apply, hs, h1, h0]
+      simpa [Measure.dirac_apply, hs, h1, h0] using
+        (prob_add_prob_compl (μ := μ) hA).symm
     · have hpre : eventIndicator A ⁻¹' s = A := by
         ext x
         by_cases hx : x ∈ A <;> simp [eventIndicator, hx, h1, h0]
