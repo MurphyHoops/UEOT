@@ -154,12 +154,25 @@ theorem integral_binaryKLEntropyIntegrand_eq_entropy_drop
   have h1p_int : Integrable (fun x => 1 - posteriorBitOneProb ρ x) ρ.fst :=
     (integrable_const (1 : ℝ)).sub hp_int
   have hH_int := integrable_binEntropy_posteriorBitOneProb ρ
-  have hpmean := integral_posteriorBitOneProb_eq_marginal ρ
+  have hpmean' :
+      (∫ x, posteriorBitOneProb ρ x ∂ρ.fst) =
+        binaryMarginalOneProb ρ := by
+    simpa [binaryMarginalOneProb] using
+      (integral_posteriorBitOneProb_eq_marginal ρ)
   have h1pmean :
       (∫ x, (1 - posteriorBitOneProb ρ x) ∂ρ.fst) =
         1 - binaryMarginalOneProb ρ := by
     rw [integral_sub (integrable_const (1 : ℝ)) hp_int]
-    simp [hpmean, binaryMarginalOneProb]
+    simp [hpmean']
+  have hinner :
+      (∫ x,
+          -Real.binEntropy (posteriorBitOneProb ρ x) -
+            posteriorBitOneProb ρ x * Real.log (binaryMarginalOneProb ρ)
+          ∂ρ.fst) =
+        (∫ x, -Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) -
+          ∫ x, posteriorBitOneProb ρ x *
+            Real.log (binaryMarginalOneProb ρ) ∂ρ.fst := by
+    exact integral_sub hH_int.neg (hp_int.mul_const _)
   unfold binaryKLEntropyIntegrand
   calc
     (∫ x,
@@ -181,13 +194,16 @@ theorem integral_binaryKLEntropyIntegrand_eq_entropy_drop
             Real.log (binaryMarginalOneProb ρ) ∂ρ.fst) -
           ∫ x, (1 - posteriorBitOneProb ρ x) *
             Real.log (1 - binaryMarginalOneProb ρ) ∂ρ.fst := by
-      rw [integral_sub hH_int.neg (hp_int.mul_const _)]
+      exact congrArg
+        (fun t : ℝ => t -
+          ∫ x, (1 - posteriorBitOneProb ρ x) *
+            Real.log (1 - binaryMarginalOneProb ρ) ∂ρ.fst) hinner
     _ =
         (-(∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst) -
           binaryMarginalOneProb ρ * Real.log (binaryMarginalOneProb ρ)) -
           (1 - binaryMarginalOneProb ρ) *
             Real.log (1 - binaryMarginalOneProb ρ) := by
-      rw [integral_neg, integral_mul_const, integral_mul_const, hpmean, h1pmean]
+      rw [integral_neg, integral_mul_const, integral_mul_const, hpmean', h1pmean]
     _ = Real.binEntropy (binaryMarginalOneProb ρ) -
           ∫ x, Real.binEntropy (posteriorBitOneProb ρ x) ∂ρ.fst := by
       unfold binaryMarginalOneProb
