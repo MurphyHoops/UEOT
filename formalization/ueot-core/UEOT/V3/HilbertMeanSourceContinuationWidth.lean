@@ -102,15 +102,17 @@ theorem sourceContinuation_update_pairwise_le_two_div
     |sourceContinuation μ i μH (Function.update ω i a) -
       sourceContinuation μ i μH (Function.update ω i b)| ≤
       2 / (N : ℝ) := by
+  letI : IsProbabilityMeasure (blockLaw μ (future i)) :=
+    blockLaw_isProbability μ (future i)
   unfold sourceContinuation
-  apply abs_integral_section_sub_integral_section_le
+  exact abs_integral_section_sub_integral_section_le
     (blockLaw μ (future i))
     (fun v y => splitMeanError i μH
       (blockProjection (prefixBlock (N := N) i.1) (Function.update ω i v), y))
     hinta hintb
-  filter_upwards with y
-  exact splitMeanError_updatedPrefix_pairwise_le_two_div
-    hN ω i μH a b ha hb y
+    (Filter.Eventually.of_forall fun y =>
+      splitMeanError_updatedPrefix_pairwise_le_two_div
+        hN ω i μH a b ha hb y)
 
 /-- Fully source-facing active-coordinate width.  For a unit sample and source
 marginal unit-ball support, the future-section integrability conditions are
