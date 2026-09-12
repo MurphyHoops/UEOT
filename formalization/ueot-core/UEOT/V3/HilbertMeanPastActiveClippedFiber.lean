@@ -18,11 +18,13 @@ namespace UEOT.V3.HilbertMeanPastActiveClippedFiber
 
 open MeasureTheory ProbabilityTheory
 open UEOT.V3.HilbertMeanAzuma
+open UEOT.V3.HilbertMeanCenteredFiber
 open UEOT.V3.HilbertMeanDoobBlocks
 open UEOT.V3.HilbertMeanPastActiveContinuation
 open UEOT.V3.HilbertMeanProductBlockIndependence
 open UEOT.V3.HilbertMeanSourceCenteredFiber
 open UEOT.V3.HilbertMeanSourceFiberHoeffding
+open UEOT.V3.HilbertMeanSourcePastFiber
 open UEOT.V3.HilbertMeanUnitClip
 
 universe uH
@@ -133,6 +135,48 @@ def pastExtension {N : ℕ} (i : Fin N) (x : past i → H) : Fin N → H :=
     blockProjection (past i) (pastExtension i x) = x := by
   funext j
   simp [blockProjection, pastExtension, j.2]
+
+/-- A unit strict-past block forces the centered clipped active fiber into the
+symmetric envelope `[-2/N,2/N]`, uniformly over every active value. -/
+theorem abs_pastCenteredClippedActiveSection_le_two_div
+    [BorelSpace H] [MeasurableAdd₂ H] [MeasurableSub H]
+    {N : ℕ} (hN : 0 < N)
+    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]
+    (i : Fin N) (x : past i → H)
+    (hx : ∀ j, ‖x j‖ ≤ 1)
+    (μH : H) (hμH : ‖μH‖ ≤ 1)
+    (hunit : ∀ j, ∀ᵐ z ∂μ j, ‖z‖ ≤ 1)
+    (a : H) :
+    |pastCenteredClippedActiveSection μ i μH (x, a)| ≤ 2 / (N : ℝ) := by
+  let ω : Fin N → H := pastExtension i x
+  have hpast : ∀ j : past i, ‖ω (j : Fin N)‖ ≤ 1 := by
+    intro j
+    simpa [ω, pastExtension, j.2] using hx j
+  let q : H → ℝ := sourceActiveSection μ i μH ω
+  have hq : Integrable q (μ i) := by
+    simpa [q] using
+      integrable_sourceActiveSection_of_pastUnit
+        hN μ ω i hpast μH hμH hunit
+  have hoscUnit : ∀ u v, ‖u‖ ≤ 1 → ‖v‖ ≤ 1 →
+      |q u - q v| ≤ 2 / (N : ℝ) := by
+    intro u v hu hv
+    simpa [q, sourceActiveSection] using
+      sourceContinuation_update_pairwise_le_two_div_of_pastUnit
+        hN μ ω i hpast μH hμH u v hu hv hunit
+  have hqclip : Integrable (unitClip q) (μ i) :=
+    (integrable_unitClip_iff (μ i) q (hunit i)).2 hq
+  have hosc : ∀ u v,
+      |unitClip q u - unitClip q v| ≤ 2 / (N : ℝ) :=
+    unitClip_pairwise_abs_sub_le q hoscUnit
+  have hbound := abs_sub_integral_le
+    (μ i) (unitClip q) hqclip hosc a
+  have heq :
+      pastCenteredClippedActiveSection μ i μH (x, a) =
+        centeredClippedActiveSection μ i μH ω a := by
+    rw [← blockProjection_pastExtension i x]
+    exact pastCenteredClippedActiveSection_blockProjection_apply μ i μH ω a
+  rw [heq]
+  simpa [centeredClippedActiveSection, q] using hbound
 
 /-- A unit strict-past block gives an exact `1/N²` ordinary sub-Gaussian active
 fiber, now stated entirely in filtration-native coordinates. -/
