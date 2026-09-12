@@ -128,6 +128,7 @@ import UEOT.V3.InformationEntropy
 import UEOT.V3.InformationSharpFano
 import UEOT.V3.InformationBernoulliKL
 import UEOT.V3.InformationEventBernoulli
+import UEOT.V3.InformationFin2KL
 import UEOT.V3.InformationBernoulliFano
 import UEOT.V3.InformationPInfo04
 import UEOT.V3.InformationStatistic
