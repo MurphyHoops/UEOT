@@ -15,6 +15,7 @@ marginal.  The strict-past fiber Hoeffding theorem then supplies the exact
 namespace UEOT.V3.HilbertMeanSourceRationalMGF
 
 open MeasureTheory ProbabilityTheory Real
+open scoped NNReal
 open UEOT.V3.HilbertMeanAzuma
 open UEOT.V3.HilbertMeanDoobBlocks
 open UEOT.V3.HilbertMeanPastActiveClippedFiber
