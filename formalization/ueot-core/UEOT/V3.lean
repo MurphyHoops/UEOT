@@ -97,6 +97,7 @@ import UEOT.V3.HilbertMeanSourceUncenteredTail
 import UEOT.V3.HilbertMeanSourceRadius
 import UEOT.V3.MMDTransport
 import UEOT.V3.MMDTransportSource
+import UEOT.V3.HilbertMeanMMDSource
 import UEOT.V3.AverageErrorTransport
 import UEOT.V3.FiniteCandidateDiscovery
 import UEOT.V3.BoundedLossSampling
