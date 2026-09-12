@@ -1,3 +1,4 @@
+import UEOT.V3.HilbertMeanIndependentCondDistrib
 import Mathlib.Probability.Independence.Basic
 import Mathlib.Probability.HasLaw
 import Mathlib.Tactic
@@ -6,9 +7,10 @@ import Mathlib.Tactic
 # P-STAT-06 — finite blocks of a canonical product sample
 
 The Doob construction only needs the revealed and unrevealed coordinate blocks
-to be independent.  On the canonical product law this is a direct consequence
-of coordinate independence.  We isolate that fact here, independently of any
-particular prefix/suffix choice.
+to be independent. On the canonical product law this is a direct consequence
+of coordinate independence. We also package the pushforward laws of finite
+blocks and identify conditional expectations with explicit integration over an
+independent future-block law.
 -/
 
 namespace UEOT.V3.HilbertMeanProductBlockIndependence
@@ -40,18 +42,62 @@ theorem disjoint_blocks_indep
   intro i
   exact measurable_pi_apply i
 
-/-- The pushforward measure of a measurable coordinate block is, by
-construction, its law.  Keeping the law abstract at this layer lets the Doob
-proof use independence without first normalizing the block into a particular
-product-space representation. -/
+/-- Pushforward law of a finite coordinate block. -/
+noncomputable def blockLaw
+    (μ : ι → Measure H) (S : Finset ι) : Measure (S → H) :=
+  (Measure.pi μ).map (fun (ω : ι → H) (i : S) => ω i)
+
+/-- The block projection has its pushforward law by construction. -/
 theorem block_hasLaw
     (μ : ι → Measure H) [∀ i, IsProbabilityMeasure (μ i)]
     (S : Finset ι) :
     HasLaw
       (fun (ω : ι → H) (i : S) => ω i)
-      ((Measure.pi μ).map (fun (ω : ι → H) (i : S) => ω i))
+      (blockLaw μ S)
       (Measure.pi μ) := by
   refine ⟨?_, rfl⟩
   exact (measurable_pi_lambda _ fun i => measurable_pi_apply (i : ι)).aemeasurable
+
+/-- A finite coordinate-block law is again a probability measure. -/
+theorem blockLaw_isProbability
+    (μ : ι → Measure H) [∀ i, IsProbabilityMeasure (μ i)]
+    (S : Finset ι) :
+    IsProbabilityMeasure (blockLaw μ S) := by
+  apply Measure.isProbabilityMeasure_map
+  exact (measurable_pi_lambda _ fun i => measurable_pi_apply (i : ι)).aemeasurable
+
+/-- For two disjoint canonical coordinate blocks, conditioning an integrable
+function of both blocks on the first block is exactly integration over the
+unconditional law of the second block. This is the abstract past/future bridge
+used by the Doob construction. -/
+theorem condExp_blocks_ae_eq_integral_second
+    [StandardBorelSpace H]
+    (μ : ι → Measure H) [∀ i, IsProbabilityMeasure (μ i)]
+    (S T : Finset ι) (hST : Disjoint S T)
+    (f : (S → H) × (T → H) → ℝ)
+    (hf : StronglyMeasurable f)
+    (hf_int : Integrable
+      (fun (ω : ι → H) =>
+        f ((fun i : S => ω i), (fun i : T => ω i)))
+      (Measure.pi μ)) :
+    (Measure.pi μ)[fun (ω : ι → H) =>
+        f ((fun i : S => ω i), (fun i : T => ω i)) |
+      (inferInstance : MeasurableSpace (S → H)).comap
+        (fun (ω : ι → H) (i : S) => ω i)] =ᵐ[Measure.pi μ]
+      fun ω => ∫ y, f ((fun i : S => ω i), y) ∂blockLaw μ T := by
+  letI : IsProbabilityMeasure (blockLaw μ S) := blockLaw_isProbability μ S
+  letI : IsProbabilityMeasure (blockLaw μ T) := blockLaw_isProbability μ T
+  apply UEOT.V3.HilbertMeanIndependentCondDistrib.condExp_prod_ae_eq_integral_future_of_indep
+    (μ := Measure.pi μ)
+    (ν := blockLaw μ S)
+    (ξ := blockLaw μ T)
+    (X := fun (ω : ι → H) (i : S) => ω i)
+    (Y := fun (ω : ι → H) (i : T) => ω i)
+  · exact measurable_pi_lambda _ fun i => measurable_pi_apply (i : ι)
+  · exact block_hasLaw μ S
+  · exact block_hasLaw μ T
+  · exact disjoint_blocks_indep μ S T hST
+  · exact hf
+  · exact hf_int
 
 end UEOT.V3.HilbertMeanProductBlockIndependence
