@@ -77,7 +77,7 @@ theorem integrable_exp_mul_sourceClippedIncrement
     Integrable
       (fun ω => exp (t * sourceClippedIncrement μ i μH ω))
       (Measure.pi μ) := by
-  letI : IsProbabilityMeasure (Measure.pi μ) := Measure.pi.isProbabilityMeasure
+  letI : IsProbabilityMeasure (Measure.pi μ) := by infer_instance
   have hX := stronglyMeasurable_sourceClippedIncrement μ i μH
   have hmeas : Measurable
       (fun ω => exp (t * sourceClippedIncrement μ i μH ω)) :=
