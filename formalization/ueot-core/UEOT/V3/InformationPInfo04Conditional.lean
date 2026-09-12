@@ -123,4 +123,31 @@ theorem conditionalBinaryEntropyGivenUM_le_epsilonEntropy
       ⟨he0, hehalf⟩ ⟨hε0, hhalf⟩ herr
   exact (conditionalBinaryEntropyGivenUM_le_errorEntropy ρ d hd).trans hmono
 
+/-- Finite-binary entropy form of conditional information.
+
+For binary `B`, both conditional entropies are finite real numbers, so this
+subtraction has no `∞-∞` ambiguity.  A separate bridge theorem identifies this
+quantity with the repository's KL/chain-rule conditional mutual information. -/
+noncomputable def conditionalBinaryInformationEntropyForm
+    (ρ : Measure (U × (M × Fin 2))) [IsProbabilityMeasure ρ] : ℝ :=
+  conditionalBinaryEntropy ρ - conditionalBinaryEntropyGivenUM ρ
+
+/-- **P-INFO-04 conditional source inequality in entropy form.**
+
+This is the exact Fano implication in the frozen binary clause, before the
+representation bridge from finite-binary entropy form to KL conditional mutual
+information is applied. -/
+theorem conditionalBinaryInformationEntropyForm_ge_sourceBound
+    (ρ : Measure (U × (M × Fin 2))) [IsProbabilityMeasure ρ]
+    (d : U × M → Fin 2) (hd : Measurable d)
+    (ε : ℝ)
+    (herr : conditionalBinaryDecoderError ρ d ≤ ε)
+    (hhalf : ε ≤ (2 : ℝ)⁻¹) :
+    conditionalBinaryEntropy ρ - Real.binEntropy ε ≤
+      conditionalBinaryInformationEntropyForm ρ := by
+  unfold conditionalBinaryInformationEntropyForm
+  have hfano := conditionalBinaryEntropyGivenUM_le_epsilonEntropy
+    ρ d hd ε herr hhalf
+  linarith
+
 end UEOT.V3.InformationPInfo04Conditional
