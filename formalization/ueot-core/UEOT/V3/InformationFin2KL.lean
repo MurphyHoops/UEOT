@@ -176,7 +176,7 @@ theorem fin2_klDiv_ne_top_of_ac
     (μ ν : Measure (Fin 2))
     [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
     (hμν : μ ≪ ν) :
-    klDiv μ ν ≠ ∞ := by
+    klDiv μ ν ≠ ⊤ := by
   by_cases hq0 : ν.real ({1} : Set (Fin 2)) = 0
   · rw [fin2_klDiv_eq_zero_of_reference_zero μ ν hμν hq0]
     simp
