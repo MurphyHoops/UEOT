@@ -68,6 +68,18 @@ theorem tvDist_nonneg
   have h := tvEvent_le μ ν (∅ : Set X) MeasurableSet.empty
   simpa using h
 
+/-- A probability measure has zero total-variation distance from itself. -/
+theorem tvDist_self_eq_zero
+    (μ : Measure X) [IsProbabilityMeasure μ] :
+    tvDist μ μ = 0 := by
+  apply le_antisymm
+  · unfold tvDist
+    refine csSup_le (tvEventSet_nonempty μ μ) ?_
+    intro r hr
+    rcases hr with ⟨A, hA, rfl⟩
+    simp
+  · exact tvDist_nonneg μ μ
+
 theorem tvDist_le_one
     (μ ν : Measure X)
     [IsProbabilityMeasure μ] [IsProbabilityMeasure ν] :
