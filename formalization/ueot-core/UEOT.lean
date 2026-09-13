@@ -17,6 +17,10 @@ import UEOT.V3.DualDriveGauge
 import UEOT.V3.AlignmentThreshold
 import UEOT.V3.CompositionMargin
 import UEOT.V3.PathEventKL
+import UEOT.V3.PathEventIProjection
+import UEOT.V3.PathEventIProjectionExact
+import UEOT.V3.BernoulliKLMonotone
+import UEOT.V3.PathEventIProjectionGlobal
 import UEOT.V3.EvolutionPrice
 import UEOT.V3.EvolutionSharedLabel
 import UEOT.V3.CompositionBooleanAtoms
