@@ -11,3 +11,5 @@ import UEOT.V3.InformationPredictiveFactorizationForward
 import UEOT.V3.InformationPredictiveFactorizationReverse
 import UEOT.V3.InformationPInt01
 import UEOT.V3.InformationPInt01Common
+import UEOT.V3.OmegaMinimalFailure
+import UEOT.V3.OmegaIntegrityMargin
