@@ -11,21 +11,22 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 71
+  integrated_proved: 72
   promotion_running: 0
-  active_proof: 1
-  source_audit: 0
+  active_proof: 0
+  source_audit: 1
   blocked: 0
-  pending_unclassified: 34
-  unresolved_total: 35
+  pending_unclassified: 33
+  unresolved_total: 34
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this recovery checkpoint: 71 integrated/proof-complete
-    P-IDs including P-API-01 + 1 active proof lane (P-ALG-01) + 34
-    pending/unclassified = 106. P-API-01 has completed feature, clean-integration
-    and post-main proof gates; 71/106 becomes full-green only after this
-    recovery/ledger checkpoint passes PR CI, lands on main and passes the
-    resulting main CI. P-ALG-01 remains an active proof lane and is not counted.
+    Operational partition staged by this ledger checkpoint: 72 integrated/proof-complete
+    P-IDs including newly promoted P-ALG-01 + 1 source-audit lane (P-REF-01) + 33
+    pending/unclassified = 106. P-ALG-01 has completed feature, clean-integration
+    and post-main proof gates; 72/106 becomes full-green only after this ledger
+    checkpoint passes PR CI, lands on main and passes the resulting main CI.
+    P-BRG-02 was already counted in the authoritative 71/106 baseline and must
+    not be reopened absent a source mismatch or CI regression.
 state_vocabulary:
   - source_audit
   - proof
@@ -352,7 +353,42 @@ pids:
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: exact process-interface composition; approximate TV defects add then cap at one; frozen control-interface data remain separate
     coverage_counted: true
-    ledger_gate: pending_this_recovery_checkpoint_pr_and_main_ci
+
+  P-ALG-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: medium_algorithmic
+    canonical_theorem: UEOT.V3.PAlg01.p_alg_01
+    source_contract:
+      - finite state set and common finite action set
+      - exact transition matrices, reward vector and output label
+      - initial partition by equal output and complete action-reward vector
+      - exact refinement by current block plus transition masses to every current block under every action
+      - finite termination
+      - terminal controlled stability / lumpability
+      - coarsest stable refinement of the initial partition
+      - quotient preserves output, reward and every-action one-step laws
+      - all corresponding finite-horizon output-word laws
+      - no floating tolerance and no section 28.4 constraint-data injection
+      - no unconditional identification with full-history FFIPS
+    promotion:
+      layered_branch: formal/palg01-layered
+      layered_head: e28c9dbb4882b936889a9aedf5ec42796eed7c86
+      layered_ci: {run: 34776635531, status: success}
+      quotient_branch: formal/palg01-quotient-law
+      quotient_head: 4f5390e4eac897bae9930ebf58149971d040b851
+      quotient_ci: {run: 34774150913, status: success}
+      clean_integration_branch: formal/palg01-main-integration-v1
+      clean_integration_head: cd0a36f2663adb1ac17fc30776d6a48e3e8dbb52
+      clean_integration_pr: 66
+      clean_integration_ci: {run: 34777304473, status: success}
+      main_commit: 9c638eee8448059221232fa764a2f3ebf00d46bd
+      post_main_ci: {run: 34777649215, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: exact finite Markov-state stable quotient; feature-green layered and quotient proofs assembled through source-facing theorem after clean integration
+    coverage_counted: true
+    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
 audits:
   P-EVO-03:
@@ -365,22 +401,12 @@ audits:
       definitions but no directly reusable complete asymptotic theorem was
       found. Do not weaken to an assumed-convergence surrogate.
 
-  P-ALG-01:
-    state: proof
-    audit_class: medium_algorithmic
-    source_locked: true
-    source_semantic_audit: complete
-    feature_branch: formal/palg01-refinement-core
-    feature_head: cfe4665da5a61cacdc74be2810af81665e4b19e0
-    feature_ci: {run: 34770820284, status: in_progress}
+  P-REF-01:
+    state: source_audit
+    audit_class: medium_stochastic_process
     source_note: >-
-      Frozen section 28.5 requires the exact finite partition-refinement
-      algorithm, finite termination, terminal controlled stability, coarsest
-      stable refinement of the initial output/reward partition, preservation of
-      output/reward/all-action one-step quotient laws, and induction to all
-      corresponding finite-horizon output laws. The active implementation uses
-      Setoid refinement plus finite relation-pair descent and pinned
-      Finpartition.ofSetoid for the disjoint-block union argument. Frozen 28.5
-      contains output, complete reward vectors and transition masses; section
-      28.4 constraint indicators are separate. Floating-tolerance clustering is
-      not an acceptable substitute.
+      Requires the full augmented-state path-law theorem under arbitrary causal
+      policies. Pinned Mathlib provides Ionescu-Tulcea traj/trajMeasure,
+      projective-limit uniqueness and conditional-distribution interfaces.
+      Do not weaken to deterministic or Markov-only policies; deterministic
+      structural modification is a special case/corollary.

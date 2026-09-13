@@ -17,93 +17,68 @@ Last synchronized: **2026-09-14**
 - integration branch: `main`
 - exact canonical bytes in public repo: pending synchronization
 
-## Current counted checkpoint
+## Current staged checkpoint
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **71** |
-| active proof | **1** |
+| integrated proved, staged by this checkpoint | **72** |
+| active proof | **0** |
+| source audit | **1** |
 | blocked | **0** |
-| pending/unclassified | **34** |
+| pending/unclassified | **33** |
 | total | **106** |
 
-The authoritative full-green checkpoint before this recovery branch is
-**70/106**. This branch stages **71 proved / 35 not yet counted** after P-API-01
-completed all proof-side and post-main gates. It must itself pass PR CI, land on
-`main`, and pass the resulting main CI before 71/106 is called full-green.
+The authoritative full-green baseline before this ledger branch is **71/106** at
+`main@5218e615d852c1ffee72107f35435ee378709166`, CI `34771573465` success.
+P-ALG-01 has now completed all proof-side gates and this branch stages 72/106.
+Do not call 72/106 full-green until this ledger branch passes PR CI, lands on
+`main`, and the resulting main CI succeeds.
 
-The active proof lane is P-ALG-01. It is **not counted**.
+## Newly staged proof — P-ALG-01
 
-## Newly staged proof — P-API-01
+Frozen §28.5 is implemented literally as an exact finite controlled stable
+partition algorithm and quotient theorem. Canonical theorem:
 
-Frozen §28.3 exact/approximate process-interface composition is implemented by:
+- `UEOT.V3.PAlg01.p_alg_01`.
 
-- `UEOT.V3.ProcessInterface.p_api_01_exact`;
-- `UEOT.V3.ProcessInterface.p_api_01_approx`.
-
-The implementation contains exactly the frozen process-interface data: protocol
-lift, measurable path readout and naturality of path-law pushforward for all
-declared protocols. Exact interfaces compose exactly. Approximate TV defects
-compose with `min 1 (εAB + εBC)` by pushforward contraction plus the TV triangle
-inequality. Frozen §28.4 control actions, policy lifts, rewards and constraints
-remain separate.
+It exposes terminal fixed-point/stability, coarsestness among stable refinements
+of the output/complete-reward initial partition, quotient output/reward and
+all-action one-step preservation, stochastic normalization, and arbitrary
+finite-horizon output-word law preservation. The finite termination is
+machine-checked by the well-founded `stabilizeStep` construction.
 
 Evidence:
-- feature `formal/papi01-process-interface-fresh@0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
-- feature CI `34769177051`: success;
-- clean integration `formal/papi01-clean-int-70@697df634e502bbd5407fc7f832963ac0afe1203d`;
-- PR #64 CI `34770423058`: success;
-- proof main `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
-- post-main CI `34770728978`: success;
+- layered `formal/palg01-layered@e28c9dbb4882b936889a9aedf5ec42796eed7c86`, CI `34776635531` success;
+- quotient `formal/palg01-quotient-law@4f5390e4eac897bae9930ebf58149971d040b851`, CI `34774150913` success;
+- clean integration `formal/palg01-main-integration-v1@cd0a36f2663adb1ac17fc30776d6a48e3e8dbb52`;
+- PR #66 CI `34777304473`: success;
+- proof main `9c638eee8448059221232fa764a2f3ebf00d46bd`;
+- proof post-main CI `34777649215`: success;
 - source semantic audit complete;
 - prohibited-proof audit clean.
 
-## Previous full-green checkpoint — 70/106
+The proof is scoped to the specified finite Markov state domain. It does not
+claim unconditional full-history FFIPS equivalence, does not add §28.4
+constraint indicators and does not use floating-tolerance clustering.
 
-P-KL-02 and all earlier counted theorems are fully green. The 70/106 ledger main
-CI `34770086580` succeeded on
-`main@8f29d29a0fe32bf9cccb7cbc12c84676768d9592`.
+## Recovery correction — P-BRG-02
 
-## Active proof — P-ALG-01
+The authoritative 71/106 ledger already counts **P-BRG-02**. A redundant feature
+branch (`formal/pbrg02-behavioral-equivalence`) was opened during CI waiting
+before that old counted list was rechecked. It is not a new proof lane, must not
+be merged, and must not change coverage. The protocol rule
+`do_not_reopen_counted_green_pids_without_source_mismatch_or_regression` remains
+in force.
 
-Frozen §28.5 is a genuine finite exact partition-refinement algorithm, not an
-existence wrapper and not approximate clustering. Source audit is locked to:
+## Current source audit — P-REF-01
 
-- finite state set and common finite action set;
-- transition matrix for every action;
-- reward `r(x,a)` and output label `o(x)`;
-- initial partition by output plus complete reward vector;
-- exact refinement by current block plus all action/current-block transition
-  masses;
-- finite termination;
-- terminal controlled stability/lumpability;
-- coarsest stable refinement of the initial partition;
-- preservation of output/reward/all-action one-step quotient laws;
-- all corresponding finite-horizon output laws by recursion.
-
-Current feature branch: `formal/palg01-refinement-core`.
-Current head: `cfe4665da5a61cacdc74be2810af81665e4b19e0`.
-Current CI: `34770820284`.
-
-First layer already implemented:
-- finite controlled `Model`;
-- `initialSetoid`;
-- exact `blockMass`;
-- `refineSetoid`;
-- `Refines` and one-round split-only theorem;
-- `Stable` plus fixed-point equivalence;
-- target-block representative independence;
-- finite `relPairs` encoding for termination.
-
-Pinned Mathlib verification found:
-- `Quotient.fintype` exists at the project pin;
-- `Finset.card_lt_card` and `ssubset_iff_subset_ne` are available;
-- `Finpartition.ofSetoid` gives the finite equivalence-class partition;
-- `part`, `biUnion_parts` and disjoint finite-sum infrastructure provide the
-  exact bridge needed for the frozen coarsestness proof.
-
-Do not add §28.4 constraint indicators to P-ALG-01. Do not replace exact equality
-with floating tolerances.
+P-REF-01 requires the augmented-state path law under **arbitrary causal policy**
+to be uniquely determined by the initial law and measurable controlled kernel.
+Pinned Mathlib contains the Ionescu--Tulcea `traj` and `trajMeasure` machinery,
+including projective-limit uniqueness and conditional-distribution interfaces.
+The eventual proof must preserve arbitrary history-dependent randomized
+policies; a Markov-only or deterministic-policy surrogate is not source-equivalent.
+Deterministic structural modification is a special case/corollary.
 
 ## Grounded non-quick fronts
 
@@ -117,7 +92,7 @@ with floating tolerances.
 - P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
-Perron--Frobenius asymptotic package. Do not count an assumed-convergence
+Perron--Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
 ## Mandatory recovery procedure

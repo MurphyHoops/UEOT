@@ -6,101 +6,84 @@
 
 ## Current lifecycle snapshot
 
-- authoritative full-green baseline before this checkpoint: **70/106**;
-- this branch stages **71/106** after P-API-01 completed all proof-side and
+- authoritative full-green baseline before this ledger checkpoint: **71/106**;
+- this branch stages **72/106** after P-ALG-01 completed all proof-side and
   post-main gates;
-- remaining not-yet-counted P-IDs after staging: **35**;
-- full-green 70 baseline: `8f29d29a0fe32bf9cccb7cbc12c84676768d9592`;
-- P-API-01 proof main: `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
-- newest staged promotion: **P-API-01**;
-- P-API-01 feature CI `34769177051`: success;
-- P-API-01 clean-integration PR #64 CI `34770423058`: success;
-- P-API-01 post-main CI `34770728978`: success;
+- remaining not-yet-counted P-IDs after staging: **34**;
+- full-green 71 baseline: `5218e615d852c1ffee72107f35435ee378709166`;
+- P-ALG-01 proof main: `9c638eee8448059221232fa764a2f3ebf00d46bd`;
+- newest staged promotion: **P-ALG-01**;
+- P-ALG-01 layered CI `34776635531`: success;
+- P-ALG-01 quotient CI `34774150913`: success;
+- P-ALG-01 clean-integration PR #66 CI `34777304473`: success;
+- P-ALG-01 post-main CI `34777649215`: success;
 - source semantic audit: complete;
 - prohibited-proof audit: clean.
 
-**Do not call 71/106 full-green until this ledger/recovery branch passes PR CI,
+**Do not call 72/106 full-green until this ledger/recovery branch passes PR CI,
 lands on `main`, and the resulting main CI succeeds.**
 
-## P-API-01 — completed proof contract
+## P-ALG-01 — completed proof contract
 
-Frozen §28.3 is implemented literally:
-
-- process interface = protocol lift plus measurable path readout;
-- exact naturality for all declared protocols;
-- exact composition has the source order
-  `J_AC = J_AB ∘ J_BC`, `C_AC = C_BC ∘ C_AB`;
-- approximate TV defects compose with
-  `min 1 (ε_AB + ε_BC)`;
-- §28.4 control actions, policy lifts, rewards and constraints are not folded
-  into this process-interface theorem.
-
-Canonical theorems:
-- `UEOT.V3.ProcessInterface.p_api_01_exact`;
-- `UEOT.V3.ProcessInterface.p_api_01_approx`.
-
-Evidence:
-- feature `formal/papi01-process-interface-fresh@0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
-- feature CI `34769177051`: success;
-- clean integration `formal/papi01-clean-int-70@697df634e502bbd5407fc7f832963ac0afe1203d`;
-- clean PR #64 CI `34770423058`: success;
-- proof main `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
-- proof post-main CI `34770728978`: success.
-
-## Previous full-green checkpoint — 70/106
-
-P-KL-02 and all earlier counted P-IDs are fully green. The 70/106 ledger main
-CI `34770086580` succeeded at
-`main@8f29d29a0fe32bf9cccb7cbc12c84676768d9592`. Do not reopen counted P-IDs
-absent a source mismatch or CI regression.
-
-## Active proof lane — P-ALG-01
-
-Frozen §28.5 is source-locked exactly as follows:
+Frozen §28.5 is implemented literally:
 
 - finite state set and common finite action set;
 - known exact transition matrices, reward vector and output label;
 - initial partition = equal output label + equal complete action-reward vector;
 - each refinement retains the current block and splits by transition mass to
   every current block under every action;
-- finite termination;
+- finite termination via well-founded finite relation-pair descent;
 - terminal controlled stability/lumpability;
 - terminal partition is the coarsest stable refinement of the initial one;
-- quotient preserves output, reward and every action's one-step distribution;
-- finite-horizon output laws follow by kernel recursion.
+- quotient preserves output, reward, every action's one-step law and
+  normalization;
+- all corresponding finite-horizon output-word laws are preserved.
 
-Current feature branch:
-`formal/palg01-refinement-core`, based on the 70/106 full-green baseline.
+Canonical theorem:
+- `UEOT.V3.PAlg01.p_alg_01`.
 
-Implemented first layer:
-- `Model` finite controlled Markov data;
-- `initialSetoid` matching output + complete reward vector;
-- exact `blockMass`;
-- `refineSetoid` with source-faithful signature semantics;
-- refinement-only property;
-- `Stable` and fixed-point equivalence;
-- target-block representative invariance;
-- finite `relPairs` measure for termination.
+Scope guards:
+- specified finite Markov state domain only;
+- no unconditional identification with full-history FFIPS;
+- no §28.4 constraint-data injection;
+- no floating-tolerance weakening.
 
-CI for current head `cfe4665da5a61cacdc74be2810af81665e4b19e0` is run
-`34770820284` and must be collected before layering more code.
+Evidence:
+- layered `formal/palg01-layered@e28c9dbb4882b936889a9aedf5ec42796eed7c86`, CI `34776635531` success;
+- quotient `formal/palg01-quotient-law@4f5390e4eac897bae9930ebf58149971d040b851`, CI `34774150913` success;
+- clean integration `formal/palg01-main-integration-v1@cd0a36f2663adb1ac17fc30776d6a48e3e8dbb52`;
+- PR #66 CI `34777304473` success;
+- proof main `9c638eee8448059221232fa764a2f3ebf00d46bd`;
+- proof post-main CI `34777649215` success.
 
-Planned next proof layers after that build is green:
-1. strict refinement strictly decreases `relPairs.card`;
-2. finite iteration reaches a stable fixed point;
-3. use pinned `Finpartition.ofSetoid` and disjoint block unions to prove the
-   frozen coarsestness induction step;
-4. construct the terminal quotient transition law for every action;
-5. prove output/reward and one-step preservation;
-6. prove all corresponding finite-horizon output laws;
-7. expose a source-facing `p_alg_01` bundle;
-8. feature CI, prohibited-proof audit, clean integration only from the then
-   latest full-green main.
+## Recovery correction — counted P-BRG-02 was not a new lane
 
-Do not add constraint indicators to P-ALG-01: frozen §28.5 contains output,
-complete reward vectors and transition masses; §28.4 constraint transport is a
-separate control-interface contract. Do not replace exact equality with floating
-tolerance grouping.
+The old 71/106 authoritative proved set already includes **P-BRG-02**. During
+post-main CI waiting a redundant branch `formal/pbrg02-behavioral-equivalence`
+was briefly created before that old list was rechecked. It is not part of the
+promotion plan, must not be integrated, and must not be counted again. No source
+mismatch or CI regression was found, so the counted theorem remains closed.
+
+## Current next action — P-REF-01 source audit
+
+Frozen P-REF-01 requires arbitrary causal-policy augmented-state path-law
+existence/uniqueness from the initial law and measurable controlled kernel.
+Pinned Mathlib contains Ionescu--Tulcea `traj`/`trajMeasure`, so reuse that
+machinery. Do not weaken to deterministic or Markov-only policies. Deterministic
+structural update is a corollary/special case, not the general theorem.
+
+Exact next construction sequence after 72 becomes full-green:
+
+1. define the augmented state `Z=(X,S)` at the Lean interface boundary;
+2. model an arbitrary history-dependent randomized causal policy as a family of
+   Markov kernels on finite histories;
+3. compose the policy kernel with the controlled state kernel `K` to obtain the
+   one-step history kernel;
+4. build the infinite path law with pinned Mathlib Ionescu--Tulcea
+   `trajMeasure`;
+5. prove the source uniqueness criterion without introducing an axiom;
+6. expose deterministic `S_{t+1}=F(...)` as a specialization only;
+7. feature CI, then clean integration from the then-latest full-green main.
 
 ## Grounded non-quick fronts
 
@@ -119,7 +102,7 @@ surrogate.
 
 ## Guards
 
-- do not reopen counted P-IDs absent source mismatch/CI regression;
+- do not reopen counted green P-IDs absent source mismatch/CI regression;
 - feature green never increments coverage;
 - no `sorry`, `admit`, `native_decide`, unsourced `axiom`;
 - P-QSD-01 and P-QSD-03 must never be swapped;

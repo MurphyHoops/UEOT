@@ -23,15 +23,15 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **71** |
+| **proved, staged by this ledger checkpoint** | **72** |
 | **partial** | **0** |
-| **pending / not yet counted** | **35** |
+| **pending / not yet counted** | **34** |
 | **total** | **106** |
 
-This branch stages 71/106 after P-API-01 completed its feature, clean-integration,
-and post-main proof gates. **71/106 is not called full-green until this ledger
-checkpoint itself passes PR CI, lands on `main`, and the resulting main CI
-succeeds.**
+This branch stages **72/106** after P-ALG-01 completed its feature,
+clean-integration, source-semantic, prohibited-proof and post-main proof gates.
+**72/106 is not called full-green until this ledger checkpoint itself passes PR
+CI, lands on `main`, and the resulting main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -63,70 +63,72 @@ mathematics or Lean code exists.
 - **KL / path information:** P-KL-01, P-KL-02, P-KL-03
 - **Evolution:** P-EVO-01, P-EVO-02
 - **Process interface:** P-API-01
+- **Algorithmic quotient:** P-ALG-01
 
-Count check: `70 + 1 = 71`.
+Count check: `71 + P-ALG-01 = 72`.
 
-## Newly staged promotion — P-API-01
+## Newly staged promotion — P-ALG-01
 
-Frozen source §28.3 is implemented at full strength:
+Frozen source §28.5 is implemented at full stated strength:
 
-- a typed process interface carries the contravariant protocol lift and the
-  covariant measurable path readout;
-- exact naturality is required for every declared protocol;
-- exact interfaces compose with
-  `J_AC = J_AB ∘ J_BC` and `C_AC = C_BC ∘ C_AB`;
-- approximate TV defects compose with the source bound
-  `TV ≤ min 1 (ε_AB + ε_BC)`;
-- control actions, policy lifts, rewards and constraints from frozen §28.4 are
-  deliberately not smuggled into the §28.3 process-interface contract.
+- finite state set and common finite action set;
+- known exact transition matrices, rewards and output labels;
+- initial partition by equal output plus the complete action-reward vector;
+- exact refinement by current block plus every-action transition mass to every
+  current block;
+- finite termination through a strictly decreasing finite relation-pair
+  measure;
+- terminal controlled stability/lumpability;
+- coarsest stable refinement of the initial partition;
+- quotient preservation of output, reward, every-action one-step block laws and
+  stochastic normalization;
+- all corresponding finite-horizon output-word laws by recursion.
 
-Canonical theorems:
-- `UEOT.V3.ProcessInterface.p_api_01_exact`;
-- `UEOT.V3.ProcessInterface.p_api_01_approx`.
+The implementation keeps the source boundary explicit: this is the exact stable
+quotient on the specified finite Markov state domain. It is not unconditionally
+identified with a full-history FFIPS object, does not inject §28.4 constraint
+data, and does not replace exact equality by floating tolerance.
+
+Canonical theorem:
+- `UEOT.V3.PAlg01.p_alg_01`.
 
 Promotion evidence:
-- feature branch `formal/papi01-process-interface-fresh`;
-- feature head `0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
-- feature CI `34769177051`: success;
-- clean integration branch `formal/papi01-clean-int-70`;
-- clean integration head `697df634e502bbd5407fc7f832963ac0afe1203d`;
-- clean integration PR #64;
-- clean integration CI `34770423058`: success;
-- proof main commit `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
-- proof post-main CI `34770728978`: success;
-- exact clean-integration diff: `UEOT/V3/ProcessInterface.lean` plus one
-  top-level import;
+- layered branch `formal/palg01-layered@e28c9dbb4882b936889a9aedf5ec42796eed7c86`;
+- layered CI `34776635531`: success;
+- quotient branch `formal/palg01-quotient-law@4f5390e4eac897bae9930ebf58149971d040b851`;
+- quotient CI `34774150913`: success;
+- clean integration branch `formal/palg01-main-integration-v1`;
+- clean integration head `cd0a36f2663adb1ac17fc30776d6a48e3e8dbb52`;
+- clean integration PR #66;
+- clean integration CI `34777304473`: success;
+- proof main commit `9c638eee8448059221232fa764a2f3ebf00d46bd`;
+- post-main CI `34777649215`: success;
 - prohibited-proof audit: clean;
 - frozen-source semantic audit: complete.
 
 **Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
 main CI.**
 
-## Previous full-green checkpoint — P-KL-02 / 70 of 106
+## Previous full-green checkpoint — 71/106
 
-P-KL-02 is fully counted. Its all-feasible-law event I-projection theorem,
-explicit two-region RN optimizer, exact Bernoulli KL value and `p=1` endpoint
-are on main. Feature CI `34768634473`, clean-integration CI `34769135038`, proof
-post-main CI `34769394882`, ledger PR CI `34769830990`, and ledger main CI
-`34770086580` all succeeded. The resulting full-green 70/106 baseline was
-`main@8f29d29a0fe32bf9cccb7cbc12c84676768d9592`.
+P-API-01 and all earlier counted theorems — including P-BRG-02 — are fully
+green. The full-green 71/106 baseline before P-ALG-01 proof promotion was
+`main@5218e615d852c1ffee72107f35435ee378709166` with ledger/main CI
+`34771573465` successful. Counted P-IDs are not reopened absent a substantive
+source mismatch or CI regression.
 
-## Active proof lane — P-ALG-01
+During this recovery, a redundant P-BRG-02 feature branch was briefly opened
+before the old 71 ledger list was rechecked. It is **not part of the promotion
+plan and must not be merged or counted again**.
 
-Frozen §28.5 is source-locked as an exact finite partition-refinement theorem.
-The active feature branch `formal/palg01-refinement-core` implements a finite
-controlled Markov model, the exact output/complete-reward initial partition,
-block transition masses and exact one-round signature refinement. The intended
-termination proof uses a strictly decreasing finite related-pair measure; the
-coarsestness proof uses the frozen argument that every coarser current block is
-a disjoint union of stable finer blocks. Pinned Mathlib's
-`Finpartition.ofSetoid` is being used for that finite disjoint-union bridge.
+## Current source-audit lane — P-REF-01
 
-P-ALG-01 remains **not counted** until it also proves finite termination,
-terminal stability, coarsestness among stable refinements, one-step quotient-law
-preservation, and all corresponding finite-horizon output laws, then completes
-the full promotion protocol. Exact equality is mandatory; floating-tolerance
-clustering is not a substitute.
+P-REF-01 requires arbitrary causal policies and uniqueness of the augmented
+state path law from the initial law and measurable controlled kernel. The pinned
+Mathlib contains Ionescu--Tulcea `traj`/`trajMeasure`, so this lane should reuse
+that foundation rather than introduce an axiom or weaken to deterministic or
+Markov-only policies. Deterministic structural modification is a special case,
+not the general theorem.
 
 ## Reproducibility task
 
