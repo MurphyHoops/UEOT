@@ -11,21 +11,21 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 70
-  promotion_running: 1
-  active_proof: 0
+  integrated_proved: 71
+  promotion_running: 0
+  active_proof: 1
   source_audit: 0
   blocked: 0
-  pending_unclassified: 35
-  unresolved_total: 36
+  pending_unclassified: 34
+  unresolved_total: 35
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this recovery checkpoint: 70 integrated/proof-complete
-    P-IDs including P-KL-02 + 1 promotion-ready lane (P-API-01) + 35
-    pending/unclassified = 106. P-KL-02 has completed feature, clean-integration
-    and post-main proof gates; 70/106 becomes full-green only after this
+    Operational partition staged by this recovery checkpoint: 71 integrated/proof-complete
+    P-IDs including P-API-01 + 1 active proof lane (P-ALG-01) + 34
+    pending/unclassified = 106. P-API-01 has completed feature, clean-integration
+    and post-main proof gates; 71/106 becomes full-green only after this
     recovery/ledger checkpoint passes PR CI, lands on main and passes the
-    resulting main CI. P-API-01 is feature-green but not counted.
+    resulting main CI. P-ALG-01 remains an active proof lane and is not counted.
 state_vocabulary:
   - source_audit
   - proof
@@ -323,10 +323,9 @@ pids:
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: literal all-feasible-law infimum; explicit two-region event I-projection; exact Bernoulli KL cost and p=1 retained
     coverage_counted: true
-    ledger_gate: pending_this_recovery_checkpoint_pr_and_main_ci
 
   P-API-01:
-    state: promotion
+    state: proved
     source_locked: true
     source_semantic_audit: complete
     audit_class: B
@@ -344,12 +343,16 @@ pids:
       feature_branch: formal/papi01-process-interface-fresh
       feature_head: 0f76d04a4dcc34b2d2aaa806d5803e4823561bbc
       feature_ci: {run: 34769177051, status: success}
+      clean_integration_branch: formal/papi01-clean-int-70
+      clean_integration_head: 697df634e502bbd5407fc7f832963ac0afe1203d
+      clean_integration_pr: 64
+      clean_integration_ci: {run: 34770423058, status: success}
+      main_commit: f72e2a7448c88b8c90dbf5856522f71a588886ce
+      post_main_ci: {run: 34770728978, status: success}
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    next:
-      - wait until the staged 70/106 ledger checkpoint is full-green
-      - clean-integrate only from that latest full-green main
-      - require clean-integration CI, post-main CI, then a separate 71/106 ledger gate
-    coverage_counted: false
+    source_note: exact process-interface composition; approximate TV defects add then cap at one; frozen control-interface data remain separate
+    coverage_counted: true
+    ledger_gate: pending_this_recovery_checkpoint_pr_and_main_ci
 
 audits:
   P-EVO-03:
@@ -363,13 +366,21 @@ audits:
       found. Do not weaken to an assumed-convergence surrogate.
 
   P-ALG-01:
-    state: source_audit
+    state: proof
     audit_class: medium_algorithmic
+    source_locked: true
+    source_semantic_audit: complete
+    feature_branch: formal/palg01-refinement-core
+    feature_head: cfe4665da5a61cacdc74be2810af81665e4b19e0
+    feature_ci: {run: 34770820284, status: in_progress}
     source_note: >-
       Frozen section 28.5 requires the exact finite partition-refinement
       algorithm, finite termination, terminal controlled stability, coarsest
       stable refinement of the initial output/reward partition, preservation of
       output/reward/all-action one-step quotient laws, and induction to all
-      corresponding finite-horizon output laws. Mathlib Finpartition/refinement
-      infrastructure is available, but no complete UEOT implementation has been
-      found. Floating-tolerance clustering is not an acceptable substitute.
+      corresponding finite-horizon output laws. The active implementation uses
+      Setoid refinement plus finite relation-pair descent and pinned
+      Finpartition.ofSetoid for the disjoint-block union argument. Frozen 28.5
+      contains output, complete reward vectors and transition masses; section
+      28.4 constraint indicators are separate. Floating-tolerance clustering is
+      not an acceptable substitute.
