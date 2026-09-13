@@ -3,200 +3,157 @@
 This is the execution plan for completing all 106 frozen source P-IDs in
 `UEOT_Core_Mathematics_v3.0_Complete.md`.
 
-Machine-readable live state belongs in `PID_STATUS.yaml`. Human recovery state
-belongs in `FORMALIZATION_STATE.md`. The authoritative integrated source count
-belongs in `V3_COVERAGE_STATUS.md`.
-
 ## 1. Promotion gate
 
 A P-ID is counted `proved` only after:
 
 1. direct semantic audit against the canonical frozen source object;
 2. source-faithful Lean closure;
-3. official import reachability;
-4. relevant feature full-target CI;
-5. minimal clean port and clean CI where applicable;
+3. official `UEOT.V3`/`UEOT` import reachability;
+4. relevant full-target feature CI;
+5. clean-port / clean CI when applicable;
 6. PR CI;
 7. serialized `main` integration;
 8. green post-main `lake build UEOT`;
 9. prohibited-proof / unsourced-axiom audit;
 10. ledger synchronization.
 
-**Public source-artifact reproducibility is separate.** The exact canonical
-Markdown bytes are still absent from the public repository, so third parties
-cannot yet recompute the frozen SHA-256 from the repo alone. This remains an
-important packaging/reproducibility task, but it does not negate a theorem that
-has been directly source-audited against the canonical object and passed the
-full Lean promotion chain. The repository must never claim SHA reverification
-until exact raw bytes are actually available and hashed.
-
-Audit evidence for the 2026-09-13 information promotions is
-`docs/SOURCE_AUDIT_EVIDENCE_2026-09-13.md`.
+Public canonical-source byte synchronization is a separate reproducibility task;
+it is not allowed to masquerade as a mathematical proof gate.
 
 ## 2. Current checkpoint — 2026-09-13
 
-- integrated proved: **52/106**
-- P-STAT-06: **PROVED/CLOSED**
-- P-INFO-02: **PROVED/COUNTED**
-- P-INFO-04: **PROVED/COUNTED**
+- integrated proved: **53/106**
+- pending: **53/106**
+- P-ID-02: **PROVED / COUNTED** after source audit of existing main proof
 - P-INFO-03: **ACTIVE PROOF**
-- P-INT-01: **BLOCKED** on the general conditional-information interface
+- P-INT-01: **BLOCKED** on P-INFO-03 interfaces
+- remaining unclassified audit population: **51 P-IDs**
 - public canonical source-byte sync: **pending reproducibility task**
 
 ## 3. Priority lanes
 
-### Lane A — P-INFO-03 countable zero-distortion complexity [highest priority]
+### Lane A — P-INFO-03 [highest proof priority]
 
 Frozen target:
+`R_obj(0)=H(C|U)` for discrete canonical predictive core
+`C=P(Y|H,U)` with `H(C|U)<∞`, while permitting genuinely randomized encoders
+`P(M|H,U)` that cannot access future `Y`.
 
-`R_obj(0)=H(C|U)`
+Non-negotiable proof chain:
 
-for the discrete canonical predictive core `C=P(Y|H,U)` with
-`H(C|U)<∞`, allowing random encoders `P(M|H,U)` that cannot access future `Y`.
-
-The exact source proof contract is:
-
-1. zero average TV implies the predictive core `C` is recoverable from `(M,U)`;
-2. conditional DPI gives
+1. genuine countable conditional entropy by `U`-disintegration;
+2. kernel-level random-encoder joint law;
+3. zero average TV implies the predictive-law code is recoverable from `(M,U)`;
+4. measurable law-code inverse recovers the discrete core label;
+5. conditional data processing gives
    `I(H;M|U) >= I(C;M|U)=H(C|U)`;
-3. choose `M=C` and decode the canonical predictive kernel to attain equality.
+6. define the source-faithful zero-distortion feasible class / rate objective;
+7. attain equality by `M=C`;
+8. expose exact source-facing `R_obj(0)=H(C|U)`.
 
-Verified foundation:
+Already independently verified:
 
-- `InformationConditionalDiscreteEntropy` gives a genuine `U`-disintegration
-  definition of countable `H(C|U)` via a measurable ENNReal Shannon `tsum`;
-- full-target CI `34706765170`: success.
-
-Current active layers:
-
-- generic KL conditional mutual information;
-- generic conditional KL fiber decomposition;
-- random-encoder joint-law geometry;
-- recoverable discrete information identity;
-- exact bridge from the fiber Shannon `tsum` to the existing
-  `discreteShannonEntropy` representation.
-
-Non-negotiable source constraints:
-
-- `InformationStatistic` is deterministic-statistic infrastructure and cannot
-  represent the source random encoder;
-- random encoding must remain a Markov-kernel/joint-law object;
-- `H(C|U)` must be genuine disintegration, never `H(C)-I(C;U)`;
-- the zero-TV-to-recoverability step must explicitly identify the predictive
-  law; it cannot silently replace the source decoder kernel by a `C`-valued
-  decoder.
+- generic CMI official CI: run `34707458047` success;
+- countable conditional entropy, generic conditional KL decomposition,
+  random-encoder geometry, recoverable discrete identity, conditional
+  recoverability and zero-TV infrastructure have passed through the active
+  full graph in previous runs.
 
 Active branch: `formal/pinfo03-countable-conditional`.
-Latest known head: `9a152cace0831cca498cdf489a06466b36cf2e98`.
-Current diagnostic CI: `34707351959`.
-An isolated validation lane `formal/pinfo03-generic-cmi-isolated` prevents
-later downstream failures from obscuring the generic-CMI layer.
+Current head at this synchronization:
+`3ad766b6f50590e70caed8ac293067f2146d68d2`.
+Current full-target CI: `34734186954` in progress.
 
-Execution order inside Lane A:
+The last observed downstream failures were concrete elaboration defects, not a
+mathematical collapse:
 
-1. freeze generic CMI once isolated official CI is green;
-2. freeze generic conditional KL decomposition;
-3. prove countable Shannon representation compatibility;
-4. machine-check random-encoder joint law;
-5. formalize source-faithful zero-TV predictive-core recoverability;
-6. prove conditional DPI lower bound;
-7. prove attainability by `M=C`;
-8. expose exact source-facing `R_obj(0)=H(C|U)` theorem;
-9. clean-port -> clean CI -> PR -> main -> post-main -> ledger sync.
+- law-code decoder: invalid field notation / missing classical decidability;
+- conditional statistic layer: `mutualInfo` namespace mismatch.
 
-### Lane B — P-INT-01 [blocked, immediately after P-INFO-03 interface]
+Both were repaired. No second information-theory stack should be created.
+
+### Lane B — source-to-main audit of remaining 51 P-IDs
+
+This lane is now mandatory, not optional. P-ID-02 demonstrated that a theorem
+can be fully source-faithful, merged and post-main green while a stale ledger
+still labels it pending.
+
+For each remaining P-ID classify exactly:
+
+- **Class A:** source theorem already exists on main; perform exact semantic
+  audit and promotion evidence collection;
+- **Class B:** infrastructure exists, but a specific source-facing bridge or
+  boundary case is missing;
+- **Class C:** genuinely unformalized mathematics / definitions.
+
+Required audit record per P-ID:
+
+1. frozen source statement and assumptions;
+2. candidate main theorem(s);
+3. formula and quantifier match;
+4. boundary / measurability / integrability / finiteness match;
+5. exact mismatch, if any;
+6. CI/main evidence;
+7. classification A/B/C and next action.
+
+**Do not create a new proof module until this audit says the source theorem is
+actually missing.**
+
+### Lane C — P-INT-01 dependency lane
 
 Frozen target:
+`Y_f^+ ⟂ H | (M,U) ↔ C^f = Psi(M,U) a.s.`.
 
-`Y_f^+ ⟂ H | (M,U) ↔ C^f = Ψ(M,U) a.s.`
+Until P-INFO-03 stabilizes the general countable conditional-information and
+predictive-core recovery interfaces, this lane is audit/reuse only. No duplicate
+conditional independence/KL stack.
 
-for the common countable intervention version.
+### Lane D — canonical source artifact reproducibility
 
-P-INT-01 must reuse P-INFO-03's general conditional-information and
-predictive-core identification infrastructure. Do not create a second
-conditional independence/KL/entropy stack.
+1. synchronize exact source bytes without regeneration;
+2. independently recompute frozen SHA-256;
+3. keep the artifact immutable and third-party reproducible.
 
-### Lane C — remaining-52 source-to-main audit [parallel, rigorous]
+This lane changes reproducibility status, not theorem count by itself.
 
-This is **not** a quick-win lane. Its purpose is to classify each remaining
-unclassified P-ID by actual proof state:
+## 4. Closed / frozen lanes
 
-- **Class A:** source-facing theorem already exists on `main`; needs only exact
-  source semantic audit and promotion evidence;
-- **Class B:** substantial infrastructure exists; a small, explicit proof
-  obligation is missing;
-- **Class C:** source definition/theorem is genuinely unformalized or needs new
-  mathematics.
+Do not reopen without a substantive source mismatch or CI regression:
 
-For every P-ID, record the frozen statement, candidate Lean theorem(s), exact
-mismatch if any, and next proof obligation. Do not infer completion from module
-names alone. This audit is what prevents the project from spending weeks
-re-proving statements already present on `main` or, conversely, counting merely
-related helpers as source theorems.
+- P-STAT-06;
+- P-INFO-02;
+- P-INFO-04;
+- P-ID-02.
 
-### Lane D — public canonical-source synchronization [reproducibility]
+For P-ID-02 the canonical main implementation is
+`UEOT.V3.DevelopmentTransport`; a duplicate `DevelopmentPipeline` implementation
+was explicitly abandoned after the audit found the complete existing proof.
 
-The canonical source is known by name and frozen manifest SHA, but its exact raw
-bytes are not mounted in the current repository/runtime filesystem. Required
-steps:
+## 5. Concurrency model
 
-1. synchronize the exact canonical bytes without regeneration;
-2. independently recompute SHA-256
-   `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`;
-3. preserve the canonical file as an immutable source artifact.
+- **Thread 1:** P-INFO-03 proof chain;
+- **Thread 2:** full source-to-main audit of the remaining 51 P-IDs;
+- **Thread 3:** P-INT-01 dependency/reuse audit;
+- **Thread 4:** public canonical-source reproducibility.
 
-This lane no longer changes proof counts by itself. It changes repository
-reproducibility status.
+Parallelism hides CI latency and separates independent obligations. It must not
+create competing foundational implementations.
 
-## 4. Concurrency model
+## 6. Merge train
 
-The efficient rigorous layout is:
+`source audit -> proof contract -> existing-main audit -> missing lemmas only -> source-facing theorem -> official import -> full-target CI -> clean port as needed -> PR -> main -> post-main CI -> ledger sync`.
 
-- **Thread 1:** P-INFO-03 proof chain, with isolated CI for each foundational
-  layer before downstream composition;
-- **Thread 2:** source-to-main audit of the remaining 52 P-IDs, classifying
-  actual proof gaps rather than searching for easy counts;
-- **Thread 3:** P-INT-01 dependency audit only until the P-INFO-03 interface is
-  stable;
-- **Thread 4:** public-source artifact reproducibility task.
-
-Parallelism is used to separate independent obligations and hide CI latency, not
-to create competing foundational implementations.
-
-## 5. Merge train
-
-`source audit -> proof contract -> missing lemmas only -> canonical source theorem -> official import -> feature CI -> clean port -> clean CI -> PR CI -> serialized main integration -> post-main CI -> ledger sync`.
-
-Public-source byte synchronization is tracked alongside this train but is not
-inserted as a false mathematical proof prerequisite.
-
-Helpers, unimported modules, feature-green branches, or mathematically equivalent
-but source-mismatched statements do not increment coverage.
-
-## 6. Stop conditions / anti-duplication rules
-
-- P-STAT-06 is frozen closed.
-- P-INFO-02 is proved and counted; proof infrastructure is frozen unless a real
-  CI regression or source mismatch appears.
-- P-INFO-04 is proved and counted; multiway and conditional-binary proof
-  infrastructure are frozen; no MAP replacement, second Fano stack or duplicate
-  binary KL layer.
-- P-INFO-03 random encoders must be represented at kernel/joint-law level, not
-  silently replaced by deterministic `M=f(H)` statistics.
-- P-INFO-03 conditional entropy must use genuine disintegration; no general
-  source theorem may define it as `H(C)-I(C;U)`.
-- No second conditional-information formalism may be created for P-INT-01.
-- No regenerated substitute may stand in for the canonical frozen source file.
-- Never move a P-ID to proved merely because a similarly named module exists;
-  exact source-statement matching remains mandatory.
+The explicit `existing-main audit` step is now mandatory because it prevented a
+second P-ID-02 implementation and recovered a real completed theorem from a
+stale ledger.
 
 ## 7. Completion condition
 
 UEOT Core v3.0 is machine-complete only at **106 proved / 0 partial / 0 pending**,
-with full `lake build UEOT` green on `main`, exact source-to-ledger semantic
+with full `lake build UEOT` green on `main`, source-to-theorem semantic
 consistency, transitive prohibited-proof/axiom audit green, and no P-ID counted
-through a helper theorem alone.
+through helper theorems alone.
 
 Full third-party repository reproducibility additionally requires the exact
-canonical source artifact to be present in the public repo with independently
-verified frozen SHA-256.
+canonical source artifact and independently verified frozen SHA-256.
