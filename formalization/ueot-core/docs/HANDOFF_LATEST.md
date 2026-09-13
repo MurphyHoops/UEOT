@@ -2,7 +2,7 @@
 
 > Dynamic construction-site state. Read this after `UEOT_CORE3_LEAN_OPERATIONS.md`, then verify all SHAs and CI statuses against live GitHub before acting.
 
-updated: `2026-09-13T16:59+08:00`
+updated: `2026-09-13T17:17+08:00`
 
 ## Canonical project state
 
@@ -13,8 +13,19 @@ updated: `2026-09-13T16:59+08:00`
 - official target: `lake build UEOT`
 - Lean: `4.33.1`
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
-- live main checked for this handoff: `4c2e20e493e0137c90fc0229f73cdc95ae3a29a0`
 - counted coverage: `54/106`
+
+### Main-SHA interpretation
+
+The last Lean-code-bearing main baseline before the cross-chat documentation bundle was:
+
+`4c2e20e493e0137c90fc0229f73cdc95ae3a29a0`.
+
+The cross-chat operations/docs bundle was then fast-forwarded into `main`; immediately before this handoff refresh, live `main` was:
+
+`8d18ad0f2a3df87945fe5860ca5bee399ae982d4`.
+
+Because updating this handoff itself creates another docs-only commit, the file MUST NOT be used as the final source of the current `main` SHA. Every new conversation must fetch live `main` first. For P-INT-01 integration, always base the clean integration branch on whatever live `main` is at that moment.
 
 Coverage must remain 54/106 until P-INT-01 is clean-integrated into latest main, post-main CI is green, and ledgers are synchronized.
 
@@ -36,7 +47,7 @@ Verified feature head: `3943391af4d459a370ab840d1b15babcae26f82a`
 
 Latest official full-target CI: `34747270058` — **success**.
 
-At this checkpoint feature vs main: ahead 24, behind 1. Do NOT merge the long development history wholesale.
+At the last code-baseline comparison the feature branch was ahead 24 / behind 1 relative to `main`. After the docs-only main commits it will appear further behind. That additional drift is documentation-only, but the clean integration MUST still start from live latest `main`. Do NOT merge the long development history wholesale.
 
 ## Final validated delta
 
@@ -113,6 +124,6 @@ Do not use GitHub full CI as a Lean REPL. Feature green should transition direct
 
 ## Reconciliation note
 
-At this handoff, `PID_STATUS.yaml` and `FORMALIZATION_STATE.md` still contain an older P-INT-01 head/CI snapshot. Those stale fields must not override live GitHub or this handoff. The next valid promotion should synchronize them.
+At this handoff, `PID_STATUS.yaml` and `FORMALIZATION_STATE.md` still contain an older P-INT-01 head/CI snapshot. Those stale fields must not override live GitHub or this handoff. The next valid P-INT-01 promotion should synchronize them.
 
 If a new chat finds different live GitHub SHAs/CI, live GitHub wins and this file should be refreshed after reconciliation.
