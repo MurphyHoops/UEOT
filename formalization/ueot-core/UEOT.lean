@@ -13,3 +13,5 @@ import UEOT.V3.InformationPInt01
 import UEOT.V3.InformationPInt01Common
 import UEOT.V3.OmegaMinimalFailure
 import UEOT.V3.OmegaIntegrityMargin
+import UEOT.V3.DualDriveGauge
+import UEOT.V3.AlignmentThreshold
