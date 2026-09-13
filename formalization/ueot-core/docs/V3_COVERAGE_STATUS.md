@@ -27,9 +27,9 @@ present in the public repository.
 
 | status | count |
 |---|---:|
-| **proved** | **55** |
+| **proved** | **57** |
 | **partial** | **0** |
-| **pending** | **51** |
+| **pending** | **49** |
 | **total** | **106** |
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -56,149 +56,143 @@ mathematics or Lean code exists.
 - **Persistence:** P-PER-01, P-PER-03
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
+- **Omega / integrity:** P-OMG-01, P-OMG-02
 
-Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 3 + 5 + 1 + 2 + 1 + 2 + 2 + 1 = 55`.
+Count check: `55 + 2 = 57`.
 
-## Newly counted promotion — P-INT-01
+## Newly counted promotions — P-OMG-01 and P-OMG-02
 
-Frozen source contract:
+### P-OMG-01 — minimal destructive-set reconstruction
 
-For Standard-Borel variables and structured statistics `M=f(H^S)`, `U=g(H^E)`,
-with `Z=(M,U)`, the source requires the Predictive Factorization
-Characterization Theorem
+Frozen source contract: in the finite deletion model, failure is monotone under
+adding deleted mechanisms and every failing deletion set contains an
+inclusion-minimal failing deletion set. Equivalently the failure family is the
+upward closure of its minimal destructive sets.
+
+Canonical theorem:
+
+- `UEOT.V3.OmegaMinimalFailure.p_omg_01`.
+
+Implementation facts:
+
+- reuses `UEOT.Finite.exists_minimal_subset`; no duplicate blocker theory;
+- represents the source Boolean clause `χ(D)=0` by a generic monotone failure
+  predicate;
+- the theorem is slightly more general than the finite-universe presentation:
+  only each deletion set must be finite, which includes the frozen source case.
+
+### P-OMG-02 — causal-integrity margin
+
+Frozen source contract: for a fixed nonempty failure set `F`,
+`Γ(T)=inf_{x∈F} d(T,x)` is 1-Lipschitz.
+
+Canonical theorem:
+
+- `UEOT.V3.OmegaIntegrityMargin.p_omg_02`.
+
+Implementation facts:
+
+- `integrityMargin F T = Metric.infDist T F`;
+- reuses Mathlib's exact point-to-set theorem `Metric.lipschitz_infDist_pt`;
+- retains the source nonempty-set hypothesis even though the library result is
+  stronger.
+
+Joint verification evidence:
+
+- P-OMG-01 feature `formal/pomg01-minimal-failure` head
+  `effa5bf10787095b2dd1bb86e68f100cb907f0af`, CI `34750708593`: success;
+- P-OMG-02 feature `formal/pomg02-integrity-margin` head
+  `8d5ddee1faff1ae588a478e2a1c58235852d7500`, CI `34750765181`: success;
+- combined clean integration commit
+  `4db94c39dddce53a5543e40568e5fc104321e88b`;
+- integration CI `34751042701`: success;
+- `main` fast-forwarded to the same clean integration commit;
+- post-main CI `34751300612`: success;
+- prohibited-proof audit: zero `sorry`, zero `admit`, zero `native_decide`,
+  zero unsourced `axiom` in the two new source-facing proof files;
+- canonical-source semantic audit completed 2026-09-13.
+
+**Status: BOTH PROVED / COUNTED.**
+
+## Previously counted promotions
+
+### P-INT-01
+
+Frozen source contract: for Standard-Borel variables and structured statistics
+`M=f(H^S)`, `U=g(H^E)`, with `Z=(M,U)`,
 
 `Y_f^+ ⟂ H | (M,U)  ↔  C^f = Psi(M,U) a.s.`
 
 for every protocol in the declared countable intervention family, using common
-versions so that the protocol-indexed statements hold on one common conull set.
+versions on one common conull set.
 
 Canonical source-facing theorems:
 
 - `UEOT.V3.InformationPInt01.p_int_01`;
 - `UEOT.V3.InformationPInt01Common.p_int_01_common`;
-- common measurable decoder packaging:
-  `UEOT.V3.InformationPInt01Common.p_int_01_common_decoder`.
+- `UEOT.V3.InformationPInt01Common.p_int_01_common_decoder`.
 
-Source-faithful implementation facts:
-
-- the theorem is fully general Standard-Borel and does not inherit the discrete
-  canonical-core restriction used by P-INFO-03;
-- both forward and reverse factorization implications are proved;
-- the structured internal/environment representation `H=(H^S,H^E)`,
-  `M=f(H^S)`, `U=g(H^E)` is present in the source-facing layer;
-- the canonical conditional future law is used as the predictive state;
-- the countable protocol/intervention family is handled with one common conull
-  set/common version rather than protocol-dependent exceptional sets;
-- a common measurable decoder is packaged explicitly;
-- no duplicate discrete information stack was introduced.
-
-Verification evidence:
-
-- verified feature branch `formal/pint01-factorization-iff` head
-  `3943391af4d459a370ab840d1b15babcae26f82a`;
-- feature full-target CI `34747270058`: success;
-- clean integration commit
-  `d757ea0dd14755233b94d40763f457773a52089f` on
-  `formal/pint01-main-integration`;
-- clean integration full-target CI `34749908649`: success;
-- `main` fast-forwarded to
-  `d757ea0dd14755233b94d40763f457773a52089f`;
-- post-main full-target CI `34750114264`: success;
-- prohibited-proof audit on the clean integration diff: zero `sorry`, zero
-  `admit`, zero `native_decide`, zero unsourced `axiom`;
-- canonical source semantic audit completed 2026-09-13.
-
-**Status: PROVED / COUNTED.**
-
-## Previously counted promotions
+Evidence: feature CI `34747270058`, clean integration CI `34749908649`, main
+commit `d757ea0dd14755233b94d40763f457773a52089f`, post-main CI
+`34750114264`; prohibited-proof and source-semantic audits complete.
 
 ### P-INFO-03
 
-Frozen source contract:
-
-`R_obj(0)=H(C|U)` for the discrete canonical predictive core
-`C=P(Y∈·|H,U)`, with the source allowing genuinely randomized encoders
-`P(M|H,U)` and arbitrary decoders `Q(.|M,U)` under zero expected total-variation
-distortion.
-
 Canonical theorem:
-
 `UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy`.
 
-Source-faithful implementation facts:
-
-- the encoder is a Markov kernel `P(M|H,U)`, not a deterministic statistic;
-- the encoder type contains `(H,U)` but not future `Y`, so future access is excluded structurally;
-- arbitrary code alphabets are Standard Borel and are **not** restricted to countable spaces;
-- countability is imposed only on the canonical core labels used to represent distinct future laws;
-- zero expected TV gives almost-sure predictive-law equality and measurable recovery of `C` from `(M,U)`;
-- the converse proves every zero-distortion scheme satisfies `H(C|U) <= I(H;M|U)`;
-- the canonical deterministic encoder `M=C` and canonical decoder attain equality;
-- `R_obj(0)` is the `sInf` over bundled code-space + encoder + decoder + zero-distortion schemes, rather than a fixed-code-space infimum;
-- the Lean theorem is ENNReal-valued and does not need the source's explicit finiteness hypothesis, so the frozen finite-entropy case is included;
-- code-space quantification is universe-polymorphic within the ambient Lean universe, which is the standard predicative implementation boundary and not a fixed-`M` restriction.
-
-Verification evidence:
-
-- final proof branch `formal/pinfo03-rate-zero` head
-  `b90cb81f5ae600ba961e2948f304aa87472c8ea9`;
-- final proof full-target CI `34744325632`: success;
-- clean main-integration CI `34744658528`: success;
-- main commit `57e987a18a5dd8feca224b91e3e78b93c2a44de8`;
-- post-main full-target CI `34744919310`: success;
-- prohibited-proof audit: zero `sorry`, zero `native_decide`, zero unsourced `axiom` in the integrated P-INFO-03 diff;
-- canonical source semantic audit completed 2026-09-13.
+Evidence: feature head `b90cb81f5ae600ba961e2948f304aa87472c8ea9`, feature CI
+`34744325632`, integration CI `34744658528`, main
+`57e987a18a5dd8feca224b91e3e78b93c2a44de8`, post-main CI
+`34744919310`; canonical-source semantic and prohibited-proof audits complete.
 
 ### P-ID-02
 
 Canonical source-facing theorems:
+`development_error_step`, `development_pipeline`,
+`development_pipeline_uniform_geom`, and
+`development_pipeline_uniform_contraction` in
+`UEOT.V3.DevelopmentTransport`.
 
-- `UEOT.V3.DevelopmentTransport.development_error_step`;
-- `UEOT.V3.DevelopmentTransport.development_pipeline`;
-- `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_geom`;
-- `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_contraction`.
+Evidence: feature CI `34716348615`, PR #54, main
+`4a29c2d5aa6a805d867e1934f6013aa49f1dc431`, post-main CI `34717095993`.
 
-Evidence: feature CI `34716348615`, PR #54, main commit
-`4a29c2d5aa6a805d867e1934f6013aa49f1dc431`, post-main CI `34717095993`,
-canonical-source semantic audit complete.
+### P-INFO-02 / P-INFO-04
 
-### P-INFO-02
+P-INFO-02 canonical theorem: `UEOT.V3.InformationPInfo02.p_info_02_ennreal`;
+main `c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`, post-main CI `34692828935`.
 
-Canonical theorem:
-`UEOT.V3.InformationPInfo02.p_info_02_ennreal`.
-
-Evidence: PR #46, main
-`c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`, post-main CI `34692828935`
-success, canonical-source semantic audit complete.
-
-### P-INFO-04
-
-Canonical theorems:
-
-- `UEOT.V3.InformationPInfo04.p_info_04`;
-- `UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary`.
-
-Evidence includes PR #47 for multiway Fano and PR #51 for the conditional
-binary clause, integrated main commit
-`e19eee7082418f1826650316b533c0380a9a451f`, post-main CI `34706528781`
-success, and canonical-source semantic audit complete.
+P-INFO-04 canonical theorems:
+`UEOT.V3.InformationPInfo04.p_info_04` and
+`UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary`;
+main `e19eee7082418f1826650316b533c0380a9a451f`, post-main CI `34706528781`.
 
 ## Active unresolved front
 
-- **No active proof lane.** P-INT-01 is counted and closed.
-- **Remaining 51 unclassified P-IDs — SOURCE-TO-MAIN AUDIT:** classify each as
-  A/B/C/D against the frozen source and current `main` before opening new proof
-  stacks.
-- **Public canonical source synchronization — REPRODUCIBILITY TASK:** copy the
-  exact canonical bytes into the public repository and independently recompute
-  SHA-256; this task does not change proof count by itself.
+There are **49 not-yet-counted P-IDs**. Three independent source-facing proof
+lanes are currently active:
 
-The machine-readable live details are in `docs/PID_STATUS.yaml`.
+- **P-DDH-01:** `formal/pddh01-gauge-cancellation`;
+- **P-ALI-03:** `formal/pali03-coordination-threshold`;
+- **P-EVO-01:** `formal/pevo01-price-decomposition`.
+
+The remaining **46** are still in source-to-main A/B/C/D audit or later proof
+queues. Feature-green work does not change the 57/106 ledger.
+
+Known non-A fronts include P-PER-02, P-PER-04, P-REC-03, P-REC-04,
+P-QSD-01, P-QSD-03 and P-QSD-04. The QSD numbering is source-locked:
+P-QSD-01 is the conditional-stabilization/QSD theorem; P-QSD-03 is the
+simultaneous persistence-window theorem.
+
+## Reproducibility task
+
+The exact canonical source bytes are still not present in the public repository.
+Synchronizing the bytes and independently recomputing the SHA-256 remains a
+separate repository reproducibility task and does not change proof count by
+itself.
 
 ## Completion rule
 
 UEOT Core v3.0 is machine-complete only when all **106** source P-IDs pass the
 source-theorem proof contract, with no theorem counted from a helper or
-feature-green branch alone. Full third-party reproducibility additionally
-requires the exact canonical source artifact and independently reproducible
-frozen SHA-256.
+feature-green branch alone.

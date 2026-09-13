@@ -20,120 +20,139 @@ Last synchronized: **2026-09-13**
 
 ## Current checkpoint
 
-| state | count |
+| operational state | count |
 |---|---:|
-| integrated proved | **55** |
-| active proof | **0** |
+| integrated proved | **57** |
+| active proof | **3** |
 | blocked | **0** |
-| pending unclassified | **51** |
+| pending unclassified | **46** |
 | total | **106** |
 
-The authoritative source-level ledger is **55 proved / 51 pending**.
+The authoritative source-level ledger is **57 proved / 49 not yet counted**.
+The operational partition splits those 49 into 3 active proof lanes and 46
+still-unclassified/audit-queue P-IDs.
 
-The newest promotion is **P-INT-01**. Its general Standard-Borel predictive
-factorization iff, structured `(M,U)` layer, countable protocol family, common
-versions/common conull set, and common measurable decoder are source-audited,
-main-integrated and green post-main. There is currently no active proof lane;
-the next phase is the source-to-main A/B/C/D audit of the remaining 51 P-IDs.
+## Latest counted promotions — P-OMG-01 / P-OMG-02
 
-## P-INT-01 [PROVED / COUNTED]
+P-OMG-01 formalizes the frozen finite monotone-failure reconstruction theorem:
+a failing deletion set is exactly a superset of an inclusion-minimal failing
+deletion set. It reuses `UEOT.Finite.exists_minimal_subset` rather than
+rebuilding blocker theory.
 
-Frozen source theorem: **Predictive Factorization Characterization Theorem 5.1**.
-For the source's Standard-Borel variables, with structured
-`H=(H^S,H^E)`, `M=f(H^S)`, `U=g(H^E)`, and `Z=(M,U)`:
+Canonical theorem:
 
-`Y_f^+ ⟂ H | Z`
+- `UEOT.V3.OmegaMinimalFailure.p_omg_01`.
 
-iff there exists a measurable probability-law factor `Psi` such that
+P-OMG-02 formalizes the source causal-integrity margin
+`Gamma(T)=infDist(T,F)` and its 1-Lipschitz bound, reusing
+`Metric.lipschitz_infDist_pt`.
 
-`C^f = Psi(M,U)` almost surely.
+Canonical theorem:
 
-For the declared countable intervention/protocol family, the frozen source
-requires common versions so the protocol-indexed statements hold on one common
-conull set.
-
-Canonical source-facing theorems:
-
-- `UEOT.V3.InformationPInt01.p_int_01`;
-- `UEOT.V3.InformationPInt01Common.p_int_01_common`;
-- `UEOT.V3.InformationPInt01Common.p_int_01_common_decoder`.
-
-Completed proof architecture:
-
-1. generic Standard-Borel factorization iff;
-2. structured internal/environment representation;
-3. forward and reverse implications;
-4. canonical conditional-law factorization;
-5. countable protocol/intervention family;
-6. one common conull set/common version;
-7. common measurable decoder packaging.
+- `UEOT.V3.OmegaIntegrityMargin.p_omg_02`.
 
 Promotion evidence:
 
-- final proof branch `formal/pint01-factorization-iff`;
-- verified feature head `3943391af4d459a370ab840d1b15babcae26f82a`;
-- feature full-target CI `34747270058`: success;
-- clean integration commit `d757ea0dd14755233b94d40763f457773a52089f`;
-- clean integration CI `34749908649`: success;
-- `main` commit `d757ea0dd14755233b94d40763f457773a52089f`;
-- post-main CI `34750114264`: success;
-- prohibited-proof audit: zero `sorry`, zero `admit`, zero `native_decide`, zero
-  unsourced `axiom` in the clean integration diff;
-- canonical-source semantic audit completed 2026-09-13.
+- P-OMG-01 feature head `effa5bf10787095b2dd1bb86e68f100cb907f0af`,
+  CI `34750708593`: success;
+- P-OMG-02 feature head `8d5ddee1faff1ae588a478e2a1c58235852d7500`,
+  CI `34750765181`: success;
+- combined clean integration/main proof commit
+  `4db94c39dddce53a5543e40568e5fc104321e88b`;
+- integration CI `34751042701`: success;
+- post-main CI `34751300612`: success;
+- prohibited-proof audit: zero `sorry`, `admit`, `native_decide`, unsourced
+  `axiom` in the new proof files;
+- canonical-source semantic audit: complete.
 
-Do not reopen this lane absent a substantive source mismatch or CI regression.
-Do not import the discrete canonical-core restrictions of P-INFO-03 into this
-source theorem.
+Do not reopen these lanes absent a substantive source mismatch or CI regression.
 
-## P-INFO-03 [PROVED / COUNTED]
+## Active proof lane — P-DDH-01
 
-Frozen target:
+Frozen theorem: the gauge transformation
+`Pi'=Pi+lambda*chi`, `Phi'=Phi+chi` leaves `Pi-lambda*Phi` invariant.
 
-`R_obj(0)=H(C|U)` for discrete canonical predictive core
-`C=P(Y∈·|H,U)`, allowing genuinely randomized encoders `P(M|H,U)` that cannot
-access future `Y`.
+- branch: `formal/pddh01-gauge-cancellation`;
+- current head: `d1528ed40748ed8163af3565575c8a3465124818`;
+- candidate theorem: `UEOT.V3.DualDriveGauge.p_ddh_01`;
+- first CI `34751185618`: failed;
+- failure was addressed by replacing the Unicode `Pi` binder token with a
+  nonreserved Lean identifier; theorem semantics were unchanged;
+- current CI `34751461041`: in progress at synchronization time.
 
-Canonical source-facing theorem:
+Do not promote until the current feature CI is green, source semantics are
+re-audited, and the clean latest-main integration lifecycle is complete.
 
-`UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy`.
+## Active proof lane — P-ALI-03
 
-Promotion evidence:
+Frozen theorem: for the coordinated field
+`G_eta=(1-eta)G+eta g`, with `0<=eta<=1` and `<g,G><0`, the parent-value
+instantaneous derivative is positive iff
 
-- final proof branch `formal/pinfo03-rate-zero`;
-- final proof head `b90cb81f5ae600ba961e2948f304aa87472c8ea9`;
-- proof CI `34744325632`: success;
-- clean integration CI `34744658528`: success;
-- main commit `57e987a18a5dd8feca224b91e3e78b93c2a44de8`;
-- post-main CI `34744919310`: success.
+`eta > -<g,G>/(||g||^2-<g,G>)`.
+
+- branch: `formal/pali03-coordination-threshold`;
+- head: `5a85a3321bf3639a59996be8cea59357fe6cddab`;
+- candidate scalar-normal-form theorem:
+  `UEOT.V3.AlignmentThreshold.p_ali_03`;
+- feature CI `34751255136`: in progress at synchronization time.
+
+Semantic guard: before promotion, decide whether the frozen Hilbert-space
+statement requires an explicit Hilbert wrapper connecting the scalar variables
+to `<g,G>` and `||g||^2`. Do not count a merely algebraic scalar restatement if
+that wrapper is needed for source-facing closure.
+
+## Active proof lane — P-EVO-01
+
+Frozen theorem: finite-type deterministic mean-intensity Price decomposition
+with parent frequencies, reproduction intensities, row-stochastic transmission
+kernel and parent/offspring traits.
+
+- branch: `formal/pevo01-price-decomposition`;
+- head: `bc5f4d55e5feecf7f2fbcf09521943a551e179b2`;
+- candidate theorem: `UEOT.V3.EvolutionPrice.p_evo_01`;
+- feature CI `34751340890`: in progress at synchronization time.
+
+Semantic guard: before promotion, audit whether the direct algebraic theorem
+must be supplemented by an explicit source-facing `M=D_b K`,
+`p'=pM/bar_b` wrapper. Preserve the source distinction between deterministic
+mean frequency dynamics and expected random frequency ratios.
+
+## Grounded audit findings
+
+Known non-A fronts include:
+
+- P-PER-02: Feller/Krylov–Bogolyubov occupation theorem;
+- P-PER-04: Bouligand tangent-cone viability necessity;
+- P-REC-03: hitting-time potential `PV_A-V_A=-1` off the target;
+- P-REC-04: negative-drift expected hitting-time bound;
+- P-QSD-01: conditional-survival stabilization implies QSD/exponential survival;
+- P-QSD-03: simultaneous mixing/survival persistence window;
+- P-QSD-04: self-adjoint compact-resolvent killed-diffusion spectral theorem.
+
+Do not swap P-QSD-01 and P-QSD-03: the numbering above is frozen-source truth.
+
+Potential short closures still requiring careful API/source audit include
+P-COMP-03. P-DDH-04/05 are not treated as quick algebraic lanes because they
+need rank/stacked-Jacobian and singular-value perturbation infrastructure.
+P-REF-03 must retain arbitrary signal-space conditional expectation rather than
+being weakened to a finite signal table.
 
 ## Closed lanes
 
 Do not reopen without a substantive source mismatch or CI regression:
 
-- P-STAT-06;
-- P-INFO-02;
-- P-INFO-03;
-- P-INFO-04;
-- P-ID-02;
-- P-INT-01.
+- all 57 P-IDs listed in `V3_COVERAGE_STATUS.md`, including P-INT-01,
+  P-INFO-03, P-ID-02, P-OMG-01 and P-OMG-02.
 
-## Current phase — remaining source-to-main audit
+## Current phase
 
-The audit population is **51 unclassified P-IDs**. Before opening another proof
-stack, read each frozen source statement and compare it against current `main`.
-Classify each P-ID as:
+Continue the remaining source-to-main A/B/C/D audit while active feature CIs
+run. Open only source-faithful high-leverage lanes. When a feature goes green,
+re-audit exact frozen semantics before clean-porting to the latest `main`.
+Feature green never increments coverage.
 
-- **A:** a source-facing theorem already exists on `main`; semantic audit and
-  promotion may be enough;
-- **B:** substantial mathematics exists on `main`, but a source-facing wrapper,
-  exact quantifier alignment, or final obligation is missing;
-- **C:** major ingredients exist, but one or more bridge theorems are missing;
-- **D:** genuinely new formal mathematics is required.
-
-Module names alone never justify promotion. Existing green/count\-ed P-IDs must
-not be reproved during this audit.
-
-## Public canonical-source synchronization [REPRODUCIBILITY TASK]
+## Public canonical-source synchronization
 
 The exact canonical source bytes are still not present in the public repository.
 Required for third-party self-contained reproduction:
