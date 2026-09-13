@@ -1,8 +1,7 @@
 # UEOT Core v3.0 Lean Coverage Status
 
 This file is the **authoritative source-level P-ID ledger** for the frozen
-`UEOT_Core_Mathematics_v3.0_Complete.md` specification. Historical detailed
-promotion narratives remain in Git and in `docs/archive/`.
+`UEOT_Core_Mathematics_v3.0_Complete.md` specification.
 
 ## Verification contract
 
@@ -15,32 +14,26 @@ promotion narratives remain in Git and in `docs/archive/`.
 - canonical source object: available in the project File Library for semantic audit
 - exact canonical source bytes in public repo: **pending synchronization**
 
-A P-ID is counted as `proved` only after semantic matching against the canonical
-frozen source object, official import reachability, relevant feature/clean/PR
-CI gates, main integration, green post-main CI, prohibited-proof/axiom audit,
-and ledger synchronization.
+A P-ID is counted `proved` only after semantic matching against the canonical
+frozen source object, official import reachability, required CI gates, main
+integration, green post-main CI, prohibited-proof/axiom audit, and ledger
+synchronization.
 
-**Public source-artifact reproducibility is tracked separately.** Absence of the
-exact canonical Markdown bytes from the public repository does not invalidate a
-source-theorem proof that has already been audited against the canonical source
-object and integrated with green post-main CI. However, the repository must not
-claim that the canonical SHA was independently recomputed until those raw bytes
-are actually present and hashed. No regenerated substitute is accepted.
-
-The detailed evidence for the 2026-09-13 P-INFO-02/P-INFO-04 semantic audit is
-`docs/SOURCE_AUDIT_EVIDENCE_2026-09-13.md`.
+Public source-artifact reproducibility is tracked separately. The canonical SHA
+must not be claimed as independently recomputed until the exact raw bytes are
+present in the public repository.
 
 ## Current source-level coverage
 
 | status | count |
 |---|---:|
-| **proved** | **52** |
+| **proved** | **53** |
 | **partial** | **0** |
-| **pending** | **54** |
+| **pending** | **53** |
 | **total** | **106** |
 
-There are no partial P-IDs. `pending` means only “not yet counted proved”; it
-does not imply that no mathematical or Lean proof exists on a feature branch.
+`pending` means only “not yet counted proved”; it does not mean no relevant
+mathematics or Lean code exists.
 
 ## Proved P-ID set
 
@@ -61,92 +54,94 @@ does not imply that no mathematical or Lean proof exists on a feature branch.
 - **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02
 - **Persistence:** P-PER-01, P-PER-03
-- **Transport / identity:** P-ID-01
+- **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 4 + 1 + 2 + 1 + 2 + 1 + 1 = 52`.
+Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 4 + 1 + 2 + 1 + 2 + 1 + 2 = 53`.
 
-## Newly counted source promotions — P-INFO-02 and P-INFO-04
-
-### P-INFO-02 — predictive TV bound
+## Newly counted promotion — P-ID-02
 
 Frozen source contract:
 
-`E TV(P(Y|H), P(Y|M,U)) <= sqrt(I(H;Y|M,U)/2)`
+- reference trajectory under the same declared external inputs:
+  `thetaBar_(t+1) = Psi_t(thetaBar_t)`;
+- residual bound:
+  `d(theta_(t+1), Psi_t(theta_t)) <= epsilon_t`;
+- `Psi_t` is `L_t`-Lipschitz;
+- therefore
+  `e_(t+1) <= L_t e_t + epsilon_t` and
+  `e_n <= (prod_(j<n) L_j)e_0 + sum_(k<n) epsilon_k prod_(j=k+1)^(n-1) L_j`;
+- if `L_t <= L < 1` and `epsilon_t <= epsilon`, then
+  `e_n <= L^n e_0 + epsilon(1-L^n)/(1-L)`;
+- differing actual/reference external inputs require an extra input-sensitivity
+  error term and are not silently identified with this theorem.
 
-for standard Borel `H,Y,M,U` with `M,U` measurable history statistics.
+Source-facing implementation:
+
+- `UEOT.V3.DevelopmentTransport.development_error_step`;
+- `UEOT.V3.DevelopmentTransport.development_pipeline`;
+- `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_geom`;
+- `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_contraction`.
+
+The implementation uses `PseudoMetricSpace`, exactly covering the source's
+metric-or-pseudometric scope. `hL0 : 0 <= L_t` explicitly unpacks the standard
+nonnegative Lipschitz-constant convention. The exact product-sum formula is
+obtained from pinned Mathlib's machine-checked discrete Grönwall theorem, not
+replaced by a weaker exponential estimate.
+
+Verification evidence:
+
+- feature branch head `90bbc7cb405e3ba51180862fb4b41f0ff201d7ef`;
+- full-target feature CI `34716348615`: success;
+- PR #54 merged;
+- main commit `4a29c2d5aa6a805d867e1934f6013aa49f1dc431`;
+- post-main full-target CI `34717095993`: success;
+- canonical source semantic audit completed 2026-09-13.
+
+**Status: PROVED / COUNTED.**
+
+## Previously counted information promotions
+
+### P-INFO-02
 
 Canonical theorem:
 `UEOT.V3.InformationPInfo02.p_info_02_ennreal`.
 
-Verification evidence:
+Evidence: PR #46, main
+`c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`, post-main CI `34692828935`
+success, canonical-source semantic audit complete.
 
-- exact source semantics re-audited against the canonical source object on
-  2026-09-13;
-- all-cases PR #46;
-- main commit `c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f`;
-- post-main CI `34692828935`: success.
+### P-INFO-04
 
-The theorem has no finite-information source assumption; `I=top` is handled
-explicitly. `[Nonempty Y]` is a Mathlib disintegration/elaboration condition
-implied by existence of the source probability law.
+Canonical theorems:
 
-**Status: PROVED / COUNTED.**
+- `UEOT.V3.InformationPInfo04.p_info_04`;
+- `UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary`.
 
-### P-INFO-04 — both frozen clauses
-
-**Multiway sharp Fano**
-
-- canonical theorem: `UEOT.V3.InformationPInfo04.p_info_04`;
-- source semantics re-audited on 2026-09-13;
-- PR #47;
-- main commit `94e16dfb9cc9a2db6e000d8f5394c1b07869ce40`;
-- post-main CI `34693509298`: success.
-
-**Conditional binary identity-information lower bound**
-
-- canonical theorem:
-  `UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary`;
-- finite KL/entropy bridge:
-  `UEOT.V3.InformationConditionalBinaryMutualEntropy.conditionalBinaryMutualInfo_eq_ofReal_entropyForm_of_ne_top`;
-- source semantics re-audited on 2026-09-13;
-- full compose CI `34705230951`: success;
-- clean commit `8c76777e78e8d7f73b0d71397f8c81aeaa6e9c54`;
-- clean CI `34705560077`: success;
-- PR #51 CI `34706303512`: success;
-- integrated main commit `e19eee7082418f1826650316b533c0380a9a451f`;
-- post-main CI `34706528781`: success.
-
-The binary proof handles reference-probability boundary cases, uses the actual
-measurable decoder rather than a MAP substitution, and treats `CMI=top`
-separately, so the frozen source theorem does not acquire a finite-CMI
-assumption.
-
-**Status: PROVED / COUNTED.**
-
-For both P-INFO-02 and P-INFO-04, `public_source_artifact_synced = false` remains
-a separate reproducibility flag. The canonical SHA has not been recomputed from
-local raw bytes in the current audit session.
+Evidence includes PR #47 for multiway Fano and PR #51 for the conditional
+binary clause, integrated main commit
+`e19eee7082418f1826650316b533c0380a9a451f`, post-main CI `34706528781`
+success, and canonical-source semantic audit complete.
 
 ## Active unresolved front
 
-- **P-INFO-03 — ACTIVE PROOF:** prove genuine countable-discrete `H(C|U)` by
-  disintegration, random-encoder joint-law semantics, zero-distortion
-  recoverability, conditional DPI, and attainability. The first countable
-  conditional-entropy module has already passed official full-target CI
-  `34706765170`.
+- **P-INFO-03 — ACTIVE PROOF:** genuine countable-discrete `H(C|U)`, random
+  encoder semantics, zero-distortion predictive-core recoverability,
+  conditional DPI, attainability, and exact `R_obj(0)=H(C|U)`.
 - **P-INT-01 — BLOCKED:** reuse the general conditional-information interface
   produced by P-INFO-03; do not build a duplicate stack.
+- **Remaining 51 unclassified P-IDs — SOURCE-TO-MAIN AUDIT:** identify
+  source-facing theorems already on main before starting new proof stacks.
 - **Public canonical source synchronization — REPRODUCIBILITY TASK:** copy the
   exact canonical bytes into the public repository and independently recompute
-  SHA-256. This task no longer changes the proof count by itself.
+  SHA-256; this task does not change proof count by itself.
 
 The machine-readable live details are in `docs/PID_STATUS.yaml`.
 
 ## Completion rule
 
-UEOT Core v3.0 formalization is complete only when all **106** source P-IDs pass
-the source-theorem proof contract, with no theorem counted from a helper or
-feature-green branch alone. Full project reproducibility additionally requires
-the exact canonical source artifact to be present in the public repository and
-the frozen SHA-256 to be independently reproducible there.
+UEOT Core v3.0 is machine-complete only when all **106** source P-IDs pass the
+source-theorem proof contract, with no theorem counted from a helper or
+feature-green branch alone. Full third-party reproducibility additionally
+requires the exact canonical source artifact and independently reproducible
+frozen SHA-256.
