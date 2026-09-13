@@ -13,19 +13,20 @@ source:
 coverage:
   integrated_proved: 72
   promotion_running: 0
-  active_proof: 1
-  source_audit: 0
+  active_proof: 0
+  source_audit: 1
   blocked: 0
   pending_unclassified: 33
   unresolved_total: 34
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
     Operational partition staged by this ledger checkpoint: 72 integrated/proof-complete
-    P-IDs including newly promoted P-ALG-01 + 1 active proof lane (P-BRG-02) + 33
+    P-IDs including newly promoted P-ALG-01 + 1 source-audit lane (P-REF-01) + 33
     pending/unclassified = 106. P-ALG-01 has completed feature, clean-integration
     and post-main proof gates; 72/106 becomes full-green only after this ledger
     checkpoint passes PR CI, lands on main and passes the resulting main CI.
-    P-BRG-02 is feature work only and is not counted.
+    P-BRG-02 was already counted in the authoritative 71/106 baseline and must
+    not be reopened absent a source mismatch or CI regression.
 state_vocabulary:
   - source_audit
   - proof
@@ -389,22 +390,6 @@ pids:
     coverage_counted: true
     ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
-  P-BRG-02:
-    state: proof
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: quick_interface_consistency
-    canonical_theorem: UEOT.V3.SelectionBehavioralEquivalence.p_brg_02
-    feature_branch: formal/pbrg02-behavioral-equivalence
-    feature_head: 8ddd9ebf847592b9a62546f468c4f25d515a4a88
-    feature_ci: {run: 34777917118, status: in_progress}
-    source_note: >-
-      Fixed-environment replication is assumed to factor completely through the
-      declared behavioral response Q. Equality of response therefore forces
-      equality of replication rate. Type-dependent mutation, material costs or
-      other replication channels change the model and are outside P-BRG-02.
-    coverage_counted: false
-
 audits:
   P-EVO-03:
     state: archive
@@ -420,7 +405,8 @@ audits:
     state: source_audit
     audit_class: medium_stochastic_process
     source_note: >-
-      Requires arbitrary causal policies over finite histories and uniqueness of
-      the augmented-state path law from the initial law and controlled kernel.
-      Pinned Mathlib provides Ionescu-Tulcea traj/trajMeasure machinery; do not
-      weaken to deterministic or Markov-only policies.
+      Requires the full augmented-state path-law theorem under arbitrary causal
+      policies. Pinned Mathlib provides Ionescu-Tulcea traj/trajMeasure,
+      projective-limit uniqueness and conditional-distribution interfaces.
+      Do not weaken to deterministic or Markov-only policies; deterministic
+      structural modification is a special case/corollary.

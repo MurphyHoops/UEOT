@@ -56,35 +56,34 @@ Evidence:
 - proof main `9c638eee8448059221232fa764a2f3ebf00d46bd`;
 - proof post-main CI `34777649215` success.
 
-## Previous full-green checkpoint — 71/106
+## Recovery correction — counted P-BRG-02 was not a new lane
 
-P-API-01 and all earlier counted P-IDs are fully green at the baseline
-`main@5218e615d852c1ffee72107f35435ee378709166`, CI `34771573465` success.
-Do not reopen counted P-IDs absent a source mismatch or CI regression.
+The old 71/106 authoritative proved set already includes **P-BRG-02**. During
+post-main CI waiting a redundant branch `formal/pbrg02-behavioral-equivalence`
+was briefly created before that old list was rechecked. It is not part of the
+promotion plan, must not be integrated, and must not be counted again. No source
+mismatch or CI regression was found, so the counted theorem remains closed.
 
-## Active feature lane — P-BRG-02
-
-Frozen §26.4 says: in one fixed environment, if replication is completely a
-function of the declared behavioral response `Q`, equal responses imply equal
-replication rates. It is an interface-consistency theorem, not a claim that
-mutation/material cost/other channels are absent in nature.
-
-Current feature:
-- branch `formal/pbrg02-behavioral-equivalence`;
-- head `8ddd9ebf847592b9a62546f468c4f25d515a4a88`;
-- theorem `UEOT.V3.SelectionBehavioralEquivalence.p_brg_02`;
-- feature CI `34777917118`.
-
-Feature green must not change the coverage count. If green, clean-integrate only
-from the then-latest full-green main.
-
-## Audited next stochastic lane — P-REF-01
+## Current next action — P-REF-01 source audit
 
 Frozen P-REF-01 requires arbitrary causal-policy augmented-state path-law
-existence/uniqueness from initial law and measurable controlled kernel. Pinned
-Mathlib contains Ionescu--Tulcea `traj`/`trajMeasure`, so reuse that machinery.
-Do not weaken to deterministic or Markov-only policies. Deterministic structural
-update is a corollary/special case, not the general theorem.
+existence/uniqueness from the initial law and measurable controlled kernel.
+Pinned Mathlib contains Ionescu--Tulcea `traj`/`trajMeasure`, so reuse that
+machinery. Do not weaken to deterministic or Markov-only policies. Deterministic
+structural update is a corollary/special case, not the general theorem.
+
+Exact next construction sequence after 72 becomes full-green:
+
+1. define the augmented state `Z=(X,S)` at the Lean interface boundary;
+2. model an arbitrary history-dependent randomized causal policy as a family of
+   Markov kernels on finite histories;
+3. compose the policy kernel with the controlled state kernel `K` to obtain the
+   one-step history kernel;
+4. build the infinite path law with pinned Mathlib Ionescu--Tulcea
+   `trajMeasure`;
+5. prove the source uniqueness criterion without introducing an axiom;
+6. expose deterministic `S_{t+1}=F(...)` as a specialization only;
+7. feature CI, then clean integration from the then-latest full-green main.
 
 ## Grounded non-quick fronts
 

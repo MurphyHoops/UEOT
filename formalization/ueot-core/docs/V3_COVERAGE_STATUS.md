@@ -47,7 +47,7 @@ mathematics or Lean code exists.
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
-- **Bridge:** P-BRG-02 is **not yet counted**; P-BRG-02 feature work is active
+- **Bridge:** P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
 - **Internal/external factorization:** P-INT-01, P-INT-02, P-INT-03
 - **Information:** P-INFO-01, P-INFO-02, P-INFO-03, P-INFO-04, P-INFO-05
@@ -111,31 +111,24 @@ main CI.**
 
 ## Previous full-green checkpoint — 71/106
 
-P-API-01 and all earlier counted theorems are fully green. The full-green
-71/106 baseline before P-ALG-01 proof promotion was
+P-API-01 and all earlier counted theorems — including P-BRG-02 — are fully
+green. The full-green 71/106 baseline before P-ALG-01 proof promotion was
 `main@5218e615d852c1ffee72107f35435ee378709166` with ledger/main CI
 `34771573465` successful. Counted P-IDs are not reopened absent a substantive
 source mismatch or CI regression.
 
-## Active proof lane — P-BRG-02
+During this recovery, a redundant P-BRG-02 feature branch was briefly opened
+before the old 71 ledger list was rechecked. It is **not part of the promotion
+plan and must not be merged or counted again**.
 
-Frozen §26.4 is an interface-consistency theorem. In one fixed environment,
-replication is assumed to factor completely through the declared behavioral
-response `Q`. Therefore exact response equality forces exact equality of the
-replication rate. Type-dependent mutation, material cost or any other
-replication channel changes the model and lies outside this P-ID.
-
-Active feature branch:
-`formal/pbrg02-behavioral-equivalence@8ddd9ebf847592b9a62546f468c4f25d515a4a88`.
-Feature workflow: `34777917118`. Feature work never increments coverage.
-
-## Next stochastic source audit — P-REF-01
+## Current source-audit lane — P-REF-01
 
 P-REF-01 requires arbitrary causal policies and uniqueness of the augmented
 state path law from the initial law and measurable controlled kernel. The pinned
 Mathlib contains Ionescu--Tulcea `traj`/`trajMeasure`, so this lane should reuse
 that foundation rather than introduce an axiom or weaken to deterministic or
-Markov-only policies.
+Markov-only policies. Deterministic structural modification is a special case,
+not the general theorem.
 
 ## Reproducibility task
 

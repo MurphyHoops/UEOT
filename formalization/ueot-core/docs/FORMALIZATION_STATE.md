@@ -17,12 +17,13 @@ Last synchronized: **2026-09-14**
 - integration branch: `main`
 - exact canonical bytes in public repo: pending synchronization
 
-## Current counted checkpoint
+## Current staged checkpoint
 
 | operational state | count |
 |---|---:|
 | integrated proved, staged by this checkpoint | **72** |
-| active proof | **1** |
+| active proof | **0** |
+| source audit | **1** |
 | blocked | **0** |
 | pending/unclassified | **33** |
 | total | **106** |
@@ -60,27 +61,24 @@ The proof is scoped to the specified finite Markov state domain. It does not
 claim unconditional full-history FFIPS equivalence, does not add §28.4
 constraint indicators and does not use floating-tolerance clustering.
 
-## Active proof — P-BRG-02
+## Recovery correction — P-BRG-02
 
-Source §26.4 is an interface-consistency result: within one fixed environment,
-when replication factors completely through behavioral response `Q`, response
-equality forces replication-rate equality. Additional mutation/material-cost/
-replication channels change the model.
+The authoritative 71/106 ledger already counts **P-BRG-02**. A redundant feature
+branch (`formal/pbrg02-behavioral-equivalence`) was opened during CI waiting
+before that old counted list was rechecked. It is not a new proof lane, must not
+be merged, and must not change coverage. The protocol rule
+`do_not_reopen_counted_green_pids_without_source_mismatch_or_regression` remains
+in force.
 
-Current feature:
-- `formal/pbrg02-behavioral-equivalence`;
-- head `8ddd9ebf847592b9a62546f468c4f25d515a4a88`;
-- source-facing theorem `UEOT.V3.SelectionBehavioralEquivalence.p_brg_02`;
-- CI `34777917118` (feature gate; never counted directly).
+## Current source audit — P-REF-01
 
-## Next audited stochastic lane — P-REF-01
-
-P-REF-01 requires the augmented-state path law under arbitrary causal policy to
-be uniquely determined by the initial law and measurable controlled kernel.
+P-REF-01 requires the augmented-state path law under **arbitrary causal policy**
+to be uniquely determined by the initial law and measurable controlled kernel.
 Pinned Mathlib contains the Ionescu--Tulcea `traj` and `trajMeasure` machinery,
 including projective-limit uniqueness and conditional-distribution interfaces.
-The lane must preserve arbitrary history-dependent randomized policies; a
-Markov-only or deterministic-policy surrogate is not source-equivalent.
+The eventual proof must preserve arbitrary history-dependent randomized
+policies; a Markov-only or deterministic-policy surrogate is not source-equivalent.
+Deterministic structural modification is a special case/corollary.
 
 ## Grounded non-quick fronts
 
