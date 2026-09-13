@@ -23,10 +23,15 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved** | **69** |
+| **proved, staged by this ledger checkpoint** | **70** |
 | **partial** | **0** |
-| **pending** | **37** |
+| **pending / not yet counted** | **36** |
 | **total** | **106** |
+
+This branch stages 70/106 after P-KL-02 completed its proof, clean-integration,
+and post-main proof gates. **70/106 is not called full-green until this ledger
+checkpoint itself passes PR CI, lands on `main`, and the resulting main CI
+succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -55,72 +60,86 @@ mathematics or Lean code exists.
 - **Omega / integrity:** P-OMG-01, P-OMG-02
 - **Dual-drive / alignment:** P-DDH-01, P-ALI-02, P-ALI-03
 - **Composition:** P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
-- **KL / path information:** P-KL-01, P-KL-03
+- **KL / path information:** P-KL-01, P-KL-02, P-KL-03
 - **Evolution:** P-EVO-01, P-EVO-02
 
-Count check: `68 + 1 = 69`.
+Count check: `69 + 1 = 70`.
 
-## Newly counted promotion — P-EVO-02
+## Newly staged promotion — P-KL-02
 
-Frozen source §25.3 is retained exactly: for a finite label `T` independent of
-the joint parent/offspring pair `(F,F')` and copied without error,
+Frozen source §22.2 is implemented at full strength. For `q = P0(A)`,
+`0 < q < 1`, and `0 ≤ p ≤ 1`, the optimization is literally over **all**
+probability laws `Q ≪ P0` satisfying `Q(A) ≥ p`:
 
-`I((F,T);(F',T)) = I(F;F') + H(T)`.
-
-The implementation does not replace independence with pairwise assumptions or
-replace exact copying by a noisy channel. Independence is encoded structurally
-as `ρ.prod (copyJoint τ)` and `sharedRepack` only regroups coordinates.
+- if `p ≤ q`, the infimum is `0`, attained by `P0`;
+- if `p > q`, the infimum is exactly `dBern p q`;
+- the active optimizer is the explicit two-region RN tilt
+  `(p/q) 1_A + ((1-p)/(1-q)) 1_{Aᶜ}`;
+- the optimizer is proved to be a probability law, absolutely continuous with
+  respect to `P0`, to have exact event mass `p`, and to have exact KL cost
+  `dBern p q`;
+- the endpoint `p = 1` is retained.
 
 Canonical theorem:
-- `UEOT.V3.EvolutionSharedLabel.p_evo_02`.
+- `UEOT.V3.PathEventIProjection.p_kl_02`.
+
+Supporting source-facing construction includes:
+- `UEOT.V3.PathEventIProjection.eventIProjection`;
+- `UEOT.V3.PathEventIProjection.eventIProjection_klDiv_eq_dBern`;
+- `UEOT.V3.BernoulliKLMonotone.dBern_mono_active`;
+- literal feasible-law infimum `EventFeasibleLaw` / `eventKLIInf`.
 
 Promotion evidence:
-- feature branch `formal/pevo02-shared-label`;
-- feature head `bfe0c3f43728a9ae5a07f1729c143039d16d7cff`;
-- feature CI `34763489145`: success;
-- clean integration head `0a3691ef1d97cae1a8017adae47bd8aa7ea49c47`;
-- clean integration PR #59;
-- clean integration CI `34765061853`: success;
-- main proof commit `17f7ca2070a439a7e4c99622d3c27095431a1571`;
-- post-main CI `34765399086`: success;
-- exact integration diff: `UEOT/V3/EvolutionSharedLabel.lean` plus one top-level import;
+- full-contract feature head `cb78b0df87ef64fc0bc61e1e320ff901247d00cd`;
+- feature CI `34768634473`: success;
+- clean integration branch `formal/pkl02-clean-int-cb78`;
+- clean integration head `d30d31e15f38b349488edf4a5b12c94bace70031`;
+- clean integration PR #62;
+- clean integration CI `34769135038`: success;
+- proof main commit `60ac78273200f5152a5e8d8286c840697e69bb51`;
+- proof post-main CI `34769394882`: success;
+- exact clean-integration diff: four P-KL-02 modules plus four top-level imports;
 - prohibited-proof audit: clean;
 - frozen-source semantic audit: complete.
 
-**Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own main CI.**
+**Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
+main CI.**
 
-## Previously counted promotion — P-KL-03
+## Previous full-green checkpoint — P-EVO-02 / 69 of 106
 
-Frozen source §22.3 remains implemented at full strength: finite-horizon path
-laws use genuinely history-dependent kernels, with the initial-law KL term in
-the distinct-initial theorem and the same-initial corollary exposed explicitly.
+P-EVO-02 is already fully counted. Its exact shared-label mutual-information
+identity is on main with joint-pair independence encoded structurally and exact
+copying preserved. Feature CI `34763489145`, clean-integration CI `34765061853`,
+proof post-main CI `34765399086`, and 69/106 ledger main CI `34766813335` all
+succeeded. The later recovery checkpoint `main@e3f046fcf4096a1bb6acb561afe1e31244e3aaad`
+also passed CI `34767624927`.
 
-Canonical theorem family:
-- `UEOT.V3.PathKLChain.p_kl_03_same_initial`;
-- `UEOT.V3.PathKLChain.p_kl_03_general`;
-- `UEOT.V3.PathKLChain.p_kl_03`.
+## Promotion-ready next lane — P-API-01
 
-Main proof commit `b3e1c152e42b4e2a2b7001776214ecaaa35aae18`, post-main CI
-`34763070439`, and 68/106 ledger main CI `34763815124` are all successful.
+P-API-01 is **not counted** in the 70 above. Its frozen §28.3 process-interface
+contract has completed a feature proof and source audit:
 
-## Active unresolved front — P-KL-02
+- branch `formal/papi01-process-interface-fresh`;
+- feature head `0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
+- feature CI `34769177051`: success;
+- exact clause composes protocol lifts and measurable path readouts;
+- approximate clause proves TV defect at most
+  `min 1 (εAB + εBC)` using P-MET-01 and the TV triangle inequality;
+- no control-interface structures from §28.4 are silently added;
+- prohibited-proof audit: clean.
 
-Frozen source §22.2 requires the sharp event I-projection over **all** path laws
-`Q ≪ P0` with `Q(A) ≥ p`, where `q = P0(A)` and `0 < q < 1`:
+It must be clean-integrated only from the eventual **70/106 full-green main**.
+Feature green alone does not increment coverage.
 
-- `p ≤ q`: infimum `0`, attained by `P0`;
-- `p > q`: infimum exactly `d_Bern(p || q)`;
-- explicit RN optimizer
-  `(p/q) 1_A + ((1-p)/(1-q)) 1_{Aᶜ}`;
-- probability, absolute continuity, exact event mass and exact KL checks;
-- the `p = 1` boundary case.
+## Grounded next audit — P-ALG-01
 
-Current lane:
-- branch `formal/pkl02-event-iprojection`;
-- explicit optimizer implemented via `Measure.withDensity`;
-- helper construction/RN layer green at `333a3e9ffa0cadbaaa0b167ec0ccdc7d8685317a`, CI `34765080012`;
-- event-mass/probability layer under CI at head `1378efc916e894057cd4cd38cedbfd9c5eac9f80`, run `34765567421`;
-- no P-KL-02 coverage change yet.
+Frozen §28.5 requires a genuine finite partition-refinement algorithm: finite
+termination, stable/lumpable quotient correctness, coarsest stable refinement of
+the initial output/reward partition, preservation of output/reward/all-action
+one-step quotient laws, and induction to all corresponding finite-horizon output
+laws. Mathlib provides `Finpartition` / refinement infrastructure, but no existing
+UEOT implementation was found. This is a real algorithmic proof lane, not a
+wrapper or an approximate floating-point clustering theorem.
 
 ## Reproducibility task
 
