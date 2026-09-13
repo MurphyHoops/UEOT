@@ -21,79 +21,89 @@ Last synchronized: **2026-09-14**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **70** |
-| promotion-ready / integration lane | **1** |
+| integrated proved, staged by this checkpoint | **71** |
+| active proof | **1** |
 | blocked | **0** |
-| pending/unclassified | **35** |
+| pending/unclassified | **34** |
 | total | **106** |
 
-The previous authoritative full-green checkpoint is **69/106**. This recovery
-branch stages **70 proved / 36 not yet counted** after P-KL-02 completed all
-proof-side and post-main gates. It must itself pass PR CI, land on `main`, and
-pass the resulting main CI before 70/106 is called full-green.
+The authoritative full-green checkpoint before this recovery branch is
+**70/106**. This branch stages **71 proved / 35 not yet counted** after P-API-01
+completed all proof-side and post-main gates. It must itself pass PR CI, land on
+`main`, and pass the resulting main CI before 71/106 is called full-green.
 
-The one promotion-ready lane is P-API-01. It is feature-green but **not counted**.
+The active proof lane is P-ALG-01. It is **not counted**.
 
-## Newly staged proof — P-KL-02
+## Newly staged proof — P-API-01
 
-Frozen source §22.2 is implemented literally over every probability law
-`Q ≪ P0` with `Q(A) ≥ p`, with `q=P0(A)`, `0<q<1`, `0≤p≤1`.
+Frozen §28.3 exact/approximate process-interface composition is implemented by:
 
-The source-facing theorem exposes both cases:
+- `UEOT.V3.ProcessInterface.p_api_01_exact`;
+- `UEOT.V3.ProcessInterface.p_api_01_approx`.
 
-- `p≤q`: infimum `0`, attained by the baseline `P0`;
-- `p>q`: infimum exactly `dBern(p||q)`, attained by the explicit RN tilt
-  `(p/q)1_A + ((1-p)/(1-q))1_{Aᶜ}`.
-
-The optimizer is proved to be a probability law, absolutely continuous with
-respect to `P0`, to have event mass exactly `p`, to have the required RN
-derivative, and to have exact KL cost. The `p=1` endpoint is retained.
+The implementation contains exactly the frozen process-interface data: protocol
+lift, measurable path readout and naturality of path-law pushforward for all
+declared protocols. Exact interfaces compose exactly. Approximate TV defects
+compose with `min 1 (εAB + εBC)` by pushforward contraction plus the TV triangle
+inequality. Frozen §28.4 control actions, policy lifts, rewards and constraints
+remain separate.
 
 Evidence:
-- theorem `UEOT.V3.PathEventIProjection.p_kl_02`;
-- full feature `formal/pkl02-event-iprojection@cb78b0df87ef64fc0bc61e1e320ff901247d00cd`;
-- feature CI `34768634473`: success;
-- clean integration `formal/pkl02-clean-int-cb78@d30d31e15f38b349488edf4a5b12c94bace70031`;
-- PR #62 CI `34769135038`: success;
-- proof main commit `60ac78273200f5152a5e8d8286c840697e69bb51`;
-- post-main CI `34769394882`: success;
+- feature `formal/papi01-process-interface-fresh@0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
+- feature CI `34769177051`: success;
+- clean integration `formal/papi01-clean-int-70@697df634e502bbd5407fc7f832963ac0afe1203d`;
+- PR #64 CI `34770423058`: success;
+- proof main `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
+- post-main CI `34770728978`: success;
 - source semantic audit complete;
 - prohibited-proof audit clean.
 
-## Previous full-green checkpoint — 69/106
+## Previous full-green checkpoint — 70/106
 
-P-EVO-02 is fully counted. Its feature, clean-integration, proof post-main, and
-ledger gates are green; the later recovery checkpoint
-`main@e3f046fcf4096a1bb6acb561afe1e31244e3aaad` passed CI `34767624927`.
-Do not reopen P-EVO-02 absent a substantive source mismatch or regression.
+P-KL-02 and all earlier counted theorems are fully green. The 70/106 ledger main
+CI `34770086580` succeeded on
+`main@8f29d29a0fe32bf9cccb7cbc12c84676768d9592`.
 
-## Promotion-ready lane — P-API-01
+## Active proof — P-ALG-01
 
-Frozen §28.3 exact/approximate process-interface composition has a feature-green
-proof on:
+Frozen §28.5 is a genuine finite exact partition-refinement algorithm, not an
+existence wrapper and not approximate clustering. Source audit is locked to:
 
-- `formal/papi01-process-interface-fresh@0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
-- feature CI `34769177051`: success.
+- finite state set and common finite action set;
+- transition matrix for every action;
+- reward `r(x,a)` and output label `o(x)`;
+- initial partition by output plus complete reward vector;
+- exact refinement by current block plus all action/current-block transition
+  masses;
+- finite termination;
+- terminal controlled stability/lumpability;
+- coarsest stable refinement of the initial partition;
+- preservation of output/reward/all-action one-step quotient laws;
+- all corresponding finite-horizon output laws by recursion.
 
-The implementation types exactly the frozen process interface: a protocol lift,
-a measurable path readout, and naturality of path-law pushforward for all
-declared protocols. Exact interfaces compose exactly. Approximate TV defects
-compose with bound `min 1 (εAB + εBC)` by P-MET-01 plus triangle inequality.
-Control actions, policy lifting, rewards and constraints are intentionally not
-added here because frozen §28.4 requires those as extra control-interface data.
+Current feature branch: `formal/palg01-refinement-core`.
+Current head: `cfe4665da5a61cacdc74be2810af81665e4b19e0`.
+Current CI: `34770820284`.
 
-The feature diff is `UEOT/V3/ProcessInterface.lean` plus one top-level import and
-its prohibited-proof audit is clean. It must be clean-integrated only after the
-70/106 ledger checkpoint is full-green.
+First layer already implemented:
+- finite controlled `Model`;
+- `initialSetoid`;
+- exact `blockMass`;
+- `refineSetoid`;
+- `Refines` and one-round split-only theorem;
+- `Stable` plus fixed-point equivalence;
+- target-block representative independence;
+- finite `relPairs` encoding for termination.
 
-## Independent source audit — P-ALG-01
+Pinned Mathlib verification found:
+- `Quotient.fintype` exists at the project pin;
+- `Finset.card_lt_card` and `ssubset_iff_subset_ne` are available;
+- `Finpartition.ofSetoid` gives the finite equivalence-class partition;
+- `part`, `biUnion_parts` and disjoint finite-sum infrastructure provide the
+  exact bridge needed for the frozen coarsestness proof.
 
-Frozen §28.5 is an exact finite-state partition-refinement algorithm. The source
-requires finite termination, controlled stability, coarsest stable refinement,
-preservation of outputs/rewards/all-action one-step quotient laws, and all
-corresponding finite-horizon output laws. Mathlib provides `Finpartition` /
-refinement infrastructure but no complete UEOT implementation currently exists.
-No approximate floating-point grouping may be substituted for the exact theorem.
+Do not add §28.4 constraint indicators to P-ALG-01. Do not replace exact equality
+with floating tolerances.
 
 ## Grounded non-quick fronts
 
