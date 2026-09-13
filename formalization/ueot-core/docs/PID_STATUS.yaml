@@ -1,5 +1,5 @@
 schema_version: 2
-updated: 2026-09-13
+updated: 2026-09-14
 integration_branch: main
 official_target: lake build UEOT
 source:
@@ -11,20 +11,21 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 69
-  promotion_running: 0
-  active_proof: 1
+  integrated_proved: 70
+  promotion_running: 1
+  active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 36
-  unresolved_total: 37
+  pending_unclassified: 35
+  unresolved_total: 36
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this recovery checkpoint: 69 counted/proved
-    + 1 active source-facing proof lane (P-KL-02) + 36 pending/unclassified = 106.
-    P-EVO-02 has completed feature, clean-integration and post-main proof gates;
-    69/106 becomes full-green only after this recovery/ledger checkpoint passes
-    PR CI, lands on main and passes the resulting main CI.
+    Operational partition staged by this recovery checkpoint: 70 integrated/proof-complete
+    P-IDs including P-KL-02 + 1 promotion-ready lane (P-API-01) + 35
+    pending/unclassified = 106. P-KL-02 has completed feature, clean-integration
+    and post-main proof gates; 70/106 becomes full-green only after this
+    recovery/ledger checkpoint passes PR CI, lands on main and passes the
+    resulting main CI. P-API-01 is feature-green but not counted.
 state_vocabulary:
   - source_audit
   - proof
@@ -288,24 +289,18 @@ pids:
       clean_integration_ci: {run: 34765061853, status: success}
       main_commit: 17f7ca2070a439a7e4c99622d3c27095431a1571
       post_main_ci: {run: 34765399086, status: success}
+      ledger_main_ci: {run: 34766813335, status: success}
+      recovery_main_ci: {run: 34767624927, status: success}
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: independence is structural product law; copy is diagonal exact copy; coordinate repacking is bijective only
     coverage_counted: true
-    ledger_gate: pending_this_recovery_checkpoint_pr_and_main_ci
 
   P-KL-02:
-    state: proof
+    state: proved
     source_locked: true
     source_semantic_audit: complete
     audit_class: B_or_C
-    branch: formal/pkl02-event-iprojection
-    head: 1378efc916e894057cd4cd38cedbfd9c5eac9f80
-    canonical_candidate: UEOT.V3.PathEventIProjection.p_kl_02
-    helper_ci_green:
-      head: 333a3e9ffa0cadbaaa0b167ec0ccdc7d8685317a
-      run: 34765080012
-      status: success
-    current_ci: {run: 34765567421, status: in_progress}
+    canonical_theorem: UEOT.V3.PathEventIProjection.p_kl_02
     source_contract:
       - optimize over all probability laws Q absolutely continuous with respect to P0
       - constraint Q(A) >= p
@@ -313,23 +308,47 @@ pids:
       - if p <= q then infimum 0 attained by P0
       - if p > q then infimum equals Bernoulli KL d_Bern(p||q)
       - explicit RN optimizer (p/q) 1_A + ((1-p)/(1-q)) 1_Ac
-      - prove optimizer probability, AC, exact event mass and exact KL
+      - prove optimizer probability, AC, exact event mass, RN derivative and exact KL
       - retain p = 1 boundary with 0 log 0 convention
-    implemented:
-      - eventTiltDensity
-      - eventIProjection
-      - measurable_eventTiltDensity
-      - eventIProjection_ac
-      - eventIProjection_rnDeriv
-      - eventIProjection_apply_event
-      - eventIProjection_apply_compl
-      - eventIProjection_isProbability
+    promotion:
+      feature_branch: formal/pkl02-event-iprojection
+      feature_head: cb78b0df87ef64fc0bc61e1e320ff901247d00cd
+      feature_ci: {run: 34768634473, status: success}
+      clean_integration_branch: formal/pkl02-clean-int-cb78
+      clean_integration_head: d30d31e15f38b349488edf4a5b12c94bace70031
+      clean_integration_pr: 62
+      clean_integration_ci: {run: 34769135038, status: success}
+      main_commit: 60ac78273200f5152a5e8d8286c840697e69bb51
+      post_main_ci: {run: 34769394882, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: literal all-feasible-law infimum; explicit two-region event I-projection; exact Bernoulli KL cost and p=1 retained
+    coverage_counted: true
+    ledger_gate: pending_this_recovery_checkpoint_pr_and_main_ci
+
+  P-API-01:
+    state: promotion
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: B
+    canonical_theorems:
+      - UEOT.V3.ProcessInterface.p_api_01_exact
+      - UEOT.V3.ProcessInterface.p_api_01_approx
+    source_contract:
+      - protocol lift J_AB from B protocols to A protocols
+      - measurable path readout C_AB from A paths to B paths
+      - exact naturality for all declared protocols
+      - exact composition J_AC = J_AB o J_BC and C_AC = C_BC o C_AB
+      - approximate TV defect bounded by min(1, epsilon_AB + epsilon_BC)
+      - control-interface data from frozen section 28.4 are separate and not assumed here
+    promotion:
+      feature_branch: formal/papi01-process-interface-fresh
+      feature_head: 0f76d04a4dcc34b2d2aaa806d5803e4823561bbc
+      feature_ci: {run: 34769177051, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     next:
-      - collect current mass/probability CI and repair only exact Lean/API errors
-      - prove exact KL by klDiv_eq_lintegral_klFun_of_ac and A/Ac split
-      - prove Bernoulli KL monotonicity for r >= p > q
-      - prove the global infimum theorem over all feasible Q
-      - clean-integrate only from latest full-green main
+      - wait until the staged 70/106 ledger checkpoint is full-green
+      - clean-integrate only from that latest full-green main
+      - require clean-integration CI, post-main CI, then a separate 71/106 ledger gate
     coverage_counted: false
 
 audits:
@@ -342,3 +361,15 @@ audits:
       normalized power convergence. Pinned Mathlib exposes Matrix.IsPrimitive
       definitions but no directly reusable complete asymptotic theorem was
       found. Do not weaken to an assumed-convergence surrogate.
+
+  P-ALG-01:
+    state: source_audit
+    audit_class: medium_algorithmic
+    source_note: >-
+      Frozen section 28.5 requires the exact finite partition-refinement
+      algorithm, finite termination, terminal controlled stability, coarsest
+      stable refinement of the initial output/reward partition, preservation of
+      output/reward/all-action one-step quotient laws, and induction to all
+      corresponding finite-horizon output laws. Mathlib Finpartition/refinement
+      infrastructure is available, but no complete UEOT implementation has been
+      found. Floating-tolerance clustering is not an acceptable substitute.
