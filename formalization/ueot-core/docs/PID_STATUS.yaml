@@ -11,19 +11,18 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 66
-  promotion_running: 1
+  integrated_proved: 67
+  promotion_running: 0
   active_proof: 1
   source_audit: 1
   blocked: 0
   pending_unclassified: 37
-  unresolved_total: 40
+  unresolved_total: 39
   note: >-
-    Operational partition: 66 proved + 1 integration-ready lane + 1 active proof
-    lane + 1 source-audit lane + 37 pending/unclassified = 106. P-ALI-02 and
-    P-COMP-07 are counted after feature green, joint clean integration CI
-    34757135510, safe non-force main fast-forward to
-    5f9a36d25c5e35fafe5379a5a2ff47b14e77cce8, and post-main CI 34757507969.
+    Operational partition: 67 proved + 1 active proof lane + 1 source-audit lane
+    + 37 pending/unclassified = 106. P-COMP-04 is counted after feature green,
+    clean integration CI 34758385777, safe non-force main fast-forward to
+    412815d611fc3c20e867fdf245fc15fbf1f9266f, and post-main CI 34758642764.
 state_vocabulary:
   - source_audit
   - proof
@@ -226,16 +225,23 @@ pids:
     coverage_counted: true
 
   P-COMP-04:
-    state: integration
+    state: proved
     source_locked: true
     source_semantic_audit: complete
     audit_class: B
-    branch: formal/pcomp04-parent-info
-    head: d7b3446dcac54f62f7d28a141dd8649793b2586c
-    canonical_candidate: UEOT.V3.CompositionParentInformation.p_comp_04
-    ci: {run: 34757571535, status: success}
-    source_note: full side information packages child cores and U; canonical map depends only on M_P and U; feature green only
-    coverage_counted: false
+    canonical_theorem: UEOT.V3.CompositionParentInformation.p_comp_04
+    promotion:
+      feature_branch: formal/pcomp04-parent-info
+      feature_head: d7b3446dcac54f62f7d28a141dd8649793b2586c
+      feature_ci: {run: 34757571535, status: success}
+      integration_branch: formal/pcomp04-main-integration
+      integration_commit: 412815d611fc3c20e867fdf245fc15fbf1f9266f
+      integration_ci: {run: 34758385777, status: success}
+      main_commit: 412815d611fc3c20e867fdf245fc15fbf1f9266f
+      post_main_ci: {run: 34758642764, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: child cores and U are side information; canonical map uses only M_P and U
+    coverage_counted: true
 
   P-KL-03:
     state: proof
@@ -243,10 +249,12 @@ pids:
     source_semantic_audit: complete
     audit_class: B_or_C
     branch: formal/pkl03-path-chain
-    head: e4a242c18a7448fd0352f8284b36a0d608094a8b
+    head: 6f3e3e3a458da9ef3324783ae0e9423d48a78814
     canonical_candidate: UEOT.V3.PathKLChain.p_kl_03
-    ci: {run: 34757721974, status: in_progress}
-    source_note: finite-horizon history-dependent kernels; homogeneous-only surrogate forbidden
+    extension_candidate: UEOT.V3.PathKLChain.p_kl_03_general
+    same_initial_ci: {run: 34758129042, status: success}
+    ci: {run: 34761786961, status: in_progress}
+    source_note: finite-horizon history-dependent kernels; source-explicit distinct-initial law adds initial KL; homogeneous-only surrogate forbidden
     coverage_counted: false
 
 audits:

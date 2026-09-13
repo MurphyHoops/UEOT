@@ -20,75 +20,52 @@ Last synchronized: **2026-09-13**
 
 | operational state | count |
 |---|---:|
-| integrated proved | **66** |
-| integration-ready feature lanes | **1** |
+| integrated proved | **67** |
+| integration/promotion lanes | **0** |
 | active source-facing proof lanes | **1** |
 | source-audited next lanes | **1** |
 | blocked | **0** |
 | pending/unclassified | **37** |
 | total | **106** |
 
-The authoritative source-level ledger is **66 proved / 40 not yet counted**.
-This ledger commit must itself pass main CI before 66/106 is called full-green.
+The source-level ledger is **67 proved / 39 not yet counted**. This ledger
+commit itself must pass main CI before 67/106 is called full-green.
 
-## Newly counted — P-ALI-02 + P-COMP-07
+## Newly counted — P-COMP-04
 
-### P-ALI-02
-
-- theorem `UEOT.V3.AlignmentParentValue.p_ali_02`;
-- frozen finite Hilbert direct sum is represented by a heterogeneous dependent
-  family `H : I → Type*` with `PiLp 2 H`;
-- actual parent/child `HasGradientAt` certificates and actual `HasDerivAt`
-  trajectory;
-- derivative produced by chain rule, not assumed;
-- feature `formal/pali02-parent-value@3c882f0801b3e6b00ebd86dc13da0f5b5d7c38b8`;
-- feature CI `34756782788`: success.
-
-### P-COMP-07
-
-- theorem `UEOT.V3.CompositionWindow.p_comp_07`;
-- compact interval, continuous monotone/antitone diagnostics, nonempty threshold
-  sets, attained boundaries derived from compactness/closedness, interval-or-empty
-  joint feasible set;
-- no extra boundary-witness assumption;
-- feature `formal/pcomp07-composition-window@76401f58d3877e8326e8417b7e56c9b4bf79b12b`;
-- feature CI `34756769679`: success.
-
-Joint lifecycle:
-- clean integration branch `formal/ali02-comp07-main-integration`;
-- integration/main proof commit `5f9a36d25c5e35fafe5379a5a2ff47b14e77cce8`;
-- integration CI `34757135510`: success;
-- safe non-force main fast-forward;
-- post-main CI `34757507969`: success;
-- prohibited-proof audits clean.
-
-## Integration-ready lane — P-COMP-04
-
-Frozen source: with side information `(C_{1:m},U)`, exact sufficiency/minimality
-gives a deterministic parent core `C_P = g(M_P,U)`, hence
+Frozen source §15.4: with side information `(C_{1:m},U)`, exact
+sufficiency/minimality gives `C_P = g(M_P,U)` and
 `H(C_P | C_{1:m},U) ≤ H(M_P | C_{1:m},U)`.
 
-- branch `formal/pcomp04-parent-info`;
-- head `d7b3446dcac54f62f7d28a141dd8649793b2586c`;
 - theorem `UEOT.V3.CompositionParentInformation.p_comp_04`;
+- feature `formal/pcomp04-parent-info@d7b3446dcac54f62f7d28a141dd8649793b2586c`;
 - feature CI `34757571535`: success;
-- source-facing map deliberately cannot depend on child-core tuple `S`;
-- finite alphabets make the frozen finite-conditional-entropy condition automatic;
-- next action: prohibited-proof final audit, then clean-port theorem file plus one
-  top-level import onto the latest full-green main.
+- clean integration branch `formal/pcomp04-main-integration`;
+- integration/main proof commit `412815d611fc3c20e867fdf245fc15fbf1f9266f`;
+- integration CI `34758385777`: success;
+- post-main CI `34758642764`: success;
+- source semantic and prohibited-proof audits: complete/clean.
+
+The source-facing map cannot inspect the child-core tuple; finite alphabets make
+the frozen finite-conditional-entropy condition automatic.
 
 ## Active proof lane — P-KL-03
 
-Frozen source: same initial law; finite horizon; possibly history-dependent
-discrete kernels; rowwise absolute continuity; exact path-space KL chain rule.
+Frozen source §22.3: finite horizon; genuinely history-dependent discrete
+kernels; exact path-space KL chain rule. For the same initial law, path KL is the
+sum of expected one-step conditional KL terms. For different initial laws the
+source explicitly adds the initial KL term.
 
 - branch `formal/pkl03-path-chain`;
-- current head `e4a242c18a7448fd0352f8284b36a0d608094a8b`;
-- candidate `UEOT.V3.PathKLChain.p_kl_03`;
-- CI `34757721974`: in progress at synchronization;
-- current implementation uses Ionescu--Tulcea finite prefixes,
-  `klDiv_compProd_eq_add`, and the UEOT kernel-KL lintegral bridge;
-- do not replace by one-step or homogeneous-Markov semantics.
+- `p_kl_03` same-initial theorem green at
+  `ad67c92db2e9bf6fce561e16dcd0c9680072731f`, CI `34758129042`: success;
+- current proof head `6f3e3e3a458da9ef3324783ae0e9423d48a78814` fixes the two exact errors in
+  the distinct-initial extension `p_kl_03_general`;
+- CI `34761786961`: in progress at synchronization;
+- implementation uses Ionescu--Tulcea finite prefixes, measurable history
+  append/split equivalence, Mathlib `klDiv_compProd_eq_add`, and UEOT
+  `klDiv_compProd_right_eq_lintegral`;
+- do not replace by homogeneous-Markov semantics.
 
 ## Source audit lane — P-EVO-02
 
@@ -101,6 +78,7 @@ infrastructure before adding new foundations.
 
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality.
+- P-KL-02: exact event I-projection requires the sharp infimum and explicit optimizer, including boundary cases.
 - P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
 - P-EVO-03/04: Perron--Frobenius asymptotics / martingale foundations.
 - P-REF-03: arbitrary signal-space conditional expectation.

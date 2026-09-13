@@ -23,9 +23,9 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved** | **66** |
+| **proved** | **67** |
 | **partial** | **0** |
-| **pending** | **40** |
+| **pending** | **39** |
 | **total** | **106** |
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -54,79 +54,66 @@ mathematics or Lean code exists.
 - **Representation covariance:** P-FAC-01
 - **Omega / integrity:** P-OMG-01, P-OMG-02
 - **Dual-drive / alignment:** P-DDH-01, P-ALI-02, P-ALI-03
-- **Composition:** P-COMP-03, P-COMP-05, P-COMP-06, P-COMP-07
+- **Composition:** P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
 - **KL / path information:** P-KL-01
 - **Evolution:** P-EVO-01
 
-Count check: `64 + 2 = 66`.
+Count check: `66 + 1 = 67`.
 
-## Newly counted promotions — P-ALI-02 and P-COMP-07
+## Newly counted promotion — P-COMP-04
 
-### P-ALI-02 — child updates and parent value
+Frozen source §15.4 is retained exactly: with side information packaging the
+child canonical cores and interface `(C_{1:m},U)`, exact sufficiency/minimality
+supplies a deterministic parent core `C_P = g(M_P,U)`, and therefore
 
-Frozen contract retained as a finite **heterogeneous** real Hilbert direct sum
-`H = ⊕ᵢ Hᵢ`.  Parent and child objectives carry actual `HasGradientAt`
-certificates; the update is an actual `HasDerivAt` trajectory.  The parent
-value derivative is produced by the chain rule, then expanded componentwise and
-bounded by Cauchy--Schwarz.  No scalar derivative identity is assumed.
+`H(C_P | C_{1:m},U) <= H(M_P | C_{1:m},U)`.
 
-Canonical theorem: `UEOT.V3.AlignmentParentValue.p_ali_02`.
+The source-facing Lean map deliberately cannot inspect the child-core tuple;
+finite alphabets discharge the frozen finite-conditional-entropy requirement.
 
-### P-COMP-07 — compact composition window
+Canonical theorem: `UEOT.V3.CompositionParentInformation.p_comp_04`.
 
-Frozen contract retained exactly: compact coupling interval, continuous
-nondecreasing integration diagnostic, continuous nonincreasing fidelity,
-nonempty threshold-feasible sets, attained threshold boundaries derived from
-compactness/closedness, and a joint feasible set equal to the closed interval
-between the boundaries when ordered and empty otherwise.  No boundary witness
-is added as an assumption.
-
-Canonical theorem: `UEOT.V3.CompositionWindow.p_comp_07`.
-
-Joint promotion evidence:
-- P-ALI-02 feature `formal/pali02-parent-value@3c882f0801b3e6b00ebd86dc13da0f5b5d7c38b8`;
-- P-ALI-02 feature CI `34756782788`: success;
-- P-COMP-07 feature `formal/pcomp07-composition-window@76401f58d3877e8326e8417b7e56c9b4bf79b12b`;
-- P-COMP-07 feature CI `34756769679`: success;
-- clean integration branch `formal/ali02-comp07-main-integration`;
-- clean integration/main proof commit `5f9a36d25c5e35fafe5379a5a2ff47b14e77cce8`;
-- exact integration diff: two theorem files plus two top-level imports;
-- integration CI `34757135510`: success;
-- safe non-force main fast-forward;
-- post-main CI `34757507969`: success;
-- prohibited-proof audit: `sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`;
+Promotion evidence:
+- feature branch `formal/pcomp04-parent-info`;
+- feature head `d7b3446dcac54f62f7d28a141dd8649793b2586c`;
+- feature CI `34757571535`: success;
+- clean integration branch `formal/pcomp04-main-integration`;
+- clean integration/main proof commit `412815d611fc3c20e867fdf245fc15fbf1f9266f`;
+- exact integration diff: theorem file plus one top-level import;
+- integration CI `34758385777`: success;
+- post-main CI `34758642764`: success;
+- prohibited-proof audit: clean;
 - frozen-source semantic audit: complete.
 
 **Status: PROVED / COUNTED pending this ledger commit's own main CI.**
 
 ## Active unresolved front
 
-There are **40 not-yet-counted P-IDs**.
-
-### Integration-ready — P-COMP-04
-
-- branch `formal/pcomp04-parent-info`;
-- head `d7b3446dcac54f62f7d28a141dd8649793b2586c`;
-- theorem `UEOT.V3.CompositionParentInformation.p_comp_04`;
-- feature CI `34757571535`: success;
-- exact source shape retained: with side information packaging `(C_{1:m},U)`, the canonical parent map is constrained to `C_P = g(M_P,U)` and cannot inspect the child-core tuple;
-- proof is fiberwise deterministic-statistic entropy monotonicity over the true conditional kernel;
-- feature green does **not** increment coverage; next gate is clean integration onto the latest full-green main.
+There are **39 not-yet-counted P-IDs**.
 
 ### Active proof — P-KL-03
 
+Frozen source §22.3 requires a finite-horizon path-space KL chain rule for
+genuinely history-dependent discrete kernels. The same-initial-law theorem is
+green, and the source-explicit different-initial-law extension adds the initial
+KL term.
+
 - branch `formal/pkl03-path-chain`;
-- head `e4a242c18a7448fd0352f8284b36a0d608094a8b`;
-- theorem candidate `UEOT.V3.PathKLChain.p_kl_03`;
-- CI `34757721974`: in progress at ledger creation;
-- theorem remains finite-horizon and genuinely history-dependent; a homogeneous-Markov surrogate is forbidden.
+- same-initial theorem `UEOT.V3.PathKLChain.p_kl_03` was green at
+  `ad67c92db2e9bf6fce561e16dcd0c9680072731f`, CI `34758129042`: success;
+- latest proof head `6f3e3e3a458da9ef3324783ae0e9423d48a78814` fixes the two exact errors in
+  `p_kl_03_general`;
+- CI `34761786961`: in progress at ledger creation;
+- homogeneous-Markov-only replacement is forbidden;
+- feature green does not increment coverage.
 
 ### Source audit — P-EVO-02
 
 Frozen target remains the exact shared-label identity for finite `T` independent
 of `(F,F')` and copied without error:
-`I((F,T);(F',T)) = I(F;F') + H(T)`.  Existing KL chain/product and deterministic
-copy infrastructure must be reused before adding new foundations.
+`I((F,T);(F',T)) = I(F;F') + H(T)`.
+Existing product/KL-chain/deterministic-copy infrastructure must be reused before
+adding new foundations.
 
 ## Reproducibility task
 
