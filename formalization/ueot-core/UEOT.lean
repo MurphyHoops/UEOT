@@ -5,3 +5,9 @@ import UEOT.Core.Prediction
 import UEOT.Core.Blocker
 import UEOT.Core.Finite
 import UEOT.V3
+import UEOT.V3.InformationPredictiveFactorization
+import UEOT.V3.InformationPredictiveFactorizationCanonical
+import UEOT.V3.InformationPredictiveFactorizationForward
+import UEOT.V3.InformationPredictiveFactorizationReverse
+import UEOT.V3.InformationPInt01
+import UEOT.V3.InformationPInt01Common
