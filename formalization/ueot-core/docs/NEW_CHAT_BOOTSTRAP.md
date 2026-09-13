@@ -1,38 +1,35 @@
 # UEOT Core 3 Lean — New Chat Bootstrap
 
-Copy/paste the following as the first message in every new ChatGPT conversation used for UEOT Core 3 Lean formalization.
+This file defines the user-facing cross-chat workflow. The user should need only two short commands.
+
+## A. Starting a new conversation
+
+The preferred first message is simply:
 
 ```text
-继续 UEOT Core 3 Lean 全形式化。
-
-执行简化跨对话 Recovery Protocol：
-
-1. 从 GitHub `MurphyHoops/UEOT` 的 `main` 显式读取：
-   - `formalization/ueot-core/docs/UEOT_CORE3_LEAN_OPERATIONS.md`
-   - `formalization/ueot-core/docs/V3_COVERAGE_STATUS.md`
-2. 读取 GitHub Issue #56：
-   `[LIVE] UEOT Core 3 Lean Formalization — Current State & Cross-Chat Handoff`
-   这是唯一需要高频维护的实时施工状态入口。
-3. 检索我过去对话中最近一次 UEOT Core 3 Lean formalization，补回尚未来得及同步到 GitHub 的最后推理或决定。
-4. 查询 live GitHub：当前 `main` SHA、Issue #56 指向的 active feature branch/head、最新 CI、branch compare、相关 PR/integration branch。
-5. 做 reconciliation：
-   - frozen source 决定 theorem semantics；
-   - `V3_COVERAGE_STATUS.md` 决定正式 coverage；
-   - live branch/Actions 决定实际代码与 CI；
-   - Issue #56 决定最新施工意图、blocker 和 exact next action；
-   - 旧聊天只作为补充，不能覆盖 live GitHub。
-6. 给我一个简短 Recovery Snapshot，然后立即执行 Issue #56 的 `Exact next action`；不要问我“上次做到哪里了”。
-7. 不要重新证明已经 green / integrated / counted 的内容。
-8. 未完成工作也必须保存：任何非平凡代码修改，在可能跨聊天前都要做 WIP checkpoint commit 并 push 到 active feature branch；WIP 可以红、可以未完成，但不得增加 coverage。
-9. 日常只更新 Issue #56 中 materially changed 的字段：active P-ID、branch/head、CI、blocker/root cause、exact next action、do-not-repeat/API notes。不要每轮维护一堆 main 文档。
-10. `PID_STATUS.yaml`、`FORMALIZATION_STATE.md`、`HANDOFF_LATEST.md`、`V3_COVERAGE_STATUS.md` 只在真实生命周期变化时同步，例如 feature freeze、integration、promotion 或全局 audit；不是每个聊天回合都更新。
-11. feature green 不得直接增加 coverage；promotion 必须经过 source semantic audit、clean integration green、main、post-main green、prohibited-proof audit 和 ledger synchronization。
-12. 不要把 GitHub full CI 当 Lean REPL：module check -> affected-stack check -> milestone `lake build UEOT`。
-13. integration 永远从 live latest `main` 开始，长 development history 不直接整支 merge。
-14. 最终目标始终是冻结版 UEOT Core 3 的 106/106 source-level Lean machine verification。
+继续 UEOT Core 3 Lean 全形式化。执行仓库 Recovery Protocol，恢复上一轮施工现场并直接继续，不要让我重复说明。
 ```
 
-## Expected first response
+The AI must then do all recovery work itself:
+
+1. Read from `MurphyHoops/UEOT` `main`:
+   - `formalization/ueot-core/docs/UEOT_CORE3_LEAN_OPERATIONS.md`
+   - `formalization/ueot-core/docs/V3_COVERAGE_STATUS.md`
+2. Read GitHub Issue #56:
+   `[LIVE] UEOT Core 3 Lean Formalization — Current State & Cross-Chat Handoff`.
+   This is the single high-frequency live construction-state anchor.
+3. Recover the most recent prior UEOT Core 3 Lean conversation to retrieve reasoning not yet checkpointed.
+4. Query live GitHub: current `main`, active feature branch/head from Issue #56, branch compare, latest CI, PR/integration branch.
+5. Reconcile:
+   - frozen source controls theorem semantics;
+   - `V3_COVERAGE_STATUS.md` controls counted coverage;
+   - live branches/Actions control actual code and CI;
+   - Issue #56 controls current construction intent/blocker/next action;
+   - prior chat is supplemental only.
+6. Return a compact Recovery Snapshot and immediately continue the exact next action.
+7. Never ask the user to restate the previous chat unless recovery is genuinely impossible.
+
+Expected snapshot:
 
 ```text
 Recovery complete.
@@ -43,15 +40,80 @@ feature: <branch>@<sha>
 latest CI: <run> <status>
 state: proof | integration | promotion | audit
 blocker: <if any>
-exact next action: <one concrete action>
+exact next action: <action>
 ```
 
-Then immediately continue actual Lean / GitHub work.
+Then continue actual Lean/GitHub work immediately.
 
-## Why this is robust
+## B. When the current conversation is near its limit
 
-- `main` keeps stable project rules and formal counted state.
-- Issue #56 is the single high-frequency live handoff and does not trigger Lean CI.
-- The active feature branch stores unfinished code through WIP checkpoint commits.
-- Prior-chat recovery is only the emergency supplement for reasoning not yet checkpointed.
-- Truly uncommitted edits that existed only in an ephemeral working tree cannot be guaranteed recoverable, so meaningful edits must be checkpointed early rather than waiting for theorem completion.
+The user can say only:
+
+```text
+执行 UEOT Core 3 跨对话交接，然后继续做到当前聊天不能继续为止。
+```
+
+The AI must then:
+
+1. Preserve all meaningful unfinished code on the active feature branch with a descriptive WIP checkpoint commit and push it. A WIP commit may be red/non-final and MUST NOT change coverage.
+2. Update Issue #56 with only materially changed live fields:
+   - active P-ID;
+   - active branch and latest checkpoint head;
+   - latest relevant CI;
+   - current blocker/root cause;
+   - exact next action;
+   - do-not-repeat notes / newly pinned API facts.
+3. If there are important reasoning decisions that are not represented in code, add them to Issue #56.
+4. Do NOT update all formal status documents merely because a chat is ending. `PID_STATUS.yaml`, `FORMALIZATION_STATE.md`, `HANDOFF_LATEST.md`, and `V3_COVERAGE_STATUS.md` are updated only at real lifecycle transitions such as feature freeze, integration, promotion, or global audit.
+5. After checkpointing, continue useful work in the current chat if room remains. Do not stop merely because a handoff was created.
+
+## C. Automatic checkpoint discipline during a long chat
+
+Do not wait for the user to request handoff. During normal work the AI should checkpoint after any nontrivial change whose loss would cause substantial rework, especially after:
+
+- a new proof lemma becomes stable;
+- a real CI/compiler root cause is identified and a fix is applied;
+- proof architecture materially changes;
+- a module reaches a meaningful stable point;
+- before beginning a risky refactor or a new major proof block.
+
+Use descriptive commits such as:
+
+```text
+wip(P-XYZ): checkpoint before resolving <blocker>
+proof(P-XYZ): establish <lemma>
+fix(P-XYZ): repair <root cause>
+```
+
+Saving and completion are separate concepts:
+
+`WIP checkpoint != feature green != main integration != counted proof`.
+
+## D. If the conversation ends unexpectedly
+
+Recovery uses the following redundancy:
+
+1. active feature branch WIP commits — authoritative unfinished code state;
+2. Issue #56 — current intent/blocker/next action;
+3. live GitHub CI/PR state;
+4. prior-chat recovery — emergency reasoning supplement.
+
+Meaningful edits that exist only in an ephemeral uncommitted working tree cannot be guaranteed recoverable. Therefore the unpersisted-work window must be kept small through frequent WIP checkpoint commits.
+
+## E. User-facing rule
+
+In normal use the user only needs to remember:
+
+**Start:**
+
+```text
+继续 UEOT Core 3 Lean 全形式化。执行仓库 Recovery Protocol，恢复上一轮施工现场并直接继续，不要让我重复说明。
+```
+
+**Before switching chats:**
+
+```text
+执行 UEOT Core 3 跨对话交接，然后继续做到当前聊天不能继续为止。
+```
+
+Everything else is the AI's responsibility.
