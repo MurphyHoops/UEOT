@@ -27,9 +27,9 @@ present in the public repository.
 
 | status | count |
 |---|---:|
-| **proved** | **53** |
+| **proved** | **54** |
 | **partial** | **0** |
-| **pending** | **53** |
+| **pending** | **52** |
 | **total** | **106** |
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -49,7 +49,7 @@ mathematics or Lean code exists.
 - **Bridge:** P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
 - **Internal/external factorization:** P-INT-02, P-INT-03
-- **Information:** P-INFO-01, P-INFO-02, P-INFO-04, P-INFO-05
+- **Information:** P-INFO-01, P-INFO-02, P-INFO-03, P-INFO-04, P-INFO-05
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02
@@ -57,50 +57,61 @@ mathematics or Lean code exists.
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 4 + 1 + 2 + 1 + 2 + 1 + 2 = 53`.
+Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 5 + 1 + 2 + 1 + 2 + 1 + 2 = 54`.
 
-## Newly counted promotion — P-ID-02
+## Newly counted promotion — P-INFO-03
 
 Frozen source contract:
 
-- reference trajectory under the same declared external inputs:
-  `thetaBar_(t+1) = Psi_t(thetaBar_t)`;
-- residual bound:
-  `d(theta_(t+1), Psi_t(theta_t)) <= epsilon_t`;
-- `Psi_t` is `L_t`-Lipschitz;
-- therefore
-  `e_(t+1) <= L_t e_t + epsilon_t` and
-  `e_n <= (prod_(j<n) L_j)e_0 + sum_(k<n) epsilon_k prod_(j=k+1)^(n-1) L_j`;
-- if `L_t <= L < 1` and `epsilon_t <= epsilon`, then
-  `e_n <= L^n e_0 + epsilon(1-L^n)/(1-L)`;
-- differing actual/reference external inputs require an extra input-sensitivity
-  error term and are not silently identified with this theorem.
+`R_obj(0)=H(C|U)` for the discrete canonical predictive core
+`C=P(Y∈·|H,U)`, with the source allowing genuinely randomized encoders
+`P(M|H,U)` and arbitrary decoders `Q(.|M,U)` under zero expected total-variation
+distortion.
 
-Source-facing implementation:
+Canonical theorem:
+
+`UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy`.
+
+Source-faithful implementation facts:
+
+- the encoder is a Markov kernel `P(M|H,U)`, not a deterministic statistic;
+- the encoder type contains `(H,U)` but not future `Y`, so future access is excluded structurally;
+- arbitrary code alphabets are Standard Borel and are **not** restricted to countable spaces;
+- countability is imposed only on the canonical core labels used to represent distinct future laws;
+- zero expected TV gives almost-sure predictive-law equality and measurable recovery of `C` from `(M,U)`;
+- the converse proves every zero-distortion scheme satisfies `H(C|U) <= I(H;M|U)`;
+- the canonical deterministic encoder `M=C` and canonical decoder attain equality;
+- `R_obj(0)` is the `sInf` over bundled code-space + encoder + decoder + zero-distortion schemes, rather than a fixed-code-space infimum;
+- the Lean theorem is ENNReal-valued and does not need the source's explicit finiteness hypothesis, so the frozen finite-entropy case is included;
+- code-space quantification is universe-polymorphic within the ambient Lean universe, which is the standard predicative implementation boundary and not a fixed-`M` restriction.
+
+Verification evidence:
+
+- final proof branch `formal/pinfo03-rate-zero` head
+  `b90cb81f5ae600ba961e2948f304aa87472c8ea9`;
+- final proof full-target CI `34744325632`: success;
+- clean main-integration CI `34744658528`: success;
+- main commit `57e987a18a5dd8feca224b91e3e78b93c2a44de8`;
+- post-main full-target CI `34744919310`: success;
+- prohibited-proof audit: zero `sorry`, zero `native_decide`, zero unsourced `axiom` in the integrated P-INFO-03 diff;
+- canonical source semantic audit completed 2026-09-13.
+
+**Status: PROVED / COUNTED.**
+
+## Previously counted promotions
+
+### P-ID-02
+
+Canonical source-facing theorems:
 
 - `UEOT.V3.DevelopmentTransport.development_error_step`;
 - `UEOT.V3.DevelopmentTransport.development_pipeline`;
 - `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_geom`;
 - `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_contraction`.
 
-The implementation uses `PseudoMetricSpace`, exactly covering the source's
-metric-or-pseudometric scope. `hL0 : 0 <= L_t` explicitly unpacks the standard
-nonnegative Lipschitz-constant convention. The exact product-sum formula is
-obtained from pinned Mathlib's machine-checked discrete Grönwall theorem, not
-replaced by a weaker exponential estimate.
-
-Verification evidence:
-
-- feature branch head `90bbc7cb405e3ba51180862fb4b41f0ff201d7ef`;
-- full-target feature CI `34716348615`: success;
-- PR #54 merged;
-- main commit `4a29c2d5aa6a805d867e1934f6013aa49f1dc431`;
-- post-main full-target CI `34717095993`: success;
-- canonical source semantic audit completed 2026-09-13.
-
-**Status: PROVED / COUNTED.**
-
-## Previously counted information promotions
+Evidence: feature CI `34716348615`, PR #54, main commit
+`4a29c2d5aa6a805d867e1934f6013aa49f1dc431`, post-main CI `34717095993`,
+canonical-source semantic audit complete.
 
 ### P-INFO-02
 
@@ -125,11 +136,10 @@ success, and canonical-source semantic audit complete.
 
 ## Active unresolved front
 
-- **P-INFO-03 — ACTIVE PROOF:** genuine countable-discrete `H(C|U)`, random
-  encoder semantics, zero-distortion predictive-core recoverability,
-  conditional DPI, attainability, and exact `R_obj(0)=H(C|U)`.
-- **P-INT-01 — BLOCKED:** reuse the general conditional-information interface
-  produced by P-INFO-03; do not build a duplicate stack.
+- **P-INT-01 — ACTIVE PROOF:** general Standard-Borel Predictive Factorization
+  Characterization Theorem
+  `Y ⟂ H | (M,U) ↔ C*=Psi(M,U) a.s.`. It now reuses the regular-conditional
+  infrastructure stabilized by P-INFO-03; no duplicate information stack is allowed.
 - **Remaining 51 unclassified P-IDs — SOURCE-TO-MAIN AUDIT:** identify
   source-facing theorems already on main before starting new proof stacks.
 - **Public canonical source synchronization — REPRODUCIBILITY TASK:** copy the

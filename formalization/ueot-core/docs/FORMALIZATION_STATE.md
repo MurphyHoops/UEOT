@@ -22,138 +22,127 @@ Last synchronized: **2026-09-13**
 
 | state | count |
 |---|---:|
-| integrated proved | **53** |
+| integrated proved | **54** |
 | active proof | **1** |
-| blocked | **1** |
+| blocked | **0** |
 | pending unclassified | **51** |
 | total | **106** |
 
-The authoritative source-level ledger is **53 proved / 53 pending**.
+The authoritative source-level ledger is **54 proved / 52 pending**.
 
-The newest promotion is **P-ID-02**, which was already source-faithfully
-formalized and merged through PR #54. The previous ledger had not synchronized
-that completed promotion. This was found by the source-to-main audit rather than
-by adding a duplicate proof stack.
+The newest promotion is **P-INFO-03**. Its exact randomized-encoder
+zero-distortion rate theorem is now source-audited, main-integrated and green
+post-main. The dependency it supplied to P-INT-01 is therefore no longer a
+blocker; P-INT-01 is the active proof lane.
 
-## P-ID-02 [PROVED / COUNTED]
+## P-INFO-03 [PROVED / COUNTED]
 
-Frozen source target:
+Frozen target:
 
-`e_(t+1) <= L_t e_t + epsilon_t`
+`R_obj(0)=H(C|U)` for discrete canonical predictive core
+`C=P(Y∈·|H,U)`, allowing genuinely randomized encoders `P(M|H,U)` that cannot
+access future `Y`.
 
-and
+Canonical source-facing theorem:
 
-`e_n <= (prod_(j<n) L_j)e_0 + sum_(k<n) epsilon_k prod_(j=k+1)^(n-1) L_j`,
+`UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy`.
 
-with the immediate contraction corollary for `L_t <= L < 1` and
-`epsilon_t <= epsilon`.
+The completed proof chain is:
 
-Canonical source-facing theorems:
+1. genuine countable conditional entropy from `U`-disintegration;
+2. generic KL conditional mutual information and fiber decomposition;
+3. genuine randomized encoder joint-law geometry;
+4. zero average TV implies equality of canonical and decoded future laws a.e.;
+5. measurable law-code inversion recovers the discrete core from `(M,U)`;
+6. conditional data processing yields the source entropy lower bound for every
+   zero-distortion randomized scheme;
+7. the deterministic canonical encoder `M=C` with canonical decoder has zero
+   distortion;
+8. its objective satisfies `I(H;C|U)=H(C|U)`;
+9. `sInf` over bundled code-space + encoder + decoder + zero-distortion schemes
+   gives the exact rate identity.
 
-- `UEOT.V3.DevelopmentTransport.development_error_step`;
-- `UEOT.V3.DevelopmentTransport.development_pipeline`;
-- `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_geom`;
-- `UEOT.V3.DevelopmentTransport.development_pipeline_uniform_contraction`.
+Source-semantics audit confirms:
 
-Source audit confirms:
-
-- `PseudoMetricSpace` covers the source's metric-or-pseudometric scope;
-- both actual and reference trajectories use the same declared `Psi_t`, as the
-  source requires for the stated theorem;
-- `hL0` is the explicit nonnegative Lipschitz-constant convention;
-- the exact product-sum bound is preserved;
-- the `L<1` geometric corollary is present;
-- differing external inputs are explicitly excluded from the same-input claim,
-  matching the source warning that an input-sensitivity term is then required.
+- arbitrary code alphabets are Standard Borel, not artificially countable;
+- countability is used only for the discrete canonical core labels;
+- the encoder input is `(H,U)` and does not contain future `Y`;
+- the final infimum is over whole feasible schemes rather than a fixed `M`;
+- the ENNReal theorem is stronger than the frozen explicit finite-entropy
+  clause and includes that source case;
+- code-space quantification is universe-polymorphic within the ambient Lean
+  universe, the normal predicative implementation boundary.
 
 Promotion evidence:
 
-- feature head `90bbc7cb405e3ba51180862fb4b41f0ff201d7ef`;
-- full-target feature CI `34716348615`: success;
-- PR #54;
-- main merge `4a29c2d5aa6a805d867e1934f6013aa49f1dc431`;
-- post-main full-target CI `34717095993`: success.
+- final proof branch `formal/pinfo03-rate-zero`;
+- final proof head `b90cb81f5ae600ba961e2948f304aa87472c8ea9`;
+- proof CI `34744325632`: success;
+- clean integration CI `34744658528`: success;
+- main commit `57e987a18a5dd8feca224b91e3e78b93c2a44de8`;
+- post-main CI `34744919310`: success;
+- prohibited-proof audit: no `sorry`, `native_decide`, or unsourced `axiom` in
+  the integrated P-INFO-03 diff.
 
-No duplicate P-ID-02 implementation should be opened absent a genuine source
-mismatch or CI regression.
+No deterministic-only reproof or duplicate conditional-information stack should
+be opened absent a real source mismatch or regression.
 
-## P-INFO-02 / P-INFO-04 [PROVED / COUNTED]
+## P-INT-01 [ACTIVE PROOF]
 
-These remain frozen closed after canonical-source semantic audit and green
-post-main CI.
+Frozen source theorem: **Predictive Factorization Characterization Theorem 5.1**.
+For the source's Standard-Borel variables, with `Z=(M,U)`:
 
-- P-INFO-02 canonical theorem:
-  `UEOT.V3.InformationPInfo02.p_info_02_ennreal`, PR #46, post-main CI
-  `34692828935` success.
-- P-INFO-04 canonical theorems:
-  `UEOT.V3.InformationPInfo04.p_info_04` and
-  `UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary`,
-  final conditional PR #51, post-main CI `34706528781` success.
+`Y ⟂ H | Z`
 
-## P-INFO-03 [ACTIVE PROOF]
+iff there exists a measurable probability-law factor
+`Psi : Z -> P(Y)` such that
 
-Frozen target:
-`R_obj(0)=H(C|U)` for discrete canonical predictive core
-`C=P(Y∈·|H,U)` with `H(C|U)<∞`, allowing genuinely randomized encoders
-`P(M|H,U)` that cannot access future `Y`.
+`C*=L(Y|H)=Psi(Z)` almost surely.
 
-Verified foundation already in the active branch includes:
+This is a general Standard-Borel theorem. It must **not** inherit the discrete
+canonical-core assumption used by P-INFO-03.
 
-- genuine countable conditional entropy by `U`-disintegration;
-- generic KL conditional mutual information;
-- generic conditional KL fiber decomposition;
-- kernel-level random-encoder joint-law geometry;
-- recoverable countable-discrete MI/entropy identity;
-- conditional recoverability infrastructure;
-- zero-TV infrastructure.
+Active branch:
+`formal/pint01-factorization-iff`.
+Base main commit:
+`57e987a18a5dd8feca224b91e3e78b93c2a44de8`.
+Initial active head at this synchronization:
+`d0829f75ce8e8d7ee251f5644478f3b75b1e445a`.
+Initial full-target CI:
+`34745077495` in progress.
 
-The generic-CMI layer is independently official-CI green on
-`formal/pinfo03-generic-cmi-isolated`, run `34707458047`.
+Current proof architecture:
 
-Current active branch:
-`formal/pinfo03-countable-conditional`.
-Current head at this synchronization:
-`3ad766b6f50590e70caed8ac293067f2146d68d2`.
-Current full-target CI: `34734186954` in progress.
+1. represent the source measurable map `Psi : Z -> P(Y)` as a Markov kernel
+   `Kernel Z Y`;
+2. identify the canonical future law with the regular conditional kernel
+   `P(Y|H)`;
+3. use pinned Mathlib's
+   `condIndepFun_iff_condDistrib_prod_ae_eq_prodMkRight` as the exact
+   conditional-independence bridge;
+4. exploit that `Z` is a measurable function of `H` to identify conditioning on
+   `(Z,H)` with conditioning on `H`;
+5. prove both directions of the factorization iff without countability.
 
-Two concrete downstream elaboration failures from the previous run were repaired:
+Do not replace this with the finite-protocol `PredictiveClassRecovery` theorem;
+that theorem is P-STAT-05 and has a different scope.
 
-1. `InformationDiscreteLawCode` now uses explicit code arguments and explicit
-   classical decidability instead of invalid field notation;
-2. `InformationConditionalStatistic` now opens the canonical
-   `UEOT.V3.InformationCore` namespace containing `mutualInfo`.
+## Previously frozen closed lanes
 
-Remaining source-critical chain:
+Do not reopen without a substantive source mismatch or CI regression:
 
-1. machine-check the repaired law-code decoder and conditional-statistic layer;
-2. prove that zero predictive-law distortion yields measurable recovery of the
-   discrete predictive core from `(M,U)`;
-3. expose the source-faithful random-encoder feasible class and rate objective;
-4. prove the conditional DPI lower bound;
-5. prove attainability by `M=C`;
-6. expose exact source-facing `R_obj(0)=H(C|U)`;
-7. clean-port -> CI -> PR -> main -> post-main -> ledger sync.
-
-## P-INT-01 [BLOCKED]
-
-Frozen target:
-`Y_f^+ ⟂ H | (M,U) ↔ C^f = Psi(M,U) a.s.`.
-
-It remains blocked on P-INFO-03's general countable conditional-information and
-predictive-core recovery interface. Do not create a second conditional
-information stack.
+- P-STAT-06;
+- P-INFO-02;
+- P-INFO-03;
+- P-INFO-04;
+- P-ID-02.
 
 ## Parallel source-to-main audit
 
-The audit now covers the remaining **51 unclassified P-IDs**. The P-ID-02
-promotion demonstrates why this lane is necessary: a fully merged,
-source-faithful theorem can otherwise remain hidden behind a stale ledger.
-
-For each remaining P-ID classify:
+The audit population remains **51 unclassified P-IDs**. For each P-ID classify:
 
 - **A:** source-facing theorem already exists on main; audit and promote;
-- **B:** substantial infrastructure exists but a precise source obligation is
-  missing;
+- **B:** substantial infrastructure exists but a precise source obligation is missing;
 - **C:** genuinely unformalized source mathematics.
 
 Module names alone never justify promotion.
