@@ -11,19 +11,19 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 63
+  integrated_proved: 64
   promotion_running: 0
-  active_proof: 3
+  active_proof: 2
   source_audit: 1
   blocked: 0
   pending_unclassified: 39
-  unresolved_total: 43
+  unresolved_total: 42
   note: >-
-    Operational partition: 63 proved + 3 active source-facing proof lanes +
-    1 audited next lane + 39 pending/unclassified = 106. P-EVO-01 and
-    P-COMP-05 are counted after feature green, clean integration CI 34754713285,
-    main proof commit bfd9d83073cb929ea12de4267005023749023df5, and post-main
-    CI 34754974676.
+    Operational partition: 64 proved + 2 active source-facing proof lanes +
+    1 audited next lane + 39 pending/unclassified = 106. P-COMP-06 is counted
+    after feature CI 34754842269, clean integration CI 34755655869, safe main
+    fast-forward to b26de5a7bf8a725e9446b883f9181d0732e86c7f, and post-main
+    CI 34755873092.
 state_vocabulary:
   - source_audit
   - proof
@@ -169,16 +169,23 @@ pids:
     coverage_counted: true
 
   P-COMP-06:
-    state: proof
+    state: proved
     source_locked: true
     source_semantic_audit: complete
     audit_class: B
-    branch: formal/pcomp06-carrier-lift
-    head: 168e432b8479a6683d933d81bc1e362df2a4340c
-    canonical_candidate: UEOT.V3.CompositionCarrierLift.p_comp_06
-    ci: {run: 34754842269, status: success}
+    canonical_theorem: UEOT.V3.CompositionCarrierLift.p_comp_06
+    promotion:
+      feature_branch: formal/pcomp06-carrier-lift
+      feature_head: 168e432b8479a6683d933d81bc1e362df2a4340c
+      feature_ci: {run: 34754842269, status: success}
+      integration_branch: formal/pcomp06-main-integration
+      integration_commit: b26de5a7bf8a725e9446b883f9181d0732e86c7f
+      integration_ci: {run: 34755655869, status: success}
+      main_commit: b26de5a7bf8a725e9446b883f9181d0732e86c7f
+      post_main_ci: {run: 34755873092, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: preserves both nested inclusion-min operations
-    coverage_counted: false
+    coverage_counted: true
 
   P-COMP-07:
     state: proof
@@ -186,10 +193,10 @@ pids:
     source_semantic_audit: complete
     audit_class: B
     branch: formal/pcomp07-composition-window
-    head: 0826699b3fe135c3faec353153cc4d2fa533e13a
+    head: 9337f0d58ebb283a1560ba947671ecf2688d0b59
     canonical_candidate: UEOT.V3.CompositionWindow.p_comp_07
-    ci: {run: 34755041666, status: in_progress}
-    source_note: compactness and continuity derive attained threshold boundaries
+    ci: {run: 34755844111, status: failure}
+    source_note: compactness and continuity derive attained threshold boundaries; current blocker is real-topology import resolution, not theorem semantics
     coverage_counted: false
 
   P-ALI-02:
@@ -198,10 +205,10 @@ pids:
     source_semantic_audit: complete
     audit_class: B
     branch: formal/pali02-parent-value
-    head: b0ef953829c83f0219ffe62e8b54243ae2270b51
+    head: a6dd0fe8d06c31abd1c950608698452e2ced3c94
     canonical_candidate: UEOT.V3.AlignmentParentValue.p_ali_02
-    ci: {run: 34755240251, status: in_progress}
-    source_note: exact Hilbert decomposition plus Cauchy-Schwarz lower bound
+    ci: {run: 34756045489, status: in_progress}
+    source_note: source-facing PiLp-2 Hilbert direct sum, actual HasGradientAt data and actual HasDerivAt trajectory; derivative obtained by chain rule
     coverage_counted: false
 
 audits:
