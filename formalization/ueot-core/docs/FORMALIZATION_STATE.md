@@ -1,7 +1,8 @@
 # UEOT Core Lean — Live Formalization State
 
 > Recovery entry point. Machine-readable lane state is `PID_STATUS.yaml`.
-> Integrated source-count truth is `V3_COVERAGE_STATUS.md`.
+> Integrated source-count truth is `V3_COVERAGE_STATUS.md`. GitHub Issue #56
+> carries the live cross-chat construction log between archival checkpoints.
 
 Last synchronized: **2026-09-13**
 
@@ -20,71 +21,83 @@ Last synchronized: **2026-09-13**
 
 | operational state | count |
 |---|---:|
-| integrated proved | **67** |
-| integration/promotion lanes | **0** |
+| integrated proved, staged by this checkpoint | **69** |
 | active source-facing proof lanes | **1** |
-| source-audited next lanes | **1** |
+| integration/promotion lanes | **0** |
 | blocked | **0** |
-| pending/unclassified | **37** |
+| pending/unclassified | **36** |
 | total | **106** |
 
-The source-level ledger is **67 proved / 39 not yet counted**. This ledger
-commit itself must pass main CI before 67/106 is called full-green.
+This recovery commit stages **69 proved / 37 not yet counted**. It must itself
+pass PR CI, land on `main`, and pass the resulting main CI before 69/106 is
+called full-green.
 
-## Newly counted — P-COMP-04
+## Newly promoted proof — P-EVO-02
 
-Frozen source §15.4: with side information `(C_{1:m},U)`, exact
-sufficiency/minimality gives `C_P = g(M_P,U)` and
-`H(C_P | C_{1:m},U) ≤ H(M_P | C_{1:m},U)`.
+Frozen source §25.3:
 
-- theorem `UEOT.V3.CompositionParentInformation.p_comp_04`;
-- feature `formal/pcomp04-parent-info@d7b3446dcac54f62f7d28a141dd8649793b2586c`;
-- feature CI `34757571535`: success;
-- clean integration branch `formal/pcomp04-main-integration`;
-- integration/main proof commit `412815d611fc3c20e867fdf245fc15fbf1f9266f`;
-- integration CI `34758385777`: success;
-- post-main CI `34758642764`: success;
-- source semantic and prohibited-proof audits: complete/clean.
+`I((F,T);(F',T)) = I(F;F') + H(T)`
 
-The source-facing map cannot inspect the child-core tuple; finite alphabets make
-the frozen finite-conditional-entropy condition automatic.
+for finite `T` independent of the joint pair `(F,F')` and copied without error.
 
-## Active proof lane — P-KL-03
+Evidence:
+- theorem `UEOT.V3.EvolutionSharedLabel.p_evo_02`;
+- feature `formal/pevo02-shared-label@bfe0c3f43728a9ae5a07f1729c143039d16d7cff`;
+- feature CI `34763489145`: success;
+- clean integration head `0a3691ef1d97cae1a8017adae47bd8aa7ea49c47`;
+- PR #59 clean-integration CI `34765061853`: success;
+- main proof commit `17f7ca2070a439a7e4c99622d3c27095431a1571`;
+- post-main CI `34765399086`: success;
+- source semantic audit complete and prohibited-proof audit clean.
 
-Frozen source §22.3: finite horizon; genuinely history-dependent discrete
-kernels; exact path-space KL chain rule. For the same initial law, path KL is the
-sum of expected one-step conditional KL terms. For different initial laws the
-source explicitly adds the initial KL term.
+No noisy-copy, pairwise-independence, or coordinate-loss weakening is used.
 
-- branch `formal/pkl03-path-chain`;
-- `p_kl_03` same-initial theorem green at
-  `ad67c92db2e9bf6fce561e16dcd0c9680072731f`, CI `34758129042`: success;
-- current proof head `6f3e3e3a458da9ef3324783ae0e9423d48a78814` fixes the two exact errors in
-  the distinct-initial extension `p_kl_03_general`;
-- CI `34761786961`: in progress at synchronization;
-- implementation uses Ionescu--Tulcea finite prefixes, measurable history
-  append/split equivalence, Mathlib `klDiv_compProd_eq_add`, and UEOT
-  `klDiv_compProd_right_eq_lintegral`;
-- do not replace by homogeneous-Markov semantics.
+## Previous full-green checkpoint — P-KL-03 / 68 of 106
 
-## Source audit lane — P-EVO-02
+P-KL-03 is already fully counted. Its history-dependent finite-horizon path KL
+chain rule is on main, proof post-main CI `34763070439` succeeded, and the
+68/106 ledger main CI `34763815124` succeeded.
 
-Frozen target:
-`I((F,T);(F',T)) = I(F;F') + H(T)` for finite `T` independent of `(F,F')`
-and copied without error. Reuse existing deterministic-copy/product/KL chain
-infrastructure before adding new foundations.
+## Active proof lane — P-KL-02
+
+Frozen source §22.2 requires the exact event I-projection over all absolutely
+continuous path laws, not just P-KL-01's event data-processing lower bound.
+For `q=P0(A)`, `0<q<1`, `0≤p≤1`:
+
+- `p≤q`: infimum `0`, baseline `P0` is feasible;
+- `p>q`: infimum is `d_Bern(p||q)`;
+- active-case optimizer has RN density
+  `(p/q) 1_A + ((1-p)/(1-q)) 1_{Aᶜ}`;
+- optimizer must be a probability law, satisfy `Q*≪P0`, have `Q*(A)=p`, and
+  attain exact KL;
+- `p=1` must be retained.
+
+Current branch `formal/pkl02-event-iprojection`:
+- explicit `eventTiltDensity` and `eventIProjection` are implemented;
+- construction / measurability / AC / RN derivative layer green at
+  `333a3e9ffa0cadbaaa0b167ec0ccdc7d8685317a`, CI `34765080012`;
+- current head `1378efc916e894057cd4cd38cedbfd9c5eac9f80` repairs the pinned Mathlib
+  `withDensity_apply` namespace after adding exact event/complement masses and a
+  probability instance theorem;
+- CI `34765567421` is the current gate at synchronization;
+- next isolated layers are exact KL, Bernoulli monotonicity, then the global
+  infimum theorem.
 
 ## Grounded non-quick fronts
 
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality.
-- P-KL-02: exact event I-projection requires the sharp infimum and explicit optimizer, including boundary cases.
 - P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
 - P-EVO-03/04: Perron--Frobenius asymptotics / martingale foundations.
 - P-REF-03: arbitrary signal-space conditional expectation.
 - P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation.
 - P-QSD-01/03/04: source-locked distinct non-A results.
 - P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
+
+P-EVO-03 specifically requires the full K-PF-01 primitive-matrix asymptotic
+package; pinned Mathlib has `Matrix.IsPrimitive` definitions but no directly
+reusable complete Perron--Frobenius power-convergence theorem was found. Do not
+count an assumed-convergence surrogate.
 
 ## Mandatory recovery procedure
 
