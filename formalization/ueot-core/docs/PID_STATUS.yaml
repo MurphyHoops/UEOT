@@ -15,19 +15,19 @@ source:
     This remains a reproducibility task separate from source-theorem proof
     status. The frozen SHA has not been recomputed from public raw bytes.
 coverage:
-  integrated_proved: 57
+  integrated_proved: 59
   promotion_running: 0
-  active_proof: 3
+  active_proof: 2
   source_audit: 0
   blocked: 0
-  pending_unclassified: 46
-  unresolved_total: 49
+  pending_unclassified: 45
+  unresolved_total: 47
   note: >-
-    Operational partition: 57 proved + 3 active proof + 46 pending unclassified
-    = 106. P-OMG-01 and P-OMG-02 are counted after source audit, feature green,
-    clean integration CI 34751042701, main commit
-    4db94c39dddce53a5543e40568e5fc104321e88b and post-main CI 34751300612.
-    The authoritative source ledger therefore reads 57 proved / 49 pending.
+    Operational partition: 59 proved + 2 active source-facing lanes +
+    45 pending/unclassified = 106. P-DDH-01 and P-ALI-03 are counted after
+    exact source audit, feature green, combined integration CI 34752277556,
+    main proof commit 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7,
+    and post-main CI 34752528830.
 state_vocabulary:
   - source_audit
   - proof
@@ -73,25 +73,12 @@ pids:
     source_locked: true
     source_semantic_audit: complete
     canonical_theorem: UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy
-    source_semantics:
-      encoder: genuine Markov kernel P(M|H,U)
-      decoder: genuine Markov kernel Q(.|M,U)
-      future_access_by_encoder: forbidden_by_type
-      arbitrary_code_space: standard_borel_not_countability_restricted
-      canonical_core: countable discrete labels with injective future-law representation
-      rate_infimum: bundled code-space plus encoder plus decoder plus zero-distortion certificate
-      entropy_codomain: ENNReal
     promotion:
-      final_proof_branch: formal/pinfo03-rate-zero
       final_proof_head: b90cb81f5ae600ba961e2948f304aa87472c8ea9
       final_proof_ci: {run: 34744325632, status: success}
       integration_ci: {run: 34744658528, status: success}
       main_commit: 57e987a18a5dd8feca224b91e3e78b93c2a44de8
       post_main_ci: {run: 34744919310, status: success}
-      prohibited_proof_audit:
-        sorry: 0
-        native_decide: 0
-        unsourced_axiom: 0
     coverage_counted: true
 
   P-INFO-04:
@@ -130,64 +117,56 @@ pids:
       common_versions: UEOT.V3.InformationPInt01Common.p_int_01_common
       common_decoder: UEOT.V3.InformationPInt01Common.p_int_01_common_decoder
     promotion:
-      final_proof_branch: formal/pint01-factorization-iff
       final_proof_head: 3943391af4d459a370ab840d1b15babcae26f82a
       final_proof_ci: {run: 34747270058, status: success}
       integration_ci: {run: 34749908649, status: success}
       main_commit: d757ea0dd14755233b94d40763f457773a52089f
       post_main_ci: {run: 34750114264, status: success}
-      prohibited_proof_audit:
-        sorry: 0
-        admit: 0
-        native_decide: 0
-        unsourced_axiom: 0
     coverage_counted: true
 
   P-OMG-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: B
-    source_statement: >-
-      Under monotone finite-deletion failure, a deletion set fails iff it
-      contains an inclusion-minimal failing deletion set.
     canonical_theorem: UEOT.V3.OmegaMinimalFailure.p_omg_01
-    reused_foundation: UEOT.Finite.exists_minimal_subset
     promotion:
-      feature_branch: formal/pomg01-minimal-failure
       feature_head: effa5bf10787095b2dd1bb86e68f100cb907f0af
       feature_ci: {run: 34750708593, status: success}
-      integration_branch: formal/pomg01-02-main-integration
       integration_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
       integration_ci: {run: 34751042701, status: success}
-      main_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
       post_main_ci: {run: 34751300612, status: success}
-      prohibited_proof_audit:
-        sorry: 0
-        admit: 0
-        native_decide: 0
-        unsourced_axiom: 0
     coverage_counted: true
 
   P-OMG-02:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: B
-    source_statement: >-
-      For a fixed nonempty failure set F, the point-to-set integrity margin
-      Gamma(T)=infDist(T,F) is 1-Lipschitz.
     canonical_theorem: UEOT.V3.OmegaIntegrityMargin.p_omg_02
-    reused_foundation: Metric.lipschitz_infDist_pt
     promotion:
-      feature_branch: formal/pomg02-integrity-margin
       feature_head: 8d5ddee1faff1ae588a478e2a1c58235852d7500
       feature_ci: {run: 34750765181, status: success}
-      integration_branch: formal/pomg01-02-main-integration
       integration_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
       integration_ci: {run: 34751042701, status: success}
-      main_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
       post_main_ci: {run: 34751300612, status: success}
+    coverage_counted: true
+
+  P-DDH-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: B
+    source_statement: >-
+      Pi'=Pi+lambda*chi and Phi'=Phi+chi leave Pi-lambda*Phi invariant.
+    canonical_theorem: UEOT.V3.DualDriveGauge.p_ddh_01
+    promotion:
+      feature_branch: formal/pddh01-gauge-cancellation
+      feature_head: 71a26d2fce4087fb4c7ed763b42f74118186a739
+      feature_ci: {run: 34751815827, status: success}
+      integration_branch: formal/pddh01-pali03-integration-v3
+      integration_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
+      integration_ci: {run: 34752277556, status: success}
+      main_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
+      post_main_ci: {run: 34752528830, status: success}
       prohibited_proof_audit:
         sorry: 0
         admit: 0
@@ -195,48 +174,59 @@ pids:
         unsourced_axiom: 0
     coverage_counted: true
 
-  P-DDH-01:
-    state: proof
+  P-ALI-03:
+    state: proved
     source_locked: true
+    source_semantic_audit: complete
     audit_class: B
     source_statement: >-
-      Pi'=Pi+lambda*chi and Phi'=Phi+chi leave Pi-lambda*Phi invariant.
-    branch: formal/pddh01-gauge-cancellation
-    head: d1528ed40748ed8163af3565575c8a3465124818
-    canonical_candidate: UEOT.V3.DualDriveGauge.p_ddh_01
-    ci:
-      first_run: {run: 34751185618, status: failure}
-      current_run: {run: 34751461041, status: in_progress}
-    note: >-
-      First build failed after use of Unicode Pi as a binder; the binder was
-      renamed without changing theorem semantics. Await current feature CI.
-    coverage_counted: false
-
-  P-ALI-03:
-    state: proof
-    source_locked: true
-    audit_class: B
-    branch: formal/pali03-coordination-threshold
-    head: 5a85a3321bf3639a59996be8cea59357fe6cddab
-    canonical_candidate: UEOT.V3.AlignmentThreshold.p_ali_03
-    ci: {run: 34751255136, status: in_progress}
-    semantic_guard: >-
-      Current theorem is the scalar normal form using alignment=<g,G> and
-      parentSq=||g||^2. Before promotion, source audit must decide whether an
-      explicit Hilbert-space wrapper is required.
-    coverage_counted: false
+      In a real Hilbert space, G_eta=(1-eta)G+eta g with 0<=eta<=1 and
+      inner(g,G)<0 has positive parent derivative exactly above
+      -inner(g,G)/(||g||^2-inner(g,G)).
+    canonical_theorem: UEOT.V3.AlignmentThreshold.p_ali_03
+    promotion:
+      feature_branch: formal/pali03-coordination-threshold
+      feature_head: bbb9f7b1cc8f202fedf5d096fe2707f760d83c4a
+      feature_ci: {run: 34751936845, status: success}
+      integration_branch: formal/pddh01-pali03-integration-v3
+      integration_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
+      integration_ci: {run: 34752277556, status: success}
+      main_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
+      post_main_ci: {run: 34752528830, status: success}
+      prohibited_proof_audit:
+        sorry: 0
+        admit: 0
+        native_decide: 0
+        unsourced_axiom: 0
+    coverage_counted: true
 
   P-EVO-01:
     state: proof
     source_locked: true
     audit_class: B
+    source_semantic_audit: complete
+    source_statement: >-
+      Finite deterministic mean-intensity dynamics with M=D_b K,
+      p'=pM/bar_b, b_i>=0 and bar_b>0 satisfy the exact Price
+      selection/transmission decomposition; the deterministic ratio is not an
+      expected random population-frequency ratio.
     branch: formal/pevo01-price-decomposition
-    head: bc5f4d55e5feecf7f2fbcf09521943a551e179b2
+    head: 1a17175b7a7bf2338c5bcc648085bf5e7ef09a30
     canonical_candidate: UEOT.V3.EvolutionPrice.p_evo_01
-    ci: {run: 34751340890, status: in_progress}
-    semantic_guard: >-
-      Keeps finite parent/offspring types, probability-frequency semantics,
-      positive reproduction intensity and row-stochastic transmission. Before
-      promotion, audit whether an explicit M=D_b K / p'=pM/bar_b wrapper is
-      required in addition to the exact algebraic identity.
+    ci: {run: 34752778143, status: in_progress}
+    coverage_counted: false
+
+  P-COMP-03:
+    state: proof
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: B
+    source_statement: >-
+      For a finite nonempty cut family with cut K_pi L_pi-Lipschitz,
+      Gamma_comp(T)=min_pi d(T,K_pi T) is (1+max_pi L_pi)-Lipschitz.
+    branch: formal/pcomp03-composition-margin
+    head: 7e074e694c26e52901342336b5e57b666df4fa8c
+    canonical_candidate: UEOT.V3.CompositionMargin.p_comp_03
+    feature_ci: {run: 34752374454, status: success}
+    note: source-closed and feature-green; awaiting clean latest-main integration
     coverage_counted: false

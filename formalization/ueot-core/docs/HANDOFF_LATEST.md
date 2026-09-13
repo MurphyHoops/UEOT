@@ -15,88 +15,110 @@
 
 ## Current lifecycle snapshot
 
-- counted coverage: **57/106**;
-- not yet counted: **49**;
-- active proof lanes: **3**;
-- pending unclassified/audit queue: **46**;
-- newest counted promotions: **P-OMG-01 and P-OMG-02**;
-- combined clean integration/main proof commit:
-  `4db94c39dddce53a5543e40568e5fc104321e88b`;
-- integration CI `34751042701`: success;
-- post-main CI `34751300612`: success;
-- source semantic audit: complete for both Ω promotions;
+- counted coverage: **59/106**;
+- not yet counted: **47**;
+- active source-facing lanes: **2**;
+- pending unclassified/audit queue: **45**;
+- newest counted promotions: **P-DDH-01 and P-ALI-03**;
+- clean integration/main proof commit:
+  `9bff83a544929a0191596f6a1b9c7c8d2a6f87b7`;
+- integration CI `34752277556`: success;
+- post-main CI `34752528830`: success;
+- source semantic audit: complete for both promotions;
 - prohibited-proof audit: `sorry=0`, `admit=0`, `native_decide=0`, unsourced
   `axiom=0` in both new proof files.
 
-P-OMG-01 evidence:
+P-DDH-01 evidence:
 
-- feature `formal/pomg01-minimal-failure`;
-- head `effa5bf10787095b2dd1bb86e68f100cb907f0af`;
-- feature CI `34750708593`: success;
-- theorem `UEOT.V3.OmegaMinimalFailure.p_omg_01`.
+- feature `formal/pddh01-gauge-cancellation`;
+- head `71a26d2fce4087fb4c7ed763b42f74118186a739`;
+- feature CI `34751815827`: success;
+- theorem `UEOT.V3.DualDriveGauge.p_ddh_01`.
 
-P-OMG-02 evidence:
+P-ALI-03 evidence:
 
-- feature `formal/pomg02-integrity-margin`;
-- head `8d5ddee1faff1ae588a478e2a1c58235852d7500`;
-- feature CI `34750765181`: success;
-- theorem `UEOT.V3.OmegaIntegrityMargin.p_omg_02`.
+- feature `formal/pali03-coordination-threshold`;
+- head `bbb9f7b1cc8f202fedf5d096fe2707f760d83c4a`;
+- feature CI `34751936845`: success;
+- theorem `UEOT.V3.AlignmentThreshold.p_ali_03` at the frozen Hilbert-space
+  level.
+
+Scratch integration branches from staging are not authoritative and must not be
+merged:
+
+- `formal/pddh01-main-integration`;
+- `formal/pddh01-main-integration-clean`;
+- `formal/pddh01-pali03-main-integration`;
+- `formal/pddh01-pali03-integration-v2`.
 
 ## Active construction lanes
-
-### P-DDH-01
-
-- branch `formal/pddh01-gauge-cancellation`;
-- current head `d1528ed40748ed8163af3565575c8a3465124818`;
-- candidate `UEOT.V3.DualDriveGauge.p_ddh_01`;
-- first CI `34751185618` failed after a Lean identifier/parser conflict from a
-  Unicode Pi binder;
-- fixed without semantic change;
-- replacement CI `34751461041` is the run to inspect next.
-
-### P-ALI-03
-
-- branch `formal/pali03-coordination-threshold`;
-- head `5a85a3321bf3639a59996be8cea59357fe6cddab`;
-- candidate `UEOT.V3.AlignmentThreshold.p_ali_03`;
-- CI `34751255136` is the run to inspect next;
-- before promotion, determine whether an explicit Hilbert-space wrapper is
-  required beyond the scalar normal form.
 
 ### P-EVO-01
 
 - branch `formal/pevo01-price-decomposition`;
-- head `bc5f4d55e5feecf7f2fbcf09521943a551e179b2`;
+- current head `1a17175b7a7bf2338c5bcc648085bf5e7ef09a30`;
 - candidate `UEOT.V3.EvolutionPrice.p_evo_01`;
-- CI `34751340890` is the run to inspect next;
-- before promotion, determine whether an explicit source `M=D_b K`,
-  `p'=pM/bar_b` wrapper is required.
+- explicit frozen-source interface now includes `M=D_b K` via
+  `meanOffspringEntry` and deterministic `p'=pM/bar_b` via `nextFrequency`;
+- allows source-valid zero-growth rows `b_i=0`; only `bar_b>0` is required;
+- latest fix separates the finite numerator rearrangement from the common
+  denominator instead of asking `field_simp` to solve both layers;
+- current CI `34752778143`: in progress at snapshot time.
+
+If the CI fails, read decoded logs and fix only the exact Lean error. If green,
+run prohibited-proof audit and clean-port to latest main.
+
+### P-COMP-03
+
+- branch `formal/pcomp03-composition-margin`;
+- head `7e074e694c26e52901342336b5e57b666df4fa8c`;
+- theorem `UEOT.V3.CompositionMargin.p_comp_03`;
+- feature CI `34752374454`: success;
+- source audit: complete;
+- exact source constant `(1+max_pi L_pi)` retained;
+- next action: clean-integrate to latest main, then integration CI -> safe main
+  fast-forward -> post-main CI -> ledger count.
+
+## High-value audit candidate
+
+P-KL-01 is likely A-class because `main` already contains:
+
+- `UEOT.V3.InformationEventBernoulli.map_eventIndicator_eq_bernoulliLaw`;
+- `UEOT.V3.InformationEventBernoulli.bernoulliKL_event_le`.
+
+Before opening a lane, match the frozen source `d_Bern(p||q)` conventions
+exactly. If semantically identical to the existing measure-level Bernoulli KL,
+add only a source-facing wrapper; do not duplicate the indicator pushforward or
+KL data-processing proof.
+
+P-EVO-02 remains B/C boundary: existing mutual-information, KL chain-rule and
+Shannon-copy infrastructure is relevant, but the exact independent shared-label
+product wrapper has not yet been located.
 
 ## Exact next action
 
-1. inspect CI `34751461041`, `34751255136`, and `34751340890`;
-2. fix compile failures only on their own feature lanes;
-3. for feature-green lanes, perform exact frozen-source semantic audit and
-   prohibited-proof audit;
-4. add missing source-facing wrappers where semantic audit requires them;
-5. clean-port only fully source-closed lanes onto the latest `main` in a
-   minimal integration commit;
-6. require integration CI, safe main fast-forward, post-main CI, then ledger
-   synchronization before increasing 57/106;
-7. meanwhile continue the remaining 46-P-ID A/B/C/D audit.
+1. verify the main CI of the ledger commit that records **59/106**; only then is
+   59/106 a full green checkpoint;
+2. inspect P-EVO-01 CI `34752778143`; decode/fix if red, source-audit and
+   clean-integrate if green;
+3. clean-integrate source-closed P-COMP-03 onto the latest green main; it must
+   not wait indefinitely for EVO-01;
+4. exact-audit P-KL-01 against the frozen `d_Bern` definition and existing
+   event-Bernoulli data-processing theorem;
+5. continue the remaining 45-P-ID A/B/C/D audit while CI runs.
 
-## Important grounded audit guards
+## Important grounded guards
 
+- feature green does not increment coverage;
 - P-QSD-01 is the conditional-stabilization/QSD theorem; P-QSD-03 is the
-  simultaneous persistence-window theorem. Do not swap them.
-- P-REC-03/04 need a genuine hitting/stopped-process layer; current recovery
-  files do not close them.
+  simultaneous persistence-window theorem; do not swap them;
+- P-REC-03/04 need a genuine hitting/stopped-process layer;
 - P-REF-03 has arbitrary signal-space conditional expectations; a finite-signal
-  surrogate is not source complete.
-- P-DDH-04/05 require rank/stacked-Jacobian and singular-value perturbation
-  infrastructure; do not classify them as pure algebraic one-liners.
+  surrogate is not source complete;
+- P-DDH-04/05 require rank/stacked-Jacobian and singular-value perturbation;
 - P-BRG-01 includes concentration/extinction and maximizer-ratio clauses, not
-  just the explicit recurrence.
+  just recurrence;
+- P-EVO-03/04 require Perron–Frobenius asymptotics / martingale foundations.
 
 ## Persistence rule
 
