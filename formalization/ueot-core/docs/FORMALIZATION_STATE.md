@@ -2,9 +2,9 @@
 
 > Recovery entry point. Machine-readable lane state is `PID_STATUS.yaml`.
 > Integrated source-count truth is `V3_COVERAGE_STATUS.md`. GitHub Issue #56
-> carries the live cross-chat construction log between archival checkpoints.
+> carries the live cross-chat construction log when available.
 
-Last synchronized: **2026-09-13**
+Last synchronized: **2026-09-14**
 
 ## Environment
 
@@ -21,67 +21,79 @@ Last synchronized: **2026-09-13**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **69** |
-| active source-facing proof lanes | **1** |
-| integration/promotion lanes | **0** |
+| integrated proved, staged by this checkpoint | **70** |
+| promotion-ready / integration lane | **1** |
 | blocked | **0** |
-| pending/unclassified | **36** |
+| pending/unclassified | **35** |
 | total | **106** |
 
-This recovery commit stages **69 proved / 37 not yet counted**. It must itself
-pass PR CI, land on `main`, and pass the resulting main CI before 69/106 is
-called full-green.
+The previous authoritative full-green checkpoint is **69/106**. This recovery
+branch stages **70 proved / 36 not yet counted** after P-KL-02 completed all
+proof-side and post-main gates. It must itself pass PR CI, land on `main`, and
+pass the resulting main CI before 70/106 is called full-green.
 
-## Newly promoted proof — P-EVO-02
+The one promotion-ready lane is P-API-01. It is feature-green but **not counted**.
 
-Frozen source §25.3:
+## Newly staged proof — P-KL-02
 
-`I((F,T);(F',T)) = I(F;F') + H(T)`
+Frozen source §22.2 is implemented literally over every probability law
+`Q ≪ P0` with `Q(A) ≥ p`, with `q=P0(A)`, `0<q<1`, `0≤p≤1`.
 
-for finite `T` independent of the joint pair `(F,F')` and copied without error.
+The source-facing theorem exposes both cases:
+
+- `p≤q`: infimum `0`, attained by the baseline `P0`;
+- `p>q`: infimum exactly `dBern(p||q)`, attained by the explicit RN tilt
+  `(p/q)1_A + ((1-p)/(1-q))1_{Aᶜ}`.
+
+The optimizer is proved to be a probability law, absolutely continuous with
+respect to `P0`, to have event mass exactly `p`, to have the required RN
+derivative, and to have exact KL cost. The `p=1` endpoint is retained.
 
 Evidence:
-- theorem `UEOT.V3.EvolutionSharedLabel.p_evo_02`;
-- feature `formal/pevo02-shared-label@bfe0c3f43728a9ae5a07f1729c143039d16d7cff`;
-- feature CI `34763489145`: success;
-- clean integration head `0a3691ef1d97cae1a8017adae47bd8aa7ea49c47`;
-- PR #59 clean-integration CI `34765061853`: success;
-- main proof commit `17f7ca2070a439a7e4c99622d3c27095431a1571`;
-- post-main CI `34765399086`: success;
-- source semantic audit complete and prohibited-proof audit clean.
+- theorem `UEOT.V3.PathEventIProjection.p_kl_02`;
+- full feature `formal/pkl02-event-iprojection@cb78b0df87ef64fc0bc61e1e320ff901247d00cd`;
+- feature CI `34768634473`: success;
+- clean integration `formal/pkl02-clean-int-cb78@d30d31e15f38b349488edf4a5b12c94bace70031`;
+- PR #62 CI `34769135038`: success;
+- proof main commit `60ac78273200f5152a5e8d8286c840697e69bb51`;
+- post-main CI `34769394882`: success;
+- source semantic audit complete;
+- prohibited-proof audit clean.
 
-No noisy-copy, pairwise-independence, or coordinate-loss weakening is used.
+## Previous full-green checkpoint — 69/106
 
-## Previous full-green checkpoint — P-KL-03 / 68 of 106
+P-EVO-02 is fully counted. Its feature, clean-integration, proof post-main, and
+ledger gates are green; the later recovery checkpoint
+`main@e3f046fcf4096a1bb6acb561afe1e31244e3aaad` passed CI `34767624927`.
+Do not reopen P-EVO-02 absent a substantive source mismatch or regression.
 
-P-KL-03 is already fully counted. Its history-dependent finite-horizon path KL
-chain rule is on main, proof post-main CI `34763070439` succeeded, and the
-68/106 ledger main CI `34763815124` succeeded.
+## Promotion-ready lane — P-API-01
 
-## Active proof lane — P-KL-02
+Frozen §28.3 exact/approximate process-interface composition has a feature-green
+proof on:
 
-Frozen source §22.2 requires the exact event I-projection over all absolutely
-continuous path laws, not just P-KL-01's event data-processing lower bound.
-For `q=P0(A)`, `0<q<1`, `0≤p≤1`:
+- `formal/papi01-process-interface-fresh@0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
+- feature CI `34769177051`: success.
 
-- `p≤q`: infimum `0`, baseline `P0` is feasible;
-- `p>q`: infimum is `d_Bern(p||q)`;
-- active-case optimizer has RN density
-  `(p/q) 1_A + ((1-p)/(1-q)) 1_{Aᶜ}`;
-- optimizer must be a probability law, satisfy `Q*≪P0`, have `Q*(A)=p`, and
-  attain exact KL;
-- `p=1` must be retained.
+The implementation types exactly the frozen process interface: a protocol lift,
+a measurable path readout, and naturality of path-law pushforward for all
+declared protocols. Exact interfaces compose exactly. Approximate TV defects
+compose with bound `min 1 (εAB + εBC)` by P-MET-01 plus triangle inequality.
+Control actions, policy lifting, rewards and constraints are intentionally not
+added here because frozen §28.4 requires those as extra control-interface data.
 
-Current branch `formal/pkl02-event-iprojection`:
-- explicit `eventTiltDensity` and `eventIProjection` are implemented;
-- construction / measurability / AC / RN derivative layer green at
-  `333a3e9ffa0cadbaaa0b167ec0ccdc7d8685317a`, CI `34765080012`;
-- current head `1378efc916e894057cd4cd38cedbfd9c5eac9f80` repairs the pinned Mathlib
-  `withDensity_apply` namespace after adding exact event/complement masses and a
-  probability instance theorem;
-- CI `34765567421` is the current gate at synchronization;
-- next isolated layers are exact KL, Bernoulli monotonicity, then the global
-  infimum theorem.
+The feature diff is `UEOT/V3/ProcessInterface.lean` plus one top-level import and
+its prohibited-proof audit is clean. It must be clean-integrated only after the
+70/106 ledger checkpoint is full-green.
+
+## Independent source audit — P-ALG-01
+
+Frozen §28.5 is an exact finite-state partition-refinement algorithm. The source
+requires finite termination, controlled stability, coarsest stable refinement,
+preservation of outputs/rewards/all-action one-step quotient laws, and all
+corresponding finite-horizon output laws. Mathlib provides `Finpartition` /
+refinement infrastructure but no complete UEOT implementation currently exists.
+No approximate floating-point grouping may be substituted for the exact theorem.
 
 ## Grounded non-quick fronts
 
@@ -94,14 +106,14 @@ Current branch `formal/pkl02-event-iprojection`:
 - P-QSD-01/03/04: source-locked distinct non-A results.
 - P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
 
-P-EVO-03 specifically requires the full K-PF-01 primitive-matrix asymptotic
-package; pinned Mathlib has `Matrix.IsPrimitive` definitions but no directly
-reusable complete Perron--Frobenius power-convergence theorem was found. Do not
-count an assumed-convergence surrogate.
+P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
+Perron--Frobenius asymptotic package. Do not count an assumed-convergence
+surrogate.
 
 ## Mandatory recovery procedure
 
-1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56, `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
+1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,
+   `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
 2. Fetch live main, active branches and Actions state.
 3. Never reopen counted green P-IDs without a substantive source mismatch or CI regression.
 4. Read the frozen source before writing Lean and audit existing main first.
