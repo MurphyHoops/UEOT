@@ -1,88 +1,118 @@
 # UEOT Core 3 Lean — Fallback Handoff Snapshot
 
-> GitHub Issue #56 is the live cross-chat construction state. This file is the
-> fallback archival snapshot on `main` and is updated at meaningful lifecycle
-> transitions.
+> GitHub Issue #56 is the live cross-chat construction state when available.
+> This file is the fallback archival snapshot on `main` and is updated at
+> meaningful lifecycle transitions.
 
 ## Current lifecycle snapshot
 
-- authoritative counted coverage: **69/106 full-green**;
-- remaining frozen P-IDs: **37**;
-- current main: `eb7aacf4ba95dc2308c7434144dca40d001c0a39`;
-- newest counted promotion: **P-EVO-02**;
-- P-EVO-02 feature CI `34763489145`: success;
-- P-EVO-02 clean-integration CI `34765061853`: success;
-- P-EVO-02 proof main commit `17f7ca2070a439a7e4c99622d3c27095431a1571`;
-- P-EVO-02 post-main CI `34765399086`: success;
-- 69/106 recovery/ledger PR #60 CI `34765913122`: success;
-- 69/106 ledger main CI `34766813335`: success;
+- authoritative full-green baseline before this checkpoint: **69/106**;
+- this branch stages **70/106** after P-KL-02 completed all proof-side and
+  post-main gates;
+- remaining not-yet-counted P-IDs after staging: **36**;
+- proof main before ledger merge: `60ac78273200f5152a5e8d8286c840697e69bb51`;
+- newest staged promotion: **P-KL-02**;
+- P-KL-02 full feature CI `34768634473`: success;
+- P-KL-02 clean-integration PR #62 CI `34769135038`: success;
+- P-KL-02 proof main commit `60ac78273200f5152a5e8d8286c840697e69bb51`;
+- P-KL-02 post-main CI `34769394882`: success;
 - source semantic audit: complete;
 - prohibited-proof audit: clean.
 
-P-EVO-02 is therefore fully counted. Do not reopen it absent a substantive
-frozen-source mismatch or CI regression.
+**Do not call 70/106 full-green until this ledger/recovery branch passes PR CI,
+lands on `main`, and the resulting main CI succeeds.**
 
-## P-KL-03 — previous full-green baseline
+## P-KL-02 — completed proof contract
 
-Frozen §22.3 history-dependent finite-horizon KL chain rule is fully integrated.
-Main proof commit `b3e1c152e42b4e2a2b7001776214ecaaa35aae18`, post-main CI
-`34763070439`, and 68/106 ledger main CI `34763815124` all succeeded.
+Frozen §22.2 is implemented literally over all probability laws `Q ≪ P0` with
+`Q(A) ≥ p`, for `q=P0(A)`, `0<q<1`, `0≤p≤1`:
 
-## Active proof lane — P-KL-02
+- `p≤q`: global infimum `0`, baseline `P0` attains it;
+- `p>q`: global infimum `dBern(p||q)`;
+- explicit RN optimizer `(p/q)1_A + ((1-p)/(1-q))1_{Aᶜ}`;
+- optimizer probability normalization, AC, exact event mass, RN density and
+  exact KL are proved;
+- endpoint `p=1` is retained.
 
-Frozen §22.2 source contract remains exact:
+Canonical theorem:
+`UEOT.V3.PathEventIProjection.p_kl_02`.
 
-- optimize over all probability laws `Q ≪ P0` satisfying `Q(A) ≥ p`;
-- `q := P0(A)`, `0 < q < 1`, `0 ≤ p ≤ 1`;
-- if `p ≤ q`, infimum `0`, attained by `P0`;
-- if `p > q`, infimum exactly Bernoulli KL;
-- explicit RN optimizer `(p/q) 1_A + ((1-p)/(1-q)) 1_{Aᶜ}`;
-- prove optimizer probability, absolute continuity, exact event mass and exact KL;
-- retain the endpoint `p = 1` with `0 log 0 = 0`;
-- P-KL-01 alone is not an acceptable weakening.
+Evidence:
+- full-contract feature `formal/pkl02-event-iprojection@cb78b0df87ef64fc0bc61e1e320ff901247d00cd`;
+- feature CI `34768634473`: success;
+- clean integration `formal/pkl02-clean-int-cb78@d30d31e15f38b349488edf4a5b12c94bace70031`;
+- clean PR #62 CI `34769135038`: success;
+- proof main `60ac78273200f5152a5e8d8286c840697e69bb51`;
+- proof post-main CI `34769394882`: success.
 
-Primary feature branch: `formal/pkl02-event-iprojection`.
+No homogeneous-Markov surrogate, lower-bound-only weakening, or dropped `p=1`
+boundary is used.
 
-Implemented layers:
-- `eventTiltDensity`: exact frozen two-region RN density;
-- `eventIProjection := P0.withDensity eventTiltDensity`;
-- measurable/AC/RN derivative layer;
-- exact event/complement mass lemmas;
-- probability-law lemma.
+## Next promotion lane — P-API-01
 
-CI history relevant to the current checkpoint:
-- construction/RN helper head `333a3e9ffa0cadbaaa0b167ec0ccdc7d8685317a`, CI `34765080012`: success;
-- head `301fac6615d133340de071a08d5a11472dade41f`, CI `34766038056`: failed only because two redundant `simp only [Measure.restrict_univ]` commands made no progress;
-- repair head `058a7d35c044f143a3b2622cb05b1dfb292c5ef1` removes only those no-op tactics;
-- primary feature CI `34766950875` is the current validation run for that repair.
+Frozen §28.3 has already completed its feature proof:
 
-Parallel exact-KL scratch lane:
-- branch `formal/pkl02-exact-kl-scratch` from `058a7d35...`;
-- head `2052313aad3209b8e1458c6340fd36df0c170589`;
-- prototypes `eventIProjection_klDiv_formula` directly in `ENNReal` using
-  `InformationTheory.klDiv_eq_lintegral_klFun_of_ac`, the explicit RN derivative,
-  and the `A/Aᶜ` l-integral split;
-- scratch CI `34767150813` validates only the next proof layer and never increments coverage.
+- feature branch `formal/papi01-process-interface-fresh`;
+- head `0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
+- feature CI `34769177051`: success;
+- diff against the 69/106 full-green base is exactly
+  `UEOT/V3/ProcessInterface.lean` plus one top-level import;
+- source semantic audit: complete;
+- prohibited-proof audit: clean.
 
-## Exact next actions
+The exact clause composes the contravariant protocol lifts and covariant
+measurable path readouts. The approximate clause gives
+`TV ≤ min 1 (εAB + εBC)` by inserting the intermediate pushed law, applying
+P-MET-01, and then the TV triangle inequality. It deliberately does **not** add
+the control-interface structures that frozen §28.4 says require separate data.
 
-1. collect primary P-KL-02 CI `34766950875`;
-2. if green, treat optimizer mass/probability as a stable feature checkpoint;
-3. collect scratch exact-KL CI `34767150813`, repair only exact Lean/API errors, then transplant the green exact-KL theorem to the primary branch;
-4. prove active-side Bernoulli KL monotonicity for `r ≥ p > q` and combine it with P-KL-01;
-5. state and prove the global all-`Q` infimum theorem, including the `p ≤ q` baseline branch and the `p = 1` endpoint;
-6. source-semantic/prohibited-proof audit;
-7. feature green still does **not** increment coverage;
-8. clean-integrate P-KL-02 only from the latest full-green main, then require post-main CI and ledger sync before any coverage increment.
+### Exact next action for P-API-01
 
-## Grounded non-quick audit — P-EVO-03
+Only after 70/106 becomes full-green:
+1. create a fresh clean-integration branch from that new main;
+2. transplant only `ProcessInterface.lean` and its one `UEOT.lean` import;
+3. compare against the new main and require behind=0;
+4. run official PR CI;
+5. merge safely and require post-main CI;
+6. then ledger-sync 71/106 and require ledger main CI.
 
-Frozen P-EVO-03 depends on the full Perron--Frobenius asymptotic package K-PF-01:
-positive left/right Perron vectors for a primitive nonnegative matrix, spectral
-gap, and normalized power convergence. Pinned Mathlib exposes
-`Matrix.IsPrimitive` but no directly reusable full asymptotic theorem was found.
-Do not replace this with an assumed convergence hypothesis and count it as the
-source theorem.
+Feature green alone never increments coverage.
+
+## Independent audit lane — P-ALG-01
+
+Frozen §28.5 is source-locked as an exact finite partition-refinement theorem.
+Given a finite state set, common finite action set, exact transition matrices,
+rewards and output labels, the initial partition is equality of output plus the
+complete action-reward vector. Each refinement splits current blocks by all
+action/block transition masses.
+
+The source theorem requires all of:
+- finite termination;
+- terminal controlled stability/lumpability;
+- coarsest stable partition among refinements of the initial partition;
+- preservation of output, reward and every action's one-step quotient law;
+- preservation of corresponding finite-horizon output laws by induction.
+
+Pinned Mathlib has `Finpartition` and refinement infrastructure, but the UEOT
+repository has no existing complete lumpability/refinement implementation. Treat
+this as a genuine medium proof lane, not a short wrapper. Exact equality must not
+be replaced by floating tolerance clustering.
+
+## Grounded non-quick fronts
+
+- P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
+- P-DDH-02/03: finite exponential-family calculus and KL variational duality.
+- P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
+- P-EVO-03/04: Perron--Frobenius asymptotics / martingale foundations.
+- P-REF-03: arbitrary signal-space conditional expectation.
+- P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation.
+- P-QSD-01/03/04: source-locked distinct non-A results.
+- P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
+
+P-EVO-03 specifically requires the full K-PF-01 primitive-matrix asymptotic
+package; pinned Mathlib exposes `Matrix.IsPrimitive` but no directly reusable
+complete Perron--Frobenius power-convergence theorem was found. Do not replace
+this with an assumed-convergence hypothesis and count it as the source theorem.
 
 ## Guards
 
@@ -97,7 +127,7 @@ source theorem.
 ## Recovery order
 
 1. `UEOT_CORE3_LEAN_OPERATIONS.md`;
-2. Issue #56;
+2. Issue #56 when available;
 3. `PID_STATUS.yaml`;
 4. `FORMALIZATION_STATE.md`;
 5. `V3_COVERAGE_STATUS.md`;
