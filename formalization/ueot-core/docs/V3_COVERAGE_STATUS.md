@@ -23,9 +23,9 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved** | **67** |
+| **proved** | **68** |
 | **partial** | **0** |
-| **pending** | **39** |
+| **pending** | **38** |
 | **total** | **106** |
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -55,33 +55,34 @@ mathematics or Lean code exists.
 - **Omega / integrity:** P-OMG-01, P-OMG-02
 - **Dual-drive / alignment:** P-DDH-01, P-ALI-02, P-ALI-03
 - **Composition:** P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
-- **KL / path information:** P-KL-01
+- **KL / path information:** P-KL-01, P-KL-03
 - **Evolution:** P-EVO-01
 
-Count check: `66 + 1 = 67`.
+Count check: `67 + 1 = 68`.
 
-## Newly counted promotion — P-COMP-04
+## Newly counted promotion — P-KL-03
 
-Frozen source §15.4 is retained exactly: with side information packaging the
-child canonical cores and interface `(C_{1:m},U)`, exact sufficiency/minimality
-supplies a deterministic parent core `C_P = g(M_P,U)`, and therefore
+Frozen source §22.3 is retained at the required level: finite-horizon path laws
+are built from genuinely history-dependent kernels, and KL decomposes into the
+initial-law divergence plus the time-summed expected conditional-kernel KL.
+The same-initial-law corollary is also exposed explicitly. No homogeneous-Markov
+replacement was used.
 
-`H(C_P | C_{1:m},U) <= H(M_P | C_{1:m},U)`.
-
-The source-facing Lean map deliberately cannot inspect the child-core tuple;
-finite alphabets discharge the frozen finite-conditional-entropy requirement.
-
-Canonical theorem: `UEOT.V3.CompositionParentInformation.p_comp_04`.
+Canonical theorems:
+- `UEOT.V3.PathKLChain.p_kl_03_same_initial`;
+- `UEOT.V3.PathKLChain.p_kl_03_general`;
+- source-facing alias `UEOT.V3.PathKLChain.p_kl_03`.
 
 Promotion evidence:
-- feature branch `formal/pcomp04-parent-info`;
-- feature head `d7b3446dcac54f62f7d28a141dd8649793b2586c`;
-- feature CI `34757571535`: success;
-- clean integration branch `formal/pcomp04-main-integration`;
-- clean integration/main proof commit `412815d611fc3c20e867fdf245fc15fbf1f9266f`;
-- exact integration diff: theorem file plus one top-level import;
-- integration CI `34758385777`: success;
-- post-main CI `34758642764`: success;
+- feature branch `formal/pkl03-path-chain`;
+- feature proof head `336e67f...` (feature CI green before clean integration);
+- clean integration branch `formal/pkl03-main-integration-v3`;
+- clean integration commit `d4126fbb3a9d7cd288d261de8898ee103eee85a0`;
+- clean integration CI `34762400971`: success;
+- rebase promotion PR #57;
+- main proof commit `b3e1c152e42b4e2a2b7001776214ecaaa35aae18`;
+- post-main CI `34763070439`: success;
+- exact integration diff: `UEOT/V3/PathKLChain.lean` plus one top-level import;
 - prohibited-proof audit: clean;
 - frozen-source semantic audit: complete.
 
@@ -89,31 +90,36 @@ Promotion evidence:
 
 ## Active unresolved front
 
-There are **39 not-yet-counted P-IDs**.
+There are **38 not-yet-counted P-IDs**.
 
-### Active proof — P-KL-03
+### Active proof — P-EVO-02
 
-Frozen source §22.3 requires a finite-horizon path-space KL chain rule for
-genuinely history-dependent discrete kernels. The same-initial-law theorem is
-green, and the source-explicit different-initial-law extension adds the initial
-KL term.
+Frozen source §25.3 requires the exact shared-label identity for finite `T`
+independent of `(F,F')` and copied without error:
 
-- branch `formal/pkl03-path-chain`;
-- same-initial theorem `UEOT.V3.PathKLChain.p_kl_03` was green at
-  `ad67c92db2e9bf6fce561e16dcd0c9680072731f`, CI `34758129042`: success;
-- latest proof head `6f3e3e3a458da9ef3324783ae0e9423d48a78814` fixes the two exact errors in
-  `p_kl_03_general`;
-- CI `34761786961`: in progress at ledger creation;
-- homogeneous-Markov-only replacement is forbidden;
+`I((F,T);(F',T)) = I(F;F') + H(T)`.
+
+The feature implementation encodes independence structurally as a product law
+and exact copying through the diagonal copy law; coordinate repacking is a
+measurable bijective regrouping only.
+
+- branch `formal/pevo02-shared-label`;
+- repaired feature head `9969ed9c4a8fdd11eec26908c0f2b7a0a89b3916`;
+- initial CI `34762544028` exposed only Lean/API issues;
+- repaired CI `34763101765` is the current feature gate;
 - feature green does not increment coverage.
 
-### Source audit — P-EVO-02
+### Source audit — P-KL-02
 
-Frozen target remains the exact shared-label identity for finite `T` independent
-of `(F,F')` and copied without error:
-`I((F,T);(F',T)) = I(F;F') + H(T)`.
-Existing product/KL-chain/deterministic-copy infrastructure must be reused before
-adding new foundations.
+Frozen source §22.2 requires the sharp event I-projection over **all** path laws
+`Q ≪ P0` satisfying `Q(A) ≥ p`, not merely P-KL-01's data-processing lower
+bound. The Lean proof must retain:
+
+- `p ≤ q`: infimum `0`, attained by `P0`;
+- `p > q`: infimum `d_Bern(p || q)`;
+- the explicit two-region reweighted optimizer;
+- probability, absolute continuity, exact event mass and exact KL checks;
+- the `p = 1` boundary case.
 
 ## Reproducibility task
 
