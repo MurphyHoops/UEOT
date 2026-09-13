@@ -23,13 +23,13 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **70** |
+| **proved, staged by this ledger checkpoint** | **71** |
 | **partial** | **0** |
-| **pending / not yet counted** | **36** |
+| **pending / not yet counted** | **35** |
 | **total** | **106** |
 
-This branch stages 70/106 after P-KL-02 completed its proof, clean-integration,
-and post-main proof gates. **70/106 is not called full-green until this ledger
+This branch stages 71/106 after P-API-01 completed its feature, clean-integration,
+and post-main proof gates. **71/106 is not called full-green until this ledger
 checkpoint itself passes PR CI, lands on `main`, and the resulting main CI
 succeeds.**
 
@@ -62,84 +62,71 @@ mathematics or Lean code exists.
 - **Composition:** P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
 - **KL / path information:** P-KL-01, P-KL-02, P-KL-03
 - **Evolution:** P-EVO-01, P-EVO-02
+- **Process interface:** P-API-01
 
-Count check: `69 + 1 = 70`.
+Count check: `70 + 1 = 71`.
 
-## Newly staged promotion — P-KL-02
+## Newly staged promotion — P-API-01
 
-Frozen source §22.2 is implemented at full strength. For `q = P0(A)`,
-`0 < q < 1`, and `0 ≤ p ≤ 1`, the optimization is literally over **all**
-probability laws `Q ≪ P0` satisfying `Q(A) ≥ p`:
+Frozen source §28.3 is implemented at full strength:
 
-- if `p ≤ q`, the infimum is `0`, attained by `P0`;
-- if `p > q`, the infimum is exactly `dBern p q`;
-- the active optimizer is the explicit two-region RN tilt
-  `(p/q) 1_A + ((1-p)/(1-q)) 1_{Aᶜ}`;
-- the optimizer is proved to be a probability law, absolutely continuous with
-  respect to `P0`, to have exact event mass `p`, and to have exact KL cost
-  `dBern p q`;
-- the endpoint `p = 1` is retained.
+- a typed process interface carries the contravariant protocol lift and the
+  covariant measurable path readout;
+- exact naturality is required for every declared protocol;
+- exact interfaces compose with
+  `J_AC = J_AB ∘ J_BC` and `C_AC = C_BC ∘ C_AB`;
+- approximate TV defects compose with the source bound
+  `TV ≤ min 1 (ε_AB + ε_BC)`;
+- control actions, policy lifts, rewards and constraints from frozen §28.4 are
+  deliberately not smuggled into the §28.3 process-interface contract.
 
-Canonical theorem:
-- `UEOT.V3.PathEventIProjection.p_kl_02`.
-
-Supporting source-facing construction includes:
-- `UEOT.V3.PathEventIProjection.eventIProjection`;
-- `UEOT.V3.PathEventIProjection.eventIProjection_klDiv_eq_dBern`;
-- `UEOT.V3.BernoulliKLMonotone.dBern_mono_active`;
-- literal feasible-law infimum `EventFeasibleLaw` / `eventKLIInf`.
+Canonical theorems:
+- `UEOT.V3.ProcessInterface.p_api_01_exact`;
+- `UEOT.V3.ProcessInterface.p_api_01_approx`.
 
 Promotion evidence:
-- full-contract feature head `cb78b0df87ef64fc0bc61e1e320ff901247d00cd`;
-- feature CI `34768634473`: success;
-- clean integration branch `formal/pkl02-clean-int-cb78`;
-- clean integration head `d30d31e15f38b349488edf4a5b12c94bace70031`;
-- clean integration PR #62;
-- clean integration CI `34769135038`: success;
-- proof main commit `60ac78273200f5152a5e8d8286c840697e69bb51`;
-- proof post-main CI `34769394882`: success;
-- exact clean-integration diff: four P-KL-02 modules plus four top-level imports;
+- feature branch `formal/papi01-process-interface-fresh`;
+- feature head `0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
+- feature CI `34769177051`: success;
+- clean integration branch `formal/papi01-clean-int-70`;
+- clean integration head `697df634e502bbd5407fc7f832963ac0afe1203d`;
+- clean integration PR #64;
+- clean integration CI `34770423058`: success;
+- proof main commit `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
+- proof post-main CI `34770728978`: success;
+- exact clean-integration diff: `UEOT/V3/ProcessInterface.lean` plus one
+  top-level import;
 - prohibited-proof audit: clean;
 - frozen-source semantic audit: complete.
 
 **Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
 main CI.**
 
-## Previous full-green checkpoint — P-EVO-02 / 69 of 106
+## Previous full-green checkpoint — P-KL-02 / 70 of 106
 
-P-EVO-02 is already fully counted. Its exact shared-label mutual-information
-identity is on main with joint-pair independence encoded structurally and exact
-copying preserved. Feature CI `34763489145`, clean-integration CI `34765061853`,
-proof post-main CI `34765399086`, and 69/106 ledger main CI `34766813335` all
-succeeded. The later recovery checkpoint `main@e3f046fcf4096a1bb6acb561afe1e31244e3aaad`
-also passed CI `34767624927`.
+P-KL-02 is fully counted. Its all-feasible-law event I-projection theorem,
+explicit two-region RN optimizer, exact Bernoulli KL value and `p=1` endpoint
+are on main. Feature CI `34768634473`, clean-integration CI `34769135038`, proof
+post-main CI `34769394882`, ledger PR CI `34769830990`, and ledger main CI
+`34770086580` all succeeded. The resulting full-green 70/106 baseline was
+`main@8f29d29a0fe32bf9cccb7cbc12c84676768d9592`.
 
-## Promotion-ready next lane — P-API-01
+## Active proof lane — P-ALG-01
 
-P-API-01 is **not counted** in the 70 above. Its frozen §28.3 process-interface
-contract has completed a feature proof and source audit:
+Frozen §28.5 is source-locked as an exact finite partition-refinement theorem.
+The active feature branch `formal/palg01-refinement-core` implements a finite
+controlled Markov model, the exact output/complete-reward initial partition,
+block transition masses and exact one-round signature refinement. The intended
+termination proof uses a strictly decreasing finite related-pair measure; the
+coarsestness proof uses the frozen argument that every coarser current block is
+a disjoint union of stable finer blocks. Pinned Mathlib's
+`Finpartition.ofSetoid` is being used for that finite disjoint-union bridge.
 
-- branch `formal/papi01-process-interface-fresh`;
-- feature head `0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
-- feature CI `34769177051`: success;
-- exact clause composes protocol lifts and measurable path readouts;
-- approximate clause proves TV defect at most
-  `min 1 (εAB + εBC)` using P-MET-01 and the TV triangle inequality;
-- no control-interface structures from §28.4 are silently added;
-- prohibited-proof audit: clean.
-
-It must be clean-integrated only from the eventual **70/106 full-green main**.
-Feature green alone does not increment coverage.
-
-## Grounded next audit — P-ALG-01
-
-Frozen §28.5 requires a genuine finite partition-refinement algorithm: finite
-termination, stable/lumpable quotient correctness, coarsest stable refinement of
-the initial output/reward partition, preservation of output/reward/all-action
-one-step quotient laws, and induction to all corresponding finite-horizon output
-laws. Mathlib provides `Finpartition` / refinement infrastructure, but no existing
-UEOT implementation was found. This is a real algorithmic proof lane, not a
-wrapper or an approximate floating-point clustering theorem.
+P-ALG-01 remains **not counted** until it also proves finite termination,
+terminal stability, coarsestness among stable refinements, one-step quotient-law
+preservation, and all corresponding finite-horizon output laws, then completes
+the full promotion protocol. Exact equality is mandatory; floating-tolerance
+clustering is not a substitute.
 
 ## Reproducibility task
 
