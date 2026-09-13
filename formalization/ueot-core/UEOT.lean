@@ -15,3 +15,5 @@ import UEOT.V3.OmegaMinimalFailure
 import UEOT.V3.OmegaIntegrityMargin
 import UEOT.V3.DualDriveGauge
 import UEOT.V3.AlignmentThreshold
+import UEOT.V3.CompositionMargin
+import UEOT.V3.PathEventKL
