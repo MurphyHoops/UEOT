@@ -22,18 +22,68 @@ Last synchronized: **2026-09-13**
 
 | state | count |
 |---|---:|
-| integrated proved | **54** |
-| active proof | **1** |
+| integrated proved | **55** |
+| active proof | **0** |
 | blocked | **0** |
 | pending unclassified | **51** |
 | total | **106** |
 
-The authoritative source-level ledger is **54 proved / 52 pending**.
+The authoritative source-level ledger is **55 proved / 51 pending**.
 
-The newest promotion is **P-INFO-03**. Its exact randomized-encoder
-zero-distortion rate theorem is now source-audited, main-integrated and green
-post-main. The dependency it supplied to P-INT-01 is therefore no longer a
-blocker; P-INT-01 is the active proof lane.
+The newest promotion is **P-INT-01**. Its general Standard-Borel predictive
+factorization iff, structured `(M,U)` layer, countable protocol family, common
+versions/common conull set, and common measurable decoder are source-audited,
+main-integrated and green post-main. There is currently no active proof lane;
+the next phase is the source-to-main A/B/C/D audit of the remaining 51 P-IDs.
+
+## P-INT-01 [PROVED / COUNTED]
+
+Frozen source theorem: **Predictive Factorization Characterization Theorem 5.1**.
+For the source's Standard-Borel variables, with structured
+`H=(H^S,H^E)`, `M=f(H^S)`, `U=g(H^E)`, and `Z=(M,U)`:
+
+`Y_f^+ ⟂ H | Z`
+
+iff there exists a measurable probability-law factor `Psi` such that
+
+`C^f = Psi(M,U)` almost surely.
+
+For the declared countable intervention/protocol family, the frozen source
+requires common versions so the protocol-indexed statements hold on one common
+conull set.
+
+Canonical source-facing theorems:
+
+- `UEOT.V3.InformationPInt01.p_int_01`;
+- `UEOT.V3.InformationPInt01Common.p_int_01_common`;
+- `UEOT.V3.InformationPInt01Common.p_int_01_common_decoder`.
+
+Completed proof architecture:
+
+1. generic Standard-Borel factorization iff;
+2. structured internal/environment representation;
+3. forward and reverse implications;
+4. canonical conditional-law factorization;
+5. countable protocol/intervention family;
+6. one common conull set/common version;
+7. common measurable decoder packaging.
+
+Promotion evidence:
+
+- final proof branch `formal/pint01-factorization-iff`;
+- verified feature head `3943391af4d459a370ab840d1b15babcae26f82a`;
+- feature full-target CI `34747270058`: success;
+- clean integration commit `d757ea0dd14755233b94d40763f457773a52089f`;
+- clean integration CI `34749908649`: success;
+- `main` commit `d757ea0dd14755233b94d40763f457773a52089f`;
+- post-main CI `34750114264`: success;
+- prohibited-proof audit: zero `sorry`, zero `admit`, zero `native_decide`, zero
+  unsourced `axiom` in the clean integration diff;
+- canonical-source semantic audit completed 2026-09-13.
+
+Do not reopen this lane absent a substantive source mismatch or CI regression.
+Do not import the discrete canonical-core restrictions of P-INFO-03 into this
+source theorem.
 
 ## P-INFO-03 [PROVED / COUNTED]
 
@@ -47,32 +97,6 @@ Canonical source-facing theorem:
 
 `UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy`.
 
-The completed proof chain is:
-
-1. genuine countable conditional entropy from `U`-disintegration;
-2. generic KL conditional mutual information and fiber decomposition;
-3. genuine randomized encoder joint-law geometry;
-4. zero average TV implies equality of canonical and decoded future laws a.e.;
-5. measurable law-code inversion recovers the discrete core from `(M,U)`;
-6. conditional data processing yields the source entropy lower bound for every
-   zero-distortion randomized scheme;
-7. the deterministic canonical encoder `M=C` with canonical decoder has zero
-   distortion;
-8. its objective satisfies `I(H;C|U)=H(C|U)`;
-9. `sInf` over bundled code-space + encoder + decoder + zero-distortion schemes
-   gives the exact rate identity.
-
-Source-semantics audit confirms:
-
-- arbitrary code alphabets are Standard Borel, not artificially countable;
-- countability is used only for the discrete canonical core labels;
-- the encoder input is `(H,U)` and does not contain future `Y`;
-- the final infimum is over whole feasible schemes rather than a fixed `M`;
-- the ENNReal theorem is stronger than the frozen explicit finite-entropy
-  clause and includes that source case;
-- code-space quantification is universe-polymorphic within the ambient Lean
-  universe, the normal predicative implementation boundary.
-
 Promotion evidence:
 
 - final proof branch `formal/pinfo03-rate-zero`;
@@ -80,54 +104,9 @@ Promotion evidence:
 - proof CI `34744325632`: success;
 - clean integration CI `34744658528`: success;
 - main commit `57e987a18a5dd8feca224b91e3e78b93c2a44de8`;
-- post-main CI `34744919310`: success;
-- prohibited-proof audit: no `sorry`, `native_decide`, or unsourced `axiom` in
-  the integrated P-INFO-03 diff.
+- post-main CI `34744919310`: success.
 
-No deterministic-only reproof or duplicate conditional-information stack should
-be opened absent a real source mismatch or regression.
-
-## P-INT-01 [ACTIVE PROOF]
-
-Frozen source theorem: **Predictive Factorization Characterization Theorem 5.1**.
-For the source's Standard-Borel variables, with `Z=(M,U)`:
-
-`Y ⟂ H | Z`
-
-iff there exists a measurable probability-law factor
-`Psi : Z -> P(Y)` such that
-
-`C*=L(Y|H)=Psi(Z)` almost surely.
-
-This is a general Standard-Borel theorem. It must **not** inherit the discrete
-canonical-core assumption used by P-INFO-03.
-
-Active branch:
-`formal/pint01-factorization-iff`.
-Base main commit:
-`57e987a18a5dd8feca224b91e3e78b93c2a44de8`.
-Initial active head at this synchronization:
-`d0829f75ce8e8d7ee251f5644478f3b75b1e445a`.
-Initial full-target CI:
-`34745077495` in progress.
-
-Current proof architecture:
-
-1. represent the source measurable map `Psi : Z -> P(Y)` as a Markov kernel
-   `Kernel Z Y`;
-2. identify the canonical future law with the regular conditional kernel
-   `P(Y|H)`;
-3. use pinned Mathlib's
-   `condIndepFun_iff_condDistrib_prod_ae_eq_prodMkRight` as the exact
-   conditional-independence bridge;
-4. exploit that `Z` is a measurable function of `H` to identify conditioning on
-   `(Z,H)` with conditioning on `H`;
-5. prove both directions of the factorization iff without countability.
-
-Do not replace this with the finite-protocol `PredictiveClassRecovery` theorem;
-that theorem is P-STAT-05 and has a different scope.
-
-## Previously frozen closed lanes
+## Closed lanes
 
 Do not reopen without a substantive source mismatch or CI regression:
 
@@ -135,17 +114,24 @@ Do not reopen without a substantive source mismatch or CI regression:
 - P-INFO-02;
 - P-INFO-03;
 - P-INFO-04;
-- P-ID-02.
+- P-ID-02;
+- P-INT-01.
 
-## Parallel source-to-main audit
+## Current phase — remaining source-to-main audit
 
-The audit population remains **51 unclassified P-IDs**. For each P-ID classify:
+The audit population is **51 unclassified P-IDs**. Before opening another proof
+stack, read each frozen source statement and compare it against current `main`.
+Classify each P-ID as:
 
-- **A:** source-facing theorem already exists on main; audit and promote;
-- **B:** substantial infrastructure exists but a precise source obligation is missing;
-- **C:** genuinely unformalized source mathematics.
+- **A:** a source-facing theorem already exists on `main`; semantic audit and
+  promotion may be enough;
+- **B:** substantial mathematics exists on `main`, but a source-facing wrapper,
+  exact quantifier alignment, or final obligation is missing;
+- **C:** major ingredients exist, but one or more bridge theorems are missing;
+- **D:** genuinely new formal mathematics is required.
 
-Module names alone never justify promotion.
+Module names alone never justify promotion. Existing green/count\-ed P-IDs must
+not be reproved during this audit.
 
 ## Public canonical-source synchronization [REPRODUCIBILITY TASK]
 
@@ -160,15 +146,16 @@ This is separate from theorem proof status.
 
 ## Mandatory recovery procedure
 
-1. Read `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
-2. Fetch current main SHA and relevant Actions runs.
+1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, GitHub Issue #56,
+   `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
+2. Fetch current main SHA and relevant Actions runs/branches/PRs.
 3. Distinguish source audit, theorem closure, official import reachability,
    feature CI, main integration, post-main CI, ledger counting, and public
    source-artifact reproducibility.
 4. Read the frozen source statement before writing Lean.
 5. Audit existing main code before creating new infrastructure.
-6. Never use `sorry`, unsourced axioms, `native_decide`, or kernel-skipping
-   devices as proof completion.
+6. Never use `sorry`, `admit`, unsourced axioms, `native_decide`, or
+   kernel-skipping devices as proof completion.
 7. While CI runs, advance another independent audit/proof lane.
 
 ## Repository truth hierarchy
@@ -176,6 +163,6 @@ This is separate from theorem proof status.
 1. frozen canonical source specification;
 2. `docs/V3_COVERAGE_STATUS.md`;
 3. `docs/PID_STATUS.yaml`;
-4. `docs/FORMALIZATION_STATE.md`;
-5. `UEOT/V3.lean`;
-6. `docs/PARALLEL_FORMALIZATION_ROADMAP.md`.
+4. GitHub Issue #56 for live construction intent;
+5. `docs/FORMALIZATION_STATE.md`;
+6. official imported Lean source on `main`.

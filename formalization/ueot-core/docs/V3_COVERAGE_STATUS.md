@@ -27,9 +27,9 @@ present in the public repository.
 
 | status | count |
 |---|---:|
-| **proved** | **54** |
+| **proved** | **55** |
 | **partial** | **0** |
-| **pending** | **52** |
+| **pending** | **51** |
 | **total** | **106** |
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -48,7 +48,7 @@ mathematics or Lean code exists.
 - **Telescoping reward:** P-TEL-01
 - **Bridge:** P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
-- **Internal/external factorization:** P-INT-02, P-INT-03
+- **Internal/external factorization:** P-INT-01, P-INT-02, P-INT-03
 - **Information:** P-INFO-01, P-INFO-02, P-INFO-03, P-INFO-04, P-INFO-05
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02
@@ -57,9 +57,62 @@ mathematics or Lean code exists.
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 
-Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 2 + 1 + 5 + 1 + 2 + 1 + 2 + 1 + 2 = 54`.
+Count check: `4 + 6 + 3 + 4 + 9 + 5 + 1 + 2 + 1 + 1 + 2 + 3 + 5 + 1 + 2 + 1 + 2 + 2 + 1 = 55`.
 
-## Newly counted promotion — P-INFO-03
+## Newly counted promotion — P-INT-01
+
+Frozen source contract:
+
+For Standard-Borel variables and structured statistics `M=f(H^S)`, `U=g(H^E)`,
+with `Z=(M,U)`, the source requires the Predictive Factorization
+Characterization Theorem
+
+`Y_f^+ ⟂ H | (M,U)  ↔  C^f = Psi(M,U) a.s.`
+
+for every protocol in the declared countable intervention family, using common
+versions so that the protocol-indexed statements hold on one common conull set.
+
+Canonical source-facing theorems:
+
+- `UEOT.V3.InformationPInt01.p_int_01`;
+- `UEOT.V3.InformationPInt01Common.p_int_01_common`;
+- common measurable decoder packaging:
+  `UEOT.V3.InformationPInt01Common.p_int_01_common_decoder`.
+
+Source-faithful implementation facts:
+
+- the theorem is fully general Standard-Borel and does not inherit the discrete
+  canonical-core restriction used by P-INFO-03;
+- both forward and reverse factorization implications are proved;
+- the structured internal/environment representation `H=(H^S,H^E)`,
+  `M=f(H^S)`, `U=g(H^E)` is present in the source-facing layer;
+- the canonical conditional future law is used as the predictive state;
+- the countable protocol/intervention family is handled with one common conull
+  set/common version rather than protocol-dependent exceptional sets;
+- a common measurable decoder is packaged explicitly;
+- no duplicate discrete information stack was introduced.
+
+Verification evidence:
+
+- verified feature branch `formal/pint01-factorization-iff` head
+  `3943391af4d459a370ab840d1b15babcae26f82a`;
+- feature full-target CI `34747270058`: success;
+- clean integration commit
+  `d757ea0dd14755233b94d40763f457773a52089f` on
+  `formal/pint01-main-integration`;
+- clean integration full-target CI `34749908649`: success;
+- `main` fast-forwarded to
+  `d757ea0dd14755233b94d40763f457773a52089f`;
+- post-main full-target CI `34750114264`: success;
+- prohibited-proof audit on the clean integration diff: zero `sorry`, zero
+  `admit`, zero `native_decide`, zero unsourced `axiom`;
+- canonical source semantic audit completed 2026-09-13.
+
+**Status: PROVED / COUNTED.**
+
+## Previously counted promotions
+
+### P-INFO-03
 
 Frozen source contract:
 
@@ -95,10 +148,6 @@ Verification evidence:
 - post-main full-target CI `34744919310`: success;
 - prohibited-proof audit: zero `sorry`, zero `native_decide`, zero unsourced `axiom` in the integrated P-INFO-03 diff;
 - canonical source semantic audit completed 2026-09-13.
-
-**Status: PROVED / COUNTED.**
-
-## Previously counted promotions
 
 ### P-ID-02
 
@@ -136,12 +185,10 @@ success, and canonical-source semantic audit complete.
 
 ## Active unresolved front
 
-- **P-INT-01 — ACTIVE PROOF:** general Standard-Borel Predictive Factorization
-  Characterization Theorem
-  `Y ⟂ H | (M,U) ↔ C*=Psi(M,U) a.s.`. It now reuses the regular-conditional
-  infrastructure stabilized by P-INFO-03; no duplicate information stack is allowed.
-- **Remaining 51 unclassified P-IDs — SOURCE-TO-MAIN AUDIT:** identify
-  source-facing theorems already on main before starting new proof stacks.
+- **No active proof lane.** P-INT-01 is counted and closed.
+- **Remaining 51 unclassified P-IDs — SOURCE-TO-MAIN AUDIT:** classify each as
+  A/B/C/D against the frozen source and current `main` before opening new proof
+  stacks.
 - **Public canonical source synchronization — REPRODUCIBILITY TASK:** copy the
   exact canonical bytes into the public repository and independently recompute
   SHA-256; this task does not change proof count by itself.

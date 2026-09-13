@@ -16,19 +16,20 @@ source:
     from source-theorem proof status. The canonical SHA is the frozen manifest
     value and has not been recomputed from raw local bytes in this audit.
 coverage:
-  integrated_proved: 54
+  integrated_proved: 55
   promotion_running: 0
-  active_proof: 1
+  active_proof: 0
   source_audit: 0
   blocked: 0
   pending_unclassified: 51
   note: >-
-    Counts partition all 106 frozen source P-IDs: 54 proved + 1 active proof +
-    0 blocked + 51 pending unclassified. P-INFO-03 is counted after direct
-    canonical-source audit, source-faithful randomized-encoder Lean closure,
-    clean integration CI 34744658528, main commit
-    57e987a18a5dd8feca224b91e3e78b93c2a44de8 and green post-main CI
-    34744919310. P-INT-01 is now unblocked and is the active proof lane.
+    Counts partition all 106 frozen source P-IDs: 55 proved + 0 active proof +
+    0 blocked + 51 pending unclassified. P-INT-01 is counted after direct
+    canonical-source semantic audit, source-faithful Standard-Borel/common-version
+    Lean closure, clean integration CI 34749908649, main commit
+    d757ea0dd14755233b94d40763f457773a52089f and green post-main CI
+    34750114264. The next phase is the source-to-main A/B/C/D audit of the
+    remaining 51 P-IDs before opening new proof stacks.
 state_vocabulary:
   - source_audit
   - proof
@@ -187,26 +188,50 @@ pids:
       - replace_exact_product_sum_with_only_exponential_bound
 
   P-INT-01:
-    state: proof
+    state: proved
     source_locked: true
+    source_semantic_audit: complete
+    mathematical_chain: complete
     source_statement: >-
-      For Standard-Borel variables, Y independent of H given (M,U) iff there
-      exists measurable Psi : M×U -> P(Y) such that the canonical predictive
-      state C*=L(Y|H) equals Psi(M,U) almost surely.
+      For Standard-Borel variables and structured M=f(H^S), U=g(H^E),
+      Y_f^+ is conditionally independent of H given (M,U) iff the canonical
+      predictive state C^f equals a measurable Psi(M,U) almost surely; for the
+      countable protocol/intervention family the source requires common versions
+      so the protocol-indexed statements hold on one common conull set.
     proof_contract:
-      left: Y ⟂ H | (M,U)
-      right: C*=Psi(M,U) a.s. for a measurable probability-kernel factor Psi
-      scope: general Standard-Borel; do not impose the countable-core assumption from P-INFO-03
+      left: Y_f^+ independent of H given (M,U)
+      right: C^f=Psi(M,U) a.s. for a measurable probability-law factor Psi
+      scope: general Standard-Borel; no countable-core assumption from P-INFO-03
+      structured_state: H=(H^S,H^E); M=f(H^S); U=g(H^E)
+      protocols: countable family with common versions/common conull set
       source_section: Predictive Factorization Characterization Theorem 5.1
-    active_lane:
-      branch: formal/pint01-factorization-iff
-      base_main_commit: 57e987a18a5dd8feca224b91e3e78b93c2a44de8
-      latest_known_head: d0829f75ce8e8d7ee251f5644478f3b75b1e445a
-      first_full_target_ci:
-        run: 34745077495
-        status: in_progress
-    reuse:
-      - pinned Mathlib Conditional.condIndepFun_iff_condDistrib_prod_ae_eq_prodMkRight
-      - P-INFO-03 regular conditional kernel and disintegration interfaces
-      - UEOT.V3.InformationStatistic deterministic statistic geometry
-    rule: do not start a duplicate independence/information stack
+    canonical_theorems:
+      single_protocol: UEOT.V3.InformationPInt01.p_int_01
+      common_versions: UEOT.V3.InformationPInt01Common.p_int_01_common
+      common_decoder: UEOT.V3.InformationPInt01Common.p_int_01_common_decoder
+    promotion:
+      final_proof_branch: formal/pint01-factorization-iff
+      final_proof_head: 3943391af4d459a370ab840d1b15babcae26f82a
+      final_proof_ci:
+        run: 34747270058
+        status: success
+      integration_branch: formal/pint01-main-integration
+      integration_commit: d757ea0dd14755233b94d40763f457773a52089f
+      integration_ci:
+        run: 34749908649
+        status: success
+      main_commit: d757ea0dd14755233b94d40763f457773a52089f
+      post_main_ci:
+        run: 34750114264
+        status: success
+      prohibited_proof_audit:
+        sorry: 0
+        admit: 0
+        native_decide: 0
+        unsourced_axiom: 0
+    public_source_artifact_synced: false
+    coverage_counted: true
+    forbidden_work:
+      - reprove_existing_green_P_INT_01_architecture
+      - import_P_INFO_03_discrete_core_assumptions
+      - merge_long_stale_feature_history_wholesale
