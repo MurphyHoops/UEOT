@@ -11,18 +11,19 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 61
+  integrated_proved: 63
   promotion_running: 0
-  active_proof: 2
-  source_audit: 0
+  active_proof: 3
+  source_audit: 1
   blocked: 0
-  pending_unclassified: 43
-  unresolved_total: 45
+  pending_unclassified: 39
+  unresolved_total: 43
   note: >-
-    Operational partition: 61 proved + 2 active source-facing proof lanes +
-    43 pending/unclassified = 106. P-COMP-03 and P-KL-01 are counted after
-    feature green, clean integration CI 34753554298, main proof commit
-    08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9, and post-main CI 34753815801.
+    Operational partition: 63 proved + 3 active source-facing proof lanes +
+    1 audited next lane + 39 pending/unclassified = 106. P-EVO-01 and
+    P-COMP-05 are counted after feature green, clean integration CI 34754713285,
+    main proof commit bfd9d83073cb929ea12de4267005023749023df5, and post-main
+    CI 34754974676.
 state_vocabulary:
   - source_audit
   - proof
@@ -107,75 +108,100 @@ pids:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: B
-    source_statement: >-
-      For a finite nonempty cut family with K_pi L_pi-Lipschitz,
-      Gamma_comp(T)=min_pi d(T,K_pi T) is (1+max_pi L_pi)-Lipschitz.
     canonical_theorem: UEOT.V3.CompositionMargin.p_comp_03
     promotion:
       feature_branch: formal/pcomp03-composition-margin
       feature_head: 7e074e694c26e52901342336b5e57b666df4fa8c
       feature_ci: {run: 34752374454, status: success}
-      integration_branch: formal/pcomp03-pkl01-integration
       integration_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
       integration_ci: {run: 34753554298, status: success}
-      main_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
       post_main_ci: {run: 34753815801, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     coverage_counted: true
 
   P-KL-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: A
-    source_statement: >-
-      For Q << P0 and measurable event A, full-law KL dominates the Bernoulli
-      KL of the induced event indicator, retaining the source absolute-continuity hypothesis.
     canonical_theorem: UEOT.V3.PathEventKL.p_kl_01
     promotion:
       feature_branch: formal/pkl01-event-bernoulli
       feature_head: c691145fc6ef8a1fa9332abebf09f3659a5cb2eb
       feature_ci: {run: 34753031461, status: success}
-      integration_branch: formal/pcomp03-pkl01-integration
       integration_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
       integration_ci: {run: 34753554298, status: success}
-      main_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
       post_main_ci: {run: 34753815801, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     coverage_counted: true
 
   P-EVO-01:
-    state: proof
+    state: proved
     source_locked: true
-    audit_class: B
     source_semantic_audit: complete
-    source_statement: >-
-      Finite deterministic mean-intensity dynamics with M=D_b K,
-      p'=pM/bar_b, b_i>=0 and bar_b>0 satisfy the exact Price
-      selection/transmission decomposition; zero-growth rows are allowed and
-      the deterministic ratio is not an expected random population-frequency ratio.
-    branch: formal/pevo01-price-decomposition
-    head: dbf40a016377ad3689e4c88b0d5f67a2a675a9c5
-    canonical_candidate: UEOT.V3.EvolutionPrice.p_evo_01
-    last_ci: {run: 34753626091, status: failure}
-    blocker: >-
-      Only the Fintype double-sum commutation proof remains; both Finset.sum_comm
-      and unqualified sum_comm were unavailable in the current imported API.
-    coverage_counted: false
+    audit_class: B
+    canonical_theorem: UEOT.V3.EvolutionPrice.p_evo_01
+    promotion:
+      feature_branch: formal/pevo01-price-decomposition
+      feature_head: a3f9473c4dfb71c049fa177a5effce46837122bd
+      feature_ci: {run: 34754264183, status: success}
+      integration_branch: formal/evo01-comp05-main-integration
+      integration_commit: bfd9d83073cb929ea12de4267005023749023df5
+      integration_ci: {run: 34754713285, status: success}
+      main_commit: bfd9d83073cb929ea12de4267005023749023df5
+      post_main_ci: {run: 34754974676, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    coverage_counted: true
 
   P-COMP-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: B
+    canonical_theorem: UEOT.V3.CompositionBooleanAtoms.p_comp_05
+    promotion:
+      feature_branch: formal/pcomp05-boolean-atoms
+      feature_head: dfb398a6c2f8edfa458ef5d2a242f02fd3d46971
+      feature_ci: {run: 34754344097, status: success}
+      integration_branch: formal/evo01-comp05-main-integration
+      integration_commit: bfd9d83073cb929ea12de4267005023749023df5
+      integration_ci: {run: 34754713285, status: success}
+      main_commit: bfd9d83073cb929ea12de4267005023749023df5
+      post_main_ci: {run: 34754974676, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    coverage_counted: true
+
+  P-COMP-06:
     state: proof
     source_locked: true
+    source_semantic_audit: complete
     audit_class: B
-    source_semantic_audit: in_progress
-    source_statement: >-
-      Finite membership-signature cells partition the base set and are exactly
-      the atoms of the unique least Boolean algebra containing the overlapping regions.
-    branch: formal/pcomp05-boolean-atoms
-    head: 7f3c73fc8d801a17b79b86aa9b8c7402344d0562
-    canonical_candidate: UEOT.V3.CompositionBooleanAtoms.p_comp_05
-    ci: {run: 34754028909, status: in_progress}
+    branch: formal/pcomp06-carrier-lift
+    head: 168e432b8479a6683d933d81bc1e362df2a4340c
+    canonical_candidate: UEOT.V3.CompositionCarrierLift.p_comp_06
+    ci: {run: 34754842269, status: success}
+    source_note: preserves both nested inclusion-min operations
+    coverage_counted: false
+
+  P-COMP-07:
+    state: proof
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: B
+    branch: formal/pcomp07-composition-window
+    head: 0826699b3fe135c3faec353153cc4d2fa533e13a
+    canonical_candidate: UEOT.V3.CompositionWindow.p_comp_07
+    ci: {run: 34755041666, status: in_progress}
+    source_note: compactness and continuity derive attained threshold boundaries
+    coverage_counted: false
+
+  P-ALI-02:
+    state: proof
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: B
+    branch: formal/pali02-parent-value
+    head: b0ef953829c83f0219ffe62e8b54243ae2270b51
+    canonical_candidate: UEOT.V3.AlignmentParentValue.p_ali_02
+    ci: {run: 34755240251, status: in_progress}
+    source_note: exact Hilbert decomposition plus Cauchy-Schwarz lower bound
     coverage_counted: false
 
 audits:
@@ -186,4 +212,5 @@ audits:
       - UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral
       - Mathlib.InformationTheory.klDiv_compProd_eq_add
       - UEOT.V3.DynamicsKernel
-    next: audit finite-horizon history-dependent path recursion before opening proof lane
+      - Mathlib.MeasurableEquiv.IicProdIoc
+    next: finite-horizon history-dependent path recursion; homogeneous-only surrogate forbidden

@@ -11,8 +11,8 @@ This file is the **authoritative source-level P-ID ledger** for the frozen
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
 - official target: `lake build UEOT`
 - integration branch: `main`
-- canonical source object: available in the project File Library for semantic audit
-- exact canonical source bytes in public repo: **pending synchronization**
+- canonical source object: project File Library
+- exact canonical source bytes in public repo: pending synchronization
 
 A P-ID is counted `proved` only after frozen-source semantic matching, official
 import reachability, feature/integration/post-main CI gates, prohibited-proof
@@ -23,9 +23,9 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved** | **61** |
+| **proved** | **63** |
 | **partial** | **0** |
-| **pending** | **45** |
+| **pending** | **43** |
 | **total** | **106** |
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -54,117 +54,91 @@ mathematics or Lean code exists.
 - **Representation covariance:** P-FAC-01
 - **Omega / integrity:** P-OMG-01, P-OMG-02
 - **Dual-drive / alignment:** P-DDH-01, P-ALI-03
-- **Composition:** P-COMP-03
+- **Composition:** P-COMP-03, P-COMP-05
 - **KL / path information:** P-KL-01
+- **Evolution:** P-EVO-01
 
-Count check: `59 + 2 = 61`.
+Count check: `61 + 2 = 63`.
 
-## Newly counted promotions — P-COMP-03 and P-KL-01
+## Newly counted promotions — P-EVO-01 and P-COMP-05
 
-### P-COMP-03 — composition margin
+### P-EVO-01 — exact Price selection/transmission decomposition
 
-Frozen contract: for a finite nonempty cut family with each `K_pi`
-`L_pi`-Lipschitz,
+Frozen contract retained in the source-facing theorem:
 
-`Gamma_comp(T) = min_pi d(T, K_pi T)`
+- finite parent and offspring type spaces;
+- `M = D_b K`;
+- `b_i >= 0`, including zero-growth rows;
+- deterministic mean-frequency update `p' = pM / bar_b`, requiring only
+  `bar_b > 0`;
+- exact covariance/selection plus transmission decomposition;
+- no identification of that deterministic mean-frequency ratio with an
+  expected random population-frequency ratio.
 
-is `(1 + max_pi L_pi)`-Lipschitz.
-
-Canonical theorem:
-
-- `UEOT.V3.CompositionMargin.p_comp_03`.
-
-Evidence:
-
-- feature branch `formal/pcomp03-composition-margin`;
-- feature head `7e074e694c26e52901342336b5e57b666df4fa8c`;
-- feature CI `34752374454`: success;
-- finite minimum/maximum represented explicitly by `Finset.inf'` / `Finset.sup'`;
-- exact `(1+L)` constant retained; it was not weakened to `2`.
-
-### P-KL-01 — event/Bernoulli KL lower bound
-
-Frozen contract: for baseline path law `P0`, reachable `Q ≪ P0`, and measurable
-event `A`, writing `q=P0(A)` and `p=Q(A)`,
-
-`D_KL(Q || P0) >= d_Bern(p || q)`.
-
-Canonical theorem:
-
-- `UEOT.V3.PathEventKL.p_kl_01`.
+Canonical theorem: `UEOT.V3.EvolutionPrice.p_evo_01`.
 
 Evidence:
+- feature branch `formal/pevo01-price-decomposition`;
+- feature head `a3f9473c4dfb71c049fa177a5effce46837122bd`;
+- feature CI `34754264183`: success;
+- final patch only exposed the pinned finite-sum commutation API; no source
+  semantic change.
 
-- feature branch `formal/pkl01-event-bernoulli`;
-- feature head `c691145fc6ef8a1fa9332abebf09f3659a5cb2eb`;
-- feature CI `34753031461`: success;
-- reuses the already machine-checked event-indicator pushforward and KL
-  data-processing layer in `InformationEventBernoulli`;
-- the frozen source hypothesis `Q ≪ P0` is retained even though the reused
-  data-processing result is stronger.
+### P-COMP-05 — canonical Booleanization of overlapping regions
+
+Frozen contract retained: membership-signature cells uniquely partition the
+base, reconstruct the original regions, and the nonempty cells are exactly the
+atoms of the unique least Boolean algebra containing all declared regions.
+
+Canonical theorem: `UEOT.V3.CompositionBooleanAtoms.p_comp_05`.
+
+Evidence:
+- feature branch `formal/pcomp05-boolean-atoms`;
+- feature head `dfb398a6c2f8edfa458ef5d2a242f02fd3d46971`;
+- feature CI `34754344097`: success;
+- implementation uses `BooleanSubalgebra.closure (Set.range V)` directly;
+- local decidable membership is confined to an internal helper and does not add
+  a source-facing mathematical assumption.
 
 ### Joint promotion evidence
 
-- clean integration branch `formal/pcomp03-pkl01-integration`;
+- clean integration branch `formal/evo01-comp05-main-integration`;
 - clean atomic integration/main proof commit
-  `08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9`;
-- exact integration diff: two source-facing theorem files plus their two
-  top-level imports;
-- integration CI `34753554298`: success;
-- `main` safely non-force fast-forwarded to the same proof commit;
-- post-main CI `34753815801`: success;
-- prohibited-proof audit in both new files:
-  `sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`;
+  `bfd9d83073cb929ea12de4267005023749023df5`;
+- exact proof diff: two source-facing theorem files plus their two top-level
+  imports;
+- integration CI `34754713285`: success;
+- safe non-force main fast-forward to the same proof commit;
+- post-main CI `34754974676`: success;
+- prohibited-proof audit: `sorry=0`, `admit=0`, `native_decide=0`, unsourced
+  `axiom=0`;
 - frozen-source semantic audit: complete.
 
 **Status: BOTH PROVED / COUNTED.**
 
-## Recent earlier counted promotions
-
-- **P-DDH-01 / P-ALI-03:** integration/main proof commit
-  `9bff83a544929a0191596f6a1b9c7c8d2a6f87b7`; integration CI
-  `34752277556`; post-main CI `34752528830`.
-- **P-OMG-01 / P-OMG-02:** integration commit
-  `4db94c39dddce53a5543e40568e5fc104321e88b`; integration CI
-  `34751042701`; post-main CI `34751300612`.
-- **P-INT-01:** main `d757ea0dd14755233b94d40763f457773a52089f`;
-  post-main CI `34750114264`.
-- **P-INFO-03:** main `57e987a18a5dd8feca224b91e3e78b93c2a44de8`;
-  post-main CI `34744919310`.
-- **P-ID-02:** main `4a29c2d5aa6a805d867e1934f6013aa49f1dc431`;
-  post-main CI `34717095993`.
-
 ## Active unresolved front
 
-There are **45 not-yet-counted P-IDs**. Two source-facing proof lanes are
-currently active:
+There are **43 not-yet-counted P-IDs**.
 
-- **P-EVO-01:** source-faithful finite Price-decomposition lane on
-  `formal/pevo01-price-decomposition`; current blocker is only the Lean API for
-  commuting the two finite Fintype sums. Frozen `M=D_bK`, deterministic
-  `p'=pM/bar_b`, zero-growth-row semantics, and the deterministic/random-ratio
-  distinction are already preserved.
-- **P-COMP-05:** canonical finite Booleanization/signature-atom lane on
-  `formal/pcomp05-boolean-atoms`; feature CI is running. The implementation uses
-  `BooleanSubalgebra.closure (Set.range V)` directly and targets partition,
-  region reconstruction, atom equivalence, and least-generated-algebra clauses.
+Active source-facing proof lanes:
+- **P-COMP-06** — `formal/pcomp06-carrier-lift@168e432b8479a6683d933d81bc1e362df2a4340c`; feature CI `34754842269`: success. It retains both nested inclusion-min operations in the physical-carrier→child-coalition lift. Awaiting final source/prohibited audit and clean promotion from the latest full-green main.
+- **P-COMP-07** — `formal/pcomp07-composition-window@0826699b3fe135c3faec353153cc4d2fa533e13a`; feature CI `34755041666` pending at ledger creation. Compactness + continuity are used to derive attained threshold boundaries; boundary witnesses are not assumed.
+- **P-ALI-02** — `formal/pali02-parent-value@b0ef953829c83f0219ffe62e8b54243ae2270b51`; feature CI `34755240251` pending at ledger creation. The source Hilbert decomposition and Cauchy--Schwarz lower bound are represented directly.
 
-The remaining **43** are in source-to-main audit or later proof queues. Feature
-green does not change 61/106.
-
-High-value audited future lane: **P-KL-03** can reuse
-`UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral` and pinned
-Mathlib's compProd KL chain rule; the remaining work is finite-horizon
-history-dependent path recursion/iteration, not a ground-up KL development.
+Audited next lane: **P-KL-03** can reuse
+`UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral`, pinned Mathlib
+`klDiv_compProd_eq_add`, and Ionescu--Tulcea finite-prefix infrastructure. The
+remaining obligation is finite-horizon iteration for possibly history-dependent
+kernels; a one-step or homogeneous-Markov surrogate is not countable.
 
 ## Reproducibility task
 
 The exact canonical source bytes are still not present in the public repository.
-Synchronizing the exact bytes and independently recomputing the SHA-256 remains
+Synchronizing those exact bytes and independently recomputing the SHA-256 is
 separate from theorem proof status.
 
 ## Completion rule
 
-UEOT Core v3.0 is machine-complete only when all **106** source P-IDs pass the
-source-theorem proof contract, with no theorem counted from a helper or
-feature-green branch alone.
+UEOT Core v3.0 is machine-complete only when all **106** frozen-source P-IDs pass
+the source-theorem proof contract; helpers or feature-green branches never count
+on their own.

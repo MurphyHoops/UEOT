@@ -16,125 +16,109 @@ Last synchronized: **2026-09-13**
 - integration branch: `main`
 - exact canonical bytes in public repo: pending synchronization
 
-## Current checkpoint
+## Current counted checkpoint
 
 | operational state | count |
 |---|---:|
-| integrated proved | **61** |
-| active source-facing proof lanes | **2** |
+| integrated proved | **63** |
+| active source-facing proof lanes | **3** |
+| source-audited next lanes | **1** |
 | blocked | **0** |
-| pending/audit queue | **43** |
+| pending/unclassified | **39** |
 | total | **106** |
 
-The authoritative source-level ledger is **61 proved / 45 not yet counted**.
+The authoritative source-level ledger is **63 proved / 43 not yet counted**.
+This docs commit must itself pass main CI before 63/106 is called full-green.
 
-## Latest counted promotions — P-COMP-03 / P-KL-01
+## Latest counted promotions — P-EVO-01 / P-COMP-05
 
-### P-COMP-03
+### P-EVO-01
+- theorem `UEOT.V3.EvolutionPrice.p_evo_01`;
+- feature `formal/pevo01-price-decomposition@a3f9473c4dfb71c049fa177a5effce46837122bd`;
+- feature CI `34754264183`: success;
+- finite `M=D_bK`, zero-growth rows, only `bar_b>0`, deterministic
+  `p'=pM/bar_b`, and exact Price selection/transmission decomposition retained;
+- deterministic mean-frequency update is not identified with an expected random
+  population-frequency ratio.
 
-Frozen source: finite nonempty cut family; each `K_pi` is `L_pi`-Lipschitz;
-`Gamma_comp(T)=min_pi d(T,K_pi T)`; the exact constant is
-`1 + max_pi L_pi`.
-
-- theorem `UEOT.V3.CompositionMargin.p_comp_03`;
-- feature `formal/pcomp03-composition-margin@7e074e694c26e52901342336b5e57b666df4fa8c`;
-- feature CI `34752374454`: success.
-
-### P-KL-01
-
-Frozen source: for `Q ≪ P0` and measurable event `A`, full-law KL dominates
-the Bernoulli KL of the induced event indicator.
-
-- theorem `UEOT.V3.PathEventKL.p_kl_01`;
-- feature `formal/pkl01-event-bernoulli@c691145fc6ef8a1fa9332abebf09f3659a5cb2eb`;
-- feature CI `34753031461`: success;
-- source absolute-continuity hypothesis retained;
-- existing `InformationEventBernoulli` foundation reused rather than duplicated.
+### P-COMP-05
+- theorem `UEOT.V3.CompositionBooleanAtoms.p_comp_05`;
+- feature `formal/pcomp05-boolean-atoms@dfb398a6c2f8edfa458ef5d2a242f02fd3d46971`;
+- feature CI `34754344097`: success;
+- full signature partition, region reconstruction, atom characterization and
+  unique least generated Boolean algebra retained.
 
 ### Joint promotion
+- clean integration branch `formal/evo01-comp05-main-integration`;
+- integration/main proof commit `bfd9d83073cb929ea12de4267005023749023df5`;
+- integration CI `34754713285`: success;
+- safe non-force main fast-forward;
+- post-main CI `34754974676`: success;
+- source semantic audits complete;
+- prohibited-proof audits clean.
 
-- clean integration branch `formal/pcomp03-pkl01-integration`;
-- integration/main proof commit `08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9`;
-- integration CI `34753554298`: success;
-- post-main CI `34753815801`: success;
-- source semantic audit complete;
-- prohibited-proof audit clean.
+## Active lane — P-COMP-06
+Frozen source requires the child minimal-carrier family to equal the **outer
+inclusion-minimum** of the union of per-physical-carrier minimal cover families.
+The implementation retains both nested minimizations.
 
-## Active proof lane — P-EVO-01
+- branch `formal/pcomp06-carrier-lift`;
+- head `168e432b8479a6683d933d81bc1e362df2a4340c`;
+- theorem `UEOT.V3.CompositionCarrierLift.p_comp_06`;
+- reuses `UEOT.Finite.exists_minimal_subset`;
+- feature CI `34754842269`: success;
+- next: prohibited-proof final audit, then clean promotion from the latest
+  full-green main.
 
-Frozen source remains preserved explicitly:
+## Active lane — P-COMP-07
+Frozen source: compact coupling interval; continuous nondecreasing integration
+quantity and continuous nonincreasing child fidelity; nonempty threshold sets;
+attained boundaries `k_D`,`k_F`; joint feasible set is their interval when
+ordered, otherwise empty.
 
-- finite parent and offspring types;
-- `M=D_b K`;
-- `b_i >= 0`, including source-valid zero-growth rows;
-- deterministic `p'=pM/bar_b`, with only `bar_b>0` required;
-- exact Price selection/transmission decomposition;
-- no identification with `E[Z/|Z|]` or another random ratio.
+- branch `formal/pcomp07-composition-window`;
+- head `0826699b3fe135c3faec353153cc4d2fa533e13a`;
+- theorem `UEOT.V3.CompositionWindow.p_comp_07`;
+- compact interval subtype + closed threshold sets derive the boundary points;
+  no witness assumption substitutes for continuity;
+- feature CI `34755041666`: pending at synchronization.
 
-Current branch: `formal/pevo01-price-decomposition`.
-Current checkpoint head: `dbf40a016377ad3689e4c88b0d5f67a2a675a9c5`.
-Candidate theorem: `UEOT.V3.EvolutionPrice.p_evo_01`.
-Last CI `34753626091`: failure only at the double finite-sum commutation line.
-Both attempted identifiers `Finset.sum_comm` and `sum_comm` were unavailable in
-this import/elaboration context. Next action is to use a verified product-sum or
-finite-sum equivalence theorem from pinned Mathlib, without changing any source
-semantics.
+## Active lane — P-ALI-02
+Frozen source: `g_i=grad_i J_P`, `e_i=grad_i J_i-g_i`,
+`dot a_i=alpha_i grad_i J_i`, `alpha_i>0`; the parent derivative has the exact
+inner-product decomposition and its Cauchy--Schwarz lower bound.
 
-## Active proof lane — P-COMP-05
-
-Frozen source: finite overlapping regions are canonically Booleanized by their
-membership signatures; the nonempty signature cells are exactly the atoms of
-the unique least Boolean algebra containing all original regions.
-
-- branch `formal/pcomp05-boolean-atoms`;
-- head `7f3c73fc8d801a17b79b86aa9b8c7402344d0562`;
-- candidate theorem `UEOT.V3.CompositionBooleanAtoms.p_comp_05`;
-- CI `34754028909`: running at synchronization time;
-- implementation uses Mathlib `BooleanSubalgebra.closure (Set.range V)` and
-  targets the full partition/reconstruction/atom/minimality package, not a weak
-  partition-only surrogate.
+- branch `formal/pali02-parent-value`;
+- head `b0ef953829c83f0219ffe62e8b54243ae2270b51`;
+- theorem `UEOT.V3.AlignmentParentValue.p_ali_02`;
+- feature CI `34755240251`: pending at synchronization.
 
 ## Audited next lane — P-KL-03
-
-Existing main infrastructure materially shortens the source proof:
-
+Reusable foundation:
 - `UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral`;
-- pinned Mathlib `klDiv_compProd_eq_add`;
-- `UEOT.V3.DynamicsKernel` Ionescu–Tulcea/history infrastructure.
+- pinned Mathlib `InformationTheory.klDiv_compProd_eq_add`;
+- `UEOT.V3.DynamicsKernel` and Ionescu--Tulcea finite-prefix recursion;
+- `MeasurableEquiv.IicProdIoc`.
 
-The remaining source obligation is finite-horizon iteration for possibly
-history-dependent kernels. Do not count a one-step or homogeneous-Markov-only
+The remaining obligation is finite-horizon iteration for **possibly
+history-dependent kernels**. Do not count a one-step or homogeneous-Markov-only
 surrogate.
 
 ## Grounded non-quick fronts
-
-- P-KL-02: event I-projection optimizer and Bernoulli-KL monotonicity;
-- P-KL-04: CTMC compensator layer;
-- P-KL-05: Girsanov/stochastic integral and observation data processing;
-- P-EVO-03/04: Perron–Frobenius asymptotics / martingale foundations;
+- P-DDH-02/03: finite exponential-family calculus and KL variational duality;
+- P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis;
+- P-EVO-03/04: Perron--Frobenius asymptotics / martingale foundations;
 - P-REF-03: arbitrary signal-space conditional expectation;
-- P-DDH-04/05: rank/stacked-Jacobian and singular-value perturbation;
+- P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation;
 - P-QSD-01/03/04: source-locked distinct non-A results;
 - P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
 
 ## Mandatory recovery procedure
-
 1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56, `PID_STATUS.yaml`, this
    file, then `V3_COVERAGE_STATUS.md`.
 2. Fetch live main, active branches and Actions state.
-3. Never reopen counted green P-IDs without a substantive source mismatch or CI
-   regression.
+3. Never reopen counted green P-IDs without a substantive source mismatch or CI regression.
 4. Read the frozen source before writing Lean and audit existing main first.
 5. Feature green never increments coverage.
-6. No `sorry`, `admit`, `native_decide`, unsourced `axiom`, or kernel-skipping
-   devices.
+6. No `sorry`, `admit`, `native_decide`, unsourced `axiom`.
 7. Use CI waiting time for another independent audit/proof lane.
-
-## Repository truth hierarchy
-
-1. frozen canonical source;
-2. `V3_COVERAGE_STATUS.md`;
-3. `PID_STATUS.yaml`;
-4. Issue #56 live construction state;
-5. this file;
-6. official imported Lean source on `main`.
