@@ -1,0 +1,35 @@
+schema_version: 1
+updated: 2026-09-13
+source: UEOT_Core_Mathematics_v3.0_Complete.md
+pids_total: 106
+integration_branch: main
+purpose: >-
+  Source-to-main audit matrix for all not-yet-counted UEOT Core 3 P-IDs.
+  This file classifies pending work before new proof stacks are opened.
+
+classification:
+  A: source-facing theorem already exists on main; semantic audit/promotion only
+  B: substantial mathematics exists; source wrapper or assumption alignment missing
+  C: major ingredients exist; bridge theorem(s) missing
+  D: genuinely new formal mathematics required
+
+priority_rule: >-
+  Prefer A then B then C then D, adjusted by dependency unlock, reuse factor,
+  source criticality, and estimated proof cost.
+
+workflow:
+  - read frozen source statement
+  - search main for exact or near-exact theorem
+  - inspect relevant historical branches and PRs if useful
+  - record candidate modules/theorems
+  - identify exact missing obligation
+  - classify A/B/C/D
+  - estimate complexity S/M/L/XL
+  - record shared dependencies and recommended order
+
+entries: {}
+
+notes:
+  - Pending does not mean unformalized.
+  - Do not populate entries by theorem/module name alone; semantic matching is required.
+  - After P-INT-01 promotion, audit all remaining unclassified P-IDs before opening many new hard-proof branches.
