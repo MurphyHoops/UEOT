@@ -6,97 +6,101 @@
 
 ## Current lifecycle snapshot
 
-- authoritative full-green baseline before this checkpoint: **69/106**;
-- this branch stages **70/106** after P-KL-02 completed all proof-side and
+- authoritative full-green baseline before this checkpoint: **70/106**;
+- this branch stages **71/106** after P-API-01 completed all proof-side and
   post-main gates;
-- remaining not-yet-counted P-IDs after staging: **36**;
-- proof main before ledger merge: `60ac78273200f5152a5e8d8286c840697e69bb51`;
-- newest staged promotion: **P-KL-02**;
-- P-KL-02 full feature CI `34768634473`: success;
-- P-KL-02 clean-integration PR #62 CI `34769135038`: success;
-- P-KL-02 proof main commit `60ac78273200f5152a5e8d8286c840697e69bb51`;
-- P-KL-02 post-main CI `34769394882`: success;
+- remaining not-yet-counted P-IDs after staging: **35**;
+- full-green 70 baseline: `8f29d29a0fe32bf9cccb7cbc12c84676768d9592`;
+- P-API-01 proof main: `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
+- newest staged promotion: **P-API-01**;
+- P-API-01 feature CI `34769177051`: success;
+- P-API-01 clean-integration PR #64 CI `34770423058`: success;
+- P-API-01 post-main CI `34770728978`: success;
 - source semantic audit: complete;
 - prohibited-proof audit: clean.
 
-**Do not call 70/106 full-green until this ledger/recovery branch passes PR CI,
+**Do not call 71/106 full-green until this ledger/recovery branch passes PR CI,
 lands on `main`, and the resulting main CI succeeds.**
 
-## P-KL-02 — completed proof contract
+## P-API-01 — completed proof contract
 
-Frozen §22.2 is implemented literally over all probability laws `Q ≪ P0` with
-`Q(A) ≥ p`, for `q=P0(A)`, `0<q<1`, `0≤p≤1`:
+Frozen §28.3 is implemented literally:
 
-- `p≤q`: global infimum `0`, baseline `P0` attains it;
-- `p>q`: global infimum `dBern(p||q)`;
-- explicit RN optimizer `(p/q)1_A + ((1-p)/(1-q))1_{Aᶜ}`;
-- optimizer probability normalization, AC, exact event mass, RN density and
-  exact KL are proved;
-- endpoint `p=1` is retained.
+- process interface = protocol lift plus measurable path readout;
+- exact naturality for all declared protocols;
+- exact composition has the source order
+  `J_AC = J_AB ∘ J_BC`, `C_AC = C_BC ∘ C_AB`;
+- approximate TV defects compose with
+  `min 1 (ε_AB + ε_BC)`;
+- §28.4 control actions, policy lifts, rewards and constraints are not folded
+  into this process-interface theorem.
 
-Canonical theorem:
-`UEOT.V3.PathEventIProjection.p_kl_02`.
+Canonical theorems:
+- `UEOT.V3.ProcessInterface.p_api_01_exact`;
+- `UEOT.V3.ProcessInterface.p_api_01_approx`.
 
 Evidence:
-- full-contract feature `formal/pkl02-event-iprojection@cb78b0df87ef64fc0bc61e1e320ff901247d00cd`;
-- feature CI `34768634473`: success;
-- clean integration `formal/pkl02-clean-int-cb78@d30d31e15f38b349488edf4a5b12c94bace70031`;
-- clean PR #62 CI `34769135038`: success;
-- proof main `60ac78273200f5152a5e8d8286c840697e69bb51`;
-- proof post-main CI `34769394882`: success.
-
-No homogeneous-Markov surrogate, lower-bound-only weakening, or dropped `p=1`
-boundary is used.
-
-## Next promotion lane — P-API-01
-
-Frozen §28.3 has already completed its feature proof:
-
-- feature branch `formal/papi01-process-interface-fresh`;
-- head `0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
+- feature `formal/papi01-process-interface-fresh@0f76d04a4dcc34b2d2aaa806d5803e4823561bbc`;
 - feature CI `34769177051`: success;
-- diff against the 69/106 full-green base is exactly
-  `UEOT/V3/ProcessInterface.lean` plus one top-level import;
-- source semantic audit: complete;
-- prohibited-proof audit: clean.
+- clean integration `formal/papi01-clean-int-70@697df634e502bbd5407fc7f832963ac0afe1203d`;
+- clean PR #64 CI `34770423058`: success;
+- proof main `f72e2a7448c88b8c90dbf5856522f71a588886ce`;
+- proof post-main CI `34770728978`: success.
 
-The exact clause composes the contravariant protocol lifts and covariant
-measurable path readouts. The approximate clause gives
-`TV ≤ min 1 (εAB + εBC)` by inserting the intermediate pushed law, applying
-P-MET-01, and then the TV triangle inequality. It deliberately does **not** add
-the control-interface structures that frozen §28.4 says require separate data.
+## Previous full-green checkpoint — 70/106
 
-### Exact next action for P-API-01
+P-KL-02 and all earlier counted P-IDs are fully green. The 70/106 ledger main
+CI `34770086580` succeeded at
+`main@8f29d29a0fe32bf9cccb7cbc12c84676768d9592`. Do not reopen counted P-IDs
+absent a source mismatch or CI regression.
 
-Only after 70/106 becomes full-green:
-1. create a fresh clean-integration branch from that new main;
-2. transplant only `ProcessInterface.lean` and its one `UEOT.lean` import;
-3. compare against the new main and require behind=0;
-4. run official PR CI;
-5. merge safely and require post-main CI;
-6. then ledger-sync 71/106 and require ledger main CI.
+## Active proof lane — P-ALG-01
 
-Feature green alone never increments coverage.
+Frozen §28.5 is source-locked exactly as follows:
 
-## Independent audit lane — P-ALG-01
-
-Frozen §28.5 is source-locked as an exact finite partition-refinement theorem.
-Given a finite state set, common finite action set, exact transition matrices,
-rewards and output labels, the initial partition is equality of output plus the
-complete action-reward vector. Each refinement splits current blocks by all
-action/block transition masses.
-
-The source theorem requires all of:
+- finite state set and common finite action set;
+- known exact transition matrices, reward vector and output label;
+- initial partition = equal output label + equal complete action-reward vector;
+- each refinement retains the current block and splits by transition mass to
+  every current block under every action;
 - finite termination;
 - terminal controlled stability/lumpability;
-- coarsest stable partition among refinements of the initial partition;
-- preservation of output, reward and every action's one-step quotient law;
-- preservation of corresponding finite-horizon output laws by induction.
+- terminal partition is the coarsest stable refinement of the initial one;
+- quotient preserves output, reward and every action's one-step distribution;
+- finite-horizon output laws follow by kernel recursion.
 
-Pinned Mathlib has `Finpartition` and refinement infrastructure, but the UEOT
-repository has no existing complete lumpability/refinement implementation. Treat
-this as a genuine medium proof lane, not a short wrapper. Exact equality must not
-be replaced by floating tolerance clustering.
+Current feature branch:
+`formal/palg01-refinement-core`, based on the 70/106 full-green baseline.
+
+Implemented first layer:
+- `Model` finite controlled Markov data;
+- `initialSetoid` matching output + complete reward vector;
+- exact `blockMass`;
+- `refineSetoid` with source-faithful signature semantics;
+- refinement-only property;
+- `Stable` and fixed-point equivalence;
+- target-block representative invariance;
+- finite `relPairs` measure for termination.
+
+CI for current head `cfe4665da5a61cacdc74be2810af81665e4b19e0` is run
+`34770820284` and must be collected before layering more code.
+
+Planned next proof layers after that build is green:
+1. strict refinement strictly decreases `relPairs.card`;
+2. finite iteration reaches a stable fixed point;
+3. use pinned `Finpartition.ofSetoid` and disjoint block unions to prove the
+   frozen coarsestness induction step;
+4. construct the terminal quotient transition law for every action;
+5. prove output/reward and one-step preservation;
+6. prove all corresponding finite-horizon output laws;
+7. expose a source-facing `p_alg_01` bundle;
+8. feature CI, prohibited-proof audit, clean integration only from the then
+   latest full-green main.
+
+Do not add constraint indicators to P-ALG-01: frozen §28.5 contains output,
+complete reward vectors and transition masses; §28.4 constraint transport is a
+separate control-interface contract. Do not replace exact equality with floating
+tolerance grouping.
 
 ## Grounded non-quick fronts
 
@@ -109,14 +113,14 @@ be replaced by floating tolerance clustering.
 - P-QSD-01/03/04: source-locked distinct non-A results.
 - P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
 
-P-EVO-03 specifically requires the full K-PF-01 primitive-matrix asymptotic
-package; pinned Mathlib exposes `Matrix.IsPrimitive` but no directly reusable
-complete Perron--Frobenius power-convergence theorem was found. Do not replace
-this with an assumed-convergence hypothesis and count it as the source theorem.
+P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
+Perron--Frobenius asymptotic package; do not count an assumed-convergence
+surrogate.
 
 ## Guards
 
 - do not reopen counted P-IDs absent source mismatch/CI regression;
+- feature green never increments coverage;
 - no `sorry`, `admit`, `native_decide`, unsourced `axiom`;
 - P-QSD-01 and P-QSD-03 must never be swapped;
 - P-REF-03 requires arbitrary signal spaces;
