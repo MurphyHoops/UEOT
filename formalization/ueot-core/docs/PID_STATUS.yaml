@@ -10,24 +10,19 @@ source:
   public_repo_sync: pending
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
-  reproducibility_note: >-
-    Exact canonical bytes are not currently present in the public repository.
-    This remains a reproducibility task separate from source-theorem proof
-    status. The frozen SHA has not been recomputed from public raw bytes.
 coverage:
-  integrated_proved: 59
+  integrated_proved: 61
   promotion_running: 0
   active_proof: 2
   source_audit: 0
   blocked: 0
-  pending_unclassified: 45
-  unresolved_total: 47
+  pending_unclassified: 43
+  unresolved_total: 45
   note: >-
-    Operational partition: 59 proved + 2 active source-facing lanes +
-    45 pending/unclassified = 106. P-DDH-01 and P-ALI-03 are counted after
-    exact source audit, feature green, combined integration CI 34752277556,
-    main proof commit 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7,
-    and post-main CI 34752528830.
+    Operational partition: 61 proved + 2 active source-facing proof lanes +
+    43 pending/unclassified = 106. P-COMP-03 and P-KL-01 are counted after
+    feature green, clean integration CI 34753554298, main proof commit
+    08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9, and post-main CI 34753815801.
 state_vocabulary:
   - source_audit
   - proof
@@ -41,85 +36,21 @@ rules:
   - read_this_file_before_opening_a_proof_lane
   - prove_only_missing_lemmas_from_the_proof_contract
   - audit_integrated_and_external_prior_art_before_building_foundational_infrastructure
-  - no_new_helpers_for_proved_or_promotion_only_pid_without_real_ci_or_source_mismatch
   - feature_green_does_not_increment_coverage
   - ci_waiting_time_must_be_used_for_another_lane_or_source_audit
   - source_theorem_proof_status_is_distinct_from_public_source_artifact_reproducibility
   - never_claim_hash_reverification_without_access_to_exact_raw_bytes
 
 pids:
-  P-STAT-06:
-    state: proved
-    source_locked: true
-    canonical_theorem: UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions
-    promotion:
-      main_commit: d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092
-      post_main_ci: {run: 34685534516, status: success}
-    coverage_counted: true
-
-  P-INFO-02:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.InformationPInfo02.p_info_02_ennreal
-    promotion:
-      main_commit: c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f
-      post_main_ci: {run: 34692828935, status: success}
-    public_source_artifact_synced: false
-    coverage_counted: true
-
-  P-INFO-03:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy
-    promotion:
-      final_proof_head: b90cb81f5ae600ba961e2948f304aa87472c8ea9
-      final_proof_ci: {run: 34744325632, status: success}
-      integration_ci: {run: 34744658528, status: success}
-      main_commit: 57e987a18a5dd8feca224b91e3e78b93c2a44de8
-      post_main_ci: {run: 34744919310, status: success}
-    coverage_counted: true
-
-  P-INFO-04:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorems:
-      - UEOT.V3.InformationPInfo04.p_info_04
-      - UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary
-    promotion:
-      main_commit: e19eee7082418f1826650316b533c0380a9a451f
-      post_main_ci: {run: 34706528781, status: success}
-    coverage_counted: true
-
-  P-ID-02:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorems:
-      recurrence: UEOT.V3.DevelopmentTransport.development_error_step
-      finite_horizon: UEOT.V3.DevelopmentTransport.development_pipeline
-      uniform_geometric: UEOT.V3.DevelopmentTransport.development_pipeline_uniform_geom
-      contraction: UEOT.V3.DevelopmentTransport.development_pipeline_uniform_contraction
-    promotion:
-      feature_ci: {run: 34716348615, status: success}
-      main_commit: 4a29c2d5aa6a805d867e1934f6013aa49f1dc431
-      post_main_ci: {run: 34717095993, status: success}
-    coverage_counted: true
-
   P-INT-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
     canonical_theorems:
-      single_protocol: UEOT.V3.InformationPInt01.p_int_01
-      common_versions: UEOT.V3.InformationPInt01Common.p_int_01_common
-      common_decoder: UEOT.V3.InformationPInt01Common.p_int_01_common_decoder
+      - UEOT.V3.InformationPInt01.p_int_01
+      - UEOT.V3.InformationPInt01Common.p_int_01_common
+      - UEOT.V3.InformationPInt01Common.p_int_01_common_decoder
     promotion:
-      final_proof_head: 3943391af4d459a370ab840d1b15babcae26f82a
-      final_proof_ci: {run: 34747270058, status: success}
-      integration_ci: {run: 34749908649, status: success}
       main_commit: d757ea0dd14755233b94d40763f457773a52089f
       post_main_ci: {run: 34750114264, status: success}
     coverage_counted: true
@@ -130,8 +61,6 @@ pids:
     source_semantic_audit: complete
     canonical_theorem: UEOT.V3.OmegaMinimalFailure.p_omg_01
     promotion:
-      feature_head: effa5bf10787095b2dd1bb86e68f100cb907f0af
-      feature_ci: {run: 34750708593, status: success}
       integration_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
       integration_ci: {run: 34751042701, status: success}
       post_main_ci: {run: 34751300612, status: success}
@@ -143,8 +72,6 @@ pids:
     source_semantic_audit: complete
     canonical_theorem: UEOT.V3.OmegaIntegrityMargin.p_omg_02
     promotion:
-      feature_head: 8d5ddee1faff1ae588a478e2a1c58235852d7500
-      feature_ci: {run: 34750765181, status: success}
       integration_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
       integration_ci: {run: 34751042701, status: success}
       post_main_ci: {run: 34751300612, status: success}
@@ -154,50 +81,68 @@ pids:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: B
-    source_statement: >-
-      Pi'=Pi+lambda*chi and Phi'=Phi+chi leave Pi-lambda*Phi invariant.
     canonical_theorem: UEOT.V3.DualDriveGauge.p_ddh_01
     promotion:
-      feature_branch: formal/pddh01-gauge-cancellation
       feature_head: 71a26d2fce4087fb4c7ed763b42f74118186a739
       feature_ci: {run: 34751815827, status: success}
-      integration_branch: formal/pddh01-pali03-integration-v3
-      integration_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
-      integration_ci: {run: 34752277556, status: success}
       main_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
+      integration_ci: {run: 34752277556, status: success}
       post_main_ci: {run: 34752528830, status: success}
-      prohibited_proof_audit:
-        sorry: 0
-        admit: 0
-        native_decide: 0
-        unsourced_axiom: 0
     coverage_counted: true
 
   P-ALI-03:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: B
-    source_statement: >-
-      In a real Hilbert space, G_eta=(1-eta)G+eta g with 0<=eta<=1 and
-      inner(g,G)<0 has positive parent derivative exactly above
-      -inner(g,G)/(||g||^2-inner(g,G)).
     canonical_theorem: UEOT.V3.AlignmentThreshold.p_ali_03
     promotion:
-      feature_branch: formal/pali03-coordination-threshold
       feature_head: bbb9f7b1cc8f202fedf5d096fe2707f760d83c4a
       feature_ci: {run: 34751936845, status: success}
-      integration_branch: formal/pddh01-pali03-integration-v3
-      integration_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
-      integration_ci: {run: 34752277556, status: success}
       main_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
+      integration_ci: {run: 34752277556, status: success}
       post_main_ci: {run: 34752528830, status: success}
-      prohibited_proof_audit:
-        sorry: 0
-        admit: 0
-        native_decide: 0
-        unsourced_axiom: 0
+    coverage_counted: true
+
+  P-COMP-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: B
+    source_statement: >-
+      For a finite nonempty cut family with K_pi L_pi-Lipschitz,
+      Gamma_comp(T)=min_pi d(T,K_pi T) is (1+max_pi L_pi)-Lipschitz.
+    canonical_theorem: UEOT.V3.CompositionMargin.p_comp_03
+    promotion:
+      feature_branch: formal/pcomp03-composition-margin
+      feature_head: 7e074e694c26e52901342336b5e57b666df4fa8c
+      feature_ci: {run: 34752374454, status: success}
+      integration_branch: formal/pcomp03-pkl01-integration
+      integration_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
+      integration_ci: {run: 34753554298, status: success}
+      main_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
+      post_main_ci: {run: 34753815801, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    coverage_counted: true
+
+  P-KL-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: A
+    source_statement: >-
+      For Q << P0 and measurable event A, full-law KL dominates the Bernoulli
+      KL of the induced event indicator, retaining the source absolute-continuity hypothesis.
+    canonical_theorem: UEOT.V3.PathEventKL.p_kl_01
+    promotion:
+      feature_branch: formal/pkl01-event-bernoulli
+      feature_head: c691145fc6ef8a1fa9332abebf09f3659a5cb2eb
+      feature_ci: {run: 34753031461, status: success}
+      integration_branch: formal/pcomp03-pkl01-integration
+      integration_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
+      integration_ci: {run: 34753554298, status: success}
+      main_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
+      post_main_ci: {run: 34753815801, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     coverage_counted: true
 
   P-EVO-01:
@@ -208,25 +153,37 @@ pids:
     source_statement: >-
       Finite deterministic mean-intensity dynamics with M=D_b K,
       p'=pM/bar_b, b_i>=0 and bar_b>0 satisfy the exact Price
-      selection/transmission decomposition; the deterministic ratio is not an
-      expected random population-frequency ratio.
+      selection/transmission decomposition; zero-growth rows are allowed and
+      the deterministic ratio is not an expected random population-frequency ratio.
     branch: formal/pevo01-price-decomposition
-    head: 1a17175b7a7bf2338c5bcc648085bf5e7ef09a30
+    head: dbf40a016377ad3689e4c88b0d5f67a2a675a9c5
     canonical_candidate: UEOT.V3.EvolutionPrice.p_evo_01
-    ci: {run: 34752778143, status: in_progress}
+    last_ci: {run: 34753626091, status: failure}
+    blocker: >-
+      Only the Fintype double-sum commutation proof remains; both Finset.sum_comm
+      and unqualified sum_comm were unavailable in the current imported API.
     coverage_counted: false
 
-  P-COMP-03:
+  P-COMP-05:
     state: proof
     source_locked: true
-    source_semantic_audit: complete
     audit_class: B
+    source_semantic_audit: in_progress
     source_statement: >-
-      For a finite nonempty cut family with cut K_pi L_pi-Lipschitz,
-      Gamma_comp(T)=min_pi d(T,K_pi T) is (1+max_pi L_pi)-Lipschitz.
-    branch: formal/pcomp03-composition-margin
-    head: 7e074e694c26e52901342336b5e57b666df4fa8c
-    canonical_candidate: UEOT.V3.CompositionMargin.p_comp_03
-    feature_ci: {run: 34752374454, status: success}
-    note: source-closed and feature-green; awaiting clean latest-main integration
+      Finite membership-signature cells partition the base set and are exactly
+      the atoms of the unique least Boolean algebra containing the overlapping regions.
+    branch: formal/pcomp05-boolean-atoms
+    head: 7f3c73fc8d801a17b79b86aa9b8c7402344d0562
+    canonical_candidate: UEOT.V3.CompositionBooleanAtoms.p_comp_05
+    ci: {run: 34754028909, status: in_progress}
     coverage_counted: false
+
+audits:
+  P-KL-03:
+    state: source_audit
+    audit_class: B_or_C
+    reuse:
+      - UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral
+      - Mathlib.InformationTheory.klDiv_compProd_eq_add
+      - UEOT.V3.DynamicsKernel
+    next: audit finite-horizon history-dependent path recursion before opening proof lane

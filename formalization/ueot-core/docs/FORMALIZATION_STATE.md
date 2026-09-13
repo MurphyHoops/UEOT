@@ -10,198 +10,131 @@ Last synchronized: **2026-09-13**
 - canonical source: `UEOT_Core_Mathematics_v3.0_Complete.md`
 - source P-IDs: **106**
 - canonical source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`
-- canonical source object: available for semantic audit in the project File Library
-- exact source bytes in public repo: **pending synchronization**
-- current audit did **not** recompute the SHA from local raw bytes
 - Lean: **4.33.1**
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
 - official target: `lake build UEOT`
 - integration branch: `main`
+- exact canonical bytes in public repo: pending synchronization
 
 ## Current checkpoint
 
 | operational state | count |
 |---|---:|
-| integrated proved | **59** |
-| active source-facing lanes | **2** |
+| integrated proved | **61** |
+| active source-facing proof lanes | **2** |
 | blocked | **0** |
-| pending unclassified | **45** |
+| pending/audit queue | **43** |
 | total | **106** |
 
-The authoritative source-level ledger is **59 proved / 47 not yet counted**.
-Feature-green work is not included in the 59 until the full promotion lifecycle
-has completed.
+The authoritative source-level ledger is **61 proved / 45 not yet counted**.
 
-## Latest counted promotions — P-DDH-01 / P-ALI-03
+## Latest counted promotions — P-COMP-03 / P-KL-01
 
-### P-DDH-01
+### P-COMP-03
 
-Frozen source: `Pi'=Pi+lambda*chi`, `Phi'=Phi+chi` leaves
-`Pi-lambda*Phi` invariant.
+Frozen source: finite nonempty cut family; each `K_pi` is `L_pi`-Lipschitz;
+`Gamma_comp(T)=min_pi d(T,K_pi T)`; the exact constant is
+`1 + max_pi L_pi`.
 
-Canonical theorem:
+- theorem `UEOT.V3.CompositionMargin.p_comp_03`;
+- feature `formal/pcomp03-composition-margin@7e074e694c26e52901342336b5e57b666df4fa8c`;
+- feature CI `34752374454`: success.
 
-- `UEOT.V3.DualDriveGauge.p_ddh_01`.
+### P-KL-01
 
-Evidence:
+Frozen source: for `Q ≪ P0` and measurable event `A`, full-law KL dominates
+the Bernoulli KL of the induced event indicator.
 
-- feature `formal/pddh01-gauge-cancellation`;
-- source-closed head `71a26d2fce4087fb4c7ed763b42f74118186a739`;
-- feature CI `34751815827`: success.
-
-### P-ALI-03
-
-Frozen source: for `G_eta=(1-eta)G+eta g`, `0<=eta<=1`, and
-`inner(g,G)<0`, the parent-value derivative is positive iff
-
-`eta > -inner(g,G)/(||g||^2-inner(g,G))`.
-
-Canonical theorem:
-
-- `UEOT.V3.AlignmentThreshold.p_ali_03`.
-
-Evidence:
-
-- feature `formal/pali03-coordination-threshold`;
-- source-closed head `bbb9f7b1cc8f202fedf5d096fe2707f760d83c4a`;
-- feature CI `34751936845`: success;
-- final source-facing theorem is Hilbert-space level, not merely the scalar
-  helper.
+- theorem `UEOT.V3.PathEventKL.p_kl_01`;
+- feature `formal/pkl01-event-bernoulli@c691145fc6ef8a1fa9332abebf09f3659a5cb2eb`;
+- feature CI `34753031461`: success;
+- source absolute-continuity hypothesis retained;
+- existing `InformationEventBernoulli` foundation reused rather than duplicated.
 
 ### Joint promotion
 
-- authoritative clean integration branch:
-  `formal/pddh01-pali03-integration-v3`;
-- clean integration/main proof commit:
-  `9bff83a544929a0191596f6a1b9c7c8d2a6f87b7`;
-- integration CI `34752277556`: success;
-- post-main CI `34752528830`: success;
-- prohibited-proof audit: zero `sorry`, `admit`, `native_decide`, unsourced
-  `axiom` in both proof files;
-- exact frozen-source semantic audit: complete.
-
-Scratch branches created during GitHub contents/ref staging are not authoritative
-and must not be merged:
-
-- `formal/pddh01-main-integration`;
-- `formal/pddh01-main-integration-clean`;
-- `formal/pddh01-pali03-main-integration`;
-- `formal/pddh01-pali03-integration-v2`.
+- clean integration branch `formal/pcomp03-pkl01-integration`;
+- integration/main proof commit `08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9`;
+- integration CI `34753554298`: success;
+- post-main CI `34753815801`: success;
+- source semantic audit complete;
+- prohibited-proof audit clean.
 
 ## Active proof lane — P-EVO-01
 
-Frozen source: finite deterministic mean-intensity dynamics with
-`M=D_b K`, deterministic `p'=pM/bar_b`, `b_i>=0`, `bar_b>0`, row-stochastic
-transmission, and the exact Price selection/transmission identity. The source
-explicitly distinguishes this deterministic ratio from an expected random
-population-frequency ratio.
+Frozen source remains preserved explicitly:
 
-- branch: `formal/pevo01-price-decomposition`;
-- current head: `1a17175b7a7bf2338c5bcc648085bf5e7ef09a30`;
-- candidate theorem: `UEOT.V3.EvolutionPrice.p_evo_01`;
-- explicit source interface includes `meanOffspringEntry`, `nextFrequency`, and
-  `offspringTraitMean`;
-- previous CI failures were Lean elaboration/finite-sum rearrangement issues,
-  not source-semantic failures;
-- current CI `34752778143`: in progress at synchronization time.
+- finite parent and offspring types;
+- `M=D_b K`;
+- `b_i >= 0`, including source-valid zero-growth rows;
+- deterministic `p'=pM/bar_b`, with only `bar_b>0` required;
+- exact Price selection/transmission decomposition;
+- no identification with `E[Z/|Z|]` or another random ratio.
 
-If green, perform prohibited-proof audit and clean-port to latest main. If it
-fails, read the decoded job log and fix only the exact compile issue.
+Current branch: `formal/pevo01-price-decomposition`.
+Current checkpoint head: `dbf40a016377ad3689e4c88b0d5f67a2a675a9c5`.
+Candidate theorem: `UEOT.V3.EvolutionPrice.p_evo_01`.
+Last CI `34753626091`: failure only at the double finite-sum commutation line.
+Both attempted identifiers `Finset.sum_comm` and `sum_comm` were unavailable in
+this import/elaboration context. Next action is to use a verified product-sum or
+finite-sum equivalence theorem from pinned Mathlib, without changing any source
+semantics.
 
-## Active source-closed lane — P-COMP-03
+## Active proof lane — P-COMP-05
 
-Frozen source: finite nonempty cut family, each `K_pi` is
-`L_pi`-Lipschitz, `Gamma_comp(T)=min_pi d(T,K_pi T)`, and
-`L=max_pi L_pi`; the exact conclusion is `(1+L)`-Lipschitz.
+Frozen source: finite overlapping regions are canonically Booleanized by their
+membership signatures; the nonempty signature cells are exactly the atoms of
+the unique least Boolean algebra containing all original regions.
 
-- branch: `formal/pcomp03-composition-margin`;
-- head: `7e074e694c26e52901342336b5e57b666df4fa8c`;
-- theorem: `UEOT.V3.CompositionMargin.p_comp_03`;
-- feature CI `34752374454`: success;
-- source semantic audit: complete;
-- the implementation keeps the finite minimum/maximum explicitly through
-  `Finset.inf'` / `Finset.sup'` and does not silently replace `1+L` by `2`.
+- branch `formal/pcomp05-boolean-atoms`;
+- head `7f3c73fc8d801a17b79b86aa9b8c7402344d0562`;
+- candidate theorem `UEOT.V3.CompositionBooleanAtoms.p_comp_05`;
+- CI `34754028909`: running at synchronization time;
+- implementation uses Mathlib `BooleanSubalgebra.closure (Set.range V)` and
+  targets the full partition/reconstruction/atom/minimality package, not a weak
+  partition-only surrogate.
 
-Exact next lifecycle step: clean-integrate to the latest `main`, then require
-integration CI, safe main fast-forward, post-main CI, and ledger synchronization
-before counting P-COMP-03.
+## Audited next lane — P-KL-03
 
-## High-value source audit — P-KL-01
+Existing main infrastructure materially shortens the source proof:
 
-The repository already contains a likely A-class closure:
+- `UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral`;
+- pinned Mathlib `klDiv_compProd_eq_add`;
+- `UEOT.V3.DynamicsKernel` Ionescu–Tulcea/history infrastructure.
 
-- `UEOT.V3.InformationEventBernoulli.map_eventIndicator_eq_bernoulliLaw`;
-- `UEOT.V3.InformationEventBernoulli.bernoulliKL_event_le`.
+The remaining source obligation is finite-horizon iteration for possibly
+history-dependent kernels. Do not count a one-step or homogeneous-Markov-only
+surrogate.
 
-These prove that a measurable event indicator pushes any probability law to
-the Bernoulli law with success probability equal to the event probability, and
-that KL data processing lower-bounds the original KL by the Bernoulli KL.
+## Grounded non-quick fronts
 
-Before opening a proof lane, match the frozen source definition/conventions of
-`d_Bern(p||q)` exactly. If it matches the measure-level Bernoulli KL already
-proved on `main`, create only a source-facing wrapper; do not rebuild the
-indicator or data-processing foundation.
-
-## Other grounded audit findings
-
-- P-EVO-02: B/C boundary; finite copied-label MI additivity likely reuses the
-  existing KL/entropy foundation but the exact independent-product wrapper has
-  not yet been found.
-- P-EVO-03: primitive Perron–Frobenius asymptotic; not quick.
-- P-EVO-04: genuine conditional-expectation martingale layer; not quick.
-- P-DDH-02/03: finite exponential-family differential/KL projection theorems,
-  not pure algebraic one-liners.
-- P-DDH-04/05: rank/stacked-Jacobian and singular-value perturbation layers.
-- P-ALI-01: global one-form integrability; heavy.
-- P-ALI-02: potentially moderate, but source closure requires the actual
-  derivative/chain-rule layer rather than assuming the desired equality.
-- P-REF-01/02, P-ALG-01: not quick closures.
-- P-REF-03: arbitrary signal-space conditional expectation; a finite-signal
-  surrogate is invalid.
-- P-PER-02, P-PER-04: not A.
-- P-REC-03, P-REC-04: require hitting/stopped-process foundations.
-- P-QSD-01, P-QSD-03, P-QSD-04: not A. Do not swap P-QSD-01/P-QSD-03.
-- P-BRG-01 includes concentration/extinction/maximizer-relative-mass clauses,
-  not merely its recurrence.
-- P-API-01 requires process-interface composition and a TV defect bound.
-
-## Closed lanes
-
-Do not reopen without a substantive source mismatch or CI regression:
-
-- all 59 P-IDs listed in `V3_COVERAGE_STATUS.md`, including P-INT-01,
-  P-INFO-03, P-ID-02, P-OMG-01, P-OMG-02, P-DDH-01 and P-ALI-03.
-
-## Public canonical-source synchronization
-
-The exact canonical source bytes are still not present in the public repository.
-For self-contained third-party reproduction:
-
-1. synchronize exact bytes without regeneration;
-2. independently recompute SHA-256;
-3. verify the frozen manifest value.
-
-This task is separate from theorem proof status.
+- P-KL-02: event I-projection optimizer and Bernoulli-KL monotonicity;
+- P-KL-04: CTMC compensator layer;
+- P-KL-05: Girsanov/stochastic integral and observation data processing;
+- P-EVO-03/04: Perron–Frobenius asymptotics / martingale foundations;
+- P-REF-03: arbitrary signal-space conditional expectation;
+- P-DDH-04/05: rank/stacked-Jacobian and singular-value perturbation;
+- P-QSD-01/03/04: source-locked distinct non-A results;
+- P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
 
 ## Mandatory recovery procedure
 
-1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, GitHub Issue #56,
-   `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
-2. Fetch current main SHA and active branches/Actions state.
-3. Distinguish source audit, theorem closure, official import reachability,
-   feature CI, integration CI, main integration, post-main CI, ledger counting,
-   and public-source reproducibility.
-4. Read the frozen source statement before writing Lean.
-5. Audit existing main code before adding infrastructure.
-6. Never use `sorry`, `admit`, unsourced axioms, `native_decide`, or
-   kernel-skipping devices as proof completion.
-7. While CI runs, advance another independent source audit/proof lane.
+1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56, `PID_STATUS.yaml`, this
+   file, then `V3_COVERAGE_STATUS.md`.
+2. Fetch live main, active branches and Actions state.
+3. Never reopen counted green P-IDs without a substantive source mismatch or CI
+   regression.
+4. Read the frozen source before writing Lean and audit existing main first.
+5. Feature green never increments coverage.
+6. No `sorry`, `admit`, `native_decide`, unsourced `axiom`, or kernel-skipping
+   devices.
+7. Use CI waiting time for another independent audit/proof lane.
 
 ## Repository truth hierarchy
 
-1. frozen canonical source specification;
-2. `docs/V3_COVERAGE_STATUS.md`;
-3. `docs/PID_STATUS.yaml`;
-4. GitHub Issue #56 for live construction intent;
-5. `docs/FORMALIZATION_STATE.md`;
+1. frozen canonical source;
+2. `V3_COVERAGE_STATUS.md`;
+3. `PID_STATUS.yaml`;
+4. Issue #56 live construction state;
+5. this file;
 6. official imported Lean source on `main`.

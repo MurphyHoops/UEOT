@@ -1,128 +1,96 @@
 # UEOT Core 3 Lean — Fallback Handoff Snapshot
 
-> GitHub Issue #56 is the single live cross-chat construction state. This file
-> is the fallback archival snapshot on `main` and is updated only at meaningful
+> GitHub Issue #56 is the live cross-chat construction state. This file is the
+> fallback archival snapshot on `main` and is updated only at meaningful
 > lifecycle transitions.
-
-## Recovery order
-
-1. read `UEOT_CORE3_LEAN_OPERATIONS.md` from `main`;
-2. read GitHub Issue #56;
-3. read `PID_STATUS.yaml`, `FORMALIZATION_STATE.md`, and
-   `V3_COVERAGE_STATUS.md`;
-4. fetch live `main`, active branches, compare state, CI and PRs;
-5. use prior-chat reasoning only as a supplement.
 
 ## Current lifecycle snapshot
 
-- counted coverage: **59/106**;
-- not yet counted: **47**;
-- active source-facing lanes: **2**;
-- pending unclassified/audit queue: **45**;
-- newest counted promotions: **P-DDH-01 and P-ALI-03**;
+- counted coverage: **61/106**;
+- not yet counted: **45**;
+- active source-facing proof lanes: **2**;
+- pending/audit queue: **43**;
+- newest counted promotions: **P-COMP-03 and P-KL-01**;
 - clean integration/main proof commit:
-  `9bff83a544929a0191596f6a1b9c7c8d2a6f87b7`;
-- integration CI `34752277556`: success;
-- post-main CI `34752528830`: success;
-- source semantic audit: complete for both promotions;
-- prohibited-proof audit: `sorry=0`, `admit=0`, `native_decide=0`, unsourced
-  `axiom=0` in both new proof files.
+  `08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9`;
+- integration CI `34753554298`: success;
+- post-main CI `34753815801`: success;
+- source semantic audit: complete for both;
+- prohibited-proof audit: clean.
 
-P-DDH-01 evidence:
+P-COMP-03:
+- feature `formal/pcomp03-composition-margin`;
+- head `7e074e694c26e52901342336b5e57b666df4fa8c`;
+- feature CI `34752374454`: success;
+- theorem `UEOT.V3.CompositionMargin.p_comp_03`;
+- exact source constant `(1+max_pi L_pi)` retained.
 
-- feature `formal/pddh01-gauge-cancellation`;
-- head `71a26d2fce4087fb4c7ed763b42f74118186a739`;
-- feature CI `34751815827`: success;
-- theorem `UEOT.V3.DualDriveGauge.p_ddh_01`.
+P-KL-01:
+- feature `formal/pkl01-event-bernoulli`;
+- head `c691145fc6ef8a1fa9332abebf09f3659a5cb2eb`;
+- feature CI `34753031461`: success;
+- theorem `UEOT.V3.PathEventKL.p_kl_01`;
+- frozen `Q ≪ P0` assumption retained;
+- existing event-indicator/KL data-processing foundation reused.
 
-P-ALI-03 evidence:
-
-- feature `formal/pali03-coordination-threshold`;
-- head `bbb9f7b1cc8f202fedf5d096fe2707f760d83c4a`;
-- feature CI `34751936845`: success;
-- theorem `UEOT.V3.AlignmentThreshold.p_ali_03` at the frozen Hilbert-space
-  level.
-
-Scratch integration branches from staging are not authoritative and must not be
-merged:
-
-- `formal/pddh01-main-integration`;
-- `formal/pddh01-main-integration-clean`;
-- `formal/pddh01-pali03-main-integration`;
-- `formal/pddh01-pali03-integration-v2`.
-
-## Active construction lanes
-
-### P-EVO-01
+## Active lane — P-EVO-01
 
 - branch `formal/pevo01-price-decomposition`;
-- current head `1a17175b7a7bf2338c5bcc648085bf5e7ef09a30`;
+- checkpoint head `dbf40a016377ad3689e4c88b0d5f67a2a675a9c5`;
 - candidate `UEOT.V3.EvolutionPrice.p_evo_01`;
-- explicit frozen-source interface now includes `M=D_b K` via
-  `meanOffspringEntry` and deterministic `p'=pM/bar_b` via `nextFrequency`;
-- allows source-valid zero-growth rows `b_i=0`; only `bar_b>0` is required;
-- latest fix separates the finite numerator rearrangement from the common
-  denominator instead of asking `field_simp` to solve both layers;
-- current CI `34752778143`: in progress at snapshot time.
+- frozen `M=D_bK`, deterministic `p'=pM/bar_b`, zero-growth-row semantics and
+  deterministic/random-ratio distinction are preserved;
+- last CI `34753626091`: failure only at double finite-sum commutation;
+- next action: use a verified pinned-Mathlib product/Fintype sum rearrangement,
+  not another guessed identifier.
 
-If the CI fails, read decoded logs and fix only the exact Lean error. If green,
-run prohibited-proof audit and clean-port to latest main.
+## Active lane — P-COMP-05
 
-### P-COMP-03
+- branch `formal/pcomp05-boolean-atoms`;
+- head `7f3c73fc8d801a17b79b86aa9b8c7402344d0562`;
+- candidate `UEOT.V3.CompositionBooleanAtoms.p_comp_05`;
+- feature CI `34754028909`: running at snapshot time;
+- implementation uses `BooleanSubalgebra.closure (Set.range V)` and proves the
+  signature partition, region reconstruction, atom characterization and least
+  generated Boolean algebra clauses.
 
-- branch `formal/pcomp03-composition-margin`;
-- head `7e074e694c26e52901342336b5e57b666df4fa8c`;
-- theorem `UEOT.V3.CompositionMargin.p_comp_03`;
-- feature CI `34752374454`: success;
-- source audit: complete;
-- exact source constant `(1+max_pi L_pi)` retained;
-- next action: clean-integrate to latest main, then integration CI -> safe main
-  fast-forward -> post-main CI -> ledger count.
+## Audited next lane — P-KL-03
 
-## High-value audit candidate
+Reusable foundations already on main/pinned Mathlib:
+- `UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral`;
+- `klDiv_compProd_eq_add`;
+- `UEOT.V3.DynamicsKernel`.
 
-P-KL-01 is likely A-class because `main` already contains:
+Remaining obligation: iterate the one-step chain rule over finite-horizon,
+possibly history-dependent kernels. Do not weaken to a one-step or homogeneous
+Markov statement.
 
-- `UEOT.V3.InformationEventBernoulli.map_eventIndicator_eq_bernoulliLaw`;
-- `UEOT.V3.InformationEventBernoulli.bernoulliKL_event_le`.
+## Exact next actions
 
-Before opening a lane, match the frozen source `d_Bern(p||q)` conventions
-exactly. If semantically identical to the existing measure-level Bernoulli KL,
-add only a source-facing wrapper; do not duplicate the indicator pushforward or
-KL data-processing proof.
+1. require the CI of the ledger commit recording **61/106** to succeed; only
+   then is 61/106 a full-green checkpoint;
+2. inspect P-COMP-05 CI `34754028909`; decode/fix exact Lean errors if red;
+3. repair only the P-EVO-01 double-sum commutation proof and rerun feature CI;
+4. source/prohibited audit any green active lane, then clean-integrate from the
+   latest full-green main;
+5. continue P-KL-03 path-recursion audit while CI runs;
+6. refresh Issue #56 at each meaningful lifecycle checkpoint.
 
-P-EVO-02 remains B/C boundary: existing mutual-information, KL chain-rule and
-Shannon-copy infrastructure is relevant, but the exact independent shared-label
-product wrapper has not yet been located.
+## Guards
 
-## Exact next action
+- feature green never increments coverage;
+- do not reopen counted P-IDs absent source mismatch/CI regression;
+- no `sorry`, `admit`, `native_decide`, unsourced `axiom`;
+- P-QSD-01 and P-QSD-03 must never be swapped;
+- P-REF-03 requires arbitrary signal spaces;
+- P-DDH-04/05 require genuine rank/singular-value infrastructure;
+- P-BRG-01 includes concentration/extinction/maximizer-ratio clauses.
 
-1. verify the main CI of the ledger commit that records **59/106**; only then is
-   59/106 a full green checkpoint;
-2. inspect P-EVO-01 CI `34752778143`; decode/fix if red, source-audit and
-   clean-integrate if green;
-3. clean-integrate source-closed P-COMP-03 onto the latest green main; it must
-   not wait indefinitely for EVO-01;
-4. exact-audit P-KL-01 against the frozen `d_Bern` definition and existing
-   event-Bernoulli data-processing theorem;
-5. continue the remaining 45-P-ID A/B/C/D audit while CI runs.
+## Recovery order
 
-## Important grounded guards
-
-- feature green does not increment coverage;
-- P-QSD-01 is the conditional-stabilization/QSD theorem; P-QSD-03 is the
-  simultaneous persistence-window theorem; do not swap them;
-- P-REC-03/04 need a genuine hitting/stopped-process layer;
-- P-REF-03 has arbitrary signal-space conditional expectations; a finite-signal
-  surrogate is not source complete;
-- P-DDH-04/05 require rank/stacked-Jacobian and singular-value perturbation;
-- P-BRG-01 includes concentration/extinction and maximizer-ratio clauses, not
-  just recurrence;
-- P-EVO-03/04 require Perron–Frobenius asymptotics / martingale foundations.
-
-## Persistence rule
-
-Unfinished code belongs on its feature branch as pushed checkpoint commits.
-Current intent/blocker/next action belongs in Issue #56. Formal status/coverage
-files change only at actual lifecycle transitions. Never use this snapshot to
-override newer live GitHub state.
+1. `UEOT_CORE3_LEAN_OPERATIONS.md`;
+2. Issue #56;
+3. `PID_STATUS.yaml`;
+4. `FORMALIZATION_STATE.md`;
+5. `V3_COVERAGE_STATUS.md`;
+6. live main/branches/CI.
