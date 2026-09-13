@@ -20,3 +20,5 @@ import UEOT.V3.PathEventKL
 import UEOT.V3.EvolutionPrice
 import UEOT.V3.CompositionBooleanAtoms
 import UEOT.V3.CompositionCarrierLift
+import UEOT.V3.AlignmentParentValue
+import UEOT.V3.CompositionWindow
