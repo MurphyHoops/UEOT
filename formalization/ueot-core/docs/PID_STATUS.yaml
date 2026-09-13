@@ -13,23 +13,21 @@ source:
   reproducibility_note: >-
     Exact canonical bytes are not currently present in the public repository.
     This remains a repository reproducibility task and is tracked separately
-    from source-theorem proof status. The canonical SHA above remains the frozen
-    manifest value and was not recomputed from raw local bytes in the 2026-09-13
-    semantic audit.
+    from source-theorem proof status. The canonical SHA is the frozen manifest
+    value and has not been recomputed from raw local bytes in this audit.
 coverage:
-  integrated_proved: 52
+  integrated_proved: 53
   promotion_running: 0
   active_proof: 1
   source_audit: 0
   blocked: 1
-  pending_unclassified: 52
+  pending_unclassified: 51
   note: >-
-    Counts partition all 106 frozen source P-IDs: 52 proved + 1 active proof +
-    1 blocked + 52 pending unclassified. P-INFO-02 and P-INFO-04 are now counted
-    proved because their frozen statements were re-audited against the canonical
-    source object and their source-faithful Lean theorems are merged and
-    post-main green. Public canonical-source byte synchronization remains
-    pending as a separate reproducibility task and does not negate those proofs.
+    Counts partition all 106 frozen source P-IDs: 53 proved + 1 active proof +
+    1 blocked + 51 pending unclassified. P-ID-02 is now counted after direct
+    canonical-source audit, source-faithful Lean closure, PR #54, main merge
+    4a29c2d5aa6a805d867e1934f6013aa49f1dc431 and green post-main CI
+    34717095993.
 state_vocabulary:
   - source_audit
   - proof
@@ -55,7 +53,6 @@ pids:
     source_locked: true
     mathematical_chain: complete
     canonical_theorem: UEOT.V3.HilbertMeanSourceFeatureRaw.source_feature_tail_exact_radius_raw_assumptions
-    exact_radius: (1 + sqrt(2*log(L/alpha)))/sqrt(N)
     promotion:
       pr: 40
       main_commit: d17d0e78ec7bf9cd35b1d314afa93aaeecdcb092
@@ -63,13 +60,6 @@ pids:
         run: 34685534516
         status: success
     coverage_counted: true
-    forbidden_work:
-      - new_doob_theorem
-      - new_hoeffding_theorem
-      - new_mgf_theorem
-      - new_radius_theorem
-      - new_union_theorem
-      - new_feature_wrapper
 
   P-INFO-02:
     state: proved
@@ -77,34 +67,14 @@ pids:
     source_semantic_audit: complete
     source_audit_evidence: docs/SOURCE_AUDIT_EVIDENCE_2026-09-13.md
     mathematical_chain: complete
-    proof_contract:
-      assumptions: standard Borel H,Y,M,U; M,U are functions of history
-      epsilon: I(H;Y|M,U)
-      conclusion: E TV(P(Y|H),P(Y|M,U)) <= sqrt(epsilon/2)
-      proof_route:
-        - predictive_conditional_information_as_shared_base_KL
-        - general_measure_level_Pinsker
-        - finite_KL_implies_ae_fiber_absolute_continuity
-        - exact_shared_base_kernel_KL_integral
-        - conditional_kernel_TV_averaging
-        - Jensen_square_root
-        - ENNReal_infinite_information_case
     canonical_theorem: UEOT.V3.InformationPInfo02.p_info_02_ennreal
-    finite_theorem: UEOT.V3.InformationPInfo02.p_info_02_finite
     promotion:
-      all_cases_pr: 46
-      all_cases_main_commit: c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f
-      all_cases_post_main_ci:
+      pr: 46
+      main_commit: c1d0d94b7d01a5d6f370d2de4f40e8c1674bcd8f
+      post_main_ci:
         run: 34692828935
         status: success
-    implementation_note: >-
-      [Nonempty Y] is visible because Mathlib condKernel requires it during
-      theorem-statement elaboration. Existence of the probability law on H×Y
-      implies Nonempty Y, so this is not an additional physical assumption.
     public_source_artifact_synced: false
-    reproducibility_remaining:
-      - synchronize exact UEOT_Core_Mathematics_v3.0_Complete.md bytes
-      - independently recompute and verify canonical SHA-256 in the public repo
     coverage_counted: true
 
   P-INFO-03:
@@ -120,105 +90,92 @@ pids:
         - zero_TV_implies_C_recoverable_from_M_U
         - conditional_data_processing_lower_bound
         - attainability_by_M_equals_C
-    reuse:
-      - UEOT.V3.InformationCore
-      - UEOT.V3.InformationDiscreteEntropy
-      - UEOT.V3.InformationMemoryBound
-      - UEOT.V3.InformationConditionalMutual
-      - UEOT.V3.InformationConditionalMutualKLDecomposition
-    audit_finding: >-
-      Existing countable entropy infrastructure is unconditional and
-      InformationStatistic models deterministic statistics only. P-INFO-03
-      therefore needs a genuine U-disintegration for countable C and a
-      kernel-level random-encoder joint law. H(C|U) must not be defined as
-      H(C)-I(C;U), which would add an unintended finite-H(C) assumption.
     active_lane:
       branch: formal/pinfo03-countable-conditional
-      latest_known_head: 9a152cace0831cca498cdf489a06466b36cf2e98
+      latest_known_head: 3ad766b6f50590e70caed8ac293067f2146d68d2
       isolated_generic_cmi_branch: formal/pinfo03-generic-cmi-isolated
-      countable_entropy_ci:
-        run: 34706765170
+      generic_cmi_isolated_ci:
+        run: 34707458047
         status: success
-      generic_cmi_ci:
-        run: 34707351959
+      current_full_target_ci:
+        run: 34734186954
         status: in_progress
-      first_green_module: UEOT.V3.InformationConditionalDiscreteEntropy
-    completed_or_started:
-      - exact frozen source contract re-audited
-      - random encoder distinguished from deterministic statistic interface
-      - countable fiber Shannon entropy defined as measurable ENNReal tsum
-      - first countable conditional entropy module official-CI green
-      - generic KL conditional mutual information interface written
-      - generic fiber KL decomposition written
-      - random encoder joint-law geometry written
-      - recoverable-discrete information identity proof lane started
+    verified_foundation:
+      - UEOT.V3.InformationConditionalDiscreteEntropy
+      - UEOT.V3.InformationConditionalMutual
+      - UEOT.V3.InformationConditionalMutualKLDecomposition
+      - UEOT.V3.InformationRandomEncoder
+      - UEOT.V3.InformationRecoverableDiscrete
+      - UEOT.V3.InformationConditionalRecoverableDiscrete
+      - UEOT.V3.InformationZeroTV
+    current_repairs:
+      - InformationDiscreteLawCode rewritten with explicit code arguments and classical decidability; commit 0c064598d001c65d6477d5db5c933c6d410bcc5b
+      - InformationConditionalStatistic opened canonical UEOT.V3.InformationCore mutualInfo namespace; commit 3ad766b6f50590e70caed8ac293067f2146d68d2
     remaining:
-      - machine-check generic conditional mutual information layer
-      - machine-check generic conditional KL decomposition
-      - prove compatibility between fiber Shannon tsum and existing discreteShannonEntropy
-      - machine-check random-encoder joint law
-      - prove zero-distortion predictive-core recoverability
-      - conditional DPI lower bound
-      - attainability and source-facing R_obj(0) theorem
+      - machine-check current law-code decoder and conditional statistic layer
+      - prove zero-TV predictive-law equality implies measurable core recovery
+      - define source-faithful zero-distortion feasible random encoders
+      - prove conditional DPI lower bound at the rate-distortion level
+      - prove attainability M=C
+      - expose exact source-facing R_obj(0)=H(C|U) theorem
+      - clean-port, PR, main, post-main, ledger sync
     coverage_counted: false
 
   P-INFO-04:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    source_audit_evidence: docs/SOURCE_AUDIT_EVIDENCE_2026-09-13.md
+    mathematical_chain: complete
+    canonical_theorems:
+      - UEOT.V3.InformationPInfo04.p_info_04
+      - UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary
+    promotion:
+      multiway_pr: 47
+      conditional_pr: 51
+      conditional_main_commit: e19eee7082418f1826650316b533c0380a9a451f
+      conditional_post_main_ci:
+        run: 34706528781
+        status: success
+    public_source_artifact_synced: false
+    coverage_counted: true
+
+  P-ID-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
     mathematical_chain: complete
     proof_contract:
-      multiway_assumptions: J uniform on K>=2 identities; decoder Jhat(Y_T); error rate e
-      multiway_conclusion: I(J;Y_T) >= log K - h2(e) - e*log(K-1)
-      conditional_binary_clause: if B is decoded from (M,U) with error <= epsilon <= 1/2 then I(M;B|U) >= H(B|U)-h2(epsilon)
-    multiway:
-      canonical_theorem: UEOT.V3.InformationPInfo04.p_info_04
-      pr: 47
-      main_commit: 94e16dfb9cc9a2db6e000d8f5394c1b07869ce40
+      space: metric_or_pseudometric
+      reference: thetaBar_(t+1)=Psi_t(thetaBar_t) under the same declared external inputs
+      residual: d(theta_(t+1),Psi_t(theta_t)) <= epsilon_t
+      lipschitz: Psi_t is L_t-Lipschitz with L_t >= 0
+      recurrence: e_(t+1) <= L_t*e_t + epsilon_t
+      finite_horizon: e_n <= product_(j<n) L_j * e_0 + sum_(k<n) epsilon_k * product_(j=k+1)^(n-1) L_j
+      contraction_corollary: if L_t<=L<1 and epsilon_t<=epsilon then e_n<=L^n e_0 + epsilon*(1-L^n)/(1-L)
+      scope_guard: differing actual/reference external inputs require an additional input-sensitivity error term and are not identified with the same-trajectory model
+    canonical_theorems:
+      recurrence: UEOT.V3.DevelopmentTransport.development_error_step
+      finite_horizon: UEOT.V3.DevelopmentTransport.development_pipeline
+      uniform_geometric: UEOT.V3.DevelopmentTransport.development_pipeline_uniform_geom
+      contraction: UEOT.V3.DevelopmentTransport.development_pipeline_uniform_contraction
+    promotion:
+      branch_head: 90bbc7cb405e3ba51180862fb4b41f0ff201d7ef
+      feature_ci:
+        run: 34716348615
+        status: success
+      pr: 54
+      main_commit: 4a29c2d5aa6a805d867e1934f6013aa49f1dc431
       post_main_ci:
-        run: 34693509298
+        run: 34717095993
         status: success
-    conditional_binary:
-      canonical_theorem: UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary
-      finite_bridge: UEOT.V3.InformationConditionalBinaryMutualEntropy.conditionalBinaryMutualInfo_eq_ofReal_entropyForm_of_ne_top
-      architecture:
-        - arbitrary-decoder sharp Fano without MAP substitution
-        - binary posterior absolute continuity
-        - Fin2 KL scalarization including q=0 and q=1 boundary cases
-        - posterior mean/tower identity
-        - unconditional binary MI equals entropy drop
-        - nested standard-Borel disintegration over U and M
-        - global conditional KL decomposition into U-fiber mutual informations
-        - posterior entropy Fubini lift
-        - CMI=top handled separately so no finite-CMI source assumption is added
-      compose_ci:
-        run: 34705230951
-        status: success
-      clean_port:
-        branch: formal/pinfo04-conditional-clean-v2
-        commit: 8c76777e78e8d7f73b0d71397f8c81aeaa6e9c54
-        ci:
-          run: 34705560077
-          status: success
-      promotion:
-        pr: 51
-        pr_ci:
-          run: 34706303512
-          status: success
-        main_commit: e19eee7082418f1826650316b533c0380a9a451f
-        post_main_ci:
-          run: 34706528781
-          status: success
     implementation_note: >-
-      [Nonempty M] is a Mathlib condKernel elaboration requirement implied by
-      existence of the probability law on U×(M×Fin 2); it is not an additional
-      source-level physical assumption.
-    public_source_artifact_synced: false
-    reproducibility_remaining:
-      - synchronize exact UEOT_Core_Mathematics_v3.0_Complete.md bytes
-      - independently recompute and verify canonical SHA-256 in the public repo
+      hL0 explicitly formalizes the standard nonnegative Lipschitz-constant
+      convention; it is not an added physical assumption. The PseudoMetricSpace
+      formulation covers both metric and pseudometric cases in the source.
     coverage_counted: true
+    forbidden_work:
+      - duplicate_development_pipeline_module
+      - replace_exact_product_sum_with_only_exponential_bound
 
   P-INT-01:
     state: blocked
