@@ -93,6 +93,9 @@ theorem survivalPotentialMean_zero_le_initial
   rw [lintegral_map
     (measurable_historySurvivalPotential hA hV 0)
     e.symm.measurable]
+  change (∫⁻ a : X,
+      ((historySurvivalPotential A V 0) ∘ e.symm) a
+      ∂Measure.dirac x) ≤ V x
   rw [lintegral_dirac' x
     ((measurable_historySurvivalPotential hA hV 0).comp e.symm.measurable)]
   have hcoord : (e.symm x) (lastHistoryIndex 0) = x := by
