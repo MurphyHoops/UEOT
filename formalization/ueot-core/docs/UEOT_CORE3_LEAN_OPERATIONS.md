@@ -1,6 +1,6 @@
 # UEOT Core 3 Lean Formalization — Cross-Chat Operations Manual
 
-> Purpose: make UEOT Core 3 Lean formalization resumable across arbitrarily many ChatGPT conversations while minimizing status-maintenance overhead. No single chat may be a single point of failure.
+> Purpose: make UEOT Core 3 Lean formalization resumable across arbitrarily many ChatGPT conversations while keeping theorem semantics, coverage accounting, branches, CI and handoff state auditable. No chat and no temporary branch may become a single point of failure.
 
 ## 0. Project identity
 
@@ -12,10 +12,10 @@
 - Mathlib: `0df444a360eaa60ab8c11dca51a86af692955474`
 - Official final target: `lake build UEOT`
 - Counted coverage truth: `formalization/ueot-core/docs/V3_COVERAGE_STATUS.md`
-- Single high-frequency live construction state: GitHub Issue #56
-- Unfinished code state: active feature branch WIP checkpoints
+- Single high-frequency live state: **GitHub Issue #56 body**
+- Historical live-state comments: audit/milestone history only
 
-Important: repository metadata may still report `master` as default. Every UEOT Core 3 operation must explicitly use `main` unless a specific feature/integration branch is named.
+`main` is the only integration branch. Never use `master` as a UEOT Core 3 integration target.
 
 ---
 
@@ -27,7 +27,7 @@ The project is complete only when all 106 frozen source-level P-IDs are machine 
 
 Proof lifecycle:
 
-`SOURCE AUDIT -> PROOF CONTRACT -> EXISTING-CODE AUDIT -> LEAN DEVELOPMENT -> FEATURE GREEN -> SOURCE RE-AUDIT -> PROHIBITED-PROOF AUDIT -> CLEAN INTEGRATION -> INTEGRATION GREEN -> MAIN -> POST-MAIN GREEN -> LEDGER UPDATE -> COUNTED PROVED`.
+`SOURCE AUDIT -> PROOF CONTRACT -> EXISTING-CODE AUDIT -> LEAN DEVELOPMENT -> FEATURE GREEN -> SOURCE RE-AUDIT -> PROHIBITED-PROOF AUDIT -> CLEAN INTEGRATION -> INTEGRATION GREEN -> MAIN -> POST-MAIN GREEN -> LEDGER UPDATE -> LEDGER PR GREEN -> LEDGER MAIN GREEN -> COUNTED PROVED`.
 
 Therefore:
 
@@ -35,118 +35,173 @@ Therefore:
 - WIP checkpoint != feature green;
 - feature green != counted coverage;
 - PR open != proved;
+- proof-main green != counted coverage;
 - a theorem with stronger assumptions or weaker conclusion than the frozen source does not close the P-ID.
 
 ---
 
-# 2. Minimal persistence architecture
+# 2. Authority hierarchy and persistence architecture
 
-The project uses four durable layers.
+When sources disagree, use this order:
 
-## Layer A — Frozen source
+1. frozen source specification -> theorem semantics;
+2. `V3_COVERAGE_STATUS.md` on `main` -> counted P-ID set;
+3. live `main`, branches, PRs and Actions -> actual code/CI state;
+4. **Issue #56 body** -> current construction intent, blocker and exact next action;
+5. `PID_STATUS.yaml` / `FORMALIZATION_STATE.md` -> lower-frequency lifecycle metadata;
+6. `HANDOFF_LATEST.md` -> fallback archival snapshot;
+7. Issue #56 comments / prior chats -> historical reasoning only.
 
-`UEOT_Core_Mathematics_v3.0_Complete.md` determines theorem semantics.
+A stale comment or handoff document must never override current `main`, current coverage ledger, or the Issue #56 body.
 
-## Layer B — `main`
+The durable layers are:
 
-`main` contains integrated formal code and low-frequency formal status/ledger documents.
-
-## Layer C — GitHub Issue #56
-
-Issue #56 is the **single high-frequency live construction-state anchor**. It records only what changes during active work:
-
-- active P-ID;
-- active feature/integration branch;
-- latest checkpoint head;
-- latest relevant CI;
-- current blocker/root cause;
-- exact next action;
-- do-not-repeat notes;
-- newly important pinned API facts.
-
-Updating Issue #56 does not change `main` and does not trigger Lean CI.
-
-## Layer D — active feature branch
-
-Unfinished Lean code is preserved by WIP checkpoint commits on the active feature branch. A WIP commit may be red/non-final and never changes formal coverage.
-
-This separation is mandatory:
+- **Frozen source** — semantic authority.
+- **`main`** — integrated proofs and low-frequency ledgers.
+- **Issue #56 body** — one editable live recovery record.
+- **Active feature branch** — unfinished code only.
 
 `save work != claim theorem complete`.
 
-Prior conversations are only an emergency supplement for reasoning not yet persisted.
-
 ---
 
-# 3. Two user commands
+# 3. Mandatory Recovery Protocol
 
-The user should normally need only two commands.
-
-## Start a new chat
-
-```text
-继续 UEOT Core 3 Lean 全形式化。执行仓库 Recovery Protocol，恢复上一轮施工现场并直接继续，不要让我重复说明。
-```
-
-## Before switching chats / near chat limit
-
-```text
-执行 UEOT Core 3 跨对话交接，然后继续做到当前聊天不能继续为止。
-```
-
-Everything else is the AI's responsibility.
-
----
-
-# 4. Mandatory Recovery Protocol
-
-When starting a new chat, the AI must:
+At the start of a new chat:
 
 1. Read this operations manual from `main`.
-2. Read `V3_COVERAGE_STATUS.md` from `main` for counted coverage.
-3. Read GitHub Issue #56 for live construction state.
-4. Recover the most recent prior UEOT Core 3 Lean conversation to obtain reasoning that may not yet be checkpointed.
-5. Query live GitHub:
+2. Read `V3_COVERAGE_STATUS.md` from `main`.
+3. Read **Issue #56 body**. Do not scan all comments unless a historical ambiguity remains.
+4. Query live GitHub:
    - current `main` SHA;
+   - open PRs;
    - active branch/head named in Issue #56;
    - branch compare;
-   - latest relevant CI;
-   - PR/integration branch state.
-6. Reconcile using:
-   - frozen source -> theorem semantics;
-   - `V3_COVERAGE_STATUS.md` -> counted coverage;
-   - live branch/Actions -> actual code/CI state;
-   - Issue #56 -> current construction intent/blocker/next action;
-   - prior chat -> supplementary reasoning only.
+   - latest relevant CI.
+5. Recover prior-chat reasoning only if it was not persisted in code or Issue #56.
+6. Reconcile using the authority hierarchy in §2.
 7. Return a compact Recovery Snapshot and immediately execute the exact next action.
-8. Do not ask the user to restate previous progress unless recovery is genuinely impossible.
+8. Do not reopen a counted P-ID unless Issue #56 explicitly records a substantive source mismatch/regression and the ledger confirms the reopen.
+9. Do not ask the user to restate previous progress unless repository recovery is genuinely impossible.
 
 Expected snapshot:
 
 ```text
 main: <sha>
 coverage: <N>/106
-active P-ID: <pid>
-feature: <branch>@<sha>
+active P-ID: <pid or none>
+feature: <branch>@<sha or none>
+open PR: <number or none>
 latest CI: <run> <status>
-state: proof | integration | promotion | audit
+state: proof | integration | promotion | audit | governance
 blocker: <if any>
 exact next action: <action>
 ```
 
 ---
 
-# 5. Automatic checkpoint discipline
+# 4. Branch Creation Preflight — HARD GATE
 
-Do not wait for the end of a conversation. During normal work, checkpoint whenever loss would cause meaningful rework.
+**No new remote branch may be created before all checks below pass.**
 
-Checkpoint after events such as:
+1. Read `V3_COVERAGE_STATUS.md`: the target P-ID must be uncounted, unless an explicit reopen is recorded.
+2. Read Issue #56 body: ensure another branch is not already the active lane.
+3. Search existing branches for the same P-ID/topic.
+4. Search open PRs for the same P-ID/topic.
+5. Fetch live `main` SHA.
+6. Reuse the existing active feature branch whenever possible.
+7. If a previous branch is superseded, fold/capture needed work and delete the superseded branch before creating a replacement.
 
-- a proof lemma becomes stable;
-- a real compiler/CI root cause is identified and a fix is applied;
+If any preflight check fails, **resume/reconcile existing work instead of creating another branch**.
+
+This gate exists specifically to prevent the historical failure modes in which already-counted P-IDs (for example later wrapper audits) were accidentally treated as fresh work and one P-ID accumulated many scratch/version branches.
+
+---
+
+# 5. Branch Lifecycle Protocol
+
+## 5.1 Branch classes and names
+
+Only these remote branch classes are allowed:
+
+- proof feature: `formal/<pid>-<topic>`;
+- clean integration: `formal/<pid>-main-integration`;
+- ledger promotion: `formal/ledger-<coverage>-<pid>`;
+- repository governance/maintenance: `ops/<topic>`;
+- explicit temporary quarantine: `hold/<topic>`.
+
+Do **not** create permanent `scratch`, `tmp`, `test`, `v2`, `v3`, `v7`, `fresh`, `clean-v2` branch families. If a proof direction changes, update the same feature branch or delete the obsolete branch before replacing it.
+
+Mathematical modularity belongs in Lean modules, not in permanent branch proliferation.
+
+## 5.2 One-P-ID / one-feature invariant
+
+Normally each active source P-ID has exactly **one** remote feature branch.
+
+Helper lemmas, API experiments and submodules for that P-ID live on that branch. A second remote branch for the same P-ID requires an explicit reason in Issue #56 and must be removed once the experiment is resolved.
+
+Remote scratch branches are prohibited by default. If an emergency remote WIP branch is unavoidable, use `hold/<pid>-<purpose>`, record it in Issue #56, and remove it within one working session after folding or rejecting the result.
+
+## 5.3 Branch budget
+
+Repository-wide target:
+
+- normal remote branches: **<= 8**;
+- hard cap: **12**;
+- open PRs: normally **<= 2**;
+- active theorem feature branches: normally **1**;
+- independent source/API audit lane: preferably no branch until code is needed;
+- integration/promotion/governance branches: ephemeral only.
+
+If remote branch count exceeds 12, **stop opening theorem branches and perform hygiene first**.
+
+## 5.4 Mandatory deletion points
+
+A branch is disposable once the durable evidence it represented exists elsewhere.
+
+Delete:
+
+- `hold/*`: immediately after work is folded/rejected;
+- clean-integration branch: after its PR merges and resulting-main CI is green;
+- ledger branch: after ledger PR merges and resulting-main CI is green;
+- feature branch: after the theorem is counted full-green and final theorem code is on `main`;
+- docs/governance branch: after merge and resulting-main CI is green;
+- abandoned/superseded branch: as soon as its needed head SHA/reason is recorded and any useful code is folded elsewhere;
+- branches for already-counted P-IDs: unless an explicit reopen is active;
+- obsolete default/legacy branches with no unique commits relative to `main`.
+
+Merged PRs, `main`, CI runs, the coverage ledger and Issue #56 milestone comments are the durable proof/audit record. **Permanent feature branches are not an archive.**
+
+## 5.5 Safe-deletion guard
+
+Before deleting a non-obvious branch:
+
+1. confirm there is no open PR from it;
+2. confirm it is not named as active in Issue #56;
+3. confirm its P-ID is counted or its work is superseded;
+4. record branch name + head SHA if it contains unique historical work not already represented by a merged PR;
+5. preserve unresolved pending-PID branches until their unique content is audited.
+
+Automated hygiene may delete branches only under these guards and must log deleted branch names/head SHAs to Issue #56.
+
+## 5.6 `main` safety
+
+- never force-push `main`;
+- never use `master` for Core 3 work;
+- every clean integration starts from the exact latest full-green `main` unless the protocol explicitly says proof-main for the separate ledger stage;
+- branch deletion must never target `main`.
+
+---
+
+# 6. Automatic checkpoint discipline
+
+Checkpoint when loss would cause meaningful rework:
+
+- stable proof lemma;
+- compiler/API root cause identified and fixed;
 - proof architecture materially changes;
-- a module reaches a meaningful stable point;
-- before a risky refactor or a new major proof block.
+- meaningful module milestone;
+- before risky refactor.
 
 Use descriptive commits:
 
@@ -156,112 +211,114 @@ proof(P-XYZ): establish <lemma>
 fix(P-XYZ): repair <root cause>
 ```
 
-A WIP commit may fail CI. It exists to preserve work, not to certify completion.
-
-Meaningful edits that exist only in an ephemeral uncommitted working tree cannot be guaranteed recoverable in a new chat. Therefore keep the unpersisted-work window small.
+Do not create a new branch merely to checkpoint. Keep the unpersisted-work window small on the existing feature branch.
 
 ---
 
-# 6. Cross-chat handoff protocol
+# 7. Issue #56 LIVE STATE Protocol
 
-When the user asks for handoff, or when the AI is approaching a natural conversation boundary, the AI must:
+Issue #56 **body**, not the tail of the comments, is the high-frequency live handoff.
 
-1. Push meaningful unfinished code to the active feature branch as a WIP checkpoint.
-2. Update Issue #56 with only materially changed live fields.
-3. Persist important reasoning decisions not represented in code into Issue #56.
-4. Do not update every formal status file merely because the conversation is ending.
-5. Continue useful work after checkpointing if room remains; handoff creation is not a command to stop early.
+The body must contain only current facts:
 
-If the conversation terminates unexpectedly, recovery falls back to:
+- full-green coverage + main SHA;
+- staged promotion, if any;
+- active P-ID/branch/head;
+- open PR;
+- latest relevant CI;
+- blocker/root cause;
+- exact next actions;
+- do-not-repeat guards.
 
-`feature WIP commits -> Issue #56 -> live CI/PR -> prior chat reasoning`.
+Update the body on material state transitions. Do not append a new comment for every CI poll or micro-fix.
+
+Issue comments are reserved for durable milestones such as:
+
+- new FULL-GREEN coverage checkpoint;
+- theorem source contract locked;
+- major proof architecture decision;
+- branch-hygiene deletion manifest;
+- substantive correction/root-cause postmortem.
+
+Old comments are historical and may be stale. Recovery reads the body first.
 
 ---
 
-# 7. Low-frequency status documents
+# 8. Cross-chat handoff protocol
+
+When the user asks for handoff, or a natural conversation boundary approaches:
+
+1. checkpoint meaningful unfinished code on the existing active feature branch;
+2. update Issue #56 body with current live fields;
+3. persist important reasoning decisions not represented in code;
+4. do not create a handoff-only branch unless a real repository change is needed;
+5. do not update every low-frequency status file just because a chat is ending;
+6. continue useful work after checkpointing if room remains.
+
+Fallback order after unexpected termination:
+
+`Issue #56 body -> active branch -> live PR/CI -> low-frequency ledgers -> milestone comments -> prior chat`.
+
+---
+
+# 9. Low-frequency status documents
 
 These are NOT maintained every chat.
 
-- `V3_COVERAGE_STATUS.md`: update only after valid counted promotions.
-- `PID_STATUS.yaml`: update at major lifecycle transitions such as proof -> integration -> proved, or significant audit state changes.
-- `FORMALIZATION_STATE.md`: update at meaningful project-stage transitions.
-- `HANDOFF_LATEST.md`: fallback archival snapshot only; Issue #56 is the live handoff.
-- `PID_AUDIT_MATRIX.yaml`: update during remaining-PID source-to-main audit.
-- `LEAN_API_NOTES.md`: update when an API discovery is reusable beyond the active lane.
+- `V3_COVERAGE_STATUS.md`: counted coverage authority; update only through valid promotion.
+- `PID_STATUS.yaml`: major lifecycle transitions and durable audit facts.
+- `FORMALIZATION_STATE.md`: project-stage transitions.
+- `HANDOFF_LATEST.md`: fallback archive only; never live authority.
+- `PID_AUDIT_MATRIX.yaml`: source-to-main audit.
+- `LEAN_API_NOTES.md`: reusable API discoveries.
 
-Daily active work should require only:
-
-`active branch checkpoint + Issue #56 update when state materially changes`.
+Do not create new state files when an existing authority already covers the information.
 
 ---
 
-# 8. Proof-development efficiency model
+# 10. CI discipline
 
-Use three feedback tiers.
+Feedback hierarchy:
 
-## Tier 1 — module check
+1. direct module check when available;
+2. affected dependency stack;
+3. official `lake build UEOT` at source theorem closure, feature freeze, clean integration, PR/main, and ledger gates.
 
-Prefer direct Lean/module builds for the edited module.
+Do not intentionally use full CI as a trial-and-error Lean REPL. If the execution environment only exposes full remote CI, batch coherent fixes before pushing rather than creating branch/commit churn for each speculative edit.
 
-## Tier 2 — affected stack
-
-Build only the dependency stack touched by the change.
-
-## Tier 3 — official target
-
-Run `lake build UEOT` only at important milestones such as source-theorem closure, feature freeze, integration, main, and post-main.
-
-Do not use GitHub full CI as a Lean REPL.
-
-If an ordinary P-ID exceeds roughly 3–5 full-CI failures, pause trial-and-error and perform a root-cause/API audit.
+If an ordinary P-ID accumulates roughly 3–5 full-CI failures, stop patching blindly and perform a root-cause / pinned-Mathlib API audit.
 
 ---
 
-# 9. Branch discipline
+# 11. Correct parallelism
 
-One active source P-ID should normally have one development branch:
-
-`formal/<pid>-<topic>`.
-
-Mathematical modularity belongs in Lean modules, not many permanent branches.
-
-When feature proof is ready, create a clean integration branch from live latest `main` and replay only final validated files. Do not merge a long stale development history wholesale.
-
-Recommended active branch target: fewer than 20.
-
----
-
-# 10. Correct parallelism
-
-Preferred lanes:
+Preferred concurrent work:
 
 - Lane A: one active proof P-ID;
-- Lane B: independent source-to-main audit of future P-IDs;
-- Lane C: Mathlib/API research or clean integration work.
+- Lane B: source-to-main audit of a future P-ID, normally branchless;
+- Lane C: API research or the current clean-integration/promotion gate.
 
-Do not run multiple branches that independently mutate the same source theorem/import region.
-
-While milestone CI runs, use time for independent audit/API work rather than stacking speculative dependent fixes.
+Do not run multiple branches that mutate the same theorem/import surface. Do not use CI wait time to spawn speculative dependent branches.
 
 ---
 
-# 11. Source-first rule
+# 12. Source-first rule
 
 Before new proof work:
 
 1. read the exact frozen source statement;
 2. record assumptions, conclusion, scope and quantifier order;
 3. record forbidden strengthening/weakening;
-4. audit existing main code;
+4. audit `V3_COVERAGE_STATUS.md` and current main code;
 5. only then write new Lean.
 
 Never silently narrow Standard-Borel to finite/countable, randomized to deterministic, general code spaces to fixed spaces, or a common-version theorem to unrelated per-protocol null sets.
 
 ---
 
-# 12. Remaining-PID classification
+# 13. Remaining-PID classification
 
-After the active P-ID closes, audit all remaining unclassified P-IDs and classify:
+For each uncounted P-ID classify:
 
 - A — source-facing theorem already exists on `main`;
 - B — substantial mathematics exists, wrapper/alignment gap remains;
@@ -270,29 +327,34 @@ After the active P-ID closes, audit all remaining unclassified P-IDs and classif
 
 Prefer A -> B -> C -> D, adjusted by dependency unlock and reuse value.
 
-Do not assume pending means unformalized.
+`pending` means only “not counted”; it does not mean “no Lean exists”.
 
 ---
 
-# 13. Integration protocol
+# 14. Clean integration and promotion protocol
 
-Once the source-facing feature theorem is fully green, freeze the feature.
+Once a source-facing feature theorem is fully green:
 
-1. fetch live latest `main`;
-2. create/refresh `formal/<pid>-main-integration` from that exact main;
-3. replay only final validated files/imports;
-4. compare integration vs main for unrelated changes;
-5. run prohibited-proof audit;
-6. run official full CI;
-7. integrate to main only after green;
-8. run post-main full CI;
-9. only then update ledgers and coverage.
+1. freeze the feature;
+2. fetch exact live full-green `main`;
+3. create one clean integration branch;
+4. replay only final validated files/imports;
+5. compare integration vs main for unrelated changes;
+6. run source semantic + prohibited-proof audit;
+7. require full integration CI;
+8. merge through PR;
+9. require resulting-main full CI;
+10. create one separate ledger branch from that proof-main;
+11. ledger PR must change only the authoritative recovery/coverage documents;
+12. require ledger PR CI, merge, then resulting-main CI;
+13. only then increment FULL-GREEN coverage;
+14. delete feature, integration and ledger branches according to §5.
 
 Feature green must never directly increment coverage.
 
 ---
 
-# 14. Prohibited-proof audit
+# 15. Prohibited-proof audit
 
 Before promotion inspect the integrated diff for at least:
 
@@ -305,18 +367,29 @@ Audit semantically rather than by naive word count.
 
 ---
 
-# 15. Current live recovery source
+# 16. Governance health checks
 
-Do not treat a static SHA in this manual as current state. The live state is in Issue #56 plus actual GitHub branches/Actions.
+At recovery and after each counted promotion, check:
 
-At the time this manual was updated, counted coverage was still `54/106` and P-INT-01's feature proof had already passed its feature-level full target. A new chat must still re-query live GitHub before acting.
+- branch count <= 8 target / <= 12 hard cap;
+- no stale open PR;
+- Issue #56 body matches live GitHub;
+- no active branch for a counted P-ID;
+- no duplicate branch for an active P-ID;
+- no ledger/integration branch left after its lifecycle closes;
+- `main` is the only integration branch;
+- authoritative coverage partition sums to 106.
+
+If these fail, governance repair takes priority over opening new proof lanes.
 
 ---
 
-# 16. Final operating loop
+# 17. Final operating loop
 
-`RECOVER -> AUDIT -> PROVE -> CHECKPOINT -> VERIFY -> INTEGRATE -> PROMOTE -> CONTINUE`.
+`RECOVER -> RECONCILE -> BRANCH PREFLIGHT -> AUDIT -> PROVE -> CHECKPOINT -> VERIFY -> CLEAN-INTEGRATE -> PROMOTE -> DELETE EPHEMERAL BRANCHES -> CONTINUE`.
 
-The central invariant is:
+Central invariants:
 
-**A chat may end at any time; meaningful formalization state must already exist outside that chat.**
+**A chat may end at any time; meaningful state must already exist outside that chat.**
+
+**A branch may disappear after its lifecycle; durable truth must already exist in main, ledgers, PR/CI evidence and Issue #56.**
