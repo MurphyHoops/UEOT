@@ -11,23 +11,22 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 75
+  integrated_proved: 76
   promotion_running: 0
-  active_proof: 1
+  active_proof: 0
   source_audit: 0
   blocked: 0
   pending_unclassified: 30
-  unresolved_total: 31
+  unresolved_total: 30
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 75 integrated/proof-complete
-    P-IDs including newly promoted P-REF-03 + 1 active uncounted feature-green lane
-    (P-BRG-01) + 30 pending/unclassified = 106. P-REF-03 completed source-semantic,
-    feature, clean-integration, PR, proof-main and resulting-main proof gates.
-    75/106 becomes full-green only after this ledger checkpoint passes PR CI,
-    lands on main and passes the resulting main CI. P-REF-04 and P-REF-05 were
-    already counted in the 74 baseline; audit wrappers from this cycle are not
-    new coverage. Feature/proof lanes remain uncounted.
+    Operational partition staged by this ledger checkpoint: 76 integrated/proof-complete
+    P-IDs including newly promoted P-BRG-01 + 30 pending/unclassified = 106.
+    P-BRG-01 completed source-semantic, feature, clean-integration, PR,
+    proof-main and resulting-main proof gates. 76/106 becomes full-green only
+    after this ledger checkpoint passes PR CI, lands on main and passes the
+    resulting main CI. P-REF-04 and P-REF-05 were already counted in the earlier
+    baseline; audit wrappers from this cycle are not new coverage.
 state_vocabulary:
   - source_audit
   - proof
@@ -484,17 +483,16 @@ pids:
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: arbitrary signal sigma-algebra retained; no finite-ization of the signal; fixed actions remain feasible so free information cannot lower value
     coverage_counted: true
-    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
+    ledger_gate: complete
 
   P-BRG-01:
-    state: proof
+    state: proved
     source_locked: true
     source_semantic_audit: complete
     audit_class: finite_fixed_fitness_concentration
     feature_branch: formal/pbrg01-fixed-fitness-v1
     feature_head: b3f47b89ad901fb11f322d7f386d5a86ba06e708
     feature_ci: {run: 34815094214, status: success}
-    feature_gate: green_uncounted
     canonical_theorems:
       - UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence
       - UEOT.V3.FixedFitnessConcentration.p_brg_01
@@ -507,9 +505,17 @@ pids:
       - finite total suboptimal mass is bounded by a finite sum of geometric terms and tends to zero exponentially
       - support maximizers preserve their initial relative proportions
     promotion:
+      clean_integration_branch: formal/pbrg01-main-integration-v1
+      clean_integration_head: a40b18ddc99617b25d873b376edf2aab3b096061
+      clean_integration_ci: {run: 34817101777, status: success}
+      clean_integration_pr: 75
+      clean_integration_pr_ci: {run: 34817631959, status: success}
+      main_commit: 667471f1627ef762ebb116d082f2ed588132fa67
+      post_main_ci: {run: 34818138195, status: success}
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: feature-green after adding the missing recurrence-uniqueness converse; finite-sum geometric envelope represents the frozen total-mass exponential decay clause; must be clean-integrated from the next FULL-GREEN main before counting
-    coverage_counted: false
+    source_note: recurrence-uniqueness converse plus support-preserving fixed-fitness concentration and maximizer-ratio preservation match the frozen source contract
+    coverage_counted: true
+    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
 audits:
   P-EVO-03:
