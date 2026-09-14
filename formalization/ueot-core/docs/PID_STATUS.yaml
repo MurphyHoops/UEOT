@@ -1,5 +1,5 @@
 schema_version: 2
-updated: 2026-09-14
+updated: 2026-09-15
 integration_branch: main
 official_target: lake build UEOT
 source:
@@ -11,21 +11,21 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 78
+  integrated_proved: 79
   promotion_running: 0
   active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 28
-  unresolved_total: 28
+  pending_unclassified: 27
+  unresolved_total: 27
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 78 integrated/proof-complete
-    P-IDs including P-QSD-03 and newly staged P-PER-04 + 28 pending/unclassified = 106.
-    P-PER-04 completed source-semantic, feature, clean-integration, PR,
-    proof-main and resulting-main proof gates. 78/106 becomes full-green only
+    Operational partition staged by this ledger checkpoint: 79 integrated/proof-complete
+    P-IDs including P-QSD-03, P-PER-04 and newly staged P-REC-04 + 27 pending/unclassified = 106.
+    P-REC-04 completed source-semantic, feature, clean-integration, PR,
+    proof-main and resulting-main proof gates. 79/106 becomes full-green only
     after this ledger checkpoint passes branch CI, PR CI, lands on main and
-    passes the resulting main CI. P-QSD-03 is already counted in the 77/106
+    passes the resulting main CI. P-PER-04 is already counted in the 78/106
     full-green baseline. P-REF-04 and P-REF-05 were already counted in the
     earlier baseline; audit wrappers are not new coverage.
 state_vocabulary:
@@ -583,6 +583,44 @@ pids:
       post_main_ci: {run: 34863965181, status: success}
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: positive Bouligand cone through the pinned Mathlib sequence/filter characterization; no two-sided-cone or Nagumo overclaim
+    coverage_counted: true
+    ledger_gate: complete
+
+  P-REC-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: markov_drift_hitting_time
+    canonical_theorem: UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound
+    source_contract:
+      - homogeneous discrete-time Markov transition kernel
+      - measurable hit set A
+      - nonnegative finite-valued Lyapunov potential V
+      - positive finite drift constant c
+      - outside A the drift condition is equivalently PV + c <= V
+      - conclusion E_x tau_A <= V(x)/c
+      - finite-horizon stopped/tail-sum estimate followed by monotone convergence
+    implementation_contract:
+      - trajectory law is derived from the source state kernel
+      - nonnegative hitting time is represented in ENNReal by survival-tail truncations
+      - one-step survival-potential recurrence is proved from the kernel drift
+      - finite horizons telescope before the monotone limit
+      - no finite-state specialization
+      - no assumed stopped inequality
+      - no global future-integrability premise
+    promotion:
+      feature_branch: formal/prec04-drift-hitting-time-v1
+      feature_head: 3ea9086976ac595eb034a125390d69264e12772e
+      feature_ci: {run: 34875538212, status: success}
+      clean_integration_branch: formal/prec04-main-integration-v1
+      clean_integration_head: 50ac5834ff74fe4aa5229b60be87a256e762c778
+      clean_integration_ci: {run: 34877803577, status: success}
+      proof_pr: 85
+      proof_pr_ci: {run: 34880820942, status: success}
+      main_commit: 4946a4435d3c15efbf0ca13aed7b44e65defc79c
+      post_main_ci: {run: 34882613059, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: source-strength Markov drift-to-hitting-time bound via survival-tail telescoping and monotone convergence
     coverage_counted: true
     ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
