@@ -23,15 +23,15 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **73** |
+| **proved, staged by this ledger checkpoint** | **74** |
 | **partial** | **0** |
-| **pending / not yet counted** | **33** |
+| **pending / not yet counted** | **32** |
 | **total** | **106** |
 
-This branch stages **73/106** after P-REF-01 completed feature,
-clean-integration, source-semantic, prohibited-proof and post-main proof gates.
-**73/106 is not called full-green until this ledger checkpoint itself passes PR
-CI, lands on `main`, and the resulting main CI succeeds.**
+This branch stages **74/106** after P-REF-02 completed source-semantic,
+feature/assembly, clean-integration, PR CI, proof-main merge and resulting-main
+CI gates. **74/106 is not called full-green until this ledger checkpoint itself
+passes PR CI, lands on `main`, and the resulting main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -45,7 +45,7 @@ mathematics or Lean code exists.
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
 - **Quotient:** P-QUO-03
-- **Refinement / agency:** P-REF-01, P-REF-04, P-REF-05
+- **Refinement / agency:** P-REF-01, P-REF-02, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
 - **Bridge:** P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
@@ -65,79 +65,77 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `72 + P-REF-01 = 73`.
+Count check: `73 + P-REF-02 = 74`.
 
-## Newly staged promotion — P-REF-01
+## Newly staged promotion — P-REF-02
 
-Frozen source §27.1 is implemented at full stated strength:
+Frozen Core 3 §27.2 is implemented at the declared belief-state interface:
 
-- reflexive state `Z=(X,S)`;
-- arbitrary complete-history-dependent randomized causal policies;
-- an initial probability law and measurable controlled Markov kernel determine
-  one unique infinite `Z` path law for each fixed causal policy;
-- existence is built through pinned Mathlib Ionescu--Tulcea trajectory kernels;
-- uniqueness is non-vacuous and follows from equality of all recursively
-  generated finite prefixes/projective limits;
-- measurable structural modification
-  `S_{t+1}=F(S_t,X_t,a_t,xi_t)` is realized as a noise-driven controlled Markov
-  kernel without restricting the policy;
-- a further compression `phi(Z)` requires a separate action-wise controlled
-  strong-lumpability/closure condition; reflexivity does not imply closure.
-
-The source-facing theorem works on arbitrary measurable spaces once the supplied
-kernels are Markov. This is stronger than the Core-wide Standard-Borel default,
-not a weakening of the frozen P-REF-01 contract.
+- finite latent static parameter and hidden state model;
+- normalized joint beliefs and controlled prediction;
+- predictive next-observation law depends only on current belief and action;
+- positive-evidence Bayes posterior is the displayed normalized formula;
+- zero evidence is explicit `modelConflict`, never an arbitrary posterior;
+- a general Standard-Borel posterior/disintegration interface reconstructs the
+  same one-step joint law and averages back to the predicted latent law;
+- one-step bounded-discount reward/continuation data are functions of `(b,a)`,
+  which is the frozen source's belief-control reduction boundary;
+- no duplicate or stronger generic Bellman theorem is claimed by this P-ID.
 
 Canonical theorem surface:
-- `UEOT.V3.ReflexivePRef01.p_ref_01`;
-- `UEOT.V3.ReflexivePRef01.p_ref_01_structureModification`;
-- `UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel`;
-- `UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw`.
+- `UEOT.V3.PRef02.p_ref_02_general_joint`;
+- `UEOT.V3.PRef02.p_ref_02_general_update`;
+- `UEOT.V3.PRef02.p_ref_02_discrete_observation`;
+- `UEOT.V3.PRef02.p_ref_02_discrete_posterior`;
+- `UEOT.V3.PRef02.p_ref_02_discrete_modelConflict`;
+- `UEOT.V3.PRef02.p_ref_02_discounted_step`.
 
 Promotion evidence:
-- final strengthened feature branch `formal/pref01-source-assembly-v2`;
-- final feature head `8649c0763ac2326177812209bab3f32ad92680f7`;
-- final feature CI `34803657950`: success;
-- complete pre-strengthening assembly CI `34802710747`: success;
-- clean integration branch `formal/pref01-main-integration-v1`;
-- clean integration head `85148ee2e9cba8afa5e23406a51c09515d45e052`;
-- clean integration PR #69;
-- clean integration CI `34804007035`: success;
-- proof main commit `1c4de9fc60b653e8c3594bba1a01a0eed510578a`;
-- proof post-main CI `34804335400`: success;
-- prohibited-proof audit: clean;
-- frozen-source semantic audit: complete.
+- proof feature family: `formal/pref02-belief-core-v1`;
+- clean integration branch: `formal/pref02-main-integration-v1`;
+- clean integration head: `0037fc0e494b46200ead20e2f5c3ce84a66eb577`;
+- clean integration push CI `34808870460`: success;
+- clean integration PR #71;
+- PR-triggered CI `34810019287`: success;
+- proof main commit `c1213a6014f37a84bdfe128cced1a472b682248e`;
+- proof resulting-main CI `34810452071`: success;
+- frozen-source semantic audit: complete;
+- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`,
+  unsourced `axiom=0`).
 
 **Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
-main CI.**
+resulting-main CI.**
 
-## Previous full-green checkpoint — 72/106
+## Previous full-green checkpoint — 73/106
 
-P-ALG-01 and all earlier counted theorems are fully green. The authoritative
-72/106 baseline before P-REF-01 proof promotion was
-`main@8d3124b03b6e04cdde8fc5c42d76751967d043c1`, with official main CI
-`34795931776` successful. Counted P-IDs are not reopened absent a substantive
-source mismatch or CI regression.
+The authoritative full-green baseline before this P-REF-02 promotion was
+`main@0285b7b8da4c94cc7d8d890336cd97e5e64718cb`, with official resulting-main
+CI `34808329108` successful. All 73 counted P-IDs at that checkpoint remain
+closed absent a substantive frozen-source mismatch or CI regression.
 
-## Active proof lanes — P-REF-02 and P-REF-03
+## Active uncounted lanes
 
-### P-REF-02 — finite Bayes belief sufficiency
+### P-REF-03 — feature-green, awaiting clean integration
 
-The active branch `formal/pref02-belief-core-v1` is implementing frozen §27.2.
-The already-green first layer provides the finite latent-parameter/state model,
-normalized joint beliefs, predictive masses, positive-evidence Bayes posterior,
-and explicit `modelConflict` on zero evidence. The current second layer adds a
-normalized next-observation law and a complete one-step `BeliefStep` determined
-only by `(b,a)`. The bounded-discount belief-control rewrite remains mandatory
-before P-REF-02 can be promoted or counted.
+Branch `formal/pref03-free-information-v1` preserves the frozen arbitrary-signal
+scope by representing the information as an arbitrary sub-sigma-algebra. Only
+the action set is finite and each action payoff is integrable. Current final
+feature head is `7ed287043f6da1e3d53bc67a95b7377bb989382a`; official run
+`34809014590` succeeded. The effective source change is only
+`UEOT/V3/FreeInformationValue.lean` plus one top-level import. Because its
+feature history diverged from main, it must be clean-integrated from the next
+full-green main and remains **uncounted** here.
 
-### P-REF-03 — free information weak improvement
+### P-BRG-01 — active proof
 
-The parallel branch `formal/pref03-free-information-v1` represents the signal
-by an arbitrary sub-sigma-algebra, keeps only the action set finite, and proves
-the pointwise conditional-expectation maximum dominates every fixed action.
-This preserves the frozen arbitrary-signal-space requirement. Feature work is
-uncounted until all promotion gates succeed.
+Frozen §26.3 requires the exact no-mutation fixed-fitness replicator closed
+form, preservation of initial support, exponential disappearance of all
+initially supported strictly suboptimal mass, and preservation of initial
+relative proportions among support maximizers. Branch
+`formal/pbrg01-fixed-fitness-v1` is proving this source contract. The current
+feature work contains an algebraic layer plus a concentration layer with
+explicit geometric envelopes; it remains **uncounted** until CI and semantic
+review establish the full frozen clause.
 
 ## Reproducibility task
 
@@ -148,5 +146,5 @@ separate from theorem proof status.
 ## Completion rule
 
 UEOT Core v3.0 is machine-complete only when all **106** frozen-source P-IDs pass
-the source-theorem proof contract; helpers or feature-green branches never count
-on their own.
+the source-theorem proof contract; helpers, feature-green branches, source
+audits or proof-main commits never count on their own.
