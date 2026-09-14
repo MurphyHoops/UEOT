@@ -40,3 +40,4 @@ import UEOT.V3.ReflexivePRef01
 import UEOT.V3.FiniteBayesBelief
 import UEOT.V3.GeneralBayesPosterior
 import UEOT.V3.PRef02
+import UEOT.V3.FreeInformationValue
