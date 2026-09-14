@@ -31,3 +31,9 @@ import UEOT.V3.CompositionWindow
 import UEOT.V3.CompositionParentInformation
 import UEOT.V3.PathKLChain
 import UEOT.V3.PAlg01
+import UEOT.V3.ReflexiveStateAugmentation
+import UEOT.V3.ReflexiveStatePathLaw
+import UEOT.V3.ReflexiveStatePathUniqueness
+import UEOT.V3.ReflexiveStateSpecialCases
+import UEOT.V3.ReflexiveControlledClosure
+import UEOT.V3.ReflexivePRef01
