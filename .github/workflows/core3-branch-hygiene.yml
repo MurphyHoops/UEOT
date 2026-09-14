@@ -64,16 +64,14 @@ jobs:
 
           git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
 
-          # Unique legacy branches retained for explicit content audit. They are
-          # quarantined historical work, NOT active theorem lanes.
+          # After source/coverage reconciliation, only P-QSD-03 remains worth
+          # preserving as unique pending theorem work. The former QSDPerron branch
+          # explicitly targets already-counted P-QSD-02; v3 metrics/dynamics/history
+          # branches target families already counted; core/v3-maintenance contains
+          # stale status docs. Those are therefore cleanup candidates.
           KEEP_EXACT=(
             "main"
-            "core/v3-maintenance"
-            "formal/persistence-qsd"
             "formal/pqsd03-duration-window-v1"
-            "formal/v3-coverage-wave2"
-            "formal/v3-metrics"
-            "formal/v3-process-dynamics"
           )
 
           mapfile -t OPEN_PR_HEADS < <(
@@ -94,6 +92,7 @@ jobs:
           is_core3_legacy_candidate() {
             local branch="$1"
             [[ "$branch" == "master" ]] \
+              || [[ "$branch" == "core/v3-maintenance" ]] \
               || [[ "$branch" == docs/* ]] \
               || [[ "$branch" == formal/* ]] \
               || [[ "$branch" == "ops/core3-branch-governance-v1" ]]
@@ -118,7 +117,7 @@ jobs:
             echo "- main at workflow start: \`$(git rev-parse origin/main)\`"
             echo "- branch count before: **${#ALL_BRANCHES[@]}**"
             echo "- apply deletion: **${APPLY}**"
-            echo "- destructive scope: \`master\`, \`docs/*\`, \`formal/*\`, and the completed governance branch only"
+            echo "- destructive scope: audited Core 3 legacy `master`, `core/v3-maintenance`, `docs/*`, `formal/*`, and completed governance branch"
             echo
             echo "#### Audited deletion candidates"
           } > "$MANIFEST"
@@ -143,7 +142,7 @@ jobs:
 
           {
             echo
-            echo "#### Retained by explicit Core 3 keep-set / open PR / hold"
+            echo "#### Retained by explicit keep-set / open PR / hold"
             for branch in "${KEEP_BRANCHES[@]}"; do
               printf -- '- `%s` @ `%s`\n' "$branch" "$(git rev-parse "origin/${branch}")"
             done
@@ -160,7 +159,6 @@ jobs:
             echo "Deletion rule: no open PR, not active/retained, and branch must match the explicit audited Core 3 legacy scope. Exact pre-delete SHAs are recorded before mutation."
           } >> "$MANIFEST"
 
-          # Durable audit record before destructive mutation.
           gh issue comment 56 --body-file "$MANIFEST"
 
           if [[ "$APPLY" == "true" && ${#DELETE_BRANCHES[@]} -gt 0 ]]; then
