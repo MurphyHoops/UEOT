@@ -17,7 +17,7 @@ at time `k` has value `k`, while a path that never hits has value `∞`.
 
 namespace UEOT.V3.RecoveryHittingNonnegative
 
-open Finset Function MeasurableSpace MeasureTheory Preorder ProbabilityTheory Set
+open Finset Function MeasurableSpace MeasureTheory Preorder ProbabilityTheory
 open UEOT.V3.DynamicsKernel
 open scoped ENNReal ProbabilityTheory
 
@@ -69,7 +69,7 @@ theorem measurableSet_survivalSet
 
 /-- The source Lyapunov potential restricted to histories that have survived
 through time `n`; it vanishes once the target has already been hit. -/
-def historySurvivalPotential
+noncomputable def historySurvivalPotential
     (A : Set X) (V : X → ℝ≥0∞) (n : ℕ)
     (h : (i : Iic n) → X) : ℝ≥0∞ :=
   (historySurvivalSet A n).indicator
@@ -108,7 +108,7 @@ noncomputable def truncatedExpectedHittingTime
 
 /-- Pointwise truncated hitting time: the number of survival instants among
 `0,...,N-1`.  This is exactly `τ_A ∧ N` for discrete time. -/
-def truncatedHittingValue
+noncomputable def truncatedHittingValue
     (A : Set X) (N : ℕ) (ω : ℕ → X) : ℝ≥0∞ :=
   ∑ n ∈ range N,
     (survivalSet A n).indicator (fun _ => (1 : ℝ≥0∞)) ω
@@ -117,7 +117,8 @@ theorem measurable_truncatedHittingValue
     {A : Set X} (hA : MeasurableSet A) (N : ℕ) :
     Measurable (truncatedHittingValue A N) := by
   unfold truncatedHittingValue
-  fun_prop
+  exact Finset.measurable_sum (range N) fun n _ =>
+    measurable_const.indicator (measurableSet_survivalSet hA n)
 
 /-- Extended hitting time obtained as the monotone limit of the source
 truncations.  It is finite and equal to the first hit index when a hit occurs,
