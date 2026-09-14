@@ -1,110 +1,131 @@
 # UEOT Core 3 Lean — Fallback Handoff Snapshot
 
 > GitHub Issue #56 is the live cross-chat construction state when available.
-> This file is the fallback archival snapshot on `main` and is updated at
-> meaningful lifecycle transitions.
+> This file is the fallback archival snapshot and is updated at meaningful
+> lifecycle transitions.
 
-## Current lifecycle snapshot
+## Current authoritative checkpoint
 
-- authoritative full-green baseline before this ledger checkpoint: **71/106**;
-- this branch stages **72/106** after P-ALG-01 completed all proof-side and
-  post-main gates;
-- remaining not-yet-counted P-IDs after staging: **34**;
-- full-green 71 baseline: `5218e615d852c1ffee72107f35435ee378709166`;
-- P-ALG-01 proof main: `9c638eee8448059221232fa764a2f3ebf00d46bd`;
-- newest staged promotion: **P-ALG-01**;
-- P-ALG-01 layered CI `34776635531`: success;
-- P-ALG-01 quotient CI `34774150913`: success;
-- P-ALG-01 clean-integration PR #66 CI `34777304473`: success;
-- P-ALG-01 post-main CI `34777649215`: success;
-- source semantic audit: complete;
-- prohibited-proof audit: clean.
+- source P-IDs: **106**;
+- authoritative coverage: **72/106 FULL-GREEN**;
+- authoritative main: `f0869e50a5790bcdfcfec1d51ea909e8d2ea67ed`;
+- ledger-main CI: `34778736670` — **success**;
+- newest counted theorem: **P-ALG-01** (`UEOT.V3.PAlg01.p_alg_01`);
+- P-BRG-02 was already present in the old 71 baseline and must not be counted again;
+- active uncounted proof lane: **P-REF-01**;
+- coverage must remain 72/106 until P-REF-01 completes feature, clean-integration,
+  post-main, ledger and ledger-main promotion gates.
 
-**Do not call 72/106 full-green until this ledger/recovery branch passes PR CI,
-lands on `main`, and the resulting main CI succeeds.**
+The previous ledger text saying “72 staged” is obsolete: PR #67 landed on main as
+`f0869e50...`, and the resulting official `lake build UEOT` CI `34778736670`
+succeeded. Issue #56 contains the live construction log. Some other recovery
+metadata files on `main` may still contain the pre-ledger staged wording until
+the next metadata synchronization; this snapshot and Issue #56 take precedence
+for lifecycle state.
 
-## P-ALG-01 — completed proof contract
+## P-REF-01 frozen proof contract
 
-Frozen §28.5 is implemented literally:
+P-REF-01 is being implemented at the source boundary, not as a weakened surrogate:
 
-- finite state set and common finite action set;
-- known exact transition matrices, reward vector and output label;
-- initial partition = equal output label + equal complete action-reward vector;
-- each refinement retains the current block and splits by transition mass to
-  every current block under every action;
-- finite termination via well-founded finite relation-pair descent;
-- terminal controlled stability/lumpability;
-- terminal partition is the coarsest stable refinement of the initial one;
-- quotient preserves output, reward, every action's one-step law and
-  normalization;
-- all corresponding finite-horizon output-word laws are preserved.
+- reflexive state `Z=(X,S)`;
+- measurable controlled kernel `K(Z_t,a_t;·)`;
+- **arbitrary complete-history-dependent randomized causal policy**;
+- initial law + `K` + fixed causal policy uniquely determine the infinite `Z`
+  path law through the Chapter 2 kernel-extension/Ionescu–Tulcea machinery;
+- deterministic `S_{t+1}=F(S_t,X_t,a_t,xi_t)` is a specialization only;
+- a compression `phi(Z_t)` is not automatically closed and must separately
+  satisfy the controlled-closure condition;
+- the final source-facing wrapper must retain the stated standard-Borel boundary.
 
-Canonical theorem:
-- `UEOT.V3.PAlg01.p_alg_01`.
+No deterministic-policy, Markov-policy, finite-memory or finite-state reduction
+is source-equivalent here.
 
-Scope guards:
-- specified finite Markov state domain only;
-- no unconditional identification with full-history FFIPS;
-- no §28.4 constraint-data injection;
-- no floating-tolerance weakening.
+## P-REF-01 current machine-checked state
 
-Evidence:
-- layered `formal/palg01-layered@e28c9dbb4882b936889a9aedf5ec42796eed7c86`, CI `34776635531` success;
-- quotient `formal/palg01-quotient-law@4f5390e4eac897bae9930ebf58149971d040b851`, CI `34774150913` success;
-- clean integration `formal/palg01-main-integration-v1@cd0a36f2663adb1ac17fc30776d6a48e3e8dbb52`;
-- PR #66 CI `34777304473` success;
-- proof main `9c638eee8448059221232fa764a2f3ebf00d46bd`;
-- proof post-main CI `34777649215` success.
+### Layer 1 — GREEN
 
-## Recovery correction — counted P-BRG-02 was not a new lane
+Branch: `formal/pref01-reflexive-pathlaw`
 
-The old 71/106 authoritative proved set already includes **P-BRG-02**. During
-post-main CI waiting a redundant branch `formal/pbrg02-behavioral-equivalence`
-was briefly created before that old list was rechecked. It is not part of the
-promotion plan, must not be integrated, and must not be counted again. No source
-mismatch or CI regression was found, so the counted theorem remains closed.
+Green head: `bbb6245087096024e86bd82bb7baa86130d8690f`
 
-## Current next action — P-REF-01 source audit
+CI: `34779165722` — **success**.
 
-Frozen P-REF-01 requires arbitrary causal-policy augmented-state path-law
-existence/uniqueness from the initial law and measurable controlled kernel.
-Pinned Mathlib contains Ionescu--Tulcea `traj`/`trajMeasure`, so reuse that
-machinery. Do not weaken to deterministic or Markov-only policies. Deterministic
-structural update is a corollary/special case, not the general theorem.
+Machine-checked contents:
 
-Exact next construction sequence after 72 becomes full-green:
+1. complete finite-history current-state readout;
+2. pullback of `K : Kernel (Z×A) Z` to complete history plus selected action;
+3. arbitrary causal randomized policy `pi_n : Kernel H_n A`;
+4. sequential action sampling, controlled `Z` sampling, and exact history append;
+5. one global Markov kernel on the time-tagged complete-history carrier.
 
-1. define the augmented state `Z=(X,S)` at the Lean interface boundary;
-2. model an arbitrary history-dependent randomized causal policy as a family of
-   Markov kernels on finite histories;
-3. compose the policy kernel with the controlled state kernel `K` to obtain the
-   one-step history kernel;
-4. build the infinite path law with pinned Mathlib Ionescu--Tulcea
-   `trajMeasure`;
-5. prove the source uniqueness criterion without introducing an axiom;
-6. expose deterministic `S_{t+1}=F(...)` as a specialization only;
-7. feature CI, then clean integration from the then-latest full-green main.
+The first Layer-1 head failed only because `⊗ₖ` was used without importing
+`Mathlib.Probability.Kernel.Composition.CompProd`; adding the exact import fixed
+the build without changing the theorem contract.
 
-## Grounded non-quick fronts
+### Layer 2 — ACTIVE
 
-- P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
-- P-DDH-02/03: finite exponential-family calculus and KL variational duality.
-- P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
-- P-EVO-03/04: Perron--Frobenius asymptotics / martingale foundations.
-- P-REF-03: arbitrary signal-space conditional expectation.
-- P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation.
-- P-QSD-01/03/04: source-locked distinct non-A results.
-- P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
+Branch: `formal/pref01-pathlaw-v2`
 
-P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
-Perron--Frobenius asymptotic package; do not count an assumed-convergence
-surrogate.
+Current head: `604ede1b635247e2088a32e0966cea4acdd3fd16`
+
+Current CI: `34795665678` — running at this snapshot.
+
+Layer 2 adapts the global complete-history kernel to pinned Mathlib
+Ionescu–Tulcea:
+
+- `trajectoryStep` reads the final complete-history coordinate;
+- `historyTrajectoryStep` exposes the constant-state dependent family expected by
+  `Kernel.trajMeasure`;
+- `historyPathLaw` is the canonical infinite complete-history path law;
+- `finiteHistoryLaw` is independently generated by `Kernel.partialTraj` from the
+  embedded initial law;
+- `historyPathLaw_prefix` identifies every canonical finite prefix with that
+  recursive finite law;
+- `statePathReadout` and `reflexivePathLaw` project the richer history law to the
+  physical/reflexive `Z` trajectory.
+
+Pinned Mathlib facts being reused rather than reproved include
+`Kernel.trajMeasure`, `Kernel.traj_map_frestrictLe`, `Kernel.partialTraj`,
+`partialTraj_map_frestrictLe₂`, and projective-limit uniqueness.
+
+## Exact next actions
+
+1. finish Layer-2 compile/fix loop until official `lake build UEOT` is green;
+2. rebuild the uniqueness layer from that green head (old scratch branches are
+   design references only and do not count as compile evidence);
+3. prove non-vacuous uniqueness from all recursively generated finite prefixes;
+4. add deterministic structural modification as a specialization;
+5. assemble source-facing `P-REF-01` on explicit `X×S` standard-Borel spaces;
+6. prohibited-proof/source-semantic audit;
+7. clean integration from the then-latest 72/106 main;
+8. feature/integration/post-main/ledger gates; only after all succeed may
+   coverage advance to 73/106.
+
+## Scratch-branch rule
+
+The older branches
+`formal/pref01-pathlaw-scratch`, `formal/pref01-uniqueness-scratch`,
+`formal/pref01-deterministic-scratch`, and
+`formal/pref01-source-assembly-scratch` were built on a pre-fix Layer-1 base.
+They preserve useful design work but are **not green evidence** and must not be
+promoted directly.
+
+## P-REF-02 audit note
+
+`UEOT.V3.PredictionUpdate` already contains reusable Bayes-update factorization
+machinery for P-PRED-03. It must be audited before P-REF-02 work to avoid
+reproving mathematics. It is not itself P-REF-02: its zero-denominator branch is
+an arbitrary extension, whereas frozen P-REF-02 requires the finite
+hidden-state/parameter belief recursion with the source model-conflict handling
+and belief-state sufficiency/control conclusion.
 
 ## Guards
 
-- do not reopen counted green P-IDs absent source mismatch/CI regression;
+- do not reopen counted green P-IDs absent source mismatch or CI regression;
 - feature green never increments coverage;
-- no `sorry`, `admit`, `native_decide`, unsourced `axiom`;
+- no `sorry`, `admit`, `native_decide`, or unsourced `axiom`;
+- preserve frozen source strength; do not replace hard clauses by convenient
+  finite/toy/Markov-only surrogates;
 - P-QSD-01 and P-QSD-03 must never be swapped;
 - P-REF-03 requires arbitrary signal spaces;
 - P-DDH-04/05 require genuine rank/singular-value infrastructure;
@@ -115,7 +136,8 @@ surrogate.
 
 1. `UEOT_CORE3_LEAN_OPERATIONS.md`;
 2. Issue #56 when available;
-3. `PID_STATUS.yaml`;
-4. `FORMALIZATION_STATE.md`;
-5. `V3_COVERAGE_STATUS.md`;
-6. live main/branches/CI.
+3. this `HANDOFF_LATEST.md` snapshot;
+4. `PID_STATUS.yaml`;
+5. `FORMALIZATION_STATE.md`;
+6. `V3_COVERAGE_STATUS.md`;
+7. live main/branches/CI reconciliation.
