@@ -4,10 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       apply:
-        description: "Actually delete audited obsolete branches (false = dry run)"
+        description: "Actually delete audited Core 3 legacy branches (false = dry run)"
         required: true
         default: false
         type: boolean
+      confirmation:
+        description: "For apply=true, type DELETE_CORE3_LEGACY"
+        required: false
+        default: ""
+        type: string
   push:
     branches: [main]
     paths:
@@ -31,27 +36,36 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Audit and prune obsolete Core 3 branches
+      - name: Audit and prune audited Core 3 legacy branches
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
 
+          # This workflow is intentionally scoped to the one-time Core 3 legacy
+          # cleanup family. It MUST NOT treat unrelated UEOT-GI / UEOT-QM / physics
+          # branches as deletion candidates merely because they are not on a Core 3
+          # keep-list.
           if [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            # The push trigger is limited by `paths` above, so this is the one-time
+            # cleanup when this reviewed workflow itself lands on main.
             APPLY="true"
+            CONFIRMATION="DELETE_CORE3_LEGACY"
           else
             APPLY="${{ inputs.apply }}"
+            CONFIRMATION="${{ inputs.confirmation }}"
           fi
 
-          # Fetch every branch so the manifest contains the exact pre-delete head SHA.
+          if [[ "$APPLY" == "true" && "$CONFIRMATION" != "DELETE_CORE3_LEGACY" ]]; then
+            echo "Refusing destructive cleanup: confirmation string is missing." >&2
+            exit 1
+          fi
+
           git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
 
-          # Conservative keep-set from the 2026-09-14 governance audit.
-          # These branches contain unresolved/potentially-unique pending work or broad
-          # legacy work that still needs a separate content audit. Everything else is
-          # either main, covered by an open PR, or historical work for already-counted
-          # P-IDs / closed promotion lifecycles.
+          # Unique legacy branches retained for explicit content audit. They are
+          # quarantined historical work, NOT active theorem lanes.
           KEEP_EXACT=(
             "main"
             "core/v3-maintenance"
@@ -75,6 +89,16 @@ jobs:
             return 1
           }
 
+          # Only branches in this explicit legacy scope can be deleted by this
+          # workflow. Unknown/new namespaces are always retained for manual audit.
+          is_core3_legacy_candidate() {
+            local branch="$1"
+            [[ "$branch" == "master" ]] \
+              || [[ "$branch" == docs/* ]] \
+              || [[ "$branch" == formal/* ]] \
+              || [[ "$branch" == "ops/core3-branch-governance-v1" ]]
+          }
+
           mapfile -t ALL_BRANCHES < <(
             git for-each-ref --format='%(refname:short)' refs/remotes/origin \
               | sed 's#^origin/##' \
@@ -84,6 +108,7 @@ jobs:
 
           DELETE_BRANCHES=()
           KEEP_BRANCHES=()
+          OUT_OF_SCOPE=()
           MANIFEST="$(mktemp)"
 
           {
@@ -93,17 +118,21 @@ jobs:
             echo "- main at workflow start: \`$(git rev-parse origin/main)\`"
             echo "- branch count before: **${#ALL_BRANCHES[@]}**"
             echo "- apply deletion: **${APPLY}**"
+            echo "- destructive scope: \`master\`, \`docs/*\`, \`formal/*\`, and the completed governance branch only"
             echo
             echo "#### Audited deletion candidates"
           } > "$MANIFEST"
 
           for branch in "${ALL_BRANCHES[@]}"; do
-            # Never delete main, explicit unresolved keep branches, hold/* quarantine,
-            # or any branch currently backing an open PR.
             if is_in_array "$branch" "${KEEP_EXACT[@]}" \
               || [[ "$branch" == hold/* ]] \
               || is_in_array "$branch" "${OPEN_PR_HEADS[@]}"; then
               KEEP_BRANCHES+=("$branch")
+              continue
+            fi
+
+            if ! is_core3_legacy_candidate "$branch"; then
+              OUT_OF_SCOPE+=("$branch")
               continue
             fi
 
@@ -114,20 +143,27 @@ jobs:
 
           {
             echo
-            echo "#### Retained branches"
+            echo "#### Retained by explicit Core 3 keep-set / open PR / hold"
             for branch in "${KEEP_BRANCHES[@]}"; do
               printf -- '- `%s` @ `%s`\n' "$branch" "$(git rev-parse "origin/${branch}")"
             done
             echo
-            echo "Deletion rule: candidates have no open PR and are outside the explicit unresolved keep-set. Exact pre-delete SHAs are recorded here so the cleanup is auditable."
+            echo "#### Retained because outside this cleanup scope"
+            if [[ ${#OUT_OF_SCOPE[@]} -eq 0 ]]; then
+              echo "- none"
+            else
+              for branch in "${OUT_OF_SCOPE[@]}"; do
+                printf -- '- `%s` @ `%s`\n' "$branch" "$(git rev-parse "origin/${branch}")"
+              done
+            fi
+            echo
+            echo "Deletion rule: no open PR, not active/retained, and branch must match the explicit audited Core 3 legacy scope. Exact pre-delete SHAs are recorded before mutation."
           } >> "$MANIFEST"
 
-          # Durable audit record before any destructive mutation.
+          # Durable audit record before destructive mutation.
           gh issue comment 56 --body-file "$MANIFEST"
 
           if [[ "$APPLY" == "true" && ${#DELETE_BRANCHES[@]} -gt 0 ]]; then
-            # One atomic-ish push request is much faster and less failure-prone than
-            # hundreds of individual deletions. main is never in DELETE_BRANCHES.
             git push origin --delete "${DELETE_BRANCHES[@]}"
           fi
 
@@ -144,8 +180,9 @@ jobs:
             echo "### Core 3 branch hygiene result"
             echo
             echo "- apply deletion: **${APPLY}**"
-            echo "- candidates: **${#DELETE_BRANCHES[@]}**"
-            echo "- retained before deletion: **${#KEEP_BRANCHES[@]}**"
+            echo "- deletion candidates: **${#DELETE_BRANCHES[@]}**"
+            echo "- explicit retained/open-PR/hold before deletion: **${#KEEP_BRANCHES[@]}**"
+            echo "- out-of-scope retained before deletion: **${#OUT_OF_SCOPE[@]}**"
             echo "- branch count after: **${#AFTER_BRANCHES[@]}**"
             echo
             echo "Remaining branches:"
@@ -156,6 +193,6 @@ jobs:
           gh issue comment 56 --body-file "$SUMMARY"
 
           if [[ "$APPLY" == "true" && ${#AFTER_BRANCHES[@]} -gt 12 ]]; then
-            echo "Branch count remains above the hard cap (12); manual audit is required." >&2
+            echo "Branch count remains above the repository hard cap (12); a separate manual audit is required." >&2
             exit 1
           fi
