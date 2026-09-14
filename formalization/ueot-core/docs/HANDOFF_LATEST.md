@@ -7,85 +7,87 @@
 ## Current lifecycle snapshot
 
 - source P-IDs: **106**;
-- authoritative full-green baseline before this ledger checkpoint: **73/106**;
-- full-green 73 baseline: `main@0285b7b8da4c94cc7d8d890336cd97e5e64718cb`;
-- full-green 73 main CI: `34808329108` — success;
-- P-REF-02 proof main: `c1213a6014f37a84bdfe128cced1a472b682248e`;
-- P-REF-02 proof resulting-main CI: `34810452071` — success;
-- this branch stages **74/106**;
-- remaining not-yet-counted P-IDs after staging: **32**;
-- active uncounted lanes: **P-REF-03** (feature-green) and **P-BRG-01** (proof).
+- authoritative full-green baseline before this ledger checkpoint: **74/106**;
+- full-green 74 baseline: `main@11dcc0349aeeba6444655752e1aca40eeaf75e02`;
+- full-green 74 main CI: `34811815264` — success;
+- P-REF-03 proof main: `0ebef06b4a2be2eb88d5b5708ca4bd5901db7b92`;
+- P-REF-03 proof resulting-main CI: `34814852905` — success;
+- this branch stages **75/106**;
+- remaining not-yet-counted P-IDs after staging: **31**;
+- active uncounted lane: **P-BRG-01** (feature-green, source-audited).
 
-**Do not call 74/106 full-green until this ledger/recovery branch passes PR CI,
+**Do not call 75/106 full-green until this ledger/recovery branch passes PR CI,
 lands on `main`, and the resulting main CI succeeds.**
 
-## P-REF-02 — completed proof contract, ledger promotion running
+## P-REF-03 — completed proof contract, ledger promotion running
 
-Frozen §27.2 is implemented at source scope:
+Frozen §27.3 is implemented at source scope:
 
-1. finite latent parameter/state Bayesian model;
-2. normalized predictive observation law determined only by `(b,a)`;
-3. exact positive-evidence Bayes posterior;
-4. zero evidence is explicit `modelConflict`;
-5. general observation posterior/disintegration reconstructs the one-step joint
-   law and averages back to the predicted latent law;
-6. one-step bounded-discount expected reward and continuation depend only on
-   belief and action, providing the frozen belief-control reduction interface;
-7. no generic Bellman theorem is overclaimed.
+1. arbitrary signal information represented by an arbitrary sub-σ-algebra;
+2. finite nonempty action set;
+3. integrable action payoffs;
+4. free information may be ignored, so every fixed action remains feasible;
+5. pointwise informed maximum dominates each fixed action;
+6. integration plus the conditional-expectation tower identity yields informed
+   value at least the best fixed-action value.
 
-Canonical source-facing theorems live in `UEOT.V3.PRef02`.
+Canonical theorem: `UEOT.V3.FreeInformationValue.p_ref_03`.
 
 Evidence:
-- clean integration branch `formal/pref02-main-integration-v1`;
-- clean integration head `0037fc0e494b46200ead20e2f5c3ce84a66eb577`;
-- push CI `34808870460` success;
-- PR #71 PR CI `34810019287` success;
-- proof-main squash `c1213a6014f37a84bdfe128cced1a472b682248e`;
-- proof resulting-main CI `34810452071` success;
+- feature branch `formal/pref03-free-information-v1`;
+- feature head `7ed287043f6da1e3d53bc67a95b7377bb989382a`;
+- feature CI `34809014590` success;
+- clean integration branch `formal/pref03-main-integration-v1`;
+- clean integration head `1403f8529ec6920bfe2fb4ecb86ab55a2cfb6c3b`;
+- clean integration CI `34812358314` success;
+- PR #73 PR CI `34812784352` success;
+- proof-main squash `0ebef06b4a2be2eb88d5b5708ca4bd5901db7b92`;
+- proof resulting-main CI `34814852905` success;
 - source semantic audit complete;
 - prohibited-proof audit clean.
 
-Exact next P-REF-02 action: complete this separate 74 ledger/recovery PR lifecycle.
+Exact next P-REF-03 action: complete this separate 75 ledger/recovery PR lifecycle.
 
-## P-REF-03 — feature-green, uncounted
+## Counted-source reconciliation — P-REF-04 / P-REF-05
 
-Branch: `formal/pref03-free-information-v1`.
-Final feature head: `7ed287043f6da1e3d53bc67a95b7377bb989382a`.
-Feature CI: `34809014590` — success.
+Both P-REF-04 and P-REF-05 already belong to the authoritative counted 74-P-ID
+baseline. Audit wrappers produced during this cycle are therefore not new
+coverage:
 
-The frozen arbitrary-signal-space scope is retained through an arbitrary
-sub-sigma-algebra. Only actions are finite, and all action payoffs are
-integrable. The effective source change is only
-`UEOT/V3/FreeInformationValue.lean` plus one top-level import.
+- P-REF-04 wrapper head `e63e74bfcd72273204bcd5608506d8c50ac40416`, CI `34812442268` success;
+- P-REF-05 wrapper head `756e0862f36bc272a727b81ba11e3d6aa7019d9b`, CI `34815023569` success.
 
-The branch history diverges from main. **Never merge this branch directly.**
-Once 74/106 is full-green, create a new clean integration from that main and
-copy only the two effective file changes, then run the normal promotion gates.
+Existing counted theorems `Decision.goal_regret` and
+`Agency.feasibleValue_mono` / `feasibleValueReal_mono` already match their
+frozen source contracts. Do not double-count or reopen them absent a substantive
+source mismatch or CI regression.
 
-## P-BRG-01 — active proof, uncounted
+## P-BRG-01 — feature-green, uncounted
 
 Frozen §26.3 contract:
 
 - finite types and fixed `R_i > 0`;
-- exact replicator recurrence and explicit closed form;
+- exact replicator recurrence **implies** the explicit closed form;
 - `R_*` is the maximum fitness on the initially positive support;
 - no mutation means no creation outside initial support;
 - each initially supported suboptimal type carries an explicit
   `(R_i/R_*)^n` geometric factor;
-- finite total suboptimal mass tends to zero exponentially;
+- total suboptimal mass is bounded by a finite sum of those geometric terms and
+  therefore decays exponentially to zero;
 - support maximizers keep their initial relative proportions.
 
 Feature branch: `formal/pbrg01-fixed-fitness-v1`.
-Current head: `4a7facca5fc312568890ba547d343b7a04bbf2ef`.
-Current CI: `34810851201`.
+Current head: `b3f47b89ad901fb11f322d7f386d5a86ba06e708`.
+Current CI: `34815094214` — success.
 
 Current modules:
 - `UEOT/V3/FixedFitnessSelection.lean` — algebraic core;
+- `UEOT/V3/FixedFitnessRecurrenceUniqueness.lean` — arbitrary-recurring-trajectory uniqueness / closed-form converse;
 - `UEOT/V3/FixedFitnessConcentration.lean` — source concentration layer.
 
-Do not call this lane feature-green until current CI succeeds and the source
-semantic audit confirms the total-mass exponential clause is represented at
-full strength.
+Source semantic audit and prohibited-proof audit are complete. Once 75/106 is
+FULL-GREEN, create a new clean integration from that exact main, copy only the
+effective P-BRG-01 files/imports, and run the normal promotion gates.
 
 ## Guards
 
@@ -97,7 +99,7 @@ full strength.
 - P-QSD-01 and P-QSD-03 must never be swapped;
 - P-REF-03 requires arbitrary signal spaces;
 - P-DDH-04/05 require genuine rank/singular-value infrastructure;
-- P-BRG-01 includes concentration/extinction/maximizer-ratio clauses;
+- P-BRG-01 includes recurrence⇒closed-form, concentration/extinction and maximizer-ratio clauses;
 - P-KL-04/05 must remain at their frozen CTMC/Girsanov level.
 
 ## Recovery order

@@ -23,15 +23,15 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **74** |
+| **proved, staged by this ledger checkpoint** | **75** |
 | **partial** | **0** |
-| **pending / not yet counted** | **32** |
+| **pending / not yet counted** | **31** |
 | **total** | **106** |
 
-This branch stages **74/106** after P-REF-02 completed source-semantic,
-feature/assembly, clean-integration, PR CI, proof-main merge and resulting-main
-CI gates. **74/106 is not called full-green until this ledger checkpoint itself
-passes PR CI, lands on `main`, and the resulting main CI succeeds.**
+This branch stages **75/106** after P-REF-03 completed source-semantic,
+feature, clean-integration, PR CI, proof-main merge and resulting-main CI gates.
+**75/106 is not called full-green until this ledger checkpoint itself passes PR
+CI, lands on `main`, and the resulting main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -45,7 +45,7 @@ mathematics or Lean code exists.
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
 - **Quotient:** P-QUO-03
-- **Refinement / agency:** P-REF-01, P-REF-02, P-REF-04, P-REF-05
+- **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
 - **Bridge:** P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
@@ -65,40 +65,37 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `73 + P-REF-02 = 74`.
+Count check: `74 + P-REF-03 = 75`.
 
-## Newly staged promotion — P-REF-02
+## Newly staged promotion — P-REF-03
 
-Frozen Core 3 §27.2 is implemented at the declared belief-state interface:
+Frozen Core 3 §27.3 is implemented at its declared one-decision information-value
+scope:
 
-- finite latent static parameter and hidden state model;
-- normalized joint beliefs and controlled prediction;
-- predictive next-observation law depends only on current belief and action;
-- positive-evidence Bayes posterior is the displayed normalized formula;
-- zero evidence is explicit `modelConflict`, never an arbitrary posterior;
-- a general Standard-Borel posterior/disintegration interface reconstructs the
-  same one-step joint law and averages back to the predicted latent law;
-- one-step bounded-discount reward/continuation data are functions of `(b,a)`,
-  which is the frozen source's belief-control reduction boundary;
-- no duplicate or stronger generic Bellman theorem is claimed by this P-ID.
+- the signal is represented by an arbitrary sub-σ-algebra; it is not
+  finite-ized;
+- the action set is finite and nonempty;
+- every action payoff is integrable;
+- free information may be ignored because every fixed action remains feasible;
+- the pointwise maximum of conditional expected payoffs dominates each fixed
+  action;
+- integration plus the conditional-expectation tower identity yields that the
+  informed expected value weakly dominates the best fixed-action value.
 
 Canonical theorem surface:
-- `UEOT.V3.PRef02.p_ref_02_general_joint`;
-- `UEOT.V3.PRef02.p_ref_02_general_update`;
-- `UEOT.V3.PRef02.p_ref_02_discrete_observation`;
-- `UEOT.V3.PRef02.p_ref_02_discrete_posterior`;
-- `UEOT.V3.PRef02.p_ref_02_discrete_modelConflict`;
-- `UEOT.V3.PRef02.p_ref_02_discounted_step`.
+- `UEOT.V3.FreeInformationValue.p_ref_03`.
 
 Promotion evidence:
-- proof feature family: `formal/pref02-belief-core-v1`;
-- clean integration branch: `formal/pref02-main-integration-v1`;
-- clean integration head: `0037fc0e494b46200ead20e2f5c3ce84a66eb577`;
-- clean integration push CI `34808870460`: success;
-- clean integration PR #71;
-- PR-triggered CI `34810019287`: success;
-- proof main commit `c1213a6014f37a84bdfe128cced1a472b682248e`;
-- proof resulting-main CI `34810452071`: success;
+- feature branch: `formal/pref03-free-information-v1`;
+- feature head: `7ed287043f6da1e3d53bc67a95b7377bb989382a`;
+- feature CI `34809014590`: success;
+- clean integration branch: `formal/pref03-main-integration-v1`;
+- clean integration head: `1403f8529ec6920bfe2fb4ecb86ab55a2cfb6c3b`;
+- clean integration CI `34812358314`: success;
+- clean integration PR #73;
+- PR-triggered CI `34812784352`: success;
+- proof main commit `0ebef06b4a2be2eb88d5b5708ca4bd5901db7b92`;
+- proof resulting-main CI `34814852905`: success;
 - frozen-source semantic audit: complete;
 - prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`,
   unsourced `axiom=0`).
@@ -106,36 +103,42 @@ Promotion evidence:
 **Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
 resulting-main CI.**
 
-## Previous full-green checkpoint — 73/106
+## Previous full-green checkpoint — 74/106
 
-The authoritative full-green baseline before this P-REF-02 promotion was
-`main@0285b7b8da4c94cc7d8d890336cd97e5e64718cb`, with official resulting-main
-CI `34808329108` successful. All 73 counted P-IDs at that checkpoint remain
+The authoritative full-green baseline before this P-REF-03 promotion was
+`main@11dcc0349aeeba6444655752e1aca40eeaf75e02`, with official resulting-main
+CI `34811815264` successful. All 74 counted P-IDs at that checkpoint remain
 closed absent a substantive frozen-source mismatch or CI regression.
 
-## Active uncounted lanes
+P-REF-04 and P-REF-05 are already members of that counted set. The later
+source-facing wrapper branches audited during this cycle are interface
+hardening only and must **not** be double-counted as new P-IDs.
 
-### P-REF-03 — feature-green, awaiting clean integration
+## Active uncounted lane
 
-Branch `formal/pref03-free-information-v1` preserves the frozen arbitrary-signal
-scope by representing the information as an arbitrary sub-sigma-algebra. Only
-the action set is finite and each action payoff is integrable. Current final
-feature head is `7ed287043f6da1e3d53bc67a95b7377bb989382a`; official run
-`34809014590` succeeded. The effective source change is only
-`UEOT/V3/FreeInformationValue.lean` plus one top-level import. Because its
-feature history diverged from main, it must be clean-integrated from the next
-full-green main and remains **uncounted** here.
+### P-BRG-01 — feature-green, awaiting clean integration
 
-### P-BRG-01 — active proof
+Frozen §26.3 requires the exact no-mutation fixed-fitness replicator recurrence
+to imply its explicit closed form, preservation of initial support, exponential
+disappearance of all initially supported strictly suboptimal mass, and
+preservation of initial relative proportions among support maximizers.
 
-Frozen §26.3 requires the exact no-mutation fixed-fitness replicator closed
-form, preservation of initial support, exponential disappearance of all
-initially supported strictly suboptimal mass, and preservation of initial
-relative proportions among support maximizers. Branch
-`formal/pbrg01-fixed-fitness-v1` is proving this source contract. The current
-feature work contains an algebraic layer plus a concentration layer with
-explicit geometric envelopes; it remains **uncounted** until CI and semantic
-review establish the full frozen clause.
+Branch `formal/pbrg01-fixed-fitness-v1` now contains:
+
+- `UEOT/V3/FixedFitnessSelection.lean`: positive denominators, exact closed-form
+  trajectory, recurrence, normalization, support preservation and equal-fitness
+  ratio laws;
+- `UEOT/V3/FixedFitnessRecurrenceUniqueness.lean`: the missing converse/uniqueness
+  direction proving that any trajectory with the frozen initial condition and
+  recurrence equals the displayed closed form;
+- `UEOT/V3/FixedFitnessConcentration.lean`: support maximizer, explicit
+  per-type geometric envelopes, a finite sum of those exponential envelopes for
+  total suboptimal mass, convergence to zero, and maximizer-ratio preservation.
+
+Latest feature head `b3f47b89ad901fb11f322d7f386d5a86ba06e708` passed official CI
+`34815094214`. Frozen-source semantic audit and prohibited-proof audit are
+complete. P-BRG-01 remains **uncounted** until it is clean-integrated from the
+then-latest FULL-GREEN main and passes the complete promotion lifecycle.
 
 ## Reproducibility task
 
