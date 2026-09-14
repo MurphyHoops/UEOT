@@ -21,65 +21,54 @@ Last synchronized: **2026-09-14**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **76** |
+| integrated proved, staged by this checkpoint | **77** |
 | active proof / feature-green uncounted | **0** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **30** |
+| pending/unclassified | **29** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **75/106** at
-`main@b4c8cd81c62b2e175998ebc4e855901e4b46f125`. P-BRG-01 has completed all
+The authoritative full-green baseline before this ledger branch is **76/106** at
+`main@b461bdf8b37250fae9fca923ea243e1182f9e5cc`. P-QSD-03 has completed all
 source, feature, clean-integration, PR and proof-main gates, including resulting
-main CI `34818138195` success at
-`main@667471f1627ef762ebb116d082f2ed588132fa67`. This ledger branch stages
-**76/106**. Do not call 76/106 full-green until this ledger branch passes PR CI,
+main CI `34848676178` success at
+`main@bab0b0718afaee90e858d71e41340066ba1774d8`. This ledger branch stages
+**77/106**. Do not call 77/106 full-green until this ledger branch passes PR CI,
 lands on `main`, and the resulting main CI succeeds.
 
-## Newly staged proof — P-BRG-01
+## Newly staged proof — P-QSD-03
 
-Frozen §26.3 is implemented at its declared finite fixed-positive-fitness,
-no-mutation replicator scope:
+Frozen Core 3 §10.3 is implemented at its declared same-initial-law scope:
 
-1. exact recurrence and explicit closed form;
-2. recurrence + declared initial condition uniquely imply that closed form;
-3. initially absent types stay absent;
-4. `R_*` is attained on the initially positive support;
-5. each supported strictly suboptimal type has an explicit geometric envelope
-   with factor `(R_i/R_*)^n`;
-6. total supported suboptimal mass is bounded by a finite sum of those geometric
-   terms and tends to zero;
-7. equal-fitness support maximizers preserve their initial relative proportions.
+1. conditional-stability error is bounded by `C * exp (-γ t)` for `t ≥ t0`;
+2. survival probability is bounded below by `c * exp (-λ t)` for the same initial law;
+3. positive constants and thresholds satisfy `C,c,γ,λ,ε,p > 0` and `p ≤ c`;
+4. the mixing inequality gives the lower time constraint `log(C/ε)/γ`;
+5. the survival inequality gives the upper time constraint `log(c/p)/λ`;
+6. their intersection with `t ≥ t0` and `t ≥ 0` is the source closed window;
+7. endpoint equality is retained, so a singleton window is valid.
 
 Canonical theorem surface:
-- `UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence`;
-- `UEOT.V3.FixedFitnessConcentration.p_brg_01`.
+- `UEOT.V3.QSDDurationWindow.p_qsd_03`;
+- `UEOT.V3.QSDDurationWindow.window_nonempty_iff`.
 
 Promotion evidence:
-- feature branch `formal/pbrg01-fixed-fitness-v1`;
-- feature head `b3f47b89ad901fb11f322d7f386d5a86ba06e708`;
-- feature CI `34815094214`: success;
+- feature branch `formal/pqsd03-duration-window-v1`;
+- feature head `11076f31eec199a4e80ba13e00e037c5e62a2de2`;
+- feature CI `34831456183`: success;
 - source semantic audit: complete;
 - prohibited-proof audit: clean;
-- clean integration branch `formal/pbrg01-main-integration-v1`;
-- clean integration head `a40b18ddc99617b25d873b376edf2aab3b096061`;
-- clean integration CI `34817101777`: success;
-- PR #75 PR-triggered CI `34817631959`: success;
-- proof main `667471f1627ef762ebb116d082f2ed588132fa67`;
-- proof resulting-main CI `34818138195`: success.
+- clean integration branch `formal/pqsd03-main-integration`;
+- clean integration head `8e85e687ea11a8dac89ebe7ebbab8240551d8f99`;
+- clean integration CI `34847211649`: success;
+- PR #79 PR-triggered CI `34848043040`: success;
+- proof main `bab0b0718afaee90e858d71e41340066ba1774d8`;
+- proof resulting-main CI `34848676178`: success.
 
-## Counted-source reconciliation — P-REF-04 / P-REF-05
+## Previous full-green checkpoint — 76/106
 
-P-REF-04 and P-REF-05 already belong to the counted baseline. Audit/interface
-wrapper branches do not open new coverage slots:
-
-- `formal/pref04-source-wrapper-v1@e63e74bfcd72273204bcd5608506d8c50ac40416`, CI `34812442268` success;
-- `formal/pref05-source-wrapper-v1@756e0862f36bc272a727b81ba11e3d6aa7019d9b`, CI `34815023569` success.
-
-Existing counted infrastructure proves the frozen content through
-`UEOT.V3.Decision.goal_regret` and `UEOT.V3.Agency.feasibleValue_mono` /
-`feasibleValueReal_mono`. No substantive source mismatch was found; do not
-reopen or double-count them.
+P-BRG-01 is closed and counted in the 76/106 baseline. P-REF-04 and P-REF-05
+were already counted before that cycle; wrapper work must not be double-counted.
 
 ## Grounded non-quick fronts
 
@@ -88,7 +77,7 @@ reopen or double-count them.
 - P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
 - P-EVO-03/04: Perron-Frobenius asymptotics / martingale foundations.
 - P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation.
-- P-QSD-01/03/04: source-locked distinct non-A results.
+- P-QSD-01/04: source-locked distinct non-A results.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; do not count an assumed-convergence
