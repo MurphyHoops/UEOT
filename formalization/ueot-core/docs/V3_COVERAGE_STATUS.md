@@ -23,14 +23,14 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **75** |
+| **proved, staged by this ledger checkpoint** | **76** |
 | **partial** | **0** |
-| **pending / not yet counted** | **31** |
+| **pending / not yet counted** | **30** |
 | **total** | **106** |
 
-This branch stages **75/106** after P-REF-03 completed source-semantic,
-feature, clean-integration, PR CI, proof-main merge and resulting-main CI gates.
-**75/106 is not called full-green until this ledger checkpoint itself passes PR
+This branch stages **76/106** after P-BRG-01 completed source-semantic, feature,
+clean-integration, PR CI, proof-main merge and resulting-main CI gates.
+**76/106 is not called full-green until this ledger checkpoint itself passes PR
 CI, lands on `main`, and the resulting main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -47,7 +47,7 @@ mathematics or Lean code exists.
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
-- **Bridge:** P-BRG-02
+- **Bridge:** P-BRG-01, P-BRG-02
 - **Metric:** P-MET-01, P-MET-02
 - **Internal/external factorization:** P-INT-01, P-INT-02, P-INT-03
 - **Information:** P-INFO-01, P-INFO-02, P-INFO-03, P-INFO-04, P-INFO-05
@@ -65,80 +65,71 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `74 + P-REF-03 = 75`.
+Count check: `75 + P-BRG-01 = 76`.
 
-## Newly staged promotion — P-REF-03
+## Newly staged promotion — P-BRG-01
 
-Frozen Core 3 §27.3 is implemented at its declared one-decision information-value
-scope:
+Frozen Core 3 §26.3 is implemented at its declared finite fixed-positive-fitness
+no-mutation replicator scope:
 
-- the signal is represented by an arbitrary sub-σ-algebra; it is not
-  finite-ized;
-- the action set is finite and nonempty;
-- every action payoff is integrable;
-- free information may be ignored because every fixed action remains feasible;
-- the pointwise maximum of conditional expected payoffs dominates each fixed
-  action;
-- integration plus the conditional-expectation tower identity yields that the
-  informed expected value weakly dominates the best fixed-action value.
+- the exact recurrence is formalized together with the explicit closed form;
+- a converse/uniqueness theorem proves that any trajectory satisfying the
+  declared initial condition and recurrence equals that closed form;
+- initially absent types remain absent;
+- a maximal fitness is attained on the initially positive support;
+- each supported strictly suboptimal type admits the explicit geometric envelope
+  with factor `(R_i/R_*)^n`;
+- total supported suboptimal mass is bounded by a finite sum of those geometric
+  terms and tends to zero;
+- equal-fitness support maximizers preserve their initial relative proportions.
 
 Canonical theorem surface:
-- `UEOT.V3.FreeInformationValue.p_ref_03`.
+- `UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence`;
+- `UEOT.V3.FixedFitnessConcentration.p_brg_01`.
 
 Promotion evidence:
-- feature branch: `formal/pref03-free-information-v1`;
-- feature head: `7ed287043f6da1e3d53bc67a95b7377bb989382a`;
-- feature CI `34809014590`: success;
-- clean integration branch: `formal/pref03-main-integration-v1`;
-- clean integration head: `1403f8529ec6920bfe2fb4ecb86ab55a2cfb6c3b`;
-- clean integration CI `34812358314`: success;
-- clean integration PR #73;
-- PR-triggered CI `34812784352`: success;
-- proof main commit `0ebef06b4a2be2eb88d5b5708ca4bd5901db7b92`;
-- proof resulting-main CI `34814852905`: success;
+- feature branch: `formal/pbrg01-fixed-fitness-v1`;
+- feature head: `b3f47b89ad901fb11f322d7f386d5a86ba06e708`;
+- feature CI `34815094214`: success;
 - frozen-source semantic audit: complete;
-- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`,
-  unsourced `axiom=0`).
+- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
+- clean integration branch: `formal/pbrg01-main-integration-v1`;
+- clean integration head: `a40b18ddc99617b25d873b376edf2aab3b096061`;
+- clean integration CI `34817101777`: success;
+- clean integration PR #75;
+- PR-triggered CI `34817631959`: success;
+- proof main commit `667471f1627ef762ebb116d082f2ed588132fa67`;
+- proof resulting-main CI `34818138195`: success.
 
 **Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
 resulting-main CI.**
 
-## Previous full-green checkpoint — 74/106
+## Previous full-green checkpoint — 75/106
 
-The authoritative full-green baseline before this P-REF-03 promotion was
-`main@11dcc0349aeeba6444655752e1aca40eeaf75e02`, with official resulting-main
-CI `34811815264` successful. All 74 counted P-IDs at that checkpoint remain
-closed absent a substantive frozen-source mismatch or CI regression.
+The authoritative full-green baseline before this P-BRG-01 promotion is
+`main@b4c8cd81c62b2e175998ebc4e855901e4b46f125`. P-REF-03 is closed and
+counted there. All 75 counted P-IDs at that checkpoint remain closed absent a
+substantive frozen-source mismatch or CI regression.
 
-P-REF-04 and P-REF-05 are already members of that counted set. The later
-source-facing wrapper branches audited during this cycle are interface
-hardening only and must **not** be double-counted as new P-IDs.
+P-REF-04 and P-REF-05 were already members of the earlier counted baseline. The
+source-facing wrapper branches audited during this cycle are interface hardening
+only and must **not** be double-counted as new P-IDs.
 
-## Active uncounted lane
+## Grounded pending fronts
 
-### P-BRG-01 — feature-green, awaiting clean integration
+The remaining 30 not-yet-counted P-IDs require fresh source-first audits. Known
+non-quick fronts include:
 
-Frozen §26.3 requires the exact no-mutation fixed-fitness replicator recurrence
-to imply its explicit closed form, preservation of initial support, exponential
-disappearance of all initially supported strictly suboptimal mass, and
-preservation of initial relative proportions among support maximizers.
+- P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds;
+- P-DDH-02/03: finite exponential-family calculus and KL variational duality;
+- P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis;
+- P-EVO-03/04: Perron-Frobenius asymptotics / martingale foundations;
+- P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation;
+- P-QSD-01/03/04: source-locked distinct non-A results.
 
-Branch `formal/pbrg01-fixed-fitness-v1` now contains:
-
-- `UEOT/V3/FixedFitnessSelection.lean`: positive denominators, exact closed-form
-  trajectory, recurrence, normalization, support preservation and equal-fitness
-  ratio laws;
-- `UEOT/V3/FixedFitnessRecurrenceUniqueness.lean`: the missing converse/uniqueness
-  direction proving that any trajectory with the frozen initial condition and
-  recurrence equals the displayed closed form;
-- `UEOT/V3/FixedFitnessConcentration.lean`: support maximizer, explicit
-  per-type geometric envelopes, a finite sum of those exponential envelopes for
-  total suboptimal mass, convergence to zero, and maximizer-ratio preservation.
-
-Latest feature head `b3f47b89ad901fb11f322d7f386d5a86ba06e708` passed official CI
-`34815094214`. Frozen-source semantic audit and prohibited-proof audit are
-complete. P-BRG-01 remains **uncounted** until it is clean-integrated from the
-then-latest FULL-GREEN main and passes the complete promotion lifecycle.
+P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
+Perron-Frobenius asymptotic package; an assumed-convergence surrogate is not
+countable.
 
 ## Reproducibility task
 
