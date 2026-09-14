@@ -21,97 +21,89 @@ Last synchronized: **2026-09-14**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **74** |
-| active proof / feature-green uncounted | **2** |
+| integrated proved, staged by this checkpoint | **75** |
+| active proof / feature-green uncounted | **1** |
 | source audit | **0** |
 | blocked | **0** |
 | pending/unclassified | **30** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **73/106** at
-`main@0285b7b8da4c94cc7d8d890336cd97e5e64718cb`, CI `34808329108` success.
-P-REF-02 has now completed all proof-side and proof-main gates and this branch
-stages 74/106. Do not call 74/106 full-green until this ledger branch passes PR
+The authoritative full-green baseline before this ledger branch is **74/106** at
+`main@11dcc0349aeeba6444655752e1aca40eeaf75e02`, CI `34811815264` success.
+P-REF-03 has now completed all proof-side and proof-main gates and this branch
+stages 75/106. Do not call 75/106 full-green until this ledger branch passes PR
 CI, lands on `main`, and the resulting main CI succeeds.
 
-## Newly staged proof — P-REF-02
+## Newly staged proof — P-REF-03
 
-Frozen §27.2 is implemented without weakening the declared belief-sufficiency
-boundary:
+Frozen §27.3 is implemented without weakening its arbitrary-signal scope:
 
-- finite latent static parameter and hidden state model;
-- predictive observation law determined by `(belief, action)`;
-- exact positive-evidence Bayes update;
-- zero evidence returns explicit `modelConflict`;
-- arbitrary measurable observation spaces are covered through a
-  Standard-Borel posterior/disintegration interface on the latent state;
-- posterior plus observation marginal reconstruct the one-step joint law;
-- posterior averaged over the next observation recovers the predicted latent
-  law;
-- one-step bounded-discount expected reward and continuation are written purely
-  in belief coordinates;
-- no generic Bellman theorem is smuggled into this P-ID.
+- the signal is represented by an arbitrary sub-σ-algebra;
+- the action set is finite and nonempty;
+- action payoffs are integrable;
+- free information may be ignored, so every fixed action is still available;
+- the pointwise informed maximum dominates every fixed-action conditional
+  expectation;
+- integrating and applying the conditional-expectation tower identity proves
+  that informed expected value is at least the best uninformed fixed-action
+  value.
 
-Canonical source-facing theorem surface:
-- `UEOT.V3.PRef02.p_ref_02_general_joint`;
-- `UEOT.V3.PRef02.p_ref_02_general_update`;
-- `UEOT.V3.PRef02.p_ref_02_discrete_observation`;
-- `UEOT.V3.PRef02.p_ref_02_discrete_posterior`;
-- `UEOT.V3.PRef02.p_ref_02_discrete_modelConflict`;
-- `UEOT.V3.PRef02.p_ref_02_discounted_step`.
+Canonical source-facing theorem:
+- `UEOT.V3.FreeInformationValue.p_ref_03`.
 
 Evidence:
-- clean integration `formal/pref02-main-integration-v1@0037fc0e494b46200ead20e2f5c3ce84a66eb577`;
-- clean integration push CI `34808870460`: success;
-- PR #71 PR-triggered CI `34810019287`: success;
-- proof main `c1213a6014f37a84bdfe128cced1a472b682248e`;
-- proof resulting-main CI `34810452071`: success;
+- feature `formal/pref03-free-information-v1@7ed287043f6da1e3d53bc67a95b7377bb989382a`;
+- feature CI `34809014590`: success;
+- clean integration `formal/pref03-main-integration-v1@1403f8529ec6920bfe2fb4ecb86ab55a2cfb6c3b`;
+- clean integration CI `34812358314`: success;
+- PR #73 PR-triggered CI `34812784352`: success;
+- proof main `0ebef06b4a2be2eb88d5b5708ca4bd5901db7b92`;
+- proof resulting-main CI `34814852905`: success;
 - frozen-source semantic audit: complete;
 - prohibited-proof audit: clean.
 
-## Feature-green uncounted — P-REF-03
+## Counted-source reconciliation — P-REF-04 / P-REF-05
 
-Frozen P-REF-03 requires arbitrary signal spaces, finite actions, integrable
-payoffs, and free information that may be ignored. The branch
-`formal/pref03-free-information-v1` models the signal as an arbitrary
-sub-sigma-algebra and proves that the informed finite pointwise supremum of
-conditional expectations weakly dominates the best fixed action.
+The authoritative 74-P-ID baseline already contains P-REF-04 and P-REF-05.
+The audit branches created during this cycle therefore do **not** open new
+coverage slots:
 
-- final feature head: `7ed287043f6da1e3d53bc67a95b7377bb989382a`;
-- official feature CI `34809014590`: success;
-- effective change relative to the prior green baseline: one source module plus
-  one top-level import;
-- feature history is divergent and **must not** be merged directly;
-- exact next lifecycle step after 74 is full-green: fresh clean integration from
-  that full-green main.
+- `formal/pref04-source-wrapper-v1@e63e74bfcd72273204bcd5608506d8c50ac40416`, CI `34812442268` success;
+- `formal/pref05-source-wrapper-v1@756e0862f36bc272a727b81ba11e3d6aa7019d9b`, CI `34815023569` success.
 
-Feature green does not increment coverage.
+Existing counted infrastructure already proves the frozen content through
+`UEOT.V3.Decision.goal_regret` and `UEOT.V3.Agency.feasibleValue_mono` /
+`feasibleValueReal_mono`. No substantive source mismatch was found, so the
+no-reopen/no-double-count rule applies. The wrapper branches are audit/interface
+hardening evidence only.
 
-## Active proof — P-BRG-01
+## Feature-green uncounted — P-BRG-01
 
 Frozen §26.3 is source-locked to the finite fixed-positive-fitness no-mutation
-replicator theorem. The contract includes all of:
+replicator theorem. The completed feature contract now includes all of:
 
 1. exact recurrence and explicit closed form;
-2. no creation of types absent from the initial support;
-3. choose `R_*` as the maximum fitness on the initial positive-mass support;
-4. each supported suboptimal type has geometric factor `(R_i/R_*)^n`;
-5. the finite total suboptimal mass tends to zero exponentially;
-6. support maximizers preserve their initial relative proportions.
+2. an explicit converse/uniqueness theorem: arbitrary trajectories with the
+   declared initial condition and recurrence equal the closed form;
+3. no creation of types absent from the initial support;
+4. choose `R_*` as the maximum fitness on the initial positive-mass support;
+5. each supported suboptimal type has geometric factor `(R_i/R_*)^n`;
+6. total suboptimal mass is bounded by a finite sum of those exponential terms
+   and tends to zero;
+7. support maximizers preserve their initial relative proportions.
 
 Current branch: `formal/pbrg01-fixed-fitness-v1`.
-Current feature head: `4a7facca5fc312568890ba547d343b7a04bbf2ef`.
-Current official feature run: `34810851201`.
+Current feature head: `b3f47b89ad901fb11f322d7f386d5a86ba06e708`.
+Official feature run: `34815094214` — success.
 
 Implemented modules:
-- `UEOT/V3/FixedFitnessSelection.lean`: exact algebraic recurrence/closed form,
-  normalization, support preservation and equal-fitness ratio laws;
-- `UEOT/V3/FixedFitnessConcentration.lean`: support maximizer, explicit
-  geometric envelopes, finite suboptimal-mass convergence and maximizer ratio
-  package.
+- `UEOT/V3/FixedFitnessSelection.lean`;
+- `UEOT/V3/FixedFitnessRecurrenceUniqueness.lean`;
+- `UEOT/V3/FixedFitnessConcentration.lean`.
 
-This lane remains uncounted until its current CI and a final source-semantic
-review both pass.
+Frozen-source semantic audit and prohibited-proof audit are complete. This lane
+remains uncounted until 75/106 becomes FULL-GREEN and a fresh clean integration
+is built from that exact main.
 
 ## Grounded non-quick fronts
 
