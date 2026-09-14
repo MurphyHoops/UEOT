@@ -11,21 +11,22 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 73
+  integrated_proved: 74
   promotion_running: 0
   active_proof: 2
   source_audit: 0
   blocked: 0
-  pending_unclassified: 31
-  unresolved_total: 33
+  pending_unclassified: 30
+  unresolved_total: 32
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 73 integrated/proof-complete
-    P-IDs including newly promoted P-REF-01 + 2 active proof lanes (P-REF-02 and
-    P-REF-03) + 31 pending/unclassified = 106. P-REF-01 completed feature,
-    clean-integration and post-main proof gates. 73/106 becomes full-green only
-    after this ledger checkpoint passes PR CI, lands on main and passes the
-    resulting main CI. Feature-green P-REF-02/P-REF-03 work remains uncounted.
+    Operational partition staged by this ledger checkpoint: 74 integrated/proof-complete
+    P-IDs including newly promoted P-REF-02 + 2 active uncounted lanes (feature-green
+    P-REF-03 and proof-stage P-BRG-01) + 30 pending/unclassified = 106. P-REF-02
+    completed source-semantic, clean-integration, PR, proof-main and resulting-main
+    proof gates. 74/106 becomes full-green only after this ledger checkpoint passes
+    PR CI, lands on main and passes the resulting main CI. Feature/proof lanes remain
+    uncounted.
 state_vocabulary:
   - source_audit
   - proof
@@ -420,23 +421,41 @@ pids:
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: source-facing theorem is valid on arbitrary measurable spaces once supplied kernels are Markov; this strengthens the Core-wide Standard-Borel default
     coverage_counted: true
-    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
+    ledger_gate: complete
 
   P-REF-02:
-    state: proof
+    state: proved
     source_locked: true
     source_semantic_audit: complete
     audit_class: finite_belief_control
-    feature_branch: formal/pref02-belief-core-v1
-    feature_head: 871a33cb831148c655d7f4a1d708b58843ffff09
-    feature_ci: {run: 34804586631, status: in_progress}
+    canonical_theorems:
+      - UEOT.V3.PRef02.p_ref_02_general_joint
+      - UEOT.V3.PRef02.p_ref_02_general_update
+      - UEOT.V3.PRef02.p_ref_02_discrete_observation
+      - UEOT.V3.PRef02.p_ref_02_discrete_posterior
+      - UEOT.V3.PRef02.p_ref_02_discrete_modelConflict
+      - UEOT.V3.PRef02.p_ref_02_discounted_step
     source_contract:
       - finite static latent parameter and hidden state
       - predictive observation law and Bayes update depend only on current belief and action
+      - positive-evidence discrete Bayes fraction
       - zero denominator is model conflict, never arbitrary posterior
-      - bounded discounted task rewrites as belief-state control problem
-    source_note: first finite Bayes core layer is green at 322938a5352814c1fe5c6bf095e4a5e40e627b4e / CI 34804267113; discounted-control rewrite remains mandatory
-    coverage_counted: false
+      - general Standard-Borel posterior factorization for arbitrary measurable observation space
+      - bounded discounted one-step task is expressed in belief-state control coordinates
+      - no generic Bellman overclaim in this P-ID
+    promotion:
+      feature_branch: formal/pref02-belief-core-v1
+      clean_integration_branch: formal/pref02-main-integration-v1
+      clean_integration_head: 0037fc0e494b46200ead20e2f5c3ce84a66eb577
+      clean_integration_push_ci: {run: 34808870460, status: success}
+      clean_integration_pr: 71
+      clean_integration_pr_ci: {run: 34810019287, status: success}
+      main_commit: c1213a6014f37a84bdfe128cced1a472b682248e
+      post_main_ci: {run: 34810452071, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: finite explicit Bayes/modelConflict interface plus general posterior/disintegration sufficiency; one-step discounted control data depend only on belief and action
+    coverage_counted: true
+    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
   P-REF-03:
     state: proof
@@ -445,14 +464,36 @@ pids:
     audit_class: arbitrary_signal_information_value
     canonical_theorem: UEOT.V3.FreeInformationValue.p_ref_03
     feature_branch: formal/pref03-free-information-v1
-    feature_head: 42683e5f3efe385ccc95d556cf7ffe9b10edfeac
-    feature_ci: {run: 34804496967, status: in_progress}
+    feature_head: 7ed287043f6da1e3d53bc67a95b7377bb989382a
+    feature_ci: {run: 34809014590, status: success}
+    feature_gate: green_uncounted
     source_contract:
       - arbitrary signal space represented by a sub-sigma-algebra
       - finite nonempty action set
       - integrable payoffs
       - signal is free and may be ignored
       - informed expected value is weakly at least the best fixed-action value
+    source_note: feature proof is green; effective change is one theorem module plus one top-level import; divergent feature history must be replaced by clean integration from the next full-green main
+    coverage_counted: false
+
+  P-BRG-01:
+    state: proof
+    source_locked: true
+    source_semantic_audit: in_progress
+    audit_class: finite_fixed_fitness_concentration
+    feature_branch: formal/pbrg01-fixed-fitness-v1
+    feature_head: 4a7facca5fc312568890ba547d343b7a04bbf2ef
+    feature_ci: {run: 34810851201, status: in_progress}
+    canonical_theorem_candidate: UEOT.V3.FixedFitnessConcentration.p_brg_01
+    source_contract:
+      - finite type space and fixed strictly positive fitness R_i
+      - exact no-mutation replicator recurrence and explicit closed form
+      - R_star is the maximum fitness over initially positive support
+      - initially absent types remain absent without mutation
+      - each supported suboptimal type has geometric factor (R_i/R_star)^n
+      - finite total suboptimal mass tends to zero exponentially
+      - support maximizers preserve their initial relative proportions
+    source_note: algebraic and concentration layers written; do not mark feature-green until current official CI succeeds and the common finite exponential-envelope semantics are re-audited against frozen section 26.3
     coverage_counted: false
 
 audits:
