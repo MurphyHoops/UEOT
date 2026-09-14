@@ -65,10 +65,7 @@ jobs:
           git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
 
           # After source/coverage reconciliation, only P-QSD-03 remains worth
-          # preserving as unique pending theorem work. The former QSDPerron branch
-          # explicitly targets already-counted P-QSD-02; v3 metrics/dynamics/history
-          # branches target families already counted; core/v3-maintenance contains
-          # stale status docs. Those are therefore cleanup candidates.
+          # preserving as unique pending theorem work.
           KEEP_EXACT=(
             "main"
             "formal/pqsd03-duration-window-v1"
@@ -117,7 +114,7 @@ jobs:
             echo "- main at workflow start: \`$(git rev-parse origin/main)\`"
             echo "- branch count before: **${#ALL_BRANCHES[@]}**"
             echo "- apply deletion: **${APPLY}**"
-            echo "- destructive scope: audited Core 3 legacy `master`, `core/v3-maintenance`, `docs/*`, `formal/*`, and completed governance branch"
+            echo '- destructive scope: audited Core 3 legacy master, core/v3-maintenance, docs/*, formal/*, and completed governance branch'
             echo
             echo "#### Audited deletion candidates"
           } > "$MANIFEST"
@@ -159,10 +156,19 @@ jobs:
             echo "Deletion rule: no open PR, not active/retained, and branch must match the explicit audited Core 3 legacy scope. Exact pre-delete SHAs are recorded before mutation."
           } >> "$MANIFEST"
 
+          # Durable audit record before any destructive mutation.
           gh issue comment 56 --body-file "$MANIFEST"
 
           if [[ "$APPLY" == "true" && ${#DELETE_BRANCHES[@]} -gt 0 ]]; then
-            git push origin --delete "${DELETE_BRANCHES[@]}"
+            # Delete in bounded batches rather than one huge ref transaction.
+            # This keeps the operation auditable and avoids command/ref limits when
+            # retiring hundreds of historical branches at once.
+            BATCH_SIZE=40
+            for ((i=0; i<${#DELETE_BRANCHES[@]}; i+=BATCH_SIZE)); do
+              batch=("${DELETE_BRANCHES[@]:i:BATCH_SIZE}")
+              echo "Deleting branch batch $((i / BATCH_SIZE + 1)) (${#batch[@]} refs)"
+              git push origin --delete "${batch[@]}"
+            done
           fi
 
           git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
