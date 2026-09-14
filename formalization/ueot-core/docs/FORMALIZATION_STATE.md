@@ -21,99 +21,109 @@ Last synchronized: **2026-09-14**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **73** |
-| active proof | **2** |
+| integrated proved, staged by this checkpoint | **74** |
+| active proof / feature-green uncounted | **2** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **31** |
+| pending/unclassified | **30** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **72/106** at
-`main@8d3124b03b6e04cdde8fc5c42d76751967d043c1`, CI `34795931776` success.
-P-REF-01 has completed all proof-side gates and this branch stages 73/106. Do
-not call 73/106 full-green until this ledger branch passes PR CI, lands on
-`main`, and the resulting main CI succeeds.
+The authoritative full-green baseline before this ledger branch is **73/106** at
+`main@0285b7b8da4c94cc7d8d890336cd97e5e64718cb`, CI `34808329108` success.
+P-REF-02 has now completed all proof-side and proof-main gates and this branch
+stages 74/106. Do not call 74/106 full-green until this ledger branch passes PR
+CI, lands on `main`, and the resulting main CI succeeds.
 
-## Newly staged proof — P-REF-01
+## Newly staged proof — P-REF-02
 
-Frozen §27.1 is implemented without a deterministic-policy or Markov-policy
-weakening. The source-facing theorem surface is:
+Frozen §27.2 is implemented without weakening the declared belief-sufficiency
+boundary:
 
-- `UEOT.V3.ReflexivePRef01.p_ref_01`;
-- `UEOT.V3.ReflexivePRef01.p_ref_01_structureModification`;
-- `UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel`;
-- `UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw`.
+- finite latent static parameter and hidden state model;
+- predictive observation law determined by `(belief, action)`;
+- exact positive-evidence Bayes update;
+- zero evidence returns explicit `modelConflict`;
+- arbitrary measurable observation spaces are covered through a
+  Standard-Borel posterior/disintegration interface on the latent state;
+- posterior plus observation marginal reconstruct the one-step joint law;
+- posterior averaged over the next observation recovers the predicted latent
+  law;
+- one-step bounded-discount expected reward and continuation are written purely
+  in belief coordinates;
+- no generic Bellman theorem is smuggled into this P-ID.
 
-The construction uses arbitrary history-dependent randomized causal policies,
-pinned Mathlib Ionescu--Tulcea trajectory kernels, recursive finite-history laws,
-and projective-limit uniqueness. The structural update
-`S_{t+1}=F(S_t,X_t,a_t,xi_t)` is a specialization through a measurable
-noise-driven controlled kernel; it does not restrict the policy. Compression
-closure remains a separate action-wise strong-lumpability obligation.
+Canonical source-facing theorem surface:
+- `UEOT.V3.PRef02.p_ref_02_general_joint`;
+- `UEOT.V3.PRef02.p_ref_02_general_update`;
+- `UEOT.V3.PRef02.p_ref_02_discrete_observation`;
+- `UEOT.V3.PRef02.p_ref_02_discrete_posterior`;
+- `UEOT.V3.PRef02.p_ref_02_discrete_modelConflict`;
+- `UEOT.V3.PRef02.p_ref_02_discounted_step`.
 
 Evidence:
-- strengthened feature `formal/pref01-source-assembly-v2@8649c0763ac2326177812209bab3f32ad92680f7`;
-- feature CI `34803657950`: success;
-- clean integration `formal/pref01-main-integration-v1@85148ee2e9cba8afa5e23406a51c09515d45e052`;
-- PR #69 CI `34804007035`: success;
-- proof main `1c4de9fc60b653e8c3594bba1a01a0eed510578a`;
-- proof post-main CI `34804335400`: success;
+- clean integration `formal/pref02-main-integration-v1@0037fc0e494b46200ead20e2f5c3ce84a66eb577`;
+- clean integration push CI `34808870460`: success;
+- PR #71 PR-triggered CI `34810019287`: success;
+- proof main `c1213a6014f37a84bdfe128cced1a472b682248e`;
+- proof resulting-main CI `34810452071`: success;
 - frozen-source semantic audit: complete;
 - prohibited-proof audit: clean.
 
-The source-facing result is valid on arbitrary measurable spaces once the
-supplied kernels are Markov. Core 3 globally defaults random-variable spaces to
-Standard Borel, so this is theorem-strengthening rather than source weakening.
+## Feature-green uncounted — P-REF-03
 
-## Active proof — P-REF-02
+Frozen P-REF-03 requires arbitrary signal spaces, finite actions, integrable
+payoffs, and free information that may be ignored. The branch
+`formal/pref03-free-information-v1` models the signal as an arbitrary
+sub-sigma-algebra and proves that the informed finite pointwise supremum of
+conditional expectations weakly dominates the best fixed action.
 
-Frozen §27.2 requires all of the following in a finite `Theta × X` model:
-
-- predictive next-state and next-observation laws;
-- the exact Bayes posterior on positive evidence;
-- zero evidence returns `modelConflict` rather than an arbitrary posterior;
-- the next observation law and updated-belief law depend only on `(b_t,a_t)`;
-- bounded discounted tasks can be rewritten as a belief-state control problem.
-
-Current branch: `formal/pref02-belief-core-v1`.
-
-Green evidence so far:
-- finite Bayes core head `322938a5352814c1fe5c6bf095e4a5e40e627b4e`;
-- CI `34804267113`: success.
-
-Current second layer:
-- head `871a33cb831148c655d7f4a1d708b58843ffff09`;
-- adds normalized observation law and `(b,a)`-determined `BeliefStep`;
-- CI `34804586631` is the current feature gate.
-
-The bounded-discount control rewrite is not yet discharged and P-REF-02 remains
-uncounted.
-
-## Parallel proof — P-REF-03
-
-Frozen P-REF-03 requires arbitrary signal spaces, finite actions, and integrable
-payoffs. The branch `formal/pref03-free-information-v1` represents information
-by an arbitrary sub-sigma-algebra and proves the informed pointwise maximum of
-conditional expected payoffs dominates every fixed action. No finite-signal
-surrogate is used.
-
-Current head: `42683e5f3efe385ccc95d556cf7ffe9b10edfeac`.
-Current CI: `34804496967`.
+- final feature head: `7ed287043f6da1e3d53bc67a95b7377bb989382a`;
+- official feature CI `34809014590`: success;
+- effective change relative to the prior green baseline: one source module plus
+  one top-level import;
+- feature history is divergent and **must not** be merged directly;
+- exact next lifecycle step after 74 is full-green: fresh clean integration from
+  that full-green main.
 
 Feature green does not increment coverage.
+
+## Active proof — P-BRG-01
+
+Frozen §26.3 is source-locked to the finite fixed-positive-fitness no-mutation
+replicator theorem. The contract includes all of:
+
+1. exact recurrence and explicit closed form;
+2. no creation of types absent from the initial support;
+3. choose `R_*` as the maximum fitness on the initial positive-mass support;
+4. each supported suboptimal type has geometric factor `(R_i/R_*)^n`;
+5. the finite total suboptimal mass tends to zero exponentially;
+6. support maximizers preserve their initial relative proportions.
+
+Current branch: `formal/pbrg01-fixed-fitness-v1`.
+Current feature head: `4a7facca5fc312568890ba547d343b7a04bbf2ef`.
+Current official feature run: `34810851201`.
+
+Implemented modules:
+- `UEOT/V3/FixedFitnessSelection.lean`: exact algebraic recurrence/closed form,
+  normalization, support preservation and equal-fitness ratio laws;
+- `UEOT/V3/FixedFitnessConcentration.lean`: support maximizer, explicit
+  geometric envelopes, finite suboptimal-mass convergence and maximizer ratio
+  package.
+
+This lane remains uncounted until its current CI and a final source-semantic
+review both pass.
 
 ## Grounded non-quick fronts
 
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality.
 - P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
-- P-EVO-03/04: Perron--Frobenius asymptotics / martingale foundations.
+- P-EVO-03/04: Perron-Frobenius asymptotics / martingale foundations.
 - P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation.
 - P-QSD-01/03/04: source-locked distinct non-A results.
-- P-BRG-01: includes extinction/concentration/maximizer-relative-mass clauses.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
-Perron--Frobenius asymptotic package; do not count an assumed-convergence
+Perron-Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
 ## Mandatory recovery procedure
