@@ -23,15 +23,15 @@ alone never changes this ledger.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **76** |
+| **proved, staged by this ledger checkpoint** | **77** |
 | **partial** | **0** |
-| **pending / not yet counted** | **30** |
+| **pending / not yet counted** | **29** |
 | **total** | **106** |
 
-This branch stages **76/106** after P-BRG-01 completed source-semantic, feature,
-clean-integration, PR CI, proof-main merge and resulting-main CI gates.
-**76/106 is not called full-green until this ledger checkpoint itself passes PR
-CI, lands on `main`, and the resulting main CI succeeds.**
+This branch stages **77/106** after P-QSD-03 completed source-semantic, feature,
+clean-integration, PR and proof-main gates, including successful resulting-main
+CI. **77/106 is not called full-green until this ledger checkpoint itself passes
+PR CI, lands on `main`, and the resulting main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -53,7 +53,7 @@ mathematics or Lean code exists.
 - **Information:** P-INFO-01, P-INFO-02, P-INFO-03, P-INFO-04, P-INFO-05
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02
-- **QSD:** P-QSD-02
+- **QSD:** P-QSD-02, P-QSD-03
 - **Persistence:** P-PER-01, P-PER-03
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
@@ -65,59 +65,61 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `75 + P-BRG-01 = 76`.
+Count check: `76 + P-QSD-03 = 77`.
 
-## Newly staged promotion — P-BRG-01
+## Newly staged promotion — P-QSD-03
 
-Frozen Core 3 §26.3 is implemented at its declared finite fixed-positive-fitness
-no-mutation replicator scope:
+Frozen Core 3 §10.3 is formalized without swapping it with P-QSD-01 or P-QSD-04.
+For one fixed initial law `μ`, the theorem assumes, for `t ≥ t0`,
 
-- the exact recurrence is formalized together with the explicit closed form;
-- a converse/uniqueness theorem proves that any trajectory satisfying the
-  declared initial condition and recurrence equals that closed form;
-- initially absent types remain absent;
-- a maximal fitness is attained on the initially positive support;
-- each supported strictly suboptimal type admits the explicit geometric envelope
-  with factor `(R_i/R_*)^n`;
-- total supported suboptimal mass is bounded by a finite sum of those geometric
-  terms and tends to zero;
-- equal-fitness support maximizers preserve their initial relative proportions.
+- conditional-stability error `≤ C exp(-γ t)`;
+- survival probability `≥ c exp(-λ t)`;
+- `C,c,γ,λ > 0`, `ε > 0`, and `0 < p ≤ c`.
+
+The source-facing result proves that every
+
+` t ∈ [max{t0,0,log(C/ε)/γ}, log(c/p)/λ] `
+
+simultaneously satisfies conditional-stability error `≤ ε` and survival
+probability `≥ p`, provided the closed interval is nonempty. Endpoint equality
+is retained, so a singleton window is valid. Both estimates use the same
+initial law.
 
 Canonical theorem surface:
-- `UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence`;
-- `UEOT.V3.FixedFitnessConcentration.p_brg_01`.
+- `UEOT.V3.QSDDurationWindow.p_qsd_03`;
+- helper endpoint characterization `UEOT.V3.QSDDurationWindow.window_nonempty_iff`.
 
 Promotion evidence:
-- feature branch: `formal/pbrg01-fixed-fitness-v1`;
-- feature head: `b3f47b89ad901fb11f322d7f386d5a86ba06e708`;
-- feature CI `34815094214`: success;
-- frozen-source semantic audit: complete;
+- feature branch: `formal/pqsd03-duration-window-v1`;
+- feature head: `11076f31eec199a4e80ba13e00e037c5e62a2de2`;
+- feature CI `34831456183`: success;
+- source-semantic audit: complete;
 - prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration branch: `formal/pbrg01-main-integration-v1`;
-- clean integration head: `a40b18ddc99617b25d873b376edf2aab3b096061`;
-- clean integration CI `34817101777`: success;
-- clean integration PR #75;
-- PR-triggered CI `34817631959`: success;
-- proof main commit `667471f1627ef762ebb116d082f2ed588132fa67`;
-- proof resulting-main CI `34818138195`: success.
+- clean integration branch: `formal/pqsd03-main-integration`;
+- clean integration head: `8e85e687ea11a8dac89ebe7ebbab8240551d8f99`;
+- clean integration CI `34847211649`: success;
+- proof PR #79;
+- PR-triggered CI `34848043040`: success;
+- proof main commit `bab0b0718afaee90e858d71e41340066ba1774d8`;
+- proof resulting-main CI `34848676178`: success.
 
 **Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
 resulting-main CI.**
 
-## Previous full-green checkpoint — 75/106
+## Previous full-green checkpoint — 76/106
 
-The authoritative full-green baseline before this P-BRG-01 promotion is
-`main@b4c8cd81c62b2e175998ebc4e855901e4b46f125`. P-REF-03 is closed and
-counted there. All 75 counted P-IDs at that checkpoint remain closed absent a
+The authoritative full-green baseline before this P-QSD-03 promotion is
+`main@b461bdf8b37250fae9fca923ea243e1182f9e5cc`. P-BRG-01 is closed and
+counted there. All 76 counted P-IDs at that checkpoint remain closed absent a
 substantive frozen-source mismatch or CI regression.
 
 P-REF-04 and P-REF-05 were already members of the earlier counted baseline. The
-source-facing wrapper branches audited during this cycle are interface hardening
+source-facing wrapper branches audited during that cycle are interface hardening
 only and must **not** be double-counted as new P-IDs.
 
 ## Grounded pending fronts
 
-The remaining 30 not-yet-counted P-IDs require fresh source-first audits. Known
+The remaining 29 not-yet-counted P-IDs require fresh source-first audits. Known
 non-quick fronts include:
 
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds;
@@ -125,7 +127,7 @@ non-quick fronts include:
 - P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis;
 - P-EVO-03/04: Perron-Frobenius asymptotics / martingale foundations;
 - P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation;
-- P-QSD-01/03/04: source-locked distinct non-A results.
+- P-QSD-01/04: source-locked distinct non-A results.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; an assumed-convergence surrogate is not
