@@ -21,57 +21,64 @@ Last synchronized: **2026-09-14**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **77** |
+| integrated proved, staged by this checkpoint | **78** |
 | active proof / feature-green uncounted | **0** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **29** |
+| pending/unclassified | **28** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **76/106** at
-`main@b461bdf8b37250fae9fca923ea243e1182f9e5cc`. P-QSD-03 has completed all
+The authoritative full-green baseline before this ledger branch is **77/106** at
+`main@6561169fae9529a822642c5b6921d7d9c59aa250`. P-PER-04 has completed all
 source, feature, clean-integration, PR and proof-main gates, including resulting
-main CI `34848676178` success at
-`main@bab0b0718afaee90e858d71e41340066ba1774d8`. This ledger branch stages
-**77/106**. Do not call 77/106 full-green until this ledger branch passes PR CI,
-lands on `main`, and the resulting main CI succeeds.
+main CI `34863965181` success at
+`main@ba9b9c350038dafa52afdda954d2294361a01fc7`. This ledger branch stages
+**78/106**. Do not call 78/106 full-green until this ledger branch passes branch
+CI, PR CI, lands on `main`, and the resulting main CI succeeds.
 
-## Newly staged proof — P-QSD-03
+## Newly staged proof — P-PER-04
 
-Frozen Core 3 §10.3 is implemented at its declared same-initial-law scope:
+Frozen Core 3 §8.6 is implemented at its declared positive-time tangency scope:
 
-1. conditional-stability error is bounded by `C * exp (-γ t)` for `t ≥ t0`;
-2. survival probability is bounded below by `c * exp (-λ t)` for the same initial law;
-3. positive constants and thresholds satisfy `C,c,γ,λ,ε,p > 0` and `p ≤ c`;
-4. the mixing inequality gives the lower time constraint `log(C/ε)/γ`;
-5. the survival inequality gives the upper time constraint `log(c/p)/λ`;
-6. their intersection with `t ≥ t0` and `t ≥ 0` is the source closed window;
-7. endpoint equality is retained, so a singleton window is valid.
+1. `V` is retained as the frozen closed viability/identity domain;
+2. the curve is differentiable at zero and remains in `V` for nonnegative time;
+3. the source Bouligand cone is one-sided (`h ↓ 0`), so the Lean target is Mathlib `posTangentConeAt`, not the two-sided real tangent cone;
+4. derivative slopes converge from the right by `HasDerivAt.tendsto_slope_zero_right`;
+5. the trajectory increments themselves witness the tangent-cone membership;
+6. closedness is source-contract data even though this local necessity proof does not consume it;
+7. the ambient-space generalization from `ℝ^d` to an arbitrary real normed space is strength-preserving;
+8. K-VIA-01 Marchaud/Nagumo sufficiency remains a separate theorem and is not claimed here.
 
 Canonical theorem surface:
-- `UEOT.V3.QSDDurationWindow.p_qsd_03`;
-- `UEOT.V3.QSDDurationWindow.window_nonempty_iff`.
+- `UEOT.V3.ViabilityTangency.p_per_04`.
 
 Promotion evidence:
-- feature branch `formal/pqsd03-duration-window-v1`;
-- feature head `11076f31eec199a4e80ba13e00e037c5e62a2de2`;
-- feature CI `34831456183`: success;
+- feature branch `formal/pper04-tangency-necessity-v1`;
+- final feature head `ce6eccf5ca4b6f30aae1dcd0416fc1b79286f2d2`;
+- feature CI `34858878140`: success;
 - source semantic audit: complete;
+- pinned-Mathlib tangent-cone definition audit: complete;
 - prohibited-proof audit: clean;
-- clean integration branch `formal/pqsd03-main-integration`;
-- clean integration head `8e85e687ea11a8dac89ebe7ebbab8240551d8f99`;
-- clean integration CI `34847211649`: success;
-- PR #79 PR-triggered CI `34848043040`: success;
-- proof main `bab0b0718afaee90e858d71e41340066ba1774d8`;
-- proof resulting-main CI `34848676178`: success.
+- clean integration branch `formal/pper04-main-integration-v1`;
+- clean integration head `f5db4c5e547866e488ad1d33c0789bc0ce5ec48c`;
+- clean integration CI `34862446244`: success;
+- PR #83 PR-triggered CI `34863236502`: success;
+- proof main `ba9b9c350038dafa52afdda954d2294361a01fc7`;
+- proof resulting-main CI `34863965181`: success.
 
-## Previous full-green checkpoint — 76/106
+## Previous full-green checkpoint — 77/106
 
-P-BRG-01 is closed and counted in the 76/106 baseline. P-REF-04 and P-REF-05
-were already counted before that cycle; wrapper work must not be double-counted.
+P-QSD-03 is closed and counted in the 77/106 baseline at
+`main@6561169fae9529a822642c5b6921d7d9c59aa250`. Its full ledger resulting-main
+CI `34856357799` succeeded on attempt 3. Earlier attempts were external HTTP 504
+failures before UEOT compilation and are not repository regressions.
+
+P-BRG-01 is also already counted. P-REF-04 and P-REF-05 were counted before
+these cycles; wrapper work must not be double-counted.
 
 ## Grounded non-quick fronts
 
+- P-PER-02: Polish/Feller occupation-law theorem with tightness, Prokhorov and Portmanteau; sample-path empirical-frequency weakening is forbidden.
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality.
 - P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
@@ -83,6 +90,21 @@ P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
+## Candidate next fronts after 78 full-green
+
+- **P-REC-03:** first-step Markov identity for the finite hitting-time potential;
+  pinned Mathlib has discrete hitting-time infrastructure, but the Markov
+  first-step decomposition must still be proved at source strength.
+- **P-REC-04:** stopped drift inequality for `τ_A ∧ N` followed by monotone
+  convergence; bounded optional-stopping infrastructure exists but is not itself
+  the source theorem.
+- **P-COMP-01:** binary conditional-mutual-info machinery already exists in
+  main, while the source still requires arbitrary finite nontrivial partitions,
+  multi-block conditional product laws and the finite-family minimum equivalence.
+
+No proof branch for these candidates is opened while the P-PER-04 ledger gate is
+active.
+
 ## Mandatory recovery procedure
 
 1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,
@@ -90,6 +112,6 @@ surrogate.
 2. Fetch live main, active branches and Actions state.
 3. Never reopen counted green P-IDs without a substantive source mismatch or CI regression.
 4. Read the frozen source before writing Lean and audit existing main first.
-5. Feature green never increments coverage.
+5. Feature green or proof-main green never increments coverage.
 6. No `sorry`, `admit`, `native_decide`, unsourced `axiom`.
-7. Use CI waiting time for another independent audit/proof lane.
+7. Use CI waiting time for another independent source/API audit without opening a conflicting proof branch.
