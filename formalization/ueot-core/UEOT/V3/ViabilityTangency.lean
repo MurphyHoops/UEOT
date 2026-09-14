@@ -53,7 +53,10 @@ theorem p_per_04
   have hd0 : Tendsto d (𝓝[>] (0 : ℝ≥0)) (𝓝 0) := by
     have hpath : Tendsto (fun t : ℝ≥0 => x (t : ℝ))
         (𝓝[>] (0 : ℝ≥0)) (𝓝 (x 0)) := hcontRight.comp hcoe
-    have hsub := hpath.sub tendsto_const_nhds
+    have hconst : Tendsto (fun _ : ℝ≥0 => x 0)
+        (𝓝[>] (0 : ℝ≥0)) (𝓝 (x 0)) := tendsto_const_nhds
+    have hsub : Tendsto (fun t : ℝ≥0 => x (t : ℝ) - x 0)
+        (𝓝[>] (0 : ℝ≥0)) (𝓝 (x 0 - x 0)) := hpath.sub hconst
     simpa [d] using hsub
 
   have hmem : ∀ᶠ t in 𝓝[>] (0 : ℝ≥0), x 0 + d t ∈ V := by
@@ -66,7 +69,7 @@ theorem p_per_04
       Tendsto (fun t : ℝ≥0 => ((t : ℝ))⁻¹ • (x (t : ℝ) - x 0))
         (𝓝[>] (0 : ℝ≥0)) (𝓝 v) := by
     have h := hdiff.tendsto_slope_zero_right.comp hcoe
-    simpa using h
+    simpa [Function.comp_def] using h
 
   have hscaled :
       Tendsto (fun t : ℝ≥0 => t⁻¹ • d t)
