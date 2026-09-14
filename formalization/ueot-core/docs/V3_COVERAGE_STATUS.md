@@ -16,22 +16,22 @@ This file is the **authoritative source-level P-ID ledger** for the frozen
 
 A P-ID is counted `proved` only after frozen-source semantic matching, official
 import reachability, feature/integration/post-main CI gates, prohibited-proof
-audit, safe main integration, and ledger synchronization. Feature-green work
-alone never changes this ledger.
+audit, safe main integration, and ledger synchronization. Feature-green or
+proof-main work alone never changes the full-green count.
 
 ## Current source-level coverage
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **77** |
+| **proved, staged by this ledger checkpoint** | **78** |
 | **partial** | **0** |
-| **pending / not yet counted** | **29** |
+| **pending / not yet counted** | **28** |
 | **total** | **106** |
 
-This branch stages **77/106** after P-QSD-03 completed source-semantic, feature,
+This branch stages **78/106** after P-PER-04 completed source-semantic, feature,
 clean-integration, PR and proof-main gates, including successful resulting-main
-CI. **77/106 is not called full-green until this ledger checkpoint itself passes
-PR CI, lands on `main`, and the resulting main CI succeeds.**
+CI. **78/106 is not called full-green until this ledger checkpoint itself passes
+branch CI, PR CI, lands on `main`, and the resulting main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -54,7 +54,7 @@ mathematics or Lean code exists.
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02
 - **QSD:** P-QSD-02, P-QSD-03
-- **Persistence:** P-PER-01, P-PER-03
+- **Persistence:** P-PER-01, P-PER-03, P-PER-04
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 - **Omega / integrity:** P-OMG-01, P-OMG-02
@@ -65,69 +65,96 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `76 + P-QSD-03 = 77`.
+Count check: `77 + P-PER-04 = 78`.
 
-## Newly staged promotion — P-QSD-03
+## Newly staged promotion — P-PER-04
 
+Frozen Core 3 §8.6 defines the Bouligand contingent cone with positive-time
+increments `h ↓ 0` and states the local tangency necessity theorem: if a viable
+trajectory starts at `x`, remains in the closed viability/identity domain and is
+differentiable at time zero, then its initial velocity lies in that positive
+contingent cone.
+
+The Lean theorem preserves that exact scope. It uses Mathlib
+`posTangentConeAt = tangentConeAt NNReal`, not the two-sided real-scalar tangent
+cone, and constructs the positive-time witness from
+`HasDerivAt.tendsto_slope_zero_right`. The frozen closed-domain premise is
+retained even though the local necessity proof itself does not consume
+closedness. The implementation safely generalizes the ambient space from
+`ℝ^d` to an arbitrary real normed space. The broader Marchaud/Nagumo viability
+theorem K-VIA-01 remains separate and is not folded into this P-ID.
+
+Canonical theorem surface:
+- `UEOT.V3.ViabilityTangency.p_per_04`.
+
+Promotion evidence:
+- feature branch: `formal/pper04-tangency-necessity-v1`;
+- final feature head: `ce6eccf5ca4b6f30aae1dcd0416fc1b79286f2d2`;
+- repaired feature CI `34858878140`: success;
+- source-semantic audit: complete against frozen Core 3 §8.6;
+- Mathlib-definition audit: `posTangentConeAt` is the positive-scalar tangent cone and matches the source Bouligand object through its standard filter/sequence characterization;
+- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
+- clean integration branch: `formal/pper04-main-integration-v1`;
+- clean integration head: `f5db4c5e547866e488ad1d33c0789bc0ce5ec48c`;
+- clean integration CI `34862446244`: success;
+- proof PR #83;
+- PR-triggered CI `34863236502`: success;
+- proof main commit `ba9b9c350038dafa52afdda954d2294361a01fc7`;
+- proof resulting-main CI `34863965181`: success.
+
+**Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger/recovery
+checkpoint.**
+
+## Previous promotion — P-QSD-03
+
+P-QSD-03 is already counted in the authoritative **77/106 full-green** baseline.
 Frozen Core 3 §10.3 is formalized without swapping it with P-QSD-01 or P-QSD-04.
-For one fixed initial law `μ`, the theorem assumes, for `t ≥ t0`,
-
-- conditional-stability error `≤ C exp(-γ t)`;
-- survival probability `≥ c exp(-λ t)`;
-- `C,c,γ,λ > 0`, `ε > 0`, and `0 < p ≤ c`.
-
-The source-facing result proves that every
-
-` t ∈ [max{t0,0,log(C/ε)/γ}, log(c/p)/λ] `
-
-simultaneously satisfies conditional-stability error `≤ ε` and survival
-probability `≥ p`, provided the closed interval is nonempty. Endpoint equality
-is retained, so a singleton window is valid. Both estimates use the same
-initial law.
+For one fixed initial law `μ`, the source-facing theorem retains the exact closed
+mixing/survival window and endpoint equality.
 
 Canonical theorem surface:
 - `UEOT.V3.QSDDurationWindow.p_qsd_03`;
 - helper endpoint characterization `UEOT.V3.QSDDurationWindow.window_nonempty_iff`.
 
-Promotion evidence:
-- feature branch: `formal/pqsd03-duration-window-v1`;
-- feature head: `11076f31eec199a4e80ba13e00e037c5e62a2de2`;
-- feature CI `34831456183`: success;
-- source-semantic audit: complete;
-- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration branch: `formal/pqsd03-main-integration`;
-- clean integration head: `8e85e687ea11a8dac89ebe7ebbab8240551d8f99`;
-- clean integration CI `34847211649`: success;
-- proof PR #79;
-- PR-triggered CI `34848043040`: success;
-- proof main commit `bab0b0718afaee90e858d71e41340066ba1774d8`;
-- proof resulting-main CI `34848676178`: success.
+Completed evidence:
+- feature `formal/pqsd03-duration-window-v1@11076f31eec199a4e80ba13e00e037c5e62a2de2`, CI `34831456183` success;
+- clean integration `formal/pqsd03-main-integration@8e85e687ea11a8dac89ebe7ebbab8240551d8f99`, CI `34847211649` success;
+- proof PR #79 CI `34848043040` success;
+- proof main `bab0b0718afaee90e858d71e41340066ba1774d8`, resulting-main CI `34848676178` success;
+- ledger PR #82 merged as `main@6561169fae9529a822642c5b6921d7d9c59aa250`, ledger resulting-main CI `34856357799` attempt 3 success.
 
-**Status: PROVED / COUNTED pending this ledger/recovery checkpoint's own PR and
-resulting-main CI.**
+## Previous full-green checkpoint — 77/106
 
-## Previous full-green checkpoint — 76/106
+The authoritative full-green baseline before this P-PER-04 promotion is
+`main@6561169fae9529a822642c5b6921d7d9c59aa250`. All 77 counted P-IDs at that
+checkpoint remain closed absent a substantive frozen-source mismatch or CI
+regression. P-PER-04 proof code subsequently landed at
+`main@ba9b9c350038dafa52afdda954d2294361a01fc7` and passed resulting-main CI
+`34863965181`; that proof-main commit does not by itself increment the ledger.
 
-The authoritative full-green baseline before this P-QSD-03 promotion is
-`main@b461bdf8b37250fae9fca923ea243e1182f9e5cc`. P-BRG-01 is closed and
-counted there. All 76 counted P-IDs at that checkpoint remain closed absent a
-substantive frozen-source mismatch or CI regression.
-
-P-REF-04 and P-REF-05 were already members of the earlier counted baseline. The
-source-facing wrapper branches audited during that cycle are interface hardening
-only and must **not** be double-counted as new P-IDs.
+P-REF-04 and P-REF-05 were already members of the earlier counted baseline.
+Source-facing wrapper branches audited during prior cycles are interface
+hardening only and must **not** be double-counted as new P-IDs.
 
 ## Grounded pending fronts
 
-The remaining 29 not-yet-counted P-IDs require fresh source-first audits. Known
-non-quick fronts include:
+After this staged promotion, 28 P-IDs remain not yet counted and require fresh
+source-first audits. Known non-quick fronts include:
 
+- P-PER-02: Polish-space Feller semigroup + tight occupation laws + Prokhorov/Portmanteau weak-convergence infrastructure; it is not a sample-path empirical-frequency theorem;
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds;
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality;
 - P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis;
 - P-EVO-03/04: Perron-Frobenius asymptotics / martingale foundations;
 - P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation;
 - P-QSD-01/04: source-locked distinct non-A results.
+
+Fresh branchless triage also shows P-REC-03/04 as plausible medium lanes: pinned
+Mathlib supplies discrete hitting-time and bounded optional-stopping machinery,
+but the source still requires an actual Markov first-step identity and stopped
+drift assembly. P-COMP-01 already has a genuine binary conditional-mutual-info
+foundation in main, but its frozen finite-partition/multi-block product-law
+contract is not discharged by that binary wrapper alone.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; an assumed-convergence surrogate is not
