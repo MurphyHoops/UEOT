@@ -91,8 +91,11 @@ noncomputable def prefixLaw
 instance isProbabilityMeasure_prefixLaw
     (P : Kernel X X) [IsMarkovKernel P] (x : X) (n : ℕ) :
     IsProbabilityMeasure (prefixLaw P x n) := by
+  letI : IsProbabilityMeasure (Measure.dirac x) := by infer_instance
+  letI : IsProbabilityMeasure (homTrajMeasure (Measure.dirac x) P) := by
+    infer_instance
   unfold prefixLaw
-  infer_instance
+  exact Measure.isProbabilityMeasure_map (measurable_frestrictLe n).aemeasurable
 
 /-- Probability that the chain has not yet hit `A` by time `n`. -/
 noncomputable def survivalProb
