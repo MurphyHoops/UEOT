@@ -91,11 +91,11 @@ theorem truncatedHittingValue_succ_eq_one_add_shift
   induction N with
   | zero =>
       rw [truncatedHittingValue_succ]
-      simp [h0]
+      simp [truncatedHittingValue, h0]
   | succ N ih =>
-      rw [truncatedHittingValue_succ, truncatedHittingValue_succ, ih,
-        survivalIndicator_succ_eq_shift A N ω h0]
-      ac_rfl
+      rw [truncatedHittingValue_succ, ih,
+        survivalIndicator_succ_eq_shift A N ω h0, add_assoc,
+        ← truncatedHittingValue_succ]
 
 /-- **Pathwise first-step identity.**  If the path starts outside `A`, its
 extended hitting time is one plus the hitting time of the shifted path. -/
@@ -111,8 +111,8 @@ theorem hittingValue_eq_one_add_shift
     | zero => simp [truncatedHittingValue]
     | succ N =>
         rw [truncatedHittingValue_succ_eq_one_add_shift A N ω h0]
-        exact add_le_add_left
-          (le_iSup (fun M : ℕ => truncatedHittingValue A M (pathShift ω)) N) 1
+        exact add_le_add le_rfl
+          (le_iSup (fun M : ℕ => truncatedHittingValue A M (pathShift ω)) N)
   · unfold hittingValue
     rw [ENNReal.add_iSup]
     refine iSup_le ?_
