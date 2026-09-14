@@ -4,7 +4,7 @@
 > Integrated source-count truth is `V3_COVERAGE_STATUS.md`. GitHub Issue #56
 > carries the live cross-chat construction log when available.
 
-Last synchronized: **2026-09-14**
+Last synchronized: **2026-09-15**
 
 ## Environment
 
@@ -21,60 +21,62 @@ Last synchronized: **2026-09-14**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **78** |
+| integrated proved, staged by this checkpoint | **79** |
 | active proof / feature-green uncounted | **0** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **28** |
+| pending/unclassified | **27** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **77/106** at
-`main@6561169fae9529a822642c5b6921d7d9c59aa250`. P-PER-04 has completed all
-source, feature, clean-integration, PR and proof-main gates, including resulting
-main CI `34863965181` success at
-`main@ba9b9c350038dafa52afdda954d2294361a01fc7`. This ledger branch stages
-**78/106**. Do not call 78/106 full-green until this ledger branch passes branch
-CI, PR CI, lands on `main`, and the resulting main CI succeeds.
+The authoritative full-green baseline before this ledger branch is **78/106** at
+`main@22f536ea27eecf78de5005f47ecfea21edd001c6`, with ledger resulting-main CI
+`34866495921` success. P-REC-04 has completed all source, feature, clean-
+integration, PR and proof-main gates, including resulting-main CI `34882613059`
+success at `main@4946a4435d3c15efbf0ca13aed7b44e65defc79c`.
+This ledger branch stages **79/106**. Do not call 79/106 full-green until the
+ledger branch passes branch CI, PR CI, lands on `main`, and the resulting-main
+CI succeeds.
 
-## Newly staged proof — P-PER-04
+## Newly staged proof — P-REC-04
 
-Frozen Core 3 §8.6 is implemented at its declared positive-time tangency scope:
+Frozen Core 3 P-REC-04 is represented at its declared discrete-time Markov
+recovery scope:
 
-1. `V` is retained as the frozen closed viability/identity domain;
-2. the curve is differentiable at zero and remains in `V` for nonnegative time;
-3. the source Bouligand cone is one-sided (`h ↓ 0`), so the Lean target is Mathlib `posTangentConeAt`, not the two-sided real tangent cone;
-4. derivative slopes converge from the right by `HasDerivAt.tendsto_slope_zero_right`;
-5. the trajectory increments themselves witness the tangent-cone membership;
-6. closedness is source-contract data even though this local necessity proof does not consume it;
-7. the ambient-space generalization from `ℝ^d` to an arbitrary real normed space is strength-preserving;
-8. K-VIA-01 Marchaud/Nagumo sufficiency remains a separate theorem and is not claimed here.
+1. `P` is a homogeneous Markov transition kernel;
+2. `A` is a measurable target/hit set;
+3. `V` is a measurable nonnegative potential;
+4. the source drift outside `A` is encoded as the equivalent nonnegative form `PV + c <= V`;
+5. `c` is positive and finite;
+6. the Markov path law is derived from `P`, not postulated as an independent process assumption;
+7. hitting time is represented by its nonnegative survival-tail truncations;
+8. the one-step survival-potential drift is integrated and telescoped over finite horizons;
+9. monotone convergence gives the full hitting-time expectation;
+10. no finite-state specialization, assumed stopped inequality, or global future-integrability premise is introduced.
 
 Canonical theorem surface:
-- `UEOT.V3.ViabilityTangency.p_per_04`.
+- `UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound`.
 
 Promotion evidence:
-- feature branch `formal/pper04-tangency-necessity-v1`;
-- final feature head `ce6eccf5ca4b6f30aae1dcd0416fc1b79286f2d2`;
-- feature CI `34858878140`: success;
+- feature branch `formal/prec04-drift-hitting-time-v1`;
+- final feature head `3ea9086976ac595eb034a125390d69264e12772e`;
+- feature CI `34875538212`: success;
 - source semantic audit: complete;
-- pinned-Mathlib tangent-cone definition audit: complete;
 - prohibited-proof audit: clean;
-- clean integration branch `formal/pper04-main-integration-v1`;
-- clean integration head `f5db4c5e547866e488ad1d33c0789bc0ce5ec48c`;
-- clean integration CI `34862446244`: success;
-- PR #83 PR-triggered CI `34863236502`: success;
-- proof main `ba9b9c350038dafa52afdda954d2294361a01fc7`;
-- proof resulting-main CI `34863965181`: success.
+- clean integration branch `formal/prec04-main-integration-v1`;
+- clean integration head `50ac5834ff74fe4aa5229b60be87a256e762c778`;
+- clean integration CI `34877803577`: success;
+- proof PR #85 PR-triggered CI `34880820942`: success;
+- proof main `4946a4435d3c15efbf0ca13aed7b44e65defc79c`;
+- proof resulting-main CI `34882613059`: success.
 
-## Previous full-green checkpoint — 77/106
+## Previous full-green checkpoint — 78/106
 
-P-QSD-03 is closed and counted in the 77/106 baseline at
-`main@6561169fae9529a822642c5b6921d7d9c59aa250`. Its full ledger resulting-main
-CI `34856357799` succeeded on attempt 3. Earlier attempts were external HTTP 504
-failures before UEOT compilation and are not repository regressions.
+P-PER-04 is closed and counted in the 78/106 baseline at
+`main@22f536ea27eecf78de5005f47ecfea21edd001c6`. Its proof resulting-main CI
+`34863965181` and ledger resulting-main CI `34866495921` succeeded.
 
-P-BRG-01 is also already counted. P-REF-04 and P-REF-05 were counted before
-these cycles; wrapper work must not be double-counted.
+P-QSD-03 is also closed and counted. P-BRG-01, P-REF-04 and P-REF-05 were
+already counted before these cycles; wrapper work must not be double-counted.
 
 ## Grounded non-quick fronts
 
@@ -90,25 +92,16 @@ P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
-## Candidate next fronts after 78 full-green
+## Candidate next fronts after 79 full-green
 
-- **P-REC-03:** first-step Markov identity for the finite hitting-time potential;
-  pinned Mathlib has discrete hitting-time infrastructure, but the Markov
-  first-step decomposition must still be proved at source strength.
-- **P-REC-04:** stopped drift inequality for `τ_A ∧ N` followed by monotone
-  convergence; bounded optional-stopping infrastructure exists but is not itself
-  the source theorem.
-- **P-COMP-01:** binary conditional-mutual-info machinery already exists in
-  main, while the source still requires arbitrary finite nontrivial partitions,
-  multi-block conditional product laws and the finite-family minimum equivalence.
+- **P-REC-03:** first-step Markov identity for the finite hitting-time potential; the genuine identity `PV_A - V_A = -1` outside `A` must be derived.
+- **P-COMP-01:** binary conditional-mutual-info machinery exists, but arbitrary finite nontrivial partitions and multi-block conditional product laws remain.
 
-No proof branch for these candidates is opened while the P-PER-04 ledger gate is
-active.
+No second proof branch is opened while the P-REC-04 ledger gate is active.
 
 ## Mandatory recovery procedure
 
-1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,
-   `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
+1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available, `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
 2. Fetch live main, active branches and Actions state.
 3. Never reopen counted green P-IDs without a substantive source mismatch or CI regression.
 4. Read the frozen source before writing Lean and audit existing main first.
