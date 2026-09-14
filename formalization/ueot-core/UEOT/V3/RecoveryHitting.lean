@@ -26,13 +26,25 @@ noncomputable def markovPathLaw
     (P : Kernel X X) [IsMarkovKernel P] (x : X) : Measure (ℕ → X) := by
   letI : ∀ n, IsMarkovKernel (homHistoryKernel P n) :=
     fun n => isMarkovKernel_homHistoryKernel P n
-  exact Kernel.traj (homHistoryKernel P) 0 (fun _ => x)
+  exact Kernel.traj (X := fun _ : ℕ => X)
+    (homHistoryKernel P) 0 (fun _ => x)
 
 instance isProbabilityMeasure_markovPathLaw
     (P : Kernel X X) [IsMarkovKernel P] (x : X) :
     IsProbabilityMeasure (markovPathLaw P x) := by
   unfold markovPathLaw
   infer_instance
+
+/-- Continuation law after a concrete path prefix.  Keeping the Ionescu--Tulcea
+family instance inside this definition lets source-facing statements quantify
+only over the original homogeneous Markov kernel `P`. -/
+noncomputable def markovContinuation
+    (P : Kernel X X) [IsMarkovKernel P]
+    (n : ℕ) (ω : ℕ → X) : Measure (ℕ → X) := by
+  letI : ∀ k, IsMarkovKernel (homHistoryKernel P k) :=
+    fun k => isMarkovKernel_homHistoryKernel P k
+  exact Kernel.traj (X := fun _ : ℕ => X)
+    (homHistoryKernel P) n (frestrictLe n ω)
 
 /-- Integrating a potential of the next coordinate against the continuation
 trajectory is exactly integration against the source transition kernel at the
@@ -42,23 +54,27 @@ theorem integral_traj_next_eq_kernel
     (P : Kernel X X) [IsMarkovKernel P]
     (V : X → ℝ) (hV : StronglyMeasurable V)
     (n : ℕ) (ω : ℕ → X) :
-    (∫ ξ, V (ξ (n + 1))
-      ∂Kernel.traj (homHistoryKernel P) n (frestrictLe n ω)) =
+    (∫ ξ, V (ξ (n + 1)) ∂markovContinuation P n ω) =
       ∫ y, V y ∂P (ω n) := by
   letI : ∀ k, IsMarkovKernel (homHistoryKernel P k) :=
     fun k => isMarkovKernel_homHistoryKernel P k
+  unfold markovContinuation
   have hmap :
-      (Kernel.traj (homHistoryKernel P) n (frestrictLe n ω)).map
+      (Kernel.traj (X := fun _ : ℕ => X)
+          (homHistoryKernel P) n (frestrictLe n ω)).map
           (fun ξ => ξ (n + 1)) =
         homHistoryKernel P n (frestrictLe n ω) := by
-    have hk := Kernel.map_traj_succ_self (κ := homHistoryKernel P) (a := n)
+    have hk := Kernel.map_traj_succ_self
+      (X := fun _ : ℕ => X) (κ := homHistoryKernel P) (a := n)
     have hk' := congrArg
       (fun K : Kernel ((i : Iic n) → X) X => K (frestrictLe n ω)) hk
     simpa [Kernel.map_apply _ (measurable_pi_apply (n + 1))] using hk'
   calc
     (∫ ξ, V (ξ (n + 1))
-      ∂Kernel.traj (homHistoryKernel P) n (frestrictLe n ω)) =
-        ∫ y, V y ∂(Kernel.traj (homHistoryKernel P) n
+      ∂Kernel.traj (X := fun _ : ℕ => X)
+        (homHistoryKernel P) n (frestrictLe n ω)) =
+        ∫ y, V y ∂(Kernel.traj (X := fun _ : ℕ => X)
+          (homHistoryKernel P) n
           (frestrictLe n ω)).map (fun ξ => ξ (n + 1)) := by
             symm
             exact integral_map_of_stronglyMeasurable
@@ -85,12 +101,16 @@ theorem condExp_next_potential
     fun k => isMarkovKernel_homHistoryKernel P k
   unfold markovPathLaw at hVint ⊢
   have hcond := Kernel.condExp_traj
+    (X := fun _ : ℕ => X)
     (κ := homHistoryKernel P) (a := 0) (b := n) (Nat.zero_le n)
     (x₀ := fun _ => x)
     (f := fun ω : ℕ → X => V (ω (n + 1)))
     (hVint (n + 1))
   filter_upwards [hcond] with ω hω
   rw [hω]
+  change
+    (∫ ξ, V (ξ (n + 1)) ∂markovContinuation P n ω) =
+      ∫ y, V y ∂P (ω n)
   exact integral_traj_next_eq_kernel P V hV n ω
 
 end UEOT.V3.RecoveryHitting
