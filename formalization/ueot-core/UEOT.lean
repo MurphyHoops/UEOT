@@ -37,3 +37,6 @@ import UEOT.V3.ReflexiveStatePathUniqueness
 import UEOT.V3.ReflexiveStateSpecialCases
 import UEOT.V3.ReflexiveControlledClosure
 import UEOT.V3.ReflexivePRef01
+import UEOT.V3.FiniteBayesBelief
+import UEOT.V3.GeneralBayesPosterior
+import UEOT.V3.PRef02
