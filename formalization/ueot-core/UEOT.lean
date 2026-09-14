@@ -41,3 +41,6 @@ import UEOT.V3.FiniteBayesBelief
 import UEOT.V3.GeneralBayesPosterior
 import UEOT.V3.PRef02
 import UEOT.V3.FreeInformationValue
+import UEOT.V3.FixedFitnessSelection
+import UEOT.V3.FixedFitnessRecurrenceUniqueness
+import UEOT.V3.FixedFitnessConcentration
