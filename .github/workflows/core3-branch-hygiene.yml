@@ -1,0 +1,161 @@
+name: UEOT Core 3 Branch Hygiene
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Actually delete audited obsolete branches (false = dry run)"
+        required: true
+        default: false
+        type: boolean
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/core3-branch-hygiene.yml"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: ueot-core3-branch-hygiene
+  cancel-in-progress: false
+
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Audit and prune obsolete Core 3 branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            APPLY="true"
+          else
+            APPLY="${{ inputs.apply }}"
+          fi
+
+          # Fetch every branch so the manifest contains the exact pre-delete head SHA.
+          git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
+
+          # Conservative keep-set from the 2026-09-14 governance audit.
+          # These branches contain unresolved/potentially-unique pending work or broad
+          # legacy work that still needs a separate content audit. Everything else is
+          # either main, covered by an open PR, or historical work for already-counted
+          # P-IDs / closed promotion lifecycles.
+          KEEP_EXACT=(
+            "main"
+            "core/v3-maintenance"
+            "formal/persistence-qsd"
+            "formal/pqsd03-duration-window-v1"
+            "formal/v3-coverage-wave2"
+            "formal/v3-metrics"
+            "formal/v3-process-dynamics"
+          )
+
+          mapfile -t OPEN_PR_HEADS < <(
+            gh pr list --state open --limit 1000 --json headRefName --jq '.[].headRefName'
+          )
+
+          is_in_array() {
+            local needle="$1"; shift
+            local x
+            for x in "$@"; do
+              [[ "$x" == "$needle" ]] && return 0
+            done
+            return 1
+          }
+
+          mapfile -t ALL_BRANCHES < <(
+            git for-each-ref --format='%(refname:short)' refs/remotes/origin \
+              | sed 's#^origin/##' \
+              | grep -v '^HEAD$' \
+              | sort -u
+          )
+
+          DELETE_BRANCHES=()
+          KEEP_BRANCHES=()
+          MANIFEST="$(mktemp)"
+
+          {
+            echo "### Core 3 branch-hygiene manifest — $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo
+            echo "- event: \`${GITHUB_EVENT_NAME}\`"
+            echo "- main at workflow start: \`$(git rev-parse origin/main)\`"
+            echo "- branch count before: **${#ALL_BRANCHES[@]}**"
+            echo "- apply deletion: **${APPLY}**"
+            echo
+            echo "#### Audited deletion candidates"
+          } > "$MANIFEST"
+
+          for branch in "${ALL_BRANCHES[@]}"; do
+            # Never delete main, explicit unresolved keep branches, hold/* quarantine,
+            # or any branch currently backing an open PR.
+            if is_in_array "$branch" "${KEEP_EXACT[@]}" \
+              || [[ "$branch" == hold/* ]] \
+              || is_in_array "$branch" "${OPEN_PR_HEADS[@]}"; then
+              KEEP_BRANCHES+=("$branch")
+              continue
+            fi
+
+            sha="$(git rev-parse "origin/${branch}")"
+            DELETE_BRANCHES+=("$branch")
+            printf -- '- `%s` @ `%s`\n' "$branch" "$sha" >> "$MANIFEST"
+          done
+
+          {
+            echo
+            echo "#### Retained branches"
+            for branch in "${KEEP_BRANCHES[@]}"; do
+              printf -- '- `%s` @ `%s`\n' "$branch" "$(git rev-parse "origin/${branch}")"
+            done
+            echo
+            echo "Deletion rule: candidates have no open PR and are outside the explicit unresolved keep-set. Exact pre-delete SHAs are recorded here so the cleanup is auditable."
+          } >> "$MANIFEST"
+
+          # Durable audit record before any destructive mutation.
+          gh issue comment 56 --body-file "$MANIFEST"
+
+          if [[ "$APPLY" == "true" && ${#DELETE_BRANCHES[@]} -gt 0 ]]; then
+            # One atomic-ish push request is much faster and less failure-prone than
+            # hundreds of individual deletions. main is never in DELETE_BRANCHES.
+            git push origin --delete "${DELETE_BRANCHES[@]}"
+          fi
+
+          git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
+          mapfile -t AFTER_BRANCHES < <(
+            git for-each-ref --format='%(refname:short)' refs/remotes/origin \
+              | sed 's#^origin/##' \
+              | grep -v '^HEAD$' \
+              | sort -u
+          )
+
+          SUMMARY="$(mktemp)"
+          {
+            echo "### Core 3 branch hygiene result"
+            echo
+            echo "- apply deletion: **${APPLY}**"
+            echo "- candidates: **${#DELETE_BRANCHES[@]}**"
+            echo "- retained before deletion: **${#KEEP_BRANCHES[@]}**"
+            echo "- branch count after: **${#AFTER_BRANCHES[@]}**"
+            echo
+            echo "Remaining branches:"
+            for branch in "${AFTER_BRANCHES[@]}"; do
+              printf -- '- `%s`\n' "$branch"
+            done
+          } > "$SUMMARY"
+          gh issue comment 56 --body-file "$SUMMARY"
+
+          if [[ "$APPLY" == "true" && ${#AFTER_BRANCHES[@]} -gt 12 ]]; then
+            echo "Branch count remains above the hard cap (12); manual audit is required." >&2
+            exit 1
+          fi
