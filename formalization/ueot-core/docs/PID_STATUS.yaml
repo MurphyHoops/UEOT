@@ -11,22 +11,21 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 72
+  integrated_proved: 73
   promotion_running: 0
-  active_proof: 0
-  source_audit: 1
+  active_proof: 2
+  source_audit: 0
   blocked: 0
-  pending_unclassified: 33
-  unresolved_total: 34
+  pending_unclassified: 31
+  unresolved_total: 33
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 72 integrated/proof-complete
-    P-IDs including newly promoted P-ALG-01 + 1 source-audit lane (P-REF-01) + 33
-    pending/unclassified = 106. P-ALG-01 has completed feature, clean-integration
-    and post-main proof gates; 72/106 becomes full-green only after this ledger
-    checkpoint passes PR CI, lands on main and passes the resulting main CI.
-    P-BRG-02 was already counted in the authoritative 71/106 baseline and must
-    not be reopened absent a source mismatch or CI regression.
+    Operational partition staged by this ledger checkpoint: 73 integrated/proof-complete
+    P-IDs including newly promoted P-REF-01 + 2 active proof lanes (P-REF-02 and
+    P-REF-03) + 31 pending/unclassified = 106. P-REF-01 completed feature,
+    clean-integration and post-main proof gates. 73/106 becomes full-green only
+    after this ledger checkpoint passes PR CI, lands on main and passes the
+    resulting main CI. Feature-green P-REF-02/P-REF-03 work remains uncounted.
 state_vocabulary:
   - source_audit
   - proof
@@ -388,7 +387,73 @@ pids:
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: exact finite Markov-state stable quotient; feature-green layered and quotient proofs assembled through source-facing theorem after clean integration
     coverage_counted: true
+    ledger_gate: complete
+
+  P-REF-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: medium_stochastic_process
+    canonical_theorems:
+      - UEOT.V3.ReflexivePRef01.p_ref_01
+      - UEOT.V3.ReflexivePRef01.p_ref_01_structureModification
+      - UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel
+      - UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw
+    source_contract:
+      - reflexive state Z = X x S
+      - arbitrary complete-history-dependent randomized causal policy
+      - initial law plus controlled Markov kernel plus fixed policy uniquely determine the infinite Z path law
+      - Ionescu-Tulcea existence and finite-prefix/projective-limit uniqueness
+      - structural modification S_next = F(S,X,a,xi) is a specialization, not a policy restriction
+      - any further compression requires a separate action-wise controlled closure obligation
+    promotion:
+      feature_branch: formal/pref01-source-assembly-v2
+      feature_head: 8649c0763ac2326177812209bab3f32ad92680f7
+      feature_ci: {run: 34803657950, status: success}
+      complete_assembly_ci: {run: 34802710747, status: success}
+      clean_integration_branch: formal/pref01-main-integration-v1
+      clean_integration_head: 85148ee2e9cba8afa5e23406a51c09515d45e052
+      clean_integration_pr: 69
+      clean_integration_ci: {run: 34804007035, status: success}
+      main_commit: 1c4de9fc60b653e8c3594bba1a01a0eed510578a
+      post_main_ci: {run: 34804335400, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: source-facing theorem is valid on arbitrary measurable spaces once supplied kernels are Markov; this strengthens the Core-wide Standard-Borel default
+    coverage_counted: true
     ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
+
+  P-REF-02:
+    state: proof
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: finite_belief_control
+    feature_branch: formal/pref02-belief-core-v1
+    feature_head: 871a33cb831148c655d7f4a1d708b58843ffff09
+    feature_ci: {run: 34804586631, status: in_progress}
+    source_contract:
+      - finite static latent parameter and hidden state
+      - predictive observation law and Bayes update depend only on current belief and action
+      - zero denominator is model conflict, never arbitrary posterior
+      - bounded discounted task rewrites as belief-state control problem
+    source_note: first finite Bayes core layer is green at 322938a5352814c1fe5c6bf095e4a5e40e627b4e / CI 34804267113; discounted-control rewrite remains mandatory
+    coverage_counted: false
+
+  P-REF-03:
+    state: proof
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: arbitrary_signal_information_value
+    canonical_theorem: UEOT.V3.FreeInformationValue.p_ref_03
+    feature_branch: formal/pref03-free-information-v1
+    feature_head: 42683e5f3efe385ccc95d556cf7ffe9b10edfeac
+    feature_ci: {run: 34804496967, status: in_progress}
+    source_contract:
+      - arbitrary signal space represented by a sub-sigma-algebra
+      - finite nonempty action set
+      - integrable payoffs
+      - signal is free and may be ignored
+      - informed expected value is weakly at least the best fixed-action value
+    coverage_counted: false
 
 audits:
   P-EVO-03:
@@ -400,13 +465,3 @@ audits:
       normalized power convergence. Pinned Mathlib exposes Matrix.IsPrimitive
       definitions but no directly reusable complete asymptotic theorem was
       found. Do not weaken to an assumed-convergence surrogate.
-
-  P-REF-01:
-    state: source_audit
-    audit_class: medium_stochastic_process
-    source_note: >-
-      Requires the full augmented-state path-law theorem under arbitrary causal
-      policies. Pinned Mathlib provides Ionescu-Tulcea traj/trajMeasure,
-      projective-limit uniqueness and conditional-distribution interfaces.
-      Do not weaken to deterministic or Markov-only policies; deterministic
-      structural modification is a special case/corollary.
