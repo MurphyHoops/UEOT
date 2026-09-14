@@ -2,7 +2,7 @@
 
 ## Executive finding
 
-The UEOT Core 3 formalization process is mathematically disciplined but accumulated severe repository-state debt. At audit start the remote repository had **221 branches** even though only a small number represented unresolved work.
+The UEOT Core 3 formalization process is mathematically disciplined but accumulated severe repository-state debt. At audit start the remote repository had **221 branches**; a complete enumeration reached **222** after the governance branch itself was created.
 
 The central conclusion is:
 
@@ -10,13 +10,15 @@ The central conclusion is:
 
 The formal proof ledger remained conservative: feature green did not directly increment coverage, clean integration was rebuilt from full-green `main`, prohibited-proof audits were enforced, and proof-main/ledger gates prevented premature counting. The failures were operational: branches were retained as archives, live state was duplicated across comments/files, and each proof iteration could create another remote branch.
 
-A second safety review found an important flaw in the first cleanup implementation: a repository-wide “delete everything not on the Core 3 keep-list” rule could eventually delete legitimate UEOT-GI / UEOT-QM / physics branches. That rule was corrected **before merge**. Cleanup is now explicitly scoped to the audited Core 3 legacy namespaces only.
+A second safety review found an important flaw in the first cleanup implementation: a repository-wide “delete everything not on the Core 3 keep-list” rule could eventually delete legitimate UEOT-GI / UEOT-QM / physics branches. That rule was corrected **before merge**. Cleanup is now explicitly scoped to audited Core 3 legacy namespaces only.
+
+A third source/coverage reconciliation tightened the keep-set further: **unique commits alone are not a reason to retain a branch**. A branch must still correspond to unresolved source work. Of the initially quarantined legacy branches, only `formal/pqsd03-duration-window-v1` still maps to an uncounted source target, P-QSD-03.
 
 ---
 
 ## Snapshot at audit start
 
-- Remote branches: **221** (later branch enumeration showed 222 including the new governance branch).
+- Remote branches: **221**, later **222** including the governance branch.
 - Integration branch: `main`.
 - Counted checkpoint: **76/106 FULL-GREEN**.
 - Full-green `main`: `32af6fcc8033b28cb4922f70109a8902c9ac3f36`.
@@ -116,37 +118,38 @@ Proof debugging generated `scratch/fresh/vN` branches and repeated full CI.
 
 The first cleanup draft used a global keep-list and considered all other branches disposable. That would be unsafe once UEOT-GI, UEOT-QM, physics, or other subprojects begin using distinct branches.
 
-**Remediation:** cleanup now has an explicit destructive scope:
+**Remediation:** cleanup now has an explicit destructive scope. Unknown/new namespaces are retained by default. Repository-wide policy is documented in `docs/REPOSITORY_BRANCH_GOVERNANCE.md`.
 
-- `master`;
-- historical `docs/*` branches;
-- historical `formal/*` Core 3 branches;
-- the completed governance branch itself.
+### Failure F — “unique commits” was initially treated as equivalent to “must keep”
 
-Unknown/new namespaces are retained by default. Repository-wide policy is now documented in `docs/REPOSITORY_BRANCH_GOVERNANCE.md`.
+The first conservative pass retained six legacy branches because they had commits not trivially present on current `main`. A source/coverage re-audit showed this was still too permissive.
+
+**Remediation:** retention now requires **unique unresolved source relevance**, not merely a divergent commit history.
 
 ---
 
-## Audit of the retained legacy branches
+## Final audit of the legacy keep-set
 
-The mass cleanup intentionally preserves six non-main historical branches because they contain commits not trivially represented by current `main`. They are **quarantine/audit branches, not active lanes**.
+| branch | relation to current main | unique surface | source/coverage audit | final disposition |
+|---|---:|---|---|---|
+| `master` | +0 / -351 | none | obsolete legacy default | **delete** |
+| `core/v3-maintenance` | +6 / -187 | old Core status/maintenance docs | stale operational state, not unresolved theorem work | **delete** |
+| `formal/persistence-qsd` | +2 / -194 | `QSDPerron.lean` | file explicitly targets **P-QSD-02**, already counted | **delete** |
+| `formal/pqsd03-duration-window-v1` | +3 / -2 | `QSDDurationWindow.lean` | file explicitly targets **P-QSD-03**, still pending | **KEEP** |
+| `formal/v3-coverage-wave2` | +4 / -209 | history/Markovization modules | corresponding process/dynamics/prediction families already counted; no active reopen | **delete** |
+| `formal/v3-metrics` | +4 / -228 | `TVKernel.lean` | P-MET-01/02 already counted; no active reopen | **delete** |
+| `formal/v3-process-dynamics` | +7 / -228 | `DynamicsKernel.lean` changes | P-DYN-01..04 already counted; no active reopen | **delete** |
 
-| branch | relation to current main | unique surface | current disposition |
-|---|---:|---|---|
-| `core/v3-maintenance` | +6 / -187 | Core status/maintenance docs | retain temporarily; audit whether status knowledge belongs on main/archive |
-| `formal/persistence-qsd` | +2 / -194 | `QSDPerron.lean` | retain temporarily; theorem/source relevance audit |
-| `formal/pqsd03-duration-window-v1` | +3 / -2 | `QSDDurationWindow.lean` | retain temporarily; near-main pending-content audit |
-| `formal/v3-coverage-wave2` | +4 / -209 | history Markovization modules | retain temporarily; determine whether superseded |
-| `formal/v3-metrics` | +4 / -228 | `TVKernel.lean` | retain temporarily; determine reuse/integration status |
-| `formal/v3-process-dynamics` | +7 / -228 | `DynamicsKernel.lean` changes | retain temporarily; source-semantic audit |
+This yields the stronger governance rule:
 
-The correct target is not to keep these forever. Each must be resolved into one of three states:
+> **A branch is retained only if its unique content is still relevant to an unresolved authoritative source objective.**
 
-1. **integrate useful unique work** through a current clean branch/PR;
-2. **archive/document the insight** if code is historically useful but no longer source-relevant;
-3. **delete** if superseded or invalid.
+After the mass cleanup, the expected ordinary remote state is therefore approximately:
 
-After that audit, ordinary operation should use roughly **1–4 remote branches**, not seven permanent survivors.
+- `main`;
+- `formal/pqsd03-duration-window-v1`.
+
+That is the correct low-entropy representation of the current project state.
 
 ---
 
@@ -164,20 +167,20 @@ Key invariants:
 - `docs/*` branch namespace is deprecated;
 - cleanup automation must have an explicit scope;
 - unknown namespaces are protected by default;
-- the tool/platform changing (ChatGPT, Codex, local AI, human terminal) never justifies creating a parallel branch for the same objective.
+- changing tools/platforms (ChatGPT, Codex, local AI, human terminal) never justifies creating a parallel branch for the same objective.
 
 ---
 
 ## Issue governance improvements
 
-The history suggests Issues should be modeled as durable objectives, not event streams.
+The history shows Issues should be modeled as durable objectives, not event streams.
 
 For Core 3:
 
 - Issue #56 body = current live state;
 - comments = durable milestones/audit manifests only;
 - CI polling and micro-fix logs stay transient;
-- branch/head/PR/blocker/exact-next-action must be updated in the body at real state transitions.
+- branch/head/PR/blocker/exact-next-action are updated in the body at real state transitions.
 
 Future long-running UEOT subprojects should use the same pattern: one live-state Issue per major ongoing project, with separate Issues only for independently trackable objectives.
 
@@ -185,7 +188,7 @@ Future long-running UEOT subprojects should use the same pattern: one live-state
 
 ## Recommended operating loop
 
-`RECOVER -> RECONCILE -> BRANCH PREFLIGHT -> WORK ON ONE ACTIVE BRANCH -> VERIFY -> PR -> MAIN -> RETIRE BRANCH -> UPDATE LIVE STATE -> CONTINUE`
+`RECOVER -> RECONCILE -> SOURCE/COVERAGE RELEVANCE GATE -> BRANCH PREFLIGHT -> WORK ON ONE ACTIVE BRANCH -> VERIFY -> PR -> MAIN -> RETIRE BRANCH -> UPDATE LIVE STATE -> CONTINUE`
 
 For Core 3 proof promotion, the stricter proof-main/ledger gates remain intact inside this outer repository loop.
 
@@ -193,14 +196,14 @@ For Core 3 proof promotion, the stricter proof-main/ledger gates remain intact i
 
 ## Immediate cleanup plan
 
-1. Merge PR #77 only after its updated CI is green.
+1. Merge PR #77 only after its latest-head CI is green.
 2. When the reviewed workflow file lands on `main`, its path-scoped push trigger performs the one-time audited Core 3 legacy cleanup.
 3. Before deletion it records exact branch names/head SHAs in Issue #56.
-4. It deletes only branches inside the explicit legacy scope and preserves the six unique audit branches plus `main`.
-5. Verify remote branch count <=12 (expected approximately 7 after cleanup if no new out-of-scope branches appear).
-6. Verify resulting `main` CI.
-7. Audit the six retained branches one by one and shrink toward the normal 1–4-branch state.
-8. Only then resume a genuinely uncounted P-ID.
+4. It deletes legacy `master`, `core/v3-maintenance`, historical `docs/*`, and historical Core 3 `formal/*` except `formal/pqsd03-duration-window-v1`, plus the completed governance branch itself.
+5. Open-PR branches, `hold/*`, and any future unknown namespace remain protected.
+6. Verify resulting branch count <=12; expected state is approximately **2 branches** if no new out-of-scope work appears.
+7. Verify resulting `main` CI.
+8. Resume the genuinely uncounted P-QSD-03 lane or the next source-prioritized uncounted P-ID after recovery reconciliation.
 
 ---
 
@@ -211,5 +214,9 @@ The project does **not** need a simpler proof standard. It needs a lower-entropy
 The strongest governance principle is now:
 
 > **Issue = objective/state; branch = temporary implementation; PR = integration candidate; main = truth.**
+
+And the stronger retention test is:
+
+> **unique commit != active value; unresolved authoritative source relevance determines whether a branch deserves to survive.**
 
 A chat may end at any time and a branch may be deleted after its lifecycle. Neither is allowed to be the only place where project truth exists.
