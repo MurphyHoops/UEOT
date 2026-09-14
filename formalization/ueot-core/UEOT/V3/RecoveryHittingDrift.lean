@@ -66,8 +66,9 @@ theorem historySurvivalPotential_append_eq_of_survive
     historySurvivalPotential A V (n + 1) (appendHistory n (h, y)) = V y := by
   have hs : appendHistory n (h, y) ∈ historySurvivalSet A (n + 1) :=
     (appendHistory_mem_historySurvivalSet_iff A n h y).2 ⟨hh, hy⟩
-  simp [historySurvivalPotential, hs, appendHistory, lastHistoryIndex,
-    IicProdIoc_def, MeasurableEquiv.piSingleton]
+  rw [historySurvivalPotential, Set.indicator_of_mem hs]
+  simp [appendHistory, lastHistoryIndex, IicProdIoc_def,
+    MeasurableEquiv.piSingleton]
 
 /-- Once a prefix has already hit the target, every one-step extension has zero
 survival potential. -/
@@ -127,7 +128,12 @@ theorem oneStep_survival_drift
           ∂P (h (lastHistoryIndex n))) ≤
         ∫⁻ y, V y ∂P (h (lastHistoryIndex n)) :=
       lintegral_mono fun y => historySurvivalPotential_append_le A V n h y
-    have hsum := add_le_add_right hinner c
+    have hsum :
+        (∫⁻ y,
+          historySurvivalPotential A V (n + 1) (appendHistory n (h, y))
+          ∂P (h (lastHistoryIndex n))) + c ≤
+        (∫⁻ y, V y ∂P (h (lastHistoryIndex n))) + c :=
+      add_le_add hinner (le_refl c)
     have hsource := hdrift (h (lastHistoryIndex n)) hlast
     simpa [historySurvivalPotential, hh] using hsum.trans hsource
   · have hzero : ∀ y,
