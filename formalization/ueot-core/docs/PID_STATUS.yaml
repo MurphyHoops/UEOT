@@ -11,22 +11,23 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 76
+  integrated_proved: 78
   promotion_running: 0
   active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 30
-  unresolved_total: 30
+  pending_unclassified: 28
+  unresolved_total: 28
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 76 integrated/proof-complete
-    P-IDs including newly promoted P-BRG-01 + 30 pending/unclassified = 106.
-    P-BRG-01 completed source-semantic, feature, clean-integration, PR,
-    proof-main and resulting-main proof gates. 76/106 becomes full-green only
-    after this ledger checkpoint passes PR CI, lands on main and passes the
-    resulting main CI. P-REF-04 and P-REF-05 were already counted in the earlier
-    baseline; audit wrappers from this cycle are not new coverage.
+    Operational partition staged by this ledger checkpoint: 78 integrated/proof-complete
+    P-IDs including P-QSD-03 and newly staged P-PER-04 + 28 pending/unclassified = 106.
+    P-PER-04 completed source-semantic, feature, clean-integration, PR,
+    proof-main and resulting-main proof gates. 78/106 becomes full-green only
+    after this ledger checkpoint passes branch CI, PR CI, lands on main and
+    passes the resulting main CI. P-QSD-03 is already counted in the 77/106
+    full-green baseline. P-REF-04 and P-REF-05 were already counted in the
+    earlier baseline; audit wrappers are not new coverage.
 state_vocabulary:
   - source_audit
   - proof
@@ -514,6 +515,74 @@ pids:
       post_main_ci: {run: 34818138195, status: success}
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: recurrence-uniqueness converse plus support-preserving fixed-fitness concentration and maximizer-ratio preservation match the frozen source contract
+    coverage_counted: true
+    ledger_gate: complete
+
+  P-QSD-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: qsd_duration_window
+    canonical_theorems:
+      - UEOT.V3.QSDDurationWindow.p_qsd_03
+      - UEOT.V3.QSDDurationWindow.window_nonempty_iff
+    source_contract:
+      - one fixed initial law for both conditional-stability and survival estimates
+      - conditional-stability error bounded by C exp(-gamma t) for t >= t0
+      - survival probability bounded below by c exp(-lambda t)
+      - C c gamma lambda epsilon p are positive and p <= c
+      - usable closed window is [max(t0,0,log(C/epsilon)/gamma), log(c/p)/lambda]
+      - endpoint equality and singleton windows are retained
+    promotion:
+      feature_branch: formal/pqsd03-duration-window-v1
+      feature_head: 11076f31eec199a4e80ba13e00e037c5e62a2de2
+      feature_ci: {run: 34831456183, status: success}
+      clean_integration_branch: formal/pqsd03-main-integration
+      clean_integration_head: 8e85e687ea11a8dac89ebe7ebbab8240551d8f99
+      clean_integration_ci: {run: 34847211649, status: success}
+      clean_integration_pr: 79
+      clean_integration_pr_ci: {run: 34848043040, status: success}
+      main_commit: bab0b0718afaee90e858d71e41340066ba1774d8
+      post_main_ci: {run: 34848676178, status: success}
+      ledger_main_commit: 6561169fae9529a822642c5b6921d7d9c59aa250
+      ledger_post_main_ci: {run: 34856357799, status: success, attempt: 3}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: exact same-initial-law mixing/survival duration window; P-QSD-01 and P-QSD-04 remain distinct source propositions
+    coverage_counted: true
+    ledger_gate: complete
+
+  P-PER-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: viability_tangency
+    canonical_theorem: UEOT.V3.ViabilityTangency.p_per_04
+    source_contract:
+      - closed viability/identity domain
+      - viable trajectory differentiable at time zero
+      - trajectory remains in the domain for nonnegative time
+      - positive-time Bouligand contingent cone h downarrow 0
+      - initial velocity belongs to that contingent cone
+      - K-VIA-01 Marchaud/Nagumo theorem remains separate
+    implementation_contract:
+      - Mathlib posTangentConeAt equals tangentConeAt NNReal and is used instead of the two-sided real tangent cone
+      - positive-time difference quotients use HasDerivAt.tendsto_slope_zero_right
+      - trajectory increments are the tangent-cone witness
+      - no custom UEOT tangent-cone definition
+      - real normed-space generalization preserves the frozen R^d theorem
+    promotion:
+      feature_branch: formal/pper04-tangency-necessity-v1
+      feature_head: ce6eccf5ca4b6f30aae1dcd0416fc1b79286f2d2
+      feature_ci: {run: 34858878140, status: success}
+      clean_integration_branch: formal/pper04-main-integration-v1
+      clean_integration_head: f5db4c5e547866e488ad1d33c0789bc0ce5ec48c
+      clean_integration_ci: {run: 34862446244, status: success}
+      clean_integration_pr: 83
+      clean_integration_pr_ci: {run: 34863236502, status: success}
+      main_commit: ba9b9c350038dafa52afdda954d2294361a01fc7
+      post_main_ci: {run: 34863965181, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: positive Bouligand cone through the pinned Mathlib sequence/filter characterization; no two-sided-cone or Nagumo overclaim
     coverage_counted: true
     ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
