@@ -69,10 +69,10 @@ theorem partitionBlockOf_surjective (π : ChildPartition I) :
     Function.Surjective (partitionBlockOf π) := by
   intro b
   rcases b with ⟨b, hb⟩
-  obtain ⟨i, hi, hpart⟩ := π.part_surjOn b hb
+  obtain ⟨i, hi⟩ := π.nonempty_of_mem_parts hb
   refine ⟨i, ?_⟩
   apply Subtype.ext
-  exact hpart
+  exact π.part_eq_of_mem hb hi
 
 /-- The block-label type has exactly as many elements as the partition has
 parts. -/
@@ -85,7 +85,8 @@ at least two elements. -/
 theorem two_le_card_partitionBlock
     {π : ChildPartition I} (hπ : IsNontrivialPartition π) :
     2 ≤ Fintype.card (PartitionBlock π) := by
-  simpa [card_partitionBlock] using hπ
+  rw [card_partitionBlock]
+  exact hπ
 
 /-- If there are at least two children, the complete nontrivial partition
 family is nonempty.  The discrete partition `⊥` is a witness. -/
