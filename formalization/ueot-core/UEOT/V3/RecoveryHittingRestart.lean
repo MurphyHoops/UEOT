@@ -209,15 +209,19 @@ theorem homTrajMeasure_shift_prefix
       rw [Measure.map_map
         (measurable_dropFirstHistory (n + 1))
         (measurable_appendHistory (n + 1))]
+      have hid : Measurable (id : X → X) := measurable_id
+      have hprod :
+          Measurable
+            (Prod.map (dropFirstHistory (X := X) n) (id : X → X)) :=
+        (measurable_dropFirstHistory (X := X) n).prodMap hid
       have hcomp :
           dropFirstHistory (n + 1) ∘ appendHistory (n + 1) =
-            appendHistory n ∘ Prod.map (dropFirstHistory n) id := by
+            appendHistory n ∘
+              Prod.map (dropFirstHistory (X := X) n) (id : X → X) := by
         funext p
         exact dropFirstHistory_appendHistory n p.1 p.2
       rw [hcomp]
-      rw [← Measure.map_map
-        (measurable_appendHistory n)
-        ((measurable_dropFirstHistory n).prodMap measurable_id)]
+      rw [← Measure.map_map (measurable_appendHistory n) hprod]
       rw [homHistory_compProd_dropFirst
         (μh := μpath.map (frestrictLe (n + 1))) P]
       rw [← hshift_n]
