@@ -32,8 +32,9 @@ theorem measurable_dropFirstHistory (n : ℕ) :
     Measurable (dropFirstHistory (X := X) n) := by
   apply measurable_pi_iff.mpr
   intro i
-  exact measurable_pi_apply
+  let j : Iic (n + 1) :=
     ⟨i.1 + 1, mem_Iic.mpr (Nat.succ_le_succ (mem_Iic.mp i.2))⟩
+  exact measurable_pi_apply j
 
 /-- Restricting a shifted path is the same as restricting one step farther and
 then deleting the first coordinate. -/
@@ -56,7 +57,10 @@ theorem dropFirstHistory_appendHistory
   · have hin : (i : ℕ) = n + 1 := by
       have hle : (i : ℕ) ≤ n + 1 := mem_Iic.mp i.2
       omega
-    subst i
+    have hieq :
+        i = (⟨n + 1, mem_Iic.mpr le_rfl⟩ : Iic (n + 1)) :=
+      Subtype.ext hin
+    rw [hieq]
     simp [dropFirstHistory, appendHistory, IicProdIoc_def,
       MeasurableEquiv.piSingleton]
 
@@ -86,9 +90,11 @@ theorem homHistory_compProd_dropFirst
     isMarkovKernel_homHistoryKernel P (n + 1)
   letI : IsMarkovKernel (homHistoryKernel P n) :=
     isMarkovKernel_homHistoryKernel P n
+  have hprod : Measurable (Prod.map (dropFirstHistory n) id) :=
+    (measurable_dropFirstHistory n).prodMap measurable_id
   ext s hs
-  rw [Measure.map_apply (by fun_prop) hs,
-    Measure.compProd_apply (by measurability),
+  rw [Measure.map_apply hprod hs,
+    Measure.compProd_apply (hprod hs),
     Measure.compProd_apply hs,
     lintegral_map (Kernel.measurable_kernel_prodMk_left hs)
       (measurable_dropFirstHistory n)]
@@ -188,7 +194,6 @@ theorem homTrajMeasure_shift_prefix
             (measurable_frestrictLe (n + 1))]
         congr 1
         funext z
-        exact (dropFirstHistory_frestrictLe n z).symm
       have hshift_succ :
           ((μpath.map pathShift).map (frestrictLe (n + 1))) =
             (μpath.map (frestrictLe (n + 2))).map
@@ -198,7 +203,6 @@ theorem homTrajMeasure_shift_prefix
             (measurable_frestrictLe (n + 2))]
         congr 1
         funext z
-        exact (dropFirstHistory_frestrictLe (n + 1) z).symm
       rw [hshift_succ]
       rw [← homTrajMeasure_prefix_succ μ P (n + 1)]
       rw [Measure.map_map
