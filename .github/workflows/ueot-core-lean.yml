@@ -42,11 +42,11 @@ jobs:
       - name: Restore Mathlib cache from lock
         run: lake exe cache get
 
-      - name: Build UEOT from lock
+      - name: Build restart module
         shell: bash
         run: |
           set -o pipefail
-          lake build UEOT 2>&1 | tee ueot-build.log
+          lake build UEOT.V3.RecoveryHittingRestart 2>&1 | tee ueot-build.log
 
       - name: Upload Lean build log
         if: always()
