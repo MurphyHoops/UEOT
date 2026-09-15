@@ -56,7 +56,7 @@ instance blockMarginalKernel_isMarkov
     (blockOf : I → B) (b : B) :
     IsMarkovKernel (blockMarginalKernel (X := X) κ blockOf b) := by
   unfold blockMarginalKernel
-  exact IsMarkovKernel.map κ
+  exact Kernel.IsMarkovKernel.map κ
     (measurable_blockReadout (X := X) blockOf b)
 
 /-- The reblocked joint conditional law as an honest kernel.  No stochastic law
@@ -72,7 +72,7 @@ instance reblockedKernel_isMarkov
     (blockOf : I → B) :
     IsMarkovKernel (reblockedKernel (X := X) κ blockOf) := by
   unfold reblockedKernel
-  exact IsMarkovKernel.map κ
+  exact Kernel.IsMarkovKernel.map κ
     (measurable_reblockPath (X := X) blockOf)
 
 /-- Fiber identification for the reblocked kernel. -/
@@ -102,7 +102,9 @@ noncomputable def blockProductKernel
     (blockOf : I → B) :
     Kernel U (∀ b, BlockPath blockOf X b) where
   toFun u :=
-    Measure.pi (fun b => blockMarginalKernel (X := X) κ blockOf b u)
+    (ProbabilityMeasure.pi (fun b =>
+      (⟨blockMarginalKernel (X := X) κ blockOf b u, inferInstance⟩ :
+        ProbabilityMeasure (BlockPath blockOf X b)))).toMeasure
   measurable' := by
     let ν : ∀ b, U → ProbabilityMeasure (BlockPath blockOf X b) :=
       fun b u =>
@@ -111,7 +113,7 @@ noncomputable def blockProductKernel
       intro b
       exact (Kernel.measurable
         (blockMarginalKernel (X := X) κ blockOf b)).subtype_mk
-    simpa [ν] using
+    simpa only [ν] using
       (measurable_probabilityMeasure_pi_toMeasure ν hν)
 
 instance blockProductKernel_isMarkov
@@ -120,7 +122,9 @@ instance blockProductKernel_isMarkov
     IsMarkovKernel (blockProductKernel (X := X) κ blockOf) := by
   refine ⟨fun u => ?_⟩
   change IsProbabilityMeasure
-    (Measure.pi (fun b => blockMarginalKernel (X := X) κ blockOf b u))
+    ((ProbabilityMeasure.pi (fun b =>
+      (⟨blockMarginalKernel (X := X) κ blockOf b u, inferInstance⟩ :
+        ProbabilityMeasure (BlockPath blockOf X b)))).toMeasure)
   infer_instance
 
 /-- Each fiber of the product kernel is exactly the product of the block
@@ -131,6 +135,7 @@ theorem blockProductKernel_apply
     blockProductKernel (X := X) κ blockOf u =
       blockProductLaw (X := X) (κ u) blockOf := by
   unfold blockProductKernel blockProductLaw
+  simp only [ProbabilityMeasure.toMeasure_pi]
   congr 1
   funext b
   exact blockMarginalKernel_apply (X := X) κ blockOf b u
