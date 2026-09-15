@@ -95,6 +95,15 @@ theorem blockMarginalKernel_apply
   exact Kernel.map_apply κ
     (measurable_blockReadout (X := X) blockOf b) u
 
+/-- The block marginal packaged with its probability-measure certificate.
+Keeping this dependent codomain explicit prevents Lean from forgetting which
+block-path type belongs to each block when `ProbabilityMeasure.pi` is unfolded. -/
+noncomputable def blockMarginalProbabilityMeasure
+    (κ : Kernel U (∀ i, X i)) [IsMarkovKernel κ]
+    (blockOf : I → B) (u : U) (b : B) :
+    ProbabilityMeasure (BlockPath blockOf X b) :=
+  ⟨blockMarginalKernel (X := X) κ blockOf b u, inferInstance⟩
+
 /-- Finite product of the conditional block marginals, constructed as a
 measurable kernel rather than merely pointwise as a family of measures. -/
 noncomputable def blockProductKernel
@@ -102,17 +111,16 @@ noncomputable def blockProductKernel
     (blockOf : I → B) :
     Kernel U (∀ b, BlockPath blockOf X b) where
   toFun u :=
-    (ProbabilityMeasure.pi (fun b =>
-      (⟨blockMarginalKernel (X := X) κ blockOf b u, inferInstance⟩ :
-        ProbabilityMeasure (BlockPath blockOf X b)))).toMeasure
+    (ProbabilityMeasure.pi
+      (blockMarginalProbabilityMeasure (X := X) κ blockOf u)).toMeasure
   measurable' := by
     let ν : ∀ b, U → ProbabilityMeasure (BlockPath blockOf X b) :=
-      fun b u =>
-        ⟨blockMarginalKernel (X := X) κ blockOf b u, inferInstance⟩
+      fun b u => blockMarginalProbabilityMeasure (X := X) κ blockOf u b
     have hν : ∀ b, Measurable (ν b) := by
       intro b
-      exact (Kernel.measurable
-        (blockMarginalKernel (X := X) κ blockOf b)).subtype_mk
+      simpa only [ν, blockMarginalProbabilityMeasure] using
+        (Kernel.measurable
+          (blockMarginalKernel (X := X) κ blockOf b)).subtype_mk
     simpa only [ν] using
       (measurable_probabilityMeasure_pi_toMeasure ν hν)
 
@@ -122,9 +130,8 @@ instance blockProductKernel_isMarkov
     IsMarkovKernel (blockProductKernel (X := X) κ blockOf) := by
   refine ⟨fun u => ?_⟩
   change IsProbabilityMeasure
-    ((ProbabilityMeasure.pi (fun b =>
-      (⟨blockMarginalKernel (X := X) κ blockOf b u, inferInstance⟩ :
-        ProbabilityMeasure (BlockPath blockOf X b)))).toMeasure)
+    ((ProbabilityMeasure.pi
+      (blockMarginalProbabilityMeasure (X := X) κ blockOf u)).toMeasure)
   infer_instance
 
 /-- Each fiber of the product kernel is exactly the product of the block
@@ -134,10 +141,16 @@ theorem blockProductKernel_apply
     (blockOf : I → B) (u : U) :
     blockProductKernel (X := X) κ blockOf u =
       blockProductLaw (X := X) (κ u) blockOf := by
-  unfold blockProductKernel blockProductLaw
-  simp only [ProbabilityMeasure.toMeasure_pi]
+  change
+    (ProbabilityMeasure.pi
+      (blockMarginalProbabilityMeasure (X := X) κ blockOf u)).toMeasure =
+      blockProductLaw (X := X) (κ u) blockOf
+  rw [ProbabilityMeasure.toMeasure_pi]
+  unfold blockProductLaw
   congr 1
   funext b
+  change blockMarginalKernel (X := X) κ blockOf b u =
+    (κ u).map (blockReadout (X := X) blockOf b)
   exact blockMarginalKernel_apply (X := X) κ blockOf b u
 
 /-- Fiberwise source KL is exactly the KL between the reblocked joint kernel
