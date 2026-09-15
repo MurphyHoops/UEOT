@@ -90,8 +90,11 @@ theorem homHistory_compProd_dropFirst
     isMarkovKernel_homHistoryKernel P (n + 1)
   letI : IsMarkovKernel (homHistoryKernel P n) :=
     isMarkovKernel_homHistoryKernel P n
-  have hprod : Measurable (Prod.map (dropFirstHistory n) id) :=
-    (measurable_dropFirstHistory n).prodMap measurable_id
+  have hid : Measurable (id : X → X) := measurable_id
+  have hprod :
+      Measurable
+        (Prod.map (dropFirstHistory (X := X) n) (id : X → X)) :=
+    (measurable_dropFirstHistory (X := X) n).prodMap hid
   ext s hs
   rw [Measure.map_apply hprod hs,
     Measure.compProd_apply (hprod hs),
@@ -193,7 +196,6 @@ theorem homTrajMeasure_shift_prefix
           Measure.map_map (measurable_dropFirstHistory n)
             (measurable_frestrictLe (n + 1))]
         congr 1
-        funext z
       have hshift_succ :
           ((μpath.map pathShift).map (frestrictLe (n + 1))) =
             (μpath.map (frestrictLe (n + 2))).map
@@ -202,7 +204,6 @@ theorem homTrajMeasure_shift_prefix
           Measure.map_map (measurable_dropFirstHistory (n + 1))
             (measurable_frestrictLe (n + 2))]
         congr 1
-        funext z
       rw [hshift_succ]
       rw [← homTrajMeasure_prefix_succ μ P (n + 1)]
       rw [Measure.map_map
