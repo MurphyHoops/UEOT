@@ -7,15 +7,16 @@ import Mathlib.Probability.Kernel.Basic
 # P-COMP-01 — conditional multi-block path integration
 
 For one declared finite path partition, the block tuple is represented by a
-finite dependent product `∀ b, X b`.  In each conditional fiber we compare the
-true joint law with the finite product of its block marginals.  The resulting
+finite dependent product `∀ b, X b`. In each conditional fiber we compare the
+true joint law with the finite product of its block marginals. The resulting
 KL divergence vanishes exactly when the block coordinate maps are jointly
 independent.
 
-The conditional quantity is the `U`-average of these fiber KL divergences.  Its
+The conditional quantity is the `U`-average of these fiber KL divergences. Its
 zero set is therefore exactly almost-everywhere conditional block independence.
-For a finite nonempty family of nontrivial partitions, positivity of the
-minimum is equivalent to failure of factorization for every member.
+For a finite nonempty family whose index type enumerates the declared nontrivial
+partitions, positivity of the minimum is equivalent to failure of factorization
+for every member.
 -/
 
 namespace UEOT.V3.CompositionPathInformation
@@ -90,8 +91,8 @@ def ConditionallyIndependentBlocks
   ∀ᵐ u ∂ν, iIndepFun (fun b (x : ∀ b, X b) => x b) (κ u)
 
 /-- The conditional path-integration score vanishes exactly for conditional
-block independence.  `hMeas` is the measurability regularity implicit in the
-source expectation `E_U`; no finiteness of the KL value is assumed. -/
+block independence. `hMeas` is the explicit measurability regularity needed for
+the source expectation `E_U`; no finiteness of the KL value is assumed. -/
 theorem conditionalPartitionInformation_eq_zero_iff
     (ν : Measure U)
     (κ : Kernel U (∀ b, X b)) [IsMarkovKernel κ]
@@ -123,10 +124,8 @@ theorem pathIntegrationMargin_pos_iff_all_pos
   rw [Finset.lt_inf'_iff]
   simp
 
-/-- **P-COMP-01, finite-family endpoint.**  Once each partition score has the
-source zero-set characterization `I π = 0 ↔ factorizes π`, the finite minimum is
-strictly positive exactly when no declared nontrivial partition factorizes. -/
-theorem p_comp_01
+/-- Generic finite-family order lemma used by the source-facing theorem below. -/
+theorem pathIntegrationMargin_pos_iff_no_factorization
     (I : P → ENNReal)
     (factorizes : P → Prop)
     (hzero : ∀ π, I π = 0 ↔ factorizes π) :
@@ -139,6 +138,51 @@ theorem p_comp_01
     rw [pos_iff_ne_zero]
     intro hI
     exact h π ((hzero π).1 hI)
+
+section DeclaredPartitionFamily
+
+/-- `P` indexes the already-declared finite family of nontrivial partitions.
+Different partitions may have different finite block index types and block path
+spaces. -/
+variable {BP : P → Type uB} [∀ π, Fintype (BP π)]
+variable {XP : (π : P) → BP π → Type uX}
+variable [∀ π b, MeasurableSpace (XP π b)]
+
+/-- **P-COMP-01.** For every declared partition, the conditional KL score is
+nonnegative and is zero exactly when its path blocks are conditionally
+independent given `U`. Consequently the minimum over the finite declared
+nontrivial partition family is positive exactly when none of those partitions
+factorizes. -/
+theorem p_comp_01
+    (ν : Measure U)
+    (κ : (π : P) → Kernel U (∀ b : BP π, XP π b))
+    [∀ π, IsMarkovKernel (κ π)]
+    (hMeas : ∀ π,
+      AEMeasurable
+        (fun u => partitionFiberKL (B := BP π) (X := XP π) ((κ π) u)) ν) :
+    (∀ π,
+      0 ≤ conditionalPartitionInformation (B := BP π) (X := XP π) ν (κ π)) ∧
+    (∀ π,
+      conditionalPartitionInformation (B := BP π) (X := XP π) ν (κ π) = 0 ↔
+        ConditionallyIndependentBlocks (B := BP π) (X := XP π) ν (κ π)) ∧
+    (0 < pathIntegrationMargin
+        (fun π => conditionalPartitionInformation
+          (B := BP π) (X := XP π) ν (κ π)) ↔
+      ∀ π,
+        ¬ ConditionallyIndependentBlocks (B := BP π) (X := XP π) ν (κ π)) := by
+  constructor
+  · intro π
+    exact bot_le
+  constructor
+  · intro π
+    exact conditionalPartitionInformation_eq_zero_iff
+      (B := BP π) (X := XP π) ν (κ π) (hMeas π)
+  · apply pathIntegrationMargin_pos_iff_no_factorization
+    intro π
+    exact conditionalPartitionInformation_eq_zero_iff
+      (B := BP π) (X := XP π) ν (κ π) (hMeas π)
+
+end DeclaredPartitionFamily
 
 end
 
