@@ -97,8 +97,5 @@ theorem lintegral_hittingValue_homTrajMeasure_eq
   rw [expectedHittingTime, homTrajMeasure_dirac_eq_markovPathLaw]
   unfold markovPathLaw
   congr 1
-  funext i
-  have hi : i = default := Subsingleton.elim _ _
-  subst i
 
 end UEOT.V3.RecoveryHittingInitial
