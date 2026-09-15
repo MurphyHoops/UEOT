@@ -29,7 +29,7 @@ namespace UEOT.V3.CompositionPathKernelProduct
 
 noncomputable section
 
-open MeasureTheory ProbabilityTheory InformationTheory
+open MeasureTheory ProbabilityTheory InformationTheory Set
 open scoped ENNReal ProbabilityTheory
 
 open UEOT.V3.CompositionPathInformation
@@ -114,15 +114,19 @@ noncomputable def blockProductKernel
     (ProbabilityMeasure.pi
       (blockMarginalProbabilityMeasure (X := X) κ blockOf u)).toMeasure
   measurable' := by
-    let ν : ∀ b, U → ProbabilityMeasure (BlockPath blockOf X b) :=
-      fun b u => blockMarginalProbabilityMeasure (X := X) κ blockOf u b
-    have hν : ∀ b, Measurable (ν b) := by
-      intro b
-      simpa only [ν, blockMarginalProbabilityMeasure] using
-        (Kernel.measurable
-          (blockMarginalKernel (X := X) κ blockOf b)).subtype_mk
-    simpa only [ν] using
-      (measurable_probabilityMeasure_pi_toMeasure ν hν)
+    refine Measurable.measure_of_isPiSystem_of_isProbabilityMeasure
+      (S := Set.pi univ ''
+        Set.pi univ (fun b =>
+          {s : Set (BlockPath blockOf X b) | MeasurableSet s}))
+      generateFrom_pi.symm isPiSystem_pi ?_
+    rintro _ ⟨C, hC, rfl⟩
+    have hCmeas : ∀ b, MeasurableSet (C b) :=
+      fun b => hC b (mem_univ b)
+    simp_rw [ProbabilityMeasure.toMeasure_pi, Measure.pi_pi]
+    simpa only [blockMarginalProbabilityMeasure, ProbabilityMeasure.coe_mk] using
+      (Finset.measurable_prod Finset.univ fun b _ =>
+        Kernel.measurable_coe
+          (blockMarginalKernel (X := X) κ blockOf b) (hCmeas b))
 
 instance blockProductKernel_isMarkov
     (κ : Kernel U (∀ i, X i)) [IsMarkovKernel κ]
