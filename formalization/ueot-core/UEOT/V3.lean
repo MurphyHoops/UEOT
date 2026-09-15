@@ -191,3 +191,4 @@ import UEOT.V3.RecoveryDynkin
 import UEOT.V3.PersistenceOmega
 import UEOT.V3.DevelopmentTransport
 import UEOT.V3.RecoveryHittingRestart
+import UEOT.V3.RecoveryHittingPoisson
