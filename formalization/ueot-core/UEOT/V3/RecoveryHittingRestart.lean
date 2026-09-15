@@ -151,9 +151,6 @@ theorem homTrajMeasure_time_one
         Measure.bind_apply hs (Kernel.aemeasurable _),
         lintegral_map (Kernel.measurable_coe _ hs) e.symm.measurable]
       congr with y
-      unfold homHistoryKernel
-      rw [Kernel.comap_apply']
-      rfl
 
 /-- Prefix form of the homogeneous restart law. -/
 theorem homTrajMeasure_shift_prefix
