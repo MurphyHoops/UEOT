@@ -45,3 +45,4 @@ import UEOT.V3.FixedFitnessSelection
 import UEOT.V3.FixedFitnessRecurrenceUniqueness
 import UEOT.V3.FixedFitnessConcentration
 import UEOT.V3.CompositionPathInformation
+import UEOT.V3.CompositionPathKernelProduct
