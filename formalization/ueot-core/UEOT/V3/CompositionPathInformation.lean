@@ -248,7 +248,7 @@ theorem pathIntegrationMargin_pos_iff_no_factorization
 
 section DeclaredPartitionFamily
 
-/-- `P` indexes the frozen finite family of nontrivial partitions.  Every `π`
+/- `P` indexes the frozen finite family of nontrivial partitions.  Every `π`
 partitions the same finite child/path-coordinate type `I`; `BP π` is its block
 type and `blockOf π` assigns each common coordinate to exactly one block. -/
 variable {BP : P → Type uB} [∀ π, Fintype (BP π)]
