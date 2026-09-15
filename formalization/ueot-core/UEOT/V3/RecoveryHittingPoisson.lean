@@ -113,6 +113,7 @@ theorem expectedHittingTime_first_step_ennreal
     homTrajMeasure_shift (Measure.dirac x) P,
     kernel_comp_dirac P x,
     lintegral_hittingValue_homTrajMeasure_eq P (P x) hA]
+  rfl
 
 /-- Finiteness of the canonical potential at `x` forces the one-step
 expectation of the canonical potential to be finite as well.  This is the
