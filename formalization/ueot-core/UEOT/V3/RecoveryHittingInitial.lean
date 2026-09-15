@@ -34,7 +34,6 @@ theorem homTrajMeasure_dirac_eq_markovPathLaw
     Measure.map_dirac' (MeasurableEquiv.piUnique (fun _ : Iic 0 => X)).symm.measurable,
     Measure.dirac_bind (Kernel.measurable _)]
   congr with i
-  exact Subsingleton.elim i default ▸ rfl
 
 /-- The canonical extended hitting-time potential is measurable in the initial
 state. -/
@@ -101,6 +100,5 @@ theorem lintegral_hittingValue_homTrajMeasure_eq
   funext i
   have hi : i = default := Subsingleton.elim _ _
   subst i
-  exact e.apply_symm_apply y
 
 end UEOT.V3.RecoveryHittingInitial
