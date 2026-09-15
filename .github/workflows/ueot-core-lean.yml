@@ -42,16 +42,5 @@ jobs:
       - name: Restore Mathlib cache from lock
         run: lake exe cache get
 
-      - name: Build Poisson endpoint
-        shell: bash
-        run: |
-          set -o pipefail
-          lake build UEOT.V3.RecoveryHittingPoisson 2>&1 | tee ueot-build.log
-
-      - name: Upload Lean build log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ueot-build-log
-          path: formalization/ueot-core/ueot-build.log
-          if-no-files-found: error
+      - name: Build UEOT from lock
+        run: lake build UEOT
