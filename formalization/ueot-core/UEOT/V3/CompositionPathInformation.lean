@@ -1,3 +1,4 @@
+import UEOT.V3.InformationKernelKLMeasurable
 import Mathlib.Data.Finset.Lattice.Fold
 import Mathlib.InformationTheory.KullbackLeibler.Basic
 import Mathlib.Probability.Independence.Basic
