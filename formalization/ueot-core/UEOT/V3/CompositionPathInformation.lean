@@ -103,8 +103,10 @@ theorem measurable_unReblockPath
     Measurable (unReblockPath (X := X) blockOf) := by
   rw [measurable_pi_iff]
   intro i
-  exact (measurable_pi_apply ⟨i, rfl⟩).comp
-    (measurable_pi_apply (blockOf i))
+  exact
+    (measurable_pi_apply
+      (⟨i, rfl⟩ : {j : I // blockOf j = blockOf i})).comp
+      (measurable_pi_apply (blockOf i))
 
 /-- Joint law of the same common path after one declared regrouping. -/
 noncomputable def reblockedJointLaw
@@ -148,12 +150,17 @@ theorem eq_blockProductLaw_iff_iIndep
     reblockedJointLaw (X := X) μ blockOf =
         blockProductLaw (X := X) μ blockOf ↔
       iIndepFun (blockReadout (X := X) blockOf) μ := by
-  symm
-  simpa [reblockedJointLaw, blockProductLaw, reblockPath] using
+  unfold reblockedJointLaw blockProductLaw
+  change
+    μ.map (fun ω b => blockReadout (X := X) blockOf b ω) =
+        Measure.pi (fun b => μ.map (blockReadout (X := X) blockOf b)) ↔
+      iIndepFun (blockReadout (X := X) blockOf) μ
+  exact
     (iIndepFun_iff_map_fun_eq_pi_map
       (μ := μ)
       (f := blockReadout (X := X) blockOf)
-      (fun b => (measurable_blockReadout (X := X) blockOf b).aemeasurable))
+      (fun b =>
+        (measurable_blockReadout (X := X) blockOf b).aemeasurable)).symm
 
 /-- One conditional fiber has zero partition KL exactly when the path blocks of
 that declared partition are independent in the common joint law. -/
