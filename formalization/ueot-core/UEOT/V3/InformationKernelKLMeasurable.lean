@@ -1,7 +1,9 @@
 import Mathlib.InformationTheory.KullbackLeibler.ChainRule
 import Mathlib.MeasureTheory.Measure.FiniteMeasurePi
 import Mathlib.MeasureTheory.Measure.GiryMonad
+import Mathlib.Probability.Kernel.Composition.AbsolutelyContinuous
 import Mathlib.Probability.Kernel.Composition.RadonNikodym
+import Mathlib.Probability.Kernel.RadonNikodym
 
 /-!
 # Measurability foundations for finite product kernels and fiber KL
@@ -69,9 +71,11 @@ theorem measurable_probabilityMeasure_pi_toMeasure
     (ν : ∀ i, Ω → ProbabilityMeasure (X i))
     (hν : ∀ i, Measurable (ν i)) :
     Measurable fun ω =>
-      (ProbabilityMeasure.pi (fun i => ν i ω)).toMeasure :=
-  (measurable_subtype_coe.comp measurable_probabilityMeasure_pi).comp
-    (Measurable.of_eval hν)
+      (ProbabilityMeasure.pi (fun i => ν i ω)).toMeasure := by
+  have hPi : Measurable (fun ω i => ν i ω) :=
+    measurable_pi_iff.mpr hν
+  exact
+    (measurable_subtype_coe.comp measurable_probabilityMeasure_pi).comp hPi
 
 /-- For finite kernels with countably generated target, fiberwise KL is a
 measurable extended-real-valued function of the source parameter. -/
