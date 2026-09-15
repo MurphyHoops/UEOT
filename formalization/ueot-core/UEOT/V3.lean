@@ -128,6 +128,7 @@ import UEOT.V3.RecoveryHitting
 import UEOT.V3.RecoveryHittingNonnegative
 import UEOT.V3.RecoveryHittingDrift
 import UEOT.V3.RecoveryHittingBound
+import UEOT.V3.RecoveryHittingFirstStep
 import UEOT.V3.InformationPacking
 import UEOT.V3.InformationEntropy
 import UEOT.V3.InformationSharpFano
@@ -189,3 +190,5 @@ import UEOT.V3.RecoveryContinuous
 import UEOT.V3.RecoveryDynkin
 import UEOT.V3.PersistenceOmega
 import UEOT.V3.DevelopmentTransport
+import UEOT.V3.RecoveryHittingRestart
+import UEOT.V3.RecoveryHittingPoisson
