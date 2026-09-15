@@ -1,3 +1,5 @@
+import Mathlib.Data.ENNReal.Basic
+import Mathlib.Data.Finset.Lattice.Basic
 import Mathlib.Data.Finset.Lattice.Fold
 import Mathlib.Order.Partition.Finpartition
 
@@ -15,6 +17,10 @@ object we need.  A partition is nontrivial when it contains at least two
 blocks.  This file constructs the complete finite domain, proves its nonempty
 status as soon as there are at least two children, and provides the exact
 finite minimum used by the source theorem.
+
+`DecidableEq I` is a Lean representation requirement for the finite-set
+lattice and exhaustive `Finpartition` enumeration.  It does not restrict the
+finite mathematical partition domain represented here.
 -/
 
 namespace UEOT.V3.CompositionFinitePartitions
@@ -26,10 +32,10 @@ open scoped ENNReal
 
 universe uI
 
-variable {I : Type uI} [Fintype I]
+variable {I : Type uI} [Fintype I] [DecidableEq I]
 
 /-- An actual partition of the complete finite child index set. -/
-abbrev ChildPartition (I : Type uI) [Fintype I] :=
+abbrev ChildPartition (I : Type uI) [Fintype I] [DecidableEq I] :=
   Finpartition (Finset.univ : Finset I)
 
 /-- The frozen source excludes the one-block partition. -/
@@ -37,7 +43,8 @@ def IsNontrivialPartition (π : ChildPartition I) : Prop :=
   2 ≤ π.parts.card
 
 /-- The complete finite family `Π_nontriv` of all nontrivial partitions. -/
-noncomputable def allNontrivialPartitions (I : Type uI) [Fintype I] :
+noncomputable def allNontrivialPartitions
+    (I : Type uI) [Fintype I] [DecidableEq I] :
     Finset (ChildPartition I) := by
   classical
   exact Finset.univ.filter IsNontrivialPartition
