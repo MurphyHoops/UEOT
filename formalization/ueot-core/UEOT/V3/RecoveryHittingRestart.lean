@@ -93,9 +93,6 @@ theorem homHistory_compProd_dropFirst
     lintegral_map (Kernel.measurable_kernel_prodMk_left hs)
       (measurable_dropFirstHistory n)]
   congr with h
-  unfold homHistoryKernel
-  rw [Kernel.comap_apply', Kernel.comap_apply']
-  rfl
 
 /-- For an arbitrary initial law, the marginal at time one is the one-step
 pushforward `P ∘ₘ μ`. -/
