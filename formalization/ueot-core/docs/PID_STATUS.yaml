@@ -11,21 +11,21 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 79
+  integrated_proved: 80
   promotion_running: 0
   active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 27
-  unresolved_total: 27
+  pending_unclassified: 26
+  unresolved_total: 26
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 79 integrated/proof-complete
-    P-IDs including P-QSD-03, P-PER-04 and newly staged P-REC-04 + 27 pending/unclassified = 106.
-    P-REC-04 completed source-semantic, feature, clean-integration, PR,
-    proof-main and resulting-main proof gates. 79/106 becomes full-green only
+    Operational partition staged by this ledger checkpoint: 80 integrated/proof-complete
+    P-IDs including P-QSD-03, P-PER-04, P-REC-04 and newly staged P-REC-03 + 26 pending/unclassified = 106.
+    P-REC-03 completed source-semantic, feature, clean-integration, PR,
+    proof-main and resulting-main proof gates. 80/106 becomes full-green only
     after this ledger checkpoint passes branch CI, PR CI, lands on main and
-    passes the resulting main CI. P-PER-04 is already counted in the 78/106
+    passes the resulting main CI. P-REC-04 is already counted in the 79/106
     full-green baseline. P-REF-04 and P-REF-05 were already counted in the
     earlier baseline; audit wrappers are not new coverage.
 state_vocabulary:
@@ -586,6 +586,42 @@ pids:
     coverage_counted: true
     ledger_gate: complete
 
+  P-REC-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: markov_hitting_potential_poisson
+    canonical_theorem: UEOT.V3.RecoveryHittingPoisson.p_rec_03
+    source_contract:
+      - homogeneous discrete-time Markov transition kernel
+      - measurable target set A
+      - tau_A is the first hitting time and V_A(x) = E_x tau_A in ENNReal
+      - V_A vanishes on A
+      - for x outside A and finite V_A(x), first-step plus homogeneous Markov restart yields P V_A(x) - V_A(x) = -1
+      - finiteness is used only to pass the ENNReal first-step identity to the real-valued source endpoint
+    implementation_contract:
+      - path-shift and finite-hitting recursion prove the pathwise first-step identity without assuming Markov restart
+      - homogeneous path-law restart under shift is derived from the Ionescu-Tulcea construction
+      - initial-law mixture and one-step marginal transport identify the kernel integral
+      - the canonical ENNReal first-step identity is proved before the real-valued endpoint
+      - no finite-state specialization
+      - no assumed restart or Poisson identity
+    promotion:
+      feature_branch: formal/prec03-first-step-v1
+      feature_head: 1e01c64824f2e3441b8492cc1f8731895eed467f
+      feature_ci: {run: 34985193231, status: success}
+      clean_integration_branch: formal/prec03-main-integration-v1
+      clean_integration_head: 5142964d87fe53be7b0598d428c49991f50c837f
+      clean_integration_ci: {run: 34985962098, status: success}
+      proof_pr: 87
+      proof_pr_ci: {run: 34986723827, status: success}
+      main_commit: b337cb8a15e0996f6c285bd073773832fb21500e
+      post_main_ci: {run: 34987526584, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: source-strength hitting-potential Poisson equation via pathwise first-step decomposition and derived homogeneous Markov restart
+    coverage_counted: true
+    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
+
   P-REC-04:
     state: proved
     source_locked: true
@@ -622,7 +658,7 @@ pids:
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: source-strength Markov drift-to-hitting-time bound via survival-tail telescoping and monotone convergence
     coverage_counted: true
-    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
+    ledger_gate: complete
 
 audits:
   P-EVO-03:

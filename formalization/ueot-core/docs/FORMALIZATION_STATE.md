@@ -21,62 +21,65 @@ Last synchronized: **2026-09-15**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **79** |
+| integrated proved, staged by this checkpoint | **80** |
 | active proof / feature-green uncounted | **0** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **27** |
+| pending/unclassified | **26** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **78/106** at
-`main@22f536ea27eecf78de5005f47ecfea21edd001c6`, with ledger resulting-main CI
-`34866495921` success. P-REC-04 has completed all source, feature, clean-
-integration, PR and proof-main gates, including resulting-main CI `34882613059`
-success at `main@4946a4435d3c15efbf0ca13aed7b44e65defc79c`.
-This ledger branch stages **79/106**. Do not call 79/106 full-green until the
+The authoritative full-green baseline before this ledger branch is **79/106** at
+`main@a7d1804ea8149230526b8e8473389997f2469ede`, with ledger resulting-main CI
+`34886982624` success. P-REC-03 has completed all source, feature, clean-
+integration, PR and proof-main gates, including resulting-main CI `34987526584`
+success at `main@b337cb8a15e0996f6c285bd073773832fb21500e`.
+This ledger branch stages **80/106**. Do not call 80/106 full-green until the
 ledger branch passes branch CI, PR CI, lands on `main`, and the resulting-main
 CI succeeds.
 
-## Newly staged proof — P-REC-04
+## Newly staged proof — P-REC-03
 
-Frozen Core 3 P-REC-04 is represented at its declared discrete-time Markov
-recovery scope:
+Frozen Core 3 P-REC-03 is represented at its declared homogeneous discrete-time
+Markov hitting-potential scope:
 
-1. `P` is a homogeneous Markov transition kernel;
-2. `A` is a measurable target/hit set;
-3. `V` is a measurable nonnegative potential;
-4. the source drift outside `A` is encoded as the equivalent nonnegative form `PV + c <= V`;
-5. `c` is positive and finite;
-6. the Markov path law is derived from `P`, not postulated as an independent process assumption;
-7. hitting time is represented by its nonnegative survival-tail truncations;
-8. the one-step survival-potential drift is integrated and telescoped over finite horizons;
-9. monotone convergence gives the full hitting-time expectation;
-10. no finite-state specialization, assumed stopped inequality, or global future-integrability premise is introduced.
+1. `τ_A` is the first hitting time of the measurable set `A`;
+2. `V_A(x)=E_x τ_A` is represented in `ENNReal` and vanishes on `A`;
+3. for `x ∉ A`, a pathwise first-step hitting-time recursion is proved before using Markov restart;
+4. the homogeneous one-step restart law is derived from the Ionescu–Tulcea path construction rather than postulated;
+5. the initial-law mixture and one-step marginal bridge identify the kernel integral of `V_A`;
+6. the canonical ENNReal identity is `V_A(x)=1+P V_A(x)` outside `A`;
+7. the source finiteness hypothesis is then used only to pass to the real-valued endpoint;
+8. the final source-facing equation is `P V_A(x)-V_A(x)=-1`;
+9. no finite-state specialization or assumed Poisson/restart identity is introduced.
 
 Canonical theorem surface:
-- `UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound`.
+- `UEOT.V3.RecoveryHittingPoisson.p_rec_03`.
 
 Promotion evidence:
-- feature branch `formal/prec04-drift-hitting-time-v1`;
-- final feature head `3ea9086976ac595eb034a125390d69264e12772e`;
-- feature CI `34875538212`: success;
+- feature branch `formal/prec03-first-step-v1`;
+- final feature head `1e01c64824f2e3441b8492cc1f8731895eed467f`;
+- feature official root CI `34985193231`: success;
 - source semantic audit: complete;
-- prohibited-proof audit: clean;
-- clean integration branch `formal/prec04-main-integration-v1`;
-- clean integration head `50ac5834ff74fe4aa5229b60be87a256e762c778`;
-- clean integration CI `34877803577`: success;
-- proof PR #85 PR-triggered CI `34880820942`: success;
-- proof main `4946a4435d3c15efbf0ca13aed7b44e65defc79c`;
-- proof resulting-main CI `34882613059`: success.
+- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
+- clean integration branch `formal/prec03-main-integration-v1`;
+- clean integration head `5142964d87fe53be7b0598d428c49991f50c837f`;
+- clean integration CI `34985962098`: success;
+- proof PR #87 PR-triggered CI `34986723827`: success;
+- proof main `b337cb8a15e0996f6c285bd073773832fb21500e`;
+- proof resulting-main CI `34987526584`: success.
 
-## Previous full-green checkpoint — 78/106
+## Previous full-green checkpoint — 79/106
 
-P-PER-04 is closed and counted in the 78/106 baseline at
-`main@22f536ea27eecf78de5005f47ecfea21edd001c6`. Its proof resulting-main CI
-`34863965181` and ledger resulting-main CI `34866495921` succeeded.
+P-REC-04 is closed and counted in the 79/106 baseline at
+`main@a7d1804ea8149230526b8e8473389997f2469ede`. Its proof resulting-main CI
+`34882613059` and ledger resulting-main CI `34886982624` succeeded.
 
-P-QSD-03 is also closed and counted. P-BRG-01, P-REF-04 and P-REF-05 were
-already counted before these cycles; wrapper work must not be double-counted.
+With P-REC-03 staged, the Recovery source-facing set is now complete at the
+proof level: P-REC-01, P-REC-02, P-REC-03 and P-REC-04. It becomes ledger-counted
+as a complete four-item set only after this promotion lifecycle closes.
+
+P-PER-04, P-QSD-03, P-BRG-01, P-REF-04 and P-REF-05 remain previously counted;
+wrapper work must not be double-counted.
 
 ## Grounded non-quick fronts
 
@@ -92,12 +95,12 @@ P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
-## Candidate next fronts after 79 full-green
+## Candidate next fronts after 80 full-green
 
-- **P-REC-03:** first-step Markov identity for the finite hitting-time potential; the genuine identity `PV_A - V_A = -1` outside `A` must be derived.
-- **P-COMP-01:** binary conditional-mutual-info machinery exists, but arbitrary finite nontrivial partitions and multi-block conditional product laws remain.
+- **P-COMP-01:** source requires arbitrary finite nontrivial partitions and the equivalence between conditional KL zero and the corresponding multi-block conditional product law; binary CMI wrappers alone are insufficient.
+- **P-PER-02:** remains a larger analytic lane rather than a quick wrapper.
 
-No second proof branch is opened while the P-REC-04 ledger gate is active.
+No second proof branch is opened while the P-REC-03 ledger gate is active.
 
 ## Mandatory recovery procedure
 
