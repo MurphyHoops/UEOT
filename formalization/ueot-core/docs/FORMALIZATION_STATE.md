@@ -21,65 +21,72 @@ Last synchronized: **2026-09-16**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **82** |
+| integrated proved, staged by this checkpoint | **83** |
 | active proof / feature-green uncounted | **0** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **24** |
+| pending/unclassified | **23** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **81/106** at
-`main@0797123efc63f39ffd2169b1e9b9e86472419919`, with ledger resulting-main CI
-`35067746154` success. P-COMP-02 has completed its source audit, feature,
+The authoritative full-green baseline before this ledger branch is **82/106** at
+`main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`, with ledger resulting-main CI
+`35083749972` success. P-CTL-01 has now completed its source audit, feature,
 clean-integration, PR and proof-main gates. Its proof landed at
-`main@61135398787bb49e1a19f54903dcb75beea870d4`, and proof resulting-main CI
-`35080641545` succeeded.
+`main@3efe7ebc74d8f2a6705c12a5218a7880f5a3688c`, and proof resulting-main CI
+`35104140440` succeeded.
 
-This ledger branch stages **82/106**. Do not call 82/106 full-green until the
+This ledger branch stages **83/106**. Do not call 83/106 full-green until the
 ledger branch passes branch CI, PR CI, lands on `main`, and the resulting-main
 CI succeeds.
 
-## Newly staged proof — P-COMP-02
+## Newly staged proof — P-CTL-01
 
-Frozen Core 3 P-COMP-02 is represented at its declared general probability-law
-scope. For original record law `P`, declared cut law `Q`, and
-`M=(P+Q)/2`, the implementation uses Mathlib's genuine KL divergence and proves:
+Frozen Core 3 P-CTL-01 is formalized at its finite discounted-control source
+scope. The model retains finite states, state-dependent finite nonempty action
+sets, bounded rewards, stochastic transition laws and `0 < beta < 1`.
 
-1. `M` is the actual midpoint probability measure;
-2. `P ≤ 2M` and `Q ≤ 2M`, hence both laws are absolutely continuous with respect to `M`;
-3. the corresponding RN densities are bounded by two almost everywhere;
-4. KL-integrand integrability is proved before any `ENNReal.toReal` conversion;
-5. the exact affine `klFun` bound over `[0,2]` gives each `KL(·||M) ≤ log 2`;
-6. therefore `0 ≤ JS(P,Q) ≤ log 2`;
-7. `JS(P,Q)=0 ↔ P=Q` follows from KL converse Gibbs;
-8. over a finite declared cut family, the exact minimum JS is positive iff every cut changes the declared record law;
-9. zero observed cut effect is not interpreted as absence of microscopic coupling without additional observation-completeness / cut-faithfulness assumptions.
+The proof establishes:
 
-Canonical theorem surface:
-- `UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo`;
-- `UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff`;
-- `UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff`.
+1. Bellman is a global `beta` contraction in the finite-state sup metric;
+2. the Bellman fixed point `V*` exists and is unique;
+3. value iteration converges to `V*` from every initial value function;
+4. the Bellman residual stopping certificate is machine checked;
+5. arbitrary causal randomized policies are represented with arbitrary time-indexed memory, allowing complete history dependence rather than a Markov-only restriction;
+6. finite-horizon causal values obey Bellman domination with an explicit geometric terminal tail;
+7. bounded rewards make every finite-horizon value sequence Cauchy, yielding a well-defined infinite discounted value;
+8. every causal history-dependent randomized policy has infinite value at most `V*`;
+9. the Bellman greedy selector is encoded as a stationary deterministic causal policy whose infinite value equals `V*` statewise.
+
+Canonical theorem:
+- `UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality`.
+
+Supporting source-facing facts:
+- `UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique`;
+- `UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto`;
+- `UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual`;
+- `UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal`;
+- `UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal`.
 
 Promotion evidence:
-- feature `formal/pcomp01-multiblock-v1@2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
-- feature official root CI `35077241084`: success;
+- feature `formal/pcomp01-multiblock-v1@47218ef06c63ed81ab3974d107f0d3d46cc49ecb`;
+- feature official root CI `35098260086`: success;
 - prohibited-proof audit clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration `formal/pcomp01-main-integration-v1@2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
-- clean integration official root CI `35077915553`: success;
-- proof PR #91 PR-triggered CI `35079990097`: success;
-- proof main `61135398787bb49e1a19f54903dcb75beea870d4`;
-- proof resulting-main CI `35080641545`: success.
+- clean integration `formal/pcomp01-main-integration-v1@45440746a7086b74bc65ba741611f98a8da92f27`;
+- clean integration official root CI `35099296408`: success;
+- proof PR #93 PR-triggered CI `35102272835`: success;
+- proof main `3efe7ebc74d8f2a6705c12a5218a7880f5a3688c`;
+- proof resulting-main CI `35104140440`: success.
 
-## Previous full-green checkpoint — 81/106
+## Previous full-green checkpoint — 82/106
 
-P-COMP-01 is already counted in the 81/106 baseline at
-`main@0797123efc63f39ffd2169b1e9b9e86472419919`; ledger resulting-main CI
-`35067746154` succeeded. Recovery P-REC-01/P-REC-02/P-REC-03/P-REC-04,
-P-PER-04, P-QSD-03, P-BRG-01, P-REF-04 and P-REF-05 remain previously counted;
-wrapper work must not be double-counted.
+P-COMP-02 and all earlier counted P-IDs are already counted in the 82/106
+baseline at `main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`; ledger resulting-main CI
+`35083749972` succeeded. P-TEL-01 is already counted and must not be reopened
+merely because older compilation reports predate its later promotion.
 
 ## Grounded non-quick fronts
 
+- P-CTL-02: compact-metric/Feller discounted control with continuity and measurable-selection infrastructure.
 - P-PER-02: Polish/Feller occupation-law theorem with tightness, Prokhorov and Portmanteau; sample-path empirical-frequency weakening is forbidden.
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality.
@@ -92,12 +99,15 @@ P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
-## Candidate next source-to-main audits after 82 full-green
+## Candidate next source-to-main audits after 83 full-green
 
-- **P-QUO-01 / P-QUO-02:** current main already contains `StructuredQuotient` and finite stable-partition infrastructure, so audit for an A/B bridge first. The frozen controlled Bellman/value-policy statements must still be matched exactly; generic quotient-law results are insufficient.
-- **P-PER-02:** remains a larger analytic lane rather than a quick wrapper.
+- **P-QUO-01:** high-leverage after P-CTL-01. Frozen source requires a surjective control quotient with identical same-fiber action sets, reward closure and every-action pushforward transition closure; Bellman intertwining plus fixed-point uniqueness must yield exact value lifting and macro-optimal-policy lifting.
+- **P-QUO-02:** follows the approximate version only after matching the span-sensitive P-MET-02 residual interface.
+- **P-CTL-02:** larger analytic lane requiring compact/Feller and measurable-selection machinery.
 
-No second proof branch is opened while the P-COMP-02 ledger gate is active.
+No new proof branch is opened while the P-CTL-01 ledger gate is active. Remote
+branch count is above the repository hard cap; after this promotion closes,
+branch hygiene must run before a new proof lane opens.
 
 ## Mandatory recovery procedure
 
