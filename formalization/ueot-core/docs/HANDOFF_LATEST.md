@@ -82,6 +82,10 @@ full-green main before the governance changes. Once that PR merges, the hygiene
 workflow may retire this branch together with the other completed `formal/*`
 legacy branches.
 
+The final governance head deliberately updates this fallback file after the
+workflow activation change so the ordinary `UEOT Core Lean` path filter runs
+`lake build UEOT` on the exact head that will be proposed for merge.
+
 ## Next theorem lane after branch hygiene — P-QUO-01
 
 P-QUO-01 is the next high-leverage source-facing target. The existing
