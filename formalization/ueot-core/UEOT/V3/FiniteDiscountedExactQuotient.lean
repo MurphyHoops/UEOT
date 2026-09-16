@@ -44,12 +44,12 @@ structure ExactControlQuotient (X : Type uX) [Fintype X]
   f : X → Y
   surjective : Function.Surjective f
   micro : Model X (fun x => Abar (f x))
-  macro : Model Y Abar
-  discount_eq : micro.discount = macro.discount
+  macroModel : Model Y Abar
+  discount_eq : micro.discount = macroModel.discount
   reward_closed : ∀ x (a : Abar (f x)),
-    micro.reward x a = macro.reward (f x) a
+    micro.reward x a = macroModel.reward (f x) a
   transition_closed : ∀ x (a : Abar (f x)) (y : Y),
-    fiberMass f (micro.transition x a) y = macro.transition (f x) a y
+    fiberMass f (micro.transition x a) y = macroModel.transition (f x) a y
 
 namespace ExactControlQuotient
 
@@ -64,7 +64,7 @@ def pullback (v : Y → ℝ) : X → ℝ := fun x => v (Q.f x)
 /-- All-action pushforward closure implies exact equality of one-step
 expectations on pulled-back macro value functions. -/
 theorem expect_pullback (x : X) (a : Abar (Q.f x)) (v : Y → ℝ) :
-    Q.micro.expect x a (Q.pullback v) = Q.macro.expect (Q.f x) a v := by
+    Q.micro.expect x a (Q.pullback v) = Q.macroModel.expect (Q.f x) a v := by
   classical
   simp only [Model.expect, pullback]
   calc
@@ -86,29 +86,29 @@ theorem expect_pullback (x : X) (a : Abar (Q.f x)) (v : Y → ℝ) :
       apply Finset.sum_congr rfl
       intro x' hx
       by_cases hxy : Q.f x' = y <;> simp [hxy]
-    _ = ∑ y : Y, Q.macro.transition (Q.f x) a y * v y := by
+    _ = ∑ y : Y, Q.macroModel.transition (Q.f x) a y * v y := by
       apply Finset.sum_congr rfl
       intro y hy
       rw [Q.transition_closed x a y]
-    _ = Q.macro.expect (Q.f x) a v := rfl
+    _ = Q.macroModel.expect (Q.f x) a v := rfl
 
 /-- Reward closure, common discount and transition pushforward closure give
 exact action-value intertwining. -/
 theorem qValue_pullback (x : X) (a : Abar (Q.f x)) (v : Y → ℝ) :
     Q.micro.qValue (Q.pullback v) x a =
-      Q.macro.qValue v (Q.f x) a := by
+      Q.macroModel.qValue v (Q.f x) a := by
   simp only [Model.qValue]
   rw [Q.reward_closed x a, Q.discount_eq, Q.expect_pullback x a v]
 
 /-- Frozen-source Bellman intertwining:
 `T (vbar ∘ f) = (Tbar vbar) ∘ f`. -/
 theorem bellman_pullback (v : Y → ℝ) :
-    Q.micro.bellman (Q.pullback v) = Q.pullback (Q.macro.bellman v) := by
+    Q.micro.bellman (Q.pullback v) = Q.pullback (Q.macroModel.bellman v) := by
   funext x
   simp only [Model.bellman, pullback]
   have hfun :
       (fun a : Abar (Q.f x) => Q.micro.qValue (Q.pullback v) x a) =
-        (fun a : Abar (Q.f x) => Q.macro.qValue v (Q.f x) a) := by
+        (fun a : Abar (Q.f x) => Q.macroModel.qValue v (Q.f x) a) := by
     funext a
     exact Q.qValue_pullback x a v
   exact congrArg
@@ -119,26 +119,26 @@ theorem bellman_pullback (v : Y → ℝ) :
 /-- The macro Bellman fixed point pulls back to the unique micro Bellman fixed
 point. -/
 theorem optimalValue_pullback :
-    Q.micro.optimalValue = Q.pullback Q.macro.optimalValue := by
+    Q.micro.optimalValue = Q.pullback Q.macroModel.optimalValue := by
   symm
   apply Q.micro.fixedPoint_unique
   calc
-    Q.micro.bellman (Q.pullback Q.macro.optimalValue) =
-        Q.pullback (Q.macro.bellman Q.macro.optimalValue) :=
-      Q.bellman_pullback Q.macro.optimalValue
-    _ = Q.pullback Q.macro.optimalValue := by
-      rw [Q.macro.optimalValue_fixed]
+    Q.micro.bellman (Q.pullback Q.macroModel.optimalValue) =
+        Q.pullback (Q.macroModel.bellman Q.macroModel.optimalValue) :=
+      Q.bellman_pullback Q.macroModel.optimalValue
+    _ = Q.pullback Q.macroModel.optimalValue := by
+      rw [Q.macroModel.optimalValue_fixed]
 
 @[simp] theorem optimalValue_apply (x : X) :
-    Q.micro.optimalValue x = Q.macro.optimalValue (Q.f x) :=
+    Q.micro.optimalValue x = Q.macroModel.optimalValue (Q.f x) :=
   congrFun Q.optimalValue_pullback x
 
 /-- Optimal action values agree actionwise across the exact quotient. -/
 theorem optimal_qValue_pullback (x : X) (a : Abar (Q.f x)) :
     Q.micro.qValue Q.micro.optimalValue x a =
-      Q.macro.qValue Q.macro.optimalValue (Q.f x) a := by
+      Q.macroModel.qValue Q.macroModel.optimalValue (Q.f x) a := by
   rw [Q.optimalValue_pullback]
-  exact Q.qValue_pullback x a Q.macro.optimalValue
+  exact Q.qValue_pullback x a Q.macroModel.optimalValue
 
 /-- Lift a macro stationary selector to the micro state space. -/
 def liftSelector (σbar : ∀ y, Abar y) : ∀ x, Abar (Q.f x) :=
@@ -151,23 +151,25 @@ def liftSelector (σbar : ∀ y, Abar y) : ∀ x, Abar (Q.f x) :=
 pointwise Bellman-optimal after lifting. -/
 theorem liftSelector_optimal_actionwise (σbar : ∀ y, Abar y)
     (hσbar : ∀ y,
-      Q.macro.qValue Q.macro.optimalValue y (σbar y) = Q.macro.optimalValue y) :
+      Q.macroModel.qValue Q.macroModel.optimalValue y (σbar y) =
+        Q.macroModel.optimalValue y) :
     ∀ x,
       Q.micro.qValue Q.micro.optimalValue x (Q.liftSelector σbar x) =
         Q.micro.optimalValue x := by
   intro x
   calc
     Q.micro.qValue Q.micro.optimalValue x (Q.liftSelector σbar x) =
-        Q.macro.qValue Q.macro.optimalValue (Q.f x) (σbar (Q.f x)) :=
+        Q.macroModel.qValue Q.macroModel.optimalValue (Q.f x) (σbar (Q.f x)) :=
       Q.optimal_qValue_pullback x (Q.liftSelector σbar x)
-    _ = Q.macro.optimalValue (Q.f x) := hσbar (Q.f x)
+    _ = Q.macroModel.optimalValue (Q.f x) := hσbar (Q.f x)
     _ = Q.micro.optimalValue x := (Q.optimalValue_apply x).symm
 
 /-- A lifted macro argmax selector attains the micro optimal value for every
 state and external causal time. -/
 theorem liftSelector_infiniteValue_eq_optimal (σbar : ∀ y, Abar y)
     (hσbar : ∀ y,
-      Q.macro.qValue Q.macro.optimalValue y (σbar y) = Q.macro.optimalValue y)
+      Q.macroModel.qValue Q.macroModel.optimalValue y (σbar y) =
+        Q.macroModel.optimalValue y)
     {t : ℕ} (x : X) :
     infiniteValue (selectorPolicy (Q.liftSelector σbar)) Q.micro (t := t) x =
       Q.micro.optimalValue x := by
@@ -178,7 +180,8 @@ theorem liftSelector_infiniteValue_eq_optimal (σbar : ∀ y, Abar y)
 history-dependent randomized policy class. -/
 theorem liftSelector_optimal_against_all_causal (σbar : ∀ y, Abar y)
     (hσbar : ∀ y,
-      Q.macro.qValue Q.macro.optimalValue y (σbar y) = Q.macro.optimalValue y) :
+      Q.macroModel.qValue Q.macroModel.optimalValue y (σbar y) =
+        Q.macroModel.optimalValue y) :
     (∀ {t : ℕ} (x : X),
       infiniteValue (selectorPolicy (Q.liftSelector σbar)) Q.micro (t := t) x =
         Q.micro.optimalValue x) ∧
@@ -190,23 +193,23 @@ theorem liftSelector_optimal_against_all_causal (σbar : ∀ y, Abar y)
 /-- The canonical macro greedy selector lifts to a micro-optimal policy. -/
 theorem macroGreedy_lift_optimal :
     (∀ {t : ℕ} (x : X),
-      infiniteValue (selectorPolicy (Q.liftSelector Q.macro.greedyAction))
+      infiniteValue (selectorPolicy (Q.liftSelector Q.macroModel.greedyAction))
         Q.micro (t := t) x = Q.micro.optimalValue x) ∧
     (∀ (π : CausalPolicy X (fun x => Abar (Q.f x))) {t : ℕ} (h : π.Memory t),
       infiniteValue π Q.micro h ≤ Q.micro.optimalValue (π.current h)) := by
-  exact Q.liftSelector_optimal_against_all_causal Q.macro.greedyAction
-    (fun y => Q.macro.greedyAction_spec y)
+  exact Q.liftSelector_optimal_against_all_causal Q.macroModel.greedyAction
+    (fun y => Q.macroModel.greedyAction_spec y)
 
 /-- P-QUO-01 source-facing closure: exact value pullback, actionwise optimal-Q
 agreement, and macro-optimal-policy lifting to micro optimality.  The policy
 comparison is against the full causal randomized class supplied by P-CTL-01. -/
 theorem p_quo_01 :
-    (∀ x : X, Q.micro.optimalValue x = Q.macro.optimalValue (Q.f x)) ∧
+    (∀ x : X, Q.micro.optimalValue x = Q.macroModel.optimalValue (Q.f x)) ∧
     (∀ (x : X) (a : Abar (Q.f x)),
       Q.micro.qValue Q.micro.optimalValue x a =
-        Q.macro.qValue Q.macro.optimalValue (Q.f x) a) ∧
+        Q.macroModel.qValue Q.macroModel.optimalValue (Q.f x) a) ∧
     (∀ {t : ℕ} (x : X),
-      infiniteValue (selectorPolicy (Q.liftSelector Q.macro.greedyAction))
+      infiniteValue (selectorPolicy (Q.liftSelector Q.macroModel.greedyAction))
         Q.micro (t := t) x = Q.micro.optimalValue x) ∧
     (∀ (π : CausalPolicy X (fun x => Abar (Q.f x))) {t : ℕ} (h : π.Memory t),
       infiniteValue π Q.micro h ≤ Q.micro.optimalValue (π.current h)) := by
