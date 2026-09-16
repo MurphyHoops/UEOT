@@ -11,23 +11,24 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 81
+  integrated_proved: 82
   promotion_running: 0
   active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 25
-  unresolved_total: 25
+  pending_unclassified: 24
+  unresolved_total: 24
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 81 integrated/proof-complete
-    P-IDs including P-QSD-03, P-PER-04, P-REC-03, P-REC-04 and newly staged P-COMP-01 + 25 pending/unclassified = 106.
-    P-COMP-01 completed source-semantic, feature, clean-integration, PR,
-    proof-main and resulting-main proof gates. 81/106 becomes full-green only
+    Operational partition staged by this ledger checkpoint: 82 integrated/proof-complete
+    P-IDs including P-QSD-03, P-PER-04, P-REC-03, P-REC-04, P-COMP-01 and newly staged P-COMP-02 + 24 pending/unclassified = 106.
+    P-COMP-02 completed source-semantic, feature, clean-integration, PR,
+    proof-main and resulting-main proof gates. 82/106 becomes full-green only
     after this ledger checkpoint passes branch CI, PR CI, lands on main and
-    passes the resulting main CI. P-REC-03 is already counted in the 80/106
-    full-green baseline. P-REF-04 and P-REF-05 were already counted in the
-    earlier baseline; audit wrappers are not new coverage.
+    passes the resulting main CI. P-COMP-01 is already counted in the 81/106
+    full-green baseline at main@0797123efc63f39ffd2169b1e9b9e86472419919
+    with ledger resulting-main CI 35067746154 success. P-REF-04 and P-REF-05
+    were already counted in the earlier baseline; audit wrappers are not new coverage.
 state_vocabulary:
   - source_audit
   - proof
@@ -144,8 +145,51 @@ pids:
       proof_pr_ci: {run: 35014787206, status: success}
       main_commit: c5ae119adad2e533205f58e9b95d8ffc5d6713df
       post_main_ci: {run: 35015386126, status: success}
+      ledger_main_commit: 0797123efc63f39ffd2169b1e9b9e86472419919
+      ledger_post_main_ci: {run: 35067746154, status: success}
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: one source joint law, genuine finite reblocking, complete nontrivial partition domain, conditional KL zero-factorization equivalence, and exact positive-minimum criterion
+    coverage_counted: true
+    ledger_gate: complete
+
+  P-COMP-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: intervention_js_irreducibility
+    canonical_theorems:
+      - UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo
+      - UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff
+      - UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff
+    source_contract:
+      - original and implementable-cut record laws are probability measures on the same measurable record space
+      - Jensen-Shannon divergence uses the actual midpoint law M = (P + Q) / 2
+      - 0 <= JS(P,Q) <= log 2 for arbitrary source-scope probability record laws
+      - JS(P,Q) = 0 iff P = Q
+      - for a finite declared cut family the exact minimum JS is positive iff every declared cut changes the record law
+      - zero observed cut effect alone does not imply absence of microscopic coupling
+      - microscopic-decoupling interpretation requires additional observation-completeness or cut-faithfulness assumptions
+    implementation_contract:
+      - midpoint is constructed as the genuine half-scaled sum of the two probability measures
+      - P <= 2M and Q <= 2M derive absolute continuity rather than assuming it
+      - Radon-Nikodym densities are bounded by two almost everywhere from measure domination
+      - KL-integrand integrability is established before ENNReal.toReal conversion
+      - exact affine klFun bound on density interval [0,2] yields each KL-to-midpoint upper bound log 2
+      - zero equivalence uses KL converse Gibbs and not a postulated JS axiom
+      - no finite/discrete surrogate and no postulated KL or JS property
+    promotion:
+      feature_branch: formal/pcomp01-multiblock-v1
+      feature_head: 2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50
+      feature_ci: {run: 35077241084, status: success}
+      clean_integration_branch: formal/pcomp01-main-integration-v1
+      clean_integration_head: 2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50
+      clean_integration_ci: {run: 35077915553, status: success}
+      proof_pr: 91
+      proof_pr_ci: {run: 35079990097, status: success}
+      main_commit: 61135398787bb49e1a19f54903dcb75beea870d4
+      post_main_ci: {run: 35080641545, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: genuine general-measure Jensen-Shannon cut irreducibility with universal log-two bound, exact zero-law equality criterion, finite-cut positive margin, and microscopic-interpretation guard
     coverage_counted: true
     ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
