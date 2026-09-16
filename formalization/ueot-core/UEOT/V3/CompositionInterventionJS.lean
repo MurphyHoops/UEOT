@@ -43,8 +43,8 @@ lemma midpoint_univ (P Q : Measure X)
     [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :
     midpoint P Q univ = 1 := by
   rw [midpoint, Measure.smul_apply, Measure.add_apply,
-    measure_univ, measure_univ, smul_eq_mul, one_add_one,
-    ENNReal.inv_mul_cancel (by norm_num) (by norm_num)]
+    measure_univ, measure_univ, smul_eq_mul, ← two_mul, ← mul_assoc,
+    ENNReal.inv_mul_cancel (by norm_num) (by norm_num), one_mul]
 
 lemma midpoint_isProbabilityMeasure (P Q : Measure X)
     [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :
