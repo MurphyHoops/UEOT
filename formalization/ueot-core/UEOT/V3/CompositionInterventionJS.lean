@@ -1,6 +1,6 @@
 import Mathlib.Data.Finset.Lattice.Fold
 import Mathlib.InformationTheory.KullbackLeibler.Basic
-import Mathlib.Tactic.NormNum
+import Mathlib.Tactic
 
 /-!
 # P-COMP-02 — intervention irreducibility via Jensen-Shannon divergence
@@ -35,6 +35,9 @@ noncomputable def midpoint (P Q : Measure X) : Measure X :=
 noncomputable def jsDiv (P Q : Measure X) : ℝ≥0∞ :=
   (2 : ℝ≥0∞)⁻¹ * klDiv P (midpoint P Q) +
     (2 : ℝ≥0∞)⁻¹ * klDiv Q (midpoint P Q)
+
+/-- The source-facing `log 2` bound, embedded in `ℝ≥0∞`. -/
+noncomputable def logTwo : ℝ≥0∞ := ENNReal.ofReal (Real.log 2)
 
 lemma midpoint_univ (P Q : Measure X)
     [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :
@@ -74,7 +77,133 @@ lemma absolutelyContinuous_midpoint_right (P Q : Measure X) :
     Q ≪ midpoint P Q :=
   Measure.absolutelyContinuous_of_le_smul (le_two_smul_midpoint_right P Q)
 
+/-- A real-variable bound used first to establish integrability of the KL
+integrand.  It is deliberately coarse; the exact `log 2` bound is proved next. -/
+lemma klFun_le_one_of_le_two {r : ℝ} (hr0 : 0 ≤ r) (hr2 : r ≤ 2) :
+    klFun r ≤ 1 := by
+  by_cases hr : r = 0
+  · subst r
+    simp [klFun_apply]
+  · have hrpos : 0 < r := lt_of_le_of_ne hr0 (Ne.symm hr)
+    have hlog := Real.log_le_sub_one_of_pos hrpos
+    have hmul := mul_le_mul_of_nonneg_left hlog hr0
+    have hprod : r * (r - 2) ≤ 0 :=
+      mul_nonpos_of_nonneg_of_nonpos hr0 (sub_nonpos.mpr hr2)
+    rw [klFun_apply]
+    nlinarith
+
+/-- Exact secant-line estimate behind the binary Jensen-Shannon bound. -/
+lemma klFun_le_logTwo_affine {r : ℝ} (hr0 : 0 ≤ r) (hr2 : r ≤ 2) :
+    klFun r ≤ r * Real.log 2 + 1 - r := by
+  by_cases hr : r = 0
+  · subst r
+    simp [klFun_apply]
+  · have hrpos : 0 < r := lt_of_le_of_ne hr0 (Ne.symm hr)
+    have hlog : Real.log r ≤ Real.log 2 := Real.log_le_log hrpos hr2
+    have hmul := mul_le_mul_of_nonneg_left hlog hr0
+    rw [klFun_apply]
+    linarith
+
+/-- If a finite measure is dominated by twice another finite measure, its
+Radon--Nikodym derivative is at most two almost everywhere. -/
+lemma rnDeriv_le_two_of_le_two_smul (μ ν : Measure X)
+    [IsFiniteMeasure μ] [IsFiniteMeasure ν]
+    (hle : μ ≤ (2 : ℝ≥0∞) • ν) :
+    μ.rnDeriv ν ≤ᵐ[ν] (fun _ => (2 : ℝ≥0∞)) := by
+  have hhalf := Measure.rnDeriv_le_one_of_le hle
+  have hhalf' := hhalf
+  rw [Measure.ae_ennreal_smul_measure_eq (by norm_num) ν] at hhalf'
+  have hscale :=
+    Measure.rnDeriv_smul_right_of_ne_top μ ν (r := (2 : ℝ≥0∞))
+      (by norm_num) (by norm_num)
+  filter_upwards [hhalf', hscale] with x hx hscale_x
+  have hx' : (2 : ℝ≥0∞)⁻¹ * μ.rnDeriv ν x ≤ 1 := by
+    simpa only [hscale_x, Pi.smul_apply, smul_eq_mul] using hx
+  have h := (ENNReal.inv_mul_le_iff (by norm_num) (by norm_num)).mp hx'
+  simpa using h
+
+/-- General-measure KL bound needed for Jensen-Shannon: for probability laws,
+`μ ≤ 2ν` implies `KL(μ || ν) ≤ log 2`.
+
+The proof first establishes finiteness using `klFun ≤ 1` on the RN-density
+range, then uses the exact affine bound.  This avoids any unsound inference
+through `ENNReal.toReal ⊤ = 0`. -/
+theorem klDiv_le_logTwo_of_le_two_smul (μ ν : Measure X)
+    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
+    (hle : μ ≤ (2 : ℝ≥0∞) • ν) :
+    klDiv μ ν ≤ logTwo := by
+  have h_ac : μ ≪ ν := Measure.absolutelyContinuous_of_le_smul hle
+  have hRN := rnDeriv_le_two_of_le_two_smul μ ν hle
+  have hRNreal :
+      (fun x => (μ.rnDeriv ν x).toReal) ≤ᵐ[ν] (fun _ => (2 : ℝ)) := by
+    filter_upwards [hRN] with x hx
+    exact ENNReal.toReal_le_of_le_ofReal (by norm_num) (by simpa using hx)
+  have h_int_kl :
+      Integrable (fun x => klFun (μ.rnDeriv ν x).toReal) ν := by
+    refine Integrable.mono' (integrable_const (1 : ℝ)) (by fun_prop) ?_
+    filter_upwards [hRNreal] with x hx
+    rw [Real.norm_eq_abs, abs_of_nonneg (klFun_nonneg ENNReal.toReal_nonneg)]
+    exact klFun_le_one_of_le_two ENNReal.toReal_nonneg hx
+  have h_llr : Integrable (llr μ ν) μ :=
+    (integrable_klFun_rnDeriv_iff h_ac).mp h_int_kl
+  have hAffine :
+      (fun x => klFun (μ.rnDeriv ν x).toReal) ≤ᵐ[ν]
+        (fun x => (μ.rnDeriv ν x).toReal * Real.log 2 + 1 -
+          (μ.rnDeriv ν x).toReal) := by
+    filter_upwards [hRNreal] with x hx
+    exact klFun_le_logTwo_affine ENNReal.toReal_nonneg hx
+  have h_rn_int : Integrable (fun x => (μ.rnDeriv ν x).toReal) ν :=
+    Measure.integrable_toReal_rnDeriv
+  have h_rhs_int :
+      Integrable (fun x => (μ.rnDeriv ν x).toReal * Real.log 2 + 1 -
+        (μ.rnDeriv ν x).toReal) ν :=
+    ((h_rn_int.mul_const _).add (integrable_const (1 : ℝ))).sub h_rn_int
+  have hReal : (klDiv μ ν).toReal ≤ Real.log 2 := by
+    rw [toReal_klDiv_eq_integral_klFun h_ac]
+    calc
+      (∫ x, klFun (μ.rnDeriv ν x).toReal ∂ν) ≤
+          ∫ x, ((μ.rnDeriv ν x).toReal * Real.log 2 + 1 -
+            (μ.rnDeriv ν x).toReal) ∂ν :=
+        integral_mono_ae h_int_kl h_rhs_int hAffine
+      _ = Real.log 2 := by
+        rw [integral_sub ((h_rn_int.mul_const _).add (integrable_const (1 : ℝ))) h_rn_int,
+          integral_add (h_rn_int.mul_const _) (integrable_const (1 : ℝ)),
+          integral_mul_const, Measure.integral_toReal_rnDeriv h_ac, integral_const]
+        simp
+  unfold logTwo
+  rw [← ENNReal.ofReal_toReal (klDiv_ne_top h_ac h_llr)]
+  exact ENNReal.ofReal_le_ofReal hReal
+
 lemma jsDiv_nonneg (P Q : Measure X) : 0 ≤ jsDiv P Q := bot_le
+
+/-- Universal binary Jensen-Shannon upper bound on the actual record laws. -/
+theorem jsDiv_le_logTwo (P Q : Measure X)
+    [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :
+    jsDiv P Q ≤ logTwo := by
+  letI : IsProbabilityMeasure (midpoint P Q) := midpoint_isProbabilityMeasure P Q
+  have hP : klDiv P (midpoint P Q) ≤ logTwo :=
+    klDiv_le_logTwo_of_le_two_smul P (midpoint P Q)
+      (le_two_smul_midpoint_left P Q)
+  have hQ : klDiv Q (midpoint P Q) ≤ logTwo :=
+    klDiv_le_logTwo_of_le_two_smul Q (midpoint P Q)
+      (le_two_smul_midpoint_right P Q)
+  unfold jsDiv
+  calc
+    (2 : ℝ≥0∞)⁻¹ * klDiv P (midpoint P Q) +
+        (2 : ℝ≥0∞)⁻¹ * klDiv Q (midpoint P Q) ≤
+      (2 : ℝ≥0∞)⁻¹ * logTwo + (2 : ℝ≥0∞)⁻¹ * logTwo :=
+        add_le_add (mul_le_mul_left' hP _) (mul_le_mul_left' hQ _)
+    _ = logTwo := by
+      rw [← add_mul]
+      have hhalf : (2 : ℝ≥0∞)⁻¹ + (2 : ℝ≥0∞)⁻¹ = 1 := by
+        rw [← two_mul, ENNReal.mul_inv_cancel (by norm_num) (by norm_num)]
+      rw [hhalf, one_mul]
+
+/-- Source-strength two-sided Jensen-Shannon bound. -/
+theorem jsDiv_mem_Icc_logTwo (P Q : Measure X)
+    [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :
+    jsDiv P Q ∈ Set.Icc 0 logTwo :=
+  ⟨jsDiv_nonneg P Q, jsDiv_le_logTwo P Q⟩
 
 /-- Converse-Gibbs part of P-COMP-02: JS vanishes exactly for equal record laws. -/
 theorem jsDiv_eq_zero_iff (P Q : Measure X)
