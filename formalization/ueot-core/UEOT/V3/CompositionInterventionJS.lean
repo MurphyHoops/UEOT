@@ -110,6 +110,10 @@ lemma rnDeriv_le_two_of_le_two_smul (μ ν : Measure X)
     [IsFiniteMeasure μ] [IsFiniteMeasure ν]
     (hle : μ ≤ (2 : ℝ≥0∞) • ν) :
     μ.rnDeriv ν ≤ᵐ[ν] (fun _ => (2 : ℝ≥0∞)) := by
+  letI : IsFiniteMeasure ((2 : ℝ≥0∞) • ν) := by
+    refine ⟨?_⟩
+    rw [Measure.smul_apply, smul_eq_mul]
+    exact ENNReal.mul_lt_top (by norm_num) (measure_lt_top ν univ)
   have hhalf := Measure.rnDeriv_le_one_of_le hle
   have hhalf' := hhalf
   rw [Measure.ae_ennreal_smul_measure_eq (by norm_num) ν] at hhalf'
@@ -118,7 +122,7 @@ lemma rnDeriv_le_two_of_le_two_smul (μ ν : Measure X)
       (by norm_num) (by norm_num)
   filter_upwards [hhalf', hscale] with x hx hscale_x
   have hx' : (2 : ℝ≥0∞)⁻¹ * μ.rnDeriv ν x ≤ 1 := by
-    simpa only [hscale_x, Pi.smul_apply, smul_eq_mul] using hx
+    simpa only [hscale_x, Pi.smul_apply, Pi.one_apply, smul_eq_mul] using hx
   have h := (ENNReal.inv_mul_le_iff (by norm_num) (by norm_num)).mp hx'
   simpa using h
 
@@ -140,7 +144,8 @@ theorem klDiv_le_logTwo_of_le_two_smul (μ ν : Measure X)
     exact ENNReal.toReal_le_of_le_ofReal (by norm_num) (by simpa using hx)
   have h_int_kl :
       Integrable (fun x => klFun (μ.rnDeriv ν x).toReal) ν := by
-    refine Integrable.mono' (integrable_const (1 : ℝ)) (by fun_prop) ?_
+    refine Integrable.mono' (integrable_const (1 : ℝ))
+      (Measurable.aestronglyMeasurable (by fun_prop)) ?_
     filter_upwards [hRNreal] with x hx
     rw [Real.norm_eq_abs, abs_of_nonneg (klFun_nonneg ENNReal.toReal_nonneg)]
     exact klFun_le_one_of_le_two ENNReal.toReal_nonneg hx
@@ -166,7 +171,15 @@ theorem klDiv_le_logTwo_of_le_two_smul (μ ν : Measure X)
             (μ.rnDeriv ν x).toReal) ∂ν :=
         integral_mono_ae h_int_kl h_rhs_int hAffine
       _ = Real.log 2 := by
-        rw [integral_sub ((h_rn_int.mul_const _).add (integrable_const (1 : ℝ))) h_rn_int,
+        have hform :
+            (fun x => (μ.rnDeriv ν x).toReal * Real.log 2 + 1 -
+              (μ.rnDeriv ν x).toReal) =
+              ((fun x => (μ.rnDeriv ν x).toReal * Real.log 2) +
+                (fun _ : X => (1 : ℝ))) -
+                (fun x => (μ.rnDeriv ν x).toReal) := by
+          rfl
+        rw [hform,
+          integral_sub ((h_rn_int.mul_const _).add (integrable_const (1 : ℝ))) h_rn_int,
           integral_add (h_rn_int.mul_const _) (integrable_const (1 : ℝ)),
           integral_mul_const, Measure.integral_toReal_rnDeriv h_ac, integral_const]
         simp
@@ -191,8 +204,8 @@ theorem jsDiv_le_logTwo (P Q : Measure X)
   calc
     (2 : ℝ≥0∞)⁻¹ * klDiv P (midpoint P Q) +
         (2 : ℝ≥0∞)⁻¹ * klDiv Q (midpoint P Q) ≤
-      (2 : ℝ≥0∞)⁻¹ * logTwo + (2 : ℝ≥0∞)⁻¹ * logTwo :=
-        add_le_add (mul_le_mul_left' hP _) (mul_le_mul_left' hQ _)
+      (2 : ℝ≥0∞)⁻¹ * logTwo + (2 : ℝ≥0∞)⁻¹ * logTwo := by
+        gcongr
     _ = logTwo := by
       rw [← add_mul]
       have hhalf : (2 : ℝ≥0∞)⁻¹ + (2 : ℝ≥0∞)⁻¹ = 1 := by
