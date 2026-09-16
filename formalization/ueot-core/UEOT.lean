@@ -55,3 +55,6 @@ import UEOT.V3.FiniteDiscountedCausalInfinite
 import UEOT.V3.FiniteDiscountedGreedy
 import UEOT.V3.FiniteDiscountedSelector
 import UEOT.V3.FiniteDiscountedExactQuotient
+import UEOT.V3.FiniteDiscountedSelectorValue
+import UEOT.V3.FiniteDiscountedApproxQuotient
+import UEOT.V3.FiniteDiscountedApproxQuotientBounds
