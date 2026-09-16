@@ -214,8 +214,11 @@ theorem p_quo_01 :
     (∀ (π : CausalPolicy X (fun x => Abar (Q.f x))) {t : ℕ} (h : π.Memory t),
       infiniteValue π Q.micro h ≤ Q.micro.optimalValue (π.current h)) := by
   refine ⟨Q.optimalValue_apply, Q.optimal_qValue_pullback, ?_, ?_⟩
-  · exact Q.macroGreedy_lift_optimal.1
-  · exact Q.macroGreedy_lift_optimal.2
+  · intro t x
+    exact Q.liftSelector_infiniteValue_eq_optimal Q.macroModel.greedyAction
+      (fun y => Q.macroModel.greedyAction_spec y) (t := t) x
+  · intro π t h
+    exact infiniteValue_le_optimal π Q.micro h
 
 end ExactControlQuotient
 
