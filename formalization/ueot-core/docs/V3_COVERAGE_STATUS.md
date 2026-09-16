@@ -44,8 +44,8 @@ mathematics or Lean code exists.
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
-- **Control:** P-CTL-01
 - **Quotient:** P-QUO-03
+- **Control:** P-CTL-01
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
 - **Bridge:** P-BRG-01, P-BRG-02
@@ -70,28 +70,22 @@ Count check: `82 + P-CTL-01 = 83`.
 
 ## Newly staged promotion — P-CTL-01
 
-Frozen Core 3 P-CTL-01 is the finite discounted-control existence and optimality
-theorem. The source assumptions are preserved literally at the model level:
-finite state space, a finite nonempty admissible action type at every state,
-bounded one-stage reward, stochastic transitions, and discount `0 < beta < 1`.
+Frozen Core 3 P-CTL-01 is the finite discounted control theorem at its full
+source scope: finite state space, finite nonempty state-dependent feasible action
+sets, bounded reward, and `0 < beta < 1`. The formalization proves the Bellman
+optimality operator has a unique fixed point, value iteration from an arbitrary
+initial value converges to it, and the Bellman residual yields the declared
+stopping/error bound.
 
-The Lean implementation proves the complete source chain rather than only a
-stationary-policy surrogate:
+The control-optimality endpoint is also source-faithful: a deterministic
+stationary greedy policy attains the optimal infinite-horizon discounted value
+at every state **against the full class of arbitrary causal policies**, not only
+against stationary or Markov policies.
 
-1. the finite Bellman operator is globally `beta`-Lipschitz in the sup metric and therefore a contraction;
-2. Banach's theorem supplies the canonical Bellman fixed point `V*`, and any Bellman fixed point equals it;
-3. value iteration converges to `V*` from every initial value function;
-4. the residual certificate `dist v V* <= dist v (T v) / (1-beta)` is machine checked;
-5. an arbitrary causal randomized policy carries an arbitrary time-indexed memory type, so the quantifier can encode the complete observed history rather than only Markov memory;
-6. finite-horizon causal values satisfy the Bellman domination inequality with an explicit geometric terminal tail;
-7. bounded rewards give a geometric bound on successive finite-horizon values, hence every such causal policy has a well-defined infinite discounted value;
-8. passing the finite-horizon domination inequality to the limit gives `J^pi <= V*` for every causal history-dependent randomized policy;
-9. a finite Bellman argmax is represented as a stationary deterministic causal policy, its policy-evaluation Bellman map is a contraction, and its infinite value equals `V*` at every state.
-
-Canonical source-facing theorem:
+Canonical theorem surface:
 - `UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality`.
 
-Supporting source-facing facts:
+Supporting source-facing facts include:
 - `UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique`;
 - `UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto`;
 - `UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual`;
@@ -117,24 +111,22 @@ checkpoint.**
 
 ## Previous full-green checkpoint — 82/106
 
-P-COMP-02 and all earlier counted P-IDs are already closed in the authoritative
-**82/106 full-green** baseline at
-`main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`, whose ledger resulting-main CI
-`35083749972` succeeded. P-COMP-02 itself landed at
+P-COMP-02 is already counted in the authoritative **82/106 full-green** baseline
+at `main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`, whose ledger resulting-main
+CI `35083749972` succeeded. P-COMP-02 itself landed at
 `main@61135398787bb49e1a19f54903dcb75beea870d4` and its proof resulting-main CI
 `35080641545` succeeded.
 
 All previously counted P-IDs remain closed absent a substantive frozen-source
-mismatch or CI regression. In particular, P-TEL-01 is already counted and must
-not be reopened or double-counted merely because older compilation reports
-predate its later full promotion.
+mismatch or CI regression. Source-facing wrapper work must not be double-counted
+as new P-IDs. In particular, **P-TEL-01 is already counted and must not be
+reopened as a new coverage item.**
 
 ## Grounded pending fronts
 
 After this staged promotion, **23** P-IDs remain not yet counted and require
 fresh source-first audits. Known non-quick fronts include:
 
-- P-CTL-02: compact-metric/Feller discounted control with continuous reward, weakly continuous transition kernel, continuity-preserving Bellman operator and measurable stationary optimal selection;
 - P-PER-02: Polish-space Feller semigroup + tight occupation laws + Prokhorov/Portmanteau weak-convergence infrastructure;
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds;
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality;
@@ -143,13 +135,14 @@ fresh source-first audits. Known non-quick fronts include:
 - P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation;
 - P-QSD-01/04: source-locked distinct non-A results.
 
-P-QUO-01 is now a particularly high-leverage source-to-main audit candidate:
-the frozen theorem assumes the Chapter 19 Bellman existence/uniqueness layer
-just completed by P-CTL-01 and requires a surjective control quotient preserving
-same-fiber actions, rewards and every-action pushed-forward transition laws. Its
-source proof is Bellman intertwining plus fixed-point uniqueness and argmax
-lifting. P-QUO-02 additionally requires the span-sensitive P-MET-02 residual
-bound. Generic quotient-law theorems alone remain insufficient.
+**P-QUO-01 is the next high-leverage source-to-main audit candidate.** Current
+main already contains `StructuredQuotient`, finite stable-partition
+infrastructure, and now the counted P-CTL-01 Bellman/control foundation. It may
+only close if an explicit source-object bridge proves Bellman intertwining,
+value pullback `V* = Vbar* o f`, and actionwise-Q/argmax policy lifting at the
+frozen controlled quotient object. Generic quotient-law preservation alone is
+insufficient. P-QUO-02 remains separate and additionally depends on the frozen
+span-sensitive residual/metric contract.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; an assumed-convergence surrogate is not
