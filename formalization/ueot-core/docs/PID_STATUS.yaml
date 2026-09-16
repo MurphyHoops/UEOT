@@ -11,23 +11,24 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 82
+  integrated_proved: 83
   promotion_running: 0
   active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 24
-  unresolved_total: 24
+  pending_unclassified: 23
+  unresolved_total: 23
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 82 integrated/proof-complete
-    P-IDs including P-QSD-03, P-PER-04, P-REC-03, P-REC-04, P-COMP-01 and newly staged P-COMP-02 + 24 pending/unclassified = 106.
-    P-COMP-02 completed source-semantic, feature, clean-integration, PR,
-    proof-main and resulting-main proof gates. 82/106 becomes full-green only
+    Operational partition staged by this ledger checkpoint: 83 integrated/proof-complete
+    P-IDs including P-QSD-03, P-PER-04, P-REC-03, P-REC-04, P-COMP-01,
+    P-COMP-02 and newly staged P-CTL-01 + 23 pending/unclassified = 106.
+    P-CTL-01 completed source-semantic, feature, clean-integration, PR,
+    proof-main and resulting-main proof gates. 83/106 becomes full-green only
     after this ledger checkpoint passes branch CI, PR CI, lands on main and
-    passes the resulting main CI. P-COMP-01 is already counted in the 81/106
-    full-green baseline at main@0797123efc63f39ffd2169b1e9b9e86472419919
-    with ledger resulting-main CI 35067746154 success. P-REF-04 and P-REF-05
+    passes the resulting main CI. P-COMP-02 is already counted in the 82/106
+    full-green baseline at main@86a2cd21e4693ae084e7bc904d38046f9b3a1519
+    with ledger resulting-main CI 35083749972 success. P-REF-04 and P-REF-05
     were already counted in the earlier baseline; audit wrappers are not new coverage.
 state_vocabulary:
   - source_audit
@@ -188,10 +189,12 @@ pids:
       proof_pr_ci: {run: 35079990097, status: success}
       main_commit: 61135398787bb49e1a19f54903dcb75beea870d4
       post_main_ci: {run: 35080641545, status: success}
+      ledger_main_commit: 86a2cd21e4693ae084e7bc904d38046f9b3a1519
+      ledger_post_main_ci: {run: 35083749972, status: success}
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: genuine general-measure Jensen-Shannon cut irreducibility with universal log-two bound, exact zero-law equality criterion, finite-cut positive margin, and microscopic-interpretation guard
     coverage_counted: true
-    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
+    ledger_gate: complete
 
   P-COMP-03:
     state: proved
@@ -742,6 +745,51 @@ pids:
     source_note: source-strength Markov drift-to-hitting-time bound via survival-tail telescoping and monotone convergence
     coverage_counted: true
     ledger_gate: complete
+
+  P-CTL-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: finite_discounted_control_causal_optimality
+    canonical_theorem: UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality
+    supporting_theorems:
+      - UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique
+      - UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto
+      - UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual
+      - UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal
+      - UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal
+    source_contract:
+      - finite state space
+      - finite nonempty state-dependent feasible action family
+      - bounded one-step reward
+      - discount factor beta satisfies 0 < beta < 1
+      - Bellman optimality operator has a unique fixed point
+      - value iteration converges to that fixed point from every initial value function
+      - a deterministic stationary greedy policy attains the optimal value at every state
+      - optimality is against arbitrary causal policies, not only stationary Markov policies
+      - Bellman residual supplies the declared a-posteriori stopping/error bound
+    implementation_contract:
+      - state-dependent feasible actions are represented directly rather than replaced by one common unconstrained action set
+      - contraction and fixed-point uniqueness are derived from the discounted Bellman operator
+      - value-iteration convergence is proved from arbitrary initial conditions
+      - causal policies retain full history dependence and randomization in the comparison class
+      - stationary greedy optimality is bridged to infinite-horizon discounted value
+      - no finite-horizon-only surrogate and no stationary-policy-only optimality claim
+    promotion:
+      feature_branch: formal/pcomp01-multiblock-v1
+      feature_head: 47218ef06c63ed81ab3974d107f0d3d46cc49ecb
+      feature_ci: {run: 35098260086, status: success}
+      clean_integration_branch: formal/pcomp01-main-integration-v1
+      clean_integration_head: 45440746a7086b74bc65ba741611f98a8da92f27
+      clean_integration_ci: {run: 35099296408, status: success}
+      proof_pr: 93
+      proof_pr_ci: {run: 35102272835, status: success}
+      main_commit: 3efe7ebc74d8f2a6705c12a5218a7880f5a3688c
+      post_main_ci: {run: 35104140440, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: source-strength finite discounted Bellman existence, arbitrary-initial value-iteration convergence, residual stopping bound, and stationary deterministic optimality against all causal policies
+    coverage_counted: true
+    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
 audits:
   P-EVO-03:
