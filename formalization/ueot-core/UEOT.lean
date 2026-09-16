@@ -49,3 +49,7 @@ import UEOT.V3.CompositionPathKernelProduct
 import UEOT.V3.CompositionFinitePartitions
 import UEOT.V3.CompositionPathSource
 import UEOT.V3.CompositionInterventionJS
+import UEOT.V3.FiniteDiscountedControl
+import UEOT.V3.FiniteDiscountedCausal
+import UEOT.V3.FiniteDiscountedCausalInfinite
+import UEOT.V3.FiniteDiscountedGreedy
