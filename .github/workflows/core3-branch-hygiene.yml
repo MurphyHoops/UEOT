@@ -1,5 +1,10 @@
 name: UEOT Core 3 Branch Hygiene
 
+# Audited activation checkpoint: Core 3 reached 83/106 FULL-GREEN at
+# main@995c99683e0ae225f8df46108fd1442038c3963a with resulting-main
+# UEOT Core Lean CI 35109381744 SUCCESS. This comment-only activation change
+# intentionally triggers the reviewed one-time push cleanup when merged to main.
+
 on:
   workflow_dispatch:
     inputs:
@@ -64,8 +69,9 @@ jobs:
 
           git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
 
-          # After source/coverage reconciliation, only P-QSD-03 remains worth
-          # preserving as unique pending theorem work.
+          # Historical keep-set: preserve the one explicitly quarantined legacy
+          # theorem branch for manual audit; all other completed formal/* lanes are
+          # eligible under the reviewed rules below.
           KEEP_EXACT=(
             "main"
             "formal/pqsd03-duration-window-v1"
