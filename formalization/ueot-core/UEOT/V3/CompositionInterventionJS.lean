@@ -171,16 +171,14 @@ theorem klDiv_le_logTwo_of_le_two_smul (μ ν : Measure X)
             (μ.rnDeriv ν x).toReal) ∂ν :=
         integral_mono_ae h_int_kl h_rhs_int hAffine
       _ = Real.log 2 := by
-        have hform :
-            (fun x => (μ.rnDeriv ν x).toReal * Real.log 2 + 1 -
-              (μ.rnDeriv ν x).toReal) =
-              ((fun x => (μ.rnDeriv ν x).toReal * Real.log 2) +
-                (fun _ : X => (1 : ℝ))) -
-                (fun x => (μ.rnDeriv ν x).toReal) := by
-          rfl
-        rw [hform,
-          integral_sub ((h_rn_int.mul_const _).add (integrable_const (1 : ℝ))) h_rn_int,
-          integral_add (h_rn_int.mul_const _) (integrable_const (1 : ℝ)),
+        rw [integral_sub
+              (f := fun x => (μ.rnDeriv ν x).toReal * Real.log 2 + 1)
+              (g := fun x => (μ.rnDeriv ν x).toReal)
+              ((h_rn_int.mul_const _).add (integrable_const (1 : ℝ))) h_rn_int,
+          integral_add
+              (f := fun x => (μ.rnDeriv ν x).toReal * Real.log 2)
+              (g := fun _ : X => (1 : ℝ))
+              (h_rn_int.mul_const _) (integrable_const (1 : ℝ)),
           integral_mul_const, Measure.integral_toReal_rnDeriv h_ac, integral_const]
         simp
   unfold logTwo
