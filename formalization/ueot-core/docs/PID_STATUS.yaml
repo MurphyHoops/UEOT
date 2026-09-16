@@ -1,5 +1,5 @@
 schema_version: 2
-updated: 2026-09-15
+updated: 2026-09-16
 integration_branch: main
 official_target: lake build UEOT
 source:
@@ -11,21 +11,21 @@ source:
   hash_recomputed_this_audit: false
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 80
+  integrated_proved: 81
   promotion_running: 0
   active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 26
-  unresolved_total: 26
+  pending_unclassified: 25
+  unresolved_total: 25
   ledger_checkpoint_state: staged_pending_pr_and_main_ci
   note: >-
-    Operational partition staged by this ledger checkpoint: 80 integrated/proof-complete
-    P-IDs including P-QSD-03, P-PER-04, P-REC-04 and newly staged P-REC-03 + 26 pending/unclassified = 106.
-    P-REC-03 completed source-semantic, feature, clean-integration, PR,
-    proof-main and resulting-main proof gates. 80/106 becomes full-green only
+    Operational partition staged by this ledger checkpoint: 81 integrated/proof-complete
+    P-IDs including P-QSD-03, P-PER-04, P-REC-03, P-REC-04 and newly staged P-COMP-01 + 25 pending/unclassified = 106.
+    P-COMP-01 completed source-semantic, feature, clean-integration, PR,
+    proof-main and resulting-main proof gates. 81/106 becomes full-green only
     after this ledger checkpoint passes branch CI, PR CI, lands on main and
-    passes the resulting main CI. P-REC-04 is already counted in the 79/106
+    passes the resulting main CI. P-REC-03 is already counted in the 80/106
     full-green baseline. P-REF-04 and P-REF-05 were already counted in the
     earlier baseline; audit wrappers are not new coverage.
 state_vocabulary:
@@ -109,6 +109,45 @@ pids:
       integration_ci: {run: 34752277556, status: success}
       post_main_ci: {run: 34752528830, status: success}
     coverage_counted: true
+
+  P-COMP-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    audit_class: conditional_path_irreducibility
+    canonical_theorem: UEOT.V3.CompositionPathSource.p_comp_01
+    source_contract:
+      - one common joint probability law rho of the external interface U and all child paths
+      - one canonical conditional joint path law rho.condKernel is used for every partition
+      - explicit disintegration bridge rho.fst compProd rho.condKernel = rho preserves source-object identity
+      - partitions are actual finite set partitions of the common child-index set
+      - the exact margin ranges over the complete finite family of all nontrivial partitions
+      - each partition reblocks the same path coordinates and no unrelated per-partition kernel is introduced
+      - I_pi is conditional KL from the reblocked common joint law to the product of its conditional block marginals
+      - I_pi = 0 iff the corresponding blocks are conditionally independent given U
+      - the exact finite minimum is positive iff no nontrivial partition factorizes
+    implementation_contract:
+      - reblockPath and unReblockPath are explicit measurable inverses
+      - block product kernel is constructed from measurable block-marginal probability kernels
+      - fiber KL measurability is derived internally rather than exposed as a source-external hMeas premise
+      - actual partition block labels are nonempty and partitionBlockOf is surjective
+      - StandardBorel/nonempty hypotheses are confined to regular conditional probability/disintegration infrastructure
+      - historically rejected unrelated-kernel-per-partition design is forbidden
+    promotion:
+      feature_branch: formal/pcomp01-multiblock-v1
+      feature_head: 70a9dc7a26e0f80ed03633efda00a48927a80e5e
+      feature_ci: {run: 35011604866, status: success}
+      clean_integration_branch: formal/pcomp01-main-integration-v1
+      clean_integration_head: 5f0e0b0ba56c1f97024ac8568275e1bc9db257a4
+      clean_integration_ci: {run: 35014183716, status: success}
+      proof_pr: 89
+      proof_pr_ci: {run: 35014787206, status: success}
+      main_commit: c5ae119adad2e533205f58e9b95d8ffc5d6713df
+      post_main_ci: {run: 35015386126, status: success}
+      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
+    source_note: one source joint law, genuine finite reblocking, complete nontrivial partition domain, conditional KL zero-factorization equivalence, and exact positive-minimum criterion
+    coverage_counted: true
+    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
 
   P-COMP-03:
     state: proved
@@ -434,7 +473,7 @@ pids:
       - UEOT.V3.PRef02.p_ref_02_general_update
       - UEOT.V3.PRef02.p_ref_02_discrete_observation
       - UEOT.V3.PRef02.p_ref_02_discrete_posterior
-      - UEOT.V3.PRef02.p_ref_02_discrete_modelConflict
+      - UEOT.V3.PRef02.p_ref_02_modelConflict
       - UEOT.V3.PRef02.p_ref_02_discounted_step
     source_contract:
       - finite static latent parameter and hidden state
@@ -620,7 +659,7 @@ pids:
       prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
     source_note: source-strength hitting-potential Poisson equation via pathwise first-step decomposition and derived homogeneous Markov restart
     coverage_counted: true
-    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
+    ledger_gate: complete
 
   P-REC-04:
     state: proved
