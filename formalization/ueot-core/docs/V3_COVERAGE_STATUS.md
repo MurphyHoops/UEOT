@@ -23,14 +23,14 @@ proof-main work alone never changes the full-green count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **82** |
+| **proved, staged by this ledger checkpoint** | **83** |
 | **partial** | **0** |
-| **pending / not yet counted** | **24** |
+| **pending / not yet counted** | **23** |
 | **total** | **106** |
 
-This branch stages **82/106** after P-COMP-02 completed source-semantic, feature,
+This branch stages **83/106** after P-CTL-01 completed source-semantic, feature,
 clean-integration, PR and proof-main gates, including successful resulting-main
-CI. **82/106 is not called full-green until this ledger checkpoint itself passes
+CI. **83/106 is not called full-green until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -44,6 +44,7 @@ mathematics or Lean code exists.
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
+- **Control:** P-CTL-01
 - **Quotient:** P-QUO-03
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -65,73 +66,75 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `81 + P-COMP-02 = 82`.
+Count check: `82 + P-CTL-01 = 83`.
 
-## Newly staged promotion — P-COMP-02
+## Newly staged promotion — P-CTL-01
 
-Frozen Core 3 P-COMP-02 compares an original record probability law `P` with a
-declared implementable-cut record law `Q=P_cut^π` on the same measurable record
-space using the genuine Jensen-Shannon divergence
+Frozen Core 3 P-CTL-01 is the finite discounted-control existence and optimality
+theorem. The source assumptions are preserved literally at the model level:
+finite state space, a finite nonempty admissible action type at every state,
+bounded one-stage reward, stochastic transitions, and discount `0 < beta < 1`.
 
-`JS(P,Q) = 1/2 KL(P || M) + 1/2 KL(Q || M)`, with `M=(P+Q)/2`.
+The Lean implementation proves the complete source chain rather than only a
+stationary-policy surrogate:
 
-The Lean implementation stays at that general-measure source scope. It proves
-that the midpoint is a probability measure, derives `P ≤ 2M` and `Q ≤ 2M`, and
-uses those inequalities to obtain absolute continuity and the almost-everywhere
-Radon--Nikodym density bound by two. Integrability of the KL integrand is proved
-before converting `ℝ≥0∞` KL values to real integrals, so the argument never uses
-an invalid inference through `ENNReal.toReal ⊤ = 0`. The exact pointwise affine
-bound on Mathlib's `klFun` over `[0,2]` then integrates to `KL ≤ log 2`.
+1. the finite Bellman operator is globally `beta`-Lipschitz in the sup metric and therefore a contraction;
+2. Banach's theorem supplies the canonical Bellman fixed point `V*`, and any Bellman fixed point equals it;
+3. value iteration converges to `V*` from every initial value function;
+4. the residual certificate `dist v V* <= dist v (T v) / (1-beta)` is machine checked;
+5. an arbitrary causal randomized policy carries an arbitrary time-indexed memory type, so the quantifier can encode the complete observed history rather than only Markov memory;
+6. finite-horizon causal values satisfy the Bellman domination inequality with an explicit geometric terminal tail;
+7. bounded rewards give a geometric bound on successive finite-horizon values, hence every such causal policy has a well-defined infinite discounted value;
+8. passing the finite-horizon domination inequality to the limit gives `J^pi <= V*` for every causal history-dependent randomized policy;
+9. a finite Bellman argmax is represented as a stationary deterministic causal policy, its policy-evaluation Bellman map is a contraction, and its infinite value equals `V*` at every state.
 
-The source-strength conclusions are machine checked:
-- `0 ≤ JS(P,Q) ≤ log 2`;
-- `JS(P,Q)=0 ↔ P=Q`, via KL converse Gibbs rather than a postulate;
-- for a finite declared cut family, the exact minimum JS is positive iff every
-  declared cut changes the declared record law.
+Canonical source-facing theorem:
+- `UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality`.
 
-The frozen-source interpretation guard is retained: a zero observed cut effect
-does **not** imply absence of microscopic coupling without additional
-observation-completeness / cut-faithfulness assumptions.
-
-Canonical theorem surface:
-- `UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo`;
-- `UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff`;
-- `UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff`.
+Supporting source-facing facts:
+- `UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique`;
+- `UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto`;
+- `UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual`;
+- `UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal`;
+- `UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal`.
 
 Promotion evidence:
 - feature branch: `formal/pcomp01-multiblock-v1`;
-- final feature head: `2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
-- feature official root CI `35077241084`: success;
+- final feature head: `47218ef06c63ed81ab3974d107f0d3d46cc49ecb`;
+- feature official root CI `35098260086`: success;
 - source-semantic audit: complete;
 - prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
 - clean integration branch: `formal/pcomp01-main-integration-v1`;
-- clean integration head: `2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
-- clean integration official root CI `35077915553`: success;
-- proof PR #91;
-- PR-triggered CI `35079990097`: success;
-- proof main commit `61135398787bb49e1a19f54903dcb75beea870d4`;
-- proof resulting-main CI `35080641545`: success.
+- clean integration head: `45440746a7086b74bc65ba741611f98a8da92f27`;
+- clean integration official root CI `35099296408`: success;
+- proof PR #93;
+- PR-triggered CI `35102272835`: success;
+- proof main commit `3efe7ebc74d8f2a6705c12a5218a7880f5a3688c`;
+- proof resulting-main CI `35104140440`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger
 checkpoint.**
 
-## Previous full-green checkpoint — 81/106
+## Previous full-green checkpoint — 82/106
 
-P-COMP-01 is already counted in the authoritative **81/106 full-green**
-baseline at `main@0797123efc63f39ffd2169b1e9b9e86472419919`, whose ledger
-resulting-main CI `35067746154` succeeded. P-COMP-01 itself landed at
-`main@c5ae119adad2e533205f58e9b95d8ffc5d6713df` and its proof resulting-main CI
-`35015386126` succeeded.
+P-COMP-02 and all earlier counted P-IDs are already closed in the authoritative
+**82/106 full-green** baseline at
+`main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`, whose ledger resulting-main CI
+`35083749972` succeeded. P-COMP-02 itself landed at
+`main@61135398787bb49e1a19f54903dcb75beea870d4` and its proof resulting-main CI
+`35080641545` succeeded.
 
 All previously counted P-IDs remain closed absent a substantive frozen-source
-mismatch or CI regression. Source-facing wrapper work must not be double-counted
-as new P-IDs.
+mismatch or CI regression. In particular, P-TEL-01 is already counted and must
+not be reopened or double-counted merely because older compilation reports
+predate its later full promotion.
 
 ## Grounded pending fronts
 
-After this staged promotion, **24** P-IDs remain not yet counted and require
+After this staged promotion, **23** P-IDs remain not yet counted and require
 fresh source-first audits. Known non-quick fronts include:
 
+- P-CTL-02: compact-metric/Feller discounted control with continuous reward, weakly continuous transition kernel, continuity-preserving Bellman operator and measurable stationary optimal selection;
 - P-PER-02: Polish-space Feller semigroup + tight occupation laws + Prokhorov/Portmanteau weak-convergence infrastructure;
 - P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds;
 - P-DDH-02/03: finite exponential-family calculus and KL variational duality;
@@ -140,10 +143,13 @@ fresh source-first audits. Known non-quick fronts include:
 - P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation;
 - P-QSD-01/04: source-locked distinct non-A results.
 
-P-QUO-01 and P-QUO-02 are candidates for fresh source-to-main audits because
-current main contains structured-quotient and finite-stable-partition
-infrastructure, but neither may be counted without an explicit bridge to the
-frozen controlled Bellman/value-policy statements.
+P-QUO-01 is now a particularly high-leverage source-to-main audit candidate:
+the frozen theorem assumes the Chapter 19 Bellman existence/uniqueness layer
+just completed by P-CTL-01 and requires a surjective control quotient preserving
+same-fiber actions, rewards and every-action pushed-forward transition laws. Its
+source proof is Bellman intertwining plus fixed-point uniqueness and argmax
+lifting. P-QUO-02 additionally requires the span-sensitive P-MET-02 residual
+bound. Generic quotient-law theorems alone remain insufficient.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; an assumed-convergence surrogate is not
