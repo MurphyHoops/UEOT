@@ -7,64 +7,72 @@
 ## Current lifecycle snapshot
 
 - source P-IDs: **106**;
-- authoritative full-green baseline before this ledger checkpoint: **80/106**;
-- full-green 80 baseline: `main@e8749f66cf88817ae7df7703c6c55b1fc9c2cdd1`;
-- P-COMP-01 proof main: `c5ae119adad2e533205f58e9b95d8ffc5d6713df`;
-- P-COMP-01 proof resulting-main CI: `35015386126` — success;
+- authoritative full-green baseline before this ledger checkpoint: **81/106**;
+- full-green 81 baseline: `main@0797123efc63f39ffd2169b1e9b9e86472419919`;
+- full-green 81 resulting-main CI: `35067746154` — success;
+- P-COMP-02 proof main: `61135398787bb49e1a19f54903dcb75beea870d4`;
+- P-COMP-02 proof resulting-main CI: `35080641545` — success;
 - ledger branch: `formal/ledger-81-pcomp01`;
-- this branch stages **81/106**;
-- remaining not-yet-counted P-IDs after staging: **25**;
+- this branch stages **82/106**;
+- remaining not-yet-counted P-IDs after staging: **24**;
 - active uncounted proof lanes after this staging: **0**.
 
-**Do not call 81/106 full-green until this ledger/recovery branch passes its own
+**Do not call 82/106 full-green until this ledger/recovery branch passes its own
 branch CI, PR CI, lands on `main`, and the resulting main CI succeeds.**
 
-## P-COMP-01 — proof complete, ledger promotion running
+## P-COMP-02 — proof complete, ledger promotion running
 
-Frozen Core 3 P-COMP-01 is represented at source strength:
+Frozen Core 3 P-COMP-02 is represented at source strength on general probability
+record laws. For original record law `P`, declared implementable-cut record law
+`Q`, and midpoint `M=(P+Q)/2`, the proof establishes:
 
-1. one joint probability law `ρ` for `U` and all child paths;
-2. the canonical conditional joint path law `ρ.condKernel`, with explicit disintegration back to the same `ρ`;
-3. one common child-coordinate family for every partition;
-4. actual finite set partitions and the complete family of all nontrivial partitions;
-5. machine-checked reblocking/unreblocking of the same path law, not unrelated per-partition kernels;
-6. conditional KL against the product of conditional block marginals;
-7. zero score iff conditional block factorization/independence;
-8. positive exact finite minimum iff no nontrivial partition factorizes;
-9. Standard-Borel hypotheses only where regular conditional probabilities are required.
+1. `M` is the actual midpoint probability measure;
+2. `P ≤ 2M` and `Q ≤ 2M`, so both are absolutely continuous with respect to `M`;
+3. the Radon–Nikodym densities are bounded by two almost everywhere;
+4. the KL integrands are integrable before conversion from `ℝ≥0∞` to `ℝ`;
+5. the exact affine `klFun` bound on `[0,2]` yields `KL(P||M), KL(Q||M) ≤ log 2`;
+6. therefore `0 ≤ JS(P,Q) ≤ log 2`;
+7. `JS(P,Q)=0 ↔ P=Q` by KL converse Gibbs;
+8. for a finite declared cut family, the exact minimum JS is positive iff every cut changes the declared record law;
+9. zero observed cut effect is not interpreted as microscopic decoupling without additional observation-completeness / cut-faithfulness assumptions.
 
-Canonical theorem:
-- `UEOT.V3.CompositionPathSource.p_comp_01`.
+Canonical theorem surface:
+- `UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo`;
+- `UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff`;
+- `UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff`.
 
 Evidence:
-- feature `formal/pcomp01-multiblock-v1@70a9dc7a26e0f80ed03633efda00a48927a80e5e`;
-- feature official root CI `35011604866` success;
-- source semantic and historical-conversation audit complete;
+- feature `formal/pcomp01-multiblock-v1@2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
+- feature official root CI `35077241084` success;
+- source semantic audit complete;
 - prohibited-proof audit clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration `formal/pcomp01-main-integration-v1@5f0e0b0ba56c1f97024ac8568275e1bc9db257a4`;
-- clean integration official root CI `35014183716` success;
-- proof PR #89 PR CI `35014787206` success;
-- proof main `c5ae119adad2e533205f58e9b95d8ffc5d6713df`;
-- proof resulting-main CI `35015386126` success.
+- clean integration `formal/pcomp01-main-integration-v1@2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
+- clean integration official root CI `35077915553` success;
+- proof PR #91 PR CI `35079990097` success;
+- proof main `61135398787bb49e1a19f54903dcb75beea870d4`;
+- proof resulting-main CI `35080641545` success.
 
-Exact next action: complete the separate **81/106** ledger/recovery branch → PR →
-main resulting-CI lifecycle.
+Exact next action: complete the separate **82/106** ledger/recovery branch → PR →
+main resulting-CI lifecycle. Only after that gate may the authoritative count
+advance from 81/106 to 82/106 full-green.
 
-## Previous full-green promotion — P-REC-03
+## Previous full-green promotion — P-COMP-01
 
-P-REC-03 is already counted in the 80/106 baseline at
-`main@e8749f66cf88817ae7df7703c6c55b1fc9c2cdd1`; ledger resulting-main CI
-`34991002841` succeeded.
+P-COMP-01 is already counted in the 81/106 baseline at
+`main@0797123efc63f39ffd2169b1e9b9e86472419919`; ledger resulting-main CI
+`35067746154` succeeded.
 
 Recovery remains counted complete as P-REC-01/P-REC-02/P-REC-03/P-REC-04.
+P-PER-04, P-QSD-03, P-BRG-01, P-REF-04 and P-REF-05 remain previously counted;
+wrapper work must not be double-counted.
 
 ## Branchless next-front audit
 
-No second proof branch is open during the P-COMP-01 ledger lifecycle.
+No second proof branch is open during the P-COMP-02 ledger lifecycle.
 
-- **P-COMP-02:** natural Composition-family next source-first audit candidate; it must be independently matched to its frozen statement rather than inferred from P-COMP-01.
+- **P-QUO-01 / P-QUO-02:** current main contains `StructuredQuotient` plus finite stable-partition infrastructure; audit for an A/B bridge first, but the frozen controlled Bellman/value-policy statements must be matched exactly.
 - **P-PER-02:** non-quick; requires Polish/Feller, tight time-averaged laws, Prokhorov subsequences, Feller invariance and Portmanteau support preservation.
-- **P-ALI-01 / P-KL-04/05 / P-EVO-03/04:** remain larger source-strength foundations.
+- **P-ALI-01 / P-KL-04/05 / P-EVO-03/04 / P-DDH-02/03/04/05 / P-QSD-01/04:** remain larger source-strength foundations unless a fresh main audit finds an exact bridge.
 
 ## Guards
 
@@ -76,7 +84,8 @@ No second proof branch is open during the P-COMP-01 ledger lifecycle.
 - historical conversation decisions and rejected surrogate routes are part of the recovery audit;
 - P-QSD-01 and P-QSD-03 must never be swapped;
 - P-DDH-04/05 require genuine rank/singular-value infrastructure;
-- P-KL-04/05 must remain at their frozen CTMC/Girsanov level.
+- P-KL-04/05 must remain at their frozen CTMC/Girsanov level;
+- observational JS=0 must never be promoted to microscopic decoupling without the frozen source's additional assumptions.
 
 ## Recovery order
 
