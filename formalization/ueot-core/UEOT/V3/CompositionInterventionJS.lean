@@ -39,8 +39,9 @@ noncomputable def jsDiv (P Q : Measure X) : ℝ≥0∞ :=
 lemma midpoint_univ (P Q : Measure X)
     [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :
     midpoint P Q univ = 1 := by
-  simp [midpoint]
-  norm_num
+  rw [midpoint, Measure.smul_apply, Measure.add_apply MeasurableSet.univ,
+    measure_univ, measure_univ, smul_eq_mul, one_add_one,
+    ENNReal.inv_mul_cancel (by norm_num) (by norm_num)]
 
 lemma midpoint_isProbabilityMeasure (P Q : Measure X)
     [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :
@@ -50,25 +51,19 @@ lemma midpoint_isProbabilityMeasure (P Q : Measure X)
 @[simp]
 lemma midpoint_self (P : Measure X) : midpoint P P = P := by
   ext s hs
-  simp [midpoint, Measure.add_apply, hs]
-  by_cases h : P s = ∞
-  · simp [h]
-  · rw [← ENNReal.ofReal_toReal h]
-    simp only [← ENNReal.ofReal_add ENNReal.toReal_nonneg ENNReal.toReal_nonneg]
-    rw [← ENNReal.ofReal_mul zero_le_two]
-    congr
-    ring
+  rw [midpoint, Measure.smul_apply, Measure.add_apply hs, smul_eq_mul, ← two_mul,
+    ← mul_assoc, ENNReal.inv_mul_cancel (by norm_num) (by norm_num), one_mul]
 
 lemma le_two_smul_midpoint_left (P Q : Measure X) :
     P ≤ (2 : ℝ≥0∞) • midpoint P Q := by
-  rw [midpoint, smul_smul]
-  norm_num
+  rw [midpoint, smul_smul,
+    ENNReal.mul_inv_cancel (by norm_num) (by norm_num), one_smul]
   exact Measure.le_add_right le_rfl
 
 lemma le_two_smul_midpoint_right (P Q : Measure X) :
     Q ≤ (2 : ℝ≥0∞) • midpoint P Q := by
-  rw [midpoint, smul_smul]
-  norm_num
+  rw [midpoint, smul_smul,
+    ENNReal.mul_inv_cancel (by norm_num) (by norm_num), one_smul]
   exact Measure.le_add_left le_rfl
 
 lemma absolutelyContinuous_midpoint_left (P Q : Measure X) :
