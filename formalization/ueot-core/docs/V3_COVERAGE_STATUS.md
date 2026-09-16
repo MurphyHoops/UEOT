@@ -16,22 +16,23 @@ This file is the **authoritative source-level P-ID ledger** for the frozen
 
 A P-ID is counted `proved` only after frozen-source semantic matching, official
 import reachability, feature/integration/post-main CI gates, prohibited-proof
-audit, safe main integration, and ledger synchronization. Feature-green or
-proof-main work alone never changes the full-green count.
+audit, safe main integration, and ledger synchronization. Feature-green,
+clean-integration-green, proof-PR-green, or proof-main-green alone never changes
+the full-green count.
 
 ## Current source-level coverage
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **83** |
+| **proved, staged by this ledger checkpoint** | **84** |
 | **partial** | **0** |
-| **pending / not yet counted** | **23** |
+| **pending / not yet counted** | **22** |
 | **total** | **106** |
 
-This branch stages **83/106** after P-CTL-01 completed source-semantic, feature,
-clean-integration, PR and proof-main gates, including successful resulting-main
-CI. **83/106 is not called full-green until this ledger checkpoint itself passes
-branch CI, PR CI, lands on `main`, and the resulting main CI succeeds.**
+This branch stages **84/106** after P-QUO-01 completed source-semantic, feature,
+clean-integration, proof-PR, proof-main and proof resulting-main gates.
+**84/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -44,7 +45,7 @@ mathematics or Lean code exists.
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
-- **Quotient:** P-QUO-03
+- **Quotient:** P-QUO-01, P-QUO-03
 - **Control:** P-CTL-01
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -66,96 +67,103 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `82 + P-CTL-01 = 83`.
+Count check: `83 + P-QUO-01 = 84`.
 
-## Newly staged promotion — P-CTL-01
+## Newly staged promotion — P-QUO-01
 
-Frozen Core 3 P-CTL-01 is the finite discounted control theorem at its full
-source scope: finite state space, finite nonempty state-dependent feasible action
-sets, bounded reward, and `0 < beta < 1`. The formalization proves the Bellman
-optimality operator has a unique fixed point, value iteration from an arbitrary
-initial value converges to it, and the Bellman residual yields the declared
-stopping/error bound.
+Frozen Core 3 §20.1 is the exact controlled quotient theorem. On top of the
+counted finite discounted-control foundation it requires a surjection `f`, the
+same admissible action type on each fibre, exact reward closure and exact
+**all-action** pushed-forward transition closure. These hypotheses imply
+Bellman intertwining on pulled-back macro values; uniqueness of the Bellman
+fixed point then gives
 
-The control-optimality endpoint is also source-faithful: a deterministic
-stationary greedy policy attains the optimal infinite-horizon discounted value
-at every state **against the full class of arbitrary causal policies**, not only
-against stationary or Markov policies.
+`V* = Vbar* ∘ f`.
+
+The formalization also proves actionwise optimal-Q equality and lifts any macro
+stationary argmax selector, including tie cases, to a micro stationary policy
+whose infinite discounted value is optimal against the full causal
+history-dependent randomized policy class. It does not replace all-action
+closure by Markovity under one policy and does not substitute the unrelated
+P-INT-02 `StructuredQuotient` interface.
 
 Canonical theorem surface:
-- `UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality`.
+- `UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01`.
 
-Supporting source-facing facts include:
-- `UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique`;
-- `UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto`;
-- `UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual`;
-- `UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal`;
-- `UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal`.
+Supporting modules:
+- `UEOT/V3/FiniteDiscountedSelector.lean`;
+- `UEOT/V3/FiniteDiscountedExactQuotient.lean`.
 
 Promotion evidence:
-- feature branch: `formal/pcomp01-multiblock-v1`;
-- final feature head: `47218ef06c63ed81ab3974d107f0d3d46cc49ecb`;
-- feature official root CI `35098260086`: success;
+- feature branch: `formal/pquo01-exact-control-quotient`;
+- final feature head: `8ffa1e4cbbe73eeb3867c152630a1029c998e231`;
+- selector checkpoint root CI `35113940062`: success;
+- clean integration branch: `formal/pquo01-main-integration-v1`;
+- clean integration head: `0427733fe363ba3b0a697879df42d2d141786a72`;
+- clean integration root CI `35118874289`: success;
 - source-semantic audit: complete;
-- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration branch: `formal/pcomp01-main-integration-v1`;
-- clean integration head: `45440746a7086b74bc65ba741611f98a8da92f27`;
-- clean integration official root CI `35099296408`: success;
-- proof PR #93;
-- PR-triggered CI `35102272835`: success;
-- proof main commit `3efe7ebc74d8f2a6705c12a5218a7880f5a3688c`;
-- proof resulting-main CI `35104140440`: success.
+- prohibited-proof audit: clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
+- proof PR #96;
+- proof PR root CI `35120644387`: success;
+- proof main commit: `25af2f3d8d537600453b5be3bcb30de6af6c0e3e`;
+- proof resulting-main root CI `35121419393`: success.
 
-**Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger
-checkpoint.**
+**Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous full-green checkpoint — 82/106
+## Previous FULL-GREEN checkpoint — 83/106
 
-P-COMP-02 is already counted in the authoritative **82/106 full-green** baseline
-at `main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`, whose ledger resulting-main
-CI `35083749972` succeeded. P-COMP-02 itself landed at
-`main@61135398787bb49e1a19f54903dcb75beea870d4` and its proof resulting-main CI
-`35080641545` succeeded.
+P-CTL-01 and all earlier counted P-IDs form the authoritative 83/106 baseline.
+Its ledger landed at `main@995c99683e0ae225f8df46108fd1442038c3963a`
+with ledger resulting-main CI `35109381744` success. The subsequent audited
+branch-governance main `2d1373a0eb417496cdd83bfc948e1806f4427587`
+kept the same 83/106 source coverage and passed root CI `35112629545`.
 
-All previously counted P-IDs remain closed absent a substantive frozen-source
-mismatch or CI regression. Source-facing wrapper work must not be double-counted
-as new P-IDs. In particular, **P-TEL-01 is already counted and must not be
-reopened as a new coverage item.**
+All counted P-IDs remain closed absent a substantive frozen-source mismatch or
+CI regression. In particular P-TEL-01 is already counted and must not be
+reopened or double-counted.
 
-## Grounded pending fronts
+## Next source-first front — P-QUO-02
 
-After this staged promotion, **23** P-IDs remain not yet counted and require
-fresh source-first audits. Known non-quick fronts include:
+A fresh frozen-source audit was completed during the P-QUO-01 CI window, but no
+second proof branch was opened. Frozen §20.2 requires uniform reward error
+`epsilon_r`, all-action pushed-forward transition TV error `epsilon_p`,
 
-- P-PER-02: Polish-space Feller semigroup + tight occupation laws + Prokhorov/Portmanteau weak-convergence infrastructure;
-- P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds;
-- P-DDH-02/03: finite exponential-family calculus and KL variational duality;
-- P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis;
-- P-EVO-03/04: Perron-Frobenius asymptotics / martingale foundations;
-- P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation;
-- P-QSD-01/04: source-locked distinct non-A results.
+`w = Vbar* ∘ f`,
+`delta = epsilon_r + beta * epsilon_p * span(Vbar*)`,
+`D = delta / (1 - beta)`,
 
-**P-QUO-01 is the next high-leverage source-to-main audit candidate.** Current
-main already contains `StructuredQuotient`, finite stable-partition
-infrastructure, and now the counted P-CTL-01 Bellman/control foundation. It may
-only close if an explicit source-object bridge proves Bellman intertwining,
-value pullback `V* = Vbar* o f`, and actionwise-Q/argmax policy lifting at the
-frozen controlled quotient object. Generic quotient-law preservation alone is
-insufficient. P-QUO-02 remains separate and additionally depends on the frozen
-span-sensitive residual/metric contract.
+and both
+
+`||V* - w||_infinity <= D`
+
+and the lifted macro-optimal-policy regret bound
+
+`0 <= V* - V^hatpi <= 2D`.
+
+The source explicitly prioritizes the actual span. The proof lane must reuse the
+counted P-MET-02 span-times-TV expectation bound and P-CTL-01 Bellman residual
+certificate, plus the generic selector evaluation layer introduced with
+P-QUO-01. An expectation-gap premise may not replace the source TV premise, and
+one-policy closure may not replace all-action closure.
+
+## Grounded non-quick fronts
+
+Among the remaining source propositions are P-CTL-02/03, P-PER-02, P-ALI-01,
+P-DDH-02/03/04/05, P-KL-04/05, P-EVO-03/04, P-QSD-01/04, P-QUO-04/05 and the
+remaining GOA/control-quotient fronts. Their exact order remains source/API
+dependent; no weaker finite/toy/assumed-conclusion surrogate may be counted.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
-Perron-Frobenius asymptotic package; an assumed-convergence surrogate is not
-countable.
+Perron-Frobenius asymptotic package; assumed convergence is not a substitute.
 
 ## Reproducibility task
 
-The exact canonical source bytes are still not present in the public repository.
-Synchronizing those exact bytes and independently recomputing the SHA-256 is
-separate from theorem proof status.
+The exact canonical source bytes are still not synchronized into the public
+repository. Source theorem proof status remains distinct from that artifact
+synchronization task.
 
 ## Completion rule
 
 UEOT Core v3.0 is machine-complete only when all **106** frozen-source P-IDs pass
-the source-theorem proof contract; helpers, feature-green branches, source
-audits or proof-main commits never count on their own.
+the source-theorem proof contract. Helpers, source audits, feature-green
+branches, proof-main commits, or ledger staging do not count on their own.

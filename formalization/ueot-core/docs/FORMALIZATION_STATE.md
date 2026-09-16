@@ -1,10 +1,10 @@
 # UEOT Core Lean — Live Formalization State
 
-> Recovery entry point. Machine-readable lane state is `PID_STATUS.yaml`.
-> Integrated source-count truth is `V3_COVERAGE_STATUS.md`. GitHub Issue #56
-> carries the live cross-chat construction log when available.
+> Recovery entry point. Integrated source-count truth is
+> `V3_COVERAGE_STATUS.md`. GitHub Issue #56 carries the live cross-chat
+> construction log and overrides stale fallback snapshots.
 
-Last synchronized: **2026-09-16**
+Last synchronized: **2026-09-17**
 
 ## Environment
 
@@ -21,100 +21,127 @@ Last synchronized: **2026-09-16**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **83** |
-| active proof / feature-green uncounted | **0** |
-| source audit | **0** |
+| integrated/proof-complete, staged by this checkpoint | **84** |
+| source audit prepared for next lane | **1** |
+| active proof branch | **0** |
 | blocked | **0** |
-| pending/unclassified | **23** |
+| pending/not yet counted after this promotion | **22** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **82/106** at
-`main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`, with ledger resulting-main CI
-`35083749972` success. P-CTL-01 has now completed its source audit, feature,
-clean-integration, PR and proof-main gates. Its proof landed at
-`main@3efe7ebc74d8f2a6705c12a5218a7880f5a3688c`, and proof resulting-main CI
-`35104140440` succeeded.
+The authoritative FULL-GREEN baseline before this ledger branch is **83/106**.
+P-QUO-01 has completed its source audit, feature, clean-integration, proof PR,
+proof-main and proof resulting-main gates. Its proof is on
+`main@25af2f3d8d537600453b5be3bcb30de6af6c0e3e`; proof resulting-main root CI
+`35121419393` succeeded.
 
-This ledger branch stages **83/106**. Do not call 83/106 full-green until the
-ledger branch passes branch CI, PR CI, lands on `main`, and the resulting-main
-CI succeeds.
+This ledger branch stages **84/106**. Do not call 84/106 FULL-GREEN until the
+ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
+`main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-CTL-01
+## Newly staged proof — P-QUO-01
 
-Frozen Core 3 P-CTL-01 is formalized at its finite discounted-control source
-scope. The model retains finite states, state-dependent finite nonempty action
-sets, bounded rewards, stochastic transition laws and `0 < beta < 1`.
+Frozen Core 3 §20.1 exact control quotient is represented at source strength on
+the finite discounted-control foundation already counted as P-CTL-01.
 
-The proof establishes:
+The formalization establishes:
 
-1. Bellman is a global `beta` contraction in the finite-state sup metric;
-2. the Bellman fixed point `V*` exists and is unique;
-3. value iteration converges to `V*` from every initial value function;
-4. the Bellman residual stopping certificate is machine checked;
-5. arbitrary causal randomized policies are represented with arbitrary time-indexed memory, allowing complete history dependence rather than a Markov-only restriction;
-6. finite-horizon causal values obey Bellman domination with an explicit geometric terminal tail;
-7. bounded rewards make every finite-horizon value sequence Cauchy, yielding a well-defined infinite discounted value;
-8. every causal history-dependent randomized policy has infinite value at most `V*`;
-9. the Bellman greedy selector is encoded as a stationary deterministic causal policy whose infinite value equals `V*` statewise.
+1. a surjective micro-to-macro map `f`;
+2. the same admissible action type for states in a common fibre;
+3. exact reward closure for every state-action pair;
+4. exact pushed-forward transition closure for **every** admissible action;
+5. exact expectation and action-value intertwining on pulled-back macro values;
+6. Bellman intertwining `T(vbar ∘ f) = (Tbar vbar) ∘ f`;
+7. exact optimal-value pullback `V* = Vbar* ∘ f` from unique fixed points;
+8. actionwise optimal-Q equality;
+9. lifting of any macro stationary argmax selector, including tied argmax cases,
+   to a micro stationary policy whose infinite discounted value is optimal
+   against the full causal history-dependent randomized policy class.
 
 Canonical theorem:
-- `UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality`.
+- `UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01`.
 
-Supporting source-facing facts:
-- `UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique`;
-- `UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto`;
-- `UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual`;
-- `UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal`;
-- `UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal`.
+Supporting modules:
+- `UEOT.V3.FiniteDiscountedSelector`;
+- `UEOT.V3.FiniteDiscountedExactQuotient`.
 
 Promotion evidence:
-- feature `formal/pcomp01-multiblock-v1@47218ef06c63ed81ab3974d107f0d3d46cc49ecb`;
-- feature official root CI `35098260086`: success;
-- prohibited-proof audit clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration `formal/pcomp01-main-integration-v1@45440746a7086b74bc65ba741611f98a8da92f27`;
-- clean integration official root CI `35099296408`: success;
-- proof PR #93 PR-triggered CI `35102272835`: success;
-- proof main `3efe7ebc74d8f2a6705c12a5218a7880f5a3688c`;
-- proof resulting-main CI `35104140440`: success.
+- feature `formal/pquo01-exact-control-quotient@8ffa1e4cbbe73eeb3867c152630a1029c998e231`;
+- selector checkpoint root CI `35113940062`: success;
+- clean integration `formal/pquo01-main-integration-v1@0427733fe363ba3b0a697879df42d2d141786a72`;
+- clean integration root CI `35118874289`: success;
+- source-semantic re-audit: pass;
+- prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
+- proof PR #96 root CI `35120644387`: success;
+- proof main `25af2f3d8d537600453b5be3bcb30de6af6c0e3e`;
+- proof resulting-main root CI `35121419393`: success.
 
-## Previous full-green checkpoint — 82/106
+## Previous FULL-GREEN checkpoint — 83/106
 
-P-COMP-02 and all earlier counted P-IDs are already counted in the 82/106
-baseline at `main@86a2cd21e4693ae084e7bc904d38046f9b3a1519`; ledger resulting-main CI
-`35083749972` succeeded. P-TEL-01 is already counted and must not be reopened
-merely because older compilation reports predate its later promotion.
+P-CTL-01 and all earlier counted P-IDs remain closed. The 83/106 ledger landed
+at `main@995c99683e0ae225f8df46108fd1442038c3963a` with resulting-main CI
+`35109381744` success. The later branch-governance main
+`2d1373a0eb417496cdd83bfc948e1806f4427587` preserved 83/106 and passed root CI
+`35112629545`.
+
+P-TEL-01 is already counted and must not be reopened merely because older
+compilation reports predate its promotion.
+
+## Next source-to-main lane after the 84 ledger closes — P-QUO-02
+
+Frozen §20.2 was independently re-read during the P-QUO-01 CI window. No second
+proof branch has been opened.
+
+Required source contract:
+
+- reward approximation error at most `epsilon_r`;
+- pushed-forward transition TV error at most `epsilon_p` for every admissible
+  action;
+- same action correspondence and discount as the quotient control problem;
+- `w = Vbar* ∘ f`;
+- `delta = epsilon_r + beta * epsilon_p * span(Vbar*)`;
+- `D = delta / (1-beta)`;
+- `||V* - w||_infinity <= D`;
+- lifted macro-optimal policy regret `0 <= V* - V^hatpi <= 2D`.
+
+Reusable counted/main infrastructure:
+
+- P-MET-02: exact span-times-TV expectation bound;
+- P-CTL-01: `Model.valueError_le_residual` and causal-policy domination;
+- P-QUO-01 support: generic stationary-selector policy-evaluation contraction.
+
+Implementation route:
+
+1. represent the source TV premise, not an already-derived expectation-gap
+   surrogate;
+2. derive all-action continuation expectation error via P-MET-02;
+3. derive uniform actionwise Q error and optimal Bellman residual for `w`;
+4. apply the existing residual certificate to obtain the first `D` bound;
+5. evaluate a lifted macro optimal selector under its fixed policy Bellman map;
+6. derive the same `D` distance from its value to `w`;
+7. combine with causal-policy domination to obtain the pointwise `0 .. 2D`
+   policy regret bound.
+
+No unique-argmax assumption and no one-policy closure weakening are allowed.
 
 ## Grounded non-quick fronts
 
-- P-CTL-02: compact-metric/Feller discounted control with continuity and measurable-selection infrastructure.
-- P-PER-02: Polish/Feller occupation-law theorem with tightness, Prokhorov and Portmanteau; sample-path empirical-frequency weakening is forbidden.
-- P-ALI-01: global exact-one-form / closed-loop integral theorem on connected smooth manifolds; Euclidean curl-free weakening is forbidden.
-- P-DDH-02/03: finite exponential-family calculus and KL variational duality.
-- P-KL-04/05: CTMC compensator / Girsanov-level stochastic analysis.
-- P-EVO-03/04: Perron-Frobenius asymptotics / martingale foundations.
-- P-DDH-04/05: genuine rank/stacked-Jacobian and singular-value perturbation.
-- P-QSD-01/04: source-locked distinct non-A results.
-
-P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
-Perron-Frobenius asymptotic package; do not count an assumed-convergence
-surrogate.
-
-## Candidate next source-to-main audits after 83 full-green
-
-- **P-QUO-01:** high-leverage after P-CTL-01. Frozen source requires a surjective control quotient with identical same-fiber action sets, reward closure and every-action pushforward transition closure; Bellman intertwining plus fixed-point uniqueness must yield exact value lifting and macro-optimal-policy lifting.
-- **P-QUO-02:** follows the approximate version only after matching the span-sensitive P-MET-02 residual interface.
-- **P-CTL-02:** larger analytic lane requiring compact/Feller and measurable-selection machinery.
-
-No new proof branch is opened while the P-CTL-01 ledger gate is active. Remote
-branch count is above the repository hard cap; after this promotion closes,
-branch hygiene must run before a new proof lane opens.
+P-CTL-02/03, P-PER-02, P-ALI-01, P-DDH-02/03/04/05, P-KL-04/05,
+P-EVO-03/04 and P-QSD-01/04 remain source-strength lanes. P-EVO-03 requires the
+full K-PF-01 primitive Perron-Frobenius asymptotic package; assumed convergence
+is forbidden.
 
 ## Mandatory recovery procedure
 
-1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available, `PID_STATUS.yaml`, this file, then `V3_COVERAGE_STATUS.md`.
-2. Fetch live main, active branches and Actions state.
-3. Never reopen counted green P-IDs without a substantive source mismatch or CI regression.
+1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,
+   `V3_COVERAGE_STATUS.md`, this file, then the fallback handoff.
+2. Reconcile live `main`, active branches, PRs and Actions before mutation.
+3. Never reopen counted green P-IDs absent a substantive frozen-source mismatch
+   or CI regression.
 4. Read the frozen source before writing Lean and audit existing main first.
-5. Feature green or proof-main green never increments coverage.
-6. No `sorry`, `admit`, `native_decide`, unsourced `axiom`.
-7. Use CI waiting time for another independent source/API audit without opening a conflicting proof branch.
+5. Feature green, integration green and proof-main green never increment
+   coverage.
+6. No `sorry`, Lean `admit`, `native_decide`, or unsourced `axiom`.
+7. Use CI waiting time for source/API audit only; do not open a conflicting
+   proof lane while a promotion lifecycle is active.
+8. After a proof resulting-main succeeds, use a separate docs-only ledger
+   lifecycle before incrementing source coverage.
