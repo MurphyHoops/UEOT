@@ -4,7 +4,7 @@
 > Integrated source-count truth is `V3_COVERAGE_STATUS.md`. GitHub Issue #56
 > carries the live cross-chat construction log when available.
 
-Last synchronized: **2026-09-15**
+Last synchronized: **2026-09-16**
 
 ## Environment
 
@@ -21,65 +21,62 @@ Last synchronized: **2026-09-15**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **80** |
+| integrated proved, staged by this checkpoint | **81** |
 | active proof / feature-green uncounted | **0** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **26** |
+| pending/unclassified | **25** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **79/106** at
-`main@a7d1804ea8149230526b8e8473389997f2469ede`, with ledger resulting-main CI
-`34886982624` success. P-REC-03 has completed all source, feature, clean-
-integration, PR and proof-main gates, including resulting-main CI `34987526584`
-success at `main@b337cb8a15e0996f6c285bd073773832fb21500e`.
-This ledger branch stages **80/106**. Do not call 80/106 full-green until the
+The authoritative full-green baseline before this ledger branch is **80/106** at
+`main@e8749f66cf88817ae7df7703c6c55b1fc9c2cdd1`, with ledger resulting-main CI
+`34991002841` success. P-COMP-01 has completed all source, feature, clean-
+integration, PR and proof-main gates, including resulting-main CI `35015386126`
+success at `main@c5ae119adad2e533205f58e9b95d8ffc5d6713df`.
+This ledger branch stages **81/106**. Do not call 81/106 full-green until the
 ledger branch passes branch CI, PR CI, lands on `main`, and the resulting-main
 CI succeeds.
 
-## Newly staged proof — P-REC-03
+## Newly staged proof — P-COMP-01
 
-Frozen Core 3 P-REC-03 is represented at its declared homogeneous discrete-time
-Markov hitting-potential scope:
+Frozen Core 3 P-COMP-01 is represented at its declared conditional path-
+integration scope:
 
-1. `τ_A` is the first hitting time of the measurable set `A`;
-2. `V_A(x)=E_x τ_A` is represented in `ENNReal` and vanishes on `A`;
-3. for `x ∉ A`, a pathwise first-step hitting-time recursion is proved before using Markov restart;
-4. the homogeneous one-step restart law is derived from the Ionescu–Tulcea path construction rather than postulated;
-5. the initial-law mixture and one-step marginal bridge identify the kernel integral of `V_A`;
-6. the canonical ENNReal identity is `V_A(x)=1+P V_A(x)` outside `A`;
-7. the source finiteness hypothesis is then used only to pass to the real-valued endpoint;
-8. the final source-facing equation is `P V_A(x)-V_A(x)=-1`;
-9. no finite-state specialization or assumed Poisson/restart identity is introduced.
+1. one common joint source law `ρ : Measure (U × (∀ i, X i))` supplies every partition score;
+2. Mathlib's canonical `ρ.condKernel` is tied back to that same `ρ` by the explicit disintegration identity `ρ.fst ⊗ₘ ρ.condKernel = ρ`;
+3. partitions are actual finite set partitions of the common child-index set, with the complete finite family of all nontrivial partitions used in the minimum;
+4. each partition only reblocks the same joint path coordinates; the reblocking and inverse are constructed and machine-checked rather than postulated as unrelated kernels;
+5. `I_π` is the conditional KL between the reblocked common joint law and the product of its conditional block marginals;
+6. `I_π = 0` iff the blocks of `π` are conditionally independent given `U`;
+7. the exact finite all-partition margin is positive iff no nontrivial partition factorizes;
+8. Standard-Borel/nonemptiness assumptions are only regular-conditional-probability infrastructure for the source joint-law bridge;
+9. the historically rejected design with an unrelated conditional kernel for each partition is not used.
 
 Canonical theorem surface:
-- `UEOT.V3.RecoveryHittingPoisson.p_rec_03`.
+- `UEOT.V3.CompositionPathSource.p_comp_01`.
 
 Promotion evidence:
-- feature branch `formal/prec03-first-step-v1`;
-- final feature head `1e01c64824f2e3441b8492cc1f8731895eed467f`;
-- feature official root CI `34985193231`: success;
+- feature branch `formal/pcomp01-multiblock-v1`;
+- final feature head `70a9dc7a26e0f80ed03633efda00a48927a80e5e`;
+- feature official root CI `35011604866`: success;
 - source semantic audit: complete;
-- prohibited-proof audit: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration branch `formal/prec03-main-integration-v1`;
-- clean integration head `5142964d87fe53be7b0598d428c49991f50c837f`;
-- clean integration CI `34985962098`: success;
-- proof PR #87 PR-triggered CI `34986723827`: success;
-- proof main `b337cb8a15e0996f6c285bd073773832fb21500e`;
-- proof resulting-main CI `34987526584`: success.
+- prohibited-proof audit on the proof PR diff: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
+- clean integration branch `formal/pcomp01-main-integration-v1`;
+- clean integration head `5f0e0b0ba56c1f97024ac8568275e1bc9db257a4`;
+- clean integration official root CI `35014183716`: success;
+- proof PR #89 PR-triggered CI `35014787206`: success;
+- proof main `c5ae119adad2e533205f58e9b95d8ffc5d6713df`;
+- proof resulting-main CI `35015386126`: success.
 
-## Previous full-green checkpoint — 79/106
+## Previous full-green checkpoint — 80/106
 
-P-REC-04 is closed and counted in the 79/106 baseline at
-`main@a7d1804ea8149230526b8e8473389997f2469ede`. Its proof resulting-main CI
-`34882613059` and ledger resulting-main CI `34886982624` succeeded.
+P-REC-03 is closed and counted in the 80/106 baseline at
+`main@e8749f66cf88817ae7df7703c6c55b1fc9c2cdd1`. Its proof resulting-main CI
+`34987526584` and ledger resulting-main CI `34991002841` succeeded.
 
-With P-REC-03 staged, the Recovery source-facing set is now complete at the
-proof level: P-REC-01, P-REC-02, P-REC-03 and P-REC-04. It becomes ledger-counted
-as a complete four-item set only after this promotion lifecycle closes.
-
-P-PER-04, P-QSD-03, P-BRG-01, P-REF-04 and P-REF-05 remain previously counted;
-wrapper work must not be double-counted.
+Recovery P-REC-01/P-REC-02/P-REC-03/P-REC-04 remains fully counted. P-PER-04,
+P-QSD-03, P-BRG-01, P-REF-04 and P-REF-05 remain previously counted; wrapper
+work must not be double-counted.
 
 ## Grounded non-quick fronts
 
@@ -95,12 +92,12 @@ P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
-## Candidate next fronts after 80 full-green
+## Candidate next fronts after 81 full-green
 
-- **P-COMP-01:** source requires arbitrary finite nontrivial partitions and the equivalence between conditional KL zero and the corresponding multi-block conditional product law; binary CMI wrappers alone are insufficient.
+- **P-COMP-02:** next Composition-family source-first audit candidate; do not assume it follows automatically from P-COMP-01.
 - **P-PER-02:** remains a larger analytic lane rather than a quick wrapper.
 
-No second proof branch is opened while the P-REC-03 ledger gate is active.
+No second proof branch is opened while the P-COMP-01 ledger gate is active.
 
 ## Mandatory recovery procedure
 
