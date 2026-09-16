@@ -21,62 +21,62 @@ Last synchronized: **2026-09-16**
 
 | operational state | count |
 |---|---:|
-| integrated proved, staged by this checkpoint | **81** |
+| integrated proved, staged by this checkpoint | **82** |
 | active proof / feature-green uncounted | **0** |
 | source audit | **0** |
 | blocked | **0** |
-| pending/unclassified | **25** |
+| pending/unclassified | **24** |
 | total | **106** |
 
-The authoritative full-green baseline before this ledger branch is **80/106** at
-`main@e8749f66cf88817ae7df7703c6c55b1fc9c2cdd1`, with ledger resulting-main CI
-`34991002841` success. P-COMP-01 has completed all source, feature, clean-
-integration, PR and proof-main gates, including resulting-main CI `35015386126`
-success at `main@c5ae119adad2e533205f58e9b95d8ffc5d6713df`.
-This ledger branch stages **81/106**. Do not call 81/106 full-green until the
+The authoritative full-green baseline before this ledger branch is **81/106** at
+`main@0797123efc63f39ffd2169b1e9b9e86472419919`, with ledger resulting-main CI
+`35067746154` success. P-COMP-02 has completed its source audit, feature,
+clean-integration, PR and proof-main gates. Its proof landed at
+`main@61135398787bb49e1a19f54903dcb75beea870d4`, and proof resulting-main CI
+`35080641545` succeeded.
+
+This ledger branch stages **82/106**. Do not call 82/106 full-green until the
 ledger branch passes branch CI, PR CI, lands on `main`, and the resulting-main
 CI succeeds.
 
-## Newly staged proof — P-COMP-01
+## Newly staged proof — P-COMP-02
 
-Frozen Core 3 P-COMP-01 is represented at its declared conditional path-
-integration scope:
+Frozen Core 3 P-COMP-02 is represented at its declared general probability-law
+scope. For original record law `P`, declared cut law `Q`, and
+`M=(P+Q)/2`, the implementation uses Mathlib's genuine KL divergence and proves:
 
-1. one common joint source law `ρ : Measure (U × (∀ i, X i))` supplies every partition score;
-2. Mathlib's canonical `ρ.condKernel` is tied back to that same `ρ` by the explicit disintegration identity `ρ.fst ⊗ₘ ρ.condKernel = ρ`;
-3. partitions are actual finite set partitions of the common child-index set, with the complete finite family of all nontrivial partitions used in the minimum;
-4. each partition only reblocks the same joint path coordinates; the reblocking and inverse are constructed and machine-checked rather than postulated as unrelated kernels;
-5. `I_π` is the conditional KL between the reblocked common joint law and the product of its conditional block marginals;
-6. `I_π = 0` iff the blocks of `π` are conditionally independent given `U`;
-7. the exact finite all-partition margin is positive iff no nontrivial partition factorizes;
-8. Standard-Borel/nonemptiness assumptions are only regular-conditional-probability infrastructure for the source joint-law bridge;
-9. the historically rejected design with an unrelated conditional kernel for each partition is not used.
+1. `M` is the actual midpoint probability measure;
+2. `P ≤ 2M` and `Q ≤ 2M`, hence both laws are absolutely continuous with respect to `M`;
+3. the corresponding RN densities are bounded by two almost everywhere;
+4. KL-integrand integrability is proved before any `ENNReal.toReal` conversion;
+5. the exact affine `klFun` bound over `[0,2]` gives each `KL(·||M) ≤ log 2`;
+6. therefore `0 ≤ JS(P,Q) ≤ log 2`;
+7. `JS(P,Q)=0 ↔ P=Q` follows from KL converse Gibbs;
+8. over a finite declared cut family, the exact minimum JS is positive iff every cut changes the declared record law;
+9. zero observed cut effect is not interpreted as absence of microscopic coupling without additional observation-completeness / cut-faithfulness assumptions.
 
 Canonical theorem surface:
-- `UEOT.V3.CompositionPathSource.p_comp_01`.
+- `UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo`;
+- `UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff`;
+- `UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff`.
 
 Promotion evidence:
-- feature branch `formal/pcomp01-multiblock-v1`;
-- final feature head `70a9dc7a26e0f80ed03633efda00a48927a80e5e`;
-- feature official root CI `35011604866`: success;
-- source semantic audit: complete;
-- prohibited-proof audit on the proof PR diff: clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
-- clean integration branch `formal/pcomp01-main-integration-v1`;
-- clean integration head `5f0e0b0ba56c1f97024ac8568275e1bc9db257a4`;
-- clean integration official root CI `35014183716`: success;
-- proof PR #89 PR-triggered CI `35014787206`: success;
-- proof main `c5ae119adad2e533205f58e9b95d8ffc5d6713df`;
-- proof resulting-main CI `35015386126`: success.
+- feature `formal/pcomp01-multiblock-v1@2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
+- feature official root CI `35077241084`: success;
+- prohibited-proof audit clean (`sorry=0`, `admit=0`, `native_decide=0`, unsourced `axiom=0`);
+- clean integration `formal/pcomp01-main-integration-v1@2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50`;
+- clean integration official root CI `35077915553`: success;
+- proof PR #91 PR-triggered CI `35079990097`: success;
+- proof main `61135398787bb49e1a19f54903dcb75beea870d4`;
+- proof resulting-main CI `35080641545`: success.
 
-## Previous full-green checkpoint — 80/106
+## Previous full-green checkpoint — 81/106
 
-P-REC-03 is closed and counted in the 80/106 baseline at
-`main@e8749f66cf88817ae7df7703c6c55b1fc9c2cdd1`. Its proof resulting-main CI
-`34987526584` and ledger resulting-main CI `34991002841` succeeded.
-
-Recovery P-REC-01/P-REC-02/P-REC-03/P-REC-04 remains fully counted. P-PER-04,
-P-QSD-03, P-BRG-01, P-REF-04 and P-REF-05 remain previously counted; wrapper
-work must not be double-counted.
+P-COMP-01 is already counted in the 81/106 baseline at
+`main@0797123efc63f39ffd2169b1e9b9e86472419919`; ledger resulting-main CI
+`35067746154` succeeded. Recovery P-REC-01/P-REC-02/P-REC-03/P-REC-04,
+P-PER-04, P-QSD-03, P-BRG-01, P-REF-04 and P-REF-05 remain previously counted;
+wrapper work must not be double-counted.
 
 ## Grounded non-quick fronts
 
@@ -92,12 +92,12 @@ P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; do not count an assumed-convergence
 surrogate.
 
-## Candidate next fronts after 81 full-green
+## Candidate next source-to-main audits after 82 full-green
 
-- **P-COMP-02:** next Composition-family source-first audit candidate; do not assume it follows automatically from P-COMP-01.
+- **P-QUO-01 / P-QUO-02:** current main already contains `StructuredQuotient` and finite stable-partition infrastructure, so audit for an A/B bridge first. The frozen controlled Bellman/value-policy statements must still be matched exactly; generic quotient-law results are insufficient.
 - **P-PER-02:** remains a larger analytic lane rather than a quick wrapper.
 
-No second proof branch is opened while the P-COMP-01 ledger gate is active.
+No second proof branch is opened while the P-COMP-02 ledger gate is active.
 
 ## Mandatory recovery procedure
 
