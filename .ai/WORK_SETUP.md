@@ -1,35 +1,42 @@
-# ChatGPT Work Setup — Persistent Agent v2
+# Optional ChatGPT Work Setup — Persistent Agent v3
 
-v2 uses **Heartbeat-first liveness** and treats GitHub Event Trigger as an optional accelerator.
+v3 does **not** require ChatGPT Work, scheduled tasks, event-triggered Work or Codex for normal operation.
 
-## Required: UEOT GitOps Heartbeat
+The default path is ordinary ChatGPT Chat + GitHub connector + GitHub Actions. See `.ai/protocols/CHAT.md` and `.ai/RESOURCE_POLICY.md`.
 
-Create one recurring ChatGPT scheduled Work task named `UEOT GitOps Heartbeat`, scheduled hourly when supported by the account.
+## Default recommendation
 
-Prompt:
+Keep `UEOT GitOps Router` paused. Do not create or enable an hourly Heartbeat merely for baseline resumability.
 
-> You are the UEOT persistent GitOps Heartbeat. Treat this invocation as disposable. Read `docs/REPOSITORY_BRANCH_GOVERNANCE.md`, `.ai/SYSTEM.md`, `.ai/protocols/HEARTBEAT.md`, `.ai/protocols/EVENTS.md`, and the selected Builder/Reviewer protocol. Recover active tasks from durable GitHub Issues, open PRs and `.ai/tasks/*/STATE.json`. Reconcile current main, PR head SHA, complete relevant diff/source, required checks, current GitHub Actions results and structured reviews. Select at most ONE actionable task. If CI is pending, do nothing. If required CI failed, perform exactly one bounded Builder repair. If the current head has CHANGES_REQUESTED, perform one bounded Builder repair. If required CI is green and the current head lacks a valid independent review, perform exactly one independent Reviewer pass. If current-head PASS + green CI exists, leave the human merge gate untouched. Ignore DONE, READY_TO_MERGE, unresolved BLOCKED, stale and duplicate work. Never create a replacement branch, write/merge main, force-push, wait for future CI, or rely on previous chat history. Persist the durable handoff and exit. If nothing is actionable, finish quietly.
+After a conversation ends, open a fresh ordinary ChatGPT conversation and use `/ueot-resume`.
 
-## Optional: UEOT GitOps Event Accelerator
+## Optional Event Accelerator
 
-The existing GitHub event-triggered task may remain paused until desired. If enabled, accept that trigger-side marker filtering and bot-origin wake-ups may be incomplete. Its only purpose is lower latency.
+If lower latency is worth additional agentic usage, the GitHub event-triggered Work task may be enabled as a best-effort accelerator. It must not be required for correctness because marker filtering and bot-origin trigger behavior may be incomplete.
 
-Inside the prompt, no-op unless GitHub evidence shows an actionable current-head transition. Never depend on the accelerator for eventual continuation.
+Inside the Work prompt, no-op unless current GitHub evidence shows exactly one actionable transition. PASS, ordinary comments, stale events and bookkeeping are no-op.
 
-Recommended logical filtering after invocation:
-- `[UEOT-AI-SIGNAL]` -> reconcile and route;
-- `[UEOT-AI-REVIEW] result: CHANGES_REQUESTED` -> Builder;
-- PASS, ordinary comments and bookkeeping -> no-op.
+## Optional Scheduled Heartbeat
 
-## Manual fallback
+If unattended progression is temporarily more valuable than conserving agentic usage, a scheduled Work Heartbeat may be enabled using `.ai/protocols/HEARTBEAT.md`.
 
-A fresh chat can always say: `Recover the active UEOT task from GitHub and execute exactly one bounded next transition using .ai/SYSTEM.md and .ai/protocols/HEARTBEAT.md. Do not rely on previous chat history.`
+The Heartbeat must process at most one actionable task and exit immediately on pending CI or no-op state. Disable it when the unattended window is over.
+
+## Manual/default resume
+
+Open a normal ChatGPT conversation with GitHub access and say:
+
+> `/ueot-resume`
+
+or:
+
+> Recover the active UEOT task from GitHub using `.ai/SYSTEM.md` and `.ai/protocols/CHAT.md`. Reconcile current Issue/PR/head/CI/reviews/state, execute exactly one bounded next transition, persist the handoff, and stop. Do not rely on previous chat history.
 
 ## Deployment order
 
-1. independently review and human-merge bootstrap PR;
-2. verify State Guard / CI Signal on `main`;
-3. create and enable the hourly Heartbeat;
-4. test Heartbeat recovery on one disposable task;
-5. optionally enable Event Accelerator and compare latency/no-op cost;
-6. only then use unattended continuation for substantive UEOT work.
+1. independently review and human-merge the runtime PR;
+2. verify repository CI/state machinery on `main`;
+3. use ordinary Chat as the normal UEOT development worker;
+4. prove fresh-chat `/ueot-resume` recovery on a disposable task;
+5. leave Work automation paused by default;
+6. enable Event/Heartbeat only for deliberate temporary automation experiments.
