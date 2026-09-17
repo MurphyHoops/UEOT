@@ -22,6 +22,12 @@ REQUIRED = {
     "required_checks", "latest_ci", "last_event", "retries", "completed",
     "current_problem", "next_action", "guards", "updated_at",
 }
+EXPECTED_GUARDS = {
+    "merge_authority": "ai-autonomous",
+    "builder_may_self_approve": False,
+    "normal_integration_requires_pr": True,
+    "direct_main_write_allowed": True,
+}
 
 
 def fail(path: Path, message: str, errors: list[str]) -> None:
@@ -51,8 +57,8 @@ def validate(path: Path) -> list[str]:
     if errors:
         return errors
 
-    if data["schema_version"] != 1:
-        fail(path, "schema_version must be 1", errors)
+    if data["schema_version"] != 2:
+        fail(path, "schema_version must be 2", errors)
 
     task_match = TASK_RE.fullmatch(str(data["task_id"]))
     if not task_match:
@@ -77,7 +83,7 @@ def validate(path: Path) -> list[str]:
     if not isinstance(branch, str) or not branch.strip():
         fail(path, "branch must be non-empty", errors)
     elif status in ACTIVE_STATES and branch == "main":
-        fail(path, "active task may not use main as its work branch", errors)
+        fail(path, "normal active task may not use main as its work branch; direct-main authority is an explicit exception path", errors)
 
     for key in ("base_sha", "checkpoint_sha"):
         if not is_sha(data[key]):
@@ -132,9 +138,8 @@ def validate(path: Path) -> list[str]:
     if not isinstance(data["next_action"], str) or not data["next_action"].strip():
         fail(path, "next_action must be non-empty", errors)
 
-    guards = data["guards"]
-    if guards != {"human_merge_required": True, "builder_may_self_approve": False}:
-        fail(path, "guards must require human merge and forbid Builder self-approval", errors)
+    if data["guards"] != EXPECTED_GUARDS:
+        fail(path, "guards must encode AI-autonomous merge authority, require normal PR integration, allow explicit direct-main recovery/maintenance, and forbid Builder self-approval", errors)
 
     if not isinstance(data["updated_at"], str) or not data["updated_at"].endswith("Z"):
         fail(path, "updated_at must be an explicit UTC timestamp ending in Z", errors)

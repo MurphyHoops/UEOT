@@ -1,30 +1,27 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "repository": "MurphyHoops/UEOT",
   "policy_source": "pr-base",
   "bootstrap": {
-    "when_base_policy_missing": "human-only",
-    "note": "The initial policy-installing PR cannot authorize itself. Independent AI review and candidate CI are advisory evidence only until a human explicitly establishes the trust root."
+    "when_base_policy_missing": "owner-authorization",
+    "owner_authorization_marker": "[UEOT-OWNER-AUTHORIZATION]",
+    "note": "Initial trust-root installation requires a GitHub comment authored by the repository owner that explicitly delegates AI merge authority. Candidate policy cannot authorize itself."
   },
-  "platform": {
-    "base_branch": "main",
-    "require_platform_enforcement_before_activation": true,
-    "required_controls": [
-      "pull-request-only integration",
-      "force pushes disabled",
-      "direct pushes by automation identities blocked or non-bypassable",
-      "required protected checks/reviews configured as appropriate"
-    ],
-    "on_unverified_or_missing": "human-only"
+  "authority": {
+    "merge_mode": "ai-autonomous",
+    "normal_integration_path": "pull-request-reviewed",
+    "builder_may_self_approve": false,
+    "direct_main_write": "allowed-for-recovery-or-explicitly-justified-maintenance"
   },
   "review": {
     "trusted_review_artifact_authors": [
       "MurphyHoops"
-    ]
+    ],
+    "independent_review_required": true
   },
   "ci": {
-    "unmatched_changed_paths": "human-only",
-    "human_only_paths": [
+    "unmatched_changed_paths": "elevated-review",
+    "elevated_review_paths": [
       ".ai/TRUST_POLICY.json",
       ".ai/README.md",
       ".ai/RESOURCE_POLICY.md",

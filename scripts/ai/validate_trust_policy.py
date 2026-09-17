@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Validate candidate UEOT trust-policy structure using Python stdlib only.
 
-Authorization never comes from candidate HEAD. Consumers must load the policy from the
-PR base SHA / integrated main. This validator checks shape and fail-closed defaults only.
+Authorization never comes from candidate HEAD. Consumers load the policy from the
+PR base SHA / integrated main. This validator checks shape and fail-closed defaults.
 """
 from __future__ import annotations
 
@@ -25,46 +25,50 @@ def main() -> int:
         return 1
 
     errors: list[str] = []
-    if p.get('schema_version') != 1:
-        errors.append('schema_version must be 1')
+    if p.get('schema_version') != 2:
+        errors.append('schema_version must be 2')
     if p.get('repository') != 'MurphyHoops/UEOT':
         errors.append('repository must be MurphyHoops/UEOT')
     if p.get('policy_source') != 'pr-base':
         errors.append('policy_source must be pr-base')
 
     bootstrap = p.get('bootstrap')
-    if not isinstance(bootstrap, dict) or bootstrap.get('when_base_policy_missing') != 'human-only':
-        errors.append('bootstrap.when_base_policy_missing must be human-only')
-
-    platform = p.get('platform')
-    if not isinstance(platform, dict):
-        errors.append('platform must be an object')
+    if not isinstance(bootstrap, dict):
+        errors.append('bootstrap must be an object')
     else:
-        if platform.get('base_branch') != 'main':
-            errors.append('platform.base_branch must be main')
-        if platform.get('require_platform_enforcement_before_activation') is not True:
-            errors.append('platform.require_platform_enforcement_before_activation must be true')
-        if platform.get('on_unverified_or_missing') != 'human-only':
-            errors.append('platform.on_unverified_or_missing must be human-only')
-        if not _strings(platform.get('required_controls')):
-            errors.append('platform.required_controls must be a non-empty string array')
+        if bootstrap.get('when_base_policy_missing') != 'owner-authorization':
+            errors.append('bootstrap.when_base_policy_missing must be owner-authorization')
+        if bootstrap.get('owner_authorization_marker') != '[UEOT-OWNER-AUTHORIZATION]':
+            errors.append('bootstrap.owner_authorization_marker must be [UEOT-OWNER-AUTHORIZATION]')
+
+    authority = p.get('authority')
+    expected_authority = {
+        'merge_mode': 'ai-autonomous',
+        'normal_integration_path': 'pull-request-reviewed',
+        'builder_may_self_approve': False,
+        'direct_main_write': 'allowed-for-recovery-or-explicitly-justified-maintenance',
+    }
+    if authority != expected_authority:
+        errors.append('authority must encode AI-autonomous merge, reviewed-PR normal integration, no Builder self-approval, and explicit direct-main exception authority')
 
     review = p.get('review')
     authors = review.get('trusted_review_artifact_authors') if isinstance(review, dict) else None
     if not _strings(authors):
         errors.append('review.trusted_review_artifact_authors must be a non-empty string array')
+    if not isinstance(review, dict) or review.get('independent_review_required') is not True:
+        errors.append('review.independent_review_required must be true')
 
     ci = p.get('ci')
     if not isinstance(ci, dict):
         errors.append('ci must be an object')
     else:
-        if ci.get('unmatched_changed_paths') != 'human-only':
-            errors.append('ci.unmatched_changed_paths must be human-only')
-        human_only = ci.get('human_only_paths')
-        if not _strings(human_only):
-            errors.append('ci.human_only_paths must be a non-empty string array')
-        elif len(human_only) != len(set(human_only)):
-            errors.append('ci.human_only_paths must be unique')
+        if ci.get('unmatched_changed_paths') != 'elevated-review':
+            errors.append('ci.unmatched_changed_paths must be elevated-review')
+        elevated = ci.get('elevated_review_paths')
+        if not _strings(elevated):
+            errors.append('ci.elevated_review_paths must be a non-empty string array')
+        elif len(elevated) != len(set(elevated)):
+            errors.append('ci.elevated_review_paths must be unique')
 
         gates = ci.get('gates')
         if not isinstance(gates, dict) or not gates:

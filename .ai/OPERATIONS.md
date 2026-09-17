@@ -2,67 +2,70 @@
 
 ## Fresh-chat recovery
 
-A new worker needs no prior conversation. Read governance, candidate runtime docs, durable Issue, active PR/current base+head/diff/checks/reviews/comments, and task state. Resolve authorization from `.ai/TRUST_POLICY.json` at the PR **base SHA**, never candidate HEAD.
+A new worker needs no prior conversation. Read governance, durable Issue, active PR/current base+head/diff/checks/reviews/comments, candidate runtime docs and task state. Resolve authorization from `.ai/TRUST_POLICY.json` at the PR **base SHA**, never candidate HEAD.
+
+## Owner authority
+
+GitHub owner authorization may delegate full repository development authority to AI. For this repository the intended mode is `ai-autonomous`.
+
+The normal path is still PR-based because it preserves review/CI evidence. Direct `main` writes are allowed only for recovery or explicitly justified maintenance and must record why the normal PR path was unsuitable plus the rollback strategy.
 
 ## Trust-policy evolution
 
-- The base policy governs the PR being reviewed.
-- A candidate change to `.ai/TRUST_POLICY.json` becomes effective only after merge.
-- If base policy is absent, the PR is initial bootstrap and human-only.
-- Candidate changes matching base-policy `human_only_paths` are human-only.
-- Changed protected workflow/runner inputs are human-only.
-- Unmatched changed paths are human-only.
-
-## Platform activation gate
-
-Repository protocol alone is not a security boundary. Before post-bootstrap runtime authorization is considered active, verify GitHub platform enforcement on `main`:
-
-- integration is PR-only for normal development;
-- force pushes are disabled;
-- automation identities cannot directly push to `main` or bypass the protection used as the runtime's merge boundary;
-- required checks/review controls are configured as appropriate to repository governance.
-
-If these controls are missing or cannot be verified, record `BLOCKED`/human-only. Do not claim READY_TO_MERGE based only on repository text.
+- Base policy governs the PR being reviewed.
+- Candidate policy changes take effect only after merge.
+- Base-policy `elevated_review_paths`, unmatched paths, changed protected workflows or changed protected runner inputs require independent elevated review rather than ordinary protected-CI authorization.
+- Elevated review is an AI gate, not a human-only gate.
 
 ## Evidence currentness
 
-A signal/review is current only when both recorded values equal the PR now:
+A signal/review is current only when both artifact values match the PR now:
 
-- artifact `base_sha` / `reviewed_base_sha` == current `pr.base.sha`;
-- artifact `sha` / `reviewed_sha` == current `pr.head.sha`.
+- `base_sha` / `reviewed_base_sha` == current `pr.base.sha`;
+- `sha` / `reviewed_sha` == current `pr.head.sha`.
 
-Any base movement invalidates earlier authorization evidence even if head does not move.
+Any base movement invalidates earlier authorization evidence even if head is unchanged.
 
-Duplicate signal markers count only when actual GitHub metadata shows the trusted relay identity. Copied marker text from ordinary commenters is ignored for deduplication.
+Duplicate signal markers count only when GitHub metadata proves trusted relay provenance. Copied marker text is ignored.
 
 ## BLOCKED
 
-Use BLOCKED when a required external decision/resource is unavailable, retry budgets are exhausted, a protected gate cannot be established, platform enforcement cannot be verified, a trust-critical/unmatched path requires human review, or the same root failure repeats beyond the guard. Record exact blocker/evidence/next human action. Do not spin.
+Use BLOCKED only when evidence/resources are genuinely unavailable, retry budgets are exhausted, repository permissions prevent a required transition, or the same root failure repeats beyond the guard. Trust/runtime changes normally route to elevated review rather than BLOCKED.
 
 ## Rollback / bad checkpoint
 
-Do not force-push history. On the same task branch, identify the bad change, revert or make a corrective forward commit, repair state in that checkpoint, push, and let current-pair CI establish new evidence.
+Prefer forward correction or revert commits. Do not force-push normal task history. Repair state in the same checkpoint, push, and let current-pair evidence establish the new truth.
 
-## Human merge gate
+## AI merge gate
 
-For a normal post-bootstrap PR, verify:
+For a normal post-bootstrap PR, the merging AI must verify:
 
 - trust policy loaded from current PR base SHA;
-- required platform enforcement is active;
-- latest authoritative PASS binds the current `(base, head)` pair and actual author is allowlisted by base policy;
-- every mandatory base-policy CI gate applicable to changed paths is green;
-- each gate came from base-approved workflow path/job and protected workflow/runner inputs match base;
-- no changed path matches base-policy `human_only_paths` for an automated authorization attempt;
-- candidate `required_checks` did not omit protected jobs;
-- no unresolved authoritative current-pair CHANGES_REQUESTED exists;
-- Issue/PR objective and branch agree;
-- target is `main`;
-- Reviewer independence was respected.
+- current `(base, head)` equals the independently reviewed pair;
+- no unresolved current-pair CHANGES_REQUESTED exists;
+- Reviewer independence was respected;
+- ordinary code: all applicable base-policy protected gates are green;
+- elevated-review code: Reviewer explicitly states that trust/runtime/build-control changes were examined and PASS applies despite ordinary protected-CI semantics being intentionally inapplicable;
+- review author provenance is valid under base policy;
+- target is `main` and Issue/PR objective/branch agree.
 
-For initial bootstrap, no candidate PASS or CI policy can authorize merge. The human explicitly inspects candidate, independent review, observed CI, and platform protection before deciding whether to establish the trust root.
+Merge with `expected_head_sha` equal to the reviewed current head. If GitHub rejects because head moved, stop and re-review; never merge a different head by inference.
 
-The runtime never auto-merges.
+## Bootstrap merge
+
+When base policy is absent:
+
+1. verify a `[UEOT-OWNER-AUTHORIZATION]` PR comment exists and GitHub metadata shows the repository owner authored it;
+2. verify that artifact delegates `merge_mode: ai-autonomous` and keeps independent review required;
+3. obtain a fresh independent bootstrap review of the exact current `(base, head)` pair;
+4. if PASS and current CI/evidence is coherent, AI may merge the bootstrap PR with `expected_head_sha`.
+
+Candidate policy alone never supplies bootstrap authority; the owner artifact does.
+
+## Direct-main exception
+
+AI is authorized to modify `main` directly only for recovery or explicitly justified maintenance. Before doing so it must record: objective, why PR flow is unsuitable, exact intended mutation, validation plan and rollback plan. Use a forward commit, never an unreviewed force rewrite.
 
 ## After merge
 
-Validate resulting `main`, verify platform protection is still active, update/close durable Issue, and retire the temporary branch. A merged trust-policy change governs only later PRs.
+Validate resulting `main`, update/close the durable Issue, and retire the temporary branch. The merged policy governs later PRs. If post-merge validation fails, immediately create a corrective/revert path using the same audit rules.

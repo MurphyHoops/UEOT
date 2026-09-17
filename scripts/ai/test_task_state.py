@@ -15,7 +15,7 @@ SHA = "a" * 40
 
 def valid_state() -> dict:
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "task_id": "issue-7",
         "issue": 7,
         "objective": "test objective",
@@ -39,7 +39,12 @@ def valid_state() -> dict:
         "completed": [],
         "current_problem": None,
         "next_action": "review",
-        "guards": {"human_merge_required": True, "builder_may_self_approve": False},
+        "guards": {
+            "merge_authority": "ai-autonomous",
+            "builder_may_self_approve": False,
+            "normal_integration_requires_pr": True,
+            "direct_main_write_allowed": True,
+        },
         "updated_at": "2026-09-17T00:00:00Z",
     }
 
@@ -61,11 +66,17 @@ class ValidatorTests(unittest.TestCase):
     def test_valid_state(self) -> None:
         self.assertEqual(validate(self.write_state(valid_state())), [])
 
-    def test_active_main_is_rejected(self) -> None:
+    def test_normal_active_main_is_rejected(self) -> None:
         data = valid_state()
         data["branch"] = "main"
         errors = validate(self.write_state(data))
-        self.assertTrue(any("may not use main" in error for error in errors))
+        self.assertTrue(any("normal active task may not use main" in error for error in errors))
+
+    def test_builder_self_approval_is_rejected(self) -> None:
+        data = valid_state()
+        data["guards"]["builder_may_self_approve"] = True
+        errors = validate(self.write_state(data))
+        self.assertTrue(any("AI-autonomous merge authority" in error for error in errors))
 
     def test_duplicate_required_checks_are_rejected(self) -> None:
         data = valid_state()

@@ -1,39 +1,36 @@
 # Builder Protocol
 
-The Builder may modify the existing task branch. It is not the final reviewer.
+The Builder may modify the existing task branch. It is never the independent Reviewer for its own repair.
 
 ## Start
 
-Follow `.ai/SYSTEM.md`. Reconcile Issue, current PR **base SHA + head SHA**, full diff, task state, prior reviews and current CI. Fetch `.ai/TRUST_POLICY.json` from the PR base SHA. Candidate state/policy never weakens that root.
-
-Before mutation, reject stale/duplicate work and confirm one work item -> one active branch/PR.
+Follow `.ai/SYSTEM.md`. Reconcile Issue, PR current base/head/diff, task state, prior reviews and CI. Fetch `.ai/TRUST_POLICY.json` from the PR base SHA. Candidate state/policy cannot weaken that trust root.
 
 ## One bounded iteration
 
-1. Select only the recorded next action or smallest prerequisite.
-2. Inspect actual protected CI/review evidence, not summaries.
-3. Implement one coherent change on the existing branch.
-4. Update `STATE.json` in the same checkpoint: increment iteration, record compact problem/next action/retries, and set `WAITING_CI` for pushed implementation.
-5. `required_checks` is only a declaration mirror: include all protected job names derived from base policy; never omit them.
-6. Commit/push, update durable Issue when branch/head/blocker/next action changes, then exit.
+1. select the recorded next action or smallest prerequisite;
+2. inspect actual failing CI/review evidence;
+3. implement one coherent change on the existing branch;
+4. update `STATE.json` in the same checkpoint: increment iteration, record observed event/head, update problem/next action/retries, then set `WAITING_CI` or the appropriate durable state;
+5. keep candidate `required_checks` at least a superset of base-policy protected job names when ordinary protected CI applies;
+6. commit/push, update durable Issue if needed, and exit.
 
 ## Routing
 
-- protected CI failure for current `(base, head)` -> one repair;
+- protected CI failure -> one repair;
 - authoritative current-pair CHANGES_REQUESTED -> one repair;
-- trust-critical path, changed protected input, unmatched path, or unverifiable platform enforcement -> record human-only/BLOCKED; never invent a weaker gate;
-- green protected CI -> Builder no-ops; Reviewer owns review transition;
-- bootstrap with no base trust policy -> implementation may proceed, but no candidate artifact can authorize merge.
+- trust/runtime/protected-input change -> prepare candidate for elevated independent review; do not claim ordinary CI proves unchanged semantics;
+- green ordinary protected CI -> Builder no-ops and Reviewer owns the next transition;
+- valid independent PASS -> Builder does not self-merge as Reviewer; a separate merge-capable invocation may perform the AI merge.
 
-## Currentness
+## Main authority
 
-Builder must not consume a review or CI artifact unless both the artifact base SHA and head SHA equal the current PR pair. If base moves while head stays constant, prior review/CI authorization evidence is stale.
+Repository AI has authority to modify `main`, but the **normal** Builder path remains task branch + PR. Direct-main writes are reserved for recovery or explicitly justified maintenance and require the exception record defined in `.ai/OPERATIONS.md`.
 
 ## Prohibitions
 
-- no direct `main` writes or force-pushes;
-- no replacement branch because a conversation changed;
+- no Builder self-approval;
 - no candidate-defined reviewer/CI trust root;
-- no claim of protected CI success without base-policy workflow/job evidence;
-- no attempt to bypass `human_only_paths` or missing platform protection;
-- no self-approval or auto-merge.
+- no merging a head different from the independently reviewed head;
+- no force-push as a normal repair mechanism;
+- no replacement branch merely because a conversation changed.

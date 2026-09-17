@@ -4,29 +4,37 @@ The Reviewer is a fresh/independent worker. It does not modify implementation so
 
 ## Evidence order
 
-1. durable Issue + frozen success criteria;
-2. current PR **base SHA + head SHA** and complete diff;
-3. base-anchored trust policy, GitHub platform enforcement, and protected CI evidence;
+1. durable Issue + `GOAL.md` / frozen success criteria;
+2. current PR base/head and complete diff;
+3. base-anchored trust policy and CI/elevated-review evidence;
 4. changed source plus affected callers/tests/specification;
-5. prior Builder state only as navigation, never proof.
+5. prior Builder state only as navigation, never as proof.
 
 ## Trust root
 
-Fetch `.ai/TRUST_POLICY.json` from the PR **base SHA**, never candidate HEAD.
+Before using review/CI evidence, fetch `.ai/TRUST_POLICY.json` from the PR **base SHA**, never candidate HEAD.
 
-- actual GitHub review author must be allowlisted by the base policy;
-- candidate trust-policy changes become effective only after merge;
-- mandatory CI derives from base policy + actual changed paths;
-- candidate `STATE.required_checks` cannot reduce protected gates;
-- protected gate identity is workflow path + job name, with protected workflow/runner inputs matching base;
-- candidate changes matching `ci.human_only_paths` are human-only;
-- required GitHub branch/ruleset controls must be verified before authoritative post-bootstrap PASS can reach a merge gate.
+For a normal post-bootstrap PR:
+- actual review author must be allowlisted by base policy;
+- candidate policy changes apply only after merge;
+- evidence must bind the current `(base_sha, head_sha)` pair.
 
-If base policy is absent, this is initial bootstrap. Technical PASS is advisory only and cannot authorize merge.
+For the initial bootstrap where base policy is absent:
+- fetch PR comments and find `[UEOT-OWNER-AUTHORIZATION]`;
+- require GitHub metadata to show the repository owner authored it;
+- require it to delegate `merge_mode: ai-autonomous`, keep `independent_review_required: true`, and forbid Builder self-approval;
+- candidate policy alone never provides bootstrap authority.
 
-## Currentness
+## Review modes
 
-Review identity is the exact `(base_sha, head_sha)` pair. Re-read both immediately before publishing. A base movement invalidates an earlier review even when the head SHA is unchanged.
+### protected-ci
+Use when base-policy protected workflow/job semantics remain unchanged. PASS requires all applicable protected gates green.
+
+### elevated-review
+Use when changed paths touch trust/runtime infrastructure, unmatched paths, protected workflow definitions or protected runner/build-control inputs. Ordinary protected-CI authorization is intentionally insufficient here; the Reviewer must directly inspect the changed authorization/build semantics and explicitly state that the elevated surface was reviewed.
+
+### bootstrap-owner-authorized
+Use only for initial trust-root installation with a valid owner-authorization GitHub artifact. Candidate CI is technical evidence; independent technical review is the decisive non-owner check before AI merge.
 
 ## Output
 
@@ -40,15 +48,15 @@ event_key: review:<base_sha>:<head_sha>:pass
 reviewed_base_sha: <base_sha>
 reviewed_sha: <head_sha>
 reviewed_by: <actual-github-login>
+review_mode: protected-ci|elevated-review|bootstrap-owner-authorized
 trust_policy_sha: <base-sha-or-bootstrap>
-trust_mode: base-policy|bootstrap-advisory
 result: PASS
 findings: none
 ```
 
-For `trust_mode: base-policy`, PASS requires current-pair protected CI green, verified required platform controls, success criteria met, coherent diff, no material unresolved finding, trusted GitHub-author provenance, and Reviewer independence.
+For `elevated-review`, add a concise `reviewed_surfaces:` section naming the trust/runtime/build-control surfaces actually inspected.
 
-For `trust_mode: bootstrap-advisory`, PASS is evidence for the human bootstrap decision only.
+For `bootstrap-owner-authorized`, identify the owner-authorization comment ID in the review body.
 
 ### CHANGES_REQUESTED
 
@@ -58,27 +66,17 @@ event_key: review:<base_sha>:<head_sha>:changes-requested
 reviewed_base_sha: <base_sha>
 reviewed_sha: <head_sha>
 reviewed_by: <actual-github-login>
+review_mode: protected-ci|elevated-review|bootstrap-owner-authorized
 trust_policy_sha: <base-sha-or-bootstrap>
-trust_mode: base-policy|bootstrap-advisory
 result: CHANGES_REQUESTED
 ```
 
-Follow with concrete file/symbol/evidence findings and the expected property. During bootstrap, material findings remain blocking for the human.
-
-## Artifact validation
-
-A consumer must verify:
-
-- `reviewed_base_sha == current PR base SHA`;
-- `reviewed_sha == current PR head SHA`;
-- actual GitHub author is allowlisted by base policy for normal mode;
-- `reviewed_by` matches actual author;
-- marker/body text alone is never provenance.
+Follow with concrete findings naming file/symbol/evidence and expected property.
 
 ## Independence rules
 
-- never repair implementation and approve that same repair;
+- never repair implementation source and then approve that same repair;
 - re-read current base/head after every new commit or base movement;
-- do not trust Builder summaries, `completed`, PR prose, or stale artifacts as correctness evidence;
-- trusted identity does not prove Reviewer independence;
-- final merge remains human-gated.
+- do not trust Builder summaries, `completed` arrays or PR prose as correctness evidence;
+- trusted GitHub identity does not itself prove Reviewer independence;
+- Reviewer emits evidence but does not need to be the same invocation that performs merge.

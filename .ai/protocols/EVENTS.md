@@ -4,41 +4,27 @@ GitHub event-triggered Work is optional. v3 does not depend on it for liveness, 
 
 ## Trust boundary
 
-Any event worker must resolve `.ai/TRUST_POLICY.json` from the PR **base SHA**. Candidate HEAD must never define reviewer authorization or minimum CI gates for itself.
+Any event worker must resolve `.ai/TRUST_POLICY.json` from the PR **base SHA**. Candidate HEAD never defines who may approve itself or what evidence authorizes merge.
 
-Structured CI/review text is navigation evidence only until verified against:
-- current PR **base SHA + head SHA**;
-- base-policy reviewer authorization;
-- base-policy `human_only_paths` and path-derived protected gates;
-- trusted workflow/job identity and protected base blobs;
-- required GitHub platform enforcement.
+Structured artifacts are navigation evidence until verified against current `(base_sha, head_sha)`, base-policy reviewer authorization and applicable protected-CI/elevated-review rules.
 
-If base policy is absent, the PR is bootstrap-human-only.
+## Event aggregates
 
-## Structured artifact identity
+Trusted relay may emit:
 
-Trusted CI signal keys bind both revisions:
-
-`ci-settled:<base_sha>:<head_sha>:<success|failure|blocked>`
-
-Reviewer keys bind both revisions:
-
-`review:<base_sha>:<head_sha>:<pass|changes-requested>`
-
-A base change makes old artifacts stale even if head SHA is unchanged.
-
-## Duplicate provenance
-
-Relay idempotency must only treat an existing marker as a duplicate when GitHub metadata proves it was authored by the trusted relay identity (`github-actions[bot]`). An ordinary commenter copying a marker is not a duplicate and cannot suppress signal emission.
+- `success` — ordinary protected CI settled green;
+- `failure` — protected CI or candidate declaration failed;
+- `review-required` — trust/runtime/unmatched/protected-input changes require elevated independent review.
 
 ## Optional event worker
 
 If deliberately enabled:
-1. re-read GitHub and the base trust policy;
-2. verify current `(base, head)` and platform enforcement;
-3. reject stale pair, untrusted duplicate marker, untrusted review author, weakened candidate declarations or already-completed transitions;
-4. perform at most one bounded Builder/Reviewer transition;
-5. bootstrap-human-only, trust-critical changes, PASS, ordinary comments, bookkeeping and no-action states are no-op for automation;
-6. persist durable handoff and exit.
+1. re-read GitHub and base trust policy;
+2. reject stale `(base, head)`, duplicate or already-completed transitions;
+3. route `failure` to one Builder repair;
+4. route `success` to independent protected-ci review if no current review exists;
+5. route `review-required` to independent elevated review;
+6. route authoritative current-pair PASS to an AI merge transition if all policy conditions are met;
+7. persist the handoff and exit.
 
-A later ordinary Chat `/ueot-resume` can derive the same transition without Work.
+Builder self-approval remains forbidden. Event delivery is never required; a later ordinary Chat `/ueot-resume` can derive the same transition from GitHub.
