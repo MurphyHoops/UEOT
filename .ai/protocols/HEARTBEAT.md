@@ -1,42 +1,38 @@
-# Heartbeat Protocol — Primary Liveness
+# Heartbeat Protocol v3 — Optional Scheduled Acceleration
 
-The Heartbeat is the v2 reliability mechanism. It is a recurring ChatGPT scheduled task, not a long-running process.
+The Heartbeat is no longer the primary liveness mechanism. In v3 it is an optional scheduled Work accelerator that may be enabled temporarily when unattended progression is worth additional agentic usage.
 
-## Semantics
+## Default state
 
-Each scheduled run is a new disposable worker. On eligible paid ChatGPT plans the schedule may be hourly; the worker inspects GitHub, performs at most one bounded transition, persists the handoff, and exits.
+Disabled / not configured for baseline operation.
 
-A missed GitHub event can delay work until the next Heartbeat but cannot strand the task.
+Primary continuation is a fresh ordinary ChatGPT conversation invoking `/ueot-resume` under `.ai/protocols/CHAT.md`.
 
-## Scan
+## If enabled
 
-1. Read governance/System/Event protocol.
-2. Find active durable Issues with open task PRs/state.
-3. Reconcile actual PR head, checks, current source/diff, structured reviews and state.
-4. Ignore merged/closed PRs, `DONE`, `READY_TO_MERGE`, unresolved `BLOCKED`, stale task records, or tasks with no actionable transition.
-5. Select at most ONE task, prioritizing:
-   - current failed required CI;
-   - current `CHANGES_REQUESTED` review;
-   - green current-head CI with no valid current-head independent review;
-   - explicit newly-resolved BLOCKED/human-resume state.
+Each scheduled run is a disposable worker that:
+
+1. reads governance/System/resource policy;
+2. reconciles active Issue/PR/head/CI/reviews/state;
+3. selects at most ONE actionable task;
+4. performs at most ONE bounded transition;
+5. persists the handoff and exits.
 
 ## Route
 
 - required CI running/pending -> no mutation; exit;
 - required CI failed -> one Builder repair;
-- structured CHANGES_REQUESTED for current head -> one Builder repair;
-- required CI green and no current-head review -> one independent Reviewer pass;
-- current-head PASS + green required CI -> human merge gate; no mutation;
+- current-head `CHANGES_REQUESTED` -> one Builder repair;
+- green current-head CI without valid independent review -> one Reviewer pass;
+- current-head PASS + green CI -> human merge gate; no mutation;
 - no actionable task -> quiet no-op.
 
 ## Cost and loop controls
 
 - never poll repeatedly inside one run;
 - never process more than one task per heartbeat;
-- never create bookkeeping-only code commits;
-- never repeat an event/transition already represented by current GitHub evidence;
-- event accelerators may cause a Heartbeat to find nothing to do; that is a valid no-op.
+- never create bookkeeping-only commits;
+- never repeat an already-completed transition;
+- disable the Heartbeat when unattended operation is no longer needed.
 
-## Failure model
-
-Heartbeat failure is recoverable at the next scheduled run or by manual fresh-chat recovery. The Heartbeat must never be the sole repository truth source.
+Heartbeat failure never damages resumability because GitHub remains authoritative and `/ueot-resume` can recover manually.
