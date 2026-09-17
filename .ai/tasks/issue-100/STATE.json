@@ -4,22 +4,23 @@
   "issue": 100,
   "objective": "Persistent GitOps Agent Runtime for resumable cross-chat UEOT development",
   "status": "WAITING_CI",
-  "iteration": 1,
+  "iteration": 2,
   "max_iterations": 30,
   "branch": "ops/persistent-agent-runtime",
   "base_sha": "aaea53a70902e138d123ef700a99c372214708d9",
-  "checkpoint_sha": "bc493a47519a378bcb5e76bb3b6483e7e93e4417",
+  "checkpoint_sha": "c329010084b8989921318ed132a8e3bac53d600b",
   "open_pr": 102,
+  "required_checks": ["validate-state"],
   "latest_ci": {
-    "sha": "bc493a47519a378bcb5e76bb3b6483e7e93e4417",
+    "sha": "c329010084b8989921318ed132a8e3bac53d600b",
     "status": "success",
-    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35170196560"
+    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35170245946"
   },
   "last_event": {
-    "key": "push:bc493a47519a378bcb5e76bb3b6483e7e93e4417:state-guard:35170196560",
+    "key": "ci-settled:c329010084b8989921318ed132a8e3bac53d600b:success",
     "type": "ci-completed",
-    "sha": "bc493a47519a378bcb5e76bb3b6483e7e93e4417",
-    "at": "2026-09-17T01:21:00Z"
+    "sha": "c329010084b8989921318ed132a8e3bac53d600b",
+    "at": "2026-09-17T01:21:51Z"
   },
   "retries": {
     "same_failure_count": 0,
@@ -34,13 +35,14 @@
     "Created the single implementation branch ops/persistent-agent-runtime",
     "Implemented the Phase-1 persistent-state kernel and stdlib validator",
     "Validated the first implementation checkpoint in GitHub Actions run 35170196560",
-    "Opened draft PR #102 to main"
+    "Opened draft PR #102 to main",
+    "Dogfooded the first PR checkpoint and passed state guard run 35170245946"
   ],
   "current_problem": null,
-  "next_action": "After this checkpoint CI settles, implement the structured CI-to-PR wake-up signal and external Work trigger contract with event/SHA deduplication.",
+  "next_action": "Validate the Phase-2 event relay checkpoint; once merged to main, configure ChatGPT Work to wake on structured PR signal comments and test fresh-conversation recovery.",
   "guards": {
     "human_merge_required": true,
     "builder_may_self_approve": false
   },
-  "updated_at": "2026-09-17T01:22:00Z"
+  "updated_at": "2026-09-17T01:24:00Z"
 }

@@ -19,8 +19,8 @@ TASK_RE = re.compile(r"^issue-([0-9]+)$")
 REQUIRED = {
     "schema_version", "task_id", "issue", "objective", "status", "iteration",
     "max_iterations", "branch", "base_sha", "checkpoint_sha", "open_pr",
-    "latest_ci", "last_event", "retries", "completed", "current_problem",
-    "next_action", "guards", "updated_at",
+    "required_checks", "latest_ci", "last_event", "retries", "completed",
+    "current_problem", "next_action", "guards", "updated_at",
 }
 
 
@@ -85,6 +85,14 @@ def validate(path: Path) -> list[str]:
 
     if data["open_pr"] is not None and (not isinstance(data["open_pr"], int) or data["open_pr"] < 1):
         fail(path, "open_pr must be null or a positive integer", errors)
+
+    checks = data["required_checks"]
+    if not isinstance(checks, list) or not checks:
+        fail(path, "required_checks must be a non-empty string array", errors)
+    elif any(not isinstance(x, str) or not x.strip() for x in checks):
+        fail(path, "required_checks entries must be non-empty strings", errors)
+    elif len(checks) != len(set(checks)):
+        fail(path, "required_checks entries must be unique", errors)
 
     ci = data["latest_ci"]
     if not isinstance(ci, dict) or set(ci) != {"sha", "status", "run_url"}:
