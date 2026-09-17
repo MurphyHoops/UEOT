@@ -1,0 +1,186 @@
+name: UEOT AI CI Signal
+
+on:
+  workflow_run:
+    workflows: ["UEOT AI Agent State Guard"]
+    types: [completed]
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: ueot-ai-signal-${{ github.event.workflow_run.head_sha }}
+  cancel-in-progress: false
+
+jobs:
+  signal:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
+      github.event.workflow_run.head_branch != 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Wait for task-required checks and emit one wake-up signal
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const run = context.payload.workflow_run;
+            const sha = run.head_sha;
+            const branch = run.head_branch;
+            const prs = run.pull_requests || [];
+            if (prs.length !== 1) {
+              core.info(`Expected one PR for ${sha}; found ${prs.length}. No signal.`);
+              return;
+            }
+            const prNumber = prs[0].number;
+
+            const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+            if (pr.head.sha !== sha) {
+              core.info(`Stale guard SHA ${sha}; current PR head is ${pr.head.sha}. No signal.`);
+              return;
+            }
+
+            async function postOnce(eventKey, taskId, aggregate, lines) {
+              const marker = `<!-- ueot-ai-signal:${eventKey} -->`;
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner,
+                repo,
+                issue_number: prNumber,
+                per_page: 100,
+              });
+              if (comments.some((comment) => (comment.body || '').includes(marker))) {
+                core.info(`Signal ${eventKey} already exists.`);
+                return;
+              }
+              const body = [
+                marker,
+                '[UEOT-AI-SIGNAL]',
+                'event: ci-settled',
+                `event_key: ${eventKey}`,
+                `task: ${taskId}`,
+                `pr: ${prNumber}`,
+                `sha: ${sha}`,
+                `aggregate: ${aggregate}`,
+                'required_checks:',
+                ...lines,
+                '',
+                'External workers must re-read repository/PR/CI state, reject duplicate event keys,',
+                'perform one bounded transition, persist the handoff, and exit.',
+                'This comment is a wake-up signal, not proof that the implementation is correct.',
+              ].join('\n');
+              await github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body });
+            }
+
+            if (run.conclusion !== 'success') {
+              const eventKey = `state-guard:${sha}:${run.conclusion || 'failure'}`;
+              await postOnce(eventKey, 'unknown', 'failure', [
+                `- validate-state: ${run.conclusion || 'failure'}`,
+              ]);
+              return;
+            }
+
+            const tree = await github.rest.git.getTree({
+              owner,
+              repo,
+              tree_sha: sha,
+              recursive: 'true',
+            });
+            const statePaths = tree.data.tree
+              .filter((entry) => entry.type === 'blob' && /^\.ai\/tasks\/[^/]+\/STATE\.json$/.test(entry.path))
+              .map((entry) => entry.path);
+
+            let state = null;
+            for (const path of statePaths) {
+              const file = await github.rest.repos.getContent({ owner, repo, path, ref: sha });
+              if (Array.isArray(file.data) || !('content' in file.data)) continue;
+              const parsed = JSON.parse(Buffer.from(file.data.content, 'base64').toString('utf8'));
+              if (parsed.open_pr === prNumber && parsed.branch === branch) {
+                if (state !== null) {
+                  core.setFailed(`More than one task state is bound to PR #${prNumber}.`);
+                  return;
+                }
+                state = parsed;
+              }
+            }
+            if (state === null) {
+              core.info(`No persistent task state is bound to PR #${prNumber}; no signal.`);
+              return;
+            }
+            if (state.status !== 'WAITING_CI') {
+              core.info(`Task ${state.task_id} is ${state.status}, not WAITING_CI; no CI wake-up.`);
+              return;
+            }
+
+            const required = state.required_checks || [];
+            if (!Array.isArray(required) || required.length === 0) {
+              core.setFailed(`Task ${state.task_id} has no required_checks.`);
+              return;
+            }
+
+            const deadline = Date.now() + 30 * 60 * 1000;
+            let selected = [];
+            let waitingFor = [];
+
+            while (Date.now() < deadline) {
+              const { data: currentPr } = await github.rest.pulls.get({
+                owner,
+                repo,
+                pull_number: prNumber,
+              });
+              if (currentPr.head.sha !== sha) {
+                core.info(`PR head moved from ${sha} to ${currentPr.head.sha}; stale relay exits.`);
+                return;
+              }
+
+              const checks = await github.paginate(github.rest.checks.listForRef, {
+                owner,
+                repo,
+                ref: sha,
+                per_page: 100,
+              });
+
+              selected = [];
+              waitingFor = [];
+              for (const requiredName of required) {
+                const matches = checks
+                  .filter((check) => check.app?.slug === 'github-actions' && check.name === requiredName)
+                  .sort((a, b) => b.id - a.id);
+                if (matches.length === 0) {
+                  waitingFor.push(`${requiredName}:missing`);
+                  continue;
+                }
+                const current = matches[0];
+                if (current.status !== 'completed') {
+                  waitingFor.push(`${requiredName}:${current.status}`);
+                  continue;
+                }
+                selected.push(current);
+              }
+
+              if (waitingFor.length === 0 && selected.length === required.length) break;
+              core.info(`Waiting for required checks: ${waitingFor.join(', ')}`);
+              await new Promise((resolve) => setTimeout(resolve, 15000));
+            }
+
+            let aggregate;
+            let detailLines;
+            if (waitingFor.length > 0 || selected.length !== required.length) {
+              aggregate = 'blocked';
+              detailLines = waitingFor.map((item) => `- ${item}`);
+            } else {
+              const successConclusions = new Set(['success', 'neutral', 'skipped']);
+              aggregate = selected.every((check) => successConclusions.has(check.conclusion))
+                ? 'success'
+                : 'failure';
+              detailLines = selected.map((check) => `- ${check.name}: ${check.conclusion}`).sort();
+            }
+
+            const eventKey = `ci-settled:${sha}:${aggregate}`;
+            await postOnce(eventKey, state.task_id, aggregate, detailLines);

@@ -4,23 +4,23 @@
   "issue": 100,
   "objective": "Persistent GitOps Agent Runtime for resumable cross-chat UEOT development",
   "status": "WAITING_CI",
-  "iteration": 4,
+  "iteration": 5,
   "max_iterations": 30,
   "branch": "ops/persistent-agent-runtime",
   "base_sha": "aaea53a70902e138d123ef700a99c372214708d9",
-  "checkpoint_sha": "0807fcb1b1bce135abf9dd3fbe40740c4c1cae11",
+  "checkpoint_sha": "bdd65a30887f159fbdb9b19fe2878059c8764e8d",
   "open_pr": 102,
   "required_checks": ["validate-state"],
   "latest_ci": {
-    "sha": "0807fcb1b1bce135abf9dd3fbe40740c4c1cae11",
-    "status": "success",
-    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35171197336"
+    "sha": "bdd65a30887f159fbdb9b19fe2878059c8764e8d",
+    "status": "failure",
+    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35171911761"
   },
   "last_event": {
-    "key": "audit:0807fcb1b1bce135abf9dd3fbe40740c4c1cae11:35171197336",
-    "type": "manual-recovery-audit",
-    "sha": "0807fcb1b1bce135abf9dd3fbe40740c4c1cae11",
-    "at": "2026-09-17T01:42:00Z"
+    "key": "audit:bdd65a30887f159fbdb9b19fe2878059c8764e8d:403-comment",
+    "type": "relay-permission-failure",
+    "sha": "bdd65a30887f159fbdb9b19fe2878059c8764e8d",
+    "at": "2026-09-17T01:50:00Z"
   },
   "retries": {
     "same_failure_count": 0,
@@ -30,19 +30,17 @@
     "failure_fingerprint": null
   },
   "completed": [
-    "Audited repository branch governance and existing CI workflows",
-    "Created durable live-state Issue #100 and single implementation branch",
-    "Implemented persistent state schema, Builder/Reviewer protocols, validator and regression tests",
-    "Opened draft PR #102 and repeatedly passed real PR state-guard CI",
-    "Added task initializer and user quickstart",
-    "Audited relay race conditions and removed duplicate branch/PR state checks",
-    "Replaced hard-coded workflow_run relay with generic required-check PR orchestrator"
+    "Implemented persistent state schema, Builder/Reviewer protocols, validator, regression tests and task initializer",
+    "Opened draft PR #102 and repeatedly passed real PR state validation",
+    "Audited duplicate-check and hard-coded relay races",
+    "Proved PR-head orchestrator could settle required checks but hit GitHub PR-token comment 403",
+    "Redesigned signal emission as trusted default-branch workflow_run while keeping task-declared dynamic required checks"
   ],
-  "current_problem": null,
-  "next_action": "Wait for PR #102 orchestrator CI on this checkpoint and verify that it posts exactly one [UEOT-AI-SIGNAL] comment; then perform independent review and the human bootstrap merge gate.",
+  "current_problem": "The trusted workflow_run CI Signal cannot activate until the bootstrap workflow exists on default branch main; this is the intentional one-time bootstrap boundary.",
+  "next_action": "Finish PR #102 validation and independent review. Human-merge the bootstrap runtime; then configure the Plus Work GitHub-event task and run one disposable end-to-end continuation test.",
   "guards": {
     "human_merge_required": true,
     "builder_may_self_approve": false
   },
-  "updated_at": "2026-09-17T01:42:00Z"
+  "updated_at": "2026-09-17T01:50:00Z"
 }

@@ -5,8 +5,11 @@ GitHub-event subscription is configured in ChatGPT, outside this repository.
 
 ## Recommended setup: one router worker
 
-Create one GitHub-event-triggered Work task scoped to the UEOT repository. It should wake
-on PR comments/reviews and route itself from current GitHub evidence:
+Eligible Plus users can create event-triggered Work tasks for supported GitHub pull request
+activity, including (depending on the trigger) PR reviews, comments and commit updates.
+Configure one task scoped to `MurphyHoops/UEOT` PR activity/comments/reviews.
+
+Route from current GitHub evidence:
 
 - `[UEOT-AI-SIGNAL] aggregate: success` -> independent Reviewer path;
 - `[UEOT-AI-SIGNAL] aggregate: failure` -> Builder repair path;
@@ -14,20 +17,19 @@ on PR comments/reviews and route itself from current GitHub evidence:
 - review/request-changes event -> Builder path;
 - duplicate event, stale SHA, `READY_TO_MERGE`, `BLOCKED`, or `DONE` -> no mutation.
 
-### Router startup instruction
-
-Use the following as the Work task instruction:
+### Router prompt
 
 > You are the UEOT persistent GitOps router. Treat each invocation as disposable. First
 > read `docs/REPOSITORY_BRANCH_GOVERNANCE.md`, `.ai/SYSTEM.md`, `.ai/protocols/EVENTS.md`,
-> and the current PR/Issue/task state from GitHub. Reconcile the current PR head SHA,
-> complete diff, relevant source, required checks, reviews, and durable Issue before doing
-> anything. Reject stale or duplicate events. For a failed CI signal run exactly one
-> bounded Builder repair using `.ai/protocols/BUILDER.md`; for a green CI signal run an
-> independent review using `.ai/protocols/REVIEWER.md`; for a blocked signal diagnose the
-> missing/stuck gate and either repair configuration or record a precise BLOCKED state.
-> Never create a new branch because the conversation changed. Never merge `main`. Persist
-> the durable handoff in GitHub, then finish instead of waiting for the next event.
+> and recover the current task from GitHub PR -> durable Issue -> `.ai/tasks/*/STATE.json`.
+> Reconcile the current PR head SHA, complete diff, relevant source, required checks and
+> reviews before doing anything. Reject stale or duplicate events. For a failed CI signal,
+> perform exactly one bounded Builder repair using `.ai/protocols/BUILDER.md`; for a green
+> CI signal, perform an independent review using `.ai/protocols/REVIEWER.md`; for a blocked
+> signal, diagnose the missing/stuck gate and repair configuration or record a precise
+> BLOCKED state. Never create a new branch because the conversation changed. Never merge
+> `main`. Persist the durable handoff in GitHub and finish instead of waiting for another
+> event.
 
 ## Hardened setup: two logical workers
 
@@ -35,23 +37,23 @@ For stronger role separation, create two event-triggered Work tasks:
 
 - **Builder** acts only on failed/blocked CI, review changes, or explicit human resume.
 - **Reviewer** acts only after required CI is green and independently reads Issue goal,
-  current PR diff/source, checks, and affected tests/specification.
+  current PR diff/source, checks, affected tests/specification, and previous reviews.
 
-Both workers must no-op if repository evidence does not match their role. This prevents
-simultaneous event delivery from producing duplicate mutations.
+Both no-op if repository evidence does not match their role.
 
 ## Activation sequence
 
-1. Review and merge the runtime bootstrap PR to `main`.
-2. Confirm `UEOT AI Agent State Guard` is green on `main`.
-3. Create the ChatGPT Work GitHub-event trigger(s) using the instruction above.
-4. Scope the trigger to `MurphyHoops/UEOT` PR comments/reviews.
-5. Run one disposable Issue/branch/PR test and verify a `[UEOT-AI-SIGNAL]` comment wakes a
-   fresh Work invocation.
-6. Only then rely on unattended continuation for substantive UEOT work.
+1. Independently review and human-merge the runtime bootstrap PR to `main`.
+2. Confirm both `UEOT AI Agent State Guard` and `UEOT AI CI Signal` exist on `main`.
+3. In ChatGPT: **Settings -> Apps** (or Plugins, depending on UI) -> connect GitHub and
+   authorize `MurphyHoops/UEOT`.
+4. Open **Work** and ask it to create an event-triggered task for PR comments/reviews in
+   `MurphyHoops/UEOT`, using the Router prompt above.
+5. Review the generated **Trigger, Condition, and Prompt**, authorize it, then manage it in
+   **Scheduled**.
+6. Run a disposable Issue/branch/PR and verify that CI creates one `[UEOT-AI-SIGNAL]`
+   comment and that this starts a fresh Work invocation.
+7. Only then rely on unattended continuation for substantive UEOT work.
 
-The PR orchestrator itself can be exercised on the bootstrap PR before merge, but stable
-production use should start after the reviewed runtime exists on `main`.
-
-Do not store ChatGPT conversation URLs as task state. Conversations are replaceable
-compute instances; GitHub is the handoff substrate.
+Do not store ChatGPT conversation URLs as task state. Conversations are replaceable compute
+instances; GitHub is the handoff substrate.
