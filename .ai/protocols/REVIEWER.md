@@ -11,46 +11,50 @@ to repeat the Builder narrative. It does not modify implementation source during
 4. changed source plus affected callers/tests/specification;
 5. prior Builder state only as navigation, never as proof.
 
-Before review, reject a stale signal SHA and reject an already-consumed event key.
+Before review, reject a stale signal SHA and reject an already-consumed CI event key.
 
 ## Output
 
-Use one top-level structured PR comment.
+Publish exactly one top-level structured PR comment. The same comment both records the
+review and consumes the triggering CI signal, avoiding a second bookkeeping comment.
 
 ### PASS
 
 ```text
+<!-- ueot-ai-consumed:ci-settled:<sha>:success -->
 <!-- ueot-ai-review:review:<sha>:pass -->
 [UEOT-AI-REVIEW]
 event_key: review:<sha>:pass
+consumes_event_key: ci-settled:<sha>:success
 reviewed_sha: <sha>
 result: PASS
 findings: none
 ```
 
 PASS requires current-head required CI green, success criteria met, coherent diff, and no
-material unresolved finding. Update the durable Issue live state to the human merge gate,
-then add the consumed marker for the triggering CI event. Do **not** create a state-only
-commit merely to say PASS.
+material unresolved finding. Update the durable Issue live state to the human merge gate.
+Do **not** create a state-only commit merely to say PASS.
 
 ### CHANGES_REQUESTED
 
 ```text
+<!-- ueot-ai-consumed:ci-settled:<sha>:success -->
 <!-- ueot-ai-review:review:<sha>:changes-requested -->
 [UEOT-AI-REVIEW]
 event_key: review:<sha>:changes-requested
+consumes_event_key: ci-settled:<sha>:success
 reviewed_sha: <sha>
 result: CHANGES_REQUESTED
 ```
 
-Follow with concrete findings naming file/symbol/evidence and expected property. This PR
-comment becomes a GitHub activity event that wakes Builder. Add the consumed marker for the
-CI signal after publishing the findings.
+Follow with concrete findings naming file/symbol/evidence and expected property. The Work
+trigger condition should wake Builder on this structured comment. No extra consumed comment
+is needed.
 
 ### BLOCKED
 
-Record exactly which evidence/decision is unavailable in the Issue/PR, consume the event,
-and stop.
+Record exactly which evidence/decision is unavailable in the Issue/PR, embed the consumed
+CI marker in that same record, and stop.
 
 ## Independence rules
 

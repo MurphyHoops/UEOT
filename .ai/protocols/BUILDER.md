@@ -7,8 +7,8 @@ The Builder may modify the existing task branch. It is not the final reviewer.
 Follow `.ai/SYSTEM.md`. Reconcile Issue, PR head/diff, task state, required checks, prior
 structured reviews, and PR comments. Confirm one work item -> one active branch/PR.
 
-Before mutation, derive the incoming event key and search PR comments for
-`<!-- ueot-ai-consumed:<event-key> -->`. If present, stop without repeating work.
+Before mutation, derive the incoming event key. If `STATE.json.last_event.key` already
+matches it, or a PR review artifact already consumes it, stop without repeating work.
 
 ## One bounded iteration
 
@@ -23,13 +23,13 @@ Before mutation, derive the incoming event key and search PR comments for
    - compactly update completed/current_problem/next_action and retry counters;
    - set `WAITING_CI` for a pushed implementation.
 6. Commit/push. Update the durable Issue live state when branch/head/blocker/next action changed.
-7. Add the PR consumed marker for the event just handled.
-8. Exit. Never stay alive polling the next CI cycle.
+7. Exit. Do **not** emit a separate consumed-only PR comment; the state checkpoint is the
+   Builder's durable consumption record and avoids an unnecessary Work wake-up.
 
 ## Routing
 
 - CI/check failure -> inspect logs, fingerprint root failure, one repair iteration.
-- `CHANGES_REQUESTED` structured review -> address the concrete findings in one iteration.
+- structured `CHANGES_REQUESTED` -> address the concrete findings in one iteration.
 - blocked/missing check -> repair CI/config if in scope; otherwise record precise BLOCKED state.
 - green CI with no requested changes -> Builder no-ops; Reviewer owns that transition.
 
