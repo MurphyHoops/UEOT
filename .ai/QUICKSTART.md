@@ -15,11 +15,9 @@ A fresh Work invocation can recover and continue from those facts.
 ## One-time repository bootstrap
 
 1. Merge the reviewed runtime bootstrap PR to `main`.
-2. Confirm both workflows exist on `main`:
-   - `UEOT AI Agent State Guard`
-   - `UEOT AI CI Signal`
+2. Confirm `UEOT AI Agent State Guard` succeeds on `main`.
 3. Configure the ChatGPT Work GitHub-event trigger described in `.ai/WORK_SETUP.md`.
-4. Test it with a small disposable task before relying on automatic continuation.
+4. Test it with a small disposable task before relying on unattended continuation.
 
 ## Start a new persistent task
 
@@ -34,27 +32,33 @@ python scripts/ai/init_task.py \
   --objective "Formalize theorem X without strengthening the frozen source assumptions" \
   --branch formal/theorem-x \
   --base-sha <40-char-main-sha> \
+  --required-check validate-state \
   --required-check build
 ```
 
+Use the actual GitHub **job/check names** required for that task. `validate-state` is the
+persistent-state guard; `build` is the existing UEOT Core Lean job. A GI/QM task can name
+its own checks without modifying the orchestrator.
+
 Then edit `.ai/tasks/issue-123/GOAL.md` with exact success criteria, commit the task state
-on the same branch, and open one PR to `main`.
+with the implementation on the same branch, and open one PR to `main`.
 
-If working entirely through ChatGPT/GitHub, ask the worker to create the same two files by
-following `.ai/schema/task-state.schema.json` and the existing Issue task as an example.
+If working entirely through ChatGPT/GitHub, tell the Builder to create the same two task
+files using `.ai/schema/task-state.schema.json` and an existing Issue task as the pattern.
 
-## Normal automatic loop
+## Normal loop
 
-1. Builder performs one bounded implementation iteration.
-2. Builder checkpoints `STATE.json` as `WAITING_CI`, pushes, and exits.
-3. GitHub Actions executes real checks.
-4. `UEOT AI CI Signal` posts one deduplicated `[UEOT-AI-SIGNAL]` comment after required checks settle.
-5. ChatGPT Work wakes a new invocation.
-6. Green CI routes to independent review; failed CI routes to Builder repair.
-7. Review changes route back to Builder; review pass + green CI produces `READY_TO_MERGE`.
-8. Human merges to `main`.
+1. Builder performs one bounded implementation iteration on the existing branch.
+2. The same commit checkpoints task state as `WAITING_CI`.
+3. PR CI starts. The state guard validates state and waits for every `required_checks` gate.
+4. It posts one deduplicated `[UEOT-AI-SIGNAL]` comment with `success`, `failure`, or `blocked`.
+5. ChatGPT Work starts a fresh invocation from that GitHub event.
+6. Green CI routes to independent review; failure routes to one Builder repair; blocked
+   routes to gate/configuration recovery.
+7. Review changes route back to Builder. Review pass + green CI reaches the human merge gate.
+8. Human merges to `main` and retires the temporary branch under repository governance.
 
-At no point is the previous chat required to remain alive.
+No previous chat needs to remain alive.
 
 ## Manual fallback
 
@@ -62,8 +66,8 @@ If the external Work event trigger does not fire, start any fresh ChatGPT conver
 the UEOT Project and say:
 
 > Recover the active UEOT task from GitHub. Read repository governance, the durable live
-> Issue, `.ai/SYSTEM.md`, current PR/head/CI, and the task `STATE.json`. Reconcile GitHub
-> reality, execute exactly the recorded next bounded action, checkpoint, and stop. Do not
-> rely on previous conversation history.
+> Issue, `.ai/SYSTEM.md`, current PR/head/CI/reviews, and the task `STATE.json`. Reconcile
+> GitHub reality, execute exactly the recorded next bounded action, persist the handoff,
+> and stop. Do not rely on previous conversation history.
 
 This fallback is intentionally conversation-independent.
