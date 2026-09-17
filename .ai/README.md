@@ -4,51 +4,55 @@ The runtime makes ChatGPT conversations disposable while keeping development sta
 
 ## v3 execution model
 
-GitHub is the canonical state substrate. The default worker is an ordinary ChatGPT conversation with the GitHub connector.
-
-1. **Primary execution:** normal ChatGPT Chat + GitHub connector.
+1. **Primary execution:** ordinary ChatGPT Chat + GitHub connector.
 2. **Deterministic execution/verification:** GitHub Actions.
-3. **Primary continuation:** user opens any fresh ordinary Chat and invokes `/ueot-resume`.
-4. **Optional automation:** Work, scheduled Heartbeat and GitHub Event Trigger are disabled by default and may be enabled only as deliberate agentic-cost accelerators.
-5. **Optional escalation:** Codex is reserved for tasks whose interactive coding value justifies its resource use.
+3. **Primary continuation:** fresh ordinary Chat + `/ueot-resume`.
+4. **Optional automation:** Work Event/Heartbeat, disabled by default.
+5. **Optional escalation:** Codex only when its extra value justifies agentic usage.
 
-v3 optimizes for resumability and resource efficiency, not unattended autonomy.
+v3 guarantees resumability, not unattended autonomy.
 
-`/ueot-resume` is a repository protocol alias, not a built-in ChatGPT slash command. Typing it means: load `.ai/protocols/CHAT.md` and execute its recovery procedure.
+`/ueot-resume` is a repository protocol alias, not a built-in slash command.
 
 ## Truth order
 
-1. current GitHub facts: source, refs, PR diff, checks/CI and reviews;
-2. durable GitHub Issue body/live state;
-3. `.ai/tasks/<task>/STATE.json` machine mirror;
-4. project/architecture documents;
-5. conversation memory or chat summaries.
+1. current GitHub facts: source, refs, PR diff, checks/CI and review metadata;
+2. **authorization trust root from `.ai/TRUST_POLICY.json` at the PR base SHA / integrated main**;
+3. durable GitHub Issue body/live state;
+4. `.ai/tasks/<task>/STATE.json` machine mirror;
+5. project/architecture docs;
+6. conversation memory or summaries.
 
-## Review artifact trust
+Candidate HEAD may describe behavior, but it cannot define the authorization rules that approve itself.
 
-Structured `[UEOT-AI-REVIEW]` text is not self-authenticating. A PASS/CHANGES_REQUESTED artifact is authoritative only when GitHub API metadata shows that its actual author login is listed in `.ai/TRUSTED_REVIEWERS.json`. A body field claiming a reviewer identity is informational only.
+## Trust model
 
-Trusted identity is necessary but does not prove role independence. The fresh/independent Reviewer rule remains a separate process invariant and final merge remains human-gated.
+- reviewer authorization is read from the PR base policy, not candidate content;
+- protected CI requirements are derived from base policy + actual changed paths;
+- candidate `STATE.required_checks` is only a declaration mirror and must include protected job names;
+- a protected gate is bound to a base-approved workflow path + job name;
+- protected workflow and runner-input blobs must match the base revision;
+- trust-policy changes become effective only after merge;
+- missing base policy means initial bootstrap and therefore human-only authorization.
+
+This blocks both candidate-controlled reviewer allowlists and same-name / weakened CI gate attacks.
 
 ## Runtime identity
 
 `Persistent Agent = policy + GitHub state + verification + transition protocol`
 
-A chat is only one compute instance. Each invocation performs one bounded transaction and exits.
-
 ## Layout
 
-- `SYSTEM.md` — global invariants.
-- `RESOURCE_POLICY.md` — default Chat-first resource policy.
-- `TRUSTED_REVIEWERS.json` — allowlist for authoritative structured review artifacts.
+- `SYSTEM.md` — global invariants and trust-root rules.
+- `RESOURCE_POLICY.md` — Chat-first resource policy.
+- `TRUST_POLICY.json` — integrated reviewer/CI authorization policy; consumers resolve it from PR base.
 - `protocols/CHAT.md` — primary resume/execution protocol.
 - `protocols/BUILDER.md` — code-producing worker.
 - `protocols/REVIEWER.md` — independent review.
 - `protocols/EVENTS.md` — optional Work event acceleration.
-- `protocols/HEARTBEAT.md` — optional scheduled Work acceleration.
-- `WORK_SETUP.md` — optional Work configuration only.
-- `OPERATIONS.md` — rollback, BLOCKED and merge operations.
-- `QUICKSTART.md` — normal user workflow.
-- `tasks/issue-*/STATE.json` — compact recovery mirror.
+- `protocols/HEARTBEAT.md` — optional scheduled acceleration.
+- `OPERATIONS.md` — rollback, BLOCKED, trust evolution and merge operations.
+- `WORK_SETUP.md` — optional Work configuration.
+- `QUICKSTART.md` — user workflow.
 
 Large logs, diffs, secrets and reasoning traces never belong in task state.

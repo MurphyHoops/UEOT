@@ -31,5 +31,8 @@ jobs:
       - name: Run state-validator regression tests
         run: python scripts/ai/test_task_state.py
 
+      - name: Validate candidate trust policy structure
+        run: python scripts/ai/validate_trust_policy.py
+
       - name: Verify JSON schema parses
         run: python -m json.tool .ai/schema/task-state.schema.json >/dev/null

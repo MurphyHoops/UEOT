@@ -1,38 +1,25 @@
 # Heartbeat Protocol v3 — Optional Scheduled Acceleration
 
-The Heartbeat is no longer the primary liveness mechanism. In v3 it is an optional scheduled Work accelerator that may be enabled temporarily when unattended progression is worth additional agentic usage.
-
-## Default state
-
-Disabled / not configured for baseline operation.
-
-Primary continuation is a fresh ordinary ChatGPT conversation invoking `/ueot-resume` under `.ai/protocols/CHAT.md`.
+The Heartbeat is optional and disabled for baseline operation. Primary continuation is a fresh ordinary Chat invoking `/ueot-resume`.
 
 ## If enabled
 
-Each scheduled run is a disposable worker that:
+Each scheduled run is disposable and must:
 
-1. reads governance/System/resource policy;
-2. reconciles active Issue/PR/head/CI/reviews/state;
-3. selects at most ONE actionable task;
-4. performs at most ONE bounded transition;
-5. persists the handoff and exits.
+1. read governance/System/resource policy;
+2. reconcile active Issue/PR/base/head/diff/state;
+3. fetch `.ai/TRUST_POLICY.json` from the PR **base SHA**;
+4. if base policy is absent, trust infrastructure changed, or changed paths are unmatched, no-op into human-only/BLOCKED handling;
+5. derive protected CI gates from base policy + actual changed paths and authenticate reviews against the base-policy allowlist;
+6. perform at most ONE bounded transition and exit.
 
 ## Route
 
-- required CI running/pending -> no mutation; exit;
-- required CI failed -> one Builder repair;
-- current-head `CHANGES_REQUESTED` -> one Builder repair;
-- green current-head CI without valid independent review -> one Reviewer pass;
-- current-head PASS + green CI -> human merge gate; no mutation;
-- no actionable task -> quiet no-op.
+- protected CI running/pending -> no mutation;
+- protected CI failed -> one Builder repair;
+- authoritative current-head CHANGES_REQUESTED -> one Builder repair;
+- protected CI green without valid independent review -> one Reviewer pass;
+- authoritative current-head PASS + protected CI green -> human merge gate;
+- bootstrap-human-only / unmatched / protected trust-input changed / no actionable task -> no autonomous authorization.
 
-## Cost and loop controls
-
-- never poll repeatedly inside one run;
-- never process more than one task per heartbeat;
-- never create bookkeeping-only commits;
-- never repeat an already-completed transition;
-- disable the Heartbeat when unattended operation is no longer needed.
-
-Heartbeat failure never damages resumability because GitHub remains authoritative and `/ueot-resume` can recover manually.
+Never poll repeatedly, process more than one task, create bookkeeping-only commits, or substitute candidate-defined trust rules for the PR-base policy.

@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
-      - name: Wait for task-required checks and emit one wake-up signal
+      - name: Enforce base-anchored CI policy and emit one wake-up signal
         uses: actions/github-script@v7
         with:
           script: |
@@ -35,152 +35,156 @@ jobs:
             const sha = run.head_sha;
             const branch = run.head_branch;
             const prs = run.pull_requests || [];
-            if (prs.length !== 1) {
-              core.info(`Expected one PR for ${sha}; found ${prs.length}. No signal.`);
-              return;
-            }
+            if (prs.length !== 1) return;
             const prNumber = prs[0].number;
-
             const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
-            if (pr.head.sha !== sha) {
-              core.info(`Stale guard SHA ${sha}; current PR head is ${pr.head.sha}. No signal.`);
-              return;
-            }
+            if (pr.head.sha !== sha) return;
+            const baseSha = pr.base.sha;
 
             async function postOnce(eventKey, taskId, aggregate, lines) {
               const marker = `<!-- ueot-ai-signal:${eventKey} -->`;
-              const comments = await github.paginate(github.rest.issues.listComments, {
-                owner,
-                repo,
-                issue_number: prNumber,
-                per_page: 100,
-              });
-              if (comments.some((comment) => (comment.body || '').includes(marker))) {
-                core.info(`Signal ${eventKey} already exists.`);
-                return;
-              }
-              const body = [
-                marker,
-                '[UEOT-AI-SIGNAL]',
-                'event: ci-settled',
-                `event_key: ${eventKey}`,
-                `task: ${taskId}`,
-                `pr: ${prNumber}`,
-                `sha: ${sha}`,
-                `aggregate: ${aggregate}`,
-                'required_checks:',
-                ...lines,
-                '',
-                'External workers must re-read repository/PR/CI state, reject duplicate event keys,',
-                'perform one bounded transition, persist the handoff, and exit.',
-                'This comment is a wake-up signal, not proof that the implementation is correct.',
+              const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: prNumber, per_page: 100 });
+              if (comments.some((c) => (c.body || '').includes(marker))) return;
+              const body = [marker, '[UEOT-AI-SIGNAL]', 'event: ci-settled', `event_key: ${eventKey}`,
+                `task: ${taskId}`, `pr: ${prNumber}`, `sha: ${sha}`, `base_sha: ${baseSha}`,
+                `aggregate: ${aggregate}`, 'policy_source: pr-base', 'protected_gates:', ...lines, '',
+                'Navigation evidence only. Re-read base trust policy, current head, workflow/job evidence and review provenance.'
               ].join('\n');
               await github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body });
             }
 
-            if (run.conclusion !== 'success') {
-              const eventKey = `state-guard:${sha}:${run.conclusion || 'failure'}`;
-              await postOnce(eventKey, 'unknown', 'failure', [
-                `- validate-state: ${run.conclusion || 'failure'}`,
-              ]);
-              return;
+            async function getContent(path, ref) {
+              const { data } = await github.rest.repos.getContent({ owner, repo, path, ref });
+              if (Array.isArray(data) || !('content' in data)) throw new Error(`${path}@${ref} is not a file`);
+              return { blobSha: data.sha, text: Buffer.from(data.content, 'base64').toString('utf8') };
             }
 
-            const tree = await github.rest.git.getTree({
-              owner,
-              repo,
-              tree_sha: sha,
-              recursive: 'true',
-            });
-            const statePaths = tree.data.tree
-              .filter((entry) => entry.type === 'blob' && /^\.ai\/tasks\/[^/]+\/STATE\.json$/.test(entry.path))
-              .map((entry) => entry.path);
-
+            const tree = await github.rest.git.getTree({ owner, repo, tree_sha: sha, recursive: 'true' });
+            const statePaths = tree.data.tree.filter((e) => e.type === 'blob' && /^\.ai\/tasks\/[^/]+\/STATE\.json$/.test(e.path)).map((e) => e.path);
             let state = null;
             for (const path of statePaths) {
-              const file = await github.rest.repos.getContent({ owner, repo, path, ref: sha });
-              if (Array.isArray(file.data) || !('content' in file.data)) continue;
-              const parsed = JSON.parse(Buffer.from(file.data.content, 'base64').toString('utf8'));
+              const parsed = JSON.parse((await getContent(path, sha)).text);
               if (parsed.open_pr === prNumber && parsed.branch === branch) {
-                if (state !== null) {
-                  core.setFailed(`More than one task state is bound to PR #${prNumber}.`);
-                  return;
-                }
+                if (state !== null) { core.setFailed(`More than one task state is bound to PR #${prNumber}.`); return; }
                 state = parsed;
               }
             }
-            if (state === null) {
-              core.info(`No persistent task state is bound to PR #${prNumber}; no signal.`);
+            if (!state || state.status !== 'WAITING_CI') return;
+
+            let policy;
+            try {
+              policy = JSON.parse((await getContent('.ai/TRUST_POLICY.json', baseSha)).text);
+            } catch (error) {
+              await postOnce(`ci-policy:${sha}:bootstrap-human-only`, state.task_id, 'blocked', ['- trust-policy: missing/unreadable on PR base; bootstrap is human-only']);
               return;
             }
-            if (state.status !== 'WAITING_CI') {
-              core.info(`Task ${state.task_id} is ${state.status}, not WAITING_CI; no CI wake-up.`);
+            if (policy.repository !== `${owner}/${repo}` || policy.policy_source !== 'pr-base') {
+              core.setFailed('Invalid base trust policy repository/source binding.');
               return;
             }
 
-            const required = state.required_checks || [];
-            if (!Array.isArray(required) || required.length === 0) {
-              core.setFailed(`Task ${state.task_id} has no required_checks.`);
+            const files = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: prNumber, per_page: 100 });
+            const changedPaths = files.map((f) => f.filename);
+            const matchesPattern = (path, pattern) => pattern.endsWith('/**') ? path.startsWith(pattern.slice(0, -2)) : path === pattern;
+            const gates = policy.ci?.gates || {};
+            const rules = policy.ci?.path_rules || [];
+            const requiredGateIds = new Set();
+            const unmatched = [];
+            for (const path of changedPaths) {
+              let matched = false;
+              for (const rule of rules) {
+                if ((rule.patterns || []).some((pattern) => matchesPattern(path, pattern))) {
+                  matched = true;
+                  for (const gateId of rule.require_gates || []) requiredGateIds.add(gateId);
+                }
+              }
+              if (!matched) unmatched.push(path);
+            }
+            if (unmatched.length && policy.ci?.unmatched_changed_paths === 'human-only') {
+              await postOnce(`ci-policy:${sha}:unmatched-human-only`, state.task_id, 'blocked', [...unmatched.sort().map((p) => `- unmatched-path: ${p}`), '- result: human-only until integrated policy classifies these paths']);
               return;
+            }
+            if (!requiredGateIds.size) {
+              await postOnce(`ci-policy:${sha}:no-protected-gate`, state.task_id, 'blocked', ['- protected-gate: none; human-only']);
+              return;
+            }
+
+            const declared = Array.isArray(state.required_checks) ? state.required_checks : [];
+            const mandatoryJobNames = [...requiredGateIds].map((id) => gates[id]?.job_name).filter(Boolean);
+            const undeclared = mandatoryJobNames.filter((name) => !declared.includes(name));
+            if (undeclared.length) {
+              await postOnce(`ci-policy:${sha}:candidate-omitted-protected-gate`, state.task_id, 'blocked', undeclared.map((name) => `- undeclared-protected-job: ${name}`));
+              return;
+            }
+
+            if (run.conclusion !== 'success') {
+              await postOnce(`state-guard:${sha}:${run.conclusion || 'failure'}`, state.task_id, 'failure', [`- agent-state/validate-state: ${run.conclusion || 'failure'}`]);
+              return;
+            }
+
+            const gateSpecs = [];
+            for (const gateId of [...requiredGateIds].sort()) {
+              const gate = gates[gateId];
+              if (!gate) { await postOnce(`ci-policy:${sha}:unknown-gate`, state.task_id, 'blocked', [`- unknown-gate: ${gateId}`]); return; }
+              try {
+                const baseWorkflow = await getContent(gate.workflow_path, baseSha);
+                const headWorkflow = await getContent(gate.workflow_path, sha);
+                if (gate.require_workflow_unchanged_from_base && baseWorkflow.blobSha !== headWorkflow.blobSha) {
+                  await postOnce(`ci-policy:${sha}:workflow-changed-human-only`, state.task_id, 'blocked', [`- ${gateId}: protected workflow changed (${gate.workflow_path}); human-only`]);
+                  return;
+                }
+                const protectedBlobs = [];
+                for (const inputPath of gate.protected_inputs || []) {
+                  const baseInput = await getContent(inputPath, baseSha);
+                  const headInput = await getContent(inputPath, sha);
+                  if (baseInput.blobSha !== headInput.blobSha) {
+                    await postOnce(`ci-policy:${sha}:protected-input-changed-human-only`, state.task_id, 'blocked', [`- ${gateId}: protected input changed (${inputPath}); human-only`]);
+                    return;
+                  }
+                  protectedBlobs.push(`${inputPath}@${baseInput.blobSha}`);
+                }
+                gateSpecs.push({ id: gateId, ...gate, baseBlobSha: baseWorkflow.blobSha, protectedBlobs });
+              } catch (error) {
+                await postOnce(`ci-policy:${sha}:protected-input-unreadable`, state.task_id, 'blocked', [`- ${gateId}: ${error.message}`]);
+                return;
+              }
             }
 
             const deadline = Date.now() + 30 * 60 * 1000;
-            let selected = [];
-            let waitingFor = [];
-
+            let results = [];
+            let waiting = [];
             while (Date.now() < deadline) {
-              const { data: currentPr } = await github.rest.pulls.get({
-                owner,
-                repo,
-                pull_number: prNumber,
-              });
-              if (currentPr.head.sha !== sha) {
-                core.info(`PR head moved from ${sha} to ${currentPr.head.sha}; stale relay exits.`);
-                return;
+              const { data: currentPr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+              if (currentPr.head.sha !== sha) return;
+              results = [];
+              waiting = [];
+              for (const gate of gateSpecs) {
+                const workflowFile = gate.workflow_path.split('/').pop();
+                const runs = await github.paginate(github.rest.actions.listWorkflowRuns, { owner, repo, workflow_id: workflowFile, head_sha: sha, event: 'pull_request', per_page: 50 });
+                const candidates = runs.filter((r) => r.head_sha === sha && r.event === 'pull_request').sort((a, b) => b.id - a.id);
+                if (!candidates.length) { waiting.push(`${gate.id}:workflow-run-missing`); continue; }
+                const workflowRun = candidates[0];
+                if (workflowRun.status !== 'completed') { waiting.push(`${gate.id}:workflow-${workflowRun.status}`); continue; }
+                const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: workflowRun.id, per_page: 100 });
+                const jobMatches = jobs.filter((job) => job.name === gate.job_name).sort((a, b) => b.id - a.id);
+                if (!jobMatches.length) { waiting.push(`${gate.id}:job-missing:${gate.job_name}`); continue; }
+                const job = jobMatches[0];
+                if (job.status !== 'completed') { waiting.push(`${gate.id}:job-${job.status}`); continue; }
+                results.push({ gate, workflowRun, job });
               }
-
-              const checks = await github.paginate(github.rest.checks.listForRef, {
-                owner,
-                repo,
-                ref: sha,
-                per_page: 100,
-              });
-
-              selected = [];
-              waitingFor = [];
-              for (const requiredName of required) {
-                const matches = checks
-                  .filter((check) => check.app?.slug === 'github-actions' && check.name === requiredName)
-                  .sort((a, b) => b.id - a.id);
-                if (matches.length === 0) {
-                  waitingFor.push(`${requiredName}:missing`);
-                  continue;
-                }
-                const current = matches[0];
-                if (current.status !== 'completed') {
-                  waitingFor.push(`${requiredName}:${current.status}`);
-                  continue;
-                }
-                selected.push(current);
-              }
-
-              if (waitingFor.length === 0 && selected.length === required.length) break;
-              core.info(`Waiting for required checks: ${waitingFor.join(', ')}`);
+              if (!waiting.length && results.length === gateSpecs.length) break;
               await new Promise((resolve) => setTimeout(resolve, 15000));
             }
 
-            let aggregate;
-            let detailLines;
-            if (waitingFor.length > 0 || selected.length !== required.length) {
+            let aggregate = 'success';
+            const detailLines = [];
+            if (waiting.length || results.length !== gateSpecs.length) {
               aggregate = 'blocked';
-              detailLines = waitingFor.map((item) => `- ${item}`);
+              detailLines.push(...waiting.map((item) => `- ${item}`));
             } else {
-              const successConclusions = new Set(['success', 'neutral', 'skipped']);
-              aggregate = selected.every((check) => successConclusions.has(check.conclusion))
-                ? 'success'
-                : 'failure';
-              detailLines = selected.map((check) => `- ${check.name}: ${check.conclusion}`).sort();
+              for (const { gate, workflowRun, job } of results) {
+                if (!(gate.allowed_conclusions || ['success']).includes(job.conclusion)) aggregate = 'failure';
+                detailLines.push(`- ${gate.id}: workflow=${gate.workflow_path} run=${workflowRun.id} job=${job.name} conclusion=${job.conclusion} base_blob=${gate.baseBlobSha}`);
+              }
             }
-
-            const eventKey = `ci-settled:${sha}:${aggregate}`;
-            await postOnce(eventKey, state.task_id, aggregate, detailLines);
+            await postOnce(`ci-settled:${sha}:${aggregate}`, state.task_id, aggregate, detailLines.sort());

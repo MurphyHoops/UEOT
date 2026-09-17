@@ -2,49 +2,44 @@
 
 ## Fresh-chat recovery
 
-A new worker needs no prior conversation. Read, in order:
+A new worker needs no prior conversation. Read governance, candidate runtime docs, durable Issue, active PR/base/head/diff/checks/reviews/comments, and task state. Resolve authorization from `.ai/TRUST_POLICY.json` at the PR **base SHA**, never from candidate HEAD.
 
-1. `docs/REPOSITORY_BRANCH_GOVERNANCE.md` on `main`;
-2. `.ai/SYSTEM.md`, `.ai/TRUSTED_REVIEWERS.json`, and event/role protocol;
-3. durable live-state Issue;
-4. active PR current head/diff/checks/reviews/comments;
-5. task `GOAL.md` and `STATE.json` mirror.
+## Trust-policy evolution
 
-Reconcile discrepancies by the truth hierarchy before acting. Structured review marker text must be authenticated from GitHub author metadata before use.
+- The base policy is the authority for the PR being reviewed.
+- A candidate change to `.ai/TRUST_POLICY.json` becomes effective only after merge.
+- If base policy is absent, the PR is the initial bootstrap and is human-only.
+- If a protected workflow or protected runner input differs from base, automated CI authorization degrades to human-only.
+- If changed paths are not classified by base policy, automated CI authorization degrades to human-only.
+
+This prevents a candidate from changing who may review it or which minimum CI gates it must satisfy.
 
 ## BLOCKED
 
-Use BLOCKED when a required external decision/resource is unavailable, retry budgets are exhausted, a required check never materializes, or the same root failure repeats beyond the guard. Record exact blocker, evidence, and next human action in the Issue. Do not spin.
+Use BLOCKED when a required external decision/resource is unavailable, retry budgets are exhausted, a protected gate cannot be established, a trust-policy path is unmatched, or the same root failure repeats beyond the guard. Record exact blocker/evidence/next human action. Do not spin.
 
 ## Rollback / bad checkpoint
 
-Do not force-push history. On the same task branch:
-
-1. identify the last known-good commit and exact bad change;
-2. revert or make a corrective forward commit;
-3. repair task state in that same checkpoint;
-4. push and let current-head CI establish new evidence;
-5. record the rollback/correction in the durable Issue.
-
-If `STATE.json` itself is invalid, repair it on the same branch/PR; never create a rescue branch solely because state validation failed.
+Do not force-push history. On the same task branch, identify the bad change, revert or make a corrective forward commit, repair state in that checkpoint, push, and let current-head CI establish new evidence.
 
 ## Human merge gate
 
-Before merge verify:
+For a normal post-bootstrap PR, before merge verify:
 
-- the latest authoritative `[UEOT-AI-REVIEW] PASS` artifact was authored by a GitHub login present in `.ai/TRUSTED_REVIEWERS.json`, verified from GitHub API metadata rather than marker/body text;
-- the artifact's `reviewed_by` value matches that actual GitHub login;
-- PR head still equals the artifact's `reviewed_sha`; any later substantive change requires re-review;
-- required CI is green for the integration candidate;
-- no unresolved trusted structured CHANGES_REQUESTED finding exists;
-- durable Issue and PR describe the same objective/branch;
-- merge target is `main`;
-- the human merger is satisfied that Reviewer role independence was actually respected; trusted identity alone does not prove independence.
+- `.ai/TRUST_POLICY.json` was loaded from the PR base SHA;
+- the latest authoritative PASS author is allowlisted by that base policy and `reviewed_sha` equals current head;
+- every mandatory base-policy CI gate applicable to the changed paths is green;
+- each gate came from the base-approved workflow path/job and protected workflow/runner inputs match base blobs;
+- candidate `required_checks` did not omit any protected job;
+- no unresolved authoritative CHANGES_REQUESTED exists;
+- Issue/PR objective and branch agree;
+- target is `main`;
+- Reviewer independence was respected.
 
-Any PASS marker from a non-allowlisted author is ignored for merge-gate purposes.
+For the initial bootstrap where base policy is absent, no candidate-supplied PASS or CI policy can authorize the merge. The human must explicitly inspect the candidate, the independent review, and observed CI, then decide whether to establish this trust root by merging.
 
 The runtime never auto-merges.
 
 ## After merge
 
-Validate resulting `main`, update/close the durable Issue, and retire the temporary branch under repository governance. The merged PR/commits/CI/Issue become history; a branch is not permanent memory.
+Validate resulting `main`, update/close the durable Issue, and retire the temporary branch. A merged trust-policy change governs only later PRs.

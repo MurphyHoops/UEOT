@@ -1,67 +1,65 @@
 # Independent Reviewer Protocol
 
-The Reviewer is a fresh/independent worker. Its purpose is to break Builder anchoring, not to repeat the Builder narrative. It does not modify implementation source during a review.
+The Reviewer is a fresh/independent worker. It does not modify implementation source during the review.
 
 ## Evidence order
 
 1. durable Issue + `GOAL.md` / frozen success criteria;
-2. current PR base/head and full diff;
-3. required check results and relevant failing logs;
+2. current PR base/head and complete diff;
+3. **base-anchored** trust policy and protected CI evidence;
 4. changed source plus affected callers/tests/specification;
 5. prior Builder state only as navigation, never as proof.
 
-Before review, reject a stale signal SHA and reject an already-consumed CI event key.
+## Trust root
 
-## Artifact provenance
+Before using a structured review or CI result for authorization, fetch `.ai/TRUST_POLICY.json` from the PR **base SHA**, never candidate HEAD.
 
-Structured review text is not self-authenticating. A consumer must fetch GitHub metadata for the comment/review and require the actual author login to be present in `.ai/TRUSTED_REVIEWERS.json` before the artifact can satisfy a review or merge gate.
+- The actual GitHub author of a structured review artifact must be listed in the base-policy reviewer allowlist.
+- Candidate changes to the trust policy do not apply to the PR that proposes them; they become effective only after merge.
+- Mandatory CI is derived from base-policy path rules and actual changed files. Candidate `STATE.required_checks` cannot reduce that set.
+- Protected gate identity is workflow path + job name under the base policy, with the protected workflow and declared runner inputs required to match base blobs.
 
-The `reviewed_by` field below is redundant human-readable data and must match the actual GitHub author, but it is never trusted instead of metadata. A marker posted by any non-allowlisted account is ordinary commentary.
-
-Trusted identity is necessary but not sufficient for independence. The Reviewer must still be a fresh worker that did not author the implementation under review.
+If the base has no trust policy, this is the initial bootstrap. The Reviewer may still provide an independent technical conclusion, but any PASS is **advisory only**; it cannot authorize merge. Bootstrap merge is human-only.
 
 ## Output
 
-Publish exactly one top-level structured PR comment. The same comment records the review and, when applicable, consumes the triggering CI signal.
+Publish one top-level structured PR comment.
 
 ### PASS
 
 ```text
-<!-- ueot-ai-consumed:ci-settled:<sha>:success -->
-<!-- ueot-ai-review:review:<sha>:pass -->
 [UEOT-AI-REVIEW]
 event_key: review:<sha>:pass
-consumes_event_key: ci-settled:<sha>:success
 reviewed_sha: <sha>
 reviewed_by: <actual-github-login>
+trust_policy_sha: <base-sha-or-bootstrap>
+trust_mode: base-policy|bootstrap-advisory
 result: PASS
 findings: none
 ```
 
-PASS requires current-head required CI green, success criteria met, coherent diff, no material unresolved finding, and trusted artifact provenance. Update the durable Issue live state to the human merge gate. Do **not** create a state-only commit merely to say PASS.
+For `trust_mode: base-policy`, PASS requires current-head protected CI green, success criteria met, coherent diff, no material unresolved finding, trusted GitHub-author provenance, and Reviewer independence.
+
+For `trust_mode: bootstrap-advisory`, PASS is evidence for the human bootstrap decision only and must not be treated as an authoritative merge token.
 
 ### CHANGES_REQUESTED
 
 ```text
-<!-- ueot-ai-consumed:ci-settled:<sha>:success -->
-<!-- ueot-ai-review:review:<sha>:changes-requested -->
 [UEOT-AI-REVIEW]
 event_key: review:<sha>:changes-requested
-consumes_event_key: ci-settled:<sha>:success
 reviewed_sha: <sha>
 reviewed_by: <actual-github-login>
+trust_policy_sha: <base-sha-or-bootstrap>
+trust_mode: base-policy|bootstrap-advisory
 result: CHANGES_REQUESTED
 ```
 
-Follow with concrete findings naming file/symbol/evidence and expected property. A later ordinary Chat `/ueot-resume` routes a trusted current-head CHANGES_REQUESTED artifact to Builder. Optional Work automation may accelerate that handoff, but is not required.
-
-### BLOCKED
-
-Record exactly which evidence/decision is unavailable in the Issue/PR, embed any consumed CI marker in that same record, and stop.
+Follow with concrete findings naming file/symbol/evidence and expected property. A fresh `/ueot-resume` routes current-head findings to Builder. During bootstrap, material findings remain blocking for the human even though authorization is human-only.
 
 ## Independence rules
 
 - never repair implementation source and then approve that same repair;
 - re-read current head after every new commit;
-- do not trust `completed` arrays or PR prose as correctness evidence;
-- native GitHub APPROVE is not required: the repository owner may be the PR author and GitHub does not permit self-approval. The structured review comment is the agent-review artifact; final merge remains a human decision.
+- do not trust Builder summaries, `completed` arrays or PR prose as correctness evidence;
+- trusted identity does not prove Reviewer independence;
+- final merge remains human-gated.

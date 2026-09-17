@@ -1,43 +1,35 @@
 # Persistent Agent v3 Quickstart
 
-## What v3 solves
-
-A ChatGPT conversation can end, but the UEOT task does not depend on that conversation. Durable task identity is:
-
-`Issue + one branch + one PR + CI + .ai state`
-
-Default execution is:
+## Default path
 
 `ordinary ChatGPT Chat + GitHub connector + GitHub Actions`
 
-Default continuation is:
+Continuation after any conversation ends:
 
 `new ordinary Chat -> /ueot-resume`
 
-Work/Event/Heartbeat/Codex are optional accelerators or escalations and are disabled by default.
+Work/Event/Heartbeat/Codex are optional and disabled by default.
 
 ## Bootstrap
 
-1. independently review and human-merge runtime PR #102;
-2. confirm state/CI workflows are on `main`;
-3. leave `UEOT GitOps Router` paused;
-4. do not create an hourly Work Heartbeat for baseline use;
-5. prove one disposable task can be resumed from a fresh ordinary Chat using `/ueot-resume`.
+PR #102 is the initial trust-root installation. Because its base does not yet contain `.ai/TRUST_POLICY.json`, it is **bootstrap-human-only**: independent AI review and observed CI are evidence, but candidate-supplied policy cannot authorize its own merge. A human explicitly decides whether to merge and thereby establish the trust root.
 
-## Start a persistent task
-
-Create one durable Issue and one branch. Scaffold `.ai/tasks/issue-N/{GOAL.md,STATE.json}` with `scripts/ai/init_task.py`, list real GitHub job names in `required_checks`, and open one PR.
+After bootstrap, every later PR resolves `.ai/TRUST_POLICY.json` from its PR base SHA.
 
 ## Normal loop
 
-1. ordinary Chat recovers/reconciles GitHub;
-2. Builder performs one bounded change and checkpoints `WAITING_CI`;
-3. GitHub Actions runs build/test/Lean/validation;
-4. when convenient, open/resume an ordinary Chat and invoke `/ueot-resume`;
-5. green CI routes to independent review; failure/CHANGES_REQUESTED routes to one Builder repair;
-6. current-head PASS + green CI reaches the human merge gate.
+1. ordinary Chat reconciles Issue/PR/base/head/diff/current CI;
+2. it loads base trust policy and derives protected gates from actual changed paths;
+3. Builder performs one bounded change and checkpoints state;
+4. GitHub Actions runs;
+5. later `/ueot-resume` verifies protected workflow/job evidence and review provenance;
+6. current-head protected CI + authoritative independent PASS reaches the human merge gate.
 
-No previous conversation is required.
+Candidate `STATE.required_checks` cannot define or weaken the protected gate set. It is only a declaration mirror and must include the protected job names derived from base policy.
+
+## Trust-policy changes
+
+A PR may propose a new `.ai/TRUST_POLICY.json`, but that PR is still governed by the old policy from its base. The new policy takes effect only after merge. Changes to protected workflows or protected validator inputs degrade automated authorization to human-only.
 
 ## Canonical resume
 
@@ -45,8 +37,4 @@ No previous conversation is required.
 
 Equivalent prompt:
 
-> Recover the active UEOT task from GitHub. Read repository governance, `.ai/SYSTEM.md`, `.ai/RESOURCE_POLICY.md`, `.ai/protocols/CHAT.md`, current Issue/PR/head/CI/reviews and task state. Execute exactly one actionable bounded transition and persist the handoff. Do not rely on previous conversation history.
-
-## Optional automation
-
-Enable Work Event Trigger or scheduled Heartbeat only when lower latency/unattended progression is worth the additional agentic usage. They are not required for correctness or recoverability.
+> Recover the active UEOT task from GitHub. Read governance and candidate runtime docs, then load `.ai/TRUST_POLICY.json` from the PR base SHA. Reconcile current Issue/PR/base/head/diff/protected CI/review metadata/state, execute exactly one bounded next transition, persist the handoff, and stop. Do not rely on previous conversation history.

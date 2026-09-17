@@ -2,41 +2,29 @@
 
 GitHub event-triggered Work is optional. v3 does not depend on it for liveness, correctness or recovery.
 
-## Product boundary
+## Trust boundary
 
-Supported GitHub PR activity may trigger Work, but trigger-side marker filtering and bot-origin wake-ups may be incomplete. Because Work also consumes agentic resources, the default v3 deployment leaves the event task paused.
+Any event worker must resolve `.ai/TRUST_POLICY.json` from the PR **base SHA**. Candidate HEAD must never define its own reviewer allowlist or minimum CI gates.
+
+Structured CI/review text is navigation evidence only until verified against:
+- current PR head/base;
+- base-policy reviewer authorization;
+- base-policy protected CI gates derived from actual changed paths;
+- trusted workflow/job identity and protected base blobs.
+
+If base policy is absent, the PR is bootstrap-human-only.
 
 ## Structured artifacts
 
-Trusted CI may emit:
-
-```text
-[UEOT-AI-SIGNAL]
-event_key: ci-settled:<sha>:<success|failure|blocked>
-sha: <sha>
-aggregate: <result>
-```
-
-Reviewer may emit:
-
-```text
-[UEOT-AI-REVIEW]
-reviewed_sha: <sha>
-reviewed_by: <actual-github-login>
-result: PASS|CHANGES_REQUESTED
-```
-
-Review markers are durable evidence only after the actual GitHub author is authenticated against `.ai/TRUSTED_REVIEWERS.json`. Marker text from an untrusted author is ordinary commentary and must not route Builder or satisfy the merge gate.
+Trusted relay may emit `[UEOT-AI-SIGNAL]` with `base_sha`, `policy_source: pr-base`, protected gate details and aggregate result. Reviewer may emit `[UEOT-AI-REVIEW]` with reviewed SHA, actual GitHub author, trust-policy SHA/mode and result.
 
 ## Optional event worker
 
-If the user deliberately enables event-triggered Work:
+If deliberately enabled:
+1. re-read GitHub and base trust policy;
+2. reject stale SHA, duplicate, untrusted review author, weakened candidate declarations or already-completed transitions;
+3. perform at most one bounded Builder/Reviewer transition;
+4. bootstrap-human-only, PASS, ordinary comments, bookkeeping and no-action states are immediate no-op for automation;
+5. persist durable handoff and exit.
 
-1. re-read GitHub; never trust event text as correctness evidence;
-2. authenticate structured review author metadata against `.ai/TRUSTED_REVIEWERS.json`;
-3. reject stale SHA, duplicate or already-completed transitions;
-4. perform at most one bounded Builder/Reviewer transition;
-5. PASS, ordinary comments, untrusted markers, bookkeeping and no-action states are immediate no-op;
-6. persist durable handoff and exit.
-
-If no Work invocation occurs, a later ordinary Chat `/ueot-resume` derives the same transition directly from GitHub state.
+A later ordinary Chat `/ueot-resume` can derive the same transition without Work.

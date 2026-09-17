@@ -8,12 +8,20 @@ Keep UEOT development resumable across ordinary ChatGPT conversation limits whil
 
 Every Builder, Reviewer or resume invocation must:
 
-1. read `docs/REPOSITORY_BRANCH_GOVERNANCE.md` from current `main`;
-2. read `.ai/README.md`, `.ai/RESOURCE_POLICY.md`, `.ai/TRUSTED_REVIEWERS.json`, this file, and the selected role protocol;
+1. read `docs/REPOSITORY_BRANCH_GOVERNANCE.md` from integrated `main`;
+2. read candidate `.ai/README.md`, `.ai/RESOURCE_POLICY.md`, this file, and the selected role protocol for behavior/navigation;
 3. recover durable task candidates from GitHub Issue -> PR -> `.ai/tasks/*/STATE.json`;
-4. reconcile current `main`, PR head SHA, complete relevant diff/source, required checks and structured reviews;
-5. authenticate any structured review artifact from GitHub metadata before treating it as review evidence;
-6. resolve stale state by the repository truth order; never reconstruct correctness from chat memory.
+4. reconcile current `main`, PR base/head SHA, complete relevant diff/source, current checks and structured reviews;
+5. resolve authorization separately from candidate content: fetch `.ai/TRUST_POLICY.json` from the PR **base SHA** (or integrated `main` when no PR exists), never from candidate HEAD;
+6. derive protected CI gates from that base policy and the actual changed paths; candidate `STATE.required_checks` is only a declaration mirror and cannot weaken base-derived gates;
+7. authenticate structured review artifacts using actual GitHub author metadata against the **base-policy** reviewer allowlist;
+8. resolve stale state by the repository truth order; never reconstruct correctness from chat memory.
+
+## Bootstrap rule
+
+If the PR base does not contain `.ai/TRUST_POLICY.json`, the candidate is installing the trust root. It cannot authorize itself. Automated structured review/CI artifacts are advisory only and the merge decision is **human-only** after explicit inspection. Once merged, that policy becomes the trust root for later PRs.
+
+A change to `.ai/TRUST_POLICY.json` is evaluated under the old policy from the PR base and becomes effective only after merge.
 
 ## Bounded transaction
 
@@ -30,13 +38,14 @@ The runtime must remain recoverable with Work, scheduled tasks and GitHub event-
 - Optional acceleration: Work Heartbeat and GitHub Event Trigger.
 - Optional coding escalation: Codex.
 
-No correctness rule may require a specific chat URL, previous conversation, webhook delivery, bot comment delivery, scheduled Work run or Codex session.
+## Trust invariants
 
-## Review trust invariant
-
-Marker text alone is never sufficient for a merge/review transition. The actual GitHub author of a structured review artifact must be allowlisted in `.ai/TRUSTED_REVIEWERS.json`. Untrusted marker text is treated as ordinary commentary.
-
-Author authentication and Reviewer independence are separate requirements: an allowlisted identity does not permit a Builder worker to review its own repair.
+- candidate HEAD never defines who may approve that same candidate;
+- candidate HEAD never defines the minimum CI gates that authorize itself;
+- review trust and CI trust resolve from PR base / integrated `main`;
+- marker text alone is never authoritative;
+- protected CI gates bind to a base-approved workflow path + job name, and protected workflow/runner inputs must match base blobs;
+- unmatched changed paths or protected trust-infrastructure changes degrade to human-only rather than silently weakening policy.
 
 ## Safety brakes
 
@@ -53,5 +62,3 @@ Author authentication and Reviewer independence are separate requirements: an al
 ## Durable end states
 
 `WAITING_CI`, `REVIEWING`, `CHANGES_REQUESTED`, `READY_TO_MERGE`, `BLOCKED`, or `DONE`.
-
-A task may remain in `WAITING_CI` or `REVIEWING` until the next manual `/ueot-resume`; this is acceptable in v3 because durable recovery, not unattended autonomy, is the primary guarantee.

@@ -4,36 +4,31 @@ The Builder may modify the existing task branch. It is not the final reviewer.
 
 ## Start
 
-Follow `.ai/SYSTEM.md`. Reconcile Issue, PR head/diff, task state, required checks, prior structured reviews, and PR comments. Confirm one work item -> one active branch/PR.
+Follow `.ai/SYSTEM.md`. Reconcile Issue, PR base/head/diff, task state, prior reviews and current CI. Fetch `.ai/TRUST_POLICY.json` from the PR **base SHA** to determine protected reviewer/CI rules. Candidate state or policy never weakens that trust root.
 
-Before mutation, derive the incoming transition/event key. If `STATE.json.last_event.key` already matches it, or a PR review artifact already consumes it, stop without repeating work.
+Before mutation, reject stale/duplicate work and confirm one work item -> one active branch/PR.
 
 ## One bounded iteration
 
-1. Select only the recorded next action or the smallest prerequisite needed to execute it.
-2. Inspect the actual failing check/review evidence; do not repair from summaries alone.
+1. Select only the recorded next action or smallest prerequisite.
+2. Inspect actual failing protected CI/review evidence, not summaries.
 3. Implement one coherent change on the existing branch.
-4. Run available static/local checks where supported; otherwise rely on GitHub Actions.
-5. Update `STATE.json` in the same implementation checkpoint:
-   - increment `iteration` once;
-   - record the last observed head in `checkpoint_sha`;
-   - copy the consumed transition/event into `last_event`;
-   - compactly update completed/current_problem/next_action and retry counters;
-   - set `WAITING_CI` for a pushed implementation.
-6. Commit/push. Update the durable Issue live state when branch/head/blocker/next action changed.
-7. Exit. Do **not** emit a separate consumed-only PR comment; the state checkpoint is the Builder's durable consumption record and avoids unnecessary future invocations.
+4. Update `STATE.json` in the same checkpoint: increment iteration, record last observed head/event, compactly update problem/next action/retries, set `WAITING_CI` for pushed implementation.
+5. `required_checks` is a candidate declaration mirror: include all protected job names derived from base policy; it may not omit them. It does not itself define authorization.
+6. Commit/push, update durable Issue when branch/head/blocker/next action changes, then exit.
 
 ## Routing
 
-- CI/check failure -> inspect logs, fingerprint root failure, one repair iteration.
-- structured `CHANGES_REQUESTED` -> address the concrete findings in one iteration.
-- blocked/missing check -> repair CI/config if in scope; otherwise record precise BLOCKED state.
-- green CI with no requested changes -> Builder no-ops; Reviewer owns that transition.
+- protected CI failure -> one repair;
+- authoritative current-head CHANGES_REQUESTED under base policy -> one repair;
+- protected gate unavailable because policy path is unmatched or trust infrastructure changed -> record human-only/BLOCKED, do not invent a weaker gate;
+- green protected CI -> Builder no-ops; Reviewer owns review transition;
+- bootstrap PR with no base trust policy -> implementation may proceed, but no candidate artifact can authorize merge.
 
 ## Prohibitions
 
 - no direct `main` writes or force-pushes;
-- no new branch because a conversation changed;
-- no claim that a required check passed without current-SHA evidence;
-- no full logs/diffs/secrets/reasoning traces in state;
+- no replacement branch because a conversation changed;
+- no candidate-defined reviewer/CI trust root;
+- no claim of protected CI success without base-policy workflow/job evidence;
 - no self-approval or auto-merge.

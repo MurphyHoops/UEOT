@@ -2,25 +2,25 @@
   "schema_version": 1,
   "task_id": "issue-100",
   "issue": 100,
-  "objective": "Persistent GitOps Agent Runtime v3 with Chat-first execution and GitHub-resident recovery",
+  "objective": "Persistent GitOps Agent Runtime v3 with Chat-first execution and base-anchored trust roots",
   "status": "WAITING_CI",
-  "iteration": 9,
+  "iteration": 10,
   "max_iterations": 30,
   "branch": "ops/persistent-agent-runtime",
   "base_sha": "aaea53a70902e138d123ef700a99c372214708d9",
-  "checkpoint_sha": "f2a7b5093e423309e8806a304ad09ce45485d5bb",
+  "checkpoint_sha": "20097bf14aee9db2aa44b28eec0e481f29e6cc4c",
   "open_pr": 102,
   "required_checks": ["validate-state"],
   "latest_ci": {
-    "sha": "f2a7b5093e423309e8806a304ad09ce45485d5bb",
+    "sha": "20097bf14aee9db2aa44b28eec0e481f29e6cc4c",
     "status": "success",
-    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35175763003"
+    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35176227418"
   },
   "last_event": {
-    "key": "security-hardening:f2a7b5093e423309e8806a304ad09ce45485d5bb:review-provenance",
-    "type": "builder-review-provenance-repair",
-    "sha": "f2a7b5093e423309e8806a304ad09ce45485d5bb",
-    "at": "2026-09-17T02:55:00Z"
+    "key": "review:20097bf14aee9db2aa44b28eec0e481f29e6cc4c:changes-requested",
+    "type": "independent-review-changes-requested",
+    "sha": "20097bf14aee9db2aa44b28eec0e481f29e6cc4c",
+    "at": "2026-09-17T03:17:48Z"
   },
   "retries": {
     "same_failure_count": 0,
@@ -31,19 +31,19 @@
   },
   "completed": [
     "Implemented persistent state, Builder/Reviewer protocols, validator, tests and task initializer",
-    "Added trusted dynamic required-check CI signal relay and GitHub safety guards",
-    "Eliminated review/state-only commit loops and extra bookkeeping wake-ups",
-    "Recovered development across an interrupted ChatGPT conversation using repository state",
-    "Observed Work GitHub trigger limitations for marker pre-filtering and bot-generated wake-ups",
-    "Tested v2 heartbeat-first design and identified agentic-resource cost conflict with the project objective",
-    "Upgraded runtime to v3: ordinary Chat plus GitHub connector is primary; Work/Event/Heartbeat/Codex are optional resource-costed accelerators",
-    "Hardened structured review provenance: PASS/CHANGES_REQUESTED markers require allowlisted actual GitHub author metadata"
+    "Added trusted default-branch CI signal relay and GitHub safety guards",
+    "Recovered development across interrupted/fresh ordinary ChatGPT conversations using repository state",
+    "Upgraded runtime to v3 Chat-first resource policy; Work/Event/Heartbeat/Codex are optional",
+    "Addressed marker-text spoofing by requiring actual GitHub author metadata",
+    "Independent current-head review identified candidate-controlled reviewer and CI trust roots",
+    "Designed base-anchored TRUST_POLICY with human-only bootstrap and previous-policy evolution semantics",
+    "Bound protected CI gates to base-approved workflow/job identity plus protected runner-input blobs"
   ],
-  "current_problem": "Prior P1 review identified spoofable structured review markers. Trusted reviewer provenance hardening is now implemented and requires current-head State Guard validation plus independent review.",
-  "next_action": "Validate the new current head, independently review PR #102 including review-provenance hardening, human-merge after PASS, then prove fresh ordinary-Chat /ueot-resume recovery while keeping Work automation paused.",
+  "current_problem": "The two P1 trust-root findings are repaired in the pending Builder checkpoint: reviewer authorization and mandatory CI now derive from PR-base policy; bootstrap is explicitly human-only.",
+  "next_action": "Push the base-anchored trust-policy repair on PR #102, run current-head State Guard, obtain a fresh independent technical review of the new head, then perform the explicit human bootstrap merge decision if no material findings remain.",
   "guards": {
     "human_merge_required": true,
     "builder_may_self_approve": false
   },
-  "updated_at": "2026-09-17T02:55:00Z"
+  "updated_at": "2026-09-17T03:25:00Z"
 }
