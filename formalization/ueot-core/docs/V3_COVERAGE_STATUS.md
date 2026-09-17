@@ -18,20 +18,20 @@ A P-ID is counted `proved` only after frozen-source semantic matching, official
 import reachability, feature/integration/post-main CI gates, prohibited-proof
 audit, safe main integration, and ledger synchronization. Feature-green,
 clean-integration-green, proof-PR-green, or proof-main-green alone never changes
-the full-green count.
+the FULL-GREEN count.
 
 ## Current source-level coverage
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **84** |
+| **proved, staged by this ledger checkpoint** | **85** |
 | **partial** | **0** |
-| **pending / not yet counted** | **22** |
+| **pending / not yet counted** | **21** |
 | **total** | **106** |
 
-This branch stages **84/106** after P-QUO-01 completed source-semantic, feature,
+This branch stages **85/106** after P-QUO-02 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main and proof resulting-main gates.
-**84/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**85/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -45,7 +45,7 @@ mathematics or Lean code exists.
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
-- **Quotient:** P-QUO-01, P-QUO-03
+- **Quotient:** P-QUO-01, P-QUO-02, P-QUO-03
 - **Control:** P-CTL-01
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -67,91 +67,114 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `83 + P-QUO-01 = 84`.
+Count check: `84 + P-QUO-02 = 85`.
 
-## Newly staged promotion — P-QUO-01
+## Newly staged promotion — P-QUO-02
 
-Frozen Core 3 §20.1 is the exact controlled quotient theorem. On top of the
-counted finite discounted-control foundation it requires a surjection `f`, the
-same admissible action type on each fibre, exact reward closure and exact
-**all-action** pushed-forward transition closure. These hypotheses imply
-Bellman intertwining on pulled-back macro values; uniqueness of the Bellman
-fixed point then gives
+Frozen Core 3 §20.2 is the span-sensitive approximate controlled quotient
+theorem. On top of the finite discounted-control foundation it assumes the same
+fibre/action correspondence as P-QUO-01, reward approximation error
+`epsilon_r`, and **all-action pushed-forward transition total variation** error
+`epsilon_p`.
 
-`V* = Vbar* ∘ f`.
+The formalization represents the TV premise itself as event-supremum total
+variation of exact finite PMFs. P-MET-02 derives the continuation expectation
+error with the actual macro optimal-value span; no expectation-gap premise is
+substituted. Defining
 
-The formalization also proves actionwise optimal-Q equality and lifts any macro
-stationary argmax selector, including tie cases, to a micro stationary policy
-whose infinite discounted value is optimal against the full causal
-history-dependent randomized policy class. It does not replace all-action
-closure by Markovity under one policy and does not substitute the unrelated
-P-INT-02 `StructuredQuotient` interface.
+`w = Vbar* ∘ f`,
+
+`delta = epsilon_r + beta * epsilon_p * span(Vbar*)`,
+
+`D = delta / (1-beta)`,
+
+the all-action Q comparison gives an optimal Bellman residual for `w`, and the
+counted P-CTL-01 residual certificate yields
+
+`||V* - w||_infinity <= D`.
+
+For any macro stationary argmax selector, including tied argmax cases, the same
+actionwise comparison gives a fixed-policy Bellman residual. Its selector value
+is therefore within `D` of `w`; causal optimal domination plus the two `D`
+bounds gives the source policy guarantee
+
+`0 <= V* - V^hatpi <= 2D`
+
+pointwise.
 
 Canonical theorem surface:
-- `UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01`.
+- `UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02`.
 
 Supporting modules:
-- `UEOT/V3/FiniteDiscountedSelector.lean`;
-- `UEOT/V3/FiniteDiscountedExactQuotient.lean`.
+- `UEOT/V3/FiniteDiscountedSelectorValue.lean`;
+- `UEOT/V3/FiniteDiscountedApproxQuotient.lean`;
+- `UEOT/V3/FiniteDiscountedApproxQuotientBounds.lean`.
 
 Promotion evidence:
-- feature branch: `formal/pquo01-exact-control-quotient`;
-- final feature head: `8ffa1e4cbbe73eeb3867c152630a1029c998e231`;
-- selector checkpoint root CI `35113940062`: success;
-- clean integration branch: `formal/pquo01-main-integration-v1`;
-- clean integration head: `0427733fe363ba3b0a697879df42d2d141786a72`;
-- clean integration root CI `35118874289`: success;
+- feature branch `formal/pquo02-span-approx-quotient-v1`;
+- selector-value checkpoint `5b7d0e919c4800c27544b427ba41b0f61e123f67`, root CI `35125066423`: success;
+- true-TV/span checkpoint `c8c21e39037f808fbc4559709f0aca92c8dc4cc8`, root CI `35125945423`: success;
+- source-facing head `f2de244a32a29c336cb07a943489d00c5d11a3a8`, root CI `35128138029`: success;
 - source-semantic audit: complete;
 - prohibited-proof audit: clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- proof PR #96;
-- proof PR root CI `35120644387`: success;
-- proof main commit: `25af2f3d8d537600453b5be3bcb30de6af6c0e3e`;
-- proof resulting-main root CI `35121419393`: success.
+- clean integration `formal/pquo02-main-integration-v1@f2de244a32a29c336cb07a943489d00c5d11a3a8`;
+- clean integration root CI `35128929614`: success;
+- proof PR #98;
+- proof PR root CI `35129778828`: success;
+- proof main commit `28b872857b2cd8b4a546433f858015443f861ce4`;
+- proof resulting-main root CI `35162246623`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 83/106
+## Previous FULL-GREEN checkpoint — 84/106
 
-P-CTL-01 and all earlier counted P-IDs form the authoritative 83/106 baseline.
-Its ledger landed at `main@995c99683e0ae225f8df46108fd1442038c3963a`
-with ledger resulting-main CI `35109381744` success. The subsequent audited
-branch-governance main `2d1373a0eb417496cdd83bfc948e1806f4427587`
-kept the same 83/106 source coverage and passed root CI `35112629545`.
+P-QUO-01 and all earlier counted P-IDs form the authoritative 84/106 baseline.
+Its ledger landed at `main@b9fc5751f4a04de210740f5df8a8699a0faada2d`
+with ledger resulting-main CI `35124093049` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
-CI regression. In particular P-TEL-01 is already counted and must not be
-reopened or double-counted.
+CI regression. In particular P-QUO-03 and P-TEL-01 are already counted and must
+not be reopened or double-counted.
 
-## Next source-first front — P-QUO-02
+## Next source-first front — P-QUO-04
 
-A fresh frozen-source audit was completed during the P-QUO-01 CI window, but no
-second proof branch was opened. Frozen §20.2 requires uniform reward error
-`epsilon_r`, all-action pushed-forward transition TV error `epsilon_p`,
+Frozen §20.4 requires, for fixed policy `pi` and bounded reference function `w`,
 
-`w = Vbar* ∘ f`,
-`delta = epsilon_r + beta * epsilon_p * span(Vbar*)`,
-`D = delta / (1 - beta)`,
+`b_pi = r^pi + beta P^pi w - w`,
 
-and both
+`d_mu^pi = (1-beta) * sum_{t>=0} beta^t mu(P^pi)^t`,
 
-`||V* - w||_infinity <= D`
+and the exact identities
 
-and the lifted macro-optimal-policy regret bound
+`V^pi - w = (I-beta P^pi)^(-1)b_pi`,
 
-`0 <= V* - V^hatpi <= 2D`.
+`mu(V^pi-w) = E_{d_mu^pi}[b_pi]/(1-beta)`.
 
-The source explicitly prioritizes the actual span. The proof lane must reuse the
-counted P-MET-02 span-times-TV expectation bound and P-CTL-01 Bellman residual
-certificate, plus the generic selector evaluation layer introduced with
-P-QUO-01. An expectation-gap premise may not replace the source TV premise, and
-one-policy closure may not replace all-action closure.
+A sup-norm residual bound is not a source-equivalent substitute. The preferred
+finite implementation will introduce a stationary randomized policy interface,
+induced reward/kernel, policy-evaluation value, a Neumann/resolvent operator
+proved to invert `I-beta P^pi`, and a discounted occupancy probability row.
+Deterministic selectors then embed as a special case.
+
+This infrastructure must expose state-action discounted occupancy because the
+already-audited P-QUO-05 depends on it. Frozen §20.5 uses local
+
+`delta(x,a)=epsilon_r(x,a)+beta*epsilon_p(x,a)*span(Vbar*)`
+
+and requires
+
+`J(pi*;mu)-J(hatpi;mu) <=
+ (E_{d_mu^{pi*}} delta + E_{d_mu^{hatpi}} delta)/(1-beta)`.
+
+P-QUO-05 remains a later lane; it must not be opened concurrently with
+P-QUO-04.
 
 ## Grounded non-quick fronts
 
 Among the remaining source propositions are P-CTL-02/03, P-PER-02, P-ALI-01,
 P-DDH-02/03/04/05, P-KL-04/05, P-EVO-03/04, P-QSD-01/04, P-QUO-04/05 and the
-remaining GOA/control-quotient fronts. Their exact order remains source/API
-dependent; no weaker finite/toy/assumed-conclusion surrogate may be counted.
+remaining GOA/control fronts. Their exact order remains source/API dependent;
+no weaker finite/toy/assumed-conclusion surrogate may be counted.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; assumed convergence is not a substitute.
