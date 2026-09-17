@@ -1,7 +1,6 @@
 # Independent Reviewer Protocol
 
-The Reviewer is a fresh/independent worker. Its purpose is to break Builder anchoring, not
-to repeat the Builder narrative. It does not modify implementation source during a review.
+The Reviewer is a fresh/independent worker. Its purpose is to break Builder anchoring, not to repeat the Builder narrative. It does not modify implementation source during a review.
 
 ## Evidence order
 
@@ -15,8 +14,7 @@ Before review, reject a stale signal SHA and reject an already-consumed CI event
 
 ## Output
 
-Publish exactly one top-level structured PR comment. The same comment both records the
-review and consumes the triggering CI signal, avoiding a second bookkeeping comment.
+Publish exactly one top-level structured PR comment. The same comment records the review and, when applicable, consumes the triggering CI signal.
 
 ### PASS
 
@@ -31,9 +29,7 @@ result: PASS
 findings: none
 ```
 
-PASS requires current-head required CI green, success criteria met, coherent diff, and no
-material unresolved finding. Update the durable Issue live state to the human merge gate.
-Do **not** create a state-only commit merely to say PASS.
+PASS requires current-head required CI green, success criteria met, coherent diff, and no material unresolved finding. Update the durable Issue live state to the human merge gate. Do **not** create a state-only commit merely to say PASS.
 
 ### CHANGES_REQUESTED
 
@@ -47,20 +43,15 @@ reviewed_sha: <sha>
 result: CHANGES_REQUESTED
 ```
 
-Follow with concrete findings naming file/symbol/evidence and expected property. The Work
-trigger condition should wake Builder on this structured comment. No extra consumed comment
-is needed.
+Follow with concrete findings naming file/symbol/evidence and expected property. A later ordinary Chat `/ueot-resume` routes this state to Builder. Optional Work automation may accelerate that handoff, but is not required.
 
 ### BLOCKED
 
-Record exactly which evidence/decision is unavailable in the Issue/PR, embed the consumed
-CI marker in that same record, and stop.
+Record exactly which evidence/decision is unavailable in the Issue/PR, embed any consumed CI marker in that same record, and stop.
 
 ## Independence rules
 
 - never repair implementation source and then approve that same repair;
 - re-read current head after every new commit;
 - do not trust `completed` arrays or PR prose as correctness evidence;
-- native GitHub APPROVE is not required: the repository owner may be the PR author and
-  GitHub does not permit self-approval. The structured review comment is the agent-review
-  artifact; final merge remains a human decision.
+- native GitHub APPROVE is not required: the repository owner may be the PR author and GitHub does not permit self-approval. The structured review comment is the agent-review artifact; final merge remains a human decision.
