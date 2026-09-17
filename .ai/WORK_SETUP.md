@@ -1,63 +1,35 @@
-# ChatGPT Work Setup Contract
+# ChatGPT Work Setup — Persistent Agent v2
 
-Repository code creates durable state and GitHub wake-up signals. The ChatGPT Work
-GitHub-event subscription is configured in ChatGPT, outside this repository.
+v2 uses **Heartbeat-first liveness** and treats GitHub Event Trigger as an optional accelerator.
 
-## Recommended setup: one router worker
+## Required: UEOT GitOps Heartbeat
 
-Create one GitHub-event-triggered Work task scoped to `MurphyHoops/UEOT` PR comments and
-reviews. Use a condition so it runs **only** when the event is either:
+Create one recurring ChatGPT scheduled Work task named `UEOT GitOps Heartbeat`, scheduled hourly when supported by the account.
 
-1. a PR comment containing `[UEOT-AI-SIGNAL]`, or
-2. a PR comment containing `[UEOT-AI-REVIEW]` and `result: CHANGES_REQUESTED`.
+Prompt:
 
-Do not wake on `[UEOT-AI-REVIEW] ... PASS` or bookkeeping text. PASS exposes the human
-merge gate and needs no new model invocation.
+> You are the UEOT persistent GitOps Heartbeat. Treat this invocation as disposable. Read `docs/REPOSITORY_BRANCH_GOVERNANCE.md`, `.ai/SYSTEM.md`, `.ai/protocols/HEARTBEAT.md`, `.ai/protocols/EVENTS.md`, and the selected Builder/Reviewer protocol. Recover active tasks from durable GitHub Issues, open PRs and `.ai/tasks/*/STATE.json`. Reconcile current main, PR head SHA, complete relevant diff/source, required checks, current GitHub Actions results and structured reviews. Select at most ONE actionable task. If CI is pending, do nothing. If required CI failed, perform exactly one bounded Builder repair. If the current head has CHANGES_REQUESTED, perform one bounded Builder repair. If required CI is green and the current head lacks a valid independent review, perform exactly one independent Reviewer pass. If current-head PASS + green CI exists, leave the human merge gate untouched. Ignore DONE, READY_TO_MERGE, unresolved BLOCKED, stale and duplicate work. Never create a replacement branch, write/merge main, force-push, wait for future CI, or rely on previous chat history. Persist the durable handoff and exit. If nothing is actionable, finish quietly.
 
-Route from current GitHub evidence:
+## Optional: UEOT GitOps Event Accelerator
 
-- signal `success` -> independent Reviewer path;
-- signal `failure` -> Builder repair path;
-- signal `blocked` -> diagnose missing/stuck required checks;
-- structured `CHANGES_REQUESTED` -> Builder path;
-- duplicate event, stale SHA, `READY_TO_MERGE`, `BLOCKED`, or `DONE` -> no mutation.
+The existing GitHub event-triggered task may remain paused until desired. If enabled, accept that trigger-side marker filtering and bot-origin wake-ups may be incomplete. Its only purpose is lower latency.
 
-### Router prompt
+Inside the prompt, no-op unless GitHub evidence shows an actionable current-head transition. Never depend on the accelerator for eventual continuation.
 
-> You are the UEOT persistent GitOps router. Treat each invocation as disposable. First
-> read `docs/REPOSITORY_BRANCH_GOVERNANCE.md`, `.ai/SYSTEM.md`, `.ai/protocols/EVENTS.md`,
-> and recover the current task from GitHub PR -> durable Issue -> `.ai/tasks/*/STATE.json`.
-> Reconcile current PR head SHA, complete diff, relevant source, required checks, prior
-> structured reviews and event-consumption markers before doing anything. Reject stale or
-> duplicate events. For failed CI, perform exactly one bounded Builder repair using
-> `.ai/protocols/BUILDER.md`; for green CI, perform an independent review using
-> `.ai/protocols/REVIEWER.md`; for blocked CI, repair the gate/configuration or record a
-> precise BLOCKED state; for structured CHANGES_REQUESTED, perform one Builder repair.
-> Never create a new branch because the conversation changed. Never merge `main`. Persist
-> the role-specific durable handoff and finish instead of waiting for another event.
+Recommended logical filtering after invocation:
+- `[UEOT-AI-SIGNAL]` -> reconcile and route;
+- `[UEOT-AI-REVIEW] result: CHANGES_REQUESTED` -> Builder;
+- PASS, ordinary comments and bookkeeping -> no-op.
 
-## Hardened setup: two logical workers
+## Manual fallback
 
-For stronger role separation, create two event-triggered Work tasks with mutually exclusive
-conditions:
+A fresh chat can always say: `Recover the active UEOT task from GitHub and execute exactly one bounded next transition using .ai/SYSTEM.md and .ai/protocols/HEARTBEAT.md. Do not rely on previous chat history.`
 
-- **Builder:** failed/blocked signals or structured CHANGES_REQUESTED only.
-- **Reviewer:** successful CI signals only.
+## Deployment order
 
-Both no-op if repository evidence does not match their role.
-
-## Activation sequence
-
-1. Independently review and human-merge the runtime bootstrap PR to `main`.
-2. Confirm both `UEOT AI Agent State Guard` and `UEOT AI CI Signal` exist on `main`.
-3. In ChatGPT, connect/authorize GitHub for `MurphyHoops/UEOT` if not already connected.
-4. Open **Work** and ask it to create an event-triggered GitHub task using the Router prompt
-   and filtering condition above.
-5. Review the generated Trigger, Condition and Prompt, authorize it, then manage it in
-   **Scheduled**.
-6. Run a disposable Issue/branch/PR and verify: CI signal -> fresh Work invocation -> one
-   structured review/repair artifact -> next state.
-7. Only then rely on unattended continuation for substantive UEOT work.
-
-Do not store ChatGPT conversation URLs as task state. Conversations are replaceable compute
-instances; GitHub is the handoff substrate.
+1. independently review and human-merge bootstrap PR;
+2. verify State Guard / CI Signal on `main`;
+3. create and enable the hourly Heartbeat;
+4. test Heartbeat recovery on one disposable task;
+5. optionally enable Event Accelerator and compare latency/no-op cost;
+6. only then use unattended continuation for substantive UEOT work.

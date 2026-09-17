@@ -1,15 +1,17 @@
-# UEOT Persistent Agent Runtime
+# UEOT Persistent Agent Runtime v2
 
-This directory is the recovery layer for long-running AI development. A Work run, browser
-session, or chat may disappear; the durable work item must remain recoverable from GitHub.
+The runtime makes ChatGPT/Work invocations disposable while keeping development state durable in GitHub.
 
-It does **not** replace repository governance. `docs/REPOSITORY_BRANCH_GOVERNANCE.md`
-controls: Issue = durable objective/live state, branch = temporary implementation surface,
-PR = integration candidate, `main` = integrated truth.
+## v2 liveness model
+
+GitHub is the canonical state substrate. Liveness is provided by two independent wake-up paths:
+
+1. **Heartbeat (primary / reliable fallback):** a recurring ChatGPT scheduled task inspects GitHub at most once per hour and advances at most one actionable task.
+2. **GitHub Event Trigger (optional accelerator):** supported PR activity may wake Work earlier, but the runtime never depends on event delivery for correctness or eventual recovery.
+
+A missed event therefore increases latency; it does not kill the agent.
 
 ## Truth order
-
-When sources disagree:
 
 1. current GitHub facts: source, refs, PR diff, checks/CI and reviews;
 2. durable GitHub Issue body/live state;
@@ -17,30 +19,22 @@ When sources disagree:
 4. project/architecture documents;
 5. conversation memory or chat summaries.
 
-Never overwrite a higher-ranked fact with stale lower-ranked context.
+## Runtime identity
 
-## Runtime model
+`Persistent Agent = policy + GitHub state + verification + transition protocol + liveness`
 
-A ChatGPT/Work conversation is a disposable worker. Persistent identity lives in policy,
-durable GitHub state, environment evidence and transition rules.
-
-Each invocation is bounded:
-
-`LOAD -> RECONCILE -> ACT/REVIEW -> PERSIST -> HANDOFF -> EXIT`
-
-Waiting for future CI is not a reason to keep a chat alive.
+A chat is only one compute instance. Each invocation performs one bounded transaction and exits.
 
 ## Layout
 
-- `SYSTEM.md` — startup/recovery invariants.
-- `protocols/BUILDER.md` — code-producing worker protocol.
-- `protocols/REVIEWER.md` — independent review protocol.
-- `protocols/EVENTS.md` — signal/review/consumption protocol.
-- `OPERATIONS.md` — recovery, rollback, BLOCKED and merge operations.
-- `WORK_SETUP.md` — ChatGPT Work event-trigger setup.
-- `QUICKSTART.md` — normal user workflow.
-- `schema/task-state.schema.json` — machine contract.
-- `tasks/issue-*/STATE.json` — code-checkpoint recovery mirror.
-- `tasks/issue-*/GOAL.md` — durable success criteria.
+- `SYSTEM.md` — global invariants.
+- `protocols/BUILDER.md` — code-producing worker.
+- `protocols/REVIEWER.md` — independent review.
+- `protocols/EVENTS.md` — best-effort event acceleration.
+- `protocols/HEARTBEAT.md` — primary liveness/recovery loop.
+- `WORK_SETUP.md` — ChatGPT Work/Scheduled configuration.
+- `OPERATIONS.md` — rollback, BLOCKED and merge operations.
+- `QUICKSTART.md` — user workflow.
+- `tasks/issue-*/STATE.json` — compact code-checkpoint state.
 
-Large logs, diffs and reasoning traces belong in GitHub/CI, not state files.
+Large logs, diffs, secrets and reasoning traces never belong in task state.

@@ -1,59 +1,49 @@
-# Persistent Agent System Protocol
+# Persistent Agent System Protocol v2
 
 ## Purpose
 
-Make UEOT development resumable across short-lived ChatGPT Work runs and across new
-conversations. A worker may disappear; the work item must remain recoverable.
+Keep UEOT development resumable across Work runtime limits, chat limits, missed webhooks and event-trigger gaps.
 
 ## Mandatory startup
 
-Every Builder or Reviewer invocation must, before making changes:
+Every Builder, Reviewer, event worker or Heartbeat invocation must:
 
-1. Read `docs/REPOSITORY_BRANCH_GOVERNANCE.md` from current `main`.
-2. Read this file and the role protocol under `.ai/protocols/`.
-3. Identify the durable GitHub Issue for the work item.
-4. Read the Issue body, task `GOAL.md`, and task `STATE.json`.
-5. Fetch/reconcile current `main`, active branch, open PR, head SHA, and relevant CI.
-6. Run `python scripts/ai/validate_task_state.py` conceptually or actually when a shell is available.
-7. Resolve stale state by the truth order in `.ai/README.md`; do not guess.
-
-A new conversation must never ask the user to reconstruct branch or iteration state if
-GitHub contains the evidence.
+1. read `docs/REPOSITORY_BRANCH_GOVERNANCE.md` from current `main`;
+2. read `.ai/README.md`, this file, and the selected role protocol;
+3. recover durable task candidates from GitHub Issue -> PR -> `.ai/tasks/*/STATE.json`;
+4. reconcile current `main`, PR head SHA, complete relevant diff/source, required checks and structured reviews;
+5. resolve stale state by the repository truth order; never reconstruct from chat memory.
 
 ## Bounded transaction
 
-One invocation should complete one coherent state transition, not an unbounded epic.
-The default budget is one implementation/review iteration. `STATE.json.iteration` must
-increase only when a substantive Builder iteration is checkpointed.
+One invocation may execute at most one coherent task transition. Never keep a Work run alive waiting for future CI.
 
-Before the run ends, leave one of these durable states:
+Builder checkpoints increment `STATE.json.iteration` once per substantive implementation iteration. Reviewer PASS does not create a state-only code commit.
 
-- `WAITING_CI` — code/state pushed; environment must finish checks.
-- `REVIEWING` — required CI is settled and independent review is next.
-- `CHANGES_REQUESTED` — Reviewer found concrete defects; Builder is next.
-- `READY_TO_MERGE` — review/CI gates are satisfied; human merge gate remains.
-- `BLOCKED` — a named external decision/resource is required.
-- `DONE` — objective is integrated/closed according to governance.
+## Liveness invariant
 
-Do not keep a Work run alive merely to poll CI. Do not invent a second branch for a new
-conversation.
+The runtime must remain recoverable if all GitHub event triggers fail.
+
+- Primary liveness: recurring Heartbeat (`protocols/HEARTBEAT.md`).
+- Optional acceleration: GitHub event-triggered Work (`protocols/EVENTS.md`).
+- Manual fallback: any fresh chat can recover from GitHub and execute one bounded transition.
+
+No correctness rule may require a specific chat URL, webhook delivery, bot comment delivery, or previous Work instance.
 
 ## Safety brakes
 
-- Never write directly to `main`; use the one branch bound to the durable work item.
-- Never create per-iteration, handoff, scratch, `v2`, or `fresh` branches.
-- `iteration <= max_iterations` always.
-- The same failure fingerprint may be retried at most `max_same_failure` times before `BLOCKED`.
-- Consecutive CI failures may not exceed `max_consecutive_ci_failures` without human review.
-- `last_event.key` is an idempotency key. A worker that receives the same event again must not repeat the mutation.
-- Builder may not declare its own work independently reviewed.
-- Final merge to `main` is a human gate unless repository governance is explicitly changed.
+- one durable work item -> one active branch -> one PR;
+- never write directly to `main` and never force-push;
+- never create a replacement branch because a chat changed;
+- reject stale SHA and duplicate work;
+- `iteration <= max_iterations`;
+- same root failure and consecutive CI failures obey task retry limits;
+- Builder cannot self-approve;
+- final merge is human-only in v2;
+- Heartbeat selects at most one actionable task per run.
 
-## Checkpoint discipline
+## Durable end states
 
-A checkpoint contains facts, not chain-of-thought: objective id, branch, base/checkpoint
-SHA, iteration, current problem, completed milestones, next action, latest CI summary,
-and event/retry guards. Detailed evidence remains in commits, PRs, CI runs, and Issues.
+`WAITING_CI`, `REVIEWING`, `CHANGES_REQUESTED`, `READY_TO_MERGE`, `BLOCKED`, or `DONE`.
 
-At handoff, update the durable Issue live-state section as needed. The Issue remains the
-human-readable authority; `STATE.json` mirrors the minimum machine state needed to resume.
+`READY_TO_MERGE`, `BLOCKED`, and `DONE` are no-op states for Heartbeat unless new GitHub evidence changes the situation.
