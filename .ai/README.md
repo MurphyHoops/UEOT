@@ -1,15 +1,18 @@
-# UEOT Persistent Agent Runtime v2
+# UEOT Persistent Agent Runtime v3
 
-The runtime makes ChatGPT/Work invocations disposable while keeping development state durable in GitHub.
+The runtime makes ChatGPT conversations disposable while keeping development state durable in GitHub.
 
-## v2 liveness model
+## v3 execution model
 
-GitHub is the canonical state substrate. Liveness is provided by two independent wake-up paths:
+GitHub is the canonical state substrate. The default worker is an ordinary ChatGPT conversation with the GitHub connector.
 
-1. **Heartbeat (primary / reliable fallback):** a recurring ChatGPT scheduled task inspects GitHub at most once per hour and advances at most one actionable task.
-2. **GitHub Event Trigger (optional accelerator):** supported PR activity may wake Work earlier, but the runtime never depends on event delivery for correctness or eventual recovery.
+1. **Primary execution:** normal ChatGPT Chat + GitHub connector.
+2. **Deterministic execution/verification:** GitHub Actions.
+3. **Primary continuation:** user opens any fresh ordinary Chat and invokes `/ueot-resume`.
+4. **Optional automation:** Work, scheduled Heartbeat and GitHub Event Trigger are disabled by default and may be enabled only as deliberate agentic-cost accelerators.
+5. **Optional escalation:** Codex is reserved for tasks whose interactive coding value justifies its separate/agentic resource use.
 
-A missed event therefore increases latency; it does not kill the agent.
+v3 optimizes for resumability and resource efficiency, not unattended autonomy.
 
 ## Truth order
 
@@ -21,20 +24,22 @@ A missed event therefore increases latency; it does not kill the agent.
 
 ## Runtime identity
 
-`Persistent Agent = policy + GitHub state + verification + transition protocol + liveness`
+`Persistent Agent = policy + GitHub state + verification + transition protocol`
 
 A chat is only one compute instance. Each invocation performs one bounded transaction and exits.
 
 ## Layout
 
 - `SYSTEM.md` — global invariants.
+- `RESOURCE_POLICY.md` — default Chat-first resource policy.
+- `protocols/CHAT.md` — primary resume/execution protocol.
 - `protocols/BUILDER.md` — code-producing worker.
 - `protocols/REVIEWER.md` — independent review.
-- `protocols/EVENTS.md` — best-effort event acceleration.
-- `protocols/HEARTBEAT.md` — primary liveness/recovery loop.
-- `WORK_SETUP.md` — ChatGPT Work/Scheduled configuration.
+- `protocols/EVENTS.md` — optional Work event acceleration.
+- `protocols/HEARTBEAT.md` — optional scheduled Work acceleration.
+- `WORK_SETUP.md` — optional Work configuration only.
 - `OPERATIONS.md` — rollback, BLOCKED and merge operations.
-- `QUICKSTART.md` — user workflow.
-- `tasks/issue-*/STATE.json` — compact code-checkpoint state.
+- `QUICKSTART.md` — normal user workflow.
+- `tasks/issue-*/STATE.json` — compact recovery mirror.
 
 Large logs, diffs, secrets and reasoning traces never belong in task state.
