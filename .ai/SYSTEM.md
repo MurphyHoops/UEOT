@@ -1,34 +1,35 @@
-# Persistent Agent System Protocol v2
+# Persistent Agent System Protocol v3
 
 ## Purpose
 
-Keep UEOT development resumable across Work runtime limits, chat limits, missed webhooks and event-trigger gaps.
+Keep UEOT development resumable across ordinary ChatGPT conversation limits while minimizing dependence on agentic Work/Codex execution.
 
 ## Mandatory startup
 
-Every Builder, Reviewer, event worker or Heartbeat invocation must:
+Every Builder, Reviewer or resume invocation must:
 
 1. read `docs/REPOSITORY_BRANCH_GOVERNANCE.md` from current `main`;
-2. read `.ai/README.md`, this file, and the selected role protocol;
+2. read `.ai/README.md`, `.ai/RESOURCE_POLICY.md`, this file, and the selected role protocol;
 3. recover durable task candidates from GitHub Issue -> PR -> `.ai/tasks/*/STATE.json`;
 4. reconcile current `main`, PR head SHA, complete relevant diff/source, required checks and structured reviews;
-5. resolve stale state by the repository truth order; never reconstruct from chat memory.
+5. resolve stale state by the repository truth order; never reconstruct correctness from chat memory.
 
 ## Bounded transaction
 
-One invocation may execute at most one coherent task transition. Never keep a Work run alive waiting for future CI.
+One invocation may execute at most one coherent task transition. Do not keep a conversation alive merely to wait for future CI.
 
 Builder checkpoints increment `STATE.json.iteration` once per substantive implementation iteration. Reviewer PASS does not create a state-only code commit.
 
-## Liveness invariant
+## Continuation invariant
 
-The runtime must remain recoverable if all GitHub event triggers fail.
+The runtime must remain recoverable with Work, scheduled tasks and GitHub event-triggered Work completely disabled.
 
-- Primary liveness: recurring Heartbeat (`protocols/HEARTBEAT.md`).
-- Optional acceleration: GitHub event-triggered Work (`protocols/EVENTS.md`).
-- Manual fallback: any fresh chat can recover from GitHub and execute one bounded transition.
+- Primary worker: ordinary ChatGPT Chat with GitHub connector (`protocols/CHAT.md`).
+- Primary continuation: fresh ordinary chat + `/ueot-resume`.
+- Optional acceleration: Work Heartbeat and GitHub Event Trigger.
+- Optional coding escalation: Codex.
 
-No correctness rule may require a specific chat URL, webhook delivery, bot comment delivery, or previous Work instance.
+No correctness rule may require a specific chat URL, previous conversation, webhook delivery, bot comment delivery, scheduled Work run or Codex session.
 
 ## Safety brakes
 
@@ -39,11 +40,11 @@ No correctness rule may require a specific chat URL, webhook delivery, bot comme
 - `iteration <= max_iterations`;
 - same root failure and consecutive CI failures obey task retry limits;
 - Builder cannot self-approve;
-- final merge is human-only in v2;
-- Heartbeat selects at most one actionable task per run.
+- final merge is human-only unless repository governance is explicitly changed;
+- optional automation must obey the same one-transition bound.
 
 ## Durable end states
 
 `WAITING_CI`, `REVIEWING`, `CHANGES_REQUESTED`, `READY_TO_MERGE`, `BLOCKED`, or `DONE`.
 
-`READY_TO_MERGE`, `BLOCKED`, and `DONE` are no-op states for Heartbeat unless new GitHub evidence changes the situation.
+A task may remain in `WAITING_CI` or `REVIEWING` until the next manual `/ueot-resume`; this is acceptable in v3 because durable recovery, not unattended autonomy, is the primary guarantee.
