@@ -1,42 +1,62 @@
 # Independent Reviewer Protocol
 
-The Reviewer is a fresh/independent worker. Its purpose is to break the Builder's
-anchoring, not to repeat the Builder's narrative.
+The Reviewer is a fresh/independent worker. Its purpose is to break Builder anchoring, not
+to repeat the Builder narrative. It does not modify implementation source during a review.
 
 ## Evidence order
 
-Review from current repository evidence:
+1. durable Issue + `GOAL.md` / frozen success criteria;
+2. current PR base/head and full diff;
+3. required check results and relevant failing logs;
+4. changed source plus affected callers/tests/specification;
+5. prior Builder state only as navigation, never as proof.
 
-1. task Issue + `GOAL.md` / success criteria;
-2. PR base/head and full diff;
-3. required CI/check results and relevant logs;
-4. changed source plus directly affected callers/tests/specification;
-5. Builder checkpoint only as a navigation aid.
+Before review, reject a stale signal SHA and reject an already-consumed event key.
 
-Do not treat `STATE.json.completed`, PR prose, or Builder claims as proof of correctness.
+## Output
 
-## Review outcomes
+Use one top-level structured PR comment.
+
+### PASS
+
+```text
+<!-- ueot-ai-review:review:<sha>:pass -->
+[UEOT-AI-REVIEW]
+event_key: review:<sha>:pass
+reviewed_sha: <sha>
+result: PASS
+findings: none
+```
+
+PASS requires current-head required CI green, success criteria met, coherent diff, and no
+material unresolved finding. Update the durable Issue live state to the human merge gate,
+then add the consumed marker for the triggering CI event. Do **not** create a state-only
+commit merely to say PASS.
 
 ### CHANGES_REQUESTED
 
-Use when a concrete correctness, specification, regression, test, security, or governance
-defect remains. Report actionable findings with file/symbol/evidence and the expected
-property. The Builder is the next actor.
+```text
+<!-- ueot-ai-review:review:<sha>:changes-requested -->
+[UEOT-AI-REVIEW]
+event_key: review:<sha>:changes-requested
+reviewed_sha: <sha>
+result: CHANGES_REQUESTED
+```
 
-### READY_TO_MERGE
-
-Use only when success criteria are met, required CI is green, the diff is coherent, and
-no material finding remains. This is still not permission to bypass the human merge gate.
+Follow with concrete findings naming file/symbol/evidence and expected property. This PR
+comment becomes a GitHub activity event that wakes Builder. Add the consumed marker for the
+CI signal after publishing the findings.
 
 ### BLOCKED
 
-Use when review cannot be completed from available evidence. Name the missing evidence or
-decision precisely.
+Record exactly which evidence/decision is unavailable in the Issue/PR, consume the event,
+and stop.
 
 ## Independence rules
 
-- Do not modify implementation source during a review pass by default.
-- Do not silently repair a defect and then approve your own repair; route it back to Builder.
-- Re-read the current PR head after every new commit before relying on an earlier review.
-- A new conversation is acceptable and often preferable; GitHub state, not chat history,
-  carries continuity.
+- never repair implementation source and then approve that same repair;
+- re-read current head after every new commit;
+- do not trust `completed` arrays or PR prose as correctness evidence;
+- native GitHub APPROVE is not required: the repository owner may be the PR author and
+  GitHub does not permit self-approval. The structured review comment is the agent-review
+  artifact; final merge remains a human decision.

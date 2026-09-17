@@ -1,47 +1,46 @@
 # UEOT Persistent Agent Runtime
 
-This directory is the machine-readable recovery layer for long-running AI development.
-It exists so a task can survive a short Work run, a dead browser session, or a brand-new
-ChatGPT conversation without reconstructing state from chat history.
+This directory is the recovery layer for long-running AI development. A Work run, browser
+session, or chat may disappear; the durable work item must remain recoverable from GitHub.
 
 It does **not** replace repository governance. `docs/REPOSITORY_BRANCH_GOVERNANCE.md`
-remains controlling: Issue = durable objective/live state, branch = temporary work
-surface, PR = integration candidate, `main` = integrated truth.
+controls: Issue = durable objective/live state, branch = temporary implementation surface,
+PR = integration candidate, `main` = integrated truth.
 
 ## Truth order
 
-When sources disagree, use this order:
+When sources disagree:
 
-1. Current repository facts: source, refs, PR diff, commit/check/CI results.
-2. The durable GitHub Issue body for the active work item.
-3. `.ai/tasks/<task>/STATE.json` as the machine recovery mirror.
-4. Project instructions and durable architecture documents.
-5. Conversation memory or hand-written chat summaries.
+1. current GitHub facts: source, refs, PR diff, checks/CI and reviews;
+2. durable GitHub Issue body/live state;
+3. `.ai/tasks/<task>/STATE.json` machine mirror;
+4. project/architecture documents;
+5. conversation memory or chat summaries.
 
 Never overwrite a higher-ranked fact with stale lower-ranked context.
 
 ## Runtime model
 
-A ChatGPT/Work conversation is a disposable worker. The persistent agent is the
-combination of repository policy, durable task state, environment evidence, and a
-transition protocol.
+A ChatGPT/Work conversation is a disposable worker. Persistent identity lives in policy,
+durable GitHub state, environment evidence and transition rules.
 
-Each invocation performs one bounded transaction:
+Each invocation is bounded:
 
-`LOAD -> RECONCILE -> ACT -> VERIFY/WAIT -> CHECKPOINT -> HANDOFF`
+`LOAD -> RECONCILE -> ACT/REVIEW -> PERSIST -> HANDOFF -> EXIT`
 
-The worker must checkpoint before its run ends. Waiting for CI is not productive work:
-commit/push a `WAITING_CI` checkpoint and allow an external GitHub event to wake the next
-worker.
+Waiting for future CI is not a reason to keep a chat alive.
 
 ## Layout
 
-- `SYSTEM.md` — global startup/recovery invariants.
+- `SYSTEM.md` — startup/recovery invariants.
 - `protocols/BUILDER.md` — code-producing worker protocol.
 - `protocols/REVIEWER.md` — independent review protocol.
-- `schema/task-state.schema.json` — portable machine contract.
-- `tasks/issue-*/STATE.json` — resumable machine state for durable objectives.
-- `tasks/issue-*/GOAL.md` — stable objective/success criteria.
+- `protocols/EVENTS.md` — signal/review/consumption protocol.
+- `OPERATIONS.md` — recovery, rollback, BLOCKED and merge operations.
+- `WORK_SETUP.md` — ChatGPT Work event-trigger setup.
+- `QUICKSTART.md` — normal user workflow.
+- `schema/task-state.schema.json` — machine contract.
+- `tasks/issue-*/STATE.json` — code-checkpoint recovery mirror.
+- `tasks/issue-*/GOAL.md` — durable success criteria.
 
-`STATE.json` is intentionally small. Large logs, diffs, source text, and reasoning traces
-belong in GitHub/CI, not in the state file.
+Large logs, diffs and reasoning traces belong in GitHub/CI, not state files.

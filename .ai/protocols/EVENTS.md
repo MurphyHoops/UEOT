@@ -3,79 +3,100 @@
 The runtime is event-driven, not conversation-driven. GitHub activity wakes a disposable
 worker; repository state decides whether that worker is allowed to act.
 
-## Canonical event key
+## Event keys and durable markers
 
-Every actionable wake-up event has a stable idempotency key, for example:
+Actionable events use stable keys such as:
 
-- `ci-settled:<head-sha>:success`
-- `ci-settled:<head-sha>:failure`
-- `ci-settled:<head-sha>:blocked`
+- `ci-settled:<head-sha>:success|failure|blocked`
 - `state-guard:<head-sha>:failure`
-- `review:<review-id>:changes-requested`
-- `review:<review-id>:pass`
+- `review:<reviewed-sha>:pass|changes-requested`
 - `human:<issue-or-comment-id>:resume`
 
-A worker must reject an already-consumed event. Never repeat a mutation merely because a
-new ChatGPT conversation received the same GitHub event.
+CI emits:
+
+```text
+[UEOT-AI-SIGNAL]
+event_key: <key>
+...
+```
+
+A Work invocation that successfully consumes an event records a top-level PR comment with:
+
+```text
+<!-- ueot-ai-consumed:<event-key> -->
+[UEOT-AI-CONSUMED]
+event_key: <event-key>
+outcome: <short outcome>
+```
+
+Before mutating anything, a worker checks for that hidden consumed marker. Duplicate event
+delivery therefore becomes a no-op even when the previous worker was a different chat.
+Builder code checkpoints also copy the consumed event into `STATE.json.last_event`.
 
 ## Two-stage CI orchestration
-
-The runtime deliberately separates untrusted PR validation from trusted signal emission.
 
 ### Stage A — `UEOT AI Agent State Guard`
 
 Runs on the PR head with read-only repository permission. It validates all task state,
 runs validator regression tests, and verifies the JSON schema. Feature branches validate
-through the PR only; `main` additionally validates on push, avoiding duplicate same-SHA
-branch/PR checks.
+through the PR only; `main` additionally validates on push.
 
 ### Stage B — `UEOT AI CI Signal`
 
-Runs from the default-branch workflow via GitHub `workflow_run` after Stage A completes.
-Because it does not checkout or execute PR code, it can safely hold the narrow write
-permission needed to post a PR wake-up comment. It then:
+Runs trusted default-branch code via `workflow_run` after Stage A. It never checks out or
+executes PR code. It has only the narrow write scope needed to post a PR wake-up comment.
+It rejects stale heads, reads the task bound to the PR, waits for every task-declared
+`required_checks` name, and posts one deduplicated signal.
 
-1. rejects stale PR head SHAs;
-2. reads the task bound to the PR;
-3. only continues for `WAITING_CI`;
-4. waits for every task-declared `required_checks` check name to settle;
-5. posts one deduplicated `[UEOT-AI-SIGNAL]` comment with `success`, `failure`, or `blocked`.
-
-Only the fixed State Guard workflow name is wired into `workflow_run`. UEOT-QM, UEOT-GI,
-Lean, and future validation workflows remain dynamic: tasks name their check jobs in
-`required_checks`; the relay polls those checks without needing its trigger list changed.
-
-If Stage A itself fails, the trusted relay emits a failure signal so an external worker can
-repair invalid task state or validator regressions.
+Only the State Guard workflow name is fixed. UEOT-QM, UEOT-GI, Lean and future validation
+workflows remain dynamic through `required_checks`.
 
 ## Router
 
-When a Work invocation wakes:
+1. Recover task from PR -> durable Issue -> task state.
+2. Reconcile current head SHA, complete diff/source, checks and prior structured reviews.
+3. Reject stale SHA or an existing `ueot-ai-consumed:<event-key>` marker.
+4. Route:
+   - CI failure -> one Builder repair;
+   - CI blocked -> gate/configuration recovery or precise BLOCKED record;
+   - CI success -> independent Reviewer;
+   - structured review changes -> Builder;
+   - structured review pass + green required CI -> human merge gate.
+5. Persist outcome and consumed marker, then exit.
 
-1. Locate/recover the task from PR, Issue and task state.
-2. Reconcile current PR head, source, complete diff, checks and reviews; the wake-up comment
-   is not correctness evidence.
-3. Reject stale SHAs and duplicate event keys.
-4. Route by evidence:
-   - failure -> one Builder repair;
-   - blocked -> gate/configuration recovery or precise human BLOCKED state;
-   - success + `WAITING_CI` -> independent Reviewer;
-   - review changes -> Builder;
-   - review pass + green required CI -> human merge gate.
-5. Persist the durable handoff and stop instead of waiting for the next event.
+## Review event
+
+Reviewer output is a top-level PR comment, not a source/state commit:
+
+```text
+<!-- ueot-ai-review:review:<reviewed-sha>:pass -->
+[UEOT-AI-REVIEW]
+event_key: review:<reviewed-sha>:pass
+reviewed_sha: <sha>
+result: PASS
+findings: none
+```
+
+or `result: CHANGES_REQUESTED` followed by concrete findings. This avoids a state-only
+commit that would invalidate the very head just reviewed. It also works when the connected
+GitHub identity is the PR author and therefore cannot submit a native self-approval.
+
+For no-code transitions (review pass, BLOCKED decision, human gate), the Issue/PR event
+record is authoritative and the repository `STATE.json` mirror is allowed to lag until the
+next code checkpoint. This follows repository governance: Issue/PR/current Git reality rank
+above the state mirror.
 
 ## Bootstrap boundary
 
-`workflow_run` workflows must already exist on the default branch to activate. Therefore
-the one-time bootstrap PR can validate Stage A but cannot prove Stage B end-to-end before
-merge. After the reviewed bootstrap lands on `main`, run one disposable task to prove the
-signal comment + ChatGPT Work wake-up path before relying on unattended continuation.
+`workflow_run` must exist on default branch. The bootstrap PR can prove State Guard CI but
+cannot prove CI Signal end-to-end before merge. After bootstrap lands on `main`, use one
+disposable task to verify signal comment -> Work invocation -> consumed/review marker.
 
 ## Race/security guards
 
 - one durable work item -> one branch -> one open PR;
-- signal relay is SHA-pinned and exits if the PR head moves;
-- hidden comment markers deduplicate signals;
-- relay never checks out or executes PR code;
+- signal relay is SHA-pinned and exits when the head moves;
+- signal and consumed markers are idempotent;
+- trusted relay never executes PR code;
 - same-repository PRs only;
 - final merge remains a human gate.
