@@ -41,6 +41,12 @@ jobs:
             }
             const prNumber = prs[0].number;
 
+            const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+            if (pr.head.sha !== sha) {
+              core.info(`Stale workflow SHA ${sha}; current PR head is ${pr.head.sha}. No signal.`);
+              return;
+            }
+
             const tree = await github.rest.git.getTree({
               owner,
               repo,
@@ -68,6 +74,10 @@ jobs:
               core.info(`No persistent task state is bound to PR #${prNumber}; no signal.`);
               return;
             }
+            if (state.status !== 'WAITING_CI') {
+              core.info(`Task ${state.task_id} is ${state.status}, not WAITING_CI; no CI wake-up.`);
+              return;
+            }
 
             const required = state.required_checks || [];
             if (!Array.isArray(required) || required.length === 0) {
@@ -84,18 +94,19 @@ jobs:
 
             const selected = [];
             for (const requiredName of required) {
-              const matches = checks.filter((check) =>
-                check.app?.slug === 'github-actions' && check.name === requiredName
-              );
+              const matches = checks
+                .filter((check) => check.app?.slug === 'github-actions' && check.name === requiredName)
+                .sort((a, b) => b.id - a.id);
               if (matches.length === 0) {
                 core.info(`Required check ${requiredName} is not visible yet; no signal.`);
                 return;
               }
-              if (matches.some((check) => check.status !== 'completed')) {
-                core.info(`Required check ${requiredName} is still running; no signal.`);
+              const current = matches[0];
+              if (current.status !== 'completed') {
+                core.info(`Required check ${requiredName} is still ${current.status}; no signal.`);
                 return;
               }
-              selected.push(...matches);
+              selected.push(current);
             }
 
             const successConclusions = new Set(['success', 'neutral', 'skipped']);
@@ -116,9 +127,7 @@ jobs:
               return;
             }
 
-            const lines = selected
-              .map((check) => `- ${check.name}: ${check.conclusion}`)
-              .sort();
+            const lines = selected.map((check) => `- ${check.name}: ${check.conclusion}`).sort();
             const body = [
               marker,
               '[UEOT-AI-SIGNAL]',

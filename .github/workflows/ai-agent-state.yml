@@ -35,5 +35,8 @@ jobs:
       - name: Validate persistent task state
         run: python scripts/ai/validate_task_state.py
 
+      - name: Run state-validator regression tests
+        run: python scripts/ai/test_task_state.py
+
       - name: Verify JSON schema parses
         run: python -m json.tool .ai/schema/task-state.schema.json >/dev/null

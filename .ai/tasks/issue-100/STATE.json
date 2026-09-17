@@ -4,23 +4,23 @@
   "issue": 100,
   "objective": "Persistent GitOps Agent Runtime for resumable cross-chat UEOT development",
   "status": "WAITING_CI",
-  "iteration": 2,
+  "iteration": 3,
   "max_iterations": 30,
   "branch": "ops/persistent-agent-runtime",
   "base_sha": "aaea53a70902e138d123ef700a99c372214708d9",
-  "checkpoint_sha": "c329010084b8989921318ed132a8e3bac53d600b",
+  "checkpoint_sha": "3dc94980c118d5b933d76d4bfa9f0b6e7ba5df4d",
   "open_pr": 102,
   "required_checks": ["validate-state"],
   "latest_ci": {
-    "sha": "c329010084b8989921318ed132a8e3bac53d600b",
+    "sha": "3dc94980c118d5b933d76d4bfa9f0b6e7ba5df4d",
     "status": "success",
-    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35170245946"
+    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35170393878"
   },
   "last_event": {
-    "key": "ci-settled:c329010084b8989921318ed132a8e3bac53d600b:success",
-    "type": "ci-completed",
-    "sha": "c329010084b8989921318ed132a8e3bac53d600b",
-    "at": "2026-09-17T01:21:51Z"
+    "key": "bootstrap-ci:3dc94980c118d5b933d76d4bfa9f0b6e7ba5df4d:35170393878",
+    "type": "manual-bootstrap-ci",
+    "sha": "3dc94980c118d5b933d76d4bfa9f0b6e7ba5df4d",
+    "at": "2026-09-17T01:24:04Z"
   },
   "retries": {
     "same_failure_count": 0,
@@ -34,15 +34,16 @@
     "Created durable live-state Issue #100",
     "Created the single implementation branch ops/persistent-agent-runtime",
     "Implemented the Phase-1 persistent-state kernel and stdlib validator",
-    "Validated the first implementation checkpoint in GitHub Actions run 35170196560",
     "Opened draft PR #102 to main",
-    "Dogfooded the first PR checkpoint and passed state guard run 35170245946"
+    "Added required-check gated CI-to-PR wake-up relay and Work setup contract",
+    "Hardened relay against stale SHA, state echo loops, duplicate signals, and check reruns",
+    "Added task initializer, validator regression tests, and user quickstart"
   ],
-  "current_problem": null,
-  "next_action": "Validate the Phase-2 event relay checkpoint; once merged to main, configure ChatGPT Work to wake on structured PR signal comments and test fresh-conversation recovery.",
+  "current_problem": "The workflow_run relay cannot self-demonstrate until its bootstrap PR is merged to default branch main; this is a GitHub activation boundary, not a code failure.",
+  "next_action": "Run final PR CI and independent review on PR #102. If green, human-merge the bootstrap PR; then configure the ChatGPT Work GitHub-event trigger and prove automatic wake-up on a disposable follow-up task.",
   "guards": {
     "human_merge_required": true,
     "builder_may_self_approve": false
   },
-  "updated_at": "2026-09-17T01:24:00Z"
+  "updated_at": "2026-09-17T01:28:00Z"
 }
