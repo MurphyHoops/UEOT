@@ -10,9 +10,11 @@ GitHub is the canonical state substrate. The default worker is an ordinary ChatG
 2. **Deterministic execution/verification:** GitHub Actions.
 3. **Primary continuation:** user opens any fresh ordinary Chat and invokes `/ueot-resume`.
 4. **Optional automation:** Work, scheduled Heartbeat and GitHub Event Trigger are disabled by default and may be enabled only as deliberate agentic-cost accelerators.
-5. **Optional escalation:** Codex is reserved for tasks whose interactive coding value justifies its separate/agentic resource use.
+5. **Optional escalation:** Codex is reserved for tasks whose interactive coding value justifies its resource use.
 
 v3 optimizes for resumability and resource efficiency, not unattended autonomy.
+
+`/ueot-resume` is a repository protocol alias, not a built-in ChatGPT slash command. Typing it means: load `.ai/protocols/CHAT.md` and execute its recovery procedure.
 
 ## Truth order
 
