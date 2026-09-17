@@ -58,3 +58,5 @@ import UEOT.V3.FiniteDiscountedExactQuotient
 import UEOT.V3.FiniteDiscountedSelectorValue
 import UEOT.V3.FiniteDiscountedApproxQuotient
 import UEOT.V3.FiniteDiscountedApproxQuotientBounds
+import UEOT.V3.FiniteDiscountedPolicyResolvent
+import UEOT.V3.FiniteDiscountedOccupancy
