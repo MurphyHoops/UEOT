@@ -4,23 +4,23 @@
   "issue": 100,
   "objective": "Persistent GitOps Agent Runtime v3 with Chat-first execution and GitHub-resident recovery",
   "status": "WAITING_CI",
-  "iteration": 8,
+  "iteration": 9,
   "max_iterations": 30,
   "branch": "ops/persistent-agent-runtime",
   "base_sha": "aaea53a70902e138d123ef700a99c372214708d9",
-  "checkpoint_sha": "080defa7e802d5ce70ec64ba1322ce9fc73605c3",
+  "checkpoint_sha": "f2a7b5093e423309e8806a304ad09ce45485d5bb",
   "open_pr": 102,
   "required_checks": ["validate-state"],
   "latest_ci": {
-    "sha": "080defa7e802d5ce70ec64ba1322ce9fc73605c3",
+    "sha": "f2a7b5093e423309e8806a304ad09ce45485d5bb",
     "status": "success",
-    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35174452315"
+    "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/35175763003"
   },
   "last_event": {
-    "key": "architecture-v3:080defa7e802d5ce70ec64ba1322ce9fc73605c3:chat-first",
-    "type": "manual-runtime-architecture-upgrade",
-    "sha": "080defa7e802d5ce70ec64ba1322ce9fc73605c3",
-    "at": "2026-09-17T02:48:00Z"
+    "key": "security-hardening:f2a7b5093e423309e8806a304ad09ce45485d5bb:review-provenance",
+    "type": "builder-review-provenance-repair",
+    "sha": "f2a7b5093e423309e8806a304ad09ce45485d5bb",
+    "at": "2026-09-17T02:55:00Z"
   },
   "retries": {
     "same_failure_count": 0,
@@ -36,13 +36,14 @@
     "Recovered development across an interrupted ChatGPT conversation using repository state",
     "Observed Work GitHub trigger limitations for marker pre-filtering and bot-generated wake-ups",
     "Tested v2 heartbeat-first design and identified agentic-resource cost conflict with the project objective",
-    "Upgraded runtime to v3: ordinary Chat plus GitHub connector is primary; Work/Event/Heartbeat/Codex are optional resource-costed accelerators"
+    "Upgraded runtime to v3: ordinary Chat plus GitHub connector is primary; Work/Event/Heartbeat/Codex are optional resource-costed accelerators",
+    "Hardened structured review provenance: PASS/CHANGES_REQUESTED markers require allowlisted actual GitHub author metadata"
   ],
-  "current_problem": "v3 Chat-first protocol update is implemented and requires current-head State Guard validation plus an independent review before bootstrap merge.",
-  "next_action": "Validate the current v3 PR head, independently review PR #102, human-merge after PASS, then prove fresh ordinary-Chat /ueot-resume recovery on one disposable task while keeping Work automation paused.",
+  "current_problem": "Prior P1 review identified spoofable structured review markers. Trusted reviewer provenance hardening is now implemented and requires current-head State Guard validation plus independent review.",
+  "next_action": "Validate the new current head, independently review PR #102 including review-provenance hardening, human-merge after PASS, then prove fresh ordinary-Chat /ueot-resume recovery while keeping Work automation paused.",
   "guards": {
     "human_merge_required": true,
     "builder_may_self_approve": false
   },
-  "updated_at": "2026-09-17T02:48:00Z"
+  "updated_at": "2026-09-17T02:55:00Z"
 }
