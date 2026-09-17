@@ -4,7 +4,18 @@
   "policy_source": "pr-base",
   "bootstrap": {
     "when_base_policy_missing": "human-only",
-    "note": "The initial policy-installing PR cannot authorize itself. Independent AI review is advisory evidence only; a human must inspect and merge the bootstrap candidate. Once merged, later PRs resolve trust policy from their PR base SHA."
+    "note": "The initial policy-installing PR cannot authorize itself. Independent AI review and candidate CI are advisory evidence only until a human explicitly establishes the trust root."
+  },
+  "platform": {
+    "base_branch": "main",
+    "require_platform_enforcement_before_activation": true,
+    "required_controls": [
+      "pull-request-only integration",
+      "force pushes disabled",
+      "direct pushes by automation identities blocked or non-bypassable",
+      "required protected checks/reviews configured as appropriate"
+    ],
+    "on_unverified_or_missing": "human-only"
   },
   "review": {
     "trusted_review_artifact_authors": [
@@ -13,6 +24,20 @@
   },
   "ci": {
     "unmatched_changed_paths": "human-only",
+    "human_only_paths": [
+      ".ai/TRUST_POLICY.json",
+      ".ai/README.md",
+      ".ai/RESOURCE_POLICY.md",
+      ".ai/SYSTEM.md",
+      ".ai/OPERATIONS.md",
+      ".ai/QUICKSTART.md",
+      ".ai/WORK_SETUP.md",
+      ".ai/protocols/**",
+      ".ai/schema/**",
+      "scripts/ai/**",
+      ".github/workflows/ai-agent-state.yml",
+      ".github/workflows/ai-ci-signal.yml"
+    ],
     "gates": {
       "agent-state": {
         "workflow_path": ".github/workflows/ai-agent-state.yml",
@@ -31,7 +56,12 @@
         "job_name": "build",
         "allowed_conclusions": ["success"],
         "require_workflow_unchanged_from_base": true,
-        "protected_inputs": []
+        "protected_inputs": [
+          "formalization/ueot-core/UEOT.lean",
+          "formalization/ueot-core/lakefile.lean",
+          "formalization/ueot-core/lean-toolchain",
+          "formalization/ueot-core/lake-manifest.json"
+        ]
       }
     },
     "path_rules": [

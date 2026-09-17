@@ -6,27 +6,37 @@ Persistent Agent v3 uses an ordinary ChatGPT conversation with the GitHub connec
 
 Canonical entry point: `/ueot-resume`
 
-Equivalent: recover the active UEOT task from GitHub, reconcile current Issue/PR/base/head/CI/reviews/state, execute exactly one bounded next transition, persist the handoff, and stop.
+Equivalent: recover the active UEOT task from GitHub, reconcile Issue/PR/current `(base, head)`/CI/reviews/state, execute exactly one bounded next transition, persist the handoff, and stop.
 
 ## Startup
 
-1. Read repository governance and candidate runtime docs.
+1. Read repository governance and candidate runtime docs for navigation.
 2. Recover active work from durable Issue -> open PR -> `.ai/tasks/*/STATE.json`.
-3. Reconcile current `main`, PR base/head SHA, complete relevant diff/source and GitHub Actions evidence.
-4. Fetch `.ai/TRUST_POLICY.json` from the PR **base SHA**. Never use candidate HEAD as an authorization root.
-5. If base policy is absent, mark this as bootstrap-human-only: structured review/CI artifacts may inform the human but cannot authorize the candidate.
-6. Derive mandatory CI gates from base policy + actual changed paths. Treat candidate `required_checks` only as a declaration mirror that must include protected job names; it cannot weaken policy.
-7. Authenticate structured review authors from GitHub metadata against the base-policy allowlist.
-8. Select exactly one actionable transition.
+3. Reconcile current `main`, PR base SHA, head SHA, complete relevant diff/source and GitHub Actions evidence.
+4. Fetch `.ai/TRUST_POLICY.json` from the PR **base SHA**. Never use candidate HEAD as the authorization root.
+5. Verify base-policy platform requirements against GitHub branch protection/rulesets. Missing or unverifiable enforcement => human-only.
+6. If base policy is absent, mark bootstrap-human-only.
+7. Derive mandatory gates from base policy + actual changed paths. Candidate `required_checks` cannot weaken them.
+8. If any changed path matches base-policy `human_only_paths`, do not grant automated authorization.
+9. Verify protected workflow/job identity and protected runner-input blobs against base.
+10. Authenticate structured review authors from GitHub metadata against the base-policy allowlist.
+11. Accept a signal/review only when both artifact base SHA and head SHA equal the PR's current `(base, head)`.
+12. Select exactly one actionable transition.
 
 ## Route
 
-- protected CI pending/running -> report `WAITING_CI`; do not poll indefinitely;
+- protected CI pending/running -> `WAITING_CI`; do not poll indefinitely;
 - protected CI failed -> one bounded Builder repair;
-- trusted current-head `CHANGES_REQUESTED` under base policy -> one bounded Builder repair;
-- protected CI green with no valid independent review -> one independent Reviewer pass;
-- authoritative current-head PASS + protected CI green -> human merge gate;
-- bootstrap-human-only, protected trust input changed, unmatched policy path, `BLOCKED`, `DONE`, merged/closed -> no autonomous authorization.
+- authoritative current-pair `CHANGES_REQUESTED` -> one bounded Builder repair;
+- protected CI green with no valid current-pair independent review -> one independent Reviewer pass;
+- authoritative current-pair PASS + protected CI green + verified platform enforcement -> human merge gate;
+- bootstrap-human-only, trust-critical change, changed protected input, unmatched path, unverified platform enforcement, `BLOCKED`, `DONE`, merged/closed -> no autonomous authorization.
+
+## Stale and duplicate handling
+
+The identity of evidence is `(base_sha, head_sha)`, not head SHA alone. If `main` advances or the PR base changes while the head stays the same, old CI signals and reviews are stale. Do not consume them.
+
+Duplicate markers from ordinary commenters are not trusted relay provenance and cannot suppress a later trusted signal.
 
 ## Resource policy
 
