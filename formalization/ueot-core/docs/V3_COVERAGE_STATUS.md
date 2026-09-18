@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **86** |
+| **proved, staged by this ledger checkpoint** | **87** |
 | **partial** | **0** |
-| **pending / not yet counted** | **20** |
+| **pending / not yet counted** | **19** |
 | **total** | **106** |
 
-This branch stages **86/106** after P-QUO-04 completed source-semantic, feature,
+This branch stages **87/106** after P-QUO-05 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main and proof resulting-main gates.
-**86/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**87/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -45,7 +45,7 @@ mathematics or Lean code exists.
 - **Dynamics:** P-DYN-01, P-DYN-02, P-DYN-03, P-DYN-04
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
-- **Quotient:** P-QUO-01, P-QUO-02, P-QUO-03, P-QUO-04
+- **Quotient:** P-QUO-01, P-QUO-02, P-QUO-03, P-QUO-04, P-QUO-05
 - **Control:** P-CTL-01
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
@@ -67,70 +67,61 @@ mathematics or Lean code exists.
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 
-Count check: `85 + P-QUO-04 = 86`.
+Count check: `86 + P-QUO-05 = 87`.
 
-## Newly staged promotion — P-QUO-04
+## Newly staged promotion — P-QUO-05
 
-Frozen Core 3 §20.4 fixes a policy `pi` and bounded reference function `w`,
-defines
+Frozen Core 3 §20.5 uses local state-action model errors
 
-`b_pi = r^pi + beta P^pi w - w`,
+`delta(x,a) = epsilon_r(x,a) + beta * epsilon_p(x,a) * span(Vbar*)`
 
-`d_mu^pi = (1-beta) * sum_{t>=0} beta^t mu(P^pi)^t`,
+and requires the occupancy-weighted quotient-policy regret bound
 
-and requires the exact identities
+`J(pi*;mu) - J(hatpi;mu) <=
+ (E_{d_mu^{pi*}} delta + E_{d_mu^{hatpi}} delta)/(1-beta)`.
 
-`V^pi - w = (I-beta P^pi)^(-1)b_pi`,
+The finite source branch retains the local reward and pushed-forward transition-TV
+errors pointwise in `(x,a)` rather than replacing them by the uniform P-QUO-02
+radius. It sets `w = Vbar* o f`, proves the actionwise reference residual upper
+bound `b(x,a) <= delta(x,a)`, and proves the matching lower bound on every
+designated lifted macro-optimal selector action.
 
-`mu(V^pi-w) = E_{d_mu^pi}[b_pi]/(1-beta)`.
-
-The finite source branch is formalized with stationary randomized policies.
-Their induced reward and kernel are defined exactly, the policy kernel is proved
-stochastic, and the fixed-policy Bellman value is bridged to the repository's
-existing infinite-horizon causal-policy semantics. The linear operator
-`I-beta P^pi` is proved to have a genuine two-sided inverse. Its inverse equals
-the explicitly summable Neumann series `sum_n beta^n (P^pi)^n`.
-
-The discounted state occupancy is defined by the exact frozen geometric series,
-proved nonnegative with total mass one, and satisfies the row fixed point
-
-`d = (1-beta) mu + beta d P^pi`.
-
-The same stationary policy induces state-action occupancy `d(x) pi(a|x)`, with
-nonnegativity, exact state marginal and total mass one. The source expectation
-identity is then proved exactly; no sup-norm residual bound substitutes for the
-frozen equality.
+P-QUO-04's exact discounted state-action occupancy identity is then applied to
+an arbitrary designated true-optimal stationary micro policy `pi*` and to the
+lifted macro-optimal policy `hatpi`. Subtracting the two identities yields the
+source RHS with the two policies' actual occupancies and exactly one division by
+`1-beta`. Tied true or macro optima remain allowed.
 
 Canonical theorem surface:
-- `UEOT.V3.FiniteDiscountedControl.Model.p_quo_04`.
+- `UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05`.
 
 Supporting modules:
 - `UEOT/V3/FiniteDiscountedPolicyResolvent.lean`;
-- `UEOT/V3/FiniteDiscountedOccupancy.lean`.
+- `UEOT/V3/FiniteDiscountedOccupancy.lean`;
+- `UEOT/V3/FiniteDiscountedOccupancyRegret.lean`.
 
 Promotion evidence:
 - frozen source original `UEOT_Core_Mathematics_v3.0_Complete.md` independently re-read from the project File Library and hash-matched to the canonical SHA-256;
-- feature branch `formal/pquo04-resolvent-occupancy-v1`;
-- source-facing feature commit `17a7d44d9d43b592f1aa35ecaeb6b8392707a9d3`;
-- feature `lake build UEOT`: success (`8978` jobs);
-- source-semantic audit: complete against frozen §20.4;
+- source-facing feature commit `66472785c54fc5863554455a6a717009679f11f3`;
+- feature `lake build UEOT`: success (`8979` jobs);
+- independent source-semantic re-audit: PASS against frozen §20.5;
 - prohibited-proof audit: clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms ...Model.p_quo_04`: only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pquo04-main-integration@8e3675e99f0959734d4a20257e90f1ad86a0ad63` from `main@aaea53a70902e138d123ef700a99c372214708d9`;
-- feature and clean-integration tree hashes identical: `7ae9843d1d8060cd0c2141ab6e7b664b47888ab2`;
-- clean integration root CI `35203214739`: success;
-- proof PR #103;
-- proof PR root CI `35203814134`: success;
-- proof main commit `c5cc58e49ef820fb3e9ed7d3555722578f4c4b9c`;
-- proof resulting-main root CI `35205157977`: success.
+- `#print axioms ...LocalApproxControlQuotient.p_quo_05`: only `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pquo05-main-integration@3b647e3f078d7ef94377fe2139ecd9dfd910daeb` from `main@208d9758a90f6c28623b3adac82eb26ea030e5dd`;
+- feature and clean-integration tree hashes identical: `eacc3f3e56faf3b97ebb16250ee1da7ef6ca2218`;
+- clean integration root CI `35219313969`: success;
+- proof PR #105;
+- proof PR root CI `35332002471`: success;
+- proof main commit `7d0f7dae8b6db34994707a3453a4c827a8dfd89e`;
+- proof resulting-main root CI `35332494188`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 85/106
+## Previous FULL-GREEN checkpoint — 86/106
 
-P-QUO-02 and all earlier counted P-IDs form the authoritative 85/106 baseline.
-Its ledger landed at `main@aaea53a70902e138d123ef700a99c372214708d9`
-with ledger resulting-main CI `35165216681` success.
+P-QUO-04 and all earlier counted P-IDs form the authoritative 86/106 baseline.
+Its ledger landed at `main@208d9758a90f6c28623b3adac82eb26ea030e5dd`
+with ledger resulting-main CI `35207737414` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
 CI regression. In particular P-QUO-03 and P-TEL-01 are already counted and must
@@ -138,13 +129,19 @@ not be reopened or double-counted.
 
 ## Next source-first front after this ledger closes
 
-No further theorem lane is opened by this promotion. Frozen §20.5 (P-QUO-05)
-has already been source-audited and depends on the exact state-action occupancy
-semantics established by P-QUO-04, but it remains a separate later lifecycle.
-Other uncounted fronts include P-CTL-02/03, P-PER-02, P-ALI-01,
-P-DDH-02/03/04/05, P-KL-04/05, P-EVO-03/04, P-QSD-01/04 and the remaining
-GOA/control propositions. No weaker finite/toy/assumed-conclusion surrogate may
-be counted.
+No further theorem lane is opened by this promotion. The independent dynamic
+frontier audit recommends P-GOA-01 next, followed by P-GOA-02. Frozen §21.2
+requires only that Cesaro averages for a fixed finite stochastic kernel have a
+convergent subsequence and that every subsequential limit is invariant. Full
+Cesaro convergence and attractivity are not part of the P-GOA-01 anchor and
+must not be substituted for it.
+
+Current main already provides generic finite matrix row action
+`UEOT.V3.QSDPerron.rowApply` / `rowApply_mul` and finite probability-row
+infrastructure. Pinned Mathlib provides compactness of the finite standard
+simplex and `IsCompact.tendsto_subseq`; the missing source bridge is the
+stochastic-row preservation, Cesaro telescope, vanishing boundary term and
+limit-to-invariance argument. P-GOA-01 remains class C, estimated S/M.
 
 P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
 Perron-Frobenius asymptotic package; assumed convergence is not a substitute.
