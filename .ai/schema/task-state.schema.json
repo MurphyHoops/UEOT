@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MurphyHoops/UEOT/.ai/schema/task-state.schema.json",
+  "title": "UEOT persistent agent task state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "task_id", "issue", "objective", "status", "iteration",
+    "max_iterations", "branch", "base_sha", "checkpoint_sha", "open_pr",
+    "required_checks", "latest_ci", "last_event", "retries", "completed",
+    "current_problem", "next_action", "guards", "updated_at"
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "task_id": {"type": "string", "pattern": "^issue-[0-9]+$"},
+    "issue": {"type": "integer", "minimum": 1},
+    "objective": {"type": "string", "minLength": 1, "maxLength": 500},
+    "status": {"enum": ["NEW", "PLANNING", "IMPLEMENTING", "WAITING_CI", "CI_FAILED", "REVIEWING", "CHANGES_REQUESTED", "READY_TO_MERGE", "BLOCKED", "DONE"]},
+    "iteration": {"type": "integer", "minimum": 0},
+    "max_iterations": {"type": "integer", "minimum": 1, "maximum": 100},
+    "branch": {"type": "string", "minLength": 1},
+    "base_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "checkpoint_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "open_pr": {"type": ["integer", "null"], "minimum": 1},
+    "required_checks": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 200}},
+    "latest_ci": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sha", "status", "run_url"],
+      "properties": {
+        "sha": {"type": ["string", "null"], "pattern": "^[0-9a-f]{40}$"},
+        "status": {"enum": ["unknown", "pending", "success", "failure", "cancelled"]},
+        "run_url": {"type": ["string", "null"]}
+      }
+    },
+    "last_event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["key", "type", "sha", "at"],
+      "properties": {
+        "key": {"type": ["string", "null"]},
+        "type": {"type": ["string", "null"]},
+        "sha": {"type": ["string", "null"], "pattern": "^[0-9a-f]{40}$"},
+        "at": {"type": ["string", "null"]}
+      }
+    },
+    "retries": {
+      "type": "object", "additionalProperties": false,
+      "required": ["same_failure_count", "consecutive_ci_failures", "max_same_failure", "max_consecutive_ci_failures", "failure_fingerprint"],
+      "properties": {
+        "same_failure_count": {"type": "integer", "minimum": 0},
+        "consecutive_ci_failures": {"type": "integer", "minimum": 0},
+        "max_same_failure": {"type": "integer", "minimum": 1},
+        "max_consecutive_ci_failures": {"type": "integer", "minimum": 1},
+        "failure_fingerprint": {"type": ["string", "null"], "maxLength": 300}
+      }
+    },
+    "completed": {"type": "array", "items": {"type": "string", "maxLength": 300}, "maxItems": 100},
+    "current_problem": {"type": ["string", "null"], "maxLength": 1000},
+    "next_action": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "guards": {
+      "type": "object", "additionalProperties": false,
+      "required": ["merge_authority", "builder_may_self_approve", "normal_integration_requires_pr", "direct_main_write_allowed"],
+      "properties": {
+        "merge_authority": {"const": "ai-autonomous"},
+        "builder_may_self_approve": {"const": false},
+        "normal_integration_requires_pr": {"const": true},
+        "direct_main_write_allowed": {"const": true}
+      }
+    },
+    "updated_at": {"type": "string", "minLength": 20}
+  }
+}
