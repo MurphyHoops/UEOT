@@ -16,7 +16,7 @@ This file is the **authoritative source-level P-ID ledger** for the frozen
 
 A P-ID is counted `proved` only after frozen-source semantic matching, official
 import reachability, feature/integration/post-main CI gates, prohibited-proof
-audit, safe main integration, and ledger synchronization. Feature-green,
+audit, safe main integration, and the separate ledger lifecycle. Feature-green,
 clean-integration-green, proof-PR-green, or proof-main-green alone never changes
 the FULL-GREEN count.
 
@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **88** |
+| **proved, staged by this ledger checkpoint** | **89** |
 | **partial** | **0** |
-| **pending / not yet counted** | **18** |
+| **pending / not yet counted** | **17** |
 | **total** | **106** |
 
-This branch stages **88/106** after P-GOA-01 completed source-semantic, feature,
-clean-integration, proof-PR, proof-main and proof resulting-main gates.
-**88/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+This branch stages **89/106** after P-GOA-02 completed source-semantic, feature,
+clean-integration, proof-PR, proof-main, and proof resulting-main gates.
+**89/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -66,94 +66,83 @@ mathematics or Lean code exists.
 - **Evolution:** P-EVO-01, P-EVO-02
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
-- **GOA:** P-GOA-01
+- **GOA:** P-GOA-01, P-GOA-02
 
-Count check: `87 + P-GOA-01 = 88`.
+Count check: `88 + P-GOA-02 = 89`.
 
-## Newly staged promotion — P-GOA-01
+## Newly staged promotion — P-GOA-02
 
-Frozen Core 3 §21.2 fixes a finite stochastic kernel `P`, an arbitrary initial
-probability `mu0`, and the positive-N Cesaro averages
+Frozen Core 3 §21.3 uses canonical event-supremum total variation, which on a
+finite space has the standard `1/2 * L1` normalization. For a finite stochastic
+kernel `P`, it defines the literal Dobrushin coefficient
 
-`bar_mu_N = N^(-1) * sum_{t=0}^{N-1} mu0 P^t`.
+`alpha(P) = max_{x,x'} D_TV(P_x, P_x')`
 
-The source-facing claim has exactly two parts:
+and the exact contraction
 
-1. the Cesaro sequence has at least one convergent subsequence;
-2. every convergent subsequential limit `nu` is invariant: `nu P = nu`.
+`D_TV(mu P, nu P) <= alpha(P) D_TV(mu, nu)`.
 
-The formalization uses `Matrix.rowStochastic ℝ S` and `stdSimplex ℝ S`.  It
-packages the exact orbit `mu0 P^t`, defines the source average with `N=n+1`, and
-proves the exact telescope
+When `alpha(P) < 1`, the frozen anchor requires a unique invariant probability.
+For stationary `mu P = mu`, `muhat Phat = muhat`, and uniform same-state row
+error at most `epsilon`, it also requires
 
-`bar_mu_N P - bar_mu_N = (mu0 P^N - mu0)/N`.
+`D_TV(mu, muhat) <= epsilon / (1 - alpha(P))`.
 
-The boundary term tends to zero from the simplex coordinate bounds. Compactness
-of the finite probability simplex yields a convergent subsequence, and continuity
-of the residual plus its global convergence to zero proves invariance for every
-convergent subsequential limit. No irreducibility, aperiodicity, mixing,
-uniqueness, full Cesaro convergence, convergence of `mu0 P^N`, or attractivity
-assumption/conclusion is used as a substitute for the frozen anchor.
+The formalization stays in UEOT's canonical event-supremum TV, defines the
+literal finite maximum over row pairs, proves the exact contraction, obtains
+invariant-law existence from P-GOA-01 and uniqueness from contraction, and
+proves the stationary perturbation bound with the baseline `alpha(P)`.
+It does not assume `alpha(Phat)<1`, irreducibility, aperiodicity, a Doeblin
+condition, a symmetric denominator, or any factor-two renormalization.
 
 Canonical theorem surface:
-- `UEOT.V3.FiniteCesaroInvariant.p_goa_01`.
+- `UEOT.V3.FiniteDobrushin.p_goa_02`.
 
-Supporting modules:
-- `UEOT/V3/FiniteCesaroInvariant.lean`.
+Supporting module:
+- `UEOT/V3/FiniteDobrushin.lean`.
 
 Promotion evidence:
-- frozen source original `UEOT_Core_Mathematics_v3.0_Complete.md` independently re-read from the project File Library and hash-matched to the canonical SHA-256;
-- source-facing feature commit `3920995eb111c01cffcd0c6369182f70bb78e7f3`;
-- feature `lake build UEOT`: success (`8980` jobs);
-- independent source-semantic re-audit: PASS against frozen §21.2;
+- canonical frozen source hash reverified before implementation;
+- source-facing feature commit `e04946d6ef9a9408a5e36aa67fa7a0c0f7cfdf96`;
+- feature root CI `35345265060`: success;
+- full local `lake build UEOT`: success (`8981` jobs);
+- independent source-semantic re-audit: PASS against frozen §21.3;
 - prohibited-proof audit: clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms ...FiniteCesaroInvariant.p_goa_01`: only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pgoa01-main-integration@0f61d3539fae0c72b9465189122f5308b7079621` from `main@f3f7945ddae12ad95eedf3c7e773354456d59564`;
-- feature and clean-integration tree hashes identical: `91af9fcb4901be6719a9ac61cd502a1de11915d1`;
-- clean integration root CI `35340642119`: success;
-- proof PR #107;
-- proof PR root CI `35341218386`: success;
-- proof main commit `85cf2781c78b63b0f69981951eacc86f54015b50`;
-- proof resulting-main root CI `35341843473`: success.
+- `#print axioms ...FiniteDobrushin.p_goa_02`: only `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pgoa02-main-integration@c3a0355e380a6d4e25179515599c2594db65d921` from `main@465796d119483f60eb2c1b296d78870a79f92522`;
+- feature and clean-integration tree hashes identical: `6aeeaab1e2abc61cee27ee8b7d470e0ba0226709`;
+- clean integration root CI `35346669326`: success;
+- proof PR #109 root CI `35347283556`: success;
+- proof main commit `c2e2f56736aa29965a4d964c28c13688d5b237c2`;
+- proof resulting-main root CI `35347998899`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 87/106
+## Previous FULL-GREEN checkpoint — 88/106
 
-P-QUO-05 and all earlier counted P-IDs form the authoritative 87/106 baseline.
-Its ledger landed at `main@f3f7945ddae12ad95eedf3c7e773354456d59564`
-with ledger resulting-main CI `35335445145` success.
+P-GOA-01 and all earlier counted P-IDs form the authoritative 88/106 baseline.
+Its ledger landed at `main@465796d119483f60eb2c1b296d78870a79f92522`
+with ledger resulting-main CI `35343788114` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
 CI regression. In particular P-QUO-03 and P-TEL-01 are already counted and must
 not be reopened or double-counted.
 
-## Next source-first front after this ledger closes
+## Branchless frontier evidence after this ledger closes
 
-No further theorem lane is opened by this promotion. The dynamic frontier now
-recommends P-GOA-02. Frozen §21.3 defines
+No theorem branch is opened by this promotion. Branchless source/API audits
+currently classify the leading uncounted fronts as:
 
-`alpha(P) = max_{x,x'} D_TV(P_x, P_x')`
+- P-DDH-04: Class C, S/M; common two-dimensional differentiable bottleneck
+  implies the vertically stacked environment-response Jacobian has rank at most 2;
+- P-DDH-03: Class C, M; finite exponential-family KL minimization;
+- P-GOA-04: Class C, L; symmetric killed-kernel spectral/Q-process stability;
+- P-GOA-03: Class D, L-XL; requires a new finite transient/recurrent decomposition,
+  absorption-weight, and periodic-safe full Cesaro-mixture stack.
 
-and uses the exact finite-kernel contraction
-
-`D_TV(mu P, nu P) <= alpha(P) D_TV(mu,nu)`.
-
-The main P-GOA-02 anchor requires uniqueness of an invariant probability when
-`alpha(P)<1`, plus the stationary perturbation bound
-
-`D_TV(mu,muhat) <= epsilon/(1-alpha(P))`
-
-under `mu P=mu`, `muhat Phat=muhat`, and row error at most `epsilon`.  The
-denominator uses `alpha(P)`; the later source remark about
-`alpha(Phat) <= alpha(P)+2epsilon` is separate from the main anchor.  Existing
-UEOT TV semantics are event-supremum TV.  The finite Dobrushin layer therefore
-needs an exact finite-row TV algebra bridge preserving the standard `1/2`
-normalization, then the pairwise-row convexity/contraction argument. P-GOA-02
-remains class C, estimated M.
-
-P-EVO-03 specifically requires the full K-PF-01 primitive nonnegative-matrix
-Perron-Frobenius asymptotic package; assumed convergence is not a substitute.
+P-CORE-01 remains hard-blocked by the recurrent-structure branch of P-GOA-03.
+The next proof lane must be selected dynamically only after this 89/106 ledger
+becomes FULL-GREEN.
 
 ## Reproducibility task
 
