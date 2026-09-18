@@ -4,7 +4,7 @@
 > GitHub Issue #56 carries the live cross-chat construction log and overrides
 > stale fallback snapshots.
 
-Last synchronized: **2026-09-17**
+Last synchronized: **2026-09-18**
 
 ## Environment
 
@@ -21,84 +21,85 @@ Last synchronized: **2026-09-17**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **86** |
+| integrated/proof-complete, staged by this checkpoint | **87** |
 | source audit prepared for next lane | **1** |
 | active theorem proof branch | **0** |
 | blocked | **0** |
-| pending/not yet counted after this promotion | **20** |
+| pending/not yet counted after this promotion | **19** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **85/106**.
-P-QUO-04 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **86/106**.
+P-QUO-05 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@c5cc58e49ef820fb3e9ed7d3555722578f4c4b9c`; proof resulting-main root CI
-`35205157977` succeeded.
+`main@7d0f7dae8b6db34994707a3453a4c827a8dfd89e`; proof resulting-main root CI
+`35332494188` succeeded.
 
-This ledger branch stages **86/106**. Do not call 86/106 FULL-GREEN until the
+This ledger branch stages **87/106**. Do not call 87/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-QUO-04
+## Newly staged proof — P-QUO-05
 
-Frozen Core 3 §20.4 requires, for fixed policy `pi` and bounded reference `w`,
+Frozen Core 3 §20.5 uses local state-action model errors
 
-- `b_pi = r^pi + beta P^pi w - w`;
-- `d_mu^pi = (1-beta) * sum_{t>=0} beta^t mu(P^pi)^t`;
-- `V^pi - w = (I-beta P^pi)^(-1)b_pi`;
-- `mu(V^pi-w) = E_{d_mu^pi}[b_pi]/(1-beta)`.
+- `delta(x,a) = epsilon_r(x,a) + beta * epsilon_p(x,a) * span(Vbar*)`;
+- `J(pi*;mu)-J(hatpi;mu) <=
+  (E_{d_mu^{pi*}} delta + E_{d_mu^{hatpi}} delta)/(1-beta)`.
 
 The formalization establishes at source strength on the finite discounted-control
 branch:
 
-1. finite stationary randomized policies, with deterministic selectors embedded;
-2. exact induced reward `r^pi` and stochastic transition kernel `P^pi`;
-3. fixed-policy Bellman contraction and unique `V^pi`;
-4. equality of that `V^pi` with the repository's existing causal infinite-horizon policy value;
-5. the linear residual operator `I-beta P^pi` and a genuine two-sided inverse;
-6. explicit summability of the Neumann series `sum_n beta^n (P^pi)^n b` and equality with the resolvent;
-7. the exact source residual `b_pi` and first resolvent identity;
-8. the exact discounted state occupancy geometric series, nonnegativity and total mass one;
-9. occupancy row fixed point `d=(1-beta)mu+beta dP^pi` and its expectation form;
-10. the exact source occupancy expectation identity;
-11. state-action occupancy `d(x)pi(a|x)` with nonnegativity, state marginal and total mass one.
+1. pointwise local reward and pushed-forward transition-TV errors, with no
+   uniform P-QUO-02 radius added;
+2. `w = Vbar* o f` and the exact local source error `delta(x,a)`;
+3. actionwise residual upper bounds for every micro action;
+4. matching residual lower bounds for any designated macro-optimal selector,
+   including tied macro optima;
+5. arbitrary designated true-optimal stationary micro policies, including ties;
+6. the exact P-QUO-04 discounted state-action occupancy identity for both
+   `pi*` and the lifted `hatpi`;
+7. the frozen two-occupancy regret inequality with exactly one `1/(1-beta)`.
 
 Canonical theorem:
-- `UEOT.V3.FiniteDiscountedControl.Model.p_quo_04`.
+- `UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05`.
 
 Supporting modules:
 - `UEOT.V3.FiniteDiscountedPolicyResolvent`;
-- `UEOT.V3.FiniteDiscountedOccupancy`.
+- `UEOT.V3.FiniteDiscountedOccupancy`;
+- `UEOT.V3.FiniteDiscountedOccupancyRegret`.
 
 Promotion evidence:
 - canonical frozen source hash independently verified against the project File Library original;
-- feature commit `17a7d44d9d43b592f1aa35ecaeb6b8392707a9d3`;
-- feature root target `lake build UEOT`: success (`8978` jobs);
-- source-semantic audit: pass;
+- feature commit `66472785c54fc5863554455a6a717009679f11f3`;
+- feature root target `lake build UEOT`: success (`8979` jobs);
+- independent source-semantic re-audit: pass;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for `Model.p_quo_04`: only standard `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pquo04-main-integration@8e3675e99f0959734d4a20257e90f1ad86a0ad63`;
-- clean integration root CI `35203214739`: success;
-- proof PR #103 root CI `35203814134`: success;
-- proof main `c5cc58e49ef820fb3e9ed7d3555722578f4c4b9c`;
-- proof resulting-main root CI `35205157977`: success.
+- `#print axioms` for `LocalApproxControlQuotient.p_quo_05`: only standard `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pquo05-main-integration@3b647e3f078d7ef94377fe2139ecd9dfd910daeb`;
+- clean integration root CI `35219313969`: success;
+- proof PR #105 root CI `35332002471`: success;
+- proof main `7d0f7dae8b6db34994707a3453a4c827a8dfd89e`;
+- proof resulting-main root CI `35332494188`: success.
 
-## Previous FULL-GREEN checkpoint — 85/106
+## Previous FULL-GREEN checkpoint — 86/106
 
-P-QUO-02 and all earlier counted P-IDs remain closed. The 85/106 ledger landed
-at `main@aaea53a70902e138d123ef700a99c372214708d9` with resulting-main CI
-`35165216681` success.
+P-QUO-04 and all earlier counted P-IDs remain closed. The 86/106 ledger landed
+at `main@208d9758a90f6c28623b3adac82eb26ea030e5dd` with resulting-main CI
+`35207737414` success.
 
 P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
 re-counted merely because older compilation reports predate their promotion.
 
-## Next source-to-main lane after the 86 ledger closes
+## Next source-to-main lane after the 87 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. P-QUO-05 is source-audited
-and depends on the state-action discounted occupancy established by P-QUO-04,
-but remains a separate later proof lifecycle. Other source-strength lanes include
-P-CTL-02/03, P-PER-02, P-ALI-01, P-DDH-02/03/04/05, P-KL-04/05,
-P-EVO-03/04 and P-QSD-01/04. P-EVO-03 requires the full K-PF-01 primitive
-Perron-Frobenius asymptotic package; assumed convergence is forbidden.
+No theorem branch is opened by this ledger lifecycle. The independent frontier
+audit recommends P-GOA-01 next, followed by P-GOA-02. P-GOA-01 must preserve the
+exact finite-kernel Cesaro subsequence/invariance statement of frozen §21.2; it
+must not be replaced by a claim about attractivity or require full Cesaro
+convergence. Existing `QSDPerron.rowApply` / `rowApply_mul`, finite probability
+rows, Mathlib standard-simplex compactness and `IsCompact.tendsto_subseq` provide
+the reusable base. P-CORE-01 remains blocked until the required GOA stability
+layer is established.
 
 ## Mandatory recovery procedure
 
