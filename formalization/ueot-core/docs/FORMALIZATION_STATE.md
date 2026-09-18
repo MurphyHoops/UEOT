@@ -21,84 +21,80 @@ Last synchronized: **2026-09-18**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **87** |
+| integrated/proof-complete, staged by this checkpoint | **88** |
 | source audit prepared for next lane | **1** |
 | active theorem proof branch | **0** |
 | blocked | **0** |
-| pending/not yet counted after this promotion | **19** |
+| pending/not yet counted after this promotion | **18** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **86/106**.
-P-QUO-05 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **87/106**.
+P-GOA-01 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@7d0f7dae8b6db34994707a3453a4c827a8dfd89e`; proof resulting-main root CI
-`35332494188` succeeded.
+`main@85cf2781c78b63b0f69981951eacc86f54015b50`; proof resulting-main root CI
+`35341843473` succeeded.
 
-This ledger branch stages **87/106**. Do not call 87/106 FULL-GREEN until the
+This ledger branch stages **88/106**. Do not call 88/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-QUO-05
+## Newly staged proof — P-GOA-01
 
-Frozen Core 3 §20.5 uses local state-action model errors
+Frozen Core 3 §21.2 fixes a finite stochastic kernel `P`, arbitrary initial
+probability `mu0`, and the exact positive-N Cesaro averages
 
-- `delta(x,a) = epsilon_r(x,a) + beta * epsilon_p(x,a) * span(Vbar*)`;
-- `J(pi*;mu)-J(hatpi;mu) <=
-  (E_{d_mu^{pi*}} delta + E_{d_mu^{hatpi}} delta)/(1-beta)`.
+- `bar_mu_N = N^(-1) * sum_{t=0}^{N-1} mu0 P^t`;
+- at least one convergent subsequence exists;
+- every convergent subsequential limit `nu` satisfies `nu P = nu`.
 
-The formalization establishes at source strength on the finite discounted-control
-branch:
+The formalization establishes at source strength:
 
-1. pointwise local reward and pushed-forward transition-TV errors, with no
-   uniform P-QUO-02 radius added;
-2. `w = Vbar* o f` and the exact local source error `delta(x,a)`;
-3. actionwise residual upper bounds for every micro action;
-4. matching residual lower bounds for any designated macro-optimal selector,
-   including tied macro optima;
-5. arbitrary designated true-optimal stationary micro policies, including ties;
-6. the exact P-QUO-04 discounted state-action occupancy identity for both
-   `pi*` and the lifted `hatpi`;
-7. the frozen two-occupancy regret inequality with exactly one `1/(1-beta)`.
+1. arbitrary finite row-stochastic kernels via `Matrix.rowStochastic ℝ S`;
+2. arbitrary initial laws in `stdSimplex ℝ S`;
+3. exact orbit `mu0 P^t` with stochastic-row preservation;
+4. exact `N=n+1` Cesaro averaging over `t=0,...,N-1`;
+5. the exact telescope `bar_mu_N P - bar_mu_N = (mu0 P^N - mu0)/N`;
+6. boundary-term convergence to zero from simplex coordinate bounds;
+7. compact subsequence extraction and invariance of every convergent
+   subsequential limit by residual continuity.
 
 Canonical theorem:
-- `UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05`.
+- `UEOT.V3.FiniteCesaroInvariant.p_goa_01`.
 
 Supporting modules:
-- `UEOT.V3.FiniteDiscountedPolicyResolvent`;
-- `UEOT.V3.FiniteDiscountedOccupancy`;
-- `UEOT.V3.FiniteDiscountedOccupancyRegret`.
+- `UEOT.V3.FiniteCesaroInvariant`.
 
 Promotion evidence:
 - canonical frozen source hash independently verified against the project File Library original;
-- feature commit `66472785c54fc5863554455a6a717009679f11f3`;
-- feature root target `lake build UEOT`: success (`8979` jobs);
+- feature commit `3920995eb111c01cffcd0c6369182f70bb78e7f3`;
+- feature root target `lake build UEOT`: success (`8980` jobs);
 - independent source-semantic re-audit: pass;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for `LocalApproxControlQuotient.p_quo_05`: only standard `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pquo05-main-integration@3b647e3f078d7ef94377fe2139ecd9dfd910daeb`;
-- clean integration root CI `35219313969`: success;
-- proof PR #105 root CI `35332002471`: success;
-- proof main `7d0f7dae8b6db34994707a3453a4c827a8dfd89e`;
-- proof resulting-main root CI `35332494188`: success.
+- `#print axioms` for `FiniteCesaroInvariant.p_goa_01`: only standard `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pgoa01-main-integration@0f61d3539fae0c72b9465189122f5308b7079621`;
+- feature/integration tree hash `91af9fcb4901be6719a9ac61cd502a1de11915d1`;
+- clean integration root CI `35340642119`: success;
+- proof PR #107 root CI `35341218386`: success;
+- proof main `85cf2781c78b63b0f69981951eacc86f54015b50`;
+- proof resulting-main root CI `35341843473`: success.
 
-## Previous FULL-GREEN checkpoint — 86/106
+## Previous FULL-GREEN checkpoint — 87/106
 
-P-QUO-04 and all earlier counted P-IDs remain closed. The 86/106 ledger landed
-at `main@208d9758a90f6c28623b3adac82eb26ea030e5dd` with resulting-main CI
-`35207737414` success.
+P-QUO-05 and all earlier counted P-IDs remain closed. The 87/106 ledger landed
+at `main@f3f7945ddae12ad95eedf3c7e773354456d59564` with resulting-main CI
+`35335445145` success.
 
 P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
 re-counted merely because older compilation reports predate their promotion.
 
-## Next source-to-main lane after the 87 ledger closes
+## Next source-to-main lane after the 88 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. The independent frontier
-audit recommends P-GOA-01 next, followed by P-GOA-02. P-GOA-01 must preserve the
-exact finite-kernel Cesaro subsequence/invariance statement of frozen §21.2; it
-must not be replaced by a claim about attractivity or require full Cesaro
-convergence. Existing `QSDPerron.rowApply` / `rowApply_mul`, finite probability
-rows, Mathlib standard-simplex compactness and `IsCompact.tendsto_subseq` provide
-the reusable base. P-CORE-01 remains blocked until the required GOA stability
+No theorem branch is opened by this ledger lifecycle. The next recommended lane
+is P-GOA-02. Frozen §21.3 requires the finite Dobrushin coefficient, exact TV
+contraction, uniqueness when `alpha(P)<1`, and the stationary perturbation bound
+`epsilon/(1-alpha(P))`. Existing UEOT event-supremum total variation and finite
+PMF bridges can be reused, but the finite row algebra must preserve the standard
+`1/2` normalization. P-CORE-01 remains blocked until the required GOA stability
 layer is established.
 
 ## Mandatory recovery procedure

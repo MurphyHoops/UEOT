@@ -7,68 +7,67 @@
 ## Current authoritative checkpoint
 
 - frozen source P-IDs: **106**;
-- counted FULL-GREEN before this ledger: **86/106**;
-- this ledger branch stages: **87/106**;
-- pending after successful ledger lifecycle: **19**;
-- proof main: `7d0f7dae8b6db34994707a3453a4c827a8dfd89e`;
-- P-QUO-05 proof PR: **#105**;
-- proof PR root CI: `35332002471` — success;
-- proof resulting-main root CI: `35332494188` — success;
+- counted FULL-GREEN before this ledger: **87/106**;
+- this ledger branch stages: **88/106**;
+- pending after successful ledger lifecycle: **18**;
+- proof main: `85cf2781c78b63b0f69981951eacc86f54015b50`;
+- P-GOA-01 proof PR: **#107**;
+- proof PR root CI: `35341218386` — success;
+- proof resulting-main root CI: `35341843473` — success;
 - canonical source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`;
 - official root target: `lake build UEOT`;
 - active theorem proof lanes while this ledger runs: **0**.
 
-P-QUO-05 is **PROOF-COMPLETE** but is not called COUNTED / 87 FULL-GREEN until
+P-GOA-01 is **PROOF-COMPLETE** but is not called COUNTED / 88 FULL-GREEN until
 this docs-only ledger branch passes branch CI, PR CI, lands on `main`, and the
 resulting-main CI succeeds.
 
-## P-QUO-05 — proof-complete lifecycle
+## P-GOA-01 — proof-complete lifecycle
 
-Frozen §20.5 source obligations retained:
+Frozen §21.2 source obligations retained:
 
-1. local `delta(x,a)=epsilon_r(x,a)+beta*epsilon_p(x,a)*span(Vbar*)`;
-2. pointwise reward and pushed-forward transition-TV error bounds;
-3. a designated true-optimal stationary policy `pi*`;
-4. a designated macro-optimal selector whose lift is `hatpi`;
-5. the two actual discounted state-action occupancies `d_mu^{pi*}` and
-   `d_mu^{hatpi}`;
-6. the exact sum of the two occupancy expectations, divided once by `1-beta`;
-7. no uniform P-QUO-02 radius substitutes for the local source errors.
+1. arbitrary finite stochastic kernel `P`;
+2. arbitrary initial probability `mu0`;
+3. exact positive-N average `N^-1 sum_{t=0}^{N-1} mu0 P^t`;
+4. at least one convergent subsequence;
+5. every convergent subsequential limit invariant;
+6. no irreducibility, aperiodicity, mixing or positivity assumption;
+7. no full Cesaro convergence, uniqueness or attractivity substituted for the anchor.
 
 Canonical theorem:
-- `UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05`.
+- `UEOT.V3.FiniteCesaroInvariant.p_goa_01`.
 
 Proof evidence:
 - frozen source original independently re-read from the project File Library and hash-matched to the canonical SHA-256;
-- source-facing feature commit `66472785c54fc5863554455a6a717009679f11f3`;
-- feature `lake build UEOT`: success (`8979` jobs);
-- local pointwise reward/transition-TV errors and exact `localDelta`;
-- exact discounted state-action occupancy expectations for both policies;
+- source-facing feature commit `3920995eb111c01cffcd0c6369182f70bb78e7f3`;
+- feature `lake build UEOT`: success (`8980` jobs);
+- exact `orbit` / `cesaroRow` source objects and source telescope;
+- compact subsequence extraction + residual continuity proof of every-limit invariance;
 - independent source-semantic re-audit pass;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
 - `#print axioms` only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pquo05-main-integration@3b647e3f078d7ef94377fe2139ecd9dfd910daeb`;
-- clean integration root CI `35219313969` success;
-- proof PR #105 root CI `35332002471` success;
-- proof main `7d0f7dae8b6db34994707a3453a4c827a8dfd89e`;
-- proof resulting-main root CI `35332494188` success.
+- clean integration `formal/pgoa01-main-integration@0f61d3539fae0c72b9465189122f5308b7079621`;
+- feature/integration tree `91af9fcb4901be6719a9ac61cd502a1de11915d1` identical;
+- clean integration root CI `35340642119` success;
+- proof PR #107 root CI `35341218386` success;
+- proof main `85cf2781c78b63b0f69981951eacc86f54015b50`;
+- proof resulting-main root CI `35341843473` success.
 
-## Previous FULL-GREEN checkpoint — 86/106
+## Previous FULL-GREEN checkpoint — 87/106
 
-The P-QUO-04 ledger landed at
-`main@208d9758a90f6c28623b3adac82eb26ea030e5dd` and its resulting-main root CI
-`35207737414` succeeded. P-QUO-01/02/03/04, P-CTL-01, P-TEL-01 and all older
+The P-QUO-05 ledger landed at
+`main@f3f7945ddae12ad95eedf3c7e773354456d59564` and its resulting-main root CI
+`35335445145` succeeded. P-QUO-01/02/03/04/05, P-CTL-01, P-TEL-01 and all older
 counted P-IDs stay closed absent source mismatch or main regression.
 
-## Next theorem lane after the 87 ledger closes
+## Next theorem lane after the 88 ledger closes
 
-No next theorem branch is opened as part of this promotion. Independent
-source/API audit recommends P-GOA-01, then P-GOA-02. P-GOA-01 is class C, S/M:
-use the existing generic finite matrix row action plus finite probability rows,
-Mathlib standard-simplex compactness and `IsCompact.tendsto_subseq`; prove the
-stochastic-row preservation, Cesaro telescope, vanishing boundary term and
-limit-to-invariance bridge. Do not strengthen the source anchor to full Cesaro
-convergence or reinterpret GOA as attractivity.
+No next theorem branch is opened as part of this promotion. P-GOA-02 is the next
+recommended source-first lane. Preserve UEOT's event-supremum TV semantics and
+the standard `1/2` finite normalization; define the finite Dobrushin coefficient,
+prove contraction, invariant-law uniqueness for `alpha(P)<1`, and the exact
+`epsilon/(1-alpha(P))` stationary perturbation bound. The later source remark
+about `alpha(Phat)` is not a substitute for the main P-GOA-02 anchor.
 
 ## Guards
 
@@ -86,10 +85,10 @@ convergence or reinterpret GOA as attractivity.
 
 ## Exact continuation order
 
-1. finish this **87/106 ledger lifecycle**: branch root CI -> ledger PR root CI -> merge -> resulting-main root CI;
-2. only after all four ledger gates succeed, record **87/106 FULL-GREEN** in Issue #56;
-3. retire completed P-QUO-05 ephemeral branches under the safe-deletion guards;
-4. open P-GOA-01 only after the new full-green main is reconciled;
+1. finish this **88/106 ledger lifecycle**: branch root CI -> ledger PR root CI -> merge -> resulting-main root CI;
+2. only after all four ledger gates succeed, record **88/106 FULL-GREEN** in Issue #56;
+3. P-GOA-01 feature/integration branches have already been retired after proof resulting-main success;
+4. open P-GOA-02 only after the new full-green main is reconciled;
 5. repeat the full proof and ledger promotion lifecycle before any further count increment.
 
 ## Recovery order
