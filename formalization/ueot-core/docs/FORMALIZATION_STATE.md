@@ -21,78 +21,78 @@ Last synchronized: **2026-09-21**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **93** |
+| integrated/proof-complete, staged by this checkpoint | **94** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **13** |
+| pending/not yet counted after this promotion | **12** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **92/106**.
-P-GOA-04 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **93/106**.
+P-DDH-05 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@0aa8f233724c04a937a6bd1e35eb7e312cd4ecff`; proof resulting-main root CI
-`35525091956` succeeded.
+`main@34dfa9cdfe48ed05370bbc32f755b41a8f8c0510`; proof resulting-main root CI
+`35528930852` succeeded.
 
-This ledger branch stages **93/106**. Do not call 93/106 FULL-GREEN until the
+This ledger branch stages **94/106**. Do not call 94/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-GOA-04
+## Newly staged proof — P-DDH-05
 
-Frozen Core 3 §21.5 requires finite symmetric nonnegative irreducible
-substochastic killed-kernel spectral stability under a genuine Euclidean
-operator 2-norm perturbation bounded by `eta < g/2`, with exact principal-root
-and squared-principal-law total-variation conclusions.
+Frozen Core 3 §23.5 requires finite rectangular sensitivity-matrix singular-value
+stability under a genuine Euclidean operator 2-norm perturbation, together with
+the exact two-above-threshold conclusion when
+`sigma_3(S) + eta < tau < sigma_2(S) - eta`.
 
-The formalization bridges matrix symmetry to self-adjoint Euclidean operators,
-uses the exact L2 operator norm, proves the principal-root perturbation bound,
-normalizes the squared eigenvector coordinates into PMFs, and derives the
-canonical finite-space total-variation bound
-`2 * sqrt(2) * eta / g`. It adds no Frobenius-norm substitution, hidden
-closeness assumption, rank/positive-definite hypothesis, or identifiability
-strengthening.
+The formalization uses `Matrix.toEuclideanLin` under
+`Matrix.Norms.L2Operator`, proves the all-index zero-padded singular-value
+Lipschitz estimate directly from top/tail singular subspaces and a
+finite-dimensional intersection argument, and translates source one-based
+`sigma_2` / `sigma_3` to Mathlib indices `1` / `2`. It adds no Frobenius
+substitution, assumed Weyl theorem, rank-two/P-DDH-04 premise, singular-vector
+closeness assumption, or hidden dimension strengthening.
 
 Canonical theorem:
-- `UEOT.V3.SymmetricKilledSpectralStability.p_goa_04`.
+- `UEOT.V3.SingularValueEffectiveDimension.p_ddh_05`.
 
 Supporting module:
-- `UEOT.V3.SymmetricKilledSpectralStability`.
+- `UEOT.V3.SingularValueEffectiveDimension`.
 
 Promotion evidence:
 - canonical frozen source hash/source-lock evidence re-audited before commit;
-- feature commit `ffdd703a02fcae801212c4a7a5f641684d940f64`;
-- feature root CI `35523847252`: success;
-- full local `lake build UEOT`: success (`8985` jobs);
+- feature commit `16a954ace676f342872ac5b4e7dd3df993d9c34c`;
+- feature root CI `35527630169`: success;
+- full local `lake build UEOT`: success (`8986` jobs);
 - two independent final source/proof audits: PASS;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for `SymmetricKilledSpectralStability.p_goa_04`: only standard `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pgoa04-main-integration@9b315810c7b5fcdff5f55504806f4c74eab8a079` from `main@cb6e960169994dc88e4a7f37e85f1c063607e3f9`;
-- feature/integration tree hash `e6f0d0328be4e2f1c2d13a5c054e512503011132` identical;
-- clean integration root CI `35524289735`: success;
-- proof PR #117 root CI `35524709704`: success;
-- proof main `0aa8f233724c04a937a6bd1e35eb7e312cd4ecff`;
-- proof resulting-main root CI `35525091956`: success.
+- `#print axioms` for `SingularValueEffectiveDimension.p_ddh_05`: only standard `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pddh05-main-integration@3bbb902bb6c7971026e2aa40a139cfc0eb8eace6` from `main@a96e49711b46feecbd8cff541408fc28e9926832`;
+- feature/integration tree hash `0a5cfca620f6290eca0eac8043594725db0d646a` identical;
+- clean integration root CI `35528080435`: success;
+- proof PR #119 root CI `35528531712`: success;
+- proof main `34dfa9cdfe48ed05370bbc32f755b41a8f8c0510`;
+- proof resulting-main root CI `35528930852`: success.
 
-## Previous FULL-GREEN checkpoint — 92/106
+## Previous FULL-GREEN checkpoint — 93/106
 
-P-DDH-02 and all earlier counted P-IDs remain closed. The 92/106 ledger landed
-at `main@cb6e960169994dc88e4a7f37e85f1c063607e3f9` with resulting-main CI
-`35520947479` success.
+P-GOA-04 and all earlier counted P-IDs remain closed. The 93/106 ledger landed
+at `main@a96e49711b46feecbd8cff541408fc28e9926832` with resulting-main CI
+`35526426358` success.
 
 P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
 re-counted merely because older compilation reports predate their promotion.
 
-## Branchless frontier after the 93 ledger closes
+## Branchless frontier after the 94 ledger closes
 
 No theorem branch is opened by this ledger lifecycle. Current read-only audits
 place the leading uncounted fronts at:
 
-- P-DDH-05: Class D, L; executable direct singular-value/min-max probes are
-  positive, but the indexed operator-norm Lipschitz/Weyl bridge remains;
-- P-GOA-03: Class D, L-XL; recurrent decomposition and full Cesaro-mixture
-  machinery are still missing.
+- P-GOA-03: Class D, L-XL; recurrent decomposition, absorption weights and full
+  periodic-safe Cesaro-mixture machinery are still missing;
+- P-PER-02 / P-QSD-01 remain read-only alternatives, but both need new
+  continuous-time semigroup / occupation-measure infrastructure.
 
 P-CORE-01 remains hard-blocked by P-GOA-03. The next theorem lane must be
-selected dynamically from the exact 93/106 FULL-GREEN main after this ledger
+selected dynamically from the exact 94/106 FULL-GREEN main after this ledger
 finishes, rather than being opened early from this staged branch.
 
 ## Mandatory recovery procedure
