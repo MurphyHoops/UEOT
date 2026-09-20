@@ -4,7 +4,7 @@
 > GitHub Issue #56 carries the live cross-chat construction log and overrides
 > stale fallback snapshots.
 
-Last synchronized: **2026-09-20**
+Last synchronized: **2026-09-21**
 
 ## Environment
 
@@ -21,78 +21,78 @@ Last synchronized: **2026-09-20**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **92** |
+| integrated/proof-complete, staged by this checkpoint | **93** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **14** |
+| pending/not yet counted after this promotion | **13** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **91/106**.
-P-DDH-02 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **92/106**.
+P-GOA-04 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@dabc8da9076b1ab764b5c6f06aed2d32be42ccfc`; proof resulting-main root CI
-`35519437495` succeeded.
+`main@0aa8f233724c04a937a6bd1e35eb7e312cd4ecff`; proof resulting-main root CI
+`35525091956` succeeded.
 
-This ledger branch stages **92/106**. Do not call 92/106 FULL-GREEN until the
+This ledger branch stages **93/106**. Do not call 93/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-DDH-02
+## Newly staged proof — P-GOA-04
 
-Frozen Core 3 §23.3 requires the finite exponential-family log-partition
-gradient/Hessian identities under a finite state space, strictly positive
-baseline PMF, arbitrary prescribed finite-dimensional feature map and arbitrary
-finite parameter, including dimension zero.
+Frozen Core 3 §21.5 requires finite symmetric nonnegative irreducible
+substochastic killed-kernel spectral stability under a genuine Euclidean
+operator 2-norm perturbation bounded by `eta < g/2`, with exact principal-root
+and squared-principal-law total-variation conclusions.
 
-The formalization differentiates the finite partition sum directly, derives the
-log-partition gradient as the normalized tilted feature mean, differentiates the
-gradient dual by the quotient rule, and proves the resulting continuous
-bilinear operator is exactly the tilted covariance. It adds no rank,
-feature-independence, strict-convexity, positive-definite covariance,
-identifiability, unique-parameter, or interior hypothesis.
+The formalization bridges matrix symmetry to self-adjoint Euclidean operators,
+uses the exact L2 operator norm, proves the principal-root perturbation bound,
+normalizes the squared eigenvector coordinates into PMFs, and derives the
+canonical finite-space total-variation bound
+`2 * sqrt(2) * eta / g`. It adds no Frobenius-norm substitution, hidden
+closeness assumption, rank/positive-definite hypothesis, or identifiability
+strengthening.
 
 Canonical theorem:
-- `UEOT.V3.ExponentialFamilyCalculus.p_ddh_02`.
+- `UEOT.V3.SymmetricKilledSpectralStability.p_goa_04`.
 
 Supporting module:
-- `UEOT.V3.ExponentialFamilyCalculus`.
+- `UEOT.V3.SymmetricKilledSpectralStability`.
 
 Promotion evidence:
 - canonical frozen source hash/source-lock evidence re-audited before commit;
-- feature commit `e8ae0d2d1b4c4a44d0c0437b46babf392d72626e`;
-- feature root CI `35518289262`: success;
-- full local `lake build UEOT`: success (`8984` jobs);
+- feature commit `ffdd703a02fcae801212c4a7a5f641684d940f64`;
+- feature root CI `35523847252`: success;
+- full local `lake build UEOT`: success (`8985` jobs);
 - two independent final source/proof audits: PASS;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for `ExponentialFamilyCalculus.p_ddh_02`: only standard `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pddh02-main-integration@de23f78ec8136695a469e05160266d61e14e061b` from `main@8afa467eccd826a44d6251d7b318e9a4b9fd23cd`;
-- feature/integration tree hash `1157210901f7b027cac3b3d1fe9279e1a4c2ada7` identical;
-- clean integration root CI `35518715443`: success;
-- proof PR #115 root CI `35519091198`: success;
-- proof main `dabc8da9076b1ab764b5c6f06aed2d32be42ccfc`;
-- proof resulting-main root CI `35519437495`: success.
+- `#print axioms` for `SymmetricKilledSpectralStability.p_goa_04`: only standard `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pgoa04-main-integration@9b315810c7b5fcdff5f55504806f4c74eab8a079` from `main@cb6e960169994dc88e4a7f37e85f1c063607e3f9`;
+- feature/integration tree hash `e6f0d0328be4e2f1c2d13a5c054e512503011132` identical;
+- clean integration root CI `35524289735`: success;
+- proof PR #117 root CI `35524709704`: success;
+- proof main `0aa8f233724c04a937a6bd1e35eb7e312cd4ecff`;
+- proof resulting-main root CI `35525091956`: success.
 
-## Previous FULL-GREEN checkpoint — 91/106
+## Previous FULL-GREEN checkpoint — 92/106
 
-P-DDH-03 and all earlier counted P-IDs remain closed. The 91/106 ledger landed
-at `main@8afa467eccd826a44d6251d7b318e9a4b9fd23cd` with resulting-main CI
-`35516201948` success.
+P-DDH-02 and all earlier counted P-IDs remain closed. The 92/106 ledger landed
+at `main@cb6e960169994dc88e4a7f37e85f1c063607e3f9` with resulting-main CI
+`35520947479` success.
 
 P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
 re-counted merely because older compilation reports predate their promotion.
 
-## Branchless frontier after the 92 ledger closes
+## Branchless frontier after the 93 ledger closes
 
 No theorem branch is opened by this ledger lifecycle. Current read-only audits
 place the leading uncounted fronts at:
 
-- P-GOA-04: Class C, L; finite spectral infrastructure exists but several
-  source-strength perturbation bridges remain;
-- P-DDH-05: Class D, L after deeper singular-value perturbation audit;
+- P-DDH-05: Class D, L; executable direct singular-value/min-max probes are
+  positive, but the indexed operator-norm Lipschitz/Weyl bridge remains;
 - P-GOA-03: Class D, L-XL; recurrent decomposition and full Cesaro-mixture
   machinery are still missing.
 
 P-CORE-01 remains hard-blocked by P-GOA-03. The next theorem lane must be
-selected dynamically from the exact 92/106 FULL-GREEN main after this ledger
+selected dynamically from the exact 93/106 FULL-GREEN main after this ledger
 finishes, rather than being opened early from this staged branch.
 
 ## Mandatory recovery procedure

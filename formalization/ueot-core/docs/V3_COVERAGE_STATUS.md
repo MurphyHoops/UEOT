@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **92** |
+| **proved, staged by this ledger checkpoint** | **93** |
 | **partial** | **0** |
-| **pending / not yet counted** | **14** |
+| **pending / not yet counted** | **13** |
 | **total** | **106** |
 
-This branch stages **92/106** after P-DDH-02 completed source-semantic, feature,
+This branch stages **93/106** after P-GOA-04 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**92/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**93/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -66,63 +66,66 @@ mathematics or Lean code exists.
 - **Evolution:** P-EVO-01, P-EVO-02
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
-- **GOA:** P-GOA-01, P-GOA-02
+- **GOA:** P-GOA-01, P-GOA-02, P-GOA-04
 
-Count check: `91 + P-DDH-02 = 92`.
+Count check: `92 + P-GOA-04 = 93`.
 
-## Newly staged promotion — P-DDH-02
+## Newly staged promotion — P-GOA-04
 
-Frozen Core 3 §23.3 requires the finite exponential-family log-partition
-calculus on a finite state space with strictly positive baseline law `p0`: for
-arbitrary finite parameter dimension `k`, prescribed feature map `F`, and
-arbitrary parameter `theta`, the gradient of the log partition is the tilted
-feature mean and its Hessian is the tilted covariance.
+Frozen Core 3 §21.5 requires stability of the principal spectral data of a
+finite symmetric nonnegative irreducible substochastic killed kernel under a
+small perturbation in the genuine Euclidean operator 2-norm. For baseline gap
+`g = rho - lambda2 > 0` and perturbation size `eta < g/2`, the principal root
+must move by at most `eta`, while the squared principal-eigenvector laws remain
+close in total variation with the stated `2 * sqrt(2) * eta / g` constant.
 
 The formalization preserves that contract literally:
 
-1. `Γ` is finite and `p0` is strictly positive on every state;
-2. `k : ℕ` is arbitrary, including `k = 0`;
-3. the prescribed feature map `F` and parameter `theta` are arbitrary;
-4. the first Fréchet derivative is exactly the tilted mean;
-5. the derivative of that gradient dual is exactly the tilted covariance
-   bilinear operator.
+1. both kernels are finite, symmetric, nonnegative, irreducible and
+   substochastic;
+2. the principal eigenvectors are positive and unit-normalized;
+3. the baseline second-eigenvalue gap is encoded by the exact Rayleigh bound;
+4. the perturbation hypothesis is the genuine `Matrix.Norms.L2Operator` bound
+   `‖Khat - K‖ ≤ eta < g/2`;
+5. the root perturbation conclusion is exactly `|rhohat - rho| ≤ eta`;
+6. the squared-eigenvector laws use the canonical finite-space total variation
+   distance and satisfy exactly `TV ≤ 2 * sqrt(2) * eta / g`.
 
-No full-rank, feature-independence, strict-convexity, positive-definite
-covariance, identifiability, unique-parameter, or interior assumption is added.
-Constant/redundant features and singular covariance remain allowed.
+No Frobenius-norm substitution, hidden closeness premise, rank/positive-definite
+assumption, identifiability condition, or interior strengthening is added.
 
 Canonical theorem surface:
-- `UEOT.V3.ExponentialFamilyCalculus.p_ddh_02`.
+- `UEOT.V3.SymmetricKilledSpectralStability.p_goa_04`.
 
 Supporting module:
-- `UEOT/V3/ExponentialFamilyCalculus.lean`.
+- `UEOT/V3/SymmetricKilledSpectralStability.lean`.
 
 Promotion evidence:
 - canonical frozen source hash/source-lock evidence re-audited before commit;
-- source-facing feature commit `e8ae0d2d1b4c4a44d0c0437b46babf392d72626e`;
-- feature tree `1157210901f7b027cac3b3d1fe9279e1a4c2ada7`;
-- feature root CI `35518289262`: success;
-- full local `lake build UEOT`: success (`8984` jobs);
+- source-facing feature commit `ffdd703a02fcae801212c4a7a5f641684d940f64`;
+- feature tree `e6f0d0328be4e2f1c2d13a5c054e512503011132`;
+- feature root CI `35523847252`: success;
+- full local `lake build UEOT`: success (`8985` jobs);
 - independent source/proof audits: PASS (two final reviewers);
-- executable audit verified `fderiv` of `logPartition` equals `gradientDual`,
-  `k = 0` instantiates, tilt weights normalize, and `covarianceDual` evaluates
-  to exact `E[FFᵀ] - E[F]E[F]ᵀ`;
+- executable audit verified the symmetry bridges, genuine Euclidean operator
+  norm semantics, squared-law PMF normalization, and exact finite-PMF
+  total-variation conversion;
 - prohibited-proof audit: clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms ...ExponentialFamilyCalculus.p_ddh_02`: only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pddh02-main-integration@de23f78ec8136695a469e05160266d61e14e061b` from `main@8afa467eccd826a44d6251d7b318e9a4b9fd23cd`;
-- feature and clean-integration tree hashes identical: `1157210901f7b027cac3b3d1fe9279e1a4c2ada7`;
-- clean integration root CI `35518715443`: success;
-- proof PR #115 exact-head root CI `35519091198`: success;
-- proof main commit `dabc8da9076b1ab764b5c6f06aed2d32be42ccfc`;
-- proof resulting-main root CI `35519437495`: success.
+- `#print axioms ...SymmetricKilledSpectralStability.p_goa_04`: only `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pgoa04-main-integration@9b315810c7b5fcdff5f55504806f4c74eab8a079` from `main@cb6e960169994dc88e4a7f37e85f1c063607e3f9`;
+- feature and clean-integration tree hashes identical: `e6f0d0328be4e2f1c2d13a5c054e512503011132`;
+- clean integration root CI `35524289735`: success;
+- proof PR #117 exact-head root CI `35524709704`: success;
+- proof main commit `0aa8f233724c04a937a6bd1e35eb7e312cd4ecff`;
+- proof resulting-main root CI `35525091956`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 91/106
+## Previous FULL-GREEN checkpoint — 92/106
 
-P-DDH-03 and all earlier counted P-IDs form the authoritative 91/106 baseline.
-Its ledger landed at `main@8afa467eccd826a44d6251d7b318e9a4b9fd23cd`
-with ledger resulting-main CI `35516201948` success.
+P-DDH-02 and all earlier counted P-IDs form the authoritative 92/106 baseline.
+Its ledger landed at `main@cb6e960169994dc88e4a7f37e85f1c063607e3f9`
+with ledger resulting-main CI `35520947479` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
 CI regression. In particular P-QUO-03 and P-TEL-01 are already counted and must
@@ -133,15 +136,14 @@ not be reopened or double-counted.
 No theorem branch is opened by this promotion. Current source/API audits place
 the leading uncounted fronts at:
 
-- P-GOA-04: Class C, L; finite self-adjoint spectral infrastructure exists, but
-  source-strength gap/Rayleigh/eigenvector/TV perturbation bridges remain;
-- P-DDH-05: Class D, L after deeper audit; pinned Mathlib has singular values
-  but no packaged operator-norm singular-value Lipschitz/Weyl theorem;
+- P-DDH-05: Class D, L; direct singular-value/min-max executable probes are
+  positive, but the indexed operator-norm Lipschitz/Weyl bridge remains to be
+  formalized;
 - P-GOA-03: Class D, L-XL; finite transient/recurrent decomposition,
   absorption weights, and periodic-safe full Cesaro-mixture machinery remain.
 
 P-CORE-01 remains hard-blocked by the recurrent-structure branch of P-GOA-03.
-The next proof lane must be selected dynamically only after this 92/106 ledger
+The next proof lane must be selected dynamically only after this 93/106 ledger
 becomes FULL-GREEN.
 
 ## Reproducibility task
