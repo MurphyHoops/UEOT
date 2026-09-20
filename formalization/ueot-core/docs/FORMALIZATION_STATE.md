@@ -4,7 +4,7 @@
 > GitHub Issue #56 carries the live cross-chat construction log and overrides
 > stale fallback snapshots.
 
-Last synchronized: **2026-09-18**
+Last synchronized: **2026-09-19**
 
 ## Environment
 
@@ -21,90 +21,81 @@ Last synchronized: **2026-09-18**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **89** |
+| integrated/proof-complete, staged by this checkpoint | **90** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **17** |
+| pending/not yet counted after this promotion | **16** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **88/106**.
-P-GOA-02 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **89/106**.
+P-DDH-04 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@c2e2f56736aa29965a4d964c28c13688d5b237c2`; proof resulting-main root CI
-`35347998899` succeeded.
+`main@a0a92b015e4a95b97baa569e44ddbda41b1f3b0b`; proof resulting-main root CI
+`35390116056` succeeded.
 
-This ledger branch stages **89/106**. Do not call 89/106 FULL-GREEN until the
+This ledger branch stages **90/106**. Do not call 90/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-GOA-02
+## Newly staged proof — P-DDH-04
 
-Frozen Core 3 §21.3 uses canonical event-supremum total variation, equal on a
-finite space to the standard `1/2 * L1` normalization.  For a finite stochastic
-kernel `P`, it defines the literal Dobrushin coefficient
+Frozen Core 3 §23.4 requires one common differentiable map into `R^2`, shared
+across all compared environment responses.  At the same budget point, every
+response Jacobian factors through the same `Dz`, so the vertical stack has rank
+at most two.
 
-`alpha(P) = max_{x,x'} D_TV(P_x,P_x')`
-
-and requires:
-
-1. exact TV contraction
-   `D_TV(mu P,nu P) <= alpha(P) D_TV(mu,nu)`;
-2. uniqueness of an invariant probability whenever `alpha(P) < 1`;
-3. for stationary `mu P = mu`, `muhat Phat = muhat`, and uniform same-state
-   row error at most `epsilon`, the perturbation estimate
-   `D_TV(mu,muhat) <= epsilon/(1-alpha(P))`.
-
-The formalization defines the literal finite maximum over row pairs, preserves
-the source TV normalization with no hidden factor two, obtains invariant-law
-existence from P-GOA-01, proves uniqueness by contraction, and proves the
-stationary perturbation bound with the baseline `alpha(P)`.  It does not assume
-`alpha(Phat)<1`, irreducibility, aperiodicity, a Doeblin condition, or a
-symmetric denominator.
+The formalization uses a common `z`, explicit differentiability of `z` at `B`
+and each outer row at `z B`, `ContinuousLinearMap.pi` for the vertical stack,
+the Fréchet chain rule, and the matrix rank bound through a two-column factor.
+It neither stacks different budget points nor substitutes separate rank-two
+conditions for the common bottleneck hypothesis.
 
 Canonical theorem:
-- `UEOT.V3.FiniteDobrushin.p_goa_02`.
+- `UEOT.V3.CommonBottleneckRank.p_ddh_04`.
 
 Supporting module:
-- `UEOT.V3.FiniteDobrushin`.
+- `UEOT.V3.CommonBottleneckRank`.
 
 Promotion evidence:
 - canonical frozen source hash reverified before implementation;
-- feature commit `e04946d6ef9a9408a5e36aa67fa7a0c0f7cfdf96`;
-- feature root CI `35345265060`: success;
-- full local `lake build UEOT`: success (`8981` jobs);
-- independent source-semantic re-audit: PASS against frozen §21.3;
+- feature commit `91a5043899a843fe7a43c43e9aa827700636e461`;
+- feature root CI `35364508901`: success;
+- full local `lake build UEOT`: success (`8982` jobs);
+- independent source-semantic audit: PASS;
+- independent final Lean audit: PASS;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for `FiniteDobrushin.p_goa_02`: only standard `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pgoa02-main-integration@c3a0355e380a6d4e25179515599c2594db65d921` from `main@465796d119483f60eb2c1b296d78870a79f92522`;
-- feature/integration tree hash `6aeeaab1e2abc61cee27ee8b7d470e0ba0226709` identical;
-- clean integration root CI `35346669326`: success;
-- proof PR #109 root CI `35347283556`: success;
-- proof main `c2e2f56736aa29965a4d964c28c13688d5b237c2`;
-- proof resulting-main root CI `35347998899`: success.
+- `#print axioms` for `CommonBottleneckRank.p_ddh_04`: only standard `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pddh04-main-integration@4f9df47cad85da878a528c08f05d64c8665b656d` from `main@aa9c2473849a960a3c25ad35410da68a79c9e164`;
+- feature/integration tree hash `ac5bd0c2f12c89a333c5d56324a1706a0554401a` identical;
+- clean integration root CI `35388778412`: success;
+- proof PR #111 root CI `35389378056`: success;
+- proof main `a0a92b015e4a95b97baa569e44ddbda41b1f3b0b`;
+- proof resulting-main root CI `35390116056`: success.
 
-## Previous FULL-GREEN checkpoint — 88/106
+## Previous FULL-GREEN checkpoint — 89/106
 
-P-GOA-01 and all earlier counted P-IDs remain closed. The 88/106 ledger landed
-at `main@465796d119483f60eb2c1b296d78870a79f92522` with resulting-main CI
-`35343788114` success.
+P-GOA-02 and all earlier counted P-IDs remain closed. The 89/106 ledger landed
+at `main@aa9c2473849a960a3c25ad35410da68a79c9e164` with resulting-main CI
+`35352566122` success.
 
 P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
 re-counted merely because older compilation reports predate their promotion.
 
-## Branchless frontier after the 89 ledger closes
+## Branchless frontier after the 90 ledger closes
 
 No theorem branch is opened by this ledger lifecycle. Current read-only audits
-rank the leading uncounted fronts by implementation risk as follows:
+place the leading uncounted fronts at:
 
-- P-DDH-04: Class C, S/M; common two-dimensional differentiable bottleneck
-  implies stacked environment-response Jacobian rank at most 2;
-- P-DDH-03: Class C, M; finite exponential-family KL minimization;
-- P-GOA-04: Class C, L; symmetric killed-kernel spectral/Q-process stability;
-- P-GOA-03: Class D, L-XL; finite transient/recurrent decomposition, absorption
-  weights, and periodic-safe full Cesaro-mixture machinery are still missing.
+- P-DDH-03: Class C, M; finite exponential-family moment-constrained KL
+  minimization, with a viable `Measure.tilted` / log-likelihood-ratio route;
+- P-DDH-02: Class C, M; finite log-partition gradient and Hessian/covariance;
+- P-GOA-04: Class C, L; finite spectral infrastructure exists but several
+  source-strength perturbation bridges remain;
+- P-DDH-05: Class D, L after deeper singular-value perturbation audit;
+- P-GOA-03: Class D, L-XL; recurrent decomposition and full Cesaro-mixture
+  machinery are still missing.
 
-P-CORE-01 remains hard-blocked by the recurrent-structure branch of P-GOA-03;
-P-GOA-04 is not a hard dependency for that closure.  The next theorem lane must
-be chosen dynamically from the exact 89/106 FULL-GREEN main after this ledger
+P-CORE-01 remains hard-blocked by P-GOA-03. The next theorem lane must be
+selected dynamically from the exact 90/106 FULL-GREEN main after this ledger
 finishes, rather than being opened early from this staged branch.
 
 ## Mandatory recovery procedure

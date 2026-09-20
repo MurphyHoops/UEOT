@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **89** |
+| **proved, staged by this ledger checkpoint** | **90** |
 | **partial** | **0** |
-| **pending / not yet counted** | **17** |
+| **pending / not yet counted** | **16** |
 | **total** | **106** |
 
-This branch stages **89/106** after P-GOA-02 completed source-semantic, feature,
+This branch stages **90/106** after P-DDH-04 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**89/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**90/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -60,7 +60,7 @@ mathematics or Lean code exists.
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 - **Omega / integrity:** P-OMG-01, P-OMG-02
-- **Dual-drive / alignment:** P-DDH-01, P-ALI-02, P-ALI-03
+- **Dual-drive / alignment:** P-DDH-01, P-DDH-04, P-ALI-02, P-ALI-03
 - **Composition:** P-COMP-01, P-COMP-02, P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
 - **KL / path information:** P-KL-01, P-KL-02, P-KL-03
 - **Evolution:** P-EVO-01, P-EVO-02
@@ -68,61 +68,61 @@ mathematics or Lean code exists.
 - **Algorithmic quotient:** P-ALG-01
 - **GOA:** P-GOA-01, P-GOA-02
 
-Count check: `88 + P-GOA-02 = 89`.
+Count check: `89 + P-DDH-04 = 90`.
 
-## Newly staged promotion — P-GOA-02
+## Newly staged promotion — P-DDH-04
 
-Frozen Core 3 §21.3 uses canonical event-supremum total variation, which on a
-finite space has the standard `1/2 * L1` normalization. For a finite stochastic
-kernel `P`, it defines the literal Dobrushin coefficient
+Frozen Core 3 §23.4 assumes one common differentiable two-dimensional
+bottleneck `z(B) ∈ R^2`, shared across every compared environment, with
+`m_e = g_e ∘ z` in the fixed budget coordinates.  At one and the same budget
+point `B`, the source conclusion is that the vertically stacked environment
+response Jacobian has rank at most two.
 
-`alpha(P) = max_{x,x'} D_TV(P_x, P_x')`
+The formalization preserves that contract literally:
 
-and the exact contraction
+1. all compared scalar response rows share the same differentiable
+   `z : Budget k → Latent`, where `Latent = Fin 2 → ℝ`;
+2. every response factors through that same map, `m r x = g r (z x)`;
+3. all derivatives are evaluated at the same budget point `B`;
+4. the stacked derivative factors through one shared `Dz(B)` by the Fréchet
+   chain rule;
+5. matrix rank is bounded by the two-column outer derivative factor.
 
-`D_TV(mu P, nu P) <= alpha(P) D_TV(mu, nu)`.
-
-When `alpha(P) < 1`, the frozen anchor requires a unique invariant probability.
-For stationary `mu P = mu`, `muhat Phat = muhat`, and uniform same-state row
-error at most `epsilon`, it also requires
-
-`D_TV(mu, muhat) <= epsilon / (1 - alpha(P))`.
-
-The formalization stays in UEOT's canonical event-supremum TV, defines the
-literal finite maximum over row pairs, proves the exact contraction, obtains
-invariant-law existence from P-GOA-01 and uniqueness from contraction, and
-proves the stationary perturbation bound with the baseline `alpha(P)`.
-It does not assume `alpha(Phat)<1`, irreducibility, aperiodicity, a Doeblin
-condition, a symmetric denominator, or any factor-two renormalization.
+It does not replace the common bottleneck by separate per-environment rank-two
+assumptions, does not stack different budget points, and does not assume or
+claim exact rank two, injectivity/full rank of `Dz`, a converse, or nonempty
+response families.
 
 Canonical theorem surface:
-- `UEOT.V3.FiniteDobrushin.p_goa_02`.
+- `UEOT.V3.CommonBottleneckRank.p_ddh_04`.
 
 Supporting module:
-- `UEOT/V3/FiniteDobrushin.lean`.
+- `UEOT/V3/CommonBottleneckRank.lean`.
 
 Promotion evidence:
-- canonical frozen source hash reverified before implementation;
-- source-facing feature commit `e04946d6ef9a9408a5e36aa67fa7a0c0f7cfdf96`;
-- feature root CI `35345265060`: success;
-- full local `lake build UEOT`: success (`8981` jobs);
-- independent source-semantic re-audit: PASS against frozen §21.3;
+- canonical frozen source hash independently reverified before implementation;
+- source-facing feature commit `91a5043899a843fe7a43c43e9aa827700636e461`;
+- feature tree `ac5bd0c2f12c89a333c5d56324a1706a0554401a`;
+- feature root CI `35364508901`: success;
+- full local `lake build UEOT`: success (`8982` jobs);
+- independent source-semantic audit: PASS against frozen §23.4;
+- independent final Lean audit: PASS;
 - prohibited-proof audit: clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms ...FiniteDobrushin.p_goa_02`: only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pgoa02-main-integration@c3a0355e380a6d4e25179515599c2594db65d921` from `main@465796d119483f60eb2c1b296d78870a79f92522`;
-- feature and clean-integration tree hashes identical: `6aeeaab1e2abc61cee27ee8b7d470e0ba0226709`;
-- clean integration root CI `35346669326`: success;
-- proof PR #109 root CI `35347283556`: success;
-- proof main commit `c2e2f56736aa29965a4d964c28c13688d5b237c2`;
-- proof resulting-main root CI `35347998899`: success.
+- `#print axioms ...CommonBottleneckRank.p_ddh_04`: only `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pddh04-main-integration@4f9df47cad85da878a528c08f05d64c8665b656d` from `main@aa9c2473849a960a3c25ad35410da68a79c9e164`;
+- feature and clean-integration tree hashes identical: `ac5bd0c2f12c89a333c5d56324a1706a0554401a`;
+- clean integration root CI `35388778412`: success;
+- proof PR #111 exact-head root CI `35389378056`: success;
+- proof main commit `a0a92b015e4a95b97baa569e44ddbda41b1f3b0b`;
+- proof resulting-main root CI `35390116056`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 88/106
+## Previous FULL-GREEN checkpoint — 89/106
 
-P-GOA-01 and all earlier counted P-IDs form the authoritative 88/106 baseline.
-Its ledger landed at `main@465796d119483f60eb2c1b296d78870a79f92522`
-with ledger resulting-main CI `35343788114` success.
+P-GOA-02 and all earlier counted P-IDs form the authoritative 89/106 baseline.
+Its ledger landed at `main@aa9c2473849a960a3c25ad35410da68a79c9e164`
+with ledger resulting-main CI `35352566122` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
 CI regression. In particular P-QUO-03 and P-TEL-01 are already counted and must
@@ -130,18 +130,24 @@ not be reopened or double-counted.
 
 ## Branchless frontier evidence after this ledger closes
 
-No theorem branch is opened by this promotion. Branchless source/API audits
-currently classify the leading uncounted fronts as:
+No theorem branch is opened by this promotion. Current source/API audits place
+the leading uncounted fronts at:
 
-- P-DDH-04: Class C, S/M; common two-dimensional differentiable bottleneck
-  implies the vertically stacked environment-response Jacobian has rank at most 2;
-- P-DDH-03: Class C, M; finite exponential-family KL minimization;
-- P-GOA-04: Class C, L; symmetric killed-kernel spectral/Q-process stability;
-- P-GOA-03: Class D, L-XL; requires a new finite transient/recurrent decomposition,
-  absorption-weight, and periodic-safe full Cesaro-mixture stack.
+- P-DDH-03: Class C, M; finite exponential-family moment-constrained KL
+  minimization.  `Measure.tilted`, log-likelihood-ratio, finite PMF and KL APIs
+  are available; no dependency on P-DDH-02 is required;
+- P-DDH-02: Class C, M; finite log-partition gradient/Hessian = mean/covariance;
+  first-derivative infrastructure is standard, while the Hessian matrix wrapper
+  and second derivative bookkeeping remain the main local bridge;
+- P-GOA-04: Class C, L; finite self-adjoint spectral infrastructure exists, but
+  source-strength gap/Rayleigh/eigenvector/TV perturbation bridges remain;
+- P-DDH-05: Class D, L after deeper audit; pinned Mathlib has singular values
+  but no packaged operator-norm singular-value Lipschitz/Weyl theorem;
+- P-GOA-03: Class D, L-XL; finite transient/recurrent decomposition,
+  absorption weights, and periodic-safe full Cesaro-mixture machinery remain.
 
 P-CORE-01 remains hard-blocked by the recurrent-structure branch of P-GOA-03.
-The next proof lane must be selected dynamically only after this 89/106 ledger
+The next proof lane must be selected dynamically only after this 90/106 ledger
 becomes FULL-GREEN.
 
 ## Reproducibility task
