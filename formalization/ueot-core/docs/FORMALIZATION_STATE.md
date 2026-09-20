@@ -4,7 +4,7 @@
 > GitHub Issue #56 carries the live cross-chat construction log and overrides
 > stale fallback snapshots.
 
-Last synchronized: **2026-09-19**
+Last synchronized: **2026-09-20**
 
 ## Environment
 
@@ -21,73 +21,74 @@ Last synchronized: **2026-09-19**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **90** |
+| integrated/proof-complete, staged by this checkpoint | **91** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **16** |
+| pending/not yet counted after this promotion | **15** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **89/106**.
-P-DDH-04 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **90/106**.
+P-DDH-03 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@a0a92b015e4a95b97baa569e44ddbda41b1f3b0b`; proof resulting-main root CI
-`35390116056` succeeded.
+`main@6e2a179d9fad8293b02b0f47a971f4083eabbeb3`; proof resulting-main root CI
+`35514827747` succeeded.
 
-This ledger branch stages **90/106**. Do not call 90/106 FULL-GREEN until the
+This ledger branch stages **91/106**. Do not call 91/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-DDH-04
+## Newly staged proof — P-DDH-03
 
-Frozen Core 3 §23.4 requires one common differentiable map into `R^2`, shared
-across all compared environment responses.  At the same budget point, every
-response Jacobian factors through the same `Dz`, so the vertical stack has rank
-at most two.
+Frozen Core 3 §23.3 requires a finite state space, strictly positive baseline
+`p0`, a prescribed finite-dimensional feature map and an arbitrary finite
+parameter whose exponential tilt realizes the target moment. That tilt must
+minimize `KL(· || p0)` over every probability law with the same moment, with
+equality only for the tilt itself. The source deliberately makes no claim that
+boundary moment targets have a finite-parameter realization.
 
-The formalization uses a common `z`, explicit differentiability of `z` at `B`
-and each outer row at `z B`, `ContinuousLinearMap.pi` for the vertical stack,
-the Fréchet chain rule, and the matrix rank bound through a two-column factor.
-It neither stacks different budget points nor substitutes separate rank-two
-conditions for the common bottleneck hypothesis.
+The formalization quantifies the competitor directly as an arbitrary probability
+measure, proves full-support absolute continuity, derives the KL Pythagorean
+identity from Mathlib's tilted log-likelihood-ratio identities, and establishes
+all ENNReal finiteness gates before transferring order/equality through
+`toReal`. No rank, feature-independence, strict-convexity, PD-covariance,
+unique-parameter, or interior hypothesis is added.
 
 Canonical theorem:
-- `UEOT.V3.CommonBottleneckRank.p_ddh_04`.
+- `UEOT.V3.ExponentialFamilyIProjection.p_ddh_03`.
 
 Supporting module:
-- `UEOT.V3.CommonBottleneckRank`.
+- `UEOT.V3.ExponentialFamilyIProjection`.
 
 Promotion evidence:
-- canonical frozen source hash reverified before implementation;
-- feature commit `91a5043899a843fe7a43c43e9aa827700636e461`;
-- feature root CI `35364508901`: success;
-- full local `lake build UEOT`: success (`8982` jobs);
-- independent source-semantic audit: PASS;
-- independent final Lean audit: PASS;
+- canonical frozen source hash/source-lock evidence re-audited before commit;
+- feature commit `360f5b941d57a5d0b2edf73924c217034dfd0bcd`;
+- feature root CI `35513672240`: success;
+- full local `lake build UEOT`: success (`8983` jobs);
+- two independent final source/proof audits: PASS;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for `CommonBottleneckRank.p_ddh_04`: only standard `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pddh04-main-integration@4f9df47cad85da878a528c08f05d64c8665b656d` from `main@aa9c2473849a960a3c25ad35410da68a79c9e164`;
-- feature/integration tree hash `ac5bd0c2f12c89a333c5d56324a1706a0554401a` identical;
-- clean integration root CI `35388778412`: success;
-- proof PR #111 root CI `35389378056`: success;
-- proof main `a0a92b015e4a95b97baa569e44ddbda41b1f3b0b`;
-- proof resulting-main root CI `35390116056`: success.
+- `#print axioms` for `ExponentialFamilyIProjection.p_ddh_03`: only standard `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pddh03-main-integration@4bce0870076e740f21e14411b8741493c4d61e84` from `main@22a0b0d68201a18d574c0d841679f511a86994b9`;
+- feature/integration tree hash `1c0278bb9b21501ebb30733ed77f2cb48f3228a0` identical;
+- clean integration root CI `35514069336`: success;
+- proof PR #113 root CI `35514474988`: success;
+- proof main `6e2a179d9fad8293b02b0f47a971f4083eabbeb3`;
+- proof resulting-main root CI `35514827747`: success.
 
-## Previous FULL-GREEN checkpoint — 89/106
+## Previous FULL-GREEN checkpoint — 90/106
 
-P-GOA-02 and all earlier counted P-IDs remain closed. The 89/106 ledger landed
-at `main@aa9c2473849a960a3c25ad35410da68a79c9e164` with resulting-main CI
-`35352566122` success.
+P-DDH-04 and all earlier counted P-IDs remain closed. The 90/106 ledger landed
+at `main@22a0b0d68201a18d574c0d841679f511a86994b9` with resulting-main CI
+`35511293247` success.
 
 P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
 re-counted merely because older compilation reports predate their promotion.
 
-## Branchless frontier after the 90 ledger closes
+## Branchless frontier after the 91 ledger closes
 
 No theorem branch is opened by this ledger lifecycle. Current read-only audits
 place the leading uncounted fronts at:
 
-- P-DDH-03: Class C, M; finite exponential-family moment-constrained KL
-  minimization, with a viable `Measure.tilted` / log-likelihood-ratio route;
-- P-DDH-02: Class C, M; finite log-partition gradient and Hessian/covariance;
+- P-DDH-02: Class C, M / upper-M; finite log-partition gradient and
+  Hessian/covariance, with gradient/raw-Hessian probes already compiling;
 - P-GOA-04: Class C, L; finite spectral infrastructure exists but several
   source-strength perturbation bridges remain;
 - P-DDH-05: Class D, L after deeper singular-value perturbation audit;
@@ -95,7 +96,7 @@ place the leading uncounted fronts at:
   machinery are still missing.
 
 P-CORE-01 remains hard-blocked by P-GOA-03. The next theorem lane must be
-selected dynamically from the exact 90/106 FULL-GREEN main after this ledger
+selected dynamically from the exact 91/106 FULL-GREEN main after this ledger
 finishes, rather than being opened early from this staged branch.
 
 ## Mandatory recovery procedure
