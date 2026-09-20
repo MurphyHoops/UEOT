@@ -68,3 +68,4 @@ import UEOT.V3.ExponentialFamilyIProjection
 import UEOT.V3.ExponentialFamilyCalculus
 import UEOT.V3.SymmetricKilledSpectralStability
 import UEOT.V3.SingularValueEffectiveDimension
+import UEOT.V3.FiniteRecurrentDecompositionStability
