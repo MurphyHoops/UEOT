@@ -21,79 +21,88 @@ Last synchronized: **2026-09-21**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **94** |
+| integrated/proof-complete, staged by this checkpoint | **95** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **12** |
+| pending/not yet counted after this promotion | **11** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **93/106**.
-P-DDH-05 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **94/106**.
+P-GOA-03 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@34dfa9cdfe48ed05370bbc32f755b41a8f8c0510`; proof resulting-main root CI
-`35528930852` succeeded.
+`main@6f9173ee290e01838e4746faba6429928399b98c`; proof resulting-main root CI
+`35536908530` succeeded.
 
-This ledger branch stages **94/106**. Do not call 94/106 FULL-GREEN until the
+This ledger branch stages **95/106**. Do not call 95/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-DDH-05
+## Newly staged proof — P-GOA-03
 
-Frozen Core 3 §23.5 requires finite rectangular sensitivity-matrix singular-value
-stability under a genuine Euclidean operator 2-norm perturbation, together with
-the exact two-above-threshold conclusion when
-`sigma_3(S) + eta < tau < sigma_2(S) - eta`.
+Frozen Core 3 §21.4 requires finite recurrent-decomposition stability when the
+transient set and recurrent-class partition are unchanged. With
+`N=(I-Q)⁻¹`, `H=NR`, `‖Qhat-Q‖∞≤epsQ`, `‖Rhat-R‖∞≤epsR` and
+`‖N‖∞ epsQ<1`, the source requires the exact rational `B_H` bound and the
+same-initial-state Cesaro-limit TV estimate with coefficient `1/2` and
+perturbed recurrent-class weights.
 
-The formalization uses `Matrix.toEuclideanLin` under
-`Matrix.Norms.L2Operator`, proves the all-index zero-padded singular-value
-Lipschitz estimate directly from top/tail singular subspaces and a
-finite-dimensional intersection argument, and translates source one-based
-`sigma_2` / `sigma_3` to Mathlib indices `1` / `2`. It adds no Frobenius
-substitution, assumed Weyl theorem, rank-two/P-DDH-04 premise, singular-vector
-closeness assumption, or hidden dimension strengthening.
+The formalization ties `Q` and `R` to two actual finite stochastic kernels
+on one common `T ⊕ R` state space and one literal shared recurrent partition.
+It derives class-law positivity and stationary proportionality from recurrent
+class communication, proves periodic-safe full Cesaro convergence from
+P-GOA-01 plus harmonic absorption potentials and class-law uniqueness, handles
+the empty-transient-set case, and preserves the exact `B_H`, `1/2`, and
+perturbed-weight orientation. It adds no arbitrary-mixture surrogate,
+aperiodicity assumption, changed recurrent support, or primitive
+stationary-class conclusion.
 
 Canonical theorem:
-- `UEOT.V3.SingularValueEffectiveDimension.p_ddh_05`.
+- `UEOT.V3.FiniteRecurrentDecompositionStability.p_goa_03`.
 
 Supporting module:
-- `UEOT.V3.SingularValueEffectiveDimension`.
+- `UEOT.V3.FiniteRecurrentDecompositionStability`.
 
 Promotion evidence:
 - canonical frozen source hash/source-lock evidence re-audited before commit;
-- feature commit `16a954ace676f342872ac5b4e7dd3df993d9c34c`;
-- feature root CI `35527630169`: success;
-- full local `lake build UEOT`: success (`8986` jobs);
+- feature commits `8cd02864498ff369b59e9e4b1913082558bd2820` and
+  `c1ff6baecdaa7c56a8ade42fbffaeeddf42ec909`;
+- final feature root CI `35535448015`: success;
+- full local `lake build UEOT`: success (`8987` jobs);
 - two independent final source/proof audits: PASS;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for `SingularValueEffectiveDimension.p_ddh_05`: only standard `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pddh05-main-integration@3bbb902bb6c7971026e2aa40a139cfc0eb8eace6` from `main@a96e49711b46feecbd8cff541408fc28e9926832`;
-- feature/integration tree hash `0a5cfca620f6290eca0eac8043594725db0d646a` identical;
-- clean integration root CI `35528080435`: success;
-- proof PR #119 root CI `35528531712`: success;
-- proof main `34dfa9cdfe48ed05370bbc32f755b41a8f8c0510`;
-- proof resulting-main root CI `35528930852`: success.
+- `#print axioms` for
+  `FiniteRecurrentDecompositionStability.p_goa_03`: only standard `propext`,
+  `Classical.choice`, `Quot.sound`;
+- clean integration
+  `formal/pgoa03-main-integration@4d518420cd93e4130a1cd59ceccf888dc9638b6c`
+  from `main@cf8aaa8b91b3096cd05d60ad148ada14cc773924`;
+- feature/integration tree hash
+  `3c956eadc54fd67a0784af9d46d21ecb88acd764` identical;
+- clean integration root CI `35536081037`: success;
+- proof PR #121 root CI `35536497250`: success;
+- proof main `6f9173ee290e01838e4746faba6429928399b98c`;
+- proof resulting-main root CI `35536908530`: success.
 
-## Previous FULL-GREEN checkpoint — 93/106
+## Previous FULL-GREEN checkpoint — 94/106
 
-P-GOA-04 and all earlier counted P-IDs remain closed. The 93/106 ledger landed
-at `main@a96e49711b46feecbd8cff541408fc28e9926832` with resulting-main CI
-`35526426358` success.
+P-DDH-05 and all earlier counted P-IDs remain closed. The 94/106 ledger landed
+at `main@cf8aaa8b91b3096cd05d60ad148ada14cc773924` with resulting-main CI
+`35530223703` success.
 
 P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
 re-counted merely because older compilation reports predate their promotion.
 
-## Branchless frontier after the 94 ledger closes
+## Branchless frontier after the 95 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. Current read-only audits
-place the leading uncounted fronts at:
+No theorem branch is opened by this ledger lifecycle. P-GOA-03 has discharged
+the recurrent-structure blocker that previously prevented a source-faithful
+P-CORE-01 attempt, so P-CORE-01 returns to the read-only frontier for an exact
+95/106-main source/dependency re-audit. P-PER-02 / P-QSD-01 remain read-only
+alternatives requiring new continuous-time semigroup / occupation-measure
+infrastructure.
 
-- P-GOA-03: Class D, L-XL; recurrent decomposition, absorption weights and full
-  periodic-safe Cesaro-mixture machinery are still missing;
-- P-PER-02 / P-QSD-01 remain read-only alternatives, but both need new
-  continuous-time semigroup / occupation-measure infrastructure.
-
-P-CORE-01 remains hard-blocked by P-GOA-03. The next theorem lane must be
-selected dynamically from the exact 94/106 FULL-GREEN main after this ledger
-finishes, rather than being opened early from this staged branch.
+The next theorem lane must be selected dynamically from the exact 95/106
+FULL-GREEN main after this ledger finishes, rather than being opened early from
+this staged branch.
 
 ## Mandatory recovery procedure
 
