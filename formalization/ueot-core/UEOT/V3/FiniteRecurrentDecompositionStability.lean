@@ -35,9 +35,9 @@ open scoped BigOperators Matrix.Norms.Operator
 
 universe uT uC uS
 
-variable {T : Type uT} [Fintype T] [DecidableEq T] [Nonempty T]
+variable {T : Type uT} [Fintype T] [DecidableEq T]
 
-open MeasureTheory
+open MeasureTheory Filter Topology
 
 /-- Probability mixture over a finite family of recurrent-class laws.  In the
 finite recurrent decomposition this is the Cesàro limit obtained by weighting
@@ -265,7 +265,8 @@ lemma recurrentMixture_tv_le
   linarith
 
 /-- Neumann-series bound in the exact maximum absolute row-sum matrix norm. -/
-lemma norm_inverse_one_sub_le (E : Matrix T T ℝ) (hE : ‖E‖ < 1) :
+lemma norm_inverse_one_sub_le [Nonempty T]
+    (E : Matrix T T ℝ) (hE : ‖E‖ < 1) :
     ‖Ring.inverse (1 - E)‖ ≤ (1 - ‖E‖)⁻¹ := by
   rw [NormedRing.inverse_one_sub E hE]
   change ‖∑' k : ℕ, E ^ k‖ ≤ (1 - ‖E‖)⁻¹
@@ -288,6 +289,7 @@ lemma norm_inverse_one_sub_le (E : Matrix T T ℝ) (hE : ‖E‖ < 1) :
 separate matrix-inverse convention.  The returned matrix is a two-sided inverse
 of `I-Qhat` and satisfies both source Neumann bounds. -/
 lemma perturbed_resolvent
+    [Nonempty T]
     (Q Qhat N : Matrix T T ℝ) (epsQ : ℝ)
     (hNl : N * (1 - Q) = 1) (hNr : (1 - Q) * N = 1)
     (hQ : ‖Qhat - Q‖ ≤ epsQ)
@@ -403,6 +405,7 @@ Here `R` is the direct-entry probability matrix into the recurrent classes,
 matrix and `Hhat`.  The conclusion has exactly the source numerator and
 denominator. -/
 lemma absorption_matrix_bound
+    [Nonempty T]
     {C : Type uC} [Fintype C]
     (Q Qhat N : Matrix T T ℝ)
     (R Rhat : Matrix T C ℝ)
@@ -463,6 +466,7 @@ lemma absorption_matrix_bound
 /-- The Neumann-constructed perturbed inverse is the unique inverse already
 present in a valid perturbed recurrent decomposition. -/
 lemma perturbed_resolvent_eq_existing
+    [Nonempty T]
     (Q Qhat N Nhat : Matrix T T ℝ) (epsQ : ℝ)
     (hNl : N * (1 - Q) = 1) (hNr : (1 - Q) * N = 1)
     (hNhatl : Nhat * (1 - Qhat) = 1)
@@ -489,6 +493,7 @@ lemma perturbed_resolvent_eq_existing
 /-- The frozen absorption-matrix bound for an already specified perturbed
 fundamental matrix `Nhat=(I-Qhat)⁻¹`. -/
 lemma absorption_matrix_bound_of_inverses
+    [Nonempty T]
     {C : Type uC} [Fintype C]
     (Q Qhat N Nhat : Matrix T T ℝ)
     (R Rhat : Matrix T C ℝ)
@@ -605,33 +610,659 @@ noncomputable def recurrentClassVertex
   classical
   exact ⟨Pi.single c 1, single_mem_stdSimplex ℝ c⟩
 
-/-- Absorption weights induced by an arbitrary common initial state.  A
-transient start uses the corresponding row of `H`; a start already in recurrent
-class `c` has the unchanged unit weight on `c`. -/
-noncomputable def initialAbsorptionWeights
-    {C : Type uC} [Fintype C]
-    (D : RecurrentBlockDecomposition T C) (x0 : T ⊕ C) : stdSimplex ℝ C :=
+@[simp] lemma recurrentClassVertex_apply
+    {C : Type uC} [Fintype C] [DecidableEq C] (c d : C) :
+    (recurrentClassVertex c).1 d = if c = d then 1 else 0 := by
+  classical
+  by_cases hcd : c = d
+  · subst d
+    simp [recurrentClassVertex, Pi.single_apply]
+  · simp [recurrentClassVertex, Pi.single_apply, hcd]
+
+/-- A fixed recurrent partition of the nontransient state type `R`.  Baseline
+and perturbed chains in P-GOA-03 share one value of this structure, so the
+transient set and every recurrent-class carrier are literally unchanged. -/
+structure RecurrentPartition (R : Type uS) (C : Type uC) where
+  classOf : R → C
+  class_nonempty : ∀ c, ∃ r, classOf r = c
+
+abbrev FullState (T : Type uT) (R : Type uS) := T ⊕ R
+
+/-- Class mass of a law on the canonical transient/recurrent sum state space. -/
+noncomputable def recurrentClassMass
+    {R : Type uS} {C : Type uC} [Fintype R] [Fintype C] [DecidableEq C]
+    (K : RecurrentPartition R C)
+    (mu : stdSimplex ℝ (FullState T R)) (c : C) : ℝ :=
+  ∑ r, if K.classOf r = c then mu.1 (Sum.inr r) else 0
+
+/-- Restriction of a full-state law to one recurrent class, kept as a
+non-normalized vector. -/
+noncomputable def recurrentClassRestriction
+    {R : Type uS} {C : Type uC} [Fintype R] [Fintype C] [DecidableEq C]
+    (K : RecurrentPartition R C)
+    (mu : stdSimplex ℝ (FullState T R)) (c : C) : FullState T R → ℝ
+  | Sum.inl _ => 0
+  | Sum.inr r => if K.classOf r = c then mu.1 (Sum.inr r) else 0
+
+/-- The source absorption potential of class `c`: on transient states it is the
+corresponding row of `H=NR`, and on recurrent states it is the class indicator. -/
+noncomputable def absorptionPotential
+    {R : Type uS} {C : Type uC} [Fintype R] [Fintype C] [DecidableEq C]
+    (K : RecurrentPartition R C)
+    (D : RecurrentBlockDecomposition T C) (c : C) : FullState T R → ℝ
+  | Sum.inl i => D.H i c
+  | Sum.inr r => if K.classOf r = c then 1 else 0
+
+/-- Actual same-initial-state class weights.  Transient starts use the row of
+`H`; recurrent starts use the vertex of their (fixed) recurrent class. -/
+noncomputable def initialClassWeights
+    {R : Type uS} {C : Type uC} [Fintype R] [Fintype C]
+    (K : RecurrentPartition R C)
+    (D : RecurrentBlockDecomposition T C) (x0 : FullState T R) : stdSimplex ℝ C :=
   match x0 with
   | Sum.inl i => D.absorptionWeights i
-  | Sum.inr c => recurrentClassVertex c
+  | Sum.inr r => recurrentClassVertex (K.classOf r)
 
-/-- Shared recurrent-class supports.  P-GOA-03 uses one value of this structure
-for both the baseline and perturbed class laws, so a perturbation that changes a
-recurrent support is not representable by the theorem interface. -/
-structure RecurrentClassSupports
-    (C : Type uC) (S : Type uS) where
-  carrier : C → Set S
-  nonempty : ∀ j, (carrier j).Nonempty
-  disjoint : ∀ {j k}, j ≠ k → Disjoint (carrier j) (carrier k)
+@[simp] lemma initialClassWeights_apply
+    {R : Type uS} {C : Type uC} [Fintype R] [Fintype C] [DecidableEq C]
+    (K : RecurrentPartition R C)
+    (D : RecurrentBlockDecomposition T C) (x0 : FullState T R) (c : C) :
+    (initialClassWeights K D x0).1 c = absorptionPotential K D c x0 := by
+  classical
+  cases x0 with
+  | inl i => rfl
+  | inr r =>
+      simpa [initialClassWeights, absorptionPotential] using
+        (recurrentClassVertex_apply (K.classOf r) c)
 
-/-- A family of probability laws carried by one fixed family of recurrent
-classes.  In P-GOA-03 these are the within-class invariant laws supplied by the
-finite recurrent decomposition. -/
-structure RecurrentClassLaws
-    {C : Type uC} {S : Type uS} [Fintype S]
-    (K : RecurrentClassSupports C S) where
-  law : C → stdSimplex ℝ S
-  supported : ∀ j s, (law j).1 s ≠ 0 → s ∈ K.carrier j
+/-- A source-semantic finite recurrent decomposition for an actual stochastic
+kernel on one state space.  The recurrent-class partition `K` is external and
+shared by baseline and perturbation.  `Q` and `R` are tied to the actual kernel;
+recurrent rows cannot leave their class; and `classLaw` is the actual classwise
+invariant law with exact carrier.
+
+`class_communicates` is the actual full-kernel irreducibility condition inside
+each closed recurrent class.  Strict positivity and uniqueness of the class
+invariant laws, the stationary class formula, and the full periodic-safe Cesàro
+limit are all derived below; none is a primitive theorem hypothesis. -/
+structure FiniteRecurrentDecomposition
+    {R : Type uS} {C : Type uC}
+    [Fintype R] [Fintype C] [DecidableEq R] [DecidableEq C]
+    (K : RecurrentPartition R C) where
+  P : Matrix (FullState T R) (FullState T R) ℝ
+  stochastic : P ∈ Matrix.rowStochastic ℝ (FullState T R)
+  block : RecurrentBlockDecomposition T C
+  q_link : ∀ i j, block.Q i j = P (Sum.inl i) (Sum.inl j)
+  r_link : ∀ i c,
+    block.R i c = ∑ r, P (Sum.inl i) (Sum.inr r) * if K.classOf r = c then 1 else 0
+  recurrent_to_transient_zero : ∀ r j, P (Sum.inr r) (Sum.inl j) = 0
+  recurrent_cross_zero : ∀ r s, K.classOf r ≠ K.classOf s →
+    P (Sum.inr r) (Sum.inr s) = 0
+  classLaw : C → stdSimplex ℝ (FullState T R)
+  classLaw_transient_zero : ∀ c i, (classLaw c).1 (Sum.inl i) = 0
+  classLaw_other_zero : ∀ c r, K.classOf r ≠ c → (classLaw c).1 (Sum.inr r) = 0
+  classLaw_invariant : ∀ c, Matrix.vecMul (classLaw c).1 P = (classLaw c).1
+  class_communicates : ∀ c r s,
+    K.classOf r = c → K.classOf s = c →
+    ∃ n > 0, 0 < (P ^ n) (Sum.inr r) (Sum.inr s)
+
+namespace FiniteRecurrentDecomposition
+
+variable {T : Type uT} [Fintype T] [DecidableEq T]
+variable {R : Type uS} {C : Type uC}
+  [Fintype R] [Fintype C] [DecidableEq R] [DecidableEq C]
+  {K : RecurrentPartition R C}
+
+/-- Audit-facing extensional form of `q_link`: the stored transient block is
+exactly the restriction of the actual kernel to transient states. -/
+lemma block_Q_eq_kernelRestriction
+    (M : FiniteRecurrentDecomposition (T := T) K) :
+    M.block.Q = fun i j => M.P (Sum.inl i) (Sum.inl j) := by
+  ext i j
+  exact M.q_link i j
+
+/-- Audit-facing extensional form of `r_link`: the stored direct-entry block is
+exactly the actual one-step probability of entering each recurrent class. -/
+lemma block_R_eq_directClassEntry
+    (M : FiniteRecurrentDecomposition (T := T) K) :
+    M.block.R = fun i c =>
+      ∑ r, M.P (Sum.inl i) (Sum.inr r) * if K.classOf r = c then 1 else 0 := by
+  ext i c
+  exact M.r_link i c
+
+/-- The block identity `H = QH + R`, derived from `H=NR` and `(I-Q)N=I`. -/
+lemma H_eq_QH_add_R (M : FiniteRecurrentDecomposition (T := T) K) :
+    M.block.H = M.block.Q * M.block.H + M.block.R := by
+  have hres : (1 - M.block.Q) * M.block.H = M.block.R := by
+    calc
+      (1 - M.block.Q) * M.block.H =
+          ((1 - M.block.Q) * M.block.N) * M.block.R := by
+        rw [RecurrentBlockDecomposition.H, Matrix.mul_assoc]
+      _ = (1 : Matrix T T ℝ) * M.block.R := by rw [M.block.inverse_right]
+      _ = M.block.R := Matrix.one_mul _
+  have hsub : M.block.H - M.block.Q * M.block.H = M.block.R := by
+    simpa only [Matrix.sub_mul, Matrix.one_mul] using hres
+  apply Matrix.ext
+  intro i c
+  have hic := congrFun (congrFun hsub i) c
+  simp only [Matrix.sub_apply, Matrix.add_apply] at hic ⊢
+  linarith
+
+/-- The source absorption potential is harmonic for the actual full kernel. -/
+lemma absorptionPotential_harmonic
+    (M : FiniteRecurrentDecomposition (T := T) K) (c : C) :
+    Matrix.mulVec
+        (M.P : Matrix (FullState T R) (FullState T R) ℝ)
+        (absorptionPotential (T := T) K M.block c) =
+      absorptionPotential (T := T) K M.block c := by
+  classical
+  funext x
+  cases x with
+  | inl i =>
+      rw [Matrix.mulVec, dotProduct, Fintype.sum_sum_type]
+      simp only [absorptionPotential]
+      have hH := congrFun (congrFun
+        (H_eq_QH_add_R (R := R) (C := C) (K := K) M) i) c
+      simp only [Matrix.add_apply, Matrix.mul_apply] at hH
+      calc
+        (∑ j, M.P (Sum.inl i) (Sum.inl j) * M.block.H j c) +
+            ∑ r, M.P (Sum.inl i) (Sum.inr r) *
+              (if K.classOf r = c then 1 else 0) =
+          (∑ j, M.block.Q i j * M.block.H j c) + M.block.R i c := by
+            congr 1
+            · apply Finset.sum_congr rfl
+              intro j _
+              rw [M.q_link i j]
+            · rw [M.r_link i c]
+        _ = M.block.H i c := hH.symm
+  | inr r =>
+      rw [Matrix.mulVec, dotProduct, Fintype.sum_sum_type]
+      simp only [absorptionPotential]
+      have hrow := Matrix.sum_row_of_mem_rowStochastic M.stochastic (Sum.inr r)
+      rw [Fintype.sum_sum_type] at hrow
+      have htrans : (∑ j, M.P (Sum.inr r) (Sum.inl j)) = 0 := by
+        apply Finset.sum_eq_zero
+        intro j _
+        exact M.recurrent_to_transient_zero r j
+      rw [htrans, zero_add] at hrow
+      have htransH :
+          (∑ j, M.P (Sum.inr r) (Sum.inl j) * M.block.H j c) = 0 := by
+        apply Finset.sum_eq_zero
+        intro j _
+        rw [M.recurrent_to_transient_zero r j, zero_mul]
+      rw [htransH, zero_add]
+      by_cases hrc : K.classOf r = c
+      · rw [if_pos hrc]
+        have hsame :
+            (∑ s, M.P (Sum.inr r) (Sum.inr s) *
+              (if K.classOf s = c then 1 else 0)) =
+              ∑ s, M.P (Sum.inr r) (Sum.inr s) := by
+          apply Finset.sum_congr rfl
+          intro s _
+          by_cases hsc : K.classOf s = c
+          · simp [hsc]
+          · have hrs : K.classOf r ≠ K.classOf s := by
+              intro hrs
+              apply hsc
+              calc
+                K.classOf s = K.classOf r := hrs.symm
+                _ = c := hrc
+            rw [M.recurrent_cross_zero r s hrs]
+            simp [hsc]
+        rw [hsame, hrow]
+      · rw [if_neg hrc]
+        apply Finset.sum_eq_zero
+        intro s _
+        by_cases hsc : K.classOf s = c
+        · have hrs : K.classOf r ≠ K.classOf s := by
+            intro hrs
+            apply hrc
+            calc
+              K.classOf r = K.classOf s := hrs
+              _ = c := hsc
+          rw [M.recurrent_cross_zero r s hrs]
+          simp [hsc]
+        · simp [hsc]
+
+/-- Any invariant law of the full chain has zero transient mass.  This is the
+finite recurrent-decomposition fact encoded by invertibility of `I-Q`. -/
+lemma invariant_transient_zero
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (mu : stdSimplex ℝ (FullState T R))
+    (hinv : Matrix.vecMul mu.1 M.P = mu.1) :
+    ∀ i, mu.1 (Sum.inl i) = 0 := by
+  classical
+  let v : T → ℝ := fun i => mu.1 (Sum.inl i)
+  have hvQ : Matrix.vecMul v M.block.Q = v := by
+    funext j
+    have hj := congrFun hinv (Sum.inl j)
+    rw [Matrix.vecMul, dotProduct, Fintype.sum_sum_type] at hj
+    simp only [v]
+    have hrec : (∑ r, mu.1 (Sum.inr r) * M.P (Sum.inr r) (Sum.inl j)) = 0 := by
+      apply Finset.sum_eq_zero
+      intro r _
+      rw [M.recurrent_to_transient_zero r j, mul_zero]
+    rw [hrec, add_zero] at hj
+    simpa only [Matrix.vecMul, dotProduct, ← M.q_link] using hj
+  have hzero : Matrix.vecMul v (1 - M.block.Q) = 0 := by
+    rw [Matrix.vecMul_sub, Matrix.vecMul_one, hvQ, sub_self]
+  have hv : v = 0 := by
+    calc
+      v = Matrix.vecMul v 1 := by rw [Matrix.vecMul_one]
+      _ = Matrix.vecMul v ((1 - M.block.Q) * M.block.N) := by rw [M.block.inverse_right]
+      _ = Matrix.vecMul (Matrix.vecMul v (1 - M.block.Q)) M.block.N := by
+        rw [Matrix.vecMul_vecMul]
+      _ = 0 := by rw [hzero, Matrix.zero_vecMul]
+  intro i
+  exact congrFun hv i
+
+/-- An invariant row vector is invariant under every matrix power. -/
+lemma vecMul_pow_eq_of_invariant
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (v : FullState T R → ℝ)
+    (hinv : Matrix.vecMul v M.P = v) :
+    ∀ n : ℕ, Matrix.vecMul v (M.P ^ n) = v := by
+  intro n
+  induction n with
+  | zero => simp
+  | succ n ih =>
+      rw [pow_succ, ← Matrix.vecMul_vecMul, ih, hinv]
+
+/-- Strict positivity of the class invariant law is derived from probability
+mass, exact class support, invariance and communication; it is not an extra
+P-GOA-03 hypothesis. -/
+lemma classLaw_positive
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (c : C) (r : R) (hrc : K.classOf r = c) :
+    0 < (M.classLaw c).1 (Sum.inr r) := by
+  classical
+  have hsum : (∑ x, (M.classLaw c).1 x) = 1 := stdSimplex.sum_eq_one (M.classLaw c)
+  have hsumpos : 0 < ∑ x, (M.classLaw c).1 x := by simpa [hsum]
+  obtain ⟨x, _hx, hxpos⟩ :=
+    (Finset.sum_pos_iff_of_nonneg
+      (fun x _ => stdSimplex.zero_le (M.classLaw c) x)).mp hsumpos
+  obtain ⟨s, hsc, hspos⟩ : ∃ s : R, K.classOf s = c ∧ 0 < (M.classLaw c).1 (Sum.inr s) := by
+    cases x with
+    | inl i =>
+        change 0 < (M.classLaw c).1 (Sum.inl i) at hxpos
+        rw [M.classLaw_transient_zero c i] at hxpos
+        exact (lt_irrefl 0 hxpos).elim
+    | inr s =>
+        change 0 < (M.classLaw c).1 (Sum.inr s) at hxpos
+        by_cases hsc : K.classOf s = c
+        · exact ⟨s, hsc, hxpos⟩
+        · rw [M.classLaw_other_zero c s hsc] at hxpos
+          exact (lt_irrefl 0 hxpos).elim
+  obtain ⟨n, _hn, hpath⟩ := M.class_communicates c s r hsc hrc
+  have hpow := M.vecMul_pow_eq_of_invariant (M.classLaw c).1 (M.classLaw_invariant c) n
+  have hcomp := congrFun hpow (Sum.inr r)
+  rw [Matrix.vecMul, dotProduct] at hcomp
+  have hnonnegP : ∀ i j, 0 ≤ M.P i j := fun i j =>
+    Matrix.nonneg_of_mem_rowStochastic M.stochastic
+  have hsumstrict :
+      0 < ∑ x, (M.classLaw c).1 x * (M.P ^ n) x (Sum.inr r) := by
+    apply (Finset.sum_pos_iff_of_nonneg (fun x _ =>
+      mul_nonneg (stdSimplex.zero_le (M.classLaw c) x)
+        (Matrix.pow_apply_nonneg hnonnegP n x (Sum.inr r)))).2
+    exact ⟨Sum.inr s, Finset.mem_univ _, mul_pos hspos hpath⟩
+  exact hcomp ▸ hsumstrict
+
+/-- The non-normalized restriction of an invariant law to one closed recurrent
+class is itself invariant. -/
+lemma recurrentClassRestriction_invariant
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (mu : stdSimplex ℝ (FullState T R))
+    (hinv : Matrix.vecMul mu.1 M.P = mu.1)
+    (htrans : ∀ i, mu.1 (Sum.inl i) = 0)
+    (c : C) :
+    Matrix.vecMul (recurrentClassRestriction K mu c) M.P =
+      recurrentClassRestriction K mu c := by
+  classical
+  funext y
+  cases y with
+  | inl j =>
+      rw [Matrix.vecMul, dotProduct, Fintype.sum_sum_type]
+      simp only [recurrentClassRestriction]
+      simp [M.recurrent_to_transient_zero]
+  | inr s =>
+      rw [Matrix.vecMul, dotProduct, Fintype.sum_sum_type]
+      simp only [recurrentClassRestriction]
+      by_cases hsc : K.classOf s = c
+      · rw [if_pos hsc]
+        have hs := congrFun hinv (Sum.inr s)
+        rw [Matrix.vecMul, dotProduct, Fintype.sum_sum_type] at hs
+        have ht :
+            (∑ i, mu.1 (Sum.inl i) * M.P (Sum.inl i) (Sum.inr s)) = 0 := by
+          apply Finset.sum_eq_zero
+          intro i _
+          rw [htrans i, zero_mul]
+        rw [ht, zero_add] at hs
+        have hrec :
+            (∑ r, (if K.classOf r = c then mu.1 (Sum.inr r) else 0) *
+              M.P (Sum.inr r) (Sum.inr s)) =
+              ∑ r, mu.1 (Sum.inr r) * M.P (Sum.inr r) (Sum.inr s) := by
+          apply Finset.sum_congr rfl
+          intro r _
+          by_cases hrc : K.classOf r = c
+          · simp [hrc]
+          · have hrs : K.classOf r ≠ K.classOf s := by
+              intro hrs
+              apply hrc
+              calc
+                K.classOf r = K.classOf s := hrs
+                _ = c := hsc
+            rw [if_neg hrc, zero_mul, M.recurrent_cross_zero r s hrs, mul_zero]
+        rw [hrec, hs]
+        simp
+      · rw [if_neg hsc]
+        have ht :
+            (∑ i, (0 : ℝ) * M.P (Sum.inl i) (Sum.inr s)) = 0 := by simp
+        rw [ht, zero_add]
+        apply Finset.sum_eq_zero
+        intro r _
+        by_cases hrc : K.classOf r = c
+        · have hrs : K.classOf r ≠ K.classOf s := by
+            intro hrs
+            apply hsc
+            calc
+              K.classOf s = K.classOf r := hrs.symm
+              _ = c := hrc
+          rw [if_pos hrc, M.recurrent_cross_zero r s hrs, mul_zero]
+        · simp [hrc]
+
+/-- Total mass of the class restriction is exactly `recurrentClassMass`. -/
+lemma recurrentClassRestriction_sum
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (mu : stdSimplex ℝ (FullState T R)) (c : C) :
+    (∑ x, recurrentClassRestriction K mu c x) = recurrentClassMass K mu c := by
+  classical
+  rw [Fintype.sum_sum_type]
+  simp [recurrentClassRestriction, recurrentClassMass]
+
+/-- An invariant law with no transient mass is, on each irreducible recurrent
+class, its class mass times the class invariant law.  This is derived from
+communication by a finite maximum-ratio argument rather than assumed in the
+decomposition certificate. -/
+lemma stationary_class_formula
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (mu : stdSimplex ℝ (FullState T R))
+    (hinv : Matrix.vecMul mu.1 M.P = mu.1)
+    (htrans : ∀ i, mu.1 (Sum.inl i) = 0)
+    (r : R) :
+    mu.1 (Sum.inr r) =
+      recurrentClassMass K mu (K.classOf r) *
+        (M.classLaw (K.classOf r)).1 (Sum.inr r) := by
+  classical
+  let c : C := K.classOf r
+  let S : Finset R := Finset.univ.filter (fun s => K.classOf s = c)
+  have hS : S.Nonempty := by
+    obtain ⟨s, hs⟩ := K.class_nonempty c
+    exact ⟨s, by simp [S, hs]⟩
+  let ratio : R → ℝ := fun s =>
+    mu.1 (Sum.inr s) / (M.classLaw c).1 (Sum.inr s)
+  obtain ⟨rstar, hrstarS, hmax⟩ := Finset.exists_max_image S ratio hS
+  have hrstarc : K.classOf rstar = c := by
+    simpa [S] using hrstarS
+  let a : ℝ := ratio rstar
+  let v : FullState T R → ℝ := recurrentClassRestriction K mu c
+  let d : FullState T R → ℝ := a • (M.classLaw c).1 - v
+  have hv_inv : Matrix.vecMul v M.P = v := by
+    simpa [v] using M.recurrentClassRestriction_invariant mu hinv htrans c
+  have hd_inv : Matrix.vecMul d M.P = d := by
+    dsimp [d]
+    rw [Matrix.sub_vecMul, Matrix.smul_vecMul, M.classLaw_invariant c, hv_inv]
+  have hd_nonneg : ∀ x, 0 ≤ d x := by
+    intro x
+    cases x with
+    | inl i =>
+        change 0 ≤ a * (M.classLaw c).1 (Sum.inl i) - v (Sum.inl i)
+        rw [M.classLaw_transient_zero c i]
+        simp [v, recurrentClassRestriction]
+    | inr s =>
+        by_cases hsc : K.classOf s = c
+        · have hp := M.classLaw_positive c s hsc
+          have hrs : ratio s ≤ ratio rstar := hmax s (by simp [S, hsc])
+          have hle : mu.1 (Sum.inr s) ≤ a * (M.classLaw c).1 (Sum.inr s) := by
+            apply (div_le_iff₀ hp).mp
+            simpa [a] using hrs
+          change 0 ≤ a * (M.classLaw c).1 (Sum.inr s) - v (Sum.inr s)
+          rw [show v (Sum.inr s) = mu.1 (Sum.inr s) by
+            simp [v, recurrentClassRestriction, hsc]]
+          exact sub_nonneg.mpr hle
+        · change 0 ≤ a * (M.classLaw c).1 (Sum.inr s) - v (Sum.inr s)
+          rw [M.classLaw_other_zero c s hsc]
+          simp [v, recurrentClassRestriction, hsc]
+  have hpstar := M.classLaw_positive c rstar hrstarc
+  have hdstar : d (Sum.inr rstar) = 0 := by
+    change a * (M.classLaw c).1 (Sum.inr rstar) - v (Sum.inr rstar) = 0
+    rw [show v (Sum.inr rstar) = mu.1 (Sum.inr rstar) by
+      simp [v, recurrentClassRestriction, hrstarc]]
+    dsimp [a, ratio]
+    rw [div_mul_cancel₀ _ (ne_of_gt hpstar), sub_self]
+  have hdpow := M.vecMul_pow_eq_of_invariant d hd_inv
+  have hnonnegP : ∀ i j, 0 ≤ M.P i j := fun i j =>
+    Matrix.nonneg_of_mem_rowStochastic M.stochastic
+  have hdclass : ∀ s, K.classOf s = c → d (Sum.inr s) = 0 := by
+    intro s hsc
+    have hds0 := hd_nonneg (Sum.inr s)
+    by_contra hne
+    have hdspos : 0 < d (Sum.inr s) := lt_of_le_of_ne hds0 (Ne.symm hne)
+    obtain ⟨n, _hn, hpath⟩ := M.class_communicates c s rstar hsc hrstarc
+    have hpow := congrFun (hdpow n) (Sum.inr rstar)
+    rw [Matrix.vecMul, dotProduct, hdstar] at hpow
+    have hsumpos :
+        0 < ∑ x, d x * (M.P ^ n) x (Sum.inr rstar) := by
+      apply (Finset.sum_pos_iff_of_nonneg (fun x _ =>
+        mul_nonneg (hd_nonneg x)
+          (Matrix.pow_apply_nonneg hnonnegP n x (Sum.inr rstar)))).2
+      exact ⟨Sum.inr s, Finset.mem_univ _, mul_pos hdspos hpath⟩
+    linarith
+  have hdall : ∀ x, d x = 0 := by
+    intro x
+    cases x with
+    | inl i =>
+        change a * (M.classLaw c).1 (Sum.inl i) - v (Sum.inl i) = 0
+        rw [M.classLaw_transient_zero c i]
+        simp [v, recurrentClassRestriction]
+    | inr s =>
+        by_cases hsc : K.classOf s = c
+        · exact hdclass s hsc
+        · change a * (M.classLaw c).1 (Sum.inr s) - v (Sum.inr s) = 0
+          rw [M.classLaw_other_zero c s hsc]
+          simp [v, recurrentClassRestriction, hsc]
+  have hsumd : (∑ x, d x) = 0 := Finset.sum_eq_zero fun x _ => hdall x
+  have hpisum : (∑ x, (M.classLaw c).1 x) = 1 := stdSimplex.sum_eq_one (M.classLaw c)
+  have hvsum : (∑ x, v x) = recurrentClassMass K mu c := by
+    simpa [v] using M.recurrentClassRestriction_sum mu c
+  have ha : a = recurrentClassMass K mu c := by
+    have hexpand :
+        (∑ x, d x) = a * (∑ x, (M.classLaw c).1 x) - ∑ x, v x := by
+      dsimp [d]
+      simp only [Pi.sub_apply, Pi.smul_apply, smul_eq_mul, Finset.sum_sub_distrib,
+        ← Finset.mul_sum]
+    rw [hexpand, hpisum, hvsum, mul_one] at hsumd
+    linarith
+  have hdr : d (Sum.inr r) = 0 := hdclass r rfl
+  change a * (M.classLaw c).1 (Sum.inr r) - v (Sum.inr r) = 0 at hdr
+  have hvr : v (Sum.inr r) = mu.1 (Sum.inr r) := by
+    simp [v, recurrentClassRestriction, c]
+  rw [hvr] at hdr
+  change mu.1 (Sum.inr r) =
+    recurrentClassMass K mu c * (M.classLaw c).1 (Sum.inr r)
+  rw [← ha]
+  linarith
+
+/-- A harmonic observable has the same expectation under every Cesàro average. -/
+lemma cesaro_dot_harmonic
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (mu0 : stdSimplex ℝ (FullState T R))
+    (h : FullState T R → ℝ)
+    (hh : Matrix.mulVec M.P h = h) (n : ℕ) :
+    (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic mu0 n).1 ⬝ᵥ h =
+      mu0.1 ⬝ᵥ h := by
+  classical
+  have hpow : ∀ t : ℕ, Matrix.mulVec (M.P ^ t) h = h := by
+    intro t
+    induction t with
+    | zero => simp
+    | succ t iht =>
+        rw [pow_succ, ← Matrix.mulVec_mulVec, hh, iht]
+  have horbit : ∀ t : ℕ,
+      (UEOT.V3.FiniteCesaroInvariant.orbit M.P M.stochastic mu0 t).1 ⬝ᵥ h =
+        mu0.1 ⬝ᵥ h := by
+    intro t
+    change Matrix.vecMul mu0.1 (M.P ^ t) ⬝ᵥ h = mu0.1 ⬝ᵥ h
+    rw [← Matrix.dotProduct_mulVec, hpow t]
+  change
+    (((((n + 1 : ℕ) : ℝ)⁻¹) •
+      ∑ t ∈ Finset.range (n + 1),
+        (UEOT.V3.FiniteCesaroInvariant.orbit M.P M.stochastic mu0 t : FullState T R → ℝ)) ⬝ᵥ h) =
+      mu0.1 ⬝ᵥ h
+  rw [smul_dotProduct, sum_dotProduct]
+  have hsum :
+      (∑ t ∈ Finset.range (n + 1),
+        (UEOT.V3.FiniteCesaroInvariant.orbit M.P M.stochastic mu0 t : FullState T R → ℝ) ⬝ᵥ h) =
+        (n + 1 : ℕ) • (mu0.1 ⬝ᵥ h) := by
+    have hs := Finset.sum_eq_card_nsmul
+      (s := Finset.range (n + 1))
+      (f := fun t =>
+        (UEOT.V3.FiniteCesaroInvariant.orbit M.P M.stochastic mu0 t : FullState T R → ℝ) ⬝ᵥ h)
+      (b := mu0.1 ⬝ᵥ h) (fun t _ => horbit t)
+    simpa using hs
+  rw [hsum]
+  simp only [nsmul_eq_mul]
+  have hN : (((n + 1 : ℕ) : ℝ)) ≠ 0 := by exact_mod_cast Nat.succ_ne_zero n
+  rw [smul_eq_mul, ← mul_assoc, inv_mul_cancel₀ hN, one_mul]
+
+/-- Class mass equals expectation of the class absorption potential once
+transient mass is zero. -/
+lemma dot_absorptionPotential_eq_classMass
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (mu : stdSimplex ℝ (FullState T R))
+    (htrans : ∀ i, mu.1 (Sum.inl i) = 0) (c : C) :
+    mu.1 ⬝ᵥ absorptionPotential K M.block c = recurrentClassMass K mu c := by
+  classical
+  rw [dotProduct, Fintype.sum_sum_type]
+  simp only [absorptionPotential]
+  unfold recurrentClassMass
+  have ht : (∑ i, mu.1 (Sum.inl i) * M.block.H i c) = 0 := by
+    apply Finset.sum_eq_zero
+    intro i _
+    rw [htrans i, zero_mul]
+  rw [ht, zero_add]
+  apply Finset.sum_congr rfl
+  intro r _
+  by_cases hrc : K.classOf r = c <;> simp [absorptionPotential, hrc]
+
+/-- A convergent subsequence of Cesàro averages preserves every harmonic
+observable. -/
+lemma harmonic_moment_of_cesaro_subseq
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (mu0 nu : stdSimplex ℝ (FullState T R))
+    (h : FullState T R → ℝ)
+    (hh : Matrix.mulVec M.P h = h)
+    (phi : ℕ → ℕ) (hlim :
+      Tendsto (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic mu0 ∘ phi)
+        atTop (𝓝 nu)) :
+    nu.1 ⬝ᵥ h = mu0.1 ⬝ᵥ h := by
+  classical
+  have hcont : Continuous (fun mu : stdSimplex ℝ (FullState T R) => mu.1 ⬝ᵥ h) := by
+    exact continuous_subtype_val.dotProduct continuous_const
+  have hleft := (hcont.tendsto nu).comp hlim
+  have hright : Tendsto
+      (fun _ : ℕ => mu0.1 ⬝ᵥ h) atTop (𝓝 (mu0.1 ⬝ᵥ h)) := tendsto_const_nhds
+  have heq :
+      (fun n : ℕ =>
+        (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic mu0 (phi n)).1 ⬝ᵥ h) =
+      (fun _ : ℕ => mu0.1 ⬝ᵥ h) := by
+    funext n
+    exact M.cesaro_dot_harmonic mu0 h hh (phi n)
+  have hleft' : Tendsto
+      (fun n : ℕ =>
+        (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic mu0 (phi n)).1 ⬝ᵥ h)
+      atTop (𝓝 (nu.1 ⬝ᵥ h)) := by
+    simpa [Function.comp_def] using hleft
+  rw [heq] at hleft'
+  exact tendsto_nhds_unique hleft' hright
+
+/-- The canonical pure initial law at one full state. -/
+noncomputable def pureFullLaw (x0 : FullState T R) : stdSimplex ℝ (FullState T R) :=
+  UEOT.V3.FiniteDobrushin.pureSimplex x0
+
+@[simp] lemma pureFullLaw_apply (x0 y : FullState T R) :
+    (pureFullLaw x0).1 y = if y = x0 then 1 else 0 := by
+  classical
+  simp [pureFullLaw, UEOT.V3.FiniteDobrushin.pureSimplex, Pi.single_apply]
+
+/-- Every Cesàro cluster point is the absorption-weighted recurrent-class
+mixture.  This is the periodic-safe finite recurrent-decomposition bridge that
+the frozen §21.4 perturbation theorem needs. -/
+lemma cesaro_cluster_eq_recurrentMixture
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (x0 : FullState T R)
+    (nu : stdSimplex ℝ (FullState T R))
+    (phi : ℕ → ℕ) (hphi : StrictMono phi)
+    (hlim : Tendsto
+      (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic (pureFullLaw x0) ∘ phi)
+      atTop (𝓝 nu)) :
+    nu = recurrentMixture (initialClassWeights K M.block x0) M.classLaw := by
+  classical
+  have hinv := (UEOT.V3.FiniteCesaroInvariant.p_goa_01
+    M.P M.stochastic (pureFullLaw x0)).2 nu phi hphi hlim
+  have htrans := M.invariant_transient_zero nu hinv
+  have hmass : ∀ c, recurrentClassMass K nu c = (initialClassWeights K M.block x0).1 c := by
+    intro c
+    have hmom := M.harmonic_moment_of_cesaro_subseq
+      (pureFullLaw x0) nu (absorptionPotential K M.block c)
+      (M.absorptionPotential_harmonic c) phi hlim
+    rw [M.dot_absorptionPotential_eq_classMass nu htrans c] at hmom
+    have hpure :
+        (pureFullLaw x0).1 ⬝ᵥ absorptionPotential K M.block c =
+          absorptionPotential K M.block c x0 := by
+      rw [dotProduct]
+      classical
+      simp [pureFullLaw_apply]
+    rw [hpure, ← initialClassWeights_apply] at hmom
+    exact hmom
+  apply Subtype.ext
+  funext x
+  cases x with
+  | inl i =>
+      rw [htrans i, recurrentMixture_apply]
+      symm
+      apply Finset.sum_eq_zero
+      intro c _
+      rw [M.classLaw_transient_zero c i, mul_zero]
+  | inr r =>
+      rw [recurrentMixture_apply]
+      have hformula := M.stationary_class_formula nu hinv htrans r
+      rw [hmass (K.classOf r)] at hformula
+      rw [hformula]
+      symm
+      apply Finset.sum_eq_single (K.classOf r)
+      · intro c _ hc
+        have hne : K.classOf r ≠ c := Ne.symm hc
+        rw [M.classLaw_other_zero c r hne, mul_zero]
+      · intro hnot
+        exact (hnot (Finset.mem_univ _)).elim
+
+/-- Full Cesàro convergence for a certified finite recurrent decomposition,
+including periodic recurrent classes. -/
+theorem cesaro_tendsto_recurrentMixture
+    (M : FiniteRecurrentDecomposition (T := T) K) (x0 : FullState T R) :
+    Tendsto
+      (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic (pureFullLaw x0))
+      atTop
+      (𝓝 (recurrentMixture (initialClassWeights K M.block x0) M.classLaw)) := by
+  classical
+  refine IsCompact.tendsto_nhds_of_unique_mapClusterPt
+    (isCompact_univ : IsCompact (Set.univ : Set (stdSimplex ℝ (FullState T R))))
+    (by simp) ?_
+  intro nu _ hcluster
+  rcases hcluster.tendsto_subseq with ⟨phi, hphi, hlim⟩
+  exact M.cesaro_cluster_eq_recurrentMixture x0 nu phi hphi hlim
+
+end FiniteRecurrentDecomposition
 
 /-- For the same transient initial state, the `L1` change in absorption weights
 is bounded by the maximum absolute row-sum norm of the absorption-matrix
@@ -645,82 +1276,96 @@ lemma absorptionWeights_l1_le_norm
   simpa only [RecurrentBlockDecomposition.absorptionWeights_apply,
     Matrix.sub_apply, abs_sub_comm] using hrow
 
-/-- The same-initial-state absorption-weight `L1` bound.  For a transient start
-this is a row of `Hhat-H`; for a recurrent start the two weights coincide. -/
-lemma initialAbsorptionWeights_l1_le_norm
-    {C : Type uC} [Fintype C]
-    (D Dhat : RecurrentBlockDecomposition T C) (x0 : T ⊕ C) :
-    (∑ c, |(initialAbsorptionWeights D x0).1 c -
-      (initialAbsorptionWeights Dhat x0).1 c|) ≤ ‖Dhat.H - D.H‖ := by
+/-- The same-initial-state absorption-weight `L1` bound. -/
+lemma initialClassWeights_l1_le_norm
+    {R : Type uS} {C : Type uC} [Fintype R] [Fintype C]
+    (K : RecurrentPartition R C)
+    (D Dhat : RecurrentBlockDecomposition T C) (x0 : FullState T R) :
+    (∑ c, |(initialClassWeights K D x0).1 c -
+      (initialClassWeights K Dhat x0).1 c|) ≤ ‖Dhat.H - D.H‖ := by
   classical
   cases x0 with
-  | inl i =>
-      exact absorptionWeights_l1_le_norm D Dhat i
-  | inr c =>
-      simp [initialAbsorptionWeights, recurrentClassVertex]
+  | inl i => exact absorptionWeights_l1_le_norm D Dhat i
+  | inr r => simp [initialClassWeights, recurrentClassVertex]
 
 /-- **P-GOA-03.** Stability of a finite recurrent decomposition under a
-perturbation preserving the same transient set and the same recurrent-class
-supports.
+perturbation preserving the exact same transient state type and exact same
+recurrent-class partition.
 
-The first clause is the exact frozen §21.4 absorption-matrix estimate in the
-maximum absolute row-sum norm.  The second clause constructs the two induced
-Cesàro-limit mixtures from the same initial transient state and derives the
-source TV estimate with the canonical `1/2` coefficient.  Because baseline and
-perturbed class laws share one `RecurrentClassSupports`, this theorem does not
-apply when recurrent support changes. -/
+Unlike the algebraic helper proved earlier in this file, this source-facing
+theorem is tied to two actual stochastic kernels on one common state space.  It
+also proves that the displayed recurrent mixtures are the actual periodic-safe
+Cesàro limits from the same initial state before applying the frozen TV bound. -/
 theorem p_goa_03
-    {C : Type uC} {S : Type uS} [Fintype C] [Fintype S]
-    (D Dhat : RecurrentBlockDecomposition T C)
+    {R : Type uS} {C : Type uC}
+    [Fintype R] [Fintype C] [DecidableEq R] [DecidableEq C]
+    (K : RecurrentPartition R C)
+    (M Mhat : FiniteRecurrentDecomposition (T := T) K)
     (epsQ epsR : ℝ)
-    (hQ : ‖Dhat.Q - D.Q‖ ≤ epsQ)
-    (hR : ‖Dhat.R - D.R‖ ≤ epsR)
-    (hsmall : ‖D.N‖ * epsQ < 1)
-    (x0 : T ⊕ C)
-    (K : RecurrentClassSupports C S)
-    (pi pihat : RecurrentClassLaws K)
+    (hQ : ‖Mhat.block.Q - M.block.Q‖ ≤ epsQ)
+    (hR : ‖Mhat.block.R - M.block.R‖ ≤ epsR)
+    (hsmall : ‖M.block.N‖ * epsQ < 1)
+    (x0 : FullState T R)
     (epsStat : C → ℝ)
     (hstat : ∀ j,
-      UEOT.V3.FiniteDobrushin.lawTV (pi.law j) (pihat.law j) ≤ epsStat j) :
-    ‖Dhat.H - D.H‖ ≤
-        (‖D.N‖ ^ 2 * epsQ + ‖D.N‖ * epsR) / (1 - ‖D.N‖ * epsQ) ∧
-      UEOT.V3.FiniteDobrushin.lawTV
-          (recurrentMixture (initialAbsorptionWeights D x0) pi.law)
-          (recurrentMixture (initialAbsorptionWeights Dhat x0) pihat.law) ≤
+      UEOT.V3.FiniteDobrushin.lawTV (M.classLaw j) (Mhat.classLaw j) ≤ epsStat j) :
+    let nu := recurrentMixture (initialClassWeights K M.block x0) M.classLaw
+    let nuhat := recurrentMixture (initialClassWeights K Mhat.block x0) Mhat.classLaw
+    ‖Mhat.block.H - M.block.H‖ ≤
+        (‖M.block.N‖ ^ 2 * epsQ + ‖M.block.N‖ * epsR) /
+          (1 - ‖M.block.N‖ * epsQ) ∧
+      Tendsto
+        (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic (FiniteRecurrentDecomposition.pureFullLaw x0))
+        atTop (𝓝 nu) ∧
+      Tendsto
+        (UEOT.V3.FiniteCesaroInvariant.cesaroRow Mhat.P Mhat.stochastic (FiniteRecurrentDecomposition.pureFullLaw x0))
+        atTop (𝓝 nuhat) ∧
+      UEOT.V3.FiniteDobrushin.lawTV nu nuhat ≤
         (1 / 2 : ℝ) *
-            ((‖D.N‖ ^ 2 * epsQ + ‖D.N‖ * epsR) / (1 - ‖D.N‖ * epsQ)) +
-          ∑ j, (initialAbsorptionWeights Dhat x0).1 j * epsStat j := by
+            ((‖M.block.N‖ ^ 2 * epsQ + ‖M.block.N‖ * epsR) /
+              (1 - ‖M.block.N‖ * epsQ)) +
+          ∑ j, (initialClassWeights K Mhat.block x0).1 j * epsStat j := by
   classical
-  have hHraw := absorption_matrix_bound_of_inverses
-    D.Q Dhat.Q D.N Dhat.N D.R Dhat.R epsQ epsR
-    D.inverse_left D.inverse_right Dhat.inverse_left
-    hQ hR D.r_nonneg D.direct_row_sum_le_one hsmall
+  dsimp only
   have hH :
-      ‖Dhat.H - D.H‖ ≤
-        (‖D.N‖ ^ 2 * epsQ + ‖D.N‖ * epsR) / (1 - ‖D.N‖ * epsQ) := by
-    simpa [RecurrentBlockDecomposition.H] using hHraw
-  have hweight := initialAbsorptionWeights_l1_le_norm D Dhat x0
+      ‖Mhat.block.H - M.block.H‖ ≤
+        (‖M.block.N‖ ^ 2 * epsQ + ‖M.block.N‖ * epsR) /
+          (1 - ‖M.block.N‖ * epsQ) := by
+    rcases isEmpty_or_nonempty T with hT | hT
+    · letI := hT
+      have hHeq : Mhat.block.H = M.block.H := Subsingleton.elim _ _
+      have hNzero : M.block.N = 0 := Subsingleton.elim _ _
+      simp [hHeq, hNzero]
+    · letI := hT
+      have hHraw := absorption_matrix_bound_of_inverses
+        M.block.Q Mhat.block.Q M.block.N Mhat.block.N M.block.R Mhat.block.R epsQ epsR
+        M.block.inverse_left M.block.inverse_right Mhat.block.inverse_left
+        hQ hR M.block.r_nonneg M.block.direct_row_sum_le_one hsmall
+      simpa [RecurrentBlockDecomposition.H] using hHraw
+  have hweight := initialClassWeights_l1_le_norm K M.block Mhat.block x0
   have hweightBH :
-      (∑ j, |(initialAbsorptionWeights D x0).1 j -
-        (initialAbsorptionWeights Dhat x0).1 j|) ≤
-        (‖D.N‖ ^ 2 * epsQ + ‖D.N‖ * epsR) / (1 - ‖D.N‖ * epsQ) :=
-    hweight.trans hH
+      (∑ j, |(initialClassWeights K M.block x0).1 j -
+        (initialClassWeights K Mhat.block x0).1 j|) ≤
+        (‖M.block.N‖ ^ 2 * epsQ + ‖M.block.N‖ * epsR) /
+          (1 - ‖M.block.N‖ * epsQ) := hweight.trans hH
   have hmix := recurrentMixture_tv_le
-    (initialAbsorptionWeights D x0) (initialAbsorptionWeights Dhat x0)
-    pi.law pihat.law epsStat hstat
-  constructor
-  · exact hH
+    (initialClassWeights K M.block x0) (initialClassWeights K Mhat.block x0)
+    M.classLaw Mhat.classLaw epsStat hstat
+  refine ⟨hH, ?_, ?_, ?_⟩
+  · exact M.cesaro_tendsto_recurrentMixture x0
+  · exact Mhat.cesaro_tendsto_recurrentMixture x0
   · calc
       UEOT.V3.FiniteDobrushin.lawTV
-          (recurrentMixture (initialAbsorptionWeights D x0) pi.law)
-          (recurrentMixture (initialAbsorptionWeights Dhat x0) pihat.law) ≤
+          (recurrentMixture (initialClassWeights K M.block x0) M.classLaw)
+          (recurrentMixture (initialClassWeights K Mhat.block x0) Mhat.classLaw) ≤
         (1 / 2 : ℝ) *
-            (∑ j, |(initialAbsorptionWeights D x0).1 j -
-              (initialAbsorptionWeights Dhat x0).1 j|) +
-          ∑ j, (initialAbsorptionWeights Dhat x0).1 j * epsStat j := hmix
+            (∑ j, |(initialClassWeights K M.block x0).1 j -
+              (initialClassWeights K Mhat.block x0).1 j|) +
+          ∑ j, (initialClassWeights K Mhat.block x0).1 j * epsStat j := hmix
       _ ≤ (1 / 2 : ℝ) *
-            ((‖D.N‖ ^ 2 * epsQ + ‖D.N‖ * epsR) / (1 - ‖D.N‖ * epsQ)) +
-          ∑ j, (initialAbsorptionWeights Dhat x0).1 j * epsStat j := by
+            ((‖M.block.N‖ ^ 2 * epsQ + ‖M.block.N‖ * epsR) /
+              (1 - ‖M.block.N‖ * epsQ)) +
+          ∑ j, (initialClassWeights K Mhat.block x0).1 j * epsStat j := by
         gcongr
 
 end
