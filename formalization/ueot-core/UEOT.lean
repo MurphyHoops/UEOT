@@ -64,3 +64,4 @@ import UEOT.V3.FiniteDiscountedOccupancyRegret
 import UEOT.V3.FiniteCesaroInvariant
 import UEOT.V3.FiniteDobrushin
 import UEOT.V3.CommonBottleneckRank
+import UEOT.V3.ExponentialFamilyIProjection
