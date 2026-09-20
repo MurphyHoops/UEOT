@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **91** |
+| **proved, staged by this ledger checkpoint** | **92** |
 | **partial** | **0** |
-| **pending / not yet counted** | **15** |
+| **pending / not yet counted** | **14** |
 | **total** | **106** |
 
-This branch stages **91/106** after P-DDH-03 completed source-semantic, feature,
+This branch stages **92/106** after P-DDH-02 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**91/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**92/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -60,7 +60,7 @@ mathematics or Lean code exists.
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 - **Omega / integrity:** P-OMG-01, P-OMG-02
-- **Dual-drive / alignment:** P-DDH-01, P-DDH-03, P-DDH-04, P-ALI-02, P-ALI-03
+- **Dual-drive / alignment:** P-DDH-01, P-DDH-02, P-DDH-03, P-DDH-04, P-ALI-02, P-ALI-03
 - **Composition:** P-COMP-01, P-COMP-02, P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
 - **KL / path information:** P-KL-01, P-KL-02, P-KL-03
 - **Evolution:** P-EVO-01, P-EVO-02
@@ -68,62 +68,61 @@ mathematics or Lean code exists.
 - **Algorithmic quotient:** P-ALG-01
 - **GOA:** P-GOA-01, P-GOA-02
 
-Count check: `90 + P-DDH-03 = 91`.
+Count check: `91 + P-DDH-02 = 92`.
 
-## Newly staged promotion — P-DDH-03
+## Newly staged promotion — P-DDH-02
 
-Frozen Core 3 §23.3 states that on a finite state space with strictly positive
-baseline law `p0`, whenever a finite exponential-family parameter `theta`
-realizes a prescribed moment target `m`, the corresponding exponential tilt
-uniquely minimizes `KL(· || p0)` over every probability law with the same
-moment. Boundary targets not represented by a finite parameter are deliberately
-outside the claim.
+Frozen Core 3 §23.3 requires the finite exponential-family log-partition
+calculus on a finite state space with strictly positive baseline law `p0`: for
+arbitrary finite parameter dimension `k`, prescribed feature map `F`, and
+arbitrary parameter `theta`, the gradient of the log partition is the tilted
+feature mean and its Hessian is the tilted covariance.
 
 The formalization preserves that contract literally:
 
 1. `Γ` is finite and `p0` is strictly positive on every state;
-2. the feature map `F : Γ → Fin k → ℝ` and finite parameter
-   `theta : Fin k → ℝ` are arbitrary, including `k = 0`;
-3. the source-facing premise only assumes that the displayed tilt realizes
-   the target moment `m`;
-4. competitors are quantified directly as arbitrary probability measures with
-   the same coordinate moments;
-5. KL minimality and equality iff exact optimizer-law equality are proved.
+2. `k : ℕ` is arbitrary, including `k = 0`;
+3. the prescribed feature map `F` and parameter `theta` are arbitrary;
+4. the first Fréchet derivative is exactly the tilted mean;
+5. the derivative of that gradient dual is exactly the tilted covariance
+   bilinear operator.
 
 No full-rank, feature-independence, strict-convexity, positive-definite
-covariance, unique-parameter, or interior assumption is added. Redundant or
-constant features and singular covariance remain allowed, and there is no
-logical dependency on P-DDH-02.
+covariance, identifiability, unique-parameter, or interior assumption is added.
+Constant/redundant features and singular covariance remain allowed.
 
 Canonical theorem surface:
-- `UEOT.V3.ExponentialFamilyIProjection.p_ddh_03`.
+- `UEOT.V3.ExponentialFamilyCalculus.p_ddh_02`.
 
 Supporting module:
-- `UEOT/V3/ExponentialFamilyIProjection.lean`.
+- `UEOT/V3/ExponentialFamilyCalculus.lean`.
 
 Promotion evidence:
 - canonical frozen source hash/source-lock evidence re-audited before commit;
-- source-facing feature commit `360f5b941d57a5d0b2edf73924c217034dfd0bcd`;
-- feature tree `1c0278bb9b21501ebb30733ed77f2cb48f3228a0`;
-- feature root CI `35513672240`: success;
-- full local `lake build UEOT`: success (`8983` jobs);
+- source-facing feature commit `e8ae0d2d1b4c4a44d0c0437b46babf392d72626e`;
+- feature tree `1157210901f7b027cac3b3d1fe9279e1a4c2ada7`;
+- feature root CI `35518289262`: success;
+- full local `lake build UEOT`: success (`8984` jobs);
 - independent source/proof audits: PASS (two final reviewers);
+- executable audit verified `fderiv` of `logPartition` equals `gradientDual`,
+  `k = 0` instantiates, tilt weights normalize, and `covarianceDual` evaluates
+  to exact `E[FFᵀ] - E[F]E[F]ᵀ`;
 - prohibited-proof audit: clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms ...ExponentialFamilyIProjection.p_ddh_03`: only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration `formal/pddh03-main-integration@4bce0870076e740f21e14411b8741493c4d61e84` from `main@22a0b0d68201a18d574c0d841679f511a86994b9`;
-- feature and clean-integration tree hashes identical: `1c0278bb9b21501ebb30733ed77f2cb48f3228a0`;
-- clean integration root CI `35514069336`: success;
-- proof PR #113 exact-head root CI `35514474988`: success;
-- proof main commit `6e2a179d9fad8293b02b0f47a971f4083eabbeb3`;
-- proof resulting-main root CI `35514827747`: success.
+- `#print axioms ...ExponentialFamilyCalculus.p_ddh_02`: only `propext`, `Classical.choice`, `Quot.sound`;
+- clean integration `formal/pddh02-main-integration@de23f78ec8136695a469e05160266d61e14e061b` from `main@8afa467eccd826a44d6251d7b318e9a4b9fd23cd`;
+- feature and clean-integration tree hashes identical: `1157210901f7b027cac3b3d1fe9279e1a4c2ada7`;
+- clean integration root CI `35518715443`: success;
+- proof PR #115 exact-head root CI `35519091198`: success;
+- proof main commit `dabc8da9076b1ab764b5c6f06aed2d32be42ccfc`;
+- proof resulting-main root CI `35519437495`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 90/106
+## Previous FULL-GREEN checkpoint — 91/106
 
-P-DDH-04 and all earlier counted P-IDs form the authoritative 90/106 baseline.
-Its ledger landed at `main@22a0b0d68201a18d574c0d841679f511a86994b9`
-with ledger resulting-main CI `35511293247` success.
+P-DDH-03 and all earlier counted P-IDs form the authoritative 91/106 baseline.
+Its ledger landed at `main@8afa467eccd826a44d6251d7b318e9a4b9fd23cd`
+with ledger resulting-main CI `35516201948` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
 CI regression. In particular P-QUO-03 and P-TEL-01 are already counted and must
@@ -134,10 +133,6 @@ not be reopened or double-counted.
 No theorem branch is opened by this promotion. Current source/API audits place
 the leading uncounted fronts at:
 
-- P-DDH-02: Class C, M / upper-M; finite log-partition gradient and
-  Hessian/covariance. Exact-main probes compile the gradient and raw Hessian;
-  the covariance wrapper and second-derivative bookkeeping remain the main
-  local bridge;
 - P-GOA-04: Class C, L; finite self-adjoint spectral infrastructure exists, but
   source-strength gap/Rayleigh/eigenvector/TV perturbation bridges remain;
 - P-DDH-05: Class D, L after deeper audit; pinned Mathlib has singular values
@@ -146,7 +141,7 @@ the leading uncounted fronts at:
   absorption weights, and periodic-safe full Cesaro-mixture machinery remain.
 
 P-CORE-01 remains hard-blocked by the recurrent-structure branch of P-GOA-03.
-The next proof lane must be selected dynamically only after this 91/106 ledger
+The next proof lane must be selected dynamically only after this 92/106 ledger
 becomes FULL-GREEN.
 
 ## Reproducibility task
