@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **98** |
+| **proved, staged by this ledger checkpoint** | **99** |
 | **partial** | **0** |
-| **pending / not yet counted** | **8** |
+| **pending / not yet counted** | **7** |
 | **total** | **106** |
 
-This branch stages **98/106** after P-EVO-03 completed source-semantic, feature,
+This branch stages **99/106** after P-PER-02 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**98/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**99/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -56,7 +56,7 @@ mathematics or Lean code exists.
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02, P-REC-03, P-REC-04
 - **QSD:** P-QSD-02, P-QSD-03
-- **Persistence:** P-PER-01, P-PER-03, P-PER-04
+- **Persistence:** P-PER-01, P-PER-02, P-PER-03, P-PER-04
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 - **Omega / integrity:** P-OMG-01, P-OMG-02
@@ -69,84 +69,88 @@ mathematics or Lean code exists.
 - **GOA:** P-GOA-01, P-GOA-02, P-GOA-03, P-GOA-04
 - **Core assembly:** P-CORE-01
 
-Count check: `97 + P-EVO-03 = 98`.
+Count check: `98 + P-PER-02 = 99`.
 
-## Newly staged promotion — P-EVO-03
+## Newly staged promotion — P-PER-02
 
-Frozen Core 3 §25.4 is the finite primitive mean-matrix Perron growth theorem.
-For a finite nonnegative primitive matrix `M`, K-PF-01 supplies the positive
-Perron data `R`, `r`, `l`, the normalizations `l 1 = 1`, `l r = 1`, the
-asymptotic rank-one limit `R⁻ⁿ Mⁿ → r l`, and positive Perron-eigendirection
-uniqueness. For every nonzero nonnegative initial count row `z₀`, the source
-requires both scaled mean growth and normalized composition convergence, and it
-characterizes every strictly positive linear reproductive valuation.
+Frozen Core 3 §8.4 takes a continuous-time Feller Markov semigroup `P_t` on a
+Polish state space, with `P_t : C_b -> C_b`, and the literal occupation-average
+law
 
-The formalization preserves that source contract:
+`bar μ_T = (1/T) ∫_0^T μ₀ P_t dt`.
 
-1. `KPF01Certificate M` is an explicit standard-theorem interface tied to the
-   same primitive nonnegative matrix `M`; it carries the source Perron
-   eigenrelations, normalizations, rank-one power limit, positive-eigenvector
-   uniqueness, and strict spectral dominance without claiming an unsourced
-   constructor from `Matrix.IsPrimitive M`;
-2. the source initial row is represented by finite natural counts and converted
-   canonically to a nonnegative real row; nonzero counts plus `r > 0` derive the
-   strictly positive initial reproductive value `z₀ r`;
-3. `scaledMean_tendsto` derives
-   `R⁻ⁿ (z₀ Mⁿ)_j → (z₀ r) l_j` directly from the K-PF coordinate limit and a
-   finite sum;
-4. `scaledMass_tendsto` and eventual positivity of the mean mass derive the
-   denominator limit `(z₀ r)` using `∑ l = 1`;
-5. `composition_tendsto` cancels the common Perron scaling and proves
-   `(z₀ Mⁿ)_j / (z₀ Mⁿ 1) → l_j`, with the finite exceptional prefix handled
-   only through eventual positivity; and
-6. the valuation identity for every nonnegative row is specialized to coordinate
-   unit rows to derive `Mw = ρw`; K-PF positive-eigenvector uniqueness then gives
-   `ρ = R` and `w = c r` for some `c > 0`.
+If the family for `T >= 1` is tight, every diverging time sequence has a
+weakly convergent subsequence; every such weak limit is invariant under every
+`P_s`. If every time marginal `μ₀P_t` is supported on a closed set `V`, the
+weak limit also has mass one on `V`. The source explicitly does **not** claim
+sample-path empirical-frequency convergence without additional ergodicity.
+
+The formalization preserves that contract:
+
+1. `FellerOccupationSystem` fixes the same Markov semigroup and initial
+   probability law, with marginals defined canonically as `μ₀ P_t`;
+2. the Feller action is represented on `BoundedContinuousFunction X ℝ`, and
+   the occupation object exposes the literal time-average identity through its
+   bounded-continuous expectation face plus the measurable-event face needed for
+   closed-support retention;
+3. minimal scalar interval-integrability is explicit so the time-shift
+   decomposition can be proved without smuggling in invariance;
+4. Prokhorov compactness of the tight occupation family yields a subsequence for
+   every `T_n -> ∞`;
+5. the source estimate
+   `|(bar μ_T P_s - bar μ_T) f| <= 2 s ||f||∞ / T`
+   is proved and passed to weak limits using the Feller action, yielding
+   invariance for every weak limit, not only the selected one; and
+6. closed support is first derived for every occupation average from the
+   marginal support hypothesis, then passed to the weak limit with the closed-set
+   Portmanteau inequality.
 
 Canonical theorem surface:
-- `UEOT.V3.EvolutionPerronGrowth.p_evo_03`.
+- `UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02`.
 
 Supporting module:
-- `UEOT/V3/EvolutionPerronGrowth.lean`.
+- `UEOT/V3/PersistenceOccupation.lean`.
 
 Promotion evidence:
-- frozen §25.4 / K-PF-01 source contract independently re-audited twice: GREEN;
+- frozen §8.4 source contract independently audited against the final theorem:
+  GREEN;
 - source-facing feature commit
-  `340a56d4ca19236bba141b79b8471ed95a512995`;
-- feature tree `7ee94553049f5d6de825a9883695719e2399a4a7`;
-- feature root CI `35576131678`: success;
-- focused module, root import, and full local `lake build UEOT`: success (`8990` jobs);
-- prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- audited `#print axioms` outputs only `propext`, `Classical.choice`, `Quot.sound`;
+  `2e12c0dbad89f8cddf8f2d195353580a5559c190`;
+- feature tree `fd32905323e09e14cba3b3950322a0e2dc5b47f7`;
+- feature root CI `35600355442`: success;
+- focused module, root import, and full local `lake build UEOT`: success
+  (`8991` jobs);
+- prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
+  `native_decide=0`, unsourced new `axiom=0`);
+- audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pevo03-main-integration@11e17eaab6385017c1515afaaff1a460a91e79c6`
-  from `main@85b3e410ab9a1ef71ca512c0e8f8f6a2f9aa6cb2`;
+  `formal/pper02-main-integration@959586d1161f27a7a5bbec88b0d1672cac39bc90`
+  from `main@4d2016267c246400ce0a6e025f9330eae820eef8`;
 - feature and clean-integration tree hashes identical:
-  `7ee94553049f5d6de825a9883695719e2399a4a7`;
-- clean integration focused/root/full local checks: success (`8990` jobs);
-- clean integration root CI `35576926135`: success;
-- proof PR #127 exact-head root CI `35577642954`: success;
-- proof main commit `4d581a675f4057069dbe19db7d0e182bfdf91ff8`;
-- proof resulting-main root CI `35578270234`: success.
+  `fd32905323e09e14cba3b3950322a0e2dc5b47f7`;
+- clean integration focused/root/full local checks: success (`8991` jobs);
+- clean integration root CI `35601197925`: success;
+- proof PR #129 exact-head root CI `35601980474`: success;
+- proof main commit `1aa9d4c0dd745a2909903c8d1083676b0ec11751`;
+- proof resulting-main root CI `35602757494`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 97/106
+## Previous FULL-GREEN checkpoint — 98/106
 
-P-CORE-01 and all earlier counted P-IDs form the authoritative 97/106 baseline.
-Its ledger landed at `main@85b3e410ab9a1ef71ca512c0e8f8f6a2f9aa6cb2`
-with ledger resulting-main CI `35573090853` success.
+P-EVO-03 and all earlier counted P-IDs form the authoritative 98/106 baseline.
+Its ledger landed at `main@4d2016267c246400ce0a6e025f9330eae820eef8`
+with ledger resulting-main CI `35582525823` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
-CI regression. P-EVO-03 is proof-complete on the current proof main but is not
+CI regression. P-PER-02 is proof-complete on the current proof main but is not
 counted FULL-GREEN until this independent ledger lifecycle completes.
 
 ## Branchless frontier evidence after this ledger closes
 
-No theorem branch is opened by this promotion. After a successful 98/106 ledger
-lifecycle, the exact remaining eight P-IDs are:
+No theorem branch is opened by this promotion. After a successful 99/106 ledger
+lifecycle, the exact remaining seven P-IDs are:
 
-- P-PER-02
 - P-QSD-01
 - P-QSD-04
 - P-CTL-02
@@ -155,7 +159,7 @@ lifecycle, the exact remaining eight P-IDs are:
 - P-KL-05
 - P-ALI-01
 
-The next theorem lane must be selected dynamically only after the exact 98/106
+The next theorem lane must be selected dynamically only after the exact 99/106
 FULL-GREEN `main` exists and the source/dependency/branch preflight is repeated.
 
 ## Reproducibility task
