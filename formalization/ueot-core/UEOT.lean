@@ -71,3 +71,5 @@ import UEOT.V3.SymmetricKilledSpectralStability
 import UEOT.V3.SingularValueEffectiveDimension
 import UEOT.V3.FiniteRecurrentDecompositionStability
 import UEOT.V3.CoreOperationalAssembly
+
+import UEOT.V3.EvolutionPerronGrowth
