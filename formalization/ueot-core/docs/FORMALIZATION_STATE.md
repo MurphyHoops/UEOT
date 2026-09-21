@@ -21,81 +21,76 @@ Last synchronized: **2026-09-21**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **96** |
+| integrated/proof-complete, staged by this checkpoint | **97** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **10** |
+| pending/not yet counted after this promotion | **9** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **95/106**.
-P-EVO-04 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **96/106**.
+P-CORE-01 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@ab9c4c220f442eec2b2e14709a3285e6dd01a066`; proof resulting-main root CI
-`35560658256` succeeded.
+`main@1a6d7d90d06988e0e0bda7a29061df955dfd0096`; proof resulting-main root CI
+`35570915485` succeeded.
 
-This ledger branch stages **96/106**. Do not call 96/106 FULL-GREEN until the
+This ledger branch stages **97/106**. Do not call 97/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-EVO-04
+## Newly staged proof — P-CORE-01
 
-Frozen Core 3 §25.5 starts from a finite-type branching population satisfying
-`E[Z_{n+1}|F_n]=Z_nM`. With K-PF-01 inputs `R>0`, `r>0`, `Mr=Rr`, it
-requires the normalized reproductive value
-`W_n=R^{-n}Z_nr` to be a nonnegative integrable martingale with
-`EW_n=Z_0r` for finite deterministic initial counts.
+Frozen Core 3 §31.1 assembles the finite operational certificate on one common
+high-probability event. The source-facing Lean theorem keeps the true source
+objects fixed across samples and combines exact predictive/carrier recovery,
+quotient control, action-gap certification, same-policy finite path stability,
+conditional mixing/recurrent GOA stability, P-ID history transport, and the
+source-direction integrity margin.
 
-The formalization keeps the vector conditional-mean identity literal, derives
-the scalar recursion through a finite continuous-linear reproductive-value
-readout, proves exact normalization by `R`, then derives adaptedness,
-integrability, nonnegativity, the actual martingale, and constant expectation.
-It adds no uniform-integrability, `L¹)-convergence, limit-identification, or
-nonextinction-positivity conclusion forbidden by the source boundary.
+The implementation uses one lifted greedy policy for the control/path/GOA ports,
+derives the `D`/`2D` bounds from the approximation data, places optional
+mixing/recurrent/history clauses inside the same `CorePointwiseCertificate`, and
+uses `HEq` plus policy-kernel equalities to prevent recurrent-source substitution.
+Shared failure keys are deduplicated through the common-event construction.
 
 Canonical theorem:
-- `UEOT.V3.EvolutionReproductiveMartingale.p_evo_04`.
+- `UEOT.V3.CoreOperationalAssembly.p_core_01`.
 
 Supporting module:
-- `UEOT.V3.EvolutionReproductiveMartingale`.
+- `UEOT.V3.CoreOperationalAssembly`.
 
 Promotion evidence:
-- canonical frozen source hash/source-lock evidence re-audited before commit;
-- feature commit `f09c411f41c4386089cab17f6fcdc536314b762c`;
-- feature tree `f162b2c9a1f34d55d58185eaaa9dfe0f94b2f540`;
-- feature root CI `35539758527`: success;
-- full local `lake build UEOT`: success (`8988` jobs);
-- two independent final source/proof audits: PASS;
+- two independent final source/proof audits: GREEN;
+- feature commit `bad381814a902047ece0f813d6b3385c71bc9db1`;
+- feature tree `85ba74aaa1fbabb36a1b766ad8cd32f34e70f185`;
+- feature root CI `35569184015`: success;
+- full feature `lake build UEOT`: success (`8989` jobs);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
-- `#print axioms` for
-  `EvolutionReproductiveMartingale.p_evo_04`: only standard `propext`,
-  `Classical.choice`, `Quot.sound`;
+- audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pevo04-main-integration@1c167457bbfa27f7ec3f60861479aba6f75303f5`
-  from `main@ee529be7008b38dbe928223ef1beebbd49db0912`;
-- feature/integration tree hash
-  `f162b2c9a1f34d55d58185eaaa9dfe0f94b2f540` identical;
-- clean integration root CI `35559166344`: success;
-- proof PR #123 root CI `35560162916`: success;
-- proof main `ab9c4c220f442eec2b2e14709a3285e6dd01a066`;
-- proof resulting-main root CI `35560658256`: success.
+  `formal/pcore01-main-integration@a34423f7abd99a172605eb6a321e39c5c45921fb`
+  from `main@5a18daa6a14edd0dc609fd0db72661e422991b17`;
+- feature/integration tree hash identical;
+- integration full local `lake build UEOT`: success (`8989` jobs);
+- integration root CI `35569862884`: success;
+- proof PR #125 exact-head root CI `35570425596`: success;
+- proof main `1a6d7d90d06988e0e0bda7a29061df955dfd0096`;
+- proof resulting-main root CI `35570915485`: success.
 
-## Previous FULL-GREEN checkpoint — 95/106
+## Previous FULL-GREEN checkpoint — 96/106
 
-P-GOA-03 and all earlier counted P-IDs remain closed. The 95/106 ledger landed
-at `main@ee529be7008b38dbe928223ef1beebbd49db0912` with resulting-main CI
-`35538326271` success.
+P-EVO-04 and all earlier counted P-IDs remain closed. The 96/106 ledger landed
+at `main@5a18daa6a14edd0dc609fd0db72661e422991b17` with resulting-main CI
+`35562298378` success.
 
-P-QUO-03 and P-TEL-01 are already counted and must not be reopened or
-re-counted merely because older compilation reports predate their promotion.
+P-CORE-01 is proof-complete but remains staged, not counted FULL-GREEN, until
+this separate ledger lifecycle completes.
 
-## Branchless frontier after the 96 ledger closes
+## Branchless frontier after the 97 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. The next lane must be
-selected from an exact 96/106-main source/dependency audit. P-CORE-01 remains a
-read-only candidate; P-EVO-03 remains uncounted and requires the full K-PF-01
-asymptotic package; P-PER-02 / P-QSD-01 remain read-only alternatives requiring
-continuous-time semigroup / occupation-measure infrastructure.
+No theorem branch is opened by this ledger lifecycle. After a successful 97/106
+promotion, the remaining P-IDs are exactly P-PER-02, P-QSD-01, P-QSD-04,
+P-CTL-02, P-CTL-03, P-KL-04, P-KL-05, P-ALI-01, and P-EVO-03.
 
-The next theorem lane must be selected dynamically from the exact 96/106
+The next theorem lane must be selected dynamically from the exact 97/106
 FULL-GREEN main after this ledger finishes, rather than being opened early from
 this staged branch.
 
