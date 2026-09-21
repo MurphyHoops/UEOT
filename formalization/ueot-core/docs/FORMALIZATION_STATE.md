@@ -21,76 +21,77 @@ Last synchronized: **2026-09-21**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **97** |
+| integrated/proof-complete, staged by this checkpoint | **98** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **9** |
+| pending/not yet counted after this promotion | **8** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **96/106**.
-P-CORE-01 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **97/106**.
+P-EVO-03 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@1a6d7d90d06988e0e0bda7a29061df955dfd0096`; proof resulting-main root CI
-`35570915485` succeeded.
+`main@4d581a675f4057069dbe19db7d0e182bfdf91ff8`; proof resulting-main root CI
+`35578270234` succeeded.
 
-This ledger branch stages **97/106**. Do not call 97/106 FULL-GREEN until the
+This ledger branch stages **98/106**. Do not call 98/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-CORE-01
+## Newly staged proof — P-EVO-03
 
-Frozen Core 3 §31.1 assembles the finite operational certificate on one common
-high-probability event. The source-facing Lean theorem keeps the true source
-objects fixed across samples and combines exact predictive/carrier recovery,
-quotient control, action-gap certification, same-policy finite path stability,
-conditional mixing/recurrent GOA stability, P-ID history transport, and the
-source-direction integrity margin.
+Frozen Core 3 §25.4 takes a finite primitive nonnegative mean matrix `M` and the
+full K-PF-01 Perron package. For every nonzero nonnegative initial count row it
+requires the scaled mean limit `R⁻ⁿ z₀Mⁿ → (z₀r)l`, normalized mean composition
+convergence to `l`, and uniqueness of every strictly positive linear
+reproductive valuation.
 
-The implementation uses one lifted greedy policy for the control/path/GOA ports,
-derives the `D`/`2D` bounds from the approximation data, places optional
-mixing/recurrent/history clauses inside the same `CorePointwiseCertificate`, and
-uses `HEq` plus policy-kernel equalities to prevent recurrent-source substitution.
-Shared failure keys are deduplicated through the common-event construction.
+The implementation keeps the K-PF interface tied to the same `M`, derives the
+positive initial reproductive value, finite-sum scaled coordinate and mass
+limits, eventual positive denominator and ratio convergence, then derives
+`Mw = ρw` from the valuation identity by coordinate unit rows before invoking
+the positive Perron eigenvector uniqueness clause. It adds no unsourced
+constructor from primitiveness to the complete PF package.
 
 Canonical theorem:
-- `UEOT.V3.CoreOperationalAssembly.p_core_01`.
+- `UEOT.V3.EvolutionPerronGrowth.p_evo_03`.
 
 Supporting module:
-- `UEOT.V3.CoreOperationalAssembly`.
+- `UEOT.V3.EvolutionPerronGrowth`.
 
 Promotion evidence:
 - two independent final source/proof audits: GREEN;
-- feature commit `bad381814a902047ece0f813d6b3385c71bc9db1`;
-- feature tree `85ba74aaa1fbabb36a1b766ad8cd32f34e70f185`;
-- feature root CI `35569184015`: success;
-- full feature `lake build UEOT`: success (`8989` jobs);
+- feature commit `340a56d4ca19236bba141b79b8471ed95a512995`;
+- feature tree `7ee94553049f5d6de825a9883695719e2399a4a7`;
+- feature root CI `35576131678`: success;
+- focused/root/full feature checks: success (`8990` jobs);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pcore01-main-integration@a34423f7abd99a172605eb6a321e39c5c45921fb`
-  from `main@5a18daa6a14edd0dc609fd0db72661e422991b17`;
-- feature/integration tree hash identical;
-- integration full local `lake build UEOT`: success (`8989` jobs);
-- integration root CI `35569862884`: success;
-- proof PR #125 exact-head root CI `35570425596`: success;
-- proof main `1a6d7d90d06988e0e0bda7a29061df955dfd0096`;
-- proof resulting-main root CI `35570915485`: success.
+  `formal/pevo03-main-integration@11e17eaab6385017c1515afaaff1a460a91e79c6`
+  from `main@85b3e410ab9a1ef71ca512c0e8f8f6a2f9aa6cb2`;
+- feature/integration tree hash identical:
+  `7ee94553049f5d6de825a9883695719e2399a4a7`;
+- integration focused/root/full local checks: success (`8990` jobs);
+- integration root CI `35576926135`: success;
+- proof PR #127 exact-head root CI `35577642954`: success;
+- proof main `4d581a675f4057069dbe19db7d0e182bfdf91ff8`;
+- proof resulting-main root CI `35578270234`: success.
 
-## Previous FULL-GREEN checkpoint — 96/106
+## Previous FULL-GREEN checkpoint — 97/106
 
-P-EVO-04 and all earlier counted P-IDs remain closed. The 96/106 ledger landed
-at `main@5a18daa6a14edd0dc609fd0db72661e422991b17` with resulting-main CI
-`35562298378` success.
+P-CORE-01 and all earlier counted P-IDs remain closed. The 97/106 ledger landed
+at `main@85b3e410ab9a1ef71ca512c0e8f8f6a2f9aa6cb2` with resulting-main CI
+`35573090853` success.
 
-P-CORE-01 is proof-complete but remains staged, not counted FULL-GREEN, until
+P-EVO-03 is proof-complete but remains staged, not counted FULL-GREEN, until
 this separate ledger lifecycle completes.
 
-## Branchless frontier after the 97 ledger closes
+## Branchless frontier after the 98 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. After a successful 97/106
+No theorem branch is opened by this ledger lifecycle. After a successful 98/106
 promotion, the remaining P-IDs are exactly P-PER-02, P-QSD-01, P-QSD-04,
-P-CTL-02, P-CTL-03, P-KL-04, P-KL-05, P-ALI-01, and P-EVO-03.
+P-CTL-02, P-CTL-03, P-KL-04, P-KL-05, and P-ALI-01.
 
-The next theorem lane must be selected dynamically from the exact 97/106
+The next theorem lane must be selected dynamically from the exact 98/106
 FULL-GREEN main after this ledger finishes, rather than being opened early from
 this staged branch.
 
