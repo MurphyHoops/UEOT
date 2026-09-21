@@ -73,3 +73,4 @@ import UEOT.V3.FiniteRecurrentDecompositionStability
 import UEOT.V3.CoreOperationalAssembly
 
 import UEOT.V3.EvolutionPerronGrowth
+import UEOT.V3.PersistenceOccupation
