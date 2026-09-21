@@ -21,77 +21,79 @@ Last synchronized: **2026-09-21**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **98** |
+| integrated/proof-complete, staged by this checkpoint | **99** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **8** |
+| pending/not yet counted after this promotion | **7** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **97/106**.
-P-EVO-03 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **98/106**.
+P-PER-02 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@4d581a675f4057069dbe19db7d0e182bfdf91ff8`; proof resulting-main root CI
-`35578270234` succeeded.
+`main@1aa9d4c0dd745a2909903c8d1083676b0ec11751`; proof resulting-main root CI
+`35602757494` succeeded.
 
-This ledger branch stages **98/106**. Do not call 98/106 FULL-GREEN until the
+This ledger branch stages **99/106**. Do not call 99/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-EVO-03
+## Newly staged proof — P-PER-02
 
-Frozen Core 3 §25.4 takes a finite primitive nonnegative mean matrix `M` and the
-full K-PF-01 Perron package. For every nonzero nonnegative initial count row it
-requires the scaled mean limit `R⁻ⁿ z₀Mⁿ → (z₀r)l`, normalized mean composition
-convergence to `l`, and uniqueness of every strictly positive linear
-reproductive valuation.
+Frozen Core 3 §8.4 is the Krylov-Bogoliubov occupation-measure persistence
+statement for a continuous-time Feller semigroup on a Polish space. The literal
+marginal average `bar μ_T = T⁻¹ ∫₀ᵀ μ₀P_t dt` is tight for `T >= 1`; every
+diverging time sequence therefore has a weakly convergent subsequence, every
+weak limit is invariant, and closed support of all time marginals is retained
+by every such limit. No sample-path empirical-frequency convergence is claimed.
 
-The implementation keeps the K-PF interface tied to the same `M`, derives the
-positive initial reproductive value, finite-sum scaled coordinate and mass
-limits, eventual positive denominator and ratio convergence, then derives
-`Mw = ρw` from the valuation identity by coordinate unit rows before invoking
-the positive Perron eigenvector uniqueness clause. It adds no unsourced
-constructor from primitiveness to the complete PF package.
+The implementation ties all marginals to the same initial law and semigroup,
+uses the `C_b` Feller action, proves the exact `2s||f||∞/T` shift bound, takes
+weak limits via tightness/Prokhorov, proves invariance for arbitrary diverging
+weak limits, and retains closed support by the closed-set Portmanteau bound.
+The occupation interfaces are extensional faces of the literal time-average
+measure rather than invariance or limit assumptions.
 
 Canonical theorem:
-- `UEOT.V3.EvolutionPerronGrowth.p_evo_03`.
+- `UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02`.
 
 Supporting module:
-- `UEOT.V3.EvolutionPerronGrowth`.
+- `UEOT.V3.PersistenceOccupation`.
 
 Promotion evidence:
-- two independent final source/proof audits: GREEN;
-- feature commit `340a56d4ca19236bba141b79b8471ed95a512995`;
-- feature tree `7ee94553049f5d6de825a9883695719e2399a4a7`;
-- feature root CI `35576131678`: success;
-- focused/root/full feature checks: success (`8990` jobs);
-- prohibited-proof audit clean (`sorry=0`, Lean `admit=0`, `native_decide=0`, unsourced new `axiom=0`);
+- final source/proof audits: GREEN;
+- feature commit `2e12c0dbad89f8cddf8f2d195353580a5559c190`;
+- feature tree `fd32905323e09e14cba3b3950322a0e2dc5b47f7`;
+- feature root CI `35600355442`: success;
+- focused/root/full feature checks: success (`8991` jobs);
+- prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
+  `native_decide=0`, unsourced new `axiom=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pevo03-main-integration@11e17eaab6385017c1515afaaff1a460a91e79c6`
-  from `main@85b3e410ab9a1ef71ca512c0e8f8f6a2f9aa6cb2`;
+  `formal/pper02-main-integration@959586d1161f27a7a5bbec88b0d1672cac39bc90`
+  from `main@4d2016267c246400ce0a6e025f9330eae820eef8`;
 - feature/integration tree hash identical:
-  `7ee94553049f5d6de825a9883695719e2399a4a7`;
-- integration focused/root/full local checks: success (`8990` jobs);
-- integration root CI `35576926135`: success;
-- proof PR #127 exact-head root CI `35577642954`: success;
-- proof main `4d581a675f4057069dbe19db7d0e182bfdf91ff8`;
-- proof resulting-main root CI `35578270234`: success.
+  `fd32905323e09e14cba3b3950322a0e2dc5b47f7`;
+- integration focused/root/full local checks: success (`8991` jobs);
+- integration root CI `35601197925`: success;
+- proof PR #129 exact-head root CI `35601980474`: success;
+- proof main `1aa9d4c0dd745a2909903c8d1083676b0ec11751`;
+- proof resulting-main root CI `35602757494`: success.
 
-## Previous FULL-GREEN checkpoint — 97/106
+## Previous FULL-GREEN checkpoint — 98/106
 
-P-CORE-01 and all earlier counted P-IDs remain closed. The 97/106 ledger landed
-at `main@85b3e410ab9a1ef71ca512c0e8f8f6a2f9aa6cb2` with resulting-main CI
-`35573090853` success.
+P-EVO-03 and all earlier counted P-IDs remain closed. The 98/106 ledger landed
+at `main@4d2016267c246400ce0a6e025f9330eae820eef8` with resulting-main CI
+`35582525823` success.
 
-P-EVO-03 is proof-complete but remains staged, not counted FULL-GREEN, until
+P-PER-02 is proof-complete but remains staged, not counted FULL-GREEN, until
 this separate ledger lifecycle completes.
 
-## Branchless frontier after the 98 ledger closes
+## Branchless frontier after the 99 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. After a successful 98/106
-promotion, the remaining P-IDs are exactly P-PER-02, P-QSD-01, P-QSD-04,
-P-CTL-02, P-CTL-03, P-KL-04, P-KL-05, and P-ALI-01.
+No theorem branch is opened by this ledger lifecycle. After a successful 99/106
+promotion, the remaining P-IDs are exactly P-QSD-01, P-QSD-04, P-CTL-02,
+P-CTL-03, P-KL-04, P-KL-05, and P-ALI-01.
 
-The next theorem lane must be selected dynamically from the exact 98/106
+The next theorem lane must be selected dynamically from the exact 99/106
 FULL-GREEN main after this ledger finishes, rather than being opened early from
 this staged branch.
 
