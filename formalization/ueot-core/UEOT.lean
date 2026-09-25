@@ -28,6 +28,7 @@ import UEOT.V3.EvolutionReproductiveMartingale
 import UEOT.V3.CompositionBooleanAtoms
 import UEOT.V3.CompositionCarrierLift
 import UEOT.V3.AlignmentParentValue
+import UEOT.V3.AlignmentGlobalExactness
 import UEOT.V3.CompositionWindow
 import UEOT.V3.CompositionParentInformation
 import UEOT.V3.PathKLChain
