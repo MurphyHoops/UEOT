@@ -21,77 +21,83 @@ Last synchronized: **2026-09-25**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **101** |
+| integrated/proof-complete, staged by this checkpoint | **102** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **5** |
+| pending/not yet counted after this promotion | **4** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **100/106**.
-P-ALI-01 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **101/106**.
+P-CTL-02 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@d7cfc9975aed004123b5a3cf9a71fb28f434bc56`; proof resulting-main root CI
-`36115569409` succeeded.
+`main@6a334b4c9870cf73ecda97a65965f822cf5e9e26`; proof resulting-main root CI
+`36142098525` succeeded.
 
-This ledger branch stages **101/106**. Do not call 101/106 FULL-GREEN until the
+This ledger branch stages **102/106**. Do not call 102/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-ALI-01
+## Newly staged proof — P-CTL-02
 
-Frozen Core 3 §24.2 states that on a connected smooth manifold, a `C¹` one-form
-`ω` is globally exact exactly when its integral around every piecewise-smooth
-closed curve vanishes.
+Frozen Core 3 §19.3 states the compact discounted-control theorem for compact
+metric state/action spaces, fixed nonempty action space, continuous reward,
+weakly continuous Markov kernel, and `0 < β < 1`: the Bellman operator on
+`C(X, ℝ)` is a `β`-contraction with a unique continuous fixed point and a
+measurable stationary optimal selector.
 
-The implementation represents `ω` as a `C¹` cotangent-bundle section, defines
-piecewise-smooth paths from smooth arcs with concatenation and reversal, proves
-the exact-form direction by the one-dimensional FTC on each arc, and proves the
-reverse direction from a basepoint path integral. Closed periods give path
-independence; connectedness gives smooth reachability; a local chart-segment
-primitive supplies the endpoint derivative `dV = ω`. No simply-connectedness or
-global convexity hypothesis is added.
+The implementation represents weak continuity by continuity of every
+continuous-test-function integral and proves this equals continuity in
+Mathlib's weak topology on probability measures. Compact maximization gives a
+Bellman self-map of `C(X, ℝ)`; sup-norm estimates prove the contraction and
+Banach gives the unique continuous fixed point. A measurable maximizer is
+constructed directly from shrinking compact neighborhoods of a dense sequence
+and a measurable Cauchy limit, without assuming a general selection theorem.
+Finally, full-history randomized causal policies are evaluated by nested
+kernel recursion; Bellman domination bounds all of them and the measurable
+stationary deterministic greedy policy attains the fixed-point value.
 
 Canonical theorem:
-- `UEOT.V3.AlignmentGlobalExactness.p_ali_01`.
+- `UEOT.V3.CompactFellerControl.Model.p_ctl_02`.
 
-Supporting module:
-- `UEOT.V3.AlignmentGlobalExactness`.
+Supporting modules:
+- `UEOT.V3.CompactArgmaxSelector`;
+- `UEOT.V3.CompactCausalOptimalityCore`;
+- `UEOT.V3.CompactFellerControl`.
 
 Promotion evidence:
-- final source/proof audits: GREEN;
-- feature commit `2307932f13ec9079350589eeada692f636bb9bcb`;
-- feature tree `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
-- feature root CI `36113464991`: success;
-- focused module, root import, and full feature checks: success (`8993` jobs);
+- final frozen-source/proof audit: CLEAR, zero blockers;
+- feature commit `4b17ec1219f95dd9fa0480f46beea6e585c122eb`;
+- feature tree `7497670441126d08f2fdb91b15ada086d2a9565f`;
+- feature root CI `36139857404`: success;
+- focused module, root import, and full feature checks: success (`8996` jobs);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pali01-main-integration@e178a46ce0d9454f45ca78dcf98f6e4feaef918c`
-  from `main@7981d9c0b66a2bd834d75acedb8e152e25120da9`;
+  `formal/pctl02-main-integration@863c9679b9d025a5f58282af4548fe5587e37860`
+  from `main@7add6a361c8c46f7539d48ace389d403219b053d`;
 - feature/integration tree hash identical:
-  `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
-- integration focused/root/full local checks: success (`8993` jobs);
-- integration root CI `36114241467`: success;
-- proof PR #133 exact-head root CI `36114862119`: success;
-- proof main `d7cfc9975aed004123b5a3cf9a71fb28f434bc56`;
-- proof resulting-main root CI `36115569409`: success.
+  `7497670441126d08f2fdb91b15ada086d2a9565f`;
+- integration root CI `36140869360`: success;
+- proof PR #135 exact-head root CI `36141205611`: success;
+- proof main `6a334b4c9870cf73ecda97a65965f822cf5e9e26`;
+- proof resulting-main root CI `36142098525`: success.
 
-## Previous FULL-GREEN checkpoint — 100/106
+## Previous FULL-GREEN checkpoint — 101/106
 
-P-QSD-01 and all earlier counted P-IDs remain closed. The 100/106 ledger landed
-at `main@7981d9c0b66a2bd834d75acedb8e152e25120da9` with resulting-main CI
-`35905352725` success.
+P-ALI-01 and all earlier counted P-IDs remain closed. The 101/106 ledger landed
+at `main@7add6a361c8c46f7539d48ace389d403219b053d` with resulting-main CI
+`36125245565` success.
 
-P-ALI-01 is proof-complete but remains staged, not counted FULL-GREEN, until
+P-CTL-02 is proof-complete but remains staged, not counted FULL-GREEN, until
 this separate ledger lifecycle completes.
 
-## Branchless frontier after the 101 ledger closes
+## Branchless frontier after the 102 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. After a successful 101/106
-promotion, the remaining P-IDs are exactly P-QSD-04, P-CTL-02, P-CTL-03,
-P-KL-04, and P-KL-05.
+No theorem branch is opened by this ledger lifecycle. After a successful 102/106
+promotion, the remaining P-IDs are exactly P-QSD-04, P-CTL-03, P-KL-04, and
+P-KL-05.
 
-The next theorem lane must be selected dynamically from the exact 101/106
+The next theorem lane must be selected dynamically from the exact 102/106
 FULL-GREEN main after this ledger finishes, rather than being opened early from
 this staged branch.
 
