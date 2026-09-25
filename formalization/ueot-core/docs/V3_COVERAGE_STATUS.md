@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **101** |
+| **proved, staged by this ledger checkpoint** | **102** |
 | **partial** | **0** |
-| **pending / not yet counted** | **5** |
+| **pending / not yet counted** | **4** |
 | **total** | **106** |
 
-This branch stages **101/106** after P-ALI-01 completed source-semantic, feature,
+This branch stages **102/106** after P-CTL-02 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**101/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**102/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -46,7 +46,7 @@ mathematics or Lean code exists.
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
 - **Quotient:** P-QUO-01, P-QUO-02, P-QUO-03, P-QUO-04, P-QUO-05
-- **Control:** P-CTL-01
+- **Control:** P-CTL-01, P-CTL-02
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
 - **Bridge:** P-BRG-01, P-BRG-02
@@ -69,83 +69,91 @@ mathematics or Lean code exists.
 - **GOA:** P-GOA-01, P-GOA-02, P-GOA-03, P-GOA-04
 - **Core assembly:** P-CORE-01
 
-Count check: `100 + P-ALI-01 = 101`.
+Count check: `101 + P-CTL-02 = 102`.
 
-## Newly staged promotion — P-ALI-01
+## Newly staged promotion — P-CTL-02
 
-Frozen Core 3 §24.2 states that on a connected smooth manifold, a `C¹` one-form
-`ω` is globally exact if and only if its integral vanishes on every
-piecewise-smooth closed curve.
+Frozen Core 3 §19.3 states the compact discounted-control theorem: for compact
+metric state and action spaces, a fixed nonempty action space, continuous
+reward, a weakly continuous Markov kernel, and `0 < β < 1`, the Bellman
+operator on `C(X, ℝ)` is a `β`-contraction with a unique continuous fixed
+point and admits a measurable stationary optimal selector.
 
 The formalization preserves that contract:
 
-1. `C1OneForm` is an intrinsic `C¹` cotangent-bundle section;
-2. `PiecewiseSmoothPath` is built from smooth arcs with composition and reversal,
-   and `ClosedPeriods` quantifies over every closed path in that carrier;
-3. exact forms have zero periods by the one-dimensional FTC on each smooth arc,
-   extended to paths by additivity and reversal;
-4. closed periods imply path independence by closing one path with the reverse
-   of another;
-5. `ConnectedSpace M` supplies piecewise-smooth reachability from a fixed
-   basepoint, so the reverse direction defines a global path-integral potential;
-6. in a local chart, a short chart segment identifies the potential increment
-   with a curve integral, and the endpoint derivative gives `dV = ω`.
-
-No simply-connectedness or global convexity hypothesis is assumed.
+1. `CompactFellerControl.Model` uses compact metric `X` and `A`, fixed
+   nonempty `A`, a continuous reward `C(X × A, ℝ)`, a Markov transition
+   kernel, and `0 < β < 1`;
+2. weak continuity is stored as continuity of
+   `(x,a) ↦ ∫ v dP(x,a)` for every `v : C(X, ℝ)`, and
+   `transitionPM_continuous` proves this is literal continuity into Mathlib's
+   weak topology on `ProbabilityMeasure X`;
+3. compact-action maximization keeps the Bellman operator inside `C(X, ℝ)`,
+   and the expectation/sup-norm estimates prove the exact `β`-contraction;
+4. Banach contraction gives the unique continuous fixed point
+   `optimalValue` (with value-iteration convergence and a residual bound);
+5. the measurable argmax selector is constructed directly from a fixed dense
+   sequence, shrinking compact balls, countable `measurable_find`, a summable
+   Cauchy bound, and a measurable limit; no general measurable-selection
+   theorem or assumed optimal selector is imported;
+6. arbitrary randomized full-history causal policies are evaluated by exact
+   nested action/transition kernel recursion. Bellman domination bounds every
+   such causal policy, while the measurable deterministic stationary greedy
+   policy attains `optimalValue`.
 
 Canonical theorem surface:
-- `UEOT.V3.AlignmentGlobalExactness.p_ali_01`.
+- `UEOT.V3.CompactFellerControl.Model.p_ctl_02`.
 
-Supporting module:
-- `UEOT/V3/AlignmentGlobalExactness.lean`.
+Supporting modules:
+- `UEOT/V3/CompactArgmaxSelector.lean`;
+- `UEOT/V3/CompactCausalOptimalityCore.lean`;
+- `UEOT/V3/CompactFellerControl.lean`.
 
 Promotion evidence:
-- frozen §24.2 source contract independently audited against the final theorem:
-  GREEN;
+- frozen §19.3 source/proof contract independently audited against the final
+  implementation: CLEAR, zero blockers;
 - source-facing feature commit
-  `2307932f13ec9079350589eeada692f636bb9bcb`;
-- feature tree `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
-- feature root CI `36113464991`: success;
+  `4b17ec1219f95dd9fa0480f46beea6e585c122eb`;
+- feature tree `7497670441126d08f2fdb91b15ada086d2a9565f`;
+- feature root CI `36139857404`: success;
 - focused module, root import, and full local `lake build UEOT`: success
-  (`8993` jobs);
+  (`8996` jobs);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pali01-main-integration@e178a46ce0d9454f45ca78dcf98f6e4feaef918c`
-  from `main@7981d9c0b66a2bd834d75acedb8e152e25120da9`;
+  `formal/pctl02-main-integration@863c9679b9d025a5f58282af4548fe5587e37860`
+  from `main@7add6a361c8c46f7539d48ace389d403219b053d`;
 - feature and clean-integration tree hashes identical:
-  `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
-- clean integration focused/root/full local checks: success (`8993` jobs);
-- clean integration root CI `36114241467`: success;
-- proof PR #133 exact-head root CI `36114862119`: success;
-- proof main commit `d7cfc9975aed004123b5a3cf9a71fb28f434bc56`;
-- proof resulting-main root CI `36115569409`: success.
+  `7497670441126d08f2fdb91b15ada086d2a9565f`;
+- clean integration root CI `36140869360`: success;
+- proof PR #135 exact-head root CI `36141205611`: success;
+- proof main commit `6a334b4c9870cf73ecda97a65965f822cf5e9e26`;
+- proof resulting-main root CI `36142098525`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 100/106
+## Previous FULL-GREEN checkpoint — 101/106
 
-P-QSD-01 and all earlier counted P-IDs form the authoritative 100/106 baseline.
-Its ledger landed at `main@7981d9c0b66a2bd834d75acedb8e152e25120da9`
-with ledger resulting-main CI `35905352725` success.
+P-ALI-01 and all earlier counted P-IDs form the authoritative 101/106 baseline.
+Its ledger landed at `main@7add6a361c8c46f7539d48ace389d403219b053d`
+with ledger resulting-main CI `36125245565` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
-CI regression. P-ALI-01 is proof-complete on the current proof main but is not
+CI regression. P-CTL-02 is proof-complete on the current proof main but is not
 counted FULL-GREEN until this independent ledger lifecycle completes.
 
 ## Branchless frontier evidence after this ledger closes
 
-No theorem branch is opened by this promotion. After a successful 101/106 ledger
-lifecycle, the exact remaining five P-IDs are:
+No theorem branch is opened by this promotion. After a successful 102/106 ledger
+lifecycle, the exact remaining four P-IDs are:
 
 - P-QSD-04
-- P-CTL-02
 - P-CTL-03
 - P-KL-04
 - P-KL-05
 
-The next theorem lane must be selected dynamically only after the exact 101/106
+The next theorem lane must be selected dynamically only after the exact 102/106
 FULL-GREEN `main` exists and the source/dependency/branch preflight is repeated.
 
 ## Reproducibility task
