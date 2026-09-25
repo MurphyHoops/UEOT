@@ -4,7 +4,7 @@
 > GitHub Issue #56 carries the live cross-chat construction log and overrides
 > stale fallback snapshots.
 
-Last synchronized: **2026-09-24**
+Last synchronized: **2026-09-25**
 
 ## Environment
 
@@ -21,76 +21,77 @@ Last synchronized: **2026-09-24**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **100** |
+| integrated/proof-complete, staged by this checkpoint | **101** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **6** |
+| pending/not yet counted after this promotion | **5** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **99/106**.
-P-QSD-01 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **100/106**.
+P-ALI-01 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@ac17ea1a0859b364542fa4996de1e7458b94b53a`; proof resulting-main root CI
-`35900895439` succeeded.
+`main@d7cfc9975aed004123b5a3cf9a71fb28f434bc56`; proof resulting-main root CI
+`36115569409` succeeded.
 
-This ledger branch stages **100/106**. Do not call 100/106 FULL-GREEN until the
+This ledger branch stages **101/106**. Do not call 101/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-QSD-01
+## Newly staged proof — P-ALI-01
 
-Frozen Core 3 §10.1 states that total-variation convergence of the literal
-conditioned killed-semigroup laws to `q`, together with positive finite-time
-survival and right continuity at zero, forces `q` to be quasi-stationary with
-an exponential survival law `exp(-λt)`, `λ >= 0`.
+Frozen Core 3 §24.2 states that on a connected smooth manifold, a `C¹` one-form
+`ω` is globally exact exactly when its integral around every piecewise-smooth
+closed curve vanishes.
 
-The implementation keeps one fixed initial law, derives the conditional shift
-identity from semigroup composition and normalization, derives the QSD
-eigenmeasure law from TV convergence, derives survival multiplicativity, and
-then obtains the exponential law from positivity plus right continuity. It does
-not assume the QSD identity, the shift identity, or the rate conclusion.
+The implementation represents `ω` as a `C¹` cotangent-bundle section, defines
+piecewise-smooth paths from smooth arcs with concatenation and reversal, proves
+the exact-form direction by the one-dimensional FTC on each arc, and proves the
+reverse direction from a basepoint path integral. Closed periods give path
+independence; connectedness gives smooth reachability; a local chart-segment
+primitive supplies the endpoint derivative `dV = ω`. No simply-connectedness or
+global convexity hypothesis is added.
 
 Canonical theorem:
-- `UEOT.V3.QSDTVLimit.p_qsd_01`.
+- `UEOT.V3.AlignmentGlobalExactness.p_ali_01`.
 
 Supporting module:
-- `UEOT.V3.QSDTVLimit`.
+- `UEOT.V3.AlignmentGlobalExactness`.
 
 Promotion evidence:
 - final source/proof audits: GREEN;
-- feature commit `b9625635c10cc114e854bfc1e1d7b2af277a47d8`;
-- feature tree `f269847d42b34f5c7cd30236e011aa841a0aafb7`;
-- feature root CI `35624526524`: success;
-- focused/root/full feature checks: success (`8992` jobs);
+- feature commit `2307932f13ec9079350589eeada692f636bb9bcb`;
+- feature tree `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
+- feature root CI `36113464991`: success;
+- focused module, root import, and full feature checks: success (`8993` jobs);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pqsd01-main-integration@10a37206f049684c292c53d7826087f05580d489`
-  from `main@9b00f80e091a80cc335cd592e527d0e98253f5f7`;
+  `formal/pali01-main-integration@e178a46ce0d9454f45ca78dcf98f6e4feaef918c`
+  from `main@7981d9c0b66a2bd834d75acedb8e152e25120da9`;
 - feature/integration tree hash identical:
-  `f269847d42b34f5c7cd30236e011aa841a0aafb7`;
-- integration focused/root/full local checks: success (`8992` jobs);
-- integration root CI `35628806058`: success;
-- proof PR #131 exact-head root CI `35629472501`, attempt 2: success;
-- proof main `ac17ea1a0859b364542fa4996de1e7458b94b53a`;
-- proof resulting-main root CI `35900895439`: success.
+  `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
+- integration focused/root/full local checks: success (`8993` jobs);
+- integration root CI `36114241467`: success;
+- proof PR #133 exact-head root CI `36114862119`: success;
+- proof main `d7cfc9975aed004123b5a3cf9a71fb28f434bc56`;
+- proof resulting-main root CI `36115569409`: success.
 
-## Previous FULL-GREEN checkpoint — 99/106
+## Previous FULL-GREEN checkpoint — 100/106
 
-P-PER-02 and all earlier counted P-IDs remain closed. The 99/106 ledger landed
-at `main@9b00f80e091a80cc335cd592e527d0e98253f5f7` with resulting-main CI
-`35605364675` success.
+P-QSD-01 and all earlier counted P-IDs remain closed. The 100/106 ledger landed
+at `main@7981d9c0b66a2bd834d75acedb8e152e25120da9` with resulting-main CI
+`35905352725` success.
 
-P-QSD-01 is proof-complete but remains staged, not counted FULL-GREEN, until
+P-ALI-01 is proof-complete but remains staged, not counted FULL-GREEN, until
 this separate ledger lifecycle completes.
 
-## Branchless frontier after the 100 ledger closes
+## Branchless frontier after the 101 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. After a successful 100/106
+No theorem branch is opened by this ledger lifecycle. After a successful 101/106
 promotion, the remaining P-IDs are exactly P-QSD-04, P-CTL-02, P-CTL-03,
-P-KL-04, P-KL-05, and P-ALI-01.
+P-KL-04, and P-KL-05.
 
-The next theorem lane must be selected dynamically from the exact 100/106
+The next theorem lane must be selected dynamically from the exact 101/106
 FULL-GREEN main after this ledger finishes, rather than being opened early from
 this staged branch.
 

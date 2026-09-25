@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **100** |
+| **proved, staged by this ledger checkpoint** | **101** |
 | **partial** | **0** |
-| **pending / not yet counted** | **6** |
+| **pending / not yet counted** | **5** |
 | **total** | **106** |
 
-This branch stages **100/106** after P-QSD-01 completed source-semantic, feature,
+This branch stages **101/106** after P-ALI-01 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**100/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**101/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -60,7 +60,7 @@ mathematics or Lean code exists.
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
 - **Omega / integrity:** P-OMG-01, P-OMG-02
-- **Dual-drive / alignment:** P-DDH-01, P-DDH-02, P-DDH-03, P-DDH-04, P-DDH-05, P-ALI-02, P-ALI-03
+- **Dual-drive / alignment:** P-DDH-01, P-DDH-02, P-DDH-03, P-DDH-04, P-DDH-05, P-ALI-01, P-ALI-02, P-ALI-03
 - **Composition:** P-COMP-01, P-COMP-02, P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
 - **KL / path information:** P-KL-01, P-KL-02, P-KL-03
 - **Evolution:** P-EVO-01, P-EVO-02, P-EVO-03, P-EVO-04
@@ -69,92 +69,83 @@ mathematics or Lean code exists.
 - **GOA:** P-GOA-01, P-GOA-02, P-GOA-03, P-GOA-04
 - **Core assembly:** P-CORE-01
 
-Count check: `99 + P-QSD-01 = 100`.
+Count check: `100 + P-ALI-01 = 101`.
 
-## Newly staged promotion — P-QSD-01
+## Newly staged promotion — P-ALI-01
 
-Frozen Core 3 §10.1 starts from a killed subprobability semigroup `P_t^V` and
-the literal conditioned marginals
-`μ_t^c = μ P_t^V / (μ P_t^V 1)`. If these conditioned laws converge in total
-variation to `q`, if `q P_s^V 1 > 0` for every finite nonzero `s`, and the
-survival function is right-continuous at zero, then `q` is quasi-stationary and
-there is `λ >= 0` such that
-`q P_s^V = exp(-λ s) q`. The source allows the degenerate no-absorption case
-`λ = 0`.
+Frozen Core 3 §24.2 states that on a connected smooth manifold, a `C¹` one-form
+`ω` is globally exact if and only if its integral vanishes on every
+piecewise-smooth closed curve.
 
 The formalization preserves that contract:
 
-1. `KilledSemigroup` carries the killed subprobability semigroup and a single
-   initial probability law; `initialSurvivalPos` is only the well-definedness
-   condition for the literal conditioned family;
-2. the conditioned-shift identity is derived from the kernel semigroup and
-   normalization, rather than assumed as a hypothesis;
-3. total-variation convergence is pushed through each fixed subprobability
-   kernel to derive the QSD/eigenmeasure identity
-   `q P_s = (q P_s 1) q`;
-4. survival multiplicativity is then derived from that identity;
-5. positivity away from zero plus `P_0 = id` gives positivity at zero, and
-   `ContinuousAt` at zero on `NNReal = [0,∞)` is exactly the required
-   right-continuity interface; and
-6. the positive multiplicative survival function is logarithmically linearized
-   to obtain the exponential law with a nonnegative rate, without assuming the
-   desired rate/eigenmeasure conclusion.
+1. `C1OneForm` is an intrinsic `C¹` cotangent-bundle section;
+2. `PiecewiseSmoothPath` is built from smooth arcs with composition and reversal,
+   and `ClosedPeriods` quantifies over every closed path in that carrier;
+3. exact forms have zero periods by the one-dimensional FTC on each smooth arc,
+   extended to paths by additivity and reversal;
+4. closed periods imply path independence by closing one path with the reverse
+   of another;
+5. `ConnectedSpace M` supplies piecewise-smooth reachability from a fixed
+   basepoint, so the reverse direction defines a global path-integral potential;
+6. in a local chart, a short chart segment identifies the potential increment
+   with a curve integral, and the endpoint derivative gives `dV = ω`.
+
+No simply-connectedness or global convexity hypothesis is assumed.
 
 Canonical theorem surface:
-- `UEOT.V3.QSDTVLimit.p_qsd_01`.
+- `UEOT.V3.AlignmentGlobalExactness.p_ali_01`.
 
 Supporting module:
-- `UEOT/V3/QSDTVLimit.lean`.
+- `UEOT/V3/AlignmentGlobalExactness.lean`.
 
 Promotion evidence:
-- frozen §10.1 source contract independently audited against the final theorem:
+- frozen §24.2 source contract independently audited against the final theorem:
   GREEN;
 - source-facing feature commit
-  `b9625635c10cc114e854bfc1e1d7b2af277a47d8`;
-- feature tree `f269847d42b34f5c7cd30236e011aa841a0aafb7`;
-- feature root CI `35624526524`: success;
+  `2307932f13ec9079350589eeada692f636bb9bcb`;
+- feature tree `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
+- feature root CI `36113464991`: success;
 - focused module, root import, and full local `lake build UEOT`: success
-  (`8992` jobs);
+  (`8993` jobs);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pqsd01-main-integration@10a37206f049684c292c53d7826087f05580d489`
-  from `main@9b00f80e091a80cc335cd592e527d0e98253f5f7`;
+  `formal/pali01-main-integration@e178a46ce0d9454f45ca78dcf98f6e4feaef918c`
+  from `main@7981d9c0b66a2bd834d75acedb8e152e25120da9`;
 - feature and clean-integration tree hashes identical:
-  `f269847d42b34f5c7cd30236e011aa841a0aafb7`;
-- clean integration focused/root/full local checks: success (`8992` jobs);
-- clean integration root CI `35628806058`: success;
-- proof PR #131 exact-head root CI `35629472501`, attempt 2: success
-  (attempt 1 failed only in pinned-Lean download with a runner SSL reset);
-- proof main commit `ac17ea1a0859b364542fa4996de1e7458b94b53a`;
-- proof resulting-main root CI `35900895439`: success.
+  `a645f597f2a8be274aba5b60b2896dfb19e6ec7e`;
+- clean integration focused/root/full local checks: success (`8993` jobs);
+- clean integration root CI `36114241467`: success;
+- proof PR #133 exact-head root CI `36114862119`: success;
+- proof main commit `d7cfc9975aed004123b5a3cf9a71fb28f434bc56`;
+- proof resulting-main root CI `36115569409`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 99/106
+## Previous FULL-GREEN checkpoint — 100/106
 
-P-PER-02 and all earlier counted P-IDs form the authoritative 99/106 baseline.
-Its ledger landed at `main@9b00f80e091a80cc335cd592e527d0e98253f5f7`
-with ledger resulting-main CI `35605364675` success.
+P-QSD-01 and all earlier counted P-IDs form the authoritative 100/106 baseline.
+Its ledger landed at `main@7981d9c0b66a2bd834d75acedb8e152e25120da9`
+with ledger resulting-main CI `35905352725` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
-CI regression. P-QSD-01 is proof-complete on the current proof main but is not
+CI regression. P-ALI-01 is proof-complete on the current proof main but is not
 counted FULL-GREEN until this independent ledger lifecycle completes.
 
 ## Branchless frontier evidence after this ledger closes
 
-No theorem branch is opened by this promotion. After a successful 100/106 ledger
-lifecycle, the exact remaining six P-IDs are:
+No theorem branch is opened by this promotion. After a successful 101/106 ledger
+lifecycle, the exact remaining five P-IDs are:
 
 - P-QSD-04
 - P-CTL-02
 - P-CTL-03
 - P-KL-04
 - P-KL-05
-- P-ALI-01
 
-The next theorem lane must be selected dynamically only after the exact 100/106
+The next theorem lane must be selected dynamically only after the exact 101/106
 FULL-GREEN `main` exists and the source/dependency/branch preflight is repeated.
 
 ## Reproducibility task
