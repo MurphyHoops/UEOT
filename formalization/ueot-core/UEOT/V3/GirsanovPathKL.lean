@@ -1,6 +1,7 @@
 import Mathlib.InformationTheory.KullbackLeibler.DataProcessing
 import Mathlib.MeasureTheory.Measure.Decomposition.RadonNikodym
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import Mathlib.Probability.Martingale.Basic
 
 /-!
 # P-KL-05 — Girsanov full-space KL and observed-path data processing
@@ -34,11 +35,11 @@ universe uΩ uΓ uE
 
 variable {Ω : Type uΩ} [MeasurableSpace Ω]
 variable {Γ : Type uΓ} [MeasurableSpace Γ]
-variable {E : Type uE} [NormedAddCommGroup E] [NormedSpace ℝ E]
+variable {E : Type uE} [NormedAddCommGroup E]
 
 /-- Literal finite-horizon control energy `∫₀ᵀ ‖u_t‖² dt`. -/
 noncomputable def controlEnergy
-    (T : ℝ≥0) (u : ℝ → Ω → E) (ω : Ω) : ℝ :=
+    (T : NNReal) (u : ℝ → Ω → E) (ω : Ω) : ℝ :=
   ∫ t : ℝ in (0 : ℝ)..(T : ℝ), ‖u t ω‖ ^ 2
 
 /-- Terminal identities supplied by the frozen Girsanov setup.
@@ -49,7 +50,7 @@ noncomputable def controlEnergy
 square-integrable martingale consequence used explicitly in the source proof.
 Neither field contains a KL statement. -/
 structure TerminalGirsanovData
-    (P0 Q : Measure Ω) (T : ℝ≥0) (u : ℝ → Ω → E) where
+    (P0 Q : Measure Ω) (T : NNReal) (u : ℝ → Ω → E) where
   density : Ω → ℝ≥0∞
   baselineIntegral : Ω → ℝ
   controlledIntegral : Ω → ℝ
@@ -63,36 +64,43 @@ structure TerminalGirsanovData
   integral_shift : ∀ᵐ ω ∂Q,
     baselineIntegral ω =
       controlledIntegral ω + controlEnergy T u ω
-  controlledIntegral_integrable : Integrable controlledIntegral Q
-  controlledIntegral_mean_zero : ∫ ω, controlledIntegral ω ∂Q = 0
+  controlledIntegralProcess : Fin 2 → Ω → ℝ
+  controlledFiltration :
+    Filtration (Fin 2) (inferInstance : MeasurableSpace Ω)
+  controlledIntegral_martingale :
+    Martingale controlledIntegralProcess controlledFiltration Q
+  controlledIntegral_initial : controlledIntegralProcess 0 = 0
+  controlledIntegral_terminal : controlledIntegralProcess 1 = controlledIntegral
   energy_integrable : Integrable (controlEnergy T u) Q
 
 namespace TerminalGirsanovData
 
-variable {P0 Q : Measure Ω} {T : ℝ≥0} {u : ℝ → Ω → E}
+variable {P0 Q : Measure Ω} {T : NNReal} {u : ℝ → Ω → E}
 
 /-- The Girsanov-controlled law is absolutely continuous with respect to the
 baseline law because it is obtained by a density change. -/
 theorem absolutelyContinuous
     (h : TerminalGirsanovData P0 Q T u) :
     Q ≪ P0 := by
-  rw [h.changeOfMeasure]
-  exact MeasureTheory.withDensity_absolutelyContinuous _ _
+  simpa only [h.changeOfMeasure] using
+    (MeasureTheory.withDensity_absolutelyContinuous P0 h.density)
 
 /-- The actual Radon--Nikodym derivative equals the exponential Girsanov
 density, now stated under the controlled law. -/
 theorem rnDeriv_eq_density
+    [SigmaFinite P0]
     (h : TerminalGirsanovData P0 Q T u) :
     Q.rnDeriv P0 =ᵐ[Q] h.density := by
   have h0 : Q.rnDeriv P0 =ᵐ[P0] h.density := by
-    rw [h.changeOfMeasure]
-    exact Measure.rnDeriv_withDensity P0 h.measurable_density
+    simpa only [h.changeOfMeasure] using
+      (Measure.rnDeriv_withDensity P0 h.measurable_density)
   exact h.absolutelyContinuous.ae_le h0
 
 /-- Substitution of `dW⁰ = dWᵘ + u dt` into the exponential density gives
 the source log-likelihood decomposition
 `log(dQ/dP⁰) = ∫u dWᵘ + (1/2)∫‖u‖²dt`. -/
 theorem llr_eq_controlledIntegral_add_halfEnergy
+    [SigmaFinite P0]
     (h : TerminalGirsanovData P0 Q T u) :
     llr Q P0 =ᵐ[Q]
       fun ω =>
@@ -105,13 +113,38 @@ theorem llr_eq_controlledIntegral_add_halfEnergy
             (h.baselineIntegral ω - (2 : ℝ)⁻¹ * controlEnergy T u ω)) :=
     h.absolutelyContinuous.ae_le h.density_eq_exp
   filter_upwards [hrn, hexp, h.integral_shift] with ω hrnω hexpω hshiftω
-  rw [llr_def, hrnω, hexpω,
+  change Real.log (Q.rnDeriv P0 ω).toReal =
+    h.controlledIntegral ω + (2 : ℝ)⁻¹ * controlEnergy T u ω
+  rw [hrnω, hexpω,
     ENNReal.toReal_ofReal (Real.exp_pos _).le, Real.log_exp, hshiftω]
   ring
+
+/-- The controlled stochastic integral is integrable because it is the terminal
+value of the martingale supplied by the frozen Girsanov setup. -/
+theorem controlledIntegral_integrable
+    [IsProbabilityMeasure Q]
+    (h : TerminalGirsanovData P0 Q T u) :
+    Integrable h.controlledIntegral Q := by
+  have hi := h.controlledIntegral_martingale.integrable (1 : Fin 2)
+  rw [h.controlledIntegral_terminal] at hi
+  exact hi
+
+/-- A zero-start martingale has zero terminal mean. This is the precise
+martingale step used by the source proof after the Girsanov substitution. -/
+theorem controlledIntegral_mean_zero
+    [IsProbabilityMeasure Q]
+    (h : TerminalGirsanovData P0 Q T u) :
+    ∫ ω, h.controlledIntegral ω ∂Q = 0 := by
+  have heq := h.controlledIntegral_martingale.setIntegral_eq
+    (i := (0 : Fin 2)) (j := (1 : Fin 2)) (by decide)
+    (s := Set.univ) MeasurableSet.univ
+  rw [h.controlledIntegral_initial, h.controlledIntegral_terminal] at heq
+  simpa using heq.symm
 
 /-- The source log-likelihood is integrable under the controlled law when the
 controlled stochastic integral and the energy are integrable. -/
 theorem integrable_llr
+    [SigmaFinite P0] [IsProbabilityMeasure Q]
     (h : TerminalGirsanovData P0 Q T u) :
     Integrable (llr Q P0) Q := by
   have hhalf :
