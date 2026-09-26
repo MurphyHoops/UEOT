@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **105** |
+| **proved, staged by this ledger checkpoint** | **106** |
 | **partial** | **0** |
-| **pending / not yet counted** | **1** |
+| **pending / not yet counted** | **0** |
 | **total** | **106** |
 
-This branch stages **105/106** after P-QSD-04 completed source-semantic, feature,
+This branch stages **106/106** after P-CTL-03 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**105/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**106/106 is not called FULL-GREEN until this final ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -46,7 +46,7 @@ mathematics or Lean code exists.
 - **Statistics:** P-STAT-01, P-STAT-02, P-STAT-03, P-STAT-04, P-STAT-05, P-STAT-06, P-STAT-07, P-STAT-08, P-STAT-09
 - **Invariant / identifiability:** P-INV-01, P-INV-02, P-INV-03, P-INV-04, P-INV-05
 - **Quotient:** P-QUO-01, P-QUO-02, P-QUO-03, P-QUO-04, P-QUO-05
-- **Control:** P-CTL-01, P-CTL-02
+- **Control:** P-CTL-01, P-CTL-02, P-CTL-03
 - **Refinement / agency:** P-REF-01, P-REF-02, P-REF-03, P-REF-04, P-REF-05
 - **Telescoping reward:** P-TEL-01
 - **Bridge:** P-BRG-01, P-BRG-02
@@ -69,81 +69,83 @@ mathematics or Lean code exists.
 - **GOA:** P-GOA-01, P-GOA-02, P-GOA-03, P-GOA-04
 - **Core assembly:** P-CORE-01
 
-Count check: `104 + P-QSD-04 = 105`.
+Count check: `105 + P-CTL-03 = 106`.
 
-## Newly staged promotion — P-QSD-04
+## Newly staged promotion — P-CTL-03
 
-Frozen Core 3 §10.4 requires the reversible killed-diffusion spectral QSD
-statement: a self-adjoint compact-resolvent killed generator with positive
-principal mode and strict spectral gap yields exponential convergence of the
-conditioned law in total variation at the gap rate, together with an eventual
-survival lower bound at the principal decay rate.
+Frozen Core 3 §19.4 requires classical continuous-time diffusion HJB
+verification. For a feasible controlled diffusion, a bounded `C²` candidate
+`V`, discount `rho > 0`, the HJB equation, and a measurable maximizing
+selector whose closed-loop SDE is well-defined, the standard
+localization/integrability/stochastic-integral hypotheses imply that `V` is
+the infinite-horizon discounted optimal value and the selector is optimal.
 
 The formalization preserves that contract:
 
-1. `SpectralData` contains a genuine continuous-time killed/subprobability
-   kernel semigroup, not a finite-state surrogate;
-2. its evolved law is explicitly identified with the spectral density relative
-   to the finite reference measure `m`;
-3. a concrete compact symmetric resolvent witness acts on `L²(m)`, with the
-   principal resolvent mode and an orthogonal spectral bound tied to
-   `lambda1` and `lambda2`;
-4. the standard self-adjoint compact-resolvent spectral expansion and L²
-   remainder estimate are the Appendix-C-licensed spectral input, while the
-   source TV/survival conclusions are not assumed;
-5. Lean proves the finite-measure Cauchy--Schwarz L²→L¹ step, principal-mass
-   lower bound, normalization estimate, and exponential TV bound;
-6. redundant positivity certificates are derived from the positive principal
-   mode / spectral remainder rather than inserted as final assumptions; and
-7. the source-facing survival conclusion is stated on the actual killed
-   semigroup survival mass.
+1. the theorem is continuous-time and diffusion-facing; it is not replaced by
+   a finite/discrete MDP;
+2. `V` is explicitly bounded and `C²`, with positive discount;
+3. the HJB residual is pointwise nonpositive for every admissible action and
+   exactly zero on the measurable maximizing selector;
+4. because pinned Mathlib has no full controlled-SDE Itô stack, the
+   process-specific `ItoRun` interface records only the finite-horizon
+   expectation output of the Appendix-C-licensed Itô/localization argument,
+   together with the source integrability hypotheses;
+5. no value upper bound, selector optimality, or infinite-horizon conclusion
+   is stored in that stochastic-calculus interface;
+6. Lean proves the finite-horizon HJB inequality/equality, proves the bounded
+   discounted terminal term tends to zero, and passes to the infinite reward;
+7. every admissible control is therefore dominated by `V`, while the
+   maximizing selector attains `V`.
 
 Canonical theorem surface:
-- `UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04`.
+- `UEOT.V3.DiffusionHJBVerification.p_ctl_03`.
 
 Supporting module:
-- `UEOT/V3/ReversibleKilledSpectralQSD.lean`.
+- `UEOT/V3/DiffusionHJBVerification.lean`.
 
 Promotion evidence:
-- frozen §10.4 source contract rechecked against the canonical source;
-- final feature head `ee0d942c8c6e4913afd6fc803b8ecd0a1f26491c`;
-- feature root CI `36242678627`: success;
-- clean integration head `7b37181280718b7ca73a3ba7cf46f39e75a13359`
-  from `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428`;
+- frozen §19.4 and Appendix C source contract rechecked against the canonical source;
+- final feature head `c1f2f922b3f27c2d67cdb33a8158cc12d7d62f33`;
+- feature root CI `36246442641`: success;
+- clean integration head `9f4374c165d7d442fbe7c2bc16ce1ca5bab8941c`
+  from `main@9923223189e2ede79a2129a5efe86471a222028d`;
 - feature/integration tree identity:
-  `0c88c8fd5d29281bdaf9896935d697127dbfa1da`;
-- clean integration root CI `36242788142`: success;
-- proof PR #141 exact-head root CI `36243218374`: success;
-- proof main `5c88124a5c2f8ef0fd53d685c82f553917a1c6f7`;
-- proof resulting-main root CI `36243627501`: success;
-- final local `lake build UEOT`: success (`9010/9010` jobs);
+  `5a104e5f1f3e7d83782a1cb0e22ab070b094e29a`;
+- clean integration root CI `36246910887`: success;
+- proof PR #143 exact-head root CI `36247419494`: success;
+- proof main `f12282642faf9477ed6afe3df4e630f5f38295ac`;
+- proof resulting-main root CI `36247887665`: success;
+- final local `lake build UEOT`: success (`9011/9011` jobs);
+- focused module build: success (`3225/3225` jobs);
 - `git diff --check`: clean;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, new `axiom=0`, escape-hatch `opaque=0`);
-- audited `#print axioms` for `p_qsd_04`: only `propext`,
+- audited `#print axioms` for `p_ctl_03`: only `propext`,
   `Classical.choice`, `Quot.sound`.
 
-**Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
+**Status: PROVED / PROOF-COMPLETE, staged for counting by this final ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 104/106
+## Previous FULL-GREEN checkpoint — 105/106
 
-P-KL-05 and all earlier counted P-IDs form the authoritative 104/106 baseline.
-Its ledger landed at `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428`
-with ledger resulting-main CI `36234355278` success.
+P-QSD-04 and all earlier counted P-IDs form the authoritative 105/106 baseline.
+Its ledger landed at `main@9923223189e2ede79a2129a5efe86471a222028d`
+with ledger resulting-main CI `36245730807` success.
 
-All counted P-IDs remain closed absent a substantive frozen-source mismatch or
-CI regression. P-QSD-04 is proof-complete on the current proof main but is not
-counted FULL-GREEN until this independent ledger lifecycle completes.
+All 105 previously counted P-IDs remain closed absent a substantive
+frozen-source mismatch or CI regression. P-CTL-03 is proof-complete on the
+current proof main but is not counted FULL-GREEN until this independent final
+ledger lifecycle completes.
 
-## Branchless frontier evidence after this ledger closes
+## Final frontier after this ledger closes
 
-No theorem branch is opened by this promotion. After a successful 105/106
-ledger lifecycle, the exact remaining P-ID is:
+No theorem P-ID remains after a successful 106/106 ledger lifecycle.
+Once branch CI, PR CI, merge, and exact resulting-main CI all succeed, the
+frozen Core v3 source-theorem ledger is **106/106 FULL-GREEN**.
 
-- P-CTL-03
+That source-proof completion remains distinct from the separate reproducibility
+task of synchronizing the exact canonical source bytes into the public repo.
 
-The final theorem lane must be opened only after the exact 105/106 FULL-GREEN
-`main` exists and the source/dependency/branch preflight is repeated.
 ## Reproducibility task
 
 The exact canonical source bytes are still not synchronized into the public
