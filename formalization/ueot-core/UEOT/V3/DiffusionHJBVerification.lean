@@ -151,9 +151,6 @@ lemma terminalMean_tendsto_zero (R : M.ItoRun x0) :
       simpa [neg_mul] using R.abs_terminalMean_le (n : NNReal))
     hbound
 
-def residual (M : Model X A) (z : X × A) : ℝ :=
-  M.reward z.1 z.2 + M.generatorV z.1 z.2 - M.rho * M.V z.1
-
 lemma residual_integrable (R : M.ItoRun x0) (T : NNReal) :
     Integrable (fun z : X × A => M.residual z) (R.occupation T) := by
   have h := (R.reward_integrable T).add (R.drift_integrable T)
