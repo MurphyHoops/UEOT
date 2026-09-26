@@ -21,67 +21,65 @@ Last synchronized: **2026-09-26**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **104** |
+| integrated/proof-complete, staged by this checkpoint | **105** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **2** |
+| pending/not yet counted after this promotion | **1** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **103/106**.
-P-KL-05 has completed frozen-source audit, feature validation, clean
+The authoritative FULL-GREEN baseline before this ledger branch is **104/106**.
+P-QSD-04 has completed frozen-source audit, feature validation, clean
 integration, proof PR, proof-main and proof resulting-main gates. Its proof is
-on `main@15005abdb80bcf059077e08a33b2b80965b12b4e`; proof resulting-main
-root CI `36229427792` succeeded.
+on `main@5c88124a5c2f8ef0fd53d685c82f553917a1c6f7`; proof resulting-main
+root CI `36243627501` succeeded.
 
-This ledger branch stages **104/106**. Do not call 104/106 FULL-GREEN until the
+This ledger branch stages **105/106**. Do not call 105/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-KL-05
+## Newly staged proof — P-QSD-04
 
-Frozen Core 3 §22.5 separates full-noise-space Girsanov entropy from the KL of
-the observed state trajectory. The implementation keeps the source Girsanov
-setup explicit: progressive control, a.e. clock-time energy integrability,
-density change, exponential density, and terminal stochastic-integral shift.
-The controlled stochastic integral is the terminal value of a zero-start
-martingale, so its integrability and zero mean are proved rather than assumed.
-The exact full-space KL equality is then derived through the RN derivative,
-while the state-path law receives only the measurable data-processing bound.
+Frozen Core 3 §10.4 is the reversible killed-diffusion spectral QSD theorem.
+The implementation retains a genuine continuous-time killed kernel semigroup,
+ties its evolved laws to the spectral densities, keeps a compact symmetric
+resolvent witness on `L²(m)`, and records only the standard
+compact-self-adjoint spectral expansion/remainder estimate licensed by
+Appendix C. Lean then proves the L²→L¹ step, eventual survival lower bound,
+normalization and total-variation convergence at the exact spectral-gap rate.
 
 Canonical theorem:
-- `UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05`.
+- `UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04`.
 
 Promotion evidence:
-- feature head `c8bb0e2cf05e17be6c720b3493354165de712bd0`;
-- feature root CI `36228481080`: success;
-- clean integration `9b5623ded2c67fe972ca8507b73f94b312446bd6`
-  from `main@e4590074b7d292e5c24e8f19ce79d198f543c69f`;
+- feature head `ee0d942c8c6e4913afd6fc803b8ecd0a1f26491c`;
+- feature root CI `36242678627`: success;
+- clean integration `7b37181280718b7ca73a3ba7cf46f39e75a13359`
+  from `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428`;
 - feature/integration tree identity
-  `9ff34d07229c17912c9b96655fe767867bb23621`;
-- integration root CI `36228493685`: success;
-- proof PR #139 exact-head root CI `36228972886`: success;
-- proof main `15005abdb80bcf059077e08a33b2b80965b12b4e`;
-- proof resulting-main root CI `36229427792`: success;
-- full local build: success (`9009/9009`);
+  `0c88c8fd5d29281bdaf9896935d697127dbfa1da`;
+- integration root CI `36242788142`: success;
+- proof PR #141 exact-head root CI `36243218374`: success;
+- proof main `5c88124a5c2f8ef0fd53d685c82f553917a1c6f7`;
+- proof resulting-main root CI `36243627501`: success;
+- full local build: success (`9010/9010`);
 - prohibited-proof audit clean; audited axioms only `propext`,
   `Classical.choice`, `Quot.sound`.
 
-## Previous FULL-GREEN checkpoint — 103/106
+## Previous FULL-GREEN checkpoint — 104/106
 
-P-KL-04 and all earlier counted P-IDs remain closed. The 103/106 ledger landed
-at `main@e4590074b7d292e5c24e8f19ce79d198f543c69f` with resulting-main CI
-`36225697848` success.
+P-KL-05 and all earlier counted P-IDs remain closed. The 104/106 ledger landed
+at `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428` with resulting-main CI
+`36234355278` success.
 
-P-KL-05 is proof-complete but remains staged, not counted FULL-GREEN, until
+P-QSD-04 is proof-complete but remains staged, not counted FULL-GREEN, until
 this separate ledger lifecycle completes.
 
-## Branchless frontier after the 104 ledger closes
+## Branchless frontier after the 105 ledger closes
 
 No theorem branch is opened by this ledger lifecycle. After a successful
-104/106 promotion, the remaining P-IDs are exactly P-QSD-04 and P-CTL-03.
+105/106 promotion, the remaining P-ID is exactly P-CTL-03.
 
-The next theorem lane must be selected dynamically from the exact 104/106
-FULL-GREEN main after this ledger finishes, rather than being opened early
-from this staged branch.
+The final theorem lane must be opened only from the exact 105/106 FULL-GREEN
+main after this ledger finishes.
 ## Mandatory recovery procedure
 
 1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,

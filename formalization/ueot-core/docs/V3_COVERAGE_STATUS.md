@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **104** |
+| **proved, staged by this ledger checkpoint** | **105** |
 | **partial** | **0** |
-| **pending / not yet counted** | **2** |
+| **pending / not yet counted** | **1** |
 | **total** | **106** |
 
-This branch stages **104/106** after P-KL-05 completed source-semantic, feature,
+This branch stages **105/106** after P-QSD-04 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**104/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**105/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -55,7 +55,7 @@ mathematics or Lean code exists.
 - **Information:** P-INFO-01, P-INFO-02, P-INFO-03, P-INFO-04, P-INFO-05
 - **Process:** P-PROC-01
 - **Recovery:** P-REC-01, P-REC-02, P-REC-03, P-REC-04
-- **QSD:** P-QSD-01, P-QSD-02, P-QSD-03
+- **QSD:** P-QSD-01, P-QSD-02, P-QSD-03, P-QSD-04
 - **Persistence:** P-PER-01, P-PER-02, P-PER-03, P-PER-04
 - **Transport / identity:** P-ID-01, P-ID-02
 - **Representation covariance:** P-FAC-01
@@ -69,79 +69,81 @@ mathematics or Lean code exists.
 - **GOA:** P-GOA-01, P-GOA-02, P-GOA-03, P-GOA-04
 - **Core assembly:** P-CORE-01
 
-Count check: `103 + P-KL-05 = 104`.
+Count check: `104 + P-QSD-04 = 105`.
 
-## Newly staged promotion — P-KL-05
+## Newly staged promotion — P-QSD-04
 
-Frozen Core 3 §22.5 distinguishes the full Girsanov noise/probability space
-from the observed state-path law. Under the source Girsanov setup and finite
-control energy, the full-space relative entropy is exactly one half the
-expected clock-time control energy, whereas an observed state path receives
-only the data-processing upper bound in general.
+Frozen Core 3 §10.4 requires the reversible killed-diffusion spectral QSD
+statement: a self-adjoint compact-resolvent killed generator with positive
+principal mode and strict spectral gap yields exponential convergence of the
+conditioned law in total variation at the gap rate, together with an eventual
+survival lower bound at the principal decay rate.
 
-The formalization preserves that distinction:
+The formalization preserves that contract:
 
-1. `TerminalGirsanovData` explicitly records a progressively measurable
-   control relative to a continuous-time filtration and a.e. interval
-   integrability of the clock-time energy;
-2. the controlled law is the actual density change `Q = P0.withDensity Z`,
-   with the source exponential density for `Z`;
-3. the terminal Girsanov stochastic-integral shift is part of the source
-   setup, but neither KL conclusion is assumed;
-4. the controlled stochastic integral is represented as the terminal value
-   of a zero-start martingale, so integrability and zero expectation are
-   derived from Mathlib martingale lemmas rather than inserted as certificates;
-5. the full-space KL equality is derived from the actual Radon--Nikodym
-   derivative and Mathlib `klDiv_of_ac_of_integrable`; and
-6. the observed-state-path statement is a measurable pushforward inequality
-   from Mathlib `klDiv_map_le`, not an incorrect equality.
+1. `SpectralData` contains a genuine continuous-time killed/subprobability
+   kernel semigroup, not a finite-state surrogate;
+2. its evolved law is explicitly identified with the spectral density relative
+   to the finite reference measure `m`;
+3. a concrete compact symmetric resolvent witness acts on `L²(m)`, with the
+   principal resolvent mode and an orthogonal spectral bound tied to
+   `lambda1` and `lambda2`;
+4. the standard self-adjoint compact-resolvent spectral expansion and L²
+   remainder estimate are the Appendix-C-licensed spectral input, while the
+   source TV/survival conclusions are not assumed;
+5. Lean proves the finite-measure Cauchy--Schwarz L²→L¹ step, principal-mass
+   lower bound, normalization estimate, and exponential TV bound;
+6. redundant positivity certificates are derived from the positive principal
+   mode / spectral remainder rather than inserted as final assumptions; and
+7. the source-facing survival conclusion is stated on the actual killed
+   semigroup survival mass.
 
 Canonical theorem surface:
-- `UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05`.
+- `UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04`.
 
 Supporting module:
-- `UEOT/V3/GirsanovPathKL.lean`.
+- `UEOT/V3/ReversibleKilledSpectralQSD.lean`.
 
 Promotion evidence:
-- frozen §22.5 source contract rechecked against the canonical source;
-- final feature head `c8bb0e2cf05e17be6c720b3493354165de712bd0`;
-- feature root CI `36228481080`: success;
-- clean integration head `9b5623ded2c67fe972ca8507b73f94b312446bd6`
-  from `main@e4590074b7d292e5c24e8f19ce79d198f543c69f`;
+- frozen §10.4 source contract rechecked against the canonical source;
+- final feature head `ee0d942c8c6e4913afd6fc803b8ecd0a1f26491c`;
+- feature root CI `36242678627`: success;
+- clean integration head `7b37181280718b7ca73a3ba7cf46f39e75a13359`
+  from `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428`;
 - feature/integration tree identity:
-  `9ff34d07229c17912c9b96655fe767867bb23621`;
-- clean integration root CI `36228493685`: success;
-- proof PR #139 exact-head root CI `36228972886`: success;
-- proof main `15005abdb80bcf059077e08a33b2b80965b12b4e`;
-- proof resulting-main root CI `36229427792`: success;
-- final local `lake build UEOT`: success (`9009/9009` jobs);
+  `0c88c8fd5d29281bdaf9896935d697127dbfa1da`;
+- clean integration root CI `36242788142`: success;
+- proof PR #141 exact-head root CI `36243218374`: success;
+- proof main `5c88124a5c2f8ef0fd53d685c82f553917a1c6f7`;
+- proof resulting-main root CI `36243627501`: success;
+- final local `lake build UEOT`: success (`9010/9010` jobs);
+- `git diff --check`: clean;
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, new `axiom=0`, escape-hatch `opaque=0`);
-- audited `#print axioms` for `p_kl_05` and the main supporting conclusions:
-  only `propext`, `Classical.choice`, `Quot.sound`.
+- audited `#print axioms` for `p_qsd_04`: only `propext`,
+  `Classical.choice`, `Quot.sound`.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 103/106
+## Previous FULL-GREEN checkpoint — 104/106
 
-P-KL-04 and all earlier counted P-IDs form the authoritative 103/106 baseline.
-Its ledger landed at `main@e4590074b7d292e5c24e8f19ce79d198f543c69f`
-with ledger resulting-main CI `36225697848` success.
+P-KL-05 and all earlier counted P-IDs form the authoritative 104/106 baseline.
+Its ledger landed at `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428`
+with ledger resulting-main CI `36234355278` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
-CI regression. P-KL-05 is proof-complete on the current proof main but is not
+CI regression. P-QSD-04 is proof-complete on the current proof main but is not
 counted FULL-GREEN until this independent ledger lifecycle completes.
 
 ## Branchless frontier evidence after this ledger closes
 
-No theorem branch is opened by this promotion. After a successful 104/106
-ledger lifecycle, the exact remaining two P-IDs are:
+No theorem branch is opened by this promotion. After a successful 105/106
+ledger lifecycle, the exact remaining P-ID is:
 
-- P-QSD-04
 - P-CTL-03
 
-The next theorem lane must be selected dynamically only after the exact 104/106
-FULL-GREEN `main` exists and the source/dependency/branch preflight is repeated.
+The final theorem lane must be opened only after the exact 105/106 FULL-GREEN
+`main` exists and the source/dependency/branch preflight is repeated.
 ## Reproducibility task
 
 The exact canonical source bytes are still not synchronized into the public
