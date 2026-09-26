@@ -35,7 +35,7 @@ universe uΩ uΓ uE
 
 variable {Ω : Type uΩ} [MeasurableSpace Ω]
 variable {Γ : Type uΓ} [MeasurableSpace Γ]
-variable {E : Type uE} [NormedAddCommGroup E]
+variable {E : Type uE} [NormedAddCommGroup E] [MeasurableSpace E]
 
 /-- Literal finite-horizon control energy `∫₀ᵀ ‖u_t‖² dt`. -/
 noncomputable def controlEnergy
@@ -55,6 +55,10 @@ structure TerminalGirsanovData
   density : Ω → ℝ≥0∞
   baselineIntegral : Ω → ℝ
   controlledIntegral : Ω → ℝ
+  controlFiltration : Filtration ℝ (inferInstance : MeasurableSpace Ω)
+  control_progressive : IsProgressive controlFiltration u
+  energy_intervalIntegrable : ∀ᵐ ω ∂Q,
+    IntervalIntegrable (fun t : ℝ => ‖u t ω‖ ^ 2) volume 0 (T : ℝ)
   measurable_density : Measurable density
   changeOfMeasure : Q = P0.withDensity density
   density_eq_exp : ∀ᵐ ω ∂P0,
