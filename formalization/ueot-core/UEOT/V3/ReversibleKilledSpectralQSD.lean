@@ -405,6 +405,18 @@ noncomputable def conditionedDensity (D : SpectralData m) (t : NNReal) : X → �
 lemma phiMass_pos (D : SpectralData m) : 0 < D.phiMass :=
   D.phi1_mass_pos
 
+/-- The real spectral mass is exactly the genuine killed-semigroup survival
+probability. -/
+lemma survival_eq_killed_toReal (D : SpectralData m) (t : NNReal) :
+    D.survival t = (D.killed.survival t).toReal := by
+  unfold survival UEOT.V3.QSDTVLimit.KilledSemigroup.survival
+  rw [D.killed_evolved_eq t]
+  rw [withDensity_apply _ MeasurableSet.univ, Measure.restrict_univ]
+  have hEq := ofReal_integral_eq_lintegral_ofReal
+    (D.evolved_integrable t) (D.evolved_nonneg t)
+  rw [← hEq, ENNReal.toReal_ofReal]
+  exact integral_nonneg_of_ae (D.evolved_nonneg t)
+
 lemma qDensity_integrable (D : SpectralData m) :
     Integrable D.qDensity m :=
   normalizedDensity_integrable D.phi1 D.phiMass D.phi1_integrable
@@ -706,7 +718,7 @@ theorem p_qsd_04 (D : SpectralData m) :
         tvDist (D.conditioned t : Measure X) (D.q : Measure X) ≤
           Cg * Real.exp (-(D.lambda2 - D.lambda1) * (t : ℝ))) ∧
       (∀ t : NNReal, t0 ≤ t →
-        D.survival t ≥
+        (D.killed.survival t).toReal ≥
           cg * Real.exp (-D.lambda1 * (t : ℝ))) := by
   let A : ℝ := D.a1 * D.phiMass
   let K : ℝ := D.remainderScale
@@ -739,6 +751,7 @@ theorem p_qsd_04 (D : SpectralData m) :
       simpa [C0, Cg, K, A] using hmul)
   · intro t htt
     have hs := D.survival_lower_of_remainder_small t (hsmall t htt)
+    rw [← D.survival_eq_killed_toReal t]
     dsimp [cg, A]
     nlinarith [Real.exp_pos (-D.lambda1 * (t : ℝ))]
 
