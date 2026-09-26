@@ -349,4 +349,3 @@ The first Lean compression result already supports the transport/certificate
 part of this picture across two previously separate source families.  The
 remaining project is to determine how far this unification actually extends
 before the domain-specific mathematics becomes irreducible.
-
