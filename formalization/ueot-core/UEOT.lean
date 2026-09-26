@@ -81,3 +81,5 @@ import UEOT.V3.EvolutionPerronGrowth
 import UEOT.V3.PersistenceOccupation
 import UEOT.V3.QSDTVLimit
 import UEOT.V3.ReversibleKilledSpectralQSD
+import UEOT.V3.Compression.QuotientDescent
+import UEOT.V3.Compression.TransportCertificate
