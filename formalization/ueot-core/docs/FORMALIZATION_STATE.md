@@ -21,70 +21,67 @@ Last synchronized: **2026-09-26**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **103** |
+| integrated/proof-complete, staged by this checkpoint | **104** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **3** |
+| pending/not yet counted after this promotion | **2** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **102/106**.
-P-KL-04 has completed source audit, feature validation, clean integration,
-proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@7af0d8970a33063bb31a216bce97235a380571c0`; proof resulting-main root CI
-`36224107001` succeeded.
+The authoritative FULL-GREEN baseline before this ledger branch is **103/106**.
+P-KL-05 has completed frozen-source audit, feature validation, clean
+integration, proof PR, proof-main and proof resulting-main gates. Its proof is
+on `main@15005abdb80bcf059077e08a33b2b80965b12b4e`; proof resulting-main
+root CI `36229427792` succeeded.
 
-This ledger branch stages **103/106**. Do not call 103/106 FULL-GREEN until the
+This ledger branch stages **104/106**. Do not call 104/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-KL-04
+## Newly staged proof — P-KL-05
 
-Frozen Core 3 §22.4 is the finite continuous-time Markov-chain path KL identity.
-The implementation constructs normalized full finite-jump path laws for the
-controlled and baseline generators, proves support-driven absolute continuity
-and the path-law likelihood relation, derives Campbell/renewal equalities from
-path densities, proves integrability of the signed jump-log plus escape-rate
-decomposition, and identifies the holding reward with the literal clock-time
-source integral.
+Frozen Core 3 §22.5 separates full-noise-space Girsanov entropy from the KL of
+the observed state trajectory. The implementation keeps the source Girsanov
+setup explicit: progressive control, a.e. clock-time energy integrability,
+density change, exponential density, and terminal stochastic-integral shift.
+The controlled stochastic integral is the terminal value of a zero-start
+martingale, so its integrability and zero mean are proved rather than assumed.
+The exact full-space KL equality is then derived through the RN derivative,
+while the state-path law receives only the measurable data-processing bound.
 
 Canonical theorem:
-- `UEOT.V3.FiniteCTMCPathKL.p_kl_04`.
+- `UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05`.
 
 Promotion evidence:
-- final frozen-source/proof audit: CLEAR, zero blockers;
-- feature commit `79bc6873d9b445627f70017ae37c43e498332158`;
-- feature tree `79049834494228824abbe6a7de487f790f926edc`;
-- feature root CI `36222018778`: success;
-- focused/root/full local checks: success (`9008/9008`);
-- prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
-  `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
-- audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration
-  `formal/pkl04-main-integration@1117010ab9554ab073d47a6f7f16e7fc78ada214`
-  from `main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde`;
-- feature/integration tree hash identical:
-  `79049834494228824abbe6a7de487f790f926edc`;
-- integration root CI `36222441619`: success;
-- proof PR #137 exact-head root CI `36222997612`: success;
-- proof main `7af0d8970a33063bb31a216bce97235a380571c0`;
-- proof resulting-main root CI `36224107001`: success.
+- feature head `c8bb0e2cf05e17be6c720b3493354165de712bd0`;
+- feature root CI `36228481080`: success;
+- clean integration `9b5623ded2c67fe972ca8507b73f94b312446bd6`
+  from `main@e4590074b7d292e5c24e8f19ce79d198f543c69f`;
+- feature/integration tree identity
+  `9ff34d07229c17912c9b96655fe767867bb23621`;
+- integration root CI `36228493685`: success;
+- proof PR #139 exact-head root CI `36228972886`: success;
+- proof main `15005abdb80bcf059077e08a33b2b80965b12b4e`;
+- proof resulting-main root CI `36229427792`: success;
+- full local build: success (`9009/9009`);
+- prohibited-proof audit clean; audited axioms only `propext`,
+  `Classical.choice`, `Quot.sound`.
 
-## Previous FULL-GREEN checkpoint — 102/106
+## Previous FULL-GREEN checkpoint — 103/106
 
-P-CTL-02 and all earlier counted P-IDs remain closed. The 102/106 ledger landed
-at `main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde` with resulting-main CI
-`36156516104` success.
+P-KL-04 and all earlier counted P-IDs remain closed. The 103/106 ledger landed
+at `main@e4590074b7d292e5c24e8f19ce79d198f543c69f` with resulting-main CI
+`36225697848` success.
 
-P-KL-04 is proof-complete but remains staged, not counted FULL-GREEN, until
+P-KL-05 is proof-complete but remains staged, not counted FULL-GREEN, until
 this separate ledger lifecycle completes.
 
-## Branchless frontier after the 103 ledger closes
+## Branchless frontier after the 104 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. After a successful 103/106
-promotion, the remaining P-IDs are exactly P-QSD-04, P-CTL-03, and P-KL-05.
+No theorem branch is opened by this ledger lifecycle. After a successful
+104/106 promotion, the remaining P-IDs are exactly P-QSD-04 and P-CTL-03.
 
-The next theorem lane must be selected dynamically from the exact 103/106
-FULL-GREEN main after this ledger finishes, rather than being opened early from
-this staged branch.
+The next theorem lane must be selected dynamically from the exact 104/106
+FULL-GREEN main after this ledger finishes, rather than being opened early
+from this staged branch.
 ## Mandatory recovery procedure
 
 1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,
