@@ -194,6 +194,24 @@ theorem processInterface_exact_via_twoStage
     (hAB (BC.protocol u))
     (hBC u)
 
+/-- Full source-facing exact P-API-01 shape reconstructed through the
+compression calculus. -/
+theorem processInterface_exact_source_via_twoStage
+    {UA : Type uUA} {UB : Type uUB} {UC : Type uUC}
+    {ΩA : Type uOA} {ΩB : Type uOB} {ΩC : Type uOC}
+    [MeasurableSpace ΩA] [MeasurableSpace ΩB] [MeasurableSpace ΩC]
+    (AB : Interface UA UB ΩA ΩB)
+    (BC : Interface UB UC ΩB ΩC)
+    (PA : UA → Measure ΩA)
+    (PB : UB → Measure ΩB)
+    (PC : UC → Measure ΩC)
+    (hAB : ExactNatural AB PA PB)
+    (hBC : ExactNatural BC PB PC) :
+    (AB.comp BC).protocol = AB.protocol ∘ BC.protocol ∧
+    (AB.comp BC).readout = BC.readout ∘ AB.readout ∧
+    ExactNatural (AB.comp BC) PA PC := by
+  exact ⟨rfl, rfl, processInterface_exact_via_twoStage AB BC PA PB PC hAB hBC⟩
+
 open UEOT.V3.TransportDefect
 
 universe uM
@@ -271,6 +289,21 @@ theorem transportDefect_pointwise_via_chain
         S.Γ 0 (k + 1) m = S.Γ k (k + 1) (S.Γ 0 k m) :=
       S.Γ_comp 0 k (k + 1) m
     simpa [defect, actual, step, hcomp_pt] using hadj k (S.Γ 0 k m)
+
+/-- Full source-facing P-ID-01 supremum statement reconstructed through the
+generic chain theorem. -/
+theorem transportDefect_source_via_chain
+    {M : ℕ → Type uM} [∀ n, MeasurableSpace (M n)]
+    (S : FrozenTransportSystem M) (ε : ℕ → ℝ)
+    [Nonempty (M 0)] (hadj : S.AdjacentBound ε) (n : ℕ) :
+    sSup (Set.range fun m : M 0 =>
+      tvDist ((S.K 0 m).map (S.Γ 0 n))
+        (S.K n (S.Γ 0 n m))) ≤
+      ∑ i ∈ Finset.range n, ε i := by
+  refine csSup_le (Set.range_nonempty _) ?_
+  intro d hd
+  rcases hd with ⟨m, rfl⟩
+  exact transportDefect_pointwise_via_chain S ε hadj n m
 
 
 end UEOT.V3.Compression.TransportCertificate
