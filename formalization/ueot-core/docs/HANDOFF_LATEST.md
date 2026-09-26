@@ -7,75 +7,73 @@
 ## Current authoritative checkpoint
 
 - frozen source P-IDs: **106**;
-- counted FULL-GREEN before this ledger: **102/106**;
-- this ledger branch stages: **103/106**;
-- pending after successful ledger lifecycle: **3**;
-- proof main: `7af0d8970a33063bb31a216bce97235a380571c0`;
-- P-KL-04 proof PR: **#137**;
-- proof PR root CI: `36222997612` — success;
-- proof resulting-main root CI: `36224107001` — success;
+- counted FULL-GREEN before this ledger: **103/106**;
+- this ledger branch stages: **104/106**;
+- pending after successful ledger lifecycle: **2**;
+- proof main: `15005abdb80bcf059077e08a33b2b80965b12b4e`;
+- P-KL-05 proof PR: **#139**;
+- proof PR root CI: `36228972886` — success;
+- proof resulting-main root CI: `36229427792` — success;
 - canonical source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`;
 - official root target: `lake build UEOT`;
 - active theorem proof lanes while this ledger runs: **0**.
 
-P-KL-04 is **PROOF-COMPLETE** but is not called COUNTED / 103 FULL-GREEN until
+P-KL-05 is **PROOF-COMPLETE** but is not called COUNTED / 104 FULL-GREEN until
 this docs-only ledger branch passes branch CI, PR CI, lands on `main`, and the
 resulting-main CI succeeds.
 
-## P-KL-04 — proof-complete lifecycle
+## P-KL-05 — proof-complete lifecycle
 
-Frozen §22.4 source obligations retained:
+Frozen §22.5 source obligations retained:
 
-1. finite continuous-time jump generators and the full random-finite-jump path
-   law, not a fixed-jump-count surrogate;
-2. common initial state and source support inclusion;
-3. explicit common-reference likelihood and Radon--Nikodym derivative;
-4. Campbell/renewal identities derived from path densities rather than assumed
-   compensator certificates;
-5. signed jump-log recombination and real `llr` integrability;
-6. `0 log 0 = 0` through `jumpLogRatio`; and
-7. the final literal clock-time jump-rate integral.
+1. the full probability/noise space is distinguished from the observed state
+   path space;
+2. the control is progressively measurable and its clock-time energy is
+   interval-integrable a.e.;
+3. `Q = Z_T P⁰` is represented as an actual density change with the source
+   exponential density;
+4. the Girsanov stochastic-integral shift is setup data, but no KL conclusion
+   is assumed;
+5. the controlled stochastic integral's integrability and zero mean are
+   derived from a zero-start martingale;
+6. full-space KL equals one half expected control energy; and
+7. observed state-path KL is only bounded above by the same quantity through
+   data processing.
 
 Canonical theorem:
-- `UEOT.V3.FiniteCTMCPathKL.p_kl_04`.
+- `UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05`.
 
 Proof evidence:
-- final frozen-source/proof audit CLEAR, zero blockers;
-- source-facing feature commit
-  `79bc6873d9b445627f70017ae37c43e498332158`;
-- feature tree `79049834494228824abbe6a7de487f790f926edc`;
-- feature root CI `36222018778` success;
-- focused/root/full local checks: success (`9008/9008`);
-- prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
-  `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
-- audited `#print axioms` only `propext`, `Classical.choice`, `Quot.sound`;
-- clean integration
-  `formal/pkl04-main-integration@1117010ab9554ab073d47a6f7f16e7fc78ada214`
-  from `main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde`;
-- feature/integration tree `79049834494228824abbe6a7de487f790f926edc`
+- feature `c8bb0e2cf05e17be6c720b3493354165de712bd0`, root CI
+  `36228481080` success;
+- clean integration `9b5623ded2c67fe972ca8507b73f94b312446bd6` from
+  `main@e4590074b7d292e5c24e8f19ce79d198f543c69f`;
+- feature/integration tree `9ff34d07229c17912c9b96655fe767867bb23621`
   identical;
-- integration root CI `36222441619` success;
-- proof PR #137 exact-head root CI `36222997612` success;
-- proof main `7af0d8970a33063bb31a216bce97235a380571c0`;
-- proof resulting-main root CI `36224107001` success.
+- integration root CI `36228493685` success;
+- proof PR #139 exact-head root CI `36228972886` success;
+- proof main `15005abdb80bcf059077e08a33b2b80965b12b4e`;
+- proof resulting-main root CI `36229427792` success;
+- local official build success (`9009/9009`);
+- prohibited-proof audit clean; audited axioms only `propext`,
+  `Classical.choice`, `Quot.sound`.
 
-## Previous FULL-GREEN checkpoint — 102/106
+## Previous FULL-GREEN checkpoint — 103/106
 
-The P-CTL-02 ledger landed at
-`main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde` and its resulting-main root CI
-`36156516104` succeeded. P-CTL-02 and all older counted P-IDs stay closed absent
+The P-KL-04 ledger landed at
+`main@e4590074b7d292e5c24e8f19ce79d198f543c69f` and its resulting-main root CI
+`36225697848` succeeded. P-KL-04 and all older counted P-IDs stay closed absent
 source mismatch or main regression.
 
-## Dynamic frontier after the 103 ledger closes
+## Dynamic frontier after the 104 ledger closes
 
 No next theorem branch is opened as part of this promotion. The exact remaining
-set after a successful 103/106 ledger lifecycle is:
+set after a successful 104/106 ledger lifecycle is:
 
 - P-QSD-04
 - P-CTL-03
-- P-KL-05
 
-The exact next lane must be selected from the new 103/106 FULL-GREEN `main`
+The exact next lane must be selected from the new 104/106 FULL-GREEN `main`
 only after this ledger finishes and a live dependency/branch preflight is
 repeated.
 ## Guards
@@ -92,11 +90,11 @@ repeated.
 
 ## Exact continuation order
 
-1. finish this **103/106 ledger lifecycle**: full local build -> branch root CI ->
+1. finish this **104/106 ledger lifecycle**: full local build -> branch root CI ->
    ledger PR exact-head root CI -> merge -> resulting-main exact-head root CI;
-2. only after every ledger gate succeeds, record **103/106 FULL-GREEN** in Issue
+2. only after every ledger gate succeeds, record **104/106 FULL-GREEN** in Issue
    #56;
-3. safely retire the P-KL-04 feature/integration/ledger branches only after
+3. safely retire the P-KL-05 feature/integration/ledger branches only after
    their applicable lifecycle gates are complete;
 4. reconcile exact new `main`, re-run dynamic frontier/branch preflight, and
    open exactly one theorem branch;
