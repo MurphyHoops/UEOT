@@ -273,6 +273,10 @@ structure SpectralData (m : Measure X) [IsFiniteMeasure m] where
   evolvedDensity : NNReal → X → ℝ
   remainder : NNReal → X → ℝ
 
+  /-- Genuine continuous-time killed/subprobability kernel semigroup whose
+  evolved law is represented by `evolvedDensity` relative to `m`. -/
+  killed : UEOT.V3.QSDTVLimit.KilledSemigroup X
+
   lambda1 : ℝ
   lambda2 : ℝ
   a1 : ℝ
@@ -281,9 +285,6 @@ structure SpectralData (m : Measure X) [IsFiniteMeasure m] where
   lambda1_pos : 0 < lambda1
   spectral_gap_pos : 0 < lambda2 - lambda1
   a1_pos : 0 < a1
-  residualL2_nonneg : 0 ≤ residualL2
-
-  g_measurable : Measurable g
   phi1_measurable : Measurable phi1
   evolved_measurable : ∀ t, Measurable (evolvedDensity t)
   remainder_measurable : ∀ t, Measurable (remainder t)
@@ -296,12 +297,23 @@ structure SpectralData (m : Measure X) [IsFiniteMeasure m] where
 
   g_nonneg : 0 ≤ᵐ[m] g
   phi1_pos : ∀ᵐ x ∂m, 0 < phi1 x
-  phi1_nonneg : 0 ≤ᵐ[m] phi1
   evolved_nonneg : ∀ t, 0 ≤ᵐ[m] evolvedDensity t
 
   g_mass_one : ∫ x, g x ∂m = 1
   phi1_mass_pos : 0 < ∫ x, phi1 x ∂m
   a1_eq_inner : a1 = ∫ x, g x * phi1 x ∂m
+
+  /-- The killed semigroup starts from the source initial density `g`. -/
+  killed_initial_eq :
+    (killed.initial : Measure X) =
+      m.withDensity (fun x => ENNReal.ofReal (g x))
+
+  /-- The continuous-time killed semigroup law has spectral density
+  `evolvedDensity`; this prevents the spectral package from becoming an
+  unrelated family of functions. -/
+  killed_evolved_eq : ∀ t : NNReal,
+    killed.evolved t =
+      m.withDensity (fun x => ENNReal.ofReal (evolvedDensity t x))
 
   /-- We fix the bounded resolvent to be `(I - L_D)⁻¹`, so a generator
   eigenvalue `-λ₁` becomes the resolvent eigenvalue `(1+λ₁)⁻¹`. -/
@@ -338,11 +350,19 @@ structure SpectralData (m : Measure X) [IsFiniteMeasure m] where
     residualL2 =
       (∫ x, (g x - a1 * phi1 x) ^ 2 ∂m) ^ (1 / (2 : ℝ))
 
-  survival_pos : ∀ t : NNReal, 0 < ∫ x, evolvedDensity t x ∂m
-
 namespace SpectralData
 
 variable {m : Measure X} [IsFiniteMeasure m]
+
+lemma phi1_nonneg (D : SpectralData m) :
+    0 ≤ᵐ[m] D.phi1 := by
+  filter_upwards [D.phi1_pos] with x hx
+  exact hx.le
+
+lemma residualL2_nonneg (D : SpectralData m) :
+    0 ≤ D.residualL2 := by
+  rw [D.residualL2_eq]
+  exact Real.rpow_nonneg (integral_nonneg fun x => sq_nonneg _) _
 
 lemma phi1_integrable (D : SpectralData m) :
     Integrable D.phi1 m :=
@@ -385,9 +405,6 @@ noncomputable def conditionedDensity (D : SpectralData m) (t : NNReal) : X → �
 lemma phiMass_pos (D : SpectralData m) : 0 < D.phiMass :=
   D.phi1_mass_pos
 
-lemma survival_pos' (D : SpectralData m) (t : NNReal) : 0 < D.survival t :=
-  D.survival_pos t
-
 lemma qDensity_integrable (D : SpectralData m) :
     Integrable D.qDensity m :=
   normalizedDensity_integrable D.phi1 D.phiMass D.phi1_integrable
@@ -405,37 +422,47 @@ lemma conditionedDensity_integrable (D : SpectralData m) (t : NNReal) :
   normalizedDensity_integrable (D.evolvedDensity t) (D.survival t)
     (D.evolved_integrable t)
 
-lemma conditionedDensity_nonneg (D : SpectralData m) (t : NNReal) :
+lemma conditionedDensity_nonneg (D : SpectralData m) (t : NNReal)
+    (hS : 0 < D.survival t) :
     0 ≤ᵐ[m] D.conditionedDensity t :=
   normalizedDensity_nonneg (D.evolvedDensity t) (D.survival t)
-    (D.survival_pos' t) (D.evolved_nonneg t)
+    hS (D.evolved_nonneg t)
 
-lemma conditionedDensity_integral_one (D : SpectralData m) (t : NNReal) :
+lemma conditionedDensity_integral_one (D : SpectralData m) (t : NNReal)
+    (hS : 0 < D.survival t) :
     ∫ x, D.conditionedDensity t x ∂m = 1 :=
   normalizedDensity_integral_one (D.evolvedDensity t) (D.survival t)
-    (D.survival_pos' t) rfl
+    hS rfl
 
 noncomputable def q (D : SpectralData m) : ProbabilityMeasure X :=
   probabilityWithDensity m D.qDensity D.qDensity_integrable
     D.qDensity_nonneg D.qDensity_integral_one
 
+/-- Totalized conditional law. In the source regime used by the source-facing
+theorem, large-time positivity is proved from the spectral expansion, so the
+fallback branch is never used in the quantified time window. -/
 noncomputable def conditioned (D : SpectralData m) (t : NNReal) :
     ProbabilityMeasure X :=
-  probabilityWithDensity m (D.conditionedDensity t)
-    (D.conditionedDensity_integrable t)
-    (D.conditionedDensity_nonneg t)
-    (D.conditionedDensity_integral_one t)
+  if hS : 0 < D.survival t then
+    probabilityWithDensity m (D.conditionedDensity t)
+      (D.conditionedDensity_integrable t)
+      (D.conditionedDensity_nonneg t hS)
+      (D.conditionedDensity_integral_one t hS)
+  else
+    D.q
 
 @[simp] theorem q_toMeasure (D : SpectralData m) :
     (D.q : Measure X) =
       m.withDensity (fun x => ENNReal.ofReal (D.phi1 x / D.phiMass)) := by
   rfl
 
-@[simp] theorem conditioned_toMeasure (D : SpectralData m) (t : NNReal) :
+@[simp] theorem conditioned_toMeasure_of_pos
+    (D : SpectralData m) (t : NNReal) (hS : 0 < D.survival t) :
     (D.conditioned t : Measure X) =
       m.withDensity
         (fun x => ENNReal.ofReal (D.evolvedDensity t x / D.survival t)) := by
-  rfl
+  simp [conditioned, hS, probabilityWithDensity_toMeasure,
+    conditionedDensity, normalizedDensity]
 
 noncomputable def baseHalfPower (m : Measure X) : ℝ :=
   (m.real Set.univ) ^ (1 / (2 : ℝ))
@@ -562,14 +589,14 @@ lemma survival_lower_of_remainder_small
   linarith
 
 lemma tvDist_conditioned_le_two_remainder_div
-    (D : SpectralData m) (t : NNReal) :
+    (D : SpectralData m) (t : NNReal) (hS : 0 < D.survival t) :
     tvDist (D.conditioned t : Measure X) (D.q : Measure X) ≤
       2 * (∫ x, |D.remainder t x| ∂m) / D.survival t := by
   have htv := tvDist_probabilityWithDensity_le_integral_abs
     m (D.conditionedDensity t) D.qDensity
     (D.conditionedDensity_integrable t) D.qDensity_integrable
-    (D.conditionedDensity_nonneg t) D.qDensity_nonneg
-    (D.conditionedDensity_integral_one t) D.qDensity_integral_one
+    (D.conditionedDensity_nonneg t hS) D.qDensity_nonneg
+    (D.conditionedDensity_integral_one t hS) D.qDensity_integral_one
     (by
       unfold conditionedDensity normalizedDensity
       exact (D.evolved_measurable t).div_const _)
@@ -583,8 +610,21 @@ lemma tvDist_conditioned_le_two_remainder_div
     (D.survival t) D.phiMass
     (D.evolved_integrable t) D.phi1_integrable
     (D.remainder_integrable t) D.phi1_nonneg
-    D.phiMass_pos (D.survival_pos' t)
+    D.phiMass_pos hS
     rfl rfl (D.spectral_expansion t)
+  have hc :
+      (D.conditioned t : Measure X) =
+        (probabilityWithDensity m (D.conditionedDensity t)
+          (D.conditionedDensity_integrable t)
+          (D.conditionedDensity_nonneg t hS)
+          (D.conditionedDensity_integral_one t hS) : Measure X) := by
+    simp [conditioned, hS]
+  have hq :
+      (D.q : Measure X) =
+        (probabilityWithDensity m D.qDensity
+          D.qDensity_integrable D.qDensity_nonneg
+          D.qDensity_integral_one : Measure X) := rfl
+  rw [hc, hq]
   exact htv.trans hnorm
 
 lemma tvDist_large_time_le_gap
@@ -598,13 +638,17 @@ lemma tvDist_large_time_le_gap
         Real.exp (-(D.lambda2 - D.lambda1) * (t : ℝ)) := by
   let A : ℝ := D.a1 * D.phiMass
   have hA : 0 < A := mul_pos D.a1_pos D.phiMass_pos
-  have hS : 0 < D.survival t := D.survival_pos' t
   have hsurv :
       Real.exp (-D.lambda1 * (t : ℝ)) * A / 2 ≤ D.survival t := by
     have h := D.survival_lower_of_remainder_small t hsmall
     dsimp [A]
     linarith
-  have htv := D.tvDist_conditioned_le_two_remainder_div t
+  have hprincipal_pos :
+      0 < Real.exp (-D.lambda1 * (t : ℝ)) * A / 2 := by
+    positivity
+  have hS : 0 < D.survival t :=
+    hprincipal_pos.trans_le hsurv
+  have htv := D.tvDist_conditioned_le_two_remainder_div t hS
   have hl1 := D.remainder_l1_le t
   have hnum :
       2 * (∫ x, |D.remainder t x| ∂m) ≤
