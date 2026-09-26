@@ -24,15 +24,15 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **106** |
+| **proved / FULL-GREEN** | **106** |
 | **partial** | **0** |
 | **pending / not yet counted** | **0** |
 | **total** | **106** |
 
-This branch stages **106/106** after P-CTL-03 completed source-semantic, feature,
-clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**106/106 is not called FULL-GREEN until this final ledger checkpoint itself passes
-branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
+The final P-CTL-03 ledger completed its full lifecycle and landed at
+`main@1e2a3924ef31b5dca589dca69c3838fc355b8850`; exact resulting-main root CI
+`36249418600` succeeded. Therefore the frozen Core v3 source-theorem ledger is
+**106/106 FULL-GREEN**: 106 proved, 106 unique, 0 partial, 0 pending.
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
 mathematics or Lean code exists.
@@ -124,7 +124,7 @@ Promotion evidence:
 - audited `#print axioms` for `p_ctl_03`: only `propext`,
   `Classical.choice`, `Quot.sound`.
 
-**Status: PROVED / PROOF-COMPLETE, staged for counting by this final ledger checkpoint.**
+**Status: PROVED / COUNTED / FULL-GREEN.**
 
 ## Previous FULL-GREEN checkpoint — 105/106
 
@@ -139,9 +139,11 @@ ledger lifecycle completes.
 
 ## Final frontier after this ledger closes
 
-No theorem P-ID remains after a successful 106/106 ledger lifecycle.
-Once branch CI, PR CI, merge, and exact resulting-main CI all succeed, the
-frozen Core v3 source-theorem ledger is **106/106 FULL-GREEN**.
+No theorem P-ID remains. The final ledger branch CI `36248485650`, ledger PR
+#144 exact-head CI `36248944955`, merge to
+`main@1e2a3924ef31b5dca589dca69c3838fc355b8850`, and exact resulting-main CI
+`36249418600` all succeeded. The frozen Core v3 source-theorem ledger is
+**106/106 FULL-GREEN**.
 
 That source-proof completion remains distinct from the separate reproducibility
 task of synchronizing the exact canonical source bytes into the public repo.
@@ -149,8 +151,12 @@ task of synchronizing the exact canonical source bytes into the public repo.
 ## Reproducibility task
 
 The exact canonical source bytes are still not synchronized into the public
-repository. Source theorem proof status remains distinct from that artifact
-synchronization task.
+repository. This is a separate reproducibility-artifact task and does not alter
+the completed **106/106 FULL-GREEN** theorem ledger.
+
+The canonical Library source was reverified after final promotion: 183,440 raw
+bytes, SHA-256
+`ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`.
 
 ## Completion rule
 
