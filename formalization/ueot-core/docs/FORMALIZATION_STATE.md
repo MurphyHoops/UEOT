@@ -21,65 +21,72 @@ Last synchronized: **2026-09-26**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **105** |
+| integrated/proof-complete, staged by this checkpoint | **106** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **1** |
+| pending/not yet counted after this promotion | **0** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **104/106**.
-P-QSD-04 has completed frozen-source audit, feature validation, clean
+The authoritative FULL-GREEN baseline before this ledger branch is **105/106**.
+P-CTL-03 has completed frozen-source audit, feature validation, clean
 integration, proof PR, proof-main and proof resulting-main gates. Its proof is
-on `main@5c88124a5c2f8ef0fd53d685c82f553917a1c6f7`; proof resulting-main
-root CI `36243627501` succeeded.
+on `main@f12282642faf9477ed6afe3df4e630f5f38295ac`; proof resulting-main
+root CI `36247887665` succeeded.
 
-This ledger branch stages **105/106**. Do not call 105/106 FULL-GREEN until the
-ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
-`main`, and that resulting-main root CI succeeds.
+This final ledger branch stages **106/106**. Do not call 106/106 FULL-GREEN
+until the ledger branch passes root CI, the ledger PR passes root CI, the
+ledger lands on `main`, and that exact resulting-main root CI succeeds.
 
-## Newly staged proof — P-QSD-04
+## Newly staged proof — P-CTL-03
 
-Frozen Core 3 §10.4 is the reversible killed-diffusion spectral QSD theorem.
-The implementation retains a genuine continuous-time killed kernel semigroup,
-ties its evolved laws to the spectral densities, keeps a compact symmetric
-resolvent witness on `L²(m)`, and records only the standard
-compact-self-adjoint spectral expansion/remainder estimate licensed by
-Appendix C. Lean then proves the L²→L¹ step, eventual survival lower bound,
-normalization and total-variation convergence at the exact spectral-gap rate.
+Frozen Core 3 §19.4 is the classical continuous-time diffusion HJB
+verification theorem. The implementation keeps a bounded `C²` HJB candidate,
+positive discount, all-action HJB domination, a measurable maximizing
+selector, and the process-specific Itô/localization/integrability output
+licensed by Appendix C. It does not substitute a discrete control theorem.
+
+Pinned Mathlib does not provide a full controlled-SDE Itô stack. Following the
+already accepted `RecoveryDynkin`/`GirsanovPathKL` pattern, `ItoRun` records
+only the finite-horizon stochastic-calculus output that a valid model-specific
+diffusion theorem must supply. Lean itself proves the HJB residual sign,
+selector equality, bounded terminal decay, arbitrary-control upper bound and
+infinite-horizon selector optimality.
 
 Canonical theorem:
-- `UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04`.
+- `UEOT.V3.DiffusionHJBVerification.p_ctl_03`.
 
 Promotion evidence:
-- feature head `ee0d942c8c6e4913afd6fc803b8ecd0a1f26491c`;
-- feature root CI `36242678627`: success;
-- clean integration `7b37181280718b7ca73a3ba7cf46f39e75a13359`
-  from `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428`;
+- feature head `c1f2f922b3f27c2d67cdb33a8158cc12d7d62f33`;
+- feature root CI `36246442641`: success;
+- clean integration `9f4374c165d7d442fbe7c2bc16ce1ca5bab8941c`
+  from `main@9923223189e2ede79a2129a5efe86471a222028d`;
 - feature/integration tree identity
-  `0c88c8fd5d29281bdaf9896935d697127dbfa1da`;
-- integration root CI `36242788142`: success;
-- proof PR #141 exact-head root CI `36243218374`: success;
-- proof main `5c88124a5c2f8ef0fd53d685c82f553917a1c6f7`;
-- proof resulting-main root CI `36243627501`: success;
-- full local build: success (`9010/9010`);
+  `5a104e5f1f3e7d83782a1cb0e22ab070b094e29a`;
+- integration root CI `36246910887`: success;
+- proof PR #143 exact-head root CI `36247419494`: success;
+- proof main `f12282642faf9477ed6afe3df4e630f5f38295ac`;
+- proof resulting-main root CI `36247887665`: success;
+- full local build: success (`9011/9011`);
+- focused module build: success (`3225/3225`);
 - prohibited-proof audit clean; audited axioms only `propext`,
   `Classical.choice`, `Quot.sound`.
 
-## Previous FULL-GREEN checkpoint — 104/106
+## Previous FULL-GREEN checkpoint — 105/106
 
-P-KL-05 and all earlier counted P-IDs remain closed. The 104/106 ledger landed
-at `main@9a8a6261ca18c45cd2773c4cb1026bc450b32428` with resulting-main CI
-`36234355278` success.
+P-QSD-04 and all earlier counted P-IDs remain closed. The 105/106 ledger landed
+at `main@9923223189e2ede79a2129a5efe86471a222028d` with resulting-main CI
+`36245730807` success.
 
-P-QSD-04 is proof-complete but remains staged, not counted FULL-GREEN, until
-this separate ledger lifecycle completes.
+P-CTL-03 is proof-complete but remains staged, not counted FULL-GREEN, until
+this separate final ledger lifecycle completes.
 
-## Branchless frontier after the 105 ledger closes
+## Final frontier after the 106 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. After a successful
-105/106 promotion, the remaining P-ID is exactly P-CTL-03.
+No theorem P-ID remains after successful promotion. A green final ledger
+establishes 106 proved / 106 unique / 0 pending at source-theorem level.
 
-The final theorem lane must be opened only from the exact 105/106 FULL-GREEN
-main after this ledger finishes.
+The separate canonical-source-byte public-repository synchronization task is
+reproducibility hygiene and does not alter the P-ID proof count.
+
 ## Mandatory recovery procedure
 
 1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,
