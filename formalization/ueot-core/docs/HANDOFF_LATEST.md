@@ -7,20 +7,23 @@
 ## Current authoritative checkpoint
 
 - frozen source P-IDs: **106**;
-- counted FULL-GREEN before this ledger: **105/106**;
-- this final ledger branch stages: **106/106**;
-- pending after successful ledger lifecycle: **0**;
+- counted FULL-GREEN: **106/106**;
+- proved / unique / partial / pending: **106 / 106 / 0 / 0**;
+- final ledger main: `1e2a3924ef31b5dca589dca69c3838fc355b8850`;
+- final ledger resulting-main CI: `36249418600` — success;
 - proof main: `f12282642faf9477ed6afe3df4e630f5f38295ac`;
 - P-CTL-03 proof PR: **#143**;
 - proof PR root CI: `36247419494` — success;
 - proof resulting-main root CI: `36247887665` — success;
+- final ledger PR: **#144**;
+- ledger branch CI: `36248485650` — success;
+- ledger PR exact-head CI: `36248944955` — success;
 - canonical source SHA-256: `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`;
 - official root target: `lake build UEOT`;
 - active theorem proof lanes while this ledger runs: **0**.
 
-P-CTL-03 is **PROOF-COMPLETE** but is not called COUNTED / 106 FULL-GREEN
-until this docs-only final ledger branch passes branch CI, PR CI, lands on
-`main`, and the exact resulting-main CI succeeds.
+P-CTL-03 is **PROOF-COMPLETE / COUNTED / FULL-GREEN**. The final ledger branch,
+PR, merge, and exact resulting-main CI all succeeded.
 
 ## P-CTL-03 — proof-complete lifecycle
 
@@ -65,8 +68,8 @@ absent source mismatch or main regression.
 
 ## Final frontier after the 106 ledger closes
 
-No theorem proof lane remains. After a successful 106/106 ledger lifecycle,
-the frozen Core v3 source-theorem ledger is machine-complete at 106/106.
+No theorem proof lane remains. The final 106/106 ledger lifecycle succeeded,
+so the frozen Core v3 source-theorem ledger is machine-complete at 106/106.
 
 The exact canonical source bytes are still separately marked pending public
 repository synchronization; that reproducibility artifact task must not be
@@ -86,18 +89,15 @@ misreported as an unproved P-ID.
 
 ## Exact continuation order
 
-1. finish this **106/106 final ledger lifecycle**: full local build -> branch
-   root CI -> ledger PR exact-head root CI -> merge -> resulting-main exact-head
-   root CI;
-2. only after every ledger gate succeeds, record **106/106 FULL-GREEN** in
-   Issue #56 and the final repository state;
-3. run the final 106 proved / 106 unique / 0 pending / 0 overlap mechanical
-   audit, proof-escape audit, axiom audit, source-identity check, and branch/PR
-   hygiene reconciliation;
-4. safely retire the completed P-CTL-03 feature/integration/ledger branches if
-   repository policy permits; no next theorem branch exists;
-5. keep the separate canonical-source-byte synchronization task explicitly
-   separated from source-theorem proof completion.
+1. No source-theorem proof lane remains: **106/106 FULL-GREEN** is established.
+2. Keep Issue #56, coverage docs and live `main` synchronized with that final
+   state.
+3. The exact canonical-source-byte public-repository synchronization remains a
+   separate reproducibility task; do not reclassify it as a pending P-ID.
+4. Do not reopen counted P-IDs absent a substantive frozen-source mismatch or
+   CI regression.
+5. Repository hygiene may retire completed theorem/ledger branches after their
+   merged histories and CI evidence are preserved.
 
 ## Recovery order
 
