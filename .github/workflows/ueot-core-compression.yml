@@ -2,7 +2,7 @@ name: UEOT Core Compression Guard
 
 on:
   push:
-    branches: ["compression/**", "ops/core-compression-v0"]
+    branches: [main, "compression/**", "ops/core-compression-v0"]
     paths:
       - "formalization/ueot-core/**"
       - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
@@ -36,10 +36,18 @@ jobs:
         run: git fetch origin main:refs/remotes/origin/main
 
       - name: Validate compression ledger and matrix
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          BEFORE_SHA: ${{ github.event.before }}
         run: |
+          BASELINE_REF="origin/main"
+          if [[ "$EVENT_NAME" == "push" && "$REF_NAME" == "main" && -n "$BEFORE_SHA" && "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            BASELINE_REF="$BEFORE_SHA"
+          fi
           python3 formalization/ueot-core/scripts/validate_compression.py \
             --repo-root . \
-            --baseline-ref origin/main
+            --baseline-ref "$BASELINE_REF"
 
   proof:
     runs-on: ubuntu-latest
