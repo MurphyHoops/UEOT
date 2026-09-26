@@ -4,7 +4,7 @@
 > GitHub Issue #56 carries the live cross-chat construction log and overrides
 > stale fallback snapshots.
 
-Last synchronized: **2026-09-25**
+Last synchronized: **2026-09-26**
 
 ## Environment
 
@@ -21,86 +21,70 @@ Last synchronized: **2026-09-25**
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **102** |
+| integrated/proof-complete, staged by this checkpoint | **103** |
 | active theorem proof branch | **0** |
-| pending/not yet counted after this promotion | **4** |
+| pending/not yet counted after this promotion | **3** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **101/106**.
-P-CTL-02 has completed source audit, feature validation, clean integration,
+The authoritative FULL-GREEN baseline before this ledger branch is **102/106**.
+P-KL-04 has completed source audit, feature validation, clean integration,
 proof PR, proof-main and proof resulting-main gates. Its proof is on
-`main@6a334b4c9870cf73ecda97a65965f822cf5e9e26`; proof resulting-main root CI
-`36142098525` succeeded.
+`main@7af0d8970a33063bb31a216bce97235a380571c0`; proof resulting-main root CI
+`36224107001` succeeded.
 
-This ledger branch stages **102/106**. Do not call 102/106 FULL-GREEN until the
+This ledger branch stages **103/106**. Do not call 103/106 FULL-GREEN until the
 ledger branch passes root CI, the ledger PR passes root CI, the ledger lands on
 `main`, and that resulting-main root CI succeeds.
 
-## Newly staged proof — P-CTL-02
+## Newly staged proof — P-KL-04
 
-Frozen Core 3 §19.3 states the compact discounted-control theorem for compact
-metric state/action spaces, fixed nonempty action space, continuous reward,
-weakly continuous Markov kernel, and `0 < β < 1`: the Bellman operator on
-`C(X, ℝ)` is a `β`-contraction with a unique continuous fixed point and a
-measurable stationary optimal selector.
-
-The implementation represents weak continuity by continuity of every
-continuous-test-function integral and proves this equals continuity in
-Mathlib's weak topology on probability measures. Compact maximization gives a
-Bellman self-map of `C(X, ℝ)`; sup-norm estimates prove the contraction and
-Banach gives the unique continuous fixed point. A measurable maximizer is
-constructed directly from shrinking compact neighborhoods of a dense sequence
-and a measurable Cauchy limit, without assuming a general selection theorem.
-Finally, full-history randomized causal policies are evaluated by nested
-kernel recursion; Bellman domination bounds all of them and the measurable
-stationary deterministic greedy policy attains the fixed-point value.
+Frozen Core 3 §22.4 is the finite continuous-time Markov-chain path KL identity.
+The implementation constructs normalized full finite-jump path laws for the
+controlled and baseline generators, proves support-driven absolute continuity
+and the path-law likelihood relation, derives Campbell/renewal equalities from
+path densities, proves integrability of the signed jump-log plus escape-rate
+decomposition, and identifies the holding reward with the literal clock-time
+source integral.
 
 Canonical theorem:
-- `UEOT.V3.CompactFellerControl.Model.p_ctl_02`.
-
-Supporting modules:
-- `UEOT.V3.CompactArgmaxSelector`;
-- `UEOT.V3.CompactCausalOptimalityCore`;
-- `UEOT.V3.CompactFellerControl`.
+- `UEOT.V3.FiniteCTMCPathKL.p_kl_04`.
 
 Promotion evidence:
 - final frozen-source/proof audit: CLEAR, zero blockers;
-- feature commit `4b17ec1219f95dd9fa0480f46beea6e585c122eb`;
-- feature tree `7497670441126d08f2fdb91b15ada086d2a9565f`;
-- feature root CI `36139857404`: success;
-- focused module, root import, and full feature checks: success (`8996` jobs);
+- feature commit `79bc6873d9b445627f70017ae37c43e498332158`;
+- feature tree `79049834494228824abbe6a7de487f790f926edc`;
+- feature root CI `36222018778`: success;
+- focused/root/full local checks: success (`9008/9008`);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pctl02-main-integration@863c9679b9d025a5f58282af4548fe5587e37860`
-  from `main@7add6a361c8c46f7539d48ace389d403219b053d`;
+  `formal/pkl04-main-integration@1117010ab9554ab073d47a6f7f16e7fc78ada214`
+  from `main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde`;
 - feature/integration tree hash identical:
-  `7497670441126d08f2fdb91b15ada086d2a9565f`;
-- integration root CI `36140869360`: success;
-- proof PR #135 exact-head root CI `36141205611`: success;
-- proof main `6a334b4c9870cf73ecda97a65965f822cf5e9e26`;
-- proof resulting-main root CI `36142098525`: success.
+  `79049834494228824abbe6a7de487f790f926edc`;
+- integration root CI `36222441619`: success;
+- proof PR #137 exact-head root CI `36222997612`: success;
+- proof main `7af0d8970a33063bb31a216bce97235a380571c0`;
+- proof resulting-main root CI `36224107001`: success.
 
-## Previous FULL-GREEN checkpoint — 101/106
+## Previous FULL-GREEN checkpoint — 102/106
 
-P-ALI-01 and all earlier counted P-IDs remain closed. The 101/106 ledger landed
-at `main@7add6a361c8c46f7539d48ace389d403219b053d` with resulting-main CI
-`36125245565` success.
+P-CTL-02 and all earlier counted P-IDs remain closed. The 102/106 ledger landed
+at `main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde` with resulting-main CI
+`36156516104` success.
 
-P-CTL-02 is proof-complete but remains staged, not counted FULL-GREEN, until
+P-KL-04 is proof-complete but remains staged, not counted FULL-GREEN, until
 this separate ledger lifecycle completes.
 
-## Branchless frontier after the 102 ledger closes
+## Branchless frontier after the 103 ledger closes
 
-No theorem branch is opened by this ledger lifecycle. After a successful 102/106
-promotion, the remaining P-IDs are exactly P-QSD-04, P-CTL-03, P-KL-04, and
-P-KL-05.
+No theorem branch is opened by this ledger lifecycle. After a successful 103/106
+promotion, the remaining P-IDs are exactly P-QSD-04, P-CTL-03, and P-KL-05.
 
-The next theorem lane must be selected dynamically from the exact 102/106
+The next theorem lane must be selected dynamically from the exact 103/106
 FULL-GREEN main after this ledger finishes, rather than being opened early from
 this staged branch.
-
 ## Mandatory recovery procedure
 
 1. Read `UEOT_CORE3_LEAN_OPERATIONS.md`, Issue #56 if available,

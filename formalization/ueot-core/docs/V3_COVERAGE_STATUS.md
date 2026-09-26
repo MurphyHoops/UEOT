@@ -24,14 +24,14 @@ the FULL-GREEN count.
 
 | status | count |
 |---|---:|
-| **proved, staged by this ledger checkpoint** | **102** |
+| **proved, staged by this ledger checkpoint** | **103** |
 | **partial** | **0** |
-| **pending / not yet counted** | **4** |
+| **pending / not yet counted** | **3** |
 | **total** | **106** |
 
-This branch stages **102/106** after P-CTL-02 completed source-semantic, feature,
+This branch stages **103/106** after P-KL-04 completed source-semantic, feature,
 clean-integration, proof-PR, proof-main, and proof resulting-main gates.
-**102/106 is not called FULL-GREEN until this ledger checkpoint itself passes
+**103/106 is not called FULL-GREEN until this ledger checkpoint itself passes
 branch CI, PR CI, lands on `main`, and the resulting-main CI succeeds.**
 
 `pending` means only “not yet counted proved”; it does not mean no relevant
@@ -62,100 +62,91 @@ mathematics or Lean code exists.
 - **Omega / integrity:** P-OMG-01, P-OMG-02
 - **Dual-drive / alignment:** P-DDH-01, P-DDH-02, P-DDH-03, P-DDH-04, P-DDH-05, P-ALI-01, P-ALI-02, P-ALI-03
 - **Composition:** P-COMP-01, P-COMP-02, P-COMP-03, P-COMP-04, P-COMP-05, P-COMP-06, P-COMP-07
-- **KL / path information:** P-KL-01, P-KL-02, P-KL-03
+- **KL / path information:** P-KL-01, P-KL-02, P-KL-03, P-KL-04
 - **Evolution:** P-EVO-01, P-EVO-02, P-EVO-03, P-EVO-04
 - **Process interface:** P-API-01
 - **Algorithmic quotient:** P-ALG-01
 - **GOA:** P-GOA-01, P-GOA-02, P-GOA-03, P-GOA-04
 - **Core assembly:** P-CORE-01
 
-Count check: `101 + P-CTL-02 = 102`.
+Count check: `102 + P-KL-04 = 103`.
 
-## Newly staged promotion — P-CTL-02
+## Newly staged promotion — P-KL-04
 
-Frozen Core 3 §19.3 states the compact discounted-control theorem: for compact
-metric state and action spaces, a fixed nonempty action space, continuous
-reward, a weakly continuous Markov kernel, and `0 < β < 1`, the Bellman
-operator on `C(X, ℝ)` is a `β`-contraction with a unique continuous fixed
-point and admits a measurable stationary optimal selector.
+Frozen Core 3 §22.4 states the finite continuous-time jump-process
+likelihood/compensator KL identity. Under a common initial state and support
+inclusion, the controlled path-space KL divergence equals the controlled-path
+expectation of the literal clock-time jump-rate integral, with `0 log 0 = 0`.
 
 The formalization preserves that contract:
 
-1. `CompactFellerControl.Model` uses compact metric `X` and `A`, fixed
-   nonempty `A`, a continuous reward `C(X × A, ℝ)`, a Markov transition
-   kernel, and `0 < β < 1`;
-2. weak continuity is stored as continuity of
-   `(x,a) ↦ ∫ v dP(x,a)` for every `v : C(X, ℝ)`, and
-   `transitionPM_continuous` proves this is literal continuity into Mathlib's
-   weak topology on `ProbabilityMeasure X`;
-3. compact-action maximization keeps the Bellman operator inside `C(X, ℝ)`,
-   and the expectation/sup-norm estimates prove the exact `β`-contraction;
-4. Banach contraction gives the unique continuous fixed point
-   `optimalValue` (with value-iteration convergence and a residual bound);
-5. the measurable argmax selector is constructed directly from a fixed dense
-   sequence, shrinking compact balls, countable `measurable_find`, a summable
-   Cauchy bound, and a measurable limit; no general measurable-selection
-   theorem or assumed optimal selector is imported;
-6. arbitrary randomized full-history causal policies are evaluated by exact
-   nested action/transition kernel recursion. Bellman domination bounds every
-   such causal policy, while the measurable deterministic stationary greedy
-   policy attains `optimalValue`.
+1. `FiniteJumpGenerator` gives finite-state continuous-time generators with
+   nonnegative jump rates, zero self-jump rates, and derived escape rates;
+2. `pathLawFrom` is the explicit normalized full finite-jump path law, not a
+   fixed-jump-count surrogate;
+3. `SupportIncluded Gu G0` is the source support condition;
+4. the common-reference likelihood, absolute continuity, Radon--Nikodym
+   derivative, and real log-likelihood are derived on the actual path law;
+5. Campbell/renewal identities are proved from path densities rather than
+   assumed as compensator certificates;
+6. signed jump-log and escape-rate terms are recombined with an integrability
+   proof; and
+7. the holding-time representation is bridged to the literal clock-time
+   trajectory integral in the final source-facing theorem.
 
 Canonical theorem surface:
-- `UEOT.V3.CompactFellerControl.Model.p_ctl_02`.
+- `UEOT.V3.FiniteCTMCPathKL.p_kl_04`.
 
-Supporting modules:
-- `UEOT/V3/CompactArgmaxSelector.lean`;
-- `UEOT/V3/CompactCausalOptimalityCore.lean`;
-- `UEOT/V3/CompactFellerControl.lean`.
+Supporting module:
+- `UEOT/V3/FiniteCTMCPathKL.lean`;
+- finite-jump path-law infrastructure under
+  `UEOT/V3/ThirdParty/CrooksJarzynski/`, with Apache-2.0 provenance pinned in
+  `UPSTREAM.md`.
 
 Promotion evidence:
-- frozen §19.3 source/proof contract independently audited against the final
-  implementation: CLEAR, zero blockers;
+- final frozen-source/proof audit: CLEAR, zero blockers;
 - source-facing feature commit
-  `4b17ec1219f95dd9fa0480f46beea6e585c122eb`;
-- feature tree `7497670441126d08f2fdb91b15ada086d2a9565f`;
-- feature root CI `36139857404`: success;
+  `79bc6873d9b445627f70017ae37c43e498332158`;
+- feature tree `79049834494228824abbe6a7de487f790f926edc`;
+- feature root CI `36222018778`: success;
 - focused module, root import, and full local `lake build UEOT`: success
-  (`8996` jobs);
+  (`9008/9008` jobs);
 - prohibited-proof audit clean (`sorry=0`, Lean `admit=0`,
   `native_decide=0`, unsourced new `axiom=0`, escape-hatch `opaque=0`);
 - audited `#print axioms`: only `propext`, `Classical.choice`, `Quot.sound`;
 - clean integration
-  `formal/pctl02-main-integration@863c9679b9d025a5f58282af4548fe5587e37860`
-  from `main@7add6a361c8c46f7539d48ace389d403219b053d`;
+  `formal/pkl04-main-integration@1117010ab9554ab073d47a6f7f16e7fc78ada214`
+  from `main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde`;
 - feature and clean-integration tree hashes identical:
-  `7497670441126d08f2fdb91b15ada086d2a9565f`;
-- clean integration root CI `36140869360`: success;
-- proof PR #135 exact-head root CI `36141205611`: success;
-- proof main commit `6a334b4c9870cf73ecda97a65965f822cf5e9e26`;
-- proof resulting-main root CI `36142098525`: success.
+  `79049834494228824abbe6a7de487f790f926edc`;
+- clean integration root CI `36222441619`: success;
+- proof PR #137 exact-head root CI `36222997612`: success;
+- proof main commit `7af0d8970a33063bb31a216bce97235a380571c0`;
+- proof resulting-main root CI `36224107001`: success.
 
 **Status: PROVED / PROOF-COMPLETE, staged for counting by this ledger checkpoint.**
 
-## Previous FULL-GREEN checkpoint — 101/106
+## Previous FULL-GREEN checkpoint — 102/106
 
-P-ALI-01 and all earlier counted P-IDs form the authoritative 101/106 baseline.
-Its ledger landed at `main@7add6a361c8c46f7539d48ace389d403219b053d`
-with ledger resulting-main CI `36125245565` success.
+P-CTL-02 and all earlier counted P-IDs form the authoritative 102/106 baseline.
+Its ledger landed at `main@91547a488ba9a1a86abbb4e5ead7ad5aa98b6bde`
+with ledger resulting-main CI `36156516104` success.
 
 All counted P-IDs remain closed absent a substantive frozen-source mismatch or
-CI regression. P-CTL-02 is proof-complete on the current proof main but is not
+CI regression. P-KL-04 is proof-complete on the current proof main but is not
 counted FULL-GREEN until this independent ledger lifecycle completes.
 
 ## Branchless frontier evidence after this ledger closes
 
-No theorem branch is opened by this promotion. After a successful 102/106 ledger
-lifecycle, the exact remaining four P-IDs are:
+No theorem branch is opened by this promotion. After a successful 103/106 ledger
+lifecycle, the exact remaining three P-IDs are:
 
 - P-QSD-04
 - P-CTL-03
-- P-KL-04
 - P-KL-05
 
-The next theorem lane must be selected dynamically only after the exact 102/106
+The next theorem lane must be selected dynamically only after the exact 103/106
 FULL-GREEN `main` exists and the source/dependency/branch preflight is repeated.
-
 ## Reproducibility task
 
 The exact canonical source bytes are still not synchronized into the public
