@@ -1,0 +1,106 @@
+name: UEOT Core Compression Guard
+
+on:
+  push:
+    branches: [main, "compression/**", "ops/core-compression-v0"]
+    paths:
+      - "formalization/ueot-core/**"
+      - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
+      - ".github/workflows/ueot-core-compression.yml"
+      - ".github/workflows/ueot-core-lean.yml"
+  pull_request:
+    paths:
+      - "formalization/ueot-core/**"
+      - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
+      - ".github/workflows/ueot-core-compression.yml"
+      - ".github/workflows/ueot-core-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ueot-core-compression-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Fetch main for baseline protection
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Validate compression ledger and matrix
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          BASELINE_REF="origin/main"
+          if [[ "$EVENT_NAME" == "push" && "$REF_NAME" == "main" && -n "$BEFORE_SHA" && "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            BASELINE_REF="$BEFORE_SHA"
+          fi
+          python3 formalization/ueot-core/scripts/validate_compression.py \
+            --repo-root . \
+            --baseline-ref "$BASELINE_REF"
+
+  proof:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formalization/ueot-core
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Verify pinned Lean
+        run: |
+          lean --version
+          lake --version
+          test -s lake-manifest.json
+
+      - name: Restore Mathlib cache from lock
+        run: lake exe cache get
+
+      - name: Reject proof escapes in compression namespace
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' UEOT/V3/Compression; then
+            echo "Forbidden proof escape found in compression namespace." >&2
+            exit 1
+          fi
+
+      - name: Build compression meta-layer
+        run: lake build UEOT.V3.Compression
+
+      - name: Print compression theorem axioms
+        run: lake env lean scripts/CompressionAxiomAudit.lean
+
+      - name: Full UEOT regression build
+        run: lake build UEOT
+
+      - name: Compression evidence summary
+        shell: bash
+        run: |
+          {
+            echo "## UEOT Core Compression Guard"
+            echo
+            echo "- head: `${GITHUB_SHA}`"
+            echo "- matrix integrity: PASS"
+            echo "- ledger validation: PASS"
+            echo "- compression build: PASS"
+            echo "- proof-escape scan: PASS"
+            echo "- full UEOT build: PASS"
+          } >> "$GITHUB_STEP_SUMMARY"

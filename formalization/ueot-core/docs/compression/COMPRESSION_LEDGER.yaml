@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-27",
+  "integration_branch": "main",
+  "live_issue": 146,
+  "official_target": "lake build UEOT",
+  "baseline": {
+    "core_main_at_mission_start": "29d946422f02bb025bd5d450acc434486ecdb422",
+    "source_pids": 106,
+    "source_proved": 106,
+    "source_sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303"
+  },
+  "coverage": {
+    "analyzed_pids": 3,
+    "schema_classified_pids": 3,
+    "lean_rederived_pids": 2,
+    "counted_compressed_pids": 0,
+    "confirmed_adapter_pids": 0,
+    "counted_generators": 0
+  },
+  "generators": {
+    "M-QD-01": {
+      "title": "Quotient Descent",
+      "state": "lean_green",
+      "canonical_theorems": [
+        "UEOT.V3.Compression.QuotientDescent.fiberCompatible_iff_existsUnique_descend",
+        "UEOT.V3.Compression.QuotientDescent.strongLumpability_unique_setLevel_descend"
+      ],
+      "explicit_nonclaims": [
+        "set-level descent does not imply measurable descent",
+        "set-level descended law is not automatically a Markov kernel"
+      ],
+      "mappings": {
+        "P-DYN-01": {
+          "state": "lean_rederived_partial",
+          "witness_theorems": [
+            "UEOT.V3.Compression.QuotientDescent.strongLumpability_unique_setLevel_descend"
+          ],
+          "assumption_relation": "compatible_partial_scope",
+          "conclusion_relation": "partial",
+          "note": "Recovers unique set-level macro one-step law only; measurable-kernel descent remains a separate source obligation."
+        }
+      }
+    },
+    "M-TC-01": {
+      "title": "Transport Certificate Calculus",
+      "state": "cross_family_green",
+      "canonical_theorems": [
+        "UEOT.V3.Compression.TransportCertificate.twoStage_bound",
+        "UEOT.V3.Compression.TransportCertificate.twoStage_exact",
+        "UEOT.V3.Compression.TransportCertificate.chain_bound"
+      ],
+      "explicit_nonclaims": [
+        "domain-specific contraction hypotheses are not automatic",
+        "probability and measurability obligations remain in each specialization"
+      ],
+      "mappings": {
+        "P-API-01": {
+          "state": "lean_rederived",
+          "witness_theorems": [
+            "UEOT.V3.Compression.TransportCertificate.processInterface_exact_source_via_twoStage",
+            "UEOT.V3.Compression.TransportCertificate.processInterface_approx_via_twoStage"
+          ],
+          "assumption_relation": "exact",
+          "conclusion_relation": "exact",
+          "note": "Exact and approximate process-interface composition are reconstructed from the generic calculus."
+        },
+        "P-ID-01": {
+          "state": "lean_rederived",
+          "witness_theorems": [
+            "UEOT.V3.Compression.TransportCertificate.transportDefect_source_via_chain"
+          ],
+          "assumption_relation": "exact",
+          "conclusion_relation": "exact",
+          "note": "The source-facing supremum transport-defect bound is reconstructed from heterogeneous additive chain accumulation."
+        }
+      }
+    }
+  }
+}
