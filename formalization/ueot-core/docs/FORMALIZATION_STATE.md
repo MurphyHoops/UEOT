@@ -17,24 +17,23 @@ Last synchronized: **2026-09-26**
 - integration branch: `main`
 - exact canonical bytes in public repo: pending synchronization
 
-## Current staged checkpoint
+## Current FULL-GREEN checkpoint
 
 | operational state | count |
 |---|---:|
-| integrated/proof-complete, staged by this checkpoint | **106** |
+| counted / FULL-GREEN | **106** |
 | active theorem proof branch | **0** |
 | pending/not yet counted after this promotion | **0** |
 | total | **106** |
 
-The authoritative FULL-GREEN baseline before this ledger branch is **105/106**.
-P-CTL-03 has completed frozen-source audit, feature validation, clean
-integration, proof PR, proof-main and proof resulting-main gates. Its proof is
-on `main@f12282642faf9477ed6afe3df4e630f5f38295ac`; proof resulting-main
-root CI `36247887665` succeeded.
+The final P-CTL-03 proof and ledger lifecycles are closed. Proof main
+`f12282642faf9477ed6afe3df4e630f5f38295ac` passed resulting-main root CI
+`36247887665`. The final ledger then passed branch CI `36248485650`, PR #144
+exact-head CI `36248944955`, merged at
+`main@1e2a3924ef31b5dca589dca69c3838fc355b8850`, and passed exact
+resulting-main root CI `36249418600`.
 
-This final ledger branch stages **106/106**. Do not call 106/106 FULL-GREEN
-until the ledger branch passes root CI, the ledger PR passes root CI, the
-ledger lands on `main`, and that exact resulting-main root CI succeeds.
+**Current counted state: 106/106 FULL-GREEN, 106 unique, 0 partial, 0 pending.**
 
 ## Newly staged proof — P-CTL-03
 
@@ -76,13 +75,13 @@ P-QSD-04 and all earlier counted P-IDs remain closed. The 105/106 ledger landed
 at `main@9923223189e2ede79a2129a5efe86471a222028d` with resulting-main CI
 `36245730807` success.
 
-P-CTL-03 is proof-complete but remains staged, not counted FULL-GREEN, until
-this separate final ledger lifecycle completes.
+P-CTL-03 is proof-complete and counted FULL-GREEN; the separate final ledger
+lifecycle has completed through exact resulting-main CI.
 
 ## Final frontier after the 106 ledger closes
 
-No theorem P-ID remains after successful promotion. A green final ledger
-establishes 106 proved / 106 unique / 0 pending at source-theorem level.
+No theorem P-ID remains. The final ledger is green through resulting-main CI,
+so the source-theorem state is 106 proved / 106 unique / 0 pending.
 
 The separate canonical-source-byte public-repository synchronization task is
 reproducibility hygiene and does not alter the P-ID proof count.
