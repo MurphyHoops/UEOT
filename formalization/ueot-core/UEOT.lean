@@ -32,6 +32,7 @@ import UEOT.V3.AlignmentGlobalExactness
 import UEOT.V3.CompositionWindow
 import UEOT.V3.CompositionParentInformation
 import UEOT.V3.PathKLChain
+import UEOT.V3.FiniteCTMCPathKL
 import UEOT.V3.PAlg01
 import UEOT.V3.ReflexiveStateAugmentation
 import UEOT.V3.ReflexiveStatePathLaw
