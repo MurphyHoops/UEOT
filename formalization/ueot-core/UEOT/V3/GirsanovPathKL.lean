@@ -46,9 +46,10 @@ noncomputable def controlEnergy
 
 `baselineIntegral` is `∫ u dW⁰` and `controlledIntegral` is
 `∫ u dWᵘ`. The field `integral_shift` is the terminal form of
-`dW⁰ = dWᵘ + u dt`; `controlledIntegral_mean_zero` is the standard
-square-integrable martingale consequence used explicitly in the source proof.
-Neither field contains a KL statement. -/
+`dW⁰ = dWᵘ + u dt`; `controlledIntegral_martingale` records the
+zero-start martingale whose terminal value is the controlled stochastic integral,
+so integrability and mean zero are derived below rather than assumed. No field
+contains a KL statement. -/
 structure TerminalGirsanovData
     (P0 Q : Measure Ω) (T : NNReal) (u : ℝ → Ω → E) where
   density : Ω → ℝ≥0∞
