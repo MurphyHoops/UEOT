@@ -79,7 +79,9 @@ A P-ID may receive final disposition `generated` only when:
 1. the frozen source statement and canonical Lean endpoint are identified;
 2. the relevant M-ID generic theorem is integrated and counted;
 3. an explicit compression-namespace wrapper/specialization exists;
-4. assumption relation is audited;
+4. assumption relation is audited and is source-faithful: exactly the frozen
+   assumptions or genuinely weaker assumptions; stronger-assumption surrogates do
+   not count as full rederivations;
 5. conclusion relation is **exact** for the source-facing claim;
 6. the mapping has completed feature, integration, main, and ledger gates;
 7. ledger witness theorem names resolve under Lean.
@@ -101,9 +103,11 @@ They are valid final scientific results when the audit records:
   assumption or changing semantic scope;
 - the standard/domain mathematics responsible for the residual structure;
 - whether the retained result is a candidate for a future, more general
-  generator.
+  generator;
+- explicit audit-evidence references sufficient to recover the reasoning and
+  source/Lean identity without relying on a prior chat.
 
-Retained classifications must contain an explicit rationale. “Did not manage
+Retained classifications must contain an explicit rationale and evidence. “Did not manage
 to compress” is not a sufficient rationale.
 
 Existing Core v3 Lean proofs remain the proof evidence for retained source
@@ -140,6 +144,7 @@ ablation record answering:
 - what mappings fail if the generator is removed;
 - whether the generator is derivable from remaining generators plus registered
   adapters;
+- the concrete frozen P-IDs whose generated derivations break under removal;
 - which assumptions are essential to that conclusion;
 - whether the result is exact, relative, or currently limited by formalized
   infrastructure.

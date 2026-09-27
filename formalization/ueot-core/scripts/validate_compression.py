@@ -53,6 +53,7 @@ MINIMALITY_CLAIMS = {
     "nonredundant_under_declared_derivation_system",
 }
 NONREDUNDANT_ABLATION = "nonredundant_under_declared_derivation_system"
+SOURCE_FAITHFUL_ASSUMPTION_RELATIONS = {"exact", "weaker"}
 
 PROTECTED_BASELINE_FILES = {
     "formalization/ueot-core/docs/V3_COVERAGE_STATUS.md",
@@ -246,6 +247,11 @@ def main() -> None:
             if mstate in {"lean_rederived", "assumption_audited", "main_green", "counted"}:
                 if conclusion != "exact":
                     fail(f"{mid}/{pid}: full rederivation must have exact conclusion relation")
+                if assumptions not in SOURCE_FAITHFUL_ASSUMPTION_RELATIONS:
+                    fail(
+                        f"{mid}/{pid}: full rederivation cannot strengthen "
+                        "the frozen source assumptions"
+                    )
                 exact_rederived.add(pid)
                 cross_family_exact.add(pid.split("-")[1])
 
@@ -313,10 +319,16 @@ def main() -> None:
         elif disposition == "retained_adapter":
             if not str(entry.get("rationale", "")).strip():
                 fail(f"{pid}: retained adapter needs a scientific rationale")
+            evidence = entry.get("audit_evidence")
+            if not isinstance(evidence, list) or not evidence:
+                fail(f"{pid}: retained adapter needs audit_evidence references")
             retained_adapter.add(pid)
         else:
             if not str(entry.get("rationale", "")).strip():
                 fail(f"{pid}: retained boundary needs a scientific rationale")
+            evidence = entry.get("audit_evidence")
+            if not isinstance(evidence, list) or not evidence:
+                fail(f"{pid}: retained boundary needs audit_evidence references")
             retained_boundary.add(pid)
 
     final_count = len(dispositions)
@@ -373,6 +385,13 @@ def main() -> None:
                     f"{mid}: final minimal-core generator lacks "
                     "nonredundant ablation evidence"
                 )
+            broken_pids = ablation.get("broken_pids")
+            if not isinstance(broken_pids, list) or not broken_pids:
+                fail(f"{mid}: final ablation must record affected P-IDs")
+            if any(pid not in pid_set for pid in broken_pids):
+                fail(f"{mid}: ablation references unknown P-IDs")
+            if not str(ablation.get("rationale", "")).strip():
+                fail(f"{mid}: final ablation needs a scientific rationale")
 
     if mission_state in {"ready_for_finalization", "final"}:
         final_gate_errors = []

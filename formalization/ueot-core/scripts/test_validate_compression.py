@@ -105,6 +105,42 @@ def main() -> None:
             "generated disposition needs a counted exact mapping",
         )
 
+        def stronger_assumption(data: dict) -> None:
+            data["generators"]["M-TC-01"]["mappings"]["P-API-01"][
+                "assumption_relation"
+            ] = "stronger"
+
+        expect_rejected(
+            repo,
+            ledger_path,
+            original,
+            "stronger-assumption-full-mapping",
+            stronger_assumption,
+            "full rederivation cannot strengthen",
+        )
+
+        def retained_without_evidence(data: dict) -> None:
+            data["final_dispositions"] = {
+                "P-DYN-01": {
+                    "status": "retained_adapter",
+                    "rationale": "measurable-kernel descent remains domain-specific",
+                }
+            }
+            data["coverage"].update(
+                final_disposition_pids=1,
+                retained_adapter_pids=1,
+                unresolved_pids=105,
+            )
+
+        expect_rejected(
+            repo,
+            ledger_path,
+            original,
+            "retained-without-audit-evidence",
+            retained_without_evidence,
+            "retained adapter needs audit_evidence references",
+        )
+
         def fake_frozen_core(data: dict) -> None:
             data["minimal_core"].update(
                 state="frozen",
