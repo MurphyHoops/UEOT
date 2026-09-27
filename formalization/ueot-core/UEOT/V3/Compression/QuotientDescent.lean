@@ -1,4 +1,5 @@
 import UEOT.V3.DynamicsKernel
+import UEOT.V3.PredictionDependent
 
 /-!
 # UEOT Core compression — quotient descent
@@ -98,6 +99,86 @@ theorem fiberCompatible_iff_existsUnique_descend
     exact existsUnique_descend q g hq hcompat
   · rintro ⟨gbar, hfactor, _hunique⟩
     exact fiberCompatible_of_comp_eq q g gbar hfactor
+
+/-! ## Countable almost-everywhere measurable descent
+
+The set-level universal property above is not enough for source theorems whose
+factorization is only protocol-by-protocol almost everywhere.  The reusable
+extra ingredient is countability: it turns the separate exceptional sets into
+one common null set, while product measurability bundles the coordinate
+decoders into one measurable descended state.
+
+This theorem is independent of probability kernels.  P-PRED-01 is obtained by
+specializing the coordinate codomains to spaces of measures. -/
+
+universe uH uI uS uF
+
+/-- A countable family of measurable coordinate factorizations, each valid
+almost everywhere, descends jointly through one measurable product decoder on
+one common full-measure set. -/
+theorem countableAEFamily_descend
+    {H : Type uH} {I : Type uI} {S : Type uS}
+    {F : I → Type uF}
+    [Countable I] [MeasurableSpace H] [MeasurableSpace S]
+    [∀ i, MeasurableSpace (F i)]
+    (μ : MeasureTheory.Measure H)
+    (f : (i : I) → H → F i)
+    (s : H → S)
+    (d : (i : I) → S → F i)
+    (hd : ∀ i, Measurable (d i))
+    (hfactor : ∀ i, ∀ᵐ h ∂μ, f i h = d i (s h)) :
+    ∃ decoder : S → (∀ i, F i), Measurable decoder ∧
+      ∀ᵐ h ∂μ, (fun i => f i h) = decoder (s h) := by
+  refine ⟨fun z i => d i z, measurable_pi_lambda _ hd, ?_⟩
+  have hcommon : ∀ᵐ h ∂μ, ∀ i, f i h = d i (s h) :=
+    MeasureTheory.ae_all_iff.mpr hfactor
+  exact hcommon.mono (fun h hh => funext hh)
+
+open UEOT.V3.PredictionAE
+open UEOT.V3.PredictionDependent
+
+universe uPY
+
+/-- P-PRED-01 reconstructed from countable a.e. quotient descent.
+
+The source-facing conclusions are kept separate inside one wrapper:
+
+* the canonical response state measurably factors through every jointly
+  sufficient statistic on one common full-measure set;
+* hence its mod-null sigma-factor is minimal;
+* the canonical response state is itself protocol-sufficient because every
+  response kernel is recovered by measurable coordinate evaluation.
+
+The source assumes standard-Borel future/statistic spaces to obtain the input
+regular conditional kernels.  Once those kernels are supplied, the Lean
+factorization argument only needs their measurable structures, so this wrapper
+uses genuinely weaker assumptions rather than strengthening the frozen claim. -/
+theorem p_pred_01_via_countableAE_descent
+    {H : Type uH} {I : Type uI} {S : Type uS}
+    {Y : I → Type uPY}
+    [Countable I] [MeasurableSpace H] [MeasurableSpace S]
+    [∀ i, MeasurableSpace (Y i)]
+    (μ : MeasureTheory.Measure H)
+    (K : (i : I) → ProbabilityTheory.Kernel H (Y i))
+    (s : H → S)
+    (L : (i : I) → ProbabilityTheory.Kernel S (Y i))
+    (hL : ∀ i, ∀ᵐ h ∂μ, K i h = L i (s h)) :
+    AEFactors μ (fun h i => K i h) s ∧
+      AESigmaLE μ (fun h i => K i h) s ∧
+      (∀ i, ∃ Li : ProbabilityTheory.Kernel (∀ j, MeasureTheory.Measure (Y j)) (Y i),
+        ∀ h, K i h = Li (fun j => K j h)) := by
+  rcases countableAEFamily_descend
+      (μ := μ)
+      (f := fun i h => K i h)
+      (s := s)
+      (d := fun i z => L i z)
+      (hd := fun i => (L i).measurable)
+      hL with ⟨decoder, hdecoder, hEq⟩
+  have hmin : AEFactors μ (fun h i => K i h) s :=
+    ⟨decoder, hdecoder, hEq⟩
+  refine ⟨hmin, aeFactors_sigmaLE μ hmin, ?_⟩
+  intro i
+  exact ⟨coordinateKernel i, fun _ => rfl⟩
 
 open MeasureTheory ProbabilityTheory
 open UEOT.V3.DynamicsKernel
