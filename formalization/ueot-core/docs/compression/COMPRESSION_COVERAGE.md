@@ -19,21 +19,23 @@ changes the completed **106/106 FULL-GREEN** source status.
 | source P-IDs analyzed | 6 / 106 |
 | schema-classified P-IDs | 6 / 106 |
 | fully Lean-rederived P-IDs | 3 / 106 |
-| counted compressed P-IDs | 0 / 106 |
+| counted compressed P-IDs | 3 / 106 |
 | final dispositions assigned | 0 / 106 |
 | generated final dispositions | 0 / 106 |
 | retained domain adapters | 0 / 106 |
 | retained boundary/no-go results | 0 / 106 |
 | unresolved final dispositions | 106 / 106 |
-| counted meta-generators | 0 |
+| counted meta-generators | 1 |
 
 Mission state: **ACTIVE**. Minimal core state: **OPEN**. Ablation:
 **NOT STARTED**.
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
-Current Lean rederivations remain evidence but are not yet final dispositions
-because their separate counted promotion lifecycle has not completed.
+Three source-faithful M-TC-01 rederivations have completed the normal
+feature → integration → PR → resulting-main lifecycle and are being promoted
+through this ledger checkpoint. Counted compression evidence is still distinct
+from final per-P-ID dispositions and from the later minimal-core decision.
 
 ## Current generator evidence
 
@@ -48,15 +50,15 @@ State: **LEAN_GREEN, not counted**
 
 ### M-TC-01 — Transport Certificate Calculus
 
-State: **CROSS_FAMILY_GREEN, not counted**
+State: **COUNTED_GENERATOR**
 
 - generic exact two-stage composition: Lean proved;
 - generic exact commuting-factor transport: Lean proved;
 - generic approximate two-stage defect bound: Lean proved;
 - heterogeneous additive finite-chain accumulation: Lean proved;
-- P-API-01: full exact + approximate source-facing rederivation;
-- P-ID-01: full source-facing supremum rederivation.
-- P-DYN-04: full reachable-image approximate + exact source-facing
+- P-API-01: **counted** full exact + approximate source-facing rederivation;
+- P-ID-01: **counted** full source-facing supremum rederivation.
+- P-DYN-04: **counted** full reachable-image approximate + exact source-facing
   rederivation;
 - P-DYN-03: audited, but **not** fully generated — the frozen theorem includes
   the sharp multiplicative `1 - ∏(1-ε_t)` path-coupling certificate beyond the
