@@ -38,6 +38,7 @@ The budget is intentionally small because UEOT development is cross-chat and cro
 Branch prefixes communicate ownership and prevent one subproject's cleanup automation from affecting another.
 
 - `formal/*` — reserved for UEOT Core 3 Lean formalization legacy/current proof work governed by `formalization/ueot-core/docs/UEOT_CORE3_LEAN_OPERATIONS.md`.
+- `compression/*` — reserved for post-106 UEOT Core compression/meta-formalization work governed by `formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md`.
 - `gi/*` — UEOT-GI theory/engineering work.
 - `qm/*` — UEOT-QM work.
 - `physics/*` — broader physics derivations/experiments.
