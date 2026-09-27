@@ -25,6 +25,40 @@ def validator(repo: Path) -> list[str]:
     ]
 
 
+def normalized_active_fixture(original: str) -> dict:
+    """Return a stable pre-counting fixture independent of real mission progress."""
+    data = json.loads(original)
+    data["mission_contract"]["state"] = "active"
+    data["final_dispositions"] = {}
+    data["minimal_core"] = {
+        "state": "open",
+        "generator_ids": [],
+        "ablation_state": "not_started",
+        "minimality_claim": "not_established",
+    }
+    data["finalization_evidence"] = {}
+
+    for generator in data["generators"].values():
+        if generator.get("state") == "counted_generator":
+            generator["state"] = "cross_family_green"
+            generator.pop("promotion", None)
+        for mapping in generator.get("mappings", {}).values():
+            if mapping.get("state") == "counted":
+                mapping["state"] = "lean_rederived"
+                mapping.pop("promotion", None)
+
+    data["coverage"].update(
+        counted_compressed_pids=0,
+        counted_generators=0,
+        final_disposition_pids=0,
+        generated_pids=0,
+        retained_adapter_pids=0,
+        retained_boundary_pids=0,
+        unresolved_pids=106,
+    )
+    return data
+
+
 def expect_rejected(
     repo: Path,
     ledger_path: Path,
@@ -33,7 +67,7 @@ def expect_rejected(
     mutate,
     expected: str,
 ) -> None:
-    data = json.loads(original)
+    data = normalized_active_fixture(original)
     mutate(data)
     ledger_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
     completed = subprocess.run(
@@ -132,6 +166,10 @@ def main() -> None:
         )
 
         def fake_generated(data: dict) -> None:
+            data["generators"]["M-TC-01"]["state"] = "cross_family_green"
+            data["generators"]["M-TC-01"]["mappings"]["P-API-01"][
+                "state"
+            ] = "lean_rederived"
             data["final_dispositions"] = {
                 "P-API-01": {
                     "status": "generated",
