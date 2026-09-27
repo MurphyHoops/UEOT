@@ -15,8 +15,8 @@
     "analyzed_pids": 25,
     "schema_classified_pids": 25,
     "lean_rederived_pids": 5,
-    "counted_compressed_pids": 4,
-    "counted_generators": 1,
+    "counted_compressed_pids": 5,
+    "counted_generators": 2,
     "final_disposition_pids": 0,
     "generated_pids": 0,
     "retained_adapter_pids": 0,
@@ -26,7 +26,7 @@
   "generators": {
     "M-QD-01": {
       "title": "Quotient Descent",
-      "state": "cross_family_green",
+      "state": "counted_generator",
       "canonical_theorems": [
         "UEOT.V3.Compression.QuotientDescent.fiberCompatible_iff_existsUnique_descend",
         "UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
@@ -41,7 +41,7 @@
         "P-QUO-01 also requires discounted-control Bellman and policy-lifting machinery",
         "P-ALG-01 also requires finite refinement termination and coarsest-fixed-point machinery",
         "P-INT-01 contains a quotient/factorization direction but also a conditional-independence equivalence requiring disintegration/common-version machinery",
-        "P-INT-02 supplies the second exact P-ID family for the M-QD schema, but neither the mapping nor the generator is counted until the full feature/integration/main/ledger lifecycle completes"
+        "P-INT-02 supplies the second exact P-ID family for the M-QD schema and is counted only after the full feature/integration/main/ledger lifecycle"
       ],
       "mappings": {
         "P-DYN-01": {
@@ -76,8 +76,12 @@
             "resulting_main_core_lean_run": 36307522278,
             "resulting_main_compression_guard_run": 36307522283,
             "ledger_checkpoint": "M-QD-01-P-PRED-01",
-            "generator_counted": false,
-            "generator_counting_blocker": "M-QD-01 does not yet have exact mappings in at least two distinct P-ID families; P-DYN-01 remains partial and P-QUO-01/P-ALG-01 remain audited non-generated boundaries."
+            "generator_counted": true,
+            "generator_counted_via": {
+              "second_family_mapping": "P-INT-02",
+              "integration_pr": 156,
+              "merged_main": "4d49e5f0cbef886b0563b773bff119c5a48f4164"
+            }
           }
         },
         "P-QUO-01": {
@@ -93,14 +97,52 @@
           "note": "The common-version factorization half is quotient-descent shaped, but the frozen iff also identifies conditional independence with factorization through (M,U). The disintegration/tower direction remains an explicit adapter obligation."
         },
         "P-INT-02": {
-          "state": "lean_rederived",
+          "state": "counted",
           "witness_theorems": [
             "UEOT.V3.Compression.QuotientDescent.p_int_02_via_twoSidedDescent"
           ],
           "assumption_relation": "exact",
           "conclusion_relation": "exact",
-          "note": "The full frozen two-sided canonical factorization and minimal-refinement claim is reconstructed from the generic two-sided quotient universal property plus the source canonical-quotient adapter. No Bellman, statistical, measurable-kernel, or algorithmic assumption is introduced."
+          "note": "The full frozen two-sided canonical factorization and minimal-refinement claim is reconstructed from the generic two-sided quotient universal property plus the source canonical-quotient adapter. No Bellman, statistical, measurable-kernel, or algorithmic assumption is introduced.",
+          "promotion": {
+            "generator_id": "M-QD-01",
+            "feature_head": "6caf2bad98f520e5c3d581b43e3c1eeadbdf663d",
+            "feature_core_lean_run": 36340699511,
+            "feature_compression_guard_run": 36340699628,
+            "integration_head": "1ba5e1e24673969ea7d0fc7a8556311815ff9e2e",
+            "integration_core_lean_run": 36341255138,
+            "integration_compression_guard_run": 36341255120,
+            "integration_pr": 156,
+            "pr_exact_head_core_lean_run": 36341770261,
+            "pr_exact_head_compression_guard_run": 36341770280,
+            "merged_main": "4d49e5f0cbef886b0563b773bff119c5a48f4164",
+            "resulting_main_core_lean_run": 36342289226,
+            "resulting_main_compression_guard_run": 36342289268,
+            "ledger_checkpoint": "M-QD-01-CROSS-FAMILY"
+          }
         }
+      },
+      "promotion": {
+        "feature_head": "6caf2bad98f520e5c3d581b43e3c1eeadbdf663d",
+        "feature_core_lean_run": 36340699511,
+        "feature_compression_guard_run": 36340699628,
+        "integration_head": "1ba5e1e24673969ea7d0fc7a8556311815ff9e2e",
+        "integration_core_lean_run": 36341255138,
+        "integration_compression_guard_run": 36341255120,
+        "integration_pr": 156,
+        "pr_exact_head_core_lean_run": 36341770261,
+        "pr_exact_head_compression_guard_run": 36341770280,
+        "merged_main": "4d49e5f0cbef886b0563b773bff119c5a48f4164",
+        "resulting_main_core_lean_run": 36342289226,
+        "resulting_main_compression_guard_run": 36342289268,
+        "cross_family_exact_mappings": [
+          "P-PRED-01",
+          "P-INT-02"
+        ],
+        "promotion_scope": [
+          "P-INT-02",
+          "M-QD-01"
+        ]
       }
     },
     "M-TC-01": {
