@@ -8,3 +8,6 @@ import UEOT.V3.PAlg01
 import UEOT.V3.PredictionRefinement
 import UEOT.V3.PredictionUpdate
 import UEOT.V3.PRef02
+import UEOT.V3.TVKernel
+import UEOT.V3.RepresentationCovarianceFiniteValue
+import UEOT.V3.MMDTransportSource
