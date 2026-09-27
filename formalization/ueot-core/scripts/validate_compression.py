@@ -49,6 +49,15 @@ PROTECTED_BASELINE_FILES = {
     "formalization/ueot-core/docs/PID_STATUS.yaml",
 }
 
+FROZEN_LEAN_ROOT = "formalization/ueot-core/UEOT/"
+COMPRESSION_LEAN_ALLOWLIST = {
+    "formalization/ueot-core/UEOT/V3/Compression.lean",
+}
+COMPRESSION_LEAN_PREFIXES = (
+    "formalization/ueot-core/UEOT/V3/Compression/",
+)
+LEAN_DECL_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*$")
+
 
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -65,6 +74,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
     parser.add_argument("--baseline-ref")
+    parser.add_argument(
+        "--emit-lean-witness-audit",
+        help="write a generated Lean file that #check's every ledger theorem witness",
+    )
     args = parser.parse_args()
 
     repo = Path(args.repo_root).resolve()
@@ -146,6 +159,7 @@ def main() -> None:
     exact_rederived: set[str] = set()
     counted_pids: set[str] = set()
     counted_generators = 0
+    lean_witnesses: set[str] = set()
 
     for mid, generator in generators.items():
         if not MID_RE.fullmatch(mid):
@@ -156,6 +170,10 @@ def main() -> None:
         theorems = generator.get("canonical_theorems", [])
         if state not in {"candidate", "schema_locked", "lean_wip", "rejected"} and not theorems:
             fail(f"{mid}: Lean-green-or-later generator needs canonical_theorems")
+        for theorem in theorems:
+            if not isinstance(theorem, str) or not LEAN_DECL_RE.fullmatch(theorem):
+                fail(f"{mid}: invalid canonical theorem name {theorem!r}")
+            lean_witnesses.add(theorem)
 
         mappings = generator.get("mappings", {})
         if not isinstance(mappings, dict):
@@ -178,8 +196,13 @@ def main() -> None:
                 "main_green",
                 "counted",
             }:
-                if not mapping.get("witness_theorems"):
+                witnesses = mapping.get("witness_theorems")
+                if not witnesses:
                     fail(f"{mid}/{pid}: Lean-derived mapping needs witness_theorems")
+                for theorem in witnesses:
+                    if not isinstance(theorem, str) or not LEAN_DECL_RE.fullmatch(theorem):
+                        fail(f"{mid}/{pid}: invalid witness theorem name {theorem!r}")
+                    lean_witnesses.add(theorem)
                 if not assumptions or not conclusion:
                     fail(f"{mid}/{pid}: Lean-derived mapping needs assumption/conclusion relations")
 
@@ -238,6 +261,31 @@ def main() -> None:
                 "compression branch modified protected source-proof ledgers: "
                 + ", ".join(sorted(protected_changed))
             )
+
+        frozen_lean_changed = sorted(
+            path
+            for path in changed
+            if path.startswith(FROZEN_LEAN_ROOT)
+            and path not in COMPRESSION_LEAN_ALLOWLIST
+            and not any(path.startswith(prefix) for prefix in COMPRESSION_LEAN_PREFIXES)
+        )
+        if frozen_lean_changed:
+            fail(
+                "compression work modified frozen/non-compression Lean modules: "
+                + ", ".join(frozen_lean_changed)
+            )
+
+    if args.emit_lean_witness_audit:
+        audit_path = Path(args.emit_lean_witness_audit)
+        audit_path.parent.mkdir(parents=True, exist_ok=True)
+        lines = [
+            "import UEOT.V3.Compression",
+            "",
+            "-- Generated from COMPRESSION_LEDGER.yaml by validate_compression.py.",
+            "-- CI compiles this file so stale/typo/fabricated theorem names cannot pass.",
+        ]
+        lines.extend(f"#check {name}" for name in sorted(lean_witnesses))
+        audit_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     print("Compression governance validation PASS")
     print("source_index=106 unique=106")
