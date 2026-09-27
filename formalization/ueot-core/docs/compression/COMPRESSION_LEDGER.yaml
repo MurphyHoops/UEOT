@@ -15,7 +15,7 @@
     "analyzed_pids": 9,
     "schema_classified_pids": 9,
     "lean_rederived_pids": 4,
-    "counted_compressed_pids": 3,
+    "counted_compressed_pids": 4,
     "counted_generators": 1,
     "final_disposition_pids": 0,
     "generated_pids": 0,
@@ -50,13 +50,31 @@
           "note": "Recovers unique set-level macro one-step law only; measurable-kernel descent remains a separate source obligation."
         },
         "P-PRED-01": {
-          "state": "lean_rederived",
+          "state": "counted",
           "witness_theorems": [
             "UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent"
           ],
           "assumption_relation": "weaker",
           "conclusion_relation": "exact",
-          "note": "The countable common-null-set measurable factorization, mod-null sigma minimality, and protocol-wise canonical sufficiency are reconstructed from the generic a.e. family-descent law. Standard-Borel regularity is not strengthened: once the response kernels are supplied, the Lean argument needs only their measurable structures."
+          "note": "The countable common-null-set measurable factorization, mod-null sigma minimality, and protocol-wise canonical sufficiency are reconstructed from the generic a.e. family-descent law. Standard-Borel regularity is not strengthened: once the response kernels are supplied, the Lean argument needs only their measurable structures.",
+          "promotion": {
+            "generator_id": "M-QD-01",
+            "feature_head": "ad93f9d1498fbd80839c15088aa6e3df8dd29155",
+            "feature_core_lean_run": 36305232536,
+            "feature_compression_guard_run": 36305232483,
+            "integration_head": "dc72e53ef8e975f07917e7ae04d6dcd8be7b817b",
+            "integration_core_lean_run": 36305731322,
+            "integration_compression_guard_run": 36305731291,
+            "integration_pr": 151,
+            "pr_exact_head_core_lean_run": 36307011221,
+            "pr_exact_head_compression_guard_run": 36307011271,
+            "merged_main": "65f26e4903266b3907efb32afcd0fc67803f41e8",
+            "resulting_main_core_lean_run": 36307522278,
+            "resulting_main_compression_guard_run": 36307522283,
+            "ledger_checkpoint": "M-QD-01-P-PRED-01",
+            "generator_counted": false,
+            "generator_counting_blocker": "M-QD-01 does not yet have exact mappings in at least two distinct P-ID families; P-DYN-01 remains partial and P-QUO-01/P-ALG-01 remain audited non-generated boundaries."
+          }
         },
         "P-QUO-01": {
           "state": "conjectured",
