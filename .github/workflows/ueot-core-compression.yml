@@ -2,7 +2,7 @@ name: UEOT Core Compression Guard
 
 on:
   push:
-    branches: [main, "compression/**", "ops/core-compression-v0"]
+    branches: [main, "compression/**", "ops/compression-*"]
     paths:
       - "formalization/ueot-core/**"
       - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
@@ -48,6 +48,9 @@ jobs:
           python3 formalization/ueot-core/scripts/validate_compression.py \
             --repo-root . \
             --baseline-ref "$BASELINE_REF"
+
+      - name: Regression-test mission completion gates
+        run: python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
 
   proof:
     runs-on: ubuntu-latest

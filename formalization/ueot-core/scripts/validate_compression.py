@@ -44,6 +44,16 @@ MAPPING_STATES = {
     "rejected",
 }
 
+MISSION_STATES = {"active", "ready_for_finalization", "final"}
+DISPOSITION_STATES = {"generated", "retained_adapter", "retained_boundary"}
+MINIMAL_CORE_STATES = {"open", "candidate", "frozen"}
+ABLATION_STATES = {"not_started", "in_progress", "complete"}
+MINIMALITY_CLAIMS = {
+    "not_established",
+    "nonredundant_under_declared_derivation_system",
+}
+NONREDUNDANT_ABLATION = "nonredundant_under_declared_derivation_system"
+
 PROTECTED_BASELINE_FILES = {
     "formalization/ueot-core/docs/V3_COVERAGE_STATUS.md",
     "formalization/ueot-core/docs/PID_STATUS.yaml",
@@ -86,6 +96,7 @@ def main() -> None:
     ledger_path = core / "docs/compression/COMPRESSION_LEDGER.yaml"
     coverage_path = core / "docs/compression/COMPRESSION_COVERAGE.md"
     operations_path = core / "docs/compression/COMPRESSION_OPERATIONS.md"
+    mission_path = core / "docs/compression/COMPRESSION_MISSION.md"
     bootstrap_path = core / "docs/compression/COMPRESSION_BOOTSTRAP.md"
 
     for path in (
@@ -93,6 +104,7 @@ def main() -> None:
         ledger_path,
         coverage_path,
         operations_path,
+        mission_path,
         bootstrap_path,
     ):
         if not path.is_file():
@@ -115,8 +127,25 @@ def main() -> None:
     except json.JSONDecodeError as exc:
         fail(f"COMPRESSION_LEDGER.yaml must remain JSON-compatible YAML: {exc}")
 
-    if ledger.get("schema_version") != 1:
+    if ledger.get("schema_version") != 2:
         fail("unsupported compression ledger schema_version")
+
+    mission = ledger.get("mission_contract", {})
+    if mission.get("version") != 1:
+        fail("unsupported compression mission contract version")
+    if mission.get("path") != (
+        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md"
+    ):
+        fail("compression mission contract path is not canonical")
+    mission_state = mission.get("state")
+    if mission_state not in MISSION_STATES:
+        fail(f"invalid compression mission state {mission_state!r}")
+    mission_text = mission_path.read_text(encoding="utf-8")
+    if (
+        "Mission Contract v1" not in mission_text
+        or "Formal Definition of Done" not in mission_text
+    ):
+        fail("COMPRESSION_MISSION.md is missing the v1 Definition of Done markers")
 
     baseline = ledger.get("baseline", {})
     if baseline.get("source_pids") != 106 or baseline.get("source_proved") != 106:
@@ -132,8 +161,12 @@ def main() -> None:
         "schema_classified_pids",
         "lean_rederived_pids",
         "counted_compressed_pids",
-        "confirmed_adapter_pids",
         "counted_generators",
+        "final_disposition_pids",
+        "generated_pids",
+        "retained_adapter_pids",
+        "retained_boundary_pids",
+        "unresolved_pids",
     }
     missing_counts = required_counts - set(coverage)
     if missing_counts:
@@ -159,6 +192,7 @@ def main() -> None:
     exact_rederived: set[str] = set()
     counted_pids: set[str] = set()
     counted_generators = 0
+    counted_mapping_pairs: set[tuple[str, str]] = set()
     lean_witnesses: set[str] = set()
 
     for mid, generator in generators.items():
@@ -219,6 +253,7 @@ def main() -> None:
                 if not mapping.get("promotion"):
                     fail(f"{mid}/{pid}: counted mapping needs promotion evidence")
                 counted_pids.add(pid)
+                counted_mapping_pairs.add((mid, pid))
 
         if state in {
             "cross_family_green",
@@ -243,6 +278,135 @@ def main() -> None:
         fail("counted_compressed_pids disagrees with counted mappings")
     if coverage["counted_generators"] != counted_generators:
         fail("counted_generators disagrees with counted generator states")
+
+    dispositions = ledger.get("final_dispositions", {})
+    if not isinstance(dispositions, dict):
+        fail("final_dispositions must be an object keyed by frozen P-ID")
+    unknown_dispositions = sorted(set(dispositions) - pid_set)
+    if unknown_dispositions:
+        fail(f"final_dispositions contains unknown P-IDs: {unknown_dispositions}")
+
+    generated: set[str] = set()
+    retained_adapter: set[str] = set()
+    retained_boundary: set[str] = set()
+    for pid, entry in dispositions.items():
+        if not isinstance(entry, dict):
+            fail(f"{pid}: final disposition must be an object")
+        disposition = entry.get("status")
+        if disposition not in DISPOSITION_STATES:
+            fail(f"{pid}: invalid final disposition {disposition!r}")
+
+        if disposition == "generated":
+            mids = entry.get("generator_ids")
+            if (
+                not isinstance(mids, list)
+                or not mids
+                or len(mids) != len(set(mids))
+            ):
+                fail(f"{pid}: generated disposition needs unique nonempty generator_ids")
+            bad_mids = [mid for mid in mids if mid not in generators]
+            if bad_mids:
+                fail(f"{pid}: generated disposition references unknown M-IDs {bad_mids}")
+            if not any((mid, pid) in counted_mapping_pairs for mid in mids):
+                fail(f"{pid}: generated disposition needs a counted exact mapping")
+            generated.add(pid)
+        elif disposition == "retained_adapter":
+            if not str(entry.get("rationale", "")).strip():
+                fail(f"{pid}: retained adapter needs a scientific rationale")
+            retained_adapter.add(pid)
+        else:
+            if not str(entry.get("rationale", "")).strip():
+                fail(f"{pid}: retained boundary needs a scientific rationale")
+            retained_boundary.add(pid)
+
+    final_count = len(dispositions)
+    unresolved_count = 106 - final_count
+    derived_counts = {
+        "final_disposition_pids": final_count,
+        "generated_pids": len(generated),
+        "retained_adapter_pids": len(retained_adapter),
+        "retained_boundary_pids": len(retained_boundary),
+        "unresolved_pids": unresolved_count,
+    }
+    for key, expected in derived_counts.items():
+        if coverage[key] != expected:
+            fail(
+                f"{key} disagrees with per-P-ID final dispositions: "
+                f"ledger={coverage[key]} derived={expected}"
+            )
+    if final_count > coverage["analyzed_pids"]:
+        fail("final dispositions cannot exceed analyzed P-IDs")
+    if final_count > coverage["schema_classified_pids"]:
+        fail("final dispositions cannot exceed schema-classified P-IDs")
+
+    minimal_core = ledger.get("minimal_core", {})
+    core_state = minimal_core.get("state")
+    if core_state not in MINIMAL_CORE_STATES:
+        fail(f"invalid minimal_core state {core_state!r}")
+    core_ids = minimal_core.get("generator_ids")
+    if not isinstance(core_ids, list) or len(core_ids) != len(set(core_ids)):
+        fail("minimal_core.generator_ids must be a unique list")
+    if any(mid not in generators for mid in core_ids):
+        fail("minimal_core references unknown generator IDs")
+
+    ablation_state = minimal_core.get("ablation_state")
+    if ablation_state not in ABLATION_STATES:
+        fail(f"invalid minimal_core ablation_state {ablation_state!r}")
+    minimality_claim = minimal_core.get("minimality_claim")
+    if minimality_claim not in MINIMALITY_CLAIMS:
+        fail(f"invalid minimal_core minimality_claim {minimality_claim!r}")
+
+    if core_state == "frozen":
+        if not core_ids:
+            fail("frozen minimal core must contain at least one generator")
+        if ablation_state != "complete":
+            fail("frozen minimal core requires complete ablation")
+        if minimality_claim != NONREDUNDANT_ABLATION:
+            fail("frozen minimal core must use the scoped nonredundancy claim")
+        for mid in core_ids:
+            generator = generators[mid]
+            if generator.get("state") != "counted_generator":
+                fail(f"{mid}: final minimal-core generator must be counted")
+            ablation = generator.get("ablation", {})
+            if ablation.get("result") != NONREDUNDANT_ABLATION:
+                fail(
+                    f"{mid}: final minimal-core generator lacks "
+                    "nonredundant ablation evidence"
+                )
+
+    if mission_state in {"ready_for_finalization", "final"}:
+        final_gate_errors = []
+        if coverage["analyzed_pids"] != 106:
+            final_gate_errors.append("analyzed_pids != 106")
+        if coverage["schema_classified_pids"] != 106:
+            final_gate_errors.append("schema_classified_pids != 106")
+        if final_count != 106 or unresolved_count != 0:
+            final_gate_errors.append("final dispositions are not 106/106 resolved")
+        if core_state != "frozen":
+            final_gate_errors.append("minimal core is not frozen")
+        if ablation_state != "complete":
+            final_gate_errors.append("minimal-core ablation is incomplete")
+        if minimality_claim != NONREDUNDANT_ABLATION:
+            final_gate_errors.append("scoped minimality claim is not established")
+        if final_gate_errors:
+            fail("mission finalization gate failed: " + "; ".join(final_gate_errors))
+
+    if mission_state == "final":
+        evidence = ledger.get("finalization_evidence", {})
+        required_evidence = {
+            "candidate_main_sha",
+            "core_lean_run",
+            "compression_guard_run",
+            "closure_pr",
+        }
+        missing = required_evidence - set(evidence)
+        if missing:
+            fail(f"final mission state missing finalization evidence: {sorted(missing)}")
+        if not re.fullmatch(r"[0-9a-f]{40}", str(evidence["candidate_main_sha"])):
+            fail("finalization candidate_main_sha must be a full Git SHA")
+        for key in ("core_lean_run", "compression_guard_run", "closure_pr"):
+            if not isinstance(evidence[key], int) or evidence[key] <= 0:
+                fail(f"finalization evidence {key} must be a positive integer")
 
     coverage_text = coverage_path.read_text(encoding="utf-8")
     if "106/106 FULL-GREEN" not in coverage_text:
@@ -293,6 +457,8 @@ def main() -> None:
     print(f"exact_lean_rederived_pids={len(exact_rederived)}")
     print(f"counted_compressed_pids={len(counted_pids)}")
     print(f"counted_generators={counted_generators}")
+    print(f"final_dispositions={final_count} unresolved={unresolved_count}")
+    print(f"mission_state={mission_state} minimal_core_state={core_state}")
 
 
 if __name__ == "__main__":

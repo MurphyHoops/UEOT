@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated": "2026-09-27",
   "integration_branch": "main",
   "live_issue": 146,
@@ -15,8 +15,12 @@
     "schema_classified_pids": 3,
     "lean_rederived_pids": 2,
     "counted_compressed_pids": 0,
-    "confirmed_adapter_pids": 0,
-    "counted_generators": 0
+    "counted_generators": 0,
+    "final_disposition_pids": 0,
+    "generated_pids": 0,
+    "retained_adapter_pids": 0,
+    "retained_boundary_pids": 0,
+    "unresolved_pids": 106
   },
   "generators": {
     "M-QD-01": {
@@ -76,5 +80,18 @@
         }
       }
     }
-  }
+  },
+  "mission_contract": {
+    "version": 1,
+    "path": "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+    "state": "active"
+  },
+  "final_dispositions": {},
+  "minimal_core": {
+    "state": "open",
+    "generator_ids": [],
+    "ablation_state": "not_started",
+    "minimality_claim": "not_established"
+  },
+  "finalization_evidence": {}
 }
