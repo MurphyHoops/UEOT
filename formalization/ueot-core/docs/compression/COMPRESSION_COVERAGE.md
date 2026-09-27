@@ -20,11 +20,20 @@ changes the completed **106/106 FULL-GREEN** source status.
 | schema-classified P-IDs | 3 / 106 |
 | fully Lean-rederived P-IDs | 2 / 106 |
 | counted compressed P-IDs | 0 / 106 |
-| confirmed irreducible/domain adapters | 0 / 106 |
+| final dispositions assigned | 0 / 106 |
+| generated final dispositions | 0 / 106 |
+| retained domain adapters | 0 / 106 |
+| retained boundary/no-go results | 0 / 106 |
+| unresolved final dispositions | 106 / 106 |
 | counted meta-generators | 0 |
 
-No compression result is counted yet because the new governance/CI lifecycle
-has not completed a main + ledger promotion.
+Mission state: **ACTIVE**. Minimal core state: **OPEN**. Ablation:
+**NOT STARTED**.
+
+The final-disposition counts are derived from per-P-ID entries in
+`COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
+Current Lean rederivations remain evidence but are not yet final dispositions
+because their separate counted promotion lifecycle has not completed.
 
 ## Current generator evidence
 

@@ -2,7 +2,7 @@ name: UEOT Core Compression Guard
 
 on:
   push:
-    branches: [main, "compression/**", "ops/core-compression-v0"]
+    branches: [main, "compression/**", "ops/compression-*"]
     paths:
       - "formalization/ueot-core/**"
       - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
@@ -18,6 +18,8 @@ on:
 
 permissions:
   contents: read
+  actions: read
+  pull-requests: read
 
 concurrency:
   group: ueot-core-compression-${{ github.ref }}
@@ -40,6 +42,9 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           REF_NAME: ${{ github.ref_name }}
           BEFORE_SHA: ${{ github.event.before }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           BASELINE_REF="origin/main"
           if [[ "$EVENT_NAME" == "push" && "$REF_NAME" == "main" && -n "$BEFORE_SHA" && "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
@@ -47,7 +52,15 @@ jobs:
           fi
           python3 formalization/ueot-core/scripts/validate_compression.py \
             --repo-root . \
-            --baseline-ref "$BASELINE_REF"
+            --baseline-ref "$BASELINE_REF" \
+            --verify-finalization-refs
+
+      - name: Regression-test mission completion gates
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
 
   proof:
     runs-on: ubuntu-latest
@@ -57,6 +70,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Install Elan
         shell: bash
@@ -87,9 +102,14 @@ jobs:
 
       - name: Verify ledger theorem witnesses resolve in Lean
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           python3 scripts/validate_compression.py \
             --repo-root ../.. \
+            --verify-finalization-refs \
             --emit-lean-witness-audit /tmp/CompressionLedgerWitnessAudit.lean
           lake env lean /tmp/CompressionLedgerWitnessAudit.lean
 

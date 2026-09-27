@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated": "2026-09-27",
   "integration_branch": "main",
   "live_issue": 146,
@@ -8,15 +8,20 @@
     "core_main_at_mission_start": "29d946422f02bb025bd5d450acc434486ecdb422",
     "source_pids": 106,
     "source_proved": 106,
-    "source_sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303"
+    "source_sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303",
+    "theorem_index_sha256": "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
   },
   "coverage": {
     "analyzed_pids": 3,
     "schema_classified_pids": 3,
     "lean_rederived_pids": 2,
     "counted_compressed_pids": 0,
-    "confirmed_adapter_pids": 0,
-    "counted_generators": 0
+    "counted_generators": 0,
+    "final_disposition_pids": 0,
+    "generated_pids": 0,
+    "retained_adapter_pids": 0,
+    "retained_boundary_pids": 0,
+    "unresolved_pids": 106
   },
   "generators": {
     "M-QD-01": {
@@ -75,6 +80,85 @@
           "note": "The source-facing supremum transport-defect bound is reconstructed from heterogeneous additive chain accumulation."
         }
       }
+    }
+  },
+  "mission_contract": {
+    "version": 1,
+    "path": "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+    "state": "active"
+  },
+  "final_dispositions": {},
+  "minimal_core": {
+    "state": "open",
+    "generator_ids": [],
+    "ablation_state": "not_started",
+    "minimality_claim": "not_established"
+  },
+  "finalization_evidence": {},
+  "audit_records": {
+    "P-DYN-01": {
+      "source_line": 587,
+      "lean_theorems": [
+        "UEOT.V3.DynamicsKernel.strongLumpability_iff_pathLaw_of_surjective"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "quotient_descent",
+        "dynamics_lumpability"
+      ],
+      "candidate_generator_ids": [
+        "M-QD-01"
+      ],
+      "scientific_roles": [
+        "bridge",
+        "dynamics_quotient"
+      ],
+      "source_title": "strong lumpability。",
+      "analysis_summary": "The frozen theorem is the measurable-surjective strong-lumpability/path-law equivalence. Compression evidence currently recovers only set-level quotient descent, so the M-QD-01 mapping remains partial.",
+      "schema_rationale": "The source theorem is a dynamics quotient/intertwining law whose measurable-kernel regularity is an additional obligation beyond bare set-level descent."
+    },
+    "P-ID-01": {
+      "source_line": 971,
+      "lean_theorems": [
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.p_id_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "transport_certificate",
+        "identity_transport"
+      ],
+      "candidate_generator_ids": [
+        "M-TC-01"
+      ],
+      "scientific_roles": [
+        "identity_transport",
+        "certificate"
+      ],
+      "source_title": "运输缺损累计。",
+      "analysis_summary": "The source-facing supremum endpoint transport defect is bounded by the finite sum of adjacent defects, and M-TC-01 reconstructs the same conclusion from generic additive transport accumulation.",
+      "schema_rationale": "The reusable proof skeleton is nonexpansive transport plus triangle inequality plus local defect accumulation."
+    },
+    "P-API-01": {
+      "source_line": 2878,
+      "lean_theorems": [
+        "UEOT.V3.ProcessInterface.p_api_01_exact",
+        "UEOT.V3.ProcessInterface.p_api_01_approx"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "transport_certificate",
+        "interface_composition"
+      ],
+      "candidate_generator_ids": [
+        "M-TC-01"
+      ],
+      "scientific_roles": [
+        "interface",
+        "bridge"
+      ],
+      "source_title": "精确与近似过程接口的复合。",
+      "analysis_summary": "The audit identifies both exact and approximate source clauses; M-TC-01 reconstructs exact naturality and the min-1 additive total-variation defect bound.",
+      "schema_rationale": "Exact composition is transitive transport; approximate composition is contraction plus triangle plus local error addition."
     }
   }
 }

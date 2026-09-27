@@ -9,14 +9,14 @@ The user should only need to say:
 The AI must then execute this recovery chain:
 
 `REPOSITORY_BRANCH_GOVERNANCE -> COMPRESSION_OPERATIONS ->
-V3_COVERAGE_STATUS -> COMPRESSION_LEDGER -> COMPRESSION_COVERAGE ->
+COMPRESSION_MISSION -> V3_COVERAGE_STATUS -> COMPRESSION_LEDGER -> COMPRESSION_COVERAGE ->
 Issue #146 -> live branches/PR/CI -> active branch -> exact next action`.
 
 Mandatory checks:
 
 1. verify Core v3 still reads **106/106 FULL-GREEN**;
 2. fetch current `main` SHA;
-3. read counted compression state from the ledger on `main`;
+3. read `COMPRESSION_MISSION.md`, then counted state from the ledger on `main`;
 4. read Issue #146 LIVE STATE;
 5. list remote branches and open PRs;
 6. recover the active branch/head and latest relevant CI;
@@ -35,6 +35,10 @@ analyzed: <N>/106
 schema-classified: <N>/106
 Lean-rederived: <N>/106
 counted-compressed: <N>/106
+final dispositions: <N>/106
+unresolved dispositions: <N>/106
+mission state: active | ready_for_finalization | final
+minimal core: open | candidate | frozen
 counted generators: <list or none>
 active M-ID: <id or none>
 active branch: <branch>@<sha or none>

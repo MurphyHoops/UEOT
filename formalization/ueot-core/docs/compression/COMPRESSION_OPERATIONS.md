@@ -6,6 +6,8 @@
 - Integration branch: `main`
 - Frozen Core v3 source theorem baseline: **106/106 FULL-GREEN**
 - Compression LIVE STATE: GitHub Issue **#146**
+- Scientific completion contract:
+  `formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md`
 - Machine ledger:
   `formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml`
 - Human coverage view:
@@ -24,11 +26,13 @@ When records disagree:
 1. frozen Core v3 source controls original P-ID semantics;
 2. `V3_COVERAGE_STATUS.md` on `main` controls the completed 106/106 proof
    baseline;
-3. `COMPRESSION_LEDGER.yaml` on `main` controls counted compression claims;
-4. live branches/PRs/Actions control code and CI facts;
-5. Issue #146 body controls current active compression intent/blocker/next step;
-6. active compression branch controls unfinished code;
-7. prior chats/comments are supplemental history only.
+3. `COMPRESSION_MISSION.md` defines the scientific Definition of Done and the
+   permitted strength of minimality claims;
+4. `COMPRESSION_LEDGER.yaml` on `main` controls counted compression claims;
+5. live branches/PRs/Actions control code and CI facts;
+6. Issue #146 body controls current active compression intent/blocker/next step;
+7. active compression branch controls unfinished code;
+8. prior chats/comments are supplemental history only.
 
 ## 2. IDs and state machines
 
@@ -75,7 +79,7 @@ binding.
 
 Compression branch classes:
 
-- bootstrap/governance: `ops/core-compression-v0` (temporary);
+- governance/mission maintenance: `ops/compression-<topic>` (temporary);
 - generator feature: `compression/<m-id-lower>-<topic>`;
 - clean integration: `compression/<m-id-lower>-main-integration`;
 - ledger promotion: `compression/ledger-<checkpoint>`;
@@ -89,7 +93,7 @@ Default: one active mutating branch per M-ID. Do not create `v2`, `fresh`,
 Before any new compression branch:
 
 1. fetch/prune remote state;
-2. read this manual from `main`;
+2. read this manual and `COMPRESSION_MISSION.md` from `main`;
 3. read `COMPRESSION_LEDGER.yaml` and `COMPRESSION_COVERAGE.md`;
 4. read Issue #146 body;
 5. list remote branches and open PRs;
@@ -108,8 +112,8 @@ Every compression feature head must pass:
 5. compression theorem axiom print;
 6. full `lake build UEOT`.
 
-The general `UEOT Core Lean` workflow also runs on `compression/**` and the
-bootstrap branch.
+The general `UEOT Core Lean` workflow also runs on `compression/**` and
+temporary `ops/compression-*` governance branches.
 
 ## 7. Promotion lifecycle
 
@@ -164,9 +168,43 @@ Recommended maximum:
 - open repository PRs: 2 total under repository governance;
 - read-only theorem/source audits: may run without branches.
 
-## 11. v4 gate
+## 11. Mission completion gate
+
+`COMPRESSION_MISSION.md` is the authoritative scientific Definition of Done.
+No chat, issue comment, PR description, or green CI run may weaken it.
+
+The validator must reject `ready_for_finalization` or `final` unless the
+machine ledger shows all 106 P-IDs analyzed and schema-classified, 106 final
+per-P-ID dispositions, zero unresolved P-IDs, a frozen minimal core that
+exactly accounts for every generated dependency, complete ablation with
+remaining-core non-derivability evidence, and counted exact evidence for every
+generated disposition.
+
+Finalization uses two stages:
+
+1. `ready_for_finalization` — all scientific gates are satisfied and merged to
+   a candidate `main`;
+2. require successful **push** runs of Core Lean and Compression Guard for that
+   exact candidate-main SHA;
+3. open a dedicated closure PR from the candidate main, then commit the
+   `final` ledger state on that closure branch with the candidate SHA, both run
+   IDs, and the closure PR number;
+4. Compression Guard live-verifies that both runs succeeded for the recorded
+   candidate SHA and that the open PR targets `main`, is based on that SHA, and
+   matches the current closure head;
+5. merge the closure PR with a normal merge commit; on resulting `main`, the
+   verifier requires the merge ancestry to include both the candidate main and
+   recorded closure head;
+6. announce FINAL only after resulting-main Core Lean and Compression Guard are
+   green and Issue #146 is updated.
+
+This two-stage rule avoids circularly requiring a CI run to attest to the very
+commit that is trying to record its own completed run ID. Final closure uses a
+merge commit rather than squash/rebase so the audited ancestry remains
+machine-verifiable.
+
+## 12. v4 gate
 
 Do not write a compressed Core v4 merely from conceptual elegance. A v4
-reorganization is justified only after the meta-layer has substantial
-machine-backed source coverage, explicit residual adapters, and ablation
-evidence.
+reorganization is justified only after the Mission Contract's resolution and
+minimal-core gates are satisfied. Conceptual elegance alone is insufficient.
