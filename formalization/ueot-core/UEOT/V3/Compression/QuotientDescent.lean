@@ -1,5 +1,6 @@
 import UEOT.V3.DynamicsKernel
 import UEOT.V3.PredictionDependent
+import UEOT.V3.StructuredQuotient
 
 /-!
 # UEOT Core compression — quotient descent
@@ -179,6 +180,166 @@ theorem p_pred_01_via_countableAE_descent
   refine ⟨hmin, aeFactors_sigmaLE μ hmin, ?_⟩
   intro i
   exact ⟨coordinateKernel i, fun _ => rfl⟩
+
+/-! ## Two-sided quotient descent
+
+Some UEOT interfaces factor through *two* independently compressed coordinates
+at once.  The reusable core is still quotient descent: a response family that
+is constant on every left fibre and every right fibre descends uniquely through
+the product representation.  The second theorem below records the converse
+minimality fact used throughout structural quotients: any exact separated
+factorization can only merge points that are response-equivalent.
+-/
+
+universe uQI uQX uQE uQSX uQSE uQR
+
+/-- Fibre compatibility in each argument of a two-sided response family. -/
+def TwoSidedCompatible
+    {I : Type uQI} {QX : Type uQX} {QE : Type uQE}
+    {SX : Type uQSX} {SE : Type uQSE} {R : Type uQR}
+    (qX : QX → SX) (qE : QE → SE) (F : I → QX → QE → R) : Prop :=
+  (∀ i e, FiberCompatible qX (fun x => F i x e)) ∧
+  (∀ i x, FiberCompatible qE (fun e => F i x e))
+
+/-- Chosen-representative realization of the two-sided descended response. -/
+noncomputable def twoSidedDescend
+    {I : Type uQI} {QX : Type uQX} {QE : Type uQE}
+    {SX : Type uQSX} {SE : Type uQSE} {R : Type uQR}
+    (qX : QX → SX) (qE : QE → SE) (F : I → QX → QE → R)
+    (hX : Surjective qX) (hE : Surjective qE)
+    (_hcompat : TwoSidedCompatible qX qE F) :
+    I → SX → SE → R :=
+  fun i sx se => F i (Classical.choose (hX sx)) (Classical.choose (hE se))
+
+/-- The two-sided descended response reproduces the original response on every
+pair of represented source points. -/
+theorem twoSidedDescend_apply
+    {I : Type uQI} {QX : Type uQX} {QE : Type uQE}
+    {SX : Type uQSX} {SE : Type uQSE} {R : Type uQR}
+    (qX : QX → SX) (qE : QE → SE) (F : I → QX → QE → R)
+    (hX : Surjective qX) (hE : Surjective qE)
+    (hcompat : TwoSidedCompatible qX qE F)
+    (i : I) (x : QX) (e : QE) :
+    twoSidedDescend qX qE F hX hE hcompat i (qX x) (qE e) = F i x e := by
+  unfold twoSidedDescend
+  have hx :
+      qX (Classical.choose (hX (qX x))) = qX x :=
+    Classical.choose_spec (hX (qX x))
+  have he :
+      qE (Classical.choose (hE (qE e))) = qE e :=
+    Classical.choose_spec (hE (qE e))
+  calc
+    F i (Classical.choose (hX (qX x))) (Classical.choose (hE (qE e))) =
+        F i x (Classical.choose (hE (qE e))) :=
+      hcompat.1 i (Classical.choose (hE (qE e))) hx
+    _ = F i x e := hcompat.2 i x he
+
+/-- Universal property for exact two-sided quotient descent. -/
+theorem existsUnique_twoSidedDescend
+    {I : Type uQI} {QX : Type uQX} {QE : Type uQE}
+    {SX : Type uQSX} {SE : Type uQSE} {R : Type uQR}
+    (qX : QX → SX) (qE : QE → SE) (F : I → QX → QE → R)
+    (hX : Surjective qX) (hE : Surjective qE)
+    (hcompat : TwoSidedCompatible qX qE F) :
+    ∃! Q : I → SX → SE → R,
+      ∀ i x e, Q i (qX x) (qE e) = F i x e := by
+  refine ⟨twoSidedDescend qX qE F hX hE hcompat,
+    twoSidedDescend_apply qX qE F hX hE hcompat, ?_⟩
+  intro Q hQ
+  funext i sx se
+  rcases hX sx with ⟨x, rfl⟩
+  rcases hE se with ⟨e, rfl⟩
+  exact (hQ i x e).trans
+    (twoSidedDescend_apply qX qE F hX hE hcompat i x e).symm
+
+/-- Canonical left response equivalence induced by a two-sided response family. -/
+def LeftResponseEq
+    {I : Type uQI} {QX : Type uQX} {QE : Type uQE} {R : Type uQR}
+    (F : I → QX → QE → R) (x x' : QX) : Prop :=
+  ∀ e i, F i x e = F i x' e
+
+/-- Canonical right response equivalence induced by a two-sided response family. -/
+def RightResponseEq
+    {I : Type uQI} {QX : Type uQX} {QE : Type uQE} {R : Type uQR}
+    (F : I → QX → QE → R) (e e' : QE) : Prop :=
+  ∀ x i, F i x e = F i x e'
+
+/-- Any exact separated representation refines both canonical response
+equivalences.  This is the abstract minimality half of structured quotient
+constructions. -/
+theorem exactSeparatedFactorization_refines_responseEq
+    {I : Type uQI} {QX : Type uQX} {QE : Type uQE}
+    {SX : Type uQSX} {SE : Type uQSE} {R : Type uQR}
+    (F : I → QX → QE → R)
+    (f : QX → SX) (g : QE → SE) (Q : I → SX → SE → R)
+    (hfac : ∀ i x e, F i x e = Q i (f x) (g e)) :
+    (∀ {x x'}, f x = f x' → LeftResponseEq F x x') ∧
+    (∀ {e e'}, g e = g e' → RightResponseEq F e e') := by
+  constructor
+  · intro x x' hxx e i
+    rw [hfac i x e, hfac i x' e, hxx]
+  · intro e e' hee x i
+    rw [hfac i x e, hfac i x e', hee]
+
+open UEOT.V3.StructuredQuotient
+
+/-- P-INT-02 reconstructed from generic two-sided quotient descent plus the
+canonical response-equivalence adapter.
+
+The generic compression theorems above do the mathematical work.  This wrapper
+only instantiates them with the source theorem's canonical quotient maps and
+identifies their response equivalences with the source setoids.  No finiteness,
+Bellman, statistical, or algorithmic assumption is added beyond the frozen
+source surface. -/
+theorem p_int_02_via_twoSidedDescent
+    {IX : Type uQX} {IE : Type uQE} {II : Type uQI} {RR : Type uQR}
+    [Fintype IX] [Fintype IE] [Fintype II]
+    (K : II → IX → IE → RR) :
+    (∀ i x e,
+      K i x e =
+        quotientResponse K i (internalClass K x) (environmentClass K e)) ∧
+    (∀ {SX : Type uQSX} {SE : Type uQSE}
+      (f : IX → SX) (g : IE → SE) (Q : II → SX → SE → RR),
+      (∀ i x e, K i x e = Q i (f x) (g e)) →
+      (∀ {x x'}, f x = f x' → (internalSetoid K).r x x') ∧
+      (∀ {e e'}, g e = g e' → (environmentSetoid K).r e e')) := by
+  have hX : Surjective (internalClass K) := by
+    intro q
+    refine Quotient.inductionOn q ?_
+    intro x
+    exact ⟨x, rfl⟩
+  have hE : Surjective (environmentClass K) := by
+    intro q
+    refine Quotient.inductionOn q ?_
+    intro e
+    exact ⟨e, rfl⟩
+  have hcompat :
+      TwoSidedCompatible (internalClass K) (environmentClass K) K := by
+    constructor
+    · intro i e x x' hxx
+      exact (Quotient.exact hxx) e i
+    · intro i x e e' hee
+      exact (Quotient.exact hee) x i
+  rcases existsUnique_twoSidedDescend
+      (internalClass K) (environmentClass K) K hX hE hcompat with
+    ⟨Qbar, hQbar, hunique⟩
+  have hsource :
+      quotientResponse K = Qbar := by
+    apply hunique
+    intro i x e
+    exact quotientResponse_mk K i x e
+  constructor
+  · intro i x e
+    rw [hsource]
+    exact (hQbar i x e).symm
+  · intro SX SE f g Q hfac
+    rcases exactSeparatedFactorization_refines_responseEq K f g Q hfac with
+      ⟨hleft, hright⟩
+    refine ⟨?_, ?_⟩
+    · intro x x' hxx
+      exact hleft hxx
+    · intro e e' hee
+      exact hright hee
 
 open MeasureTheory ProbabilityTheory
 open UEOT.V3.DynamicsKernel

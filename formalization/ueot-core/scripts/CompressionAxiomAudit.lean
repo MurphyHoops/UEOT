@@ -4,6 +4,9 @@ import UEOT.V3.Compression
 #print axioms UEOT.V3.Compression.QuotientDescent.strongLumpability_unique_setLevel_descend
 #print axioms UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend
 #print axioms UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent
+#print axioms UEOT.V3.Compression.QuotientDescent.existsUnique_twoSidedDescend
+#print axioms UEOT.V3.Compression.QuotientDescent.exactSeparatedFactorization_refines_responseEq
+#print axioms UEOT.V3.Compression.QuotientDescent.p_int_02_via_twoSidedDescent
 #print axioms UEOT.V3.Compression.TransportCertificate.twoStage_bound
 #print axioms UEOT.V3.Compression.TransportCertificate.factorRoute_exact
 #print axioms UEOT.V3.Compression.TransportCertificate.chain_bound

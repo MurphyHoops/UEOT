@@ -14,7 +14,7 @@
   "coverage": {
     "analyzed_pids": 25,
     "schema_classified_pids": 25,
-    "lean_rederived_pids": 4,
+    "lean_rederived_pids": 5,
     "counted_compressed_pids": 4,
     "counted_generators": 1,
     "final_disposition_pids": 0,
@@ -26,11 +26,13 @@
   "generators": {
     "M-QD-01": {
       "title": "Quotient Descent",
-      "state": "lean_green",
+      "state": "cross_family_green",
       "canonical_theorems": [
         "UEOT.V3.Compression.QuotientDescent.fiberCompatible_iff_existsUnique_descend",
         "UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
-        "UEOT.V3.Compression.QuotientDescent.strongLumpability_unique_setLevel_descend"
+        "UEOT.V3.Compression.QuotientDescent.strongLumpability_unique_setLevel_descend",
+        "UEOT.V3.Compression.QuotientDescent.existsUnique_twoSidedDescend",
+        "UEOT.V3.Compression.QuotientDescent.exactSeparatedFactorization_refines_responseEq"
       ],
       "explicit_nonclaims": [
         "set-level descent does not imply measurable descent",
@@ -39,7 +41,7 @@
         "P-QUO-01 also requires discounted-control Bellman and policy-lifting machinery",
         "P-ALG-01 also requires finite refinement termination and coarsest-fixed-point machinery",
         "P-INT-01 contains a quotient/factorization direction but also a conditional-independence equivalence requiring disintegration/common-version machinery",
-        "P-INT-02 is a strong second-family quotient-descent candidate but is not a generated mapping until a generic two-sided quotient/minimality theorem and source wrapper are proved"
+        "P-INT-02 supplies the second exact P-ID family for the M-QD schema, but neither the mapping nor the generator is counted until the full feature/integration/main/ledger lifecycle completes"
       ],
       "mappings": {
         "P-DYN-01": {
@@ -91,8 +93,13 @@
           "note": "The common-version factorization half is quotient-descent shaped, but the frozen iff also identifies conditional independence with factorization through (M,U). The disintegration/tower direction remains an explicit adapter obligation."
         },
         "P-INT-02": {
-          "state": "conjectured",
-          "note": "Strong second-family candidate: the finite structural theorem is a two-sided quotient factorization with canonical minimal refinement. A generic two-sided quotient-descent theorem could plausibly rederive the full source claim without Bellman or algorithmic baggage."
+          "state": "lean_rederived",
+          "witness_theorems": [
+            "UEOT.V3.Compression.QuotientDescent.p_int_02_via_twoSidedDescent"
+          ],
+          "assumption_relation": "exact",
+          "conclusion_relation": "exact",
+          "note": "The full frozen two-sided canonical factorization and minimal-refinement claim is reconstructed from the generic two-sided quotient universal property plus the source canonical-quotient adapter. No Bellman, statistical, measurable-kernel, or algorithmic assumption is introduced."
         }
       }
     },
