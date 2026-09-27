@@ -16,8 +16,8 @@ changes the completed **106/106 FULL-GREEN** source status.
 
 | metric | count |
 |---|---:|
-| source P-IDs analyzed | 15 / 106 |
-| schema-classified P-IDs | 15 / 106 |
+| source P-IDs analyzed | 25 / 106 |
+| schema-classified P-IDs | 25 / 106 |
 | fully Lean-rederived P-IDs | 4 / 106 |
 | counted compressed P-IDs | 4 / 106 |
 | final dispositions assigned | 0 / 106 |
@@ -134,6 +134,43 @@ substrate, and P-PRED-02 has a related target-pushforward clause. The current
 common core, however, is standard pushforward/change-of-variables
 infrastructure plus domain-specific adapters. No new M-ID is introduced until
 a nontrivial reusable theorem beyond that infrastructure is identified.
+
+### Foundational information / interface audit
+
+The remaining Chapters 1–6 foundation rows are now source↔Lean↔schema audited:
+
+- P-MET-02: TV span duality / observable-sensitivity adapter;
+- P-PROC-01: complete-history state augmentation / Markovization adapter;
+- P-INFO-01: deterministic-statistic information chain rule and entropy memory
+  bound;
+- P-INFO-02: conditional-KL/Pinsker bridge from information residual to average
+  predictive TV;
+- P-INFO-03: zero-distortion predictive rate equals canonical-core conditional
+  entropy;
+- P-INFO-04: sharp Fano and conditional-binary decoder information lower
+  bounds;
+- P-INFO-05: TV packing obstruction, representation cardinality, and uniform
+  entropy lower bound;
+- P-INT-01: conditional-independence ↔ common-version factorization for
+  structured interfaces;
+- P-INT-02: canonical two-sided internal/environment quotient and minimal
+  refinement;
+- P-INT-03: minimal Markov-boundary uniqueness under intersection/graphoid
+  axioms.
+
+No counted status changes in this audit batch. Most rows expose standard
+mathematical or domain-adapter infrastructure rather than new meta-generators.
+
+**M-QD frontier:** P-INT-02 is now the strongest honest second-family candidate
+for M-QD-01. Unlike P-QUO-01 and P-ALG-01, it adds no Bellman/control or
+finite-algorithm machinery: it is pure two-sided quotient factorization plus
+minimal refinement. The next Lean-design step is to test a generic two-sided
+quotient-descent theorem and a source-facing P-INT-02 wrapper before changing
+M-QD's generator state.
+
+P-INT-01 also shares M-QD's factorization substrate, but its full iff retains a
+distinct conditional-independence/disintegration adapter and is therefore not
+claimed generated yet.
 
 ## Counting rule
 
