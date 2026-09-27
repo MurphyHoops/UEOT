@@ -21,6 +21,7 @@ def validator(repo: Path) -> list[str]:
         str(repo / "formalization/ueot-core/scripts/validate_compression.py"),
         "--repo-root",
         str(repo),
+        "--verify-finalization-refs",
     ]
 
 
@@ -49,6 +50,34 @@ def expect_rejected(
     print(f"{name}: PASS")
 
 
+def expect_index_rejected(
+    repo: Path,
+    index_path: Path,
+    original_index: str,
+) -> None:
+    index_path.write_text(
+        original_index.replace("P-MET-01,1,", "P-MET-01,99,", 1),
+        encoding="utf-8",
+    )
+    completed = subprocess.run(
+        validator(repo),
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    output = completed.stdout + completed.stderr
+    if (
+        completed.returncode == 0
+        or "compression theorem index digest drifted" not in output
+    ):
+        raise AssertionError(
+            "theorem-index-digest-drift: validator did not reject as expected\n"
+            + output
+        )
+    print("theorem-index-digest-drift: PASS")
+    index_path.write_text(original_index, encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -59,9 +88,16 @@ def main() -> None:
         repo
         / "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
     )
+    index_path = (
+        repo
+        / "formalization/ueot-core/docs/CORE_COMPRESSION_THEOREM_INDEX.csv"
+    )
     original = ledger_path.read_text(encoding="utf-8")
+    original_index = index_path.read_text(encoding="utf-8")
 
     try:
+        expect_index_rejected(repo, index_path, original_index)
+
         expect_rejected(
             repo,
             ledger_path,
@@ -169,23 +205,22 @@ def main() -> None:
             "audit_evidence entries must be nonempty strings",
         )
 
-        def fake_frozen_core(data: dict) -> None:
-            data["minimal_core"].update(
-                state="frozen",
-                generator_ids=["M-TC-01"],
-                ablation_state="complete",
-                minimality_claim=(
-                    "nonredundant_under_declared_derivation_system"
-                ),
-            )
+        def fragment_retained_evidence(data: dict) -> None:
+            retained_without_evidence(data)
+            data["final_dispositions"]["P-DYN-01"]["audit_evidence"] = [
+                (
+                    "doc:formalization/ueot-core/docs/compression/"
+                    "COMPRESSION_MISSION.md#definitely-no-such-heading"
+                )
+            ]
 
         expect_rejected(
             repo,
             ledger_path,
             original,
-            "uncounted-frozen-core",
-            fake_frozen_core,
-            "final minimal-core generator must be counted",
+            "doc-fragment-audit-evidence",
+            fragment_retained_evidence,
+            "doc audit fragments are not supported",
         )
 
         def unrelated_ablation_loss(data: dict) -> None:
@@ -238,8 +273,110 @@ def main() -> None:
             unrelated_ablation_loss,
             "ablation broken_pids must be final generated mappings",
         )
+
+        def frozen_core_omits_used_generator(data: dict) -> None:
+            tc = data["generators"]["M-TC-01"]
+            tc["state"] = "counted_generator"
+            tc["promotion"] = {"test": True}
+            for pid in ("P-API-01", "P-ID-01"):
+                mapping = tc["mappings"][pid]
+                mapping["state"] = "counted"
+                mapping["promotion"] = {"test": True}
+
+            spare = json.loads(json.dumps(tc))
+            spare["title"] = "Synthetic regression-only spare generator"
+            spare["state"] = "counted_generator"
+            spare["promotion"] = {"test": True}
+            data["generators"]["M-TX-99"] = spare
+
+            data["coverage"].update(
+                counted_compressed_pids=2,
+                counted_generators=2,
+                final_disposition_pids=2,
+                generated_pids=2,
+                unresolved_pids=104,
+            )
+            data["final_dispositions"] = {
+                "P-API-01": {
+                    "status": "generated",
+                    "generator_ids": ["M-TC-01"],
+                },
+                "P-ID-01": {
+                    "status": "generated",
+                    "generator_ids": ["M-TC-01"],
+                },
+            }
+            data["minimal_core"].update(
+                state="frozen",
+                generator_ids=["M-TX-99"],
+                ablation_state="complete",
+                minimality_claim=(
+                    "nonredundant_under_declared_derivation_system"
+                ),
+            )
+
+        expect_rejected(
+            repo,
+            ledger_path,
+            original,
+            "frozen-core-omits-used-generator",
+            frozen_core_omits_used_generator,
+            "frozen minimal core must exactly match generators used",
+        )
+
+        def missing_remaining_core_derivability(data: dict) -> None:
+            tc = data["generators"]["M-TC-01"]
+            tc["state"] = "counted_generator"
+            tc["promotion"] = {"test": True}
+            for pid in ("P-API-01", "P-ID-01"):
+                mapping = tc["mappings"][pid]
+                mapping["state"] = "counted"
+                mapping["promotion"] = {"test": True}
+            tc["ablation"] = {
+                "result": "nonredundant_under_declared_derivation_system",
+                "broken_pids": ["P-API-01"],
+                "rationale": (
+                    "Removing this generator breaks a recorded generated "
+                    "mapping in this regression fixture."
+                ),
+            }
+            data["coverage"].update(
+                counted_compressed_pids=2,
+                counted_generators=1,
+                final_disposition_pids=2,
+                generated_pids=2,
+                unresolved_pids=104,
+            )
+            data["final_dispositions"] = {
+                "P-API-01": {
+                    "status": "generated",
+                    "generator_ids": ["M-TC-01"],
+                },
+                "P-ID-01": {
+                    "status": "generated",
+                    "generator_ids": ["M-TC-01"],
+                },
+            }
+            data["minimal_core"].update(
+                state="frozen",
+                generator_ids=["M-TC-01"],
+                ablation_state="complete",
+                minimality_claim=(
+                    "nonredundant_under_declared_derivation_system"
+                ),
+            )
+
+        expect_rejected(
+            repo,
+            ledger_path,
+            original,
+            "missing-remaining-core-derivability",
+            missing_remaining_core_derivability,
+            "final ablation needs remaining_core_derivability",
+        )
     finally:
         ledger_path.write_text(original, encoding="utf-8")
+        index_path.write_text(original_index, encoding="utf-8")
 
     completed = subprocess.run(
         validator(repo),

@@ -130,8 +130,10 @@ presentations may exist.
 
 A generator belongs to the frozen minimal core only if its ablation audit shows
 that it is not derivable from the retained alternatives under the declared
-derivation system, or that removing it loses a recorded class of final
-generated mappings.
+derivation system and that removing it loses a recorded class of final
+generated mappings. The frozen core must exactly account for every generator
+named by final `generated` dispositions; a counted dependency may not sit
+outside the advertised core.
 
 If a generator is derivable from the others, it may remain useful as a lemma
 but must not be counted as a primitive member of the final minimal core.
@@ -144,6 +146,9 @@ ablation record answering:
 - what mappings fail if the generator is removed;
 - whether the generator is derivable from remaining generators plus registered
   adapters;
+- the exact remaining-core M-ID set after removal;
+- a typed non-derivability status, explicit assumptions, and recoverable audit
+  evidence under the declared derivation system;
 - the concrete frozen P-IDs whose generated derivations break under removal;
 - which assumptions are essential to that conclusion;
 - whether the result is exact, relative, or currently limited by formalized

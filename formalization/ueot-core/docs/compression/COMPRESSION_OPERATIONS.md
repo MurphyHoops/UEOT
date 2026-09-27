@@ -175,8 +175,10 @@ No chat, issue comment, PR description, or green CI run may weaken it.
 
 The validator must reject `ready_for_finalization` or `final` unless the
 machine ledger shows all 106 P-IDs analyzed and schema-classified, 106 final
-per-P-ID dispositions, zero unresolved P-IDs, a frozen minimal core, complete
-ablation, and counted exact evidence for every generated disposition.
+per-P-ID dispositions, zero unresolved P-IDs, a frozen minimal core that
+exactly accounts for every generated dependency, complete ablation with
+remaining-core non-derivability evidence, and counted exact evidence for every
+generated disposition.
 
 Finalization uses two stages:
 

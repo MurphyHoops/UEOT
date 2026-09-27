@@ -44,7 +44,7 @@ jobs:
           BEFORE_SHA: ${{ github.event.before }}
           GH_TOKEN: ${{ github.token }}
           GITHUB_EVENT_NAME: ${{ github.event_name }}
-          GITHUB_SHA: ${{ github.sha }}
+          COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           BASELINE_REF="origin/main"
           if [[ "$EVENT_NAME" == "push" && "$REF_NAME" == "main" && -n "$BEFORE_SHA" && "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
@@ -56,6 +56,10 @@ jobs:
             --verify-finalization-refs
 
       - name: Regression-test mission completion gates
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
 
   proof:

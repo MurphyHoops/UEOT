@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import os
 import re
@@ -57,10 +58,13 @@ NONREDUNDANT_ABLATION = "nonredundant_under_declared_derivation_system"
 SOURCE_FAITHFUL_ASSUMPTION_RELATIONS = {"exact", "weaker"}
 REPO_FULL_NAME = "MurphyHoops/UEOT"
 MIN_RATIONALE_LENGTH = 20
+FROZEN_THEOREM_INDEX_SHA256 = "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
+NOT_DERIVABLE_STATUS = "not_derivable_under_declared_derivation_system"
 
 PROTECTED_BASELINE_FILES = {
     "formalization/ueot-core/docs/V3_COVERAGE_STATUS.md",
     "formalization/ueot-core/docs/PID_STATUS.yaml",
+    "formalization/ueot-core/docs/CORE_COMPRESSION_THEOREM_INDEX.csv",
 }
 
 FROZEN_LEAN_ROOT = "formalization/ueot-core/UEOT/"
@@ -96,10 +100,12 @@ def validate_audit_evidence(
 ) -> None:
     if not isinstance(refs, list) or not refs:
         fail(f"{context}: needs nonempty audit_evidence references")
+    if any(not nonempty_string(raw_ref) for raw_ref in refs):
+        fail(f"{context}: audit_evidence entries must be nonempty strings")
+    if len(refs) != len(set(refs)):
+        fail(f"{context}: audit_evidence references must be unique")
 
     for raw_ref in refs:
-        if not nonempty_string(raw_ref):
-            fail(f"{context}: audit_evidence entries must be nonempty strings")
         prefix, sep, payload = raw_ref.partition(":")
         if not sep or not payload.strip():
             fail(f"{context}: malformed audit evidence reference {raw_ref!r}")
@@ -110,7 +116,12 @@ def validate_audit_evidence(
                 fail(f"{context}: invalid theorem audit reference {payload!r}")
             lean_witnesses.add(payload)
         elif prefix == "doc":
-            rel_path = payload.split("#", 1)[0]
+            if "#" in payload:
+                fail(
+                    f"{context}: doc audit fragments are not supported; "
+                    "reference the audited file itself"
+                )
+            rel_path = payload
             candidate = (repo / rel_path).resolve()
             try:
                 candidate.relative_to(repo)
@@ -258,6 +269,13 @@ def main() -> None:
         if not path.is_file():
             fail(f"required compression governance file missing: {path}")
 
+    index_digest = hashlib.sha256(index_path.read_bytes()).hexdigest()
+    if index_digest != FROZEN_THEOREM_INDEX_SHA256:
+        fail(
+            "compression theorem index digest drifted from the frozen "
+            f"106-row seed: {index_digest}"
+        )
+
     with index_path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     pids = [row["pid"] for row in rows]
@@ -303,6 +321,8 @@ def main() -> None:
         "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303"
     ):
         fail("compression ledger source hash does not match the frozen source")
+    if baseline.get("theorem_index_sha256") != FROZEN_THEOREM_INDEX_SHA256:
+        fail("compression ledger theorem-index hash is not the frozen digest")
 
     coverage = ledger.get("coverage", {})
     required_counts = {
@@ -614,6 +634,17 @@ def main() -> None:
     if core_state == "frozen":
         if not core_ids:
             fail("frozen minimal core must contain at least one generator")
+        used_generator_ids = {
+            mid
+            for pid in generated
+            for mid in dispositions[pid].get("generator_ids", [])
+        }
+        if set(core_ids) != used_generator_ids:
+            fail(
+                "frozen minimal core must exactly match generators used by "
+                "final generated dispositions: "
+                f"core={sorted(core_ids)} used={sorted(used_generator_ids)}"
+            )
         if ablation_state != "complete":
             fail("frozen minimal core requires complete ablation")
         if minimality_claim != NONREDUNDANT_ABLATION:
@@ -649,6 +680,47 @@ def main() -> None:
                 ablation.get("rationale"), min_length=MIN_RATIONALE_LENGTH
             ):
                 fail(f"{mid}: final ablation needs a substantive string rationale")
+
+            derivability = ablation.get("remaining_core_derivability")
+            if not isinstance(derivability, dict):
+                fail(f"{mid}: final ablation needs remaining_core_derivability")
+            remaining_ids = derivability.get("remaining_generator_ids")
+            expected_remaining = sorted(set(core_ids) - {mid})
+            if (
+                not isinstance(remaining_ids, list)
+                or len(remaining_ids) != len(set(remaining_ids))
+                or sorted(remaining_ids) != expected_remaining
+            ):
+                fail(
+                    f"{mid}: remaining_generator_ids must exactly equal "
+                    f"the frozen core without this generator: {expected_remaining}"
+                )
+            if derivability.get("status") != NOT_DERIVABLE_STATUS:
+                fail(
+                    f"{mid}: remaining-core derivability status must be "
+                    f"{NOT_DERIVABLE_STATUS!r}"
+                )
+            derivability_assumptions = derivability.get("assumptions")
+            if (
+                not isinstance(derivability_assumptions, list)
+                or not derivability_assumptions
+                or any(
+                    not nonempty_string(item)
+                    for item in derivability_assumptions
+                )
+                or len(derivability_assumptions)
+                != len(set(derivability_assumptions))
+            ):
+                fail(
+                    f"{mid}: remaining-core non-derivability needs unique "
+                    "nonempty assumptions"
+                )
+            validate_audit_evidence(
+                repo,
+                derivability.get("audit_evidence"),
+                lean_witnesses,
+                f"{mid} remaining-core non-derivability",
+            )
 
     if mission_state in {"ready_for_finalization", "final"}:
         final_gate_errors = []
