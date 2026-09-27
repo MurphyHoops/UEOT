@@ -12,8 +12,8 @@
     "theorem_index_sha256": "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
   },
   "coverage": {
-    "analyzed_pids": 15,
-    "schema_classified_pids": 15,
+    "analyzed_pids": 25,
+    "schema_classified_pids": 25,
     "lean_rederived_pids": 4,
     "counted_compressed_pids": 4,
     "counted_generators": 1,
@@ -37,7 +37,9 @@
         "set-level descended law is not automatically a Markov kernel",
         "countable a.e. descent requires coordinate measurability and a countable protocol index to obtain one common full-measure set",
         "P-QUO-01 also requires discounted-control Bellman and policy-lifting machinery",
-        "P-ALG-01 also requires finite refinement termination and coarsest-fixed-point machinery"
+        "P-ALG-01 also requires finite refinement termination and coarsest-fixed-point machinery",
+        "P-INT-01 contains a quotient/factorization direction but also a conditional-independence equivalence requiring disintegration/common-version machinery",
+        "P-INT-02 is a strong second-family quotient-descent candidate but is not a generated mapping until a generic two-sided quotient/minimality theorem and source wrapper are proved"
       ],
       "mappings": {
         "P-DYN-01": {
@@ -83,6 +85,14 @@
         "P-ALG-01": {
           "state": "conjectured",
           "note": "Stable quotient descent is one ingredient, but the frozen theorem additionally certifies finite termination, coarsest stable refinement, quotient stochastic normalization, and all finite-horizon output-word laws."
+        },
+        "P-INT-01": {
+          "state": "conjectured",
+          "note": "The common-version factorization half is quotient-descent shaped, but the frozen iff also identifies conditional independence with factorization through (M,U). The disintegration/tower direction remains an explicit adapter obligation."
+        },
+        "P-INT-02": {
+          "state": "conjectured",
+          "note": "Strong second-family candidate: the finite structural theorem is a two-sided quotient factorization with canonical minimal refinement. A generic two-sided quotient-descent theorem could plausibly rederive the full source claim without Bellman or algorithmic baggage."
         }
       }
     },
@@ -556,6 +566,217 @@
       "source_title": "核运输协变。",
       "analysis_summary": "The frozen theorem synchronously transports both laws and the kernel through a bimeasurable bijection and states exact MMD invariance. The Lean source wrapper realizes the transported kernel through the pulled-back Hilbert feature map and proves mean-embedding MMD equality, with the three-kernel-expectation energy form independently checked.",
       "schema_rationale": "This is an exact metric covariance adapter built on change-of-variables. Its relation to P-FAC-01 is genuine but currently rests on standard equivalence transport plus metric-specific structure, so no standalone covariance M-ID is introduced merely to repackage those existing primitives."
+    },
+    "P-MET-02": {
+      "source_line": 153,
+      "lean_theorems": [
+        "UEOT.V3.TVSpan.abs_integral_sub_le_span"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "tv_span_duality",
+        "observable_sensitivity",
+        "metric_adapter"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "metric_adapter",
+        "value_error_bridge"
+      ],
+      "source_title": "跨度估计。",
+      "analysis_summary": "The frozen span estimate is exactly the total-variation dual bound for a bounded measurable real observable after centering by its midpoint. The canonical Lean theorem uses literal supremum-minus-infimum span and probability measures, matching the source expectation-gap inequality without changing the error scale.",
+      "schema_rationale": "This is standard metric-to-observable infrastructure rather than an autonomous UEOT generator. It is reused downstream, notably by approximate-control quotient bounds, as a domain adapter from TV error to value-function error."
+    },
+    "P-PROC-01": {
+      "source_line": 199,
+      "lean_theorems": [
+        "UEOT.V3.ConcreteHistoryMarkovization.p_proc_01_history_markovization"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "state_augmentation",
+        "history_markovization",
+        "kernel_readout_recovery"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "process_adapter",
+        "state_construction"
+      ],
+      "source_title": "历史状态化。",
+      "analysis_summary": "The frozen theorem states that an arbitrary history-dependent controlled process becomes time-homogeneous Markov after augmenting the state by time and complete history. The Lean wrapper constructs one Markov kernel on the tagged growing-history carrier and proves that the physical readout recovers every supplied history-dependent transition kernel exactly.",
+      "schema_rationale": "History Markovization is reusable state-augmentation infrastructure. It has a genuine thematic relation to reflexive state augmentation in P-REF-01, but a new generator should wait until a nontrivial shared theorem beyond ordinary kernel augmentation and path-law construction is identified."
+    },
+    "P-INFO-01": {
+      "source_line": 376,
+      "lean_theorems": [
+        "UEOT.V3.InformationStatistic.mutualInfo_eq_statistic_add_conditional",
+        "UEOT.V3.InformationStatistic.mutualInfo_statistic_ge_sub_of_conditional_le",
+        "UEOT.V3.InformationMemoryBound.p_info_01_discrete_entropy"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "information_chain_rule",
+        "deterministic_statistic",
+        "entropy_memory_bound"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "information_adapter",
+        "memory_lower_bound"
+      ],
+      "source_title": "",
+      "analysis_summary": "The canonical Lean stack matches all frozen clauses: deterministic-statistic mutual information splits into retained information plus a genuine conditional-KL residual, a residual upper bound yields the quantitative retention inequality, and for countable discrete memory the retained information is bounded by extended Shannon entropy.",
+      "schema_rationale": "The mechanism is the standard KL/mutual-information chain rule plus the entropy upper bound for a discrete statistic. It should be retained as information-theoretic infrastructure unless broader audit evidence reveals a nontrivial UEOT-specific generator."
+    },
+    "P-INFO-02": {
+      "source_line": 397,
+      "lean_theorems": [
+        "UEOT.V3.InformationPInfo02.p_info_02_finite",
+        "UEOT.V3.InformationPInfo02.p_info_02_ennreal"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "conditional_pinsker",
+        "information_to_prediction_error",
+        "average_tv_certificate"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "information_certificate",
+        "prediction_error_bridge"
+      ],
+      "source_title": "",
+      "analysis_summary": "The frozen conditional-information-to-predictive-TV theorem is recovered in both finite-information real form and an all-cases extended-real form. The proof route identifies the source conditional information with averaged kernel KL, applies Pinsker pointwise, and uses the square-root averaging step without adding an absolute-continuity assumption to the source contract.",
+      "schema_rationale": "This is a standard information-to-metric certificate assembled from conditional KL and Pinsker. It is a reusable bridge, but current evidence does not justify treating that standard inequality stack as a new primitive UEOT meta-generator."
+    },
+    "P-INFO-03": {
+      "source_line": 432,
+      "lean_theorems": [
+        "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "zero_distortion_rate",
+        "predictive_core_recoverability",
+        "canonical_achievability"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "compression_certificate",
+        "information_adapter"
+      ],
+      "source_title": "零失真复杂度。",
+      "analysis_summary": "The frozen zero-distortion object rate theorem is matched by the canonical Lean equality between optimal randomized zero-TV representation rate and the conditional entropy of the countable canonical predictive core. The converse uses recoverability of the predictive law from any zero-distortion encoder, while the canonical core itself supplies the achieving representation.",
+      "schema_rationale": "This is a domain-specific rate-distortion adapter built from recoverability, information monotonicity, and canonical achievability. Its optimization semantics are substantial enough that it should not be collapsed into quotient descent merely because recoverability appears in the converse."
+    },
+    "P-INFO-04": {
+      "source_line": 450,
+      "lean_theorems": [
+        "UEOT.V3.InformationPInfo04.p_info_04",
+        "UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "fano_lower_bound",
+        "decoder_error_certificate",
+        "conditional_binary_information"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "identifiability_certificate",
+        "information_lower_bound"
+      ],
+      "source_title": "Fano 型身份下界。",
+      "analysis_summary": "The Lean endpoints recover both frozen information lower bounds: the sharp K-way uniform-identity Fano inequality for any measurable decoder and the conditional binary version with decoder error at most epsilon. The infinite-information case is handled explicitly rather than hidden behind a finiteness premise.",
+      "schema_rationale": "This is standard decoder-to-information lower-bound infrastructure. It is scientifically important as an identifiability certificate, but there is no reason yet to elevate Fano's inequality itself to a UEOT meta-generator."
+    },
+    "P-INFO-05": {
+      "source_line": 468,
+      "lean_theorems": [
+        "UEOT.V3.InformationPacking.merged_histories_decoder_lower_bound",
+        "UEOT.V3.InformationPacking.packing_ncard_image",
+        "UEOT.V3.InformationEntropy.p_info_05_uniform_entropy"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "packing_obstruction",
+        "decoder_triangle_lower_bound",
+        "cardinality_entropy_bound"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "compression_boundary",
+        "packing_certificate"
+      ],
+      "source_title": "",
+      "analysis_summary": "All frozen packing clauses are represented canonically: merging two histories forces at least half their response-law TV separation as decoder error on one branch; a pairwise-separated finite packing forces injectivity and hence at least N representation values; under the uniform input the representation entropy is exactly log N.",
+      "schema_rationale": "The common primitive is a metric packing obstruction plus finite injectivity/cardinality conversion. This may later support a packing meta-generator if the same exact structure recurs across other families, but the present row is kept as an audited certificate rather than forcing a new M-ID."
+    },
+    "P-INT-01": {
+      "source_line": 488,
+      "lean_theorems": [
+        "UEOT.V3.InformationPInt01Common.p_int_01",
+        "UEOT.V3.InformationPInt01Common.p_int_01_common_decoder"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "conditional_independence_factorization",
+        "common_version",
+        "structured_sufficiency"
+      ],
+      "candidate_generator_ids": [
+        "M-QD-01"
+      ],
+      "scientific_roles": [
+        "structured_interface",
+        "factorization_bridge"
+      ],
+      "source_title": "结构化充分性的充要条件。",
+      "analysis_summary": "The frozen structured-sufficiency iff is matched by the countable common-version Lean theorem: protocolwise conditional-independence closure through the joint internal/environment statistic is equivalent to one decoder family that factors all response kernels on a common conull set, with a measurable state-valued decoder available as a corollary.",
+      "schema_rationale": "The factorization direction shares the quotient-descent/factorization primitive already isolated by M-QD-01, but the reverse implication uses conditional-kernel disintegration and tower/conditional-independence machinery. M-QD is therefore a candidate contributor, not yet a full generated mapping."
+    },
+    "P-INT-02": {
+      "source_line": 524,
+      "lean_theorems": [
+        "UEOT.V3.StructuredQuotient.p_int_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "two_sided_quotient_descent",
+        "canonical_product_factorization",
+        "minimal_refinement"
+      ],
+      "candidate_generator_ids": [
+        "M-QD-01"
+      ],
+      "scientific_roles": [
+        "structured_quotient",
+        "minimal_factorization"
+      ],
+      "source_title": "",
+      "analysis_summary": "The finite structural-kernel theorem is matched exactly: quotienting the internal and environment coordinates by universal response equality gives a well-defined canonical response kernel, and every other exact separated representation refines each canonical equivalence relation. No Bellman, policy, statistical, or algorithmic assumptions enter this result.",
+      "schema_rationale": "This is the strongest honest second-family M-QD-01 candidate found so far. Its mathematics is pure two-sided quotient descent plus minimality, suggesting a generic product/fibre theorem could rederive the full source claim and satisfy M-QD's cross-family exact-mapping gate."
+    },
+    "P-INT-03": {
+      "source_line": 570,
+      "lean_theorems": [
+        "UEOT.V3.MarkovBoundary.p_int_03_boundary_unique"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "markov_boundary_uniqueness",
+        "graphoid_intersection",
+        "minimal_blanket"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "causal_boundary",
+        "uniqueness_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "The canonical Lean wrapper proves the frozen uniqueness result for two minimal Markov blankets under the stated semigraphoid-style conditional-independence laws including intersection. The proof is actually stronger than the manuscript's finite-universe surface once the CI axioms are supplied, while preserving the source warning that intersection is a genuine extra condition.",
+      "schema_rationale": "This is conditional-independence algebra plus a minimality argument, not quotient descent. The intersection assumption is scientifically substantive and must remain visible, so no universal generator is claimed at this stage."
     }
   }
 }
