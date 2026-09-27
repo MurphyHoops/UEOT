@@ -112,8 +112,8 @@ Every compression feature head must pass:
 5. compression theorem axiom print;
 6. full `lake build UEOT`.
 
-The general `UEOT Core Lean` workflow also runs on `compression/**` and the
-bootstrap branch.
+The general `UEOT Core Lean` workflow also runs on `compression/**` and
+temporary `ops/compression-*` governance branches.
 
 ## 7. Promotion lifecycle
 
@@ -180,14 +180,26 @@ ablation, and counted exact evidence for every generated disposition.
 
 Finalization uses two stages:
 
-1. `ready_for_finalization` — all scientific gates are satisfied on a candidate
-   main/ledger state;
-2. `final` — a separate closure change records the audited pre-final main and
-   CI evidence. The mission is announced FINAL only after that closure reaches
-   `main` and both resulting-main Core Lean and Compression Guard are green.
+1. `ready_for_finalization` — all scientific gates are satisfied and merged to
+   a candidate `main`;
+2. require successful **push** runs of Core Lean and Compression Guard for that
+   exact candidate-main SHA;
+3. open a dedicated closure PR from the candidate main, then commit the
+   `final` ledger state on that closure branch with the candidate SHA, both run
+   IDs, and the closure PR number;
+4. Compression Guard live-verifies that both runs succeeded for the recorded
+   candidate SHA and that the open PR targets `main`, is based on that SHA, and
+   matches the current closure head;
+5. merge the closure PR with a normal merge commit; on resulting `main`, the
+   verifier requires the merge ancestry to include both the candidate main and
+   recorded closure head;
+6. announce FINAL only after resulting-main Core Lean and Compression Guard are
+   green and Issue #146 is updated.
 
 This two-stage rule avoids circularly requiring a CI run to attest to the very
-commit that is trying to record its own completed run ID.
+commit that is trying to record its own completed run ID. Final closure uses a
+merge commit rather than squash/rebase so the audited ancestry remains
+machine-verifiable.
 
 ## 12. v4 gate
 

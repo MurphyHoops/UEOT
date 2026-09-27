@@ -83,6 +83,18 @@ def main() -> None:
             ),
             "final_disposition_pids disagrees",
         )
+
+        expect_rejected(
+            repo,
+            ledger_path,
+            original,
+            "forged-audit-summary",
+            lambda d: d["coverage"].update(
+                analyzed_pids=4, schema_classified_pids=4
+            ),
+            "analyzed_pids disagrees with explicit per-P-ID audit records",
+        )
+
         def fake_generated(data: dict) -> None:
             data["final_dispositions"] = {
                 "P-API-01": {
@@ -102,7 +114,7 @@ def main() -> None:
             original,
             "uncounted-generated-mapping",
             fake_generated,
-            "generated disposition needs a counted exact mapping",
+            "every generated dependency must be a counted generator",
         )
 
         def stronger_assumption(data: dict) -> None:
@@ -123,7 +135,10 @@ def main() -> None:
             data["final_dispositions"] = {
                 "P-DYN-01": {
                     "status": "retained_adapter",
-                    "rationale": "measurable-kernel descent remains domain-specific",
+                    "rationale": (
+                        "Measurable-kernel descent remains a distinct "
+                        "domain-specific obligation."
+                    ),
                 }
             }
             data["coverage"].update(
@@ -138,7 +153,20 @@ def main() -> None:
             original,
             "retained-without-audit-evidence",
             retained_without_evidence,
-            "retained adapter needs audit_evidence references",
+            "needs nonempty audit_evidence references",
+        )
+
+        def malformed_retained_evidence(data: dict) -> None:
+            retained_without_evidence(data)
+            data["final_dispositions"]["P-DYN-01"]["audit_evidence"] = [None]
+
+        expect_rejected(
+            repo,
+            ledger_path,
+            original,
+            "malformed-retained-audit-evidence",
+            malformed_retained_evidence,
+            "audit_evidence entries must be nonempty strings",
         )
 
         def fake_frozen_core(data: dict) -> None:
@@ -158,6 +186,57 @@ def main() -> None:
             "uncounted-frozen-core",
             fake_frozen_core,
             "final minimal-core generator must be counted",
+        )
+
+        def unrelated_ablation_loss(data: dict) -> None:
+            generator = data["generators"]["M-TC-01"]
+            generator["state"] = "counted_generator"
+            generator["promotion"] = {"test": True}
+            for pid in ("P-API-01", "P-ID-01"):
+                mapping = generator["mappings"][pid]
+                mapping["state"] = "counted"
+                mapping["promotion"] = {"test": True}
+            generator["ablation"] = {
+                "result": "nonredundant_under_declared_derivation_system",
+                "broken_pids": ["P-DYN-01"],
+                "rationale": (
+                    "This deliberately names an unrelated P-ID and must be "
+                    "rejected by the ablation dependency check."
+                ),
+            }
+            data["coverage"].update(
+                counted_compressed_pids=2,
+                counted_generators=1,
+                final_disposition_pids=2,
+                generated_pids=2,
+                unresolved_pids=104,
+            )
+            data["final_dispositions"] = {
+                "P-API-01": {
+                    "status": "generated",
+                    "generator_ids": ["M-TC-01"],
+                },
+                "P-ID-01": {
+                    "status": "generated",
+                    "generator_ids": ["M-TC-01"],
+                },
+            }
+            data["minimal_core"].update(
+                state="frozen",
+                generator_ids=["M-TC-01"],
+                ablation_state="complete",
+                minimality_claim=(
+                    "nonredundant_under_declared_derivation_system"
+                ),
+            )
+
+        expect_rejected(
+            repo,
+            ledger_path,
+            original,
+            "unrelated-ablation-loss",
+            unrelated_ablation_loss,
+            "ablation broken_pids must be final generated mappings",
         )
     finally:
         ledger_path.write_text(original, encoding="utf-8")

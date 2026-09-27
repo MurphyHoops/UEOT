@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import subprocess
 import sys
@@ -54,6 +55,8 @@ MINIMALITY_CLAIMS = {
 }
 NONREDUNDANT_ABLATION = "nonredundant_under_declared_derivation_system"
 SOURCE_FAITHFUL_ASSUMPTION_RELATIONS = {"exact", "weaker"}
+REPO_FULL_NAME = "MurphyHoops/UEOT"
+MIN_RATIONALE_LENGTH = 20
 
 PROTECTED_BASELINE_FILES = {
     "formalization/ueot-core/docs/V3_COVERAGE_STATUS.md",
@@ -81,10 +84,154 @@ def git(repo: Path, *args: str) -> str:
     ).strip()
 
 
+def nonempty_string(value: object, *, min_length: int = 1) -> bool:
+    return isinstance(value, str) and len(value.strip()) >= min_length
+
+
+def validate_audit_evidence(
+    repo: Path,
+    refs: object,
+    lean_witnesses: set[str],
+    context: str,
+) -> None:
+    if not isinstance(refs, list) or not refs:
+        fail(f"{context}: needs nonempty audit_evidence references")
+
+    for raw_ref in refs:
+        if not nonempty_string(raw_ref):
+            fail(f"{context}: audit_evidence entries must be nonempty strings")
+        prefix, sep, payload = raw_ref.partition(":")
+        if not sep or not payload.strip():
+            fail(f"{context}: malformed audit evidence reference {raw_ref!r}")
+        payload = payload.strip()
+
+        if prefix == "theorem":
+            if not LEAN_DECL_RE.fullmatch(payload):
+                fail(f"{context}: invalid theorem audit reference {payload!r}")
+            lean_witnesses.add(payload)
+        elif prefix == "doc":
+            rel_path = payload.split("#", 1)[0]
+            candidate = (repo / rel_path).resolve()
+            try:
+                candidate.relative_to(repo)
+            except ValueError:
+                fail(f"{context}: doc audit reference escapes repository")
+            if not candidate.is_file():
+                fail(f"{context}: doc audit reference does not exist: {rel_path}")
+        elif prefix == "commit":
+            if not re.fullmatch(r"[0-9a-f]{40}", payload):
+                fail(f"{context}: commit audit reference must be a full SHA")
+            try:
+                git(repo, "cat-file", "-e", f"{payload}^{{commit}}")
+            except subprocess.CalledProcessError:
+                fail(f"{context}: commit audit reference does not exist: {payload}")
+        else:
+            fail(
+                f"{context}: unsupported audit evidence prefix {prefix!r}; "
+                "use theorem:, doc:, or commit:"
+            )
+
+
+def gh_json(repo: Path, *args: str) -> dict:
+    if not os.environ.get("GH_TOKEN"):
+        fail("GH_TOKEN is required to verify FINAL GitHub references")
+    try:
+        raw = subprocess.check_output(
+            ["gh", *args],
+            cwd=repo,
+            text=True,
+            stderr=subprocess.STDOUT,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError) as exc:
+        fail(f"could not verify GitHub finalization reference: {exc}")
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as exc:
+        fail(f"GitHub finalization reference returned invalid JSON: {exc}")
+
+
+def verify_finalization_references(repo: Path, evidence: dict) -> None:
+    candidate = str(evidence["candidate_main_sha"])
+    try:
+        git(repo, "cat-file", "-e", f"{candidate}^{{commit}}")
+        git(repo, "merge-base", "--is-ancestor", candidate, "origin/main")
+    except subprocess.CalledProcessError:
+        fail("finalization candidate_main_sha is not an audited main ancestor")
+
+    for key, expected_name in (
+        ("core_lean_run", "UEOT Core Lean"),
+        ("compression_guard_run", "UEOT Core Compression Guard"),
+    ):
+        run = gh_json(
+            repo,
+            "run",
+            "view",
+            str(evidence[key]),
+            "--repo",
+            REPO_FULL_NAME,
+            "--json",
+            "name,status,conclusion,headSha,event",
+        )
+        if (
+            run.get("name") != expected_name
+            or run.get("status") != "completed"
+            or run.get("conclusion") != "success"
+            or run.get("event") != "push"
+            or run.get("headSha") != candidate
+        ):
+            fail(
+                f"finalization evidence {key} is not a successful "
+                f"{expected_name} push run for candidate_main_sha"
+            )
+
+    pr = gh_json(
+        repo,
+        "pr",
+        "view",
+        str(evidence["closure_pr"]),
+        "--repo",
+        REPO_FULL_NAME,
+        "--json",
+        "number,state,mergedAt,baseRefName,baseRefOid,headRefOid,mergeCommit",
+    )
+    if pr.get("baseRefName") != "main":
+        fail("finalization closure PR must target main")
+
+    current_sha = os.environ.get("COMPRESSION_VALIDATION_SHA") or os.environ.get("GITHUB_SHA")
+    state = pr.get("state")
+    if state == "OPEN":
+        if pr.get("baseRefOid") != candidate:
+            fail("open finalization closure PR is not based on candidate_main_sha")
+        if current_sha and pr.get("headRefOid") != current_sha:
+            fail("open finalization closure PR does not match current closure head")
+    elif state == "MERGED":
+        merge_commit = (pr.get("mergeCommit") or {}).get("oid")
+        if not merge_commit:
+            fail("merged finalization closure PR has no merge commit")
+        target = current_sha or "HEAD"
+        try:
+            git(repo, "merge-base", "--is-ancestor", merge_commit, target)
+            parents = git(repo, "show", "-s", "--format=%P", merge_commit).split()
+        except subprocess.CalledProcessError:
+            fail("could not verify finalization closure merge ancestry")
+        if candidate not in parents:
+            fail("finalization closure merge is not based on candidate_main_sha")
+        head_oid = pr.get("headRefOid")
+        if head_oid and head_oid not in parents:
+            fail("finalization closure merge does not include the recorded PR head")
+    else:
+        fail("finalization closure PR must be open-current or merged")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
     parser.add_argument("--baseline-ref")
+    parser.add_argument(
+        "--verify-finalization-refs",
+        action="store_true",
+        help="verify FINAL Git/GitHub evidence against the live repository",
+    )
     parser.add_argument(
         "--emit-lean-witness-audit",
         help="write a generated Lean file that #check's every ledger theorem witness",
@@ -122,6 +269,7 @@ def main() -> None:
     if bad_pids:
         fail(f"invalid P-ID format in theorem index: {bad_pids}")
     pid_set = set(pids)
+    index_by_pid = {row["pid"]: row for row in rows}
 
     try:
         ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
@@ -179,22 +327,96 @@ def main() -> None:
         if key != "counted_generators" and value > 106:
             fail(f"compression coverage {key} cannot exceed 106")
 
-    if coverage["counted_compressed_pids"] > coverage["lean_rederived_pids"]:
-        fail("counted compressed P-IDs cannot exceed Lean-rederived P-IDs")
+    audit_records = ledger.get("audit_records", {})
+    if not isinstance(audit_records, dict):
+        fail("audit_records must be an object keyed by frozen P-ID")
+    unknown_audits = sorted(set(audit_records) - pid_set)
+    if unknown_audits:
+        fail(f"audit_records contains unknown P-IDs: {unknown_audits}")
+
+    analyzed_pids: set[str] = set()
+    schema_classified_pids: set[str] = set()
+    audit_lean_witnesses: set[str] = set()
+    for pid, record in audit_records.items():
+        if not isinstance(record, dict):
+            fail(f"{pid}: audit record must be an object")
+        source_row = index_by_pid[pid]
+        expected_line = int(source_row["source_line"])
+        if record.get("source_line") != expected_line:
+            fail(
+                f"{pid}: audit source_line must match theorem index "
+                f"({expected_line})"
+            )
+        if record.get("source_title") != source_row["source_title"]:
+            fail(f"{pid}: audit source_title must match frozen theorem index")
+        lean_theorems = record.get("lean_theorems")
+        if not isinstance(lean_theorems, list) or not lean_theorems:
+            fail(f"{pid}: audit record needs canonical Lean theorem identities")
+        for theorem in lean_theorems:
+            if not isinstance(theorem, str) or not LEAN_DECL_RE.fullmatch(theorem):
+                fail(f"{pid}: invalid audited Lean theorem name {theorem!r}")
+            audit_lean_witnesses.add(theorem)
+        if not nonempty_string(record.get("lean_identity_relation")):
+            fail(f"{pid}: audit record needs lean_identity_relation")
+        if not nonempty_string(record.get("analysis_summary"), min_length=40):
+            fail(f"{pid}: audit record needs a substantive analysis_summary")
+        labels = record.get("schema_labels")
+        if (
+            not isinstance(labels, list)
+            or any(not nonempty_string(label) for label in labels)
+            or len(labels) != len(set(labels))
+        ):
+            fail(f"{pid}: schema_labels must be unique nonempty strings")
+        if labels and not nonempty_string(record.get("schema_rationale"), min_length=40):
+            fail(f"{pid}: schema classification needs a substantive rationale")
+        candidate_mids = record.get("candidate_generator_ids")
+        if not isinstance(candidate_mids, list) or any(
+            not isinstance(mid, str) or not MID_RE.fullmatch(mid)
+            for mid in candidate_mids
+        ):
+            fail(f"{pid}: candidate_generator_ids must contain valid M-IDs")
+        roles = record.get("scientific_roles")
+        if (
+            not isinstance(roles, list)
+            or not roles
+            or any(not nonempty_string(role) for role in roles)
+            or len(roles) != len(set(roles))
+        ):
+            fail(f"{pid}: scientific_roles must be unique nonempty strings")
+        analyzed_pids.add(pid)
+        if labels:
+            schema_classified_pids.add(pid)
+
+    if coverage["analyzed_pids"] != len(analyzed_pids):
+        fail("analyzed_pids disagrees with explicit per-P-ID audit records")
+    if coverage["schema_classified_pids"] != len(schema_classified_pids):
+        fail(
+            "schema_classified_pids disagrees with explicit per-P-ID "
+            "schema labels"
+        )
     if coverage["lean_rederived_pids"] > coverage["schema_classified_pids"]:
         fail("Lean-rederived P-IDs cannot exceed schema-classified P-IDs")
-    if coverage["schema_classified_pids"] > coverage["analyzed_pids"]:
-        fail("schema-classified P-IDs cannot exceed analyzed P-IDs")
+    if coverage["counted_compressed_pids"] > coverage["lean_rederived_pids"]:
+        fail("counted compressed P-IDs cannot exceed Lean-rederived P-IDs")
 
     generators = ledger.get("generators", {})
     if not isinstance(generators, dict) or not generators:
         fail("compression ledger must contain at least one generator")
 
+    for pid, record in audit_records.items():
+        unknown_candidates = [
+            mid for mid in record.get("candidate_generator_ids", [])
+            if mid not in generators
+        ]
+        if unknown_candidates:
+            fail(f"{pid}: audit references unknown candidate M-IDs {unknown_candidates}")
+
     exact_rederived: set[str] = set()
     counted_pids: set[str] = set()
     counted_generators = 0
     counted_mapping_pairs: set[tuple[str, str]] = set()
-    lean_witnesses: set[str] = set()
+    counted_generator_ids: set[str] = set()
+    lean_witnesses: set[str] = set(audit_lean_witnesses)
 
     for mid, generator in generators.items():
         if not MID_RE.fullmatch(mid):
@@ -272,6 +494,7 @@ def main() -> None:
 
         if state == "counted_generator":
             counted_generators += 1
+            counted_generator_ids.add(mid)
             if not generator.get("promotion"):
                 fail(f"{mid}: counted generator needs promotion evidence")
 
@@ -301,6 +524,10 @@ def main() -> None:
         disposition = entry.get("status")
         if disposition not in DISPOSITION_STATES:
             fail(f"{pid}: invalid final disposition {disposition!r}")
+        if pid not in analyzed_pids or pid not in schema_classified_pids:
+            fail(f"{pid}: final disposition requires a completed audit + schema record")
+        if audit_records[pid].get("lean_identity_relation") != "source_facing_exact":
+            fail(f"{pid}: final disposition requires an exact source-facing Lean identity")
 
         if disposition == "generated":
             mids = entry.get("generator_ids")
@@ -313,22 +540,34 @@ def main() -> None:
             bad_mids = [mid for mid in mids if mid not in generators]
             if bad_mids:
                 fail(f"{pid}: generated disposition references unknown M-IDs {bad_mids}")
-            if not any((mid, pid) in counted_mapping_pairs for mid in mids):
-                fail(f"{pid}: generated disposition needs a counted exact mapping")
+            if any(mid not in counted_generator_ids for mid in mids):
+                fail(
+                    f"{pid}: every generated dependency must be a counted generator"
+                )
+            missing_pairs = [
+                mid for mid in mids if (mid, pid) not in counted_mapping_pairs
+            ]
+            if missing_pairs:
+                fail(
+                    f"{pid}: every generated dependency needs a counted exact "
+                    f"mapping; missing {missing_pairs}"
+                )
             generated.add(pid)
         elif disposition == "retained_adapter":
-            if not str(entry.get("rationale", "")).strip():
-                fail(f"{pid}: retained adapter needs a scientific rationale")
-            evidence = entry.get("audit_evidence")
-            if not isinstance(evidence, list) or not evidence:
-                fail(f"{pid}: retained adapter needs audit_evidence references")
+            rationale = entry.get("rationale")
+            if not nonempty_string(rationale, min_length=MIN_RATIONALE_LENGTH):
+                fail(f"{pid}: retained adapter needs a substantive string rationale")
+            validate_audit_evidence(
+                repo, entry.get("audit_evidence"), lean_witnesses, f"{pid} retained adapter"
+            )
             retained_adapter.add(pid)
         else:
-            if not str(entry.get("rationale", "")).strip():
-                fail(f"{pid}: retained boundary needs a scientific rationale")
-            evidence = entry.get("audit_evidence")
-            if not isinstance(evidence, list) or not evidence:
-                fail(f"{pid}: retained boundary needs audit_evidence references")
+            rationale = entry.get("rationale")
+            if not nonempty_string(rationale, min_length=MIN_RATIONALE_LENGTH):
+                fail(f"{pid}: retained boundary needs a substantive string rationale")
+            validate_audit_evidence(
+                repo, entry.get("audit_evidence"), lean_witnesses, f"{pid} retained boundary"
+            )
             retained_boundary.add(pid)
 
     final_count = len(dispositions)
@@ -346,10 +585,14 @@ def main() -> None:
                 f"{key} disagrees with per-P-ID final dispositions: "
                 f"ledger={coverage[key]} derived={expected}"
             )
-    if final_count > coverage["analyzed_pids"]:
-        fail("final dispositions cannot exceed analyzed P-IDs")
-    if final_count > coverage["schema_classified_pids"]:
-        fail("final dispositions cannot exceed schema-classified P-IDs")
+    missing_audits = sorted(set(dispositions) - analyzed_pids)
+    if missing_audits:
+        fail(f"final dispositions lack per-P-ID audit records: {missing_audits}")
+    missing_schema = sorted(set(dispositions) - schema_classified_pids)
+    if missing_schema:
+        fail(
+            f"final dispositions lack per-P-ID schema classification: {missing_schema}"
+        )
 
     minimal_core = ledger.get("minimal_core", {})
     core_state = minimal_core.get("state")
@@ -390,15 +633,29 @@ def main() -> None:
                 fail(f"{mid}: final ablation must record affected P-IDs")
             if any(pid not in pid_set for pid in broken_pids):
                 fail(f"{mid}: ablation references unknown P-IDs")
-            if not str(ablation.get("rationale", "")).strip():
-                fail(f"{mid}: final ablation needs a scientific rationale")
+            unrelated = [
+                pid
+                for pid in broken_pids
+                if pid not in generated
+                or mid not in dispositions[pid].get("generator_ids", [])
+                or (mid, pid) not in counted_mapping_pairs
+            ]
+            if unrelated:
+                fail(
+                    f"{mid}: ablation broken_pids must be final generated "
+                    f"mappings that directly depend on this generator: {unrelated}"
+                )
+            if not nonempty_string(
+                ablation.get("rationale"), min_length=MIN_RATIONALE_LENGTH
+            ):
+                fail(f"{mid}: final ablation needs a substantive string rationale")
 
     if mission_state in {"ready_for_finalization", "final"}:
         final_gate_errors = []
-        if coverage["analyzed_pids"] != 106:
-            final_gate_errors.append("analyzed_pids != 106")
-        if coverage["schema_classified_pids"] != 106:
-            final_gate_errors.append("schema_classified_pids != 106")
+        if len(analyzed_pids) != 106:
+            final_gate_errors.append("per-P-ID audit records are not 106/106")
+        if len(schema_classified_pids) != 106:
+            final_gate_errors.append("per-P-ID schema classifications are not 106/106")
         if final_count != 106 or unresolved_count != 0:
             final_gate_errors.append("final dispositions are not 106/106 resolved")
         if core_state != "frozen":
@@ -426,6 +683,9 @@ def main() -> None:
         for key in ("core_lean_run", "compression_guard_run", "closure_pr"):
             if not isinstance(evidence[key], int) or evidence[key] <= 0:
                 fail(f"finalization evidence {key} must be a positive integer")
+        if not args.verify_finalization_refs:
+            fail("FINAL mission state requires live Git/GitHub reference verification")
+        verify_finalization_references(repo, evidence)
 
     coverage_text = coverage_path.read_text(encoding="utf-8")
     if "106/106 FULL-GREEN" not in coverage_text:
@@ -476,6 +736,10 @@ def main() -> None:
     print(f"exact_lean_rederived_pids={len(exact_rederived)}")
     print(f"counted_compressed_pids={len(counted_pids)}")
     print(f"counted_generators={counted_generators}")
+    print(
+        f"audit_records={len(analyzed_pids)} "
+        f"schema_classified={len(schema_classified_pids)}"
+    )
     print(f"final_dispositions={final_count} unresolved={unresolved_count}")
     print(f"mission_state={mission_state} minimal_core_state={core_state}")
 

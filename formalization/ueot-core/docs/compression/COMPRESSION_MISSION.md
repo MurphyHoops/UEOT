@@ -178,8 +178,14 @@ maximum theorem count per week.
 The mission has four meaningful completion gates.
 
 ### Gate A — Audit complete
-- 106/106 P-IDs analyzed;
-- 106/106 have source/Lean identities and schema classification.
+- 106/106 P-IDs have explicit `audit_records`;
+- every audit record is tied to the frozen theorem-index source title/line;
+- every audited Lean identity resolves under generated Lean `#check`;
+- 106/106 have substantive analysis summaries and schema classification
+  rationale.
+
+The analyzed/schema summary counts are derived from these records; they are not
+independently editable evidence.
 
 ### Gate B — Resolution complete
 - 106/106 have final per-P-ID dispositions;
@@ -220,8 +226,11 @@ The scientific state may enter `ready_for_finalization` only if:
   nonredundant ablation record.
 
 The ledger may enter `final` only through the final closure lifecycle defined
-in `COMPRESSION_OPERATIONS.md`. A green CI run by itself is never sufficient
-to declare scientific completion.
+in `COMPRESSION_OPERATIONS.md`. The recorded candidate-main SHA, Core Lean
+run, Compression Guard run and closure PR must be verified against live GitHub
+state; identifiers that merely have the right textual shape do not count as
+evidence. A green CI run by itself is never sufficient to declare scientific
+completion.
 
 ## 11. Core v4 gate
 
