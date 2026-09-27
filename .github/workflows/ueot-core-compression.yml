@@ -85,6 +85,14 @@ jobs:
       - name: Build compression meta-layer
         run: lake build UEOT.V3.Compression
 
+      - name: Verify ledger theorem witnesses resolve in Lean
+        shell: bash
+        run: |
+          python3 scripts/validate_compression.py \
+            --repo-root ../.. \
+            --emit-lean-witness-audit /tmp/CompressionLedgerWitnessAudit.lean
+          lake env lean /tmp/CompressionLedgerWitnessAudit.lean
+
       - name: Print compression theorem axioms
         run: lake env lean scripts/CompressionAxiomAudit.lean
 
