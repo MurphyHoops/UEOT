@@ -16,8 +16,8 @@ changes the completed **106/106 FULL-GREEN** source status.
 
 | metric | count |
 |---|---:|
-| source P-IDs analyzed | 9 / 106 |
-| schema-classified P-IDs | 9 / 106 |
+| source P-IDs analyzed | 12 / 106 |
+| schema-classified P-IDs | 12 / 106 |
 | fully Lean-rederived P-IDs | 4 / 106 |
 | counted compressed P-IDs | 4 / 106 |
 | final dispositions assigned | 0 / 106 |
@@ -32,10 +32,10 @@ Mission state: **ACTIVE**. Minimal core state: **OPEN**. Ablation:
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
-Three source-faithful M-TC-01 rederivations have completed the normal
-feature → integration → PR → resulting-main lifecycle and are being promoted
-through this ledger checkpoint. Counted compression evidence is still distinct
-from final per-P-ID dispositions and from the later minimal-core decision.
+Counted compression evidence is distinct from final per-P-ID dispositions and
+from the later minimal-core decision. Audit-only candidate schemas are likewise
+not counted until they acquire generic Lean theorems and complete the normal
+promotion lifecycle.
 
 ## Current generator evidence
 
@@ -81,6 +81,35 @@ State: **COUNTED_GENERATOR**
 - P-STAT-09: audited, but **not** fully generated — its TV half is transport
   shaped while its Radon--Nikodym density-ratio half uses a distinct
   multiplicative order mechanism.
+
+
+### M-BU-01 — Bayesian Recursive Closure
+
+State: **CANDIDATE / analysis-only**
+
+- P-PRED-03: source and canonical Lean endpoint audited exact; finite-alphabet
+  protocol closure stores Bayes numerator/denominator coordinates and yields a
+  measurable recursive predictive-state update;
+- P-REF-02: source and canonical Lean endpoints audited exact; belief/action
+  determine predictive observations, posterior updating, and one-step control
+  data;
+- cross-family reuse is plausible, but no generic compression theorem is yet
+  claimed;
+- preserved boundary: P-PRED-03 permits an arbitrary mathematical extension on
+  zero-probability observation branches, whereas finite P-REF-02 requires an
+  explicit modelConflict; a common generator must not erase that semantic
+  difference.
+
+### P-PRED-02 split-schema audit
+
+P-PRED-02 is fully source/Lean audited but is **not assigned to one M-ID**:
+
+- target transformation is response-kernel pushforward functoriality;
+- protocol inclusion is sigma-factor monotonicity;
+- countable protocol union is sigma-factor join continuity.
+
+These are separate reusable mechanisms. They should only receive generator IDs
+after broader cross-family reuse is established; no M-QD claim is made.
 
 ## Counting rule
 
