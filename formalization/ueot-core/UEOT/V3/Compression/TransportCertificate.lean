@@ -1,5 +1,6 @@
 import UEOT.V3.ProcessInterface
 import UEOT.V3.TransportDefect
+import UEOT.V3.InformationPacking
 
 /-!
 # UEOT Core compression — transport/certificate calculus
@@ -47,6 +48,20 @@ theorem twoStage_exact
     (h₁ : F a = b) (h₂ : G b = c) :
     G (F a) = c := by
   rw [h₁, h₂]
+
+/-- Exact transport through a commuting factorization triangle.
+
+This is the exact counterpart needed when two representations are both
+obtained from one common source and one factors through the other.  The theorem
+is deliberately set-level: measurability or other domain structure belongs to
+the specialization that establishes `hcomm`. -/
+theorem factorRoute_exact
+    {A B C : Type*}
+    (F : A → B) (G : A → C) (H : B → C)
+    {a : A} {b : B} {c : C}
+    (hF : F a = b) (hG : G a = c) (hcomm : H (F a) = G a) :
+    H b = c := by
+  rw [← hF, hcomm, hG]
 
 open scoped BigOperators
 
@@ -304,6 +319,112 @@ theorem transportDefect_source_via_chain
   intro d hd
   rcases hd with ⟨m, rfl⟩
   exact transportDefect_pointwise_via_chain S ε hadj n m
+
+universe uX uMs uMr uA
+
+/-- P-DYN-04's reachable-image approximate cross-scale bound reconstructed
+through the generic two-stage transport certificate.
+
+The domain-specific work is exactly the source obligation: both macro kernels
+approximate pushforwards of one microscopic transition law, the coarse readout
+factors through the fine readout, and total variation contracts under the
+measurable coarse map.  The error addition itself is delegated to
+`twoStage_bound`. -/
+theorem dynamicsCrossScale_approx_via_twoStage
+    {X : Type uX} {Ms : Type uMs} {Mr : Type uMr} {A : Type uA}
+    [MeasurableSpace X] [MeasurableSpace Ms] [MeasurableSpace Mr]
+    (P : X → A → Measure X)
+    (Ps : Ms → A → Measure Ms)
+    (Pr : Mr → A → Measure Mr)
+    (fs : X → Ms) (fr : X → Mr) (c : Ms → Mr)
+    (hfs : Measurable fs) (hfr : Measurable fr) (hc : Measurable c)
+    (hcomp : ∀ x, fr x = c (fs x))
+    (hP : ∀ x a, IsProbabilityMeasure (P x a))
+    (hPs : ∀ m a, IsProbabilityMeasure (Ps m a))
+    (hPr : ∀ m a, IsProbabilityMeasure (Pr m a))
+    (εs εr : ℝ)
+    (hs : ∀ x a,
+      tvDist ((P x a).map fs) (Ps (fs x) a) ≤ εs)
+    (hr : ∀ x a,
+      tvDist ((P x a).map fr) (Pr (fr x) a) ≤ εr) :
+    ∀ m ∈ Set.range fs, ∀ a,
+      tvDist ((Ps m a).map c) (Pr (c m) a) ≤ εs + εr := by
+  rintro m ⟨x, rfl⟩ a
+  letI : IsProbabilityMeasure (P x a) := hP x a
+  letI : IsProbabilityMeasure (Ps (fs x) a) := hPs (fs x) a
+  letI : IsProbabilityMeasure (Pr (c (fs x)) a) := hPr (c (fs x)) a
+  letI : IsProbabilityMeasure ((P x a).map fs) :=
+    (Measure.isProbabilityMeasure_map_iff hfs.aemeasurable).2 inferInstance
+  letI : IsProbabilityMeasure ((P x a).map fr) :=
+    (Measure.isProbabilityMeasure_map_iff hfr.aemeasurable).2 inferInstance
+  letI : IsProbabilityMeasure ((Ps (fs x) a).map c) :=
+    (Measure.isProbabilityMeasure_map_iff hc.aemeasurable).2 inferInstance
+  letI : IsProbabilityMeasure (((P x a).map fs).map c) :=
+    (Measure.isProbabilityMeasure_map_iff hc.aemeasurable).2 inferInstance
+
+  have hmapEq :
+      ((P x a).map fs).map c = (P x a).map fr := by
+    rw [Measure.map_map hc hfs]
+    congr 1
+    funext y
+    exact (hcomp y).symm
+
+  have hcontract :
+      tvDist ((Ps (fs x) a).map c) (((P x a).map fs).map c) ≤
+        tvDist (Ps (fs x) a) ((P x a).map fs) :=
+    tvDist_map_le (Ps (fs x) a) ((P x a).map fs) c hc
+
+  have hold :
+      tvDist (Ps (fs x) a) ((P x a).map fs) ≤ εs := by
+    rw [UEOT.V3.InformationPacking.tvDist_symm]
+    exact hs x a
+
+  have hnew :
+      tvDist (((P x a).map fs).map c) (Pr (c (fs x)) a) ≤ εr := by
+    rw [hmapEq]
+    simpa [hcomp x] using hr x a
+
+  exact twoStage_bound
+    (dA := fun μ ν : Measure Ms => tvDist μ ν)
+    (dB := fun μ ν : Measure Mr => tvDist μ ν)
+    (F := fun μ : Measure Ms => μ.map c)
+    hcontract
+    (UEOT.V3.ProcessInterface.tvDist_triangle
+      ((Ps (fs x) a).map c)
+      (((P x a).map fs).map c)
+      (Pr (c (fs x)) a))
+    hold hnew
+
+/-- Exact P-DYN-04 reachable-image intertwining reconstructed from the generic
+commuting-factor transport law.  No assumption is stronger than the frozen
+source-facing exact clause. -/
+theorem dynamicsCrossScale_exact_via_factor
+    {X : Type uX} {Ms : Type uMs} {Mr : Type uMr} {A : Type uA}
+    [MeasurableSpace X] [MeasurableSpace Ms] [MeasurableSpace Mr]
+    (P : X → A → Measure X)
+    (Ps : Ms → A → Measure Ms)
+    (Pr : Mr → A → Measure Mr)
+    (fs : X → Ms) (fr : X → Mr) (c : Ms → Mr)
+    (hfs : Measurable fs) (hc : Measurable c)
+    (hcomp : ∀ x, fr x = c (fs x))
+    (hs : ∀ x a, (P x a).map fs = Ps (fs x) a)
+    (hr : ∀ x a, (P x a).map fr = Pr (fr x) a) :
+    ∀ m ∈ Set.range fs, ∀ a,
+      (Ps m a).map c = Pr (c m) a := by
+  rintro m ⟨x, rfl⟩ a
+  have hmapEq :
+      ((P x a).map fs).map c = (P x a).map fr := by
+    rw [Measure.map_map hc hfs]
+    congr 1
+    funext y
+    exact (hcomp y).symm
+  have hr' : (P x a).map fr = Pr (c (fs x)) a := by
+    simpa [hcomp x] using hr x a
+  exact factorRoute_exact
+    (fun μ : Measure X => μ.map fs)
+    (fun μ : Measure X => μ.map fr)
+    (fun μ : Measure Ms => μ.map c)
+    (hs x a) hr' hmapEq
 
 
 end UEOT.V3.Compression.TransportCertificate

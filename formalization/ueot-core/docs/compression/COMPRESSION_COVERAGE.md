@@ -16,9 +16,9 @@ changes the completed **106/106 FULL-GREEN** source status.
 
 | metric | count |
 |---|---:|
-| source P-IDs analyzed | 3 / 106 |
-| schema-classified P-IDs | 3 / 106 |
-| fully Lean-rederived P-IDs | 2 / 106 |
+| source P-IDs analyzed | 6 / 106 |
+| schema-classified P-IDs | 6 / 106 |
+| fully Lean-rederived P-IDs | 3 / 106 |
 | counted compressed P-IDs | 0 / 106 |
 | final dispositions assigned | 0 / 106 |
 | generated final dispositions | 0 / 106 |
@@ -51,10 +51,19 @@ State: **LEAN_GREEN, not counted**
 State: **CROSS_FAMILY_GREEN, not counted**
 
 - generic exact two-stage composition: Lean proved;
+- generic exact commuting-factor transport: Lean proved;
 - generic approximate two-stage defect bound: Lean proved;
 - heterogeneous additive finite-chain accumulation: Lean proved;
 - P-API-01: full exact + approximate source-facing rederivation;
 - P-ID-01: full source-facing supremum rederivation.
+- P-DYN-04: full reachable-image approximate + exact source-facing
+  rederivation;
+- P-DYN-03: audited, but **not** fully generated — the frozen theorem includes
+  the sharp multiplicative `1 - ∏(1-ε_t)` path-coupling certificate beyond the
+  current additive chain calculus;
+- P-STAT-09: audited, but **not** fully generated — its TV half is transport
+  shaped while its Radon--Nikodym density-ratio half uses a distinct
+  multiplicative order mechanism.
 
 ## Counting rule
 
