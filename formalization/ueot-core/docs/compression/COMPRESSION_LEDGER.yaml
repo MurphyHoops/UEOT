@@ -12,8 +12,8 @@
     "theorem_index_sha256": "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
   },
   "coverage": {
-    "analyzed_pids": 9,
-    "schema_classified_pids": 9,
+    "analyzed_pids": 12,
+    "schema_classified_pids": 12,
     "lean_rederived_pids": 4,
     "counted_compressed_pids": 4,
     "counted_generators": 1,
@@ -186,6 +186,27 @@
           "P-DYN-03",
           "P-STAT-09"
         ]
+      }
+    },
+    "M-BU-01": {
+      "title": "Bayesian Recursive Closure",
+      "state": "candidate",
+      "canonical_theorems": [],
+      "explicit_nonclaims": [
+        "P-PRED-03 uses finite-alphabet/countable-coordinate Bayes ratio closure and an arbitrary mathematical extension on zero-probability branches",
+        "P-REF-02 uses a Standard-Borel posterior/disintegration interface and treats zero-evidence finite observations as explicit model conflict",
+        "a future generic theorem must preserve the different zero-evidence semantics instead of identifying them",
+        "belief-state control sufficiency in P-REF-02 includes reward/continuation interfaces beyond bare posterior updating"
+      ],
+      "mappings": {
+        "P-PRED-03": {
+          "state": "conjectured",
+          "note": "Strong candidate instance: protocol closure stores the observation marginal and observation-plus-continuation cylinders, so Bayes ratios give a measurable recursive update. No generic compression wrapper is claimed yet."
+        },
+        "P-REF-02": {
+          "state": "conjectured",
+          "note": "Cross-family candidate: observation prediction and posterior updating are functions of belief/action, but the Standard-Borel disintegration and explicit model-conflict/control interfaces must remain visible in any common generator."
+        }
       }
     }
   },
@@ -398,6 +419,77 @@
       "source_title": "平均误差运输。",
       "analysis_summary": "The frozen theorem deliberately packages two distinct distribution-shift mechanisms: TV controls a bounded observable additively, whereas Radon-Nikodym domination controls it multiplicatively; only the TV half fits the present M-TC-01 contraction-style calculus.",
       "schema_rationale": "Both clauses transport an error certificate across deployment shift, but their mathematical primitives differ, so the audit records a shared transport role without claiming one existing generator already derives the full mixed theorem."
+    },
+    "P-PRED-02": {
+      "source_line": 330,
+      "lean_theorems": [
+        "UEOT.V3.PredictionRefinement.pushTargetDependent_apply",
+        "UEOT.V3.PredictionRefinement.protocol_refinement_sigma_le_dependent",
+        "UEOT.V3.PredictionRefinement.sigmaCanonicalDependent_iUnion_of_monotone"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "response_pushforward_functoriality",
+        "protocol_factor_refinement",
+        "sigma_join_continuity"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "prediction_target_transport",
+        "protocol_refinement"
+      ],
+      "source_title": "目标推送与协议细化。",
+      "analysis_summary": "The frozen theorem packages two mathematically distinct mechanisms. Measurable target transformations act coordinatewise by kernel pushforward, while protocol-family inclusion and countable unions act on the generated sigma-factor by order monotonicity and joins. The current Lean module proves all three clauses exactly, including a dependent-future-space strengthening, but no single existing meta-generator honestly explains the whole bundle.",
+      "schema_rationale": "This row should not be forced into M-QD-01: target pushforward is functorial transport, whereas protocol enlargement is a lattice/refinement law. A future compression may use two generators if broader cross-family reuse is found."
+    },
+    "P-PRED-03": {
+      "source_line": 351,
+      "lean_theorems": [
+        "UEOT.V3.PredictionUpdate.p_pred_03_recursive_update"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "bayesian_recursive_closure",
+        "measurable_state_update",
+        "protocol_closure"
+      ],
+      "candidate_generator_ids": [
+        "M-BU-01"
+      ],
+      "scientific_roles": [
+        "prediction_recursion",
+        "state_update"
+      ],
+      "source_title": "有限字母过程的递归更新。",
+      "analysis_summary": "The source theorem is a Bayes-closure statement: if the current canonical coordinates include each observation marginal and required observation-plus-continuation cylinder, then the next continuation-response vector is a measurable function of the current state, action, and observation and equality of current states is preserved by the update. The Lean source-facing wrapper recovers this claim with the zero-probability extension explicit.",
+      "schema_rationale": "The reusable mechanism is not quotient descent but Bayesian recursive closure: stored numerator and denominator coordinates determine a measurable next predictive state. This has a plausible cross-family reuse case in P-REF-02."
+    },
+    "P-REF-02": {
+      "source_line": 2729,
+      "lean_theorems": [
+        "UEOT.V3.PRef02.p_ref_02_general_joint",
+        "UEOT.V3.PRef02.p_ref_02_general_update",
+        "UEOT.V3.PRef02.p_ref_02_discrete_observation",
+        "UEOT.V3.PRef02.p_ref_02_discrete_posterior",
+        "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict",
+        "UEOT.V3.PRef02.p_ref_02_discounted_step"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "bayesian_recursive_closure",
+        "belief_state_sufficiency",
+        "posterior_disintegration"
+      ],
+      "candidate_generator_ids": [
+        "M-BU-01"
+      ],
+      "scientific_roles": [
+        "belief_interface",
+        "control_adapter"
+      ],
+      "source_title": "信念充分性。",
+      "analysis_summary": "The frozen belief-sufficiency theorem combines prediction of the next observation, Bayesian posterior updating, and one-step bounded-discount control data as functions of the current belief and action. The Lean assembly preserves both the general Standard-Borel posterior/disintegration interface and the finite explicit Bayes formula with mandatory zero-evidence model conflict.",
+      "schema_rationale": "P-REF-02 shares Bayesian state-update closure with P-PRED-03 across a different source family, making M-BU-01 a plausible candidate. It is not yet a generated mapping because the common abstraction must preserve disintegration, zero-evidence semantics, and the extra control interface."
     }
   }
 }
