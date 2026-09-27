@@ -12,9 +12,9 @@
     "theorem_index_sha256": "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
   },
   "coverage": {
-    "analyzed_pids": 6,
-    "schema_classified_pids": 6,
-    "lean_rederived_pids": 3,
+    "analyzed_pids": 9,
+    "schema_classified_pids": 9,
+    "lean_rederived_pids": 4,
     "counted_compressed_pids": 3,
     "counted_generators": 1,
     "final_disposition_pids": 0,
@@ -29,11 +29,15 @@
       "state": "lean_green",
       "canonical_theorems": [
         "UEOT.V3.Compression.QuotientDescent.fiberCompatible_iff_existsUnique_descend",
+        "UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
         "UEOT.V3.Compression.QuotientDescent.strongLumpability_unique_setLevel_descend"
       ],
       "explicit_nonclaims": [
         "set-level descent does not imply measurable descent",
-        "set-level descended law is not automatically a Markov kernel"
+        "set-level descended law is not automatically a Markov kernel",
+        "countable a.e. descent requires coordinate measurability and a countable protocol index to obtain one common full-measure set",
+        "P-QUO-01 also requires discounted-control Bellman and policy-lifting machinery",
+        "P-ALG-01 also requires finite refinement termination and coarsest-fixed-point machinery"
       ],
       "mappings": {
         "P-DYN-01": {
@@ -44,6 +48,23 @@
           "assumption_relation": "compatible_partial_scope",
           "conclusion_relation": "partial",
           "note": "Recovers unique set-level macro one-step law only; measurable-kernel descent remains a separate source obligation."
+        },
+        "P-PRED-01": {
+          "state": "lean_rederived",
+          "witness_theorems": [
+            "UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent"
+          ],
+          "assumption_relation": "weaker",
+          "conclusion_relation": "exact",
+          "note": "The countable common-null-set measurable factorization, mod-null sigma minimality, and protocol-wise canonical sufficiency are reconstructed from the generic a.e. family-descent law. Standard-Borel regularity is not strengthened: once the response kernels are supplied, the Lean argument needs only their measurable structures."
+        },
+        "P-QUO-01": {
+          "state": "conjectured",
+          "note": "Exact quotient closure is quotient-descent shaped, but the frozen source also requires Bellman fixed-point/value preservation and optimal policy lifting. Bare M-QD-01 is insufficient for a full generated claim."
+        },
+        "P-ALG-01": {
+          "state": "conjectured",
+          "note": "Stable quotient descent is one ingredient, but the frozen theorem additionally certifies finite termination, coarsest stable refinement, quotient stochastic normalization, and all finite-horizon output-word laws."
         }
       }
     },
@@ -164,6 +185,74 @@
   },
   "finalization_evidence": {},
   "audit_records": {
+    "P-PRED-01": {
+      "source_line": 294,
+      "lean_theorems": [
+        "UEOT.V3.PredictionDependent.canonical_ae_minimal",
+        "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+        "UEOT.V3.PredictionDependent.canonical_kernel_sufficient"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "quotient_descent",
+        "prediction_minimality",
+        "ae_factorization"
+      ],
+      "candidate_generator_ids": [
+        "M-QD-01"
+      ],
+      "scientific_roles": [
+        "prediction_identity",
+        "minimal_sufficient_factor"
+      ],
+      "source_title": "共同协议的规范最小性。",
+      "analysis_summary": "The frozen theorem is a countable common-null-set measurable descent statement: any statistic through which every protocol response kernel factors also carries the bundled canonical response state, while coordinate evaluation makes the canonical state itself sufficient. M-QD-01 now reconstructs the full factorization/minimality/sufficiency claim.",
+      "schema_rationale": "The reusable primitive is quotient descent upgraded from pointwise fibre compatibility to countable almost-everywhere measurable family factorization."
+    },
+    "P-QUO-01": {
+      "source_line": 1973,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "control_quotient",
+        "bellman_intertwining",
+        "policy_lifting"
+      ],
+      "candidate_generator_ids": [
+        "M-QD-01"
+      ],
+      "scientific_roles": [
+        "control_adapter",
+        "decision_preservation"
+      ],
+      "source_title": "",
+      "analysis_summary": "The quotient map supplies the representational skeleton, but the source-facing theorem also preserves optimal value and lifts a macro-optimal policy against the full causal policy class via Bellman fixed-point machinery.",
+      "schema_rationale": "This is not bare quotient descent: control closure, common discount, Bellman uniqueness, and policy lifting are genuine additional obligations."
+    },
+    "P-ALG-01": {
+      "source_line": 2911,
+      "lean_theorems": [
+        "UEOT.V3.PAlg01.p_alg_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "finite_stable_quotient",
+        "partition_refinement",
+        "coarsest_fixed_point"
+      ],
+      "candidate_generator_ids": [
+        "M-QD-01"
+      ],
+      "scientific_roles": [
+        "algorithmic_adapter",
+        "finite_quotient_construction"
+      ],
+      "source_title": "有限稳定分割的正确性与最粗性。",
+      "analysis_summary": "The terminal stable partition yields a quotient, but the frozen theorem also proves finite refinement termination, coarsest stable refinement, output/reward/transition preservation, stochastic normalization, and all finite-horizon output-word laws.",
+      "schema_rationale": "Quotient descent explains the representation step but not the finite algorithm, coarsest-fixed-point proof, or horizon induction, so no full M-QD-01 generation claim is made."
+    },
     "P-DYN-01": {
       "source_line": 587,
       "lean_theorems": [
