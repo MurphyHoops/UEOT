@@ -1,6 +1,7 @@
 import UEOT.V3.ProcessInterface
 import UEOT.V3.TransportDefect
 import UEOT.V3.InformationPacking
+import Mathlib.Analysis.ODE.DiscreteGronwall
 
 /-!
 # UEOT Core compression — transport/certificate calculus
@@ -108,6 +109,113 @@ theorem chain_bound
           add_le_add ih (le_refl _)
         _ = ∑ i ∈ Finset.range (n + 1), ε i := by
           rw [Finset.sum_range_succ]
+
+/-- Heterogeneous weighted finite-chain accumulation.
+
+This is the discrete-Gronwall extension of `chain_bound`.  The stage types may
+still vary with time, but transport is now allowed to amplify the incoming
+defect by a nonnegative factor `L n`.  Local defects `ε n` are injected after
+transport, yielding the exact finite-horizon product/sum formula used by the
+frozen development-pipeline theorem P-ID-02. -/
+theorem weighted_chain_bound
+    {A : ℕ → Type*}
+    (defect : ∀ n, A n → A n → ℝ)
+    (ideal actual : (n : ℕ) → A n)
+    (step : ∀ n, A n → A (n + 1))
+    (L ε : ℕ → ℝ)
+    (hcontract : ∀ n,
+      defect (n + 1) (ideal (n + 1)) (step n (actual n)) ≤
+        L n * defect n (ideal n) (actual n))
+    (htriangle : ∀ n,
+      defect (n + 1) (ideal (n + 1)) (actual (n + 1)) ≤
+        defect (n + 1) (ideal (n + 1)) (step n (actual n)) +
+        defect (n + 1) (step n (actual n)) (actual (n + 1)))
+    (hlocal : ∀ n,
+      defect (n + 1) (step n (actual n)) (actual (n + 1)) ≤ ε n)
+    (hL0 : ∀ n, 0 ≤ L n)
+    (n : ℕ) :
+    defect n (ideal n) (actual n) ≤
+      (∏ j ∈ Finset.range n, L j) * defect 0 (ideal 0) (actual 0) +
+        ∑ k ∈ Finset.range n,
+          ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := by
+  have hrec : ∀ t,
+      defect (t + 1) (ideal (t + 1)) (actual (t + 1)) ≤
+        L t * defect t (ideal t) (actual t) + ε t := by
+    intro t
+    calc
+      defect (t + 1) (ideal (t + 1)) (actual (t + 1)) ≤
+          defect (t + 1) (ideal (t + 1)) (step t (actual t)) +
+          defect (t + 1) (step t (actual t)) (actual (t + 1)) :=
+        htriangle t
+      _ ≤ L t * defect t (ideal t) (actual t) + ε t :=
+        add_le_add (hcontract t) (hlocal t)
+  have hgr :=
+    discrete_gronwall_prod_general
+      (u := fun t => defect t (ideal t) (actual t))
+      (b := ε)
+      (c := L)
+      (n₀ := 0)
+      (fun t _ => hrec t)
+      (fun t _ => hL0 t)
+      (Nat.zero_le n)
+  rw [Nat.Ico_zero_eq_range] at hgr
+  calc
+    defect n (ideal n) (actual n) ≤
+        defect 0 (ideal 0) (actual 0) * (∏ j ∈ Finset.range n, L j) +
+          ∑ k ∈ Finset.range n,
+            ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := hgr
+    _ = (∏ j ∈ Finset.range n, L j) *
+          defect 0 (ideal 0) (actual 0) +
+          ∑ k ∈ Finset.range n,
+            ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := by
+      rw [mul_comm (defect 0 (ideal 0) (actual 0))]
+
+universe uDev
+
+/-- Full source-facing P-ID-02 finite-horizon development bound reconstructed
+through `weighted_chain_bound`.
+
+The assumptions and conclusion coincide with
+`UEOT.V3.DevelopmentTransport.development_pipeline`: a declared reference
+trajectory, one-step residual bounds, stagewise Lipschitz propagation, and
+nonnegative Lipschitz constants.  The compression layer contributes only the
+generic weighted transport recurrence. -/
+theorem development_pipeline_via_weighted_chain
+    {X : Type uDev} [PseudoMetricSpace X]
+    (θ θbar : ℕ → X)
+    (Ψ : ℕ → X → X)
+    (L ε : ℕ → ℝ)
+    (href : ∀ t, θbar (t + 1) = Ψ t (θbar t))
+    (hres : ∀ t, dist (θ (t + 1)) (Ψ t (θ t)) ≤ ε t)
+    (hlip : ∀ t x y, dist (Ψ t x) (Ψ t y) ≤ L t * dist x y)
+    (hL0 : ∀ t, 0 ≤ L t)
+    (n : ℕ) :
+    dist (θ n) (θbar n) ≤
+      (∏ j ∈ Finset.range n, L j) * dist (θ 0) (θbar 0) +
+        ∑ k ∈ Finset.range n,
+          ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := by
+  let A : ℕ → Type uDev := fun _ => X
+  let defect : ∀ k, A k → A k → ℝ := fun _ x y => dist y x
+  let ideal : (k : ℕ) → A k := fun k => θbar k
+  let actual : (k : ℕ) → A k := fun k => θ k
+  let step : ∀ k, A k → A (k + 1) := fun k x => Ψ k x
+  apply weighted_chain_bound defect ideal actual step L ε
+  · intro k
+    dsimp [defect, ideal, actual, step]
+    rw [href k]
+    exact hlip k (θ k) (θbar k)
+  · intro k
+    dsimp [defect, ideal, actual, step]
+    calc
+      dist (θ (k + 1)) (θbar (k + 1)) ≤
+          dist (θ (k + 1)) (Ψ k (θ k)) +
+            dist (Ψ k (θ k)) (θbar (k + 1)) := dist_triangle _ _ _
+      _ = dist (Ψ k (θ k)) (θbar (k + 1)) +
+          dist (θ (k + 1)) (Ψ k (θ k)) := add_comm _ _
+  · intro k
+    dsimp [defect, actual, step]
+    exact hres k
+  · exact hL0
 
 open MeasureTheory
 open UEOT.V3.TotalVariation
