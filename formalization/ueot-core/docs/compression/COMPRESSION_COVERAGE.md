@@ -16,8 +16,8 @@ changes the completed **106/106 FULL-GREEN** source status.
 
 | metric | count |
 |---|---:|
-| source P-IDs analyzed | 25 / 106 |
-| schema-classified P-IDs | 25 / 106 |
+| source P-IDs analyzed | 35 / 106 |
+| schema-classified P-IDs | 35 / 106 |
 | fully Lean-rederived P-IDs | 5 / 106 |
 | counted compressed P-IDs | 5 / 106 |
 | final dispositions assigned | 0 / 106 |
@@ -175,6 +175,45 @@ M-QD's generator state.
 P-INT-01 also shares M-QD's factorization substrate, but its full iff retains a
 distinct conditional-independence/disintegration adapter and is therefore not
 claimed generated yet.
+
+
+### M-OI-01 — Occupation-Limit Invariance
+
+State: **CANDIDATE / analysis-only**
+
+- P-PER-02: tight Feller occupation measures have invariant weak cluster
+  points, with closed-support inheritance by Portmanteau;
+- P-GOA-01: finite-chain Cesaro averages have invariant cluster points because
+  simplex compactness supplies subsequences and the Cesaro one-step defect
+  telescopes to zero;
+- the shared core is genuine across P-ID families: compactness/tightness
+  produces a cluster point and asymptotic invariance plus continuity passes the
+  evolution law to the limit;
+- no generic Lean theorem is yet claimed; topology-specific extraction and
+  support adapters remain explicit.
+
+### Dynamics / persistence / recovery adapter audit
+
+Ten additional source rows are now source↔Lean↔schema audited:
+
+- P-DYN-02: finite CTMC generator/block-sum criterion and nonnegative-time
+  semigroup intertwining; continuous-time quotient adapter, not bare M-QD;
+- P-PER-01: precompact omega-limit persistence and exact semiflow invariance;
+- P-PER-02: Feller occupation-limit invariance and closed-support inheritance;
+- P-PER-03: finite viability deletion, winning-set equality, stationary
+  selector, and probability-one path safety;
+- P-PER-04: positive contingent-cone tangency necessity;
+- P-REC-01: discrete affine conditional drift → geometric mean + Markov tail;
+- P-REC-02: Dynkin/Gronwall Lyapunov drift → exponential mean-square recovery;
+- P-REC-03: expected hitting-time potential → canonical Poisson identity;
+- P-REC-04: stopped negative drift → expected hitting-time bound;
+- P-GOA-01: finite-chain Cesaro cluster point → invariant law.
+
+Finite monotone stabilization is visible in both P-PER-03 and P-ALG-01, and
+affine dissipation appears in several REC theorems. Those are recorded as
+shared proof patterns only: their source theorems carry different strategy,
+path, control, or stopping-time semantics, so no extra M-ID is created merely
+to rename a common proof idiom.
 
 ## Counting rule
 
