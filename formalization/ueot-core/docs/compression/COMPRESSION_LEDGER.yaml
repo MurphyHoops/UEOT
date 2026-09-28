@@ -12,8 +12,8 @@
     "theorem_index_sha256": "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
   },
   "coverage": {
-    "analyzed_pids": 74,
-    "schema_classified_pids": 74,
+    "analyzed_pids": 106,
+    "schema_classified_pids": 106,
     "lean_rederived_pids": 6,
     "counted_compressed_pids": 6,
     "counted_generators": 2,
@@ -1918,6 +1918,663 @@
       "source_title": "折扣势函数等价。",
       "analysis_summary": "For |beta|<1 and bounded state potential, the shaped discounted return telescopes to a positive-affine transform of the original value plus the explicit initial-potential and constant-reward terms; with positive scale, policy maximizers are preserved exactly.",
       "schema_rationale": "The core mechanism is discounted telescoping plus positive-affine order invariance. It may later participate in a broader variational/control compression layer, but current evidence does not justify introducing a new M-ID from this single source family."
+    },
+    "P-CTL-01": {
+      "source_line": 1877,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "discounted_bellman_control",
+        "causal_policy_optimality",
+        "stationary_greedy_selector"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "finite_control",
+        "control_adapter"
+      ],
+      "analysis_summary": "The frozen finite discounted-control result combines Bellman fixed-point structure with arbitrary-history causal-policy optimality: every causal randomized policy is bounded by the optimal value, while a stationary deterministic greedy policy attains it. The surrounding canonical module also supplies contraction, arbitrary-initial value iteration, uniqueness, and the residual stopping bound required by the source.",
+      "schema_rationale": "This is a finite discounted-control adapter built from contraction/fixed-point theory plus policy semantics. The control-specific Bellman and causal-policy machinery is not recovered by bare quotient descent or transport certificates.",
+      "source_title": "Bellman 存在与最优性。"
+    },
+    "P-CTL-02": {
+      "source_line": 1918,
+      "lean_theorems": [
+        "UEOT.V3.CompactFellerControl.Model.p_ctl_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "compact_feller_control",
+        "bellman_fixed_point",
+        "measurable_argmax",
+        "causal_policy_optimality"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "continuous_state_control",
+        "selection_adapter"
+      ],
+      "analysis_summary": "For compact Feller discounted control, Lean proves Bellman contraction and the unique continuous fixed point, constructs a measurable greedy selector attaining the pointwise Bellman maximum, bounds every randomized full-history causal policy by that value, and proves the stationary selector attains it.",
+      "schema_rationale": "The theorem extends discounted Bellman control to compact topological state/action structure and needs Feller continuity plus measurable argmax selection. Those domain obligations are genuine and are not hidden inside a universal control generator.",
+      "source_title": ""
+    },
+    "P-CTL-03": {
+      "source_line": 1932,
+      "lean_theorems": [
+        "UEOT.V3.DiffusionHJBVerification.p_ctl_03"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "diffusion_hjb_verification",
+        "ito_localization",
+        "measurable_selector",
+        "continuous_time_control"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "diffusion_control_adapter",
+        "verification_theorem"
+      ],
+      "analysis_summary": "The source-facing continuous-time HJB verification theorem proves that the bounded C2 candidate value dominates every admissible diffusion control and that the measurable maximizing selector, once its closed-loop Ito run exists, attains the value. The proof route retains the source Ito, localization, terminal-decay, and integrability structure.",
+      "schema_rationale": "This is a continuous-time stochastic-control verification adapter rather than a finite Bellman surrogate. Its generator, Ito, regularity, and closed-loop existence obligations are irreducible domain structure at the current compression level.",
+      "source_title": ""
+    },
+    "P-QUO-02": {
+      "source_line": 2001,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "approximate_control_quotient",
+        "span_sensitive_value_bound",
+        "lifted_policy_regret"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "quotient_control_adapter",
+        "robustness_certificate"
+      ],
+      "analysis_summary": "The finite approximate quotient uses genuine total variation between pushed-forward microscopic rows and macro rows, derives continuation error through the TV span bound, and proves the exact source value error D together with the lifted macro-greedy microscopic regret bound between zero and 2D.",
+      "schema_rationale": "The quotient map alone is insufficient: the exact source conclusion additionally uses finite discounted Bellman contraction, value comparison, selector lifting, and TV/span control. It therefore remains a quotient-control adapter rather than a bare M-QD-01 consequence.",
+      "source_title": ""
+    },
+    "P-QUO-03": {
+      "source_line": 2024,
+      "lean_theorems": [
+        "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "action_gap_certificate",
+        "quotient_qvalue_transfer",
+        "unique_action_recovery"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "quotient_decision_certificate",
+        "control_adapter"
+      ],
+      "analysis_summary": "Using the same approximate quotient and its derived D-radius action-value comparison, Lean proves that a macro greedy action separated from every competitor by more than 2D is the genuine unique microscopic optimal action at every represented state. No unrelated action-value error premise is added.",
+      "schema_rationale": "This is a robust argmax/action-gap certificate layered on the approximate control quotient. It depends on the control-Q-value error bridge and strict gap geometry, so it is not generated by quotient descent alone.",
+      "source_title": ""
+    },
+    "P-QUO-04": {
+      "source_line": 2042,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.Model.p_quo_04"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "policy_resolvent",
+        "discounted_occupancy",
+        "neumann_series",
+        "state_action_occupancy"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "control_occupancy_adapter",
+        "value_identity"
+      ],
+      "analysis_summary": "The canonical theorem packages the exact fixed-policy resolvent identity, its convergent Neumann-series representation, normalized discounted state occupancy and its fixed-point equation, the exact occupancy expectation representation of value residuals, and the corresponding state-action occupancy marginal and unit-mass identities.",
+      "schema_rationale": "The common mechanism is discounted resolvent/occupancy calculus for a fixed policy. This is substantive control infrastructure with linear-operator and probability normalization content, not a consequence of the current quotient generator by itself.",
+      "source_title": ""
+    },
+    "P-QUO-05": {
+      "source_line": 2063,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "occupancy_weighted_regret",
+        "local_residual_error",
+        "approximate_quotient_policy"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "quotient_regret_certificate",
+        "control_occupancy_adapter"
+      ],
+      "analysis_summary": "The frozen local-error refinement compares an arbitrary designated true-optimal stationary microscopic policy with an arbitrary macro-optimal lifted selector and bounds initial-law regret by the sum of their own discounted occupancy-weighted local errors divided by one minus the discount. Tied-optimal cases and policy-specific occupancies are retained.",
+      "schema_rationale": "This result combines approximate quotient residuals with the exact occupancy calculus of P-QUO-04. Its local policy-dependent weighting is stronger structure than the uniform P-QUO-02 bound and is retained as a control-occupancy certificate.",
+      "source_title": "占据加权的商策略后悔。"
+    },
+    "P-GOA-02": {
+      "source_line": 2129,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDobrushin.p_goa_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "dobrushin_contraction",
+        "invariant_uniqueness",
+        "stationary_perturbation"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "long_run_stability",
+        "finite_markov_adapter"
+      ],
+      "analysis_summary": "For a finite stochastic kernel, the canonical event-supremum-TV Dobrushin coefficient gives the exact contraction. Combining invariant existence with alpha below one yields a unique invariant law, and rowwise kernel perturbation gives the frozen stationary-law bound epsilon divided by one minus alpha without an L1 normalization change.",
+      "schema_rationale": "This is finite Markov mixing and perturbation theory. It is adjacent to generic contraction ideas, but invariant existence, stochastic-row geometry, and the sharp Dobrushin denominator are domain-specific structure not presently captured by M-TC-01.",
+      "source_title": ""
+    },
+    "P-GOA-03": {
+      "source_line": 2155,
+      "lean_theorems": [
+        "UEOT.V3.FiniteRecurrentDecompositionStability.p_goa_03"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "recurrent_decomposition",
+        "resolvent_perturbation",
+        "cesaro_limit_mixture",
+        "absorption_stability"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "long_run_stability",
+        "finite_recurrence_adapter"
+      ],
+      "analysis_summary": "For two finite chains with the same transient type and recurrent-class partition, Lean proves the frozen resolvent and absorption-matrix perturbation bound under the source smallness condition, proves both displayed recurrent mixtures are the actual periodic-safe Cesaro limits from the same initial state, and then establishes the total-variation mixture stability bound.",
+      "schema_rationale": "The theorem combines matrix inverse perturbation, absorption probabilities, recurrent-class laws, and Cesaro asymptotics. Those coupled mechanisms go substantially beyond a single generic contraction or occupation-limit schema.",
+      "source_title": ""
+    },
+    "P-GOA-04": {
+      "source_line": 2186,
+      "lean_theorems": [
+        "UEOT.V3.SymmetricKilledSpectralStability.p_goa_04"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "principal_eigenpair_stability",
+        "spectral_gap_perturbation",
+        "squared_eigenvector_tv"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "spectral_stability",
+        "killed_kernel_adapter"
+      ],
+      "analysis_summary": "For finite symmetric nonnegative killed kernels, a positive unit principal mode with Rayleigh spectral gap and a small Euclidean operator-norm perturbation imply the sharp principal-eigenvalue displacement bound and a quantitative total-variation bound between the squared principal-mode probability laws.",
+      "schema_rationale": "This is perturbation stability of positive spectral data. It is scientifically adjacent to the M-PE-01 eigenstructure candidate, but the source result adds symmetric-operator perturbation geometry and a quantitative gap estimate; no exact M-PE mapping is claimed here.",
+      "source_title": ""
+    },
+    "P-KL-01": {
+      "source_line": 2214,
+      "lean_theorems": [
+        "UEOT.V3.PathEventKL.p_kl_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "kl_data_processing",
+        "event_bernoulli_projection",
+        "information_lower_bound"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "path_information",
+        "information_adapter"
+      ],
+      "analysis_summary": "For an absolutely continuous reachable law and baseline path law, measurable-event projection to a Bernoulli indicator gives the exact frozen lower bound: full-law KL dominates Bernoulli KL of the event probabilities. The source absolute-continuity premise and boundary interpretation are kept even though the generic data-processing theorem is stronger.",
+      "schema_rationale": "This is KL data processing through an event indicator, a standard information-theoretic adapter. It supplies a reusable lower-bound mechanism but is not by itself a new UEOT-specific meta-generator.",
+      "source_title": ""
+    },
+    "P-KL-02": {
+      "source_line": 2227,
+      "lean_theorems": [
+        "UEOT.V3.PathEventIProjection.p_kl_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "event_i_projection",
+        "kl_variational_minimization",
+        "explicit_rn_optimizer"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "variational_information",
+        "path_information_adapter"
+      ],
+      "analysis_summary": "The global constrained KL problem ranges over all probability laws absolutely continuous with respect to the baseline. If the required event mass is inactive the infimum is zero at the baseline; if active, Lean constructs the exact two-region Radon-Nikodym tilt, proves its probability and event mass, and proves the optimum equals Bernoulli KL including the p equals one boundary.",
+      "schema_rationale": "This is an exact information projection under one event constraint. Its reusable core is convex/variational KL geometry plus an explicit RN optimizer, distinct from the path-chain and continuous-time information-cost identities.",
+      "source_title": ""
+    },
+    "P-KL-03": {
+      "source_line": 2260,
+      "lean_theorems": [
+        "UEOT.V3.PathKLChain.p_kl_03",
+        "UEOT.V3.PathKLChain.p_kl_03_general"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "path_kl_chain_rule",
+        "history_dependent_kernel",
+        "conditional_kl_accumulation"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "path_information",
+        "chain_rule_adapter"
+      ],
+      "analysis_summary": "For genuinely history-dependent finite-horizon kernels with rowwise absolute continuity, Lean proves path KL equals the sum of expected one-step conditional KL terms under the source path law. The general version also adds the initial-law KL, preserving the frozen theorem beyond a homogeneous Markov surrogate.",
+      "schema_rationale": "This is the measure-kernel KL chain rule specialized to path construction. It is a standard but essential path-information adapter and does not collapse the distinct event-projection, jump-process, or Girsanov mechanisms.",
+      "source_title": "，证明。"
+    },
+    "P-KL-04": {
+      "source_line": 2271,
+      "lean_theorems": [
+        "UEOT.V3.FiniteCTMCPathKL.p_kl_04_holding",
+        "UEOT.V3.FiniteCTMCPathKL.p_kl_04_clock",
+        "UEOT.V3.FiniteCTMCPathKL.p_kl_04"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "ctmc_path_kl",
+        "jump_rate_entropy",
+        "clock_time_information_cost"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "continuous_time_information",
+        "ctmc_adapter"
+      ],
+      "analysis_summary": "For finite nonexplosive continuous-time jump processes with the same initial state and source support inclusion, the canonical proof identifies the path-law likelihood ratio, integrates jump and holding contributions, and obtains exactly the frozen literal clock-time KL rate integral over jump intensities with the zero diagonal convention.",
+      "schema_rationale": "This is the continuous-time jump-process entropy identity. Campbell/renewal and holding-time machinery are genuine CTMC adapters, so the theorem should not be treated as merely the discrete-time path KL chain rule under renamed notation.",
+      "source_title": ""
+    },
+    "P-KL-05": {
+      "source_line": 2302,
+      "lean_theorems": [
+        "UEOT.V3.GirsanovPathKL.p_kl_05"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "girsanov_relative_entropy",
+        "control_energy_identity",
+        "observed_path_data_processing"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "stochastic_control_information",
+        "observability_boundary"
+      ],
+      "analysis_summary": "Under the frozen terminal Girsanov setup, Lean derives the full-space identity KL(Q||P0) equals one half the expected clock-time control energy and separately proves that every measurable observed state path has KL no larger than that full-space cost. Hidden noise directions therefore retain information that state observation may lose.",
+      "schema_rationale": "The exact equality is a stochastic-calculus/Girsanov adapter while the observed-path clause is a data-processing boundary. Keeping equality and inequality separate prevents an invalid identification of full-noise and observed-state information.",
+      "source_title": "可观测性修正的控制能量关系。"
+    },
+    "P-DDH-01": {
+      "source_line": 2348,
+      "lean_theorems": [
+        "UEOT.V3.DualDriveGauge.p_ddh_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "dual_drive_gauge",
+        "objective_nonidentifiability",
+        "algebraic_invariance"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "identifiability_boundary",
+        "gauge_adapter"
+      ],
+      "analysis_summary": "Adding a common gauge field chi to Phi while adding lambda times chi to Pi leaves the combined objective Pi minus lambda Phi exactly unchanged. The theorem therefore records the frozen algebraic non-identifiability, with semantic anchoring of the two drive axes remaining a separate empirical or modeling obligation.",
+      "schema_rationale": "This is an explicit gauge redundancy and hence a boundary theorem rather than evidence for a universal variational generator. The algebra is elementary, but its scientific role is to prevent over-identification of Pi and Phi.",
+      "source_title": ""
+    },
+    "P-DDH-02": {
+      "source_line": 2370,
+      "lean_theorems": [
+        "UEOT.V3.ExponentialFamilyCalculus.p_ddh_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "exponential_family_calculus",
+        "log_partition_gradient",
+        "covariance_hessian"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "variational_geometry",
+        "information_geometry_adapter"
+      ],
+      "analysis_summary": "For an arbitrary finite alphabet, strictly positive baseline PMF, arbitrary finite parameter dimension including zero, and prescribed feature map, Lean proves the log-partition gradient is the tilted feature mean and the derivative of that gradient is exactly the tilted covariance operator.",
+      "schema_rationale": "This is finite exponential-family differential calculus. It supplies standard information geometry needed by later variational claims but does not by itself constitute a UEOT-specific minimal generator.",
+      "source_title": ""
+    },
+    "P-DDH-03": {
+      "source_line": 2380,
+      "lean_theorems": [
+        "UEOT.V3.ExponentialFamilyIProjection.p_ddh_03"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "moment_i_projection",
+        "exponential_tilt",
+        "kl_variational_minimization"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "variational_information",
+        "information_geometry_adapter"
+      ],
+      "analysis_summary": "Whenever the target moment is represented by a finite natural parameter, the corresponding exponential tilt globally minimizes KL over every probability law having that moment, with equality exactly at the tilt. The theorem deliberately requires no full-rank feature family, strict convexity, positive-definite covariance, or unique parameter.",
+      "schema_rationale": "This is the finite moment-constrained KL I-projection theorem. It shares variational information geometry with P-KL-02, but the constraint geometry and exponential-family adapter are distinct enough that no common M-ID is counted without a smaller generic Lean interface.",
+      "source_title": "矩约束下的变分最小性。"
+    },
+    "P-DDH-04": {
+      "source_line": 2402,
+      "lean_theorems": [
+        "UEOT.V3.CommonBottleneckRank.p_ddh_04"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "common_bottleneck_factorization",
+        "jacobian_rank_bound",
+        "shared_latent_geometry"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "structural_identifiability",
+        "differential_adapter"
+      ],
+      "analysis_summary": "If all stacked response coordinates factor through one common differentiable two-dimensional latent bottleneck at the same budget point, the stacked response Jacobian factors through that latent derivative and therefore has rank at most two. The theorem explicitly excludes mixing derivatives from different budget points or unrelated per-environment bottlenecks.",
+      "schema_rationale": "The result is a differential factorization/rank certificate. Its scientific content is the common latent bottleneck assumption, not merely a generic low-rank matrix fact, so it remains a structural-identifiability adapter.",
+      "source_title": ""
+    },
+    "P-DDH-05": {
+      "source_line": 2426,
+      "lean_theorems": [
+        "UEOT.V3.SingularValueEffectiveDimension.p_ddh_05"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "singular_value_perturbation",
+        "effective_dimension_threshold",
+        "spectral_certificate"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "dimension_certificate",
+        "linear_algebra_adapter"
+      ],
+      "analysis_summary": "Under a genuine Euclidean operator-two-norm perturbation of the finite sensitivity matrix, every indexed singular value moves by at most eta. If the threshold lies strictly between the source second/third singular-value margins, exactly the first two estimated singular values exceed it.",
+      "schema_rationale": "This is a robust effective-dimension certificate built from singular-value perturbation theory. It is standard linear-algebra infrastructure linked to DDH interpretation, not evidence for a new generator by itself.",
+      "source_title": "有效维数阈值。"
+    },
+    "P-ALI-01": {
+      "source_line": 2462,
+      "lean_theorems": [
+        "UEOT.V3.AlignmentGlobalExactness.p_ali_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "one_form_exactness",
+        "closed_period_criterion",
+        "global_integrability"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "alignment_geometry",
+        "differential_topology_adapter"
+      ],
+      "analysis_summary": "On the connected source manifold, the canonical C1 one-form is globally exact exactly when every closed piecewise-smooth path has zero period. Lean proves both directions using path integrals and the reconstructed potential, giving the frozen global integrability criterion rather than a local curl-only surrogate.",
+      "schema_rationale": "This is a differential-topological exactness criterion. Global path topology and manifold regularity are essential domain structure, so it is retained as an alignment-geometry adapter.",
+      "source_title": "全局可积判据。"
+    },
+    "P-ALI-02": {
+      "source_line": 2489,
+      "lean_theorems": [
+        "UEOT.V3.AlignmentParentValue.p_ali_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "parent_value_chain_rule",
+        "hilbert_alignment",
+        "gradient_decomposition"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "alignment_dynamics",
+        "hilbert_adapter"
+      ],
+      "analysis_summary": "On a heterogeneous finite real Hilbert direct sum, the actual child-gradient update trajectory and parent gradient certificate give the exact derivative of parent value. Lean then decomposes that derivative into aligned and deviation terms and proves the frozen Cauchy-Schwarz lower bound.",
+      "schema_rationale": "The theorem combines differential chain rule, Hilbert inner-product geometry, and the source child/parent update semantics. It is an alignment dynamics adapter rather than a generic transport or quotient result.",
+      "source_title": ""
+    },
+    "P-ALI-03": {
+      "source_line": 2507,
+      "lean_theorems": [
+        "UEOT.V3.AlignmentThreshold.p_ali_03"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "coordination_threshold",
+        "alignment_interpolation",
+        "sign_recovery"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "alignment_certificate",
+        "hilbert_adapter"
+      ],
+      "analysis_summary": "For the coordinated field G_eta=(1-eta)G+eta g with eta in the source unit interval and negative uncoordinated alignment, Lean proves the parent directional derivative is positive exactly when eta exceeds the frozen rational coordination threshold.",
+      "schema_rationale": "This is the scalar threshold consequence of Hilbert alignment geometry. It is a useful certificate but does not warrant a separate generator beyond the underlying differential/inner-product adapter.",
+      "source_title": ""
+    },
+    "P-EVO-01": {
+      "source_line": 2551,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionPrice.p_evo_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "price_equation",
+        "selection_transmission_decomposition",
+        "mean_frequency_update"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "evolution_adapter",
+        "selection_dynamics"
+      ],
+      "analysis_summary": "For the frozen deterministic mean-frequency update, Lean proves the exact Price-style decomposition of offspring trait change into the weighted covariance selection term and the weighted transmission-change term divided by mean fitness. Individual fitness values may vanish; only positive mean fitness is required.",
+      "schema_rationale": "This is an evolutionary accounting identity tied to the reproduction/transition semantics. Its algebra is reusable, but the source interpretation is a domain adapter rather than a cross-family UEOT generator.",
+      "source_title": "选择与传递的精确分解。"
+    },
+    "P-EVO-02": {
+      "source_line": 2568,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionSharedLabel.p_evo_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "shared_label_information",
+        "mutual_information_additivity",
+        "irrelevant_label_inflation"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "evolution_information",
+        "representation_boundary"
+      ],
+      "analysis_summary": "For a finite label independent of the joint parental/offspring variables and copied identically to both sides, Lean proves exact mutual-information additivity: attaching the shared irrelevant label increases measured heritable information by precisely its entropy. The independence and exact-copy assumptions remain explicit.",
+      "schema_rationale": "This theorem is both an information identity and a representation warning: mutual information can be inflated by irrelevant shared labels. It is kept as a boundary/domain adapter rather than promoted as a generator.",
+      "source_title": "无关标签会膨胀遗传信息。"
+    },
+    "P-BRG-01": {
+      "source_line": 2652,
+      "lean_theorems": [
+        "UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence",
+        "UEOT.V3.FixedFitnessConcentration.p_brg_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "fixed_fitness_replicator",
+        "support_concentration",
+        "geometric_selection_decay"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "selection_dynamics",
+        "evolutionary_bridge"
+      ],
+      "analysis_summary": "For finite types with fixed strictly positive fitness and no mutation, the source recurrence uniquely yields the closed form; initially absent types stay absent, every supported suboptimal type decays with its explicit geometric factor, total suboptimal mass converges to zero, and support maximizers preserve their initial relative proportions.",
+      "schema_rationale": "This is a finite fixed-fitness selection dynamics bridge. The recurrence, support invariance, and asymptotic concentration are specific evolutionary mechanisms and are not consequences of the current positive-eigenstructure candidate without additional work.",
+      "source_title": "无突变的固定适合度集中。"
+    },
+    "P-BRG-02": {
+      "source_line": 2680,
+      "lean_theorems": [
+        "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_positive_ratio_preserved"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "behavioral_equivalence",
+        "selection_indistinguishability",
+        "replication_factorization"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "selection_boundary",
+        "behavioral_bridge"
+      ],
+      "analysis_summary": "When reproduction factors through one common functional of the environmental response/path law, behaviorally equivalent controller types have exactly equal fitness multipliers; selection through this bridge alone cannot distinguish them, and positive-mass ratios are preserved. Mutation, material costs, or extra type-dependent replication channels are explicitly outside the bridge.",
+      "schema_rationale": "This is a factorization-based selection-indistinguishability boundary. Its conclusion follows from the declared response-to-replication bridge, but extra biological channels would change the model, so the boundary must remain explicit.",
+      "source_title": "行为等价的选择不可分辨性。"
+    },
+    "P-REF-01": {
+      "source_line": 2710,
+      "lean_theorems": [
+        "UEOT.V3.ReflexivePRef01.p_ref_01",
+        "UEOT.V3.ReflexivePRef01.p_ref_01_structureModification",
+        "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel",
+        "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "reflexive_state_augmentation",
+        "controlled_path_law_uniqueness",
+        "structural_modification",
+        "controlled_compression_closure"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "reflexive_dynamics",
+        "control_adapter"
+      ],
+      "analysis_summary": "On the reflexive state X times S, an initial probability law, controlled Markov kernel, and arbitrary causal randomized policy determine a unique infinite state path law. Deterministic structural modification is a specialization, while any further compression requires its own action-wise controlled lumpability/path-law closure obligation.",
+      "schema_rationale": "The theorem separates state augmentation from subsequent compression closure. That controlled stochastic-process construction and the explicit non-implication to lumpability are genuine reflexive-dynamics adapter/boundary structure.",
+      "source_title": "反身状态增广。"
+    },
+    "P-REF-03": {
+      "source_line": 2739,
+      "lean_theorems": [
+        "UEOT.V3.FreeInformationValue.p_ref_03"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "free_information_value",
+        "conditional_expectation_decision",
+        "ignorable_signal"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "decision_adapter",
+        "information_value"
+      ],
+      "analysis_summary": "With an arbitrary signal sub-sigma-algebra, a finite nonempty action set, and integrable payoffs, the informed decision value is at least the best fixed-action value. The proof uses conditional expectation and the fact that a free signal can always be ignored, without discretizing the signal.",
+      "schema_rationale": "This is the standard value-of-free-information monotonicity mechanism in the source decision setting. It is retained as a decision/information adapter rather than treated as a new primitive generator.",
+      "source_title": "免费信息的决策价值非负。"
+    },
+    "P-REF-04": {
+      "source_line": 2753,
+      "lean_theorems": [
+        "UEOT.V3.Decision.goal_regret"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "uniform_objective_error",
+        "two_epsilon_regret",
+        "estimated_argmax"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "decision_certificate",
+        "robust_optimization_adapter"
+      ],
+      "analysis_summary": "If the estimated objective is uniformly within epsilon of the true objective and the chosen policy maximizes the estimate, then every competitor has true-objective advantage at most 2 epsilon. The Lean theorem is exactly the frozen robust-regret inequality and adds no hidden compactness or existence assumptions beyond the supplied maximizer.",
+      "schema_rationale": "This is a generic deterministic argmax perturbation certificate. It is standard robust-optimization infrastructure and does not merit an M-ID unless broader nontrivial cross-family structure is demonstrated.",
+      "source_title": "统一目标误差的后悔界。"
+    },
+    "P-REF-05": {
+      "source_line": 2779,
+      "lean_theorems": [
+        "UEOT.V3.Agency.feasibleValue_mono",
+        "UEOT.V3.Agency.feasibleValueReal_mono",
+        "UEOT.V3.Agency.extension_optimalValue_mono"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "feasible_set_monotonicity",
+        "optimal_value_order",
+        "policy_extension"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "agency_order",
+        "decision_adapter"
+      ],
+      "analysis_summary": "For a fixed real-valued evaluation, enlarging the feasible policy set cannot reduce optimal value. Lean provides a total EReal formulation with no hidden nonempty/boundedness assumptions and the ordinary real-supremum version under the standard conditions, plus the source same-evaluation decision-extension wrapper.",
+      "schema_rationale": "This is order monotonicity of optimization under feasible-set inclusion. It is foundational decision infrastructure, not a distinct UEOT generator.",
+      "source_title": "可行选择扩展的单调性。"
+    },
+    "P-CORE-01": {
+      "source_line": 3198,
+      "lean_theorems": [
+        "UEOT.V3.CoreOperationalAssembly.p_core_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "operational_assembly",
+        "common_good_event",
+        "certificate_composition",
+        "probability_union_bound"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "core_assembly",
+        "integration_adapter"
+      ],
+      "analysis_summary": "The frozen finite operational core theorem is an assembly result: one finite set of distinct certification-event keys gives a common-good-event union bound, and every realized sample in that event simultaneously receives response/class/carrier recovery, quotient control and action certificates, same-policy path control, optional long-run/history ports, and the integrity-margin certificate. Reused events are counted only once.",
+      "schema_rationale": "This theorem composes already established modules while preserving shared source identity and probability bookkeeping. Its scientific role is integration, not a new generating law, so treating it as a primitive M-ID would double-count its constituent mechanisms.",
+      "source_title": "有限对象—实现—控制认证装配。"
     }
   }
 }

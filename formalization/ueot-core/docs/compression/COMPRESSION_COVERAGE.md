@@ -16,8 +16,8 @@ changes the completed **106/106 FULL-GREEN** source status.
 
 | metric | count |
 |---|---:|
-| source P-IDs analyzed | 74 / 106 |
-| schema-classified P-IDs | 74 / 106 |
+| source P-IDs analyzed | 106 / 106 |
+| schema-classified P-IDs | 106 / 106 |
 | fully Lean-rederived P-IDs | 6 / 106 |
 | counted compressed P-IDs | 6 / 106 |
 | final dispositions assigned | 0 / 106 |
@@ -315,6 +315,45 @@ threshold geometry, linear inverse problems, and discounted telescoping) rather
 than a demonstrated smaller cross-family UEOT generator. This advances Gate A
 coverage while preserving the Mission Contract rule against cosmetic
 relabeling.
+
+
+### Gate A final audit — remaining control / long-run / information / geometry / evolution rows
+
+The final **32** previously unaudited frozen rows are now source↔Lean↔schema
+classified:
+
+- P-CTL-01..03: finite discounted Bellman/causal optimality, compact-Feller
+  measurable selection, and continuous-time diffusion HJB verification;
+- P-QUO-02..05: approximate quotient value/regret, action-gap recovery,
+  fixed-policy resolvent/discounted occupancy, and occupancy-weighted local
+  regret;
+- P-GOA-02..04: Dobrushin mixing/stationary perturbation, recurrent-decomposition
+  stability, and symmetric killed-kernel spectral perturbation;
+- P-KL-01..05: event data processing, event I-projection, history-dependent path
+  KL chain rules, finite-CTMC clock-time path KL, and Girsanov control-energy KL
+  with the observed-path inequality kept distinct;
+- P-DDH-01..05: gauge non-identifiability, exponential-family
+  gradient/covariance calculus, moment I-projection, common-bottleneck rank, and
+  singular-value effective-dimension certification;
+- P-ALI-01..03: global one-form exactness, parent-value gradient alignment, and
+  the exact coordination threshold;
+- P-EVO-01..02 and P-BRG-01..02: Price selection/transmission accounting,
+  irrelevant shared-label information inflation, fixed-fitness concentration,
+  and behavioral selection indistinguishability;
+- P-REF-01, P-REF-03..05: reflexive-state path construction and controlled
+  closure boundary, free-information value, uniform-objective regret, and
+  feasible-set monotonicity;
+- P-CORE-01: common-good-event operational assembly of the already certified
+  finite modules.
+
+This closes **Mission Contract Gate A at 106/106 audited and 106/106
+schema-classified P-IDs**. It does **not** assign final dispositions, freeze a
+minimal core, start ablation, or change counted compression. The audit rejects
+a cosmetic “single grand generator”: the remaining rows require materially
+different Bellman/HJB, occupancy/resolvent, Markov/spectral perturbation,
+path-information, exponential-family, differential-geometric, evolutionary,
+decision, and assembly mechanisms. Candidate generator research and final
+per-P-ID resolution therefore remain separate later gates.
 
 ## Counting rule
 
