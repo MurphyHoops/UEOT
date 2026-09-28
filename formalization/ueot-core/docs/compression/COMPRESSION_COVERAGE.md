@@ -79,10 +79,9 @@ State: **COUNTED_GENERATOR**
   proved;
 - P-API-01: **counted** full exact + approximate source-facing rederivation;
 - P-ID-01: **counted** full source-facing supremum rederivation;
-- P-ID-02: **Lean-rederived / promotion pending** — exact finite-horizon
-  development-pipeline product/sum bound reconstructed through the weighted
-  chain calculus; counted status remains unchanged until the normal feature →
-  integration → PR → resulting-main → ledger lifecycle completes;
+- P-ID-02: **counted** exact finite-horizon development-pipeline product/sum
+  bound reconstructed through the weighted chain calculus after the completed
+  feature → integration → PR → resulting-main → ledger lifecycle;
 - P-DYN-04: **counted** full reachable-image approximate + exact source-facing
   rederivation;
 - P-DYN-03: audited, but **not** fully generated — the frozen theorem includes
