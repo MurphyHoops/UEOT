@@ -16,8 +16,8 @@ changes the completed **106/106 FULL-GREEN** source status.
 
 | metric | count |
 |---|---:|
-| source P-IDs analyzed | 35 / 106 |
-| schema-classified P-IDs | 35 / 106 |
+| source P-IDs analyzed | 41 / 106 |
+| schema-classified P-IDs | 41 / 106 |
 | fully Lean-rederived P-IDs | 5 / 106 |
 | counted compressed P-IDs | 5 / 106 |
 | final dispositions assigned | 0 / 106 |
@@ -214,6 +214,45 @@ affine dissipation appears in several REC theorems. Those are recorded as
 shared proof patterns only: their source theorems carry different strategy,
 path, control, or stopping-time semantics, so no extra M-ID is created merely
 to rename a common proof idiom.
+
+
+### M-PE-01 — Positive Eigenstructure Calculus
+
+State: **CANDIDATE / analysis-only**
+
+Cross-family evidence now spans quasi-stationarity and evolutionary positive
+operators:
+
+- P-QSD-02: positive left/right Perron data give exact QSD propagation, survival
+  scaling, a stochastic Doob h-transform, and invariant law q*h;
+- P-QSD-04: a positive principal mode plus controlled spectral remainder gives
+  conditional-law attraction and the principal survival scale;
+- P-EVO-03: Perron rank-one asymptotics give normalized mean composition and
+  uniqueness of positive reproductive-value weights;
+- P-EVO-04: the positive right Perron eigendirection turns conditional mean
+  reproduction into a normalized reproductive-value martingale.
+
+No generic Lean generator is claimed yet. Perron existence/simplicity, finite
+primitive-matrix power asymptotics, reversible compact-resolvent spectral
+remainders, and stochastic adaptedness/integrability remain explicit adapters.
+In particular, a QSD q is not identified with the Doob stationary law q*h.
+
+### QSD / Perron audit
+
+Six further source rows are now source↔Lean↔schema audited:
+
+- P-QSD-01: conditioned TV limit -> QSD eigenmeasure and exponential survival
+  law; retained as a projective normalized-limit adapter rather than forced into
+  occupation-limit invariance;
+- P-QSD-02: finite Perron/Doob algebra;
+- P-QSD-03: same-initial mixing/survival duration-window intersection;
+- P-QSD-04: reversible spectral-gap QSD attraction + survival lower bound;
+- P-EVO-03: Perron mean growth, normalized composition, and reproductive-value
+  uniqueness;
+- P-EVO-04: reproductive-value martingale from conditional mean dynamics.
+
+The Perron/eigenstructure overlap is recorded as M-PE-01 only at candidate
+level; counted mappings and generators are unchanged.
 
 ## Counting rule
 
