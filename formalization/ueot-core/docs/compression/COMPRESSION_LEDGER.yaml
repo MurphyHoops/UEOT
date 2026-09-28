@@ -12,8 +12,8 @@
     "theorem_index_sha256": "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
   },
   "coverage": {
-    "analyzed_pids": 42,
-    "schema_classified_pids": 42,
+    "analyzed_pids": 54,
+    "schema_classified_pids": 54,
     "lean_rederived_pids": 6,
     "counted_compressed_pids": 6,
     "counted_generators": 2,
@@ -1265,6 +1265,253 @@
       "source_title": "发展管道。",
       "analysis_summary": "The canonical source-facing theorem propagates a one-step model residual through stage-dependent Lipschitz dynamics and gives the exact finite-horizon product/sum error formula. The new M-TC weighted-chain theorem reproduces that formula for heterogeneous stage types, with the frozen metric statement as an exact specialization.",
       "schema_rationale": "P-ID-02 is the multiplicatively weighted analogue of M-TC's additive chain transport: previous defect is transported with factor L_t, a fresh local defect is added, and discrete Gronwall closes the finite-horizon certificate."
+    },
+    "P-OMG-01": {
+      "source_line": 1077,
+      "lean_theorems": [
+        "UEOT.V3.OmegaMinimalFailure.p_omg_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "finite_minimal_reconstruction",
+        "monotone_failure",
+        "minimal_generator_family"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "integrity_failure",
+        "combinatorial_adapter"
+      ],
+      "source_title": "极小毁损重建。",
+      "analysis_summary": "The Lean source-facing theorem exactly reconstructs every finite monotone failure event from its inclusion-minimal failing deletion sets: failure of D iff D contains a minimal failure. The proof separates finite minimal-subset existence from failure monotonicity.",
+      "schema_rationale": "This is the same finite upward-property/minimal-generator skeleton later used by carrier sufficiency, but at present it is standard finite-poset infrastructure rather than a separately counted compression generator."
+    },
+    "P-OMG-02": {
+      "source_line": 1095,
+      "lean_theorems": [
+        "UEOT.V3.OmegaIntegrityMargin.p_omg_02"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "distance_to_set_stability",
+        "one_lipschitz_margin",
+        "metric_adapter"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "integrity_margin",
+        "metric_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "The frozen integrity margin is distance to a fixed nonempty failure set. The Lean endpoint retains that source domain and proves the exact 1-Lipschitz perturbation bound using Mathlib's more general point-to-set distance theorem.",
+      "schema_rationale": "This is a metric stability adapter, not part of the finite blocker/resolution combinatorics."
+    },
+    "P-CAR-01": {
+      "source_line": 1135,
+      "lean_theorems": [
+        "UEOT.V3.Access.sufficient_mono",
+        "UEOT.V3.Access.contains_minimal"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "upward_sufficiency",
+        "finite_minimal_reconstruction",
+        "access_family"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "carrier_sufficiency",
+        "combinatorial_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "Restriction consistency makes sufficiency upward closed, and every sufficient finite carrier contains an inclusion-minimal sufficient carrier. The Lean formulation supports both pointwise and common-filter/a.e. semantics through FactorsAt.",
+      "schema_rationale": "The minimal-generator step shares the finite upward-property skeleton with P-OMG-01, while measurable readout factorization is the carrier-domain adapter."
+    },
+    "P-CAR-02": {
+      "source_line": 1151,
+      "lean_theorems": [
+        "UEOT.V3.Access.erasure_survives",
+        "UEOT.V3.Access.erasure_failure",
+        "UEOT.V3.Access.minimal_erasure"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "access_erasure_duality",
+        "blocker_hitting",
+        "minimal_failure_family"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "carrier_erasure",
+        "blocker_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "The canonical Lean chain proves that recovery after deleting D is equivalent to some minimal sufficient carrier avoiding D, failure is equivalent to hitting all minimal sufficient carriers, and inclusion-minimal failing deletions are exactly the blocker.",
+      "schema_rationale": "This is the domain adapter from measurable access sufficiency into generic finite blocker duality."
+    },
+    "P-CAR-03": {
+      "source_line": 1157,
+      "lean_theorems": [
+        "UEOT.Blocker.blocker_involution",
+        "UEOT.Blocker.blocker_empty",
+        "UEOT.Blocker.blocker_singleton_empty"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "blocker_involution",
+        "clutter_duality",
+        "finite_boolean_hypergraph"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "carrier_duality",
+        "combinatorial_adapter"
+      ],
+      "source_title": "双 blocker。",
+      "analysis_summary": "For finite universes and clutter families, the generic Lean blocker is involutive, with the source degenerate conventions b(empty)={empty} and b({empty})=empty proved explicitly.",
+      "schema_rationale": "This is standard finite clutter/transversal duality. It is reusable but is not promoted as a new compression generator merely by renaming the established blocker theorem."
+    },
+    "P-CAR-04": {
+      "source_line": 1196,
+      "lean_theorems": [
+        "UEOT.V3.DecoderRadius.decoder_radius_bounds"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "fiber_diameter",
+        "minimax_decoder_radius",
+        "metric_radius_diameter"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "approximate_carrier",
+        "metric_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "The Lean metric core proves exactly e/2 <= r <= e without assuming the decoder infimum is attained, using IsLUB for response-fiber diameters and IsGLB for achievable decoder bounds. The source TV case is a specialization of the pseudometric theorem.",
+      "schema_rationale": "This is a generic metric radius/diameter adapter, mathematically separate from blocker duality."
+    },
+    "P-RES-01": {
+      "source_line": 1223,
+      "lean_theorems": [
+        "UEOT.V3.ClosureResolution.minimal_property_coarse_graining"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "closure_system_coarse_graining",
+        "minimal_family_transport",
+        "upward_property"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "resolution_transport",
+        "closure_adapter"
+      ],
+      "source_title": "极小性质的粗粒化。",
+      "analysis_summary": "For nested closure systems and a fixed upward property, the Lean theorem exactly transports the fine minimal admissible family by coarse closure followed by inclusion minimization.",
+      "schema_rationale": "The proof uses closure-system order plus finite minimal-family cofinality; it is stronger structure than bare finite minimal reconstruction."
+    },
+    "P-RES-02": {
+      "source_line": 1233,
+      "lean_theorems": [
+        "UEOT.V3.ClosureResolution.closure_comp_of_nested",
+        "UEOT.V3.ClosureResolution.resolutionMap_comp"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "closure_composition",
+        "resolution_functoriality",
+        "minimal_family_transport"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "resolution_transport",
+        "closure_adapter"
+      ],
+      "source_title": "复合律。",
+      "analysis_summary": "Nested closure operators satisfy cl_r(cl_s(S))=cl_r(S), and the induced minimal-family resolution maps compose exactly. The Lean minimal-family theorem is slightly stronger than the source three-scale statement because it needs only finiteness of the top family.",
+      "schema_rationale": "This is functoriality of closure-based resolution, not generic quotient descent."
+    },
+    "P-RES-03": {
+      "source_line": 1267,
+      "lean_theorems": [
+        "UEOT.V3.BlockerNaturality.blocker_naturality"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "blocker_naturality",
+        "coarse_pushforward",
+        "finite_boolean_hypergraph"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "resolution_transport",
+        "blocker_adapter"
+      ],
+      "source_title": "blocker 的尺度自然性。",
+      "analysis_summary": "For finite Boolean carriers, pushforward by a coarse map commutes exactly with taking blockers after image minimization, including degenerate families.",
+      "schema_rationale": "This is a naturality theorem for generic blocker duality under the source coarse-map semantics."
+    },
+    "P-RES-04": {
+      "source_line": 1294,
+      "lean_theorems": [
+        "UEOT.Resolution.lower_adjunction",
+        "UEOT.Resolution.upper_adjunction"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "galois_connection",
+        "lower_restrict_upper_adjunction",
+        "upward_family"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "resolution_adjunction",
+        "order_adapter"
+      ],
+      "source_title": "伴随三元组。",
+      "analysis_summary": "The generic Lean order layer proves Ext^- ⊣ Res ⊣ Ext^+ exactly for upward families. The library result does not require surjectivity for the two adjunction equivalences, so it is strictly more general than the surrounding source coarse-map context.",
+      "schema_rationale": "This is an order-theoretic/Galois connection layer distinct from finite blocker combinatorics."
+    },
+    "P-RES-05": {
+      "source_line": 1324,
+      "lean_theorems": [
+        "UEOT.V3.Resolution.pushFamily_realization_interval"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "realization_interval",
+        "adjunction_endpoints",
+        "coarse_clutter"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "resolution_uncertainty",
+        "order_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "The Lean theorem characterizes exact coarse minimal-family pushforward by the same lower/upper realization interval between the two adjoint endpoint families. It is valid without adding a surjectivity assumption.",
+      "schema_rationale": "This is the exact uncertainty interval induced by the resolution adjunction, with finite/antichain hypotheses carrying the minimal-family semantics."
+    },
+    "P-RES-06": {
+      "source_line": 1337,
+      "lean_theorems": [
+        "UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "endpoint_uniqueness",
+        "active_fiber",
+        "realization_interval"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "resolution_uniqueness",
+        "order_adapter"
+      ],
+      "source_title": "对象相关的唯一性。",
+      "analysis_summary": "Under the source surjective coarse map and coarse antichain, the lower and upper realization endpoints coincide exactly iff every coarse atom active in the object has a unique microscopic preimage.",
+      "schema_rationale": "This is the object-relative uniqueness criterion closing the resolution interval; inactive fibers are correctly irrelevant."
     }
   }
 }

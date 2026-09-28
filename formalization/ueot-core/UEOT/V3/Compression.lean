@@ -40,3 +40,12 @@ import UEOT.V3.ReversibleKilledSpectralQSD
 import UEOT.V3.EvolutionPerronGrowth
 import UEOT.V3.EvolutionReproductiveMartingale
 import UEOT.V3.DevelopmentTransport
+
+import UEOT.V3.OmegaMinimalFailure
+import UEOT.V3.OmegaIntegrityMargin
+import UEOT.V3.Access
+import UEOT.V3.DecoderRadius
+import UEOT.V3.ClosureResolution
+import UEOT.V3.BlockerNaturality
+import UEOT.Core.Resolution
+import UEOT.V3.Resolution
