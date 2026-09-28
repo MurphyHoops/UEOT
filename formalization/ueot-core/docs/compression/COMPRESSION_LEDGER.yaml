@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated": "2026-09-27",
+  "updated": "2026-09-28",
   "integration_branch": "main",
   "live_issue": 146,
   "official_target": "lake build UEOT",
@@ -12,8 +12,8 @@
     "theorem_index_sha256": "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
   },
   "coverage": {
-    "analyzed_pids": 35,
-    "schema_classified_pids": 35,
+    "analyzed_pids": 41,
+    "schema_classified_pids": 41,
     "lean_rederived_pids": 5,
     "counted_compressed_pids": 5,
     "counted_generators": 2,
@@ -286,6 +286,37 @@
         "P-GOA-01": {
           "state": "conjectured",
           "note": "Finite-chain Cesaro averages: simplex compactness yields cluster points and the telescoping Cesaro defect tends to zero, hence every cluster point is invariant."
+        }
+      }
+    },
+    "M-PE-01": {
+      "title": "Positive Eigenstructure Calculus",
+      "state": "candidate",
+      "canonical_theorems": [],
+      "explicit_nonclaims": [
+        "Perron-Frobenius existence, simplicity, strict spectral dominance, and rank-one power convergence remain standard-theorem inputs unless separately formalized",
+        "P-QSD-02 is an algebraic killed-kernel/Doob consequence of positive left/right eigenstructure, while P-EVO-04 additionally requires adapted stochastic dynamics and a conditional-mean interface",
+        "P-EVO-03 requires principal-mode power asymptotics and positive-eigenvector uniqueness beyond the bare one-step eigenrelations",
+        "P-QSD-04 uses a self-adjoint compact-resolvent spectral expansion and L2-to-L1 remainder control rather than the finite primitive-matrix route",
+        "a future generic theorem must distinguish left eigenmeasure normalization, right eigenfunction h-transform, principal-mode asymptotics, and stochastic martingale adapters",
+        "the QSD law q and the Doob stationary law q*h are generally different and must never be identified"
+      ],
+      "mappings": {
+        "P-QSD-02": {
+          "state": "conjectured",
+          "note": "Finite killed-kernel algebra from positive left/right eigenvectors: exact QSD propagation, survival scale, stochastic Doob h-transform, and invariant q*h law."
+        },
+        "P-QSD-04": {
+          "state": "conjectured",
+          "note": "Principal positive eigenmode plus a controlled spectral remainder yields normalized conditional-law attraction and the principal survival scale; the compact self-adjoint spectral adapter remains explicit."
+        },
+        "P-EVO-03": {
+          "state": "conjectured",
+          "note": "The same left/right Perron geometry controls normalized mean composition and positive reproductive-value uniqueness, but rank-one power convergence and primitive-matrix uniqueness are stronger inputs than bare eigenstructure."
+        },
+        "P-EVO-04": {
+          "state": "conjectured",
+          "note": "A positive right Perron eigenvector turns conditional mean evolution into a normalized reproductive-value martingale; adaptedness and integrability are stochastic adapter obligations."
         }
       }
     }
@@ -1053,6 +1084,139 @@
       "source_title": "",
       "analysis_summary": "The finite-chain source theorem is realized exactly: Cesaro averages have convergent subsequences by simplex compactness, and every subsequential limit is invariant because the one-step Cesaro defect telescopes to zero.",
       "schema_rationale": "This is the finite compact analogue of P-PER-02's Feller occupation-limit argument, giving M-OI-01 a genuine cross-family candidate pair without yet claiming a generic Lean generator."
+    },
+    "P-QSD-01": {
+      "source_line": 847,
+      "lean_theorems": [
+        "UEOT.V3.QSDTVLimit.p_qsd_01"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "conditioned_limit_eigenmeasure",
+        "projective_semigroup_fixed_point",
+        "exponential_survival"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "quasi_stationarity",
+        "conditional_limit"
+      ],
+      "source_title": "条件稳定化的逆向结论。",
+      "analysis_summary": "The canonical Lean theorem preserves the frozen continuous-time killed-subprobability semigroup, one literal initial law, total-variation convergence of its normalized surviving marginals, positivity of q-survival for every positive finite lag, and right continuity at zero. It derives the QSD eigenmeasure relation, multiplicativity of q-survival, and the nonnegative exponential decay rate rather than assuming them.",
+      "schema_rationale": "This is a projective/normalized fixed-point consequence of an asymptotic conditioned limit. It is structurally adjacent to invariant-cluster-point results but its normalization and multiplicative survival cocycle are genuine extra semantics, so it is not assigned to M-OI-01 yet."
+    },
+    "P-QSD-02": {
+      "source_line": 879,
+      "lean_theorems": [
+        "UEOT.V3.QSDPerron.p_qsd_02",
+        "UEOT.V3.QSDPerron.p_qsd_02_killed"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "positive_eigenstructure",
+        "doob_h_transform",
+        "quasi_stationary_distribution",
+        "transformed_invariant_law"
+      ],
+      "candidate_generator_ids": [
+        "M-PE-01"
+      ],
+      "scientific_roles": [
+        "quasi_stationarity",
+        "spectral_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "Conditional on the source-designated Perron data, the Lean layer exactly derives qQ^n=rho^n q, survival mass rho^n, a stochastic nonnegative Doob h-transform, and the invariant probability q*h; the killed wrapper also derives rho<=1 from substochastic rows.",
+      "schema_rationale": "This is the clean algebraic core of a positive left/right eigenstructure calculus. Perron existence is not smuggled into UEOT and q is kept distinct from the Doob stationary law."
+    },
+    "P-QSD-03": {
+      "source_line": 901,
+      "lean_theorems": [
+        "UEOT.V3.QSDDurationWindow.p_qsd_03",
+        "UEOT.V3.QSDDurationWindow.window_nonempty_iff"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "dual_exponential_threshold",
+        "duration_window",
+        "same_initial_certificate"
+      ],
+      "candidate_generator_ids": [],
+      "scientific_roles": [
+        "quasi_stationary_window",
+        "certificate_intersection"
+      ],
+      "source_title": "",
+      "analysis_summary": "The Lean theorem solves the two source exponential inequalities exactly and intersects them on the same initial law, preserving the closed singleton-window case and preventing a mixing estimate for one initial state from being spliced with a survival estimate for another.",
+      "schema_rationale": "This is an exact scalar threshold-intersection adapter. It is useful certificate plumbing but not presently evidence for a deeper cross-family generator."
+    },
+    "P-QSD-04": {
+      "source_line": 928,
+      "lean_theorems": [
+        "UEOT.V3.ReversibleKilledSpectralQSD.p_qsd_04"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "principal_mode_dominance",
+        "spectral_gap_qsd",
+        "survival_scale",
+        "reversible_killed_spectrum"
+      ],
+      "candidate_generator_ids": [
+        "M-PE-01"
+      ],
+      "scientific_roles": [
+        "quasi_stationarity",
+        "spectral_adapter"
+      ],
+      "source_title": "",
+      "analysis_summary": "The source-facing theorem exactly reconstructs the normalized positive principal-eigenfunction QSD, exponential TV attraction at the lambda2-lambda1 spectral-gap rate, and eventual survival lower bound at the principal lambda1 decay rate from the reversible compact-resolvent spectral datum.",
+      "schema_rationale": "Its reusable core is principal positive-mode dominance after normalization, but the self-adjoint compact-resolvent expansion and L2-to-L1 remainder estimates remain domain-specific adapters."
+    },
+    "P-EVO-03": {
+      "source_line": 2589,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionPerronGrowth.p_evo_03"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "principal_mode_dominance",
+        "perron_growth",
+        "normalized_composition",
+        "reproductive_value_uniqueness"
+      ],
+      "candidate_generator_ids": [
+        "M-PE-01"
+      ],
+      "scientific_roles": [
+        "evolution_growth",
+        "positive_operator_adapter"
+      ],
+      "source_title": "平均增长和繁殖价值。",
+      "analysis_summary": "From one source-tied primitive-matrix Perron certificate, the Lean theorem derives scaled mean growth toward the rank-one principal mode, normalized mean composition toward the left Perron vector, and uniqueness of any positive linear reproductive valuation as the Perron right eigendirection.",
+      "schema_rationale": "The theorem shares positive left/right eigenstructure and principal-mode normalization with QSD, while its primitive-matrix rank-one asymptotic and valuation semantics remain evolution-specific."
+    },
+    "P-EVO-04": {
+      "source_line": 2609,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionReproductiveMartingale.p_evo_04"
+      ],
+      "lean_identity_relation": "source_facing_exact",
+      "schema_labels": [
+        "right_eigenfunction_martingale",
+        "reproductive_value",
+        "conditional_mean_dynamics"
+      ],
+      "candidate_generator_ids": [
+        "M-PE-01"
+      ],
+      "scientific_roles": [
+        "evolution_growth",
+        "stochastic_adapter"
+      ],
+      "source_title": "繁殖价值鞅。",
+      "analysis_summary": "The canonical Lean endpoint preserves the frozen conditional-mean offspring dynamics and derives that R^{-n} Z_n r is a nonnegative integrable martingale with constant expected reproductive value, using the positive Perron right eigenrelation rather than assuming the martingale directly.",
+      "schema_rationale": "This is the stochastic right-eigenfunction consequence of positive eigenstructure. Adaptedness, integrability, and the conditional-mean reproduction interface are explicit domain adapters."
     }
   }
 }
