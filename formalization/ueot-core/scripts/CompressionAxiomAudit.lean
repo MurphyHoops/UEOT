@@ -10,6 +10,8 @@ import UEOT.V3.Compression
 #print axioms UEOT.V3.Compression.TransportCertificate.twoStage_bound
 #print axioms UEOT.V3.Compression.TransportCertificate.factorRoute_exact
 #print axioms UEOT.V3.Compression.TransportCertificate.chain_bound
+#print axioms UEOT.V3.Compression.TransportCertificate.weighted_chain_bound
+#print axioms UEOT.V3.Compression.TransportCertificate.development_pipeline_via_weighted_chain
 #print axioms UEOT.V3.Compression.TransportCertificate.processInterface_exact_source_via_twoStage
 #print axioms UEOT.V3.Compression.TransportCertificate.processInterface_approx_via_twoStage
 #print axioms UEOT.V3.Compression.TransportCertificate.transportDefect_source_via_chain
