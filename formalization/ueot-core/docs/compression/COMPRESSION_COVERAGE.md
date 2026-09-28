@@ -19,7 +19,7 @@ changes the completed **106/106 FULL-GREEN** source status.
 | source P-IDs analyzed | 42 / 106 |
 | schema-classified P-IDs | 42 / 106 |
 | fully Lean-rederived P-IDs | 6 / 106 |
-| counted compressed P-IDs | 5 / 106 |
+| counted compressed P-IDs | 6 / 106 |
 | final dispositions assigned | 0 / 106 |
 | generated final dispositions | 0 / 106 |
 | retained domain adapters | 0 / 106 |
