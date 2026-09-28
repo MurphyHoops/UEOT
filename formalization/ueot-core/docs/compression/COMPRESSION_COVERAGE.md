@@ -16,8 +16,8 @@ changes the completed **106/106 FULL-GREEN** source status.
 
 | metric | count |
 |---|---:|
-| source P-IDs analyzed | 54 / 106 |
-| schema-classified P-IDs | 54 / 106 |
+| source P-IDs analyzed | 74 / 106 |
+| schema-classified P-IDs | 74 / 106 |
 | fully Lean-rederived P-IDs | 6 / 106 |
 | counted compressed P-IDs | 6 / 106 |
 | final dispositions assigned | 0 / 106 |
@@ -287,6 +287,34 @@ They share infrastructure, but no new M-ID is counted merely by renaming
 standard finite-poset, hypergraph, or Galois-connection theorems. A later
 cross-family compression may combine them only after a genuinely smaller
 generic Lean interface is demonstrated.
+
+
+### Composition / statistics / identifiability / telescoping audit
+
+Twenty additional frozen rows are now source↔Lean↔schema audited without
+changing counted generator or mapping status:
+
+- P-COMP-01..07: conditional path-factorization information, intervention JS,
+  composition-margin stability, parent conditional-information monotonicity,
+  Boolean overlap atoms, physical-carrier coalition lifting, and compact
+  monotone composition windows;
+- P-STAT-01..06 and P-STAT-08: finite-alphabet TV concentration, deterministic
+  carrier-defect stability, threshold/minimal-family recovery, predictive-class
+  recovery, Hilbert/RKHS embedding concentration, and finite-candidate ERM
+  validation;
+- P-INV-01..05: TV binary-testing limits, Fisher gauge directions, Fisher-kernel
+  intersection across interventions, Gram identifiability, and predictable-design
+  OLS confidence;
+- P-TEL-01: discounted potential telescoping and positive-affine policy-value
+  invariance.
+
+The batch intentionally introduces **no new M-ID**. The reusable mathematics is
+real but is presently standard domain infrastructure (information geometry,
+finite-sample concentration, finite Boolean/order structure, compact monotone
+threshold geometry, linear inverse problems, and discounted telescoping) rather
+than a demonstrated smaller cross-family UEOT generator. This advances Gate A
+coverage while preserving the Mission Contract rule against cosmetic
+relabeling.
 
 ## Counting rule
 

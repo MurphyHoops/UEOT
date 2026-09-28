@@ -49,3 +49,25 @@ import UEOT.V3.ClosureResolution
 import UEOT.V3.BlockerNaturality
 import UEOT.Core.Resolution
 import UEOT.V3.Resolution
+
+import UEOT.V3.CompositionPathSource
+import UEOT.V3.CompositionInterventionJS
+import UEOT.V3.CompositionMargin
+import UEOT.V3.CompositionParentInformation
+import UEOT.V3.CompositionBooleanAtoms
+import UEOT.V3.CompositionCarrierLift
+import UEOT.V3.CompositionWindow
+import UEOT.V3.FiniteAlphabetPStat01
+import UEOT.V3.FiniteAlphabetPStat01Radius
+import UEOT.V3.StatisticalDefect
+import UEOT.V3.Threshold
+import UEOT.V3.PredictiveClassRecovery
+import UEOT.V3.HilbertMeanSourceRadius
+import UEOT.V3.HilbertMeanSourceSimultaneous
+import UEOT.V3.FiniteCandidatePStat08
+import UEOT.V3.BinaryTesting
+import UEOT.V3.FisherGauge
+import UEOT.V3.FisherIntersection
+import UEOT.V3.DesignIdentifiability
+import UEOT.V3.PredictableOLSSourceConfidence
+import UEOT.V3.RewardInfinite
