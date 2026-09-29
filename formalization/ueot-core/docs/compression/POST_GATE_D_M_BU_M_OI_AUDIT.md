@@ -242,7 +242,31 @@ M-OI candidate.
 
 ### 4.5 Proof-compression audit
 
-The result is mixed but real.
+The first experimental version was **blocked by independent Codex review** at
+reviewed commit `5a681db0c0`.  The review identified two material problems:
+
+1. `equal_at_limit_of_residual` by itself was only subtraction plus Hausdorff
+   limit uniqueness, so classifying it as a generator would overstate the
+   amount of shared mathematics actually moved into the compression layer;
+2. the proposed P-GOA-01 ablation witness had not frozen a witness-specific
+   registered adapter surface before declaring deletion failure.
+
+Those objections are accepted.  They invalidate the *v1 promotion claim*, not
+the exactness of the two wrappers.
+
+The v2 experiment at code checkpoint `74f29187b0429707a1a15ef5cbdeba64c0e0d330`
+therefore strengthens the common theorem surface to
+`invariant_of_continuous_observable_residual`.  Its inputs are now:
+
+- one state-valued sequence converging to a candidate limit;
+- a separating family of observables;
+- continuity of every base observable;
+- continuity of every evolved observable;
+- asymptotically vanishing observable evolution residual.
+
+The generic theorem itself now performs both continuity passages to the limit,
+observable residual identification, and the final separation step from
+observable equality to state invariance.
 
 For P-GOA-01, the frozen endpoint previously inlined:
 
@@ -251,17 +275,23 @@ For P-GOA-01, the frozen endpoint previously inlined:
 - comparison with the independently vanishing residual;
 - uniqueness of the limit.
 
-The M-OI wrapper delegates the final limit-identification calculus to one
-generic theorem.
+The v2 M-OI wrapper now delegates the continuity/observable/separation
+invariance calculus to the common theorem.  The finite adapter retains only
+the genuinely finite-chain pieces: simplex subsequence extraction, the
+Cesaro residual telescope, and the concrete linear observable/transition
+realization.
 
 For P-PER-02, the source already contains the named helper
 `invariant_of_occupation_tendsto`. The full P-PER-02 endpoint was already
-short. M-OI therefore does not substantially shorten that endpoint. Instead it
-shows that the *inside* of the existing Feller helper and the inlined finite
-GOA argument share a generic residual-limit mechanism.
+short. The v2 wrapper therefore does not claim raw endpoint-LOC compression.
+Instead, its independent reconstruction routes the Feller invariance proof
+through the same generic continuous-observable theorem used by P-GOA-01.
+The Feller adapter retains the semigroup-specific shift bound and the
+probability-measure observable realization.
 
-Accordingly, M-OI is genuine semantic/proof-schema compression, but not a large
-raw-LOC compression of P-PER-02.
+Accordingly, v2 establishes a materially stronger common theorem surface than
+v1, but **promotion remains unproven until the revised deletion audit and a new
+independent review are CLEAR**.
 
 ### 4.6 Ablation
 
@@ -271,7 +301,7 @@ The two mappings behave differently.
 `invariant_of_occupation_tendsto` is retained as a registered adapter.
 Therefore P-PER-02 is not a valid nonredundancy witness.
 
-**P-GOA-01 is the candidate nonredundancy witness.**
+**P-GOA-01 remains only a candidate nonredundancy witness.**
 
 Its source endpoint currently inlines the residual-limit argument. Outside the
 endpoint itself, the retained source surface supplies:
@@ -286,8 +316,11 @@ frozen theorem-surface rule used by Gate C, reconstructing that macro step from
 raw Mathlib limit uniqueness would create a new derivation node — precisely the
 node now formalized as M-OI.
 
-Therefore M-OI has a plausible Gate-C-style nonredundancy witness through
-P-GOA-01.
+Round-1 review correctly rejected the earlier conversational form of this
+argument.  The exact witness-specific adapter surface and deletion rules are
+now moved to the dedicated artifact
+`POST_GATE_D_M_OI_ABLATION.md`.  No nonredundancy conclusion is counted here
+until that artifact receives independent review.
 
 This is a theorem-surface architectural claim, not absolute logical
 independence: the generic residual-limit lemma is standard topology/algebra.
@@ -327,27 +360,37 @@ No third exact P-ID mapping is claimed.
 
 ### 4.9 M-OI verdict
 
-**PROMOTION CANDIDATE — REQUIRES INDEPENDENT REVIEW BEFORE LEDGER CHANGE.**
+**ROUND-1 BLOCKED; V2 STRONGER CORE UNDER PROMOTION RE-AUDIT.**
 
-M-OI now passes:
+What is already established:
 
 - generic Lean theorem surface;
 - full build and compression guard;
 - two exact source-facing mappings;
 - cross-family reuse;
 - preserved domain boundaries;
-- a plausible P-GOA-01 ablation witness.
+- both exact wrapper signatures match their frozen source-facing endpoints;
+- the v2 wrappers actually call the stronger common continuous-observable
+  invariance theorem.
 
-It does *not* establish:
+What is **not** yet established:
+
+- Gate-C-style nonredundancy of M-OI under a frozen registered adapter DAG;
+- that the strengthened common layer is sufficiently non-cosmetic to count as
+  a UEOT meta-generator rather than a reusable bridge;
+- independent CLEAR review of the v2 theorem surface.
+
+It also does *not* establish:
 
 - a novel mathematical theorem;
 - a universal long-run generator;
 - P-PER-01, P-QSD-01, or P-GOA-02..04 generation;
 - automatic replacement of the frozen Gate-D core.
 
-The strongest honest next action is an independent promotion audit of the
-current branch, followed — only if CLEAR — by a dedicated post-Gate-D
-integration/ledger PR.
+The strongest honest next action is therefore: freeze and audit the P-GOA-01
+deletion surface, rerun full CI, then request a fresh independent review of the
+v2 code and ablation artifact.  Only a CLEAR result can reopen the ledger
+promotion question.
 
 ## 5. Effect on frozen Gate-D core
 
@@ -375,9 +418,9 @@ then.
 
 - **M-BU-01:** keep formalized on a research/integration branch as a reusable
   bridge; do not count in the minimal core.
-- **M-OI-01:** send to independent promotion review.
+- **M-OI-01:** keep uncounted while the v2 stronger core and exact deletion
+  surface undergo independent re-review.
 - Do not edit the frozen ledger until review explicitly checks exact source
   equivalence, adapter smuggling, and the P-GOA-01 ablation claim.
-- If review is CLEAR, create a dedicated integration branch/PR that adds M-OI
-  as a post-Gate-D counted generator and increments exact generated coverage
-  from 9/106 to 11/106 while preserving the historical Gate-D record.
+- Do **not** advertise 11/106 generated coverage unless a later review clears
+  both the non-cosmetic-generator test and the scoped deletion audit.
