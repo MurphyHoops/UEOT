@@ -80,8 +80,13 @@ M-OI feature/audit PR #173 merged to
 `main@4a20ad6829eaa2afd46ad39f3cddab6b36341332`; resulting-main Core Lean
 `36573837548` and Compression Guard `36573837433` are both SUCCESS. Because the
 live counted core changed after FINAL, the ledger is deliberately reopened to
-`ready_for_finalization`. A fresh candidate-main push and a fresh normal-merge
-closure PR must establish a new Gate-D checkpoint for the four-generator state.
+`ready_for_finalization`. The counted-promotion PR #174 then merged to exact
+candidate scientific main
+`bf1d01a0f7bf658f8c205ddcc1a2832a4bb3638b`; candidate-main push Core Lean
+`36578717005` and Compression Guard `36578717533` are both SUCCESS. This branch
+is the dedicated post-Gate-D re-finalization closure lane. The fresh closure PR
+number is intentionally recorded only after that PR exists, before the live
+ledger transitions from `ready_for_finalization` back to `final`.
 Until that lifecycle completes, **11/106 is live candidate-main accounting, not
 a new FINAL announcement**.
 
