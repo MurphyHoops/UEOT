@@ -27,7 +27,9 @@ changes the completed **106/106 FULL-GREEN** source status.
 | unresolved final dispositions | 0 / 106 |
 | counted meta-generators | 4 |
 
-Mission state: **FINAL (POST-GATE-D RE-FINALIZATION CLOSURE ACTIVE)**. Minimal core:
+Closure status: **FINALIZATION EVIDENCE RECORDED / PRE-ANNOUNCEMENT**. The live
+machine ledger field is `final` so the closure references can be validated, but
+the new human-facing FINAL checkpoint is **not announced yet**. Minimal core:
 **FROZEN = {M-QD-01, M-TC-01, M-PE-01, M-OI-01}**. Ablation:
 **COMPLETE**. Scoped minimality claim:
 **NONREDUNDANT_UNDER_DECLARED_DERIVATION_SYSTEM**.
