@@ -45,16 +45,20 @@ a secondary boundary role.
 is exactly **{M-QD-01, M-TC-01, M-PE-01}**. The ablation audit in
 `COMPRESSION_ABLATION.md` removes each generator in turn and records:
 
-- removing M-QD-01 breaks generated P-PRED-01 and P-INT-02;
+- removing M-QD-01 breaks generated P-PRED-01; P-INT-02 remains
+  reconstructible through its pre-existing StructuredQuotient adapter route and
+  therefore is not used as an ablation witness;
 - removing M-TC-01 breaks generated P-API-01, P-ID-01, P-ID-02, P-DYN-03,
   and P-DYN-04;
 - removing M-PE-01 breaks generated P-QSD-02 and P-EVO-04.
 
 For each deletion, the remaining two counted generators plus registered
-adapters lack the removed mathematical primitive under the declared
-formalization. This is the Mission Contract's scoped nonredundancy claim, **not
-absolute logical independence or uniqueness across all possible future
-axiomatizations**.
+adapters fail to recover at least one designated generated witness without
+reintroducing the removed mathematical primitive. Generated attribution alone
+does not imply breakage: P-INT-02 is explicitly retained as reconstructible
+after M-QD deletion through its already registered source adapter surface.
+This is the Mission Contract's scoped nonredundancy claim, **not absolute
+logical independence or uniqueness across all possible future axiomatizations**.
 
 Gate D remains repository closure: merge this candidate scientific state,
 verify successful push CI on the exact candidate-main SHA, then use the
