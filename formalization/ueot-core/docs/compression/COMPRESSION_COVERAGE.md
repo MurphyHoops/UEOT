@@ -241,7 +241,7 @@ A generic Lean generator is now formalized for the common positive-eigenstructur
 calculus and exactly reconstructs P-QSD-02 and P-EVO-04 through explicit
 source-facing wrappers. Perron existence/simplicity, primitive-matrix rank-one
 power asymptotics, and reversible compact-resolvent spectral remainders remain
-explicit adapters; therefore P-EVO-03 and P-QSD-04 are not claimed generated.
+explicit adapters; therefore P-EVO-03 and P-QSD-04 are not claimed Lean-rederived by M-PE-01.
 The stochastic adaptedness/integrability premises of P-EVO-04 also remain
 explicit source adapter assumptions. In particular, a QSD q is not identified
 with the Doob stationary law q*h.
