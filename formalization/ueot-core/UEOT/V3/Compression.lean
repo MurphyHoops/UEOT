@@ -109,3 +109,5 @@ import UEOT.V3.Compression.PositiveEigenstructure
 
 import UEOT.V3.Compression.OccupationLimitInvariance
 import UEOT.V3.Compression.BayesianRecursiveClosure
+
+import UEOT.V3.Compression.StructuralDefectClosure
