@@ -261,9 +261,9 @@ theorem p_dyn_03_via_multiplicative_chain
     (hε0 : ∀ n, 0 ≤ ε n)
     (hε1 : ∀ n, ε n ≤ 1)
     (hTV : ∀ n h,
-      tvDist (K n h).toMeasure (L n h).toMeasure ≤ ε n) :
+      UEOT.V3.TotalVariation.tvDist (K n h).toMeasure (L n h).toMeasure ≤ ε n) :
     ∀ T,
-      tvDist
+      UEOT.V3.TotalVariation.tvDist
           (UEOT.V3.PathError.causalLaw p₀ K T).toMeasure
           (UEOT.V3.PathError.causalLaw p₀ L T).toMeasure
         ≤ 1 - (∏ i ∈ Finset.range T, (1 - ε i)) ∧
