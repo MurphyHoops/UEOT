@@ -15,8 +15,8 @@
     "analyzed_pids": 106,
     "schema_classified_pids": 106,
     "lean_rederived_pids": 8,
-    "counted_compressed_pids": 6,
-    "counted_generators": 2,
+    "counted_compressed_pids": 8,
+    "counted_generators": 3,
     "final_disposition_pids": 0,
     "generated_pids": 0,
     "retained_adapter_pids": 0,
@@ -317,7 +317,7 @@
     },
     "M-PE-01": {
       "title": "Positive Eigenstructure Calculus",
-      "state": "integration_green",
+      "state": "counted_generator",
       "canonical_theorems": [
         "UEOT.V3.Compression.PositiveEigenstructure.qsdDoob_bundle",
         "UEOT.V3.Compression.PositiveEigenstructure.scale_le_one_of_substochastic",
@@ -333,14 +333,31 @@
       ],
       "mappings": {
         "P-QSD-02": {
-          "state": "assumption_audited",
+          "state": "counted",
           "witness_theorems": [
             "UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_via_positiveEigenstructure",
             "UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_killed_via_positiveEigenstructure"
           ],
           "assumption_relation": "exact",
           "conclusion_relation": "exact",
-          "note": "Reconstructs both frozen P-QSD-02 endpoints from the generic positive bi-eigenstructure calculus: exact normalized QSD propagation, survival mass, stochastic/nonnegative Doob h-transform, normalized q*h invariant law, and rho<=1 under the same substochastic-row assumption. Perron existence is not assumed or smuggled beyond the source-designated eigenstructure hypotheses."
+          "note": "Reconstructs both frozen P-QSD-02 endpoints from the generic positive bi-eigenstructure calculus: exact normalized QSD propagation, survival mass, stochastic/nonnegative Doob h-transform, normalized q*h invariant law, and rho<=1 under the same substochastic-row assumption. Perron existence is not assumed or smuggled beyond the source-designated eigenstructure hypotheses.",
+          "promotion": {
+            "generator_id": "M-PE-01",
+            "feature_head": "4f05a5e0746ad55cc16a96cf99e4d31f315e4d69",
+            "feature_core_lean_run": 36502085356,
+            "feature_compression_guard_run": 36502085337,
+            "integration_head": "5ac5828bfd1b6f27ec1ae8be932507b28cdf970a",
+            "integration_core_lean_run": 36502098340,
+            "integration_compression_guard_run": 36502098306,
+            "integration_pr": 166,
+            "pr_exact_head": "9bc5b5382b83481327f7fb6175cbad79bb7c120b",
+            "pr_exact_head_core_lean_run": 36507153200,
+            "pr_exact_head_compression_guard_run": 36507153319,
+            "merged_main": "b8097ef2a886256342f1b281b100e209738aea19",
+            "resulting_main_core_lean_run": 36509613613,
+            "resulting_main_compression_guard_run": 36509613601,
+            "ledger_checkpoint": "M-PE-01-CROSS-FAMILY"
+          }
         },
         "P-QSD-04": {
           "state": "conjectured",
@@ -351,13 +368,30 @@
           "note": "The same left/right Perron geometry controls normalized mean composition and positive reproductive-value uniqueness, but rank-one power convergence and primitive-matrix uniqueness are stronger inputs than bare eigenstructure."
         },
         "P-EVO-04": {
-          "state": "assumption_audited",
+          "state": "counted",
           "witness_theorems": [
             "UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure"
           ],
           "assumption_relation": "weaker",
           "conclusion_relation": "exact",
-          "note": "Reconstructs the full frozen reproductive-value martingale bundle from the generic right-eigenstructure readout theorem plus the source stochastic adapter assumptions. The wrapper removes only the external DecidableEq-I typeclass by using a classical finite-type instance; no substantive source assumption is strengthened."
+          "note": "Reconstructs the full frozen reproductive-value martingale bundle from the generic right-eigenstructure readout theorem plus the source stochastic adapter assumptions. The wrapper removes only the external DecidableEq-I typeclass by using a classical finite-type instance; no substantive source assumption is strengthened.",
+          "promotion": {
+            "generator_id": "M-PE-01",
+            "feature_head": "4f05a5e0746ad55cc16a96cf99e4d31f315e4d69",
+            "feature_core_lean_run": 36502085356,
+            "feature_compression_guard_run": 36502085337,
+            "integration_head": "5ac5828bfd1b6f27ec1ae8be932507b28cdf970a",
+            "integration_core_lean_run": 36502098340,
+            "integration_compression_guard_run": 36502098306,
+            "integration_pr": 166,
+            "pr_exact_head": "9bc5b5382b83481327f7fb6175cbad79bb7c120b",
+            "pr_exact_head_core_lean_run": 36507153200,
+            "pr_exact_head_compression_guard_run": 36507153319,
+            "merged_main": "b8097ef2a886256342f1b281b100e209738aea19",
+            "resulting_main_core_lean_run": 36509613613,
+            "resulting_main_compression_guard_run": 36509613601,
+            "ledger_checkpoint": "M-PE-01-CROSS-FAMILY"
+          }
         }
       },
       "promotion": {
@@ -367,6 +401,13 @@
         "integration_head": "5ac5828bfd1b6f27ec1ae8be932507b28cdf970a",
         "integration_core_lean_run": 36502098340,
         "integration_compression_guard_run": 36502098306,
+        "integration_pr": 166,
+        "pr_exact_head": "9bc5b5382b83481327f7fb6175cbad79bb7c120b",
+        "pr_exact_head_core_lean_run": 36507153200,
+        "pr_exact_head_compression_guard_run": 36507153319,
+        "merged_main": "b8097ef2a886256342f1b281b100e209738aea19",
+        "resulting_main_core_lean_run": 36509613613,
+        "resulting_main_compression_guard_run": 36509613601,
         "cross_family_exact_mappings": [
           "P-QSD-02",
           "P-EVO-04"
@@ -375,7 +416,8 @@
           "P-QSD-02",
           "P-EVO-04",
           "M-PE-01"
-        ]
+        ],
+        "ledger_checkpoint": "M-PE-01-CROSS-FAMILY"
       }
     }
   },
