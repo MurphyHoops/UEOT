@@ -320,13 +320,9 @@
       "ablation": {
         "result": "nonredundant_under_declared_derivation_system",
         "broken_pids": [
-          "P-API-01",
-          "P-ID-01",
-          "P-ID-02",
-          "P-DYN-03",
-          "P-DYN-04"
+          "P-DYN-03"
         ],
-        "rationale": "Removing M-TC-01 removes the only counted generic defect/certificate accumulation layer: two-stage transport, additive and weighted finite chains, exact commuting transport, and multiplicative certificate recurrence. M-QD-01 and M-PE-01 do not provide these quantitative recurrences.",
+        "rationale": "Removing M-TC-01 removes the only counted multiplicative certificate recurrence used by the P-DYN-03 compression derivation. M-QD-01 supplies quotient descent and M-PE-01 supplies positive-eigenstructure calculus; neither provides multi-step product survival accumulation. Other M-TC generated mappings remain attributed to M-TC but are deliberately not used as ablation witnesses because Gate C does not require proving every attributed mapping unavailable under deletion.",
         "remaining_core_derivability": {
           "remaining_generator_ids": [
             "M-QD-01",
@@ -337,21 +333,12 @@
             "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
             "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
             "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
-            "Local TV, Lipschitz, PMF-overlap, triangle, and measurable-pushforward facts remain registered adapters, but a missing finite-chain or multiplicative accumulation theorem may not be hidden inside those adapters."
+            "For the P-DYN-03 witness, finite-PMF common mass, the one-step TV-to-overlap estimate, the exact TV/common-mass identity, and the product-to-sum inequality remain admissible registered adapters, but no registered remaining-core theorem supplies the multi-step multiplicative certificate recurrence. The frozen source endpoint and full source path-recurrence theorem are not admissible replacements."
           ],
           "audit_evidence": [
             "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
-            "theorem:UEOT.V3.Compression.TransportCertificate.twoStage_bound",
-            "theorem:UEOT.V3.Compression.TransportCertificate.chain_bound",
-            "theorem:UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
             "theorem:UEOT.V3.Compression.TransportCertificate.multiplicative_chain_lower_bound",
-            "theorem:UEOT.V3.Compression.TransportCertificate.processInterface_approx_via_twoStage",
-            "theorem:UEOT.V3.Compression.TransportCertificate.transportDefect_source_via_chain",
-            "theorem:UEOT.V3.Compression.TransportCertificate.development_pipeline_via_weighted_chain",
-            "theorem:UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain",
-            "theorem:UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_approx_via_twoStage",
-            "theorem:UEOT.V3.Compression.TransportCertificate.processInterface_exact_source_via_twoStage",
-            "theorem:UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_exact_via_factor"
+            "theorem:UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain"
           ]
         }
       }
@@ -505,10 +492,9 @@
       "ablation": {
         "result": "nonredundant_under_declared_derivation_system",
         "broken_pids": [
-          "P-QSD-02",
           "P-EVO-04"
         ],
-        "rationale": "Removing M-PE-01 removes the only counted positive left/right eigenstructure layer. M-QD-01 has quotient universal properties and M-TC-01 has certificate transport, but neither derives positive eigenrelations, Doob-transform normalization/invariance, or the stochastic eigenvector martingale used by the generated QSD and evolution mappings.",
+        "rationale": "Removing M-PE-01 removes the only counted theorem that turns positive right eigenstructure plus the frozen conditional-mean assumptions into the normalized reproductive-value martingale bundle used by P-EVO-04. M-QD-01 supplies quotient descent and M-TC-01 supplies transport/certificate recurrence; neither provides positive-eigenvector stochastic martingale calculus. P-QSD-02 remains attributed to M-PE but is not needed as a separate ablation witness.",
         "remaining_core_derivability": {
           "remaining_generator_ids": [
             "M-QD-01",
@@ -519,15 +505,12 @@
             "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
             "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
             "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
-            "Concrete killed-kernel, matrix, and conditional-mean semantics may be supplied by source adapters, but the positive eigenstructure consequences themselves must come from an existing counted theorem rather than a replacement adapter."
+            "For the P-EVO-04 witness, the concrete conditional-mean dynamics, positivity, adaptedness, integrability, initialization, and Perron eigenrelation remain admissible source assumptions, but no theorem in the remaining counted core turns those data into the normalized martingale/nonnegativity/integrability/constant-expectation bundle."
           ],
           "audit_evidence": [
             "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
-            "theorem:UEOT.V3.Compression.PositiveEigenstructure.qsdDoob_bundle",
             "theorem:UEOT.V3.Compression.PositiveEigenstructure.stochasticRightEigen_bundle",
-            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_via_positiveEigenstructure",
-            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure",
-            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_killed_via_positiveEigenstructure"
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure"
           ]
         }
       }
