@@ -14,7 +14,7 @@
   "coverage": {
     "analyzed_pids": 106,
     "schema_classified_pids": 106,
-    "lean_rederived_pids": 8,
+    "lean_rederived_pids": 9,
     "counted_compressed_pids": 8,
     "counted_generators": 3,
     "final_disposition_pids": 0,
@@ -153,13 +153,14 @@
         "UEOT.V3.Compression.TransportCertificate.twoStage_exact",
         "UEOT.V3.Compression.TransportCertificate.factorRoute_exact",
         "UEOT.V3.Compression.TransportCertificate.chain_bound",
-        "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound"
+        "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
+        "UEOT.V3.Compression.TransportCertificate.multiplicative_chain_lower_bound"
       ],
       "explicit_nonclaims": [
         "domain-specific contraction hypotheses are not automatic",
         "probability and measurability obligations remain in each specialization",
-        "the additive and weighted chain calculus does not by itself recover P-DYN-03's sharp multiplicative path-coupling bound",
-        "P-STAT-09's Radon-Nikodym density-ratio branch is not implied by the current contraction-plus-triangle calculus"
+        "P-STAT-09's Radon-Nikodym density-ratio branch is not implied by the current contraction-plus-triangle calculus",
+        "P-DYN-03's finite-PMF common-mass/TV bridge remains a domain specialization; M-TC-01 supplies the generic multiplicative certificate recurrence rather than hiding coupling semantics"
       ],
       "mappings": {
         "P-API-01": {
@@ -216,8 +217,13 @@
           }
         },
         "P-DYN-03": {
-          "state": "conjectured",
-          "note": "The additive half is transport-certificate shaped, but the frozen source also requires the sharp 1-prod(1-epsilon_t) path bound from a multiplicative common-mass/coupling recurrence; no full M-TC-01 mapping is claimed yet."
+          "state": "lean_rederived",
+          "witness_theorems": [
+            "UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain"
+          ],
+          "assumption_relation": "exact",
+          "conclusion_relation": "exact",
+          "note": "The full frozen sharp product path-TV bound and additive union-bound corollary are reconstructed from the generic multiplicative certificate recurrence. Finite-PMF common mass, the one-step TV-to-overlap estimate, the exact TV/common-mass identity, and the product-to-sum union bound remain explicit source/domain adapters. The wrapper does not call the frozen P-DYN-03 endpoint or the source's full path common-mass recurrence."
         },
         "P-STAT-09": {
           "state": "conjectured",
