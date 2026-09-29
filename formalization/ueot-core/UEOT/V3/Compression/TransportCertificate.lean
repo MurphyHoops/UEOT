@@ -1,6 +1,7 @@
 import UEOT.V3.ProcessInterface
 import UEOT.V3.TransportDefect
 import UEOT.V3.InformationPacking
+import UEOT.V3.PathError
 import Mathlib.Analysis.ODE.DiscreteGronwall
 
 /-!
@@ -170,6 +171,29 @@ theorem weighted_chain_bound
             ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := by
       rw [mul_comm (defect 0 (ideal 0) (actual 0))]
 
+/-- Generic multiplicative certificate accumulation.
+
+If a nonnegative one-step factor `factor n` preserves at least that fraction of
+the current certificate `survival n`, then the certificate at time `n`
+dominates the product of all preceding factors.  Probability, coupling, and
+path-law semantics are deliberately absent from this meta theorem and must be
+supplied by a specialization. -/
+theorem multiplicative_chain_lower_bound
+    (factor survival : ℕ → ℝ)
+    (hfactor : ∀ n, 0 ≤ factor n)
+    (hbase : 1 ≤ survival 0)
+    (hstep : ∀ n, survival n * factor n ≤ survival (n + 1)) :
+    ∀ n, (∏ i ∈ Finset.range n, factor i) ≤ survival n := by
+  intro n
+  induction n with
+  | zero =>
+      simpa using hbase
+  | succ n ih =>
+      rw [Finset.prod_range_succ]
+      exact
+        (mul_le_mul_of_nonneg_right ih (hfactor n)).trans
+          (hstep n)
+
 universe uDev
 
 /-- Full source-facing P-ID-02 finite-horizon development bound reconstructed
@@ -216,6 +240,73 @@ theorem development_pipeline_via_weighted_chain
     dsimp [defect, actual, step]
     exact hres k
   · exact hL0
+
+universe uHist
+
+/-- Full frozen P-DYN-03 product-plus-union-bound statement reconstructed
+through the generic multiplicative certificate recurrence.
+
+The compression layer contributes only the abstract product recurrence.
+Finite-PMF common mass, the one-step TV-to-overlap estimate, the exact
+TV/common-mass identity, and the product-to-sum union bound remain explicit
+domain adapters from the source layer.  No source assumption is strengthened. -/
+theorem p_dyn_03_via_multiplicative_chain
+    {H₀ Z : Type uHist}
+    [Fintype H₀] [Fintype Z]
+    [MeasurableSpace H₀] [MeasurableSingletonClass H₀]
+    [MeasurableSpace Z] [MeasurableSingletonClass Z]
+    (p₀ : PMF H₀)
+    (K L : ∀ n, UEOT.V3.PathError.CausalHistory H₀ Z n → PMF Z)
+    (ε : ℕ → ℝ)
+    (hε0 : ∀ n, 0 ≤ ε n)
+    (hε1 : ∀ n, ε n ≤ 1)
+    (hTV : ∀ n h,
+      tvDist (K n h).toMeasure (L n h).toMeasure ≤ ε n) :
+    ∀ T,
+      tvDist
+          (UEOT.V3.PathError.causalLaw p₀ K T).toMeasure
+          (UEOT.V3.PathError.causalLaw p₀ L T).toMeasure
+        ≤ 1 - (∏ i ∈ Finset.range T, (1 - ε i)) ∧
+      1 - (∏ i ∈ Finset.range T, (1 - ε i))
+        ≤ ∑ i ∈ Finset.range T, ε i := by
+  intro T
+  constructor
+  · rw [UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass]
+    have hcommon :
+        (∏ i ∈ Finset.range T, (1 - ε i)) ≤
+          UEOT.V3.PathError.pmfCommonMass
+            (UEOT.V3.PathError.causalLaw p₀ K T)
+            (UEOT.V3.PathError.causalLaw p₀ L T) := by
+      apply multiplicative_chain_lower_bound
+        (factor := fun n => 1 - ε n)
+        (survival := fun n =>
+          UEOT.V3.PathError.pmfCommonMass
+            (UEOT.V3.PathError.causalLaw p₀ K n)
+            (UEOT.V3.PathError.causalLaw p₀ L n))
+      · intro n
+        exact sub_nonneg.mpr (hε1 n)
+      · change 1 ≤ UEOT.V3.PathError.pmfCommonMass p₀ p₀
+        rw [UEOT.V3.PathError.pmfCommonMass_self]
+      · intro n
+        change
+          UEOT.V3.PathError.pmfCommonMass
+              (UEOT.V3.PathError.causalLaw p₀ K n)
+              (UEOT.V3.PathError.causalLaw p₀ L n) *
+              (1 - ε n) ≤
+            UEOT.V3.PathError.pmfCommonMass
+              (UEOT.V3.PathError.pmfExtend
+                (UEOT.V3.PathError.causalLaw p₀ K n) (K n))
+              (UEOT.V3.PathError.pmfExtend
+                (UEOT.V3.PathError.causalLaw p₀ L n) (L n))
+        exact
+          UEOT.V3.PathError.pmfCommonMass_extend_of_tv
+            (UEOT.V3.PathError.causalLaw p₀ K n)
+            (UEOT.V3.PathError.causalLaw p₀ L n)
+            (K n) (L n)
+            (hε0 n) (hε1 n) (hTV n)
+    exact sub_le_sub_left hcommon 1
+  · exact
+      UEOT.V3.PathError.one_sub_prod_one_sub_le_sum ε hε0 hε1 T
 
 open MeasureTheory
 open UEOT.V3.TotalVariation
