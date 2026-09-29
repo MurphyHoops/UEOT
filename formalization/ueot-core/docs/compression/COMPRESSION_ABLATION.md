@@ -69,6 +69,48 @@ scoped architectural minimality notion permitted by Mission Contract v1, not
 absolute logical non-derivability across Lean/Mathlib or all future
 axiomatizations.
 
+### 1.1 Witness-specific registered adapter surface
+
+To make “registered adapter” recoverable rather than conversational, the
+witness-specific nodes are frozen explicitly in the ledger.
+
+For **M-QD-01 → P-PRED-01**, the retained adapter surface is:
+
+- `UEOT.V3.PredictionAE.aeFactors_sigmaLE`;
+- `UEOT.V3.PredictionDependent.coordinateKernel`;
+- the frozen source assumptions supplying the measurable per-protocol kernels
+  `L` and their almost-everywhere equalities `hL`.
+
+In particular, `measurable_pi_lambda` and `MeasureTheory.ae_all_iff` remain
+available as routine Mathlib side-condition tools, but using them to synthesize
+a fresh replacement for `countableAEFamily_descend` would create a new macro
+derivation node and is outside this fixed-graph deletion experiment.
+
+For **M-TC-01 → P-DYN-03**, the retained adapter surface is:
+
+- `UEOT.V3.PathError.pmfCommonMass_self`;
+- `UEOT.V3.PathError.pmfCommonMass_extend_of_tv`;
+- `UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass`;
+- `UEOT.V3.PathError.one_sub_prod_one_sub_le_sum`;
+- the existing `causalLaw` and `pmfExtend` definitions.
+
+These nodes provide the base/one-step/local identities, but the frozen graph
+contains no non-M-TC node for the multi-step multiplicative accumulation.  A
+fresh induction that recreates that recurrence is a new macro derivation node,
+not a pre-existing adapter edge.
+
+For **M-PE-01 → P-EVO-04**, the retained source surface contains the concrete
+conditional-mean dynamics, Perron relation, positivity/adaptedness/integrability
+and initialization assumptions, together with the representation definitions
+`EvolutionReproductiveMartingale.W` and `reproValueCLM_apply`.  No registered
+non-M-PE theorem node turns those data into the full normalized
+martingale/nonnegativity/integrability/constant-expectation bundle.
+
+The same node/edge rules are applied uniformly to all three deletion
+experiments.  P-INT-02 demonstrates that this is not a tautological namespace
+ban: its already registered StructuredQuotient route survives deletion and is
+therefore explicitly excluded from the M-QD broken set.
+
 ## 2. Candidate frozen core
 
 The generated final dispositions use exactly three counted generators:
