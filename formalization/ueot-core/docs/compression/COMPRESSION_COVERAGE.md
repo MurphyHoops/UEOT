@@ -48,15 +48,18 @@ is exactly **{M-QD-01, M-TC-01, M-PE-01}**. The ablation audit in
 - removing M-QD-01 breaks generated P-PRED-01; P-INT-02 remains
   reconstructible through its pre-existing StructuredQuotient adapter route and
   therefore is not used as an ablation witness;
-- removing M-TC-01 breaks generated P-API-01, P-ID-01, P-ID-02, P-DYN-03,
-  and P-DYN-04;
-- removing M-PE-01 breaks generated P-QSD-02 and P-EVO-04.
+- removing M-TC-01 uses generated P-DYN-03 as the nonredundancy witness; the
+  other M-TC generated mappings remain attributed to M-TC but are not all
+  claimed broken under deletion;
+- removing M-PE-01 uses generated P-EVO-04 as the nonredundancy witness;
+  P-QSD-02 remains attributed to M-PE but is not needed as a second witness.
 
 For each deletion, the remaining two counted generators plus registered
 adapters fail to recover at least one designated generated witness without
 reintroducing the removed mathematical primitive. Generated attribution alone
-does not imply breakage: P-INT-02 is explicitly retained as reconstructible
-after M-QD deletion through its already registered source adapter surface.
+does not imply breakage: P-INT-02 is explicitly reconstructible after M-QD
+deletion, and other generated mappings are not listed as broken unless this
+audit has ruled out the pre-existing adapter/infrastructure route.
 This is the Mission Contract's scoped nonredundancy claim, **not absolute
 logical independence or uniqueness across all possible future axiomatizations**.
 
