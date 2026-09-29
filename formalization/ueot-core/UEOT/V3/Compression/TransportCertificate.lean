@@ -170,6 +170,29 @@ theorem weighted_chain_bound
             ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := by
       rw [mul_comm (defect 0 (ideal 0) (actual 0))]
 
+/-- Generic multiplicative certificate accumulation.
+
+If a nonnegative one-step factor `factor n` preserves at least that fraction of
+the current certificate `survival n`, then the certificate at time `n`
+dominates the product of all preceding factors.  Probability, coupling, and
+path-law semantics are deliberately absent from this meta theorem and must be
+supplied by a specialization. -/
+theorem multiplicative_chain_lower_bound
+    (factor survival : ℕ → ℝ)
+    (hfactor : ∀ n, 0 ≤ factor n)
+    (hbase : 1 ≤ survival 0)
+    (hstep : ∀ n, survival n * factor n ≤ survival (n + 1)) :
+    ∀ n, (∏ i ∈ Finset.range n, factor i) ≤ survival n := by
+  intro n
+  induction n with
+  | zero =>
+      simpa using hbase
+  | succ n ih =>
+      rw [Finset.prod_range_succ]
+      exact
+        (mul_le_mul_of_nonneg_right ih (hfactor n)).trans
+          (hstep n)
+
 universe uDev
 
 /-- Full source-facing P-ID-02 finite-horizon development bound reconstructed
