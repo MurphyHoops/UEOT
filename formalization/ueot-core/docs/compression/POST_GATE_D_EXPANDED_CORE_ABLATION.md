@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-Gate-D Expanded-Core Ablation Audit
 
-Status: **EXPERIMENTAL / PRE-PROMOTION / NOT COUNTED**
+Status: **INDEPENDENT REVIEW CLEAR / PRE-INTEGRATION / NOT COUNTED**
 
 Candidate enlarged core under test:
 
@@ -282,8 +282,9 @@ broken witness: P-GOA-01
 remaining generators: {M-QD-01, M-TC-01, M-PE-01}
 ```
 
-This fourth result remains conditional on independent CLEAR review of the M-OI
-non-cosmeticity and deletion-surface audit.
+Independent Codex review has returned CLEAR/no-major-issues for the M-OI
+non-cosmeticity/deletion surface at `69919a22...` and for this expanded-core
+audit at `9a6f29d...`.
 
 ## 5. Pairwise/substitution sanity check
 
@@ -301,8 +302,8 @@ introducing new assumptions or a new macro theorem node.
 
 ## 6. Expanded-core conclusion
 
-If, and only if, M-OI independently clears promotion review, the candidate
-four-generator set has a complete scoped deletion witness for every member:
+The candidate four-generator set now has independently reviewed scoped deletion
+witnesses for every member:
 
 ```text
 {M-QD-01, M-TC-01, M-PE-01, M-OI-01}
@@ -317,6 +318,7 @@ nonredundant_under_declared_derivation_system
 This remains architectural minimality relative to the declared theorem-surface
 DAG, not absolute model-theoretic or logical independence.
 
-Until promotion lifecycle and resulting-main/ledger CI complete, the official
-frozen core remains the historical three-generator set and official generated
-coverage remains 9/106.
+This review CLEAR authorizes a **promotion attempt**, not an automatic ledger
+rewrite.  Until the dedicated integration lifecycle and resulting-main/ledger
+CI complete, the official current counted core remains the historical
+three-generator set and official generated coverage remains 9/106.

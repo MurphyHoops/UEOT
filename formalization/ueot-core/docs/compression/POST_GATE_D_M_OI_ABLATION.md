@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-Gate-D M-OI Deletion Audit
 
-Status: **EXPERIMENTAL / NOT COUNTED**
+Status: **REVIEWED CLEAR / NOT YET COUNTED**
 
 Candidate: `M-OI-01 — Occupation-Limit Invariance`
 
@@ -331,17 +331,24 @@ this is enough architectural compression to justify a counted UEOT generator.
 
 Accordingly the present deletion status is:
 
-**SCOPED DAG WITNESS CONSTRUCTED; PROMOTION NOT CLEAR.**
+**SCOPED DAG WITNESS CLEAR; LEDGER PROMOTION PENDING.**
 
 ## 8. Promotion rule
 
-M-OI may be promoted only if a fresh independent review returns CLEAR on all
-three questions:
+The required independent review has now returned CLEAR on all three questions:
 
 1. exact source equivalence of both wrappers;
 2. no adapter smuggling or hidden stronger assumptions;
 3. v2 common theorem is materially reusable architecture, not merely a renamed
    standard final-step lemma.
 
-Until then, frozen coverage remains **9/106 generated** and the frozen counted
-core remains `{M-QD-01, M-TC-01, M-PE-01}`.
+Codex review at `69919a22a83ed621220687269a5c3f70d9063c54` reported no major
+issue after the full remaining-generator surface and previously omitted
+`readoutCLM_apply` node were restored.  A subsequent expanded-core review at
+`9a6f29d827c66fc5b327f54952ca7f689511358d` also reported no major issue after
+the complete retained M-OI public surface was enumerated and checked against
+the historical witnesses.
+
+Even after review CLEAR, official coverage remains **9/106 generated** and the
+official counted core remains `{M-QD-01, M-TC-01, M-PE-01}` until a dedicated
+integration/ledger PR is merged and resulting-main validation passes.

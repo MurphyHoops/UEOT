@@ -1,9 +1,10 @@
 # UEOT Core Compression — Post-Gate-D M-BU / M-OI Promotion Audit
 
-Status: **EXPERIMENTAL / POST-GATE-D**  
+Status: **POST-GATE-D AUDIT COMPLETE — M-BU BRIDGE-ONLY / M-OI PROMOTION CLEAR, NOT YET COUNTED**
 Branch: `compression/experiment-m-bu-m-oi`  
 Baseline frozen main: `8d0fce85ee6b7a5cfd002894d4d08b82e2bfefb2`  
-Validated experiment head: `0315478a13eca569d908b56e85fe40440850d230`
+Latest independently reviewed M-OI code/audit head: `69919a22a83ed621220687269a5c3f70d9063c54`
+Expanded-core minimality review head: `9a6f29d827c66fc5b327f54952ca7f689511358d`
 
 This document does not alter the frozen Gate-D result
 `{M-QD-01, M-TC-01, M-PE-01}`. It audits two candidates that were already
@@ -360,7 +361,7 @@ No third exact P-ID mapping is claimed.
 
 ### 4.9 M-OI verdict
 
-**ROUND-1 BLOCKED; V2 STRONGER CORE UNDER PROMOTION RE-AUDIT.**
+**PROMOTION REVIEW CLEAR; LEDGER INTEGRATION NOT YET APPLIED.**
 
 What is already established:
 
@@ -371,14 +372,23 @@ What is already established:
 - preserved domain boundaries;
 - both exact wrapper signatures match their frozen source-facing endpoints;
 - the v2 wrappers actually call the stronger common continuous-observable
-  invariance theorem.
+  invariance theorem;
+- a dedicated P-GOA-01 registered-theorem-surface deletion audit;
+- complete enumeration/classification of every retained M-QD/M-TC/M-PE node
+  relevant to the M-OI deletion witness;
+- independent Codex review at `69919a22...` reporting no major issue with
+  source equivalence, adapter boundaries, non-cosmeticity, or M-OI deletion;
+- expanded-core ablation showing that adding M-OI does not make M-QD, M-TC, or
+  M-PE redundant under the same declared theorem-surface DAG;
+- independent Codex review at `9a6f29d...` reporting no major issue with the
+  full retained M-OI surface or expanded-core deletion audit.
 
 What is **not** yet established:
 
-- Gate-C-style nonredundancy of M-OI under a frozen registered adapter DAG;
-- that the strengthened common layer is sufficiently non-cosmetic to count as
-  a UEOT meta-generator rather than a reusable bridge;
-- independent CLEAR review of the v2 theorem surface.
+- counted-ledger promotion of M-OI;
+- 11/106 official generated coverage on canonical `main`;
+- resulting-main CI/Compression Guard evidence for the promoted four-generator
+  ledger state.
 
 It also does *not* establish:
 
@@ -387,10 +397,10 @@ It also does *not* establish:
 - P-PER-01, P-QSD-01, or P-GOA-02..04 generation;
 - automatic replacement of the frozen Gate-D core.
 
-The strongest honest next action is therefore: freeze and audit the P-GOA-01
-deletion surface, rerun full CI, then request a fresh independent review of the
-v2 code and ablation artifact.  Only a CLEAR result can reopen the ledger
-promotion question.
+The strongest honest next action is therefore a **dedicated post-Gate-D M-OI
+integration/ledger PR**.  That PR may count M-OI only after it updates the live
+minimal-core/coverage state, preserves the historical Gate-D checkpoint, and
+passes exact-head plus resulting-main CI.
 
 ## 5. Effect on frozen Gate-D core
 
@@ -418,9 +428,8 @@ then.
 
 - **M-BU-01:** keep formalized on a research/integration branch as a reusable
   bridge; do not count in the minimal core.
-- **M-OI-01:** keep uncounted while the v2 stronger core and exact deletion
-  surface undergo independent re-review.
-- Do not edit the frozen ledger until review explicitly checks exact source
-  equivalence, adapter smuggling, and the P-GOA-01 ablation claim.
-- Do **not** advertise 11/106 generated coverage unless a later review clears
-  both the non-cosmetic-generator test and the scoped deletion audit.
+- **M-OI-01:** promotion-eligible after independent review; move counting to a
+  dedicated integration/ledger PR rather than rewriting the historical
+  Gate-D record in this experiment PR.
+- Do **not** advertise 11/106 generated coverage until that integration is
+  merged and resulting-main validation is green.
