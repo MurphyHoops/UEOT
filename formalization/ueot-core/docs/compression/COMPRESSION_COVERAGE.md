@@ -27,9 +27,7 @@ changes the completed **106/106 FULL-GREEN** source status.
 | unresolved final dispositions | 0 / 106 |
 | counted meta-generators | 4 |
 
-Closure status: **FINALIZATION EVIDENCE RECORDED / PRE-ANNOUNCEMENT**. The live
-machine ledger field is `final` so the closure references can be validated, but
-the new human-facing FINAL checkpoint is **not announced yet**. Minimal core:
+Mission state: **FINAL — POST-GATE-D M-OI RE-FINALIZATION CLOSED**. Minimal core:
 **FROZEN = {M-QD-01, M-TC-01, M-PE-01, M-OI-01}**. Ablation:
 **COMPLETE**. Scoped minimality claim:
 **NONREDUNDANT_UNDER_DECLARED_DERIVATION_SYSTEM**.
@@ -87,9 +85,14 @@ candidate scientific main
 `bf1d01a0f7bf658f8c205ddcc1a2832a4bb3638b`; candidate-main push Core Lean
 `36578717005` and Compression Guard `36578717533` are both SUCCESS. Dedicated post-Gate-D closure PR is **#175**. The live machine ledger is now
 back in `final` with candidate-main SHA/run IDs and the closure PR bound in
-`finalization_evidence`. Final announcement still requires exact-head closure
-CI, Codex review, a **normal merge commit**, and resulting-main Core Lean +
-Compression Guard green.
+`finalization_evidence`. Closure PR #175 exact head
+`8b4913be88b953552895c92656a73506787a7728` passed Core Lean `36582265266`
+and Compression Guard `36582265281`; Codex exact-head review returned CLEAR.
+PR #175 then merged with normal merge commit
+`4eade136cf5b289756148ff48ea939e57181f082`; resulting-main Core Lean
+`36584122743` and Compression Guard `36584122926` are both SUCCESS. The new
+four-generator / 11-generated checkpoint is therefore the canonical FINAL
+compression state.
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
