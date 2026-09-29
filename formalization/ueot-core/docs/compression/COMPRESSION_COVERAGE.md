@@ -27,7 +27,7 @@ changes the completed **106/106 FULL-GREEN** source status.
 | unresolved final dispositions | 0 / 106 |
 | counted meta-generators | 3 |
 
-Mission state: **READY_FOR_FINALIZATION**. Minimal core state:
+Mission state: **FINAL**. Minimal core state:
 **FROZEN**. Ablation: **COMPLETE**. Scoped minimality claim:
 **NONREDUNDANT_UNDER_DECLARED_DERIVATION_SYSTEM**.
 
@@ -74,9 +74,13 @@ This is therefore a scoped claim about the nonredundancy of the **formalized
 compression architecture**, **not absolute logical independence or uniqueness
 across Lean/Mathlib or all possible future axiomatizations**.
 
-Gate D remains repository closure: merge this candidate scientific state,
-verify successful push CI on the exact candidate-main SHA, then use the
-dedicated final closure PR/evidence lifecycle.
+**Mission Contract Gate D — FINAL CLOSURE ACTIVE.** Candidate scientific main is
+`161549f0d5566e7b09557778fa1f924d32b7b7c8`, with successful candidate-main
+push evidence Core Lean `36541120296` (#2195) and Compression Guard
+`36541120239` (#171). Dedicated closure PR is **#172**. The machine ledger is
+now in `final` with live-verifiable closure evidence. Final announcement still
+requires exact-head closure CI, Codex review, a **normal merge commit**, and
+resulting-main Core Lean + Compression Guard green.
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
