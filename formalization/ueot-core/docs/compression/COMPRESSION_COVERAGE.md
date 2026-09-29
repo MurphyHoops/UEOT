@@ -63,7 +63,7 @@ dedicated final closure PR/evidence lifecycle.
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
 Counted compression evidence is distinct from final per-P-ID dispositions and
-from the later minimal-core decision. Audit-only candidate schemas are likewise
+from the scoped minimal-core/nonredundancy claim. Audit-only candidate schemas are likewise
 not counted until they acquire generic Lean theorems and complete the normal
 promotion lifecycle.
 
