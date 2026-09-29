@@ -82,7 +82,13 @@ theorem finite_invariant_of_cesaro_tendsto
       (fun n => F ((cesaroRow P hP μ0 ∘ φ) n))
       (fun n => G ((cesaroRow P hP μ0 ∘ φ) n))
       (F ν) (G ν) hF hG
-    simpa [F, G, Function.comp_def] using hresSub
+    change
+      Tendsto
+        (fun n =>
+          Matrix.vecMul (cesaroRow P hP μ0 (φ n) : S → ℝ) P -
+            (cesaroRow P hP μ0 (φ n) : S → ℝ))
+        atTop (𝓝 0)
+    exact hresSub
   simpa [F, G] using hEq
 
 /-- Full P-GOA-01 statement with only the invariant-limit step delegated to
