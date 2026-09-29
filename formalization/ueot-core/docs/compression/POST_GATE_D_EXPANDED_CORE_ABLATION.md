@@ -27,6 +27,92 @@ composition, definitional reduction, equality rewriting, and routine Mathlib
 side conditions are allowed.  A fresh macro theorem that reconstructs the
 deleted primitive is not an existing edge.
 
+## 0. Full retained M-OI theorem surface
+
+When one of the historical generators is deleted, M-OI is *retained* in the
+candidate enlarged core.  Therefore the deletion DAG must admit the complete
+public theorem/definition surface of
+`Compression/OccupationLimitInvariance.lean`, not only its preferred canonical
+theorem.
+
+Mechanical declaration enumeration at experiment head `baf8987` gives exactly
+**9 public theorem declarations + 1 public definition**:
+
+- `equal_at_limit_of_residual`;
+- `observable_invariance_of_residual`;
+- `invariant_of_observable_residual`;
+- `invariant_of_continuous_observable_residual`;
+- `finite_invariant_of_cesaro_tendsto`;
+- `p_goa_01_via_occupationLimit`;
+- `fellerAdvancePM`;
+- `fellerAdvancePM_toMeasure`;
+- `feller_invariant_of_occupation_tendsto`;
+- `p_per_02_via_occupationLimit`.
+
+These nodes fall into three typed interface groups.
+
+### 0.1 Abstract residual/observable nodes
+
+`equal_at_limit_of_residual`, `observable_invariance_of_residual`,
+`invariant_of_observable_residual`, and
+`invariant_of_continuous_observable_residual` consume convergence,
+continuity/separation data and an asymptotically vanishing evolution residual.
+They conclude equality/invariance of a limiting state.  They do not construct:
+
+- quotient maps or measurable decoders;
+- finite-horizon multiplicative product recurrences;
+- eigenvectors/eigenvalues;
+- filtrations, conditional expectations, martingales, or integrability data.
+
+### 0.2 Finite-Cesaro nodes
+
+`finite_invariant_of_cesaro_tendsto` and
+`p_goa_01_via_occupationLimit` specialize the abstract mechanism to a finite
+row-stochastic matrix and its Cesaro averages.  Their conclusions concern an
+invariant probability row for the *same* finite Markov kernel.  Their premises
+and conclusions contain no quotient/factorization interface, path-TV
+certificate recurrence, or reproductive-value martingale calculus.
+
+### 0.3 Feller-occupation nodes
+
+`fellerAdvancePM`, `fellerAdvancePM_toMeasure`,
+`feller_invariant_of_occupation_tendsto`, and
+`p_per_02_via_occupationLimit` specialize the same mechanism to Feller
+occupation measures.  They construct/evaluate Markov-kernel pushforward on
+probability measures and prove invariant weak occupation limits (plus the
+P-PER-02 support clause in the full wrapper).  They do not create quotient
+descent, finite multiplicative coupling certificates, or right-eigenvector
+martingale structure.
+
+### 0.4 Composition check against the three historical witnesses
+
+The full M-OI surface is now admitted in each historical deletion experiment,
+including arbitrary composition with the other retained counted generators and
+registered witness adapters.
+
+For **P-PRED-01**, no M-OI output supplies the missing countable family of
+almost-everywhere factorization maps, common conull set, or measurable product
+decoder.  Feeding an invariant probability law produced by the finite/Feller
+wrappers into M-TC or M-PE still does not create a quotient map or a
+fibre-compatible decoder; both remaining generators require their own typed
+transport/eigenstructure inputs.
+
+For **P-DYN-03**, no M-OI output supplies the finite-horizon recurrence
+`1 - product(1-epsilon_t)` or any pathwise TV/common-mass accumulation.  The
+finite-Cesaro wrapper concerns asymptotic averaging for one Markov kernel, and
+the Feller wrapper concerns weak occupation limits; composing either with M-QD
+or M-PE does not manufacture the missing exact finite product recurrence.
+
+For **P-EVO-04**, no M-OI output supplies a positive right eigenvector,
+eigenvalue, conditional-mean reproduction identity, adapted process,
+integrability proof, or martingale/constant-expectation conclusion.  An
+invariant probability law from the M-OI specializations cannot be converted by
+M-QD or M-TC into the missing positive-eigenstructure stochastic calculus.
+
+Thus the reachability statements in §§1–3 below are made against the **entire
+retained M-OI module surface**, not merely
+`invariant_of_continuous_observable_residual`.
+
 ## 1. Remove M-QD-01
 
 Remaining candidate core:
@@ -52,16 +138,11 @@ Retained historical P-PRED-01 adapters remain:
 
 ### M-OI reachability check
 
-M-OI consumes:
-
-- a convergent state sequence;
-- continuous separating observables;
-- continuous evolved observables;
-- a vanishing asymptotic evolution residual.
-
-It concludes invariance of the limiting state under an evolution map.  It has
-no quotient map, fibre-compatibility relation, countable family of exceptional
-sets, measurable decoder construction, or common-null-set theorem.
+The full retained M-OI surface is the 10-node surface frozen in §0.  None of
+those nodes has a quotient map, fibre-compatibility relation, countable family
+of exceptional sets, measurable decoder construction, or common-null-set
+theorem in its conclusion or a route to construct one from the registered
+P-PRED adapters.
 
 Therefore adding M-OI creates no edge to the P-PRED-01 quotient/descent
 witness.  M-TC and M-PE were already audited in historical Gate C and remain
@@ -95,7 +176,8 @@ one-step TV/coupling facts recorded in `COMPRESSION_ABLATION.md`.
 
 ### M-OI reachability check
 
-M-OI is asymptotic/topological limit invariance.  It provides neither:
+The full retained M-OI surface is admitted.  Its abstract and specialized
+finite/Feller nodes provide neither:
 
 - finite-horizon multiplicative survival accumulation;
 - a product recurrence;
@@ -136,8 +218,8 @@ Required missing primitive:
 
 ### M-OI reachability check
 
-M-OI concludes deterministic/topological invariance of a limit from continuous
-observable residuals.  P-EVO-04 instead requires a stochastic one-step
+The full retained M-OI surface concludes deterministic/topological invariance
+of finite/Feller long-run limits.  P-EVO-04 instead requires a stochastic one-step
 conditional-expectation identity at every finite time and uses a positive
 right eigenvector to normalize the process into a martingale.
 
