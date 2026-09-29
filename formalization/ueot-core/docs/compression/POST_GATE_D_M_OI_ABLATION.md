@@ -114,6 +114,12 @@ Registered public theorem nodes from
 - `strongLumpability_pushforward_fiberCompatible`;
 - `strongLumpability_unique_setLevel_descend`.
 
+Mechanical declaration enumeration confirms this list contains all **13**
+public theorem/lemma declarations in the module.  Public definitional nodes
+also remain available for ordinary definitional reduction:
+`FiberCompatible`, `descend`, `TwoSidedCompatible`, `twoSidedDescend`,
+`LeftResponseEq`, and `RightResponseEq`.
+
 Reachability audit: these nodes construct or characterize factorization through
 surjective representations, countable almost-everywhere descent, two-sided
 quotients, or a set-level strong-lumpability descent.  None consumes a
@@ -142,6 +148,11 @@ Registered public theorem nodes from
 - `dynamicsCrossScale_approx_via_twoStage`;
 - `dynamicsCrossScale_exact_via_factor`.
 
+Mechanical declaration enumeration confirms this list contains all **14**
+public theorem/lemma declarations in the module.  The module contributes no
+additional public `def`/`structure` declaration that creates a separate
+reachability edge.
+
 Reachability audit: these nodes propagate exact commutative diagrams or
 quantitative defects along finite transport chains.  Their conclusions are
 equalities/inequalities conditional on already supplied transport, triangle,
@@ -157,6 +168,7 @@ Registered public theorem nodes from
 
 - `hTransform_row_sum`;
 - `hTransform_nonneg`;
+- `readoutCLM_apply`;
 - `readout_vecMul`;
 - `rowApply_mul`;
 - `left_pow`;
@@ -177,6 +189,19 @@ Registered public theorem nodes from
 - `p_qsd_02_via_positiveEigenstructure`;
 - `p_qsd_02_killed_via_positiveEigenstructure`;
 - `p_evo_04_via_positiveEigenstructure`.
+
+Mechanical declaration enumeration confirms this list contains all **23**
+public theorem/lemma declarations in the module, including attributed
+declarations such as `[simp] theorem readoutCLM_apply` that a line-anchored
+`^theorem` scan would miss.  Public definitional/structure nodes also remain
+available for ordinary definitional reduction: `rowApply`, `colApply`,
+`RightEigenData`, `BiEigenData`, `hTransform`, `invariantWeight`, `readoutCLM`,
+and `W`.
+
+`readoutCLM_apply` is only the definitional evaluation identity for the
+positive-eigenvector continuous linear readout.  It introduces no convergence,
+Cesaro, or invariant-limit conclusion and does not remove the `RightEigenData`
+entry requirement of the surrounding M-PE calculus.
 
 The only node whose conclusion superficially resembles the P-GOA witness is
 `invariantWeight_stationary`.  It cannot be applied from the P-GOA adapter
