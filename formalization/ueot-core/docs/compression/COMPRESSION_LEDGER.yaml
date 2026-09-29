@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "integration_branch": "main",
   "live_issue": 146,
   "official_target": "lake build UEOT",
@@ -143,6 +143,38 @@
           "P-INT-02",
           "M-QD-01"
         ]
+      },
+      "ablation": {
+        "result": "nonredundant_under_declared_derivation_system",
+        "broken_pids": [
+          "P-PRED-01"
+        ],
+        "rationale": "Removing M-QD-01 removes the only counted countable almost-everywhere quotient/factorization descent used by P-PRED-01. M-TC-01 transports already supplied maps and certificates, while M-PE-01 is positive-eigenstructure calculus; neither supplies the common-null-set measurable family descent needed to construct the canonical predictive decoder. P-INT-02 is deliberately not used as an ablation witness because its frozen factorization/refinement statement remains recoverable from the already registered StructuredQuotient adapter surface plus allowed equality rewriting.",
+        "remaining_core_derivability": {
+          "remaining_generator_ids": [
+            "M-TC-01",
+            "M-PE-01"
+          ],
+          "status": "not_derivable_under_declared_derivation_system",
+          "assumptions": [
+            "Ablation is evaluated in the registered_theorem_surface_dag frozen at canonical Gate-B main db880cfc96820b9069a127caa44cd9255237cd97.",
+            "Only existing registered theorem/definition nodes may be applied, specialized, composed, rewritten, or used to discharge hypotheses; arbitrary synthesis of a new replacement macro theorem/proof route is outside the deletion experiment.",
+            "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
+            "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
+            "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
+            "For the P-PRED-01 ablation witness, the countable almost-everywhere family descent and one common measurable decoder must be supplied by an existing counted theorem; the registered adapters used by the mapping do not provide that joint common-null-set descent."
+          ],
+          "audit_evidence": [
+            "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+            "theorem:UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
+            "theorem:UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent"
+          ],
+          "registered_adapter_nodes": [
+            "theorem:UEOT.V3.PredictionAE.aeFactors_sigmaLE",
+            "definition:UEOT.V3.PredictionDependent.coordinateKernel",
+            "source-assumption:per-protocol measurable kernel factorization L and almost-everywhere equalities hL"
+          ]
+        }
       }
     },
     "M-TC-01": {
@@ -291,6 +323,41 @@
         "nonclaims_preserved": [
           "P-STAT-09"
         ]
+      },
+      "ablation": {
+        "result": "nonredundant_under_declared_derivation_system",
+        "broken_pids": [
+          "P-DYN-03"
+        ],
+        "rationale": "Removing M-TC-01 removes the only counted multiplicative certificate recurrence used by the P-DYN-03 compression derivation. M-QD-01 supplies quotient descent and M-PE-01 supplies positive-eigenstructure calculus; neither provides multi-step product survival accumulation. Other M-TC generated mappings remain attributed to M-TC but are deliberately not used as ablation witnesses because Gate C does not require proving every attributed mapping unavailable under deletion.",
+        "remaining_core_derivability": {
+          "remaining_generator_ids": [
+            "M-QD-01",
+            "M-PE-01"
+          ],
+          "status": "not_derivable_under_declared_derivation_system",
+          "assumptions": [
+            "Ablation is evaluated in the registered_theorem_surface_dag frozen at canonical Gate-B main db880cfc96820b9069a127caa44cd9255237cd97.",
+            "Only existing registered theorem/definition nodes may be applied, specialized, composed, rewritten, or used to discharge hypotheses; arbitrary synthesis of a new replacement macro theorem/proof route is outside the deletion experiment.",
+            "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
+            "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
+            "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
+            "For the P-DYN-03 witness, finite-PMF common mass, the one-step TV-to-overlap estimate, the exact TV/common-mass identity, and the product-to-sum inequality remain admissible registered adapters, but no registered remaining-core theorem supplies the multi-step multiplicative certificate recurrence. The frozen source endpoint and full source path-recurrence theorem are not admissible replacements."
+          ],
+          "audit_evidence": [
+            "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+            "theorem:UEOT.V3.Compression.TransportCertificate.multiplicative_chain_lower_bound",
+            "theorem:UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain"
+          ],
+          "registered_adapter_nodes": [
+            "theorem:UEOT.V3.PathError.pmfCommonMass_self",
+            "theorem:UEOT.V3.PathError.pmfCommonMass_extend_of_tv",
+            "theorem:UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+            "theorem:UEOT.V3.PathError.one_sub_prod_one_sub_le_sum",
+            "definition:UEOT.V3.PathError.causalLaw",
+            "definition:UEOT.V3.PathError.pmfExtend"
+          ]
+        }
       }
     },
     "M-BU-01": {
@@ -438,13 +505,47 @@
           "M-PE-01"
         ],
         "ledger_checkpoint": "M-PE-01-CROSS-FAMILY"
+      },
+      "ablation": {
+        "result": "nonredundant_under_declared_derivation_system",
+        "broken_pids": [
+          "P-EVO-04"
+        ],
+        "rationale": "Removing M-PE-01 removes the only counted theorem that turns positive right eigenstructure plus the frozen conditional-mean assumptions into the normalized reproductive-value martingale bundle used by P-EVO-04. M-QD-01 supplies quotient descent and M-TC-01 supplies transport/certificate recurrence; neither provides positive-eigenvector stochastic martingale calculus. P-QSD-02 remains attributed to M-PE but is not needed as a separate ablation witness.",
+        "remaining_core_derivability": {
+          "remaining_generator_ids": [
+            "M-QD-01",
+            "M-TC-01"
+          ],
+          "status": "not_derivable_under_declared_derivation_system",
+          "assumptions": [
+            "Ablation is evaluated in the registered_theorem_surface_dag frozen at canonical Gate-B main db880cfc96820b9069a127caa44cd9255237cd97.",
+            "Only existing registered theorem/definition nodes may be applied, specialized, composed, rewritten, or used to discharge hypotheses; arbitrary synthesis of a new replacement macro theorem/proof route is outside the deletion experiment.",
+            "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
+            "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
+            "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
+            "For the P-EVO-04 witness, the concrete conditional-mean dynamics, positivity, adaptedness, integrability, initialization, and Perron eigenrelation remain admissible source assumptions, but no theorem in the remaining counted core turns those data into the normalized martingale/nonnegativity/integrability/constant-expectation bundle."
+          ],
+          "audit_evidence": [
+            "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.stochasticRightEigen_bundle",
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure"
+          ],
+          "registered_adapter_nodes": [
+            "definition:UEOT.V3.EvolutionReproductiveMartingale.W",
+            "theorem:UEOT.V3.EvolutionReproductiveMartingale.reproValueCLM_apply",
+            "source-assumption:conditional-mean dynamics hmean",
+            "source-assumption:positive Perron eigenrelation hperron",
+            "source-assumption:positivity/adaptedness/integrability/initialization premises"
+          ]
+        }
       }
     }
   },
   "mission_contract": {
     "version": 1,
     "path": "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
-    "state": "active"
+    "state": "ready_for_finalization"
   },
   "final_dispositions": {
     "P-PRED-01": {
@@ -1234,10 +1335,38 @@
     }
   },
   "minimal_core": {
-    "state": "open",
-    "generator_ids": [],
-    "ablation_state": "not_started",
-    "minimality_claim": "not_established"
+    "state": "frozen",
+    "generator_ids": [
+      "M-QD-01",
+      "M-TC-01",
+      "M-PE-01"
+    ],
+    "ablation_state": "complete",
+    "minimality_claim": "nonredundant_under_declared_derivation_system",
+    "derivation_system": {
+      "mode": "registered_theorem_surface_dag",
+      "baseline_main": "db880cfc96820b9069a127caa44cd9255237cd97",
+      "allowed_nodes": [
+        "canonical theorems of the remaining counted generators",
+        "already integrated compression wrappers attached to the remaining counted generators",
+        "source/domain adapter theorems or definitions already registered for counted mappings before Gate C"
+      ],
+      "allowed_edges": [
+        "application and specialization of an allowed theorem node",
+        "composition of allowed theorem nodes",
+        "equality rewriting and definitional reduction",
+        "discharge of an allowed theorem's stated hypotheses using registered adapters",
+        "routine Mathlib side-condition and normalization lemmas that do not synthesize a replacement compression theorem"
+      ],
+      "forbidden_during_ablation": [
+        "calling any theorem from the ablated generator namespace",
+        "calling the frozen source endpoint of the generated P-ID used as an ablation witness",
+        "promoting or introducing a new generator during the deletion experiment",
+        "synthesizing or inlining a new proof route whose conclusion reconstructs the ablated generator primitive from lower-level library facts",
+        "treating an unregistered source helper as an adapter merely because it exists in the frozen source namespace"
+      ],
+      "interpretation": "This is theorem-surface reachability/nonredundancy for the formalized compression architecture, not absolute logical non-derivability from Lean, Mathlib, or all future theorem presentations."
+    }
   },
   "finalization_evidence": {},
   "audit_records": {
