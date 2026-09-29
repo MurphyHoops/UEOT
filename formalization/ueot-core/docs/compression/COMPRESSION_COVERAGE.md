@@ -27,22 +27,38 @@ changes the completed **106/106 FULL-GREEN** source status.
 | unresolved final dispositions | 0 / 106 |
 | counted meta-generators | 3 |
 
-Mission state: **ACTIVE**. Minimal core state: **OPEN**. Ablation:
-**NOT STARTED**.
+Mission state: **READY_FOR_FINALIZATION**. Minimal core state:
+**FROZEN**. Ablation: **COMPLETE**. Scoped minimality claim:
+**NONREDUNDANT_UNDER_DECLARED_DERIVATION_SYSTEM**.
 
-**Mission Contract Gate B — RESOLUTION COMPLETE on this branch.** All 106 frozen
-P-IDs now have exactly one final primary disposition: 9 generated, 91 retained
-domain adapters, and 6 retained boundary/no-go results, leaving 0 unresolved.
-The generated set is exactly the nine counted exact mappings:
-P-PRED-01, P-INT-02, P-API-01, P-ID-01, P-DYN-03, P-DYN-04, P-ID-02,
-P-QSD-02, and P-EVO-04. The six primary boundary dispositions are P-INFO-05,
-P-INV-01, P-INV-02, P-DDH-01, P-EVO-02, and P-BRG-02. Mixed theorems whose
-primary content remains constructive/domain-specific are retained as adapters
-even when they also carry a secondary boundary role.
+**Mission Contract Gate B — RESOLUTION COMPLETE.** All 106 frozen P-IDs have
+exactly one final primary disposition: 9 generated, 91 retained domain
+adapters, and 6 retained boundary/no-go results, leaving 0 unresolved. The
+generated set is exactly the nine counted exact mappings: P-PRED-01, P-INT-02,
+P-API-01, P-ID-01, P-DYN-03, P-DYN-04, P-ID-02, P-QSD-02, and P-EVO-04. The
+six primary boundary dispositions are P-INFO-05, P-INV-01, P-INV-02, P-DDH-01,
+P-EVO-02, and P-BRG-02. Mixed theorems whose primary content remains
+constructive/domain-specific are retained as adapters even when they also carry
+a secondary boundary role.
 
-Gate B completion does **not** freeze the minimal core or establish minimality.
-Gate C remains open and still requires a frozen final M-ID list plus completed
-nonredundancy ablation; Gate D remains later repository closure.
+**Mission Contract Gate C — CORE FROZEN on this branch.** The final scoped core
+is exactly **{M-QD-01, M-TC-01, M-PE-01}**. The ablation audit in
+`COMPRESSION_ABLATION.md` removes each generator in turn and records:
+
+- removing M-QD-01 breaks generated P-PRED-01 and P-INT-02;
+- removing M-TC-01 breaks generated P-API-01, P-ID-01, P-ID-02, P-DYN-03,
+  and P-DYN-04;
+- removing M-PE-01 breaks generated P-QSD-02 and P-EVO-04.
+
+For each deletion, the remaining two counted generators plus registered
+adapters lack the removed mathematical primitive under the declared
+formalization. This is the Mission Contract's scoped nonredundancy claim, **not
+absolute logical independence or uniqueness across all possible future
+axiomatizations**.
+
+Gate D remains repository closure: merge this candidate scientific state,
+verify successful push CI on the exact candidate-main SHA, then use the
+dedicated final closure PR/evidence lifecycle.
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
