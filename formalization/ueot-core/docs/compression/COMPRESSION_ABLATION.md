@@ -114,37 +114,35 @@ Remaining counted core:
 - M-QD-01
 - M-PE-01
 
-Broken generated mappings:
+Broken generated mapping used as the nonredundancy witness:
 
-- P-API-01
-- P-ID-01
-- P-ID-02
 - P-DYN-03
-- P-DYN-04
 
-M-TC-01 supplies the generic certificate-recursion primitive:
+M-TC-01 supplies the generic multiplicative certificate recurrence used by the
+P-DYN-03 compression derivation.  The registered source/domain adapters retain
+finite-PMF common mass, the one-step TV-to-overlap estimate, the exact
+TV/common-mass identity, and the product-to-sum inequality, but none of the
+remaining counted generators supplies the multi-step product-survival
+accumulation theorem.
 
-- two-stage quantitative transport;
-- exact commuting transport;
-- additive finite-chain accumulation;
-- weighted/discrete-Gronwall accumulation;
-- multiplicative certificate accumulation.
+The remaining generators do not supply that primitive:
 
-The remaining generators do not supply this structure:
+- M-QD-01 proves quotient/factorization statements and has no product
+  certificate recurrence.
+- M-PE-01 proves consequences of positive left/right eigenrelations and has no
+  path-coupling survival recurrence.
 
-- M-QD-01 proves quotient/factorization statements, but has no theorem that
-  accumulates real-valued local defects through a chain or product recurrence.
-- M-PE-01 proves consequences of positive left/right eigenrelations, but has no
-  generic defect metric, local-error recursion, weighted chain, or
-  multiplicative survival theorem.
+The other M-TC generated mappings remain correctly attributed to M-TC, but this
+Gate-C audit does not need to assert that every one of them becomes unavailable
+after deletion.  In particular, simple two-stage or commuting-factor conclusions
+may admit direct reconstruction from already registered composition/transport
+infrastructure and therefore are deliberately not used as nonredundancy
+witnesses.
 
-The five generated source-facing wrappers instantiate these M-TC theorems
-directly.  Their source/domain adapters provide TV contraction, triangle
-inequalities, measurable pushforwards, Lipschitz bounds, PMF overlap, and
-related local hypotheses; those adapters do not replace the missing generic
-recurrence.
-
-Therefore M-TC-01 is nonredundant under the declared derivation system.
+P-DYN-03 still loses the only registered route to the multi-step multiplicative
+certificate recurrence without reintroducing the removed M-TC primitive or
+calling the frozen source endpoint/full source recurrence.  Therefore M-TC-01
+remains nonredundant under the declared derivation system.
 
 ## 5. Ablation C — remove M-PE-01
 
@@ -153,28 +151,28 @@ Remaining counted core:
 - M-QD-01
 - M-TC-01
 
-Broken generated mappings:
+Broken generated mapping used as the nonredundancy witness:
 
-- P-QSD-02
 - P-EVO-04
 
-M-PE-01 supplies finite positive-eigenstructure calculus: normalized positive
-left/right eigenvectors, Doob-transform normalization and invariant weights,
-and the stochastic right-eigenvector martingale construction.
+M-PE-01 supplies the positive right-eigenstructure-to-martingale calculus used
+by P-EVO-04: the Perron right eigenrelation is transported through the frozen
+conditional-mean dynamics to the normalized reproductive-value martingale,
+together with nonnegativity, integrability, and constant expectation.
 
 The remaining generators do not supply that primitive:
 
 - M-QD-01 concerns quotient/factorization universal properties and does not
   construct or exploit positive eigenvectors.
-- M-TC-01 transports already supplied equalities/defect certificates and does
-  not derive eigenrelations, h-transforms, invariant eigenweights, or
-  eigenvector martingales.
+- M-TC-01 transports equalities/defect certificates and supplies finite-chain
+  recurrences, but it does not turn conditional-mean Perron dynamics into a
+  stochastic eigenvector martingale.
 
-The QSD wrapper is built from `qsdDoob_bundle` (plus the substochastic scale
-adapter where required).  The evolutionary wrapper is built from
-`stochasticRightEigen_bundle`.  Domain/source adapters provide the concrete
-matrix, killed-kernel, or conditional-mean semantics, but they do not replace
-the positive-eigenstructure theorem.
+The concrete conditional-mean law, positivity, adaptedness, integrability,
+initial state, and Perron eigenrelation remain admissible source assumptions.
+No theorem in the remaining counted core yields the normalized martingale
+bundle from those data.  P-QSD-02 remains correctly attributed to M-PE but is
+not needed as a second ablation witness.
 
 Therefore M-PE-01 is nonredundant under the declared derivation system.
 
