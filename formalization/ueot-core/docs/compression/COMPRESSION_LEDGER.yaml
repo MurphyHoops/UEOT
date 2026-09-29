@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "integration_branch": "main",
   "live_issue": 146,
   "official_target": "lake build UEOT",
@@ -143,6 +143,34 @@
           "P-INT-02",
           "M-QD-01"
         ]
+      },
+      "ablation": {
+        "result": "nonredundant_under_declared_derivation_system",
+        "broken_pids": [
+          "P-PRED-01",
+          "P-INT-02"
+        ],
+        "rationale": "Removing M-QD-01 removes the only counted quotient/factorization universal-property layer. M-TC-01 transports already supplied maps and certificates, while M-PE-01 is positive-eigenstructure calculus; neither constructs the measurable or two-sided quotient descent needed by the two generated mappings.",
+        "remaining_core_derivability": {
+          "remaining_generator_ids": [
+            "M-TC-01",
+            "M-PE-01"
+          ],
+          "status": "not_derivable_under_declared_derivation_system",
+          "assumptions": [
+            "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
+            "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
+            "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
+            "The quotient universal property, countable almost-everywhere family descent, and exact two-sided response descent must be supplied by an existing counted theorem rather than encoded inside a new adapter."
+          ],
+          "audit_evidence": [
+            "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+            "theorem:UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
+            "theorem:UEOT.V3.Compression.QuotientDescent.existsUnique_twoSidedDescend",
+            "theorem:UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent",
+            "theorem:UEOT.V3.Compression.QuotientDescent.p_int_02_via_twoSidedDescent"
+          ]
+        }
       }
     },
     "M-TC-01": {
@@ -291,6 +319,42 @@
         "nonclaims_preserved": [
           "P-STAT-09"
         ]
+      },
+      "ablation": {
+        "result": "nonredundant_under_declared_derivation_system",
+        "broken_pids": [
+          "P-API-01",
+          "P-ID-01",
+          "P-ID-02",
+          "P-DYN-03",
+          "P-DYN-04"
+        ],
+        "rationale": "Removing M-TC-01 removes the only counted generic defect/certificate accumulation layer: two-stage transport, additive and weighted finite chains, exact commuting transport, and multiplicative certificate recurrence. M-QD-01 and M-PE-01 do not provide these quantitative recurrences.",
+        "remaining_core_derivability": {
+          "remaining_generator_ids": [
+            "M-QD-01",
+            "M-PE-01"
+          ],
+          "status": "not_derivable_under_declared_derivation_system",
+          "assumptions": [
+            "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
+            "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
+            "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
+            "Local TV, Lipschitz, PMF-overlap, triangle, and measurable-pushforward facts remain registered adapters, but a missing finite-chain or multiplicative accumulation theorem may not be hidden inside those adapters."
+          ],
+          "audit_evidence": [
+            "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+            "theorem:UEOT.V3.Compression.TransportCertificate.twoStage_bound",
+            "theorem:UEOT.V3.Compression.TransportCertificate.chain_bound",
+            "theorem:UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
+            "theorem:UEOT.V3.Compression.TransportCertificate.multiplicative_chain_lower_bound",
+            "theorem:UEOT.V3.Compression.TransportCertificate.processInterface_approx_via_twoStage",
+            "theorem:UEOT.V3.Compression.TransportCertificate.transportDefect_source_via_chain",
+            "theorem:UEOT.V3.Compression.TransportCertificate.development_pipeline_via_weighted_chain",
+            "theorem:UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain",
+            "theorem:UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_approx_via_twoStage"
+          ]
+        }
       }
     },
     "M-BU-01": {
@@ -438,13 +502,41 @@
           "M-PE-01"
         ],
         "ledger_checkpoint": "M-PE-01-CROSS-FAMILY"
+      },
+      "ablation": {
+        "result": "nonredundant_under_declared_derivation_system",
+        "broken_pids": [
+          "P-QSD-02",
+          "P-EVO-04"
+        ],
+        "rationale": "Removing M-PE-01 removes the only counted positive left/right eigenstructure layer. M-QD-01 has quotient universal properties and M-TC-01 has certificate transport, but neither derives positive eigenrelations, Doob-transform normalization/invariance, or the stochastic eigenvector martingale used by the generated QSD and evolution mappings.",
+        "remaining_core_derivability": {
+          "remaining_generator_ids": [
+            "M-QD-01",
+            "M-TC-01"
+          ],
+          "status": "not_derivable_under_declared_derivation_system",
+          "assumptions": [
+            "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
+            "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
+            "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
+            "Concrete killed-kernel, matrix, and conditional-mean semantics may be supplied by source adapters, but the positive eigenstructure consequences themselves must come from an existing counted theorem rather than a replacement adapter."
+          ],
+          "audit_evidence": [
+            "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.qsdDoob_bundle",
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.stochasticRightEigen_bundle",
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_via_positiveEigenstructure",
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure"
+          ]
+        }
       }
     }
   },
   "mission_contract": {
     "version": 1,
     "path": "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
-    "state": "active"
+    "state": "ready_for_finalization"
   },
   "final_dispositions": {
     "P-PRED-01": {
@@ -1234,10 +1326,14 @@
     }
   },
   "minimal_core": {
-    "state": "open",
-    "generator_ids": [],
-    "ablation_state": "not_started",
-    "minimality_claim": "not_established"
+    "state": "frozen",
+    "generator_ids": [
+      "M-QD-01",
+      "M-TC-01",
+      "M-PE-01"
+    ],
+    "ablation_state": "complete",
+    "minimality_claim": "nonredundant_under_declared_derivation_system"
   },
   "finalization_evidence": {},
   "audit_records": {
