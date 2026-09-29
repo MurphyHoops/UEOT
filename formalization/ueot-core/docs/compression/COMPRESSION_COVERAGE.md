@@ -20,15 +20,29 @@ changes the completed **106/106 FULL-GREEN** source status.
 | schema-classified P-IDs | 106 / 106 |
 | fully Lean-rederived P-IDs | 9 / 106 |
 | counted compressed P-IDs | 9 / 106 |
-| final dispositions assigned | 0 / 106 |
-| generated final dispositions | 0 / 106 |
-| retained domain adapters | 0 / 106 |
-| retained boundary/no-go results | 0 / 106 |
-| unresolved final dispositions | 106 / 106 |
+| final dispositions assigned | 106 / 106 |
+| generated final dispositions | 9 / 106 |
+| retained domain adapters | 91 / 106 |
+| retained boundary/no-go results | 6 / 106 |
+| unresolved final dispositions | 0 / 106 |
 | counted meta-generators | 3 |
 
 Mission state: **ACTIVE**. Minimal core state: **OPEN**. Ablation:
 **NOT STARTED**.
+
+**Mission Contract Gate B — RESOLUTION COMPLETE on this branch.** All 106 frozen
+P-IDs now have exactly one final primary disposition: 9 generated, 91 retained
+domain adapters, and 6 retained boundary/no-go results, leaving 0 unresolved.
+The generated set is exactly the nine counted exact mappings:
+P-PRED-01, P-INT-02, P-API-01, P-ID-01, P-DYN-03, P-DYN-04, P-ID-02,
+P-QSD-02, and P-EVO-04. The six primary boundary dispositions are P-INFO-05,
+P-INV-01, P-INV-02, P-DDH-01, P-EVO-02, and P-BRG-02. Mixed theorems whose
+primary content remains constructive/domain-specific are retained as adapters
+even when they also carry a secondary boundary role.
+
+Gate B completion does **not** freeze the minimal core or establish minimality.
+Gate C remains open and still requires a frozen final M-ID list plus completed
+nonredundancy ablation; Gate D remains later repository closure.
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
@@ -355,14 +369,15 @@ classified:
 - P-CORE-01: common-good-event operational assembly of the already certified
   finite modules.
 
-This closes **Mission Contract Gate A at 106/106 audited and 106/106
-schema-classified P-IDs**. It does **not** assign final dispositions, freeze a
-minimal core, start ablation, or change counted compression. The audit rejects
-a cosmetic “single grand generator”: the remaining rows require materially
-different Bellman/HJB, occupancy/resolvent, Markov/spectral perturbation,
-path-information, exponential-family, differential-geometric, evolutionary,
-decision, and assembly mechanisms. Candidate generator research and final
-per-P-ID resolution therefore remain separate later gates.
+That checkpoint closed **Mission Contract Gate A at 106/106 audited and 106/106
+schema-classified P-IDs**. At the time, it deliberately did not assign final
+dispositions or freeze a minimal core. Its scientific conclusion remains
+operative: a cosmetic “single grand generator” is rejected because the frozen
+rows require materially different Bellman/HJB, occupancy/resolvent,
+Markov/spectral perturbation, path-information, exponential-family,
+differential-geometric, evolutionary, decision, and assembly mechanisms.
+The current Gate-B disposition matrix above resolves those audited rows while
+preserving those genuine domain adapters and boundaries.
 
 
 ### M-PE-01 ledger-promotion evidence — Positive Eigenstructure Calculus
@@ -382,11 +397,11 @@ source-faithful exact counted mappings:
 
 The generator deliberately does **not** claim P-EVO-03's primitive Perron
 rank-one asymptotics or P-QSD-04's compact-resolvent spectral-gap convergence.
-Those remain explicit conjectural/adapter boundaries. The promotion preserves
-Lean-rederived coverage at **8/106** and raises counted compression to
-**8 mappings / 3 generators** on this ledger head. Final dispositions remain
-**0/106**; the canonical lifecycle is complete only after this ledger PR passes
-exact-head CI/review, merges, and the ledger resulting-main CI is green.
+At that M-PE promotion checkpoint, P-EVO-03 and P-QSD-04 remained explicit
+nonclaims; the checkpoint metrics were **8/106 Lean-rederived, 8 counted
+mappings / 3 generators, and 0/106 final dispositions**. Those numbers are
+historical lifecycle evidence only. The current summary table and Gate-B matrix
+supersede them for present-state accounting.
 
 
 ## Counting rule
