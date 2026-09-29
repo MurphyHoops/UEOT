@@ -147,10 +147,9 @@
       "ablation": {
         "result": "nonredundant_under_declared_derivation_system",
         "broken_pids": [
-          "P-PRED-01",
-          "P-INT-02"
+          "P-PRED-01"
         ],
-        "rationale": "Removing M-QD-01 removes the only counted quotient/factorization universal-property layer. M-TC-01 transports already supplied maps and certificates, while M-PE-01 is positive-eigenstructure calculus; neither constructs the measurable or two-sided quotient descent needed by the two generated mappings.",
+        "rationale": "Removing M-QD-01 removes the only counted countable almost-everywhere quotient/factorization descent used by P-PRED-01. M-TC-01 transports already supplied maps and certificates, while M-PE-01 is positive-eigenstructure calculus; neither supplies the common-null-set measurable family descent needed to construct the canonical predictive decoder. P-INT-02 is deliberately not used as an ablation witness because its frozen factorization/refinement statement remains recoverable from the already registered StructuredQuotient adapter surface plus allowed equality rewriting.",
         "remaining_core_derivability": {
           "remaining_generator_ids": [
             "M-TC-01",
@@ -161,14 +160,12 @@
             "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
             "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
             "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
-            "The quotient universal property, countable almost-everywhere family descent, and exact two-sided response descent must be supplied by an existing counted theorem rather than encoded inside a new adapter."
+            "For the P-PRED-01 ablation witness, the countable almost-everywhere family descent and one common measurable decoder must be supplied by an existing counted theorem; the registered adapters used by the mapping do not provide that joint common-null-set descent."
           ],
           "audit_evidence": [
             "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
             "theorem:UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
-            "theorem:UEOT.V3.Compression.QuotientDescent.existsUnique_twoSidedDescend",
-            "theorem:UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent",
-            "theorem:UEOT.V3.Compression.QuotientDescent.p_int_02_via_twoSidedDescent"
+            "theorem:UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent"
           ]
         }
       }
