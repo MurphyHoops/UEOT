@@ -17,3 +17,10 @@ import UEOT.V3.Compression
 #print axioms UEOT.V3.Compression.TransportCertificate.transportDefect_source_via_chain
 #print axioms UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_approx_via_twoStage
 #print axioms UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_exact_via_factor
+
+#print axioms UEOT.V3.Compression.PositiveEigenstructure.qsdDoob_bundle
+#print axioms UEOT.V3.Compression.PositiveEigenstructure.scale_le_one_of_substochastic
+#print axioms UEOT.V3.Compression.PositiveEigenstructure.stochasticRightEigen_bundle
+#print axioms UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_via_positiveEigenstructure
+#print axioms UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_killed_via_positiveEigenstructure
+#print axioms UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure

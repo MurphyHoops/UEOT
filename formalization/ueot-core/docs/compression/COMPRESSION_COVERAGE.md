@@ -18,7 +18,7 @@ changes the completed **106/106 FULL-GREEN** source status.
 |---|---:|
 | source P-IDs analyzed | 106 / 106 |
 | schema-classified P-IDs | 106 / 106 |
-| fully Lean-rederived P-IDs | 6 / 106 |
+| fully Lean-rederived P-IDs | 8 / 106 |
 | counted compressed P-IDs | 6 / 106 |
 | final dispositions assigned | 0 / 106 |
 | generated final dispositions | 0 / 106 |
@@ -223,7 +223,7 @@ to rename a common proof idiom.
 
 ### M-PE-01 — Positive Eigenstructure Calculus
 
-State: **CANDIDATE / analysis-only**
+State: **INTEGRATION_GREEN / uncounted**
 
 Cross-family evidence now spans quasi-stationarity and evolutionary positive
 operators:
@@ -237,10 +237,14 @@ operators:
 - P-EVO-04: the positive right Perron eigendirection turns conditional mean
   reproduction into a normalized reproductive-value martingale.
 
-No generic Lean generator is claimed yet. Perron existence/simplicity, finite
-primitive-matrix power asymptotics, reversible compact-resolvent spectral
-remainders, and stochastic adaptedness/integrability remain explicit adapters.
-In particular, a QSD q is not identified with the Doob stationary law q*h.
+A generic Lean generator is now formalized for the common positive-eigenstructure
+calculus and exactly reconstructs P-QSD-02 and P-EVO-04 through explicit
+source-facing wrappers. Perron existence/simplicity, primitive-matrix rank-one
+power asymptotics, and reversible compact-resolvent spectral remainders remain
+explicit adapters; therefore P-EVO-03 and P-QSD-04 are not claimed generated.
+The stochastic adaptedness/integrability premises of P-EVO-04 also remain
+explicit source adapter assumptions. In particular, a QSD q is not identified
+with the Doob stationary law q*h.
 
 ### QSD / Perron audit
 
@@ -256,8 +260,10 @@ Six further source rows are now source↔Lean↔schema audited:
   uniqueness;
 - P-EVO-04: reproductive-value martingale from conditional mean dynamics.
 
-The Perron/eigenstructure overlap is recorded as M-PE-01 only at candidate
-level; counted mappings and generators are unchanged.
+The Perron/eigenstructure overlap is now Lean-realized as M-PE-01 at
+**integration_green** for exact mappings P-QSD-02 and P-EVO-04. Counted mappings
+and generators remain unchanged until PR exact-head CI/review, resulting-main
+CI, and the separate ledger-promotion lifecycle complete.
 
 
 ### OMG / carrier / resolution audit
@@ -354,6 +360,30 @@ different Bellman/HJB, occupancy/resolvent, Markov/spectral perturbation,
 path-information, exponential-family, differential-geometric, evolutionary,
 decision, and assembly mechanisms. Candidate generator research and final
 per-P-ID resolution therefore remain separate later gates.
+
+
+### M-PE-01 integration evidence — Positive Eigenstructure Calculus
+
+M-PE-01 has reached **integration green** with two source-faithful exact
+mappings, but it is **not counted yet**:
+
+- **P-QSD-02** is reconstructed exactly from positive left/right finite
+  eigenstructure: normalized QSD propagation, survival mass, stochastic
+  nonnegative Doob transform, the normalized \(q h\) invariant law, and the
+  killed/substochastic \(\rho \le 1\) clause. Assumption relation: **exact**.
+- **P-EVO-04** is reconstructed exactly from positive right eigenstructure plus
+  the frozen stochastic adapter assumptions: the normalized reproductive-value
+  process is a nonnegative integrable martingale with constant expectation.
+  Assumption relation: **weaker only at the typeclass level**, because the
+  wrapper internally supplies classical decidable equality on the finite type.
+
+The generator deliberately does **not** claim P-EVO-03's primitive Perron
+rank-one asymptotics or P-QSD-04's compact-resolvent spectral-gap convergence.
+Those remain explicit conjectural/adapter boundaries. Integration green changes
+the Lean-rederived count from **6 to 8** but leaves counted compression unchanged
+at **6 mappings / 2 generators** until PR exact-head review/CI, resulting-main,
+and separate ledger promotion complete.
+
 
 ## Counting rule
 
