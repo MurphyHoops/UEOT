@@ -355,6 +355,30 @@ path-information, exponential-family, differential-geometric, evolutionary,
 decision, and assembly mechanisms. Candidate generator research and final
 per-P-ID resolution therefore remain separate later gates.
 
+
+### M-PE-01 feature evidence — Positive Eigenstructure Calculus
+
+M-PE-01 has reached **cross-family green on the feature branch** with two
+source-faithful exact mappings, but it is **not counted yet**:
+
+- **P-QSD-02** is reconstructed exactly from positive left/right finite
+  eigenstructure: normalized QSD propagation, survival mass, stochastic
+  nonnegative Doob transform, the normalized \(q h\) invariant law, and the
+  killed/substochastic \(\rho \le 1\) clause. Assumption relation: **exact**.
+- **P-EVO-04** is reconstructed exactly from positive right eigenstructure plus
+  the frozen stochastic adapter assumptions: the normalized reproductive-value
+  process is a nonnegative integrable martingale with constant expectation.
+  Assumption relation: **weaker only at the typeclass level**, because the
+  wrapper internally supplies classical decidable equality on the finite type.
+
+The generator deliberately does **not** claim P-EVO-03's primitive Perron
+rank-one asymptotics or P-QSD-04's compact-resolvent spectral-gap convergence.
+Those remain explicit conjectural/adapter boundaries. Feature green changes the
+Lean-rederived count from **6 to 8** but leaves counted compression unchanged at
+**6 mappings / 2 generators** until clean integration, PR, resulting-main, and
+separate ledger promotion complete.
+
+
 ## Counting rule
 
 A generator or mapping is counted only after the complete compression

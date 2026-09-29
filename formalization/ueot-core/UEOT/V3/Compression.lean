@@ -104,3 +104,4 @@ import UEOT.V3.ReflexivePRef01
 import UEOT.V3.FreeInformationValue
 import UEOT.V3.Decision
 import UEOT.V3.Agency
+import UEOT.V3.Compression.PositiveEigenstructure
