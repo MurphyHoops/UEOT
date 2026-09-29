@@ -94,6 +94,38 @@ theorem invariant_of_observable_residual
   exact observable_invariance_of_residual
     observe advance seq limit hbase hpush hres t o
 
+/-- Continuous-observable form of asymptotic invariance.
+
+This is the stronger reusable core used by the source-facing wrappers.  The
+domain adapter supplies one convergent state sequence, a separating observable
+family, continuity of the base/evolved observables, and a vanishing observable
+evolution residual.  Passage of both observable faces to the limit and the
+final state equality are handled here. -/
+theorem invariant_of_continuous_observable_residual
+    {State : Type*} [TopologicalSpace State]
+    {Time : Type*} {Obs : Type*}
+    {Y : Type*} [AddGroup Y] [TopologicalSpace Y] [T2Space Y]
+    [ContinuousSub Y]
+    (observe : Obs → State → Y)
+    (advance : Time → State → State)
+    (seq : ℕ → State) (limit : State)
+    (hseq : Tendsto seq atTop (𝓝 limit))
+    (hObserve : ∀ o, Continuous (observe o))
+    (hAdvanceObserve : ∀ t o, Continuous (fun x => observe o (advance t x)))
+    (hseparates :
+      ∀ x y : State, (∀ o, observe o x = observe o y) → x = y)
+    (hres : ∀ t o, Tendsto
+      (fun n => observe o (advance t (seq n)) - observe o (seq n))
+      atTop (𝓝 0)) :
+    ∀ t, advance t limit = limit := by
+  apply invariant_of_observable_residual
+    observe advance seq limit hseparates
+  · intro o
+    exact ((hObserve o).tendsto limit).comp hseq
+  · intro t o
+    exact ((hAdvanceObserve t o).tendsto limit).comp hseq
+  · exact hres
+
 section FiniteCesaro
 
 open UEOT.V3.FiniteCesaroInvariant
@@ -111,22 +143,23 @@ theorem finite_invariant_of_cesaro_tendsto
     (hφ : StrictMono φ)
     (hlim : Tendsto (cesaroRow P hP μ0 ∘ φ) atTop (𝓝 ν)) :
     Matrix.vecMul ν.1 P = ν.1 := by
-  let F : stdSimplex ℝ S → (S → ℝ) :=
-    fun μ => Matrix.vecMul μ.1 P
-  let G : stdSimplex ℝ S → (S → ℝ) :=
-    fun μ => μ.1
-  have hFcontinuous : Continuous F := by
-    exact Continuous.matrix_vecMul continuous_subtype_val continuous_const
-  have hGcontinuous : Continuous G :=
-    continuous_subtype_val
-  have hF :
-      Tendsto (fun n => F ((cesaroRow P hP μ0 ∘ φ) n))
-        atTop (𝓝 (F ν)) :=
-    (hFcontinuous.tendsto ν).comp hlim
-  have hG :
-      Tendsto (fun n => G ((cesaroRow P hP μ0 ∘ φ) n))
-        atTop (𝓝 (G ν)) :=
-    (hGcontinuous.tendsto ν).comp hlim
+  let seq : ℕ → (S → ℝ) :=
+    Subtype.val ∘ cesaroRow P hP μ0 ∘ φ
+  let limit : S → ℝ := ν.1
+  let advance : Unit → (S → ℝ) → (S → ℝ) := fun _ μ =>
+    Matrix.vecMul μ P
+  let observe : S → (S → ℝ) → ℝ := fun j μ => μ j
+  have hseq : Tendsto seq atTop (𝓝 limit) := by
+    exact (continuous_subtype_val.tendsto ν).comp hlim
+  have hObserve : ∀ j, Continuous (observe j) := by
+    intro j
+    exact continuous_apply j
+  have hAdvanceObserve : ∀ t j,
+      Continuous (fun μ => observe j (advance t μ)) := by
+    intro _ j
+    have hcont : Continuous (fun μ : S → ℝ => Matrix.vecMul μ P) :=
+      Continuous.matrix_vecMul continuous_id continuous_const
+    exact (continuous_apply j).comp hcont
   have hresGlobal := cesaro_residual_tendsto_zero P hP μ0
   have hresSub :
       Tendsto
@@ -135,19 +168,24 @@ theorem finite_invariant_of_cesaro_tendsto
             (cesaroRow P hP μ0 (φ n) : S → ℝ))
         atTop (𝓝 0) :=
     hresGlobal.comp hφ.tendsto_atTop
-  have hEq : F ν = G ν := by
-    apply equal_at_limit_of_residual
-      (fun n => F ((cesaroRow P hP μ0 ∘ φ) n))
-      (fun n => G ((cesaroRow P hP μ0 ∘ φ) n))
-      (F ν) (G ν) hF hG
-    change
-      Tendsto
-        (fun n =>
-          Matrix.vecMul (cesaroRow P hP μ0 (φ n) : S → ℝ) P -
-            (cesaroRow P hP μ0 (φ n) : S → ℝ))
-        atTop (𝓝 0)
-    exact hresSub
-  simpa [F, G] using hEq
+  change Tendsto (fun n => Matrix.vecMul (seq n) P - seq n)
+    atTop (𝓝 0) at hresSub
+  have hres : ∀ t j, Tendsto
+      (fun n => observe j (advance t (seq n)) - observe j (seq n))
+        atTop (𝓝 0) := by
+    intro _ j
+    have hj := ((continuous_apply j).tendsto (0 : S → ℝ)).comp hresSub
+    change Tendsto (fun n => (Matrix.vecMul (seq n) P - seq n) j)
+      atTop (𝓝 0) at hj
+    change Tendsto (fun n => (Matrix.vecMul (seq n) P - seq n) j)
+      atTop (𝓝 0)
+    exact hj
+  have hinv : ∀ t, advance t limit = limit :=
+    invariant_of_continuous_observable_residual
+      observe advance seq limit hseq hObserve hAdvanceObserve
+      (fun x y hxy => funext hxy)
+      hres
+  simpa [advance, limit] using hinv ()
 
 /-- Full P-GOA-01 statement with only the invariant-limit step delegated to
 M-OI-01.  Finite-simplex compactness remains the explicit extraction adapter. -/
@@ -180,6 +218,18 @@ variable {X : Type uX}
 variable [MetricSpace X] [MeasurableSpace X] [BorelSpace X]
   [CompleteSpace X] [SecondCountableTopology X]
 
+/-- Markov evolution lifted from measures to probability measures. -/
+noncomputable def fellerAdvancePM
+    (S : FellerOccupationSystem X) (s : NNReal)
+    (μ : ProbabilityMeasure X) : ProbabilityMeasure X := by
+  letI : IsMarkovKernel (S.P s) := S.markov s
+  exact ⟨S.P s ∘ₘ (μ : Measure X), by infer_instance⟩
+
+@[simp] theorem fellerAdvancePM_toMeasure
+    (S : FellerOccupationSystem X) (s : NNReal)
+    (μ : ProbabilityMeasure X) :
+    (fellerAdvancePM S s μ : Measure X) = S.P s ∘ₘ (μ : Measure X) := rfl
+
 /-- The invariant-limit half of P-PER-02 reconstructed through the same
 limit-residual theorem used by P-GOA-01. -/
 theorem feller_invariant_of_occupation_tendsto
@@ -188,52 +238,64 @@ theorem feller_invariant_of_occupation_tendsto
     (ν : ProbabilityMeasure X)
     (hconv : Tendsto (fun n => S.occupation (Tseq n)) atTop (𝓝 ν)) :
     ∀ s : NNReal, S.P s ∘ₘ (ν : Measure X) = (ν : Measure X) := by
-  intro s
-  letI : IsMarkovKernel (S.P s) := S.markov s
-  apply ext_of_forall_integral_eq_of_IsFiniteMeasure
-  intro f
-  let Fseq : ℕ → ℝ := fun n =>
-    ∫ x, f x ∂(S.P s ∘ₘ (S.occupation (Tseq n) : Measure X))
-  let Gseq : ℕ → ℝ := fun n =>
-    ∫ x, f x ∂(S.occupation (Tseq n) : Measure X)
-  let Fstar : ℝ :=
-    ∫ x, f x ∂(S.P s ∘ₘ (ν : Measure X))
-  let Gstar : ℝ :=
-    ∫ x, f x ∂(ν : Measure X)
-  have hG : Tendsto Gseq atTop (𝓝 Gstar) := by
-    simpa [Gseq, Gstar] using
-      (ProbabilityMeasure.tendsto_iff_forall_integral_tendsto.mp hconv) f
-  have haction :
-      Tendsto
-        (fun n =>
-          ∫ x, S.action s f x ∂(S.occupation (Tseq n) : Measure X))
-        atTop (𝓝 (∫ x, S.action s f x ∂(ν : Measure X))) :=
-    (ProbabilityMeasure.tendsto_iff_forall_integral_tendsto.mp hconv) (S.action s f)
-  have hF : Tendsto Fseq atTop (𝓝 Fstar) := by
-    simpa [Fseq, Fstar, integral_push_eq_action] using haction
-  have hcoe : Tendsto (fun n => (Tseq n : ℝ)) atTop atTop :=
-    NNReal.tendsto_coe_atTop.2 hTseq
-  have hbound :
-      Tendsto (fun n => 2 * (s : ℝ) * ‖f‖ / (Tseq n : ℝ))
+  let observe : BoundedContinuousFunction X ℝ → ProbabilityMeasure X → ℝ :=
+    fun f μ => ∫ x, f x ∂(μ : Measure X)
+  let advance : NNReal → ProbabilityMeasure X → ProbabilityMeasure X :=
+    fellerAdvancePM S
+  let seq : ℕ → ProbabilityMeasure X := fun n => S.occupation (Tseq n)
+  have hseparates :
+      ∀ μ η : ProbabilityMeasure X,
+        (∀ f, observe f μ = observe f η) → μ = η := by
+    intro μ η h
+    letI : IsFiniteMeasure (μ : Measure X) := by infer_instance
+    letI : IsFiniteMeasure (η : Measure X) := by infer_instance
+    apply ProbabilityMeasure.toMeasure_injective
+    apply ext_of_forall_integral_eq_of_IsFiniteMeasure
+    intro f
+    exact h f
+  have hObserve : ∀ f, Continuous (observe f) := by
+    intro f
+    simpa [observe] using
+      (ProbabilityMeasure.continuous_integral_boundedContinuousFunction f)
+  have hAdvanceObserve : ∀ s f,
+      Continuous (fun μ => observe f (advance s μ)) := by
+    intro s f
+    have haction :=
+      ProbabilityMeasure.continuous_integral_boundedContinuousFunction
+        (S.action s f)
+    simpa [observe, advance, integral_push_eq_action] using haction
+  have hres : ∀ s f, Tendsto
+      (fun n => observe f (advance s (seq n)) - observe f (seq n))
         atTop (𝓝 0) := by
-    have hinv : Tendsto (fun n => ((Tseq n : ℝ))⁻¹) atTop (𝓝 0) :=
-      tendsto_inv_atTop_zero.comp hcoe
-    simpa [div_eq_mul_inv] using hinv.const_mul (2 * (s : ℝ) * ‖f‖)
-  have hlarge : ∀ᶠ n in atTop, (1 : NNReal) ≤ Tseq n :=
-    (tendsto_atTop.1 hTseq) 1
-  have hle : ∀ᶠ n in atTop, |Fseq n - Gseq n| ≤
-      2 * (s : ℝ) * ‖f‖ / (Tseq n : ℝ) := by
-    filter_upwards [hlarge] with n hn
-    simpa [Fseq, Gseq] using
-      S.occupation_shift_bound
-        (Tseq n) s (ne_of_gt (zero_lt_one.trans_le hn)) f
-  have hres : Tendsto (fun n => Fseq n - Gseq n) atTop (𝓝 0) := by
+    intro s f
+    have hcoe : Tendsto (fun n => (Tseq n : ℝ)) atTop atTop :=
+      NNReal.tendsto_coe_atTop.2 hTseq
+    have hbound :
+        Tendsto (fun n => 2 * (s : ℝ) * ‖f‖ / (Tseq n : ℝ))
+          atTop (𝓝 0) := by
+      have hinv : Tendsto (fun n => ((Tseq n : ℝ))⁻¹) atTop (𝓝 0) :=
+        tendsto_inv_atTop_zero.comp hcoe
+      simpa [div_eq_mul_inv] using hinv.const_mul (2 * (s : ℝ) * ‖f‖)
+    have hlarge : ∀ᶠ n in atTop, (1 : NNReal) ≤ Tseq n :=
+      (tendsto_atTop.1 hTseq) 1
+    have hle : ∀ᶠ n in atTop,
+        |observe f (advance s (seq n)) - observe f (seq n)| ≤
+          2 * (s : ℝ) * ‖f‖ / (Tseq n : ℝ) := by
+      filter_upwards [hlarge] with n hn
+      simpa [observe, advance, seq] using
+        S.occupation_shift_bound
+          (Tseq n) s (ne_of_gt (zero_lt_one.trans_le hn)) f
     rw [tendsto_zero_iff_abs_tendsto_zero]
     exact tendsto_of_tendsto_of_tendsto_of_le_of_le'
       tendsto_const_nhds hbound
-      (Eventually.of_forall fun n => abs_nonneg (Fseq n - Gseq n)) hle
-  exact equal_at_limit_of_residual
-    Fseq Gseq Fstar Gstar hF hG hres
+      (Eventually.of_forall fun n =>
+        abs_nonneg (observe f (advance s (seq n)) - observe f (seq n))) hle
+  have hinv : ∀ s, advance s ν = ν :=
+    invariant_of_continuous_observable_residual
+      observe advance seq ν hconv hObserve hAdvanceObserve hseparates hres
+  intro s
+  have hs := congrArg (fun μ : ProbabilityMeasure X => (μ : Measure X)) (hinv s)
+  simpa [advance] using hs
 
 /-- Full P-PER-02 statement with extraction and closed-support inheritance kept
 as explicit Feller/Prokhorov/Portmanteau adapters, while the invariant-limit
