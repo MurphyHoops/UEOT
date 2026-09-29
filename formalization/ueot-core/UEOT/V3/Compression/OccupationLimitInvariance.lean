@@ -36,6 +36,64 @@ theorem equal_at_limit_of_residual
     tendsto_nhds_unique hdiff hres
   exact sub_eq_zero.mp hz
 
+/-- Observable form of asymptotic invariance.
+
+For every evolution label and every registered observable, if the base
+trajectory and its evolved image both have observable limits and their
+observable residual vanishes, then the two limiting observable values agree.
+
+Unlike `equal_at_limit_of_residual`, this theorem owns the simultaneous
+time/observable quantifiers used by long-run invariance arguments.  The
+domain-specific construction of the observables, convergence, and residual
+bounds remains explicit. -/
+theorem observable_invariance_of_residual
+    {State : Type*} {Time : Type*} {Obs : Type*}
+    {Y : Type*} [AddGroup Y] [TopologicalSpace Y] [T2Space Y]
+    [ContinuousSub Y]
+    (observe : Obs → State → Y)
+    (advance : Time → State → State)
+    (seq : ℕ → State) (limit : State)
+    (hbase : ∀ o, Tendsto (fun n => observe o (seq n))
+      atTop (𝓝 (observe o limit)))
+    (hpush : ∀ t o, Tendsto (fun n => observe o (advance t (seq n)))
+      atTop (𝓝 (observe o (advance t limit))))
+    (hres : ∀ t o, Tendsto
+      (fun n => observe o (advance t (seq n)) - observe o (seq n))
+      atTop (𝓝 0)) :
+    ∀ t o, observe o (advance t limit) = observe o limit := by
+  intro t o
+  exact equal_at_limit_of_residual
+    (fun n => observe o (advance t (seq n)))
+    (fun n => observe o (seq n))
+    (observe o (advance t limit))
+    (observe o limit)
+    (hpush t o) (hbase o) (hres t o)
+
+/-- If the observable family separates states, observable asymptotic
+invariance upgrades to actual invariance of the limiting state. -/
+theorem invariant_of_observable_residual
+    {State : Type*} {Time : Type*} {Obs : Type*}
+    {Y : Type*} [AddGroup Y] [TopologicalSpace Y] [T2Space Y]
+    [ContinuousSub Y]
+    (observe : Obs → State → Y)
+    (advance : Time → State → State)
+    (seq : ℕ → State) (limit : State)
+    (hseparates :
+      ∀ x y : State, (∀ o, observe o x = observe o y) → x = y)
+    (hbase : ∀ o, Tendsto (fun n => observe o (seq n))
+      atTop (𝓝 (observe o limit)))
+    (hpush : ∀ t o, Tendsto (fun n => observe o (advance t (seq n)))
+      atTop (𝓝 (observe o (advance t limit))))
+    (hres : ∀ t o, Tendsto
+      (fun n => observe o (advance t (seq n)) - observe o (seq n))
+      atTop (𝓝 0)) :
+    ∀ t, advance t limit = limit := by
+  intro t
+  apply hseparates
+  intro o
+  exact observable_invariance_of_residual
+    observe advance seq limit hbase hpush hres t o
+
 section FiniteCesaro
 
 open UEOT.V3.FiniteCesaroInvariant
