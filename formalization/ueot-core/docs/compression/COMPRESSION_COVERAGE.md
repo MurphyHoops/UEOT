@@ -27,7 +27,7 @@ changes the completed **106/106 FULL-GREEN** source status.
 | unresolved final dispositions | 0 / 106 |
 | counted meta-generators | 4 |
 
-Mission state: **READY_FOR_FINALIZATION (POST-GATE-D REOPEN)**. Minimal core:
+Mission state: **FINAL (POST-GATE-D RE-FINALIZATION CLOSURE ACTIVE)**. Minimal core:
 **FROZEN = {M-QD-01, M-TC-01, M-PE-01, M-OI-01}**. Ablation:
 **COMPLETE**. Scoped minimality claim:
 **NONREDUNDANT_UNDER_DECLARED_DERIVATION_SYSTEM**.
@@ -83,12 +83,11 @@ live counted core changed after FINAL, the ledger is deliberately reopened to
 `ready_for_finalization`. The counted-promotion PR #174 then merged to exact
 candidate scientific main
 `bf1d01a0f7bf658f8c205ddcc1a2832a4bb3638b`; candidate-main push Core Lean
-`36578717005` and Compression Guard `36578717533` are both SUCCESS. This branch
-is the dedicated post-Gate-D re-finalization closure lane. The fresh closure PR
-number is intentionally recorded only after that PR exists, before the live
-ledger transitions from `ready_for_finalization` back to `final`.
-Until that lifecycle completes, **11/106 is live candidate-main accounting, not
-a new FINAL announcement**.
+`36578717005` and Compression Guard `36578717533` are both SUCCESS. Dedicated post-Gate-D closure PR is **#175**. The live machine ledger is now
+back in `final` with candidate-main SHA/run IDs and the closure PR bound in
+`finalization_evidence`. Final announcement still requires exact-head closure
+CI, Codex review, a **normal merge commit**, and resulting-main Core Lean +
+Compression Guard green.
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
