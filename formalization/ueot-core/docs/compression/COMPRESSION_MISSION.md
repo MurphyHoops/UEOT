@@ -263,3 +263,26 @@ mission is early:
 - ablation not started.
 
 Therefore the compression mission is **active**, not near completion.
+
+## 13. Post-final scientific extensions
+
+Gate D freezes a reproducible scientific checkpoint relative to the registered
+theorem surface available at that time. A later formally integrated theorem
+route may justify rerunning Gate C if it changes derivability, generated
+coverage, or minimal-core membership.
+
+Such a later result does not invalidate or rewrite the earlier checkpoint.
+Instead:
+
+- the earlier FINAL evidence remains immutable historical evidence;
+- the enlarged theorem surface must satisfy the same exact-mapping and scoped
+  ablation standards;
+- every old minimal-core member must be rechecked for redundancy with the new
+  generator retained;
+- every new generator must receive its own deletion witness;
+- live mission state returns to `ready_for_finalization`;
+- Gate D must be closed again through the normal candidate-main / closure-PR /
+  resulting-main lifecycle before a new FINAL state is announced.
+
+This rule keeps the minimal-core claim corrigible under new formalized evidence
+without permitting silent post-hoc mutation of a closed scientific record.

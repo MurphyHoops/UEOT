@@ -18,69 +18,72 @@ changes the completed **106/106 FULL-GREEN** source status.
 |---|---:|
 | source P-IDs analyzed | 106 / 106 |
 | schema-classified P-IDs | 106 / 106 |
-| fully Lean-rederived P-IDs | 9 / 106 |
-| counted compressed P-IDs | 9 / 106 |
+| fully Lean-rederived P-IDs | 11 / 106 |
+| counted compressed P-IDs | 11 / 106 |
 | final dispositions assigned | 106 / 106 |
-| generated final dispositions | 9 / 106 |
-| retained domain adapters | 91 / 106 |
+| generated final dispositions | 11 / 106 |
+| retained domain adapters | 89 / 106 |
 | retained boundary/no-go results | 6 / 106 |
 | unresolved final dispositions | 0 / 106 |
-| counted meta-generators | 3 |
+| counted meta-generators | 4 |
 
-Mission state: **FINAL**. Minimal core state:
-**FROZEN**. Ablation: **COMPLETE**. Scoped minimality claim:
+Mission state: **READY_FOR_FINALIZATION (POST-GATE-D REOPEN)**. Minimal core:
+**FROZEN = {M-QD-01, M-TC-01, M-PE-01, M-OI-01}**. Ablation:
+**COMPLETE**. Scoped minimality claim:
 **NONREDUNDANT_UNDER_DECLARED_DERIVATION_SYSTEM**.
 
-**Mission Contract Gate B — RESOLUTION COMPLETE.** All 106 frozen P-IDs have
-exactly one final primary disposition: 9 generated, 91 retained domain
-adapters, and 6 retained boundary/no-go results, leaving 0 unresolved. The
-generated set is exactly the nine counted exact mappings: P-PRED-01, P-INT-02,
-P-API-01, P-ID-01, P-DYN-03, P-DYN-04, P-ID-02, P-QSD-02, and P-EVO-04. The
-six primary boundary dispositions are P-INFO-05, P-INV-01, P-INV-02, P-DDH-01,
-P-EVO-02, and P-BRG-02. Mixed theorems whose primary content remains
-constructive/domain-specific are retained as adapters even when they also carry
-a secondary boundary role.
+The frozen Core v3 source baseline remains **106/106 FULL-GREEN**. This
+post-Gate-D reopening changes compression accounting only; it does not reopen,
+renumber, or weaken any frozen source P-ID theorem.
 
-**Mission Contract Gate C — CORE FROZEN on this branch.** The final scoped core
-is exactly **{M-QD-01, M-TC-01, M-PE-01}**. The ablation audit in
-`COMPRESSION_ABLATION.md` removes each generator in turn and records:
+The live 106-row accounting is now **11 generated + 89 retained_adapter + 6
+retained_boundary = 106**, with zero unresolved. The historical nine generated
+P-IDs remain counted, and two exact mappings are added under M-OI-01:
 
-- removing M-QD-01 breaks generated P-PRED-01; P-INT-02 remains
-  reconstructible through its pre-existing StructuredQuotient adapter route and
-  therefore is not used as an ablation witness;
-- removing M-TC-01 uses generated P-DYN-03 as the nonredundancy witness; the
-  other M-TC generated mappings remain attributed to M-TC but are not all
-  claimed broken under deletion;
-- removing M-PE-01 uses generated P-EVO-04 as the nonredundancy witness;
-  P-QSD-02 remains attributed to M-PE but is not needed as a second witness.
+- **P-PER-02** via
+  `UEOT.V3.Compression.OccupationLimitInvariance.p_per_02_via_occupationLimit`;
+- **P-GOA-01** via
+  `UEOT.V3.Compression.OccupationLimitInvariance.p_goa_01_via_occupationLimit`.
 
-For each deletion, the remaining two counted generators plus registered
-adapters fail to recover at least one designated generated witness in the
-**registered theorem-surface DAG frozen at Gate-B main
-`db880cfc96820b9069a127caa44cd9255237cd97`**. Generated attribution alone does
-not imply breakage: P-INT-02 is explicitly reconstructible after M-QD deletion,
-and other generated mappings are not listed as broken merely from attribution.
+The post-Gate-D Gate-C rerun freezes the enlarged core
+**{M-QD-01, M-TC-01, M-PE-01, M-OI-01}**. Historical deletion witnesses remain
+P-PRED-01, P-DYN-03, and P-EVO-04 for M-QD/M-TC/M-PE. M-OI-01 uses P-GOA-01 as
+its deletion witness. `POST_GATE_D_EXPANDED_CORE_ABLATION.md` admits the entire
+retained M-OI public theorem/definition surface while rechecking all three
+historical witnesses; independent Codex review returned CLEAR/no-major-issues.
 
-The Gate-C derivation system is theorem-surface reachability: existing counted
-generator theorems/wrappers and already registered adapter theorem/definition
-nodes may be applied, specialized, composed and rewritten. Routine Mathlib is
-allowed for side conditions and normalization around those nodes. The deletion
-experiment does **not** synthesize a new macro theorem/proof route from arbitrary
-lower-level library facts to replace the removed generator; such a new route
-would itself have to be registered, audited and promoted before a future Gate-C
-rerun.
+The derivation system remains the same scoped registered-theorem-surface DAG
+notion used by historical Gate C, extended only by formally integrated theorem
+surfaces and explicitly frozen post-Gate-D witness adapters. The claim is
+architectural nonredundancy, not absolute logical independence or uniqueness.
 
-This is therefore a scoped claim about the nonredundancy of the **formalized
-compression architecture**, **not absolute logical independence or uniqueness
-across Lean/Mathlib or all possible future axiomatizations**.
+### Historical Gate-D checkpoint — preserved
 
-**Mission Contract Gate D — FINAL CLOSURE ACTIVE.** Candidate scientific main is
-`161549f0d5566e7b09557778fa1f924d32b7b7c8`, with successful candidate-main
-push evidence Core Lean `36541120296` (#2195) and Compression Guard
-`36541120239` (#171). Dedicated closure PR is **#172**. The machine ledger is
-now in `final` with live-verifiable closure evidence. Final announcement still
-requires exact-head closure CI, Codex review, a **normal merge commit**, and
-resulting-main Core Lean + Compression Guard green.
+The original FINAL result remains immutable historical evidence:
+
+- canonical final main: `8d0fce85ee6b7a5cfd002894d4d08b82e2bfefb2`;
+- counted generators: **3**;
+- generated mappings: **9/106**;
+- minimal core: **{M-QD-01, M-TC-01, M-PE-01}**;
+- final closure PR: **#172**;
+- candidate-main Core Lean `36541120296`: SUCCESS;
+- candidate-main Compression Guard `36541120239`: SUCCESS;
+- resulting-main Core Lean `36543948382`: SUCCESS;
+- resulting-main Compression Guard `36543948315`: SUCCESS.
+
+The M-OI result does not rewrite that checkpoint as though M-OI had existed
+then. It is a later formalized route on an enlarged theorem surface.
+
+### Re-finalization status
+
+M-OI feature/audit PR #173 merged to
+`main@4a20ad6829eaa2afd46ad39f3cddab6b36341332`; resulting-main Core Lean
+`36573837548` and Compression Guard `36573837433` are both SUCCESS. Because the
+live counted core changed after FINAL, the ledger is deliberately reopened to
+`ready_for_finalization`. A fresh candidate-main push and a fresh normal-merge
+closure PR must establish a new Gate-D checkpoint for the four-generator state.
+Until that lifecycle completes, **11/106 is live candidate-main accounting, not
+a new FINAL announcement**.
 
 The final-disposition counts are derived from per-P-ID entries in
 `COMPRESSION_LEDGER.yaml`; they are not free-standing progress estimates.
@@ -149,20 +152,19 @@ State: **COUNTED_GENERATOR**
 
 ### M-BU-01 — Bayesian Recursive Closure
 
-State: **CANDIDATE / analysis-only**
+State: **FORMALIZED BRIDGE / UNCOUNTED**
 
-- P-PRED-03: source and canonical Lean endpoint audited exact; finite-alphabet
-  protocol closure stores Bayes numerator/denominator coordinates and yields a
-  measurable recursive predictive-state update;
-- P-REF-02: source and canonical Lean endpoints audited exact; belief/action
-  determine predictive observations, posterior updating, and one-step control
-  data;
-- cross-family reuse is plausible, but no generic compression theorem is yet
-  claimed;
-- preserved boundary: P-PRED-03 permits an arbitrary mathematical extension on
-  zero-probability observation branches, whereas finite P-REF-02 requires an
-  explicit modelConflict; a common generator must not erase that semantic
-  difference.
+Post-Gate-D research now provides a generic Lean Bayes/update surface and an
+exact P-PRED-03 rederivation. The finite positive-evidence P-REF-02 posterior
+coordinate is an instance of the same Bayes coordinate, while P-REF-02's
+zero-evidence `modelConflict` boundary remains explicit.
+
+M-BU-01 is not promoted to the minimal core: full P-REF-02 also contains
+Standard-Borel disintegration/reconstruction, posterior averaging,
+normalization, conflict semantics, and one-step control reduction; moreover,
+pre-existing P-PRED/P-REF helper surfaces make the present route redundant
+under the declared deletion system. M-BU therefore remains a useful
+cross-family bridge rather than a hidden fifth generator.
 
 ### P-PRED-02 split-schema audit
 
@@ -239,18 +241,29 @@ claimed generated yet.
 
 ### M-OI-01 — Occupation-Limit Invariance
 
-State: **CANDIDATE / analysis-only**
+State: **COUNTED_GENERATOR / POST-GATE-D PROMOTION**
 
-- P-PER-02: tight Feller occupation measures have invariant weak cluster
-  points, with closed-support inheritance by Portmanteau;
-- P-GOA-01: finite-chain Cesaro averages have invariant cluster points because
-  simplex compactness supplies subsequences and the Cesaro one-step defect
-  telescopes to zero;
-- the shared core is genuine across P-ID families: compactness/tightness
-  produces a cluster point and asymptotic invariance plus continuity passes the
-  evolution law to the limit;
-- no generic Lean theorem is yet claimed; topology-specific extraction and
-  support adapters remain explicit.
+Canonical common theorem:
+
+`UEOT.V3.Compression.OccupationLimitInvariance.invariant_of_continuous_observable_residual`
+
+The shared architecture is a convergent long-run state sequence plus continuous
+separating observables, continuous evolved observables, and an asymptotically
+vanishing evolution residual, yielding an invariant limiting state.
+
+- **P-PER-02: counted exact mapping.** Tightness/Prokhorov, Feller action
+  continuity, occupation-shift control, probability-measure realization, and
+  Portmanteau closed-support inheritance remain explicit adapters.
+- **P-GOA-01: counted exact mapping.** Finite-simplex compactness, subsequence
+  extraction, and the discrete Cesaro telescope remain explicit adapters.
+
+The M-OI deletion audit uses P-GOA-01 as its broken witness. The expanded-core
+audit rechecks all historical generator witnesses while admitting the complete
+retained M-OI surface. Independent review returned CLEAR/no-major-issues.
+
+Explicit nonclaims: the primitive residual-limit mathematics is standard
+analysis/topology; P-PER-01, P-QSD-01, and P-GOA-02..04 are not generated; and
+the four-generator minimality claim remains scoped to the declared theorem DAG.
 
 ### Dynamics / persistence / recovery adapter audit
 
@@ -259,7 +272,8 @@ Ten additional source rows are now source↔Lean↔schema audited:
 - P-DYN-02: finite CTMC generator/block-sum criterion and nonnegative-time
   semigroup intertwining; continuous-time quotient adapter, not bare M-QD;
 - P-PER-01: precompact omega-limit persistence and exact semiflow invariance;
-- P-PER-02: Feller occupation-limit invariance and closed-support inheritance;
+- P-PER-02: now **generated by M-OI-01**; Feller/tightness/support machinery
+  remains explicit domain adapters inside the exact wrapper;
 - P-PER-03: finite viability deletion, winning-set equality, stationary
   selector, and probability-one path safety;
 - P-PER-04: positive contingent-cone tangency necessity;
@@ -267,7 +281,8 @@ Ten additional source rows are now source↔Lean↔schema audited:
 - P-REC-02: Dynkin/Gronwall Lyapunov drift → exponential mean-square recovery;
 - P-REC-03: expected hitting-time potential → canonical Poisson identity;
 - P-REC-04: stopped negative drift → expected hitting-time bound;
-- P-GOA-01: finite-chain Cesaro cluster point → invariant law.
+- P-GOA-01: now **generated by M-OI-01**; finite-simplex compactness and Cesaro
+  telescoping remain explicit domain adapters.
 
 Finite monotone stabilization is visible in both P-PER-03 and P-ALG-01, and
 affine dissipation appears in several REC theorems. Those are recorded as

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "updated": "2026-09-29",
-  "integration_branch": "main",
+  "integration_branch": "compression/ledger-m-oi-01-post-gate-d",
   "live_issue": 146,
   "official_target": "lake build UEOT",
   "baseline": {
@@ -14,12 +14,12 @@
   "coverage": {
     "analyzed_pids": 106,
     "schema_classified_pids": 106,
-    "lean_rederived_pids": 9,
-    "counted_compressed_pids": 9,
-    "counted_generators": 3,
+    "lean_rederived_pids": 11,
+    "counted_compressed_pids": 11,
+    "counted_generators": 4,
     "final_disposition_pids": 106,
-    "generated_pids": 9,
-    "retained_adapter_pids": 91,
+    "generated_pids": 11,
+    "retained_adapter_pids": 89,
     "retained_boundary_pids": 6,
     "unresolved_pids": 0
   },
@@ -149,11 +149,12 @@
         "broken_pids": [
           "P-PRED-01"
         ],
-        "rationale": "Removing M-QD-01 removes the only counted countable almost-everywhere quotient/factorization descent used by P-PRED-01. M-TC-01 transports already supplied maps and certificates, while M-PE-01 is positive-eigenstructure calculus; neither supplies the common-null-set measurable family descent needed to construct the canonical predictive decoder. P-INT-02 is deliberately not used as an ablation witness because its frozen factorization/refinement statement remains recoverable from the already registered StructuredQuotient adapter surface plus allowed equality rewriting.",
+        "rationale": "Removing M-QD-01 removes the only counted countable almost-everywhere quotient/factorization descent used by P-PRED-01. M-TC-01 transports already supplied maps and certificates, while M-PE-01 is positive-eigenstructure calculus; neither supplies the common-null-set measurable family descent needed to construct the canonical predictive decoder. P-INT-02 is deliberately not used as an ablation witness because its frozen factorization/refinement statement remains recoverable from the already registered StructuredQuotient adapter surface plus allowed equality rewriting. The post-Gate-D expanded-core audit additionally checks the complete retained M-OI surface and finds no replacement route for this witness.",
         "remaining_core_derivability": {
           "remaining_generator_ids": [
             "M-TC-01",
-            "M-PE-01"
+            "M-PE-01",
+            "M-OI-01"
           ],
           "status": "not_derivable_under_declared_derivation_system",
           "assumptions": [
@@ -162,12 +163,14 @@
             "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
             "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
             "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
-            "For the P-PRED-01 ablation witness, the countable almost-everywhere family descent and one common measurable decoder must be supplied by an existing counted theorem; the registered adapters used by the mapping do not provide that joint common-null-set descent."
+            "For the P-PRED-01 ablation witness, the countable almost-everywhere family descent and one common measurable decoder must be supplied by an existing counted theorem; the registered adapters used by the mapping do not provide that joint common-null-set descent.",
+            "The post-Gate-D expanded-core audit admits the complete public M-OI theorem/definition surface and finds no replacement route for this historical deletion witness."
           ],
           "audit_evidence": [
             "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
             "theorem:UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
-            "theorem:UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent"
+            "theorem:UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent",
+            "doc:formalization/ueot-core/docs/compression/POST_GATE_D_EXPANDED_CORE_ABLATION.md"
           ],
           "registered_adapter_nodes": [
             "theorem:UEOT.V3.PredictionAE.aeFactors_sigmaLE",
@@ -329,11 +332,12 @@
         "broken_pids": [
           "P-DYN-03"
         ],
-        "rationale": "Removing M-TC-01 removes the only counted multiplicative certificate recurrence used by the P-DYN-03 compression derivation. M-QD-01 supplies quotient descent and M-PE-01 supplies positive-eigenstructure calculus; neither provides multi-step product survival accumulation. Other M-TC generated mappings remain attributed to M-TC but are deliberately not used as ablation witnesses because Gate C does not require proving every attributed mapping unavailable under deletion.",
+        "rationale": "Removing M-TC-01 removes the only counted multiplicative certificate recurrence used by the P-DYN-03 compression derivation. M-QD-01 supplies quotient descent and M-PE-01 supplies positive-eigenstructure calculus; neither provides multi-step product survival accumulation. Other M-TC generated mappings remain attributed to M-TC but are deliberately not used as ablation witnesses because Gate C does not require proving every attributed mapping unavailable under deletion. The post-Gate-D expanded-core audit additionally checks the complete retained M-OI surface and finds no replacement route for this witness.",
         "remaining_core_derivability": {
           "remaining_generator_ids": [
             "M-QD-01",
-            "M-PE-01"
+            "M-PE-01",
+            "M-OI-01"
           ],
           "status": "not_derivable_under_declared_derivation_system",
           "assumptions": [
@@ -342,12 +346,14 @@
             "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
             "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
             "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
-            "For the P-DYN-03 witness, finite-PMF common mass, the one-step TV-to-overlap estimate, the exact TV/common-mass identity, and the product-to-sum inequality remain admissible registered adapters, but no registered remaining-core theorem supplies the multi-step multiplicative certificate recurrence. The frozen source endpoint and full source path-recurrence theorem are not admissible replacements."
+            "For the P-DYN-03 witness, finite-PMF common mass, the one-step TV-to-overlap estimate, the exact TV/common-mass identity, and the product-to-sum inequality remain admissible registered adapters, but no registered remaining-core theorem supplies the multi-step multiplicative certificate recurrence. The frozen source endpoint and full source path-recurrence theorem are not admissible replacements.",
+            "The post-Gate-D expanded-core audit admits the complete public M-OI theorem/definition surface and finds no replacement route for this historical deletion witness."
           ],
           "audit_evidence": [
             "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
             "theorem:UEOT.V3.Compression.TransportCertificate.multiplicative_chain_lower_bound",
-            "theorem:UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain"
+            "theorem:UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain",
+            "doc:formalization/ueot-core/docs/compression/POST_GATE_D_EXPANDED_CORE_ABLATION.md"
           ],
           "registered_adapter_nodes": [
             "theorem:UEOT.V3.PathError.pmfCommonMass_self",
@@ -383,22 +389,110 @@
     },
     "M-OI-01": {
       "title": "Occupation-Limit Invariance",
-      "state": "candidate",
-      "canonical_theorems": [],
+      "state": "counted_generator",
+      "canonical_theorems": [
+        "UEOT.V3.Compression.OccupationLimitInvariance.invariant_of_continuous_observable_residual"
+      ],
       "explicit_nonclaims": [
-        "P-PER-02 needs tightness/Prokhorov extraction, Feller continuity, and closed-support passage by Portmanteau",
-        "P-GOA-01 uses compactness of a finite probability simplex and a discrete Cesaro defect identity",
-        "a future generic theorem must separate the abstract asymptotic-invariance argument from topology-specific compactness/tightness adapters",
-        "P-PER-02's closed-support inheritance is additional to the bare invariant-cluster-point mechanism"
+        "The abstract residual/observable theorem is standard topology/analysis infrastructure; the counted UEOT claim is architectural cross-family reuse, not novelty of Hausdorff limit uniqueness.",
+        "P-PER-02 still needs tightness/Prokhorov extraction, Feller continuity/action transport, probability-measure realization, the occupation shift bound, and closed-support passage by Portmanteau.",
+        "P-GOA-01 still needs compactness of the finite probability simplex, Cesaro subsequence extraction, and the discrete one-step Cesaro defect identity.",
+        "M-OI-01 does not generate P-PER-01 omega-limit set invariance, P-QSD-01 projective/QSD normalization, or P-GOA-02..04 contraction/recurrent/spectral stability.",
+        "The minimality claim is scoped to the registered theorem-surface derivation system; no absolute logical independence or uniqueness of axiomatization is claimed."
       ],
       "mappings": {
         "P-PER-02": {
-          "state": "conjectured",
-          "note": "General Feller occupation measures: tightness yields weak cluster points, asymptotic time-shift defect plus Feller continuity yields invariance, and Portmanteau preserves closed support."
+          "state": "counted",
+          "witness_theorems": [
+            "UEOT.V3.Compression.OccupationLimitInvariance.p_per_02_via_occupationLimit"
+          ],
+          "assumption_relation": "exact",
+          "conclusion_relation": "exact",
+          "note": "The full frozen Feller occupation theorem is reconstructed through the shared continuous-observable asymptotic-residual invariance core. Tightness/Prokhorov extraction, Feller semigroup continuity/action transport, occupation-shift control, probability-measure realization, and closed-support inheritance remain explicit source/domain adapters.",
+          "promotion": {
+            "generator_id": "M-OI-01",
+            "integration_pr": 173,
+            "pr_exact_head": "77b491b60813f77d00a0768ea69b446e0f4c0094",
+            "merged_main": "4a20ad6829eaa2afd46ad39f3cddab6b36341332",
+            "resulting_main_core_lean_run": 36573837548,
+            "resulting_main_compression_guard_run": 36573837433,
+            "ledger_checkpoint": "M-OI-01-POST-GATE-D"
+          }
         },
         "P-GOA-01": {
-          "state": "conjectured",
-          "note": "Finite-chain Cesaro averages: simplex compactness yields cluster points and the telescoping Cesaro defect tends to zero, hence every cluster point is invariant."
+          "state": "counted",
+          "witness_theorems": [
+            "UEOT.V3.Compression.OccupationLimitInvariance.p_goa_01_via_occupationLimit"
+          ],
+          "assumption_relation": "exact",
+          "conclusion_relation": "exact",
+          "note": "The full frozen finite-chain Cesaro invariant-cluster theorem is reconstructed through the shared continuous-observable asymptotic-residual invariance core. Finite-simplex compactness, Cesaro subsequence extraction, and the telescoping one-step residual remain explicit source/domain adapters.",
+          "promotion": {
+            "generator_id": "M-OI-01",
+            "integration_pr": 173,
+            "pr_exact_head": "77b491b60813f77d00a0768ea69b446e0f4c0094",
+            "merged_main": "4a20ad6829eaa2afd46ad39f3cddab6b36341332",
+            "resulting_main_core_lean_run": 36573837548,
+            "resulting_main_compression_guard_run": 36573837433,
+            "ledger_checkpoint": "M-OI-01-POST-GATE-D"
+          }
+        }
+      },
+      "promotion": {
+        "feature_head": "69919a22a83ed621220687269a5c3f70d9063c54",
+        "feature_review": "CLEAR — no major issues",
+        "expanded_core_audit_head": "9a6f29d827c66fc5b327f54952ca7f689511358d",
+        "expanded_core_review": "CLEAR — no major issues",
+        "integration_pr": 173,
+        "pr_exact_head": "77b491b60813f77d00a0768ea69b446e0f4c0094",
+        "pr_exact_head_core_lean_run": 36571645645,
+        "pr_exact_head_compression_guard_run": 36571645448,
+        "codex_exact_head_review": "CLEAR — no major issues",
+        "merged_main": "4a20ad6829eaa2afd46ad39f3cddab6b36341332",
+        "resulting_main_core_lean_run": 36573837548,
+        "resulting_main_compression_guard_run": 36573837433,
+        "cross_family_exact_mappings": [
+          "P-PER-02",
+          "P-GOA-01"
+        ],
+        "promotion_scope": [
+          "P-PER-02",
+          "P-GOA-01",
+          "M-OI-01"
+        ],
+        "ledger_checkpoint": "M-OI-01-POST-GATE-D"
+      },
+      "ablation": {
+        "result": "nonredundant_under_declared_derivation_system",
+        "broken_pids": [
+          "P-GOA-01"
+        ],
+        "rationale": "Removing M-OI-01 removes the only counted registered theorem surface that converts a convergent long-run object plus a vanishing evolution residual and continuous separating observables into invariance for the P-GOA-01 witness. The complete retained M-QD/M-TC/M-PE surfaces were independently audited and do not provide that typed primitive.",
+        "remaining_core_derivability": {
+          "remaining_generator_ids": [
+            "M-QD-01",
+            "M-TC-01",
+            "M-PE-01"
+          ],
+          "status": "not_derivable_under_declared_derivation_system",
+          "assumptions": [
+            "Post-Gate-D deletion uses the same registered-theorem-surface DAG notion as historical Gate C, enlarged only by theorem surfaces formally integrated before this rerun.",
+            "All canonical theorem/definition surfaces of retained M-QD-01, M-TC-01, and M-PE-01 are admitted together with registered witness adapters.",
+            "The frozen P-GOA-01 source endpoint and all M-OI namespace nodes are excluded after deleting M-OI.",
+            "Routine Mathlib may discharge side conditions and normalization but may not synthesize a new macro theorem whose conclusion recreates the removed continuous-observable asymptotic-residual-to-invariance primitive.",
+            "The claim is scoped architectural nonredundancy, not absolute logical independence from Lean/Mathlib or all future theorem presentations."
+          ],
+          "audit_evidence": [
+            "doc:formalization/ueot-core/docs/compression/POST_GATE_D_M_OI_ABLATION.md",
+            "doc:formalization/ueot-core/docs/compression/POST_GATE_D_EXPANDED_CORE_ABLATION.md",
+            "theorem:UEOT.V3.Compression.OccupationLimitInvariance.invariant_of_continuous_observable_residual",
+            "theorem:UEOT.V3.Compression.OccupationLimitInvariance.p_goa_01_via_occupationLimit"
+          ],
+          "registered_adapter_nodes": [
+            "source-adapter:finite-simplex compact subsequence extraction",
+            "source-adapter:Cesaro one-step residual telescope",
+            "source-adapter:continuous coordinate observables separating finite probability rows"
+          ]
         }
       }
     },
@@ -511,11 +605,12 @@
         "broken_pids": [
           "P-EVO-04"
         ],
-        "rationale": "Removing M-PE-01 removes the only counted theorem that turns positive right eigenstructure plus the frozen conditional-mean assumptions into the normalized reproductive-value martingale bundle used by P-EVO-04. M-QD-01 supplies quotient descent and M-TC-01 supplies transport/certificate recurrence; neither provides positive-eigenvector stochastic martingale calculus. P-QSD-02 remains attributed to M-PE but is not needed as a separate ablation witness.",
+        "rationale": "Removing M-PE-01 removes the only counted theorem that turns positive right eigenstructure plus the frozen conditional-mean assumptions into the normalized reproductive-value martingale bundle used by P-EVO-04. M-QD-01 supplies quotient descent and M-TC-01 supplies transport/certificate recurrence; neither provides positive-eigenvector stochastic martingale calculus. P-QSD-02 remains attributed to M-PE but is not needed as a separate ablation witness. The post-Gate-D expanded-core audit additionally checks the complete retained M-OI surface and finds no replacement route for this witness.",
         "remaining_core_derivability": {
           "remaining_generator_ids": [
             "M-QD-01",
-            "M-TC-01"
+            "M-TC-01",
+            "M-OI-01"
           ],
           "status": "not_derivable_under_declared_derivation_system",
           "assumptions": [
@@ -524,12 +619,14 @@
             "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
             "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
             "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
-            "For the P-EVO-04 witness, the concrete conditional-mean dynamics, positivity, adaptedness, integrability, initialization, and Perron eigenrelation remain admissible source assumptions, but no theorem in the remaining counted core turns those data into the normalized martingale/nonnegativity/integrability/constant-expectation bundle."
+            "For the P-EVO-04 witness, the concrete conditional-mean dynamics, positivity, adaptedness, integrability, initialization, and Perron eigenrelation remain admissible source assumptions, but no theorem in the remaining counted core turns those data into the normalized martingale/nonnegativity/integrability/constant-expectation bundle.",
+            "The post-Gate-D expanded-core audit admits the complete public M-OI theorem/definition surface and finds no replacement route for this historical deletion witness."
           ],
           "audit_evidence": [
             "doc:formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
             "theorem:UEOT.V3.Compression.PositiveEigenstructure.stochasticRightEigen_bundle",
-            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure"
+            "theorem:UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure",
+            "doc:formalization/ueot-core/docs/compression/POST_GATE_D_EXPANDED_CORE_ABLATION.md"
           ],
           "registered_adapter_nodes": [
             "definition:UEOT.V3.EvolutionReproductiveMartingale.W",
@@ -545,7 +642,7 @@
   "mission_contract": {
     "version": 1,
     "path": "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
-    "state": "final"
+    "state": "ready_for_finalization"
   },
   "final_dispositions": {
     "P-PRED-01": {
@@ -753,10 +850,9 @@
       ]
     },
     "P-PER-02": {
-      "status": "retained_adapter",
-      "rationale": "Its invariant-cluster-point core matches P-GOA-01 across a different source family, motivating the analysis-only M-OI-01 candidate while keeping Prokhorov/Feller/Portmanteau obligations explicit. Audit summary: The source-facing Lean theorem preserves tight occupation-family subsequence extraction, invariance of every weak occupation limit under the full Feller semigroup, and inheritance of any closed set carrying all time marginals.",
-      "audit_evidence": [
-        "theorem:UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02"
+      "status": "generated",
+      "generator_ids": [
+        "M-OI-01"
       ]
     },
     "P-PER-03": {
@@ -803,10 +899,9 @@
       ]
     },
     "P-GOA-01": {
-      "status": "retained_adapter",
-      "rationale": "This is the finite compact analogue of P-PER-02's Feller occupation-limit argument, giving M-OI-01 a genuine cross-family candidate pair without yet claiming a generic Lean generator. Audit summary: The finite-chain source theorem is realized exactly: Cesaro averages have convergent subsequences by simplex compactness, and every subsequential limit is invariant because the one-step Cesaro defect telescopes to zero.",
-      "audit_evidence": [
-        "theorem:UEOT.V3.FiniteCesaroInvariant.p_goa_01"
+      "status": "generated",
+      "generator_ids": [
+        "M-OI-01"
       ]
     },
     "P-QSD-01": {
@@ -1339,17 +1434,18 @@
     "generator_ids": [
       "M-QD-01",
       "M-TC-01",
-      "M-PE-01"
+      "M-PE-01",
+      "M-OI-01"
     ],
     "ablation_state": "complete",
     "minimality_claim": "nonredundant_under_declared_derivation_system",
     "derivation_system": {
       "mode": "registered_theorem_surface_dag",
-      "baseline_main": "db880cfc96820b9069a127caa44cd9255237cd97",
+      "baseline_main": "4a20ad6829eaa2afd46ad39f3cddab6b36341332",
       "allowed_nodes": [
-        "canonical theorems of the remaining counted generators",
+        "canonical theorem/definition surfaces of the remaining counted generators, including the full independently audited M-OI public surface when M-OI is retained",
         "already integrated compression wrappers attached to the remaining counted generators",
-        "source/domain adapter theorems or definitions already registered for counted mappings before Gate C"
+        "source/domain adapter theorem or definition nodes registered for historical Gate C witnesses plus the explicitly frozen post-Gate-D M-OI witness adapters"
       ],
       "allowed_edges": [
         "application and specialization of an allowed theorem node",
@@ -1365,15 +1461,10 @@
         "synthesizing or inlining a new proof route whose conclusion reconstructs the ablated generator primitive from lower-level library facts",
         "treating an unregistered source helper as an adapter merely because it exists in the frozen source namespace"
       ],
-      "interpretation": "This is theorem-surface reachability/nonredundancy for the formalized compression architecture, not absolute logical non-derivability from Lean, Mathlib, or all future theorem presentations."
+      "interpretation": "Post-Gate-D rerun of the same registered theorem-surface reachability/nonredundancy notion, now admitting the independently reviewed M-OI theorem surface. This remains architectural minimality relative to the declared DAG, not absolute logical non-derivability from Lean, Mathlib, or all future theorem presentations."
     }
   },
-  "finalization_evidence": {
-    "candidate_main_sha": "161549f0d5566e7b09557778fa1f924d32b7b7c8",
-    "core_lean_run": 36541120296,
-    "compression_guard_run": 36541120239,
-    "closure_pr": 172
-  },
+  "finalization_evidence": {},
   "audit_records": {
     "P-PRED-01": {
       "source_line": 294,
@@ -1979,8 +2070,8 @@
         "invariant_measure_extraction"
       ],
       "source_title": "",
-      "analysis_summary": "The source-facing Lean theorem preserves tight occupation-family subsequence extraction, invariance of every weak occupation limit under the full Feller semigroup, and inheritance of any closed set carrying all time marginals.",
-      "schema_rationale": "Its invariant-cluster-point core matches P-GOA-01 across a different source family, motivating the analysis-only M-OI-01 candidate while keeping Prokhorov/Feller/Portmanteau obligations explicit."
+      "analysis_summary": "The frozen source-facing Feller occupation theorem is exactly reconstructed by the M-OI wrapper: tightness yields a weakly convergent occupation subsequence, domain-specific Feller/shift adapters establish asymptotically vanishing observable evolution defect, the common observable-residual theorem gives invariance of the limit, and the original closed-support inheritance remains explicit.",
+      "schema_rationale": "M-OI-01 captures the cross-family continuous-observable asymptotic-invariance-to-invariant-limit primitive shared with P-GOA-01; Prokhorov/Feller/Portmanteau obligations remain registered domain adapters."
     },
     "P-PER-03": {
       "source_line": 729,
@@ -2122,8 +2213,8 @@
         "invariant_measure_extraction"
       ],
       "source_title": "",
-      "analysis_summary": "The finite-chain source theorem is realized exactly: Cesaro averages have convergent subsequences by simplex compactness, and every subsequential limit is invariant because the one-step Cesaro defect telescopes to zero.",
-      "schema_rationale": "This is the finite compact analogue of P-PER-02's Feller occupation-limit argument, giving M-OI-01 a genuine cross-family candidate pair without yet claiming a generic Lean generator."
+      "analysis_summary": "The frozen finite-chain theorem is exactly reconstructed by the M-OI wrapper: simplex compactness supplies a convergent Cesaro subsequence, the source Cesaro telescope supplies vanishing one-step evolution defect, and the common observable-residual theorem identifies every cluster point as invariant.",
+      "schema_rationale": "M-OI-01 captures the same continuous-observable asymptotic-invariance-to-invariant-limit primitive as P-PER-02, with finite compactness/Cesaro telescoping retained as explicit adapters."
     },
     "P-QSD-01": {
       "source_line": 847,
@@ -3596,5 +3687,35 @@
       "schema_rationale": "This theorem composes already established modules while preserving shared source identity and probability bookkeeping. Its scientific role is integration, not a new generating law, so treating it as a primitive M-ID would double-count its constituent mechanisms.",
       "source_title": "有限对象—实现—控制认证装配。"
     }
+  },
+  "historical_gate_d": {
+    "state": "final_checkpoint",
+    "canonical_main": "8d0fce85ee6b7a5cfd002894d4d08b82e2bfefb2",
+    "counted_generators": 3,
+    "generated_pids": 9,
+    "lean_rederived_pids": 9,
+    "counted_compressed_pids": 9,
+    "final_dispositions": {
+      "generated": 9,
+      "retained_adapter": 91,
+      "retained_boundary": 6,
+      "unresolved": 0
+    },
+    "minimal_core": [
+      "M-QD-01",
+      "M-TC-01",
+      "M-PE-01"
+    ],
+    "minimality_claim": "nonredundant_under_declared_derivation_system",
+    "finalization_evidence": {
+      "candidate_main_sha": "161549f0d5566e7b09557778fa1f924d32b7b7c8",
+      "core_lean_run": 36541120296,
+      "compression_guard_run": 36541120239,
+      "closure_pr": 172
+    },
+    "final_merge_commit": "8d0fce85ee6b7a5cfd002894d4d08b82e2bfefb2",
+    "resulting_main_core_lean_run": 36543948382,
+    "resulting_main_compression_guard_run": 36543948315,
+    "note": "Historical Gate-D checkpoint is immutable evidence. Post-Gate-D M-OI research later enlarged the registered theorem surface and triggered a scoped Gate-C rerun plus re-finalization; this record is not rewritten."
   }
 }

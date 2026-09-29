@@ -208,3 +208,40 @@ machine-verifiable.
 Do not write a compressed Core v4 merely from conceptual elegance. A v4
 reorganization is justified only after the Mission Contract's resolution and
 minimal-core gates are satisfied. Conceptual elegance alone is insufficient.
+
+## 13. Post-Gate-D extension and re-finalization
+
+A `FINAL` checkpoint is immutable historical evidence, but it does not forbid
+later research from formalizing a genuinely new replacement/generator route.
+If such a route changes counted mappings or minimal-core membership, the
+project must **reopen and re-finalize** rather than silently mutate a closed
+ledger.
+
+Required lifecycle:
+
+1. preserve the previous Gate-D SHA, metrics, minimal core and
+   `finalization_evidence` in an explicit historical checkpoint record;
+2. integrate the new theorem surface through the normal feature / PR /
+   resulting-main lifecycle;
+3. rerun scoped Gate-C ablation on the enlarged registered theorem-surface DAG,
+   including deletion of the new generator and rechecking every historical
+   generator while the new theorem surface is retained;
+4. on a dedicated ledger/governance branch, update counted mappings,
+   per-P-ID final dispositions, live minimal core and coverage, and set
+   `mission_contract.state = ready_for_finalization`;
+5. clear the live `finalization_evidence`; historical evidence remains
+   immutable in its checkpoint record;
+6. merge the ready-for-finalization ledger/governance PR to `main`;
+7. require successful **push** Core Lean and Compression Guard runs on that
+   exact candidate-main SHA;
+8. open a fresh dedicated closure PR from that candidate main;
+9. record the new candidate SHA, run IDs and closure PR in live
+   `finalization_evidence`, set state to `final`, and use a **normal merge
+   commit**;
+10. require resulting-main Core Lean and Compression Guard green before
+    announcing the new FINAL state.
+
+The older FINAL result remains valid for the theorem surface available at its
+checkpoint. A later closure supersedes it only for **current live compression
+accounting**; repository history must never be rewritten as though the new
+generator existed earlier.

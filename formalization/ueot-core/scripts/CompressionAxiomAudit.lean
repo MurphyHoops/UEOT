@@ -24,3 +24,7 @@ import UEOT.V3.Compression
 #print axioms UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_via_positiveEigenstructure
 #print axioms UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_killed_via_positiveEigenstructure
 #print axioms UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure
+
+#print axioms UEOT.V3.Compression.OccupationLimitInvariance.invariant_of_continuous_observable_residual
+#print axioms UEOT.V3.Compression.OccupationLimitInvariance.p_goa_01_via_occupationLimit
+#print axioms UEOT.V3.Compression.OccupationLimitInvariance.p_per_02_via_occupationLimit
