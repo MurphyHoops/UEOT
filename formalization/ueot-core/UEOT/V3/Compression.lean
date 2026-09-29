@@ -108,3 +108,4 @@ import UEOT.V3.Agency
 import UEOT.V3.Compression.PositiveEigenstructure
 
 import UEOT.V3.Compression.OccupationLimitInvariance
+import UEOT.V3.Compression.BayesianRecursiveClosure
