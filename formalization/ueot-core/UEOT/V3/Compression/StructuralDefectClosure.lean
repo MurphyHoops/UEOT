@@ -11,7 +11,7 @@ ledger.  It tests a stricter second-order hypothesis suggested only after the
 closed:
 
 * exact zero structural defect should support quotient descent;
-* finite nonzero defect should admit transport bounds;
+* finite nonzero defect should support transport bounds;
 * asymptotically vanishing defect should close to an exact limiting relation.
 
 The first out-of-sample target is intentionally not one of the frozen 106
