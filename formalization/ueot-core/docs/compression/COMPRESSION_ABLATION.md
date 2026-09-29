@@ -62,8 +62,10 @@ The nine generated P-IDs depend on them as follows:
 | M-TC-01 | P-API-01, P-ID-01, P-ID-02, P-DYN-03, P-DYN-04 |
 | M-PE-01 | P-QSD-02, P-EVO-04 |
 
-No generated P-ID names more than one M-ID, so each deletion experiment has an
-unambiguous directly affected set.
+No generated P-ID names more than one M-ID, so each mapping has an unambiguous
+generator attribution.  That attribution is not by itself an ablation result:
+each deletion experiment separately checks whether registered adapters already
+provide an alternate source-faithful route.
 
 ## 3. Ablation A — remove M-QD-01
 
@@ -72,32 +74,38 @@ Remaining counted core:
 - M-TC-01
 - M-PE-01
 
-Broken generated mappings:
+Broken generated mapping used as the nonredundancy witness:
 
 - P-PRED-01
-- P-INT-02
 
-M-QD-01 supplies the quotient primitive itself: fibre compatibility,
-surjective descent and uniqueness, countable almost-everywhere measurable
-family descent, and exact two-sided quotient factorization/minimality.
+M-QD-01 supplies the countable almost-everywhere quotient/factorization
+primitive used by P-PRED-01: separate protocol factorizations are assembled
+into one common full-measure set and one measurable product decoder.
 
 The remaining generators do not supply that primitive:
 
 - M-TC-01 assumes maps/defects are already given and transports equalities or
-  quantitative certificates through them; it does not construct a quotient
-  decoder or prove a universal property of fibres.
-- M-PE-01 is finite positive-operator/eigenvector calculus; it does not express
-  surjective quotient descent, measurable factorization, or two-sided response
-  equivalence.
+  quantitative certificates through them; it does not construct a common-null-
+  set measurable decoder for a countable family.
+- M-PE-01 is finite positive-operator/eigenvector calculus; it has no
+  countable-a.e. measurable-family descent theorem.
 
-The P-PRED-01 wrapper directly invokes
-`countableAEFamily_descend`.  The P-INT-02 wrapper is built from
-`existsUnique_twoSidedDescend` plus the canonical response-equivalence
-adapter.  Registered source adapters can identify the relevant statistics,
-setoids, kernels, and measurability obligations, but they do not create the
-missing quotient universal property.
+The registered P-PRED-01 adapters supply kernel measurability, coordinate
+evaluation, and the sigma-factor consequence once a common decoder is
+available.  They do not provide `countableAEFamily_descend` itself.
 
-Therefore M-QD-01 is nonredundant under the declared derivation system.
+P-INT-02 is **not** used as an ablation witness.  Its source-side
+`StructuredQuotient.quotientResponse_mk` adapter already gives the canonical
+factorization conjunct, and the minimal-refinement conjunct can be recovered
+directly from the supplied separated factorization by the equality rewrites
+exhibited in `StructuredQuotient.internal_refinement` and
+`environment_refinement`.  Those operations are within the declared adapter
+and rewriting surface.  Therefore deleting M-QD-01 does not honestly make
+P-INT-02 unavailable, even though M-QD-01 remains its counted compression
+derivation.
+
+P-PRED-01 still loses its common-null-set measurable descent route.  Therefore
+M-QD-01 remains nonredundant under the declared derivation system.
 
 ## 4. Ablation B — remove M-TC-01
 
@@ -186,8 +194,9 @@ presentations may still exist.
 
 All three counted generators are required by at least one final generated
 mapping, and after deleting each one the remaining counted core plus registered
-adapters lacks the mathematical primitive used by its directly dependent
-wrappers.
+adapters lacks the mathematical primitive needed by at least one designated
+generated ablation witness.  A generated mapping that remains reconstructible
+through the pre-existing registered adapter surface is not counted as broken.
 
 Therefore the final core
 
