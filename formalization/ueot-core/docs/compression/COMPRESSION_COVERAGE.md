@@ -356,10 +356,10 @@ decision, and assembly mechanisms. Candidate generator research and final
 per-P-ID resolution therefore remain separate later gates.
 
 
-### M-PE-01 feature evidence — Positive Eigenstructure Calculus
+### M-PE-01 integration evidence — Positive Eigenstructure Calculus
 
-M-PE-01 has reached **cross-family green on the feature branch** with two
-source-faithful exact mappings, but it is **not counted yet**:
+M-PE-01 has reached **integration green** with two source-faithful exact
+mappings, but it is **not counted yet**:
 
 - **P-QSD-02** is reconstructed exactly from positive left/right finite
   eigenstructure: normalized QSD propagation, survival mass, stochastic
@@ -373,10 +373,10 @@ source-faithful exact mappings, but it is **not counted yet**:
 
 The generator deliberately does **not** claim P-EVO-03's primitive Perron
 rank-one asymptotics or P-QSD-04's compact-resolvent spectral-gap convergence.
-Those remain explicit conjectural/adapter boundaries. Feature green changes the
-Lean-rederived count from **6 to 8** but leaves counted compression unchanged at
-**6 mappings / 2 generators** until clean integration, PR, resulting-main, and
-separate ledger promotion complete.
+Those remain explicit conjectural/adapter boundaries. Integration green changes
+the Lean-rederived count from **6 to 8** but leaves counted compression unchanged
+at **6 mappings / 2 generators** until PR exact-head review/CI, resulting-main,
+and separate ledger promotion complete.
 
 
 ## Counting rule
