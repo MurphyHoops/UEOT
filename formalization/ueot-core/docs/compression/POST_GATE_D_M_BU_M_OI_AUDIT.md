@@ -291,8 +291,9 @@ The Feller adapter retains the semigroup-specific shift bound and the
 probability-measure observable realization.
 
 Accordingly, v2 establishes a materially stronger common theorem surface than
-v1, but **promotion remains unproven until the revised deletion audit and a new
-independent review are CLEAR**.
+v1.  At this checkpoint promotion was still unproven pending the revised
+deletion audit and a new independent review; those later gates subsequently
+returned CLEAR, as recorded in §§4.9 and 6.
 
 ### 4.6 Ablation
 
@@ -302,7 +303,7 @@ The two mappings behave differently.
 `invariant_of_occupation_tendsto` is retained as a registered adapter.
 Therefore P-PER-02 is not a valid nonredundancy witness.
 
-**P-GOA-01 remains only a candidate nonredundancy witness.**
+**P-GOA-01 was the candidate nonredundancy witness at this audit stage.**
 
 Its source endpoint currently inlines the residual-limit argument. Outside the
 endpoint itself, the retained source surface supplies:
@@ -318,10 +319,10 @@ raw Mathlib limit uniqueness would create a new derivation node — precisely th
 node now formalized as M-OI.
 
 Round-1 review correctly rejected the earlier conversational form of this
-argument.  The exact witness-specific adapter surface and deletion rules are
-now moved to the dedicated artifact
-`POST_GATE_D_M_OI_ABLATION.md`.  No nonredundancy conclusion is counted here
-until that artifact receives independent review.
+argument.  The exact witness-specific adapter surface and deletion rules were
+moved to the dedicated artifact `POST_GATE_D_M_OI_ABLATION.md`; that artifact
+later received independent CLEAR review, together with the expanded-core audit
+recorded in `POST_GATE_D_EXPANDED_CORE_ABLATION.md`.
 
 This is a theorem-surface architectural claim, not absolute logical
 independence: the generic residual-limit lemma is standard topology/algebra.

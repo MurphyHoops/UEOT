@@ -319,15 +319,18 @@ logically unprovable without M-OI; Mathlib can of course be used to write a new
 limit-uniqueness proof.  The claim is only that such a proof would be a new
 macro derivation node, exactly as specified by the historical Gate-C rules.
 
-## 7. Non-cosmeticity remains a separate gate
+## 7. Historical non-cosmeticity gate and resolution
 
-Passing the declared-DAG deletion test is not sufficient for promotion.
+Passing the declared-DAG deletion test was not sufficient for promotion by
+itself.
 
 Codex round-1 review correctly observed that the first M-OI theorem was too
-close to raw Hausdorff limit uniqueness.  V2 moves continuity passage and
-observable separation into the common theorem and routes both P-GOA-01 and
-P-PER-02 through that theorem, but independent review must still decide whether
-this is enough architectural compression to justify a counted UEOT generator.
+close to raw Hausdorff limit uniqueness.  V2 moved continuity passage and
+observable separation into the common theorem and routed both P-GOA-01 and
+P-PER-02 through that theorem.  Independent review subsequently found no major
+issue with this strengthened non-cosmeticity claim at `69919a22...`, and the
+expanded-core review at `9a6f29d...` found no major issue after restoring the
+full retained M-OI surface.
 
 Accordingly the present deletion status is:
 
