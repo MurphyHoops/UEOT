@@ -82,6 +82,131 @@ extensionality tools:
 They are not registered as a new theorem that consumes
 `cluster-point + vanishing residual` and returns invariance.
 
+### 3.4 Remaining counted generator surface
+
+Historical Gate C retains every canonical theorem surface of the counted
+generators that remain after the candidate under test is deleted.  For this
+post-Gate-D deletion experiment the remaining counted M-ID set is fixed as:
+
+```text
+{M-QD-01, M-TC-01, M-PE-01}
+```
+
+The audit therefore admits the following existing theorem nodes in addition to
+the witness-specific P-GOA adapters above.
+
+#### M-QD-01 — Quotient Descent
+
+Registered public theorem nodes from
+`Compression/QuotientDescent.lean`:
+
+- `descend_comp`;
+- `eq_descend_of_comp_eq`;
+- `existsUnique_descend`;
+- `fiberCompatible_of_comp_eq`;
+- `fiberCompatible_iff_existsUnique_descend`;
+- `countableAEFamily_descend`;
+- `p_pred_01_via_countableAE_descent`;
+- `twoSidedDescend_apply`;
+- `existsUnique_twoSidedDescend`;
+- `exactSeparatedFactorization_refines_responseEq`;
+- `p_int_02_via_twoSidedDescent`;
+- `strongLumpability_pushforward_fiberCompatible`;
+- `strongLumpability_unique_setLevel_descend`.
+
+Reachability audit: these nodes construct or characterize factorization through
+surjective representations, countable almost-everywhere descent, two-sided
+quotients, or a set-level strong-lumpability descent.  None consumes a
+convergent sequence plus a vanishing evolution residual, and none concludes
+`Matrix.vecMul nu.1 P = nu.1` from the P-GOA witness assumptions.  Applying
+the strong-lumpability nodes would require an additional quotient map and
+fibre-compatibility/lumpability hypotheses absent from P-GOA-01.
+
+#### M-TC-01 — Transport Certificate Calculus
+
+Registered public theorem nodes from
+`Compression/TransportCertificate.lean`:
+
+- `twoStage_bound`;
+- `twoStage_exact`;
+- `factorRoute_exact`;
+- `chain_bound`;
+- `weighted_chain_bound`;
+- `multiplicative_chain_lower_bound`;
+- `development_pipeline_via_weighted_chain`;
+- `processInterface_approx_via_twoStage`;
+- `processInterface_exact_via_twoStage`;
+- `processInterface_exact_source_via_twoStage`;
+- `transportDefect_pointwise_via_chain`;
+- `transportDefect_source_via_chain`;
+- `dynamicsCrossScale_approx_via_twoStage`;
+- `dynamicsCrossScale_exact_via_factor`.
+
+Reachability audit: these nodes propagate exact commutative diagrams or
+quantitative defects along finite transport chains.  Their conclusions are
+equalities/inequalities conditional on already supplied transport, triangle,
+contraction, or local-defect premises.  The surface contains no theorem that
+turns topological convergence plus an asymptotically vanishing residual into a
+fixed/invariant limit.  Supplying such a limit bridge would be a new macro node,
+not an application of an existing M-TC theorem.
+
+#### M-PE-01 — Positive Eigenstructure Calculus
+
+Registered public theorem nodes from
+`Compression/PositiveEigenstructure.lean`:
+
+- `hTransform_row_sum`;
+- `hTransform_nonneg`;
+- `readout_vecMul`;
+- `rowApply_mul`;
+- `left_pow`;
+- `normalized_left_pow`;
+- `survival_mass_pow`;
+- `invariantWeight_sum`;
+- `invariantWeight_stationary`;
+- `qsdDoob_bundle`;
+- `scale_le_one_of_substochastic`;
+- `condExp_readout`;
+- `condExp_W_succ`;
+- `stronglyAdapted_W`;
+- `integrable_W`;
+- `W_nonneg`;
+- `rightEigen_martingale`;
+- `rightEigen_expectation`;
+- `stochasticRightEigen_bundle`;
+- `p_qsd_02_via_positiveEigenstructure`;
+- `p_qsd_02_killed_via_positiveEigenstructure`;
+- `p_evo_04_via_positiveEigenstructure`.
+
+The only node whose conclusion superficially resembles the P-GOA witness is
+`invariantWeight_stationary`.  It cannot be applied from the P-GOA adapter
+surface.  Its input is a `BiEigenData M`, which contains, among other data:
+
+- a strictly positive right eigenvalue/eigenvector pair;
+- a normalized nonnegative left eigenvector;
+- left/right pairing normalization;
+- the left eigenrelation.
+
+Its conclusion is stationarity of `invariantWeight D` for the **Doob
+h-transform** `hTransform D.right`, not stationarity of an arbitrary original
+row-stochastic matrix `P`.
+
+Frozen P-GOA-01 assumes only an arbitrary finite row-stochastic `P`, an initial
+simplex law, and the Cesaro construction.  The registered P-GOA adapter surface
+contains no `BiEigenData P`, no Perron-existence theorem, and no bridge proving
+`hTransform D.right = P`.  Manufacturing those objects would add materially
+stronger assumptions/new theorem nodes.  The remaining M-PE nodes have the same
+positive-eigenstructure entry requirement or are downstream consequences of
+it, so none is reachable from the frozen P-GOA witness assumptions.
+
+### 3.5 Remaining-core reachability conclusion
+
+After explicitly restoring all three historical counted-generator surfaces,
+none has an applicable edge from the P-GOA witness inputs to the invariant
+cluster-point conclusion.  In particular, the apparent M-PE stationary-law
+route is blocked by unavailable positive bi-eigenstructure and by the mismatch
+between the Doob transform and the original kernel `P`.
+
 ## 4. Explicitly forbidden deletion shortcuts
 
 When M-OI is deleted, the audit may not:
@@ -152,6 +277,11 @@ After deleting M-OI, the registered surface terminates at:
 - a convergent subsequence;
 - a vanishing raw evolution residual;
 - pointwise continuity facts.
+
+The retained counted core `{M-QD-01, M-TC-01, M-PE-01}` has also been audited
+explicitly in §3.4.  None of its registered theorem nodes is applicable to
+these P-GOA witness data in a way that returns the missing invariant-limit
+conclusion.
 
 There is no pre-registered non-M-OI theorem node on this witness surface whose
 conclusion is `Matrix.vecMul nu.1 P = nu.1` from those inputs.
