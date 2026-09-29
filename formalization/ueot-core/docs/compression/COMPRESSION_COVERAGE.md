@@ -94,7 +94,7 @@ State: **COUNTED_GENERATOR**
 
 ### M-BU-01 — Bayesian Recursive Closure
 
-State: **INTEGRATION_GREEN / uncounted**
+State: **CANDIDATE / analysis-only**
 
 - P-PRED-03: source and canonical Lean endpoint audited exact; finite-alphabet
   protocol closure stores Bayes numerator/denominator coordinates and yields a
@@ -223,7 +223,7 @@ to rename a common proof idiom.
 
 ### M-PE-01 — Positive Eigenstructure Calculus
 
-State: **CANDIDATE / analysis-only**
+State: **INTEGRATION_GREEN / uncounted**
 
 Cross-family evidence now spans quasi-stationarity and evolutionary positive
 operators:
