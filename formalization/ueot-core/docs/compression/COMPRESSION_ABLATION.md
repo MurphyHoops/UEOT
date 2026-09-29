@@ -24,6 +24,13 @@ Allowed ingredients after ablating one candidate core generator are:
    measure-theoretic transport, and Mathlib infrastructure already present in
    the frozen formalization.
 
+“Registered adapters” does **not** mean the entire frozen source namespace.
+It means domain-local facts already recorded as adapters or already used to
+instantiate/discharge hypotheses of the counted compression mappings. A
+lower-level source lemma that would itself reconstruct the mathematical core of
+the ablated M-ID is not an admissible replacement unless it had been separately
+registered and promoted before the deletion experiment.
+
 The following are **not** allowed as a way to defeat an ablation:
 
 - calling a theorem from the ablated generator namespace;
