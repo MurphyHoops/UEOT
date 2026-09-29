@@ -19,7 +19,7 @@ changes the completed **106/106 FULL-GREEN** source status.
 | source P-IDs analyzed | 106 / 106 |
 | schema-classified P-IDs | 106 / 106 |
 | fully Lean-rederived P-IDs | 9 / 106 |
-| counted compressed P-IDs | 8 / 106 |
+| counted compressed P-IDs | 9 / 106 |
 | final dispositions assigned | 0 / 106 |
 | generated final dispositions | 0 / 106 |
 | retained domain adapters | 0 / 106 |
@@ -85,10 +85,11 @@ State: **COUNTED_GENERATOR**
   feature → integration → PR → resulting-main → ledger lifecycle;
 - P-DYN-04: **counted** full reachable-image approximate + exact source-facing
   rederivation;
-- P-DYN-03: **Lean-rederived / uncounted** — the full sharp
-  `1 - ∏(1-ε_t)` path-TV bound and additive union-bound corollary are
-  reconstructed through the generic multiplicative certificate recurrence;
-  finite-PMF common-mass/TV coupling remains an explicit source adapter;
+- P-DYN-03: **counted** — the full sharp `1 - ∏(1-ε_t)` path-TV bound and
+  additive union-bound corollary are reconstructed through the generic
+  multiplicative certificate recurrence; finite-PMF common-mass/TV coupling
+  remains an explicit source adapter, and the full feature → PR → resulting-main
+  lifecycle is green;
 - P-STAT-09: audited, but **not** fully generated — its TV half is transport
   shaped while its Radon--Nikodym density-ratio half uses a distinct
   multiplicative order mechanism.
