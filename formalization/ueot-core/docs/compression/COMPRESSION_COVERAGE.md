@@ -94,7 +94,7 @@ State: **COUNTED_GENERATOR**
 
 ### M-BU-01 — Bayesian Recursive Closure
 
-State: **CANDIDATE / analysis-only**
+State: **INTEGRATION_GREEN / uncounted**
 
 - P-PRED-03: source and canonical Lean endpoint audited exact; finite-alphabet
   protocol closure stores Bayes numerator/denominator coordinates and yields a
@@ -237,10 +237,14 @@ operators:
 - P-EVO-04: the positive right Perron eigendirection turns conditional mean
   reproduction into a normalized reproductive-value martingale.
 
-No generic Lean generator is claimed yet. Perron existence/simplicity, finite
-primitive-matrix power asymptotics, reversible compact-resolvent spectral
-remainders, and stochastic adaptedness/integrability remain explicit adapters.
-In particular, a QSD q is not identified with the Doob stationary law q*h.
+A generic Lean generator is now formalized for the common positive-eigenstructure
+calculus and exactly reconstructs P-QSD-02 and P-EVO-04 through explicit
+source-facing wrappers. Perron existence/simplicity, primitive-matrix rank-one
+power asymptotics, and reversible compact-resolvent spectral remainders remain
+explicit adapters; therefore P-EVO-03 and P-QSD-04 are not claimed generated.
+The stochastic adaptedness/integrability premises of P-EVO-04 also remain
+explicit source adapter assumptions. In particular, a QSD q is not identified
+with the Doob stationary law q*h.
 
 ### QSD / Perron audit
 
@@ -256,8 +260,10 @@ Six further source rows are now source↔Lean↔schema audited:
   uniqueness;
 - P-EVO-04: reproductive-value martingale from conditional mean dynamics.
 
-The Perron/eigenstructure overlap is recorded as M-PE-01 only at candidate
-level; counted mappings and generators are unchanged.
+The Perron/eigenstructure overlap is now Lean-realized as M-PE-01 at
+**integration_green** for exact mappings P-QSD-02 and P-EVO-04. Counted mappings
+and generators remain unchanged until PR exact-head CI/review, resulting-main
+CI, and the separate ledger-promotion lifecycle complete.
 
 
 ### OMG / carrier / resolution audit
