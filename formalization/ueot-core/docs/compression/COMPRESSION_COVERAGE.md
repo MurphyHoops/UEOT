@@ -55,13 +55,24 @@ is exactly **{M-QD-01, M-TC-01, M-PE-01}**. The ablation audit in
   P-QSD-02 remains attributed to M-PE but is not needed as a second witness.
 
 For each deletion, the remaining two counted generators plus registered
-adapters fail to recover at least one designated generated witness without
-reintroducing the removed mathematical primitive. Generated attribution alone
-does not imply breakage: P-INT-02 is explicitly reconstructible after M-QD
-deletion, and other generated mappings are not listed as broken unless this
-audit has ruled out the pre-existing adapter/infrastructure route.
-This is the Mission Contract's scoped nonredundancy claim, **not absolute
-logical independence or uniqueness across all possible future axiomatizations**.
+adapters fail to recover at least one designated generated witness in the
+**registered theorem-surface DAG frozen at Gate-B main
+`db880cfc96820b9069a127caa44cd9255237cd97`**. Generated attribution alone does
+not imply breakage: P-INT-02 is explicitly reconstructible after M-QD deletion,
+and other generated mappings are not listed as broken merely from attribution.
+
+The Gate-C derivation system is theorem-surface reachability: existing counted
+generator theorems/wrappers and already registered adapter theorem/definition
+nodes may be applied, specialized, composed and rewritten. Routine Mathlib is
+allowed for side conditions and normalization around those nodes. The deletion
+experiment does **not** synthesize a new macro theorem/proof route from arbitrary
+lower-level library facts to replace the removed generator; such a new route
+would itself have to be registered, audited and promoted before a future Gate-C
+rerun.
+
+This is therefore a scoped claim about the nonredundancy of the **formalized
+compression architecture**, **not absolute logical independence or uniqueness
+across Lean/Mathlib or all possible future axiomatizations**.
 
 Gate D remains repository closure: merge this candidate scientific state,
 verify successful push CI on the exact candidate-main SHA, then use the
