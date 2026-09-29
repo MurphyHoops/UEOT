@@ -157,9 +157,11 @@
           ],
           "status": "not_derivable_under_declared_derivation_system",
           "assumptions": [
-            "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
-            "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
-            "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
+            "Ablation is evaluated in the registered_theorem_surface_dag frozen at canonical Gate-B main db880cfc96820b9069a127caa44cd9255237cd97.",
+            "Only existing registered theorem/definition nodes may be applied, specialized, composed, rewritten, or used to discharge hypotheses; arbitrary synthesis of a new replacement macro theorem/proof route is outside the deletion experiment.",
+            "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
+            "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
+            "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
             "For the P-PRED-01 ablation witness, the countable almost-everywhere family descent and one common measurable decoder must be supplied by an existing counted theorem; the registered adapters used by the mapping do not provide that joint common-null-set descent."
           ],
           "audit_evidence": [
@@ -330,9 +332,11 @@
           ],
           "status": "not_derivable_under_declared_derivation_system",
           "assumptions": [
-            "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
-            "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
-            "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
+            "Ablation is evaluated in the registered_theorem_surface_dag frozen at canonical Gate-B main db880cfc96820b9069a127caa44cd9255237cd97.",
+            "Only existing registered theorem/definition nodes may be applied, specialized, composed, rewritten, or used to discharge hypotheses; arbitrary synthesis of a new replacement macro theorem/proof route is outside the deletion experiment.",
+            "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
+            "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
+            "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
             "For the P-DYN-03 witness, finite-PMF common mass, the one-step TV-to-overlap estimate, the exact TV/common-mass identity, and the product-to-sum inequality remain admissible registered adapters, but no registered remaining-core theorem supplies the multi-step multiplicative certificate recurrence. The frozen source endpoint and full source path-recurrence theorem are not admissible replacements."
           ],
           "audit_evidence": [
@@ -502,9 +506,11 @@
           ],
           "status": "not_derivable_under_declared_derivation_system",
           "assumptions": [
-            "Ablation is evaluated against the counted generator theorem surface, integrated compression wrappers, and registered adapters present on canonical Gate-B main; no new generator is introduced during the deletion test.",
-            "Registered adapters may discharge domain hypotheses but may not call the frozen source endpoint of a tested generated P-ID or any theorem from the ablated generator namespace.",
-            "The conclusion is scoped non-derivability under the declared formalized derivation system, not absolute logical independence across all possible future axiomatizations.",
+            "Ablation is evaluated in the registered_theorem_surface_dag frozen at canonical Gate-B main db880cfc96820b9069a127caa44cd9255237cd97.",
+            "Only existing registered theorem/definition nodes may be applied, specialized, composed, rewritten, or used to discharge hypotheses; arbitrary synthesis of a new replacement macro theorem/proof route is outside the deletion experiment.",
+            "Routine Mathlib infrastructure is allowed only for local side conditions, definitional normalization, and rewrites around registered nodes; it may not be used to synthesize a new theorem whose conclusion reconstructs the ablated generator primitive.",
+            "The frozen source endpoint of a tested generated P-ID, the ablated generator namespace, unregistered source helpers, and newly introduced candidate generators are not admissible nodes.",
+            "The conclusion is scoped theorem-surface non-derivability/nonredundancy for the current formalized architecture, not absolute logical independence across Lean/Mathlib or all future axiomatizations.",
             "For the P-EVO-04 witness, the concrete conditional-mean dynamics, positivity, adaptedness, integrability, initialization, and Perron eigenrelation remain admissible source assumptions, but no theorem in the remaining counted core turns those data into the normalized martingale/nonnegativity/integrability/constant-expectation bundle."
           ],
           "audit_evidence": [
@@ -1316,7 +1322,31 @@
       "M-PE-01"
     ],
     "ablation_state": "complete",
-    "minimality_claim": "nonredundant_under_declared_derivation_system"
+    "minimality_claim": "nonredundant_under_declared_derivation_system",
+    "derivation_system": {
+      "mode": "registered_theorem_surface_dag",
+      "baseline_main": "db880cfc96820b9069a127caa44cd9255237cd97",
+      "allowed_nodes": [
+        "canonical theorems of the remaining counted generators",
+        "already integrated compression wrappers attached to the remaining counted generators",
+        "source/domain adapter theorems or definitions already registered for counted mappings before Gate C"
+      ],
+      "allowed_edges": [
+        "application and specialization of an allowed theorem node",
+        "composition of allowed theorem nodes",
+        "equality rewriting and definitional reduction",
+        "discharge of an allowed theorem's stated hypotheses using registered adapters",
+        "routine Mathlib side-condition and normalization lemmas that do not synthesize a replacement compression theorem"
+      ],
+      "forbidden_during_ablation": [
+        "calling any theorem from the ablated generator namespace",
+        "calling the frozen source endpoint of the generated P-ID used as an ablation witness",
+        "promoting or introducing a new generator during the deletion experiment",
+        "synthesizing or inlining a new proof route whose conclusion reconstructs the ablated generator primitive from lower-level library facts",
+        "treating an unregistered source helper as an adapter merely because it exists in the frozen source namespace"
+      ],
+      "interpretation": "This is theorem-surface reachability/nonredundancy for the formalized compression architecture, not absolute logical non-derivability from Lean, Mathlib, or all future theorem presentations."
+    }
   },
   "finalization_evidence": {},
   "audit_records": {
