@@ -19,13 +19,13 @@ changes the completed **106/106 FULL-GREEN** source status.
 | source P-IDs analyzed | 106 / 106 |
 | schema-classified P-IDs | 106 / 106 |
 | fully Lean-rederived P-IDs | 8 / 106 |
-| counted compressed P-IDs | 6 / 106 |
+| counted compressed P-IDs | 8 / 106 |
 | final dispositions assigned | 0 / 106 |
 | generated final dispositions | 0 / 106 |
 | retained domain adapters | 0 / 106 |
 | retained boundary/no-go results | 0 / 106 |
 | unresolved final dispositions | 106 / 106 |
-| counted meta-generators | 2 |
+| counted meta-generators | 3 |
 
 Mission state: **ACTIVE**. Minimal core state: **OPEN**. Ablation:
 **NOT STARTED**.
@@ -223,7 +223,7 @@ to rename a common proof idiom.
 
 ### M-PE-01 — Positive Eigenstructure Calculus
 
-State: **INTEGRATION_GREEN / uncounted**
+State: **COUNTED_GENERATOR**
 
 Cross-family evidence now spans quasi-stationarity and evolutionary positive
 operators:
@@ -260,10 +260,10 @@ Six further source rows are now source↔Lean↔schema audited:
   uniqueness;
 - P-EVO-04: reproductive-value martingale from conditional mean dynamics.
 
-The Perron/eigenstructure overlap is now Lean-realized as M-PE-01 at
-**integration_green** for exact mappings P-QSD-02 and P-EVO-04. Counted mappings
-and generators remain unchanged until PR exact-head CI/review, resulting-main
-CI, and the separate ledger-promotion lifecycle complete.
+The Perron/eigenstructure overlap is now Lean-realized and ledger-promoted as
+**M-PE-01 / counted_generator** for exact mappings P-QSD-02 and P-EVO-04.
+P-EVO-03 and P-QSD-04 remain explicit nonclaims; final per-P-ID dispositions
+remain a separate Gate-B resolution step.
 
 
 ### OMG / carrier / resolution audit
@@ -362,10 +362,10 @@ decision, and assembly mechanisms. Candidate generator research and final
 per-P-ID resolution therefore remain separate later gates.
 
 
-### M-PE-01 integration evidence — Positive Eigenstructure Calculus
+### M-PE-01 ledger-promotion evidence — Positive Eigenstructure Calculus
 
-M-PE-01 has reached **integration green** with two source-faithful exact
-mappings, but it is **not counted yet**:
+On this ledger-promotion head, M-PE-01 is marked **counted_generator** with two
+source-faithful exact counted mappings:
 
 - **P-QSD-02** is reconstructed exactly from positive left/right finite
   eigenstructure: normalized QSD propagation, survival mass, stochastic
@@ -379,10 +379,11 @@ mappings, but it is **not counted yet**:
 
 The generator deliberately does **not** claim P-EVO-03's primitive Perron
 rank-one asymptotics or P-QSD-04's compact-resolvent spectral-gap convergence.
-Those remain explicit conjectural/adapter boundaries. Integration green changes
-the Lean-rederived count from **6 to 8** but leaves counted compression unchanged
-at **6 mappings / 2 generators** until PR exact-head review/CI, resulting-main,
-and separate ledger promotion complete.
+Those remain explicit conjectural/adapter boundaries. The promotion preserves
+Lean-rederived coverage at **8/106** and raises counted compression to
+**8 mappings / 3 generators** on this ledger head. Final dispositions remain
+**0/106**; the canonical lifecycle is complete only after this ledger PR passes
+exact-head CI/review, merges, and the ledger resulting-main CI is green.
 
 
 ## Counting rule
