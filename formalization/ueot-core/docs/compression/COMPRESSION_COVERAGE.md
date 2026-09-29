@@ -18,7 +18,7 @@ changes the completed **106/106 FULL-GREEN** source status.
 |---|---:|
 | source P-IDs analyzed | 106 / 106 |
 | schema-classified P-IDs | 106 / 106 |
-| fully Lean-rederived P-IDs | 8 / 106 |
+| fully Lean-rederived P-IDs | 9 / 106 |
 | counted compressed P-IDs | 8 / 106 |
 | final dispositions assigned | 0 / 106 |
 | generated final dispositions | 0 / 106 |
@@ -77,6 +77,7 @@ State: **COUNTED_GENERATOR**
 - heterogeneous additive finite-chain accumulation: Lean proved;
 - heterogeneous weighted finite-chain / discrete-Gronwall accumulation: Lean
   proved;
+- generic multiplicative certificate/product recurrence: Lean proved;
 - P-API-01: **counted** full exact + approximate source-facing rederivation;
 - P-ID-01: **counted** full source-facing supremum rederivation;
 - P-ID-02: **counted** exact finite-horizon development-pipeline product/sum
@@ -84,9 +85,10 @@ State: **COUNTED_GENERATOR**
   feature → integration → PR → resulting-main → ledger lifecycle;
 - P-DYN-04: **counted** full reachable-image approximate + exact source-facing
   rederivation;
-- P-DYN-03: audited, but **not** fully generated — the frozen theorem includes
-  the sharp multiplicative `1 - ∏(1-ε_t)` path-coupling certificate beyond the
-  additive/weighted defect-chain calculus;
+- P-DYN-03: **Lean-rederived / uncounted** — the full sharp
+  `1 - ∏(1-ε_t)` path-TV bound and additive union-bound corollary are
+  reconstructed through the generic multiplicative certificate recurrence;
+  finite-PMF common-mass/TV coupling remains an explicit source adapter;
 - P-STAT-09: audited, but **not** fully generated — its TV half is transport
   shaped while its Radon--Nikodym density-ratio half uses a distinct
   multiplicative order mechanism.
