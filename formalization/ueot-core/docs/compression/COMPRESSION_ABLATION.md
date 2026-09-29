@@ -10,41 +10,64 @@ axiomatization.  The audited claim is exactly:
 
 ## 1. Declared derivation system
 
-The Gate C ablation audit is relative to the formalized compression system
-already integrated on canonical main after Gate B.
+The Gate C ablation audit is relative to a **registered theorem-surface
+derivation DAG** frozen at canonical Gate-B main
+`db880cfc96820b9069a127caa44cd9255237cd97`.
 
-Allowed ingredients after ablating one candidate core generator are:
+This point is essential.  Gate C does not ask whether a removed theorem can be
+re-proved from Lean's foundations or from arbitrary Mathlib lemmas.  Every
+proved theorem in the repository is ultimately re-provable from lower-level
+facts, so that interpretation would make theorem-level ablation vacuous.  The
+Mission Contract instead asks for nonredundancy under the declared derivation
+system used by this formalization.
 
-1. the canonical theorems of the remaining **counted** M-IDs;
-2. the already integrated compression wrappers/specializations attached to
-   those remaining M-IDs;
-3. registered source/domain adapters needed to instantiate a generic theorem
-   or discharge its domain hypotheses;
-4. ordinary composition, specialization, equality rewriting, finite algebra,
-   measure-theoretic transport, and Mathlib infrastructure already present in
-   the frozen formalization.
+The **allowed nodes** after ablating one candidate core generator are fixed
+before the deletion test:
 
-“Registered adapters” does **not** mean the entire frozen source namespace.
-It means domain-local facts already recorded as adapters or already used to
-instantiate/discharge hypotheses of the counted compression mappings. A
-lower-level source lemma that would itself reconstruct the mathematical core of
-the ablated M-ID is not an admissible replacement unless it had been separately
-registered and promoted before the deletion experiment.
+1. canonical theorems of the remaining **counted** M-IDs;
+2. already integrated compression wrappers/specializations attached to those
+   remaining M-IDs;
+3. source/domain adapter theorems or definitions that were already registered
+   for counted mappings before Gate C.
+
+The **allowed edges** are:
+
+- application and specialization of an allowed theorem node;
+- composition of allowed theorem nodes;
+- equality rewriting and definitional reduction;
+- discharge of an allowed theorem's stated hypotheses using registered adapters;
+- routine Mathlib side-condition/normalization lemmas that do not synthesize a
+  replacement compression theorem.
+
+“Registered adapters” therefore does **not** mean the entire frozen source
+namespace, and “Mathlib infrastructure” does **not** license synthesizing an
+arbitrary new macro proof after seeing which generator was deleted.  A new
+proof route whose conclusion reconstructs the removed generator primitive is a
+new derivation node.  It must first be independently registered, audited and
+promoted before it can participate in a later ablation.
 
 The following are **not** allowed as a way to defeat an ablation:
 
 - calling a theorem from the ablated generator namespace;
-- calling the frozen source endpoint of a P-ID whose generated derivation is
-  being tested;
+- calling the frozen source endpoint of the generated P-ID used as the
+  ablation witness;
+- treating an unregistered source helper as an adapter merely because it exists
+  in the frozen source namespace;
 - promoting an analysis-only candidate such as M-BU-01 or M-OI-01 during the
   same ablation;
-- hiding the missing mathematical primitive inside a newly invented adapter or
-  stronger assumption.
+- synthesizing or inlining a new theorem/proof route that reconstructs the
+  removed generator primitive from lower-level library facts.
 
-Thus “not derivable” means that the current formalized remaining core plus
-registered adapters contains no source-faithful route to the affected generated
-P-ID without reintroducing the removed primitive.  This is the relative
-minimality notion explicitly permitted by Mission Contract v1.
+This last rule is not an assertion of logical independence.  It fixes the
+graph whose nonredundancy is being audited.  If a future analysis discovers a
+better replacement route, that route can be formalized and promoted, after
+which Gate C may legitimately be rerun on the enlarged theorem surface.
+
+Thus “not derivable” here means **not reachable in the frozen registered
+theorem-surface DAG without reintroducing the removed primitive**.  This is the
+scoped architectural minimality notion permitted by Mission Contract v1, not
+absolute logical non-derivability across Lean/Mathlib or all future
+axiomatizations.
 
 ## 2. Candidate frozen core
 
