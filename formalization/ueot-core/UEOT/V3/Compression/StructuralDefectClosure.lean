@@ -25,6 +25,7 @@ M-QD/M-TC/M-OI surfaces and pass a deletion audit. -/
 namespace UEOT.V3.Compression.StructuralDefectClosure
 
 open Filter Function Topology
+open scoped BigOperators
 
 universe uX uY uZ
 
@@ -100,6 +101,106 @@ theorem existsUnique_descend_of_vanishing_fiber_bound
   exact QuotientDescent.existsUnique_descend q g hq
     (fiberCompatible_of_uniform_fiber_bound
       q gseq g bound hconv hbound0 hbound)
+
+/-- M-TC attachment: a weighted finite-stage transport certificate whose exact
+derived envelope tends to zero forces the within-fibre defect itself to vanish.
+
+The theorem intentionally keeps the asymptotic envelope hypothesis explicit.
+M-TC controls finite propagation; it does not by itself imply asymptotic
+decay. -/
+theorem fiber_dist_tendsto_zero_of_weighted_transport
+    {X : Type uX} {Y : Type uY} {Z : Type uZ} [MetricSpace Z]
+    (q : X → Y)
+    (gseq : ℕ → X → Z)
+    (step : ℕ → Z → Z)
+    (L ε : ℕ → ℝ)
+    (hcontract :
+      ∀ ⦃x x' : X⦄, q x = q x' →
+        ∀ n,
+          dist (gseq (n + 1) x) (step n (gseq n x')) ≤
+            L n * dist (gseq n x) (gseq n x'))
+    (hlocal :
+      ∀ x n,
+        dist (step n (gseq n x)) (gseq (n + 1) x) ≤ ε n)
+    (hL0 : ∀ n, 0 ≤ L n)
+    (hvanish :
+      ∀ ⦃x x' : X⦄, q x = q x' →
+        Tendsto
+          (fun n =>
+            (∏ j ∈ Finset.range n, L j) *
+                dist (gseq 0 x) (gseq 0 x') +
+              ∑ k ∈ Finset.range n,
+                ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j)
+          atTop (𝓝 0)) :
+    ∀ ⦃x x' : X⦄, q x = q x' →
+      Tendsto (fun n => dist (gseq n x) (gseq n x')) atTop (𝓝 0) := by
+  intro x x' hxx'
+  have hupper :
+      ∀ n,
+        dist (gseq n x) (gseq n x') ≤
+          (∏ j ∈ Finset.range n, L j) *
+              dist (gseq 0 x) (gseq 0 x') +
+            ∑ k ∈ Finset.range n,
+              ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j := by
+    intro n
+    exact TransportCertificate.weighted_chain_bound
+      (A := fun _ => Z)
+      (defect := fun _ => dist)
+      (ideal := fun t => gseq t x)
+      (actual := fun t => gseq t x')
+      (step := step)
+      (L := L)
+      (ε := ε)
+      (fun t => hcontract hxx' t)
+      (fun t => dist_triangle _ _ _)
+      (fun t => hlocal x' t)
+      hL0
+      n
+  exact tendsto_of_tendsto_of_tendsto_of_le_of_le'
+    tendsto_const_nhds
+    (hvanish hxx')
+    (Eventually.of_forall fun n => dist_nonneg)
+    (Eventually.of_forall fun n => hupper n)
+
+/-- First three-layer composition theorem.
+
+A genuine M-TC weighted transport certificate controls every fibre pair; if
+the derived certificate envelope vanishes and the represented quantities
+converge pointwise, the limit satisfies exact M-QD quotient descent.
+
+This is stronger evidence of cross-generator composition than the bare uniform
+bound theorem above, but it is still a bridge theorem: it does not show that
+M-QD, M-TC, or M-OI is redundant. -/
+theorem existsUnique_descend_of_weighted_transport_limit
+    {X : Type uX} {Y : Type uY} {Z : Type uZ} [MetricSpace Z]
+    (q : X → Y) (hq : Surjective q)
+    (gseq : ℕ → X → Z) (g : X → Z)
+    (step : ℕ → Z → Z)
+    (L ε : ℕ → ℝ)
+    (hconv : ∀ x, Tendsto (fun n => gseq n x) atTop (𝓝 (g x)))
+    (hcontract :
+      ∀ ⦃x x' : X⦄, q x = q x' →
+        ∀ n,
+          dist (gseq (n + 1) x) (step n (gseq n x')) ≤
+            L n * dist (gseq n x) (gseq n x'))
+    (hlocal :
+      ∀ x n,
+        dist (step n (gseq n x)) (gseq (n + 1) x) ≤ ε n)
+    (hL0 : ∀ n, 0 ≤ L n)
+    (hvanish :
+      ∀ ⦃x x' : X⦄, q x = q x' →
+        Tendsto
+          (fun n =>
+            (∏ j ∈ Finset.range n, L j) *
+                dist (gseq 0 x) (gseq 0 x') +
+              ∑ k ∈ Finset.range n,
+                ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j)
+          atTop (𝓝 0)) :
+    ∃! gbar : Y → Z, gbar ∘ q = g := by
+  exact QuotientDescent.existsUnique_descend q g hq
+    (fiberCompatible_of_asymptotic_fiber_dist q gseq g hconv
+      (fiber_dist_tendsto_zero_of_weighted_transport
+        q gseq step L ε hcontract hlocal hL0 hvanish))
 
 /-- Exact zero defect is the degenerate endpoint of the same closure logic.
 
