@@ -434,6 +434,90 @@ theorem recurrentCarrier_union_of_two_edges_of_closed
           ha₁ ha₂ hb₁ hb₂ hAB hBA)
       hclosed
 
+/-- **Support-deletion split diagnostic.**  If two states communicate in the
+source but fail to communicate in the target, then some source-positive edge
+must have been deleted entirely in the target.  Otherwise source support would
+be included in target support and communication monotonicity would forbid the
+split. -/
+theorem communication_split_implies_deleted_positive_edge
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    {x y : S}
+    (hcommP : Communicates P x y)
+    (hnotCommQ : ¬ Communicates Q x y) :
+    ∃ u v, 0 < P u v ∧ Q u v = 0 := by
+  by_contra hdeleted
+  have hsupp : TransitionSupportLe P Q := by
+    intro u v hPuv
+    have hQnonneg : 0 ≤ Q u v := hQ.1 u v
+    by_contra hQnot
+    have hQuvZero : Q u v = 0 :=
+      le_antisymm (le_of_not_gt hQnot) hQnonneg
+    exact hdeleted ⟨u, v, hPuv, hQuvZero⟩
+  exact hnotCommQ
+    (communicates_mono_of_transitionSupportLe P Q hP hQ hsupp hcommP)
+
+/-- Quantitative split threshold.  If the source has a positive-edge gap
+`gamma`, then losing a source communication relation requires at least one
+entrywise perturbation of size `gamma` or larger.  Hence strict sub-gap
+perturbations cannot split a source communication class. -/
+theorem communication_split_implies_gap_crossing
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ)
+    (hPgap : HasTransitionGap P gamma)
+    {x y : S}
+    (hcommP : Communicates P x y)
+    (hnotCommQ : ¬ Communicates Q x y) :
+    ∃ u v, gamma ≤ |Q u v - P u v| := by
+  rcases communication_split_implies_deleted_positive_edge
+      P Q hP hQ hcommP hnotCommQ with ⟨u, v, hPuv, hQuv⟩
+  have hPlarge : gamma ≤ P u v := by
+    rcases hPgap u v with hPzero | hPlarge
+    · rw [hPzero] at hPuv
+      exact (lt_irrefl 0 hPuv).elim
+    · exact hPlarge
+  refine ⟨u, v, ?_⟩
+  rw [hQuv, zero_sub, abs_neg, abs_of_pos hPuv]
+  exact hPlarge
+
+/-- An explicit carrier-level split event: two states that belonged to the same
+source recurrent carrier no longer communicate in the target. -/
+def RecurrentCarrierSplit
+    (P Q : Matrix S S ℝ) (A : Set S) : Prop :=
+  ∃ x, x ∈ A ∧ ∃ y, y ∈ A ∧
+    Communicates P x y ∧ ¬ Communicates Q x y
+
+/-- Any split event inside a source recurrent carrier has a deleted positive
+edge witness. -/
+theorem recurrentCarrierSplit_implies_deleted_positive_edge
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (A : Set S)
+    (hsplit : RecurrentCarrierSplit P Q A) :
+    ∃ u v, 0 < P u v ∧ Q u v = 0 := by
+  rcases hsplit with ⟨x, _, y, _, hcommP, hnotCommQ⟩
+  exact communication_split_implies_deleted_positive_edge
+    P Q hP hQ hcommP hnotCommQ
+
+/-- With a source positive-edge gap, every carrier split crosses the gap scale
+in at least one transition entry. -/
+theorem recurrentCarrierSplit_implies_gap_crossing
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ)
+    (hPgap : HasTransitionGap P gamma)
+    (A : Set S)
+    (hsplit : RecurrentCarrierSplit P Q A) :
+    ∃ u v, gamma ≤ |Q u v - P u v| := by
+  rcases hsplit with ⟨x, _, y, _, hcommP, hnotCommQ⟩
+  exact communication_split_implies_gap_crossing
+    P Q hP hQ gamma hPgap hcommP hnotCommQ
+
 /-- Equality of one-step positive support propagates to every finite matrix
 power for nonnegative finite kernels. -/
 theorem pow_pos_iff_of_transitionSupportEq

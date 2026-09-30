@@ -366,17 +366,76 @@ This gives a precise post-bifurcation mechanism:
 
 ## 14. Remaining split regime
 
-The sub-gap source-margin regime is now structurally closed on the merge side:
-old classes cannot split, and explicit sufficient conditions for their merge
-are machine checked.
+The split side is now isolated by a separate support-deletion diagnostic.
 
-The genuinely different next regime is **margin collapse / support deletion**,
-where an old positive edge is allowed to reach zero.  That is the mechanism by
-which a source communication class can actually split.  It should be treated
-with separate hypotheses and diagnostics rather than weakening the current
-theorems or hiding the effect inside fixed-partition P-GOA-03.
+`communication_split_implies_deleted_positive_edge` proves that if
 
-After the split/merge topology layer is complete, the next GOA-level question
-is how invariant-law families and long-run mixture semantics should be compared
-when the recurrent partition itself changes.  Fixed-partition P-GOA-03 is not
-the correct theorem for that case.
+\[
+\operatorname{Communicates}_P(x,y)
+\quad\text{but}\quad
+\neg\operatorname{Communicates}_Q(x,y),
+\]
+
+then some old source-positive edge has been deleted completely:
+
+\[
+\boxed{
+\exists u,v:\quad P(u,v)>0\ \land\ Q(u,v)=0.
+}
+\]
+
+This is the exact converse obstruction to the earlier support-inclusion
+no-splitting theorem: if no source-positive edge is deleted, all source
+communication survives.
+
+With a source positive-edge gap `gamma`, the deleted-edge witness immediately
+becomes quantitative.  `communication_split_implies_gap_crossing` proves
+
+\[
+\boxed{
+\exists u,v:\quad
+\gamma\le |Q(u,v)-P(u,v)|.
+}
+\]
+
+Thus genuine class splitting is a **margin-threshold crossing**.  It is not a
+strict sub-gap phenomenon.
+
+For carrier-level statements the module defines
+
+`RecurrentCarrierSplit P Q A`
+
+to mean that two states inside the same source carrier communicated under `P`
+but no longer communicate under `Q`.  The corresponding theorems
+
+- `recurrentCarrierSplit_implies_deleted_positive_edge`;
+- `recurrentCarrierSplit_implies_gap_crossing`
+
+lift the same support-deletion and threshold witnesses to carrier splits.
+
+This notion deliberately distinguishes **split** from the earlier event where a
+source recurrent carrier stops being recurrent because a new outgoing edge
+destroys closedness.  In the current taxonomy:
+
+1. new support can open or merge recurrent regions;
+2. deleted old support can split an existing communication class;
+3. under a source gap, split requires perturbation at least at the gap scale;
+4. exact gauge does neither—it only relabels the same structure.
+
+## 15. Topology-changing GOA boundary
+
+The finite recurrent topology layer is now separated into stable, merge, and
+split regimes with explicit machine-checked witnesses.  The next research
+question is no longer graph topology itself but **GOA semantics across a
+changing recurrent partition**.
+
+In particular, when source classes merge or split, the old componentwise
+`classLaw` indexing and fixed mixture weights from P-GOA-03 are no longer the
+right comparison coordinates.  A topology-changing theorem needs a common
+observable/state space and should compare the induced invariant-law family or
+long-run Cesaro law directly, rather than pretending that old and new class
+labels still match.
+
+This should be developed as a separate theorem family.  Fixed-partition
+P-GOA-03 remains valid and useful inside the support-stable chamber; it should
+not be weakened to silently cover a recurrent-topology bifurcation.
