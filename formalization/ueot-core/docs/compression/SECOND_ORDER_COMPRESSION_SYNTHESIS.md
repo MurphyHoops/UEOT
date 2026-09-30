@@ -462,9 +462,13 @@ At the current verified checkpoint:
   transition-TV defects now construct the `ApproxControlQuotient` itself, so
   the quantitative chain starts at representation defect rather than an
   independently supplied macro approximation certificate;
-- **next research target:** zero/vanishing-fibre-defect closure, testing whether
-  the approximate representation lane converges back to exact M-QD/control
-  descent without introducing a new independent generator.
+- **encoder exact closure:** local PASS; vanishing fibre-defect envelopes feed
+  the existing structural-defect exactification layer and produce a literal
+  `ExactControlQuotient`, after which P-QUO-01 gives exact value/Q/policy
+  descent;
+- **next research target:** moving representation/model limits, where the
+  encoder-generated target itself varies and exact closure requires genuine
+  convergence/identification rather than a fixed-source squeeze.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
