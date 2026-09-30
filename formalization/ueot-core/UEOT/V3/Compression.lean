@@ -128,3 +128,4 @@ import UEOT.V3.Compression.MovingEncoderGaugeClosure
 import UEOT.V3.Compression.GaugeSemanticTransfer
 import UEOT.V3.Compression.GoaGaugeInvariance
 import UEOT.V3.Compression.MetricGaugeInvariance
+import UEOT.V3.Compression.ApproximateSemanticGauge

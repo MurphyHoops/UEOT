@@ -496,10 +496,16 @@ At the current verified checkpoint:
   preserved, conjugate kernels have identical Dobrushin coefficients, and the
   complete M-CF geometric mixing certificate transfers with the same numerical
   rate and initial TV error;
-- **next research target:** leave the now-nearly-saturated exact gauge lane and
-  test approximate semantic gauge stability, explicitly requiring semantic
-  reward/transition defect envelopes so representation mismatch is not falsely
-  identified with model closeness.
+- **approximate semantic gauge stability:** local PASS; for two approximate
+  quotients of one micro model with exact fibre relabeling, macro reward error
+  is bounded by `epsilonReward_Q + epsilonReward_R`, relabeled macro transition
+  TV by `epsilonTransition_Q + epsilonTransition_R`, and relabeled optimal-value
+  error by `D_Q + D_R`; `SameFibers` gives the unique relabeling carrying all
+  three quantitative certificates;
+- **next research target:** fix one transported selector and combine the new
+  closed-loop row-TV bound with M-CF stationary perturbation to obtain a
+  quantitative near-GOA law bound, keeping optimal-policy identity separate
+  unless an explicit action-gap certificate is available.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
