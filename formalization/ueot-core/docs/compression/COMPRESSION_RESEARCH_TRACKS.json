@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "authority_issue": 146,
+  "mission_contract": "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+  "operations_manual": "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+  "post_final_governance": "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+  "ledger": "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+  "counted_core_policy": "must_match_live_ledger_minimal_core",
+  "max_active_mutating_tracks": 2,
+  "main_only_cross_track_dependencies": true,
+  "cross_track_integration_gate": "closed",
+  "tracks": {
+    "S": {
+      "title": "Structural Defect / Long-Run Stability",
+      "status": "active",
+      "branch_patterns": [
+        "^compression/topology-.*$",
+        "^compression/second-order-.*$",
+        "^compression/goa-.*$",
+        "^compression/recurrent-.*$",
+        "^compression/contractive-.*$"
+      ],
+      "owned_topics": [
+        "structural defect closure",
+        "quotient and semantic gauge",
+        "GOA and stationary-law stability",
+        "recurrent topology merge/split",
+        "fixed-point residual inverse",
+        "spectral or local isolation certificates"
+      ],
+      "forbidden_path_prefixes": [
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
+        "formalization/ueot-core/docs/compression/hierarchy/"
+      ],
+      "forbidden_exact_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean"
+      ]
+    },
+    "H": {
+      "title": "Hierarchy / Assembly Audit",
+      "status": "active",
+      "branch_patterns": [
+        "^compression/hierarchy-.*$"
+      ],
+      "owned_topics": [
+        "hierarchy inventory and typing",
+        "existing-generator coverage",
+        "parent-object assembly residual",
+        "hierarchy no-go and separation theorems",
+        "common-structure analysis after evidence gates"
+      ],
+      "allowed_path_prefixes": [
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
+        "formalization/ueot-core/docs/compression/hierarchy/"
+      ],
+      "allowed_exact_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+        "formalization/ueot-core/UEOT/V3/Compression.lean"
+      ],
+      "forbidden_exact_paths": [
+        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+        "formalization/ueot-core/docs/compression/SECOND_ORDER_STRUCTURAL_DEFECT_MISSION.md",
+        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+        "formalization/ueot-core/scripts/validate_compression.py",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        ".github/workflows/ueot-core-compression.yml"
+      ],
+      "initial_gate": "H0-H3",
+      "long_run_stability_work": "blocked_until_cross_track_integration_gate_opens"
+    }
+  }
+}
