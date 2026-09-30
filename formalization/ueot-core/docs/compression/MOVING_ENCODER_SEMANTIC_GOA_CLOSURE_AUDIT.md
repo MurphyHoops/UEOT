@@ -222,15 +222,12 @@ The scientific classification remains:
 
 ## 8. Next pressure test
 
-The most natural next theorem is now the value-span closure omitted above:
+The value-span pressure test identified here is now **CLOSED** by
+`Compression/ValueSpanClosure.lean`: under one uniform moving optimal-value span
+bound, primitive reward/transition defect convergence derives `D_n -> 0` and
+feeds the existing optimal-policy GOA tail theorem.
 
-> derive `D_n -> 0` from `epsilon_r(n) -> 0` and `epsilon_p(n) -> 0` under one
-> explicit uniform reward / optimal-value-span hypothesis.
-
-That would remove the only externally supplied convergence certificate in the
-optimal-policy moving-encoder chain and make the route closer to a fully
-primitive defect-to-GOA theorem.
-
-After that, the larger structural extension is to replace unique Dobrushin GOA
-by recurrent-class / invariant-set / occupation-structure convergence, so the
-gauge theory covers nonunique and noncontractive GOA regimes as well.
+The next structural extension is therefore to replace the unique Dobrushin GOA
+lane by recurrent-class / invariant-set / occupation-structure gauge results,
+so the theory covers nonunique and noncontractive long-run regimes without
+silently identifying GOA with one globally attracting stationary law.

@@ -132,3 +132,4 @@ import UEOT.V3.Compression.ApproximateSemanticGauge
 import UEOT.V3.Compression.ApproximateGoaGaugeStability
 import UEOT.V3.Compression.ActionGapGaugeStability
 import UEOT.V3.Compression.MovingEncoderSemanticGoaClosure
+import UEOT.V3.Compression.ValueSpanClosure
