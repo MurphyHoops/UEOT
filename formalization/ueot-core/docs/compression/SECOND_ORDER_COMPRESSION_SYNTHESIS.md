@@ -473,9 +473,13 @@ At the current verified checkpoint:
   quotient cardinality now carry a label-invariant mismatch distance with
   attained optimal alignment, exact-zero recovery of `SameFibers`, symmetry,
   and triangle inequality;
-- **next research target:** occupation-weighted quotient gauge and moving
-  representation limits, separating true fibre mismatch from pure relabeling
-  before applying control or transport defect bounds.
+- **occupation-weighted quotient gauge:** local PASS; under one source simplex
+  law the optimal relabeling cost becomes the occupied mass of partition drift,
+  with support-level zero semantics, full-support recovery of exact
+  `SameFibers`, symmetry, and triangle inequality;
+- **next research target:** gauge-aligned moving representation limits that
+  keep partition drift separate from reward/transition/control defect before
+  applying M-TC or exactification.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
