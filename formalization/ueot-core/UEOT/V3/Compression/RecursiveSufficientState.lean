@@ -97,6 +97,32 @@ theorem existsUnique_reachableUpdate
     funext e
     exact hV h e
 
+/-- If every ambient state is reachable, recursive sufficiency gives a unique
+update directly on the ambient state space.  This is the interface needed by
+finite-control assembly: the control state type contains no unreachable
+coordinates. -/
+theorem existsUnique_ambientUpdate_of_surjective
+    {H : Type uH} {S : Type uS} {E : Type uE} {T : Type uT}
+    (C : H → S) (hC : Surjective C)
+    (R : H → E → T)
+    (hcompat : InputFiberCompatible C R) :
+    ∃! U : S → E → T,
+      ∀ h e, U (C h) e = R h e := by
+  have hfiber : FiberCompatible C R := by
+    intro h h' hstate
+    apply funext
+    intro e
+    exact hcompat hstate e
+  rcases existsUnique_descend C R hC hfiber with ⟨U, hfactor, hunique⟩
+  refine ⟨U, ?_, ?_⟩
+  · intro h e
+    exact congrFun (congrFun hfactor h) e
+  · intro V hV
+    apply hunique V
+    funext h
+    funext e
+    exact hV h e
+
 /-- Conversely, any recursive update on the ambient state immediately implies
 the fibre-compatibility obligation.  No surjectivity is needed. -/
 theorem inputFiberCompatible_of_update

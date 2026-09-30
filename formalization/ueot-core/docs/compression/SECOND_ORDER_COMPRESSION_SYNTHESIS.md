@@ -395,10 +395,10 @@ This suggests the typed chain
 but the arrows are now explicit theorem obligations rather than philosophical
 identifications.
 
-## 11. Remaining decisive theorem
+## 11. Decisive end-to-end theorem — local PASS
 
-The strongest next test is an end-to-end theorem not used to infer the current
-generators:
+The strongest proposed next test was an end-to-end theorem not used to infer
+the current generators:
 
 \[
 \text{recursive sufficient state}
@@ -424,10 +424,24 @@ M\text{-OI/M-CF}
 \text{Agency -> GOD -> GOA assembly}.
 \]
 
-This should be the next main compression lane.
+This lane is now implemented in
 
-Success requires that the theorem consume the existing interfaces rather than
-smuggle the desired GOA or optimality conclusion into its assumptions.
+`UEOT/V3/Compression/AgencyGodGoaAssembly.lean`.
+
+The stronger theorem `agency_god_goa_from_history` does not merely place a
+recursive-state theorem and an unrelated control model on the same state type.
+It starts from history-level reward/transition data, requires their exact
+fibre-sufficiency through one effective state map, uses M-QD-derived recursive
+descent to construct the finite control model, obtains the Bellman-greedy
+selector, forms the exact P-CORE policy-induced closed-loop matrix, obtains an
+invariant law through the M-OI P-GOA-01 route, and under an explicit Dobrushin
+margin uses M-CF to prove uniqueness and geometric attraction.
+
+Thus the requested no-smuggling criterion is satisfied in the finite setting:
+GOA existence, uniqueness, and mixing are conclusions, not assumptions.
+
+The dedicated audit is
+`docs/compression/AGENCY_GOD_GOA_ASSEMBLY_AUDIT.md`.
 
 ## 12. Final second-order disposition
 
@@ -439,7 +453,9 @@ At the current verified checkpoint:
 - **new generated consequences:** yes, including exact control-limit closure,
   moving positive-eigen invariant closure, Dobrushin geometric mixing, and
   robust imperfect-target alignment;
-- **next research target:** end-to-end Agency -> GOD -> GOA assembly.
+- **decisive out-of-sample assembly:** finite Agency -> GOD -> GOA **PASS**;
+- **next research target:** approximate/identity-preserving generalization of
+  the assembly, preferably bringing M-TC into the end-to-end chain.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
