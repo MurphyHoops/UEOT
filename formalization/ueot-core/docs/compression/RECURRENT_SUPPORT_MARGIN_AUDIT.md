@@ -205,17 +205,45 @@ margin.
   transition probabilities approach zero.
 - No counted generator, frozen P-ID, or ledger state changes.
 
-## 10. Next pressure test
+## 10. Support-changing bifurcation diagnostic
 
-The one-sided sparse-support closure is now complete.  The remaining hard
-boundary is genuine **support-changing bifurcation**.
+The one-sided sparse-support closure is complete, and the support-changing
+boundary is now diagnostic rather than rhetorical.
 
-The next theorem should make that boundary diagnostic rather than rhetorical:
-under a source positive-edge gap and sub-gap entrywise perturbation, any change
-of a recurrent carrier must imply creation of at least one new target-positive
-edge from a source-zero edge.  Equivalently, if no such new edge is created,
-the recurrent structure cannot split or merge.
+`recurrentCarrier_change_implies_new_positive_edge` proves that under a source
+positive-edge gap and sub-gap entrywise perturbation,
 
-That result will identify the precise obstruction to fixed-partition P-GOA-03
-in this finite sparse regime instead of trying to absorb topology change into a
-small quantitative perturbation constant.
+\[
+\neg\bigl(
+A\text{ recurrent for }Q
+\iff
+A\text{ recurrent for }P
+\bigr)
+\]
+
+forces a finite witness
+
+\[
+\boxed{
+\exists x,y:\quad P(x,y)=0\ \land\ Q(x,y)>0.
+}
+\]
+
+So, in this regime, recurrent-carrier change cannot be caused by weakening an
+existing positive edge alone: every source-positive edge remains positive.
+The obstruction is creation of new support.
+
+`recurrentCarrier_gauge_change_implies_new_positive_edge` adds an arbitrary
+exact state gauge between an aligned target and the physical target.  If the
+physical recurrent carrier changes, the witness still occurs in the aligned
+dynamics.  Exact relabeling itself therefore cannot be the bifurcation cause.
+
+## 11. Next pressure test
+
+The remaining research boundary is the **post-bifurcation regime**: classify
+how new support edges merge recurrent components, how loss of a positive-edge
+margin can permit class splitting, and how GOA should be compared across
+genuinely different recurrent decompositions.
+
+That regime should stay separate from fixed-partition P-GOA-03 rather than
+being hidden inside its small-perturbation radius.
