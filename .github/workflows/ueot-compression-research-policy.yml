@@ -1,0 +1,53 @@
+name: UEOT Compression Research Base Policy
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: ueot-compression-base-policy-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout immutable PR base
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+
+      - name: Require established base policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f formalization/ueot-core/scripts/validate_compression_research.py
+          test -f formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json
+
+      - name: Fetch candidate as data only
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "$HEAD_SHA"
+          git cat-file -e "$HEAD_SHA^{commit}"
+
+      - name: Authorize with immutable base validator
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 formalization/ueot-core/scripts/validate_compression_research.py --repo-root . --baseline-ref "$BASE_SHA" --candidate-ref "$HEAD_SHA" --branch-name "$HEAD_REF" --head-repo "$HEAD_REPO" --base-repo "$BASE_REPO" --verify-live-state
