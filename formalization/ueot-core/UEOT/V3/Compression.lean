@@ -109,3 +109,33 @@ import UEOT.V3.Compression.PositiveEigenstructure
 
 import UEOT.V3.Compression.OccupationLimitInvariance
 import UEOT.V3.Compression.BayesianRecursiveClosure
+
+import UEOT.V3.Compression.StructuralDefectClosure
+import UEOT.V3.Compression.StructuralDefectControlLimit
+import UEOT.V3.Compression.PositiveEigenInvariantLimit
+import UEOT.V3.Compression.RecursiveSufficientState
+import UEOT.V3.Compression.TeleologicalEquivalence
+import UEOT.V3.Compression.ContractiveFixedPoint
+import UEOT.V3.Compression.ValueAlignment
+import UEOT.V3.Compression.AgencyGodGoaAssembly
+import UEOT.V3.Compression.ApproximateGoaTracking
+import UEOT.V3.Compression.ApproximateHistoryEncoder
+import UEOT.V3.Compression.HistoryEncoderExactClosure
+import UEOT.V3.Compression.QuotientGauge
+import UEOT.V3.Compression.ApproximateQuotientGauge
+import UEOT.V3.Compression.WeightedQuotientGauge
+import UEOT.V3.Compression.MovingEncoderGaugeClosure
+import UEOT.V3.Compression.GaugeSemanticTransfer
+import UEOT.V3.Compression.GoaGaugeInvariance
+import UEOT.V3.Compression.MetricGaugeInvariance
+import UEOT.V3.Compression.ApproximateSemanticGauge
+import UEOT.V3.Compression.ApproximateGoaGaugeStability
+import UEOT.V3.Compression.ActionGapGaugeStability
+import UEOT.V3.Compression.MovingEncoderSemanticGoaClosure
+import UEOT.V3.Compression.ValueSpanClosure
+import UEOT.V3.Compression.InvariantSetGaugeInvariance
+import UEOT.V3.Compression.CesaroOccupationGaugeInvariance
+import UEOT.V3.Compression.RecurrentClassGaugeInvariance
+import UEOT.V3.Compression.FiniteRecurrentGaugeBridge
+import UEOT.V3.Compression.ApproximateRecurrentGaugeStability
+import UEOT.V3.Compression.RecurrentSupportMargin
