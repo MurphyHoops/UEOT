@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-FINAL Parallel Research Governance
 
-Status: **POLICY BOOTSTRAP / POST-FINAL / UNCOUNTED**
+Status: **GUARDED ARCHITECTURE ACTIVE / POST-FINAL / UNCOUNTED**
 
 Authority:
 
@@ -119,11 +119,12 @@ and the optional root import:
 
     formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean
 
-The bootstrap PR installs only the policy surface. A guarded follow-up PR will
-create the Hierarchy implementation/documentation roots and, if needed, wire
-`Hierarchy.lean` into the global `Compression.lean` import surface. Track H
-itself never owns `Compression.lean`; it wires later modules only through its
-dedicated root once that root has been installed under the immutable policy.
+P0a installed only the immutable base-policy surface. P0b installs the guarded
+Hierarchy implementation/documentation roots and wires the empty public
+`Hierarchy.lean` root into the global `Compression.lean` import surface. This
+activation is namespace/governance only: H0 theorem work starts in a later
+Track H PR. Track H itself never owns `Compression.lean`; later hierarchy
+modules are wired only through its dedicated root.
 
 On compression/hierarchy-* branches, direct edits to the frozen ledger,
 coverage, Mission Contract, ablation record, post-FINAL governance, workflow,
@@ -183,6 +184,21 @@ and makes no Track S/H theorem change, no global `Compression.lean` edit, and
 no ordinary Compression workflow edit. Exact-head CI and independent Codex
 review audit that minimal diff. Once #198 lands, every activation/follow-up PR
 is evaluated by the already-merged immutable base policy.
+
+P0b is the first such guarded activation. It also makes the architecture
+taxonomy machine-readable through five independent fields:
+
+- `architecture_role = G0 | G1 | G2 | G3`;
+- `lifecycle_status`;
+- `track_owner = CORE | S | H | X`;
+- `authority_provenance`;
+- `counted_core_impact`.
+
+The validator rejects invalid combinations. In particular only
+`G0 + COUNTED + counted_core_impact=COUNTED` may match the live counted minimal
+core; G1/G2/G3 never become counted merely because they are merged; Track X
+records are forbidden while the integration gate is closed; and frozen Core v3
+authority remains CORE-owned.
 
 ## 6. Concurrency
 

@@ -62,6 +62,40 @@ jobs:
           COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
 
+      - name: Validate post-FINAL research ownership and architecture records
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          HEAD_REF: ${{ github.head_ref }}
+          BEFORE_SHA: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          BASE_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          BASELINE_REF="origin/main"
+          BRANCH_NAME="${HEAD_REF:-$REF_NAME}"
+          if [[ "$EVENT_NAME" == "pull_request" && -n "$BASE_SHA" ]]; then
+            BASELINE_REF="$BASE_SHA"
+          elif [[ "$EVENT_NAME" == "push" && "$REF_NAME" == "main" && -n "$BEFORE_SHA" && "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            BASELINE_REF="$BEFORE_SHA"
+          fi
+          git cat-file -e "${CANDIDATE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags origin "$CANDIDATE_SHA"
+          python3 formalization/ueot-core/scripts/validate_compression_research.py \
+            --repo-root . \
+            --baseline-ref "$BASELINE_REF" \
+            --candidate-ref "$CANDIDATE_SHA" \
+            --branch-name "$BRANCH_NAME" \
+            --head-repo "$HEAD_REPO" \
+            --base-repo "$BASE_REPO" \
+            --verify-live-state
+
+      - name: Regression-test post-FINAL research governance
+        run: python3 formalization/ueot-core/scripts/test_validate_compression_research.py --repo-root .
+
   proof:
     runs-on: ubuntu-latest
     defaults:

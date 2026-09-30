@@ -14,6 +14,10 @@
   `formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md`
 - Source theorem seed index:
   `formalization/ueot-core/docs/CORE_COMPRESSION_THEOREM_INDEX.csv`
+- Post-FINAL research-track registry:
+  `formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json`
+- Post-FINAL research governance:
+  `formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md`
 - Official regression target: `lake build UEOT`
 
 Compression is a post-106 meta-formalization mission. It must never alter the
@@ -33,6 +37,19 @@ When records disagree:
 6. Issue #146 body controls current active compression intent/blocker/next step;
 7. active compression branch controls unfinished code;
 8. prior chats/comments are supplemental history only.
+
+For post-FINAL research, these axes are independent and must never be inferred
+from one another:
+
+1. architecture role: `G0 | G1 | G2 | G3`;
+2. lifecycle status;
+3. track owner: `CORE | S | H | X`;
+4. authority/provenance;
+5. counted-core impact.
+
+Canonical enum values and valid combinations are machine-owned by
+`COMPRESSION_RESEARCH_TRACKS.json` and checked by
+`validate_compression_research.py`.
 
 ## 2. IDs and state machines
 
@@ -85,6 +102,20 @@ Compression branch classes:
 - ledger promotion: `compression/ledger-<checkpoint>`;
 - emergency quarantine only: `hold/compression-<topic>`.
 
+Post-FINAL research branch classes additionally use the immutable registry:
+
+- Track S: registered `compression/topology-*`, `compression/goa-*`,
+  `compression/recurrent-*`, `compression/contractive-*`, and related registered
+  patterns;
+- Track H: `compression/hierarchy-*`, restricted to the dedicated
+  `Compression/Hierarchy/` and `docs/compression/hierarchy/` surfaces;
+- governance activation/maintenance: `ops/compression-*` only on registered
+  governance paths;
+- Track X: no mutating lane while `cross_track_integration_gate = closed`.
+
+Branch naming alone is not authorization. The immutable base-policy validator
+must also accept the changed paths and live-concurrency state.
+
 Default: one active mutating branch per M-ID. Do not create `v2`, `fresh`,
 `final`, or scratch branch families.
 
@@ -97,9 +128,14 @@ Before any new compression branch:
 3. read `COMPRESSION_LEDGER.yaml` and `COMPRESSION_COVERAGE.md`;
 4. read Issue #146 body;
 5. list remote branches and open PRs;
-6. verify the M-ID is not already active/integrated;
-7. reuse the existing branch whenever one already represents the work;
-8. verify repository branch count remains <= 8 target / <= 12 hard cap.
+6. load `COMPRESSION_RESEARCH_TRACKS.json` and classify the proposed work by
+   track and owned path before mutating files;
+7. read any child tracker named by Issue #146 (for example P0b, Track S, or
+   Track H) and honor its sequencing gate;
+8. verify the M-ID/lane is not already active/integrated and that the same track
+   has no competing live mutating branch;
+9. reuse the existing branch whenever one already represents the work;
+10. verify repository branch count remains <= 8 target / <= 12 hard cap.
 
 ## 6. CI gates
 
@@ -111,6 +147,14 @@ Every compression feature head must pass:
 4. `lake build UEOT.V3.Compression`;
 5. compression theorem axiom print;
 6. full `lake build UEOT`.
+
+Every governed post-FINAL research/governance head must additionally pass:
+
+7. immutable base-policy authorization from
+   `.github/workflows/ueot-compression-research-policy.yml`;
+8. `validate_compression_research.py` against the correct base ref;
+9. `test_validate_compression_research.py`;
+10. exact-head independent/Codex review before merge.
 
 The general `UEOT Core Lean` workflow also runs on `compression/**` and
 temporary `ops/compression-*` governance branches.
@@ -167,6 +211,32 @@ Recommended maximum:
 - active mutating compression lanes: 2;
 - open repository PRs: 2 total under repository governance;
 - read-only theorem/source audits: may run without branches.
+
+Post-FINAL ownership is stricter:
+
+- at most one live Track S mutating branch;
+- at most one live Track H mutating branch;
+- S and H may proceed in parallel only on their owned files;
+- cross-track dependencies must come from canonical `main`;
+- Track X remains closed until the registry gate is intentionally opened by a
+  separately authorized governance transition.
+
+## 10A. Guarded post-FINAL recovery
+
+When Issue #146 reports the guarded architecture as active, recover in this
+order:
+
+1. canonical `main` and frozen ledger state;
+2. research registry and immutable policy status;
+3. Issue #146 authority/recovery block;
+4. named P0b/S/H child tracker, if any;
+5. open PRs and live governed branches;
+6. exact head/CI/review status for Track S and Track H independently;
+7. the exact next action in the owning track.
+
+Do not treat an authorized PR as merged evidence, do not treat a draft theorem
+as canonical main evidence, and do not let a role such as G1/G2/G3 imply
+counted status.
 
 ## 11. Mission completion gate
 

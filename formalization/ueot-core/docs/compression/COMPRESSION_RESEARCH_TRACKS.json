@@ -115,5 +115,172 @@
       "initial_gate": "H0-H3",
       "long_run_stability_work": "blocked_until_cross_track_integration_gate_opens"
     }
-  }
+  },
+  "architecture_record_schema": {
+    "schema_version": 1,
+    "architecture_roles": [
+      "G0",
+      "G1",
+      "G2",
+      "G3"
+    ],
+    "lifecycle_statuses": [
+      "RESEARCH",
+      "MERGED_UNCOUNTED",
+      "CANDIDATE",
+      "PROMOTION_AUDIT",
+      "COUNTED",
+      "RETAINED_ADAPTER",
+      "RETAINED_BOUNDARY",
+      "REJECTED"
+    ],
+    "track_owners": [
+      "CORE",
+      "S",
+      "H",
+      "X"
+    ],
+    "authority_provenance": [
+      "FROZEN_CORE_V3",
+      "POST_FINAL_MERGED",
+      "POST_FINAL_RESEARCH",
+      "SYNTHESIS_ONLY"
+    ],
+    "counted_core_impacts": [
+      "NONE",
+      "PROPOSED",
+      "COUNTED"
+    ],
+    "track_status": {
+      "CORE": "frozen",
+      "S": "active",
+      "H": "active",
+      "X": "closed"
+    },
+    "required_record_fields": [
+      "record_id",
+      "title",
+      "architecture_role",
+      "lifecycle_status",
+      "track_owner",
+      "authority_provenance",
+      "counted_core_impact",
+      "evidence_paths"
+    ]
+  },
+  "architecture_records": [
+    {
+      "record_id": "M-QD-01",
+      "title": "Quotient Descent",
+      "architecture_role": "G0",
+      "lifecycle_status": "COUNTED",
+      "track_owner": "CORE",
+      "authority_provenance": "FROZEN_CORE_V3",
+      "counted_core_impact": "COUNTED",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean"
+      ]
+    },
+    {
+      "record_id": "M-TC-01",
+      "title": "Transport Certificate Calculus",
+      "architecture_role": "G0",
+      "lifecycle_status": "COUNTED",
+      "track_owner": "CORE",
+      "authority_provenance": "FROZEN_CORE_V3",
+      "counted_core_impact": "COUNTED",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean"
+      ]
+    },
+    {
+      "record_id": "M-PE-01",
+      "title": "Positive Eigenstructure",
+      "architecture_role": "G0",
+      "lifecycle_status": "COUNTED",
+      "track_owner": "CORE",
+      "authority_provenance": "FROZEN_CORE_V3",
+      "counted_core_impact": "COUNTED",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean"
+      ]
+    },
+    {
+      "record_id": "M-OI-01",
+      "title": "Occupation Limit Invariance",
+      "architecture_role": "G0",
+      "lifecycle_status": "COUNTED",
+      "track_owner": "CORE",
+      "authority_provenance": "FROZEN_CORE_V3",
+      "counted_core_impact": "COUNTED",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean"
+      ]
+    },
+    {
+      "record_id": "S-GOA-TOPOLOGY-SEMANTIC-BOUNDARY",
+      "title": "Topology-changing GOA semantic boundary",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "S",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaSemantics.lean",
+        "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_SEMANTICS_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "S-GOA-TOPOLOGY-STABILITY",
+      "title": "Topology-changing GOA stationary stability certificate",
+      "architecture_role": "G1",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "S",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaStabilityCertificate.lean",
+        "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_STABILITY_CERTIFICATE_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "S-GOA-ANCHORED-STABILITY",
+      "title": "Anchored stationary-branch GOA stability",
+      "architecture_role": "G1",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "S",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaAnchoredStability.lean",
+        "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_ANCHORED_STABILITY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "S-GOA-MULTISTEP-ANCHORED-STABILITY",
+      "title": "Multi-step anchored stationary-branch GOA stability",
+      "architecture_role": "G1",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "S",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaMultiStepAnchoredStability.lean",
+        "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_MULTISTEP_ANCHORED_STABILITY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "S-GOA-RESIDUAL-INVERSE",
+      "title": "Residual-inverse stationary-branch GOA stability",
+      "architecture_role": "G1",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "S",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaResidualInverseStability.lean",
+        "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_RESIDUAL_INVERSE_STABILITY_AUDIT.md"
+      ]
+    }
+  ]
 }

@@ -326,7 +326,159 @@ def validate_compression_root_import_change(
         fail(f"Track {track_id} may not modify Compression.lean")
 
 
-def validate_static(repo: Path, config: dict, ledger: dict) -> dict[str, list[re.Pattern[str]]]:
+def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> None:
+    schema = config.get("architecture_record_schema")
+    if not isinstance(schema, dict):
+        fail("research governance must define architecture_record_schema")
+    if schema.get("schema_version") != 1:
+        fail("architecture_record_schema.schema_version must be 1")
+
+    expected_axes = {
+        "architecture_roles": ["G0", "G1", "G2", "G3"],
+        "lifecycle_statuses": [
+            "RESEARCH",
+            "MERGED_UNCOUNTED",
+            "CANDIDATE",
+            "PROMOTION_AUDIT",
+            "COUNTED",
+            "RETAINED_ADAPTER",
+            "RETAINED_BOUNDARY",
+            "REJECTED",
+        ],
+        "track_owners": ["CORE", "S", "H", "X"],
+        "authority_provenance": [
+            "FROZEN_CORE_V3",
+            "POST_FINAL_MERGED",
+            "POST_FINAL_RESEARCH",
+            "SYNTHESIS_ONLY",
+        ],
+        "counted_core_impacts": ["NONE", "PROPOSED", "COUNTED"],
+    }
+    for field, expected in expected_axes.items():
+        actual = string_list(schema.get(field), f"architecture_record_schema.{field}")
+        if actual != expected:
+            fail(
+                f"architecture_record_schema.{field} must remain exactly {expected}"
+            )
+
+    track_status = schema.get("track_status")
+    if track_status != {
+        "CORE": "frozen",
+        "S": "active",
+        "H": "active",
+        "X": "closed",
+    }:
+        fail("architecture track_status must keep CORE frozen, S/H active, X closed")
+    if config.get("cross_track_integration_gate") == "closed" and track_status["X"] != "closed":
+        fail("Track X must remain closed while the cross-track integration gate is closed")
+
+    required_fields = string_list(
+        schema.get("required_record_fields"),
+        "architecture_record_schema.required_record_fields",
+    )
+    expected_required = {
+        "record_id",
+        "title",
+        "architecture_role",
+        "lifecycle_status",
+        "track_owner",
+        "authority_provenance",
+        "counted_core_impact",
+        "evidence_paths",
+    }
+    if set(required_fields) != expected_required:
+        fail(
+            "architecture_record_schema.required_record_fields must contain the "
+            "complete five-axis record contract plus identity/evidence"
+        )
+
+    records = config.get("architecture_records")
+    if not isinstance(records, list) or not records:
+        fail("research governance must contain nonempty architecture_records")
+
+    allowed = {field: set(values) for field, values in expected_axes.items()}
+    seen: set[str] = set()
+    counted_record_ids: set[str] = set()
+    for index, record in enumerate(records):
+        context = f"architecture_records[{index}]"
+        if not isinstance(record, dict):
+            fail(f"{context} must be an object")
+        missing = expected_required - set(record)
+        if missing:
+            fail(f"{context} is missing required fields: {sorted(missing)}")
+
+        record_id = record.get("record_id")
+        title = record.get("title")
+        if not isinstance(record_id, str) or not record_id:
+            fail(f"{context}.record_id must be a nonempty string")
+        if record_id in seen:
+            fail(f"duplicate architecture record_id: {record_id}")
+        seen.add(record_id)
+        if not isinstance(title, str) or not title:
+            fail(f"{context}.title must be a nonempty string")
+
+        role = record.get("architecture_role")
+        lifecycle = record.get("lifecycle_status")
+        owner = record.get("track_owner")
+        provenance = record.get("authority_provenance")
+        impact = record.get("counted_core_impact")
+        axis_values = {
+            "architecture_roles": role,
+            "lifecycle_statuses": lifecycle,
+            "track_owners": owner,
+            "authority_provenance": provenance,
+            "counted_core_impacts": impact,
+        }
+        for field, value in axis_values.items():
+            if value not in allowed[field]:
+                fail(f"{context}: invalid {field} value {value!r}")
+
+        evidence = string_list(record.get("evidence_paths"), f"{context}.evidence_paths")
+        for path in evidence:
+            require_file(repo, path, context)
+
+        if lifecycle == "COUNTED" or impact == "COUNTED":
+            if not (role == "G0" and lifecycle == "COUNTED" and impact == "COUNTED"):
+                fail(f"{context}: only G0 + COUNTED may contribute to the counted core")
+            counted_record_ids.add(record_id)
+        if role != "G0" and impact != "NONE":
+            fail(f"{context}: G1/G2/G3 records cannot propose or claim counted-core impact")
+        if impact == "PROPOSED" and lifecycle not in {"CANDIDATE", "PROMOTION_AUDIT"}:
+            fail(f"{context}: PROPOSED counted impact requires CANDIDATE or PROMOTION_AUDIT")
+        if lifecycle in {"CANDIDATE", "PROMOTION_AUDIT"} and role != "G0":
+            fail(f"{context}: primitive promotion lifecycle requires architecture role G0")
+
+        if provenance == "POST_FINAL_RESEARCH" and lifecycle != "RESEARCH":
+            fail(f"{context}: POST_FINAL_RESEARCH provenance requires RESEARCH lifecycle")
+        if provenance == "POST_FINAL_MERGED" and lifecycle == "RESEARCH":
+            fail(f"{context}: POST_FINAL_MERGED provenance cannot retain RESEARCH lifecycle")
+        if provenance == "FROZEN_CORE_V3" and owner != "CORE":
+            fail(f"{context}: FROZEN_CORE_V3 authority must remain owned by CORE")
+        if provenance == "SYNTHESIS_ONLY" and impact != "NONE":
+            fail(f"{context}: SYNTHESIS_ONLY records cannot affect counted-core accounting")
+        if owner == "X" and config.get("cross_track_integration_gate") == "closed":
+            fail(f"{context}: Track X records are forbidden while the integration gate is closed")
+
+    minimal_core = ledger.get("minimal_core")
+    if not isinstance(minimal_core, dict):
+        fail("compression ledger is missing minimal_core")
+    generator_ids = minimal_core.get("generator_ids")
+    if not isinstance(generator_ids, list) or not generator_ids:
+        fail("live ledger minimal core has no generator_ids")
+    if counted_record_ids != set(generator_ids):
+        fail(
+            "COUNTED architecture records must exactly match the frozen live-ledger "
+            f"minimal core: records={sorted(counted_record_ids)}, ledger={sorted(generator_ids)}"
+        )
+
+
+def validate_static(
+    repo: Path,
+    config: dict,
+    ledger: dict,
+    *,
+    require_architecture_records: bool = True,
+) -> dict[str, list[re.Pattern[str]]]:
     if config.get("schema_version") != 1:
         fail("research-track governance schema_version must be 1")
     if config.get("authority_issue") != 146:
@@ -410,6 +562,9 @@ def validate_static(repo: Path, config: dict, ledger: dict) -> dict[str, list[re
         fail("compression ledger is missing coverage")
     if coverage.get("counted_generators") != len(generator_ids):
         fail("live ledger counted generator count disagrees with minimal_core")
+
+    if require_architecture_records:
+        validate_architecture_records(repo, config, ledger)
 
     return compiled
 
@@ -535,7 +690,12 @@ def main() -> None:
         baseline_config = load_json_at_ref(repo, args.baseline_ref, TRACKS_REL)
         if baseline_config is not None:
             enforcement_config = baseline_config
-            enforcement_compiled = validate_static(repo, baseline_config, ledger)
+            enforcement_compiled = validate_static(
+                repo,
+                baseline_config,
+                ledger,
+                require_architecture_records=False,
+            )
 
     branch = branch_for_run(repo, args.branch_name)
     paths = changed_paths(
