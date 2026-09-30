@@ -1,0 +1,215 @@
+# Action-Gap Gauge Stability Audit
+
+Status: **LOCAL LEAN PASS / OPTIMAL-POLICY NEAR-GOA GAUGE STABILITY ESTABLISHED / UNCOUNTED**
+
+Module:
+
+`UEOT/V3/Compression/ActionGapGaugeStability.lean`
+
+This lane closes the policy-identity boundary left deliberately open by the
+approximate semantic and fixed-policy near-GOA gauge theorems.
+
+Small model error does not in general preserve an argmax.  The missing datum is
+an action-separation margin.  This module derives the relevant optimal-Q error
+radius from existing P-QUO-02 certificates and states an explicit strict-gap
+condition under which the greedy selector cannot change.
+
+## 1. Optimal-Q radius from existing P-QUO machinery
+
+For one approximate quotient `Q`, the existing actionwise micro/macro
+comparison gives a one-step radius `delta_Q`, while P-QUO-02 gives
+
+\[
+\|V^*_{micro}-V^*_{macro}\circ f\|_\infty\le D_Q,
+\qquad
+D_Q=\frac{\delta_Q}{1-\beta}.
+\]
+
+Using the `beta`-Lipschitz property of action values in their continuation
+value, `macroOptimalQ_micro_le` proves
+
+\[
+\boxed{
+|Q^*_{macro}(f(x),a)-Q^*_{micro}(x,a)|\le D_Q.
+}
+\]
+
+The algebra closes exactly because
+
+\[
+\delta_Q+\beta D_Q=D_Q.
+\]
+
+No new approximation constant is introduced.
+
+## 2. Cross-quotient optimal-Q stability
+
+For two approximate quotients `Q,R` of the same literal micro model, with exact
+state gauge `e`, `macroOptimalQ_relabel_le` uses the common micro optimal
+action-value as the anchor and proves
+
+\[
+\boxed{
+|Q_Q^*(s,a)-Q_R^*(e(s),a)|
+\le
+D_Q+D_R.
+}
+\]
+
+This is the missing quantitative input for policy stability.
+
+## 3. Strict action-gap criterion
+
+Let
+
+\[
+\eta=D_Q+D_R.
+\]
+
+Assume the source canonical greedy action `a*_Q(s)` satisfies, for every other
+action `a`,
+
+\[
+\boxed{
+Q_Q^*(s,a_Q^*)-Q_Q^*(s,a)>2\eta.
+}
+\]
+
+Then `transportedSourceGreedy_strictlyOptimal` proves that the same action is
+strictly better than every competitor in the target model at `e(s)`.
+
+Consequently:
+
+- `targetGreedy_eq_transportedSourceGreedy` proves the pointwise equality
+  \[
+  a_R^*(e(s))=a_Q^*(s);
+  \]
+- `targetGreedy_eq_transportSelector` proves the selector identity
+  \[
+  a_R^*=e_*a_Q^*.
+  \]
+
+Thus the theorem does not infer policy identity merely from small error: it
+derives it from small error **relative to an explicit decision margin**.
+
+## 4. Optimal-policy near-GOA theorem
+
+Assume additionally that the source canonical greedy closed loop has Dobrushin
+coefficient
+
+\[
+\alpha_Q<1.
+\]
+
+The preceding fixed-policy theorem already gives a stationary perturbation tube
+for the transported source selector.  The action-gap result identifies that
+transported selector with the target's own canonical greedy selector.
+
+`optimalPolicy_near_goa_gauge_stability` therefore proves:
+
+1. source and target canonical greedy policies agree modulo the quotient gauge;
+2. the source greedy closed loop has one unique invariant law `mu*_Q`;
+3. every invariant law `mu_R` of the target **canonical greedy** closed loop
+   obeys
+
+\[
+\boxed{
+D_{TV}(e_\#\mu_Q^*,\mu_R)
+\le
+\frac{\epsilon_p^Q+\epsilon_p^R}{1-\alpha_Q}.
+}
+\]
+
+This upgrades the previous result from
+
+\[
+\text{same transported policy}\to\text{near-GOA}
+\]
+
+to
+
+\[
+\boxed{
+\text{approximately gauge-aligned optimal control}
+\to
+\text{optimal-policy near-GOA stability}.
+}
+\]
+
+## 5. Boundaries
+
+### Strict gap is sufficient, not necessary
+
+The `2(D_Q+D_R)` threshold is a robust worst-case certificate.  It need not be
+sharp, and policy stability may hold with a smaller actual gap.
+
+### Ties remain a genuine boundary
+
+If the source optimum is tied or nearly tied, an arbitrarily small semantic
+perturbation can change the canonical selected action.  The theorem correctly
+makes no policy-identity claim there.
+
+### Uniform finite action type
+
+The lane still uses one finite action type on every quotient state.  A
+state-dependent action family needs a separate admissibility-gauge theorem.
+
+### Exact fibre gauge and common micro anchor remain essential
+
+The present theorem does not convert a nonzero representation-gauge mismatch
+into semantic closeness.  It begins only after exact fibre alignment and the
+two approximate semantic certificates are available.
+
+### Dobrushin contraction is a sufficient quantitative GOA route
+
+The final stationary tube uses `alpha_Q < 1`.  This does not reduce general GOA
+structure to unique contractive invariant laws; recurrent-class and occupation
+set versions remain separate future work.
+
+## 6. Scientific disposition
+
+Recommended classification:
+
+**ACTION-GAP / OPTIMAL-POLICY GOA GAUGE STABILITY: PASS.**
+
+**COUNTED GENERATORS: unchanged at four.**
+
+The important new chain is now
+
+\[
+\boxed{
+\text{exact representation gauge}
+\to
+\text{approximate semantic gauge}
+\to
+\text{optimal-Q stability}
+\to
+\text{action-gap policy lock}
+\to
+\text{optimal-policy near-GOA stability}.
+}
+\]
+
+This is a new out-of-sample bridge theorem family generated by the existing
+compression architecture; it is not evidence for adding or deleting a counted
+generator.
+
+## 7. Next pressure test
+
+Reconnect the moving-encoder lane.  Once weighted representation gauge
+convergence forces eventual exact `SameFibers`, combine the tail gauge lock with
+vanishing reward/transition defect envelopes.  The target should be an
+eventual/tail theorem of the form
+
+\[
+\text{moving representation}
+\to
+\text{eventual exact gauge lock}
+\to
+\text{semantic error}\to0
+\to
+\text{near-GOA radius}\to0,
+\]
+
+with a separate eventual action-gap condition if literal greedy-policy lock is
+also desired.
