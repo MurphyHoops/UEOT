@@ -458,8 +458,13 @@ At the current verified checkpoint:
   `ApproximateGoaTracking.lean`: P-QUO-02 near-optimal control + M-TC
   time-varying defect transport + M-OI reference invariant existence + M-CF
   near-GOA stability;
-- **next research target:** derive those local reward/transition/policy defect
-  certificates from an approximate history-level sufficient-state encoder.
+- **approximate history encoder:** local PASS; within-fibre reward and encoded
+  transition-TV defects now construct the `ApproxControlQuotient` itself, so
+  the quantitative chain starts at representation defect rather than an
+  independently supplied macro approximation certificate;
+- **next research target:** zero/vanishing-fibre-defect closure, testing whether
+  the approximate representation lane converges back to exact M-QD/control
+  descent without introducing a new independent generator.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
