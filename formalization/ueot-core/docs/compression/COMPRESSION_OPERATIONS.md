@@ -299,6 +299,18 @@ they are intended to authorize a new surface: first merge the policy change
 under the old policy, then use the new permission in a later PR. This prevents
 candidate-policy self-authorization.
 
+The immutable executor for that rule is
+`.github/workflows/ueot-compression-research-policy.yml`. It uses
+`pull_request_target`, checks out only the base SHA, and executes the
+base-version validator while reading the candidate only as Git diff data. Never
+change this workflow to checkout or execute PR-head code under
+`pull_request_target`.
+
+The initial governance PR #198 is the sole bootstrap because its base predates
+this workflow/registry. Its bootstrap allowlist is intentionally explicit and
+must contain governance artifacts only; after merge, all later changes are
+authorized by the already-merged base policy.
+
 Every mutating post-FINAL PR must state its track and counted-core impact, pass
 exact-head CI, request Codex exact-head review, and use the recorded fallback
 only after an explicit quota refusal.

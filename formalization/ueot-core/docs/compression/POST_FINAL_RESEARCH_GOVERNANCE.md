@@ -146,6 +146,21 @@ permissions and immediately use the wider candidate policy. The initial #198
 bootstrap is the one case where no base registry exists yet; after it lands,
 subsequent permission changes take effect only for later PRs.
 
+The authorization executor is also base-owned.  The workflow
+`.github/workflows/ueot-compression-research-policy.yml` runs on
+`pull_request_target`, checks out the PR **base SHA**, fetches the candidate
+commit only as inert Git data, and executes the validator from that base
+checkout.  Candidate workflow or validator code is therefore never executed by
+the authorization job.  A PR that changes the validator, registry, or ordinary
+Compression workflow remains subject to the previous main policy for that same
+PR.
+
+PR #198 is the one bootstrap exception because no immutable research-policy
+workflow exists on its base commit.  Its bootstrap is restricted to the
+explicit governance allowlist, contains no Track S/H theorem mutation, and
+requires exact-head CI plus independent Codex review before merge.  Once #198
+lands, there is no second bootstrap path.
+
 ## 6. Concurrency
 
 At most **two mutating post-FINAL research lanes** may be active at once:

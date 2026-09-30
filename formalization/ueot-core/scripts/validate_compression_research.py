@@ -99,7 +99,10 @@ def branch_for_run(repo: Path, explicit: str | None) -> str:
 
 
 def changed_paths(
-    repo: Path, baseline_ref: str | None, changed_path_file: str | None
+    repo: Path,
+    baseline_ref: str | None,
+    changed_path_file: str | None,
+    candidate_ref: str,
 ) -> list[str]:
     if changed_path_file:
         raw = Path(changed_path_file).read_text(encoding="utf-8")
@@ -107,7 +110,7 @@ def changed_paths(
     if not baseline_ref:
         return []
     try:
-        raw = git(repo, "diff", "--name-only", f"{baseline_ref}...HEAD")
+        raw = git(repo, "diff", "--name-only", f"{baseline_ref}...{candidate_ref}")
     except subprocess.CalledProcessError as exc:
         fail(f"could not compute changed paths against {baseline_ref}: {exc}")
     return sorted({line.strip() for line in raw.splitlines() if line.strip()})
@@ -243,12 +246,18 @@ def validate_live_concurrency(
 
 
 def changed_lines_for_path(repo: Path, baseline_ref: str, path: str) -> list[str]:
+    return changed_lines_for_path_between(repo, baseline_ref, "HEAD", path)
+
+
+def changed_lines_for_path_between(
+    repo: Path, baseline_ref: str, candidate_ref: str, path: str
+) -> list[str]:
     try:
         patch = git(
             repo,
             "diff",
             "--unified=0",
-            f"{baseline_ref}...HEAD",
+            f"{baseline_ref}...{candidate_ref}",
             "--",
             path,
         )
@@ -264,14 +273,20 @@ def changed_lines_for_path(repo: Path, baseline_ref: str, path: str) -> list[str
 
 
 def validate_compression_root_import_change(
-    repo: Path, baseline_ref: str | None, track_id: str, paths: list[str]
+    repo: Path,
+    baseline_ref: str | None,
+    candidate_ref: str,
+    track_id: str,
+    paths: list[str],
 ) -> None:
     root = "formalization/ueot-core/UEOT/V3/Compression.lean"
     if root not in paths:
         return
     if not baseline_ref:
         fail("Compression.lean ownership validation requires a baseline ref")
-    changed = changed_lines_for_path(repo, baseline_ref, root)
+    changed = changed_lines_for_path_between(
+        repo, baseline_ref, candidate_ref, root
+    )
     if track_id == "S":
         for line in changed:
             if not line.startswith("import UEOT.V3.Compression."):
@@ -381,6 +396,7 @@ def validate_static(repo: Path, config: dict, ledger: dict) -> dict[str, list[re
 def validate_track_paths(
     repo: Path,
     baseline_ref: str | None,
+    candidate_ref: str,
     branch: str,
     paths: list[str],
     config: dict,
@@ -413,7 +429,7 @@ def validate_track_paths(
                 "registered governance surface"
             )
         validate_compression_root_import_change(
-            repo, baseline_ref, "GOVERNANCE", paths
+            repo, baseline_ref, candidate_ref, "GOVERNANCE", paths
         )
         return
 
@@ -469,13 +485,16 @@ def validate_track_paths(
                 "post-FINAL Compression research surface"
             )
 
-    validate_compression_root_import_change(repo, baseline_ref, track_id, paths)
+    validate_compression_root_import_change(
+        repo, baseline_ref, candidate_ref, track_id, paths
+    )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
     parser.add_argument("--baseline-ref")
+    parser.add_argument("--candidate-ref", default="HEAD")
     parser.add_argument("--branch-name")
     parser.add_argument("--changed-path-file")
     parser.add_argument("--live-branches-file")
@@ -496,7 +515,9 @@ def main() -> None:
             enforcement_compiled = validate_static(repo, baseline_config, ledger)
 
     branch = branch_for_run(repo, args.branch_name)
-    paths = changed_paths(repo, args.baseline_ref, args.changed_path_file)
+    paths = changed_paths(
+        repo, args.baseline_ref, args.changed_path_file, args.candidate_ref
+    )
     governed_changes = [
         path for path in paths if is_governed_path(path, enforcement_config)
     ]
@@ -540,6 +561,7 @@ def main() -> None:
     validate_track_paths(
         repo,
         args.baseline_ref,
+        args.candidate_ref,
         branch,
         paths,
         enforcement_config,
