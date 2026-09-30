@@ -196,7 +196,7 @@ while
 This prevents representation equivalence from being confused with genuine
 dynamical reorganization.
 
-## 9. Quantitative discontinuity at a recurrent merge
+## 9. Lower/Hausdorff-type discontinuity witness at a recurrent merge
 
 The exact support-face envelope does **not** imply quantitative stationary-law
 continuity across a topology bifurcation.  The module now contains an explicit
@@ -252,20 +252,35 @@ changes by exactly `eps`.  Consequently
 This is a genuine recurrent-topology merge, not a mere relabeling or a
 one-sided transientization example.
 
-The scientific consequence is sharp: **kernel closeness alone cannot imply a
-stationary-law bound that vanishes with the kernel error across recurrent
-topology changes.**  Any positive continuity theorem must add assumptions that
-exclude this bifurcation mechanism, such as support/topology lock, a uniform
-ergodicity margin, or another certificate strong enough to prevent a spectral
-or recurrent-structure collapse.
+The scientific consequence must be stated directionally.  The theorem proves
+that **kernel closeness alone cannot force every prescribed source stationary
+law to be approximated by target invariant laws with a radius vanishing with
+kernel error**.  The witness `delta_0` remains TV-distance `1/2` from every
+target invariant law, even as the kernel perturbation tends to zero.  This
+rules out lower/Hausdorff-type continuity claims, or any perturbation theorem
+that must approximate each source invariant law across the merge.
+
+It does **not** show that all stationary-law continuity notions fail.  In this
+same example the uniform law `(1/2,1/2)` is invariant for the identity source
+kernel and for every stochastic symmetric target kernel above, so a continuous
+stationary selection exists.  Nor does the counterexample refute the usual
+upper-semicontinuity direction for finite-state invariant-law sets.
+
+Therefore any positive theorem intended to track an arbitrary prescribed
+source stationary law through such a bifurcation must add assumptions that
+exclude this mechanism, such as support/topology lock, a uniform ergodicity
+margin, or another certificate strong enough to preserve the relevant branch
+of stationary semantics.
 
 ## 10. Boundaries retained
 
 - The current theorem proves **existence**, not uniqueness, of a target
   carrier-supported invariant law.
-- It does not claim continuity of stationary laws through a merge/split
-  bifurcation; the two-state theorem proves such continuity is false in
-  general.
+- It does not claim full continuity of the invariant-law correspondence through
+  a merge/split bifurcation.  The two-state theorem specifically disproves the
+  lower/Hausdorff-type direction needed to approximate every prescribed source
+  invariant law; it does not disprove existence of a continuous stationary
+  selection or upper-semicontinuity of the invariant-law set.
 - It does not yet characterize the strongest additional assumptions under
   which a positive set-distance theorem can be recovered.
 - It now localizes every Cesaro subsequential limit to the correct target
@@ -317,7 +332,8 @@ So topology-changing semantics now has two exact, label-free layers:
 }
 \]
 
-The quantitative pressure test is now answered negatively in the unrestricted
+The quantitative pressure test is now answered negatively for the
+**prescribed-source-law / lower-Hausdorff direction** in the unrestricted
 topology-changing regime.  The next research question is therefore narrower:
 
 > What is the weakest explicit certificate that rules out the two-state
