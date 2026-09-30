@@ -14,6 +14,8 @@ import os
 import re
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 
@@ -94,6 +96,166 @@ def matches_any(branch: str, patterns: list[re.Pattern[str]]) -> bool:
     return any(pattern.fullmatch(branch) for pattern in patterns)
 
 
+def string_list(value: object, context: str, *, allow_empty: bool = False) -> list[str]:
+    if not isinstance(value, list):
+        fail(f"{context} must be a list")
+    if not allow_empty and not value:
+        fail(f"{context} must be nonempty")
+    if not all(isinstance(item, str) and item for item in value):
+        fail(f"{context} entries must be nonempty strings")
+    return value
+
+
+def is_governed_path(path: str, config: dict) -> bool:
+    exact = set(string_list(config.get("governed_exact_paths"), "governed_exact_paths"))
+    prefixes = tuple(
+        string_list(config.get("governed_path_prefixes"), "governed_path_prefixes")
+    )
+    return path in exact or any(path.startswith(prefix) for prefix in prefixes)
+
+
+def track_owned_path(path: str, track: dict) -> bool:
+    exact = set(track.get("allowed_exact_paths", []))
+    prefixes = tuple(track.get("allowed_path_prefixes", []))
+    return path in exact or any(path.startswith(prefix) for prefix in prefixes)
+
+
+def repository_slug(repo: Path) -> str:
+    env_value = os.environ.get("GITHUB_REPOSITORY")
+    if env_value and "/" in env_value:
+        return env_value
+    remote = git(repo, "remote", "get-url", "origin")
+    match = re.search(r"github\.com[/:]([^/]+)/([^/]+?)(?:\.git)?$", remote)
+    if not match:
+        fail(f"could not infer GitHub repository from origin URL: {remote}")
+    return f"{match.group(1)}/{match.group(2)}"
+
+
+def github_get_json(repo_slug: str, endpoint: str, token: str) -> object:
+    request = urllib.request.Request(
+        f"https://api.github.com/repos/{repo_slug}{endpoint}",
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "ueot-compression-research-validator",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError) as exc:
+        fail(f"GitHub live-state query failed for {endpoint}: {exc}")
+
+
+def github_branch_names(repo_slug: str, token: str) -> list[str]:
+    names: list[str] = []
+    page = 1
+    while True:
+        payload = github_get_json(
+            repo_slug, f"/branches?per_page=100&page={page}", token
+        )
+        if not isinstance(payload, list):
+            fail("GitHub branches endpoint returned a non-list payload")
+        page_names = [
+            item.get("name")
+            for item in payload
+            if isinstance(item, dict) and isinstance(item.get("name"), str)
+        ]
+        names.extend(page_names)
+        if len(payload) < 100:
+            break
+        page += 1
+    return names
+
+
+def associated_pr_branch(repo_slug: str, sha: str, token: str) -> str | None:
+    payload = github_get_json(repo_slug, f"/commits/{sha}/pulls?per_page=20", token)
+    if not isinstance(payload, list):
+        fail("GitHub commit/pulls endpoint returned a non-list payload")
+    matches: list[str] = []
+    for item in payload:
+        if not isinstance(item, dict):
+            continue
+        head = item.get("head")
+        if not isinstance(head, dict):
+            continue
+        ref = head.get("ref")
+        if not isinstance(ref, str):
+            continue
+        if item.get("merge_commit_sha") == sha or item.get("merged_at"):
+            matches.append(ref)
+    unique = sorted(set(matches))
+    if len(unique) > 1:
+        fail(f"main push commit {sha} is ambiguously associated with PR branches {unique}")
+    return unique[0] if unique else None
+
+
+def validate_live_concurrency(
+    branch_names: list[str],
+    compiled: dict[str, list[re.Pattern[str]]],
+) -> None:
+    for track_id in ("S", "H"):
+        active = sorted(
+            branch
+            for branch in branch_names
+            if matches_any(branch, compiled[track_id])
+        )
+        if len(active) > 1:
+            fail(
+                f"Track {track_id} has {len(active)} active remote branches; "
+                f"only one is allowed: {active}"
+            )
+
+
+def changed_lines_for_path(repo: Path, baseline_ref: str, path: str) -> list[str]:
+    try:
+        patch = git(
+            repo,
+            "diff",
+            "--unified=0",
+            f"{baseline_ref}...HEAD",
+            "--",
+            path,
+        )
+    except subprocess.CalledProcessError as exc:
+        fail(f"could not inspect patch for {path}: {exc}")
+    changed: list[str] = []
+    for line in patch.splitlines():
+        if line.startswith(("+++", "---", "@@")):
+            continue
+        if line.startswith(("+", "-")):
+            changed.append(line[1:].strip())
+    return changed
+
+
+def validate_compression_root_import_change(
+    repo: Path, baseline_ref: str | None, track_id: str, paths: list[str]
+) -> None:
+    root = "formalization/ueot-core/UEOT/V3/Compression.lean"
+    if root not in paths:
+        return
+    if not baseline_ref:
+        fail("Compression.lean ownership validation requires a baseline ref")
+    changed = changed_lines_for_path(repo, baseline_ref, root)
+    if track_id == "S":
+        for line in changed:
+            if not line.startswith("import UEOT.V3.Compression."):
+                fail("Track S may change Compression.lean imports only")
+            if line == "import UEOT.V3.Compression.Hierarchy":
+                fail("Track S may not add/remove the Track H root import")
+    elif track_id == "GOVERNANCE":
+        if not changed or any(
+            line != "import UEOT.V3.Compression.Hierarchy" for line in changed
+        ):
+            fail(
+                "governance may modify Compression.lean only to add/remove the "
+                "public Hierarchy root import"
+            )
+    else:
+        fail(f"Track {track_id} may not modify Compression.lean")
+
+
 def validate_static(repo: Path, config: dict, ledger: dict) -> dict[str, list[re.Pattern[str]]]:
     if config.get("schema_version") != 1:
         fail("research-track governance schema_version must be 1")
@@ -107,6 +269,8 @@ def validate_static(repo: Path, config: dict, ledger: dict) -> dict[str, list[re
         fail("cross-track dependencies must remain main-only")
     if config.get("cross_track_integration_gate") not in {"closed", "open"}:
         fail("cross_track_integration_gate must be closed or open")
+    string_list(config.get("governed_path_prefixes"), "governed_path_prefixes")
+    string_list(config.get("governed_exact_paths"), "governed_exact_paths")
 
     for field in (
         "mission_contract",
@@ -137,6 +301,22 @@ def validate_static(repo: Path, config: dict, ledger: dict) -> dict[str, list[re
             track.get("branch_patterns"), f"Track {track_id}"
         )
 
+    governance = config.get("governance")
+    if not isinstance(governance, dict):
+        fail("research-track governance must define governance branch ownership")
+    compiled["GOVERNANCE"] = compile_patterns(
+        governance.get("branch_patterns"), "governance"
+    )
+    string_list(
+        governance.get("allowed_path_prefixes"),
+        "governance.allowed_path_prefixes",
+        allow_empty=True,
+    )
+    string_list(
+        governance.get("allowed_exact_paths"),
+        "governance.allowed_exact_paths",
+    )
+
     h = tracks["H"]
     if h.get("initial_gate") != "H0-H3":
         fail("Track H must begin at H0-H3")
@@ -165,6 +345,8 @@ def validate_static(repo: Path, config: dict, ledger: dict) -> dict[str, list[re
 
 
 def validate_track_paths(
+    repo: Path,
+    baseline_ref: str | None,
     branch: str,
     paths: list[str],
     config: dict,
@@ -175,9 +357,38 @@ def validate_track_paths(
         for track_id in ("S", "H")
         if matches_any(branch, compiled[track_id])
     ]
+    governance_match = matches_any(branch, compiled["GOVERNANCE"])
     if len(matches) > 1:
         fail(f"branch {branch!r} ambiguously matches multiple research tracks")
+    if matches and governance_match:
+        fail(f"branch {branch!r} matches both research and governance patterns")
+
+    governed_changes = [path for path in paths if is_governed_path(path, config)]
+
+    if governance_match:
+        governance = config["governance"]
+        allowed_exact = set(governance.get("allowed_exact_paths", []))
+        allowed_prefixes = tuple(governance.get("allowed_path_prefixes", []))
+        for path in governed_changes:
+            if path in allowed_exact or any(
+                path.startswith(prefix) for prefix in allowed_prefixes
+            ):
+                continue
+            fail(
+                f"governance branch {branch!r} modified {path}, outside the "
+                "registered governance surface"
+            )
+        validate_compression_root_import_change(
+            repo, baseline_ref, "GOVERNANCE", paths
+        )
+        return
+
     if not matches:
+        if governed_changes:
+            fail(
+                f"unclassified branch {branch!r} modified governed Compression "
+                f"paths: {governed_changes}"
+            )
         return
 
     track_id = matches[0]
@@ -206,6 +417,23 @@ def validate_track_paths(
                 f"Track H branch {branch!r} modified {path}, outside its "
                 "owned Hierarchy namespace"
             )
+    elif track_id == "S":
+        allowed_prefixes = (
+            "formalization/ueot-core/UEOT/V3/Compression/",
+            "formalization/ueot-core/docs/compression/",
+        )
+        allowed_exact = {"formalization/ueot-core/UEOT/V3/Compression.lean"}
+        for path in paths:
+            if path in allowed_exact or any(
+                path.startswith(prefix) for prefix in allowed_prefixes
+            ):
+                continue
+            fail(
+                f"Track S branch {branch!r} modified {path}, outside the "
+                "post-FINAL Compression research surface"
+            )
+
+    validate_compression_root_import_change(repo, baseline_ref, track_id, paths)
 
 
 def main() -> None:
@@ -214,6 +442,9 @@ def main() -> None:
     parser.add_argument("--baseline-ref")
     parser.add_argument("--branch-name")
     parser.add_argument("--changed-path-file")
+    parser.add_argument("--live-branches-file")
+    parser.add_argument("--associated-branch")
+    parser.add_argument("--verify-live-state", action="store_true")
     args = parser.parse_args()
 
     repo = Path(args.repo_root).resolve()
@@ -222,7 +453,45 @@ def main() -> None:
     compiled = validate_static(repo, config, ledger)
     branch = branch_for_run(repo, args.branch_name)
     paths = changed_paths(repo, args.baseline_ref, args.changed_path_file)
-    validate_track_paths(branch, paths, config, compiled)
+    governed_changes = [path for path in paths if is_governed_path(path, config)]
+
+    repo_slug: str | None = None
+    token: str | None = None
+    if args.verify_live_state:
+        token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+        if not token:
+            fail("--verify-live-state requires GH_TOKEN or GITHUB_TOKEN")
+        repo_slug = repository_slug(repo)
+
+    if branch == "main" and governed_changes:
+        associated = args.associated_branch
+        if associated is None and args.verify_live_state:
+            sha = os.environ.get("GITHUB_SHA") or git(repo, "rev-parse", "HEAD")
+            assert repo_slug is not None and token is not None
+            associated = associated_pr_branch(repo_slug, sha, token)
+        if not associated:
+            fail(
+                "governed Compression changes on main require an associated "
+                "classified PR branch; direct-main research mutation is not allowed"
+            )
+        branch = associated
+
+    if args.live_branches_file:
+        branch_names = [
+            line.strip()
+            for line in Path(args.live_branches_file)
+            .read_text(encoding="utf-8")
+            .splitlines()
+            if line.strip()
+        ]
+        validate_live_concurrency(branch_names, compiled)
+    elif args.verify_live_state:
+        assert repo_slug is not None and token is not None
+        validate_live_concurrency(github_branch_names(repo_slug, token), compiled)
+
+    validate_track_paths(
+        repo, args.baseline_ref, branch, paths, config, compiled
+    )
 
     print(
         "Compression research-track governance: PASS "

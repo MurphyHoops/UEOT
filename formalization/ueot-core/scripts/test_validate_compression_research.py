@@ -10,8 +10,10 @@ import tempfile
 from pathlib import Path
 
 
-def validator(repo: Path, branch: str, changed_file: Path) -> list[str]:
-    return [
+def validator(
+    repo: Path, branch: str, changed_file: Path, extra_args: list[str] | None = None
+) -> list[str]:
+    command = [
         sys.executable,
         str(repo / "formalization/ueot-core/scripts/validate_compression_research.py"),
         "--repo-root",
@@ -21,6 +23,9 @@ def validator(repo: Path, branch: str, changed_file: Path) -> list[str]:
         "--changed-path-file",
         str(changed_file),
     ]
+    if extra_args:
+        command.extend(extra_args)
+    return command
 
 
 def run_case(
@@ -29,13 +34,14 @@ def run_case(
     paths: list[str],
     should_pass: bool,
     expected: str,
+    extra_args: list[str] | None = None,
 ) -> None:
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
         handle.write("\n".join(paths) + "\n")
         path_file = Path(handle.name)
     try:
         completed = subprocess.run(
-            validator(repo, branch, path_file),
+            validator(repo, branch, path_file, extra_args),
             text=True,
             capture_output=True,
             check=False,
@@ -116,6 +122,70 @@ def main() -> None:
         "",
     )
     print("ops-governance-exemption: PASS")
+
+    run_case(
+        repo,
+        "compression/assembly-audit",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/"
+            "AssemblyAudit.lean"
+        ],
+        False,
+        "unclassified branch",
+    )
+    print("unclassified-compression-rejected: PASS")
+
+    run_case(
+        repo,
+        "ops/compression-research-governance",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/"
+            "TopologyChangingGoaSemantics.lean"
+        ],
+        False,
+        "outside the registered governance surface",
+    )
+    print("ops-theorem-mutation-rejected: PASS")
+
+    run_case(
+        repo,
+        "compression/hierarchy-inventory",
+        ["formalization/ueot-core/UEOT/V3/Compression.lean"],
+        False,
+        "outside its owned Hierarchy namespace",
+    )
+    print("hierarchy-global-root-rejected: PASS")
+
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
+        handle.write(
+            "compression/topology-goa-residual-inverse-stability\n"
+            "compression/topology-goa-spectral-isolation\n"
+        )
+        live_file = Path(handle.name)
+    try:
+        run_case(
+            repo,
+            "ops/compression-research-governance",
+            [],
+            False,
+            "Track S has 2 active remote branches",
+            ["--live-branches-file", str(live_file)],
+        )
+    finally:
+        live_file.unlink(missing_ok=True)
+    print("per-track-live-concurrency: PASS")
+
+    run_case(
+        repo,
+        "main",
+        [
+            "formalization/ueot-core/docs/compression/hierarchy/"
+            "HIERARCHY_INVENTORY.md"
+        ],
+        False,
+        "direct-main research mutation is not allowed",
+    )
+    print("direct-main-research-rejected: PASS")
 
 
 if __name__ == "__main__":

@@ -9,6 +9,35 @@
   "max_active_mutating_tracks": 2,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "closed",
+  "governed_path_prefixes": [
+    "formalization/ueot-core/UEOT/V3/Compression/",
+    "formalization/ueot-core/docs/compression/",
+    "formalization/ueot-core/scripts/validate_compression",
+    ".github/workflows/ueot-core-compression.yml"
+  ],
+  "governed_exact_paths": [
+    "formalization/ueot-core/UEOT/V3/Compression.lean"
+  ],
+  "governance": {
+    "branch_patterns": [
+      "^ops/compression-.*$"
+    ],
+    "allowed_path_prefixes": [
+      "formalization/ueot-core/docs/compression/hierarchy/"
+    ],
+    "allowed_exact_paths": [
+      ".github/workflows/ueot-core-compression.yml",
+      "formalization/ueot-core/UEOT/V3/Compression.lean",
+      "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+      "formalization/ueot-core/docs/compression/BRANCH_RETIREMENT_2026-10-01.md",
+      "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+      "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+      "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+      "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+      "formalization/ueot-core/scripts/test_validate_compression_research.py",
+      "formalization/ueot-core/scripts/validate_compression_research.py"
+    ]
+  },
   "tracks": {
     "S": {
       "title": "Structural Defect / Long-Run Stability",
@@ -33,7 +62,18 @@
         "formalization/ueot-core/docs/compression/hierarchy/"
       ],
       "forbidden_exact_paths": [
-        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean"
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+        "formalization/ueot-core/scripts/validate_compression.py",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        ".github/workflows/ueot-core-compression.yml"
       ]
     },
     "H": {
@@ -54,8 +94,7 @@
         "formalization/ueot-core/docs/compression/hierarchy/"
       ],
       "allowed_exact_paths": [
-        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
-        "formalization/ueot-core/UEOT/V3/Compression.lean"
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean"
       ],
       "forbidden_exact_paths": [
         "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",

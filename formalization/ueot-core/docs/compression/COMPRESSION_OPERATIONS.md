@@ -283,12 +283,14 @@ Branch naming:
 
 Track H implementation and documentation live only under
 `UEOT/V3/Compression/Hierarchy/` and `docs/compression/hierarchy/`, plus
-the public `Hierarchy.lean` root and a root-import edit in
-`Compression.lean` when needed.
+the public `Hierarchy.lean` root. The global `Compression.lean` root already
+imports `Hierarchy.lean` and is not Track H-owned.
 
 The Compression Guard runs
 `scripts/validate_compression_research.py` and rejects cross-track path
-ownership violations or direct Track H mutation of counted/governance files.
+ownership violations, unclassified governed branches, duplicate live remote
+branches within one track, direct-main research mutation without an associated
+classified PR, or Track H mutation of counted/governance/global-root files.
 
 Every mutating post-FINAL PR must state its track and counted-core impact, pass
 exact-head CI, request Codex exact-head review, and use the recorded fallback

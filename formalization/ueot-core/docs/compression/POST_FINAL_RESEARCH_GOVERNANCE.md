@@ -119,7 +119,11 @@ and the optional root import:
 
     formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean
 
-Compression.lean may be edited only to add/remove the public Hierarchy import.
+The global `Compression.lean` root permanently imports `Hierarchy.lean` from
+the governance layer. Track H never edits `Compression.lean`; it wires new
+Hierarchy modules only through its owned `Hierarchy.lean` root. Track S may
+edit the global root only for non-H Compression imports, and the validator
+protects the Hierarchy import itself.
 
 On compression/hierarchy-* branches, direct edits to the frozen ledger,
 coverage, Mission Contract, ablation record, post-FINAL governance, workflow,
@@ -129,7 +133,10 @@ ops/compression-* branch.
 Track S branches are forbidden from editing the Track H namespace. They may
 consume merged Track H interfaces from main later.
 
-The Compression Guard machine-checks these ownership rules.
+The Compression Guard machine-checks these ownership rules, rejects
+unclassified branches touching governed Compression paths, resolves normal
+`main` merge pushes back to their associated PR branch, and checks live GitHub
+branch state so each research track has at most one remote mutating branch.
 
 ## 6. Concurrency
 

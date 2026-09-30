@@ -58,7 +58,8 @@ jobs:
           python3 formalization/ueot-core/scripts/validate_compression_research.py \
             --repo-root . \
             --baseline-ref "$BASELINE_REF" \
-            --branch-name "${HEAD_REF:-$REF_NAME}"
+            --branch-name "${HEAD_REF:-$REF_NAME}" \
+            --verify-live-state
 
       - name: Regression-test mission completion gates
         env:
