@@ -202,6 +202,103 @@ theorem existsUnique_descend_of_weighted_transport_limit
       (fiber_dist_tendsto_zero_of_weighted_transport
         q gseq step L ε hcontract hlocal hL0 hvanish))
 
+/-- Essential M-TC -> M-OI composition.
+
+For each time label and observable, a weighted M-TC certificate controls the
+defect between the evolved observable and the base observable.  If the exact
+derived certificate envelope vanishes, M-OI's continuous-observable theorem
+turns that asymptotic defect into invariance of the limiting state.
+
+This theorem is deliberately real-valued at the observable layer because both
+counted M-OI source families use real separating observables.  It does not claim
+that M-TC alone implies decay: the asymptotic envelope hypothesis remains
+explicit. -/
+theorem invariant_of_weighted_observable_transport
+    {State : Type*} [TopologicalSpace State]
+    {Time : Type*} {Obs : Type*}
+    (observe : Obs → State → ℝ)
+    (advance : Time → State → State)
+    (seq : ℕ → State) (limit : State)
+    (hseq : Tendsto seq atTop (𝓝 limit))
+    (hObserve : ∀ o, Continuous (observe o))
+    (hAdvanceObserve : ∀ t o, Continuous (fun x => observe o (advance t x)))
+    (hseparates :
+      ∀ x y : State, (∀ o, observe o x = observe o y) → x = y)
+    (step : Time → Obs → ℕ → ℝ → ℝ)
+    (L ε : Time → Obs → ℕ → ℝ)
+    (hcontract :
+      ∀ t o n,
+        dist
+            (observe o (advance t (seq (n + 1))))
+            (step t o n (observe o (seq n))) ≤
+          L t o n *
+            dist
+              (observe o (advance t (seq n)))
+              (observe o (seq n)))
+    (hlocal :
+      ∀ t o n,
+        dist
+            (step t o n (observe o (seq n)))
+            (observe o (seq (n + 1))) ≤
+          ε t o n)
+    (hL0 : ∀ t o n, 0 ≤ L t o n)
+    (hvanish :
+      ∀ t o,
+        Tendsto
+          (fun n =>
+            (∏ j ∈ Finset.range n, L t o j) *
+                dist
+                  (observe o (advance t (seq 0)))
+                  (observe o (seq 0)) +
+              ∑ k ∈ Finset.range n,
+                ε t o k *
+                  ∏ j ∈ Finset.Ico (k + 1) n, L t o j)
+          atTop (𝓝 0)) :
+    ∀ t, advance t limit = limit := by
+  apply OccupationLimitInvariance.invariant_of_continuous_observable_residual
+    observe advance seq limit hseq hObserve hAdvanceObserve hseparates
+  intro t o
+  have hupper :
+      ∀ n,
+        dist
+            (observe o (advance t (seq n)))
+            (observe o (seq n)) ≤
+          (∏ j ∈ Finset.range n, L t o j) *
+              dist
+                (observe o (advance t (seq 0)))
+                (observe o (seq 0)) +
+            ∑ k ∈ Finset.range n,
+              ε t o k *
+                ∏ j ∈ Finset.Ico (k + 1) n, L t o j := by
+    intro n
+    exact TransportCertificate.weighted_chain_bound
+      (A := fun _ => ℝ)
+      (defect := fun _ => dist)
+      (ideal := fun m => observe o (advance t (seq m)))
+      (actual := fun m => observe o (seq m))
+      (step := step t o)
+      (L := L t o)
+      (ε := ε t o)
+      (fun m => hcontract t o m)
+      (fun m => dist_triangle _ _ _)
+      (fun m => hlocal t o m)
+      (fun m => hL0 t o m)
+      n
+  have hdist :
+      Tendsto
+        (fun n =>
+          dist
+            (observe o (advance t (seq n)))
+            (observe o (seq n)))
+        atTop (𝓝 0) := by
+    exact tendsto_of_tendsto_of_tendsto_of_le_of_le'
+      tendsto_const_nhds
+      (hvanish t o)
+      (Eventually.of_forall fun n => dist_nonneg)
+      (Eventually.of_forall fun n => hupper n)
+  rw [tendsto_zero_iff_abs_tendsto_zero]
+  simpa [Real.dist_eq] using hdist
+
 /-- Exact zero defect is the degenerate endpoint of the same closure logic.
 
 This theorem is deliberately tiny: it records the exact corner that a later
