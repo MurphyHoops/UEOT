@@ -323,6 +323,59 @@ theorem recurrentCarrier_image_iff_of_sourceGap_zeroGuard_gauge
       recurrentCarrier_iff_of_sourceGap_zeroGuard
         P Qaligned hP hQ gamma hgamma hPgap hzero hclose A
 
+
+/-- **Support-changing bifurcation diagnostic.**  Under a positive source-edge
+margin and sub-gap entrywise perturbation, recurrent structure cannot change
+unless the target creates at least one genuinely new positive edge at a source
+zero.  Thus topology change has an explicit finite witness. -/
+theorem recurrentCarrier_change_implies_new_positive_edge
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ) (hgamma : 0 < gamma)
+    (hPgap : HasTransitionGap P gamma)
+    (hclose : ∀ x y, |Q x y - P x y| < gamma)
+    (A : Set S)
+    (hchange : ¬ (RecurrentCarrier Q A ↔ RecurrentCarrier P A)) :
+    ∃ x y, P x y = 0 ∧ 0 < Q x y := by
+  by_contra hnew
+  have hzero : PreservesZeroSupport P Q := by
+    intro x y hPzero
+    have hQnonneg : 0 ≤ Q x y := hQ.1 x y
+    by_contra hQzero
+    have hQpos : 0 < Q x y := lt_of_le_of_ne hQnonneg (Ne.symm hQzero)
+    exact hnew ⟨x, y, hPzero, hQpos⟩
+  exact hchange
+    (recurrentCarrier_iff_of_sourceGap_zeroGuard
+      P Q hP hQ gamma hgamma hPgap hzero hclose A)
+
+/-- Gauge-covariant bifurcation diagnostic.  If a physical target recurrent
+carrier differs from the relabeled source carrier while the aligned target is
+sub-gap close to the source, then the aligned target must have created a new
+positive edge on source-zero support.  Exact state relabeling itself can never
+be the cause of the bifurcation. -/
+theorem recurrentCarrier_gauge_change_implies_new_positive_edge
+    [Nonempty S]
+    (P Qaligned Ptarget : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Qaligned ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ) (hgamma : 0 < gamma)
+    (hPgap : HasTransitionGap P gamma)
+    (hclose : ∀ x y, |Qaligned x y - P x y| < gamma)
+    (e : S ≃ S)
+    (hconj : ∀ s t, Qaligned s t = Ptarget (e s) (e t))
+    (A : Set S)
+    (hchange :
+      ¬ (RecurrentCarrier Ptarget (e '' A) ↔ RecurrentCarrier P A)) :
+    ∃ x y, P x y = 0 ∧ 0 < Qaligned x y := by
+  have hnotAligned :
+      ¬ (RecurrentCarrier Qaligned A ↔ RecurrentCarrier P A) := by
+    intro haligned
+    apply hchange
+    exact (recurrentCarrier_image_iff Qaligned Ptarget e hconj A).trans haligned
+  exact recurrentCarrier_change_implies_new_positive_edge
+    P Qaligned hP hQ gamma hgamma hPgap hclose A hnotAligned
+
 end
 
 end UEOT.V3.Compression.RecurrentSupportMargin
