@@ -30,10 +30,7 @@ universe uX uS uA
 
 noncomputable section
 
-variable {S : Type uS} [Fintype S] [Nonempty S]
-
-noncomputable local instance stateDecidableEq : DecidableEq S :=
-  Classical.decEq S
+variable {S : Type uS} [Fintype S] [DecidableEq S]
 
 /-- Exact kernel conjugacy is preserved by every matrix power. -/
 theorem pow_conjugate
@@ -157,19 +154,27 @@ theorem supportedOn_relabel_iff
       have : y = x := e.injective (by simpa using hey)
       simpa [this] using hy
     have hz := hs hex
-    simpa using hz
+    calc
+      mu x = (relabelSimplex e mu) (e x) :=
+        by change mu x = mu (e.symm (e x)); simp
+      _ = 0 := hz
   · intro hs y hy
     rcases e.surjective y with ⟨x, rfl⟩
     have hx : x ∉ A := by
       intro hx
       exact hy ⟨x, hx, rfl⟩
-    simpa using hs hx
+    calc
+      (relabelSimplex e mu) (e x) = mu x :=
+        by change mu (e.symm (e x)) = mu x; simp
+      _ = 0 := hs hx
 
 /-- Invariant laws carried by one recurrent carrier. -/
 def carrierInvariantLawSet
     (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S)
     (A : Set S) : Set (stdSimplex ℝ S) :=
   {mu | mu ∈ invariantLawSet P hP ∧ SupportedOn mu A}
+
+variable [Nonempty S]
 
 /-- Exact gauge transports the complete family of invariant laws supported on
 one recurrent carrier. -/
@@ -193,9 +198,11 @@ theorem carrierInvariantLawSet_relabel_eq
     have hmuInv : mu ∈ invariantLawSet P hP :=
       invariant_relabel_of_conjugate Q P hQ hP e.symm hconjRev nu hnuInv
     have hmuSupp : SupportedOn mu A := by
-      have h := (supportedOn_relabel_iff e mu A).1
-      apply h
-      simpa [mu] using hnuSupp
+      have hrelabel : relabelSimplex e mu = nu := by
+        simp [mu]
+      apply (supportedOn_relabel_iff e mu A).1
+      rw [hrelabel]
+      exact hnuSupp
     refine ⟨mu, ⟨hmuInv, hmuSupp⟩, ?_⟩
     simp [mu]
   · rintro ⟨mu, ⟨hmuInv, hmuSupp⟩, rfl⟩

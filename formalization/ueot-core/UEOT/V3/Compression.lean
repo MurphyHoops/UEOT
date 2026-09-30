@@ -136,3 +136,4 @@ import UEOT.V3.Compression.ValueSpanClosure
 import UEOT.V3.Compression.InvariantSetGaugeInvariance
 import UEOT.V3.Compression.CesaroOccupationGaugeInvariance
 import UEOT.V3.Compression.RecurrentClassGaugeInvariance
+import UEOT.V3.Compression.FiniteRecurrentGaugeBridge
