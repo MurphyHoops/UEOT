@@ -487,8 +487,8 @@ theorem communication_split_implies_gap_crossing
 source recurrent carrier no longer communicate in the target. -/
 def RecurrentCarrierSplit
     (P Q : Matrix S S ℝ) (A : Set S) : Prop :=
-  ∃ x, x ∈ A ∧ ∃ y, y ∈ A ∧
-    Communicates P x y ∧ ¬ Communicates Q x y
+  RecurrentCarrier P A ∧
+    ∃ x, x ∈ A ∧ ∃ y, y ∈ A ∧ ¬ Communicates Q x y
 
 /-- Any split event inside a source recurrent carrier has a deleted positive
 edge witness. -/
@@ -499,9 +499,9 @@ theorem recurrentCarrierSplit_implies_deleted_positive_edge
     (A : Set S)
     (hsplit : RecurrentCarrierSplit P Q A) :
     ∃ u v, 0 < P u v ∧ Q u v = 0 := by
-  rcases hsplit with ⟨x, _, y, _, hcommP, hnotCommQ⟩
+  rcases hsplit with ⟨hrecP, x, hx, y, hy, hnotCommQ⟩
   exact communication_split_implies_deleted_positive_edge
-    P Q hP hQ hcommP hnotCommQ
+    P Q hP hQ (hrecP.2.1 hx hy) hnotCommQ
 
 /-- With a source positive-edge gap, every carrier split crosses the gap scale
 in at least one transition entry. -/
@@ -514,9 +514,9 @@ theorem recurrentCarrierSplit_implies_gap_crossing
     (A : Set S)
     (hsplit : RecurrentCarrierSplit P Q A) :
     ∃ u v, gamma ≤ |Q u v - P u v| := by
-  rcases hsplit with ⟨x, _, y, _, hcommP, hnotCommQ⟩
+  rcases hsplit with ⟨hrecP, x, hx, y, hy, hnotCommQ⟩
   exact communication_split_implies_gap_crossing
-    P Q hP hQ gamma hPgap hcommP hnotCommQ
+    P Q hP hQ gamma hPgap (hrecP.2.1 hx hy) hnotCommQ
 
 /-- Equality of one-step positive support propagates to every finite matrix
 power for nonnegative finite kernels. -/
