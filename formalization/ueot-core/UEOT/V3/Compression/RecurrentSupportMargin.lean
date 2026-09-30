@@ -35,6 +35,12 @@ variable {S : Type uS} [Fintype S] [DecidableEq S]
 def TransitionSupportEq (P Q : Matrix S S ℝ) : Prop :=
   ∀ x y, 0 < P x y ↔ 0 < Q x y
 
+/-- Inclusion of positive one-step support.  This is the natural relation for
+post-bifurcation analysis: source edges may survive while genuinely new target
+edges are allowed to appear. -/
+def TransitionSupportLe (P Q : Matrix S S ℝ) : Prop :=
+  ∀ x y, 0 < P x y → 0 < Q x y
+
 /-- A positive-support margin: every entry is either exactly zero or at least
 `gamma`.  This is intentionally stronger than stochasticity and is the
 zero-pattern separation needed to prevent tiny new edges. -/
@@ -128,6 +134,159 @@ theorem transitionSupportEq_of_sourceGap_zeroGuard
       rw [hQzero] at hQpos
       exact (lt_irrefl 0 hQpos).elim
     · exact hgamma.trans_le hPlarge
+
+/-- Source positive edges cannot disappear under a perturbation strictly below
+the source positive-edge margin.  No zero-support guard is needed: the target
+may create new edges, but every old positive edge survives. -/
+theorem transitionSupportLe_of_sourceGap
+    (P Q : Matrix S S ℝ)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ)
+    (hPgap : HasTransitionGap P gamma)
+    (hclose : ∀ x y, |Q x y - P x y| < gamma) :
+    TransitionSupportLe P Q := by
+  intro x y hPpos
+  have hPlarge : gamma ≤ P x y := by
+    rcases hPgap x y with hPzero | hPlarge
+    · rw [hPzero] at hPpos
+      exact (lt_irrefl 0 hPpos).elim
+    · exact hPlarge
+  by_contra hQnot
+  have hQzero : Q x y = 0 :=
+    le_antisymm (le_of_not_gt hQnot) (hQ.1 x y)
+  have hc := hclose x y
+  rw [hQzero, zero_sub, abs_neg, abs_of_pos hPpos] at hc
+  exact (not_lt_of_ge hPlarge hc).elim
+
+/-- One-step support inclusion propagates to every finite matrix power. -/
+theorem pow_pos_mono_of_transitionSupportLe
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q) :
+    ∀ n x y, 0 < (P ^ n) x y → 0 < (Q ^ n) x y := by
+  intro n
+  induction n with
+  | zero =>
+      intro x y hxy
+      simpa [Matrix.one_apply] using hxy
+  | succ n ih =>
+      intro x y hxy
+      rw [pow_succ, Matrix.mul_apply] at hxy ⊢
+      have hsumP := Finset.sum_pos_iff_of_nonneg
+        (s := (Finset.univ : Finset S))
+        (f := fun z => (P ^ n) x z * P z y)
+        (fun z _ => mul_nonneg
+          (Matrix.pow_apply_nonneg hP.1 n x z) (hP.1 z y))
+      rcases hsumP.mp hxy with ⟨z, _, hz⟩
+      have hPpow : 0 < (P ^ n) x z := by
+        by_contra hn
+        have hz0 : (P ^ n) x z = 0 :=
+          le_antisymm (le_of_not_gt hn) (Matrix.pow_apply_nonneg hP.1 n x z)
+        simp [hz0] at hz
+      have hPedge : 0 < P z y := by
+        by_contra hn
+        have hz0 : P z y = 0 :=
+          le_antisymm (le_of_not_gt hn) (hP.1 z y)
+        simp [hz0] at hz
+      have hQterm : 0 < (Q ^ n) x z * Q z y :=
+        mul_pos (ih x z hPpow) (hsupp z y hPedge)
+      exact Finset.sum_pos'
+        (fun u _ => mul_nonneg
+          (Matrix.pow_apply_nonneg hQ.1 n x u) (hQ.1 u y))
+        ⟨z, Finset.mem_univ z, hQterm⟩
+
+/-- Reachability is monotone under positive-support inclusion. -/
+theorem reachable_mono_of_transitionSupportLe
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    {x y : S} :
+    Reachable P x y → Reachable Q x y := by
+  rintro ⟨n, hn⟩
+  exact ⟨n, pow_pos_mono_of_transitionSupportLe P Q hP hQ hsupp n x y hn⟩
+
+/-- Communication is monotone under positive-support inclusion.  Hence adding
+positive edges can merge communication classes but cannot split an existing
+source communication class. -/
+theorem communicates_mono_of_transitionSupportLe
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    {x y : S} :
+    Communicates P x y → Communicates Q x y := by
+  rintro ⟨hxy, hyx⟩
+  exact ⟨
+    reachable_mono_of_transitionSupportLe P Q hP hQ hsupp hxy,
+    reachable_mono_of_transitionSupportLe P Q hP hQ hsupp hyx⟩
+
+/-- If a source recurrent carrier remains closed after adding support, then it
+remains recurrent: internal communication cannot be lost. -/
+theorem recurrentCarrier_of_source_of_targetClosed
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    (A : Set S)
+    (hrec : RecurrentCarrier P A)
+    (hclosedQ : ClosedCarrier Q A) :
+    RecurrentCarrier Q A := by
+  refine ⟨hrec.1, ?_, hclosedQ⟩
+  intro x hx y hy
+  exact communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+    (hrec.2.1 hx hy)
+
+/-- **No-splitting theorem for sub-gap perturbations.**  Under a source
+positive-edge margin, every pair of source-communicating states remains
+communicating in the target.  New support may merge classes, but the old class
+cannot split merely by weakening its existing edges. -/
+theorem communicates_mono_of_sourceGap
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ)
+    (hPgap : HasTransitionGap P gamma)
+    (hclose : ∀ x y, |Q x y - P x y| < gamma)
+    {x y : S} :
+    Communicates P x y → Communicates Q x y := by
+  exact communicates_mono_of_transitionSupportLe P Q hP hQ
+    (transitionSupportLe_of_sourceGap P Q hQ gamma hPgap hclose)
+
+/-- If a source recurrent carrier ceases to be recurrent under a sub-gap
+perturbation, the failure is necessarily loss of closedness, witnessed by a new
+positive transition from inside the source carrier to outside it.  The source
+value of that transition is exactly zero. -/
+theorem sourceRecurrent_loss_implies_new_exit_edge
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ)
+    (hPgap : HasTransitionGap P gamma)
+    (hclose : ∀ x y, |Q x y - P x y| < gamma)
+    (A : Set S)
+    (hrecP : RecurrentCarrier P A)
+    (hnotRecQ : ¬ RecurrentCarrier Q A) :
+    ∃ x, x ∈ A ∧ ∃ y, y ∉ A ∧ P x y = 0 ∧ 0 < Q x y := by
+  have hsupp : TransitionSupportLe P Q :=
+    transitionSupportLe_of_sourceGap P Q hQ gamma hPgap hclose
+  have hnotClosedQ : ¬ ClosedCarrier Q A := by
+    intro hclosedQ
+    exact hnotRecQ
+      (recurrentCarrier_of_source_of_targetClosed
+        P Q hP hQ hsupp A hrecP hclosedQ)
+  by_contra hnoExit
+  apply hnotClosedQ
+  intro x hx y hQxy
+  by_contra hy
+  have hPxyZero : P x y = 0 := by
+    apply le_antisymm
+    · apply le_of_not_gt
+      intro hPxy
+      exact hy (hrecP.2.2 hx y hPxy)
+    · exact hP.1 x y
+  exact hnoExit ⟨x, hx, y, hy, hPxyZero, hQxy⟩
 
 /-- Equality of one-step positive support propagates to every finite matrix
 power for nonnegative finite kernels. -/

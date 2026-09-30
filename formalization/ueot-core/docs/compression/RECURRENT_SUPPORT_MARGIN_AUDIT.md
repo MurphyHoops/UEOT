@@ -238,12 +238,83 @@ exact state gauge between an aligned target and the physical target.  If the
 physical recurrent carrier changes, the witness still occurs in the aligned
 dynamics.  Exact relabeling itself therefore cannot be the bifurcation cause.
 
-## 11. Next pressure test
+## 11. Post-bifurcation no-splitting structure
 
-The remaining research boundary is the **post-bifurcation regime**: classify
-how new support edges merge recurrent components, how loss of a positive-edge
-margin can permit class splitting, and how GOA should be compared across
-genuinely different recurrent decompositions.
+The module now separates **support addition** from full support equality via
 
-That regime should stay separate from fixed-partition P-GOA-03 rather than
-being hidden inside its small-perturbation radius.
+`TransitionSupportLe P Q`:
+
+\[
+P(x,y)>0 \Longrightarrow Q(x,y)>0.
+\]
+
+`transitionSupportLe_of_sourceGap` proves that a source positive-edge gap plus
+entrywise perturbation strictly below that gap already implies this inclusion.
+Unlike the earlier zero-guard theorem, new target-positive edges are allowed.
+
+The inclusion is then propagated through every finite matrix power:
+
+\[
+(P^n)(x,y)>0 \Longrightarrow (Q^n)(x,y)>0,
+\]
+
+and therefore through reachability and communication:
+
+\[
+\boxed{
+\operatorname{Communicates}_P(x,y)
+\Longrightarrow
+\operatorname{Communicates}_Q(x,y).
+}
+\]
+
+This gives the finite-state **no-splitting theorem** for the sub-gap regime:
+an existing source communication class cannot fragment merely because its old
+positive edges have been weakened.  New support can only preserve or merge
+source communication classes.
+
+For recurrent carriers, `recurrentCarrier_of_source_of_targetClosed` proves
+that a source recurrent carrier remains recurrent whenever it remains closed
+in the target, since internal communication has already been preserved.
+
+Consequently `sourceRecurrent_loss_implies_new_exit_edge` sharpens the earlier
+generic bifurcation witness.  If `A` is recurrent for `P` but not recurrent for
+`Q`, then there are states `x,y` with
+
+\[
+\boxed{
+x\in A,\quad y\notin A,\quad P(x,y)=0,\quad Q(x,y)>0.
+}
+\]
+
+So loss of a source recurrent carrier is specifically a **loss of closedness**
+through a newly created outgoing edge.  Internal communication does not fail in
+this regime.
+
+## 12. Refined bifurcation taxonomy
+
+The formalized picture is now asymmetric in a scientifically useful way:
+
+1. with a source positive-edge margin and sub-gap perturbation, **splitting is
+   excluded** because every old positive path survives;
+2. **merging / absorption into a larger communicating region** can occur only
+   through newly created support edges;
+3. genuine splitting requires leaving this regime, e.g. allowing old positive
+   edges to vanish as the source margin collapses or the perturbation reaches
+   the margin scale.
+
+This distinction is stronger than the earlier statement that “support can
+change.”  It identifies which direction of recurrent-topology change is
+possible under the current perturbation hypotheses.
+
+## 13. Next pressure test
+
+The next lane should characterize **merge structure** rather than a generic
+split/merge slogan: given two disjoint source recurrent carriers whose internal
+communication survives, determine sufficient new-edge reachability conditions
+under which they belong to one target communicating carrier, and state the
+additional target-closure condition needed for their union to be recurrent.
+
+Only after that should the theory open the separate **margin-collapse / split
+regime**, where old positive support is permitted to disappear.  Neither regime
+should be hidden inside fixed-partition P-GOA-03.
