@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import importlib.util
 import subprocess
 import sys
@@ -123,6 +124,134 @@ def test_policy_reauthorizes_on_base_edit(repo: Path) -> None:
         raise AssertionError(
             "base-policy workflow must reauthorize on pull-request edited/base-change events"
         )
+
+
+def expect_static_failure(repo: Path, mutate, expected: str) -> None:
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    config = copy.deepcopy(config)
+    mutate(config)
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        try:
+            module.validate_static(repo, config, ledger)
+        except ValueError as exc:
+            if expected not in str(exc):
+                raise AssertionError(
+                    f"expected static rejection containing {expected!r}, got {exc!r}"
+                ) from exc
+        else:
+            raise AssertionError(f"expected static governance rejection: {expected}")
+    finally:
+        module.fail = original_fail
+
+
+def test_architecture_record_schema(repo: Path) -> None:
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    module.validate_static(repo, config, ledger)
+
+    def make_g1_counted(config: dict) -> None:
+        record = next(
+            item
+            for item in config["architecture_records"]
+            if item["record_id"] == "S-GOA-RESIDUAL-INVERSE"
+        )
+        record["lifecycle_status"] = "COUNTED"
+        record["counted_core_impact"] = "COUNTED"
+
+    expect_static_failure(repo, make_g1_counted, "only G0 + COUNTED")
+
+    def research_claims_merged(config: dict) -> None:
+        record = next(
+            item
+            for item in config["architecture_records"]
+            if item["record_id"] == "S-GOA-RESIDUAL-INVERSE"
+        )
+        record["authority_provenance"] = "POST_FINAL_RESEARCH"
+
+    expect_static_failure(
+        repo,
+        research_claims_merged,
+        "POST_FINAL_RESEARCH provenance requires RESEARCH lifecycle",
+    )
+
+    def open_track_x(config: dict) -> None:
+        record = copy.deepcopy(config["architecture_records"][-1])
+        record["record_id"] = "X-PREMATURE-INTEGRATION"
+        record["title"] = "Premature cross-track integration"
+        record["track_owner"] = "X"
+        config["architecture_records"].append(record)
+
+    expect_static_failure(
+        repo,
+        open_track_x,
+        "Track X records are forbidden while the integration gate is closed",
+    )
+
+    def lose_counted_generator(config: dict) -> None:
+        config["architecture_records"] = [
+            item
+            for item in config["architecture_records"]
+            if item["record_id"] != "M-OI-01"
+        ]
+
+    expect_static_failure(
+        repo,
+        lose_counted_generator,
+        "COUNTED architecture records must exactly match the frozen live-ledger minimal core",
+    )
+
+
+def test_p0b_legacy_baseline_transition(repo: Path) -> None:
+    """A P0a base policy may authorize P0b without already having P0b schema.
+
+    The candidate registry must satisfy the new architecture-record schema, but
+    a baseline registry is enforcement authority for branch/path ownership and
+    may legitimately predate those new metadata fields.
+    """
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    legacy = copy.deepcopy(config)
+    legacy.pop("architecture_record_schema", None)
+    legacy.pop("architecture_records", None)
+
+    module.validate_static(
+        repo,
+        legacy,
+        ledger,
+        require_architecture_records=False,
+    )
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        try:
+            module.validate_static(repo, legacy, ledger)
+        except ValueError as exc:
+            if "architecture_record_schema" not in str(exc):
+                raise AssertionError(
+                    f"unexpected legacy-candidate rejection: {exc!r}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "legacy registry must not pass as a P0b candidate policy"
+            )
+    finally:
+        module.fail = original_fail
 
 
 def main() -> None:
@@ -300,6 +429,12 @@ def main() -> None:
         ],
     )
     print("fork-mutating-research-rejected: PASS")
+
+    test_architecture_record_schema(repo)
+    print("architecture-record-schema-and-combinations: PASS")
+
+    test_p0b_legacy_baseline_transition(repo)
+    print("p0b-legacy-baseline-transition: PASS")
 
 
 if __name__ == "__main__":
