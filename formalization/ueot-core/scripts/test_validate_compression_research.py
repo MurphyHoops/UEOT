@@ -114,6 +114,17 @@ def test_rename_reports_source_and_destination(repo: Path) -> None:
             )
 
 
+def test_policy_reauthorizes_on_base_edit(repo: Path) -> None:
+    workflow = (
+        repo / ".github/workflows/ueot-compression-research-policy.yml"
+    ).read_text(encoding="utf-8")
+    marker = "types: [opened, synchronize, reopened, ready_for_review, edited]"
+    if marker not in workflow:
+        raise AssertionError(
+            "base-policy workflow must reauthorize on pull-request edited/base-change events"
+        )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -268,6 +279,9 @@ def main() -> None:
 
     test_rename_reports_source_and_destination(repo)
     print("rename-source-and-destination-audited: PASS")
+
+    test_policy_reauthorizes_on_base_edit(repo)
+    print("base-change-reauthorization-trigger: PASS")
 
     run_case(
         repo,

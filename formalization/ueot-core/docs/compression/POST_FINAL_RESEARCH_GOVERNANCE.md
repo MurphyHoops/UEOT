@@ -160,6 +160,11 @@ pull request so a rename or deletion cannot evade authorization by moving a
 governed source path outside a trigger pattern. The validator itself decides
 whether the trusted base/candidate Git diff touches governed Compression paths.
 
+The workflow also listens to the pull-request `edited` event. Any PR base
+branch change therefore forces a fresh authorization against the new base SHA;
+a successful authorization obtained against a temporary or permissive base
+cannot be carried forward after retargeting the unchanged head to `main`.
+
 Mutating Track S, Track H, and `ops/compression-*` governance branches must be
 hosted in the canonical repository. Fork-based mutating Compression branches
 are rejected; read-only/external work can still be reviewed separately without
