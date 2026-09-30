@@ -288,6 +288,152 @@ theorem sourceRecurrent_loss_implies_new_exit_edge
     · exact hP.1 x y
   exact hnoExit ⟨x, hx, y, hy, hPxyZero, hQxy⟩
 
+/-- Positive-probability reachability is transitive for a finite stochastic
+kernel: concatenate the two positive-probability path segments. -/
+theorem reachable_trans_of_rowStochastic
+    (Q : Matrix S S ℝ)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    {x y z : S} :
+    Reachable Q x y → Reachable Q y z → Reachable Q x z := by
+  rintro ⟨m, hm⟩ ⟨n, hn⟩
+  refine ⟨m + n, ?_⟩
+  rw [pow_add, Matrix.mul_apply]
+  exact Finset.sum_pos'
+    (fun u _ => mul_nonneg
+      (Matrix.pow_apply_nonneg hQ.1 m x u)
+      (Matrix.pow_apply_nonneg hQ.1 n u z))
+    ⟨y, Finset.mem_univ y, mul_pos hm hn⟩
+
+/-- Communication is transitive for a finite stochastic kernel. -/
+theorem communicates_trans_of_rowStochastic
+    (Q : Matrix S S ℝ)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    {x y z : S} :
+    Communicates Q x y → Communicates Q y z → Communicates Q x z := by
+  rintro ⟨hxy, hyx⟩ ⟨hyz, hzy⟩
+  exact ⟨
+    reachable_trans_of_rowStochastic Q hQ hxy hyz,
+    reachable_trans_of_rowStochastic Q hQ hzy hyx⟩
+
+/-- If two source recurrent carriers each retain all old positive support and
+one target state from each carrier communicates with the other, then every
+state in their union communicates with every other state in the union.  This
+is the abstract merge mechanism before imposing target closedness. -/
+theorem union_internalCommunicates_of_cross
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    (A B : Set S)
+    (hrecA : RecurrentCarrier P A)
+    (hrecB : RecurrentCarrier P B)
+    {a b : S} (ha : a ∈ A) (hb : b ∈ B)
+    (hcross : Communicates Q a b) :
+    ∀ ⦃x⦄, x ∈ A ∪ B → ∀ ⦃y⦄, y ∈ A ∪ B → Communicates Q x y := by
+  intro x hx y hy
+  rcases hx with hxA | hxB <;> rcases hy with hyA | hyB
+  · exact communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+      (hrecA.2.1 hxA hyA)
+  · have hxa : Communicates Q x a :=
+      communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+        (hrecA.2.1 hxA ha)
+    have hby : Communicates Q b y :=
+      communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+        (hrecB.2.1 hb hyB)
+    exact communicates_trans_of_rowStochastic Q hQ
+      (communicates_trans_of_rowStochastic Q hQ hxa hcross) hby
+  · have hxb : Communicates Q x b :=
+      communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+        (hrecB.2.1 hxB hb)
+    have hay : Communicates Q a y :=
+      communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+        (hrecA.2.1 ha hyA)
+    exact communicates_trans_of_rowStochastic Q hQ
+      (communicates_trans_of_rowStochastic Q hQ hxb ⟨hcross.2, hcross.1⟩) hay
+  · exact communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+      (hrecB.2.1 hxB hyB)
+
+/-- **Recurrent merge theorem.**  Two source recurrent carriers become one
+target recurrent carrier whenever (i) old positive support is retained, (ii)
+there is target communication across the two carriers, and (iii) their union
+is closed in the target. -/
+theorem recurrentCarrier_union_of_cross_of_closed
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    (A B : Set S)
+    (hrecA : RecurrentCarrier P A)
+    (hrecB : RecurrentCarrier P B)
+    {a b : S} (ha : a ∈ A) (hb : b ∈ B)
+    (hcross : Communicates Q a b)
+    (hclosed : ClosedCarrier Q (A ∪ B)) :
+    RecurrentCarrier Q (A ∪ B) := by
+  refine ⟨?_, ?_, hclosed⟩
+  · rcases hrecA.1 with ⟨x, hx⟩
+    exact ⟨x, Or.inl hx⟩
+  · exact union_internalCommunicates_of_cross
+      P Q hP hQ hsupp A B hrecA hrecB ha hb hcross
+
+/-- A positive one-step transition is a reachable path of length one. -/
+theorem reachable_of_positive_edge
+    (Q : Matrix S S ℝ) {x y : S} (hxy : 0 < Q x y) :
+    Reachable Q x y := by
+  exact ⟨1, by simpa using hxy⟩
+
+/-- Operational merge bridge: one new positive edge in each direction between
+two source recurrent carriers is enough to create target cross-communication,
+because all old internal communication survives under support inclusion. -/
+theorem communicates_cross_of_two_edges
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    (A B : Set S)
+    (hrecA : RecurrentCarrier P A)
+    (hrecB : RecurrentCarrier P B)
+    {a₁ a₂ b₁ b₂ : S}
+    (ha₁ : a₁ ∈ A) (ha₂ : a₂ ∈ A)
+    (hb₁ : b₁ ∈ B) (hb₂ : b₂ ∈ B)
+    (hAB : 0 < Q a₁ b₁)
+    (hBA : 0 < Q b₂ a₂) :
+    Communicates Q a₁ b₁ := by
+  refine ⟨reachable_of_positive_edge Q hAB, ?_⟩
+  have hb₁b₂ : Reachable Q b₁ b₂ :=
+    (communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+      (hrecB.2.1 hb₁ hb₂)).1
+  have ha₂a₁ : Reachable Q a₂ a₁ :=
+    (communicates_mono_of_transitionSupportLe P Q hP hQ hsupp
+      (hrecA.2.1 ha₂ ha₁)).1
+  exact reachable_trans_of_rowStochastic Q hQ
+    (reachable_trans_of_rowStochastic Q hQ hb₁b₂
+      (reachable_of_positive_edge Q hBA)) ha₂a₁
+
+/-- Fully operational recurrent merge criterion: retained source support, one
+new cross-edge each way, and target closure of the union imply that the two
+source recurrent carriers have merged into one target recurrent carrier. -/
+theorem recurrentCarrier_union_of_two_edges_of_closed
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    (A B : Set S)
+    (hrecA : RecurrentCarrier P A)
+    (hrecB : RecurrentCarrier P B)
+    {a₁ a₂ b₁ b₂ : S}
+    (ha₁ : a₁ ∈ A) (ha₂ : a₂ ∈ A)
+    (hb₁ : b₁ ∈ B) (hb₂ : b₂ ∈ B)
+    (hAB : 0 < Q a₁ b₁)
+    (hBA : 0 < Q b₂ a₂)
+    (hclosed : ClosedCarrier Q (A ∪ B)) :
+    RecurrentCarrier Q (A ∪ B) := by
+  exact recurrentCarrier_union_of_cross_of_closed
+    P Q hP hQ hsupp A B hrecA hrecB ha₁ hb₁
+      (communicates_cross_of_two_edges
+        P Q hP hQ hsupp A B hrecA hrecB
+          ha₁ ha₂ hb₁ hb₂ hAB hBA)
+      hclosed
+
 /-- Equality of one-step positive support propagates to every finite matrix
 power for nonnegative finite kernels. -/
 theorem pow_pos_iff_of_transitionSupportEq

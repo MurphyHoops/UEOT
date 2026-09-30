@@ -307,14 +307,76 @@ This distinction is stronger than the earlier statement that “support can
 change.”  It identifies which direction of recurrent-topology change is
 possible under the current perturbation hypotheses.
 
-## 13. Next pressure test
+## 13. Recurrent merge structure
 
-The next lane should characterize **merge structure** rather than a generic
-split/merge slogan: given two disjoint source recurrent carriers whose internal
-communication survives, determine sufficient new-edge reachability conditions
-under which they belong to one target communicating carrier, and state the
-additional target-closure condition needed for their union to be recurrent.
+The merge side of the bifurcation is now formalized constructively.
 
-Only after that should the theory open the separate **margin-collapse / split
-regime**, where old positive support is permitted to disappear.  Neither regime
-should be hidden inside fixed-partition P-GOA-03.
+First, `reachable_trans_of_rowStochastic` and
+`communicates_trans_of_rowStochastic` make finite positive-probability path
+concatenation explicit.  This supplies the graph-theoretic composition rule
+needed to reason across source carriers after new target support is added.
+
+For two source recurrent carriers `A` and `B`, assume old positive support is
+retained.  `union_internalCommunicates_of_cross` proves that if some
+`a ∈ A` and `b ∈ B` communicate in the target, then **every** pair of states in
+`A ∪ B` communicates in the target.  Internal source communication survives,
+and the single cross-communication certificate connects the two blocks.
+
+Adding only target closedness of the union yields
+
+`recurrentCarrier_union_of_cross_of_closed`:
+
+\[
+\boxed{
+\operatorname{Communicates}_Q(a,b)
+\land
+\operatorname{ClosedCarrier}_Q(A\cup B)
+\Longrightarrow
+\operatorname{RecurrentCarrier}_Q(A\cup B).
+}
+\]
+
+The module also supplies an operational sufficient condition.
+`communicates_cross_of_two_edges` shows that it is enough to have
+
+- one target-positive edge from `A` to `B`;
+- one target-positive edge from `B` to `A`;
+- retained source support inside both carriers.
+
+The endpoints of the two new edges need not coincide, because preserved
+internal communication connects them inside their respective source carriers.
+
+Consequently `recurrentCarrier_union_of_two_edges_of_closed` proves that two
+oppositely directed cross-edges plus target closure of `A ∪ B` are sufficient
+for a genuine recurrent merge.
+
+This gives a precise post-bifurcation mechanism:
+
+\[
+\boxed{
+\text{new bidirectional cross support}
+\to
+\text{cross communication}
+\to
+\text{union communication}
+\xrightarrow{\text{union closed}}
+\text{merged recurrent carrier}.
+}
+\]
+
+## 14. Remaining split regime
+
+The sub-gap source-margin regime is now structurally closed on the merge side:
+old classes cannot split, and explicit sufficient conditions for their merge
+are machine checked.
+
+The genuinely different next regime is **margin collapse / support deletion**,
+where an old positive edge is allowed to reach zero.  That is the mechanism by
+which a source communication class can actually split.  It should be treated
+with separate hypotheses and diagnostics rather than weakening the current
+theorems or hiding the effect inside fixed-partition P-GOA-03.
+
+After the split/merge topology layer is complete, the next GOA-level question
+is how invariant-law families and long-run mixture semantics should be compared
+when the recurrent partition itself changes.  Fixed-partition P-GOA-03 is not
+the correct theorem for that case.
