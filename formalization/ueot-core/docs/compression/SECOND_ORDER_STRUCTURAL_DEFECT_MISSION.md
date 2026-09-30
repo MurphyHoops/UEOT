@@ -172,8 +172,13 @@ Current local result: **PASS as an independent-domain bridge transfer.**
 `StructuralDefectControlLimit.lean` now proves that vanishing approximate
 control-quotient defects close to an exact quotient, first for a fixed macro
 target and then for a genuinely varying P-CORE-01 `FixedSourceApproximation`
-sequence converging to a target macro model.  Exact P-QUO-01 consequences are
-then inherited from the existing source theorem rather than reproved.
+sequence converging to a target macro model in discount, reward, and
+transition-TV coordinates.  The exactification is no longer implemented by a
+fresh downstream squeeze: reward, transition TV, and limiting discount all use
+the reusable candidate-layer theorem
+`StructuralDefectClosure.nonnegative_defect_eq_zero_of_uniform_bound`.
+Exact P-QUO-01 consequences are then inherited from the existing source theorem
+rather than reproved.
 
 This S5 pass does not override the negative S1 wrapper-reduction audit.  The
 current recommended status is therefore **BRIDGE**, not

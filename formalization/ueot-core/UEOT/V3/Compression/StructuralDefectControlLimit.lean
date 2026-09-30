@@ -99,13 +99,9 @@ noncomputable def exactControlQuotient_of_vanishing_defects
       transition_closed := ?_ }
   · intro x a
     let d : ℝ := |micro.reward x a - macroModel.reward (f x) a|
-    have hd0 : Tendsto (fun _ : ℕ => d) atTop (𝓝 0) := by
-      exact tendsto_of_tendsto_of_tendsto_of_le_of_le'
-        tendsto_const_nhds hεr
-        (Eventually.of_forall fun _ => abs_nonneg _)
-        (Eventually.of_forall fun n => hreward n x a)
     have hd : d = 0 :=
-      tendsto_nhds_unique tendsto_const_nhds hd0
+      StructuralDefectClosure.nonnegative_defect_eq_zero_of_uniform_bound
+        d εr (abs_nonneg _) hεr (fun n => hreward n x a)
     exact sub_eq_zero.mp (abs_eq_zero.mp hd)
   · intro x a y
     let p : PMF M := pushforwardTransitionPMF f micro x a
@@ -113,13 +109,9 @@ noncomputable def exactControlQuotient_of_vanishing_defects
     let d : ℝ := FiniteProbabilityRow.tvDist p q
     have hd_nonneg : 0 ≤ d := by
       exact finite_tvDist_nonneg p q
-    have hd0 : Tendsto (fun _ : ℕ => d) atTop (𝓝 0) := by
-      exact tendsto_of_tendsto_of_tendsto_of_le_of_le'
-        tendsto_const_nhds hεp
-        (Eventually.of_forall fun _ => hd_nonneg)
-        (Eventually.of_forall fun n => htransition n x a)
     have hd : d = 0 :=
-      tendsto_nhds_unique tendsto_const_nhds hd0
+      StructuralDefectClosure.nonnegative_defect_eq_zero_of_uniform_bound
+        d εp hd_nonneg hεp (fun n => htransition n x a)
     have hpq : p = q :=
       pmf_eq_of_tvDist_eq_zero p q hd
     have hpoint := congrArg (fun r : PMF M => (r y).toReal) hpq
@@ -248,9 +240,10 @@ theorem p_quo_01_of_fixedSourceApproximation
 Each stage supplies the same fixed micro source and quotient map through
 P-CORE-01's `FixedSourceApproximation`, but the estimated macro model may vary
 with `n`.  If the source-to-estimate defects vanish and the estimated macro
-models themselves approach one fixed target macro model in reward and
-transition-TV coordinates, then the target macro model forms an exact control
-quotient with the fixed source.
+models themselves approach one fixed target macro model in discount, reward,
+and transition-TV coordinates, then the target macro model forms an exact
+control quotient with the fixed source.  Exact discount equality is therefore
+closed from a vanishing certified defect rather than assumed at the limit.
 
 This is the stronger S5 assembly-transfer theorem: it models a genuine
 estimation sequence rather than repeating one fixed approximate target. -/
@@ -262,15 +255,17 @@ noncomputable def exactControlQuotient_of_convergent_fixedSourceApproximation
     (f : X → M) (hf : Function.Surjective f)
     (micro : Model X (fun x => Abar (f x)))
     (macroLimit : Model M Abar)
-    (hdiscountLimit : micro.discount = macroLimit.discount)
-    (εr εp ρr ρp : ℕ → ℝ)
+    (εr εp ρd ρr ρp : ℕ → ℝ)
     (Q : ∀ n,
       UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation
         f micro (εr n) (εp n))
     (hεr : Tendsto εr atTop (𝓝 0))
     (hεp : Tendsto εp atTop (𝓝 0))
+    (hρd : Tendsto ρd atTop (𝓝 0))
     (hρr : Tendsto ρr atTop (𝓝 0))
     (hρp : Tendsto ρp atTop (𝓝 0))
+    (hdiscountLimit : ∀ n,
+      |(Q n).macroModel.discount - macroLimit.discount| ≤ ρd n)
     (hrewardLimit : ∀ n m (a : Abar m),
       |(Q n).macroModel.reward m a - macroLimit.reward m a| ≤ ρr n)
     (htransitionLimit : ∀ n m (a : Abar m),
@@ -278,6 +273,18 @@ noncomputable def exactControlQuotient_of_convergent_fixedSourceApproximation
         ((Q n).macroModel.transitionPMF m a)
         (macroLimit.transitionPMF m a) ≤ ρp n) :
     ExactControlQuotient X M Abar := by
+  have hdiscountBound : ∀ n,
+      |micro.discount - macroLimit.discount| ≤ ρd n := by
+    intro n
+    rw [(Q n).discount_eq]
+    exact hdiscountLimit n
+  have hdiscountZero :
+      |micro.discount - macroLimit.discount| = 0 :=
+    StructuralDefectClosure.nonnegative_defect_eq_zero_of_uniform_bound
+      |micro.discount - macroLimit.discount| ρd
+      (abs_nonneg _) hρd hdiscountBound
+  have hdiscountExact : micro.discount = macroLimit.discount :=
+    sub_eq_zero.mp (abs_eq_zero.mp hdiscountZero)
   have hsumReward :
       Tendsto (fun n => εr n + ρr n) atTop (𝓝 0) := by
     simpa using hεr.add hρr
@@ -285,7 +292,7 @@ noncomputable def exactControlQuotient_of_convergent_fixedSourceApproximation
       Tendsto (fun n => εp n + ρp n) atTop (𝓝 0) := by
     simpa using hεp.add hρp
   apply exactControlQuotient_of_vanishing_defects
-    f hf micro macroLimit hdiscountLimit
+    f hf micro macroLimit hdiscountExact
     (fun n => εr n + ρr n) (fun n => εp n + ρp n)
     hsumReward hsumTransition
   · intro n x a
@@ -321,15 +328,17 @@ theorem p_quo_01_of_convergent_fixedSourceApproximation
     (f : X → M) (hf : Function.Surjective f)
     (micro : Model X (fun x => Abar (f x)))
     (macroLimit : Model M Abar)
-    (hdiscountLimit : micro.discount = macroLimit.discount)
-    (εr εp ρr ρp : ℕ → ℝ)
+    (εr εp ρd ρr ρp : ℕ → ℝ)
     (Q : ∀ n,
       UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation
         f micro (εr n) (εp n))
     (hεr : Tendsto εr atTop (𝓝 0))
     (hεp : Tendsto εp atTop (𝓝 0))
+    (hρd : Tendsto ρd atTop (𝓝 0))
     (hρr : Tendsto ρr atTop (𝓝 0))
     (hρp : Tendsto ρp atTop (𝓝 0))
+    (hdiscountLimit : ∀ n,
+      |(Q n).macroModel.discount - macroLimit.discount| ≤ ρd n)
     (hrewardLimit : ∀ n m (a : Abar m),
       |(Q n).macroModel.reward m a - macroLimit.reward m a| ≤ ρr n)
     (htransitionLimit : ∀ n m (a : Abar m),
@@ -337,8 +346,8 @@ theorem p_quo_01_of_convergent_fixedSourceApproximation
         ((Q n).macroModel.transitionPMF m a)
         (macroLimit.transitionPMF m a) ≤ ρp n) :
     let E := exactControlQuotient_of_convergent_fixedSourceApproximation
-      f hf micro macroLimit hdiscountLimit εr εp ρr ρp Q
-      hεr hεp hρr hρp hrewardLimit htransitionLimit
+      f hf micro macroLimit εr εp ρd ρr ρp Q
+      hεr hεp hρd hρr hρp hdiscountLimit hrewardLimit htransitionLimit
     (∀ x : X, E.micro.optimalValue x =
         E.macroModel.optimalValue (E.f x)) ∧
     (∀ (x : X) (a : Abar (E.f x)),
@@ -354,7 +363,7 @@ theorem p_quo_01_of_convergent_fixedSourceApproximation
         E.micro.optimalValue (π.current h)) := by
   dsimp only
   exact (exactControlQuotient_of_convergent_fixedSourceApproximation
-    f hf micro macroLimit hdiscountLimit εr εp ρr ρp Q
-    hεr hεp hρr hρp hrewardLimit htransitionLimit).p_quo_01
+    f hf micro macroLimit εr εp ρd ρr ρp Q
+    hεr hεp hρd hρr hρp hdiscountLimit hrewardLimit htransitionLimit).p_quo_01
 
 end UEOT.V3.Compression.StructuralDefectControlLimit

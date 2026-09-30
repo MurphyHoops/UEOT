@@ -29,6 +29,26 @@ open scoped BigOperators
 
 universe uX uY uZ
 
+/-- A nonnegative scalar defect that is uniformly bounded by an envelope
+converging to zero is itself exactly zero.
+
+This is the smallest reusable asymptotic-closure primitive in the
+second-order structural-defect layer.  Domain adapters are expected to supply
+their own nonnegativity theorem and the certified envelope; the closure step is
+owned here rather than reimplemented downstream. -/
+theorem nonnegative_defect_eq_zero_of_uniform_bound
+    (defect : ℝ) (bound : ℕ → ℝ)
+    (hdefect : 0 ≤ defect)
+    (hbound0 : Tendsto bound atTop (𝓝 0))
+    (hbound : ∀ n, defect ≤ bound n) :
+    defect = 0 := by
+  have hzero : Tendsto (fun _ : ℕ => defect) atTop (𝓝 0) :=
+    tendsto_of_tendsto_of_tendsto_of_le_of_le'
+      tendsto_const_nhds hbound0
+      (Eventually.of_forall fun _ => hdefect)
+      (Eventually.of_forall hbound)
+  exact tendsto_nhds_unique tendsto_const_nhds hzero
+
 /-- Pointwise convergence plus vanishing metric defect on every representation
 fibre forces the limiting quantity to be exactly fibre-compatible.
 

@@ -66,7 +66,9 @@ Lean object:
 
 The proof does not duplicate P-QUO-01:
 
-1. constant nonnegative defects squeezed by vanishing envelopes are zero;
+1. reward and transition defects are exactified through the reusable
+   second-order primitive
+   `StructuralDefectClosure.nonnegative_defect_eq_zero_of_uniform_bound`;
 2. zero finite-PMF TV is converted to PMF equality through the registered
    measure-level zero-TV theorem;
 3. PMF equality gives exact fibre transition closure;
@@ -97,6 +99,11 @@ It assumes:
 - sample/index-dependent certified radii `εr n`, `εp n` tending to zero;
 - all wrappers refer to the same macro target.
 
+Because each `FixedSourceApproximation` already has exact
+`discount_eq : micro.discount = macroModel.discount`, the fixed-target adapter
+inherits exact discount equality from the P-CORE-01 interface.  It does not add
+an independent discount assumption.
+
 It returns an exact control quotient.  The theorem
 
 `p_quo_01_of_fixedSourceApproximation`
@@ -119,7 +126,11 @@ defects
 \]
 
 Let `macroLimit` be a fixed candidate limit model.  Assume additional target
-errors
+errors in **all model coordinates used by `ExactControlQuotient`**:
+
+\[
+|\widehat\beta_n-\bar\beta|\le \rho_d(n),
+\]
 
 \[
 |\widehat r_n(m,a)-\bar r(m,a)|\le \rho_r(n),
@@ -130,7 +141,31 @@ TV(\widehat P_n(\cdot\mid m,a),
    \bar P(\cdot\mid m,a))\le \rho_p(n),
 \]
 
-with all four envelopes tending to zero.
+with all five envelopes
+
+\[
+\epsilon_r,\epsilon_p,\rho_d,\rho_r,\rho_p
+\]
+
+tending to zero.
+
+Every `Q n` already satisfies
+
+\[
+\beta_{\rm micro}=\widehat\beta_n.
+\]
+
+Hence
+
+\[
+|\beta_{\rm micro}-\bar\beta|\le \rho_d(n)
+\]
+
+for every `n`.  The reusable structural-defect closure primitive then forces
+
+\[
+\beta_{\rm micro}=\bar\beta.
+\]
 
 Triangle inequalities give
 
@@ -173,6 +208,11 @@ P-IDs:
 \]
 
 This is directly compatible with Core v3's P-CORE source-identity discipline.
+The exactification step is also genuinely **candidate-driven**: the reusable
+`nonnegative_defect_eq_zero_of_uniform_bound` theorem from
+`StructuralDefectClosure.lean` is called for the fixed reward defect, the fixed
+transition-TV defect, and the limiting discount defect.  The control module no
+longer reimplements the scalar squeeze argument locally.
 
 ### Not established
 
@@ -181,8 +221,9 @@ The result does **not** show that M-QD, M-TC, or M-OI can be deleted.
 - exact M-QD remains more general than the metric defect presentation;
 - M-TC remains the independent finite quantitative propagation engine;
 - M-OI remains the independent topological/observable invariance closure;
-- the control-limit theorem uses elementary scalar/TV closure and P-QUO-01,
-  not the full M-OI theorem surface.
+- the control-limit theorem uses the registered structural-defect exactification
+  primitive plus P-QUO-01, but it does not make M-QD/M-TC/M-OI mutually
+  redundant or replace the full M-OI theorem surface.
 
 Therefore this S5 success upgrades SDC from a speculative pattern to a
 **validated second-order bridge architecture**, but not to a counted
