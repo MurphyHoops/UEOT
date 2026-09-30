@@ -85,8 +85,10 @@ an exact quotient representation in the limit when:
 4. the representation map is surjective.
 
 The conclusion is exact existence and uniqueness of the descended limiting
-quantity.  This theorem is not one of the frozen 106 source P-IDs; it is a new
-cross-layer consequence of the quotient-descent and asymptotic-defect ideas. -/
+quantity.  This theorem is not one of the frozen 106 source P-IDs, but by
+itself it is only an out-of-sample **metric corollary of M-QD** plus elementary
+limit closure.  Essential cross-generator evidence begins only in the weighted
+transport theorems below. -/
 theorem existsUnique_descend_of_vanishing_fiber_bound
     {X : Type uX} {Y : Type uY} {Z : Type uZ} [MetricSpace Z]
     (q : X → Y) (hq : Surjective q)
