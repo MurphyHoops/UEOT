@@ -299,6 +299,11 @@ theorem invariant_of_weighted_observable_transport
       (Eventually.of_forall fun n => dist_nonneg)
       (Eventually.of_forall fun n => hupper n)
   rw [tendsto_zero_iff_abs_tendsto_zero]
+  change
+    Tendsto
+      (fun n =>
+        |observe o (advance t (seq n)) - observe o (seq n)|)
+      atTop (𝓝 0)
   simpa [Real.dist_eq] using hdist
 
 /-- Exact zero defect is the degenerate endpoint of the same closure logic.
