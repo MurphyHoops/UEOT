@@ -212,16 +212,51 @@ dynamical reorganization.
 
 ## 10. Next pressure test
 
-The common-state-space Cesaro-limit object is now formalized.  The next useful
-step is an exact **support-face relation** across topology change.  Rather than
-matching old and new class labels, compare directly:
+The common-state-space Cesaro-limit object and exact **support-face relation**
+are now both formalized.
 
-- carrier-supported invariant-law sets;
-- supports/faces of the probability simplex;
-- Cesaro limits generated from the same initial law.
+`supportFace A` is the set of all probability laws supported on `A`.  It depends
+only on the common state space and carrier, not on the kernel or a recurrent
+class label.
 
-The first safe theorem should characterize how a topology merge changes the
-allowed support face: old carrier-supported invariant laws lived separately on
-`A` or `B`, while both the new merged invariant family and its realizable
-Cesaro limits live on `A ∪ B`.  Quantitative TV/Hausdorff-style stability should
-only be attempted after this exact set-valued relation is formalized.
+`supportFace_mono` proves carrier inclusion induces probability-face inclusion,
+and `carrierInvariantLawSet_subset_supportFace` places every carrier GOA family
+inside its corresponding face.
+
+For merge, `recurrentMerge_supportFace_envelope` proves all three semantic
+objects live in one common ambient envelope:
+
+- source `I_P(A)` lies in the union face `F(A ∪ B)`;
+- source `I_P(B)` lies in the same union face;
+- target `I_Q(A ∪ B)` is nonempty and also lies in that union face.
+
+This is an exact common-state-space relation, not a claim that source and target
+stationary laws are equal or close.
+
+For split/refinement, `recurrentSubcarrier_supportFace_envelope` proves any
+target recurrent subcarrier `C ⊆ A` regenerates a nonempty target GOA family
+inside the old source face `F(A)`.  `recurrentSplit_supportFace_envelope`
+packages two such target subcarriers simultaneously: both new GOA families are
+nonempty and both remain inside the old source support face.
+
+So topology-changing semantics now has two exact, label-free layers:
+
+\[
+\boxed{
+\text{carrier topology}
+\to
+\text{support-face envelope}
+\to
+\text{carrier invariant-law family}
+\supseteq
+\text{realizable Cesaro-limit set}.
+}
+\]
+
+The next pressure test is no longer structural existence.  It is to determine
+which **quantitative set distance**, if any, can remain controlled across a
+topology change.  Candidate comparisons include carrier-invariant-law sets and
+initial-condition-resolved Cesaro-limit sets, but any TV/Hausdorff-style theorem
+must explicitly account for the possibility of discontinuity at merge/split
+bifurcations.  A negative/discontinuity theorem may be the correct next result
+before seeking positive stability under stronger assumptions.

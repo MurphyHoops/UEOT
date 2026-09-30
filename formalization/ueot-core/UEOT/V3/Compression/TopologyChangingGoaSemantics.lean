@@ -158,6 +158,31 @@ def cesaroLimitSet
   {nu | ∃ phi : ℕ → ℕ,
     StrictMono phi ∧ Tendsto (cesaroRow P hP mu0 ∘ phi) atTop (𝓝 nu)}
 
+/-- The probability-simplex face cut out by support in a state carrier.  This
+depends only on the common state space and the carrier, not on a Markov kernel
+or a recurrent-class label. -/
+def supportFace (A : Set S) : Set (stdSimplex ℝ S) :=
+  {mu | SupportedOn mu A}
+
+/-- Support faces are monotone with carrier inclusion. -/
+theorem supportFace_mono
+    {A B : Set S} (hAB : A ⊆ B) :
+    supportFace A ⊆ supportFace B := by
+  intro mu hmu y hyB
+  apply hmu
+  intro hyA
+  exact hyB (hAB hyA)
+
+/-- Every carrier-supported invariant-law family lies inside the corresponding
+support face, independently of the kernel's other recurrent structure. -/
+theorem carrierInvariantLawSet_subset_supportFace
+    (P : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (A : Set S) :
+    carrierInvariantLawSet P hP A ⊆ supportFace A := by
+  intro mu hmu
+  exact hmu.2
+
 /-- P-GOA-01 gives at least one Cesaro subsequential limit from every initial
 law in the finite setting. -/
 theorem cesaroLimitSet_nonempty
@@ -319,6 +344,75 @@ theorem mergedCarrier_cesaroLimitSet_subset_of_cross
       P Q hP hQ hsupp A B hrecA hrecB ha hb hcross hclosed
   exact cesaroLimitSet_subset_carrierInvariantLawSet_of_closed
     Q hQ (A ∪ B) hmerged.2.2 mu0 hmu0
+
+/-- Exact common-state-space semantic envelope for a recurrent merge.
+
+The two source GOA families live in the smaller support faces `A` and `B`, hence
+also in the union face.  The newly regenerated target GOA family is nonempty
+and lives in the same union face.  No elementwise source/target stationary-law
+matching is asserted. -/
+theorem recurrentMerge_supportFace_envelope
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    (A B : Set S)
+    (hrecA : RecurrentCarrier P A)
+    (hrecB : RecurrentCarrier P B)
+    {a b : S} (ha : a ∈ A) (hb : b ∈ B)
+    (hcross : Communicates Q a b)
+    (hclosed : ClosedCarrier Q (A ∪ B)) :
+    carrierInvariantLawSet P hP A ⊆ supportFace (A ∪ B) ∧
+      carrierInvariantLawSet P hP B ⊆ supportFace (A ∪ B) ∧
+      (carrierInvariantLawSet Q hQ (A ∪ B)).Nonempty ∧
+      carrierInvariantLawSet Q hQ (A ∪ B) ⊆ supportFace (A ∪ B) := by
+  have hA : A ⊆ A ∪ B := fun x hx => Or.inl hx
+  have hB : B ⊆ A ∪ B := fun x hx => Or.inr hx
+  refine ⟨?_, ?_, ?_, carrierInvariantLawSet_subset_supportFace Q hQ (A ∪ B)⟩
+  · exact (carrierInvariantLawSet_subset_supportFace P hP A).trans
+      (supportFace_mono hA)
+  · exact (carrierInvariantLawSet_subset_supportFace P hP B).trans
+      (supportFace_mono hB)
+  · exact mergedCarrier_carrierInvariantLawSet_nonempty_of_cross
+      P Q hP hQ hsupp A B hrecA hrecB ha hb hcross hclosed
+
+/-- Exact support-face semantics for a recurrent split/refinement.  Any target
+recurrent subcarrier `C` lying inside an old source carrier `A` regenerates a
+nonempty target GOA family, and every law in that family remains inside the old
+source support face.  This gives a common ambient semantic envelope even when
+the old class label has split. -/
+theorem recurrentSubcarrier_supportFace_envelope
+    (Q : Matrix S S ℝ)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (A C : Set S)
+    (hCA : C ⊆ A)
+    (hrecC : RecurrentCarrier Q C) :
+    (carrierInvariantLawSet Q hQ C).Nonempty ∧
+      carrierInvariantLawSet Q hQ C ⊆ supportFace A := by
+  refine ⟨recurrentCarrier_carrierInvariantLawSet_nonempty Q hQ C hrecC, ?_⟩
+  exact (carrierInvariantLawSet_subset_supportFace Q hQ C).trans
+    (supportFace_mono hCA)
+
+/-- Two recurrent target subcarriers inside one old source carrier each
+regenerate their own nonempty GOA family, while both families remain in the old
+source support face.  This is the set-valued semantic counterpart of a split,
+without requiring a brittle one-to-one class-label correspondence. -/
+theorem recurrentSplit_supportFace_envelope
+    (Q : Matrix S S ℝ)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (A C D : Set S)
+    (hCA : C ⊆ A) (hDA : D ⊆ A)
+    (hrecC : RecurrentCarrier Q C)
+    (hrecD : RecurrentCarrier Q D) :
+    (carrierInvariantLawSet Q hQ C).Nonempty ∧
+      (carrierInvariantLawSet Q hQ D).Nonempty ∧
+      carrierInvariantLawSet Q hQ C ⊆ supportFace A ∧
+      carrierInvariantLawSet Q hQ D ⊆ supportFace A := by
+  rcases recurrentSubcarrier_supportFace_envelope Q hQ A C hCA hrecC with
+    ⟨hneC, hsubC⟩
+  rcases recurrentSubcarrier_supportFace_envelope Q hQ A D hDA hrecD with
+    ⟨hneD, hsubD⟩
+  exact ⟨hneC, hneD, hsubC, hsubD⟩
 
 end
 
