@@ -491,10 +491,15 @@ At the current verified checkpoint:
   P-CORE policy-induced closed-loop matrices, transports simplex evolution, and
   carries the source M-CF-certified unique invariant GOA to the target unique
   invariant law.  A direct wrapper starts from `SameFibers + same micro`;
-- **next research target:** prove TV and Dobrushin coefficients themselves are
-  invariant under finite state relabeling, so the complete geometric mixing
-  certificate — not only the unique invariant law — is quotient-gauge
-  invariant.
+- **TV / Dobrushin metric gauge invariance:** local PASS; simplex PMFs and row
+  PMFs commute with state relabeling, canonical event-supremum TV is exactly
+  preserved, conjugate kernels have identical Dobrushin coefficients, and the
+  complete M-CF geometric mixing certificate transfers with the same numerical
+  rate and initial TV error;
+- **next research target:** leave the now-nearly-saturated exact gauge lane and
+  test approximate semantic gauge stability, explicitly requiring semantic
+  reward/transition defect envelopes so representation mismatch is not falsely
+  identified with model closeness.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
