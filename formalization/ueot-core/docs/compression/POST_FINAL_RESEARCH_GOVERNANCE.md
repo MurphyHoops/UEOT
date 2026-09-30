@@ -138,6 +138,14 @@ unclassified branches touching governed Compression paths, resolves normal
 `main` merge pushes back to their associated PR branch, and checks live GitHub
 branch state so each research track has at most one remote mutating branch.
 
+Research-governance permissions use **base-policy enforcement**. Once
+`COMPRESSION_RESEARCH_TRACKS.json` exists on canonical `main`, a candidate PR
+may update that registry but the same PR is authorized only by the registry at
+its base ref. Therefore a governance PR cannot widen its own file/branch
+permissions and immediately use the wider candidate policy. The initial #198
+bootstrap is the one case where no base registry exists yet; after it lands,
+subsequent permission changes take effect only for later PRs.
+
 ## 6. Concurrency
 
 At most **two mutating post-FINAL research lanes** may be active at once:

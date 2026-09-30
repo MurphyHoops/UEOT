@@ -38,14 +38,35 @@ def git(repo: Path, *args: str) -> str:
     ).strip()
 
 
+def parse_json_object(raw: str, context: str) -> dict:
+    try:
+        value = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        fail(f"could not parse JSON-compatible governance data {context}: {exc}")
+    if not isinstance(value, dict):
+        fail(f"governance data must contain one JSON object: {context}")
+    return value
+
+
 def load_json(path: Path) -> dict:
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        fail(f"could not load JSON-compatible governance file {path}: {exc}")
-    if not isinstance(value, dict):
-        fail(f"governance file must contain one JSON object: {path}")
-    return value
+        raw = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        fail(f"could not load governance file {path}: {exc}")
+    return parse_json_object(raw, str(path))
+
+
+def load_json_at_ref(repo: Path, ref: str, rel: Path) -> dict | None:
+    completed = subprocess.run(
+        ["git", "show", f"{ref}:{rel.as_posix()}"],
+        cwd=repo,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        return None
+    return parse_json_object(completed.stdout, f"{ref}:{rel.as_posix()}")
 
 
 def require_file(repo: Path, rel: str, context: str) -> None:
@@ -183,7 +204,7 @@ def associated_pr_branch(repo_slug: str, sha: str, token: str) -> str | None:
         ref = head.get("ref")
         if not isinstance(ref, str):
             continue
-        if item.get("merge_commit_sha") == sha or item.get("merged_at"):
+        if item.get("merge_commit_sha") == sha:
             matches.append(ref)
     unique = sorted(set(matches))
     if len(unique) > 1:
@@ -195,6 +216,19 @@ def validate_live_concurrency(
     branch_names: list[str],
     compiled: dict[str, list[re.Pattern[str]]],
 ) -> None:
+    for branch in branch_names:
+        if not branch.startswith("compression/"):
+            continue
+        matches = [
+            track_id
+            for track_id in ("S", "H")
+            if matches_any(branch, compiled[track_id])
+        ]
+        if not matches:
+            fail(f"unclassified live compression branch is not allowed: {branch}")
+        if len(matches) > 1:
+            fail(f"live compression branch ambiguously matches tracks: {branch}")
+
     for track_id in ("S", "H"):
         active = sorted(
             branch
@@ -369,7 +403,7 @@ def validate_track_paths(
         governance = config["governance"]
         allowed_exact = set(governance.get("allowed_exact_paths", []))
         allowed_prefixes = tuple(governance.get("allowed_path_prefixes", []))
-        for path in governed_changes:
+        for path in paths:
             if path in allowed_exact or any(
                 path.startswith(prefix) for prefix in allowed_prefixes
             ):
@@ -384,6 +418,8 @@ def validate_track_paths(
         return
 
     if not matches:
+        if branch.startswith("compression/"):
+            fail(f"unclassified compression research branch is not allowed: {branch}")
         if governed_changes:
             fail(
                 f"unclassified branch {branch!r} modified governed Compression "
@@ -451,9 +487,19 @@ def main() -> None:
     config = load_json(repo / TRACKS_REL)
     ledger = load_json(repo / LEDGER_REL)
     compiled = validate_static(repo, config, ledger)
+    enforcement_config = config
+    enforcement_compiled = compiled
+    if args.baseline_ref:
+        baseline_config = load_json_at_ref(repo, args.baseline_ref, TRACKS_REL)
+        if baseline_config is not None:
+            enforcement_config = baseline_config
+            enforcement_compiled = validate_static(repo, baseline_config, ledger)
+
     branch = branch_for_run(repo, args.branch_name)
     paths = changed_paths(repo, args.baseline_ref, args.changed_path_file)
-    governed_changes = [path for path in paths if is_governed_path(path, config)]
+    governed_changes = [
+        path for path in paths if is_governed_path(path, enforcement_config)
+    ]
 
     repo_slug: str | None = None
     token: str | None = None
@@ -484,13 +530,20 @@ def main() -> None:
             .splitlines()
             if line.strip()
         ]
-        validate_live_concurrency(branch_names, compiled)
+        validate_live_concurrency(branch_names, enforcement_compiled)
     elif args.verify_live_state:
         assert repo_slug is not None and token is not None
-        validate_live_concurrency(github_branch_names(repo_slug, token), compiled)
+        validate_live_concurrency(
+            github_branch_names(repo_slug, token), enforcement_compiled
+        )
 
     validate_track_paths(
-        repo, args.baseline_ref, branch, paths, config, compiled
+        repo,
+        args.baseline_ref,
+        branch,
+        paths,
+        enforcement_config,
+        enforcement_compiled,
     )
 
     print(

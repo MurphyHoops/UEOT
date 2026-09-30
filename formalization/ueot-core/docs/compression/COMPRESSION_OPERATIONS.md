@@ -292,6 +292,13 @@ ownership violations, unclassified governed branches, duplicate live remote
 branches within one track, direct-main research mutation without an associated
 classified PR, or Track H mutation of counted/governance/global-root files.
 
+After the research-track registry is present on `main`, branch/path authority
+is evaluated from the **base-ref registry**, not from a candidate replacement
+in the same PR. Governance permission changes therefore require two steps when
+they are intended to authorize a new surface: first merge the policy change
+under the old policy, then use the new permission in a later PR. This prevents
+candidate-policy self-authorization.
+
 Every mutating post-FINAL PR must state its track and counted-core impact, pass
 exact-head CI, request Codex exact-head review, and use the recorded fallback
 only after an explicit quota refusal.

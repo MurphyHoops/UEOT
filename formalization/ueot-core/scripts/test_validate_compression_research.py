@@ -131,7 +131,7 @@ def main() -> None:
             "AssemblyAudit.lean"
         ],
         False,
-        "unclassified branch",
+        "unclassified compression research branch",
     )
     print("unclassified-compression-rejected: PASS")
 
@@ -146,6 +146,15 @@ def main() -> None:
         "outside the registered governance surface",
     )
     print("ops-theorem-mutation-rejected: PASS")
+
+    run_case(
+        repo,
+        "ops/compression-research-governance",
+        ["README.md"],
+        False,
+        "outside the registered governance surface",
+    )
+    print("ops-arbitrary-file-rejected: PASS")
 
     run_case(
         repo,
@@ -174,6 +183,22 @@ def main() -> None:
     finally:
         live_file.unlink(missing_ok=True)
     print("per-track-live-concurrency: PASS")
+
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
+        handle.write("compression/assembly-audit\n")
+        unclassified_live_file = Path(handle.name)
+    try:
+        run_case(
+            repo,
+            "ops/compression-research-governance",
+            [],
+            False,
+            "unclassified live compression branch",
+            ["--live-branches-file", str(unclassified_live_file)],
+        )
+    finally:
+        unclassified_live_file.unlink(missing_ok=True)
+    print("unclassified-live-branch-rejected: PASS")
 
     run_case(
         repo,
