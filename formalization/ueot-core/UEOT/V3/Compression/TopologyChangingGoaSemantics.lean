@@ -148,6 +148,80 @@ theorem pureSimplex_supportedOn
   change Function.update (fun _ : S => (0 : ℝ)) x0 1 y = 0
   rw [Function.update_of_ne hne]
 
+/-- Set of all subsequential Cesaro occupation limits from one initial law.
+This is an initial-condition-resolved long-run semantic object that does not
+mention any recurrent-class labels. -/
+def cesaroLimitSet
+    (P : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (mu0 : stdSimplex ℝ S) : Set (stdSimplex ℝ S) :=
+  {nu | ∃ phi : ℕ → ℕ,
+    StrictMono phi ∧ Tendsto (cesaroRow P hP mu0 ∘ phi) atTop (𝓝 nu)}
+
+/-- P-GOA-01 gives at least one Cesaro subsequential limit from every initial
+law in the finite setting. -/
+theorem cesaroLimitSet_nonempty
+    (P : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (mu0 : stdSimplex ℝ S) :
+    (cesaroLimitSet P hP mu0).Nonempty := by
+  rcases (p_goa_01 P hP mu0).1 with ⟨nu, phi, hphi, hlim⟩
+  exact ⟨nu, phi, hphi, hlim⟩
+
+/-- Every Cesaro subsequential limit is an invariant law. -/
+theorem cesaroLimitSet_subset_invariantLawSet
+    (P : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (mu0 : stdSimplex ℝ S) :
+    cesaroLimitSet P hP mu0 ⊆ invariantLawSet P hP := by
+  intro nu hnu
+  rcases hnu with ⟨phi, hphi, hlim⟩
+  have hinv := (p_goa_01 P hP mu0).2 nu phi hphi hlim
+  apply Subtype.ext
+  exact hinv
+
+/-- If the initial law is carried by a closed carrier, every realizable Cesaro
+limit belongs to that carrier's invariant-law family. -/
+theorem cesaroLimitSet_subset_carrierInvariantLawSet_of_closed
+    (P : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (A : Set S)
+    (hclosed : ClosedCarrier P A)
+    (mu0 : stdSimplex ℝ S)
+    (hmu0 : SupportedOn mu0 A) :
+    cesaroLimitSet P hP mu0 ⊆ carrierInvariantLawSet P hP A := by
+  intro nu hnu
+  rcases hnu with ⟨phi, hphi, hlim⟩
+  have hinvVec := (p_goa_01 P hP mu0).2 nu phi hphi hlim
+  have hinv : nu ∈ invariantLawSet P hP := by
+    apply Subtype.ext
+    exact hinvVec
+  have hsupp : SupportedOn nu A := by
+    apply supportedOn_of_tendsto A (cesaroRow P hP mu0 ∘ phi) nu
+    · intro n
+      exact cesaroRow_supportedOn_of_closedCarrier
+        P hP A hclosed mu0 hmu0 (phi n)
+    · exact hlim
+  exact ⟨hinv, hsupp⟩
+
+/-- For a recurrent carrier and an initial state inside it, the Cesaro limit
+set is nonempty and every one of its elements lies in the carrier-level GOA
+family. -/
+theorem recurrentCarrier_pure_cesaro_semantics
+    (P : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (A : Set S)
+    (hrec : RecurrentCarrier P A)
+    (x0 : S) (hx0 : x0 ∈ A) :
+    (cesaroLimitSet P hP (pureSimplex x0)).Nonempty ∧
+      cesaroLimitSet P hP (pureSimplex x0) ⊆
+        carrierInvariantLawSet P hP A := by
+  exact ⟨
+    cesaroLimitSet_nonempty P hP (pureSimplex x0),
+    cesaroLimitSet_subset_carrierInvariantLawSet_of_closed
+      P hP A hrec.2.2 (pureSimplex x0)
+        (pureSimplex_supportedOn A x0 hx0)⟩
+
 /-- **Carrier-level GOA existence.** Every finite recurrent carrier supports at
 least one invariant law of the ambient stochastic kernel.
 
@@ -221,6 +295,30 @@ theorem mergedCarrier_carrierInvariantLawSet_nonempty_of_two_edges
   exact recurrentCarrier_union_of_two_edges_of_closed
     P Q hP hQ hsupp A B hrecA hrecB
       ha₁ ha₂ hb₁ hb₂ hAB hBA hclosed
+
+/-- Initial-condition-resolved merge semantics.  Once `A ∪ B` is a target
+recurrent carrier, every Cesaro subsequential limit started from a law already
+supported on that union belongs to the newly generated target GOA family. -/
+theorem mergedCarrier_cesaroLimitSet_subset_of_cross
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (hsupp : TransitionSupportLe P Q)
+    (A B : Set S)
+    (hrecA : RecurrentCarrier P A)
+    (hrecB : RecurrentCarrier P B)
+    {a b : S} (ha : a ∈ A) (hb : b ∈ B)
+    (hcross : Communicates Q a b)
+    (hclosed : ClosedCarrier Q (A ∪ B))
+    (mu0 : stdSimplex ℝ S)
+    (hmu0 : SupportedOn mu0 (A ∪ B)) :
+    cesaroLimitSet Q hQ mu0 ⊆
+      carrierInvariantLawSet Q hQ (A ∪ B) := by
+  have hmerged : RecurrentCarrier Q (A ∪ B) :=
+    recurrentCarrier_union_of_cross_of_closed
+      P Q hP hQ hsupp A B hrecA hrecB ha hb hcross hclosed
+  exact cesaroLimitSet_subset_carrierInvariantLawSet_of_closed
+    Q hQ (A ∪ B) hmerged.2.2 mu0 hmu0
 
 end
 

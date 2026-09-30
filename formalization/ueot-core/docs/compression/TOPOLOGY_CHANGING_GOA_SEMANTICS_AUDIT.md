@@ -104,7 +104,61 @@ operational version: retained source support, one new positive edge in each
 cross direction, and target closure of the union imply a nonempty target GOA
 family on the merged carrier.
 
-## 6. Relation to M-OI and the compression architecture
+## 6. Initial-condition-resolved Cesaro limit semantics
+
+The module now defines
+
+`cesaroLimitSet P hP mu0`, the set of all limits of strictly increasing Cesaro
+subsequences generated from one initial law `mu0`:
+
+\[
+\mathcal C_P(\mu_0)
+=
+\{\nu:\exists\phi\text{ strictly increasing},\;
+C_{\phi(n)}(\mu_0)\to\nu\}.
+\]
+
+This object lives directly on the common state-space probability simplex and
+does not depend on a recurrent partition.
+
+`cesaroLimitSet_nonempty` is an exact P-GOA-01 corollary:
+
+\[
+\boxed{\mathcal C_P(\mu_0)\neq\varnothing.}
+\]
+
+`cesaroLimitSet_subset_invariantLawSet` proves every realizable Cesaro limit is
+an invariant law:
+
+\[
+\boxed{
+\mathcal C_P(\mu_0)\subseteq\mathcal I_P.
+}
+\]
+
+If the initial law is supported on a closed carrier `A`,
+`cesaroLimitSet_subset_carrierInvariantLawSet_of_closed` strengthens this to
+
+\[
+\boxed{
+\mathcal C_P(\mu_0)\subseteq\mathcal I_P(A).
+}
+\]
+
+Thus the carrier-level invariant-law family is not only an abstract existence
+set: it contains every actual Cesaro subsequential long-run law generated from
+initial data inside that carrier.
+
+`recurrentCarrier_pure_cesaro_semantics` packages the result for a pure initial
+state inside a recurrent carrier: the Cesaro limit set is nonempty and is a
+subset of the carrier GOA family.
+
+Finally `mergedCarrier_cesaroLimitSet_subset_of_cross` applies the same
+initial-condition-resolved statement after a genuine recurrent merge.  For any
+initial law already supported on `A ∪ B`, every target Cesaro subsequential
+limit lies in the newly generated merged target GOA family.
+
+## 7. Relation to M-OI and the compression architecture
 
 This lane is not a new generator.  Its semantic existence result is generated
 by combining:
@@ -117,7 +171,7 @@ So the new result is another example of the post-compression architecture
 producing a theorem absent from the original 106 P-ID list without changing the
 four-generator counted core.
 
-## 7. Why this is stronger than label transport
+## 8. Why this is stronger than label transport
 
 Exact gauge transport handles two descriptions of the **same** recurrent
 structure.  Topology change is different: the recurrent objects themselves may
@@ -142,7 +196,7 @@ while
 This prevents representation equivalence from being confused with genuine
 dynamical reorganization.
 
-## 8. Boundaries retained
+## 9. Boundaries retained
 
 - The current theorem proves **existence**, not uniqueness, of a target
   carrier-supported invariant law.
@@ -150,16 +204,17 @@ dynamical reorganization.
   invariant-law families.
 - It does not claim continuity of stationary laws through a merge/split
   bifurcation.
-- It does not yet characterize how Cesaro limits from arbitrary initial laws
-  redistribute mass across newly merged or split recurrent carriers.
+- It now localizes every Cesaro subsequential limit to the correct target
+  carrier family, but does not yet quantify how initial mass redistributes
+  across newly merged or split recurrent carriers.
 - No frozen theorem, counted generator, P-ID disposition, or ledger count is
   changed.
 
-## 9. Next pressure test
+## 10. Next pressure test
 
-The next useful object is a **common-state-space long-run semantic relation**
-that survives changing partitions.  Rather than matching old and new class
-labels, compare directly:
+The common-state-space Cesaro-limit object is now formalized.  The next useful
+step is an exact **support-face relation** across topology change.  Rather than
+matching old and new class labels, compare directly:
 
 - carrier-supported invariant-law sets;
 - supports/faces of the probability simplex;
@@ -167,6 +222,6 @@ labels, compare directly:
 
 The first safe theorem should characterize how a topology merge changes the
 allowed support face: old carrier-supported invariant laws lived separately on
-`A` or `B`, while the target merged GOA family lives on `A ∪ B`.  Quantitative
-TV/Hausdorff-style stability should only be attempted after this exact
-set-valued relation is formalized.
+`A` or `B`, while both the new merged invariant family and its realizable
+Cesaro limits live on `A ∪ B`.  Quantitative TV/Hausdorff-style stability should
+only be attempted after this exact set-valued relation is formalized.
