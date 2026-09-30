@@ -167,6 +167,18 @@ Use the second-order layer on an out-of-sample cross-module result.  P-CORE-01
 is preferred because Core v3 explicitly presents it as a finite
 object-realization-control assembly theorem.
 
+Current local result: **PASS as an independent-domain bridge transfer.**
+
+`StructuralDefectControlLimit.lean` now proves that vanishing approximate
+control-quotient defects close to an exact quotient, first for a fixed macro
+target and then for a genuinely varying P-CORE-01 `FixedSourceApproximation`
+sequence converging to a target macro model.  Exact P-QUO-01 consequences are
+then inherited from the existing source theorem rather than reproved.
+
+This S5 pass does not override the negative S1 wrapper-reduction audit.  The
+current recommended status is therefore **BRIDGE**, not
+`SECOND_ORDER_CANDIDATE`.
+
 ## 5. Relation to Core v3.0
 
 This mission is based on the actual v3.0 architecture, not earlier UEOT
