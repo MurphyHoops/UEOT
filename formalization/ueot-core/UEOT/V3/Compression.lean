@@ -114,3 +114,4 @@ import UEOT.V3.Compression.StructuralDefectClosure
 import UEOT.V3.Compression.StructuralDefectControlLimit
 import UEOT.V3.Compression.PositiveEigenInvariantLimit
 import UEOT.V3.Compression.RecursiveSufficientState
+import UEOT.V3.Compression.TeleologicalEquivalence
