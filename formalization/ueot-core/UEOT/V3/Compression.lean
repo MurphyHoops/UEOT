@@ -137,3 +137,4 @@ import UEOT.V3.Compression.InvariantSetGaugeInvariance
 import UEOT.V3.Compression.CesaroOccupationGaugeInvariance
 import UEOT.V3.Compression.RecurrentClassGaugeInvariance
 import UEOT.V3.Compression.FiniteRecurrentGaugeBridge
+import UEOT.V3.Compression.ApproximateRecurrentGaugeStability
