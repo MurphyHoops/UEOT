@@ -481,9 +481,14 @@ At the current verified checkpoint:
   fixed full-support law, weighted gauge mismatch converging to zero forces
   eventual exact `SameFibers` with the reference encoder because every nonzero
   mismatch has a positive minimum-mass gap;
-- **next research target:** after eventual gauge lock, transfer vanishing
-  reward/transition semantic defects from the moving encoder to the reference
-  partition and close the chain to an exact control quotient.
+- **gauge-to-control semantic transfer:** local PASS; exact quotients of one
+  micro model with the same source fibres have one unique M-QD-generated state
+  relabeling transporting reward, transition, optimal value, optimal Q, and
+  Bellman-optimal actions; weighted gauge convergence therefore yields eventual
+  exact control-semantic gauge lock for moving exact quotients;
+- **next research target:** lift the same semantic gauge through transported
+  optimal selectors to conjugate policy-induced closed-loop kernels and prove
+  GOA/invariant-law gauge invariance.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
