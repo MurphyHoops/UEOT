@@ -55,10 +55,19 @@ At least two existing counted generators must obtain materially thinner
 canonical theorem surfaces through the new layer, without strengthening source
 assumptions or importing the frozen source endpoint.
 
-### S2 — New theorem generation
+### S2 — New theorem generation with essential cross-generator dependence
 
 The candidate must generate at least one nontrivial theorem that was **not**
 among the 106 frozen P-IDs used to infer the pattern.
+
+**This gate is not satisfied by a new theorem that is merely a standard-library
+corollary of one existing generator.**  Before the mission can advance to
+SECOND_ORDER_CANDIDATE, at least one out-of-sample theorem must depend
+essentially on **multiple registered counted-generator theorem surfaces**.  The
+dependency must be visible in the Lean proof term/import graph or in a
+candidate-deletion experiment: removing one participating generator surface
+must break the advertised route unless a genuinely new replacement theorem is
+introduced.
 
 Initial out-of-sample target:
 
@@ -107,7 +116,13 @@ The first experiment formalizes:
 3. surjectivity then gives exact unique quotient descent;
 4. the resulting theorem is intentionally outside the frozen 106 P-ID list.
 
-This is an **S2 feasibility theorem**, not yet an S1 compression result.
+The first metric-limit theorem by itself is only an **S2 feasibility theorem**
+and an M-QD corollary with asymptotic metric closure; it does **not** satisfy the
+essential cross-generator clause above.  The subsequent weighted-transport
+extension must use the registered M-TC surface essentially, and a separate
+experiment must establish essential M-OI participation before any
+three-generator unification claim is allowed.  None of these facts alone is an
+S1 compression result.
 
 ## 4. Planned progression
 
