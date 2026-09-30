@@ -604,8 +604,12 @@ target kernel within that radius such that:
 * every target invariant law stays at TV distance exactly `1/2` from that
   source invariant law.
 
-Hence no unconditional stationary-law continuity estimate that vanishes only
-with entrywise kernel error can hold across recurrent-topology bifurcations.
+Hence no estimate can require **every prescribed source invariant law** to be
+approximated by target invariant laws with a radius that vanishes only with the
+entrywise kernel error across recurrent-topology bifurcations.  In particular,
+this witnesses failure of lower/Hausdorff-type continuity in that direction.
+It does not rule out a continuous stationary selection shared by source and
+target, nor an upper-semicontinuity statement for the whole invariant-law set.
 -/
 theorem arbitrarily_small_recurrentMerge_fixed_stationary_jump
     (delta : ℝ) (hdelta : 0 < delta) :
