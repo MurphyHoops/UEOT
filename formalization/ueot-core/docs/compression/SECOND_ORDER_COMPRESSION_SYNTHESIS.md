@@ -454,8 +454,12 @@ At the current verified checkpoint:
   moving positive-eigen invariant closure, Dobrushin geometric mixing, and
   robust imperfect-target alignment;
 - **decisive out-of-sample assembly:** finite Agency -> GOD -> GOA **PASS**;
-- **next research target:** approximate/identity-preserving generalization of
-  the assembly, preferably bringing M-TC into the end-to-end chain.
+- **quantitative perturbative assembly:** local PASS in
+  `ApproximateGoaTracking.lean`: P-QUO-02 near-optimal control + M-TC
+  time-varying defect transport + M-OI reference invariant existence + M-CF
+  near-GOA stability;
+- **next research target:** derive those local reward/transition/policy defect
+  certificates from an approximate history-level sufficient-state encoder.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
