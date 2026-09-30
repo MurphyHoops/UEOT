@@ -10,10 +10,6 @@
   `formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md`
 - Machine ledger:
   `formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml`
-- Post-FINAL research governance:
-  `formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md`
-- Machine research-track registry:
-  `formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json`
 - Human coverage view:
   `formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md`
 - Source theorem seed index:
@@ -163,24 +159,14 @@ At handoff:
 
 ## 10. Parallel conversations
 
-Parallelism is allowed only for genuinely separate M-IDs/tracks or read-only
-audits. Two chats must not mutate the same M-ID, research-track branch, or file
-ownership surface concurrently.
+Parallelism is allowed only for genuinely separate M-IDs or read-only audits.
+Two chats must not mutate the same M-ID branch/file concurrently.
 
 Recommended maximum:
 
 - active mutating compression lanes: 2;
 - open repository PRs: 2 total under repository governance;
 - read-only theorem/source audits: may run without branches.
-
-For post-FINAL research, the two mutating slots are explicitly:
-
-- Track S — Structural Defect / Long-Run Stability;
-- Track H — Hierarchy / Assembly Audit.
-
-There may be at most one active mutating branch per track. Cross-track
-dependencies are main-only; neither track may stack on the other's unmerged
-branch.
 
 ## 11. Mission completion gate
 
@@ -259,58 +245,3 @@ The older FINAL result remains valid for the theorem surface available at its
 checkpoint. A later closure supersedes it only for **current live compression
 accounting**; repository history must never be rewritten as though the new
 generator existed earlier.
-
-## 14. Post-FINAL research-track ownership
-
-The authoritative split is defined by
-`POST_FINAL_RESEARCH_GOVERNANCE.md` and machine-registered in
-`COMPRESSION_RESEARCH_TRACKS.json`.
-
-Track S owns the existing structural-defect/gauge/GOA/recurrent-topology and
-stationary-stability line, including residual-inverse and spectral/local
-isolation follow-ups.
-
-Track H owns hierarchy inventory, existing-generator coverage, parent-object
-assembly residual analysis, and hierarchy no-go/separation work. Its initial
-scope is H0-H3. New GOA/recurrent/spectral stability work is forbidden on Track
-H until the explicit cross-track integration gate opens.
-
-Branch naming:
-
-- Track S continues the registered compression research branch families;
-- Track H uses `compression/hierarchy-<topic>`;
-- governance changes use temporary `ops/compression-<topic>`.
-
-Track H implementation and documentation live only under
-`UEOT/V3/Compression/Hierarchy/` and `docs/compression/hierarchy/`, plus
-the public `Hierarchy.lean` root. The global `Compression.lean` root already
-imports `Hierarchy.lean` and is not Track H-owned.
-
-The Compression Guard runs
-`scripts/validate_compression_research.py` and rejects cross-track path
-ownership violations, unclassified governed branches, duplicate live remote
-branches within one track, direct-main research mutation without an associated
-classified PR, or Track H mutation of counted/governance/global-root files.
-
-After the research-track registry is present on `main`, branch/path authority
-is evaluated from the **base-ref registry**, not from a candidate replacement
-in the same PR. Governance permission changes therefore require two steps when
-they are intended to authorize a new surface: first merge the policy change
-under the old policy, then use the new permission in a later PR. This prevents
-candidate-policy self-authorization.
-
-The immutable executor for that rule is
-`.github/workflows/ueot-compression-research-policy.yml`. It uses
-`pull_request_target`, checks out only the base SHA, and executes the
-base-version validator while reading the candidate only as Git diff data. Never
-change this workflow to checkout or execute PR-head code under
-`pull_request_target`.
-
-The initial governance PR #198 is the sole bootstrap because its base predates
-this workflow/registry. Its bootstrap allowlist is intentionally explicit and
-must contain governance artifacts only; after merge, all later changes are
-authorized by the already-merged base policy.
-
-Every mutating post-FINAL PR must state its track and counted-core impact, pass
-exact-head CI, request Codex exact-head review, and use the recorded fallback
-only after an explicit quota refusal.

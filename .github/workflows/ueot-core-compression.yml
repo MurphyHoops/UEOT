@@ -7,14 +7,12 @@ on:
       - "formalization/ueot-core/**"
       - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
       - ".github/workflows/ueot-core-compression.yml"
-      - ".github/workflows/ueot-compression-research-policy.yml"
       - ".github/workflows/ueot-core-lean.yml"
   pull_request:
     paths:
       - "formalization/ueot-core/**"
       - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
       - ".github/workflows/ueot-core-compression.yml"
-      - ".github/workflows/ueot-compression-research-policy.yml"
       - ".github/workflows/ueot-core-lean.yml"
   workflow_dispatch:
 
@@ -43,7 +41,6 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           REF_NAME: ${{ github.ref_name }}
-          HEAD_REF: ${{ github.head_ref }}
           BEFORE_SHA: ${{ github.event.before }}
           GH_TOKEN: ${{ github.token }}
           GITHUB_EVENT_NAME: ${{ github.event_name }}
@@ -57,20 +54,13 @@ jobs:
             --repo-root . \
             --baseline-ref "$BASELINE_REF" \
             --verify-finalization-refs
-          python3 formalization/ueot-core/scripts/validate_compression_research.py \
-            --repo-root . \
-            --baseline-ref "$BASELINE_REF" \
-            --branch-name "${HEAD_REF:-$REF_NAME}" \
-            --verify-live-state
 
       - name: Regression-test mission completion gates
         env:
           GH_TOKEN: ${{ github.token }}
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: |
-          python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
-          python3 formalization/ueot-core/scripts/test_validate_compression_research.py --repo-root .
+        run: python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
 
   proof:
     runs-on: ubuntu-latest
@@ -138,7 +128,6 @@ jobs:
             echo "- head: `${GITHUB_SHA}`"
             echo "- matrix integrity: PASS"
             echo "- ledger validation: PASS"
-            echo "- post-FINAL research-track governance: PASS"
             echo "- compression build: PASS"
             echo "- proof-escape scan: PASS"
             echo "- full UEOT build: PASS"

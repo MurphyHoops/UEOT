@@ -28,21 +28,14 @@ jobs:
           ref: ${{ github.event.pull_request.base.sha }}
           fetch-depth: 0
 
-      - name: Detect bootstrap vs established base policy
-        id: policy
+      - name: Require established base policy
         shell: bash
         run: |
           set -euo pipefail
-          POLICY="formalization/ueot-core/scripts/validate_compression_research.py"
-          REGISTRY="formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
-          if [[ -f "$POLICY" && -f "$REGISTRY" ]]; then
-            echo "established=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "established=false" >> "$GITHUB_OUTPUT"
-          fi
+          test -f formalization/ueot-core/scripts/validate_compression_research.py
+          test -f formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json
 
       - name: Fetch candidate as data only
-        if: steps.policy.outputs.established == 'true'
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         shell: bash
@@ -51,20 +44,7 @@ jobs:
           git fetch --no-tags origin "$HEAD_SHA"
           git cat-file -e "$HEAD_SHA^{commit}"
 
-      - name: Read PR changed paths without executing candidate code
-        if: steps.policy.outputs.established == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          gh api --paginate "repos/$GH_REPO/pulls/$PR_NUMBER/files?per_page=100" --jq '.[].filename' > /tmp/pr_changed_paths.txt
-          test -s /tmp/pr_changed_paths.txt
-
       - name: Authorize with immutable base validator
-        if: steps.policy.outputs.established == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -74,33 +54,4 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 formalization/ueot-core/scripts/validate_compression_research.py --repo-root . --baseline-ref "$BASE_SHA" --candidate-ref "$HEAD_SHA" --branch-name "$HEAD_REF" --changed-path-file /tmp/pr_changed_paths.txt --verify-live-state
-
-      - name: Bootstrap guard
-        if: steps.policy.outputs.established != 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          HEAD_REF: ${{ github.event.pull_request.head.ref }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ "$HEAD_REF" != ops/compression-* ]]; then
-            echo "Compression research-policy bootstrap requires ops/compression-*." >&2
-            exit 1
-          fi
-          gh api --paginate "repos/$GH_REPO/pulls/$PR_NUMBER/files?per_page=100" --jq '.[].filename' > /tmp/bootstrap_paths.txt
-
-          while IFS= read -r path; do
-            case "$path" in
-              .github/workflows/ueot-core-compression.yml|+              .github/workflows/ueot-compression-research-policy.yml|+              formalization/ueot-core/UEOT/V3/Compression.lean|+              formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean|+              formalization/ueot-core/docs/compression/BRANCH_RETIREMENT_2026-10-01.md|+              formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md|+              formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md|+              formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json|+              formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md|+              formalization/ueot-core/docs/compression/hierarchy/*|+              formalization/ueot-core/scripts/test_validate_compression_research.py|+              formalization/ueot-core/scripts/validate_compression_research.py)
-                ;;
-              *)
-                echo "Bootstrap PR touches non-governance path: $path" >&2
-                exit 1
-                ;;
-            esac
-          done < /tmp/bootstrap_paths.txt
-
-          echo "Bootstrap governance surface: PASS"
+          python3 formalization/ueot-core/scripts/validate_compression_research.py --repo-root . --baseline-ref "$BASE_SHA" --candidate-ref "$HEAD_SHA" --branch-name "$HEAD_REF" --verify-live-state

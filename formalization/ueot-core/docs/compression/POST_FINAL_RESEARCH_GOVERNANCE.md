@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-FINAL Parallel Research Governance
 
-Status: **ACTIVE GOVERNANCE / POST-FINAL / UNCOUNTED**
+Status: **POLICY BOOTSTRAP / POST-FINAL / UNCOUNTED**
 
 Authority:
 
@@ -119,11 +119,11 @@ and the optional root import:
 
     formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean
 
-The global `Compression.lean` root permanently imports `Hierarchy.lean` from
-the governance layer. Track H never edits `Compression.lean`; it wires new
-Hierarchy modules only through its owned `Hierarchy.lean` root. Track S may
-edit the global root only for non-H Compression imports, and the validator
-protects the Hierarchy import itself.
+The bootstrap PR installs only the policy surface. A guarded follow-up PR will
+create the Hierarchy implementation/documentation roots and, if needed, wire
+`Hierarchy.lean` into the global `Compression.lean` import surface. Track H
+itself never owns `Compression.lean`; it wires later modules only through its
+dedicated root once that root has been installed under the immutable policy.
 
 On compression/hierarchy-* branches, direct edits to the frozen ledger,
 coverage, Mission Contract, ablation record, post-FINAL governance, workflow,
@@ -133,7 +133,7 @@ ops/compression-* branch.
 Track S branches are forbidden from editing the Track H namespace. They may
 consume merged Track H interfaces from main later.
 
-The Compression Guard machine-checks these ownership rules, rejects
+The base-policy guard machine-checks these ownership rules, rejects
 unclassified branches touching governed Compression paths, resolves normal
 `main` merge pushes back to their associated PR branch, and checks live GitHub
 branch state so each research track has at most one remote mutating branch.
@@ -156,10 +156,13 @@ Compression workflow remains subject to the previous main policy for that same
 PR.
 
 PR #198 is the one bootstrap exception because no immutable research-policy
-workflow exists on its base commit.  Its bootstrap is restricted to the
-explicit governance allowlist, contains no Track S/H theorem mutation, and
-requires exact-head CI plus independent Codex review before merge.  Once #198
-lands, there is no second bootstrap path.
+workflow exists on its base commit. To remove self-authorization from that
+bootstrap, #198 is deliberately **installation-only**: it adds the base-policy
+workflow, registry, policy document, validator, and validator regression tests,
+and makes no Track S/H theorem change, no global `Compression.lean` edit, and
+no ordinary Compression workflow edit. Exact-head CI and independent Codex
+review audit that minimal diff. Once #198 lands, every activation/follow-up PR
+is evaluated by the already-merged immutable base policy.
 
 ## 6. Concurrency
 

@@ -143,4 +143,3 @@ import UEOT.V3.Compression.TopologyChangingGoaSemantics
 import UEOT.V3.Compression.TopologyChangingGoaStabilityCertificate
 import UEOT.V3.Compression.TopologyChangingGoaAnchoredStability
 import UEOT.V3.Compression.TopologyChangingGoaMultiStepAnchoredStability
-import UEOT.V3.Compression.Hierarchy

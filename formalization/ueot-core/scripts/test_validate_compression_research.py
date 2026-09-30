@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import subprocess
 import sys
 import tempfile
@@ -57,6 +58,59 @@ def run_case(
         if completed.returncode == 0 or expected not in output:
             raise AssertionError(
                 f"expected rejection containing {expected!r} for {branch}\n{output}"
+            )
+
+
+def load_validator_module(repo: Path):
+    path = repo / "formalization/ueot-core/scripts/validate_compression_research.py"
+    spec = importlib.util.spec_from_file_location("compression_research_validator", path)
+    if spec is None or spec.loader is None:
+        raise AssertionError("could not load compression research validator module")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_rename_reports_source_and_destination(repo: Path) -> None:
+    module = load_validator_module(repo)
+    with tempfile.TemporaryDirectory() as tmp:
+        git_repo = Path(tmp)
+        subprocess.run(["git", "init", "-q"], cwd=git_repo, check=True)
+        subprocess.run(
+            ["git", "config", "user.name", "Regression Test"],
+            cwd=git_repo,
+            check=True,
+        )
+        subprocess.run(
+            ["git", "config", "user.email", "regression@example.invalid"],
+            cwd=git_repo,
+            check=True,
+        )
+        old = git_repo / "formalization/ueot-core/UEOT/V3/Compression/TrackS.lean"
+        old.parent.mkdir(parents=True)
+        old.write_text("-- source\n", encoding="utf-8")
+        subprocess.run(["git", "add", "."], cwd=git_repo, check=True)
+        subprocess.run(["git", "commit", "-qm", "base"], cwd=git_repo, check=True)
+        base = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=git_repo, text=True
+        ).strip()
+
+        new = git_repo / "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/TrackS.lean"
+        new.parent.mkdir(parents=True)
+        subprocess.run(["git", "mv", str(old.relative_to(git_repo)), str(new.relative_to(git_repo))], cwd=git_repo, check=True)
+        subprocess.run(["git", "commit", "-qam", "rename"], cwd=git_repo, check=True)
+        head = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=git_repo, text=True
+        ).strip()
+
+        paths = module.changed_paths(git_repo, base, None, head)
+        expected = {
+            "formalization/ueot-core/UEOT/V3/Compression/TrackS.lean",
+            "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/TrackS.lean",
+        }
+        if not expected.issubset(set(paths)):
+            raise AssertionError(
+                f"rename path audit lost source/destination: expected {expected}, got {paths}"
             )
 
 
@@ -211,6 +265,9 @@ def main() -> None:
         "direct-main research mutation is not allowed",
     )
     print("direct-main-research-rejected: PASS")
+
+    test_rename_reports_source_and_destination(repo)
+    print("rename-source-and-destination-audited: PASS")
 
 
 if __name__ == "__main__":

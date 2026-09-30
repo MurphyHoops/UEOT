@@ -110,10 +110,31 @@ def changed_paths(
     if not baseline_ref:
         return []
     try:
-        raw = git(repo, "diff", "--name-only", f"{baseline_ref}...{candidate_ref}")
+        raw = git(
+            repo,
+            "diff",
+            "--name-status",
+            "-M",
+            f"{baseline_ref}...{candidate_ref}",
+        )
     except subprocess.CalledProcessError as exc:
         fail(f"could not compute changed paths against {baseline_ref}: {exc}")
-    return sorted({line.strip() for line in raw.splitlines() if line.strip()})
+    paths: set[str] = set()
+    for line in raw.splitlines():
+        if not line.strip():
+            continue
+        fields = line.split("\t")
+        status = fields[0]
+        if status.startswith(("R", "C")):
+            if len(fields) != 3:
+                fail(f"malformed rename/copy diff record: {line!r}")
+            paths.add(fields[1])
+            paths.add(fields[2])
+        else:
+            if len(fields) != 2:
+                fail(f"malformed changed-path diff record: {line!r}")
+            paths.add(fields[1])
+    return sorted(paths)
 
 
 def matches_any(branch: str, patterns: list[re.Pattern[str]]) -> bool:
