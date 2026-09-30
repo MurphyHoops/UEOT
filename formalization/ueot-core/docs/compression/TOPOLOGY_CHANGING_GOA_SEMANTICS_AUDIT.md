@@ -196,21 +196,85 @@ while
 This prevents representation equivalence from being confused with genuine
 dynamical reorganization.
 
-## 9. Boundaries retained
+## 9. Quantitative discontinuity at a recurrent merge
+
+The exact support-face envelope does **not** imply quantitative stationary-law
+continuity across a topology bifurcation.  The module now contains an explicit
+two-state counterexample.
+
+Define the source kernel
+
+\[
+P=\begin{pmatrix}1&0\\0&1\end{pmatrix}
+\]
+
+and, for `0 < eps < 1`, the symmetric support-opening target kernel
+
+\[
+Q_\varepsilon=
+\begin{pmatrix}
+1-\varepsilon&\varepsilon\\
+\varepsilon&1-\varepsilon
+\end{pmatrix}.
+\]
+
+The machine-checked chain is:
+
+- `{0}` and `{1}` are distinct source recurrent carriers;
+- all source-positive support remains target-positive;
+- the two new cross-edges are positive;
+- the generic two-edge merge theorem therefore proves `{0} ∪ {1}` is one
+  target recurrent carrier;
+- `delta_0` is invariant for the source kernel;
+- every invariant law of `Q_eps` has coordinates exactly `(1/2,1/2)`;
+- finite-PMF TV then gives
+
+\[
+\boxed{
+D_{TV}(\delta_0,\mu_\varepsilon)=\tfrac12
+}
+\]
+
+for **every** target invariant law `mu_eps` and every `eps > 0`.
+
+Moreover `twoStateMergedKernel_entrywise_distance` proves every matrix entry
+changes by exactly `eps`.  Consequently
+`arbitrarily_small_recurrentMerge_fixed_stationary_jump` proves:
+
+\[
+\boxed{
+\forall\delta>0,\;\exists\varepsilon<\delta
+\text{ with entrywise kernel error }<\delta,
+\quad D_{TV}=\tfrac12.
+}
+\]
+
+This is a genuine recurrent-topology merge, not a mere relabeling or a
+one-sided transientization example.
+
+The scientific consequence is sharp: **kernel closeness alone cannot imply a
+stationary-law bound that vanishes with the kernel error across recurrent
+topology changes.**  Any positive continuity theorem must add assumptions that
+exclude this bifurcation mechanism, such as support/topology lock, a uniform
+ergodicity margin, or another certificate strong enough to prevent a spectral
+or recurrent-structure collapse.
+
+## 10. Boundaries retained
 
 - The current theorem proves **existence**, not uniqueness, of a target
   carrier-supported invariant law.
-- It does not yet quantify the distance between pre-change and post-change
-  invariant-law families.
 - It does not claim continuity of stationary laws through a merge/split
-  bifurcation.
+  bifurcation; the two-state theorem proves such continuity is false in
+  general.
+- It does not yet characterize the strongest additional assumptions under
+  which a positive set-distance theorem can be recovered.
 - It now localizes every Cesaro subsequential limit to the correct target
   carrier family, but does not yet quantify how initial mass redistributes
   across newly merged or split recurrent carriers.
 - No frozen theorem, counted generator, P-ID disposition, or ledger count is
   changed.
 
-## 10. Next pressure test
+## 11. Current exact topology-changing semantic stack
 
 The common-state-space Cesaro-limit object and exact **support-face relation**
 are now both formalized.
@@ -253,10 +317,15 @@ So topology-changing semantics now has two exact, label-free layers:
 }
 \]
 
-The next pressure test is no longer structural existence.  It is to determine
-which **quantitative set distance**, if any, can remain controlled across a
-topology change.  Candidate comparisons include carrier-invariant-law sets and
-initial-condition-resolved Cesaro-limit sets, but any TV/Hausdorff-style theorem
-must explicitly account for the possibility of discontinuity at merge/split
-bifurcations.  A negative/discontinuity theorem may be the correct next result
-before seeking positive stability under stronger assumptions.
+The quantitative pressure test is now answered negatively in the unrestricted
+topology-changing regime.  The next research question is therefore narrower:
+
+> What is the weakest explicit certificate that rules out the two-state
+> bifurcation mechanism and restores quantitative GOA continuity?
+
+The strongest already-formalized positive regime is support/topology lock from
+`RecurrentSupportMargin`: under a positive source support gap plus the relevant
+zero-support guard, recurrent structure is fixed.  A useful next theorem should
+connect that structural lock to a set-valued stationary-law or Cesaro-limit
+distance bound, rather than trying to prove continuity through an actual
+merge/split event.

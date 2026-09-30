@@ -416,4 +416,233 @@ theorem recurrentSplit_supportFace_envelope
 
 end
 
+noncomputable section
+
+local instance twoStateDecidableEq : DecidableEq (Fin 2) :=
+  Classical.decEq (Fin 2)
+
+/-! ## A two-state merge bifurcation: arbitrarily small kernel error, fixed GOA jump -/
+
+/-- Two disconnected absorbing states.  The singleton carriers `{0}` and `{1}`
+are distinct recurrent carriers, and every simplex law is invariant. -/
+def twoStateSourceKernel : Matrix (Fin 2) (Fin 2) ℝ :=
+  !![1, 0; 0, 1]
+
+/-- A symmetric support-opening perturbation.  For every `eps > 0`, the two
+source recurrent singleton carriers communicate in both directions and merge
+into one recurrent carrier. -/
+def twoStateMergedKernel (eps : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
+  !![1 - eps, eps; eps, 1 - eps]
+
+theorem twoStateSourceKernel_stochastic :
+    twoStateSourceKernel ∈ Matrix.rowStochastic ℝ (Fin 2) := by
+  rw [Matrix.mem_rowStochastic_iff_sum]
+  constructor
+  · intro i j
+    fin_cases i <;> fin_cases j <;> norm_num [twoStateSourceKernel]
+  · intro i
+    fin_cases i <;> rw [Fin.sum_univ_two] <;> norm_num [twoStateSourceKernel]
+
+theorem twoStateMergedKernel_stochastic
+    (eps : ℝ) (he0 : 0 ≤ eps) (he1 : eps ≤ 1) :
+    twoStateMergedKernel eps ∈ Matrix.rowStochastic ℝ (Fin 2) := by
+  rw [Matrix.mem_rowStochastic_iff_sum]
+  constructor
+  · intro i j
+    fin_cases i <;> fin_cases j <;>
+      simp [twoStateMergedKernel] <;> linarith
+  · intro i
+    fin_cases i <;> rw [Fin.sum_univ_two] <;> simp [twoStateMergedKernel]
+
+/-- The left absorbing source state is itself a recurrent carrier. -/
+theorem twoStateSource_zero_recurrent :
+    RecurrentCarrier twoStateSourceKernel ({0} : Set (Fin 2)) := by
+  refine ⟨⟨0, by simp⟩, ?_, ?_⟩
+  · intro x hx y hy
+    simp only [Set.mem_singleton_iff] at hx hy
+    subst x
+    subst y
+    exact ⟨⟨0, by simp [twoStateSourceKernel]⟩,
+      ⟨0, by simp [twoStateSourceKernel]⟩⟩
+  · intro x hx y hpos
+    simp only [Set.mem_singleton_iff] at hx ⊢
+    subst x
+    fin_cases y
+    · rfl
+    · norm_num [twoStateSourceKernel] at hpos
+
+/-- The right absorbing source state is itself a recurrent carrier. -/
+theorem twoStateSource_one_recurrent :
+    RecurrentCarrier twoStateSourceKernel ({1} : Set (Fin 2)) := by
+  refine ⟨⟨1, by simp⟩, ?_, ?_⟩
+  · intro x hx y hy
+    simp only [Set.mem_singleton_iff] at hx hy
+    subst x
+    subst y
+    exact ⟨⟨0, by simp [twoStateSourceKernel]⟩,
+      ⟨0, by simp [twoStateSourceKernel]⟩⟩
+  · intro x hx y hpos
+    simp only [Set.mem_singleton_iff] at hx ⊢
+    subst x
+    fin_cases y
+    · norm_num [twoStateSourceKernel] at hpos
+    · rfl
+
+/-- For `0 < eps < 1`, all source-positive support remains target-positive. -/
+theorem twoStateSourceSupport_le_merged
+    (eps : ℝ) (_heps : 0 < eps) (heps1 : eps < 1) :
+    TransitionSupportLe twoStateSourceKernel (twoStateMergedKernel eps) := by
+  intro x y hpos
+  fin_cases x <;> fin_cases y
+  · simpa [twoStateSourceKernel, twoStateMergedKernel] using sub_pos.mpr heps1
+  · norm_num [twoStateSourceKernel] at hpos
+  · norm_num [twoStateSourceKernel] at hpos
+  · simpa [twoStateSourceKernel, twoStateMergedKernel] using sub_pos.mpr heps1
+
+/-- The symmetric positive cross-edges turn the two source recurrent
+singletons into one target recurrent union.  This theorem deliberately reuses
+the generic two-edge recurrent-merge bridge proved in `RecurrentSupportMargin`.
+-/
+theorem twoStateMerged_union_recurrent
+    (eps : ℝ) (heps : 0 < eps) (heps1 : eps < 1) :
+    RecurrentCarrier (twoStateMergedKernel eps)
+      (({0} : Set (Fin 2)) ∪ {1}) := by
+  apply recurrentCarrier_union_of_two_edges_of_closed
+    twoStateSourceKernel (twoStateMergedKernel eps)
+    twoStateSourceKernel_stochastic
+    (twoStateMergedKernel_stochastic eps heps.le heps1.le)
+    (twoStateSourceSupport_le_merged eps heps heps1)
+    ({0} : Set (Fin 2)) ({1} : Set (Fin 2))
+    twoStateSource_zero_recurrent twoStateSource_one_recurrent
+    (a₁ := 0) (a₂ := 0) (b₁ := 1) (b₂ := 1)
+  · simp
+  · simp
+  · simp
+  · simp
+  · simpa [twoStateMergedKernel] using heps
+  · simpa [twoStateMergedKernel] using heps
+  · intro x hx y hpos
+    fin_cases y <;> simp
+
+/-- The source point mass at state `0` is invariant before the merge. -/
+theorem twoStateSource_pureZero_invariant :
+    pureSimplex (0 : Fin 2) ∈
+      invariantLawSet twoStateSourceKernel twoStateSourceKernel_stochastic := by
+  apply Subtype.ext
+  funext y
+  rw [step_apply, Fin.sum_univ_two]
+  fin_cases y <;>
+    norm_num [twoStateSourceKernel, pureSimplex, Pi.single]
+
+/-- Once the symmetric cross-support is opened, every target invariant law has
+exactly half of its mass on each state. -/
+theorem twoStateMerged_invariant_coordinates
+    (eps : ℝ) (heps : 0 < eps) (he1 : eps ≤ 1)
+    (mu : stdSimplex ℝ (Fin 2))
+    (hmu : mu ∈ invariantLawSet (twoStateMergedKernel eps)
+      (twoStateMergedKernel_stochastic eps heps.le he1)) :
+    mu (0 : Fin 2) = 1 / 2 ∧ mu (1 : Fin 2) = 1 / 2 := by
+  have hvec :
+      (step (twoStateMergedKernel eps)
+        (twoStateMergedKernel_stochastic eps heps.le he1) mu).1 = mu.1 :=
+    congrArg Subtype.val hmu
+  have h0 := congrFun hvec (0 : Fin 2)
+  rw [step_apply, Fin.sum_univ_two] at h0
+  simp [twoStateMergedKernel] at h0
+  change mu (0 : Fin 2) * (1 - eps) + mu (1 : Fin 2) * eps =
+    mu (0 : Fin 2) at h0
+  have hfac : (mu (1 : Fin 2) - mu (0 : Fin 2)) * eps = 0 := by
+    calc
+      (mu (1 : Fin 2) - mu (0 : Fin 2)) * eps =
+          mu (0 : Fin 2) * (1 - eps) + mu (1 : Fin 2) * eps -
+            mu (0 : Fin 2) := by ring
+      _ = 0 := by rw [h0]; ring
+  have heq : mu (1 : Fin 2) = mu (0 : Fin 2) := by
+    have hz : mu (1 : Fin 2) - mu (0 : Fin 2) = 0 :=
+      (mul_eq_zero.mp hfac).resolve_right (ne_of_gt heps)
+    linarith
+  have hsum := stdSimplex.sum_eq_one mu
+  rw [Fin.sum_univ_two, heq] at hsum
+  constructor <;> linarith
+
+/-- The long-run semantic jump across this merge is not small: every target
+invariant law is exactly TV-distance `1/2` from the source invariant point mass
+at state `0`, for every `eps > 0`. -/
+theorem twoStateMerged_invariant_tv_from_source_pureZero
+    (eps : ℝ) (heps : 0 < eps) (he1 : eps ≤ 1)
+    (mu : stdSimplex ℝ (Fin 2))
+    (hmu : mu ∈ invariantLawSet (twoStateMergedKernel eps)
+      (twoStateMergedKernel_stochastic eps heps.le he1)) :
+    lawTV (pureSimplex (0 : Fin 2)) mu = 1 / 2 := by
+  rcases twoStateMerged_invariant_coordinates eps heps he1 mu hmu with
+    ⟨h0, h1⟩
+  change mu.1 (0 : Fin 2) = 1 / 2 at h0
+  change mu.1 (1 : Fin 2) = 1 / 2 at h1
+  unfold lawTV UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.tvDist
+  letI : MeasurableSpace (Fin 2) := ⊤
+  rw [UEOT.V3.FiniteRecurrentDecompositionStability.pmf_tv_eq_half_sum_abs]
+  simp_rw [simplexPMF_toReal]
+  rw [Fin.sum_univ_two, h0, h1]
+  norm_num [pureSimplex, Pi.single]
+
+/-- The entrywise perturbation magnitude of the symmetric merge kernel is
+exactly `eps` in every matrix entry. -/
+theorem twoStateMergedKernel_entrywise_distance
+    (eps : ℝ) (heps : 0 ≤ eps) :
+    ∀ i j : Fin 2,
+      |twoStateMergedKernel eps i j - twoStateSourceKernel i j| = eps := by
+  intro i j
+  fin_cases i <;> fin_cases j <;>
+    simp [twoStateMergedKernel, twoStateSourceKernel, abs_of_nonneg heps]
+
+/-- **Topology-bifurcation discontinuity theorem.**  For every requested
+entrywise perturbation radius `delta > 0`, there exists a stochastic two-state
+target kernel within that radius such that:
+
+* the two source recurrent singleton carriers genuinely merge in the target;
+* the source point mass `delta_0` is invariant before the merge; and
+* every target invariant law stays at TV distance exactly `1/2` from that
+  source invariant law.
+
+Hence no unconditional stationary-law continuity estimate that vanishes only
+with entrywise kernel error can hold across recurrent-topology bifurcations.
+-/
+theorem arbitrarily_small_recurrentMerge_fixed_stationary_jump
+    (delta : ℝ) (hdelta : 0 < delta) :
+    ∃ eps : ℝ,
+      ∃ hQ : twoStateMergedKernel eps ∈ Matrix.rowStochastic ℝ (Fin 2),
+        0 < eps ∧ eps < delta ∧ eps < 1 ∧
+        (∀ i j : Fin 2,
+          |twoStateMergedKernel eps i j - twoStateSourceKernel i j| < delta) ∧
+        RecurrentCarrier twoStateSourceKernel ({0} : Set (Fin 2)) ∧
+        RecurrentCarrier twoStateSourceKernel ({1} : Set (Fin 2)) ∧
+        RecurrentCarrier (twoStateMergedKernel eps)
+          (({0} : Set (Fin 2)) ∪ {1}) ∧
+        pureSimplex (0 : Fin 2) ∈
+          invariantLawSet twoStateSourceKernel twoStateSourceKernel_stochastic ∧
+        (∀ mu : stdSimplex ℝ (Fin 2),
+          mu ∈ invariantLawSet (twoStateMergedKernel eps) hQ →
+          lawTV (pureSimplex (0 : Fin 2)) mu = 1 / 2) := by
+  let eps : ℝ := min (delta / 2) (1 / 2)
+  have heps : 0 < eps := by
+    dsimp [eps]
+    exact lt_min (by linarith) (by norm_num)
+  have hepsDelta : eps < delta := by
+    exact lt_of_le_of_lt (min_le_left _ _) (by linarith)
+  have hepsOne : eps < 1 := by
+    exact lt_of_le_of_lt (min_le_right _ _) (by norm_num)
+  let hQ := twoStateMergedKernel_stochastic eps heps.le hepsOne.le
+  refine ⟨eps, hQ, heps, hepsDelta, hepsOne, ?_,
+    twoStateSource_zero_recurrent, twoStateSource_one_recurrent,
+    twoStateMerged_union_recurrent eps heps hepsOne,
+    twoStateSource_pureZero_invariant, ?_⟩
+  · intro i j
+    rw [twoStateMergedKernel_entrywise_distance eps heps.le]
+    exact hepsDelta
+  · intro mu hmu
+    exact twoStateMerged_invariant_tv_from_source_pureZero
+      eps heps hepsOne.le mu hmu
+
+end
+
 end UEOT.V3.Compression.TopologyChangingGoaSemantics
