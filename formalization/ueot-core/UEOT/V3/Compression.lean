@@ -124,3 +124,4 @@ import UEOT.V3.Compression.HistoryEncoderExactClosure
 import UEOT.V3.Compression.QuotientGauge
 import UEOT.V3.Compression.ApproximateQuotientGauge
 import UEOT.V3.Compression.WeightedQuotientGauge
+import UEOT.V3.Compression.MovingEncoderGaugeClosure

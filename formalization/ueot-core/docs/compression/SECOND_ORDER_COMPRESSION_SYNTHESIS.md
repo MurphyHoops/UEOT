@@ -477,9 +477,13 @@ At the current verified checkpoint:
   law the optimal relabeling cost becomes the occupied mass of partition drift,
   with support-level zero semantics, full-support recovery of exact
   `SameFibers`, symmetry, and triangle inequality;
-- **next research target:** gauge-aligned moving representation limits that
-  keep partition drift separate from reward/transition/control defect before
-  applying M-TC or exactification.
+- **moving encoder gauge closure:** local PASS; for a finite source under one
+  fixed full-support law, weighted gauge mismatch converging to zero forces
+  eventual exact `SameFibers` with the reference encoder because every nonzero
+  mismatch has a positive minimum-mass gap;
+- **next research target:** after eventual gauge lock, transfer vanishing
+  reward/transition semantic defects from the moving encoder to the reference
+  partition and close the chain to an exact control quotient.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
