@@ -139,3 +139,4 @@ import UEOT.V3.Compression.RecurrentClassGaugeInvariance
 import UEOT.V3.Compression.FiniteRecurrentGaugeBridge
 import UEOT.V3.Compression.ApproximateRecurrentGaugeStability
 import UEOT.V3.Compression.RecurrentSupportMargin
+import UEOT.V3.Compression.TopologyChangingGoaSemantics
