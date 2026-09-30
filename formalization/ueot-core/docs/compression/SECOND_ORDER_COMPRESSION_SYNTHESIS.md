@@ -486,9 +486,15 @@ At the current verified checkpoint:
   relabeling transporting reward, transition, optimal value, optimal Q, and
   Bellman-optimal actions; weighted gauge convergence therefore yields eventual
   exact control-semantic gauge lock for moving exact quotients;
-- **next research target:** lift the same semantic gauge through transported
-  optimal selectors to conjugate policy-induced closed-loop kernels and prove
-  GOA/invariant-law gauge invariance.
+- **closed-loop / unique-GOA gauge invariance:** local PASS; the semantic state
+  relabeling transports deterministic optimal selectors, conjugates the exact
+  P-CORE policy-induced closed-loop matrices, transports simplex evolution, and
+  carries the source M-CF-certified unique invariant GOA to the target unique
+  invariant law.  A direct wrapper starts from `SameFibers + same micro`;
+- **next research target:** prove TV and Dobrushin coefficients themselves are
+  invariant under finite state relabeling, so the complete geometric mixing
+  certificate — not only the unique invariant law — is quotient-gauge
+  invariant.
 
 The compression program has therefore moved beyond proof deduplication: it now
 has a stable minimal core plus a growing, typed bridge architecture that can be
