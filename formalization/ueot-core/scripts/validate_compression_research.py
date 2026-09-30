@@ -517,6 +517,8 @@ def main() -> None:
     parser.add_argument("--baseline-ref")
     parser.add_argument("--candidate-ref", default="HEAD")
     parser.add_argument("--branch-name")
+    parser.add_argument("--head-repo")
+    parser.add_argument("--base-repo")
     parser.add_argument("--changed-path-file")
     parser.add_argument("--live-branches-file")
     parser.add_argument("--associated-branch")
@@ -563,6 +565,17 @@ def main() -> None:
                 "classified PR branch; direct-main research mutation is not allowed"
             )
         branch = associated
+
+    classified_mutating = any(
+        matches_any(branch, enforcement_compiled[track_id])
+        for track_id in ("S", "H", "GOVERNANCE")
+    )
+    if classified_mutating and args.head_repo and args.base_repo:
+        if args.head_repo != args.base_repo:
+            fail(
+                "fork-based mutating Compression research/governance branches "
+                f"are not allowed: head={args.head_repo}, base={args.base_repo}"
+            )
 
     if args.live_branches_file:
         branch_names = [

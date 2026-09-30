@@ -269,6 +269,24 @@ def main() -> None:
     test_rename_reports_source_and_destination(repo)
     print("rename-source-and-destination-audited: PASS")
 
+    run_case(
+        repo,
+        "compression/hierarchy-inventory",
+        [
+            "formalization/ueot-core/docs/compression/hierarchy/"
+            "HIERARCHY_INVENTORY.md"
+        ],
+        False,
+        "fork-based mutating Compression research/governance branches are not allowed",
+        [
+            "--head-repo",
+            "someone/UEOT-fork",
+            "--base-repo",
+            "MurphyHoops/UEOT",
+        ],
+    )
+    print("fork-mutating-research-rejected: PASS")
+
 
 if __name__ == "__main__":
     main()

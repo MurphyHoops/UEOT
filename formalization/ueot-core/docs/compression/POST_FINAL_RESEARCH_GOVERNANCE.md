@@ -155,6 +155,21 @@ the authorization job.  A PR that changes the validator, registry, or ordinary
 Compression workflow remains subject to the previous main policy for that same
 PR.
 
+The base-policy workflow intentionally has **no path filter**. It runs for every
+pull request so a rename or deletion cannot evade authorization by moving a
+governed source path outside a trigger pattern. The validator itself decides
+whether the trusted base/candidate Git diff touches governed Compression paths.
+
+Mutating Track S, Track H, and `ops/compression-*` governance branches must be
+hosted in the canonical repository. Fork-based mutating Compression branches
+are rejected; read-only/external work can still be reviewed separately without
+entering the governed mutation lanes.
+
+Canonical `main` is protected at the repository level: updates require a pull
+request, the rule is enforced for administrators, and force-push/delete are
+disabled. This repository setting is the direct-main enforcement boundary; it
+does not depend on candidate workflow code.
+
 PR #198 is the one bootstrap exception because no immutable research-policy
 workflow exists on its base commit. To remove self-authorization from that
 bootstrap, #198 is deliberately **installation-only**: it adds the base-policy

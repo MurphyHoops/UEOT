@@ -3,12 +3,6 @@ name: UEOT Compression Research Base Policy
 on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
-    paths:
-      - "formalization/ueot-core/**"
-      - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
-      - ".github/workflows/ueot-core-compression.yml"
-      - ".github/workflows/ueot-compression-research-policy.yml"
-      - ".github/workflows/ueot-core-lean.yml"
 
 permissions:
   contents: read
@@ -49,9 +43,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.repository }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         shell: bash
         run: |
           set -euo pipefail
-          python3 formalization/ueot-core/scripts/validate_compression_research.py --repo-root . --baseline-ref "$BASE_SHA" --candidate-ref "$HEAD_SHA" --branch-name "$HEAD_REF" --verify-live-state
+          python3 formalization/ueot-core/scripts/validate_compression_research.py --repo-root . --baseline-ref "$BASE_SHA" --candidate-ref "$HEAD_SHA" --branch-name "$HEAD_REF" --head-repo "$HEAD_REPO" --base-repo "$BASE_REPO" --verify-live-state
