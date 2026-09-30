@@ -41,6 +41,11 @@ zero-pattern separation needed to prevent tiny new edges. -/
 def HasTransitionGap (P : Matrix S S ℝ) (gamma : ℝ) : Prop :=
   ∀ x y, P x y = 0 ∨ gamma ≤ P x y
 
+/-- A structured perturbation preserves source zeros when it never creates a
+new positive/probability edge where the source kernel had exactly zero mass. -/
+def PreservesZeroSupport (P Q : Matrix S S ℝ) : Prop :=
+  ∀ x y, P x y = 0 → Q x y = 0
+
 /-- Two kernels that both have the same positive gap and are entrywise closer
 than that gap have identical positive support. -/
 theorem transitionSupportEq_of_gap
@@ -73,6 +78,55 @@ theorem transitionSupportEq_of_gap
       have hc := hclose x y
       rw [hPzero, sub_zero, abs_of_pos hQpos] at hc
       exact (not_lt_of_ge hQlarge hc).elim
+    · exact hgamma.trans_le hPlarge
+
+/-- A more operational one-sided support-lock criterion.  It is enough that the
+source positive edges have a margin, source-zero edges remain exactly zero in
+the target, and every entry moves by less than the source margin.  No target
+positive-gap certificate is needed. -/
+theorem transitionSupportEq_of_sourceGap_zeroGuard
+    (P Q : Matrix S S ℝ) (gamma : ℝ)
+    (hgamma : 0 < gamma)
+    (hPgap : HasTransitionGap P gamma)
+    (hzero : PreservesZeroSupport P Q)
+    (hclose : ∀ x y, |Q x y - P x y| < gamma) :
+    TransitionSupportEq P Q := by
+  intro x y
+  constructor
+  · intro hPpos
+    have hPlarge : gamma ≤ P x y := by
+      rcases hPgap x y with hPzero | hPlarge
+      · rw [hPzero] at hPpos
+        exact (lt_irrefl 0 hPpos).elim
+      · exact hPlarge
+    by_contra hQnot
+    have hQzero : Q x y = 0 := by
+      rcases lt_or_ge 0 (Q x y) with hQpos | hQnonpos
+      · exact (hQnot hQpos).elim
+      · have hQnonneg : 0 ≤ Q x y := by
+          by_contra hneg
+          have hneg' : Q x y < 0 := lt_of_not_ge hneg
+          have hc := hclose x y
+          have hPnonneg : 0 ≤ P x y := hPpos.le
+          have : gamma < gamma := by
+            calc
+              gamma ≤ P x y := hPlarge
+              _ < P x y - Q x y := by linarith
+              _ = |Q x y - P x y| := by
+                rw [abs_of_nonpos]
+                · ring
+                · linarith
+              _ < gamma := hc
+          exact (lt_irrefl gamma this).elim
+        exact le_antisymm hQnonpos hQnonneg
+    have hc := hclose x y
+    rw [hQzero, zero_sub, abs_neg, abs_of_pos hPpos] at hc
+    exact (not_lt_of_ge hPlarge hc).elim
+  · intro hQpos
+    rcases hPgap x y with hPzero | hPlarge
+    · have hQzero := hzero x y hPzero
+      rw [hQzero] at hQpos
+      exact (lt_irrefl 0 hQpos).elim
     · exact hgamma.trans_le hPlarge
 
 /-- Equality of one-step positive support propagates to every finite matrix
@@ -209,6 +263,21 @@ theorem recurrentCarrier_iff_of_gap
   exact recurrentCarrier_iff_of_transitionSupportEq P Q hP hQ
     (transitionSupportEq_of_gap P Q gamma hgamma hPgap hQgap hclose) A
 
+/-- One-sided sparse-support version of recurrent-carrier lock. -/
+theorem recurrentCarrier_iff_of_sourceGap_zeroGuard
+    (P Q : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Q ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ) (hgamma : 0 < gamma)
+    (hPgap : HasTransitionGap P gamma)
+    (hzero : PreservesZeroSupport P Q)
+    (hclose : ∀ x y, |Q x y - P x y| < gamma)
+    (A : Set S) :
+    RecurrentCarrier Q A ↔ RecurrentCarrier P A := by
+  exact recurrentCarrier_iff_of_transitionSupportEq P Q hP hQ
+    (transitionSupportEq_of_sourceGap_zeroGuard
+      P Q gamma hgamma hPgap hzero hclose) A
+
 /-- Support-margin lock followed by an exact state gauge: a recurrent carrier
 of the source is exactly the relabeled recurrent carrier of the physical
 target.  `Qaligned` is only a common-coordinate representative used to state
@@ -232,6 +301,27 @@ theorem recurrentCarrier_image_iff_of_gap_gauge
     _ ↔ RecurrentCarrier P A :=
       recurrentCarrier_iff_of_gap P Qaligned hP hQ
         gamma hgamma hPgap hQgap hclose A
+
+/-- Operational sparse-support lock followed by exact state gauge. -/
+theorem recurrentCarrier_image_iff_of_sourceGap_zeroGuard_gauge
+    [Nonempty S]
+    (P Qaligned Ptarget : Matrix S S ℝ)
+    (hP : P ∈ Matrix.rowStochastic ℝ S)
+    (hQ : Qaligned ∈ Matrix.rowStochastic ℝ S)
+    (gamma : ℝ) (hgamma : 0 < gamma)
+    (hPgap : HasTransitionGap P gamma)
+    (hzero : PreservesZeroSupport P Qaligned)
+    (hclose : ∀ x y, |Qaligned x y - P x y| < gamma)
+    (e : S ≃ S)
+    (hconj : ∀ s t, Qaligned s t = Ptarget (e s) (e t))
+    (A : Set S) :
+    RecurrentCarrier Ptarget (e '' A) ↔ RecurrentCarrier P A := by
+  calc
+    RecurrentCarrier Ptarget (e '' A) ↔ RecurrentCarrier Qaligned A :=
+      recurrentCarrier_image_iff Qaligned Ptarget e hconj A
+    _ ↔ RecurrentCarrier P A :=
+      recurrentCarrier_iff_of_sourceGap_zeroGuard
+        P Qaligned hP hQ gamma hgamma hPgap hzero hclose A
 
 end
 

@@ -131,7 +131,47 @@ This directly separates:
 1. **support-stable perturbation** in one aligned coordinate system;
 2. **pure representation gauge** into physical target coordinates.
 
-## 7. Relation to P-GOA-03
+## 7. Operational one-sided sparse-support lock
+
+The symmetric gap theorem is sufficient but stronger than necessary for many
+structured sparse models.  The module now also defines
+
+`PreservesZeroSupport P Q`, meaning
+
+\[
+P(x,y)=0 \Longrightarrow Q(x,y)=0.
+\]
+
+Assume only:
+
+- the **source** has positive-edge gap `gamma > 0`;
+- source-zero edges remain exactly zero in the aligned target;
+- every entry changes by strictly less than `gamma`.
+
+Then `transitionSupportEq_of_sourceGap_zeroGuard` proves the same exact support
+identity
+
+\[
+P(x,y)>0\iff Q(x,y)>0,
+\]
+
+without any independent target-gap certificate.  Source-positive edges cannot
+fall to zero because doing so would require a perturbation of at least
+`gamma`; source-zero edges cannot appear because the zero guard forbids them.
+
+The corresponding theorems
+
+- `recurrentCarrier_iff_of_sourceGap_zeroGuard`;
+- `recurrentCarrier_image_iff_of_sourceGap_zeroGuard_gauge`
+
+give recurrent-carrier lock directly in aligned coordinates and after an exact
+state gauge.
+
+This is the more operational sufficient condition for sparse Markov models:
+the structural zero pattern is known by construction, while only the nonzero
+transition weights are perturbed.
+
+## 8. Relation to P-GOA-03
 
 The chain is now:
 
@@ -154,25 +194,28 @@ recurrent theorem: the shared partition is not automatically guaranteed by
 small norm error, but it *is* guaranteed under an explicit support-separation
 margin.
 
-## 8. Boundaries retained
+## 9. Boundaries retained
 
-- The two-sided gap assumption is strong.  It rules out arbitrarily small new
-  positive edges by construction.
-- This file does not derive a target transition gap from source data alone.
+- The original two-sided gap theorem is strong; the one-sided sparse-support
+  theorem removes the target-gap certificate but still assumes exact
+  preservation of source-zero edges.
 - It does not yet construct the full target `FiniteRecurrentDecomposition`
   record or its transient fundamental matrix from support lock.
 - It does not treat class splitting/merging at the boundary where positive
   transition probabilities approach zero.
 - No counted generator, frozen P-ID, or ledger state changes.
 
-## 9. Next pressure test
+## 10. Next pressure test
 
-The next useful closure is a **source-margin plus zero-support guard** variant:
-replace the symmetric target-gap certificate with a more operational condition
-that source-zero edges remain exactly zero while source-positive edges stay
-positive under a one-sided margin.  That condition is closer to structured
-model perturbations where sparsity is known by construction.
+The one-sided sparse-support closure is now complete.  The remaining hard
+boundary is genuine **support-changing bifurcation**.
 
-After that, the remaining hard boundary is genuine support-changing
-bifurcation: class split/merge should be treated as a different regime rather
-than forced into fixed-partition P-GOA-03.
+The next theorem should make that boundary diagnostic rather than rhetorical:
+under a source positive-edge gap and sub-gap entrywise perturbation, any change
+of a recurrent carrier must imply creation of at least one new target-positive
+edge from a source-zero edge.  Equivalently, if no such new edge is created,
+the recurrent structure cannot split or merge.
+
+That result will identify the precise obstruction to fixed-partition P-GOA-03
+in this finite sparse regime instead of trying to absorb topology change into a
+small quantitative perturbation constant.
