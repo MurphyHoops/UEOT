@@ -154,3 +154,4 @@ import UEOT.V3.Compression.TopologyChangingGoaL1ResidualAdapter
 import UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm
 import UEOT.V3.Compression.TopologyChangingGoaL1StrictImprovement
 import UEOT.V3.Compression.TopologyChangingGoaL1ResetFamily
+import UEOT.V3.Compression.TopologyChangingGoaDobrushinL1Bridge
