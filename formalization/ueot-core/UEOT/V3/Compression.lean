@@ -151,3 +151,4 @@ import UEOT.V3.Compression.TopologyChangingGoaSharpSingularValue
 import UEOT.V3.Compression.TopologyChangingGoaZeroMassDimension
 import UEOT.V3.Compression.TopologyChangingGoaZeroMassNormSharpness
 import UEOT.V3.Compression.TopologyChangingGoaL1ResidualAdapter
+import UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm
