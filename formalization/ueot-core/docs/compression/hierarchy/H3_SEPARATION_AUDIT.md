@@ -1,6 +1,6 @@
 # Track H — H3 No-Go / Separation Audit
 
-Status: H3 ACTIVE / RESEARCH / UNCOUNTED
+Status: RESEARCH on H3 branch / MERGED_UNCOUNTED on canonical main after accepted H3 merge
 
 Authority:
 - parent mission: Issue #146;

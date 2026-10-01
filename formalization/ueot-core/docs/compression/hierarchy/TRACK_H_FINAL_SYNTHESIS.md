@@ -1,6 +1,6 @@
 # Track H — Final Synthesis Draft
 
-Status: H3 RESEARCH CANDIDATE; becomes canonical synthesis only after accepted H3 merge.
+Status: RESEARCH candidate on H3 branch / canonical synthesis after accepted H3 merge to main.
 
 ## H0 — hierarchy is typed plurality
 

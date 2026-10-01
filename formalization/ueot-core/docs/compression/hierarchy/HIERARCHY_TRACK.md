@@ -1,6 +1,6 @@
 # Track H — Hierarchy / Assembly Audit
 
-Status: **H0 CLOSED / H1 CLOSED / H2 CLOSED / H3 ACTIVE / RESEARCH**
+Status: **H0/H1/H2 CLOSED; H3 RESEARCH on branch / MERGED_UNCOUNTED on canonical main after accepted H3 merge**
 
 Authority:
 - parent compression mission: Issue #146;
@@ -28,11 +28,16 @@ Authority:
 1. **H0 — inventory / typing: CLOSED / MERGED_UNCOUNTED.**
 2. **H1 — existing-generator coverage: CLOSED / MERGED_UNCOUNTED.**
 3. **H2 — parent-object assembly residual: CLOSED / MERGED_UNCOUNTED.**
-4. **H3 — no-go / separation: CURRENT / RESEARCH.**
+4. **H3 — no-go / separation: RESEARCH on the H3 branch; MERGED_UNCOUNTED when the accepted H3 commit is on canonical main.**
 
 H2 owns no counted mapping. Its theorem evidence is G3 separation/boundary
 evidence, while its residual classification is SYNTHESIS_ONLY. H3 also owns no
 counted mapping and adds only G3 separation evidence.
+
+
+Operational Track-H closure additionally requires H3 resulting-main CI green and
+physical H3 branch retirement. Those operational facts are recorded in Issue
+#197; they do not require a second theorem/document finalization branch.
 
 ## H1 accounting retained
 
