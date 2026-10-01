@@ -149,3 +149,4 @@ import UEOT.V3.Compression.TopologyChangingGoaSpectralIsolation
 import UEOT.V3.Compression.TopologyChangingGoaRestrictedResidualAdapter
 import UEOT.V3.Compression.TopologyChangingGoaSharpSingularValue
 import UEOT.V3.Compression.TopologyChangingGoaZeroMassDimension
+import UEOT.V3.Compression.TopologyChangingGoaZeroMassNormSharpness
