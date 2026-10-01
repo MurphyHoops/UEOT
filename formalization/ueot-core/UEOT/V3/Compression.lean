@@ -156,3 +156,4 @@ import UEOT.V3.Compression.TopologyChangingGoaL1StrictImprovement
 import UEOT.V3.Compression.TopologyChangingGoaL1ResetFamily
 import UEOT.V3.Compression.TopologyChangingGoaDobrushinL1Bridge
 import UEOT.V3.Compression.TopologyChangingGoaDobrushinSeparation
+import UEOT.V3.Compression.TopologyChangingGoaPermutationClassification
