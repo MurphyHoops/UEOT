@@ -1,6 +1,6 @@
 # Track S — recurrent-class uniqueness / residual isolation
 
-Status: **LOCAL INTEGRATION CANDIDATE / TRACK S / UNCOUNTED / DO NOT PUSH**
+Status: **LOCAL TRACK-S CLOSURE FULL-GREEN / UNCOUNTED / BATCHED FOR ONE REMOTE REVIEW**
 
 Counted-core impact: **NONE**.
 
@@ -99,6 +99,20 @@ not its definition.
 
 ## Local validation
 
-Pending full integration and exact-head validation together with the remaining
-Track-S closure commits.  This lane stays local until Track S as a whole is
-closed and the complete local validation stack passes.
+This checkpoint is included in the final local Track-S closure batch.  The
+combined branch passed:
+
+- focused Lean compilation of all three new Track-S modules: **PASS**;
+- `lake build UEOT.V3.Compression`: **PASS (9051 jobs)**;
+- full `lake build UEOT`: **PASS (9070 jobs)**;
+- `git diff --check`: **PASS**;
+- proof-escape scan: **PASS**;
+- public-theorem axiom audit: only `propext`, `Classical.choice`, and
+  `Quot.sound`;
+- Track-S research governance: **PASS (7 changed paths)**;
+- research-governance regression suite: **PASS**;
+- frozen Compression governance validator: **PASS**;
+- frozen Compression validator regression suite: **PASS**.
+
+This lane will be sent to remote review only as part of the single final
+Track-S closure push.

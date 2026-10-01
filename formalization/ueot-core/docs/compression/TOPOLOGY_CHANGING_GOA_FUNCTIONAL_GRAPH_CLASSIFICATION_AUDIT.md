@@ -1,6 +1,6 @@
 # Track S — deterministic functional-graph classification
 
-Status: **LOCAL EXACT-HEAD FULL-GREEN / TRACK S / UNCOUNTED / READY FOR REMOTE REVIEW**
+Status: **LOCAL TRACK-S CLOSURE FULL-GREEN / UNCOUNTED / BATCHED FOR ONE REMOTE REVIEW**
 
 Counted-core impact: **NONE**.
 
@@ -162,3 +162,7 @@ The committed exact head also passed locally before any remote push:
 - research-governance regression suite: **PASS**;
 - frozen Compression governance validator: **PASS**;
 - frozen Compression validator regression suite: **PASS**.
+
+This checkpoint is now included in the larger local Track-S closure batch.
+The combined final branch contains seven Track-S-owned paths and has passed
+the full local closure validation stack; it will not be pushed separately.

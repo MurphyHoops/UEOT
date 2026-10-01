@@ -1,6 +1,6 @@
 # Track S — scientific closure audit
 
-Status: **LOCAL SCIENTIFIC CLOSURE CANDIDATE / UNCOUNTED / DO NOT PUSH YET**
+Status: **LOCAL FINAL FULL-GREEN / TRACK S / UNCOUNTED / READY FOR ONE REMOTE CLOSURE REVIEW**
 
 Counted-core impact: **NONE**.
 
@@ -207,9 +207,31 @@ focused Lean checks, Compression/root builds, proof-escape and axiom audits,
 research-governance validation/regressions, frozen Compression validation and
 regressions, and diff checks.
 
-## 12. Current disposition
+## 12. Final local validation
 
-**Scientific status: LOCAL CLOSURE CANDIDATE.**
+The complete batched Track-S branch passed the full local validation stack:
 
-Promotion to remote closure evidence is forbidden until the final local
-validation stack is completely green.
+- focused Lean checks for functional-graph classification,
+  recurrent-class uniqueness, and the final closure interface: **PASS**;
+- `lake build UEOT.V3.Compression`: **PASS (9051 jobs)**;
+- full `lake build UEOT`: **PASS (9070 jobs)**;
+- `git diff origin/main...HEAD --check`: **PASS**;
+- proof-escape scan across all three new Lean modules: **PASS**;
+- final public-surface axiom audit: only `propext`, `Classical.choice`, and
+  `Quot.sound`;
+- immutable Track-S research governance: **PASS (7 changed paths)**;
+- research-governance regression suite: **PASS**;
+- frozen Compression governance validator: **PASS**;
+- frozen Compression validator regression suite: **PASS**;
+- source theorem index remains **106 / 106 unique**;
+- final dispositions remain **106 / 106**;
+- counted compressed generators remain **4**.
+
+## 13. Current disposition
+
+**Scientific status: LOCAL TRACK-S FINITE-STATE CLOSURE FULL-GREEN.**
+
+The local scientific task is closed.  The next action is one batched remote
+push and one closure PR for external CI/review evidence.  Further local Track-S
+work should be treated as optional extension research rather than a blocker to
+this finite-state closure.
