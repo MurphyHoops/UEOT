@@ -9,7 +9,7 @@ Authority:
 - P0b activation PR: #202;
 - H0 merge PR: #203;
 - H1 merge PR: #206;
-- H2 base: `main@996b5f2488526230f927e0a804884dc070a9b085`;
+- H2 base: `main@2e1c243657156872bf576268a87140b7f6526779`;
 - H2 branch: `compression/hierarchy-h2-parent-assembly-residual`;
 - counted-core impact: **NONE**.
 
@@ -64,8 +64,8 @@ This is not a new primitive claim.
 
 ## Cross-track boundary
 
-Track-S checkpoints through PR #210 are consumed from canonical main only.
-Open/unmerged Track-S work such as #211 is not canonical evidence.
+Track-S checkpoints through PR #211 are consumed from canonical main only.
+Future unmerged Track-S work is not canonical evidence.
 
 Track H must not independently implement stationary-law / GOA perturbation,
 recurrent topology, residual inverse, spectral isolation, or L1 residual

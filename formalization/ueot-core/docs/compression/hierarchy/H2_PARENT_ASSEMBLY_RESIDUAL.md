@@ -5,7 +5,7 @@ Status: **H2 ACTIVE / RESEARCH / UNCOUNTED**
 Authority:
 - parent mission: Issue #146;
 - Track H tracker: Issue #197;
-- current H2 base: `main@996b5f2488526230f927e0a804884dc070a9b085`;
+- current H2 base: `main@2e1c243657156872bf576268a87140b7f6526779`;
 - H0/H1 evidence: canonical merged main only;
 - counted-core impact: **NONE**.
 
