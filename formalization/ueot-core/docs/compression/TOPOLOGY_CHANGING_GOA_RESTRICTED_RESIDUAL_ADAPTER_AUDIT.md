@@ -184,3 +184,53 @@ Mathlib's spectral theorem / orthonormal eigenbasis for `T* T`.
 That result should be kept separate because it is a reusable general linear-
 algebra statement.  It is not required for the present existence-and-robustness
 bridge, which is already complete.
+
+## 9. Quantitative isolation equivalence checkpoint
+
+The follow-up Track-S checkpoint closes the remaining direction between the
+structural operator condition and the quantitative S1 certificate.
+
+`restricted_injective_of_l2LowerBound` proves that any
+`ZeroSumL2LowerSingularBound P kappa` with its built-in `kappa > 0` forces
+`zeroSumResidualLinear P` to be injective.  The proof applies the lower bound to
+a zero-mass difference in the kernel: a zero residual forces zero Euclidean
+norm and therefore zero difference.
+
+Combining this converse with the already merged finite-dimensional
+antilipschitz construction gives
+
+`restricted_injective_iff_exists_positive_l2LowerBound`:
+
+\[
+\boxed{
+R_P|_{\sum v=0}\text{ injective}
+\iff
+\exists\kappa>0:\ \kappa\|v\|_2\le\|R_Pv\|_2
+\text{ on }\sum v=0.
+}
+\]
+
+Together with Mathlib's indexed singular-value characterization, the theorem
+
+`all_singularValues_pos_iff_exists_positive_l2LowerBound`
+
+proves
+
+\[
+\boxed{
+\bigl(\forall i<\operatorname{finrank},\ \sigma_i>0\bigr)
+\iff
+\exists\kappa>0\text{ quantitative Euclidean residual isolation}.
+}
+\]
+
+This is an exact finite-dimensional equivalence between qualitative spectral
+isolation and existence of a usable S1 lower-gain certificate.
+
+### Scope boundary
+
+This equivalence still does **not** identify the witness `kappa` with the
+smallest indexed singular value, nor claim optimality of the witness returned
+through the antilipschitz route.  That sharp-constant theorem remains a separate
+possible checkpoint.  It also does not assert that every conceivable semantic
+branch-residual inverse must arise from this Euclidean certificate.
