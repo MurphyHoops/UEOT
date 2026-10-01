@@ -160,3 +160,4 @@ import UEOT.V3.Compression.TopologyChangingGoaPermutationClassification
 import UEOT.V3.Compression.TopologyChangingGoaInvariantUniquenessIsolation
 import UEOT.V3.Compression.TopologyChangingGoaRecurrentClassUniqueness
 import UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification
+import UEOT.V3.Compression.TopologyChangingGoaTrackSClosure
