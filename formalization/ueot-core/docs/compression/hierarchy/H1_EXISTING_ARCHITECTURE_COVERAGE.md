@@ -391,15 +391,15 @@ one already-known universal hierarchy generator.
 
 The four counted generators have substantial but typed reach:
 
-[
-oxed{
-egin{aligned}
-mathrm{M!-!QD} &: 	ext{quotient / predictive descent},\
-mathrm{M!-!TC} &: 	ext{cross-scale / historical transport},\
-mathrm{M!-!PE} &: 	ext{positive-eigen / QSD / reproductive value},\
-mathrm{M!-!OI} &: 	ext{occupation-limit persistence / invariance}.
-end{aligned}}
-]
+\[
+\boxed{
+\begin{aligned}
+\mathrm{M\!-\!QD} &:\ \text{quotient / predictive descent},\\
+\mathrm{M\!-\!TC} &:\ \text{cross-scale / historical transport},\\
+\mathrm{M\!-\!PE} &:\ \text{positive-eigen / QSD / reproductive value},\\
+\mathrm{M\!-\!OI} &:\ \text{occupation-limit persistence / invariance}.
+\end{aligned}}
+\]
 
 Merged uncounted bridges close further typed interfaces, especially recursive
 prediction, alignment, and contractive GOA uniqueness/perturbation.
