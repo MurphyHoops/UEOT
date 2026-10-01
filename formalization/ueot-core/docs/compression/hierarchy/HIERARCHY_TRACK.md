@@ -9,7 +9,8 @@ Authority:
 - guarded-activation tracker: Issue #200;
 - P0b activation PR: #202;
 - H0 merge PR: #203;
-- canonical H0/H1 base: `main@829cc50b489cdd28330dcf641938cb35538a974f`;
+- H0 canonical merge: `main@829cc50b489cdd28330dcf641938cb35538a974f`;
+- H1 current reconciliation base: `main@d00baf8f84377f2160f6a7381fdeb100c5a0b113`;
 - H1 branch: `compression/hierarchy-h1-coverage`;
 - counted-core impact: **NONE**.
 
@@ -60,6 +61,9 @@ The four counted generators remain:
 
 The existing architecture has strong typed coverage but does not collapse into
 one universal hierarchy operator.
+
+Track-S PRs #207/#208 are consumed main-only as sharper GOA operator evidence;
+they do not change any H1 route class or Track-H ownership.
 
 The main open *formation* question is concentrated in H0-COMP: whether a
 multi-child parent-object binding/existence interface can be reconstructed

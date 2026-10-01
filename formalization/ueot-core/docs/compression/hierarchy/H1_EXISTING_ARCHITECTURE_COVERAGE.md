@@ -6,6 +6,7 @@ Authority:
 - parent mission: GitHub Issue #146;
 - Track H tracker: Issue #197;
 - H0 canonical merge: PR #203 / `main@829cc50b489cdd28330dcf641938cb35538a974f`;
+- H1 current reconciliation base: `main@d00baf8f84377f2160f6a7381fdeb100c5a0b113`;
 - H0 canonical inventory: `H0_HIERARCHY_INVENTORY.md`;
 - counted-core impact: **NONE**.
 
@@ -379,10 +380,19 @@ architecture:
 - `residualInverse_of_l2LowerSingularBound`;
 - `TopologyChangingGoaRestrictedResidualAdapter.restricted_injective_iff_all_singularValues_pos`;
 - `restricted_injective_iff_exists_positive_l2LowerBound`;
-- `all_singularValues_pos_iff_exists_positive_l2LowerBound`.
+- `all_singularValues_pos_iff_exists_positive_l2LowerBound`;
+- `TopologyChangingGoaSharpSingularValue.restrictedMinSingularValue_pos`;
+- `sharp_l2LowerSingularBound_of_restricted_injective`;
+- `sharp_stationary_tracking_of_restricted_injective`;
+- `TopologyChangingGoaZeroMassDimension.finrank_zeroSumEuclidean_add_one`;
+- `zeroSum_finrank_pos_iff_card_one_lt`;
+- `restrictedMinSingularValue_pos_of_card_one_lt`;
+- `sharp_stationary_tracking_of_card_one_lt`.
 
 They remain Track-S-owned and do not reclassify the frozen QSD/recurrent/
-spectral adapters.
+spectral adapters. PRs #207/#208 only sharpen the Euclidean residual certificate
+and expose its natural zero-mass dimension boundary; H1's family verdict is
+unchanged.
 
 ## 12. H1 scientific result
 
