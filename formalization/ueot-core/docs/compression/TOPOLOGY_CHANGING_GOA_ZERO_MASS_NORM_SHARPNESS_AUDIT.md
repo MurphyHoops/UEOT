@@ -103,8 +103,14 @@ sizes.
 
 ## 5. What may still improve
 
-Further GOA robustness improvements remain possible only by adding information
-not used in this checkpoint, for example:
+The negative result is cardinality-sensitive.  On every positive **even**
+cardinality treated here, zero-mass alone cannot lower the generic
+`sqrt(card S)` constant.  On **odd** cardinalities, however, zero-mass geometry
+can in principle yield a strictly smaller sharp state-count-only constant; this
+checkpoint does not formalize that odd-cardinality formula.
+
+For the even-cardinality family proved sharp here, further improvement requires
+additional information not used in this checkpoint, for example:
 
 - kernel-specific geometry of the residual image;
 - support restrictions on admissible signed-law perturbations;
@@ -113,7 +119,9 @@ not used in this checkpoint, for example:
   zero-mass directions.
 
 Those are legitimate stronger-data routes.  They should not be conflated with
-an impossible universal improvement from zero-mass alone.
+an impossible **even-cardinality** improvement from zero-mass alone.  A separate
+future checkpoint may characterize the exact zero-mass constant for odd or all
+finite cardinalities.
 
 ## 6. Boundaries retained
 

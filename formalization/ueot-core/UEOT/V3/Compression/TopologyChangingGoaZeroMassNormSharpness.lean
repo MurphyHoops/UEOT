@@ -15,8 +15,10 @@ constant valid for all zero-mass vectors on that state space must be at least
 `sqrt(card S)`.
 
 So the generic dimension-only factor is genuinely sharp on an infinite family
-of state spaces; future improvements must use additional kernel/support
-geometry rather than zero-mass alone.
+of positive even-cardinality state spaces.  On those even cardinalities,
+improving the factor requires information beyond zero-mass alone.  Odd
+cardinalities are deliberately left open here: their zero-mass geometry may
+admit a strictly smaller state-count-only constant.
 -/
 
 namespace UEOT.V3.Compression.TopologyChangingGoaZeroMassNormSharpness
