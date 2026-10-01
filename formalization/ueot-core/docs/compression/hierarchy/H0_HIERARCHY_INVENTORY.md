@@ -6,7 +6,7 @@ Authority:
 - parent mission: GitHub Issue #146;
 - Track H tracker: Issue #197;
 - guarded activation: #200 / PR #202;
-- canonical recovery base: `main@13da37cbbe9c99dd699b731be8be55fd54384d55`;
+- canonical recovery base: `main@178c671e35a45afa5956502cfae59a929edd5efb`;
 - counted-core impact: **NONE**.
 
 This document is the H0 source/Lean-backed inventory required before H1/H2/H3.
@@ -334,7 +334,7 @@ counted_core_impact = NONE**.
 | `AgencyGodGoaAssembly.agency_god_goa_from_history` | G2 | one history-derived sufficient state -> constructed control model -> greedy selector/GOD -> closed-loop -> invariant/unique GOA under explicit contraction | valid assembly theorem, but not a multi-child parent-object theorem |
 | `HistoryEncoderExactClosure.exactControlQuotient_of_vanishing_fiber_defects` | G1/G2 | vanishing encoder fibre defects close to an exact control quotient using existing closure machinery | strengthens representation-to-control assembly without providing P-COMP parent formation |
 | `TopologyChangingGoaSpectralIsolation.residualInverse_of_l1Isolation`; `residualInverse_of_l2LowerSingularBound` | G1 | merged Track-S operator-isolation certificates derive residual-inverse constants for stationary-law tracking | canonical main evidence only for H0-GOA typing; remains Track-S-owned and supplies no parent-object formation rule |
-| `TopologyChangingGoaRestrictedResidualAdapter.restricted_injective_iff_all_singularValues_pos`; `exists_stationary_tracking_of_restricted_injective` | G1 | merged Track-S zero-mass residual injectivity / singular-spectrum certificate implies existence of an S1 lower-gain constant and GOA tracking tube | canonical main evidence only for H0-GOA typing; remains Track-S-owned and does not alter H2 parent-object assembly |
+| `TopologyChangingGoaRestrictedResidualAdapter.restricted_injective_iff_all_singularValues_pos`; `restricted_injective_iff_exists_positive_l2LowerBound`; `all_singularValues_pos_iff_exists_positive_l2LowerBound`; `exists_stationary_tracking_of_restricted_injective` | G1 | merged Track-S zero-mass residual injectivity / indexed singular-spectrum / positive lower-gain equivalence supplies a quantitative isolation certificate and GOA tracking tube | canonical main evidence only for H0-GOA typing; remains Track-S-owned and does not alter H2 parent-object assembly |
 
 No POST_FINAL_RESEARCH branch is used as canonical evidence in this H0 inventory.
 
