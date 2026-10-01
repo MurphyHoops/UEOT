@@ -18,7 +18,7 @@ So the generic dimension-only factor is genuinely sharp on an infinite family
 of positive even-cardinality state spaces.  On those even cardinalities,
 improving the factor requires information beyond zero-mass alone.  Odd
 cardinalities are deliberately left open here: their zero-mass geometry may
-admit a strictly smaller state-count-only constant.
+permit a strictly smaller state-count-only constant.
 -/
 
 namespace UEOT.V3.Compression.TopologyChangingGoaZeroMassNormSharpness
