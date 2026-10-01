@@ -1,6 +1,6 @@
 # Track S — invariant uniqueness / residual-isolation equivalence
 
-Status: **LOCAL EXACT-HEAD FULL-GREEN / TRACK S / UNCOUNTED / READY FOR REMOTE REVIEW**
+Status: **MERGED UNCOUNTED / PR #219 / RESULTING-MAIN FULL-GREEN**
 
 Counted-core impact: **NONE**.
 

@@ -126,6 +126,56 @@ theorem invariantProbabilityVectorUnique_iff_class_subsingleton
     letI : Subsingleton C := h
     exact invariantProbabilityVectorUnique_of_class_subsingleton M
 
+/-- A certified recurrent decomposition on a nontrivial finite full state space
+must contain at least one recurrent class.  This makes the later
+`Subsingleton C` characterization literally equivalent to "exactly one
+recurrent class", rather than merely "at most one". -/
+theorem recurrentClass_nonempty_of_nontrivial_full_state
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (hcard : 1 < Fintype.card (FullState T R)) :
+    Nonempty C := by
+  classical
+  rcases isEmpty_or_nonempty R with hRempty | hRnonempty
+  · let _ : IsEmpty R := hRempty
+    have hfull : Nonempty (FullState T R) :=
+      Fintype.card_pos_iff.mp (lt_trans Nat.zero_lt_one hcard)
+    let x : FullState T R := Classical.choice hfull
+    cases x with
+    | inl i =>
+        rcases isEmpty_or_nonempty C with hCempty | hCnonempty
+        · let _ : IsEmpty C := hCempty
+          have hrow := M.block.H_row_sum i
+          simp at hrow
+        · exact hCnonempty
+    | inr r =>
+        exact isEmptyElim r
+  · exact ⟨K.classOf (Classical.choice hRnonempty)⟩
+
+private theorem recurrentClass_card_eq_one_iff_subsingleton
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (hcard : 1 < Fintype.card (FullState T R)) :
+    Fintype.card C = 1 ↔ Subsingleton C := by
+  have hCpos : 0 < Fintype.card C :=
+    Fintype.card_pos_iff.mpr
+      (recurrentClass_nonempty_of_nontrivial_full_state M hcard)
+  constructor
+  · intro hcardC
+    exact Fintype.card_le_one_iff_subsingleton.mp (by omega)
+  · intro hsub
+    have hCle : Fintype.card C ≤ 1 :=
+      Fintype.card_le_one_iff_subsingleton.mpr hsub
+    omega
+
+/-- On a nontrivial certified finite recurrent decomposition, uniqueness of
+invariant probability vectors is equivalent to having exactly one recurrent
+class. -/
+theorem invariantProbabilityVectorUnique_iff_recurrentClass_card_eq_one
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (hcard : 1 < Fintype.card (FullState T R)) :
+    InvariantProbabilityVectorUnique M ↔ Fintype.card C = 1 := by
+  rw [invariantProbabilityVectorUnique_iff_class_subsingleton M]
+  exact (recurrentClass_card_eq_one_iff_subsingleton M hcard).symm
+
 private theorem classicalStochastic
     (M : FiniteRecurrentDecomposition (T := T) K) :
     letI : DecidableEq (FullState T R) := Classical.decEq _
@@ -181,6 +231,16 @@ theorem l1ResidualConorm_pos_iff_recurrentClass_subsingleton
   rw [l1ResidualConorm_pos_iff_invariantLawSet_subsingleton
     M.P (classicalStochastic M) hcard]
   exact invariantSetSubsingleton_iff_classSubsingleton M
+
+/-- Exact recurrent-topology form of the Track-S certificate: on a nontrivial
+certified finite recurrent decomposition, the canonical direct-L1 residual
+conorm is positive exactly when there is one recurrent class. -/
+theorem l1ResidualConorm_pos_iff_recurrentClass_card_eq_one
+    (M : FiniteRecurrentDecomposition (T := T) K)
+    (hcard : 1 < Fintype.card (FullState T R)) :
+    0 < l1ResidualConorm M.P ↔ Fintype.card C = 1 := by
+  rw [l1ResidualConorm_pos_iff_recurrentClass_subsingleton M hcard]
+  exact (recurrentClass_card_eq_one_iff_subsingleton M hcard).symm
 
 end
 end UEOT.V3.Compression.TopologyChangingGoaRecurrentClassUniqueness

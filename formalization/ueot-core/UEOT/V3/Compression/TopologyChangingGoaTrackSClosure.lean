@@ -122,5 +122,20 @@ theorem certified_recurrent_decomposition_isolation_iff_unique_class
     0 < l1ResidualConorm M.P ↔ Subsingleton C :=
   l1ResidualConorm_pos_iff_recurrentClass_subsingleton M hcard
 
+/-- Audit-hardened exact-cardinality form: for a nontrivial certified finite
+recurrent decomposition, positive canonical residual isolation is equivalent
+to the recurrent-class index having cardinality exactly one. -/
+theorem certified_recurrent_decomposition_isolation_iff_exactly_one_class
+    {T : Type*} {R : Type*} {C : Type*}
+    [Fintype T] [DecidableEq T] [Fintype R] [DecidableEq R]
+    [Fintype C] [DecidableEq C]
+    {K : UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentPartition R C}
+    (M : UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition
+      (T := T) K)
+    (hcard : 1 < Fintype.card
+      (UEOT.V3.FiniteRecurrentDecompositionStability.FullState T R)) :
+    0 < l1ResidualConorm M.P ↔ Fintype.card C = 1 :=
+  l1ResidualConorm_pos_iff_recurrentClass_card_eq_one M hcard
+
 end
 end UEOT.V3.Compression.TopologyChangingGoaTrackSClosure
