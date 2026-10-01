@@ -294,9 +294,9 @@ The following is preparation for H1, not an H1 completion claim.
 | H0-DYN | partial | strong | none | none | transport/structural-defect interfaces | CTMC generator/semigroup adapter |
 | H0-RES | no full route | possible transport only after maps exist | none | none | none currently reconstruct full family | closure/Galois/blocker realization structure |
 | H0-COMP | quotient may enter parent representation after supplied | robustness may transport supplied composition certificates | possible only for later positive-growth semantics | possible only for later invariant closure | AgencyGodGoaAssembly is not a parent constructor | common child-path law, cut irreducibility, parent predictive information, realization, composition window |
-| H0-HIST | secondary | strong | none | none | weighted/structural transport bridges | no parent-assembly content |
+| H0-HIST | secondary | strong | none | **exact for P-PER-02 via M-OI-01**; P-PER-01/03/04 retained | weighted/structural transport bridges | no parent-assembly content |
 | H0-VAL | none | possible robustness only | none | none | TeleologicalEquivalence, ValueAlignment | P-ALI-01 global integrability and source differential adapters |
-| H0-SEL | none | none | related positive-eigen machinery but not fixed-fitness bridge | none | none that collapse selection/objecthood | reproduction-channel semantics and selection boundary |
+| H0-SEL | none | none | **exact for P-EVO-04 via M-PE-01**; P-EVO-03 remains a related retained adapter | none | none that collapse selection/objecthood | P-BRG-01, P-EVO-01/03 retained adapters; P-BRG-02/P-EVO-02 retained boundaries |
 | H0-GOA | none | perturbative only | related spectral/eigenstructure | strong for invariant-limit core | merged GOA/stability interfaces, with Track-S ownership | Dobrushin/recurrent/spectral adapters; Track-S boundary |
 
 ## 7. H0 disposition
