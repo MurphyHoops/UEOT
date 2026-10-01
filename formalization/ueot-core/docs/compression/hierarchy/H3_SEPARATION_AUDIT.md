@@ -1,0 +1,129 @@
+# Track H — H3 No-Go / Separation Audit
+
+Status: RESEARCH on H3 branch / MERGED_UNCOUNTED on canonical main after accepted H3 merge
+
+Authority:
+- parent mission: Issue #146;
+- Track H tracker: Issue #197;
+- H0/H1 canonical evidence: merged main only;
+- H2 evidence: canonical merged main only;
+- counted-core impact: NONE.
+
+## Purpose
+
+H3 blocks false unifications exposed by H0-H2.
+
+It does not invent a universal Objecthood or Hierarchy predicate merely to turn
+natural-language distinctions into theorem syntax.
+
+## Machine-checkable separation 1 — carrier does not determine maximizers
+
+Public theorem:
+
+theorem carrier_does_not_determine_maximizers :
+  ∃ f g : Bool → ℝ, ¬ MaximizerEquivalent f g
+
+Finite witness:
+- one common carrier: Bool;
+- one objective maximized at true;
+- one objective maximized at false.
+
+Exact conclusion:
+the carrier/state space alone does not determine a unique objective or
+maximizer set.
+
+Nonclaim:
+this does not assert that every possible formal notion of parent object is
+independent of objectives; Core v3 has no universal Objecthood predicate.
+
+## Machine-checkable separation 2 — response does not determine fitness
+
+Public theorem:
+
+theorem response_does_not_determine_fitness :
+  ∃ B₀ B₁ : ReplicationBridge Bool Bool,
+    B₀.response = B₁.response ∧
+    B₀.fitness false ≠ B₁.fitness false
+
+Finite witness:
+- both bridges have response map id;
+- their replication functionals differ.
+
+Exact conclusion:
+behavioral response alone does not determine replication/selection semantics.
+
+Frozen boundary:
+P-BRG-02 remains RETAINED_BOUNDARY and proves equality of fitness multipliers
+only under one declared response-to-replication bridge. Extra replication
+channels remain outside that model.
+
+## Merged H2 separations reused
+
+H3 should cite rather than duplicate:
+- common witness does not imply hierarchy lift without fibre compatibility;
+- child consistency does not determine a unique parent completion;
+- equal child marginals do not determine a unique joint law;
+- M-QD gives the positive hierarchy-lift case exactly under fibre
+  compatibility.
+
+## Signature-level no-go statements
+
+Current canonical Core v3 does not expose one universal Objecthood predicate.
+
+Therefore these remain source/signature-level *non-derivation records* unless
+future canonical vocabulary supplies their predicates:
+- current signatures do not establish parent-object status -> selection-unit status;
+- current signatures do not establish value alignment -> objecthood;
+- current signatures do not establish macro predictive sufficiency -> physical irreducibility;
+- current signatures do not establish correlation/integration score -> parent-object status.
+
+H3 must not manufacture an Objecthood predicate solely to obtain theorem-shaped
+no-go statements.
+
+## Validation history
+
+Pre-activation detached validation against the real H2 merge
+`main@f71784d4c89da35e885703cfd5a9e6bb2cca7451` passed focused Lean,
+module build, Compression build, full `lake build UEOT`, proof-escape and
+axiom audits.
+
+Final reconciliation against current canonical
+`main@9975bed92dfaf5dc86a61d027a5b33f4ecb82a57` completed locally before
+the final remote update:
+- merge conflicts: 0;
+- diff-check / control-character / trailing-whitespace scans: PASS;
+- public H3 API: exactly 2 theorems;
+- proof-escape scan: PASS;
+- focused H3 Lean: PASS;
+- H3 module build: PASS;
+- Hierarchy public-root build: PASS;
+- Compression build: PASS;
+- FINAL ledger/live-reference validator: PASS;
+- emitted ledger witness Lean audit: PASS;
+- compression-validator regression tests: PASS;
+- Compression axiom audit: PASS;
+- H3 axiom audit: only standard `propext / Classical.choice / Quot.sound`;
+- full `lake build UEOT`: **PASS (9071 jobs)**.
+
+The final reconciliation changes no H3 theorem statement or proof. It absorbs
+canonical Track-S closure through PR #222 and updates Track-H audit metadata
+only.
+
+## Architecture classification
+
+- role: G3;
+- lifecycle on the H3 branch: RESEARCH;
+- lifecycle after accepted merge: MERGED_UNCOUNTED;
+- owner: H;
+- provenance on the H3 branch: POST_FINAL_RESEARCH;
+- counted-core impact: NONE.
+
+## Explicit nonclaims
+
+H3 does not claim:
+- a universal Objecthood predicate;
+- a universal hierarchy operator;
+- a fifth counted generator;
+- any frozen P-ID reclassification;
+- any generator-count or ledger change;
+- any 4->3 / 4->4 / 4->5 conclusion.
