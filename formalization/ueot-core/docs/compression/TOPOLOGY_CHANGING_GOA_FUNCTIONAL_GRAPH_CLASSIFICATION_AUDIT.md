@@ -73,7 +73,7 @@ and constructs an explicit nonzero signed vector which is:
 - exactly zero in total mass; and
 - fixed by the deterministic kernel.
 
-Therefore the local candidate proves
+The merged theorem proves
 
     restricted residual injective
       iff
@@ -93,7 +93,7 @@ Combining with the merged invariant-uniqueness theorem also yields
 
 ## Deterministic Dobrushin dichotomy
 
-The candidate additionally proves the sharp one-step dichotomy:
+The merged theorem additionally proves the sharp one-step dichotomy:
 
 - if `f` is constant, `dobrushinAlpha(P_f)=0`;
 - if `f` has two distinct images, `dobrushinAlpha(P_f)=1`.
@@ -125,10 +125,10 @@ mixing completely and still possess unique isolated long-run semantics.
 - No new generic recurrent-class decomposition theorem.
 - No frozen P-ID, counted generator, ledger, or Track-H change.
 
-## Next Track-S decision
+## Track-S synthesis reached
 
-If this classification passes full local and remote audit, Track S reaches a
-natural synthesis point:
+This classification passed local validation and the batched remote closure
+audit in PR #220, so Track S reached the intended synthesis point:
 
     strict mixing
       => positive residual isolation
@@ -139,10 +139,11 @@ with deterministic specialization
     positive residual isolation
       <=> exactly one recurrent periodic orbit.
 
-The next research should then be chosen deliberately between a quantitative
-cycle-geometry lane (for example an exact/sharp `n`-cycle conorm) and a Track-S
-synthesis/closure lane.  A new broad qualitative certificate family should not
-be opened without a clear uncovered gap.
+The finite-state synthesis/closure lane was then completed in the same PR #220.
+Quantitative cycle geometry (for example an exact/sharp `n`-cycle conorm) is an
+optional extension rather than an unfinished closure obligation.  A new broad
+qualitative certificate family should not be opened without a genuinely
+uncovered gap.
 
 ## Local validation before commit
 
