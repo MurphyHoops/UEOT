@@ -171,6 +171,75 @@ theorem exists_stationary_tracking_of_all_singularValues_pos
   exact exists_stationary_tracking_of_restricted_injective
     P hP Q hQ muStar hmuStar epsilon hinj hrow
 
+
+/-- Any positive Euclidean lower-gain certificate forces the restricted
+zero-mass residual operator to be injective.  This is the converse of
+`exists_l2LowerSingularBound_of_restricted_injective`. -/
+theorem restricted_injective_of_l2LowerBound
+    (P : Matrix S S ℝ) (kappa : ℝ)
+    (hiso : ZeroSumL2LowerSingularBound P kappa) :
+    Function.Injective (zeroSumResidualLinear P) := by
+  intro x y hxy
+  have hres : zeroSumResidualLinear P (x - y) = 0 := by
+    rw [map_sub, hxy, sub_self]
+  let v : S → ℝ :=
+    ((x - y : zeroSumEuclidean (S := S)) : EuclideanSpace ℝ S).ofLp
+  have hvsum : (∑ s, v s) = 0 := by
+    exact (zeroSum_mem_iff v).1 (by
+      simpa [v] using (x - y).property)
+  have hlow := hiso.lower v hvsum
+  have hlinzero :
+      residualEuclideanLinear P (WithLp.toLp 2 v) = 0 := by
+    simpa [zeroSumResidualLinear, v] using hres
+  have hresCoord : signedResidual P v = 0 := by
+    rw [← residualEuclideanLinear_ofLp]
+    funext s
+    have hs := congrArg (fun z : EuclideanSpace ℝ S => z.ofLp s) hlinzero
+    simpa using hs
+  have hnormzero : signedL2 v = 0 := by
+    have hk : 0 < kappa := hiso.kappa_pos
+    have hright : signedL2 (signedResidual P v) = 0 := by
+      rw [hresCoord]
+      simp [signedL2]
+    rw [hright] at hlow
+    have hnonneg : 0 ≤ signedL2 v := by
+      unfold signedL2
+      exact Real.sqrt_nonneg _
+    nlinarith
+  have hsubnorm : ‖(x - y : zeroSumEuclidean (S := S))‖ = 0 := by
+    have hcoord := signedL2_eq_euclidean_norm v
+    have :
+        ‖((x - y : zeroSumEuclidean (S := S)) : EuclideanSpace ℝ S)‖ = 0 := by
+      calc
+        ‖((x - y : zeroSumEuclidean (S := S)) : EuclideanSpace ℝ S)‖
+            = signedL2 v := by simpa [v] using hcoord.symm
+        _ = 0 := hnormzero
+    simpa using this
+  have hsubzero : x - y = 0 := norm_eq_zero.mp hsubnorm
+  exact sub_eq_zero.mp hsubzero
+
+/-- In finite dimension, restricted residual injectivity is equivalent to the
+existence of some positive Euclidean lower-gain certificate. -/
+theorem restricted_injective_iff_exists_positive_l2LowerBound
+    (P : Matrix S S ℝ) :
+    Function.Injective (zeroSumResidualLinear P) ↔
+      ∃ kappa > 0, ZeroSumL2LowerSingularBound P kappa := by
+  constructor
+  · exact exists_l2LowerSingularBound_of_restricted_injective P
+  · rintro ⟨kappa, hkappa, hiso⟩
+    exact restricted_injective_of_l2LowerBound P kappa hiso
+
+/-- Exact finite-dimensional equivalence between positivity of every relevant
+indexed singular value and the existence of some positive quantitative
+Euclidean residual-isolation constant. -/
+theorem all_singularValues_pos_iff_exists_positive_l2LowerBound
+    (P : Matrix S S ℝ) :
+    (∀ i < Module.finrank ℝ (zeroSumEuclidean (S := S)),
+      0 < (zeroSumResidualLinear P).singularValues i) ↔
+      ∃ kappa > 0, ZeroSumL2LowerSingularBound P kappa := by
+  rw [← restricted_injective_iff_all_singularValues_pos P]
+  exact restricted_injective_iff_exists_positive_l2LowerBound P
+
 end
 
 end UEOT.V3.Compression.TopologyChangingGoaRestrictedResidualAdapter
