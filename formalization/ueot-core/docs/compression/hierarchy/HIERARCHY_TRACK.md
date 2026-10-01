@@ -11,7 +11,7 @@ Authority:
 - H1 merge PR: #206;
 - H2 merge PR: #212;
 - H2 merge commit: `f71784d4c89da35e885703cfd5a9e6bb2cca7451`;
-- H3 base: `main@f71784d4c89da35e885703cfd5a9e6bb2cca7451`;
+- H3 base: `main@9975bed92dfaf5dc86a61d027a5b33f4ecb82a57`;
 - H3 branch: `compression/hierarchy-h3-separations`;
 - counted-core impact: **NONE**.
 
@@ -88,8 +88,10 @@ not promote a new primitive or alter the counted core.
 
 ## Cross-track boundary
 
-Track-S checkpoints through PR #211 are consumed from canonical main only.
-Future unmerged Track-S work is not canonical evidence.
+Track-S finite-state closure through PR #222 is consumed from canonical main
+only. The finite-state Track-S subproblem is CLOSED; Track-S ownership remains
+active only for optional future quantitative/infinite-state extensions. Future
+unmerged Track-S work is not canonical evidence.
 
 Track H must not independently implement stationary-law / GOA perturbation,
 recurrent topology, residual inverse, spectral isolation, or L1 residual

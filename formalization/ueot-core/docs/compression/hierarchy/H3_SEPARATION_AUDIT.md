@@ -80,26 +80,42 @@ future canonical vocabulary supplies their predicates:
 H3 must not manufacture an Objecthood predicate solely to obtain theorem-shaped
 no-go statements.
 
-## Validation already completed in detached precheck
+## Validation history
 
-Before H3 branch activation, the final two-theorem module was tested against
-the real H2 merge commit `main@f71784d4c89da35e885703cfd5a9e6bb2cca7451`
-in a detached worktree:
+Pre-activation detached validation against the real H2 merge
+`main@f71784d4c89da35e885703cfd5a9e6bb2cca7451` passed focused Lean,
+module build, Compression build, full `lake build UEOT`, proof-escape and
+axiom audits.
+
+Final reconciliation against current canonical
+`main@9975bed92dfaf5dc86a61d027a5b33f4ecb82a57` completed locally before
+the final remote update:
+- merge conflicts: 0;
+- diff-check / control-character / trailing-whitespace scans: PASS;
+- public H3 API: exactly 2 theorems;
 - proof-escape scan: PASS;
-- focused Lean: PASS;
-- module build: PASS;
+- focused H3 Lean: PASS;
+- H3 module build: PASS;
+- Hierarchy public-root build: PASS;
 - Compression build: PASS;
-- full lake build UEOT: PASS (9062 jobs).
+- FINAL ledger/live-reference validator: PASS;
+- emitted ledger witness Lean audit: PASS;
+- compression-validator regression tests: PASS;
+- Compression axiom audit: PASS;
+- H3 axiom audit: only standard `propext / Classical.choice / Quot.sound`;
+- full `lake build UEOT`: **PASS (9071 jobs)**.
 
-No H3 repository mutation occurred.
+The final reconciliation changes no H3 theorem statement or proof. It absorbs
+canonical Track-S closure through PR #222 and updates Track-H audit metadata
+only.
 
 ## Architecture classification
 
 - role: G3;
-- lifecycle on future branch: RESEARCH;
+- lifecycle on the H3 branch: RESEARCH;
 - lifecycle after accepted merge: MERGED_UNCOUNTED;
 - owner: H;
-- provenance on future branch: POST_FINAL_RESEARCH;
+- provenance on the H3 branch: POST_FINAL_RESEARCH;
 - counted-core impact: NONE.
 
 ## Explicit nonclaims

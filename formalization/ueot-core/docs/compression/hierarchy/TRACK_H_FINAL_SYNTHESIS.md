@@ -67,11 +67,11 @@ Machine-checkable:
 - merged H2 separations show that common-witness, child-projection, and
   child-marginal data do not in general suffice for parent reconstruction.
 
-Signature-level:
-- parent object -> selection unit is not supplied by current theorem signatures;
-- value alignment -> objecthood is not supplied;
-- macro predictive sufficiency -> physical irreducibility is not supplied;
-- integration score -> parent object is not supplied.
+Signature-level non-derivation records:
+- current signatures do not establish parent-object status -> selection-unit status;
+- current signatures do not establish value alignment -> objecthood;
+- current signatures do not establish macro predictive sufficiency -> physical irreducibility;
+- current signatures do not establish integration score -> parent-object status.
 
 No universal Objecthood predicate is invented.
 
