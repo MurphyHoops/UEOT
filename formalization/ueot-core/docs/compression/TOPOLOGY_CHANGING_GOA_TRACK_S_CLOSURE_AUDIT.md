@@ -193,19 +193,19 @@ These are extensions, not missing pieces of the present finite-state answer.
   belongs in a separate `ops/compression-*` governance change and must not be
   smuggled into the Track-S theorem branch.
 
-## 11. Local batching discipline
+## 11. Completed batching / merge lifecycle
 
-Per current user direction, Track S is being closed locally across multiple
-commits before any new remote push.  The local sequence contains:
+Track S was closed through one batched remote closure sequence containing:
 
 1. deterministic functional-graph classification;
 2. certified recurrent-class uniqueness/conorm classification;
 3. final Track-S synthesis interface and closure audit.
 
-The whole sequence will be pushed only after the final exact local head passes
-focused Lean checks, Compression/root builds, proof-escape and axiom audits,
-research-governance validation/regressions, frozen Compression validation and
-regressions, and diff checks.
+Before the remote push, the exact local head passed focused Lean checks,
+Compression/root builds, proof-escape and axiom audits, research-governance
+validation/regressions, frozen Compression validation/regressions, and diff
+checks.  The batched branch was then pushed, reviewed, merged through PR #220,
+and retired after resulting-main validation succeeded.
 
 ## 12. Final local validation
 
