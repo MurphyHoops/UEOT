@@ -1,103 +1,92 @@
 # Track H — Hierarchy / Assembly Audit
 
-Status: **H0 CLOSED / H1 COVERAGE COMPLETE CANDIDATE / EXACT-HEAD VALIDATION REQUIRED**
+Status: **H0 CLOSED / H1 CLOSED / H2 ACTIVE / RESEARCH**
 
 Authority:
-
 - parent compression mission: Issue #146;
 - Track H tracker: Issue #197;
 - guarded-activation tracker: Issue #200;
 - P0b activation PR: #202;
 - H0 merge PR: #203;
-- H0 canonical merge: `main@829cc50b489cdd28330dcf641938cb35538a974f`;
-- H1 current reconciliation base: `main@e15b7fae0041c2180cdaf530c6165a0bc9c370f5`;
-- H1 branch: `compression/hierarchy-h1-coverage`;
+- H1 merge PR: #206;
+- H2 base: `main@996b5f2488526230f927e0a804884dc070a9b085`;
+- H2 branch: `compression/hierarchy-h2-parent-assembly-residual`;
 - counted-core impact: **NONE**.
 
-## Purpose
-
-This directory is the owned documentation surface for Track H.
-
-Canonical artifacts:
+## Canonical artifacts
 
 - `H0_HIERARCHY_INVENTORY.md` — merged H0 source/Lean-backed inventory;
-- `H1_EXISTING_ARCHITECTURE_COVERAGE.md` — current H1 generator/bridge
-  coverage candidate.
+- `H1_EXISTING_ARCHITECTURE_COVERAGE.md` — merged H1 generator/bridge coverage;
+- `H2_PARENT_ASSEMBLY_RESIDUAL.md` — current H2 residual audit.
 
-Track H proceeds in order:
+## Phase status
 
 1. **H0 — inventory / typing: CLOSED / MERGED_UNCOUNTED.**
-2. **H1 — existing-generator coverage: CURRENT.**
-3. **H2 — parent-object assembly residual: gated on H1 merge + resulting-main green.**
-4. **H3 — no-go / separation: gated on H2 audit.**
+2. **H1 — existing-generator coverage: CLOSED / MERGED_UNCOUNTED.**
+3. **H2 — parent-object assembly residual: CURRENT / RESEARCH.**
+4. **H3 — no-go / separation: gated on H2 merge + resulting-main green.**
 
-H1 is complete only after the candidate passes exact-head CI/review, merges to
-canonical `main`, and resulting-main validation is green.
+H2 owns no counted mapping. Its theorem evidence is G3 separation/boundary
+evidence, while its residual classification is SYNTHESIS_ONLY.
 
-The retired H0 branch `compression/hierarchy-h0-inventory` must receive no
-further mutation.
-
-Track H must not independently implement stationary-law / GOA perturbation,
-recurrent topology, residual inverse, or spectral/local isolation; those remain
-Track S. Cross-track dependencies are main-only.
-
-## H1 accounting
+## H1 accounting retained
 
 Within the 72 unique frozen P-IDs in the H0 hierarchy scope:
-
 - 11 are counted generated mappings;
 - 58 are frozen retained adapters;
 - 3 are frozen retained boundaries.
 
-H1 does not alter those frozen lifecycle values. It separately records
-post-FINAL merged bridge routes where an exact or partial uncounted
-rederivation exists.
-
 The four counted generators remain:
-
 `{M-QD-01, M-TC-01, M-PE-01, M-OI-01}`.
 
-## Current H1 result
+## H2 scientific target
 
-The existing architecture has strong typed coverage but does not collapse into
-one universal hierarchy operator.
+M-QD already supplies the exact compatible hierarchy-lift criterion:
 
-Track-S PRs #207/#208/#209 are consumed main-only as sharper GOA operator/boundary evidence;
-they do not change any H1 route class or Track-H ownership.
+`FiberCompatible q g ↔ ∃! gbar, gbar ∘ q = g`
 
-The main open *formation* question is concentrated in H0-COMP: whether a
-multi-child parent-object binding/existence interface can be reconstructed
-without assuming the joint-law, cut, parent-information, realization, and
-composition-window certificates that the frozen P-COMP family currently takes
-as inputs.
+for surjective `q`.
 
-That obligation is handed to H2 as `RESIDUAL_OPEN`, not as a new primitive.
+Therefore hierarchy lift itself is not the residual. H2 tests the remaining
+multi-child parent-binding obligation where richer parent information is not
+determined by child/coarse data.
+
+The current candidate establishes three finite separations:
+- common witness does not automatically induce low -> high lift;
+- child consistency does not determine a unique parent completion;
+- child marginals do not determine a unique common joint law.
+
+Together with the exact P-COMP signature audit, this supports a family-level
+`RESIDUAL_OPEN` classification for non-canonical lift/extension/binding data
+relative to current G0/G1/G2.
+
+This is not a new primitive claim.
+
+## Cross-track boundary
+
+Track-S checkpoints through PR #210 are consumed from canonical main only.
+Open/unmerged Track-S work such as #211 is not canonical evidence.
+
+Track H must not independently implement stationary-law / GOA perturbation,
+recurrent topology, residual inverse, spectral isolation, or L1 residual
+conorm work.
 
 ## Machine governance
 
-The post-FINAL architecture uses five independent record fields:
-
+The post-FINAL architecture uses independent:
 `(architecture_role, lifecycle_status, track_owner, authority_provenance, counted_core_impact)`.
 
-Roles are G0/G1/G2/G3. Role does not imply lifecycle or counted status. G2
-Composite Assembly is not the same question as H2 Parent-Object Assembly
-Residual.
-
-The canonical enum values and combination checks live in
-`COMPRESSION_RESEARCH_TRACKS.json` and are enforced by
-`validate_compression_research.py`.
-
-Track X remains CLOSED. Cross-track dependencies must be consumed from
-canonical `main`, never from another unmerged branch.
+Roles G0/G1/G2/G3 do not imply lifecycle or counted status. G2 Composite
+Assembly is not the same as H2 Parent-Object Assembly Residual.
 
 ## Nonclaims
 
 Track H currently does not claim:
-
 - a universal hierarchy operator;
 - a fifth counted generator;
-- that the four-generator core can be reduced;
-- that quotienting implies parent formation;
-- that Agency -> GOD -> GOA solves H2;
+- reduction of the four-generator core;
+- quotienting implies parent formation;
+- common witness is a primitive;
+- Agency -> GOD -> GOA solves H2;
 - any Track-S-owned stability result;
 - any 4 -> 3, 4 -> 4, or 4 -> 5 outcome.
