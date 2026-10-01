@@ -1,6 +1,6 @@
 # Track S — invariant uniqueness / residual-isolation equivalence
 
-Status: **LOCAL EXACT-HEAD FULL-GREEN / TRACK S / UNCOUNTED / READY FOR REMOTE REVIEW**
+Status: **MERGED UNCOUNTED / PR #219 / RESULTING-MAIN FULL-GREEN**
 
 Counted-core impact: **NONE**.
 
@@ -160,17 +160,19 @@ assumption; only the final conorm equivalence does.
 - No generic recurrent-class decomposition theorem is added here.
 - No fifth counted primitive or generator is proposed.
 
-## 9. Next structural interpretation
+## 9. Structural interpretation completed downstream
 
-Once this equivalence is merged and audited, the already compiled local
-functional-graph prototype can specialize it structurally:
+This equivalence was subsequently merged in PR #219 and then specialized by
+the deterministic functional-graph classification that was merged as part of
+the Track-S closure PR #220:
 
     deterministic finite kernel has unique invariant semantics
       iff
     its functional graph has exactly one recurrent periodic orbit.
 
-That lane should remain separate so the present PR contains one general
-finite-Markov claim rather than mixing it with deterministic graph theory.
+The separation was preserved in the repository history: the general
+finite-Markov equivalence remained its own checkpoint, while the deterministic
+graph theorem was integrated later through the distinct Track-S closure lane.
 
 ## 10. Local validation before commit
 

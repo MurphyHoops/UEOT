@@ -1,6 +1,6 @@
 # Track S — recurrent-class uniqueness / residual isolation
 
-Status: **LOCAL TRACK-S CLOSURE FULL-GREEN / UNCOUNTED / BATCHED FOR ONE REMOTE REVIEW**
+Status: **MERGED UNCOUNTED / PR #220 / RESULTING-MAIN FULL-GREEN / AUDIT HARDENED LOCALLY**
 
 Counted-core impact: **NONE**.
 
@@ -68,10 +68,12 @@ On a nontrivial full state space Lean then proves
 
     l1ResidualConorm(M.P) > 0
       iff
-    Subsingleton(C).
+    card(C) = 1.
 
-So, whenever a certified recurrent decomposition is available, the canonical
-Track-S isolation constant is positive exactly when the chain has at most one
+The audit-hardening theorem `recurrentClass_nonempty_of_nontrivial_full_state`
+also proves that a valid decomposition on a nontrivial full state space cannot
+have zero recurrent classes.  Therefore the earlier `Subsingleton C` statement
+is sharpened literally to `Fintype.card C = 1`: the chain has exactly one
 recurrent class.
 
 ## Interpretation
@@ -80,7 +82,7 @@ This closes the main structural triangle for finite stochastic dynamics:
 
     positive residual isolation
       <=> unique invariant probability semantics
-      <=> one recurrent class
+      <=> exactly one recurrent class
 
 where the last equivalence is stated relative to an existing certified
 recurrent decomposition.
@@ -99,8 +101,8 @@ not its definition.
 
 ## Local validation
 
-This checkpoint is included in the final local Track-S closure batch.  The
-combined branch passed:
+This checkpoint was accepted through the batched Track-S closure PR #220.
+The accepted branch passed:
 
 - focused Lean compilation of all three new Track-S modules: **PASS**;
 - `lake build UEOT.V3.Compression`: **PASS (9051 jobs)**;
@@ -114,5 +116,7 @@ combined branch passed:
 - frozen Compression governance validator: **PASS**;
 - frozen Compression validator regression suite: **PASS**.
 
-This lane will be sent to remote review only as part of the single final
-Track-S closure push.
+PR #220 merged to `main@5fa6b69ad6a166c120a15f89a77f52962ad83607`;
+resulting-main Core Lean `36880543971` and Compression Guard `36880543961`
+both succeeded.  The exact-cardinality `card(C)=1` strengthening described
+above is a post-merge local audit hardening of the same scientific result.

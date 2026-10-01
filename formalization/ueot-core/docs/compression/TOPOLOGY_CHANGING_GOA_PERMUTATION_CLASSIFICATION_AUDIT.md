@@ -1,6 +1,6 @@
 # Track S — deterministic permutation residual classification
 
-Status: **LOCAL EXACT-HEAD FULL-GREEN / TRACK S / UNCOUNTED / READY FOR REMOTE REVIEW**
+Status: **MERGED UNCOUNTED / TRACK S / CANONICAL MAIN / INCLUDED IN PR #220 CLOSURE**
 
 Counted-core impact: NONE.
 
@@ -58,7 +58,7 @@ injectivity therefore fails.
 
 ## Exact classification
 
-The local Lean candidate establishes
+The merged Lean theorem establishes
 
     restricted residual injective
       iff
@@ -97,13 +97,13 @@ This is stronger than the flip witness:
 - No classification for arbitrary stochastic kernels is claimed.
 - No frozen P-ID, counted generator, ledger row, or Track-H theorem changes.
 
-## Local-only next quantitative conjecture
+## Optional quantitative extension (not required for closure)
 
 Numerical LP checks for n=2,...,10 support
 
     kappa1*(C_n) = n / floor(n^2/4).
 
-The candidate lower-bound proof uses the zero-mean identity, pairwise
+The exploratory lower-bound route uses the zero-mean identity, pairwise
 differences, and shortest-path edge counting on a cycle; balanced two-level
 step profiles appear to attain equality.  This remains a separate pressure
 test and must not be stated as a theorem before Lean proof.

@@ -1,6 +1,6 @@
 # Track S — scientific closure audit
 
-Status: **LOCAL FINAL FULL-GREEN / TRACK S / UNCOUNTED / READY FOR ONE REMOTE CLOSURE REVIEW**
+Status: **REMOTE FINITE-STATE CLOSURE FULL-GREEN / TRACK S / UNCOUNTED / AUDIT HARDENING LOCAL**
 
 Counted-core impact: **NONE**.
 
@@ -82,11 +82,11 @@ Two complementary structural classifications are now local-machine-checked.
 ### Certified stochastic recurrent decomposition
 
 For any existing `FiniteRecurrentDecomposition` on a nontrivial full state
-space,
+space, the audit-hardened exact-cardinality theorem gives
 
     kappa1*(P) > 0
       iff
-    the recurrent-class index is subsingleton.
+    Fintype.card(recurrent-class index) = 1.
 
 The proof uses actual class invariant laws, exact support, positivity,
 transient-mass extinction, and the stationary class formula.  It does not
@@ -153,7 +153,7 @@ The intended Track-S finite-state summary is now:
 When a certified recurrent decomposition is available:
 
     positive canonical residual isolation
-        <=> one recurrent class.
+        <=> exactly one recurrent class.
 
 For deterministic finite dynamics:
 
@@ -193,19 +193,19 @@ These are extensions, not missing pieces of the present finite-state answer.
   belongs in a separate `ops/compression-*` governance change and must not be
   smuggled into the Track-S theorem branch.
 
-## 11. Local batching discipline
+## 11. Completed batching / merge lifecycle
 
-Per current user direction, Track S is being closed locally across multiple
-commits before any new remote push.  The local sequence contains:
+Track S was closed through one batched remote closure sequence containing:
 
 1. deterministic functional-graph classification;
 2. certified recurrent-class uniqueness/conorm classification;
 3. final Track-S synthesis interface and closure audit.
 
-The whole sequence will be pushed only after the final exact local head passes
-focused Lean checks, Compression/root builds, proof-escape and axiom audits,
-research-governance validation/regressions, frozen Compression validation and
-regressions, and diff checks.
+Before the remote push, the exact local head passed focused Lean checks,
+Compression/root builds, proof-escape and axiom audits, research-governance
+validation/regressions, frozen Compression validation/regressions, and diff
+checks.  The batched branch was then pushed, reviewed, merged through PR #220,
+and retired after resulting-main validation succeeded.
 
 ## 12. Final local validation
 
@@ -229,9 +229,22 @@ The complete batched Track-S branch passed the full local validation stack:
 
 ## 13. Current disposition
 
-**Scientific status: LOCAL TRACK-S FINITE-STATE CLOSURE FULL-GREEN.**
+**Scientific status: TRACK-S FINITE-STATE CLOSURE REMOTE FULL-GREEN.**
 
-The local scientific task is closed.  The next action is one batched remote
-push and one closure PR for external CI/review evidence.  Further local Track-S
-work should be treated as optional extension research rather than a blocker to
-this finite-state closure.
+PR #220 merged to canonical
+`main@5fa6b69ad6a166c120a15f89a77f52962ad83607` after exact-head Base Policy,
+Core Lean, Compression Guard, and Codex review all cleared.  Resulting-main
+Core Lean `36880543971` and Compression Guard `36880543961` also succeeded,
+and the closure branch was retired locally and remotely.
+
+A post-merge audit found no theorem error or hidden stability assumption.  It
+did identify one precision improvement: the certified recurrent-decomposition
+surface originally exposed `Subsingleton C`, while the prose said "one
+recurrent class".  The local audit-hardening theorem now proves recurrent-class
+nonemptiness on a nontrivial certified full state space and strengthens the
+public statement to `Fintype.card C = 1` exactly.
+
+Further qualitative Track-S theorem hunting is not a blocker.  Remaining work
+is closure hardening and machine-readable architecture-registry maintenance;
+quantitative cycle formulas and infinite-state extensions remain optional
+follow-on research.
