@@ -146,3 +146,4 @@ import UEOT.V3.Compression.TopologyChangingGoaMultiStepAnchoredStability
 import UEOT.V3.Compression.TopologyChangingGoaResidualInverseStability
 import UEOT.V3.Compression.Hierarchy
 import UEOT.V3.Compression.TopologyChangingGoaSpectralIsolation
+import UEOT.V3.Compression.TopologyChangingGoaRestrictedResidualAdapter
