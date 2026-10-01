@@ -6,7 +6,7 @@ Authority:
 - parent mission: GitHub Issue #146;
 - Track H tracker: Issue #197;
 - H0 canonical merge: PR #203 / `main@829cc50b489cdd28330dcf641938cb35538a974f`;
-- H1 current reconciliation base: `main@d00baf8f84377f2160f6a7381fdeb100c5a0b113`;
+- H1 current reconciliation base: `main@e15b7fae0041c2180cdaf530c6165a0bc9c370f5`;
 - H0 canonical inventory: `H0_HIERARCHY_INVENTORY.md`;
 - counted-core impact: **NONE**.
 
@@ -388,11 +388,13 @@ architecture:
 - `zeroSum_finrank_pos_iff_card_one_lt`;
 - `restrictedMinSingularValue_pos_of_card_one_lt`;
 - `sharp_stationary_tracking_of_card_one_lt`.
+- `TopologyChangingGoaZeroMassNormSharpness.sqrt_card_isLeast_zeroMass_l1_l2_constant`.
 
 They remain Track-S-owned and do not reclassify the frozen QSD/recurrent/
 spectral adapters. PRs #207/#208 only sharpen the Euclidean residual certificate
-and expose its natural zero-mass dimension boundary; H1's family verdict is
-unchanged.
+and expose its natural zero-mass dimension boundary; PR #209 additionally proves
+an even-cardinality zero-mass L1/L2 sharpness boundary. These remain S-owned
+G1/G3 robustness evidence; H1's family verdict is unchanged.
 
 ## 12. H1 scientific result
 
