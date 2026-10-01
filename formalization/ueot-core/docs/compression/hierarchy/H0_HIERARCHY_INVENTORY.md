@@ -6,7 +6,7 @@ Authority:
 - parent mission: GitHub Issue #146;
 - Track H tracker: Issue #197;
 - guarded activation: #200 / PR #202;
-- canonical recovery base: `main@fdc3b8e4efba5d5f1ed25d96a3569cdda31fe294`;
+- canonical recovery base: `main@ad4db1c9e3dd1085ff2c47181107c8d1a4ea2efb`;
 - counted-core impact: **NONE**.
 
 This document is the H0 source/Lean-backed inventory required before H1/H2/H3.
@@ -130,6 +130,7 @@ counted_core_impact = NONE**.
 | `ValueAlignment.robust_coordination_positive` | G1 | combines robust target-direction margin with coordination threshold | links P-ALI-02/03 content; does not solve P-ALI-01 integrability |
 | `AgencyGodGoaAssembly.agency_god_goa_from_history` | G2 | one history-derived sufficient state -> constructed control model -> greedy selector/GOD -> closed-loop -> invariant/unique GOA under explicit contraction | valid assembly theorem, but not a multi-child parent-object theorem |
 | `HistoryEncoderExactClosure.exactControlQuotient_of_vanishing_fiber_defects` | G1/G2 | vanishing encoder fibre defects close to an exact control quotient using existing closure machinery | strengthens representation-to-control assembly without providing P-COMP parent formation |
+| `TopologyChangingGoaSpectralIsolation.residualInverse_of_l1Isolation`; `residualInverse_of_l2LowerSingularBound` | G1 | merged Track-S operator-isolation certificates derive residual-inverse constants for stationary-law tracking | canonical main evidence only for H0-GOA typing; remains Track-S-owned and supplies no parent-object formation rule |
 
 No POST_FINAL_RESEARCH branch is used as canonical evidence in this H0 inventory.
 
