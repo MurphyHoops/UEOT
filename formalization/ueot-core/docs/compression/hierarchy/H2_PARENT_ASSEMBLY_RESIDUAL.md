@@ -38,7 +38,7 @@ Supplied input: one common joint probability law
 `ρ : Measure (U × (∀ i, X i))`.
 
 Proven output: nonnegative partition information, zero iff conditional
-factorization, and positive finite integration margin iff no nontrivial
+factorization, and positive integration margin iff no nontrivial
 partition factorizes.
 
 H2 reading: the common joint law is assumed, not reconstructed from child
@@ -47,7 +47,7 @@ marginals.
 ### P-COMP-02 — intervention / cut margin
 Supplied input: observational law `P` and declared cut laws `Pcut`.
 
-Proven output: positive finite JS cut margin iff every declared cut changes the
+Proven output: positive JS cut margin iff every declared cut changes the
 declared record law.
 
 H2 reading: intervention/cut semantics are assumed.
