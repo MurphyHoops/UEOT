@@ -193,14 +193,60 @@ def test_architecture_record_schema(repo: Path) -> None:
         "research-track governance must define exactly",
     )
 
-    def close_objecthood_gate_without_closing_o(config: dict) -> None:
-        config["objecthood_omega_gate"] = "closed"
+    def make_closed_o_record_active(config: dict) -> None:
+        record = next(
+            item
+            for item in config["architecture_records"]
+            if item["record_id"] == "O-CONSTITUTIVE-LEGITIMACY"
+        )
+        record["lifecycle_status"] = "RESEARCH"
+        record["authority_provenance"] = "POST_FINAL_RESEARCH"
 
     expect_static_failure(
         repo,
-        close_objecthood_gate_without_closing_o,
-        "research-track governance must define exactly",
+        make_closed_o_record_active,
+        "closed Objecthood gate permits only historical",
     )
+
+    def reopen_o(config: dict, tracker_issue: int, stage_plan: str) -> None:
+        config["objecthood_omega_gate"] = "open"
+        config["architecture_record_schema"]["track_status"]["O"] = "active"
+        config["tracks"]["O"] = {
+            "title": "Objecthood continuation",
+            "status": "active",
+            "tracker_issue": tracker_issue,
+            "initial_gate": stage_plan,
+            "preferred_branch_prefix": "compression/objecthood-",
+            "branch_patterns": ["^compression/objecthood-.*$"],
+            "owned_topics": ["repair-law self-reconstruction"],
+            "allowed_path_prefixes": [
+                "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+                "formalization/ueot-core/docs/compression/objecthood/",
+            ],
+            "allowed_exact_paths": [
+                "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
+                "formalization/ueot-core/UEOT/V3/Compression.lean",
+            ],
+            "dependency_rule": (
+                "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only"
+            ),
+            "source_track_reopen_policy": "forbidden_inside_O",
+        }
+
+    expect_static_failure(
+        repo,
+        lambda config: reopen_o(config, 230, "R0-R4"),
+        "fresh tracker_issue",
+    )
+    expect_static_failure(
+        repo,
+        lambda config: reopen_o(config, 231, "O1-O8"),
+        "fresh stage plan",
+    )
+
+    reopened = copy.deepcopy(config)
+    reopen_o(reopened, 231, "R0-R4")
+    module.validate_static(repo, reopened, ledger)
 
     def lose_counted_generator(config: dict) -> None:
         config["architecture_records"] = [
@@ -374,10 +420,10 @@ def main() -> None:
             "formalization/ueot-core/docs/compression/objecthood/"
             "O1_LEGITIMACY_AUDIT.md"
         ],
-        True,
-        "",
+        False,
+        "unclassified compression research branch",
     )
-    print("objecthood-owned-doc: PASS")
+    print("closed-objecthood-mutation-rejected: PASS")
 
     run_case(
         repo,
@@ -387,9 +433,9 @@ def main() -> None:
             "EndogenousConstitutivePersistence.lean"
         ],
         False,
-        "outside its owned",
+        "unclassified compression research branch",
     )
-    print("objecthood-cross-track-source-isolation: PASS")
+    print("closed-objecthood-cross-track-mutation-rejected: PASS")
 
     run_case(
         repo,
@@ -479,8 +525,8 @@ def main() -> None:
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
         handle.write(
             "compression/topology-goa-residual-inverse-stability\n"
+            "compression/hierarchy-inventory\n"
             "compression/cross-track-parent-semantic\n"
-            "compression/objecthood-self-repair\n"
         )
         cap_file = Path(handle.name)
     try:
@@ -556,7 +602,7 @@ def main() -> None:
             "O1_LEGITIMACY_AUDIT.md"
         ],
         False,
-        "fork-based mutating Compression research/governance branches are not allowed",
+        "unclassified compression research branch",
         [
             "--head-repo",
             "someone/UEOT-fork",
@@ -564,7 +610,7 @@ def main() -> None:
             "MurphyHoops/UEOT",
         ],
     )
-    print("fork-objecthood-mutation-rejected: PASS")
+    print("closed-objecthood-fork-mutation-rejected: PASS")
 
     test_architecture_record_schema(repo)
     print("architecture-record-schema-and-combinations: PASS")

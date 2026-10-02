@@ -394,17 +394,21 @@ Guard passed, Codex found no major issue after its O6 counterexample P2 was
 repaired, and resulting-main Core Lean `37042673290` plus Compression Guard
 `37042673416` both passed.
 
-The Objecthood gate remains **open as an authorization/namespace gate**, not as
-an assertion that O1--O8 are unfinished.  The machine-readable registry records
-the merged O1--O8 results as uncounted G1/G2/G3 architecture evidence.  The
+The Objecthood mutation gate is now **closed** after O1--O8 completion.  The
+machine-readable registry removes Track O from the active mutating-track set
+while retaining the merged O1--O8 results as historical uncounted G1/G2/G3
+architecture evidence.  Therefore a `compression/objecthood-*` branch is no
+longer authorized merely by reusing the old namespace or Issue #230.  The
 counted four-generator core remains unchanged.
 
 The strongest current result is a finite self-repairing constitutive Omega-loop
 certificate under an intact repair law and explicit repair basin/certificate.
 The next scientific boundary is **repair-law self-reconstruction**: damage or
 absence of the repair-producing organization is not covered by O5/O7.  Any
-future mutating continuation past that boundary requires a fresh tracker/stage
-plan under Track O; Issue #230 is closed and must not be silently reused.
+future mutating continuation past that boundary requires a governance PR that
+reopens the Objecthood gate and registers both a **fresh tracker issue** and a
+**fresh stage plan** distinct from completed Issue #230 / O0--O8.  The validator
+machine-checks both freshness conditions before Track O can be active again.
 
 No Track-O result may be renamed full universal or biological Objecthood /
 autopoiesis without a separate theorem and governance lifecycle.

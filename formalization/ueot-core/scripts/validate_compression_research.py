@@ -497,7 +497,16 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
         if owner == "X" and config.get("cross_track_integration_gate") == "closed":
             fail(f"{context}: Track X records are forbidden while the integration gate is closed")
         if owner == "O" and config.get("objecthood_omega_gate") == "closed":
-            fail(f"{context}: Track O records are forbidden while the Objecthood gate is closed")
+            if lifecycle not in {"MERGED_UNCOUNTED", "REJECTED"}:
+                fail(
+                    f"{context}: closed Objecthood gate permits only historical "
+                    "MERGED_UNCOUNTED/REJECTED Track O records"
+                )
+            if provenance not in {"POST_FINAL_MERGED", "SYNTHESIS_ONLY"}:
+                fail(
+                    f"{context}: closed Objecthood gate permits only merged/synthesis "
+                    "authority for historical Track O records"
+                )
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
@@ -538,6 +547,27 @@ def validate_static(
         omega_gate = "closed"
     elif omega_gate not in {"closed", "open"}:
         fail("objecthood_omega_gate must be closed or open")
+
+    objecthood_checkpoint = config.get("objecthood_completion_checkpoint")
+    if objecthood_checkpoint is not None:
+        if not isinstance(objecthood_checkpoint, dict):
+            fail("objecthood_completion_checkpoint must be an object")
+        if objecthood_checkpoint.get("tracker_state") != "closed":
+            fail("objecthood completion checkpoint must record tracker_state=closed")
+        completed_issue = objecthood_checkpoint.get("tracker_issue")
+        if not isinstance(completed_issue, int) or completed_issue <= 0:
+            fail("objecthood completion checkpoint needs a positive tracker_issue")
+        completed_gate = objecthood_checkpoint.get("completed_gate")
+        if not isinstance(completed_gate, str) or not completed_gate:
+            fail("objecthood completion checkpoint needs a nonempty completed_gate")
+        if objecthood_checkpoint.get("gate_state") != "closed":
+            fail("objecthood completion checkpoint must record gate_state=closed")
+        for field in ("reviewed_head", "merge_commit"):
+            value = objecthood_checkpoint.get(field)
+            if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
+                fail(f"objecthood completion checkpoint needs a 40-hex {field}")
+    elif omega_gate == "closed" and require_architecture_records:
+        fail("closed Objecthood gate requires objecthood_completion_checkpoint")
     string_list(config.get("governed_path_prefixes"), "governed_path_prefixes")
     string_list(config.get("governed_exact_paths"), "governed_exact_paths")
 
@@ -630,10 +660,24 @@ def validate_static(
         if gate != "open":
             fail("Track O cannot open while Track X integration gate is closed")
         o = tracks["O"]
-        if o.get("tracker_issue") != 230:
-            fail("Track O must be governed by Issue #230")
-        if o.get("initial_gate") != "O0-O8":
-            fail("Track O must follow the O0-O8 mission sequence")
+        tracker_issue = o.get("tracker_issue")
+        stage_plan = o.get("initial_gate")
+        if objecthood_checkpoint is None:
+            # Legacy first activation.  This remains accepted when validating
+            # an older base policy during the guarded close-transition PR.
+            if tracker_issue != 230:
+                fail("initial Track O activation must be governed by Issue #230")
+            if stage_plan != "O0-O8":
+                fail("initial Track O activation must follow the O0-O8 mission sequence")
+        else:
+            if not isinstance(tracker_issue, int) or tracker_issue <= 0:
+                fail("reopened Track O requires a positive fresh tracker_issue")
+            if tracker_issue == objecthood_checkpoint["tracker_issue"]:
+                fail("reopened Track O must use a fresh tracker_issue")
+            if not isinstance(stage_plan, str) or not stage_plan:
+                fail("reopened Track O requires a nonempty fresh stage plan")
+            if stage_plan == objecthood_checkpoint["completed_gate"]:
+                fail("reopened Track O must use a fresh stage plan")
         if o.get("preferred_branch_prefix") != "compression/objecthood-":
             fail("Track O preferred branch prefix must remain compression/objecthood-")
         if not matches_any("compression/objecthood-self-repair", compiled["O"]):
