@@ -75,6 +75,20 @@ def require_file(repo: Path, rel: str, context: str) -> None:
         fail(f"{context}: referenced file does not exist: {rel}")
 
 
+def require_file_at_ref(repo: Path, ref: str, rel: str, context: str) -> None:
+    """Require `rel` to be a regular Git blob in `ref` without checking it out."""
+
+    completed = subprocess.run(
+        ["git", "cat-file", "-t", f"{ref}:{rel}"],
+        cwd=repo,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode != 0 or completed.stdout.strip() != "blob":
+        fail(f"{context}: referenced file does not exist in {ref}: {rel}")
+
+
 def compile_patterns(values: object, context: str) -> list[re.Pattern[str]]:
     if not isinstance(values, list) or not values:
         fail(f"{context}: branch_patterns must be a nonempty list")
@@ -358,7 +372,13 @@ def validate_compression_root_import_change(
         fail(f"Track {track_id} may not modify Compression.lean")
 
 
-def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> None:
+def validate_architecture_records(
+    repo: Path,
+    config: dict,
+    ledger: dict,
+    *,
+    evidence_ref: str | None = None,
+) -> None:
     schema = config.get("architecture_record_schema")
     if not isinstance(schema, dict):
         fail("research governance must define architecture_record_schema")
@@ -473,7 +493,10 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
 
         evidence = string_list(record.get("evidence_paths"), f"{context}.evidence_paths")
         for path in evidence:
-            require_file(repo, path, context)
+            if evidence_ref is None:
+                require_file(repo, path, context)
+            else:
+                require_file_at_ref(repo, evidence_ref, path, context)
 
         if lifecycle == "COUNTED" or impact == "COUNTED":
             if not (role == "G0" and lifecycle == "COUNTED" and impact == "COUNTED"):
@@ -527,6 +550,7 @@ def validate_static(
     ledger: dict,
     *,
     require_architecture_records: bool = True,
+    evidence_ref: str | None = None,
 ) -> dict[str, list[re.Pattern[str]]]:
     if config.get("schema_version") != 1:
         fail("research-track governance schema_version must be 1")
@@ -574,6 +598,8 @@ def validate_static(
             completed_gate = checkpoint.get("completed_gate")
             if not isinstance(completed_gate, str) or not completed_gate.strip():
                 fail(f"{context} needs a nonempty completed_gate")
+            if completed_gate != completed_gate.strip():
+                fail(f"{context}.completed_gate must not have leading/trailing whitespace")
             if completed_gate in seen_gates:
                 fail("objecthood completion history cannot reuse a completed_gate")
             seen_gates.add(completed_gate)
@@ -695,6 +721,8 @@ def validate_static(
                 fail("reopened Track O must use a fresh tracker_issue")
             if not isinstance(stage_plan, str) or not stage_plan.strip():
                 fail("reopened Track O requires a nonempty fresh stage plan")
+            if stage_plan != stage_plan.strip():
+                fail("reopened Track O stage plan must not have leading/trailing whitespace")
             completed_gates = {
                 checkpoint["completed_gate"] for checkpoint in objecthood_history
             }
@@ -727,7 +755,9 @@ def validate_static(
         fail("live ledger counted generator count disagrees with minimal_core")
 
     if require_architecture_records:
-        validate_architecture_records(repo, config, ledger)
+        validate_architecture_records(
+            repo, config, ledger, evidence_ref=evidence_ref
+        )
 
     return compiled
 
@@ -954,7 +984,12 @@ def main() -> None:
             )
         config = candidate_config
 
-    compiled = validate_static(repo, config, ledger)
+    compiled = validate_static(
+        repo,
+        config,
+        ledger,
+        evidence_ref=args.candidate_ref if args.baseline_ref else None,
+    )
     enforcement_config = config
     enforcement_compiled = compiled
     if args.baseline_ref:

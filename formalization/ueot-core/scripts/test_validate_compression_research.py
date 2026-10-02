@@ -228,6 +228,136 @@ def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
         )
 
 
+def test_candidate_ref_resolves_candidate_only_evidence(repo: Path) -> None:
+    """Candidate architecture evidence is resolved from candidate Git data.
+
+    The pull_request_target worktree stays on the immutable base.  A governance
+    candidate may nevertheless add an allowed evidence document and reference
+    it from a new architecture record; validation must inspect the candidate
+    tree rather than requiring that file to pre-exist in the base worktree.
+    """
+
+    module = load_validator_module(repo)
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    config = module.load_json(repo / module.TRACKS_REL)
+    candidate = copy.deepcopy(config)
+    evidence_rel = (
+        "formalization/ueot-core/docs/compression/hierarchy/"
+        "CANDIDATE_REF_EVIDENCE_REGRESSION.md"
+    )
+    candidate["architecture_records"].append(
+        {
+            "record_id": "H-CANDIDATE-REF-EVIDENCE-REGRESSION",
+            "title": "Candidate-ref evidence resolution regression",
+            "architecture_role": "G3",
+            "lifecycle_status": "MERGED_UNCOUNTED",
+            "track_owner": "H",
+            "authority_provenance": "POST_FINAL_MERGED",
+            "counted_core_impact": "NONE",
+            "evidence_paths": [evidence_rel],
+        }
+    )
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmpdir = Path(tmp)
+        registry = tmpdir / "candidate.json"
+        registry.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
+        evidence = tmpdir / "evidence.md"
+        evidence.write_text("# Candidate-only evidence\n", encoding="utf-8")
+        index = tmpdir / "index"
+        env = os.environ.copy()
+        env["GIT_INDEX_FILE"] = str(index)
+        env.update(
+            {
+                "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+            }
+        )
+
+        subprocess.run(["git", "read-tree", base], cwd=repo, env=env, check=True)
+        registry_blob = subprocess.check_output(
+            ["git", "hash-object", "-w", str(registry)], cwd=repo, text=True
+        ).strip()
+        evidence_blob = subprocess.check_output(
+            ["git", "hash-object", "-w", str(evidence)], cwd=repo, text=True
+        ).strip()
+        subprocess.run(
+            [
+                "git",
+                "update-index",
+                "--add",
+                "--cacheinfo",
+                "100644",
+                registry_blob,
+                module.TRACKS_REL.as_posix(),
+            ],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        subprocess.run(
+            [
+                "git",
+                "update-index",
+                "--add",
+                "--cacheinfo",
+                "100644",
+                evidence_blob,
+                evidence_rel,
+            ],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        tree = subprocess.check_output(
+            ["git", "write-tree"], cwd=repo, env=env, text=True
+        ).strip()
+        candidate_ref = subprocess.check_output(
+            ["git", "commit-tree", tree, "-p", base],
+            cwd=repo,
+            env=env,
+            input="candidate-only evidence regression\n",
+            text=True,
+        ).strip()
+
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", delete=False
+        ) as handle:
+            handle.write(module.TRACKS_REL.as_posix() + "\n")
+            handle.write(evidence_rel + "\n")
+            changed_file = Path(handle.name)
+        try:
+            completed = subprocess.run(
+                validator(
+                    repo,
+                    "ops/compression-candidate-evidence-regression",
+                    changed_file,
+                    [
+                        "--baseline-ref",
+                        base,
+                        "--candidate-ref",
+                        candidate_ref,
+                    ],
+                ),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        finally:
+            changed_file.unlink(missing_ok=True)
+
+    if completed.returncode != 0:
+        raise AssertionError(
+            "candidate-only architecture evidence was not resolved from candidate ref\n"
+            + completed.stdout
+            + completed.stderr
+        )
+
+
 def expect_static_failure(repo: Path, mutate, expected: str) -> None:
     module = load_validator_module(repo)
     config = module.load_json(repo / module.TRACKS_REL)
@@ -381,6 +511,11 @@ def test_architecture_record_schema(repo: Path) -> None:
     )
     expect_static_failure(
         repo,
+        lambda config: reopen_o(config, 231, " O0-O8 "),
+        "must not have leading/trailing whitespace",
+    )
+    expect_static_failure(
+        repo,
         lambda config: reopen_o(config, 231, "O0-O8"),
         "fresh stage plan",
     )
@@ -392,6 +527,16 @@ def test_architecture_record_schema(repo: Path) -> None:
         repo,
         whitespace_completed_gate,
         "nonempty completed_gate",
+    )
+
+    def padded_completed_gate(config: dict) -> None:
+        gate = config["objecthood_completion_history"][0]["completed_gate"]
+        config["objecthood_completion_history"][0]["completed_gate"] = f" {gate} "
+
+    expect_static_failure(
+        repo,
+        padded_completed_gate,
+        "must not have leading/trailing whitespace",
     )
 
     def delete_history_and_reopen(config: dict) -> None:
@@ -789,6 +934,9 @@ def main() -> None:
 
     test_candidate_ref_policy_drives_objecthood_transition(repo)
     print("candidate-ref-policy-transition-audited: PASS")
+
+    test_candidate_ref_resolves_candidate_only_evidence(repo)
+    print("candidate-ref-evidence-resolution-audited: PASS")
 
     run_case(
         repo,
