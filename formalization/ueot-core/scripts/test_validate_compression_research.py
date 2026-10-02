@@ -376,8 +376,22 @@ def test_architecture_record_schema(repo: Path) -> None:
     )
     expect_static_failure(
         repo,
+        lambda config: reopen_o(config, 231, "   "),
+        "nonempty fresh stage plan",
+    )
+    expect_static_failure(
+        repo,
         lambda config: reopen_o(config, 231, "O0-O8"),
         "fresh stage plan",
+    )
+
+    def whitespace_completed_gate(config: dict) -> None:
+        config["objecthood_completion_history"][0]["completed_gate"] = "   "
+
+    expect_static_failure(
+        repo,
+        whitespace_completed_gate,
+        "nonempty completed_gate",
     )
 
     def delete_history_and_reopen(config: dict) -> None:

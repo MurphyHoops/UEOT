@@ -572,7 +572,7 @@ def validate_static(
                 fail("objecthood completion history cannot reuse a tracker_issue")
             seen_issues.add(completed_issue)
             completed_gate = checkpoint.get("completed_gate")
-            if not isinstance(completed_gate, str) or not completed_gate:
+            if not isinstance(completed_gate, str) or not completed_gate.strip():
                 fail(f"{context} needs a nonempty completed_gate")
             if completed_gate in seen_gates:
                 fail("objecthood completion history cannot reuse a completed_gate")
@@ -693,7 +693,7 @@ def validate_static(
             }
             if tracker_issue in completed_issues:
                 fail("reopened Track O must use a fresh tracker_issue")
-            if not isinstance(stage_plan, str) or not stage_plan:
+            if not isinstance(stage_plan, str) or not stage_plan.strip():
                 fail("reopened Track O requires a nonempty fresh stage plan")
             completed_gates = {
                 checkpoint["completed_gate"] for checkpoint in objecthood_history
