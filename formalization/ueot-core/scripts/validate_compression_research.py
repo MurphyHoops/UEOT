@@ -848,9 +848,12 @@ def main() -> None:
             )
         branch = associated
 
+    # Every registered research/governance lane is mutating.  Derive this from
+    # the compiled policy rather than enumerating track IDs so newly activated
+    # tracks cannot silently bypass the canonical-repository fork guard.
     classified_mutating = any(
-        matches_any(branch, enforcement_compiled[track_id])
-        for track_id in ("S", "H", "GOVERNANCE")
+        matches_any(branch, patterns)
+        for patterns in enforcement_compiled.values()
     )
     if classified_mutating and args.head_repo and args.base_repo:
         if args.head_repo != args.base_repo:

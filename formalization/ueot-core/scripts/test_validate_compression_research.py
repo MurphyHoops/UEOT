@@ -548,6 +548,24 @@ def main() -> None:
     )
     print("fork-mutating-research-rejected: PASS")
 
+    run_case(
+        repo,
+        "compression/objecthood-self-repair",
+        [
+            "formalization/ueot-core/docs/compression/objecthood/"
+            "O1_LEGITIMACY_AUDIT.md"
+        ],
+        False,
+        "fork-based mutating Compression research/governance branches are not allowed",
+        [
+            "--head-repo",
+            "someone/UEOT-fork",
+            "--base-repo",
+            "MurphyHoops/UEOT",
+        ],
+    )
+    print("fork-objecthood-mutation-rejected: PASS")
+
     test_architecture_record_schema(repo)
     print("architecture-record-schema-and-combinations: PASS")
 
