@@ -229,7 +229,7 @@ The dual-isolation theorem therefore returns the bound
 which is attained exactly by the benchmark. The constant chain is therefore
 sharp on this finite witness.
 
-## 10. P-MET-01 boundary
+## 10. P-MET-01 realization bridge
 
 P-MET-01 supplies genuine TV data processing:
 
@@ -237,14 +237,38 @@ P-MET-01 supplies genuine TV data processing:
 - composition with one common Markov kernel is nonexpansive;
 - bimeasurable equivalence is an isometry.
 
-These results can justify `L_bind <= 1` in a concrete parent-realization model
-only after an explicit identity guard proves that the parent kernel rows are
-indeed the declared pushforwards/common-kernel images of the assembly-level
-laws.
+The generic Parent-Binding interface alone still does **not** imply
+`L_bind <= 1`.  However the local continuation now supplies an explicit
+mechanism-level guard:
 
-The present generic Parent-Binding interface does not contain that identity.
-Therefore this mission does **not** claim a universal `L_bind <= 1` theorem
-from P-MET-01 alone.
+`CommonMarkovParentRealization`.
+
+It requires:
+
+- an assembly-level probability law `baseLaw a`;
+- an assembly metric that dominates base-law TV;
+- for each parent state `x`, one common Markov channel `channel x`;
+- an exact identity saying every realized parent row is that channel applied
+  to `baseLaw (repr p)`.
+
+P-MET-01 then proves
+
+`crossRowTV <= assembly distance`
+
+and therefore constructs a `ParentBindingLipschitz` certificate with
+
+`L_bind = 1`.
+
+The resulting supplied-beta and canonical-beta semantic bounds no longer
+contain an externally supplied forward constant.
+
+This is not a universal contraction theorem for arbitrary parent kernels. The
+common-channel realization identity and metric-TV domination remain explicit
+domain obligations.
+
+The sharp two-completion benchmark has also been re-instantiated through this
+mechanism using the identity Markov kernel.  Its `L_bind = 1` is therefore now
+derived by P-MET data processing rather than only hand-certified.
 
 ## 11. Architecture classification
 
@@ -254,6 +278,7 @@ Recommended local classification:
   identifiability bridge**;
 - dual-isolation semantic bounds: **G2 cross-track synthesis**;
 - P-RES-06 and P-CAR-04 routes: **G2 retained-adapter synthesis**;
+- P-MET common-Markov realization: **G2 mechanism bridge**;
 - `semanticIsolation_does_not_imply_bindingIsolation`: **G3 boundary**;
 - sharp finite benchmark: **out-of-sample bridge stress test**.
 
@@ -267,7 +292,8 @@ bound. It is to derive, in a concrete lower-level interaction model,
 
 1. the diagnostic map itself;
 2. a positive or computable `beta_bind`;
-3. the assembly-to-parent-kernel realization identity and corresponding
-   `L_bind`;
+3. in each concrete domain, prove the common-channel (or another justified)
+   assembly-to-parent-kernel realization identity; P-MET then supplies
+   `L_bind = 1` for that mechanism;
 4. eventually the constitutive persistence / Omega-loop certificate of the
    formed parent object.

@@ -42,6 +42,9 @@ Additional closure evidence:
 - `eta_n -> 0` -> semantic TV convergence under persistent positive margins;
 - explicit sharp benchmark with `beta=L=kappa=1`, `eta=1/2`, and semantic
   TV exactly one.
+- P-MET common-Markov realization bridge deriving `L=1` from data processing;
+- the same sharp benchmark re-realized through the identity Markov channel,
+  so its unit forward constant is mechanism-derived rather than hand-supplied.
 
 ## Architecture closure
 
@@ -58,24 +61,27 @@ interaction model and derive:
 
 - the diagnostic map;
 - positive/computable `beta_bind`;
-- assembly -> parent-kernel identity and `L_bind`;
+- a valid assembly-law -> parent-row realization factorization; for the proven
+  common-Markov class, P-MET then supplies `L_bind = 1` automatically;
 - a constitutive Omega-loop / persistence certificate for the resulting parent.
 
-P-MET-01 is available to derive a nonexpansive `L_bind` only after the required
-row-realization identity is formally supplied.
+The generic Parent-Binding interface still does not force nonexpansion; the
+realization identity remains a concrete domain obligation.
 
 ## Validation closure
 
-On exact implementation `648a9b65...`:
+On the original Dual-Isolation implementation `648a9b65...` and the P-MET
+extension `116231f...`:
 
 - CrossTrack build: **PASS**;
-- full UEOT build: **PASS (9091 jobs)**;
+- full UEOT build: **PASS (9093 jobs)**;
 - research-governance validator/regressions: **PASS**;
 - frozen Compression validator/regressions: **PASS**;
 - proof-escape: **PASS**;
 - public-axiom audit: **PASS, standard axioms only**;
 - diff-check: **PASS**;
 - detached exact-hash second-pass audit: **CLEAR**;
+- detached P-MET exact-hash second-pass audit: **CLEAR**;
 - counted generators: **4**;
 - source/final P-IDs: **106/106**;
 - unresolved: **0**.

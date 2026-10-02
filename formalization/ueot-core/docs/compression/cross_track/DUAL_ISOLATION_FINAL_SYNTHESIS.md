@@ -149,15 +149,35 @@ and actual semantic TV `= 1`.
 The theorem returns upper bound `1`, so the complete constant chain is attained
 with equality on this witness.
 
-## 11. P-MET-01 decision
+## 11. DI9 — P-MET-01 realization bridge
 
-No generic `L_bind <= 1` theorem is promoted.
+No unconditional `L_bind <= 1` theorem is promoted for arbitrary parent
+kernels.
 
-P-MET-01 can produce such a nonexpansive realization constant only in a domain
-model whose parent kernel rows are explicitly identified with measurable
-pushforwards or common-kernel images of assembly-level laws. That identity
-guard is not part of the generic Parent-Binding interface and must be proved by
-a later domain-specific theorem.
+Instead the local continuation introduces
+
+`CommonMarkovParentRealization`.
+
+For models satisfying its explicit factorization guard, P-MET-01 proves row-TV
+nonexpansion and automatically constructs Parent Binding with
+
+`L_bind = 1`.
+
+This yields:
+
+- `dualIsolation_commonMarkov_pairwiseSemanticBound`;
+- `dualIsolation_commonMarkov_fiberSemanticDiameter`;
+- `canonicalDualIsolation_commonMarkov_fiberSemanticDiameter`.
+
+In the canonical finite case the bound becomes
+
+`semantic diameter <=`
+
+`2 eta / (bindingIsolationConorm(D) * kappaMin)`.
+
+The sharp two-completion benchmark is also realized through the identity
+Markov channel, and its exact unit bound is preserved.  Thus the P-MET bridge
+is not only abstractly well typed; it has a nontrivial exact instance.
 
 ## 12. Architecture verdict
 
@@ -174,7 +194,7 @@ Nothing in this mission supports:
 - a universal parent constructor;
 - automatic diagnostic injectivity;
 - automatic decay of observational error;
-- automatic `L_bind <= 1`;
+- automatic `L_bind <= 1` without a realization-factorization guard;
 - Objecthood, objective, fitness, or selection semantics from binding alone.
 
 ## 13. Scientific meaning
@@ -190,15 +210,19 @@ Failure of either margin is a distinct obstruction.
 
 ## 14. Local validation
 
-Exact audited implementation:
+Original Dual-Isolation implementation:
 
 `648a9b65ce006d8717d559383010105a749a30f8`.
 
-Validation on that implementation:
+P-MET realization extension:
+
+`116231f229129da0c43423efbdcc3f405aa11ddb`.
+
+Validation on the extended implementation:
 
 - public `UEOT.V3.Compression.CrossTrack`: **PASS**;
-- full `lake build UEOT`: **PASS (9091 jobs)**;
-- research-track governance: **PASS (18 changed paths relative to remote
+- full `lake build UEOT`: **PASS (9093 jobs)**;
+- research-track governance: **PASS (24 changed paths relative to remote
   canonical base, including the preceding local Parent-Binding closure)**;
 - research-governance regression suite: **PASS**;
 - frozen Compression live-reference validator: **PASS**;
@@ -213,11 +237,11 @@ Validation on that implementation:
 - remote branch
   `compression/cross-track-dual-isolation-local`: **absent**.
 
-One validator-regression invocation initially encountered a GitHub API TLS
-handshake timeout while reading historical FINAL CI metadata. The same exact
-local implementation was retried without code changes and the complete
-regression suite passed. This was an external read transient, not a theorem or
-ledger failure.
+Two validator-regression invocations during this local research sequence
+encountered transient GitHub API read failures while checking historical FINAL
+metadata (one TLS handshake timeout and one failed PR metadata read). Both were
+retried without code changes, and the complete regression suite passed. These
+were external-read transients, not theorem or ledger failures.
 
 ## 15. Closure outcome
 
@@ -225,9 +249,12 @@ ledger failure.
 
 The abstract double inverse-stability chain, canonical finite binding margin,
 independence boundary, exact/quantitative source specializations, dynamic
-observational convergence route, and sharp finite benchmark are all formally
-closed.
+observational convergence route, sharp finite benchmark, and P-MET
+common-channel realization bridge are all formally closed.
 
-The remaining scientific work is domain construction: derive `beta_bind` and
-`L_bind` from actual lower-level interaction laws and connect the identified
-parent to constitutive Omega-loop persistence.
+The remaining scientific work is domain construction: derive the diagnostic
+and `beta_bind` from actual lower-level interaction laws; prove a valid
+realization factorization for the parent kernel; and connect the identified
+parent to constitutive Omega-loop persistence.  In domains satisfying the
+common-Markov factorization, `L_bind` no longer needs to be separately fitted
+or assumed.
