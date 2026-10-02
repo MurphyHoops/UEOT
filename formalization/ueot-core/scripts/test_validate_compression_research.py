@@ -303,6 +303,27 @@ def main() -> None:
 
     run_case(
         repo,
+        "compression/topology-goa-spectral-isolation",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/"
+            "ParentSemanticBoundary.lean"
+        ],
+        False,
+        "may not modify cross-owned/protected path",
+    )
+    print("stability-track-x-isolation: PASS")
+
+    run_case(
+        repo,
+        "compression/topology-goa-spectral-isolation",
+        ["formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean"],
+        False,
+        "may not modify cross-owned/protected path",
+    )
+    print("stability-track-x-root-isolation: PASS")
+
+    run_case(
+        repo,
         "compression/cross-track-parent-semantic",
         [
             "formalization/ueot-core/docs/compression/cross_track/"

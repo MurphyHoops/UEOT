@@ -326,6 +326,8 @@ def validate_compression_root_import_change(
                 fail("Track S may change Compression.lean imports only")
             if line == "import UEOT.V3.Compression.Hierarchy":
                 fail("Track S may not add/remove the Track H root import")
+            if line == "import UEOT.V3.Compression.CrossTrack":
+                fail("Track S may not add/remove the Track X root import")
     elif track_id == "X":
         if not changed or any(
             line != "import UEOT.V3.Compression.CrossTrack" for line in changed
