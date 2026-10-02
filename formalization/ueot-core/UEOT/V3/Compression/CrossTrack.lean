@@ -17,6 +17,8 @@ import UEOT.V3.Compression.CrossTrack.DualIsolationDecoderRadius
 import UEOT.V3.Compression.CrossTrack.DualIsolationNoGo
 import UEOT.V3.Compression.CrossTrack.DualIsolationDynamic
 import UEOT.V3.Compression.CrossTrack.DualIsolationBenchmark
+import UEOT.V3.Compression.CrossTrack.DualIsolationPMetRealization
+import UEOT.V3.Compression.CrossTrack.DualIsolationPMetBenchmark
 
 /-!
 # UEOT Core Compression — Track X
