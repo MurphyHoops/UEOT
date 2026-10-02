@@ -132,10 +132,15 @@ The certificate simultaneously records:
 `exists_operationalFormedPersistentParent_of_responseSeed` constructs such a
 certificate from:
 
-1. one zero-defect lower-level response carrier seed;
-2. child-region coverage of that seed;
-3. a nonempty finite probe family that separates all generated candidates;
-4. nonempty P-PER winning sets for the generated parents.
+1. nonempty lower-level response-history and response-probe axes;
+2. one zero-defect lower-level response carrier seed;
+3. child-region coverage of that seed;
+4. a nonempty finite interaction-probe family that separates all generated
+   candidates;
+5. nonempty P-PER winning sets for the generated parents.
+
+The first condition is a post-review hardening: it rules out vacuous
+`responseDefect = 0` caused solely by an empty response axis.
 
 This is the first local theorem in the current chain that places generated
 formation, identifiability, and nonvacuous autonomous persistence in one typed

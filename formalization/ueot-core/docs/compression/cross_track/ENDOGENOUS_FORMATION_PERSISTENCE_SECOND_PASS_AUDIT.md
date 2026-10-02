@@ -1,10 +1,14 @@
 # Endogenous Formation × Constitutive Persistence — Exact-Hash Second-Pass Audit
 
-Status: **CLEAR / LOCAL ONLY**
+Status: **POST-REVIEW HARDENED / LOCAL CONDITIONAL CLOSURE**
 
-Audited implementation:
+Original second-pass implementation:
 
 `e58ab6c8ac06b4ba7ea62be1bf2665483d8ec189`.
+
+Post-review theorem hardening:
+
+`65cc9e62b2735c5f1883920fe50e43a4ab6bbb0a`.
 
 Merged baseline:
 
@@ -21,10 +25,17 @@ Merged baseline:
 
 ## 2. Result
 
-**RESULT: CLEAR.**
+The original local second pass was subsequently superseded on one point by the
+exact-head Codex review of PR #229.  That review identified a genuine P2
+vacuity: if the response history type or response-probe type is empty,
+`responseDefect` can be zero without any response observation.
 
-No Critical, High, or Medium mathematical, Lean, governance, or scope blocker
-was identified.
+The theorem surface has been hardened by requiring `[Nonempty H]` and
+`[Nonempty Probe]` in the zero-defect seed route and propagating those
+requirements to the operational synthesis theorem.  The finding therefore
+does not survive on the hardened implementation.
+
+**CURRENT RESULT: CLEAR AFTER P2 FIX, SUBJECT TO FINAL EXACT-HEAD CI/REVIEW.**
 
 ## 3. Formation smuggling audit
 
@@ -49,6 +60,10 @@ Candidate nonemptiness can be obtained from one concrete finite `S0` with
 `responseDefect readout p S0 = 0`
 
 and child coverage of `S0`.
+
+The hardened theorem also requires nonempty `H` and `Probe` axes.  This
+prevents the zero-defect hypothesis from being discharged solely because the
+response-indexing domain contains no observations.
 
 Finite minimal-subset extraction generates both the minimal physical carrier
 and the minimal child coalition.
@@ -147,8 +162,9 @@ The theorem separately assumes:
 
 These are strong domain conditions, but they are explicit and materially
 weaker than assuming the final operational certificate.  In particular, the
-formation seed prevents the universal `hwin` statement from being used
-vacuously over an empty candidate family.
+nonempty response axes plus the formation seed prevent the universal `hwin`
+statement from being used vacuously over an empty or observation-free
+candidate construction.
 
 The selected parent's persistence certificate contains a concrete seed state
 inside the stabilized kernel, not only a fixed-set equality.

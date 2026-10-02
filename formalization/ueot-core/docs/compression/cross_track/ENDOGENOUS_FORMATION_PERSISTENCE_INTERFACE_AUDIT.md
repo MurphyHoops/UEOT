@@ -82,12 +82,19 @@ proves that one concrete finite physical carrier `S0` satisfying
 
 already generates an inclusion-minimal exact carrier.
 
+The response history and response-probe axes are required to be nonempty.
+This is semantically essential rather than cosmetic: if either axis were empty,
+the response diameter defining the defect would have no observations and the
+real supremum could collapse to zero vacuously.  The hardened theorem therefore
+does not allow “response-supported formation” from an empty response domain.
+
 Then
 
 `responseFormedCandidateFamily_nonempty_of_zeroDefectSeed`
 
 proves that if the declared children cover that same seed, finite
-minimalization generates a nonempty parent-candidate family.
+minimalization generates a nonempty parent-candidate family, again under
+explicit nonempty response-history and response-probe axes.
 
 Therefore the constructive formation premise is now a source-facing
 zero-defect/coverage witness, not a pre-existing candidate family.
