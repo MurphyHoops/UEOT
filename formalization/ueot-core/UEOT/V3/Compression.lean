@@ -162,3 +162,4 @@ import UEOT.V3.Compression.TopologyChangingGoaRecurrentClassUniqueness
 import UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification
 import UEOT.V3.Compression.TopologyChangingGoaTrackSClosure
 import UEOT.V3.Compression.CrossTrack
+import UEOT.V3.Compression.Objecthood
