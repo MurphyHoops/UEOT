@@ -1,6 +1,6 @@
 # Track X — X7/X8 Architecture Audit and Final Synthesis
 
-Status: **X0-X8 LOCALLY COMPLETE / HARDENED VALIDATION PASS / SECOND AUDIT PROVENANCE FIX / REAUDIT PENDING**
+Status: **X0-X8 LOCALLY CLOSED / HARDENED CANDIDATE 59e5f97 AUDIT CLEAR / REMOTE FROZEN**
 
 Authority:
 - durable parent mission: GitHub Issue #146;
@@ -349,3 +349,34 @@ declared audit-clear or ready for any remote lifecycle.
 
 Remote branch push, PR creation, Issue mutation, merge, and cleanup remain
 frozen.
+
+### Post-fix re-audit closure
+
+The required re-audit was subsequently performed on exact post-fix candidate
+`59e5f97dbe6f630d9b8aa647858f3c1e8b9a7f8d` and returned:
+
+**RESULT: CLEAR / BLOCKERS: none.**
+
+The auditor independently confirmed that:
+
+- the previous Medium audit-provenance blocker is eliminated;
+- `59e5f97...` has parent `375c63c...`;
+- `375c63c... .. 59e5f97...` contains zero Lean-source delta;
+- the first CLEAR remains scoped only to predecessor `688b00f...`;
+- the blocked second audit remains preserved as a BLOCK record for
+  `375c63c...`;
+- no document prematurely claimed the post-fix candidate was audit-clear before
+  that re-audit;
+- X1-X6 mathematical/Lean status remains CLEAR;
+- tracked repository state was unchanged by the audit.
+
+The re-audit evidence is recorded in
+`docs/compression/cross_track/TRACK_X_POST_FIX_AUDIT_CLEAR.md`.
+
+This metadata update records the independent result after the audit.  It does
+not modify any Track-X Lean source, so the audited implementation tree remains
+exactly the one independently cleared at `59e5f97...`.
+
+The local Track-X scientific, formal, validation, hardening, and independent
+audit lifecycle is therefore closed.  The remote lifecycle remains explicitly
+frozen until separately authorized.

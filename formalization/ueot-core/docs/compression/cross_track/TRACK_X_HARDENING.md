@@ -1,6 +1,6 @@
 # Track X — Post-Audit Hardening
 
-Status: **LOCAL HARDENING PASS**
+Status: **HARDENING COMPLETE / VALIDATION PASS / POST-FIX REAUDIT CLEAR AT 59e5f97 / REMOTE FROZEN**
 
 This pass addresses the nonblocking LOW observations from the first independent
 audit without changing the scientific result, generator count, or ownership
@@ -44,7 +44,17 @@ boundary.
 - counted-core impact remains **NONE**;
 - remote lifecycle remains frozen.
 
-Because the exact Lean implementation changes after the first independent
-audit, this hardening commit must receive a fresh validation pass and a second
-independent read-only audit before it can become the new local closure
-candidate.
+The exact Lean implementation changed after the first independent audit, so the
+hardening implementation commit `375c63c...` received a fresh validation pass
+and a second independent read-only audit.  That audit found the Lean/math
+hardening CLEAR but returned BLOCK on one audit-provenance inconsistency in the
+synthesis document.
+
+The provenance-only repair commit `59e5f97...` changed no Lean source.  An
+independent post-fix re-audit of that exact commit returned:
+
+**RESULT: CLEAR / BLOCKERS: none.**
+
+The CLEAR is scoped exactly to `59e5f97...`; the later local metadata commit
+that records this result does not change the audited Lean implementation tree.
+Remote lifecycle remains frozen.

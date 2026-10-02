@@ -1,10 +1,15 @@
 # Track X — Local Closure Record
 
-Status: **LOCALLY CLOSED / REMOTE FROZEN**
+Status: **HISTORICAL PRE-HARDENING CLOSURE / SUPERSEDED / REMOTE FROZEN**
 
 This record exists to preserve the local durable lifecycle before any cloud
 push.  It intentionally records checkpoints rather than mutating Issue #225,
 opening a PR, or creating a remote branch.
+
+This record closes the predecessor implementation lifecycle through local
+checkpoint `1a19520`.  It was subsequently superseded by the post-audit
+hardening sequence beginning at `375c63c`; it must not be read as the current
+Track-X closure state.
 
 ## 1. Local checkpoint history
 
