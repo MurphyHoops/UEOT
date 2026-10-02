@@ -22,7 +22,7 @@ universe uP uC uS
 noncomputable section
 
 variable {P : Type uP} {C : Type uC}
-variable {S : Type uS} [Fintype S] [Nonempty S]
+variable {S : Type uS}
 noncomputable local instance parentSemanticDescentDecidableEq : DecidableEq S :=
   Classical.decEq S
 
@@ -40,6 +40,7 @@ theorem x2_exactParentKernelDescent
 /-- Row stochasticity transfers to the descended child-level kernel family
 because every child value has a parent representative. -/
 theorem x2_descendedKernel_rowStochastic
+    [Fintype S]
     (pi : P → C) (K : P → Matrix S S ℝ)
     (hpi : Surjective pi)
     (hK : ∀ p, K p ∈ Matrix.rowStochastic ℝ S)
@@ -56,6 +57,7 @@ theorem x2_descendedKernel_rowStochastic
 Track-S residual isolation gives unique long-run invariant semantics for that
 child evidence.  This does not select a unique parent completion. -/
 theorem x2_descendedKernel_uniqueSemantics
+    [Fintype S] [Nonempty S]
     (Kbar : C → Matrix S S ℝ)
     (hKbar : ∀ c, Kbar c ∈ Matrix.rowStochastic ℝ S)
     (c : C)

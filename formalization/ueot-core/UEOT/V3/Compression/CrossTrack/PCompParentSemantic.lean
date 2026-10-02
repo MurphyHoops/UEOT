@@ -29,7 +29,7 @@ noncomputable section
 
 variable {P : Type uP} {C : Type uC}
 variable {S : Type uS} [Fintype S] [Nonempty S]
-variable {I : Type uI} [Fintype I]
+variable {I : Type uI}
 variable {V : Type uV}
 noncomputable local instance pcompParentSemanticDecidableEq : DecidableEq S :=
   Classical.decEq S
@@ -55,6 +55,7 @@ structure PCompCarrierAssemblyCertificate
 /-- P-COMP-06 converts the certificate's child-minimal validity criterion into
 the canonical two-stage lifted physical-cover criterion. -/
 theorem PCompCarrierAssemblyCertificate.admissible_iff_lifted
+    [Fintype I]
     (pi : P → C)
     (A : PCompCarrierAssemblyCertificate (P := P) (C := C)
       (I := I) (V := V) pi)

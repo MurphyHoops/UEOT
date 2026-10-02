@@ -90,8 +90,14 @@ theorem x1_uniquePerCompletion_not_childDetermined :
     (∀ p : Bool, 0 < l1ResidualConorm (x1Kernel p)) ∧
     (∀ p : Bool, ∃! mu : stdSimplex ℝ Bool,
       mu ∈ invariantLawSet (x1Kernel p) (x1Kernel_stochastic p)) ∧
+    x1Invariant false ∈
+      invariantLawSet (x1Kernel false) (x1Kernel_stochastic false) ∧
+    x1Invariant true ∈
+      invariantLawSet (x1Kernel true) (x1Kernel_stochastic true) ∧
     lawTV (x1Invariant false) (x1Invariant true) = 1 := by
-  refine ⟨rfl, by simp, ?_, x1Kernel_uniqueInvariant, x1Invariant_distance⟩
+  refine
+    ⟨rfl, by simp, ?_, x1Kernel_uniqueInvariant,
+      x1Invariant_mem false, x1Invariant_mem true, x1Invariant_distance⟩
   intro p
   rw [x1Kernel_l1ResidualConorm_eq_one]
   norm_num

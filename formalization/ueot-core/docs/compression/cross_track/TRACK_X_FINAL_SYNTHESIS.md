@@ -38,7 +38,9 @@ Witness:
 - true completion: deterministic reset to true;
 - each kernel has l1ResidualConorm = 1;
 - each kernel has a unique invariant probability law;
-- the two explicit stationary point masses have lawTV = 1.
+- the final theorem itself packages both explicit point masses as invariant laws
+  of their respective kernels;
+- those two explicit stationary point masses have lawTV = 1.
 
 Conclusion:
 
@@ -98,6 +100,10 @@ Architecture role: **G2 bridge**.
 
 Crucial quantifier discipline: target invariant-law existence is not inferred
 from source isolation.
+
+The same-fibre equality is intentionally retained as the Track-X semantic
+scope condition even though the numerical estimate itself follows from the
+explicit pairwise row-defect hypothesis and is therefore slightly stronger.
 
 ## 5. X4 — fibre-wide semantic diameter
 

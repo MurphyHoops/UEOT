@@ -36,7 +36,7 @@ theorem x3_parentSemanticTracking
     (mu : P → stdSimplex ℝ S)
     (hmu : ∀ p, mu p ∈ invariantLawSet (K p) (hK p))
     (p0 p : P)
-    (hsame : pi p = pi p0)
+    (_hsame : pi p = pi p0)
     (epsilonBind : ℝ)
     (hcard : 1 < Fintype.card S)
     (hisolation : 0 < l1ResidualConorm (K p0))
@@ -44,7 +44,6 @@ theorem x3_parentSemanticTracking
       crossRowTV (K p0) (hK p0) (K p) (hK p) x ≤ epsilonBind) :
     lawTV (mu p0) (mu p) ≤
       epsilonBind / l1ResidualConorm (K p0) := by
-  have _hsame := hsame
   exact suppliedInvariant_tracking
     (K p0) (hK p0) (K p) (hK p)
     (mu p0) (mu p) (hmu p0) (hmu p)
