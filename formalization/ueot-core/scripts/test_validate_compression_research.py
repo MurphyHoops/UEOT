@@ -156,6 +156,14 @@ def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
         index = tmpdir / "index"
         env = os.environ.copy()
         env["GIT_INDEX_FILE"] = str(index)
+        env.update(
+            {
+                "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+            }
+        )
 
         subprocess.run(
             ["git", "read-tree", base], cwd=repo, env=env, check=True
@@ -183,6 +191,7 @@ def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
         candidate_ref = subprocess.check_output(
             ["git", "commit-tree", tree, "-p", base],
             cwd=repo,
+            env=env,
             input="candidate-ref policy regression\n",
             text=True,
         ).strip()
