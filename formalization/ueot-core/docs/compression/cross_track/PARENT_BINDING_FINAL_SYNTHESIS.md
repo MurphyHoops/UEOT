@@ -1,6 +1,6 @@
 # Parent Binding Mechanism — Local Final Synthesis
 
-Status: **SCIENTIFIC IMPLEMENTATION COMPLETE / VALIDATION PENDING**
+Status: **LOCAL CLOSED / IMPLEMENTATION 512bb683 / FULL VALIDATION PASS / ISOLATED SECOND-PASS AUDIT CLEAR / REMOTE FROZEN**
 
 Remote lifecycle: **FORBIDDEN IN THIS LOCAL MISSION**.
 
@@ -177,15 +177,37 @@ authorized, should not add more `epsilon / kappa` wrappers.  It should derive
 or empirically identify the assembly metric / binding sensitivity from a
 specific physical, biological, cognitive, or AI domain.
 
-## 11. Validation status
+## 11. Validation closure
 
-This document is deliberately marked validation-pending until:
+Exact audited implementation:
 
-- all new modules build through the public CrossTrack root;
-- `UEOT.V3.Compression` builds;
-- full `lake build UEOT` passes;
-- compression/research governance validators pass locally;
-- proof-escape and public-axiom audits pass;
-- an independent read-only mathematical/architecture audit returns CLEAR.
+`512bb6832a3d4cf84462c1018b4ad3acb220a39c`.
 
-No remote action is permitted before those local gates are complete.
+Local gates are closed:
+
+- public `UEOT.V3.Compression.CrossTrack`: **PASS**;
+- `UEOT.V3.Compression`: **PASS**;
+- full `lake build UEOT`: **PASS (9083 jobs)**;
+- research-track governance: **PASS (8 governed paths)**;
+- research-governance regression suite: **PASS**;
+- FINAL compression live-reference validator: **PASS**;
+- compression-validator regression suite: **PASS**;
+- frozen accounting: **106/106 / 4 counted generators / 0 unresolved**;
+- proof-escape scan: **PASS**;
+- public theorem axiom audit: only
+  `propext / Classical.choice / Quot.sound`;
+- exact diff-check: **PASS**;
+- detached clean-worktree second-pass scientific/architecture audit:
+  **CLEAR / blockers none**.
+
+The second-pass audit is recorded in
+`PARENT_BINDING_SECOND_PASS_AUDIT.md`.  The Chat On Steroids worker interface
+was unavailable in this session (`WORKER_IDENTITY_LOST`), so no independent
+worker review is claimed.
+
+The local scientific/formal lifecycle is therefore **CLOSED** at Outcome 2:
+sharpened conditional parent-binding synthesis with a precise endogenous
+binding-law residual.
+
+Remote lifecycle remains **FROZEN**.  No push, PR, Issue mutation, merge, or
+remote branch creation belongs to this local closure.
