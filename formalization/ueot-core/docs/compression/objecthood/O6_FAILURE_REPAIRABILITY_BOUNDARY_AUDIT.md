@@ -46,8 +46,10 @@ finite `Bool × Unit` witness constructs:
   one damaged state;
 - a monotone deletion failure predicate with a genuine failing deletion;
 - the P-OMG-01 minimal destructive witness for that deletion;
-- a positive P-OMG-02 integrity margin on an independent metric failure set;
-- the same damaged state remaining outside the repair basin.
+- a metric representation `y = 0` with positive P-OMG-02 integrity margin to
+  the declared failure set `{1}`;
+- an explicit metric-space damage realization sending that **same** `y = 0`
+  to a damaged state outside the repair basin.
 
 Thus **failure characterization and positive integrity margin do not imply
 repairability**.
@@ -187,8 +189,36 @@ The formal O6 tree then passed:
   independent margins. This prevents a positive integrity margin from being
   renamed as a repair margin.
 - The concrete finite witness proves nonvacuously that complete P-OMG-01
-  failure structure and a positive P-OMG-02 integrity margin can coexist with
-  a damaged state outside a valid repair basin.
+  failure structure exists, and separately that one and the same metric
+  representation can have positive P-OMG-02 integrity margin while its explicit
+  damage realization lies outside a valid repair basin.  The margin and damage
+  conjuncts therefore no longer range over unrelated inputs.
+
+## 8. Exact-head Codex P2 repair
+
+PR #232 exact-head Codex review on `e1f5405` correctly found that the original
+toy theorem conjoined a positive margin for `0 : ℝ` with nonrepairability of a
+separate `Finset Unit` deletion realization.  Although both facts were true,
+that conjunction did not prove they referred to the same representation.
+
+The review fix introduces
+
+```text
+metricDamage : ℝ -> ConstitutiveState Bool Unit
+```
+
+and changes `positive_integrity_margin_and_no_repair` to prove simultaneously
+
+```text
+0 < integrityMargin {1} 0
+and
+0 notin repairableRepresentationSet repairCertificate metricDamage.
+```
+
+Thus the exact point `0` enjoying the positive integrity margin is also the
+exact point whose realized damage is outside the repair basin.  This closes the
+review finding without strengthening P-OMG-02 or weakening the O6 negative
+boundary.
 - Almost-sure return to legitimate organization is invoked only after explicit
   O5 basin membership has been established.
 

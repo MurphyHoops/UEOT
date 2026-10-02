@@ -290,15 +290,25 @@ theorem minimal_failure_and_no_repair :
     repairCertificate failure failure_monotone damage {()}
     (by simp [failure]) failedDeletion_not_repairable.2
 
-/-- A strictly positive P-OMG-02 margin can coexist with that same
-nonrepairable damaged state. Hence a positive integrity margin is a robustness
-statement about distance to failure, not a repairability theorem. -/
+/-- Metric-space damage realization for the P-OMG-02 separation witness.  The
+same representation point whose integrity margin is measured is sent to the
+physical state whose repairability is tested. -/
+def metricDamage (_y : ℝ) : ConstitutiveState Bool Unit :=
+  (false, fun _ => ())
+
+/-- A strictly positive P-OMG-02 margin can coexist with nonrepairable damage
+for the **same metric representation**.  At `y = 0`, the representation lies a
+positive distance from the declared failure set `{1}`, yet `metricDamage 0`
+lies outside the certified repair basin.  Hence a positive integrity margin is
+a robustness statement about distance to failure, not a repairability theorem.
+-/
 theorem positive_integrity_margin_and_no_repair :
     0 < integrityMargin ({(1 : ℝ)} : Set ℝ) 0 ∧
-      ¬ RepairableDeletion repairCertificate damage {()} := by
+      0 ∉ repairableRepresentationSet repairCertificate metricDamage := by
   constructor
   · simp [integrityMargin]
-  · exact failedDeletion_not_repairable.2
+  · change false ∉ repairCertificate.basin
+    simp [PhysicalRepairCertificate.basin, repairCertificate]
 
 end FailureRepairBoundaryToy
 
