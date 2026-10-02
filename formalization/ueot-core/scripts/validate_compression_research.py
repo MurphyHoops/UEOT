@@ -566,7 +566,7 @@ def validate_static(
             if checkpoint.get("tracker_state") != "closed":
                 fail(f"{context} must record tracker_state=closed")
             completed_issue = checkpoint.get("tracker_issue")
-            if not isinstance(completed_issue, int) or completed_issue <= 0:
+            if type(completed_issue) is not int or completed_issue <= 0:
                 fail(f"{context} needs a positive tracker_issue")
             if completed_issue in seen_issues:
                 fail("objecthood completion history cannot reuse a tracker_issue")
@@ -686,7 +686,7 @@ def validate_static(
             if stage_plan != "O0-O8":
                 fail("initial Track O activation must follow the O0-O8 mission sequence")
         else:
-            if not isinstance(tracker_issue, int) or tracker_issue <= 0:
+            if type(tracker_issue) is not int or tracker_issue <= 0:
                 fail("reopened Track O requires a positive fresh tracker_issue")
             completed_issues = {
                 checkpoint["tracker_issue"] for checkpoint in objecthood_history
@@ -774,9 +774,19 @@ def validate_objecthood_completion_history_transition(
         fail("Objecthood completion history is append-only and prior records are immutable")
     if len(candidate) > len(baseline) + 1:
         fail("Objecthood governance may append at most one completion record per PR")
+
+    baseline_gate = baseline_config.get("objecthood_omega_gate")
+    candidate_gate = candidate_config.get("objecthood_omega_gate")
+    if baseline_gate == "open" and candidate_gate == "closed":
+        if len(candidate) != len(baseline) + 1:
+            fail(
+                "closing an active Track O cycle must append exactly one "
+                "completion record"
+            )
+
     if len(candidate) == len(baseline) + 1:
         base_o = baseline_config.get("tracks", {}).get("O")
-        if baseline_config.get("objecthood_omega_gate") != "open" or not isinstance(base_o, dict):
+        if baseline_gate != "open" or not isinstance(base_o, dict):
             fail("new Objecthood completion record requires an active baseline Track O")
         added = candidate[-1]
         if (
@@ -784,7 +794,7 @@ def validate_objecthood_completion_history_transition(
             or added.get("completed_gate") != base_o.get("initial_gate")
         ):
             fail("new Objecthood completion record must match the active baseline tracker/stage")
-        if candidate_config.get("objecthood_omega_gate") != "closed":
+        if candidate_gate != "closed":
             fail("appending an Objecthood completion record must close the mutation gate")
 
 

@@ -269,6 +269,11 @@ def test_architecture_record_schema(repo: Path) -> None:
     )
     expect_static_failure(
         repo,
+        lambda config: reopen_o(config, True, "R0-R4"),
+        "positive fresh tracker_issue",
+    )
+    expect_static_failure(
+        repo,
         lambda config: reopen_o(config, 231, "O0-O8"),
         "fresh stage plan",
     )
@@ -303,6 +308,39 @@ def test_architecture_record_schema(repo: Path) -> None:
         config,
         deleted,
         "cannot be deleted",
+    )
+
+    reopened_base = copy.deepcopy(config)
+    reopen_o(reopened_base, 231, "R0-R4")
+    closed_without_append = copy.deepcopy(reopened_base)
+    closed_without_append["objecthood_omega_gate"] = "closed"
+    closed_without_append["architecture_record_schema"]["track_status"]["O"] = "closed"
+    closed_without_append["tracks"].pop("O")
+    expect_objecthood_transition_failure(
+        repo,
+        reopened_base,
+        closed_without_append,
+        "must append exactly one completion record",
+    )
+
+    closed_with_append = copy.deepcopy(closed_without_append)
+    closed_with_append["objecthood_completion_history"].append(
+        {
+            "completed_gate": "R0-R4",
+            "tracker_issue": 231,
+            "tracker_state": "closed",
+            "merged_pr": 999,
+            "reviewed_head": "1" * 40,
+            "merge_commit": "2" * 40,
+            "resulting_main_core_lean_run": 1,
+            "resulting_main_compression_guard_run": 2,
+            "current_boundary": "next_boundary",
+            "gate_state": "closed",
+        }
+    )
+    module.validate_static(repo, closed_with_append, ledger)
+    module.validate_objecthood_completion_history_transition(
+        reopened_base, closed_with_append
     )
 
     def lose_counted_generator(config: dict) -> None:

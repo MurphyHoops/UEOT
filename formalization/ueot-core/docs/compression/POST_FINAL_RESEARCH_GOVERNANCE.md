@@ -412,8 +412,8 @@ machine-checks both freshness conditions before Track O can be active again.
 Completed Objecthood cycles are stored in an **append-only completion history**:
 an authorization PR may not delete, reorder, or rewrite an earlier completion
 record to make a closed tracker/stage appear fresh again.  A later close cycle
-may append one record corresponding to the Track O tracker/stage that was active
-on its base, and closes the mutation gate at the same time.
+**must append exactly one** record corresponding to the Track O tracker/stage
+that was active on its base, and must close the mutation gate at the same time.
 
 No Track-O result may be renamed full universal or biological Objecthood /
 autopoiesis without a separate theorem and governance lifecycle.
