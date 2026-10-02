@@ -4,7 +4,7 @@ Status: **CLEAR / LOCAL ONLY**
 
 Audited implementation:
 
-`8a5350ccafb312dd3b920b64113cf62042e1ae5d`.
+`e58ab6c8ac06b4ba7ea62be1bf2665483d8ec189`.
 
 Merged baseline:
 
@@ -14,7 +14,8 @@ Merged baseline:
 
 - detached clean worktree at the exact implementation hash;
 - diff against merged `origin/main`;
-- only three changed paths: CrossTrack root plus two new Lean modules;
+- eight changed paths at the audited hash: CrossTrack root, three Endogenous
+  Lean modules, and four local closure/audit documents;
 - read-only theorem-surface and assumption audit;
 - no remote mutation from the local continuation.
 
@@ -123,7 +124,35 @@ one-step support transition of the present lift.
 Consequently the current result supports autonomous constitutive persistence,
 not full self-repairing Omega-loop closure.
 
-## 11. Compression-architecture audit
+## 11. Operational synthesis / nonvacuity audit
+
+`OperationalFormedPersistentParent` does not assert its own existence as a
+premise.  Its constructor theorem first derives a nonempty formed candidate
+family from a zero-defect seed and child coverage, then selects an actual
+formed parent.
+
+The theorem separately assumes:
+
+- pairwise probe separation over the generated family;
+- nonempty P-PER winning set for every generated parent.
+
+These are strong domain conditions, but they are explicit and materially
+weaker than assuming the final operational certificate.  In particular, the
+formation seed prevents the universal `hwin` statement from being used
+vacuously over an empty candidate family.
+
+The selected parent's persistence certificate contains a concrete seed state
+inside the stabilized kernel, not only a fixed-set equality.
+
+The synthesis also preserves the Objecthood boundary by exporting
+`operationalPersistence_does_not_supply_controller_repair`.
+
+The negative formation theorem
+`responseFormedCandidateFamily_empty_of_no_exactCarrier` was checked to derive
+emptiness from the absence of exact physical carriers rather than from an
+assumed empty child family.
+
+## 12. Compression-architecture audit
 
 The two new modules are uncounted CrossTrack synthesis/boundary work.
 
@@ -136,7 +165,7 @@ They do not mutate:
 
 The counted generator total remains four.
 
-## 12. Proof and axiom audit
+## 13. Proof and axiom audit
 
 The new Endogenous modules contain no project-local
 
@@ -148,7 +177,10 @@ Selected public theorem `#print axioms` output contains only
 
 `propext / Classical.choice / Quot.sound`.
 
-## 13. Verdict
+This audit includes the final synthesis/certificate theorems as well as the
+formation and constitutive-persistence layers.
+
+## 14. Verdict
 
 **CLEAR FOR LOCAL CONDITIONAL CLOSURE.**
 

@@ -4,7 +4,7 @@ Status: **LOCAL CONDITIONAL CLOSURE**
 
 Exact implementation:
 
-`8a5350ccafb312dd3b920b64113cf62042e1ae5d`.
+`e58ab6c8ac06b4ba7ea62be1bf2665483d8ec189`.
 
 Remote predecessor integration:
 
@@ -114,7 +114,39 @@ The remaining Omega-loop target is now concrete:
 
 with the repair mechanism itself represented inside the object state/dynamics.
 
-## 5. Updated UEOT object-construction stack
+## 5. Operational synthesis certificate
+
+The final local layer now packages the preceding branches into
+
+`OperationalFormedPersistentParent`.
+
+The certificate simultaneously records:
+
+- membership of the selected parent in the response-generated coalition
+  family;
+- family-wide interaction separation on a nonempty probe set;
+- a nonvacuous constitutive persistence certificate containing an actual seed
+  state, fixed viability kernel, internal controller, and probability-one
+  all-times persistence witness.
+
+`exists_operationalFormedPersistentParent_of_responseSeed` constructs such a
+certificate from:
+
+1. one zero-defect lower-level response carrier seed;
+2. child-region coverage of that seed;
+3. a nonempty finite probe family that separates all generated candidates;
+4. nonempty P-PER winning sets for the generated parents.
+
+This is the first local theorem in the current chain that places generated
+formation, identifiability, and nonvacuous autonomous persistence in one typed
+object.  It is still deliberately named **operational formed-persistent
+parent**, not UEOT Object, because controller repair/reconstruction is absent.
+
+The formation side also has an exact negative boundary:
+
+`no exact physical carrier -> no response-formed parent candidate`.
+
+## 6. Updated UEOT object-construction stack
 
 The strongest justified finite architecture is now
 
@@ -140,10 +172,17 @@ plus, on the persistence side,
 
 -> `autonomous probability-one constitutive persistence`.
 
+These branches now meet in
+
+`OperationalFormedPersistentParent`,
+
+subject to explicit interaction-separation and nonempty-winning-set
+conditions.
+
 The two branches are now structurally much closer to a later object synthesis,
 but they have not yet been identified with one another.
 
-## 6. What is closed locally
+## 7. What is closed locally
 
 1. response-generated finite candidate-family definition;
 2. zero-defect seed -> exact minimal carrier existence;
@@ -159,8 +198,11 @@ but they have not yet been identified with one another.
 12. finite existence of constitutive closure;
 13. path-level probability-one constitutive persistence;
 14. explicit no-self-repair boundary for corrupted controllers.
+15. no-carrier -> no-formed-candidate boundary;
+16. nonvacuous constitutive persistence certificate with an actual seed;
+17. operational formation + identification + persistence synthesis certificate.
 
-## 7. What remains open
+## 8. What remains open
 
 The local closure does not prove:
 
@@ -178,14 +220,14 @@ The local closure does not prove:
 - a final Omega-loop Objecthood equivalence;
 - a fifth counted generator.
 
-## 8. Validation
+## 9. Validation
 
-On exact implementation `8a5350cc...`:
+On exact implementation `e58ab6c...`:
 
 - focused new modules: **PASS**;
 - public CrossTrack build: **PASS**;
-- full `lake build UEOT`: **PASS (9100 jobs)**;
-- research governance relative to merged `origin/main`: **PASS, 3 paths**;
+- full `lake build UEOT`: **PASS (9101 jobs)**;
+- research governance relative to merged `origin/main`: **PASS, 8 paths**;
 - research-governance regressions: **PASS**;
 - frozen compression validator: **PASS**;
 - compression validator regressions: **PASS**;
@@ -197,13 +239,17 @@ On exact implementation `8a5350cc...`:
 - selected public theorem axiom audit: only
   `propext / Classical.choice / Quot.sound`.
 
-## 9. Local verdict
+## 10. Local verdict
 
 **Conditional closure of the two previous high-level residuals.**
 
 Candidate formation is no longer an arbitrary type input in the finite
 response/carrier/coalition model, and preserving control is no longer an
 informative external runtime action in the constitutive persistence model.
+
+Moreover, those two results are now joined by an explicit nonvacuous
+operational parent certificate rather than merely coexisting in parallel
+modules.
 
 The next dominant mathematical target is correspondingly sharper:
 

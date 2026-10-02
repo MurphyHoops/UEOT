@@ -21,7 +21,7 @@ Branch:
 
 Exact audited implementation:
 
-`8a5350ccafb312dd3b920b64113cf62042e1ae5d`.
+`e58ab6c8ac06b4ba7ea62be1bf2665483d8ec189`.
 
 This branch has not been pushed.
 
@@ -69,7 +69,27 @@ repair/reconstruction mechanism, plausibly linked to P-OMG integrity/failure
 observables, that can return corrupted constitutive state to a preserving
 controller domain.
 
-## 6. Frozen architecture
+## 6. Operational synthesis closure
+
+The local branch also contains `EndogenousObjectSynthesis.lean`.
+
+It introduces `OperationalFormedPersistentParent`, whose selected parent is a
+member of the generated coalition family, whose probe family separates the
+generated candidates, and whose selected-parent dynamics carries a concrete
+constitutive persistence certificate.
+
+From one zero-defect response seed, child coverage, family-wide probe
+separation, and nonempty winning sets for generated parents, Lean constructs a
+nonempty operational certificate.
+
+This closes the local *composition* of formation + identification + runtime
+persistence while retaining a theorem-level boundary against controller
+self-repair.
+
+The complementary no-carrier theorem proves the formation path cannot invent a
+candidate when the exact physical-carrier family is empty.
+
+## 7. Frozen architecture
 
 - source/final accounting remains 106/106;
 - counted generators remain 4;
@@ -79,14 +99,14 @@ controller domain.
 - Formation / Identification / Semantic Stability / Persistence remain typed
   as distinct obligations.
 
-## 7. Validation closure
+## 8. Validation closure
 
-On exact implementation `8a5350cc...`:
+On exact implementation `e58ab6c...`:
 
 - focused Endogenous modules: **PASS**;
 - CrossTrack build: **PASS**;
-- full `lake build UEOT`: **PASS (9100 jobs)**;
-- research governance relative to merged main: **PASS (3 paths)**;
+- full `lake build UEOT`: **PASS (9101 jobs)**;
+- research governance relative to merged main: **PASS (8 paths)**;
 - research-governance regressions: **PASS**;
 - frozen Compression validator: **PASS**;
 - Compression validator regressions: **PASS**;
@@ -96,7 +116,7 @@ On exact implementation `8a5350cc...`:
 - selected public theorem axioms: only standard
   `propext / Classical.choice / Quot.sound`.
 
-## 8. Remote state of this mission
+## 9. Remote state of this mission
 
 - no push;
 - no remote branch;

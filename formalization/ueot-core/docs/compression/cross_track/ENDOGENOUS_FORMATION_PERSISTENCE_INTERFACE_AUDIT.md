@@ -14,7 +14,7 @@ This local continuation is on
 
 with exact Lean implementation
 
-`8a5350ccafb312dd3b920b64113cf62042e1ae5d`.
+`e58ab6c8ac06b4ba7ea62be1bf2665483d8ec189`.
 
 The new branch is local only.  No push, PR, Issue mutation, or frozen ledger
 mutation belongs to this continuation.
@@ -250,7 +250,48 @@ but not:
 This theorem prevents `constitutive persistence` from being silently renamed
 as a full self-repairing Omega-loop.
 
-## 12. What the two residuals have become
+## 12. Operational formed-persistent-parent synthesis
+
+The final local module `EndogenousObjectSynthesis` joins the two branches in a
+single certificate without renaming it as full Objecthood.
+
+`OperationalFormedPersistentParent` contains:
+
+- a `parent : FormedCandidate ...`, so formation provenance is carried by the
+  subtype itself;
+- one nonempty selected probe family;
+- a family-wide `PairwiseInteractionSeparating` witness;
+- one `ConstitutivePersistenceCertificate` for the selected parent.
+
+The theorem
+
+`exists_operationalFormedPersistentParent_of_responseSeed`
+
+starts from one zero-defect carrier seed plus child coverage, generates at
+least one formed parent, and combines that with explicit assumptions that the
+chosen probes separate the generated family and that every generated parent's
+P-PER winning set is nonempty.  It then constructs an operational parent
+certificate.
+
+This is nonvacuous: the response seed constructs the parent candidate before
+the persistence witness is selected.  The theorem does not rely on separation
+or winning-set statements over an empty formed-candidate type.
+
+If the generated candidate type is nontrivial,
+
+`OperationalFormedPersistentParent.interactionIsolation_pos`
+
+recovers the quantitative positive interaction margin `beta_E` directly from
+the certificate's family-wide separation witness.
+
+The complementary theorem
+
+`responseFormedCandidateFamily_empty_of_no_exactCarrier`
+
+proves that the formation mechanism cannot manufacture a parent when no exact
+physical carrier exists.
+
+## 13. What the two residuals have become
 
 Before this mission:
 
@@ -272,7 +313,7 @@ Upgrade the internally stored preserving controller from immutable state to a
 repairable/reconstructible constitutive component, ideally coupled to explicit
 integrity/failure observables from the P-OMG family.
 
-## 13. Architecture classification
+## 14. Architecture classification
 
 Recommended classification:
 
@@ -284,5 +325,7 @@ Recommended classification:
   **G2 persistence/reflexivity bridge**;
 - wrong-controller persistence:
   **G3 Omega-loop boundary**.
+- operational formed + identifiable + persistent certificate:
+  **G2 cross-track synthesis**.
 
 There is no evidence for a fifth counted compression generator.
