@@ -206,4 +206,3 @@ The unresolved scientific quantity is therefore no longer the Track-X
 `epsilon / kappa` step.  It is the **domain law that determines or bounds the
 assembly metric and binding sensitivity `L` from concrete lower-level
 physics/interaction evidence**.
-

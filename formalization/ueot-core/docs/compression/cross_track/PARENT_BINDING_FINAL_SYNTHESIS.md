@@ -189,4 +189,3 @@ This document is deliberately marked validation-pending until:
 - an independent read-only mathematical/architecture audit returns CLEAR.
 
 No remote action is permitted before those local gates are complete.
-
