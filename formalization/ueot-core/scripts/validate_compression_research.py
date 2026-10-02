@@ -937,6 +937,23 @@ def main() -> None:
     repo = Path(args.repo_root).resolve()
     config = load_json(repo / TRACKS_REL)
     ledger = load_json(repo / LEDGER_REL)
+
+    # `pull_request_target` intentionally executes this validator from the
+    # immutable base checkout.  When a baseline/candidate pair is supplied,
+    # policy *authorization* still comes from the base config below, but the
+    # candidate registry must be loaded from the candidate Git object rather
+    # than from the checked-out base worktree.  Otherwise transition checks
+    # such as append-only Objecthood completion history compare base-to-base
+    # and silently ignore candidate policy mutations.
+    if args.baseline_ref:
+        candidate_config = load_json_at_ref(repo, args.candidate_ref, TRACKS_REL)
+        if candidate_config is None:
+            fail(
+                "candidate ref is missing the research-track governance registry: "
+                f"{args.candidate_ref}:{TRACKS_REL.as_posix()}"
+            )
+        config = candidate_config
+
     compiled = validate_static(repo, config, ledger)
     enforcement_config = config
     enforcement_compiled = compiled

@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 import copy
 import importlib.util
+import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -123,6 +125,97 @@ def test_policy_reauthorizes_on_base_edit(repo: Path) -> None:
     if marker not in workflow:
         raise AssertionError(
             "base-policy workflow must reauthorize on pull-request edited/base-change events"
+        )
+
+
+def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
+    """The immutable base validator must inspect candidate registry *data*.
+
+    This reproduces the pull_request_target layout: the worktree remains at the
+    baseline commit while --candidate-ref names a different commit object.  A
+    candidate that rewrites prior Objecthood completion history is statically
+    well-formed, so only the base->candidate transition check should reject it.
+    """
+
+    module = load_validator_module(repo)
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    config = module.load_json(repo / module.TRACKS_REL)
+    history = config.get("objecthood_completion_history")
+    if not isinstance(history, list) or not history:
+        raise AssertionError("candidate-ref regression requires completed Objecthood history")
+
+    candidate = copy.deepcopy(config)
+    candidate["objecthood_completion_history"][0]["tracker_issue"] = 999
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmpdir = Path(tmp)
+        registry = tmpdir / "candidate.json"
+        registry.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
+        index = tmpdir / "index"
+        env = os.environ.copy()
+        env["GIT_INDEX_FILE"] = str(index)
+
+        subprocess.run(
+            ["git", "read-tree", base], cwd=repo, env=env, check=True
+        )
+        blob = subprocess.check_output(
+            ["git", "hash-object", "-w", str(registry)], cwd=repo, text=True
+        ).strip()
+        subprocess.run(
+            [
+                "git",
+                "update-index",
+                "--add",
+                "--cacheinfo",
+                "100644",
+                blob,
+                module.TRACKS_REL.as_posix(),
+            ],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        tree = subprocess.check_output(
+            ["git", "write-tree"], cwd=repo, env=env, text=True
+        ).strip()
+        candidate_ref = subprocess.check_output(
+            ["git", "commit-tree", tree, "-p", base],
+            cwd=repo,
+            input="candidate-ref policy regression\n",
+            text=True,
+        ).strip()
+
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", delete=False
+        ) as handle:
+            handle.write(module.TRACKS_REL.as_posix() + "\n")
+            changed_file = Path(handle.name)
+        try:
+            completed = subprocess.run(
+                validator(
+                    repo,
+                    "ops/compression-candidate-ref-regression",
+                    changed_file,
+                    [
+                        "--baseline-ref",
+                        base,
+                        "--candidate-ref",
+                        candidate_ref,
+                    ],
+                ),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        finally:
+            changed_file.unlink(missing_ok=True)
+
+    output = completed.stdout + completed.stderr
+    if completed.returncode == 0 or "prior records are immutable" not in output:
+        raise AssertionError(
+            "base-checkout validator ignored candidate-ref governance data\n" + output
         )
 
 
@@ -670,6 +763,9 @@ def main() -> None:
 
     test_policy_reauthorizes_on_base_edit(repo)
     print("base-change-reauthorization-trigger: PASS")
+
+    test_candidate_ref_policy_drives_objecthood_transition(repo)
+    print("candidate-ref-policy-transition-audited: PASS")
 
     run_case(
         repo,
