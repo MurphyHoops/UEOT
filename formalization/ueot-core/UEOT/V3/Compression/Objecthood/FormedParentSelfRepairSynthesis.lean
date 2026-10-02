@@ -1,5 +1,6 @@
 import UEOT.V3.Compression.Objecthood.FailureRepairabilityBoundary
 import UEOT.V3.Compression.CrossTrack.EndogenousObjectSynthesis
+import UEOT.V3.Compression.CrossTrack.RobustParentSemanticCertificate
 
 /-!
 # Track O / O7 — formed parent × identification × self-repair synthesis
@@ -25,12 +26,14 @@ namespace UEOT.V3.Compression.Objecthood
 open Set MeasureTheory ProbabilityTheory
 open UEOT.V3.ViabilityKernel
 open UEOT.V3.ViabilityTrajectory
+open UEOT.V3.FiniteDobrushin
+open UEOT.V3.Compression.InvariantSetGaugeInvariance
 open UEOT.V3.RecoveryHittingNonnegative
 open UEOT.V3.Compression.CrossTrack
 open UEOT.V3.OmegaMinimalFailure
 open scoped ENNReal ProbabilityTheory
 
-universe uV uChild uH uProbe uR uY uE uZ uX uA uDel
+universe uV uChild uH uProbe uR uY uE uZ uX uA uDel uC uS
 
 noncomputable section
 
@@ -354,6 +357,148 @@ theorem exists_selfRepairingOperationalParent
     Nonempty (SelfRepairingOperationalParent
       readout p regions response hprob probes dynamics persistenceDomain) :=
   ⟨{ operational := C, physicalRepair := R }⟩
+
+/-! ## O7 semantic-stability hardening
+
+`OperationalFormedPersistentParent` carries formation, interaction
+identifiability, and constitutive persistence, but Track-X long-run semantic
+stability lives in the separate `RobustParentSemanticCertificate` surface.
+O7 therefore needs an explicit typed extension rather than treating interaction
+isolation as though it were already the long-run semantic certificate.
+-/
+
+variable {Csem : Type uC}
+variable {Ssem : Type uS} [Fintype Ssem] [Nonempty Ssem]
+noncomputable local instance formedParentSemanticDecidableEq : DecidableEq Ssem :=
+  Classical.decEq Ssem
+
+/-- The hardened O7 package binds the exact same formed-parent completion to
+both the self-repair certificate and Track-X robust long-run semantics.
+
+`selected_parent_in_fiber` is the explicit identity bridge: it states that the
+selected operational parent is one of the parent completions certified in the
+semantic fibre. No relation between physical repair dynamics and the separate
+semantic kernel is invented beyond their shared parent identity. -/
+structure SemanticallyStableSelfRepairingOperationalParent
+    [Fintype Child]
+    (readout : Finset V → H → Rout)
+    (p : H → Probe → Measure Y)
+    (regions : Child → Finset V)
+    (response : Finset Child → E → Measure Z)
+    (hprob : ∀ S e, IsProbabilityMeasure (response S e))
+    (probes : Finset E)
+    (dynamics : FormedCandidate readout p regions → X → A → PMF X)
+    (persistenceDomain : FormedCandidate readout p regions → Set X)
+    (pi : FormedCandidate readout p regions → Csem)
+    (semanticKernel : FormedCandidate readout p regions → Matrix Ssem Ssem ℝ)
+    (hSemanticKernel : ∀ q, semanticKernel q ∈ Matrix.rowStochastic ℝ Ssem) where
+  repairing : SelfRepairingOperationalParent
+    readout p regions response hprob probes dynamics persistenceDomain
+  semantic : RobustParentSemanticCertificate pi semanticKernel hSemanticKernel
+  selected_parent_in_fiber :
+    pi repairing.operational.parent = semantic.child
+
+namespace SemanticallyStableSelfRepairingOperationalParent
+
+/-- The selected formed parent retains an explicit Track-X invariant long-run
+semantic witness. -/
+theorem selected_parent_invariant
+    [Fintype Child]
+    {readout : Finset V → H → Rout}
+    {p : H → Probe → Measure Y}
+    {regions : Child → Finset V}
+    {response : Finset Child → E → Measure Z}
+    {hprob : ∀ S e, IsProbabilityMeasure (response S e)}
+    {probes : Finset E}
+    {dynamics : FormedCandidate readout p regions → X → A → PMF X}
+    {persistenceDomain : FormedCandidate readout p regions → Set X}
+    {pi : FormedCandidate readout p regions → Csem}
+    {semanticKernel : FormedCandidate readout p regions → Matrix Ssem Ssem ℝ}
+    {hSemanticKernel : ∀ q, semanticKernel q ∈ Matrix.rowStochastic ℝ Ssem}
+    (C : SemanticallyStableSelfRepairingOperationalParent
+      readout p regions response hprob probes dynamics persistenceDomain
+      pi semanticKernel hSemanticKernel) :
+    C.semantic.invariantLaw C.repairing.operational.parent ∈
+      invariantLawSet
+        (semanticKernel C.repairing.operational.parent)
+        (hSemanticKernel C.repairing.operational.parent) :=
+  C.semantic.invariant C.repairing.operational.parent
+
+/-- The exact selected parent inherits the Track-X `epsilon / kappaMin`
+long-run semantic bound against every completion in the same certified child
+fibre. -/
+theorem selected_parent_pairwise_semantic_bound
+    [Fintype Child]
+    {readout : Finset V → H → Rout}
+    {p : H → Probe → Measure Y}
+    {regions : Child → Finset V}
+    {response : Finset Child → E → Measure Z}
+    {hprob : ∀ S e, IsProbabilityMeasure (response S e)}
+    {probes : Finset E}
+    {dynamics : FormedCandidate readout p regions → X → A → PMF X}
+    {persistenceDomain : FormedCandidate readout p regions → Set X}
+    {pi : FormedCandidate readout p regions → Csem}
+    {semanticKernel : FormedCandidate readout p regions → Matrix Ssem Ssem ℝ}
+    {hSemanticKernel : ∀ q, semanticKernel q ∈ Matrix.rowStochastic ℝ Ssem}
+    (C : SemanticallyStableSelfRepairingOperationalParent
+      readout p regions response hprob probes dynamics persistenceDomain
+      pi semanticKernel hSemanticKernel)
+    (hcard : 1 < Fintype.card Ssem)
+    {q : FormedCandidate readout p regions}
+    (hq : pi q = C.semantic.child) :
+    lawTV
+      (C.semantic.invariantLaw C.repairing.operational.parent)
+      (C.semantic.invariantLaw q) ≤
+        C.semantic.epsilon / C.semantic.kappaMin := by
+  exact C.semantic.pairwise_bound
+    pi semanticKernel hSemanticKernel hcard
+    C.selected_parent_in_fiber hq
+
+/-- **Hardened O7 joint theorem.** The same selected formed parent retains its
+Track-X long-run semantic stability guarantee while transient damage in the
+declared O5 repair basin returns almost surely to that parent's legitimate
+constitutive domain. The two claims share the same parent completion but remain
+properly typed on their distinct semantic and constitutive dynamics. -/
+theorem semantic_bound_and_eventual_same_parent_repair
+    [Fintype Child]
+    {readout : Finset V → H → Rout}
+    {p : H → Probe → Measure Y}
+    {regions : Child → Finset V}
+    {response : Finset Child → E → Measure Z}
+    {hprob : ∀ S e, IsProbabilityMeasure (response S e)}
+    {probes : Finset E}
+    {dynamics : FormedCandidate readout p regions → X → A → PMF X}
+    {persistenceDomain : FormedCandidate readout p regions → Set X}
+    {pi : FormedCandidate readout p regions → Csem}
+    {semanticKernel : FormedCandidate readout p regions → Matrix Ssem Ssem ℝ}
+    {hSemanticKernel : ∀ q, semanticKernel q ∈ Matrix.rowStochastic ℝ Ssem}
+    (C : SemanticallyStableSelfRepairingOperationalParent
+      readout p regions response hprob probes dynamics persistenceDomain
+      pi semanticKernel hSemanticKernel)
+    (hcard : 1 < Fintype.card Ssem)
+    {q : FormedCandidate readout p regions}
+    (hq : pi q = C.semantic.child)
+    {z : ConstitutiveState X A}
+    (hz : z.1 ∈ C.repairing.physicalRepair.basin) :
+    lawTV
+      (C.semantic.invariantLaw C.repairing.operational.parent)
+      (C.semantic.invariantLaw q) ≤
+        C.semantic.epsilon / C.semantic.kappaMin ∧
+    (∀ᵐ omega ∂stationaryTrajMeasure
+        (autonomousRepairLift
+          (dynamics C.repairing.operational.parent)
+          C.repairing.operational.persistence.K
+          C.repairing.operational.persistence.source_fixed
+          C.repairing.physicalRepair)
+        noExternalControl (PMF.pure z),
+      ∃ n : ℕ,
+        omega n ∈ legitimateConstitutiveDomain
+          (dynamics C.repairing.operational.parent)
+          C.repairing.operational.persistence.K) := by
+  exact ⟨C.selected_parent_pairwise_semantic_bound hcard hq,
+    C.repairing.eventually_restores_same_parent_contract hz⟩
+
+end SemanticallyStableSelfRepairingOperationalParent
 
 end
 

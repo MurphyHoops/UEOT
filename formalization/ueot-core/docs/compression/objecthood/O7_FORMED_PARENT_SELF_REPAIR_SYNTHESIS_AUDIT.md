@@ -1,6 +1,6 @@
 # Track O / O7 — Formation × Identification × Self-Repair Synthesis Audit
 
-Status: **LOCAL O7 CLEAR — stage gate passed before commit**
+Status: **LOCAL O7 CLEAR — second-pass semantic hardening passed**
 
 Parent local commits:
 
@@ -37,6 +37,12 @@ O7 re-exposes without modification:
   family is nontrivial;
 - the original P-PER winning-kernel identity and seed through the existing
   persistence certificate.
+
+Second-pass audit correction: these facts preserve formation,
+interaction-identifiability, and constitutive persistence, but they do **not by
+themselves** instantiate Track-X `RobustParentSemanticCertificate`.  Therefore
+the initial O7 package is necessary but not sufficient for the tracker phrase
+"preserve ... long-run semantic guarantees".
 
 The O3 controller certificate used by O7 is rebuilt on
 `operational.persistence.K` itself. Hence the O5 self-stabilization package has
@@ -158,3 +164,81 @@ The formal O7 working tree then passed:
   membership; failure detection is still not treated as repair synthesis.
 
 O7 disposition: **CLEAR / eligible for its own local commit**.
+
+## 9. Second-pass semantic audit and hardening
+
+After the initial local commit `8da3c93`, an independent reread of Issue #230
+found one Medium semantic omission in the O7 audit claim:
+
+- `OperationalFormedPersistentParent` packages formation, finite interaction
+  separation, and constitutive persistence;
+- Track-X quantitative long-run semantic stability is packaged separately by
+  `RobustParentSemanticCertificate`;
+- therefore interaction isolation could not be silently counted as preservation
+  of the Track-X `epsilon / kappaMin` long-run semantic theorem.
+
+The initial O7 theorem set remained mathematically correct, but the stage was
+reopened rather than allowing that audit overclaim to propagate into O8.
+
+The hardening adds
+`SemanticallyStableSelfRepairingOperationalParent`.  It contains:
+
+1. the exact existing `SelfRepairingOperationalParent`;
+2. a Track-X `RobustParentSemanticCertificate` over the same
+   `FormedCandidate` completion type;
+3. an explicit proof that the selected operational parent lies in the semantic
+   certificate's child fibre.
+
+The extension deliberately does **not** identify the constitutive PMF dynamics
+with the separate finite Markov kernel used by Track-X semantic stability.
+Those are distinct typed interfaces.  Their only required bridge is that they
+refer to the exact same selected parent completion.
+
+New target theorem surfaces:
+
+- `selected_parent_invariant`;
+- `selected_parent_pairwise_semantic_bound`;
+- `semantic_bound_and_eventual_same_parent_repair`.
+
+The last theorem simultaneously carries the Track-X
+`epsilon / kappaMin` semantic bound and the O7 almost-sure repair-to-legitimate
+contract on the same selected formed parent.
+
+The earlier O7 CLEAR record above is retained as historical evidence for
+`8da3c93`, but O7 is not considered finally closed until this hardening passes
+the full stage gate again.
+
+### Second-pass hardening validation
+
+The hardened exact O7 tree passed the full stage gate again:
+
+- focused `FormedParentSelfRepairSynthesis.lean` compile: **PASS**;
+- public `UEOT.V3.Compression.Objecthood` build: **PASS**;
+- `UEOT.V3.Compression` build: **PASS — 9090 jobs**;
+- full `lake build UEOT`: **PASS — 9109 jobs**;
+- Objecthood proof-escape scan: **CLEAR**;
+- axiom audit for `selected_parent_invariant`,
+  `selected_parent_pairwise_semantic_bound`, and
+  `semantic_bound_and_eventual_same_parent_repair`: only standard `propext`,
+  `Classical.choice`, `Quot.sound`;
+- research-governance regression suite: **PASS**;
+- simulated exact-candidate governance validation from initial O7 commit
+  `8da3c93`: **PASS — 2 changed paths**;
+- `git diff --check`: **PASS**.
+
+### Final O7 semantic verdict
+
+- Formation provenance: preserved on the original selected parent.
+- Interaction identifiability: preserved on the original generated family.
+- Constitutive persistence/repair: attached to the original parent dynamics and
+  original P-PER kernel.
+- Long-run semantic stability: now explicitly retained through a Track-X
+  `RobustParentSemanticCertificate` over the same parent-completion type, with
+  an explicit selected-parent fibre witness.
+- No false equality is introduced between the physical constitutive PMF
+  dynamics and the separate Track-X finite semantic Markov kernel.
+- The joint theorem states the static semantic bound and dynamic autonomous
+  repair guarantee together while preserving their distinct typed assumptions.
+
+O7 final disposition: **CLEAR**.  The second-pass audit corrected an audit
+overclaim rather than changing the validity of the initial repair theorems.
