@@ -18,6 +18,8 @@
   `formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json`
 - Post-FINAL research governance:
   `formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md`
+- Current Track-S extension tracker, when active: GitHub Issue **#223**
+  (`S∞` — infinite-state / operator-level residual isolation).
 - Official regression target: `lake build UEOT`
 
 Compression is a post-106 meta-formalization mission. It must never alter the
@@ -116,6 +118,12 @@ Post-FINAL research branch classes additionally use the immutable registry:
 Branch naming alone is not authorization. The immutable base-policy validator
 must also accept the changed paths and live-concurrency state.
 
+The finite-state Track-S lane closed in PRs #220--#222.  New Track-S mutation
+must not reopen that lane just to add an equivalent finite-state certificate.
+When Issue #146 names S∞ / Issue #223 as the active Track-S mission, the
+preferred new branch prefix is `compression/goa-infinite-*`, and the first
+stage is the S∞0 API/feasibility audit defined in #223.
+
 Default: one active mutating branch per M-ID. Do not create `v2`, `fresh`,
 `final`, or scratch branch families.
 
@@ -131,7 +139,8 @@ Before any new compression branch:
 6. load `COMPRESSION_RESEARCH_TRACKS.json` and classify the proposed work by
    track and owned path before mutating files;
 7. read any child tracker named by Issue #146 (for example P0b, Track S, or
-   Track H) and honor its sequencing gate;
+   Track H) and honor its sequencing gate; when S∞ is active this includes
+   Issue #223 before any Track-S branch is created or reused;
 8. verify the M-ID/lane is not already active/integrated and that the same track
    has no competing live mutating branch;
 9. reuse the existing branch whenever one already represents the work;
@@ -221,6 +230,15 @@ Post-FINAL ownership is stricter:
 - Track X remains closed until the registry gate is intentionally opened by a
   separately authorized governance transition.
 
+For S∞ specifically:
+
+- finite-state qualitative certificate hunting remains closed;
+- invariant-law existence, uniqueness/isolation, and perturbation tracking are
+  three separate proof obligations;
+- a purely abstract Banach/operator lemma is insufficient for closure without
+  at least one non-finite realization;
+- no G0/counting proposal may be made inside an ordinary S∞ feature PR.
+
 ## 10A. Guarded post-FINAL recovery
 
 When Issue #146 reports the guarded architecture as active, recover in this
@@ -229,7 +247,8 @@ order:
 1. canonical `main` and frozen ledger state;
 2. research registry and immutable policy status;
 3. Issue #146 authority/recovery block;
-4. named P0b/S/H child tracker, if any;
+4. named P0b/S/H child tracker, if any; in particular read Issue #223 whenever
+   S∞ is the active Track-S mission;
 5. open PRs and live governed branches;
 6. exact head/CI/review status for Track S and Track H independently;
 7. the exact next action in the owning track.

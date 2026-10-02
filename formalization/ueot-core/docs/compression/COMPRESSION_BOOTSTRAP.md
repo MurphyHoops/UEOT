@@ -23,7 +23,8 @@ Mandatory checks:
    architecture role, lifecycle, track owner, authority/provenance and
    counted-core-impact axes;
 6. if Issue #146 names a P0b/Track S/Track H tracker, read that child tracker
-   before selecting a branch;
+   before selecting a branch; when S∞ is active, Issue #223 is the authoritative
+   detailed Track-S tracker and must be read before Track-S mutation;
 7. list remote branches and open PRs, then classify each governed branch as
    governance / Track S / Track H / unclassified;
 8. recover the active branch/head and latest relevant CI for each active lane;
@@ -54,6 +55,7 @@ counted generators: <list or none>
 active M-ID: <id or none>
 architecture role/lifecycle: <G0-G3>/<status or none>
 Track S: <branch>@<sha / PR / next action or inactive>
+Track S mission: <finite-state CLOSED | S∞ stage / tracker #223 | other>
 Track H: <branch>@<sha / PR / next action or inactive>
 Track X gate: closed | open
 latest Core Lean CI: <run/status>

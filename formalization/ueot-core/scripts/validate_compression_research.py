@@ -548,6 +548,41 @@ def validate_static(
     ):
         fail("Track H long-run stability work must remain gated")
 
+    if require_architecture_records:
+        s = tracks["S"]
+        if s.get("active_mission_id") != "S∞":
+            fail("Track S active mission must be S∞")
+        if s.get("active_mission_issue") != 223:
+            fail("Track S S∞ mission must be governed by Issue #223")
+        if (
+            s.get("active_mission_scope")
+            != "infinite-state / operator-level residual isolation and long-run semantic stability"
+        ):
+            fail("Track S S∞ mission scope drifted from the governed operator-level extension")
+        if s.get("preferred_branch_prefix") != "compression/goa-infinite-":
+            fail("Track S S∞ preferred branch prefix must remain compression/goa-infinite-")
+        if not matches_any("compression/goa-infinite-operator-residual", compiled["S"]):
+            fail("Track S branch patterns must authorize the governed S∞ prefix")
+        expected_s_stages = [
+            "S∞0-api-feasibility-audit",
+            "S∞1-abstract-residual-isolation",
+            "S∞2-residual-to-distance-stability",
+            "S∞3-invariant-existence-separation",
+            "S∞4-concrete-infinite-state-realization",
+            "S∞5-separation-no-go",
+            "S∞6-closure-synthesis",
+        ]
+        if s.get("stage_sequence") != expected_s_stages:
+            fail(f"Track S S∞ stage sequence must remain exactly {expected_s_stages}")
+        if (
+            s.get("finite_state_reopen_policy")
+            != "forbidden_without_a_genuinely_new_counterexample_or_uncovered_gap"
+        ):
+            fail("Track S finite-state closure must remain protected against equivalent-certificate reopening")
+        completed_s = s.get("completed_mission")
+        if not isinstance(completed_s, str) or "CLOSED" not in completed_s or "#220-#222" not in completed_s:
+            fail("Track S governance must preserve the finite-state closure checkpoint #220-#222")
+
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
         fail("compression ledger is missing minimal_core")

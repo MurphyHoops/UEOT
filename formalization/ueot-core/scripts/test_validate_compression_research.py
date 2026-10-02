@@ -211,6 +211,31 @@ def test_architecture_record_schema(repo: Path) -> None:
     )
 
 
+def test_track_s_infinite_mission_contract(repo: Path) -> None:
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    module.validate_static(repo, config, ledger)
+
+    def wrong_tracker(config: dict) -> None:
+        config["tracks"]["S"]["active_mission_issue"] = 999
+
+    expect_static_failure(
+        repo,
+        wrong_tracker,
+        "Track S S∞ mission must be governed by Issue #223",
+    )
+
+    def reopen_finite_state(config: dict) -> None:
+        config["tracks"]["S"]["finite_state_reopen_policy"] = "open"
+
+    expect_static_failure(
+        repo,
+        reopen_finite_state,
+        "Track S finite-state closure must remain protected",
+    )
+
+
 def test_p0b_legacy_baseline_transition(repo: Path) -> None:
     """A P0a base policy may authorize P0b without already having P0b schema.
 
@@ -432,6 +457,9 @@ def main() -> None:
 
     test_architecture_record_schema(repo)
     print("architecture-record-schema-and-combinations: PASS")
+
+    test_track_s_infinite_mission_contract(repo)
+    print("track-s-infinite-mission-contract: PASS")
 
     test_p0b_legacy_baseline_transition(repo)
     print("p0b-legacy-baseline-transition: PASS")

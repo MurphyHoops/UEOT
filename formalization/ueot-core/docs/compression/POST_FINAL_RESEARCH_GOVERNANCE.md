@@ -54,6 +54,47 @@ Scientific question:
 Track S owns this theorem family. Track H must not independently re-prove or
 fork it.
 
+#### Track-S finite-state closure and S∞ continuation
+
+The finite-state Track-S mission is **CLOSED** through PRs #220--#222.  Its
+canonical merged conclusion must not be reopened merely to add another
+equivalent finite-state qualitative certificate:
+
+\[
+\kappa_1(P)>0
+\Longleftrightarrow
+\text{unique finite invariant probability semantics},
+\]
+
+with the canonical finite-state perturbation radius already recorded on main.
+
+The next separately governed Track-S mission is **S∞**, tracked by Issue
+**#223**.  Its scope is deliberately narrower than "continue Track S":
+
+- move from finite-dimensional residual isolation to an honest
+  infinite-state / operator-level interface;
+- separate invariant-law **existence** from **uniqueness/isolation** and from
+  **perturbation tracking**;
+- test bounded-below/coercive residual operators on an appropriate zero-mass
+  signed-measure or Banach-space difference space;
+- require at least one non-finite realization before scientific closure;
+- retain a no-go/separation lane, especially because uniqueness does not imply
+  a positive bounded-below constant in arbitrary infinite-dimensional spaces.
+
+S∞ must begin at the API/feasibility audit in #223.  It may not start by
+postulating the desired residual inverse as a renamed definition and may not
+infer invariant-law existence from injectivity/coercivity.  It remains
+post-FINAL and uncounted unless a later, separate primitive-promotion lifecycle
+is explicitly authorized.
+
+Preferred S∞ branch prefix: `compression/goa-infinite-*`.  The existing
+Track-S branch regex already authorizes this prefix after this governance
+transition is merged.  There is still at most one live Track-S mutating branch.
+
+S∞ does **not** own hierarchy/parent assembly or Track-X integration.  If the
+research requires H/X assumptions to proceed, it must return the residual to
+Issue #146 rather than crossing ownership boundaries.
+
 ### Track H — Hierarchy / Assembly Audit
 
 Track H tests a different question:

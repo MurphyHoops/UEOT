@@ -42,8 +42,23 @@
   },
   "tracks": {
     "S": {
-      "title": "Structural Defect / Long-Run Stability",
+      "title": "Structural Defect / Long-Run Stability — S∞ operator extension",
       "status": "active",
+      "completed_mission": "finite-state long-run semantic stability — CLOSED through PRs #220-#222",
+      "active_mission_id": "S∞",
+      "active_mission_issue": 223,
+      "active_mission_scope": "infinite-state / operator-level residual isolation and long-run semantic stability",
+      "preferred_branch_prefix": "compression/goa-infinite-",
+      "stage_sequence": [
+        "S∞0-api-feasibility-audit",
+        "S∞1-abstract-residual-isolation",
+        "S∞2-residual-to-distance-stability",
+        "S∞3-invariant-existence-separation",
+        "S∞4-concrete-infinite-state-realization",
+        "S∞5-separation-no-go",
+        "S∞6-closure-synthesis"
+      ],
+      "finite_state_reopen_policy": "forbidden_without_a_genuinely_new_counterexample_or_uncovered_gap",
       "branch_patterns": [
         "^compression/topology-.*$",
         "^compression/second-order-.*$",
@@ -57,7 +72,10 @@
         "GOA and stationary-law stability",
         "recurrent topology merge/split",
         "fixed-point residual inverse",
-        "spectral or local isolation certificates"
+        "spectral or local isolation certificates",
+        "infinite-state or operator-level residual isolation",
+        "zero-mass signed-measure or Banach-space coercivity",
+        "infinite-state invariant-semantic perturbation stability"
       ],
       "forbidden_path_prefixes": [
         "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
