@@ -70,10 +70,11 @@ Initial scope is deliberately limited to:
 - H2 — parent/assembly residual analysis;
 - H3 — no-go / separation theorems.
 
-Track H initially does **not** own GOA stability, stationary-law perturbation,
-recurrent merge/split stability, fixed-point inverse, or spectral isolation.
-Those remain Track S until a later explicit cross-track integration gate is
-opened.
+Track H does **not** own GOA stability, stationary-law perturbation, recurrent
+merge/split stability, fixed-point inverse, or spectral isolation.  Those
+theorem families remain Track-S-owned even after the Track-X gate opens.
+Track X may consume their merged public interfaces from canonical `main`, but
+may not re-prove or mutate the Track-S source surfaces.
 
 ### Track X — Parent Formation × Long-Run Semantic Stability
 
@@ -164,7 +165,7 @@ or validators are forbidden. Governance changes travel through a temporary
 ops/compression-* branch.
 
 Track S branches are forbidden from editing the Track H namespace. They may
-consume merged Track H interfaces from main later.
+consume merged Track H interfaces from canonical `main` only.
 
 Track X uses a third dedicated namespace:
 
