@@ -153,6 +153,35 @@ def expect_static_failure(repo: Path, mutate, expected: str) -> None:
         module.fail = original_fail
 
 
+def expect_objecthood_transition_failure(
+    repo: Path, baseline: dict, candidate: dict, expected: str
+) -> None:
+    module = load_validator_module(repo)
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        try:
+            module.validate_objecthood_completion_history_transition(
+                baseline, candidate
+            )
+        except ValueError as exc:
+            if expected not in str(exc):
+                raise AssertionError(
+                    f"expected Objecthood transition rejection containing "
+                    f"{expected!r}, got {exc!r}"
+                ) from exc
+        else:
+            raise AssertionError(
+                f"expected Objecthood completion-history rejection: {expected}"
+            )
+    finally:
+        module.fail = original_fail
+
+
 def test_architecture_record_schema(repo: Path) -> None:
     module = load_validator_module(repo)
     config = module.load_json(repo / module.TRACKS_REL)
@@ -240,13 +269,41 @@ def test_architecture_record_schema(repo: Path) -> None:
     )
     expect_static_failure(
         repo,
-        lambda config: reopen_o(config, 231, "O1-O8"),
+        lambda config: reopen_o(config, 231, "O0-O8"),
         "fresh stage plan",
+    )
+
+    def delete_history_and_reopen(config: dict) -> None:
+        config.pop("objecthood_completion_history", None)
+        reopen_o(config, 230, "O0-O8")
+
+    expect_static_failure(
+        repo,
+        delete_history_and_reopen,
+        "requires objecthood_completion_history",
     )
 
     reopened = copy.deepcopy(config)
     reopen_o(reopened, 231, "R0-R4")
     module.validate_static(repo, reopened, ledger)
+
+    rewritten = copy.deepcopy(config)
+    rewritten["objecthood_completion_history"][0]["tracker_issue"] = 999
+    expect_objecthood_transition_failure(
+        repo,
+        config,
+        rewritten,
+        "prior records are immutable",
+    )
+
+    deleted = copy.deepcopy(config)
+    deleted.pop("objecthood_completion_history")
+    expect_objecthood_transition_failure(
+        repo,
+        config,
+        deleted,
+        "cannot be deleted",
+    )
 
     def lose_counted_generator(config: dict) -> None:
         config["architecture_records"] = [
