@@ -26,6 +26,7 @@ import UEOT.V3.Compression.CrossTrack.InteractionProbeSelection
 import UEOT.V3.Compression.CrossTrack.InteractionBindingDynamic
 import UEOT.V3.Compression.CrossTrack.EndogenousCandidateFormation
 import UEOT.V3.Compression.CrossTrack.EndogenousConstitutivePersistence
+import UEOT.V3.Compression.CrossTrack.EndogenousObjectSynthesis
 
 /-!
 # UEOT Core Compression — Track X

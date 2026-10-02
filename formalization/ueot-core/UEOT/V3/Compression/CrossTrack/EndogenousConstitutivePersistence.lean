@@ -137,6 +137,110 @@ theorem constitutiveDomain_fixed
   · intro z hz
     exact ⟨hz, (), constitutiveLift_staysIn P pi hpi hz⟩
 
+/-- There is only one external policy for the constitutive lift in any
+information-bearing sense: every state is mapped to the unique `Unit` action. -/
+def noExternalControl : ConstitutiveState X A → Unit := fun _ => ()
+
+/-- A *given* preserving internal controller, rather than a separately
+re-selected existential policy, keeps the genuine constitutive trajectory in
+its constitutive domain at every discrete time with probability one. -/
+theorem constitutive_all_times_safe_of_preserving
+    [MeasurableSpace (ConstitutiveState X A)]
+    [MeasurableSingletonClass (ConstitutiveState X A)]
+    (P : X → A → PMF X) {K : Set X} (pi : X → A)
+    (hpi : ∀ x ∈ K, StaysIn (P x (pi x)) K)
+    (x : X) (hx : x ∈ K) :
+    stationaryTrajMeasure
+      (constitutiveLift P) noExternalControl
+      (PMF.pure (x, pi))
+      {omega | ∀ n : ℕ, omega n ∈ constitutiveDomain K pi} = 1 := by
+  have hmu : StaysIn (PMF.pure (x, pi)) (constitutiveDomain K pi) := by
+    simp [StaysIn, constitutiveDomain, hx]
+  have hstep : ∀ z ∈ constitutiveDomain K pi,
+      StaysIn (constitutiveLift P z (noExternalControl z))
+        (constitutiveDomain K pi) := by
+    intro z hz
+    simpa [noExternalControl] using constitutiveLift_staysIn P pi hpi hz
+  have hmarg : ∀ n : ℕ,
+      StaysIn
+        (stationaryStateLaw (constitutiveLift P) noExternalControl
+          (PMF.pure (x, pi)) n)
+        (constitutiveDomain K pi) :=
+    stationaryStateLaw_staysIn
+      (constitutiveLift P) noExternalControl
+      (constitutiveDomain K pi) (PMF.pure (x, pi)) hmu hstep
+  apply all_times_safe_of_coordinate_one
+    (constitutiveLift P) noExternalControl (PMF.pure (x, pi))
+    (constitutiveDomain K pi)
+  intro n
+  have hmeas : MeasurableSet (constitutiveDomain K pi) :=
+    (Set.toFinite (constitutiveDomain K pi)).measurableSet
+  have hcoord :
+      (stationaryTrajMeasure
+        (constitutiveLift P) noExternalControl (PMF.pure (x, pi))).map
+        (fun z : ℕ → ConstitutiveState X A => z n)
+        (constitutiveDomain K pi) = 1 := by
+    rw [stationaryTrajMeasure_coordinate]
+    exact (staysIn_iff_toMeasure_eq_one _ hmeas).1 (hmarg n)
+  rw [MeasureTheory.Measure.map_apply (measurable_pi_apply n) hmeas] at hcoord
+  exact hcoord
+
+/-- Nonvacuous operational persistence certificate.  Unlike a bare fixed-set
+statement, this certificate contains an actual physical seed inside the
+stabilized viability kernel and one internal controller witnessing both
+autonomous one-step closure and genuine all-times persistence. -/
+structure ConstitutivePersistenceCertificate
+    [MeasurableSpace (ConstitutiveState X A)]
+    [MeasurableSingletonClass (ConstitutiveState X A)]
+    (P : X → A → PMF X) (V : Set X) where
+  K : Set X
+  controller : X → A
+  seed : X
+  kernel_sub_domain : K ⊆ V
+  seed_mem : seed ∈ K
+  source_fixed : viabilityStep P K = K
+  constitutive_fixed :
+    viabilityStep (constitutiveLift P) (constitutiveDomain K controller) =
+      constitutiveDomain K controller
+  all_times_safe :
+    stationaryTrajMeasure
+      (constitutiveLift P) noExternalControl
+      (PMF.pure (seed, controller))
+      {omega | ∀ n : ℕ, omega n ∈ constitutiveDomain K controller} = 1
+
+/-- **Nonvacuous endogenous constitutive persistence.**
+
+If the source P-PER-03 winning set contains at least one actual state, the
+stabilized viability kernel is nonempty and admits one controller that is
+embedded in reflexive state, closes the autonomous constitutive dynamics, and
+keeps the genuine infinite trajectory safe with probability one. -/
+theorem exists_constitutivePersistenceCertificate_of_nonempty_winningSet
+    [Nonempty A]
+    [MeasurableSpace X]
+    [MeasurableSingletonClass X]
+    [MeasurableSpace (ConstitutiveState X A)]
+    [MeasurableSingletonClass (ConstitutiveState X A)]
+    (P : X → A → PMF X) (V : Set X)
+    (hwin : (UEOT.V3.ViabilityStrategy.winningSet P V).Nonempty) :
+    Nonempty (ConstitutivePersistenceCertificate P V) := by
+  obtain ⟨n, K, hKiter, hKV, hfix, hKwin, hpolicy, _hall⟩ :=
+    UEOT.V3.ViabilitySource.p_per_03 P V
+  rcases hpolicy with ⟨pi, hpi⟩
+  rcases hwin with ⟨x, hxwin⟩
+  have hxK : x ∈ K := by
+    rw [hKwin]
+    exact hxwin
+  refine ⟨{
+    K := K
+    controller := pi
+    seed := x
+    kernel_sub_domain := hKV
+    seed_mem := hxK
+    source_fixed := hfix
+    constitutive_fixed := constitutiveDomain_fixed P pi hpi
+    all_times_safe := constitutive_all_times_safe_of_preserving P pi hpi x hxK
+  }⟩
+
 /-- **Fixed-kernel endogenous closure.**
 
 P-PER-03's stationary-selector construction is enough to build a reflexive
@@ -175,10 +279,6 @@ theorem exists_endogenous_constitutive_closure
   obtain ⟨pi, hpi⟩ := exists_stationary_policy_of_fixed P hfix
   exact ⟨n, viabilityIter P V n, pi, rfl, hsub, hfix,
     constitutiveDomain_fixed P pi hpi⟩
-
-/-- There is only one external policy for the constitutive lift in any
-information-bearing sense: every state is mapped to the unique `Unit` action. -/
-def noExternalControl : ConstitutiveState X A → Unit := fun _ => ()
 
 /-- **Path-level endogenous persistence.**
 

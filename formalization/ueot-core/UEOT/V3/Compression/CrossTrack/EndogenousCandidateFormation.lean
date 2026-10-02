@@ -133,6 +133,25 @@ theorem responseFormedCandidateFamily_nonempty
       Finset.univ hsuff
   exact ⟨S, hMin⟩
 
+/-- **No-carrier boundary.**  The formation mechanism cannot invent a parent
+candidate when the lower-level response law has no exact physical carrier. -/
+theorem responseFormedCandidateFamily_empty_of_no_exactCarrier
+    [Fintype Child]
+    (readout : Finset V → H → Rout)
+    (p : H → Probe → Measure Y)
+    (regions : Child → Finset V)
+    (hphysical : exactCarrierFamily readout p = ∅) :
+    responseFormedCandidateFamily readout p regions = ∅ := by
+  unfold responseFormedCandidateFamily
+  rw [hphysical]
+  ext S
+  constructor
+  · intro hS
+    rcases hS.1 with ⟨M, hM, _hcover⟩
+    simp at hM
+  · intro hS
+    simp at hS
+
 /-- Exact carrier-family recovery immediately recovers the generated candidate
 family; there is no second independent matching assumption at the coalition
 level. -/
