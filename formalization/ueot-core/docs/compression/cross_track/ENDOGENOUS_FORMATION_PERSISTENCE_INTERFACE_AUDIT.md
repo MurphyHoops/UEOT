@@ -1,6 +1,6 @@
 # Endogenous Formation × Constitutive Persistence — Interface Audit
 
-Status: **LOCAL RESEARCH / IMPLEMENTATION 8a5350cc / REMOTE BASE MERGED**
+Status: **LOCAL RESEARCH / IMPLEMENTATION e58ab6c / REMOTE BASE MERGED**
 
 ## 1. Provenance
 
@@ -94,6 +94,14 @@ zero-defect/coverage witness, not a pre-existing candidate family.
 
 This is still conditional formation: the theorem does not prove that every
 arbitrary physical system possesses such a seed.
+
+The negative boundary is exact as well:
+
+`responseFormedCandidateFamily_empty_of_no_exactCarrier`
+
+proves that if the exact physical-carrier family is empty, the generated
+parent-candidate family is empty.  The construction therefore cannot invent a
+parent without any lower-level carrier witness.
 
 ## 5. Statistical recovery of the formed family
 
@@ -224,6 +232,24 @@ at every discrete time with probability one.
 
 This is stronger than one-step invariance and is the positive runtime
 persistence result of this mission.
+
+The strengthened interface also rules out vacuous empty-kernel closure.
+
+`ConstitutivePersistenceCertificate` stores an actual seed in the stabilized
+kernel together with one internal controller.  That same controller witnesses
+source preservation, constitutive fixed-domain closure, and the all-times
+probability-one trajectory theorem.
+
+`exists_constitutivePersistenceCertificate_of_nonempty_winningSet`
+
+constructs this certificate whenever the P-PER winning set is nonempty.
+
+The helper theorem
+
+`constitutive_all_times_safe_of_preserving`
+
+uses a supplied preserving controller directly, so the path-level proof does
+not silently re-select a different existential policy.
 
 ## 11. Exact Omega-loop boundary: no self-repair yet
 

@@ -99,7 +99,7 @@ coordinate.
 Thus internalization introduces no hidden change to the intended closed-loop
 physical dynamics.
 
-## 9. Path-level persistence audit
+## 9. Path-level persistence / nonvacuity audit
 
 The all-times theorem reuses the existing finite viability / Ionescu--Tulcea
 trajectory stack.  It proves a probability-one path event, not merely a
@@ -109,6 +109,15 @@ The initial physical state is required to lie in the fixed source viability
 kernel.
 
 No claim is made about states outside that kernel.
+
+The final `ConstitutivePersistenceCertificate` strengthens this further: it
+contains an actual seed state and proof that the seed lies in the stabilized
+kernel.  Thus the final positive persistence certificate cannot be discharged
+by an empty fixed set.
+
+The same controller is used for one-step preservation, autonomous
+constitutive closure, and the all-times trajectory proof; there is no hidden
+second policy at the path level.
 
 ## 10. Omega-loop overclaim audit
 
@@ -154,7 +163,7 @@ assumed empty child family.
 
 ## 12. Compression-architecture audit
 
-The two new modules are uncounted CrossTrack synthesis/boundary work.
+The three new Lean modules are uncounted CrossTrack synthesis/boundary work.
 
 They do not mutate:
 
