@@ -3,6 +3,7 @@ import UEOT.V3.Compression.Objecthood.ControllerRepair
 import UEOT.V3.Compression.Objecthood.ControllerSelfStabilization
 import UEOT.V3.Compression.Objecthood.PhysicalRecovery
 import UEOT.V3.Compression.Objecthood.AutonomousSelfStabilization
+import UEOT.V3.Compression.Objecthood.FailureRepairabilityBoundary
 
 /-!
 # UEOT Core Compression — Track O
