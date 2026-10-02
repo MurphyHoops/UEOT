@@ -8,7 +8,7 @@
   "counted_core_policy": "must_match_live_ledger_minimal_core",
   "max_active_mutating_tracks": 2,
   "main_only_cross_track_dependencies": true,
-  "cross_track_integration_gate": "closed",
+  "cross_track_integration_gate": "open",
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
@@ -113,7 +113,50 @@
         ".github/workflows/ueot-compression-research-policy.yml"
       ],
       "initial_gate": "H0-H3",
-      "long_run_stability_work": "blocked_until_cross_track_integration_gate_opens"
+      "long_run_stability_work": "cross_track_only_via_X"
+    },
+    "X": {
+      "title": "Cross-Track Parent Formation × Long-Run Semantic Stability",
+      "status": "active",
+      "tracker_issue": 225,
+      "initial_gate": "X0-X8",
+      "preferred_branch_prefix": "compression/cross-track-",
+      "branch_patterns": [
+        "^compression/cross-track-.*$"
+      ],
+      "owned_topics": [
+        "parent-completion semantic ambiguity",
+        "cross-track parent GOA no-go",
+        "exact parent-semantic descent",
+        "quantitative parent-semantic stability",
+        "parent semantic diameter",
+        "robust parent long-run semantic certificates",
+        "P-COMP cross-track assembly"
+      ],
+      "allowed_path_prefixes": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/",
+        "formalization/ueot-core/docs/compression/cross_track/"
+      ],
+      "allowed_exact_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean",
+        "formalization/ueot-core/UEOT/V3/Compression.lean"
+      ],
+      "forbidden_exact_paths": [
+        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+        "formalization/ueot-core/scripts/validate_compression.py",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        ".github/workflows/ueot-core-compression.yml",
+        ".github/workflows/ueot-compression-research-policy.yml"
+      ],
+      "dependency_rule": "consume_S_and_H_evidence_from_canonical_main_only",
+      "source_track_reopen_policy": "forbidden_inside_X"
     }
   },
   "architecture_record_schema": {
@@ -155,7 +198,7 @@
       "CORE": "frozen",
       "S": "active",
       "H": "active",
-      "X": "closed"
+      "X": "active"
     },
     "required_record_fields": [
       "record_id",
@@ -329,6 +372,44 @@
         "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_RECURRENT_CLASS_UNIQUENESS_AUDIT.md",
         "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_FUNCTIONAL_GRAPH_CLASSIFICATION_AUDIT.md",
         "formalization/ueot-core/docs/compression/TOPOLOGY_CHANGING_GOA_TRACK_S_CLOSURE_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "H-PARENT-ASSEMBLY-RESIDUAL",
+      "title": "Parent-completion underdetermination and assembly residual",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "H",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/ParentAssemblyResidual.lean",
+        "formalization/ueot-core/docs/compression/hierarchy/H2_PARENT_ASSEMBLY_RESIDUAL.md"
+      ]
+    },
+    {
+      "record_id": "H-HIERARCHY-SEMANTIC-SEPARATIONS",
+      "title": "Hierarchy carrier/objective/selection semantic separations",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "H",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/Separations.lean",
+        "formalization/ueot-core/docs/compression/hierarchy/H3_SEPARATION_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "H-HIERARCHY-CLOSURE-SYNTHESIS",
+      "title": "Track-H hierarchy/assembly H0-H3 closure synthesis",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "H",
+      "authority_provenance": "SYNTHESIS_ONLY",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/docs/compression/hierarchy/TRACK_H_FINAL_SYNTHESIS.md"
       ]
     }
   ]

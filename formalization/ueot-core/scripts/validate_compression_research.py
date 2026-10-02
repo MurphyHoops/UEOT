@@ -25,6 +25,7 @@ TRACKS_REL = Path(
 LEDGER_REL = Path(
     "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
 )
+TRACK_IDS = ("S", "H", "X")
 
 
 def fail(message: str) -> None:
@@ -239,13 +240,15 @@ def associated_pr_branch(repo_slug: str, sha: str, token: str) -> str | None:
 def validate_live_concurrency(
     branch_names: list[str],
     compiled: dict[str, list[re.Pattern[str]]],
+    max_active_mutating_tracks: int,
 ) -> None:
+    registered_tracks = [track_id for track_id in TRACK_IDS if track_id in compiled]
     for branch in branch_names:
         if not branch.startswith("compression/"):
             continue
         matches = [
             track_id
-            for track_id in ("S", "H")
+            for track_id in registered_tracks
             if matches_any(branch, compiled[track_id])
         ]
         if not matches:
@@ -253,7 +256,8 @@ def validate_live_concurrency(
         if len(matches) > 1:
             fail(f"live compression branch ambiguously matches tracks: {branch}")
 
-    for track_id in ("S", "H"):
+    active_tracks = 0
+    for track_id in registered_tracks:
         active = sorted(
             branch
             for branch in branch_names
@@ -264,6 +268,14 @@ def validate_live_concurrency(
                 f"Track {track_id} has {len(active)} active remote branches; "
                 f"only one is allowed: {active}"
             )
+        if active:
+            active_tracks += 1
+
+    if active_tracks > max_active_mutating_tracks:
+        fail(
+            "post-FINAL mutation cap exceeded: "
+            f"{active_tracks} active research tracks > {max_active_mutating_tracks}"
+        )
 
 
 def changed_lines_for_path(repo: Path, baseline_ref: str, path: str) -> list[str]:
@@ -314,6 +326,14 @@ def validate_compression_root_import_change(
                 fail("Track S may change Compression.lean imports only")
             if line == "import UEOT.V3.Compression.Hierarchy":
                 fail("Track S may not add/remove the Track H root import")
+    elif track_id == "X":
+        if not changed or any(
+            line != "import UEOT.V3.Compression.CrossTrack" for line in changed
+        ):
+            fail(
+                "Track X may modify Compression.lean only to add/remove the "
+                "public CrossTrack root import"
+            )
     elif track_id == "GOVERNANCE":
         if not changed or any(
             line != "import UEOT.V3.Compression.Hierarchy" for line in changed
@@ -361,16 +381,19 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
                 f"architecture_record_schema.{field} must remain exactly {expected}"
             )
 
-    track_status = schema.get("track_status")
-    if track_status != {
+    gate = config.get("cross_track_integration_gate")
+    expected_track_status = {
         "CORE": "frozen",
         "S": "active",
         "H": "active",
-        "X": "closed",
-    }:
-        fail("architecture track_status must keep CORE frozen, S/H active, X closed")
-    if config.get("cross_track_integration_gate") == "closed" and track_status["X"] != "closed":
-        fail("Track X must remain closed while the cross-track integration gate is closed")
+        "X": "active" if gate == "open" else "closed",
+    }
+    track_status = schema.get("track_status")
+    if track_status != expected_track_status:
+        fail(
+            "architecture track_status must keep CORE frozen, S/H active, and "
+            f"X {'active' if gate == 'open' else 'closed'} with the integration gate"
+        )
 
     required_fields = string_list(
         schema.get("required_record_fields"),
@@ -506,11 +529,18 @@ def validate_static(
         require_file(repo, value, "research-track governance")
 
     tracks = config.get("tracks")
-    if not isinstance(tracks, dict) or set(tracks) != {"S", "H"}:
-        fail("research-track governance must define exactly Track S and Track H")
+    gate = config.get("cross_track_integration_gate")
+    expected_tracks = {"S", "H", "X"} if gate == "open" else {"S", "H"}
+    if not isinstance(tracks, dict) or set(tracks) != expected_tracks:
+        fail(
+            "research-track governance must define exactly "
+            f"{sorted(expected_tracks)} while the cross-track gate is {gate}"
+        )
 
     compiled: dict[str, list[re.Pattern[str]]] = {}
-    for track_id in ("S", "H"):
+    for track_id in TRACK_IDS:
+        if track_id not in tracks:
+            continue
         track = tracks[track_id]
         if not isinstance(track, dict):
             fail(f"Track {track_id} definition must be an object")
@@ -542,11 +572,31 @@ def validate_static(
     h = tracks["H"]
     if h.get("initial_gate") != "H0-H3":
         fail("Track H must begin at H0-H3")
-    if (
-        h.get("long_run_stability_work")
-        != "blocked_until_cross_track_integration_gate_opens"
-    ):
-        fail("Track H long-run stability work must remain gated")
+    expected_h_stability = (
+        "cross_track_only_via_X"
+        if gate == "open"
+        else "blocked_until_cross_track_integration_gate_opens"
+    )
+    if h.get("long_run_stability_work") != expected_h_stability:
+        fail(
+            "Track H long-run stability work must remain routed through the "
+            "cross-track gate"
+        )
+
+    if gate == "open":
+        x = tracks["X"]
+        if x.get("tracker_issue") != 225:
+            fail("Track X must be governed by Issue #225")
+        if x.get("initial_gate") != "X0-X8":
+            fail("Track X must follow the X0-X8 mission sequence")
+        if x.get("preferred_branch_prefix") != "compression/cross-track-":
+            fail("Track X preferred branch prefix must remain compression/cross-track-")
+        if not matches_any("compression/cross-track-parent-semantic", compiled["X"]):
+            fail("Track X branch patterns must authorize the governed cross-track prefix")
+        if x.get("dependency_rule") != "consume_S_and_H_evidence_from_canonical_main_only":
+            fail("Track X must consume S/H evidence from canonical main only")
+        if x.get("source_track_reopen_policy") != "forbidden_inside_X":
+            fail("Track X must not reopen Track S or Track H inside cross-track work")
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
@@ -580,7 +630,8 @@ def validate_track_paths(
 ) -> None:
     matches = [
         track_id
-        for track_id in ("S", "H")
+        for track_id in TRACK_IDS
+        if track_id in compiled
         if matches_any(branch, compiled[track_id])
     ]
     governance_match = matches_any(branch, compiled["GOVERNANCE"])
@@ -659,6 +710,18 @@ def validate_track_paths(
             fail(
                 f"Track S branch {branch!r} modified {path}, outside the "
                 "post-FINAL Compression research surface"
+            )
+    elif track_id == "X":
+        allowed_exact = set(track.get("allowed_exact_paths", []))
+        allowed_prefixes = tuple(track.get("allowed_path_prefixes", []))
+        for path in paths:
+            if path in allowed_exact or any(
+                path.startswith(prefix) for prefix in allowed_prefixes
+            ):
+                continue
+            fail(
+                f"Track X branch {branch!r} modified {path}, outside its "
+                "owned CrossTrack namespace"
             )
 
     validate_compression_root_import_change(
@@ -745,11 +808,17 @@ def main() -> None:
             .splitlines()
             if line.strip()
         ]
-        validate_live_concurrency(branch_names, enforcement_compiled)
+        validate_live_concurrency(
+            branch_names,
+            enforcement_compiled,
+            enforcement_config["max_active_mutating_tracks"],
+        )
     elif args.verify_live_state:
         assert repo_slug is not None and token is not None
         validate_live_concurrency(
-            github_branch_names(repo_slug, token), enforcement_compiled
+            github_branch_names(repo_slug, token),
+            enforcement_compiled,
+            enforcement_config["max_active_mutating_tracks"],
         )
 
     validate_track_paths(

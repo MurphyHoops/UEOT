@@ -18,6 +18,8 @@
   `formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json`
 - Post-FINAL research governance:
   `formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md`
+- Current cross-track synthesis tracker when Track X is open: GitHub Issue
+  **#225** (`parent formation × long-run semantic stability`).
 - Official regression target: `lake build UEOT`
 
 Compression is a post-106 meta-formalization mission. It must never alter the
@@ -109,9 +111,14 @@ Post-FINAL research branch classes additionally use the immutable registry:
   patterns;
 - Track H: `compression/hierarchy-*`, restricted to the dedicated
   `Compression/Hierarchy/` and `docs/compression/hierarchy/` surfaces;
+- Track X: `compression/cross-track-*`, restricted to the dedicated
+  `Compression/CrossTrack/` and `docs/compression/cross_track/` surfaces plus
+  the public `CrossTrack` root import;
 - governance activation/maintenance: `ops/compression-*` only on registered
   governance paths;
-- Track X: no mutating lane while `cross_track_integration_gate = closed`.
+- Track X mutation is forbidden while `cross_track_integration_gate = closed`
+  and authorized only after the gate is intentionally opened on canonical
+  `main`.
 
 Branch naming alone is not authorization. The immutable base-policy validator
 must also accept the changed paths and live-concurrency state.
@@ -130,8 +137,9 @@ Before any new compression branch:
 5. list remote branches and open PRs;
 6. load `COMPRESSION_RESEARCH_TRACKS.json` and classify the proposed work by
    track and owned path before mutating files;
-7. read any child tracker named by Issue #146 (for example P0b, Track S, or
-   Track H) and honor its sequencing gate;
+7. read any child tracker named by Issue #146 (for example P0b, Track S, Track
+   H, or Track X) and honor its sequencing gate; when Track X is open, read
+   Issue #225 before selecting or creating a cross-track branch;
 8. verify the M-ID/lane is not already active/integrated and that the same track
    has no competing live mutating branch;
 9. reuse the existing branch whenever one already represents the work;
@@ -216,10 +224,13 @@ Post-FINAL ownership is stricter:
 
 - at most one live Track S mutating branch;
 - at most one live Track H mutating branch;
-- S and H may proceed in parallel only on their owned files;
+- at most one live Track X mutating branch;
+- the total number of simultaneously mutating post-FINAL research tracks is at
+  most two;
+- S, H, and X may proceed in parallel only on their owned files;
 - cross-track dependencies must come from canonical `main`;
-- Track X remains closed until the registry gate is intentionally opened by a
-  separately authorized governance transition.
+- Track X follows the registry gate and Issue #225; opening X does not reopen
+  completed Track-S finite-state or Track-H H0--H3 work.
 
 ## 10A. Guarded post-FINAL recovery
 
@@ -229,9 +240,10 @@ order:
 1. canonical `main` and frozen ledger state;
 2. research registry and immutable policy status;
 3. Issue #146 authority/recovery block;
-4. named P0b/S/H child tracker, if any;
+4. named P0b/S/H/X child tracker, if any; read Issue #225 whenever Track X is
+   the active integration mission;
 5. open PRs and live governed branches;
-6. exact head/CI/review status for Track S and Track H independently;
+6. exact head/CI/review status for Track S, Track H, and Track X independently;
 7. the exact next action in the owning track.
 
 Do not treat an authorized PR as merged evidence, do not treat a draft theorem
