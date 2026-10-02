@@ -18,23 +18,35 @@ open UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification
 
 noncomputable section
 
-/-- Degenerate but genuine physical-carrier instance: the empty physical
-carrier is the sole physical minimum.  Its unique minimal child coalition is
-empty. -/
-def pb0Regions : Unit → Finset Unit := fun _ => ∅
+/-- Nondegenerate one-site physical-carrier instance. -/
+def pb0Regions : Unit → Finset Unit := fun _ => {()}
 
-def pb0PhysicalMin : Set (Finset Unit) := {∅}
+def pb0PhysicalMin : Set (Finset Unit) := {{()}}
 
-theorem pb0_empty_childMinimal :
-    (∅ : Finset Unit) ∈ childMinimalFamily pb0Regions pb0PhysicalMin := by
+theorem pb0_singleton_childMinimal :
+    ({()} : Finset Unit) ∈ childMinimalFamily pb0Regions pb0PhysicalMin := by
   change UEOT.Finite.Minimal
-    (childSufficient pb0Regions pb0PhysicalMin) ∅
+    (childSufficient pb0Regions pb0PhysicalMin) {()}
   constructor
-  · refine ⟨∅, ?_, ?_⟩
+  · refine ⟨{()}, ?_, ?_⟩
     · simp [pb0PhysicalMin]
-    · simp [coalitionCovers]
-  · intro T hT _hchild
-    exact Finset.subset_empty.mp hT
+    · intro v hv
+      have hvu : v = () := Subsingleton.elim _ _
+      subst v
+      exact ⟨(), by simp, by simp [pb0Regions]⟩
+  · intro T hT hchild
+    rcases hchild with ⟨M, hM, hcover⟩
+    have hMeq : M = {()} := by
+      simpa [pb0PhysicalMin] using hM
+    subst M
+    have hunit : () ∈ T := by
+      rcases hcover () (by simp) with ⟨i, hiT, _hiR⟩
+      have hi : i = () := Subsingleton.elim _ _
+      simpa [hi] using hiT
+    apply Finset.Subset.antisymm hT
+    intro i hi
+    have hi' : i = () := Subsingleton.elim _ _
+    simpa [hi'] using hunit
 
 /-- Both Boolean parent completions are P-COMP-06-valid and bind to exactly the
 same child evidence.  The assembly certificate says nothing about their
@@ -46,13 +58,13 @@ def pb0Assembly :
   child := ()
   regions := pb0Regions
   physicalMin := pb0PhysicalMin
-  coalition := fun _ => ∅
+  coalition := fun _ => {()}
   admissible := fun _ => True
   admissible_iff_childMinimal := by
     intro p
     constructor
     · intro _
-      exact pb0_empty_childMinimal
+      exact pb0_singleton_childMinimal
     · intro _
       trivial
   child_binding := by
