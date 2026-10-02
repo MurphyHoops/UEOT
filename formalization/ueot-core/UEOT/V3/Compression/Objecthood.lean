@@ -1,5 +1,6 @@
 import UEOT.V3.Compression.Objecthood.Legitimacy
 import UEOT.V3.Compression.Objecthood.ControllerRepair
+import UEOT.V3.Compression.Objecthood.ControllerSelfStabilization
 
 /-!
 # UEOT Core Compression — Track O
