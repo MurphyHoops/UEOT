@@ -15,6 +15,7 @@ open UEOT.V3.FiniteDobrushin
 open UEOT.V3.CompositionCarrierLift
 open UEOT.V3.Compression.InvariantSetGaugeInvariance
 open UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification
+open UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm
 
 noncomputable section
 
@@ -78,6 +79,20 @@ def pb0Assembly :
 @[simp] theorem pb0_true_admissible : pb0Assembly.admissible true := by
   trivial
 
+theorem pb0_false_lifted :
+    pb0Assembly.coalition false ∈
+      liftedMinimalCoverFamily pb0Assembly.regions pb0Assembly.physicalMin := by
+  exact
+    (PCompCarrierAssemblyCertificate.admissible_iff_lifted
+      x1ChildProjection pb0Assembly false).1 pb0_false_admissible
+
+theorem pb0_true_lifted :
+    pb0Assembly.coalition true ∈
+      liftedMinimalCoverFamily pb0Assembly.regions pb0Assembly.physicalMin := by
+  exact
+    (PCompCarrierAssemblyCertificate.admissible_iff_lifted
+      x1ChildProjection pb0Assembly true).1 pb0_true_admissible
+
 /-- The two P-COMP-valid completions can induce genuinely different parent
 kernels. -/
 theorem pb0_valid_completions_have_different_dynamics :
@@ -98,16 +113,27 @@ derived from P-COMP-06 carrier validity alone. -/
 theorem pb0_pcompValidity_does_not_control_parent_semantics :
     pb0Assembly.admissible false ∧
     pb0Assembly.admissible true ∧
+    pb0Assembly.coalition false ∈
+      liftedMinimalCoverFamily pb0Assembly.regions pb0Assembly.physicalMin ∧
+    pb0Assembly.coalition true ∈
+      liftedMinimalCoverFamily pb0Assembly.regions pb0Assembly.physicalMin ∧
     x1ChildProjection false = x1ChildProjection true ∧
     x1Kernel false ≠ x1Kernel true ∧
+    (∀ p : Bool, 0 < l1ResidualConorm (x1Kernel p)) ∧
+    (∀ p : Bool, ∃! mu : stdSimplex ℝ Bool,
+      mu ∈ invariantLawSet (x1Kernel p) (x1Kernel_stochastic p)) ∧
     x1Invariant false ∈
       invariantLawSet (x1Kernel false) (x1Kernel_stochastic false) ∧
     x1Invariant true ∈
       invariantLawSet (x1Kernel true) (x1Kernel_stochastic true) ∧
     lawTV (x1Invariant false) (x1Invariant true) = 1 := by
-  exact ⟨by trivial, by trivial, rfl,
+  refine ⟨by trivial, by trivial, pb0_false_lifted, pb0_true_lifted, rfl,
     pb0_valid_completions_have_different_dynamics,
+    ?_, x1Kernel_uniqueInvariant,
     x1Invariant_mem false, x1Invariant_mem true, x1Invariant_distance⟩
+  intro p
+  rw [x1Kernel_l1ResidualConorm_eq_one]
+  norm_num
 
 end
 
