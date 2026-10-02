@@ -9,6 +9,14 @@ import UEOT.V3.Compression.CrossTrack.ParentBindingStatic
 import UEOT.V3.Compression.CrossTrack.ParentBindingDynamic
 import UEOT.V3.Compression.CrossTrack.ParentBindingPComp
 import UEOT.V3.Compression.CrossTrack.ParentBindingDiagnosticNoGo
+import UEOT.V3.Compression.CrossTrack.DualIsolationCore
+import UEOT.V3.Compression.CrossTrack.DualIsolationConorm
+import UEOT.V3.Compression.CrossTrack.DualIsolationCanonical
+import UEOT.V3.Compression.CrossTrack.DualIsolationResolution
+import UEOT.V3.Compression.CrossTrack.DualIsolationDecoderRadius
+import UEOT.V3.Compression.CrossTrack.DualIsolationNoGo
+import UEOT.V3.Compression.CrossTrack.DualIsolationDynamic
+import UEOT.V3.Compression.CrossTrack.DualIsolationBenchmark
 
 /-!
 # UEOT Core Compression — Track X
@@ -21,4 +29,9 @@ dedicated CrossTrack namespace.  The local Parent-Binding continuation keeps
 the same uncounted status: it formalizes when assembly-space uncertainty can
 generate the row-kernel defect consumed by Track X, and records the no-go that
 P-COMP validity/forward diagnostics alone do not supply that binding law.
+
+The local Dual-Isolation continuation further separates two inverse margins:
+binding/assembly identifiability (`beta`) and long-run semantic isolation
+(`kappa`).  It adds no counted generator; the new surfaces are uncounted
+cross-track bridge/boundary theorems.
 -/
