@@ -1,6 +1,6 @@
 # Track X — X7/X8 Architecture Audit and Final Synthesis
 
-Status: **X0-X8 LOCALLY COMPLETE / VALIDATION PASS / INDEPENDENT AUDIT CLEAR / READY FOR PUSH**
+Status: **X0-X8 LOCALLY COMPLETE / HARDENED VALIDATION PASS / SECOND AUDIT PROVENANCE FIX / REAUDIT PENDING**
 
 Authority:
 - durable parent mission: GitHub Issue #146;
@@ -321,18 +321,31 @@ The frozen compression state remains 106 source theorems, 11 generated,
 89 retained adapters, 6 retained boundaries, 4 counted generators, and
 0 unresolved.
 
-The exact implementation candidate
-`688b00f7b47b5b3e66fef1ba4eb49fcbcd0c0917` subsequently passed both
-remaining pre-push gates:
+The original implementation candidate
+`688b00f7b47b5b3e66fef1ba4eb49fcbcd0c0917` passed the first independent
+read-only audit with **RESULT: CLEAR / BLOCKERS: none**.  That historical audit
+is recorded in
+`docs/compression/cross_track/TRACK_X_INDEPENDENT_AUDIT.md` and applies only to
+that exact predecessor implementation.
 
-1. `validate_compression_research.py` against canonical `origin/main`:
-   **PASS (changed_paths=10)**;
-2. separate independent read-only semantic/proof audit:
-   **RESULT: CLEAR / BLOCKERS: none**.
+After that audit, Track X received a local hardening pass.  The hardening
+candidate
+`375c63cec163202dfa2f5d25297f353bff13288e` changed X1/X2/X3/X6 interfaces
+without changing the scientific conclusions.  It passed the full local
+validation matrix, but its second independent audit returned **BLOCK** solely
+because this synthesis document still inherited the predecessor audit's global
+`CLEAR / READY FOR PUSH` status.
 
-The independent audit is recorded in
-`docs/compression/cross_track/TRACK_X_INDEPENDENT_AUDIT.md`.
+The second audit found no Critical/High mathematical or Lean blocker and no
+hardening theorem-contract regression.  Its sole Medium blocker was audit
+provenance/document-state consistency.  That result is recorded in
+`docs/compression/cross_track/TRACK_X_SECOND_AUDIT_BLOCK.md`.
 
-Therefore the local Track-X scientific and verification lifecycle is closed.
-The next authorized step is cloud branch push followed by the Issue #225
-PR/CI/review lifecycle.
+This document now fixes that provenance error: the predecessor CLEAR is kept as
+historical evidence only, while the hardened candidate is treated as a fresh
+validation candidate.  A new independent read-only re-audit of the exact
+post-fix HEAD is required before the Track-X local lifecycle may again be
+declared audit-clear or ready for any remote lifecycle.
+
+Remote branch push, PR creation, Issue mutation, merge, and cleanup remain
+frozen.
