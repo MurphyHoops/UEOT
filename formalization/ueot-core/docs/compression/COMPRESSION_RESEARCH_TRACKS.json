@@ -209,7 +209,18 @@
         "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean"
       ],
       "dependency_rule": "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only",
-      "source_track_reopen_policy": "forbidden_inside_O"
+      "source_track_reopen_policy": "forbidden_inside_O",
+      "completion_checkpoint": {
+        "completed_gate": "O1-O8",
+        "tracker_issue": 230,
+        "tracker_state": "closed",
+        "merged_pr": 232,
+        "reviewed_head": "cda03d1c7bf2199643f0197e74597405ffd87b03",
+        "merge_commit": "d827d5bc0d1facf6e59669265e3e26fb9d1beaa7",
+        "resulting_main_core_lean_run": 37042673290,
+        "resulting_main_compression_guard_run": 37042673416,
+        "current_boundary": "repair_law_self_reconstruction"
+      }
     }
   },
   "architecture_record_schema": {
@@ -579,6 +590,136 @@
         "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/EndogenousConstitutivePersistence.lean",
         "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/EndogenousObjectSynthesis.lean",
         "formalization/ueot-core/docs/compression/cross_track/ENDOGENOUS_FORMATION_PERSISTENCE_SECOND_PASS_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-CONSTITUTIVE-LEGITIMACY",
+      "title": "Functional legitimate constitutive domain",
+      "architecture_role": "G1",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Legitimacy.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O1_LEGITIMACY_PERSISTENCE_BOUNDARY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-PERSISTENCE-REPAIR-BOUNDARY",
+      "title": "Constitutive persistence does not imply controller repair",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Legitimacy.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O1_LEGITIMACY_PERSISTENCE_BOUNDARY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-CONTROLLER-SELF-STABILIZATION",
+      "title": "Autonomous controller repair and path-level self-stabilization",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/ControllerRepair.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/ControllerSelfStabilization.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O2_CONTROLLER_SELF_REPAIR_AUDIT.md",
+        "formalization/ueot-core/docs/compression/objecthood/O3_CONTROLLER_SELF_STABILIZATION_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-PHYSICAL-RECOVERY",
+      "title": "P-REC physical repair basin and almost-sure recovery bridge",
+      "architecture_role": "G1",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PhysicalRecovery.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O4_PHYSICAL_RECOVERY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-AUTONOMOUS-SELF-STABILIZATION",
+      "title": "Single autonomous physical-plus-controller stabilization dynamics",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/AutonomousSelfStabilization.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O5_AUTONOMOUS_SELF_STABILIZATION_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-FAILURE-REPAIRABILITY-SEPARATION",
+      "title": "P-OMG failure and integrity data do not imply repairability",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/FailureRepairabilityBoundary.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O6_FAILURE_REPAIRABILITY_BOUNDARY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-INTEGRITY-REPAIR-MARGIN",
+      "title": "Combined integrity and repairability robustness margin",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/FailureRepairabilityBoundary.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O6_FAILURE_REPAIRABILITY_BOUNDARY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-FORMED-PARENT-SELF-REPAIR",
+      "title": "Same formed-parent restoration with long-run semantic preservation",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/FormedParentSelfRepairSynthesis.lean",
+        "formalization/ueot-core/docs/compression/objecthood/O7_FORMED_PARENT_SELF_REPAIR_SYNTHESIS_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-OBJECTHOOD-ARCHITECTURE-CLOSURE",
+      "title": "Track-O O1-O8 architecture and deletion closure",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "SYNTHESIS_ONLY",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/docs/compression/objecthood/O8_ARCHITECTURE_DELETION_OBJECTHOOD_SYNTHESIS.md"
+      ]
+    },
+    {
+      "record_id": "O-REPAIR-LAW-SELF-RECONSTRUCTION-BOUNDARY",
+      "title": "Finite self-repair assumes an intact repair-producing law",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "SYNTHESIS_ONLY",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/docs/compression/objecthood/O8_ARCHITECTURE_DELETION_OBJECTHOOD_SYNTHESIS.md"
       ]
     }
   ],
