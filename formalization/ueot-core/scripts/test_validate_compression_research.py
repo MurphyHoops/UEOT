@@ -193,6 +193,15 @@ def test_architecture_record_schema(repo: Path) -> None:
         "research-track governance must define exactly",
     )
 
+    def close_objecthood_gate_without_closing_o(config: dict) -> None:
+        config["objecthood_omega_gate"] = "closed"
+
+    expect_static_failure(
+        repo,
+        close_objecthood_gate_without_closing_o,
+        "research-track governance must define exactly",
+    )
+
     def lose_counted_generator(config: dict) -> None:
         config["architecture_records"] = [
             item
@@ -360,6 +369,42 @@ def main() -> None:
 
     run_case(
         repo,
+        "compression/objecthood-self-repair",
+        [
+            "formalization/ueot-core/docs/compression/objecthood/"
+            "O1_LEGITIMACY_AUDIT.md"
+        ],
+        True,
+        "",
+    )
+    print("objecthood-owned-doc: PASS")
+
+    run_case(
+        repo,
+        "compression/objecthood-self-repair",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/"
+            "EndogenousConstitutivePersistence.lean"
+        ],
+        False,
+        "outside its owned",
+    )
+    print("objecthood-cross-track-source-isolation: PASS")
+
+    run_case(
+        repo,
+        "compression/cross-track-parent-semantic",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/Objecthood/"
+            "SelfRepair.lean"
+        ],
+        False,
+        "outside its owned CrossTrack namespace",
+    )
+    print("cross-track-objecthood-isolation: PASS")
+
+    run_case(
+        repo,
         "ops/compression-research-governance",
         [
             "formalization/ueot-core/docs/compression/"
@@ -434,8 +479,8 @@ def main() -> None:
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
         handle.write(
             "compression/topology-goa-residual-inverse-stability\n"
-            "compression/hierarchy-inventory\n"
             "compression/cross-track-parent-semantic\n"
+            "compression/objecthood-self-repair\n"
         )
         cap_file = Path(handle.name)
     try:

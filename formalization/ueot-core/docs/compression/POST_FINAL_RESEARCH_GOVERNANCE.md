@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-FINAL Parallel Research Governance
 
-Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X GATE OPEN / POST-FINAL / UNCOUNTED**
+Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X MERGED SURFACE REGISTERED / TRACK O GATE OPEN / POST-FINAL / UNCOUNTED**
 
 Authority:
 
@@ -108,6 +108,47 @@ All ordinary Track-X results are uncounted G1/G2/G3 research.  A new G0
 primitive is outside Track X and would require a later dedicated promotion
 lifecycle.
 
+### Track O — Objecthood / Omega-loop Self-Repair
+
+Track O is the dedicated lane for the residual exposed by the merged Track-X
+endogenous-persistence result.
+
+Detailed tracker: **Issue #230**.
+
+Scientific question:
+
+> Once a parent/object candidate has been formed, identified, and equipped with
+> constitutive runtime persistence, under what exact conditions can the same
+> autonomous system recover its legitimate organization after transient internal
+> corruption rather than merely preserving a controller that was initialized
+> correctly?
+
+Track O must separate three notions that earlier source material can otherwise
+blur:
+
+1. **closure** — legitimate constitutive states remain legitimate;
+2. **convergence** — states in a declared transient-fault/repair basin return
+   to the legitimate domain;
+3. **specification** — the recovered domain still carries the required UEOT
+   formation/persistence semantics.
+
+The first finite target is deliberately narrower than universal Objecthood.
+Controller-only corruption is handled before physical-state recovery. Physical
+recovery must reuse the frozen P-REC hitting/Lyapunov interfaces where possible.
+P-OMG failure structure and integrity margins are diagnostic/robustness inputs;
+they may not be treated as recovery theorems.
+
+The semantic target is a **functional legitimate-controller class**, not exact
+return to one arbitrary stationary selector. For a stabilized winning kernel
+`K`, successful repair should target controllers that preserve `K`, because
+P-PER generally need not make the preserving controller unique.
+
+Track O consumes frozen P-OMG/P-REC/P-PER/P-REF interfaces and merged Track-X
+surfaces from canonical `main` only. It may not reopen or mutate those source
+theorem families. Ordinary Track-O results are uncounted G1/G2/G3 research.
+Any proposal for a new G0 primitive must wait until the O0--O8 architecture and
+deletion audit in #230 and then enter a separate promotion/re-ablation lifecycle.
+
 ## 3. Why the split is scientific, not administrative
 
 The tracks address opposite halves of one future synthesis:
@@ -181,6 +222,21 @@ Track-X branches are restricted to that namespace plus the one-line public
 Track-H results only from canonical `main`; they may not edit either source
 track's owned theorem files.
 
+Track O uses a fourth dedicated namespace:
+
+    formalization/ueot-core/UEOT/V3/Compression/Objecthood/
+    formalization/ueot-core/docs/compression/objecthood/
+
+and the optional public root:
+
+    formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean
+
+Track-O branches are restricted to that namespace plus the one-line public
+`Objecthood` root import in `Compression.lean`. They may consume frozen
+Core-v3 interfaces and merged Track-X public interfaces from canonical `main`
+only; they may not edit the source P-OMG/P-REC/P-PER/P-REF theorem files or
+Track-X theorem files.
+
 The base-policy guard machine-checks these ownership rules, rejects
 unclassified branches touching governed Compression paths, resolves normal
 `main` merge pushes back to their associated PR branch, and checks live GitHub
@@ -213,7 +269,7 @@ branch change therefore forces a fresh authorization against the new base SHA;
 a successful authorization obtained against a temporary or permissive base
 cannot be carried forward after retargeting the unchanged head to `main`.
 
-Mutating Track S, Track H, Track X, and `ops/compression-*` governance branches must be
+Mutating Track S, Track H, Track X, Track O, and `ops/compression-*` governance branches must be
 hosted in the canonical repository. Fork-based mutating Compression branches
 are rejected; read-only/external work can still be reviewed separately without
 entering the governed mutation lanes.
@@ -237,7 +293,7 @@ taxonomy machine-readable through five independent fields:
 
 - `architecture_role = G0 | G1 | G2 | G3`;
 - `lifecycle_status`;
-- `track_owner = CORE | S | H | X`;
+- `track_owner = CORE | S | H | X | O`;
 - `authority_provenance`;
 - `counted_core_impact`.
 
@@ -250,7 +306,7 @@ authority remains CORE-owned.
 ## 6. Concurrency
 
 At most **two mutating post-FINAL research lanes** may be active at once across
-Track S, Track H, and Track X.  Within each track there is at most one active
+Track S, Track H, Track X, and Track O. Within each track there is at most one active
 mutating branch.  Additional
 workers may perform read-only source/theorem audits without branches.
 
@@ -320,6 +376,20 @@ S has a stable merged finite-state long-run semantic interface.  The approved
 sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
 mutate H/S source-track files.
 
+### Track O — O0--O8 self-repair gate
+
+**OPEN through Issue #230 once the #229 resulting-main CI is green.**
+
+Track O starts from the merged Track-X boundary that constitutive persistence
+does not repair a corrupted controller. The approved O0--O8 sequence is:
+functional legitimacy -> controller convergence -> controller-stabilization
+certificate -> physical repair basin/P-REC hitting-time bridge -> finite
+autonomous stabilization -> P-OMG repairability boundary -> end-to-end formed
+parent repair synthesis -> architecture/deletion audit.
+
+No Track-O theorem may be renamed full universal Objecthood before those gates
+are complete.
+
 ## 8. Candidate primitive discipline
 
 Terms such as Assembly, CommonWitness, HierarchyLift, or any proposed new M-ID
@@ -344,7 +414,7 @@ or no further compression are all permitted outcomes.
 Every mutating post-FINAL research PR must:
 
 - target main;
-- state Track S, Track H, or Track X;
+- state Track S, Track H, Track X, or Track O;
 - state counted-core impact: NONE unless it is a dedicated promotion lifecycle
   PR;
 - identify exact scientific nonclaims;

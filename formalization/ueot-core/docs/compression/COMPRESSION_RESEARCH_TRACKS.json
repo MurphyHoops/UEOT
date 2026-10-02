@@ -63,7 +63,9 @@
         "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
         "formalization/ueot-core/docs/compression/hierarchy/",
         "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/",
-        "formalization/ueot-core/docs/compression/cross_track/"
+        "formalization/ueot-core/docs/compression/cross_track/",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+        "formalization/ueot-core/docs/compression/objecthood/"
       ],
       "forbidden_exact_paths": [
         "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
@@ -79,7 +81,8 @@
         "formalization/ueot-core/scripts/validate_compression.py",
         "formalization/ueot-core/scripts/validate_compression_research.py",
         ".github/workflows/ueot-core-compression.yml",
-        ".github/workflows/ueot-compression-research-policy.yml"
+        ".github/workflows/ueot-compression-research-policy.yml",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
       ]
     },
     "H": {
@@ -113,7 +116,8 @@
         "formalization/ueot-core/scripts/validate_compression.py",
         "formalization/ueot-core/scripts/validate_compression_research.py",
         ".github/workflows/ueot-core-compression.yml",
-        ".github/workflows/ueot-compression-research-policy.yml"
+        ".github/workflows/ueot-compression-research-policy.yml",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
       ],
       "initial_gate": "H0-H3",
       "long_run_stability_work": "cross_track_only_via_X"
@@ -156,10 +160,56 @@
         "formalization/ueot-core/scripts/validate_compression.py",
         "formalization/ueot-core/scripts/validate_compression_research.py",
         ".github/workflows/ueot-core-compression.yml",
-        ".github/workflows/ueot-compression-research-policy.yml"
+        ".github/workflows/ueot-compression-research-policy.yml",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
       ],
       "dependency_rule": "consume_S_and_H_evidence_from_canonical_main_only",
       "source_track_reopen_policy": "forbidden_inside_X"
+    },
+    "O": {
+      "title": "Objecthood / Omega-loop Self-Repair",
+      "status": "active",
+      "tracker_issue": 230,
+      "initial_gate": "O0-O8",
+      "preferred_branch_prefix": "compression/objecthood-",
+      "branch_patterns": [
+        "^compression/objecthood-.*$"
+      ],
+      "owned_topics": [
+        "functional constitutive legitimacy",
+        "controller self-repair and self-stabilization",
+        "physical recovery basin and hitting-time convergence",
+        "autonomous closure plus convergence",
+        "Omega failure-envelope and repairability bridges",
+        "repair provenance and repair no-go boundaries",
+        "formed-parent self-repair synthesis"
+      ],
+      "allowed_path_prefixes": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+        "formalization/ueot-core/docs/compression/objecthood/"
+      ],
+      "allowed_exact_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
+        "formalization/ueot-core/UEOT/V3/Compression.lean"
+      ],
+      "forbidden_exact_paths": [
+        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+        "formalization/ueot-core/scripts/validate_compression.py",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        ".github/workflows/ueot-core-compression.yml",
+        ".github/workflows/ueot-compression-research-policy.yml",
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean"
+      ],
+      "dependency_rule": "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only",
+      "source_track_reopen_policy": "forbidden_inside_O"
     }
   },
   "architecture_record_schema": {
@@ -184,7 +234,8 @@
       "CORE",
       "S",
       "H",
-      "X"
+      "X",
+      "O"
     ],
     "authority_provenance": [
       "FROZEN_CORE_V3",
@@ -201,7 +252,8 @@
       "CORE": "frozen",
       "S": "active",
       "H": "active",
-      "X": "active"
+      "X": "active",
+      "O": "active"
     },
     "required_record_fields": [
       "record_id",
@@ -414,6 +466,121 @@
       "evidence_paths": [
         "formalization/ueot-core/docs/compression/hierarchy/TRACK_H_FINAL_SYNTHESIS.md"
       ]
+    },
+    {
+      "record_id": "X-PARENT-SEMANTIC-CLOSURE",
+      "title": "Parent-completion long-run semantic descent and stability",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/ParentSemanticStability.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/RobustParentSemanticCertificate.lean",
+        "formalization/ueot-core/docs/compression/cross_track/TRACK_X_FINAL_SYNTHESIS.md"
+      ]
+    },
+    {
+      "record_id": "X-PARENT-SEMANTIC-BOUNDARY",
+      "title": "Unique-per-completion semantics does not imply child-determined parent semantics",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/ParentSemanticNoGo.lean",
+        "formalization/ueot-core/docs/compression/cross_track/TRACK_X_FINAL_SYNTHESIS.md"
+      ]
+    },
+    {
+      "record_id": "X-PARENT-BINDING-ISOLATION",
+      "title": "Parent binding uncertainty to semantic stability",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/ParentBindingStatic.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/ParentBindingDynamic.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/ParentBindingPComp.lean",
+        "formalization/ueot-core/docs/compression/cross_track/PARENT_BINDING_FINAL_SYNTHESIS.md"
+      ]
+    },
+    {
+      "record_id": "X-DUAL-ISOLATION",
+      "title": "Binding identifiability and semantic isolation factorization",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/DualIsolationCore.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/DualIsolationConorm.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/DualIsolationPMetRealization.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/DualIsolationResolution.lean",
+        "formalization/ueot-core/docs/compression/cross_track/DUAL_ISOLATION_FINAL_SYNTHESIS.md"
+      ]
+    },
+    {
+      "record_id": "X-INTERACTION-IDENTIFIABILITY",
+      "title": "Interaction probes generate quantitative parent identifiability",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/InteractionBindingIsolation.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/InteractionProbeSelection.lean",
+        "formalization/ueot-core/docs/compression/cross_track/INTERACTION_IDENTIFIABILITY_FINAL_SYNTHESIS.md"
+      ]
+    },
+    {
+      "record_id": "X-INTERACTION-PERSISTENCE-SEPARATION",
+      "title": "Interaction identifiability does not imply constitutive persistence",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/InteractionPersistenceSeparations.lean",
+        "formalization/ueot-core/docs/compression/cross_track/INTERACTION_IDENTIFIABILITY_SECOND_PASS_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "X-ENDOGENOUS-FORMATION-PERSISTENCE",
+      "title": "Response-generated parent formation and constitutive runtime persistence",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/EndogenousCandidateFormation.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/EndogenousConstitutivePersistence.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/EndogenousObjectSynthesis.lean",
+        "formalization/ueot-core/docs/compression/cross_track/ENDOGENOUS_FORMATION_PERSISTENCE_FINAL_SYNTHESIS.md"
+      ]
+    },
+    {
+      "record_id": "X-SELF-REPAIR-BOUNDARY",
+      "title": "Constitutive persistence is strictly weaker than controller self-repair",
+      "architecture_role": "G3",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "X",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/EndogenousConstitutivePersistence.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/EndogenousObjectSynthesis.lean",
+        "formalization/ueot-core/docs/compression/cross_track/ENDOGENOUS_FORMATION_PERSISTENCE_SECOND_PASS_AUDIT.md"
+      ]
     }
-  ]
+  ],
+  "objecthood_omega_gate": "open"
 }
