@@ -24,6 +24,8 @@ import UEOT.V3.Compression.CrossTrack.InteractionPCompJS
 import UEOT.V3.Compression.CrossTrack.InteractionPersistenceSeparations
 import UEOT.V3.Compression.CrossTrack.InteractionProbeSelection
 import UEOT.V3.Compression.CrossTrack.InteractionBindingDynamic
+import UEOT.V3.Compression.CrossTrack.EndogenousCandidateFormation
+import UEOT.V3.Compression.CrossTrack.EndogenousConstitutivePersistence
 
 /-!
 # UEOT Core Compression — Track X
@@ -41,4 +43,12 @@ The local Dual-Isolation continuation further separates two inverse margins:
 binding/assembly identifiability (`beta`) and long-run semantic isolation
 (`kappa`).  It adds no counted generator; the new surfaces are uncounted
 cross-track bridge/boundary theorems.
+
+The Endogenous Formation/Persistence continuation then removes two further
+construction gaps without changing the frozen counted core: candidate parent
+coalitions are generated from response-recovered physical carriers plus
+P-COMP-06, while a P-PER-03 preserving selector is internalized as a reflexive
+controller with only `Unit` external action.  These are formation and
+constitutive-persistence bridges, not a claim that full Omega-loop Objecthood
+has already been derived.
 -/
