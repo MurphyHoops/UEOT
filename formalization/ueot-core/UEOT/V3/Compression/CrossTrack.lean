@@ -19,6 +19,11 @@ import UEOT.V3.Compression.CrossTrack.DualIsolationDynamic
 import UEOT.V3.Compression.CrossTrack.DualIsolationBenchmark
 import UEOT.V3.Compression.CrossTrack.DualIsolationPMetRealization
 import UEOT.V3.Compression.CrossTrack.DualIsolationPMetBenchmark
+import UEOT.V3.Compression.CrossTrack.InteractionBindingIsolation
+import UEOT.V3.Compression.CrossTrack.InteractionPCompJS
+import UEOT.V3.Compression.CrossTrack.InteractionPersistenceSeparations
+import UEOT.V3.Compression.CrossTrack.InteractionProbeSelection
+import UEOT.V3.Compression.CrossTrack.InteractionBindingDynamic
 
 /-!
 # UEOT Core Compression — Track X
