@@ -108,7 +108,7 @@ generated candidates and every formed candidate has a nonempty P-PER-03
 winning set for its own dynamics, then at least one generated candidate admits
 an operational formed-persistent-parent certificate. -/
 theorem exists_operationalFormedPersistentParent_of_responseSeed
-    [Fintype Child] [Nonempty A]
+    [Fintype Child] [Nonempty H] [Nonempty Probe] [Nonempty A]
     (readout : Finset V → H → Rout)
     (p : H → Probe → Measure Y)
     (regions : Child → Finset V)
