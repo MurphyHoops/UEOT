@@ -224,4 +224,3 @@ authorized CrossTrack source/doc surface.
 
 The remaining endogenous binding-law residual is a documented scientific
 boundary, not a blocker to the conditional theorem chain proved here.
-

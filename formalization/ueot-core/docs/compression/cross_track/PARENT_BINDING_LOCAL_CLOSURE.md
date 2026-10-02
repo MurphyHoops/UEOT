@@ -81,4 +81,3 @@ No remote mutation was performed by this mission:
 
 Any future remote lifecycle requires an explicit new decision after reviewing
 this local closure.
-
