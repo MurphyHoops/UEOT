@@ -246,6 +246,10 @@ The strengthened interface also rules out vacuous empty-kernel closure.
 kernel together with one internal controller.  That same controller witnesses
 source preservation, constitutive fixed-domain closure, and the all-times
 probability-one trajectory theorem.
+The certificate now also stores the exact source identity
+`K = winningSet P V`.  This is load-bearing: fixed-set invariance alone would
+allow a proper invariant subset to be presented as the stabilized P-PER
+kernel even though it need not be the full winning set.
 
 `exists_constitutivePersistenceCertificate_of_nonempty_winningSet`
 

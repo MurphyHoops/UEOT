@@ -126,8 +126,8 @@ The certificate simultaneously records:
   family;
 - family-wide interaction separation on a nonempty probe set;
 - a nonvacuous constitutive persistence certificate containing an actual seed
-  state, fixed viability kernel, internal controller, and probability-one
-  all-times persistence witness.
+  state, the exact P-PER winning kernel (`K = winningSet P V`), internal
+  controller, and probability-one all-times persistence witness.
 
 `exists_operationalFormedPersistentParent_of_responseSeed` constructs such a
 certificate from:

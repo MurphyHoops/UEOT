@@ -199,6 +199,8 @@ structure ConstitutivePersistenceCertificate
   kernel_sub_domain : K ⊆ V
   seed_mem : seed ∈ K
   source_fixed : viabilityStep P K = K
+  source_winning :
+    K = UEOT.V3.ViabilityStrategy.winningSet P V
   constitutive_fixed :
     viabilityStep (constitutiveLift P) (constitutiveDomain K controller) =
       constitutiveDomain K controller
@@ -223,7 +225,7 @@ theorem exists_constitutivePersistenceCertificate_of_nonempty_winningSet
     (P : X → A → PMF X) (V : Set X)
     (hwin : (UEOT.V3.ViabilityStrategy.winningSet P V).Nonempty) :
     Nonempty (ConstitutivePersistenceCertificate P V) := by
-  obtain ⟨n, K, hKiter, hKV, hfix, hKwin, hpolicy, _hall⟩ :=
+  obtain ⟨n, K, _hKiter, hKV, hfix, hKwin, hpolicy, _hall⟩ :=
     UEOT.V3.ViabilitySource.p_per_03 P V
   rcases hpolicy with ⟨pi, hpi⟩
   rcases hwin with ⟨x, hxwin⟩
@@ -237,6 +239,7 @@ theorem exists_constitutivePersistenceCertificate_of_nonempty_winningSet
     kernel_sub_domain := hKV
     seed_mem := hxK
     source_fixed := hfix
+    source_winning := hKwin
     constitutive_fixed := constitutiveDomain_fixed P pi hpi
     all_times_safe := constitutive_all_times_safe_of_preserving P pi hpi x hxK
   }⟩
