@@ -22,17 +22,19 @@ Mandatory checks:
 5. read `COMPRESSION_RESEARCH_TRACKS.json` and recover the independent
    architecture role, lifecycle, track owner, authority/provenance and
    counted-core-impact axes;
-6. if Issue #146 names a P0b/Track S/Track H tracker, read that child tracker
-   before selecting a branch;
+6. if Issue #146 names a P0b/Track S/Track H/Track X tracker, read that child
+   tracker before selecting a branch; when Track X is open, Issue #225 is the
+   authoritative detailed X0--X8 tracker;
 7. list remote branches and open PRs, then classify each governed branch as
-   governance / Track S / Track H / unclassified;
+   governance / Track S / Track H / Track X / unclassified;
 8. recover the active branch/head and latest relevant CI for each active lane;
 9. reconcile Issue state against GitHub reality and the immutable base-policy
    validator;
 10. reuse the active branch if it exists; do not create a replacement merely
     because a chat was compacted or another agent is continuing;
-11. keep Track X closed until the registry says the cross-track integration gate
-    is open, and consume cross-track dependencies only from canonical `main`;
+11. obey the Track-X gate in the registry; when it is open, consume Track-S and
+    Track-H dependencies only from canonical `main` and never reopen those
+    source-track branches from X;
 12. never infer a full compression mapping from a partial theorem;
 13. immediately continue the exact next action.
 
@@ -55,6 +57,7 @@ active M-ID: <id or none>
 architecture role/lifecycle: <G0-G3>/<status or none>
 Track S: <branch>@<sha / PR / next action or inactive>
 Track H: <branch>@<sha / PR / next action or inactive>
+Track X: <branch>@<sha / PR / X-stage / next action or inactive>
 Track X gate: closed | open
 latest Core Lean CI: <run/status>
 latest Compression Guard CI: <run/status>

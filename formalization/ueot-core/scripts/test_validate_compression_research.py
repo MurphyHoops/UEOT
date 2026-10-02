@@ -184,17 +184,13 @@ def test_architecture_record_schema(repo: Path) -> None:
         "POST_FINAL_RESEARCH provenance requires RESEARCH lifecycle",
     )
 
-    def open_track_x(config: dict) -> None:
-        record = copy.deepcopy(config["architecture_records"][-1])
-        record["record_id"] = "X-PREMATURE-INTEGRATION"
-        record["title"] = "Premature cross-track integration"
-        record["track_owner"] = "X"
-        config["architecture_records"].append(record)
+    def close_gate_without_closing_x(config: dict) -> None:
+        config["cross_track_integration_gate"] = "closed"
 
     expect_static_failure(
         repo,
-        open_track_x,
-        "Track X records are forbidden while the integration gate is closed",
+        close_gate_without_closing_x,
+        "research-track governance must define exactly",
     )
 
     def lose_counted_generator(config: dict) -> None:
@@ -307,6 +303,63 @@ def main() -> None:
 
     run_case(
         repo,
+        "compression/topology-goa-spectral-isolation",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/"
+            "ParentSemanticBoundary.lean"
+        ],
+        False,
+        "may not modify cross-owned/protected path",
+    )
+    print("stability-track-x-isolation: PASS")
+
+    run_case(
+        repo,
+        "compression/topology-goa-spectral-isolation",
+        ["formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean"],
+        False,
+        "may not modify cross-owned/protected path",
+    )
+    print("stability-track-x-root-isolation: PASS")
+
+    run_case(
+        repo,
+        "compression/cross-track-parent-semantic",
+        [
+            "formalization/ueot-core/docs/compression/cross_track/"
+            "X1_PARENT_GOA_BOUNDARY.md"
+        ],
+        True,
+        "",
+    )
+    print("cross-track-owned-doc: PASS")
+
+    run_case(
+        repo,
+        "compression/cross-track-parent-semantic",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/"
+            "ParentAssemblyResidual.lean"
+        ],
+        False,
+        "outside its owned CrossTrack namespace",
+    )
+    print("cross-track-hierarchy-isolation: PASS")
+
+    run_case(
+        repo,
+        "compression/cross-track-parent-semantic",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/"
+            "TopologyChangingGoaTrackSClosure.lean"
+        ],
+        False,
+        "outside its owned CrossTrack namespace",
+    )
+    print("cross-track-track-s-isolation: PASS")
+
+    run_case(
+        repo,
         "ops/compression-research-governance",
         [
             "formalization/ueot-core/docs/compression/"
@@ -377,6 +430,26 @@ def main() -> None:
     finally:
         live_file.unlink(missing_ok=True)
     print("per-track-live-concurrency: PASS")
+
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
+        handle.write(
+            "compression/topology-goa-residual-inverse-stability\n"
+            "compression/hierarchy-inventory\n"
+            "compression/cross-track-parent-semantic\n"
+        )
+        cap_file = Path(handle.name)
+    try:
+        run_case(
+            repo,
+            "ops/compression-research-governance",
+            [],
+            False,
+            "post-FINAL mutation cap exceeded",
+            ["--live-branches-file", str(cap_file)],
+        )
+    finally:
+        cap_file.unlink(missing_ok=True)
+    print("cross-track-global-concurrency-cap: PASS")
 
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
         handle.write("compression/assembly-audit\n")

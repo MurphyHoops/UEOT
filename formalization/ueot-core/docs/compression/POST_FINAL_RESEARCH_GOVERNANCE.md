@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-FINAL Parallel Research Governance
 
-Status: **GUARDED ARCHITECTURE ACTIVE / POST-FINAL / UNCOUNTED**
+Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X GATE OPEN / POST-FINAL / UNCOUNTED**
 
 Authority:
 
@@ -29,7 +29,7 @@ Contract.
 No research track may change the ledger merely because a new abstraction is
 elegant or compiles.
 
-## 2. Two active research tracks
+## 2. Source tracks and cross-track integration
 
 ### Track S — Structural Defect / Long-Run Stability
 
@@ -70,10 +70,43 @@ Initial scope is deliberately limited to:
 - H2 — parent/assembly residual analysis;
 - H3 — no-go / separation theorems.
 
-Track H initially does **not** own GOA stability, stationary-law perturbation,
-recurrent merge/split stability, fixed-point inverse, or spectral isolation.
-Those remain Track S until a later explicit cross-track integration gate is
-opened.
+Track H does **not** own GOA stability, stationary-law perturbation, recurrent
+merge/split stability, fixed-point inverse, or spectral isolation.  Those
+theorem families remain Track-S-owned even after the Track-X gate opens.
+Track X may consume their merged public interfaces from canonical `main`, but
+may not re-prove or mutate the Track-S source surfaces.
+
+### Track X — Parent Formation × Long-Run Semantic Stability
+
+Track X is the dedicated integration lane opened only after the independent
+Track-S finite-state closure and Track-H H0--H3 closure are both merged and
+auditable on canonical `main`.
+
+Detailed tracker: **Issue #225**.
+
+Scientific question:
+
+> When one child/coarse evidence state admits multiple richer parent
+> completions, under what exact or quantitative conditions is the parent's
+> long-run semantics nevertheless well-defined or stable?
+
+Track X owns only the **composition of already merged H and S interfaces**.  It
+does not reopen either source track.  In particular it must keep separate:
+
+- assembly ambiguity: one child evidence state admits multiple parent
+  completions;
+- dynamical semantic ambiguity: one fixed parent dynamics admits multiple
+  invariant long-run laws.
+
+The first required negative result is that unique GOA semantics for every
+completion does not imply child-determined parent GOA.  Positive work then
+proceeds through exact parent-semantic descent, quantitative
+`epsilon / kappa` stability, fibre-wide semantic diameter, a derived robust
+parent-semantic certificate, and finally an out-of-sample P-COMP assembly test.
+
+All ordinary Track-X results are uncounted G1/G2/G3 research.  A new G0
+primitive is outside Track X and would require a later dedicated promotion
+lifecycle.
 
 ## 3. Why the split is scientific, not administrative
 
@@ -89,9 +122,9 @@ versus
 \boxed{\text{Track S: how an established long-run structure remains stable}}.
 \]
 
-They may eventually meet in a theorem about the stability of a genuinely
-formed parent object's long-run semantics. That theorem is **not** licensed
-yet. First each side must reach an independently audited checkpoint.
+Those independent checkpoints are now complete.  They may meet only through
+the explicitly governed Track-X lane; neither Track S nor Track H may absorb
+the other's theorem family directly.
 
 ## 4. Main-only dependency rule
 
@@ -132,7 +165,21 @@ or validators are forbidden. Governance changes travel through a temporary
 ops/compression-* branch.
 
 Track S branches are forbidden from editing the Track H namespace. They may
-consume merged Track H interfaces from main later.
+consume merged Track H interfaces from canonical `main` only.
+
+Track X uses a third dedicated namespace:
+
+    formalization/ueot-core/UEOT/V3/Compression/CrossTrack/
+    formalization/ueot-core/docs/compression/cross_track/
+
+and the optional public root:
+
+    formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean
+
+Track-X branches are restricted to that namespace plus the one-line public
+`CrossTrack` root import in `Compression.lean`.  They may import Track-S and
+Track-H results only from canonical `main`; they may not edit either source
+track's owned theorem files.
 
 The base-policy guard machine-checks these ownership rules, rejects
 unclassified branches touching governed Compression paths, resolves normal
@@ -166,7 +213,7 @@ branch change therefore forces a fresh authorization against the new base SHA;
 a successful authorization obtained against a temporary or permissive base
 cannot be carried forward after retargeting the unchanged head to `main`.
 
-Mutating Track S, Track H, and `ops/compression-*` governance branches must be
+Mutating Track S, Track H, Track X, and `ops/compression-*` governance branches must be
 hosted in the canonical repository. Fork-based mutating Compression branches
 are rejected; read-only/external work can still be reviewed separately without
 entering the governed mutation lanes.
@@ -202,13 +249,14 @@ authority remains CORE-owned.
 
 ## 6. Concurrency
 
-At most **two mutating post-FINAL research lanes** may be active at once:
-
-- one Track S branch;
-- one Track H branch.
-
-Within each track there is at most one active mutating branch. Additional
+At most **two mutating post-FINAL research lanes** may be active at once across
+Track S, Track H, and Track X.  Within each track there is at most one active
+mutating branch.  Additional
 workers may perform read-only source/theorem audits without branches.
+
+Opening Track X does not reopen the closed scientific subproblems in S or H.
+If a future separately authorized S or H extension runs in parallel with X,
+the global two-track cap and main-only dependency rule still apply.
 
 This is stricter than simply allowing arbitrary parallel PRs and is intended to
 keep Issue #146 recoverable across chats.
@@ -263,13 +311,14 @@ Machine-check or recover explicit separations such as:
 These results are positive scientific outputs because they block false
 unification.
 
-### H4+ — Common structure and cross-track synthesis
+### H4+ / Track X — Common structure and cross-track synthesis
 
-Closed initially.
+**OPEN through Issue #225.**
 
-The cross-track integration gate may open only after H0-H3 are auditable and
-Track S has a stable merged interface for the long-run/stability concepts H
-would consume.
+The opening prerequisites are satisfied: H0--H3 are merged/auditable and Track
+S has a stable merged finite-state long-run semantic interface.  The approved
+sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
+mutate H/S source-track files.
 
 ## 8. Candidate primitive discipline
 
@@ -295,7 +344,7 @@ or no further compression are all permitted outcomes.
 Every mutating post-FINAL research PR must:
 
 - target main;
-- state Track S or Track H;
+- state Track S, Track H, or Track X;
 - state counted-core impact: NONE unless it is a dedicated promotion lifecycle
   PR;
 - identify exact scientific nonclaims;
@@ -316,6 +365,7 @@ Issue #146 remains the single compression authority. It must record:
 - frozen counted-core state;
 - active Track S branch/PR/next action;
 - active Track H branch/PR/next action;
+- active Track X branch/PR/stage/next action;
 - cross-track gate state;
 - explicit do-not-repeat / ownership guards.
 
