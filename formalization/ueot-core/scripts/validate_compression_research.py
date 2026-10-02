@@ -25,7 +25,7 @@ TRACKS_REL = Path(
 LEDGER_REL = Path(
     "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
 )
-TRACK_IDS = ("S", "H", "X")
+TRACK_IDS = ("S", "H", "X", "O")
 
 
 def fail(message: str) -> None:
@@ -328,6 +328,8 @@ def validate_compression_root_import_change(
                 fail("Track S may not add/remove the Track H root import")
             if line == "import UEOT.V3.Compression.CrossTrack":
                 fail("Track S may not add/remove the Track X root import")
+            if line == "import UEOT.V3.Compression.Objecthood":
+                fail("Track S may not add/remove the Track O root import")
     elif track_id == "X":
         if not changed or any(
             line != "import UEOT.V3.Compression.CrossTrack" for line in changed
@@ -335,6 +337,14 @@ def validate_compression_root_import_change(
             fail(
                 "Track X may modify Compression.lean only to add/remove the "
                 "public CrossTrack root import"
+            )
+    elif track_id == "O":
+        if not changed or any(
+            line != "import UEOT.V3.Compression.Objecthood" for line in changed
+        ):
+            fail(
+                "Track O may modify Compression.lean only to add/remove the "
+                "public Objecthood root import"
             )
     elif track_id == "GOVERNANCE":
         if not changed or any(
@@ -367,7 +377,7 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
             "RETAINED_BOUNDARY",
             "REJECTED",
         ],
-        "track_owners": ["CORE", "S", "H", "X"],
+        "track_owners": ["CORE", "S", "H", "X", "O"],
         "authority_provenance": [
             "FROZEN_CORE_V3",
             "POST_FINAL_MERGED",
@@ -384,17 +394,20 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
             )
 
     gate = config.get("cross_track_integration_gate")
+    omega_gate = config.get("objecthood_omega_gate")
     expected_track_status = {
         "CORE": "frozen",
         "S": "active",
         "H": "active",
         "X": "active" if gate == "open" else "closed",
+        "O": "active" if omega_gate == "open" else "closed",
     }
     track_status = schema.get("track_status")
     if track_status != expected_track_status:
         fail(
-            "architecture track_status must keep CORE frozen, S/H active, and "
-            f"X {'active' if gate == 'open' else 'closed'} with the integration gate"
+            "architecture track_status must keep CORE frozen, S/H active, "
+            f"X {'active' if gate == 'open' else 'closed'} with the integration gate, "
+            f"and O {'active' if omega_gate == 'open' else 'closed'} with the Objecthood gate"
         )
 
     required_fields = string_list(
@@ -483,6 +496,8 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
             fail(f"{context}: SYNTHESIS_ONLY records cannot affect counted-core accounting")
         if owner == "X" and config.get("cross_track_integration_gate") == "closed":
             fail(f"{context}: Track X records are forbidden while the integration gate is closed")
+        if owner == "O" and config.get("objecthood_omega_gate") == "closed":
+            fail(f"{context}: Track O records are forbidden while the Objecthood gate is closed")
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
@@ -516,6 +531,13 @@ def validate_static(
         fail("cross-track dependencies must remain main-only")
     if config.get("cross_track_integration_gate") not in {"closed", "open"}:
         fail("cross_track_integration_gate must be closed or open")
+    omega_gate = config.get("objecthood_omega_gate")
+    if omega_gate is None and not require_architecture_records:
+        # Governance PRs are authorized by the already-merged base policy.
+        # A pre-Track-O base is therefore a legitimate enforcement baseline.
+        omega_gate = "closed"
+    elif omega_gate not in {"closed", "open"}:
+        fail("objecthood_omega_gate must be closed or open")
     string_list(config.get("governed_path_prefixes"), "governed_path_prefixes")
     string_list(config.get("governed_exact_paths"), "governed_exact_paths")
 
@@ -532,7 +554,11 @@ def validate_static(
 
     tracks = config.get("tracks")
     gate = config.get("cross_track_integration_gate")
-    expected_tracks = {"S", "H", "X"} if gate == "open" else {"S", "H"}
+    expected_tracks = {"S", "H"}
+    if gate == "open":
+        expected_tracks.add("X")
+    if omega_gate == "open":
+        expected_tracks.add("O")
     if not isinstance(tracks, dict) or set(tracks) != expected_tracks:
         fail(
             "research-track governance must define exactly "
@@ -599,6 +625,25 @@ def validate_static(
             fail("Track X must consume S/H evidence from canonical main only")
         if x.get("source_track_reopen_policy") != "forbidden_inside_X":
             fail("Track X must not reopen Track S or Track H inside cross-track work")
+
+    if omega_gate == "open":
+        if gate != "open":
+            fail("Track O cannot open while Track X integration gate is closed")
+        o = tracks["O"]
+        if o.get("tracker_issue") != 230:
+            fail("Track O must be governed by Issue #230")
+        if o.get("initial_gate") != "O0-O8":
+            fail("Track O must follow the O0-O8 mission sequence")
+        if o.get("preferred_branch_prefix") != "compression/objecthood-":
+            fail("Track O preferred branch prefix must remain compression/objecthood-")
+        if not matches_any("compression/objecthood-self-repair", compiled["O"]):
+            fail("Track O branch patterns must authorize the governed Objecthood prefix")
+        if o.get("dependency_rule") != (
+            "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only"
+        ):
+            fail("Track O must consume frozen Core and merged Track-X evidence from canonical main only")
+        if o.get("source_track_reopen_policy") != "forbidden_inside_O":
+            fail("Track O must not reopen source-track theorem families inside Objecthood work")
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
@@ -725,6 +770,18 @@ def validate_track_paths(
                 f"Track X branch {branch!r} modified {path}, outside its "
                 "owned CrossTrack namespace"
             )
+    elif track_id == "O":
+        allowed_exact = set(track.get("allowed_exact_paths", []))
+        allowed_prefixes = tuple(track.get("allowed_path_prefixes", []))
+        for path in paths:
+            if path in allowed_exact or any(
+                path.startswith(prefix) for prefix in allowed_prefixes
+            ):
+                continue
+            fail(
+                f"Track O branch {branch!r} modified {path}, outside its "
+                "owned Objecthood namespace"
+            )
 
     validate_compression_root_import_change(
         repo, baseline_ref, candidate_ref, track_id, paths
@@ -791,9 +848,12 @@ def main() -> None:
             )
         branch = associated
 
+    # Every registered research/governance lane is mutating.  Derive this from
+    # the compiled policy rather than enumerating track IDs so newly activated
+    # tracks cannot silently bypass the canonical-repository fork guard.
     classified_mutating = any(
-        matches_any(branch, enforcement_compiled[track_id])
-        for track_id in ("S", "H", "GOVERNANCE")
+        matches_any(branch, patterns)
+        for patterns in enforcement_compiled.values()
     )
     if classified_mutating and args.head_repo and args.base_repo:
         if args.head_repo != args.base_repo:
