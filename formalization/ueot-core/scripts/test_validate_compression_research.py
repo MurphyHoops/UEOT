@@ -787,6 +787,14 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
             source.write_text(contents, encoding="utf-8")
             env = os.environ.copy()
             env["GIT_INDEX_FILE"] = str(index)
+            env.update(
+                {
+                    "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                    "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                    "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                    "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+                }
+            )
             subprocess.run(
                 ["git", "read-tree", base], cwd=repo, env=env, check=True
             )
