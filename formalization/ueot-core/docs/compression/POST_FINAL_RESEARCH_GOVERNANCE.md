@@ -512,9 +512,10 @@ theorem-source mutations are confined to the dedicated new
 `Compression/Objecthood/Homeostasis/` source prefix; audit documents continue
 under the existing `docs/compression/objecthood/` prefix.  The public
 `Compression/Objecthood.lean` root is an import-only exception enforced by the
-research validator: every nonblank changed line must be an
-`import UEOT.V3.Compression.Objecthood.Homeostasis.*` line, so prior Objecthood
-imports and declarations cannot be rewritten.  `Compression.lean` remains under
+research validator: every nonblank changed line must be one complete
+`import UEOT.V3.Compression.Objecthood.Homeostasis.<Module>` command with no
+trailing syntax, so prior Objecthood imports/declarations cannot be rewritten or
+hidden behind comment delimiters.  `Compression.lean` remains under
 its existing root-import validator.  All earlier O/ER/AR/GCR Objecthood theorem
 files therefore remain outside the allowlist, not merely protected by prose.
 RH may consume the frozen GCR, M-OI, Track-S and

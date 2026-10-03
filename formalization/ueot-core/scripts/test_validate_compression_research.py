@@ -845,10 +845,30 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 repo, base, invalid_decl, "O", [root]
             )
         except ValueError as exc:
-            if "only to add/remove imports" not in str(exc):
+            if "complete import commands" not in str(exc):
                 raise AssertionError(f"unexpected root declaration rejection: {exc}") from exc
         else:
             raise AssertionError("Objecthood root declaration mutation was not rejected")
+
+        comment_bypass = candidate_with(
+            "import UEOT.V3.Compression.Objecthood.Homeostasis.CommentOpen /-\n"
+            + base_text
+            + "import UEOT.V3.Compression.Objecthood.Homeostasis.CommentClose -/\n",
+            "invalid Objecthood block-comment bypass",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, comment_bypass, "O", [root]
+            )
+        except ValueError as exc:
+            if "complete import commands" not in str(exc):
+                raise AssertionError(
+                    f"unexpected trailing-syntax rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "Objecthood root trailing block-comment syntax was not rejected"
+            )
 
         lines = base_text.splitlines(keepends=True)
         old_import = next(
@@ -865,7 +885,7 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 repo, base, deleted_old, "O", [root]
             )
         except ValueError as exc:
-            if "only to add/remove imports" not in str(exc):
+            if "complete import commands" not in str(exc):
                 raise AssertionError(f"unexpected old-import rejection: {exc}") from exc
         else:
             raise AssertionError("deleting a pre-RH Objecthood import was not rejected")

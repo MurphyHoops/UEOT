@@ -419,13 +419,13 @@ def validate_objecthood_root_import_change(
         )
         if line
     ]
-    allowed_prefix = "import UEOT.V3.Compression.Objecthood.Homeostasis."
-    if not changed or any(
-        not line.startswith(allowed_prefix) or line == allowed_prefix
-        for line in changed
-    ):
+    allowed_import = re.compile(
+        r"import UEOT\.V3\.Compression\.Objecthood\.Homeostasis"
+        r"(?:\.[A-Za-z_][A-Za-z0-9_']*)+$"
+    )
+    if not changed or any(allowed_import.fullmatch(line) is None for line in changed):
         fail(
-            "Track O may modify Objecthood.lean only to add/remove imports "
+            "Track O may modify Objecthood.lean only with complete import commands "
             "under UEOT.V3.Compression.Objecthood.Homeostasis.*"
         )
 
