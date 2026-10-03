@@ -23,6 +23,7 @@ import UEOT.V3.Compression.Objecthood.ExactPathLawDiscountedHittingTransform
 import UEOT.V3.Compression.Objecthood.GeneralCausalDiscountedDirection
 import UEOT.V3.Compression.Objecthood.FinitePolicyAbelianStationaryWitness
 import UEOT.V3.Compression.Objecthood.FiniteStationaryHittingExpectation
+import UEOT.V3.Compression.Objecthood.GeneralCausalStationaryCompleteness
 import UEOT.V3.Compression.Objecthood.StochasticRepairSynthesis
 
 /-!
