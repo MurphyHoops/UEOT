@@ -659,6 +659,25 @@ def test_architecture_record_schema(repo: Path) -> None:
 
     reopened_base = copy.deepcopy(config)
     reopen_o(reopened_base, 231, "R0-R4")
+
+    replaced_tracker = copy.deepcopy(reopened_base)
+    replaced_tracker["tracks"]["O"]["tracker_issue"] = 232
+    expect_objecthood_transition_failure(
+        repo,
+        reopened_base,
+        replaced_tracker,
+        "must keep its tracker_issue until closure",
+    )
+
+    replaced_stage = copy.deepcopy(reopened_base)
+    replaced_stage["tracks"]["O"]["initial_gate"] = "R5-R8"
+    expect_objecthood_transition_failure(
+        repo,
+        reopened_base,
+        replaced_stage,
+        "must keep its stage plan until closure",
+    )
+
     closed_without_append = copy.deepcopy(reopened_base)
     closed_without_append["objecthood_omega_gate"] = "closed"
     closed_without_append["architecture_record_schema"]["track_status"]["O"] = "closed"

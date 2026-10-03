@@ -482,7 +482,10 @@ Issue #146 remains the single compression authority. It must record:
 - active Track S branch/PR/next action;
 - active Track H branch/PR/next action;
 - active Track X branch/PR/stage/next action;
+- active Track O branch/PR/tracker/stage/next action whenever the Objecthood
+  mutation gate is open;
 - cross-track gate state;
+- Objecthood mutation-gate state;
 - explicit do-not-repeat / ownership guards.
 
 A child Track H issue may be used as a detailed checklist, but it may not
