@@ -165,53 +165,6 @@
       ],
       "dependency_rule": "consume_S_and_H_evidence_from_canonical_main_only",
       "source_track_reopen_policy": "forbidden_inside_X"
-    },
-    "O": {
-      "title": "Objecthood / General-Causal Repair Completeness",
-      "status": "active",
-      "tracker_issue": 243,
-      "initial_gate": "GCR0-GCR8",
-      "preferred_branch_prefix": "compression/objecthood-",
-      "branch_patterns": [
-        "^compression/objecthood-.*$"
-      ],
-      "owned_topics": [
-        "stationary versus complete-history causal physical path-law equivalence",
-        "absorbing-target normalized discounted repair model",
-        "discounted nested-value and exact path-law hitting-transform bridge",
-        "all-causal discounted repair domination",
-        "Abelian deterministic-stationary repair witness extraction",
-        "finite stationary almost-sure hitting to finite expected hitting",
-        "GeneralCausalToStationaryCompleteness",
-        "maximal AR repair basin equals general-causal repairability",
-        "broad Objecthood resynthesis and architecture deletion audit"
-      ],
-      "allowed_path_prefixes": [
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
-        "formalization/ueot-core/docs/compression/objecthood/"
-      ],
-      "allowed_exact_paths": [
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
-        "formalization/ueot-core/UEOT/V3/Compression.lean"
-      ],
-      "forbidden_exact_paths": [
-        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
-        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
-        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
-        "formalization/ueot-core/scripts/validate_compression.py",
-        "formalization/ueot-core/scripts/validate_compression_research.py",
-        ".github/workflows/ueot-core-compression.yml",
-        ".github/workflows/ueot-compression-research-policy.yml",
-        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean"
-      ],
-      "dependency_rule": "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only",
-      "source_track_reopen_policy": "forbidden_inside_O"
     }
   },
   "architecture_record_schema": {
@@ -255,7 +208,7 @@
       "S": "active",
       "H": "active",
       "X": "active",
-      "O": "active"
+      "O": "closed"
     },
     "required_record_fields": [
       "record_id",
@@ -774,6 +727,26 @@
         "formalization/ueot-core/UEOT/V3/Compression/Objecthood/GeneralCausalRepairBoundary.lean",
         "formalization/ueot-core/docs/compression/objecthood/AR6_GENERAL_CAUSAL_COMPLETENESS_AUDIT.md"
       ]
+    },
+    {
+      "record_id": "O-GENERAL-CAUSAL-REPAIR-COMPLETENESS-CLOSURE",
+      "title": "General-causal almost-sure repair completeness and maximal stationary repair-basin closure",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/StationaryCausalPathLawBridge.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/AbsorbedDiscountedRepair.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/ExactPathLawDiscountedHittingTransform.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/GeneralCausalDiscountedDirection.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/FinitePolicyAbelianStationaryWitness.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/FiniteStationaryHittingExpectation.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/GeneralCausalStationaryCompleteness.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/GeneralCausalRepairSynthesis.lean",
+        "formalization/ueot-core/docs/compression/objecthood/GCR8_ARCHITECTURE_DELETION_BOUNDARY_AUDIT.md"
+      ]
     }
   ],
   "objecthood_completion_history": [
@@ -815,7 +788,20 @@
       "current_boundary": "general_causal_completeness_retained_boundary_then_recurrent_homeostasis_then_repair_law_self_reconstruction",
       "gate_state": "closed",
       "completed_scientific_stages": "AR0-AR7"
+    },
+    {
+      "completed_gate": "GCR0-GCR8",
+      "tracker_issue": 243,
+      "tracker_state": "closed",
+      "merged_pr": 245,
+      "reviewed_head": "7da1bb5b2cf7eaaea63e93820b49862f69b0fa09",
+      "merge_commit": "778aff5e6c4cad8fcf32413d9b558a767b821852",
+      "resulting_main_core_lean_run": 37140406972,
+      "resulting_main_compression_guard_run": 37140407148,
+      "current_boundary": "recurrent_homeostasis_then_repair_law_self_reconstruction",
+      "gate_state": "closed",
+      "completed_scientific_stages": "GCR0-GCR8"
     }
   ],
-  "objecthood_omega_gate": "open"
+  "objecthood_omega_gate": "closed"
 }
