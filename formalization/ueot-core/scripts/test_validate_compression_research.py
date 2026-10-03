@@ -775,16 +775,20 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
     base = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=repo, text=True
     ).strip()
-    base_text = subprocess.check_output(
-        ["git", "show", f"{base}:{root}"], cwd=repo, text=True
+    base_bytes = subprocess.check_output(
+        ["git", "show", f"{base}:{root}"], cwd=repo
     )
+    base_text = base_bytes.decode("utf-8")
 
-    def candidate_with(contents: str, label: str) -> str:
+    def candidate_with(contents: str | bytes, label: str) -> str:
         with tempfile.TemporaryDirectory() as tmp:
             tmpdir = Path(tmp)
             index = tmpdir / "index"
             source = tmpdir / "Objecthood.lean"
-            source.write_text(contents, encoding="utf-8")
+            if isinstance(contents, bytes):
+                source.write_bytes(contents)
+            else:
+                source.write_text(contents, encoding="utf-8")
             env = os.environ.copy()
             env["GIT_INDEX_FILE"] = str(index)
             env.update(
@@ -822,7 +826,8 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
 
     valid = candidate_with(
         base_text
-        + "\nimport UEOT.V3.Compression.Objecthood.Homeostasis.RootGuardRegression\n",
+        + ("" if base_text.endswith("\n") else "\n")
+        + "import UEOT.V3.Compression.Objecthood.Homeostasis.RootGuardRegression\n",
         "valid Objecthood RH import",
     )
     module.validate_objecthood_root_import_change(
@@ -868,6 +873,27 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
         else:
             raise AssertionError(
                 "Objecthood root trailing block-comment syntax was not rejected"
+            )
+
+        cr_injection = candidate_with(
+            base_bytes
+            + (b"" if base_bytes.endswith(b"\n") else b"\n")
+            + b"import UEOT.V3.Compression.Objecthood.Homeostasis.CRGuard"
+            + b"\rtheorem injected : True := trivial\n",
+            "invalid Objecthood carriage-return injection",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, cr_injection, "O", [root]
+            )
+        except ValueError as exc:
+            if "line-control" not in str(exc):
+                raise AssertionError(
+                    f"unexpected carriage-return rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "Objecthood root carriage-return command injection was not rejected"
             )
 
         lines = base_text.splitlines(keepends=True)

@@ -336,6 +336,21 @@ def changed_lines_for_path_between(
     return changed
 
 
+def git_blob_bytes(repo: Path, ref: str, path: str) -> bytes:
+    """Read one Git blob without universal-newline normalization."""
+
+    completed = subprocess.run(
+        ["git", "show", f"{ref}:{path}"],
+        cwd=repo,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if completed.returncode != 0:
+        fail(f"could not read Git blob {ref}:{path}")
+    return completed.stdout
+
+
 def validate_compression_root_import_change(
     repo: Path,
     baseline_ref: str | None,
@@ -412,22 +427,44 @@ def validate_objecthood_root_import_change(
     if not baseline_ref:
         fail("Objecthood.lean ownership validation requires a baseline ref")
 
-    changed = [
-        line
-        for line in changed_lines_for_path_between(
-            repo, baseline_ref, candidate_ref, root
-        )
-        if line
-    ]
     allowed_import = re.compile(
         r"import UEOT\.V3\.Compression\.Objecthood\.Homeostasis"
         r"(?:\.[A-Za-z_][A-Za-z0-9_']*)+$"
     )
-    if not changed or any(allowed_import.fullmatch(line) is None for line in changed):
+
+    baseline_blob = git_blob_bytes(repo, baseline_ref, root)
+    candidate_blob = git_blob_bytes(repo, candidate_ref, root)
+    if b"\r" in candidate_blob or b"\x00" in candidate_blob:
+        fail(
+            "Track O Objecthood.lean candidate contains forbidden line-control "
+            "or NUL characters"
+        )
+    try:
+        baseline_text = baseline_blob.decode("utf-8")
+        candidate_text = candidate_blob.decode("utf-8")
+    except UnicodeDecodeError:
+        fail("Track O Objecthood.lean must remain valid UTF-8 text")
+
+    baseline_lines = baseline_text.split("\n")
+    candidate_lines = candidate_text.split("\n")
+    baseline_rh = [line for line in baseline_lines if allowed_import.fullmatch(line)]
+    candidate_rh = [line for line in candidate_lines if allowed_import.fullmatch(line)]
+    baseline_frozen = [
+        line for line in baseline_lines if allowed_import.fullmatch(line) is None
+    ]
+    candidate_frozen = [
+        line for line in candidate_lines if allowed_import.fullmatch(line) is None
+    ]
+
+    if candidate_frozen != baseline_frozen:
         fail(
             "Track O may modify Objecthood.lean only with complete import commands "
             "under UEOT.V3.Compression.Objecthood.Homeostasis.*"
         )
+    if any(line not in candidate_rh for line in baseline_rh):
+        fail("Track O may not remove previously exposed Homeostasis imports")
+    if candidate_rh == baseline_rh:
+        fail("Track O Objecthood.lean change must add a Homeostasis import")
 
 
 def validate_architecture_records(
