@@ -378,7 +378,7 @@ mutate H/S source-track files.
 
 ### Track O — O0--O8 self-repair gate
 
-**OPEN through Issue #230 once the #229 resulting-main CI is green.**
+**AUTHORIZED TRACK; O0--O8 CLOSED through Issue #230 / PR #232.**
 
 Track O starts from the merged Track-X boundary that constitutive persistence
 does not repair a corrupted controller. The approved O0--O8 sequence is:
@@ -387,8 +387,36 @@ certificate -> physical repair basin/P-REC hitting-time bridge -> finite
 autonomous stabilization -> P-OMG repairability boundary -> end-to-end formed
 parent repair synthesis -> architecture/deletion audit.
 
-No Track-O theorem may be renamed full universal Objecthood before those gates
-are complete.
+The first O0--O8 lifecycle is now complete on canonical main.  PR #232 merged
+reviewed head `cda03d1c7bf2199643f0197e74597405ffd87b03` as
+`d827d5bc0d1facf6e59669265e3e26fb9d1beaa7`; exact-head Core Lean / Compression
+Guard passed, Codex found no major issue after its O6 counterexample P2 was
+repaired, and resulting-main Core Lean `37042673290` plus Compression Guard
+`37042673416` both passed.
+
+The Objecthood mutation gate is now **closed** after O1--O8 completion.  The
+machine-readable registry removes Track O from the active mutating-track set
+while retaining the merged O1--O8 results as historical uncounted G1/G2/G3
+architecture evidence.  Therefore a `compression/objecthood-*` branch is no
+longer authorized merely by reusing the old namespace or Issue #230.  The
+counted four-generator core remains unchanged.
+
+The strongest current result is a finite self-repairing constitutive Omega-loop
+certificate under an intact repair law and explicit repair basin/certificate.
+The next scientific boundary is **repair-law self-reconstruction**: damage or
+absence of the repair-producing organization is not covered by O5/O7.  Any
+future mutating continuation past that boundary requires a governance PR that
+reopens the Objecthood gate and registers both a **fresh tracker issue** and a
+**fresh stage plan** distinct from completed Issue #230 / O0--O8.  The validator
+machine-checks both freshness conditions before Track O can be active again.
+Completed Objecthood cycles are stored in an **append-only completion history**:
+an authorization PR may not delete, reorder, or rewrite an earlier completion
+record to make a closed tracker/stage appear fresh again.  A later close cycle
+**must append exactly one** record corresponding to the Track O tracker/stage
+that was active on its base, and must close the mutation gate at the same time.
+
+No Track-O result may be renamed full universal or biological Objecthood /
+autopoiesis without a separate theorem and governance lifecycle.
 
 ## 8. Candidate primitive discipline
 

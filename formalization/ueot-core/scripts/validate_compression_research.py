@@ -75,6 +75,37 @@ def require_file(repo: Path, rel: str, context: str) -> None:
         fail(f"{context}: referenced file does not exist: {rel}")
 
 
+def require_file_at_ref(repo: Path, ref: str, rel: str, context: str) -> None:
+    """Require `rel` to be a regular Git blob in `ref` without checking it out."""
+
+    completed = subprocess.run(
+        ["git", "cat-file", "-t", f"{ref}:{rel}"],
+        cwd=repo,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode != 0 or completed.stdout.strip() != "blob":
+        fail(f"{context}: referenced file does not exist in {ref}: {rel}")
+
+
+def require_referenced_file(
+    repo: Path, rel: str, context: str, *, ref: str | None = None
+) -> None:
+    """Resolve governance-declared files from one consistent authority tree.
+
+    Normal checked-out validation uses the worktree.  Immutable-base
+    `pull_request_target` validation supplies `ref=candidate_ref`, in which case
+    every candidate-declared file is required to be a regular blob in the
+    candidate Git tree without executing or checking out candidate code.
+    """
+
+    if ref is None:
+        require_file(repo, rel, context)
+    else:
+        require_file_at_ref(repo, ref, rel, context)
+
+
 def compile_patterns(values: object, context: str) -> list[re.Pattern[str]]:
     if not isinstance(values, list) or not values:
         fail(f"{context}: branch_patterns must be a nonempty list")
@@ -358,7 +389,13 @@ def validate_compression_root_import_change(
         fail(f"Track {track_id} may not modify Compression.lean")
 
 
-def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> None:
+def validate_architecture_records(
+    repo: Path,
+    config: dict,
+    ledger: dict,
+    *,
+    evidence_ref: str | None = None,
+) -> None:
     schema = config.get("architecture_record_schema")
     if not isinstance(schema, dict):
         fail("research governance must define architecture_record_schema")
@@ -473,7 +510,7 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
 
         evidence = string_list(record.get("evidence_paths"), f"{context}.evidence_paths")
         for path in evidence:
-            require_file(repo, path, context)
+            require_referenced_file(repo, path, context, ref=evidence_ref)
 
         if lifecycle == "COUNTED" or impact == "COUNTED":
             if not (role == "G0" and lifecycle == "COUNTED" and impact == "COUNTED"):
@@ -497,7 +534,16 @@ def validate_architecture_records(repo: Path, config: dict, ledger: dict) -> Non
         if owner == "X" and config.get("cross_track_integration_gate") == "closed":
             fail(f"{context}: Track X records are forbidden while the integration gate is closed")
         if owner == "O" and config.get("objecthood_omega_gate") == "closed":
-            fail(f"{context}: Track O records are forbidden while the Objecthood gate is closed")
+            if lifecycle not in {"MERGED_UNCOUNTED", "REJECTED"}:
+                fail(
+                    f"{context}: closed Objecthood gate permits only historical "
+                    "MERGED_UNCOUNTED/REJECTED Track O records"
+                )
+            if provenance not in {"POST_FINAL_MERGED", "SYNTHESIS_ONLY"}:
+                fail(
+                    f"{context}: closed Objecthood gate permits only merged/synthesis "
+                    "authority for historical Track O records"
+                )
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
@@ -518,6 +564,7 @@ def validate_static(
     ledger: dict,
     *,
     require_architecture_records: bool = True,
+    evidence_ref: str | None = None,
 ) -> dict[str, list[re.Pattern[str]]]:
     if config.get("schema_version") != 1:
         fail("research-track governance schema_version must be 1")
@@ -538,6 +585,45 @@ def validate_static(
         omega_gate = "closed"
     elif omega_gate not in {"closed", "open"}:
         fail("objecthood_omega_gate must be closed or open")
+
+    raw_history = config.get("objecthood_completion_history")
+    if raw_history is None:
+        if require_architecture_records:
+            fail("current Objecthood governance requires objecthood_completion_history")
+        objecthood_history: list[dict] = []
+    else:
+        if not isinstance(raw_history, list) or not raw_history:
+            fail("objecthood_completion_history must be a nonempty list")
+        objecthood_history = []
+        seen_issues: set[int] = set()
+        seen_gates: set[str] = set()
+        for index, checkpoint in enumerate(raw_history):
+            context = f"objecthood_completion_history[{index}]"
+            if not isinstance(checkpoint, dict):
+                fail(f"{context} must be an object")
+            if checkpoint.get("tracker_state") != "closed":
+                fail(f"{context} must record tracker_state=closed")
+            completed_issue = checkpoint.get("tracker_issue")
+            if type(completed_issue) is not int or completed_issue <= 0:
+                fail(f"{context} needs a positive tracker_issue")
+            if completed_issue in seen_issues:
+                fail("objecthood completion history cannot reuse a tracker_issue")
+            seen_issues.add(completed_issue)
+            completed_gate = checkpoint.get("completed_gate")
+            if not isinstance(completed_gate, str) or not completed_gate.strip():
+                fail(f"{context} needs a nonempty completed_gate")
+            if completed_gate != completed_gate.strip():
+                fail(f"{context}.completed_gate must not have leading/trailing whitespace")
+            if completed_gate in seen_gates:
+                fail("objecthood completion history cannot reuse a completed_gate")
+            seen_gates.add(completed_gate)
+            if checkpoint.get("gate_state") != "closed":
+                fail(f"{context} must record gate_state=closed")
+            for field in ("reviewed_head", "merge_commit"):
+                value = checkpoint.get(field)
+                if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
+                    fail(f"{context} needs a 40-hex {field}")
+            objecthood_history.append(checkpoint)
     string_list(config.get("governed_path_prefixes"), "governed_path_prefixes")
     string_list(config.get("governed_exact_paths"), "governed_exact_paths")
 
@@ -550,7 +636,12 @@ def validate_static(
         value = config.get(field)
         if not isinstance(value, str) or not value:
             fail(f"research-track governance needs nonempty {field}")
-        require_file(repo, value, "research-track governance")
+        require_referenced_file(
+            repo,
+            value,
+            "research-track governance",
+            ref=evidence_ref,
+        )
 
     tracks = config.get("tracks")
     gate = config.get("cross_track_integration_gate")
@@ -630,10 +721,32 @@ def validate_static(
         if gate != "open":
             fail("Track O cannot open while Track X integration gate is closed")
         o = tracks["O"]
-        if o.get("tracker_issue") != 230:
-            fail("Track O must be governed by Issue #230")
-        if o.get("initial_gate") != "O0-O8":
-            fail("Track O must follow the O0-O8 mission sequence")
+        tracker_issue = o.get("tracker_issue")
+        stage_plan = o.get("initial_gate")
+        if not objecthood_history:
+            # Legacy first activation.  This remains accepted when validating
+            # an older base policy during the guarded close-transition PR.
+            if tracker_issue != 230:
+                fail("initial Track O activation must be governed by Issue #230")
+            if stage_plan != "O0-O8":
+                fail("initial Track O activation must follow the O0-O8 mission sequence")
+        else:
+            if type(tracker_issue) is not int or tracker_issue <= 0:
+                fail("reopened Track O requires a positive fresh tracker_issue")
+            completed_issues = {
+                checkpoint["tracker_issue"] for checkpoint in objecthood_history
+            }
+            if tracker_issue in completed_issues:
+                fail("reopened Track O must use a fresh tracker_issue")
+            if not isinstance(stage_plan, str) or not stage_plan.strip():
+                fail("reopened Track O requires a nonempty fresh stage plan")
+            if stage_plan != stage_plan.strip():
+                fail("reopened Track O stage plan must not have leading/trailing whitespace")
+            completed_gates = {
+                checkpoint["completed_gate"] for checkpoint in objecthood_history
+            }
+            if stage_plan in completed_gates:
+                fail("reopened Track O must use a fresh stage plan")
         if o.get("preferred_branch_prefix") != "compression/objecthood-":
             fail("Track O preferred branch prefix must remain compression/objecthood-")
         if not matches_any("compression/objecthood-self-repair", compiled["O"]):
@@ -661,9 +774,77 @@ def validate_static(
         fail("live ledger counted generator count disagrees with minimal_core")
 
     if require_architecture_records:
-        validate_architecture_records(repo, config, ledger)
+        validate_architecture_records(
+            repo, config, ledger, evidence_ref=evidence_ref
+        )
 
     return compiled
+
+
+def validate_objecthood_completion_history_transition(
+    baseline_config: dict, candidate_config: dict
+) -> None:
+    """Keep completed Track-O governance evidence append-only.
+
+    A completion record is an authorization boundary: once it exists, a later
+    governance PR may append a newly completed Track-O cycle but may not delete,
+    reorder, or rewrite any prior completed tracker/stage entry.
+    """
+
+    baseline = baseline_config.get("objecthood_completion_history")
+    candidate = candidate_config.get("objecthood_completion_history")
+
+    # Historical bases before the first Track-O closure have no history.  The
+    # first close-transition may establish exactly one record corresponding to
+    # the active base tracker/stage.
+    if baseline is None:
+        if candidate is None:
+            return
+        if not isinstance(candidate, list) or len(candidate) != 1:
+            fail("first Objecthood closure must establish exactly one completion record")
+        base_o = baseline_config.get("tracks", {}).get("O")
+        if not isinstance(base_o, dict):
+            fail("first Objecthood closure requires an active baseline Track O")
+        first = candidate[0]
+        if (
+            first.get("tracker_issue") != base_o.get("tracker_issue")
+            or first.get("completed_gate") != base_o.get("initial_gate")
+        ):
+            fail("first Objecthood completion record must match the active baseline tracker/stage")
+        if candidate_config.get("objecthood_omega_gate") != "closed":
+            fail("first Objecthood completion record must close the mutation gate")
+        return
+
+    if not isinstance(baseline, list) or not baseline:
+        fail("baseline objecthood completion history is malformed")
+    if not isinstance(candidate, list) or not candidate:
+        fail("Objecthood completion history is append-only and cannot be deleted")
+    if len(candidate) < len(baseline) or candidate[: len(baseline)] != baseline:
+        fail("Objecthood completion history is append-only and prior records are immutable")
+    if len(candidate) > len(baseline) + 1:
+        fail("Objecthood governance may append at most one completion record per PR")
+
+    baseline_gate = baseline_config.get("objecthood_omega_gate")
+    candidate_gate = candidate_config.get("objecthood_omega_gate")
+    if baseline_gate == "open" and candidate_gate == "closed":
+        if len(candidate) != len(baseline) + 1:
+            fail(
+                "closing an active Track O cycle must append exactly one "
+                "completion record"
+            )
+
+    if len(candidate) == len(baseline) + 1:
+        base_o = baseline_config.get("tracks", {}).get("O")
+        if baseline_gate != "open" or not isinstance(base_o, dict):
+            fail("new Objecthood completion record requires an active baseline Track O")
+        added = candidate[-1]
+        if (
+            added.get("tracker_issue") != base_o.get("tracker_issue")
+            or added.get("completed_gate") != base_o.get("initial_gate")
+        ):
+            fail("new Objecthood completion record must match the active baseline tracker/stage")
+        if candidate_gate != "closed":
+            fail("appending an Objecthood completion record must close the mutation gate")
 
 
 def validate_track_paths(
@@ -805,7 +986,29 @@ def main() -> None:
     repo = Path(args.repo_root).resolve()
     config = load_json(repo / TRACKS_REL)
     ledger = load_json(repo / LEDGER_REL)
-    compiled = validate_static(repo, config, ledger)
+
+    # `pull_request_target` intentionally executes this validator from the
+    # immutable base checkout.  When a baseline/candidate pair is supplied,
+    # policy *authorization* still comes from the base config below, but the
+    # candidate registry must be loaded from the candidate Git object rather
+    # than from the checked-out base worktree.  Otherwise transition checks
+    # such as append-only Objecthood completion history compare base-to-base
+    # and silently ignore candidate policy mutations.
+    if args.baseline_ref:
+        candidate_config = load_json_at_ref(repo, args.candidate_ref, TRACKS_REL)
+        if candidate_config is None:
+            fail(
+                "candidate ref is missing the research-track governance registry: "
+                f"{args.candidate_ref}:{TRACKS_REL.as_posix()}"
+            )
+        config = candidate_config
+
+    compiled = validate_static(
+        repo,
+        config,
+        ledger,
+        evidence_ref=args.candidate_ref if args.baseline_ref else None,
+    )
     enforcement_config = config
     enforcement_compiled = compiled
     if args.baseline_ref:
@@ -817,6 +1020,9 @@ def main() -> None:
                 baseline_config,
                 ledger,
                 require_architecture_records=False,
+            )
+            validate_objecthood_completion_history_transition(
+                baseline_config, config
             )
 
     branch = branch_for_run(repo, args.branch_name)

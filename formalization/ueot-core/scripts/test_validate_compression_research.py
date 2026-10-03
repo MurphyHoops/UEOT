@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 import copy
 import importlib.util
+import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -126,6 +128,319 @@ def test_policy_reauthorizes_on_base_edit(repo: Path) -> None:
         )
 
 
+def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
+    """The immutable base validator must inspect candidate registry *data*.
+
+    This reproduces the pull_request_target layout: the worktree remains at the
+    baseline commit while --candidate-ref names a different commit object.  A
+    candidate that rewrites prior Objecthood completion history is statically
+    well-formed, so only the base->candidate transition check should reject it.
+    """
+
+    module = load_validator_module(repo)
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    config = module.load_json(repo / module.TRACKS_REL)
+    history = config.get("objecthood_completion_history")
+    if not isinstance(history, list) or not history:
+        raise AssertionError("candidate-ref regression requires completed Objecthood history")
+
+    candidate = copy.deepcopy(config)
+    candidate["objecthood_completion_history"][0]["tracker_issue"] = 999
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmpdir = Path(tmp)
+        registry = tmpdir / "candidate.json"
+        registry.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
+        index = tmpdir / "index"
+        env = os.environ.copy()
+        env["GIT_INDEX_FILE"] = str(index)
+        env.update(
+            {
+                "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+            }
+        )
+
+        subprocess.run(
+            ["git", "read-tree", base], cwd=repo, env=env, check=True
+        )
+        blob = subprocess.check_output(
+            ["git", "hash-object", "-w", str(registry)], cwd=repo, text=True
+        ).strip()
+        subprocess.run(
+            [
+                "git",
+                "update-index",
+                "--add",
+                "--cacheinfo",
+                "100644",
+                blob,
+                module.TRACKS_REL.as_posix(),
+            ],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        tree = subprocess.check_output(
+            ["git", "write-tree"], cwd=repo, env=env, text=True
+        ).strip()
+        candidate_ref = subprocess.check_output(
+            ["git", "commit-tree", tree, "-p", base],
+            cwd=repo,
+            env=env,
+            input="candidate-ref policy regression\n",
+            text=True,
+        ).strip()
+
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", delete=False
+        ) as handle:
+            handle.write(module.TRACKS_REL.as_posix() + "\n")
+            changed_file = Path(handle.name)
+        try:
+            completed = subprocess.run(
+                validator(
+                    repo,
+                    "ops/compression-candidate-ref-regression",
+                    changed_file,
+                    [
+                        "--baseline-ref",
+                        base,
+                        "--candidate-ref",
+                        candidate_ref,
+                    ],
+                ),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        finally:
+            changed_file.unlink(missing_ok=True)
+
+    output = completed.stdout + completed.stderr
+    if completed.returncode == 0 or "prior records are immutable" not in output:
+        raise AssertionError(
+            "base-checkout validator ignored candidate-ref governance data\n" + output
+        )
+
+
+def test_candidate_ref_resolves_candidate_only_evidence(repo: Path) -> None:
+    """Candidate architecture evidence is resolved from candidate Git data.
+
+    The pull_request_target worktree stays on the immutable base.  A governance
+    candidate may nevertheless add an allowed evidence document and reference
+    it from a new architecture record; validation must inspect the candidate
+    tree rather than requiring that file to pre-exist in the base worktree.
+    """
+
+    module = load_validator_module(repo)
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    config = module.load_json(repo / module.TRACKS_REL)
+    candidate = copy.deepcopy(config)
+    evidence_rel = (
+        "formalization/ueot-core/docs/compression/hierarchy/"
+        "CANDIDATE_REF_EVIDENCE_REGRESSION.md"
+    )
+    candidate["architecture_records"].append(
+        {
+            "record_id": "H-CANDIDATE-REF-EVIDENCE-REGRESSION",
+            "title": "Candidate-ref evidence resolution regression",
+            "architecture_role": "G3",
+            "lifecycle_status": "MERGED_UNCOUNTED",
+            "track_owner": "H",
+            "authority_provenance": "POST_FINAL_MERGED",
+            "counted_core_impact": "NONE",
+            "evidence_paths": [evidence_rel],
+        }
+    )
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmpdir = Path(tmp)
+        registry = tmpdir / "candidate.json"
+        registry.write_text(json.dumps(candidate, indent=2) + "\n", encoding="utf-8")
+        evidence = tmpdir / "evidence.md"
+        evidence.write_text("# Candidate-only evidence\n", encoding="utf-8")
+        index = tmpdir / "index"
+        env = os.environ.copy()
+        env["GIT_INDEX_FILE"] = str(index)
+        env.update(
+            {
+                "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+            }
+        )
+
+        subprocess.run(["git", "read-tree", base], cwd=repo, env=env, check=True)
+        registry_blob = subprocess.check_output(
+            ["git", "hash-object", "-w", str(registry)], cwd=repo, text=True
+        ).strip()
+        evidence_blob = subprocess.check_output(
+            ["git", "hash-object", "-w", str(evidence)], cwd=repo, text=True
+        ).strip()
+        subprocess.run(
+            [
+                "git",
+                "update-index",
+                "--add",
+                "--cacheinfo",
+                "100644",
+                registry_blob,
+                module.TRACKS_REL.as_posix(),
+            ],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        subprocess.run(
+            [
+                "git",
+                "update-index",
+                "--add",
+                "--cacheinfo",
+                "100644",
+                evidence_blob,
+                evidence_rel,
+            ],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        tree = subprocess.check_output(
+            ["git", "write-tree"], cwd=repo, env=env, text=True
+        ).strip()
+        candidate_ref = subprocess.check_output(
+            ["git", "commit-tree", tree, "-p", base],
+            cwd=repo,
+            env=env,
+            input="candidate-only evidence regression\n",
+            text=True,
+        ).strip()
+
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", delete=False
+        ) as handle:
+            handle.write(module.TRACKS_REL.as_posix() + "\n")
+            handle.write(evidence_rel + "\n")
+            changed_file = Path(handle.name)
+        try:
+            completed = subprocess.run(
+                validator(
+                    repo,
+                    "ops/compression-candidate-evidence-regression",
+                    changed_file,
+                    [
+                        "--baseline-ref",
+                        base,
+                        "--candidate-ref",
+                        candidate_ref,
+                    ],
+                ),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        finally:
+            changed_file.unlink(missing_ok=True)
+
+    if completed.returncode != 0:
+        raise AssertionError(
+            "candidate-only architecture evidence was not resolved from candidate ref\n"
+            + completed.stdout
+            + completed.stderr
+        )
+
+
+def test_candidate_ref_rejects_deleted_declared_file(repo: Path) -> None:
+    """Candidate-declared governance files must exist in the candidate tree.
+
+    The immutable base worktree still contains COMPRESSION_OPERATIONS.md.  A
+    candidate that deletes that file while retaining the registry reference
+    must therefore fail only if declared-file resolution really uses the
+    candidate ref rather than falling back to the base checkout.
+    """
+
+    module = load_validator_module(repo)
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    config = module.load_json(repo / module.TRACKS_REL)
+    operations_rel = config.get("operations_manual")
+    if not isinstance(operations_rel, str) or not operations_rel:
+        raise AssertionError("candidate-ref regression requires operations_manual")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmpdir = Path(tmp)
+        index = tmpdir / "index"
+        env = os.environ.copy()
+        env["GIT_INDEX_FILE"] = str(index)
+        env.update(
+            {
+                "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+            }
+        )
+
+        subprocess.run(["git", "read-tree", base], cwd=repo, env=env, check=True)
+        subprocess.run(
+            ["git", "update-index", "--force-remove", operations_rel],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        tree = subprocess.check_output(
+            ["git", "write-tree"], cwd=repo, env=env, text=True
+        ).strip()
+        candidate_ref = subprocess.check_output(
+            ["git", "commit-tree", tree, "-p", base],
+            cwd=repo,
+            env=env,
+            input="deleted declared governance file regression\n",
+            text=True,
+        ).strip()
+
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", delete=False
+        ) as handle:
+            handle.write(operations_rel + "\n")
+            changed_file = Path(handle.name)
+        try:
+            completed = subprocess.run(
+                validator(
+                    repo,
+                    "ops/compression-declared-file-regression",
+                    changed_file,
+                    [
+                        "--baseline-ref",
+                        base,
+                        "--candidate-ref",
+                        candidate_ref,
+                    ],
+                ),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        finally:
+            changed_file.unlink(missing_ok=True)
+
+    output = completed.stdout + completed.stderr
+    if completed.returncode == 0 or operations_rel not in output:
+        raise AssertionError(
+            "candidate deletion of a declared governance file was hidden by "
+            "the base worktree\n" + output
+        )
+
+
 def expect_static_failure(repo: Path, mutate, expected: str) -> None:
     module = load_validator_module(repo)
     config = module.load_json(repo / module.TRACKS_REL)
@@ -149,6 +464,35 @@ def expect_static_failure(repo: Path, mutate, expected: str) -> None:
                 ) from exc
         else:
             raise AssertionError(f"expected static governance rejection: {expected}")
+    finally:
+        module.fail = original_fail
+
+
+def expect_objecthood_transition_failure(
+    repo: Path, baseline: dict, candidate: dict, expected: str
+) -> None:
+    module = load_validator_module(repo)
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        try:
+            module.validate_objecthood_completion_history_transition(
+                baseline, candidate
+            )
+        except ValueError as exc:
+            if expected not in str(exc):
+                raise AssertionError(
+                    f"expected Objecthood transition rejection containing "
+                    f"{expected!r}, got {exc!r}"
+                ) from exc
+        else:
+            raise AssertionError(
+                f"expected Objecthood completion-history rejection: {expected}"
+            )
     finally:
         module.fail = original_fail
 
@@ -193,13 +537,154 @@ def test_architecture_record_schema(repo: Path) -> None:
         "research-track governance must define exactly",
     )
 
-    def close_objecthood_gate_without_closing_o(config: dict) -> None:
-        config["objecthood_omega_gate"] = "closed"
+    def make_closed_o_record_active(config: dict) -> None:
+        record = next(
+            item
+            for item in config["architecture_records"]
+            if item["record_id"] == "O-CONSTITUTIVE-LEGITIMACY"
+        )
+        record["lifecycle_status"] = "RESEARCH"
+        record["authority_provenance"] = "POST_FINAL_RESEARCH"
 
     expect_static_failure(
         repo,
-        close_objecthood_gate_without_closing_o,
-        "research-track governance must define exactly",
+        make_closed_o_record_active,
+        "closed Objecthood gate permits only historical",
+    )
+
+    def reopen_o(config: dict, tracker_issue: int, stage_plan: str) -> None:
+        config["objecthood_omega_gate"] = "open"
+        config["architecture_record_schema"]["track_status"]["O"] = "active"
+        config["tracks"]["O"] = {
+            "title": "Objecthood continuation",
+            "status": "active",
+            "tracker_issue": tracker_issue,
+            "initial_gate": stage_plan,
+            "preferred_branch_prefix": "compression/objecthood-",
+            "branch_patterns": ["^compression/objecthood-.*$"],
+            "owned_topics": ["repair-law self-reconstruction"],
+            "allowed_path_prefixes": [
+                "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+                "formalization/ueot-core/docs/compression/objecthood/",
+            ],
+            "allowed_exact_paths": [
+                "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
+                "formalization/ueot-core/UEOT/V3/Compression.lean",
+            ],
+            "dependency_rule": (
+                "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only"
+            ),
+            "source_track_reopen_policy": "forbidden_inside_O",
+        }
+
+    expect_static_failure(
+        repo,
+        lambda config: reopen_o(config, 230, "R0-R4"),
+        "fresh tracker_issue",
+    )
+    expect_static_failure(
+        repo,
+        lambda config: reopen_o(config, True, "R0-R4"),
+        "positive fresh tracker_issue",
+    )
+    expect_static_failure(
+        repo,
+        lambda config: reopen_o(config, 231, "   "),
+        "nonempty fresh stage plan",
+    )
+    expect_static_failure(
+        repo,
+        lambda config: reopen_o(config, 231, " O0-O8 "),
+        "must not have leading/trailing whitespace",
+    )
+    expect_static_failure(
+        repo,
+        lambda config: reopen_o(config, 231, "O0-O8"),
+        "fresh stage plan",
+    )
+
+    def whitespace_completed_gate(config: dict) -> None:
+        config["objecthood_completion_history"][0]["completed_gate"] = "   "
+
+    expect_static_failure(
+        repo,
+        whitespace_completed_gate,
+        "nonempty completed_gate",
+    )
+
+    def padded_completed_gate(config: dict) -> None:
+        gate = config["objecthood_completion_history"][0]["completed_gate"]
+        config["objecthood_completion_history"][0]["completed_gate"] = f" {gate} "
+
+    expect_static_failure(
+        repo,
+        padded_completed_gate,
+        "must not have leading/trailing whitespace",
+    )
+
+    def delete_history_and_reopen(config: dict) -> None:
+        config.pop("objecthood_completion_history", None)
+        reopen_o(config, 230, "O0-O8")
+
+    expect_static_failure(
+        repo,
+        delete_history_and_reopen,
+        "requires objecthood_completion_history",
+    )
+
+    reopened = copy.deepcopy(config)
+    reopen_o(reopened, 231, "R0-R4")
+    module.validate_static(repo, reopened, ledger)
+
+    rewritten = copy.deepcopy(config)
+    rewritten["objecthood_completion_history"][0]["tracker_issue"] = 999
+    expect_objecthood_transition_failure(
+        repo,
+        config,
+        rewritten,
+        "prior records are immutable",
+    )
+
+    deleted = copy.deepcopy(config)
+    deleted.pop("objecthood_completion_history")
+    expect_objecthood_transition_failure(
+        repo,
+        config,
+        deleted,
+        "cannot be deleted",
+    )
+
+    reopened_base = copy.deepcopy(config)
+    reopen_o(reopened_base, 231, "R0-R4")
+    closed_without_append = copy.deepcopy(reopened_base)
+    closed_without_append["objecthood_omega_gate"] = "closed"
+    closed_without_append["architecture_record_schema"]["track_status"]["O"] = "closed"
+    closed_without_append["tracks"].pop("O")
+    expect_objecthood_transition_failure(
+        repo,
+        reopened_base,
+        closed_without_append,
+        "must append exactly one completion record",
+    )
+
+    closed_with_append = copy.deepcopy(closed_without_append)
+    closed_with_append["objecthood_completion_history"].append(
+        {
+            "completed_gate": "R0-R4",
+            "tracker_issue": 231,
+            "tracker_state": "closed",
+            "merged_pr": 999,
+            "reviewed_head": "1" * 40,
+            "merge_commit": "2" * 40,
+            "resulting_main_core_lean_run": 1,
+            "resulting_main_compression_guard_run": 2,
+            "current_boundary": "next_boundary",
+            "gate_state": "closed",
+        }
+    )
+    module.validate_static(repo, closed_with_append, ledger)
+    module.validate_objecthood_completion_history_transition(
+        reopened_base, closed_with_append
     )
 
     def lose_counted_generator(config: dict) -> None:
@@ -374,10 +859,10 @@ def main() -> None:
             "formalization/ueot-core/docs/compression/objecthood/"
             "O1_LEGITIMACY_AUDIT.md"
         ],
-        True,
-        "",
+        False,
+        "unclassified compression research branch",
     )
-    print("objecthood-owned-doc: PASS")
+    print("closed-objecthood-mutation-rejected: PASS")
 
     run_case(
         repo,
@@ -387,9 +872,9 @@ def main() -> None:
             "EndogenousConstitutivePersistence.lean"
         ],
         False,
-        "outside its owned",
+        "unclassified compression research branch",
     )
-    print("objecthood-cross-track-source-isolation: PASS")
+    print("closed-objecthood-cross-track-mutation-rejected: PASS")
 
     run_case(
         repo,
@@ -479,8 +964,8 @@ def main() -> None:
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
         handle.write(
             "compression/topology-goa-residual-inverse-stability\n"
+            "compression/hierarchy-inventory\n"
             "compression/cross-track-parent-semantic\n"
-            "compression/objecthood-self-repair\n"
         )
         cap_file = Path(handle.name)
     try:
@@ -530,6 +1015,15 @@ def main() -> None:
     test_policy_reauthorizes_on_base_edit(repo)
     print("base-change-reauthorization-trigger: PASS")
 
+    test_candidate_ref_policy_drives_objecthood_transition(repo)
+    print("candidate-ref-policy-transition-audited: PASS")
+
+    test_candidate_ref_resolves_candidate_only_evidence(repo)
+    print("candidate-ref-evidence-resolution-audited: PASS")
+
+    test_candidate_ref_rejects_deleted_declared_file(repo)
+    print("candidate-ref-declared-file-deletion-rejected: PASS")
+
     run_case(
         repo,
         "compression/hierarchy-inventory",
@@ -556,7 +1050,7 @@ def main() -> None:
             "O1_LEGITIMACY_AUDIT.md"
         ],
         False,
-        "fork-based mutating Compression research/governance branches are not allowed",
+        "unclassified compression research branch",
         [
             "--head-repo",
             "someone/UEOT-fork",
@@ -564,7 +1058,7 @@ def main() -> None:
             "MurphyHoops/UEOT",
         ],
     )
-    print("fork-objecthood-mutation-rejected: PASS")
+    print("closed-objecthood-fork-mutation-rejected: PASS")
 
     test_architecture_record_schema(repo)
     print("architecture-record-schema-and-combinations: PASS")
