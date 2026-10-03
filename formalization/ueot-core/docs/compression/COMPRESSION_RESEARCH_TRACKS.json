@@ -165,6 +165,53 @@
       ],
       "dependency_rule": "consume_S_and_H_evidence_from_canonical_main_only",
       "source_track_reopen_policy": "forbidden_inside_X"
+    },
+    "O": {
+      "title": "Objecthood / General-Causal Repair Completeness",
+      "status": "active",
+      "tracker_issue": 243,
+      "initial_gate": "GCR0-GCR8",
+      "preferred_branch_prefix": "compression/objecthood-",
+      "branch_patterns": [
+        "^compression/objecthood-.*$"
+      ],
+      "owned_topics": [
+        "stationary versus complete-history causal physical path-law equivalence",
+        "absorbing-target normalized discounted repair model",
+        "discounted nested-value and exact path-law hitting-transform bridge",
+        "all-causal discounted repair domination",
+        "Abelian deterministic-stationary repair witness extraction",
+        "finite stationary almost-sure hitting to finite expected hitting",
+        "GeneralCausalToStationaryCompleteness",
+        "maximal AR repair basin equals general-causal repairability",
+        "broad Objecthood resynthesis and architecture deletion audit"
+      ],
+      "allowed_path_prefixes": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+        "formalization/ueot-core/docs/compression/objecthood/"
+      ],
+      "allowed_exact_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
+        "formalization/ueot-core/UEOT/V3/Compression.lean"
+      ],
+      "forbidden_exact_paths": [
+        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+        "formalization/ueot-core/scripts/validate_compression.py",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        ".github/workflows/ueot-core-compression.yml",
+        ".github/workflows/ueot-compression-research-policy.yml",
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean"
+      ],
+      "dependency_rule": "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only",
+      "source_track_reopen_policy": "forbidden_inside_O"
     }
   },
   "architecture_record_schema": {
@@ -208,7 +255,7 @@
       "S": "active",
       "H": "active",
       "X": "active",
-      "O": "closed"
+      "O": "active"
     },
     "required_record_fields": [
       "record_id",
@@ -770,5 +817,5 @@
       "completed_scientific_stages": "AR0-AR7"
     }
   ],
-  "objecthood_omega_gate": "closed"
+  "objecthood_omega_gate": "open"
 }
