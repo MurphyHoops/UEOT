@@ -516,9 +516,10 @@ leaving all O/ER/AR/GCR audit evidence outside the active allowlist.  The public
 research validator: every nonblank changed line must be one complete
 `import UEOT.V3.Compression.Objecthood.Homeostasis.<Module>` command with no
 trailing syntax, so prior Objecthood imports/declarations cannot be rewritten or
-hidden behind comment delimiters.  `Compression.lean` remains under
-its existing root-import validator.  All earlier O/ER/AR/GCR Objecthood theorem
-files therefore remain outside the allowlist, not merely protected by prose.
+hidden behind comment delimiters.  The global `Compression.lean` root is not
+owned by RH at all because canonical main already imports the Objecthood root.
+All earlier O/ER/AR/GCR Objecthood theorem files therefore remain outside the
+allowlist, not merely protected by prose.
 RH may consume the frozen GCR, M-OI, Track-S and
 Track-X public interfaces from canonical main, but may not mutate their source
 files, the counted ledger, coverage, theorem index, research governance, or

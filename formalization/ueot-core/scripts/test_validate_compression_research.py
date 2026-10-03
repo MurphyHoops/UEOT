@@ -1036,6 +1036,19 @@ def main() -> None:
     run_case(
         repo,
         "compression/objecthood-self-repair",
+        ["formalization/ueot-core/UEOT/V3/Compression.lean"],
+        False,
+        (
+            "outside its owned Objecthood namespace"
+            if objecthood_open
+            else "unclassified compression research branch"
+        ),
+    )
+    print("objecthood-global-root-rejected: PASS")
+
+    run_case(
+        repo,
+        "compression/objecthood-self-repair",
         [
             "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/"
             "EndogenousConstitutivePersistence.lean"
