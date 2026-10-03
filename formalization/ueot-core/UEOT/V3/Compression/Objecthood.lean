@@ -8,6 +8,7 @@ import UEOT.V3.Compression.Objecthood.FormedParentSelfRepairSynthesis
 import UEOT.V3.Compression.Objecthood.EventualAlwaysLegitimacy
 import UEOT.V3.Compression.Objecthood.StrongRepairAttractor
 import UEOT.V3.Compression.Objecthood.EndogenousRepairRank
+import UEOT.V3.Compression.Objecthood.EndogenousRepairCertificate
 
 /-!
 # UEOT Core Compression — Track O
