@@ -5,6 +5,10 @@ import UEOT.V3.Compression.Objecthood.PhysicalRecovery
 import UEOT.V3.Compression.Objecthood.AutonomousSelfStabilization
 import UEOT.V3.Compression.Objecthood.FailureRepairabilityBoundary
 import UEOT.V3.Compression.Objecthood.FormedParentSelfRepairSynthesis
+import UEOT.V3.Compression.Objecthood.EventualAlwaysLegitimacy
+import UEOT.V3.Compression.Objecthood.StrongRepairAttractor
+import UEOT.V3.Compression.Objecthood.EndogenousRepairRank
+import UEOT.V3.Compression.Objecthood.EndogenousRepairCertificate
 
 /-!
 # UEOT Core Compression — Track O
