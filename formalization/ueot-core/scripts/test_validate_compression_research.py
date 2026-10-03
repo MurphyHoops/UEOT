@@ -538,6 +538,9 @@ def test_architecture_record_schema(repo: Path) -> None:
     )
 
     def make_closed_o_record_active(config: dict) -> None:
+        config["objecthood_omega_gate"] = "closed"
+        config["architecture_record_schema"]["track_status"]["O"] = "closed"
+        config["tracks"].pop("O", None)
         record = next(
             item
             for item in config["architecture_records"]
@@ -749,6 +752,10 @@ def main() -> None:
     parser.add_argument("--repo-root", default=".")
     args = parser.parse_args()
     repo = Path(args.repo_root).resolve()
+    live_config = json.loads(
+        (repo / "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json").read_text()
+    )
+    objecthood_open = live_config.get("objecthood_omega_gate") == "open"
 
     run_case(
         repo,
@@ -859,10 +866,10 @@ def main() -> None:
             "formalization/ueot-core/docs/compression/objecthood/"
             "O1_LEGITIMACY_AUDIT.md"
         ],
-        False,
-        "unclassified compression research branch",
+        objecthood_open,
+        "" if objecthood_open else "unclassified compression research branch",
     )
-    print("closed-objecthood-mutation-rejected: PASS")
+    print("objecthood-live-gate-policy: PASS")
 
     run_case(
         repo,
@@ -872,9 +879,13 @@ def main() -> None:
             "EndogenousConstitutivePersistence.lean"
         ],
         False,
-        "unclassified compression research branch",
+        (
+            "outside its owned Objecthood namespace"
+            if objecthood_open
+            else "unclassified compression research branch"
+        ),
     )
-    print("closed-objecthood-cross-track-mutation-rejected: PASS")
+    print("objecthood-cross-track-isolation: PASS")
 
     run_case(
         repo,
@@ -1050,7 +1061,11 @@ def main() -> None:
             "O1_LEGITIMACY_AUDIT.md"
         ],
         False,
-        "unclassified compression research branch",
+        (
+            "fork-based mutating Compression research/governance branches are not allowed"
+            if objecthood_open
+            else "unclassified compression research branch"
+        ),
         [
             "--head-repo",
             "someone/UEOT-fork",
