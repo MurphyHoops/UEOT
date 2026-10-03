@@ -826,6 +826,15 @@ def validate_objecthood_completion_history_transition(
 
     baseline_gate = baseline_config.get("objecthood_omega_gate")
     candidate_gate = candidate_config.get("objecthood_omega_gate")
+    if baseline_gate == "open" and candidate_gate == "open":
+        base_o = baseline_config.get("tracks", {}).get("O")
+        candidate_o = candidate_config.get("tracks", {}).get("O")
+        if not isinstance(base_o, dict) or not isinstance(candidate_o, dict):
+            fail("an open Objecthood cycle requires Track O on both baseline and candidate")
+        if candidate_o.get("tracker_issue") != base_o.get("tracker_issue"):
+            fail("an active Track O cycle must keep its tracker_issue until closure")
+        if candidate_o.get("initial_gate") != base_o.get("initial_gate"):
+            fail("an active Track O cycle must keep its stage plan until closure")
     if baseline_gate == "open" and candidate_gate == "closed":
         if len(candidate) != len(baseline) + 1:
             fail(
