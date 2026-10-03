@@ -19,6 +19,7 @@ import UEOT.V3.Compression.Objecthood.GeneralCausalRepairBoundary
 import UEOT.V3.Compression.Objecthood.StationaryCausalPathLawBridge
 import UEOT.V3.Compression.Objecthood.AbsorbedDiscountedRepair
 import UEOT.V3.Compression.Objecthood.AbsorbedRepairHittingSemantics
+import UEOT.V3.Compression.Objecthood.ExactPathLawDiscountedHittingTransform
 import UEOT.V3.Compression.Objecthood.StochasticRepairSynthesis
 
 /-!
