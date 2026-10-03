@@ -12,6 +12,7 @@ import UEOT.V3.Compression.Objecthood.EndogenousRepairCertificate
 import UEOT.V3.Compression.Objecthood.CanonicalStationaryRepair
 import UEOT.V3.Compression.Objecthood.StationaryRepairBasin
 import UEOT.V3.Compression.Objecthood.StationaryRepairPatching
+import UEOT.V3.Compression.Objecthood.MaximalStationaryRepair
 
 /-!
 # UEOT Core Compression — Track O
