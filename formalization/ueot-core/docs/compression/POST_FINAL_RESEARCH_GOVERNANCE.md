@@ -117,7 +117,11 @@ Completed first-cycle tracker: **Issue #230 / O0--O8**.
 
 Completed second-cycle tracker: **Issue #234 / ER0--ER3**.
 
-Current authorized continuation tracker: **Issue #238 / AR0--AR7**.
+Completed third-cycle tracker: **Issue #238 / AR0--AR7**.
+
+Current Track-O theorem-mutation authorization: **NONE**.  Any recurrent
+homeostasis (RH), repair-law self-reconstruction (RLSR), or other continuation
+requires a fresh tracker and fresh finite stage plan.
 
 Scientific question:
 
@@ -142,7 +146,7 @@ complete: it removed one supplied assumption from O4/O5 by deriving a strong
 finite repair basin, rank, support-descending stationary selector, and unit-drift
 `PhysicalRepairCertificate` from the controlled dynamics and target set.
 
-The fresh #238 / AR0--AR7 cycle is narrower than recurrent homeostasis or
+The completed #238 / AR0--AR7 cycle was narrower than recurrent homeostasis or
 repair-law self-reconstruction.  Its exact finite sequence is:
 
 1. **AR0** — canonical stationary-policy hitting-time
@@ -162,7 +166,7 @@ repair-law self-reconstruction.  Its exact finite sequence is:
 8. **AR7** — end-to-end stochastic Objecthood resynthesis plus
    architecture/deletion audit.
 
-This authorization stops after AR7.  It does **not** authorize recurrent-fault
+That authorization stopped after AR7 and is now closed.  It did **not** authorize recurrent-fault
 homeostasis (RH), repair-law self-reconstruction (RLSR), energetic/resource
 closure, ontogenetic self-construction, autopoiesis, source-track S/H mutation,
 counted-ledger mutation, or a fifth-generator claim.
@@ -409,69 +413,55 @@ S has a stable merged finite-state long-run semantic interface.  The approved
 sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
 mutate H/S source-track files.
 
-### Track O — completed O0--O8 / ER0--ER3 + active AR0--AR7 stochastic repair
+### Track O — O0--O8 / ER0--ER3 / AR0--AR7 completed; gate closed
 
-**AUTHORIZED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
-#234/#236; AR0--AR7 ACTIVE through fresh Issue #238.**
+**CLOSED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
+#234/#236; AR0--AR7 CLOSED through #238/#240.  No Track-O theorem mutation
+is currently authorized.**
 
-Track O starts from the merged Track-X boundary that constitutive persistence
-does not repair a corrupted controller. The approved O0--O8 sequence is:
-functional legitimacy -> controller convergence -> controller-stabilization
-certificate -> physical repair basin/P-REC hitting-time bridge -> finite
-autonomous stabilization -> P-OMG repairability boundary -> end-to-end formed
-parent repair synthesis -> architecture/deletion audit.
+The first O0--O8 lifecycle remains immutable in the append-only completion
+history.  PR #232 merged reviewed head
+`cda03d1c7bf2199643f0197e74597405ffd87b03` as
+`d827d5bc0d1facf6e59669265e3e26fb9d1beaa7`; resulting-main Core Lean
+`37042673290` and Compression Guard `37042673416` passed.
 
-The first O0--O8 lifecycle is now complete on canonical main.  PR #232 merged
-reviewed head `cda03d1c7bf2199643f0197e74597405ffd87b03` as
-`d827d5bc0d1facf6e59669265e3e26fb9d1beaa7`; exact-head Core Lean / Compression
-Guard passed, Codex found no major issue after its O6 counterexample P2 was
-repaired, and resulting-main Core Lean `37042673290` plus Compression Guard
-`37042673416` both passed.
+The second ER0--ER3 lifecycle likewise remains immutable.  PR #236 merged
+reviewed head `1047302fc80c073f00327ff5cbc86e68bfdded2c` as
+`bcd6837f06bd87adfbc2c68ebc59d815448ee375`; resulting-main Core Lean
+`37097983401` and Compression Guard `37097983441` passed.
 
-The first lifecycle closure remains immutable in the append-only completion
-history.  The fresh #234 authorization reopened the Objecthood mutation gate
-only for `ER0-ER3`; PR #236 merged reviewed head
-`1047302fc80c073f00327ff5cbc86e68bfdded2c` as
-`bcd6837f06bd87adfbc2c68ebc59d815448ee375`.  Exact-head Base Policy, Core
-Lean, Compression Guard, and Codex review all cleared.  Resulting-main Core
-Lean `37097983401` and Compression Guard `37097983441` both succeeded.  The
-separate final governance closure records those runs in the append-only
-completion history.  The counted four-generator core remains unchanged.
+The third lifecycle was authorized separately by PR #239 from canonical main,
+then executed only on Issue #238 / `AR0-AR7`.  Research PR #240 merged exact
+reviewed head `ee37d8edd109e6dcb33f5a905df3ea3e4e602a36` as
+`a0fe7fbbbae6a474a8957713dcf8d7f05df6b5f2`.  Its exact-head Base Policy,
+Core Lean, Compression Guard and Codex review all cleared.  Resulting-main Core
+Lean `37107192404` and Compression Guard `37107192462` both succeeded.
 
-ER0--ER3 close the registered scientific question as follows: ER0 upgrades O5
-to path-level almost-sure eventual-always legitimacy; ER1 constructs the finite
-support-wise strong repair attractor from `P,K`; ER2 constructs its least
-repair rank and a stationary support-descending repair selector with a
-pathwise finite-step bound; ER3 generates a unit-drift
-`PhysicalRepairCertificate` whose basin is exactly that strong repair basin.
-Thus an external physical repair certificate is no longer required on this
-constructive finite domain.
+AR0--AR7 close the registered stochastic-repair question in the exact scope
+authorized by #238.  AR0 derives the fixed-policy unit-drift repair certificate
+from canonical hitting time; AR1 proves finite-hitting basin support closure;
+AR2 constructs deterministic-stationary basin-union patching; AR3 constructs one
+policy realizing the union of all deterministic-stationary finite-expected
+repair basins; AR4 proves the prior strong repair basin is a strict sufficient
+subdomain via a geometric-retry witness; AR5 bounds canonical hitting time by
+the constructive repair rank on that strong domain; AR6 machine-checks the
+general complete-history randomized causal comparison semantics and deliberately
+retains `GeneralCausalToStationaryCompleteness` as an unproved G3 boundary; AR7
+reconnects the maximal stationary certificate to ER0 eventual-always legitimacy,
+same-formed-parent deletion repair, and the existing Track-X long-run semantic
+certificate.
 
-That closure did **not** identify the strong support-decreasing basin with the
-maximal stochastic repair basin.  Fresh Issue #238 therefore reopens Track O
-only for `AR0-AR7`.  AR0 promotes the canonical fixed-policy hitting-time
-potential into a repair certificate; AR1 proves that every finite-hitting basin
-state outside the target has only finite-hitting positive-probability
-successors; AR2 patches deterministic
-stationary repair policies; AR3 synthesizes one policy for the maximal
-deterministic-stationary finite-hitting basin; AR4 proves the prior strong basin
-is included and strictly smaller in a geometric-retry witness; AR5 relates the
-constructive repair rank to the canonical hitting potential; AR6 audits whether
-that stationary class coincides with the intended broader almost-sure
-reachability semantics; AR7 resynthesizes Objecthood and repeats the
-architecture/deletion audit.
+The architectural classification remains **uncounted G2 stochastic self-repair
+synthesis with a retained G3 general-causal completeness boundary**.  No fifth
+G0 generator is promoted, no counted ledger or frozen 106-theorem source is
+changed, and no Track-S/Track-H source lane is reopened.
 
-The deeper **recurrent homeostasis** and **repair-law self-reconstruction**
-programs are not part of this authorization.  In particular, the
-repair-producing transition law/interpreter remains intact external dynamics
-rather than a damaged-and-reconstructed internal organization.  Track S and
-Track H remain source-closed for this cycle.  The counted four-generator core
-and frozen 106-theorem ledger are immutable here; any proposed fifth generator
-or counted-core change requires a separate promotion/re-ablation lifecycle.
+The Objecthood mutation gate is therefore **closed** after AR7.  Recurrent
+homeostasis (RH) is a later scientific program and repair-law
+self-reconstruction (RLSR) is deeper still; neither is authorized by #238 or by
+this closure.  Any such continuation requires a fresh tracker, fresh finite
+stage plan, and a fresh governance lifecycle.
 
-After AR7 the cycle must stop, close the Objecthood mutation gate, append exactly
-one #238 / AR0--AR7 completion record, and require a new tracker/stage plan for
-any RH or RLSR mutation.  The validator machine-checks tracker/stage freshness.
 Completed Objecthood cycles are stored in an **append-only completion history**:
 an authorization PR may not delete, reorder, or rewrite an earlier completion
 record to make a closed tracker/stage appear fresh again.  A later close cycle
