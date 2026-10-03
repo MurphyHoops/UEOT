@@ -16,6 +16,7 @@ import UEOT.V3.Compression.Objecthood.MaximalStationaryRepair
 import UEOT.V3.Compression.Objecthood.StrongVsStochasticRepair
 import UEOT.V3.Compression.Objecthood.RepairRankHittingRelation
 import UEOT.V3.Compression.Objecthood.GeneralCausalRepairBoundary
+import UEOT.V3.Compression.Objecthood.StochasticRepairSynthesis
 
 /-!
 # UEOT Core Compression — Track O
