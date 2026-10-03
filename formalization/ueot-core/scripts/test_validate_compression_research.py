@@ -1009,13 +1009,29 @@ def main() -> None:
         repo,
         "compression/objecthood-self-repair",
         [
-            "formalization/ueot-core/docs/compression/objecthood/"
-            "O1_LEGITIMACY_AUDIT.md"
+            "formalization/ueot-core/docs/compression/objecthood/homeostasis/"
+            "RH0_RECURRENT_FAULT_SYSTEM_AUDIT.md"
         ],
         objecthood_open,
         "" if objecthood_open else "unclassified compression research branch",
     )
     print("objecthood-live-gate-policy: PASS")
+
+    run_case(
+        repo,
+        "compression/objecthood-self-repair",
+        [
+            "formalization/ueot-core/docs/compression/objecthood/"
+            "GCR8_ARCHITECTURE_DELETION_BOUNDARY_AUDIT.md"
+        ],
+        False,
+        (
+            "outside its owned Objecthood namespace"
+            if objecthood_open
+            else "unclassified compression research branch"
+        ),
+    )
+    print("objecthood-closed-audit-immutable: PASS")
 
     run_case(
         repo,
@@ -1206,8 +1222,8 @@ def main() -> None:
         repo,
         "compression/objecthood-self-repair",
         [
-            "formalization/ueot-core/docs/compression/objecthood/"
-            "O1_LEGITIMACY_AUDIT.md"
+            "formalization/ueot-core/docs/compression/objecthood/homeostasis/"
+            "RH0_RECURRENT_FAULT_SYSTEM_AUDIT.md"
         ],
         False,
         (

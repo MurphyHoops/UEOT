@@ -509,8 +509,9 @@ full finite GCR repairable carrier where the ENNReal repair potential is finite.
 
 Fresh Issue #248 therefore reopens Track O **only** for `RH0-RH9`.  RH
 theorem-source mutations are confined to the dedicated new
-`Compression/Objecthood/Homeostasis/` source prefix; audit documents continue
-under the existing `docs/compression/objecthood/` prefix.  The public
+`Compression/Objecthood/Homeostasis/` source prefix; RH audit documents are
+confined to the dedicated `docs/compression/objecthood/homeostasis/` prefix,
+leaving all O/ER/AR/GCR audit evidence outside the active allowlist.  The public
 `Compression/Objecthood.lean` root is an import-only exception enforced by the
 research validator: every nonblank changed line must be one complete
 `import UEOT.V3.Compression.Objecthood.Homeostasis.<Module>` command with no
