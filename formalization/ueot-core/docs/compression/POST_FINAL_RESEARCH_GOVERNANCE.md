@@ -119,9 +119,13 @@ Completed second-cycle tracker: **Issue #234 / ER0--ER3**.
 
 Completed third-cycle tracker: **Issue #238 / AR0--AR7**.
 
-Current Track-O theorem-mutation authorization: **NONE**.  Any recurrent
-homeostasis (RH), repair-law self-reconstruction (RLSR), or other continuation
-requires a fresh tracker and fresh finite stage plan.
+Current authorized continuation tracker: **Issue #243 / GCR0--GCR8**.
+
+This fresh authorization is strictly limited to closing the exact AR6 G3
+boundary `GeneralCausalToStationaryCompleteness`. The planning parent is Issue
+#242, whose read-only dual-route preflight selected the Abelian discounted Route
+A as primary and retained the qualitative nested-attractor Route B only as a
+fallback/cross-check.
 
 Scientific question:
 
@@ -170,6 +174,33 @@ That authorization stopped after AR7 and is now closed.  It did **not** authoriz
 homeostasis (RH), repair-law self-reconstruction (RLSR), energetic/resource
 closure, ontogenetic self-construction, autopoiesis, source-track S/H mutation,
 counted-ledger mutation, or a fifth-generator claim.
+
+The fresh #243 / GCR0--GCR8 cycle is narrower still: it may only bridge the
+existing AR6 arbitrary randomized complete-history path-law semantics to the
+already merged deterministic-stationary finite-expected repair theory. Its
+exact sequence is:
+
+1. **GCR0** — deterministic-stationary embedding plus exact stationary/general-
+   causal physical path-law bridge;
+2. **GCR1** — target absorption and normalized discounted repair model;
+3. **GCR2** — exact nested-value / Ionescu--Tulcea discounted hitting-transform
+   identity;
+4. **GCR3** — arbitrary-causal discounted domination and `beta -> 1` direction;
+5. **GCR4** — finite-policy pigeonhole / Abelian deterministic-stationary
+   almost-sure witness;
+6. **GCR5** — finite stationary almost-sure hitting implies finite expected
+   hitting;
+7. **GCR6** — prove `GeneralCausalToStationaryCompleteness` and the two repair
+   classes are extensionally equal;
+8. **GCR7** — identify the AR3 maximal certificate basin with the general-causal
+   repairable set and resynthesize Objecthood on that proved semantics;
+9. **GCR8** — architecture/deletion audit and exact residual-boundary verdict.
+
+This authorization stops after GCR8. It does **not** authorize RH, RLSR,
+energetic/resource closure, ontogenetic construction, an `AutopoieticObject`
+contract, Track-S/H source mutation, counted-ledger mutation, or a fifth
+generator claim. Discounted control may be used only through the explicit
+GCR1--GCR6 bridges; it may not be renamed an undiscounted reachability theorem.
 Controller-only corruption is handled before physical-state recovery. Physical
 recovery must reuse the frozen P-REC hitting/Lyapunov interfaces where possible.
 P-OMG failure structure and integrity margins are diagnostic/robustness inputs;
@@ -413,11 +444,11 @@ S has a stable merged finite-state long-run semantic interface.  The approved
 sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
 mutate H/S source-track files.
 
-### Track O — O0--O8 / ER0--ER3 / AR0--AR7 completed; gate closed
+### Track O — completed O0--O8 / ER0--ER3 / AR0--AR7 + active GCR0--GCR8
 
-**CLOSED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
-#234/#236; AR0--AR7 CLOSED through #238/#240.  No Track-O theorem mutation
-is currently authorized.**
+**AUTHORIZED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
+#234/#236; AR0--AR7 CLOSED through #238/#240; GCR0--GCR8 ACTIVE through fresh
+Issue #243.**
 
 The first O0--O8 lifecycle remains immutable in the append-only completion
 history.  PR #232 merged reviewed head
@@ -456,11 +487,29 @@ synthesis with a retained G3 general-causal completeness boundary**.  No fifth
 G0 generator is promoted, no counted ledger or frozen 106-theorem source is
 changed, and no Track-S/Track-H source lane is reopened.
 
-The Objecthood mutation gate is therefore **closed** after AR7.  Recurrent
-homeostasis (RH) is a later scientific program and repair-law
-self-reconstruction (RLSR) is deeper still; neither is authorized by #238 or by
-this closure.  Any such continuation requires a fresh tracker, fresh finite
-stage plan, and a fresh governance lifecycle.
+The AR lifecycle closure remains immutable in append-only history. After the
+#241 resulting-main gates passed, Issue #242 ran a read-only Route-A/Route-B
+preflight for the retained G3 boundary. That preflight selected Route A:
+absorbing target + normalized discounted hitting transform + the existing
+all-causal `CompactCausalOptimalityCore` verifier + `beta -> 1` + finite-policy
+pigeonhole. Route B's finite nested safe-progress operator compiled as a
+fallback, but its arbitrary randomized complete-history converse would require
+a separate qualitative determinacy layer not currently present.
+
+Fresh Issue #243 therefore reopens the Objecthood mutation gate **only** for
+`GCR0-GCR8`. The research branch must remain inside the Objecthood path
+allowlist and consume the closed AR interfaces plus frozen Core/Track-X
+evidence from canonical main. It may not modify the counted ledger, frozen
+106-theorem source, source-track S/H files, or governance files from the
+research branch.
+
+The GCR cycle must stop after GCR8. If the exact route closes,
+`GeneralCausalToStationaryCompleteness` may be removed from the retained G3
+boundary and the AR maximal certificate may be identified with the proved
+general-causal repairable set. If the exact route fails under the intended
+semantics, the remaining G3 boundary must instead be frozen precisely. In
+either case, recurrent homeostasis (RH) requires a later fresh tracker and
+governance lifecycle; RLSR is later still.
 
 Completed Objecthood cycles are stored in an **append-only completion history**:
 an authorization PR may not delete, reorder, or rewrite an earlier completion
