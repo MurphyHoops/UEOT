@@ -9,6 +9,14 @@ import UEOT.V3.Compression.Objecthood.EventualAlwaysLegitimacy
 import UEOT.V3.Compression.Objecthood.StrongRepairAttractor
 import UEOT.V3.Compression.Objecthood.EndogenousRepairRank
 import UEOT.V3.Compression.Objecthood.EndogenousRepairCertificate
+import UEOT.V3.Compression.Objecthood.CanonicalStationaryRepair
+import UEOT.V3.Compression.Objecthood.StationaryRepairBasin
+import UEOT.V3.Compression.Objecthood.StationaryRepairPatching
+import UEOT.V3.Compression.Objecthood.MaximalStationaryRepair
+import UEOT.V3.Compression.Objecthood.StrongVsStochasticRepair
+import UEOT.V3.Compression.Objecthood.RepairRankHittingRelation
+import UEOT.V3.Compression.Objecthood.GeneralCausalRepairBoundary
+import UEOT.V3.Compression.Objecthood.StochasticRepairSynthesis
 
 /-!
 # UEOT Core Compression — Track O
