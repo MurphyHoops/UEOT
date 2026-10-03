@@ -389,6 +389,47 @@ def validate_compression_root_import_change(
         fail(f"Track {track_id} may not modify Compression.lean")
 
 
+def validate_objecthood_root_import_change(
+    repo: Path,
+    baseline_ref: str | None,
+    candidate_ref: str,
+    track_id: str,
+    paths: list[str],
+) -> None:
+    """Keep the public Objecthood root immutable except for RH imports.
+
+    Track O needs to expose newly proved RH modules through the already public
+    Objecthood.lean root, but that exact-path exception must not become a
+    backdoor for rewriting merged O/ER/AR/GCR imports or adding declarations to
+    the root itself.
+    """
+
+    root = "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
+    if root not in paths:
+        return
+    if track_id != "O":
+        fail(f"Track {track_id} may not modify Objecthood.lean")
+    if not baseline_ref:
+        fail("Objecthood.lean ownership validation requires a baseline ref")
+
+    changed = [
+        line
+        for line in changed_lines_for_path_between(
+            repo, baseline_ref, candidate_ref, root
+        )
+        if line
+    ]
+    allowed_prefix = "import UEOT.V3.Compression.Objecthood.Homeostasis."
+    if not changed or any(
+        not line.startswith(allowed_prefix) or line == allowed_prefix
+        for line in changed
+    ):
+        fail(
+            "Track O may modify Objecthood.lean only to add/remove imports "
+            "under UEOT.V3.Compression.Objecthood.Homeostasis.*"
+        )
+
+
 def validate_architecture_records(
     repo: Path,
     config: dict,
@@ -974,6 +1015,9 @@ def validate_track_paths(
             )
 
     validate_compression_root_import_change(
+        repo, baseline_ref, candidate_ref, track_id, paths
+    )
+    validate_objecthood_root_import_change(
         repo, baseline_ref, candidate_ref, track_id, paths
     )
 

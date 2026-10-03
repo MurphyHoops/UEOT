@@ -766,6 +766,105 @@ def test_p0b_legacy_baseline_transition(repo: Path) -> None:
         module.fail = original_fail
 
 
+
+def test_objecthood_root_import_guard(repo: Path) -> None:
+    """Objecthood root may expose RH modules but may not be rewritten."""
+
+    module = load_validator_module(repo)
+    root = "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    base_text = subprocess.check_output(
+        ["git", "show", f"{base}:{root}"], cwd=repo, text=True
+    )
+
+    def candidate_with(contents: str, label: str) -> str:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmpdir = Path(tmp)
+            index = tmpdir / "index"
+            source = tmpdir / "Objecthood.lean"
+            source.write_text(contents, encoding="utf-8")
+            env = os.environ.copy()
+            env["GIT_INDEX_FILE"] = str(index)
+            subprocess.run(
+                ["git", "read-tree", base], cwd=repo, env=env, check=True
+            )
+            blob = subprocess.check_output(
+                ["git", "hash-object", "-w", str(source)],
+                cwd=repo,
+                text=True,
+            ).strip()
+            subprocess.run(
+                ["git", "update-index", "--add", "--cacheinfo", "100644", blob, root],
+                cwd=repo,
+                env=env,
+                check=True,
+            )
+            tree = subprocess.check_output(
+                ["git", "write-tree"], cwd=repo, env=env, text=True
+            ).strip()
+            return subprocess.check_output(
+                ["git", "commit-tree", tree, "-p", base],
+                cwd=repo,
+                env=env,
+                input=label + "\n",
+                text=True,
+            ).strip()
+
+    valid = candidate_with(
+        base_text
+        + "\nimport UEOT.V3.Compression.Objecthood.Homeostasis.RootGuardRegression\n",
+        "valid Objecthood RH import",
+    )
+    module.validate_objecthood_root_import_change(
+        repo, base, valid, "O", [root]
+    )
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        invalid_decl = candidate_with(
+            base_text + "\ntheorem root_guard_regression : True := trivial\n",
+            "invalid Objecthood declaration",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, invalid_decl, "O", [root]
+            )
+        except ValueError as exc:
+            if "only to add/remove imports" not in str(exc):
+                raise AssertionError(f"unexpected root declaration rejection: {exc}") from exc
+        else:
+            raise AssertionError("Objecthood root declaration mutation was not rejected")
+
+        lines = base_text.splitlines(keepends=True)
+        old_import = next(
+            i
+            for i, line in enumerate(lines)
+            if line.startswith("import UEOT.V3.Compression.Objecthood.")
+        )
+        deleted_old = candidate_with(
+            "".join(lines[:old_import] + lines[old_import + 1 :]),
+            "invalid Objecthood prior-import deletion",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, deleted_old, "O", [root]
+            )
+        except ValueError as exc:
+            if "only to add/remove imports" not in str(exc):
+                raise AssertionError(f"unexpected old-import rejection: {exc}") from exc
+        else:
+            raise AssertionError("deleting a pre-RH Objecthood import was not rejected")
+    finally:
+        module.fail = original_fail
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -1044,6 +1143,9 @@ def main() -> None:
 
     test_policy_reauthorizes_on_base_edit(repo)
     print("base-change-reauthorization-trigger: PASS")
+
+    test_objecthood_root_import_guard(repo)
+    print("objecthood-root-rh-import-only: PASS")
 
     test_candidate_ref_policy_drives_objecthood_transition(repo)
     print("candidate-ref-policy-transition-audited: PASS")
