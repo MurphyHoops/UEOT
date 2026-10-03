@@ -113,7 +113,9 @@ lifecycle.
 Track O is the dedicated lane for the residual exposed by the merged Track-X
 endogenous-persistence result.
 
-Detailed tracker: **Issue #230**.
+Completed first-cycle tracker: **Issue #230 / O0--O8**.
+
+Current continuation tracker: **Issue #234 / ER0--ER3**.
 
 Scientific question:
 
@@ -132,7 +134,15 @@ blur:
 3. **specification** — the recovered domain still carries the required UEOT
    formation/persistence semantics.
 
-The first finite target is deliberately narrower than universal Objecthood.
+The first O0--O8 finite target is deliberately narrower than universal
+Objecthood.  That lifecycle is complete.  The reopened #234 cycle has the
+strictly narrower endogenous-repair objective of removing one supplied
+assumption from O4/O5: instead of accepting a `PhysicalRepairCertificate`, it
+must derive a strong finite repair basin, rank, descending stationary selector,
+and unit-drift repair certificate from the controlled dynamics and target set.
+The #234 cycle stops after ER3 and explicitly does not claim full stochastic
+repair-basin maximality, recurrent-fault tolerance, dynamic semantic recovery,
+repair-law self-reconstruction, autopoiesis, or a fifth counted generator.
 Controller-only corruption is handled before physical-state recovery. Physical
 recovery must reuse the frozen P-REC hitting/Lyapunov interfaces where possible.
 P-OMG failure structure and integrity margins are diagnostic/robustness inputs;
@@ -376,9 +386,10 @@ S has a stable merged finite-state long-run semantic interface.  The approved
 sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
 mutate H/S source-track files.
 
-### Track O — O0--O8 self-repair gate
+### Track O — completed O0--O8 + active ER0--ER3 endogenous-repair gate
 
-**AUTHORIZED TRACK; O0--O8 CLOSED through Issue #230 / PR #232.**
+**AUTHORIZED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 ACTIVE through
+fresh Issue #234.**
 
 Track O starts from the merged Track-X boundary that constitutive persistence
 does not repair a corrupted controller. The approved O0--O8 sequence is:
@@ -394,21 +405,28 @@ Guard passed, Codex found no major issue after its O6 counterexample P2 was
 repaired, and resulting-main Core Lean `37042673290` plus Compression Guard
 `37042673416` both passed.
 
-The Objecthood mutation gate is now **closed** after O1--O8 completion.  The
-machine-readable registry removes Track O from the active mutating-track set
-while retaining the merged O1--O8 results as historical uncounted G1/G2/G3
-architecture evidence.  Therefore a `compression/objecthood-*` branch is no
-longer authorized merely by reusing the old namespace or Issue #230.  The
-counted four-generator core remains unchanged.
+The first lifecycle closure remains immutable in the append-only completion
+history.  The Objecthood mutation gate is now **reopened** by the fresh #234
+authorization with stage plan `ER0-ER3`; Track O is again in the active
+mutating-track set only for that registered cycle.  A
+`compression/objecthood-*` branch therefore derives its current authority from
+#234/ER0--ER3, never from historical Issue #230.  The counted four-generator
+core remains unchanged.
 
-The strongest current result is a finite self-repairing constitutive Omega-loop
-certificate under an intact repair law and explicit repair basin/certificate.
-The next scientific boundary is **repair-law self-reconstruction**: damage or
-absence of the repair-producing organization is not covered by O5/O7.  Any
-future mutating continuation past that boundary requires a governance PR that
-reopens the Objecthood gate and registers both a **fresh tracker issue** and a
-**fresh stage plan** distinct from completed Issue #230 / O0--O8.  The validator
-machine-checks both freshness conditions before Track O can be active again.
+The strongest merged result before #234 is a finite self-repairing constitutive
+Omega-loop certificate under an intact repair law and an explicit supplied
+repair basin/certificate.  The active #234 question is whether a strong finite
+repair certificate can instead be generated from `P` and `K` themselves.  Its
+registered stages are: ER0 path-level eventual-always legitimacy; ER1 strong
+controlled repair attractor; ER2 least repair rank plus descending stationary
+selector; ER3 endogenous `PhysicalRepairCertificate` synthesis.  After ER3 the
+cycle must stop and close before any further Objecthood mutation.
+
+The deeper boundary **repair-law self-reconstruction** remains outside this
+cycle: damage or absence of the repair-producing organization is not covered by
+O5/O7 or by ER0--ER3.  Any later continuation must again register a fresh
+tracker issue and fresh stage plan after #234 closes.  The validator
+machine-checks freshness before Track O can be active in a later cycle.
 Completed Objecthood cycles are stored in an **append-only completion history**:
 an authorization PR may not delete, reorder, or rewrite an earlier completion
 record to make a closed tracker/stage appear fresh again.  A later close cycle
