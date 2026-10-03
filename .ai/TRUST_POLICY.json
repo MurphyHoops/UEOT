@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "repository": "MurphyHoops/UEOT",
+  "policy_source": "pr-base",
+  "bootstrap": {
+    "when_base_policy_missing": "owner-authorization",
+    "owner_authorization_marker": "[UEOT-OWNER-AUTHORIZATION]",
+    "note": "Initial trust-root installation requires a GitHub comment authored by the repository owner that explicitly delegates AI merge authority. Candidate policy cannot authorize itself."
+  },
+  "authority": {
+    "merge_mode": "ai-autonomous",
+    "normal_integration_path": "pull-request-reviewed",
+    "builder_may_self_approve": false,
+    "direct_main_write": "allowed-for-recovery-or-explicitly-justified-maintenance"
+  },
+  "review": {
+    "trusted_review_artifact_authors": [
+      "MurphyHoops"
+    ],
+    "independent_review_required": true
+  },
+  "ci": {
+    "unmatched_changed_paths": "elevated-review",
+    "elevated_review_paths": [
+      ".ai/TRUST_POLICY.json",
+      ".ai/README.md",
+      ".ai/RESOURCE_POLICY.md",
+      ".ai/SYSTEM.md",
+      ".ai/OPERATIONS.md",
+      ".ai/QUICKSTART.md",
+      ".ai/WORK_SETUP.md",
+      ".ai/protocols/**",
+      ".ai/schema/**",
+      "scripts/ai/**",
+      ".github/workflows/ai-agent-state.yml",
+      ".github/workflows/ai-ci-signal.yml"
+    ],
+    "gates": {
+      "agent-state": {
+        "workflow_path": ".github/workflows/ai-agent-state.yml",
+        "job_name": "validate-state",
+        "allowed_conclusions": ["success"],
+        "require_workflow_unchanged_from_base": true,
+        "protected_inputs": [
+          "scripts/ai/validate_task_state.py",
+          "scripts/ai/test_task_state.py",
+          "scripts/ai/validate_trust_policy.py",
+          ".ai/schema/task-state.schema.json"
+        ]
+      },
+      "ueot-core-lean": {
+        "workflow_path": ".github/workflows/ueot-core-lean.yml",
+        "job_name": "build",
+        "allowed_conclusions": ["success"],
+        "require_workflow_unchanged_from_base": true,
+        "protected_inputs": [
+          "formalization/ueot-core/UEOT.lean",
+          "formalization/ueot-core/lakefile.lean",
+          "formalization/ueot-core/lean-toolchain",
+          "formalization/ueot-core/lake-manifest.json"
+        ]
+      }
+    },
+    "path_rules": [
+      {
+        "patterns": [".ai/**", "scripts/ai/**", ".github/workflows/ai-agent-state.yml", ".github/workflows/ai-ci-signal.yml"],
+        "require_gates": ["agent-state"]
+      },
+      {
+        "patterns": ["formalization/ueot-core/**", ".github/workflows/ueot-core-lean.yml"],
+        "require_gates": ["ueot-core-lean"]
+      }
+    ]
+  }
+}

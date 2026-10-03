@@ -1,0 +1,230 @@
+name: UEOT AI CI Signal
+
+on:
+  workflow_run:
+    workflows: ["UEOT AI Agent State Guard"]
+    types: [completed]
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: ueot-ai-signal-${{ github.event.workflow_run.head_sha }}
+  cancel-in-progress: false
+
+jobs:
+  signal:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
+      github.event.workflow_run.head_branch != 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Enforce base-anchored CI policy and emit one wake-up signal
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const run = context.payload.workflow_run;
+            const sha = run.head_sha;
+            const branch = run.head_branch;
+            const prs = run.pull_requests || [];
+            if (prs.length !== 1) return;
+            const prNumber = prs[0].number;
+            const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+            if (pr.head.sha !== sha) return;
+            const baseSha = pr.base.sha;
+
+            const exactMarkerPresent = (body, marker) =>
+              (body || '').split('\n').some((line) => line.trim() === marker);
+
+            async function postOnce(eventKey, taskId, aggregate, lines) {
+              const marker = `<!-- ueot-ai-signal:${eventKey} -->`;
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner, repo, issue_number: prNumber, per_page: 100,
+              });
+              const trustedDuplicate = comments.some((c) =>
+                c.user?.login === 'github-actions[bot]' && c.user?.type === 'Bot' && exactMarkerPresent(c.body, marker));
+              if (trustedDuplicate) return;
+              const { data: currentPr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+              if (currentPr.head.sha !== sha || currentPr.base.sha !== baseSha) return;
+              const body = [
+                marker,
+                '[UEOT-AI-SIGNAL]',
+                'event: ci-settled',
+                `event_key: ${eventKey}`,
+                `task: ${taskId}`,
+                `pr: ${prNumber}`,
+                `base_sha: ${baseSha}`,
+                `sha: ${sha}`,
+                `aggregate: ${aggregate}`,
+                'policy_source: pr-base',
+                'protected_gates:',
+                ...lines,
+                '',
+                'Navigation evidence only. Re-read current PR base/head, base trust policy, workflow/job evidence and review provenance.'
+              ].join('\n');
+              await github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body });
+            }
+
+            async function getContent(path, ref) {
+              const { data } = await github.rest.repos.getContent({ owner, repo, path, ref });
+              if (Array.isArray(data) || !('content' in data)) throw new Error(`${path}@${ref} is not a file`);
+              return { blobSha: data.sha, text: Buffer.from(data.content, 'base64').toString('utf8') };
+            }
+
+            const matchesPattern = (path, pattern) =>
+              pattern.endsWith('/**') ? path.startsWith(pattern.slice(0, -2)) : path === pattern;
+
+            const tree = await github.rest.git.getTree({ owner, repo, tree_sha: sha, recursive: 'true' });
+            const statePaths = tree.data.tree
+              .filter((e) => e.type === 'blob' && /^\.ai\/tasks\/[^/]+\/STATE\.json$/.test(e.path))
+              .map((e) => e.path);
+            let state = null;
+            for (const path of statePaths) {
+              const parsed = JSON.parse((await getContent(path, sha)).text);
+              if (parsed.open_pr === prNumber && parsed.branch === branch) {
+                if (state !== null) { core.setFailed(`More than one task state is bound to PR #${prNumber}.`); return; }
+                state = parsed;
+              }
+            }
+            if (!state || state.status !== 'WAITING_CI') return;
+
+            let policy;
+            try {
+              policy = JSON.parse((await getContent('.ai/TRUST_POLICY.json', baseSha)).text);
+            } catch (error) {
+              await postOnce(`ci-policy:${baseSha}:${sha}:bootstrap-owner-review`, state.task_id, 'review-required', [
+                '- trust-policy: missing/unreadable on PR base',
+                '- result: bootstrap requires owner authorization + independent review'
+              ]);
+              return;
+            }
+            if (policy.repository !== `${owner}/${repo}` || policy.policy_source !== 'pr-base') {
+              core.setFailed('Invalid base trust policy repository/source binding.');
+              return;
+            }
+
+            const files = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: prNumber, per_page: 100 });
+            const changedPaths = files.map((f) => f.filename);
+            const elevatedPatterns = policy.ci?.elevated_review_paths || [];
+            const elevated = changedPaths.filter((path) => elevatedPatterns.some((pattern) => matchesPattern(path, pattern)));
+            if (elevated.length) {
+              await postOnce(`ci-policy:${baseSha}:${sha}:elevated-review`, state.task_id, 'review-required', [
+                ...elevated.sort().map((p) => `- elevated-review-path: ${p}`),
+                '- result: independent elevated review required; ordinary protected-CI authorization is not sufficient'
+              ]);
+              return;
+            }
+
+            const gates = policy.ci?.gates || {};
+            const rules = policy.ci?.path_rules || [];
+            const requiredGateIds = new Set();
+            const unmatched = [];
+            for (const path of changedPaths) {
+              let matched = false;
+              for (const rule of rules) {
+                if ((rule.patterns || []).some((pattern) => matchesPattern(path, pattern))) {
+                  matched = true;
+                  for (const gateId of rule.require_gates || []) requiredGateIds.add(gateId);
+                }
+              }
+              if (!matched) unmatched.push(path);
+            }
+            if (unmatched.length && policy.ci?.unmatched_changed_paths === 'elevated-review') {
+              await postOnce(`ci-policy:${baseSha}:${sha}:unmatched-elevated-review`, state.task_id, 'review-required', [
+                ...unmatched.sort().map((p) => `- unmatched-path: ${p}`),
+                '- result: independent elevated review required'
+              ]);
+              return;
+            }
+            if (!requiredGateIds.size) {
+              await postOnce(`ci-policy:${baseSha}:${sha}:no-protected-gate`, state.task_id, 'review-required', ['- protected-gate: none; independent elevated review required']);
+              return;
+            }
+
+            const declared = Array.isArray(state.required_checks) ? state.required_checks : [];
+            const mandatoryJobNames = [...requiredGateIds].map((id) => gates[id]?.job_name).filter(Boolean);
+            const undeclared = mandatoryJobNames.filter((name) => !declared.includes(name));
+            if (undeclared.length) {
+              await postOnce(`ci-policy:${baseSha}:${sha}:candidate-omitted-protected-gate`, state.task_id, 'failure', undeclared.map((name) => `- undeclared-protected-job: ${name}`));
+              return;
+            }
+
+            if (run.conclusion !== 'success') {
+              await postOnce(`state-guard:${baseSha}:${sha}:${run.conclusion || 'failure'}`, state.task_id, 'failure', [`- agent-state/validate-state: ${run.conclusion || 'failure'}`]);
+              return;
+            }
+
+            const gateSpecs = [];
+            for (const gateId of [...requiredGateIds].sort()) {
+              const gate = gates[gateId];
+              if (!gate) { await postOnce(`ci-policy:${baseSha}:${sha}:unknown-gate`, state.task_id, 'failure', [`- unknown-gate: ${gateId}`]); return; }
+              try {
+                const baseWorkflow = await getContent(gate.workflow_path, baseSha);
+                const headWorkflow = await getContent(gate.workflow_path, sha);
+                if (gate.require_workflow_unchanged_from_base && baseWorkflow.blobSha !== headWorkflow.blobSha) {
+                  await postOnce(`ci-policy:${baseSha}:${sha}:workflow-changed-elevated-review`, state.task_id, 'review-required', [`- ${gateId}: protected workflow changed (${gate.workflow_path}); elevated review required`]);
+                  return;
+                }
+                const protectedBlobs = [];
+                for (const inputPath of gate.protected_inputs || []) {
+                  const baseInput = await getContent(inputPath, baseSha);
+                  const headInput = await getContent(inputPath, sha);
+                  if (baseInput.blobSha !== headInput.blobSha) {
+                    await postOnce(`ci-policy:${baseSha}:${sha}:protected-input-changed-elevated-review`, state.task_id, 'review-required', [`- ${gateId}: protected input changed (${inputPath}); elevated review required`]);
+                    return;
+                  }
+                  protectedBlobs.push(`${inputPath}@${baseInput.blobSha}`);
+                }
+                gateSpecs.push({ id: gateId, ...gate, baseBlobSha: baseWorkflow.blobSha, protectedBlobs });
+              } catch (error) {
+                await postOnce(`ci-policy:${baseSha}:${sha}:protected-input-unreadable`, state.task_id, 'review-required', [`- ${gateId}: ${error.message}`]);
+                return;
+              }
+            }
+
+            const deadline = Date.now() + 30 * 60 * 1000;
+            let results = [];
+            let waiting = [];
+            while (Date.now() < deadline) {
+              const { data: currentPr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+              if (currentPr.head.sha !== sha || currentPr.base.sha !== baseSha) return;
+              results = [];
+              waiting = [];
+              for (const gate of gateSpecs) {
+                const workflowFile = gate.workflow_path.split('/').pop();
+                const runs = await github.paginate(github.rest.actions.listWorkflowRuns, { owner, repo, workflow_id: workflowFile, head_sha: sha, event: 'pull_request', per_page: 50 });
+                const candidates = runs.filter((r) => r.head_sha === sha && r.event === 'pull_request').sort((a, b) => b.id - a.id);
+                if (!candidates.length) { waiting.push(`${gate.id}:workflow-run-missing`); continue; }
+                const workflowRun = candidates[0];
+                if (workflowRun.status !== 'completed') { waiting.push(`${gate.id}:workflow-${workflowRun.status}`); continue; }
+                const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: workflowRun.id, per_page: 100 });
+                const jobMatches = jobs.filter((job) => job.name === gate.job_name).sort((a, b) => b.id - a.id);
+                if (!jobMatches.length) { waiting.push(`${gate.id}:job-missing:${gate.job_name}`); continue; }
+                const job = jobMatches[0];
+                if (job.status !== 'completed') { waiting.push(`${gate.id}:job-${job.status}`); continue; }
+                results.push({ gate, workflowRun, job });
+              }
+              if (!waiting.length && results.length === gateSpecs.length) break;
+              await new Promise((resolve) => setTimeout(resolve, 15000));
+            }
+
+            let aggregate = 'success';
+            const detailLines = [];
+            if (waiting.length || results.length !== gateSpecs.length) {
+              aggregate = 'failure';
+              detailLines.push(...waiting.map((item) => `- ${item}`));
+            } else {
+              for (const { gate, workflowRun, job } of results) {
+                if (!(gate.allowed_conclusions || ['success']).includes(job.conclusion)) aggregate = 'failure';
+                detailLines.push(`- ${gate.id}: workflow=${gate.workflow_path} run=${workflowRun.id} job=${job.name} conclusion=${job.conclusion} base_blob=${gate.baseBlobSha}`);
+              }
+            }
+            await postOnce(`ci-settled:${baseSha}:${sha}:${aggregate}`, state.task_id, aggregate, detailLines.sort());

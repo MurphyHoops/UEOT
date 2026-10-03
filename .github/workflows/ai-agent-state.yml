@@ -1,0 +1,38 @@
+name: UEOT AI Agent State Guard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".ai/**"
+      - "scripts/ai/**"
+      - ".github/workflows/ai-agent-state.yml"
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - ".ai/**"
+      - "scripts/ai/**"
+      - ".github/workflows/ai-agent-state.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-state:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate persistent task state
+        run: python scripts/ai/validate_task_state.py
+
+      - name: Run state-validator regression tests
+        run: python scripts/ai/test_task_state.py
+
+      - name: Validate candidate trust policy structure
+        run: python scripts/ai/validate_trust_policy.py
+
+      - name: Verify JSON schema parses
+        run: python -m json.tool .ai/schema/task-state.schema.json >/dev/null
