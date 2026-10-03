@@ -89,6 +89,23 @@ def require_file_at_ref(repo: Path, ref: str, rel: str, context: str) -> None:
         fail(f"{context}: referenced file does not exist in {ref}: {rel}")
 
 
+def require_referenced_file(
+    repo: Path, rel: str, context: str, *, ref: str | None = None
+) -> None:
+    """Resolve governance-declared files from one consistent authority tree.
+
+    Normal checked-out validation uses the worktree.  Immutable-base
+    `pull_request_target` validation supplies `ref=candidate_ref`, in which case
+    every candidate-declared file is required to be a regular blob in the
+    candidate Git tree without executing or checking out candidate code.
+    """
+
+    if ref is None:
+        require_file(repo, rel, context)
+    else:
+        require_file_at_ref(repo, ref, rel, context)
+
+
 def compile_patterns(values: object, context: str) -> list[re.Pattern[str]]:
     if not isinstance(values, list) or not values:
         fail(f"{context}: branch_patterns must be a nonempty list")
@@ -493,10 +510,7 @@ def validate_architecture_records(
 
         evidence = string_list(record.get("evidence_paths"), f"{context}.evidence_paths")
         for path in evidence:
-            if evidence_ref is None:
-                require_file(repo, path, context)
-            else:
-                require_file_at_ref(repo, evidence_ref, path, context)
+            require_referenced_file(repo, path, context, ref=evidence_ref)
 
         if lifecycle == "COUNTED" or impact == "COUNTED":
             if not (role == "G0" and lifecycle == "COUNTED" and impact == "COUNTED"):
@@ -622,7 +636,12 @@ def validate_static(
         value = config.get(field)
         if not isinstance(value, str) or not value:
             fail(f"research-track governance needs nonempty {field}")
-        require_file(repo, value, "research-track governance")
+        require_referenced_file(
+            repo,
+            value,
+            "research-track governance",
+            ref=evidence_ref,
+        )
 
     tracks = config.get("tracks")
     gate = config.get("cross_track_integration_gate")

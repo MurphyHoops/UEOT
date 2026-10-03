@@ -358,6 +358,89 @@ def test_candidate_ref_resolves_candidate_only_evidence(repo: Path) -> None:
         )
 
 
+def test_candidate_ref_rejects_deleted_declared_file(repo: Path) -> None:
+    """Candidate-declared governance files must exist in the candidate tree.
+
+    The immutable base worktree still contains COMPRESSION_OPERATIONS.md.  A
+    candidate that deletes that file while retaining the registry reference
+    must therefore fail only if declared-file resolution really uses the
+    candidate ref rather than falling back to the base checkout.
+    """
+
+    module = load_validator_module(repo)
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    config = module.load_json(repo / module.TRACKS_REL)
+    operations_rel = config.get("operations_manual")
+    if not isinstance(operations_rel, str) or not operations_rel:
+        raise AssertionError("candidate-ref regression requires operations_manual")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmpdir = Path(tmp)
+        index = tmpdir / "index"
+        env = os.environ.copy()
+        env["GIT_INDEX_FILE"] = str(index)
+        env.update(
+            {
+                "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+            }
+        )
+
+        subprocess.run(["git", "read-tree", base], cwd=repo, env=env, check=True)
+        subprocess.run(
+            ["git", "update-index", "--force-remove", operations_rel],
+            cwd=repo,
+            env=env,
+            check=True,
+        )
+        tree = subprocess.check_output(
+            ["git", "write-tree"], cwd=repo, env=env, text=True
+        ).strip()
+        candidate_ref = subprocess.check_output(
+            ["git", "commit-tree", tree, "-p", base],
+            cwd=repo,
+            env=env,
+            input="deleted declared governance file regression\n",
+            text=True,
+        ).strip()
+
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", delete=False
+        ) as handle:
+            handle.write(operations_rel + "\n")
+            changed_file = Path(handle.name)
+        try:
+            completed = subprocess.run(
+                validator(
+                    repo,
+                    "ops/compression-declared-file-regression",
+                    changed_file,
+                    [
+                        "--baseline-ref",
+                        base,
+                        "--candidate-ref",
+                        candidate_ref,
+                    ],
+                ),
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        finally:
+            changed_file.unlink(missing_ok=True)
+
+    output = completed.stdout + completed.stderr
+    if completed.returncode == 0 or operations_rel not in output:
+        raise AssertionError(
+            "candidate deletion of a declared governance file was hidden by "
+            "the base worktree\n" + output
+        )
+
+
 def expect_static_failure(repo: Path, mutate, expected: str) -> None:
     module = load_validator_module(repo)
     config = module.load_json(repo / module.TRACKS_REL)
@@ -937,6 +1020,9 @@ def main() -> None:
 
     test_candidate_ref_resolves_candidate_only_evidence(repo)
     print("candidate-ref-evidence-resolution-audited: PASS")
+
+    test_candidate_ref_rejects_deleted_declared_file(repo)
+    print("candidate-ref-declared-file-deletion-rejected: PASS")
 
     run_case(
         repo,
