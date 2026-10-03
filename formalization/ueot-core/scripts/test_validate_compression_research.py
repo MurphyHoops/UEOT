@@ -780,7 +780,10 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
     )
     base_text = base_bytes.decode("utf-8")
 
-    def candidate_with(contents: str | bytes, label: str) -> str:
+    def candidate_with(
+        contents: str | bytes, label: str, parent: str | None = None
+    ) -> str:
+        parent = parent or base
         with tempfile.TemporaryDirectory() as tmp:
             tmpdir = Path(tmp)
             index = tmpdir / "index"
@@ -800,7 +803,7 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 }
             )
             subprocess.run(
-                ["git", "read-tree", base], cwd=repo, env=env, check=True
+                ["git", "read-tree", parent], cwd=repo, env=env, check=True
             )
             blob = subprocess.check_output(
                 ["git", "hash-object", "-w", str(source)],
@@ -817,19 +820,19 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 ["git", "write-tree"], cwd=repo, env=env, text=True
             ).strip()
             return subprocess.check_output(
-                ["git", "commit-tree", tree, "-p", base],
+                ["git", "commit-tree", tree, "-p", parent],
                 cwd=repo,
                 env=env,
                 input=label + "\n",
                 text=True,
             ).strip()
 
-    valid = candidate_with(
-        base_text
-        + ("" if base_text.endswith("\n") else "\n")
-        + "import UEOT.V3.Compression.Objecthood.Homeostasis.RootGuardRegression\n",
-        "valid Objecthood RH import",
+    valid_text = base_text.replace(
+        "\n\n/-!\n",
+        "\nimport UEOT.V3.Compression.Objecthood.Homeostasis.RootGuardRegression\n\n/-!\n",
+        1,
     )
+    valid = candidate_with(valid_text, "valid Objecthood RH import")
     module.validate_objecthood_root_import_change(
         repo, base, valid, "O", [root]
     )
@@ -850,7 +853,7 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 repo, base, invalid_decl, "O", [root]
             )
         except ValueError as exc:
-            if "complete import commands" not in str(exc):
+            if "import preamble" not in str(exc) and "insert only" not in str(exc):
                 raise AssertionError(f"unexpected root declaration rejection: {exc}") from exc
         else:
             raise AssertionError("Objecthood root declaration mutation was not rejected")
@@ -866,7 +869,7 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 repo, base, comment_bypass, "O", [root]
             )
         except ValueError as exc:
-            if "complete import commands" not in str(exc):
+            if "import preamble" not in str(exc) and "insert only" not in str(exc):
                 raise AssertionError(
                     f"unexpected trailing-syntax rejection: {exc}"
                 ) from exc
@@ -876,10 +879,12 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
             )
 
         cr_injection = candidate_with(
-            base_bytes
-            + (b"" if base_bytes.endswith(b"\n") else b"\n")
-            + b"import UEOT.V3.Compression.Objecthood.Homeostasis.CRGuard"
-            + b"\rtheorem injected : True := trivial\n",
+            base_bytes.replace(
+                b"\n\n/-!\n",
+                b"\nimport UEOT.V3.Compression.Objecthood.Homeostasis.CRGuard"
+                + b"\rtheorem injected : True := trivial\n\n/-!\n",
+                1,
+            ),
             "invalid Objecthood carriage-return injection",
         )
         try:
@@ -894,6 +899,48 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
         else:
             raise AssertionError(
                 "Objecthood root carriage-return command injection was not rejected"
+            )
+
+        # Simulate a later RH stage whose baseline already exposes one RH
+        # module. Moving that old import into the doc-comment while adding a new
+        # syntactically valid RH import must be rejected: the root policy is
+        # insertion-only and position-preserving for all baseline imports.
+        rh_baseline = valid
+        rh_baseline_text = subprocess.check_output(
+            ["git", "show", f"{rh_baseline}:{root}"], cwd=repo, text=True
+        )
+        old_rh = (
+            "import UEOT.V3.Compression.Objecthood.Homeostasis."
+            "RootGuardRegression\n"
+        )
+        moved_text = rh_baseline_text.replace(old_rh, "", 1)
+        moved_text = moved_text.replace(
+            "/-!\n",
+            "/-!\n" + old_rh,
+            1,
+        )
+        moved_text = moved_text.replace(
+            "\n/-!\n",
+            "\nimport UEOT.V3.Compression.Objecthood.Homeostasis.SecondStage\n\n/-!\n",
+            1,
+        )
+        moved_old_import = candidate_with(
+            moved_text,
+            "invalid Objecthood RH import relocation",
+            parent=rh_baseline,
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, rh_baseline, moved_old_import, "O", [root]
+            )
+        except ValueError as exc:
+            if "import preamble" not in str(exc) and "delete, move" not in str(exc):
+                raise AssertionError(
+                    f"unexpected RH-import relocation rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "relocating an existing RH import into the doc-comment was not rejected"
             )
 
         lines = base_text.splitlines(keepends=True)
@@ -911,7 +958,11 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 repo, base, deleted_old, "O", [root]
             )
         except ValueError as exc:
-            if "complete import commands" not in str(exc):
+            if (
+                "delete, move" not in str(exc)
+                and "import preamble" not in str(exc)
+                and "insert only complete imports" not in str(exc)
+            ):
                 raise AssertionError(f"unexpected old-import rejection: {exc}") from exc
         else:
             raise AssertionError("deleting a pre-RH Objecthood import was not rejected")

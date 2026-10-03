@@ -447,23 +447,49 @@ def validate_objecthood_root_import_change(
 
     baseline_lines = baseline_text.split("\n")
     candidate_lines = candidate_text.split("\n")
-    baseline_rh = [line for line in baseline_lines if allowed_import.fullmatch(line)]
-    candidate_rh = [line for line in candidate_lines if allowed_import.fullmatch(line)]
-    baseline_frozen = [
-        line for line in baseline_lines if allowed_import.fullmatch(line) is None
-    ]
-    candidate_frozen = [
-        line for line in candidate_lines if allowed_import.fullmatch(line) is None
-    ]
 
-    if candidate_frozen != baseline_frozen:
+    def import_preamble(lines: list[str]) -> tuple[list[str], list[str]]:
+        end = 0
+        while end < len(lines) and lines[end].startswith("import "):
+            end += 1
+        return lines[:end], lines[end:]
+
+    baseline_imports, baseline_suffix = import_preamble(baseline_lines)
+    candidate_imports, candidate_suffix = import_preamble(candidate_lines)
+
+    # Everything after the import preamble is frozen byte-for-byte (modulo the
+    # UTF-8 decode above). This prevents an allowed-looking import from being
+    # relocated into the module doc-comment or any later declaration context.
+    if candidate_suffix != baseline_suffix:
         fail(
-            "Track O may modify Objecthood.lean only with complete import commands "
-            "under UEOT.V3.Compression.Objecthood.Homeostasis.*"
+            "Track O may modify Objecthood.lean only by inserting Homeostasis "
+            "imports inside the existing import preamble"
         )
-    if any(line not in candidate_rh for line in baseline_rh):
-        fail("Track O may not remove previously exposed Homeostasis imports")
-    if candidate_rh == baseline_rh:
+    if len(set(candidate_imports)) != len(candidate_imports):
+        fail("Track O Objecthood.lean import preamble may not contain duplicates")
+
+    # The candidate preamble must preserve every baseline import in its exact
+    # original order. Any intervening line is a newly inserted RH import and
+    # must be one complete allowed command. This is insertion-only: later RH
+    # stages cannot delete, move, or rewrite imports exposed by earlier stages.
+    baseline_index = 0
+    inserted = 0
+    for line in candidate_imports:
+        if (
+            baseline_index < len(baseline_imports)
+            and line == baseline_imports[baseline_index]
+        ):
+            baseline_index += 1
+            continue
+        if allowed_import.fullmatch(line) is None:
+            fail(
+                "Track O may insert only complete imports under "
+                "UEOT.V3.Compression.Objecthood.Homeostasis.*"
+            )
+        inserted += 1
+    if baseline_index != len(baseline_imports):
+        fail("Track O may not delete, move, or rewrite existing Objecthood imports")
+    if inserted == 0:
         fail("Track O Objecthood.lean change must add a Homeostasis import")
 
 
