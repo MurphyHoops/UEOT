@@ -336,6 +336,21 @@ def changed_lines_for_path_between(
     return changed
 
 
+def git_blob_bytes(repo: Path, ref: str, path: str) -> bytes:
+    """Read one Git blob without universal-newline normalization."""
+
+    completed = subprocess.run(
+        ["git", "show", f"{ref}:{path}"],
+        cwd=repo,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if completed.returncode != 0:
+        fail(f"could not read Git blob {ref}:{path}")
+    return completed.stdout
+
+
 def validate_compression_root_import_change(
     repo: Path,
     baseline_ref: str | None,
@@ -387,6 +402,95 @@ def validate_compression_root_import_change(
             )
     else:
         fail(f"Track {track_id} may not modify Compression.lean")
+
+
+def validate_objecthood_root_import_change(
+    repo: Path,
+    baseline_ref: str | None,
+    candidate_ref: str,
+    track_id: str,
+    paths: list[str],
+) -> None:
+    """Keep the public Objecthood root immutable except for RH imports.
+
+    Track O needs to expose newly proved RH modules through the already public
+    Objecthood.lean root, but that exact-path exception must not become a
+    backdoor for rewriting merged O/ER/AR/GCR imports or adding declarations to
+    the root itself.
+    """
+
+    root = "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
+    if root not in paths:
+        return
+    if track_id != "O":
+        fail(f"Track {track_id} may not modify Objecthood.lean")
+    if not baseline_ref:
+        fail("Objecthood.lean ownership validation requires a baseline ref")
+
+    allowed_import = re.compile(
+        r"import UEOT\.V3\.Compression\.Objecthood\.Homeostasis"
+        r"(?:\.[A-Za-z_][A-Za-z0-9_']*)+$"
+    )
+
+    baseline_blob = git_blob_bytes(repo, baseline_ref, root)
+    candidate_blob = git_blob_bytes(repo, candidate_ref, root)
+    if b"\r" in candidate_blob or b"\x00" in candidate_blob:
+        fail(
+            "Track O Objecthood.lean candidate contains forbidden line-control "
+            "or NUL characters"
+        )
+    try:
+        baseline_text = baseline_blob.decode("utf-8")
+        candidate_text = candidate_blob.decode("utf-8")
+    except UnicodeDecodeError:
+        fail("Track O Objecthood.lean must remain valid UTF-8 text")
+
+    baseline_lines = baseline_text.split("\n")
+    candidate_lines = candidate_text.split("\n")
+
+    def import_preamble(lines: list[str]) -> tuple[list[str], list[str]]:
+        end = 0
+        while end < len(lines) and lines[end].startswith("import "):
+            end += 1
+        return lines[:end], lines[end:]
+
+    baseline_imports, baseline_suffix = import_preamble(baseline_lines)
+    candidate_imports, candidate_suffix = import_preamble(candidate_lines)
+
+    # Everything after the import preamble is frozen byte-for-byte (modulo the
+    # UTF-8 decode above). This prevents an allowed-looking import from being
+    # relocated into the module doc-comment or any later declaration context.
+    if candidate_suffix != baseline_suffix:
+        fail(
+            "Track O may modify Objecthood.lean only by inserting Homeostasis "
+            "imports inside the existing import preamble"
+        )
+    if len(set(candidate_imports)) != len(candidate_imports):
+        fail("Track O Objecthood.lean import preamble may not contain duplicates")
+
+    # The candidate preamble must preserve every baseline import in its exact
+    # original order. Any intervening line is a newly inserted RH import and
+    # must be one complete allowed command. This is insertion-only: later RH
+    # stages cannot delete, move, or rewrite imports exposed by earlier stages.
+    baseline_index = 0
+    inserted = 0
+    for line in candidate_imports:
+        if (
+            baseline_index < len(baseline_imports)
+            and line == baseline_imports[baseline_index]
+        ):
+            baseline_index += 1
+            continue
+        if allowed_import.fullmatch(line) is None:
+            fail(
+                "Track O may insert only complete imports under "
+                "UEOT.V3.Compression.Objecthood.Homeostasis.*"
+            )
+        inserted += 1
+    if baseline_index != len(baseline_imports):
+        fail("Track O may not delete, move, or rewrite existing Objecthood imports")
+    if inserted == 0:
+        fail("Track O Objecthood.lean change must add a Homeostasis import")
 
 
 def validate_architecture_records(
@@ -974,6 +1078,9 @@ def validate_track_paths(
             )
 
     validate_compression_root_import_change(
+        repo, baseline_ref, candidate_ref, track_id, paths
+    )
+    validate_objecthood_root_import_change(
         repo, baseline_ref, candidate_ref, track_id, paths
     )
 

@@ -766,6 +766,210 @@ def test_p0b_legacy_baseline_transition(repo: Path) -> None:
         module.fail = original_fail
 
 
+
+def test_objecthood_root_import_guard(repo: Path) -> None:
+    """Objecthood root may expose RH modules but may not be rewritten."""
+
+    module = load_validator_module(repo)
+    root = "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    base_bytes = subprocess.check_output(
+        ["git", "show", f"{base}:{root}"], cwd=repo
+    )
+    base_text = base_bytes.decode("utf-8")
+
+    def candidate_with(
+        contents: str | bytes, label: str, parent: str | None = None
+    ) -> str:
+        parent = parent or base
+        with tempfile.TemporaryDirectory() as tmp:
+            tmpdir = Path(tmp)
+            index = tmpdir / "index"
+            source = tmpdir / "Objecthood.lean"
+            if isinstance(contents, bytes):
+                source.write_bytes(contents)
+            else:
+                source.write_text(contents, encoding="utf-8")
+            env = os.environ.copy()
+            env["GIT_INDEX_FILE"] = str(index)
+            env.update(
+                {
+                    "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                    "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                    "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                    "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+                }
+            )
+            subprocess.run(
+                ["git", "read-tree", parent], cwd=repo, env=env, check=True
+            )
+            blob = subprocess.check_output(
+                ["git", "hash-object", "-w", str(source)],
+                cwd=repo,
+                text=True,
+            ).strip()
+            subprocess.run(
+                ["git", "update-index", "--add", "--cacheinfo", "100644", blob, root],
+                cwd=repo,
+                env=env,
+                check=True,
+            )
+            tree = subprocess.check_output(
+                ["git", "write-tree"], cwd=repo, env=env, text=True
+            ).strip()
+            return subprocess.check_output(
+                ["git", "commit-tree", tree, "-p", parent],
+                cwd=repo,
+                env=env,
+                input=label + "\n",
+                text=True,
+            ).strip()
+
+    valid_text = base_text.replace(
+        "\n\n/-!\n",
+        "\nimport UEOT.V3.Compression.Objecthood.Homeostasis.RootGuardRegression\n\n/-!\n",
+        1,
+    )
+    valid = candidate_with(valid_text, "valid Objecthood RH import")
+    module.validate_objecthood_root_import_change(
+        repo, base, valid, "O", [root]
+    )
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        invalid_decl = candidate_with(
+            base_text + "\ntheorem root_guard_regression : True := trivial\n",
+            "invalid Objecthood declaration",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, invalid_decl, "O", [root]
+            )
+        except ValueError as exc:
+            if "import preamble" not in str(exc) and "insert only" not in str(exc):
+                raise AssertionError(f"unexpected root declaration rejection: {exc}") from exc
+        else:
+            raise AssertionError("Objecthood root declaration mutation was not rejected")
+
+        comment_bypass = candidate_with(
+            "import UEOT.V3.Compression.Objecthood.Homeostasis.CommentOpen /-\n"
+            + base_text
+            + "import UEOT.V3.Compression.Objecthood.Homeostasis.CommentClose -/\n",
+            "invalid Objecthood block-comment bypass",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, comment_bypass, "O", [root]
+            )
+        except ValueError as exc:
+            if "import preamble" not in str(exc) and "insert only" not in str(exc):
+                raise AssertionError(
+                    f"unexpected trailing-syntax rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "Objecthood root trailing block-comment syntax was not rejected"
+            )
+
+        cr_injection = candidate_with(
+            base_bytes.replace(
+                b"\n\n/-!\n",
+                b"\nimport UEOT.V3.Compression.Objecthood.Homeostasis.CRGuard"
+                + b"\rtheorem injected : True := trivial\n\n/-!\n",
+                1,
+            ),
+            "invalid Objecthood carriage-return injection",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, cr_injection, "O", [root]
+            )
+        except ValueError as exc:
+            if "line-control" not in str(exc):
+                raise AssertionError(
+                    f"unexpected carriage-return rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "Objecthood root carriage-return command injection was not rejected"
+            )
+
+        # Simulate a later RH stage whose baseline already exposes one RH
+        # module. Moving that old import into the doc-comment while adding a new
+        # syntactically valid RH import must be rejected: the root policy is
+        # insertion-only and position-preserving for all baseline imports.
+        rh_baseline = valid
+        rh_baseline_text = subprocess.check_output(
+            ["git", "show", f"{rh_baseline}:{root}"], cwd=repo, text=True
+        )
+        old_rh = (
+            "import UEOT.V3.Compression.Objecthood.Homeostasis."
+            "RootGuardRegression\n"
+        )
+        moved_text = rh_baseline_text.replace(old_rh, "", 1)
+        moved_text = moved_text.replace(
+            "/-!\n",
+            "/-!\n" + old_rh,
+            1,
+        )
+        moved_text = moved_text.replace(
+            "\n/-!\n",
+            "\nimport UEOT.V3.Compression.Objecthood.Homeostasis.SecondStage\n\n/-!\n",
+            1,
+        )
+        moved_old_import = candidate_with(
+            moved_text,
+            "invalid Objecthood RH import relocation",
+            parent=rh_baseline,
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, rh_baseline, moved_old_import, "O", [root]
+            )
+        except ValueError as exc:
+            if "import preamble" not in str(exc) and "delete, move" not in str(exc):
+                raise AssertionError(
+                    f"unexpected RH-import relocation rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "relocating an existing RH import into the doc-comment was not rejected"
+            )
+
+        lines = base_text.splitlines(keepends=True)
+        old_import = next(
+            i
+            for i, line in enumerate(lines)
+            if line.startswith("import UEOT.V3.Compression.Objecthood.")
+        )
+        deleted_old = candidate_with(
+            "".join(lines[:old_import] + lines[old_import + 1 :]),
+            "invalid Objecthood prior-import deletion",
+        )
+        try:
+            module.validate_objecthood_root_import_change(
+                repo, base, deleted_old, "O", [root]
+            )
+        except ValueError as exc:
+            if (
+                "delete, move" not in str(exc)
+                and "import preamble" not in str(exc)
+                and "insert only complete imports" not in str(exc)
+            ):
+                raise AssertionError(f"unexpected old-import rejection: {exc}") from exc
+        else:
+            raise AssertionError("deleting a pre-RH Objecthood import was not rejected")
+    finally:
+        module.fail = original_fail
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -882,13 +1086,42 @@ def main() -> None:
         repo,
         "compression/objecthood-self-repair",
         [
-            "formalization/ueot-core/docs/compression/objecthood/"
-            "O1_LEGITIMACY_AUDIT.md"
+            "formalization/ueot-core/docs/compression/objecthood/homeostasis/"
+            "RH0_RECURRENT_FAULT_SYSTEM_AUDIT.md"
         ],
         objecthood_open,
         "" if objecthood_open else "unclassified compression research branch",
     )
     print("objecthood-live-gate-policy: PASS")
+
+    run_case(
+        repo,
+        "compression/objecthood-self-repair",
+        [
+            "formalization/ueot-core/docs/compression/objecthood/"
+            "GCR8_ARCHITECTURE_DELETION_BOUNDARY_AUDIT.md"
+        ],
+        False,
+        (
+            "outside its owned Objecthood namespace"
+            if objecthood_open
+            else "unclassified compression research branch"
+        ),
+    )
+    print("objecthood-closed-audit-immutable: PASS")
+
+    run_case(
+        repo,
+        "compression/objecthood-self-repair",
+        ["formalization/ueot-core/UEOT/V3/Compression.lean"],
+        False,
+        (
+            "outside its owned Objecthood namespace"
+            if objecthood_open
+            else "unclassified compression research branch"
+        ),
+    )
+    print("objecthood-global-root-rejected: PASS")
 
     run_case(
         repo,
@@ -1045,6 +1278,9 @@ def main() -> None:
     test_policy_reauthorizes_on_base_edit(repo)
     print("base-change-reauthorization-trigger: PASS")
 
+    test_objecthood_root_import_guard(repo)
+    print("objecthood-root-rh-import-only: PASS")
+
     test_candidate_ref_policy_drives_objecthood_transition(repo)
     print("candidate-ref-policy-transition-audited: PASS")
 
@@ -1076,8 +1312,8 @@ def main() -> None:
         repo,
         "compression/objecthood-self-repair",
         [
-            "formalization/ueot-core/docs/compression/objecthood/"
-            "O1_LEGITIMACY_AUDIT.md"
+            "formalization/ueot-core/docs/compression/objecthood/homeostasis/"
+            "RH0_RECURRENT_FAULT_SYSTEM_AUDIT.md"
         ],
         False,
         (
