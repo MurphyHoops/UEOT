@@ -16,6 +16,15 @@ import UEOT.V3.Compression.Objecthood.MaximalStationaryRepair
 import UEOT.V3.Compression.Objecthood.StrongVsStochasticRepair
 import UEOT.V3.Compression.Objecthood.RepairRankHittingRelation
 import UEOT.V3.Compression.Objecthood.GeneralCausalRepairBoundary
+import UEOT.V3.Compression.Objecthood.StationaryCausalPathLawBridge
+import UEOT.V3.Compression.Objecthood.AbsorbedDiscountedRepair
+import UEOT.V3.Compression.Objecthood.AbsorbedRepairHittingSemantics
+import UEOT.V3.Compression.Objecthood.ExactPathLawDiscountedHittingTransform
+import UEOT.V3.Compression.Objecthood.GeneralCausalDiscountedDirection
+import UEOT.V3.Compression.Objecthood.FinitePolicyAbelianStationaryWitness
+import UEOT.V3.Compression.Objecthood.FiniteStationaryHittingExpectation
+import UEOT.V3.Compression.Objecthood.GeneralCausalStationaryCompleteness
+import UEOT.V3.Compression.Objecthood.GeneralCausalRepairSynthesis
 import UEOT.V3.Compression.Objecthood.StochasticRepairSynthesis
 
 /-!
