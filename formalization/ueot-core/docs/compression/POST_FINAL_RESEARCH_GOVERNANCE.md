@@ -556,7 +556,7 @@ mutate H/S source-track files.
 #243/#245/#247; RH0--RH9 CLOSED through #248/#251/#252; QT0--QT4 CLOSED through
 #253/#255. No Track-O theorem mutation is currently authorized.**
 
-All five completed Objecthood research lifecycles remain immutable in the
+All six completed Objecthood research lifecycles remain immutable in the
 append-only completion history. Their reviewed research heads, merge commits,
 and resulting-main CI evidence remain exactly recorded in the machine registry.
 
