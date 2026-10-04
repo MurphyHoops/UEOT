@@ -32,6 +32,7 @@ import UEOT.V3.Compression.Objecthood.Homeostasis.MixedHomeostaticDrift
 import UEOT.V3.Compression.Objecthood.Homeostasis.FiniteHorizonHomeostasis
 import UEOT.V3.Compression.Objecthood.Homeostasis.CesaroHomeostasis
 import UEOT.V3.Compression.Objecthood.Homeostasis.CertifiedHomeostaticMargin
+import UEOT.V3.Compression.Objecthood.Homeostasis.HomeostasisSemantics
 
 /-!
 # UEOT Core Compression — Track O
