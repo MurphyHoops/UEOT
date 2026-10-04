@@ -39,6 +39,11 @@ import UEOT.V3.Compression.Objecthood.Homeostasis.CanonicalBurden.CanonicalFault
 import UEOT.V3.Compression.Objecthood.Homeostasis.CanonicalBurden.LeastFaultBurden
 import UEOT.V3.Compression.Objecthood.Homeostasis.CanonicalBurden.DownstreamTightening
 import UEOT.V3.Compression.Objecthood.Homeostasis.CanonicalBurden.ObjecthoodCanonicalBurden
+import UEOT.V3.Compression.Objecthood.PostQTTightening.CanonicalCertificateOptimality
+import UEOT.V3.Compression.Objecthood.PostQTTightening.GeneralCausalObjecthoodClosure
+import UEOT.V3.Compression.Objecthood.PostQTTightening.CanonicalJointMixedDrift
+import UEOT.V3.Compression.Objecthood.PostQTTightening.StrictJointMixedDriftWitness
+import UEOT.V3.Compression.Objecthood.PostQTTightening.JointMixedDriftDownstream
 
 /-!
 # UEOT Core Compression — Track O
