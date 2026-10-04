@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-FINAL Parallel Research Governance
 
-Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X MERGED SURFACE REGISTERED / TRACK O GATE CLOSED / POST-FINAL / UNCOUNTED**
+Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X MERGED SURFACE REGISTERED / TRACK O GATE OPEN / POST-FINAL / UNCOUNTED**
 
 Authority:
 
@@ -125,7 +125,25 @@ Completed fifth-cycle tracker: **Issue #248 / RH0--RH9**.
 
 Completed sixth-cycle tracker: **Issue #253 / QT0--QT4**.
 
-Current Track-O theorem-mutation authorization: **NONE**.
+Current authorized continuation tracker: **Issue #257 / RLSR0--RLSR9**.
+
+The #257 authorization is strictly limited to repair-law self-reconstruction
+relative to an explicit trusted ambient substrate. The mutable object-level
+state may contain physical state, ordinary controller and repair-program
+representation; the trusted interpreter/decoder itself is outside that mutable
+state and is not claimed to reconstruct the mathematical laws of evolution.
+
+The read-only preflight compiled before authorization:
+- trusted-substrate / mutable-state typing;
+- behavioral repair-program validity and carrier-relative equivalence;
+- an identifiability no-go for behaviorally distinct programs collapsed by the
+  corruption observation;
+- generic triple redundancy for an arbitrary decidable repair-program type,
+  correcting one arbitrary replica replacement;
+- a trusted PMF reconstruction kernel that enters the valid redundant-program
+  target after one-replica corruption.
+
+This tracker freezes exactly RLSR0--RLSR9. EC, OC and AP remain later programs.
 
 QT0--QT4 merged through research PR #255. The reviewed research head
 `a6fd50b60f2c9df673d06106e5b1d89532c07784` merged as
@@ -300,6 +318,37 @@ QT did **not** modify the merged RH0--RH9 source files, the RH6 G3 pathwise-
 recurrence boundary, source Track-S/H/X files, counted-ledger state, or the
 four-generator core. It did not authorize or prove RLSR, EC, OC, AP, or a fifth
 generator.
+
+The fresh #257 / RLSR0--RLSR9 cycle now addresses the next distinct question:
+whether the object-level organization that produces repair behavior can itself
+be corrupted and internally reconstructed without treating the trusted ambient
+interpreter as another mutable repair target. Its exact finite sequence is:
+
+1. **RLSR0** — trusted ambient substrate versus mutable object-level boundary;
+2. **RLSR1** — internal repair-program representation and typed execution;
+3. **RLSR2** — behavioral program validity and carrier-relative equivalence;
+4. **RLSR3** — corruption / observation model plus identifiability no-go;
+5. **RLSR4** — one finite redundant/error-correcting reconstruction source;
+6. **RLSR5** — repair-program recovery dynamics and valid-program basin;
+7. **RLSR6** — joint physical / controller / repair-program recovery with
+   explicit mode/order semantics;
+8. **RLSR7** — no-infinite-regress closure relative to the declared trusted
+   substrate;
+9. **RLSR8** — same-parent and semantic restoration after repair-law
+   reconstruction;
+10. **RLSR9** — architecture/deletion/primitive audit.
+
+RLSR theorem source is confined to
+Compression/Objecthood/RepairLawSelfReconstruction/; audit evidence is
+confined to docs/compression/objecthood/repair-law-self-reconstruction/.
+Historical Objecthood, RH and QT theorem source remains outside the active
+allowlist. The public Compression/Objecthood.lean root remains an import-only
+exception.
+
+This authorization does **not** claim autopoiesis and does not authorize EC, OC
+or AP. It does not reopen Track-S/H/X source tracks, modify counted
+ledger/coverage state, close the RH6 pathwise-recurrence boundary, or propose a
+fifth generator. RLSR9 must complete before any EC theorem-mutation lifecycle.
 
 RH must preserve the preflight boundary discipline. Repair and fault kernels
 remain explicitly distinct; the positive theorem is restricted to faults whose
@@ -549,12 +598,12 @@ S has a stable merged finite-state long-run semantic interface.  The approved
 sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
 mutate H/S source-track files.
 
-### Track O — O/ER/AR/GCR/RH/QT completed; gate closed
+### Track O — prior Objecthood cycles closed; active RLSR0--RLSR9
 
-**CLOSED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
+**AUTHORIZED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
 #234/#236; AR0--AR7 CLOSED through #238/#240; GCR0--GCR8 CLOSED through
 #243/#245/#247; RH0--RH9 CLOSED through #248/#251/#252; QT0--QT4 CLOSED through
-#253/#255. No Track-O theorem mutation is currently authorized.**
+#253/#255/#256; RLSR0--RLSR9 ACTIVE only through fresh Issue #257.**
 
 All six completed Objecthood research lifecycles remain immutable in the
 append-only completion history. Their reviewed research heads, merge commits,
@@ -586,17 +635,16 @@ path-level/recurrent-class structure. No fifth G0 generator is promoted, the
 frozen four-generator counted core is unchanged, and no Track-S, Track-H or
 Track-X source lane was reopened.
 
-The QT final-governance closeout now closes the Objecthood mutation gate again
-and appends the immutable QT0--QT4 completion record. The merged canonical-
-burden theorem surface remains uncounted and cannot authorize further Objecthood
-mutation by itself.
+The QT final-governance closeout closed its lifecycle and appended the
+immutable QT0--QT4 completion record. Fresh Issue #257 now reopens the
+Objecthood mutation gate **only** for RLSR0--RLSR9 in the dedicated
+repair-law-self-reconstruction subtree.
 
-RLSR repair-law self-reconstruction is the next planning-level program after QT,
-but is **not** active theorem-mutation authority. A future RLSR lifecycle must
-first separate an immutable trusted ambient substrate from the mutable
-object-level repair program; it may not demand that the mathematical evolution
-laws themselves reconstruct themselves. EC, OC and an explicit
-AutopoieticObject contract remain later still.
+RLSR must keep the trusted ambient interpreter/substrate outside the mutable
+object-level repair state. It may reconstruct the encoded repair program,
+controller and physical organization, but it may not claim that mathematical
+evolution laws reconstruct themselves. EC, OC and an explicit
+AutopoieticObject contract remain later still and are not authorized here.
 
 Completed Objecthood cycles are stored in an **append-only completion history**:
 an authorization PR may not delete, reorder, or rewrite an earlier completion
