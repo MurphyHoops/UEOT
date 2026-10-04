@@ -1,46 +1,72 @@
-# UEOT Core Compression — New Chat Bootstrap v2
+# UEOT Core Compression — New Chat Bootstrap
 
 The user should only need to say:
 
-> 继续 UEOT Core Compression Formalization，从当前 main / Issue #146 恢复并直接继续。
+> 继续 UEOT Core Compression Formalization。执行 Compression Recovery
+> Protocol，从 GitHub 恢复 Issue #146、active M-ID、branch、CI 和 exact next
+> action，直接继续，不要新开重复任务。
 
-The recovery goal is to recover **active state**, not replay project history.
+The AI must then execute this recovery chain:
 
-## Fast recovery
+`REPOSITORY_BRANCH_GOVERNANCE -> COMPRESSION_OPERATIONS ->
+COMPRESSION_MISSION -> V3_COVERAGE_STATUS -> COMPRESSION_LEDGER -> COMPRESSION_COVERAGE ->
+COMPRESSION_RESEARCH_TRACKS -> Issue #146 -> active child tracker (if named) ->
+live branches/PR/CI -> active track branch -> exact next action`.
 
-1. `git fetch --prune origin` and read canonical `origin/main`;
-2. verify Core v3 baseline is still **106/106 FULL-GREEN** and read the live counted
-   minimal core from `COMPRESSION_LEDGER.yaml`;
-3. read the short current block of Issue #146;
-4. read `COMPRESSION_RESEARCH_TRACKS.json` only for the active track's namespace/risk
-   policy;
-5. read the active task tracker if one is named;
-6. list open PRs/live branches and recover the active branch/head/CI;
-7. reuse that branch; do not create a replacement because the chat/tool changed;
-8. continue the exact scientific next action.
+Mandatory checks:
 
-Read `COMPRESSION_MISSION.md` in full only for L3/counting/finalization work. Read historical
-track audits only when they are actual mathematical dependencies.
+1. verify Core v3 still reads **106/106 FULL-GREEN**;
+2. fetch current `main` SHA;
+3. read `COMPRESSION_MISSION.md`, then counted state from the ledger on `main`;
+4. read Issue #146 LIVE STATE;
+5. read `COMPRESSION_RESEARCH_TRACKS.json` and recover the independent
+   architecture role, lifecycle, track owner, authority/provenance and
+   counted-core-impact axes;
+6. if Issue #146 names a P0b/Track S/Track H/Track X tracker, read that child
+   tracker before selecting a branch; when Track X is open, Issue #225 is the
+   authoritative detailed X0--X8 tracker;
+7. list remote branches and open PRs, then classify each governed branch as
+   governance / Track S / Track H / Track X / unclassified;
+8. recover the active branch/head and latest relevant CI for each active lane;
+9. reconcile Issue state against GitHub reality and the immutable base-policy
+   validator;
+10. reuse the active branch if it exists; do not create a replacement merely
+    because a chat was compacted or another agent is continuing;
+11. obey the Track-X gate in the registry; when it is open, consume Track-S and
+    Track-H dependencies only from canonical `main` and never reopen those
+    source-track branches from X;
+12. never infer a full compression mapping from a partial theorem;
+13. immediately continue the exact next action.
 
-## Expected snapshot
+Expected recovery snapshot:
 
 ```text
 Compression recovery complete.
 main: <sha>
 Core baseline: 106/106 FULL-GREEN
-mission/counting state: <state>
-minimal core: <ids>
-active task: <tracker/title or none>
-risk tier: L0 | L1 | L2 | L3
-track: S | H | X | O | none
-branch/PR: <branch@sha / PR or none>
-latest required CI: <run/status>
+analyzed: <N>/106
+schema-classified: <N>/106
+Lean-rederived: <N>/106
+counted-compressed: <N>/106
+final dispositions: <N>/106
+unresolved dispositions: <N>/106
+mission state: active | ready_for_finalization | final
+minimal core: open | candidate | frozen
+counted generators: <list or none>
+active M-ID: <id or none>
+architecture role/lifecycle: <G0-G3>/<status or none>
+Track S: <branch>@<sha / PR / next action or inactive>
+Track H: <branch>@<sha / PR / next action or inactive>
+Track X: <branch>@<sha / PR / X-stage / next action or inactive>
+Track X gate: closed | open
+latest Core Lean CI: <run/status>
+latest Compression Guard CI: <run/status>
+state: analysis | proof | audit | integration | ledger | governance
 blocker: <if any>
 exact next action: <action>
 ```
 
-## Handoff
-
-Checkpoint meaningful WIP on the same branch. Update Issue #146/task tracker only when
-state or scientific decisions actually changed. Do not create handoff-only branches and
-do not copy historical CI logs into the live-state block.
+If a conversation is near its limit, checkpoint on the same active track branch,
+push it, update Issue #146 and the named child tracker when appropriate, and
+continue until the conversation can no longer do useful work. Do not create a
+handoff-only branch and do not cross-edit another track's owned namespace.
