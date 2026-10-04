@@ -2,27 +2,15 @@ name: UEOT Core Lean
 
 on:
   push:
-    branches: [main]
+    branches: [main, "formal/**", "compression/**", "ops/compression-*"]
     paths:
-      - "formalization/ueot-core/UEOT.lean"
-      - "formalization/ueot-core/UEOT/**/*.lean"
-      - "formalization/ueot-core/lakefile.lean"
-      - "formalization/ueot-core/lake-manifest.json"
-      - "formalization/ueot-core/lean-toolchain"
+      - "formalization/ueot-core/**"
       - ".github/workflows/ueot-core-lean.yml"
   pull_request:
     paths:
-      - "formalization/ueot-core/UEOT.lean"
-      - "formalization/ueot-core/UEOT/**/*.lean"
-      - "formalization/ueot-core/lakefile.lean"
-      - "formalization/ueot-core/lake-manifest.json"
-      - "formalization/ueot-core/lean-toolchain"
+      - "formalization/ueot-core/**"
       - ".github/workflows/ueot-core-lean.yml"
   workflow_dispatch:
-
-concurrency:
-  group: ueot-core-lean-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
