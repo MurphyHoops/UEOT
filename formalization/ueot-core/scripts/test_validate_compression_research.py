@@ -979,6 +979,23 @@ def main() -> None:
         (repo / "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json").read_text()
     )
     objecthood_open = live_config.get("objecthood_omega_gate") == "open"
+    objecthood_track = live_config.get("tracks", {}).get("O")
+    objecthood_owned_doc = None
+    if objecthood_open:
+        if not isinstance(objecthood_track, dict):
+            raise AssertionError("open Objecthood gate requires active Track O")
+        doc_prefixes = [
+            prefix
+            for prefix in objecthood_track.get("allowed_path_prefixes", [])
+            if prefix.startswith(
+                "formalization/ueot-core/docs/compression/objecthood/"
+            )
+        ]
+        if not doc_prefixes:
+            raise AssertionError(
+                "active Track O requires at least one owned Objecthood docs prefix"
+            )
+        objecthood_owned_doc = doc_prefixes[0] + "CURRENT_TRACK_OWNED_AUDIT.md"
 
     run_case(
         repo,
@@ -1085,14 +1102,30 @@ def main() -> None:
     run_case(
         repo,
         "compression/objecthood-self-repair",
-        [
-            "formalization/ueot-core/docs/compression/objecthood/homeostasis/"
-            "RH0_RECURRENT_FAULT_SYSTEM_AUDIT.md"
+        [objecthood_owned_doc] if objecthood_open else [
+            "formalization/ueot-core/docs/compression/objecthood/"
+            "CURRENT_TRACK_OWNED_AUDIT.md"
         ],
         objecthood_open,
         "" if objecthood_open else "unclassified compression research branch",
     )
     print("objecthood-live-gate-policy: PASS")
+
+    run_case(
+        repo,
+        "compression/objecthood-self-repair",
+        [
+            "formalization/ueot-core/docs/compression/objecthood/homeostasis/"
+            "RH0_RECURRENT_FAULT_SYSTEM_AUDIT.md"
+        ],
+        False,
+        (
+            "outside its owned Objecthood namespace"
+            if objecthood_open
+            else "unclassified compression research branch"
+        ),
+    )
+    print("objecthood-prior-rh-audit-immutable: PASS")
 
     run_case(
         repo,
