@@ -100,6 +100,7 @@ variable {X : Type uX} [Fintype X] [Nonempty X]
 variable {S : Type uS} [Fintype S] [Nonempty S]
 variable {Act : Type uA} [Fintype Act] [Nonempty Act]
 
+omit [Nonempty X] [Nonempty S] in
 /-- A macro reward is bounded by the common micro model's declared reward
 radius plus the primitive reward defect of this quotient. -/
 theorem macroReward_abs_le_microBound_add_epsilon
