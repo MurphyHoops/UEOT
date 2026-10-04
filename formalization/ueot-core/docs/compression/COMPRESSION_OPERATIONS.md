@@ -1,4 +1,4 @@
-# UEOT Core Compression Formalization — Operations Manual
+# UEOT Core Compression Formalization — Operations Manual v2
 
 ## 0. Identity
 
@@ -6,324 +6,250 @@
 - Integration branch: `main`
 - Frozen Core v3 source theorem baseline: **106/106 FULL-GREEN**
 - Compression LIVE STATE: GitHub Issue **#146**
-- Scientific completion contract:
-  `formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md`
-- Machine ledger:
-  `formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml`
-- Human coverage view:
-  `formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md`
-- Source theorem seed index:
-  `formalization/ueot-core/docs/CORE_COMPRESSION_THEOREM_INDEX.csv`
-- Post-FINAL research-track registry:
-  `formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json`
-- Post-FINAL research governance:
-  `formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md`
-- Current cross-track synthesis tracker when Track X is open: GitHub Issue
-  **#225** (`parent formation × long-run semantic stability`).
-- Official regression target: `lake build UEOT`
+- Scientific completion contract: `COMPRESSION_MISSION.md`
+- Machine ledger: `COMPRESSION_LEDGER.yaml`
+- Human coverage view: `COMPRESSION_COVERAGE.md`
+- Source theorem index: `CORE_COMPRESSION_THEOREM_INDEX.csv`
+- Research policy/registry: `COMPRESSION_RESEARCH_TRACKS.json`
+- Post-FINAL governance: `POST_FINAL_RESEARCH_GOVERNANCE.md`
+- Official full regression target: `lake build UEOT`
 
-Compression is a post-106 meta-formalization mission. It must never alter the
-meaning or counted status of the frozen 106 source P-IDs.
+Compression is a post-106 meta-formalization mission. Nothing in ordinary research may
+silently change the meaning or counted status of the frozen 106 P-IDs.
 
 ## 1. Authority hierarchy
 
 When records disagree:
 
 1. frozen Core v3 source controls original P-ID semantics;
-2. `V3_COVERAGE_STATUS.md` on `main` controls the completed 106/106 proof
-   baseline;
-3. `COMPRESSION_MISSION.md` defines the scientific Definition of Done and the
-   permitted strength of minimality claims;
+2. `V3_COVERAGE_STATUS.md` on `main` controls the 106/106 proof baseline;
+3. `COMPRESSION_MISSION.md` controls the scientific Definition of Done;
 4. `COMPRESSION_LEDGER.yaml` on `main` controls counted compression claims;
-5. live branches/PRs/Actions control code and CI facts;
-6. Issue #146 body controls current active compression intent/blocker/next step;
-7. active compression branch controls unfinished code;
-8. prior chats/comments are supplemental history only.
+5. canonical `main` source + PR/CI state controls integrated implementation facts;
+6. `COMPRESSION_RESEARCH_TRACKS.json` controls machine path/track policy;
+7. Issue #146 controls only the current recovery index/intent;
+8. task trackers control detailed active scientific plans;
+9. prior chats/comments are supplemental history only.
 
-For post-FINAL research, these axes are independent and must never be inferred
-from one another:
+No Issue or chat may promote an uncounted theorem into counted status.
 
-1. architecture role: `G0 | G1 | G2 | G3`;
-2. lifecycle status;
-3. track owner: `CORE | S | H | X`;
-4. authority/provenance;
-5. counted-core impact.
+## 2. Governance model
 
-Canonical enum values and valid combinations are machine-owned by
-`COMPRESSION_RESEARCH_TRACKS.json` and checked by
-`validate_compression_research.py`.
+Post-FINAL work uses the risk-tiered model defined in
+`POST_FINAL_RESEARCH_GOVERNANCE.md`:
 
-## 2. IDs and state machines
+- **L0** read-only analysis;
+- **L1** additive uncounted research — default;
+- **L2** existing/shared uncounted interface change;
+- **L3** frozen/counted/minimal-core change.
 
-Meta-generators use permanent IDs such as:
+The validator protects existing L1 surfaces by comparing the candidate with the immutable
+PR base. A track may own a broad namespace while still being unable to rewrite already
+merged files.
 
-- `M-QD-01` — Quotient Descent;
-- `M-TC-01` — Transport Certificate Calculus.
+## 3. Branch model
 
-Generator states:
-
-`candidate -> schema_locked -> lean_wip -> lean_green ->
-cross_family_green -> integration_green -> main_green -> ledger_green ->
-counted_generator`.
-
-Mapping states:
-
-`conjectured -> source_aligned -> statement_matched ->
-lean_rederived_partial | lean_rederived -> assumption_audited -> main_green ->
-counted`.
-
-`rejected` is a valid terminal research result for a compression hypothesis.
-
-## 3. Evidence discipline
-
-A compression claim is not established merely because two theorems look
-similar. A counted mapping requires:
-
-1. frozen source statement identified;
-2. generic M-ID theorem Lean-green;
-3. explicit specialization/wrapper theorem;
-4. assumption relation recorded;
-5. conclusion relation recorded;
-6. full source-facing conclusion recovered for `lean_rederived`;
-7. feature exact-head CI green;
-8. clean integration/PR/resulting-main CI green;
-9. separate ledger promotion green.
-
-`partial` may never be counted as a full P-ID rederivation.
-
-## 4. Branch governance
-
-Repository-wide governance in `docs/REPOSITORY_BRANCH_GOVERNANCE.md` remains
-binding.
-
-Compression branch classes:
-
-- governance/mission maintenance: `ops/compression-<topic>` (temporary);
-- generator feature: `compression/<m-id-lower>-<topic>`;
-- clean integration: `compression/<m-id-lower>-main-integration`;
-- ledger promotion: `compression/ledger-<checkpoint>`;
-- emergency quarantine only: `hold/compression-<topic>`.
-
-Post-FINAL research branch classes additionally use the immutable registry:
+Use one branch for one durable scientific objective:
 
 - Track S: registered `compression/topology-*`, `compression/goa-*`,
-  `compression/recurrent-*`, `compression/contractive-*`, and related registered
-  patterns;
-- Track H: `compression/hierarchy-*`, restricted to the dedicated
-  `Compression/Hierarchy/` and `docs/compression/hierarchy/` surfaces;
-- Track X: `compression/cross-track-*`, restricted to the dedicated
-  `Compression/CrossTrack/` and `docs/compression/cross_track/` surfaces plus
-  the public `CrossTrack` root import;
-- governance activation/maintenance: `ops/compression-*` only on registered
-  governance paths;
-- Track X mutation is forbidden while `cross_track_integration_gate = closed`
-  and authorized only after the gate is intentionally opened on canonical
-  `main`.
+  `compression/recurrent-*`, `compression/contractive-*`, etc.;
+- Track H: `compression/hierarchy-*`;
+- Track X: `compression/cross-track-*`;
+- Track O: `compression/objecthood-*`;
+- governance/L2/L3 policy work: `ops/compression-*`;
+- emergency quarantine only: `hold/compression-*`.
 
-Branch naming alone is not authorization. The immutable base-policy validator
-must also accept the changed paths and live-concurrency state.
+Do not create `fresh`, `clean-v2`, `final-v3`, `scratch` remote branch families. Iteration
+belongs in commits on the same branch. Ordinary L1 work does not need a clean-integration
+branch or a ledger branch.
 
-Default: one active mutating branch per M-ID. Do not create `v2`, `fresh`,
-`final`, or scratch branch families.
+## 4. Minimal preflight
 
-## 5. Branch creation preflight
+Before starting a new mutating task:
 
-Before any new compression branch:
+1. `git fetch --prune origin`;
+2. confirm canonical `origin/main`;
+3. identify the task/Issue and risk tier;
+4. confirm the work is not already represented by an active branch/PR;
+5. confirm its track/namespace is registered;
+6. reuse an existing active branch when it already owns the task.
 
-1. fetch/prune remote state;
-2. read this manual and `COMPRESSION_MISSION.md` from `main`;
-3. read `COMPRESSION_LEDGER.yaml` and `COMPRESSION_COVERAGE.md`;
-4. read Issue #146 body;
-5. list remote branches and open PRs;
-6. load `COMPRESSION_RESEARCH_TRACKS.json` and classify the proposed work by
-   track and owned path before mutating files;
-7. read any child tracker named by Issue #146 (for example P0b, Track S, Track
-   H, or Track X) and honor its sequencing gate; when Track X is open, read
-   Issue #225 before selecting or creating a cross-track branch;
-8. verify the M-ID/lane is not already active/integrated and that the same track
-   has no competing live mutating branch;
-9. reuse the existing branch whenever one already represents the work;
-10. verify repository branch count remains <= 8 target / <= 12 hard cap.
+For L1, this is sufficient. Do **not** require reading every historical audit or lane before
+writing a new theorem. Read prior material only when it is a scientific dependency.
 
-## 6. CI gates
+Before L2/L3, additionally read the relevant policy/ledger/mission sections because those
+changes have larger blast radius.
 
-Every compression feature head must pass:
+## 5. L1 research workflow
 
-1. Compression ledger/matrix validator;
-2. protected baseline audit;
-3. proof-escape scan in `UEOT/V3/Compression`;
-4. `lake build UEOT.V3.Compression`;
-5. compression theorem axiom print;
-6. full `lake build UEOT`.
+Normal post-FINAL research:
 
-Every governed post-FINAL research/governance head must additionally pass:
+1. create/reuse one track branch from current `main`;
+2. add a dedicated new theorem/audit subtree;
+3. iterate locally;
+4. for each theorem stage, normally run focused compile + `git diff --check`;
+5. at a meaningful milestone, run the Compression namespace checks;
+6. before first/final push, run the relevant local regression once;
+7. open one PR to `main`;
+8. obtain required CI and one exact-head independent review;
+9. merge;
+10. require resulting-main full regression when Lean source changed;
+11. close/update the task tracker and Issue #146 current block;
+12. delete the merged branch.
 
-7. immutable base-policy authorization from
-   `.github/workflows/ueot-compression-research-policy.yml`;
-8. `validate_compression_research.py` against the correct base ref;
-9. `test_validate_compression_research.py`;
-10. exact-head independent/Codex review before merge.
+There is **no separate authorization PR** and **no separate final-governance PR** for L1.
 
-The general `UEOT Core Lean` workflow also runs on `compression/**` and
-temporary `ops/compression-*` governance branches.
+## 6. CI matrix
 
-## 7. Promotion lifecycle
+### L0
 
-`CANDIDATE/SCHEMA -> FEATURE -> FEATURE CI -> SOURCE/ASSUMPTION RE-AUDIT ->
-CLEAN INTEGRATION FROM LATEST MAIN -> INTEGRATION CI -> PR EXACT-HEAD CI ->
-MERGE MAIN -> RESULTING-MAIN CI -> LEDGER-ONLY BRANCH/PR -> LEDGER MAIN CI ->
-COUNTED`.
+No repository CI required.
 
-Feature green alone never changes counted compression coverage.
+### L1 PR
 
-## 8. Issue #146 LIVE STATE
+Required when applicable:
 
-The Issue body, not comment tail, is the high-frequency recovery record.
+- base-policy ownership validation;
+- research-governance regression tests;
+- proof-escape scan;
+- `lake build UEOT.V3.Compression` for Compression Lean changes;
+- ledger witness/axiom checks when the changed surface reaches them;
+- UEOT Core Lean full build once on the PR for Lean-source changes;
+- exact-head independent review once at PR boundary.
 
-Required fields:
+Documentation/registry-only changes do not run a Lean proof build solely because they live
+under `formalization/ueot-core/`.
 
-- current Core baseline/main;
-- compression counted metrics;
-- active M-ID/lane;
-- active branch/head;
-- open PR;
-- latest relevant CI;
-- current scientific hypothesis;
-- blocker/root cause;
+### Resulting main
+
+For Lean-source changes, `UEOT Core Lean` is the canonical owner of the full
+`lake build UEOT` regression. `Compression Guard` does not duplicate it.
+
+### L2/L3
+
+Run full exact-head regression and the additional governance/promotion checks defined by
+the relevant exception/Mission Contract.
+
+## 7. Local validation cadence
+
+Do not make each theorem stage pay final-release cost.
+
+Default stage cadence:
+
+`focused compile → diff-check → scientific assertion check → commit`.
+
+Milestone/PR cadence:
+
+`namespace build → proof-escape → governance validator/tests → axiom/witness audit as needed → full regression once → review`.
+
+Repeat the full regression only when the semantic surface or integration state actually
+changed enough to justify it.
+
+## 8. Protected surfaces
+
+L1 branches may not modify existing files on their PR base except explicit root-import
+exceptions. In addition, tracks may never mutate cross-owned/protected files such as:
+
+- `COMPRESSION_LEDGER.yaml`;
+- `COMPRESSION_COVERAGE.md`;
+- `COMPRESSION_MISSION.md`;
+- compression ablation/finalization evidence;
+- governance validators/workflows;
+- another track's source namespace;
+- frozen Core v3 source.
+
+Changing one of these is L2/L3, not an L1 workaround.
+
+## 9. L2 exception workflow
+
+Use L2 only when a new adapter cannot honestly solve the problem and an already merged
+uncounted/shared interface must change.
+
+1. document the exact existing path(s) and why additive extension is insufficient;
+2. make one scoped `ops/compression-*` base-policy exception;
+3. validate the exception without theorem mutation;
+4. perform the scientific change on its track branch;
+5. run full exact-head UEOT regression and review;
+6. merge and validate main;
+7. remove/expire the exception if it was temporary.
+
+L2 is exceptional, not the default task bootstrap.
+
+## 10. L3 promotion / counted-core workflow
+
+Counted mappings, G0 generator changes, frozen source semantics, minimal-core membership,
+ledger/coverage and finalization use the original Mission Contract discipline.
+
+The heavy lifecycle remains conceptually:
+
+`candidate theorem → source/assumption audit → exact mapping → integration → scoped ablation → ledger promotion → candidate main → exact candidate-main CI → closure evidence → resulting-main CI`.
+
+A later generator that changes counted mappings/minimal-core membership must reopen Gate C
+and re-finalize as specified in `COMPRESSION_MISSION.md`. Historical FINAL checkpoints
+remain immutable.
+
+## 11. Parallelism
+
+- up to four registered tracks may mutate concurrently;
+- one mutating branch per track by default;
+- read-only audits/workers are unlimited by this rule;
+- cross-track dependencies come from canonical `main`, not another unmerged branch;
+- two agents must not edit the same branch/file concurrently.
+
+If future demand requires same-track parallel mutation, implement path-disjoint concurrency
+checks before raising the per-track limit.
+
+## 12. Live state
+
+Issue #146 current section should remain short:
+
+- canonical `main`;
+- counted minimal core / mission state;
+- active tasks/trackers;
+- active branch/PR;
+- blocker;
 - exact next action;
-- do-not-repeat guards.
+- protected/nonrepeat boundaries.
 
-Comments are reserved for durable milestones/rejections/audits, not CI polling.
+Do not duplicate historical CI/PR narratives there. Durable history already exists in
+Git/PR/CI/audit evidence.
 
-## 9. Cross-chat recovery
+## 13. Cross-chat recovery
 
-New chats execute `COMPRESSION_BOOTSTRAP.md`. Never open a replacement branch
-merely because the chat or AI platform changed.
+A new chat should execute `COMPRESSION_BOOTSTRAP.md`, recover only active state, and then
+continue the scientific next action. It should not re-read every old Track-S/H/X/O audit
+unless scientifically necessary.
 
 At handoff:
 
-1. commit/push meaningful WIP on the same active branch;
-2. update Issue #146 body;
-3. persist architecture decisions not already in code/docs;
-4. do not modify counted ledger files unless a real lifecycle transition
-   occurred;
-5. continue useful work if the current chat still has room.
+- commit/push meaningful WIP on the same branch;
+- update the task tracker/Issue #146 only if the active state changed;
+- persist genuine architecture decisions;
+- do not create a handoff-only branch.
 
-## 10. Parallel conversations
+## 14. Branch retirement
 
-Parallelism is allowed only for genuinely separate M-IDs or read-only audits.
-Two chats must not mutate the same M-ID branch/file concurrently.
+After merge and required resulting-main validation, delete the remote feature/governance
+branch. Merged PRs and commits are the archive. Governance branches must not become
+permanent history.
 
-Recommended maximum:
+## 15. Future task / track expansion
 
-- active mutating compression lanes: 2;
-- open repository PRs: 2 total under repository governance;
-- read-only theorem/source audits: may run without branches.
+- Existing track + new scientific subtree: **L1**, no central governance edit.
+- Existing track + existing shared interface mutation: **L2**.
+- New top-level track: add its branch pattern, owned namespace and protected boundaries
+  once; subsequent tasks inherit them.
+- Counted/frozen change: **L3**.
 
-Post-FINAL ownership is stricter:
+This keeps policy growth proportional to stable architecture, not to the number of tasks.
 
-- at most one live Track S mutating branch;
-- at most one live Track H mutating branch;
-- at most one live Track X mutating branch;
-- the total number of simultaneously mutating post-FINAL research tracks is at
-  most two;
-- S, H, and X may proceed in parallel only on their owned files;
-- cross-track dependencies must come from canonical `main`;
-- Track X follows the registry gate and Issue #225; opening X does not reopen
-  completed Track-S finite-state or Track-H H0--H3 work.
+## 16. Definition of operational success
 
-## 10A. Guarded post-FINAL recovery
+Governance is healthy when:
 
-When Issue #146 reports the guarded architecture as active, recover in this
-order:
-
-1. canonical `main` and frozen ledger state;
-2. research registry and immutable policy status;
-3. Issue #146 authority/recovery block;
-4. named P0b/S/H/X child tracker, if any; read Issue #225 whenever Track X is
-   the active integration mission;
-5. open PRs and live governed branches;
-6. exact head/CI/review status for Track S, Track H, and Track X independently;
-7. the exact next action in the owning track.
-
-Do not treat an authorized PR as merged evidence, do not treat a draft theorem
-as canonical main evidence, and do not let a role such as G1/G2/G3 imply
-counted status.
-
-## 11. Mission completion gate
-
-`COMPRESSION_MISSION.md` is the authoritative scientific Definition of Done.
-No chat, issue comment, PR description, or green CI run may weaken it.
-
-The validator must reject `ready_for_finalization` or `final` unless the
-machine ledger shows all 106 P-IDs analyzed and schema-classified, 106 final
-per-P-ID dispositions, zero unresolved P-IDs, a frozen minimal core that
-exactly accounts for every generated dependency, complete ablation with
-remaining-core non-derivability evidence, and counted exact evidence for every
-generated disposition.
-
-Finalization uses two stages:
-
-1. `ready_for_finalization` — all scientific gates are satisfied and merged to
-   a candidate `main`;
-2. require successful **push** runs of Core Lean and Compression Guard for that
-   exact candidate-main SHA;
-3. open a dedicated closure PR from the candidate main, then commit the
-   `final` ledger state on that closure branch with the candidate SHA, both run
-   IDs, and the closure PR number;
-4. Compression Guard live-verifies that both runs succeeded for the recorded
-   candidate SHA and that the open PR targets `main`, is based on that SHA, and
-   matches the current closure head;
-5. merge the closure PR with a normal merge commit; on resulting `main`, the
-   verifier requires the merge ancestry to include both the candidate main and
-   recorded closure head;
-6. announce FINAL only after resulting-main Core Lean and Compression Guard are
-   green and Issue #146 is updated.
-
-This two-stage rule avoids circularly requiring a CI run to attest to the very
-commit that is trying to record its own completed run ID. Final closure uses a
-merge commit rather than squash/rebase so the audited ancestry remains
-machine-verifiable.
-
-## 12. v4 gate
-
-Do not write a compressed Core v4 merely from conceptual elegance. A v4
-reorganization is justified only after the Mission Contract's resolution and
-minimal-core gates are satisfied. Conceptual elegance alone is insufficient.
-
-## 13. Post-Gate-D extension and re-finalization
-
-A `FINAL` checkpoint is immutable historical evidence, but it does not forbid
-later research from formalizing a genuinely new replacement/generator route.
-If such a route changes counted mappings or minimal-core membership, the
-project must **reopen and re-finalize** rather than silently mutate a closed
-ledger.
-
-Required lifecycle:
-
-1. preserve the previous Gate-D SHA, metrics, minimal core and
-   `finalization_evidence` in an explicit historical checkpoint record;
-2. integrate the new theorem surface through the normal feature / PR /
-   resulting-main lifecycle;
-3. rerun scoped Gate-C ablation on the enlarged registered theorem-surface DAG,
-   including deletion of the new generator and rechecking every historical
-   generator while the new theorem surface is retained;
-4. on a dedicated ledger/governance branch, update counted mappings,
-   per-P-ID final dispositions, live minimal core and coverage, and set
-   `mission_contract.state = ready_for_finalization`;
-5. clear the live `finalization_evidence`; historical evidence remains
-   immutable in its checkpoint record;
-6. merge the ready-for-finalization ledger/governance PR to `main`;
-7. require successful **push** Core Lean and Compression Guard runs on that
-   exact candidate-main SHA;
-8. open a fresh dedicated closure PR from that candidate main;
-9. record the new candidate SHA, run IDs and closure PR in live
-   `finalization_evidence`, set state to `final`, and use a **normal merge
-   commit**;
-10. require resulting-main Core Lean and Compression Guard green before
-    announcing the new FINAL state.
-
-The older FINAL result remains valid for the theorem surface available at its
-checkpoint. A later closure supersedes it only for **current live compression
-accounting**; repository history must never be rewritten as though the new
-generator existed earlier.
+- scientific iteration is normally `edit → compile → next theorem`;
+- an ordinary task uses one research PR;
+- full UEOT builds are not duplicated by multiple workflows for the same semantic check;
+- old merged theorem surfaces cannot be rewritten by an L1 branch;
+- counted/frozen claims remain harder to change than ordinary research;
+- a new task inside an existing track can start without a governance rewrite.
