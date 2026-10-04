@@ -351,6 +351,17 @@ def git_blob_bytes(repo: Path, ref: str, path: str) -> bytes:
     return completed.stdout
 
 
+def git_path_exists(repo: Path, ref: str, path: str) -> bool:
+    completed = subprocess.run(
+        ["git", "cat-file", "-e", f"{ref}:{path}"],
+        cwd=repo,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    return completed.returncode == 0
+
+
 def validate_compression_root_import_change(
     repo: Path,
     baseline_ref: str | None,
@@ -411,12 +422,11 @@ def validate_objecthood_root_import_change(
     track_id: str,
     paths: list[str],
 ) -> None:
-    """Keep the public Objecthood root immutable except for RH imports.
+    """Keep the public Objecthood root immutable except for additive imports.
 
-    Track O needs to expose newly proved RH modules through the already public
-    Objecthood.lean root, but that exact-path exception must not become a
-    backdoor for rewriting merged O/ER/AR/GCR imports or adding declarations to
-    the root itself.
+    Risk-tiered Track O research exposes new additive modules through the already
+    public Objecthood.lean root.  The root exception must never become a
+    backdoor for rewriting merged imports or adding declarations to the root.
     """
 
     root = "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
@@ -428,7 +438,7 @@ def validate_objecthood_root_import_change(
         fail("Objecthood.lean ownership validation requires a baseline ref")
 
     allowed_import = re.compile(
-        r"import UEOT\.V3\.Compression\.Objecthood\.Homeostasis"
+        r"import UEOT\.V3\.Compression\.Objecthood"
         r"(?:\.[A-Za-z_][A-Za-z0-9_']*)+$"
     )
 
@@ -462,14 +472,14 @@ def validate_objecthood_root_import_change(
     # relocated into the module doc-comment or any later declaration context.
     if candidate_suffix != baseline_suffix:
         fail(
-            "Track O may modify Objecthood.lean only by inserting Homeostasis "
+            "Track O may modify Objecthood.lean only by inserting additive "
             "imports inside the existing import preamble"
         )
     if len(set(candidate_imports)) != len(candidate_imports):
         fail("Track O Objecthood.lean import preamble may not contain duplicates")
 
     # The candidate preamble must preserve every baseline import in its exact
-    # original order. Any intervening line is a newly inserted RH import and
+        # original order. Any intervening line is a newly inserted Track-O import and
     # must be one complete allowed command. This is insertion-only: later RH
     # stages cannot delete, move, or rewrite imports exposed by earlier stages.
     baseline_index = 0
@@ -483,14 +493,87 @@ def validate_objecthood_root_import_change(
             continue
         if allowed_import.fullmatch(line) is None:
             fail(
-                "Track O may insert only complete imports under "
-                "UEOT.V3.Compression.Objecthood.Homeostasis.*"
+                "Track O may insert only complete imports below "
+                "UEOT.V3.Compression.Objecthood.*"
             )
         inserted += 1
     if baseline_index != len(baseline_imports):
         fail("Track O may not delete, move, or rewrite existing Objecthood imports")
     if inserted == 0:
-        fail("Track O Objecthood.lean change must add a Homeostasis import")
+        fail("Track O Objecthood.lean change must add a Track-O module import")
+
+
+def validate_owned_track_root_import_change(
+    repo: Path,
+    baseline_ref: str | None,
+    candidate_ref: str,
+    track_id: str,
+    paths: list[str],
+) -> None:
+    roots = {
+        "H": (
+            "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+            "UEOT.V3.Compression.Hierarchy",
+        ),
+        "X": (
+            "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean",
+            "UEOT.V3.Compression.CrossTrack",
+        ),
+    }
+    spec = roots.get(track_id)
+    if spec is None:
+        return
+    root, module_prefix = spec
+    if root not in paths:
+        return
+    if not baseline_ref:
+        fail(f"Track {track_id} root ownership validation requires a baseline ref")
+
+    baseline_blob = git_blob_bytes(repo, baseline_ref, root)
+    candidate_blob = git_blob_bytes(repo, candidate_ref, root)
+    if b"\r" in candidate_blob or b"\x00" in candidate_blob:
+        fail(f"Track {track_id} root contains forbidden line-control or NUL characters")
+    try:
+        baseline_text = baseline_blob.decode("utf-8")
+        candidate_text = candidate_blob.decode("utf-8")
+    except UnicodeDecodeError:
+        fail(f"Track {track_id} root must remain valid UTF-8 text")
+
+    def import_preamble(lines: list[str]) -> tuple[list[str], list[str]]:
+        end = 0
+        while end < len(lines) and lines[end].startswith("import "):
+            end += 1
+        return lines[:end], lines[end:]
+
+    baseline_imports, baseline_suffix = import_preamble(baseline_text.split("\n"))
+    candidate_imports, candidate_suffix = import_preamble(candidate_text.split("\n"))
+    if candidate_suffix != baseline_suffix:
+        fail(f"Track {track_id} may modify its public root by additive imports only")
+    if len(set(candidate_imports)) != len(candidate_imports):
+        fail(f"Track {track_id} root import preamble may not contain duplicates")
+
+    allowed_import = re.compile(
+        rf"import {re.escape(module_prefix)}(?:\.[A-Za-z_][A-Za-z0-9_']*)+$"
+    )
+    baseline_index = 0
+    inserted = 0
+    for line in candidate_imports:
+        if (
+            baseline_index < len(baseline_imports)
+            and line == baseline_imports[baseline_index]
+        ):
+            baseline_index += 1
+            continue
+        if allowed_import.fullmatch(line) is None:
+            fail(
+                f"Track {track_id} may insert only complete imports below "
+                f"{module_prefix}.*"
+            )
+        inserted += 1
+    if baseline_index != len(baseline_imports):
+        fail(f"Track {track_id} may not delete, move, or rewrite existing root imports")
+    if inserted == 0:
+        fail(f"Track {track_id} root change must add an owned module import")
 
 
 def validate_architecture_records(
@@ -672,12 +755,39 @@ def validate_static(
 ) -> dict[str, list[re.Pattern[str]]]:
     if config.get("schema_version") != 1:
         fail("research-track governance schema_version must be 1")
+    governance_model = config.get("governance_model", "legacy_v1")
+    if governance_model not in {"legacy_v1", "risk_tiered_v2"}:
+        fail("governance_model must be legacy_v1 or risk_tiered_v2")
+    if governance_model == "risk_tiered_v2":
+        tiers = config.get("risk_tiers")
+        if not isinstance(tiers, dict) or set(tiers) != {"L0", "L1", "L2", "L3"}:
+            fail("risk_tiered_v2 must define exactly L0/L1/L2/L3 risk tiers")
+        expected_tier_names = {
+            "L0": "read_only_analysis",
+            "L1": "additive_uncounted_research",
+            "L2": "shared_interface_or_existing_uncounted_surface",
+            "L3": "frozen_counted_or_minimal_core_change",
+        }
+        for tier, name in expected_tier_names.items():
+            record = tiers.get(tier)
+            if not isinstance(record, dict) or record.get("name") != name:
+                fail(f"risk tier {tier} must retain canonical name {name}")
+        if tiers["L1"].get("policy") != "new_files_only_inside_owned_namespace":
+            fail("L1 must remain additive/new-files-only inside an owned namespace")
+        if tiers["L2"].get("policy") != "explicit_governance_exception":
+            fail("L2 must require an explicit governance exception")
+        if tiers["L3"].get("policy") != "mission_contract_promotion_and_refinalization":
+            fail("L3 must retain the Mission Contract promotion/re-finalization lifecycle")
     if config.get("authority_issue") != 146:
         fail("research-track governance authority_issue must remain #146")
     if config.get("counted_core_policy") != "must_match_live_ledger_minimal_core":
         fail("research-track governance must inherit the live ledger minimal core")
-    if config.get("max_active_mutating_tracks") != 2:
-        fail("post-FINAL governance permits exactly two mutating tracks")
+    expected_max_tracks = 4 if governance_model == "risk_tiered_v2" else 2
+    if config.get("max_active_mutating_tracks") != expected_max_tracks:
+        fail(
+            "post-FINAL governance permits exactly "
+            f"{expected_max_tracks} mutating tracks under {governance_model}"
+        )
     if config.get("main_only_cross_track_dependencies") is not True:
         fail("cross-track dependencies must remain main-only")
     if config.get("cross_track_integration_gate") not in {"closed", "open"}:
@@ -750,10 +860,15 @@ def validate_static(
     tracks = config.get("tracks")
     gate = config.get("cross_track_integration_gate")
     expected_tracks = {"S", "H"}
-    if gate == "open":
-        expected_tracks.add("X")
-    if omega_gate == "open":
-        expected_tracks.add("O")
+    if governance_model == "risk_tiered_v2":
+        if gate != "open" or omega_gate != "open":
+            fail("risk_tiered_v2 keeps the registered X/O research namespaces statically open")
+        expected_tracks.update({"X", "O"})
+    else:
+        if gate == "open":
+            expected_tracks.add("X")
+        if omega_gate == "open":
+            expected_tracks.add("O")
     if not isinstance(tracks, dict) or set(tracks) != expected_tracks:
         fail(
             "research-track governance must define exactly "
@@ -775,6 +890,11 @@ def validate_static(
         compiled[track_id] = compile_patterns(
             track.get("branch_patterns"), f"Track {track_id}"
         )
+        if governance_model == "risk_tiered_v2":
+            if track.get("change_policy") != "additive_only_by_default":
+                fail(
+                    f"Track {track_id} must use additive_only_by_default under risk_tiered_v2"
+                )
 
     governance = config.get("governance")
     if not isinstance(governance, dict):
@@ -793,7 +913,7 @@ def validate_static(
     )
 
     h = tracks["H"]
-    if h.get("initial_gate") != "H0-H3":
+    if governance_model == "legacy_v1" and h.get("initial_gate") != "H0-H3":
         fail("Track H must begin at H0-H3")
     expected_h_stability = (
         "cross_track_only_via_X"
@@ -808,10 +928,11 @@ def validate_static(
 
     if gate == "open":
         x = tracks["X"]
-        if x.get("tracker_issue") != 225:
-            fail("Track X must be governed by Issue #225")
-        if x.get("initial_gate") != "X0-X8":
-            fail("Track X must follow the X0-X8 mission sequence")
+        if governance_model == "legacy_v1":
+            if x.get("tracker_issue") != 225:
+                fail("Track X must be governed by Issue #225")
+            if x.get("initial_gate") != "X0-X8":
+                fail("Track X must follow the X0-X8 mission sequence")
         if x.get("preferred_branch_prefix") != "compression/cross-track-":
             fail("Track X preferred branch prefix must remain compression/cross-track-")
         if not matches_any("compression/cross-track-parent-semantic", compiled["X"]):
@@ -825,32 +946,33 @@ def validate_static(
         if gate != "open":
             fail("Track O cannot open while Track X integration gate is closed")
         o = tracks["O"]
-        tracker_issue = o.get("tracker_issue")
-        stage_plan = o.get("initial_gate")
-        if not objecthood_history:
-            # Legacy first activation.  This remains accepted when validating
-            # an older base policy during the guarded close-transition PR.
-            if tracker_issue != 230:
-                fail("initial Track O activation must be governed by Issue #230")
-            if stage_plan != "O0-O8":
-                fail("initial Track O activation must follow the O0-O8 mission sequence")
-        else:
-            if type(tracker_issue) is not int or tracker_issue <= 0:
-                fail("reopened Track O requires a positive fresh tracker_issue")
-            completed_issues = {
-                checkpoint["tracker_issue"] for checkpoint in objecthood_history
-            }
-            if tracker_issue in completed_issues:
-                fail("reopened Track O must use a fresh tracker_issue")
-            if not isinstance(stage_plan, str) or not stage_plan.strip():
-                fail("reopened Track O requires a nonempty fresh stage plan")
-            if stage_plan != stage_plan.strip():
-                fail("reopened Track O stage plan must not have leading/trailing whitespace")
-            completed_gates = {
-                checkpoint["completed_gate"] for checkpoint in objecthood_history
-            }
-            if stage_plan in completed_gates:
-                fail("reopened Track O must use a fresh stage plan")
+        if governance_model == "legacy_v1":
+            tracker_issue = o.get("tracker_issue")
+            stage_plan = o.get("initial_gate")
+            if not objecthood_history:
+                # Legacy first activation.  This remains accepted when validating
+                # an older base policy during the guarded close-transition PR.
+                if tracker_issue != 230:
+                    fail("initial Track O activation must be governed by Issue #230")
+                if stage_plan != "O0-O8":
+                    fail("initial Track O activation must follow the O0-O8 mission sequence")
+            else:
+                if type(tracker_issue) is not int or tracker_issue <= 0:
+                    fail("reopened Track O requires a positive fresh tracker_issue")
+                completed_issues = {
+                    checkpoint["tracker_issue"] for checkpoint in objecthood_history
+                }
+                if tracker_issue in completed_issues:
+                    fail("reopened Track O must use a fresh tracker_issue")
+                if not isinstance(stage_plan, str) or not stage_plan.strip():
+                    fail("reopened Track O requires a nonempty fresh stage plan")
+                if stage_plan != stage_plan.strip():
+                    fail("reopened Track O stage plan must not have leading/trailing whitespace")
+                completed_gates = {
+                    checkpoint["completed_gate"] for checkpoint in objecthood_history
+                }
+                if stage_plan in completed_gates:
+                    fail("reopened Track O must use a fresh stage plan")
         if o.get("preferred_branch_prefix") != "compression/objecthood-":
             fail("Track O preferred branch prefix must remain compression/objecthood-")
         if not matches_any("compression/objecthood-self-repair", compiled["O"]):
@@ -897,6 +1019,14 @@ def validate_objecthood_completion_history_transition(
 
     baseline = baseline_config.get("objecthood_completion_history")
     candidate = candidate_config.get("objecthood_completion_history")
+
+    if candidate_config.get("governance_model") == "risk_tiered_v2":
+        if baseline is not None and candidate != baseline:
+            fail(
+                "risk_tiered_v2 freezes legacy Objecthood completion history; "
+                "ordinary research closes in its tracker/merged PR instead"
+            )
+        return
 
     # Historical bases before the first Track-O closure have no history.  The
     # first close-transition may establish exactly one record corresponding to
@@ -1025,6 +1155,21 @@ def validate_track_paths(
                 f"cross-owned/protected path {path}"
             )
 
+    if (
+        baseline_ref
+        and track.get("change_policy") == "additive_only_by_default"
+    ):
+        exact_exceptions = set(track.get("allowed_exact_paths", []))
+        for path in paths:
+            if path in exact_exceptions:
+                continue
+            if git_path_exists(repo, baseline_ref, path):
+                fail(
+                    f"Track {track_id} L1 additive research may not modify or delete "
+                    f"existing path {path}; use an explicit L2/L3 governance change "
+                    "for shared or protected surfaces"
+                )
+
     if track_id == "H":
         allowed_exact = set(track.get("allowed_exact_paths", []))
         allowed_prefixes = tuple(track.get("allowed_path_prefixes", []))
@@ -1081,6 +1226,9 @@ def validate_track_paths(
         repo, baseline_ref, candidate_ref, track_id, paths
     )
     validate_objecthood_root_import_change(
+        repo, baseline_ref, candidate_ref, track_id, paths
+    )
+    validate_owned_track_root_import_change(
         repo, baseline_ref, candidate_ref, track_id, paths
     )
 

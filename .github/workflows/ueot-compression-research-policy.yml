@@ -3,6 +3,14 @@ name: UEOT Compression Research Base Policy
 on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review, edited]
+    paths:
+      - "formalization/ueot-core/UEOT/V3/Compression/**"
+      - "formalization/ueot-core/UEOT/V3/Compression.lean"
+      - "formalization/ueot-core/docs/compression/**"
+      - "formalization/ueot-core/scripts/validate_compression_research.py"
+      - "formalization/ueot-core/scripts/test_validate_compression_research.py"
+      - ".github/workflows/ueot-core-compression.yml"
+      - ".github/workflows/ueot-compression-research-policy.yml"
 
 permissions:
   contents: read
@@ -10,7 +18,7 @@ permissions:
 
 concurrency:
   group: ueot-compression-base-policy-${{ github.event.pull_request.number }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   authorize:

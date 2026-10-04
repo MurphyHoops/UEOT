@@ -222,7 +222,10 @@ def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
             changed_file.unlink(missing_ok=True)
 
     output = completed.stdout + completed.stderr
-    if completed.returncode == 0 or "prior records are immutable" not in output:
+    if (
+        completed.returncode == 0
+        or "freezes legacy Objecthood completion history" not in output
+    ):
         raise AssertionError(
             "base-checkout validator ignored candidate-ref governance data\n" + output
         )
@@ -528,82 +531,31 @@ def test_architecture_record_schema(repo: Path) -> None:
         "POST_FINAL_RESEARCH provenance requires RESEARCH lifecycle",
     )
 
-    def close_gate_without_closing_x(config: dict) -> None:
+    def close_cross_track_namespace(config: dict) -> None:
         config["cross_track_integration_gate"] = "closed"
 
     expect_static_failure(
         repo,
-        close_gate_without_closing_x,
-        "research-track governance must define exactly",
+        close_cross_track_namespace,
+        "statically open",
     )
 
-    def make_closed_o_record_active(config: dict) -> None:
+    def close_objecthood_namespace(config: dict) -> None:
         config["objecthood_omega_gate"] = "closed"
-        config["architecture_record_schema"]["track_status"]["O"] = "closed"
-        config["tracks"].pop("O", None)
-        record = next(
-            item
-            for item in config["architecture_records"]
-            if item["record_id"] == "O-CONSTITUTIVE-LEGITIMACY"
-        )
-        record["lifecycle_status"] = "RESEARCH"
-        record["authority_provenance"] = "POST_FINAL_RESEARCH"
 
     expect_static_failure(
         repo,
-        make_closed_o_record_active,
-        "closed Objecthood gate permits only historical",
+        close_objecthood_namespace,
+        "statically open",
     )
 
-    def reopen_o(config: dict, tracker_issue: int, stage_plan: str) -> None:
-        config["objecthood_omega_gate"] = "open"
-        config["architecture_record_schema"]["track_status"]["O"] = "active"
-        config["tracks"]["O"] = {
-            "title": "Objecthood continuation",
-            "status": "active",
-            "tracker_issue": tracker_issue,
-            "initial_gate": stage_plan,
-            "preferred_branch_prefix": "compression/objecthood-",
-            "branch_patterns": ["^compression/objecthood-.*$"],
-            "owned_topics": ["repair-law self-reconstruction"],
-            "allowed_path_prefixes": [
-                "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
-                "formalization/ueot-core/docs/compression/objecthood/",
-            ],
-            "allowed_exact_paths": [
-                "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
-                "formalization/ueot-core/UEOT/V3/Compression.lean",
-            ],
-            "dependency_rule": (
-                "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only"
-            ),
-            "source_track_reopen_policy": "forbidden_inside_O",
-        }
+    def weaken_additive_policy(config: dict) -> None:
+        config["tracks"]["O"]["change_policy"] = "mutable_shared_surface"
 
     expect_static_failure(
         repo,
-        lambda config: reopen_o(config, 230, "R0-R4"),
-        "fresh tracker_issue",
-    )
-    expect_static_failure(
-        repo,
-        lambda config: reopen_o(config, True, "R0-R4"),
-        "positive fresh tracker_issue",
-    )
-    expect_static_failure(
-        repo,
-        lambda config: reopen_o(config, 231, "   "),
-        "nonempty fresh stage plan",
-    )
-    expect_static_failure(
-        repo,
-        lambda config: reopen_o(config, 231, " O0-O8 "),
-        "must not have leading/trailing whitespace",
-    )
-    expect_static_failure(
-        repo,
-        lambda config: reopen_o(config, 231, "O0-O8"),
-        "fresh stage plan",
+        weaken_additive_policy,
+        "additive_only_by_default",
     )
 
     def whitespace_completed_gate(config: dict) -> None:
@@ -625,27 +577,13 @@ def test_architecture_record_schema(repo: Path) -> None:
         "must not have leading/trailing whitespace",
     )
 
-    def delete_history_and_reopen(config: dict) -> None:
-        config.pop("objecthood_completion_history", None)
-        reopen_o(config, 230, "O0-O8")
-
-    expect_static_failure(
-        repo,
-        delete_history_and_reopen,
-        "requires objecthood_completion_history",
-    )
-
-    reopened = copy.deepcopy(config)
-    reopen_o(reopened, 231, "R0-R4")
-    module.validate_static(repo, reopened, ledger)
-
     rewritten = copy.deepcopy(config)
     rewritten["objecthood_completion_history"][0]["tracker_issue"] = 999
     expect_objecthood_transition_failure(
         repo,
         config,
         rewritten,
-        "prior records are immutable",
+        "freezes legacy Objecthood completion history",
     )
 
     deleted = copy.deepcopy(config)
@@ -654,59 +592,7 @@ def test_architecture_record_schema(repo: Path) -> None:
         repo,
         config,
         deleted,
-        "cannot be deleted",
-    )
-
-    reopened_base = copy.deepcopy(config)
-    reopen_o(reopened_base, 231, "R0-R4")
-
-    replaced_tracker = copy.deepcopy(reopened_base)
-    replaced_tracker["tracks"]["O"]["tracker_issue"] = 232
-    expect_objecthood_transition_failure(
-        repo,
-        reopened_base,
-        replaced_tracker,
-        "must keep its tracker_issue until closure",
-    )
-
-    replaced_stage = copy.deepcopy(reopened_base)
-    replaced_stage["tracks"]["O"]["initial_gate"] = "R5-R8"
-    expect_objecthood_transition_failure(
-        repo,
-        reopened_base,
-        replaced_stage,
-        "must keep its stage plan until closure",
-    )
-
-    closed_without_append = copy.deepcopy(reopened_base)
-    closed_without_append["objecthood_omega_gate"] = "closed"
-    closed_without_append["architecture_record_schema"]["track_status"]["O"] = "closed"
-    closed_without_append["tracks"].pop("O")
-    expect_objecthood_transition_failure(
-        repo,
-        reopened_base,
-        closed_without_append,
-        "must append exactly one completion record",
-    )
-
-    closed_with_append = copy.deepcopy(closed_without_append)
-    closed_with_append["objecthood_completion_history"].append(
-        {
-            "completed_gate": "R0-R4",
-            "tracker_issue": 231,
-            "tracker_state": "closed",
-            "merged_pr": 999,
-            "reviewed_head": "1" * 40,
-            "merge_commit": "2" * 40,
-            "resulting_main_core_lean_run": 1,
-            "resulting_main_compression_guard_run": 2,
-            "current_boundary": "next_boundary",
-            "gate_state": "closed",
-        }
-    )
-    module.validate_static(repo, closed_with_append, ledger)
-    module.validate_objecthood_completion_history_transition(
-        reopened_base, closed_with_append
+        "freezes legacy Objecthood completion history",
     )
 
     def lose_counted_generator(config: dict) -> None:
@@ -835,6 +721,16 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
     valid = candidate_with(valid_text, "valid Objecthood RH import")
     module.validate_objecthood_root_import_change(
         repo, base, valid, "O", [root]
+    )
+
+    rlsr_text = base_text.replace(
+        "\n\n/-!\n",
+        "\nimport UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RootGuardRegression\n\n/-!\n",
+        1,
+    )
+    rlsr_valid = candidate_with(rlsr_text, "valid Objecthood future-task import")
+    module.validate_objecthood_root_import_change(
+        repo, base, rlsr_valid, "O", [root]
     )
 
     original_fail = module.fail
@@ -966,6 +862,59 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
                 raise AssertionError(f"unexpected old-import rejection: {exc}") from exc
         else:
             raise AssertionError("deleting a pre-RH Objecthood import was not rejected")
+    finally:
+        module.fail = original_fail
+
+
+def test_v2_additive_only_guard(repo: Path) -> None:
+    """L1 research may add new owned files but cannot rewrite merged surfaces."""
+
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    compiled = module.validate_static(repo, config, ledger)
+    baseline = "origin/main"
+    existing = (
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/"
+        "Homeostasis/RecurrentFaultSystem.lean"
+    )
+    new_path = (
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/"
+        "FutureTask/NewScientificResult.lean"
+    )
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                "HEAD",
+                "compression/objecthood-future-task",
+                [existing],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "L1 additive research may not modify or delete existing path" not in str(exc):
+                raise AssertionError(f"unexpected additive-only rejection: {exc}") from exc
+        else:
+            raise AssertionError("L1 existing Objecthood theorem mutation was not rejected")
+
+        module.validate_track_paths(
+            repo,
+            baseline,
+            "HEAD",
+            "compression/objecthood-future-task",
+            [new_path],
+            config,
+            compiled,
+        )
     finally:
         module.fail = original_fail
 
@@ -1111,37 +1060,8 @@ def main() -> None:
     )
     print("objecthood-live-gate-policy: PASS")
 
-    run_case(
-        repo,
-        "compression/objecthood-self-repair",
-        [
-            "formalization/ueot-core/docs/compression/objecthood/homeostasis/"
-            "RH0_RECURRENT_FAULT_SYSTEM_AUDIT.md"
-        ],
-        False,
-        (
-            "outside its owned Objecthood namespace"
-            if objecthood_open
-            else "unclassified compression research branch"
-        ),
-    )
-    print("objecthood-prior-rh-audit-immutable: PASS")
-
-    run_case(
-        repo,
-        "compression/objecthood-self-repair",
-        [
-            "formalization/ueot-core/docs/compression/objecthood/"
-            "GCR8_ARCHITECTURE_DELETION_BOUNDARY_AUDIT.md"
-        ],
-        False,
-        (
-            "outside its owned Objecthood namespace"
-            if objecthood_open
-            else "unclassified compression research branch"
-        ),
-    )
-    print("objecthood-closed-audit-immutable: PASS")
+    test_v2_additive_only_guard(repo)
+    print("risk-v2-additive-only-existing-surface-guard: PASS")
 
     run_case(
         repo,
@@ -1262,6 +1182,7 @@ def main() -> None:
             "compression/topology-goa-residual-inverse-stability\n"
             "compression/hierarchy-inventory\n"
             "compression/cross-track-parent-semantic\n"
+            "compression/objecthood-future-task\n"
         )
         cap_file = Path(handle.name)
     try:
@@ -1269,13 +1190,13 @@ def main() -> None:
             repo,
             "ops/compression-research-governance",
             [],
-            False,
-            "post-FINAL mutation cap exceeded",
+            True,
+            "",
             ["--live-branches-file", str(cap_file)],
         )
     finally:
         cap_file.unlink(missing_ok=True)
-    print("cross-track-global-concurrency-cap: PASS")
+    print("four-track-concurrency-v2: PASS")
 
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", delete=False) as handle:
         handle.write("compression/assembly-audit\n")
@@ -1312,7 +1233,7 @@ def main() -> None:
     print("base-change-reauthorization-trigger: PASS")
 
     test_objecthood_root_import_guard(repo)
-    print("objecthood-root-rh-import-only: PASS")
+    print("objecthood-root-additive-import-only: PASS")
 
     test_candidate_ref_policy_drives_objecthood_transition(repo)
     print("candidate-ref-policy-transition-audited: PASS")

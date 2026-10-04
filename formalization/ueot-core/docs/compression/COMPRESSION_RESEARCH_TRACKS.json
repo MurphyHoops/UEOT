@@ -6,7 +6,7 @@
   "post_final_governance": "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
   "ledger": "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
   "counted_core_policy": "must_match_live_ledger_minimal_core",
-  "max_active_mutating_tracks": 2,
+  "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
   "governed_path_prefixes": [
@@ -37,7 +37,9 @@
       "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
       "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
       "formalization/ueot-core/scripts/test_validate_compression_research.py",
-      "formalization/ueot-core/scripts/validate_compression_research.py"
+      "formalization/ueot-core/scripts/validate_compression_research.py",
+      "docs/REPOSITORY_BRANCH_GOVERNANCE.md",
+      ".github/workflows/ueot-core-lean.yml"
     ]
   },
   "tracks": {
@@ -83,6 +85,10 @@
         ".github/workflows/ueot-core-compression.yml",
         ".github/workflows/ueot-compression-research-policy.yml",
         "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
+      ],
+      "change_policy": "additive_only_by_default",
+      "allowed_exact_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression.lean"
       ]
     },
     "H": {
@@ -119,14 +125,12 @@
         ".github/workflows/ueot-compression-research-policy.yml",
         "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
       ],
-      "initial_gate": "H0-H3",
-      "long_run_stability_work": "cross_track_only_via_X"
+      "long_run_stability_work": "cross_track_only_via_X",
+      "change_policy": "additive_only_by_default"
     },
     "X": {
       "title": "Cross-Track Parent Formation × Long-Run Semantic Stability",
       "status": "active",
-      "tracker_issue": 225,
-      "initial_gate": "X0-X8",
       "preferred_branch_prefix": "compression/cross-track-",
       "branch_patterns": [
         "^compression/cross-track-.*$"
@@ -164,32 +168,27 @@
         "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
       ],
       "dependency_rule": "consume_S_and_H_evidence_from_canonical_main_only",
-      "source_track_reopen_policy": "forbidden_inside_X"
+      "source_track_reopen_policy": "forbidden_inside_X",
+      "change_policy": "additive_only_by_default"
     },
     "O": {
-      "title": "Objecthood / Repair-Law Self-Reconstruction",
+      "title": "Objecthood / Self-Maintenance and Reconstruction Research",
       "status": "active",
-      "tracker_issue": 257,
-      "initial_gate": "RLSR0-RLSR9",
       "preferred_branch_prefix": "compression/objecthood-",
       "branch_patterns": [
         "^compression/objecthood-.*$"
       ],
       "owned_topics": [
-        "trusted ambient execution substrate versus mutable object-level repair organization",
-        "internal repair-program representation and typed execution semantics",
-        "behavioral repair-program validity and carrier-relative equivalence",
-        "program corruption and identifiability no-go boundary",
-        "finite redundant error-correcting repair-program reconstruction source",
-        "repair-program recovery dynamics and explicit valid-program basin",
-        "joint physical controller and repair-program recovery with explicit mode ordering",
-        "finite no-infinite-regress closure relative to the declared trusted substrate",
-        "same-parent and semantic restoration after repair-law reconstruction",
-        "RLSR architecture deletion and primitive audit"
+        "constitutive legitimacy, persistence, repair and self-stabilization",
+        "recurrent homeostasis and quantitative maintenance under faults",
+        "repair-program representation, corruption and self-reconstruction",
+        "finite redundancy, identifiability and reconstruction no-go boundaries",
+        "same-parent semantic restoration and Objecthood synthesis",
+        "future additive Objecthood research within a dedicated new subtree"
       ],
       "allowed_path_prefixes": [
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/RepairLawSelfReconstruction/",
-        "formalization/ueot-core/docs/compression/objecthood/repair-law-self-reconstruction/"
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+        "formalization/ueot-core/docs/compression/objecthood/"
       ],
       "allowed_exact_paths": [
         "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
@@ -209,25 +208,11 @@
         ".github/workflows/ueot-compression-research-policy.yml",
         "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
         "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/ControllerRepair.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/AutonomousSelfStabilization.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/FormedParentSelfRepairSynthesis.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/RecurrentFaultSystem.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FaultBurden.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/MixedHomeostaticDrift.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CertifiedHomeostaticMargin.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostasisSemantics.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/SemanticHomeostasis.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostaticOperationalParent.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/CanonicalFaultBurden.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/LeastFaultBurden.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/DownstreamTightening.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/ObjecthoodCanonicalBurden.lean"
+        "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean"
       ],
       "dependency_rule": "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only",
-      "source_track_reopen_policy": "forbidden_inside_O"
+      "source_track_reopen_policy": "forbidden_inside_O",
+      "change_policy": "additive_only_by_default"
     }
   },
   "architecture_record_schema": {
@@ -954,5 +939,30 @@
       "completed_scientific_stages": "QT0-QT4"
     }
   ],
-  "objecthood_omega_gate": "open"
+  "objecthood_omega_gate": "open",
+  "governance_model": "risk_tiered_v2",
+  "risk_tiers": {
+    "L0": {
+      "name": "read_only_analysis",
+      "blocking_gates": []
+    },
+    "L1": {
+      "name": "additive_uncounted_research",
+      "policy": "new_files_only_inside_owned_namespace",
+      "requires_full_ueot_on_pr": false,
+      "requires_full_ueot_on_main": true
+    },
+    "L2": {
+      "name": "shared_interface_or_existing_uncounted_surface",
+      "policy": "explicit_governance_exception",
+      "requires_full_ueot_on_pr": true,
+      "requires_full_ueot_on_main": true
+    },
+    "L3": {
+      "name": "frozen_counted_or_minimal_core_change",
+      "policy": "mission_contract_promotion_and_refinalization",
+      "requires_full_ueot_on_pr": true,
+      "requires_full_ueot_on_main": true
+    }
+  }
 }
