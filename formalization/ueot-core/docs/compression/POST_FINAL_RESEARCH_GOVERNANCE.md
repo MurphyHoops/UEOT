@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-FINAL Parallel Research Governance
 
-Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X MERGED SURFACE REGISTERED / TRACK O GATE OPEN / POST-FINAL / UNCOUNTED**
+Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X MERGED SURFACE REGISTERED / TRACK O GATE CLOSED / POST-FINAL / UNCOUNTED**
 
 Authority:
 
@@ -123,24 +123,34 @@ Completed fourth-cycle tracker: **Issue #243 / GCR0--GCR8**.
 
 Completed fifth-cycle tracker: **Issue #248 / RH0--RH9**.
 
-Current authorized continuation tracker: **Issue #253 / QT0--QT4**.
+Completed sixth-cycle tracker: **Issue #253 / QT0--QT4**.
 
-This fresh authorization is strictly limited to post-RH quantitative tightening
-of the already merged fault-burden interface. The read-only preflight proved a
-canonical finite-state burden
+Current Track-O theorem-mutation authorization: **NONE**.
+
+QT0--QT4 merged through research PR #255. The reviewed research head
+`a6fd50b60f2c9df673d06106e5b1d89532c07784` merged as
+`7daf2557f725a4d25a85099c5bf76ff3092d4739`; resulting-main Core Lean
+`37183393673` and Compression Guard `37183393682` both succeeded.
+
+The merged QT cycle constructs the canonical finite-state burden
 
 `b* = max_{z in carrier} (E_F[W | z] - W(z))`
 
-using ENNReal truncated subtraction, proved that `b*` is a valid finite
-`FaultBurdenCertificate`, proved `b* <= b` for every admissible existing
-certificate, exhibited a strict finite witness, and compile-checked propagation
-to the RH load ratio, Objecthood mean/invariant bounds, and same-parent RH8
-constructor.
+using ENNReal truncated subtraction, proves that `b*` is a valid finite
+`FaultBurdenCertificate`, proves `b* <= b` for every admissible certificate,
+exhibits a strict finite witness, and propagates the tightening through the RH
+load ratio, Objecthood mean/invariant bounds, and same-parent RH8 constructor.
 
-QT does **not** reopen RH0--RH9 and does not change the retained RH6 pathwise
-recurrence boundary. RLSR remains the next deeper scientific program after this
-bounded quantitative refinement, but still requires its own fresh tracker and
-governance authorization.
+The word `minimal` is local and typed: it is least only for the same recurrent-
+homeostasis system, fault kernel, carrier and repair potential. QT does not prove
+a globally sharp homeostatic phase boundary, does not alter RH0--RH9 or the RH6
+pathwise-recurrence boundary, and does not supply repair-law self-
+reconstruction.
+
+RLSR under planning parent #246 is now the next scientific program, but remains
+planning-only. It requires a fresh tracker and governance lifecycle that first
+separates the immutable trusted ambient substrate from the mutable object-level
+repair program.
 
 The completed RH authorization was strictly limited to recurrent homeostasis
 under continuing faults. Its planning parent is Issue #246. The required
@@ -268,26 +278,28 @@ provide pathwise recurrent legitimacy. Closing that boundary would require
 additional path-level/recurrent-class structure. The RH load ratio remains a
 sufficient certificate only; no necessary/sharp phase transition was proved.
 
-The fresh #253 / QT0--QT4 cycle is a **quantitative tightening only**. Its exact
-finite sequence is:
+The completed #253 / QT0--QT4 cycle is a **quantitative tightening only**:
 
 1. **QT0** — canonical single-step fault excess, direct finiteness and canonical
-   minimal `FaultBurdenCertificate`;
-2. **QT1** — exact minimality plus a strict finite separation witness against the
-   prior generic automatic uniform-bound constructor;
-3. **QT2** — propagate the canonical burden through fault load, load ratio,
-   margin and the exact RH certified damaged-occupation ratio;
+   `FaultBurdenCertificate`;
+2. **QT1** — least-burden theorem plus a strict finite separation witness
+   against the prior generic automatic uniform-bound constructor;
+3. **QT2** — propagation through fault load, load ratio, margin and the exact RH
+   certified damaged-occupation ratio;
 4. **QT3** — canonical Objecthood mean/invariant-Cesaro bounds and canonical
    same-parent `HomeostaticOperationalParent` constructor;
 5. **QT4** — architecture/deletion/downstream-boundary audit.
 
-This authorization stops after QT4. It does **not** authorize modification of
-the merged RH0--RH9 source files, the RH6 G3 pathwise-recurrence boundary, RLSR,
-EC, OC, AP, source Track-S/H/X files, counted-ledger state, or a fifth-generator
-claim. QT theorem source is confined to the new
-`Compression/Objecthood/Homeostasis/CanonicalBurden/` subtree; audit evidence
-is confined to `docs/compression/objecthood/homeostasis/canonical-burden/`.
-The public `Compression/Objecthood.lean` root remains an import-only exception.
+The cycle is now closed. Its architecture classification is uncounted G1/G2
+quantitative refinement with no G0 promotion. No source deletion is justified:
+the prior RH1 uniform-bound constructor remains a generic existence helper,
+while the canonical QT constructor is the preferred finite-state quantitative
+interface.
+
+QT did **not** modify the merged RH0--RH9 source files, the RH6 G3 pathwise-
+recurrence boundary, source Track-S/H/X files, counted-ledger state, or the
+four-generator core. It did not authorize or prove RLSR, EC, OC, AP, or a fifth
+generator.
 
 RH must preserve the preflight boundary discipline. Repair and fault kernels
 remain explicitly distinct; the positive theorem is restricted to faults whose
@@ -537,14 +549,14 @@ S has a stable merged finite-state long-run semantic interface.  The approved
 sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
 mutate H/S source-track files.
 
-### Track O — prior Objecthood cycles closed; active QT0--QT4 canonical burden tightening
+### Track O — O/ER/AR/GCR/RH/QT completed; gate closed
 
-**AUTHORIZED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
+**CLOSED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
 #234/#236; AR0--AR7 CLOSED through #238/#240; GCR0--GCR8 CLOSED through
-#243/#245/#247; RH0--RH9 CLOSED through #248/#251/#252; QT0--QT4 ACTIVE only
-through fresh Issue #253.**
+#243/#245/#247; RH0--RH9 CLOSED through #248/#251/#252; QT0--QT4 CLOSED through
+#253/#255. No Track-O theorem mutation is currently authorized.**
 
-All five completed Objecthood research lifecycles remain immutable in the
+All six completed Objecthood research lifecycles remain immutable in the
 append-only completion history. Their reviewed research heads, merge commits,
 and resulting-main CI evidence remain exactly recorded in the machine registry.
 
@@ -574,15 +586,16 @@ path-level/recurrent-class structure. No fifth G0 generator is promoted, the
 frozen four-generator counted core is unchanged, and no Track-S, Track-H or
 Track-X source lane was reopened.
 
-The RH final-governance closeout has already closed its lifecycle and appended
-its immutable completion record. Fresh Issue #253 now reopens the Objecthood
-mutation gate **only** for `QT0-QT4` in the dedicated canonical-burden subtree.
-All merged RH0--RH9 theorem files remain outside the active source allowlist.
+The QT final-governance closeout now closes the Objecthood mutation gate again
+and appends the immutable QT0--QT4 completion record. The merged canonical-
+burden theorem surface remains uncounted and cannot authorize further Objecthood
+mutation by itself.
 
-RLSR repair-law self-reconstruction remains planning-only during QT. A future
-RLSR lifecycle must first separate an immutable trusted ambient substrate from
-the mutable object-level repair program; it may not demand that the mathematical
-evolution laws themselves reconstruct themselves. EC, OC and an explicit
+RLSR repair-law self-reconstruction is the next planning-level program after QT,
+but is **not** active theorem-mutation authority. A future RLSR lifecycle must
+first separate an immutable trusted ambient substrate from the mutable
+object-level repair program; it may not demand that the mathematical evolution
+laws themselves reconstruct themselves. EC, OC and an explicit
 AutopoieticObject contract remain later still.
 
 Completed Objecthood cycles are stored in an **append-only completion history**:

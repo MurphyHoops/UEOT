@@ -165,60 +165,6 @@
       ],
       "dependency_rule": "consume_S_and_H_evidence_from_canonical_main_only",
       "source_track_reopen_policy": "forbidden_inside_X"
-    },
-    "O": {
-      "title": "Objecthood / RH Canonical Fault-Burden Tightening",
-      "status": "active",
-      "tracker_issue": 253,
-      "initial_gate": "QT0-QT4",
-      "preferred_branch_prefix": "compression/objecthood-",
-      "branch_patterns": [
-        "^compression/objecthood-.*$"
-      ],
-      "owned_topics": [
-        "canonical single-step fault excess and finite minimal burden",
-        "least FaultBurdenCertificate burden and strict separation witness",
-        "fault-load load-ratio margin and RH certified-ratio tightening",
-        "Objecthood canonical mean and invariant-Cesaro homeostasis bounds",
-        "canonical same-parent HomeostaticOperationalParent constructor",
-        "QT architecture deletion and downstream-boundary audit"
-      ],
-      "allowed_path_prefixes": [
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/",
-        "formalization/ueot-core/docs/compression/objecthood/homeostasis/canonical-burden/"
-      ],
-      "allowed_exact_paths": [
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
-      ],
-      "forbidden_exact_paths": [
-        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
-        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
-        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
-        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
-        "formalization/ueot-core/scripts/validate_compression.py",
-        "formalization/ueot-core/scripts/validate_compression_research.py",
-        ".github/workflows/ueot-core-compression.yml",
-        ".github/workflows/ueot-compression-research-policy.yml",
-        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean",
-        "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/RecurrentFaultSystem.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FaultBurden.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/MixedHomeostaticDrift.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CertifiedHomeostaticMargin.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostasisSemantics.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/SemanticHomeostasis.lean",
-        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostaticOperationalParent.lean"
-      ],
-      "dependency_rule": "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only",
-      "source_track_reopen_policy": "forbidden_inside_O"
     }
   },
   "architecture_record_schema": {
@@ -262,7 +208,7 @@
       "S": "active",
       "H": "active",
       "X": "active",
-      "O": "active"
+      "O": "closed"
     },
     "required_record_fields": [
       "record_id",
@@ -835,6 +781,34 @@
         "formalization/ueot-core/docs/compression/objecthood/homeostasis/RH6_HOMEOSTASIS_SEMANTICS_AUDIT.md",
         "formalization/ueot-core/docs/compression/objecthood/homeostasis/RH9_ARCHITECTURE_DELETION_PRIMITIVE_AUDIT.md"
       ]
+    },
+    {
+      "record_id": "O-RH-CANONICAL-FAULT-BURDEN-CONSTRUCTION",
+      "title": "Canonical fault-burden construction and same-parent Objecthood specialization",
+      "architecture_role": "G2",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/CanonicalFaultBurden.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/ObjecthoodCanonicalBurden.lean",
+        "formalization/ueot-core/docs/compression/objecthood/homeostasis/canonical-burden/QT4_ARCHITECTURE_DELETION_BOUNDARY_AUDIT.md"
+      ]
+    },
+    {
+      "record_id": "O-RH-CANONICAL-FAULT-BURDEN-ORDER-TIGHTENING",
+      "title": "Least-burden order theorem and monotone recurrent-homeostasis tightening",
+      "architecture_role": "G1",
+      "lifecycle_status": "MERGED_UNCOUNTED",
+      "track_owner": "O",
+      "authority_provenance": "POST_FINAL_MERGED",
+      "counted_core_impact": "NONE",
+      "evidence_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/LeastFaultBurden.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/DownstreamTightening.lean",
+        "formalization/ueot-core/docs/compression/objecthood/homeostasis/canonical-burden/QT4_ARCHITECTURE_DELETION_BOUNDARY_AUDIT.md"
+      ]
     }
   ],
   "objecthood_completion_history": [
@@ -902,7 +876,20 @@
       "current_boundary": "pathwise_recurrent_legitimacy_requires_additional_path_level_structure_then_repair_law_self_reconstruction",
       "gate_state": "closed",
       "completed_scientific_stages": "RH0-RH9"
+    },
+    {
+      "completed_gate": "QT0-QT4",
+      "tracker_issue": 253,
+      "tracker_state": "closed",
+      "merged_pr": 255,
+      "reviewed_head": "a6fd50b60f2c9df673d06106e5b1d89532c07784",
+      "merge_commit": "7daf2557f725a4d25a85099c5bf76ff3092d4739",
+      "resulting_main_core_lean_run": 37183393673,
+      "resulting_main_compression_guard_run": 37183393682,
+      "current_boundary": "pathwise_recurrent_legitimacy_requires_additional_path_level_structure_and_repair_law_self_reconstruction_requires_fresh_trusted_substrate_lifecycle",
+      "gate_state": "closed",
+      "completed_scientific_stages": "QT0-QT4"
     }
   ],
-  "objecthood_omega_gate": "open"
+  "objecthood_omega_gate": "closed"
 }
