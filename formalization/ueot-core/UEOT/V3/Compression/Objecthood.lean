@@ -34,6 +34,7 @@ import UEOT.V3.Compression.Objecthood.Homeostasis.CesaroHomeostasis
 import UEOT.V3.Compression.Objecthood.Homeostasis.CertifiedHomeostaticMargin
 import UEOT.V3.Compression.Objecthood.Homeostasis.HomeostasisSemantics
 import UEOT.V3.Compression.Objecthood.Homeostasis.SemanticHomeostasis
+import UEOT.V3.Compression.Objecthood.Homeostasis.HomeostaticOperationalParent
 
 /-!
 # UEOT Core Compression — Track O
