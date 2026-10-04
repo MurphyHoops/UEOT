@@ -77,11 +77,20 @@ theorem jointMixedDriftStrictWitness_repair_budget :
         jointMixedDriftStrictWitnessSystem.damagePenalty z ≤
       jointMixedDriftStrictWitnessSystem.potential z := by
   intro z hz
-  cases z <;>
-    simp [jointMixedDriftStrictWitnessSystem,
-      RecurrentHomeostasisSystem.damagePenalty,
-      homeostaticENNExpectation, lintegral_fintype] <;>
-    norm_num
+  cases z with
+  | low =>
+      simp [jointMixedDriftStrictWitnessSystem,
+        RecurrentHomeostasisSystem.damagePenalty,
+        homeostaticENNExpectation, lintegral_fintype]
+  | nominal =>
+      simp [jointMixedDriftStrictWitnessSystem,
+        RecurrentHomeostasisSystem.damagePenalty,
+        homeostaticENNExpectation, lintegral_fintype]
+  | damaged =>
+      simp [jointMixedDriftStrictWitnessSystem,
+        RecurrentHomeostasisSystem.damagePenalty,
+        homeostaticENNExpectation, lintegral_fintype]
+      norm_num
 
 /-- A unit RH1 fault certificate for the witness. -/
 noncomputable def jointMixedDriftStrictWitnessUnitFaultCertificate :
@@ -90,9 +99,14 @@ noncomputable def jointMixedDriftStrictWitnessUnitFaultCertificate :
   burden_ne_top := by simp
   fault_expectation_bound := by
     intro z hz
-    cases z <;>
-      simp [jointMixedDriftStrictWitnessSystem, lintegral_fintype] <;>
-      norm_num
+    cases z with
+    | low =>
+        simp [jointMixedDriftStrictWitnessSystem, lintegral_fintype]
+    | nominal =>
+        simp [jointMixedDriftStrictWitnessSystem, lintegral_fintype]
+        norm_num
+    | damaged =>
+        simp [jointMixedDriftStrictWitnessSystem, lintegral_fintype]
 
 /-- The separately canonicalized QT fault burden is exactly one. -/
 theorem jointMixedDriftStrictWitness_canonicalFaultBurden_eq_one :
@@ -109,7 +123,7 @@ theorem jointMixedDriftStrictWitness_canonicalFaultBurden_eq_one :
       change (2 : ENNReal) - 1 = 1
       calc
         (2 : ENNReal) - 1 = (1 + 1) - 1 := by norm_num
-        _ = 1 := by simpa using add_tsub_cancel_right (1 : ENNReal) 1
+        _ = 1 := by simp
     rw [hex] at h
     exact h
 
