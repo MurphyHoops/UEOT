@@ -30,6 +30,7 @@ import UEOT.V3.Compression.Objecthood.Homeostasis.RecurrentFaultSystem
 import UEOT.V3.Compression.Objecthood.Homeostasis.FaultBurden
 import UEOT.V3.Compression.Objecthood.Homeostasis.MixedHomeostaticDrift
 import UEOT.V3.Compression.Objecthood.Homeostasis.FiniteHorizonHomeostasis
+import UEOT.V3.Compression.Objecthood.Homeostasis.CesaroHomeostasis
 
 /-!
 # UEOT Core Compression — Track O
