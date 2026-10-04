@@ -27,6 +27,7 @@ import UEOT.V3.Compression.Objecthood.GeneralCausalStationaryCompleteness
 import UEOT.V3.Compression.Objecthood.GeneralCausalRepairSynthesis
 import UEOT.V3.Compression.Objecthood.StochasticRepairSynthesis
 import UEOT.V3.Compression.Objecthood.Homeostasis.RecurrentFaultSystem
+import UEOT.V3.Compression.Objecthood.Homeostasis.FaultBurden
 
 /-!
 # UEOT Core Compression — Track O
