@@ -37,6 +37,7 @@ import UEOT.V3.Compression.Objecthood.Homeostasis.SemanticHomeostasis
 import UEOT.V3.Compression.Objecthood.Homeostasis.HomeostaticOperationalParent
 import UEOT.V3.Compression.Objecthood.Homeostasis.CanonicalBurden.CanonicalFaultBurden
 import UEOT.V3.Compression.Objecthood.Homeostasis.CanonicalBurden.LeastFaultBurden
+import UEOT.V3.Compression.Objecthood.Homeostasis.CanonicalBurden.DownstreamTightening
 
 /-!
 # UEOT Core Compression — Track O
