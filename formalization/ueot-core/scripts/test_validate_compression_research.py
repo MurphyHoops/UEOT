@@ -74,6 +74,129 @@ def load_validator_module(repo: Path):
     return module
 
 
+def make_v2_config(config: dict) -> dict:
+    """Build the intended governance-v2 state without changing the live v1 registry."""
+
+    upgraded = copy.deepcopy(config)
+    upgraded["governance_model"] = "risk_tiered_v2"
+    upgraded["max_active_mutating_tracks"] = 4
+    upgraded["cross_track_integration_gate"] = "open"
+    upgraded["objecthood_omega_gate"] = "open"
+    upgraded["risk_tiers"] = {
+        "L0": {"name": "read_only_analysis", "blocking_gates": []},
+        "L1": {
+            "name": "additive_uncounted_research",
+            "policy": "new_files_only_inside_owned_namespace",
+            "requires_full_ueot_on_pr": False,
+            "requires_full_ueot_on_main": True,
+        },
+        "L2": {
+            "name": "shared_interface_or_existing_uncounted_surface",
+            "policy": "explicit_governance_exception",
+            "requires_full_ueot_on_pr": True,
+            "requires_full_ueot_on_main": True,
+        },
+        "L3": {
+            "name": "frozen_counted_or_minimal_core_change",
+            "policy": "mission_contract_promotion_and_refinalization",
+            "requires_full_ueot_on_pr": True,
+            "requires_full_ueot_on_main": True,
+        },
+    }
+
+    for track in upgraded["tracks"].values():
+        track["change_policy"] = "additive_only_by_default"
+    upgraded["tracks"]["S"]["allowed_exact_paths"] = [
+        "formalization/ueot-core/UEOT/V3/Compression.lean"
+    ]
+    upgraded["tracks"]["H"].pop("initial_gate", None)
+    upgraded["tracks"]["X"].pop("tracker_issue", None)
+    upgraded["tracks"]["X"].pop("initial_gate", None)
+    upgraded["tracks"]["O"] = {
+        "title": "Objecthood / Self-Maintenance and Reconstruction Research",
+        "status": "active",
+        "preferred_branch_prefix": "compression/objecthood-",
+        "branch_patterns": ["^compression/objecthood-.*$"],
+        "owned_topics": [
+            "persistence repair homeostasis and reconstruction",
+            "future additive Objecthood research within dedicated new subtrees",
+        ],
+        "allowed_path_prefixes": [
+            "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+            "formalization/ueot-core/docs/compression/objecthood/",
+        ],
+        "allowed_exact_paths": [
+            "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean"
+        ],
+        "forbidden_exact_paths": [
+            "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+            "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+            "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+            "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+            "formalization/ueot-core/scripts/validate_compression_research.py",
+            ".github/workflows/ueot-core-compression.yml",
+        ],
+        "dependency_rule": (
+            "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only"
+        ),
+        "source_track_reopen_policy": "forbidden_inside_O",
+        "change_policy": "additive_only_by_default",
+    }
+    upgraded["architecture_record_schema"]["track_status"]["O"] = "active"
+    return upgraded
+
+
+def test_v2_static_and_additive_policy(repo: Path) -> None:
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    v2 = make_v2_config(config)
+    compiled = module.validate_static(repo, v2, ledger)
+
+    existing = (
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/"
+        "Homeostasis/RecurrentFaultSystem.lean"
+    )
+    new_path = (
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/"
+        "RepairLawSelfReconstruction/NewScientificResult.lean"
+    )
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        try:
+            module.validate_track_paths(
+                repo,
+                "origin/main",
+                "HEAD",
+                "compression/objecthood-repair-law-self-reconstruction",
+                [existing],
+                v2,
+                compiled,
+            )
+        except ValueError as exc:
+            if "L1 additive research may not modify or delete existing path" not in str(exc):
+                raise AssertionError(f"unexpected additive-only rejection: {exc}") from exc
+        else:
+            raise AssertionError("governance v2 allowed mutation of an existing L1 theorem")
+
+        module.validate_track_paths(
+            repo,
+            "origin/main",
+            "HEAD",
+            "compression/objecthood-repair-law-self-reconstruction",
+            [new_path],
+            v2,
+            compiled,
+        )
+    finally:
+        module.fail = original_fail
+
+
 def test_rename_reports_source_and_destination(repo: Path) -> None:
     module = load_validator_module(repo)
     with tempfile.TemporaryDirectory() as tmp:
@@ -837,6 +960,16 @@ def test_objecthood_root_import_guard(repo: Path) -> None:
         repo, base, valid, "O", [root]
     )
 
+    rlsr_text = base_text.replace(
+        "\n\n/-!\n",
+        "\nimport UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RootGuardRegression\n\n/-!\n",
+        1,
+    )
+    rlsr_valid = candidate_with(rlsr_text, "valid Objecthood future-task import")
+    module.validate_objecthood_root_import_change(
+        repo, base, rlsr_valid, "O", [root]
+    )
+
     original_fail = module.fail
 
     def capture(message: str) -> None:
@@ -1368,6 +1501,9 @@ def main() -> None:
 
     test_p0b_legacy_baseline_transition(repo)
     print("p0b-legacy-baseline-transition: PASS")
+
+    test_v2_static_and_additive_policy(repo)
+    print("risk-tiered-v2-static-and-additive-policy: PASS")
 
 
 if __name__ == "__main__":

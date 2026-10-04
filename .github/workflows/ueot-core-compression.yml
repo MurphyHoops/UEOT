@@ -2,7 +2,7 @@ name: UEOT Core Compression Guard
 
 on:
   push:
-    branches: [main, "compression/**", "ops/compression-*"]
+    branches: [main]
     paths:
       - "formalization/ueot-core/**"
       - "docs/REPOSITORY_BRANCH_GOVERNANCE.md"
@@ -22,11 +22,54 @@ permissions:
   pull-requests: read
 
 concurrency:
-  group: ueot-core-compression-${{ github.ref }}
-  cancel-in-progress: false
+  group: ueot-core-compression-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  classify:
+    runs-on: ubuntu-latest
+    outputs:
+      proof_required: ${{ steps.changes.outputs.proof_required }}
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Classify semantic blast radius
+        id: changes
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            BASE="$BASE_SHA"
+          elif [[ -n "$BEFORE_SHA" && "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            BASE="$BEFORE_SHA"
+          else
+            BASE="${HEAD_SHA}^"
+          fi
+
+          git cat-file -e "${HEAD_SHA}^{commit}" 2>/dev/null || git fetch --no-tags origin "$HEAD_SHA"
+          git cat-file -e "${BASE}^{commit}" 2>/dev/null || git fetch --no-tags origin "$BASE"
+
+          proof_required=false
+          while IFS= read -r path; do
+            case "$path" in
+              formalization/ueot-core/UEOT.lean|formalization/ueot-core/UEOT/*.lean|formalization/ueot-core/UEOT/**/*.lean|formalization/ueot-core/scripts/*.lean|formalization/ueot-core/lakefile.lean|formalization/ueot-core/lake-manifest.json|formalization/ueot-core/lean-toolchain)
+                proof_required=true
+                break
+                ;;
+            esac
+          done < <(git diff --name-only "$BASE" "$HEAD_SHA")
+          echo "proof_required=$proof_required" >> "$GITHUB_OUTPUT"
+
   governance:
+    needs: classify
     runs-on: ubuntu-latest
     steps:
       - name: Checkout full history
@@ -97,6 +140,8 @@ jobs:
         run: python3 formalization/ueot-core/scripts/test_validate_compression_research.py --repo-root .
 
   proof:
+    needs: [classify, governance]
+    if: needs.classify.outputs.proof_required == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -150,9 +195,6 @@ jobs:
       - name: Print compression theorem axioms
         run: lake env lean scripts/CompressionAxiomAudit.lean
 
-      - name: Full UEOT regression build
-        run: lake build UEOT
-
       - name: Compression evidence summary
         shell: bash
         run: |
@@ -164,5 +206,5 @@ jobs:
             echo "- ledger validation: PASS"
             echo "- compression build: PASS"
             echo "- proof-escape scan: PASS"
-            echo "- full UEOT build: PASS"
+            echo "- full UEOT regression: delegated to UEOT Core Lean"
           } >> "$GITHUB_STEP_SUMMARY"
