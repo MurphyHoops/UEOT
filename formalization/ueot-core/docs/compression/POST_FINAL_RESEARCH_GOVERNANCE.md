@@ -1,6 +1,6 @@
 # UEOT Core Compression — Post-FINAL Parallel Research Governance
 
-Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X MERGED SURFACE REGISTERED / TRACK O GATE OPEN / POST-FINAL / UNCOUNTED**
+Status: **GUARDED ARCHITECTURE ACTIVE / TRACK X MERGED SURFACE REGISTERED / TRACK O GATE CLOSED / POST-FINAL / UNCOUNTED**
 
 Authority:
 
@@ -121,9 +121,14 @@ Completed third-cycle tracker: **Issue #238 / AR0--AR7**.
 
 Completed fourth-cycle tracker: **Issue #243 / GCR0--GCR8**.
 
-Current authorized continuation tracker: **Issue #248 / RH0--RH9**.
+Completed fifth-cycle tracker: **Issue #248 / RH0--RH9**.
 
-This fresh authorization is strictly limited to recurrent homeostasis (RH)
+Current Track-O theorem-mutation authorization: **NONE**. Repair-law
+self-reconstruction (RLSR) is the next planning-level program after RH, but it
+requires a fresh tracker, exact finite stage plan, and governance authorization
+before any repository theorem mutation.
+
+The completed RH authorization was strictly limited to recurrent homeostasis
 under continuing faults. Its planning parent is Issue #246. The required
 read-only P1--P5 preflight compiled successfully before authorization:
 typed repair/fault PMF mixture, ENNReal mixed drift, finite-horizon damaged
@@ -211,8 +216,9 @@ contract, Track-S/H source mutation, counted-ledger mutation, or a fifth
 generator claim. Discounted control may be used only through the explicit
 GCR1--GCR6 bridges; it may not be renamed an undiscounted reachability theorem.
 
-The fresh #248 / RH0--RH9 cycle is a new scientific problem: maintenance under
-continuing faults rather than one-shot recovery. Its exact finite sequence is:
+The completed #248 / RH0--RH9 cycle addressed a new scientific problem:
+maintenance under continuing faults rather than one-shot recovery. Its exact
+finite sequence was:
 
 1. **RH0** — recurrent-fault PMF model plus the GCR-complete repairable carrier;
 2. **RH1** — finite `FaultBurdenCertificate`;
@@ -229,10 +235,24 @@ continuing faults rather than one-shot recovery. Its exact finite sequence is:
 9. **RH8** — `HomeostaticOperationalParent` synthesis;
 10. **RH9** — architecture/deletion/primitive audit.
 
-This authorization stops after RH9. It does **not** authorize repair-law
-self-reconstruction (RLSR), energetic/resource closure (EC), ontogenetic
-construction (OC), an `AutopoieticObject` contract/AP audit, source-track
-S/H/X mutation, counted-ledger mutation, or a fifth-generator claim.
+That authorization stopped after RH9 and is now closed. It did **not**
+authorize repair-law self-reconstruction (RLSR), energetic/resource closure
+(EC), ontogenetic construction (OC), an `AutopoieticObject` contract/AP audit,
+source-track S/H/X mutation, counted-ledger mutation, or a fifth-generator
+claim.
+
+Research PR #251 merged reviewed head
+`7bd2584c34d2dbf3e90d14ba1cc323431e46f809` as
+`0b1d116ada563ac5954b41a60560556906b910ea`. Exact-head Core Lean,
+Compression Guard and Codex review all cleared. Resulting-main Core Lean
+`37173534965` and Compression Guard `37173535117` both succeeded.
+
+RH0--RH9 prove recurrent-fault mean/invariant homeostasis and conditional
+semantic homeostasis for the same selected operational parent, while retaining
+an exact G3 boundary: mean/invariant occupation control does not by itself
+provide pathwise recurrent legitimacy. Closing that boundary would require
+additional path-level/recurrent-class structure. The RH load ratio remains a
+sufficient certificate only; no necessary/sharp phase transition was proved.
 
 RH must preserve the preflight boundary discipline. Repair and fault kernels
 remain explicitly distinct; the positive theorem is restricted to faults whose
@@ -482,66 +502,56 @@ S has a stable merged finite-state long-run semantic interface.  The approved
 sequence is X0--X8 from #225.  Cross-track work must not bypass that tracker or
 mutate H/S source-track files.
 
-### Track O — prior Objecthood cycles closed; active RH0--RH9 recurrent homeostasis
+### Track O — O0--O8 / ER0--ER3 / AR0--AR7 / GCR0--GCR8 / RH0--RH9 completed; gate closed
 
-**AUTHORIZED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
+**CLOSED TRACK; O0--O8 CLOSED through #230/#232; ER0--ER3 CLOSED through
 #234/#236; AR0--AR7 CLOSED through #238/#240; GCR0--GCR8 CLOSED through
-#243/#245/#247; RH0--RH9 ACTIVE only through fresh Issue #248.**
+#243/#245/#247; RH0--RH9 CLOSED through #248/#251. No Track-O theorem mutation
+is currently authorized.**
 
-The first four Objecthood research lifecycles remain immutable in the
+All five completed Objecthood research lifecycles remain immutable in the
 append-only completion history. Their reviewed research heads, merge commits,
-and resulting-main CI evidence remain exactly as recorded.
+and resulting-main CI evidence remain exactly recorded in the machine registry.
 
-The GCR final-governance closeout merged PR #247 reviewed head
-`3a3445d6968adce66bf52e7f8500d3ba762dd48d` as canonical main
-`b8731d379d8b00ac1bf2f777b3a1c0a15afc6f35`. Resulting-main Core Lean
-`37143377155` and Compression Guard `37143377160` both succeeded.  That
-closeout removed the active GCR registration, closed the Objecthood mutation
-gate, and appended exactly one immutable GCR completion-history record before
-the fresh RH lifecycle was considered.
+The RH lifecycle was authorized by PR #250 from canonical main
+b8731d379d8b00ac1bf2f777b3a1c0a15afc6f35 after the Issue #246 read-only
+P1--P5 preflight. Research PR #251 then merged exact reviewed head
+7bd2584c34d2dbf3e90d14ba1cc323431e46f809 as
+0b1d116ada563ac5954b41a60560556906b910ea. Exact-head policy, Core Lean,
+Compression Guard and Codex review cleared, and resulting-main Core Lean
+37173534965 plus Compression Guard 37173535117 both succeeded.
 
-Issue #246 then completed the required read-only RH P1--P5 preflight.  The
-compiled route reuses the existing O5 `autonomousRepairPotential` and repair
-drift, uses an explicit repair/fault PMF mixture, obtains the finite-horizon
-damaged-occupation telescope directly at the PMF level, reuses M-OI/P-GOA-01
-through a finite PMF-to-matrix adapter, and restricts positive RH claims to the
-full finite GCR repairable carrier where the ENNReal repair potential is finite.
+RH0--RH9 establish an explicit finite recurrent-fault model with repair kernel
+Q, fault kernel F, hazard epsilon, inherited repair potential W, repair drift c,
+and finite fault burden b; prove the exact mixed drift and
+finite-horizon/asymptotic damaged-occupation bounds; bridge finite PMF dynamics
+to the existing invariant/Cesaro machinery; retain the load ratio as a
+sufficient certificate rather than a sharp threshold; separate mean
+homeostasis from pathwise recurrent legitimacy; add semantic homeostasis only
+under an explicit statewise semantic coupling; and synthesize a
+HomeostaticOperationalParent on the same already selected parent.
 
-Fresh Issue #248 therefore reopens Track O **only** for `RH0-RH9`.  RH
-theorem-source mutations are confined to the dedicated new
-`Compression/Objecthood/Homeostasis/` source prefix; RH audit documents are
-confined to the dedicated `docs/compression/objecthood/homeostasis/` prefix,
-leaving all O/ER/AR/GCR audit evidence outside the active allowlist.  The public
-`Compression/Objecthood.lean` root is an import-only exception enforced by the
-research validator: every nonblank changed line must be one complete
-`import UEOT.V3.Compression.Objecthood.Homeostasis.<Module>` command with no
-trailing syntax, so prior Objecthood imports/declarations cannot be rewritten or
-hidden behind comment delimiters.  The global `Compression.lean` root is not
-owned by RH at all because canonical main already imports the Objecthood root.
-All earlier O/ER/AR/GCR Objecthood theorem files therefore remain outside the
-allowlist, not merely protected by prose.
-RH may consume the frozen GCR, M-OI, Track-S and
-Track-X public interfaces from canonical main, but may not mutate their source
-files, the counted ledger, coverage, theorem index, research governance, or
-workflow policy.
+The architectural classification is **uncounted G1/G2 recurrent-homeostasis
+bridging/synthesis plus one retained G3 pathwise-recurrence boundary**. The
+retained boundary is precise: the current marginal/Cesaro theorem surface does
+not imply almost-sure infinitely-often return to legitimacy without additional
+path-level/recurrent-class structure. No fifth G0 generator is promoted, the
+frozen four-generator counted core is unchanged, and no Track-S, Track-H or
+Track-X source lane was reopened.
 
-RH studies recurrent maintenance under continuing faults.  It must keep repair
-kernel `Q`, fault kernel `F`, hazard `epsilon`, repair potential `W`,
-repair drift `c`, and fault burden `b` semantically explicit.  A proved
-fault/repair load ratio is a sufficient certificate unless necessity is
-separately established.  Mean long-run legitimate occupation must remain
-formally distinct from pathwise infinitely-often return.
-
-This authorization stops after RH9.  Repair-law self-reconstruction (RLSR) is
-not part of #248; energetic/resource closure, ontogenetic construction and AP
-are later still.  No fifth G0 generator is promoted and the frozen four-counted
-generator core remains unchanged.
+The Objecthood mutation gate is therefore **closed** after RH9. RLSR
+repair-law self-reconstruction is the next planning-level scientific program,
+not an active theorem-mutation authorization. A future RLSR lifecycle must
+first separate an immutable trusted ambient substrate from the mutable
+object-level repair program; it may not demand that the mathematical evolution
+laws themselves reconstruct themselves. EC, OC and an explicit
+AutopoieticObject contract remain later still.
 
 Completed Objecthood cycles are stored in an **append-only completion history**:
 an authorization PR may not delete, reorder, or rewrite an earlier completion
-record to make a closed tracker/stage appear fresh again.  A later close cycle
-**must append exactly one** record corresponding to the Track O tracker/stage
-that was active on its base, and must close the mutation gate at the same time.
+record to make a closed tracker/stage appear fresh again. A later close cycle
+must append exactly one record corresponding to the Track O tracker/stage that
+was active on its base and must close the mutation gate at the same time.
 
 No Track-O result may be renamed full universal or biological Objecthood /
 autopoiesis without a separate theorem and governance lifecycle.
