@@ -10,6 +10,7 @@ import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.JointRecovery
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.NoInfiniteRegress
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.SameParentRestoration
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.SafeJointPathLaw
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RecurrentFaultPathLaw
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.TightenedSameParentRestoration
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RepairThenPreserve
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.SafeJointRecovery
