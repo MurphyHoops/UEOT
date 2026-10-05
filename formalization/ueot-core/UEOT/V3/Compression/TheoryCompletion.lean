@@ -1,3 +1,9 @@
+import UEOT.V3.Compression.TheoryCompletion.OperationalObject
+import UEOT.V3.Compression.TheoryCompletion.Purpose
+import UEOT.V3.Compression.TheoryCompletion.GOD
+import UEOT.V3.Compression.TheoryCompletion.GOA
+import UEOT.V3.Compression.TheoryCompletion.Scale
+import UEOT.V3.Compression.TheoryCompletion.SemanticBoundaries
 /-!
 # UEOT Theory Completion public root
 
