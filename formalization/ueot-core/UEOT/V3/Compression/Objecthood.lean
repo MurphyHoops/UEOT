@@ -44,6 +44,7 @@ import UEOT.V3.Compression.Objecthood.PostQTTightening.GeneralCausalObjecthoodCl
 import UEOT.V3.Compression.Objecthood.PostQTTightening.CanonicalJointMixedDrift
 import UEOT.V3.Compression.Objecthood.PostQTTightening.StrictJointMixedDriftWitness
 import UEOT.V3.Compression.Objecthood.PostQTTightening.JointMixedDriftDownstream
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.All
 
 /-!
 # UEOT Core Compression — Track O

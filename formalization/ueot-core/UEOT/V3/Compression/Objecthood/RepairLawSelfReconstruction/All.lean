@@ -7,11 +7,16 @@ import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.ProgramRecover
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.JointRecovery
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.NoInfiniteRegress
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.SameParentRestoration
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.SafeJointPathLaw
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.TightenedSameParentRestoration
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RepairThenPreserve
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.SafeJointRecovery
 
 /-!
 # UEOT RLSR local research surface
 
-Umbrella import for the additive Track-O repair-law self-reconstruction cycle.
-This file intentionally lives inside the governed RLSR subtree; the existing
-public Objecthood/Compression roots are not modified by this L1 cycle.
+Umbrella import for the additive Track-O repair-law self-reconstruction cycle,
+including the post-audit T1--T5 tightening surface.  Publication integration is
+exposed through the governance-permitted additive import in `Objecthood.lean`;
+no frozen counted-core declaration is modified.
 -/

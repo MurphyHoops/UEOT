@@ -1,6 +1,13 @@
 # RLSR9 — architecture / deletion / primitive audit
 
-Status: **LOCAL FULL-GREEN / SCIENTIFICALLY CLOSED**
+Status: **HISTORICAL RLSR0--RLSR9 BASELINE — SUPERSEDED BY POST-AUDIT TIGHTENING**
+
+> Post-audit note: the T1--T6 recompression cycle strengthens this baseline.
+> In particular, the preferred runtime is now mode-free, program identity is
+> available at the physical-kernel level, repair/preservation use one composite
+> contract, recovered states project to O1 legitimacy, and the recovered joint
+> Ionescu--Tulcea path law is formalized.  See
+> `RLSR_T6_RECOMPRESSION_FINAL_AUDIT.md` for the authoritative final state.
 
 Canonical base: `main@32a68ed3c740842be9e500e502ea32c0b5434825`
 
