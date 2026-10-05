@@ -53,7 +53,9 @@ theorem closureCoarseGraining_comp
   exact resolutionMap_comp Lr Ls hrs hM
 
 /-- Exact dynamical scale transport on the reachable fine-scale image. This is
-an intertwining condition between two macro transition laws and a scale map. -/
+an intertwining condition between two macro transition laws and a measurable
+scale map. Measurability is part of the semantic contract so `Measure.map`
+cannot be satisfied through its totalized nonmeasurable fallback. -/
 def ExactDynamicScaleIntertwining
     {Ms : Type uMs} {Mr : Type uMr} {A : Type uA}
     [MeasurableSpace Ms] [MeasurableSpace Mr]
@@ -61,8 +63,9 @@ def ExactDynamicScaleIntertwining
     (Ps : Ms → A → Measure Ms)
     (Pr : Mr → A → Measure Mr)
     (c : Ms → Mr) : Prop :=
-  ∀ m ∈ reachable, ∀ a,
-    (Ps m a).map c = Pr (c m) a
+  Measurable c ∧
+    ∀ m ∈ reachable, ∀ a,
+      (Ps m a).map c = Pr (c m) a
 
 /-- The canonical common-microscopic-process theorem yields exact cross-scale
 intertwining. The wrapper deliberately preserves the source theorem's reachable
@@ -79,6 +82,7 @@ theorem exactDynamicScaleIntertwining_on_reachable
     (hs : ∀ x a, (P x a).map fs = Ps (fs x) a)
     (hr : ∀ x a, (P x a).map fr = Pr (fr x) a) :
     ExactDynamicScaleIntertwining (Set.range fs) Ps Pr c := by
+  refine ⟨hc, ?_⟩
   exact p_dyn_04_exact_intertwining
     P Ps Pr fs fr c hfs hc hcomp hs hr
 

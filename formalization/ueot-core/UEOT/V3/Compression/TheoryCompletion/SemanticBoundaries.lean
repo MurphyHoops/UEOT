@@ -135,7 +135,7 @@ theorem quotientMap_does_not_imply_dynamicIntertwining :
   constructor
   · exact Function.surjective_id
   · intro h
-    have hbad := h () (by simp) ()
+    have hbad := h.2 () (by simp) ()
     have hmass :=
       congrArg (fun mu : Measure Unit => mu Set.univ) hbad
     simp [unitDiracDynamics, unitZeroDynamics] at hmass
