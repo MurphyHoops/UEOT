@@ -978,7 +978,7 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         "compression/theory-completion-semantic-constitution",
         [
             "formalization/ueot-core/docs/compression/theory_completion/"
-            "P0_SEMANTIC_INVENTORY.md"
+            "FORWARD_REGISTRATION_PROBE.md"
         ],
         candidate,
         compiled,
