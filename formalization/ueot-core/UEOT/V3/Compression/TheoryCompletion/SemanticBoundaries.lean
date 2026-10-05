@@ -117,28 +117,45 @@ theorem bellmanGOD_can_be_nonunique :
       _ = tiedActionModel.optimalValue () :=
         tiedActionModel.greedyAction_spec ()
 
-/-- Trivial one-state source dynamics used to separate quotient structure from
-cross-scale dynamic compatibility. -/
-noncomputable def unitDiracDynamics : Unit → Unit → Measure Unit :=
-  fun _ _ => Measure.dirac ()
+/-- Probability transition law that keeps the current Bool state. -/
+noncomputable def boolStayDynamics : Bool → Unit → Measure Bool :=
+  fun b _ => Measure.dirac b
 
-noncomputable def unitZeroDynamics : Unit → Unit → Measure Unit :=
-  fun _ _ => 0
+/-- Probability transition law that deterministically flips the Bool state. -/
+noncomputable def boolFlipDynamics : Bool → Unit → Measure Bool :=
+  fun b _ => Measure.dirac (!b)
+
+/-- Each source row is a genuine probability law. -/
+theorem boolStayDynamics_probability :
+    ∀ b a, IsProbabilityMeasure (boolStayDynamics b a) := by
+  intro b a
+  simp only [boolStayDynamics]
+  infer_instance
+
+/-- Each target row is also a genuine probability law. -/
+theorem boolFlipDynamics_probability :
+    ∀ b a, IsProbabilityMeasure (boolFlipDynamics b a) := by
+  intro b a
+  simp only [boolFlipDynamics]
+  infer_instance
 
 /-- A surjective quotient/state map alone does not imply even exact dynamic
-intertwining. Thus generic quotient/coarse-graining data cannot be silently
-upgraded to a stronger scale-dynamics or Wilsonian-RG claim. -/
+intertwining between genuine probability transition laws. Thus generic
+quotient/coarse-graining data cannot be silently upgraded to a stronger
+scale-dynamics or Wilsonian-RG claim. -/
 theorem quotientMap_does_not_imply_dynamicIntertwining :
-    IsQuotientMap (id : Unit → Unit) ∧
+    IsQuotientMap (id : Bool → Bool) ∧
+    (∀ b a, IsProbabilityMeasure (boolStayDynamics b a)) ∧
+    (∀ b a, IsProbabilityMeasure (boolFlipDynamics b a)) ∧
     ¬ ExactDynamicScaleIntertwining
-      Set.univ unitDiracDynamics unitZeroDynamics id := by
-  constructor
-  · exact Function.surjective_id
-  · intro h
-    have hbad := h.2 () (by simp) ()
-    have hmass :=
-      congrArg (fun mu : Measure Unit => mu Set.univ) hbad
-    simp [unitDiracDynamics, unitZeroDynamics] at hmass
+      Set.univ boolStayDynamics boolFlipDynamics id := by
+  refine ⟨Function.surjective_id, boolStayDynamics_probability,
+    boolFlipDynamics_probability, ?_⟩
+  intro h
+  have hbad := h.2.2 false (by simp) ()
+  have hmass :=
+    congrArg (fun mu : Measure Bool => mu ({false} : Set Bool)) hbad
+  simp [boolStayDynamics, boolFlipDynamics] at hmass
 
 end
 

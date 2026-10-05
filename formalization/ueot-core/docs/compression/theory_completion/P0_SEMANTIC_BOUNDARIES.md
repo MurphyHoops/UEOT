@@ -49,7 +49,7 @@ Uniqueness/mixing remains available only under explicit additional certificates 
 
 Formal result: `quotientMap_does_not_imply_dynamicIntertwining`.
 
-A surjective state map can coexist with source/target transition laws that fail exact cross-scale intertwining. The positive semantic predicate additionally requires the scale map itself to be measurable, so its `Measure.map` clause denotes a genuine pushforward rather than Mathlib's totalized nonmeasurable fallback. Quotient structure therefore does not by itself supply scale-dynamics compatibility.
+A surjective state map can coexist with two genuine probability transition kernels that fail exact cross-scale intertwining: the Bool source kernel stays at its current state while the Bool target kernel flips it. The positive semantic predicate additionally requires a **nonempty reachable domain** and a measurable scale map, so it neither succeeds vacuously on an empty domain nor relies on Mathlib's totalized nonmeasurable `Measure.map` fallback. Quotient structure therefore does not by itself supply scale-dynamics compatibility.
 
 Claim class: **NO-GO / BOUNDARY THEOREM**.
 
