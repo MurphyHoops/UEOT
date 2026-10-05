@@ -1,4 +1,4 @@
-import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.JointRecovery
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.ProgramPhysicalRecovery
 
 /-!
 # RLSR-T2 — mode-free safe joint recovery
