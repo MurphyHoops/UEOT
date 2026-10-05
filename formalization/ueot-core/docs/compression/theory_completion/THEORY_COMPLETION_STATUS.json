@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "program": "UEOT Theory Completion Program",
+  "track": "TC",
+  "program_tracker_issue": 265,
+  "recovery_index_issue": 146,
+  "governance_model": "risk_tiered_v2",
+  "counted_core_impact": "NONE",
+  "counted_minimal_core": [
+    "M-QD-01",
+    "M-TC-01",
+    "M-PE-01",
+    "M-OI-01"
+  ],
+  "program_status": "ACTIVE",
+  "bootstrap_contract": "P-BOOT",
+  "next_stage": "P0",
+  "next_stage_gate": "P-BOOT merged and resulting-main governance checks green",
+  "primary_spine": ["P0", "P1", "P2"],
+  "lanes": {
+    "empirical": ["P3", "P4"],
+    "organizational": ["P5", "P6", "P7"],
+    "later_integration": ["P8", "P9", "P10", "P11", "P12"]
+  },
+  "claim_classes": [
+    "THEOREM",
+    "CONDITIONAL_THEOREM",
+    "ADAPTER_INTERFACE",
+    "NO_GO_BOUNDARY",
+    "CONJECTURE",
+    "EMPIRICAL_HYPOTHESIS"
+  ],
+  "canonical_dependency_rule": "consume S/H/X/O/Core evidence from canonical main only",
+  "source_track_reopen_policy": "FORBIDDEN",
+  "p0_status": "READY_AFTER_PBOOT_RESULTING_MAIN",
+  "p1_status": "BLOCKED_ON_P0_CANONICAL",
+  "p2_status": "BLOCKED_ON_P1_CANONICAL"
+}

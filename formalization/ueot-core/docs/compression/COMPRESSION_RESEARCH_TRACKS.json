@@ -30,13 +30,7 @@
       ".github/workflows/ueot-core-compression.yml",
       ".github/workflows/ueot-compression-research-policy.yml",
       "formalization/ueot-core/UEOT/V3/Compression.lean",
-      "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
       "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
-      "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_MISSION.md",
-      "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_ROADMAP.md",
-      "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_ARCHITECTURE.md",
-      "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_CLAIM_POLICY.md",
-      "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_STATUS.json",
       "formalization/ueot-core/docs/compression/BRANCH_RETIREMENT_2026-10-01.md",
       "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
       "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
@@ -222,6 +216,59 @@
       "dependency_rule": "consume_frozen_core_and_merged_X_evidence_from_canonical_main_only",
       "source_track_reopen_policy": "forbidden_inside_O",
       "change_policy": "additive_only_by_default"
+    },
+    "TC": {
+      "title": "Theory Completion / Scientific Integration",
+      "status": "active",
+      "preferred_branch_prefix": "compression/theory-completion-",
+      "branch_patterns": [
+        "^compression/theory-completion-.*$"
+      ],
+      "program_tracker_issue": 265,
+      "owned_topics": [
+        "semantic constitution of Object, Purpose, Agency, GOD, GOA and Scale",
+        "teleological contract and representation boundaries",
+        "same-object Objecthood to Agency to GOD to GOA composition",
+        "statistical consistency and inverse Objecthood integration",
+        "cross-track Theory Completion interfaces consuming canonical S/H/X/O/Core evidence",
+        "explicit theorem, conditional theorem, adapter, no-go, conjecture and empirical classification"
+      ],
+      "allowed_path_prefixes": [
+        "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/",
+        "formalization/ueot-core/docs/compression/theory_completion/"
+      ],
+      "allowed_exact_paths": [
+        "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+      ],
+      "forbidden_exact_paths": [
+        ".github/workflows/ueot-compression-research-policy.yml",
+        ".github/workflows/ueot-core-compression.yml",
+        "formalization/ueot-core/UEOT/V3/Compression.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
+        "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+        "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+        "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+        "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+        "formalization/ueot-core/scripts/validate_compression.py",
+        "formalization/ueot-core/scripts/validate_compression_research.py"
+      ],
+      "forbidden_path_prefixes": [
+        "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/",
+        "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
+        "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+        "formalization/ueot-core/docs/compression/cross_track/",
+        "formalization/ueot-core/docs/compression/hierarchy/",
+        "formalization/ueot-core/docs/compression/objecthood/"
+      ],
+      "dependency_rule": "consume_S_H_X_O_and_frozen_core_evidence_from_canonical_main_only",
+      "source_track_reopen_policy": "forbidden_inside_TC",
+      "change_policy": "additive_only_by_default"
     }
   },
   "architecture_record_schema": {
@@ -247,7 +294,8 @@
       "S",
       "H",
       "X",
-      "O"
+      "O",
+      "TC"
     ],
     "authority_provenance": [
       "FROZEN_CORE_V3",
@@ -265,7 +313,8 @@
       "S": "active",
       "H": "active",
       "X": "active",
-      "O": "active"
+      "O": "active",
+      "TC": "active"
     },
     "required_record_fields": [
       "record_id",

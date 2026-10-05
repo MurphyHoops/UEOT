@@ -32,7 +32,7 @@ mission/counting state: <state>
 minimal core: <ids>
 active task: <tracker/title or none>
 risk tier: L0 | L1 | L2 | L3
-track: S | H | X | O | none
+track: S | H | X | O | TC | none
 branch/PR: <branch@sha / PR or none>
 latest required CI: <run/status>
 blocker: <if any>

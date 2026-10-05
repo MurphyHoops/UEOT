@@ -55,7 +55,8 @@ Registered tracks are persistent research capabilities, not per-task locks:
 - **Track S** — structural defect / long-run stability;
 - **Track H** — hierarchy / assembly;
 - **Track X** — cross-track composition;
-- **Track O** — Objecthood / persistence / repair / homeostasis / reconstruction.
+- **Track O** — Objecthood / persistence / repair / homeostasis / reconstruction;
+- **Track TC** — Theory Completion / semantic constitution / scientific integration.
 
 Once a track exists, a new task inside that track does **not** need a fresh governance
 authorization PR. A substantial task should still have a tracker Issue so humans/agents
@@ -169,8 +170,8 @@ review remains an acceptable fallback; do not block science solely on reviewer q
 
 ## 10. Parallelism
 
-Governance v2 permits up to **four active mutating tracks**, one branch per registered
-track, provided path ownership remains disjoint. Read-only workers are not counted.
+Governance v2 permits up to **four active mutating tracks** across the registered
+S/H/X/O/TC tracks, one branch per active track, provided path ownership remains disjoint. Read-only workers are not counted.
 
 Within a single track, keep one mutating branch by default. If future throughput requires
 multiple same-track branches, add machine-checked path-disjoint concurrency rather than
