@@ -923,8 +923,25 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
     """The pre-TC validator must accept one later, explicitly registered TC track."""
 
     module = load_validator_module(repo)
-    config = module.load_json(repo / module.TRACKS_REL)
+    live_config = module.load_json(repo / module.TRACKS_REL)
     ledger = module.load_json(repo / module.LEDGER_REL)
+
+    # Keep this regression meaningful after TC itself becomes canonical: reconstruct
+    # the last pre-TC base-policy shape, then test the absent→present transition.
+    config = copy.deepcopy(live_config)
+    if "TC" in config.get("tracks", {}):
+        del config["tracks"]["TC"]
+        owners = config["architecture_record_schema"]["track_owners"]
+        config["architecture_record_schema"]["track_owners"] = [
+            owner for owner in owners if owner != "TC"
+        ]
+        config["architecture_record_schema"]["track_status"].pop("TC", None)
+        bootstrap_exact = module.TC_BOOTSTRAP_DOCS | {module.TC_PUBLIC_ROOT}
+        allowed = config["governance"]["allowed_exact_paths"]
+        for path in sorted(bootstrap_exact):
+            if path not in allowed:
+                allowed.append(path)
+
     candidate = copy.deepcopy(config)
     candidate["governance"]["allowed_exact_paths"] = [
         path

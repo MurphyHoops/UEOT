@@ -56,6 +56,7 @@ Use one branch for one durable scientific objective:
 - Track H: `compression/hierarchy-*`;
 - Track X: `compression/cross-track-*`;
 - Track O: `compression/objecthood-*`;
+- Track TC: `compression/theory-completion-*`;
 - governance/L2/L3 policy work: `ops/compression-*`;
 - emergency quarantine only: `hold/compression-*`.
 
@@ -190,7 +191,7 @@ remain immutable.
 
 ## 11. Parallelism
 
-- up to four registered tracks may mutate concurrently;
+- up to four of the registered S/H/X/O/TC tracks may mutate concurrently;
 - one mutating branch per track by default;
 - read-only audits/workers are unlimited by this rule;
 - cross-track dependencies come from canonical `main`, not another unmerged branch;
@@ -217,7 +218,7 @@ Git/PR/CI/audit evidence.
 ## 13. Cross-chat recovery
 
 A new chat should execute `COMPRESSION_BOOTSTRAP.md`, recover only active state, and then
-continue the scientific next action. It should not re-read every old Track-S/H/X/O audit
+continue the scientific next action. It should not re-read every old Track-S/H/X/O/TC audit
 unless scientifically necessary.
 
 At handoff:
