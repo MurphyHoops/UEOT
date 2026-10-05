@@ -25,7 +25,7 @@ TRACKS_REL = Path(
 LEDGER_REL = Path(
     "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
 )
-TRACK_IDS = ("S", "H", "X", "O")
+TRACK_IDS = ("S", "H", "X", "O", "TC")
 
 
 def fail(message: str) -> None:
@@ -387,6 +387,8 @@ def validate_compression_root_import_change(
                 fail("Track S may not add/remove the Track X root import")
             if line == "import UEOT.V3.Compression.Objecthood":
                 fail("Track S may not add/remove the Track O root import")
+            if line == "import UEOT.V3.Compression.TheoryCompletion":
+                fail("Track S may not add/remove the Track TC root import")
     elif track_id == "X":
         if not changed or any(
             line != "import UEOT.V3.Compression.CrossTrack" for line in changed
@@ -404,12 +406,14 @@ def validate_compression_root_import_change(
                 "public Objecthood root import"
             )
     elif track_id == "GOVERNANCE":
-        if not changed or any(
-            line != "import UEOT.V3.Compression.Hierarchy" for line in changed
-        ):
+        allowed = {
+            "import UEOT.V3.Compression.Hierarchy",
+            "import UEOT.V3.Compression.TheoryCompletion",
+        }
+        if not changed or any(line not in allowed for line in changed):
             fail(
                 "governance may modify Compression.lean only to add/remove the "
-                "public Hierarchy root import"
+                "public governance-authorized track root imports"
             )
     else:
         fail(f"Track {track_id} may not modify Compression.lean")
@@ -519,6 +523,10 @@ def validate_owned_track_root_import_change(
             "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean",
             "UEOT.V3.Compression.CrossTrack",
         ),
+        "TC": (
+            "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+            "UEOT.V3.Compression.TheoryCompletion",
+        ),
     }
     spec = roots.get(track_id)
     if spec is None:
@@ -589,6 +597,12 @@ def validate_architecture_records(
     if schema.get("schema_version") != 1:
         fail("architecture_record_schema.schema_version must be 1")
 
+    tracks = config.get("tracks")
+    tc_registered = isinstance(tracks, dict) and "TC" in tracks
+    expected_track_owners = ["CORE", "S", "H", "X", "O"]
+    if tc_registered:
+        expected_track_owners.append("TC")
+
     expected_axes = {
         "architecture_roles": ["G0", "G1", "G2", "G3"],
         "lifecycle_statuses": [
@@ -601,7 +615,7 @@ def validate_architecture_records(
             "RETAINED_BOUNDARY",
             "REJECTED",
         ],
-        "track_owners": ["CORE", "S", "H", "X", "O"],
+        "track_owners": expected_track_owners,
         "authority_provenance": [
             "FROZEN_CORE_V3",
             "POST_FINAL_MERGED",
@@ -626,12 +640,15 @@ def validate_architecture_records(
         "X": "active" if gate == "open" else "closed",
         "O": "active" if omega_gate == "open" else "closed",
     }
+    if tc_registered:
+        expected_track_status["TC"] = "active"
     track_status = schema.get("track_status")
     if track_status != expected_track_status:
         fail(
             "architecture track_status must keep CORE frozen, S/H active, "
             f"X {'active' if gate == 'open' else 'closed'} with the integration gate, "
-            f"and O {'active' if omega_gate == 'open' else 'closed'} with the Objecthood gate"
+            f"O {'active' if omega_gate == 'open' else 'closed'} with the Objecthood gate, "
+            f"and TC {'active' if tc_registered else 'absent'}"
         )
 
     required_fields = string_list(
@@ -864,6 +881,8 @@ def validate_static(
         if gate != "open" or omega_gate != "open":
             fail("risk_tiered_v2 keeps the registered X/O research namespaces statically open")
         expected_tracks.update({"X", "O"})
+        if isinstance(tracks, dict) and "TC" in tracks:
+            expected_tracks.add("TC")
     else:
         if gate == "open":
             expected_tracks.add("X")
@@ -983,6 +1002,32 @@ def validate_static(
             fail("Track O must consume frozen Core and merged Track-X evidence from canonical main only")
         if o.get("source_track_reopen_policy") != "forbidden_inside_O":
             fail("Track O must not reopen source-track theorem families inside Objecthood work")
+
+    if governance_model == "risk_tiered_v2" and "TC" in tracks:
+        tc = tracks["TC"]
+        if tc.get("preferred_branch_prefix") != "compression/theory-completion-":
+            fail(
+                "Track TC preferred branch prefix must remain "
+                "compression/theory-completion-"
+            )
+        if not matches_any(
+            "compression/theory-completion-semantic-constitution", compiled["TC"]
+        ):
+            fail(
+                "Track TC branch patterns must authorize the governed "
+                "Theory Completion prefix"
+            )
+        if tc.get("program_tracker_issue") != 265:
+            fail("Track TC must remain anchored to Theory Completion program Issue #265")
+        if tc.get("dependency_rule") != (
+            "consume_S_H_X_O_and_frozen_core_evidence_from_canonical_main_only"
+        ):
+            fail(
+                "Track TC must consume S/H/X/O and frozen Core evidence from "
+                "canonical main only"
+            )
+        if tc.get("source_track_reopen_policy") != "forbidden_inside_TC":
+            fail("Track TC must not reopen S/H/X/O source theorem families")
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
@@ -1220,6 +1265,18 @@ def validate_track_paths(
             fail(
                 f"Track O branch {branch!r} modified {path}, outside its "
                 "owned Objecthood namespace"
+            )
+    elif track_id == "TC":
+        allowed_exact = set(track.get("allowed_exact_paths", []))
+        allowed_prefixes = tuple(track.get("allowed_path_prefixes", []))
+        for path in paths:
+            if path in allowed_exact or any(
+                path.startswith(prefix) for prefix in allowed_prefixes
+            ):
+                continue
+            fail(
+                f"Track TC branch {branch!r} modified {path}, outside its "
+                "owned TheoryCompletion namespace"
             )
 
     validate_compression_root_import_change(

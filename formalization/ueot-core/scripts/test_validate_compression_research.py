@@ -919,6 +919,60 @@ def test_v2_additive_only_guard(repo: Path) -> None:
         module.fail = original_fail
 
 
+def test_tc_forward_registration_compatibility(repo: Path) -> None:
+    """The pre-TC validator must accept one later, explicitly registered TC track."""
+
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    candidate = copy.deepcopy(config)
+    candidate["tracks"]["TC"] = {
+        "title": "Theory Completion / Scientific Integration",
+        "status": "active",
+        "preferred_branch_prefix": "compression/theory-completion-",
+        "branch_patterns": ["^compression/theory-completion-.*$"],
+        "program_tracker_issue": 265,
+        "owned_topics": ["semantic constitution"],
+        "allowed_path_prefixes": [
+            "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/",
+            "formalization/ueot-core/docs/compression/theory_completion/",
+        ],
+        "allowed_exact_paths": [
+            "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+        ],
+        "forbidden_exact_paths": [
+            "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+            "formalization/ueot-core/UEOT/V3/Compression.lean",
+        ],
+        "forbidden_path_prefixes": [
+            "formalization/ueot-core/UEOT/V3/Compression/Objecthood/"
+        ],
+        "dependency_rule": (
+            "consume_S_H_X_O_and_frozen_core_evidence_from_canonical_main_only"
+        ),
+        "source_track_reopen_policy": "forbidden_inside_TC",
+        "change_policy": "additive_only_by_default",
+    }
+    candidate["architecture_record_schema"]["track_owners"].append("TC")
+    candidate["architecture_record_schema"]["track_status"]["TC"] = "active"
+
+    compiled = module.validate_static(repo, candidate, ledger)
+    if "TC" not in compiled:
+        raise AssertionError("forward-compatible validator did not compile Track TC")
+    module.validate_track_paths(
+        repo,
+        "origin/main",
+        "HEAD",
+        "compression/theory-completion-semantic-constitution",
+        [
+            "formalization/ueot-core/docs/compression/theory_completion/"
+            "P0_SEMANTIC_INVENTORY.md"
+        ],
+        candidate,
+        compiled,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -1062,6 +1116,9 @@ def main() -> None:
 
     test_v2_additive_only_guard(repo)
     print("risk-v2-additive-only-existing-surface-guard: PASS")
+
+    test_tc_forward_registration_compatibility(repo)
+    print("theory-completion-forward-registration-compatibility: PASS")
 
     run_case(
         repo,
