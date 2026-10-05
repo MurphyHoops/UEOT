@@ -1,4 +1,5 @@
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.TripleRedundancy
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.GenericProgramRecovery
 
 /-!
 # RLSR5 — autonomous repair-program reconstruction dynamics
@@ -117,6 +118,32 @@ theorem reconstructionKernel_staysIn_valid_target
       (ValidRedundantRepairProgram T P K) := by
   rw [tripleProgramReconstructionKernel_eq_pure_self_of_valid T P K he]
   simpa [StaysIn, PMF.mem_support_iff] using he
+
+
+/-- Triple repetition is a concrete instance of the generic correctable-corruption
+contract. -/
+theorem tripleRepairCodec_corrects_singleReplica :
+    CodecCorrectsCorruption
+      (tripleRepairCodec (Program := Program))
+      (SingleReplicaCorruptionOf (Program := Program)) := by
+  intro r e h
+  exact tripleProgramDecode_of_singleReplicaCorruption h
+
+/-- Every single-replica corruption is therefore in the exact source basin of
+the generic codec semantics, not merely in the decoded-valid basin. -/
+theorem singleReplicaCorruption_mem_codecExactSourceBasin
+    {r : Program} {e : TripleProgramRepresentation Program}
+    (h : SingleReplicaCorruptionOf r e) :
+    e ∈ CodecExactSourceBasin (tripleRepairCodec (Program := Program)) r := by
+  exact tripleProgramDecode_of_singleReplicaCorruption h
+
+/-- The legacy triple reconstruction kernel is definitionally the generic codec
+reconstruction kernel specialized to `tripleRepairCodec`. -/
+theorem tripleProgramReconstructionKernel_eq_codecReconstructionKernel
+    (e : TripleProgramRepresentation Program) :
+    tripleProgramReconstructionKernel e =
+      codecReconstructionKernel (tripleRepairCodec (Program := Program)) e := by
+  rfl
 
 /-- Any arbitrary single-replica replacement of a valid codeword lies in the
 exact reconstruction basin. -/

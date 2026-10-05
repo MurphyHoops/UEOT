@@ -3,6 +3,7 @@ import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.InternalProgra
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.ProgramSemantics
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.IdentifiabilityBoundary
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.TripleRedundancy
+import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.GenericProgramRecovery
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.ProgramRecovery
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.ProgramPhysicalRecovery
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.JointRecovery
