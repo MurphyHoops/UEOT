@@ -3,6 +3,7 @@ import Mathlib.Data.Set.Finite.Basic
 import Mathlib.Data.Finset.Card
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic
+import UEOT.V3.FiniteDiscountedOccupancy
 
 /-!
 # P1.1 — Admissible futures
@@ -233,5 +234,101 @@ theorem TeleologicalContract.exists_finite_ordinal_representation
   intro x y
   exact finiteContractOrdinalUtility_represents
     C.prefers C.preference_preorder htotal x y
+
+open UEOT.V3.FiniteDiscountedControl
+
+/-- Finite expected utility under one explicit probability row.
+
+This is a stronger cardinal construction than P1.3's ordinal rank. -/
+def finiteExpectedUtility
+    {Outcome : Type*} [Fintype Outcome]
+    (p : ProbabilityRow Outcome) (u : Outcome → ℝ) : ℝ :=
+  p.expect u
+
+/-- Explicit extra representation obligation for expected-value purpose
+semantics. P1.3 does not prove that such a lottery map or cardinal outcome
+utility exists. -/
+def ExpectedUtilityRepresents
+    {Future : Type uF} (C : TeleologicalContract Future)
+    {Outcome : Type*} [Fintype Outcome]
+    (lottery : AdmissibleFuture C.admissible → ProbabilityRow Outcome)
+    (outcomeUtility : Outcome → ℝ) : Prop :=
+  ∀ x y,
+    finiteExpectedUtility (lottery x) outcomeUtility ≤
+        finiteExpectedUtility (lottery y) outcomeUtility ↔
+      C.prefers x y
+
+/-! ### P1.4 ordinal-versus-expected-value boundary -/
+
+private def middleLotteryProb : Fin 3 → ℝ :=
+  ![0, 1, 0]
+
+private noncomputable def endpointLotteryProb : Fin 3 → ℝ :=
+  ![(1 / 2 : ℝ), 0, (1 / 2 : ℝ)]
+
+private noncomputable def middleLottery : ProbabilityRow (Fin 3) where
+  prob := middleLotteryProb
+  prob_nonneg := by
+    intro i
+    fin_cases i <;> norm_num [middleLotteryProb]
+  prob_sum_one := by
+    norm_num [middleLotteryProb, Fin.sum_univ_succ]
+
+private noncomputable def endpointLottery : ProbabilityRow (Fin 3) where
+  prob := endpointLotteryProb
+  prob_nonneg := by
+    intro i
+    fin_cases i <;> norm_num [endpointLotteryProb]
+  prob_sum_one := by
+    norm_num [endpointLotteryProb, Fin.sum_univ_succ]
+
+private def ordinalBoundaryUtility : Fin 3 → ℝ :=
+  ![0, 1, 2]
+
+private def nonlinearBoundaryUtility : Fin 3 → ℝ :=
+  ![0, 1, 4]
+
+/-- The two outcome utilities induce exactly the same ordinal ordering. -/
+theorem ordinalBoundaryUtilities_same_order (i j : Fin 3) :
+    ordinalBoundaryUtility i ≤ ordinalBoundaryUtility j ↔
+      nonlinearBoundaryUtility i ≤ nonlinearBoundaryUtility j := by
+  fin_cases i <;> fin_cases j <;>
+    norm_num [ordinalBoundaryUtility, nonlinearBoundaryUtility]
+
+private theorem middleLottery_expect_ordinal :
+    middleLottery.expect ordinalBoundaryUtility = 1 := by
+  norm_num [ProbabilityRow.expect, middleLottery, middleLotteryProb,
+    ordinalBoundaryUtility, Fin.sum_univ_succ]
+
+private theorem endpointLottery_expect_ordinal :
+    endpointLottery.expect ordinalBoundaryUtility = 1 := by
+  norm_num [ProbabilityRow.expect, endpointLottery, endpointLotteryProb,
+    ordinalBoundaryUtility, Fin.sum_univ_succ]
+
+private theorem middleLottery_expect_nonlinear :
+    middleLottery.expect nonlinearBoundaryUtility = 1 := by
+  norm_num [ProbabilityRow.expect, middleLottery, middleLotteryProb,
+    nonlinearBoundaryUtility, Fin.sum_univ_succ]
+
+private theorem endpointLottery_expect_nonlinear :
+    endpointLottery.expect nonlinearBoundaryUtility = 2 := by
+  norm_num [ProbabilityRow.expect, endpointLottery, endpointLotteryProb,
+    nonlinearBoundaryUtility, Fin.sum_univ_succ]
+
+/-- P1.4 boundary. Ordinal equivalence of outcome utilities does not determine
+expected-value ordering over lotteries.
+
+The middle outcome and a fifty-fifty endpoint lottery are tied by one ordinal
+representative, while an increasing nonlinear representative strictly prefers
+the endpoint lottery. Expected-value semantics therefore needs additional
+cardinal/mixture structure beyond P1.3. -/
+theorem ordinal_equivalence_does_not_determine_expected_value :
+    middleLottery.expect ordinalBoundaryUtility =
+        endpointLottery.expect ordinalBoundaryUtility ∧
+      middleLottery.expect nonlinearBoundaryUtility <
+        endpointLottery.expect nonlinearBoundaryUtility := by
+  rw [middleLottery_expect_ordinal, endpointLottery_expect_ordinal,
+    middleLottery_expect_nonlinear, endpointLottery_expect_nonlinear]
+  norm_num
 
 end UEOT.V3.Compression.TheoryCompletion
