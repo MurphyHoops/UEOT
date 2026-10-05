@@ -42,7 +42,7 @@ At the dual-drive level:
 - `ValidDualDriveRepresentation` additionally requires the combined objective to represent the declared contract;
 - an algebraic DDH gauge transform preserves the combined objective pointwise;
 - if the source pair is valid, every algebraic gauge representative has a combined objective representing the same contract;
-- the transformed pair itself remains valid only when the axis specification is explicitly `GaugeClosed`.
+- `GaugeClosed` is an explicit **sufficient** condition guaranteeing that every gauge transform of a valid pair remains valid; P1 does not claim this condition is necessary.
 
 No reverse implication or universal semantically valid Pi/Phi decomposition is claimed.
 

@@ -323,7 +323,7 @@ private def incomparableTrue :
     AdmissibleFuture incomparableBoolContract.admissible :=
   ⟨true, by simp [incomparableBoolContract]⟩
 
-/-- P1.8 semantic boundary: a general teleological contract need not admit any
+/-- P1.8 semantic boundary: a general teleological contract need not possess a
 real-valued numerical representation, because the contract need not be total
 while every real-valued objective induces a total weak order. -/
 theorem incomparableBoolContract_has_no_numerical_representation :
