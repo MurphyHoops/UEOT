@@ -152,7 +152,7 @@ theorem quotientMap_does_not_imply_dynamicIntertwining :
   refine ⟨Function.surjective_id, boolStayDynamics_probability,
     boolFlipDynamics_probability, ?_⟩
   intro h
-  have hbad := h.2.2 false (by simp) ()
+  have hbad := h.2.2.2.2 false (by simp) ()
   have hmass :=
     congrArg (fun mu : Measure Bool => mu ({false} : Set Bool)) hbad
   simp [boolStayDynamics, boolFlipDynamics] at hmass

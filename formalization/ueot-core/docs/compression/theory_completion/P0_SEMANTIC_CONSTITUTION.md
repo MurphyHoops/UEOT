@@ -21,7 +21,7 @@ This is the P0 terminal definition/theorem graph. It maps UEOT philosophical ter
 | GOD | `LocalChoiceCorrespondence`, `BellmanGODCorrespondence`, `IsBellmanGODSelector` | `greedyAction_spec`, history-derived model adapter | correspondence may be non-singleton; unique gradient requires extra domain structure |
 | GOA | `FixedPointGOA`, `InvariantLawGOA`, `CesaroLimitGOA`, `RecurrentGOAStructure`, `KilledQSDGOA`, `GreedyInvariantGOASet` | occupation-limit, recurrent decomposition, QSD/Perron, greedy closed-loop theorems | GOA is plural; uniqueness/convergence are certificate-dependent |
 | Composition | existing child/parent formation and identifiability theorem families | P-COMP, Track H/X formation and parent-binding results | child consistency/forward stability do not universally identify one parent |
-| Scale | `IsQuotientMap`, `ClosureCoarseGraining`, nonvacuous measurable `ExactDynamicScaleIntertwining`, `ObjectScaleMap`, `ObjectScaleTransport` | exact control quotient, closure resolution, P-DYN-04 | P9 must prove preservation of identity/purpose/GOD/GOA/etc.; Wilsonian RG bridge absent |
+| Scale | `IsQuotientMap`, `ClosureCoarseGraining`, nonvacuous probability-valued measurable `ExactDynamicScaleIntertwining`, `ObjectScaleMap`, `ObjectScaleTransport` | exact control quotient, closure resolution, P-DYN-04 | P9 must prove preservation of identity/purpose/GOD/GOA/etc.; Wilsonian RG bridge absent |
 | Evolution | existing population/operator semantics | Price, Perron growth, reproductive value/martingale | P8 must define object-level offspring/lineage before composition with population evolution |
 
 ## P0 proved boundary graph
@@ -47,7 +47,7 @@ This is the P0 terminal definition/theorem graph. It maps UEOT philosophical ter
 - finite Bellman-greedy closed loop → nonempty invariant-law GOA set;
 - exact finite control quotient → `IsQuotientMap`;
 - nested closure systems → compositional `ClosureCoarseGraining`;
-- nonempty microscopic source + exact pushforwards + measurable scale map → nonempty reachable-set `ExactDynamicScaleIntertwining`.
+- nonempty microscopic source + nonempty action type + microscopic probability transition law + exact pushforwards + measurable scale map → nonempty probability-valued reachable-set `ExactDynamicScaleIntertwining`.
 
 ## P0 terminal conclusion
 
