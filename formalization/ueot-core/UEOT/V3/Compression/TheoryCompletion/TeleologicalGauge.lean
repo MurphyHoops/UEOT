@@ -168,4 +168,34 @@ theorem gaugeClass_to_teleologicalClass
     (valueEqual_to_positiveAffineEquivalent
       (gaugeTransform_valueEqual lambdaVal chiVal R))
 
+/-- P1.8 boundary: teleological weak-order equivalence is strictly weaker
+than membership in one fixed-lambda DDH gauge orbit. -/
+theorem teleologicalEquivalent_not_implies_sameGaugeClass :
+    ∃ R S : DualDriveRepresentation Bool,
+      S.combinedObjective 1 ∈
+          TeleologicalObjectiveClass (R.combinedObjective 1) ∧
+        S ∉ DualDriveGaugeClass 1 R := by
+  let R : DualDriveRepresentation Bool :=
+    { piVal := fun b => if b then 1 else 0
+      phiVal := fun _ => 0 }
+  let S : DualDriveRepresentation Bool :=
+    { piVal := fun b => if b then 2 else 0
+      phiVal := fun _ => 0 }
+  refine ⟨R, S, ?_, ?_⟩
+  · apply positiveAffineEquivalent_to_policyOrderingEquivalent
+    refine ⟨2, 0, by norm_num, ?_⟩
+    intro b
+    cases b <;>
+      norm_num [R, S, DualDriveRepresentation.combinedObjective]
+  · intro hGauge
+    rcases hGauge with ⟨chiVal, hchi⟩
+    have hValue :
+        ValueEqual
+          (R.combinedObjective 1)
+          (S.combinedObjective 1) := by
+      rw [← hchi]
+      exact gaugeTransform_valueEqual 1 chiVal R
+    have hTrue := hValue true
+    norm_num [R, S, DualDriveRepresentation.combinedObjective] at hTrue
+
 end UEOT.V3.Compression.TheoryCompletion
