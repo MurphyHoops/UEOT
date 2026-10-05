@@ -26,6 +26,44 @@ LEDGER_REL = Path(
     "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
 )
 TRACK_IDS = ("S", "H", "X", "O", "TC")
+TC_LEAN_PREFIX = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/"
+TC_DOC_PREFIX = "formalization/ueot-core/docs/compression/theory_completion/"
+TC_PUBLIC_ROOT = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+TC_BOOTSTRAP_DOCS = {
+    f"{TC_DOC_PREFIX}THEORY_COMPLETION_MISSION.md",
+    f"{TC_DOC_PREFIX}THEORY_COMPLETION_ROADMAP.md",
+    f"{TC_DOC_PREFIX}THEORY_COMPLETION_ARCHITECTURE.md",
+    f"{TC_DOC_PREFIX}THEORY_COMPLETION_CLAIM_POLICY.md",
+    f"{TC_DOC_PREFIX}THEORY_COMPLETION_STATUS.json",
+}
+TC_ALLOWED_PATH_PREFIXES = {TC_LEAN_PREFIX, TC_DOC_PREFIX}
+TC_ALLOWED_EXACT_PATHS = {TC_PUBLIC_ROOT}
+TC_FORBIDDEN_PATH_PREFIXES = {
+    "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
+    "formalization/ueot-core/docs/compression/hierarchy/",
+    "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/",
+    "formalization/ueot-core/docs/compression/cross_track/",
+    "formalization/ueot-core/UEOT/V3/Compression/Objecthood/",
+    "formalization/ueot-core/docs/compression/objecthood/",
+}
+TC_FORBIDDEN_EXACT_PATHS = {
+    "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+    "formalization/ueot-core/docs/compression/COMPRESSION_COVERAGE.md",
+    "formalization/ueot-core/docs/compression/COMPRESSION_MISSION.md",
+    "formalization/ueot-core/docs/compression/COMPRESSION_ABLATION.md",
+    "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+    "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+    "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+    "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+    "formalization/ueot-core/scripts/validate_compression.py",
+    "formalization/ueot-core/scripts/validate_compression_research.py",
+    ".github/workflows/ueot-core-compression.yml",
+    ".github/workflows/ueot-compression-research-policy.yml",
+    "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/CrossTrack.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
+    "formalization/ueot-core/UEOT/V3/Compression.lean",
+}
 
 
 def fail(message: str) -> None:
@@ -1028,6 +1066,47 @@ def validate_static(
             )
         if tc.get("source_track_reopen_policy") != "forbidden_inside_TC":
             fail("Track TC must not reopen S/H/X/O source theorem families")
+        if set(string_list(
+            tc.get("allowed_path_prefixes"), "Track TC allowed_path_prefixes"
+        )) != TC_ALLOWED_PATH_PREFIXES:
+            fail("Track TC allowed_path_prefixes must match the pre-authorized TC scope")
+        if set(string_list(
+            tc.get("allowed_exact_paths"), "Track TC allowed_exact_paths"
+        )) != TC_ALLOWED_EXACT_PATHS:
+            fail("Track TC allowed_exact_paths must match the pre-authorized TC scope")
+        if set(string_list(
+            tc.get("forbidden_path_prefixes"), "Track TC forbidden_path_prefixes"
+        )) != TC_FORBIDDEN_PATH_PREFIXES:
+            fail("Track TC forbidden_path_prefixes must match the pre-authorized protection set")
+        if set(string_list(
+            tc.get("forbidden_exact_paths"), "Track TC forbidden_exact_paths"
+        )) != TC_FORBIDDEN_EXACT_PATHS:
+            fail("Track TC forbidden_exact_paths must match the pre-authorized protection set")
+
+        governance_exact = set(
+            string_list(
+                governance.get("allowed_exact_paths"),
+                "governance.allowed_exact_paths",
+            )
+        )
+        governance_prefixes = set(
+            string_list(
+                governance.get("allowed_path_prefixes"),
+                "governance.allowed_path_prefixes",
+                allow_empty=True,
+            )
+        )
+        temporary_tc_bootstrap_paths = TC_BOOTSTRAP_DOCS | {TC_PUBLIC_ROOT}
+        if governance_exact & temporary_tc_bootstrap_paths:
+            fail(
+                "registered Track TC must retire temporary governance access "
+                "to Theory Completion bootstrap artifacts"
+            )
+        if governance_prefixes & TC_ALLOWED_PATH_PREFIXES:
+            fail(
+                "registered Track TC must not leave a governance prefix "
+                "overlapping the Theory Completion namespace"
+            )
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):

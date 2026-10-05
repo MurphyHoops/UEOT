@@ -926,6 +926,11 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
     config = module.load_json(repo / module.TRACKS_REL)
     ledger = module.load_json(repo / module.LEDGER_REL)
     candidate = copy.deepcopy(config)
+    candidate["governance"]["allowed_exact_paths"] = [
+        path
+        for path in candidate["governance"]["allowed_exact_paths"]
+        if path not in (module.TC_BOOTSTRAP_DOCS | {module.TC_PUBLIC_ROOT})
+    ]
     candidate["tracks"]["TC"] = {
         "title": "Theory Completion / Scientific Integration",
         "status": "active",
@@ -933,20 +938,10 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         "branch_patterns": ["^compression/theory-completion-.*$"],
         "program_tracker_issue": 265,
         "owned_topics": ["semantic constitution"],
-        "allowed_path_prefixes": [
-            "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/",
-            "formalization/ueot-core/docs/compression/theory_completion/",
-        ],
-        "allowed_exact_paths": [
-            "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
-        ],
-        "forbidden_exact_paths": [
-            "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
-            "formalization/ueot-core/UEOT/V3/Compression.lean",
-        ],
-        "forbidden_path_prefixes": [
-            "formalization/ueot-core/UEOT/V3/Compression/Objecthood/"
-        ],
+        "allowed_path_prefixes": sorted(module.TC_ALLOWED_PATH_PREFIXES),
+        "allowed_exact_paths": sorted(module.TC_ALLOWED_EXACT_PATHS),
+        "forbidden_exact_paths": sorted(module.TC_FORBIDDEN_EXACT_PATHS),
+        "forbidden_path_prefixes": sorted(module.TC_FORBIDDEN_PATH_PREFIXES),
         "dependency_rule": (
             "consume_S_H_X_O_and_frozen_core_evidence_from_canonical_main_only"
         ),
@@ -971,6 +966,43 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         candidate,
         compiled,
     )
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        widened = copy.deepcopy(candidate)
+        widened["tracks"]["TC"]["allowed_exact_paths"].append(
+            "formalization/ueot-core/UEOT/V3/Compression/Objecthood/SelfRepair.lean"
+        )
+        try:
+            module.validate_static(repo, widened, ledger)
+        except ValueError as exc:
+            if "allowed_exact_paths must match the pre-authorized TC scope" not in str(exc):
+                raise AssertionError(f"unexpected TC ownership rejection: {exc}") from exc
+        else:
+            raise AssertionError("widened TC exact ownership was not rejected")
+
+        retained_bootstrap = copy.deepcopy(candidate)
+        retained_bootstrap["governance"]["allowed_exact_paths"].append(
+            module.TC_PUBLIC_ROOT
+        )
+        try:
+            module.validate_static(repo, retained_bootstrap, ledger)
+        except ValueError as exc:
+            if "retire temporary governance access" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC bootstrap-retirement rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "registered TC retained temporary governance access"
+            )
+    finally:
+        module.fail = original_fail
 
 
 def main() -> None:
@@ -1160,6 +1192,18 @@ def main() -> None:
         "outside its owned CrossTrack namespace",
     )
     print("cross-track-objecthood-isolation: PASS")
+
+    run_case(
+        repo,
+        "compression/topology-theory-completion-isolation",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/"
+            "Intrusion.lean"
+        ],
+        False,
+        "may not modify cross-owned/protected path",
+    )
+    print("structural-track-theory-completion-isolation: PASS")
 
     run_case(
         repo,
