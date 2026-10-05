@@ -65,6 +65,14 @@ theorem repairProgramValid_of_dynamicsEquivalent
   rw [← heq x hx] at hy
   exact hvalid x hx hy
 
+/-- Global implementation of a supplied policy at the physical-kernel level.
+This is weaker than action-label equality and is the preferred contract when only
+the induced object dynamics matters. -/
+def RepairProgramDynamicsImplementsPolicy
+    (T : TrustedRepairSubstrate Program X A)
+    (P : X → A → PMF X) (r : Program) (pi : X → A) : Prop :=
+  ∀ x, P x (T.execute r x) = P x (pi x)
+
 /-- Exact behavioral implementation of a supplied policy.  This relation is
 used later only to tie a reconstructed program to an independently certified
 same-parent repair policy; it is not part of the trusted substrate. -/
