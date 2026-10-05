@@ -155,4 +155,17 @@ theorem gaugeTransform_valueEqual
   exact UEOT.V3.DualDriveGauge.p_ddh_01_pointwise
     R.piVal R.phiVal chiVal lambdaVal p
 
+/-- P1.7 easy direction: every valid DDH gauge representative lies in the
+same teleological weak-order class. -/
+theorem gaugeClass_to_teleologicalClass
+    {P : Type uP} (lambdaVal : ℝ)
+    (R S : DualDriveRepresentation P)
+    (hS : S ∈ DualDriveGaugeClass lambdaVal R) :
+    S.combinedObjective lambdaVal ∈
+      TeleologicalObjectiveClass (R.combinedObjective lambdaVal) := by
+  rcases hS with ⟨chiVal, rfl⟩
+  exact positiveAffineEquivalent_to_policyOrderingEquivalent
+    (valueEqual_to_positiveAffineEquivalent
+      (gaugeTransform_valueEqual lambdaVal chiVal R))
+
 end UEOT.V3.Compression.TheoryCompletion
