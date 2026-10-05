@@ -29,7 +29,25 @@ variable {X : Type uX} {A : Type uA} {Program : Type uP}
 variable [Fintype X] [Fintype A]
 variable [MeasurableSpace X] [MeasurableSingletonClass X]
 
-set_option maxHeartbeats 1000000 in
+/-- Finite-horizon tail-sum semantics are unchanged when two stationary
+policies induce the same physical kernel outside the target. -/
+theorem truncatedExpectedHittingTime_stationary_eq_of_policyKernel_eq_outside
+    (P : X → A → PMF X) (K : Set X)
+    (pi rho : X → A)
+    (hout : ∀ x, x ∉ K → P x (pi x) = P x (rho x))
+    (x : X) (N : ℕ) :
+    truncatedExpectedHittingTime (stationaryKernel P pi) x K N =
+      truncatedExpectedHittingTime (stationaryKernel P rho) x K N := by
+  have hK : MeasurableSet K := (Set.toFinite K).measurableSet
+  unfold truncatedExpectedHittingTime
+  apply Finset.sum_congr rfl
+  intro n hn
+  exact UEOT.V3.Compression.Objecthood.survivalProb_eq_of_eq_outside
+    (stationaryKernel P pi) (stationaryKernel P rho) K hK
+    (fun z hz => by
+      change (P z (pi z)).toMeasure = (P z (rho z)).toMeasure
+      exact congrArg (fun μ : PMF X => μ.toMeasure) (hout z hz)) n x
+
 /-- Any two stationary policies inducing identical physical kernels outside the
 target have exactly the same expected first-hitting time of that target. -/
 theorem expectedHittingTime_stationary_eq_of_policyKernel_eq_outside
@@ -44,14 +62,9 @@ theorem expectedHittingTime_stationary_eq_of_policyKernel_eq_outside
       (stationaryKernel P pi) x K hK,
     expectedHittingTime_eq_iSup_truncatedExpectedHittingTime
       (stationaryKernel P rho) x K hK]
-  congr 1
-  funext N
-  unfold truncatedExpectedHittingTime
-  apply Finset.sum_congr rfl
-  intro n hn
-  exact UEOT.V3.Compression.Objecthood.survivalProb_eq_of_eq_outside
-    (stationaryKernel P pi) (stationaryKernel P rho) K hK
-    (fun z hz => by simpa [stationaryKernel] using hout z hz) n x
+  exact iSup_congr fun N =>
+    truncatedExpectedHittingTime_stationary_eq_of_policyKernel_eq_outside
+      P K pi rho hout x N
 
 /-- Canonical composite law: use one preserving viability witness inside `K`,
 and the supplied recovery policy outside `K`. -/
@@ -102,6 +115,7 @@ theorem repairThenPreservePolicy_expectedHittingTime_eq
   intro z hz
   simp [repairThenPreservePolicy, hz]
 
+omit [MeasurableSpace X] [MeasurableSingletonClass X] in
 /-- Dynamics-level implementation of the composite law automatically gives
 carrier preservation; no second `hvalid` assumption is needed. -/
 theorem repairProgramValid_of_dynamicsImplements_repairThenPreserve
