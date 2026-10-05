@@ -29,6 +29,7 @@ TRACK_IDS = ("S", "H", "X", "O", "TC")
 TC_LEAN_PREFIX = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/"
 TC_DOC_PREFIX = "formalization/ueot-core/docs/compression/theory_completion/"
 TC_PUBLIC_ROOT = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+TC_MODULE = "UEOT.V3.Compression.TheoryCompletion"
 TC_PUBLIC_IMPORT = "import UEOT.V3.Compression.TheoryCompletion"
 COMPRESSION_PUBLIC_ROOT = "formalization/ueot-core/UEOT/V3/Compression.lean"
 TC_BOOTSTRAP_DOCS = {
@@ -68,6 +69,15 @@ TC_FORBIDDEN_EXACT_PATHS = {
 }
 TC_REQUIRED_S_FORBIDDEN_PREFIXES = TC_ALLOWED_PATH_PREFIXES
 TC_REQUIRED_S_FORBIDDEN_EXACT_PATHS = TC_ALLOWED_EXACT_PATHS
+
+
+def line_imports_module(line: str, module: str) -> bool:
+    """Recognize one Lean import command for a module, including trailing comments."""
+
+    return re.match(
+        rf"^\s*import\s+{re.escape(module)}(?=$|\s|--|/-)",
+        line,
+    ) is not None
 
 
 def fail(message: str) -> None:
@@ -420,17 +430,20 @@ def validate_compression_root_import_change(
         repo, baseline_ref, candidate_ref, root
     )
     if track_id == "S":
+        protected_track_roots = {
+            "H": "UEOT.V3.Compression.Hierarchy",
+            "X": "UEOT.V3.Compression.CrossTrack",
+            "O": "UEOT.V3.Compression.Objecthood",
+            "TC": TC_MODULE,
+        }
         for line in changed:
             if not line.startswith("import UEOT.V3.Compression."):
                 fail("Track S may change Compression.lean imports only")
-            if line == "import UEOT.V3.Compression.Hierarchy":
-                fail("Track S may not add/remove the Track H root import")
-            if line == "import UEOT.V3.Compression.CrossTrack":
-                fail("Track S may not add/remove the Track X root import")
-            if line == "import UEOT.V3.Compression.Objecthood":
-                fail("Track S may not add/remove the Track O root import")
-            if line == "import UEOT.V3.Compression.TheoryCompletion":
-                fail("Track S may not add/remove the Track TC root import")
+            for owner, module in protected_track_roots.items():
+                if line_imports_module(line, module):
+                    fail(
+                        f"Track S may not add/remove the Track {owner} root import"
+                    )
     elif track_id == "X":
         if not changed or any(
             line != "import UEOT.V3.Compression.CrossTrack" for line in changed
@@ -897,8 +910,12 @@ def validate_static(
                 if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{40}", value) is None:
                     fail(f"{context} needs a 40-hex {field}")
             objecthood_history.append(checkpoint)
-    string_list(config.get("governed_path_prefixes"), "governed_path_prefixes")
-    string_list(config.get("governed_exact_paths"), "governed_exact_paths")
+    governed_path_prefixes = string_list(
+        config.get("governed_path_prefixes"), "governed_path_prefixes"
+    )
+    governed_exact_paths = string_list(
+        config.get("governed_exact_paths"), "governed_exact_paths"
+    )
 
     for field in (
         "mission_contract",
@@ -1070,6 +1087,28 @@ def validate_static(
             )
         if tc.get("source_track_reopen_policy") != "forbidden_inside_TC":
             fail("Track TC must not reopen S/H/X/O source theorem families")
+
+        for tc_prefix in TC_ALLOWED_PATH_PREFIXES:
+            if not any(
+                tc_prefix.startswith(governed_prefix)
+                for governed_prefix in governed_path_prefixes
+            ):
+                fail(
+                    "registered Track TC requires every owned namespace to remain "
+                    "inside the top-level governed path surface"
+                )
+        for tc_exact in TC_ALLOWED_EXACT_PATHS:
+            if (
+                tc_exact not in governed_exact_paths
+                and not any(
+                    tc_exact.startswith(governed_prefix)
+                    for governed_prefix in governed_path_prefixes
+                )
+            ):
+                fail(
+                    "registered Track TC requires every owned exact path to remain "
+                    "inside the top-level governed path surface"
+                )
         if set(string_list(
             tc.get("allowed_path_prefixes"), "Track TC allowed_path_prefixes"
         )) != TC_ALLOWED_PATH_PREFIXES:
@@ -1291,7 +1330,7 @@ def validate_tc_registration_transition(
         semantic_import_lines = [
             line
             for line in compression_text.split("\n")
-            if line.strip() == TC_PUBLIC_IMPORT
+            if line_imports_module(line, TC_MODULE)
         ]
         if len(semantic_import_lines) != 1:
             fail(
