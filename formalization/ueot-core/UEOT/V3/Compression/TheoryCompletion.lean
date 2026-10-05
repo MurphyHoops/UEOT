@@ -1,5 +1,6 @@
 import UEOT.V3.Compression.TheoryCompletion.OperationalObject
 import UEOT.V3.Compression.TheoryCompletion.Purpose
+import UEOT.V3.Compression.TheoryCompletion.GOD
 /-!
 # UEOT Theory Completion public root
 
