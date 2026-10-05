@@ -64,6 +64,8 @@ TC_FORBIDDEN_EXACT_PATHS = {
     "formalization/ueot-core/UEOT/V3/Compression/Objecthood.lean",
     "formalization/ueot-core/UEOT/V3/Compression.lean",
 }
+TC_REQUIRED_S_FORBIDDEN_PREFIXES = TC_ALLOWED_PATH_PREFIXES
+TC_REQUIRED_S_FORBIDDEN_EXACT_PATHS = TC_ALLOWED_EXACT_PATHS
 
 
 def fail(message: str) -> None:
@@ -1083,6 +1085,30 @@ def validate_static(
         )) != TC_FORBIDDEN_EXACT_PATHS:
             fail("Track TC forbidden_exact_paths must match the pre-authorized protection set")
 
+        structural = tracks["S"]
+        structural_forbidden_prefixes = set(string_list(
+            structural.get("forbidden_path_prefixes"),
+            "Track S forbidden_path_prefixes",
+        ))
+        structural_forbidden_exact = set(string_list(
+            structural.get("forbidden_exact_paths"),
+            "Track S forbidden_exact_paths",
+        ))
+        if not TC_REQUIRED_S_FORBIDDEN_PREFIXES.issubset(
+            structural_forbidden_prefixes
+        ):
+            fail(
+                "registered Track TC requires reciprocal Track S namespace "
+                "exclusions"
+            )
+        if not TC_REQUIRED_S_FORBIDDEN_EXACT_PATHS.issubset(
+            structural_forbidden_exact
+        ):
+            fail(
+                "registered Track TC requires reciprocal Track S public-root "
+                "exclusion"
+            )
+
         governance_exact = set(
             string_list(
                 governance.get("allowed_exact_paths"),
@@ -1096,17 +1122,27 @@ def validate_static(
                 allow_empty=True,
             )
         )
-        temporary_tc_bootstrap_paths = TC_BOOTSTRAP_DOCS | {TC_PUBLIC_ROOT}
-        if governance_exact & temporary_tc_bootstrap_paths:
-            fail(
-                "registered Track TC must retire temporary governance access "
-                "to Theory Completion bootstrap artifacts"
-            )
-        if governance_prefixes & TC_ALLOWED_PATH_PREFIXES:
-            fail(
-                "registered Track TC must not leave a governance prefix "
-                "overlapping the Theory Completion namespace"
-            )
+        for path in governance_exact:
+            if path in TC_ALLOWED_EXACT_PATHS or any(
+                path.startswith(prefix) for prefix in TC_ALLOWED_PATH_PREFIXES
+            ):
+                fail(
+                    "registered Track TC must retire governance exact-path "
+                    "access overlapping the Theory Completion scope"
+                )
+        for governance_prefix in governance_prefixes:
+            if any(
+                governance_prefix.startswith(tc_prefix)
+                or tc_prefix.startswith(governance_prefix)
+                for tc_prefix in TC_ALLOWED_PATH_PREFIXES
+            ) or any(
+                exact.startswith(governance_prefix)
+                for exact in TC_ALLOWED_EXACT_PATHS
+            ):
+                fail(
+                    "registered Track TC must not leave a governance prefix "
+                    "semantically overlapping the Theory Completion scope"
+                )
 
     minimal_core = ledger.get("minimal_core")
     if not isinstance(minimal_core, dict):
@@ -1212,6 +1248,22 @@ def validate_objecthood_completion_history_transition(
             fail("new Objecthood completion record must match the active baseline tracker/stage")
         if candidate_gate != "closed":
             fail("appending an Objecthood completion record must close the mutation gate")
+
+
+def validate_tc_registration_transition(
+    baseline_config: dict, candidate_config: dict
+) -> None:
+    """Once Track TC is registered, ordinary governance cannot silently remove it."""
+
+    baseline_tracks = baseline_config.get("tracks")
+    candidate_tracks = candidate_config.get("tracks")
+    baseline_has_tc = isinstance(baseline_tracks, dict) and "TC" in baseline_tracks
+    candidate_has_tc = isinstance(candidate_tracks, dict) and "TC" in candidate_tracks
+    if baseline_has_tc and not candidate_has_tc:
+        fail(
+            "registered Track TC is persistent and cannot be silently removed "
+            "by an ordinary governance transition"
+        )
 
 
 def validate_track_paths(
@@ -1424,6 +1476,7 @@ def main() -> None:
             validate_objecthood_completion_history_transition(
                 baseline_config, config
             )
+            validate_tc_registration_transition(baseline_config, config)
 
     branch = branch_for_run(repo, args.branch_name)
     paths = changed_paths(

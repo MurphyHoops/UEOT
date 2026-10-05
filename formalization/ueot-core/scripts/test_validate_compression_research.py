@@ -986,6 +986,38 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         else:
             raise AssertionError("widened TC exact ownership was not rejected")
 
+        missing_s_prefix = copy.deepcopy(candidate)
+        missing_s_prefix["tracks"]["S"]["forbidden_path_prefixes"].remove(
+            module.TC_DOC_PREFIX
+        )
+        try:
+            module.validate_static(repo, missing_s_prefix, ledger)
+        except ValueError as exc:
+            if "reciprocal Track S namespace exclusions" not in str(exc):
+                raise AssertionError(
+                    f"unexpected reciprocal S-prefix rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "TC registration without reciprocal Track S prefix exclusion passed"
+            )
+
+        missing_s_root = copy.deepcopy(candidate)
+        missing_s_root["tracks"]["S"]["forbidden_exact_paths"].remove(
+            module.TC_PUBLIC_ROOT
+        )
+        try:
+            module.validate_static(repo, missing_s_root, ledger)
+        except ValueError as exc:
+            if "reciprocal Track S public-root exclusion" not in str(exc):
+                raise AssertionError(
+                    f"unexpected reciprocal S-root rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "TC registration without reciprocal Track S root exclusion passed"
+            )
+
         retained_bootstrap = copy.deepcopy(candidate)
         retained_bootstrap["governance"]["allowed_exact_paths"].append(
             module.TC_PUBLIC_ROOT
@@ -993,7 +1025,7 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         try:
             module.validate_static(repo, retained_bootstrap, ledger)
         except ValueError as exc:
-            if "retire temporary governance access" not in str(exc):
+            if "retire governance exact-path access overlapping" not in str(exc):
                 raise AssertionError(
                     f"unexpected TC bootstrap-retirement rejection: {exc}"
                 ) from exc
@@ -1001,6 +1033,52 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
             raise AssertionError(
                 "registered TC retained temporary governance access"
             )
+
+        governance_ancestor = copy.deepcopy(candidate)
+        governance_ancestor["governance"]["allowed_path_prefixes"].append(
+            "formalization/ueot-core/docs/compression/"
+        )
+        try:
+            module.validate_static(repo, governance_ancestor, ledger)
+        except ValueError as exc:
+            if "semantically overlapping the Theory Completion scope" not in str(exc):
+                raise AssertionError(
+                    f"unexpected governance-prefix overlap rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "ancestor governance prefix overlapping TC scope was accepted"
+            )
+
+        governance_inside = copy.deepcopy(candidate)
+        governance_inside["governance"]["allowed_exact_paths"].append(
+            module.TC_DOC_PREFIX + "P0_SEMANTIC_INVENTORY.md"
+        )
+        try:
+            module.validate_static(repo, governance_inside, ledger)
+        except ValueError as exc:
+            if "governance exact-path access overlapping" not in str(exc):
+                raise AssertionError(
+                    f"unexpected governance exact-path overlap rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "governance exact path inside TC scope was accepted"
+            )
+
+        removed_tc = copy.deepcopy(candidate)
+        del removed_tc["tracks"]["TC"]
+        removed_tc["architecture_record_schema"]["track_owners"].remove("TC")
+        del removed_tc["architecture_record_schema"]["track_status"]["TC"]
+        try:
+            module.validate_tc_registration_transition(candidate, removed_tc)
+        except ValueError as exc:
+            if "persistent and cannot be silently removed" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC-removal transition rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError("registered TC could be silently removed")
     finally:
         module.fail = original_fail
 
