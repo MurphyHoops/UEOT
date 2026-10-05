@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "stage": "P0.0",
+  "title": "UEOT Theory Completion Semantic Inventory",
+  "tracker_issue": 268,
+  "canonical_main": "0ce13ad7f2a6dc1a04376f875fe7479a0fa22e4e",
+  "inventory_kind": "auditable theorem-surface map; no theorem duplication",
+  "claim_classes": [
+    "THEOREM",
+    "CONDITIONAL_THEOREM",
+    "ADAPTER_INTERFACE",
+    "NO_GO_BOUNDARY",
+    "CONJECTURE",
+    "EMPIRICAL_HYPOTHESIS"
+  ],
+  "roles": [
+    {
+      "semantic_role": "World Process",
+      "coverage_status": "CANONICAL_FAMILY",
+      "claim_classes": ["ADAPTER_INTERFACE", "THEOREM"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/HistoryMarkovization.lean",
+          "symbols": ["HistoryMachine", "exists_markovized_kernel"]
+        },
+        {
+          "path": "UEOT/V3/ConcreteHistoryMarkovization.lean",
+          "symbols": ["p_proc_01_history_markovization"]
+        },
+        {
+          "path": "UEOT/V3/DynamicsKernel.lean",
+          "symbols": ["homHistoryKernel", "homHistoryKernel_intertwines"]
+        }
+      ],
+      "exact_nonclaim": "There is no single universal WorldProcess structure subsuming every discrete, continuous, history and kernel interface.",
+      "next_bridge": "P0 may define only a minimal semantic interface over existing process carriers; it must not duplicate process-construction theorems."
+    },
+    {
+      "semantic_role": "Protocol",
+      "coverage_status": "CANONICAL_FAMILY",
+      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/InformationPInt01Common.lean",
+          "symbols": ["ProtocolClosureAt", "ProtocolFactorizationAt", "CommonProtocolClosure", "p_int_01", "p_int_01_common_decoder"]
+        },
+        {
+          "path": "UEOT/V3/PredictiveClassRecovery.lean",
+          "symbols": ["protocolDistanceSet", "protocolDistance_error", "protocolDistance_eq_zero_of_equivalent"]
+        }
+      ],
+      "exact_nonclaim": "Protocol semantics are not identical to a world process, an object boundary or a teleological contract.",
+      "next_bridge": "P0 classifies protocol as an observation/intervention/factorization interface consumed by predictive-state and inverse-objecthood layers."
+    },
+    {
+      "semantic_role": "Predictive State",
+      "coverage_status": "CANONICAL_STRONG",
+      "claim_classes": ["THEOREM"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/PredictionAE.lean",
+          "symbols": ["AEFactors", "canonical_ae_minimal", "canonical_ae_sigma_minimal", "canonical_kernel_sufficient"]
+        },
+        {
+          "path": "UEOT/V3/Compression/RecursiveSufficientState.lean",
+          "symbols": ["InputFiberCompatible", "existsUnique_reachableUpdate", "pred03_existsUnique_reachableUpdate"]
+        },
+        {
+          "path": "UEOT/V3/Compression/HistoryEncoderExactClosure.lean",
+          "symbols": ["p_quo_01_of_vanishing_fiber_defects"]
+        }
+      ],
+      "exact_nonclaim": "A predictive or sufficient state is not by itself an operational object or purpose-bearing agent.",
+      "next_bridge": "P0.1 and P2.2 must show how the same object's own history supplies the effective state used downstream."
+    },
+    {
+      "semantic_role": "Object Candidate",
+      "coverage_status": "CANONICAL_STRONG",
+      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/EndogenousCandidateFormation.lean",
+          "symbols": ["responseFormedCandidateFamily", "FormedCandidate", "formedCandidate_nonempty", "formedCandidate_interactionIsolation_pos_iff"]
+        },
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/EndogenousObjectSynthesis.lean",
+          "symbols": ["OperationalFormedPersistentParent", "exists_operationalFormedPersistentParent_of_responseSeed"]
+        }
+      ],
+      "exact_nonclaim": "Membership in a response-generated carrier/candidate family alone is not the full Object semantic.",
+      "next_bridge": "P0.1 introduces independent object-semantic predicates and proves the canonical formed/self-maintaining certificates imply them."
+    },
+    {
+      "semantic_role": "Object Boundary",
+      "coverage_status": "PARTIAL_OPEN_BRIDGE",
+      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/MarkovBoundary.lean",
+          "symbols": ["CIAxioms", "IsBlanket", "IsBoundary", "boundary_unique", "p_int_03_boundary_unique"]
+        },
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/InteractionBindingIsolation.lean",
+          "symbols": ["InteractionResponseFamily", "PairwiseInteractionSeparating"]
+        },
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/EndogenousCandidateFormation.lean",
+          "symbols": ["formedCandidate_interactionIsolation_pos_iff"]
+        }
+      ],
+      "exact_nonclaim": "The current library does not universally identify a formed parent's interaction-delimitation certificate with the abstract Markov-boundary object.",
+      "next_bridge": "P0.1 types the object-boundary/interface role and keeps Markov boundary and interaction isolation distinct unless a bridge is proved."
+    },
+    {
+      "semantic_role": "Persistence",
+      "coverage_status": "CANONICAL_STRONG",
+      "claim_classes": ["THEOREM"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/PersistenceOmega.lean",
+          "symbols": ["omegaLimit_persistence_core", "p_per_01"]
+        },
+        {
+          "path": "UEOT/V3/PersistenceOccupation.lean",
+          "symbols": ["invariant_of_occupation_tendsto", "p_per_02"]
+        },
+        {
+          "path": "UEOT/V3/ViabilitySource.lean",
+          "symbols": ["p_per_03"]
+        },
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/EndogenousConstitutivePersistence.lean",
+          "symbols": ["ConstitutivePersistenceCertificate"]
+        },
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/EndogenousObjectSynthesis.lean",
+          "symbols": ["OperationalFormedPersistentParent"]
+        }
+      ],
+      "exact_nonclaim": "Persistence and viability do not imply repairability, teleology or unique long-run semantics.",
+      "next_bridge": "P0.1 exposes persistence as one constituent of Operational Object, not the whole definition."
+    },
+    {
+      "semantic_role": "Recovery",
+      "coverage_status": "CANONICAL_STRONG",
+      "claim_classes": ["THEOREM"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/RecoveryProbability.lean",
+          "symbols": ["p_rec_01_mean_bound", "p_rec_01_tail_bound"]
+        },
+        {
+          "path": "UEOT/V3/Compression/Objecthood/PhysicalRecovery.lean",
+          "symbols": ["PhysicalRepairCertificate"]
+        },
+        {
+          "path": "UEOT/V3/Compression/Objecthood/ControllerSelfStabilization.lean",
+          "symbols": ["ControllerSelfStabilizationCertificate"]
+        },
+        {
+          "path": "UEOT/V3/Compression/Objecthood/FormedParentSelfRepairSynthesis.lean",
+          "symbols": ["SelfRepairingOperationalParent", "SemanticallyStableSelfRepairingOperationalParent", "semantic_bound_and_eventual_same_parent_repair"]
+        }
+      ],
+      "exact_nonclaim": "Current recovery/self-repair results are not yet unified physical plus organizational recurrent fault semantics or full autopoiesis.",
+      "next_bridge": "P0.1 consumes these as recoverability/self-maintenance witnesses; P5-P7 remain distinct future Objecthood programs."
+    },
+    {
+      "semantic_role": "Purpose",
+      "coverage_status": "PARTIAL_WITH_NO_GO",
+      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/Compression/TeleologicalEquivalence.lean",
+          "symbols": ["ValueEqual", "PositiveAffineEquivalent", "OrderEquivalent", "MaximizerEquivalent", "rewardShaping_positiveAffineEquivalent", "policy_values_affine_via_teleologicalEquivalence"]
+        },
+        {
+          "path": "UEOT/V3/Compression/Hierarchy/Separations.lean",
+          "symbols": ["carrier_does_not_determine_maximizers", "response_does_not_determine_fitness"]
+        },
+        {
+          "path": "UEOT/V3/DualDriveGauge.lean",
+          "symbols": ["p_ddh_01", "p_ddh_01_pointwise"]
+        }
+      ],
+      "exact_nonclaim": "Object, carrier and behavioral-response structure do not uniquely determine one scalar reward or maximizer set; no reusable object-level TeleologicalContract exists yet.",
+      "next_bridge": "P0.2 classifies purpose semantics; P1 constructs TeleologicalContract and tests representation and converse boundaries."
+    },
+    {
+      "semantic_role": "Agency",
+      "coverage_status": "CANONICAL_BUT_NOT_SAME_OBJECT_CLOSED",
+      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/Agency.lean",
+          "symbols": ["FeasibleDecision", "Extends", "extension_optimalValue_mono"]
+        },
+        {
+          "path": "UEOT/V3/Compression/AgencyGodGoaAssembly.lean",
+          "symbols": ["HistoryControlSpec", "agency_god_goa", "agency_god_goa_from_history"]
+        }
+      ],
+      "exact_nonclaim": "The history-derived control theorem does not yet prove that its HistoryControlSpec is generated by the same formed/self-maintaining Objecthood object.",
+      "next_bridge": "P2.1-P2.3 construct the control history/state/model from that same object plus the P1 teleological contract."
+    },
+    {
+      "semantic_role": "GOD",
+      "coverage_status": "PARTIAL_SEMANTIC_CONSTITUTION_NEEDED",
+      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/FiniteDiscountedControl.lean",
+          "symbols": ["Model.greedyAction", "Model.greedyAction_spec"]
+        },
+        {
+          "path": "UEOT/V3/Compression/AgencyGodGoaAssembly.lean",
+          "symbols": ["agency_god_goa", "agency_god_goa_from_history"]
+        }
+      ],
+      "exact_nonclaim": "Existing finite-control results justify optimal greedy action/policy correspondences under their hypotheses; they do not define a universal unique gradient-vector GOD.",
+      "next_bridge": "P0.3 defines generic GOD semantics as a set-valued optimal action/policy/direction correspondence."
+    },
+    {
+      "semantic_role": "GOA",
+      "coverage_status": "CANONICAL_PLURAL_FAMILY",
+      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/Compression/OccupationLimitInvariance.lean",
+          "symbols": ["finite_invariant_of_cesaro_tendsto", "p_goa_01_via_occupationLimit", "feller_invariant_of_occupation_tendsto"]
+        },
+        {
+          "path": "UEOT/V3/Compression/InvariantSetGaugeInvariance.lean",
+          "symbols": ["invariantLawSet", "selectorInvariantGoaSet", "greedyInvariantGoaSet_gaugeInvariant"]
+        },
+        {
+          "path": "UEOT/V3/QSDPerron.lean",
+          "symbols": ["qsd_all_steps", "doobInvariant_stationary", "p_qsd_02"]
+        },
+        {
+          "path": "UEOT/V3/Compression/PrimitiveOptimalPolicyGoaClosure.lean",
+          "symbols": ["eventually_existsUnique_optimalPolicyNearGoaGaugeAt_of_primitiveDefects"]
+        },
+        {
+          "path": "UEOT/V3/Compression/TopologyChangingGoaFunctionalGraphClassification.lean",
+          "symbols": ["exists_zero_sum_residual_kernel_of_not_unique_periodic_orbit"]
+        }
+      ],
+      "exact_nonclaim": "GOA is not universally a unique fixed point; invariant laws, recurrent structures, occupation limits, QSDs and certificate-dependent unique/mixing structures are distinct formal objects.",
+      "next_bridge": "P0.4 defines plural typed GOA semantics; stronger uniqueness and convergence remain conditional on explicit certificates."
+    },
+    {
+      "semantic_role": "Composition",
+      "coverage_status": "CANONICAL_STRONG_WITH_IDENTIFIABILITY_BOUNDARIES",
+      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/CompositionCarrierLift.lean",
+          "symbols": ["childSufficient", "locallyMinimalCover", "p_comp_06"]
+        },
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/EndogenousCandidateFormation.lean",
+          "symbols": ["responseFormedCandidateFamily"]
+        },
+        {
+          "path": "UEOT/V3/Compression/Hierarchy/ParentAssemblyResidual.lean",
+          "symbols": ["childConsistency_does_not_determine_unique_parent", "same_child_marginals_different_joint"]
+        },
+        {
+          "path": "UEOT/V3/Compression/CrossTrack/ParentBindingDiagnosticNoGo.lean",
+          "symbols": ["p_comp_03_forward_stability_not_parent_identifiability"]
+        }
+      ],
+      "exact_nonclaim": "Child consistency or forward stability alone does not identify a unique parent.",
+      "next_bridge": "TC consumes canonical parent-formation/identification semantics and does not reopen Track H or X."
+    },
+    {
+      "semantic_role": "Scale",
+      "coverage_status": "CANONICAL_SCALE_MATH_RG_BRIDGE_ABSENT",
+      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/Resolution.lean",
+          "symbols": ["PushMin", "pushFamily", "pushFamily_realization_interval"]
+        },
+        {
+          "path": "UEOT/V3/ClosureResolution.lean",
+          "symbols": ["ClosureSystem", "resolutionMap", "resolutionMap_comp", "minimal_property_coarse_graining"]
+        },
+        {
+          "path": "UEOT/V3/DynamicsCrossScale.lean",
+          "symbols": ["p_dyn_04_cross_scale_tv", "p_dyn_04_exact_intertwining"]
+        }
+      ],
+      "exact_nonclaim": "These quotient, resolution, coarse-graining and cross-scale theorems are not by themselves Wilsonian RG.",
+      "next_bridge": "P0.5 distinguishes scale notions; P9 later studies object-scale transport and only then tests any Wilsonian bridge."
+    },
+    {
+      "semantic_role": "Evolution",
+      "coverage_status": "CANONICAL_POPULATION_THEORY_OBJECT_LINEAGE_BRIDGE_ABSENT",
+      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "canonical_surfaces": [
+        {
+          "path": "UEOT/V3/EvolutionPrice.lean",
+          "symbols": ["p_evo_01_core", "p_evo_01"]
+        },
+        {
+          "path": "UEOT/V3/EvolutionSharedLabel.lean",
+          "symbols": ["p_evo_02"]
+        },
+        {
+          "path": "UEOT/V3/EvolutionPerronGrowth.lean",
+          "symbols": ["KPF01Certificate", "p_evo_03"]
+        },
+        {
+          "path": "UEOT/V3/EvolutionReproductiveMartingale.lean",
+          "symbols": ["reproductiveValue_martingale", "p_evo_04"]
+        }
+      ],
+      "exact_nonclaim": "Existing evolutionary operator, Price, Perron and martingale results do not yet define UEOT object-level offspring, lineage or heritable organizational identity.",
+      "next_bridge": "P8 must first prove same-object repair is distinct from offspring and define object-level lineage before bridging to population evolution."
+    }
+  ],
+  "cross_role_conclusions": [
+    "Predictive-state, persistence, recovery, composition and multiple GOA theorem families are already mature; P0 should type their semantics rather than re-prove them.",
+    "The central later constructive gap is same-object identity preservation from formed/self-maintaining Objecthood through its own history/control representation into purpose/GOD/GOA.",
+    "Purpose already has rigorous equivalence/gauge structure plus no-go evidence against unique-objective identification, but no reusable object-level TeleologicalContract.",
+    "Boundary mathematics and interaction isolation both exist, but their universal object-level relationship is not currently one theorem.",
+    "GOA must remain plural across invariant, recurrent, occupation, QSD and certificate-dependent unique/mixing structures.",
+    "Scale mathematics is machine-checked; Wilsonian RG remains an explicit missing bridge, not a synonym.",
+    "Evolution theory exists at population/operator level; object-level lineage and reproduction remain a later bridge."
+  ]
+}
