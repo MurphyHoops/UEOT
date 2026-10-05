@@ -98,27 +98,43 @@ theorem constitutivelyPersists_of_certificate
   exact ⟨C.K, C.controller, C.seed,
     C.kernel_sub_domain, C.seed_mem, C.source_fixed, C.all_times_safe⟩
 
-/-- Physical recoverability on an explicitly declared basin.  The predicate
-requires finite expected hitting time under one repair policy, but does not
-pretend that the certified basin is the whole state space. -/
+/-- Physical recoverability on an explicitly declared, nonempty basin.
+The predicate requires at least one certified starting state and finite expected
+hitting time under one repair policy throughout that basin; it does not pretend
+that the certified basin is the whole state space. -/
 def PhysicallyRecoverableOn
     {X : Type uX} {A : Type uA}
     [Fintype X] [Fintype A]
     [MeasurableSpace X] [MeasurableSingletonClass X]
     (P : X → A → PMF X) (target basin : Set X) : Prop :=
-  ∃ repairPolicy : X → A, ∀ x ∈ basin,
-    expectedHittingTime (stationaryKernel P repairPolicy) x target ≠ ∞
+  basin.Nonempty ∧
+    ∃ repairPolicy : X → A, ∀ x ∈ basin,
+      expectedHittingTime (stationaryKernel P repairPolicy) x target ≠ ∞
 
-/-- A physical-repair certificate gives recoverability on exactly its
-finite-potential basin. -/
+/-- Recoverability is definitionally nonvacuous: the declared repair basin has
+an actual certified starting state. -/
+theorem physicallyRecoverableOn_basin_nonempty
+    {X : Type uX} {A : Type uA}
+    [Fintype X] [Fintype A]
+    [MeasurableSpace X] [MeasurableSingletonClass X]
+    {P : X → A → PMF X} {target basin : Set X}
+    (h : PhysicallyRecoverableOn P target basin) :
+    basin.Nonempty :=
+  h.1
+
+/-- A physical-repair certificate plus an explicit nonempty-basin witness
+gives recoverability on exactly its finite-potential basin.  Nonemptiness is
+not silently inferred from the Track-O certificate because that source
+structure does not require it. -/
 theorem physicallyRecoverableOn_of_certificate
     {X : Type uX} {A : Type uA}
     [Fintype X] [Fintype A]
     [MeasurableSpace X] [MeasurableSingletonClass X]
     {P : X → A → PMF X} {target : Set X}
-    (C : PhysicalRepairCertificate P target) :
+    (C : PhysicalRepairCertificate P target)
+    (hbasin : C.basin.Nonempty) :
     PhysicallyRecoverableOn P target C.basin := by
-  refine ⟨C.repairPolicy, ?_⟩
+  refine ⟨hbasin, C.repairPolicy, ?_⟩
   intro x hx
   exact C.expectedHittingTime_ne_top_of_mem_basin hx
 
@@ -162,9 +178,9 @@ theorem operationalParent_constituents
       probes C.separating C.parent
   · exact constitutivelyPersists_of_certificate C.persistence
 
-/-- Self-repair adds a finite-expected-time physical recovery semantics on the
-certificate's explicit repair basin, without strengthening that basin to all
-states. -/
+/-- Self-repair plus an explicit witness that the Track-O finite-potential
+repair basin is nonempty gives finite-expected-time physical recovery semantics,
+without strengthening that basin to all states. -/
 theorem selfRepairingParent_recoverability
     [Fintype Child]
     [MeasurableSpace Y] [MeasurableSpace Z]
@@ -181,12 +197,13 @@ theorem selfRepairingParent_recoverability
     [MeasurableSpace (ConstitutiveState X A)]
     [MeasurableSingletonClass (ConstitutiveState X A)]
     (C : SelfRepairingOperationalParent
-      readout p regions response hprob probes dynamics persistenceDomain) :
+      readout p regions response hprob probes dynamics persistenceDomain)
+    (hbasin : C.physicalRepair.basin.Nonempty) :
     PhysicallyRecoverableOn
       (dynamics C.operational.parent)
       C.operational.persistence.K
       C.physicalRepair.basin := by
-  exact physicallyRecoverableOn_of_certificate C.physicalRepair
+  exact physicallyRecoverableOn_of_certificate C.physicalRepair hbasin
 
 /-- The hardened Objecthood package identifies the exact selected operational
 parent with the semantic fibre certified by Track X. -/

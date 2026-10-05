@@ -17,19 +17,30 @@
     {
       "semantic_role": "World Process",
       "coverage_status": "CANONICAL_FAMILY",
-      "claim_classes": ["ADAPTER_INTERFACE", "THEOREM"],
+      "claim_classes": [
+        "ADAPTER_INTERFACE",
+        "THEOREM"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/HistoryMarkovization.lean",
-          "symbols": ["HistoryMachine", "exists_markovized_kernel"]
+          "symbols": [
+            "HistoryMachine",
+            "exists_markovized_kernel"
+          ]
         },
         {
           "path": "UEOT/V3/ConcreteHistoryMarkovization.lean",
-          "symbols": ["p_proc_01_history_markovization"]
+          "symbols": [
+            "p_proc_01_history_markovization"
+          ]
         },
         {
           "path": "UEOT/V3/DynamicsKernel.lean",
-          "symbols": ["homHistoryKernel", "homHistoryKernel_intertwines"]
+          "symbols": [
+            "homHistoryKernel",
+            "homHistoryKernel_intertwines"
+          ]
         }
       ],
       "exact_nonclaim": "There is no single universal WorldProcess structure subsuming every discrete, continuous, history and kernel interface.",
@@ -38,15 +49,28 @@
     {
       "semantic_role": "Protocol",
       "coverage_status": "CANONICAL_FAMILY",
-      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "claim_classes": [
+        "THEOREM",
+        "ADAPTER_INTERFACE"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/InformationPInt01Common.lean",
-          "symbols": ["ProtocolClosureAt", "ProtocolFactorizationAt", "CommonProtocolClosure", "p_int_01", "p_int_01_common_decoder"]
+          "symbols": [
+            "ProtocolClosureAt",
+            "ProtocolFactorizationAt",
+            "CommonProtocolClosure",
+            "p_int_01",
+            "p_int_01_common_decoder"
+          ]
         },
         {
           "path": "UEOT/V3/PredictiveClassRecovery.lean",
-          "symbols": ["protocolDistanceSet", "protocolDistance_error", "protocolDistance_eq_zero_of_equivalent"]
+          "symbols": [
+            "protocolDistanceSet",
+            "protocolDistance_error",
+            "protocolDistance_eq_zero_of_equivalent"
+          ]
         }
       ],
       "exact_nonclaim": "Protocol semantics are not identical to a world process, an object boundary or a teleological contract.",
@@ -55,19 +79,32 @@
     {
       "semantic_role": "Predictive State",
       "coverage_status": "CANONICAL_STRONG",
-      "claim_classes": ["THEOREM"],
+      "claim_classes": [
+        "THEOREM"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/PredictionAE.lean",
-          "symbols": ["AEFactors", "canonical_ae_minimal", "canonical_ae_sigma_minimal", "canonical_kernel_sufficient"]
+          "symbols": [
+            "AEFactors",
+            "canonical_ae_minimal",
+            "canonical_ae_sigma_minimal",
+            "canonical_kernel_sufficient"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/RecursiveSufficientState.lean",
-          "symbols": ["InputFiberCompatible", "existsUnique_reachableUpdate", "pred03_existsUnique_reachableUpdate"]
+          "symbols": [
+            "InputFiberCompatible",
+            "existsUnique_reachableUpdate",
+            "pred03_existsUnique_reachableUpdate"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/HistoryEncoderExactClosure.lean",
-          "symbols": ["p_quo_01_of_vanishing_fiber_defects"]
+          "symbols": [
+            "p_quo_01_of_vanishing_fiber_defects"
+          ]
         }
       ],
       "exact_nonclaim": "A predictive or sufficient state is not by itself an operational object or purpose-bearing agent.",
@@ -76,15 +113,26 @@
     {
       "semantic_role": "Object Candidate",
       "coverage_status": "CANONICAL_STRONG",
-      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "claim_classes": [
+        "THEOREM",
+        "ADAPTER_INTERFACE"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/Compression/CrossTrack/EndogenousCandidateFormation.lean",
-          "symbols": ["responseFormedCandidateFamily", "FormedCandidate", "formedCandidate_nonempty", "formedCandidate_interactionIsolation_pos_iff"]
+          "symbols": [
+            "responseFormedCandidateFamily",
+            "FormedCandidate",
+            "formedCandidate_nonempty",
+            "formedCandidate_interactionIsolation_pos_iff"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/CrossTrack/EndogenousObjectSynthesis.lean",
-          "symbols": ["OperationalFormedPersistentParent", "exists_operationalFormedPersistentParent_of_responseSeed"]
+          "symbols": [
+            "OperationalFormedPersistentParent",
+            "exists_operationalFormedPersistentParent_of_responseSeed"
+          ]
         }
       ],
       "exact_nonclaim": "Membership in a response-generated carrier/candidate family alone is not the full Object semantic.",
@@ -93,19 +141,33 @@
     {
       "semantic_role": "Object Boundary",
       "coverage_status": "PARTIAL_OPEN_BRIDGE",
-      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "claim_classes": [
+        "THEOREM",
+        "ADAPTER_INTERFACE"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/MarkovBoundary.lean",
-          "symbols": ["CIAxioms", "IsBlanket", "IsBoundary", "boundary_unique", "p_int_03_boundary_unique"]
+          "symbols": [
+            "CIAxioms",
+            "IsBlanket",
+            "IsBoundary",
+            "boundary_unique",
+            "p_int_03_boundary_unique"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/CrossTrack/InteractionBindingIsolation.lean",
-          "symbols": ["InteractionResponseFamily", "PairwiseInteractionSeparating"]
+          "symbols": [
+            "InteractionResponseFamily",
+            "PairwiseInteractionSeparating"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/CrossTrack/EndogenousCandidateFormation.lean",
-          "symbols": ["formedCandidate_interactionIsolation_pos_iff"]
+          "symbols": [
+            "formedCandidate_interactionIsolation_pos_iff"
+          ]
         }
       ],
       "exact_nonclaim": "The current library does not universally identify a formed parent's interaction-delimitation certificate with the abstract Markov-boundary object.",
@@ -114,27 +176,41 @@
     {
       "semantic_role": "Persistence",
       "coverage_status": "CANONICAL_STRONG",
-      "claim_classes": ["THEOREM"],
+      "claim_classes": [
+        "THEOREM"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/PersistenceOmega.lean",
-          "symbols": ["omegaLimit_persistence_core", "p_per_01"]
+          "symbols": [
+            "omegaLimit_persistence_core",
+            "p_per_01"
+          ]
         },
         {
           "path": "UEOT/V3/PersistenceOccupation.lean",
-          "symbols": ["invariant_of_occupation_tendsto", "p_per_02"]
+          "symbols": [
+            "invariant_of_occupation_tendsto",
+            "p_per_02"
+          ]
         },
         {
           "path": "UEOT/V3/ViabilitySource.lean",
-          "symbols": ["p_per_03"]
+          "symbols": [
+            "p_per_03"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/CrossTrack/EndogenousConstitutivePersistence.lean",
-          "symbols": ["ConstitutivePersistenceCertificate"]
+          "symbols": [
+            "ConstitutivePersistenceCertificate"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/CrossTrack/EndogenousObjectSynthesis.lean",
-          "symbols": ["OperationalFormedPersistentParent"]
+          "symbols": [
+            "OperationalFormedPersistentParent"
+          ]
         }
       ],
       "exact_nonclaim": "Persistence and viability do not imply repairability, teleology or unique long-run semantics.",
@@ -143,61 +219,101 @@
     {
       "semantic_role": "Recovery",
       "coverage_status": "CANONICAL_STRONG",
-      "claim_classes": ["THEOREM"],
+      "claim_classes": [
+        "THEOREM"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/RecoveryProbability.lean",
-          "symbols": ["p_rec_01_mean_bound", "p_rec_01_tail_bound"]
+          "symbols": [
+            "p_rec_01_mean_bound",
+            "p_rec_01_tail_bound"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/Objecthood/PhysicalRecovery.lean",
-          "symbols": ["PhysicalRepairCertificate"]
+          "symbols": [
+            "PhysicalRepairCertificate"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/Objecthood/ControllerSelfStabilization.lean",
-          "symbols": ["ControllerSelfStabilizationCertificate"]
+          "symbols": [
+            "ControllerSelfStabilizationCertificate"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/Objecthood/FormedParentSelfRepairSynthesis.lean",
-          "symbols": ["SelfRepairingOperationalParent", "SemanticallyStableSelfRepairingOperationalParent", "semantic_bound_and_eventual_same_parent_repair"]
+          "symbols": [
+            "SelfRepairingOperationalParent",
+            "SemanticallyStableSelfRepairingOperationalParent",
+            "semantic_bound_and_eventual_same_parent_repair"
+          ]
         }
       ],
       "exact_nonclaim": "Current recovery/self-repair results are not yet unified physical plus organizational recurrent fault semantics or full autopoiesis.",
-      "next_bridge": "P0.1 consumes these as recoverability/self-maintenance witnesses; P5-P7 remain distinct future Objecthood programs."
+      "next_bridge": "P0.1 consumes canonical repair certificates only with an explicit nonempty certified repair basin; P5-P7 remain distinct future Objecthood programs."
     },
     {
       "semantic_role": "Purpose",
       "coverage_status": "PARTIAL_WITH_NO_GO",
-      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "claim_classes": [
+        "THEOREM",
+        "NO_GO_BOUNDARY"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/Compression/TeleologicalEquivalence.lean",
-          "symbols": ["ValueEqual", "PositiveAffineEquivalent", "OrderEquivalent", "MaximizerEquivalent", "rewardShaping_positiveAffineEquivalent", "policy_values_affine_via_teleologicalEquivalence"]
+          "symbols": [
+            "ValueEqual",
+            "PositiveAffineEquivalent",
+            "OrderEquivalent",
+            "MaximizerEquivalent",
+            "rewardShaping_positiveAffineEquivalent",
+            "policy_values_affine_via_teleologicalEquivalence"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/Hierarchy/Separations.lean",
-          "symbols": ["carrier_does_not_determine_maximizers", "response_does_not_determine_fitness"]
+          "symbols": [
+            "carrier_does_not_determine_maximizers",
+            "response_does_not_determine_fitness"
+          ]
         },
         {
           "path": "UEOT/V3/DualDriveGauge.lean",
-          "symbols": ["p_ddh_01", "p_ddh_01_pointwise"]
+          "symbols": [
+            "p_ddh_01",
+            "p_ddh_01_pointwise"
+          ]
         }
       ],
-      "exact_nonclaim": "Object, carrier and behavioral-response structure do not uniquely determine one scalar reward or maximizer set; no reusable object-level TeleologicalContract exists yet.",
-      "next_bridge": "P0.2 classifies purpose semantics; P1 constructs TeleologicalContract and tests representation and converse boundaries."
+      "exact_nonclaim": "A carrier alone does not uniquely determine one scalar objective or maximizer set. P0 does not yet prove the stronger no-go with all Operational Object semantics held fixed; no reusable object-level TeleologicalContract exists yet.",
+      "next_bridge": "P0.2 classifies purpose semantics; P1.0 tests Objecthood-alone objective identification, and P1 constructs TeleologicalContract plus representation/converse boundaries."
     },
     {
       "semantic_role": "Agency",
       "coverage_status": "CANONICAL_BUT_NOT_SAME_OBJECT_CLOSED",
-      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "claim_classes": [
+        "THEOREM",
+        "ADAPTER_INTERFACE"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/Agency.lean",
-          "symbols": ["FeasibleDecision", "Extends", "extension_optimalValue_mono"]
+          "symbols": [
+            "FeasibleDecision",
+            "Extends",
+            "extension_optimalValue_mono"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/AgencyGodGoaAssembly.lean",
-          "symbols": ["HistoryControlSpec", "agency_god_goa", "agency_god_goa_from_history"]
+          "symbols": [
+            "HistoryControlSpec",
+            "agency_god_goa",
+            "agency_god_goa_from_history"
+          ]
         }
       ],
       "exact_nonclaim": "The history-derived control theorem does not yet prove that its HistoryControlSpec is generated by the same formed/self-maintaining Objecthood object.",
@@ -206,15 +322,24 @@
     {
       "semantic_role": "GOD",
       "coverage_status": "PARTIAL_SEMANTIC_CONSTITUTION_NEEDED",
-      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "claim_classes": [
+        "THEOREM",
+        "ADAPTER_INTERFACE"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/FiniteDiscountedControl.lean",
-          "symbols": ["Model.greedyAction", "Model.greedyAction_spec"]
+          "symbols": [
+            "Model.greedyAction",
+            "Model.greedyAction_spec"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/AgencyGodGoaAssembly.lean",
-          "symbols": ["agency_god_goa", "agency_god_goa_from_history"]
+          "symbols": [
+            "agency_god_goa",
+            "agency_god_goa_from_history"
+          ]
         }
       ],
       "exact_nonclaim": "Existing finite-control results justify optimal greedy action/policy correspondences under their hypotheses; they do not define a universal unique gradient-vector GOD.",
@@ -223,27 +348,46 @@
     {
       "semantic_role": "GOA",
       "coverage_status": "CANONICAL_PLURAL_FAMILY",
-      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "claim_classes": [
+        "THEOREM",
+        "NO_GO_BOUNDARY"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/Compression/OccupationLimitInvariance.lean",
-          "symbols": ["finite_invariant_of_cesaro_tendsto", "p_goa_01_via_occupationLimit", "feller_invariant_of_occupation_tendsto"]
+          "symbols": [
+            "finite_invariant_of_cesaro_tendsto",
+            "p_goa_01_via_occupationLimit",
+            "feller_invariant_of_occupation_tendsto"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/InvariantSetGaugeInvariance.lean",
-          "symbols": ["invariantLawSet", "selectorInvariantGoaSet", "greedyInvariantGoaSet_gaugeInvariant"]
+          "symbols": [
+            "invariantLawSet",
+            "selectorInvariantGoaSet",
+            "greedyInvariantGoaSet_gaugeInvariant"
+          ]
         },
         {
           "path": "UEOT/V3/QSDPerron.lean",
-          "symbols": ["qsd_all_steps", "doobInvariant_stationary", "p_qsd_02"]
+          "symbols": [
+            "qsd_all_steps",
+            "doobInvariant_stationary",
+            "p_qsd_02"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/PrimitiveOptimalPolicyGoaClosure.lean",
-          "symbols": ["eventually_existsUnique_optimalPolicyNearGoaGaugeAt_of_primitiveDefects"]
+          "symbols": [
+            "eventually_existsUnique_optimalPolicyNearGoaGaugeAt_of_primitiveDefects"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/TopologyChangingGoaFunctionalGraphClassification.lean",
-          "symbols": ["exists_zero_sum_residual_kernel_of_not_unique_periodic_orbit"]
+          "symbols": [
+            "exists_zero_sum_residual_kernel_of_not_unique_periodic_orbit"
+          ]
         }
       ],
       "exact_nonclaim": "GOA is not universally a unique fixed point; invariant laws, recurrent structures, occupation limits, QSDs and certificate-dependent unique/mixing structures are distinct formal objects.",
@@ -252,23 +396,37 @@
     {
       "semantic_role": "Composition",
       "coverage_status": "CANONICAL_STRONG_WITH_IDENTIFIABILITY_BOUNDARIES",
-      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "claim_classes": [
+        "THEOREM",
+        "NO_GO_BOUNDARY"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/CompositionCarrierLift.lean",
-          "symbols": ["childSufficient", "locallyMinimalCover", "p_comp_06"]
+          "symbols": [
+            "childSufficient",
+            "locallyMinimalCover",
+            "p_comp_06"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/CrossTrack/EndogenousCandidateFormation.lean",
-          "symbols": ["responseFormedCandidateFamily"]
+          "symbols": [
+            "responseFormedCandidateFamily"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/Hierarchy/ParentAssemblyResidual.lean",
-          "symbols": ["childConsistency_does_not_determine_unique_parent", "same_child_marginals_different_joint"]
+          "symbols": [
+            "childConsistency_does_not_determine_unique_parent",
+            "same_child_marginals_different_joint"
+          ]
         },
         {
           "path": "UEOT/V3/Compression/CrossTrack/ParentBindingDiagnosticNoGo.lean",
-          "symbols": ["p_comp_03_forward_stability_not_parent_identifiability"]
+          "symbols": [
+            "p_comp_03_forward_stability_not_parent_identifiability"
+          ]
         }
       ],
       "exact_nonclaim": "Child consistency or forward stability alone does not identify a unique parent.",
@@ -277,19 +435,34 @@
     {
       "semantic_role": "Scale",
       "coverage_status": "CANONICAL_SCALE_MATH_RG_BRIDGE_ABSENT",
-      "claim_classes": ["THEOREM", "NO_GO_BOUNDARY"],
+      "claim_classes": [
+        "THEOREM",
+        "NO_GO_BOUNDARY"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/Resolution.lean",
-          "symbols": ["PushMin", "pushFamily", "pushFamily_realization_interval"]
+          "symbols": [
+            "PushMin",
+            "pushFamily",
+            "pushFamily_realization_interval"
+          ]
         },
         {
           "path": "UEOT/V3/ClosureResolution.lean",
-          "symbols": ["ClosureSystem", "resolutionMap", "resolutionMap_comp", "minimal_property_coarse_graining"]
+          "symbols": [
+            "ClosureSystem",
+            "resolutionMap",
+            "resolutionMap_comp",
+            "minimal_property_coarse_graining"
+          ]
         },
         {
           "path": "UEOT/V3/DynamicsCrossScale.lean",
-          "symbols": ["p_dyn_04_cross_scale_tv", "p_dyn_04_exact_intertwining"]
+          "symbols": [
+            "p_dyn_04_cross_scale_tv",
+            "p_dyn_04_exact_intertwining"
+          ]
         }
       ],
       "exact_nonclaim": "These quotient, resolution, coarse-graining and cross-scale theorems are not by themselves Wilsonian RG.",
@@ -298,23 +471,37 @@
     {
       "semantic_role": "Evolution",
       "coverage_status": "CANONICAL_POPULATION_THEORY_OBJECT_LINEAGE_BRIDGE_ABSENT",
-      "claim_classes": ["THEOREM", "ADAPTER_INTERFACE"],
+      "claim_classes": [
+        "THEOREM",
+        "ADAPTER_INTERFACE"
+      ],
       "canonical_surfaces": [
         {
           "path": "UEOT/V3/EvolutionPrice.lean",
-          "symbols": ["p_evo_01_core", "p_evo_01"]
+          "symbols": [
+            "p_evo_01_core",
+            "p_evo_01"
+          ]
         },
         {
           "path": "UEOT/V3/EvolutionSharedLabel.lean",
-          "symbols": ["p_evo_02"]
+          "symbols": [
+            "p_evo_02"
+          ]
         },
         {
           "path": "UEOT/V3/EvolutionPerronGrowth.lean",
-          "symbols": ["KPF01Certificate", "p_evo_03"]
+          "symbols": [
+            "KPF01Certificate",
+            "p_evo_03"
+          ]
         },
         {
           "path": "UEOT/V3/EvolutionReproductiveMartingale.lean",
-          "symbols": ["reproductiveValue_martingale", "p_evo_04"]
+          "symbols": [
+            "reproductiveValue_martingale",
+            "p_evo_04"
+          ]
         }
       ],
       "exact_nonclaim": "Existing evolutionary operator, Price, Perron and martingale results do not yet define UEOT object-level offspring, lineage or heritable organizational identity.",

@@ -89,7 +89,7 @@ Every referenced or future bridge remains classified as THEOREM, CONDITIONAL THE
   - `UEOT/V3/Compression/Objecthood/ControllerSelfStabilization.lean` — `ControllerSelfStabilizationCertificate`
   - `UEOT/V3/Compression/Objecthood/FormedParentSelfRepairSynthesis.lean` — `SelfRepairingOperationalParent`, `SemanticallyStableSelfRepairingOperationalParent`, `semantic_bound_and_eventual_same_parent_repair`
 - **Exact nonclaim:** Current recovery/self-repair results are not yet unified physical plus organizational recurrent fault semantics or full autopoiesis.
-- **Next bridge:** P0.1 consumes these as recoverability/self-maintenance witnesses; P5-P7 remain distinct future Objecthood programs.
+- **Next bridge:** P0.1 consumes canonical repair certificates only with an explicit nonempty certified repair basin; P5-P7 remain distinct future Objecthood programs.
 
 ### Purpose
 
@@ -99,8 +99,8 @@ Every referenced or future bridge remains classified as THEOREM, CONDITIONAL THE
   - `UEOT/V3/Compression/TeleologicalEquivalence.lean` — `ValueEqual`, `PositiveAffineEquivalent`, `OrderEquivalent`, `MaximizerEquivalent`, `rewardShaping_positiveAffineEquivalent`, `policy_values_affine_via_teleologicalEquivalence`
   - `UEOT/V3/Compression/Hierarchy/Separations.lean` — `carrier_does_not_determine_maximizers`, `response_does_not_determine_fitness`
   - `UEOT/V3/DualDriveGauge.lean` — `p_ddh_01`, `p_ddh_01_pointwise`
-- **Exact nonclaim:** Object, carrier and behavioral-response structure do not uniquely determine one scalar reward or maximizer set; no reusable object-level TeleologicalContract exists yet.
-- **Next bridge:** P0.2 classifies purpose semantics; P1 constructs TeleologicalContract and tests representation and converse boundaries.
+- **Exact nonclaim:** A carrier alone does not uniquely determine one scalar objective or maximizer set. P0 does not yet prove the stronger no-go with all Operational Object semantics held fixed; no reusable object-level TeleologicalContract exists yet.
+- **Next bridge:** P0.2 classifies purpose semantics; P1.0 tests Objecthood-alone objective identification, and P1 constructs TeleologicalContract plus representation/converse boundaries.
 
 ### Agency
 

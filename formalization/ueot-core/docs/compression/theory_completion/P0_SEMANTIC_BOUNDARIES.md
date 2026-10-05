@@ -19,7 +19,7 @@ Claim class: **NO-GO / BOUNDARY THEOREM**.
 
 Formal result already proved in P0.2: `carrier_does_not_determine_choiceRepresentationClass`.
 
-This reuses the canonical hierarchy theorem `carrier_does_not_determine_maximizers`. A common carrier can support objectives with distinct maximizer sets, so Objecthood/carrier structure alone does not identify one objective or one choice-representation class.
+This reuses the canonical hierarchy theorem `carrier_does_not_determine_maximizers`. A common carrier can support objectives with distinct maximizer sets, so the **carrier alone** does not identify one objective or one choice-representation class. This theorem does not keep the full predictive/interface/persistence/recovery/semantic-identity data of an Operational Object fixed; the stronger Objecthood-alone identification no-go remains P1.0 work.
 
 Claim class: **NO-GO / BOUNDARY THEOREM**.
 

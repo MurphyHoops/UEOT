@@ -14,7 +14,7 @@ This is the P0 terminal definition/theorem graph. It maps UEOT philosophical ter
 | Object Candidate | `FormedProvenance` | `FormedCandidate`, response-generated candidate family | provenance alone fails Object semantics |
 | Object Boundary / delimitation | `InteractionDelimitedAt` | pairwise interaction separation implies object-specific delimitation | abstract Markov boundary and interaction delimitation remain distinct unless bridged |
 | Persistence | `ConstitutivelyPersists` | `ConstitutivePersistenceCertificate` via `constitutivelyPersists_of_certificate` | persistence alone is not repair, purpose, or agency |
-| Recovery / self-maintenance | `PhysicallyRecoverableOn` | `PhysicalRepairCertificate`, `SelfRepairingOperationalParent` | unified organizational fault/resource/autopoiesis semantics are later P5–P7/P12 work |
+| Recovery / self-maintenance | `PhysicallyRecoverableOn` | `PhysicalRepairCertificate` + explicit nonempty finite-potential basin witness; `SelfRepairingOperationalParent` adapter under the same witness | unified organizational fault/resource/autopoiesis semantics are later P5–P7/P12 work |
 | Semantic identity | `SemanticFiberIdentity` | `SemanticallyStableSelfRepairingOperationalParent.selected_parent_in_fiber` | literal representation equality is not required; same-object P2 guards remain |
 | Purpose | `NumericalObjective`, `InducedPreference`, `PolicyOrderingEquivalent`, `MaximizerSet`, `ChoiceRepresentationClass` | canonical teleological equivalence, DDH gauge, hierarchy separation | P1 must construct `TeleologicalContract`; no unique reward is implied |
 | Agency | canonical control/decision structures; P0 does not duplicate them | `FeasibleDecision`, `HistoryControlSpec`, `agency_god_goa_from_history` | P2 must construct this control model from the same object and P1 contract |
@@ -27,7 +27,7 @@ This is the P0 terminal definition/theorem graph. It maps UEOT philosophical ter
 ## P0 proved boundary graph
 
 - carrier/provenance ⇏ full Object delimitation: `formedProvenance_does_not_imply_interactionDelimitation`;
-- carrier ⇏ unique teleological choice class: `carrier_does_not_determine_choiceRepresentationClass`;
+- carrier alone ⇏ unique teleological choice class: `carrier_does_not_determine_choiceRepresentationClass` (the stronger full-Objecthood no-go remains P1.0);
 - Bellman GOD ⇏ unique local action: `bellmanGOD_can_be_nonunique`;
 - GOA invariant semantics ⇏ singleton/unique fixed point: `invariantGOA_can_be_nonunique`;
 - surjective quotient map ⇏ exact dynamic scale intertwining: `quotientMap_does_not_imply_dynamicIntertwining`.
@@ -36,7 +36,7 @@ This is the P0 terminal definition/theorem graph. It maps UEOT philosophical ter
 
 - pairwise interaction separation → `InteractionDelimitedAt`;
 - constitutive persistence certificate → `ConstitutivelyPersists`;
-- physical repair certificate → `PhysicallyRecoverableOn`;
+- physical repair certificate + explicit nonempty repair-basin witness → `PhysicallyRecoverableOn`;
 - hardened same-parent Objecthood certificate → `SemanticFiberIdentity`;
 - positive-affine teleological equivalence → policy-ordering equivalence → maximizer equivalence;
 - DDH gauge → one `ChoiceRepresentationClass`;
