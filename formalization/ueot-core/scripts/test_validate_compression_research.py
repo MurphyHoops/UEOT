@@ -1066,12 +1066,99 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
                 "governance exact path inside TC scope was accepted"
             )
 
+        required = set(module.TC_BOOTSTRAP_DOCS) | {module.TC_PUBLIC_ROOT}
+        seen_required = set()
+        original_require_file_at_ref = module.require_file_at_ref
+        original_git_blob_bytes = module.git_blob_bytes
+
+        def record_required(
+            _repo: Path, _ref: str, rel: str, _context: str
+        ) -> None:
+            seen_required.add(rel)
+
+        def tc_import_blob(_repo: Path, _ref: str, path: str) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return (
+                    b"import UEOT.V3.Compression.Objecthood\n"
+                    b"import UEOT.V3.Compression.TheoryCompletion\n"
+                )
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.require_file_at_ref = record_required
+        module.git_blob_bytes = tc_import_blob
+        try:
+            module.validate_tc_registration_transition(
+                repo, config, candidate, "synthetic-candidate"
+            )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+        if seen_required != required:
+            raise AssertionError(
+                "first TC registration did not require the complete bootstrap "
+                f"artifact set: expected={sorted(required)}, seen={sorted(seen_required)}"
+            )
+
+        def reject_one_required(
+            _repo: Path, _ref: str, rel: str, _context: str
+        ) -> None:
+            if rel == module.TC_PUBLIC_ROOT:
+                raise ValueError("missing required TC bootstrap artifact")
+
+        module.require_file_at_ref = reject_one_required
+        module.git_blob_bytes = tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "missing required TC bootstrap artifact" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected missing-artifact rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration passed with a missing bootstrap artifact"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+
+        def no_tc_import_blob(_repo: Path, _ref: str, path: str) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return b"import UEOT.V3.Compression.Objecthood\n"
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.git_blob_bytes = no_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "atomically expose exactly one TheoryCompletion public-root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected missing-public-import rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration passed without the Compression.lean public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
         removed_tc = copy.deepcopy(candidate)
         del removed_tc["tracks"]["TC"]
         removed_tc["architecture_record_schema"]["track_owners"].remove("TC")
         del removed_tc["architecture_record_schema"]["track_status"]["TC"]
         try:
-            module.validate_tc_registration_transition(candidate, removed_tc)
+            module.validate_tc_registration_transition(
+                repo, candidate, removed_tc, "synthetic-candidate"
+            )
         except ValueError as exc:
             if "persistent and cannot be silently removed" not in str(exc):
                 raise AssertionError(

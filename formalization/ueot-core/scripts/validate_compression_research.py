@@ -29,6 +29,8 @@ TRACK_IDS = ("S", "H", "X", "O", "TC")
 TC_LEAN_PREFIX = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/"
 TC_DOC_PREFIX = "formalization/ueot-core/docs/compression/theory_completion/"
 TC_PUBLIC_ROOT = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+TC_PUBLIC_IMPORT = "import UEOT.V3.Compression.TheoryCompletion"
+COMPRESSION_PUBLIC_ROOT = "formalization/ueot-core/UEOT/V3/Compression.lean"
 TC_BOOTSTRAP_DOCS = {
     f"{TC_DOC_PREFIX}THEORY_COMPLETION_MISSION.md",
     f"{TC_DOC_PREFIX}THEORY_COMPLETION_ROADMAP.md",
@@ -1251,9 +1253,12 @@ def validate_objecthood_completion_history_transition(
 
 
 def validate_tc_registration_transition(
-    baseline_config: dict, candidate_config: dict
+    repo: Path,
+    baseline_config: dict,
+    candidate_config: dict,
+    candidate_ref: str,
 ) -> None:
-    """Once Track TC is registered, ordinary governance cannot silently remove it."""
+    """Make first TC registration atomic and later TC registration persistent."""
 
     baseline_tracks = baseline_config.get("tracks")
     candidate_tracks = candidate_config.get("tracks")
@@ -1264,6 +1269,31 @@ def validate_tc_registration_transition(
             "registered Track TC is persistent and cannot be silently removed "
             "by an ordinary governance transition"
         )
+    if not baseline_has_tc and candidate_has_tc:
+        context = "first Track TC registration"
+        for path in sorted(TC_BOOTSTRAP_DOCS | {TC_PUBLIC_ROOT}):
+            require_file_at_ref(repo, candidate_ref, path, context)
+
+        compression_blob = git_blob_bytes(repo, candidate_ref, COMPRESSION_PUBLIC_ROOT)
+        if b"\r" in compression_blob or b"\x00" in compression_blob:
+            fail(
+                "first Track TC registration requires a valid Compression.lean "
+                "public-root import surface"
+            )
+        try:
+            compression_text = compression_blob.decode("utf-8")
+        except UnicodeDecodeError:
+            fail("first Track TC registration requires UTF-8 Compression.lean")
+        import_lines = [
+            line
+            for line in compression_text.split("\n")
+            if line == TC_PUBLIC_IMPORT
+        ]
+        if len(import_lines) != 1:
+            fail(
+                "first Track TC registration must atomically expose exactly one "
+                "TheoryCompletion public-root import"
+            )
 
 
 def validate_track_paths(
@@ -1476,7 +1506,12 @@ def main() -> None:
             validate_objecthood_completion_history_transition(
                 baseline_config, config
             )
-            validate_tc_registration_transition(baseline_config, config)
+            validate_tc_registration_transition(
+                repo,
+                baseline_config,
+                config,
+                args.candidate_ref,
+            )
 
     branch = branch_for_run(repo, args.branch_name)
     paths = changed_paths(
