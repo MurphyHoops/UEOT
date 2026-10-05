@@ -20,7 +20,7 @@ import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.SafeJointRecov
 # UEOT RLSR local research surface
 
 Umbrella import for the additive Track-O repair-law self-reconstruction cycle,
-including the post-audit T1--T5 tightening surface.  Publication integration is
+including the post-audit T1--T10 tightening surface.  Publication integration is
 exposed through the governance-permitted additive import in `Objecthood.lean`;
 no frozen counted-core declaration is modified.
 -/
