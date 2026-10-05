@@ -1,3 +1,4 @@
+import UEOT.V3.Compression.TheoryCompletion.OperationalObject
 /-!
 # UEOT Theory Completion public root
 
