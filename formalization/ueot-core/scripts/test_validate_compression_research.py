@@ -919,6 +919,413 @@ def test_v2_additive_only_guard(repo: Path) -> None:
         module.fail = original_fail
 
 
+def test_tc_forward_registration_compatibility(repo: Path) -> None:
+    """The pre-TC validator must accept one later, explicitly registered TC track."""
+
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    candidate = copy.deepcopy(config)
+    candidate["governance"]["allowed_exact_paths"] = [
+        path
+        for path in candidate["governance"]["allowed_exact_paths"]
+        if path not in (module.TC_BOOTSTRAP_DOCS | {module.TC_PUBLIC_ROOT})
+    ]
+    candidate["tracks"]["TC"] = {
+        "title": "Theory Completion / Scientific Integration",
+        "status": "active",
+        "preferred_branch_prefix": "compression/theory-completion-",
+        "branch_patterns": ["^compression/theory-completion-.*$"],
+        "program_tracker_issue": 265,
+        "owned_topics": ["semantic constitution"],
+        "allowed_path_prefixes": sorted(module.TC_ALLOWED_PATH_PREFIXES),
+        "allowed_exact_paths": sorted(module.TC_ALLOWED_EXACT_PATHS),
+        "forbidden_exact_paths": sorted(module.TC_FORBIDDEN_EXACT_PATHS),
+        "forbidden_path_prefixes": sorted(module.TC_FORBIDDEN_PATH_PREFIXES),
+        "dependency_rule": (
+            "consume_S_H_X_O_and_frozen_core_evidence_from_canonical_main_only"
+        ),
+        "source_track_reopen_policy": "forbidden_inside_TC",
+        "change_policy": "additive_only_by_default",
+    }
+    candidate["architecture_record_schema"]["track_owners"].append("TC")
+    candidate["architecture_record_schema"]["track_status"]["TC"] = "active"
+
+    compiled = module.validate_static(repo, candidate, ledger)
+    if "TC" not in compiled:
+        raise AssertionError("forward-compatible validator did not compile Track TC")
+    module.validate_track_paths(
+        repo,
+        "origin/main",
+        "HEAD",
+        "compression/theory-completion-semantic-constitution",
+        [
+            "formalization/ueot-core/docs/compression/theory_completion/"
+            "P0_SEMANTIC_INVENTORY.md"
+        ],
+        candidate,
+        compiled,
+    )
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        widened = copy.deepcopy(candidate)
+        widened["tracks"]["TC"]["allowed_exact_paths"].append(
+            "formalization/ueot-core/UEOT/V3/Compression/Objecthood/SelfRepair.lean"
+        )
+        try:
+            module.validate_static(repo, widened, ledger)
+        except ValueError as exc:
+            if "allowed_exact_paths must match the pre-authorized TC scope" not in str(exc):
+                raise AssertionError(f"unexpected TC ownership rejection: {exc}") from exc
+        else:
+            raise AssertionError("widened TC exact ownership was not rejected")
+
+        missing_s_prefix = copy.deepcopy(candidate)
+        missing_s_prefix["tracks"]["S"]["forbidden_path_prefixes"].remove(
+            module.TC_DOC_PREFIX
+        )
+        try:
+            module.validate_static(repo, missing_s_prefix, ledger)
+        except ValueError as exc:
+            if "reciprocal Track S namespace exclusions" not in str(exc):
+                raise AssertionError(
+                    f"unexpected reciprocal S-prefix rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "TC registration without reciprocal Track S prefix exclusion passed"
+            )
+
+        missing_s_root = copy.deepcopy(candidate)
+        missing_s_root["tracks"]["S"]["forbidden_exact_paths"].remove(
+            module.TC_PUBLIC_ROOT
+        )
+        try:
+            module.validate_static(repo, missing_s_root, ledger)
+        except ValueError as exc:
+            if "reciprocal Track S public-root exclusion" not in str(exc):
+                raise AssertionError(
+                    f"unexpected reciprocal S-root rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "TC registration without reciprocal Track S root exclusion passed"
+            )
+
+        retained_bootstrap = copy.deepcopy(candidate)
+        retained_bootstrap["governance"]["allowed_exact_paths"].append(
+            module.TC_PUBLIC_ROOT
+        )
+        try:
+            module.validate_static(repo, retained_bootstrap, ledger)
+        except ValueError as exc:
+            if "retire governance exact-path access overlapping" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC bootstrap-retirement rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "registered TC retained temporary governance access"
+            )
+
+        governance_ancestor = copy.deepcopy(candidate)
+        governance_ancestor["governance"]["allowed_path_prefixes"].append(
+            "formalization/ueot-core/docs/compression/"
+        )
+        try:
+            module.validate_static(repo, governance_ancestor, ledger)
+        except ValueError as exc:
+            if "semantically overlapping the Theory Completion scope" not in str(exc):
+                raise AssertionError(
+                    f"unexpected governance-prefix overlap rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "ancestor governance prefix overlapping TC scope was accepted"
+            )
+
+        governance_inside = copy.deepcopy(candidate)
+        governance_inside["governance"]["allowed_exact_paths"].append(
+            module.TC_DOC_PREFIX + "P0_SEMANTIC_INVENTORY.md"
+        )
+        try:
+            module.validate_static(repo, governance_inside, ledger)
+        except ValueError as exc:
+            if "governance exact-path access overlapping" not in str(exc):
+                raise AssertionError(
+                    f"unexpected governance exact-path overlap rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "governance exact path inside TC scope was accepted"
+            )
+
+        ungoverned_tc = copy.deepcopy(candidate)
+        ungoverned_tc["governed_path_prefixes"] = [
+            "formalization/ueot-core/UEOT/V3/Elsewhere/"
+        ]
+        ungoverned_tc["governed_exact_paths"] = [
+            "formalization/ueot-core/UEOT/V3/Elsewhere.lean"
+        ]
+        try:
+            module.validate_static(repo, ungoverned_tc, ledger)
+        except ValueError as exc:
+            if "inside the top-level governed path surface" not in str(exc):
+                raise AssertionError(
+                    f"unexpected governed-surface rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError(
+                "registered TC could be removed from the top-level governed surface"
+            )
+
+        required = set(module.TC_BOOTSTRAP_DOCS) | {module.TC_PUBLIC_ROOT}
+        seen_required = set()
+        original_require_file_at_ref = module.require_file_at_ref
+        original_git_blob_bytes = module.git_blob_bytes
+
+        def record_required(
+            _repo: Path, _ref: str, rel: str, _context: str
+        ) -> None:
+            seen_required.add(rel)
+
+        def tc_import_blob(_repo: Path, _ref: str, path: str) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return (
+                    b"import UEOT.V3.Compression.Objecthood\n"
+                    b"import UEOT.V3.Compression.TheoryCompletion\n"
+                )
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.require_file_at_ref = record_required
+        module.git_blob_bytes = tc_import_blob
+        try:
+            module.validate_tc_registration_transition(
+                repo, config, candidate, "synthetic-candidate"
+            )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+        if seen_required != required:
+            raise AssertionError(
+                "first TC registration did not require the complete bootstrap "
+                f"artifact set: expected={sorted(required)}, seen={sorted(seen_required)}"
+            )
+
+        def reject_one_required(
+            _repo: Path, _ref: str, rel: str, _context: str
+        ) -> None:
+            if rel == module.TC_PUBLIC_ROOT:
+                raise ValueError("missing required TC bootstrap artifact")
+
+        module.require_file_at_ref = reject_one_required
+        module.git_blob_bytes = tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "missing required TC bootstrap artifact" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected missing-artifact rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration passed with a missing bootstrap artifact"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+
+        def no_tc_import_blob(_repo: Path, _ref: str, path: str) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return b"import UEOT.V3.Compression.Objecthood\n"
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.git_blob_bytes = no_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires exactly one semantic TheoryCompletion public-root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected missing-public-import rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration passed without the Compression.lean public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+
+        def duplicate_whitespace_tc_import_blob(
+            _repo: Path, _ref: str, path: str
+        ) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return (
+                    b"import UEOT.V3.Compression.TheoryCompletion\n"
+                    b"  import UEOT.V3.Compression.TheoryCompletion\n"
+                )
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.git_blob_bytes = duplicate_whitespace_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires exactly one semantic TheoryCompletion public-root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected duplicate-public-import rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration accepted a whitespace-variant duplicate public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+
+        def duplicate_commented_tc_import_blob(
+            _repo: Path, _ref: str, path: str
+        ) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return (
+                    b"import UEOT.V3.Compression.TheoryCompletion\n"
+                    b"import UEOT.V3.Compression.TheoryCompletion -- duplicate\n"
+                )
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.git_blob_bytes = duplicate_commented_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires exactly one semantic TheoryCompletion public-root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected commented-duplicate rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration accepted a comment-variant duplicate public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        original_changed_lines = module.changed_lines_for_path_between
+        module.changed_lines_for_path_between = (
+            lambda *_args, **_kwargs: [
+                module.TC_PUBLIC_IMPORT + " -- duplicate"
+            ]
+        )
+        try:
+            try:
+                module.validate_compression_root_import_change(
+                    repo,
+                    "synthetic-baseline",
+                    "synthetic-candidate",
+                    "S",
+                    [module.COMPRESSION_PUBLIC_ROOT],
+                )
+            except ValueError as exc:
+                if "Track S may not add/remove the Track TC root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected Track-S commented-import rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "Track S accepted a comment-variant duplicate TC root import"
+                )
+        finally:
+            module.changed_lines_for_path_between = original_changed_lines
+
+        module.require_file_at_ref = record_required
+
+        def noncanonical_tc_import_blob(
+            _repo: Path, _ref: str, path: str
+        ) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return b"  import UEOT.V3.Compression.TheoryCompletion\n"
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.git_blob_bytes = noncanonical_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires the TheoryCompletion public-root import in canonical format" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected noncanonical-public-import rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration accepted a noncanonical public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+        module.git_blob_bytes = no_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, candidate, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires exactly one semantic TheoryCompletion public-root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected registered-TC import-persistence rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "registered TC could lose its public import on a later transition"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        removed_tc = copy.deepcopy(candidate)
+        del removed_tc["tracks"]["TC"]
+        removed_tc["architecture_record_schema"]["track_owners"].remove("TC")
+        del removed_tc["architecture_record_schema"]["track_status"]["TC"]
+        try:
+            module.validate_tc_registration_transition(
+                repo, candidate, removed_tc, "synthetic-candidate"
+            )
+        except ValueError as exc:
+            if "persistent and cannot be silently removed" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC-removal transition rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError("registered TC could be silently removed")
+    finally:
+        module.fail = original_fail
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -1063,6 +1470,9 @@ def main() -> None:
     test_v2_additive_only_guard(repo)
     print("risk-v2-additive-only-existing-surface-guard: PASS")
 
+    test_tc_forward_registration_compatibility(repo)
+    print("theory-completion-forward-registration-compatibility: PASS")
+
     run_case(
         repo,
         "compression/objecthood-self-repair",
@@ -1103,6 +1513,18 @@ def main() -> None:
         "outside its owned CrossTrack namespace",
     )
     print("cross-track-objecthood-isolation: PASS")
+
+    run_case(
+        repo,
+        "compression/topology-theory-completion-isolation",
+        [
+            "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/"
+            "Intrusion.lean"
+        ],
+        False,
+        "may not modify cross-owned/protected path",
+    )
+    print("structural-track-theory-completion-isolation: PASS")
 
     run_case(
         repo,
