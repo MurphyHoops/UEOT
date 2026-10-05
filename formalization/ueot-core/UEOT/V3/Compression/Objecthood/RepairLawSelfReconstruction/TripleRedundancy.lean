@@ -40,6 +40,15 @@ def replaceProgramReplica
     tripleProgramDecode (tripleProgramEncode r) = r := by
   simp [tripleProgramDecode, tripleProgramEncode]
 
+/-- The concrete triple repetition code packaged as an explicit trusted codec.
+This makes the previously implicit decoder/encoder part of the declared trust
+boundary without storing any distinguished correct program. -/
+def tripleRepairCodec :
+    TrustedRepairCodec Program (TripleProgramRepresentation Program) where
+  encode := tripleProgramEncode
+  decode := tripleProgramDecode
+  decode_encode := tripleProgramDecode_encode
+
 /-- Exact correction of an arbitrary one-replica replacement. -/
 theorem tripleProgramDecode_replace_encode
     (r bad : Program) (i : Fin 3) :

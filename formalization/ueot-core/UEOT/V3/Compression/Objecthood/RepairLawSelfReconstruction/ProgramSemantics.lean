@@ -34,6 +34,37 @@ def RepairProgramEquivalentOn
     (K : Set X) (r₁ r₂ : Program) : Prop :=
   ∀ x ∈ K, T.execute r₁ x = T.execute r₂ x
 
+/-- Carrier-relative *dynamical* identity of repair programs.  Two programs
+may choose distinct action labels and still be equivalent when they induce the
+same one-step physical kernel on the object carrier. -/
+def RepairProgramDynamicsEquivalentOn
+    (T : TrustedRepairSubstrate Program X A)
+    (P : X → A → PMF X) (K : Set X) (r₁ r₂ : Program) : Prop :=
+  ∀ x ∈ K, P x (T.execute r₁ x) = P x (T.execute r₂ x)
+
+/-- Action equality is a sufficient, but not necessary, witness for dynamical
+program equivalence. -/
+theorem repairProgramDynamicsEquivalentOn_of_equivalent
+    (T : TrustedRepairSubstrate Program X A)
+    (P : X → A → PMF X) (K : Set X) {r₁ r₂ : Program}
+    (h : RepairProgramEquivalentOn T K r₁ r₂) :
+    RepairProgramDynamicsEquivalentOn T P K r₁ r₂ := by
+  intro x hx
+  rw [h x hx]
+
+/-- Preservation validity is invariant under the weaker, physically relevant
+transition-kernel equivalence. -/
+theorem repairProgramValid_of_dynamicsEquivalent
+    (T : TrustedRepairSubstrate Program X A)
+    (P : X → A → PMF X) (K : Set X)
+    {r₁ r₂ : Program}
+    (hvalid : RepairProgramValid T P K r₁)
+    (heq : RepairProgramDynamicsEquivalentOn T P K r₁ r₂) :
+    RepairProgramValid T P K r₂ := by
+  intro x hx y hy
+  rw [← heq x hx] at hy
+  exact hvalid x hx hy
+
 /-- Exact behavioral implementation of a supplied policy.  This relation is
 used later only to tie a reconstructed program to an independently certified
 same-parent repair policy; it is not part of the trusted substrate. -/

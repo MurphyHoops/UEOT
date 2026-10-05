@@ -15,12 +15,22 @@ themselves.
 
 namespace UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction
 
-universe uX uA uP
+universe uX uA uP uR
 
 /-- Immutable ambient semantics used to execute an object-level repair program.
 The trusted substrate contains no distinguished "correct" program. -/
 structure TrustedRepairSubstrate
     (Program : Type uP) (X : Type uX) (A : Type uA) where
   execute : Program → X → A
+
+
+/-- Immutable encode/decode semantics for a mutable repair-program representation.
+The codec contains no distinguished correct program; it only specifies how a
+representation is interpreted and how a program is canonically represented. -/
+structure TrustedRepairCodec
+    (Program : Type uP) (Representation : Type uR) where
+  encode : Program → Representation
+  decode : Representation → Program
+  decode_encode : ∀ r, decode (encode r) = r
 
 end UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction
