@@ -1139,13 +1139,92 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
                     repo, config, candidate, "synthetic-candidate"
                 )
             except ValueError as exc:
-                if "atomically expose exactly one TheoryCompletion public-root import" not in str(exc):
+                if "requires exactly one semantic TheoryCompletion public-root import" not in str(exc):
                     raise AssertionError(
                         f"unexpected missing-public-import rejection: {exc}"
                     ) from exc
             else:
                 raise AssertionError(
                     "first TC registration passed without the Compression.lean public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+
+        def duplicate_whitespace_tc_import_blob(
+            _repo: Path, _ref: str, path: str
+        ) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return (
+                    b"import UEOT.V3.Compression.TheoryCompletion\n"
+                    b"  import UEOT.V3.Compression.TheoryCompletion\n"
+                )
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.git_blob_bytes = duplicate_whitespace_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires exactly one semantic TheoryCompletion public-root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected duplicate-public-import rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration accepted a whitespace-variant duplicate public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+
+        def noncanonical_tc_import_blob(
+            _repo: Path, _ref: str, path: str
+        ) -> bytes:
+            if path == module.COMPRESSION_PUBLIC_ROOT:
+                return b"  import UEOT.V3.Compression.TheoryCompletion\n"
+            return original_git_blob_bytes(_repo, _ref, path)
+
+        module.git_blob_bytes = noncanonical_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, config, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires the TheoryCompletion public-root import in canonical format" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected noncanonical-public-import rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "first TC registration accepted a noncanonical public import"
+                )
+        finally:
+            module.require_file_at_ref = original_require_file_at_ref
+            module.git_blob_bytes = original_git_blob_bytes
+
+        module.require_file_at_ref = record_required
+        module.git_blob_bytes = no_tc_import_blob
+        try:
+            try:
+                module.validate_tc_registration_transition(
+                    repo, candidate, candidate, "synthetic-candidate"
+                )
+            except ValueError as exc:
+                if "requires exactly one semantic TheoryCompletion public-root import" not in str(exc):
+                    raise AssertionError(
+                        f"unexpected registered-TC import-persistence rejection: {exc}"
+                    ) from exc
+            else:
+                raise AssertionError(
+                    "registered TC could lose its public import on a later transition"
                 )
         finally:
             module.require_file_at_ref = original_require_file_at_ref

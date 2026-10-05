@@ -1269,8 +1269,12 @@ def validate_tc_registration_transition(
             "registered Track TC is persistent and cannot be silently removed "
             "by an ordinary governance transition"
         )
-    if not baseline_has_tc and candidate_has_tc:
-        context = "first Track TC registration"
+    if candidate_has_tc:
+        context = (
+            "first Track TC registration"
+            if not baseline_has_tc
+            else "registered Track TC persistence"
+        )
         for path in sorted(TC_BOOTSTRAP_DOCS | {TC_PUBLIC_ROOT}):
             require_file_at_ref(repo, candidate_ref, path, context)
 
@@ -1284,15 +1288,20 @@ def validate_tc_registration_transition(
             compression_text = compression_blob.decode("utf-8")
         except UnicodeDecodeError:
             fail("first Track TC registration requires UTF-8 Compression.lean")
-        import_lines = [
+        semantic_import_lines = [
             line
             for line in compression_text.split("\n")
-            if line == TC_PUBLIC_IMPORT
+            if line.strip() == TC_PUBLIC_IMPORT
         ]
-        if len(import_lines) != 1:
+        if len(semantic_import_lines) != 1:
             fail(
-                "first Track TC registration must atomically expose exactly one "
+                "registered Track TC requires exactly one semantic "
                 "TheoryCompletion public-root import"
+            )
+        if semantic_import_lines[0] != TC_PUBLIC_IMPORT:
+            fail(
+                "registered Track TC requires the TheoryCompletion public-root "
+                "import in canonical format"
             )
 
 
