@@ -6,6 +6,7 @@ import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveCon
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.CarrierConsistency
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ControlEstimatorBridge
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.StructuralControlClosure
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.GodPolicyConsistency
 /-!
 # Theory Completion P3 — Statistical Consistency
 
