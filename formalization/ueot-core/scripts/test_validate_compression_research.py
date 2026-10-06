@@ -957,6 +957,9 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         "owned_topics": ["semantic constitution"],
         "allowed_path_prefixes": sorted(module.TC_ALLOWED_PATH_PREFIXES),
         "allowed_exact_paths": sorted(module.TC_ALLOWED_EXACT_PATHS),
+        "mutable_existing_exact_paths": sorted(
+            module.TC_MUTABLE_EXISTING_EXACT_PATHS
+        ),
         "forbidden_exact_paths": sorted(module.TC_FORBIDDEN_EXACT_PATHS),
         "forbidden_path_prefixes": sorted(module.TC_FORBIDDEN_PATH_PREFIXES),
         "dependency_rule": (
@@ -1002,6 +1005,20 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
                 raise AssertionError(f"unexpected TC ownership rejection: {exc}") from exc
         else:
             raise AssertionError("widened TC exact ownership was not rejected")
+
+        widened_mutable = copy.deepcopy(candidate)
+        widened_mutable["tracks"]["TC"]["mutable_existing_exact_paths"].append(
+            module.TC_DOC_PREFIX + "THEORY_COMPLETION_MISSION.md"
+        )
+        try:
+            module.validate_static(repo, widened_mutable, ledger)
+        except ValueError as exc:
+            if "mutable_existing_exact_paths must match" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC mutable-scope rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError("widened TC mutable existing scope was not rejected")
 
         missing_s_prefix = copy.deepcopy(candidate)
         missing_s_prefix["tracks"]["S"]["forbidden_path_prefixes"].remove(
@@ -1343,6 +1360,207 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         module.fail = original_fail
 
 
+def test_tc_live_status_mutability(repo: Path) -> None:
+    """TC may update only one validated regular-file live status artifact."""
+
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    compiled = module.validate_static(repo, config, ledger)
+    # CI checks out the candidate in detached-HEAD form; `origin/main` is the
+    # fetched immutable baseline available both locally and in Actions.
+    baseline = "origin/main"
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+
+    valid_status = {
+        "schema_version": 1,
+        "program": "UEOT Theory Completion Program",
+        "track": "TC",
+        "program_tracker_issue": 265,
+        "recovery_index_issue": 146,
+        "governance_model": "risk_tiered_v2",
+        "counted_core_impact": "NONE",
+        "counted_minimal_core": ["M-QD-01", "M-TC-01", "M-PE-01", "M-OI-01"],
+        "program_status": "ACTIVE",
+        "bootstrap_contract": "P-BOOT",
+        "pboot_status": "CLOSED",
+        "next_stage": "P3",
+        "next_stage_gate": "P2 canonical and resulting-main green",
+        "primary_spine": ["P0", "P1", "P2"],
+        "lanes": {
+            "empirical": ["P3", "P4"],
+            "organizational": ["P5", "P6", "P7"],
+            "later_integration": ["P8", "P9", "P10", "P11", "P12"],
+        },
+        "claim_classes": [
+            "THEOREM",
+            "CONDITIONAL_THEOREM",
+            "ADAPTER_INTERFACE",
+            "NO_GO_BOUNDARY",
+            "CONJECTURE",
+            "EMPIRICAL_HYPOTHESIS",
+        ],
+        "canonical_dependency_rule": "consume S/H/X/O/Core evidence from canonical main only",
+        "source_track_reopen_policy": "FORBIDDEN",
+        "p0_status": "CLOSED",
+        "p1_status": "CLOSED",
+        "p2_status": "CLOSED",
+        "p3_status": "READY",
+        "p4_status": "BLOCKED_ON_P3",
+        "p5_status": "READY_AFTER_P2",
+        "p6_status": "BLOCKED_ON_P5",
+        "p7_status": "BLOCKED_ON_P6",
+        "p8_status": "PLANNED",
+        "p9_status": "PLANNED",
+        "p10_status": "PLANNED",
+        "p11_status": "PLANNED",
+        "p12_status": "PLANNED",
+        "last_completed_stage": "P2",
+    }
+
+    def candidate_ref_with(content: bytes, mode: str = "100644") -> str:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmpdir = Path(tmp)
+            index = tmpdir / "index"
+            env = os.environ.copy()
+            env["GIT_INDEX_FILE"] = str(index)
+            env.update(
+                {
+                    "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                    "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                    "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                    "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+                }
+            )
+            subprocess.run(["git", "read-tree", base], cwd=repo, env=env, check=True)
+            blob = subprocess.run(
+                ["git", "hash-object", "-w", "--stdin"],
+                cwd=repo,
+                input=content,
+                stdout=subprocess.PIPE,
+                check=True,
+            ).stdout.decode().strip()
+            subprocess.run(
+                [
+                    "git", "update-index", "--add", "--cacheinfo",
+                    mode, blob, module.TC_LIVE_STATUS,
+                ],
+                cwd=repo,
+                env=env,
+                check=True,
+            )
+            tree = subprocess.check_output(
+                ["git", "write-tree"], cwd=repo, env=env, text=True
+            ).strip()
+            return subprocess.check_output(
+                ["git", "commit-tree", tree, "-p", base],
+                cwd=repo,
+                env=env,
+                input="TC live-status regression candidate\n",
+                text=True,
+            ).strip()
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        valid_ref = candidate_ref_with(
+            (json.dumps(valid_status, indent=2) + "\n").encode()
+        )
+        module.validate_track_paths(
+            repo,
+            baseline,
+            valid_ref,
+            "compression/theory-completion-statistical-consistency",
+            [module.TC_LIVE_STATUS],
+            config,
+            compiled,
+        )
+
+        malformed_ref = candidate_ref_with(b"{this is not json}\n")
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                malformed_ref,
+                "compression/theory-completion-statistical-consistency",
+                [module.TC_LIVE_STATUS],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "could not parse JSON-compatible governance data" not in str(exc):
+                raise AssertionError(f"unexpected malformed-status rejection: {exc}") from exc
+        else:
+            raise AssertionError("malformed TC live status was not rejected")
+
+        bad_core = copy.deepcopy(valid_status)
+        bad_core["counted_minimal_core"] = ["M-QD-01"]
+        bad_core_ref = candidate_ref_with(
+            (json.dumps(bad_core, indent=2) + "\n").encode()
+        )
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                bad_core_ref,
+                "compression/theory-completion-statistical-consistency",
+                [module.TC_LIVE_STATUS],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "counted_minimal_core" not in str(exc):
+                raise AssertionError(f"unexpected counted-core rejection: {exc}") from exc
+        else:
+            raise AssertionError("corrupted TC counted minimal core was not rejected")
+
+        symlink_ref = candidate_ref_with(
+            b"THEORY_COMPLETION_MISSION.md", mode="120000"
+        )
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                symlink_ref,
+                "compression/theory-completion-statistical-consistency",
+                [module.TC_LIVE_STATUS],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "regular 100644 Git file" not in str(exc):
+                raise AssertionError(f"unexpected symlink-status rejection: {exc}") from exc
+        else:
+            raise AssertionError("symlink TC live status was not rejected")
+
+        historical = module.TC_DOC_PREFIX + "THEORY_COMPLETION_MISSION.md"
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                valid_ref,
+                "compression/theory-completion-statistical-consistency",
+                [historical],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "L1 additive research may not modify or delete existing path" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC historical-doc rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError("TC historical mission mutation was not rejected")
+    finally:
+        module.fail = original_fail
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -1486,6 +1704,9 @@ def main() -> None:
 
     test_v2_additive_only_guard(repo)
     print("risk-v2-additive-only-existing-surface-guard: PASS")
+
+    test_tc_live_status_mutability(repo)
+    print("theory-completion-live-status-mutability: PASS")
 
     test_tc_forward_registration_compatibility(repo)
     print("theory-completion-forward-registration-compatibility: PASS")
