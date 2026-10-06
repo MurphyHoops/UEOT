@@ -1,4 +1,5 @@
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.Contract
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveSeparation
 import UEOT.V3.PredictiveClassRecovery
 import Mathlib.Tactic.Linarith
 
@@ -55,5 +56,26 @@ theorem eventually_exact_predictive_recovery
   filter_upwards [eventually_two_mul_lt_half hη hγ] with n hgap
   exact p_stat_05 p (pHat n) hp (hpHat n) (η n) γ
     (hresp n) hsep hgap
+
+/-- Finite canonical specialization: in a nonempty finite history space, the
+true predictive laws themselves determine a strictly positive uniform
+separation margin.  No externally supplied `γ`/separation certificate is
+needed. -/
+theorem eventually_exact_predictive_recovery_canonical
+    [Fintype H] [Nonempty H] [Fintype I] [Nonempty I]
+    (p : H → I → Measure Y)
+    (pHat : ℕ → H → I → Measure Y)
+    (hp : ∀ h i, IsProbabilityMeasure (p h i))
+    (hpHat : ∀ n h i, IsProbabilityMeasure (pHat n h i))
+    (η : ℕ → ℝ)
+    (hη : Tendsto η atTop (𝓝 0))
+    (hresp : ∀ n h i, tvDist (p h i) (pHat n h i) ≤ η n) :
+    ∀ᶠ n in atTop, ∀ h h' : H,
+      protocolDistance (pHat n) h h' ≤ canonicalPredictiveGap p / 2 ↔
+        trueEquivalent p h h' := by
+  exact eventually_exact_predictive_recovery
+    p pHat hp hpHat η hη hresp (canonicalPredictiveGap p)
+    (canonicalPredictiveGap_pos p hp)
+    (fun _ _ hne => canonicalPredictiveGap_le p hne)
 
 end UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency

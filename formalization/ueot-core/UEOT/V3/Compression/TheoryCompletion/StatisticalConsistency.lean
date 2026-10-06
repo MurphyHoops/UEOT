@@ -1,5 +1,6 @@
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.Contract
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ConfidenceSchedule
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveSeparation
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveConsistency
 
 /-!
