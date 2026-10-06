@@ -3,6 +3,7 @@ import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ConfidenceSch
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveSeparation
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveConsistency
 
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.CarrierConsistency
 /-!
 # Theory Completion P3 — Statistical Consistency
 
