@@ -8,6 +8,7 @@ import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ControlEstima
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.StructuralControlClosure
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.GodPolicyConsistency
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.GoaConsistency
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.TerminalClosure
 /-!
 # Theory Completion P3 — Statistical Consistency
 
