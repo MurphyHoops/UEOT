@@ -41,6 +41,8 @@ TC_BOOTSTRAP_DOCS = {
 }
 TC_ALLOWED_PATH_PREFIXES = {TC_LEAN_PREFIX, TC_DOC_PREFIX}
 TC_ALLOWED_EXACT_PATHS = {TC_PUBLIC_ROOT}
+TC_LIVE_STATUS = f"{TC_DOC_PREFIX}THEORY_COMPLETION_STATUS.json"
+TC_MUTABLE_EXISTING_EXACT_PATHS = {TC_LIVE_STATUS}
 TC_FORBIDDEN_PATH_PREFIXES = {
     "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
     "formalization/ueot-core/docs/compression/hierarchy/",
@@ -824,6 +826,7 @@ def validate_static(
     *,
     require_architecture_records: bool = True,
     evidence_ref: str | None = None,
+    allow_legacy_tc_live_status: bool = False,
 ) -> dict[str, list[re.Pattern[str]]]:
     if config.get("schema_version") != 1:
         fail("research-track governance schema_version must be 1")
@@ -1117,6 +1120,25 @@ def validate_static(
             tc.get("allowed_exact_paths"), "Track TC allowed_exact_paths"
         )) != TC_ALLOWED_EXACT_PATHS:
             fail("Track TC allowed_exact_paths must match the pre-authorized TC scope")
+        raw_tc_mutable_existing = tc.get("mutable_existing_exact_paths")
+        if raw_tc_mutable_existing is None and allow_legacy_tc_live_status:
+            tc_mutable_existing = set()
+        else:
+            tc_mutable_existing = set(string_list(
+                raw_tc_mutable_existing,
+                "Track TC mutable_existing_exact_paths",
+            ))
+            if tc_mutable_existing != TC_MUTABLE_EXISTING_EXACT_PATHS:
+                fail(
+                    "Track TC mutable_existing_exact_paths must match the "
+                    "pre-authorized live-status scope"
+                )
+        for mutable_path in tc_mutable_existing:
+            if not track_owned_path(mutable_path, tc):
+                fail(
+                    "Track TC mutable existing path must remain inside its "
+                    "owned TheoryCompletion namespace"
+                )
         if set(string_list(
             tc.get("forbidden_path_prefixes"), "Track TC forbidden_path_prefixes"
         )) != TC_FORBIDDEN_PATH_PREFIXES:
@@ -1414,8 +1436,10 @@ def validate_track_paths(
         and track.get("change_policy") == "additive_only_by_default"
     ):
         exact_exceptions = set(track.get("allowed_exact_paths", []))
+        mutable_existing = set(track.get("mutable_existing_exact_paths", []))
+        existing_path_exceptions = exact_exceptions | mutable_existing
         for path in paths:
-            if path in exact_exceptions:
+            if path in existing_path_exceptions:
                 continue
             if git_path_exists(repo, baseline_ref, path):
                 fail(
@@ -1550,6 +1574,7 @@ def main() -> None:
                 baseline_config,
                 ledger,
                 require_architecture_records=False,
+                allow_legacy_tc_live_status=True,
             )
             validate_objecthood_completion_history_transition(
                 baseline_config, config

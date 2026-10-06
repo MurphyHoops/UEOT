@@ -91,6 +91,13 @@ files are therefore protected automatically even when the track owns a broad nam
 This is the key extensibility mechanism: future work can create a new dedicated subtree
 without editing the central registry, while merged science remains immutable by default.
 
+One narrow exception exists for machine-pinned **live status artifacts**. A registered
+track may declare `mutable_existing_exact_paths`; those paths remain inside the track's
+owned namespace but are intentionally mutable across later L1 stages. The candidate
+cannot widen this list: the validator pins the exact pre-authorized set. Currently the
+only such path is Track TC's `THEORY_COMPLETION_STATUS.json`. Mission/roadmap/audit and
+theorem files remain additive-only historical surfaces.
+
 ## 5. L2 shared-interface changes
 
 L2 is intentionally rarer. It applies when a scientific result genuinely requires

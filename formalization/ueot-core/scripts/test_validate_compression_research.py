@@ -957,6 +957,9 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         "owned_topics": ["semantic constitution"],
         "allowed_path_prefixes": sorted(module.TC_ALLOWED_PATH_PREFIXES),
         "allowed_exact_paths": sorted(module.TC_ALLOWED_EXACT_PATHS),
+        "mutable_existing_exact_paths": sorted(
+            module.TC_MUTABLE_EXISTING_EXACT_PATHS
+        ),
         "forbidden_exact_paths": sorted(module.TC_FORBIDDEN_EXACT_PATHS),
         "forbidden_path_prefixes": sorted(module.TC_FORBIDDEN_PATH_PREFIXES),
         "dependency_rule": (
@@ -1002,6 +1005,20 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
                 raise AssertionError(f"unexpected TC ownership rejection: {exc}") from exc
         else:
             raise AssertionError("widened TC exact ownership was not rejected")
+
+        widened_mutable = copy.deepcopy(candidate)
+        widened_mutable["tracks"]["TC"]["mutable_existing_exact_paths"].append(
+            module.TC_DOC_PREFIX + "THEORY_COMPLETION_MISSION.md"
+        )
+        try:
+            module.validate_static(repo, widened_mutable, ledger)
+        except ValueError as exc:
+            if "mutable_existing_exact_paths must match" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC mutable-scope rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError("widened TC mutable existing scope was not rejected")
 
         missing_s_prefix = copy.deepcopy(candidate)
         missing_s_prefix["tracks"]["S"]["forbidden_path_prefixes"].remove(
@@ -1343,6 +1360,54 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
         module.fail = original_fail
 
 
+def test_tc_live_status_mutability(repo: Path) -> None:
+    """TC may update only its pinned live status among existing TC docs."""
+
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    compiled = module.validate_static(repo, config, ledger)
+    baseline = "origin/main"
+
+    original_fail = module.fail
+
+    def capture(message: str) -> None:
+        raise ValueError(message)
+
+    module.fail = capture
+    try:
+        module.validate_track_paths(
+            repo,
+            baseline,
+            "HEAD",
+            "compression/theory-completion-statistical-consistency",
+            [module.TC_LIVE_STATUS],
+            config,
+            compiled,
+        )
+
+        historical = module.TC_DOC_PREFIX + "THEORY_COMPLETION_MISSION.md"
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                "HEAD",
+                "compression/theory-completion-statistical-consistency",
+                [historical],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "L1 additive research may not modify or delete existing path" not in str(exc):
+                raise AssertionError(
+                    f"unexpected TC historical-doc rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError("TC historical mission mutation was not rejected")
+    finally:
+        module.fail = original_fail
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -1486,6 +1551,9 @@ def main() -> None:
 
     test_v2_additive_only_guard(repo)
     print("risk-v2-additive-only-existing-surface-guard: PASS")
+
+    test_tc_live_status_mutability(repo)
+    print("theory-completion-live-status-mutability: PASS")
 
     test_tc_forward_registration_compatibility(repo)
     print("theory-completion-forward-registration-compatibility: PASS")
