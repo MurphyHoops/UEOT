@@ -1361,13 +1361,104 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
 
 
 def test_tc_live_status_mutability(repo: Path) -> None:
-    """TC may update only its pinned live status among existing TC docs."""
+    """TC may update only one validated regular-file live status artifact."""
 
     module = load_validator_module(repo)
     config = module.load_json(repo / module.TRACKS_REL)
     ledger = module.load_json(repo / module.LEDGER_REL)
     compiled = module.validate_static(repo, config, ledger)
-    baseline = "origin/main"
+    baseline = "main"
+    base = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+
+    valid_status = {
+        "schema_version": 1,
+        "program": "UEOT Theory Completion Program",
+        "track": "TC",
+        "program_tracker_issue": 265,
+        "recovery_index_issue": 146,
+        "governance_model": "risk_tiered_v2",
+        "counted_core_impact": "NONE",
+        "counted_minimal_core": ["M-QD-01", "M-TC-01", "M-PE-01", "M-OI-01"],
+        "program_status": "ACTIVE",
+        "bootstrap_contract": "P-BOOT",
+        "pboot_status": "CLOSED",
+        "next_stage": "P3",
+        "next_stage_gate": "P2 canonical and resulting-main green",
+        "primary_spine": ["P0", "P1", "P2"],
+        "lanes": {
+            "empirical": ["P3", "P4"],
+            "organizational": ["P5", "P6", "P7"],
+            "later_integration": ["P8", "P9", "P10", "P11", "P12"],
+        },
+        "claim_classes": [
+            "THEOREM",
+            "CONDITIONAL_THEOREM",
+            "ADAPTER_INTERFACE",
+            "NO_GO_BOUNDARY",
+            "CONJECTURE",
+            "EMPIRICAL_HYPOTHESIS",
+        ],
+        "canonical_dependency_rule": "consume S/H/X/O/Core evidence from canonical main only",
+        "source_track_reopen_policy": "FORBIDDEN",
+        "p0_status": "CLOSED",
+        "p1_status": "CLOSED",
+        "p2_status": "CLOSED",
+        "p3_status": "READY",
+        "p4_status": "BLOCKED_ON_P3",
+        "p5_status": "READY_AFTER_P2",
+        "p6_status": "BLOCKED_ON_P5",
+        "p7_status": "BLOCKED_ON_P6",
+        "p8_status": "PLANNED",
+        "p9_status": "PLANNED",
+        "p10_status": "PLANNED",
+        "p11_status": "PLANNED",
+        "p12_status": "PLANNED",
+        "last_completed_stage": "P2",
+    }
+
+    def candidate_ref_with(content: bytes, mode: str = "100644") -> str:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmpdir = Path(tmp)
+            index = tmpdir / "index"
+            env = os.environ.copy()
+            env["GIT_INDEX_FILE"] = str(index)
+            env.update(
+                {
+                    "GIT_AUTHOR_NAME": "UEOT Regression Test",
+                    "GIT_AUTHOR_EMAIL": "ueot-regression@example.invalid",
+                    "GIT_COMMITTER_NAME": "UEOT Regression Test",
+                    "GIT_COMMITTER_EMAIL": "ueot-regression@example.invalid",
+                }
+            )
+            subprocess.run(["git", "read-tree", base], cwd=repo, env=env, check=True)
+            blob = subprocess.run(
+                ["git", "hash-object", "-w", "--stdin"],
+                cwd=repo,
+                input=content,
+                stdout=subprocess.PIPE,
+                check=True,
+            ).stdout.decode().strip()
+            subprocess.run(
+                [
+                    "git", "update-index", "--add", "--cacheinfo",
+                    mode, blob, module.TC_LIVE_STATUS,
+                ],
+                cwd=repo,
+                env=env,
+                check=True,
+            )
+            tree = subprocess.check_output(
+                ["git", "write-tree"], cwd=repo, env=env, text=True
+            ).strip()
+            return subprocess.check_output(
+                ["git", "commit-tree", tree, "-p", base],
+                cwd=repo,
+                env=env,
+                input="TC live-status regression candidate\n",
+                text=True,
+            ).strip()
 
     original_fail = module.fail
 
@@ -1376,22 +1467,82 @@ def test_tc_live_status_mutability(repo: Path) -> None:
 
     module.fail = capture
     try:
+        valid_ref = candidate_ref_with(
+            (json.dumps(valid_status, indent=2) + "\n").encode()
+        )
         module.validate_track_paths(
             repo,
             baseline,
-            "HEAD",
+            valid_ref,
             "compression/theory-completion-statistical-consistency",
             [module.TC_LIVE_STATUS],
             config,
             compiled,
         )
 
+        malformed_ref = candidate_ref_with(b"{this is not json}\n")
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                malformed_ref,
+                "compression/theory-completion-statistical-consistency",
+                [module.TC_LIVE_STATUS],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "could not parse JSON-compatible governance data" not in str(exc):
+                raise AssertionError(f"unexpected malformed-status rejection: {exc}") from exc
+        else:
+            raise AssertionError("malformed TC live status was not rejected")
+
+        bad_core = copy.deepcopy(valid_status)
+        bad_core["counted_minimal_core"] = ["M-QD-01"]
+        bad_core_ref = candidate_ref_with(
+            (json.dumps(bad_core, indent=2) + "\n").encode()
+        )
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                bad_core_ref,
+                "compression/theory-completion-statistical-consistency",
+                [module.TC_LIVE_STATUS],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "counted_minimal_core" not in str(exc):
+                raise AssertionError(f"unexpected counted-core rejection: {exc}") from exc
+        else:
+            raise AssertionError("corrupted TC counted minimal core was not rejected")
+
+        symlink_ref = candidate_ref_with(
+            b"THEORY_COMPLETION_MISSION.md", mode="120000"
+        )
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                symlink_ref,
+                "compression/theory-completion-statistical-consistency",
+                [module.TC_LIVE_STATUS],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "regular 100644 Git file" not in str(exc):
+                raise AssertionError(f"unexpected symlink-status rejection: {exc}") from exc
+        else:
+            raise AssertionError("symlink TC live status was not rejected")
+
         historical = module.TC_DOC_PREFIX + "THEORY_COMPLETION_MISSION.md"
         try:
             module.validate_track_paths(
                 repo,
                 baseline,
-                "HEAD",
+                valid_ref,
                 "compression/theory-completion-statistical-consistency",
                 [historical],
                 config,

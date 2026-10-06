@@ -43,6 +43,27 @@ TC_ALLOWED_PATH_PREFIXES = {TC_LEAN_PREFIX, TC_DOC_PREFIX}
 TC_ALLOWED_EXACT_PATHS = {TC_PUBLIC_ROOT}
 TC_LIVE_STATUS = f"{TC_DOC_PREFIX}THEORY_COMPLETION_STATUS.json"
 TC_MUTABLE_EXISTING_EXACT_PATHS = {TC_LIVE_STATUS}
+TC_STAGE_NAMES = tuple(f"P{i}" for i in range(13))
+TC_STAGE_STATUS_RE = re.compile(
+    r"^(?:CLOSED|ACTIVE|READY|PLANNED|"
+    r"BLOCKED_ON_(?:P-BOOT|P(?:[0-9]|1[0-2]))(?:_CANONICAL|_RESULTING_MAIN)?|"
+    r"READY_AFTER_(?:P-BOOT|P(?:[0-9]|1[0-2]))(?:_CANONICAL|_RESULTING_MAIN)?)$"
+)
+TC_STATUS_MINIMAL_CORE = ["M-QD-01", "M-TC-01", "M-PE-01", "M-OI-01"]
+TC_STATUS_PRIMARY_SPINE = ["P0", "P1", "P2"]
+TC_STATUS_LANES = {
+    "empirical": ["P3", "P4"],
+    "organizational": ["P5", "P6", "P7"],
+    "later_integration": ["P8", "P9", "P10", "P11", "P12"],
+}
+TC_STATUS_CLAIM_CLASSES = [
+    "THEOREM",
+    "CONDITIONAL_THEOREM",
+    "ADAPTER_INTERFACE",
+    "NO_GO_BOUNDARY",
+    "CONJECTURE",
+    "EMPIRICAL_HYPOTHESIS",
+]
 TC_FORBIDDEN_PATH_PREFIXES = {
     "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/",
     "formalization/ueot-core/docs/compression/hierarchy/",
@@ -122,6 +143,125 @@ def load_json_at_ref(repo: Path, ref: str, rel: Path) -> dict | None:
     if completed.returncode != 0:
         return None
     return parse_json_object(completed.stdout, f"{ref}:{rel.as_posix()}")
+
+
+def git_path_mode(repo: Path, ref: str, path: str) -> str | None:
+    completed = subprocess.run(
+        ["git", "ls-tree", ref, "--", path],
+        cwd=repo,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode != 0 or not completed.stdout.strip():
+        return None
+    return completed.stdout.split(None, 1)[0]
+
+
+def validate_tc_live_status_payload(status: dict) -> None:
+    required_fixed = {
+        "schema_version": 1,
+        "program": "UEOT Theory Completion Program",
+        "track": "TC",
+        "program_tracker_issue": 265,
+        "recovery_index_issue": 146,
+        "governance_model": "risk_tiered_v2",
+        "counted_core_impact": "NONE",
+        "counted_minimal_core": TC_STATUS_MINIMAL_CORE,
+        "bootstrap_contract": "P-BOOT",
+        "primary_spine": TC_STATUS_PRIMARY_SPINE,
+        "lanes": TC_STATUS_LANES,
+        "claim_classes": TC_STATUS_CLAIM_CLASSES,
+        "canonical_dependency_rule": (
+            "consume S/H/X/O/Core evidence from canonical main only"
+        ),
+        "source_track_reopen_policy": "FORBIDDEN",
+        "pboot_status": "CLOSED",
+    }
+    for key, expected in required_fixed.items():
+        if status.get(key) != expected:
+            fail(
+                f"Theory Completion live status field {key!r} must equal "
+                f"the canonical value {expected!r}"
+            )
+
+    if status.get("program_status") not in {"ACTIVE", "CLOSED"}:
+        fail("Theory Completion live status program_status must be ACTIVE or CLOSED")
+
+    next_stage = status.get("next_stage")
+    if next_stage not in set(TC_STAGE_NAMES) | {"PROGRAM_COMPLETE"}:
+        fail("Theory Completion live status next_stage must be P0-P12 or PROGRAM_COMPLETE")
+    if not isinstance(status.get("next_stage_gate"), str) or not status["next_stage_gate"].strip():
+        fail("Theory Completion live status next_stage_gate must be a nonempty string")
+
+    for stage in TC_STAGE_NAMES:
+        key = f"{stage.lower()}_status"
+        value = status.get(key)
+        if not isinstance(value, str) or TC_STAGE_STATUS_RE.fullmatch(value) is None:
+            fail(
+                f"Theory Completion live status {key} must use an approved stage status"
+            )
+
+    for closed_stage in ("p0_status", "p1_status", "p2_status"):
+        if status[closed_stage] != "CLOSED":
+            fail(
+                f"Theory Completion live status may not reopen canonical {closed_stage[:2].upper()}"
+            )
+
+    if status["program_status"] == "CLOSED":
+        if next_stage != "PROGRAM_COMPLETE":
+            fail("closed Theory Completion program must set next_stage=PROGRAM_COMPLETE")
+        if any(status[f"p{i}_status"] != "CLOSED" for i in range(13)):
+            fail("closed Theory Completion program requires every P0-P12 stage CLOSED")
+    elif next_stage == "PROGRAM_COMPLETE":
+        fail("active Theory Completion program may not claim PROGRAM_COMPLETE")
+
+    allowed_keys = set(required_fixed) | {
+        "program_status",
+        "next_stage",
+        "next_stage_gate",
+        "active_tracker_issue",
+        "active_branch",
+        "active_pr",
+        "last_completed_stage",
+    } | {f"p{i}_status" for i in range(13)}
+    unknown = set(status) - allowed_keys
+    if unknown:
+        fail(
+            "Theory Completion live status contains unrecognized fields: "
+            f"{sorted(unknown)}"
+        )
+
+    if "active_tracker_issue" in status and not (
+        isinstance(status["active_tracker_issue"], int)
+        and status["active_tracker_issue"] > 0
+    ):
+        fail("Theory Completion active_tracker_issue must be a positive integer")
+    if "active_pr" in status and status["active_pr"] is not None and not (
+        isinstance(status["active_pr"], int) and status["active_pr"] > 0
+    ):
+        fail("Theory Completion active_pr must be null or a positive integer")
+    if "active_branch" in status and status["active_branch"] is not None and not (
+        isinstance(status["active_branch"], str) and status["active_branch"].strip()
+    ):
+        fail("Theory Completion active_branch must be null or a nonempty string")
+    if "last_completed_stage" in status and status["last_completed_stage"] not in (
+        set(TC_STAGE_NAMES) | {"P-BOOT"}
+    ):
+        fail("Theory Completion last_completed_stage must be P-BOOT or P0-P12")
+
+
+def validate_tc_live_status_at_ref(repo: Path, ref: str) -> None:
+    mode = git_path_mode(repo, ref, TC_LIVE_STATUS)
+    if mode != "100644":
+        fail(
+            "Theory Completion live status must be a regular 100644 Git file, "
+            f"got mode {mode!r}"
+        )
+    status = load_json_at_ref(repo, ref, Path(TC_LIVE_STATUS))
+    if status is None:
+        fail(f"candidate ref is missing Theory Completion live status: {TC_LIVE_STATUS}")
+    validate_tc_live_status_payload(status)
 
 
 def require_file(repo: Path, rel: str, context: str) -> None:
@@ -1511,6 +1651,9 @@ def validate_track_paths(
                 f"Track TC branch {branch!r} modified {path}, outside its "
                 "owned TheoryCompletion namespace"
             )
+
+    if track_id == "TC" and TC_LIVE_STATUS in paths:
+        validate_tc_live_status_at_ref(repo, candidate_ref)
 
     validate_compression_root_import_change(
         repo, baseline_ref, candidate_ref, track_id, paths
