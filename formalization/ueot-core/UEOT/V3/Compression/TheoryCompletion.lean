@@ -3,6 +3,7 @@ import UEOT.V3.Compression.TheoryCompletion.Purpose
 import UEOT.V3.Compression.TheoryCompletion.PurposeIdentifiability
 import UEOT.V3.Compression.TheoryCompletion.TeleologicalContract
 import UEOT.V3.Compression.TheoryCompletion.TeleologicalGauge
+import UEOT.V3.Compression.TheoryCompletion.SameObjectIdentity
 import UEOT.V3.Compression.TheoryCompletion.GOD
 import UEOT.V3.Compression.TheoryCompletion.GOA
 import UEOT.V3.Compression.TheoryCompletion.Scale
