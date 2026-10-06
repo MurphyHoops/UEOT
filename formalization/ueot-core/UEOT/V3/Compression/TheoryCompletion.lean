@@ -9,16 +9,22 @@ import UEOT.V3.Compression.TheoryCompletion.SameObjectEffectiveState
 import UEOT.V3.Compression.TheoryCompletion.SameObjectTeleologicalControl
 import UEOT.V3.Compression.TheoryCompletion.SameObjectGOD
 import UEOT.V3.Compression.TheoryCompletion.BellmanTeleologicalFaithfulness
+import UEOT.V3.Compression.TheoryCompletion.CausalBellmanTeleologicalFaithfulness
 import UEOT.V3.Compression.TheoryCompletion.SameObjectObjecthoodAnchor
 import UEOT.V3.Compression.TheoryCompletion.SameObjectGOA
 import UEOT.V3.Compression.TheoryCompletion.SameObjectGOAStability
 import UEOT.V3.Compression.TheoryCompletion.SameObjectViability
+import UEOT.V3.Compression.TheoryCompletion.SameObjectViableGOA
+import UEOT.V3.Compression.TheoryCompletion.SameObjectGOAIsolation
 import UEOT.V3.Compression.TheoryCompletion.SameObjectRestoration
+import UEOT.V3.Compression.TheoryCompletion.SameObjectAgencyRecovery
 import UEOT.V3.Compression.TheoryCompletion.SameObjectAgencyClosure
+import UEOT.V3.Compression.TheoryCompletion.SameObjectEndogenousAgencyClosure
 import UEOT.V3.Compression.TheoryCompletion.GOD
 import UEOT.V3.Compression.TheoryCompletion.GOA
 import UEOT.V3.Compression.TheoryCompletion.Scale
 import UEOT.V3.Compression.TheoryCompletion.SemanticBoundaries
+import UEOT.V3.Compression.TheoryCompletion.StatePathTeleologyBoundary
 /-!
 # UEOT Theory Completion public root
 
