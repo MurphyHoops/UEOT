@@ -215,6 +215,12 @@ def validate_tc_live_status_payload(status: dict) -> None:
             fail("closed Theory Completion program requires every P0-P12 stage CLOSED")
     elif next_stage == "PROGRAM_COMPLETE":
         fail("active Theory Completion program may not claim PROGRAM_COMPLETE")
+    else:
+        next_stage_status = status[f"{next_stage.lower()}_status"]
+        if next_stage_status == "CLOSED":
+            fail(
+                f"Theory Completion next_stage {next_stage} may not have CLOSED status"
+            )
 
     allowed_keys = set(required_fixed) | {
         "program_status",

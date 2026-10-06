@@ -1499,6 +1499,29 @@ def test_tc_live_status_mutability(repo: Path) -> None:
         else:
             raise AssertionError("malformed TC live status was not rejected")
 
+        closed_next = copy.deepcopy(valid_status)
+        closed_next["p3_status"] = "CLOSED"
+        closed_next_ref = candidate_ref_with(
+            (json.dumps(closed_next, indent=2) + "\n").encode()
+        )
+        try:
+            module.validate_track_paths(
+                repo,
+                baseline,
+                closed_next_ref,
+                "compression/theory-completion-statistical-consistency",
+                [module.TC_LIVE_STATUS],
+                config,
+                compiled,
+            )
+        except ValueError as exc:
+            if "next_stage P3 may not have CLOSED status" not in str(exc):
+                raise AssertionError(
+                    f"unexpected closed-next-stage rejection: {exc}"
+                ) from exc
+        else:
+            raise AssertionError("closed Theory Completion next stage was not rejected")
+
         bad_core = copy.deepcopy(valid_status)
         bad_core["counted_minimal_core"] = ["M-QD-01"]
         bad_core_ref = candidate_ref_with(
