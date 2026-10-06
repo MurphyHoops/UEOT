@@ -1367,7 +1367,9 @@ def test_tc_live_status_mutability(repo: Path) -> None:
     config = module.load_json(repo / module.TRACKS_REL)
     ledger = module.load_json(repo / module.LEDGER_REL)
     compiled = module.validate_static(repo, config, ledger)
-    baseline = "main"
+    # CI checks out the candidate in detached-HEAD form; `origin/main` is the
+    # fetched immutable baseline available both locally and in Actions.
+    baseline = "origin/main"
     base = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=repo, text=True
     ).strip()
