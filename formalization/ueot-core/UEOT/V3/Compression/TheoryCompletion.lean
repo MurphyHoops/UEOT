@@ -8,6 +8,7 @@ import UEOT.V3.Compression.TheoryCompletion.SameObjectHistory
 import UEOT.V3.Compression.TheoryCompletion.SameObjectEffectiveState
 import UEOT.V3.Compression.TheoryCompletion.SameObjectTeleologicalControl
 import UEOT.V3.Compression.TheoryCompletion.SameObjectGOD
+import UEOT.V3.Compression.TheoryCompletion.BellmanTeleologicalFaithfulness
 import UEOT.V3.Compression.TheoryCompletion.GOD
 import UEOT.V3.Compression.TheoryCompletion.GOA
 import UEOT.V3.Compression.TheoryCompletion.Scale
