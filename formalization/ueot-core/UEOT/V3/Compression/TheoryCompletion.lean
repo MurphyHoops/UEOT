@@ -13,6 +13,7 @@ import UEOT.V3.Compression.TheoryCompletion.SameObjectObjecthoodAnchor
 import UEOT.V3.Compression.TheoryCompletion.SameObjectGOA
 import UEOT.V3.Compression.TheoryCompletion.SameObjectGOAStability
 import UEOT.V3.Compression.TheoryCompletion.SameObjectViability
+import UEOT.V3.Compression.TheoryCompletion.SameObjectRestoration
 import UEOT.V3.Compression.TheoryCompletion.GOD
 import UEOT.V3.Compression.TheoryCompletion.GOA
 import UEOT.V3.Compression.TheoryCompletion.Scale
