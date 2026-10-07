@@ -192,106 +192,115 @@ def commit_file(repo: Path, rel: str, content: str, message: str) -> str:
 
 
 def fallback_tests(module) -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        repo = Path(tmp)
-        git(repo, "init", "-b", "main")
-        git(repo, "config", "user.name", "UEOT Receipt Test")
-        git(repo, "config", "user.email", "receipt-test@example.invalid")
+    inherited_validation_env = {
+        key: os.environ.pop(key, None)
+        for key in ("COMPRESSION_VALIDATION_SHA", "GITHUB_SHA")
+    }
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            git(repo, "init", "-b", "main")
+            git(repo, "config", "user.name", "UEOT Receipt Test")
+            git(repo, "config", "user.email", "receipt-test@example.invalid")
 
-        candidate = commit_file(repo, "seed.txt", "candidate\n", "candidate main")
-        evidence = {
-            "candidate_main_sha": candidate,
-            "core_lean_run": 101,
-            "compression_guard_run": 202,
-            "closure_pr": 303,
-        }
-        runs = {
-            "core_lean_run": run_data(101, "UEOT Core Lean", candidate),
-            "compression_guard_run": run_data(
-                202, "UEOT Core Compression Guard", candidate
-            ),
-        }
-
-        git(repo, "switch", "-c", "closure")
-        closure_head = commit_file(repo, "closure.txt", "closure\n", "closure head")
-        git(repo, "switch", "main")
-        git(repo, "merge", "--no-ff", "closure", "-m", "merge closure")
-        closure_merge = git(repo, "rev-parse", "HEAD")
-        missing_receipt_baseline = closure_merge
-
-        receipt_path = module.write_finalization_receipt(
-            repo, evidence, runs, "retrospective_live_reverification"
-        )
-        git(repo, "add", str(receipt_path.relative_to(repo)))
-        git(repo, "commit", "-m", "archive finalization receipt")
-        baseline = git(repo, "rev-parse", "HEAD")
-        git(repo, "update-ref", "refs/remotes/origin/main", baseline)
-        commit_file(repo, "later.txt", "later\n", "later unrelated change")
-
-        pr = {
-            "number": 303,
-            "state": "closed",
-            "merged_at": "2026-09-29T14:37:59Z",
-            "base": {"ref": "main", "sha": candidate},
-            "head": {"ref": "closure", "sha": closure_head},
-            "merge_commit_sha": closure_merge,
-        }
-
-        original_fetcher = module.gh_api_json
-
-        def retained_run_404(_repo: Path, endpoint: str) -> dict:
-            if "/actions/runs/" in endpoint:
-                raise module.GitHubReferenceError("Not Found (HTTP 404)", status=404)
-            if endpoint.endswith("/pulls/303"):
-                return pr
-            raise AssertionError(f"unexpected endpoint {endpoint}")
-
-        def transient_network_failure(_repo: Path, endpoint: str) -> dict:
-            if "/actions/runs/" in endpoint:
-                raise module.GitHubReferenceError("TLS handshake timeout")
-            if endpoint.endswith("/pulls/303"):
-                return pr
-            raise AssertionError(f"unexpected endpoint {endpoint}")
-
-        try:
-            module.gh_api_json = retained_run_404
-            module.verify_finalization_references(
-                repo, evidence, baseline_ref=baseline
-            )
-            print("retained-run-404-with-baseline-receipt: PASS")
-
-            expect_rejected(
-                "deleted-run-without-baseline-receipt",
-                lambda: module.verify_finalization_references(
-                    repo, evidence, baseline_ref=missing_receipt_baseline
+            candidate = commit_file(repo, "seed.txt", "candidate\n", "candidate main")
+            evidence = {
+                "candidate_main_sha": candidate,
+                "core_lean_run": 101,
+                "compression_guard_run": 202,
+                "closure_pr": 303,
+            }
+            runs = {
+                "core_lean_run": run_data(101, "UEOT Core Lean", candidate),
+                "compression_guard_run": run_data(
+                    202, "UEOT Core Compression Guard", candidate
                 ),
-                "no immutable baseline finalization receipt exists",
-            )
+            }
 
-            module.gh_api_json = transient_network_failure
-            expect_rejected(
-                "network-timeout-does-not-fallback",
-                lambda: module.verify_finalization_references(
+            git(repo, "switch", "-c", "closure")
+            closure_head = commit_file(repo, "closure.txt", "closure\n", "closure head")
+            git(repo, "switch", "main")
+            git(repo, "merge", "--no-ff", "closure", "-m", "merge closure")
+            closure_merge = git(repo, "rev-parse", "HEAD")
+            missing_receipt_baseline = closure_merge
+
+            receipt_path = module.write_finalization_receipt(
+                repo, evidence, runs, "retrospective_live_reverification"
+            )
+            git(repo, "add", str(receipt_path.relative_to(repo)))
+            git(repo, "commit", "-m", "archive finalization receipt")
+            baseline = git(repo, "rev-parse", "HEAD")
+            git(repo, "update-ref", "refs/remotes/origin/main", baseline)
+            commit_file(repo, "later.txt", "later\n", "later unrelated change")
+
+            pr = {
+                "number": 303,
+                "state": "closed",
+                "merged_at": "2026-09-29T14:37:59Z",
+                "base": {"ref": "main", "sha": candidate},
+                "head": {"ref": "closure", "sha": closure_head},
+                "merge_commit_sha": closure_merge,
+            }
+
+            original_fetcher = module.gh_api_json
+
+            def retained_run_404(_repo: Path, endpoint: str) -> dict:
+                if "/actions/runs/" in endpoint:
+                    raise module.GitHubReferenceError("Not Found (HTTP 404)", status=404)
+                if endpoint.endswith("/pulls/303"):
+                    return pr
+                raise AssertionError(f"unexpected endpoint {endpoint}")
+
+            def transient_network_failure(_repo: Path, endpoint: str) -> dict:
+                if "/actions/runs/" in endpoint:
+                    raise module.GitHubReferenceError("TLS handshake timeout")
+                if endpoint.endswith("/pulls/303"):
+                    return pr
+                raise AssertionError(f"unexpected endpoint {endpoint}")
+
+            try:
+                module.gh_api_json = retained_run_404
+                module.verify_finalization_references(
                     repo, evidence, baseline_ref=baseline
-                ),
-                "TLS handshake timeout",
-            )
+                )
+                print("retained-run-404-with-baseline-receipt: PASS")
 
-            module.gh_api_json = retained_run_404
-            original_bytes = receipt_path.read_bytes()
-            receipt_path.write_text(
-                json.dumps({"tampered": True}) + "\n", encoding="utf-8"
-            )
-            expect_rejected(
-                "baseline-receipt-candidate-tamper",
-                lambda: module.verify_finalization_references(
-                    repo, evidence, baseline_ref=baseline
-                ),
-                "immutable baseline finalization receipt was modified",
-            )
-            receipt_path.write_bytes(original_bytes)
-        finally:
-            module.gh_api_json = original_fetcher
+                expect_rejected(
+                    "deleted-run-without-baseline-receipt",
+                    lambda: module.verify_finalization_references(
+                        repo, evidence, baseline_ref=missing_receipt_baseline
+                    ),
+                    "no immutable baseline finalization receipt exists",
+                )
+
+                module.gh_api_json = transient_network_failure
+                expect_rejected(
+                    "network-timeout-does-not-fallback",
+                    lambda: module.verify_finalization_references(
+                        repo, evidence, baseline_ref=baseline
+                    ),
+                    "TLS handshake timeout",
+                )
+
+                module.gh_api_json = retained_run_404
+                original_bytes = receipt_path.read_bytes()
+                receipt_path.write_text(
+                    json.dumps({"tampered": True}) + "\n", encoding="utf-8"
+                )
+                expect_rejected(
+                    "baseline-receipt-candidate-tamper",
+                    lambda: module.verify_finalization_references(
+                        repo, evidence, baseline_ref=baseline
+                    ),
+                    "immutable baseline finalization receipt was modified",
+                )
+                receipt_path.write_bytes(original_bytes)
+            finally:
+                module.gh_api_json = original_fetcher
+    finally:
+        for key, value in inherited_validation_env.items():
+            if value is not None:
+                os.environ[key] = value
 
 
 def main() -> None:
