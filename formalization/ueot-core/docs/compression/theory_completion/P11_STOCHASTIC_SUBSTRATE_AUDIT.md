@@ -2,7 +2,8 @@
 
 Status: **LOCAL COMPLETE / PARTIAL EXPLICIT BOUNDARY / TRACK TC / UNCOUNTED**
 
-Immediate local dependency: P10 exact head `9b0407ed4bb9971365d722253da323d9eda572b7`.
+Immediate local dependency: rewritten P10 exact head
+`0cb75ff1fa88cc49beb1ed704f95fe3cd94158ae`.
 
 ## Source-level audit
 

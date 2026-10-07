@@ -2,7 +2,8 @@
 
 Status: **LOCAL COMPLETE / PARTIAL EXPLICIT BOUNDARY / TRACK TC / UNCOUNTED**
 
-Immediate local dependency: P9 exact head `3888b3440ced49c3a4e63b3e1141954b7ec67e5d`.
+Immediate local dependency: rewritten P9 exact head
+`463e7beb101f66ad5af3933830c2d4a387554268`.
 
 ## Reconciliation with Core v3
 

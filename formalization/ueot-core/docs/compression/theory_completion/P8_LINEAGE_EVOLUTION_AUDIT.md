@@ -2,7 +2,8 @@
 
 Status: **LOCAL COMPLETE / TRACK TC / UNCOUNTED**
 
-Immediate local dependency: P7 exact head `aa172b5f34193cefcd0aa5490bdc09c9f54f33c6`.
+Immediate local dependency: review-tightened P7 exact head
+`bae75cdb8e31abd52c61ea3c479b1e234f6ca7bd`.
 
 ## Result
 

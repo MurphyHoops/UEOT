@@ -1,6 +1,6 @@
 # Theory Completion P7–P12 — Final Local Closure Audit
 
-Status: **LOCAL COMPLETE / READY FOR ONE-TIME REMOTE PUSH**
+Status: **LOCAL COMPLETE / REVIEW-TIGHTENED / READY FOR REMOTE INTEGRATION**
 
 Canonical starting main:
 `695119a883b2469a7319bfc16710bd940f31bbe1`.
@@ -15,15 +15,17 @@ the counted compression core.
 | Stage | Exact local head | Scientific verdict |
 |---|---|---|
 | P7 Ontogenetic Self-Construction | `bae75cdb8e31abd52c61ea3c479b1e234f6ca7bd` | CONDITIONAL THEOREM + TRUSTED ASSEMBLY ADAPTER |
-| P8 Reproduction / Lineage | `5da75624932f9824f9ab99157e813cd336f11a56` | CONDITIONAL THEOREM + DOMAIN BRIDGE |
-| P9 Object Scale Calculus | `3888b3440ced49c3a4e63b3e1141954b7ec67e5d` | THEOREM + CONDITIONAL + NO-GO |
-| P10 General-State Objecthood | `9b0407ed4bb9971365d722253da323d9eda572b7` | LOCAL COMPLETE / PARTIAL EXPLICIT BOUNDARY |
-| P11 Stochastic Substrate | `0b0782c7ebc23cc228758034abfc3ef365175566` | LOCAL COMPLETE / PARTIAL EXPLICIT BOUNDARY |
-| P12 Final Autopoiesis Contract | `6a691b33041cacdced75476d65800b8ae640b028` | **PARTIAL / EXPLICIT BOUNDARY** |
+| P8 Reproduction / Lineage | `e2059e11f19f645da34e56c87a8588557225a4b4` | CONDITIONAL THEOREM + DOMAIN BRIDGE |
+| P9 Object Scale Calculus | `463e7beb101f66ad5af3933830c2d4a387554268` | THEOREM + CONDITIONAL + NO-GO |
+| P10 General-State Objecthood | `0cb75ff1fa88cc49beb1ed704f95fe3cd94158ae` | LOCAL COMPLETE / PARTIAL EXPLICIT BOUNDARY |
+| P11 Stochastic Substrate | `785ad459633344c0e100d4d9d1653399e68a0f46` | LOCAL COMPLETE / PARTIAL EXPLICIT BOUNDARY |
+| P12 Final Autopoiesis Contract | `0faa7403675c02ea6c06a5eb276dcafaf974144a` | **PARTIAL / EXPLICIT BOUNDARY** |
 
-The stage heads are linear local checkpoints.  P8–P12 consume the immediately
-preceding local checkpoint only for this authorized all-local run.  No P7–P12
-branch was pushed while theorem work was in progress.
+The stage heads are linear local checkpoints rooted at the review-tightened P7
+head. P8–P12 consume the immediately preceding checkpoint. The first remote
+push occurred only after the original all-local run had completed; subsequent
+remote review found two real P7 issues, so the branch history was corrected
+locally and requires a corrective ref update before integration.
 
 ## 2. P7 result
 
@@ -122,6 +124,10 @@ Per-stage exact-head research governance:
 - P11 Track TC: PASS, 3 changed paths;
 - P12 Track TC: PASS, 3 changed paths after same-object tightening.
 
+After rewriting the stack so the tightened P7 head is a true ancestor, the
+final cumulative P8–P12 Track-TC effective diff also passes governance as one
+12-path TC-owned change set.
+
 Cross-stage proof-escape scan for `sorry|admit|axiom|opaque|unsafe|native_decide`:
 **CLEAR**.
 
@@ -172,17 +178,24 @@ live GitHub verification.  This audit therefore records the GraphQL check as
 **EXTERNAL NETWORK VERIFICATION BLOCKED**, not PASS.  No ledger, validator or
 historical evidence was weakened to hide the network failure.
 
-## 10. One-time push topology
+## 10. Remote integration topology
 
-To respect live-concurrency governance and the user's one-time-push instruction,
-only two branch refs should be pushed in one `git push` operation:
+The original all-local result was pushed as only two branch refs, respecting
+live-concurrency governance:
 
 1. `compression/objecthood-ontogenetic-construction` at the P7 Track-O head;
 2. the final cumulative Track-TC branch at the P12/final-audit head.
 
-The intermediate P8/P9/P10/P11 local branches are checkpoint evidence only and
-must not be pushed, because multiple simultaneous Track-TC branches violate the
+The intermediate P8/P9/P10/P11 local branches remain checkpoint evidence only
+and are not pushed, because multiple simultaneous Track-TC branches violate the
 one-active-branch rule.
+
+P7's first independent remote review then rejected the original head on two
+substantive grounds: the construction kernel was too generic, and finite-carrier
+membership had been overstated as entry into an actual maintenance regime. Both
+were fixed locally. Therefore the already-existing P7/P12 refs must be updated
+to the review-tightened heads; this is a corrective update of the same two refs,
+not a new parallel research push.
 
 Remote review should be ordered without another source push: merge/revalidate
 P7 first; then review the already-pushed cumulative TC branch against the new

@@ -2,7 +2,8 @@
 
 Status: **LOCAL COMPLETE / FINAL VERDICT: PARTIAL / EXPLICIT BOUNDARY**
 
-Immediate local dependency: P11 exact head `0b0782c7ebc23cc228758034abfc3ef365175566`.
+Immediate local dependency: rewritten P11 exact head
+`785ad459633344c0e100d4d9d1653399e68a0f46`.
 
 ## What is genuinely integrated
 
