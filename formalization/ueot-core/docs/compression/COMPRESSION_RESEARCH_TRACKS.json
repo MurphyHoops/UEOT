@@ -9,6 +9,21 @@
   "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
+  "l2_existing_path_exceptions": [
+    {
+      "exception_id": "TC-C7-REVIEW-HOTFIX-2026-10-07",
+      "track": "TC",
+      "branch_patterns": [
+        "^compression/theory-completion-c7-review-hotfix$"
+      ],
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/c7_pilot/verify_evidence.py",
+        "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/c7_pilot/test_evidence_durability.py"
+      ],
+      "reason": "Post-merge remediation of PR #293 Codex findings on C7 intervention evidence and pristine verifier control",
+      "temporary": true
+    }
+  ],
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
@@ -248,9 +263,7 @@
         "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
       ],
       "mutable_existing_exact_paths": [
-        "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_STATUS.json",
-        "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/c7_pilot/verify_evidence.py",
-        "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/c7_pilot/test_evidence_durability.py"
+        "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_STATUS.json"
       ],
       "forbidden_exact_paths": [
         ".github/workflows/ueot-compression-research-policy.yml",

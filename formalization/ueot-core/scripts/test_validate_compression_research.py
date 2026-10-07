@@ -310,6 +310,117 @@ def test_policy_reauthorizes_on_base_edit(repo: Path) -> None:
         )
 
 
+def test_l2_existing_path_exception_scope(repo: Path) -> None:
+    """L2 exceptions are exact-path + exact-branch and baseline-authorized only."""
+
+    module = load_validator_module(repo)
+    config = module.load_json(repo / module.TRACKS_REL)
+    ledger = module.load_json(repo / module.LEDGER_REL)
+    branch = "compression/theory-completion-l2-regression"
+    target = module.TC_DOC_PREFIX + "THEORY_COMPLETION_MISSION.md"
+    sibling = module.TC_DOC_PREFIX + "THEORY_COMPLETION_ROADMAP.md"
+
+    base_policy = copy.deepcopy(config)
+    base_policy.pop(module.L2_EXCEPTION_KEY, None)
+    base_compiled = module.validate_static(repo, base_policy, ledger)
+
+    def expect_rejected(name: str, fn, expected: str) -> None:
+        stderr = io.StringIO()
+        try:
+            with contextlib.redirect_stderr(stderr):
+                fn()
+        except SystemExit as exc:
+            output = stderr.getvalue()
+            if exc.code == 0 or expected not in output:
+                raise AssertionError(f"{name}: wrong rejection\n{output}") from exc
+            return
+        raise AssertionError(f"{name}: expected rejection")
+
+    # Without a canonical/base exception, the existing surface remains L1-
+    # immutable. This is the anti-self-authorization side of the contract.
+    expect_rejected(
+        "l2-missing-baseline-authorization",
+        lambda: module.validate_track_paths(
+            repo,
+            "HEAD",
+            "HEAD",
+            branch,
+            [target],
+            base_policy,
+            base_compiled,
+        ),
+        "L1 additive research may not modify or delete existing path",
+    )
+
+    authorized = copy.deepcopy(base_policy)
+    authorized[module.L2_EXCEPTION_KEY] = [
+        {
+            "exception_id": "TC-L2-REGRESSION",
+            "track": "TC",
+            "branch_patterns": [r"^compression/theory-completion-l2-regression$"],
+            "paths": [target],
+            "reason": "Regression probe for exact L2 authorization scope",
+            "temporary": True,
+        }
+    ]
+    authorized_compiled = module.validate_static(repo, authorized, ledger)
+    module.validate_track_paths(
+        repo,
+        "HEAD",
+        "HEAD",
+        branch,
+        [target],
+        authorized,
+        authorized_compiled,
+    )
+
+    expect_rejected(
+        "l2-wrong-branch",
+        lambda: module.validate_track_paths(
+            repo,
+            "HEAD",
+            "HEAD",
+            "compression/theory-completion-other-task",
+            [target],
+            authorized,
+            authorized_compiled,
+        ),
+        "L1 additive research may not modify or delete existing path",
+    )
+    expect_rejected(
+        "l2-unlisted-sibling",
+        lambda: module.validate_track_paths(
+            repo,
+            "HEAD",
+            "HEAD",
+            branch,
+            [sibling],
+            authorized,
+            authorized_compiled,
+        ),
+        "L1 additive research may not modify or delete existing path",
+    )
+
+    cross_owned = copy.deepcopy(base_policy)
+    cross_owned[module.L2_EXCEPTION_KEY] = [
+        {
+            "exception_id": "TC-L2-CROSS-OWNED-REGRESSION",
+            "track": "TC",
+            "branch_patterns": [r"^compression/theory-completion-l2-regression$"],
+            "paths": [
+                "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
+            ],
+            "reason": "Must be rejected",
+            "temporary": True,
+        }
+    ]
+    expect_rejected(
+        "l2-cross-owned-path",
+        lambda: module.validate_static(repo, cross_owned, ledger),
+        "outside Track TC ownership",
+    )
+
+
 def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
     """The immutable base validator must inspect candidate registry *data*.
 
@@ -2099,6 +2210,9 @@ def main() -> None:
 
     test_policy_reauthorizes_on_base_edit(repo)
     print("base-change-reauthorization-trigger: PASS")
+
+    test_l2_existing_path_exception_scope(repo)
+    print("l2-existing-path-exception-scope: PASS")
 
     test_objecthood_root_import_guard(repo)
     print("objecthood-root-additive-import-only: PASS")

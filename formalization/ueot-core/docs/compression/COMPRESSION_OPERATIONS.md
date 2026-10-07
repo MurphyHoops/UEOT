@@ -174,6 +174,13 @@ uncounted/shared interface must change.
 6. merge and validate main;
 7. remove/expire the exception if it was temporary.
 
+The scoped exception is recorded in `COMPRESSION_RESEARCH_TRACKS.json` under
+`l2_existing_path_exceptions`.  It must identify the owning track, exact research
+branch regex and exact existing paths.  The validator deliberately authorizes the
+later research PR from the **baseline** registry, never from a candidate-added
+exception, so governance and the mutation it enables remain separate review
+events.
+
 L2 is exceptional, not the default task bootstrap.
 
 ## 10. L3 promotion / counted-core workflow
