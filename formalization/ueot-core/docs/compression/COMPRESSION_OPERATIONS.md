@@ -214,8 +214,9 @@ candidate SHA and exact PR head. Once merged, that receipt is immutable historic
 For later validation, live GitHub data remains authoritative when available. Receipt
 fallback is permitted only when an Actions run returns explicit HTTP 404, and only from a
 receipt that already exists unchanged in the validation baseline. TLS/timeouts, auth/rate
-errors, malformed responses and other failures remain hard failures. The closure PR is
-still live-verified and its merge ancestry is still checked.
+errors, malformed responses and other failures remain hard failures after any bounded
+transport/5xx retry. The closure PR is still live-verified and its merge ancestry is still
+checked.
 
 ## 11. Parallelism
 
