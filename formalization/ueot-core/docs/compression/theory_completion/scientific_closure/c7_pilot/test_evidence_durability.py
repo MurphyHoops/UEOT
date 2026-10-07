@@ -19,8 +19,27 @@ def load_runner():
     return module
 
 
+def load_verifier():
+    spec = importlib.util.spec_from_file_location("c7_verify_evidence", VERIFIER)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
 def main():
     runner = load_runner()
+    verifier = load_verifier()
+    assert not verifier.observed_schema_complete({
+        "timestamp_utc": runner.utc_now(),
+        "run_id": "cert-n1-read-r1",
+        "split": "certification",
+        "protocol": "P_READ",
+        "matches_expected": True,
+        "record_status": "OBSERVED",
+        # Missing `query` must be treated as unresolved data, not a rejection
+        # and not a verifier exception.
+    })
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         raw = tmp / "raw_fault_injection.jsonl"

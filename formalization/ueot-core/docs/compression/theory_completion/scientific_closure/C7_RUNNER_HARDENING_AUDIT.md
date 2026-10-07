@@ -57,7 +57,10 @@ For audit preservation, the exact data-generating v1 scripts are retained as:
 - `c7_pilot/verify_evidence_v1.py`.
 
 Their SHA-256 values are identical to the corresponding scripts in the original
-v1 evidence manifest.
+v1 evidence manifest.  The original manifest itself is also preserved byte for
+byte as `c7_pilot/EVIDENCE_MANIFEST_v1.sha256`; the current
+`EVIDENCE_MANIFEST.sha256` verifies that historical manifest together with the
+current hardened tooling.
 
 ## 3. Hardened collection contract
 
@@ -88,7 +91,8 @@ claim can be `SUPPORTED_LOCAL` or `REJECTED_LOCAL`:
 - no `EXECUTION_ERROR` record exists;
 - every row carries the durable-attempt marker (`OBSERVED` or
   `EXECUTION_ERROR`);
-- all expected timestamps and logical outcomes are present.
+- all expected timestamps, protocol-specific fields and logical outcomes are
+  present.
 
 If collection integrity is incomplete, all three C7 local claim verdicts become
 `UNRESOLVED`.  Successful prefixes are never promoted to a claim verdict.

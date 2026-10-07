@@ -33,6 +33,28 @@ def select(rows,prefix):
 def observed(rows):
     return [r for r in rows if r.get('record_status') != 'EXECUTION_ERROR']
 
+def service_output(row, field='query'):
+    value=row.get(field)
+    return value.get('service_output') if isinstance(value,dict) else None
+
+def observed_schema_complete(row):
+    if row.get('record_status') == 'EXECUTION_ERROR':
+        return True
+    if not all(k in row for k in ('timestamp_utc','run_id','split','protocol','matches_expected')):
+        return False
+    protocol=row.get('protocol')
+    if protocol == 'P_REPLACE_HELDOUT':
+        replacement=row.get('replacement')
+        return (
+            service_output(row,'read_query') in {'OK','UNAVAILABLE'} and
+            service_output(row,'single_fault_query') in {'OK','UNAVAILABLE'} and
+            isinstance(replacement,dict) and
+            all(k in replacement for k in ('old_id','new_id','old_pid','new_pid'))
+        )
+    if protocol in {'P_READ','P_SINGLE_FAULT','P_DOUBLE_FAULT'}:
+        return service_output(row) in {'OK','UNAVAILABLE'}
+    return False
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('raw')
@@ -52,6 +74,7 @@ def main():
     checks['no_execution_errors']=not execution_errors
     checks['durable_attempt_logging_present']=all(
         r.get('record_status') in {'OBSERVED','EXECUTION_ERROR'} for r in rows)
+    checks['observed_schema_complete']=all(observed_schema_complete(r) for r in rows)
     checks['all_have_timestamp']=all(bool(r.get('timestamp_utc')) for r in rows)
     checks['all_registered_matches']=checks['no_execution_errors'] and all(
         r.get('matches_expected') is True for r in observed_rows)
@@ -61,10 +84,8 @@ def main():
     for n in [1,2,3]:
         read=select(observed_rows,f'cert-n{n}-read-')
         fault=select(observed_rows,f'cert-n{n}-single-')
-        read_ok=len(read)==REPS and all(
-            r.get('query',{}).get('service_output')=='OK' for r in read)
-        survives=len(fault)==REPS and all(
-            r.get('query',{}).get('service_output')=='OK' for r in fault)
+        read_ok=len(read)==REPS and all(service_output(r)=='OK' for r in read)
+        survives=len(fault)==REPS and all(service_output(r)=='OK' for r in fault)
         candidates[str(n)]={'read_repetitions':len(read),'fault_repetitions':len(fault),
                             'healthy_read_ok':read_ok,'survives_single_fault':survives}
         if survives and first_good is None:
@@ -78,22 +99,24 @@ def main():
     base=select(observed_rows,'baseline-single-')
     checks['heldout_count_5']=len(hold)==REPS
     checks['heldout_read_and_fault_ok']=all(
-        r['read_query']['service_output']=='OK' and r['single_fault_query']['service_output']=='OK'
+        service_output(r,'read_query')=='OK' and service_output(r,'single_fault_query')=='OK'
         for r in hold)
     checks['replacement_is_structurally_real']=all(
-        r['replacement']['old_id']=='W3' and r['replacement']['new_id']=='W4' and
-        r['replacement']['old_pid'] != r['replacement']['new_pid'] for r in hold)
+        isinstance(r.get('replacement'),dict) and
+        r['replacement'].get('old_id')=='W3' and r['replacement'].get('new_id')=='W4' and
+        r['replacement'].get('old_pid') != r['replacement'].get('new_pid') for r in hold)
     checks['double_fault_negative_count_5']=len(neg)==REPS
-    checks['double_fault_unavailable']=all(r['query']['service_output']=='UNAVAILABLE' for r in neg)
+    checks['double_fault_unavailable']=all(service_output(r)=='UNAVAILABLE' for r in neg)
     checks['baseline_count_5']=len(base)==REPS
-    checks['single_worker_baseline_unavailable']=all(r['query']['service_output']=='UNAVAILABLE' for r in base)
+    checks['single_worker_baseline_unavailable']=all(service_output(r)=='UNAVAILABLE' for r in base)
 
     collection_complete=(
         checks['record_count_45'] and
         checks['unique_run_ids'] and
         checks['registered_run_ids_complete'] and
         checks['no_execution_errors'] and
-        checks['durable_attempt_logging_present']
+        checks['durable_attempt_logging_present'] and
+        checks['observed_schema_complete']
     )
 
     if collection_complete:
