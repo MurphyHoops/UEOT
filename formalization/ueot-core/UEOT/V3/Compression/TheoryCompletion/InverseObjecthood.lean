@@ -7,6 +7,7 @@ import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.HighProbabilityDis
 
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.NonIdentifiabilityBoundaries
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ControlClosureBridge
+import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.TerminalClosure
 /-!
 # Theory Completion P4 — Inverse Objecthood
 
