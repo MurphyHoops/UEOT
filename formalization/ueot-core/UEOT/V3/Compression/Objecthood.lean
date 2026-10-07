@@ -47,6 +47,7 @@ import UEOT.V3.Compression.Objecthood.PostQTTightening.JointMixedDriftDownstream
 import UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.All
 import UEOT.V3.Compression.Objecthood.JointHomeostasis
 import UEOT.V3.Compression.Objecthood.ResourceClosure
+import UEOT.V3.Compression.Objecthood.OntogeneticConstruction
 
 /-!
 # UEOT Core Compression — Track O
