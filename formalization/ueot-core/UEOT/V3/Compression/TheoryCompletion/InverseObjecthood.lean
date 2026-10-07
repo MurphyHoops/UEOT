@@ -5,6 +5,7 @@ import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.InteractionClassRe
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.OperationalValidity
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.HighProbabilityDiscovery
 
+import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.NonIdentifiabilityBoundaries
 /-!
 # Theory Completion P4 — Inverse Objecthood
 
