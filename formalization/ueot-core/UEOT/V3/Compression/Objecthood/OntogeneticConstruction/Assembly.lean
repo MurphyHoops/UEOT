@@ -1,15 +1,18 @@
 import UEOT.V3.Compression.Objecthood.JointHomeostasis.RepairCarrier
 
 /-!
-# Theory Completion P7.0 — ontogenetic assembly
+# Theory Completion P7.0 — conditional ontogenetic assembly adapter
 
 Ontogenetic construction is kept distinct from repair.  A seed supplies a
 physical component and an internal repair-program source, but does not already
 contain a controller or encoded mutable repair representation.  The trusted
 assembler creates those two organizational coordinates from the seed.
 
-This is an explicit construction mechanism.  It is not a claim of construction
-ex nihilo and it does not reconstruct the trusted execution/codec substrate.
+This is an explicit *trusted assembly adapter*.  The generic UEOT layer does not
+derive the physical assembly map from Objecthood.  A domain implementation must
+independently justify that its component-to-physical map is an actual formation
+mechanism.  In particular, the existence of the functions below is not itself a
+theorem of nontrivial self-construction.
 -/
 
 namespace UEOT.V3.Compression.Objecthood.OntogeneticConstruction
@@ -19,13 +22,45 @@ open UEOT.V3.Compression.Objecthood
 open UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction
 open UEOT.V3.Compression.Objecthood.JointHomeostasis
 
-universe uX uA uP uR
+universe uC uX uA uP uR
+
+/-- Domain-supplied component assembly plan.  Unlike `OntogeneticSeed`, its
+input need not already have the physical-state type `X`.  The plan is still an
+adapter: P7 does not derive `physicalAssembly` or `programSource` from generic
+Objecthood. -/
+structure OntogeneticAssemblyPlan
+    (Component : Type uC) (X : Type uX) (Program : Type uP) where
+  physicalAssembly : Component → X
+  programSource : Component → Program
 
 /-- Minimal P7 seed/components package.  It deliberately omits the controller
 and the encoded mutable repair-program representation; those are assembled. -/
 structure OntogeneticSeed (X : Type uX) (Program : Type uP) where
   physicalComponent : X
   repairProgramSource : Program
+
+/-- Turn one domain component package into the seed consumed by the
+organizational assembler. -/
+def OntogeneticAssemblyPlan.toSeed
+    {Component : Type uC} {X : Type uX} {Program : Type uP}
+    (plan : OntogeneticAssemblyPlan Component X Program)
+    (components : Component) : OntogeneticSeed X Program :=
+  { physicalComponent := plan.physicalAssembly components
+    repairProgramSource := plan.programSource components }
+
+@[simp] theorem OntogeneticAssemblyPlan.toSeed_physical
+    {Component : Type uC} {X : Type uX} {Program : Type uP}
+    (plan : OntogeneticAssemblyPlan Component X Program)
+    (components : Component) :
+    (plan.toSeed components).physicalComponent =
+      plan.physicalAssembly components := rfl
+
+@[simp] theorem OntogeneticAssemblyPlan.toSeed_program
+    {Component : Type uC} {X : Type uX} {Program : Type uP}
+    (plan : OntogeneticAssemblyPlan Component X Program)
+    (components : Component) :
+    (plan.toSeed components).repairProgramSource =
+      plan.programSource components := rfl
 
 /-- Assemble a repair organization from seed components. -/
 def assembleRepairOrganization

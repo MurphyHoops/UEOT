@@ -2,12 +2,13 @@ import UEOT.V3.Compression.Objecthood.OntogeneticConstruction.ConstructionKernel
 import UEOT.V3.Compression.Objecthood.JointHomeostasis.FiniteBurden
 
 /-!
-# Theory Completion P7.2 — entry into the maintenance regime
+# Theory Completion P7.2 — entry into the P5 maintenance regime
 
-The P7 assembler is connected to the already-proved P5 maintenance carrier.
-The theorem below does not assume that a fully formed organization is present in
-the seed: only a physical component and a repair-program source are supplied.
-Controller state and encoded mutable repair state are produced by the assembler.
+The P7 assembler is connected to the already-proved P5 maintenance system.
+Carrier membership and actual recurrent-homeostasis-system entry are kept
+separate: the latter threads the full P5 policy bridge, viability fixed point,
+finite representation, fault envelope and hazard premises instead of inferring a
+maintenance regime from a Dirac-law support fact.
 -/
 
 namespace UEOT.V3.Compression.Objecthood.OntogeneticConstruction
@@ -75,6 +76,40 @@ theorem pure_assembled_stays_finiteMaintenanceCarrier
   have hmem := seed_constructs_finiteMaintenanceCarrier
     P K R T codec seed hvalid hx
   simp [StaysIn, hmem]
+
+/-- Under the full P5 premises, the freshly assembled organization is a legal
+initial law for the *actual* finite recurrent-homeostasis system, not merely a
+member of a similarly named carrier. -/
+theorem pure_assembled_stays_p5MaintenanceSystem
+    {X : Type uX} {A : Type uA}
+    {Program : Type uP} {Representation : Type uR}
+    [Fintype X] [Fintype A] [Nonempty A] [Fintype Representation]
+    [MeasurableSpace X] [MeasurableSingletonClass X]
+    (P : X → A → PMF X) (K : Set X)
+    (hfix : viabilityStep P K = K)
+    (R : PhysicalRepairCertificate P K)
+    (T : TrustedRepairSubstrate Program X A)
+    (codec : TrustedRepairCodec Program Representation)
+    (seed : OntogeneticSeed X Program)
+    (himpl : RepairProgramDynamicsImplementsPolicy T P
+      seed.repairProgramSource
+      (repairThenPreservePolicy P K hfix R.repairPolicy))
+    (F : RepairOrganizationState X A Representation →
+      PMF (RepairOrganizationState X A Representation))
+    (epsilon : NNReal) (hepsilon : epsilon ≤ 1)
+    (hF : FiniteJointFaultEnvelope P K R T codec
+      seed.repairProgramSource F)
+    (hx : seed.physicalComponent ∈ K) :
+    let S := finiteJointRecurrentHomeostasisSystem
+      P K hfix R T codec seed.repairProgramSource himpl
+      F epsilon hepsilon hF
+    StaysIn (PMF.pure (assembleRepairOrganization T codec seed)) S.carrier := by
+  dsimp only
+  have hvalid : RepairProgramValid T P K seed.repairProgramSource :=
+    repairProgramValid_of_dynamicsImplements_repairThenPreserve
+      T P K hfix R.repairPolicy seed.repairProgramSource himpl
+  exact pure_assembled_stays_finiteMaintenanceCarrier
+    P K R T codec seed hvalid hx
 
 end
 end UEOT.V3.Compression.Objecthood.OntogeneticConstruction

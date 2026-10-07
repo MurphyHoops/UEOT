@@ -1,6 +1,6 @@
 # Theory Completion P7 — Ontogenetic Self-Construction Audit
 
-Status: **LOCAL COMPLETE / TRACK O / UNCOUNTED**
+Status: **LOCAL COMPLETE / REVIEW-TIGHTENED / TRACK O / UNCOUNTED**
 
 Base: `main@695119a883b2469a7319bfc16710bd940f31bbe1`
 
@@ -27,9 +27,11 @@ already-declared trusted interpreter and codec:
 `(x,r) -> (x, T.execute r, codec.encode r)`.
 
 `OntogeneticState` separates pre-formation `.seed` from post-formation `.formed`.
-`constructionKernel` performs the deterministic one-step assembly benchmark and
-leaves formed states absorbing for the construction-only dynamics. P5/P6 then
-supply the separate maintenance/resource dynamics.
+`ontogeneticConstructionKernel` is not an arbitrary `Seed → Org` adapter: its
+source is fixed to `OntogeneticSeed X Program`, its target is fixed to
+`RepairOrganizationState X A Representation`, and its constructor is exactly
+`assembleRepairOrganization T codec`. This excludes the degenerate
+`Seed := Org; assemble := id` witness that would merely relabel a formed object.
 
 ## Main proved results
 
@@ -37,16 +39,22 @@ supply the separate maintenance/resource dynamics.
   components assemble into P5 exact joint legitimacy for their own program.
 - `assembled_controller_implements_source` — the newly installed controller is
   behaviorally bound to the seed's program source.
-- `constructionKernel_seed_staysIn_formedTarget` — a seed enters every declared
+- `ontogeneticConstructionKernel_seed_staysIn_formedTarget` — a seed enters every declared
   formed target satisfied by its assembled organization with probability one.
 - `seed_constructs_finiteMaintenanceCarrier` — under the existing P5 finite
   assumptions and program validity, construction lands in the finite repair
   carrier from which recurrent homeostasis is certified.
 - `pure_assembled_stays_finiteMaintenanceCarrier` — the freshly formed
-  organization is an admissible pure initial law for P5 maintenance.
-- `p7_terminal_ontogenetic_selfConstruction` — one theorem packages the actual
-  pre-formation transition, installed controller, exact joint legitimacy and
-  entry into the P5 finite maintenance carrier.
+  organization is an admissible pure law on the finite carrier; this theorem by
+  itself makes **no** claim that a P5 recurrent-homeostasis system has been
+  instantiated.
+- `pure_assembled_stays_p5MaintenanceSystem` — after threading P5's actual
+  viability fixed point, repair-policy dynamics bridge, finite representation,
+  fault envelope and hazard premises, the same pure law lies in the carrier of
+  the instantiated `finiteJointRecurrentHomeostasisSystem`.
+- `p7_terminal_ontogenetic_assembly` — packages the typed pre-formation
+  transition, installed controller, exact P5 legitimacy and entry into the
+  actual P5 recurrent-maintenance system.
 
 ## Boundary / no-go content
 
@@ -59,11 +67,13 @@ construction and repair separated at the state type.
 
 ## Claim class
 
-P7 is a **CONDITIONAL THEOREM + ADAPTER** result.
+P7 is a **CONDITIONAL THEOREM + TRUSTED ASSEMBLY ADAPTER** result.
 
-It proves a finite ontogenetic transition under an explicit trusted assembler,
-program source, physical target membership and the already established P5
-repair assumptions. It does not prove construction ex nihilo.
+It proves a finite ontogenetic assembly transition under an explicit trusted
+interpreter/codec, a supplied program source, physical target membership and the
+full already-established P5 recurrent-maintenance premises. It does not prove
+construction ex nihilo, nor does the type-level pre/post distinction alone count
+as evidence of autonomous self-construction.
 
 ## Nonclaims
 

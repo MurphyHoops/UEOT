@@ -1,16 +1,20 @@
 import UEOT.V3.Compression.Objecthood.OntogeneticConstruction.Assembly
 
 /-!
-# Theory Completion P7.1 — construction transition
+# Theory Completion P7.1 — typed construction transition
 
 A construction process has a typed pre-formation state and a formed state.
-The one-step deterministic benchmark makes the distinction between ontogeny and
-repair explicit: repair acts only after the formed organization exists.
+The one-step deterministic benchmark is specialized to the explicit P7 seed
+and the declared trusted assembler.  This blocks the degenerate instantiation
+`Seed := Org; assemble := id` that would merely relabel an already formed
+organization as a seed.  Repair acts only after the formed organization exists.
 -/
 
 namespace UEOT.V3.Compression.Objecthood.OntogeneticConstruction
 
-universe uSeed uOrg
+open UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction
+
+universe uSeed uOrg uX uA uP uR
 
 /-- Pre-formation and post-formation states are different constructors. -/
 inductive OntogeneticState (Seed : Type uSeed) (Org : Type uOrg)
@@ -18,26 +22,39 @@ inductive OntogeneticState (Seed : Type uSeed) (Org : Type uOrg)
   | formed : Org → OntogeneticState Seed Org
   deriving DecidableEq
 
-/-- Deterministic one-step construction benchmark.  Formed organizations are
-absorbing for this construction-only kernel; their subsequent maintenance is a
-separate P5/P6 kernel. -/
-noncomputable def constructionKernel
-    {Seed : Type uSeed} {Org : Type uOrg}
-    (assemble : Seed → Org) :
-    OntogeneticState Seed Org → PMF (OntogeneticState Seed Org)
-  | .seed s => PMF.pure (.formed (assemble s))
+/-- Deterministic one-step P7 construction benchmark.  Its source and target
+types are fixed to the explicit ontogenetic seed and repair-organization state,
+and the only constructor used is `assembleRepairOrganization`.  Formed
+organizations are absorbing for this construction-only kernel; their subsequent
+maintenance is a separate P5/P6 kernel. -/
+noncomputable def ontogeneticConstructionKernel
+    {X : Type uX} {A : Type uA}
+    {Program : Type uP} {Representation : Type uR}
+    (T : TrustedRepairSubstrate Program X A)
+    (codec : TrustedRepairCodec Program Representation) :
+    OntogeneticState (OntogeneticSeed X Program)
+      (RepairOrganizationState X A Representation) →
+      PMF (OntogeneticState (OntogeneticSeed X Program)
+        (RepairOrganizationState X A Representation))
+  | .seed s => PMF.pure (.formed (assembleRepairOrganization T codec s))
   | .formed o => PMF.pure (.formed o)
 
-@[simp] theorem constructionKernel_seed
-    {Seed : Type uSeed} {Org : Type uOrg}
-    (assemble : Seed → Org) (s : Seed) :
-    constructionKernel assemble (.seed s) =
-      PMF.pure (.formed (assemble s)) := rfl
+@[simp] theorem ontogeneticConstructionKernel_seed
+    {X : Type uX} {A : Type uA}
+    {Program : Type uP} {Representation : Type uR}
+    (T : TrustedRepairSubstrate Program X A)
+    (codec : TrustedRepairCodec Program Representation)
+    (s : OntogeneticSeed X Program) :
+    ontogeneticConstructionKernel T codec (.seed s) =
+      PMF.pure (.formed (assembleRepairOrganization T codec s)) := rfl
 
-@[simp] theorem constructionKernel_formed
-    {Seed : Type uSeed} {Org : Type uOrg}
-    (assemble : Seed → Org) (o : Org) :
-    constructionKernel assemble (.formed o) =
+@[simp] theorem ontogeneticConstructionKernel_formed
+    {X : Type uX} {A : Type uA}
+    {Program : Type uP} {Representation : Type uR}
+    (T : TrustedRepairSubstrate Program X A)
+    (codec : TrustedRepairCodec Program Representation)
+    (o : RepairOrganizationState X A Representation) :
+    ontogeneticConstructionKernel T codec (.formed o) =
       PMF.pure (.formed o) := rfl
 
 /-- A seed state is definitionally distinct from every formed state.  This is a
@@ -51,20 +68,26 @@ theorem seed_ne_formed
   intro h
   cases h
 
-/-- The construction kernel enters any target predicate satisfied by the
-assembled organization with probability one. -/
-theorem constructionKernel_seed_staysIn_formedTarget
-    {Seed : Type uSeed} {Org : Type uOrg}
-    (assemble : Seed → Org) (Ready : Org → Prop)
-    (s : Seed) (hready : Ready (assemble s)) :
+/-- The typed P7 construction kernel enters any target predicate satisfied by
+the explicitly assembled repair organization with probability one. -/
+theorem ontogeneticConstructionKernel_seed_staysIn_formedTarget
+    {X : Type uX} {A : Type uA}
+    {Program : Type uP} {Representation : Type uR}
+    (T : TrustedRepairSubstrate Program X A)
+    (codec : TrustedRepairCodec Program Representation)
+    (Ready : RepairOrganizationState X A Representation → Prop)
+    (s : OntogeneticSeed X Program)
+    (hready : Ready (assembleRepairOrganization T codec s)) :
     UEOT.V3.ViabilityKernel.StaysIn
-      (constructionKernel assemble (.seed s))
-      {q : OntogeneticState Seed Org |
+      (ontogeneticConstructionKernel T codec (.seed s))
+      {q : OntogeneticState (OntogeneticSeed X Program)
+          (RepairOrganizationState X A Representation) |
         ∃ o, Ready o ∧ q = .formed o} := by
   intro q hq
-  have hqeq : q = OntogeneticState.formed (assemble s) := by
-    simpa [constructionKernel] using hq
+  have hqeq : q = OntogeneticState.formed
+      (assembleRepairOrganization T codec s) := by
+    simpa [ontogeneticConstructionKernel] using hq
   subst q
-  exact ⟨assemble s, hready, rfl⟩
+  exact ⟨assembleRepairOrganization T codec s, hready, rfl⟩
 
 end UEOT.V3.Compression.Objecthood.OntogeneticConstruction
