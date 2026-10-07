@@ -1,5 +1,6 @@
 import UEOT.V3.Compression.Objecthood.ResourceClosure.ResourceAccounting
 
+import UEOT.V3.Compression.Objecthood.ResourceClosure.StateCostEnvelope
 /-!
 # Resource Closure
 
