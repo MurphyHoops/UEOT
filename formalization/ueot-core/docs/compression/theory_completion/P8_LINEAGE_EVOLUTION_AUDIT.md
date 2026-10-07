@@ -14,10 +14,17 @@ therefore same-object restoration cannot be counted as reproduction.
 A population transmission kernel is `ReproductiveTransmission` only when each
 positive parent→child entry is an actual offspring edge. Under that explicit
 bridge, the existing Core P-EVO-01 Price decomposition applies to the same
-kernel. The existing P-EVO-03 Perron growth theorem is re-exported unchanged
-under its primitive-matrix certificate and valuation assumptions. Core P-BRG-02
-continues to state only that behaviorally equivalent objects have equal bridge
-fitness.
+kernel.
+
+Independent review found that the first Perron wrapper had no lineage premise.
+That wrapper was therefore scientifically too strong: it was only a generic
+P-EVO-03 re-export. The review-tightened `lineage_perron_bridge` now also
+requires `L.ReproductiveTransmission M` for the same mean operator `M` and
+returns the positive-entry offspring condition together with the unchanged
+Perron growth/composition/reproductive-value conclusions.
+
+Core P-BRG-02 continues to state only that behaviorally equivalent objects have
+equal bridge fitness.
 
 Terminal theorem: `p8_terminal_lineage_evolution` packages the identity boundary
 and the exact Price decomposition without deriving reproduction from Objecthood.

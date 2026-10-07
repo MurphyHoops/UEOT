@@ -18,20 +18,27 @@ move to the coarse object only when the same object transport and all six
 corresponding preservation theorems are supplied.
 
 `ObjectScaleEvent` keeps transport, merge, split, birth and death distinct.
-`objectScaleMap_does_not_determine_wilsonian_flow` proves an explicit
-underdetermination boundary: a fixed generic object-scale map does not determine
-physical coupling-flow data. A Wilsonian RG interpretation therefore needs an
-additional domain bridge.
+
+Independent review rejected the first claimed Wilsonian underdetermination
+theorem because the scale map did not occur in its compatibility semantics. The
+claim was therefore weakened rather than patched with a vacuous relation.
+`wilsonianCouplingFlow_nontrivial_of_twoCouplings` proves only that the
+standalone Wilsonian coupling-flow data type has distinct elements when the
+coupling type does. P9 makes **no formal theorem** that a fixed generic
+`ObjectScaleMap` admits multiple compatible Wilsonian interpretations until a
+domain-specific compatibility relation is supplied.
 
 ## Claim class
 
-**THEOREM + CONDITIONAL THEOREM + NO-GO BOUNDARY.**
+**THEOREM + CONDITIONAL THEOREM + EXPLICIT INTERPRETATION BOUNDARY.**
 
 ## Nonclaims
 
 P9 does not assert that every resolution change preserves identity or value, does
 not treat merge/split as bijective transport, and does not identify generic UEOT
-resolution with Wilsonian RG. Domain-specific physical RG requires explicit
-couplings, scale parameterization and matching/coarse-graining hypotheses.
+resolution with Wilsonian RG. Domain-specific physical RG requires an explicit
+compatibility bridge, couplings, scale parameterization and matching/
+coarse-graining hypotheses before any flow uniqueness/underdetermination theorem
+is meaningful.
 
 No counted Core theorem or generator is changed.

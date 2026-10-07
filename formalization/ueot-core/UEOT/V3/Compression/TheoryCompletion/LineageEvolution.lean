@@ -116,13 +116,16 @@ theorem lineage_price_bridge
       ∧ (∀ parent child, 0 < K parent child → L.OffspringOf parent child) := by
   exact ⟨p_evo_01 p b z K z' hp0 hpsum hb0 hK0 hKsum hbar, hlineage⟩
 
-/-- P8 Perron bridge: once a same-type reproductive mean operator has the exact
-KPF certificate and valuation assumptions required by Core P-EVO-03, its growth,
+/-- P8 Perron bridge: once a same-type mean operator is explicitly certified as
+lineage-compatible on every positive parent→child entry and has the exact KPF
+certificate and valuation assumptions required by Core P-EVO-03, its growth,
 composition and reproductive-value conclusions transfer unchanged.  P8 adds no
 claim that objecthood itself supplies primitive positivity. -/
 theorem lineage_perron_bridge
     [Fintype Object] [Nonempty Object] [DecidableEq Object]
+    (L : LineageSemantics Object Identity)
     (M : Matrix Object Object ℝ) (pf : KPF01Certificate M)
+    (hlineage : L.ReproductiveTransmission M)
     (z0 : Object → ℕ) (hz0 : z0 ≠ 0)
     (rho : ℝ) (w : Object → ℝ)
     (hw : ∀ i, 0 < w i)
@@ -139,8 +142,11 @@ theorem lineage_perron_bridge
           rowMass (rowApply (natRow z0) (M ^ n)))
       atTop (𝓝 pf.l)
     ∧ rho = pf.R
-    ∧ ∃ c : ℝ, 0 < c ∧ ∀ i, w i = c * pf.r i := by
-  exact p_evo_03 M pf z0 hz0 rho w hw hval
+    ∧ (∃ c : ℝ, 0 < c ∧ ∀ i, w i = c * pf.r i)
+    ∧ (∀ parent child, 0 < M parent child → L.OffspringOf parent child) := by
+  rcases p_evo_03 M pf z0 hz0 rho w hw hval with
+    ⟨hgrowth, hcomposition, hrho, hwuniq⟩
+  exact ⟨hgrowth, hcomposition, hrho, hwuniq, hlineage⟩
 
 end LineageSemantics
 

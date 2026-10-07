@@ -139,13 +139,12 @@ is intentionally not part of generic `ObjectScaleMap`. -/
 structure WilsonianRGInterpretation (Coupling : Type uS) where
   couplingFlow : ℕ → Coupling
 
-/-- Generic object-scale data cannot identify a unique Wilsonian coupling flow:
-even for a fixed scale map there are distinct physical interpretations whenever
-the coupling type has two distinct values. -/
-theorem objectScaleMap_does_not_determine_wilsonian_flow
-    {X : Type uX} {Y : Type uY}
-    {OF : Type uOF} {OC : Type uOC}
-    (M : ObjectScaleMap X Y OF OC)
+/-- The standalone Wilsonian coupling-flow data type is nontrivial whenever the
+coupling type has two distinct values.  This theorem intentionally makes no
+claim about compatibility with a particular `ObjectScaleMap`: such a claim
+requires an explicit physical interpretation relation that generic P9 does not
+yet provide. -/
+theorem wilsonianCouplingFlow_nontrivial_of_twoCouplings
     {Coupling : Type uS} (c₀ c₁ : Coupling) (hne : c₀ ≠ c₁) :
     ∃ W₀ W₁ : WilsonianRGInterpretation Coupling,
       W₀.couplingFlow ≠ W₁.couplingFlow := by

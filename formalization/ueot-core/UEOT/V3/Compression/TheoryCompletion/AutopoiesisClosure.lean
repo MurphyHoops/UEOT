@@ -91,6 +91,34 @@ structure LifecycleObjectBridge
   organizationObject : Organization → Object
   fineObject : Object → FineObject
 
+/-- If every state in a recurrent-homeostasis carrier represents the same
+lineage identity as `parent`, then every finite-time maintained marginal also
+represents that same parent identity.  This is the missing bridge between
+organizational state maintenance and lifecycle-object identity. -/
+theorem homeostaticMarginals_preserve_lifecycleParent
+    {Organization : Type*} [Fintype Organization]
+    [MeasurableSpace Organization] [MeasurableSingletonClass Organization]
+    {Object : Type uO} {Identity : Type uI}
+    (L : LineageSemantics Object Identity)
+    (organizationObject : Organization → Object)
+    (parent : Object)
+    (S : RecurrentHomeostasisSystem Organization)
+    (mu0 : PMF Organization)
+    (hmu0 : StaysIn mu0 S.carrier)
+    (hcarrierParent :
+      ∀ s, s ∈ S.carrier → L.SameObject (organizationObject s) parent) :
+    ∀ n s,
+      s ∈ (homeostaticMarginal S.mixedKernel mu0 n).support →
+        L.SameObject (organizationObject s) parent := by
+  have hstay : ∀ n,
+      StaysIn (homeostaticMarginal S.mixedKernel mu0 n) S.carrier :=
+    homeostaticMarginal_staysIn S.mixedKernel mu0 S.carrier hmu0
+      (by
+        intro s hs
+        exact S.mixed_stays_carrier hs)
+  intro n s hs
+  exact hcarrierParent s (hstay n hs)
+
 /-- P4's recovered object class can be connected to the same lifecycle parent
 only through the already-required explicit parent bridge. -/
 theorem p12_discovered_parent_tendsto_lifecycleParent
@@ -270,6 +298,11 @@ theorem p12_terminal_conditional_finite_lifecycle
       (RepairOrganizationState X A Representation) Object FineObject)
     (hassembledParent :
       B.organizationObject (assembleRepairOrganization T codec seed) = parent)
+    (hcarrierSameParent :
+      ∀ s,
+        s ∈ finiteJointRepairCarrier P Kphysical R T codec
+          seed.repairProgramSource →
+        L.SameObject (B.organizationObject s) parent)
     (M : ObjectScaleMap FineState CoarseState FineObject CoarseObject)
     (FineProperty : FineObject → Prop) (CoarseProperty : CoarseObject → Prop)
     {coarse : CoarseObject}
@@ -296,6 +329,9 @@ theorem p12_terminal_conditional_finite_lifecycle
         {omega | candidateParent (D.estimate n omega) ≠ parent})
       atTop (𝓝 0) ∧
     StaysIn mu0 S.carrier ∧
+    (∀ n s,
+      s ∈ (homeostaticMarginal S.mixedKernel mu0 n).support →
+        L.SameObject (B.organizationObject s) parent) ∧
     MeanHomeostasis (fun n => (Ddamage n).toReal)
       (lambda.toReal / kappa.toReal) ∧
     ResourceViable initial (fun _ => supply) actualCost ∧
@@ -328,6 +364,16 @@ theorem p12_terminal_conditional_finite_lifecycle
     Cresource initial supply
     (by simpa [mu0] using hreserve)
     (by simpa using hsupply)
+  have hsameParent :=
+    homeostaticMarginals_preserve_lifecycleParent
+      L B.organizationObject parent
+      (finiteJointRecurrentHomeostasisSystem
+        P Kphysical hfix R T codec seed.repairProgramSource himpl
+        F epsilon hepsilon hF)
+      mu0 hentry
+      (by
+        intro s hs
+        exact hcarrierSameParent s hs)
   have hstructural := p12_conditional_finite_lifecycle
     P Kphysical R T codec seed
     (repairProgramValid_of_dynamicsImplements_repairThenPreserve
@@ -337,10 +383,11 @@ theorem p12_terminal_conditional_finite_lifecycle
     M FineProperty CoarseProperty htransport hpreserve hfine
   rcases hstructural with
     ⟨hdiscover, _hcarrier, hparent, hdistinct, hprice, hscale⟩
-  refine ⟨hdiscover, ?_, ?_, ?_, hparent, hdistinct, hprice, hscale⟩
+  refine ⟨hdiscover, ?_, ?_, ?_, ?_, hparent, hdistinct, hprice, hscale⟩
   · change StaysIn mu0
       (finiteJointRepairCarrier P Kphysical R T codec seed.repairProgramSource)
     exact hentry
+  · simpa [mu0] using hsameParent
   · simpa [mu0] using hmean
   · simpa [mu0] using hresource
 

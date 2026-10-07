@@ -52,14 +52,21 @@ reproduction.  Positive entries of a reproductive transmission kernel must be
 actual offspring edges.  Only after this bridge does the existing exact Price
 (P-EVO-01) or Perron (P-EVO-03) machinery apply.
 
+After independent #288 review, the Perron bridge was tightened so the same
+matrix `M` must satisfy `L.ReproductiveTransmission M`; the earlier generic
+P-EVO-03 wrapper is no longer described as a lineage result.
+
 ## 4. P9 result
 
 P9 proves composition of typed object-scale maps and object transport, plus a
 single generic preservation calculus instantiated independently for identity,
 purpose, GOD, GOA, repairability and homeostasis.  None of those properties is
 inserted into the bare scale-map structure.  Merge, split, birth, death and
-ordinary transport remain distinct events.  A generic object-scale map does not
-determine a Wilsonian coupling flow; physical RG needs an extra domain bridge.
+ordinary transport remain distinct events. After independent #288 review, the
+former Wilsonian underdetermination theorem was deliberately weakened: only
+nontriviality of standalone coupling-flow data is proved. Physical RG needs an
+explicit compatibility bridge before any flow uniqueness/underdetermination
+claim is meaningful.
 
 ## 5. P10 result and boundary
 
@@ -109,6 +116,13 @@ now derives actual P5 mean homeostasis and P6 expected-accounting resource
 viability for the same constructed organization under their complete visible
 premises. The earlier structural lifecycle theorem is retained but explicitly
 labelled as stopping at finite-carrier entry.
+
+Independent #288 review then exposed one more same-parent gap: the initial
+assembled organization alone was bound to `parent`, but subsequent maintained
+states were not. The final local theorem now requires every P5 carrier state to
+map to the same lineage identity and proves this identity for the support of
+every finite-time mixed-dynamics marginal. Recurrent maintenance/resource claims
+are therefore attached to the same lifecycle parent through time.
 
 Final P12 verdict: **PARTIAL / EXPLICIT BOUNDARY**.  Under the frozen Mission,
 a proved no-go / explicit boundary is a valid terminal scientific result.

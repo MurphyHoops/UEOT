@@ -45,6 +45,20 @@ organization:
 - P6 expected-accounting `ResourceViable` under explicit transient-reserve and
   steady-supply inequalities.
 
+A second independent review found that identifying only the *initial* assembled
+organization with `parent` was insufficient: fault/repair dynamics could remain
+inside the P5 carrier while the lifecycle bridge mapped later states to another
+object identity. The terminal theorem therefore now requires the carrier-level
+identity bridge
+
+`∀ s ∈ S.carrier, L.SameObject (B.organizationObject s) parent`
+
+and `homeostaticMarginals_preserve_lifecycleParent` proves that every state in
+the support of every finite-time P5 mixed-dynamics marginal retains that same
+lineage identity. Thus P5 mean homeostasis and P6 resource viability are
+formally attached to the same lifecycle parent through time rather than only to
+the initial assembled state.
+
 Recurrent maintenance and resource closure are therefore outputs of previously
 proved P5/P6 theorems under visible premises, not narrative labels attached to
 carrier membership.
