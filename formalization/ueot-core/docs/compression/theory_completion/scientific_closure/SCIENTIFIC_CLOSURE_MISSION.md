@@ -1,7 +1,10 @@
 # UEOT Core v3 Scientific Closure — Mission Contract
 
-Status: **ACTIVE / LOCAL-ONLY**
-Base canonical main: `f779f7c12f68ab5571e3550edfca475ae61465ee`
+Status: **LOCAL COMPLETE / REMOTE REVIEW PENDING**
+Current promotion base: `5cf716972cbc473248544c4f7f54b1df25cb69bf`
+
+The original program-start base remains recorded, without rewriting history, in
+`SCIENTIFIC_CLOSURE_SOURCE_MANIFEST.md` and the frozen C7 preregistration.
 
 ## 1. Scope
 
@@ -36,7 +39,9 @@ No simulation result may be relabelled as real-world support.
 
 ## 3. C-program architecture
 
-- C1: precise measurable/general-state gap, no re-proof of already closed Core v3.
+- C1: parameterized posterior/belief recursion for Standard-Borel latent state and
+  countably-generated observations, with the arbitrary-measurable-observation
+  version retained as a stronger boundary.
 - C2: certified formation discovery under finite candidate/protocol registration,
   correlation, drift, unknown gap and abstention.
 - C3: output-bounded carrier/completion discovery and parent-binding calibration.

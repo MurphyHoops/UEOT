@@ -11,7 +11,7 @@ or four-generator Compression result.
 | Package | Local result | Strongest valid statement | Stronger port status |
 |---|---|---|---|
 | R0 / FBT0 | PACKAGE_CLOSED | canonical state and Formation–Binding–Transport theorem DAG reconciled; P2 semantics re-audited | synthesis remains post-Core |
-| C1 | PACKAGE_CLOSED | exact remaining target is a jointly measurable posterior/update over belief × action × observation; existing generic measurable-update→kernel adapter must not be re-counted | OPEN |
+| C1 | PACKAGE_CLOSED | jointly measurable posterior-belief version and Markov belief transition are constructed for Standard-Borel latent state with countably-generated observations; fixed sections agree a.e. with P-REF-02 | OPEN for fully arbitrary measurable observations and broader model-specific continuation/fibre obligations |
 | C2 | PACKAGE_CLOSED | ternary certified/rejected/ambiguous decision, protocol coverage, discovery/certification split, `2η + drift` carrier interval, exact formed-family recovery only under explicit registered gaps | OPEN for full correlated/adaptive/real data theory |
 | C3 | PACKAGE_CLOSED | one `n+1` nested structured search theorem; one nontrivial common-Markov binding mechanism derives `L_bind = 1` | OPEN for arbitrary output-sensitive search/noisy physical frames/universal binding |
 | C4 / FBT | PACKAGE_CLOSED | independent formation/binding/transport defects imply the realized continuation bound `L*epsF + epsB`; endpoint has formed source/target and no `SameObject` premise | OPEN for general split/merge/path identity |
@@ -21,13 +21,23 @@ or four-generator Compression result.
 
 ## 2. Global reflection: what improved relative to the original v2 plan
 
-### C1 — theorem-count inflation was avoided
+### C1 — the measurable-recursion boundary was split and partially closed
 
 P10 and `ReflexiveStateSpecialCases` already cover the fixed-belief posterior and
-the generic measurable-update→kernel adapter.  The program therefore did not
-manufacture a wrapper theorem and call it general-state closure.  The genuine
-missing mathematics is joint measurable selection/version control over belief,
-action and observation.
+the generic measurable-update→kernel adapter.  The re-audit therefore did not
+manufacture another wrapper theorem.  Instead it uses Mathlib's Giry measurable
+structure and parameterized `Kernel.condKernel` to construct one common posterior
+version jointly measurable in belief, action and observation when the observation
+sigma-algebra is countably generated.  This yields an actual Markov transition on
+the whole probability-belief space.  The constructed joint law is exactly the
+existing P-REF-02 joint law up to coordinate swap, and fixed posterior sections
+agree with the existing posterior almost everywhere under the predictive
+observation law.
+
+This closes a real C1 subport but not the arbitrary-measurable-observation port:
+the parameterized disintegration theorem still requires the relevant
+countable/countably-generated regularity.  Zero-probability observation values
+remain version-dependent and are not promoted to pointwise uniqueness.
 
 ### C2 — unknown separation was not silently converted into a known gap
 
@@ -103,10 +113,10 @@ Public integration:
 
 Final local build results on the working closure tree:
 
-- `UEOT.V3.Compression.TheoryCompletion.ScientificClosure`: **8827 jobs PASS**;
-- `UEOT.V3.Compression.TheoryCompletion`: **9013 jobs PASS**;
-- `UEOT.V3.Compression`: **9244 jobs PASS**;
-- `UEOT`: **9263 jobs PASS**.
+- `UEOT.V3.Compression.TheoryCompletion.ScientificClosure`: **8830 jobs PASS**;
+- `UEOT.V3.Compression.TheoryCompletion`: **9015 jobs PASS**;
+- `UEOT.V3.Compression`: **9246 jobs PASS**;
+- `UEOT`: **9265 jobs PASS**.
 
 Scientific Closure proof-escape scan is CLEAR.  The aggregate key-theorem axiom
 audit contains only standard Lean/Mathlib foundations used elsewhere in the
@@ -129,26 +139,28 @@ The following canonical files are byte-identical to `main`:
 Hence this program does not modify 106/106 coverage, final dispositions or the
 four counted generators.
 
-## 6. Governance result and historical external-evidence boundary
+## 6. Governance result and durable FINAL evidence
 
 `validate_compression_research.py` passes for the Scientific Closure branch and
 its additive TC ownership.
 
-The legacy FINAL compression validator cannot currently complete live-reference
-verification because its frozen finalization evidence points to historical
-Compression Guard run `36578717533`, which GitHub no longer returns.  The
-current workflow still requires `--verify-finalization-refs`, so this is a real
-future cloud-CI blocker.
+The earlier local audit correctly identified a durability risk around the
+historical FINAL Actions references, but the stronger claim that Compression
+Guard run `36578717533` had already disappeared was not stable: both original
+Actions runs and closure PR #175 were later returned by the live GitHub API and
+reverified against the frozen candidate SHA.
 
-This is pre-existing main evidence, not introduced by C1–C7.  It is **not**
-safely repairable by substituting an arbitrary newer successful main run,
-because the validator requires the candidate SHA, both push runs and closure PR
-to refer to the same finalization event.
+That infrastructure issue was repaired separately from this scientific branch.
+Canonical main now contains a hardened online-first verifier plus an immutable
+retrospective receipt for the original FINAL event.  The receipt preserves the
+original candidate SHA, run IDs, workflow names, successful push state and
+closure PR; it does not substitute newer evidence and does not claim to have
+existed at the 2026-09-29 finalization time.  Historical-receipt fallback is
+allowed only for explicit Actions HTTP 404 and only from a byte-identical
+baseline receipt; timeout/TLS/auth/rate/malformed failures remain failures.
 
-Therefore the local Scientific Closure program is not altered to hide this
-boundary.  Cloud promotion must first regenerate equivalent exact-candidate
-push evidence or formally migrate the FINAL-evidence contract in a separate
-governance change.
+Thus the old provider-retention blocker is resolved on canonical main without
+changing any Core theorem, counted mapping, generator or C1–C7 scientific claim.
 
 ## 7. Empirical status
 
@@ -179,7 +191,7 @@ with:
 - machine build and local evidence package green;
 - independent review pending;
 - real-world/external support unverified;
-- remote promotion not started.
+- remote promotion prepared; independent exact-head review remains required.
 
 This is a scientific closure of the contracted **first local program**, not a
 claim that UEOT itself is scientifically complete.

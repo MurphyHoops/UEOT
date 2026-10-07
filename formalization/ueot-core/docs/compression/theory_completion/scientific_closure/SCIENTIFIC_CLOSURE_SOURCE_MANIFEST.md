@@ -1,6 +1,11 @@
 # Scientific Closure Source Manifest
 
-Program base: `main@f779f7c12f68ab5571e3550edfca475ae61465ee`
+Program-start base (historical provenance):
+`main@f779f7c12f68ab5571e3550edfca475ae61465ee`.
+
+This manifest records the frozen inputs used when the local program began.  It
+is intentionally not rewritten when the promotion branch is later rebased onto
+a newer canonical `main`.
 
 ## Project planning sources
 

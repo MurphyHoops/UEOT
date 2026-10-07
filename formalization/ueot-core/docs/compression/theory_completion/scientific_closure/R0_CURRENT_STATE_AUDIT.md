@@ -1,7 +1,8 @@
 # R0 — Current Canonical State Audit
 
 Status: **LOCAL COMPLETE**
-Base: `main@f779f7c12f68ab5571e3550edfca475ae61465ee`
+Current promotion base: `main@5cf716972cbc473248544c4f7f54b1df25cb69bf`.
+The original R0/program-start base was `f779f7c12f68ab5571e3550edfca475ae61465ee`.
 
 ## Canonical state
 
