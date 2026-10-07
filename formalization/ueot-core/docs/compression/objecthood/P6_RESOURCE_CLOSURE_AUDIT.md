@@ -163,6 +163,19 @@ Only this extra realized-cost premise licenses pathwise `ResourceViable`.
 Therefore P6 terminal closure does not silently upgrade means or expectations
 to almost-sure/pathwise stock guarantees.
 
+### 3.10 Public-root exposure is part of scientific integration
+
+The first pushed exact head contained a complete focused P6 subtree but omitted
+the import-only exposure from `UEOT.V3.Compression.Objecthood`. Independent
+exact-head review correctly blocked merge because top-level consumers would not
+see the new declarations and the nominal Compression build would not traverse
+P6. The correction adds only the permitted public-root import and changes no
+P6 theorem statement.
+
+This review finding is retained as audit evidence rather than hidden: focused
+subtree compilation is necessary but not sufficient for public-library
+integration.
+
 ## 4. What P6 now closes
 
 For the finite same-parent benchmark inherited from P5, with an explicit P6
@@ -212,8 +225,9 @@ At post-recompression scientific head
 - complete governance regression suite: **PASS**;
 - representative axiom audit on nine P6 endpoints: only standard
   `[propext, Classical.choice, Quot.sound]`;
-- `lake build UEOT.V3.Compression`: **PASS, 9208 jobs**;
-- `lake build UEOT`: **PASS, 9227 jobs**.
+- initial pre-review `lake build UEOT.V3.Compression`: PASS, but exact-head review correctly observed that P6 was not yet exported from the public Objecthood root, so that build did not traverse P6;
+- after the public-root correction, `lake build UEOT.V3.Compression`: **PASS, 9216 jobs**;
+- after the same correction, `lake build UEOT`: **PASS, 9235 jobs**.
 
 P6.5, P6.6 and P6.7 were additionally rebuilt from detached exact stage heads
 using only the shared untracked Lake cache. Earlier P6 stages were committed as
