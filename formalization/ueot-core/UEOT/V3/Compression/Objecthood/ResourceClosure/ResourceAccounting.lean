@@ -1,4 +1,3 @@
-import UEOT.V3.Compression.Objecthood.JointHomeostasis
 import Mathlib.Tactic
 
 /-!

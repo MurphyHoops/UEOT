@@ -149,20 +149,6 @@ theorem twoPath_highCost_not_resourceViable :
   rw [hfun]
   exact spikeCost_not_resourceViable
 
-/-- **Expected accounting closure does not imply pathwise resource viability.**
-Even a nonnegative equal-weight expected cumulative balance at every horizon can
-hide a realized path that violates the resource constraint. -/
-theorem average_accounting_closure_does_not_imply_pathwise_viability :
-    (∀ N : ℕ,
-      0 ≤
-        (cumulativeResourceBalance 0 (fun _ => 1) (twoPathCost false) N +
-          cumulativeResourceBalance 0 (fun _ => 1) (twoPathCost true) N) / 2) ∧
-      ¬ ResourceViable 0 (fun _ => 1) (twoPathCost true) :=
-  ⟨twoPath_averageAccountingBalance_nonneg,
-    twoPath_highCost_not_resourceViable⟩
-
-
-
 /-- The explicit equal-prior probability law on the two accounting paths. -/
 noncomputable def twoPathLaw : PMF Bool := PMF.uniformOfFintype Bool
 

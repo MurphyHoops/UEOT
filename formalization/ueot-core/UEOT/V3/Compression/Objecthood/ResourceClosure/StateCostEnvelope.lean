@@ -1,4 +1,5 @@
 import UEOT.V3.Compression.Objecthood.ResourceClosure.ResourceAccounting
+import UEOT.V3.Compression.Objecthood.JointHomeostasis
 
 /-!
 # Theory Completion P6.1 — state-level resource-cost envelope
@@ -35,6 +36,11 @@ noncomputable def realIndicator (p : Prop) : ℝ := by
 
 /-- Concrete state-level accounting cost from one validity predicate and one
 program-reconstruction predicate. -/
+theorem realIndicator_nonneg (p : Prop) :
+    0 ≤ realIndicator p := by
+  classical
+  by_cases hp : p <;> simp [realIndicator, hp]
+
 noncomputable def stateResourceCost
     {Z : Type uZ}
     (C : ResourceCostModel)
@@ -44,6 +50,21 @@ noncomputable def stateResourceCost
   exact C.maintenance +
     C.repair * realIndicator (¬ legitimate z) +
     C.reconstruction * realIndicator (programMismatch z)
+
+/-- Every instantiated accounting state cost is nonnegative.  This is a
+basic P6 semantic invariant and uses only the declared nonnegative accounting
+coordinates; it does not assign a physical-energy interpretation. -/
+theorem stateResourceCost_nonneg
+    {Z : Type uZ}
+    (C : ResourceCostModel)
+    (legitimate programMismatch : Z → Prop)
+    (z : Z) :
+    0 ≤ stateResourceCost C legitimate programMismatch z := by
+  unfold stateResourceCost
+  exact add_nonneg
+    (add_nonneg C.maintenance_nonneg
+      (mul_nonneg C.repair_nonneg (realIndicator_nonneg _)))
+    (mul_nonneg C.reconstruction_nonneg (realIndicator_nonneg _))
 
 /-- Finite PMF expectation in real accounting units. -/
 noncomputable def pmfRealExpectation
