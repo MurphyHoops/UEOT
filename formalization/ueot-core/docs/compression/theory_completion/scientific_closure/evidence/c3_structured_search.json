@@ -1,0 +1,60 @@
+{
+  "kind": "METHOD_BENCHMARK_NOT_GENERAL_ALGORITHM",
+  "complexity_table": [
+    {
+      "components": 8,
+      "powerset_candidates": 256,
+      "nested_candidates": 9,
+      "ratio": 0.03515625
+    },
+    {
+      "components": 16,
+      "powerset_candidates": 65536,
+      "nested_candidates": 17,
+      "ratio": 0.0002593994140625
+    },
+    {
+      "components": 24,
+      "powerset_candidates": 16777216,
+      "nested_candidates": 25,
+      "ratio": 1.4901161193847656e-06
+    },
+    {
+      "components": 32,
+      "powerset_candidates": 4294967296,
+      "nested_candidates": 33,
+      "ratio": 7.683411240577698e-09
+    }
+  ],
+  "nested_example": {
+    "defects": [
+      0.3,
+      0.22,
+      0.15,
+      0.1,
+      0.07,
+      0.04,
+      0.02
+    ],
+    "tolerance": 0.05,
+    "first_good_index": 5
+  },
+  "frame_noise_example": {
+    "defects": [
+      0.31,
+      0.23,
+      0.17,
+      0.12,
+      0.08,
+      0.055,
+      0.025
+    ],
+    "tolerance": 0.05,
+    "first_good_index": 6
+  },
+  "assertions": {
+    "restricted_search_not_powerset": true,
+    "nested_first_good": true,
+    "frame_can_change_selected_index": true
+  }
+}

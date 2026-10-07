@@ -1,0 +1,80 @@
+{
+  "kind": "METHOD_STRESS_TEST_NOT_REAL_WORLD_VALIDATION",
+  "cases": [
+    {
+      "name": "clear_carrier",
+      "estimate": 0.015,
+      "stat_radius": 0.01,
+      "drift_radius": 0.005,
+      "threshold": 0.05,
+      "coverage": true,
+      "split_disjoint": true,
+      "verdict": "CERTIFIED"
+    },
+    {
+      "name": "clear_rejection",
+      "estimate": 0.1,
+      "stat_radius": 0.01,
+      "drift_radius": 0.005,
+      "threshold": 0.05,
+      "coverage": true,
+      "split_disjoint": true,
+      "verdict": "REJECTED"
+    },
+    {
+      "name": "small_gap",
+      "estimate": 0.05,
+      "stat_radius": 0.012,
+      "drift_radius": 0.003,
+      "threshold": 0.05,
+      "coverage": true,
+      "split_disjoint": true,
+      "verdict": "AMBIGUOUS"
+    },
+    {
+      "name": "large_drift",
+      "estimate": 0.025,
+      "stat_radius": 0.01,
+      "drift_radius": 0.03,
+      "threshold": 0.05,
+      "coverage": true,
+      "split_disjoint": true,
+      "verdict": "AMBIGUOUS"
+    },
+    {
+      "name": "low_coverage",
+      "estimate": 0.01,
+      "stat_radius": 0.005,
+      "drift_radius": 0.0,
+      "threshold": 0.05,
+      "coverage": false,
+      "split_disjoint": true,
+      "verdict": "UNCERTIFIED_LOW_COVERAGE"
+    },
+    {
+      "name": "discovery_certification_reuse",
+      "estimate": 0.01,
+      "stat_radius": 0.005,
+      "drift_radius": 0.0,
+      "threshold": 0.05,
+      "coverage": true,
+      "split_disjoint": false,
+      "verdict": "INVALID_DATA_REUSE"
+    }
+  ],
+  "mixing": {
+    "raw_timepoints": 1000,
+    "effective_blocks": 20,
+    "fast_mixing_failure_upper": 0.0195,
+    "slow_mixing_failure_upper": 0.2,
+    "iid_misuse_failure_upper": 0.01
+  },
+  "assertions": {
+    "small_gap_abstains": true,
+    "large_drift_abstains": true,
+    "low_coverage_refuses": true,
+    "data_reuse_invalid": true,
+    "dependence_penalty_visible": true,
+    "raw_n_not_effective_n": true
+  }
+}

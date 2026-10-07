@@ -1,0 +1,449 @@
+{
+  "all_registered_outcomes_match": true,
+  "candidate_single_fault": {
+    "1": {
+      "repetitions": 5,
+      "survives_single_fault": false
+    },
+    "2": {
+      "repetitions": 5,
+      "survives_single_fault": false
+    },
+    "3": {
+      "repetitions": 5,
+      "survives_single_fault": true
+    }
+  },
+  "claim_verdicts": {
+    "C7-LOCAL-FBT-01": "SUPPORTED_LOCAL",
+    "C7-LOCAL-FORM-01": "SUPPORTED_LOCAL",
+    "C7-LOCAL-NEG-01": "SUPPORTED_LOCAL"
+  },
+  "double_fault_negative_all_pass": true,
+  "environment": {
+    "machine": "arm64",
+    "python": "3.9.6",
+    "system": "Darwin"
+  },
+  "first_good_nested_candidate_size": 3,
+  "heldout_replacement_all_pass": true,
+  "kind": "LOCAL_CONSTRUCTED_DIGITAL_PROCESS_PILOT_NOT_EXTERNAL_REAL_WORLD_VALIDATION",
+  "label": "reproduction_v1",
+  "logical_signature": [
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n1-read-r1",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n1-single-r1",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n1-read-r2",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n1-single-r2",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n1-read-r3",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n1-single-r3",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n1-read-r4",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n1-single-r4",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n1-read-r5",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n1-single-r5",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n2-read-r1",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n2-single-r1",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n2-read-r2",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n2-single-r2",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n2-read-r3",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n2-single-r3",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n2-read-r4",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n2-single-r4",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n2-read-r5",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n2-single-r5",
+      "service_output": "UNAVAILABLE",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n3-read-r1",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n3-single-r1",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n3-read-r2",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n3-single-r2",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n3-read-r3",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n3-single-r3",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n3-read-r4",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n3-single-r4",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_READ",
+      "read_output": null,
+      "run_id": "cert-n3-read-r5",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "cert-n3-single-r5",
+      "service_output": "OK",
+      "split": "certification"
+    },
+    {
+      "heldout_fault_output": "OK",
+      "matches_expected": true,
+      "protocol": "P_REPLACE_HELDOUT",
+      "read_output": "OK",
+      "run_id": "holdout-replace-r1",
+      "service_output": null,
+      "split": "holdout"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_DOUBLE_FAULT",
+      "read_output": null,
+      "run_id": "neg-double-r1",
+      "service_output": "UNAVAILABLE",
+      "split": "negative_control"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "baseline-single-r1",
+      "service_output": "UNAVAILABLE",
+      "split": "baseline"
+    },
+    {
+      "heldout_fault_output": "OK",
+      "matches_expected": true,
+      "protocol": "P_REPLACE_HELDOUT",
+      "read_output": "OK",
+      "run_id": "holdout-replace-r2",
+      "service_output": null,
+      "split": "holdout"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_DOUBLE_FAULT",
+      "read_output": null,
+      "run_id": "neg-double-r2",
+      "service_output": "UNAVAILABLE",
+      "split": "negative_control"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "baseline-single-r2",
+      "service_output": "UNAVAILABLE",
+      "split": "baseline"
+    },
+    {
+      "heldout_fault_output": "OK",
+      "matches_expected": true,
+      "protocol": "P_REPLACE_HELDOUT",
+      "read_output": "OK",
+      "run_id": "holdout-replace-r3",
+      "service_output": null,
+      "split": "holdout"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_DOUBLE_FAULT",
+      "read_output": null,
+      "run_id": "neg-double-r3",
+      "service_output": "UNAVAILABLE",
+      "split": "negative_control"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "baseline-single-r3",
+      "service_output": "UNAVAILABLE",
+      "split": "baseline"
+    },
+    {
+      "heldout_fault_output": "OK",
+      "matches_expected": true,
+      "protocol": "P_REPLACE_HELDOUT",
+      "read_output": "OK",
+      "run_id": "holdout-replace-r4",
+      "service_output": null,
+      "split": "holdout"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_DOUBLE_FAULT",
+      "read_output": null,
+      "run_id": "neg-double-r4",
+      "service_output": "UNAVAILABLE",
+      "split": "negative_control"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "baseline-single-r4",
+      "service_output": "UNAVAILABLE",
+      "split": "baseline"
+    },
+    {
+      "heldout_fault_output": "OK",
+      "matches_expected": true,
+      "protocol": "P_REPLACE_HELDOUT",
+      "read_output": "OK",
+      "run_id": "holdout-replace-r5",
+      "service_output": null,
+      "split": "holdout"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_DOUBLE_FAULT",
+      "read_output": null,
+      "run_id": "neg-double-r5",
+      "service_output": "UNAVAILABLE",
+      "split": "negative_control"
+    },
+    {
+      "heldout_fault_output": null,
+      "matches_expected": true,
+      "protocol": "P_SINGLE_FAULT",
+      "read_output": null,
+      "run_id": "baseline-single-r5",
+      "service_output": "UNAVAILABLE",
+      "split": "baseline"
+    }
+  ],
+  "nonclaims": [
+    "not external or natural-system real-world validation",
+    "not independent review",
+    "not universal carrier minimality",
+    "not universal structural identity"
+  ],
+  "preregistration_commit": "4e014cb589ca713d3a6af34523a23af5bfe038e9",
+  "record_count": 45,
+  "registered_repetitions": 5,
+  "single_worker_baseline_all_pass": true
+}
