@@ -1,5 +1,4 @@
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.FiniteCandidateRecovery
-import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.OperationalValidity
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.InteractionClassRecovery
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.Contract
 import UEOT.V3.FiniteCandidatePStat08

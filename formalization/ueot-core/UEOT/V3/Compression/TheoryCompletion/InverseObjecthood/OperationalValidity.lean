@@ -57,13 +57,40 @@ structure FormedCandidateOperationalValidity
     (dynamics : FormedCandidate readout p regions → X → A → PMF X)
     (persistenceDomain : FormedCandidate readout p regions → Set X)
     (candidate : FormedCandidate readout p regions) : Prop where
-  provenance : FormedProvenance
-    (responseFormedCandidateFamily readout p regions) candidate.1
   interactionDelimited : InteractionDelimitedAt
     (formedCandidateResponseFamily readout p regions response hprob)
     probes candidate
   persistence : ConstitutivelyPersists
     (dynamics candidate) (persistenceDomain candidate)
+
+
+/-- Formation provenance is already encoded by the `FormedCandidate` subtype
+and therefore is derived rather than stored redundantly in the validity
+certificate. -/
+theorem FormedCandidateOperationalValidity.provenance
+    {V : Type uV} {Child : Type uChild} [Fintype Child]
+    {H : Type uH} {Probe : Type uProbe}
+    {Rout : Type uR} {Y : Type uY} [MeasurableSpace Y]
+    {E : Type uE} {Z : Type uZ} [MeasurableSpace Z]
+    {X : Type uX} {A : Type uA}
+    [Fintype X] [Fintype A]
+    [MeasurableSpace X] [MeasurableSingletonClass X]
+    [MeasurableSpace (ConstitutiveState X A)]
+    [MeasurableSingletonClass (ConstitutiveState X A)]
+    {readout : Finset V → H → Rout}
+    {p : H → Probe → Measure Y}
+    {regions : Child → Finset V}
+    {response : Finset Child → E → Measure Z}
+    {hprob : ∀ S e, IsProbabilityMeasure (response S e)}
+    {probes : Finset E}
+    {dynamics : FormedCandidate readout p regions → X → A → PMF X}
+    {persistenceDomain : FormedCandidate readout p regions → Set X}
+    {candidate : FormedCandidate readout p regions}
+    (_C : FormedCandidateOperationalValidity
+      readout p regions response hprob probes dynamics persistenceDomain candidate) :
+    FormedProvenance
+      (responseFormedCandidateFamily readout p regions) candidate.1 :=
+  candidate.2
 
 /-- Recoverable validity adds a separately declared target and repair basin.
 The basin is not silently enlarged to the full state space. -/
@@ -145,8 +172,8 @@ theorem operationalParent_validity
       readout p regions response hprob probes dynamics persistenceDomain) :
     FormedCandidateOperationalValidity
       readout p regions response hprob probes dynamics persistenceDomain C.parent := by
-  rcases operationalParent_constituents C with ⟨hprov, hinteraction, hpersist⟩
-  exact ⟨hprov, hinteraction, hpersist⟩
+  rcases operationalParent_constituents C with ⟨_hprov, hinteraction, hpersist⟩
+  exact ⟨hinteraction, hpersist⟩
 
 /-- A self-repairing parent with a nonempty certified repair basin supplies the
 recoverable P4 validity layer on the exact same selected parent. -/

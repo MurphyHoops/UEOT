@@ -125,13 +125,13 @@ theorem literalCandidateFailure_tendsto_zero_of_class_collapse
   exact squeeze_zero
     (fun _ => measureReal_nonneg) hbound D.schedule.failure_tendsto_zero
 
-/-- **P4 terminal finite inverse-Objecthood closure.**
+/-- **P4 terminal bridged inverse-Objecthood closure.**
 
-With all three optional identifiability bridges supplied, four different error
-notions vanish: scientific object-class error, literal candidate error, control-
-encoder error, and same-parent error.  Their separation in the conclusion is
-intentional; deleting any bridge deletes only the corresponding stronger claim. -/
-theorem p4_terminal_finite_inverse_closure
+Without assuming that an object class is a singleton, a valid P4 discovery
+contract already gives class consistency.  Independent control and parent
+bridges then transport that class consistency to control-encoder and same-
+parent consistency.  No literal-candidate uniqueness is assumed here. -/
+theorem p4_terminal_bridged_inverse_closure
     {Omega : ℕ → Type uOmega} [∀ n, MeasurableSpace (Omega n)]
     {Candidate : Type uCandidate}
     (D : ChangingObjectClassDiscoveryContract Omega Candidate)
@@ -140,14 +140,10 @@ theorem p4_terminal_finite_inverse_closure
     (Bcontrol : ObjectClassControlEncoderBridge D.objectClass encoder)
     {Parent : Type uParent}
     (parent : Candidate → Parent)
-    (Bparent : ObjectClassParentBridge D.objectClass parent)
-    (hcollapse : ∀ a b, D.objectClass.r a b → a = b) :
+    (Bparent : ObjectClassParentBridge D.objectClass parent) :
     Tendsto
         (fun n => (D.mu n).real
           {omega | ¬ D.objectClass.r (D.estimate n omega) D.truth})
-        atTop (𝓝 0) ∧
-    Tendsto
-        (fun n => (D.mu n).real {omega | D.estimate n omega ≠ D.truth})
         atTop (𝓝 0) ∧
     Tendsto
         (fun n => (D.mu n).real
@@ -158,8 +154,29 @@ theorem p4_terminal_finite_inverse_closure
           {omega | parent (D.estimate n omega) ≠ parent D.truth})
         atTop (𝓝 0) := by
   exact ⟨D.classFailure_tendsto_zero,
-    literalCandidateFailure_tendsto_zero_of_class_collapse D hcollapse,
     controlEncoderFailure_tendsto_zero D encoder Bcontrol,
     parentIdentityFailure_tendsto_zero D parent Bparent⟩
+
+/-- **P4 terminal literal-candidate specialization.**
+
+If the scientific target class itself collapses to one candidate label, class
+consistency upgrades to literal-candidate consistency without any additional
+control or parent bridge.  Candidate equality can of course be mapped through
+any later candidate-indexed structure, but P4 does not confuse that special
+case with the more general bridged-class theorem above. -/
+theorem p4_terminal_literal_candidate_closure
+    {Omega : ℕ → Type uOmega} [∀ n, MeasurableSpace (Omega n)]
+    {Candidate : Type uCandidate}
+    (D : ChangingObjectClassDiscoveryContract Omega Candidate)
+    (hcollapse : ∀ a b, D.objectClass.r a b → a = b) :
+    Tendsto
+        (fun n => (D.mu n).real
+          {omega | ¬ D.objectClass.r (D.estimate n omega) D.truth})
+        atTop (𝓝 0) ∧
+    Tendsto
+        (fun n => (D.mu n).real {omega | D.estimate n omega ≠ D.truth})
+        atTop (𝓝 0) := by
+  exact ⟨D.classFailure_tendsto_zero,
+    literalCandidateFailure_tendsto_zero_of_class_collapse D hcollapse⟩
 
 end UEOT.V3.Compression.TheoryCompletion.InverseObjecthood

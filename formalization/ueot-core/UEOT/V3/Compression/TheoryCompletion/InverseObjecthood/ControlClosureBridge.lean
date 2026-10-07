@@ -1,4 +1,3 @@
-import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.Identifiability
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.TerminalClosure
 import UEOT.V3.Compression.TheoryCompletion.SameObjectIdentity
 

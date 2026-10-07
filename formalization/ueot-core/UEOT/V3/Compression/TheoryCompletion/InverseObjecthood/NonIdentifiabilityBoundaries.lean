@@ -1,4 +1,4 @@
-import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.OperationalValidity
+import UEOT.V3.Compression.TheoryCompletion.OperationalObject
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.Identifiability
 import UEOT.V3.Compression.CrossTrack.InteractionPersistenceSeparations
 import UEOT.V3.BinaryTesting
