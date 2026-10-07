@@ -32,6 +32,23 @@ TC_PUBLIC_ROOT = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.l
 TC_MODULE = "UEOT.V3.Compression.TheoryCompletion"
 TC_PUBLIC_IMPORT = "import UEOT.V3.Compression.TheoryCompletion"
 COMPRESSION_PUBLIC_ROOT = "formalization/ueot-core/UEOT/V3/Compression.lean"
+FINALIZATION_RECEIPT_PREFIX = (
+    "formalization/ueot-core/docs/compression/finalization_receipts/"
+)
+FINALIZATION_RECEIPT_RE = re.compile(
+    rf"^{re.escape(FINALIZATION_RECEIPT_PREFIX)}[0-9a-f]{{40}}\.json$"
+)
+FINALIZATION_VERIFIER_PATHS = {
+    ".github/workflows/ueot-core-lean.yml",
+    ".github/workflows/ueot-core-compression.yml",
+    ".github/workflows/ueot-compression-research-policy.yml",
+    "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+    "formalization/ueot-core/scripts/validate_compression.py",
+    "formalization/ueot-core/scripts/test_validate_compression.py",
+    "formalization/ueot-core/scripts/test_validate_finalization_receipt.py",
+    "formalization/ueot-core/scripts/validate_compression_research.py",
+    "formalization/ueot-core/scripts/test_validate_compression_research.py",
+}
 TC_BOOTSTRAP_DOCS = {
     f"{TC_DOC_PREFIX}THEORY_COMPLETION_MISSION.md",
     f"{TC_DOC_PREFIX}THEORY_COMPLETION_ROADMAP.md",
@@ -560,6 +577,62 @@ def git_path_exists(repo: Path, ref: str, path: str) -> bool:
         check=False,
     )
     return completed.returncode == 0
+
+
+def validate_finalization_receipt_transition(
+    repo: Path,
+    baseline_ref: str,
+    candidate_ref: str,
+    paths: list[str],
+) -> None:
+    """Keep FINAL evidence immutable and separate evidence from verifier edits.
+
+    The research-policy workflow executes this validator from the immutable PR
+    base.  Therefore this transition check is deliberately enforced from the
+    baseline implementation rather than delegated to candidate verification
+    code.  Existing receipts are append-only immutable history.  A new receipt
+    may be added only in a PR that does not also mutate the verifier/policy
+    surface that will judge that receipt.
+    """
+
+    receipt_paths = sorted(
+        path for path in paths if path.startswith(FINALIZATION_RECEIPT_PREFIX)
+    )
+    if not receipt_paths:
+        return
+
+    new_receipts: list[str] = []
+    for path in receipt_paths:
+        if not FINALIZATION_RECEIPT_RE.fullmatch(path):
+            fail(
+                "finalization receipt path must be exactly "
+                f"{FINALIZATION_RECEIPT_PREFIX}<40-hex-candidate-sha>.json: {path}"
+            )
+        in_base = git_path_exists(repo, baseline_ref, path)
+        in_candidate = git_path_exists(repo, candidate_ref, path)
+        if in_base:
+            if not in_candidate:
+                fail(f"immutable finalization receipt was deleted: {path}")
+            if git_blob_bytes(repo, baseline_ref, path) != git_blob_bytes(
+                repo, candidate_ref, path
+            ):
+                fail(f"immutable finalization receipt was modified: {path}")
+        else:
+            if not in_candidate:
+                fail(f"new finalization receipt is missing from candidate ref: {path}")
+            new_receipts.append(path)
+
+    if len(new_receipts) > 1:
+        fail("a governance PR may add at most one new finalization receipt")
+
+    if new_receipts:
+        verifier_changes = sorted(FINALIZATION_VERIFIER_PATHS & set(paths))
+        if verifier_changes:
+            fail(
+                "new finalization receipt must be reviewed separately from "
+                "verifier/policy changes; conflicting paths: "
+                + ", ".join(verifier_changes)
+            )
 
 
 def validate_compression_root_import_change(
@@ -1739,6 +1812,10 @@ def main() -> None:
     paths = changed_paths(
         repo, args.baseline_ref, args.changed_path_file, args.candidate_ref
     )
+    if args.baseline_ref:
+        validate_finalization_receipt_transition(
+            repo, args.baseline_ref, args.candidate_ref, paths
+        )
     governed_changes = [
         path for path in paths if is_governed_path(path, enforcement_config)
     ]

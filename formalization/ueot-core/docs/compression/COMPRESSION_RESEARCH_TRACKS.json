@@ -17,14 +17,17 @@
     ".github/workflows/ueot-compression-research-policy.yml"
   ],
   "governed_exact_paths": [
-    "formalization/ueot-core/UEOT/V3/Compression.lean"
+    "formalization/ueot-core/UEOT/V3/Compression.lean",
+    "formalization/ueot-core/scripts/test_validate_compression.py",
+    "formalization/ueot-core/scripts/test_validate_finalization_receipt.py"
   ],
   "governance": {
     "branch_patterns": [
       "^ops/compression-.*$"
     ],
     "allowed_path_prefixes": [
-      "formalization/ueot-core/docs/compression/hierarchy/"
+      "formalization/ueot-core/docs/compression/hierarchy/",
+      "formalization/ueot-core/docs/compression/finalization_receipts/"
     ],
     "allowed_exact_paths": [
       ".github/workflows/ueot-core-compression.yml",
@@ -33,9 +36,13 @@
       "formalization/ueot-core/UEOT/V3/Compression/Hierarchy.lean",
       "formalization/ueot-core/docs/compression/BRANCH_RETIREMENT_2026-10-01.md",
       "formalization/ueot-core/docs/compression/COMPRESSION_BOOTSTRAP.md",
+      "formalization/ueot-core/docs/compression/FINALIZATION_EVIDENCE_RETENTION_AUDIT_2026-10-08.md",
       "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
       "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
       "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+      "formalization/ueot-core/scripts/test_validate_compression.py",
+      "formalization/ueot-core/scripts/test_validate_finalization_receipt.py",
+      "formalization/ueot-core/scripts/validate_compression.py",
       "formalization/ueot-core/scripts/test_validate_compression_research.py",
       "formalization/ueot-core/scripts/validate_compression_research.py",
       "docs/REPOSITORY_BRANCH_GOVERNANCE.md",
