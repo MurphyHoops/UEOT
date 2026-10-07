@@ -5,6 +5,7 @@ import UEOT.V3.Compression.Objecthood.ResourceClosure.MeanResourceClosure
 import UEOT.V3.Compression.Objecthood.ResourceClosure.FiniteReserve
 import UEOT.V3.Compression.Objecthood.ResourceClosure.Boundaries
 import UEOT.V3.Compression.Objecthood.ResourceClosure.ResourceMaintenanceSynthesis
+import UEOT.V3.Compression.Objecthood.ResourceClosure.TerminalClosure
 /-!
 # Resource Closure
 
