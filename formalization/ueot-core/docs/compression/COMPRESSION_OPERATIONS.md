@@ -189,6 +189,35 @@ A later generator that changes counted mappings/minimal-core membership must reo
 and re-finalize as specified in `COMPRESSION_MISSION.md`. Historical FINAL checkpoints
 remain immutable.
 
+### 10.1 Durable FINAL Actions receipts
+
+FINAL creation still requires live exact-event verification. The receipt mechanism is for
+later provider-retention loss; it is not a substitute for online finalization.
+
+After the candidate-main Core Lean and Compression Guard push runs are successful and the
+closure PR number is recorded in the ledger, capture the run receipt while all references
+are still live:
+
+```bash
+python3 formalization/ueot-core/scripts/validate_compression.py \
+  --repo-root . \
+  --baseline-ref origin/main \
+  --verify-finalization-refs \
+  --capture-finalization-receipt finalization_live_capture
+```
+
+Commit the generated
+`docs/compression/finalization_receipts/<candidate_main_sha>.json` through the closure PR.
+The closure PR CI still verifies the live run IDs, names, `push/completed/success` state,
+candidate SHA and exact PR head. Once merged, that receipt is immutable historical evidence.
+
+For later validation, live GitHub data remains authoritative when available. Receipt
+fallback is permitted only when an Actions run returns explicit HTTP 404, and only from a
+receipt that already exists unchanged in the validation baseline. TLS/timeouts, auth/rate
+errors, malformed responses and other failures remain hard failures after any bounded
+transport/5xx retry. The closure PR is still live-verified and its merge ancestry is still
+checked.
+
 ## 11. Parallelism
 
 - up to four of the registered S/H/X/O/TC tracks may mutate concurrently;

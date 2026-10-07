@@ -103,7 +103,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           COMPRESSION_VALIDATION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
+        run: |
+          python3 formalization/ueot-core/scripts/test_validate_compression.py --repo-root .
+          python3 formalization/ueot-core/scripts/test_validate_finalization_receipt.py
 
       - name: Validate post-FINAL research ownership and architecture records
         shell: bash
@@ -188,6 +190,7 @@ jobs:
         run: |
           python3 scripts/validate_compression.py \
             --repo-root ../.. \
+            --baseline-ref origin/main \
             --verify-finalization-refs \
             --emit-lean-witness-audit /tmp/CompressionLedgerWitnessAudit.lean
           lake env lean /tmp/CompressionLedgerWitnessAudit.lean

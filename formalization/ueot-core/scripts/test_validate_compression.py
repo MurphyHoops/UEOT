@@ -21,6 +21,8 @@ def validator(repo: Path) -> list[str]:
         str(repo / "formalization/ueot-core/scripts/validate_compression.py"),
         "--repo-root",
         str(repo),
+        "--baseline-ref",
+        "origin/main",
         "--verify-finalization-refs",
     ]
 

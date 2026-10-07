@@ -9,12 +9,14 @@ from __future__ import annotations
 
 import argparse
 import csv
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 
@@ -57,6 +59,15 @@ MINIMALITY_CLAIMS = {
 NONREDUNDANT_ABLATION = "nonredundant_under_declared_derivation_system"
 SOURCE_FAITHFUL_ASSUMPTION_RELATIONS = {"exact", "weaker"}
 REPO_FULL_NAME = "MurphyHoops/UEOT"
+FINALIZATION_RECEIPT_SCHEMA_VERSION = 1
+FINALIZATION_RECEIPT_DIR = Path(
+    "formalization/ueot-core/docs/compression/finalization_receipts"
+)
+FINALIZATION_RECEIPT_TYPES = {
+    "retrospective_live_reverification",
+    "finalization_live_capture",
+}
+GITHUB_API_ATTEMPTS = 3
 MIN_RATIONALE_LENGTH = 20
 FROZEN_THEOREM_INDEX_SHA256 = "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
 NOT_DERIVABLE_STATUS = "not_derivable_under_declared_derivation_system"
@@ -80,6 +91,12 @@ LEAN_DECL_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
     raise SystemExit(1)
+
+
+class GitHubReferenceError(RuntimeError):
+    def __init__(self, message: str, *, status: int | None = None) -> None:
+        super().__init__(message)
+        self.status = status
 
 
 def git(repo: Path, *args: str) -> str:
@@ -143,25 +160,241 @@ def validate_audit_evidence(
             )
 
 
-def gh_json(repo: Path, *args: str) -> dict:
-    if not os.environ.get("GH_TOKEN"):
-        fail("GH_TOKEN is required to verify FINAL GitHub references")
+def gh_api_json(repo: Path, endpoint: str) -> dict:
+    last_error: GitHubReferenceError | None = None
+    for attempt in range(1, GITHUB_API_ATTEMPTS + 1):
+        try:
+            completed = subprocess.run(
+                ["gh", "api", endpoint],
+                cwd=repo,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        except FileNotFoundError as exc:
+            raise GitHubReferenceError(f"GitHub CLI is unavailable: {exc}") from exc
+        if completed.returncode == 0:
+            try:
+                return json.loads(completed.stdout)
+            except json.JSONDecodeError as exc:
+                raise GitHubReferenceError(
+                    f"GitHub API returned invalid JSON for {endpoint}: {exc}"
+                ) from exc
+
+        output = (completed.stdout + completed.stderr).strip()
+        match = re.search(
+            r"(?:HTTP\s+(\d{3})|\"status\"\s*:\s*\"?(\d{3}))",
+            output,
+        )
+        status = int(next(value for value in match.groups() if value)) if match else None
+        last_error = GitHubReferenceError(
+            f"GitHub API request failed for {endpoint}: {output}", status=status
+        )
+        retryable = status is None or status >= 500
+        if not retryable or attempt == GITHUB_API_ATTEMPTS:
+            raise last_error
+        time.sleep(attempt)
+
+    assert last_error is not None
+    raise last_error
+
+
+def finalization_receipt_relpath(evidence: dict) -> Path:
+    return FINALIZATION_RECEIPT_DIR / f"{evidence['candidate_main_sha']}.json"
+
+
+def finalization_event_payload(evidence: dict, runs: dict[str, dict]) -> dict:
+    candidate = str(evidence["candidate_main_sha"])
+
+    def normalize_run(key: str, expected_name: str) -> dict:
+        run = runs[key]
+        return {
+            "id": run.get("id"),
+            "name": run.get("name"),
+            "event": run.get("event"),
+            "status": run.get("status"),
+            "conclusion": run.get("conclusion"),
+            "head_sha": run.get("head_sha"),
+            "run_attempt": run.get("run_attempt"),
+            "created_at": run.get("created_at"),
+            "updated_at": run.get("updated_at"),
+            "html_url": run.get("html_url"),
+            "expected_workflow": expected_name,
+        }
+
+    return {
+        "candidate_main_sha": candidate,
+        "closure_pr": evidence["closure_pr"],
+        "core_lean_run": normalize_run("core_lean_run", "UEOT Core Lean"),
+        "compression_guard_run": normalize_run(
+            "compression_guard_run", "UEOT Core Compression Guard"
+        ),
+    }
+
+
+def finalization_event_digest(event: dict) -> str:
+    payload = json.dumps(event, sort_keys=True, separators=(",", ":")).encode(
+        "utf-8"
+    )
+    return hashlib.sha256(payload).hexdigest()
+
+
+def validate_run_record(
+    run: dict, *, run_id: int, expected_name: str, candidate: str
+) -> None:
+    if (
+        run.get("id") != run_id
+        or run.get("name") != expected_name
+        or run.get("status") != "completed"
+        or run.get("conclusion") != "success"
+        or run.get("event") != "push"
+        or run.get("head_sha") != candidate
+    ):
+        fail(
+            f"finalization evidence run {run_id} is not a successful "
+            f"{expected_name} push run for candidate_main_sha"
+        )
+
+
+def load_baseline_receipt(repo: Path, baseline_ref: str, rel_path: Path) -> bytes:
     try:
-        raw = subprocess.check_output(
-            ["gh", *args],
+        return subprocess.check_output(
+            ["git", "show", f"{baseline_ref}:{rel_path.as_posix()}"],
             cwd=repo,
-            text=True,
             stderr=subprocess.STDOUT,
         )
-    except (FileNotFoundError, subprocess.CalledProcessError) as exc:
-        fail(f"could not verify GitHub finalization reference: {exc}")
+    except subprocess.CalledProcessError as exc:
+        fail(
+            "historical Actions evidence is unavailable and no immutable baseline "
+            f"finalization receipt exists at {rel_path}: {exc.output.decode(errors='replace').strip()}"
+        )
+
+
+def validate_receipt_history_immutability(repo: Path, baseline_ref: str) -> None:
     try:
-        return json.loads(raw)
-    except json.JSONDecodeError as exc:
-        fail(f"GitHub finalization reference returned invalid JSON: {exc}")
+        paths = git(
+            repo,
+            "ls-tree",
+            "-r",
+            "--name-only",
+            baseline_ref,
+            FINALIZATION_RECEIPT_DIR.as_posix(),
+        ).splitlines()
+    except subprocess.CalledProcessError as exc:
+        fail(
+            f"could not inspect baseline finalization receipts at {baseline_ref}: "
+            f"{exc.output}"
+        )
+    for raw_path in paths:
+        if not raw_path:
+            continue
+        rel_path = Path(raw_path)
+        baseline_bytes = load_baseline_receipt(repo, baseline_ref, rel_path)
+        candidate_path = repo / rel_path
+        if not candidate_path.is_file():
+            fail(f"immutable baseline finalization receipt was deleted: {rel_path}")
+        if candidate_path.read_bytes() != baseline_bytes:
+            fail(f"immutable baseline finalization receipt was modified: {rel_path}")
 
 
-def verify_finalization_references(repo: Path, evidence: dict) -> None:
+def validate_finalization_receipt_data(
+    receipt: dict, evidence: dict
+) -> dict[str, dict]:
+    if receipt.get("schema_version") != FINALIZATION_RECEIPT_SCHEMA_VERSION:
+        fail("unsupported finalization receipt schema_version")
+    if receipt.get("repository") != REPO_FULL_NAME:
+        fail("finalization receipt repository mismatch")
+    if receipt.get("capture_mode") not in FINALIZATION_RECEIPT_TYPES:
+        fail("finalization receipt capture_mode is invalid")
+    if receipt.get("source_status") != "ONLINE_VERIFIED_AT_CAPTURE":
+        fail("finalization receipt does not attest online verification at capture")
+    if not nonempty_string(receipt.get("captured_at")):
+        fail("finalization receipt captured_at is missing")
+    event = receipt.get("event")
+    if not isinstance(event, dict):
+        fail("finalization receipt event is missing")
+    if receipt.get("event_sha256") != finalization_event_digest(event):
+        fail("finalization receipt event digest mismatch")
+    if event.get("candidate_main_sha") != evidence["candidate_main_sha"]:
+        fail("finalization receipt candidate_main_sha mismatch")
+    if event.get("closure_pr") != evidence["closure_pr"]:
+        fail("finalization receipt closure_pr mismatch")
+
+    runs = {}
+    for key, expected_name in (
+        ("core_lean_run", "UEOT Core Lean"),
+        ("compression_guard_run", "UEOT Core Compression Guard"),
+    ):
+        run = event.get(key)
+        if not isinstance(run, dict):
+            fail(f"finalization receipt missing {key}")
+        validate_run_record(
+            run,
+            run_id=evidence[key],
+            expected_name=expected_name,
+            candidate=str(evidence["candidate_main_sha"]),
+        )
+        runs[key] = run
+    return runs
+
+
+def validate_finalization_receipt(
+    repo: Path, baseline_ref: str, evidence: dict
+) -> dict[str, dict]:
+    rel_path = finalization_receipt_relpath(evidence)
+    baseline_bytes = load_baseline_receipt(repo, baseline_ref, rel_path)
+    candidate_path = repo / rel_path
+    if not candidate_path.is_file():
+        fail(f"immutable baseline finalization receipt was deleted: {rel_path}")
+    candidate_bytes = candidate_path.read_bytes()
+    if candidate_bytes != baseline_bytes:
+        fail(f"immutable baseline finalization receipt was modified: {rel_path}")
+
+    try:
+        receipt = json.loads(baseline_bytes.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        fail(f"baseline finalization receipt is invalid JSON: {exc}")
+    return validate_finalization_receipt_data(receipt, evidence)
+
+
+def write_finalization_receipt(
+    repo: Path, evidence: dict, runs: dict[str, dict], capture_mode: str
+) -> Path:
+    event = finalization_event_payload(evidence, runs)
+    receipt = {
+        "schema_version": FINALIZATION_RECEIPT_SCHEMA_VERSION,
+        "repository": REPO_FULL_NAME,
+        "capture_mode": capture_mode,
+        "source_status": "ONLINE_VERIFIED_AT_CAPTURE",
+        "captured_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace(
+            "+00:00", "Z"
+        ),
+        "event": event,
+        "event_sha256": finalization_event_digest(event),
+        "note": (
+            "This repository receipt preserves live-verified Actions metadata for the "
+            "recorded finalization event. A retrospective capture does not claim that "
+            "the receipt existed at the original finalization time."
+        ),
+    }
+    rel_path = finalization_receipt_relpath(evidence)
+    path = repo / rel_path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        fail(f"refusing to overwrite immutable finalization receipt: {rel_path}")
+    path.write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    return path
+
+
+def verify_finalization_references(
+    repo: Path,
+    evidence: dict,
+    *,
+    baseline_ref: str | None = None,
+    capture_mode: str | None = None,
+) -> None:
     candidate = str(evidence["candidate_main_sha"])
     try:
         git(repo, "cat-file", "-e", f"{candidate}^{{commit}}")
@@ -169,54 +402,62 @@ def verify_finalization_references(repo: Path, evidence: dict) -> None:
     except subprocess.CalledProcessError:
         fail("finalization candidate_main_sha is not an audited main ancestor")
 
+    if baseline_ref:
+        validate_receipt_history_immutability(repo, baseline_ref)
+
+    runs: dict[str, dict] = {}
+    run_404 = False
     for key, expected_name in (
         ("core_lean_run", "UEOT Core Lean"),
         ("compression_guard_run", "UEOT Core Compression Guard"),
     ):
-        run = gh_json(
-            repo,
-            "run",
-            "view",
-            str(evidence[key]),
-            "--repo",
-            REPO_FULL_NAME,
-            "--json",
-            "name,status,conclusion,headSha,event",
-        )
-        if (
-            run.get("name") != expected_name
-            or run.get("status") != "completed"
-            or run.get("conclusion") != "success"
-            or run.get("event") != "push"
-            or run.get("headSha") != candidate
-        ):
-            fail(
-                f"finalization evidence {key} is not a successful "
-                f"{expected_name} push run for candidate_main_sha"
+        try:
+            run = gh_api_json(
+                repo, f"repos/{REPO_FULL_NAME}/actions/runs/{evidence[key]}"
             )
+        except GitHubReferenceError as exc:
+            if exc.status == 404:
+                run_404 = True
+                continue
+            fail(str(exc))
+        validate_run_record(
+            run,
+            run_id=evidence[key],
+            expected_name=expected_name,
+            candidate=candidate,
+        )
+        runs[key] = run
 
-    pr = gh_json(
-        repo,
-        "pr",
-        "view",
-        str(evidence["closure_pr"]),
-        "--repo",
-        REPO_FULL_NAME,
-        "--json",
-        "number,state,mergedAt,baseRefName,baseRefOid,headRefOid,mergeCommit",
-    )
-    if pr.get("baseRefName") != "main":
+    if run_404:
+        if capture_mode:
+            fail("cannot capture a finalization receipt while an Actions run is unavailable")
+        if not baseline_ref:
+            fail(
+                "historical Actions evidence returned HTTP 404; immutable receipt fallback "
+                "requires --baseline-ref"
+            )
+        runs = validate_finalization_receipt(repo, baseline_ref, evidence)
+
+    try:
+        pr = gh_api_json(
+            repo, f"repos/{REPO_FULL_NAME}/pulls/{evidence['closure_pr']}"
+        )
+    except GitHubReferenceError as exc:
+        fail(str(exc))
+    base = pr.get("base") or {}
+    head = pr.get("head") or {}
+    if base.get("ref") != "main":
         fail("finalization closure PR must target main")
 
     current_sha = os.environ.get("COMPRESSION_VALIDATION_SHA") or os.environ.get("GITHUB_SHA")
     state = pr.get("state")
-    if state == "OPEN":
-        if pr.get("baseRefOid") != candidate:
+    if state == "open":
+        if base.get("sha") != candidate:
             fail("open finalization closure PR is not based on candidate_main_sha")
-        if current_sha and pr.get("headRefOid") != current_sha:
+        if current_sha and head.get("sha") != current_sha:
             fail("open finalization closure PR does not match current closure head")
-    elif state == "MERGED":
-        merge_commit = (pr.get("mergeCommit") or {}).get("oid")
+    elif state == "closed" and pr.get("merged_at"):
+        merge_commit = pr.get("merge_commit_sha")
         if not merge_commit:
             fail("merged finalization closure PR has no merge commit")
         target = current_sha or "HEAD"
@@ -227,11 +468,17 @@ def verify_finalization_references(repo: Path, evidence: dict) -> None:
             fail("could not verify finalization closure merge ancestry")
         if candidate not in parents:
             fail("finalization closure merge is not based on candidate_main_sha")
-        head_oid = pr.get("headRefOid")
+        head_oid = head.get("sha")
         if head_oid and head_oid not in parents:
             fail("finalization closure merge does not include the recorded PR head")
     else:
         fail("finalization closure PR must be open-current or merged")
+
+    if capture_mode:
+        if set(runs) != {"core_lean_run", "compression_guard_run"}:
+            fail("cannot capture finalization receipt without both live Actions runs")
+        path = write_finalization_receipt(repo, evidence, runs, capture_mode)
+        print(f"finalization_receipt_written={path.relative_to(repo)}")
 
 
 def main() -> None:
@@ -242,6 +489,14 @@ def main() -> None:
         "--verify-finalization-refs",
         action="store_true",
         help="verify FINAL Git/GitHub evidence against the live repository",
+    )
+    parser.add_argument(
+        "--capture-finalization-receipt",
+        choices=sorted(FINALIZATION_RECEIPT_TYPES),
+        help=(
+            "after successful live FINAL verification, write an immutable Actions "
+            "receipt for the recorded event; never overwrites an existing receipt"
+        ),
     )
     parser.add_argument(
         "--emit-lean-witness-audit",
@@ -757,7 +1012,14 @@ def main() -> None:
                 fail(f"finalization evidence {key} must be a positive integer")
         if not args.verify_finalization_refs:
             fail("FINAL mission state requires live Git/GitHub reference verification")
-        verify_finalization_references(repo, evidence)
+        verify_finalization_references(
+            repo,
+            evidence,
+            baseline_ref=args.baseline_ref,
+            capture_mode=args.capture_finalization_receipt,
+        )
+    elif args.capture_finalization_receipt:
+        fail("finalization receipt capture is valid only when mission_state is final")
 
     coverage_text = coverage_path.read_text(encoding="utf-8")
     if "106/106 FULL-GREEN" not in coverage_text:
