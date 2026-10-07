@@ -1,6 +1,7 @@
 import UEOT.V3.Compression.Objecthood.JointHomeostasis.FiniteJointState
 import UEOT.V3.Compression.Objecthood.JointHomeostasis.RepairKernelBridge
 import UEOT.V3.Compression.Objecthood.JointHomeostasis.RepairCarrier
+import UEOT.V3.Compression.Objecthood.JointHomeostasis.JointPotential
 
 /-!
 # Joint Organizational + Physical Homeostasis
