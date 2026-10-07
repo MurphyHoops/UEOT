@@ -60,6 +60,7 @@ TC_ALLOWED_PATH_PREFIXES = {TC_LEAN_PREFIX, TC_DOC_PREFIX}
 TC_ALLOWED_EXACT_PATHS = {TC_PUBLIC_ROOT}
 TC_LIVE_STATUS = f"{TC_DOC_PREFIX}THEORY_COMPLETION_STATUS.json"
 TC_MUTABLE_EXISTING_EXACT_PATHS = {TC_LIVE_STATUS}
+L2_EXCEPTION_KEY = "l2_existing_path_exceptions"
 TC_STAGE_NAMES = tuple(f"P{i}" for i in range(13))
 TC_STAGE_STATUS_RE = re.compile(
     r"^(?:CLOSED|ACTIVE|READY|PLANNED|"
@@ -400,6 +401,113 @@ def string_list(value: object, context: str, *, allow_empty: bool = False) -> li
     return value
 
 
+def validate_l2_existing_path_exceptions(
+    repo: Path,
+    config: dict,
+    *,
+    evidence_ref: str | None = None,
+) -> None:
+    """Validate explicit, temporary L2 exceptions without granting authority.
+
+    The candidate registry may describe an L2 exception, but authorization for a
+    research PR is taken from the immutable baseline config later in
+    `validate_track_paths`.  This separation prevents a candidate from adding an
+    exception and using it in the same PR.
+    """
+
+    raw = config.get(L2_EXCEPTION_KEY, [])
+    if not isinstance(raw, list):
+        fail(f"{L2_EXCEPTION_KEY} must be a list")
+
+    tracks = config.get("tracks")
+    if not isinstance(tracks, dict):
+        fail("L2 exception validation requires registered tracks")
+
+    seen_ids: set[str] = set()
+    seen_paths: set[str] = set()
+    required_fields = {
+        "exception_id",
+        "track",
+        "branch_patterns",
+        "paths",
+        "reason",
+        "temporary",
+    }
+    for index, record in enumerate(raw):
+        context = f"{L2_EXCEPTION_KEY}[{index}]"
+        if not isinstance(record, dict):
+            fail(f"{context} must be an object")
+        if set(record) != required_fields:
+            fail(
+                f"{context} must contain exactly {sorted(required_fields)}"
+            )
+
+        exception_id = record.get("exception_id")
+        if not isinstance(exception_id, str) or not re.fullmatch(
+            r"[A-Z0-9][A-Z0-9-]*", exception_id
+        ):
+            fail(f"{context}.exception_id must be an uppercase hyphenated identifier")
+        if exception_id in seen_ids:
+            fail(f"duplicate L2 exception_id: {exception_id}")
+        seen_ids.add(exception_id)
+
+        track_id = record.get("track")
+        if track_id not in TRACK_IDS or track_id not in tracks:
+            fail(f"{context}.track must name one registered research track")
+        track = tracks[track_id]
+        if not isinstance(track, dict):
+            fail(f"{context}.track definition is malformed")
+
+        compile_patterns(record.get("branch_patterns"), context)
+        paths = string_list(record.get("paths"), f"{context}.paths")
+        reason = record.get("reason")
+        if not isinstance(reason, str) or not reason.strip():
+            fail(f"{context}.reason must be a nonempty string")
+        if record.get("temporary") is not True:
+            fail(f"{context}.temporary must be true")
+
+        forbidden_exact = set(track.get("forbidden_exact_paths", []))
+        forbidden_prefixes = tuple(track.get("forbidden_path_prefixes", []))
+        for path in paths:
+            if path in seen_paths:
+                fail(f"L2 existing-path exceptions may not overlap: {path}")
+            seen_paths.add(path)
+            if not is_governed_path(path, config):
+                fail(f"{context} path is outside the governed Compression surface: {path}")
+            if not l2_track_owned_path(path, track_id, track):
+                fail(f"{context} path is outside Track {track_id} ownership: {path}")
+            if path in forbidden_exact or any(path.startswith(p) for p in forbidden_prefixes):
+                fail(f"{context} may not authorize protected/cross-owned path: {path}")
+            if evidence_ref is not None and not git_path_exists(repo, evidence_ref, path):
+                fail(f"{context} must authorize an existing candidate path: {path}")
+
+
+def l2_existing_path_exceptions_for_branch(
+    config: dict, track_id: str, branch: str
+) -> set[str]:
+    """Return baseline-authorized L2 paths for one classified track branch."""
+
+    result: set[str] = set()
+    raw = config.get(L2_EXCEPTION_KEY, [])
+    if not isinstance(raw, list):
+        return result
+    for record in raw:
+        if not isinstance(record, dict) or record.get("track") != track_id:
+            continue
+        patterns = record.get("branch_patterns")
+        if not isinstance(patterns, list):
+            continue
+        if not any(
+            isinstance(pattern, str) and re.fullmatch(pattern, branch)
+            for pattern in patterns
+        ):
+            continue
+        paths = record.get("paths")
+        if isinstance(paths, list):
+            result.update(path for path in paths if isinstance(path, str))
+    return result
+
+
 def is_governed_path(path: str, config: dict) -> bool:
     exact = set(string_list(config.get("governed_exact_paths"), "governed_exact_paths"))
     prefixes = tuple(
@@ -412,6 +520,18 @@ def track_owned_path(path: str, track: dict) -> bool:
     exact = set(track.get("allowed_exact_paths", []))
     prefixes = tuple(track.get("allowed_path_prefixes", []))
     return path in exact or any(path.startswith(prefix) for prefix in prefixes)
+
+
+def l2_track_owned_path(path: str, track_id: str, track: dict) -> bool:
+    """Use the same ownership semantics as ordinary track enforcement for L2."""
+
+    if track_id == "S":
+        return (
+            path == "formalization/ueot-core/UEOT/V3/Compression.lean"
+            or path.startswith("formalization/ueot-core/UEOT/V3/Compression/")
+            or path.startswith("formalization/ueot-core/docs/compression/")
+        )
+    return track_owned_path(path, track)
 
 
 def repository_slug(repo: Path) -> str:
@@ -1211,6 +1331,11 @@ def validate_static(
         governance.get("allowed_exact_paths"),
         "governance.allowed_exact_paths",
     )
+    validate_l2_existing_path_exceptions(
+        repo,
+        config,
+        evidence_ref=evidence_ref,
+    )
 
     h = tracks["H"]
     if governance_model == "legacy_v1" and h.get("initial_gate") != "H0-H3":
@@ -1656,7 +1781,10 @@ def validate_track_paths(
     ):
         exact_exceptions = set(track.get("allowed_exact_paths", []))
         mutable_existing = set(track.get("mutable_existing_exact_paths", []))
-        existing_path_exceptions = exact_exceptions | mutable_existing
+        l2_existing = l2_existing_path_exceptions_for_branch(
+            config, track_id, branch
+        )
+        existing_path_exceptions = exact_exceptions | mutable_existing | l2_existing
         for path in paths:
             if path in existing_path_exceptions:
                 continue

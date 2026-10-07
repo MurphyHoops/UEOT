@@ -124,6 +124,15 @@ Requirements:
 4. merge normally and validate resulting `main`;
 5. retire the temporary exception when it is no longer needed.
 
+Machine representation: temporary exceptions live in the top-level
+`l2_existing_path_exceptions` registry.  Each record binds one exception ID to
+exactly one registered track, one or more explicit branch regexes, exact existing
+paths, a nonempty reason and `temporary: true`.  Paths must remain inside the
+owning track and outside every protected/cross-owned surface.  A research PR may
+consume only exceptions already present in its immutable baseline policy; adding
+an exception in the candidate cannot authorize a same-PR existing-file mutation.
+This is the machine form of the base-policy separation rule.
+
 Do not use L2 merely for convenience. Prefer a new adapter/module when scientifically
 honest.
 
