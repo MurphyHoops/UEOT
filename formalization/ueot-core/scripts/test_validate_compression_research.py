@@ -1394,6 +1394,11 @@ def test_tc_forward_registration_compatibility(repo: Path) -> None:
             )
 
         ungoverned_tc = copy.deepcopy(candidate)
+        # This fixture deliberately reconstructs an impossible top-level policy
+        # where TC is no longer inside the governed Compression surface. Remove
+        # any live TC-scoped L2 exception first so the regression continues to
+        # isolate the ownership invariant it was written to test.
+        ungoverned_tc.pop(module.L2_EXCEPTION_KEY, None)
         ungoverned_tc["governed_path_prefixes"] = [
             "formalization/ueot-core/UEOT/V3/Elsewhere/"
         ]
