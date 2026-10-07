@@ -2,6 +2,7 @@ import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.Identifiability
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.FiniteCandidateRecovery
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.CandidateUniverseConsistency
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.InteractionClassRecovery
+import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.OperationalValidity
 
 /-!
 # Theory Completion P4 — Inverse Objecthood
