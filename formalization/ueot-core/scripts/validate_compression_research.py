@@ -39,6 +39,7 @@ FINALIZATION_RECEIPT_RE = re.compile(
     rf"^{re.escape(FINALIZATION_RECEIPT_PREFIX)}[0-9a-f]{{40}}\.json$"
 )
 FINALIZATION_VERIFIER_PATHS = {
+    ".github/workflows/ueot-core-lean.yml",
     ".github/workflows/ueot-core-compression.yml",
     ".github/workflows/ueot-compression-research-policy.yml",
     "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",

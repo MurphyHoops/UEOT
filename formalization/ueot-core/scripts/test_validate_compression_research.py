@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import contextlib
 import copy
 import importlib.util
@@ -82,7 +83,66 @@ def test_finalization_receipt_transition_guard(repo: Path) -> None:
     module = load_validator_module(repo)
     receipt = module.FINALIZATION_RECEIPT_PREFIX + ("a" * 40) + ".json"
     second_receipt = module.FINALIZATION_RECEIPT_PREFIX + ("b" * 40) + ".json"
-    verifier = "formalization/ueot-core/scripts/validate_compression.py"
+
+    verifier_source = (
+        repo / "formalization/ueot-core/scripts/validate_compression.py"
+    ).read_text(encoding="utf-8")
+    verifier_tree = ast.parse(verifier_source)
+    accepted_run_names: set[str] = set()
+    for node in verifier_tree.body:
+        if isinstance(node, ast.FunctionDef) and node.name == "verify_finalization_references":
+            for child in ast.walk(node):
+                if not isinstance(child, ast.For) or not isinstance(child.iter, ast.Tuple):
+                    continue
+                for entry in child.iter.elts:
+                    if not isinstance(entry, ast.Tuple) or len(entry.elts) != 2:
+                        continue
+                    key, name = entry.elts
+                    if (
+                        isinstance(key, ast.Constant)
+                        and isinstance(key.value, str)
+                        and isinstance(name, ast.Constant)
+                        and isinstance(name.value, str)
+                    ):
+                        accepted_run_names.add(name.value)
+    if not accepted_run_names:
+        raise AssertionError(
+            "could not recover accepted FINAL workflow names from verify_finalization_references"
+        )
+
+    evidence_workflow_paths: set[str] = set()
+    workflow_dir = repo / ".github/workflows"
+    for workflow in sorted(workflow_dir.glob("*.yml")):
+        workflow_name = None
+        for line in workflow.read_text(encoding="utf-8").splitlines():
+            if line.startswith("name:"):
+                workflow_name = line.split(":", 1)[1].strip().strip("\"'")
+                break
+        if workflow_name in accepted_run_names:
+            evidence_workflow_paths.add(workflow.relative_to(repo).as_posix())
+
+    missing_names = accepted_run_names - {
+        next(
+            (
+                line.split(":", 1)[1].strip().strip("\"'")
+                for line in (repo / path).read_text(encoding="utf-8").splitlines()
+                if line.startswith("name:")
+            ),
+            "",
+        )
+        for path in evidence_workflow_paths
+    }
+    if missing_names:
+        raise AssertionError(
+            "accepted FINAL run names have no repository workflow: "
+            + ", ".join(sorted(missing_names))
+        )
+    missing_workflows = evidence_workflow_paths - module.FINALIZATION_VERIFIER_PATHS
+    if missing_workflows:
+        raise AssertionError(
+            "FINAL evidence-producing workflows missing from receipt separation set: "
+            + ", ".join(sorted(missing_workflows))
+        )
 
     def expect_rejected(name: str, fn, expected: str) -> None:
         stderr = io.StringIO()
@@ -112,9 +172,10 @@ def test_finalization_receipt_transition_guard(repo: Path) -> None:
 
         seed = git_repo / "seed.txt"
         seed.write_text("base\n", encoding="utf-8")
-        verifier_path = git_repo / verifier
-        verifier_path.parent.mkdir(parents=True, exist_ok=True)
-        verifier_path.write_text("# canonical verifier\n", encoding="utf-8")
+        for verifier in module.FINALIZATION_VERIFIER_PATHS:
+            verifier_path = git_repo / verifier
+            verifier_path.parent.mkdir(parents=True, exist_ok=True)
+            verifier_path.write_text("# canonical verifier/policy surface\n", encoding="utf-8")
         subprocess.run(["git", "add", "."], cwd=git_repo, check=True)
         subprocess.run(["git", "commit", "-qm", "base"], cwd=git_repo, check=True)
         base = subprocess.check_output(
@@ -146,18 +207,20 @@ def test_finalization_receipt_transition_guard(repo: Path) -> None:
             git_repo, base, receipt_only, [receipt]
         )
 
-        receipt_and_verifier = candidate_from(
-            base,
-            {receipt: "{\"event\":1}\n", verifier: "# weakened verifier\n"},
-            "receipt plus verifier",
-        )
-        expect_rejected(
-            "receipt-plus-verifier",
-            lambda: module.validate_finalization_receipt_transition(
-                git_repo, base, receipt_and_verifier, [receipt, verifier]
-            ),
-            "reviewed separately from verifier/policy changes",
-        )
+        for verifier in sorted(module.FINALIZATION_VERIFIER_PATHS):
+            receipt_and_verifier = candidate_from(
+                base,
+                {receipt: "{\"event\":1}\n", verifier: "# weakened verifier/policy\n"},
+                "receipt plus verifier",
+            )
+            expect_rejected(
+                f"receipt-plus-verifier:{verifier}",
+                lambda verifier=verifier, candidate=receipt_and_verifier:
+                    module.validate_finalization_receipt_transition(
+                        git_repo, base, candidate, [receipt, verifier]
+                    ),
+                "reviewed separately from verifier/policy changes",
+            )
 
         tampered = candidate_from(
             receipt_only, {receipt: "{\"event\":2}\n"}, "tamper receipt"
