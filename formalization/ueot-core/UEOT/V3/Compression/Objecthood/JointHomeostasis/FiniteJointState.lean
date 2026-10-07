@@ -55,5 +55,28 @@ scientific hypothesis. -/
     (repairOrganizationStateEquiv
       (X := X) (A := A) (Representation := Representation)).symm
 
+
+/-- Importing the P5 joint-homeostasis layer opts the full mutable organization
+state into the finite discrete setting required by the existing RH calculus.
+The instance is derived through the explicit equivalence above rather than by
+changing the completed RLSR structure. -/
+noncomputable instance repairOrganizationStateFintypeInstance
+    {X : Type uX} {A : Type uA} {Representation : Type uR}
+    [Fintype X] [Fintype A] [Fintype Representation] :
+    Fintype (RepairOrganizationState X A Representation) :=
+  repairOrganizationStateFintype
+
+/-- P5 uses the finite organization state with the discrete measurable
+structure.  Older RLSR modules do not import this file and therefore remain
+measurability-agnostic. -/
+instance repairOrganizationStateMeasurableSpace
+    {X : Type uX} {A : Type uA} {Representation : Type uR} :
+    MeasurableSpace (RepairOrganizationState X A Representation) := ⊤
+
+instance repairOrganizationStateDiscreteMeasurable
+    {X : Type uX} {A : Type uA} {Representation : Type uR} :
+    DiscreteMeasurableSpace (RepairOrganizationState X A Representation) :=
+  inferInstance
+
 end
 end UEOT.V3.Compression.Objecthood.JointHomeostasis
