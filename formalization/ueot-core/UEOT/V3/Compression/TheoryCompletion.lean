@@ -29,6 +29,7 @@ import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood
 import UEOT.V3.Compression.TheoryCompletion.LineageEvolution
 import UEOT.V3.Compression.TheoryCompletion.ObjectScaleCalculus
+import UEOT.V3.Compression.TheoryCompletion.GeneralStateObjecthood
 /-!
 # UEOT Theory Completion public root
 
