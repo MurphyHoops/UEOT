@@ -30,6 +30,7 @@ import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood
 import UEOT.V3.Compression.TheoryCompletion.LineageEvolution
 import UEOT.V3.Compression.TheoryCompletion.ObjectScaleCalculus
 import UEOT.V3.Compression.TheoryCompletion.GeneralStateObjecthood
+import UEOT.V3.Compression.TheoryCompletion.StochasticSubstrate
 /-!
 # UEOT Theory Completion public root
 
