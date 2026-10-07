@@ -16,12 +16,29 @@
   "bootstrap_contract": "P-BOOT",
   "pboot_status": "CLOSED",
   "next_stage": "P4",
-  "next_stage_gate": "P4 active from canonical main after P3 merge and resulting-main regression closure",
-  "primary_spine": ["P0", "P1", "P2"],
+  "next_stage_gate": "P4.0-P4.8 local theorem program complete; exact-head remote review/CI, merge, resulting-main regression, tracker close, and branch retirement pending",
+  "primary_spine": [
+    "P0",
+    "P1",
+    "P2"
+  ],
   "lanes": {
-    "empirical": ["P3", "P4"],
-    "organizational": ["P5", "P6", "P7"],
-    "later_integration": ["P8", "P9", "P10", "P11", "P12"]
+    "empirical": [
+      "P3",
+      "P4"
+    ],
+    "organizational": [
+      "P5",
+      "P6",
+      "P7"
+    ],
+    "later_integration": [
+      "P8",
+      "P9",
+      "P10",
+      "P11",
+      "P12"
+    ]
   },
   "claim_classes": [
     "THEOREM",
