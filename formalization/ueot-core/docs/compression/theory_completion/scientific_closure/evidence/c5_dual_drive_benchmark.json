@@ -1,0 +1,105 @@
+{
+  "kind": "SYNTHETIC_DUAL_DRIVE_METHOD_BENCHMARK_NOT_MECHANISM_IDENTIFICATION",
+  "registration": {
+    "same_budget_point_required": true,
+    "coordinate_normalization": "fixed registered diagonal benchmark coordinates",
+    "finite_difference_bandwidth": "not_applicable_exact_linear_benchmark",
+    "eta_operator_norm": 0.1,
+    "tau0_practical_zero": 0.15,
+    "decision_rule": "reject if eta < sigma3_hat; compatible if sigma3_hat+eta <= tau0; else ambiguous"
+  },
+  "cases": [
+    {
+      "name": "two_drive_positive_control_discovery",
+      "true_diagonal": [
+        3.0,
+        2.0,
+        0.0
+      ],
+      "estimated_diagonal": [
+        3.04,
+        1.96,
+        0.04
+      ],
+      "sigma3_hat": 0.04,
+      "expected": "COMPATIBLE",
+      "verdict": "COMPATIBLE",
+      "pass": true
+    },
+    {
+      "name": "three_drive_negative_control_discovery",
+      "true_diagonal": [
+        3.0,
+        2.0,
+        1.0
+      ],
+      "estimated_diagonal": [
+        2.95,
+        2.02,
+        0.93
+      ],
+      "sigma3_hat": 0.93,
+      "expected": "REJECTED",
+      "verdict": "REJECTED",
+      "pass": true
+    },
+    {
+      "name": "boundary_ambiguous",
+      "true_diagonal": [
+        3.0,
+        2.0,
+        0.1
+      ],
+      "estimated_diagonal": [
+        3.01,
+        1.97,
+        0.08
+      ],
+      "sigma3_hat": 0.08,
+      "expected": "AMBIGUOUS",
+      "verdict": "AMBIGUOUS",
+      "pass": true
+    },
+    {
+      "name": "two_drive_heldout",
+      "true_diagonal": [
+        2.5,
+        1.7,
+        0.0
+      ],
+      "estimated_diagonal": [
+        2.44,
+        1.73,
+        0.03
+      ],
+      "sigma3_hat": 0.03,
+      "expected": "COMPATIBLE",
+      "verdict": "COMPATIBLE",
+      "pass": true
+    },
+    {
+      "name": "three_drive_heldout",
+      "true_diagonal": [
+        2.5,
+        1.7,
+        0.8
+      ],
+      "estimated_diagonal": [
+        2.46,
+        1.72,
+        0.74
+      ],
+      "sigma3_hat": 0.74,
+      "expected": "REJECTED",
+      "verdict": "REJECTED",
+      "pass": true
+    }
+  ],
+  "assertions": {
+    "all_expected": true,
+    "two_drive_holdout_not_rejected": true,
+    "three_drive_holdout_rejected": true,
+    "boundary_abstains": true
+  },
+  "nonclaim": "COMPATIBLE does not identify Pi/Phi or prove a universal two-drive mechanism."
+}

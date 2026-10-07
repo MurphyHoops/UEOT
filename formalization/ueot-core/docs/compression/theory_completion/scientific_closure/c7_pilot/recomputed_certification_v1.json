@@ -1,0 +1,48 @@
+{
+  "all_checks_pass": true,
+  "candidate_results": {
+    "1": {
+      "fault_repetitions": 5,
+      "healthy_read_ok": true,
+      "read_repetitions": 5,
+      "survives_single_fault": false
+    },
+    "2": {
+      "fault_repetitions": 5,
+      "healthy_read_ok": true,
+      "read_repetitions": 5,
+      "survives_single_fault": false
+    },
+    "3": {
+      "fault_repetitions": 5,
+      "healthy_read_ok": true,
+      "read_repetitions": 5,
+      "survives_single_fault": true
+    }
+  },
+  "checks": {
+    "all_have_timestamp": true,
+    "all_registered_matches": true,
+    "baseline_count_5": true,
+    "double_fault_negative_count_5": true,
+    "double_fault_unavailable": true,
+    "first_good_is_three": true,
+    "heldout_count_5": true,
+    "heldout_read_and_fault_ok": true,
+    "record_count_45": true,
+    "registered_candidate_counts": true,
+    "replacement_is_structurally_real": true,
+    "single_worker_baseline_unavailable": true,
+    "unique_run_ids": true
+  },
+  "claim_verdicts": {
+    "C7-LOCAL-FBT-01": "SUPPORTED_LOCAL",
+    "C7-LOCAL-FORM-01": "SUPPORTED_LOCAL",
+    "C7-LOCAL-NEG-01": "SUPPORTED_LOCAL"
+  },
+  "first_good_nested_candidate_size": 3,
+  "independent_review": "REVIEW_PENDING",
+  "kind": "RAW_EVIDENCE_RECOMPUTATION",
+  "raw_file": "raw_certification_v1.jsonl",
+  "real_world_support": "UNVERIFIED"
+}

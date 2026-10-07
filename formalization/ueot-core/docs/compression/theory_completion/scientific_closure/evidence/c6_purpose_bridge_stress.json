@@ -1,0 +1,45 @@
+{
+  "kind": "SEMANTIC_METHOD_STRESS_NOT_REAL_WORLD_PURPOSE_IDENTIFICATION",
+  "examples": {
+    "unfaithful_constant_observation": {
+      "observations": {
+        "m0": "same",
+        "m1": "same"
+      },
+      "orderings": {
+        "m0": [
+          "false<true"
+        ],
+        "m1": [
+          "true<false"
+        ]
+      },
+      "faithful": false
+    },
+    "faithful_class_observation": {
+      "observations": {
+        "m0": "class_A",
+        "m1": "class_A"
+      },
+      "orderings": {
+        "m0": [
+          "false<true"
+        ],
+        "m1": [
+          "false<true"
+        ]
+      },
+      "faithful": true
+    }
+  },
+  "gates": {
+    "G1_mechanism_observation_identified": "required",
+    "G2_contract_representation": "required",
+    "G3_bellman_or_causal_faithfulness": "required",
+    "G4_object_viability": "required"
+  },
+  "assertions": {
+    "same_raw_observation_can_fail_teleological_identification": true,
+    "faithful_bridge_targets_ordering_class": true
+  }
+}

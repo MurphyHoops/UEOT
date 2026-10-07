@@ -1,0 +1,55 @@
+{
+  "kind": "FBT_METHOD_STRESS_NOT_REAL_WORLD_IDENTITY_VALIDATION",
+  "cases": [
+    {
+      "name": "exact",
+      "L": 1.0,
+      "epsF": 0.0,
+      "epsB": 0.0,
+      "margin": 0.0,
+      "fbt_upper": 0.0,
+      "certified": true
+    },
+    {
+      "name": "small_defects",
+      "L": 1.0,
+      "epsF": 0.02,
+      "epsB": 0.01,
+      "margin": 0.04,
+      "fbt_upper": 0.03,
+      "certified": true
+    },
+    {
+      "name": "sensitive_binding",
+      "L": 4.0,
+      "epsF": 0.02,
+      "epsB": 0.01,
+      "margin": 0.05,
+      "fbt_upper": 0.09,
+      "certified": false
+    },
+    {
+      "name": "looser_margin",
+      "L": 4.0,
+      "epsF": 0.02,
+      "epsB": 0.01,
+      "margin": 0.1,
+      "fbt_upper": 0.09,
+      "certified": true
+    }
+  ],
+  "formation_without_binding_counterexample": {
+    "formation_relation": "universal True relation on Bool",
+    "formation_transport": "identity / exact",
+    "binding0": "constant false",
+    "binding1": "constant true",
+    "realized_transport": "identity",
+    "binding_transport_compatible": false
+  },
+  "assertions": {
+    "exact_certifies": true,
+    "small_certifies": true,
+    "sensitive_fails_tight_margin": true,
+    "same_sensitive_case_passes_only_looser_margin": true
+  }
+}
