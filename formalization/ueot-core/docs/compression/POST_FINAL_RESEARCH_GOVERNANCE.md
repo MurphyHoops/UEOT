@@ -32,6 +32,18 @@ The following remain hard invariants:
    re-finalization lifecycle;
 7. historical audit evidence is immutable.
 
+Machine-captured FINAL Actions receipts are part of that immutable evidence. Ordinary
+research tracks may not add, edit or delete them. A governance/finalization change may add
+a new receipt only after live exact-event verification; once present on the baseline, the
+receipt must remain byte-identical. Historical fallback never applies to generic network
+failure and does not relax closure-PR identity or ancestry checks.
+
+Receipt creation is also separated from its trust machinery: a PR that adds a new FINAL
+receipt may not simultaneously modify the counted FINAL verifier, either evidence-producing
+workflow, the research-policy workflow/registry, or their regression tests. Those surfaces
+must first become canonical independently, so candidate evidence cannot authorize the code
+or workflow that judges it.
+
 The optimization target is **scientific information gained per proof/governance cost**.
 
 ## 2. Risk tiers
