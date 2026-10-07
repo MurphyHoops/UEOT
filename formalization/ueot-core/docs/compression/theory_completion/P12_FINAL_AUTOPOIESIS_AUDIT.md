@@ -14,14 +14,14 @@ constitutive field of the object. `p12_discovered_parent_tendsto_lifecycleParent
 then gives the only legitimate connection to the lifecycle parent: an explicit
 P4 `ObjectClassParentBridge` plus identification of the truth candidate's parent.
 
-`p12_conditional_finite_lifecycle` now uses an explicit `LifecycleObjectBridge`
+`p12_conditional_finite_lifecycle` uses an explicit `LifecycleObjectBridge`
 so the ingredients are not merely conjoined. It ties four views to the same
 lifecycle parent:
 
 1. P4 candidate-class discovery reaches the parent through the existing explicit
    `ObjectClassParentBridge`;
 2. P7's seed-built repair organization is explicitly identified with that same
-   parent and lies in the existing finite P5 maintenance carrier;
+   parent and lies in the existing finite P5 carrier;
 3. P8 distinguishes a child of that parent from same-object repair and supplies
    the exact Price selection/transmission decomposition for a lineage-compatible
    kernel;
@@ -31,6 +31,22 @@ lifecycle parent:
 No cross-layer identity follows merely from type coincidence: candidate→parent,
 organization→parent and parent→fine-object maps are visible bridge data, and the
 constructed organization/parent equality is a separate premise.
+
+Independent review exposed that finite-carrier membership is weaker than actual
+maintenance-system entry. P7 and P12 were therefore tightened. The terminal
+theorem is now `p12_terminal_conditional_finite_lifecycle`, which additionally
+threads the complete P5 recurrent-homeostasis premises and the P6 expected-
+accounting resource premises. It concludes, for the same constructed
+organization:
+
+- admission of the pure post-construction law to the instantiated P5 system;
+- the P5 mean-homeostasis bound;
+- P6 expected-accounting `ResourceViable` under explicit transient-reserve and
+  steady-supply inequalities.
+
+Recurrent maintenance and resource closure are therefore outputs of previously
+proved P5/P6 theorems under visible premises, not narrative labels attached to
+carrier membership.
 
 P10 and P11 remain imported generalization substrates. P10 supplies a real
 Standard-Borel/general-observation posterior update but explicitly not the full
@@ -58,10 +74,11 @@ internalized, as recorded by P10/P11.
 
 **PARTIAL / EXPLICIT BOUNDARY.**
 
-The local P0–P12 program now contains a coherent finite conditional lifecycle:
-Objecthood/certification, supplied evaluation/control, recurrent maintenance,
-resource closure, ontogenetic assembly, lineage/evolution and typed scale
-transport, with general-state/stochastic extensions where actually proved.
+The local P0–P12 program now contains a coherent finite **conditional**
+lifecycle: Objecthood/certification, supplied evaluation/control, typed
+ontogenetic assembly, actual P5 recurrent mean-homeostasis, P6 expected resource
+viability, lineage/evolution and typed scale transport, with general-state/
+stochastic extensions only where actually proved.
 
 It does **not** prove full autopoiesis in the stronger sense of generating its
 own repair-program information, interpreter/codec, ambient physical law and

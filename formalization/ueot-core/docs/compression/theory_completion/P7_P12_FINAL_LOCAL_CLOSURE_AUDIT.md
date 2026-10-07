@@ -14,7 +14,7 @@ the counted compression core.
 
 | Stage | Exact local head | Scientific verdict |
 |---|---|---|
-| P7 Ontogenetic Self-Construction | `aa172b5f34193cefcd0aa5490bdc09c9f54f33c6` | CONDITIONAL THEOREM + ADAPTER |
+| P7 Ontogenetic Self-Construction | `bae75cdb8e31abd52c61ea3c479b1e234f6ca7bd` | CONDITIONAL THEOREM + TRUSTED ASSEMBLY ADAPTER |
 | P8 Reproduction / Lineage | `5da75624932f9824f9ab99157e813cd336f11a56` | CONDITIONAL THEOREM + DOMAIN BRIDGE |
 | P9 Object Scale Calculus | `3888b3440ced49c3a4e63b3e1141954b7ec67e5d` | THEOREM + CONDITIONAL + NO-GO |
 | P10 General-State Objecthood | `9b0407ed4bb9971365d722253da323d9eda572b7` | LOCAL COMPLETE / PARTIAL EXPLICIT BOUNDARY |
@@ -27,13 +27,18 @@ branch was pushed while theorem work was in progress.
 
 ## 2. P7 result
 
-P7 introduces a true pre/post formation type distinction.  A seed contains a
+P7 introduces a true pre/post formation type distinction. A seed contains a
 physical component and repair-program source but no controller or encoded mutable
-program state.  The explicit assembler installs those organizational coordinates
-and the construction kernel moves `.seed` to `.formed`.
+program state. Independent remote review rejected the first generic
+`Seed → Org` kernel because it admitted the degenerate `Seed := Org; assemble := id`
+interpretation. The review-tightened kernel is specialized to
+`OntogeneticSeed X Program → RepairOrganizationState ...` and can only use the
+declared trusted `assembleRepairOrganization T codec`.
 
-The terminal theorem proves that, under the existing P5 finite repair premises,
-the formed organization is a valid initial law in the finite maintenance carrier.
+The terminal theorem now threads the P5 viability fixed point, repair-policy
+implementation, finite representation, fault envelope and hazard premises. The
+formed organization is therefore a valid initial law of the instantiated P5
+recurrent-homeostasis system, not merely a point in a finite carrier.
 Distinct source programs have distinct trusted encodings, so the source program
 is genuine information and construction is not origin ex nihilo.
 
@@ -97,6 +102,12 @@ of the physical component alone can recover both.  Together with the retained
 trusted interpreter/codec/dynamics/object-specification substrate and the P10/
 P11 generalization boundaries, this blocks a FULL-autopoiesis verdict.
 
+After the P7 review tightening, P12 was strengthened again. Its terminal theorem
+now derives actual P5 mean homeostasis and P6 expected-accounting resource
+viability for the same constructed organization under their complete visible
+premises. The earlier structural lifecycle theorem is retained but explicitly
+labelled as stopping at finite-carrier entry.
+
 Final P12 verdict: **PARTIAL / EXPLICIT BOUNDARY**.  Under the frozen Mission,
 a proved no-go / explicit boundary is a valid terminal scientific result.
 
@@ -104,7 +115,7 @@ a proved no-go / explicit boundary is a valid terminal scientific result.
 
 Per-stage exact-head research governance:
 
-- P7 Track O: PASS, 8 changed paths;
+- P7 Track O: PASS, 8 changed paths at review-tightened head;
 - P8 Track TC: PASS, 3 changed paths;
 - P9 Track TC: PASS, 3 changed paths;
 - P10 Track TC: PASS, 3 changed paths;
@@ -118,10 +129,13 @@ Cross-stage proof-escape scan for `sorry|admit|axiom|opaque|unsafe|native_decide
 
 Research-governance regression suite: **PASS for every registered case**.
 
-Final public builds at the tightened P12 head:
+Final public builds at the review-tightened cumulative head:
 
 - `lake build UEOT.V3.Compression`: **PASS, 9227 jobs**;
 - `lake build UEOT`: **PASS, 9246 jobs**.
+
+The research-governance regression suite was rerun from the repository root and
+all registered positive/negative cases passed.
 
 Representative axiom audit:
 

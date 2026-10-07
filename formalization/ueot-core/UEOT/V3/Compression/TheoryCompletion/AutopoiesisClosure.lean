@@ -1,5 +1,6 @@
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.TerminalClosure
 import UEOT.V3.Compression.Objecthood.OntogeneticConstruction
+import UEOT.V3.Compression.Objecthood.ResourceClosure.FiniteReserve
 import UEOT.V3.Compression.TheoryCompletion.LineageEvolution
 import UEOT.V3.Compression.TheoryCompletion.ObjectScaleCalculus
 import UEOT.V3.Compression.TheoryCompletion.GeneralStateObjecthood
@@ -29,6 +30,7 @@ open UEOT.V3.Compression.Objecthood
 open UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction
 open UEOT.V3.Compression.Objecthood.JointHomeostasis
 open UEOT.V3.Compression.Objecthood.OntogeneticConstruction
+open UEOT.V3.Compression.Objecthood.ResourceClosure
 open UEOT.V3.Compression.TheoryCompletion.InverseObjecthood
 
 universe uX uA uP uR uO uI uXF uXC uOF uOC uOmega uCandidate
@@ -107,7 +109,7 @@ theorem p12_discovered_parent_tendsto_lifecycleParent
   simpa [htruth] using
     parentIdentityFailure_tendsto_zero D candidateParent Bparent
 
-/-- **P12 finite conditional lifecycle integration.**
+/-- **P12 structural finite lifecycle bridge.**
 
 Unlike a mere conjunction of unrelated subsystem theorems, this statement
 contains explicit bridges tying all three constitutive views to the *same*
@@ -121,7 +123,9 @@ parent:
 
 P8 then certifies that the declared child is a distinct offspring and supplies
 the exact Price decomposition.  No bridge is inferred from type coincidence.
-This remains a conditional finite lifecycle result, not full autopoiesis. -/
+This theorem deliberately stops at finite-carrier entry.  The stronger terminal
+theorem below additionally threads the complete P5 recurrent-maintenance and P6
+resource-accounting premises. -/
 theorem p12_conditional_finite_lifecycle
     {X : Type uX} {A : Type uA}
     {Program : Type uP} {Representation : Type uR}
@@ -188,5 +192,156 @@ theorem p12_conditional_finite_lifecycle
     htransport hpreserve hfine
   exact ⟨hdiscover, hconstruct, hassembledParent,
     hevolution.1, hevolution.2, hscale⟩
+
+/-- **P12 terminal finite conditional lifecycle.**
+
+This strengthens the structural bridge above by requiring the exact P5
+recurrent-homeostasis premises and the P6 expected-accounting resource premises.
+The constructed organization is therefore not merely in a finite carrier: its
+Dirac initial law is admitted to the instantiated P5 system, the corresponding
+mean-homeostasis bound is obtained, and the P6 expected resource schedule is
+viable.  Discovery, lineage/evolution and scale transport are tied to the same
+lifecycle parent through the same explicit bridges as above.
+
+The theorem is still conditional and finite.  It does not synthesize the repair
+program, codec/interpreter, fault model, resource model, lineage relation or
+scale-preservation law. -/
+theorem p12_terminal_conditional_finite_lifecycle
+    {X : Type uX} {A : Type uA}
+    {Program : Type uP} {Representation : Type uR}
+    [Fintype X] [Fintype A] [Nonempty A] [Fintype Representation]
+    [MeasurableSpace X] [MeasurableSingletonClass X]
+    (P : X → A → PMF X) (Kphysical : Set X)
+    (hfix : viabilityStep P Kphysical = Kphysical)
+    (R : PhysicalRepairCertificate P Kphysical)
+    (T : TrustedRepairSubstrate Program X A)
+    (codec : TrustedRepairCodec Program Representation)
+    (seed : OntogeneticSeed X Program)
+    (himpl : RepairProgramDynamicsImplementsPolicy T P
+      seed.repairProgramSource
+      (repairThenPreservePolicy P Kphysical hfix R.repairPolicy))
+    (F : RepairOrganizationState X A Representation →
+      PMF (RepairOrganizationState X A Representation))
+    (epsilon : NNReal) (hepsilon : epsilon ≤ 1)
+    (hF : FiniteJointFaultEnvelope P Kphysical R T codec
+      seed.repairProgramSource F)
+    (hhazard : epsilon < 1)
+    (hx : seed.physicalComponent ∈ Kphysical)
+    (Cresource : ResourceCostModel) (initial supply : ℝ)
+    (hreserve :
+      let S := finiteJointRecurrentHomeostasisSystem
+        P Kphysical hfix R T codec seed.repairProgramSource himpl
+        F epsilon hepsilon hF
+      let mu0 := PMF.pure (assembleRepairOrganization T codec seed)
+      let kappa : ENNReal :=
+        ((1 - epsilon : NNReal) : ENNReal) * S.repairDrift
+      let V0 := homeostaticENNExpectation mu0 S.potential
+      Cresource.variableCost * (V0.toReal / kappa.toReal) ≤ initial)
+    (hsupply :
+      let S := finiteJointRecurrentHomeostasisSystem
+        P Kphysical hfix R T codec seed.repairProgramSource himpl
+        F epsilon hepsilon hF
+      let kappa : ENNReal :=
+        ((1 - epsilon : NNReal) : ENNReal) * S.repairDrift
+      let lambda : ENNReal :=
+        (epsilon : ENNReal) * canonicalFaultBurden S
+      Cresource.maintenance +
+          Cresource.variableCost * (lambda.toReal / kappa.toReal) ≤ supply)
+    {Object : Type uO} {Identity : Type uI} [Fintype Object]
+    (L : LineageSemantics Object Identity)
+    {parent child : Object} (hoff : L.OffspringOf parent child)
+    {Omega : ℕ → Type uOmega} [∀ n, MeasurableSpace (Omega n)]
+    {Candidate : Type uCandidate}
+    (D : ChangingObjectClassDiscoveryContract Omega Candidate)
+    (candidateParent : Candidate → Object)
+    (Bparent : ObjectClassParentBridge D.objectClass candidateParent)
+    (htruth : candidateParent D.truth = parent)
+    (p b z : Object → ℝ) (Klineage : Object → Object → ℝ)
+    (z' : Object → ℝ)
+    (hlineage : L.ReproductiveTransmission Klineage)
+    (hp0 : ∀ i, 0 ≤ p i) (hpsum : ∑ i, p i = 1)
+    (hb0 : ∀ i, 0 ≤ b i)
+    (hK0 : ∀ i j, 0 ≤ Klineage i j)
+    (hKsum : ∀ i, ∑ j, Klineage i j = 1)
+    (hbar : 0 < weightedMean p b)
+    {FineState : Type uXF} {CoarseState : Type uXC}
+    {FineObject : Type uOF} {CoarseObject : Type uOC}
+    (B : LifecycleObjectBridge
+      (RepairOrganizationState X A Representation) Object FineObject)
+    (hassembledParent :
+      B.organizationObject (assembleRepairOrganization T codec seed) = parent)
+    (M : ObjectScaleMap FineState CoarseState FineObject CoarseObject)
+    (FineProperty : FineObject → Prop) (CoarseProperty : CoarseObject → Prop)
+    {coarse : CoarseObject}
+    (htransport : ObjectScaleTransport M (B.fineObject parent) coarse)
+    (hpreserve : PreservesObjectPredicate M FineProperty CoarseProperty)
+    (hfine : FineProperty (B.fineObject parent)) :
+    let S := finiteJointRecurrentHomeostasisSystem
+      P Kphysical hfix R T codec seed.repairProgramSource himpl
+      F epsilon hepsilon hF
+    let mu0 := PMF.pure (assembleRepairOrganization T codec seed)
+    let Ddamage : ℕ → ENNReal := fun n =>
+      (homeostaticMarginal S.mixedKernel mu0 n).toMeasure S.legitimateᶜ
+    let kappa : ENNReal :=
+      ((1 - epsilon : NNReal) : ENNReal) * S.repairDrift
+    let lambda : ENNReal :=
+      (epsilon : ENNReal) * canonicalFaultBurden S
+    let actualCost : ℕ → ℝ := fun n =>
+      pmfRealExpectation (homeostaticMarginal S.mixedKernel mu0 n)
+        (stateResourceCost Cresource
+          (fun s => s ∈ jointLegitimate T codec Kphysical seed.repairProgramSource)
+          (jointProgramMismatch T codec seed.repairProgramSource))
+    Tendsto
+      (fun n => (D.mu n).real
+        {omega | candidateParent (D.estimate n omega) ≠ parent})
+      atTop (𝓝 0) ∧
+    StaysIn mu0 S.carrier ∧
+    MeanHomeostasis (fun n => (Ddamage n).toReal)
+      (lambda.toReal / kappa.toReal) ∧
+    ResourceViable initial (fun _ => supply) actualCost ∧
+    B.organizationObject (assembleRepairOrganization T codec seed) = parent ∧
+    ¬ L.SameObject parent child ∧
+    (offspringTraitMean (nextFrequency p b Klineage) z' - weightedMean p z =
+      weightedCov p b z / weightedMean p b +
+      weightedMean p
+        (fun i => b i * (transmittedTrait Klineage z' i - z i)) /
+        weightedMean p b) ∧
+    CoarseProperty coarse := by
+  dsimp only
+  let mu0 : PMF (RepairOrganizationState X A Representation) :=
+    PMF.pure (assembleRepairOrganization T codec seed)
+  have hentrySystem :=
+    pure_assembled_stays_p5MaintenanceSystem
+      P Kphysical hfix R T codec seed himpl F epsilon hepsilon hF hx
+  have hentry : StaysIn mu0
+      (finiteJointRepairCarrier P Kphysical R T codec seed.repairProgramSource) := by
+    change StaysIn (PMF.pure (assembleRepairOrganization T codec seed))
+      (finiteJointRepairCarrier P Kphysical R T codec seed.repairProgramSource)
+      at hentrySystem
+    simpa [mu0] using hentrySystem
+  have hmean := finiteJoint_meanHomeostasis
+    P Kphysical hfix R T codec seed.repairProgramSource himpl
+    F epsilon hepsilon hF mu0 hentry hhazard
+  have hresource := finiteJoint_expectedAccountingResourceViable
+    P Kphysical hfix R T codec seed.repairProgramSource himpl
+    F epsilon hepsilon hF mu0 hentry hhazard
+    Cresource initial supply
+    (by simpa [mu0] using hreserve)
+    (by simpa using hsupply)
+  have hstructural := p12_conditional_finite_lifecycle
+    P Kphysical R T codec seed
+    (repairProgramValid_of_dynamicsImplements_repairThenPreserve
+      T P Kphysical hfix R.repairPolicy seed.repairProgramSource himpl)
+    hx L hoff D candidateParent Bparent htruth p b z Klineage z'
+    hlineage hp0 hpsum hb0 hK0 hKsum hbar B hassembledParent
+    M FineProperty CoarseProperty htransport hpreserve hfine
+  rcases hstructural with
+    ⟨hdiscover, _hcarrier, hparent, hdistinct, hprice, hscale⟩
+  refine ⟨hdiscover, ?_, ?_, ?_, hparent, hdistinct, hprice, hscale⟩
+  · change StaysIn mu0
+      (finiteJointRepairCarrier P Kphysical R T codec seed.repairProgramSource)
+    exact hentry
+  · simpa [mu0] using hmean
+  · simpa [mu0] using hresource
 
 end UEOT.V3.Compression.TheoryCompletion
