@@ -1,0 +1,16 @@
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.Contract
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ConfidenceSchedule
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveSeparation
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.PredictiveConsistency
+
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.CarrierConsistency
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ControlEstimatorBridge
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.StructuralControlClosure
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.GodPolicyConsistency
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.GoaConsistency
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.TerminalClosure
+/-!
+# Theory Completion P3 — Statistical Consistency
+
+Public root for P3 statistical-consistency modules.
+-/

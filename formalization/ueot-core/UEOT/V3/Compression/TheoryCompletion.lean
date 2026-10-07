@@ -25,6 +25,7 @@ import UEOT.V3.Compression.TheoryCompletion.GOA
 import UEOT.V3.Compression.TheoryCompletion.Scale
 import UEOT.V3.Compression.TheoryCompletion.SemanticBoundaries
 import UEOT.V3.Compression.TheoryCompletion.StatePathTeleologyBoundary
+import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency
 /-!
 # UEOT Theory Completion public root
 
