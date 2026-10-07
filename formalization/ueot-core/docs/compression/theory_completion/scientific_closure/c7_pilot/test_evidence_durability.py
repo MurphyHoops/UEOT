@@ -212,6 +212,29 @@ def main():
                 )
                 return process, json.loads(out_path.read_text())
 
+            # The pristine hardened collection is the positive control.  The
+            # regression must prove that the verifier accepts the unmodified
+            # 45-row run before relying on any mutation-rejection checks.
+            pristine_out = full_root / "verify_pristine.json"
+            pristine_proc = subprocess.run(
+                [sys.executable, str(VERIFIER), str(full_raw), "--out", str(pristine_out)],
+                text=True,
+                capture_output=True,
+            )
+            assert pristine_proc.returncode == 0, pristine_proc.stderr or pristine_proc.stdout
+            pristine_result = json.loads(pristine_out.read_text())
+            assert pristine_result["all_checks_pass"] is True
+            assert pristine_result["checks"]["registered_intervention_match"] is True
+            assert pristine_result["claim_verdicts"] == {
+                "C7-LOCAL-FORM-01": "SUPPORTED_LOCAL",
+                "C7-LOCAL-FBT-01": "SUPPORTED_LOCAL",
+                "C7-LOCAL-NEG-01": "SUPPORTED_LOCAL",
+            }
+            produced_summary = full_root / "summary_registry_attacks.json"
+            assert produced_summary.exists()
+            summary = json.loads(produced_summary.read_text())
+            assert summary["claim_verdicts"] == pristine_result["claim_verdicts"]
+
             # A run ID uniquely determines protocol, split and candidate set.
             metadata_mutations = [
                 ("protocol", lambda row: row.__setitem__("protocol", "P_READ")),
@@ -227,10 +250,51 @@ def main():
                 assert result["checks"]["registered_metadata_match"] is False
                 assert set(result["claim_verdicts"].values()) == {"UNRESOLVED"}
 
+            # Fault protocols are evidence about interventions, not merely
+            # service outputs.  Missing/wrong actions or replies inconsistent
+            # with the registered terminated workers must make the collection
+            # unresolved even when the output bit is unchanged.
+            intervention_mutations = [
+                (
+                    "single_missing_action",
+                    "cert-n3-single-r1",
+                    lambda row: row.pop("action"),
+                ),
+                (
+                    "single_wrong_victim",
+                    "cert-n3-single-r1",
+                    lambda row: row["action"].__setitem__("terminated", "W1"),
+                ),
+                (
+                    "single_victim_replied",
+                    "cert-n3-single-r1",
+                    lambda row: row["query"]["worker_replies"].append({
+                        "worker_id": "W3",
+                        "pid": row["action"]["pid"],
+                        "status": "OK",
+                    }),
+                ),
+                (
+                    "double_missing_action",
+                    "neg-double-r1",
+                    lambda row: row["action"].pop(),
+                ),
+            ]
+            for name, run_id, mutate in intervention_mutations:
+                rows = json.loads(json.dumps(full_rows))
+                target = next(r for r in rows if r["run_id"] == run_id)
+                mutate(target)
+                process, result = verify_rows(name, rows)
+                assert process.returncode != 0
+                assert result["checks"]["registered_intervention_match"] is False
+                assert set(result["claim_verdicts"].values()) == {"UNRESOLVED"}
+
             # Never trust the producer's `matches_expected` bit.  The raw
             # observed service output is compared with the registration table.
             rows = json.loads(json.dumps(full_rows))
             target = next(r for r in rows if r["run_id"] == "cert-n1-read-r1")
+            target["query"]["worker_replies"][0]["status"] = "NO_REPLY"
+            target["query"]["ok_replies"] = 0
             target["query"]["service_output"] = "UNAVAILABLE"
             target["matches_expected"] = True
             process, result = verify_rows("lying_match_flag", rows)

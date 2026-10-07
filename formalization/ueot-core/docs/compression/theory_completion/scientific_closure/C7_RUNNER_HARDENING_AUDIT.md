@@ -90,6 +90,13 @@ claim can be `SUPPORTED_LOCAL` or `REJECTED_LOCAL`:
 - run IDs are unique;
 - every run ID is bound to its exact preregistered `protocol`, `split` and
   candidate identity/set (including before/after sets for held-out replacement);
+- fault protocols are also bound to the registered intervention itself:
+  terminated worker identities, positive PIDs, completed termination return
+  codes, survivor reply identities, and the absence of terminated worker
+  identities/PIDs from the subsequent query replies are all checked;
+- query candidate size, quorum, survivor reply set and `ok_replies` are
+  recomputed from the registered candidate/intervention state before a fault
+  protocol can count as collection-integrity complete;
 - no `EXECUTION_ERROR` record exists;
 - every row carries the durable-attempt marker (`OBSERVED` or
   `EXECUTION_ERROR`);
@@ -120,13 +127,17 @@ checks that:
 - the hardened verifier returns non-zero and all C7 claims are `UNRESOLVED`;
 - a second invocation using the same label is refused before new collection.
 
-The same regression also mutates a complete 45-run collection to test the
-reviewer-supplied confusion cases: run-ID/protocol substitution, wrong split,
-wrong candidate set, a lying `matches_expected = true` on a contradictory raw
-output, and missing/non-string run IDs.  Metadata corruption yields
-`UNRESOLVED`; a genuine contradictory observation with valid registered
-metadata is recomputed as a local scientific rejection rather than trusted from
-the producer flag.
+The same regression first runs the hardened verifier on the pristine complete
+45-run collection as a positive control and requires zero exit status,
+`all_checks_pass = true`, all three registered local verdicts supported, and the
+runner summary present.  It then mutates copies to test the reviewer-supplied
+confusion cases: run-ID/protocol substitution, wrong split, wrong candidate
+set, missing/wrong fault actions, a terminated worker reappearing in query
+replies, incomplete double-fault actions, a lying `matches_expected = true` on
+a genuine contradictory raw observation, and missing/non-string run IDs.
+Metadata/intervention corruption yields `UNRESOLVED`; a genuine contradictory
+observation with valid registered metadata/intervention structure is recomputed
+as a local scientific rejection rather than trusted from the producer flag.
 
 Local result: **PASS**.
 
