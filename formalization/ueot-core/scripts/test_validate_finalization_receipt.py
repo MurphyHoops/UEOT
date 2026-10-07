@@ -11,6 +11,7 @@ import json
 import os
 import subprocess
 import tempfile
+from types import SimpleNamespace
 from pathlib import Path
 
 
@@ -125,6 +126,60 @@ def pure_receipt_tests(module) -> None:
         lambda: module.validate_finalization_receipt_data(tampered, evidence),
         "event digest mismatch",
     )
+
+
+def transport_retry_tests(module) -> None:
+    original_run = module.subprocess.run
+    original_sleep = module.time.sleep
+    calls = {"count": 0}
+    responses = [
+        SimpleNamespace(
+            returncode=1,
+            stdout="",
+            stderr='Get "https://api.github.com/example": net/http: TLS handshake timeout',
+        ),
+        SimpleNamespace(
+            returncode=1,
+            stdout="",
+            stderr='Get "https://api.github.com/example": net/http: TLS handshake timeout',
+        ),
+        SimpleNamespace(returncode=0, stdout='{"ok": true}', stderr=""),
+    ]
+
+    def fake_run(*_args, **_kwargs):
+        calls["count"] += 1
+        return responses.pop(0)
+
+    try:
+        module.subprocess.run = fake_run
+        module.time.sleep = lambda _seconds: None
+        result = module.gh_api_json(Path("."), "example")
+        if result != {"ok": True} or calls["count"] != 3:
+            raise AssertionError("transport-retry-success: retry contract mismatch")
+        print("transport-retry-success: PASS")
+
+        calls["count"] = 0
+
+        def fake_404(*_args, **_kwargs):
+            calls["count"] += 1
+            return SimpleNamespace(
+                returncode=1,
+                stdout='{"message":"Not Found","status":"404"}',
+                stderr="gh: Not Found (HTTP 404)",
+            )
+
+        module.subprocess.run = fake_404
+        try:
+            module.gh_api_json(Path("."), "missing")
+        except module.GitHubReferenceError as exc:
+            if exc.status != 404 or calls["count"] != 1:
+                raise AssertionError("explicit-404-no-retry: wrong status/retry count") from exc
+            print("explicit-404-no-retry: PASS")
+        else:
+            raise AssertionError("explicit-404-no-retry: expected failure")
+    finally:
+        module.subprocess.run = original_run
+        module.time.sleep = original_sleep
 
 
 def commit_file(repo: Path, rel: str, content: str, message: str) -> str:
@@ -243,6 +298,7 @@ def main() -> None:
     repo = Path(__file__).resolve().parents[3]
     module = load_validator(repo)
     pure_receipt_tests(module)
+    transport_retry_tests(module)
     fallback_tests(module)
     print("finalization-receipt-regressions: PASS")
 

@@ -16,6 +16,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 
@@ -66,6 +67,7 @@ FINALIZATION_RECEIPT_TYPES = {
     "retrospective_live_reverification",
     "finalization_live_capture",
 }
+GITHUB_API_ATTEMPTS = 3
 MIN_RATIONALE_LENGTH = 20
 FROZEN_THEOREM_INDEX_SHA256 = "8ff2a25512e0e99524fb5afc2b90bf628f9e931b590131354d0d1a0232372032"
 NOT_DERIVABLE_STATUS = "not_derivable_under_declared_derivation_system"
@@ -159,28 +161,42 @@ def validate_audit_evidence(
 
 
 def gh_api_json(repo: Path, endpoint: str) -> dict:
-    try:
-        completed = subprocess.run(
-            ["gh", "api", endpoint],
-            cwd=repo,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-    except FileNotFoundError as exc:
-        raise GitHubReferenceError(f"GitHub CLI is unavailable: {exc}") from exc
-    if completed.returncode != 0:
+    last_error: GitHubReferenceError | None = None
+    for attempt in range(1, GITHUB_API_ATTEMPTS + 1):
+        try:
+            completed = subprocess.run(
+                ["gh", "api", endpoint],
+                cwd=repo,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        except FileNotFoundError as exc:
+            raise GitHubReferenceError(f"GitHub CLI is unavailable: {exc}") from exc
+        if completed.returncode == 0:
+            try:
+                return json.loads(completed.stdout)
+            except json.JSONDecodeError as exc:
+                raise GitHubReferenceError(
+                    f"GitHub API returned invalid JSON for {endpoint}: {exc}"
+                ) from exc
+
         output = (completed.stdout + completed.stderr).strip()
-        status = 404 if re.search(r"(?:HTTP\s+404|\"status\"\s*:\s*\"?404)", output) else None
-        raise GitHubReferenceError(
+        match = re.search(
+            r"(?:HTTP\s+(\d{3})|\"status\"\s*:\s*\"?(\d{3}))",
+            output,
+        )
+        status = int(next(value for value in match.groups() if value)) if match else None
+        last_error = GitHubReferenceError(
             f"GitHub API request failed for {endpoint}: {output}", status=status
         )
-    try:
-        return json.loads(completed.stdout)
-    except json.JSONDecodeError as exc:
-        raise GitHubReferenceError(
-            f"GitHub API returned invalid JSON for {endpoint}: {exc}"
-        ) from exc
+        retryable = status is None or status >= 500
+        if not retryable or attempt == GITHUB_API_ATTEMPTS:
+            raise last_error
+        time.sleep(attempt)
+
+    assert last_error is not None
+    raise last_error
 
 
 def finalization_receipt_relpath(evidence: dict) -> Path:

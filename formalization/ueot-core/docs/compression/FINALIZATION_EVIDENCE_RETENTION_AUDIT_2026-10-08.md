@@ -65,8 +65,10 @@ The fix must preserve all of the following:
 The counted ledger schema and its four FINAL evidence fields remain unchanged.
 
 `validate_compression.py` now uses the GitHub REST API for live reference checks. For
-Actions runs it follows **online first** semantics. If and only if a recorded run returns
-HTTP 404, the validator may load
+Actions runs it follows **online first** semantics. Pure transport failures and HTTP 5xx
+responses receive a small bounded retry before failing; explicit auth/rate/client errors are
+not converted into historical evidence. If and only if a recorded run returns HTTP 404,
+the validator may load
 `docs/compression/finalization_receipts/<candidate_main_sha>.json` from the supplied
 baseline ref. The candidate copy must be identical to that baseline blob, and the receipt
 must reproduce the ledger candidate SHA, closure PR number, run IDs, workflow names,
