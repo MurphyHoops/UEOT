@@ -24,12 +24,19 @@ The original C1 audit identified the genuinely stronger target as one common
 posterior version jointly measurable in current belief, action and observation,
 followed by a Markov transition on the whole belief space. A direct audit of the
 current Mathlib Giry/disintegration API shows that this target is derivable under
-an explicit additional regularity condition:
+Mathlib's exact parameterized-disintegration side condition:
 
 - latent state `Z`: Standard Borel and nonempty;
 - action space `A`: arbitrary measurable;
-- observation space `Y`: countably generated measurable space;
+- parameter/observation pair:
+  `CountableOrCountablyGenerated (ProbabilityMeasure Z × A) Y`;
 - controlled transition and observation kernels: Markov.
+
+Thus the machine theorem is slightly stronger than a countably-generated-`Y`
+statement: it also applies when the whole belief/action parameter space is
+countable.  In the intended non-countable belief-space regime, countable
+generation of `Y` is the operative and much more useful sufficient condition;
+the file exposes it as a direct corollary.
 
 `C1ParametricBelief.lean` then constructs, rather than assumes:
 
@@ -42,7 +49,8 @@ an explicit additional regularity condition:
 5. a Markov belief transition
    `Kernel (ProbabilityMeasure Z × A) (ProbabilityMeasure Z)`.
 
-The terminal theorem is `c1_countablyGenerated_belief_recursion`.
+The strongest terminal theorem is `c1_parameterized_belief_recursion`; the
+common specialization is `c1_countablyGenerated_belief_recursion`.
 
 ## Compatibility with the existing P-REF-02 posterior
 
@@ -67,11 +75,11 @@ pre-existing generic adapter “assume measurable update, then obtain a kernel�
 
 ## Remaining stronger boundary
 
-The fully arbitrary-measurable-observation target is **not** closed. Mathlib's
-parameterized kernel disintegration requires
-`CountableOrCountablyGenerated α β`; in the C1 construction the parameter space
-is not assumed countable, so countable generation of the observation
-sigma-algebra supplies the operative branch of that hypothesis.
+The fully arbitrary-measurable-observation target is **not** unconditionally
+closed. Mathlib's parameterized kernel disintegration requires
+`CountableOrCountablyGenerated α β`; in the normal C1 regime the belief/action
+parameter space is not assumed countable, so countable generation of the
+observation sigma-algebra supplies the operative branch of that hypothesis.
 
 Accordingly C1 does not claim a common jointly measurable posterior version for
 every measurable observation space. Such a theorem would require either a
@@ -91,8 +99,9 @@ compact/finite interfaces actually fail.
 ## Acceptance
 
 - C1-01 audit: **PASS**.
-- C1-02 countably-generated parameterized posterior and belief recursion:
-  **THEOREM / PASS**.
+- C1-02 exact `CountableOrCountablyGenerated` parameterized posterior and belief
+  recursion: **THEOREM / PASS**; countably-generated-observation corollary:
+  **PASS**.
 - C1-02 fully arbitrary measurable observation version: **OPEN**.
 - C1-03: **DEFERRED BY DEPENDENCY RULE**, not falsely closed.
 

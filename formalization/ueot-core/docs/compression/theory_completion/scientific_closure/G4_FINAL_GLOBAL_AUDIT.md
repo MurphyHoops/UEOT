@@ -11,13 +11,13 @@ or four-generator Compression result.
 | Package | Local result | Strongest valid statement | Stronger port status |
 |---|---|---|---|
 | R0 / FBT0 | PACKAGE_CLOSED | canonical state and Formation–Binding–Transport theorem DAG reconciled; P2 semantics re-audited | synthesis remains post-Core |
-| C1 | PACKAGE_CLOSED | jointly measurable posterior-belief version and Markov belief transition are constructed for Standard-Borel latent state with countably-generated observations; fixed sections agree a.e. with P-REF-02 | OPEN for fully arbitrary measurable observations and broader model-specific continuation/fibre obligations |
+| C1 | PACKAGE_CLOSED | jointly measurable posterior-belief version and Markov belief transition are constructed for Standard-Borel latent state under Mathlib's exact `CountableOrCountablyGenerated` parameter/observation condition; countably-generated observations are a direct corollary; fixed sections agree a.e. with P-REF-02 | OPEN for unconditional fully arbitrary measurable observations and broader model-specific continuation/fibre obligations |
 | C2 | PACKAGE_CLOSED | ternary certified/rejected/ambiguous decision, protocol coverage, discovery/certification split, `2η + drift` carrier interval, exact formed-family recovery only under explicit registered gaps | OPEN for full correlated/adaptive/real data theory |
 | C3 | PACKAGE_CLOSED | one `n+1` nested structured search theorem; one nontrivial common-Markov binding mechanism derives `L_bind = 1` | OPEN for arbitrary output-sensitive search/noisy physical frames/universal binding |
 | C4 / FBT | PACKAGE_CLOSED | independent formation/binding/transport defects imply the realized continuation bound `L*epsF + epsB`; endpoint has formed source/target and no `SameObject` premise | OPEN for general split/merge/path identity |
 | C5 | PACKAGE_CLOSED | common 2D bottleneck remains a falsifiable necessary condition; perturbation-aware verdict is COMPATIBLE / REJECTED / AMBIGUOUS | OPEN for independently anchored Π/Φ mechanism identification |
 | C6 | PACKAGE_CLOSED | mechanism observation identifies a teleological objective class only under explicit mechanism→teleology faithfulness; raw observation alone is insufficient | OPEN for a calibrated real mechanism and held-out bridge prediction |
-| C7 | PACKAGE_CLOSED | preregistered C2/C3/C4 method stack works end-to-end on one actual local resettable subprocess service with real kill/restart/replacement, negative controls and raw recomputation | OPEN for independent/external real-system validation |
+| C7 | PACKAGE_CLOSED WITH V1 RETENTION LIMITATION | two complete 45-record local subprocess runs reproduce the registered logical outcomes with real kill/restart/replacement and negative controls; preregistration ordering is reachable, but v1's old write-at-end runner cannot prove no earlier aborted attempt was censored; current runner/verifier are durably hardened | OPEN for clean future durable collection plus independent/external real-system validation |
 
 ## 2. Global reflection: what improved relative to the original v2 plan
 
@@ -27,16 +27,18 @@ P10 and `ReflexiveStateSpecialCases` already cover the fixed-belief posterior an
 the generic measurable-update→kernel adapter.  The re-audit therefore did not
 manufacture another wrapper theorem.  Instead it uses Mathlib's Giry measurable
 structure and parameterized `Kernel.condKernel` to construct one common posterior
-version jointly measurable in belief, action and observation when the observation
-sigma-algebra is countably generated.  This yields an actual Markov transition on
-the whole probability-belief space.  The constructed joint law is exactly the
+version jointly measurable in belief, action and observation under Mathlib's exact
+`CountableOrCountablyGenerated (ProbabilityMeasure Z × A) Y` condition.  A
+countably-generated observation sigma-algebra supplies the practically important
+branch without making the belief/action space countable.  This yields an actual
+Markov transition on the whole probability-belief space.  The constructed joint law is exactly the
 existing P-REF-02 joint law up to coordinate swap, and fixed posterior sections
 agree with the existing posterior almost everywhere under the predictive
 observation law.
 
-This closes a real C1 subport but not the arbitrary-measurable-observation port:
-the parameterized disintegration theorem still requires the relevant
-countable/countably-generated regularity.  Zero-probability observation values
+This closes a real C1 subport but not an unconditional arbitrary-measurable-
+observation port: the parameterized disintegration theorem still requires the
+relevant countable/countably-generated regularity.  Zero-probability observation values
 remain version-dependent and are not promoted to pointwise uniqueness.
 
 ### C2 — unknown separation was not silently converted into a known gap
@@ -78,12 +80,28 @@ bridge therefore targets a teleological equivalence class only under explicit
 mechanism-teleological faithfulness.  Contract representation, Bellman/causal
 faithfulness and viability remain independent P2 gates.
 
-### C7 — evidence ordering and failure attribution were made auditable
+### C7 — evidence ordering is auditable; v1 collection integrity was downgraded
 
-Preregistration was committed before certification data.  The pilot uses actual
-OS subprocesses and actual termination/replacement.  A separate verifier
-recomputes every registered result from raw JSONL.  Self-reproduction agrees
-logically but is not mislabelled independent review.  Four failure classes are
+The rebased history contains a distinct preregistration commit
+`1b3e01d2` before evidence commit `8b3a9b1b`; the preregistration author time also
+precedes the first raw certification timestamp.  The pilot uses actual OS
+subprocesses and actual termination/replacement, and the frozen v1 verifier
+recomputes both complete 45-row datasets.
+
+Remote review nevertheless found a real protocol-integrity defect: the v1 runner
+wrote raw JSONL only after all attempts completed, so a pre-write execution
+failure could have been silently retried with the same label.  Therefore the
+final audit retracts the earlier unprovable statement that no failed attempt was
+dropped.  V1 remains completed-run local evidence, while strict no-censoring
+provenance is **UNVERIFIABLE**.
+
+The current runner now reserves raw evidence before worker launch, persists and
+fsyncs every attempt, records `EXECUTION_ERROR`, refuses same-label reruns and is
+covered by an actual main-loop fault-injection regression.  The current verifier
+requires the exact registered run-ID set and durable-attempt markers; incomplete
+collection yields `UNRESOLVED`.  These repairs improve future evidence integrity
+without rewriting v1 history or upgrading v1 retrospectively.  Self-reproduction
+remains same-lane rather than independent review.  Four failure classes are
 machine encoded; only mathematics/source-semantics mismatch triggers Core
 re-review.
 
@@ -123,9 +141,12 @@ audit contains only standard Lean/Mathlib foundations used elsewhere in the
 repository (`propext`, `Classical.choice`, `Quot.sound` where applicable); no
 `sorryAx`, `admitAx`, unsafe proof escape or `native_decide` is introduced.
 
-All C2–C6 stress scripts rerun PASS.  C7 raw certification and reproduction are
-recomputed from JSONL by an independent verifier implementation and the full C7
-SHA-256 manifest verifies.
+All C2–C6 stress scripts rerun PASS.  The frozen v1 C7 verifier reproduces both
+committed recomputation JSON files byte-for-byte from the original raw JSONL.
+The hardened current verifier intentionally refuses to certify those legacy rows
+as durable-attempt provenance and returns `UNRESOLVED`; its fault-injection and
+temporary full-45 collection regressions both PASS.  The full C7 SHA-256 manifest
+verifies legacy evidence tooling, frozen evidence, and current hardened tooling.
 
 ## 5. Frozen Core / counted surfaces
 
@@ -166,12 +187,17 @@ changing any Core theorem, counted mapping, generator or C1–C7 scientific clai
 
 The C7 process is a real local digital process in the literal sense that OS
 processes execute, fail and are replaced.  It remains a constructed benchmark,
-not an independent production/natural system.
+not an independent production/natural system.  Its v1 recorded completed runs
+are logically reproducible, but the old collection implementation does not
+support a strict no-censoring provenance claim.
 
 Accordingly:
 
-- local method evidence: **SUPPORTED_LOCAL** for the three preregistered C7
-  claims;
+- v1 completed-run method evidence: **SUPPORTED_LOCAL_COMPLETED_RUN** for the
+  recorded logical outcomes;
+- v1 strict no-censoring provenance: **UNVERIFIABLE**;
+- current durable runner/verifier contract: **HARDENED / FAULT-INJECTION AND
+  FULL-45 TEMP COLLECTION PASS**;
 - independent review: **REVIEW_PENDING**;
 - external/natural-system support: **UNVERIFIED**.
 

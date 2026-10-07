@@ -39,9 +39,11 @@ No simulation result may be relabelled as real-world support.
 
 ## 3. C-program architecture
 
-- C1: parameterized posterior/belief recursion for Standard-Borel latent state and
-  countably-generated observations, with the arbitrary-measurable-observation
-  version retained as a stronger boundary.
+- C1: parameterized posterior/belief recursion for Standard-Borel latent state
+  under Mathlib's exact `CountableOrCountablyGenerated` parameter/observation
+  condition; countably-generated observations are the main corollary and the
+  unconditional arbitrary-measurable-observation version remains a stronger
+  boundary.
 - C2: certified formation discovery under finite candidate/protocol registration,
   correlation, drift, unknown gap and abstention.
 - C3: output-bounded carrier/completion discovery and parent-binding calibration.

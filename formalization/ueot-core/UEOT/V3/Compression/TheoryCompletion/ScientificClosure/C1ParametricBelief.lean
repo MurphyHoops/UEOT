@@ -11,8 +11,11 @@ import UEOT.V3.GeneralBayesPosterior
 
 This module closes the jointly-measurable posterior subproblem under the precise
 regularity needed by Mathlib's parameterized disintegration theorem.  The latent
-state `Z` is Standard Borel and nonempty; the observation measurable space `Y` is
-countably generated.  The action space remains an arbitrary measurable space.
+state `Z` is Standard Borel and nonempty, while the parameter/observation pair
+satisfies `CountableOrCountablyGenerated (ProbabilityMeasure Z × A) Y`.  In the
+main non-countable parameter regime this is supplied by a countably generated
+observation sigma-algebra.  The action space remains an arbitrary measurable
+space.
 
 The construction is genuinely parameterized in the current probability belief and
 action.  It builds one Markov joint law on `(belief, action)`, disintegrates that
@@ -23,9 +26,10 @@ almost everywhere, under the predictive observation law, with the existing
 `GeneralBayesPosterior.posteriorKernel`; the underlying one-step joint law is
 exactly the existing P-REF-02 joint law up to coordinate swap.
 
-This is deliberately **not** a theorem for an arbitrary measurable observation
-space.  The fully arbitrary-measurable-`Y` parameterized disintegration port stays
-open unless an alternative common-version theorem supplies the missing regularity.
+This is deliberately **not** an unconditional theorem for an arbitrary measurable
+observation space.  The fully arbitrary-measurable-`Y` parameterized
+disintegration port stays open unless the belief/action parameter space is itself
+countable or an alternative common-version theorem supplies the missing regularity.
 -/
 
 namespace UEOT.V3.Compression.TheoryCompletion.ScientificClosure
@@ -226,7 +230,7 @@ theorem c1BeliefActionJoint_fst_eq_observationLaw
 section Posterior
 
 variable [StandardBorelSpace Z] [Nonempty Z]
-variable [MeasurableSpace.CountablyGenerated Y]
+variable [MeasurableSpace.CountableOrCountablyGenerated (ProbabilityMeasure Z × A) Y]
 
 noncomputable def c1ParametricPosteriorKernel
     (P : Kernel (Z × A) Z) [IsMarkovKernel P]
@@ -395,13 +399,14 @@ theorem c1BeliefTransitionKernel_apply_eq_map
     · exact hs
   · exact hs
 
-/-- **C1 countably-generated terminal theorem.**  Under Standard-Borel latent state
-and countably-generated observations, Bayesian recursion admits one jointly measurable
-posterior-belief version and therefore a Markov kernel on the whole probability-belief
-space.  Its fixed-`(belief, action)` sections agree almost everywhere with the existing
-P-REF-02 posterior, and its transition law is exactly the push-forward of the predictive
-observation law through that posterior version. -/
-theorem c1_countablyGenerated_belief_recursion
+/-- **C1 parameterized-recursion terminal theorem.**  Under Standard-Borel latent state
+and Mathlib's exact `CountableOrCountablyGenerated` parameter/observation hypothesis,
+Bayesian recursion admits one jointly measurable posterior-belief version and therefore
+a Markov kernel on the whole probability-belief space.  Its fixed-`(belief, action)`
+sections agree almost everywhere with the existing P-REF-02 posterior, and its
+transition law is exactly the push-forward of the predictive observation law through
+that posterior version. -/
+theorem c1_parameterized_belief_recursion
     (P : Kernel (Z × A) Z) [IsMarkovKernel P]
     (O : Kernel (Z × A) Y) [IsMarkovKernel O] :
     Measurable (c1ParametricPosteriorBelief P O) ∧
@@ -419,5 +424,31 @@ theorem c1_countablyGenerated_belief_recursion
     c1BeliefTransitionKernel_apply_eq_map P O⟩
 
 end Posterior
+
+section CountablyGeneratedCorollary
+
+variable [StandardBorelSpace Z] [Nonempty Z]
+variable [MeasurableSpace.CountablyGenerated Y]
+
+/-- The practically important specialization of `c1_parameterized_belief_recursion`:
+countable generation of the observation sigma-algebra alone supplies Mathlib's
+parameterized disintegration side condition, with no countability assumption on the
+belief/action parameter space. -/
+theorem c1_countablyGenerated_belief_recursion
+    (P : Kernel (Z × A) Z) [IsMarkovKernel P]
+    (O : Kernel (Z × A) Y) [IsMarkovKernel O] :
+    Measurable (c1ParametricPosteriorBelief P O) ∧
+      IsMarkovKernel (c1BeliefTransitionKernel P O) ∧
+      (∀ (b : ProbabilityMeasure Z) (a : A),
+        (fun y => c1ParametricPosteriorKernel P O ((b, a), y)) =ᵐ[
+            UEOT.V3.GeneralBayesPosterior.observationLaw b.toMeasure P O a]
+          UEOT.V3.GeneralBayesPosterior.posteriorKernel b.toMeasure P O a) ∧
+      (∀ (b : ProbabilityMeasure Z) (a : A),
+        c1BeliefTransitionKernel P O (b, a) =
+          (UEOT.V3.GeneralBayesPosterior.observationLaw b.toMeasure P O a).map
+            (fun y => c1ParametricPosteriorBelief P O ((b, a), y))) :=
+  c1_parameterized_belief_recursion P O
+
+end CountablyGeneratedCorollary
 
 end UEOT.V3.Compression.TheoryCompletion.ScientificClosure

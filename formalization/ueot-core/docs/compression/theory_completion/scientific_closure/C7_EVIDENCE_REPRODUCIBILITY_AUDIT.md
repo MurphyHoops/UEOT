@@ -1,15 +1,26 @@
 # C7 — Evidence / Reproducibility Audit
 
-Package status: **LOCAL COMPLETE / REVIEW_PENDING / REAL_WORLD_UNVERIFIED**
+Package status: **LOCAL COMPLETE / V1 RETENTION PROVENANCE UNVERIFIABLE / REVIEW_PENDING / REAL_WORLD_UNVERIFIED**
 Conclusion classes: **LOCAL DIGITAL PILOT + NO-GO-PRESERVING METHOD + GOVERNANCE THEOREM**
-Preregistration commit: `4e014cb589ca713d3a6af34523a23af5bfe038e9`
+Reachable preregistration commit:
+`1b3e01d236f65e42ceff83a0c2bc152fca293bbb`
+Reachable evidence commit:
+`8b3a9b1b7df5cfd64699f6d78f698cdb77804ff4`
 
 ## 1. Preregistration ordering
 
-`C7_PREREGISTRATION.md` was committed before any certification evidence was
-collected. It fixed claim IDs, candidate family, two protocols, held-out
+`C7_PREREGISTRATION.md` is a distinct reachable ancestor of the evidence commit
+and was authored before the first certification timestamp. It fixed claim IDs,
+candidate family, two protocols, held-out
 replacement, negative control, naive baseline, repetition count, stopping rule,
 logical pass/fail thresholds, failure taxonomy and independent-review status.
+
+The generated v1 summary JSON retains the pre-rebase identifier
+`4e014cb589ca713d3a6af34523a23af5bfe038e9`.  That object is no longer reachable
+after the branch rebase and is **not** the identifier reviewers should use for
+current Git provenance.  The generated summaries are intentionally not rewritten
+because doing so would change their frozen evidence hashes.  The exact rebase and
+ordering audit is recorded in `C7_RUNNER_HARDENING_AUDIT.md`.
 
 The executable implementation was written after the preregistration and is
 content-hashed in the evidence package. Therefore the local pilot is valid as a
@@ -46,7 +57,7 @@ replacement/transport.
 
 ## 4. Positive, negative and baseline evidence
 
-Certification record count: **45**.
+Each committed v1 raw file contains **45** records and all registered run IDs.
 
 - C7-LOCAL-FORM-01: `SUPPORTED_LOCAL`;
 - C7-LOCAL-FBT-01: `SUPPORTED_LOCAL`;
@@ -54,13 +65,17 @@ Certification record count: **45**.
 - double-fault negative control: 5/5 service unavailable as registered;
 - one-worker naive baseline after its sole worker loss: 5/5 unavailable as registered.
 
-No failed or unresolved run was dropped from the raw evidence.
+These statements describe the **recorded completed runs**.  Remote review found
+that the v1 runner created the raw file only after all 45 attempts had finished.
+Therefore the stronger statement that no earlier failed collection attempt could
+have been silently lost before file creation is not retrospectively provable.
+That v1 no-censoring provenance is classified **UNVERIFIABLE**, not PASS.
 
 ## 5. Raw recomputation and self-reproduction
 
-`verify_evidence.py` does not read or trust the generated summary. It recomputes
-all registered counts, first-good candidate, held-out replacement checks,
-negative control and baseline directly from raw JSONL.
+The original `verify_evidence_v1.py` does not read or trust the generated
+summary. It recomputes all registered counts, first-good candidate, held-out
+replacement checks, negative control and baseline directly from raw JSONL.
 
 It passes for both certification and a second local reproduction run.
 `reproduction_comparison.json` verifies the two runs have identical logical
@@ -68,6 +83,13 @@ signatures and claim verdicts while allowing PID/timestamp/latency to differ.
 
 This is **self-reproduction by the same execution lane**, not independent review.
 Independent review remains `REVIEW_PENDING`.
+
+The current `run_pilot.py` and `verify_evidence.py` are hardened separately:
+raw evidence is reserved before collection, every attempt is flushed and fsynced
+before the next, failures become `EXECUTION_ERROR`, missing run IDs force
+`UNRESOLVED`, and same-label reruns are refused.  A dedicated fault-injection
+regression exercises the real main loop and passes.  These repairs apply to
+future collection; they do not retroactively manufacture provenance for v1.
 
 ## 6. Machine-checkable failure attribution
 
@@ -85,14 +107,20 @@ Core theorem by themselves.
 - reproduction comparison: `09d462eb87422b5b03dccc990cf7a69f55738f83e22d5503c89b01d156725ff3`;
 - complete manifest: `c7_pilot/EVIDENCE_MANIFEST.sha256`.
 
+The manifest preserves the exact v1 data-generating/verification scripts as
+`run_pilot_v1.py` and `verify_evidence_v1.py`.  Current hardened tooling is
+tracked separately in the same directory.
+
 ## 8. Scientific classification
 
 The strongest valid statement from C7 is:
 
-> The preregistered C2/C3/C4 method stack works end-to-end on one constructed,
-> resettable, locally executed digital majority-service process with real process
-> failure and replacement, including registered negative controls and raw-data
-> recomputation.
+> The C2/C3/C4 method stack has two complete locally executed 45-record runs on
+> one constructed resettable digital majority-service process whose recorded
+> logical outcomes match the preregistered protocol, including real process
+> failure/replacement, negative controls and raw-data recomputation.  The
+> preregistration ordering is verifiable, but v1's old runner does not let us
+> prove that no earlier aborted attempt was censored before those files existed.
 
 It does **not** establish external/natural-system UEOT validity, universal carrier
 minimality, universal structural identity, Π/Φ mechanism identification, or a
@@ -100,7 +128,10 @@ purpose mechanism.
 
 Therefore:
 
-- C7 local package: **PACKAGE_CLOSED**;
+- C7 local package: **PACKAGE_CLOSED WITH V1 EXECUTION-RETENTION LIMITATION**;
+- v1 completed-run logical evidence: **SUPPORTED_LOCAL_COMPLETED_RUN**;
+- v1 strict no-censoring provenance: **UNVERIFIABLE**;
+- current runner/verifier durability: **HARDENED / REGRESSION PASS**;
 - independent review: **REVIEW_PENDING**;
 - real-world/external support: **UNVERIFIED**;
 - Core §31.2 C7 stronger port: **OPEN**.
