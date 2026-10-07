@@ -27,6 +27,7 @@ import UEOT.V3.Compression.TheoryCompletion.SemanticBoundaries
 import UEOT.V3.Compression.TheoryCompletion.StatePathTeleologyBoundary
 import UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency
 import UEOT.V3.Compression.TheoryCompletion.InverseObjecthood
+import UEOT.V3.Compression.TheoryCompletion.LineageEvolution
 /-!
 # UEOT Theory Completion public root
 
