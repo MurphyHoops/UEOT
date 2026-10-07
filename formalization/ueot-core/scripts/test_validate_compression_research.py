@@ -420,6 +420,57 @@ def test_l2_existing_path_exception_scope(repo: Path) -> None:
         "outside Track TC ownership",
     )
 
+    # Track S has a deliberate broad ownership model implemented in the
+    # enforcement branch rather than `allowed_path_prefixes`. L2 must use the
+    # same semantics or ordinary Track-S existing files become impossible to
+    # authorize.
+    track_s_path = (
+        "formalization/ueot-core/UEOT/V3/Compression/"
+        "TopologyChangingGoaSemantics.lean"
+    )
+    track_s_branch = "compression/topology-l2-regression"
+    track_s = copy.deepcopy(base_policy)
+    track_s[module.L2_EXCEPTION_KEY] = [
+        {
+            "exception_id": "S-L2-REGRESSION",
+            "track": "S",
+            "branch_patterns": [r"^compression/topology-l2-regression$"],
+            "paths": [track_s_path],
+            "reason": "Regression probe for Track-S L2 ownership semantics",
+            "temporary": True,
+        }
+    ]
+    track_s_compiled = module.validate_static(repo, track_s, ledger)
+    module.validate_track_paths(
+        repo,
+        "HEAD",
+        "HEAD",
+        track_s_branch,
+        [track_s_path],
+        track_s,
+        track_s_compiled,
+    )
+
+    track_s_protected = copy.deepcopy(base_policy)
+    track_s_protected[module.L2_EXCEPTION_KEY] = [
+        {
+            "exception_id": "S-L2-PROTECTED-REGRESSION",
+            "track": "S",
+            "branch_patterns": [r"^compression/topology-l2-regression$"],
+            "paths": [
+                "formalization/ueot-core/UEOT/V3/Compression/Hierarchy/"
+                "AssemblyAudit.lean"
+            ],
+            "reason": "Must be rejected as cross-owned",
+            "temporary": True,
+        }
+    ]
+    expect_rejected(
+        "l2-track-s-protected-path",
+        lambda: module.validate_static(repo, track_s_protected, ledger),
+        "protected/cross-owned path",
+    )
+
 
 def test_candidate_ref_policy_drives_objecthood_transition(repo: Path) -> None:
     """The immutable base validator must inspect candidate registry *data*.

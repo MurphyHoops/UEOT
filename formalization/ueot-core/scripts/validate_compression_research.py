@@ -474,7 +474,7 @@ def validate_l2_existing_path_exceptions(
             seen_paths.add(path)
             if not is_governed_path(path, config):
                 fail(f"{context} path is outside the governed Compression surface: {path}")
-            if not track_owned_path(path, track):
+            if not l2_track_owned_path(path, track_id, track):
                 fail(f"{context} path is outside Track {track_id} ownership: {path}")
             if path in forbidden_exact or any(path.startswith(p) for p in forbidden_prefixes):
                 fail(f"{context} may not authorize protected/cross-owned path: {path}")
@@ -520,6 +520,18 @@ def track_owned_path(path: str, track: dict) -> bool:
     exact = set(track.get("allowed_exact_paths", []))
     prefixes = tuple(track.get("allowed_path_prefixes", []))
     return path in exact or any(path.startswith(prefix) for prefix in prefixes)
+
+
+def l2_track_owned_path(path: str, track_id: str, track: dict) -> bool:
+    """Use the same ownership semantics as ordinary track enforcement for L2."""
+
+    if track_id == "S":
+        return (
+            path == "formalization/ueot-core/UEOT/V3/Compression.lean"
+            or path.startswith("formalization/ueot-core/UEOT/V3/Compression/")
+            or path.startswith("formalization/ueot-core/docs/compression/")
+        )
+    return track_owned_path(path, track)
 
 
 def repository_slug(repo: Path) -> str:
