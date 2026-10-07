@@ -98,12 +98,16 @@ provenance is **UNVERIFIABLE**.
 The current runner now reserves raw evidence before worker launch, persists and
 fsyncs every attempt, records `EXECUTION_ERROR`, refuses same-label reruns and is
 covered by an actual main-loop fault-injection regression.  The current verifier
-requires the exact registered run-ID set and durable-attempt markers; incomplete
-collection yields `UNRESOLVED`.  These repairs improve future evidence integrity
-without rewriting v1 history or upgrading v1 retrospectively.  Self-reproduction
-remains same-lane rather than independent review.  Four failure classes are
-machine encoded; only mathematics/source-semantics mismatch triggers Core
-re-review.
+requires the exact registered run-ID set and durable-attempt markers, binds each
+run ID to its registered protocol/split/candidate set, and independently
+recomputes expected outcomes from raw service outputs instead of trusting the
+producer `matches_expected` bit.  Missing/malformed IDs and metadata corruption
+yield `UNRESOLVED`; a contradictory but structurally valid observation yields the
+appropriate local scientific rejection.  These repairs improve future evidence
+integrity without rewriting v1 history or upgrading v1 retrospectively.
+Self-reproduction remains same-lane rather than independent review.  Four
+failure classes are machine encoded; only mathematics/source-semantics mismatch
+triggers Core re-review.
 
 ## 3. FBT and Compression architecture re-evaluation
 

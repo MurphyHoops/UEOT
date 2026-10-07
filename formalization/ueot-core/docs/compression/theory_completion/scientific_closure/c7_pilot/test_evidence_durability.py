@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+import contextlib
 import importlib.util
+import io
 import json
 from pathlib import Path
 import subprocess
@@ -180,6 +182,77 @@ def main():
                 assert "refusing to overwrite existing evidence" in str(exc)
             else:
                 raise AssertionError("same-label rerun was not refused")
+
+            # Build one complete hardened collection, then mutate copies to
+            # exercise the exact verifier-confusion cases found in review.
+            full_root = tmp / "full"
+            full_root.mkdir()
+            runner.ROOT = full_root
+            runner.WORKER = old_worker
+            sys.argv = [str(RUNNER), "--label", "registry_attacks"]
+            with contextlib.redirect_stdout(io.StringIO()):
+                runner.main()
+            full_raw = full_root / "raw_registry_attacks.jsonl"
+            full_rows = [
+                json.loads(line) for line in full_raw.read_text().splitlines() if line.strip()
+            ]
+            assert len(full_rows) == 45
+
+            def verify_rows(name, rows):
+                path = full_root / f"raw_{name}.jsonl"
+                out_path = full_root / f"verify_{name}.json"
+                path.write_text(
+                    "".join(json.dumps(row, sort_keys=True) + "\n" for row in rows),
+                    encoding="utf-8",
+                )
+                process = subprocess.run(
+                    [sys.executable, str(VERIFIER), str(path), "--out", str(out_path)],
+                    text=True,
+                    capture_output=True,
+                )
+                return process, json.loads(out_path.read_text())
+
+            # A run ID uniquely determines protocol, split and candidate set.
+            metadata_mutations = [
+                ("protocol", lambda row: row.__setitem__("protocol", "P_READ")),
+                ("split", lambda row: row.__setitem__("split", "holdout")),
+                ("candidate", lambda row: row.__setitem__("candidate_ids", ["W1", "W2"])),
+            ]
+            for name, mutate in metadata_mutations:
+                rows = json.loads(json.dumps(full_rows))
+                target = next(r for r in rows if r["run_id"] == "cert-n3-single-r1")
+                mutate(target)
+                process, result = verify_rows(f"metadata_{name}", rows)
+                assert process.returncode != 0
+                assert result["checks"]["registered_metadata_match"] is False
+                assert set(result["claim_verdicts"].values()) == {"UNRESOLVED"}
+
+            # Never trust the producer's `matches_expected` bit.  The raw
+            # observed service output is compared with the registration table.
+            rows = json.loads(json.dumps(full_rows))
+            target = next(r for r in rows if r["run_id"] == "cert-n1-read-r1")
+            target["query"]["service_output"] = "UNAVAILABLE"
+            target["matches_expected"] = True
+            process, result = verify_rows("lying_match_flag", rows)
+            assert process.returncode != 0
+            assert result["checks"]["registered_metadata_match"] is True
+            assert result["checks"]["all_registered_outcomes_match"] is False
+            assert result["checks"]["producer_match_flag_consistent"] is False
+            assert result["claim_verdicts"]["C7-LOCAL-FORM-01"] == "REJECTED_LOCAL"
+
+            # Missing/non-string run IDs are integrity failures that still
+            # produce a machine-readable UNRESOLVED result instead of crashing.
+            for name, bad_id in [("missing_run_id", None), ("nonstr_run_id", 17)]:
+                rows = json.loads(json.dumps(full_rows))
+                if bad_id is None:
+                    rows[0].pop("run_id")
+                else:
+                    rows[0]["run_id"] = bad_id
+                process, result = verify_rows(name, rows)
+                assert process.returncode != 0
+                assert result["checks"]["registered_run_ids_complete"] is False
+                assert result["malformed_run_id_count"] == 1
+                assert set(result["claim_verdicts"].values()) == {"UNRESOLVED"}
         finally:
             runner.ROOT, runner.WORKER, sys.argv = old_root, old_worker, old_argv
 
