@@ -33,6 +33,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCaus
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCandidateExamples
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStatisticalCandidateCalibration
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCMeanResponseCalibration
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCSeparationPower
 
 /-!
 # UEOT Core v3 Scientific Closure public root
