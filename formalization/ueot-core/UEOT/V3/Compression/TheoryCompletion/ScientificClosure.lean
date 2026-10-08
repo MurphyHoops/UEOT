@@ -36,6 +36,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCMeanResponseCa
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCSeparationPower
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCCausalLineageNoGo
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCKernelLineageBridge
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCKernelLineageExamples
 
 /-!
 # UEOT Core v3 Scientific Closure public root
