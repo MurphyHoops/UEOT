@@ -17,6 +17,8 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCProtocolNonvac
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCPathStability
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFutureResponseCore
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFiniteFutureProbes
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFiniteStochasticQuotient
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent
 
 /-!
 # UEOT Core v3 Scientific Closure public root
