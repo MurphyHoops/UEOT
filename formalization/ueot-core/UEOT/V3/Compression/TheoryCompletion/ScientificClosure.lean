@@ -39,6 +39,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCKernelLineageB
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCKernelLineageExamples
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionParentIdentification
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferAudit
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples
 
 /-!
 # UEOT Core v3 Scientific Closure public root
