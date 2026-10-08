@@ -264,4 +264,37 @@ theorem undecided_singleton_force_ambiguity
   have hn : (registeredPossible P).Nonempty := ⟨c, hc⟩
   simp [resolveRegisteredCandidates, hno, hn]
 
+/-- Reuse the existing P4 inverse-Objecthood identification predicate:
+a unique, calibrated operational successor identifies a *literal candidate*
+class among truly compatible registered candidates. The evidence map here
+is the candidate's response fingerprint; the theorem does **not** infer
+ontic identity outside the validity class or candidate registry. -/
+theorem unique_candidate_recovers_inverse_objecthood_valid_class
+    {X : Type uX} {A : Type uA} {C : Type uC} {O : Type uO}
+    [Fintype X] [Fintype O] [DecidableEq C]
+    (P : RegisteredCausalCandidateProtocol X A C O)
+    (hcal : P.Calibrated) (c : C)
+    (hout : resolveRegisteredCandidates P = .unique c) :
+    UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ObjectClassIdentifiedByEvidenceAmongValid
+      P.TrulyCompatible P.prediction
+      (UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.equalitySetoid C) := by
+  obtain ⟨_, hunique⟩ := unique_resolution_sound P hcal c hout
+  intro a b ha hb _
+  exact (hunique a ha).trans (hunique b hb).symm
+
+/-- Any wrong unique decision on another genuinely compatible *registered*
+causal candidate refutes the simultaneous good-event calibration assumption.
+This makes the statistical-failure pathway explicit for subsequent P-STAT
+high-probability bounds without pretending the probability was proved here. -/
+theorem wrong_unique_implies_calibration_failure
+    {X : Type uX} {A : Type uA} {C : Type uC} {O : Type uO}
+    [Fintype X] [Fintype O] [DecidableEq C]
+    (P : RegisteredCausalCandidateProtocol X A C O)
+    {c d : C} (hout : resolveRegisteredCandidates P = .unique c)
+    (hd : P.TrulyCompatible d) (hne : d ≠ c) :
+    ¬ P.Calibrated := by
+  intro hcal
+  obtain ⟨_, hunique⟩ := unique_resolution_sound P hcal c hout
+  exact hne (hunique d hd)
+
 end UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC
