@@ -298,6 +298,13 @@ def main():
                         "token", row["read_query"]["worker_replies"][0]["token"]
                     ),
                 ),
+                (
+                    "ordinary_duplicate_survivor_pid",
+                    "cert-n3-single-r1",
+                    lambda row: row["query"]["worker_replies"][1].__setitem__(
+                        "pid", row["query"]["worker_replies"][0]["pid"]
+                    ),
+                ),
             ]
             for name, run_id, mutate in intervention_mutations:
                 rows = json.loads(json.dumps(full_rows))

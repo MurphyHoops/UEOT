@@ -33,6 +33,8 @@ it checks:
 - distinct terminated PIDs for double-fault records;
 - the survivor reply identities are exactly the registered non-terminated
   candidates;
+- survivor reply process IDs are pairwise distinct within every query, so one
+  physical process cannot be counted multiple times under different worker IDs;
 - terminated worker identities and terminated PIDs do not reappear in the
   subsequent replies;
 - every successful (`OK`) reply echoes the exact request token issued by the
@@ -76,6 +78,7 @@ Adversarial copies then test, among the earlier metadata/integrity cases:
 - a held-out replacement PID that disagrees with the observed `W4` process;
 - replay of a held-out `-read` reply token inside the later
   `-single-fault` query;
+- duplicate survivor process IDs in an ordinary certification fault query;
 - protocol/split/candidate substitution;
 - a coherent contradictory observation paired with a lying producer
   `matches_expected = true` flag;

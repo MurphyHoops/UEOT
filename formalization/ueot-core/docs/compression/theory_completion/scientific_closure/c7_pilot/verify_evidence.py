@@ -161,6 +161,7 @@ def query_matches_intervention(
         return False
     expected_survivors=[worker_id for worker_id in candidate_ids if worker_id not in terminated_ids]
     reply_ids=[]
+    reply_pids=set()
     ok_replies=0
     for reply in replies:
         if not isinstance(reply,dict):
@@ -173,6 +174,7 @@ def query_matches_intervention(
             worker_id in terminated_ids or
             worker_id in reply_ids or
             not _plain_int(reply_pid) or reply_pid <= 0 or
+            reply_pid in reply_pids or
             reply_pid in terminated_pids or
             reply.get('status') not in {'OK','NO_REPLY','DEAD'}
         ):
@@ -180,6 +182,7 @@ def query_matches_intervention(
         if reply.get('status') == 'OK' and reply.get('token') != expected_token:
             return False
         reply_ids.append(worker_id)
+        reply_pids.add(reply_pid)
         if reply.get('status') == 'OK':
             ok_replies += 1
     if sorted(reply_ids) != sorted(expected_survivors):
