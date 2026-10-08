@@ -8,6 +8,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.C7
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCIdentityNoGo
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCUniqueSuccessor
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFiniteFormation
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFinitePaths
 
 /-!
 # UEOT Core v3 Scientific Closure public root
