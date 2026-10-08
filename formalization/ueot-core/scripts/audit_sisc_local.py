@@ -17,6 +17,12 @@ BASE = "f744194dabdbb8632e69b1d9cbc1f0e347877571"
 BRANCH = "research/sisc-local-20261008"
 
 
+def require(ok, message):
+    """Security-relevant checks must also run under `python -O`."""
+    if not ok:
+        raise RuntimeError(message)
+
+
 def run(args, cwd=ROOT, output=False):
     result = subprocess.run(args, cwd=cwd, text=True, capture_output=True)
     if result.returncode != 0:
@@ -29,33 +35,47 @@ def run(args, cwd=ROOT, output=False):
 
 
 def main():
-    assert run(["git", "branch", "--show-current"]).strip() == BRANCH
-    assert run(["git", "rev-parse", "main"]).strip() == BASE
-    assert run(["git", "merge-base", "main", "HEAD"]).strip() == BASE
-    assert run(["git", "rev-parse", "origin/main"]).strip() == BASE
-    assert not run(["git", "status", "--porcelain=v1", "-uno"]).strip(), "tracked edits present"
-    assert not run(["git", "diff", "--check", "main...HEAD"]).strip()
+    require(run(["git", "branch", "--show-current"]).strip() == BRANCH, "wrong branch")
+    require(run(["git", "rev-parse", "main"]).strip() == BASE, "main moved")
+    require(run(["git", "merge-base", "main", "HEAD"]).strip() == BASE, "base changed")
+    require(run(["git", "rev-parse", "origin/main"]).strip() == BASE, "origin/main changed")
+    require(not run(["git", "status", "--porcelain=v1", "-uno"]).strip(),
+            "tracked edits present")
+    require(not run(["git", "diff", "--check", "main...HEAD"]).strip(), "diff check failed")
 
     subjects = run(["git", "log", "--reverse", "--format=%s", "main..HEAD"]).splitlines()
     expected = ["sisc(si-0):", "sisc(si-1):", "sisc(si-2):", "sisc(si-3):",
                 "sisc(si-4):", "sisc(c5):", "sisc(c6):", "sisc(c7-a):",
                 "sisc(c7-b):", "sisc(local-gate):"]
-    assert len(subjects) == len(expected), (subjects, expected)
-    assert all(x.startswith(y) for x, y in zip(subjects, expected)), (subjects, expected)
+    require(len(subjects) >= len(expected), "missing initial ten stage commits")
+    require(all(x.startswith(y) for x, y in zip(subjects, expected)),
+            "initial ten stage commits not preserved")
+    extras = subjects[len(expected):]
+    allowed_extra = {
+        "audit-v2", "bridge-v2", "c7-review-v2", "protocol-v2", "path-v2", "gate-v2",
+    }
+    extra_stages = []
+    for subject in extras:
+        match = re.fullmatch(r"sisc\(([a-z0-9-]+)\): [^\n]+", subject)
+        require(match is not None, "unexpected non-SISC appended commit")
+        extra_stages.append(match.group(1))
+    require(set(extra_stages) <= allowed_extra, "unexpected SISC stage label")
+    require(len(extra_stages) == len(set(extra_stages)), "duplicate audit stage")
 
     paths = run(["git", "diff", "--name-only", "main...HEAD"]).splitlines()
     allowed_root = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure.lean"
     allowed_src = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISC"
     allowed_docs = "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/"
     allowed_audit = "formalization/ueot-core/scripts/audit_sisc_local.py"
-    assert paths
-    assert all(p == allowed_root or p.startswith(allowed_src) or
-               p.startswith(allowed_docs) or p == allowed_audit for p in paths), paths
-    print("PASS: frozen main, ten local stage commits, additive paths, clean tracked state")
+    require(bool(paths), "no changed paths")
+    require(all(p == allowed_root or p.startswith(allowed_src) or
+                p.startswith(allowed_docs) or p == allowed_audit for p in paths),
+            "path outside additive SISC scope")
+    print(f"PASS: frozen main, {len(subjects)} additive local commits, clean tracked state")
 
     print("VERIFY: exact-head lake build UEOT")
     build = run(["lake", "build", "UEOT"], cwd=CORE)
-    assert "Build completed successfully" in build, build[-1500:]
+    require("Build completed successfully" in build, "Lean reported no successful build")
     print("PASS:", [line for line in build.splitlines() if "Build completed" in line][-1])
 
     names = [
@@ -67,6 +87,14 @@ def main():
         "finite_directed_history_with_bound",
         "reject_exact_common_twoD_from_same_jacobian",
         "resource_mechanism_alone_does_not_select_objective",
+        "finite_mechanism_unique_formed_successor",
+        "finite_channel_formed_history_with_realization_bound",
+        "zero_formation_error_does_not_identify_parent",
+        "empty_protocol_forms_every_candidate",
+        "formed_has_nonnegative_budget",
+        "formation_path_budget_closed_form",
+        "accumulated_error_uniform_of_contraction",
+        "contracted_finite_mechanism_realization_bound",
     ]
     ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
     with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
@@ -74,18 +102,36 @@ def main():
         source.write_text("import UEOT\n" + "".join(
             "#print axioms " + ns + name + "\n" for name in names))
         axioms = run(["lake", "env", "lean", str(source)], cwd=CORE)
-        assert axioms.count("depends on axioms") + axioms.count("does not depend on any axioms") == len(names)
-        assert "sorryAx" not in axioms and "unknown constant" not in axioms
+        require(axioms.count("depends on axioms") +
+                axioms.count("does not depend on any axioms") == len(names),
+                "axiom result count mismatch")
+        require("sorryAx" not in axioms and "unknown constant" not in axioms,
+                "proof escape or unknown constant")
         allowed = {"propext", "Classical.choice", "Quot.sound"}
         for bracket in re.findall(r"depends on axioms: \[([^]]*)\]", axioms):
-            assert set(s.strip() for s in bracket.split(",")) <= allowed
+            require(set(s.strip() for s in bracket.split(",")) <= allowed,
+                    "non-standard axiom in proof surface")
     print("PASS: all selected axiom surfaces, standard Lean axioms only")
 
+    # Scan each *new* source file as well as representative terminal theorems.
+    # A plain-text check is intentionally conservative and complements kernel
+    # axiom checks (it never substitutes for them).
+    proof_escape = re.compile(r"^\s*(sorry|admit|axiom|opaque)\b", re.MULTILINE)
+    new_sources = [ROOT / path for path in paths if path.startswith(allowed_src)
+                   and path.endswith(".lean")]
+    for path in new_sources:
+        require(proof_escape.search(path.read_text()) is None,
+                f"prohibited proof declaration in {path}")
+    print(f"PASS: no prohibited proof declarations in {len(new_sources)} new Lean modules")
+
     manifest = json.loads((RAW / "manifest.json").read_text())
-    assert hashlib.sha256((RAW / "events.jsonl").read_bytes()).hexdigest() == manifest["raw_sha256"]
+    require(hashlib.sha256((RAW / "events.jsonl").read_bytes()).hexdigest() ==
+            manifest["raw_sha256"], "C7 manifest does not match raw archive")
     print("VERIFY: C7 frozen evidence and mutation regression")
     run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_verify.py"), str(RAW)], output=True)
     run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_negative_tests.py"), str(RAW)], output=True)
+    run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_review_v2.py"), str(RAW)], output=True)
+    run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_review_v2_tests.py"), str(RAW)], output=True)
     run([sys.executable, str(EVIDENCE / "sisc_si3_finite_channel_benchmark.py")])
 
     print("VERIFY: three existing compression / finalization governance regressions")
