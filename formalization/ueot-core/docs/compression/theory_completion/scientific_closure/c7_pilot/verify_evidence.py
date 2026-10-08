@@ -121,6 +121,22 @@ def reply_pid_map(row, field='query'):
         result[worker_id]=pid
     return result
 
+def expected_reply_token(row, field='query'):
+    """Return the runner-issued request token for one recorded service query."""
+    if not isinstance(row,dict):
+        return None
+    run_id=row.get('run_id')
+    if not isinstance(run_id,str):
+        return None
+    if field == 'query':
+        return run_id
+    if row.get('protocol') == 'P_REPLACE_HELDOUT':
+        if field == 'read_query':
+            return run_id + '-read'
+        if field == 'single_fault_query':
+            return run_id + '-single-fault'
+    return None
+
 def query_matches_intervention(
         row, candidate_ids, terminated_ids, field='query', terminated_pids=()):
     """Check that a service query is the query implied by the registered intervention.
@@ -140,6 +156,9 @@ def query_matches_intervention(
     replies=query.get('worker_replies')
     if not isinstance(replies,list):
         return False
+    expected_token=expected_reply_token(row,field)
+    if expected_token is None:
+        return False
     expected_survivors=[worker_id for worker_id in candidate_ids if worker_id not in terminated_ids]
     reply_ids=[]
     ok_replies=0
@@ -155,8 +174,10 @@ def query_matches_intervention(
             worker_id in reply_ids or
             not _plain_int(reply_pid) or reply_pid <= 0 or
             reply_pid in terminated_pids or
-            reply.get('status') not in {'OK','NO_REPLY'}
+            reply.get('status') not in {'OK','NO_REPLY','DEAD'}
         ):
+            return False
+        if reply.get('status') == 'OK' and reply.get('token') != expected_token:
             return False
         reply_ids.append(worker_id)
         if reply.get('status') == 'OK':

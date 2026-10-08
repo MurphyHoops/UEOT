@@ -35,6 +35,10 @@ it checks:
   candidates;
 - terminated worker identities and terminated PIDs do not reappear in the
   subsequent replies;
+- every successful (`OK`) reply echoes the exact request token issued by the
+  runner for that query, including distinct held-out `-read` and
+  `-single-fault` tokens, so pre-intervention replies cannot be replayed as
+  post-intervention evidence;
 - candidate size, quorum, successful-reply count and aggregate service output
   are recomputed from the registered candidate/intervention state;
 - held-out replacement records bind `W3 -> W4`, require distinct old/new PIDs,
@@ -46,7 +50,10 @@ Missing or inconsistent intervention evidence is a collection-integrity defect,
 so all C7 claims remain `UNRESOLVED`; it is not converted into a scientific
 negative result.  By contrast, an internally coherent observation that genuinely
 contradicts a preregistered expected output remains eligible for a local
-`REJECTED_LOCAL` verdict.
+`REJECTED_LOCAL` verdict.  This includes the runner's coherent `DEAD` reply state:
+a candidate may exit after the outer `alive()` filter but before `Worker.ping`
+performs its own liveness check.  Such a reply contributes zero successful votes
+and is recomputed as an observation rather than treated as evidence corruption.
 
 ## 3. Positive and adversarial regression contract
 
@@ -67,9 +74,13 @@ Adversarial copies then test, among the earlier metadata/integrity cases:
 - incomplete double-fault action list;
 - a zero termination return code;
 - a held-out replacement PID that disagrees with the observed `W4` process;
+- replay of a held-out `-read` reply token inside the later
+  `-single-fault` query;
 - protocol/split/candidate substitution;
 - a coherent contradictory observation paired with a lying producer
   `matches_expected = true` flag;
+- a coherent `DEAD` read observation, which must preserve collection integrity
+  while producing the appropriate local scientific rejection;
 - missing/non-string run IDs.
 
 Intervention or metadata corruption must produce nonzero verification with all

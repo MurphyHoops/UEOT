@@ -291,6 +291,13 @@ def main():
                         "new_pid", row["replacement"]["new_pid"] + 100000
                     ),
                 ),
+                (
+                    "replacement_replayed_read_token",
+                    "holdout-replace-r1",
+                    lambda row: row["single_fault_query"]["worker_replies"][0].__setitem__(
+                        "token", row["read_query"]["worker_replies"][0]["token"]
+                    ),
+                ),
             ]
             for name, run_id, mutate in intervention_mutations:
                 rows = json.loads(json.dumps(full_rows))
@@ -314,6 +321,27 @@ def main():
             assert result["checks"]["registered_metadata_match"] is True
             assert result["checks"]["all_registered_outcomes_match"] is False
             assert result["checks"]["producer_match_flag_consistent"] is False
+            assert result["claim_verdicts"]["C7-LOCAL-FORM-01"] == "REJECTED_LOCAL"
+
+            # DEAD is a producer-defined coherent observation when a process
+            # exits after service_query's alive() filter but before Worker.ping
+            # performs its own liveness check. It is scientific evidence of a
+            # failed read, not collection corruption. Preserve collection
+            # integrity and classify the contradictory outcome locally.
+            rows = json.loads(json.dumps(full_rows))
+            target = next(r for r in rows if r["run_id"] == "cert-n1-read-r1")
+            reply = target["query"]["worker_replies"][0]
+            reply["status"] = "DEAD"
+            reply.pop("token", None)
+            reply["latency_ns"] = None
+            target["query"]["ok_replies"] = 0
+            target["query"]["service_output"] = "UNAVAILABLE"
+            target["matches_expected"] = False
+            process, result = verify_rows("coherent_dead_observation", rows)
+            assert process.returncode != 0
+            assert result["checks"]["registered_intervention_match"] is True
+            assert result["checks"]["all_registered_outcomes_match"] is False
+            assert result["checks"]["producer_match_flag_consistent"] is True
             assert result["claim_verdicts"]["C7-LOCAL-FORM-01"] == "REJECTED_LOCAL"
 
             # Missing/non-string run IDs are integrity failures that still
