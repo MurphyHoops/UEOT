@@ -29,6 +29,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredicti
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCEmissionTiming
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCObservationOrderBridge
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticPredictiveIntertwining
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCausalCandidates
 
 /-!
 # UEOT Core v3 Scientific Closure public root
