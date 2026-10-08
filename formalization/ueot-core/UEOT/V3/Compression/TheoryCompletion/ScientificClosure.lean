@@ -13,6 +13,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCJoint2DRejecti
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCResourcePurpose
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFormationIdentityBridge
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCMechanisticPaths
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCProtocolNonvacuity
 
 /-!
 # UEOT Core v3 Scientific Closure public root
