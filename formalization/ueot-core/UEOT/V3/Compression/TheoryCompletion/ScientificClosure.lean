@@ -37,6 +37,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCSeparationPowe
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCCausalLineageNoGo
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCKernelLineageBridge
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCKernelLineageExamples
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionParentIdentification
 
 /-!
 # UEOT Core v3 Scientific Closure public root
