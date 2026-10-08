@@ -59,6 +59,7 @@ def main():
         "emission-timing", "gate-v5",
         "n2-time-bridge", "n2-predictive-belief", "n2-exact-test", "gate-v6",
         "n3-candidates", "n3-identification", "n3-fixtures", "gate-v7",
+        "n4-risk-confidence", "n4-coordinate-confidence", "n4-power", "n4-exact-sampling", "gate-v8",
     }
     extra_stages = []
     for subject in extras:
@@ -159,6 +160,22 @@ def main():
         "toy_unique_result_is_exact",
         "toy_competing_must_abstain",
         "toy_all_rejected_means_uncovered",
+        "empiricalCandidateProtocol_calibrated_of_uniform",
+        "measure_bad_empirical_calibration_le",
+        "measure_wrong_unique_registered_candidate_le",
+        "finite_absolute_response_risk_lipschitz",
+        "empirical_coordinate_protocol_calibrated_of_uniform",
+        "measure_bad_coordinate_calibration_le",
+        "measure_wrong_unique_coordinate_protocol_le",
+        "expected_abs_loss_is_not_abs_mean_mismatch",
+        "unsound_registered_unique_implies_bad_calibration",
+        "measure_unsound_unique_coordinate_protocol_le",
+        "measure_false_uncovered_coordinate_protocol_le",
+        "candidate_certified_of_two_radius_margin",
+        "candidate_rejected_of_two_radius_margin",
+        "registered_unique_identified_of_calibrated_margin",
+        "coordinate_protocol_unique_of_calibration_and_margin",
+        "measure_failure_to_identify_separated_candidate_le",
     ]
     ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
     with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
@@ -199,13 +216,14 @@ def main():
     previous_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V2.json"
     v3_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V3.json"
     v4_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V4.json"
-    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V5.json"
+    v5_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V5.json"
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V6.json"
     previous = full_inventory.read_bytes()
     run([sys.executable, str(CORE / "scripts/audit_sisc_global_inventory.py")], output=True)
     require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
     inventory = json.loads(previous)
-    require(inventory["total_files"] == 588, "new first-party source inventory unexpectedly changed")
-    require(inventory["reachable_from_public_root"] == 586,
+    require(inventory["total_files"] == 591, "new first-party source inventory unexpectedly changed")
+    require(inventory["reachable_from_public_root"] == 589,
             "new public root source reachability unexpectedly small")
     require(not inventory["missing_local_ueot_imports"] and not inventory["import_cycles"],
             "broken internal module graph")
@@ -245,12 +263,23 @@ def main():
                 inventory["modules"][name]["sha256"] == v4_source["sha256"],
                 "previous V4 first-party Lean source changed: " + name)
 
+    v5_inventory = json.loads(v5_path.read_bytes())
+    require(v5_inventory["total_files"] == 588, "historic V5 inventory modified")
+    for name, v5_source in v5_inventory["modules"].items():
+        if name == "UEOT.V3.Compression.TheoryCompletion.ScientificClosure":
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v5_source["sha256"],
+                "previous V5 first-party Lean source changed: " + name)
+
     print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
     run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)
     print("VERIFY: six-state exact-rational stochastic trace/rank cross-check")
     run([sys.executable, str(EVIDENCE / "sisc_stochastic_predictive_rank_test.py")], output=True)
     print("VERIFY: exact-rational belief/intertwining and zero-evidence regression")
     run([sys.executable, str(EVIDENCE / "sisc_belief_intertwining_exact_test.py")], output=True)
+    print("VERIFY: N4 coordinate-mean calibration, false decisions and separation-power method")
+    run([sys.executable, str(EVIDENCE / "sisc_n4_coordinate_calibration_method.py")], output=True)
 
     manifest = json.loads((RAW / "manifest.json").read_text())
     require(hashlib.sha256((RAW / "events.jsonl").read_bytes()).hexdigest() ==
