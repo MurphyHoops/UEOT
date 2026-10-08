@@ -99,6 +99,14 @@ paths, clean tracked worktree, `lake build UEOT`, standard-axiom-only proof
 surfaces, source-level proof-escape scan, both C7 verifiers, mutated/forged
 control, SI-3 benchmark, and existing compression/governance regressions.
 
+**Gate tool regression identified during this v2 audit:** the first enhanced
+source scan erroneously treated the commentary phrase `axiom.` as an `axiom`
+declaration. Consequently the first v2 audit exited nonzero even though Lean
+and the selected kernel-axiom inspection passed. The later standalone
+`gate-v2-fix` commit narrows matching to genuine whitespace-delimited Lean
+tokens and explicitly tests one false-positive and one genuine proof escape.
+That failed attempt remains part of the audit history, not a PASS receipt.
+
 There is **no** release permission from a green local gate. The requirements
 for declaring science COMPLETE remain unmet:
 

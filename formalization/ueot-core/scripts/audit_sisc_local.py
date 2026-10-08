@@ -52,7 +52,7 @@ def main():
             "initial ten stage commits not preserved")
     extras = subjects[len(expected):]
     allowed_extra = {
-        "audit-v2", "bridge-v2", "c7-review-v2", "protocol-v2", "path-v2", "gate-v2",
+        "audit-v2", "bridge-v2", "c7-review-v2", "protocol-v2", "path-v2", "gate-v2", "gate-v2-fix",
     }
     extra_stages = []
     for subject in extras:
@@ -116,7 +116,13 @@ def main():
     # Scan each *new* source file as well as representative terminal theorems.
     # A plain-text check is intentionally conservative and complements kernel
     # axiom checks (it never substitutes for them).
-    proof_escape = re.compile(r"^\s*(sorry|admit|axiom|opaque)\b", re.MULTILINE)
+    # Require a Lean token boundary, not merely a regex word boundary.
+    # Example: a prose comment line beginning `axiom.` is NOT `axiom foo`.
+    proof_escape = re.compile(r"^[ \t]*(sorry|admit|axiom|opaque)(?:[ \t]+|$)", re.MULTILINE)
+    require(proof_escape.search("axiom. An explanatory sentence") is None,
+            "scanner must not flag a prose token followed by punctuation")
+    require(proof_escape.search("theorem t := by\n  sorry\n") is not None,
+            "scanner must detect explicit Lean proof escape")
     new_sources = [ROOT / path for path in paths if path.startswith(allowed_src)
                    and path.endswith(".lean")]
     for path in new_sources:
