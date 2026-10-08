@@ -6,7 +6,7 @@ import Mathlib.Tactic
 
 This is a necessary-and-sufficient **bridge** to the existing P-ALG-01
 controlled-stable partition theorem, not a substitute for it. An arbitrary
-candidate predictive partition need not admit a Markov kernel on its classes.
+candidate predictive partition need not support a Markov kernel on its classes.
 The additional obligation is stability of the *actual block masses*.
 
 We deliberately do not identify output predictive equivalence with strong

@@ -52,7 +52,7 @@ theorem n6_active_local_gap :
   · refine ⟨true, ?_⟩
     norm_num [n6ActiveTransferAudit, n6ParentProbe]
 
-/-- Even when the external transfer records admit BOTH parents, the
+/-- Even when the external transfer records allow BOTH parents, the
 intervention response is sufficiently separating to certify one parent. -/
 theorem n6_active_transfer_selection_singleton :
     auditedSourceCandidates n6ActiveTransferAudit true = {false} := by

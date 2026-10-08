@@ -62,7 +62,7 @@ def main():
         "n4-risk-confidence", "n4-coordinate-confidence", "n4-power", "n4-exact-sampling", "gate-v8",
         "n5-lineage-nogo", "n5-lineage-bridge", "n5-lineage-example", "gate-v9",
         "n6-intervention", "n6-transfer-audit", "n6-active-fixture", "n6-sampling", "gate-v10",
-        "gate-v11",
+        "gate-v11", "gate-v12",
     }
     extra_stages = []
     for subject in extras:
@@ -257,6 +257,15 @@ def main():
                 f"prohibited proof declaration in {path}")
     print(f"PASS: no prohibited proof declarations in {len(new_sources)} new Lean modules")
 
+    # Exact cloud Compression Guard scanner also matches forbidden tokens in
+    # *comments*. Exercise the same stronger textual gate before pushing.
+    strict_cloud_scan = re.compile(
+        r"^[ \t]*(axiom|opaque)[ \t]|\b(sorry|admit|native_decide)\b", re.MULTILINE)
+    for lean_path in (CORE / "UEOT/V3/Compression").rglob("*.lean"):
+        require(strict_cloud_scan.search(lean_path.read_text()) is None,
+                f"cloud Compression Guard proof escape scanner rejects {lean_path}")
+    print("PASS: exact cloud Compression Guard proof escape scanner")
+
     print("VERIFY: all first-party Lean files hashed, imported and source-inventoried")
     first_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V1.json"
     previous_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V2.json"
@@ -266,7 +275,8 @@ def main():
     v6_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V6.json"
     v7_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V7.json"
     v8_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V8.json"
-    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V9.json"
+    v9_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V9.json"
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V10.json"
     previous = full_inventory.read_bytes()
     run([sys.executable, str(CORE / "docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_global_inventory.py")], output=True)
     require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
@@ -280,8 +290,13 @@ def main():
     require(old_inventory["total_files"] == 574,
             "historic V1 inventory modified")
     for name, old_source in old_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue  # public root legitimately acquires additive imports
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == old_source["sha256"],
@@ -289,8 +304,13 @@ def main():
     v2_inventory = json.loads(previous_inventory.read_bytes())
     require(v2_inventory["total_files"] == 583, "historic V2 inventory modified")
     for name, v2_source in v2_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v2_source["sha256"],
@@ -299,8 +319,13 @@ def main():
     v3_inventory = json.loads(v3_path.read_bytes())
     require(v3_inventory["total_files"] == 584, "historic V3 inventory modified")
     for name, v3_source in v3_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v3_source["sha256"],
@@ -309,8 +334,13 @@ def main():
     v4_inventory = json.loads(v4_path.read_bytes())
     require(v4_inventory["total_files"] == 586, "historic V4 inventory modified")
     for name, v4_source in v4_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v4_source["sha256"],
@@ -319,8 +349,13 @@ def main():
     v5_inventory = json.loads(v5_path.read_bytes())
     require(v5_inventory["total_files"] == 588, "historic V5 inventory modified")
     for name, v5_source in v5_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v5_source["sha256"],
@@ -329,8 +364,13 @@ def main():
     v6_inventory = json.loads(v6_path.read_bytes())
     require(v6_inventory["total_files"] == 591, "historic V6 inventory modified")
     for name, v6_source in v6_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v6_source["sha256"],
@@ -339,8 +379,13 @@ def main():
     v7_inventory = json.loads(v7_path.read_bytes())
     require(v7_inventory["total_files"] == 594, "historic V7 inventory modified")
     for name, v7_source in v7_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v7_source["sha256"],
@@ -349,12 +394,47 @@ def main():
     v8_inventory = json.loads(v8_path.read_bytes())
     require(v8_inventory["total_files"] == 598, "historic V8 inventory modified")
     for name, v8_source in v8_inventory["modules"].items():
-        if name in {"UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
-                    "UEOT.V3.Compression.TheoryCompletion"}:
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
             continue
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v8_source["sha256"],
                 "previous V8 first-party Lean source changed: " + name)
+
+    # V9 is immutable and the 3 newly adjusted module files were strictly
+    # comment-only changes relative to the exact first pushed PR head.
+    v9_inventory = json.loads(v9_path.read_bytes())
+    require(v9_inventory["total_files"] == 598, "historic V9 inventory modified")
+    for name, historical in v9_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == historical["sha256"],
+                "previous V9 first-party Lean source changed: " + name)
+    exact_comment_replacements = {
+        "SISCStochasticDescent.lean": ("need not admit a Markov", "need not support a Markov"),
+        "SISCInterventionTransferExamples.lean": ("admit BOTH parents", "allow BOTH parents"),
+        "SISCLinearPredictiveLift.lean": ("need not admit any", "need not support any"),
+    }
+    for filename, (old_text, new_text) in exact_comment_replacements.items():
+        rel = ("formalization/ueot-core/UEOT/V3/Compression/" +
+               "TheoryCompletion/ScientificClosure/" + filename)
+        historical = run(["git", "show", f"efac5f5a:{rel}"])
+        require(historical.count(old_text) == 1, "historical comment missing: " + rel)
+        require((ROOT / rel).read_text() == historical.replace(old_text, new_text),
+                "non-comment or additional source change detected: " + rel)
+    print("PASS: 3 source comment-only patches validated against pinned PR head")
 
     print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
     run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)

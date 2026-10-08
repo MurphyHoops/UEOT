@@ -9,7 +9,7 @@ import Mathlib.Tactic
 For a finite controlled stochastic system and deterministic emitted outputs,
 the family of all future *action/output* response functions spans a vector
 space closed under prepending any observation/action experiment. In contrast,
-the set of microstate predictive-equivalence classes need not admit any
+the set of microstate predictive-equivalence classes need not support any
 Markov transition kernel (SISCStochasticTraceNoGo).
 
 This is a finite-state observable-operator / predictive-state representation
