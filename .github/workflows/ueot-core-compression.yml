@@ -141,6 +141,13 @@ jobs:
       - name: Regression-test post-FINAL research governance
         run: python3 formalization/ueot-core/scripts/test_validate_compression_research.py --repo-root .
 
+      - name: Verify unified mathematical closure mission and adversarial governance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py --repo-root .
+          python3 formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py
+
   proof:
     needs: [classify, governance]
     if: needs.classify.outputs.proof_required == 'true'
