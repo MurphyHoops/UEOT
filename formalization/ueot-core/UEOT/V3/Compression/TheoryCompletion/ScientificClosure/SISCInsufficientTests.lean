@@ -89,7 +89,7 @@ theorem current_output_partition_not_lumpable :
           intro v _
           by_cases hv : v = (true, true)
           · subst v
-            simp [currentOutputSetoid, delayedOutputModel]
+            simp [delayedOutputModel]
           · simp [delayedOutputModel, hv]
       _ = 1 := by simp
   rw [hleft, hright] at heq

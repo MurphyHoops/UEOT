@@ -23,6 +23,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCObservableLump
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInsufficientTests
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCModelKernelReconciliation
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticTraceNoGo
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCApproximateLumpability
 
 /-!
 # UEOT Core v3 Scientific Closure public root
