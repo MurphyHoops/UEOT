@@ -11,6 +11,8 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFiniteFormatio
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFinitePaths
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCJoint2DRejection
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCResourcePurpose
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFormationIdentityBridge
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCMechanisticPaths
 
 /-!
 # UEOT Core v3 Scientific Closure public root
