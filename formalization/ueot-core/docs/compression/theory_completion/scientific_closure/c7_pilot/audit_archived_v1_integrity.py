@@ -51,10 +51,19 @@ def verify(root: Path):
         if actual != digest:
             problems.append(f"sha256 mismatch for archived {historic_name} at {physical}")
 
-    required = {"run_pilot.py", "verify_evidence.py", "worker.py",
-                "raw_certification_v1.jsonl", "raw_reproduction_v1.jsonl"}
-    if not required.issubset(manifest_names):
-        problems.append("missing essential frozen manifest entries")
+    frozen_names = {
+        "worker.py", "run_pilot.py", "verify_evidence.py",
+        "raw_certification_v1.jsonl", "summary_certification_v1.json",
+        "recomputed_certification_v1.json",
+        "raw_reproduction_v1.jsonl", "summary_reproduction_v1.json",
+        "recomputed_reproduction_v1.json", "reproduction_comparison.json",
+    }
+    if manifest_names != frozen_names or len(raw) != len(frozen_names):
+        problems.append(
+            "frozen manifest requires exactly ten entries; "
+            f"missing={sorted(frozen_names - manifest_names)}; "
+            f"unexpected={sorted(manifest_names - frozen_names)}"
+        )
     expected = expected_run_ids()
     inventory = {}
     for filename in ("raw_certification_v1.jsonl", "raw_reproduction_v1.jsonl"):
