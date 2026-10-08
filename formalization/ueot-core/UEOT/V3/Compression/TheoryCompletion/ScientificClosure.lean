@@ -15,6 +15,8 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFormationIdent
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCMechanisticPaths
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCProtocolNonvacuity
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCPathStability
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFutureResponseCore
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFiniteFutureProbes
 
 /-!
 # UEOT Core v3 Scientific Closure public root
