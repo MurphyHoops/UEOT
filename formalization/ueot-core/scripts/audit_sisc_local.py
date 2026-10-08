@@ -57,6 +57,7 @@ def main():
         "n1-descent", "stoch-kernel", "n1-observable", "n1-reconcile",
         "stoch-trace-nogo", "n1-robust", "linear-lift", "n1-belief", "stoch-rank-test", "gate-v4",
         "emission-timing", "gate-v5",
+        "n2-time-bridge", "n2-predictive-belief", "n2-exact-test", "gate-v6",
     }
     extra_stages = []
     for subject in extras:
@@ -131,6 +132,18 @@ def main():
         "one_word_trace_is_pre_transition_observation",
         "point_belief_observes_post_transition",
         "pre_and_post_emission_are_not_interchangeable",
+        "bayes_post_observation_eq_shifted_pre_trace",
+        "shifted_pre_trace_dummy_action_invariant",
+        "flip_post_matches_shifted_pre",
+        "belief_event_update_intertwines_future_response",
+        "belief_future_equality_is_event_congruence",
+        "unique_event_update_on_reachable_predictive_beliefs",
+        "belief_event_step_nonnegative",
+        "pre_event_evidence_eq_one_word_response",
+        "normalized_event_predictive_intertwining",
+        "normalized_event_mass_one",
+        "pre_event_evidence_nonnegative",
+        "normalized_event_weights_nonnegative",
     ]
     ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
     with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
@@ -169,13 +182,14 @@ def main():
     print("VERIFY: all first-party Lean files hashed, imported and source-inventoried")
     first_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V1.json"
     previous_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V2.json"
-    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V3.json"
+    v3_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V3.json"
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V4.json"
     previous = full_inventory.read_bytes()
     run([sys.executable, str(CORE / "scripts/audit_sisc_global_inventory.py")], output=True)
     require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
     inventory = json.loads(previous)
-    require(inventory["total_files"] == 584, "new first-party source inventory unexpectedly changed")
-    require(inventory["reachable_from_public_root"] == 582,
+    require(inventory["total_files"] == 586, "new first-party source inventory unexpectedly changed")
+    require(inventory["reachable_from_public_root"] == 584,
             "new public root source reachability unexpectedly small")
     require(not inventory["missing_local_ueot_imports"] and not inventory["import_cycles"],
             "broken internal module graph")
@@ -197,10 +211,21 @@ def main():
                 inventory["modules"][name]["sha256"] == v2_source["sha256"],
                 "previous V2 first-party Lean source changed: " + name)
 
+    v3_inventory = json.loads(v3_path.read_bytes())
+    require(v3_inventory["total_files"] == 584, "historic V3 inventory modified")
+    for name, v3_source in v3_inventory["modules"].items():
+        if name == "UEOT.V3.Compression.TheoryCompletion.ScientificClosure":
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v3_source["sha256"],
+                "previous V3 first-party Lean source changed: " + name)
+
     print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
     run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)
     print("VERIFY: six-state exact-rational stochastic trace/rank cross-check")
     run([sys.executable, str(EVIDENCE / "sisc_stochastic_predictive_rank_test.py")], output=True)
+    print("VERIFY: exact-rational belief/intertwining and zero-evidence regression")
+    run([sys.executable, str(EVIDENCE / "sisc_belief_intertwining_exact_test.py")], output=True)
 
     manifest = json.loads((RAW / "manifest.json").read_text())
     require(hashlib.sha256((RAW / "events.jsonl").read_bytes()).hexdigest() ==
