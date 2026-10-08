@@ -24,6 +24,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInsufficientTe
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCModelKernelReconciliation
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticTraceNoGo
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCApproximateLumpability
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift
 
 /-!
 # UEOT Core v3 Scientific Closure public root
