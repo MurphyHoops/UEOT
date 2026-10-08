@@ -70,6 +70,8 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionPa
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferAudit
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionSamplingPower
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeterministicDiracPredictiveBridge
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteCommonProcessWitness
 /-!
 # UEOT Theory Completion public root
 
