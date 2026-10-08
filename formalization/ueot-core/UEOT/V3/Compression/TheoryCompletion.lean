@@ -33,6 +33,7 @@ import UEOT.V3.Compression.TheoryCompletion.GeneralStateObjecthood
 import UEOT.V3.Compression.TheoryCompletion.StochasticSubstrate
 import UEOT.V3.Compression.TheoryCompletion.AutopoiesisClosure
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.C4SetValuedFBT
 /-!
 # UEOT Theory Completion public root
 
