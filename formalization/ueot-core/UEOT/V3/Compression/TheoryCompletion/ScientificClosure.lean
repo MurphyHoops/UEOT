@@ -27,6 +27,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCApproximateLum
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticBeliefBridge
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCEmissionTiming
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCObservationOrderBridge
 
 /-!
 # UEOT Core v3 Scientific Closure public root
