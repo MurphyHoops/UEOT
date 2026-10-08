@@ -116,5 +116,5 @@ Current dispositions: `real_world_support=UNVERIFIED`,
 Run the reproducible gate from repository root:
 
 ```sh
-python3 -O formalization/ueot-core/scripts/audit_sisc_local.py
+python3 -O formalization/ueot-core/docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_local.py
 ```

@@ -75,7 +75,7 @@ Until those gates are satisfied:
 From the repository root, run:
 
 ```sh
-python3 formalization/ueot-core/scripts/audit_sisc_local.py
+python3 formalization/ueot-core/docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_local.py
 ```
 
 The script is read-only with respect to Git and the committed evidence. It

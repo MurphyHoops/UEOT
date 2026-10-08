@@ -5,7 +5,7 @@ We read/hash full contents, enumerate declarations and internal UEOT imports,
 and check reachability from public UEOT.lean. This is NOT a substitute for
 semantic proof review, kernel validation or a scientific novelty claim.
 
-Run: python3 formalization/ueot-core/scripts/audit_sisc_global_inventory.py
+Run: python3 formalization/ueot-core/docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_global_inventory.py
 """
 from collections import Counter, defaultdict
 import hashlib
@@ -14,9 +14,9 @@ from pathlib import Path
 import re
 
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[7]
 PKG = ROOT / "formalization" / "ueot-core"
-OUTPUT = PKG / "docs" / "compression" / "theory_completion" / "scientific_closure" / "SISC_GLOBAL_LEAN_INVENTORY_V8.json"
+OUTPUT = PKG / "docs" / "compression" / "theory_completion" / "scientific_closure" / "SISC_GLOBAL_LEAN_INVENTORY_V9.json"
 DECL = re.compile(r"^\s*(?:(?:private|protected|noncomputable|local|unsafe)\s+)*"
                   r"(theorem|lemma|def|abbrev|structure|class|inductive|instance|axiom|opaque)\s+([^\s(:]+)")
 IMPORT = re.compile(r"^\s*import\s+(UEOT(?:\.\w+)+)\s*$", re.MULTILINE)

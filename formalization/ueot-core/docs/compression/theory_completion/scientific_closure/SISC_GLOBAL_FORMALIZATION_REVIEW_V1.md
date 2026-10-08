@@ -12,7 +12,7 @@ or any source under externally vendored Mathlib.
 
 ## I. Reproducible whole-source evidence
 
-Run `python3 formalization/ueot-core/scripts/audit_sisc_global_inventory.py`
+Run `python3 formalization/ueot-core/docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_global_inventory.py`
 from repository root to regenerate `SISC_GLOBAL_LEAN_INVENTORY_V1.json`.
 The generator reads and SHA256-hashes every included first-party `.lean` file
 and records each module's imports, declaration counts, line counts and public
