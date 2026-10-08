@@ -32,6 +32,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticPred
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCausalCandidates
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCandidateExamples
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStatisticalCandidateCalibration
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCMeanResponseCalibration
 
 /-!
 # UEOT Core v3 Scientific Closure public root
