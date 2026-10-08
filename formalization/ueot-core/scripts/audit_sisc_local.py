@@ -53,6 +53,7 @@ def main():
     extras = subjects[len(expected):]
     allowed_extra = {
         "audit-v2", "bridge-v2", "c7-review-v2", "protocol-v2", "path-v2", "gate-v2", "gate-v2-fix",
+        "future-core", "global-inventory", "finite-validation", "gate-v3",
     }
     extra_stages = []
     for subject in extras:
@@ -67,9 +68,11 @@ def main():
     allowed_src = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISC"
     allowed_docs = "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/"
     allowed_audit = "formalization/ueot-core/scripts/audit_sisc_local.py"
+    allowed_inventory = "formalization/ueot-core/scripts/audit_sisc_global_inventory.py"
     require(bool(paths), "no changed paths")
     require(all(p == allowed_root or p.startswith(allowed_src) or
-                p.startswith(allowed_docs) or p == allowed_audit for p in paths),
+                p.startswith(allowed_docs) or p in {allowed_audit, allowed_inventory}
+                for p in paths),
             "path outside additive SISC scope")
     print(f"PASS: frozen main, {len(subjects)} additive local commits, clean tracked state")
 
@@ -95,6 +98,16 @@ def main():
         "formation_path_budget_closed_form",
         "accumulated_error_uniform_of_contraction",
         "contracted_finite_mechanism_realization_bound",
+        "futureResponse_inputFiberCompatible",
+        "unique_canonical_future_update",
+        "recursive_summary_predicts_all_futures",
+        "canonical_future_minimal_among_recursive_summaries",
+        "exact_future_summary_unique_up_to_relabeling",
+        "instant_observation_can_hide_future_difference",
+        "complete_future_response_can_merge_distinct_tokens",
+        "chosenWord_separates_different_future",
+        "finite_probes_identify_canonical_future_classes",
+        "finite_complete_probe_card_le",
     ]
     ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
     with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
@@ -129,6 +142,21 @@ def main():
         require(proof_escape.search(path.read_text()) is None,
                 f"prohibited proof declaration in {path}")
     print(f"PASS: no prohibited proof declarations in {len(new_sources)} new Lean modules")
+
+    print("VERIFY: all first-party Lean files hashed, imported and source-inventoried")
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V1.json"
+    previous = full_inventory.read_bytes()
+    run([sys.executable, str(CORE / "scripts/audit_sisc_global_inventory.py")], output=True)
+    require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
+    inventory = json.loads(previous)
+    require(inventory["total_files"] == 574, "first-party source inventory count changed")
+    require(inventory["reachable_from_public_root"] == 572,
+            "public root source reachability changed")
+    require(not inventory["missing_local_ueot_imports"] and not inventory["import_cycles"],
+            "broken internal module graph")
+
+    print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
+    run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)
 
     manifest = json.loads((RAW / "manifest.json").read_text())
     require(hashlib.sha256((RAW / "events.jsonl").read_bytes()).hexdigest() ==
