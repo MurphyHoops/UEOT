@@ -61,6 +61,7 @@ def main():
         "n3-candidates", "n3-identification", "n3-fixtures", "gate-v7",
         "n4-risk-confidence", "n4-coordinate-confidence", "n4-power", "n4-exact-sampling", "gate-v8",
         "n5-lineage-nogo", "n5-lineage-bridge", "n5-lineage-example", "gate-v9",
+        "n6-intervention", "n6-transfer-audit", "n6-active-fixture", "n6-sampling", "gate-v10",
     }
     extra_stages = []
     for subject in extras:
@@ -188,6 +189,24 @@ def main():
         "n5_toy_supported_unique",
         "n5_toy_reproductive_transmission",
         "n5_toy_derived_offspring",
+        "n6_passive_observation_cannot_identify_parent",
+        "n6_active_probe_identifies_parent_labels",
+        "n6_intervention_changes_operational_identifiability",
+        "audited_source_mem_iff",
+        "audit_fitted_parent_unique_of_existing_gap",
+        "audited_source_candidates_eq_singleton_of_gap",
+        "two_audited_parent_matches_prevent_unique",
+        "audited_unique_to_P8_parent_of_sound_transfer",
+        "audited_unique_to_P8_offspring_of_sound_transfer",
+        "n6_active_true_source_fits",
+        "n6_active_local_gap",
+        "n6_active_transfer_selection_singleton",
+        "n6_passive_transfer_selection_has_two_sources",
+        "n6_passive_cannot_certify_unique_parent",
+        "n6_active_audit_to_toy_offspring",
+        "sampled_true_parent_fits_of_uniform_coordinate_accuracy",
+        "sampled_audited_source_unique_on_good_event",
+        "measure_failure_to_identify_interventional_parent_le",
     ]
     ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
     with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
@@ -230,13 +249,14 @@ def main():
     v4_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V4.json"
     v5_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V5.json"
     v6_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V6.json"
-    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V7.json"
+    v7_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V7.json"
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V8.json"
     previous = full_inventory.read_bytes()
     run([sys.executable, str(CORE / "scripts/audit_sisc_global_inventory.py")], output=True)
     require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
     inventory = json.loads(previous)
-    require(inventory["total_files"] == 594, "new first-party source inventory unexpectedly changed")
-    require(inventory["reachable_from_public_root"] == 592,
+    require(inventory["total_files"] == 598, "new first-party source inventory unexpectedly changed")
+    require(inventory["reachable_from_public_root"] == 596,
             "new public root source reachability unexpectedly small")
     require(not inventory["missing_local_ueot_imports"] and not inventory["import_cycles"],
             "broken internal module graph")
@@ -293,6 +313,15 @@ def main():
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v6_source["sha256"],
                 "previous V6 first-party Lean source changed: " + name)
+
+    v7_inventory = json.loads(v7_path.read_bytes())
+    require(v7_inventory["total_files"] == 594, "historic V7 inventory modified")
+    for name, v7_source in v7_inventory["modules"].items():
+        if name == "UEOT.V3.Compression.TheoryCompletion.ScientificClosure":
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v7_source["sha256"],
+                "previous V7 first-party Lean source changed: " + name)
 
     print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
     run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)
