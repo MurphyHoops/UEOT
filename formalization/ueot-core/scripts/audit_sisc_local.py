@@ -56,6 +56,7 @@ def main():
         "future-core", "global-inventory", "finite-validation", "gate-v3",
         "n1-descent", "stoch-kernel", "n1-observable", "n1-reconcile",
         "stoch-trace-nogo", "n1-robust", "linear-lift", "n1-belief", "stoch-rank-test", "gate-v4",
+        "emission-timing", "gate-v5",
     }
     extra_stages = []
     for subject in extras:
@@ -127,6 +128,9 @@ def main():
         "controlled_trace_span_finrank_le_card",
         "trace_noGo_but_belief_filter_well_defined",
         "lifted_belief_update_conflict_iff_zero",
+        "one_word_trace_is_pre_transition_observation",
+        "point_belief_observes_post_transition",
+        "pre_and_post_emission_are_not_interchangeable",
     ]
     ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
     with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
@@ -164,13 +168,14 @@ def main():
 
     print("VERIFY: all first-party Lean files hashed, imported and source-inventoried")
     first_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V1.json"
-    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V2.json"
+    previous_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V2.json"
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V3.json"
     previous = full_inventory.read_bytes()
     run([sys.executable, str(CORE / "scripts/audit_sisc_global_inventory.py")], output=True)
     require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
     inventory = json.loads(previous)
-    require(inventory["total_files"] >= 583, "new first-party source inventory unexpectedly small")
-    require(inventory["reachable_from_public_root"] >= 581,
+    require(inventory["total_files"] == 584, "new first-party source inventory unexpectedly changed")
+    require(inventory["reachable_from_public_root"] == 582,
             "new public root source reachability unexpectedly small")
     require(not inventory["missing_local_ueot_imports"] and not inventory["import_cycles"],
             "broken internal module graph")
@@ -183,6 +188,14 @@ def main():
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == old_source["sha256"],
                 "previously audited first-party Lean source changed: " + name)
+    v2_inventory = json.loads(previous_inventory.read_bytes())
+    require(v2_inventory["total_files"] == 583, "historic V2 inventory modified")
+    for name, v2_source in v2_inventory["modules"].items():
+        if name == "UEOT.V3.Compression.TheoryCompletion.ScientificClosure":
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v2_source["sha256"],
+                "previous V2 first-party Lean source changed: " + name)
 
     print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
     run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)
