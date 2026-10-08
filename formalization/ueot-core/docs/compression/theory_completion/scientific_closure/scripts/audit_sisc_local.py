@@ -1,0 +1,467 @@
+#!/usr/bin/env python3
+"""SISC pre-integration exact-head reproducibility gate. Never pushes or rewrites data."""
+import hashlib
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+import tempfile
+
+
+ROOT = Path(__file__).resolve().parents[7]
+CORE = ROOT / "formalization/ueot-core"
+EVIDENCE = CORE / "docs/compression/theory_completion/scientific_closure/evidence"
+RAW = EVIDENCE / "c7_sisc_sqlite_method_v1"
+BASE = "f744194dabdbb8632e69b1d9cbc1f0e347877571"
+BRANCH = "compression/theory-completion-sisc"
+
+
+def require(ok, message):
+    """Security-relevant checks must also run under `python -O`."""
+    if not ok:
+        raise RuntimeError(message)
+
+
+def run(args, cwd=ROOT, output=False):
+    result = subprocess.run(args, cwd=cwd, text=True, capture_output=True)
+    if result.returncode != 0:
+        print("FAILED:", " ".join(args), file=sys.stderr)
+        print((result.stdout + result.stderr)[-6000:], file=sys.stderr)
+        raise SystemExit(result.returncode)
+    if output:
+        print((result.stdout + result.stderr).strip()[-500:])
+    return result.stdout
+
+
+def main():
+    require(run(["git", "branch", "--show-current"]).strip() == BRANCH, "wrong branch")
+    require(run(["git", "rev-parse", "main"]).strip() == BASE, "main moved")
+    require(run(["git", "merge-base", "main", "HEAD"]).strip() == BASE, "base changed")
+    require(run(["git", "rev-parse", "origin/main"]).strip() == BASE, "origin/main changed")
+    require(not run(["git", "status", "--porcelain=v1", "-uno"]).strip(),
+            "tracked edits present")
+    require(not run(["git", "diff", "--check", "main...HEAD"]).strip(), "diff check failed")
+
+    subjects = run(["git", "log", "--reverse", "--format=%s", "main..HEAD"]).splitlines()
+    expected = ["sisc(si-0):", "sisc(si-1):", "sisc(si-2):", "sisc(si-3):",
+                "sisc(si-4):", "sisc(c5):", "sisc(c6):", "sisc(c7-a):",
+                "sisc(c7-b):", "sisc(local-gate):"]
+    require(len(subjects) >= len(expected), "missing initial ten stage commits")
+    require(all(x.startswith(y) for x, y in zip(subjects, expected)),
+            "initial ten stage commits not preserved")
+    extras = subjects[len(expected):]
+    allowed_extra = {
+        "audit-v2", "bridge-v2", "c7-review-v2", "protocol-v2", "path-v2", "gate-v2", "gate-v2-fix",
+        "future-core", "global-inventory", "finite-validation", "gate-v3",
+        "n1-descent", "stoch-kernel", "n1-observable", "n1-reconcile",
+        "stoch-trace-nogo", "n1-robust", "linear-lift", "n1-belief", "stoch-rank-test", "gate-v4",
+        "emission-timing", "gate-v5",
+        "n2-time-bridge", "n2-predictive-belief", "n2-exact-test", "gate-v6",
+        "n3-candidates", "n3-identification", "n3-fixtures", "gate-v7",
+        "n4-risk-confidence", "n4-coordinate-confidence", "n4-power", "n4-exact-sampling", "gate-v8",
+        "n5-lineage-nogo", "n5-lineage-bridge", "n5-lineage-example", "gate-v9",
+        "n6-intervention", "n6-transfer-audit", "n6-active-fixture", "n6-sampling", "gate-v10",
+        "gate-v11", "gate-v12",
+    }
+    extra_stages = []
+    for subject in extras:
+        match = re.fullmatch(r"sisc\(([a-z0-9-]+)\): [^\n]+", subject)
+        require(match is not None, "unexpected non-SISC appended commit")
+        extra_stages.append(match.group(1))
+    require(set(extra_stages) <= allowed_extra, "unexpected SISC stage label")
+    require(len(extra_stages) == len(set(extra_stages)), "duplicate audit stage")
+
+    paths = run(["git", "diff", "--name-only", "main...HEAD"]).splitlines()
+    allowed_root = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+    allowed_src = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISC"
+    allowed_docs = "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/"
+    allowed_audit = "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_local.py"
+    allowed_inventory = "formalization/ueot-core/docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_global_inventory.py"
+    require(bool(paths), "no changed paths")
+    require(all(p == allowed_root or p.startswith(allowed_src) or
+                p.startswith(allowed_docs) or p in {allowed_audit, allowed_inventory}
+                for p in paths),
+            "path outside additive SISC scope")
+    # Gate v11 keeps the historical C1–C7 public root BYTE-IDENTICAL to main.
+    sci_rel = "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure.lean"
+    parent_rel = allowed_root
+    baseline_sci = run(["git", "show", f"{BASE}:{sci_rel}"])
+    require((ROOT / sci_rel).read_text() == baseline_sci,
+            "ScientificClosure historical root changed (must equal frozen base)")
+    baseline_parent = run(["git", "show", f"{BASE}:{parent_rel}"])
+    parent_text = (ROOT / parent_rel).read_text()
+    new_sisc_imports = [line + "\n" for line in parent_text.splitlines()
+                        if line.startswith(
+                            "import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC")]
+    require(len(new_sisc_imports) == 36, "new root must import all 36 SISC theorem modules")
+    require(parent_text.replace("".join(new_sisc_imports), "") == baseline_parent,
+            "TheoryCompletion public root modified beyond 36 additive imports")
+    print(f"PASS: frozen main, {len(subjects)} additive local commits, clean tracked state")
+
+    print("VERIFY: exact-head lake build UEOT")
+    build = run(["lake", "build", "UEOT"], cwd=CORE)
+    require("Build completed successfully" in build, "Lean reported no successful build")
+    print("PASS:", [line for line in build.splitlines() if "Build completed" in line][-1])
+
+    names = [
+        "response_cannot_identify_sameObject_semantics",
+        "certified_unique_successor_of_witness",
+        "noisy_admissible_successor_unique",
+        "finite_mechanism_derives_directed_coverage",
+        "finite_mechanism_to_fbt_continuation",
+        "finite_directed_history_with_bound",
+        "reject_exact_common_twoD_from_same_jacobian",
+        "resource_mechanism_alone_does_not_select_objective",
+        "finite_mechanism_unique_formed_successor",
+        "finite_channel_formed_history_with_realization_bound",
+        "zero_formation_error_does_not_identify_parent",
+        "empty_protocol_forms_every_candidate",
+        "formed_has_nonnegative_budget",
+        "formation_path_budget_closed_form",
+        "accumulated_error_uniform_of_contraction",
+        "contracted_finite_mechanism_realization_bound",
+        "futureResponse_inputFiberCompatible",
+        "unique_canonical_future_update",
+        "recursive_summary_predicts_all_futures",
+        "canonical_future_minimal_among_recursive_summaries",
+        "exact_future_summary_unique_up_to_relabeling",
+        "instant_observation_can_hide_future_difference",
+        "complete_future_response_can_merge_distinct_tokens",
+        "chosenWord_separates_different_future",
+        "finite_probes_identify_canonical_future_classes",
+        "finite_complete_probe_card_le",
+        "stable_iff_unique_stochastic_descent",
+        "stable_quotient_transition_nonnegative",
+        "strong_lumpability_iff_existsUnique_stochastic_quotient",
+        "massIntoClass_sum_one",
+        "test_spanning_forces_controlled_lumpability",
+        "measured_tests_unique_markov_quotient",
+        "equal_observed_tests_do_not_force_stability",
+        "model_strongLumpability_iff_stable",
+        "reconciliation_both_unique_quotients",
+        "approx_block_mass_from_tests",
+        "robust_class_mass_from_approx_observable_tests",
+        "all_future_trace_equivalence_not_markov_lumpable",
+        "all_future_trace_quotient_kernel_does_not_exist",
+        "controlled_trace_span_shift_invariant",
+        "controlled_trace_span_finrank_le_card",
+        "trace_noGo_but_belief_filter_well_defined",
+        "lifted_belief_update_conflict_iff_zero",
+        "one_word_trace_is_pre_transition_observation",
+        "point_belief_observes_post_transition",
+        "pre_and_post_emission_are_not_interchangeable",
+        "bayes_post_observation_eq_shifted_pre_trace",
+        "shifted_pre_trace_dummy_action_invariant",
+        "flip_post_matches_shifted_pre",
+        "belief_event_update_intertwines_future_response",
+        "belief_future_equality_is_event_congruence",
+        "unique_event_update_on_reachable_predictive_beliefs",
+        "belief_event_step_nonnegative",
+        "pre_event_evidence_eq_one_word_response",
+        "normalized_event_predictive_intertwining",
+        "normalized_event_mass_one",
+        "pre_event_evidence_nonnegative",
+        "normalized_event_weights_nonnegative",
+        "unique_resolution_sound",
+        "uncovered_excludes_registered_truth",
+        "two_compatible_force_nonunique",
+        "registered_candidate_risk_nonnegative",
+        "two_possible_candidates_force_ambiguity",
+        "undecided_singleton_force_ambiguity",
+        "unique_candidate_recovers_inverse_objecthood_valid_class",
+        "wrong_unique_implies_calibration_failure",
+        "toy_unique_calibrated",
+        "toy_competing_calibrated",
+        "toy_uncovered_calibrated",
+        "toy_unique_result_is_exact",
+        "toy_competing_must_abstain",
+        "toy_all_rejected_means_uncovered",
+        "empiricalCandidateProtocol_calibrated_of_uniform",
+        "measure_bad_empirical_calibration_le",
+        "measure_wrong_unique_registered_candidate_le",
+        "finite_absolute_response_risk_lipschitz",
+        "empirical_coordinate_protocol_calibrated_of_uniform",
+        "measure_bad_coordinate_calibration_le",
+        "measure_wrong_unique_coordinate_protocol_le",
+        "expected_abs_loss_is_not_abs_mean_mismatch",
+        "unsound_registered_unique_implies_bad_calibration",
+        "measure_unsound_unique_coordinate_protocol_le",
+        "measure_false_uncovered_coordinate_protocol_le",
+        "candidate_certified_of_two_radius_margin",
+        "candidate_rejected_of_two_radius_margin",
+        "registered_unique_identified_of_calibrated_margin",
+        "coordinate_protocol_unique_of_calibration_and_margin",
+        "measure_failure_to_identify_separated_candidate_le",
+        "full_microstate_process_does_not_fix_parent_semantics",
+        "fixed_physical_kernel_has_no_semantics_independent_parent_decoder",
+        "support_admitted_candidate_has_positive_transition",
+        "support_admitted_unique_operational_successor",
+        "support_admitted_unique_compatible_parent_edge",
+        "support_admitted_unique_compatible_offspring",
+        "support_admitted_offspring_excludes_same_object_repair",
+        "n5_toy_support_calibrated",
+        "n5_toy_supported_unique",
+        "n5_toy_reproductive_transmission",
+        "n5_toy_derived_offspring",
+        "n6_passive_observation_cannot_identify_parent",
+        "n6_active_probe_identifies_parent_labels",
+        "n6_intervention_changes_operational_identifiability",
+        "audited_source_mem_iff",
+        "audit_fitted_parent_unique_of_existing_gap",
+        "audited_source_candidates_eq_singleton_of_gap",
+        "two_audited_parent_matches_prevent_unique",
+        "audited_unique_to_P8_parent_of_sound_transfer",
+        "audited_unique_to_P8_offspring_of_sound_transfer",
+        "n6_active_true_source_fits",
+        "n6_active_local_gap",
+        "n6_active_transfer_selection_singleton",
+        "n6_passive_transfer_selection_has_two_sources",
+        "n6_passive_cannot_certify_unique_parent",
+        "n6_active_audit_to_toy_offspring",
+        "sampled_true_parent_fits_of_uniform_coordinate_accuracy",
+        "sampled_audited_source_unique_on_good_event",
+        "measure_failure_to_identify_interventional_parent_le",
+    ]
+    ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
+    with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
+        source = Path(scratch) / "Audit.lean"
+        source.write_text("import UEOT\n" + "".join(
+            "#print axioms " + ns + name + "\n" for name in names))
+        axioms = run(["lake", "env", "lean", str(source)], cwd=CORE)
+        require(axioms.count("depends on axioms") +
+                axioms.count("does not depend on any axioms") == len(names),
+                "axiom result count mismatch")
+        require("sorryAx" not in axioms and "unknown constant" not in axioms,
+                "proof escape or unknown constant")
+        allowed = {"propext", "Classical.choice", "Quot.sound"}
+        for bracket in re.findall(r"depends on axioms: \[([^]]*)\]", axioms):
+            require(set(s.strip() for s in bracket.split(",")) <= allowed,
+                    "non-standard axiom in proof surface")
+    print("PASS: all selected axiom surfaces, standard Lean axioms only")
+
+    # Scan each *new* source file as well as representative terminal theorems.
+    # A plain-text check is intentionally conservative and complements kernel
+    # axiom checks (it never substitutes for them).
+    # Require a Lean token boundary, not merely a regex word boundary.
+    # Example: a prose comment line beginning `axiom.` is NOT `axiom foo`.
+    proof_escape = re.compile(r"^[ \t]*(sorry|admit|axiom|opaque)(?:[ \t]+|$)", re.MULTILINE)
+    require(proof_escape.search("axiom. An explanatory sentence") is None,
+            "scanner must not flag a prose token followed by punctuation")
+    require(proof_escape.search("theorem t := by\n  sorry\n") is not None,
+            "scanner must detect explicit Lean proof escape")
+    new_sources = [ROOT / path for path in paths if path.startswith(allowed_src)
+                   and path.endswith(".lean")]
+    for path in new_sources:
+        require(proof_escape.search(path.read_text()) is None,
+                f"prohibited proof declaration in {path}")
+    print(f"PASS: no prohibited proof declarations in {len(new_sources)} new Lean modules")
+
+    # Exact cloud Compression Guard scanner also matches forbidden tokens in
+    # *comments*. Exercise the same stronger textual gate before pushing.
+    strict_cloud_scan = re.compile(
+        r"^[ \t]*(axiom|opaque)[ \t]|\b(sorry|admit|native_decide)\b", re.MULTILINE)
+    for lean_path in (CORE / "UEOT/V3/Compression").rglob("*.lean"):
+        require(strict_cloud_scan.search(lean_path.read_text()) is None,
+                f"cloud Compression Guard proof escape scanner rejects {lean_path}")
+    print("PASS: exact cloud Compression Guard proof escape scanner")
+
+    print("VERIFY: all first-party Lean files hashed, imported and source-inventoried")
+    first_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V1.json"
+    previous_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V2.json"
+    v3_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V3.json"
+    v4_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V4.json"
+    v5_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V5.json"
+    v6_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V6.json"
+    v7_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V7.json"
+    v8_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V8.json"
+    v9_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V9.json"
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V10.json"
+    previous = full_inventory.read_bytes()
+    run([sys.executable, str(CORE / "docs/compression/theory_completion/scientific_closure/scripts/audit_sisc_global_inventory.py")], output=True)
+    require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
+    inventory = json.loads(previous)
+    require(inventory["total_files"] == 598, "new first-party source inventory unexpectedly changed")
+    require(inventory["reachable_from_public_root"] == 596,
+            "new public root source reachability unexpectedly small")
+    require(not inventory["missing_local_ueot_imports"] and not inventory["import_cycles"],
+            "broken internal module graph")
+    old_inventory = json.loads(first_inventory.read_bytes())
+    require(old_inventory["total_files"] == 574,
+            "historic V1 inventory modified")
+    for name, old_source in old_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue  # public root legitimately acquires additive imports
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == old_source["sha256"],
+                "previously audited first-party Lean source changed: " + name)
+    v2_inventory = json.loads(previous_inventory.read_bytes())
+    require(v2_inventory["total_files"] == 583, "historic V2 inventory modified")
+    for name, v2_source in v2_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v2_source["sha256"],
+                "previous V2 first-party Lean source changed: " + name)
+
+    v3_inventory = json.loads(v3_path.read_bytes())
+    require(v3_inventory["total_files"] == 584, "historic V3 inventory modified")
+    for name, v3_source in v3_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v3_source["sha256"],
+                "previous V3 first-party Lean source changed: " + name)
+
+    v4_inventory = json.loads(v4_path.read_bytes())
+    require(v4_inventory["total_files"] == 586, "historic V4 inventory modified")
+    for name, v4_source in v4_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v4_source["sha256"],
+                "previous V4 first-party Lean source changed: " + name)
+
+    v5_inventory = json.loads(v5_path.read_bytes())
+    require(v5_inventory["total_files"] == 588, "historic V5 inventory modified")
+    for name, v5_source in v5_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v5_source["sha256"],
+                "previous V5 first-party Lean source changed: " + name)
+
+    v6_inventory = json.loads(v6_path.read_bytes())
+    require(v6_inventory["total_files"] == 591, "historic V6 inventory modified")
+    for name, v6_source in v6_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v6_source["sha256"],
+                "previous V6 first-party Lean source changed: " + name)
+
+    v7_inventory = json.loads(v7_path.read_bytes())
+    require(v7_inventory["total_files"] == 594, "historic V7 inventory modified")
+    for name, v7_source in v7_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v7_source["sha256"],
+                "previous V7 first-party Lean source changed: " + name)
+
+    v8_inventory = json.loads(v8_path.read_bytes())
+    require(v8_inventory["total_files"] == 598, "historic V8 inventory modified")
+    for name, v8_source in v8_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v8_source["sha256"],
+                "previous V8 first-party Lean source changed: " + name)
+
+    # V9 is immutable and the 3 newly adjusted module files were strictly
+    # comment-only changes relative to the exact first pushed PR head.
+    v9_inventory = json.loads(v9_path.read_bytes())
+    require(v9_inventory["total_files"] == 598, "historic V9 inventory modified")
+    for name, historical in v9_inventory["modules"].items():
+        if name in {
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure",
+            "UEOT.V3.Compression.TheoryCompletion",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticDescent",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCLinearPredictiveLift",
+            "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferExamples",
+        }:
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == historical["sha256"],
+                "previous V9 first-party Lean source changed: " + name)
+    exact_comment_replacements = {
+        "SISCStochasticDescent.lean": ("need not admit a Markov", "need not support a Markov"),
+        "SISCInterventionTransferExamples.lean": ("admit BOTH parents", "allow BOTH parents"),
+        "SISCLinearPredictiveLift.lean": ("need not admit any", "need not support any"),
+    }
+    for filename, (old_text, new_text) in exact_comment_replacements.items():
+        rel = ("formalization/ueot-core/UEOT/V3/Compression/" +
+               "TheoryCompletion/ScientificClosure/" + filename)
+        historical = run(["git", "show", f"efac5f5a:{rel}"])
+        require(historical.count(old_text) == 1, "historical comment missing: " + rel)
+        require((ROOT / rel).read_text() == historical.replace(old_text, new_text),
+                "non-comment or additional source change detected: " + rel)
+    print("PASS: 3 source comment-only patches validated against pinned PR head")
+
+    print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
+    run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)
+    print("VERIFY: six-state exact-rational stochastic trace/rank cross-check")
+    run([sys.executable, str(EVIDENCE / "sisc_stochastic_predictive_rank_test.py")], output=True)
+    print("VERIFY: exact-rational belief/intertwining and zero-evidence regression")
+    run([sys.executable, str(EVIDENCE / "sisc_belief_intertwining_exact_test.py")], output=True)
+    print("VERIFY: N4 coordinate-mean calibration, false decisions and separation-power method")
+    run([sys.executable, str(EVIDENCE / "sisc_n4_coordinate_calibration_method.py")], output=True)
+
+    manifest = json.loads((RAW / "manifest.json").read_text())
+    require(hashlib.sha256((RAW / "events.jsonl").read_bytes()).hexdigest() ==
+            manifest["raw_sha256"], "C7 manifest does not match raw archive")
+    print("VERIFY: C7 frozen evidence and mutation regression")
+    run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_verify.py"), str(RAW)], output=True)
+    run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_negative_tests.py"), str(RAW)], output=True)
+    run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_review_v2.py"), str(RAW)], output=True)
+    run([sys.executable, str(EVIDENCE / "sisc_c7_sqlite_review_v2_tests.py"), str(RAW)], output=True)
+    run([sys.executable, str(EVIDENCE / "sisc_si3_finite_channel_benchmark.py")])
+
+    print("VERIFY: three existing compression / finalization governance regressions")
+    for script in ("test_validate_compression_research.py", "test_validate_compression.py",
+                   "test_validate_finalization_receipt.py"):
+        run([sys.executable, str(CORE / "scripts" / script)], output=True)
+
+    print("LOCAL_GATE_PASS; NO_REMOTE_ACTION; SCIENTIFIC_C7_EXTERNAL_AND_INDEPENDENT_GATES_OPEN")
+
+
+if __name__ == "__main__":
+    main()
