@@ -16,7 +16,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[3]
 PKG = ROOT / "formalization" / "ueot-core"
-OUTPUT = PKG / "docs" / "compression" / "theory_completion" / "scientific_closure" / "SISC_GLOBAL_LEAN_INVENTORY_V6.json"
+OUTPUT = PKG / "docs" / "compression" / "theory_completion" / "scientific_closure" / "SISC_GLOBAL_LEAN_INVENTORY_V7.json"
 DECL = re.compile(r"^\s*(?:(?:private|protected|noncomputable|local|unsafe)\s+)*"
                   r"(theorem|lemma|def|abbrev|structure|class|inductive|instance|axiom|opaque)\s+([^\s(:]+)")
 IMPORT = re.compile(r"^\s*import\s+(UEOT(?:\.\w+)+)\s*$", re.MULTILINE)

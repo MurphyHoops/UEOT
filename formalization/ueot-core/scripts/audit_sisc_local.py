@@ -60,6 +60,7 @@ def main():
         "n2-time-bridge", "n2-predictive-belief", "n2-exact-test", "gate-v6",
         "n3-candidates", "n3-identification", "n3-fixtures", "gate-v7",
         "n4-risk-confidence", "n4-coordinate-confidence", "n4-power", "n4-exact-sampling", "gate-v8",
+        "n5-lineage-nogo", "n5-lineage-bridge", "n5-lineage-example", "gate-v9",
     }
     extra_stages = []
     for subject in extras:
@@ -176,6 +177,17 @@ def main():
         "registered_unique_identified_of_calibrated_margin",
         "coordinate_protocol_unique_of_calibration_and_margin",
         "measure_failure_to_identify_separated_candidate_le",
+        "full_microstate_process_does_not_fix_parent_semantics",
+        "fixed_physical_kernel_has_no_semantics_independent_parent_decoder",
+        "support_admitted_candidate_has_positive_transition",
+        "support_admitted_unique_operational_successor",
+        "support_admitted_unique_compatible_parent_edge",
+        "support_admitted_unique_compatible_offspring",
+        "support_admitted_offspring_excludes_same_object_repair",
+        "n5_toy_support_calibrated",
+        "n5_toy_supported_unique",
+        "n5_toy_reproductive_transmission",
+        "n5_toy_derived_offspring",
     ]
     ns = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC."
     with tempfile.TemporaryDirectory(prefix="sisc-axioms-") as scratch:
@@ -217,13 +229,14 @@ def main():
     v3_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V3.json"
     v4_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V4.json"
     v5_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V5.json"
-    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V6.json"
+    v6_path = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V6.json"
+    full_inventory = CORE / "docs/compression/theory_completion/scientific_closure/SISC_GLOBAL_LEAN_INVENTORY_V7.json"
     previous = full_inventory.read_bytes()
     run([sys.executable, str(CORE / "scripts/audit_sisc_global_inventory.py")], output=True)
     require(full_inventory.read_bytes() == previous, "global Lean source inventory drift")
     inventory = json.loads(previous)
-    require(inventory["total_files"] == 591, "new first-party source inventory unexpectedly changed")
-    require(inventory["reachable_from_public_root"] == 589,
+    require(inventory["total_files"] == 594, "new first-party source inventory unexpectedly changed")
+    require(inventory["reachable_from_public_root"] == 592,
             "new public root source reachability unexpectedly small")
     require(not inventory["missing_local_ueot_imports"] and not inventory["import_cycles"],
             "broken internal module graph")
@@ -271,6 +284,15 @@ def main():
         require(name in inventory["modules"] and
                 inventory["modules"][name]["sha256"] == v5_source["sha256"],
                 "previous V5 first-party Lean source changed: " + name)
+
+    v6_inventory = json.loads(v6_path.read_bytes())
+    require(v6_inventory["total_files"] == 591, "historic V6 inventory modified")
+    for name, v6_source in v6_inventory["modules"].items():
+        if name == "UEOT.V3.Compression.TheoryCompletion.ScientificClosure":
+            continue
+        require(name in inventory["modules"] and
+                inventory["modules"][name]["sha256"] == v6_source["sha256"],
+                "previous V6 first-party Lean source changed: " + name)
 
     print("VERIFY: deterministic exhaustive finite predictive quotient benchmark")
     run([sys.executable, str(EVIDENCE / "sisc_finite_future_refinement_benchmark.py")], output=True)
