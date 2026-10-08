@@ -34,6 +34,7 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCand
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStatisticalCandidateCalibration
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCMeanResponseCalibration
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCSeparationPower
+import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCCausalLineageNoGo
 
 /-!
 # UEOT Core v3 Scientific Closure public root
