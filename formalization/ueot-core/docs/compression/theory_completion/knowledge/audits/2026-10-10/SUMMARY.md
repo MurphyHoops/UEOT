@@ -33,6 +33,14 @@ expression constants, binder info and type structure): **37 groups,
 77 theorem declarations**, i.e. **40 extra theorem names**. Thirty-two
 groups cross files (67 declarations, 46 files); five are in-file.
 
+For all 40 representative-to-duplicate pairs, the compiled Lean Meta.isDefEq
+check succeeded (**40/40 PASS**), confirming that the *elaborated theorem
+types are definitionally equal* in the pinned Lean environment, not merely
+similar printed signatures. The checked pair list and a repeatable Lean
+verification script are included in this research snapshot. This still
+does NOT prove the corresponding proof bodies independently derive new
+science, nor license public API deletion.
+
 Real proof-term direct dependency extraction from all 77 cluster members
 shows **26 in-cluster direct proof-reference edges**; 23 clusters reuse
 another equivalent-type theorem directly. **14 clusters lack such an
@@ -142,7 +150,10 @@ or deleting one is not.
    locations, statement renderings, and 26 internal direct proof edges.
 4. NEAR_TYPE_15_DISTINCT_HEURISTIC_PAIRS.json: full candidate pairs,
    scores and source context, excluding equal-type repetitions.
-5. all_3793_theorem_direct_reuse_graph.csv: each public authored
+5. BINDER_NORMALIZED_TYPE_PAIRS_40.tsv and VERIFY_40_TYPE_EQUIVALENCES.lean:
+   re-run from formalization/ueot-core with lake env lean and the relative
+   VERIFY script; requires all 40 Lean Meta.isDefEq checks to succeed.
+6. all_3793_theorem_direct_reuse_graph.csv: each public authored
    source theorem and its direct referenced public source theorems.
 
 ### Method and confidence

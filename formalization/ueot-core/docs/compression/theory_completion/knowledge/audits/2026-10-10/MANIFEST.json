@@ -5,7 +5,9 @@
     "EVERY_DECLARATION_5553_COMPACT.csv",
     "ALL_binder_normalized_equal_type_clusters.json",
     "NEAR_TYPE_15_DISTINCT_HEURISTIC_PAIRS.json",
-    "all_3793_theorem_direct_reuse_graph.csv"
+    "all_3793_theorem_direct_reuse_graph.csv",
+    "BINDER_NORMALIZED_TYPE_PAIRS_40.tsv",
+    "VERIFY_40_TYPE_EQUIVALENCES.lean"
   ],
   "module_count": 633,
   "declaration_count": 5553,
@@ -25,5 +27,7 @@
     "Type normalized means binder names + metadata erased, not arbitrary definitional-equivalence or logical implication",
     "Cross-module duplicate statement does not mean removable module or wasted proof; API bridges may be needed",
     "Heuristic near-type candidate search is restricted and has false positives and false negatives"
-  ]
+  ],
+  "elaborated_types_defeq_verified_pairs": 40,
+  "elaborated_types_defeq_validation": "40/40 PASS via Lean Meta.isDefEq, compiled UEOT current main"
 }
