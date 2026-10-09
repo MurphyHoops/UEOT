@@ -18,7 +18,7 @@ ROOT = HERE.parents[5]
 CORE = ROOT / "formalization/ueot-core"
 PROOFS = CORE / "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure"
 CANON = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
-OUT = HERE / "UMC_LOCAL_EXACT_HEAD_AUDIT_V1.json"
+OUT = HERE / "UMC_LOCAL_EXACT_HEAD_AUDIT_V2.json"
 
 def run(cmd, cwd=ROOT):
     p = subprocess.run(cmd, cwd=str(cwd), text=True,
@@ -69,7 +69,7 @@ def audit(full):
                              lines[pos-1]):
                 raise RuntimeError("sourced declaration changed: "+row['pid']+" "+name)
     files=sorted(PROOFS.glob('*.lean'))
-    if len(files)<10:raise RuntimeError("UMC local modules incomplete")
+    if len(files)<16:raise RuntimeError("UMC local modules incomplete")
     found=[]
     forbidden=re.compile(r"\b(sorry|admit|native_decide)\b|"
                          r"^\s*(?:axiom|opaque)\s",re.M)
@@ -81,7 +81,7 @@ def audit(full):
             raise RuntimeError("forbidden escape, including cloud's raw scanner: "+p.name)
         for m in re.finditer(r'^\s*(?:theorem|lemma)\s+([A-Za-z_][A-Za-z0-9_]*)', code,re.M):
             found.append(CANON+m.group(1))
-    if len(found)<40 or len(set(found))!=len(found):
+    if len(found)<60 or len(set(found))!=len(found):
         raise RuntimeError("unexpected missing/duplicate UMC theorem names")
     rootfile=CORE/"UEOT/V3/Compression/TheoryCompletion.lean"
     imports=[x for x in rootfile.read_text().splitlines() if
@@ -101,7 +101,7 @@ def audit(full):
     if other:raise RuntimeError("tracked existing files outside owned research area: "+str(other))
     # Every local research stage must be explicitly assessed and no stage
     # may silently acquire an unconditional FULL claim via this L1 lane.
-    stages=json.loads((HERE/"UMC_LOCAL_STAGE_RESULTS_V1.json").read_text())
+    stages=json.loads((HERE/"UMC_LOCAL_STAGE_RESULTS_V2.json").read_text())
     if {x['id'] for x in stages.get('stages',[])} != {
           f'UMC-{n:02}' for n in range(7)} or len(stages.get('stages',[]))!=7:
         raise RuntimeError('seven-stage research evidence incomplete')
@@ -113,6 +113,13 @@ def audit(full):
         for name in stage.get('symbols',[]):
             if name not in found:
                 raise RuntimeError('stage cites missing local theorem: '+name)
+    global_dag=json.loads((HERE/"UMC_GLOBAL_MODULE_DAG_V2.json").read_text())
+    if (global_dag.get('cycles_detected') or global_dag.get('missing_internal_imports')
+        or global_dag['not_reachable_from_UEOT_root']
+        or global_dag['reachable_from_UEOT_root'] != global_dag['total_Lean_modules']):
+        raise RuntimeError('entire first-party Lean import graph not closed')
+    if global_dag['total_Lean_modules']<600:
+        raise RuntimeError('unexpected full-repository source inventory loss')
     source_atlas=Counter(r['mapping_status'] for r in atlas['records'])
     axioms_result="NOT_RUN"
     if full:
@@ -147,6 +154,8 @@ def audit(full):
       "UMC_axioms":axioms_result,
       "full_Lean":("PASS" if full else "NOT_RUN"),
       "public_root_imports":len(imports),
+      "global_first_party_Lean_modules":global_dag['total_Lean_modules'],
+      "full_import_dag_acyclic_reachable_complete":True,
       "frozen_source_impact":"NONE",
       "claim":"CONDITIONAL_COMMON_PROCESS_CONSTRUCTION_AND_BOUNDARIES",
       "global_strong_unified_closure":"NOT_ESTABLISHED",
