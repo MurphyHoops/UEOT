@@ -9,7 +9,23 @@
   "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
-  "l2_existing_path_exceptions": [],
+  "l2_existing_path_exceptions": [
+    {
+      "exception_id": "L2-FKRG-CODEX-305-306",
+      "track": "TC",
+      "branch_patterns": [
+        "^compression/theory-completion-fkrg-review-fixes$"
+      ],
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_umc_local.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_local_branch_inventory.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "reason": "Correct four demonstrated Codex review findings on merged PRs #305 and #306: preserve full receipt in fast mode, remove retired local-ref dependency, index attributed and qualified Lean declarations, and permit offline Git status when origin/main absent. Add exact targeted regression tests. No frozen Lean theory, ledger or historical receipt changes.",
+      "temporary": true
+    }
+  ],
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
