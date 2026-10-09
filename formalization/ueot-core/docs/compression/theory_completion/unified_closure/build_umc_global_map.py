@@ -12,7 +12,7 @@ import re, json
 ROOT = Path(__file__).resolve().parents[6]
 CORE = ROOT / 'formalization/ueot-core'
 BASE = CORE / 'UEOT'
-OUT = Path(__file__).parent / 'UMC_GLOBAL_MODULE_DAG_V2.json'
+OUT = Path(__file__).parent / 'UMC_GLOBAL_MODULE_DAG_V3.json'
 
 def category(path: Path):
     rel = path.relative_to(CORE).as_posix()
