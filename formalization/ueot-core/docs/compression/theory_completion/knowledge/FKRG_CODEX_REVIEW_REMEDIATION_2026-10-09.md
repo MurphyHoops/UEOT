@@ -29,7 +29,7 @@ python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/fkr
 python3 formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_local_branch_inventory.py --output /tmp/umc-current-branch-inventory.json
 ```
 
-Thirteen positive/negative tests include the four initial Codex failures, stale index, unknown symbol, and existing proof reuse. The 5,553 current records are **lexical candidates**, not 5,553 fully elaborated proofs. The existing Core 106/106 frozen count, Compression four counted generators, and P12 PARTIAL claim remain unchanged.
+Fifteen positive/negative tests include the four initial Codex failures, stale index, unknown symbol, and existing proof reuse. The 5,553 current records are **lexical candidates**, not 5,553 fully elaborated proofs. The existing Core 106/106 frozen count, Compression four counted generators, and P12 PARTIAL claim remain unchanged.
 
 A new GitHub PR must be reviewed at its exact head, have **all review comments addressed and threads resolved**, and only be merged after required checks. Do not equate review submission with approval or unconditionally trust the bot summary; a completed code review with suggestions is a review with open work.
 
@@ -39,6 +39,9 @@ Open FKRG upgrades beyond v1.1: a machine-built declaration-level dependency DAG
 
 - The first PR #309 CI exposed a genuine GitHub detached checkout without a local \`main\`: UMC fast audit now uses \`refs/heads/main\` or \`refs/remotes/origin/main\`, and fails closed if neither exists.
 - The subsequent #309 Codex review [4230694470](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230694470) caught the remaining ambiguity: when no main ref exists, **the branch inventory now reports UNKNOWN ancestry** and never claims a branch is already merged into main; even Markdown reports mark main as UNAVAILABLE.
-- CI/no-main and historical-evidence immutability tests included in 13/13 FKRG regression suite.
+- CI/no-main and historical-evidence immutability tests included in 15/15 FKRG regression suite.
 
 - Second exact-head Codex review of #309 [4230799348](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230799348) identified a leftover static Markdown paragraph that still asserted older branches were merged even when no main ref was available. The generated report now conditionally omits all such assertions in no-main mode and states explicit uncertainty; a regression asserts absent stale \`formal/p*\` / \`主线主动收窄\` claims.
+
+- Third exact-head Codex review of #309 [4230869532](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230869532) found that source-fingerprint-only caching fails to invalidate a database built by an older extractor. FKRG V2 now pins **both** Lean-source fingerprint and extractor-code SHA-256 (plus schema) and refuses old cache versions as stale.
+- Independent source analysis found two private helpers called \`survivalProb_zero_eq_one_of_not_mem\` in distinct modules: these are **private** Lean declarations, not a single publicly reusable constant. The index now gives private candidates source-scoped synthetic identities and refuses a public \`lean-check\` for them. Negative regression tests cover both defects.

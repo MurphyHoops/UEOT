@@ -169,6 +169,38 @@ class FkrgTests(unittest.TestCase):
         c.commit();c.close()
         good,_=fkrg.fresh(self.db);good.close()
 
+    def test_cache_from_old_extractor_is_stale_even_if_lean_unchanged(self):
+        c=sqlite3.connect(self.db)
+        recorded=dict(c.execute("SELECT key,value FROM meta").fetchall())
+        try:
+            self.assertEqual(recorded["schema"],"FKRG_V2")
+            self.assertEqual(len(recorded["extractor_sha256"]),64)
+            for key,value in (("schema","FKRG_V1"),
+                              ("extractor_sha256","OLD_PARSER_DIGEST")):
+                c.execute("UPDATE meta SET value=? WHERE key=?",(value,key))
+                c.commit()
+                with self.assertRaisesRegex(RuntimeError,"STALE_INDEX"):
+                    fkrg.fresh(self.db)
+                c.execute("UPDATE meta SET value=? WHERE key=?",
+                          (recorded[key],key))
+                c.commit()
+            good,_=fkrg.fresh(self.db)
+            good.close()
+        finally:
+            c.close()
+
+    def test_private_helpers_not_alias_public_lean_theorems(self):
+        c,_=fkrg.fresh(self.db)
+        rows=c.execute("""SELECT candidate FROM declarations
+            WHERE simple='survivalProb_zero_eq_one_of_not_mem'""").fetchall()
+        self.assertGreaterEqual(len(rows),2)
+        self.assertEqual(len(rows),len({r[0] for r in rows}))
+        for (candidate,) in rows:
+            self.assertTrue(candidate.startswith("private@"),candidate)
+            with self.assertRaisesRegex(RuntimeError,"PRIVATE_LEAN"):
+                fkrg.lean_check(c,candidate)
+        c.close()
+
     def test_unknown_symbol_refuses_kernel_verification(self):
         c,_=fkrg.fresh(self.db)
         with self.assertRaisesRegex(RuntimeError,"NO_LEXICAL_FULL_NAME"):

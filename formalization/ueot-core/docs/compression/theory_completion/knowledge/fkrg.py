@@ -21,6 +21,8 @@ CORE = HERE.parents[3]
 REPO = CORE.parents[1]
 TASKS = HERE / "FKRG_TASKS.json"
 DEFAULT_DB = Path(os.environ.get("UEOT_FKRG_DB", "/tmp/ueot-fkrg-index.sqlite3"))
+INDEX_SCHEMA = "FKRG_V2"
+
 sys.path.insert(0, str(HERE.parent / "unified_closure"))
 from audit_umc_local import no_lean_comments
 
@@ -71,7 +73,12 @@ def extract(module,path):
         if not m: continue
         kind,local_qualified=m.groups()
         simple=local_qualified.rsplit(".",1)[-1]
-        candidate=(ns+"." if ns else "")+local_qualified
+        # Lean elaborates private names to mangled, module-unique constants:
+        # two source-private helpers may have the SAME apparent user name.
+        # Never index them as publicly reusable declarations.
+        is_private = re.search(r"\bprivate\b",line[:m.start(1)]) is not None
+        candidate = (f"private@{module}:{i+1}:{local_qualified}" if is_private else
+                     (ns+"." if ns else "")+local_qualified)
         snippet=" ".join(x.strip() for x in lines[i:min(i+6,len(lines))])
         before="\n".join(lines[max(0,i-12):i])
         pos=before.rfind("/--")
@@ -107,7 +114,11 @@ def build(db):
               VALUES(?,?,?,?,?,?,?,?)""",entries)
             count+=len(entries)
         c.execute("INSERT INTO search(search) VALUES('rebuild')")
-        meta={"schema":"FKRG_V1","source_tree_sha256":fingerprint(mapping),
+        meta={"schema":INDEX_SCHEMA,
+              # Source-only fingerprints are insufficient: fixed extractor
+              # code must invalidate databases made by the old parser.
+              "extractor_sha256":sha256(Path(__file__).read_bytes()).hexdigest(),
+              "source_tree_sha256":fingerprint(mapping),
               "module_count":str(len(mapping)),"declaration_count":str(count),
               "git_head_at_build":git("rev-parse","HEAD"),
               "type_authority":"LEXICAL_CANDIDATES_REQUIRE_KERNEL_VERIFICATION"}
@@ -122,7 +133,10 @@ def fresh(db):
     c=sqlite3.connect(db);c.row_factory=sqlite3.Row
     meta=dict(c.execute("SELECT key,value FROM meta").fetchall())
     live=sources()
-    if meta["source_tree_sha256"]!=fingerprint(live) or int(meta["module_count"])!=len(live):
+    if (meta.get("schema")!=INDEX_SCHEMA or
+        meta.get("extractor_sha256")!=sha256(Path(__file__).read_bytes()).hexdigest() or
+        meta.get("source_tree_sha256")!=fingerprint(live) or
+        int(meta.get("module_count","0"))!=len(live)):
         c.close();raise RuntimeError("STALE_INDEX: source modified, run build")
     return c,meta
 
@@ -152,6 +166,8 @@ def show(c,symbol):
     for r in rows:print(json.dumps(dict(r),ensure_ascii=False,indent=2))
 
 def lean_check(c,symbol):
+    if symbol.startswith("private@"):
+        raise RuntimeError("PRIVATE_LEAN_DECLARATION_NOT_PUBLICLY_REUSABLE")
     rows=c.execute("SELECT 1 FROM declarations WHERE candidate=? LIMIT 1",(symbol,)).fetchall()
     if not rows:raise RuntimeError("NO_LEXICAL_FULL_NAME; run show")
     with tempfile.TemporaryDirectory(prefix="fkrg-kernel-") as tmp:
