@@ -113,8 +113,15 @@ class FkrgTests(unittest.TestCase):
             target=Path(tmp)/"receipt.json"
             immutable='{"UMC_axioms":"145/145_LEAN_STANDARD_AXIOMS","full_Lean":"PASS"}\n'
             target.write_text(immutable)
+            # The receipt invariant is independent of checkout branch name.
+            # Reuse the exact branch authorized in the immutable base L2 policy
+            # even if a reviewer checks out this commit on a work/detached ref.
             with mock.patch.object(audit_umc_local,"OUT",target):
-                result=audit_umc_local.audit(False)
+                with mock.patch.object(
+                    audit_umc_local,"active_research_branch",
+                    return_value="compression/theory-completion-fkrg-review-fixes"
+                ):
+                    result=audit_umc_local.audit(False)
             self.assertEqual(target.read_text(),immutable)
             self.assertEqual(result["full_Lean"],"NOT_RUN")
 
