@@ -24,7 +24,13 @@ DEFAULT_DB = Path(os.environ.get("UEOT_FKRG_DB", "/tmp/ueot-fkrg-index.sqlite3")
 sys.path.insert(0, str(HERE.parent / "unified_closure"))
 from audit_umc_local import no_lean_comments
 
-DECL = re.compile(r"^\s*(?:(?:private|protected|noncomputable|unsafe|irreducible|partial)\s+)*(theorem|lemma|def|abbrev|structure|class|inductive)\s+([A-Za-z_][A-Za-z_0-9']*)\b")
+# Attributes and qualified names are part of valid Lean declarations.
+# This is a lexical candidate extractor; semantic equivalence is not claimed.
+DECL = re.compile(
+    r"^\s*(?:(?:@\[[^\]\n]*\]|private|protected|noncomputable|unsafe|irreducible|partial)\s+)*"
+    r"(theorem|lemma|def|abbrev|structure|class|inductive)\s+"
+    r"([A-Za-z_][A-Za-z_0-9']*(?:\.[A-Za-z_][A-Za-z_0-9']*)*)\b"
+)
 SCOPE = re.compile(r"^\s*(namespace|section|end)\b(?:\s+(\S+))?")
 IMPORT = re.compile(r"^\s*import\s+(\S+)")
 
@@ -63,8 +69,9 @@ def extract(module,path):
             elif op=="end" and stack:ns=stack.pop()
         m=DECL.match(line)
         if not m: continue
-        kind,simple=m.groups()
-        candidate=(ns+"." if ns else "")+simple
+        kind,local_qualified=m.groups()
+        simple=local_qualified.rsplit(".",1)[-1]
+        candidate=(ns+"." if ns else "")+local_qualified
         snippet=" ".join(x.strip() for x in lines[i:min(i+6,len(lines))])
         before="\n".join(lines[max(0,i-12):i])
         pos=before.rfind("/--")
@@ -184,14 +191,20 @@ def impact(c,sym):
         print(json.dumps({"symbol":sym,"module":module,"importing_modules":dependents,
           "scope":"IMPORT_DAG_NOT_DECLARATION_PROOF_DAG"},ensure_ascii=False,indent=2))
 
+def optional_ref(name):
+    """Missing remote-tracking refs are normal in offline/detached clones."""
+    p=subprocess.run(["git","rev-parse","--verify","--quiet",name],
+                     cwd=REPO,capture_output=True,text=True)
+    return p.stdout.strip() if p.returncode==0 else None
+
 def status(db):
     try:
         c,meta=fresh(db);c.close();state="FRESH"
     except RuntimeError as e:state=str(e);meta={}
     tasks=json.loads(TASKS.read_text())["tasks"]
-    print(json.dumps({"branch":git("branch","--show-current"),
+    print(json.dumps({"branch":git("branch","--show-current") or "(detached)",
       "head":git("rev-parse","HEAD"),
-      "cached_origin_main":git("rev-parse","origin/main"),
+      "cached_origin_main":optional_ref("refs/remotes/origin/main"),
       "index_state":state,"index":meta,
       "tasks":{k:{"status":v["status"],"next_action":v["next_action"]}
          for k,v in tasks.items()},

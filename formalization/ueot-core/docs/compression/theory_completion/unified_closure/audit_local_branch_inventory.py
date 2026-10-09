@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Local, read-only branch/worktree inventory. No merges, removals or pushes."""
+import argparse
 import json
 import re
 import subprocess
@@ -30,7 +31,10 @@ def is_ancestor(branch, target):
     ).returncode == 0
 
 def build():
-    current = "compression/theory-completion-unified-local"
+    current = git("symbolic-ref", "--quiet", "--short", "HEAD", allow_fail=True)
+    baseline = (git("rev-parse", "--verify", "refs/heads/main", allow_fail=True)
+                or git("rev-parse", "--verify", "refs/remotes/origin/main", allow_fail=True)
+                or git("rev-parse", "HEAD"))
     names = git("for-each-ref", "--format=%(refname:short)", "refs/heads").splitlines()
     leanroot = ROOT / "formalization/ueot-core/UEOT"
     current_declarations = set()
@@ -38,15 +42,15 @@ def build():
         current_declarations.update(DECL.findall(file.read_text()))
     branches = []
     for name in names:
-        main_ancestor = is_ancestor(name, "main")
+        main_ancestor = is_ancestor(name, baseline)
         local_head = name == current
-        status = ("ACTIVE_LOCAL_UNIFICATION" if local_head else
+        status = ("CURRENT_CHECKOUT" if local_head else
                   "ALREADY_REACHABLE_FROM_MAIN" if main_ancestor else
                   "HISTORICAL_DIVERGENCE_REQUIRES_CONTENT_REVIEW")
         changed = []
         missing_symbols = []
         if not main_ancestor and not local_head:
-            changed = git("diff", "--name-only", "main..." + name).splitlines()
+            changed = git("diff", "--name-only", baseline + "..." + name).splitlines()
             for path in changed:
                 if not path.startswith("formalization/ueot-core/UEOT/") or not path.endswith(".lean"):
                     continue
@@ -58,7 +62,7 @@ def build():
         branches.append({
             "name": name, "head": git("rev-parse", name), "status": status,
             "is_main_ancestor": main_ancestor,
-            "unique_commits_vs_main": int(git("rev-list", "--count", "main.." + name)),
+            "unique_commits_vs_main": int(git("rev-list", "--count", baseline + ".." + name)),
             "changed_paths_since_merge_base": changed,
             "changed_path_count": len(changed),
             "historical_decl_names_missing_from_current_source": missing_symbols,
@@ -68,7 +72,7 @@ def build():
                     s.endswith(("COMPRESSION_LEDGER.yaml","TheoryCompletion.lean","UEOT.lean"))
                     or s.startswith(".github/") for s in changed
                 ) else "HISTORICAL_CONTENT_DIFF"),
-            "recommendation": ("KEEP_ACTIVE_NO_REMOTE_PUSH" if local_head else
+            "recommendation": ("PRESERVE_CURRENT_CHECKOUT" if local_head else
               "RETAIN_HISTORY_ALREADY_IN_MAIN" if main_ancestor else
               "NO_WHOLE_BRANCH_MERGE_COMPARE_LATEST_SOURCE_AND_KEEP_PROVENANCE"),
         })
@@ -94,9 +98,12 @@ def build():
         "schema": 1,
         "scope": "LOCAL_GIT_GRAPH_AND_LEXICAL_LEAN_RECONCILIATION_NOT_SEMANTIC_CERTIFICATION",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "main": git("rev-parse", "main"),
-        "active_local_head": git("rev-parse", current),
-        "origin_main_local_tracking_snapshot": git("rev-parse", "origin/main"),
+        "main": git("rev-parse", baseline),
+        "baseline_ref": baseline,
+        "active_branch": current,
+        "active_local_head": git("rev-parse", "HEAD"),
+        "origin_main_local_tracking_snapshot":
+            git("rev-parse", "--verify", "refs/remotes/origin/main", allow_fail=True),
         "branch_count": len(branches),
         "branch_status_counts": dict(counts),
         "worktree_count": len(wt),
@@ -112,9 +119,15 @@ def build():
         ],
     }
 
-def run():
+def run(output=None, report=None):
+    # Historic date-stamped snapshots are immutable evidence, not live targets.
+    protected = {OUT.resolve(), REPORT.resolve()}
+    for target in (output, report):
+        if target is not None and Path(target).resolve() in protected:
+            raise ValueError("refusing to overwrite historical UMC audit evidence")
     data = build()
-    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    if output is not None:
+        Path(output).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
     statuses = data["branch_status_counts"]
     nonmerged = [b for b in data["branches"]
                  if b["status"] == "HISTORICAL_DIVERGENCE_REQUIRES_CONTENT_REVIEW"]
@@ -123,7 +136,7 @@ def run():
         "",
         f"- 基线：main {data['main'][:12]}，活动研究 {data['active_local_head'][:12]}；仅本地快照。",
         f"- {data['branch_count']} 个分支：main 已包含 {statuses.get('ALREADY_REACHABLE_FROM_MAIN',0)}；"
-        f"活动研究 {statuses.get('ACTIVE_LOCAL_UNIFICATION',0)}；图上尚未并入 {len(nonmerged)}。",
+        f"活动研究 {statuses.get('CURRENT_CHECKOUT',0)}；图上尚未并入 {len(nonmerged)}。",
         f"- {data['worktree_count']} 个 worktree；有已跟踪文件修改的工作树数"
         f" {data['tracked_dirty_worktree_count']}。",
         f"- 当前代码查不到的历史 Lean 声明名有"
@@ -152,19 +165,20 @@ def run():
         "但当前安全合同和账本更新，不做整体 cherry-pick。",
         "",
         "## 整理决策",
-        "1. 61 个已进入 main 的分支：保留 Git 证明来源，不重复集成。",
-        "2. 21 个图上分叉的旧分支：仅对当前源码实际缺失的、语义审计通过的"
+        f"1. {statuses.get('ALREADY_REACHABLE_FROM_MAIN',0)} 个已进入基线的分支：保留 Git 证明来源，不重复集成。",
+        f"2. {len(nonmerged)} 个图上分叉分支：仅对当前源码实际缺失的、语义审计通过的"
         "定理作选择性迁移。本轮无已确认可以整支合并的分支。",
         "3. 所有 detached review worktree 保留；其已跟踪内容干净"
         "不等于 untracked 内容可删除。",
-        "4. 继续在活动 UMC 本地分支建立数学桥并编译；"
+        "4. 仅在当前明确授权的研究分支推进；"
         "不改冻结 106/106、四生成器、P12 PARTIAL 和远端 main。",
         "",
         "## 审计方法限制",
         *["- " + x for x in data["limits"]],
         "",
     ])
-    REPORT.write_text("\n".join(lines), encoding="utf-8")
+    if report is not None:
+        Path(report).write_text("\n".join(lines), encoding="utf-8")
     print("UMC_LOCAL_BRANCH_AUDIT", json.dumps({
         "branches": data["branch_count"],
         "main_ancestor": statuses.get("ALREADY_REACHABLE_FROM_MAIN",0),
@@ -174,4 +188,8 @@ def run():
         "missing_lean_symbol_names": data["missing_historical_lean_symbol_count"],
     }, sort_keys=True))
 if __name__ == "__main__":
-    run()
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--output", type=Path, help="new JSON destination; default stdout summary only")
+    ap.add_argument("--report", type=Path, help="new Markdown destination")
+    args = ap.parse_args()
+    run(args.output, args.report)

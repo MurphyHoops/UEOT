@@ -96,8 +96,11 @@ def audit(full):
     allowed1="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
     allowed2="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/"
     allowed3="formalization/ueot-core/docs/compression/theory_completion/unified_closure/"
+    allowed4="formalization/ueot-core/docs/compression/theory_completion/knowledge/"
+    # FKRG is also Track TC-owned: its correctness fixes must not appear
+    # as cross-track edits in this local scientific report.
     other=[x for x in only if x!=allowed1 and not
-           (x.startswith(allowed2) or x.startswith(allowed3))]
+           (x.startswith(allowed2) or x.startswith(allowed3) or x.startswith(allowed4))]
     if other:raise RuntimeError("tracked existing files outside owned research area: "+str(other))
     # Every local research stage must be explicitly assessed and no stage
     # may silently acquire an unconditional FULL claim via this L1 lane.
@@ -185,7 +188,9 @@ def audit(full):
       "cloud_push":"FORBIDDEN_BY_THIS_LOCAL_TASK",
       "epistemic_scope":"Proof validity is conditional on actual theorem premises; file/declaration index is not an independent semantic audit."
     }
-    OUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n")
+    # Fast checks are transient: preserve the committed full-axiom receipt.
+    if full:
+        OUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n")
     return result
 
 if __name__=="__main__":

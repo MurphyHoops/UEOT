@@ -6,6 +6,9 @@ import sqlite3
 import subprocess
 import tempfile
 import unittest
+from unittest import mock
+from contextlib import redirect_stdout
+import io
 import sys
 
 HERE=Path(__file__).resolve().parent
@@ -38,6 +41,66 @@ class FkrgTests(unittest.TestCase):
                     "UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.jointRepairKernel_restored"):
             self.assertIsNotNone(c.execute("SELECT id FROM declarations WHERE candidate=?",(sym,)).fetchone())
         c.close()
+
+    def test_inline_attribute_declaration_indexed(self):
+        c,_=fkrg.fresh(self.db)
+        row=c.execute("SELECT kind FROM declarations WHERE candidate=?",(
+            "UEOT.V3.FiniteDiscountedControl.Model.coe_discountNN",)).fetchone()
+        self.assertIsNotNone(row, "Codex #306: @[simp] theorem missing")
+        self.assertEqual(row["kind"],"theorem")
+        c.close()
+
+    def test_qualified_declaration_not_truncated(self):
+        c,_=fkrg.fresh(self.db)
+        row=c.execute("SELECT candidate FROM declarations WHERE candidate=?",(
+            "UEOT.V3.ProcessInterface.Interface.comp",)).fetchone()
+        self.assertIsNotNone(row,"Codex #306: def Interface.comp truncated")
+        wrong=c.execute("""SELECT candidate FROM declarations
+           WHERE path LIKE ? AND line=36 AND candidate=?""",(
+           "%/ProcessInterface.lean","UEOT.V3.ProcessInterface.Interface")).fetchone()
+        self.assertIsNone(wrong)
+        c.close()
+
+    def test_offline_status_without_origin_main(self):
+        self.assertIsNone(fkrg.optional_ref("refs/remotes/nonexistent-remote/main"))
+        with mock.patch.object(fkrg,"optional_ref",return_value=None):
+            sink=io.StringIO()
+            with redirect_stdout(sink):
+                fkrg.status(self.db)
+            result=json.loads(sink.getvalue())
+            self.assertIsNone(result["cached_origin_main"])
+            self.assertEqual(result["index_state"],"FRESH")
+            self.assertEqual(result["remote_ci"],"NOT_CHECKED_OFFLINE")
+
+    def test_fast_audit_cannot_overwrite_full_receipt(self):
+        import audit_umc_local
+        with tempfile.TemporaryDirectory(prefix="fkrg-nonfull-") as tmp:
+            target=Path(tmp)/"receipt.json"
+            immutable='{"UMC_axioms":"145/145_LEAN_STANDARD_AXIOMS","full_Lean":"PASS"}\n'
+            target.write_text(immutable)
+            with mock.patch.object(audit_umc_local,"OUT",target):
+                result=audit_umc_local.audit(False)
+            self.assertEqual(target.read_text(),immutable)
+            self.assertEqual(result["full_Lean"],"NOT_RUN")
+
+    def test_inventory_detached_no_private_branch(self):
+        import audit_local_branch_inventory as inventory
+        def fake_git(*args,**kwargs):
+            if args[0]=="symbolic-ref":return None
+            if args[0]=="for-each-ref":return ""
+            if args[0]=="worktree":return ""
+            if args[0]=="rev-parse" and args[-1] in ("HEAD","deadbeef"):
+                return "deadbeef"
+            if args[0]=="rev-parse":return None
+            raise AssertionError(("unexpected git call",args))
+        with tempfile.TemporaryDirectory(prefix="fkrg-inventory-") as tmp:
+            with mock.patch.object(inventory,"ROOT",Path(tmp)):
+                with mock.patch.object(inventory,"git",side_effect=fake_git):
+                    data=inventory.build()
+            self.assertIsNone(data["active_branch"])
+            self.assertEqual(data["active_local_head"],"deadbeef")
+            self.assertEqual(data["baseline_ref"],"deadbeef")
+            self.assertEqual(data["branch_count"],0)
 
     def test_cross_module_import_lookup(self):
         c,_=fkrg.fresh(self.db)
