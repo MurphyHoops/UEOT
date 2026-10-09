@@ -97,6 +97,7 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViabilityNonvacuityWi
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalCoreAssembly
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.UnifiedCoreClosureCertificate
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalSufficiencyWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalViabilityMaximality
 /-!
 # UEOT Theory Completion public root
 
