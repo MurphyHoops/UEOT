@@ -92,6 +92,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ActiveHiddenOptimalCo
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictiveViabilityTransport
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MultiScaleExactControlComposition
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MultiScaleFiniteWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViabilityKernelIntertwining
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViabilityNonvacuityWitness
 /-!
 # UEOT Theory Completion public root
 
