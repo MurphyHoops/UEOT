@@ -1,0 +1,64 @@
+{
+  "schema": "FKRG_TASK_CONTRACT_V1",
+  "authority": "Existing UEOT frozen Core ledger, TC mission and GitHub Issue #302; no parallel counted status",
+  "tracker": "https://github.com/MurphyHoops/UEOT/issues/302",
+  "tasks": {
+    "UMC-R3-CAUSAL-RESTRICTION": {
+      "status": "OPEN",
+      "scope": "finite source causal randomized policies",
+      "reuse_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.viableSourceAction",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.all_positive_causal_histories_preserve_viability"
+      ],
+      "new_obligations": [
+        "characterize zero probability of all unsafe original actions",
+        "construct the restricted causal randomized action kernel without discarding histories",
+        "prove exact finite/infinite reward-value fidelity"
+      ],
+      "known_boundaries": [
+        "safe constrained optimum is not unrestricted optimum",
+        "positive histories are not an independent full path-measure construction"
+      ],
+      "next_action": "formulate and prove source-safe policy distribution restriction lemma"
+    },
+    "UMC-R2-OBSERVABILITY-RANK": {
+      "status": "OPEN",
+      "scope": "finite stochastic future trace testing",
+      "reuse_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.stochastic_future_complete_probes_card_le",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.finite_complete_probe_card_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.no_finite_future_probe_identification_if_not_lumpable"
+      ],
+      "new_obligations": [
+        "finite test length or show impossibility under explicit assumptions",
+        "constructive rank/indicator spanning conditions, conditioning and error bounds",
+        "stochastic examples retaining the six-state no-go"
+      ],
+      "known_boundaries": [
+        "cardinality bound is not word-length bound",
+        "pairwise probes do not entail strong lumpability"
+      ],
+      "next_action": "reuse SISC finite cardinal lemma and isolate stochastic word-length issue"
+    },
+    "UMC-R4-COMMON-SOURCE-REPAIR": {
+      "status": "OPEN",
+      "scope": "same process: internal program, physical repair and resource accounting",
+      "reuse_symbols": [
+        "UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.jointRepairKernel_restored",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.reconstructed_program_joint_and_source_safety",
+        "UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.jointRecoveryBasin_recovers"
+      ],
+      "new_obligations": [
+        "identify one actual physical and resource source supporting all registered primitives",
+        "connect resource costs and external replenishment to the same source dynamics",
+        "make trust and recovery fault envelopes explicit"
+      ],
+      "known_boundaries": [
+        "trusted interpreter and program correctness remain premises",
+        "abstract accounting does not imply thermodynamic resource proof"
+      ],
+      "next_action": "construct a single jointly typed resource-and-repair witness by adapter, not duplicate RLSR"
+    }
+  }
+}
