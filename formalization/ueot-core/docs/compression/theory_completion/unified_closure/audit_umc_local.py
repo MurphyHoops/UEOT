@@ -51,6 +51,20 @@ def no_lean_comments(text):
     if depth:raise RuntimeError("unterminated Lean block comment")
     return "".join(o)
 
+def baseline_main_ref():
+    """Use local main or fetched origin/main; a detached CI PR has no main.
+
+    Fail closed if neither exists: diff-scope governance must not be
+    silently bypassed by comparing against HEAD itself.
+    """
+    for candidate in ("refs/heads/main", "refs/remotes/origin/main"):
+        p=subprocess.run(["git","rev-parse","--verify","--quiet",candidate],
+                         cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL)
+        if p.returncode == 0:
+            return candidate
+    raise RuntimeError("main baseline unavailable: fetch origin main before auditing")
+
+
 def audit(full):
     atlas=json.loads((HERE/"UMC_00_SOURCE_ATLAS_V1.json").read_text())
     if len(atlas['records'])!=106 or len({r['pid'] for r in atlas['records']})!=106:
@@ -92,7 +106,8 @@ def audit(full):
     # Git quotes non-ASCII report filenames by default. Disable C-style
     # path escaping for the ACL check; otherwise a valid Chinese-named
     # research report is incorrectly classified as outside Track TC.
-    only=run(["git","-c","core.quotePath=false","diff","main","--name-only"]).splitlines()
+    baseline=baseline_main_ref()
+    only=run(["git","-c","core.quotePath=false","diff",baseline,"--name-only"]).splitlines()
     allowed1="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
     allowed2="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/"
     allowed3="formalization/ueot-core/docs/compression/theory_completion/unified_closure/"
@@ -172,7 +187,7 @@ def audit(full):
       # A committed receipt cannot embed its own HEAD SHA: that would
       # invalidate the receipt by changing the HEAD on every commit.
       # Exact verified Git identity is printed by the CLI after validation.
-      "canonical_main":run(["git","rev-parse","main"]).strip(),
+      "canonical_main":run(["git","rev-parse",baseline]).strip(),
       "research_modules":len(files),"UMC_theorems_and_lemmas":len(found),
       "source_PIDs_located":len(atlas["records"]),
       "source_provenance":dict(source_atlas),

@@ -72,6 +72,23 @@ class FkrgTests(unittest.TestCase):
             self.assertEqual(result["index_state"],"FRESH")
             self.assertEqual(result["remote_ci"],"NOT_CHECKED_OFFLINE")
 
+    def test_ci_detached_main_baseline_falls_back_to_origin_main(self):
+        import audit_umc_local
+        from types import SimpleNamespace
+        seen=[]
+        def fake_run(argv,**kwargs):
+            seen.append(argv[-1])
+            return SimpleNamespace(returncode=1 if
+                argv[-1]=="refs/heads/main" else 0)
+        with mock.patch.object(audit_umc_local.subprocess,"run",side_effect=fake_run):
+            self.assertEqual(audit_umc_local.baseline_main_ref(),
+                             "refs/remotes/origin/main")
+        self.assertEqual(seen,["refs/heads/main","refs/remotes/origin/main"])
+        with mock.patch.object(audit_umc_local.subprocess,"run",
+                              return_value=SimpleNamespace(returncode=1)):
+            with self.assertRaisesRegex(RuntimeError,"main baseline unavailable"):
+                audit_umc_local.baseline_main_ref()
+
     def test_fast_audit_cannot_overwrite_full_receipt(self):
         import audit_umc_local
         with tempfile.TemporaryDirectory(prefix="fkrg-nonfull-") as tmp:
@@ -87,10 +104,11 @@ class FkrgTests(unittest.TestCase):
         import audit_local_branch_inventory as inventory
         def fake_git(*args,**kwargs):
             if args[0]=="symbolic-ref":return None
-            if args[0]=="for-each-ref":return ""
+            if args[0]=="for-each-ref":return "feature"
             if args[0]=="worktree":return ""
             if args[0]=="rev-parse" and args[-1] in ("HEAD","deadbeef"):
                 return "deadbeef"
+            if args[0]=="rev-parse" and args[-1]=="feature":return "featureSHA"
             if args[0]=="rev-parse":return None
             raise AssertionError(("unexpected git call",args))
         with tempfile.TemporaryDirectory(prefix="fkrg-inventory-") as tmp:
@@ -100,7 +118,22 @@ class FkrgTests(unittest.TestCase):
             self.assertIsNone(data["active_branch"])
             self.assertEqual(data["active_local_head"],"deadbeef")
             self.assertEqual(data["baseline_ref"],"deadbeef")
-            self.assertEqual(data["branch_count"],0)
+            self.assertEqual(data["branch_count"],1)
+            self.assertIsNone(data["main"])
+            self.assertFalse(data["main_comparison_available"])
+            self.assertEqual(data["baseline_meaning"],
+                             "HEAD_ONLY_NOT_MAIN_DO_NOT_CLASSIFY_MERGED")
+            self.assertEqual(data["branches"][0]["status"],"MAIN_BASELINE_UNAVAILABLE")
+            self.assertIsNone(data["branches"][0]["is_main_ancestor"])
+            self.assertIsNone(data["branches"][0]["unique_commits_vs_main"])
+            self.assertNotIn("ALREADY",data["branches"][0]["recommendation"])
+            with mock.patch.object(inventory,"build",return_value=data):
+                report=Path(tmp)/"offline.md"
+                inventory.run(report=report)
+                self.assertIn("UNAVAILABLE",report.read_text())
+                self.assertIn("不可判为已合并",report.read_text())
+                with self.assertRaisesRegex(ValueError,"historical"):
+                    inventory.run(output=inventory.OUT)
 
     def test_cross_module_import_lookup(self):
         c,_=fkrg.fresh(self.db)

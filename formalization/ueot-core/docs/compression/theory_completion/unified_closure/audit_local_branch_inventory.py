@@ -32,9 +32,10 @@ def is_ancestor(branch, target):
 
 def build():
     current = git("symbolic-ref", "--quiet", "--short", "HEAD", allow_fail=True)
-    baseline = (git("rev-parse", "--verify", "refs/heads/main", allow_fail=True)
-                or git("rev-parse", "--verify", "refs/remotes/origin/main", allow_fail=True)
-                or git("rev-parse", "HEAD"))
+    main_sha = (git("rev-parse", "--verify", "refs/heads/main", allow_fail=True)
+                or git("rev-parse", "--verify", "refs/remotes/origin/main", allow_fail=True))
+    main_known = main_sha is not None
+    baseline = main_sha if main_known else git("rev-parse", "HEAD")
     names = git("for-each-ref", "--format=%(refname:short)", "refs/heads").splitlines()
     leanroot = ROOT / "formalization/ueot-core/UEOT"
     current_declarations = set()
@@ -42,14 +43,17 @@ def build():
         current_declarations.update(DECL.findall(file.read_text()))
     branches = []
     for name in names:
-        main_ancestor = is_ancestor(name, baseline)
+        # A detached/offline clone may have NO local or remote main ref.
+        # HEAD is only a comparison fallback and MUST NOT become "main".
+        main_ancestor = is_ancestor(name, baseline) if main_known else None
         local_head = name == current
-        status = ("CURRENT_CHECKOUT" if local_head else
+        status = ("MAIN_BASELINE_UNAVAILABLE" if not main_known else
+                  "CURRENT_CHECKOUT" if local_head else
                   "ALREADY_REACHABLE_FROM_MAIN" if main_ancestor else
                   "HISTORICAL_DIVERGENCE_REQUIRES_CONTENT_REVIEW")
         changed = []
         missing_symbols = []
-        if not main_ancestor and not local_head:
+        if main_known and not main_ancestor and not local_head:
             changed = git("diff", "--name-only", baseline + "..." + name).splitlines()
             for path in changed:
                 if not path.startswith("formalization/ueot-core/UEOT/") or not path.endswith(".lean"):
@@ -62,7 +66,8 @@ def build():
         branches.append({
             "name": name, "head": git("rev-parse", name), "status": status,
             "is_main_ancestor": main_ancestor,
-            "unique_commits_vs_main": int(git("rev-list", "--count", baseline + ".." + name)),
+            "unique_commits_vs_main": (int(git("rev-list", "--count", baseline + ".." + name))
+                                       if main_known else None),
             "changed_paths_since_merge_base": changed,
             "changed_path_count": len(changed),
             "historical_decl_names_missing_from_current_source": missing_symbols,
@@ -72,7 +77,8 @@ def build():
                     s.endswith(("COMPRESSION_LEDGER.yaml","TheoryCompletion.lean","UEOT.lean"))
                     or s.startswith(".github/") for s in changed
                 ) else "HISTORICAL_CONTENT_DIFF"),
-            "recommendation": ("PRESERVE_CURRENT_CHECKOUT" if local_head else
+            "recommendation": ("PRESERVE_NO_MAIN_ANCESTRY_CLAIM" if not main_known else
+              "PRESERVE_CURRENT_CHECKOUT" if local_head else
               "RETAIN_HISTORY_ALREADY_IN_MAIN" if main_ancestor else
               "NO_WHOLE_BRANCH_MERGE_COMPARE_LATEST_SOURCE_AND_KEEP_PROVENANCE"),
         })
@@ -98,8 +104,11 @@ def build():
         "schema": 1,
         "scope": "LOCAL_GIT_GRAPH_AND_LEXICAL_LEAN_RECONCILIATION_NOT_SEMANTIC_CERTIFICATION",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "main": git("rev-parse", baseline),
+        "main": main_sha,
+        "main_comparison_available": main_known,
         "baseline_ref": baseline,
+        "baseline_meaning": ("MAIN_ANCESTRY" if main_known else
+                             "HEAD_ONLY_NOT_MAIN_DO_NOT_CLASSIFY_MERGED"),
         "active_branch": current,
         "active_local_head": git("rev-parse", "HEAD"),
         "origin_main_local_tracking_snapshot":
@@ -134,9 +143,10 @@ def run(output=None, report=None):
     lines = [
         "# UEOT 本地分支与 worktree 逐项保存性审计（2026-10-09）",
         "",
-        f"- 基线：main {data['main'][:12]}，活动研究 {data['active_local_head'][:12]}；仅本地快照。",
+        f"- 基线：main {(data['main'] or 'UNAVAILABLE')[:12]}，活动研究 {data['active_local_head'][:12]}；仅本地快照。",
         f"- {data['branch_count']} 个分支：main 已包含 {statuses.get('ALREADY_REACHABLE_FROM_MAIN',0)}；"
-        f"活动研究 {statuses.get('CURRENT_CHECKOUT',0)}；图上尚未并入 {len(nonmerged)}。",
+        f"活动研究 {statuses.get('CURRENT_CHECKOUT',0)}；图上尚未并入 {len(nonmerged)}；"
+        f"无法确认 main 祖先关系 {statuses.get('MAIN_BASELINE_UNAVAILABLE',0)}。",
         f"- {data['worktree_count']} 个 worktree；有已跟踪文件修改的工作树数"
         f" {data['tracked_dirty_worktree_count']}。",
         f"- 当前代码查不到的历史 Lean 声明名有"
@@ -165,7 +175,8 @@ def run(output=None, report=None):
         "但当前安全合同和账本更新，不做整体 cherry-pick。",
         "",
         "## 整理决策",
-        f"1. {statuses.get('ALREADY_REACHABLE_FROM_MAIN',0)} 个已进入基线的分支：保留 Git 证明来源，不重复集成。",
+        f"1. {statuses.get('ALREADY_REACHABLE_FROM_MAIN',0)} 个已确认进入 main 的分支；"
+        f"其他 {statuses.get('MAIN_BASELINE_UNAVAILABLE',0)} 个主分支基线未知的分支不可判为已合并。",
         f"2. {len(nonmerged)} 个图上分叉分支：仅对当前源码实际缺失的、语义审计通过的"
         "定理作选择性迁移。本轮无已确认可以整支合并的分支。",
         "3. 所有 detached review worktree 保留；其已跟踪内容干净"

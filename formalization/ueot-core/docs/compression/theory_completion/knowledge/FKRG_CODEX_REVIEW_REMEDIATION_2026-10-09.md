@@ -29,8 +29,14 @@ python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/fkr
 python3 formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_local_branch_inventory.py --output /tmp/umc-current-branch-inventory.json
 ```
 
-Positive/negative tests include the four Codex failures, stale index, unknown symbol, and existing proof reuse. The 5,553 current records are **lexical candidates**, not 5,553 fully elaborated proofs. The existing Core 106/106 frozen count, Compression four counted generators, and P12 PARTIAL claim remain unchanged.
+Thirteen positive/negative tests include the four initial Codex failures, stale index, unknown symbol, and existing proof reuse. The 5,553 current records are **lexical candidates**, not 5,553 fully elaborated proofs. The existing Core 106/106 frozen count, Compression four counted generators, and P12 PARTIAL claim remain unchanged.
 
 A new GitHub PR must be reviewed at its exact head, have **all review comments addressed and threads resolved**, and only be merged after required checks. Do not equate review submission with approval or unconditionally trust the bot summary; a completed code review with suggestions is a review with open work.
 
 Open FKRG upgrades beyond v1.1: a machine-built declaration-level dependency DAG for all 5,553 candidates; mathematically typed hypothesis matching; mandatory *per-new-proof* reuse contract; independently grounded scientific source semantics. Do not claim those future tasks are completed.
+
+## Exact-head PR #309 follow-up
+
+- The first PR #309 CI exposed a genuine GitHub detached checkout without a local \`main\`: UMC fast audit now uses \`refs/heads/main\` or \`refs/remotes/origin/main\`, and fails closed if neither exists.
+- The subsequent #309 Codex review [4230694470](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230694470) caught the remaining ambiguity: when no main ref exists, **the branch inventory now reports UNKNOWN ancestry** and never claims a branch is already merged into main; even Markdown reports mark main as UNAVAILABLE.
+- CI/no-main and historical-evidence immutability tests included in 13/13 FKRG regression suite.
