@@ -1,0 +1,152 @@
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPredictiveNullspace
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BeliefTimingBoundary
+import Mathlib.Tactic
+
+/-!
+# Finite completeness of predictive separating probes
+
+Every finite family of underlying microscopic states has a finite set of
+true future-response coordinates separating every pair of distinct entire
+future functions. This is an existential finite-extraction result, not an
+algorithmic statistical certificate and NOT a strong-lumpability theorem:
+pairwise separation is weaker than linear independence / indicator spanning.
+-/
+
+namespace UEOT.V3.Compression.TheoryCompletion.UnifiedClosure
+
+open UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC
+
+universe uX uW uA uO
+
+/-- General finite-source extraction with an actual number-of-probes bound.
+Unlike SISC's previously established *deterministic* result, this works
+for arbitrary real-valued response families, including stochastic traces.
+The bound does not imply a bounded word length or algorithmic discovery. -/
+theorem finite_family_has_quadratic_separating_probes
+    {X : Type uX} {W : Type uW} [Fintype X]
+    (F : X → W → ℝ) :
+    ∃ tests : Finset W, tests.card ≤ (Fintype.card X) ^ 2 ∧
+      ∀ x y : X, (∀ w ∈ tests, F x w = F y w) → F x = F y := by
+  classical
+  have hwitness (x y : X) (hne : F x ≠ F y) :
+      ∃ w : W, F x w ≠ F y w := by
+    by_contra hnone
+    apply hne
+    funext w
+    by_contra hdiff
+    exact hnone ⟨w, hdiff⟩
+  have hpair (x y : X) :
+      ∃ s : Finset W, s.card ≤ 1 ∧
+        ((∀ w ∈ s, F x w = F y w) → F x = F y) := by
+    by_cases heq : F x = F y
+    · exact ⟨∅, by simp, fun _ => heq⟩
+    · obtain ⟨w, hw⟩ := hwitness x y heq
+      refine ⟨{w}, by simp, ?_⟩
+      intro hall
+      exact False.elim (hw (hall w (by simp)))
+  let pairTests : X → X → Finset W := fun x y =>
+    Classical.choose (hpair x y)
+  have hcard (x y : X) : (pairTests x y).card ≤ 1 :=
+    (Classical.choose_spec (hpair x y)).1
+  refine ⟨Finset.univ.biUnion (fun x : X =>
+    Finset.univ.biUnion (fun y : X => pairTests x y)), ?_, ?_⟩
+  · calc
+      (Finset.univ.biUnion (fun x : X =>
+          Finset.univ.biUnion (fun y : X => pairTests x y))).card
+          ≤ ∑ x : X, (Finset.univ.biUnion (fun y : X => pairTests x y)).card :=
+            Finset.card_biUnion_le
+      _ ≤ ∑ _x : X, (Fintype.card X) := by
+        apply Finset.sum_le_sum
+        intro x _
+        calc
+          (Finset.univ.biUnion (fun y : X => pairTests x y)).card
+              ≤ ∑ y : X, (pairTests x y).card := Finset.card_biUnion_le
+          _ ≤ ∑ _y : X, (1 : ℕ) := by
+            apply Finset.sum_le_sum
+            intro y _
+            exact hcard x y
+          _ = Fintype.card X := by simp
+      _ = (Fintype.card X) ^ 2 := by simp [pow_two]
+  · intro x y hall
+    apply (Classical.choose_spec (hpair x y)).2
+    intro w hw
+    apply hall w
+    simp only [Finset.mem_biUnion, Finset.mem_univ, true_and]
+    exact ⟨x, y, hw⟩
+
+/-- The prior unbounded finite probe theorem is simply the forgetful
+projection of the stronger generic cardinal bound, not a second proof. -/
+theorem finite_family_has_complete_separating_probes
+    {X : Type uX} {W : Type uW} [Fintype X]
+    (F : X → W → ℝ) :
+    ∃ tests : Finset W,
+      ∀ x y : X, (∀ w ∈ tests, F x w = F y w) → F x = F y := by
+  obtain ⟨tests, _card, hcomplete⟩ :=
+    finite_family_has_quadratic_separating_probes F
+  exact ⟨tests, hcomplete⟩
+
+/-- A single finite stochastic future test family of at most |X|² words
+is complete for the registered finite source. This extends the existing
+deterministic SISC cardinal theorem to the real stochastic trace semantics.
+No max word length, computational tractability or Markov quotient follows. -/
+theorem stochastic_future_complete_probes_card_le
+    {X : Type uX} {A : Type uA} {O : Type uO}
+    [Fintype X] [DecidableEq O]
+    (K : FiniteControlledStochasticKernel X A) (read : X → O) :
+    ∃ probes : Finset (List (A × O)),
+      probes.card ≤ (Fintype.card X)^2 ∧
+      ∀ x y : X,
+        (∀ w ∈ probes,
+          stochasticFuture K read x w = stochasticFuture K read y w) ↔
+        stochasticFuture K read x = stochasticFuture K read y := by
+  obtain ⟨probes, hcard, hcomplete⟩ :=
+    finite_family_has_quadratic_separating_probes (stochasticFuture K read)
+  refine ⟨probes, hcard, ?_⟩
+  intro x y
+  constructor
+  · exact hcomplete x y
+  · intro h w _
+    exact congrFun h w
+
+/-- In any finite stochastic controlled system, a single finite probe
+set distinguishes exactly the same microscopic states as *all* declared
+future action-observation words. No lumpability is needed for this fact. -/
+theorem exists_finite_complete_stochastic_future_probes
+    {X : Type uX} {A : Type uA} {O : Type uO}
+    [Fintype X] [DecidableEq O]
+    (K : FiniteControlledStochasticKernel X A) (read : X → O) :
+    ∃ probes : Finset (List (A × O)),
+      ∀ x y : X,
+        (∀ w ∈ probes,
+          stochasticFuture K read x w = stochasticFuture K read y w) ↔
+        stochasticFuture K read x = stochasticFuture K read y := by
+  obtain ⟨probes, hcomplete⟩ :=
+    finite_family_has_complete_separating_probes (stochasticFuture K read)
+  refine ⟨probes, ?_⟩
+  intro x y
+  constructor
+  · exact hcomplete x y
+  · intro h w _
+    exact congrFun h w
+
+/-- Finite separating observations can exist even where no Markov
+transition quotient exists on their (fully predictive) equivalence classes.
+This guards against confusing injectivity of tests with lumpability. -/
+theorem finite_predictive_separation_does_not_force_markov_quotient :
+    (∃ probes : Finset (List Bool),
+      ∀ x y : Fin 6,
+        (∀ w ∈ probes,
+          stochasticOutputTrace x w =
+          stochasticOutputTrace y w) ↔
+          stochasticOutputTrace x = stochasticOutputTrace y) ∧
+    ¬ StrongLumpability traceCounterexampleKernel stochasticOutputTrace := by
+  obtain ⟨probes, hcomplete⟩ :=
+    finite_family_has_complete_separating_probes stochasticOutputTrace
+  refine ⟨⟨probes, ?_⟩, unrestricted_stochastic_trace_lumping_is_false⟩
+  intro x y
+  constructor
+  · exact hcomplete x y
+  · intro h w _
+    exact congrFun h w
+
+end UEOT.V3.Compression.TheoryCompletion.UnifiedClosure
