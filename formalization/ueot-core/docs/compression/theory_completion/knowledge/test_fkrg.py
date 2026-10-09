@@ -91,21 +91,38 @@ class FkrgTests(unittest.TestCase):
 
     def test_umc_scope_mirrors_immutable_base_l2_exact_path_authorizations(self):
         import audit_umc_local as umc
-        base=umc.baseline_main_ref()
         branch="compression/theory-completion-fkrg-review-fixes"
         prefix="formalization/ueot-core/docs/compression/theory_completion/knowledge/"
         approved=prefix+"fkrg.py"
-        umc.validate_tc_local_scope(base,branch,[approved])
-        # The immutable base only approved two existing knowledge source files.
-        for unauthorized in (prefix+"README.md",prefix+"FKRG_TASKS.json"):
-            with self.subTest(path=unauthorized):
-                with self.assertRaisesRegex(RuntimeError,"out-of-scope"):
-                    umc.validate_tc_local_scope(base,branch,[unauthorized])
-        # An absent branch identity CANNOT borrow L2 rights from another ref.
-        with self.assertRaisesRegex(RuntimeError,"out-of-scope"):
-            umc.validate_tc_local_scope(base,None,[approved])
-        # New additive documentation remains allowed within owned research dirs.
-        umc.validate_tc_local_scope(base,branch,[prefix+"FKRG_NEW_RESEARCH_NOTE.md"])
+        # Immutable-base policy FIXTURE: after temporary L2 authorization is
+        # revoked from main, this unit test must retain its original semantics.
+        policy={"tracks":{"TC":{"mutable_existing_exact_paths":[]}},
+                "l2_existing_path_exceptions":[{
+                    "track":"TC","temporary":True,
+                    "branch_patterns":["^compression/theory-completion-fkrg-review-fixes$"],
+                    "paths":[approved]}]}
+        seen=[]
+        def fixed_baseline(command,**kwargs):
+            seen.append(command)
+            if "ls-tree" in command:
+                return "\n".join((approved,prefix+"README.md",
+                                    prefix+"FKRG_TASKS.json"))+"\n"
+            if "show" in command:
+                return json.dumps(policy)
+            raise AssertionError(("unexpected immutable-base query",command))
+        with mock.patch.object(umc,"run",side_effect=fixed_baseline):
+            umc.validate_tc_local_scope("IMMUTABLE_BASE",branch,[approved])
+            for unauthorized in (prefix+"README.md",prefix+"FKRG_TASKS.json"):
+                with self.subTest(path=unauthorized):
+                    with self.assertRaisesRegex(RuntimeError,"out-of-scope"):
+                        umc.validate_tc_local_scope("IMMUTABLE_BASE",branch,
+                                                    [unauthorized])
+            with self.assertRaisesRegex(RuntimeError,"out-of-scope"):
+                umc.validate_tc_local_scope("IMMUTABLE_BASE",None,[approved])
+            umc.validate_tc_local_scope("IMMUTABLE_BASE",branch,
+                                        [prefix+"FKRG_NEW_RESEARCH_NOTE.md"])
+        self.assertTrue(any("show" in command for command in seen))
+        self.assertTrue(any("ls-tree" in command for command in seen))
 
     def test_fast_audit_cannot_overwrite_full_receipt(self):
         import audit_umc_local
@@ -113,15 +130,15 @@ class FkrgTests(unittest.TestCase):
             target=Path(tmp)/"receipt.json"
             immutable='{"UMC_axioms":"145/145_LEAN_STANDARD_AXIOMS","full_Lean":"PASS"}\n'
             target.write_text(immutable)
-            # The receipt invariant is independent of checkout branch name.
-            # Reuse the exact branch authorized in the immutable base L2 policy
-            # even if a reviewer checks out this commit on a work/detached ref.
+            # The receipt writer is independent of scope authorization.
+            # Testing it must still work after the temporary L2 grant expires,
+            # and on other branches with unrelated tracked changes. Scope
+            # enforcement itself is tested separately with a frozen fixture.
             with mock.patch.object(audit_umc_local,"OUT",target):
-                with mock.patch.object(
-                    audit_umc_local,"active_research_branch",
-                    return_value="compression/theory-completion-fkrg-review-fixes"
-                ):
-                    result=audit_umc_local.audit(False)
+                with mock.patch.object(audit_umc_local,"baseline_main_ref",
+                                       return_value="HEAD"):
+                    with mock.patch.object(audit_umc_local,"validate_tc_local_scope"):
+                        result=audit_umc_local.audit(False)
             self.assertEqual(target.read_text(),immutable)
             self.assertEqual(result["full_Lean"],"NOT_RUN")
 
