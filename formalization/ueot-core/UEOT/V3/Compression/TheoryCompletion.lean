@@ -105,6 +105,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreNonvacuousAllTime
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeOptimalControlFromViability
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePredictiveProbeCompleteness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeRewardConflictWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge
 /-!
 # UEOT Theory Completion public root
 

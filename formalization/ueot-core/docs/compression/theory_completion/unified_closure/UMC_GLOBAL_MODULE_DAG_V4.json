@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "650daed25c760bc753f06e8f60e4a4c3557e739df603de52351944bce191e7c9",
+  "source_tree_sha256": "26bd72d82eb0610a5d5f8f085e612394b9c7d4a3d3fdfcaf9b4004c16d976342",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 631,
-  "total_source_lines": 111319,
-  "total_theorem_lemma_tokens": 3746,
+  "total_Lean_modules": 633,
+  "total_source_lines": 111565,
+  "total_theorem_lemma_tokens": 3754,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 54,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 35
+    "UMC_New_Bridges": 37
   },
-  "reachable_from_UEOT_root": 631,
+  "reachable_from_UEOT_root": 633,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 35
+      "edges": 37
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -336,7 +336,12 @@
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 8
+      "edges": 9
+    },
+    {
+      "from": "UMC_New_Bridges",
+      "to": "Objecthood",
+      "edges": 1
     },
     {
       "from": "UMC_New_Bridges",
@@ -3436,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 8889,
-      "lines": 116,
+      "bytes": 9065,
+      "lines": 118,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3547,7 +3552,9 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreNonvacuousAllTimesWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeOptimalControlFromViability",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePredictiveProbeCompleteness",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeRewardConflictWitness"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeRewardConflictWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5216,8 +5223,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePredictiveProbeCompleteness": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePredictiveProbeCompleteness.lean",
-      "bytes": 3821,
-      "lines": 97,
+      "bytes": 6382,
+      "lines": 152,
       "category": "UMC_New_Bridges",
       "title": "Finite completeness of predictive separating probes",
       "imports": [
@@ -5225,8 +5232,8 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BeliefTimingBoundary",
         "Mathlib.Tactic"
       ],
-      "theorem_lemma_count": 3,
-      "decl_count": 3
+      "theorem_lemma_count": 5,
+      "decl_count": 5
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurableProcessTransport": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurableProcessTransport.lean",
@@ -5368,6 +5375,34 @@
       ],
       "theorem_lemma_count": 6,
       "decl_count": 8
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RepairProgramSafeControlBridge.lean",
+      "bytes": 4150,
+      "lines": 90,
+      "category": "UMC_New_Bridges",
+      "title": "R3/R4 interface: real repaired programs as source-derived safe actions",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport",
+        "UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.JointRecovery",
+        "Mathlib.Tactic"
+      ],
+      "theorem_lemma_count": 3,
+      "decl_count": 4
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SafeCausalHistoryTransport.lean",
+      "bytes": 4415,
+      "lines": 99,
+      "category": "UMC_New_Bridges",
+      "title": "Safe constrained control along arbitrary history-dependent randomized paths",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeOptimalControlFromViability",
+        "UEOT.V3.FiniteDiscountedGreedy",
+        "Mathlib.Tactic"
+      ],
+      "theorem_lemma_count": 3,
+      "decl_count": 4
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeOptimalControlFromViability": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SafeOptimalControlFromViability.lean",
