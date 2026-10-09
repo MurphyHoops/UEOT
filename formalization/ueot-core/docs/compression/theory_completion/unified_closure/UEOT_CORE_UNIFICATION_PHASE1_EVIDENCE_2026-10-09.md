@@ -61,7 +61,7 @@
 
 ## 5. 与 106 定理全量语义审计的区别
 
-此前已有 `build_umc_source_atlas.py` 和 `UMC_00_SOURCE_ATLAS_V1.json`：106 项都能定位到引用声明（`DOC_REFERENCED_LOCATION_FOUND`），其自身状态为 `SOURCE_DECLARATION_ATLAS_NOT_SEMANTIC_PROOF`。该结果只说明找到代码和文档入口，不能声称每条定理的 premise/conclusion 与 Core v3 主文已独立重验。
+此前已有 `build_umc_source_atlas.py` 和 `UMC_00_SOURCE_ATLAS_V1.json`：106 项都能定位到引用声明（`DOC_REFERENCED_LOCATION_FOUND`），其自身状态为 `SOURCE_DECLARATION_ATLAS_NOT_SEMANTIC_PROOF`。**本轮新增且实际执行** `verify_core_106_elaboration.py`：从该索引抽取 106 个不重复的证据声明，在 `import UEOT` 环境逐一执行 `#check` 和 `#print axioms`，结果为 **106/106 Lean elaboration success、106/106 axiom printout、0 自定义公理依赖、1 完全无需公理**；机器结果写入 `UMC_CORE_106_ELABORATION_AUDIT_V1.json`。这是比词法定位更强的内核可引用性和公理证据审计，但**仍不证明每条定理的 premise/conclusion 与 Core v3 自然语言和物理含义已独立语义重验**。
 
 整个 UEOT 第一方导入图先前记录 618 模块全部可达、无导入环（为先前版本静态元数据扫描，非本轮 618 项逐行独立语义认证）。本轮新三个模块经实际 Lean 全根构建覆盖，但剩余 106 项独立“逐条数学语义”仍需逐批比对源章节→Lean elaborated type→依赖→现有适配器→原主张保留的范围。
 
