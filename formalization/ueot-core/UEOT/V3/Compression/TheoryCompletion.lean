@@ -94,6 +94,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MultiScaleExactContro
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MultiScaleFiniteWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViabilityKernelIntertwining
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViabilityNonvacuityWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalCoreAssembly
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.UnifiedCoreClosureCertificate
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalSufficiencyWitness
 /-!
 # UEOT Theory Completion public root
 
