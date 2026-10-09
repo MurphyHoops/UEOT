@@ -26,6 +26,22 @@ INDEX_SCHEMA = "FKRG_V2"
 sys.path.insert(0, str(HERE.parent / "unified_closure"))
 from audit_umc_local import no_lean_comments
 
+# The extractor is a composition: declaration matching *and* imported Lean
+# comment removal. Both source files are effective parser inputs.
+COMMENT_PARSER_PATH = Path(sys.modules[no_lean_comments.__module__].__file__).resolve()
+
+
+def extractor_fingerprint():
+    h = sha256()
+    for label, path in (("fkrg.py", Path(__file__).resolve()),
+                        ("lean-comment-parser", COMMENT_PARSER_PATH)):
+        h.update(label.encode("ascii"))
+        h.update(b"\x00")
+        h.update(path.read_bytes())
+        h.update(b"\x00")
+    return h.hexdigest()
+
+
 # Attributes and qualified names are part of valid Lean declarations.
 # This is a lexical candidate extractor; semantic equivalence is not claimed.
 DECL = re.compile(
@@ -117,7 +133,7 @@ def build(db):
         meta={"schema":INDEX_SCHEMA,
               # Source-only fingerprints are insufficient: fixed extractor
               # code must invalidate databases made by the old parser.
-              "extractor_sha256":sha256(Path(__file__).read_bytes()).hexdigest(),
+              "extractor_sha256":extractor_fingerprint(),
               "source_tree_sha256":fingerprint(mapping),
               "module_count":str(len(mapping)),"declaration_count":str(count),
               "git_head_at_build":git("rev-parse","HEAD"),
@@ -134,10 +150,10 @@ def fresh(db):
     meta=dict(c.execute("SELECT key,value FROM meta").fetchall())
     live=sources()
     if (meta.get("schema")!=INDEX_SCHEMA or
-        meta.get("extractor_sha256")!=sha256(Path(__file__).read_bytes()).hexdigest() or
+        meta.get("extractor_sha256")!=extractor_fingerprint() or
         meta.get("source_tree_sha256")!=fingerprint(live) or
         int(meta.get("module_count","0"))!=len(live)):
-        c.close();raise RuntimeError("STALE_INDEX: source modified, run build")
+        c.close();raise RuntimeError("STALE_INDEX: source or extractor dependency changed, run build")
     return c,meta
 
 def find(c,query,limit,details):

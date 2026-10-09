@@ -189,6 +189,20 @@ class FkrgTests(unittest.TestCase):
         finally:
             c.close()
 
+    def test_imported_comment_parser_changes_invalidate_cached_index(self):
+        with tempfile.TemporaryDirectory(prefix="fkrg-parser-drift-") as temp:
+            alternative=Path(temp)/"changed_comment_parser.py"
+            original=fkrg.COMMENT_PARSER_PATH.read_bytes()
+            alternative.write_bytes(original + b"\\n# test-only parser change\\n")
+            observed=fkrg.extractor_fingerprint()
+            with mock.patch.object(fkrg,"COMMENT_PARSER_PATH",alternative):
+                self.assertNotEqual(fkrg.extractor_fingerprint(),observed)
+                with self.assertRaisesRegex(RuntimeError,"STALE_INDEX"):
+                    fkrg.fresh(self.db)
+            con,meta=fkrg.fresh(self.db)
+            self.assertEqual(meta["extractor_sha256"],observed)
+            con.close()
+
     def test_private_helpers_not_alias_public_lean_theorems(self):
         c,_=fkrg.fresh(self.db)
         rows=c.execute("""SELECT candidate FROM declarations

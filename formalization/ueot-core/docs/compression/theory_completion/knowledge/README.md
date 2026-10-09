@@ -55,3 +55,5 @@ Default cache: `/tmp/ueot-fkrg-index.sqlite3` (override via `--db` or `UEOT_FKRG
 For routine research PRs: run `python3 .../test_fkrg.py`. A separate base-authorized governance PR can make this mandatory in existing Compression Guard. The guard must run from repository-root after checkout, with no need for Lean compilation or generated SQLite artifacts committed to Git.
 
 **Completion claim:** FKRG search/preflight/recovery foundation operational; mathematical-source semantic completeness, general Lean declaration dependency graph, remote CI enforcement and formal anti-duplication equivalence checking are distinct higher-level gates.
+
+**Cache upgrade (FKRG V2):** old V1 SQLite caches are deliberately rejected as `STALE_INDEX`. Rebuild with `fkrg.py build`; the extractor fingerprint includes both `fkrg.py` and its imported `audit_umc_local.py` Lean comment parser. Source-private names are indexed for discovery but not advertised as public Lean constants.
