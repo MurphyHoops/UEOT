@@ -72,6 +72,15 @@ import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTr
 import UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionSamplingPower
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeterministicDiracPredictiveBridge
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteCommonProcessWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BeliefTimingBoundary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteFormationBoundary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoStageFormationTransport
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoStageCommonProcessExample
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveGaugeCompleteness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGauge
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ProgramPurposeInformationBoundary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurableProcessTransport
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DependentEventFormationBudget
 /-!
 # UEOT Theory Completion public root
 
