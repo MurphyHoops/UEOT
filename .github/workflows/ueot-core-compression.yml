@@ -148,6 +148,13 @@ jobs:
           python3 formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py --repo-root .
           python3 formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py
 
+      - name: Enforce FKRG source-derived knowledge index and reuse-contract regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py
+
+
   proof:
     needs: [classify, governance]
     if: needs.classify.outputs.proof_required == 'true'
