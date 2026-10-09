@@ -98,6 +98,10 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalCoreAss
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.UnifiedCoreClosureCertificate
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalSufficiencyWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalViabilityMaximality
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CorePMFViabilityReconciliation
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreInfinitePathClosure
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreSourceAllTimesAssembly
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreNonvacuousAllTimesWitness
 /-!
 # UEOT Theory Completion public root
 

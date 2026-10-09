@@ -1,0 +1,2706 @@
+{
+  "schema": 1,
+  "scope": "LEAN_ENV_ELABORATED_ONE_HOP_PROOF_AND_TYPE_CONSTANTS_FOR_106_COUNTED_SYMBOLS",
+  "created_utc": "2026-10-09T09:53:59.183101+00:00",
+  "checked_count": 106,
+  "root": "UEOT",
+  "proof_direct_counted_edges": 3,
+  "direct_counted_graph_acyclic": true,
+  "local_first_party_reuse_top20": [
+    [
+      "UEOT.V3.TotalVariation.tvDist",
+      14
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+      6
+    ],
+    [
+      "UEOT.Finite.Minimal",
+      5
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+      4
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.Model.qValue",
+      4
+    ],
+    [
+      "UEOT.V3.FiniteHistory.HistoryFiber",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceHistoryFiber",
+      3
+    ],
+    [
+      "UEOT.V3.InformationCore.mutualInfo",
+      3
+    ],
+    [
+      "UEOT.Blocker.blocker",
+      3
+    ],
+    [
+      "UEOT.Resolution.lower",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.Model",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDiscountedControl.StationaryPolicy",
+      3
+    ],
+    [
+      "UEOT.V3.FiniteDobrushin.lawTV",
+      3
+    ],
+    [
+      "UEOT.V3.InformationRandomEncoderSourceEntropy.sourceConditionalCoreEntropy",
+      2
+    ]
+  ],
+  "records": [
+    {
+      "pid": "P-MET-01",
+      "name": "UEOT.V3.TotalVariation.tvDist_map_le",
+      "source": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+      "line": 98,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.TotalVariation.tvDist",
+        "UEOT.V3.TotalVariation.tvEventSet",
+        "UEOT.V3.TotalVariation.tvEventSet_nonempty",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-MET-02",
+      "name": "UEOT.V3.TVSpan.abs_integral_sub_le_span",
+      "source": "formalization/ueot-core/UEOT/V3/TVSpan.lean",
+      "line": 110,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.TVSpan.abs_integral_sub_le_span_tvDist",
+        "UEOT.V3.TVSpan.span",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.TVSpan.span",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PROC-01",
+      "name": "UEOT.V3.ConcreteHistoryMarkovization.p_proc_01_history_markovization",
+      "source": "formalization/ueot-core/UEOT/V3/ConcreteHistoryMarkovization.lean",
+      "line": 181,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.ConcreteHistoryMarkovization.ControlCarrier",
+        "UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel",
+        "UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel_current_apply",
+        "UEOT.V3.ConcreteHistoryMarkovization.isMarkovKernel_augmentedKernel",
+        "UEOT.V3.FiniteHistory.Carrier",
+        "UEOT.V3.FiniteHistory.Carrier.current",
+        "UEOT.V3.FiniteHistory.HistoryFiber",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceCarrier",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceHistoryFiber"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.ConcreteHistoryMarkovization.ControlCarrier",
+        "UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel",
+        "UEOT.V3.FiniteHistory.Carrier",
+        "UEOT.V3.FiniteHistory.Carrier.current",
+        "UEOT.V3.FiniteHistory.HistoryFiber",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceCarrier",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceHistoryFiber"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 9,
+      "direct_local_type_constant_count": 7,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-FAC-01",
+      "name": "UEOT.V3.RepresentationCovariance.p_fac_01_covariance_bundle",
+      "source": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+      "line": 368,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DynamicsKernel.StrongLumpability",
+        "UEOT.V3.RepresentationCovariance.controlledStrongLumpability_transport_iff",
+        "UEOT.V3.RepresentationCovariance.measurable_transportReadout",
+        "UEOT.V3.RepresentationCovariance.predictive_family_factorization_transport_iff",
+        "UEOT.V3.RepresentationCovariance.transportKernel",
+        "UEOT.V3.RepresentationCovariance.transportReadout",
+        "UEOT.V3.RepresentationCovariance.transportResponse"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.DynamicsKernel.StrongLumpability",
+        "UEOT.V3.RepresentationCovariance.measurable_transportReadout",
+        "UEOT.V3.RepresentationCovariance.transportKernel",
+        "UEOT.V3.RepresentationCovariance.transportReadout",
+        "UEOT.V3.RepresentationCovariance.transportResponse"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PRED-01",
+      "name": "UEOT.V3.Compression.QuotientDescent.p_pred_01_via_countableAE_descent",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+      "line": 157,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Compression.QuotientDescent.countableAEFamily_descend",
+        "UEOT.V3.PredictionAE.AEFactors",
+        "UEOT.V3.PredictionAE.AESigmaLE",
+        "UEOT.V3.PredictionAE.aeFactors_sigmaLE",
+        "UEOT.V3.PredictionDependent.coordinateKernel"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PredictionAE.AEFactors",
+        "UEOT.V3.PredictionAE.AESigmaLE"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 5,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PRED-02",
+      "name": "UEOT.V3.PredictionRefinement.pushTargetDependent_apply",
+      "source": "formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+      "line": 133,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.PredictionRefinement.pushTargetDependent"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PredictionRefinement.pushTargetDependent"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PRED-03",
+      "name": "UEOT.V3.PredictionUpdate.p_pred_03_recursive_update",
+      "source": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+      "line": 327,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure",
+        "UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure.jointIndex",
+        "UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure.obsIndex",
+        "UEOT.V3.PredictionUpdate.coordinateBayesUpdate",
+        "UEOT.V3.PredictionUpdate.coordinateBayesUpdate_recovers_history",
+        "UEOT.V3.PredictionUpdate.historyBayesResponseVector",
+        "UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_joint"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure",
+        "UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure.jointIndex",
+        "UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure.obsIndex",
+        "UEOT.V3.PredictionUpdate.historyBayesResponseVector"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 4,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INFO-01",
+      "name": "UEOT.V3.InformationStatistic.mutualInfo_eq_statistic_add_conditional",
+      "source": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+      "line": 216,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationCore.mutualInfo",
+        "UEOT.V3.InformationStatistic.conditionalMutualInfoStatistic",
+        "UEOT.V3.InformationStatistic.klDiv_statisticLift_eq",
+        "UEOT.V3.InformationStatistic.liftedStatisticJoint",
+        "UEOT.V3.InformationStatistic.liftedStatisticJoint_fst",
+        "UEOT.V3.InformationStatistic.liftedStatisticReference",
+        "UEOT.V3.InformationStatistic.liftedStatisticReference_fst",
+        "UEOT.V3.InformationStatistic.statisticJoint",
+        "UEOT.V3.InformationStatistic.statisticLift"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.InformationCore.mutualInfo",
+        "UEOT.V3.InformationStatistic.conditionalMutualInfoStatistic",
+        "UEOT.V3.InformationStatistic.statisticJoint"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 9,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INFO-02",
+      "name": "UEOT.V3.InformationPInfo02.p_info_02_finite",
+      "source": "formalization/ueot-core/UEOT/V3/InformationPInfo02.lean",
+      "line": 49,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationPInfo02.historyInterfaceStatistic",
+        "UEOT.V3.InformationPInfo02.measurable_historyInterfaceStatistic",
+        "UEOT.V3.InformationPredictiveCMI.predictiveConditionalInfoStatistic",
+        "UEOT.V3.InformationPredictiveCMI.predictive_tv_le_sqrt_conditionalInfo"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.InformationPInfo02.historyInterfaceStatistic",
+        "UEOT.V3.InformationPInfo02.measurable_historyInterfaceStatistic",
+        "UEOT.V3.InformationPredictiveCMI.historyPredictiveKernel",
+        "UEOT.V3.InformationPredictiveCMI.predictiveConditionalInfoStatistic",
+        "UEOT.V3.InformationPredictiveCMI.statisticPredictiveKernel",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 6,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INFO-03",
+      "name": "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy",
+      "source": "formalization/ueot-core/UEOT/V3/InformationPredictiveRateZero.lean",
+      "line": 213,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero",
+        "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_le_sourceEntropy",
+        "UEOT.V3.InformationPredictiveRateZero.sourceEntropy_le_predictiveObjectRateZero",
+        "UEOT.V3.InformationRandomEncoderSourceEntropy.sourceConditionalCoreEntropy"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero",
+        "UEOT.V3.InformationRandomEncoderSourceEntropy.sourceConditionalCoreEntropy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INFO-04",
+      "name": "UEOT.V3.InformationPInfo04.p_info_04",
+      "source": "formalization/ueot-core/UEOT/V3/InformationPInfo04.lean",
+      "line": 111,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationBernoulliFano.bernoulli_correct_kl_eq_fano",
+        "UEOT.V3.InformationBernoulliKL.bernoulliLaw",
+        "UEOT.V3.InformationCore.mutualInfo",
+        "UEOT.V3.InformationEventBernoulli.bernoulliKL_event_le",
+        "UEOT.V3.InformationPInfo04.correctEvent",
+        "UEOT.V3.InformationPInfo04.correctProb_eq_one_sub_error",
+        "UEOT.V3.InformationPInfo04.decoderError",
+        "UEOT.V3.InformationPInfo04.decoderError_le_one",
+        "UEOT.V3.InformationPInfo04.decoderError_nonneg",
+        "UEOT.V3.InformationPInfo04.measurableSet_correctEvent",
+        "UEOT.V3.InformationPInfo04.uniformIdentityLaw",
+        "UEOT.V3.InformationPInfo04.uniform_prod_correctProb"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.InformationCore.mutualInfo",
+        "UEOT.V3.InformationPInfo04.decoderError",
+        "UEOT.V3.InformationPInfo04.uniformIdentityLaw"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 12,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INFO-05",
+      "name": "UEOT.V3.InformationPacking.merged_histories_decoder_lower_bound",
+      "source": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+      "line": 80,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationPacking.common_decoder_half_distance",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INT-01",
+      "name": "UEOT.V3.InformationPInt01Common.p_int_01",
+      "source": "formalization/ueot-core/UEOT/V3/InformationPInt01Common.lean",
+      "line": 229,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationPInt01.measurable_structuredStatistic",
+        "UEOT.V3.InformationPInt01.structuredStatistic",
+        "UEOT.V3.InformationPInt01Common.CommonProtocolClosure",
+        "UEOT.V3.InformationPInt01Common.StructuredCommonProtocolClosure",
+        "UEOT.V3.InformationPInt01Common.StructuredCommonVersionFactorization",
+        "UEOT.V3.InformationPInt01Common.commonProtocolClosure_iff_commonVersion"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.InformationPInt01Common.StructuredCommonProtocolClosure",
+        "UEOT.V3.InformationPInt01Common.StructuredCommonVersionFactorization"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INT-02",
+      "name": "UEOT.V3.Compression.QuotientDescent.p_int_02_via_twoSidedDescent",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+      "line": 294,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Compression.QuotientDescent.FiberCompatible",
+        "UEOT.V3.Compression.QuotientDescent.LeftResponseEq",
+        "UEOT.V3.Compression.QuotientDescent.RightResponseEq",
+        "UEOT.V3.Compression.QuotientDescent.TwoSidedCompatible",
+        "UEOT.V3.Compression.QuotientDescent.exactSeparatedFactorization_refines_responseEq",
+        "UEOT.V3.Compression.QuotientDescent.existsUnique_twoSidedDescend",
+        "UEOT.V3.StructuredQuotient.EnvironmentClass",
+        "UEOT.V3.StructuredQuotient.InternalClass",
+        "UEOT.V3.StructuredQuotient.environmentClass",
+        "UEOT.V3.StructuredQuotient.environmentSetoid",
+        "UEOT.V3.StructuredQuotient.internalClass",
+        "UEOT.V3.StructuredQuotient.internalSetoid",
+        "UEOT.V3.StructuredQuotient.quotientResponse",
+        "UEOT.V3.StructuredQuotient.quotientResponse_mk"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.StructuredQuotient.environmentClass",
+        "UEOT.V3.StructuredQuotient.environmentSetoid",
+        "UEOT.V3.StructuredQuotient.internalClass",
+        "UEOT.V3.StructuredQuotient.internalSetoid",
+        "UEOT.V3.StructuredQuotient.quotientResponse"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 14,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INT-03",
+      "name": "UEOT.V3.MarkovBoundary.p_int_03_boundary_unique",
+      "source": "formalization/ueot-core/UEOT/V3/MarkovBoundary.lean",
+      "line": 128,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.MarkovBoundary.CIAxioms",
+        "UEOT.V3.MarkovBoundary.IsBoundary",
+        "UEOT.V3.MarkovBoundary.boundary_unique"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.MarkovBoundary.CIAxioms",
+        "UEOT.V3.MarkovBoundary.IsBoundary"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DYN-01",
+      "name": "UEOT.V3.DynamicsKernel.strongLumpability_iff_pathLaw_of_surjective",
+      "source": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "line": 637,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DynamicsKernel.strongLumpability_iff_pathLaw"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.DynamicsKernel.PathLawLumpability",
+        "UEOT.V3.DynamicsKernel.StrongLumpability"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DYN-02",
+      "name": "UEOT.V3.CTMCSemigroupNonnegative.p_dyn_02_nonnegative_semigroup_iff_blockSum",
+      "source": "formalization/ueot-core/UEOT/V3/CTMCSemigroupNonnegative.lean",
+      "line": 89,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CTMCLumpability.blockIndicator",
+        "UEOT.V3.CTMCLumpability.blockSum",
+        "UEOT.V3.CTMCLumpability.generator_intertwines_iff_blockSum",
+        "UEOT.V3.CTMCSemigroupNonnegative.instDecidableEq_uEOT_1",
+        "UEOT.V3.CTMCSemigroupNonnegative.semigroup_nonneg_intertwines_iff_generator"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CTMCLumpability.blockIndicator",
+        "UEOT.V3.CTMCLumpability.blockSum",
+        "UEOT.V3.CTMCSemigroupNonnegative.instDecidableEq_uEOT_1"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 5,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DYN-03",
+      "name": "UEOT.V3.PathError.p_dyn_03_finite_path_error",
+      "source": "formalization/ueot-core/UEOT/V3/PathError.lean",
+      "line": 679,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.PathError.CausalHistory",
+        "UEOT.V3.PathError.causalHistoryMeasurableSpace",
+        "UEOT.V3.PathError.causalLaw",
+        "UEOT.V3.PathError.causalLaw_tv_bound",
+        "UEOT.V3.PathError.one_sub_prod_one_sub_le_sum",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PathError.CausalHistory",
+        "UEOT.V3.PathError.causalHistoryMeasurableSpace",
+        "UEOT.V3.PathError.causalLaw",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 4,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DYN-04",
+      "name": "UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv",
+      "source": "formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+      "line": 31,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationPacking.tvDist_symm",
+        "UEOT.V3.InformationPacking.tvDist_triangle",
+        "UEOT.V3.TotalVariation.tvDist",
+        "UEOT.V3.TotalVariation.tvDist_map_le"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [
+        "P-MET-01"
+      ],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PER-01",
+      "name": "UEOT.V3.PersistenceOmega.p_per_01",
+      "source": "formalization/ueot-core/UEOT/V3/PersistenceOmega.lean",
+      "line": 165,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.PersistenceOmega.image_omegaLimit_eq_of_precompact_orbit",
+        "UEOT.V3.PersistenceOmega.omegaLimit_persistence_core",
+        "UEOT.V3.PersistenceOmega.p_per_01._simp_1_1"
+      ],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PER-02",
+      "name": "UEOT.V3.Compression.OccupationLimitInvariance.p_per_02_via_occupationLimit",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean",
+      "line": 303,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Compression.OccupationLimitInvariance.feller_invariant_of_occupation_tendsto",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.P",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.closed_support_of_occupation_tendsto",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.marginal",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.occupation",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.occupationFamily",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.occupation_tendsto_subseq_of_tight"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.P",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.marginal",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.occupation",
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.occupationFamily"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 8,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PER-03",
+      "name": "UEOT.V3.ViabilitySource.p_per_03",
+      "source": "formalization/ueot-core/UEOT/V3/ViabilitySource.lean",
+      "line": 38,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.ViabilityKernel.StaysIn",
+        "UEOT.V3.ViabilityKernel.exists_stationary_policy_of_fixed",
+        "UEOT.V3.ViabilityKernel.viabilityIter",
+        "UEOT.V3.ViabilityKernel.viabilityIter_antitone",
+        "UEOT.V3.ViabilityKernel.viabilityStep",
+        "UEOT.V3.ViabilityStrategy.exists_stabilized_eq_winningSet",
+        "UEOT.V3.ViabilityStrategy.winningSet",
+        "UEOT.V3.ViabilityTrajectory.exists_stationary_policy_all_times_of_fixed",
+        "UEOT.V3.ViabilityTrajectory.stationaryTrajMeasure"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.ViabilityKernel.StaysIn",
+        "UEOT.V3.ViabilityKernel.viabilityIter",
+        "UEOT.V3.ViabilityKernel.viabilityStep",
+        "UEOT.V3.ViabilityStrategy.winningSet",
+        "UEOT.V3.ViabilityTrajectory.stationaryTrajMeasure"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 9,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-PER-04",
+      "name": "UEOT.V3.ViabilityTangency.p_per_04",
+      "source": "formalization/ueot-core/UEOT/V3/ViabilityTangency.lean",
+      "line": 37,
+      "proof_direct_ueot_constants": [],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 0,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REC-01",
+      "name": "UEOT.V3.RecoveryProbability.p_rec_01_mean_bound",
+      "source": "formalization/ueot-core/UEOT/V3/RecoveryProbability.lean",
+      "line": 138,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.RecoveryDiscrete.affine_recurrence_closed_bound",
+        "UEOT.V3.RecoveryProbability.ennMean",
+        "UEOT.V3.RecoveryProbability.realMean",
+        "UEOT.V3.RecoveryProbability.realMean_succ_le"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.RecoveryProbability.ennMean",
+        "UEOT.V3.RecoveryProbability.realMean"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REC-02",
+      "name": "UEOT.V3.RecoveryDynkin.p_rec_02",
+      "source": "formalization/ueot-core/UEOT/V3/RecoveryDynkin.lean",
+      "line": 118,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.RecoveryDynkin.DynkinExpectationCertificate",
+        "UEOT.V3.RecoveryDynkin.expected_distance_domination_of_pointwise",
+        "UEOT.V3.RecoveryDynkin.expected_generator_drift_of_pointwise",
+        "UEOT.V3.RecoveryDynkin.meanSq_recovery_of_dynkin"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.RecoveryDynkin.DynkinExpectationCertificate"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REC-03",
+      "name": "UEOT.V3.RecoveryHittingPoisson.p_rec_03",
+      "source": "formalization/ueot-core/UEOT/V3/RecoveryHittingPoisson.lean",
+      "line": 140,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.RecoveryHittingNonnegative.expectedHittingTime",
+        "UEOT.V3.RecoveryHittingPoisson.expectedHittingTime_first_step_ennreal",
+        "UEOT.V3.RecoveryHittingPoisson.first_step_lintegral_ne_top"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.RecoveryHittingNonnegative.expectedHittingTime"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REC-04",
+      "name": "UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound",
+      "source": "formalization/ueot-core/UEOT/V3/RecoveryHittingBound.lean",
+      "line": 188,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.RecoveryHittingBound.c_mul_expectedHittingTime_le_initial",
+        "UEOT.V3.RecoveryHittingNonnegative.expectedHittingTime"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.RecoveryHittingNonnegative.expectedHittingTime"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QSD-01",
+      "name": "UEOT.V3.QSDTVLimit.p_qsd_01",
+      "source": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+      "line": 486,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.QSDTVLimit.KilledSemigroup",
+        "UEOT.V3.QSDTVLimit.KilledSemigroup.P",
+        "UEOT.V3.QSDTVLimit.KilledSemigroup.conditioned",
+        "UEOT.V3.QSDTVLimit.eigenmeasure_of_tv_limit",
+        "UEOT.V3.QSDTVLimit.exponential_qSurvival",
+        "UEOT.V3.QSDTVLimit.qSurvival",
+        "UEOT.V3.QSDTVLimit.qSurvival_le_one",
+        "UEOT.V3.QSDTVLimit.qSurvival_zero",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.QSDTVLimit.KilledSemigroup",
+        "UEOT.V3.QSDTVLimit.KilledSemigroup.P",
+        "UEOT.V3.QSDTVLimit.KilledSemigroup.conditioned",
+        "UEOT.V3.QSDTVLimit.qSurvival",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 9,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QSD-02",
+      "name": "UEOT.V3.Compression.PositiveEigenstructure.p_qsd_02_via_positiveEigenstructure",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+      "line": 515,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Compression.PositiveEigenstructure.BiEigenData",
+        "UEOT.V3.Compression.PositiveEigenstructure.BiEigenData.left",
+        "UEOT.V3.Compression.PositiveEigenstructure.BiEigenData.mk",
+        "UEOT.V3.Compression.PositiveEigenstructure.BiEigenData.right",
+        "UEOT.V3.Compression.PositiveEigenstructure.RightEigenData",
+        "UEOT.V3.Compression.PositiveEigenstructure.RightEigenData.mk",
+        "UEOT.V3.Compression.PositiveEigenstructure.RightEigenData.scale",
+        "UEOT.V3.Compression.PositiveEigenstructure.colApply",
+        "UEOT.V3.Compression.PositiveEigenstructure.hTransform",
+        "UEOT.V3.Compression.PositiveEigenstructure.instDecidableEq_uEOT",
+        "UEOT.V3.Compression.PositiveEigenstructure.invariantWeight",
+        "UEOT.V3.Compression.PositiveEigenstructure.qsdDoob_bundle",
+        "UEOT.V3.Compression.PositiveEigenstructure.rowApply",
+        "UEOT.V3.QSDPerron.colApply",
+        "UEOT.V3.QSDPerron.doobInvariant",
+        "UEOT.V3.QSDPerron.doobTransform",
+        "UEOT.V3.QSDPerron.rowApply"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.Compression.PositiveEigenstructure.instDecidableEq_uEOT",
+        "UEOT.V3.QSDPerron.colApply",
+        "UEOT.V3.QSDPerron.doobInvariant",
+        "UEOT.V3.QSDPerron.doobTransform",
+        "UEOT.V3.QSDPerron.rowApply"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 17,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QSD-03",
+      "name": "UEOT.V3.QSDDurationWindow.p_qsd_03",
+      "source": "formalization/ueot-core/UEOT/V3/QSDDurationWindow.lean",
+      "line": 84,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.QSDDurationWindow.decay_le_threshold",
+        "UEOT.V3.QSDDurationWindow.lowerEndpoint",
+        "UEOT.V3.QSDDurationWindow.threshold_le_survival",
+        "UEOT.V3.QSDDurationWindow.upperEndpoint"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.QSDDurationWindow.lowerEndpoint",
+        "UEOT.V3.QSDDurationWindow.upperEndpoint"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QSD-04",
+      "name": "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04",
+      "source": "formalization/ueot-core/UEOT/V3/ReversibleKilledSpectralQSD.lean",
+      "line": 711,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.QSDTVLimit.KilledSemigroup.survival",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.a1",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.a1_pos",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.conditioned",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.killed",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.lambda1",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.lambda2",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.phi1",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.phiMass",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.phiMass_pos",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.q",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.q_toMeasure",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.remainder",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.remainderScale",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.remainderScale_nonneg",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.remainder_l1_eventually_le_half_principal",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.survival",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.survival_eq_killed_toReal",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.survival_lower_of_remainder_small",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.tvDist_large_time_le_gap",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.QSDTVLimit.KilledSemigroup.survival",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.conditioned",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.killed",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.lambda1",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.lambda2",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.phi1",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.phiMass",
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.q",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 22,
+      "direct_local_type_constant_count": 10,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-ID-01",
+      "name": "UEOT.V3.TransportDefect.FrozenTransportSystem.p_id_01",
+      "source": "formalization/ueot-core/UEOT/V3/TransportDefect.lean",
+      "line": 149,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.TotalVariation.tvDist",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.AdjacentBound",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.K",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.p_id_01_pointwise",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.Γ"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.TotalVariation.tvDist",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.AdjacentBound",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.K",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.Γ"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-ID-02",
+      "name": "UEOT.V3.DevelopmentTransport.development_pipeline",
+      "source": "formalization/ueot-core/UEOT/V3/DevelopmentTransport.lean",
+      "line": 59,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DevelopmentTransport.development_error_step"
+      ],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-OMG-01",
+      "name": "UEOT.V3.OmegaMinimalFailure.p_omg_01",
+      "source": "formalization/ueot-core/UEOT/V3/OmegaMinimalFailure.lean",
+      "line": 35,
+      "proof_direct_ueot_constants": [
+        "UEOT.Finite.Minimal",
+        "UEOT.Finite.exists_minimal_subset",
+        "UEOT.V3.OmegaMinimalFailure.FailureMonotone",
+        "UEOT.V3.OmegaMinimalFailure.minimalFailures"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.OmegaMinimalFailure.FailureMonotone",
+        "UEOT.V3.OmegaMinimalFailure.minimalFailures"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-OMG-02",
+      "name": "UEOT.V3.OmegaIntegrityMargin.p_omg_02",
+      "source": "formalization/ueot-core/UEOT/V3/OmegaIntegrityMargin.lean",
+      "line": 25,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.OmegaIntegrityMargin.integrityMargin"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.OmegaIntegrityMargin.integrityMargin"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CAR-01",
+      "name": "UEOT.V3.Access.sufficient_mono",
+      "source": "formalization/ueot-core/UEOT/V3/Access.lean",
+      "line": 23,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Access.FactorsAt",
+        "UEOT.V3.Access.factorsAt_trans"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.Access.FactorsAt"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CAR-02",
+      "name": "UEOT.V3.Access.erasure_survives",
+      "source": "formalization/ueot-core/UEOT/V3/Access.lean",
+      "line": 41,
+      "proof_direct_ueot_constants": [
+        "UEOT.Finite.Minimal",
+        "UEOT.V3.Access.FactorsAt",
+        "UEOT.V3.Access.contains_minimal"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Finite.Minimal",
+        "UEOT.V3.Access.FactorsAt"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CAR-03",
+      "name": "UEOT.Blocker.blocker_involution",
+      "source": "formalization/ueot-core/UEOT/Core/Blocker.lean",
+      "line": 72,
+      "proof_direct_ueot_constants": [
+        "UEOT.Blocker.Hits",
+        "UEOT.Blocker.IsClutter",
+        "UEOT.Blocker.blocker",
+        "UEOT.Blocker.hits_blocker_iff"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Blocker.IsClutter",
+        "UEOT.Blocker.blocker"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CAR-04",
+      "name": "UEOT.V3.DecoderRadius.decoder_radius_bounds",
+      "source": "formalization/ueot-core/UEOT/V3/DecoderRadius.lean",
+      "line": 99,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DecoderRadius.DecoderBounds",
+        "UEOT.V3.DecoderRadius.FiberDistances",
+        "UEOT.V3.DecoderRadius.decoder_radius_le_diameter",
+        "UEOT.V3.DecoderRadius.diameter_half_le_decoder_radius"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.DecoderRadius.DecoderBounds",
+        "UEOT.V3.DecoderRadius.FiberDistances"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-RES-01",
+      "name": "UEOT.V3.ClosureResolution.minimal_property_coarse_graining",
+      "source": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+      "line": 201,
+      "proof_direct_ueot_constants": [
+        "UEOT.Resolution.Upward",
+        "UEOT.V3.ClosureResolution.ClosureSystem",
+        "UEOT.V3.ClosureResolution.ClosureSystem.carrier",
+        "UEOT.V3.ClosureResolution.admissibleMin",
+        "UEOT.V3.ClosureResolution.closure",
+        "UEOT.V3.ClosureResolution.closure_admissible",
+        "UEOT.V3.ClosureResolution.closure_least",
+        "UEOT.V3.ClosureResolution.imageClosure",
+        "UEOT.V3.ClosureResolution.minimalFamily_cofinal",
+        "UEOT.V3.ClosureResolution.resolutionMap",
+        "UEOT.V3.Resolution.MinimalFamily"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Resolution.Upward",
+        "UEOT.V3.ClosureResolution.ClosureSystem",
+        "UEOT.V3.ClosureResolution.ClosureSystem.carrier",
+        "UEOT.V3.ClosureResolution.admissibleMin",
+        "UEOT.V3.ClosureResolution.resolutionMap"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 11,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-RES-02",
+      "name": "UEOT.V3.ClosureResolution.closure_comp_of_nested",
+      "source": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+      "line": 70,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.ClosureResolution.ClosureSystem",
+        "UEOT.V3.ClosureResolution.ClosureSystem.carrier",
+        "UEOT.V3.ClosureResolution.closure",
+        "UEOT.V3.ClosureResolution.closure_least",
+        "UEOT.V3.ClosureResolution.closure_mem",
+        "UEOT.V3.ClosureResolution.closure_mono",
+        "UEOT.V3.ClosureResolution.subset_closure"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.ClosureResolution.ClosureSystem",
+        "UEOT.V3.ClosureResolution.ClosureSystem.carrier",
+        "UEOT.V3.ClosureResolution.closure"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-RES-03",
+      "name": "UEOT.V3.BlockerNaturality.blocker_naturality",
+      "source": "formalization/ueot-core/UEOT/V3/BlockerNaturality.lean",
+      "line": 82,
+      "proof_direct_ueot_constants": [
+        "UEOT.Blocker.Hits",
+        "UEOT.Blocker.blocker",
+        "UEOT.V3.BlockerNaturality.hits_push_iff",
+        "UEOT.V3.BlockerNaturality.images",
+        "UEOT.V3.BlockerNaturality.minFamily",
+        "UEOT.V3.BlockerNaturality.minimal_upward",
+        "UEOT.V3.BlockerNaturality.push",
+        "UEOT.V3.BlockerNaturality.upward"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Blocker.blocker",
+        "UEOT.V3.BlockerNaturality.push"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 8,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-RES-04",
+      "name": "UEOT.Resolution.lower_adjunction",
+      "source": "formalization/ueot-core/UEOT/Core/Resolution.lean",
+      "line": 36,
+      "proof_direct_ueot_constants": [
+        "UEOT.Resolution.Upward",
+        "UEOT.Resolution.lower",
+        "UEOT.Resolution.restrict"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Resolution.Upward",
+        "UEOT.Resolution.lower",
+        "UEOT.Resolution.restrict"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-RES-05",
+      "name": "UEOT.V3.Resolution.pushFamily_realization_interval",
+      "source": "formalization/ueot-core/UEOT/V3/Resolution.lean",
+      "line": 195,
+      "proof_direct_ueot_constants": [
+        "UEOT.Resolution.lower",
+        "UEOT.Resolution.upper",
+        "UEOT.V3.Resolution.IsAntichain",
+        "UEOT.V3.Resolution.PushMin",
+        "UEOT.V3.Resolution.UpClosure",
+        "UEOT.V3.Resolution.clutter_realization_interval",
+        "UEOT.V3.Resolution.pushFamily",
+        "UEOT.V3.Resolution.pushFamily_eq_iff_pushMin"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Resolution.lower",
+        "UEOT.Resolution.upper",
+        "UEOT.V3.Resolution.IsAntichain",
+        "UEOT.V3.Resolution.UpClosure",
+        "UEOT.V3.Resolution.pushFamily"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 8,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-RES-06",
+      "name": "UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers",
+      "source": "formalization/ueot-core/UEOT/V3/Resolution.lean",
+      "line": 222,
+      "proof_direct_ueot_constants": [
+        "UEOT.Resolution.lower",
+        "UEOT.Resolution.upper",
+        "UEOT.V3.Resolution.Active",
+        "UEOT.V3.Resolution.IsAntichain",
+        "UEOT.V3.Resolution.UniqueFiber",
+        "UEOT.V3.Resolution.UpClosure"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Resolution.lower",
+        "UEOT.Resolution.upper",
+        "UEOT.V3.Resolution.Active",
+        "UEOT.V3.Resolution.IsAntichain",
+        "UEOT.V3.Resolution.UniqueFiber",
+        "UEOT.V3.Resolution.UpClosure"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 6,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-COMP-01",
+      "name": "UEOT.V3.CompositionPathSource.p_comp_01",
+      "source": "formalization/ueot-core/UEOT/V3/CompositionPathSource.lean",
+      "line": 128,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CompositionFinitePartitions.ChildPartition",
+        "UEOT.V3.CompositionFinitePartitions.IsNontrivialPartition",
+        "UEOT.V3.CompositionFinitePartitions.exactPathIntegrationMargin_pos_iff_no_factorization",
+        "UEOT.V3.CompositionPathSource.SourcePathFactorizes",
+        "UEOT.V3.CompositionPathSource.sourcePartitionInformation",
+        "UEOT.V3.CompositionPathSource.sourcePartitionInformation_eq_zero_iff",
+        "UEOT.V3.CompositionPathSource.sourcePathIntegrationMargin"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CompositionFinitePartitions.ChildPartition",
+        "UEOT.V3.CompositionFinitePartitions.IsNontrivialPartition",
+        "UEOT.V3.CompositionPathSource.SourcePathFactorizes",
+        "UEOT.V3.CompositionPathSource.sourcePartitionInformation",
+        "UEOT.V3.CompositionPathSource.sourcePathIntegrationMargin"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-COMP-02",
+      "name": "UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo",
+      "source": "formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+      "line": 214,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CompositionInterventionJS.jsDiv",
+        "UEOT.V3.CompositionInterventionJS.jsDiv_le_logTwo",
+        "UEOT.V3.CompositionInterventionJS.jsDiv_nonneg",
+        "UEOT.V3.CompositionInterventionJS.logTwo"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CompositionInterventionJS.jsDiv",
+        "UEOT.V3.CompositionInterventionJS.logTwo"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-COMP-03",
+      "name": "UEOT.V3.CompositionMargin.p_comp_03",
+      "source": "formalization/ueot-core/UEOT/V3/CompositionMargin.lean",
+      "line": 58,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CompositionMargin.compositionMargin",
+        "UEOT.V3.CompositionMargin.maxCutLipschitz"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CompositionMargin.compositionMargin",
+        "UEOT.V3.CompositionMargin.maxCutLipschitz"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-COMP-04",
+      "name": "UEOT.V3.CompositionParentInformation.p_comp_04",
+      "source": "formalization/ueot-core/UEOT/V3/CompositionParentInformation.lean",
+      "line": 96,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CompositionParentInformation.discreteShannonEntropy_map_le",
+        "UEOT.V3.CompositionParentInformation.measurable_parentCoreMap",
+        "UEOT.V3.CompositionParentInformation.parentCoreMap",
+        "UEOT.V3.CompositionParentInformation.representationConditionalEntropy",
+        "UEOT.V3.CompositionParentInformation.representationConditionalEntropy._proof_1",
+        "UEOT.V3.InformationConditionalStatistic.coreAt",
+        "UEOT.V3.InformationConditionalStatistic.measurable_coreAt",
+        "UEOT.V3.InformationDiscreteEntropy.discreteShannonEntropy",
+        "UEOT.V3.InformationRandomEncoderSourceEntropy.sourceConditionalCoreEntropy",
+        "UEOT.V3.InformationRandomEncoderSourceEntropy.sourceConditionalCoreEntropy._proof_1"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CompositionParentInformation.measurable_parentCoreMap",
+        "UEOT.V3.CompositionParentInformation.parentCoreMap",
+        "UEOT.V3.CompositionParentInformation.representationConditionalEntropy",
+        "UEOT.V3.InformationRandomEncoderSourceEntropy.sourceConditionalCoreEntropy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 10,
+      "direct_local_type_constant_count": 4,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-COMP-05",
+      "name": "UEOT.V3.CompositionBooleanAtoms.p_comp_05",
+      "source": "formalization/ueot-core/UEOT/V3/CompositionBooleanAtoms.lean",
+      "line": 224,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CompositionBooleanAtoms.IsBooleanAtom",
+        "UEOT.V3.CompositionBooleanAtoms.booleanAtom_eq_signatureAtom",
+        "UEOT.V3.CompositionBooleanAtoms.generatedBoolean",
+        "UEOT.V3.CompositionBooleanAtoms.generated_le_of_regions_mem",
+        "UEOT.V3.CompositionBooleanAtoms.region_eq_iUnion_signatureAtoms",
+        "UEOT.V3.CompositionBooleanAtoms.signatureAtom",
+        "UEOT.V3.CompositionBooleanAtoms.signatureAtom_isBooleanAtom",
+        "UEOT.V3.CompositionBooleanAtoms.signatureAtom_partition_unique"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CompositionBooleanAtoms.IsBooleanAtom",
+        "UEOT.V3.CompositionBooleanAtoms.generatedBoolean",
+        "UEOT.V3.CompositionBooleanAtoms.signatureAtom"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 8,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-COMP-06",
+      "name": "UEOT.V3.CompositionCarrierLift.p_comp_06",
+      "source": "formalization/ueot-core/UEOT/V3/CompositionCarrierLift.lean",
+      "line": 83,
+      "proof_direct_ueot_constants": [
+        "UEOT.Finite.Minimal",
+        "UEOT.Finite.exists_minimal_subset",
+        "UEOT.V3.CompositionCarrierLift.childMinimalFamily",
+        "UEOT.V3.CompositionCarrierLift.childSufficient",
+        "UEOT.V3.CompositionCarrierLift.coalitionCovers",
+        "UEOT.V3.CompositionCarrierLift.liftedMinimalCoverFamily",
+        "UEOT.V3.CompositionCarrierLift.locallyMinimalCover",
+        "UEOT.V3.CompositionCarrierLift.locallyMinimalCover_childSufficient"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CompositionCarrierLift.childMinimalFamily",
+        "UEOT.V3.CompositionCarrierLift.liftedMinimalCoverFamily"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 8,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-COMP-07",
+      "name": "UEOT.V3.CompositionWindow.p_comp_07",
+      "source": "formalization/ueot-core/UEOT/V3/CompositionWindow.lean",
+      "line": 27,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CompositionWindow.p_comp_07._simp_1_1"
+      ],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-01",
+      "name": "UEOT.V3.FiniteAlphabetPStat01.p_stat_01_tail",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteAlphabetPStat01.lean",
+      "line": 139,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteAlphabetConcentration.measure_exists_cell_tvBadEvent_le_of_subset_bound",
+        "UEOT.V3.FiniteAlphabetConcentration.subsetBadEvent",
+        "UEOT.V3.FiniteAlphabetConcentration.tvBadEvent",
+        "UEOT.V3.FiniteAlphabetPStat01.measure_subsetBadEvent_empirical_le",
+        "UEOT.V3.FiniteAlphabetSampling.empiricalMeasure",
+        "UEOT.V3.FiniteAlphabetSampling.empiricalMeasure_isProbability",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteAlphabetSampling.empiricalMeasure",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-02",
+      "name": "UEOT.V3.StatisticalDefect.p_stat_02",
+      "source": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+      "line": 181,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.StatisticalDefect.responseDefect_error",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.StatisticalDefect.responseDefect",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-03",
+      "name": "UEOT.V3.Threshold.approximate_family",
+      "source": "formalization/ueot-core/UEOT/V3/Threshold.lean",
+      "line": 24,
+      "proof_direct_ueot_constants": [
+        "UEOT.Finite.Minimal",
+        "UEOT.V3.Threshold.threshold_classification"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Finite.Minimal"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-04",
+      "name": "UEOT.V3.Threshold.exact_family",
+      "source": "formalization/ueot-core/UEOT/V3/Threshold.lean",
+      "line": 50,
+      "proof_direct_ueot_constants": [
+        "UEOT.Finite.Minimal",
+        "UEOT.V3.Threshold.zero_classification"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Finite.Minimal"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-05",
+      "name": "UEOT.V3.PredictiveClassRecovery.p_stat_05",
+      "source": "formalization/ueot-core/UEOT/V3/PredictiveClassRecovery.lean",
+      "line": 151,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.PredictiveClassRecovery.protocolDistance",
+        "UEOT.V3.PredictiveClassRecovery.protocolDistance_eq_zero_of_equivalent",
+        "UEOT.V3.PredictiveClassRecovery.protocolDistance_error",
+        "UEOT.V3.PredictiveClassRecovery.trueEquivalent",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PredictiveClassRecovery.protocolDistance",
+        "UEOT.V3.PredictiveClassRecovery.trueEquivalent",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 5,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-06",
+      "name": "UEOT.V3.HilbertMeanSourceRadius.source_meanError_tail_exact_radius",
+      "source": "formalization/ueot-core/UEOT/V3/HilbertMeanSourceRadius.lean",
+      "line": 53,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.HilbertMeanConcentration.empiricalMean",
+        "UEOT.V3.HilbertMeanRadius.pStat06Deviation",
+        "UEOT.V3.HilbertMeanRadius.scalar_tail_eq_alpha_div",
+        "UEOT.V3.HilbertMeanSourceRadius.one_div_sqrt_add_deviation_eq_sourceRadius",
+        "UEOT.V3.HilbertMeanSourceRadius.pStat06SourceRadius",
+        "UEOT.V3.HilbertMeanSourceUncenteredTail.source_meanError_tail_from_first_moment"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.HilbertMeanConcentration.empiricalMean",
+        "UEOT.V3.HilbertMeanSourceRadius.pStat06SourceRadius"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-07",
+      "name": "UEOT.V3.MMDTransportSource.p_stat_07_source",
+      "source": "formalization/ueot-core/UEOT/V3/MMDTransportSource.lean",
+      "line": 26,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.MMDTransport.featureKernel",
+        "UEOT.V3.MMDTransport.featureKernel_transportedFeature",
+        "UEOT.V3.MMDTransport.featureMMD",
+        "UEOT.V3.MMDTransport.p_stat_07_meanEmbedding",
+        "UEOT.V3.MMDTransport.transportedFeature",
+        "UEOT.V3.MMDTransport.transportedKernel"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.MMDTransport.featureKernel",
+        "UEOT.V3.MMDTransport.featureMMD",
+        "UEOT.V3.MMDTransport.transportedFeature",
+        "UEOT.V3.MMDTransport.transportedKernel"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 4,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-08",
+      "name": "UEOT.V3.FiniteCandidatePStat08.p_stat_08",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteCandidatePStat08.lean",
+      "line": 77,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.BoundedLossSampling.empiricalRisk",
+        "UEOT.V3.BoundedLossSampling.trueRisk",
+        "UEOT.V3.BoundedLossTwoSided.measure_exists_candidate_bad_le",
+        "UEOT.V3.FiniteCandidateDiscovery.erm_excess_le_two_uniform_event",
+        "UEOT.V3.FiniteCandidatePStat08.pStat08Radius",
+        "UEOT.V3.FiniteCandidatePStat08.pStat08Radius._proof_1"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.BoundedLossSampling.empiricalRisk",
+        "UEOT.V3.BoundedLossSampling.trueRisk",
+        "UEOT.V3.FiniteCandidatePStat08.pStat08Radius"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-STAT-09",
+      "name": "UEOT.V3.AverageErrorTransport.p_stat_09",
+      "source": "formalization/ueot-core/UEOT/V3/AverageErrorTransport.lean",
+      "line": 77,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.AverageErrorTransport.expectation_le_of_rnDeriv_le",
+        "UEOT.V3.AverageErrorTransport.expectation_le_of_tvDist_le",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INV-01",
+      "name": "UEOT.V3.BinaryTesting.p_inv_01",
+      "source": "formalization/ueot-core/UEOT/V3/BinaryTesting.lean",
+      "line": 131,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.BinaryTesting.binaryRisk",
+        "UEOT.V3.BinaryTesting.binaryRisk_eq_half_one_sub_diff",
+        "UEOT.V3.BinaryTesting.binaryRisk_lower_bound",
+        "UEOT.V3.BinaryTesting.exists_event_gap_eq_tvDist",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.BinaryTesting.binaryRisk",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 5,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INV-02",
+      "name": "UEOT.V3.FisherGauge.p_inv_02",
+      "source": "formalization/ueot-core/UEOT/V3/FisherGauge.lean",
+      "line": 76,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FisherGauge.directionalScore",
+        "UEOT.V3.FisherGauge.fisherAction_eq_zero_of_orbitTangentScoreZero",
+        "UEOT.V3.FisherGauge.orbitTangentScoreZero_of_invariant_logLikelihood"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FisherGauge.directionalScore",
+        "UEOT.V3.FisherGauge.fisherAction"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INV-03",
+      "name": "UEOT.V3.FisherIntersection.p_inv_03",
+      "source": "formalization/ueot-core/UEOT/V3/FisherIntersection.lean",
+      "line": 326,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FisherGauge.fisherAction",
+        "UEOT.V3.FisherIntersection.fisherAction_scoreSum_eq_totalAction",
+        "UEOT.V3.FisherIntersection.fisherQuadratic",
+        "UEOT.V3.FisherIntersection.fisherQuadratic_eq_zero_iff_fisherAction_eq_zero",
+        "UEOT.V3.FisherIntersection.fisherQuadratic_nonneg",
+        "UEOT.V3.FisherIntersection.fisherQuadratic_scoreSum_eq_sum",
+        "UEOT.V3.FisherIntersection.integrable_scoreSum_mul_scoreSum",
+        "UEOT.V3.FisherIntersection.scoreSum",
+        "UEOT.V3.FisherIntersection.totalAction"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FisherGauge.fisherAction",
+        "UEOT.V3.FisherIntersection.scoreSum"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 9,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INV-04",
+      "name": "UEOT.V3.DesignIdentifiability.p_inv_04",
+      "source": "formalization/ueot-core/UEOT/V3/DesignIdentifiability.lean",
+      "line": 59,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DesignIdentifiability.GramPositive",
+        "UEOT.V3.DesignIdentifiability.UniquelyIdentifies",
+        "UEOT.V3.DesignIdentifiability.designMap",
+        "UEOT.V3.DesignIdentifiability.designMap_sub",
+        "UEOT.V3.DesignIdentifiability.designMap_zero",
+        "UEOT.V3.DesignIdentifiability.gramQuadratic"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.DesignIdentifiability.GramPositive",
+        "UEOT.V3.DesignIdentifiability.UniquelyIdentifies"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-INV-05",
+      "name": "UEOT.V3.PredictableOLSSourceConfidence.measure_source_goodGram_and_euclidean_error_gt_le_alpha",
+      "source": "formalization/ueot-core/UEOT/V3/PredictableOLSSourceConfidence.lean",
+      "line": 60,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DesignIdentifiability.gramQuadratic",
+        "UEOT.V3.PredictableOLS.gramAction",
+        "UEOT.V3.PredictableOLS.scoreVector",
+        "UEOT.V3.PredictableOLS.sqNorm",
+        "UEOT.V3.PredictableOLSConfidence.errorRadius",
+        "UEOT.V3.PredictableOLSGoodGramConfidence.measure_goodGram_and_euclidean_error_gt_le_alpha",
+        "UEOT.V3.PredictableOLSNormalEquation.IsOLSNormalEq",
+        "UEOT.V3.PredictableOLSNormalEquation.gramAction_error_eq_scoreVector",
+        "UEOT.V3.PredictableOLSNormalEquation.linearResponse",
+        "UEOT.V3.PredictableOLSRadius.scoreParam",
+        "UEOT.V3.PredictableOLSSourceConfidence.GoodGram",
+        "UEOT.V3.PredictableOLSSourceIndex.finDesign",
+        "UEOT.V3.PredictableOLSSourceIndex.finNoise",
+        "UEOT.V3.PredictableOLSSourceIndex.scoreVector_finSource_eq_range",
+        "UEOT.V3.PredictableOLSSourceMGF.noiseParam",
+        "UEOT.V3.PredictableOLSSourceScore.allCoord_sourceScore_hasSubgaussianMGF"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PredictableOLS.sqNorm",
+        "UEOT.V3.PredictableOLSConfidence.errorRadius",
+        "UEOT.V3.PredictableOLSNormalEquation.IsOLSNormalEq",
+        "UEOT.V3.PredictableOLSNormalEquation.linearResponse",
+        "UEOT.V3.PredictableOLSSourceConfidence.GoodGram",
+        "UEOT.V3.PredictableOLSSourceIndex.finDesign",
+        "UEOT.V3.PredictableOLSSourceIndex.finNoise",
+        "UEOT.V3.PredictableOLSSourceMGF.noiseParam"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 16,
+      "direct_local_type_constant_count": 8,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-TEL-01",
+      "name": "UEOT.V3.RewardInfinite.shaping_limit_value",
+      "source": "formalization/ueot-core/UEOT/V3/RewardInfinite.lean",
+      "line": 118,
+      "proof_direct_ueot_constants": [
+        "UEOT.Reward.discounted",
+        "UEOT.V3.RewardInfinite.shaping_tendsto"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Reward.discounted"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CTL-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean",
+      "line": 154,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.Memory",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.current",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal",
+        "UEOT.V3.FiniteDiscountedControl.Model",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.greedyPolicy",
+        "UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.Memory",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.current",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue",
+        "UEOT.V3.FiniteDiscountedControl.Model",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.greedyPolicy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 9,
+      "direct_local_type_constant_count": 7,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CTL-02",
+      "name": "UEOT.V3.CompactFellerControl.Model.p_ctl_02",
+      "source": "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+      "line": 303,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CompactCausalOptimalityCore.Model.BellmanUpperCertificate.infiniteValue_le_value",
+        "UEOT.V3.CompactCausalOptimalityCore.Model.GreedyCertificate.stationary_infiniteValue_eq_value",
+        "UEOT.V3.CompactCausalOptimalityCore.Model.GreedyCertificate.toBellmanUpperCertificate",
+        "UEOT.V3.CompactCausalOptimalityCore.Model.infiniteValue",
+        "UEOT.V3.CompactCausalOptimalityCore.initialHistory",
+        "UEOT.V3.CompactFellerControl.Model",
+        "UEOT.V3.CompactFellerControl.Model.bellman",
+        "UEOT.V3.CompactFellerControl.Model.bellman_contracting",
+        "UEOT.V3.CompactFellerControl.Model.causalModel",
+        "UEOT.V3.CompactFellerControl.Model.discountNN",
+        "UEOT.V3.CompactFellerControl.Model.fixedPoint_unique",
+        "UEOT.V3.CompactFellerControl.Model.greedyCertificate",
+        "UEOT.V3.CompactFellerControl.Model.greedySelector",
+        "UEOT.V3.CompactFellerControl.Model.greedySelector_measurable",
+        "UEOT.V3.CompactFellerControl.Model.greedySelector_spec",
+        "UEOT.V3.CompactFellerControl.Model.optimalValue",
+        "UEOT.V3.CompactFellerControl.Model.optimalValue_fixed",
+        "UEOT.V3.CompactFellerControl.Model.qValue",
+        "UEOT.V3.CompactFellerControl.Model.stationaryPolicy",
+        "UEOT.V3.CompactFellerControl.Model.stationaryPolicy_markov",
+        "UEOT.V3.FiniteHistory.HistoryFiber",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceHistoryFiber",
+        "UEOT.V3.ReflexiveStateAugmentation.CausalPolicy"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CompactCausalOptimalityCore.Model.infiniteValue",
+        "UEOT.V3.CompactCausalOptimalityCore.initialHistory",
+        "UEOT.V3.CompactFellerControl.Model",
+        "UEOT.V3.CompactFellerControl.Model.bellman",
+        "UEOT.V3.CompactFellerControl.Model.causalModel",
+        "UEOT.V3.CompactFellerControl.Model.discountNN",
+        "UEOT.V3.CompactFellerControl.Model.greedySelector",
+        "UEOT.V3.CompactFellerControl.Model.optimalValue",
+        "UEOT.V3.CompactFellerControl.Model.qValue",
+        "UEOT.V3.CompactFellerControl.Model.stationaryPolicy",
+        "UEOT.V3.CompactFellerControl.Model.stationaryPolicy_markov",
+        "UEOT.V3.FiniteHistory.HistoryFiber",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceHistoryFiber",
+        "UEOT.V3.ReflexiveStateAugmentation.CausalPolicy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 23,
+      "direct_local_type_constant_count": 14,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CTL-03",
+      "name": "UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+      "source": "formalization/ueot-core/UEOT/V3/DiffusionHJBVerification.lean",
+      "line": 293,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DiffusionHJBVerification.Model",
+        "UEOT.V3.DiffusionHJBVerification.Model.ControlFamily",
+        "UEOT.V3.DiffusionHJBVerification.Model.ControlFamily.p_ctl_03"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.DiffusionHJBVerification.Model",
+        "UEOT.V3.DiffusionHJBVerification.Model.ControlFamily",
+        "UEOT.V3.DiffusionHJBVerification.Model.ControlFamily.IsOptimalValue"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QUO-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+      "line": 206,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.Memory",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.current",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.liftSelector",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.liftSelector_infiniteValue_eq_optimal",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.optimalValue_apply",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.optimal_qValue_pullback",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction_spec",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.qValue",
+        "UEOT.V3.FiniteDiscountedControl.selectorPolicy"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.Memory",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.current",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.liftSelector",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.qValue",
+        "UEOT.V3.FiniteDiscountedControl.selectorPolicy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 18,
+      "direct_local_type_constant_count": 13,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QUO-02",
+      "name": "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotientBounds.lean",
+      "line": 282,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.liftSelector",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.liftSelector_regret_le_two_D",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.optimalValue_dist_w_le",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.pullback",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction_spec",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.selectorPolicy"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.liftSelector",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.pullback",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.selectorPolicy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 14,
+      "direct_local_type_constant_count": 11,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QUO-03",
+      "name": "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action",
+      "source": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "line": 253,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CoreOperationalAssembly.optimal_qValue_macro_error_le_D",
+        "UEOT.V3.Decision.action_gap",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.qValue"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.qValue"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 10,
+      "direct_local_type_constant_count": 8,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QUO-04",
+      "name": "UEOT.V3.FiniteDiscountedControl.Model.p_quo_04",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteDiscountedOccupancy.lean",
+      "line": 398,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.Model",
+        "UEOT.V3.FiniteDiscountedControl.Model.discount",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateActionOccupancy",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateActionOccupancy_stateMarginal",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateActionOccupancy_sum_one",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateOccupancy",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateOccupancy_fixed",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyNeumannSeries",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyReferenceResidual",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyResolvent",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyResolvent_eq_neumann",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyStateRow",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyTransition",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyValue_sub_reference_eq_resolvent",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyValue_sub_reference_initial_expect_eq_occupancy",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow.expect",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow.prob",
+        "UEOT.V3.FiniteDiscountedControl.StationaryPolicy"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.Model",
+        "UEOT.V3.FiniteDiscountedControl.Model.discount",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateActionOccupancy",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateOccupancy",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyNeumannSeries",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyReferenceResidual",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyResolvent",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyStateRow",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyTransition",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyValue",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow.expect",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow.prob",
+        "UEOT.V3.FiniteDiscountedControl.StationaryPolicy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 20,
+      "direct_local_type_constant_count": 14,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-QUO-05",
+      "name": "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteDiscountedOccupancyRegret.lean",
+      "line": 377,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.liftedPolicy",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.localErrorExpect",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.neg_liftedLocalError_le_residualExpect",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.residualExpect_le_localError",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.w",
+        "UEOT.V3.FiniteDiscountedControl.Model.actionReferenceResidual",
+        "UEOT.V3.FiniteDiscountedControl.Model.discount",
+        "UEOT.V3.FiniteDiscountedControl.Model.discount_lt_one",
+        "UEOT.V3.FiniteDiscountedControl.Model.discountedStateActionExpect",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyValue_sub_reference_initial_expect_eq_stateActionOccupancy",
+        "UEOT.V3.FiniteDiscountedControl.Model.qValue",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow.expect",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow.expect_sub",
+        "UEOT.V3.FiniteDiscountedControl.StationaryPolicy"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.liftedPolicy",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.localErrorExpect",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.Model.discount",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.policyValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.qValue",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow",
+        "UEOT.V3.FiniteDiscountedControl.ProbabilityRow.expect",
+        "UEOT.V3.FiniteDiscountedControl.StationaryPolicy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 21,
+      "direct_local_type_constant_count": 13,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-GOA-01",
+      "name": "UEOT.V3.FiniteCesaroInvariant.p_goa_01",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean",
+      "line": 191,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteCesaroInvariant.cesaroRow",
+        "UEOT.V3.FiniteCesaroInvariant.cesaro_residual_tendsto_zero"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteCesaroInvariant.cesaroRow"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-GOA-02",
+      "name": "UEOT.V3.FiniteDobrushin.p_goa_02",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+      "line": 363,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteDobrushin.crossRowTV",
+        "UEOT.V3.FiniteDobrushin.dobrushinAlpha",
+        "UEOT.V3.FiniteDobrushin.existsUnique_invariant",
+        "UEOT.V3.FiniteDobrushin.instDecidableEq_uEOT",
+        "UEOT.V3.FiniteDobrushin.lawTV",
+        "UEOT.V3.FiniteDobrushin.stationary_perturbation",
+        "UEOT.V3.FiniteDobrushin.step"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteDobrushin.crossRowTV",
+        "UEOT.V3.FiniteDobrushin.dobrushinAlpha",
+        "UEOT.V3.FiniteDobrushin.instDecidableEq_uEOT",
+        "UEOT.V3.FiniteDobrushin.lawTV",
+        "UEOT.V3.FiniteDobrushin.step"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-GOA-03",
+      "name": "UEOT.V3.FiniteRecurrentDecompositionStability.p_goa_03",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+      "line": 1299,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteCesaroInvariant.cesaroRow",
+        "UEOT.V3.FiniteDobrushin.lawTV",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.P",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.block",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.cesaro_tendsto_recurrentMixture",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.classLaw",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.pureFullLaw",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.stochastic",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FullState",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.H",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.N",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.Q",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.R",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.direct_row_sum_le_one",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.inverse_left",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.inverse_right",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.r_nonneg",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentPartition",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.absorption_matrix_bound_of_inverses",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.initialClassWeights",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.initialClassWeights_l1_le_norm",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.recurrentMixture",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.recurrentMixture_tv_le"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteCesaroInvariant.cesaroRow",
+        "UEOT.V3.FiniteDobrushin.lawTV",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.P",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.block",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.classLaw",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.pureFullLaw",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.stochastic",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FullState",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.H",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.N",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.Q",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.R",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentPartition",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.initialClassWeights",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.recurrentMixture"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 24,
+      "direct_local_type_constant_count": 16,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-GOA-04",
+      "name": "UEOT.V3.SymmetricKilledSpectralStability.p_goa_04",
+      "source": "formalization/ueot-core/UEOT/V3/SymmetricKilledSpectralStability.lean",
+      "line": 383,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.SymmetricKilledSpectralStability.PrincipalEigenpair",
+        "UEOT.V3.SymmetricKilledSpectralStability.PrincipalGap",
+        "UEOT.V3.SymmetricKilledSpectralStability.SymmetricKilledKernel",
+        "UEOT.V3.SymmetricKilledSpectralStability.SymmetricKilledKernel.matrix",
+        "UEOT.V3.SymmetricKilledSpectralStability.SymmetricKilledKernel.norm_operator_sub",
+        "UEOT.V3.SymmetricKilledSpectralStability.SymmetricKilledKernel.operator",
+        "UEOT.V3.SymmetricKilledSpectralStability.spectral_squareLaw_stability"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.SymmetricKilledSpectralStability.PrincipalEigenpair",
+        "UEOT.V3.SymmetricKilledSpectralStability.PrincipalEigenpair.unit",
+        "UEOT.V3.SymmetricKilledSpectralStability.PrincipalGap",
+        "UEOT.V3.SymmetricKilledSpectralStability.PrincipalGap.unit",
+        "UEOT.V3.SymmetricKilledSpectralStability.SymmetricKilledKernel",
+        "UEOT.V3.SymmetricKilledSpectralStability.SymmetricKilledKernel.matrix",
+        "UEOT.V3.SymmetricKilledSpectralStability.SymmetricKilledKernel.operator",
+        "UEOT.V3.SymmetricKilledSpectralStability.squarePMF",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 9,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-KL-01",
+      "name": "UEOT.V3.PathEventKL.p_kl_01",
+      "source": "formalization/ueot-core/UEOT/V3/PathEventKL.lean",
+      "line": 40,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.InformationEventBernoulli.bernoulliKL_event_le",
+        "UEOT.V3.PathEventKL.dBern"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PathEventKL.dBern"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 2,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-KL-02",
+      "name": "UEOT.V3.PathEventIProjection.p_kl_02",
+      "source": "formalization/ueot-core/UEOT/V3/PathEventIProjectionGlobal.lean",
+      "line": 180,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.PathEventIProjection.eventIProjection",
+        "UEOT.V3.PathEventIProjection.eventKLIInf",
+        "UEOT.V3.PathEventIProjection.eventKLIInf_eq_zero_of_le_baseline",
+        "UEOT.V3.PathEventIProjection.eventTiltDensity",
+        "UEOT.V3.PathEventIProjection.p_kl_02_active_optimizer",
+        "UEOT.V3.PathEventKL.dBern"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PathEventIProjection.eventIProjection",
+        "UEOT.V3.PathEventIProjection.eventKLIInf",
+        "UEOT.V3.PathEventIProjection.eventTiltDensity",
+        "UEOT.V3.PathEventKL.dBern"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 4,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-KL-03",
+      "name": "UEOT.V3.PathKLChain.p_kl_03",
+      "source": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+      "line": 138,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.DynamicsKernel.appendHistory",
+        "UEOT.V3.DynamicsKernel.measurable_appendHistory",
+        "UEOT.V3.InformationKernelKL.klDiv_compProd_right_eq_lintegral",
+        "UEOT.V3.InformationStatistic.klDiv_map_eq_of_measurable_leftInverse",
+        "UEOT.V3.PathKLChain.History",
+        "UEOT.V3.PathKLChain.measurable_splitHistory",
+        "UEOT.V3.PathKLChain.pathLaw",
+        "UEOT.V3.PathKLChain.pathLaw_isProbability",
+        "UEOT.V3.PathKLChain.pathLaw_succ",
+        "UEOT.V3.PathKLChain.pathLaw_zero",
+        "UEOT.V3.PathKLChain.splitHistory",
+        "UEOT.V3.PathKLChain.splitHistory_appendHistory"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.PathKLChain.History",
+        "UEOT.V3.PathKLChain.pathLaw"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 12,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-KL-04",
+      "name": "UEOT.V3.FiniteCTMCPathKL.p_kl_04_holding",
+      "source": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+      "line": 3053,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteCTMCPathKL.SupportIncluded",
+        "UEOT.V3.FiniteCTMCPathKL.fullSourceLogLikelihood",
+        "UEOT.V3.FiniteCTMCPathKL.fullSourceRateHolding",
+        "UEOT.V3.FiniteCTMCPathKL.integrable_llr_pathLawFrom",
+        "UEOT.V3.FiniteCTMCPathKL.integral_fullSourceLogLikelihood_eq_sourceRateHolding",
+        "UEOT.V3.FiniteCTMCPathKL.llr_pathLawFrom_eq_fullSourceLogLikelihood",
+        "UEOT.V3.FiniteCTMCPathKL.pathLawFrom_absolutelyContinuous"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteCTMCPathKL.SupportIncluded",
+        "UEOT.V3.FiniteCTMCPathKL.fullSourceRateHolding"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-KL-05",
+      "name": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+      "source": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+      "line": 191,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.GirsanovPathKL.TerminalGirsanovData",
+        "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.fullSpaceKL_eq_halfEnergy",
+        "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.statePathKL_le_halfEnergy",
+        "UEOT.V3.GirsanovPathKL.controlEnergy"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.GirsanovPathKL.TerminalGirsanovData",
+        "UEOT.V3.GirsanovPathKL.controlEnergy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DDH-01",
+      "name": "UEOT.V3.DualDriveGauge.p_ddh_01",
+      "source": "formalization/ueot-core/UEOT/V3/DualDriveGauge.lean",
+      "line": 17,
+      "proof_direct_ueot_constants": [],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 0,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DDH-02",
+      "name": "UEOT.V3.ExponentialFamilyCalculus.p_ddh_02",
+      "source": "formalization/ueot-core/UEOT/V3/ExponentialFamilyCalculus.lean",
+      "line": 268,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.ExponentialFamilyCalculus.Param",
+        "UEOT.V3.ExponentialFamilyCalculus.covarianceDual",
+        "UEOT.V3.ExponentialFamilyCalculus.gradientDual",
+        "UEOT.V3.ExponentialFamilyCalculus.hasFDerivAt_gradientDual_covariance",
+        "UEOT.V3.ExponentialFamilyCalculus.hasGradientAt_logPartition",
+        "UEOT.V3.ExponentialFamilyCalculus.logPartition",
+        "UEOT.V3.ExponentialFamilyCalculus.meanVec"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.ExponentialFamilyCalculus.Param",
+        "UEOT.V3.ExponentialFamilyCalculus.covarianceDual",
+        "UEOT.V3.ExponentialFamilyCalculus.gradientDual",
+        "UEOT.V3.ExponentialFamilyCalculus.logPartition",
+        "UEOT.V3.ExponentialFamilyCalculus.meanVec"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 7,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DDH-03",
+      "name": "UEOT.V3.ExponentialFamilyIProjection.p_ddh_03",
+      "source": "formalization/ueot-core/UEOT/V3/ExponentialFamilyIProjection.lean",
+      "line": 210,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.ExponentialFamilyIProjection.finite_type_integrable",
+        "UEOT.V3.ExponentialFamilyIProjection.integral_score_eq_of_moment_eq",
+        "UEOT.V3.ExponentialFamilyIProjection.kl_pythagorean_toReal",
+        "UEOT.V3.ExponentialFamilyIProjection.measure_ac_pmf_of_pos",
+        "UEOT.V3.ExponentialFamilyIProjection.moment",
+        "UEOT.V3.ExponentialFamilyIProjection.score"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.ExponentialFamilyIProjection.moment",
+        "UEOT.V3.ExponentialFamilyIProjection.score"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 2,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DDH-04",
+      "name": "UEOT.V3.CommonBottleneckRank.p_ddh_04",
+      "source": "formalization/ueot-core/UEOT/V3/CommonBottleneckRank.lean",
+      "line": 114,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.CommonBottleneckRank.Budget",
+        "UEOT.V3.CommonBottleneckRank.Latent",
+        "UEOT.V3.CommonBottleneckRank.bottleneckJacobian_factorization",
+        "UEOT.V3.CommonBottleneckRank.bottleneckResponse",
+        "UEOT.V3.CommonBottleneckRank.outerDerivative",
+        "UEOT.V3.CommonBottleneckRank.stackedJacobian",
+        "UEOT.V3.CommonBottleneckRank.stackedJacobian._proof_1",
+        "UEOT.V3.CommonBottleneckRank.stackedJacobian._proof_2",
+        "UEOT.V3.CommonBottleneckRank.stackedResponse"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CommonBottleneckRank.Budget",
+        "UEOT.V3.CommonBottleneckRank.Latent",
+        "UEOT.V3.CommonBottleneckRank.stackedJacobian"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 9,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-DDH-05",
+      "name": "UEOT.V3.SingularValueEffectiveDimension.p_ddh_05",
+      "source": "formalization/ueot-core/UEOT/V3/SingularValueEffectiveDimension.lean",
+      "line": 470,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.SingularValueEffectiveDimension.matrixPerturb_to_clmBound",
+        "UEOT.V3.SingularValueEffectiveDimension.matrixSingularValue",
+        "UEOT.V3.SingularValueEffectiveDimension.matrixSingularValue._proof_1",
+        "UEOT.V3.SingularValueEffectiveDimension.p_ddh_05_linear",
+        "UEOT.V3.SingularValueEffectiveDimension.rectangularCLM",
+        "UEOT.V3.SingularValueEffectiveDimension.rectangularLin"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.SingularValueEffectiveDimension.matrixSingularValue"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-ALI-01",
+      "name": "UEOT.V3.AlignmentGlobalExactness.p_ali_01",
+      "source": "formalization/ueot-core/UEOT/V3/AlignmentGlobalExactness.lean",
+      "line": 569,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.AlignmentGlobalExactness.C1OneForm",
+        "UEOT.V3.AlignmentGlobalExactness.ClosedPeriods",
+        "UEOT.V3.AlignmentGlobalExactness.IsExactForm",
+        "UEOT.V3.AlignmentGlobalExactness.closedPeriods_exact",
+        "UEOT.V3.AlignmentGlobalExactness.exact_closedPeriods"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.AlignmentGlobalExactness.C1OneForm",
+        "UEOT.V3.AlignmentGlobalExactness.ClosedPeriods",
+        "UEOT.V3.AlignmentGlobalExactness.IsExactForm"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 5,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-ALI-02",
+      "name": "UEOT.V3.AlignmentParentValue.p_ali_02",
+      "source": "formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+      "line": 72,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.AlignmentParentValue.p_ali_02_core"
+      ],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-ALI-03",
+      "name": "UEOT.V3.AlignmentThreshold.p_ali_03",
+      "source": "formalization/ueot-core/UEOT/V3/AlignmentThreshold.lean",
+      "line": 57,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.AlignmentThreshold.coordinatedDerivative",
+        "UEOT.V3.AlignmentThreshold.coordinationThreshold",
+        "UEOT.V3.AlignmentThreshold.p_ali_03_scalar"
+      ],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 3,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-EVO-01",
+      "name": "UEOT.V3.EvolutionPrice.p_evo_01",
+      "source": "formalization/ueot-core/UEOT/V3/EvolutionPrice.lean",
+      "line": 139,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.EvolutionPrice.nextFrequency",
+        "UEOT.V3.EvolutionPrice.nextFrequency_trait_mean_eq",
+        "UEOT.V3.EvolutionPrice.nextTraitMean",
+        "UEOT.V3.EvolutionPrice.offspringTraitMean",
+        "UEOT.V3.EvolutionPrice.p_evo_01_core",
+        "UEOT.V3.EvolutionPrice.transmittedTrait",
+        "UEOT.V3.EvolutionPrice.weightedCov",
+        "UEOT.V3.EvolutionPrice.weightedMean"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.EvolutionPrice.nextFrequency",
+        "UEOT.V3.EvolutionPrice.offspringTraitMean",
+        "UEOT.V3.EvolutionPrice.transmittedTrait",
+        "UEOT.V3.EvolutionPrice.weightedCov",
+        "UEOT.V3.EvolutionPrice.weightedMean"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 8,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-EVO-02",
+      "name": "UEOT.V3.EvolutionSharedLabel.p_evo_02",
+      "source": "formalization/ueot-core/UEOT/V3/EvolutionSharedLabel.lean",
+      "line": 185,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.EvolutionSharedLabel.measurable_sharedRepack",
+        "UEOT.V3.EvolutionSharedLabel.measurable_sharedUnpack",
+        "UEOT.V3.EvolutionSharedLabel.sharedLabelJoint",
+        "UEOT.V3.EvolutionSharedLabel.sharedRepack",
+        "UEOT.V3.EvolutionSharedLabel.sharedUnpack",
+        "UEOT.V3.EvolutionSharedLabel.sharedUnpack_leftInverse",
+        "UEOT.V3.InformationCore.mutualInfo",
+        "UEOT.V3.InformationDiscreteEntropy.copy_kl_eq_discreteShannonEntropy",
+        "UEOT.V3.InformationDiscreteEntropy.discreteShannonEntropy",
+        "UEOT.V3.InformationEntropyBound.copyJoint",
+        "UEOT.V3.InformationEntropyBound.copyJoint_isFinite",
+        "UEOT.V3.InformationStatistic.klDiv_map_eq_of_measurable_leftInverse"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.EvolutionSharedLabel.sharedLabelJoint",
+        "UEOT.V3.InformationCore.mutualInfo",
+        "UEOT.V3.InformationDiscreteEntropy.discreteShannonEntropy"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 12,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-EVO-03",
+      "name": "UEOT.V3.EvolutionPerronGrowth.p_evo_03",
+      "source": "formalization/ueot-core/UEOT/V3/EvolutionPerronGrowth.lean",
+      "line": 279,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate",
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate.R",
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate.l",
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate.r",
+        "UEOT.V3.EvolutionPerronGrowth.composition_tendsto",
+        "UEOT.V3.EvolutionPerronGrowth.natRow",
+        "UEOT.V3.EvolutionPerronGrowth.rowApply",
+        "UEOT.V3.EvolutionPerronGrowth.rowDot",
+        "UEOT.V3.EvolutionPerronGrowth.rowMass",
+        "UEOT.V3.EvolutionPerronGrowth.scaledMean_tendsto",
+        "UEOT.V3.EvolutionPerronGrowth.valuation_unique"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate",
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate.R",
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate.l",
+        "UEOT.V3.EvolutionPerronGrowth.KPF01Certificate.r",
+        "UEOT.V3.EvolutionPerronGrowth.natRow",
+        "UEOT.V3.EvolutionPerronGrowth.rowApply",
+        "UEOT.V3.EvolutionPerronGrowth.rowDot",
+        "UEOT.V3.EvolutionPerronGrowth.rowMass"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 11,
+      "direct_local_type_constant_count": 8,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-EVO-04",
+      "name": "UEOT.V3.Compression.PositiveEigenstructure.p_evo_04_via_positiveEigenstructure",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+      "line": 614,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Compression.PositiveEigenstructure.RightEigenData",
+        "UEOT.V3.Compression.PositiveEigenstructure.RightEigenData.mk",
+        "UEOT.V3.Compression.PositiveEigenstructure.RightEigenData.vector",
+        "UEOT.V3.Compression.PositiveEigenstructure.W",
+        "UEOT.V3.Compression.PositiveEigenstructure.colApply",
+        "UEOT.V3.Compression.PositiveEigenstructure.readoutCLM",
+        "UEOT.V3.Compression.PositiveEigenstructure.stochasticRightEigen_bundle",
+        "UEOT.V3.EvolutionReproductiveMartingale.W"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.EvolutionReproductiveMartingale.W"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 8,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-BRG-01",
+      "name": "UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence",
+      "source": "formalization/ueot-core/UEOT/V3/FixedFitnessRecurrenceUniqueness.lean",
+      "line": 64,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FixedFitnessRecurrenceUniqueness.recurrence_unique_closedFrequency"
+      ],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-BRG-02",
+      "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+      "source": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+      "line": 44,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.SelectionBridge.ReplicationBridge",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.BehaviorEquivalent",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.replicate",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.response"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.SelectionBridge.ReplicationBridge",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.BehaviorEquivalent",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.fitness"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 4,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REF-01",
+      "name": "UEOT.V3.ReflexivePRef01.p_ref_01",
+      "source": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+      "line": 44,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteHistory.HistoryFiber",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceHistoryFiber",
+        "UEOT.V3.ReflexivePRef01.Z",
+        "UEOT.V3.ReflexiveStateAugmentation.CausalPolicy",
+        "UEOT.V3.ReflexiveStatePathUniqueness.p_ref_01_pathlaw_unique"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteHistory.HistoryFiber",
+        "UEOT.V3.FiniteHistoryMeasurable.instMeasurableSpaceHistoryFiber",
+        "UEOT.V3.ReflexivePRef01.Z",
+        "UEOT.V3.ReflexiveStateAugmentation.CausalPolicy",
+        "UEOT.V3.ReflexiveStatePathUniqueness.IsReflexivePathLaw"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 5,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REF-02",
+      "name": "UEOT.V3.PRef02.p_ref_02_general_joint",
+      "source": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+      "line": 34,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.GeneralBayesPosterior.posterior_reconstructs_joint"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.GeneralBayesPosterior.jointLaw",
+        "UEOT.V3.GeneralBayesPosterior.observationLaw",
+        "UEOT.V3.GeneralBayesPosterior.posteriorKernel"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 3,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REF-03",
+      "name": "UEOT.V3.FreeInformationValue.p_ref_03",
+      "source": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+      "line": 48,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
+      ],
+      "type_direct_ueot_constants": [],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 0,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REF-04",
+      "name": "UEOT.V3.Decision.goal_regret",
+      "source": "formalization/ueot-core/UEOT/V3/Decision.lean",
+      "line": 17,
+      "proof_direct_ueot_constants": [
+        "UEOT.Reward.IsMaximizer"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.Reward.IsMaximizer"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-REF-05",
+      "name": "UEOT.V3.Agency.feasibleValue_mono",
+      "source": "formalization/ueot-core/UEOT/V3/Agency.lean",
+      "line": 25,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Agency.feasibleValue"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.Agency.feasibleValue"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 1,
+      "direct_local_type_constant_count": 1,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-API-01",
+      "name": "UEOT.V3.Compression.TransportCertificate.processInterface_exact_source_via_twoStage",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+      "line": 345,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.Compression.TransportCertificate.processInterface_exact_via_twoStage",
+        "UEOT.V3.ProcessInterface.ExactNatural",
+        "UEOT.V3.ProcessInterface.Interface",
+        "UEOT.V3.ProcessInterface.Interface.comp",
+        "UEOT.V3.ProcessInterface.Interface.protocol",
+        "UEOT.V3.ProcessInterface.Interface.readout"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.ProcessInterface.ExactNatural",
+        "UEOT.V3.ProcessInterface.Interface",
+        "UEOT.V3.ProcessInterface.Interface.comp",
+        "UEOT.V3.ProcessInterface.Interface.protocol",
+        "UEOT.V3.ProcessInterface.Interface.readout"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 6,
+      "direct_local_type_constant_count": 5,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-ALG-01",
+      "name": "UEOT.V3.PAlg01.p_alg_01",
+      "source": "formalization/ueot-core/UEOT/V3/PAlg01.lean",
+      "line": 38,
+      "proof_direct_ueot_constants": [
+        "UEOT.V3.FiniteStablePartition.Model",
+        "UEOT.V3.FiniteStablePartition.Model.output",
+        "UEOT.V3.FiniteStablePartition.Model.reward",
+        "UEOT.V3.FiniteStablePartition.Model.transition",
+        "UEOT.V3.FiniteStablePartition.Refines",
+        "UEOT.V3.FiniteStablePartition.Stable",
+        "UEOT.V3.FiniteStablePartition.blockMass",
+        "UEOT.V3.FiniteStablePartition.finiteHorizonOutputWordMass",
+        "UEOT.V3.FiniteStablePartition.finiteHorizonOutputWordMass_eq_of_rel",
+        "UEOT.V3.FiniteStablePartition.initialSetoid",
+        "UEOT.V3.FiniteStablePartition.quotientClassBlocks",
+        "UEOT.V3.FiniteStablePartition.quotientOutput",
+        "UEOT.V3.FiniteStablePartition.quotientOutput_mk",
+        "UEOT.V3.FiniteStablePartition.quotientReward",
+        "UEOT.V3.FiniteStablePartition.quotientReward_mk",
+        "UEOT.V3.FiniteStablePartition.quotientTransition",
+        "UEOT.V3.FiniteStablePartition.quotient_one_step_preserved",
+        "UEOT.V3.FiniteStablePartition.refineSetoid",
+        "UEOT.V3.FiniteStablePartition.refineSetoid_eq_iff_stable",
+        "UEOT.V3.FiniteStablePartition.terminalSetoid",
+        "UEOT.V3.FiniteStablePartition.terminal_coarsest",
+        "UEOT.V3.FiniteStablePartition.terminal_refines_initial",
+        "UEOT.V3.FiniteStablePartition.terminal_stable",
+        "UEOT.V3.FiniteStablePartition.transition_sum_over_quotientClassBlocks"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.FiniteStablePartition.Model",
+        "UEOT.V3.FiniteStablePartition.Model.output",
+        "UEOT.V3.FiniteStablePartition.Model.reward",
+        "UEOT.V3.FiniteStablePartition.Model.transition",
+        "UEOT.V3.FiniteStablePartition.Refines",
+        "UEOT.V3.FiniteStablePartition.Stable",
+        "UEOT.V3.FiniteStablePartition.blockMass",
+        "UEOT.V3.FiniteStablePartition.finiteHorizonOutputWordMass",
+        "UEOT.V3.FiniteStablePartition.initialSetoid",
+        "UEOT.V3.FiniteStablePartition.quotientClassBlocks",
+        "UEOT.V3.FiniteStablePartition.quotientOutput",
+        "UEOT.V3.FiniteStablePartition.quotientReward",
+        "UEOT.V3.FiniteStablePartition.quotientTransition",
+        "UEOT.V3.FiniteStablePartition.refineSetoid"
+      ],
+      "direct_counted_pid_deps": [],
+      "direct_local_proof_constant_count": 24,
+      "direct_local_type_constant_count": 14,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    },
+    {
+      "pid": "P-CORE-01",
+      "name": "UEOT.V3.CoreOperationalAssembly.p_core_01",
+      "source": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "line": 769,
+      "proof_direct_ueot_constants": [
+        "UEOT.Blocker.blocker",
+        "UEOT.V3.CoreOperationalAssembly.ControlCertificate._proof_2",
+        "UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate",
+        "UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.mk",
+        "UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation",
+        "UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.toApproxControlQuotient",
+        "UEOT.V3.CoreOperationalAssembly.GoodSample",
+        "UEOT.V3.CoreOperationalAssembly.PolicyRecurrentData",
+        "UEOT.V3.CoreOperationalAssembly.PolicyRecurrentData.decomp",
+        "UEOT.V3.CoreOperationalAssembly.commonGoodEvent",
+        "UEOT.V3.CoreOperationalAssembly.commonGoodEvent_measureReal_lower",
+        "UEOT.V3.CoreOperationalAssembly.estimatedCarrierFamily",
+        "UEOT.V3.CoreOperationalAssembly.exactCarrierFamily",
+        "UEOT.V3.CoreOperationalAssembly.history_transport_certificate",
+        "UEOT.V3.CoreOperationalAssembly.integrityMargin_pos_of_estimated_margin",
+        "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action",
+        "UEOT.V3.CoreOperationalAssembly.policyMatrix",
+        "UEOT.V3.CoreOperationalAssembly.policyMatrix_rowStochastic",
+        "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF",
+        "UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy",
+        "UEOT.V3.CoreOperationalAssembly.response_recovery_on_good_event",
+        "UEOT.V3.CoreOperationalAssembly.same_policy_goa02",
+        "UEOT.V3.CoreOperationalAssembly.same_policy_goa03",
+        "UEOT.V3.CoreOperationalAssembly.same_policy_path_error",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02",
+        "UEOT.V3.FiniteDiscountedControl.Model",
+        "UEOT.V3.FiniteDiscountedControl.Model.greedyAction",
+        "UEOT.V3.FiniteDiscountedControl.Model.optimalValue",
+        "UEOT.V3.FiniteDiscountedControl.Model.qValue",
+        "UEOT.V3.FiniteDiscountedControl.StationaryPolicy",
+        "UEOT.V3.FiniteDobrushin.crossRowTV",
+        "UEOT.V3.FiniteDobrushin.dobrushinAlpha",
+        "UEOT.V3.FiniteDobrushin.lawTV",
+        "UEOT.V3.FiniteDobrushin.step",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.block",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FiniteRecurrentDecomposition.classLaw",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.FullState",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.N",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.Q",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.R",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentPartition",
+        "UEOT.V3.OmegaIntegrityMargin.integrityMargin",
+        "UEOT.V3.PredictiveClassRecovery.protocolDistance",
+        "UEOT.V3.PredictiveClassRecovery.trueEquivalent",
+        "UEOT.V3.StatisticalDefect.responseDefect",
+        "UEOT.V3.TotalVariation.tvDist",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem",
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.AdjacentBound"
+      ],
+      "type_direct_ueot_constants": [
+        "UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate",
+        "UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation",
+        "UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.toApproxControlQuotient",
+        "UEOT.V3.CoreOperationalAssembly.GoodSample",
+        "UEOT.V3.CoreOperationalAssembly.commonGoodEvent",
+        "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF",
+        "UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy",
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient",
+        "UEOT.V3.FiniteDiscountedControl.Model",
+        "UEOT.V3.OmegaIntegrityMargin.integrityMargin",
+        "UEOT.V3.PredictiveClassRecovery.protocolDistance",
+        "UEOT.V3.PredictiveClassRecovery.trueEquivalent",
+        "UEOT.V3.StatisticalDefect.responseDefect",
+        "UEOT.V3.TotalVariation.tvDist"
+      ],
+      "direct_counted_pid_deps": [
+        "P-QUO-02",
+        "P-QUO-03"
+      ],
+      "direct_local_proof_constant_count": 53,
+      "direct_local_type_constant_count": 14,
+      "scientific_semantic_revalidation": "NOT_PERFORMED"
+    }
+  ],
+  "limits": [
+    "Not a transitive theorem derivation DAG, only direct constant occurrences",
+    "A proof may depend on imported non-UEOT Mathlib and Lean constants not listed here",
+    "A kernel-checked proof can still formalize a scientific claim with stronger or different premises",
+    "This does not audit external physical data, model truth, or independent source semantics"
+  ]
+}
