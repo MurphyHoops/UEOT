@@ -90,11 +90,18 @@ experimental validation of real material self-reproduction.
 - No Core 106/106 theorem, four counted Compression generators or
   live GitHub CI receipt is modified or promoted by this provenance note.
 
-The dated historical branch is no longer needed as a live local
-development branch once this evidence summary is integrated. Its
-complete commit history is retained in the verified local
-UEOT_DIVERGENT_BRANCH_ARCHIVE_20261010.bundle.
-The archive is local only, not a GitHub file.
+The historical commit tree is retained in the durable GitHub tag
+archive/ueot-c1-c7-final-20261008, which resolves to
+e7e8cae5a83385a7a6f14e010c7ad85f520b5d44 and includes the three
+historical evidence/governance commits cited above. In a fresh clone:
+
+    git fetch origin tag archive/ueot-c1-c7-final-20261008
+    git show --stat archive/ueot-c1-c7-final-20261008
+    git show archive/ueot-c1-c7-final-20261008:formalization/ueot-core/docs/compression/theory_completion/scientific_closure/SCIENTIFIC_CLOSURE_STATUS.json
+
+The local complete-history Git bundle is an optional recovery copy;
+the remote archive tag is sufficient to recover the original tracked
+historical source independently of the original local branch.
 
 ## Source check recipe
 
@@ -108,3 +115,32 @@ review of C7 scientific interpretation.
 **Integration decision:** Preserve these facts as a narrow dated
 provenance note. Retain the stronger current main implementation and
 the exact source-scoped scientific open-port labels.
+
+
+## Persisted per-module source receipt
+
+Generated 2026-10-10 with git rev-parse pinned-commit:path. These are
+Git SHA-1 blob identifiers recorded in this tracked report. Both source
+commits are also recoverable from the GitHub archival tag/current main.
+Historical commit: e7e8cae5a83385a7a6f14e010c7ad85f520b5d44. Compared main commit: 66c999d3c2911d7f732c66a827689a8ae6613892.
+
+| Scientific Closure source module | Historical blob OID | main blob OID |
+|---|---|---|
+| C2.lean | 329f6e50909048164c65214289412cbbab4782fe | 329f6e50909048164c65214289412cbbab4782fe |
+| C2FormationRecovery.lean | 2a1f4141e6f92a1640c6a7593c8ae5e8c014951a | 2a1f4141e6f92a1640c6a7593c8ae5e8c014951a |
+| C2IntervalDecision.lean | bb7995ab2cdebdb583b56e3557c4ff2460cb1e86 | bb7995ab2cdebdb583b56e3557c4ff2460cb1e86 |
+| C2ProtocolCoverage.lean | 11861b81b09ff97c1dee352eed7f081d8a27a37b | 11861b81b09ff97c1dee352eed7f081d8a27a37b |
+| C2SamplingBudget.lean | 6ad9628ed0d3ef9da268c0d02d80188faa71cbdc | 6ad9628ed0d3ef9da268c0d02d80188faa71cbdc |
+| C3.lean | 14f2c6c0c41747e69cd1f53418207619c8509f36 | 14f2c6c0c41747e69cd1f53418207619c8509f36 |
+| C3BindingCalibration.lean | 96888b1459216ad5dfb1507b2f555c1db33622ae | 96888b1459216ad5dfb1507b2f555c1db33622ae |
+| C3NestedSearch.lean | 46d7a1025160a475e9da9dff40b40273ba58ff96 | 46d7a1025160a475e9da9dff40b40273ba58ff96 |
+| C4.lean | a135d6dd8ae1ce84a41c5a89b78eaa571a0a594f | a135d6dd8ae1ce84a41c5a89b78eaa571a0a594f |
+| C4FBT.lean | cb52844428d2b7c553708d74ce26802c01c695de | cb52844428d2b7c553708d74ce26802c01c695de |
+| C5.lean | 82f6a2d96d9ad735cc7632a96fd11981fab7ba50 | 82f6a2d96d9ad735cc7632a96fd11981fab7ba50 |
+| C5DualDriveTest.lean | e9275c20aa9153ac082b3b5d4380c02ccfdda30b | e9275c20aa9153ac082b3b5d4380c02ccfdda30b |
+| C6.lean | 5555dd6db264c713a9bf1d8ef654be3a1799ac3f | 5555dd6db264c713a9bf1d8ef654be3a1799ac3f |
+| C6PurposeMechanism.lean | ac0ab021ee8cff22221aea0dec9df1b55620cefd | ac0ab021ee8cff22221aea0dec9df1b55620cefd |
+| C7.lean | 03d5088d5e20ab120f4837c5222942fe0e4e148a | 03d5088d5e20ab120f4837c5222942fe0e4e148a |
+| C7EvidenceGovernance.lean | cabc44c57cd9fcb6a7894b0893adcca5e652069a | cabc44c57cd9fcb6a7894b0893adcca5e652069a |
+
+All 16 pairs are identical byte-for-byte; this is a *source* comparison, not scientific port closure or a claim of independent physical confirmation.
