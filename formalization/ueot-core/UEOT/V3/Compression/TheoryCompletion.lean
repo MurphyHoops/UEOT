@@ -86,6 +86,12 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticHiddenAlias
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPersistentHiddenExample
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPredictiveNullspace
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPredictiveRobustObservability
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictiveOptimalControlLift
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictiveGoalClosureBoundary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ActiveHiddenOptimalControlExample
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictiveViabilityTransport
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MultiScaleExactControlComposition
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MultiScaleFiniteWitness
 /-!
 # UEOT Theory Completion public root
 
