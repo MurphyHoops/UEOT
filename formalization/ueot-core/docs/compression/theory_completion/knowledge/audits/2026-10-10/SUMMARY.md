@@ -5,11 +5,40 @@ Status: READ-ONLY RESEARCH EVIDENCE; ZERO Lean theorem, ledger, or open-port cha
 
 ## All-module enumeration
 
-All **633** first-party modules were scanned, encompassing **111,565 raw
+All **633** repository-bundled modules were scanned, encompassing **111,565 raw
 lines**, **85,421 non-comment nonempty lines**, **2,343 imports**, and **5,553
 lexically declared items**: 3,675 theorem, 284 lemma, 1,407 def, 48 abbrev,
 121 structure, and 18 inductive. There are **zero exact duplicate files**
 and zero exact matches after stripping comments and normalizing whitespace.
+
+## Provenance: original UEOT modules vs adapted upstream sources
+
+**Do not call all 633 modules first-party UEOT work.** The source tree
+includes 11 vendored/adapted modules under
+UEOT/V3/ThirdParty/CrooksJarzynski. Their UPSTREAM.md identifies the
+source repository CrooksJarzynskiLean at
+b415db75eb8189544a90adb55009441d35ab5c04.
+Those files include 3,825 lines and 239 lexical declarations.
+Some source/import adaptations are explicitly declared upstream; these
+are neither duplicated UEOT inventions nor automatically re-proven
+Core-106 physics.
+
+| Measured corpus | All bundled | UEOT-maintained, excluding vendor | Adapted upstream vendor |
+|---|---:|---:|---:|
+| Lean modules | 633 | 622 | 11 |
+| Raw source lines | 111,565 | 107,740 | 3,825 |
+| Lexical declarations | 5,553 | 5,314 | 239 |
+| Public source theorem proof nodes in graph | 3,793 | 3,637 | 156 |
+| Nodes with direct registered theorem reuse | 2,422 | 2,328 | 94 |
+| Outgoing direct theorem reuse edges | 4,886 | 4,720 | 166 |
+| Outgoing project-scoped constant references | 23,542 | 22,700 | 842 |
+
+The aggregate counts below intentionally measure the **entire bundled
+Lean project**. Source origin is now a column in both the per-module
+and per-declaration manifests and the proof-reuse graph. A separate
+SOURCE_PROVENANCE_BREAKDOWN.json contains the exact partition and
+source attribution. All 37 strict same-type groups in the current
+scan concern nonvendored UEOT-maintained declarations.
 
 Lean Environment prefix UEOT contains 9,977 named constants:
 6,408 theorem constants, 3,099 definition constants, plus constructors etc.
@@ -56,13 +85,14 @@ registered obligations are false or should be recounted.
 
 ## Proof-level reuse across all public authored source theorems
 
-3,793 actual theorem values were traversed by Lean to extract
-first-party proof constants. **2,422** depend directly on at least one
+3,793 actual theorem values, including 156 adapted-upstream theorem
+nodes, were traversed by Lean to extract project-scoped proof constants. **2,422** depend directly on at least one
 other registered public source theorem, **1,371** do not; there are
-**4,886** direct registered-source-theorem edges, **2,760** different
-public source theorem targets, and **23,542** first-party constant
+**4,886** direct registered-source-theorem edges (4,720 from
+UEOT-maintained proofs and 166 from vendored proofs), **2,760**
+different public source theorem targets, and **23,542** project-scoped constant
 occurrences in the proof-term dependency sets. The 1,371 may directly
-use Mathlib, private proof helpers, or first-party definitions and
+use Mathlib, private proof helpers, or project-local definitions and
 must NOT be equated with gratuitous independent reproofs.
 
 The lexical proof scan identified **242 concise alias-like proof
@@ -151,8 +181,10 @@ or deleting one is not.
 4. NEAR_TYPE_15_DISTINCT_HEURISTIC_PAIRS.json: full candidate pairs,
    scores and source context, excluding equal-type repetitions.
 5. BINDER_NORMALIZED_TYPE_PAIRS_40.tsv and VERIFY_40_TYPE_EQUIVALENCES.lean:
-   re-run from formalization/ueot-core with lake env lean and the relative
-   VERIFY script; requires all 40 Lean Meta.isDefEq checks to succeed.
+   re-run from formalization/ueot-core with the build-aware command
+   lake lean docs/compression/theory_completion/knowledge/audits/2026-10-10/VERIFY_40_TYPE_EQUIVALENCES.lean.
+   Unlike lake env lean, lake lean builds the UEOT imports in a clean
+   checkout; requires all 40 Lean Meta.isDefEq checks to succeed.
 6. all_3793_theorem_direct_reuse_graph.csv: each public authored
    source theorem and its direct referenced public source theorems.
 
@@ -161,11 +193,11 @@ or deleting one is not.
 Compiled with Lean 4.33.1 against the pinned Mathlib checkout; environment
 constant types and .thmInfo.value.getUsedConstants were inspected in
 Lean, not inferred from commentary. Python/FKRG then enumerated all
-first-party source files. Exact source bytes and normalized line
+UEOT-maintained and adapted-upstream source files. Exact source bytes and normalized line
 content were fingerprinted; theorem types were grouped by exact
 expression text and by an Expr constructor tree that removes ONLY
 binder display names and metadata. The 15 approximate candidates
-used restricted same-first-party-constant buckets, length and token
+used restricted same-project-constant buckets, length and token
 3-gram Jaccard scores. The latter is deliberately NOT exhaustive.
 
 An equal elaborated type expression or direct proof dependency can

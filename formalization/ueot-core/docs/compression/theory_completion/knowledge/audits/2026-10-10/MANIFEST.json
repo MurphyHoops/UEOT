@@ -7,7 +7,8 @@
     "NEAR_TYPE_15_DISTINCT_HEURISTIC_PAIRS.json",
     "all_3793_theorem_direct_reuse_graph.csv",
     "BINDER_NORMALIZED_TYPE_PAIRS_40.tsv",
-    "VERIFY_40_TYPE_EQUIVALENCES.lean"
+    "VERIFY_40_TYPE_EQUIVALENCES.lean",
+    "SOURCE_PROVENANCE_BREAKDOWN.json"
   ],
   "module_count": 633,
   "declaration_count": 5553,
@@ -29,5 +30,11 @@
     "Heuristic near-type candidate search is restricted and has false positives and false negatives"
   ],
   "elaborated_types_defeq_verified_pairs": 40,
-  "elaborated_types_defeq_validation": "40/40 PASS via Lean Meta.isDefEq, compiled UEOT current main"
+  "elaborated_types_defeq_validation": "40/40 PASS via Lean Meta.isDefEq, compiled UEOT current main",
+  "source_provenance_classes": {
+    "UEOT_MAINTAINED": 622,
+    "VENDORED_ADAPTED_UPSTREAM": 11
+  },
+  "vendored_subtree": "UEOT/V3/ThirdParty/CrooksJarzynski; see UPSTREAM.md",
+  "reproducible_verification_command": "cd formalization/ueot-core && lake lean docs/compression/theory_completion/knowledge/audits/2026-10-10/VERIFY_40_TYPE_EQUIVALENCES.lean"
 }
