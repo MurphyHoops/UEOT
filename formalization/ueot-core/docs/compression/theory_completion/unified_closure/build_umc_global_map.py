@@ -6,13 +6,14 @@ dependencies. The output intentionally never asserts semantic theorem equivalenc
 from words, filename matches or graph reachability.
 """
 from pathlib import Path
+from hashlib import sha256
 from collections import Counter, defaultdict
 import re, json
 
 ROOT = Path(__file__).resolve().parents[6]
 CORE = ROOT / 'formalization/ueot-core'
 BASE = CORE / 'UEOT'
-OUT = Path(__file__).parent / 'UMC_GLOBAL_MODULE_DAG_V3.json'
+OUT = Path(__file__).parent / 'UMC_GLOBAL_MODULE_DAG_V4.json'
 
 def category(path: Path):
     rel = path.relative_to(CORE).as_posix()
@@ -30,9 +31,15 @@ def manifest():
     paths = [CORE / 'UEOT.lean', CORE / 'UEOT/V3.lean'] + paths
     paths = sorted(set(p for p in paths if p.is_file()))
     modules={}
-    for p in paths:
+    source_digest=sha256()
+    for p in sorted(paths, key=lambda path: path.relative_to(CORE).with_suffix('').as_posix().replace('/', '.')):
         name = p.relative_to(CORE).with_suffix('').as_posix().replace('/','.')
-        text=p.read_text(encoding='utf-8')
+        data=p.read_bytes()
+        source_digest.update(name.encode('utf-8'))
+        source_digest.update(b'\x00')
+        source_digest.update(data)
+        source_digest.update(b'\x00')
+        text=data.decode('utf-8')
         imports=re.findall(r'^\s*import\s+(\S+)',text,re.M)
         # Lexical declarations only; namespaces and elaborated theorem
         # dependencies are explicitly out of scope.
@@ -72,7 +79,8 @@ def manifest():
         for d in deps:
             if modules[m]['category'] != modules[d]['category']:
                 cross[(modules[m]['category'],modules[d]['category'])]+=1
-    result={'schema_version':2,
+    result={'schema_version':3,
+       'source_tree_sha256': source_digest.hexdigest(),
        'scope':'literal first-party UEOT Lean source files and their direct imports',
        'source_semantics':'metadata audit, NOT independent theorem-source semantic certification',
        'total_Lean_modules':len(modules),
@@ -95,6 +103,6 @@ if __name__=='__main__':
     d=manifest()
     print('UMC_GLOBAL_MODULE_SURVEY', json.dumps(
        {k:d[k] for k in
-        ['total_Lean_modules','total_source_lines','total_theorem_lemma_tokens',
+        ['source_tree_sha256','total_Lean_modules','total_source_lines','total_theorem_lemma_tokens',
          'category_counts','reachable_from_UEOT_root','not_reachable_from_UEOT_root',
          'cycles_detected','missing_internal_imports']},ensure_ascii=False))

@@ -18,7 +18,7 @@ ROOT = HERE.parents[5]
 CORE = ROOT / "formalization/ueot-core"
 PROOFS = CORE / "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure"
 CANON = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
-OUT = HERE / "UMC_LOCAL_EXACT_HEAD_AUDIT_V3.json"
+OUT = HERE / "UMC_LOCAL_EXACT_HEAD_AUDIT_V4.json"
 
 def run(cmd, cwd=ROOT):
     p = subprocess.run(cmd, cwd=str(cwd), text=True,
@@ -113,13 +113,35 @@ def audit(full):
         for name in stage.get('symbols',[]):
             if name not in found:
                 raise RuntimeError('stage cites missing local theorem: '+name)
-    global_dag=json.loads((HERE/"UMC_GLOBAL_MODULE_DAG_V3.json").read_text())
+    global_dag=json.loads((HERE/"UMC_GLOBAL_MODULE_DAG_V4.json").read_text())
     if (global_dag.get('cycles_detected') or global_dag.get('missing_internal_imports')
         or global_dag['not_reachable_from_UEOT_root']
         or global_dag['reachable_from_UEOT_root'] != global_dag['total_Lean_modules']):
         raise RuntimeError('entire first-party Lean import graph not closed')
-    if global_dag['total_Lean_modules']<618:
-        raise RuntimeError('unexpected full-repository source inventory loss')
+    # Exact current source accounting; an older passing receipt cannot hide
+    # new modules, missing modules, or modified source bytes.
+    from hashlib import sha256
+    current_sources = sorted([CORE / 'UEOT.lean', *list((CORE/'UEOT').rglob('*.lean'))])
+    actual_modules = {
+        f.relative_to(CORE).with_suffix('').as_posix().replace('/', '.'): f
+        for f in current_sources
+    }
+    if set(actual_modules) != set(global_dag['entries']):
+        raise RuntimeError('stale global DAG: module paths disagree with current source')
+    digest = sha256()
+    for name, path in sorted(actual_modules.items()):
+        data = path.read_bytes()
+        digest.update(name.encode('utf-8'))
+        digest.update(bytes([0]))
+        digest.update(data)
+        digest.update(bytes([0]))
+    # The generator encodes literal zero separators; match them exactly.
+    if digest.hexdigest() != global_dag.get('source_tree_sha256'):
+        raise RuntimeError('stale global DAG: source fingerprint mismatch')
+    if global_dag['total_Lean_modules'] != len(actual_modules):
+        raise RuntimeError('stale global DAG: incorrect total modules')
+    if global_dag['category_counts'].get('UMC_New_Bridges') != len(files):
+        raise RuntimeError('stale global DAG: UMC module count mismatch')
     source_atlas=Counter(r['mapping_status'] for r in atlas['records'])
     axioms_result="NOT_RUN"
     if full:

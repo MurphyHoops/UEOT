@@ -102,6 +102,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CorePMFViabilityRecon
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreInfinitePathClosure
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreSourceAllTimesAssembly
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreNonvacuousAllTimesWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeOptimalControlFromViability
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePredictiveProbeCompleteness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeRewardConflictWitness
 /-!
 # UEOT Theory Completion public root
 
