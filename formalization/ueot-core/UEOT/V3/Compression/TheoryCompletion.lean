@@ -81,6 +81,11 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGauge
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ProgramPurposeInformationBoundary
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurableProcessTransport
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DependentEventFormationBudget
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPredictiveObservabilityBridge
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticHiddenAliasExample
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPersistentHiddenExample
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPredictiveNullspace
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPredictiveRobustObservability
 /-!
 # UEOT Theory Completion public root
 
