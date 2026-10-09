@@ -89,7 +89,10 @@ def audit(full):
     if len(imports)!=len(files) or set(x.split()[-1] for x in imports)!={
           CANON+p.stem for p in files}:
         raise RuntimeError("public root misses local proof modules")
-    only=run(["git","diff","main","--name-only"]).splitlines()
+    # Git quotes non-ASCII report filenames by default. Disable C-style
+    # path escaping for the ACL check; otherwise a valid Chinese-named
+    # research report is incorrectly classified as outside Track TC.
+    only=run(["git","-c","core.quotePath=false","diff","main","--name-only"]).splitlines()
     allowed1="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
     allowed2="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/"
     allowed3="formalization/ueot-core/docs/compression/theory_completion/unified_closure/"
