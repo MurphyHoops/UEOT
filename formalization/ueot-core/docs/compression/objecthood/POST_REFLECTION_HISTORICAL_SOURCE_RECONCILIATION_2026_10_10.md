@@ -87,3 +87,17 @@ GitHub-hosted artifact.
 **Promotion classification:** Additive provenance-only Track O L1;
 counted-core impact NONE. No existing source, ledger, frozen Core
 or mathematical theorem changed.
+
+## Immutable per-file Git blob identity receipt
+
+The following full Git SHA-1 blob OIDs were obtained with git rev-parse <commit>:<path> on 2026-10-10. The receipts are now part of this tracked file, not a claim requiring the authors private .git archive to inspect. A public reviewer can at least independently verify the main-side Git blob for every path from the pinned main commit.
+
+| Path (under PostQTTightening/) | Historical blob OID | main blob OID |
+|---|---|---|
+| CanonicalCertificateOptimality.lean | 59d76648834a4dcd4cf08232e4c130c69d7198e1 | 59d76648834a4dcd4cf08232e4c130c69d7198e1 |
+| GeneralCausalObjecthoodClosure.lean | 0eeea59c95f83a10aa6f8ba45a921c0c39503405 | 0eeea59c95f83a10aa6f8ba45a921c0c39503405 |
+| CanonicalJointMixedDrift.lean | fc57c020a9bfec045ec7cfc281f70fc47629ed6e | fc57c020a9bfec045ec7cfc281f70fc47629ed6e |
+| StrictJointMixedDriftWitness.lean | cb176c2ba26ebf282c7ebcb133ac0eee0fd66bf1 | cb176c2ba26ebf282c7ebcb133ac0eee0fd66bf1 |
+| JointMixedDriftDownstream.lean | 461bb78428142e39aadd8490292018f5f09d98f4 | 461bb78428142e39aadd8490292018f5f09d98f4 |
+
+Commit used for the historical column: 8654125fe648929e8e55d81a2d711ca09293f922. Canonical comparison main commit: 66c999d3c2911d7f732c66a827689a8ae6613892. The Git bundle is a supplementary local restore artifact, not the only source of this recorded comparison. No implication of type or theorem equivalence beyond exact blob identity is claimed.
