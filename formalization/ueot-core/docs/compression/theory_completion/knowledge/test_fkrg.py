@@ -132,6 +132,9 @@ class FkrgTests(unittest.TestCase):
                 inventory.run(report=report)
                 self.assertIn("UNAVAILABLE",report.read_text())
                 self.assertIn("不可判为已合并",report.read_text())
+                self.assertIn("历史合并结论未验证",report.read_text())
+                self.assertNotIn("formal/p*",report.read_text())
+                self.assertNotIn("主线主动收窄",report.read_text())
                 with self.assertRaisesRegex(ValueError,"historical"):
                     inventory.run(output=inventory.OUT)
 

@@ -152,7 +152,8 @@ def run(output=None, report=None):
         f"- 当前代码查不到的历史 Lean 声明名有"
         f" {data['missing_historical_lean_symbol_count']} 个（不代表语义缺失）。",
         "",
-        "## 图上未并入分支逐项",
+        ("## 图上未并入分支逐项" if data["main_comparison_available"]
+         else "## main 祖先关系未知：不作已合并或未合并断言"),
         "| 分支 | 独有提交 | 比较路径数 | 历史声明名缺失数 | 处理 |",
         "|---|---:|---:|---:|---|",
     ]
@@ -160,7 +161,7 @@ def run(output=None, report=None):
         lines.append(f"| {b['name']} | {b['unique_commits_vs_main']} | "
                      f"{b['changed_path_count']} | {b['historical_decl_missing_count']} | "
                      "保留，不得整支覆盖现有源码 |")
-    lines.extend([
+    historical_main_claims = [
         "",
         "## 已核对的几个关键真实内容差异",
         "- 旧 endogenous-object 备份的两个实质 Lean 源已由主线强化："
@@ -173,6 +174,15 @@ def run(output=None, report=None):
         "不可因旧 Git SHA 不可达而重复插入，或覆盖主线引入的根导入。",
         "- 旧 ops/scientific-governance 分支可能保留有价值的历史审计文件，"
         "但当前安全合同和账本更新，不做整体 cherry-pick。",
+    ] if data["main_comparison_available"] else [
+        "",
+        "## main 基线不可用：历史合并结论未验证",
+        "- 当前仓库没有可核验的本地或远端 main 引用。本报告不宣称任何历史"
+        "分支已合并、被主线替代或应当清理。",
+        "- 待取得实际 main ref 后重新执行报告，不使用当前 HEAD 冒充 main。",
+    ]
+    lines.extend([
+        *historical_main_claims,
         "",
         "## 整理决策",
         f"1. {statuses.get('ALREADY_REACHABLE_FROM_MAIN',0)} 个已确认进入 main 的分支；"

@@ -40,3 +40,5 @@ Open FKRG upgrades beyond v1.1: a machine-built declaration-level dependency DAG
 - The first PR #309 CI exposed a genuine GitHub detached checkout without a local \`main\`: UMC fast audit now uses \`refs/heads/main\` or \`refs/remotes/origin/main\`, and fails closed if neither exists.
 - The subsequent #309 Codex review [4230694470](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230694470) caught the remaining ambiguity: when no main ref exists, **the branch inventory now reports UNKNOWN ancestry** and never claims a branch is already merged into main; even Markdown reports mark main as UNAVAILABLE.
 - CI/no-main and historical-evidence immutability tests included in 13/13 FKRG regression suite.
+
+- Second exact-head Codex review of #309 [4230799348](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230799348) identified a leftover static Markdown paragraph that still asserted older branches were merged even when no main ref was available. The generated report now conditionally omits all such assertions in no-main mode and states explicit uncertainty; a regression asserts absent stale \`formal/p*\` / \`主线主动收窄\` claims.
