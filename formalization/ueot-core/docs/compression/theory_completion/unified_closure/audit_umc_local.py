@@ -9,6 +9,7 @@ from pathlib import Path
 from collections import Counter
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -65,6 +66,54 @@ def baseline_main_ref():
     raise RuntimeError("main baseline unavailable: fetch origin main before auditing")
 
 
+
+def active_research_branch():
+    """Recover original PR branch in detached Actions checkouts; fail closed."""
+    p = subprocess.run(["git","symbolic-ref","--quiet","--short","HEAD"],
+                       cwd=ROOT,capture_output=True,text=True)
+    if p.returncode == 0 and p.stdout.strip():
+        return p.stdout.strip()
+    return os.environ.get("GITHUB_HEAD_REF") or os.environ.get("HEAD_REF") or None
+
+
+def validate_tc_local_scope(baseline, branch, changed):
+    """Supplement the immutable-base policy, never broaden its path authority.
+
+    Existing file edits under TC must be authorized by the *base* governance
+    registry. Newly added TC research artifacts may be additive L1. Unknown
+    branch identities may not claim narrow L2 authorizations.
+    """
+    public_root="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+    owned_prefixes=(
+        "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/",
+    )
+    baseline_files=set(run(["git","-c","core.quotePath=false","ls-tree",
+                            "-r","--name-only",baseline,"--",*owned_prefixes]).splitlines())
+    policy_path="formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+    policy=json.loads(run(["git","show",f"{baseline}:{policy_path}"]))
+    authorized=set(policy["tracks"]["TC"].get("mutable_existing_exact_paths",[]))
+    if branch:
+        for record in policy.get("l2_existing_path_exceptions",[]):
+            if record.get("track")!="TC" or record.get("temporary") is not True:
+                continue
+            if any(isinstance(pattern,str) and re.fullmatch(pattern,branch)
+                   for pattern in record.get("branch_patterns",[])):
+                authorized.update(record.get("paths",[]))
+    violations=[
+        path for path in changed
+        if not (
+            path==public_root or
+            (path.startswith(owned_prefixes) and
+             (path not in baseline_files or path in authorized))
+        )
+    ]
+    if violations:
+        raise RuntimeError("out-of-scope existing-path changes under immutable "
+                           "TC source policy: "+str(violations))
+
+
 def audit(full):
     atlas=json.loads((HERE/"UMC_00_SOURCE_ATLAS_V1.json").read_text())
     if len(atlas['records'])!=106 or len({r['pid'] for r in atlas['records']})!=106:
@@ -108,15 +157,7 @@ def audit(full):
     # research report is incorrectly classified as outside Track TC.
     baseline=baseline_main_ref()
     only=run(["git","-c","core.quotePath=false","diff",baseline,"--name-only"]).splitlines()
-    allowed1="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
-    allowed2="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/"
-    allowed3="formalization/ueot-core/docs/compression/theory_completion/unified_closure/"
-    allowed4="formalization/ueot-core/docs/compression/theory_completion/knowledge/"
-    # FKRG is also Track TC-owned: its correctness fixes must not appear
-    # as cross-track edits in this local scientific report.
-    other=[x for x in only if x!=allowed1 and not
-           (x.startswith(allowed2) or x.startswith(allowed3) or x.startswith(allowed4))]
-    if other:raise RuntimeError("tracked existing files outside owned research area: "+str(other))
+    validate_tc_local_scope(baseline,active_research_branch(),only)
     # Every local research stage must be explicitly assessed and no stage
     # may silently acquire an unconditional FULL claim via this L1 lane.
     stages=json.loads((HERE/"UMC_LOCAL_STAGE_RESULTS_V3.json").read_text())

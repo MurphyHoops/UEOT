@@ -89,6 +89,24 @@ class FkrgTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError,"main baseline unavailable"):
                 audit_umc_local.baseline_main_ref()
 
+    def test_umc_scope_mirrors_immutable_base_l2_exact_path_authorizations(self):
+        import audit_umc_local as umc
+        base=umc.baseline_main_ref()
+        branch="compression/theory-completion-fkrg-review-fixes"
+        prefix="formalization/ueot-core/docs/compression/theory_completion/knowledge/"
+        approved=prefix+"fkrg.py"
+        umc.validate_tc_local_scope(base,branch,[approved])
+        # The immutable base only approved two existing knowledge source files.
+        for unauthorized in (prefix+"README.md",prefix+"FKRG_TASKS.json"):
+            with self.subTest(path=unauthorized):
+                with self.assertRaisesRegex(RuntimeError,"out-of-scope"):
+                    umc.validate_tc_local_scope(base,branch,[unauthorized])
+        # An absent branch identity CANNOT borrow L2 rights from another ref.
+        with self.assertRaisesRegex(RuntimeError,"out-of-scope"):
+            umc.validate_tc_local_scope(base,None,[approved])
+        # New additive documentation remains allowed within owned research dirs.
+        umc.validate_tc_local_scope(base,branch,[prefix+"FKRG_NEW_RESEARCH_NOTE.md"])
+
     def test_fast_audit_cannot_overwrite_full_receipt(self):
         import audit_umc_local
         with tempfile.TemporaryDirectory(prefix="fkrg-nonfull-") as tmp:

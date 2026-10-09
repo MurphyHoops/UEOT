@@ -29,7 +29,7 @@ python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/fkr
 python3 formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_local_branch_inventory.py --output /tmp/umc-current-branch-inventory.json
 ```
 
-Sixteen positive/negative tests include the four initial Codex failures, stale index, unknown symbol, and existing proof reuse. The 5,553 current records are **lexical candidates**, not 5,553 fully elaborated proofs. The existing Core 106/106 frozen count, Compression four counted generators, and P12 PARTIAL claim remain unchanged.
+Seventeen positive/negative tests include the four initial Codex failures, stale index, unknown symbol, and existing proof reuse. The 5,553 current records are **lexical candidates**, not 5,553 fully elaborated proofs. The existing Core 106/106 frozen count, Compression four counted generators, and P12 PARTIAL claim remain unchanged.
 
 A new GitHub PR must be reviewed at its exact head, have **all review comments addressed and threads resolved**, and only be merged after required checks. Do not equate review submission with approval or unconditionally trust the bot summary; a completed code review with suggestions is a review with open work.
 
@@ -39,7 +39,7 @@ Open FKRG upgrades beyond v1.1: a machine-built declaration-level dependency DAG
 
 - The first PR #309 CI exposed a genuine GitHub detached checkout without a local \`main\`: UMC fast audit now uses \`refs/heads/main\` or \`refs/remotes/origin/main\`, and fails closed if neither exists.
 - The subsequent #309 Codex review [4230694470](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230694470) caught the remaining ambiguity: when no main ref exists, **the branch inventory now reports UNKNOWN ancestry** and never claims a branch is already merged into main; even Markdown reports mark main as UNAVAILABLE.
-- CI/no-main and historical-evidence immutability tests included in 16/16 FKRG regression suite.
+- CI/no-main and historical-evidence immutability tests included in 17/17 FKRG regression suite.
 
 - Second exact-head Codex review of #309 [4230799348](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230799348) identified a leftover static Markdown paragraph that still asserted older branches were merged even when no main ref was available. The generated report now conditionally omits all such assertions in no-main mode and states explicit uncertainty; a regression asserts absent stale \`formal/p*\` / \`主线主动收窄\` claims.
 
@@ -47,3 +47,5 @@ Open FKRG upgrades beyond v1.1: a machine-built declaration-level dependency DAG
 - Independent source analysis found two private helpers called \`survivalProb_zero_eq_one_of_not_mem\` in distinct modules: these are **private** Lean declarations, not a single publicly reusable constant. The index now gives private candidates source-scoped synthetic identities and refuses a public \`lean-check\` for them. Negative regression tests cover both defects.
 
 - Fourth exact-head Codex review [4230947257](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4230947257) identified a second extractor dependency: `audit_umc_local.no_lean_comments`. `extractor_sha256` now hashes both the declaration parser script and the imported comment parser source. Test uses a mutated stand-in parser source while keeping Lean and FKRG unchanged and asserts `STALE_INDEX`; 16/16 pass.
+
+- Fifth exact-head Codex review of #309 [4231194802](https://github.com/MurphyHoops/UEOT/pull/309#discussion_r4231194802) found that local UMC audit granted every existing file in FKRG knowledge/ a broad exception. Fixed: existing TC files are now permitted only if named in the **immutable baseline** `COMPRESSION_RESEARCH_TRACKS.json` mutable exact paths or matched temporary L2 branch authorization. New additive files remain allowed within TC-owned dirs. Regression explicitly REJECTS edits to README.md and FKRG_TASKS.json and accepts exactly authorized fkrg.py. All 17 tests pass.
