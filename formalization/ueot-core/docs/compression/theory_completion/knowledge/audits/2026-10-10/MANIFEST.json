@@ -1,0 +1,29 @@
+{
+  "analysis_baseline_commit": "48b582beabec2ebae61ab0d51081b83356fcb3e1",
+  "outputs": [
+    "EVERY_FILE_633_DETAILED_METRICS.csv",
+    "EVERY_DECLARATION_5553_COMPACT.csv",
+    "ALL_binder_normalized_equal_type_clusters.json",
+    "NEAR_TYPE_15_DISTINCT_HEURISTIC_PAIRS.json",
+    "all_3793_theorem_direct_reuse_graph.csv"
+  ],
+  "module_count": 633,
+  "declaration_count": 5553,
+  "public_theorem_count": 3793,
+  "repeated_type_clusters": 37,
+  "repeated_type_members": 77,
+  "groups_without_direct_internal_proof_dependency": 14,
+  "direct_internal_edges": 26,
+  "matched_public_source_declarations": 5360,
+  "unresolved": 1,
+  "source_private": 192,
+  "source_theorem_edges": 4886,
+  "review_limitations": [
+    "No universally complete algorithm for mathematically equivalent propositions; only matching elaborated structural fingerprints",
+    "Private theorem bodies are deliberately not mapped to public symbols",
+    "Automated or internal generated theorems are not treated as source-author mathematical milestones",
+    "Type normalized means binder names + metadata erased, not arbitrary definitional-equivalence or logical implication",
+    "Cross-module duplicate statement does not mean removable module or wasted proof; API bridges may be needed",
+    "Heuristic near-type candidate search is restricted and has false positives and false negatives"
+  ]
+}

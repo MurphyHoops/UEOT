@@ -1,0 +1,961 @@
+[
+  {
+    "group_size": 3,
+    "file_count": 3,
+    "normal_type_sha": "651af8882731016084fab7807007f780d36237afab603784c6916f522c1e11e9",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uTheta}} {_1 : Type.{uX}} {_2 : Type.{uA}} {_3 : Type.{uY}} [_4 : Fintype.{uTheta} [anonymous]] [_5 : Fintype.{uX} _1] [_6 : Fintype.{uY} _3] (_7 : UEOT.V3.FiniteBayesBelief.Model.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _5 _6) (_8 : UEOT.V3.FiniteBayesBelief.Belief.{uTheta, uX} [anonymous] _1 _4 _5) (_9 : _2) (_10 : _3), Iff (Eq.{max (succ uTheta) (succ uX)} (UEOT.V3.FiniteBayesBelief.UpdateResult.{uTheta, uX} [anonymous] _1 _4 _5) (UEOT.V3.FiniteBayesBelief.updateResult.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10) (UEOT.V3.FiniteBayesBelief.UpdateResult.modelConflict.{uTheta, uX} [anonymous] _1 _4 _5)) (Eq.{1} Real (UEOT.V3.FiniteBayesBelief.evidence.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10) (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.BayesianRecursiveClosure.p_ref_02_zero_evidence_boundary",
+        "candidate": "UEOT.V3.Compression.BayesianRecursiveClosure.p_ref_02_zero_evidence_boundary",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/BayesianRecursiveClosure.lean",
+        "line": 202
+      },
+      {
+        "name": "UEOT.V3.FiniteBayesBelief.updateResult_eq_modelConflict_iff",
+        "candidate": "UEOT.V3.FiniteBayesBelief.updateResult_eq_modelConflict_iff",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+        "line": 188
+      },
+      {
+        "name": "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict",
+        "candidate": "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict",
+        "file": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 88
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.BayesianRecursiveClosure.p_ref_02_zero_evidence_boundary",
+        "uses": "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict"
+      },
+      {
+        "from": "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict",
+        "uses": "UEOT.V3.FiniteBayesBelief.updateResult_eq_modelConflict_iff"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 3,
+    "file_count": 3,
+    "normal_type_sha": "247284af6ad9f07eea6405d99b753ccb23d3d52b2f723188b72f258b6320e97d",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uZ}} {_1 : Type.{uA}} {_2 : Type.{uY}} [_3 : MeasurableSpace.{uZ} [anonymous]] [_4 : StandardBorelSpace.{uZ} [anonymous] _3] [_5 : Nonempty.{succ uZ} [anonymous]] [_6 : MeasurableSpace.{uA} _1] [_7 : MeasurableSpace.{uY} _2] (_8 : MeasureTheory.Measure.{uZ} [anonymous] _3) [_9 : MeasureTheory.IsProbabilityMeasure.{uZ} [anonymous] _3 _8] (_10 : ProbabilityTheory.Kernel.{max uA uZ, uZ} (Prod.{uZ, uA} [anonymous] _1) [anonymous] (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _3) [_11 : ProbabilityTheory.IsMarkovKernel.{max uA uZ, uZ} (Prod.{uZ, uA} [anonymous] _1) [anonymous] (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _3 _10] (_12 : ProbabilityTheory.Kernel.{max uA uZ, uY} (Prod.{uZ, uA} [anonymous] _1) _2 (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _7) [_13 : ProbabilityTheory.IsMarkovKernel.{max uA uZ, uY} (Prod.{uZ, uA} [anonymous] _1) _2 (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _7 _12] (_14 : _1), Eq.{succ uZ} (MeasureTheory.Measure.{uZ} [anonymous] _3) (MeasureTheory.Measure.bind.{uY, uZ} _2 [anonymous] _7 _3 (UEOT.V3.GeneralBayesPosterior.observationLaw.{uZ, uA, uY} [anonymous] _1 _2 _3 _6 _7 _8 _10 _12 _14) (DFunLike.coe.{max (succ uY) (succ uZ), succ uY, succ uZ} (ProbabilityTheory.Kernel.{uY, uZ} _2 [anonymous] _7 _3) _2 (fun (_1 : _2) => MeasureTheory.Measure.{uZ} [anonymous] _3) (ProbabilityTheory.Kernel.instFunLike.{uY, uZ} _2 [anonymous] _7 _3) (UEOT.V3.GeneralBayesPosterior.posteriorKernel.{uZ, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11 _12 _13 _14))) (UEOT.V3.GeneralBayesPosterior.predictedLaw.{uZ, uA} [anonymous] _1 _3 _6 _8 _10 _14)",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.generalPosterior_barycenter_consistency",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.generalPosterior_barycenter_consistency",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/GeneralStateObjecthood.lean",
+        "line": 75
+      },
+      {
+        "name": "UEOT.V3.GeneralBayesPosterior.posterior_comp_observation",
+        "candidate": "UEOT.V3.GeneralBayesPosterior.posterior_comp_observation",
+        "file": "formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean",
+        "line": 111
+      },
+      {
+        "name": "UEOT.V3.PRef02.p_ref_02_general_update",
+        "candidate": "UEOT.V3.PRef02.p_ref_02_general_update",
+        "file": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 49
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.generalPosterior_barycenter_consistency",
+        "uses": "UEOT.V3.GeneralBayesPosterior.posterior_comp_observation"
+      },
+      {
+        "from": "UEOT.V3.PRef02.p_ref_02_general_update",
+        "uses": "UEOT.V3.GeneralBayesPosterior.posterior_comp_observation"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 3,
+    "file_count": 3,
+    "normal_type_sha": "b1b991bee1be99bf62ea1ad6095a8462247330e216c78ec71c997b2ed07b01dd",
+    "theorem_type_repr": "Not (UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.StrongLumpability.{0, 0, 0} (Fin (OfNat.ofNat.{0} Nat 6 (instOfNatNat 6))) Unit ((List.{0} Bool) -> Real) (Fin.fintype (OfNat.ofNat.{0} Nat 6 (instOfNatNat 6))) UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.traceCounterexampleKernel UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.stochasticOutputTrace)",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.all_future_trace_equivalence_not_markov_lumpable",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.all_future_trace_equivalence_not_markov_lumpable",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean",
+        "line": 161
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.unrestricted_stochastic_trace_lumping_is_false",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.unrestricted_stochastic_trace_lumping_is_false",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BeliefTimingBoundary.lean",
+        "line": 75
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.generic_stochastic_trace_quotient_cannot_be_forced",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.generic_stochastic_trace_quotient_cannot_be_forced",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurableProcessTransport.lean",
+        "line": 66
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.unrestricted_stochastic_trace_lumping_is_false",
+        "uses": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.all_future_trace_equivalence_not_markov_lumpable"
+      },
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.generic_stochastic_trace_quotient_cannot_be_forced",
+        "uses": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.unrestricted_stochastic_trace_lumping_is_false"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "5c276756e8a6a830b3be584cf1bb1f09959faa91d521662fb3f66d9436171d7d",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uI}} {_1 : [anonymous] -> Type.{uH}} [_2 : Fintype.{uI} [anonymous]] [_3 : forall ([anonymous] : [anonymous]), NormedAddCommGroup.{uH} (_1 [anonymous])] [_4 : forall ([anonymous] : [anonymous]), InnerProductSpace.{0, uH} Real (_1 [anonymous]) Real.instRCLike (NormedAddCommGroup.toSeminormedAddCommGroup.{uH} (_1 [anonymous]) (_3 [anonymous]))] [_5 : forall ([anonymous] : [anonymous]), CompleteSpace.{uH} (_1 [anonymous]) (PseudoMetricSpace.toUniformSpace.{uH} (_1 [anonymous]) (SeminormedAddCommGroup.toPseudoMetricSpace.{uH} (_1 [anonymous]) (NormedAddCommGroup.toSeminormedAddCommGroup.{uH} (_1 [anonymous]) (_3 [anonymous]))))] (_5 : [anonymous] -> Real) (_6 : forall ([anonymous] : [anonymous]), _1 [anonymous]) (_7 : forall ([anonymous] : [anonymous]), _1 [anonymous]), (forall ([anonymous] : [anonymous]), LT.lt.{0} Real Real.instLT (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)) (_5 [anonymous])) -> (And (Eq.{1} Real (Finset.sum.{uI, 0} [anonymous] Real Real.instAddCommMonoid (Finset.univ.{uI} [anonymous] _2) (fun ([anonymous] : [anonymous]) => HMul.hMul.{0, 0, 0} Real Real Real (instHMul.{0} Real Real.instMul) (_5 [anonymous]) (Inner.inner.{0, uH} Real (_1 [anonymous]) (InnerProductSpace.toInner.{0, uH} Real (_1 [anonymous]) Real.instRCLike (NormedAddCommGroup.toSeminormedAddCommGroup.{uH} (_1 [anonymous]) (_3 [anonymous])) (_4 [anonymous])) (_6 [anonymous]) (HAdd.hAdd.{uH, uH, uH} (_1 [anonymous]) (_1 [anonymous]) (_1 [anonymous]) (instHAdd.{uH} (_1 [anonymous]) (AddCommMagma.toAdd.{uH} (_1 [anonymous]) (AddCommSemigroup.toAddCommMagma.{uH} (_1 [anonymous]) (AddCommMonoid.toAddCommSemigroup.{uH} (_1 [anonymous]) (AddCommGroup.toAddCommMonoid.{uH} (_1 [anonymous]) (NormedAddCommGroup.toAddCommGroup.{uH} (_1 [anonymous]) (_3 [anonymous]))))))) (_6 [anonymous]) (_7 [anonymous]))))) (Finset.sum.{uI, 0} [anonymous] Real Real.instAddCommMonoid (Finset.univ.{uI} [anonymous] _2) (fun ([anonymous] : [anonymous]) => HMul.hMul.{0, 0, ",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.AlignmentParentValue.p_ali_02_core",
+        "candidate": "UEOT.V3.AlignmentParentValue.p_ali_02_core",
+        "file": "formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+        "line": 38
+      },
+      {
+        "name": "UEOT.V3.Compression.ValueAlignment.p_ali_02_core_via_mva",
+        "candidate": "UEOT.V3.Compression.ValueAlignment.p_ali_02_core_via_mva",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/ValueAlignment.lean",
+        "line": 116
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "5c756a82b5ed8d3b0d05260f5eb6e19f9f345a29d2c4fca825fd2837fa522ea8",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uI}} {_1 : [anonymous] -> Type.{uH}} [_2 : Fintype.{uI} [anonymous]] [_3 : forall ([anonymous] : [anonymous]), NormedAddCommGroup.{uH} (_1 [anonymous])] [_4 : forall ([anonymous] : [anonymous]), InnerProductSpace.{0, uH} Real (_1 [anonymous]) Real.instRCLike (NormedAddCommGroup.toSeminormedAddCommGroup.{uH} (_1 [anonymous]) (_3 [anonymous]))] [_5 : forall ([anonymous] : [anonymous]), CompleteSpace.{uH} (_1 [anonymous]) (PseudoMetricSpace.toUniformSpace.{uH} (_1 [anonymous]) (SeminormedAddCommGroup.toPseudoMetricSpace.{uH} (_1 [anonymous]) (NormedAddCommGroup.toSeminormedAddCommGroup.{uH} (_1 [anonymous]) (_3 [anonymous]))))] (_6 : [anonymous] -> Real) (_7 : (PiLp.{uI, uH} (OfNat.ofNat.{0} ENNReal 2 (instOfNatAtLeastTwo.{0} ENNReal 2 (AddMonoidWithOne.toNatCast.{0} ENNReal (AddCommMonoidWithOne.toAddMonoidWithOne.{0} ENNReal ENNReal.instAddCommMonoidWithOne)) (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))) [anonymous] _1) -> Real) (_8 : forall ([anonymous] : [anonymous]), (_1 [anonymous]) -> Real) (_9 : Real -> (PiLp.{uI, uH} (OfNat.ofNat.{0} ENNReal 2 (instOfNatAtLeastTwo.{0} ENNReal 2 (AddMonoidWithOne.toNatCast.{0} ENNReal (AddCommMonoidWithOne.toAddMonoidWithOne.{0} ENNReal ENNReal.instAddCommMonoidWithOne)) (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))) [anonymous] _1)) (_10 : Real) (_11 : forall ([anonymous] : [anonymous]), _1 [anonymous]) (_12 : forall ([anonymous] : [anonymous]), _1 [anonymous]), (forall ([anonymous] : [anonymous]), LT.lt.{0} Real Real.instLT (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)) (_6 [anonymous])) -> (HasGradientAt.{0, max uH uI} Real (PiLp.{uI, uH} (OfNat.ofNat.{0} ENNReal 2 (instOfNatAtLeastTwo.{0} ENNReal 2 (AddMonoidWithOne.toNatCast.{0} ENNReal (AddCommMonoidWithOne.toAddMonoidWithOne.{0} ENNReal ENNReal.instAddC",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.AlignmentParentValue.p_ali_02",
+        "candidate": "UEOT.V3.AlignmentParentValue.p_ali_02",
+        "file": "formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+        "line": 72
+      },
+      {
+        "name": "UEOT.V3.Compression.ValueAlignment.p_ali_02_via_mva",
+        "candidate": "UEOT.V3.Compression.ValueAlignment.p_ali_02_via_mva",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/ValueAlignment.lean",
+        "line": 143
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "944d473d3c4f538614553c17a44f1f6c8484a47e98bed2d428af8283626b32ef",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} [_1 : Fintype.{uX} [anonymous]] {_2 : [anonymous] -> Type.{uA}} [_3 : forall ([anonymous] : [anonymous]), Fintype.{uA} (_2 [anonymous])] [_4 : forall ([anonymous] : [anonymous]), Nonempty.{succ uA} (_2 [anonymous])] (_5 : UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} [anonymous] _1 _2 _3) (_6 : [anonymous] -> Real), LE.le.{0} Real Real.instLE (Dist.dist.{uX} ([anonymous] -> Real) (PseudoMetricSpace.toDist.{uX} ([anonymous] -> Real) (pseudoMetricSpacePi.{uX, 0} [anonymous] (fun ([anonymous] : [anonymous]) => Real) _1 (fun ([anonymous] : [anonymous]) => Real.pseudoMetricSpace))) _6 (UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{uX, uA} [anonymous] _1 _2 _3 _4 _5)) (HDiv.hDiv.{0, 0, 0} Real Real Real (instHDiv.{0} Real (DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) (Dist.dist.{uX} ([anonymous] -> Real) (PseudoMetricSpace.toDist.{uX} ([anonymous] -> Real) (pseudoMetricSpacePi.{uX, 0} [anonymous] (fun ([anonymous] : [anonymous]) => Real) _1 (fun ([anonymous] : [anonymous]) => Real.pseudoMetricSpace))) _6 (UEOT.V3.FiniteDiscountedControl.Model.bellman.{uX, uA} [anonymous] _1 _2 _3 _4 _5 _6)) (HSub.hSub.{0, 0, 0} Real Real Real (instHSub.{0} Real Real.instSub) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne)) (UEOT.V3.FiniteDiscountedControl.Model.discount.{uX, uA} [anonymous] _1 _2 _3 _5)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.ContractiveFixedPoint.bellman_valueError_le_residual_via_mcf",
+        "candidate": "UEOT.V3.Compression.ContractiveFixedPoint.bellman_valueError_le_residual_via_mcf",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/ContractiveFixedPoint.lean",
+        "line": 155
+      },
+      {
+        "name": "UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual",
+        "candidate": "UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+        "line": 190
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "0b3dfef680e6d1efad17c2a2bc524d2ef3b0a9a44fc9a26a92653115a09c6df6",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} [_1 : Fintype.{uX} [anonymous]] {_2 : [anonymous] -> Type.{uA}} [_3 : forall ([anonymous] : [anonymous]), Fintype.{uA} (_2 [anonymous])] [_4 : forall ([anonymous] : [anonymous]), Nonempty.{succ uA} (_2 [anonymous])] (_5 : UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} [anonymous] _1 _2 _3) {_6 : [anonymous] -> Real}, (Eq.{succ uX} ([anonymous] -> Real) (UEOT.V3.FiniteDiscountedControl.Model.bellman.{uX, uA} [anonymous] _1 _2 _3 _4 _5 _6) _6) -> (Eq.{succ uX} ([anonymous] -> Real) _6 (UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{uX, uA} [anonymous] _1 _2 _3 _4 _5))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.ContractiveFixedPoint.bellman_fixedPoint_unique_via_mcf",
+        "candidate": "UEOT.V3.Compression.ContractiveFixedPoint.bellman_fixedPoint_unique_via_mcf",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/ContractiveFixedPoint.lean",
+        "line": 166
+      },
+      {
+        "name": "UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+        "candidate": "UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+        "line": 149
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "c2a9545fbecfd0a24b62f567707796efb74106de53799a99449b51a618b022dc",
+    "theorem_type_repr": "And (UEOT.V3.Compression.Objecthood.MeanHomeostasis (UEOT.V3.Compression.Objecthood.damagedProbFromLaw.{0} Bool Bool.instMeasurableSpace UEOT.V3.Compression.Objecthood.twoClassPathMeasure (Singleton.singleton.{0, 0} Bool (Set.{0} Bool) (Set.instSingletonSet.{0} Bool) Bool.true)) (HDiv.hDiv.{0, 0, 0} Real Real Real (instHDiv.{0} Real (DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne)) (OfNat.ofNat.{0} Real 2 (instOfNatAtLeastTwo.{0} Real 2 Real.instNatCast (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))))) (Not (UEOT.V3.Compression.Objecthood.PathwiseRecurrentLegitimacy.{0} Bool Bool.instMeasurableSpace UEOT.V3.Compression.Objecthood.twoClassPathMeasure (Singleton.singleton.{0, 0} Bool (Set.{0} Bool) (Set.instSingletonSet.{0} Bool) Bool.true)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.Objecthood.meanHomeostasis_does_not_imply_pathwiseRecurrent",
+        "candidate": "UEOT.V3.Compression.Objecthood.meanHomeostasis_does_not_imply_pathwiseRecurrent",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostasisSemantics.lean",
+        "line": 169
+      },
+      {
+        "name": "UEOT.V3.Compression.Objecthood.JointHomeostasis.meanHomeostasis_not_enough_for_pathwiseRecurrent",
+        "candidate": "UEOT.V3.Compression.Objecthood.JointHomeostasis.meanHomeostasis_not_enough_for_pathwiseRecurrent",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/Boundaries.lean",
+        "line": 158
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.Objecthood.JointHomeostasis.meanHomeostasis_not_enough_for_pathwiseRecurrent",
+        "uses": "UEOT.V3.Compression.Objecthood.meanHomeostasis_does_not_imply_pathwiseRecurrent"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "d499a7cf16c437c543f48a461a30fba10bd29c6b3baef11515ce04f4c48eeeb0",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} {_1 : Type.{uA}} {_2 : Type.{uP}} {_3 : Type.{uO}} (_4 : UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.TrustedRepairSubstrate.{uX, uA, uP} _2 [anonymous] _1) (_5 : Set.{uX} [anonymous]) (_6 : _2 -> _3) {_7 : _2} {_8 : _2}, (Not (UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RepairProgramEquivalentOn.{uX, uA, uP} [anonymous] _1 _2 _4 _5 _7 _8)) -> (Eq.{succ uO} _3 (_6 _7) (_6 _8)) -> (Not (Exists.{max (succ uO) (succ uP)} (_3 -> _2) (fun (_7 : _3 -> _2) => UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.ExactBehavioralReconstructor.{uX, uA, uP, uO} [anonymous] _1 _2 _3 _4 _5 _6 _7)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.Objecthood.JointHomeostasis.programObservationCollision_blocks_exactReconstruction",
+        "candidate": "UEOT.V3.Compression.Objecthood.JointHomeostasis.programObservationCollision_blocks_exactReconstruction",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/Boundaries.lean",
+        "line": 72
+      },
+      {
+        "name": "UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.no_exact_behavioral_reconstruction_of_observation_collision",
+        "candidate": "UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.no_exact_behavioral_reconstruction_of_observation_collision",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/RepairLawSelfReconstruction/IdentifiabilityBoundary.lean",
+        "line": 46
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.Objecthood.JointHomeostasis.programObservationCollision_blocks_exactReconstruction",
+        "uses": "UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.no_exact_behavioral_reconstruction_of_observation_collision"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "b533dbfc562bcff9706314db5d7c61f34501f7ddc0233517c1936a72cad95d56",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} {_1 : Type.{uA}} {_2 : Type.{uP}} {_3 : Type.{uR}} (_4 : UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.TrustedRepairSubstrate.{uX, uA, uP} _2 [anonymous] _1) (_5 : UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.TrustedRepairCodec.{uP, uR} _2 _3) (_6 : Set.{uX} [anonymous]) (_7 : UEOT.V3.Compression.Objecthood.OntogeneticConstruction.OntogeneticSeed.{uX, uP} [anonymous] _2), (Membership.mem.{uX, uX} [anonymous] (Set.{uX} [anonymous]) (Set.instMembership.{uX} [anonymous]) _6 (UEOT.V3.Compression.Objecthood.OntogeneticConstruction.OntogeneticSeed.physicalComponent.{uX, uP} [anonymous] _2 _7)) -> (Membership.mem.{max (max uR uA) uX, max (max uR uA) uX} (UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RepairOrganizationState.{uX, uA, uR} [anonymous] _1 _3) (Set.{max (max uR uA) uX} (UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RepairOrganizationState.{uX, uA, uR} [anonymous] _1 _3)) (Set.instMembership.{max (max uA uR) uX} (UEOT.V3.Compression.Objecthood.RepairLawSelfReconstruction.RepairOrganizationState.{uX, uA, uR} [anonymous] _1 _3)) (UEOT.V3.Compression.Objecthood.JointHomeostasis.jointLegitimate.{uX, uA, uP, uR} [anonymous] _1 _2 _3 _4 _5 _6 (UEOT.V3.Compression.Objecthood.OntogeneticConstruction.OntogeneticSeed.repairProgramSource.{uX, uP} [anonymous] _2 _7)) (UEOT.V3.Compression.Objecthood.OntogeneticConstruction.assembleRepairOrganization.{uX, uA, uP, uR} [anonymous] _1 _2 _3 _4 _5 _7))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.assembleRepairOrganization_mem_jointLegitimate",
+        "candidate": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.assembleRepairOrganization_mem_jointLegitimate",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/OntogeneticConstruction/Assembly.lean",
+        "line": 106
+      },
+      {
+        "name": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.seed_constructs_jointLegitimate",
+        "candidate": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.seed_constructs_jointLegitimate",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/OntogeneticConstruction/MaintenanceEntry.lean",
+        "line": 27
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.seed_constructs_jointLegitimate",
+        "uses": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.assembleRepairOrganization_mem_jointLegitimate"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "017050156eeac20fb75a236e8f0c440b7ba3e583d6a126a2e67cf238a093bafa",
+    "theorem_type_repr": "And (Not (UEOT.V3.Compression.Objecthood.StrongRepairable.{0, 0} Bool Unit UEOT.V3.Compression.Objecthood.GeometricRetryWitness.kernel UEOT.V3.Compression.Objecthood.GeometricRetryWitness.target Bool.false)) (Membership.mem.{0, 0} Bool (Set.{0} Bool) (Set.instMembership.{0} Bool) (UEOT.V3.Compression.Objecthood.StationaryRepairBasin.{0, 0} Bool Unit Bool.fintype PUnit.fintype.{0} Bool.instMeasurableSpace Bool.instMeasurableSingletonClass UEOT.V3.Compression.Objecthood.GeometricRetryWitness.kernel UEOT.V3.Compression.Objecthood.GeometricRetryWitness.target UEOT.V3.Compression.Objecthood.GeometricRetryWitness.policy) Bool.false)",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.Objecthood.stochasticObjecthood_strictly_extends_strongRepair",
+        "candidate": "UEOT.V3.Compression.Objecthood.stochasticObjecthood_strictly_extends_strongRepair",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/StochasticRepairSynthesis.lean",
+        "line": 116
+      },
+      {
+        "name": "UEOT.V3.Compression.Objecthood.GeometricRetryWitness.strict_separation",
+        "candidate": "UEOT.V3.Compression.Objecthood.GeometricRetryWitness.strict_separation",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/StrongVsStochasticRepair.lean",
+        "line": 96
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.Objecthood.stochasticObjecthood_strictly_extends_strongRepair",
+        "uses": "UEOT.V3.Compression.Objecthood.GeometricRetryWitness.strict_separation"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "4a4a04779273194f7a102df3372e28d9e4ec8c4c2ddd7c9cd809fa0b9aa4cf5f",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uS}} [_1 : Fintype.{uS} [anonymous]] [_2 : DecidableEq.{succ uS} [anonymous]] (_3 : Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (_4 : Membership.mem.{uS, uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (Submonoid.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (MulZeroOneClass.toMulOneClass.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (instMulZeroOneClassOfSemiring.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (Matrix.semiring.{0, uS} [anonymous] Real Real.semiring _1 _2)))) (SetLike.instMembership.{uS, uS} (Submonoid.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (MulZeroOneClass.toMulOneClass.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (instMulZeroOneClassOfSemiring.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (Matrix.semiring.{0, uS} [anonymous] Real Real.semiring _1 _2)))) (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (Submonoid.instSetLike.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (MulZeroOneClass.toMulOneClass.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (instMulZeroOneClassOfSemiring.{uS} (Matrix.{uS, uS, 0} [anonymous] [anonymous] Real) (Matrix.semiring.{0, uS} [anonymous] Real Real.semiring _1 _2))))) (Matrix.rowStochastic.{0, uS} Real [anonymous] _1 _2 Real.semiring Real.partialOrder Real.instIsOrderedRing) _3) (_5 : Set.Elem.{uS} ([anonymous] -> Real) (stdSimplex.{uS, 0} Real [anonymous] Real.semiring Real.partialOrder _1)), And (Exists.{succ uS} (Set.Elem.{uS} ([anonymous] -> Real) (stdSimplex.{uS, 0} Real [anonymous] Real.semiring Real.partialOrder _1)) (fun (_6 : Set.Elem.{uS} ([anonymous] -> Real) (stdSimplex.{uS, 0} Real [anonymous] Real.semiring Real.partialOrder _1)) => Exists.{1} (Nat -> Nat) (fun (_7 : Nat -> Nat) => And (StrictMono.{0, 0} Nat Nat Nat.instPreorder Nat.instPreorder _7) (Filter.Tendsto.{0, uS} Nat (Set.Elem.{uS} ([anonymous] -> Real) (stdSimplex.{uS, 0} Real [anonymous] Real.semiring Real.partialOrder _1)) (Funct",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.OccupationLimitInvariance.p_goa_01_via_occupationLimit",
+        "candidate": "UEOT.V3.Compression.OccupationLimitInvariance.p_goa_01_via_occupationLimit",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean",
+        "line": 192
+      },
+      {
+        "name": "UEOT.V3.FiniteCesaroInvariant.p_goa_01",
+        "candidate": "UEOT.V3.FiniteCesaroInvariant.p_goa_01",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean",
+        "line": 191
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "7ba637d534bef2477a6e13b367a2f3f01408263445faebc2c400ed1ef7c0fc95",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} [_1 : MetricSpace.{uX} [anonymous]] [_2 : MeasurableSpace.{uX} [anonymous]] [_3 : BorelSpace.{uX} [anonymous] (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1))) _2] [_4 : CompleteSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1))] [_4 : SecondCountableTopology.{uX} [anonymous] (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1)))] (_4 : UEOT.V3.PersistenceOccupation.FellerOccupationSystem.{uX} [anonymous] _1 _2 _3) (_5 : Nat -> NNReal), (Filter.Tendsto.{0, 0} Nat NNReal _5 (Filter.atTop.{0} Nat Nat.instPreorder) (Filter.atTop.{0} NNReal (PartialOrder.toPreorder.{0} NNReal NNReal.instPartialOrder))) -> (forall (_6 : MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2), (Filter.Tendsto.{0, uX} Nat (MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2) (fun (_6 : Nat) => UEOT.V3.PersistenceOccupation.FellerOccupationSystem.occupation.{uX} [anonymous] _1 _2 _3 _4 (_5 _6)) (Filter.atTop.{0} Nat Nat.instPreorder) (nhds.{uX} (MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2) (MeasureTheory.ProbabilityMeasure.instTopologicalSpace.{uX} [anonymous] _2 (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1))) (BorelSpace.opensMeasurable.{uX} [anonymous] (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1))) _2 _3)) _6)) -> (forall (_5 : NNReal), Eq.{succ uX} (MeasureTheory.Measure.{uX} [anonymous] _2) (MeasureTheory.Measure.bind.{uX, uX} [anonymous] [anonymous] _2 _2 (MeasureTheory.ProbabilityMeasure.toMeasure.{uX} [anonymous] _2 _6) (DFunLike.coe.{succ uX, suc",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.OccupationLimitInvariance.feller_invariant_of_occupation_tendsto",
+        "candidate": "UEOT.V3.Compression.OccupationLimitInvariance.feller_invariant_of_occupation_tendsto",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean",
+        "line": 235
+      },
+      {
+        "name": "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.invariant_of_occupation_tendsto",
+        "candidate": "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.invariant_of_occupation_tendsto",
+        "file": "formalization/ueot-core/UEOT/V3/PersistenceOccupation.lean",
+        "line": 279
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "937fed9177d4cf8c8cc55da6b111886eb3a5c62d14ab6ef1eed70f1fecc47356",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} [_1 : MetricSpace.{uX} [anonymous]] [_2 : MeasurableSpace.{uX} [anonymous]] [_3 : BorelSpace.{uX} [anonymous] (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1))) _2] [_4 : CompleteSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1))] [_4 : SecondCountableTopology.{uX} [anonymous] (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1)))] (_4 : UEOT.V3.PersistenceOccupation.FellerOccupationSystem.{uX} [anonymous] _1 _2 _3), (MeasureTheory.IsTightMeasureSet.{uX} [anonymous] _2 (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (MetricSpace.toPseudoMetricSpace.{uX} [anonymous] _1))) (Set.ofPred.{uX} (MeasureTheory.Measure.{uX} [anonymous] _2) (fun (_5 : MeasureTheory.Measure.{uX} [anonymous] _2) => Exists.{succ uX} (MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2) (fun (_6 : MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2) => And (Membership.mem.{uX, uX} (MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2) (Set.{uX} (MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2)) (Set.instMembership.{uX} (MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2)) (UEOT.V3.PersistenceOccupation.FellerOccupationSystem.occupationFamily.{uX} [anonymous] _1 _2 _3 _4) _6) (Eq.{succ uX} (MeasureTheory.Measure.{uX} [anonymous] _2) (MeasureTheory.ProbabilityMeasure.toMeasure.{uX} [anonymous] _2 _6) _5))))) -> (forall (_5 : Nat -> NNReal), (Filter.Tendsto.{0, 0} Nat NNReal _5 (Filter.atTop.{0} Nat Nat.instPreorder) (Filter.atTop.{0} NNReal (PartialOrder.toPreorder.{0} NNReal NNReal.instPartialOrder))) -> (Exists.{succ uX} (MeasureTheory.ProbabilityMeasure.{uX} [anonymous] _2) (fun (_6 : MeasureTheory.ProbabilityMeasure.{uX}",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.OccupationLimitInvariance.p_per_02_via_occupationLimit",
+        "candidate": "UEOT.V3.Compression.OccupationLimitInvariance.p_per_02_via_occupationLimit",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean",
+        "line": 303
+      },
+      {
+        "name": "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02",
+        "candidate": "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02",
+        "file": "formalization/ueot-core/UEOT/V3/PersistenceOccupation.lean",
+        "line": 402
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "a9d70448c0ec4e6e84d469ce5f35855665045b80f802ebe4e619abb2053c4915",
+    "theorem_type_repr": "forall {[anonymous] : Nat -> Type.{uOmega}} [_1 : forall (_1 : Nat), MeasurableSpace.{uOmega} ([anonymous] _1)] {_2 : Type.{uCandidate}} (_3 : UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.{uOmega, uCandidate} [anonymous] _1 _2), Filter.Tendsto.{0, 0} Nat Real (fun (_4 : Nat) => MeasureTheory.Measure.real.{uOmega} ([anonymous] _4) (_1 _4) (UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.mu.{uOmega, uCandidate} [anonymous] _1 _2 _3 _4) (Set.ofPred.{uOmega} ([anonymous] _4) (fun (_5 : [anonymous] _4) => Not (Setoid.r.{succ uCandidate} _2 (UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.objectClass.{uOmega, uCandidate} [anonymous] _1 _2 _3) (UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.estimate.{uOmega, uCandidate} [anonymous] _1 _2 _3 _4 _5) (UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.truth.{uOmega, uCandidate} [anonymous] _1 _2 _3))))) (Filter.atTop.{0} Nat Nat.instPreorder) (nhds.{0} Real (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.p12_inverseObjecthood_certification_input",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.p12_inverseObjecthood_certification_input",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/AutopoiesisClosure.lean",
+        "line": 39
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.classFailure_tendsto_zero",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.classFailure_tendsto_zero",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/InverseObjecthood/HighProbabilityDiscovery.lean",
+        "line": 63
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.p12_inverseObjecthood_certification_input",
+        "uses": "UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ChangingObjectClassDiscoveryContract.classFailure_tendsto_zero"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "bdc158994cac6ac20a909787e08301559d84ab6c213dc8fe2fb73279baead6be",
+    "theorem_type_repr": "Exists.{1} (UEOT.V3.Compression.TheoryCompletion.ParentBoundHistoryControlSpec.{0, 0, 0, 0} Bool Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit)) (fun ([anonymous] : UEOT.V3.Compression.TheoryCompletion.ParentBoundHistoryControlSpec.{0, 0, 0, 0} Bool Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit)) => Exists.{1} (UEOT.V3.Compression.TheoryCompletion.ParentBoundHistoryControlSpec.{0, 0, 0, 0} Bool Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit)) (fun (_1 : UEOT.V3.Compression.TheoryCompletion.ParentBoundHistoryControlSpec.{0, 0, 0, 0} Bool Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit)) => And (Eq.{1} (UEOT.V3.Compression.AgencyGodGoaAssembly.HistoryControlSpec.{0, 0, 0} Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit)) (UEOT.V3.Compression.TheoryCompletion.ParentBoundHistoryControlSpec.control.{0, 0, 0, 0} Bool Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit) [anonymous]) (UEOT.V3.Compression.TheoryCompletion.ParentBoundHistoryControlSpec.control.{0, 0, 0, 0} Bool Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit) _1)) (Not (UEOT.V3.Compression.TheoryCompletion.SameControlParent.{0, 0, 0, 0} Bool Unit Unit PUnit.fintype.{0} Unit PUnit.fintype.{0} (instNonemptyOfInhabited.{1} Unit instInhabitedPUnit.{1}) (fun ([anonymous] : Unit) => Unit.unit) [anonymous] _1))))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.equalControlData_still_does_not_identify_parent",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.equalControlData_still_does_not_identify_parent",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/InverseObjecthood/ControlClosureBridge.lean",
+        "line": 188
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.identical_historyControlSpec_does_not_imply_sameParent",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.identical_historyControlSpec_does_not_imply_sameParent",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectIdentity.lean",
+        "line": 65
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.equalControlData_still_does_not_identify_parent",
+        "uses": "UEOT.V3.Compression.TheoryCompletion.identical_historyControlSpec_does_not_imply_sameParent"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "471e007a513a7a9a420c0d0af7d709faec4480a854b177699204b54b47da61ff",
+    "theorem_type_repr": "Exists.{max (succ u_1) (succ u_2)} (PUnit.{succ u_1} -> PUnit.{succ u_2} -> Real) (fun ([anonymous] : PUnit.{succ u_1} -> PUnit.{succ u_2} -> Real) => Exists.{succ u_2} (Bool -> PUnit.{succ u_2} -> Real) (fun (_1 : Bool -> PUnit.{succ u_2} -> Real) => And (UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.FormedByResponse.{u_1, 0, u_2} PUnit.{succ u_1} Bool PUnit.{succ u_2} [anonymous] _1 (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)) PUnit.unit.{succ u_1} Bool.false) (And (UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.FormedByResponse.{u_1, 0, u_2} PUnit.{succ u_1} Bool PUnit.{succ u_2} [anonymous] _1 (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)) PUnit.unit.{succ u_1} Bool.true) (Ne.{1} Bool Bool.false Bool.true))))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.zero_formation_error_does_not_identify_parent",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.zero_formation_error_does_not_identify_parent",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFormationIdentityBridge.lean",
+        "line": 97
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.zero_two_stage_error_does_not_force_parent_uniqueness",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.zero_two_stage_error_does_not_force_parent_uniqueness",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TwoStageFormationTransport.lean",
+        "line": 105
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.zero_two_stage_error_does_not_force_parent_uniqueness",
+        "uses": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.zero_formation_error_does_not_identify_parent"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "039c1c4f75eef54602c02bf8459c58fbc6df5f470ff9a54301700776db3dd4e8",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} {_1 : Type.{uA}} {_2 : Type.{uR}} {_3 : Type.{uO}} [_4 : Fintype.{uX} [anonymous]] [_5 : Fintype.{uA} _1] (_6 : UEOT.V3.FiniteStablePartition.Model.{uX, uA, uR, uO} [anonymous] _1 _2 _3 _4) (_7 : Setoid.{succ uX} [anonymous]) (_8 : UEOT.V3.FiniteStablePartition.Stable.{uX, uA, uR, uO} [anonymous] _1 _2 _3 _4 _6 _7) (_9 : _1) (_10 : Quotient.{succ uX} [anonymous] _7) (_11 : Quotient.{succ uX} [anonymous] _7), LE.le.{0} Real Real.instLE (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)) (UEOT.V3.FiniteStablePartition.quotientTransition.{uX, uA, uR, uO} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11)",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.stable_quotient_transition_nonnegative",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.stable_quotient_transition_nonnegative",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.lean",
+        "line": 64
+      },
+      {
+        "name": "UEOT.V3.FiniteStablePartition.quotientTransition_nonneg",
+        "candidate": "UEOT.V3.FiniteStablePartition.quotientTransition_nonneg",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientLaw.lean",
+        "line": 74
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.stable_quotient_transition_nonnegative",
+        "uses": "UEOT.V3.FiniteStablePartition.quotientTransition_nonneg"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "c7237887c1283272a5b5715aec4b3a9171bd051b3461bc67fc204a5d1ecfa0b8",
+    "theorem_type_repr": "forall {[anonymous] : Nat -> Type.{uΩ}} [_1 : forall (_1 : Nat), MeasurableSpace.{uΩ} ([anonymous] _1)] (_2 : UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ChangingSampleEventContract.{uΩ} [anonymous] _1), Filter.Tendsto.{0, 0} Nat Real (fun (_3 : Nat) => MeasureTheory.Measure.real.{uΩ} ([anonymous] _3) (_1 _3) (UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ChangingSampleEventContract.μ.{uΩ} [anonymous] _1 _2 _3) (Compl.compl.{uΩ} (Set.{uΩ} ([anonymous] _3)) (Set.instCompl.{uΩ} ([anonymous] _3)) (UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ChangingSampleEventContract.good.{uΩ} [anonymous] _1 _2 _3))) (Filter.atTop.{0} Nat Nat.instPreorder) (nhds.{0} Real (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ChangingSampleEventContract.bad_probability_tendsto_zero",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ChangingSampleEventContract.bad_probability_tendsto_zero",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/Contract.lean",
+        "line": 67
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.p3_marginal_failure_tendsto_zero",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.p3_marginal_failure_tendsto_zero",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/TerminalClosure.lean",
+        "line": 50
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.p3_marginal_failure_tendsto_zero",
+        "uses": "UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ChangingSampleEventContract.bad_probability_tendsto_zero"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "8e128e0936aa99be59cdb853cc3932686134665cee8e3b66720a621f8a0ed9d6",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uΩ}} [_1 : MeasurableSpace.{uΩ} [anonymous]] {_2 : Type.{uΓ}} [_3 : MeasurableSpace.{uΓ} _2] {_4 : Type.{uE}} [_5 : NormedAddCommGroup.{uE} _4] [_6 : MeasurableSpace.{uE} _4] {_7 : MeasureTheory.Measure.{uΩ} [anonymous] _1} {_8 : MeasureTheory.Measure.{uΩ} [anonymous] _1} {_9 : NNReal} {_10 : Real -> [anonymous] -> _4} [_11 : MeasureTheory.IsProbabilityMeasure.{uΩ} [anonymous] _1 _7] [_11 : MeasureTheory.IsProbabilityMeasure.{uΩ} [anonymous] _1 _8], (UEOT.V3.GirsanovPathKL.TerminalGirsanovData.{uΩ, uE} [anonymous] _1 _4 _5 _6 _7 _8 _9 _10) -> (forall (_6 : [anonymous] -> _2), (Measurable.{uΩ, uΓ} [anonymous] _2 _1 _3 _6) -> (And (Eq.{1} ENNReal (InformationTheory.klDiv.{uΩ} [anonymous] _1 _8 _7) (ENNReal.ofReal (HMul.hMul.{0, 0, 0} Real Real Real (instHMul.{0} Real Real.instMul) (Inv.inv.{0} Real Real.instInv (OfNat.ofNat.{0} Real 2 (instOfNatAtLeastTwo.{0} Real 2 Real.instNatCast (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))))) (MeasureTheory.integral.{uΩ, 0} [anonymous] Real Real.normedAddCommGroup (InnerProductSpace.toNormedSpace.{0, 0} Real Real Real.instRCLike (NormedAddCommGroup.toSeminormedAddCommGroup.{0} Real Real.normedAddCommGroup) (RCLike.toInnerProductSpaceReal.{0} Real Real.instRCLike)) _1 _8 (fun (_1 : [anonymous]) => UEOT.V3.GirsanovPathKL.controlEnergy.{uΩ, uE} [anonymous] _4 _5 _9 _10 _1))))) (LE.le.{0} ENNReal ENNReal.instLE (InformationTheory.klDiv.{uΓ} _2 _3 (MeasureTheory.Measure.map.{uΩ, uΓ} [anonymous] _2 _1 _3 _6 _8) (MeasureTheory.Measure.map.{uΩ, uΓ} [anonymous] _2 _1 _3 _6 _7)) (ENNReal.ofReal (HMul.hMul.{0, 0, 0} Real Real Real (instHMul.{0} Real Real.instMul) (Inv.inv.{0} Real Real.instInv (OfNat.ofNat.{0} Real 2 (instOfNatAtLeastTwo.{0} Real 2 Real.instNatCast (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))))))) (MeasureTheory.integral.{uΩ, ",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.p11_girsanov_terminal_adapter",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.p11_girsanov_terminal_adapter",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StochasticSubstrate.lean",
+        "line": 57
+      },
+      {
+        "name": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+        "candidate": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+        "file": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+        "line": 191
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.p11_girsanov_terminal_adapter",
+        "uses": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "5a9494e6d971ec63ea59e43ed7da60ac494812e690dea412e64f8822687eedfa",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} [_1 : NormedAddCommGroup.{uX} [anonymous]] [_2 : NormedSpace.{0, uX} Real [anonymous] Real.normedField (NormedAddCommGroup.toSeminormedAddCommGroup.{uX} [anonymous] _1)] [_3 : MeasurableSpace.{uX} [anonymous]] [_4 : BorelSpace.{uX} [anonymous] (UniformSpace.toTopologicalSpace.{uX} [anonymous] (PseudoMetricSpace.toUniformSpace.{uX} [anonymous] (SeminormedAddCommGroup.toPseudoMetricSpace.{uX} [anonymous] (NormedAddCommGroup.toSeminormedAddCommGroup.{uX} [anonymous] _1)))) _3] {_5 : Type.{uA}} [_6 : MeasurableSpace.{uA} _5] (_7 : UEOT.V3.DiffusionHJBVerification.Model.{uX, uA} [anonymous] _5 _1 _2 _3 _4 _6) {_8 : Type.{u_1}} (_9 : UEOT.V3.DiffusionHJBVerification.Model.ControlFamily.{uX, uA, u_1} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8), UEOT.V3.DiffusionHJBVerification.Model.ControlFamily.IsOptimalValue.{uX, uA, u_1} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.p11_diffusionHJB_terminal_adapter",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.p11_diffusionHJB_terminal_adapter",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StochasticSubstrate.lean",
+        "line": 76
+      },
+      {
+        "name": "UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+        "candidate": "UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+        "file": "formalization/ueot-core/UEOT/V3/DiffusionHJBVerification.lean",
+        "line": 307
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.p11_diffusionHJB_terminal_adapter",
+        "uses": "UEOT.V3.DiffusionHJBVerification.p_ctl_03"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "29a9cb35ceded3a285476dfa77c84fda92a8fab3ea8d8bbb6b13bcee33f3ca8d",
+    "theorem_type_repr": "Not (Exists.{1} (Bool -> Bool) (fun ([anonymous] : Bool -> Bool) => And (Eq.{1} Bool ([anonymous] Bool.false) Bool.false) (Eq.{1} Bool ([anonymous] Bool.false) Bool.true)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.flip_physical_seed_cannot_select_two_programs",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.flip_physical_seed_cannot_select_two_programs",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteFormationBoundary.lean",
+        "line": 90
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_physical_seed_program_reconstruction_no_go",
+        "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_physical_seed_program_reconstruction_no_go",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ProgramPurposeInformationBoundary.lean",
+        "line": 69
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "44021c152581bc6bd49f91a50f773a8ade466c1a390e8b7c12d8c515ef50782e",
+    "theorem_type_repr": "forall {[anonymous] : Type.{u}} [_1 : Fintype.{u} [anonymous]] [_2 : Nonempty.{succ u} [anonymous]] (_3 : [anonymous] -> [anonymous]), Or (And (Eq.{1} Real (UEOT.V3.FiniteDobrushin.dobrushinAlpha.{u} [anonymous] _1 _2 (UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification.detKernel.{u} [anonymous] _3) (UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification.detKernel_stochastic.{u} [anonymous] _1 _2 _3)) (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero))) (Exists.{succ u} [anonymous] (fun (_1 : [anonymous]) => forall (_2 : [anonymous]), Eq.{succ u} [anonymous] (_3 _2) _1))) (And (Eq.{1} Real (UEOT.V3.FiniteDobrushin.dobrushinAlpha.{u} [anonymous] _1 _2 (UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification.detKernel.{u} [anonymous] _3) (UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification.detKernel_stochastic.{u} [anonymous] _1 _2 _3)) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne))) (Exists.{succ u} [anonymous] (fun (_1 : [anonymous]) => Exists.{succ u} [anonymous] (fun (_2 : [anonymous]) => Ne.{succ u} [anonymous] (_3 _1) (_3 _2)))))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification.detKernel_dobrushin_dichotomy",
+        "candidate": "UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification.detKernel_dobrushin_dichotomy",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaFunctionalGraphClassification.lean",
+        "line": 735
+      },
+      {
+        "name": "UEOT.V3.Compression.TopologyChangingGoaTrackSClosure.deterministic_dobrushin_dichotomy",
+        "candidate": "UEOT.V3.Compression.TopologyChangingGoaTrackSClosure.deterministic_dobrushin_dichotomy",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaTrackSClosure.lean",
+        "line": 103
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.Compression.TopologyChangingGoaTrackSClosure.deterministic_dobrushin_dichotomy",
+        "uses": "UEOT.V3.Compression.TopologyChangingGoaFunctionalGraphClassification.detKernel_dobrushin_dichotomy"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "69e8c63a867227d565a6511121d5d654a82064d9356e8543ff63a5ce14c4b23e",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uUA}} {_1 : Type.{uUB}} {_2 : Type.{uUC}} {_3 : Type.{uOA}} {_4 : Type.{uOB}} {_5 : Type.{uOC}} [_6 : MeasurableSpace.{uOA} _3] [_7 : MeasurableSpace.{uOB} _4] [_8 : MeasurableSpace.{uOC} _5] (_9 : UEOT.V3.ProcessInterface.Interface.{uUA, uUB, uOA, uOB} [anonymous] _1 _3 _4 _6 _7) (_10 : UEOT.V3.ProcessInterface.Interface.{uUB, uUC, uOB, uOC} _1 _2 _4 _5 _7 _8) (_11 : [anonymous] -> (MeasureTheory.Measure.{uOA} _3 _6)) (_12 : _1 -> (MeasureTheory.Measure.{uOB} _4 _7)) (_13 : _2 -> (MeasureTheory.Measure.{uOC} _5 _8)), (forall ([anonymous] : [anonymous]), MeasureTheory.IsProbabilityMeasure.{uOA} _3 _6 (_11 [anonymous])) -> (forall ([anonymous] : _1), MeasureTheory.IsProbabilityMeasure.{uOB} _4 _7 (_12 [anonymous])) -> (forall ([anonymous] : _2), MeasureTheory.IsProbabilityMeasure.{uOC} _5 _8 (_13 [anonymous])) -> (forall (_14 : Real) (_15 : Real), (forall (_2 : _1), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uOB} _4 _7 (MeasureTheory.Measure.map.{uOA, uOB} _3 _4 _6 _7 (UEOT.V3.ProcessInterface.Interface.readout.{uUA, uUB, uOA, uOB} [anonymous] _1 _3 _4 _6 _7 _9) (_11 (UEOT.V3.ProcessInterface.Interface.protocol.{uUA, uUB, uOA, uOB} [anonymous] _1 _3 _4 _6 _7 _9 _2))) (_12 _2)) _14) -> (forall ([anonymous] : _2), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uOC} _5 _8 (MeasureTheory.Measure.map.{uOB, uOC} _4 _5 _7 _8 (UEOT.V3.ProcessInterface.Interface.readout.{uUB, uUC, uOB, uOC} _1 _2 _4 _5 _7 _8 _10) (_12 (UEOT.V3.ProcessInterface.Interface.protocol.{uUB, uUC, uOB, uOC} _1 _2 _4 _5 _7 _8 _10 [anonymous]))) (_13 [anonymous])) _15) -> (forall (_12 : _2), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uOC} _5 _8 (MeasureTheory.Measure.map.{uOA, uOC} _3 _5 _6 _8 (UEOT.V3.ProcessInterface.Interface.readout.{uUA, uUC, uOA, uOC} [anonymous] _2 _3 _5 _6 _8 (UEOT.V3.ProcessInterface.Interface.comp.{uUA, uUB, uUC, uOA, uOB, uOC} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10)) (_11 (UEOT.V3.ProcessInterface.In",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TransportCertificate.processInterface_approx_via_twoStage",
+        "candidate": "UEOT.V3.Compression.TransportCertificate.processInterface_approx_via_twoStage",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+        "line": 256
+      },
+      {
+        "name": "UEOT.V3.ProcessInterface.p_api_01_approx",
+        "candidate": "UEOT.V3.ProcessInterface.p_api_01_approx",
+        "file": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+        "line": 101
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "07bdec894ca1a08e73ba49a74c9f31b987812e5f856d77ae36ba3261c7985ecb",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uUA}} {_1 : Type.{uUB}} {_2 : Type.{uUC}} {_3 : Type.{uOA}} {_4 : Type.{uOB}} {_5 : Type.{uOC}} [_6 : MeasurableSpace.{uOA} _3] [_7 : MeasurableSpace.{uOB} _4] [_8 : MeasurableSpace.{uOC} _5] (_9 : UEOT.V3.ProcessInterface.Interface.{uUA, uUB, uOA, uOB} [anonymous] _1 _3 _4 _6 _7) (_10 : UEOT.V3.ProcessInterface.Interface.{uUB, uUC, uOB, uOC} _1 _2 _4 _5 _7 _8) (_11 : [anonymous] -> (MeasureTheory.Measure.{uOA} _3 _6)) (_12 : _1 -> (MeasureTheory.Measure.{uOB} _4 _7)) (_13 : _2 -> (MeasureTheory.Measure.{uOC} _5 _8)), (UEOT.V3.ProcessInterface.ExactNatural.{uUA, uUB, uOA, uOB} [anonymous] _1 _3 _4 _6 _7 _9 _11 _12) -> (UEOT.V3.ProcessInterface.ExactNatural.{uUB, uUC, uOB, uOC} _1 _2 _4 _5 _7 _8 _10 _12 _13) -> (And (Eq.{max (succ uUA) (succ uUC)} (_2 -> [anonymous]) (UEOT.V3.ProcessInterface.Interface.protocol.{uUA, uUC, uOA, uOC} [anonymous] _2 _3 _5 _6 _8 (UEOT.V3.ProcessInterface.Interface.comp.{uUA, uUB, uUC, uOA, uOB, uOC} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10)) (Function.comp.{succ uUC, succ uUB, succ uUA} _2 _1 [anonymous] (UEOT.V3.ProcessInterface.Interface.protocol.{uUA, uUB, uOA, uOB} [anonymous] _1 _3 _4 _6 _7 _9) (UEOT.V3.ProcessInterface.Interface.protocol.{uUB, uUC, uOB, uOC} _1 _2 _4 _5 _7 _8 _10))) (And (Eq.{max (succ uOA) (succ uOC)} (_3 -> _5) (UEOT.V3.ProcessInterface.Interface.readout.{uUA, uUC, uOA, uOC} [anonymous] _2 _3 _5 _6 _8 (UEOT.V3.ProcessInterface.Interface.comp.{uUA, uUB, uUC, uOA, uOB, uOC} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10)) (Function.comp.{succ uOA, succ uOB, succ uOC} _3 _4 _5 (UEOT.V3.ProcessInterface.Interface.readout.{uUB, uUC, uOB, uOC} _1 _2 _4 _5 _7 _8 _10) (UEOT.V3.ProcessInterface.Interface.readout.{uUA, uUB, uOA, uOB} [anonymous] _1 _3 _4 _6 _7 _9))) (UEOT.V3.ProcessInterface.ExactNatural.{uUA, uUC, uOA, uOC} [anonymous] _2 _3 _5 _6 _8 (UEOT.V3.ProcessInterface.Interface.comp.{uUA, uUB, uUC, uOA, uOB, uOC} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10) _11 _13)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TransportCertificate.processInterface_exact_source_via_twoStage",
+        "candidate": "UEOT.V3.Compression.TransportCertificate.processInterface_exact_source_via_twoStage",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+        "line": 345
+      },
+      {
+        "name": "UEOT.V3.ProcessInterface.p_api_01_exact",
+        "candidate": "UEOT.V3.ProcessInterface.p_api_01_exact",
+        "file": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+        "line": 79
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "f109dd989e22e460d580565c7beee9d1dfa9eb33ce71f7f4bae27a6dcd07ad7c",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} {_1 : Type.{uMs}} {_2 : Type.{uMr}} {_3 : Type.{uA}} [_4 : MeasurableSpace.{uX} [anonymous]] [_5 : MeasurableSpace.{uMs} _1] [_6 : MeasurableSpace.{uMr} _2] (_7 : [anonymous] -> _3 -> (MeasureTheory.Measure.{uX} [anonymous] _4)) (_8 : _1 -> _3 -> (MeasureTheory.Measure.{uMs} _1 _5)) (_9 : _2 -> _3 -> (MeasureTheory.Measure.{uMr} _2 _6)) (_10 : [anonymous] -> _1) (_11 : [anonymous] -> _2) (_12 : _1 -> _2), (Measurable.{uX, uMs} [anonymous] _1 _4 _5 _10) -> (Measurable.{uX, uMr} [anonymous] _2 _4 _6 _11) -> (Measurable.{uMs, uMr} _1 _2 _5 _6 _12) -> (forall ([anonymous] : [anonymous]), Eq.{succ uMr} _2 (_11 [anonymous]) (_12 (_10 [anonymous]))) -> (forall (_1 : [anonymous]) (_2 : _3), MeasureTheory.IsProbabilityMeasure.{uX} [anonymous] _4 (_7 _1 _2)) -> (forall ([anonymous] : _1) (_2 : _3), MeasureTheory.IsProbabilityMeasure.{uMs} _1 _5 (_8 [anonymous] _2)) -> (forall ([anonymous] : _2) (_1 : _3), MeasureTheory.IsProbabilityMeasure.{uMr} _2 _6 (_9 [anonymous] _1)) -> (forall (_13 : Real) (_14 : Real), (forall (_2 : [anonymous]) (_3 : _3), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uMs} _1 _5 (MeasureTheory.Measure.map.{uX, uMs} [anonymous] _1 _4 _5 _10 (_7 _2 _3)) (_8 (_10 _2) _3)) _13) -> (forall (_1 : [anonymous]) (_3 : _3), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uMr} _2 _6 (MeasureTheory.Measure.map.{uX, uMr} [anonymous] _2 _4 _6 _11 (_7 _1 _3)) (_9 (_11 _1) _3)) _14) -> (forall (_4 : _1), (Membership.mem.{uMs, uMs} _1 (Set.{uMs} _1) (Set.instMembership.{uMs} _1) (Set.range.{uMs, succ uX} _1 [anonymous] _10) _4) -> (forall ([anonymous] : _3), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uMr} _2 _6 (MeasureTheory.Measure.map.{uMs, uMr} _1 _2 _5 _6 _12 (_8 _4 [anonymous])) (_9 (_12 _4) [anonymous])) (HAdd.hAdd.{0, 0, 0} Real Real Real (instHAdd.{0} Real Real.instAdd) _13 _14))))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_approx_via_twoStage",
+        "candidate": "UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_approx_via_twoStage",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+        "line": 464
+      },
+      {
+        "name": "UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv",
+        "candidate": "UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv",
+        "file": "formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+        "line": 31
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "66890e79a2a42c4c0538ae127deb6299c7a0b19d58251d60a4afa6140dd242a4",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} {_1 : Type.{uMs}} {_2 : Type.{uMr}} {_3 : Type.{uA}} [_4 : MeasurableSpace.{uX} [anonymous]] [_5 : MeasurableSpace.{uMs} _1] [_6 : MeasurableSpace.{uMr} _2] (_7 : [anonymous] -> _3 -> (MeasureTheory.Measure.{uX} [anonymous] _4)) (_8 : _1 -> _3 -> (MeasureTheory.Measure.{uMs} _1 _5)) (_9 : _2 -> _3 -> (MeasureTheory.Measure.{uMr} _2 _6)) (_10 : [anonymous] -> _1) (_11 : [anonymous] -> _2) (_12 : _1 -> _2), (Measurable.{uX, uMs} [anonymous] _1 _4 _5 _10) -> (Measurable.{uMs, uMr} _1 _2 _5 _6 _12) -> (forall ([anonymous] : [anonymous]), Eq.{succ uMr} _2 (_11 [anonymous]) (_12 (_10 [anonymous]))) -> (forall (_2 : [anonymous]) (_3 : _3), Eq.{succ uMs} (MeasureTheory.Measure.{uMs} _1 _5) (MeasureTheory.Measure.map.{uX, uMs} [anonymous] _1 _4 _5 _10 (_7 _2 _3)) (_8 (_10 _2) _3)) -> (forall (_1 : [anonymous]) (_3 : _3), Eq.{succ uMr} (MeasureTheory.Measure.{uMr} _2 _6) (MeasureTheory.Measure.map.{uX, uMr} [anonymous] _2 _4 _6 _11 (_7 _1 _3)) (_9 (_11 _1) _3)) -> (forall (_4 : _1), (Membership.mem.{uMs, uMs} _1 (Set.{uMs} _1) (Set.instMembership.{uMs} _1) (Set.range.{uMs, succ uX} _1 [anonymous] _10) _4) -> (forall ([anonymous] : _3), Eq.{succ uMr} (MeasureTheory.Measure.{uMr} _2 _6) (MeasureTheory.Measure.map.{uMs, uMr} _1 _2 _5 _6 _12 (_8 _4 [anonymous])) (_9 (_12 _4) [anonymous])))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_exact_via_factor",
+        "candidate": "UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_exact_via_factor",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+        "line": 532
+      },
+      {
+        "name": "UEOT.V3.DynamicsCrossScale.p_dyn_04_exact_intertwining",
+        "candidate": "UEOT.V3.DynamicsCrossScale.p_dyn_04_exact_intertwining",
+        "file": "formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+        "line": 90
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "43dda8fa505cabbb4380db35222bfd426022d39a296a3fedfe76a6a835c07730",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uHist}} {_1 : Type.{uHist}} [_2 : Fintype.{uHist} [anonymous]] [_2 : Fintype.{uHist} _1] [_2 : MeasurableSpace.{uHist} [anonymous]] [_3 : MeasurableSingletonClass.{uHist} [anonymous] _2] [_3 : MeasurableSpace.{uHist} _1] [_4 : MeasurableSingletonClass.{uHist} _1 _3] (_4 : PMF.{uHist} [anonymous]) (_5 : forall (_2 : Nat), (UEOT.V3.PathError.CausalHistory.{uHist} [anonymous] _1 _2) -> (PMF.{uHist} _1)) (_6 : forall (_2 : Nat), (UEOT.V3.PathError.CausalHistory.{uHist} [anonymous] _1 _2) -> (PMF.{uHist} _1)) (_7 : Nat -> Real), (forall ([anonymous] : Nat), LE.le.{0} Real Real.instLE (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)) (_7 [anonymous])) -> (forall ([anonymous] : Nat), LE.le.{0} Real Real.instLE (_7 [anonymous]) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne))) -> (forall (_2 : Nat) ([anonymous] : UEOT.V3.PathError.CausalHistory.{uHist} [anonymous] _1 _2), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uHist} _1 _3 (PMF.toMeasure.{uHist} _1 _3 (_5 _2 [anonymous])) (PMF.toMeasure.{uHist} _1 _3 (_6 _2 [anonymous]))) (_7 _2)) -> (forall (_8 : Nat), And (LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uHist} (UEOT.V3.PathError.CausalHistory.{uHist} [anonymous] _1 _8) (UEOT.V3.PathError.causalHistoryMeasurableSpace.{uHist} [anonymous] _1 _2 _3 _8) (PMF.toMeasure.{uHist} (UEOT.V3.PathError.CausalHistory.{uHist} [anonymous] _1 _8) (UEOT.V3.PathError.causalHistoryMeasurableSpace.{uHist} [anonymous] _1 _2 _3 _8) (UEOT.V3.PathError.causalLaw.{uHist} [anonymous] _1 _4 _5 _8)) (PMF.toMeasure.{uHist} (UEOT.V3.PathError.CausalHistory.{uHist} [anonymous] _1 _8) (UEOT.V3.PathError.causalHistoryMeasurableSpace.{uHist} [anonymous] _1 _2 _3 _8) (UEOT.V3.PathError.causalLaw.{uHist} [anonymous] _1 _4 _6 _8))) (HSub.hSub.{0, 0, 0} Real Real Real (instHSub.{0} Real Real.instSub) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne)) (Finset.prod.{0, 0} Nat Real Real.instCommMonoid (Finset.range _8",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain",
+        "candidate": "UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain",
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TransportPathError.lean",
+        "line": 26
+      },
+      {
+        "name": "UEOT.V3.PathError.p_dyn_03_finite_path_error",
+        "candidate": "UEOT.V3.PathError.p_dyn_03_finite_path_error",
+        "file": "formalization/ueot-core/UEOT/V3/PathError.lean",
+        "line": 679
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "9fc2d35a7cb77ae9716539dbe71b4d6106631b328b2fa474dee77510aced60c1",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uTheta}} {_1 : Type.{uX}} {_2 : Type.{uA}} {_3 : Type.{uY}} [_4 : Fintype.{uTheta} [anonymous]] [_5 : Fintype.{uX} _1] [_6 : Fintype.{uY} _3] (_7 : UEOT.V3.FiniteBayesBelief.Model.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _5 _6) (_8 : UEOT.V3.FiniteBayesBelief.Belief.{uTheta, uX} [anonymous] _1 _4 _5) (_9 : _2), Eq.{1} Real (Finset.sum.{uY, 0} _3 Real Real.instAddCommMonoid (Finset.univ.{uY} _3 _6) (fun (_10 : _3) => UEOT.V3.FiniteBayesBelief.evidence.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10)) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.FiniteBayesBelief.evidence_sum_one",
+        "candidate": "UEOT.V3.FiniteBayesBelief.evidence_sum_one",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+        "line": 111
+      },
+      {
+        "name": "UEOT.V3.PRef02.p_ref_02_discrete_observation",
+        "candidate": "UEOT.V3.PRef02.p_ref_02_discrete_observation",
+        "file": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 69
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.PRef02.p_ref_02_discrete_observation",
+        "uses": "UEOT.V3.FiniteBayesBelief.evidence_sum_one"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "36c37f41a441f390fb9f1ca362c1ed22f7055eb6a612a3a64a7c2e83480f09a7",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uTheta}} {_1 : Type.{uX}} {_2 : Type.{uA}} {_3 : Type.{uY}} [_4 : Fintype.{uTheta} [anonymous]] [_5 : Fintype.{uX} _1] [_6 : Fintype.{uY} _3] (_7 : UEOT.V3.FiniteBayesBelief.Model.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _5 _6) (_8 : UEOT.V3.FiniteBayesBelief.Belief.{uTheta, uX} [anonymous] _1 _4 _5) (_9 : _2) (_10 : _3) (_11 : Ne.{1} Real (UEOT.V3.FiniteBayesBelief.evidence.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10) (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero))) (_12 : [anonymous]) (_13 : _1), Eq.{1} Real (UEOT.V3.FiniteBayesBelief.Belief.mass.{uTheta, uX} [anonymous] _1 _4 _5 (UEOT.V3.FiniteBayesBelief.posterior.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11) _12 _13) (HDiv.hDiv.{0, 0, 0} Real Real Real (instHDiv.{0} Real (DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) (UEOT.V3.FiniteBayesBelief.jointObservationMass.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _12 _13) (UEOT.V3.FiniteBayesBelief.evidence.{uTheta, uX, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.FiniteBayesBelief.posterior_mass",
+        "candidate": "UEOT.V3.FiniteBayesBelief.posterior_mass",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+        "line": 168
+      },
+      {
+        "name": "UEOT.V3.PRef02.p_ref_02_discrete_posterior",
+        "candidate": "UEOT.V3.PRef02.p_ref_02_discrete_posterior",
+        "file": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 76
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.PRef02.p_ref_02_discrete_posterior",
+        "uses": "UEOT.V3.FiniteBayesBelief.posterior_mass"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "0c950a3434a59ecb870e2af917e4a6e25ad2c09a915229399ad5e282f52a71f2",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uZ}} {_1 : Type.{uA}} {_2 : Type.{uY}} [_3 : MeasurableSpace.{uZ} [anonymous]] [_4 : StandardBorelSpace.{uZ} [anonymous] _3] [_5 : Nonempty.{succ uZ} [anonymous]] [_6 : MeasurableSpace.{uA} _1] [_7 : MeasurableSpace.{uY} _2] (_8 : MeasureTheory.Measure.{uZ} [anonymous] _3) [_9 : MeasureTheory.IsProbabilityMeasure.{uZ} [anonymous] _3 _8] (_10 : ProbabilityTheory.Kernel.{max uA uZ, uZ} (Prod.{uZ, uA} [anonymous] _1) [anonymous] (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _3) [_11 : ProbabilityTheory.IsMarkovKernel.{max uA uZ, uZ} (Prod.{uZ, uA} [anonymous] _1) [anonymous] (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _3 _10] (_12 : ProbabilityTheory.Kernel.{max uA uZ, uY} (Prod.{uZ, uA} [anonymous] _1) _2 (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _7) [_13 : ProbabilityTheory.IsMarkovKernel.{max uA uZ, uY} (Prod.{uZ, uA} [anonymous] _1) _2 (Prod.instMeasurableSpace.{uZ, uA} [anonymous] _1 _3 _6) _7 _12] (_14 : _1), Eq.{max (succ uY) (succ uZ)} (MeasureTheory.Measure.{max uZ uY} (Prod.{uY, uZ} _2 [anonymous]) (Prod.instMeasurableSpace.{uY, uZ} _2 [anonymous] _7 _3)) (MeasureTheory.Measure.compProd.{uY, uZ} _2 [anonymous] _7 _3 (UEOT.V3.GeneralBayesPosterior.observationLaw.{uZ, uA, uY} [anonymous] _1 _2 _3 _6 _7 _8 _10 _12 _14) (UEOT.V3.GeneralBayesPosterior.posteriorKernel.{uZ, uA, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 _10 _11 _12 _13 _14)) (MeasureTheory.Measure.map.{max uY uZ, max uY uZ} (Prod.{uZ, uY} [anonymous] _2) (Prod.{uY, uZ} _2 [anonymous]) (Prod.instMeasurableSpace.{uZ, uY} [anonymous] _2 _3 _7) (Prod.instMeasurableSpace.{uY, uZ} _2 [anonymous] _7 _3) (Prod.swap.{uZ, uY} [anonymous] _2) (UEOT.V3.GeneralBayesPosterior.jointLaw.{uZ, uA, uY} [anonymous] _1 _2 _3 _6 _7 _8 _10 _12 _14))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.GeneralBayesPosterior.posterior_reconstructs_joint",
+        "candidate": "UEOT.V3.GeneralBayesPosterior.posterior_reconstructs_joint",
+        "file": "formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean",
+        "line": 94
+      },
+      {
+        "name": "UEOT.V3.PRef02.p_ref_02_general_joint",
+        "candidate": "UEOT.V3.PRef02.p_ref_02_general_joint",
+        "file": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 34
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.PRef02.p_ref_02_general_joint",
+        "uses": "UEOT.V3.GeneralBayesPosterior.posterior_reconstructs_joint"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 2,
+    "normal_type_sha": "8fc0f4f6481933fec507b0b46fd855ade6753b9bbabb308d3628eeca394a8212",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uY}} [_1 : MeasurableSpace.{uY} [anonymous]] (_2 : MeasureTheory.Measure.{uY} [anonymous] _1) (_3 : MeasureTheory.Measure.{uY} [anonymous] _1) [_4 : MeasureTheory.IsProbabilityMeasure.{uY} [anonymous] _1 _2] [_4 : MeasureTheory.IsProbabilityMeasure.{uY} [anonymous] _1 _3], Eq.{1} Real (UEOT.V3.TotalVariation.tvDist.{uY} [anonymous] _1 _2 _3) (UEOT.V3.TotalVariation.tvDist.{uY} [anonymous] _1 _3 _2)",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.InformationPacking.tvDist_symm",
+        "candidate": "UEOT.V3.InformationPacking.tvDist_symm",
+        "file": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+        "line": 25
+      },
+      {
+        "name": "UEOT.V3.StatisticalDefect.tvDist_symm",
+        "candidate": "UEOT.V3.StatisticalDefect.tvDist_symm",
+        "file": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+        "line": 31
+      }
+    ],
+    "verified_direct_proof_dep_edges": [],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 1,
+    "normal_type_sha": "011dd6bfe6a2e2a1a34b49583db7abb28ccc75d0bde151bd468863063f839c0f",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} [_1 : MeasurableSpace.{uX} [anonymous]] (_2 : MeasureTheory.Measure.{uX} [anonymous] _1) (_3 : MeasureTheory.Measure.{uX} [anonymous] _1) [_4 : MeasureTheory.IsProbabilityMeasure.{uX} [anonymous] _1 _2] [_4 : MeasureTheory.IsProbabilityMeasure.{uX} [anonymous] _1 _3] (_4 : [anonymous] -> Real), (Measurable.{uX, 0} [anonymous] Real _1 Real.measurableSpace _4) -> (forall ([anonymous] : [anonymous]), LE.le.{0} Real Real.instLE (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)) (_4 [anonymous])) -> (forall ([anonymous] : [anonymous]), LE.le.{0} Real Real.instLE (_4 [anonymous]) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne))) -> (forall {_5 : Real}, (LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uX} [anonymous] _1 _3 _2) _5) -> (LE.le.{0} Real Real.instLE (MeasureTheory.integral.{uX, 0} [anonymous] Real Real.normedAddCommGroup (NormedField.toNormedSpace.{0} Real Real.normedField) _1 _3 (fun ([anonymous] : [anonymous]) => _4 [anonymous])) (HAdd.hAdd.{0, 0, 0} Real Real Real (instHAdd.{0} Real Real.instAdd) (MeasureTheory.integral.{uX, 0} [anonymous] Real Real.normedAddCommGroup (NormedField.toNormedSpace.{0} Real Real.normedField) _1 _2 (fun ([anonymous] : [anonymous]) => _4 [anonymous])) _5)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.AverageErrorTransport.expectation_le_of_tvDist_le",
+        "candidate": "UEOT.V3.AverageErrorTransport.expectation_le_of_tvDist_le",
+        "file": "formalization/ueot-core/UEOT/V3/AverageErrorTransport.lean",
+        "line": 31
+      },
+      {
+        "name": "UEOT.V3.AverageErrorTransport.p_stat_09_tv",
+        "candidate": "UEOT.V3.AverageErrorTransport.p_stat_09_tv",
+        "file": "formalization/ueot-core/UEOT/V3/AverageErrorTransport.lean",
+        "line": 92
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.AverageErrorTransport.p_stat_09_tv",
+        "uses": "UEOT.V3.AverageErrorTransport.expectation_le_of_tvDist_le"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 1,
+    "normal_type_sha": "ffb8275801f889a47900629ac497dd35cd1f72b04b6eb5d41466404675369b2d",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uX}} {_1 : Type.{uA}} {_2 : Type.{uR}} {_3 : Type.{uO}} [_4 : Fintype.{uX} [anonymous]] [_5 : Fintype.{uA} _1] (_6 : UEOT.V3.FiniteStablePartition.Model.{uX, uA, uR, uO} [anonymous] _1 _2 _3 _4) (_7 : Setoid.{succ uX} [anonymous]) (_8 : UEOT.V3.FiniteStablePartition.Stable.{uX, uA, uR, uO} [anonymous] _1 _2 _3 _4 _6 _7) (_9 : _1) (_10 : [anonymous]) (_11 : [anonymous]), Eq.{1} Real (UEOT.V3.FiniteStablePartition.quotientTransition.{uX, uA, uR, uO} [anonymous] _1 _2 _3 _4 _5 _6 _7 _8 _9 (Quotient.mk.{succ uX} [anonymous] _7 _10) (Quotient.mk.{succ uX} [anonymous] _7 _11)) (UEOT.V3.FiniteStablePartition.blockMass.{uX, uA, uR, uO} [anonymous] _1 _2 _3 _4 _6 _7 _9 _10 _11)",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.FiniteStablePartition.quotientTransition_mk",
+        "candidate": "UEOT.V3.FiniteStablePartition.quotientTransition_mk",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientLaw.lean",
+        "line": 58
+      },
+      {
+        "name": "UEOT.V3.FiniteStablePartition.quotient_one_step_preserved",
+        "candidate": "UEOT.V3.FiniteStablePartition.quotient_one_step_preserved",
+        "file": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientLaw.lean",
+        "line": 66
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.FiniteStablePartition.quotient_one_step_preserved",
+        "uses": "UEOT.V3.FiniteStablePartition.quotientTransition_mk"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 1,
+    "normal_type_sha": "a5af79ed182a8abad47f9d5b2d2b914c37bda30c33a5069d4b2ff5118aeccea2",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uH}} {_1 : Type.{uA}} {_2 : Type.{uX}} [_3 : MeasurableSpace.{uH} [anonymous]] [_4 : MeasurableSpace.{uA} _1] [_5 : MeasurableSpace.{uX} _2] (_6 : UEOT.V3.HistoryMarkovization.HistoryMachine.{uH, uA, uX} [anonymous] _1 _2 _3 _4 _5) [_7 : ProbabilityTheory.IsMarkovKernel.{max uA uH, uX} (Prod.{uH, uA} [anonymous] _1) _2 (Prod.instMeasurableSpace.{uH, uA} [anonymous] _1 _3 _4) _5 (UEOT.V3.HistoryMarkovization.HistoryMachine.step.{uH, uA, uX} [anonymous] _1 _2 _3 _4 _5 _6)] (_7 : [anonymous]) (_8 : _1), Eq.{succ uX} (MeasureTheory.Measure.{uX} _2 _5) (MeasureTheory.Measure.map.{uH, uX} [anonymous] _2 _3 _5 (UEOT.V3.HistoryMarkovization.HistoryMachine.read.{uH, uA, uX} [anonymous] _1 _2 _3 _4 _5 _6) (DFunLike.coe.{max (succ uA) (succ uH), max (succ uA) (succ uH), succ uH} (ProbabilityTheory.Kernel.{max uA uH, uH} (Prod.{uH, uA} [anonymous] _1) [anonymous] (Prod.instMeasurableSpace.{uH, uA} [anonymous] _1 _3 _4) _3) (Prod.{uH, uA} [anonymous] _1) (fun (_1 : Prod.{uH, uA} [anonymous] _1) => MeasureTheory.Measure.{uH} [anonymous] _3) (ProbabilityTheory.Kernel.instFunLike.{max uA uH, uH} (Prod.{uH, uA} [anonymous] _1) [anonymous] (Prod.instMeasurableSpace.{uH, uA} [anonymous] _1 _3 _4) _3) (UEOT.V3.HistoryMarkovization.HistoryMachine.markovized.{uH, uA, uX} [anonymous] _1 _2 _3 _4 _5 _6) (Prod.mk.{uH, uA} [anonymous] _1 _7 _8))) (DFunLike.coe.{max (max (succ uA) (succ uH)) (succ uX), max (succ uA) (succ uH), succ uX} (ProbabilityTheory.Kernel.{max uA uH, uX} (Prod.{uH, uA} [anonymous] _1) _2 (Prod.instMeasurableSpace.{uH, uA} [anonymous] _1 _3 _4) _5) (Prod.{uH, uA} [anonymous] _1) (fun ([anonymous] : Prod.{uH, uA} [anonymous] _1) => MeasureTheory.Measure.{uX} _2 _5) (ProbabilityTheory.Kernel.instFunLike.{max uA uH, uX} (Prod.{uH, uA} [anonymous] _1) _2 (Prod.instMeasurableSpace.{uH, uA} [anonymous] _1 _3 _4) _5) (UEOT.V3.HistoryMarkovization.HistoryMachine.step.{uH, uA, uX} [anonymous] _1 _2 _3 _4 _5 _6) (Prod.mk.{uH, uA} [anonymous] _1 _7 _8))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.HistoryMarkovization.HistoryMachine.markovized_readout_apply",
+        "candidate": "UEOT.V3.HistoryMarkovization.HistoryMachine.markovized_readout_apply",
+        "file": "formalization/ueot-core/UEOT/V3/HistoryMarkovization.lean",
+        "line": 83
+      },
+      {
+        "name": "UEOT.V3.HistoryMarkovization.HistoryMachine.markovized_kernel_readout_apply",
+        "candidate": "UEOT.V3.HistoryMarkovization.HistoryMachine.markovized_kernel_readout_apply",
+        "file": "formalization/ueot-core/UEOT/V3/HistoryMarkovization.lean",
+        "line": 104
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.HistoryMarkovization.HistoryMachine.markovized_kernel_readout_apply",
+        "uses": "UEOT.V3.HistoryMarkovization.HistoryMachine.markovized_readout_apply"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 1,
+    "normal_type_sha": "0999772e828a954f15e501b6e328c3468c76a61d8db0c562177682d03d798d97",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uΘ}} {_1 : Type.{uQ}} (_2 : UEOT.V3.SelectionBridge.ReplicationBridge.{uΘ, uQ} [anonymous] _1) {_3 : [anonymous]} {_4 : [anonymous]}, (UEOT.V3.SelectionBridge.ReplicationBridge.BehaviorEquivalent.{uΘ, uQ} [anonymous] _1 _2 _3 _4) -> (Eq.{1} Real (UEOT.V3.SelectionBridge.ReplicationBridge.fitness.{uΘ, uQ} [anonymous] _1 _2 _3) (UEOT.V3.SelectionBridge.ReplicationBridge.fitness.{uΘ, uQ} [anonymous] _1 _2 _4))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+        "candidate": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+        "file": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+        "line": 44
+      },
+      {
+        "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier",
+        "candidate": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier",
+        "file": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+        "line": 54
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier",
+        "uses": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  },
+  {
+    "group_size": 2,
+    "file_count": 1,
+    "normal_type_sha": "bb4f9a2344fe7ef933aa8ba58589feaf4312e9b9d4934406c9991ccc6e2e650d",
+    "theorem_type_repr": "forall {[anonymous] : Type.{uV}} {_1 : Type.{uH}} {_2 : Type.{uI}} {_3 : Type.{uR}} {_4 : Type.{uY}} [_5 : MeasurableSpace.{uY} _4] [_6 : Nonempty.{succ uH} _1] [_6 : Nonempty.{succ uI} _2] (_6 : (Finset.{uV} [anonymous]) -> _1 -> _3) (_7 : _1 -> _2 -> (MeasureTheory.Measure.{uY} _4 _5)) (_8 : _1 -> _2 -> (MeasureTheory.Measure.{uY} _4 _5)), (forall ([anonymous] : _1) (_1 : _2), MeasureTheory.IsProbabilityMeasure.{uY} _4 _5 (_7 [anonymous] _1)) -> (forall ([anonymous] : _1) (_1 : _2), MeasureTheory.IsProbabilityMeasure.{uY} _4 _5 (_8 [anonymous] _1)) -> (forall (_9 : Real), (forall ([anonymous] : _1) (_1 : _2), LE.le.{0} Real Real.instLE (UEOT.V3.TotalVariation.tvDist.{uY} _4 _5 (_7 [anonymous] _1) (_8 [anonymous] _1)) _9) -> (forall (_10 : Finset.{uV} [anonymous]), LE.le.{0} Real Real.instLE (abs.{0} Real Real.lattice Real.instAddGroup (HSub.hSub.{0, 0, 0} Real Real Real (instHSub.{0} Real Real.instSub) (UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} [anonymous] _1 _2 _3 _4 _5 _6 _8 _10) (UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} [anonymous] _1 _2 _3 _4 _5 _6 _7 _10))) (HMul.hMul.{0, 0, 0} Real Real Real (instHMul.{0} Real Real.instMul) (OfNat.ofNat.{0} Real 2 (instOfNatAtLeastTwo.{0} Real 2 Real.instNatCast (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))))) _9)))",
+    "group_member_declarations": [
+      {
+        "name": "UEOT.V3.StatisticalDefect.responseDefect_error",
+        "candidate": "UEOT.V3.StatisticalDefect.responseDefect_error",
+        "file": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+        "line": 123
+      },
+      {
+        "name": "UEOT.V3.StatisticalDefect.p_stat_02",
+        "candidate": "UEOT.V3.StatisticalDefect.p_stat_02",
+        "file": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+        "line": 181
+      }
+    ],
+    "verified_direct_proof_dep_edges": [
+      {
+        "from": "UEOT.V3.StatisticalDefect.p_stat_02",
+        "uses": "UEOT.V3.StatisticalDefect.responseDefect_error"
+      }
+    ],
+    "dependency_measure": "Lean getUsedConstants from .thmInfo.value for 77 original UEOT cluster declarations; Crooks not computed"
+  }
+]
