@@ -21,10 +21,34 @@ CORE = HERE.parents[3]
 REPO = CORE.parents[1]
 TASKS = HERE / "FKRG_TASKS.json"
 DEFAULT_DB = Path(os.environ.get("UEOT_FKRG_DB", "/tmp/ueot-fkrg-index.sqlite3"))
+INDEX_SCHEMA = "FKRG_V2"
+
 sys.path.insert(0, str(HERE.parent / "unified_closure"))
 from audit_umc_local import no_lean_comments
 
-DECL = re.compile(r"^\s*(?:(?:private|protected|noncomputable|unsafe|irreducible|partial)\s+)*(theorem|lemma|def|abbrev|structure|class|inductive)\s+([A-Za-z_][A-Za-z_0-9']*)\b")
+# The extractor is a composition: declaration matching *and* imported Lean
+# comment removal. Both source files are effective parser inputs.
+COMMENT_PARSER_PATH = Path(sys.modules[no_lean_comments.__module__].__file__).resolve()
+
+
+def extractor_fingerprint():
+    h = sha256()
+    for label, path in (("fkrg.py", Path(__file__).resolve()),
+                        ("lean-comment-parser", COMMENT_PARSER_PATH)):
+        h.update(label.encode("ascii"))
+        h.update(b"\x00")
+        h.update(path.read_bytes())
+        h.update(b"\x00")
+    return h.hexdigest()
+
+
+# Attributes and qualified names are part of valid Lean declarations.
+# This is a lexical candidate extractor; semantic equivalence is not claimed.
+DECL = re.compile(
+    r"^\s*(?:(?:@\[[^\]\n]*\]|private|protected|noncomputable|unsafe|irreducible|partial)\s+)*"
+    r"(theorem|lemma|def|abbrev|structure|class|inductive)\s+"
+    r"([A-Za-z_][A-Za-z_0-9']*(?:\.[A-Za-z_][A-Za-z_0-9']*)*)\b"
+)
 SCOPE = re.compile(r"^\s*(namespace|section|end)\b(?:\s+(\S+))?")
 IMPORT = re.compile(r"^\s*import\s+(\S+)")
 
@@ -63,8 +87,14 @@ def extract(module,path):
             elif op=="end" and stack:ns=stack.pop()
         m=DECL.match(line)
         if not m: continue
-        kind,simple=m.groups()
-        candidate=(ns+"." if ns else "")+simple
+        kind,local_qualified=m.groups()
+        simple=local_qualified.rsplit(".",1)[-1]
+        # Lean elaborates private names to mangled, module-unique constants:
+        # two source-private helpers may have the SAME apparent user name.
+        # Never index them as publicly reusable declarations.
+        is_private = re.search(r"\bprivate\b",line[:m.start(1)]) is not None
+        candidate = (f"private@{module}:{i+1}:{local_qualified}" if is_private else
+                     (ns+"." if ns else "")+local_qualified)
         snippet=" ".join(x.strip() for x in lines[i:min(i+6,len(lines))])
         before="\n".join(lines[max(0,i-12):i])
         pos=before.rfind("/--")
@@ -100,7 +130,11 @@ def build(db):
               VALUES(?,?,?,?,?,?,?,?)""",entries)
             count+=len(entries)
         c.execute("INSERT INTO search(search) VALUES('rebuild')")
-        meta={"schema":"FKRG_V1","source_tree_sha256":fingerprint(mapping),
+        meta={"schema":INDEX_SCHEMA,
+              # Source-only fingerprints are insufficient: fixed extractor
+              # code must invalidate databases made by the old parser.
+              "extractor_sha256":extractor_fingerprint(),
+              "source_tree_sha256":fingerprint(mapping),
               "module_count":str(len(mapping)),"declaration_count":str(count),
               "git_head_at_build":git("rev-parse","HEAD"),
               "type_authority":"LEXICAL_CANDIDATES_REQUIRE_KERNEL_VERIFICATION"}
@@ -115,8 +149,11 @@ def fresh(db):
     c=sqlite3.connect(db);c.row_factory=sqlite3.Row
     meta=dict(c.execute("SELECT key,value FROM meta").fetchall())
     live=sources()
-    if meta["source_tree_sha256"]!=fingerprint(live) or int(meta["module_count"])!=len(live):
-        c.close();raise RuntimeError("STALE_INDEX: source modified, run build")
+    if (meta.get("schema")!=INDEX_SCHEMA or
+        meta.get("extractor_sha256")!=extractor_fingerprint() or
+        meta.get("source_tree_sha256")!=fingerprint(live) or
+        int(meta.get("module_count","0"))!=len(live)):
+        c.close();raise RuntimeError("STALE_INDEX: source or extractor dependency changed, run build")
     return c,meta
 
 def find(c,query,limit,details):
@@ -145,6 +182,8 @@ def show(c,symbol):
     for r in rows:print(json.dumps(dict(r),ensure_ascii=False,indent=2))
 
 def lean_check(c,symbol):
+    if symbol.startswith("private@"):
+        raise RuntimeError("PRIVATE_LEAN_DECLARATION_NOT_PUBLICLY_REUSABLE")
     rows=c.execute("SELECT 1 FROM declarations WHERE candidate=? LIMIT 1",(symbol,)).fetchall()
     if not rows:raise RuntimeError("NO_LEXICAL_FULL_NAME; run show")
     with tempfile.TemporaryDirectory(prefix="fkrg-kernel-") as tmp:
@@ -184,14 +223,20 @@ def impact(c,sym):
         print(json.dumps({"symbol":sym,"module":module,"importing_modules":dependents,
           "scope":"IMPORT_DAG_NOT_DECLARATION_PROOF_DAG"},ensure_ascii=False,indent=2))
 
+def optional_ref(name):
+    """Missing remote-tracking refs are normal in offline/detached clones."""
+    p=subprocess.run(["git","rev-parse","--verify","--quiet",name],
+                     cwd=REPO,capture_output=True,text=True)
+    return p.stdout.strip() if p.returncode==0 else None
+
 def status(db):
     try:
         c,meta=fresh(db);c.close();state="FRESH"
     except RuntimeError as e:state=str(e);meta={}
     tasks=json.loads(TASKS.read_text())["tasks"]
-    print(json.dumps({"branch":git("branch","--show-current"),
+    print(json.dumps({"branch":git("branch","--show-current") or "(detached)",
       "head":git("rev-parse","HEAD"),
-      "cached_origin_main":git("rev-parse","origin/main"),
+      "cached_origin_main":optional_ref("refs/remotes/origin/main"),
       "index_state":state,"index":meta,
       "tasks":{k:{"status":v["status"],"next_action":v["next_action"]}
          for k,v in tasks.items()},

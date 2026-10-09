@@ -9,6 +9,7 @@ from pathlib import Path
 from collections import Counter
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -51,6 +52,68 @@ def no_lean_comments(text):
     if depth:raise RuntimeError("unterminated Lean block comment")
     return "".join(o)
 
+def baseline_main_ref():
+    """Use local main or fetched origin/main; a detached CI PR has no main.
+
+    Fail closed if neither exists: diff-scope governance must not be
+    silently bypassed by comparing against HEAD itself.
+    """
+    for candidate in ("refs/heads/main", "refs/remotes/origin/main"):
+        p=subprocess.run(["git","rev-parse","--verify","--quiet",candidate],
+                         cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL)
+        if p.returncode == 0:
+            return candidate
+    raise RuntimeError("main baseline unavailable: fetch origin main before auditing")
+
+
+
+def active_research_branch():
+    """Recover original PR branch in detached Actions checkouts; fail closed."""
+    p = subprocess.run(["git","symbolic-ref","--quiet","--short","HEAD"],
+                       cwd=ROOT,capture_output=True,text=True)
+    if p.returncode == 0 and p.stdout.strip():
+        return p.stdout.strip()
+    return os.environ.get("GITHUB_HEAD_REF") or os.environ.get("HEAD_REF") or None
+
+
+def validate_tc_local_scope(baseline, branch, changed):
+    """Supplement the immutable-base policy, never broaden its path authority.
+
+    Existing file edits under TC must be authorized by the *base* governance
+    registry. Newly added TC research artifacts may be additive L1. Unknown
+    branch identities may not claim narrow L2 authorizations.
+    """
+    public_root="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+    owned_prefixes=(
+        "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/",
+    )
+    baseline_files=set(run(["git","-c","core.quotePath=false","ls-tree",
+                            "-r","--name-only",baseline,"--",*owned_prefixes]).splitlines())
+    policy_path="formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+    policy=json.loads(run(["git","show",f"{baseline}:{policy_path}"]))
+    authorized=set(policy["tracks"]["TC"].get("mutable_existing_exact_paths",[]))
+    if branch:
+        for record in policy.get("l2_existing_path_exceptions",[]):
+            if record.get("track")!="TC" or record.get("temporary") is not True:
+                continue
+            if any(isinstance(pattern,str) and re.fullmatch(pattern,branch)
+                   for pattern in record.get("branch_patterns",[])):
+                authorized.update(record.get("paths",[]))
+    violations=[
+        path for path in changed
+        if not (
+            path==public_root or
+            (path.startswith(owned_prefixes) and
+             (path not in baseline_files or path in authorized))
+        )
+    ]
+    if violations:
+        raise RuntimeError("out-of-scope existing-path changes under immutable "
+                           "TC source policy: "+str(violations))
+
+
 def audit(full):
     atlas=json.loads((HERE/"UMC_00_SOURCE_ATLAS_V1.json").read_text())
     if len(atlas['records'])!=106 or len({r['pid'] for r in atlas['records']})!=106:
@@ -92,13 +155,9 @@ def audit(full):
     # Git quotes non-ASCII report filenames by default. Disable C-style
     # path escaping for the ACL check; otherwise a valid Chinese-named
     # research report is incorrectly classified as outside Track TC.
-    only=run(["git","-c","core.quotePath=false","diff","main","--name-only"]).splitlines()
-    allowed1="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
-    allowed2="formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/"
-    allowed3="formalization/ueot-core/docs/compression/theory_completion/unified_closure/"
-    other=[x for x in only if x!=allowed1 and not
-           (x.startswith(allowed2) or x.startswith(allowed3))]
-    if other:raise RuntimeError("tracked existing files outside owned research area: "+str(other))
+    baseline=baseline_main_ref()
+    only=run(["git","-c","core.quotePath=false","diff",baseline,"--name-only"]).splitlines()
+    validate_tc_local_scope(baseline,active_research_branch(),only)
     # Every local research stage must be explicitly assessed and no stage
     # may silently acquire an unconditional FULL claim via this L1 lane.
     stages=json.loads((HERE/"UMC_LOCAL_STAGE_RESULTS_V3.json").read_text())
@@ -169,7 +228,7 @@ def audit(full):
       # A committed receipt cannot embed its own HEAD SHA: that would
       # invalidate the receipt by changing the HEAD on every commit.
       # Exact verified Git identity is printed by the CLI after validation.
-      "canonical_main":run(["git","rev-parse","main"]).strip(),
+      "canonical_main":run(["git","rev-parse",baseline]).strip(),
       "research_modules":len(files),"UMC_theorems_and_lemmas":len(found),
       "source_PIDs_located":len(atlas["records"]),
       "source_provenance":dict(source_atlas),
@@ -185,7 +244,9 @@ def audit(full):
       "cloud_push":"FORBIDDEN_BY_THIS_LOCAL_TASK",
       "epistemic_scope":"Proof validity is conditional on actual theorem premises; file/declaration index is not an independent semantic audit."
     }
-    OUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n")
+    # Fast checks are transient: preserve the committed full-axiom receipt.
+    if full:
+        OUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n")
     return result
 
 if __name__=="__main__":
