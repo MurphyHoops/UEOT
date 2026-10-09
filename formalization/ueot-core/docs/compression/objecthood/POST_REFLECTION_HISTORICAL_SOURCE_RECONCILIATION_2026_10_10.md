@@ -79,10 +79,17 @@ docs/compression/objecthood/post-qt-tightening/.
 
 Exact blob identity is tested using git rev-parse on each of the five
 source paths at local/post-reflection-scientific-audit versus main.
-The original historical report is recoverable from the retained local
-branch or the locally verified archive
-.git/UEOT_DIVERGENT_BRANCH_ARCHIVE_20261010.bundle. The bundle is not a
-GitHub-hosted artifact.
+The original historical report and all historical commit objects are now
+also retrievable from the permanent GitHub archival tag
+archive/ueot-post-reflection-20261004, resolving to
+8654125fe648929e8e55d81a2d711ca09293f922. In any fresh clone:
+
+    git fetch origin tag archive/ueot-post-reflection-20261004
+    git show archive/ueot-post-reflection-20261004:formalization/ueot-core/docs/compression/POST_REFLECTION_LOCAL_INTEGRATION_AUDIT.md
+
+The source Git object and its SHA-1 are independent of any author's
+local branch. A local full-history bundle remains an optional extra
+recovery path, not the only evidence.
 
 **Promotion classification:** Additive provenance-only Track O L1;
 counted-core impact NONE. No existing source, ledger, frozen Core
