@@ -155,6 +155,63 @@ jobs:
           python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py
 
 
+      - name: Mandatory FKRG theorem reuse delta preflight (non-promotional)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py
+          python3 - <<'PYCODE'
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+
+          event_name = os.environ["GITHUB_EVENT_NAME"]
+          event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
+          if event_name == "pull_request":
+              base = event["pull_request"]["base"]["sha"]
+              head = event["pull_request"]["head"]["sha"]
+          elif event_name == "push":
+              head = os.environ["GITHUB_SHA"]
+              base = event.get("before") or head
+              if base == "0" * 40:
+                  base = head
+          else:
+              head = os.environ["GITHUB_SHA"]
+              base = head
+
+          for sha in (base, head):
+              if not re.fullmatch(r"[0-9a-f]{40}", sha):
+                  raise ValueError("untrusted/non-SHA commit identity")
+              p = subprocess.run(["git", "cat-file", "-e", sha + "^{commit}"],
+                                 check=False)
+              if p.returncode:
+                  subprocess.run(["git", "fetch", "--no-tags", "origin", sha],
+                                 check=True)
+
+          subprocess.run([
+              "python3",
+              "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+              "--repo-root", ".",
+              "--baseline-ref", base,
+              "--candidate-ref", head,
+              "--report", os.environ["RUNNER_TEMP"] + "/ueot-fkrg-new-theorems.json",
+              "--summary", os.environ["GITHUB_STEP_SUMMARY"],
+          ], check=True)
+          PYCODE
+
+
+      - name: Archive FKRG new-theorem reuse evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ueot-fkrg-reuse-${{ github.run_id }}
+          path: ${{ runner.temp }}/ueot-fkrg-new-theorems.json
+          if-no-files-found: warn
+          retention-days: 30
+
+
   proof:
     needs: [classify, governance]
     if: needs.classify.outputs.proof_required == 'true'
