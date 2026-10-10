@@ -29,7 +29,10 @@ namespace names containing whitespace are preserved as full Lean identifiers;
 residual namespace/section/end/mutual commands after a parsed scope
 fail closed rather than silently altering the next theorem FQN.
 Any theorem/lemma command outside supported lexical syntax FAILS CLOSED
-instead of vanishing from the review report. It produces:
+instead of vanishing from the review report. Lean character literals
+containing [ or ] are treated as data, not attribute delimiters; this
+includes escaped character forms inside standalone or inline attributes.
+It produces:
 
 - exact base and candidate source tree commit identifiers;
 - all changed UEOT Lean source paths and module/declaration counts;

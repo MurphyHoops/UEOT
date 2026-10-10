@@ -386,6 +386,7 @@ def attribute_bracket_delta(line):
     """Count actual attribute brackets, ignoring escaped-name/string content."""
     line = re.sub(r"«[^»]*»", "", line)
     line = re.sub(r'"(?:\\.|[^"\\])*"', "", line)
+    line = LEAN_CHAR_LITERAL.sub("", line)
     return line.count("[") - line.count("]")
 
 
@@ -432,6 +433,13 @@ def normalize_inline_attribute_brackets(line):
             out.append(ch)
             i += 1
             continue
+        # Brackets inside Lean character literals are DATA, including the
+        # common escaped forms '[', ']', '\\u{005D}', not attribute nesting.
+        char_literal = LEAN_CHAR_LITERAL.match(line, i)
+        if char_literal:
+            out.append(line[i:char_literal.end()])
+            i = char_literal.end()
+            continue
         if line.startswith("@[", i):
             j = i + 2
             depth = 1
@@ -454,6 +462,9 @@ def normalize_inline_attribute_brackets(line):
                     in_str = True
                 elif x == "«":
                     name = True
+                elif (character := LEAN_CHAR_LITERAL.match(line, j)):
+                    j = character.end()
+                    continue
                 elif x == "[":
                     depth += 1
                 elif x == "]":

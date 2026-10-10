@@ -589,6 +589,38 @@ class DeltaChecks(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_LEAN_SOURCE_SYMLINK"):
             pf.preflight(self.repo, self.base, head)
 
+    def test_standalone_attribute_character_closing_bracket_keeps_private(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "private\n@[custom ']']\n"
+              "theorem hidden : True := trivial\n"
+              "theorem public_result : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.public_result"})
+
+    def test_inline_attribute_character_brackets_keep_private(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[custom '['] private\n"
+              "theorem hidden_open : True := trivial\n"
+              "@[custom ']'] private\n"
+              "theorem hidden_close : True := trivial\n"
+              "theorem public_result : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.public_result"})
+
+    def test_attribute_escaped_unicode_char_brackets_do_not_change_depth(self):
+        self.assertEqual(pf.attribute_bracket_delta(r"@[custom '\\u{005B}']"), 0)
+        self.assertEqual(pf.attribute_bracket_delta(r"@[custom '\\u{005D}']"), 0)
+        self.assertEqual(
+            pf.normalize_inline_attribute_brackets(r"@[custom '\\u{005D}'] private"),
+            "@[] private",
+        )
+
     def test_private_before_multiline_attribute_remains_private(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\nprivate\n@[simp,\n  grind]\n"
