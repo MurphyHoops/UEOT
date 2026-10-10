@@ -155,52 +155,74 @@ jobs:
           python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py
 
 
-      - name: Mandatory FKRG theorem reuse delta preflight (non-promotional)
+      - name: Mandatory base-authorized FKRG theorem reuse delta preflight
         shell: bash
         run: |
           set -euo pipefail
-          python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py
           python3 - <<'PYCODE'
           import json
           import os
           from pathlib import Path
           import re
           import subprocess
+          import tempfile
 
-          event_name = os.environ["GITHUB_EVENT_NAME"]
-          event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
-          if event_name == "pull_request":
-              base = event["pull_request"]["base"]["sha"]
-              head = event["pull_request"]["head"]["sha"]
-          elif event_name == "push":
-              head = os.environ["GITHUB_SHA"]
-              base = event.get("before") or head
-              if base == "0" * 40:
+          event_name = os.environ['GITHUB_EVENT_NAME']
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          if event_name == 'pull_request':
+              base = event['pull_request']['base']['sha']
+              head = event['pull_request']['head']['sha']
+              pr_number = int(event['pull_request']['number'])
+          elif event_name == 'push':
+              head = os.environ['GITHUB_SHA']
+              base = event.get('before') or head
+              if base == '0' * 40:
                   base = head
+              pr_number = None
           else:
-              head = os.environ["GITHUB_SHA"]
-              base = head
+              base = head = os.environ['GITHUB_SHA']
+              pr_number = None
 
-          for sha in (base, head):
-              if not re.fullmatch(r"[0-9a-f]{40}", sha):
-                  raise ValueError("untrusted/non-SHA commit identity")
-              p = subprocess.run(["git", "cat-file", "-e", sha + "^{commit}"],
-                                 check=False)
-              if p.returncode:
-                  subprocess.run(["git", "fetch", "--no-tags", "origin", sha],
+          for rev in (base, head):
+              if not re.fullmatch('[0-9a-f]{40}', rev):
+                  raise ValueError('Invalid immutable Git commit identity')
+              present = subprocess.run(['git', 'cat-file', '-e', rev + '^{commit}'],
+                                       check=False).returncode == 0
+              if not present:
+                  source = ('refs/pull/' + str(pr_number) + '/head'
+                            if rev == head and pr_number is not None else rev)
+                  subprocess.run(['git', 'fetch', '--no-tags', 'origin', source],
+                                 check=True)
+                  subprocess.run(['git', 'cat-file', '-e', rev + '^{commit}'],
                                  check=True)
 
-          subprocess.run([
-              "python3",
-              "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
-              "--repo-root", ".",
-              "--baseline-ref", base,
-              "--candidate-ref", head,
-              "--report", os.environ["RUNNER_TEMP"] + "/ueot-fkrg-new-theorems.json",
-              "--summary", os.environ["GITHUB_STEP_SUMMARY"],
-          ], check=True)
+          # Compile/run the AUTHORITATIVE base-revision parser and regression
+          # suite from an isolated Git worktree. The PR head may modify its
+          # own scripts but those untrusted bytes cannot bypass this step.
+          with tempfile.TemporaryDirectory(prefix='ueot-fkrg-authority-',
+                                           dir=os.environ['RUNNER_TEMP']) as dirname:
+              source_root = Path(dirname) / 'base'
+              subprocess.run(['git', 'worktree', 'add', '--detach',
+                              str(source_root), base], check=True)
+              try:
+                  path = Path('formalization/ueot-core/docs/compression/'
+                              'theory_completion/knowledge/reuse')
+                  subprocess.run(['python3', str(source_root / path /
+                                                   'test_pr_preflight.py')],
+                                 cwd=source_root, check=True)
+                  subprocess.run([
+                      'python3', str(source_root / path / 'pr_preflight.py'),
+                      '--repo-root', os.environ['GITHUB_WORKSPACE'],
+                      '--baseline-ref', base,
+                      '--candidate-ref', head,
+                      '--report', os.environ['RUNNER_TEMP'] +
+                                  '/ueot-fkrg-new-theorems.json',
+                      '--summary', os.environ['GITHUB_STEP_SUMMARY'],
+                  ], cwd=source_root, check=True)
+              finally:
+                  subprocess.run(['git', 'worktree', 'remove', '--force',
+                                  str(source_root)], check=True)
           PYCODE
-
 
       - name: Archive FKRG new-theorem reuse evidence
         if: always()
