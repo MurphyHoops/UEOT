@@ -262,6 +262,34 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"«foo bar».result"})
 
+    def test_private_modifier_on_prior_line_does_not_expose_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nprivate\ntheorem hidden : True := trivial\n"
+              "theorem visible : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.visible"})
+
+    def test_private_prior_line_section_does_not_expose_members(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nprivate\nsection\n"
+              "theorem inside : True := trivial\nend\n"
+              "theorem public_after : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.public_after"})
+
+    def test_escaped_dotted_leaf_name_is_not_split_mid_identifier(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem «alpha.beta.gamma» : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        leaf = result["new_public_source_theorems"][0]
+        self.assertEqual(leaf["symbol"], "N.«alpha.beta.gamma»")
+        self.assertEqual(leaf["short_name"], "«alpha.beta.gamma»")
+
     def test_multiple_theorems_on_one_physical_line_fail_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"
