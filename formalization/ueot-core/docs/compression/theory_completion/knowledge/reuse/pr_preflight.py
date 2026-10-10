@@ -512,9 +512,12 @@ def declarations(path, source):
     multiline_attribute_depth = 0
     # Lean permits a declaration modifier on its own physical line:
     # "private\ntheorem foo" must not create a publicly searchable foo.
+    # Lean permits an ORDERED LIST of standalone modifiers on one line,
+    # possibly with inline attributes: "private noncomputable" and
+    # "@[simp] private". Retain the entire modifier sequence so a
+    # subsequently introduced theorem does not accidentally become public.
     standalone_modifier = re.compile(
-        r"^\s*(private|public|protected|noncomputable|nonrec|"
-        r"unsafe|meta|scoped|local)\s*$"
+        r"^\s*((?:" + PR_MODIFIER + r"\s+)*" + PR_MODIFIER + r")\s*$"
     )
     standalone_attribute = re.compile(r"^\s*(" + PR_ATTRIBUTE_TOKEN + r")\s*$")
     rows = logical_multiline_command_headers(code, path)

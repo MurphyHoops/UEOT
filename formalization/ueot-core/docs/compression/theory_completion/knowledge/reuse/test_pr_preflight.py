@@ -77,6 +77,46 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual(result["new_public_source_theorem_count"], 0)
         self.assertIn(PACKAGE + "Previous.lean", result["changed_lean_paths"])
 
+    def test_standalone_private_nonrec_chain_not_public(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nprivate noncomputable\n"
+              "theorem hidden_chain : True := trivial\n"
+              "theorem public_result : True := trivial\nend N\n")
+        head = self.commit()
+        data = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in data["new_public_source_theorems"]},
+            {"N.public_result"}
+        )
+
+    def test_attribute_standalone_private_modifiers_not_public(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n@[simp] private\n"
+              "theorem hidden_attribute : True := trivial\n"
+              "lemma visible : True := trivial\nend N\n")
+        head = self.commit()
+        data = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in data["new_public_source_theorems"]},
+            {"N.visible"}
+        )
+
+    def test_private_to_public_transition_with_modifier_chain_is_new(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nprivate noncomputable\n"
+              "theorem previously_hidden : True := trivial\nend N\n")
+        base = self.commit("private base")
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nnoncomputable\n"
+              "theorem previously_hidden : True := trivial\nend N\n")
+        head = self.commit("public candidate")
+        data = pf.preflight(self.repo, base, head)
+        self.assertEqual(data["new_public_source_theorem_count"], 1)
+        self.assertEqual(
+            data["new_public_source_theorems"][0]["symbol"],
+            "N.previously_hidden"
+        )
+
     def test_private_is_not_proposed_as_public_reuse(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\nprivate theorem hidden_helper : True := trivial\n"
