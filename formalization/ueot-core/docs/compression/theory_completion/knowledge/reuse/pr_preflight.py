@@ -51,10 +51,12 @@ PR_UNICODE_SEGMENT = r"(?:«[^»\n]+»|[^\W\d][\w'!?]*)"
 PR_UNICODE_NAME = re.compile(
     PR_UNICODE_SEGMENT + r"(?:\." + PR_UNICODE_SEGMENT + r")*"
 )
-# Open Foo in theorem is a scoped command wrapper, not a namespace frame.
-# Strip this prefix for declaration recognition, preserve the ambient ns.
-SCOPED_OPEN_THEOREM = re.compile(
-    r"^\s*open\s+[^\n]*?\bin\s+"
+# Lean scoped command syntax can locally alter declaration context:
+# open Foo in theorem, include h in theorem, omit h in lemma, and similar
+# wrappers. Consume the command prefix before the terminal public command
+# but do not mutate the enclosing namespace stack.
+SCOPED_IN_PUBLIC = re.compile(
+    r"^\s*[^\n]+?\bin\s+"
     r"(?=(?:" + PR_MODIFIER + r"\s+)*(?:theorem|lemma)\b)"
 )
 
@@ -122,7 +124,7 @@ def declarations(path, source):
                 stack.append(ns)
             elif op == "end" and stack:
                 ns = stack.pop()
-        wrapper = SCOPED_OPEN_THEOREM.match(line)
+        wrapper = SCOPED_IN_PUBLIC.match(line)
         scan_line = line[wrapper.end():] if wrapper else line
         start = PUBLIC_DECL_START.match(scan_line)
         if start is None:

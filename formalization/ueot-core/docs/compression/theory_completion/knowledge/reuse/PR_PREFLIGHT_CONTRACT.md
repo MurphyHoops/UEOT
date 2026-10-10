@@ -20,7 +20,8 @@ namespace and declaration recognizers, with PR-specific handling for
 noncomputable/public/meta section scopes (including attribute-prefixed
 public meta section), public/nonrec declaration modifiers, and complete
 Unicode-qualified Lean theorem names including !/? suffixes, scoped
-open-in theorem command wrappers and explicit _root_. qualification.
+scoped in-command theorem/lemma wrappers (open/include/omit)
+and explicit _root_. qualification.
 Any theorem/lemma command outside supported lexical syntax FAILS CLOSED
 instead of vanishing from the review report. It produces:
 
@@ -75,7 +76,8 @@ private theorem exclusion, duplicate public fully-qualified names,
 deleted Lean modules, invalid revisions, nested noncomputable section
 closures, public/nonrec declaration modifiers, public section/attribute
 section and meta section scope handling, full Unicode hierarchical
-names and !/? suffixes, open-in scoped theorem commands, explicit
+names and !/? suffixes, scoped in-command theorem wrappers,
+including include/omit, explicit
 _root_. qualified names, valid default CLI repo root, unsupported
 public theorem syntax, and uncommitted worktree separation. No real UEOT Lean file is edited by the tests.
 

@@ -177,6 +177,18 @@ class DeltaChecks(unittest.TestCase):
                          {"UEOT.New.open_scoped_result",
                           "UEOT.New.open_scoped_public"})
 
+    def test_include_and_omit_scoped_command_wrappers_are_discovered(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\n"
+              "variable (h : True)\n"
+              "include h in theorem included : True := h\n"
+              "omit h in lemma omitted : True := trivial\n"
+              "end UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"UEOT.New.included", "UEOT.New.omitted"})
+
     def test_explicit_root_qualified_theorem_does_not_prepend_namespace(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\n"
