@@ -194,6 +194,14 @@ def declarations(path, source):
         scan_line = line[wrapper.end():] if wrapper else line
         start = PUBLIC_DECL_START.match(scan_line)
         if start is None:
+            # Lean command delimiters are not guaranteed to coincide with
+            # physical newline boundaries. Any otherwise-unparsed theorem
+            # token is a potential nested/adjacent public command: reject
+            # instead of claiming that no new theorem was introduced.
+            if re.search(r"\b(?:theorem|lemma)\b", line):
+                raise RuntimeError(
+                    f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
+                )
             continue
         kind = start.group(1)
         tail = scan_line[start.end():].lstrip()

@@ -204,6 +204,20 @@ class DeltaChecks(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
             pf.preflight(self.repo, self.base, head)
 
+    def test_theorem_after_unparsed_variable_command_fails_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nvariable (x : Nat) theorem fresh : True := trivial\nend N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
+            pf.preflight(self.repo, self.base, head)
+
+    def test_lemma_after_unparsed_helper_command_fails_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ndef helper : True := trivial lemma fresh : True := trivial\nend N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_multiple_theorems_on_one_physical_line_fail_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"

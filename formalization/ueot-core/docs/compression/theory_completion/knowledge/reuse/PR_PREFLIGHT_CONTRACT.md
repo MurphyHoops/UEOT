@@ -80,8 +80,8 @@ section and meta section scope handling, full Unicode hierarchical
 names and !/? suffixes, scoped in-command theorem wrappers,
 including include/omit, explicit
 _root_. qualified names, qualified end B.C consuming two namespace
-components, same-line consecutive public theorem/lemma commands fail closed even after
-a parsed declaration, qualified end A.B can close nested sections A and B,
+components, same-line theorem/lemma commands fail closed even after a parsed
+declaration or after an otherwise-unparsed prefix command, qualified end A.B can close nested sections A and B,
 valid CLI root, unsupported
 public theorem syntax, and uncommitted worktree separation. No real UEOT Lean file is edited by the tests.
 
