@@ -126,7 +126,23 @@ def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = no_lean_comments(source).splitlines()
     ns, stack, found = "", [], []
+    pending_modifiers = []
+    # Lean permits a declaration modifier on its own physical line:
+    # "private\ntheorem foo" must not create a publicly searchable foo.
+    standalone_modifier = re.compile(
+        r"^\s*(private|public|protected|noncomputable|nonrec|"
+        r"unsafe|meta|scoped|local)\s*$"
+    )
     for line_number, line in enumerate(code, 1):
+        if not line.strip():
+            continue
+        modifier = standalone_modifier.match(line)
+        if modifier:
+            pending_modifiers.append(modifier.group(1))
+            continue
+        if pending_modifiers:
+            line = " ".join(pending_modifiers) + " " + line.lstrip()
+            pending_modifiers.clear()
         if MUTUAL_START.match(line):
             stack.append(("mutual", ns, ""))
             if contains_command_token(line[MUTUAL_START.match(line).end():]):
@@ -277,13 +293,17 @@ def declarations(path, source):
             raise RuntimeError("INVALID_PARSED_DECLARATION")
         found.append({
             "symbol": name,
-            "short_name": local_name.rsplit(".", 1)[-1],
+            # Dots enclosed by «...» are part of ONE Lean identifier,
+            # not separators of its qualified name.
+            "short_name": qualified_parts(local_name)[-1],
             "kind": kind,
             "path": path,
             "line": line_number,
             "header_preview": " ".join(code[line_number - 1:line_number + 5])[:600],
             "origin": "VENDORED_ADAPTED_UPSTREAM" if "/ThirdParty/" in path else "UEOT_MAINTAINED",
         })
+    if pending_modifiers:
+        raise RuntimeError(f"UNTERMINATED_STANDALONE_MODIFIER: {path}")
     return found
 
 
