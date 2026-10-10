@@ -107,3 +107,12 @@ Validated against pinned Lean using actual lake lean:
 - The valid sequential closing end B; end; end A restores the namespace.
 
 Unrecognized command syntax must fail closed rather than omitting proofs.
+
+
+## Git symlinks and multiline attributes
+
+The PR census rejects symlinks in the UEOT source archive, including
+tracked Lean file aliases, so checkout-resolved modules cannot be silently
+absent from the audit. Standalone privacy prefixes are retained across
+multiline attribute blocks until the subsequent theorem is parsed.
+Unsupported syntax on a closing attribute line fails closed.

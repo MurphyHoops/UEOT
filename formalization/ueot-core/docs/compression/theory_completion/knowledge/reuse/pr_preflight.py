@@ -109,6 +109,13 @@ def corpus(repo, sha):
     entries = {}
     with tarfile.open(fileobj=io.BytesIO(archive), mode="r:") as stream:
         for member in stream:
+            # A Git symlink is not a regular tar file, but checkout may
+            # resolve it into compilable Lean code. Never omit such a module
+            # from the public-declaration census without telling the caller.
+            if member.issym() or member.islnk():
+                raise RuntimeError(
+                    f"UNSUPPORTED_LEAN_SOURCE_SYMLINK: {member.name}"
+                )
             if not member.isfile() or not member.name.endswith(".lean"):
                 continue
             if member.name != LEAN_ROOT and not member.name.startswith(LEAN_PREFIX):
@@ -127,6 +134,7 @@ def declarations(path, source):
     code = no_lean_comments(source).splitlines()
     ns, stack, found = "", [], []
     pending_modifiers = []
+    multiline_attribute_depth = 0
     # Lean permits a declaration modifier on its own physical line:
     # "private\ntheorem foo" must not create a publicly searchable foo.
     standalone_modifier = re.compile(
@@ -136,6 +144,26 @@ def declarations(path, source):
     standalone_attribute = re.compile(r"^\s*(@\[[^\]\n]*\])\s*$")
     for line_number, line in enumerate(code, 1):
         if not line.strip():
+            continue
+        if multiline_attribute_depth:
+            multiline_attribute_depth += line.count("[") - line.count("]")
+            if multiline_attribute_depth < 0:
+                raise RuntimeError(
+                    f"MALFORMED_MULTILINE_ATTRIBUTE: {path}:{line_number}"
+                )
+            if multiline_attribute_depth == 0 and not line.rstrip().endswith("]"):
+                # A command after a closing attribute on its last physical
+                # line is not supported by this lexical scanner.
+                raise RuntimeError(
+                    f"UNSUPPORTED_MULTILINE_ATTRIBUTE_TAIL: {path}:{line_number}"
+                )
+            continue
+        # A multiline attribute can appear between a standalone private
+        # modifier and its actual public-command syntax. Keep privacy until
+        # the complete attribute is consumed, not just its first line.
+        if line.lstrip().startswith("@[") and line.count("[") > line.count("]"):
+            multiline_attribute_depth = line.count("[") - line.count("]")
+            pending_modifiers.append("@[]")
             continue
         attribute = standalone_attribute.match(line)
         if attribute:
@@ -311,6 +339,8 @@ def declarations(path, source):
             "header_preview": " ".join(code[line_number - 1:line_number + 5])[:600],
             "origin": "VENDORED_ADAPTED_UPSTREAM" if "/ThirdParty/" in path else "UEOT_MAINTAINED",
         })
+    if multiline_attribute_depth:
+        raise RuntimeError(f"UNTERMINATED_MULTILINE_ATTRIBUTE: {path}")
     if pending_modifiers:
         raise RuntimeError(f"UNTERMINATED_STANDALONE_MODIFIER: {path}")
     return found

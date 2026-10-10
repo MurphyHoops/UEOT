@@ -316,6 +316,30 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.visible"})
 
+    def test_committed_lean_symlink_fails_closed(self):
+        target = self.repo / PACKAGE / "Linked.lean"
+        target.symlink_to("Previous.lean")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_LEAN_SOURCE_SYMLINK"):
+            pf.preflight(self.repo, self.base, head)
+
+    def test_private_before_multiline_attribute_remains_private(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nprivate\n@[simp,\n  grind]\n"
+              "theorem hidden : True := trivial\n"
+              "theorem visible : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.visible"})
+
+    def test_multiline_attribute_last_line_with_theorem_fails_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n@[simp,\n grind] theorem hidden : True := trivial\nend N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTILINE_ATTRIBUTE_TAIL"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_standalone_attribute_before_public_theorem_is_visible(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n@[simp]\ntheorem public_result : True := trivial\nend N\n")
