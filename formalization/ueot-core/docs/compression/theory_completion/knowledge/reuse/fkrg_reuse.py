@@ -35,19 +35,19 @@ EVIDENCE_SHA = {
 # Triage labels are evidence classifications, not proof of unique scientific
 # minimality. Only ledger-counted M-TC/M-OI source-facing mappings use that label.
 ROLES = {
-    "p_goa_01_via_occupationLimit": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
-    "feller_invariant_of_occupation_tendsto": "COUNTED_GENERATOR_FAMILY_SUPPORT_LEMMA",
-    "p_per_02_via_occupationLimit": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
-    "processInterface_approx_via_twoStage": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
-    "processInterface_exact_source_via_twoStage": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
-    "dynamicsCrossScale_approx_via_twoStage": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
-    "dynamicsCrossScale_exact_via_factor": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
-    "p_dyn_03_via_multiplicative_chain": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
-    "p_ali_02_core_via_mva": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
-    "p_ali_02_via_mva": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
-    "bellman_valueError_le_residual_via_mcf": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
-    "bellman_fixedPoint_unique_via_mcf": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
-    "flip_physical_seed_cannot_select_two_programs": "SAME_NO_GO_INTERFACE_ALIAS",
+    "UEOT.V3.Compression.OccupationLimitInvariance.p_goa_01_via_occupationLimit": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
+    "UEOT.V3.Compression.OccupationLimitInvariance.feller_invariant_of_occupation_tendsto": "COUNTED_GENERATOR_FAMILY_SUPPORT_LEMMA",
+    "UEOT.V3.Compression.OccupationLimitInvariance.p_per_02_via_occupationLimit": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
+    "UEOT.V3.Compression.TransportCertificate.processInterface_approx_via_twoStage": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
+    "UEOT.V3.Compression.TransportCertificate.processInterface_exact_source_via_twoStage": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
+    "UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_approx_via_twoStage": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
+    "UEOT.V3.Compression.TransportCertificate.dynamicsCrossScale_exact_via_factor": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
+    "UEOT.V3.Compression.TransportCertificate.p_dyn_03_via_multiplicative_chain": "COUNTED_GENERATOR_FAMILY_REDERIVATION",
+    "UEOT.V3.Compression.ValueAlignment.p_ali_02_core_via_mva": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
+    "UEOT.V3.Compression.ValueAlignment.p_ali_02_via_mva": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
+    "UEOT.V3.Compression.ContractiveFixedPoint.bellman_valueError_le_residual_via_mcf": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
+    "UEOT.V3.Compression.ContractiveFixedPoint.bellman_fixedPoint_unique_via_mcf": "UNCOUNTED_RETAINED_ADAPTER_EXPERIMENT",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.flip_physical_seed_cannot_select_two_programs": "SAME_NO_GO_INTERFACE_ALIAS",
 }
 CANONICAL_TV_HELPER = "UEOT.V3.InformationPacking.tvDist_symm"
 DUPLICATED_TV_HELPER = "UEOT.V3.StatisticalDefect.tvDist_symm"
@@ -132,7 +132,7 @@ def role(name: str):
         return "LOW_RISK_DUPLICATE_HELPER_IMPLEMENTATION"
     if name == CANONICAL_TV_HELPER:
         return "PREFERRED_TV_HELPER_IMPLEMENTATION"
-    return ROLES.get(name.rsplit(".", 1)[-1], "NO_TRIAGE_CLASSIFICATION")
+    return ROLES.get(name, "NO_TRIAGE_CLASSIFICATION")
 
 
 def explain(data: dict, name: str) -> dict:
