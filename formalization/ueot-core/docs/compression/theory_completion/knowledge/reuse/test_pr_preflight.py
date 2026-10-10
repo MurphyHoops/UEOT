@@ -316,6 +316,42 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.visible"})
 
+    def test_attribute_with_escaped_closing_bracket_not_truncated(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              '@[deprecated «old]name» (since := "2026-10-10")] '
+              "theorem fresh : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.fresh"}
+        )
+
+    def test_attribute_with_escaped_private_and_bracket_remains_public(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              '@[deprecated «private]token» (since := "2026-10-10")] '
+              "theorem fresh : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.fresh"}
+        )
+
+    def test_standalone_attribute_with_escaped_bracket(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              '@[deprecated «old]name» (since := "2026-10-10")]\n'
+              "theorem fresh : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.fresh"}
+        )
+
     def test_deprecated_attribute_containing_escaped_private_is_public(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"

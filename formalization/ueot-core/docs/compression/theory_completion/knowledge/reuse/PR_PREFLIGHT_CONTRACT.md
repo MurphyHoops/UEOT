@@ -155,3 +155,11 @@ physical line. The PR scanner joins required name continuations, and
 optionally named section/end continuations only when the next indented
 line is an identifier rather than a command. An unindented namespace
 continuation is invalid in the pinned Lean compiler and fails closed.
+
+
+Attribute delimiter safety: the PR-specific attribute token matcher recognizes
+closing brackets inside Lean escaped identifiers and quoted strings as payload,
+not attribute endings. Standalone attributes, inline declaration modifiers,
+privacy classification and multiline attribute depth use the same lexically
+aware interpretation. Valid attribute cases are compiled in the pinned Lean
+toolchain, with committed Git-tree regression fixtures.

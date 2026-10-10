@@ -35,8 +35,14 @@ SCHEMA = "FKRG_PR_DIFF_PREFLIGHT_V1"
 # Modifiers apply independently to declarations and scope openers.
 # In particular both public section and @[expose] public section create
 # nested scope frames that must match their later end command.
+# Attribute terminators are NOT raw closing brackets inside Lean escaped
+# identifiers or quoted attribute arguments. Keep a single shared token
+# grammar for modifier, privacy and standalone-attribute recognition.
+PR_ATTRIBUTE_TOKEN = (
+    r'@\[(?:«[^»]*»|"(?:\\.|[^"\\\n])*"|[^\]\n])*\]'
+)
 PR_MODIFIER = (
-    r"(?:@\[[^\]\n]*\]|public|nonrec|private|protected|"
+    r"(?:" + PR_ATTRIBUTE_TOKEN + r"|public|nonrec|private|protected|"
     r"noncomputable|unsafe|irreducible|partial|scoped|local|meta)"
 )
 PR_SCOPE = re.compile(
@@ -74,7 +80,7 @@ def contains_command_token(line):
 def has_private_modifier(prefix):
     # An attribute payload is NOT a modifier token. In particular,
     # @[deprecated «private» (...)] does not create a private theorem.
-    without_attributes = re.sub(r"@\[[^\]\n]*\]", " ", prefix)
+    without_attributes = re.sub(PR_ATTRIBUTE_TOKEN, " ", prefix)
     return "private" in without_attributes.split()
 
 
@@ -367,6 +373,14 @@ def logical_multiline_command_headers(lines, path):
         i += 1
 
 
+
+def attribute_bracket_delta(line):
+    """Count actual attribute brackets, ignoring escaped-name/string content."""
+    line = re.sub(r"«[^»]*»", "", line)
+    line = re.sub(r'"(?:\\.|[^"\\])*"', "", line)
+    return line.count("[") - line.count("]")
+
+
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = lexical_code_preserving_escaped_names(source, path)
@@ -379,12 +393,12 @@ def declarations(path, source):
         r"^\s*(private|public|protected|noncomputable|nonrec|"
         r"unsafe|meta|scoped|local)\s*$"
     )
-    standalone_attribute = re.compile(r"^\s*(@\[[^\]\n]*\])\s*$")
+    standalone_attribute = re.compile(r"^\s*(" + PR_ATTRIBUTE_TOKEN + r")\s*$")
     for line_number, line in logical_multiline_command_headers(code, path):
         if not line.strip():
             continue
         if multiline_attribute_depth:
-            multiline_attribute_depth += line.count("[") - line.count("]")
+            multiline_attribute_depth += attribute_bracket_delta(line)
             if multiline_attribute_depth < 0:
                 raise RuntimeError(
                     f"MALFORMED_MULTILINE_ATTRIBUTE: {path}:{line_number}"
@@ -399,8 +413,8 @@ def declarations(path, source):
         # A multiline attribute can appear between a standalone private
         # modifier and its actual public-command syntax. Keep privacy until
         # the complete attribute is consumed, not just its first line.
-        if line.lstrip().startswith("@[") and line.count("[") > line.count("]"):
-            multiline_attribute_depth = line.count("[") - line.count("]")
+        if line.lstrip().startswith("@[") and attribute_bracket_delta(line) > 0:
+            multiline_attribute_depth = attribute_bracket_delta(line)
             pending_modifiers.append("@[]")
             continue
         attribute = standalone_attribute.match(line)
