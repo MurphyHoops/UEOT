@@ -493,6 +493,13 @@ def normalize_inline_attribute_brackets(line):
             if depth == 0:
                 out.append("@[]")
                 i = j
+                # A Lean attribute token closes at ], so @[simp]private
+                # is valid adjacency of attribute and privacy modifier.
+                # Insert a lexical separator only when the original text
+                # has no whitespace. Keyword-to-keyword boundaries are
+                # still governed by the regular modifier parser.
+                if i < len(line) and not line[i].isspace():
+                    out.append(" ")
                 continue
             # This is a multiline attribute. Retain the original prefix so
             # the pre-existing depth tracking can join or reject correctly.

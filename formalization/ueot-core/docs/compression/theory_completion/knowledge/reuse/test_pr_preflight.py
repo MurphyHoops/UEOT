@@ -612,6 +612,45 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.visible_after_quote"})
 
+    def test_attribute_immediately_adjacent_to_private_keeps_hidden(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[simp]private\n"
+              "theorem hidden : True := trivial\n"
+              "theorem visible : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.visible"})
+
+    def test_adjacent_attribute_and_private_to_public_transition(self):
+        write(self.repo, PACKAGE + "Previous.lean",
+              "namespace UEOT.Example\n"
+              "@[simp]private\n"
+              "theorem reused_bound (x : Nat) : x = x := by rfl\n"
+              "theorem foundational_action (x : Nat) : x = x := by rfl\n"
+              "end UEOT.Example\n")
+        baseline = self.commit("base with private theorem")
+        write(self.repo, PACKAGE + "Previous.lean",
+              "namespace UEOT.Example\n"
+              "theorem reused_bound (x : Nat) : x = x := by rfl\n"
+              "theorem foundational_action (x : Nat) : x = x := by rfl\n"
+              "end UEOT.Example\n")
+        candidate = self.commit("promote former private to public")
+        result = pf.preflight(self.repo, baseline, candidate)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"UEOT.Example.reused_bound"})
+
+    def test_multiple_adjacent_attribute_tokens_before_public_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[simp]@[grind]public theorem visible : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.visible"})
+
     def test_standalone_attribute_character_closing_bracket_keeps_private(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"

@@ -184,3 +184,8 @@ Balanced nested inline attribute modifiers are normalized before multiline theor
 Preserve escaped-name contents by joining multiline identifiers before nested attribute normalization; the literal sequence @[bar] inside an escaped declaration name is never interpreted as an attribute.
 
 Standalone declaration modifiers are parsed as an ordered sequence, including attribute and private combinations; changing a hidden declaration into public is a newly exported theorem and must be reported.
+
+Attribute adjacency: Lean permits an attribute immediately followed by a
+visibility modifier, e.g. @[simp]private. The normalized lexical stream
+inserts a separator after a completed attribute, not between keyword
+modifiers, preventing hidden/private declarations being indexed as public.
