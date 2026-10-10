@@ -32,13 +32,20 @@ SCHEMA = "FKRG_PR_DIFF_PREFLIGHT_V1"
 # noncomputable section openers. Do NOT modify that pinned parser in L1:
 # extend the PR-specific scanner and reject any public theorem line that
 # neither parser can represent without silently dropping the theorem.
+# Modifiers apply independently to declarations and scope openers.
+# In particular both public section and @[expose] public section create
+# nested scope frames that must match their later end command.
+PR_MODIFIER = (
+    r"(?:@\[[^\]\n]*\]|public|nonrec|private|protected|"
+    r"noncomputable|unsafe|irreducible|partial|scoped|local)"
+)
 PR_SCOPE = re.compile(
-    r"^\s*(?:(?:noncomputable|private|protected)\s+)*"
+    r"^\s*(?:" + PR_MODIFIER + r"\s+)*"
     r"(namespace|section|end)\b(?:\s+(\S+))?"
 )
 PUBLIC_DECL_START = re.compile(
-    r"^\s*(?:(?:@\[[^\]\n]*\]|private|protected|noncomputable|"
-    r"unsafe|irreducible|partial)\s+)*(theorem|lemma)\b"
+    r"^\s*(?:" + PR_MODIFIER + r"\s+)*"
+    r"(theorem|lemma)\b"
 )
 PR_UNICODE_SEGMENT = r"(?:«[^»\n]+»|[^\W\d]\w*(?:'\w*)*)"
 PR_UNICODE_NAME = re.compile(

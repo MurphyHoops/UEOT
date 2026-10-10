@@ -108,6 +108,35 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"UEOT.New.τ_bound", "UEOT.New.θεώρημα"})
 
+    def test_public_and_nonrec_declarations_not_silently_dropped(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\npublic theorem visible : True := trivial\n"
+              "nonrec theorem visible_nonrec : True := trivial\n"
+              "@[simp] public lemma visible_simp : True := trivial\n"
+              "end UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"UEOT.New.visible", "UEOT.New.visible_nonrec", "UEOT.New.visible_simp"}
+        )
+
+    def test_public_and_attribute_section_closures_preserve_namespace(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\n"
+              "public section\ntheorem inside_public : True := trivial\nend\n"
+              "@[expose] public section\n"
+              "lemma inside_expose : True := trivial\nend\n"
+              "theorem after_public_sections : True := trivial\n"
+              "end UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"UEOT.New.inside_public", "UEOT.New.inside_expose",
+             "UEOT.New.after_public_sections"}
+        )
+
     def test_unparsed_public_lemma_fails_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\ntheorem : True := trivial\nend UEOT.New\n")

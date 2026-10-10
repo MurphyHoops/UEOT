@@ -17,7 +17,9 @@ pr_preflight.py reads the full Lean source collection from the two Git
 commits through git archive; it does not use working-tree files for either
 tree. The declaration scanner reuses the existing FKRG comment-removal,
 namespace and declaration recognizers, with PR-specific handling for
-noncomputable section scopes and Unicode Lean public identifier spelling.
+noncomputable/public section scopes (including attribute-prefixed
+public section), public/nonrec declaration modifiers, and Unicode Lean
+public identifier spelling.
 Any theorem/lemma command outside supported lexical syntax FAILS CLOSED
 instead of vanishing from the review report. It produces:
 
@@ -70,7 +72,8 @@ baseline and candidate objects. They cover fresh theorem detection,
 cross-namespace same short names, unchanged public names after proof edit,
 private theorem exclusion, duplicate public fully-qualified names,
 deleted Lean modules, invalid revisions, nested noncomputable section
-closures, Unicode and attribute-prefixed theorem identifiers, unsupported
+closures, public/nonrec declaration modifiers, public section/attribute
+section scope handling, Unicode and attribute-prefixed theorem identifiers, unsupported
 public theorem syntax, and uncommitted worktree separation. No real UEOT Lean file is edited by the tests.
 
 On future changes to the parser, treat all lexical results as candidates
