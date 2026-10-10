@@ -160,6 +160,29 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.fresh"})
 
+    def test_nested_attribute_with_multiline_theorem_name(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[aesop safe apply (rule_sets := [foo])] theorem\n"
+              "  fresh : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.fresh"})
+
+    def test_nested_attribute_with_multiline_universe_parameters(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[aesop safe apply (rule_sets := [foo])] theorem fresh.{\n"
+              "  u,\n"
+              "  v} (α : Sort u) (β : Sort v) : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.fresh"})
+
     def test_nested_brackets_in_attribute_quotes_and_escaped_names(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"

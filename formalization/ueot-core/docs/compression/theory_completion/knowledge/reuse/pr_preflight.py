@@ -501,6 +501,9 @@ def logical_universe_parameter_lines(rows, path):
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = lexical_code_preserving_escaped_names(source, path)
+    # Header joining must see balanced nested attributes normalized already.
+    # Otherwise attribute-bearing declarations with multiline names are missed.
+    code = [normalize_inline_attribute_brackets(line) for line in code]
     ns, stack, found = "", [], []
     pending_modifiers = []
     multiline_attribute_depth = 0
