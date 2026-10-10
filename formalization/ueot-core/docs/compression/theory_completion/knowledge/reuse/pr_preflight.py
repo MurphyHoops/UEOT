@@ -78,6 +78,14 @@ def has_private_modifier(prefix):
     return "private" in without_attributes.split()
 
 
+# Char literals inside a syntax quotation must not alter parentheses depth.
+# Recognize single Unicode chars and Lean-style escaped character forms;
+# a bare apostrophe in an identifier is not a char literal.
+LEAN_CHAR_LITERAL = re.compile(
+    r"'(?:[^'\\\n]|\\(?:x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|u\{[0-9a-fA-F]+\}|.))'"
+)
+
+
 def mask_syntax_quotations(lines, path):
     # Lean command quotations are syntax DATA, never executable commands.
     # Scan across physical lines, masking all quotation contents while
@@ -107,6 +115,13 @@ def mask_syntax_quotations(lines, path):
                         quoted_string = False
                 elif ch == '"':
                     quoted_string = True
+                elif ch == "'":
+                    char_match = LEAN_CHAR_LITERAL.match(line, i)
+                    if char_match:
+                        for j in range(i, char_match.end()):
+                            result[j] = " "
+                        i = char_match.end()
+                        continue
                 elif ch == "(":
                     depth += 1
                 elif ch == ")":

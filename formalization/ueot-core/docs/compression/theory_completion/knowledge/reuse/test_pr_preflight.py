@@ -337,6 +337,27 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.real_public"})
 
+    def test_character_literals_inside_quoted_syntax_do_not_change_depth(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "def quoted_open : Lean.Syntax := " + chr(96) + "(term| '(')\n"
+              "def quoted_close : Lean.Syntax := " + chr(96) + "(term| ')')\n"
+              "theorem real_public : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.real_public"})
+
+    def test_escaped_char_with_paren_does_not_terminate_syntax_quote(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "def quoted : Lean.Syntax := " + chr(96) + "(term| '\\'')\n"
+              "theorem real_public : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.real_public"})
+
     def test_multiline_lean_command_quotation_is_not_a_real_theorem(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"

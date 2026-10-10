@@ -125,3 +125,10 @@ payloads, not substring matches. Quoted Lean command syntax is source data,
 not an executable theorem declaration; single- and multiline quotation
 contents are masked before lexical command-token detection. Unsupported
 unterminated quotations fail closed.
+
+## Syntax quote hardening
+
+The lexical scanner masks syntax quotations as inert source and separately
+recognizes quoted string and Lean character literals, including parentheses
+inside character literals. These must not affect quotation nesting depth or
+create phantom public declarations. Unbalanced quotations fail closed.
