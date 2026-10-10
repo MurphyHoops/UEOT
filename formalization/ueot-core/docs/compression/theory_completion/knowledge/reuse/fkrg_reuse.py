@@ -111,7 +111,27 @@ def verify_evidence_files():
             raise RuntimeError(f"AUDIT_EVIDENCE_DRIFT: {name}: {actual} != {expected}")
 
 
+def live_source_paths() -> set[str]:
+    core = REPO / "formalization/ueot-core"
+    # Match the FKRG v1 and compiled-census source universe exactly:
+    # public root + every recursively present UEOT package module.
+    all_files = [core / "UEOT.lean", *(core / "UEOT").rglob("*.lean")]
+    return {p.relative_to(REPO).as_posix() for p in all_files if p.is_file()}
+
+
 def verify_sources(modules: list[dict]):
+    # Source hashes alone cannot catch a newly added Lean module. The exact
+    # pathname membership is a separate, mandatory freshness condition.
+    recorded = {row["path"] for row in modules}
+    current = live_source_paths()
+    if len(recorded) != len(modules) or recorded != current:
+        added = sorted(current - recorded)
+        removed = sorted(recorded - current)
+        raise RuntimeError(
+            "STALE_AUDIT_SOURCE_SET: " +
+            json.dumps({"new_live_modules": added[:16],
+                        "missing_archived_modules": removed[:16]})
+        )
     mismatches = []
     for row in modules:
         p = REPO / row["path"]

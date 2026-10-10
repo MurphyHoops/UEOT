@@ -106,10 +106,26 @@ class ProofReuseTests(unittest.TestCase):
                 reuse.verify_evidence_files()
 
     def test_any_modified_source_rejected(self):
-        row = dict(self.data["modules"][-1])
-        row["content_sha256"] = "0" * 64
+        modules = [dict(row) for row in self.data["modules"]]
+        modules[-1]["content_sha256"] = "0" * 64
         with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE"):
-            reuse.verify_sources([row])
+            reuse.verify_sources(modules)
+
+    def test_new_lean_module_cannot_be_omitted_from_index(self):
+        live = reuse.live_source_paths()
+        self.assertEqual(len(live), 633)
+        new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
+        with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
+            with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):
+                reuse.verify_sources(self.data["modules"])
+
+    def test_deleted_lean_module_cannot_be_omitted_from_index(self):
+        live = reuse.live_source_paths()
+        old = self.data["modules"][-1]["path"]
+        self.assertIn(old, live)
+        with mock.patch.object(reuse, "live_source_paths", return_value=live - {old}):
+            with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):
+                reuse.verify_sources(self.data["modules"])
 
     def test_bridge_last_source_negative_control_before_compilation(self):
         with mock.patch.dict(bridge.PINNED_SHA, {bridge.SECOND: "0" * 64}):
