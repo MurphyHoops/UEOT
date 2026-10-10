@@ -56,6 +56,13 @@ DUPLICATED_TV_HELPER = "UEOT.V3.StatisticalDefect.tvDist_symm"
 CLONE_SHA256 = "e369d3eee8fe5383532bf68c18ed08ec961d9710b4d600da3edc11a243ebc064"
 LEDGER = REPO / "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
 LEDGER_SHA256 = "621da1e3c2a9b87aab0a07ca0624fe192fe15cc9bcd1c5aa6f5e669526a4d948"
+# Compiled theorem proof graph and Meta.isDefEq certificates are only valid
+# under the exact pinned Lean compiler/configuration/dependency manifest.
+BUILD_ENVIRONMENT_SHA256 = {
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "lakefile.lean": "7f083f896c58e521092721637c067a9bd892c4b2d5185bdd1b99fd5391f25986",
+    "lake-manifest.json": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+}
 
 
 
@@ -101,6 +108,13 @@ def _parse_data() -> dict:
 
 
 def verify_evidence_files():
+    for name, pinned_hash in BUILD_ENVIRONMENT_SHA256.items():
+        path = REPO / "formalization/ueot-core" / name
+        actual = sha256(path.read_bytes()).hexdigest()
+        if actual != pinned_hash:
+            raise RuntimeError(
+                f"STALE_LEAN_BUILD_ENVIRONMENT: {name}: {actual} != {pinned_hash}"
+            )
     if sha256(LEDGER.read_bytes()).hexdigest() != LEDGER_SHA256:
         raise RuntimeError("CANONICAL_COMPRESSION_LEDGER_CHANGED_RECLASSIFY_FIRST")
     if sha256((HERE / "CLONE_CANDIDATES_68.json").read_bytes()).hexdigest() != CLONE_SHA256:

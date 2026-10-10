@@ -67,6 +67,8 @@ review requirements must be satisfied separately.
 The navigator validates fixed, independent SHA-256 values for EVERY
 source audit input file, its own 68-row clone snapshot, the immutable
 canonical Compression ledger used for scientific-role classifications,
+the pinned Lean compiler/dependency environment (lean-toolchain,
+lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all 633 source-file content hashes against the pinned
 source census. It refuses to

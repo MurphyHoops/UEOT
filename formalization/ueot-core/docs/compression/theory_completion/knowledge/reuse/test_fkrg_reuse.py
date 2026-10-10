@@ -104,6 +104,11 @@ class ProofReuseTests(unittest.TestCase):
         with mock.patch.object(reuse, "LEDGER_SHA256", "f" * 64):
             with self.assertRaisesRegex(RuntimeError, "CANONICAL_COMPRESSION_LEDGER_CHANGED"):
                 reuse.verify_evidence_files()
+        for name in reuse.BUILD_ENVIRONMENT_SHA256:
+            with self.subTest(build_input=name):
+                with mock.patch.dict(reuse.BUILD_ENVIRONMENT_SHA256, {name: "0" * 64}):
+                    with self.assertRaisesRegex(RuntimeError, "STALE_LEAN_BUILD_ENVIRONMENT"):
+                        reuse.verify_evidence_files()
 
     def test_any_modified_source_rejected(self):
         modules = [dict(row) for row in self.data["modules"]]
