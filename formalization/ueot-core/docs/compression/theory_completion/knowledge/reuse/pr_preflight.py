@@ -57,6 +57,10 @@ PR_UNICODE_SEGMENT = r"(?:«[^»]+»|[^\W\d][\w'!?]*)"
 PR_UNICODE_NAME = re.compile(
     PR_UNICODE_SEGMENT + r"(?:\." + PR_UNICODE_SEGMENT + r")*"
 )
+PR_LEVEL_PARAMS = re.compile(
+    r"^\.\{\s*" + PR_UNICODE_NAME.pattern +
+    r"(?:\s*,\s*" + PR_UNICODE_NAME.pattern + r")*\s*\}"
+)
 # Lean scoped command syntax can locally alter declaration context:
 # open Foo in theorem, include h in theorem, omit h in lemma, and similar
 # wrappers. Consume the command prefix before the terminal public command
@@ -564,8 +568,8 @@ def declarations(path, source):
         # parameters are NOT part of the fully qualified theorem symbol.
         suffix = tail[detected.end():]
         if suffix.startswith(".{"):
-            level_params = re.match(r"^\.\{[^}\n]*\}", suffix)
-            if level_params is None or not level_params.group(0)[2:-1].strip():
+            level_params = PR_LEVEL_PARAMS.match(suffix)
+            if level_params is None:
                 raise RuntimeError(
                     f"UNSUPPORTED_UNIVERSE_PARAMETER_LIST: {path}:{line_number}"
                 )

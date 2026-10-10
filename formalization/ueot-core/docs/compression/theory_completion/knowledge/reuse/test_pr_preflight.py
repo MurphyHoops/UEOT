@@ -150,6 +150,26 @@ class DeltaChecks(unittest.TestCase):
             {"N.fresh", "N.pair"}
         )
 
+    def test_universe_escaped_names_can_contain_closing_braces(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem fresh.{«u}x»} (α : Sort «u}x») : True := trivial\n"
+              "lemma pair.{«u,v», «w}z»} (α : Sort «u,v») "
+              "(β : Sort «w}z») : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.fresh", "N.pair"}
+        )
+
+    def test_universe_suffix_with_no_level_name_fails_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem bad.{} : True := trivial\nend N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_UNIVERSE_PARAMETER_LIST"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_unterminated_universe_params_fail_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\ntheorem fresh.{u (α : Sort u) : True := trivial\nend N\n")

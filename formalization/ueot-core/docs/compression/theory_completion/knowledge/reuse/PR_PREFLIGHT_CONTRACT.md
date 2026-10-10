@@ -169,3 +169,9 @@ qualified declaration names followed by optional .{u} / .{u,v} suffixes.
 The universe binders are excluded from the public symbol name. The test
 syntax is compiled under the pinned Lean compiler and includes malformed
 suffix negative controls.
+
+
+Universe suffix identifiers: use the same fully qualified Lean lexical
+identifier grammar for each level name inside .{...}, rather than stopping
+at a raw closing brace, since a guillemet-escaped level name can itself
+contain closing braces or commas. The suffix is never part of the FQN.
