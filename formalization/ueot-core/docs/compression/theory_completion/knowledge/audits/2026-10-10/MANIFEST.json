@@ -8,7 +8,10 @@
     "all_3793_theorem_direct_reuse_graph.csv",
     "BINDER_NORMALIZED_TYPE_PAIRS_40.tsv",
     "VERIFY_40_TYPE_EQUIVALENCES.lean",
-    "SOURCE_PROVENANCE_BREAKDOWN.json"
+    "SOURCE_PROVENANCE_BREAKDOWN.json",
+    "VERIFY_14_REUSE_PROBES.py",
+    "FOCUSED_14_REUSE_PROBE_RECEIPT.json",
+    "FOCUSED_14_REUSE_TRIAGE.md"
   ],
   "module_count": 633,
   "declaration_count": 5553,
@@ -36,5 +39,7 @@
     "VENDORED_ADAPTED_UPSTREAM": 11
   },
   "vendored_subtree": "UEOT/V3/ThirdParty/CrooksJarzynski; see UPSTREAM.md",
-  "reproducible_verification_command": "cd formalization/ueot-core && lake lean docs/compression/theory_completion/knowledge/audits/2026-10-10/VERIFY_40_TYPE_EQUIVALENCES.lean"
+  "reproducible_verification_command": "cd formalization/ueot-core && lake lean docs/compression/theory_completion/knowledge/audits/2026-10-10/VERIFY_40_TYPE_EQUIVALENCES.lean",
+  "focused_reuse_probes": "14/14 replacement theorem proof bodies compiled with lake lean across seven disposable module copies",
+  "focused_reuse_interpretation": "12 generator/rederivation research routes, 1 duplicated TV helper, 1 alias to common no-go; zero first-party Lean source change"
 }
