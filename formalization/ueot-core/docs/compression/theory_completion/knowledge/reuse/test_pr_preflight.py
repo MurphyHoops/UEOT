@@ -420,6 +420,30 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.public_after"})
 
+    def test_escaped_identifier_containing_newline_is_complete(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem «fresh\nresult» : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.«fresh\nresult»"})
+
+    def test_multiline_escaped_namespace_identifier_preserved(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace «Scope\nName»\nlemma inside : True := trivial\n"
+              "end «Scope\nName»\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"«Scope\nName».inside"})
+
+    def test_unterminated_multiline_escaped_identifier_fails_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem «fresh\nresult : True := trivial\nend N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNTERMINATED_ESCAPED_IDENTIFIER"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_escaped_dotted_leaf_name_is_not_split_mid_identifier(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\ntheorem «alpha.beta.gamma» : True := trivial\nend N\n")

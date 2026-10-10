@@ -132,3 +132,11 @@ The lexical scanner masks syntax quotations as inert source and separately
 recognizes quoted string and Lean character literals, including parentheses
 inside character literals. These must not affect quotation nesting depth or
 create phantom public declarations. Unbalanced quotations fail closed.
+
+## Multiline Lean escaped names
+
+A `«... »` escaped identifier component may legally contain a physical
+newline. The scanner now combines only those physical lines while retaining
+the original start-line provenance; the resulting fully qualified Lean name
+keeps the literal newline. Open escaped identifiers fail closed. This was
+confirmed with the pinned Lean compiler, not only with lexical fixtures.

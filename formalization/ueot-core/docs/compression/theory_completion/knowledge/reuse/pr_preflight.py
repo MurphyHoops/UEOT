@@ -47,7 +47,7 @@ PUBLIC_DECL_START = re.compile(
     r"^\s*(?:" + PR_MODIFIER + r"\s+)*"
     r"(theorem|lemma)\b"
 )
-PR_UNICODE_SEGMENT = r"(?:«[^»\n]+»|[^\W\d][\w'!?]*)"
+PR_UNICODE_SEGMENT = r"(?:«[^»]+»|[^\W\d][\w'!?]*)"
 PR_UNICODE_NAME = re.compile(
     PR_UNICODE_SEGMENT + r"(?:\." + PR_UNICODE_SEGMENT + r")*"
 )
@@ -62,7 +62,7 @@ SCOPED_IN_PUBLIC = re.compile(
 
 # Escaped Lean identifiers can be reserved words (e.g., def «theorem»).
 # The fallback is a command-token guard, not an identifier substring search.
-ESCAPED_LEAN_NAME = re.compile(r"«[^»\n]*»")
+ESCAPED_LEAN_NAME = re.compile(r"«[^»]*»")
 MUTUAL_START = re.compile(r"^\s*mutual\b")
 
 
@@ -191,6 +191,34 @@ def corpus(repo, sha):
     return entries
 
 
+def logical_escaped_identifier_lines(lines, path):
+    """Join physical lines only while inside a Lean «...» name component.
+
+    Retain the original start line for error locations and source previews.
+    Splitting physical lines before parsing must not reject valid newlines
+    INSIDE an escaped declaration identifier or silently lose that theorem.
+    """
+    buffered = []
+    active = False
+    first = 1
+    for number, line in enumerate(lines, 1):
+        if not buffered:
+            first = number
+        buffered.append(line)
+        for char in line:
+            if char == "«":
+                if active:
+                    raise RuntimeError(f"NESTED_ESCAPED_IDENTIFIER: {path}:{number}")
+                active = True
+            elif char == "»" and active:
+                active = False
+        if not active:
+            yield first, "\n".join(buffered)
+            buffered = []
+    if buffered:
+        raise RuntimeError(f"UNTERMINATED_ESCAPED_IDENTIFIER: {path}:{first}")
+
+
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = mask_syntax_quotations(no_lean_comments(source).splitlines(), path)
@@ -204,7 +232,7 @@ def declarations(path, source):
         r"unsafe|meta|scoped|local)\s*$"
     )
     standalone_attribute = re.compile(r"^\s*(@\[[^\]\n]*\])\s*$")
-    for line_number, line in enumerate(code, 1):
+    for line_number, line in logical_escaped_identifier_lines(code, path):
         if not line.strip():
             continue
         if multiline_attribute_depth:
