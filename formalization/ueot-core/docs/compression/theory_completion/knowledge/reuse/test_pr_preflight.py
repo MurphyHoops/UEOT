@@ -137,6 +137,34 @@ class DeltaChecks(unittest.TestCase):
              "UEOT.New.after_public_sections"}
         )
 
+    def test_unicode_qualified_name_and_question_mark_not_truncated(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\n"
+              "theorem Foo.τ : True := trivial\n"
+              "lemma ready? : True := trivial\n"
+              "theorem safe! : True := trivial\n"
+              "end UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"UEOT.New.Foo.τ", "UEOT.New.ready?", "UEOT.New.safe!"})
+
+    def test_meta_section_preserves_surrounding_namespace(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\n"
+              "@[expose] public meta section\n"
+              "theorem inside_meta : True := trivial\nend\n"
+              "theorem after_meta : True := trivial\n"
+              "end UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"UEOT.New.inside_meta", "UEOT.New.after_meta"})
+
+    def test_default_repo_path_is_live_checkout(self):
+        self.assertEqual(pf.REPO_DEFAULT, HERE.parents[6])
+        self.assertTrue((pf.REPO_DEFAULT / ".git").exists())
+
     def test_unparsed_public_lemma_fails_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\ntheorem : True := trivial\nend UEOT.New\n")

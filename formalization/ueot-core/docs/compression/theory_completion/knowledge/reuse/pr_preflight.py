@@ -20,24 +20,24 @@ import sys
 import tarfile
 
 HERE = Path(__file__).resolve().parent
-REPO_DEFAULT = HERE.parents[7]
+REPO_DEFAULT = HERE.parents[6]
 sys.path.insert(0, str(HERE.parent))
-from fkrg import DECL, no_lean_comments
+from fkrg import no_lean_comments
 
 LEAN_PREFIX = "formalization/ueot-core/UEOT/"
 LEAN_ROOT = "formalization/ueot-core/UEOT.lean"
 PUBLIC_KINDS = {"theorem", "lemma"}
 SCHEMA = "FKRG_PR_DIFF_PREFLIGHT_V1"
-# FKRG v1's DECL regex only covers ASCII identifiers and omits
-# noncomputable section openers. Do NOT modify that pinned parser in L1:
-# extend the PR-specific scanner and reject any public theorem line that
-# neither parser can represent without silently dropping the theorem.
+# FKRG v1 lexical discovery is ASCII-oriented. Keep the historical
+# extractor frozen, but use the PR-specific complete Unicode-qualified
+# theorem name recognizer here, rather than accepting an ASCII prefix
+# then silently dropping a Unicode name component.
 # Modifiers apply independently to declarations and scope openers.
 # In particular both public section and @[expose] public section create
 # nested scope frames that must match their later end command.
 PR_MODIFIER = (
     r"(?:@\[[^\]\n]*\]|public|nonrec|private|protected|"
-    r"noncomputable|unsafe|irreducible|partial|scoped|local)"
+    r"noncomputable|unsafe|irreducible|partial|scoped|local|meta)"
 )
 PR_SCOPE = re.compile(
     r"^\s*(?:" + PR_MODIFIER + r"\s+)*"
@@ -47,7 +47,7 @@ PUBLIC_DECL_START = re.compile(
     r"^\s*(?:" + PR_MODIFIER + r"\s+)*"
     r"(theorem|lemma)\b"
 )
-PR_UNICODE_SEGMENT = r"(?:«[^»\n]+»|[^\W\d]\w*(?:'\w*)*)"
+PR_UNICODE_SEGMENT = r"(?:«[^»\n]+»|[^\W\d][\w'!?]*)"
 PR_UNICODE_NAME = re.compile(
     PR_UNICODE_SEGMENT + r"(?:\." + PR_UNICODE_SEGMENT + r")*"
 )
@@ -100,7 +100,6 @@ def corpus(repo, sha):
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = no_lean_comments(source).splitlines()
-    module = path.replace("formalization/ueot-core/", "").removesuffix(".lean").replace("/", ".")
     ns, stack, found = "", [], []
     for line_number, line in enumerate(code, 1):
         scope = PR_SCOPE.match(line)
@@ -113,29 +112,20 @@ def declarations(path, source):
                 stack.append(ns)
             elif op == "end" and stack:
                 ns = stack.pop()
-        match = DECL.match(line)
         start = PUBLIC_DECL_START.match(line)
-        if match is None and start is None:
+        if start is None:
             continue
-        if match is not None:
-            kind, local_name = match.groups()
-            # Non-theorem declarations are indexed by the generic FKRG
-            # scanner but do not require this proof reuse gate.
-            if kind not in PUBLIC_KINDS:
-                continue
-            is_private = re.search(r"\bprivate\b", line[:match.start(1)]) is not None
-        else:
-            kind = start.group(1)
-            tail = line[start.end():].lstrip()
-            detected = PR_UNICODE_NAME.match(tail)
-            if not detected or (len(tail) > detected.end() and
-                                not (tail[detected.end()].isspace() or
-                                     tail[detected.end()] in "({[:")):
-                raise RuntimeError(
-                    f"UNSUPPORTED_PUBLIC_LEAN_DECLARATION: {path}:{line_number}"
-                )
-            local_name = detected.group(0)
-            is_private = re.search(r"\bprivate\b", line[:start.start(1)]) is not None
+        kind = start.group(1)
+        tail = line[start.end():].lstrip()
+        detected = PR_UNICODE_NAME.match(tail)
+        if not detected or (len(tail) > detected.end() and
+                            not (tail[detected.end()].isspace() or
+                                 tail[detected.end()] in "({[:")):
+            raise RuntimeError(
+                f"UNSUPPORTED_PUBLIC_LEAN_DECLARATION: {path}:{line_number}"
+            )
+        local_name = detected.group(0)
+        is_private = re.search(r"\bprivate\b", line[:start.start(1)]) is not None
         if is_private:
             continue
         name = (ns + "." if ns else "") + local_name
