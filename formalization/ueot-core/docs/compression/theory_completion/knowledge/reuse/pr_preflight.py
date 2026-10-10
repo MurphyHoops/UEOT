@@ -60,6 +60,16 @@ SCOPED_IN_PUBLIC = re.compile(
     r"(?=(?:" + PR_MODIFIER + r"\s+)*(?:theorem|lemma)\b)"
 )
 
+# Escaped Lean identifiers can be reserved words (e.g., def «theorem»).
+# The fallback is a command-token guard, not an identifier substring search.
+ESCAPED_LEAN_NAME = re.compile(r"«[^»\n]*»")
+MUTUAL_START = re.compile(r"^\s*mutual\b")
+
+
+def contains_command_token(line):
+    return bool(re.search(r"\b(?:theorem|lemma)\b",
+                          ESCAPED_LEAN_NAME.sub("ESCAPED_NAME", line)))
+
 
 
 def git(repo, *args):
@@ -110,6 +120,13 @@ def declarations(path, source):
     code = no_lean_comments(source).splitlines()
     ns, stack, found = "", [], []
     for line_number, line in enumerate(code, 1):
+        if MUTUAL_START.match(line):
+            stack.append(("mutual", ns, ""))
+            if contains_command_token(line[MUTUAL_START.match(line).end():]):
+                raise RuntimeError(
+                    f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
+                )
+            continue
         scope = PR_SCOPE.match(line)
         if scope:
             op, arg = scope.groups()
@@ -120,9 +137,15 @@ def declarations(path, source):
                     ns = target[len("_root_."):]
                 else:
                     ns = (ns + "." if ns else "") + target
-                stack.append(("namespace", previous, target))
+                is_private_ns = re.search(r"\bprivate\b",
+                                         line[:scope.start(1)]) is not None
+                stack.append(("private_namespace" if is_private_ns else "namespace",
+                              previous, target))
             elif op == "section":
-                stack.append(("section", ns, arg or ""))
+                is_private_section = re.search(r"\bprivate\b",
+                                          line[:scope.start(1)]) is not None
+                stack.append(("private_section" if is_private_section else "section",
+                              ns, arg or ""))
             elif op == "end":
                 if not stack:
                     raise RuntimeError(f"UNBALANCED_SCOPE_END: {path}:{line_number}")
@@ -136,7 +159,7 @@ def declarations(path, source):
                     match_depth = 0
                     names = []
                     for frame in reversed(stack):
-                        if frame[0] != "section":
+                        if frame[0] not in ("section", "private_section"):
                             break
                         names.insert(0, frame[2])
                         if arg == frame[2] or arg == ".".join(names):
@@ -147,7 +170,7 @@ def declarations(path, source):
                             _, ns, _ = stack.pop()
                         # No namespace suffix removal for a section-only end.
                         # Do not bypass the multi-command fail-closed check.
-                        if re.search(r"\b(?:theorem|lemma)\b", line[scope.end():]):
+                        if contains_command_token(line[scope.end():]):
                             raise RuntimeError(
                                 f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
                             )
@@ -166,7 +189,7 @@ def declarations(path, source):
                     while stack:
                         kind, before, _ = stack[-1]
                         # End section frames nested inside this namespace too.
-                        if kind == "section":
+                        if kind in ("section", "private_section"):
                             stack.pop()
                             continue
                         if before == remain:
@@ -186,7 +209,7 @@ def declarations(path, source):
             # Multiple commands can share a physical line in Lean. The
             # lexical scanner deliberately rejects rather than silently
             # pretending that any theorem after a scope header is absent.
-            if re.search(r"\b(?:theorem|lemma)\b", line[scope.end():]):
+            if contains_command_token(line[scope.end():]):
                 raise RuntimeError(
                     f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
                 )
@@ -198,7 +221,7 @@ def declarations(path, source):
             # physical newline boundaries. Any otherwise-unparsed theorem
             # token is a potential nested/adjacent public command: reject
             # instead of claiming that no new theorem was introduced.
-            if re.search(r"\b(?:theorem|lemma)\b", line):
+            if contains_command_token(line):
                 raise RuntimeError(
                     f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
                 )
@@ -216,12 +239,14 @@ def declarations(path, source):
         # Reject adjacent commands on a single physical line even after
         # recognizing the first public declaration. A second lemma/theorem
         # could otherwise silently disappear from the incremental census.
-        if re.search(r"\b(?:theorem|lemma)\b", tail[detected.end():]):
+        if contains_command_token(tail[detected.end():]):
             raise RuntimeError(
                 f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
             )
         is_private = re.search(r"\bprivate\b", scan_line[:start.start(1)]) is not None
-        if is_private:
+        if is_private or any(
+            kind in ("private_section", "private_namespace") for kind, _, _ in stack
+        ):
             continue
         # Explicit root qualification bypasses ambient namespace context.
         name = (local_name[len("_root_."):] if local_name.startswith("_root_.")

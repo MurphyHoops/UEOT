@@ -78,7 +78,9 @@ deleted Lean modules, invalid revisions, nested noncomputable section
 closures, public/nonrec declaration modifiers, public section/attribute
 section and meta section scope handling, full Unicode hierarchical
 names and !/? suffixes, scoped in-command theorem wrappers,
-including include/omit, explicit
+including include/omit, mutual...end scope balancing, escaped
+reserved-word identifiers, private-section visibility as defensive lexical
+handling (the pinned compiler rejects a bare private section opener), explicit
 _root_. qualified names, qualified end B.C consuming two namespace
 components, same-line theorem/lemma commands fail closed even after a parsed
 declaration or after an otherwise-unparsed prefix command, qualified end A.B can close nested sections A and B,

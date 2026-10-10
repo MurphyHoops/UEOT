@@ -211,6 +211,34 @@ class DeltaChecks(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
             pf.preflight(self.repo, self.base, head)
 
+    def test_escaped_reserved_words_are_not_mistaken_for_commands(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ndef «theorem» : Nat := 0\n"
+              "axiom «lemma» : Prop\ntheorem real_public : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.real_public"})
+
+    def test_mutual_block_does_not_pop_enclosing_namespace(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nmutual\ndef f : Nat := 0\ndef g : Nat := 0\n"
+              "end\ntheorem after_mutual : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.after_mutual"})
+
+    def test_private_section_theorems_not_listed_as_public(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nprivate section\n"
+              "theorem hidden : True := trivial\nend\n"
+              "theorem public_result : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.public_result"})
+
     def test_lemma_after_unparsed_helper_command_fails_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\ndef helper : True := trivial lemma fresh : True := trivial\nend N\n")
