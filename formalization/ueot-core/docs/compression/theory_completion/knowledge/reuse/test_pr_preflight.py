@@ -589,6 +589,29 @@ class DeltaChecks(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_LEAN_SOURCE_SYMLINK"):
             pf.preflight(self.repo, self.base, head)
 
+    def test_character_double_quote_does_not_hide_later_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "def quote : Char := '\"'\n"
+              "theorem survives_quote : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.survives_quote"})
+
+    def test_character_double_quote_escaped_preserves_comment_detection(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "def quote : Char := '\\\"'\n"
+              "-- theorem fake_in_comment : True := trivial\n"
+              "theorem visible_after_quote : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.visible_after_quote"})
+
     def test_standalone_attribute_character_closing_bracket_keeps_private(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"

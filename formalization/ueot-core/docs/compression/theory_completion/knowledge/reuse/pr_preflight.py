@@ -211,6 +211,7 @@ def comment_safe_escaped_names(source):
     """
     masked = list(source)
     spans = []
+    character_spans = []
     i = 0
     depth = 0
     line_comment = False
@@ -245,7 +246,16 @@ def comment_safe_escaped_names(source):
             continue
         character = LEAN_CHAR_LITERAL.match(source, i)
         if character is not None:
-            i = character.end()
+            # The imported generic comment stripper does not recognize
+            # Lean character literals. In particular '"' would otherwise
+            # start a spurious multiline double-quoted string, hiding all
+            # following public declarations. Mask its CONTENT while
+            # preserving offsets and both apostrophe delimiters.
+            finish = character.end()
+            character_spans.append((i, finish, source[i+1:finish-1]))
+            for pos in range(i+1, finish-1):
+                masked[pos] = "x"
+            i = finish
             continue
         if pair == "/-":
             depth = 1
@@ -271,11 +281,11 @@ def comment_safe_escaped_names(source):
             i = finish + 1
             continue
         i += 1
-    return "".join(masked), spans
+    return "".join(masked), spans, character_spans
 
 
 def lexical_code_preserving_escaped_names(source, path):
-    masked, spans = comment_safe_escaped_names(source)
+    masked, spans, character_spans = comment_safe_escaped_names(source)
     text = "\n".join(mask_syntax_quotations(
         no_lean_comments(masked).split("\n"), path
     ))
@@ -286,6 +296,16 @@ def lexical_code_preserving_escaped_names(source, path):
         if code[begin] == "«" and code[finish] == "»":
             for offset, ch in enumerate(original, begin + 1):
                 code[offset] = ch
+    for begin, finish, original in character_spans:
+        if code[begin] == " " and code[finish-1] == " ":
+            # The entire character literal belongs to a masked Lean syntax
+            # quotation, not executable source; never resurrect quotation
+            # contents (including fake theorems) during restoration.
+            continue
+        if code[begin] != "'" or code[finish-1] != "'":
+            raise RuntimeError(f"CHAR_LITERAL_MASK_POSITION_DRIFT: {path}")
+        for offset, ch in enumerate(original, begin + 1):
+            code[offset] = ch
     return "".join(code).splitlines()
 
 
