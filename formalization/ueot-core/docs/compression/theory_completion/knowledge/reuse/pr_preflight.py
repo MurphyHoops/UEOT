@@ -128,9 +128,30 @@ def declarations(path, source):
                     raise RuntimeError(f"UNBALANCED_SCOPE_END: {path}:{line_number}")
                 if not arg:
                     _, ns, _ = stack.pop()
-                elif stack[-1][0] == "section" and stack[-1][2] == arg:
-                    _, ns, _ = stack.pop()
                 else:
+                    # Qualified section endings can collapse multiple nested
+                    # named section frames: section A; section B; end A.B.
+                    # Prefer the nearest matching section segment or full
+                    # suffix, retaining the surrounding namespace.
+                    match_depth = 0
+                    names = []
+                    for frame in reversed(stack):
+                        if frame[0] != "section":
+                            break
+                        names.insert(0, frame[2])
+                        if arg == frame[2] or arg == ".".join(names):
+                            match_depth = len(names)
+                            break
+                    if match_depth:
+                        for _ in range(match_depth):
+                            _, ns, _ = stack.pop()
+                        # No namespace suffix removal for a section-only end.
+                        # Do not bypass the multi-command fail-closed check.
+                        if re.search(r"\b(?:theorem|lemma)\b", line[scope.end():]):
+                            raise RuntimeError(
+                                f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
+                            )
+                        continue
                     # A qualified Lean namespace end can consume multiple
                     # components (and parts of namespace A.B opened at once).
                     # Preserve any remaining outer component as a synthetic
@@ -184,6 +205,13 @@ def declarations(path, source):
                 f"UNSUPPORTED_PUBLIC_LEAN_DECLARATION: {path}:{line_number}"
             )
         local_name = detected.group(0)
+        # Reject adjacent commands on a single physical line even after
+        # recognizing the first public declaration. A second lemma/theorem
+        # could otherwise silently disappear from the incremental census.
+        if re.search(r"\b(?:theorem|lemma)\b", tail[detected.end():]):
+            raise RuntimeError(
+                f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
+            )
         is_private = re.search(r"\bprivate\b", scan_line[:start.start(1)]) is not None
         if is_private:
             continue

@@ -22,7 +22,7 @@ public meta section), public/nonrec declaration modifiers, and complete
 Unicode-qualified Lean theorem names including !/? suffixes, scoped
 scoped in-command theorem/lemma wrappers (open/include/omit)
 and explicit _root_. qualification, including partial/compound
-qualified namespace-end scope restoration.
+qualified namespace-end and named-section scope restoration.
 Any theorem/lemma command outside supported lexical syntax FAILS CLOSED
 instead of vanishing from the review report. It produces:
 
@@ -80,7 +80,9 @@ section and meta section scope handling, full Unicode hierarchical
 names and !/? suffixes, scoped in-command theorem wrappers,
 including include/omit, explicit
 _root_. qualified names, qualified end B.C consuming two namespace
-components, same-physical-line multi-command fail-closed, valid CLI root, unsupported
+components, same-line consecutive public theorem/lemma commands fail closed even after
+a parsed declaration, qualified end A.B can close nested sections A and B,
+valid CLI root, unsupported
 public theorem syntax, and uncommitted worktree separation. No real UEOT Lean file is edited by the tests.
 
 On future changes to the parser, treat all lexical results as candidates

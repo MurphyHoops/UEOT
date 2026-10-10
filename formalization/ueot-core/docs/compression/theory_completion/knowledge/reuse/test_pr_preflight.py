@@ -204,6 +204,26 @@ class DeltaChecks(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
             pf.preflight(self.repo, self.base, head)
 
+    def test_multiple_theorems_on_one_physical_line_fail_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem old : True := trivial theorem fresh : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
+            pf.preflight(self.repo, self.base, head)
+
+    def test_qualified_end_of_two_named_sections(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nsection A\nsection B\n"
+              "theorem inside : True := trivial\n"
+              "end A.B\n"
+              "theorem after : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.inside", "N.after"})
+
     def test_include_and_omit_scoped_command_wrappers_are_discovered(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\n"
