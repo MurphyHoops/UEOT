@@ -1,0 +1,682 @@
+[
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/SymmetricKilledSpectralStability.lean",
+    "start_line_a": 78,
+    "start_line_b": 213,
+    "end_line_a": 108,
+    "end_line_b": 243,
+    "equal_nonblank_code_lines": 31,
+    "excerpt": "(1 / 2 : ℝ) * ∑ i, |(p i).toReal - (q i).toReal| := by\nrw [UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass]\nhave hp_sum : (∑ i, (p i).toReal) = 1 := by\nhave h := congrArg ENNReal.toReal (PMF.tsum_coe p)\nrw [tsum_fintype, ENNReal.toReal_sum (fun x _ => PMF.apply_ne_top p x)] at h\nsimpa using h\nhave hq_sum : (∑ i, (q i).toReal) = 1 := by\nhave h := congrArg ENNReal.toReal (PMF.tsum_coe q)\nrw [tsum_fintype, ENNReal.toReal_sum (fun x _ => PMF.apply_ne_top q x)] at h\nsimpa using h\nhave habs :\n(∑ i, |(p i).toReal - (q i).toReal|) ="
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/ValueAlignment.lean",
+    "start_line_a": 73,
+    "start_line_b": 144,
+    "end_line_a": 99,
+    "end_line_b": 170,
+    "equal_nonblank_code_lines": 27,
+    "excerpt": "(alpha : I → ℝ)\n(JP : PiLp 2 H → ℝ)\n(Ji : ∀ i, H i → ℝ)\n(a : ℝ → PiLp 2 H)\n(t : ℝ) (g childGrad : ∀ i, H i)\n(halpha : ∀ i, 0 < alpha i)\n(hJP : HasGradientAt JP (WithLp.toLp 2 g) (a t))\n(hJi : ∀ i, HasGradientAt (Ji i) (childGrad i) (a t i))\n(ha : HasDerivAt a\n(WithLp.toLp 2 (fun i => alpha i • childGrad i)) t) :\nHasDerivAt (JP ∘ a)\n(∑ i, alpha i *"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/GoaConsistency.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/TerminalClosure.lean",
+    "start_line_a": 57,
+    "start_line_b": 99,
+    "end_line_a": 77,
+    "end_line_b": 119,
+    "equal_nonblank_code_lines": 21,
+    "excerpt": "{X : Type uX} [Fintype X] [Nonempty X]\n{S : Type uS} [Fintype S] [Nonempty S]\n{Act : Type uA} [Fintype Act] [Nonempty Act]\n(C : X → S) (hC : Function.Surjective C)\n(micro : Model X (fun _ => Act))\n(E : RealizedControlEstimator C micro)\n(hdiscount : ∀ n, micro.discount = (E.macroHat n).discount)\n(gamma : ℝ) (hgamma : 0 < gamma)\n(hsourceGap :\nlet Qexact := exactControlQuotient_of_realizedEstimator C hC micro E\n∀ s a, a ≠ Qexact.macroModel.greedyAction s →\ngamma ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 333,
+    "start_line_b": 138,
+    "end_line_a": 352,
+    "end_line_b": 157,
+    "equal_nonblank_code_lines": 20,
+    "excerpt": "have hbound : ∀ n,\nsimplexDamagedMass S.legitimate\n(cesaroRow M (pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) (phi n)) ≤\nlambda.toReal / kappa.toReal + tau n := by\nintro n\nrw [simplexDamagedMass_cesaroRow_eq_realDamageAverage]\nhave havg := real_average_bound_of_ennreal_homeostatic_budget\nD kappa lambda V0 hDtop hk0 hktop hlamtop hVtop\n(phi n + 1) (Nat.succ_pos (phi n)) (hfinite (phi n + 1))\nsimpa [D, tau, realDamageAverage, add_comm] using havg\nhave hdamage := simplexDamagedMass_limit_le"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/PrimitiveOptimalPolicyGoaClosure.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/ValueSpanClosure.lean",
+    "start_line_a": 81,
+    "start_line_b": 158,
+    "end_line_a": 100,
+    "end_line_b": 177,
+    "equal_nonblank_code_lines": 20,
+    "excerpt": "(gamma : ℝ) (hgamma : 0 < gamma)\n(hsourceGap : ∀ s a, a ≠ Qref.macroModel.greedyAction s →\ngamma ≤\nQref.macroModel.qValue Qref.macroModel.optimalValue s\n(Qref.macroModel.greedyAction s) -\nQref.macroModel.qValue Qref.macroModel.optimalValue s a)\n(halpha :\nFiniteDobrushin.dobrushinAlpha\n(GoaGaugeInvariance.selectorClosedLoopMatrix\nQref.macroModel Qref.macroModel.greedyAction)\n(GoaGaugeInvariance.selectorClosedLoopMatrix_rowStochastic\nQref.macroModel Qref.macroModel.greedyAction) < 1)"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/ObjecthoodCanonicalBurden.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
+    "start_line_a": 111,
+    "start_line_b": 320,
+    "end_line_a": 128,
+    "end_line_b": 337,
+    "equal_nonblank_code_lines": 18,
+    "excerpt": "intro z hz\nhave hpen :\nS.damagePenalty z = autonomousRepairDamagePenalty P K z := by\nclassical\nsimp [S, RecurrentHomeostasisSystem.damagePenalty,\nobjecthoodRecurrentHomeostasisSystem,\nautonomousRepairDamagePenalty]\nrw [hpen]\nchange\nhomeostaticENNExpectation\n(autonomousRepairLift P K hfix\n(maximalStationaryRepairCertificate P K) z ())"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/PrimitiveOptimalPolicyGoaClosure.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/ValueSpanClosure.lean",
+    "start_line_a": 45,
+    "start_line_b": 119,
+    "end_line_a": 62,
+    "end_line_b": 136,
+    "equal_nonblank_code_lines": 18,
+    "excerpt": "(gamma : ℝ) (hgamma : 0 < gamma)\n(hsourceGap : ∀ s a, a ≠ Qref.macroModel.greedyAction s →\ngamma ≤\nQref.macroModel.qValue Qref.macroModel.optimalValue s\n(Qref.macroModel.greedyAction s) -\nQref.macroModel.qValue Qref.macroModel.optimalValue s a)\n(halpha :\nFiniteDobrushin.dobrushinAlpha\n(GoaGaugeInvariance.selectorClosedLoopMatrix\nQref.macroModel Qref.macroModel.greedyAction)\n(GoaGaugeInvariance.selectorClosedLoopMatrix_rowStochastic\nQref.macroModel Qref.macroModel.greedyAction) < 1) :"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/ObjecthoodCanonicalBurden.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
+    "start_line_a": 112,
+    "start_line_b": 503,
+    "end_line_a": 128,
+    "end_line_b": 519,
+    "equal_nonblank_code_lines": 17,
+    "excerpt": "have hpen :\nS.damagePenalty z = autonomousRepairDamagePenalty P K z := by\nclassical\nsimp [S, RecurrentHomeostasisSystem.damagePenalty,\nobjecthoodRecurrentHomeostasisSystem,\nautonomousRepairDamagePenalty]\nrw [hpen]\nchange\nhomeostaticENNExpectation\n(autonomousRepairLift P K hfix\n(maximalStationaryRepairCertificate P K) z ())\n(autonomousRepairPotential P K"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/FiniteHistoryMeasurable.lean",
+    "start_line_a": 58,
+    "start_line_b": 124,
+    "end_line_a": 72,
+    "end_line_b": 138,
+    "equal_nonblank_code_lines": 15,
+    "excerpt": "(measurable_historyFiber_states (X := X) (A := A) n).comp\n(measurable_fst.comp measurable_fst)\nsimpa only [Fin.snoc_castSucc, Function.comp_def] using\n(measurable_pi_apply j).comp hh\nhave hactions :\nMeasurable\n(fun p : (HistoryFiber X A n × A) × X =>\n(Fin.snoc p.1.1.2 p.1.2 : Fin (n + 1) → A)) := by\nrw [measurable_pi_iff]\nintro i\nrefine Fin.lastCases ?_ (fun j => ?_) i\n· simpa only [Fin.snoc_last, Function.comp_def] using"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostaticOperationalParent.lean",
+    "start_line_a": 508,
+    "start_line_b": 258,
+    "end_line_a": 522,
+    "end_line_b": 272,
+    "equal_nonblank_code_lines": 15,
+    "excerpt": "autonomousRepairDamagePenalty]\nrw [hpen]\nchange\nhomeostaticENNExpectation\n(autonomousRepairLift P K hfix\n(maximalStationaryRepairCertificate P K) z ())\n(autonomousRepairPotential P K\n(maximalStationaryRepairCertificate P K)) +\nautonomousRepairDamagePenalty P K z ≤\nautonomousRepairPotential P K\n(maximalStationaryRepairCertificate P K) z\nsimpa [homeostaticENNExpectation] using"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1ResetFamily.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1StrictImprovement.lean",
+    "start_line_a": 119,
+    "start_line_b": 117,
+    "end_line_a": 133,
+    "end_line_b": 131,
+    "equal_nonblank_code_lines": 15,
+    "excerpt": "have hpos : 0 < Module.finrank ℝ (zeroSumEuclidean (S := S)) :=\n(zeroSum_finrank_pos_iff_card_one_lt (S := S)).2 hcard\nletI : Nontrivial (zeroSumEuclidean (S := S)) :=\n(Module.finrank_pos_iff).1 hpos\nobtain ⟨x, hx⟩ := exists_ne (0 : zeroSumEuclidean (S := S))\nhave hxnorm : 0 < ‖x‖ := norm_pos_iff.mpr hx\nlet y : zeroSumEuclidean (S := S) := (‖x‖ : ℝ)⁻¹ • x\nhave hynorm : ‖y‖ = 1 := by\nrw [norm_smul]\nsimp only [Real.norm_eq_abs, abs_inv, abs_norm]\nexact inv_mul_cancel₀ (ne_of_gt hxnorm)\nlet v : S → ℝ := ((y : zeroSumEuclidean (S := S)) : EuclideanSpace ℝ S).ofLp"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpRenewalIntegrals.lean",
+    "start_line_a": 1573,
+    "start_line_b": 177,
+    "end_line_a": 1587,
+    "end_line_b": 191,
+    "equal_nonblank_code_lines": 15,
+    "excerpt": "intro u\nrw [happly u]\nby_cases hu : u ∈ Simplex.freeSimplexSet (n + 1)\n· have hsum := (mem_freeSimplexSet_iff u).1 hu\nrw [Fin.sum_univ_castSucc] at hsum\nhave hmem :\n((u (Fin.last n), fun j : Fin n => u j.castSucc) :\nI × (Fin n → I)) ∈\n{q : I × (Fin n → I) |\n(q.1 : ℝ) + ∑ i, ((q.2 i : ℝ)) ≤ 1} := by\nchange ((u (Fin.last n) : ℝ)) +\n∑ j : Fin n, ((u j.castSucc : ℝ)) ≤ 1"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/RepairLawSelfReconstruction/TightenedSameParentRestoration.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectAgencyRecovery.lean",
+    "start_line_a": 212,
+    "start_line_b": 402,
+    "end_line_a": 225,
+    "end_line_b": 415,
+    "equal_nonblank_code_lines": 14,
+    "excerpt": "· exact safeRepairKernel_singleReplica_exact T\n(dynamics C.repairing.operational.parent) x controller r bad i\n· exact C.selected_parent_pairwise_semantic_bound hcard hq\n· exact reconstructedProgram_eventually_always_target_ae T\n(dynamics C.repairing.operational.parent)\nC.repairing.operational.persistence.K hvalid hrecover\n· intro y hy\nexact safeRepairKernel_staysIn_recoveredTarget T tripleRepairCodec\n(dynamics C.repairing.operational.parent)\nC.repairing.operational.persistence.K hvalid hy\n· intro s hs\nexact safeRecoveredTarget_projects_to_legitimate T tripleRepairCodec"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/EvolutionReproductiveMartingale.lean",
+    "start_line_a": 112,
+    "start_line_b": 49,
+    "end_line_a": 125,
+    "end_line_b": 62,
+    "equal_nonblank_code_lines": 14,
+    "excerpt": "map_add' := by\nintro x y\nsimp only [Pi.add_apply]\nrw [← Finset.sum_add_distrib]\napply Finset.sum_congr rfl\nintro i hi\nring\nmap_smul' := by\nintro c x\nsimp only [Pi.smul_apply, RingHom.id_apply, smul_eq_mul]\nrw [Finset.mul_sum]\napply Finset.sum_congr rfl"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaRestrictedResidualAdapter.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaSharpSingularValue.lean",
+    "start_line_a": 99,
+    "start_line_b": 147,
+    "end_line_a": 112,
+    "end_line_b": 160,
+    "equal_nonblank_code_lines": 14,
+    "excerpt": "have hxnorm : ‖(x : EuclideanSpace ℝ S)‖ = signedL2 v := by\nsymm\nexact signedL2_eq_euclidean_norm v\nhave hmapEq :\n(residualEuclideanLinear P) (WithLp.toLp 2 v) =\n(WithLp.toLp 2 (signedResidual P v) : EuclideanSpace ℝ S) := by\nrw [WithLp.ext_iff]\nexact residualEuclideanLinear_ofLp P v\nhave hmapNorm :\n‖(residualEuclideanLinear P) (WithLp.toLp 2 v)‖ =\nsignedL2 (signedResidual P v) := by\nrw [hmapEq]"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+    "start_line_a": 303,
+    "start_line_b": 148,
+    "end_line_a": 316,
+    "end_line_b": 161,
+    "equal_nonblank_code_lines": 14,
+    "excerpt": "have hone :\ntvDist ((μA.map AB.readout).map BC.readout) μC ≤ 1 :=\ntvDist_le_one _ _\nhave hmin :\ntvDist ((μA.map AB.readout).map BC.readout) μC ≤\nmin 1 (εAB + εBC) :=\nle_min hone hsum\nchange\ntvDist\n((PA (AB.protocol (BC.protocol u))).map\n(BC.readout ∘ AB.readout))\n(PC u) ≤ min 1 (εAB + εBC)"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpRenewalIntegrals.lean",
+    "start_line_a": 1557,
+    "start_line_b": 162,
+    "end_line_a": 1570,
+    "end_line_b": 175,
+    "equal_nonblank_code_lines": 14,
+    "excerpt": "have hmp := MeasureTheory.volume_preserving_piFinSuccAbove\n(fun _ : Fin (n + 1) => I) (Fin.last n)\nset e := MeasurableEquiv.piFinSuccAbove\n(fun _ : Fin (n + 1) => I) (Fin.last n) with he\nhave happly : ∀ u : Fin (n + 1) → I,\ne u = (u (Fin.last n), fun j : Fin n => u j.castSucc) := by\nintro u\nsimp only [he, MeasurableEquiv.piFinSuccAbove, Fin.insertNthEquiv,\nMeasurableEquiv.coe_mk, Equiv.symm_mk, Equiv.coe_fn_mk]\nrefine congrArg (Prod.mk _) ?_\nfunext j\nsimp [Fin.removeNth_apply, Fin.succAbove_last]"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpRenewalIntegrals.lean",
+    "start_line_a": 1595,
+    "start_line_b": 194,
+    "end_line_a": 1608,
+    "end_line_b": 207,
+    "equal_nonblank_code_lines": 14,
+    "excerpt": "· have hnotmem :\n((u (Fin.last n), fun j : Fin n => u j.castSucc) :\nI × (Fin n → I)) ∉\n{q : I × (Fin n → I) |\n(q.1 : ℝ) + ∑ i, ((q.2 i : ℝ)) ≤ 1} := by\nintro hmem'\napply hu\nrw [mem_freeSimplexSet_iff, Fin.sum_univ_castSucc]\nhave : ((u (Fin.last n) : ℝ)) +\n∑ j : Fin n, ((u j.castSucc : ℝ)) ≤ 1 := hmem'\nlinarith\nsimp only [hFdef]"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+    "start_line_a": 186,
+    "start_line_b": 85,
+    "end_line_a": 199,
+    "end_line_b": 98,
+    "equal_nonblank_code_lines": 14,
+    "excerpt": "have hC : Measurable C := canonical_measurable K\nhave hd_meas : Measurable d := by\nexact ENNReal.measurable_toReal.comp\n((Measure.measurable_coe hB).comp (measurable_pi_apply i))\nhave hf_meas : Measurable (fun h => (K i h).real B) := by\nexact ENNReal.measurable_toReal.comp ((K i).measurable_coe hB)\nhave hf_int : Integrable (fun h => (K i h).real B) μ := by\napply Integrable.of_bound hf_meas.aestronglyMeasurable 1\nexact Filter.Eventually.of_forall (fun h => by\nletI : IsProbabilityMeasure (K i h) := hK i h\nhave hnonneg : 0 ≤ (K i h).real B := measureReal_nonneg\nhave hle : (K i h).real B ≤ 1 := measureReal_le_one"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostaticOperationalParent.lean",
+    "start_line_a": 326,
+    "start_line_b": 258,
+    "end_line_a": 338,
+    "end_line_b": 270,
+    "equal_nonblank_code_lines": 13,
+    "excerpt": "autonomousRepairDamagePenalty]\nrw [hpen]\nchange\nhomeostaticENNExpectation\n(autonomousRepairLift P K hfix\n(maximalStationaryRepairCertificate P K) z ())\n(autonomousRepairPotential P K\n(maximalStationaryRepairCertificate P K)) +\nautonomousRepairDamagePenalty P K z ≤\nautonomousRepairPotential P K\n(maximalStationaryRepairCertificate P K) z\nsimpa [homeostaticENNExpectation] using"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean",
+    "start_line_a": 193,
+    "start_line_b": 192,
+    "end_line_a": 205,
+    "end_line_b": 204,
+    "equal_nonblank_code_lines": 13,
+    "excerpt": "(P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S)\n(μ0 : stdSimplex ℝ S) :\n(∃ ν : stdSimplex ℝ S, ∃ φ : ℕ → ℕ,\nStrictMono φ ∧ Tendsto (cesaroRow P hP μ0 ∘ φ) atTop (𝓝 ν)) ∧\n(∀ (ν : stdSimplex ℝ S) (φ : ℕ → ℕ),\nStrictMono φ →\nTendsto (cesaroRow P hP μ0 ∘ φ) atTop (𝓝 ν) →\nMatrix.vecMul ν.1 P = ν.1) := by\nconstructor\n· rcases CompactSpace.tendsto_subseq (cesaroRow P hP μ0) with\n⟨ν, φ, hφ, hlim⟩\nexact ⟨ν, φ, hφ, hlim⟩"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1ResetFamily.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1StrictImprovement.lean",
+    "start_line_a": 92,
+    "start_line_b": 90,
+    "end_line_a": 104,
+    "end_line_b": 102,
+    "equal_nonblank_code_lines": 13,
+    "excerpt": "rw [heq]\nsymm\nexact signedL1_eq_l1_norm _\nhave hvnorm : signedL1 v = ‖x‖ := by\nrw [signedL1_eq_l1_norm, hxcoord]\nrfl\nrw [hmapnorm, hres] at hmin\nhave hneg : signedL1 (-v) = signedL1 v := by\nunfold signedL1\nsimp\nrw [hneg, hvnorm, hxunit] at hmin\nexact hmin"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpRenewalIntegrals.lean",
+    "start_line_a": 1689,
+    "start_line_b": 292,
+    "end_line_a": 1701,
+    "end_line_b": 304,
+    "equal_nonblank_code_lines": 13,
+    "excerpt": "rw [Set.indicator_of_mem hv]\n· have h0 : ∀ a : I, F (a, v) = 0 := by\nintro a\nsimp only [hFdef]\napply Set.indicator_of_notMem\nintro hmem'\napply hv\nrw [mem_freeSimplexSet_iff]\nhave h1 : (a : ℝ) + ∑ i, ((v i : ℝ)) ≤ 1 := hmem'\nhave h2 : 0 ≤ (a : ℝ) := a.2.1\nlinarith\nrw [Set.indicator_of_notMem hv]"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/ValueAlignment.lean",
+    "start_line_a": 101,
+    "start_line_b": 172,
+    "end_line_a": 112,
+    "end_line_b": 183,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "change inner ℝ (g i) (alpha i • childGrad i) =\nalpha i * (‖g i‖ ^ 2 + inner ℝ (g i) (childGrad i - g i))\nrw [real_inner_smul_right, inner_sub_right, real_inner_self_eq_norm_sq]\nring\nhave hderiv :\nHasDerivAt (JP ∘ a)\n(inner ℝ (WithLp.toLp 2 g)\n(WithLp.toLp 2 (fun i => alpha i • childGrad i))) t := by\nsimpa only [InnerProductSpace.toDual_apply_apply] using hchain\nconstructor\n· rw [hinner] at hderiv\nexact hderiv"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/BoundedLossSampling.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/BoundedLossTwoSided.lean",
+    "start_line_a": 73,
+    "start_line_b": 51,
+    "end_line_a": 84,
+    "end_line_b": 62,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "have hmean : ∀ n, ∫ ω, X n ω ∂μ = trueRisk P loss := by\nintro n\nsimpa [X] using\nintegral_loss_sample_eq μ P loss hloss (sample n) (hmeas n) (hlaw n)\nhave hsub : ∀ n ∈ (Finset.univ : Finset (Fin N)),\nHasSubgaussianMGF (C n) ((1 / 2 : ℝ≥0) ^ 2) μ := by\nintro n _hn\nhave hs := ProbabilityTheory.hasSubgaussianMGF_of_mem_Icc\n(μ := μ) (X := X n) (a := (0 : ℝ)) (b := (1 : ℝ))\n(hXmeas n).aemeasurable\n(ae_of_all μ fun ω => hloss01 (sample n ω))\nsimpa [C, hmean n] using hs"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/InteractionBindingIsolation.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/InverseObjecthood/InteractionClassRecovery.lean",
+    "start_line_a": 331,
+    "start_line_b": 58,
+    "end_line_a": 342,
+    "end_line_b": 69,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "rw [hsym] at htri\nhave ha : tvDist (F.response a i) (observed i) ≤\ninteractionObservationError F probes hprobes observed a := by\nunfold interactionObservationError\nexact Finset.le_sup'\n(fun j : I => (tvDist (F.response a j) (observed j) : ℝ)) hi\nhave hb : tvDist (F.response b i) (observed i) ≤\ninteractionObservationError F probes hprobes observed b := by\nunfold interactionObservationError\nexact Finset.le_sup'\n(fun j : I => (tvDist (F.response b j) (observed j) : ℝ)) hi\nexact htri.trans (add_le_add ha hb)"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/ObjecthoodCanonicalBurden.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/HomeostaticOperationalParent.lean",
+    "start_line_a": 117,
+    "start_line_b": 258,
+    "end_line_a": 128,
+    "end_line_b": 269,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "autonomousRepairDamagePenalty]\nrw [hpen]\nchange\nhomeostaticENNExpectation\n(autonomousRepairLift P K hfix\n(maximalStationaryRepairCertificate P K) z ())\n(autonomousRepairPotential P K\n(maximalStationaryRepairCertificate P K)) +\nautonomousRepairDamagePenalty P K z ≤\nautonomousRepairPotential P K\n(maximalStationaryRepairCertificate P K) z\nsimpa [homeostaticENNExpectation] using"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/FiniteBurden.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/JointFaultSystem.lean",
+    "start_line_a": 238,
+    "start_line_b": 198,
+    "end_line_a": 249,
+    "end_line_b": 209,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "P K hfix R T codec r himpl F epsilon hepsilon hF\nhave hvalid : RepairProgramValid T P K r :=\nrepairProgramValid_of_dynamicsImplements_repairThenPreserve\nT P K hfix R.repairPolicy r himpl\nby_cases hleg : s ∈ jointLegitimate T codec K r\n· have hzero :=\nsafeRepairKernel_jointRepairPotential_zero_of_jointLegitimate\nP K R T codec r hvalid hleg\nhave hpot0 : jointRepairPotential P K R T codec r s = 0 := by\nrcases hleg with ⟨x, hxK, rfl⟩\nexact jointRepairPotential_canonical_eq_zero_of_mem_target\nP K R T codec r hvalid hxK"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectIdentity.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SemanticBoundaries.lean",
+    "start_line_a": 40,
+    "start_line_b": 70,
+    "end_line_a": 51,
+    "end_line_b": 81,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "transition := fun _ _ _ => 1\nreward := fun _ _ => 0\nrewardBound := 0\ndiscount := 1 / 2\ntransition_nonneg := by\nintro _ _ _\nnorm_num\ntransition_sum_one := by\nintro _ _\nsimp\nreward_abs_le := by\nintro _ _"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/GoaConsistency.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/GodPolicyConsistency.lean",
+    "start_line_a": 59,
+    "start_line_b": 125,
+    "end_line_a": 70,
+    "end_line_b": 136,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "{Act : Type uA} [Fintype Act] [Nonempty Act]\n(C : X → S) (hC : Function.Surjective C)\n(micro : Model X (fun _ => Act))\n(E : RealizedControlEstimator C micro)\n(hdiscount : ∀ n, micro.discount = (E.macroHat n).discount)\n(gamma : ℝ) (hgamma : 0 < gamma)\n(hsourceGap :\nlet Qexact := exactControlQuotient_of_realizedEstimator C hC micro E\n∀ s a, a ≠ Qexact.macroModel.greedyAction s →\ngamma ≤\nQexact.macroModel.qValue Qexact.macroModel.optimalValue s\n(Qexact.macroModel.greedyAction s) -"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/GodPolicyConsistency.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/TerminalClosure.lean",
+    "start_line_a": 125,
+    "start_line_b": 101,
+    "end_line_a": 136,
+    "end_line_b": 112,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "{Act : Type uA} [Fintype Act] [Nonempty Act]\n(C : X → S) (hC : Function.Surjective C)\n(micro : Model X (fun _ => Act))\n(E : RealizedControlEstimator C micro)\n(hdiscount : ∀ n, micro.discount = (E.macroHat n).discount)\n(gamma : ℝ) (hgamma : 0 < gamma)\n(hsourceGap :\nlet Qexact := exactControlQuotient_of_realizedEstimator C hC micro E\n∀ s a, a ≠ Qexact.macroModel.greedyAction s →\ngamma ≤\nQexact.macroModel.qValue Qexact.macroModel.optimalValue s\n(Qexact.macroModel.greedyAction s) -"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpRenewalIntegrals.lean",
+    "start_line_a": 1634,
+    "start_line_b": 234,
+    "end_line_a": 1645,
+    "end_line_b": 245,
+    "equal_nonblank_code_lines": 12,
+    "excerpt": "intro a\nsimp only [hFdef]\nby_cases ha : (a : ℝ) ≤ Simplex.residual v\n· have hmem' : ((a, v) : I × (Fin n → I)) ∈\n{q : I × (Fin n → I) |\n(q.1 : ℝ) + ∑ i, ((q.2 i : ℝ)) ≤ 1} := by\nchange (a : ℝ) + ∑ i, ((v i : ℝ)) ≤ 1\nunfold Simplex.residual at ha\nlinarith\nrw [Set.indicator_of_mem hmem',\nSet.indicator_of_mem\n(show a ∈ {a : I | (a : ℝ) ≤ Simplex.residual v} from ha)]"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/FiniteHistoryMeasurable.lean",
+    "start_line_a": 46,
+    "start_line_b": 111,
+    "end_line_a": 56,
+    "end_line_b": 121,
+    "equal_nonblank_code_lines": 11,
+    "excerpt": "have hstates :\nMeasurable\n(fun p : (HistoryFiber X A n × A) × X =>\n(Fin.snoc p.1.1.1 p.2 : Fin (n + 2) → X)) := by\nrw [measurable_pi_iff]\nintro i\nrefine Fin.lastCases ?_ (fun j => ?_) i\n· simpa only [Fin.snoc_last] using\n(measurable_snd :\nMeasurable (fun p : (HistoryFiber X A n × A) × X => p.2))\n· have hh :"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/GoaConsistency.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatisticalConsistency/GodPolicyConsistency.lean",
+    "start_line_a": 112,
+    "start_line_b": 158,
+    "end_line_a": 122,
+    "end_line_b": 168,
+    "equal_nonblank_code_lines": 11,
+    "excerpt": "have hsourceGap' : ∀ s a, a ≠ Qref.macroModel.greedyAction s →\ngamma ≤\nQref.macroModel.qValue Qref.macroModel.optimalValue s\n(Qref.macroModel.greedyAction s) -\nQref.macroModel.qValue Qref.macroModel.optimalValue s a := by\nchange ∀ s a, a ≠ Qexact.macroModel.greedyAction s →\ngamma ≤\nQexact.macroModel.qValue Qexact.macroModel.optimalValue s\n(Qexact.macroModel.greedyAction s) -\nQexact.macroModel.qValue Qexact.macroModel.optimalValue s a\nexact hsourceGap"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaDobrushinL1Bridge.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaSpectralIsolation.lean",
+    "start_line_a": 34,
+    "start_line_b": 143,
+    "end_line_a": 44,
+    "end_line_b": 153,
+    "equal_nonblank_code_lines": 11,
+    "excerpt": "(mu nu : stdSimplex ℝ S) :\nsignedL1 (fun s => nu s - mu s) = 2 * lawTV mu nu := by\nrw [UEOT.V3.FiniteRecurrentDecompositionStability.lawTV_eq_half_sum_abs]\nunfold signedL1\nhave habs :\n(∑ s, |nu s - mu s|) = ∑ s, |mu.1 s - nu.1 s| := by\napply Finset.sum_congr rfl\nintro s hs\nexact abs_sub_comm _ _\nrw [habs]\nring"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpRenewalIntegrals.lean",
+    "start_line_a": 1647,
+    "start_line_b": 246,
+    "end_line_a": 1657,
+    "end_line_b": 256,
+    "equal_nonblank_code_lines": 11,
+    "excerpt": "· have hnotmem' : ((a, v) : I × (Fin n → I)) ∉\n{q : I × (Fin n → I) |\n(q.1 : ℝ) + ∑ i, ((q.2 i : ℝ)) ≤ 1} := by\nintro hmem'\napply ha\nhave : (a : ℝ) + ∑ i, ((v i : ℝ)) ≤ 1 := hmem'\nunfold Simplex.residual\nlinarith\nrw [Set.indicator_of_notMem hnotmem',\nSet.indicator_of_notMem\n(show a ∉ {a : I | (a : ℝ) ≤ Simplex.residual v} from ha)]"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/ApproximateQuotientGauge.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/WeightedQuotientGauge.lean",
+    "start_line_a": 132,
+    "start_line_b": 184,
+    "end_line_a": 141,
+    "end_line_b": 193,
+    "equal_nonblank_code_lines": 10,
+    "excerpt": "simp only [Finset.mem_filter, Finset.mem_univ, true_and]\nconstructor\n· intro hne heq\napply hne\napply e.injective\nsimpa using heq.symm\n· intro hne heq\napply hne\nhave := congrArg e heq\nsimpa using this.symm"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CertifiedHomeostaticMargin.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/StrictJointMixedDriftWitness.lean",
+    "start_line_a": 97,
+    "start_line_b": 60,
+    "end_line_a": 106,
+    "end_line_b": 69,
+    "equal_nonblank_code_lines": 10,
+    "excerpt": "repairDrift := 1\nrepairDrift_ne_zero := by norm_num\nrepairDrift_ne_top := by simp\nlegitimate_subset_carrier := Set.subset_univ _\nrepair_stays_carrier := by\nintro z hz y hy\ntrivial\nfault_stays_carrier := by\nintro z hz y hy\ntrivial"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
+    "start_line_a": 294,
+    "start_line_b": 453,
+    "end_line_a": 303,
+    "end_line_b": 462,
+    "equal_nonblank_code_lines": 10,
+    "excerpt": "have hktop : kappa ≠ ∞ := by\nexact ENNReal.mul_ne_top (by simp) S.repairDrift_ne_top\nhave hlamtop : lambda ≠ ∞ := by\nexact ENNReal.mul_ne_top (by simp) C.burden_ne_top\nhave hVtop : V0 ≠ ∞ := by\nexact homeostaticENNExpectation_ne_top_of_staysIn\nmu0 S.carrier S.potential hmu0 hPotentialTop\nhave hDtop : ∀ n, D n ≠ ∞ := by\nintro n\nexact MeasureTheory.measure_ne_top _ _"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/InformationPredictiveFactorization.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/InformationPredictiveFactorizationForward.lean",
+    "start_line_a": 103,
+    "start_line_b": 57,
+    "end_line_a": 112,
+    "end_line_b": 66,
+    "equal_nonblank_code_lines": 10,
+    "excerpt": "let e : H → Z × H := fun h => (z h, h)\nhave he : Measurable e := hz.prodMk measurable_id\nhave hF : Measurable (fun p : H × Y => (e p.1, p.2)) :=\n(he.comp measurable_fst).prodMk measurable_snd\next s hs\nrw [Measure.map_apply hF hs]\nrw [Measure.compProd_apply (hF hs), Measure.compProd_apply hs]\nrw [lintegral_map\n(Kernel.measurable_kernel_prodMk_left hs) he]\ncongr with h"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/PredictiveClassRecovery.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+    "start_line_a": 86,
+    "start_line_b": 139,
+    "end_line_a": 95,
+    "end_line_b": 148,
+    "equal_nonblank_code_lines": 10,
+    "excerpt": "letI : IsProbabilityMeasure (p h i) := hp h i\nletI : IsProbabilityMeasure (p h' i) := hp h' i\nletI : IsProbabilityMeasure (pHat h i) := hpHat h i\nletI : IsProbabilityMeasure (pHat h' i) := hpHat h' i\nhave hpair := abs_tvDist_sub_tvDist_le\n(pHat h i) (pHat h' i) (p h i) (p h' i)\nhave hleft : tvDist (pHat h i) (p h i) ≤ η := by\nsimpa [tvDist_symm] using hresp h i\nhave hright : tvDist (pHat h' i) (p h' i) ≤ η := by\nsimpa [tvDist_symm] using hresp h' i"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 268,
+    "start_line_b": 86,
+    "end_line_a": 276,
+    "end_line_b": 94,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "(nu : stdSimplex ℝ Z) (phi : ℕ → ℕ)\n(hphi : StrictMono phi)\n(hlim : Tendsto\n(cesaroRow (pmfKernelMatrix S.mixedKernel)\n(pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) ∘ phi)\natTop (𝓝 nu)) :\nMatrix.vecMul nu.1 (pmfKernelMatrix S.mixedKernel) = nu.1 ∧\nsimplexDamagedMass S.legitimate nu ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 322,
+    "start_line_b": 127,
+    "end_line_a": 330,
+    "end_line_b": 135,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "atTop (𝓝 0) := by\nhave hn : Tendsto\n(fun n : ℕ => ((n + 1 : ℕ) : ℝ) * kappa.toReal)\natTop atTop := by\nhave hnat : Tendsto (fun n : ℕ => ((n + 1 : ℕ) : ℝ))\natTop atTop := by\nexact (tendsto_natCast_atTop_atTop.comp (tendsto_add_atTop_nat 1))\nexact hnat.atTop_mul_const hkpos\nexact Filter.Tendsto.const_div_atTop hn V0.toReal"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 371,
+    "start_line_b": 171,
+    "end_line_a": 379,
+    "end_line_b": 179,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "∃ nu : stdSimplex ℝ Z, ∃ phi : ℕ → ℕ,\nStrictMono phi ∧\nTendsto\n(cesaroRow (pmfKernelMatrix S.mixedKernel)\n(pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) ∘ phi)\natTop (𝓝 nu) ∧\nMatrix.vecMul nu.1 (pmfKernelMatrix S.mixedKernel) = nu.1 ∧\nsimplexDamagedMass S.legitimate nu ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/LongRunHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/TerminalClosure.lean",
+    "start_line_a": 146,
+    "start_line_b": 131,
+    "end_line_a": 154,
+    "end_line_b": 139,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "∃ phi : ℕ → ℕ,\nStrictMono phi ∧\nTendsto\n(cesaroRow (pmfKernelMatrix S.mixedKernel)\n(pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) ∘ phi)\natTop (𝓝 nu) ∧\nMatrix.vecMul nu.1 (pmfKernelMatrix S.mixedKernel) = nu.1 ∧\nsimplexDamagedMass S.legitimate nu ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1ResetFamily.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1StrictImprovement.lean",
+    "start_line_a": 152,
+    "start_line_b": 151,
+    "end_line_a": 160,
+    "end_line_b": 159,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "rw [heq]\nsymm\nexact signedL2_eq_euclidean_norm _\nhave hvnorm : signedL2 v = ‖y‖ := by\nrw [signedL2_eq_euclidean_norm, hycoord]\nrfl\nrw [hmapnorm, hres] at hsharp\nhave hneg : signedL2 (-v) = signedL2 v := by\nrw [signedL2_eq_euclidean_norm, signedL2_eq_euclidean_norm]"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/FiniteDiscountedOccupancyRegret.lean",
+    "start_line_a": 190,
+    "start_line_b": 241,
+    "end_line_a": 198,
+    "end_line_b": 249,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "have htv := Q.transition_tv_approx x a\nhave h :=\nFiniteProbabilityRow.abs_expectation_sub_le_span_tvDist\n(pushforwardTransitionPMF Q.f Q.micro x a)\n(Q.macroModel.transitionPMF (Q.f x) a) v\nrw [pushforward_expect_eq Q.f Q.micro x a v] at h\nsimp only [Model.expect, Model.transitionPMF_apply_toReal] at h\nexact h.trans <|\nmul_le_mul_of_nonneg_left htv (FiniteProbabilityRow.span_nonneg v)"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/HilbertMeanFirstMoment.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/HilbertMeanSecondMoment.lean",
+    "start_line_a": 60,
+    "start_line_b": 85,
+    "end_line_a": 68,
+    "end_line_b": 93,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "have hinner : ∀ i j : Fin N,\nIntegrable (fun ω => inner ℝ (Z i ω) (Z j ω)) μ := by\nintro i j\nby_cases hij : i = j\n· subst j\nsimpa only [real_inner_self_eq_norm_sq] using hdiagInt i\n· have hbilin := (hindep.indepFun hij).integrable_bilin\n(hint i) (hint j) (innerSL ℝ)\nsimpa only [innerSL_apply_apply ℝ] using hbilin"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/PredictableOLSConfidence.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/PredictableOLSGoodGramConfidence.lean",
+    "start_line_a": 136,
+    "start_line_b": 61,
+    "end_line_a": 144,
+    "end_line_b": 69,
+    "equal_nonblank_code_lines": 9,
+    "excerpt": "by_contra hnot\nhave hscore : ∀ j : Fin d,\n|Z j ω| ≤ scoreRadius N d sigma B alpha := by\nintro j\napply le_of_not_gt\nintro hj\nexact hnot ⟨j, hj⟩\nhave hdet := sqNorm_error_le_of_abs_score_le\nhN kappa hkappa (phi ω) (err ω) (fun j => Z j ω)"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/BoundedLossSampling.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/BoundedLossTwoSided.lean",
+    "start_line_a": 65,
+    "start_line_b": 40,
+    "end_line_a": 72,
+    "end_line_b": 47,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "have hXmeas : ∀ n, Measurable (X n) := fun n => hloss.comp (hmeas n)\nhave hXindep : iIndepFun X μ := by\nsimpa [X, Function.comp_def] using\nhindep.comp (fun _ => loss) (fun _ => hloss)\nhave hCindep : iIndepFun C μ := by\nsimpa [C, Function.comp_def] using\nhXindep.comp (fun _ x => x - trueRisk P loss)\n(fun _ => measurable_id.sub measurable_const)"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/BoundedLossSampling.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/BoundedLossTwoSided.lean",
+    "start_line_a": 109,
+    "start_line_b": 92,
+    "end_line_a": 116,
+    "end_line_b": 99,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "≤ exp (-((N : ℝ) * u) ^ 2 /\n(2 * ∑ n ∈ (Finset.univ : Finset (Fin N)), ((1 / 2 : ℝ≥0) ^ 2))) := htail\n_ = exp (-2 * (N : ℝ) * u ^ 2) := by\nhave hNreal : (0 : ℝ) < N := by exact_mod_cast hN\nsimp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]\nnorm_num\nfield_simp [ne_of_gt hNreal]\nring"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/GeneralCausalDiscountedDirection.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/StationaryCausalPathLawBridge.lean",
+    "start_line_a": 37,
+    "start_line_b": 59,
+    "end_line_a": 44,
+    "end_line_b": 66,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "Carrier.current = q ∘ₖ B := by\nunfold fixedPolicyAugmented\nrw [← Kernel.map_comp_right _ (measurable_advance_fixed n) measurable_current]\nhave hcomp : Carrier.current ∘\n(fun p : (HistoryFiber X A n × A) × X =>\nCarrier.advance (⟨n, p.1.1⟩ : Carrier X A) p.1.2 p.2) = Prod.snd := by\nfunext p\nexact Carrier.current_advance _ _ _"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CanonicalBurden/ObjecthoodCanonicalBurden.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/MixedHomeostaticDrift.lean",
+    "start_line_a": 112,
+    "start_line_b": 197,
+    "end_line_a": 119,
+    "end_line_b": 204,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "have hpen :\nS.damagePenalty z = autonomousRepairDamagePenalty P K z := by\nclassical\nsimp [S, RecurrentHomeostasisSystem.damagePenalty,\nobjecthoodRecurrentHomeostasisSystem,\nautonomousRepairDamagePenalty]\nrw [hpen]\nchange"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/MixedHomeostaticDrift.lean",
+    "start_line_a": 321,
+    "start_line_b": 197,
+    "end_line_a": 328,
+    "end_line_b": 204,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "have hpen :\nS.damagePenalty z = autonomousRepairDamagePenalty P K z := by\nclassical\nsimp [S, RecurrentHomeostasisSystem.damagePenalty,\nobjecthoodRecurrentHomeostasisSystem,\nautonomousRepairDamagePenalty]\nrw [hpen]\nchange"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/FiniteHorizonHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/MixedHomeostaticDrift.lean",
+    "start_line_a": 503,
+    "start_line_b": 197,
+    "end_line_a": 510,
+    "end_line_b": 204,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "have hpen :\nS.damagePenalty z = autonomousRepairDamagePenalty P K z := by\nclassical\nsimp [S, RecurrentHomeostasisSystem.damagePenalty,\nobjecthoodRecurrentHomeostasisSystem,\nautonomousRepairDamagePenalty]\nrw [hpen]\nchange"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 300,
+    "start_line_b": 107,
+    "end_line_a": 307,
+    "end_line_b": 114,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "mu0 S.carrier S.potential hmu0 hPotentialTop\nhave hDtop : ∀ n, D n ≠ ∞ := by\nintro n\nexact MeasureTheory.measure_ne_top _ _\nhave hfinite : ∀ N,\nkappa * (∑ n ∈ Finset.range N, D n) ≤\nV0 + (N : ENNReal) * lambda := by\nintro N"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 312,
+    "start_line_b": 118,
+    "end_line_a": 319,
+    "end_line_b": 125,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "exact finite_invariant_of_cesaro_tendsto\nM (pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) nu phi hphi (by\nsimpa [M] using hlim)\nlet tau : ℕ → ℝ := fun n =>\nV0.toReal / ((((phi n) + 1 : ℕ) : ℝ) * kappa.toReal)\nhave hkpos : 0 < kappa.toReal := ENNReal.toReal_pos hk0 hktop\nhave hbaseStartup : Tendsto"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/LongRunHomeostasis.lean",
+    "start_line_a": 372,
+    "start_line_b": 147,
+    "end_line_a": 379,
+    "end_line_b": 154,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "StrictMono phi ∧\nTendsto\n(cesaroRow (pmfKernelMatrix S.mixedKernel)\n(pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) ∘ phi)\natTop (𝓝 nu) ∧\nMatrix.vecMul nu.1 (pmfKernelMatrix S.mixedKernel) = nu.1 ∧\nsimplexDamagedMass S.legitimate nu ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/Homeostasis/CesaroHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/TerminalClosure.lean",
+    "start_line_a": 372,
+    "start_line_b": 132,
+    "end_line_a": 379,
+    "end_line_b": 139,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "StrictMono phi ∧\nTendsto\n(cesaroRow (pmfKernelMatrix S.mixedKernel)\n(pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) ∘ phi)\natTop (𝓝 nu) ∧\nMatrix.vecMul nu.1 (pmfKernelMatrix S.mixedKernel) = nu.1 ∧\nsimplexDamagedMass S.legitimate nu ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/LongRunHomeostasis.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 147,
+    "start_line_b": 172,
+    "end_line_a": 154,
+    "end_line_b": 179,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "StrictMono phi ∧\nTendsto\n(cesaroRow (pmfKernelMatrix S.mixedKernel)\n(pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) ∘ phi)\natTop (𝓝 nu) ∧\nMatrix.vecMul nu.1 (pmfKernelMatrix S.mixedKernel) = nu.1 ∧\nsimplexDamagedMass S.legitimate nu ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/JointHomeostasis/TerminalClosure.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/PostQTTightening/JointMixedDriftDownstream.lean",
+    "start_line_a": 132,
+    "start_line_b": 172,
+    "end_line_a": 139,
+    "end_line_b": 179,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "StrictMono phi ∧\nTendsto\n(cesaroRow (pmfKernelMatrix S.mixedKernel)\n(pmfKernelMatrix_rowStochastic S.mixedKernel)\n(pmfSimplex mu0) ∘ phi)\natTop (𝓝 nu) ∧\nMatrix.vecMul nu.1 (pmfKernelMatrix S.mixedKernel) = nu.1 ∧\nsimplexDamagedMass S.legitimate nu ≤"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectIdentity.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatePathTeleologyBoundary.lean",
+    "start_line_a": 43,
+    "start_line_b": 27,
+    "end_line_a": 50,
+    "end_line_b": 34,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "discount := 1 / 2\ntransition_nonneg := by\nintro _ _ _\nnorm_num\ntransition_sum_one := by\nintro _ _\nsimp\nreward_abs_le := by"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SemanticBoundaries.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/StatePathTeleologyBoundary.lean",
+    "start_line_a": 73,
+    "start_line_b": 27,
+    "end_line_a": 80,
+    "end_line_b": 34,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "discount := 1 / 2\ntransition_nonneg := by\nintro _ _ _\nnorm_num\ntransition_sum_one := by\nintro _ _\nsimp\nreward_abs_le := by"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaFunctionalGraphClassification.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaPermutationClassification.lean",
+    "start_line_a": 586,
+    "start_line_b": 280,
+    "end_line_a": 593,
+    "end_line_b": 287,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "let w : zeroSumEuclidean (S := S) :=\n⟨WithLp.toLp 2 v, (zeroSum_mem_iff v).2 hvsum⟩\nhave hwne : w ≠ 0 := by\nintro hw0\nhave hval := congrArg (fun z : zeroSumEuclidean (S := S) =>\n(z.1 : EuclideanSpace ℝ S).ofLp) hw0\napply hvne\nsimpa [w] using hval"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1ResetFamily.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaL1StrictImprovement.lean",
+    "start_line_a": 182,
+    "start_line_b": 183,
+    "end_line_a": 189,
+    "end_line_b": 190,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "have hsqrt_sq :\n(Real.sqrt (Fintype.card S)) ^ 2 = (Fintype.card S : ℝ) :=\nReal.sq_sqrt (by positivity)\nhave hcard_real : 1 < (Fintype.card S : ℝ) := by exact_mod_cast hcard\nhave hsqrt_nonneg : 0 ≤ Real.sqrt (Fintype.card S) := Real.sqrt_nonneg _\nhave hsqrt_gt : 1 < Real.sqrt (Fintype.card S) := by\nnlinarith\nhave hsigma_lt_sqrt :"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/HilbertMeanSourceContinuationWidth.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/HilbertMeanSourcePastFiber.lean",
+    "start_line_a": 126,
+    "start_line_b": 63,
+    "end_line_a": 133,
+    "end_line_b": 70,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "(a b : H) (ha : ‖a‖ ≤ 1) (hb : ‖b‖ ≤ 1)\n(hunit : ∀ j, ∀ᵐ z ∂μ j, ‖z‖ ≤ 1) :\n|sourceContinuation μ i μH (Function.update ω i a) -\nsourceContinuation μ i μH (Function.update ω i b)| ≤\n2 / (N : ℝ) := by\napply sourceContinuation_update_pairwise_le_two_div hN μ ω i μH a b ha hb\n· exact integrable_splitMeanError_future_of_unit hN μ i μH hμH\n(blockProjection (prefixBlock (N := N) i.1) (Function.update ω i a))"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/TVKernel.lean",
+    "start_line_a": 164,
+    "start_line_b": 26,
+    "end_line_a": 171,
+    "end_line_b": 33,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "(B : Set Y) (hB : MeasurableSet B) :\n(κ ∘ₘ μ).real B = ∫ x, (κ x).real B ∂μ := by\nrw [measureReal_def, Measure.bind_apply hB κ.aemeasurable]\nsimp_rw [measureReal_def]\nsymm\nexact integral_toReal\n(κ.measurable_coe hB).aemeasurable\n(ae_of_all μ fun x => measure_lt_top (κ x) B)"
+  },
+  {
+    "file_a": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpRenewalIntegrals.lean",
+    "file_b": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpSimplex.lean",
+    "start_line_a": 79,
+    "start_line_b": 303,
+    "end_line_a": 86,
+    "end_line_b": 310,
+    "equal_nonblank_code_lines": 8,
+    "excerpt": "((fun a : I => (a : ℝ)) ⁻¹' Set.Icc (0 : ℝ) ρ) =\n{a : I | (a : ℝ) ≤ ρ} := by\next a\nsimp only [Set.mem_preimage, Set.mem_Icc, Set.mem_setOf_eq]\nexact ⟨fun h => h.2, fun h => ⟨a.2.1, h⟩⟩\nrw [← hpre]\nrw [unitInterval.measurePreserving_coe.setLIntegral_comp_preimage_emb\nunitInterval.measurableEmbedding_coe"
+  }
+]
