@@ -65,8 +65,9 @@ review requirements must be satisfied separately.
 ## Fail-closed freshness and source authority
 
 The navigator validates fixed, independent SHA-256 values for EVERY
-source audit input file, its own 68-row clone snapshot, and all 633
-live Lean source files against the pinned source census. It refuses to
+source audit input file, its own 68-row clone snapshot, the immutable
+canonical Compression ledger used for scientific-role classifications,
+and all 633 live Lean source files against the pinned source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

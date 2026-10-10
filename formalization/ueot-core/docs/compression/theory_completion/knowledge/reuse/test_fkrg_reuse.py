@@ -101,6 +101,9 @@ class ProofReuseTests(unittest.TestCase):
         with mock.patch.object(reuse, "CLONE_SHA256", "f" * 64):
             with self.assertRaisesRegex(RuntimeError, "AUDIT_CLONE_EVIDENCE_DRIFT"):
                 reuse.verify_evidence_files()
+        with mock.patch.object(reuse, "LEDGER_SHA256", "f" * 64):
+            with self.assertRaisesRegex(RuntimeError, "CANONICAL_COMPRESSION_LEDGER_CHANGED"):
+                reuse.verify_evidence_files()
 
     def test_any_modified_source_rejected(self):
         row = dict(self.data["modules"][-1])

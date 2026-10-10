@@ -54,6 +54,9 @@ DUPLICATED_TV_HELPER = "UEOT.V3.StatisticalDefect.tvDist_symm"
 
 
 CLONE_SHA256 = "e369d3eee8fe5383532bf68c18ed08ec961d9710b4d600da3edc11a243ebc064"
+LEDGER = REPO / "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
+LEDGER_SHA256 = "621da1e3c2a9b87aab0a07ca0624fe192fe15cc9bcd1c5aa6f5e669526a4d948"
+
 
 
 def read_csv(path: Path) -> list[dict]:
@@ -98,6 +101,8 @@ def _parse_data() -> dict:
 
 
 def verify_evidence_files():
+    if sha256(LEDGER.read_bytes()).hexdigest() != LEDGER_SHA256:
+        raise RuntimeError("CANONICAL_COMPRESSION_LEDGER_CHANGED_RECLASSIFY_FIRST")
     if sha256((HERE / "CLONE_CANDIDATES_68.json").read_bytes()).hexdigest() != CLONE_SHA256:
         raise RuntimeError("AUDIT_CLONE_EVIDENCE_DRIFT")
     for name, expected in EVIDENCE_SHA.items():
