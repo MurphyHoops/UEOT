@@ -165,6 +165,29 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual(pf.REPO_DEFAULT, HERE.parents[6])
         self.assertTrue((pf.REPO_DEFAULT / ".git").exists())
 
+    def test_open_in_theorem_wrapper_is_discovered(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\n"
+              "open Nat in theorem open_scoped_result : True := trivial\n"
+              "open Nat in public lemma open_scoped_public : True := trivial\n"
+              "end UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"UEOT.New.open_scoped_result",
+                          "UEOT.New.open_scoped_public"})
+
+    def test_explicit_root_qualified_theorem_does_not_prepend_namespace(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\n"
+              "theorem _root_.Somewhere.τ : True := trivial\n"
+              "lemma normal : True := trivial\n"
+              "end UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"Somewhere.τ", "UEOT.New.normal"})
+
     def test_unparsed_public_lemma_fails_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\ntheorem : True := trivial\nend UEOT.New\n")

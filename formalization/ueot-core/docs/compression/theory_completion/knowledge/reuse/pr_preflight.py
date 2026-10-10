@@ -51,6 +51,12 @@ PR_UNICODE_SEGMENT = r"(?:«[^»\n]+»|[^\W\d][\w'!?]*)"
 PR_UNICODE_NAME = re.compile(
     PR_UNICODE_SEGMENT + r"(?:\." + PR_UNICODE_SEGMENT + r")*"
 )
+# Open Foo in theorem is a scoped command wrapper, not a namespace frame.
+# Strip this prefix for declaration recognition, preserve the ambient ns.
+SCOPED_OPEN_THEOREM = re.compile(
+    r"^\s*open\s+[^\n]*?\bin\s+"
+    r"(?=(?:" + PR_MODIFIER + r"\s+)*(?:theorem|lemma)\b)"
+)
 
 
 
@@ -107,16 +113,22 @@ def declarations(path, source):
             op, arg = scope.groups()
             if op == "namespace":
                 stack.append(ns)
-                ns = (ns + "." if ns else "") + (arg or "")
+                target = arg or ""
+                if target.startswith("_root_."):
+                    ns = target[len("_root_."):]
+                else:
+                    ns = (ns + "." if ns else "") + target
             elif op == "section":
                 stack.append(ns)
             elif op == "end" and stack:
                 ns = stack.pop()
-        start = PUBLIC_DECL_START.match(line)
+        wrapper = SCOPED_OPEN_THEOREM.match(line)
+        scan_line = line[wrapper.end():] if wrapper else line
+        start = PUBLIC_DECL_START.match(scan_line)
         if start is None:
             continue
         kind = start.group(1)
-        tail = line[start.end():].lstrip()
+        tail = scan_line[start.end():].lstrip()
         detected = PR_UNICODE_NAME.match(tail)
         if not detected or (len(tail) > detected.end() and
                             not (tail[detected.end()].isspace() or
@@ -125,10 +137,12 @@ def declarations(path, source):
                 f"UNSUPPORTED_PUBLIC_LEAN_DECLARATION: {path}:{line_number}"
             )
         local_name = detected.group(0)
-        is_private = re.search(r"\bprivate\b", line[:start.start(1)]) is not None
+        is_private = re.search(r"\bprivate\b", scan_line[:start.start(1)]) is not None
         if is_private:
             continue
-        name = (ns + "." if ns else "") + local_name
+        # Explicit root qualification bypasses ambient namespace context.
+        name = (local_name[len("_root_."):] if local_name.startswith("_root_.")
+                else (ns + "." if ns else "") + local_name)
         if not name or name.startswith("."):
             raise RuntimeError("INVALID_PARSED_DECLARATION")
         found.append({
