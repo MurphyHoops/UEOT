@@ -402,6 +402,50 @@ def logical_multiline_command_headers(lines, path):
 
 
 
+def multiline_attribute_closing_index(line, start_depth):
+    """Locate the actual closing ] for a previously opened multiline @[...].
+
+    Ignore quoted strings, escaped identifiers, and Lean Char literals so
+    literal brackets never alter attribute nesting. The returned offset is
+    consumed before parsing an adjacent private/public/theorem tail.
+    """
+    depth = start_depth
+    string = False
+    escaped = False
+    slash_escape = False
+    guillemet = False
+    i = 0
+    while i < len(line):
+        ch = line[i]
+        if string:
+            if slash_escape:
+                slash_escape = False
+            elif ch == "\\":
+                slash_escape = True
+            elif ch == '"':
+                string = False
+        elif guillemet:
+            if ch == "»":
+                guillemet = False
+        elif ch == '"':
+            string = True
+        elif ch == "«":
+            guillemet = True
+        elif (character := LEAN_CHAR_LITERAL.match(line, i)):
+            i = character.end()
+            continue
+        elif ch == "[":
+            depth += 1
+        elif ch == "]":
+            depth -= 1
+            if depth == 0:
+                return i
+            if depth < 0:
+                raise RuntimeError("MALFORMED_MULTILINE_ATTRIBUTE")
+        i += 1
+    return None
+
+
 def attribute_bracket_delta(line):
     """Count actual attribute brackets, ignoring escaped-name/string content."""
     line = re.sub(r"«[^»]*»", "", line)
@@ -563,18 +607,23 @@ def declarations(path, source):
         if not line.strip():
             continue
         if multiline_attribute_depth:
-            multiline_attribute_depth += attribute_bracket_delta(line)
-            if multiline_attribute_depth < 0:
-                raise RuntimeError(
-                    f"MALFORMED_MULTILINE_ATTRIBUTE: {path}:{line_number}"
-                )
-            if multiline_attribute_depth == 0 and not line.rstrip().endswith("]"):
-                # A command after a closing attribute on its last physical
-                # line is not supported by this lexical scanner.
-                raise RuntimeError(
-                    f"UNSUPPORTED_MULTILINE_ATTRIBUTE_TAIL: {path}:{line_number}"
-                )
-            continue
+            closing = multiline_attribute_closing_index(
+                line, multiline_attribute_depth
+            )
+            if closing is None:
+                multiline_attribute_depth += attribute_bracket_delta(line)
+                if multiline_attribute_depth <= 0:
+                    raise RuntimeError(
+                        f"MALFORMED_MULTILINE_ATTRIBUTE: {path}:{line_number}"
+                    )
+                continue
+            # The original opening line already added one @[] to pending
+            # modifiers. Parse the surviving tail as ordinary source:
+            # a valid closing ]private or ]public theorem must not be lost.
+            multiline_attribute_depth = 0
+            line = line[closing+1:]
+            if not line.strip():
+                continue
         # A multiline attribute can appear between a standalone private
         # modifier and its actual public-command syntax. Keep privacy until
         # the complete attribute is consumed, not just its first line.

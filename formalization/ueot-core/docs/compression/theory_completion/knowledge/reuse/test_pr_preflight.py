@@ -651,6 +651,37 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.visible"})
 
+    def test_multiline_attribute_adjacent_private_visibility(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[simp,\n grind]private\n"
+              "theorem hidden : True := trivial\n"
+              "theorem public_result : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({r["symbol"] for r in result["new_public_source_theorems"]},
+                         {"N.public_result"})
+
+    def test_multiline_attribute_adjacent_public_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[simp,\n grind]public theorem visible : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({r["symbol"] for r in result["new_public_source_theorems"]},
+                         {"N.visible"})
+
+    def test_multiline_attribute_bracket_char_does_not_close_early(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[custom,\n ']']private\n"
+              "theorem hidden : True := trivial\n"
+              "theorem public_result : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({r["symbol"] for r in result["new_public_source_theorems"]},
+                         {"N.public_result"})
+
     def test_standalone_attribute_character_closing_bracket_keeps_private(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"
@@ -693,12 +724,13 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.visible"})
 
-    def test_multiline_attribute_last_line_with_theorem_fails_closed(self):
+    def test_multiline_attribute_last_line_with_theorem_is_detected(self):
         write(self.repo, PACKAGE + "Novel.lean",
-              "namespace N\n@[simp,\n grind] theorem hidden : True := trivial\nend N\n")
+              "namespace N\n@[simp,\n grind] theorem visible : True := trivial\nend N\n")
         head = self.commit()
-        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTILINE_ATTRIBUTE_TAIL"):
-            pf.preflight(self.repo, self.base, head)
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({r["symbol"] for r in result["new_public_source_theorems"]},
+                         {"N.visible"})
 
     def test_standalone_attribute_before_public_theorem_is_visible(self):
         write(self.repo, PACKAGE + "Novel.lean",
