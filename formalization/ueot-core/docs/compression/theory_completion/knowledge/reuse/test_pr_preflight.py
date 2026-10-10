@@ -177,6 +177,33 @@ class DeltaChecks(unittest.TestCase):
                          {"UEOT.New.open_scoped_result",
                           "UEOT.New.open_scoped_public"})
 
+    def test_qualified_end_may_close_multiple_namespace_components(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace A.B\nnamespace C\n"
+              "theorem before_end : True := trivial\n"
+              "end B.C\ntheorem after_end : True := trivial\nend A\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"A.B.C.before_end", "A.after_end"})
+
+    def test_qualified_end_partially_closes_compound_namespace(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace A.B\n"
+              "theorem inside_B : True := trivial\n"
+              "end B\ntheorem inside_A : True := trivial\nend A\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"A.B.inside_B", "A.inside_A"})
+
+    def test_same_physical_line_multiple_commands_fail_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N theorem fresh : True := True.intro end N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_include_and_omit_scoped_command_wrappers_are_discovered(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\n"

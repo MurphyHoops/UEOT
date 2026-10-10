@@ -114,16 +114,61 @@ def declarations(path, source):
         if scope:
             op, arg = scope.groups()
             if op == "namespace":
-                stack.append(ns)
+                previous = ns
                 target = arg or ""
                 if target.startswith("_root_."):
                     ns = target[len("_root_."):]
                 else:
                     ns = (ns + "." if ns else "") + target
+                stack.append(("namespace", previous, target))
             elif op == "section":
-                stack.append(ns)
-            elif op == "end" and stack:
-                ns = stack.pop()
+                stack.append(("section", ns, arg or ""))
+            elif op == "end":
+                if not stack:
+                    raise RuntimeError(f"UNBALANCED_SCOPE_END: {path}:{line_number}")
+                if not arg:
+                    _, ns, _ = stack.pop()
+                elif stack[-1][0] == "section" and stack[-1][2] == arg:
+                    _, ns, _ = stack.pop()
+                else:
+                    # A qualified Lean namespace end can consume multiple
+                    # components (and parts of namespace A.B opened at once).
+                    # Preserve any remaining outer component as a synthetic
+                    # frame, so a later 'end A' still closes it correctly.
+                    current = ns.split(".") if ns else []
+                    closed = arg.removeprefix("_root_.").split(".")
+                    if not closed or current[-len(closed):] != closed:
+                        raise RuntimeError(
+                            f"UNSUPPORTED_QUALIFIED_END: {path}:{line_number}: {arg}"
+                        )
+                    remain = ".".join(current[:-len(closed)])
+                    while stack:
+                        kind, before, _ = stack[-1]
+                        # End section frames nested inside this namespace too.
+                        if kind == "section":
+                            stack.pop()
+                            continue
+                        if before == remain:
+                            stack.pop()
+                            break
+                        if before.startswith(remain + ".") or remain == "":
+                            stack.pop()
+                            continue
+                        if before == "" or remain.startswith(before + "."):
+                            stack.pop()
+                            stack.append(("namespace", before, remain))
+                            break
+                        raise RuntimeError(
+                            f"INCONSISTENT_QUALIFIED_END: {path}:{line_number}"
+                        )
+                    ns = remain
+            # Multiple commands can share a physical line in Lean. The
+            # lexical scanner deliberately rejects rather than silently
+            # pretending that any theorem after a scope header is absent.
+            if re.search(r"\b(?:theorem|lemma)\b", line[scope.end():]):
+                raise RuntimeError(
+                    f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
+                )
         wrapper = SCOPED_IN_PUBLIC.match(line)
         scan_line = line[wrapper.end():] if wrapper else line
         start = PUBLIC_DECL_START.match(scan_line)
