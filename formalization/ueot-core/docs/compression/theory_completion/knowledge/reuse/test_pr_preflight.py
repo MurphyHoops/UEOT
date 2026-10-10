@@ -137,6 +137,26 @@ class DeltaChecks(unittest.TestCase):
              "UEOT.New.after_public_sections"}
         )
 
+    def test_explicit_universe_params_not_in_public_symbol_name(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem fresh.{u} (α : Sort u) : True := trivial\n"
+              "lemma pair.{u,v} (α : Sort u) (β : Sort v) : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.fresh", "N.pair"}
+        )
+
+    def test_unterminated_universe_params_fail_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem fresh.{u (α : Sort u) : True := trivial\nend N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_UNIVERSE_PARAMETER_LIST"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_unicode_qualified_name_and_question_mark_not_truncated(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace UEOT.New\n"

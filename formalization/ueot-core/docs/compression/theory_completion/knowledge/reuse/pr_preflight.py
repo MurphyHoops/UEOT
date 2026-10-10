@@ -554,17 +554,30 @@ def declarations(path, source):
         kind = start.group(1)
         tail = scan_line[start.end():].lstrip()
         detected = PR_UNICODE_NAME.match(tail)
-        if not detected or (len(tail) > detected.end() and
-                            not (tail[detected.end()].isspace() or
-                                 tail[detected.end()] in "({[:")):
+        if detected is None:
             raise RuntimeError(
                 f"UNSUPPORTED_PUBLIC_LEAN_DECLARATION: {path}:{line_number}"
             )
         local_name = detected.group(0)
+        # Lean declId permits an explicit universe-parameter suffix after
+        # the name: theorem fresh.{u} and theorem fresh.{u,v}. These
+        # parameters are NOT part of the fully qualified theorem symbol.
+        suffix = tail[detected.end():]
+        if suffix.startswith(".{"):
+            level_params = re.match(r"^\.\{[^}\n]*\}", suffix)
+            if level_params is None or not level_params.group(0)[2:-1].strip():
+                raise RuntimeError(
+                    f"UNSUPPORTED_UNIVERSE_PARAMETER_LIST: {path}:{line_number}"
+                )
+            suffix = suffix[level_params.end():]
+        if suffix and not (suffix[0].isspace() or suffix[0] in "({[:"):
+            raise RuntimeError(
+                f"UNSUPPORTED_PUBLIC_LEAN_DECLARATION: {path}:{line_number}"
+            )
         # Reject adjacent commands on a single physical line even after
         # recognizing the first public declaration. A second lemma/theorem
         # could otherwise silently disappear from the incremental census.
-        if contains_command_token(tail[detected.end():]):
+        if contains_command_token(suffix):
             raise RuntimeError(
                 f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
             )

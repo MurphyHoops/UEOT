@@ -163,3 +163,9 @@ not attribute endings. Standalone attributes, inline declaration modifiers,
 privacy classification and multiline attribute depth use the same lexically
 aware interpretation. Valid attribute cases are compiled in the pinned Lean
 toolchain, with committed Git-tree regression fixtures.
+
+Explicit universe parameter lists: the lexical scanner recognizes Lean
+qualified declaration names followed by optional .{u} / .{u,v} suffixes.
+The universe binders are excluded from the public symbol name. The test
+syntax is compiled under the pinned Lean compiler and includes malformed
+suffix negative controls.
