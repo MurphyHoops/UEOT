@@ -133,8 +133,15 @@ def declarations(path, source):
         r"^\s*(private|public|protected|noncomputable|nonrec|"
         r"unsafe|meta|scoped|local)\s*$"
     )
+    standalone_attribute = re.compile(r"^\s*(@\[[^\]\n]*\])\s*$")
     for line_number, line in enumerate(code, 1):
         if not line.strip():
+            continue
+        attribute = standalone_attribute.match(line)
+        if attribute:
+            # Attributes may occupy their own line between a privacy
+            # modifier and the declaration; preserve the modifier chain.
+            pending_modifiers.append(attribute.group(1))
             continue
         modifier = standalone_modifier.match(line)
         if modifier:
