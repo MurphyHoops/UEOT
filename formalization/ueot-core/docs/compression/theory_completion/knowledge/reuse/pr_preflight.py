@@ -71,6 +71,53 @@ def contains_command_token(line):
                           ESCAPED_LEAN_NAME.sub("ESCAPED_NAME", line)))
 
 
+def has_private_modifier(prefix):
+    # An attribute payload is NOT a modifier token. In particular,
+    # @[deprecated «private» (...)] does not create a private theorem.
+    without_attributes = re.sub(r"@\[[^\]\n]*\]", " ", prefix)
+    return "private" in without_attributes.split()
+
+
+def mask_syntax_quotations(lines, path):
+    # Lean command quotations are syntax DATA, never executable commands.
+    # Scan across physical lines, masking all quotation contents while
+    # retaining the full line count and external command prefixes.
+    output = []
+    depth = 0
+    quoted_string = False
+    escape = False
+    for number, line in enumerate(lines, 1):
+        result = list(line)
+        i = 0
+        while i < len(line):
+            if depth == 0 and line[i:i+2] == chr(96) + "(":
+                result[i] = result[i+1] = " "
+                i += 2
+                depth = 1
+                continue
+            if depth > 0:
+                ch = line[i]
+                result[i] = " "
+                if quoted_string:
+                    if escape:
+                        escape = False
+                    elif ch == "\\":
+                        escape = True
+                    elif ch == '"':
+                        quoted_string = False
+                elif ch == '"':
+                    quoted_string = True
+                elif ch == "(":
+                    depth += 1
+                elif ch == ")":
+                    depth -= 1
+            i += 1
+        output.append("".join(result))
+    if depth:
+        raise RuntimeError(f"UNTERMINATED_SYNTAX_QUOTATION: {path}")
+    return output
+
+
 def qualified_parts(name):
     tokens = list(re.finditer(PR_UNICODE_SEGMENT, name))
     if not tokens or ".".join(x.group(0) for x in tokens) != name:
@@ -131,7 +178,7 @@ def corpus(repo, sha):
 
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
-    code = no_lean_comments(source).splitlines()
+    code = mask_syntax_quotations(no_lean_comments(source).splitlines(), path)
     ns, stack, found = "", [], []
     pending_modifiers = []
     multiline_attribute_depth = 0
@@ -208,13 +255,11 @@ def declarations(path, source):
                 # component (validated in pinned Lean), unlike root-qualified
                 # declaration identifiers.
                 ns = (ns + "." if ns else "") + target
-                is_private_ns = re.search(r"\bprivate\b",
-                                         line[:scope.start(1)]) is not None
+                is_private_ns = has_private_modifier(line[:scope.start(1)])
                 stack.append(("private_namespace" if is_private_ns else "namespace",
                               previous, target))
             elif op == "section":
-                is_private_section = re.search(r"\bprivate\b",
-                                          line[:scope.start(1)]) is not None
+                is_private_section = has_private_modifier(line[:scope.start(1)])
                 stack.append(("private_section" if is_private_section else "section",
                               ns, arg or ""))
             elif op == "end":
@@ -318,7 +363,7 @@ def declarations(path, source):
             raise RuntimeError(
                 f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
             )
-        is_private = re.search(r"\bprivate\b", scan_line[:start.start(1)]) is not None
+        is_private = has_private_modifier(scan_line[:start.start(1)])
         if is_private or any(
             kind in ("private_section", "private_namespace") for kind, _, _ in stack
         ):

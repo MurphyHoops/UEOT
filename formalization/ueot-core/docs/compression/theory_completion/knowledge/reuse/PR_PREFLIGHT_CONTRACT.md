@@ -116,3 +116,12 @@ tracked Lean file aliases, so checkout-resolved modules cannot be silently
 absent from the audit. Standalone privacy prefixes are retained across
 multiline attribute blocks until the subsequent theorem is parsed.
 Unsupported syntax on a closing attribute line fails closed.
+
+
+## Attribute payload privacy and Lean command quotations
+
+Visibility is determined from real modifier tokens outside attribute
+payloads, not substring matches. Quoted Lean command syntax is source data,
+not an executable theorem declaration; single- and multiline quotation
+contents are masked before lexical command-token detection. Unsupported
+unterminated quotations fail closed.

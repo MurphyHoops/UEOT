@@ -316,6 +316,38 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.visible"})
 
+    def test_deprecated_attribute_containing_escaped_private_is_public(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[deprecated «private» (since := \"2026-10-10\")] theorem fresh : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.fresh"})
+
+    def test_single_line_lean_command_quotation_is_not_a_real_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "def quoted : Lean.MacroM Lean.Syntax := " +
+              chr(96) + "(command| theorem generated : True := trivial)\n"
+              "theorem real_public : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.real_public"})
+
+    def test_multiline_lean_command_quotation_is_not_a_real_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "def quoted : Lean.MacroM Lean.Syntax := " + chr(96) + "(command|\n"
+              " theorem generated : True := trivial\n)\n"
+              "theorem real_public : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.real_public"})
+
     def test_committed_lean_symlink_fails_closed(self):
         target = self.repo / PACKAGE / "Linked.lean"
         target.symlink_to("Previous.lean")
