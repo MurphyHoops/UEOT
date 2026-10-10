@@ -93,3 +93,17 @@ unsupported public theorem syntax, and uncommitted worktree separation. No real 
 
 On future changes to the parser, treat all lexical results as candidates
 until Lean compilation and proof/dependency inspection are complete.
+
+
+## Scope edge regressions after Codex review
+
+Validated against pinned Lean using actual lake lean:
+
+- namespace A; namespace _root_.B creates A._root_.B. End B leaves
+  A._root_, and end _root_ restores A.
+- section A; anonymous section; section B; end A.B is rejected by Lean.
+  The scanner also refuses it rather than silently skipping an anonymous
+  section to fabricate a valid qualified ending.
+- The valid sequential closing end B; end; end A restores the namespace.
+
+Unrecognized command syntax must fail closed rather than omitting proofs.

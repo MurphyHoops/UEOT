@@ -176,10 +176,10 @@ def declarations(path, source):
             if op == "namespace":
                 previous = ns
                 target = arg or ""
-                if target.startswith("_root_."):
-                    ns = target[len("_root_."):]
-                else:
-                    ns = (ns + "." if ns else "") + target
+                # Namespace scope headers treat _root_ as a literal
+                # component (validated in pinned Lean), unlike root-qualified
+                # declaration identifiers.
+                ns = (ns + "." if ns else "") + target
                 is_private_ns = re.search(r"\bprivate\b",
                                          line[:scope.start(1)]) is not None
                 stack.append(("private_namespace" if is_private_ns else "namespace",
@@ -204,6 +204,8 @@ def declarations(path, source):
                     for frame in reversed(stack):
                         if frame[0] not in ("section", "private_section"):
                             break
+                        # An anonymous section prevents combining named
+                        # frames across it (validated by actual Lean).
                         names.insert(0, frame[2])
                         if arg == frame[2] or arg == ".".join(names):
                             match_depth = len(names)

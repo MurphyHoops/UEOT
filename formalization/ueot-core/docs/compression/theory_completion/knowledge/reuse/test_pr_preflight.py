@@ -177,6 +177,51 @@ class DeltaChecks(unittest.TestCase):
                          {"UEOT.New.open_scoped_result",
                           "UEOT.New.open_scoped_public"})
 
+    def test_literal_root_component_namespace_matches_real_lean(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace A\nnamespace _root_.B\n"
+              "theorem inside_B : True := trivial\n"
+              "end B\nend _root_\n"
+              "theorem after_root : True := trivial\nend A\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"A._root_.B.inside_B", "A.after_root"})
+
+    def test_nested_literal_root_component_compound_end(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace A\nnamespace _root_.B\nnamespace C\n"
+              "theorem inside_C : True := trivial\n"
+              "end B.C\nend _root_\n"
+              "theorem after_C : True := trivial\nend A\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"A._root_.B.C.inside_C", "A.after_C"})
+
+    def test_anonymous_section_prevents_skipped_qualified_end(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nsection A\nsection\nsection B\n"
+              "theorem inside_sections : True := trivial\n"
+              "end A.B\ntheorem after_sections : True := trivial\nend N\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_QUALIFIED_END"):
+            pf.preflight(self.repo, self.base, head)
+
+    def test_valid_anonymous_section_closes_one_by_one(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nsection A\nsection\nsection B\n"
+              "theorem inside_sections : True := trivial\n"
+              "end B\nend\nend A\n"
+              "theorem after_sections : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.inside_sections", "N.after_sections"})
+
     def test_qualified_end_may_close_multiple_namespace_components(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace A.B\nnamespace C\n"
