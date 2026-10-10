@@ -22,12 +22,29 @@ import tarfile
 HERE = Path(__file__).resolve().parent
 REPO_DEFAULT = HERE.parents[7]
 sys.path.insert(0, str(HERE.parent))
-from fkrg import DECL, SCOPE, no_lean_comments
+from fkrg import DECL, no_lean_comments
 
 LEAN_PREFIX = "formalization/ueot-core/UEOT/"
 LEAN_ROOT = "formalization/ueot-core/UEOT.lean"
 PUBLIC_KINDS = {"theorem", "lemma"}
 SCHEMA = "FKRG_PR_DIFF_PREFLIGHT_V1"
+# FKRG v1's DECL regex only covers ASCII identifiers and omits
+# noncomputable section openers. Do NOT modify that pinned parser in L1:
+# extend the PR-specific scanner and reject any public theorem line that
+# neither parser can represent without silently dropping the theorem.
+PR_SCOPE = re.compile(
+    r"^\s*(?:(?:noncomputable|private|protected)\s+)*"
+    r"(namespace|section|end)\b(?:\s+(\S+))?"
+)
+PUBLIC_DECL_START = re.compile(
+    r"^\s*(?:(?:@\[[^\]\n]*\]|private|protected|noncomputable|"
+    r"unsafe|irreducible|partial)\s+)*(theorem|lemma)\b"
+)
+PR_UNICODE_SEGMENT = r"(?:«[^»\n]+»|[^\W\d]\w*(?:'\w*)*)"
+PR_UNICODE_NAME = re.compile(
+    PR_UNICODE_SEGMENT + r"(?:\." + PR_UNICODE_SEGMENT + r")*"
+)
+
 
 
 def git(repo, *args):
@@ -79,7 +96,7 @@ def declarations(path, source):
     module = path.replace("formalization/ueot-core/", "").removesuffix(".lean").replace("/", ".")
     ns, stack, found = "", [], []
     for line_number, line in enumerate(code, 1):
-        scope = SCOPE.match(line)
+        scope = PR_SCOPE.match(line)
         if scope:
             op, arg = scope.groups()
             if op == "namespace":
@@ -90,15 +107,31 @@ def declarations(path, source):
             elif op == "end" and stack:
                 ns = stack.pop()
         match = DECL.match(line)
-        if not match:
+        start = PUBLIC_DECL_START.match(line)
+        if match is None and start is None:
             continue
-        kind, local_name = match.groups()
-        is_private = re.search(r"\bprivate\b", line[:match.start(1)]) is not None
+        if match is not None:
+            kind, local_name = match.groups()
+            # Non-theorem declarations are indexed by the generic FKRG
+            # scanner but do not require this proof reuse gate.
+            if kind not in PUBLIC_KINDS:
+                continue
+            is_private = re.search(r"\bprivate\b", line[:match.start(1)]) is not None
+        else:
+            kind = start.group(1)
+            tail = line[start.end():].lstrip()
+            detected = PR_UNICODE_NAME.match(tail)
+            if not detected or (len(tail) > detected.end() and
+                                not (tail[detected.end()].isspace() or
+                                     tail[detected.end()] in "({[:")):
+                raise RuntimeError(
+                    f"UNSUPPORTED_PUBLIC_LEAN_DECLARATION: {path}:{line_number}"
+                )
+            local_name = detected.group(0)
+            is_private = re.search(r"\bprivate\b", line[:start.start(1)]) is not None
         if is_private:
             continue
         name = (ns + "." if ns else "") + local_name
-        if kind not in PUBLIC_KINDS:
-            continue
         if not name or name.startswith("."):
             raise RuntimeError("INVALID_PARSED_DECLARATION")
         found.append({

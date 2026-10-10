@@ -87,6 +87,34 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual(result["new_public_source_theorems"][0]["symbol"],
                          "UEOT.New.public_result")
 
+    def test_noncomputable_section_closure_preserves_surrounding_namespace(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.Nested\nnoncomputable section\n"
+              "theorem inside_section : True := trivial\nend\n"
+              "theorem after_section : True := trivial\n"
+              "end UEOT.Nested\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        names = {x["symbol"] for x in result["new_public_source_theorems"]}
+        self.assertEqual(names, {"UEOT.Nested.inside_section",
+                                 "UEOT.Nested.after_section"})
+
+    def test_unicode_and_attribute_declarations_are_reported(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\n@[simp] theorem τ_bound : True := trivial\n"
+              "lemma θεώρημα : True := trivial\nend UEOT.New\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"UEOT.New.τ_bound", "UEOT.New.θεώρημα"})
+
+    def test_unparsed_public_lemma_fails_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace UEOT.New\ntheorem : True := trivial\nend UEOT.New\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_PUBLIC_LEAN_DECLARATION"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_duplicate_exact_fqn_is_rejected_even_across_modules(self):
         write(self.repo, PACKAGE + "Clash.lean",
               "namespace UEOT.Example\n"
