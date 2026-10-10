@@ -32,7 +32,7 @@ instead of vanishing from the review report. It produces:
 - exact base and candidate source tree commit identifiers;
 - all changed UEOT Lean source paths and module/declaration counts;
 - genuinely new public lexical theorem/lemma names, excluding names that
-  already existed in base; private declarations are excluded;
+  already existed in base; private declarations are excluded, including stand-alone private modifiers;
 - up to five previously existing name-similar public theorem candidates
   for each new declaration, labeled LEXICAL_ONLY;
 - mandatory TYPED_REUSE_REVIEW_REQUIRED for new public names; no
@@ -88,7 +88,7 @@ _root_. qualified names, qualified end B.C consuming two namespace
 components, same-line theorem/lemma commands fail closed even after a parsed
 declaration or after an otherwise-unparsed prefix command, qualified
 end A.B can close nested sections A and B, escaped identifiers with
-whitespace, same-line namespace/end commands, valid CLI root,
+whitespace and escaped dots in leaf names, same-line namespace/end commands, valid CLI root,
 unsupported public theorem syntax, and uncommitted worktree separation. No real UEOT Lean file is edited by the tests.
 
 On future changes to the parser, treat all lexical results as candidates
