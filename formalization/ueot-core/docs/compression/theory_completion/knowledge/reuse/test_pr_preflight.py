@@ -420,6 +420,56 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.public_after"})
 
+    def test_escaped_name_with_lean_comment_delimiters_survives(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem «fresh--result» : True := trivial\n"
+              "lemma «fresh/-comment-/result» : True := trivial\n"
+              "theorem «fresh" + chr(96) + "(quote)result» : True := trivial\n"
+              "theorem «fresh\"quoted\"result» : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.«fresh--result»", "N.«fresh/-comment-/result»",
+             "N.«fresh" + chr(96) + "(quote)result»", 'N.«fresh"quoted"result»'}
+        )
+
+    def test_comment_and_string_guillemets_do_not_resurrect_theorems(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              '-- theorem «fake--name» : True := trivial\n'
+              '/- theorem «fake/-nested-/name» : True := trivial -/\n'
+              'def example : String := "«fake--in-string»"\n'
+              "theorem visible : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.visible"}
+        )
+
+    def test_syntax_quote_escaped_name_is_not_source_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "def quotation : Lean.Syntax := " + chr(96) +
+              "(term| «fake--theorem/-/name»)\n"
+              "theorem visible : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.visible"}
+        )
+
+    def test_unterminated_escaped_name_rejected_not_silent(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem «unterminated-- : True := trivial\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNTERMINATED_ESCAPED_IDENTIFIER"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_escaped_identifier_containing_newline_is_complete(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\ntheorem «fresh\nresult» : True := trivial\nend N\n")

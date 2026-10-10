@@ -191,6 +191,94 @@ def corpus(repo, sha):
     return entries
 
 
+
+def comment_safe_escaped_names(source):
+    """Mask escaped identifier interiors before handling comments or quotations.
+
+    Lean permits comment syntax, quotation markers and quotes as literal
+    identifier contents. Preserve all codepoint positions and newlines;
+    restore only if the name delimiters survive the two masking passes.
+    """
+    masked = list(source)
+    spans = []
+    i = 0
+    depth = 0
+    line_comment = False
+    string = False
+    escape = False
+    while i < len(source):
+        ch = source[i]
+        pair = source[i:i + 2]
+        if line_comment:
+            if ch == "\n":
+                line_comment = False
+            i += 1
+            continue
+        if depth:
+            if pair == "/-":
+                depth += 1
+                i += 2
+            elif pair == "-/":
+                depth -= 1
+                i += 2
+            else:
+                i += 1
+            continue
+        if string:
+            if escape:
+                escape = False
+            elif ch == "\\":
+                escape = True
+            elif ch == '"':
+                string = False
+            i += 1
+            continue
+        character = LEAN_CHAR_LITERAL.match(source, i)
+        if character is not None:
+            i = character.end()
+            continue
+        if pair == "/-":
+            depth = 1
+            i += 2
+            continue
+        if pair == "--":
+            line_comment = True
+            i += 2
+            continue
+        if ch == '"':
+            string = True
+            i += 1
+            continue
+        if ch == "«":
+            finish = source.find("»", i + 1)
+            if finish < 0:
+                i += 1
+                continue
+            spans.append((i, finish, source[i + 1:finish]))
+            for pos in range(i + 1, finish):
+                if source[pos] != "\n":
+                    masked[pos] = "x"
+            i = finish + 1
+            continue
+        i += 1
+    return "".join(masked), spans
+
+
+def lexical_code_preserving_escaped_names(source, path):
+    masked, spans = comment_safe_escaped_names(source)
+    text = "\n".join(mask_syntax_quotations(
+        no_lean_comments(masked).split("\n"), path
+    ))
+    if len(text) != len(source):
+        raise RuntimeError(f"ESCAPED_NAME_MASK_POSITION_DRIFT: {path}")
+    code = list(text)
+    for begin, finish, original in spans:
+        if code[begin] == "«" and code[finish] == "»":
+            for offset, ch in enumerate(original, begin + 1):
+                code[offset] = ch
+    return "".join(code).splitlines()
+
+
 def logical_escaped_identifier_lines(lines, path):
     """Join physical lines only while inside a Lean «...» name component.
 
@@ -281,7 +369,7 @@ def logical_multiline_command_headers(lines, path):
 
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
-    code = mask_syntax_quotations(no_lean_comments(source).splitlines(), path)
+    code = lexical_code_preserving_escaped_names(source, path)
     ns, stack, found = "", [], []
     pending_modifiers = []
     multiline_attribute_depth = 0

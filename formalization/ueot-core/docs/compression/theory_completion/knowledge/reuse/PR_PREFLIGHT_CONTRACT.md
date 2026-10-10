@@ -19,7 +19,9 @@ tree. The declaration scanner reuses the existing FKRG comment-removal,
 namespace and declaration recognizers, with PR-specific handling for
 noncomputable/public/meta section scopes (including attribute-prefixed
 public meta section), public/nonrec declaration modifiers, and complete
-Unicode-qualified Lean theorem names including !/? suffixes, scoped
+Unicode-qualified Lean theorem names including !/? suffixes, escaped-name
+contents such as comment/syntax delimiters protected BEFORE applying the
+historical comment and quotation masks, scoped
 in-command theorem/lemma wrappers (open/include/omit)
 and explicit _root_. qualification, including partial/compound
 qualified namespace-end and named-section scope restoration. Escaped
