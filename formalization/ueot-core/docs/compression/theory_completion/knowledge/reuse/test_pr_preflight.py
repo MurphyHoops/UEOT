@@ -437,6 +437,14 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"«Scope\nName».inside"})
 
+    def test_open_guillemet_inside_escaped_identifier_is_literal(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem «alpha«beta» : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({v["symbol"] for v in result["new_public_source_theorems"]},
+                         {"N.«alpha«beta»"})
+
     def test_unterminated_multiline_escaped_identifier_fails_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\ntheorem «fresh\nresult : True := trivial\nend N\n")

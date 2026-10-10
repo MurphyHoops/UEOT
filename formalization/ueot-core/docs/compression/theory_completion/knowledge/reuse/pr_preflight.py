@@ -207,9 +207,11 @@ def logical_escaped_identifier_lines(lines, path):
         buffered.append(line)
         for char in line:
             if char == "«":
-                if active:
-                    raise RuntimeError(f"NESTED_ESCAPED_IDENTIFIER: {path}:{number}")
-                active = True
+                # Lean escaped identifiers may contain another literal «.
+                # Only the first opener outside a name changes state;
+                # the first subsequent » closes that identifier.
+                if not active:
+                    active = True
             elif char == "»" and active:
                 active = False
         if not active:

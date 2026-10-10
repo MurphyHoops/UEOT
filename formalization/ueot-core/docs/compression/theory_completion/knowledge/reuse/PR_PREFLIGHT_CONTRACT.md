@@ -138,5 +138,7 @@ create phantom public declarations. Unbalanced quotations fail closed.
 A `«... »` escaped identifier component may legally contain a physical
 newline. The scanner now combines only those physical lines while retaining
 the original start-line provenance; the resulting fully qualified Lean name
-keeps the literal newline. Open escaped identifiers fail closed. This was
+keeps the literal newline. A second `«` inside an escaped identifier
+is literal name content, not a nested delimiter. Open escaped identifiers
+fail closed. This was
 confirmed with the pinned Lean compiler, not only with lexical fixtures.
