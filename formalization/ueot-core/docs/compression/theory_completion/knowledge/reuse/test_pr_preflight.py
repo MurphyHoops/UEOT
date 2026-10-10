@@ -262,6 +262,23 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"«foo bar».result"})
 
+    def test_private_modifier_survives_standalone_attribute_line(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\nprivate\n@[simp]\ntheorem hidden : True := trivial\n"
+              "theorem visible : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.visible"})
+
+    def test_standalone_attribute_before_public_theorem_is_visible(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n@[simp]\ntheorem public_result : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.public_result"})
+
     def test_private_modifier_on_prior_line_does_not_expose_theorem(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\nprivate\ntheorem hidden : True := trivial\n"
