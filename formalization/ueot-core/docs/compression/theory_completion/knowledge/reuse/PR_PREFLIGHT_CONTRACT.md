@@ -145,3 +145,11 @@ confirmed with the pinned Lean compiler, not only with lexical fixtures.
 
 Character literals containing `«` or `»` are skipped as values during
 escaped-name delimiter tracking, preventing false name buffering.
+
+## Indented multiline command headers
+
+Lean accepts namespace/theorem/lemma names on a later properly indented
+physical line. The PR scanner joins required name continuations, and
+optionally named section/end continuations only when the next indented
+line is an identifier rather than a command. An unindented namespace
+continuation is invalid in the pinned Lean compiler and fails closed.

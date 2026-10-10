@@ -437,6 +437,39 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"«Scope\nName».inside"})
 
+    def test_indented_multiline_namespace_name(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace\n  Foo\ntheorem fresh : True := trivial\nend Foo\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({v["symbol"] for v in result["new_public_source_theorems"]},
+                         {"Foo.fresh"})
+
+    def test_indented_multiline_theorem_and_lemma_names(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ntheorem\n  fresh : True := trivial\n"
+              "lemma\n  second : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({v["symbol"] for v in result["new_public_source_theorems"]},
+                         {"N.fresh", "N.second"})
+
+    def test_indented_multiline_section_and_end_names(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "section\n  Bar\ntheorem within : True := trivial\nend Bar\n"
+              "namespace Foo\nlemma nested : True := trivial\nend\n  Foo\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({v["symbol"] for v in result["new_public_source_theorems"]},
+                         {"within", "Foo.nested"})
+
+    def test_unindented_multiline_namespace_is_not_accepted_as_root(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace\nFoo\ntheorem fresh : True := trivial\nend Foo\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_REQUIRED_MULTILINE_NAME"):
+            pf.preflight(self.repo, self.base, head)
+
     def test_open_guillemet_inside_escaped_identifier_is_literal(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\ntheorem «alpha«beta» : True := trivial\nend N\n")

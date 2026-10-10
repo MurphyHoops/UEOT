@@ -228,6 +228,57 @@ def logical_escaped_identifier_lines(lines, path):
         raise RuntimeError(f"UNTERMINATED_ESCAPED_IDENTIFIER: {path}:{first}")
 
 
+def logical_multiline_command_headers(lines, path):
+    """Join valid indented command-header continuations without losing lines.
+
+    Lean requires an indented continuation for a command name on the next
+    physical line (unindented `namespace\nFoo` is rejected by Lean).
+    `section`/`end` names are optional and joined only when the next
+    indented line is solely an identifier, not an executable command.
+    """
+    rows = list(logical_escaped_identifier_lines(lines, path))
+    commands = {"theorem", "lemma", "namespace", "section", "end", "mutual"}
+    i = 0
+    while i < len(rows):
+        first_line, text = rows[i]
+        raw = text
+        scoped = PR_SCOPE.match(text)
+        wrapper = SCOPED_IN_PUBLIC.match(text)
+        bare = text[wrapper.end():] if wrapper else text
+        declared = PUBLIC_DECL_START.match(bare)
+        directive = scoped.group(1) if scoped else (declared.group(1) if declared else None)
+        header_end = scoped.end() if scoped else (
+            (wrapper.end() if wrapper else 0) + declared.end() if declared else 0
+        )
+        if directive in {"namespace", "section", "end", "theorem", "lemma"} and not text[header_end:].strip():
+            j = i + 1
+            while j < len(rows) and not rows[j][1].strip():
+                j += 1
+            if j < len(rows):
+                continuation = rows[j][1]
+                tail = continuation.lstrip()
+                name = PR_UNICODE_NAME.match(tail)
+                indented = bool(continuation[:len(continuation)-len(tail)])
+                head_is_keyword = (name is not None and name.group(0) in commands)
+                is_sole_name = name is not None and not tail[name.end():].strip()
+                if directive in {"namespace", "theorem", "lemma"}:
+                    if not indented or not name or head_is_keyword:
+                        raise RuntimeError(
+                            f"UNSUPPORTED_REQUIRED_MULTILINE_NAME: {path}:{first_line}"
+                        )
+                    text += " " + tail
+                    i = j
+                elif indented and is_sole_name and not head_is_keyword:
+                    text += " " + tail
+                    i = j
+            elif directive in {"namespace", "theorem", "lemma"}:
+                raise RuntimeError(
+                    f"UNTERMINATED_REQUIRED_DECLARATION_NAME: {path}:{first_line}"
+                )
+        yield first_line, text
+        i += 1
+
+
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = mask_syntax_quotations(no_lean_comments(source).splitlines(), path)
@@ -241,7 +292,7 @@ def declarations(path, source):
         r"unsafe|meta|scoped|local)\s*$"
     )
     standalone_attribute = re.compile(r"^\s*(@\[[^\]\n]*\])\s*$")
-    for line_number, line in logical_escaped_identifier_lines(code, path):
+    for line_number, line in logical_multiline_command_headers(code, path):
         if not line.strip():
             continue
         if multiline_attribute_depth:
