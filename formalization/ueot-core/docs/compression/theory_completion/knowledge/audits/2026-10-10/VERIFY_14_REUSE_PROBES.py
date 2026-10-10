@@ -5,7 +5,6 @@ can be derived from an already existing theorem, under pinned source imports.
 This intentionally proves no scientific originality, generator adequacy or safe
 deletion property. Generated sources stay OUTSIDE the Git repository.
 """
-import csv
 import hashlib
 import json
 import re
@@ -22,10 +21,17 @@ for parent in AUDIT_DIR.parents:
 else:
     raise RuntimeError("No UEOT Lean workspace found")
 
-METRICS = {}
-with (AUDIT_DIR / "EVERY_FILE_633_DETAILED_METRICS.csv").open() as stream:
-    for row in csv.DictReader(stream):
-        METRICS[row["path"]] = row["content_sha256"]
+# Immutable independent source digests from the pinned main commit.
+# Never source these expected values from editable co-located audit CSVs.
+PINNED_SOURCE_SHA256 = {
+    'StatisticalDefect.lean': 'acf043effe89364adec73d1b2dae5a4d10504b10ac2cf984369a6baae69f1fe0',
+    'Compression/OccupationLimitInvariance.lean': 'daf7b53bd203451d4661869e95ae0fcf7f052490dc0107ea4b82a4aad9350713',
+    'Compression/TransportCertificate.lean': '6def721f70ee273372a97faa6e15387baec83f7442eb95f9ae25c449741904c4',
+    'Compression/TransportPathError.lean': 'b44f7c4de5febbf462927eb265024af88d387f20052db53a79735ca241bbf6b8',
+    'Compression/ValueAlignment.lean': 'fb46704196d3969b6191629108f71567ac0ad84870d9b5db5818c26e96fb5dd4',
+    'Compression/ContractiveFixedPoint.lean': 'df69c4a1b74e42c8e3fe573e8eebb6533e286ab52448f18c4dba370d91396e37',
+    'Compression/TheoryCompletion/UnifiedClosure/FiniteFormationBoundary.lean': '2b579cb735d59997abaf945dab0e680ea556f4ac093d8381d2d5f80d59748fb1',
+}
 
 # Each typed goal is text-identical to the original source declaration's
 # theorem statement. ONLY the proof body is replaced in a generated /tmp file.
@@ -107,7 +113,7 @@ CASES = {
 
 def run():
     rec = {
-        "base": "original Lean source modules as fingerprinted in full-library scan at main 48b582beabec2ebae61ab0d51081b83356fcb3e1",
+        "base": "fixed independent source SHA-256 embedded in verifier, computed using git show from main 48b582beabec2ebae61ab0d51081b83356fcb3e1",
         "scope": "direct terminal theorem reuse in disposable sources only; not scientific independent-generation proof",
         "file_count": len(CASES),
         "candidate_theorem_count": sum(len(case["theorems"]) for case in CASES.values()),
@@ -119,7 +125,7 @@ def run():
             original = CORE / "UEOT" / "V3" / filename
             blob = original.read_bytes()
             tracked_path = "formalization/ueot-core/UEOT/V3/" + filename
-            expected = METRICS[tracked_path]
+            expected = PINNED_SOURCE_SHA256[filename]
             current_sha = hashlib.sha256(blob).hexdigest()
             if current_sha != expected:
                 raise RuntimeError(f"STALE_SCAN_SOURCE: {tracked_path}: {current_sha} != {expected}")
