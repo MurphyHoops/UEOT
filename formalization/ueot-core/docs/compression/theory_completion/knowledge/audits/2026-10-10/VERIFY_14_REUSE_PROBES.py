@@ -119,16 +119,25 @@ def run():
         "candidate_theorem_count": sum(len(case["theorems"]) for case in CASES.values()),
         "results": [],
     }
+    # PRE-FLIGHT ALL 7 SOURCE BLOBS FIRST. A stale last file must reject
+    # before the first lake lean, not after several expensive builds.
+    verified = {}
+    for filename in CASES:
+        original = CORE / "UEOT" / "V3" / filename
+        blob = original.read_bytes()
+        tracked_path = "formalization/ueot-core/UEOT/V3/" + filename
+        expected = PINNED_SOURCE_SHA256[filename]
+        current_sha = hashlib.sha256(blob).hexdigest()
+        if current_sha != expected:
+            raise RuntimeError(f"STALE_SCAN_SOURCE: {tracked_path}: {current_sha} != {expected}")
+        verified[filename] = (blob, tracked_path, current_sha)
+    if len(verified) != len(CASES):
+        raise RuntimeError("SOURCE_PREFLIGHT_INCOMPLETE")
+    print("ALL_SOURCE_SHA256_PREFLIGHT_PASS", len(verified), flush=True)
     with tempfile.TemporaryDirectory(prefix="ueot-reuse-14-") as tempdir:
         tmp = Path(tempdir)
         for filename, case in CASES.items():
-            original = CORE / "UEOT" / "V3" / filename
-            blob = original.read_bytes()
-            tracked_path = "formalization/ueot-core/UEOT/V3/" + filename
-            expected = PINNED_SOURCE_SHA256[filename]
-            current_sha = hashlib.sha256(blob).hexdigest()
-            if current_sha != expected:
-                raise RuntimeError(f"STALE_SCAN_SOURCE: {tracked_path}: {current_sha} != {expected}")
+            blob, tracked_path, current_sha = verified[filename]
             code = blob.decode("utf-8")
             for imported in case["imports"]:
                 code = f"import {imported}\n" + code

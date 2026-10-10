@@ -12,8 +12,10 @@ temporary module copies; no source theorem or ledger changed.
 The tracked verifier VERIFY_14_REUSE_PROBES.py validates SHA-256 for all
 seven original source modules against expected digests **hard-coded from the
 immutable Git commit**, not reloaded from the mutable co-located audit CSV.
-It copies sources to a system temporary directory,
-retains the exact theorem statements and replaces selected proof bodies by
+It checks and caches **all seven source files before any temporary file is
+created or any Lean compilation begins**, so even a mismatch in the last
+source file fails immediately. It then copies sources to a system temporary
+directory, retaining the exact theorem statements and replaces selected proof bodies by
 direct exact applications of already compiled base theorems. Required new
 imports are inserted only in those temporary copies. Each copy is compiled
 using build-aware lake lean, not a shallow source-string check. It writes
