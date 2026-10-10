@@ -177,3 +177,5 @@ at a raw closing brace, since a guillemet-escaped level name can itself
 contain closing braces or commas. The suffix is never part of the FQN.
 \nNew regression coverage: nested same-line attribute bracket payloads and\nline-wrapped .{u,v} universe parameter identifiers, including escaped\nidentifier content with closing braces. They do not imply Lean type equality.\n
 Balanced nested inline attribute modifiers are normalized before multiline theorem-name and universe-suffix joins, not only before final declaration matching.
+
+Preserve escaped-name contents by joining multiline identifiers before nested attribute normalization; the literal sequence @[bar] inside an escaped declaration name is never interpreted as an attribute.

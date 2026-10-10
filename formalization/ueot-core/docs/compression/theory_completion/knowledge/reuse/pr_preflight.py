@@ -334,7 +334,11 @@ def logical_multiline_command_headers(lines, path):
     `section`/`end` names are optional and joined only when the next
     indented line is solely an identifier, not an executable command.
     """
-    rows = list(logical_escaped_identifier_lines(lines, path))
+    # Join escaped identifiers FIRST; escaped names may themselves contain
+    # literal @[...] on a continuation line. Only normalize complete
+    # logical rows after the escaped-name state is known across newlines.
+    rows = [(n, normalize_inline_attribute_brackets(text))
+            for n, text in logical_escaped_identifier_lines(lines, path)]
     commands = {"theorem", "lemma", "namespace", "section", "end", "mutual"}
     i = 0
     while i < len(rows):
@@ -501,9 +505,8 @@ def logical_universe_parameter_lines(rows, path):
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = lexical_code_preserving_escaped_names(source, path)
-    # Header joining must see balanced nested attributes normalized already.
-    # Otherwise attribute-bearing declarations with multiline names are missed.
-    code = [normalize_inline_attribute_brackets(line) for line in code]
+    # Nested attributes are normalized after multiline escaped identifiers
+    # are joined inside logical_multiline_command_headers, before other joins.
     ns, stack, found = "", [], []
     pending_modifiers = []
     multiline_attribute_depth = 0

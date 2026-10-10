@@ -160,6 +160,36 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
                          {"N.fresh"})
 
+    def test_escaped_multiline_attribute_like_name_is_literal(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem «x\n@[bar]\ny» : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual(
+            {x["symbol"] for x in result["new_public_source_theorems"]},
+            {"N.«x\n@[bar]\ny»"}
+        )
+
+    def test_multiline_escaped_attribute_change_cannot_hide_new_declaration(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem «x\n@[]\ny» : True := trivial\n"
+              "end N\n")
+        old = self.commit("escaped old theorem")
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem «x\n@[bar]\ny» : True := trivial\n"
+              "end N\n")
+        new = self.commit("escaped name changes")
+        result = pf.preflight(self.repo, old, new)
+        self.assertEqual(result["new_public_source_theorem_count"], 1)
+        self.assertEqual(
+            result["new_public_source_theorems"][0]["symbol"],
+            "N.«x\n@[bar]\ny»"
+        )
+
     def test_nested_attribute_with_multiline_theorem_name(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"
