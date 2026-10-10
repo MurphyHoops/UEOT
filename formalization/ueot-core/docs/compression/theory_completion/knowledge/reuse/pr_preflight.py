@@ -205,15 +205,22 @@ def logical_escaped_identifier_lines(lines, path):
         if not buffered:
             first = number
         buffered.append(line)
-        for char in line:
+        i = 0
+        while i < len(line):
+            # Character literals such as '«' and '»' are values, not
+            # escaped identifier delimiters. Skip the complete literal.
+            char_literal = LEAN_CHAR_LITERAL.match(line, i)
+            if char_literal:
+                i = char_literal.end()
+                continue
+            char = line[i]
             if char == "«":
-                # Lean escaped identifiers may contain another literal «.
-                # Only the first opener outside a name changes state;
-                # the first subsequent » closes that identifier.
+                # Additional « within «...» is literal identifier content.
                 if not active:
                     active = True
             elif char == "»" and active:
                 active = False
+            i += 1
         if not active:
             yield first, "\n".join(buffered)
             buffered = []

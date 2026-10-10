@@ -445,6 +445,16 @@ class DeltaChecks(unittest.TestCase):
         self.assertEqual({v["symbol"] for v in result["new_public_source_theorems"]},
                          {"N.«alpha«beta»"})
 
+    def test_guillemet_character_literals_are_not_name_delimiters(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\ndef openAngle : Char := '«'\n"
+              "def closeAngle : Char := '»'\n"
+              "theorem real_public : True := trivial\nend N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({v["symbol"] for v in result["new_public_source_theorems"]},
+                         {"N.real_public"})
+
     def test_unterminated_multiline_escaped_identifier_fails_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\ntheorem «fresh\nresult : True := trivial\nend N\n")

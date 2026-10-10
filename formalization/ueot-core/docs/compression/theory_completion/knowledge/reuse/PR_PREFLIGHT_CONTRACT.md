@@ -142,3 +142,6 @@ keeps the literal newline. A second `«` inside an escaped identifier
 is literal name content, not a nested delimiter. Open escaped identifiers
 fail closed. This was
 confirmed with the pinned Lean compiler, not only with lexical fixtures.
+
+Character literals containing `«` or `»` are skipped as values during
+escaped-name delimiter tracking, preventing false name buffering.
