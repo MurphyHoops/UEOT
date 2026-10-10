@@ -32,7 +32,7 @@ instead of vanishing from the review report. It produces:
 - exact base and candidate source tree commit identifiers;
 - all changed UEOT Lean source paths and module/declaration counts;
 - genuinely new public lexical theorem/lemma names, excluding names that
-  already existed in base; private declarations are excluded, including stand-alone private modifiers;
+  already existed in base; private declarations are excluded, including standalone modifiers separated by attribute lines;
 - up to five previously existing name-similar public theorem candidates
   for each new declaration, labeled LEXICAL_ONLY;
 - mandatory TYPED_REUSE_REVIEW_REQUIRED for new public names; no
