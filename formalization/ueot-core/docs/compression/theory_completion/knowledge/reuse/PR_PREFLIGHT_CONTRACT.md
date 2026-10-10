@@ -175,3 +175,4 @@ Universe suffix identifiers: use the same fully qualified Lean lexical
 identifier grammar for each level name inside .{...}, rather than stopping
 at a raw closing brace, since a guillemet-escaped level name can itself
 contain closing braces or commas. The suffix is never part of the FQN.
+\nNew regression coverage: nested same-line attribute bracket payloads and\nline-wrapped .{u,v} universe parameter identifiers, including escaped\nidentifier content with closing braces. They do not imply Lean type equality.\n

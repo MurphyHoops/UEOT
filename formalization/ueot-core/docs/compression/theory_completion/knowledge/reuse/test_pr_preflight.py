@@ -150,6 +150,50 @@ class DeltaChecks(unittest.TestCase):
             {"N.fresh", "N.pair"}
         )
 
+    def test_nested_bracket_attribute_prefix_still_discovers_theorem(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[aesop safe apply (rule_sets := [foo])] theorem fresh : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.fresh"})
+
+    def test_nested_brackets_in_attribute_quotes_and_escaped_names(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "@[deprecated \"[inner]\" (since := \"2026\")] lemma fresh : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.fresh"})
+
+    def test_multiline_universe_parameter_suffix(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem fresh.{\n"
+              "  u,\n"
+              "  v} (α : Sort u) (β : Sort v) : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.fresh"})
+
+    def test_multiline_universe_escaped_brace_identifier(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N\n"
+              "theorem fresh.{\n"
+              "  «u}x»,\n"
+              "  v} (α : Sort «u}x») (β : Sort v) : True := trivial\n"
+              "end N\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"N.fresh"})
+
     def test_universe_escaped_names_can_contain_closing_braces(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"

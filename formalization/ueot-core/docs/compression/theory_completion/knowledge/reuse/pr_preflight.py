@@ -385,6 +385,119 @@ def attribute_bracket_delta(line):
     return line.count("[") - line.count("]")
 
 
+
+def normalize_inline_attribute_brackets(line):
+    """Replace complete @[...nested...] modifiers with @[] before regex parsing.
+
+    Preserve everything outside the attribute, including standalone privacy
+    modifiers and the actual public command. Only complete same-line tokens
+    are rewritten; incomplete multiline tokens retain existing fail-closed
+    multiline attribute handling. Strings and Lean escaped names may contain
+    any bracket characters without changing nesting depth.
+    """
+    out = []
+    i = 0
+    string = False
+    escape = False
+    escaped_name = False
+    while i < len(line):
+        ch = line[i]
+        if string:
+            out.append(ch)
+            if escape:
+                escape = False
+            elif ch == "\\":
+                escape = True
+            elif ch == '"':
+                string = False
+            i += 1
+            continue
+        if escaped_name:
+            out.append(ch)
+            if ch == "»":
+                escaped_name = False
+            i += 1
+            continue
+        if ch == '"':
+            string = True
+            out.append(ch)
+            i += 1
+            continue
+        if ch == "«":
+            escaped_name = True
+            out.append(ch)
+            i += 1
+            continue
+        if line.startswith("@[", i):
+            j = i + 2
+            depth = 1
+            in_str = False
+            esc = False
+            name = False
+            while j < len(line) and depth:
+                x = line[j]
+                if in_str:
+                    if esc:
+                        esc = False
+                    elif x == "\\":
+                        esc = True
+                    elif x == '"':
+                        in_str = False
+                elif name:
+                    if x == "»":
+                        name = False
+                elif x == '"':
+                    in_str = True
+                elif x == "«":
+                    name = True
+                elif x == "[":
+                    depth += 1
+                elif x == "]":
+                    depth -= 1
+                j += 1
+            if depth == 0:
+                out.append("@[]")
+                i = j
+                continue
+            # This is a multiline attribute. Retain the original prefix so
+            # the pre-existing depth tracking can join or reject correctly.
+            out.append(line[i:])
+            break
+        out.append(ch)
+        i += 1
+    return "".join(out)
+
+
+def logical_universe_parameter_lines(rows, path):
+    """Join line-wrapped .{universe identifiers} immediately after declId."""
+    items = list(rows)
+    i = 0
+    while i < len(items):
+        first_line, text = items[i]
+        wrapper = SCOPED_IN_PUBLIC.match(text)
+        candidate = text[wrapper.end():] if wrapper else text
+        decl = PUBLIC_DECL_START.match(candidate)
+        if decl:
+            tail = candidate[decl.end():].lstrip()
+            name = PR_UNICODE_NAME.match(tail)
+            if name and tail[name.end():].startswith(".{"):
+                suffix = tail[name.end():]
+                if PR_LEVEL_PARAMS.match(suffix) is None:
+                    j = i + 1
+                    while j < len(items):
+                        text += "\n" + items[j][1]
+                        suffix += "\n" + items[j][1]
+                        if PR_LEVEL_PARAMS.match(suffix):
+                            i = j
+                            break
+                        j += 1
+                    else:
+                        raise RuntimeError(
+                            f"UNSUPPORTED_UNIVERSE_PARAMETER_LIST: {path}:{first_line}: unterminated or invalid"
+                        )
+        yield first_line, text
+        i += 1
+
 def declarations(path, source):
     """Use the existing FKRG lexical declaration parser on exact Git bytes."""
     code = lexical_code_preserving_escaped_names(source, path)
@@ -398,7 +511,8 @@ def declarations(path, source):
         r"unsafe|meta|scoped|local)\s*$"
     )
     standalone_attribute = re.compile(r"^\s*(" + PR_ATTRIBUTE_TOKEN + r")\s*$")
-    for line_number, line in logical_multiline_command_headers(code, path):
+    rows = logical_multiline_command_headers(code, path)
+    for line_number, line in logical_universe_parameter_lines(rows, path):
         if not line.strip():
             continue
         if multiline_attribute_depth:
@@ -421,6 +535,7 @@ def declarations(path, source):
             multiline_attribute_depth = attribute_bracket_delta(line)
             pending_modifiers.append("@[]")
             continue
+        line = normalize_inline_attribute_brackets(line)
         attribute = standalone_attribute.match(line)
         if attribute:
             # Attributes may occupy their own line between a privacy
