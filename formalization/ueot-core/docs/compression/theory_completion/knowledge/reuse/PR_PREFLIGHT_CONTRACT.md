@@ -20,9 +20,12 @@ namespace and declaration recognizers, with PR-specific handling for
 noncomputable/public/meta section scopes (including attribute-prefixed
 public meta section), public/nonrec declaration modifiers, and complete
 Unicode-qualified Lean theorem names including !/? suffixes, scoped
-scoped in-command theorem/lemma wrappers (open/include/omit)
+in-command theorem/lemma wrappers (open/include/omit)
 and explicit _root_. qualification, including partial/compound
-qualified namespace-end and named-section scope restoration.
+qualified namespace-end and named-section scope restoration. Escaped
+namespace names containing whitespace are preserved as full Lean identifiers;
+residual namespace/section/end/mutual commands after a parsed scope
+fail closed rather than silently altering the next theorem FQN.
 Any theorem/lemma command outside supported lexical syntax FAILS CLOSED
 instead of vanishing from the review report. It produces:
 
@@ -83,9 +86,10 @@ reserved-word identifiers, private-section visibility as defensive lexical
 handling (the pinned compiler rejects a bare private section opener), explicit
 _root_. qualified names, qualified end B.C consuming two namespace
 components, same-line theorem/lemma commands fail closed even after a parsed
-declaration or after an otherwise-unparsed prefix command, qualified end A.B can close nested sections A and B,
-valid CLI root, unsupported
-public theorem syntax, and uncommitted worktree separation. No real UEOT Lean file is edited by the tests.
+declaration or after an otherwise-unparsed prefix command, qualified
+end A.B can close nested sections A and B, escaped identifiers with
+whitespace, same-line namespace/end commands, valid CLI root,
+unsupported public theorem syntax, and uncommitted worktree separation. No real UEOT Lean file is edited by the tests.
 
 On future changes to the parser, treat all lexical results as candidates
 until Lean compilation and proof/dependency inspection are complete.

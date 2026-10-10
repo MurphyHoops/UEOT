@@ -41,7 +41,7 @@ PR_MODIFIER = (
 )
 PR_SCOPE = re.compile(
     r"^\s*(?:" + PR_MODIFIER + r"\s+)*"
-    r"(namespace|section|end)\b(?:\s+(\S+))?"
+    r"(namespace|section|end)\b"
 )
 PUBLIC_DECL_START = re.compile(
     r"^\s*(?:" + PR_MODIFIER + r"\s+)*"
@@ -67,8 +67,15 @@ MUTUAL_START = re.compile(r"^\s*mutual\b")
 
 
 def contains_command_token(line):
-    return bool(re.search(r"\b(?:theorem|lemma)\b",
+    return bool(re.search(r"\b(?:theorem|lemma|namespace|section|end|mutual)\b",
                           ESCAPED_LEAN_NAME.sub("ESCAPED_NAME", line)))
+
+
+def qualified_parts(name):
+    tokens = list(re.finditer(PR_UNICODE_SEGMENT, name))
+    if not tokens or ".".join(x.group(0) for x in tokens) != name:
+        raise RuntimeError("UNSUPPORTED_QUALIFIED_SCOPE_NAME: " + name)
+    return [x.group(0) for x in tokens]
 
 
 
@@ -129,7 +136,20 @@ def declarations(path, source):
             continue
         scope = PR_SCOPE.match(line)
         if scope:
-            op, arg = scope.groups()
+            op = scope.group(1)
+            rest = line[scope.end():]
+            stripped = rest.lstrip()
+            parsed_arg = PR_UNICODE_NAME.match(stripped)
+            arg = parsed_arg.group(0) if parsed_arg else None
+            after_header = stripped[parsed_arg.end():] if parsed_arg else stripped
+            if contains_command_token(after_header):
+                raise RuntimeError(
+                    f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
+                )
+            if after_header.strip():
+                raise RuntimeError(
+                    f"UNSUPPORTED_SCOPE_COMMAND_TAIL: {path}:{line_number}"
+                )
             if op == "namespace":
                 previous = ns
                 target = arg or ""
@@ -179,8 +199,8 @@ def declarations(path, source):
                     # components (and parts of namespace A.B opened at once).
                     # Preserve any remaining outer component as a synthetic
                     # frame, so a later 'end A' still closes it correctly.
-                    current = ns.split(".") if ns else []
-                    closed = arg.removeprefix("_root_.").split(".")
+                    current = qualified_parts(ns) if ns else []
+                    closed = qualified_parts(arg.removeprefix("_root_."))
                     if not closed or current[-len(closed):] != closed:
                         raise RuntimeError(
                             f"UNSUPPORTED_QUALIFIED_END: {path}:{line_number}: {arg}"
@@ -213,6 +233,8 @@ def declarations(path, source):
                 raise RuntimeError(
                     f"UNSUPPORTED_MULTICOMMAND_LEAN_LINE: {path}:{line_number}"
                 )
+        if scope:
+            continue
         wrapper = SCOPED_IN_PUBLIC.match(line)
         scan_line = line[wrapper.end():] if wrapper else line
         start = PUBLIC_DECL_START.match(scan_line)

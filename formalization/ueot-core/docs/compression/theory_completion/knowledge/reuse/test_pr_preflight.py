@@ -246,6 +246,22 @@ class DeltaChecks(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
             pf.preflight(self.repo, self.base, head)
 
+    def test_same_line_namespace_closing_command_fails_closed(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace N end N\ntheorem fresh : True := trivial\n")
+        head = self.commit()
+        with self.assertRaisesRegex(RuntimeError, "UNSUPPORTED_MULTICOMMAND_LEAN_LINE"):
+            pf.preflight(self.repo, self.base, head)
+
+    def test_escaped_namespace_name_with_spaces_not_truncated(self):
+        write(self.repo, PACKAGE + "Novel.lean",
+              "namespace «foo bar»\ntheorem result : True := trivial\n"
+              "end «foo bar»\n")
+        head = self.commit()
+        result = pf.preflight(self.repo, self.base, head)
+        self.assertEqual({x["symbol"] for x in result["new_public_source_theorems"]},
+                         {"«foo bar».result"})
+
     def test_multiple_theorems_on_one_physical_line_fail_closed(self):
         write(self.repo, PACKAGE + "Novel.lean",
               "namespace N\n"
