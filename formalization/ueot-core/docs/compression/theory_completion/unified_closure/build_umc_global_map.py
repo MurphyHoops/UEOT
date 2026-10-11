@@ -16,9 +16,9 @@ BASE = CORE / 'UEOT'
 OUT = Path(__file__).parent / 'UMC_GLOBAL_MODULE_DAG_V4.json'
 
 DECL = re.compile(
-    r'^\\s*(?:(?:@\\[[^\\]\\n]*\\]|private|protected|noncomputable|unsafe)\\s+)*'
-    r'(theorem|lemma|structure|class|def|abbrev|inductive)\\s+'
-    r'([A-Za-z_][A-Za-z_0-9\\\']*)',
+    r'^\s*(?:(?:@\[[^\]\n]*\]|private|protected|noncomputable|unsafe)\s+)*'
+    r'(theorem|lemma|structure|class|def|abbrev|inductive)\s+'
+    r"([A-Za-z_][A-Za-z_0-9']*)",
     re.M,
 )
 
