@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Read-only FKRG theorem reuse navigator over pinned Lean audit evidence.
 
-It does not prove logical equivalence from text, change Lean files, or become
-an authoritative theorem ledger. Exact-type groups were verified separately
-by 40/40 Lean Meta.isDefEq checks at the pinned UEOT environment.
+The immutable 2026-10-10 633-module snapshot remains the historical base.
+Governed additive overlays extend the live source census without rewriting that
+history. Exact-type groups remain kernel-verified; every overlay carries its
+own source hashes and a Lean type-distinctness certificate.
 """
 from __future__ import annotations
 
@@ -18,8 +19,12 @@ import sys
 HERE = Path(__file__).resolve().parent
 AUDIT = HERE.parent / "audits" / "2026-10-10"
 REPO = HERE.parents[6]
-SCHEMA = "FKRG_REUSE_NAVIGATOR_V1"
+SCHEMA = "FKRG_REUSE_NAVIGATOR_V2"
 SOURCE_BASELINE = "48b582beabec2ebae61ab0d51081b83356fcb3e1"
+OVERLAY_PATH = HERE / "MINCORE_REUSE_OVERLAY_V1.json"
+OVERLAY_TYPE_CHECK = HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean"
+OVERLAY_SHA256 = "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8"
+OVERLAY_TYPE_CHECK_SHA256 = "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550"
 
 # Independent immutable digests calculated from main after merged PR #314.
 # Changing a CSV and its claimed source hash together must fail closed.
@@ -71,6 +76,26 @@ def read_csv(path: Path) -> list[dict]:
         return list(csv.DictReader(stream))
 
 
+def load_overlay() -> dict:
+    overlay = json.loads(OVERLAY_PATH.read_text())
+    if overlay.get("schema") != "FKRG_REUSE_OVERLAY_V1":
+        raise RuntimeError("UNSUPPORTED_REUSE_OVERLAY_SCHEMA")
+    if overlay.get("base_snapshot_modules") != 633:
+        raise RuntimeError("OVERLAY_BASE_MODULE_COUNT_MISMATCH")
+    if overlay.get("type_distinctness", {}).get("status") != "PASS":
+        raise RuntimeError("OVERLAY_TYPE_DISTINCTNESS_NOT_CERTIFIED")
+    if overlay.get("type_distinctness", {}).get("definitionally_equal_matches") != 0:
+        raise RuntimeError("OVERLAY_TYPE_COLLISION_RECORDED")
+    cert = overlay.get("proof_dependency_certification", {})
+    if cert.get("status") != "PASS":
+        raise RuntimeError("OVERLAY_PROOF_DEPENDENCIES_NOT_CERTIFIED")
+    actual_edges = sum(len(x.get("source_theorem_deps", []))
+                       for x in overlay.get("public_theorems", []))
+    if cert.get("registered_direct_edges") != actual_edges:
+        raise RuntimeError("OVERLAY_PROOF_EDGE_COUNT_MISMATCH")
+    return overlay
+
+
 def _parse_data() -> dict:
     modules = read_csv(AUDIT / "EVERY_FILE_633_DETAILED_METRICS.csv")
     declarations = read_csv(AUDIT / "EVERY_DECLARATION_5553_COMPACT.csv")
@@ -82,6 +107,21 @@ def _parse_data() -> dict:
         633, 5553, 3793, 37, 15, 68
     ):
         raise RuntimeError("AUDIT_ROW_COUNT_MISMATCH")
+    overlay = load_overlay()
+    for item in overlay["added_modules"]:
+        modules.append(dict(item))
+    for item in overlay["public_theorems"]:
+        deps = item.get("source_theorem_deps", [])
+        proof_rows.append({
+            "name": item["name"],
+            "path": item["path"],
+            "line": str(item["line"]),
+            "area": "V3/Compression/TheoryCompletion/MinCore",
+            "all_direct_project_scoped_constants": "",
+            "direct_existing_source_theorem_deps": str(len(deps)),
+            "source_theorem_deps_json": json.dumps(deps),
+            "source_origin": item.get("source_origin", "UEOT_MAINTAINED"),
+        })
     graph = {}
     incoming: dict[str, list[str]] = {}
     for row in proof_rows:
@@ -103,11 +143,15 @@ def _parse_data() -> dict:
     return {
         "modules": modules, "declarations": declarations, "graph": graph,
         "incoming": incoming, "groups": groups, "duplicates": duplicate_members,
-        "near": near, "clones": clones
+        "near": near, "clones": clones, "overlay": overlay
     }
 
 
 def verify_evidence_files():
+    if sha256(OVERLAY_PATH.read_bytes()).hexdigest() != OVERLAY_SHA256:
+        raise RuntimeError("REUSE_OVERLAY_EVIDENCE_DRIFT")
+    if sha256(OVERLAY_TYPE_CHECK.read_bytes()).hexdigest() != OVERLAY_TYPE_CHECK_SHA256:
+        raise RuntimeError("REUSE_OVERLAY_TYPE_CHECK_DRIFT")
     for name, pinned_hash in BUILD_ENVIRONMENT_SHA256.items():
         path = REPO / "formalization/ueot-core" / name
         actual = sha256(path.read_bytes()).hexdigest()
@@ -134,8 +178,8 @@ def live_source_paths() -> set[str]:
 
 
 def verify_sources(modules: list[dict]):
-    # Source hashes alone cannot catch a newly added Lean module. The exact
-    # pathname membership is a separate, mandatory freshness condition.
+    overlay = load_overlay()
+    overrides = overlay.get("source_hash_overrides", {})
     recorded = {row["path"] for row in modules}
     current = live_source_paths()
     if len(recorded) != len(modules) or recorded != current:
@@ -149,9 +193,10 @@ def verify_sources(modules: list[dict]):
     mismatches = []
     for row in modules:
         p = REPO / row["path"]
+        expected = overrides.get(row["path"], row["content_sha256"])
         if not p.is_file():
             mismatches.append({"path": row["path"], "reason": "MISSING"})
-        elif sha256(p.read_bytes()).hexdigest() != row["content_sha256"]:
+        elif sha256(p.read_bytes()).hexdigest() != expected:
             mismatches.append({"path": row["path"], "reason": "SOURCE_CHANGED"})
     if mismatches:
         raise RuntimeError("STALE_AUDIT_SOURCE: "+json.dumps(mismatches[:12]))
@@ -167,6 +212,8 @@ def load(*, verify_source=True):
 
 
 def role(name: str):
+    if name.startswith("UEOT.V3.Compression.TheoryCompletion.MinCore."):
+        return "UNCOUNTED_MINCORE_BOUNDARY"
     if name == DUPLICATED_TV_HELPER:
         return "LOW_RISK_DUPLICATE_HELPER_IMPLEMENTATION"
     if name == CANONICAL_TV_HELPER:
@@ -238,8 +285,11 @@ def clone_candidates(data: dict, threshold: int):
 
 
 def status(data: dict):
+    overlay = data["overlay"]
     return {
-        "schema": SCHEMA, "baseline_source_commit": SOURCE_BASELINE,
+        "schema": SCHEMA,
+        "base_snapshot_source_commit": SOURCE_BASELINE,
+        "overlay_source_checkpoint": overlay["source_checkpoint"],
         "module_source_hashes_verified": len(data["modules"]),
         "bundled_modules": len(data["modules"]),
         "ueot_maintained_modules": sum(row["source_origin"] == "UEOT_MAINTAINED"
@@ -247,12 +297,14 @@ def status(data: dict):
         "vendor_modules": sum(row["source_origin"] == "VENDORED_ADAPTED_UPSTREAM"
                               for row in data["modules"]),
         "public_source_theorems_with_direct_proof_graph": len(data["graph"]),
+        "overlay_public_theorems": len(overlay["public_theorems"]),
         "verified_equal_type_groups": len(data["groups"]),
         "equal_type_statement_names": len(data["duplicates"]),
+        "overlay_cross_snapshot_defeq_matches": overlay["type_distinctness"]["definitionally_equal_matches"],
         "near_type_not_defeq_candidate_pairs": len(data["near"]),
+        "overlay_lexical_reuse_candidates": overlay["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"],
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "Lean proof kernel, source Git commit, and canonical "
-                           "Core/Compression ledgers; this is a derived read-only audit",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE overlay, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 

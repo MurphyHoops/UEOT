@@ -1,0 +1,115 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "source_checkpoint": "fb70de6fb5dd26918222bc7b0849fb38900f8604",
+  "parent_main": "c7989419029a562c409ead38cc8c7ff146b8a621",
+  "base_snapshot_commit": "48b582beabec2ebae61ab0d51081b83356fcb3e1",
+  "base_snapshot_modules": 633,
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "0373b79a827a769b7ca9f2c0a511d8d4fc2085c1a560ea8d52f25a2e6918bb9c"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "content_sha256": "1115de9fbc4f79b688d3bce2e91c2ab6b98e6b818e5f94317b67718780a6e544",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_rel",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 49,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_defect",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 53,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_preserves_exact_relation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 58,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_zero_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 63,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_budget_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 69,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_changes_nonzero_defect",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 76,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.same_relation_arbitrary_positive_scale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 106,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.no_relation_only_quantitative_recovery",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 119,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.exists_same_relation_different_defect",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 132,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.relationDefectPresentation_does_not_force_triangle",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "line": 165,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    }
+  ],
+  "type_distinctness": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_MINCORE_OVERLAY_TYPES.lean",
+    "new_theorems": 10,
+    "base_theorems": 3793,
+    "cross_isDefEq_comparisons": 37930,
+    "internal_isDefEq_comparisons": 45,
+    "definitionally_equal_matches": 0,
+    "status": "PASS"
+  },
+  "lexical_pr_preflight": {
+    "base_public_lexical_theorem_count": 3794,
+    "candidate_public_lexical_theorem_count": 3804,
+    "new_public_source_theorem_count": 10,
+    "new_theorems_with_lexical_reuse_candidates": 0
+  },
+  "scientific_role": "UNCOUNTED_MINCORE_BOUNDARY",
+  "counted_core_impact": "NONE",
+  "proof_dependency_certification": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_MINCORE_OVERLAY_TYPES.lean",
+    "measure": "Lean .thmInfo.value.getUsedConstants restricted to the registered base+overlay theorem nodes",
+    "registered_direct_edges": 0,
+    "edges": [],
+    "source_tactic_note": "Source text uses simp only [rescale_defect], but the elaborated proof term contains no rescale_defect theorem constant; FKRG records kernel proof-term dependencies, not tactic-token references.",
+    "status": "PASS"
+  }
+}
