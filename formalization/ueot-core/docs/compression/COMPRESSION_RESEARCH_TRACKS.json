@@ -21,6 +21,21 @@
       ],
       "reason": "Adding the MINCORE Lean research module changes the exact first-party module set/source fingerprint. The existing UMC fail-closed global DAG receipt must be regenerated from source so FKRG/UMC audits remain truthful; no UMC theorem, frozen Core source, or counted ledger is modified.",
       "temporary": true
+    },
+    {
+      "exception_id": "TC-MINCORE-FKRG-OVERLAY-2026-10-11",
+      "track": "TC",
+      "branch_patterns": [
+        "^compression/theory-completion-mincore-relation-defect$"
+      ],
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "reason": "The MINCORE research adds the 634th Lean module and one import-only root edit, so the live fail-closed FKRG proof-reuse navigator must adopt a pinned additive overlay while preserving the immutable 2026-10-10 633-module audit. This exception authorizes only the exact live navigator/test/readme/clone-rebuild surfaces on the existing MINCORE research branch; no frozen Core theorem, counted ledger, or historical audit snapshot is modified.",
+      "temporary": true
     }
   ],
   "governed_path_prefixes": [
