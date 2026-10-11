@@ -1,0 +1,78 @@
+{
+  "schema": "UEOT_MINCORE_EVIDENCE_V1",
+  "mission": "UEOT-MINCORE",
+  "base_main": "1ebf78a2d1e496033a7c86389f316444f539c5cc",
+  "core": {
+    "proved": 106,
+    "unique": 106,
+    "partial": 0,
+    "pending": 0
+  },
+  "compression": {
+    "generated": 11,
+    "retained_adapter": 89,
+    "retained_boundary": 6,
+    "counted_generators": [
+      "M-QD-01",
+      "M-TC-01",
+      "M-PE-01",
+      "M-OI-01"
+    ],
+    "count_changed": false
+  },
+  "recovery": {
+    "local_main_matches_origin_main": true,
+    "open_prs_at_start": 0,
+    "live_issues": [
+      146,
+      302
+    ],
+    "tracked_tree_clean_at_start": true
+  },
+  "reuse": {
+    "modules": 633,
+    "ueot_maintained": 622,
+    "adapted_upstream": 11,
+    "public_theorem_proofs": 3793,
+    "equal_type_groups": 37,
+    "equal_type_names": 77,
+    "near_type_pairs": 15,
+    "crossfile_clone_candidates": 68,
+    "reuse_regressions": "13/13 PASS",
+    "focused_direct_reuse": "14/14 PASS",
+    "fresh_type_equivalence_run": "exit 0"
+  },
+  "E1": {
+    "classification": [
+      "EXACT-TYPE",
+      "DIRECT-COROLLARY",
+      "ORDINARY-HELPER"
+    ],
+    "temporary_whole_module_compile": "PASS",
+    "frozen_source_modified": false
+  },
+  "E2": {
+    "classification": [
+      "BRIDGE-REQUIRED",
+      "DIRECT-COROLLARY"
+    ],
+    "closed_type_isDefEq": false,
+    "temporary_whole_module_compile": "PASS",
+    "original_target_proof_lines": 37,
+    "frozen_source_modified": false
+  },
+  "D4": {
+    "result": "NEGATIVE",
+    "module": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo",
+    "central_theorem": "no_relation_only_quantitative_recovery",
+    "claim": "an exact relation alone does not determine the numerical scale of every admissible zero-set-compatible defect presentation",
+    "counted_core_impact": "NONE",
+    "secondary_theorem": "relationDefectPresentation_does_not_force_triangle",
+    "additional_boundary": "zero-set-compatible nonnegative defect does not force triangle/finite-composition regularity",
+    "axioms": "standard Lean/Mathlib only: propext, Classical.choice, Quot.sound"
+  },
+  "review": "PENDING",
+  "pr": null,
+  "exact_head_ci": null,
+  "resulting_main_ci": null
+}
