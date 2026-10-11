@@ -47,24 +47,17 @@ run_cmd do
   for m in collisions do liftIO <| IO.println m
   if !collisions.isEmpty then throwError "MINCORE_OVERLAY_TYPE_COLLISION"
 
-  let edgeSource :=
-    `UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_changes_nonzero_defect
-  let edgeTarget :=
-    `UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_defect
   let mut registeredEdgeCount := 0
   for n in newNames do
     match env.find? n with
     | some (.thmInfo decl) =>
       let deps := decl.value.getUsedConstants.toList.filter fun x =>
         x != n && (baseNames.contains x || newNames.contains x)
-      if n == edgeSource then
-        if deps.length != 1 || !deps.contains edgeTarget then
-          throwError s!"MINCORE_OVERLAY_PROOF_EDGE_MISMATCH {n} {deps}"
-        registeredEdgeCount := registeredEdgeCount + 1
-      else if !deps.isEmpty then
+      if !deps.isEmpty then
         throwError s!"MINCORE_OVERLAY_UNEXPECTED_REGISTERED_PROOF_DEPS {n} {deps}"
+      registeredEdgeCount := registeredEdgeCount + deps.length
     | some _ => throwError s!"NEW_SYMBOL_NOT_THEOREM {n}"
     | none => throwError s!"NEW_SYMBOL_MISSING_FOR_PROOF_AUDIT {n}"
   liftIO <| IO.println s!"MINCORE_OVERLAY_PROOF_DEPS registered_edges={registeredEdgeCount}"
-  if registeredEdgeCount != 1 then
+  if registeredEdgeCount != 0 then
     throwError s!"MINCORE_OVERLAY_PROOF_EDGE_COUNT {registeredEdgeCount}"
