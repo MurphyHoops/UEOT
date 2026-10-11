@@ -15,6 +15,13 @@ CORE = ROOT / 'formalization/ueot-core'
 BASE = CORE / 'UEOT'
 OUT = Path(__file__).parent / 'UMC_GLOBAL_MODULE_DAG_V4.json'
 
+DECL = re.compile(
+    r'^\\s*(?:(?:@\\[[^\\]\\n]*\\]|private|protected|noncomputable|unsafe)\\s+)*'
+    r'(theorem|lemma|structure|class|def|abbrev|inductive)\\s+'
+    r'([A-Za-z_][A-Za-z_0-9\\\']*)',
+    re.M,
+)
+
 def category(path: Path):
     rel = path.relative_to(CORE).as_posix()
     if '/TheoryCompletion/UnifiedClosure/' in rel: return 'UMC_New_Bridges'
@@ -43,7 +50,7 @@ def manifest():
         imports=re.findall(r'^\s*import\s+(\S+)',text,re.M)
         # Lexical declarations only; namespaces and elaborated theorem
         # dependencies are explicitly out of scope.
-        defs=re.findall(r'^\s*(?:(?:private|protected|noncomputable|unsafe)\s+)*(theorem|lemma|structure|class|def|abbrev|inductive)\s+([A-Za-z_][A-Za-z_0-9\']*)',text,re.M)
+        defs=DECL.findall(text)
         heads=re.findall(r'/-!\s*#\s+([^\n]+)',text)
         modules[name]={'source':p.relative_to(ROOT).as_posix(),
                        'bytes':p.stat().st_size,
