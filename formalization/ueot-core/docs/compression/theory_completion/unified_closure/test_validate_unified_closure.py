@@ -9,6 +9,7 @@ import copy
 import json
 import tempfile
 from validate_unified_closure import validate
+import build_umc_global_map as global_map
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[5]
@@ -18,6 +19,34 @@ def run():
     original=json.loads(MATRIX.read_text())
     ok=validate(ROOT,MATRIX)
     assert ok["stages"] == 7 and ok["source_theorems"] == 106
+
+    # Regression for attribute-prefixed Lean declarations. This is the same
+    # entry point executed by the Compression workflow.
+    with tempfile.TemporaryDirectory(prefix="ueot-umc-map-attrs-") as td:
+        fake_root=Path(td)
+        fake_core=fake_root/"formalization/ueot-core"
+        fake_base=fake_core/"UEOT"
+        (fake_base/"V3").mkdir(parents=True)
+        (fake_core/"UEOT.lean").write_text("import UEOT.V3\nimport UEOT.Sample\n")
+        (fake_base/"V3.lean").write_text("")
+        (fake_base/"Sample.lean").write_text(
+            "@[simp] theorem attrTrue : True := by trivial\n"
+            "@[simp] lemma attrEq (x : Nat) : x = x := rfl\n"
+            "def plainDef := 1\n"
+        )
+        saved=(global_map.ROOT,global_map.CORE,global_map.BASE,global_map.OUT)
+        try:
+            global_map.ROOT=fake_root
+            global_map.CORE=fake_core
+            global_map.BASE=fake_base
+            global_map.OUT=fake_root/"dag.json"
+            survey=global_map.manifest()
+        finally:
+            global_map.ROOT,global_map.CORE,global_map.BASE,global_map.OUT=saved
+        sample=survey["entries"]["UEOT.Sample"]
+        assert sample["theorem_lemma_count"] == 2, sample
+        assert sample["decl_count"] == 3, sample
+
     checks={
       "closed_without_proof":lambda x:x.update(state="FULL_MATHEMATICAL_CLOSURE"),
       "fake_stage_proof":lambda x:x["stages"][0].update(state="LOCAL_PROVED"),
