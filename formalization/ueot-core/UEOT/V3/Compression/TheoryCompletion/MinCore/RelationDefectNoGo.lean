@@ -101,10 +101,6 @@ def boolEqualityUnitDefect : RelationDefectPresentation Bool where
     · simp [h]
     · simp [h]
 
-@[simp] theorem boolEqualityUnitDefect_false_true :
-    boolEqualityUnitDefect.defect false true = 1 := by
-  simp [boolEqualityUnitDefect]
-
 /-- A continuum of positive calibrations realizes exactly the same equality
 relation while assigning an arbitrary positive value to the off-diagonal pair. -/
 theorem same_relation_arbitrary_positive_scale
