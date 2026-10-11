@@ -86,6 +86,13 @@ def load_overlay() -> dict:
         raise RuntimeError("OVERLAY_TYPE_DISTINCTNESS_NOT_CERTIFIED")
     if overlay.get("type_distinctness", {}).get("definitionally_equal_matches") != 0:
         raise RuntimeError("OVERLAY_TYPE_COLLISION_RECORDED")
+    cert = overlay.get("proof_dependency_certification", {})
+    if cert.get("status") != "PASS":
+        raise RuntimeError("OVERLAY_PROOF_DEPENDENCIES_NOT_CERTIFIED")
+    actual_edges = sum(len(x.get("source_theorem_deps", []))
+                       for x in overlay.get("public_theorems", []))
+    if cert.get("registered_direct_edges") != actual_edges:
+        raise RuntimeError("OVERLAY_PROOF_EDGE_COUNT_MISMATCH")
     return overlay
 
 
