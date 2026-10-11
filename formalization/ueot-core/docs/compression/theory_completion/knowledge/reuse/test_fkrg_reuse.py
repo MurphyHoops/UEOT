@@ -53,6 +53,24 @@ class ProofReuseTests(unittest.TestCase):
         self.assertEqual(item["type_relation"], "NO_TYPE_EQUIVALENCE_CERTIFICATE")
         self.assertEqual(self.data["overlay"]["type_distinctness"]["definitionally_equal_matches"], 0)
 
+    def test_mincore_overlay_direct_proof_edge(self):
+        source = (
+            "UEOT.V3.Compression.TheoryCompletion.MinCore."
+            "RelationDefectPresentation.rescale_changes_nonzero_defect"
+        )
+        target = (
+            "UEOT.V3.Compression.TheoryCompletion.MinCore."
+            "RelationDefectPresentation.rescale_defect"
+        )
+        item = reuse.explain(self.data, source)
+        self.assertEqual(item["direct_existing_source_theorem_uses"], [target])
+        target_item = reuse.explain(self.data, target)
+        self.assertIn(source, target_item["direct_source_theorem_users"])
+        self.assertEqual(
+            self.data["overlay"]["proof_dependency_certification"]["registered_direct_edges"],
+            1,
+        )
+
     def test_counts_from_canonical_ledger_tiers(self):
         names = [member["name"]
                  for group in self.data["groups"] if not group["verified_direct_proof_dep_edges"]
