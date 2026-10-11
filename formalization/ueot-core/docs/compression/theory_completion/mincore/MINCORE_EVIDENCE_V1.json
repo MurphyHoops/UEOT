@@ -40,7 +40,20 @@
     "crossfile_clone_candidates": 68,
     "reuse_regressions": "13/13 PASS",
     "focused_direct_reuse": "14/14 PASS",
-    "fresh_type_equivalence_run": "exit 0"
+    "fresh_type_equivalence_run": "exit 0",
+    "immutable_base_modules": 633,
+    "live_modules_with_overlay": 634,
+    "live_ueot_maintained": 623,
+    "live_public_theorem_graph_nodes": 3803,
+    "overlay_public_theorems": 10,
+    "overlay_regressions": "14/14 PASS",
+    "overlay_type_distinctness": {
+      "cross_snapshot_Meta_isDefEq": 37930,
+      "internal_Meta_isDefEq": 45,
+      "matches": 0,
+      "status": "PASS"
+    },
+    "overlay_source_checkpoint": "fb70de6fb5dd26918222bc7b0849fb38900f8604"
   },
   "E1": {
     "classification": [
@@ -71,8 +84,19 @@
     "additional_boundary": "zero-set-compatible nonnegative defect does not force triangle/finite-composition regularity",
     "axioms": "standard Lean/Mathlib only: propext, Classical.choice, Quot.sound"
   },
-  "review": "PENDING",
-  "pr": null,
-  "exact_head_ci": null,
-  "resulting_main_ci": null
+  "review": "CODEX_P1_P2_REMEDIATED_LOCALLY_REREVIEW_PENDING",
+  "pr": 318,
+  "exact_head_ci": {
+    "previous_reviewed_head": "0bcda08079c253ac83c6c81685584ffe9df268a3",
+    "status": "SUPERSEDED_BY_REMEDIATION"
+  },
+  "resulting_main_ci": null,
+  "governance": {
+    "umc_dag_l2_authorization_pr": 319,
+    "umc_dag_l2_authorization_merge": "eb87bb38f05ae82546518bd2d6ca3ab7558c29f5",
+    "fkrg_overlay_l2_authorization_pr": 320,
+    "fkrg_overlay_l2_authorization_merge": "c7989419029a562c409ead38cc8c7ff146b8a621",
+    "historical_2026_10_10_reuse_snapshot_modified": false,
+    "counted_or_frozen_surface_modified": false
+  }
 }

@@ -147,9 +147,16 @@ Local evidence already obtained at first write:
 - fresh 40-pair type-equivalence Lean run: exit 0;
 - new MinCore module focused Lean compile: PASS.
 
-The branch is intentionally L1 additive under Track TC. It changes only a new TheoryCompletion/MinCore module, new theory_completion/mincore evidence, and the permitted import-only TheoryCompletion.lean public root.
+The scientific theorem/evidence additions are Track-TC L1 surfaces, but the final branch is **not purely L1**. Two fail-closed existing receipts/tools became stale because the source universe changed and were handled through explicit L2 authorization rather than bypassed:
 
-Independent PR review, exact-head CI, merge, resulting-main validation and branch retirement are separate evidence gates. This report must be updated only from actual receipts; no local success may be represented as remote closure.
+- PR #319 / merge `eb87bb38f05ae82546518bd2d6ca3ab7558c29f5` authorizes the exact existing `UMC_GLOBAL_MODULE_DAG_V4.json` path on this research branch. The canonical generator was rerun after source changes; the receipt covers the 634-module graph with zero missing imports/cycles.
+- PR #320 / merge `c7989419029a562c409ead38cc8c7ff146b8a621` authorizes exactly four live FKRG proof-reuse navigator surfaces (`fkrg_reuse.py`, its regression test, README, and clone rebuild helper). The immutable 2026-10-10 633-module audit remains byte-preserved; a new pinned MINCORE overlay extends the live navigator.
+
+The live proof-reuse state after remediation is 634 modules (623 UEOT-maintained + 11 adapted upstream), 3,803 public authored theorem proof nodes, 37 historical strict equal-type groups, and 10 overlay theorem nodes. The overlay Lean verifier checks 37,930 new-vs-base and 45 new-vs-new `Meta.isDefEq` pairs with zero matches. The 634-module clone regeneration still returns the same 68 exact source-clone candidates. `test_fkrg_reuse.py` is 14/14 PASS.
+
+Codex review on PR #318 at head `0bcda080...` raised two material findings: (P1) the old live FKRG navigator correctly failed closed on the 634th module, and (P2) this report omitted the authorized L2 DAG refresh. Both are accepted and remediated as above. A temporary public helper that produced an accidental closed-type collision with two unrelated CrossTrack theorems was also removed; the remaining 10 new theorem types have zero definitional-equality collisions.
+
+Independent re-review, new exact-head CI, merge, resulting-main validation and retirement of both temporary L2 exceptions remain separate evidence gates. No local success is represented here as final remote closure.
 
 ## H. Highest-priority next mathematical task
 

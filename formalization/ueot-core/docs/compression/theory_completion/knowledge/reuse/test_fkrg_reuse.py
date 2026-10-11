@@ -19,14 +19,17 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 633)
-        self.assertEqual(res["ueot_maintained_modules"], 622)
+        self.assertEqual(res["module_source_hashes_verified"], 634)
+        self.assertEqual(res["ueot_maintained_modules"], 623)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3793)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3803)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
+        self.assertEqual(res["overlay_public_theorems"], 10)
+        self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 0)
 
     def test_known_type_equal_and_direct_generator(self):
         item = reuse.explain(
@@ -38,6 +41,17 @@ class ProofReuseTests(unittest.TestCase):
                       item["direct_existing_source_theorem_uses"])
         self.assertTrue(any(p["name"] == "UEOT.V3.ProcessInterface.p_api_01_approx"
                             for p in item["definitionally_equal_type_peers"]))
+
+    def test_mincore_overlay_is_searchable_and_uncounted(self):
+        symbol = (
+            "UEOT.V3.Compression.TheoryCompletion.MinCore."
+            "no_relation_only_quantitative_recovery"
+        )
+        item = reuse.explain(self.data, symbol)
+        self.assertEqual(item["role"], "UNCOUNTED_MINCORE_BOUNDARY")
+        self.assertEqual(item["direct_existing_source_theorem_uses"], [])
+        self.assertEqual(item["type_relation"], "NO_TYPE_EQUIVALENCE_CERTIFICATE")
+        self.assertEqual(self.data["overlay"]["type_distinctness"]["definitionally_equal_matches"], 0)
 
     def test_counts_from_canonical_ledger_tiers(self):
         names = [member["name"]
@@ -101,6 +115,12 @@ class ProofReuseTests(unittest.TestCase):
         with mock.patch.object(reuse, "CLONE_SHA256", "f" * 64):
             with self.assertRaisesRegex(RuntimeError, "AUDIT_CLONE_EVIDENCE_DRIFT"):
                 reuse.verify_evidence_files()
+        with mock.patch.object(reuse, "OVERLAY_SHA256", "0" * 64):
+            with self.assertRaisesRegex(RuntimeError, "REUSE_OVERLAY_EVIDENCE_DRIFT"):
+                reuse.verify_evidence_files()
+        with mock.patch.object(reuse, "OVERLAY_TYPE_CHECK_SHA256", "0" * 64):
+            with self.assertRaisesRegex(RuntimeError, "REUSE_OVERLAY_TYPE_CHECK_DRIFT"):
+                reuse.verify_evidence_files()
         with mock.patch.object(reuse, "LEDGER_SHA256", "f" * 64):
             with self.assertRaisesRegex(RuntimeError, "CANONICAL_COMPRESSION_LEDGER_CHANGED"):
                 reuse.verify_evidence_files()
@@ -118,7 +138,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 633)
+        self.assertEqual(len(live), 634)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

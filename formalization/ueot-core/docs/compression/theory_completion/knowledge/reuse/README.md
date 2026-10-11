@@ -8,6 +8,29 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
+## Governed MINCORE overlay (2026-10-11)
+
+The 2026-10-10 633-module audit remains immutable history. The live navigator
+now composes that base with `MINCORE_REUSE_OVERLAY_V1.json`, pinned to source
+checkpoint `fb70de6fb5dd26918222bc7b0849fb38900f8604`. The overlay records the
+634th Lean module, the import-only `TheoryCompletion.lean` source-hash update,
+and 10 new public theorem nodes. No frozen Core theorem or counted Compression
+mapping is changed.
+
+`VERIFY_MINCORE_OVERLAY_TYPES.lean` performs 37,930 cross-snapshot
+`Meta.isDefEq` checks (10 new theorem types against 3,793 compiled base theorem
+types) plus 45 internal pair checks. Result: **0 definitionally-equal matches**.
+The PR lexical preflight also found 0 name-similar reuse candidates for the 10
+new theorem names. The resulting live census is **634 modules = 623
+UEOT-maintained + 11 adapted upstream**, with **3,803** public authored theorem
+proof nodes in the direct proof graph.
+
+The overlay is fail-closed: the exact live source path set, the added module
+hash, the modified public-root hash, the overlay JSON hash, and the Lean type
+certificate hash are all pinned. Any further Lean source addition/removal or
+source-byte drift requires a new governed overlay/snapshot; it may not be
+silently absorbed.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -24,7 +47,7 @@ theorem peers, source copies, and a read-only scientific-role distinction.
 ## Strongly typed and provenance-limited evidence
 
 - 633 source modules = 622 UEOT-maintained + 11 adapted upstream modules.
-- 3,793 public source theorem proofs, with 4,886 direct registered-source
+- 3,793 immutable-base public source theorem proofs + 10 governed overlay theorem proofs, with 4,886 direct registered-source
   theorem references extracted from the Lean proof term expressions.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -70,8 +93,8 @@ canonical Compression ledger used for scientific-role classifications,
 the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
-or deleted module), and all 633 source-file content hashes against the pinned
-source census. It refuses to
+or deleted module), and all immutable-base source hashes plus the governed overlay hashes against the exact 634-module
+live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 
