@@ -56,9 +56,7 @@
       "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
       "line": 76,
       "source_origin": "UEOT_MAINTAINED",
-      "source_theorem_deps": [
-        "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_defect"
-      ]
+      "source_theorem_deps": []
     },
     {
       "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.same_relation_arbitrary_positive_scale",
@@ -108,13 +106,10 @@
   "counted_core_impact": "NONE",
   "proof_dependency_certification": {
     "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_MINCORE_OVERLAY_TYPES.lean",
-    "registered_direct_edges": 1,
-    "edges": [
-      {
-        "from": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_changes_nonzero_defect",
-        "uses": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_defect"
-      }
-    ],
+    "measure": "Lean .thmInfo.value.getUsedConstants restricted to the registered base+overlay theorem nodes",
+    "registered_direct_edges": 0,
+    "edges": [],
+    "source_tactic_note": "Source text uses simp only [rescale_defect], but the elaborated proof term contains no rescale_defect theorem constant; FKRG records kernel proof-term dependencies, not tactic-token references.",
     "status": "PASS"
   }
 }
