@@ -56,7 +56,9 @@
       "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
       "line": 76,
       "source_origin": "UEOT_MAINTAINED",
-      "source_theorem_deps": []
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_defect"
+      ]
     },
     {
       "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.same_relation_arbitrary_positive_scale",
@@ -103,5 +105,16 @@
     "new_theorems_with_lexical_reuse_candidates": 0
   },
   "scientific_role": "UNCOUNTED_MINCORE_BOUNDARY",
-  "counted_core_impact": "NONE"
+  "counted_core_impact": "NONE",
+  "proof_dependency_certification": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_MINCORE_OVERLAY_TYPES.lean",
+    "registered_direct_edges": 1,
+    "edges": [
+      {
+        "from": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_changes_nonzero_defect",
+        "uses": "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectPresentation.rescale_defect"
+      }
+    ],
+    "status": "PASS"
+  }
 }
