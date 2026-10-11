@@ -1,22 +1,22 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "26bd72d82eb0610a5d5f8f085e612394b9c7d4a3d3fdfcaf9b4004c16d976342",
+  "source_tree_sha256": "a4a0be1d8f6b2bf2003aaff88708ca9a647540bf0624837a731789b1ae2ea3eb",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 633,
-  "total_source_lines": 111565,
-  "total_theorem_lemma_tokens": 3754,
+  "total_Lean_modules": 634,
+  "total_source_lines": 111746,
+  "total_theorem_lemma_tokens": 3762,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
     "CrossTrack": 29,
     "Hierarchy": 2,
     "Objecthood": 88,
-    "P0_P12_TheoryCompletion": 54,
+    "P0_P12_TheoryCompletion": 55,
     "C1_C7_SISC": 55,
     "UMC_New_Bridges": 37
   },
-  "reachable_from_UEOT_root": 633,
+  "reachable_from_UEOT_root": 634,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -251,7 +251,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "P0_P12_TheoryCompletion",
-      "edges": 35
+      "edges": 36
     },
     {
       "from": "Compression_Frozen_Bridges",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 9065,
-      "lines": 118,
+      "bytes": 9136,
+      "lines": 119,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3554,7 +3554,8 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePredictiveProbeCompleteness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeRewardConflictWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge",
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -3801,6 +3802,18 @@
         "UEOT.V3.SelectionBridge"
       ],
       "theorem_lemma_count": 7,
+      "decl_count": 12
+    },
+    "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
+      "bytes": 6993,
+      "lines": 180,
+      "category": "P0_P12_TheoryCompletion",
+      "title": "UEOT MINCORE — relation/defect calibration boundary",
+      "imports": [
+        "Mathlib"
+      ],
+      "theorem_lemma_count": 8,
       "decl_count": 12
     },
     "UEOT.V3.Compression.TheoryCompletion.ObjectScaleCalculus": {
