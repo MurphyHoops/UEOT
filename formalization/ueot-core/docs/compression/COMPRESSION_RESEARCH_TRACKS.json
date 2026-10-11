@@ -44,9 +44,10 @@
         "^compression/theory-completion-mincore-relation-defect$"
       ],
       "paths": [
-        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/build_umc_global_map.py"
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/build_umc_global_map.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
       ],
-      "reason": "Codex review of MINCORE PR #318 found that the live UMC DAG generator's lexical declaration regex omits attribute-prefixed declarations such as @[simp] theorem, understating the refreshed 634-module theorem/declaration census. This temporary exception authorizes only the existing UMC DAG builder on the MINCORE research branch so its metadata parser can be corrected and regression-tested before regenerating the already-authorized DAG receipt; no Lean theorem, frozen Core source, counted ledger, or scientific status is modified.",
+      "reason": "Codex review of MINCORE PR #318 found that the live UMC DAG generator's lexical declaration regex omits attribute-prefixed declarations such as @[simp] theorem, understating the refreshed 634-module theorem/declaration census. This temporary exception authorizes only the existing UMC DAG builder and its CI-executed unified-closure regression test on the MINCORE research branch so the metadata parser can be corrected and regression-tested before regenerating the already-authorized DAG receipt; no Lean theorem, frozen Core source, counted ledger, or scientific status is modified.",
       "temporary": true
     }
   ],
