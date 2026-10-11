@@ -21,11 +21,14 @@ mapping is changed.
 `Meta.isDefEq` checks (10 new theorem types against 3,793 compiled base theorem
 types) plus 45 internal pair checks. Result: **0 definitionally-equal matches**.
 The PR lexical preflight also found 0 name-similar reuse candidates for the 10
-new theorem names. The same Lean verifier checks registered direct proof
-dependencies and certifies exactly one overlay edge:
-`rescale_changes_nonzero_defect -> rescale_defect`. The resulting live census
-is **634 modules = 623 UEOT-maintained + 11 adapted upstream**, with **3,803**
-public authored theorem proof nodes in the direct proof graph.
+new theorem names. The same Lean verifier checks direct dependencies from the
+compiled theorem proof terms (`.thmInfo.value.getUsedConstants`) and finds
+**0 registered base/overlay theorem edges**. In particular, source text for
+`rescale_changes_nonzero_defect` mentions `rescale_defect` in a tactic, but
+that theorem constant is absent from the elaborated proof term; FKRG records the
+kernel proof graph rather than tactic-token references. The resulting live
+census is **634 modules = 623 UEOT-maintained + 11 adapted upstream**, with
+**3,803** public authored theorem proof nodes in the direct proof graph.
 
 The overlay is fail-closed: the exact live source path set, the added module
 hash, the modified public-root hash, the overlay JSON hash, and the Lean type
