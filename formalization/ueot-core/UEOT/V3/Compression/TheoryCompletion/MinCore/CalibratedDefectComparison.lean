@@ -9,19 +9,18 @@ identifiability audit.  The previous MINCORE no-go shows that an exact
 relation, even together with a nonnegative zero-set-compatible defect, does not
 determine quantitative calibration or transport regularity.
 
-Here the missing information is supplied explicitly: two defect
-presentations of the same exact relation are related by positive two-sided
-calibration constants
+Here the missing information is supplied explicitly: two defect presentations
+are related by two-sided calibration constants
 
 ```text
-a * d <= d' <= b * d,   0 < a <= b.
+a * d <= d' <= b * d,   0 < a,   0 <= b.
 ```
 
 The main results separate what is genuinely gauge-covariant from what is
 calibration-dependent:
 
-* exact relatedness and zero defect are invariant under a calibrated change of
-  presentation;
+* exact relatedness and zero defect are forced to agree by a positive
+  two-sided calibration;
 * finite upper budgets transport with an explicit factor `b`;
 * reverse budgets require the lower calibration `a`;
 * an M-TC weighted finite-horizon certificate transports to the calibrated
@@ -38,16 +37,18 @@ open scoped BigOperators
 
 universe u
 
-/-- A non-circular quantitative bridge between two presentations of the same
-exact relation.
+/-- A non-circular quantitative bridge between two defect presentations.
 
 The constants are deliberately explicit.  They are additional data, not
-recoverable from the common zero relation by the preceding MINCORE no-go. -/
+recoverable from the exact zero relation by the preceding MINCORE no-go.
+
+No separate `same_rel` field is assumed: positive two-sided comparability,
+together with each presentation's `zero_iff`, already forces the exact
+relations to coincide. -/
 structure DefectCalibration {X : Type u}
     (P Q : RelationDefectPresentation X) (a b : ℝ) : Prop where
-  same_rel : P.rel = Q.rel
   a_pos : 0 < a
-  a_le_b : a ≤ b
+  b_nonneg : 0 ≤ b
   lower : ∀ x y, a * P.defect x y ≤ Q.defect x y
   upper : ∀ x y, Q.defect x y ≤ b * P.defect x y
 
@@ -57,21 +58,31 @@ variable {X : Type u}
 variable {P Q : RelationDefectPresentation X}
 variable {a b : ℝ}
 
-/-- The upper calibration factor is automatically nonnegative. -/
-theorem b_nonneg (C : DefectCalibration P Q a b) : 0 ≤ b :=
-  (le_of_lt C.a_pos).trans C.a_le_b
-
-/-- Exact relatedness is gauge-covariant under an explicit calibration bridge. -/
-theorem rel_iff (C : DefectCalibration P Q a b) (x y : X) :
-    P.rel x y ↔ Q.rel x y := by
-  rw [C.same_rel]
-
-/-- Zero defect is gauge-covariant because both calibrated presentations have
-the same exact relation as their zero set. -/
+/-- Zero defect is gauge-covariant under positive two-sided calibration. -/
 theorem zero_defect_iff (C : DefectCalibration P Q a b) (x y : X) :
     P.defect x y = 0 ↔ Q.defect x y = 0 := by
-  rw [P.zero_iff x y, Q.zero_iff x y]
-  exact C.rel_iff x y
+  constructor
+  · intro hP
+    have hQle : Q.defect x y ≤ 0 := by
+      simpa [hP] using C.upper x y
+    exact le_antisymm hQle (Q.nonneg x y)
+  · intro hQ
+    have hscaled_le : a * P.defect x y ≤ 0 := by
+      simpa [hQ] using C.lower x y
+    have hscaled_nonneg : 0 ≤ a * P.defect x y :=
+      mul_nonneg (le_of_lt C.a_pos) (P.nonneg x y)
+    have hscaled : a * P.defect x y = 0 :=
+      le_antisymm hscaled_le hscaled_nonneg
+    rcases mul_eq_zero.mp hscaled with ha | hP
+    · exact (ne_of_gt C.a_pos ha).elim
+    · exact hP
+
+/-- Exact relatedness is therefore gauge-covariant without an independent
+same-relation assumption. -/
+theorem rel_iff (C : DefectCalibration P Q a b) (x y : X) :
+    P.rel x y ↔ Q.rel x y := by
+  rw [← P.zero_iff x y, ← Q.zero_iff x y]
+  exact C.zero_defect_iff x y
 
 /-- A finite upper certificate in `P` transports to `Q` with the explicit
 upper calibration factor. -/
@@ -81,7 +92,7 @@ theorem forward_budget
     Q.defect x y ≤ b * ε := by
   exact
     (C.upper x y).trans
-      (mul_le_mul_of_nonneg_left hP (b_nonneg C))
+      (mul_le_mul_of_nonneg_left hP C.b_nonneg)
 
 /-- A finite upper certificate in `Q` transports back to `P` only through
 the independently supplied positive lower calibration. -/
@@ -99,9 +110,8 @@ def rescaleCalibration
     {X : Type u} (P : RelationDefectPresentation X)
     (c : ℝ) (hc : 0 < c) :
     DefectCalibration P (P.rescale c hc) c c where
-  same_rel := rfl
   a_pos := hc
-  a_le_b := le_rfl
+  b_nonneg := le_of_lt hc
   lower := by
     intro x y
     exact le_rfl
@@ -160,7 +170,7 @@ theorem calibrated_weighted_chain_bound
       hcontract htriangle hlocal hL0 n
   exact
     ((C n).upper (ideal n) (actual n)).trans
-      (mul_le_mul_of_nonneg_left hP (DefectCalibration.b_nonneg (C n)))
+      (mul_le_mul_of_nonneg_left hP (C n).b_nonneg)
 
 /-- Same exact relation is insufficient to preserve a fixed numerical budget.
 
