@@ -109,6 +109,7 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTran
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge
 import UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo
 import UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison
+import UEOT.V3.Compression.TheoryCompletion.MinCore.DefectGaugeCovariance
 /-!
 # UEOT Theory Completion public root
 
