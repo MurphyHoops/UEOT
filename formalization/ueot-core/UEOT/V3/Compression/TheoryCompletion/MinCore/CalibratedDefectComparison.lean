@@ -33,6 +33,7 @@ is changed by this module.
 
 namespace UEOT.V3.Compression.TheoryCompletion.MinCore
 
+open Filter Topology
 open scoped BigOperators
 
 universe u
@@ -102,6 +103,35 @@ theorem reverse_budget
     P.defect x y ≤ ε / a := by
   apply (le_div_iff₀ C.a_pos).2
   simpa [mul_comm] using (C.lower x y).trans hQ
+
+/-- Under a fixed finite calibration, asymptotic vanishing of the defect is
+gauge-covariant in both directions.
+
+The forward implication uses the upper comparison; the reverse implication uses
+the positive lower comparison.  Thus the qualitative statement “defect tends
+to zero” is invariant even though the numerical finite-time budgets are not. -/
+theorem tendsto_zero_iff
+    (C : DefectCalibration P Q a b)
+    (x y : ℕ → X) :
+    Tendsto (fun n => P.defect (x n) (y n)) atTop (𝓝 0) ↔
+      Tendsto (fun n => Q.defect (x n) (y n)) atTop (𝓝 0) := by
+  constructor
+  · intro hP
+    have hupper :
+        Tendsto (fun n => b * P.defect (x n) (y n)) atTop (𝓝 0) := by
+      simpa using tendsto_const_nhds.mul hP
+    exact squeeze_zero
+      (fun n => Q.nonneg (x n) (y n))
+      (fun n => C.upper (x n) (y n))
+      hupper
+  · intro hQ
+    have hupper :
+        Tendsto (fun n => Q.defect (x n) (y n) / a) atTop (𝓝 0) := by
+      simpa [div_eq_mul_inv] using hQ.mul_const a⁻¹
+    exact squeeze_zero
+      (fun n => P.nonneg (x n) (y n))
+      (fun n => C.reverse_budget (hQ := le_rfl))
+      hupper
 
 end DefectCalibration
 
