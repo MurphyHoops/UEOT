@@ -19,17 +19,58 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 634)
-        self.assertEqual(res["ueot_maintained_modules"], 623)
+        self.assertEqual(res["module_source_hashes_verified"], 635)
+        self.assertEqual(res["ueot_maintained_modules"], 624)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3803)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3811)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 10)
+        self.assertEqual(res["overlay_public_theorems"], 18)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
         self.assertEqual(res["overlay_lexical_reuse_candidates"], 0)
+        self.assertEqual(res["overlay_count"], 2)
+        self.assertEqual(res["overlay_registered_direct_edges"], 3)
+
+    def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
+        self.assertEqual(len(self.data["overlays"]), 2)
+        prior, current = self.data["overlays"]
+        self.assertEqual(prior["base_snapshot_modules"], 633)
+        self.assertEqual(current["base_snapshot_modules"], 634)
+        self.assertEqual(
+            current["prior_overlay"]["sha256"],
+            reuse.OVERLAY_SHA256S[0],
+        )
+        self.assertEqual(
+            current["type_distinctness"]["registered_prior_theorems"],
+            3803,
+        )
+        self.assertEqual(
+            current["proof_dependency_certification"]["registered_direct_edges"],
+            3,
+        )
+        weighted = (
+            "UEOT.V3.Compression.TheoryCompletion.MinCore."
+            "calibrated_weighted_chain_bound"
+        )
+        weighted_item = reuse.explain(self.data, weighted)
+        self.assertEqual(weighted_item["role"], "UNCOUNTED_MINCORE_BOUNDARY")
+        self.assertEqual(
+            weighted_item["direct_existing_source_theorem_uses"],
+            ["UEOT.V3.Compression.TransportCertificate.weighted_chain_bound"],
+        )
+        rel = (
+            "UEOT.V3.Compression.TheoryCompletion.MinCore."
+            "DefectCalibration.rel_iff"
+        )
+        self.assertEqual(
+            reuse.explain(self.data, rel)["direct_existing_source_theorem_uses"],
+            [
+                "UEOT.V3.Compression.TheoryCompletion.MinCore."
+                "DefectCalibration.zero_defect_iff"
+            ],
+        )
 
     def test_known_type_equal_and_direct_generator(self):
         item = reuse.explain(
@@ -51,7 +92,7 @@ class ProofReuseTests(unittest.TestCase):
         self.assertEqual(item["role"], "UNCOUNTED_MINCORE_BOUNDARY")
         self.assertEqual(item["direct_existing_source_theorem_uses"], [])
         self.assertEqual(item["type_relation"], "NO_TYPE_EQUIVALENCE_CERTIFICATE")
-        self.assertEqual(self.data["overlay"]["type_distinctness"]["definitionally_equal_matches"], 0)
+        self.assertEqual(self.data["overlays"][0]["type_distinctness"]["definitionally_equal_matches"], 0)
 
     def test_mincore_overlay_kernel_proof_graph(self):
         source = (
@@ -67,7 +108,7 @@ class ProofReuseTests(unittest.TestCase):
         target_item = reuse.explain(self.data, target)
         self.assertNotIn(source, target_item["direct_source_theorem_users"])
         self.assertEqual(
-            self.data["overlay"]["proof_dependency_certification"]["registered_direct_edges"],
+            self.data["overlays"][0]["proof_dependency_certification"]["registered_direct_edges"],
             0,
         )
 
@@ -133,10 +174,15 @@ class ProofReuseTests(unittest.TestCase):
         with mock.patch.object(reuse, "CLONE_SHA256", "f" * 64):
             with self.assertRaisesRegex(RuntimeError, "AUDIT_CLONE_EVIDENCE_DRIFT"):
                 reuse.verify_evidence_files()
-        with mock.patch.object(reuse, "OVERLAY_SHA256", "0" * 64):
+        with mock.patch.object(
+            reuse, "OVERLAY_SHA256S", ["0" * 64, reuse.OVERLAY_SHA256S[1]]
+        ):
             with self.assertRaisesRegex(RuntimeError, "REUSE_OVERLAY_EVIDENCE_DRIFT"):
                 reuse.verify_evidence_files()
-        with mock.patch.object(reuse, "OVERLAY_TYPE_CHECK_SHA256", "0" * 64):
+        with mock.patch.object(
+            reuse, "OVERLAY_TYPE_CHECK_SHA256S",
+            ["0" * 64, reuse.OVERLAY_TYPE_CHECK_SHA256S[1]]
+        ):
             with self.assertRaisesRegex(RuntimeError, "REUSE_OVERLAY_TYPE_CHECK_DRIFT"):
                 reuse.verify_evidence_files()
         with mock.patch.object(reuse, "LEDGER_SHA256", "f" * 64):
@@ -156,7 +202,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 634)
+        self.assertEqual(len(live), 635)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

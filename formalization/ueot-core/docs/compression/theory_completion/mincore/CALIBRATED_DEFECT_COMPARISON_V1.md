@@ -202,13 +202,39 @@ Issue #302 therefore remains OPEN / NOT_ESTABLISHED for the full UMC objective.
 Local preflight on the active research worktree:
 
 - focused Lean check of `CalibratedDefectComparison.lean`: PASS;
-- full Lake build through public `TheoryCompletion` root before the asymptotic extension: PASS;
+- full Lake build through the public `TheoryCompletion` root on the final theorem source: PASS (9101 jobs);
+- FKRG lexical/infrastructure suite: 17/17 PASS;
+- governed live FKRG proof-reuse suite after the calibrated overlay: 16/16 PASS;
+- exact clone regeneration against the live 635-module census: PASS, historical 68-pair snapshot unchanged;
+- calibrated-defect Lean kernel reuse verifier: PASS;
 - UMC global DAG regeneration after the final theorem extension: PASS;
 - unified-closure negative-control suite: PASS;
-- regenerated DAG: 635 first-party Lean modules, all 635 reachable from `UEOT` root, 0 cycles, 0 missing internal imports;
-- total theorem/lemma tokens: 3985;
-- total source lines: 111967;
+- `git diff --check`: PASS.
+
+Live FKRG after the additive second overlay:
+
+- 635 modules = 624 UEOT-maintained + 11 adapted upstream;
+- 3811 registered public theorem proof nodes;
+- 18 overlay theorem nodes in total (10 historical relation/defect + 8 calibrated-defect);
+- 30424 new cross-layer `Meta.isDefEq` comparisons and 28 new internal comparisons, with 0 matches;
+- exactly 3 new kernel proof edges: `rel_iff -> zero_defect_iff`, `tendsto_zero_iff -> reverse_budget`, and `calibrated_weighted_chain_bound -> TransportCertificate.weighted_chain_bound`;
+- 0 new prior lexical theorem candidates for the 8 calibrated-defect theorem names.
+
+Regenerated UMC DAG:
+
+- 635 first-party Lean modules, all 635 reachable from the `UEOT` root;
+- 0 cycles;
+- 0 missing internal imports;
+- 3985 theorem/lemma tokens;
+- 111967 source lines;
 - Theory Completion category: 56 modules;
 - source-tree SHA-256: `938e5b30c09df1f317156ee4d91e395a8aa3f5287626f2fa505502eefe336a3d`.
 
-GitHub exact-head CI and independent review receipts are intentionally not frozen into this report until the final research head is stable.
+Governance is explicitly split by risk tier rather than described as purely L1:
+
+- the new Lean theorem module, new research report, and new calibrated-defect overlay/certificate are additive Track-TC L1 surfaces;
+- the existing UMC DAG receipt refresh is authorized temporarily by PR #324 (resulting main `32308395c6d153e78ebca30f1dae968390deb88f`);
+- the existing FKRG live navigator/tests/operator docs/clone-scanner description are authorized temporarily by PR #325 (resulting main `abb62c0dd9e6aa1ca50e7f95946b069fd09b22ca`);
+- both temporary L2 exceptions must be retired after the research PR closes.
+
+GitHub exact-head CI and independent Codex-review receipts are recorded on the PR/tracker only after the final research head is stable; they are not pre-claimed here.

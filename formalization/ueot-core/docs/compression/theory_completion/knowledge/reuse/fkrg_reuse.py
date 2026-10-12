@@ -21,10 +21,22 @@ AUDIT = HERE.parent / "audits" / "2026-10-10"
 REPO = HERE.parents[6]
 SCHEMA = "FKRG_REUSE_NAVIGATOR_V2"
 SOURCE_BASELINE = "48b582beabec2ebae61ab0d51081b83356fcb3e1"
-OVERLAY_PATH = HERE / "MINCORE_REUSE_OVERLAY_V1.json"
-OVERLAY_TYPE_CHECK = HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean"
-OVERLAY_SHA256 = "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8"
-OVERLAY_TYPE_CHECK_SHA256 = "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550"
+OVERLAY_PATHS = [
+    HERE / "MINCORE_REUSE_OVERLAY_V1.json",
+    HERE / "CALIBRATED_DEFECT_REUSE_OVERLAY_V1.json",
+]
+OVERLAY_TYPE_CHECKS = [
+    HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
+    HERE / "VERIFY_CALIBRATED_DEFECT_OVERLAY_TYPES.lean",
+]
+OVERLAY_SHA256S = [
+    "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
+    "b48607f7b68bfcd8aef0d2417d0111d66e374001114fd38048602b4557f8adc2",
+]
+OVERLAY_TYPE_CHECK_SHA256S = [
+    "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
+    "c75a3af6508d2ec1ba0214d833ae17783d7f2e410c6f0226534e278fb83cecc2",
+]
 
 # Independent immutable digests calculated from main after merged PR #314.
 # Changing a CSV and its claimed source hash together must fail closed.
@@ -76,24 +88,38 @@ def read_csv(path: Path) -> list[dict]:
         return list(csv.DictReader(stream))
 
 
-def load_overlay() -> dict:
-    overlay = json.loads(OVERLAY_PATH.read_text())
-    if overlay.get("schema") != "FKRG_REUSE_OVERLAY_V1":
-        raise RuntimeError("UNSUPPORTED_REUSE_OVERLAY_SCHEMA")
-    if overlay.get("base_snapshot_modules") != 633:
-        raise RuntimeError("OVERLAY_BASE_MODULE_COUNT_MISMATCH")
-    if overlay.get("type_distinctness", {}).get("status") != "PASS":
-        raise RuntimeError("OVERLAY_TYPE_DISTINCTNESS_NOT_CERTIFIED")
-    if overlay.get("type_distinctness", {}).get("definitionally_equal_matches") != 0:
-        raise RuntimeError("OVERLAY_TYPE_COLLISION_RECORDED")
-    cert = overlay.get("proof_dependency_certification", {})
-    if cert.get("status") != "PASS":
-        raise RuntimeError("OVERLAY_PROOF_DEPENDENCIES_NOT_CERTIFIED")
-    actual_edges = sum(len(x.get("source_theorem_deps", []))
-                       for x in overlay.get("public_theorems", []))
-    if cert.get("registered_direct_edges") != actual_edges:
-        raise RuntimeError("OVERLAY_PROOF_EDGE_COUNT_MISMATCH")
-    return overlay
+def load_overlays() -> list[dict]:
+    if not (len(OVERLAY_PATHS) == len(OVERLAY_TYPE_CHECKS) ==
+            len(OVERLAY_SHA256S) == len(OVERLAY_TYPE_CHECK_SHA256S)):
+        raise RuntimeError("OVERLAY_REGISTRY_LENGTH_MISMATCH")
+    overlays = []
+    expected_base_modules = 633
+    for index, path in enumerate(OVERLAY_PATHS):
+        overlay = json.loads(path.read_text())
+        if overlay.get("schema") != "FKRG_REUSE_OVERLAY_V1":
+            raise RuntimeError("UNSUPPORTED_REUSE_OVERLAY_SCHEMA")
+        if overlay.get("base_snapshot_modules") != expected_base_modules:
+            raise RuntimeError("OVERLAY_BASE_MODULE_COUNT_MISMATCH")
+        if index:
+            prior = overlay.get("prior_overlay", {})
+            expected_prior_path = OVERLAY_PATHS[index - 1].relative_to(REPO).as_posix()
+            if (prior.get("path") != expected_prior_path or
+                    prior.get("sha256") != OVERLAY_SHA256S[index - 1]):
+                raise RuntimeError("OVERLAY_PRIOR_CHAIN_MISMATCH")
+        if overlay.get("type_distinctness", {}).get("status") != "PASS":
+            raise RuntimeError("OVERLAY_TYPE_DISTINCTNESS_NOT_CERTIFIED")
+        if overlay.get("type_distinctness", {}).get("definitionally_equal_matches") != 0:
+            raise RuntimeError("OVERLAY_TYPE_COLLISION_RECORDED")
+        cert = overlay.get("proof_dependency_certification", {})
+        if cert.get("status") != "PASS":
+            raise RuntimeError("OVERLAY_PROOF_DEPENDENCIES_NOT_CERTIFIED")
+        actual_edges = sum(len(x.get("source_theorem_deps", []))
+                           for x in overlay.get("public_theorems", []))
+        if cert.get("registered_direct_edges") != actual_edges:
+            raise RuntimeError("OVERLAY_PROOF_EDGE_COUNT_MISMATCH")
+        overlays.append(overlay)
+        expected_base_modules += len(overlay.get("added_modules", []))
+    return overlays
 
 
 def _parse_data() -> dict:
@@ -107,21 +133,22 @@ def _parse_data() -> dict:
         633, 5553, 3793, 37, 15, 68
     ):
         raise RuntimeError("AUDIT_ROW_COUNT_MISMATCH")
-    overlay = load_overlay()
-    for item in overlay["added_modules"]:
-        modules.append(dict(item))
-    for item in overlay["public_theorems"]:
-        deps = item.get("source_theorem_deps", [])
-        proof_rows.append({
-            "name": item["name"],
-            "path": item["path"],
-            "line": str(item["line"]),
-            "area": "V3/Compression/TheoryCompletion/MinCore",
-            "all_direct_project_scoped_constants": "",
-            "direct_existing_source_theorem_deps": str(len(deps)),
-            "source_theorem_deps_json": json.dumps(deps),
-            "source_origin": item.get("source_origin", "UEOT_MAINTAINED"),
-        })
+    overlays = load_overlays()
+    for overlay in overlays:
+        for item in overlay["added_modules"]:
+            modules.append(dict(item))
+        for item in overlay["public_theorems"]:
+            deps = item.get("source_theorem_deps", [])
+            proof_rows.append({
+                "name": item["name"],
+                "path": item["path"],
+                "line": str(item["line"]),
+                "area": "V3/Compression/TheoryCompletion/MinCore",
+                "all_direct_project_scoped_constants": "",
+                "direct_existing_source_theorem_deps": str(len(deps)),
+                "source_theorem_deps_json": json.dumps(deps),
+                "source_origin": item.get("source_origin", "UEOT_MAINTAINED"),
+            })
     graph = {}
     incoming: dict[str, list[str]] = {}
     for row in proof_rows:
@@ -143,15 +170,18 @@ def _parse_data() -> dict:
     return {
         "modules": modules, "declarations": declarations, "graph": graph,
         "incoming": incoming, "groups": groups, "duplicates": duplicate_members,
-        "near": near, "clones": clones, "overlay": overlay
+        "near": near, "clones": clones, "overlays": overlays,
+        "overlay": overlays[-1]
     }
 
 
 def verify_evidence_files():
-    if sha256(OVERLAY_PATH.read_bytes()).hexdigest() != OVERLAY_SHA256:
-        raise RuntimeError("REUSE_OVERLAY_EVIDENCE_DRIFT")
-    if sha256(OVERLAY_TYPE_CHECK.read_bytes()).hexdigest() != OVERLAY_TYPE_CHECK_SHA256:
-        raise RuntimeError("REUSE_OVERLAY_TYPE_CHECK_DRIFT")
+    for path, expected in zip(OVERLAY_PATHS, OVERLAY_SHA256S):
+        if sha256(path.read_bytes()).hexdigest() != expected:
+            raise RuntimeError("REUSE_OVERLAY_EVIDENCE_DRIFT")
+    for path, expected in zip(OVERLAY_TYPE_CHECKS, OVERLAY_TYPE_CHECK_SHA256S):
+        if sha256(path.read_bytes()).hexdigest() != expected:
+            raise RuntimeError("REUSE_OVERLAY_TYPE_CHECK_DRIFT")
     for name, pinned_hash in BUILD_ENVIRONMENT_SHA256.items():
         path = REPO / "formalization/ueot-core" / name
         actual = sha256(path.read_bytes()).hexdigest()
@@ -178,8 +208,10 @@ def live_source_paths() -> set[str]:
 
 
 def verify_sources(modules: list[dict]):
-    overlay = load_overlay()
-    overrides = overlay.get("source_hash_overrides", {})
+    overlays = load_overlays()
+    overrides = {}
+    for overlay in overlays:
+        overrides.update(overlay.get("source_hash_overrides", {}))
     recorded = {row["path"] for row in modules}
     current = live_source_paths()
     if len(recorded) != len(modules) or recorded != current:
@@ -285,11 +317,13 @@ def clone_candidates(data: dict, threshold: int):
 
 
 def status(data: dict):
-    overlay = data["overlay"]
+    overlays = data["overlays"]
     return {
         "schema": SCHEMA,
         "base_snapshot_source_commit": SOURCE_BASELINE,
-        "overlay_source_checkpoint": overlay["source_checkpoint"],
+        "overlay_source_checkpoints": [x["source_checkpoint"] for x in overlays],
+        "latest_overlay_source_checkpoint": overlays[-1]["source_checkpoint"],
+        "overlay_count": len(overlays),
         "module_source_hashes_verified": len(data["modules"]),
         "bundled_modules": len(data["modules"]),
         "ueot_maintained_modules": sum(row["source_origin"] == "UEOT_MAINTAINED"
@@ -297,14 +331,19 @@ def status(data: dict):
         "vendor_modules": sum(row["source_origin"] == "VENDORED_ADAPTED_UPSTREAM"
                               for row in data["modules"]),
         "public_source_theorems_with_direct_proof_graph": len(data["graph"]),
-        "overlay_public_theorems": len(overlay["public_theorems"]),
+        "overlay_public_theorems": sum(len(x["public_theorems"]) for x in overlays),
+        "overlay_registered_direct_edges": sum(
+            x["proof_dependency_certification"]["registered_direct_edges"] for x in overlays),
         "verified_equal_type_groups": len(data["groups"]),
         "equal_type_statement_names": len(data["duplicates"]),
-        "overlay_cross_snapshot_defeq_matches": overlay["type_distinctness"]["definitionally_equal_matches"],
+        "overlay_cross_snapshot_defeq_matches": sum(
+            x["type_distinctness"]["definitionally_equal_matches"] for x in overlays),
         "near_type_not_defeq_candidate_pairs": len(data["near"]),
-        "overlay_lexical_reuse_candidates": overlay["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"],
+        "overlay_lexical_reuse_candidates": sum(
+            x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
+            for x in overlays),
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE overlay, Lean kernel, and canonical Core/Compression ledgers",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE and calibrated-defect overlays, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 
