@@ -106,7 +106,7 @@ theorem reverse_budget
 end DefectCalibration
 
 /-- Positive rescaling is the canonical calibrated gauge transformation. -/
-def rescaleCalibration
+theorem rescaleCalibration
     {X : Type u} (P : RelationDefectPresentation X)
     (c : ℝ) (hc : 0 < c) :
     DefectCalibration P (P.rescale c hc) c c where
