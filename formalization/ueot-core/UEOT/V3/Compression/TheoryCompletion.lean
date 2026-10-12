@@ -108,6 +108,7 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeRewardConflictWit
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge
 import UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo
+import UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison
 /-!
 # UEOT Theory Completion public root
 
