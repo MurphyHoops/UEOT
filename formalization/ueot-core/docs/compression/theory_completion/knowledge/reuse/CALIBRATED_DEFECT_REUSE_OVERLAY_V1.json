@@ -1,0 +1,124 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "CALIBRATED_DEFECT_REUSE_OVERLAY_V1",
+  "source_checkpoint": "fb16512a6b4e813ef94f2ba3db0e6f3a44500886",
+  "parent_main": "abb62c0dd9e6aa1ca50e7f95946b069fd09b22ca",
+  "base_snapshot_modules": 634,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/MINCORE_REUSE_OVERLAY_V1.json",
+    "sha256": "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "a5be3c17c20201df7fba7f5194788f564647214f41a49e1e042d6ba3eda61130"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "content_sha256": "fc2c8d56c0d349d1f2a578677745cb5f48e32612c579f5fe320cceff6e4c0ed5",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.zero_defect_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 63,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.rel_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 83,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.zero_defect_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.forward_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 90,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.reverse_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 100,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.tendsto_zero_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 113,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.reverse_budget"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaleCalibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 139,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.calibrated_weighted_chain_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 162,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.same_relation_does_not_transport_unit_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "line": 211,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    }
+  ],
+  "type_distinctness": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CALIBRATED_DEFECT_OVERLAY_TYPES.lean",
+    "new_theorems": 8,
+    "registered_prior_theorems": 3803,
+    "cross_isDefEq_comparisons": 30424,
+    "internal_isDefEq_comparisons": 28,
+    "definitionally_equal_matches": 0,
+    "status": "PASS"
+  },
+  "lexical_pr_preflight": {
+    "registered_prior_public_source_theorem_count": 3803,
+    "candidate_public_source_theorem_count": 3811,
+    "new_public_source_theorem_count": 8,
+    "new_theorems_with_lexical_reuse_candidates": 0,
+    "note": "Fresh FKRG lexical indexing of the 635-module source tree returned each new theorem as its own exact-name candidate only; zero_defect_iff additionally surfaced rel_iff because that theorem references zero_defect_iff, not because of a prior reusable theorem."
+  },
+  "scientific_role": "UNCOUNTED_MINCORE_CALIBRATION_BRIDGE",
+  "counted_core_impact": "NONE",
+  "proof_dependency_certification": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CALIBRATED_DEFECT_OVERLAY_TYPES.lean",
+    "measure": "Lean .thmInfo.value.getUsedConstants restricted to the immutable base, prior MINCORE overlay, and calibrated-defect overlay theorem nodes",
+    "registered_direct_edges": 3,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.rel_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.zero_defect_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.tendsto_zero_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.reverse_budget"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.calibrated_weighted_chain_bound",
+        "target": "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound"
+      }
+    ],
+    "status": "PASS"
+  }
+}

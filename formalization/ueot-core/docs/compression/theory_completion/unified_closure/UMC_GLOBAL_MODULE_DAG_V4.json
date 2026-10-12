@@ -1,22 +1,22 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "319b018d611b4032209a940d1f14a556a121f829fae13e3f37c87ba431176b8e",
+  "source_tree_sha256": "938e5b30c09df1f317156ee4d91e395a8aa3f5287626f2fa505502eefe336a3d",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 634,
-  "total_source_lines": 111742,
-  "total_theorem_lemma_tokens": 3977,
+  "total_Lean_modules": 635,
+  "total_source_lines": 111967,
+  "total_theorem_lemma_tokens": 3985,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
     "CrossTrack": 29,
     "Hierarchy": 2,
     "Objecthood": 88,
-    "P0_P12_TheoryCompletion": 55,
+    "P0_P12_TheoryCompletion": 56,
     "C1_C7_SISC": 55,
     "UMC_New_Bridges": 37
   },
-  "reachable_from_UEOT_root": 634,
+  "reachable_from_UEOT_root": 635,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -102,6 +102,10 @@
       "direct_dependents": 6
     },
     {
+      "module": "UEOT.V3.Compression.TransportCertificate",
+      "direct_dependents": 6
+    },
+    {
       "module": "UEOT.V3.FiniteDiscountedApproxQuotientBounds",
       "direct_dependents": 6
     },
@@ -167,10 +171,6 @@
     },
     {
       "module": "UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.Compression.TransportCertificate",
       "direct_dependents": 5
     },
     {
@@ -251,7 +251,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "P0_P12_TheoryCompletion",
-      "edges": 36
+      "edges": 37
     },
     {
       "from": "Compression_Frozen_Bridges",
@@ -306,7 +306,7 @@
     {
       "from": "P0_P12_TheoryCompletion",
       "to": "Compression_Frozen_Bridges",
-      "edges": 19
+      "edges": 20
     },
     {
       "from": "P0_P12_TheoryCompletion",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 9136,
-      "lines": 119,
+      "bytes": 9215,
+      "lines": 120,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3555,7 +3555,8 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeRewardConflictWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge",
-        "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo"
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo",
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -3803,6 +3804,19 @@
       ],
       "theorem_lemma_count": 8,
       "decl_count": 13
+    },
+    "UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "bytes": 8337,
+      "lines": 224,
+      "category": "P0_P12_TheoryCompletion",
+      "title": "UEOT MINCORE — calibrated defect comparison",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo",
+        "UEOT.V3.Compression.TransportCertificate"
+      ],
+      "theorem_lemma_count": 8,
+      "decl_count": 9
     },
     "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",

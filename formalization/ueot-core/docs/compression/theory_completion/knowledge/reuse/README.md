@@ -8,33 +8,55 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-## Governed MINCORE overlay (2026-10-11)
+## Governed overlay chain (2026-10-11 to 2026-10-12)
 
-The 2026-10-10 633-module audit remains immutable history. The live navigator
-now composes that base with `MINCORE_REUSE_OVERLAY_V1.json`, pinned to source
-checkpoint `fb70de6fb5dd26918222bc7b0849fb38900f8604`. The overlay records the
-634th Lean module, the import-only `TheoryCompletion.lean` source-hash update,
-and 10 new public theorem nodes. No frozen Core theorem or counted Compression
-mapping is changed.
+The 2026-10-10 633-module audit remains immutable history.
 
-`VERIFY_MINCORE_OVERLAY_TYPES.lean` performs 37,930 cross-snapshot
-`Meta.isDefEq` checks (10 new theorem types against 3,793 compiled base theorem
-types) plus 45 internal pair checks. Result: **0 definitionally-equal matches**.
-The PR lexical preflight also found 0 name-similar reuse candidates for the 10
-new theorem names. The same Lean verifier checks direct dependencies from the
-compiled theorem proof terms (`.thmInfo.value.getUsedConstants`) and finds
-**0 registered base/overlay theorem edges**. In particular, source text for
+### Layer 1 — relation/defect MINCORE
+
+`MINCORE_REUSE_OVERLAY_V1.json` is the first immutable additive layer, pinned
+to source checkpoint `fb70de6fb5dd26918222bc7b0849fb38900f8604`.
+It records the 634th Lean module, the then-current import-only
+`TheoryCompletion.lean` source-hash update, and 10 public theorem nodes. Its
+certificate `VERIFY_MINCORE_OVERLAY_TYPES.lean` performs 37,930
+cross-snapshot `Meta.isDefEq` checks plus 45 internal pair checks and finds
+0 definitionally-equal matches. Its compiled proof terms contain 0 registered
+base/overlay theorem edges.
+
+That historical result remains unchanged. In particular, source text for
 `rescale_changes_nonzero_defect` mentions `rescale_defect` in a tactic, but
-that theorem constant is absent from the elaborated proof term; FKRG records the
-kernel proof graph rather than tactic-token references. The resulting live
-census is **634 modules = 623 UEOT-maintained + 11 adapted upstream**, with
-**3,803** public authored theorem proof nodes in the direct proof graph.
+the theorem constant is absent from the elaborated proof term; FKRG records
+kernel proof dependencies, not tactic-token references.
 
-The overlay is fail-closed: the exact live source path set, the added module
-hash, the modified public-root hash, the overlay JSON hash, and the Lean type
-certificate hash are all pinned. Any further Lean source addition/removal or
-source-byte drift requires a new governed overlay/snapshot; it may not be
-silently absorbed.
+### Layer 2 — calibrated defect comparison
+
+`CALIBRATED_DEFECT_REUSE_OVERLAY_V1.json` composes on top of the 634-module
+state instead of rewriting Layer 1. It is pinned to source checkpoint
+`fb16512a6b4e813ef94f2ba3db0e6f3a44500886` and adds the 635th module,
+`CalibratedDefectComparison.lean`, plus 8 public theorem nodes.
+
+`VERIFY_CALIBRATED_DEFECT_OVERLAY_TYPES.lean` kernel-checks those 8 theorem
+types against all 3,803 previously registered theorem nodes:
+30,424 cross-layer `Meta.isDefEq` comparisons plus 28 internal comparisons,
+with 0 matches. The same verifier checks exact compiled proof dependencies and
+certifies exactly 3 registered theorem edges:
+
+- `DefectCalibration.rel_iff` → `DefectCalibration.zero_defect_iff`;
+- `DefectCalibration.tendsto_zero_iff` → `DefectCalibration.reverse_budget`;
+- `calibrated_weighted_chain_bound` →
+  `TransportCertificate.weighted_chain_bound`.
+
+The last edge is the intended theorem reuse: the calibrated bridge transports
+an already-proved M-TC finite-horizon certificate rather than reproving the
+weighted recurrence.
+
+The resulting live census is **635 modules = 624 UEOT-maintained + 11 adapted
+upstream**, with **3,811** public authored theorem proof nodes in the direct
+proof graph. Both overlay JSON files and both Lean certificates are pinned by
+independent SHA-256 values. The exact live source path set and cumulative
+source-hash overrides are checked fail-closed. Any further Lean source
+addition/removal or source-byte drift requires another governed overlay or
+snapshot and may not be silently absorbed.
 
 ## Run from repository root
 
@@ -51,9 +73,11 @@ silently absorbed.
 
 ## Strongly typed and provenance-limited evidence
 
-- 633 source modules = 622 UEOT-maintained + 11 adapted upstream modules.
-- 3,793 immutable-base public source theorem proofs + 10 governed overlay theorem proofs, with 4,886 direct registered-source
-  theorem references extracted from the Lean proof term expressions.
+- 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
+  the two governed overlays extend the live census to 635 = 624 + 11.
+- 3,793 immutable-base public source theorem proofs + 18 governed overlay theorem
+  proofs = 3,811 live graph nodes, with 4,889 direct registered-source theorem
+  references after the calibrated overlay adds 3 certified edges.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -98,8 +122,8 @@ canonical Compression ledger used for scientific-role classifications,
 the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
-or deleted module), and all immutable-base source hashes plus the governed overlay hashes against the exact 634-module
-live source census. It refuses to
+or deleted module), and all immutable-base source hashes plus the governed
+overlay-chain hashes against the exact 635-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 
