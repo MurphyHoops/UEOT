@@ -9,7 +9,35 @@
   "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
-  "l2_existing_path_exceptions": [],
+  "l2_existing_path_exceptions": [
+    {
+      "exception_id": "TC-DEFECT-GAUGE-UMC-DAG-REFRESH-2026-10-12",
+      "track": "TC",
+      "branch_patterns": [
+        "^compression/theory-completion-defect-gauge-covariance$"
+      ],
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
+      ],
+      "reason": "Adding the defect-gauge covariance Lean research module changes the exact first-party Theory Completion source census and source-tree fingerprint. The existing fail-closed UMC global DAG receipt must be regenerated from source; no frozen Core theorem, counted generator, Compression ledger, or UMC scientific theorem is modified.",
+      "temporary": true
+    },
+    {
+      "exception_id": "TC-DEFECT-GAUGE-FKRG-OVERLAY-2026-10-12",
+      "track": "TC",
+      "branch_patterns": [
+        "^compression/theory-completion-defect-gauge-covariance$"
+      ],
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "reason": "The new defect-gauge covariance module makes the live FKRG source census stale at 636 modules. Preserve the immutable 2026-10-10 base plus the two existing governed overlays by adding a third additive gauge-covariance overlay/certificate and minimally extending the live navigator, regressions, operator documentation, and clone-scanner census description. No frozen Core theorem, counted generator, Compression ledger, or scientific theorem is modified.",
+      "temporary": true
+    }
+  ],
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
