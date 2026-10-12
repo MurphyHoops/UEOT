@@ -9,7 +9,20 @@
   "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
-  "l2_existing_path_exceptions": [],
+  "l2_existing_path_exceptions": [
+    {
+      "exception_id": "TC-CALIBRATED-DEFECT-UMC-DAG-REFRESH-2026-10-12",
+      "track": "TC",
+      "branch_patterns": [
+        "^compression/theory-completion-calibrated-defect$"
+      ],
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
+      ],
+      "reason": "Adding the calibrated-defect MINCORE Lean research module changes the exact first-party Theory Completion module set/source fingerprint. The existing UMC fail-closed global DAG receipt must be regenerated from source so FKRG/UMC audits remain truthful; no frozen Core theorem source, counted generator, compression ledger, or UMC scientific theorem is modified.",
+      "temporary": true
+    }
+  ],
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
