@@ -87,19 +87,15 @@ jobs:
       - name: Record source identity
         run: |
           git rev-parse HEAD | tee source-identity.log
-          sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain >> source-identity.log
+          sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain scripts/install_lean.sh >> source-identity.log
           cat source-identity.log
       - name: Check inherited dependency lock
         run: python3 scripts/check_dependencies.py
-      - name: Install Elan
+      - name: Install and verify official pinned Lean
         shell: bash
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Verify pinned Lean
-        run: |
-          lean --version
-          lake --version
+          set -o pipefail
+          bash scripts/install_lean.sh "$RUNNER_TEMP/ueot-qm-lean" 2>&1 | tee lean-install.log
       - name: Restore pinned dependencies
         id: dependencies
         uses: actions/cache/restore@v4
@@ -142,6 +138,7 @@ jobs:
           name: ueot-qm-lean-${{ github.run_id }}
           path: |
             formalization/ueot-qm/source-identity.log
+            formalization/ueot-qm/lean-install.log
             formalization/ueot-qm/lean-build.log
             formalization/ueot-qm/axiom-audit.log
             formalization/ueot-qm/proof-axioms.json
