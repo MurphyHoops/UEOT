@@ -1,0 +1,133 @@
+{
+  "schema": "ueot-qm-bridge-exact-witnesses/1",
+  "evidence_kind": "finite_exact_regression_not_lean_or_real_data",
+  "protocol_closure": {
+    "status": "PASS",
+    "z_closure_dimensions": [
+      1,
+      2,
+      2
+    ],
+    "h_z_closure_dimensions": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "z_plus": [
+      "1/2",
+      "1/2"
+    ],
+    "z_minus": [
+      "1/2",
+      "1/2"
+    ],
+    "h_then_z_plus": [
+      "1",
+      "0"
+    ],
+    "h_then_z_minus": [
+      "0",
+      "1"
+    ],
+    "z_record_tv": 0,
+    "h_then_z_record_tv": 1,
+    "meaning": "A Z-only predictive quotient is invalid once H is an allowed action.",
+    "scope": "Exact specified 2x2 instruments; does not reconstruct quantum kinematics."
+  },
+  "rare_event_postselection": {
+    "status": "PASS",
+    "examples": [
+      {
+        "unconditional_tv": "1/10",
+        "both_success_probabilities": "1/10",
+        "conditional_tv": "1"
+      },
+      {
+        "unconditional_tv": "1/100",
+        "both_success_probabilities": "1/100",
+        "conditional_tv": "1"
+      },
+      {
+        "unconditional_tv": "1/1000",
+        "both_success_probabilities": "1/1000",
+        "conditional_tv": "1"
+      },
+      {
+        "unconditional_tv": "1/1000000",
+        "both_success_probabilities": "1/1000000",
+        "conditional_tv": "1"
+      }
+    ],
+    "meaning": "Small full-record error can become maximal after rare-event selection.",
+    "scope": "Exact positive-probability records; success rates must remain in the certificate."
+  },
+  "finite_dimensional_ccr": {
+    "status": "PASS",
+    "q": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "-1"
+      ]
+    ],
+    "p": [
+      [
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "0"
+      ]
+    ],
+    "commutator": [
+      [
+        "0",
+        "2"
+      ],
+      [
+        "-2",
+        "0"
+      ]
+    ],
+    "trace_commutator": "0",
+    "trace_i_hbar_identity_real_imag_hbar_coefficients": [
+      "0",
+      "2"
+    ],
+    "general_argument": "Tr(QP)=sum_ij Q_ij P_ji=Tr(PQ) by exchanging i,j.",
+    "meaning": "Finite dimension d>0 and hbar!=0 obstruct exact [Q,P]=i*hbar*I_d.",
+    "scope": "Finite rational witness plus stated trace argument; no unbounded-operator proof."
+  },
+  "selector_without_atomicity": {
+    "status": "PASS",
+    "candidate_tuples_checked": 89,
+    "survivors_without_atomicity_filter": [
+      {
+        "Nc": 3,
+        "Nf": 3,
+        "k": 1
+      }
+    ],
+    "without_complex_color": {
+      "Nc": 2,
+      "Nf": 4,
+      "k": 1
+    },
+    "without_weak_bound": {
+      "Nc": 3,
+      "Nf": 6,
+      "k": 2
+    },
+    "meaning": "Atomicity is redundant for the declared integer selector with the strict weak bound.",
+    "scope": "Exact finite enumeration with an analytically derived exhaustive bound; no HGP applicability proof."
+  },
+  "summary": {
+    "groups_passed": 4,
+    "status": "PASS"
+  }
+}

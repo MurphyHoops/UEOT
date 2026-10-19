@@ -1,0 +1,177 @@
+{
+  "audit": "New v30.11 displayed-formula audit, not archival rerun",
+  "algebra": "Python stdlib fractions.Fraction; sparse Laurent polynomials over Q",
+  "selector": "No primitive/atomicity hypothesis used",
+  "count": 13,
+  "passed": 13,
+  "checks": [
+    {
+      "name": "selector_without_atomicity_complete_bounded_enumeration",
+      "pass": true,
+      "detail": {
+        "survivors": [
+          [
+            3,
+            3,
+            1
+          ]
+        ],
+        "bounds_proven_in_note": "3<=Nc<=20, 1<=Nf<=5, 0<=k<=Nf"
+      }
+    },
+    {
+      "name": "primitive_formula_integer_checks_2_through_100",
+      "pass": true,
+      "detail": "A finite arithmetic check, not the proof of the all-integer formula."
+    },
+    {
+      "name": "fixed_observed_charges_complete_spectrum_symbolic",
+      "pass": true,
+      "detail": "Exact rational Laurent-polynomial identities; includes E^c of charge -qE."
+    },
+    {
+      "name": "missing_Ec_gravitational_residual",
+      "pass": true,
+      "detail": {
+        "formula": "Nf*qE = -Nf*(1+3*z)/2",
+        "Nc3_Nf3_beta0": "-3/2"
+      }
+    },
+    {
+      "name": "missing_Ec_cubic_residual",
+      "pass": true,
+      "detail": {
+        "extra_term": "Nf*qE^3",
+        "Nc3_Nf3_beta0": "-3/8"
+      }
+    },
+    {
+      "name": "generalized_Nc_charges_complete_spectrum_symbolic",
+      "pass": true,
+      "detail": "Exact rational Laurent-polynomial identities; includes E^c of charge -qE."
+    },
+    {
+      "name": "331RHN_six_local_anomalies_independent_rational_check",
+      "pass": true,
+      "detail": {
+        "C3": "0",
+        "L3": "0",
+        "C2X": "0",
+        "L2X": "0",
+        "gravX": "0",
+        "X3": "0"
+      }
+    },
+    {
+      "name": "two_family_countermodel_if_leptons_may_use_both_3_and_3bar",
+      "pass": true,
+      "detail": {
+        "local_anomalies": {
+          "C3": "0",
+          "L3": "0",
+          "C2X": "0",
+          "L2X": "0",
+          "gravX": "0",
+          "X3": "0"
+        },
+        "Nc_Nf_l_k": [
+          3,
+          2,
+          1,
+          1
+        ],
+        "beta": 0,
+        "scope": "Local anomaly spectrum witness only; no scalar vacuum/global anomaly/phenomenology certification."
+      }
+    },
+    {
+      "name": "drop_complex_color_lower_bound",
+      "pass": true,
+      "detail": {
+        "Nc_Nf_k": [
+          2,
+          4,
+          1
+        ],
+        "anomaly_residual": 0,
+        "weak_budget": 12,
+        "conditions": {
+          "complex_color_lower_bound": false,
+          "weak_positive_slope": true,
+          "anomaly_equation": true,
+          "positive_family_count": true,
+          "quark_multiplicity_range": true
+        }
+      }
+    },
+    {
+      "name": "drop_weak_positive_slope",
+      "pass": true,
+      "detail": {
+        "Nc_Nf_k": [
+          3,
+          6,
+          2
+        ],
+        "anomaly_residual": 0,
+        "weak_budget": 24,
+        "conditions": {
+          "complex_color_lower_bound": true,
+          "weak_positive_slope": false,
+          "anomaly_equation": true,
+          "positive_family_count": true,
+          "quark_multiplicity_range": true
+        }
+      }
+    },
+    {
+      "name": "drop_anomaly_equation",
+      "pass": true,
+      "detail": {
+        "Nc_Nf_k": [
+          3,
+          1,
+          0
+        ],
+        "anomaly_residual": -2,
+        "weak_budget": 4,
+        "conditions": {
+          "complex_color_lower_bound": true,
+          "weak_positive_slope": true,
+          "anomaly_equation": false,
+          "positive_family_count": true,
+          "quark_multiplicity_range": true
+        }
+      }
+    },
+    {
+      "name": "drop_positive_family_count",
+      "pass": true,
+      "detail": {
+        "Nc_Nf_k": [
+          4,
+          0,
+          0
+        ],
+        "anomaly_residual": 0,
+        "weak_budget": 0,
+        "conditions": {
+          "complex_color_lower_bound": true,
+          "weak_positive_slope": true,
+          "anomaly_equation": true,
+          "positive_family_count": false,
+          "quark_multiplicity_range": true
+        }
+      }
+    },
+    {
+      "name": "drop_integer_k",
+      "pass": true,
+      "detail": {
+        "Nc": 4,
+        "Nf": 4,
+        "k": "3/2"
+      }
+    }
+  ]
+}
