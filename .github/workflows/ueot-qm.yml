@@ -1,0 +1,96 @@
+name: UEOT QM Kernel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "formalization/ueot-qm/**"
+      - "formalization/ueot-core/UEOT/**"
+      - "formalization/ueot-core/lakefile.lean"
+      - "formalization/ueot-core/lake-manifest.json"
+      - "formalization/ueot-core/lean-toolchain"
+      - "physics/qm/kernel/**"
+      - ".github/workflows/ueot-qm.yml"
+  pull_request:
+    paths:
+      - "formalization/ueot-qm/**"
+      - "formalization/ueot-core/UEOT/**"
+      - "formalization/ueot-core/lakefile.lean"
+      - "formalization/ueot-core/lake-manifest.json"
+      - "formalization/ueot-core/lean-toolchain"
+      - "physics/qm/kernel/**"
+      - ".github/workflows/ueot-qm.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ueot-qm-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formalization/ueot-qm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Check inherited dependency lock
+        run: python3 scripts/check_dependencies.py
+      - name: Install Elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Verify pinned Lean
+        run: |
+          lean --version
+          lake --version
+      - name: Restore pinned dependencies
+        id: dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: formalization/ueot-qm/.lake/packages
+          key: ueot-qm-deps-${{ runner.os }}-${{ hashFiles('formalization/ueot-qm/lake-manifest.json', 'formalization/ueot-qm/lean-toolchain') }}
+      - name: Restore Mathlib proof cache
+        run: lake exe cache get
+      - name: Save pinned dependency cache
+        if: steps.dependencies.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: formalization/ueot-qm/.lake/packages
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}
+      - name: Reject proof escapes
+        shell: bash
+        run: |
+          if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' UEOTQM; then
+            echo "Forbidden proof escape in QM source." >&2
+            exit 1
+          fi
+      - name: Build all QM proofs
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build UEOTQM 2>&1 | tee lean-build.log
+      - name: Audit theorem axioms
+        shell: bash
+        run: |
+          set -o pipefail
+          lake env lean scripts/AxiomAudit.lean 2>&1 | tee axiom-audit.log
+          if grep -E 'sorryAx|Lean.ofReduceBool|admit' axiom-audit.log; then
+            exit 1
+          fi
+      - name: Archive proof evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ueot-qm-lean-${{ github.run_id }}
+          path: |
+            formalization/ueot-qm/lean-build.log
+            formalization/ueot-qm/axiom-audit.log
+            formalization/ueot-qm/lake-manifest.json
+          retention-days: 30
+
