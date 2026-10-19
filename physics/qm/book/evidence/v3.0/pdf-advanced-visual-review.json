@@ -1,0 +1,278 @@
+{
+  "review_type": "read-only advanced-physics PDF visual QA",
+  "reviewed_at_utc": "2026-10-19T23:45:11.047205+00:00",
+  "reviewer": "/root/kernel_certificates",
+  "status": "CLEAR",
+  "pdf": {
+    "path": "/workspace/scratch/474cf6b1f047/output/pdf/ueot_physics_v3/UEOT_PHYSICS.pdf",
+    "sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+    "bytes": 812938,
+    "pages": 160,
+    "page_size_pt": [
+      595.28,
+      841.89
+    ],
+    "page_numbering": "physical PDF page numbers are 1-based; inspected main-text printed labels are physical page minus 4"
+  },
+  "identity_update_during_review": {
+    "initial_task_sha256": "4b92d8b6c8c018f84860fbaa585e6f6750a91cee446d6ca10d4b320517951c80",
+    "final_reviewed_sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+    "detected": true,
+    "old_hash_clear_receipt_blocked": true,
+    "resolution": "从最终 SHA 对应 PDF 重新渲染六个完整重点页，全部与已实际目视页面逐像素一致；另为最终 PDF 重生五组 80 页接触表，并逐一实际查看。",
+    "full_page_pixel_comparison": {
+      "pdf_sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+      "page_comparisons": [
+        {
+          "physical_page": 69,
+          "new_render": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-069.png",
+          "pixel_identical_to_previously_viewed": true,
+          "difference_bbox": null
+        },
+        {
+          "physical_page": 71,
+          "new_render": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-071.png",
+          "pixel_identical_to_previously_viewed": true,
+          "difference_bbox": null
+        },
+        {
+          "physical_page": 77,
+          "new_render": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-077.png",
+          "pixel_identical_to_previously_viewed": true,
+          "difference_bbox": null
+        },
+        {
+          "physical_page": 78,
+          "new_render": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-078.png",
+          "pixel_identical_to_previously_viewed": true,
+          "difference_bbox": null
+        },
+        {
+          "physical_page": 102,
+          "new_render": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-102.png",
+          "pixel_identical_to_previously_viewed": true,
+          "difference_bbox": null
+        },
+        {
+          "physical_page": 103,
+          "new_render": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-103.png",
+          "pixel_identical_to_previously_viewed": true,
+          "difference_bbox": null
+        }
+      ]
+    }
+  },
+  "contact_sheet_reviews": [
+    {
+      "path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/contact-033.png",
+      "sha256": "492fe38e5233b6185d77777ea06c078de7faa0c1bf9b94f34f33829448c02e3c",
+      "bound_pdf_sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+      "physical_pdf_pages_inclusive": [
+        33,
+        48
+      ],
+      "page_count": 16,
+      "render_method": "PyMuPDF 72 DPI page render, Pillow 4 by 4 contact sheet, page image downsampled to fit 244 by 346 pixels",
+      "inspection_level": "each final-version contact sheet visually viewed at original 1000 by 1520 image resolution; overview only",
+      "observation": "第 10–17 章附近；中文、显示公式、页眉页脚和层级一致，未见缩图级别的重叠、裁切或缺字符号。",
+      "observed_defects": []
+    },
+    {
+      "path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/contact-049.png",
+      "sha256": "a362becd2cb6b0af0385a4b8e7048418e71cebb08d890243dedc1e894652685e",
+      "bound_pdf_sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+      "physical_pdf_pages_inclusive": [
+        49,
+        64
+      ],
+      "page_count": 16,
+      "render_method": "PyMuPDF 72 DPI page render, Pillow 4 by 4 contact sheet, page image downsampled to fit 244 by 346 pixels",
+      "inspection_level": "each final-version contact sheet visually viewed at original 1000 by 1520 image resolution; overview only",
+      "observation": "第 18–25 章附近；开放系统、控制和自由场/RG 段落的公式与正文均在页内，标题换行正常。",
+      "observed_defects": []
+    },
+    {
+      "path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/contact-065.png",
+      "sha256": "3476e03225cdfaaafca3103fdc3c2f28caf40b86ae3d9cf6ee33d5f19b45b54f",
+      "bound_pdf_sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+      "physical_pdf_pages_inclusive": [
+        65,
+        80
+      ],
+      "page_count": 16,
+      "render_method": "PyMuPDF 72 DPI page render, Pillow 4 by 4 contact sheet, page image downsampled to fit 244 by 346 pixels",
+      "inspection_level": "each final-version contact sheet visually viewed at original 1000 by 1520 image resolution; overview only",
+      "observation": "RG/EFT/QED、标准模型及条件 G3 段落；表格、长公式和章内小节在缩图中布局完整。",
+      "observed_defects": []
+    },
+    {
+      "path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/contact-081.png",
+      "sha256": "a7417a296062c9ecd2c428e71dbb22447178b56f1c64ad8c8f58d116728f6db6",
+      "bound_pdf_sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+      "physical_pdf_pages_inclusive": [
+        81,
+        96
+      ],
+      "page_count": 16,
+      "render_method": "PyMuPDF 72 DPI page render, Pillow 4 by 4 contact sheet, page image downsampled to fit 244 by 346 pixels",
+      "inspection_level": "each final-version contact sheet visually viewed at original 1000 by 1520 image resolution; overview only",
+      "observation": "误差装配、高能分类、味物理与 SRN 段落；矩阵、表格及代码块未见明显越界或相互覆盖。",
+      "observed_defects": []
+    },
+    {
+      "path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/contact-097.png",
+      "sha256": "cfebd0aaf6309d287d44e58d66746b6df1e17cafcf88f43499e7adf71ddb4363",
+      "bound_pdf_sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+      "physical_pdf_pages_inclusive": [
+        97,
+        112
+      ],
+      "page_count": 16,
+      "render_method": "PyMuPDF 72 DPI page render, Pillow 4 by 4 contact sheet, page image downsampled to fit 244 by 346 pixels",
+      "inspection_level": "each final-version contact sheet visually viewed at original 1000 by 1520 image resolution; overview only",
+      "observation": "统计校准、实际化、相位、Berry/SSH 与有限晶格段落；密集公式和编号布局一致。",
+      "observed_defects": []
+    }
+  ],
+  "full_page_reviews": [
+    {
+      "physical_pdf_page_1_based": 69,
+      "printed_page_label": 65,
+      "role": "required",
+      "topic": "QED 顶点及 UV 账本",
+      "final_render_path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-069.png",
+      "final_render_sha256": "9e61e8b42360e9f5830e81354fa112eac57cd5b1cc8352bf32bb80afed7d5f43",
+      "visually_viewed_render_path": "/tmp/qm314_book_stage/pdf_visual_pages/page-069.png",
+      "visually_viewed_render_sha256": "9e61e8b42360e9f5830e81354fa112eac57cd5b1cc8352bf32bb80afed7d5f43",
+      "render_method": "pdftoppm, 160 DPI PNG, one complete page",
+      "inspection_level": "full-page image visually inspected at original image resolution; final PDF independently rerendered and pixel equality verified",
+      "final_render_pixel_identical_to_visually_viewed_render": true,
+      "observation": "自能积分、逆传播子、δm_direct/δZ_m 区别、gamma 张量收缩及光子 UV 积分清晰；斜杠动量、上下标和积分界可辨，正文与公式无重叠，页脚 65 完整。",
+      "observed_defects": []
+    },
+    {
+      "physical_pdf_page_1_based": 71,
+      "printed_page_label": 67,
+      "role": "additional adjacent-page check",
+      "topic": "完整一圈 QED 顶点积分",
+      "final_render_path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-071.png",
+      "final_render_sha256": "bcb7fbdb9c565fcbf79685e60e215ebcd7243a698912f232bed8db299e26fd9d",
+      "visually_viewed_render_path": "/tmp/qm314_book_stage/pdf_visual_pages/page-071.png",
+      "visually_viewed_render_sha256": "bcb7fbdb9c565fcbf79685e60e215ebcd7243a698912f232bed8db299e26fd9d",
+      "render_method": "pdftoppm, 160 DPI PNG, one complete page",
+      "inspection_level": "full-page image visually inspected at original image resolution; final PDF independently rerendered and pixel equality verified",
+      "final_render_pixel_identical_to_visually_viewed_render": true,
+      "observation": "壳上顶点分解、长分子/三因子分母的圈积分及 F₂(0) 双重参数积分均完整落在版心内；斜杠、gamma、μ 的指数、积分上下限和中文说明可辨，无裁切。",
+      "observed_defects": []
+    },
+    {
+      "physical_pdf_page_1_based": 77,
+      "printed_page_label": 73,
+      "role": "required",
+      "topic": "条件选择器与条件谱",
+      "final_render_path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-077.png",
+      "final_render_sha256": "26fec18a02977e6745e647cea53d29f59d910c848e7dc6088495f6e0d84cef10",
+      "visually_viewed_render_path": "/tmp/qm314_book_stage/pdf_visual_pages/page-077.png",
+      "visually_viewed_render_sha256": "26fec18a02977e6745e647cea53d29f59d910c848e7dc6088495f6e0d84cef10",
+      "render_method": "pdftoppm, 160 DPI PNG, one complete page",
+      "inspection_level": "full-page image visually inspected at original image resolution; final PDF independently rerendered and pixel equality verified",
+      "final_render_pixel_identical_to_visually_viewed_render": true,
+      "observation": "严格弱预算不等式、唯一 (3,3,1) 结论、19/6 计算和六行 RHN 表格清楚且对齐。另看底部裁剪图，确认第 31.5 节电荷公式和页脚 73 完整；其第三分量电荷推导自然续到物理第 78 页。",
+      "observed_defects": []
+    },
+    {
+      "physical_pdf_page_1_based": 78,
+      "printed_page_label": 74,
+      "role": "additional adjacent-page check",
+      "topic": "第 31.6 节内核对应与永久反例",
+      "final_render_path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-078.png",
+      "final_render_sha256": "98e8d972b219badbdcfef2174bf084c0e2992e013ee8d86f23823793fa2a7ce9",
+      "visually_viewed_render_path": "/tmp/qm314_book_stage/pdf_visual_pages/page-078.png",
+      "visually_viewed_render_sha256": "98e8d972b219badbdcfef2174bf084c0e2992e013ee8d86f23823793fa2a7ce9",
+      "render_method": "pdftoppm, 160 DPI PNG, one complete page",
+      "inspection_level": "full-page image visually inspected at original image resolution; final PDF independently rerendered and pixel equality verified",
+      "final_render_pixel_identical_to_visually_viewed_render": true,
+      "observation": "异常系数公式和有限内核接口名称清楚；长接口名换行未越界。混合双代反例、(2l−N_f)+N_c(2k−N_f)=0 和“加入总数二十个复 Higgs 双重态”修正均实际可见；页脚 74 完整。",
+      "observed_defects": []
+    },
+    {
+      "physical_pdf_page_1_based": 102,
+      "printed_page_label": 98,
+      "role": "required",
+      "topic": "Itō 范数与谱吸收",
+      "final_render_path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-102.png",
+      "final_render_sha256": "e50fa912656c4b7c8b9270051c326cb4abae7ddd390ed0b6f3d38808ce063409",
+      "visually_viewed_render_path": "/tmp/qm314_book_stage/pdf_visual_pages/page-102.png",
+      "visually_viewed_render_sha256": "e50fa912656c4b7c8b9270051c326cb4abae7ddd390ed0b6f3d38808ce063409",
+      "render_method": "pdftoppm, 160 DPI PNG, one complete page",
+      "inspection_level": "full-page image visually inspected at original image resolution; final PDF independently rerendered and pixel equality verified",
+      "final_render_pixel_identical_to_visually_viewed_render": true,
+      "observation": "C-02/C-03 标题、主方程 (40.4)、谱概率 SDE (40.5)、期望 (40.6)、极限指示式 (40.7) 和方差 SDE (40.8) 的符号及编号清楚；中英文、嵌套括号与上下标不重叠，页脚 98 完整。",
+      "observed_defects": []
+    },
+    {
+      "physical_pdf_page_1_based": 103,
+      "printed_page_label": 99,
+      "role": "required",
+      "topic": "有限时正性与吸收尾界",
+      "final_render_path": "/tmp/qm314_book_stage/pdf_visual_pages_v2/page-103.png",
+      "final_render_sha256": "1b73ae1c445a51311155969e9cbc08aa1862f7b4bf2d03b36187fdbe8e6a5929",
+      "visually_viewed_render_path": "/tmp/qm314_book_stage/pdf_visual_pages/page-103.png",
+      "visually_viewed_render_sha256": "1b73ae1c445a51311155969e9cbc08aa1862f7b4bf2d03b36187fdbe8e6a5929",
+      "render_method": "pdftoppm, 160 DPI PNG, one complete page",
+      "inspection_level": "full-page image visually inspected at original image resolution; final PDF independently rerendered and pixel equality verified",
+      "final_render_pixel_identical_to_visually_viewed_render": true,
+      "observation": "随机指数正性、C-04 的 (40.9)/(40.10)、简并能量下标及两种 Brownian 角色的说明可读；退相干公式和后验 Bayes 比率 (40.11) 均完整，公式编号与内容分离，页脚 99 完整。",
+      "observed_defects": []
+    }
+  ],
+  "additional_crop": {
+    "path": "/tmp/qm314_book_stage/pdf_visual_pages/page-077-bottom.png",
+    "sha256": "fea692e02761b5e7cd0644ff6996cf5c9e0835c140439d6c80487027ae4156fb",
+    "physical_pdf_page_1_based": 77,
+    "region": "bottom of page, including section 31.5 equation and printed footer 73",
+    "observation": "实际查看后确认页底公式与页脚未被 PDF 裁切；初次大图输出视口造成的疑虑已消除。最终版本完整第 77 页与该裁图所来自的完整页逐像素一致。"
+  },
+  "coverage": {
+    "overview_physical_pages_inclusive": [
+      33,
+      112
+    ],
+    "overview_page_count": 80,
+    "full_resolution_physical_pages": [
+      69,
+      71,
+      77,
+      78,
+      102,
+      103
+    ],
+    "required_pages_completed": [
+      69,
+      77,
+      102,
+      103
+    ],
+    "limitation": "80 页仅作五组缩图总览；没有将其称为逐页高分辨率全文审读。视觉 QA 不替代数学证明或程序验证。"
+  },
+  "non_defect_layout_notes": [
+    "部分章节结尾保留较多空白，下一章另页开始；已查看的缩图中属于一致的分页方式，未显示内容缺失。",
+    "证明结束的方框为有意的数学标记，未作为中文缺字判定。",
+    "第 77–78 页的第 31.5 节公式续页完整；第 31.6 节标题与后续正文无重复标题或视觉冲突。"
+  ],
+  "prior_automated_checks_reported_by_parent_not_rerun_here": {
+    "all_page_geometry_out_of_bounds": 0,
+    "final_tex_missing_character": 0,
+    "final_tex_overfull": 0,
+    "final_tex_undefined": 0,
+    "attribution": "Parent initially supplied these checks. This receipt does not independently bind them to the later PDF revision; its CLEAR result is based on the recorded visual review."
+  },
+  "issues": [],
+  "blocking_issues": [],
+  "conclusion": "最终 SHA 20401334… 的指定范围未见中文缺字、公式重叠、超出版心或裁切；六个完整重点页与五个接触表的视觉检查通过。",
+  "preservation": {
+    "final_pdf_sha256_stable_through_final_renders_and_receipt": true,
+    "source_or_pdf_edits_performed_by_reviewer": false,
+    "written_outputs": "temporary page renders, pixel comparison metadata, contact-sheet metadata, and this JSON receipt only"
+  }
+}

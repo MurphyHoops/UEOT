@@ -1,0 +1,113 @@
+{
+  "schema": "ueot_qm.core_import_closure.v2",
+  "checked_at_utc": "2026-10-19T23:32:56.302860+00:00",
+  "baseline_commit": "0c093e9fae990d6ef8d670163b84ec93bd6fb025",
+  "qm_modules_including_entrypoint": [
+    "UEOTQM",
+    "UEOTQM.Basic",
+    "UEOTQM.Instrument",
+    "UEOTQM.Operational",
+    "UEOTQM.Observables",
+    "UEOTQM.FiniteCoordinates",
+    "UEOTQM.Adaptive",
+    "UEOTQM.Weighted",
+    "UEOTQM.Ragged",
+    "UEOTQM.Exact",
+    "UEOTQM.ExactCertificate",
+    "UEOTQM.Transport",
+    "UEOTQM.Selector",
+    "UEOTQM.Spectrum",
+    "UEOTQM.Effects",
+    "UEOTQM.Stability"
+  ],
+  "core_module_count": 12,
+  "core_modules": [
+    {
+      "module": "UEOT.V3.Compression.QuotientDescent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+      "sha256": "1cb1e6f46e36f989cfdd8f4b300084245efa090c5a4f6140960049bfcd476dcd",
+      "bytes": 15340,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.DynamicsKernel",
+      "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc",
+      "bytes": 24580,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.PredictionDependent",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+      "sha256": "54f2569cf7323471f9f4214a78df41ab53f276231f78645a810bba44e1172e92",
+      "bytes": 3922,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.PredictionAE",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+      "sha256": "75bb919a5e1c2c7b81cc36335a95400cb7d747c12a5c85f80c38e50affffa16f",
+      "bytes": 8859,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.StructuredQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean",
+      "sha256": "9ee2629f0e891cdcba727d8c4e95da61f30c07068f55f99a164b78337a827a5b",
+      "bytes": 4268,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.Compression.RecursiveSufficientState",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/RecursiveSufficientState.lean",
+      "sha256": "076e3cd74eb490bf221b6b73e7e7a16eb60dd2e5c1feba2b910990dd1ae434ca",
+      "bytes": 7796,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.PredictionUpdate",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+      "sha256": "1b223a41bf9cf1c3bd2db1c7a91852974571481f7ad8e5ab1b190083cf64b9d0",
+      "bytes": 14094,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.Compression.TransportCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+      "sha256": "6def721f70ee273372a97faa6e15387baec83f7442eb95f9ae25c449741904c4",
+      "bytes": 22327,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.ProcessInterface",
+      "path": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+      "sha256": "f265d57a8c1963cdd293b5c6a5af2908ae2b4babb872568442bc351eec7a098c",
+      "bytes": 6027,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.TotalVariation",
+      "path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+      "sha256": "f048fa2b68ca691f326395f940a29b6f8b50822910b6d0a9dda43700caf1dbe6",
+      "bytes": 4250,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.TransportDefect",
+      "path": "formalization/ueot-core/UEOT/V3/TransportDefect.lean",
+      "sha256": "885d717e586a6fd9d057e3d8fdfeb4ca8a07c25ddec2b51b382fca887726f7aa",
+      "bytes": 6324,
+      "matches_exact_baseline": true
+    },
+    {
+      "module": "UEOT.V3.InformationPacking",
+      "path": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+      "sha256": "f1685b70503bc9ade8c15986be5bca40847e13a6327cc020979edd75f3aa5ecc",
+      "bytes": 5378,
+      "matches_exact_baseline": true
+    }
+  ],
+  "all_match_exact_baseline": true,
+  "status": "PASS",
+  "scope": "The actual transitive Core source import closure; no assertion about independent scientific closure of unrelated Core modules."
+}

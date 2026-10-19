@@ -1,0 +1,66 @@
+{
+  "schema": "ueot_physics.book_regression.v1",
+  "status": "PASS",
+  "executed_at_utc": "2026-10-19T23:13:31.030592+00:00",
+  "checks": 757,
+  "scope": "Actual re-execution of the three inherited finite/numerical programs; neither Lean proofs nor experimental observations.",
+  "programs": [
+    {
+      "program": "verify_ueot_quantum.py",
+      "program_sha256": "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
+      "started_utc": "2026-10-19T23:13:26.714584+00:00",
+      "exit_code": 0,
+      "summary": {
+        "status": "all_passed",
+        "checks": 237,
+        "seed": 31011,
+        "formal_proof_assistant_checked": false,
+        "experimental_data_used": false
+      },
+      "environment": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "result_sha256": "f09b62dc7df92afba8fb687d9f809b3f8f5cd85f63b1b3d5bbda48c09e337765"
+    },
+    {
+      "program": "verify_frontier.py",
+      "program_sha256": "f0eb63e7d743bb9e807526a47708fc36b73e6762ab4fbd27510927f3876094d2",
+      "started_utc": "2026-10-19T23:13:27.761281+00:00",
+      "exit_code": 0,
+      "summary": {
+        "status": "all_passed",
+        "checks": 423,
+        "seed": 9062026,
+        "experimental_data": false,
+        "formal_proof_assistant": false
+      },
+      "environment": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "result_sha256": "7185acb0ca3edd4419a5c8a7f77bf4d58ded20b0d64be2c8c1c68ca80990ff3b"
+    },
+    {
+      "program": "verify_completion.py",
+      "program_sha256": "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32",
+      "started_utc": "2026-10-19T23:13:29.530645+00:00",
+      "exit_code": 0,
+      "summary": {
+        "status": "all_passed",
+        "checks": 97,
+        "seed": 9062048,
+        "experimental_data": false,
+        "formal_proof_assistant": false
+      },
+      "environment": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "result_sha256": "e443fd611b915aebc6ed0f64735ae4f208c39ef9606558956c3604ed44ce1aa5"
+    }
+  ]
+}

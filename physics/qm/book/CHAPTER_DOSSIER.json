@@ -1,0 +1,5849 @@
+{
+  "schema": "ueot_physics.chapter_dossier.v1",
+  "recorded_at_utc": "2026-10-19T23:51:12.391725+00:00",
+  "document_id": "UEOT-PHYSICS",
+  "edition": "3.0",
+  "title": "UEOT物理学",
+  "author": "钱德桂（Degui Qian）",
+  "editorial_status": "FORMAL_COMPLETE_INTEGRATED_EDITION",
+  "canonical": {
+    "path": "physics/qm/book/UEOT_PHYSICS.md",
+    "sha256": "510d1a08a2b4808e08d058628310727ec7ec48348bd21d96e47c04a450875379",
+    "bytes": 376371,
+    "chapters": 51,
+    "appendices": 6,
+    "numbered_results": 88,
+    "inherited_result_ids": 78,
+    "new_result_ids": 10
+  },
+  "derivatives": {
+    "pdf": {
+      "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+      "sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+      "pages": 160
+    },
+    "latex": {
+      "path": "physics/qm/book/UEOT_PHYSICS.tex",
+      "sha256": "4674e7cc33d0b8d04a3ef52e2f94c5e4270978ac10feed2a0fb9979ec758f9ee"
+    },
+    "visual_review": {
+      "path": "physics/qm/book/evidence/v3.0/pdf-visual-review.json",
+      "state_source": "EXTERNAL_ROOT_ACCEPTANCE_RECORD",
+      "status_not_inferred_from_compile": true,
+      "recorded_status": "PASS",
+      "receipt_sha256": "f93725195ed864dcaa4868166087a331e2fd519a3b4a128e10334d4d21ad0d95",
+      "review_identity": "two collaborating AI reviewers; all-page overview and listed detailed pages; not human peer review"
+    }
+  },
+  "status_axes": {
+    "argument_status": {
+      "D": "定义/协议",
+      "P": "正文命题或推导",
+      "K": "外部标准定理",
+      "H": "附加领域假设",
+      "S": "组织解释",
+      "E": "实验/数值证据或经验输入，子类型另记",
+      "N": "反例/不可能性",
+      "O": "开放问题"
+    },
+    "dependency_class": {
+      "C": "Core通用数学",
+      "B": "领域桥",
+      "S": "扇区选择",
+      "P": "标准物理输入",
+      "E": "经验输入",
+      "O": "开放机制",
+      "X": "反模型/排除"
+    },
+    "verification_kind": [
+      "analytic",
+      "exact_arithmetic",
+      "synthetic",
+      "lean",
+      "experiment"
+    ],
+    "level": "章级为所含角色集合，具体命题以正文前提和真实源码类型为准；P/S必须携带字段名"
+  },
+  "source_catalog": {
+    "S1": {
+      "manifest_entry_id": "S1",
+      "manifest_path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "name": "01-UEOT_v3_top.pdf",
+      "sha256": "6c2acdf8d8232377066c3363ce3f0b0a14b3b60608c485ce70f2089c8a2263c3",
+      "identity": "ACTUAL_RAW_BYTES",
+      "use": "原始理论思想与物理研究纲领；43页；强推断经Core与本书逐项重述"
+    },
+    "S2": {
+      "manifest_entry_id": "S2",
+      "manifest_path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "name": "02-UEOT_Core_Mathematics_v3.0_Complete.md",
+      "sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303",
+      "identity": "ACTUAL_RAW_BYTES",
+      "use": "冻结Core的定义、前提与通用数学"
+    },
+    "S3": {
+      "manifest_entry_id": "S3",
+      "manifest_path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "name": "03-CORE_V3_OPEN_PORT_MATRIX.md",
+      "sha256": "f71ba345602ee750116b0481dce7d78cf212a0fb02bccac79d482703ada0b20a",
+      "identity": "ACTUAL_RAW_BYTES",
+      "use": "七科学端口与106项映射"
+    },
+    "S4": {
+      "manifest_entry_id": "S4",
+      "manifest_path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "name": "04-CORE_V3_POST_CORE_SCIENTIFIC_CLOSURE.md",
+      "sha256": "669ec5667575c9dbe75645fa2c00501e4cfbec68ca8a3420825f4b6d08f41569",
+      "identity": "ACTUAL_RAW_BYTES",
+      "use": "四生成器的声明推导系统范围与post-Core科学责任"
+    },
+    "S5": {
+      "manifest_entry_id": "S5",
+      "manifest_path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "name": "05-THEORY_COMPLETION_ROADMAP_V2.md",
+      "sha256": "64ab8d688f7ddfc7c739dd4af3b7760eba362190cd8897a605644b0fbd95cd07",
+      "identity": "ACTUAL_RAW_BYTES",
+      "use": "整体科学完成路线"
+    },
+    "Q2": {
+      "manifest_entry_id": "Q2-MD",
+      "manifest_path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "name": "UEOT_Physics_Unified_v2.0.md",
+      "sha256": "2fa47d663bb212153a2829e816444e99805348266eefd5a27882e8dbbf4e58a1",
+      "identity": "ACTUAL_RAW_BYTES",
+      "use": "本版完整连续正文的直接继承源，49章78编号结果"
+    },
+    "ADV-v23.0": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v23.0_有限维最终收敛核心-相干测量父级完成_SRN生成元完备分类_QDRR实验闭包_严格版.tex.part1.txt",
+          "sha256": "0edbac033cbdce9c605f95fa610e4d97c140df53156e306981d39bb42c6e20ee",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        },
+        {
+          "name": "UEOT-QM_v23.0_有限维最终收敛核心-相干测量父级完成_SRN生成元完备分类_QDRR实验闭包_严格版.tex.part2.txt",
+          "sha256": "e29c79fc38918cc4590cdc1417df9adbcd9c09643d241d1e4a4f63a4862ac92c",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "ADV-v24.4": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v24.4_P1-CrossStage-Harmonized_Strict.tex.part1.txt",
+          "sha256": "d250437f1fda993ed7e36c3bd17c5871ad61c5f6135ed0988a841dd34cf396d1",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        },
+        {
+          "name": "UEOT-QM_v24.4_P1-CrossStage-Harmonized_Strict.tex.part2.txt",
+          "sha256": "ea382bd511966289552b12e27985ceb22792d8fa8a9eec09152b51c3e671ceb8",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        },
+        {
+          "name": "UEOT-QM_v24.4_P1-CrossStage-Harmonized_Strict.tex.part3.txt",
+          "sha256": "83a848103db09600c65b4038a413001ac1d883e8861d4d9336a8406829743b33",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "ADV-v25.2": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v25.2_P3-CrossStage-Harmonized_Strict.tex.part1.txt",
+          "sha256": "67e08951a523ae6af05e2bbd8c0ceced842afc810d080419f27378896a59f624",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        },
+        {
+          "name": "UEOT-QM_v25.2_P3-CrossStage-Harmonized_Strict.tex.part2.txt",
+          "sha256": "149d62b3dbaa455c50cb531ffa407040a5843a0a8ab87380acb7acdd04c44718",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "ADV-v26.3": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v26.3_Many-Body-Open-Statistical-P4-Final-Closure_Strict.tex.part1.txt",
+          "sha256": "d0d36dc076ba7075acbeb0d9bf67893e96b6987e3b3097fa94cd06be5a1bb9ec",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        },
+        {
+          "name": "UEOT-QM_v26.3_Many-Body-Open-Statistical-P4-Final-Closure_Strict.tex.part2.txt",
+          "sha256": "6f873c2b4efc80379d5d20d8ea975db1f3332cbe64675e197c7044c58c30de6b",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "ADV-v27.1": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v27.1_Relativistic-Free-Fields-Deep-Audit_Strict.tex.part1.txt",
+          "sha256": "24f489283af64e609bdd58358b10503ca7492028b2647fb0522179fe268c2198",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "ADV-v28.1": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v28.1_Interacting-QFT-RG-EFT-Deep-Audit_Strict(1).tex.part1.txt",
+          "sha256": "5dd8c5ae6566a096098dc5e5a72ede36b1c68a166f6b75b40f50fe5b14a63fc8",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        },
+        {
+          "name": "UEOT-QM_v28.1_Interacting-QFT-RG-EFT-Deep-Audit_Strict.tex.part1.txt",
+          "sha256": "231ee27741275e7dff29878608244d0352f35daf7e090f00a281b64768cfd07b",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "ADV-v29.2": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v29.2_Gauge-QED-Final-Closure_Unified-Mainline.tex.part1.txt",
+          "sha256": "1cbc7f3f032f3fe6ef57359167299f2eed02f36276aca90d08fcbeac5712d46c",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "ADV-v30.11": {
+      "catalog_path": "physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "identity": "CACHED_TEXT_WITNESSES_NOT_ORIGINAL_TEX_BYTES",
+      "witnesses": [
+        {
+          "name": "UEOT-QM_v30.11_P8R-G3_Gauge-Orbit-Horizontal-Anomaly-Atomicity_Strict.tex.txt",
+          "sha256": "e4105596a040cecb6ef3b1f892bab388e0ebb6ee408a3bc905e383b895f3fcc4",
+          "identity": "cached readable text witness; hash binds cache bytes only, not original TeX"
+        }
+      ],
+      "use": "沿革与适用域核对；不能转移旧PASS数字"
+    },
+    "QM314": {
+      "source_manifest_path": "physics/qm/kernel/evidence/v31.4/source-manifest.json",
+      "identity": "ACTUAL_VERSIONED_QM_SOURCE_INPUTS",
+      "use": "有限量子内核及实际证明/运行回执；不代表全书形式化"
+    },
+    "PRIMARY": {
+      "locator": "UEOT_PHYSICS.md 附录C.3/C.6及各章紧邻推导的原始文献链接",
+      "identity": "EXTERNAL_PRIMARY_RESULT_DEPENDENCY",
+      "use": "外部标准定理及物理先例，不计为UEOT原创或本项目Lean证明"
+    }
+  },
+  "evidence_catalog": {
+    "structure": {
+      "path": "physics/qm/book/evidence/v3.0/book-structure.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "assembly": {
+      "path": "physics/qm/book/evidence/v3.0/source-assembly.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "foundations": {
+      "path": "physics/qm/book/evidence/v3.0/core_foundations_review.md",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "foundations_checks": {
+      "path": "physics/qm/book/evidence/v3.0/foundations-checks.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "advanced": {
+      "path": "physics/qm/book/evidence/v3.0/repo_scope_and_advanced_review.md",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "advanced_assembly": {
+      "path": "physics/qm/book/evidence/v3.0/advanced_assembly_review.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "advanced_integrated": {
+      "path": "physics/qm/book/evidence/v3.0/advanced_integrated_review.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "legacy": {
+      "path": "physics/qm/book/evidence/v3.0/legacy-regression.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "quantum_program": {
+      "path": "physics/qm/book/evidence/v3.0/verify_ueot_quantum.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "frontier_program": {
+      "path": "physics/qm/book/evidence/v3.0/verify_frontier.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "completion_program": {
+      "path": "physics/qm/book/evidence/v3.0/verify_completion.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "lean": {
+      "path": "physics/qm/kernel/evidence/v31.4/lean-verification.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "axioms": {
+      "path": "physics/qm/kernel/evidence/v31.4/proof-axioms.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "runtime": {
+      "path": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "instances": {
+      "path": "physics/qm/kernel/evidence/v31.4/lean-exports/verification.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "metric": {
+      "path": "physics/qm/kernel/evidence/v31.4/metric-focused-audit.json",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "metric_review": {
+      "path": "physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md",
+      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+    },
+    "build_environment": {
+      "path": "physics/qm/book/evidence/v3.0/build-environment.json",
+      "role": "ACTUAL_BUILD_TOOLCHAIN_AND_EXTERNAL_FONT_DEPENDENCY"
+    },
+    "visual": {
+      "path": "physics/qm/book/evidence/v3.0/pdf-visual-review.json",
+      "role": "EXTERNAL_ROOT_AI_LAYOUT_ACCEPTANCE"
+    }
+  },
+  "governance": {
+    "authorization_basis": "本轮用户直接授权继续推进UEOT-QM，并构建正式、全面、可持续维护的UEOT物理学总著；此处记录会话已有授权，不新设审批。",
+    "work_classes": [
+      {
+        "class": "ClassB/QM",
+        "scope": "QM领域的数学/软件扩展、实际验证、对应物理合同；不得回写冻结Core定义/源码/计数。"
+      },
+      {
+        "class": "ClassC/BookAssembly",
+        "scope": "完整旧著恢复、逐章校订、来源/证据整合、正式正文及派生阅读版；保留既有有效推导与编号。"
+      }
+    ],
+    "integration_authority": "根代理负责跨任务整合、实际源身份、统一构建与验收，并按已有用户授权完成仓库同步。",
+    "review_identity": {
+      "method": "AI多代理分工阅读、数学/源码交叉检查、独立计算路径和统一实际执行",
+      "independent_human_peer_review": false,
+      "journal_acceptance_claimed": false,
+      "new_experimental_data": false
+    },
+    "frozen_core_mutation_authorized_by_this_dossier": false,
+    "repository_write_scope": [
+      "physics/qm",
+      "formalization/ueot-qm"
+    ],
+    "canonical_changes_require_updated_dossier_and_evidence": true,
+    "remote_success_requires_actual_commit_and_workflow_receipts": true
+  },
+  "completion_boundary": {
+    "formal_book_complete": true,
+    "all_physics_formalized": false,
+    "core_unconditionally_selects_quantum_theory": false,
+    "unconditional_realistic_three_generations": false,
+    "four_dimensional_nonperturbative_qft_complete": false,
+    "quantum_gravity_complete": false,
+    "new_experiment_this_edition": false,
+    "reason": "著作完整性、数学条件定理、程序/机器证据和自然界有效性分别验收；开放义务随真正证据更新。"
+  },
+  "chapters": [
+    {
+      "number": 0,
+      "title": "文档定位、论域与证明责任",
+      "anchor": "ch-0",
+      "body_sha256": "51bbebefd28798f924f0f36d6a1a9f0a23a9f5d6a351cc3e43c44da22dd17ca8",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "S",
+        "P",
+        "O",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "说明哲学起点、冻结数学语义、来源层级和三个状态轴，区分文档完整与物理完成。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第0章"
+        },
+        {
+          "id": "S1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S5",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补入四生成器及科学端口责任；校正Q2继承至0–48章。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "通用对象数学不独自选择复量子、现实谱或宇宙学。"
+      ],
+      "sections": [
+        {
+          "id": "0.1",
+          "title": "内容状态与证明责任必须分开"
+        },
+        {
+          "id": "0.2",
+          "title": "原始思想的严格落点"
+        },
+        {
+          "id": "0.3",
+          "title": "主文使用方式"
+        },
+        {
+          "id": "0.4",
+          "title": "完整性审查：三个不同的“完成”"
+        },
+        {
+          "id": "0.5",
+          "title": "统一主文的装配与本版增量"
+        },
+        {
+          "id": "0.6",
+          "title": "从研究愿望到可否证问题"
+        },
+        {
+          "id": "0.7",
+          "title": "核心哲学：在变化中识别对象"
+        },
+        {
+          "id": "0.8",
+          "title": "来源层级与稳定文本"
+        },
+        {
+          "id": "0.9",
+          "title": "本正式整合版的结构与阅读路径"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": [
+        "S2，§0.3、§28.2；S3，§1–2；S4，§2、§8–9",
+        "S1，§1.3，PDF 第2–4页；§2.2–2.4，第4–8页",
+        "S2，§0.1、§3–4、§12.1",
+        "S1，§2.2，第4页，印刷行147–160；S2，§9.4、§12.2",
+        "S1，§2.3，第6–7页；S2，§18–23、§28.3–4",
+        "S2，§0、附录E；S4，§1–2"
+      ]
+    },
+    {
+      "number": 1,
+      "title": "UEOT Core 到量子物理的桥接",
+      "anchor": "ch-1",
+      "body_sha256": "ac722ca1048aaa239fd2aa1adefb6721f655bdb8372193511f1b47e42b64059e",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "S",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "S",
+        "P",
+        "O",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic",
+        "lean"
+      ],
+      "core_content": "以历史、协议和全部未来响应定义预测对象；经典实现给出Core不唯一选择量子扇区的反模型。",
+      "numbered_results": [
+        {
+          "id": "P-QBR-01",
+          "title": "P-QBR-01：经典实现反模型。",
+          "anchor": "p-qbr-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第1章"
+        },
+        {
+          "id": "S1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S5",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "展开M-QD/M-TC/M-PE/M-OI范围、对象/强Ω、GOD/GOA和Π/Φ任务桥及七端口。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "lean",
+          "axioms"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Operational",
+            "Transport"
+          ],
+          "scope": "仅有限量子实现的响应商与标量运输；非全章Core/哲学命题"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "四生成器计数只对声明推导系统成立；量子选择、目的识别和长期机制另有输入。"
+      ],
+      "sections": [
+        {
+          "id": "1.1",
+          "title": "操作历史与量子响应"
+        },
+        {
+          "id": "1.2",
+          "title": "通用核心不选择量子扇区"
+        },
+        {
+          "id": "1.3",
+          "title": "表示、规范与可观测等价"
+        },
+        {
+          "id": "1.4",
+          "title": "四计数生成器如何进入物理推导"
+        },
+        {
+          "id": "1.5",
+          "title": "对象、实现与 Ω 的量子语义"
+        },
+        {
+          "id": "1.6",
+          "title": "GOD、GOA 与 Π/Φ 的附加任务"
+        },
+        {
+          "id": "1.7",
+          "title": "七科学端口与量子内核的分工"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": [
+        "S2，§1、§2.3–4、§4.1",
+        "S2，P-PRED-01",
+        "S2，N-PRED-01",
+        "S2，P-PRED-03",
+        "S2，P-PRED-01、P-INT-02；S3，附录106项映射",
+        "S2，P-DYN-03–04、P-ID-01–02；本书§4.4",
+        "S2，§10.2，P-QSD-02；S4，§6.2",
+        "S2，P-PER-02、P-GOA-01；这里的有限量子版本是所声明 CPTP 模型中的直接推导",
+        "S2，D-OBJ、D-OBJ-STRONG",
+        "S2，§13.1–2",
+        "S2，P-OMG-01",
+        "S2，§13.3",
+        "S2，D-BRIDGE、N-TEL-01；Q2，§20",
+        "S2，§19；Q2，§20.2",
+        "S1，§2.3.2，第6–7页；S2，§21；S4，§4",
+        "S2，§23.1–3、§23.6",
+        "S2，P-DDH-04；S3，C5工作包；S4，§5",
+        "S2，§31.2；S3，§3–10；S5，§2–7",
+        "S5，状态说明；本书§5.5及后续内核证据章"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "量子选择：何时选出复数量子理论",
+      "anchor": "ch-2",
+      "body_sha256": "4ba7a9efaa6a18e8ec995c38a6e39813f83997d8d7799ac4d14e5f63e5f22859",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "K",
+        "H",
+        "P",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "B",
+        "S",
+        "P",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "完整因果OPT背景加CIT/LE与ESP调用外部复量子重构；保留经典和实量子删除见证。",
+      "numbered_results": [
+        {
+          "id": "P-QSEL-01",
+          "title": "P-QSEL-01：经典与实量子删除见证。",
+          "anchor": "p-qsel-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QSEL-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第2章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v24.4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "核对Nakahira Theorem1与Appendix A.2–A.3，明确非每个维数必须有物理系统。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "外部重型重构不在本项目Lean证明内；相对独立性不等于语法无关的最少公理数。"
+      ],
+      "sections": [
+        {
+          "id": "2.1",
+          "title": "固定操作理论背景"
+        },
+        {
+          "id": "2.2",
+          "title": "两个独立领域原则"
+        },
+        {
+          "id": "2.3",
+          "title": "独立性与量子满足性"
+        },
+        {
+          "id": "2.4",
+          "title": "重构结论的使用边界"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/2605.23217",
+        "https://arxiv.org/html/2605.23217v1"
+      ],
+      "inline_source_citations": [
+        "Q2，P-QSEL-01，补充显式计算"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Fisher–作用量、复振幅与 Born 的条件推导",
+      "anchor": "ch-3",
+      "body_sha256": "168f41f8f0c884e9b8043c080e8b09f4fe330eee3c83ac8f29b218078783e9a3",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "B",
+        "S",
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "从声明统计作用量变分获得局部Madelung–Schrödinger等价；Fisher、二次型和鞅分别承担条件结论。",
+      "numbered_results": [
+        {
+          "id": "P-QACT-01",
+          "title": "P-QACT-01：Madelung–Schrödinger 条件等价。",
+          "anchor": "p-qact-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QACT-02",
+          "title": "P-QACT-02。",
+          "anchor": "p-qact-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QBORN-02",
+          "title": "P-QBORN-02：无偏最终分支的概率。",
+          "anchor": "p-qborn-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QBORN-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第3章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "展开变分与边界；区分局部复振幅、动量实现及全局相位；补随机初始信息下的条件Born概率。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "节点、拓扑和自伴域另行处理；one-hot极限在本章为条件，第40章仅在指定SSE中证明。"
+      ],
+      "sections": [
+        {
+          "id": "3.1",
+          "title": "连续统计作用量"
+        },
+        {
+          "id": "3.2",
+          "title": "Fisher 下界何时成为位置—动量不确定性"
+        },
+        {
+          "id": "3.3",
+          "title": "二次型与“两相位检验”的严格含义"
+        },
+        {
+          "id": "3.4",
+          "title": "无偏分支权重与实际结果"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": [
+        "S1，§4.2.1，第30–32页；S2，§23；Q2，P-QACT-01",
+        "S1，§4.2.1，第30页，印刷行1468–1487"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "有限维量子操作：态、效应、通道与仪器",
+      "anchor": "ch-4",
+      "body_sha256": "0bbfc0d1109959a1c6425ffdf381bc156fa806c38ce9239945aeac142684413d",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic",
+        "lean"
+      ],
+      "core_content": "定义有限复态、效应、Choi/Kraus、instrument及正概率后验，推导无信号与trace/diamond误差合同。",
+      "numbered_results": [
+        {
+          "id": "P-QOP-01",
+          "title": "P-QOP-01：有限 Choi–Kraus 等价。",
+          "anchor": "p-qop-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QOP-02",
+          "title": "P-QOP-02：无信号。",
+          "anchor": "p-qop-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QOP-03",
+          "title": "P-QOP-03：操作误差与传播。",
+          "anchor": "p-qop-03",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第4章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "明确输入在前的Choi腿序、完整结果和标签保留；区分纸面范数证明与实际Lean切片。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program",
+          "lean",
+          "axioms"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Basic",
+            "Instrument",
+            "Weighted",
+            "Ragged",
+            "Effects"
+          ],
+          "scope": "实际有限态/Kraus/后验/效应定义与结论；Choi等价和trace/diamond纸面证明未全覆盖"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "Choi–Kraus等价、trace识别、任意旁系统diamond理论未因有限Kraus内核而全体形式化。"
+      ],
+      "sections": [
+        {
+          "id": "4.1",
+          "title": "基础约定"
+        },
+        {
+          "id": "4.2",
+          "title": "完全正、Choi 与 Kraus"
+        },
+        {
+          "id": "4.3",
+          "title": "仪器和归一化"
+        },
+        {
+          "id": "4.4",
+          "title": "距离和误差"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": [
+        "Q2，§4；S4，§2、§9"
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Quantum FFIPS 与量子对象实现",
+      "anchor": "ch-5",
+      "body_sha256": "3eb0d2be07202664c5e31ec323dc644c653d0e53065b2cc9fdb7254632099871",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "S",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic",
+        "lean"
+      ],
+      "core_content": "证明未来充分性、逐分支交换的量子商及真实词效应有限闭合到全词响应。",
+      "numbered_results": [
+        {
+          "id": "P-QFF-01",
+          "title": "P-QFF-01：有限量子 FFIPS。",
+          "anchor": "p-qff-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QFF-02",
+          "title": "P-QFF-02：量子商的路径保持。",
+          "anchor": "p-qff-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第5章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "修正总通道/POVM不足的原前提，保留两时标签反例；统一行展开/列坐标与实际模块名。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program",
+          "lean",
+          "axioms",
+          "runtime",
+          "instances"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Operational",
+            "Observables",
+            "FiniteCoordinates",
+            "Adaptive",
+            "Exact",
+            "ExactCertificate"
+          ],
+          "scope": "实际局部闭包到全词、可达后验和完整有限树；编码商反例与整章表述不整体视为形式化"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "编码像、泄漏和可达输入类必须保留；Python搜索与JSON/导出器通用正确性尚未形式化。"
+      ],
+      "sections": [
+        {
+          "id": "5.1",
+          "title": "态作为完整未来预测表示"
+        },
+        {
+          "id": "5.2",
+          "title": "量子读出与通用载体的连接"
+        },
+        {
+          "id": "5.3",
+          "title": "量子动力学商"
+        },
+        {
+          "id": "5.4",
+          "title": "对象持续与量子存在"
+        },
+        {
+          "id": "5.5",
+          "title": "从有限闭合检查到全部有限未来"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": [
+        "Q2，§5.3，修订前提；S2，§7.5、§28.3–4"
+      ]
+    },
+    {
+      "number": 6,
+      "title": "测量：相干父系统、公共商与条件预测态",
+      "anchor": "ch-6",
+      "body_sha256": "89a85d2e83a6aa64cab1f721b73c116ecd45a185eb099075beadda9a9729a3ac",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "S",
+        "H"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic",
+        "lean"
+      ],
+      "core_content": "构造有限仪器相干父完成，分开公共记录、块对角盲性与正事件条件预测。",
+      "numbered_results": [
+        {
+          "id": "P-QMEAS-01",
+          "title": "P-QMEAS-01：父系统完成。",
+          "anchor": "p-qmeas-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QMEAS-02",
+          "title": "P-QMEAS-02。",
+          "anchor": "p-qmeas-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QMEAS-03",
+          "title": "P-QMEAS-03：公共盲性。",
+          "anchor": "p-qmeas-03",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QMEAS-04",
+          "title": "P-QMEAS-04。",
+          "anchor": "p-qmeas-04",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第6章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "区分非交换块代数和交换记录代数；校正量子父层与Core泛对象的逻辑关系。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program",
+          "lean",
+          "axioms"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Instrument",
+            "Effects"
+          ],
+          "scope": "仅有限instrument概率与后验/效应接口；公共代数分类及相干dilation非本版整章Lean"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "操作公共记录不证明基本客观坍缩；环境访问范围和联合读取是协议输入。"
+      ],
+      "sections": [
+        {
+          "id": "6.1",
+          "title": "任意有限仪器的相干完成"
+        },
+        {
+          "id": "6.2",
+          "title": "条件化就是结果扩展后的预测态"
+        },
+        {
+          "id": "6.3",
+          "title": "公共记录看不见什么"
+        },
+        {
+          "id": "6.4",
+          "title": "交换代数上的经典过程"
+        },
+        {
+          "id": "6.5",
+          "title": "客观记录证书 ORC"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 7,
+      "title": "强记录无扰动力学的完整分类",
+      "anchor": "ch-7",
+      "body_sha256": "27d96b5ee180d48faed334522b6b9acb671ff72cc18b5dbf2798c03151eaa41b",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "在全分支内部态保持的强SRN条件下分类Schur/Gram通道及连续生成元锥。",
+      "numbered_results": [
+        {
+          "id": "P-QSRN-01",
+          "title": "P-QSRN-01：SRN 完备分类。",
+          "anchor": "p-qsrn-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QSRN-02",
+          "title": "P-QSRN-02。",
+          "anchor": "p-qsrn-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QSRN-03",
+          "title": "P-QSRN-03：生成元锥的必要充分条件。",
+          "anchor": "p-qsrn-03",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第7章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留多分支条件正性、复合和逐对衰减不足的反例。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "SRN与时间齐次半群须检验；本章解析分类没有被全部登记为Lean定理。"
+      ],
+      "sections": [
+        {
+          "id": "7.1",
+          "title": "SRN 定义与 Schur 形式"
+        },
+        {
+          "id": "7.2",
+          "title": "复合、盲性与不确定性"
+        },
+        {
+          "id": "7.3",
+          "title": "连续半群的全局生成元"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 8,
+      "title": "QDRR：记录写入—擦除反演与有限数据",
+      "anchor": "ch-8",
+      "body_sha256": "4271849b39163d2950c24a30202e33ec3409558d4fb6b0a1796e69f1ff30dc3b",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给写入—存储—逆写的精确相干拉回、两相位层析和有限样本同时误差。",
+      "numbered_results": [
+        {
+          "id": "P-QQDR-01",
+          "title": "P-QQDR-01：相干拉回。",
+          "anchor": "p-qqdr-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QQDR-02",
+          "title": "P-QQDR-02。",
+          "anchor": "p-qqdr-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QQDR-03",
+          "title": "P-QQDR-03：同时误差。",
+          "anchor": "p-qqdr-03",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第8章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "区分写入等距映射与完整酉，写明编码像及无泄漏；补m≥2、n≥1和置信范围。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "完整环境控制与硬件校准不是内核定理；无真实新增实验，有限采样不证明全域概率公理。"
+      ],
+      "sections": [
+        {
+          "id": "8.1",
+          "title": "完整反演的接口"
+        },
+        {
+          "id": "8.2",
+          "title": "全 SRN 类的层析"
+        },
+        {
+          "id": "8.3",
+          "title": "有限采样与物理投影"
+        },
+        {
+          "id": "8.4",
+          "title": "硬件与新物理的可识别性"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 9,
+      "title": "量子信息、纠错与计量接口",
+      "anchor": "ch-9",
+      "body_sha256": "735ba95176dfbd2476ab80483f4e0bc1cc1fce73adbfac7b7ece8aeb91183f2d",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H"
+      ],
+      "dependency_class": [
+        "P",
+        "B"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给信息、无克隆、Knill–Laflamme纠错和单参数量子Fisher计量接口。",
+      "numbered_results": [
+        {
+          "id": "P-QINFO-01",
+          "title": "P-QINFO-01。",
+          "anchor": "p-qinfo-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QINFO-02",
+          "title": "P-QINFO-02。",
+          "anchor": "p-qinfo-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QINFO-01",
+        "K-QEC-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第9章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留噪声类、支撑与测量相容性责任。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "通用硬件阈值、多参数同时最优性和一切控制目标不能由单个标准公式推出。"
+      ],
+      "sections": [
+        {
+          "id": "9.1",
+          "title": "纠缠与信息"
+        },
+        {
+          "id": "9.2",
+          "title": "无克隆"
+        },
+        {
+          "id": "9.3",
+          "title": "纠错条件与对象维持"
+        },
+        {
+          "id": "9.4",
+          "title": "量子 Fisher 与计量"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 10,
+      "title": "无限维量子理论：定义域与正常态",
+      "anchor": "ch-10",
+      "body_sha256": "faf2d8071db649503a1f163b432d9bb25bc017f64feaba4f23014849d0eade64",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "定义正常态、无界算符域、自伴扩展、Stone演化及有限能量截断。",
+      "numbered_results": [
+        {
+          "id": "P-QINF-01",
+          "title": "P-QINF-01：正常态的迹范数连续性。",
+          "anchor": "p-qinf-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QINF-02",
+          "title": "P-QINF-02：能量截断误差。",
+          "anchor": "p-qinf-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QINF-01",
+        "K-QINF-02",
+        "K-QINF-03"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第10章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v24.4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "明确无限Hilbert维与无限自由度区别，补强连续和域边界。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "正常扇区为输入；截断态误差不独自控制长期动力学，当前Lean仅有限矩阵。"
+      ],
+      "sections": [
+        {
+          "id": "10.1",
+          "title": "无限 Hilbert 维不等于无限自由度"
+        },
+        {
+          "id": "10.2",
+          "title": "自伴性是物理输入的一部分"
+        },
+        {
+          "id": "10.3",
+          "title": "Stone 与强 Schrödinger 方程"
+        },
+        {
+          "id": "10.4",
+          "title": "无限维 FFIPS 与能量截断"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 11,
+      "title": "相空间、Weyl–CCR 与作用尺度",
+      "anchor": "ch-11",
+      "body_sha256": "25bf3d98fe367be3ed2a215c7f0e010ac6b53bfdcb425cb1383f49e8d6cd7344",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "N"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "S",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "在射影表示和完整辛协变等条件下固定交替形式，再进入Weyl、正则不可约表示与CCR。",
+      "numbered_results": [
+        {
+          "id": "P-QCCR-01",
+          "title": "P-QCCR-01：辛协变的单尺度。",
+          "anchor": "p-qccr-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QCCR-02",
+          "title": "P-QCCR-02。",
+          "anchor": "p-qccr-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QCCR-03",
+          "title": "P-QCCR-03。",
+          "anchor": "p-qccr-03",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QCCR-01",
+        "K-QCCR-02"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第11章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v24.4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "统一cocycle符号和ħ约定，保留共同稠密域及跨扇区共同尺度条件。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "闭轨整数不推出CCR；有限矩阵不能满足全域精确CCR，作用尺度数值仍需标定。"
+      ],
+      "sections": [
+        {
+          "id": "11.1",
+          "title": "从射影作用开始"
+        },
+        {
+          "id": "11.2",
+          "title": "UCA 的条件非平凡性"
+        },
+        {
+          "id": "11.3",
+          "title": "Weyl 关系与严格 CCR"
+        },
+        {
+          "id": "11.4",
+          "title": "不确定性与闭轨界限"
+        },
+        {
+          "id": "11.5",
+          "title": "不同扇区的共同 $\\hbar$"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 12,
+      "title": "标准非相对论计算模型",
+      "anchor": "ch-12",
+      "body_sha256": "3897436da47ee18491cbde343e40b1dcc16301aacb71254ebd9c4eca4451e461",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H"
+      ],
+      "dependency_class": [
+        "P"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "展开自由波包、谐振子、势阱/势垒与Coulomb标准模型的可计算预测。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第12章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v24.4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留边界、单位和模型条件，不将标准计算改称Core独有结果。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "势、参数和装置实现为输入；有限数值基准不证明任意连续问题的全局收敛。"
+      ],
+      "sections": [
+        {
+          "id": "12.1",
+          "title": "自由波包与干涉"
+        },
+        {
+          "id": "12.2",
+          "title": "谐振子"
+        },
+        {
+          "id": "12.3",
+          "title": "势阱与势垒"
+        },
+        {
+          "id": "12.4",
+          "title": "Coulomb 与原子"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 13,
+      "title": "有限模 Gaussian 扇区",
+      "anchor": "ch-13",
+      "body_sha256": "e586e79dad62e5c0f3484b750b91f5b3f0843ec581bca29226c9e5234e920242",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H"
+      ],
+      "dependency_class": [
+        "P",
+        "B"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给有限模Gaussian协方差、Williamson分解和通道正性接口。",
+      "numbered_results": [
+        {
+          "id": "P-QGAUSS-01",
+          "title": "P-QGAUSS-01：协方差必要条件。",
+          "anchor": "p-qgauss-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QGAUSS-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第13章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v24.4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "统一辛形式、ħ和协方差归一，区分量子必要条件与所有态/操作的描述。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "foundations",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "二阶矩不决定非Gaussian状态；无限模和无界域需额外分析。"
+      ],
+      "sections": [],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 14,
+      "title": "对称性、自旋与非相对论粒子",
+      "anchor": "ch-14",
+      "body_sha256": "f91f484fdc1b02789c8c4dd0552ca3886be95881910ad01d1687763c0137325c",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "K",
+        "P",
+        "H",
+        "N"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "从射线对称、共同光滑域、SU(2)和有质量Galilei中心扩张得到条件表示结构。",
+      "numbered_results": [],
+      "external_result_ids": [
+        "K-QSYM-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第14章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v25.2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补Wigner适用域、m>0分支、质量/内部能量及反酉非CP边界。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "不从旋转群推出质量或g因子；外部表示重定理未纳入有限Lean内核。"
+      ],
+      "sections": [
+        {
+          "id": "14.1",
+          "title": "Wigner 与生成元"
+        },
+        {
+          "id": "14.2",
+          "title": "旋转与自旋"
+        },
+        {
+          "id": "14.3",
+          "title": "Galilei 中心扩张与有质量粒子"
+        },
+        {
+          "id": "14.4",
+          "title": "时间反演与标准基准"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 15,
+      "title": "相同粒子、Fock 与超选",
+      "anchor": "ch-15",
+      "body_sha256": "ca302996ff1c20c34a349a889b50bc9cfa8df2d5bd84e9deabff97a9a21e4079",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "K",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "分解置换表示、Bose/Fermi扇区、Fock及操作超选。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第15章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v25.2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "恢复para反模型、超选中心与交换子代数区别、质量与粒子数超选条件。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "不可区分性不独自选统计；相对论自旋统计、二维编织和无限模表示另有前提。"
+      ],
+      "sections": [
+        {
+          "id": "15.1",
+          "title": "不可区分性不单独选择 Bose/Fermi"
+        },
+        {
+          "id": "15.2",
+          "title": "Fock 构造"
+        },
+        {
+          "id": "15.3",
+          "title": "超选的操作类型"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 16,
+      "title": "多体结构、局域性与相",
+      "anchor": "ch-16",
+      "body_sha256": "45b0e5f6bb3806f51d0f6ee7d770aaa05542a211e7fa8988ee055d79158082cc",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "K",
+        "H",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "组织局域Hamiltonian、多体相关、有限链、MPS和对象持续证书。",
+      "numbered_results": [],
+      "external_result_ids": [
+        "K-QMB-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第16章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v26.3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补热力学极限次序、单切割误差、N=2费米验证及预测/记忆/泄漏分项责任。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "有限峰不证明热力学相变；MPS存在不证明任意实时态可高效求解。"
+      ],
+      "sections": [
+        {
+          "id": "16.1",
+          "title": "局域 Hamiltonian 与无限体积"
+        },
+        {
+          "id": "16.2",
+          "title": "Ising 与 Heisenberg"
+        },
+        {
+          "id": "16.3",
+          "title": "相关、纠缠与相分类"
+        },
+        {
+          "id": "16.4",
+          "title": "多体对象证书"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 17,
+      "title": "开放系统：GKSL、热浴与轨迹",
+      "anchor": "ch-17",
+      "body_sha256": "156358cc6bc98257a41c8238f77e765932311f4e2b0f87540a1dbda52a301c67",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "K",
+        "H",
+        "P",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "区分微观约化、CPTP半群、GKSL和Davies弱耦合热浴极限。",
+      "numbered_results": [],
+      "external_result_ids": [
+        "K-QOPEN-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第17章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v26.3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补Bohr频率、浴正谱、KMS与Lamb shift条件。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "Gibbs驻定不等于唯一热化；强耦合/长记忆和本体轨迹选择仍需独立机制。"
+      ],
+      "sections": [
+        {
+          "id": "17.1",
+          "title": "微观约化与半群不是同一假设"
+        },
+        {
+          "id": "17.2",
+          "title": "两个显式通道"
+        },
+        {
+          "id": "17.3",
+          "title": "Davies 接口"
+        },
+        {
+          "id": "17.4",
+          "title": "量子轨迹与计算"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 18,
+      "title": "非 Markov 过程与记忆对象",
+      "anchor": "ch-18",
+      "body_sha256": "a210f084b9dece82a62dace2527ab58c4779d82b62a2c43a185f4e65c47c1296",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "过程张量与因果断开显示同一当前态可有不同未来，给遗漏记忆的最坏误差下界。",
+      "numbered_results": [
+        {
+          "id": "P-QMEM-01",
+          "title": "P-QMEM-01：遗漏记忆的不可消除误差。",
+          "anchor": "p-qmem-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QMEM-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第18章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v26.3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留CNOT写环境/reset/回写反例，区分CP-divisibility和操作Markov。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "一般comb压缩和最小物理记忆实现尚未由有限无记忆内核证明。"
+      ],
+      "sections": [
+        {
+          "id": "18.1",
+          "title": "为什么单时刻通道不够"
+        },
+        {
+          "id": "18.2",
+          "title": "一个完全可执行的记忆反例"
+        },
+        {
+          "id": "18.3",
+          "title": "记忆核和模拟选择"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/1512.00589"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 19,
+      "title": "热平衡、响应与熵产生",
+      "anchor": "ch-19",
+      "body_sha256": "aab94f3b33a20929585d3d86d9920c9b8041f65c328255d7f1f8631b093629a6",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "推导自由能—相对熵、有限Gibbs KMS、响应与满秩驻定下的熵产生。",
+      "numbered_results": [
+        {
+          "id": "P-QTHERM-01",
+          "title": "P-QTHERM-01：自由能与相对熵。",
+          "anchor": "p-qtherm-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QTHERM-02",
+          "title": "P-QTHERM-02：有限 Gibbs 的 KMS。",
+          "anchor": "p-qtherm-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QTHERM-03",
+          "title": "P-QTHERM-03。",
+          "anchor": "p-qtherm-03",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第19章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v26.3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补Lehmann/时间单位、简并块长期平均及热化条件。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "时间平均不等于逐时收敛；ETH、无限系统和强耦合热力学不是通用已证结论。"
+      ],
+      "sections": [
+        {
+          "id": "19.1",
+          "title": "Gibbs 的变分含义"
+        },
+        {
+          "id": "19.2",
+          "title": "KMS 与谱详细平衡"
+        },
+        {
+          "id": "19.3",
+          "title": "Kubo 与涨落耗散"
+        },
+        {
+          "id": "19.4",
+          "title": "驻定、平衡化与热化"
+        },
+        {
+          "id": "19.5",
+          "title": "Spohn 与物理熵产生"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 20,
+      "title": "量子 GOD/GOA：任务、控制与长期结构",
+      "anchor": "ch-20",
+      "body_sha256": "63a31279b8a4fa9f2958528eace4e74a91d85d425ac68ac22456f538d3442871",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "在声明任务、策略、预算与折扣下给Bellman固定点、控制梯度和类型明确的GOA。",
+      "numbered_results": [
+        {
+          "id": "P-QCTL-01",
+          "title": "P-QCTL-01。",
+          "anchor": "p-qctl-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第20章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v26.3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留目的桥，区分预测对象存在与任务最优。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "自然系统不必优化唯一共同目标；未声明混合与可测条件不能推出唯一长期态。"
+      ],
+      "sections": [
+        {
+          "id": "20.1",
+          "title": "从对象到目的必须增加任务"
+        },
+        {
+          "id": "20.2",
+          "title": "Bellman 和量子目标方向"
+        },
+        {
+          "id": "20.3",
+          "title": "有限时量子控制梯度"
+        },
+        {
+          "id": "20.4",
+          "title": "GOA 和稳定性"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 21,
+      "title": "相对论量子场：论域与新增前提",
+      "anchor": "ch-21",
+      "body_sha256": "95bfa87ccede79b0b7274d36f862975a046547a7a4a15c28a5e743ee4f4f4934",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "给相对论场的局域性、谱、真空、涂抹域与无限自由度前提。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第21章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v27.1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "恢复Shale、Type III、split和Haag边界，区分自由/调节/微扰三种闭合。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "未严格构造四维相互作用QFT；有限Kraus数学不提供无限场存在性。"
+      ],
+      "sections": [
+        {
+          "id": "21.1",
+          "title": "场论实现的物理输入"
+        },
+        {
+          "id": "21.2",
+          "title": "无限自由度、表示与局域代数"
+        },
+        {
+          "id": "21.3",
+          "title": "三种闭合状态"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 22,
+      "title": "自由标量场：模式、传播与因果",
+      "anchor": "ch-22",
+      "body_sha256": "4fc6ccab3d2143fa8b0ebead5f0d63e61e567d70fec8b6c141355d8f1a954ae7",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H"
+      ],
+      "dependency_class": [
+        "P"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "展开自由Klein–Gordon模式、正则关系、传播核和类空因果性。",
+      "numbered_results": [
+        {
+          "id": "P-QKG-01",
+          "title": "P-QKG-01：正则关系与传播子。",
+          "anchor": "p-qkg-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QKG-02",
+          "title": "P-QKG-02：类空因果性。",
+          "anchor": "p-qkg-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第22章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v27.1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留分布与涂抹解释，区分Pauli–Jordan、Wightman和Feynman核。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "调节尾与现实因果破坏不同；相互作用和一般曲背景另行构造。"
+      ],
+      "sections": [
+        {
+          "id": "22.1",
+          "title": "Klein–Gordon 场"
+        },
+        {
+          "id": "22.2",
+          "title": "三种核不混淆"
+        },
+        {
+          "id": "22.3",
+          "title": "源与探测器接口"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 23,
+      "title": "Dirac 场、Maxwell 场与物理自由度",
+      "anchor": "ch-23",
+      "body_sha256": "c07da00cd1a8dd84c6eb09a3d4ceae16d2a96e6015174c9d8d9bce6758558a10",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给Dirac旋量、传播、Maxwell横向自由度和带电Gauss接口。",
+      "numbered_results": [
+        {
+          "id": "P-QDIR-01",
+          "title": "P-QDIR-01。",
+          "anchor": "p-qdir-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QSTAT-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第23章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v27.1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补正度量/协变规范势边界及局域自旋—统计的外部定理责任。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "四个势分量不都是物理光子；带电红外和边界自由度仍需单列。"
+      ],
+      "sections": [
+        {
+          "id": "23.1",
+          "title": "旋量与反粒子"
+        },
+        {
+          "id": "23.2",
+          "title": "Maxwell 约束与横向模式"
+        },
+        {
+          "id": "23.3",
+          "title": "带电对象、Gauss 定律与边界"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 24,
+      "title": "相互作用、生成泛函与散射",
+      "anchor": "ch-24",
+      "body_sha256": "1ba8ce86ddaaa45a27ba9a1077e95678c059de2daab8db78caa231edab90b672",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "由带调节作用量进入Wick、LSZ、散射和光学定理。",
+      "numbered_results": [
+        {
+          "id": "P-QUNIT-01",
+          "title": "P-QUNIT-01：光学定理。",
+          "anchor": "p-qunit-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QLSZ-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第24章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v28.1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "修正裸参数与反项双计风险，给完整Z与反项分解。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "形式级数不构成非微扰存在；稳定渐近粒子和红外合同不可略去。"
+      ],
+      "sections": [
+        {
+          "id": "24.1",
+          "title": "带调节的 $\\lambda\\phi^4$ 基准"
+        },
+        {
+          "id": "24.2",
+          "title": "Wick 展开与 Feynman 规则"
+        },
+        {
+          "id": "24.3",
+          "title": "LSZ 与截面"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 25,
+      "title": "重整化：显式一圈基准与方案",
+      "anchor": "ch-25",
+      "body_sha256": "7932945d02b8bfe44befb7f03a3fd033f911cd1a0b53b53939a8a703dad86b0b",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H"
+      ],
+      "dependency_class": [
+        "P"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给一圈tadpole/bubble、阈值、割、running及方案匹配基准。",
+      "numbered_results": [
+        {
+          "id": "P-QREN-01",
+          "title": "P-QREN-01。",
+          "anchor": "p-qren-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QREN-02",
+          "title": "P-QREN-02：泡图减除。",
+          "anchor": "p-qren-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QREN-03",
+          "title": "P-QREN-03：二粒子割。",
+          "anchor": "p-qren-03",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QREN-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第25章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v28.1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "恢复独立Wilson/CS系数对照、无量纲圈参数与保留阶数条件。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "微扰Landau诊断非UV完成证明；高阶余项和极限需独立控制。"
+      ],
+      "sections": [
+        {
+          "id": "25.1",
+          "title": "二点函数"
+        },
+        {
+          "id": "25.2",
+          "title": "四点函数与阈值"
+        },
+        {
+          "id": "25.3",
+          "title": "Running 与临界点"
+        },
+        {
+          "id": "25.4",
+          "title": "方案匹配、展开参数与独立 RG 检验"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 26,
+      "title": "Wilsonian RG、有效场论与 Core 桥接",
+      "anchor": "ch-26",
+      "body_sha256": "9fe0c6bf3fa1337e05d0f607d3a6cddb000e4a427fd60f8c321846913979899e",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "区分Wilsonian作用量、过程和Core响应商，给Schur补及受限实时桥。",
+      "numbered_results": [
+        {
+          "id": "P-QEFT-01",
+          "title": "P-QEFT-01：二次 Schur 补。",
+          "anchor": "p-qeft-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QEFT-02",
+          "title": "P-QEFT-02：受限的实时桥。",
+          "anchor": "p-qeft-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第26章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v28.1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补重介子散射、匹配、稳定性和展开余项。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "Euclidean积分不自动CPTP；同名RG不保证共同对象或固定点。"
+      ],
+      "sections": [
+        {
+          "id": "26.1",
+          "title": "积掉快模式"
+        },
+        {
+          "id": "26.2",
+          "title": "可完全核对的重场匹配"
+        },
+        {
+          "id": "26.3",
+          "title": "三种 RG 的类型"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 27,
+      "title": "QED：规范、BRST 与 Ward 接口",
+      "anchor": "ch-27",
+      "body_sha256": "db04ce672584a68781495a966a645f9d81e4e9e04141eaf1c3d6d1db35373cbd",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "K",
+        "P",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给QED作用量、BRST/Ward与一圈UV责任。",
+      "numbered_results": [],
+      "external_result_ids": [
+        "K-QWARD-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第27章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v29.2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补回独立顶点张量缩并，区分Z2Zm与Zm，说明有限项/红外范围。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "树级或局部微扰恒等式不解决所有圈阶、global gauge或Gribov问题。"
+      ],
+      "sections": [
+        {
+          "id": "27.1",
+          "title": "作用量和对称性"
+        },
+        {
+          "id": "27.2",
+          "title": "Ward–Takahashi 恒等式"
+        },
+        {
+          "id": "27.3",
+          "title": "一圈 UV 闭合基准"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 28,
+      "title": "QED 可计算应用：散射、running 与磁矩",
+      "anchor": "ch-28",
+      "body_sha256": "e8f709b1cb7f6c9a4fe3711a10abbb8e3b705aed06e88b4992ae2905a7a55c1e",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "计算电子湮灭截面、真空极化阈值及Schwinger磁矩基准。",
+      "numbered_results": [
+        {
+          "id": "P-QQED-01",
+          "title": "P-QQED-01。",
+          "anchor": "p-qqed-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QQED-02",
+          "title": "P-QQED-02：阈值 beta。",
+          "anchor": "p-qqed-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QQED-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第28章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v29.2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留自旋迹、相空间、活跃味和独立参数积分责任。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "数值积分不是裸场论全推导机器证明；没有本版新增精密QED实验拟合。"
+      ],
+      "sections": [
+        {
+          "id": "28.1",
+          "title": "电子—正电子湮灭"
+        },
+        {
+          "id": "28.2",
+          "title": "真空极化与去耦"
+        },
+        {
+          "id": "28.3",
+          "title": "Schwinger 磁矩与红外边界"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 29,
+      "title": "非 Abelian 规范场与标准模型候选",
+      "anchor": "ch-29",
+      "body_sha256": "ea141e6116c7ebb683e9bfef46b54a3a35e212e08a893b81c2e6df45e21e8d8d",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "B",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "定义YM/SM候选并求局域异常约束及非唯一性，区分全局规范一致性。",
+      "numbered_results": [
+        {
+          "id": "P-QSM-01",
+          "title": "P-QSM-01：异常解与非唯一性。",
+          "anchor": "p-qsm-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QYM-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第29章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v30.11",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留全部左手表示计数、determinant-line与规范轨道桥的适用域。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "局域异常消失不选择唯一群，不保证全局异常、真空和现实实现。"
+      ],
+      "sections": [
+        {
+          "id": "29.1",
+          "title": "Yang–Mills 的定义与计算责任"
+        },
+        {
+          "id": "29.2",
+          "title": "标准模型是一种具体候选"
+        },
+        {
+          "id": "29.3",
+          "title": "精确异常方程"
+        },
+        {
+          "id": "29.4",
+          "title": "局域、全局与身份运输"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/1607.01873",
+        "https://arxiv.org/abs/1808.00009"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 30,
+      "title": "Higgs、Yukawa、味与中微子",
+      "anchor": "ch-30",
+      "body_sha256": "011ee7e243e0ffd78d31bb77ea4f1ad5e2910d8d9d9fe640c29f466bc9c22571",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给Higgs质量矩阵、Yukawa参数计数及不同中微子实现。",
+      "numbered_results": [
+        {
+          "id": "P-QHIG-01",
+          "title": "P-QHIG-01：质量矩阵。",
+          "anchor": "p-qhig-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QFLAV-01",
+          "title": "P-QFLAV-01：一般非退化 $N$ 代夸克计数。",
+          "anchor": "p-qflav-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QNU-01",
+          "title": "P-QNU-01：Type-I seesaw。",
+          "anchor": "p-qnu-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第30章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v30.11",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留重轻分离、非退化与自由参数责任。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "任意复Yukawa并不预测质量/混合；轻矩阵不唯一反演重seesaw模型。"
+      ],
+      "sections": [
+        {
+          "id": "30.1",
+          "title": "电弱破缺的显式载体"
+        },
+        {
+          "id": "30.2",
+          "title": "味的自由参数与 CP"
+        },
+        {
+          "id": "30.3",
+          "title": "中微子：不同实现不混同"
+        },
+        {
+          "id": "30.4",
+          "title": "味模型与原始“嵌套”直觉"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 31,
+      "title": "三代与三色：条件性定理及前提简化",
+      "anchor": "ch-31",
+      "body_sha256": "76a7b5eefc33c0d7103d92ee9175642b8776fe11b142d9c7cdbfa218302b7ed2",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "B",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic",
+        "lean"
+      ],
+      "core_content": "给复制障碍、全部整数解及弱窗口下去原始包的条件三代三色选择。",
+      "numbered_results": [
+        {
+          "id": "P-QG3-01",
+          "title": "P-QG3-01。",
+          "anchor": "p-qg3-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QG3-02",
+          "title": "P-QG3-02：全部整数解。",
+          "anchor": "p-qg3-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QG3-03",
+          "title": "P-QG3-03：去原始性前提的选择定理。",
+          "anchor": "p-qg3-03",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QG3-04",
+          "title": "P-QG3-04。",
+          "anchor": "p-qg3-04",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第31章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v30.11",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保持完整331场表与轻子同质等谱前提；接入Selector/Spectrum；校正二十Higgs为总数。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "quantum_program",
+          "lean",
+          "axioms",
+          "runtime",
+          "instances"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Selector",
+            "Spectrum"
+          ],
+          "scope": "全整数条件选择和有限谱行到指定单异常/弱预算桥；六局域异常/现实表示/高能分类另属解析及精确回归"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "低能SU(2)必要预算不替代高能SU(3)L要求；现实表示、阈值、真空和全局异常未全证。"
+      ],
+      "sections": [
+        {
+          "id": "31.1",
+          "title": "复制不变性障碍"
+        },
+        {
+          "id": "31.2",
+          "title": "横向规范父系统的固定表示类"
+        },
+        {
+          "id": "31.3",
+          "title": "不再需要原始包前提的条件选择"
+        },
+        {
+          "id": "31.4",
+          "title": "完整331存在性与异常清单"
+        },
+        {
+          "id": "31.5",
+          "title": "固定普通电荷的另一条条件分支"
+        },
+        {
+          "id": "31.6",
+          "title": "与已验证内核的准确对应及永久反模型"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/hep-ph/9206242",
+        "https://link.aps.org/doi/10.1103/PhysRevD.50.R34"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 32,
+      "title": "其他演进结果、拓扑路线与开放边界",
+      "anchor": "ch-32",
+      "body_sha256": "e294daa354da63e918685398315c144dc2903b4e77d0c7b0fd92e259b7bc26a1",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "S",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "保存framing有限条件分类、自治cut反例和拓扑路线的开放责任。",
+      "numbered_results": [
+        {
+          "id": "P-QFR-01",
+          "title": "P-QFR-01。",
+          "anchor": "p-qfr-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-QFR-02",
+          "title": "P-QFR-02。",
+          "anchor": "p-qfr-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [
+        "K-QIDX-01"
+      ],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第32章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v30.11",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "明确Betti/Dirac指标、completion与未构造的自然映射不同。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "没有从β1=3或Massey积推出现实群/三代；FAD物理必然性未证。"
+      ],
+      "sections": [
+        {
+          "id": "32.1",
+          "title": "Framing completion 的精确条件分类"
+        },
+        {
+          "id": "32.2",
+          "title": "自治性、对象划分与外置 completion"
+        },
+        {
+          "id": "32.3",
+          "title": "从原论文保留的拓扑路线"
+        },
+        {
+          "id": "32.4",
+          "title": "明确退出已证主线的主张"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 33,
+      "title": "全部架构的接口契约",
+      "anchor": "ch-33",
+      "body_sha256": "9aaac5b90b3e2aaf5321b4014d76760268189011c642392e8ac67944118abb54",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "lean"
+      ],
+      "core_content": "规定态/仪器、过程、对象、连续域、场论和证据的分层接口。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第33章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "新增当前精确Python与Lean入口，显式区分规格和已实现API及资源上限。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "lean",
+          "axioms",
+          "runtime",
+          "instances"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "ExactCertificate",
+            "Effects",
+            "Stability"
+          ],
+          "scope": "API对应的实际有限模块；通用规格和后端不是全部已实现"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "一般Choi/comb/CV/QFT后端不因有限内核存在而视为已实现。"
+      ],
+      "sections": [
+        {
+          "id": "33.1",
+          "title": "分层及其权责"
+        },
+        {
+          "id": "33.2",
+          "title": "有限量子操作最小 API"
+        },
+        {
+          "id": "33.3",
+          "title": "有记忆过程与 comb"
+        },
+        {
+          "id": "33.4",
+          "title": "对象接口与算法"
+        },
+        {
+          "id": "33.5",
+          "title": "连续变量、算符与数值后端"
+        },
+        {
+          "id": "33.6",
+          "title": "场论与粒子后端"
+        },
+        {
+          "id": "33.7",
+          "title": "数据、版本与证据接口"
+        },
+        {
+          "id": "33.8",
+          "title": "已实现的有限内核与接口映射"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 34,
+      "title": "完整应用路径",
+      "anchor": "ch-34",
+      "body_sha256": "92e4c952a9ac7634739334c48e71dfe19bfe55fddf78bc7e797cfa5971be35c8",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "给层析、QDRR、纠错、器件、多体和EFT候选的完整研究应用合同。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第34章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保存SPAM、基线、留出预测和校准责任，不增加真实实验声明。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "应用场景不是硬件验证；零偏压峰或额外损失不单独识别新物理。"
+      ],
+      "sections": [
+        {
+          "id": "34.1",
+          "title": "单比特与通道校准"
+        },
+        {
+          "id": "34.2",
+          "title": "量子记录、QDRR 与 actualization 检验"
+        },
+        {
+          "id": "34.3",
+          "title": "二相位 Gram / Choi 检验的应用分工"
+        },
+        {
+          "id": "34.4",
+          "title": "量子存储、纠错与控制"
+        },
+        {
+          "id": "34.5",
+          "title": "多体淬火与热环境"
+        },
+        {
+          "id": "34.6",
+          "title": "半导体/超导量子器件的模型接口"
+        },
+        {
+          "id": "34.7",
+          "title": "散射、EFT 与粒子候选比较"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/1002.4033",
+        "https://arxiv.org/abs/1003.1145"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 35,
+      "title": "量子主干的装配、误差与扩展入口",
+      "anchor": "ch-35",
+      "body_sha256": "f06b63eb0c4719de45372610cbb515e97ee3ee08e6f8068cb27c143e7a4f7afd",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "lean"
+      ],
+      "core_content": "用完整cq通道与共同历史寄存器组织误差装配，连接当前实际Kraus切片。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第35章"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "写明末端一致TV误差、旁系统diamond合同及正事件后验独立界。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "lean",
+          "axioms"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Transport",
+            "Effects",
+            "Stability"
+          ],
+          "scope": "同一有限载体实际Kraus误差切片；一般cq记忆/任意旁系统diamond合同未形式化"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "一般历史/旁系统装配仍属纸面数学责任；第50章未覆盖全部此合同。"
+      ],
+      "sections": [
+        {
+          "id": "35.1",
+          "title": "单一装配式"
+        },
+        {
+          "id": "35.2",
+          "title": "可组合的误差证书"
+        },
+        {
+          "id": "35.3",
+          "title": "本次独立检验的范围"
+        },
+        {
+          "id": "35.4",
+          "title": "完成、改进与开放"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 36,
+      "title": "三代问题：必须在正确的规范群上计算",
+      "anchor": "ch-36",
+      "body_sha256": "3bf4061eb2a58c9af108dc3792bfeddabf0b2d5266b00aa7fc31978043c99cd9",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "在正确高能群和完整活跃谱上分类，保存五色候选及六局域异常完成。",
+      "numbered_results": [
+        {
+          "id": "G-01",
+          "title": "G-01：三标量配置的全部整数解。",
+          "anchor": "g-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "G-02",
+          "title": "G-02：一般色数局域完成。",
+          "anchor": "g-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第36章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v30.11",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "区分SU(2)低能与SU(3)L高能beta，保留G-01/G-02。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "frontier_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "没有独立物理原则排除五色；这组高能解析分类不在Selector Lean定理中。"
+      ],
+      "sections": [
+        {
+          "id": "36.1",
+          "title": "冻结的表示配置"
+        },
+        {
+          "id": "36.2",
+          "title": "为什么原来的弱上界不等于高能要求"
+        },
+        {
+          "id": "36.3",
+          "title": "完整活跃场内容的一圈系数"
+        },
+        {
+          "id": "36.4",
+          "title": "高能分类与五色反例"
+        },
+        {
+          "id": "36.5",
+          "title": "五色反例的全部局域异常也能抵消"
+        },
+        {
+          "id": "36.6",
+          "title": "哪些前提真正还没有解决"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/hep-ph/9206242",
+        "https://arxiv.org/abs/1606.01109",
+        "https://arxiv.org/abs/1205.4483"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 37,
+      "title": "从代际不普适性推出新的可检验味约束",
+      "anchor": "ch-37",
+      "body_sha256": "ba4928cdcf09d2ed319ca186f2cc3f18f4b2a0256a1fc3d046de29d881be7dd2",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "由单秩一非普适耦合推出和式、两扇区FCNC障碍和定量下界。",
+      "numbered_results": [
+        {
+          "id": "F-01",
+          "title": "F-01。",
+          "anchor": "f-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "F-02",
+          "title": "F-02。",
+          "anchor": "f-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "F-03",
+          "title": "F-03。",
+          "anchor": "f-03",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第37章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v30.11",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补轻子普适性完整矩阵条件，保留F-01至F-03准确注册。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "frontier_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "exotic非幺正混合、额外玻色子和振幅相消需重算；非单通道发现声明。"
+      ],
+      "sections": [
+        {
+          "id": "37.1",
+          "title": "固定一个中性矢量候选"
+        },
+        {
+          "id": "37.2",
+          "title": "秩一和式：未知参数仍受到约束"
+        },
+        {
+          "id": "37.3",
+          "title": "上下扇区不能同时消掉全部 FCNC"
+        },
+        {
+          "id": "37.4",
+          "title": "不依赖未知取向的定量下界"
+        },
+        {
+          "id": "37.5",
+          "title": "EFT 匹配和可观测意义"
+        },
+        {
+          "id": "37.6",
+          "title": "轻子普适性必须是完整矩阵条件"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/hep-ph/9312312"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 38,
+      "title": "从相干相位推出不可任意调节的动力学约束",
+      "anchor": "ch-38",
+      "body_sha256": "d122479e0652e8d089130022a0db5bcd5aaf919920e4cf0932b66fe6552ed36f",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N"
+      ],
+      "dependency_class": [
+        "P",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "在SRN半群内给三分支CP三角界、循环相位与相干损耗约束。",
+      "numbered_results": [
+        {
+          "id": "M-01",
+          "title": "M-01。",
+          "anchor": "m-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "M-02",
+          "title": "M-02。",
+          "anchor": "m-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第38章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留Gaussian对角扩散与更宽经典跳跃的区别，修正M-01注册。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "frontier_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "非零循环相位不能单独排除所有经典噪声，也不证明本体坍缩。"
+      ],
+      "sections": [
+        {
+          "id": "38.1",
+          "title": "SRN 的最小物理定义"
+        },
+        {
+          "id": "38.2",
+          "title": "连续生成元与循环相位"
+        },
+        {
+          "id": "38.3",
+          "title": "三分支的锐 CP 界"
+        },
+        {
+          "id": "38.4",
+          "title": "相位积必须支付相干损失"
+        },
+        {
+          "id": "38.5",
+          "title": "为什么非零循环相位仍不证明“量子噪声”"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/1811.11784"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 39,
+      "title": "四能级判据：排除整个随机相位噪声类",
+      "anchor": "ch-39",
+      "body_sha256": "da1d6a9d65b888eb1b6465ed83ea9801fee885e24f1159496a3469864d883b0b",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "构造四级量子通道和锐分离见证，给随机相位类的稳健与有限样本界。",
+      "numbered_results": [
+        {
+          "id": "M-03",
+          "title": "M-03：单时刻的最小分支数为4。",
+          "anchor": "m-03",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "M-04",
+          "title": "M-04：锐经典下界。",
+          "anchor": "m-04",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "M-05",
+          "title": "M-05。",
+          "anchor": "m-05",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "E-01",
+          "title": "E-01：有限样本反证。",
+          "anchor": "e-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "E-02",
+          "title": "E-02：近似人口保持的稳健界。",
+          "anchor": "e-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第39章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留E-02人口保持误差、严格校准和188次理想条件。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "frontier_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "只排除声明的经典随机相位类；量子环境、普通非对角误差和真实校准另计。"
+      ],
+      "sections": [
+        {
+          "id": "39.1",
+          "title": "问题与最小维数"
+        },
+        {
+          "id": "39.2",
+          "title": "一个只需二维环境的物理通道"
+        },
+        {
+          "id": "39.3",
+          "title": "解析分离见证与严格常数"
+        },
+        {
+          "id": "39.4",
+          "title": "可承受多少额外退相干"
+        },
+        {
+          "id": "39.5",
+          "title": "一个输入、一个效应的零事件协议"
+        },
+        {
+          "id": "39.6",
+          "title": "必须防止普通非对角酉操作伪装成通过"
+        },
+        {
+          "id": "39.7",
+          "title": "这解决了什么，没有解决什么"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://doi.org/10.1103/PhysRevLett.95.090501"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 40,
+      "title": "实际化动力学：把“最终单分支”从假设推进成条件定理",
+      "anchor": "ch-40",
+      "body_sha256": "6ef7471ae34b323214aecd6515e6f2767789d9a809cd4880e6ccc90e37f18eec",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "S",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "给非线性传信反例、范数保持SSE、QND谱吸收、Born权重及加热约束。",
+      "numbered_results": [
+        {
+          "id": "C-01",
+          "title": "C-01：明确的远端制备矛盾。",
+          "anchor": "c-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "C-02",
+          "title": "C-02：范数与线性平均。",
+          "anchor": "c-02",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "C-03",
+          "title": "C-03：单谱分支与 Born 权重。",
+          "anchor": "c-03",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "C-04",
+          "title": "C-04：成对不确定性衰减。",
+          "anchor": "c-04",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第40章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "范数与gauge术语消歧；简并谱使用共同能量标签；修复旧交叉引用。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "frontier_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "指定SSE和QND不是Core推论；非对易Hamiltonian、相对论扩展和机制识别开放。"
+      ],
+      "sections": [
+        {
+          "id": "40.1",
+          "title": "先排除一种看似合理却可传信号的做法"
+        },
+        {
+          "id": "40.2",
+          "title": "一个范数保持、无条件线性的随机候选"
+        },
+        {
+          "id": "40.3",
+          "title": "证明发生谱分支吸收，而非假设它发生"
+        },
+        {
+          "id": "40.4",
+          "title": "一个可计算的有限时间闭合率"
+        },
+        {
+          "id": "40.5",
+          "title": "新物理候选必须同时支付能量代价"
+        },
+        {
+          "id": "40.6",
+          "title": "记录依赖可以合法加入，但须放在物理系统里"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/quant-ph/0102125",
+        "https://arxiv.org/abs/1301.3626",
+        "https://arxiv.org/abs/quant-ph/0107153"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 41,
+      "title": "为什么仍不能用相干损失单独证明客观坍缩",
+      "anchor": "ch-41",
+      "body_sha256": "91d2a80c9cfc0fa6388b7ec4cc9d5af7d2471dc31e58d2a73ed109d152dfb039",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "X",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "证明不受限量子环境可实现任意有限CPTP通道的系统内等价障碍。",
+      "numbered_results": [
+        {
+          "id": "C-05",
+          "title": "C-05：不受限量子环境的等价障碍。",
+          "anchor": "c-05",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第41章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留相干逆演化可实施范围和候选机制的独立约束责任。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "frontier_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "单独相干损失无法识别客观坍缩；不能由解释差异声称实验区分。"
+      ],
+      "sections": [
+        {
+          "id": "41.1",
+          "title": "系统内统计的可识别性极限"
+        },
+        {
+          "id": "41.2",
+          "title": "完整逆演化究竟测什么"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 42,
+      "title": "完整可执行研究协议与论证状态",
+      "anchor": "ch-42",
+      "body_sha256": "46b63a0e21b529a161c6b35d2f6882bc4a5857654c02605ad7348358c09787a0",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S",
+        "E",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "E",
+        "O",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "冻结实验/拟合协议、统计与前沿结果的论证状态。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第42章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "ADV-v23.0",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "把未使用形式化助手限定到这组高级解析与科学回归，避免覆盖新有限Lean。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "frontier_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "合成数据和预注册方案不是实际实验；需要竞争模型和独立留出数据。"
+      ],
+      "sections": [
+        {
+          "id": "42.1",
+          "title": "实验与拟合合同"
+        },
+        {
+          "id": "42.2",
+          "title": "本组前沿推导的独立检验与形式化边界"
+        },
+        {
+          "id": "42.3",
+          "title": "对“新物理”和旧问题的明确回答"
+        },
+        {
+          "id": "42.4",
+          "title": "来源与原创性边界"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/1508.04027"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 43,
+      "title": "全局相位、边界条件与拓扑量子化",
+      "anchor": "ch-43",
+      "body_sha256": "8f86abec5db5d55acd8f8a4ceb53a39701ac5bed6a70ec95e6e58c27985aaf1e",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H"
+      ],
+      "dependency_class": [
+        "P",
+        "B"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "计算带扭转边界环谱及规范不变holonomy。",
+      "numbered_results": [
+        {
+          "id": "P-UGL-01",
+          "title": "P-UGL-01：环上谱和规范不变量。",
+          "anchor": "p-ugl-01",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第43章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "补局部Madelung欠缺的全局域和边界结构。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "completion_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "作用相位闭合不决定唯一物理边界或普遍ħ。"
+      ],
+      "sections": [
+        {
+          "id": "43.1",
+          "title": "局部 Madelung 表示缺少什么"
+        },
+        {
+          "id": "43.2",
+          "title": "环上带扭转边界的完整谱"
+        },
+        {
+          "id": "43.3",
+          "title": "对原始相位闭合路线的反向优化"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 44,
+      "title": "拓扑量子对象：Berry 丛与 SSH 边态",
+      "anchor": "ch-44",
+      "body_sha256": "e1e30dab6ac6217ac21ce4f954e20000503b3ca3634153f6047c455ccd673584",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "完整计算二级Berry曲率、SSH体绕数、半无限零模和有限链残差。",
+      "numbered_results": [
+        {
+          "id": "P-UTP-01",
+          "title": "P-UTP-01：此本征线的 Chern 数。",
+          "anchor": "p-utp-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-UTP-02",
+          "title": "P-UTP-02：半无限零模。",
+          "anchor": "p-utp-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第44章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留具体本征线、边界、对称性及受控有限模型。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "completion_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "不构成全部相互作用拓扑分类或现实粒子世代选择。"
+      ],
+      "sections": [
+        {
+          "id": "44.1",
+          "title": "二能级 Berry 曲率的完整计算"
+        },
+        {
+          "id": "44.2",
+          "title": "SSH 体谱和绕数"
+        },
+        {
+          "id": "44.3",
+          "title": "半无限边界与有限链误差"
+        },
+        {
+          "id": "44.4",
+          "title": "UEOT 接口与可做的实验"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://doi.org/10.1098/rspa.1984.0023",
+        "https://link.aps.org/doi/10.1103/PhysRevLett.42.1698"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 45,
+      "title": "非微扰起点：有限格点规范模型与跨尺度接口",
+      "anchor": "ch-45",
+      "body_sha256": "51631d45be222bc5b12e8b1416d4b4fe9c5be2db4ea7726e6bbde4548d0b9425",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "P",
+        "B",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "定义有限紧致格点规范测度，证明规范不变并穷举单环基准。",
+      "numbered_results": [
+        {
+          "id": "P-ULG-01",
+          "title": "P-ULG-01：有限模型存在且规范不变。",
+          "anchor": "p-ulg-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-ULG-02",
+          "title": "P-ULG-02：精确配分函数与响应。",
+          "anchor": "p-ulg-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第45章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "区分有限存在、连续展开和Core实时干预桥。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "completion_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "四维连续极限、QCD质量隙、手征格点与解析延拓仍为独立问题。"
+      ],
+      "sections": [
+        {
+          "id": "45.1",
+          "title": "有限纯规范模型的精确定义"
+        },
+        {
+          "id": "45.2",
+          "title": "连续规范作用的系数核对"
+        },
+        {
+          "id": "45.3",
+          "title": "一个可完全穷举的规范闭合例"
+        },
+        {
+          "id": "45.4",
+          "title": "格点粗化与 Core 的合法连接"
+        },
+        {
+          "id": "45.5",
+          "title": "推进到 QCD 的明确任务"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://link.aps.org/doi/10.1103/PhysRevD.10.2445"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "number": 46,
+      "title": "有历史依赖的实验统计与可选停止",
+      "anchor": "ch-46",
+      "body_sha256": "465124ab7da9ec91d62e2d993f7ba8ad7de3b7c3cf5c624ccb194896104ad637",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N"
+      ],
+      "dependency_class": [
+        "P",
+        "E",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "以历史条件零假设推出固定样本和非负超鞅可选停止证书。",
+      "numbered_results": [
+        {
+          "id": "P-UST-01",
+          "title": "P-UST-01：相关试次的固定样本检验。",
+          "anchor": "p-ust-01",
+          "origin": "INHERITED_ID"
+        },
+        {
+          "id": "P-UST-02",
+          "title": "P-UST-02：可选停止证书。",
+          "anchor": "p-ust-02",
+          "origin": "INHERITED_ID"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第46章"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "保留共享Bernoulli反例、校准事件和泄漏计数责任。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "advanced",
+          "legacy",
+          "completion_program"
+        ],
+        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "单试次边缘下界不足；真实数据前提与覆盖保证必须独立满足。"
+      ],
+      "sections": [
+        {
+          "id": "46.1",
+          "title": "从独立试次改为条件零假设"
+        },
+        {
+          "id": "46.2",
+          "title": "为什么单次边缘下界不够"
+        },
+        {
+          "id": "46.3",
+          "title": "允许连续查看数据的严格版本"
+        },
+        {
+          "id": "46.4",
+          "title": "校准、泄漏与实际合同"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 47,
+      "title": "研究总规划：从闭合模块到可区分物理",
+      "anchor": "ch-47",
+      "body_sha256": "25fb3e0baba0bb9fb473d72a53b4f8b5fe9db485828474c423a284b7cf53a9e4",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "S",
+        "P",
+        "E",
+        "O",
+        "X"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "给R1–R13依赖、可交付产物、否证和停止规则，连接长期统一目标。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第47章"
+        },
+        {
+          "id": "S1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S5",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "按已验证Kernel1.4更新下一批义务和科学依赖账本。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "规划没有预先证明开放定理；引力/宇宙学明确仍是受控入口。"
+      ],
+      "sections": [
+        {
+          "id": "47.1",
+          "title": "工作依赖与优先级"
+        },
+        {
+          "id": "47.2",
+          "title": "R1：量子选择与最小性"
+        },
+        {
+          "id": "47.3",
+          "title": "R2：全局相位、算符域与数值收敛"
+        },
+        {
+          "id": "47.4",
+          "title": "R3：SRN 见证、QDRR 与实验统计"
+        },
+        {
+          "id": "47.5",
+          "title": "R4：实际化与新动力学"
+        },
+        {
+          "id": "47.6",
+          "title": "R5：非 Markov 记忆与预测对象压缩"
+        },
+        {
+          "id": "47.7",
+          "title": "R6：多体、拓扑、热力学与控制应用"
+        },
+        {
+          "id": "47.8",
+          "title": "R7：QFT、规范固定、EFT 与红外"
+        },
+        {
+          "id": "47.9",
+          "title": "R8：非微扰与跨尺度"
+        },
+        {
+          "id": "47.10",
+          "title": "R9：规范群、世代与高能一致性"
+        },
+        {
+          "id": "47.11",
+          "title": "R10：味、质量、中微子和可观测匹配"
+        },
+        {
+          "id": "47.12",
+          "title": "R11：全局异常、framing 与几何指标"
+        },
+        {
+          "id": "47.13",
+          "title": "R12：引力与宇宙学的受控入口"
+        },
+        {
+          "id": "47.14",
+          "title": "R13：形式化证明、代码与文献责任"
+        },
+        {
+          "id": "47.15",
+          "title": "统一完成标准与研究停止条件"
+        },
+        {
+          "id": "47.16",
+          "title": "通向完备物理理论的依赖账本"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 48,
+      "title": "理论总著、状态接口与持续维护",
+      "anchor": "ch-48",
+      "body_sha256": "117b8eaf7b645f3a4690dea2d2df9f29e2f22be7aa6b58498a2f0b29508132f4",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "固定唯一正文、三状态轴、修改治理及高风险结论必须携带的前提。",
+      "numbered_results": [],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "第48章"
+        },
+        {
+          "id": "S1",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S3",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S4",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S5",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "新增显式字段消歧、源绑定、跨章修订和Core回馈边界。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [],
+          "scope": "本章以正文解析、明确外部定理和所列有限检查承担责任；不声称整章Lean形式化。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "文档结构合同不是完整科研知识图谱或自然界唯一性证明。"
+      ],
+      "sections": [
+        {
+          "id": "48.1",
+          "title": "唯一理论主源"
+        },
+        {
+          "id": "48.2",
+          "title": "三个独立状态轴"
+        },
+        {
+          "id": "48.3",
+          "title": "必须携带前提的高风险结论"
+        },
+        {
+          "id": "48.4",
+          "title": "审查、改写与Core回馈"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 49,
+      "title": "UEOT-QM 的已验证有限量子内核",
+      "anchor": "ch-49",
+      "body_sha256": "8e7d0d2b1237fd9b0b1c78331fdc3418ad675b8bd9fce4411bab7e32a580b4b2",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "S",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "S",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "lean"
+      ],
+      "core_content": "连接实际矩阵到全词响应商、有限生成、闭合后验、完整适应树及精确证书。",
+      "numbered_results": [
+        {
+          "id": "P-QKR-01",
+          "title": "P-QKR-01（响应对象的后验闭合）。",
+          "anchor": "p-qkr-01",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QKR-02",
+          "title": "P-QKR-02（局部有限表示决定全部未来）。",
+          "anchor": "p-qkr-02",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QKR-03",
+          "title": "P-QKR-03（全词坐标控制完整有限适应树）。",
+          "anchor": "p-qkr-03",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QKR-04",
+          "title": "P-QKR-04（精确证书可靠性）。",
+          "anchor": "p-qkr-04",
+          "origin": "NEW_IN_3_0"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "新增P-QKR-01至04；整合Kernel1.1–1.3并保留谱桥边界。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "lean",
+          "axioms",
+          "runtime",
+          "instances"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Basic",
+            "Instrument",
+            "Operational",
+            "Observables",
+            "FiniteCoordinates",
+            "Adaptive",
+            "Weighted",
+            "Ragged",
+            "Exact",
+            "ExactCertificate",
+            "Selector",
+            "Spectrum"
+          ],
+          "scope": "仅源码精确定义和本章列明条件结论；附带的物理输入/解释及程序全称细化未覆盖"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "不形式化全部JSON/搜索/导出器；不把有限坐标维数视为最小物理Hilbert维数。"
+      ],
+      "sections": [
+        {
+          "id": "49.1",
+          "title": "内核承担的科学任务"
+        },
+        {
+          "id": "49.2",
+          "title": "实际矩阵、记录与响应商"
+        },
+        {
+          "id": "49.3",
+          "title": "有限生成空间与全词坐标"
+        },
+        {
+          "id": "49.4",
+          "title": "完整有限自适应记录律"
+        },
+        {
+          "id": "49.5",
+          "title": "有理加权与可变有限索引"
+        },
+        {
+          "id": "49.6",
+          "title": "可计算检查器的数学可靠性"
+        },
+        {
+          "id": "49.7",
+          "title": "与三代谱及其他物理层的连接"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 50,
+      "title": "从实际 Born 概率到量子误差传播",
+      "anchor": "ch-50",
+      "body_sha256": "60f0eda72d8d24175fb733f239befbeb322deda0c725af2f75f2b8521e532884",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "lean"
+      ],
+      "core_content": "从全部实际效应定义概率伪距离，证明完整通道收缩、缺陷、轨迹与正事件后选择。",
+      "numbered_results": [
+        {
+          "id": "P-QST-01",
+          "title": "P-QST-01（实际正配对与效应界）。",
+          "anchor": "p-qst-01",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QST-02",
+          "title": "P-QST-02（续效应的完整拉回）。",
+          "anchor": "p-qst-02",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QST-03",
+          "title": "P-QST-03（可观测距离的基本合同）。",
+          "anchor": "p-qst-03",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QST-04",
+          "title": "P-QST-04（完整 Kraus 通道的一步稳定性）。",
+          "anchor": "p-qst-04",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QST-05",
+          "title": "P-QST-05（真实量子轨迹的可组合误差）。",
+          "anchor": "p-qst-05",
+          "origin": "NEW_IN_3_0"
+        },
+        {
+          "id": "P-QST-06",
+          "title": "P-QST-06（后选择误差及正支撑保护）。",
+          "anchor": "p-qst-06",
+          "origin": "NEW_IN_3_0"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "QM314",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "S2",
+          "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "按本章正文及来源目录中的精确位置"
+        }
+      ],
+      "revision": "新增P-QST-01至06及Kernel1.4的Effects/Stability实际定理。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "lean",
+          "axioms",
+          "metric",
+          "metric_review"
+        ],
+        "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Effects",
+            "Stability",
+            "Transport"
+          ],
+          "scope": "实际全效应伪距离、完整Kraus一步与轨迹、双正事件后验；不含trace/diamond识别"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "trace/diamond识别、一般旁系统、历史装配和最坏缺陷数值算法仍未形式化。"
+      ],
+      "sections": [
+        {
+          "id": "50.1",
+          "title": "全效应对象与概率界"
+        },
+        {
+          "id": "50.2",
+          "title": "逐结果拉回与所有有限记录"
+        },
+        {
+          "id": "50.3",
+          "title": "全效应响应距离及其边界"
+        },
+        {
+          "id": "50.4",
+          "title": "实际通道收缩与模型缺陷"
+        },
+        {
+          "id": "50.5",
+          "title": "从量子一步定理接入 Core 的组合证书"
+        },
+        {
+          "id": "50.6",
+          "title": "正事件条件化与稀有分支"
+        },
+        {
+          "id": "50.7",
+          "title": "证明、执行和物理主张的三层闭合"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    }
+  ],
+  "appendices": [
+    {
+      "id": "A",
+      "title": "符号、单位与标准定理责任表",
+      "anchor": "appendix-a",
+      "body_sha256": "fda07a2cf2f37faa6205897943358c373d2b021100bd41b9041a2f2612e83af0",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "单位、Choi腿序、各章重用符号及未完整重证的外部定理条件。",
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "附录A及对应来源登记"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "附录A及对应来源登记"
+        },
+        {
+          "id": "QM314",
+          "locator": "附录A及对应来源登记"
+        }
+      ],
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly"
+        ],
+        "whole_appendix_formalized": false,
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "不能用符号表省去正文的适用域。"
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "id": "B",
+      "title": "编号证明结果注册表",
+      "anchor": "appendix-b",
+      "body_sha256": "796e156b5239fd639b557cc03b8ec3ded6a08c302ea6eddbfaae42da9b410a29",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "88个稳定编号与实际锚点、完整命题名、所属章绑定；保留78旧ID和10新ID。",
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "附录B及对应来源登记"
+        },
+        {
+          "id": "QM314",
+          "locator": "附录B及对应来源登记"
+        }
+      ],
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure"
+        ],
+        "whole_appendix_formalized": false,
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "注册数量不是原创、Lean或实验计数；防止短ID误匹配长ID后缀。"
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "id": "C",
+      "title": "来源、继承关系与研究诚实性",
+      "anchor": "appendix-c",
+      "body_sha256": "0c5b700181ee3fbed458b961513f2fc05d632a689cbfebc96112009e62018e65",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "区分原始字节、历史可读文本见证、旧PDF不同身份与原始研究依赖。",
+      "source_refs": [
+        {
+          "id": "S1",
+          "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "S2",
+          "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "S3",
+          "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "S4",
+          "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "S5",
+          "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "Q2",
+          "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "QM314",
+          "locator": "附录C及对应来源登记"
+        }
+      ],
+      "verification_responsibility": {
+        "evidence_refs": [
+          "advanced",
+          "foundations",
+          "assembly"
+        ],
+        "whole_appendix_formalized": false,
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "历史文本哈希不冒充原始TeX；AI协作不冒充人类同行评审。"
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/2605.23217",
+        "https://cs.uwaterloo.ca/~watrous/TQI/",
+        "https://link.aps.org/doi/10.1103/PhysRevLett.120.040405",
+        "https://arxiv.org/abs/1512.00589",
+        "https://www.damtp.cam.ac.uk/user/tong/qft.htm",
+        "https://arxiv.org/abs/1607.01873",
+        "https://arxiv.org/abs/1808.00009",
+        "https://arxiv.org/abs/hep-ph/9206242",
+        "https://link.aps.org/doi/10.1103/PhysRevD.50.R34",
+        "https://arxiv.org/abs/1002.4033",
+        "https://arxiv.org/abs/1003.1145",
+        "https://arxiv.org/html/2605.23217v1"
+      ],
+      "inline_source_citations": []
+    },
+    {
+      "id": "D",
+      "title": "全部可执行验证与本版结果",
+      "anchor": "appendix-d",
+      "body_sha256": "7a88929cc123225ceb1648731438f258d704bc2dd5046a3e5e737a2c5629144f",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "E"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "exact_arithmetic",
+        "synthetic"
+      ],
+      "core_content": "完整内嵌三套继承程序及本版实际757项检查回执。",
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "附录D及对应来源登记"
+        }
+      ],
+      "verification_responsibility": {
+        "evidence_refs": [
+          "legacy",
+          "quantum_program",
+          "frontier_program",
+          "completion_program"
+        ],
+        "whole_appendix_formalized": false,
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "精确/浮点/合成回归不替代全称形式证明或真实实验。"
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "id": "E",
+      "title": "正式阅读版、编译与修订合同",
+      "anchor": "appendix-e",
+      "body_sha256": "6c32b401351b22ac4ed10efb315384acaaea365d4ea06dbffc937812539ed471",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S"
+      ],
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "core_content": "固定完整主源、Droid Sans Fallback阅读版构建、三遍XeLaTeX、视觉与源绑定规则。",
+      "source_refs": [
+        {
+          "id": "Q2",
+          "locator": "附录E及对应来源登记"
+        },
+        {
+          "id": "QM314",
+          "locator": "附录E及对应来源登记"
+        }
+      ],
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "build_environment",
+          "visual"
+        ],
+        "whole_appendix_formalized": false,
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "编译退出码不等于页面视觉验收；远端身份依真实提交/CI回执。"
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "id": "F",
+      "title": "实际形式化范围与完整命名审计",
+      "anchor": "appendix-f",
+      "body_sha256": "a514461bdc95a90a0d568f782141de50913bf9b35fe6ab0d26cca06e1da27c31",
+      "edition_status": "INTEGRATED_COMPLETE",
+      "argument_status": [
+        "D",
+        "S"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P"
+      ],
+      "verification_kind": [
+        "analytic",
+        "lean"
+      ],
+      "core_content": "列15模块256显式定理、287命名目标以及六正例/四坏数据的独立实例责任。",
+      "source_refs": [
+        {
+          "id": "QM314",
+          "locator": "附录F及对应来源登记"
+        },
+        {
+          "id": "S2",
+          "locator": "附录F及对应来源登记"
+        }
+      ],
+      "verification_responsibility": {
+        "evidence_refs": [
+          "lean",
+          "axioms",
+          "runtime",
+          "instances",
+          "metric"
+        ],
+        "whole_appendix_formalized": false,
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "命名审计不是内部所有常量普查；未形式化的外部重定理和物理实现保持未覆盖。"
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    }
+  ],
+  "validation": {
+    "canonical_sha256_checked": true,
+    "chapter_numbers": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "appendix_ids": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "registered_ids_unique": true,
+    "claims_parsed_from_actual_anchors": true,
+    "numbered_result_count": 88,
+    "old_new_counts": [
+      78,
+      10
+    ],
+    "path_policy": "全部path相对于仓库根；最终视觉回执由root外部验收，不能据本档案预填PASS。",
+    "all_repository_paths_exist": true,
+    "checked_repository_path_count": 25,
+    "readme_local_links_exist": true,
+    "derivative_hashes_checked": true,
+    "external_visual_receipt_checked": true,
+    "frozen_source_unchanged": true
+  }
+}

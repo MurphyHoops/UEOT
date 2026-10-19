@@ -1,6 +1,6 @@
 import UEOTQM
 
--- Every explicit theorem declaration in the thirteen QM modules, plus the listed proof-bearing constructions.
+-- Every explicit theorem declaration in the fifteen QM modules, plus the listed proof-bearing constructions.
 -- This is a named-declaration audit; it is not a census of all compiler-generated constants.
 
 #print axioms UEOTQM.Density.ext
@@ -220,3 +220,81 @@ import UEOTQM
 #print axioms UEOTQM.ExactCertificate.weightedInstrument
 #print axioms UEOTQM.ExactCertificate.instrumentFamily
 #print axioms UEOTQM.ExactCertificate.presentation
+
+-- Kernel 1.4: all-effect probabilities, actual channel stability and conditioning.
+-- Includes all 60 new explicit theorems and all 14 public definitions.
+-- Nine definitions construct proof-carrying Effect/Density values; five are data definitions.
+#print axioms UEOTQM.pairing_sub_left
+#print axioms UEOTQM.pairing_add_right
+#print axioms UEOTQM.pairing_sum_right
+#print axioms UEOTQM.pairing_nonneg
+#print axioms UEOTQM.Effect.ext
+#print axioms UEOTQM.Effect.zero
+#print axioms UEOTQM.Effect.one
+#print axioms UEOTQM.Effect.complement
+#print axioms UEOTQM.Effect.zero_matrix
+#print axioms UEOTQM.Effect.one_matrix
+#print axioms UEOTQM.Effect.complement_matrix
+#print axioms UEOTQM.Effect.pairing_nonneg
+#print axioms UEOTQM.Effect.pairing_le_mass
+#print axioms UEOTQM.Effect.probability
+#print axioms UEOTQM.Effect.probability_nonneg
+#print axioms UEOTQM.Effect.probability_le_one
+#print axioms UEOTQM.Effect.probability_zero
+#print axioms UEOTQM.Effect.probability_one
+#print axioms UEOTQM.Effect.probability_complement
+#print axioms UEOTQM.Instrument.channel
+#print axioms UEOTQM.Instrument.channel_posSemidef
+#print axioms UEOTQM.Instrument.trace_channel
+#print axioms UEOTQM.Instrument.channelState
+#print axioms UEOTQM.Instrument.channelState_matrix
+#print axioms UEOTQM.Instrument.pullbackEffects
+#print axioms UEOTQM.Instrument.pullbackEffects_matrix
+#print axioms UEOTQM.Instrument.pairing_pullbackEffects
+#print axioms UEOTQM.Instrument.pullbackEffect
+#print axioms UEOTQM.Instrument.pairing_pullbackEffect
+#print axioms UEOTQM.Instrument.probability_channelState
+#print axioms UEOTQM.Instrument.branchEffect
+#print axioms UEOTQM.Instrument.branchEffect_matrix
+#print axioms UEOTQM.Instrument.pairing_branchEffect
+#print axioms UEOTQM.Instrument.probability_branchEffect_one
+#print axioms UEOTQM.Instrument.probability_posterior
+#print axioms UEOTQM.recordTest
+#print axioms UEOTQM.recordTest_matrix
+#print axioms UEOTQM.recordEffect_complement_posSemidef
+#print axioms UEOTQM.response_eq_effect_probability
+#print axioms UEOTQM.response_le_one
+#print axioms UEOTQM.effectGapSet
+#print axioms UEOTQM.Effect.probability_abs_sub_le_one
+#print axioms UEOTQM.effectGapSet_nonempty
+#print axioms UEOTQM.effectGapSet_bddAbove
+#print axioms UEOTQM.effectDistance
+#print axioms UEOTQM.Effect.probability_sub_le_effectDistance
+#print axioms UEOTQM.effectDistance_nonneg
+#print axioms UEOTQM.effectDistance_le_iff
+#print axioms UEOTQM.effectDistance_le_one
+#print axioms UEOTQM.effectDistance_self
+#print axioms UEOTQM.effectDistance_comm
+#print axioms UEOTQM.effectDistance_triangle
+#print axioms UEOTQM.effectDistance_eq_zero_iff
+#print axioms UEOTQM.response_sub_le_effectDistance
+#print axioms UEOTQM.channelDefect
+#print axioms UEOTQM.channelDefect_bddAbove
+#print axioms UEOTQM.channelDefect_nonneg
+#print axioms UEOTQM.channelDefect_le_one
+#print axioms UEOTQM.effectDistance_le_channelDefect
+#print axioms UEOTQM.channelDefect_self
+#print axioms UEOTQM.Instrument.channelState_effectDistance_le
+#print axioms UEOTQM.Instrument.probability_sub_le_effectDistance
+#print axioms UEOTQM.Instrument.probability_pos_of_effectDistance_lt
+#print axioms UEOTQM.Instrument.channelState_perturbation_bound
+#print axioms UEOTQM.normalized_probability_difference_le
+#print axioms UEOTQM.Instrument.posterior_effectDistance_le
+#print axioms UEOTQM.Instrument.posterior_effectDistance_le_of_probability_lower_bound
+#print axioms UEOTQM.channelTrajectory
+#print axioms UEOTQM.channelTrajectory_zero
+#print axioms UEOTQM.channelTrajectory_succ
+#print axioms UEOTQM.channelTrajectory_transport_certificate
+#print axioms UEOTQM.scalarBudget_one_eq_sum
+#print axioms UEOTQM.channelTrajectory_effectDistance_le_sum
+#print axioms UEOTQM.channelTrajectory_response_sub_le_sum
