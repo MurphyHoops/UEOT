@@ -1,0 +1,35 @@
+{
+  "schema": "ueot-qm-audit-execution/1",
+  "executed_at_utc": "2026-10-19T13:11:09.322804+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "implementation": "CPython",
+  "assertions_enabled": true,
+  "arithmetic": "Python standard library Fraction and rational Laurent polynomials; no floating tolerances",
+  "executions": [
+    {
+      "script": "physics/qm/benchmarks/qm_bridge_benchmarks.py",
+      "script_sha256": "dd3a6a56cb3190ae0729a68421c79b87b9d4f2a2573e34dea4991053248e1dae",
+      "command": "python physics/qm/benchmarks/qm_bridge_benchmarks.py",
+      "exit_code": 0,
+      "result": "physics/qm/benchmarks/results/qm_bridge_benchmarks.json",
+      "result_sha256": "3df6e34429601ee8f2d203a5526b592786d8862f79815ae56eafd0c8f93e7034",
+      "groups_passed": 4,
+      "groups_total": 4
+    },
+    {
+      "script": "physics/qm/benchmarks/qm_frontier_exact_audit.py",
+      "script_sha256": "d7b957b4b82e14153ec3ffaf4a02b86ed0d21dd409ebfd54e07af280d676fe70",
+      "command": "python physics/qm/benchmarks/qm_frontier_exact_audit.py",
+      "exit_code": 0,
+      "result": "physics/qm/benchmarks/results/qm_frontier_exact_audit.json",
+      "result_sha256": "4d55a7df74fc8ceb2a41e1e41eca1821c89106fe24ed8df948a184724fc027e2",
+      "groups_passed": 13,
+      "groups_total": 13
+    }
+  ],
+  "evidence_kind": "fresh finite exact regression and displayed-formula audit",
+  "historical_v30_11_verifier_rerun": false,
+  "lean_build_performed": false,
+  "empirical_data_used": false,
+  "counting_note": "4 bridge groups and 13 spectrum/audit groups. The selector is checked independently in both; these counts are not distinct theorems or Core coverage."
+}

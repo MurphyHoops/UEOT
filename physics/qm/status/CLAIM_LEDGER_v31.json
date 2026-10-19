@@ -1,0 +1,494 @@
+{
+  "schema": "ueot-qm-claim-ledger/1",
+  "version": "31.0-plan",
+  "date": "2026-10-19",
+  "scope": "Non-counted QM planning/audit claims; does not duplicate or change Core P-ID coverage",
+  "canonical_core_commit": "195ebb06fb8afcc592c69671dabfd2250e9d1989",
+  "status_policy": {
+    "proved": "Reserved for an identified machine theorem with build and axiom receipt when machine proof is claimed.",
+    "pending": "Machine formalization not performed, even if paper proof or exact regression exists.",
+    "paper_proof_cross_reviewed": "A mathematical proof checked in this planning task; not Lean and not empirical confirmation.",
+    "historical_declared": "Read from the original research text/report; not a full independent rerun or reproof.",
+    "proposed": "An execution target with explicit assumptions and acceptance gates.",
+    "empirical": "Real data requires its own frozen protocol and validation evidence."
+  },
+  "readonly_core_snapshot": {
+    "coverage": {
+      "proved": 106,
+      "unique": 106,
+      "partial": 0,
+      "pending": 0,
+      "authority": "formalization/ueot-core/docs/V3_COVERAGE_STATUS.md"
+    },
+    "compression": {
+      "generated": 11,
+      "retained_adapters": 89,
+      "retained_boundaries": 6,
+      "unresolved": 0,
+      "counted_generators": 4
+    },
+    "theory_completion": {
+      "program": "CLOSED",
+      "stages": "P0-P12 CLOSED",
+      "P12_scientific": "PARTIAL / EXPLICIT BOUNDARY"
+    },
+    "current_baseline_proof_job": "skipped",
+    "new_core_counted_items": 0,
+    "new_QM_lean_theorems": 0
+  },
+  "claims": [
+    {
+      "id": "QM-V31-STD",
+      "title": "v23 conservative standard quantum sector",
+      "input_classes": [
+        "B",
+        "P"
+      ],
+      "mathematical_status": "historical_declared",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "QM-SRC-01",
+        "../audits/CORE_OBJECT_PROTOCOL_BRIDGE_20261019.md"
+      ],
+      "assumptions": [
+        "Given complex quantum state/effect/Born/channel/instrument/tensor structure; only object predicates added."
+      ],
+      "negative_or_refusal": "A definitional conservative extension has no new outcome-probability deviation.",
+      "next_action": "Materialize exact v23 source and formalize its declared operational adapter."
+    },
+    {
+      "id": "QM-V31-RECON",
+      "title": "Finite operational selection with full Nakahira background",
+      "input_classes": [
+        "S",
+        "P",
+        "B"
+      ],
+      "mathematical_status": "historical_declared",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "QM-SRC-02",
+        "https://arxiv.org/html/2605.23217v1"
+      ],
+      "assumptions": [
+        "Full declared finite causal operational background, LE/CIT and equivalent-system purification conditions; external preprint."
+      ],
+      "negative_or_refusal": "Not two background-free universal axioms; no automatic infinite-dimensional extension.",
+      "next_action": "Freeze each background assumption and prior-art mapping; do not rename external theorem as UEOT originality."
+    },
+    {
+      "id": "QM-V31-OBS",
+      "title": "Instrument-adjoint observable closure and predictive quotient",
+      "input_classes": [
+        "P",
+        "E",
+        "B"
+      ],
+      "mathematical_status": "paper_argument_cross_reviewed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "4-group suite contains exact Z and H+Z closure witness",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/CORE_OBJECT_PROTOCOL_BRIDGE_20261019.md",
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "Finite d, time-homogeneous finite alphabet available at every step, all finite causal compositions, same policy comparison; proper reachable preparation space."
+      ],
+      "negative_or_refusal": "Restricted automaton/horizon requires augmented or layered closure; linear quotient need not have smaller CPTP Hilbert realization.",
+      "next_action": "QMB-01 through QMB-03."
+    },
+    {
+      "id": "QM-V31-G3",
+      "title": "Selector without primitive/atomicity assumption",
+      "input_classes": [
+        "B",
+        "S",
+        "P",
+        "E"
+      ],
+      "mathematical_status": "paper_proof_cross_reviewed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "Both fresh exact suites pass",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/G3_SELECTOR_REFINEMENT_20261019.md"
+      ],
+      "assumptions": [
+        "Nc,Nf,k integers, Nc>=3, Nf>0, 0<=k<=Nf, Nf+Nc(2k-Nf)=0, Nf(Nc+1)<22.",
+        "Physics adapter: complex SU(Nc) fundamental; homogeneous lepton R template; A(R)!=0; no remaining same-channel anomaly compensation; declared active-family weak SU2 window with b2>0."
+      ],
+      "negative_or_refusal": "Replication satisfies the anomaly equation; weak budget excludes it. Dropping template permits a two-family local spectrum.",
+      "next_action": "Prove the integer theorem in Lean, then separately prove spectral and weak-window adapters."
+    },
+    {
+      "id": "QM-V31-EC",
+      "title": "Generic-beta spectrum needs exotic lepton singlet completion",
+      "input_classes": [
+        "P",
+        "B"
+      ],
+      "mathematical_status": "paper_calculation_cross_reviewed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "Fresh exact Laurent-polynomial checks pass",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/G3_SELECTOR_REFINEMENT_20261019.md"
+      ],
+      "assumptions": [
+        "Generic Dirac-completion generalized-331 class; qE=-(1+sqrt(3)*beta)/2; LH Weyl conventions."
+      ],
+      "negative_or_refusal": "Without Ec, grav2X has Nf*qE and X3 gains Nf*qE^3. RHN qE=0 is a special point; special field identifications must avoid double counting.",
+      "next_action": "Audit original verifier bytes and publish full Weyl inventory when migrating the source."
+    },
+    {
+      "id": "QM-V31-TWO-FAMILY",
+      "title": "Broader mixed-lepton template admits two-family local anomaly witness",
+      "input_classes": [
+        "P",
+        "B",
+        "O"
+      ],
+      "mathematical_status": "explicit_counterexample_cross_reviewed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "Six local anomalies exactly zero",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/G3_SELECTOR_REFINEMENT_20261019.md",
+        "../benchmarks/results/qm_frontier_exact_audit.json"
+      ],
+      "assumptions": [
+        "Nc=3,Nf=2,l=k=1,beta=0; all LH singlets including Ec; mixed 3/3bar lepton and quark representations."
+      ],
+      "negative_or_refusal": "Six local zeros and weak budget 8 are not global anomaly, scalar-vacuum, mass-spectrum or phenomenology certification.",
+      "next_action": "Keep as a permanent boundary on generic HGP-to-three claims."
+    },
+    {
+      "id": "QM-V31-CHARGES",
+      "title": "General Nc charge class removes fixed-charge color factor",
+      "input_classes": [
+        "P",
+        "B"
+      ],
+      "mathematical_status": "exact_conditional_symbolic_identity",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "Fresh L2X and X3 identities both zero",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/G3_SELECTOR_REFINEMENT_20261019.md"
+      ],
+      "assumptions": [
+        "Qu=(Nc+1)/(2Nc), Qd=-(Nc-1)/(2Nc), all completion charges adjusted; horizontal cubic cancellation; Nc nonzero."
+      ],
+      "negative_or_refusal": "Fixed ordinary charges and generalized charge classes are different hypotheses.",
+      "next_action": "Retain as charge-choice firewall in any expanded classification."
+    },
+    {
+      "id": "QM-V31-SRN",
+      "title": "Strong record-nondemolition Schur and semigroup classification",
+      "input_classes": [
+        "P",
+        "B",
+        "E"
+      ],
+      "mathematical_status": "historical_declared",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "QM-SRC-01",
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "Fixed orthogonal blocks; full strong SRN conditions; K PSD with diag 1; continuous time-homogeneous Schur semigroup requires Hermitian zero-diagonal CPSD generator."
+      ],
+      "negative_or_refusal": "Pairwise decay alone does not imply global PSD; public block records cannot distinguish J and I.",
+      "next_action": "Migrate and formalize finite SRN statement before expanding to process-level memory."
+    },
+    {
+      "id": "QM-V31-QDRR",
+      "title": "Finite iid QDRR confidence contract",
+      "input_classes": [
+        "P",
+        "E",
+        "O"
+      ],
+      "mathematical_status": "historical_bound_rederived_for_plan",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "analytic Hoeffding-union calculation; no new sampling experiment",
+      "empirical_status": "pending",
+      "evidence": [
+        "QM-SRC-01",
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "m>=2, epsilon>0, 0<alpha<1; m(m-1) real settings; [-1,1] iid observations within each setting; chosen SRN class."
+      ],
+      "negative_or_refusal": "Correlated shots, drift, leakage, memory or unidentifiable hardware noise invalidate an unconditional mechanism claim.",
+      "next_action": "Freeze injection/control simulations, calibration and preregistered real-data protocol."
+    },
+    {
+      "id": "QMB-01",
+      "title": "Finite instrument to legal history response",
+      "input_classes": [
+        "P",
+        "B",
+        "E"
+      ],
+      "mathematical_status": "proposed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/CORE_LEAN_TO_QM_AUDIT_20261019.md"
+      ],
+      "assumptions": [
+        "Complex finite matrices, PSD trace-one states, complete Kraus families, finite outcomes, positive probability posterior domain."
+      ],
+      "negative_or_refusal": "Non-complete Kraus; zero-probability branch; positive but not CP transpose.",
+      "next_action": "New PSD/trace/Kraus lemmas; Core probability interface."
+    },
+    {
+      "id": "QMB-02",
+      "title": "Effect response quotient and tomography distinction",
+      "input_classes": [
+        "P",
+        "B",
+        "E"
+      ],
+      "mathematical_status": "proposed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/CORE_LEAN_TO_QM_AUDIT_20261019.md"
+      ],
+      "assumptions": [
+        "Legal response from QMB-01; stated effect family and measurable/continuous structures if claimed."
+      ],
+      "negative_or_refusal": "Z-only merges distinct states; enlarged protocol separates.",
+      "next_action": "M-QD and QuotientGauge after fiber compatibility."
+    },
+    {
+      "id": "QMB-03",
+      "title": "Future closure to reachable conditional update",
+      "input_classes": [
+        "P",
+        "B",
+        "E"
+      ],
+      "mathematical_status": "proposed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/CORE_LEAN_TO_QM_AUDIT_20261019.md"
+      ],
+      "assumptions": [
+        "QMB-01/02; valid time/protocol closure; explicit memory/reset assumptions; subnormalized or admissible/Option totalization."
+      ],
+      "negative_or_refusal": "Same reduced state with different environment memory; zero-probability extension is not a physical posterior.",
+      "next_action": "RecursiveSufficientState and PredictionUpdate with exact types."
+    },
+    {
+      "id": "QMB-04",
+      "title": "Operational contraction and composable defect certificate",
+      "input_classes": [
+        "P",
+        "B",
+        "E"
+      ],
+      "mathematical_status": "proposed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/CORE_LEAN_TO_QM_AUDIT_20261019.md"
+      ],
+      "assumptions": [
+        "Declared protocol/ancilla range and norm normalization; independent local estimates; e,epsilon,L nonnegative."
+      ],
+      "negative_or_refusal": "Rare postselection without success-rate bound; finite tests are not diamond control.",
+      "next_action": "Concrete metric contraction before M-TC specialization."
+    },
+    {
+      "id": "QMB-05",
+      "title": "Finite quantum Cesaro stationary limit",
+      "input_classes": [
+        "P",
+        "B",
+        "E"
+      ],
+      "mathematical_status": "proposed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/CORE_LEAN_TO_QM_AUDIT_20261019.md"
+      ],
+      "assumptions": [
+        "Finite-dimensional CPTP map, compact density state set, continuous separating observables, residual convergence."
+      ],
+      "negative_or_refusal": "Identity has many stationary states; unitary orbit need not converge.",
+      "next_action": "Density compactness and residual adapter into M-OI."
+    },
+    {
+      "id": "QMB-06",
+      "title": "Diagonal CP survival map to QSD/Doob",
+      "input_classes": [
+        "P",
+        "B",
+        "E"
+      ],
+      "mathematical_status": "proposed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "../audits/CORE_LEAN_TO_QM_AUDIT_20261019.md"
+      ],
+      "assumptions": [
+        "Fixed diagonal commutative algebra preserved by trace-nonincreasing CP map; supplied positive eigenstructure and normalizations."
+      ],
+      "negative_or_refusal": "General coherent/Pauli transfer is not elementwise positive; no automatic eigenvector existence or mixing.",
+      "next_action": "Substochastic matrix adapter into M-PE."
+    },
+    {
+      "id": "QM-V31-CV",
+      "title": "Energy-constrained finite resource bridge",
+      "input_classes": [
+        "P",
+        "E",
+        "B"
+      ],
+      "mathematical_status": "proposed_with_explicit_analytic_target",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "QM-SRC-02",
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "H0>=0, Lambda>0, P=1_[0,Lambda)(H0), finite-rank proof, Tr(rho H0)<=E, delta<1 for normalized posterior."
+      ],
+      "negative_or_refusal": "Arbitrary spectral projection need not have tail <=E/Lambda; free-space cutoff need not have finite rank; exact finite CCR impossible.",
+      "next_action": "Prove tail bound and trace distance <=sqrt(delta), then add observation/truncation terms to M-TC."
+    },
+    {
+      "id": "QM-V31-RG",
+      "title": "Typed finite regulated bridge between scale operations",
+      "input_classes": [
+        "B",
+        "P",
+        "E"
+      ],
+      "mathematical_status": "proposed",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "QM-SRC-06",
+        "QM-SRC-07",
+        "QM-SRC-08",
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "Fixed properties/target/horizon/carrier for pure Object-RG; explicit protocol lift/readout for changing protocols; selected regulated field model and matching regime."
+      ],
+      "negative_or_refusal": "Euclidean field integration is not automatically a real-time CPTP map.",
+      "next_action": "Resolve v28.1 artifacts, independently calculate both sides in one Gaussian/heavy-light model."
+    },
+    {
+      "id": "QM-V31-GOIT",
+      "title": "Operational invariance to gauge-realization consistency bridge",
+      "input_classes": [
+        "B",
+        "P",
+        "X"
+      ],
+      "mathematical_status": "proposed_typed_bridge",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "not_applicable",
+      "evidence": [
+        "QM-SRC-09",
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "Independent full QFT anomaly theory; equivariant and connection-compatible total trivialization; matter/counterterm/inflow and global group data."
+      ],
+      "negative_or_refusal": "Restricted public probabilities can miss phase; local cubic cancellation is not full global consistency.",
+      "next_action": "Instantiate a concrete gauge realization; distinguish family factor from extended weak group."
+    },
+    {
+      "id": "QM-V31-LEPTON-COUPLING",
+      "title": "Heavy neutral-current universality as a template bridge",
+      "input_classes": [
+        "P",
+        "E",
+        "B",
+        "X"
+      ],
+      "mathematical_status": "proposed_conditional_target",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "pending",
+      "evidence": [
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "Fixed 331 representation class, no exotic-light mixing, common Y_L; derive A,B with A!=0; full ordinary-light coupling matrix kappa*I including no offdiagonal flavor change."
+      ],
+      "negative_or_refusal": "Equality of diagonal couplings alone is insufficient after family rotations; no empirical universality premise established.",
+      "next_action": "Compute from covariant derivative, prove nondegeneracy, include mixing and representation counterexamples."
+    },
+    {
+      "id": "QM-V31-QUARK-COUPLING",
+      "title": "Rank-one nonuniversal quark-current correlations",
+      "input_classes": [
+        "P",
+        "E",
+        "B",
+        "O"
+      ],
+      "mathematical_status": "proposed_model_adapter_with_elementary_algebra",
+      "formal_status": "pending",
+      "machine_evidence": null,
+      "regression_status": "not_run",
+      "empirical_status": "pending",
+      "evidence": [
+        "../UEOT_QM_UPGRADE_PLAN_v31.0.md"
+      ],
+      "assumptions": [
+        "One distinguished quark family in validated 331-like class, common other-family coupling, unitary light-family rotation, stated mediator content."
+      ],
+      "negative_or_refusal": "Delta_g=0 is zero signal; exotic mixing/loops/multiple mediators alter EFT mapping.",
+      "next_action": "Derive mediator-specific Wilson correlations and controlled corrections; fit and validate on independent data."
+    }
+  ]
+}
+
