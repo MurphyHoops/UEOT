@@ -1,0 +1,379 @@
+{
+  "schema": "ueot_qm.remote_log_review.v1",
+  "reviewed_at_utc": "2026-10-19T18:13:26.941173+00:00",
+  "scope": "Read-only extraction of saved PR logs; no source edits, test reruns, or main-run claims.",
+  "status": "CLEAR",
+  "blockers": [],
+  "run": {
+    "id": 39299160884,
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39299160884",
+    "expected_source_sha": "93906b760a2e62d312e08ee3a9b7df7487b2d380",
+    "job_ids_from_assignment": {
+      "lean": 118219464355,
+      "runtime": 118219463957
+    }
+  },
+  "inputs": {
+    "lean_log": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v313_work/physics/qm/kernel/evidence/v31.3/remote-pr-lean.log",
+      "sha256": "ecf25c346302230b90ed3154f0994210c412ac8ff7455f377f7f246f6d1b911e",
+      "line_count": 1285
+    },
+    "runtime_log": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v313_work/physics/qm/kernel/evidence/v31.3/remote-pr-runtime.log",
+      "sha256": "716facfc21f80230e9cbf144ecd4af102294f1f393d2a82e48cabe48921a0e92",
+      "line_count": 366
+    },
+    "run_metadata": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v313_work/physics/qm/kernel/evidence/v31.3/remote-pr-run.json",
+      "sha256": "c98f79a0a65152bbbbf164e34827f86dbe35dc0d5e495af8190269eafd1add81"
+    },
+    "frozen_manifest": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v313_work/physics/qm/kernel/evidence/v31.3/source-manifest.json",
+      "sha256": "eab515b2529b9dcebe4ec77a82a515eff5a30909fed21ceb2d0e8fc8b8afa5d0",
+      "source_count": 53,
+      "source_set_sha256": "ced9d578f54ecb164a30c6316971b082169cee91c3cbf4c03b2766500982c14c",
+      "observed_checkout_commit": "c3ec8f45822fa6d77436db2651f6344263a16a43",
+      "identity_rule": "Per-file hashes identify tested bytes; checkout metadata does not assert a clean tree"
+    }
+  },
+  "actual_checkout": {
+    "lean": [
+      {
+        "line": 135,
+        "sha": "93906b760a2e62d312e08ee3a9b7df7487b2d380"
+      }
+    ],
+    "runtime": [
+      {
+        "line": 135,
+        "sha": "93906b760a2e62d312e08ee3a9b7df7487b2d380"
+      }
+    ],
+    "lean_explicit_source_identity": [
+      {
+        "line": 107,
+        "text": "93906b760a2e62d312e08ee3a9b7df7487b2d380"
+      },
+      {
+        "line": 135,
+        "text": "93906b760a2e62d312e08ee3a9b7df7487b2d380"
+      },
+      {
+        "line": 171,
+        "text": "93906b760a2e62d312e08ee3a9b7df7487b2d380"
+      },
+      {
+        "line": 172,
+        "text": "93906b760a2e62d312e08ee3a9b7df7487b2d380"
+      }
+    ]
+  },
+  "toolchain": {
+    "identity": [
+      {
+        "line": 210,
+        "text": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)"
+      }
+    ],
+    "lake_identity": [
+      {
+        "line": 211,
+        "text": "Lake version 5.0.0-src+819816b (Lean version 4.33.1)"
+      }
+    ],
+    "archive_checksum_ok": [
+      {
+        "line": 209,
+        "text": "/home/runner/work/_temp/ueot-qm-lean/lean-4.33.1-linux.tar.zst: OK"
+      }
+    ],
+    "official_installer_pass": [
+      {
+        "line": 212,
+        "text": "PASS: verified official compiler at /home/runner/work/_temp/ueot-qm-lean/lean-4.33.1-linux/bin"
+      }
+    ],
+    "archive_sha256_from_hash_bound_installer": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+    "archive_pin_provenance": "The log prints checksum OK and the installer SHA, not the archive digest itself; the matching frozen installer supplies the exact checked digest.",
+    "installer_sha256": "8984f32c56f4b66722c9c4f0a55a7fa5ccd79fb853359793f31d401bb36a6926",
+    "dependency_pin_result": [
+      {
+        "line": 194,
+        "text": "PASS: exact Core toolchain and dependency revisions inherited"
+      }
+    ]
+  },
+  "build": {
+    "command": "lake build UEOTQM",
+    "pipefail_visible": true,
+    "result": [
+      {
+        "line": 951,
+        "text": "Build completed successfully (8733 jobs)."
+      }
+    ],
+    "jobs": 8733,
+    "explicit_project_modules_built": [
+      {
+        "line": 377,
+        "text": "⚠ [7504/7597] Built UEOTQM.Basic (4.5s)"
+      },
+      {
+        "line": 528,
+        "text": "⚠ [8712/8733] Built UEOTQM.Instrument (5.1s)"
+      },
+      {
+        "line": 669,
+        "text": "✔ [8717/8733] Built UEOTQM.Selector (5.0s)"
+      },
+      {
+        "line": 903,
+        "text": "✔ [8721/8733] Built UEOTQM.Spectrum (5.3s)"
+      },
+      {
+        "line": 904,
+        "text": "✔ [8722/8733] Built UEOTQM.Transport (2.2s)"
+      },
+      {
+        "line": 906,
+        "text": "✔ [8724/8733] Built UEOTQM.Operational (4.3s)"
+      },
+      {
+        "line": 907,
+        "text": "⚠ [8725/8733] Built UEOTQM.Observables (4.8s)"
+      },
+      {
+        "line": 944,
+        "text": "✔ [8726/8733] Built UEOTQM.Weighted (4.9s)"
+      },
+      {
+        "line": 945,
+        "text": "✔ [8727/8733] Built UEOTQM.FiniteCoordinates (5.2s)"
+      },
+      {
+        "line": 946,
+        "text": "✔ [8728/8733] Built UEOTQM.Exact (6.1s)"
+      },
+      {
+        "line": 947,
+        "text": "✔ [8729/8733] Built UEOTQM.Adaptive (6.3s)"
+      },
+      {
+        "line": 948,
+        "text": "✔ [8730/8733] Built UEOTQM.Ragged (6.7s)"
+      },
+      {
+        "line": 949,
+        "text": "✔ [8731/8733] Built UEOTQM.ExactCertificate (4.4s)"
+      },
+      {
+        "line": 950,
+        "text": "✔ [8732/8733] Built UEOTQM (3.7s)"
+      }
+    ]
+  },
+  "generic_axiom_audit": {
+    "request_file": "/workspace/scratch/474cf6b1f047/qm_v313_work/formalization/ueot-qm/scripts/AxiomAudit.lean",
+    "request_file_sha256": "34463c3b210bacfdbb0ce2a59ce5d8a2aa1c2f2b0cffdb7d8498041674ba26d7",
+    "request_file_matches_frozen_manifest": true,
+    "requested_count": 213,
+    "actual_report_count": 213,
+    "actual_unique_named_count": 213,
+    "missing_names": [],
+    "unexpected_names": [],
+    "duplicate_names": [],
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "actual_axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unreviewed_axioms": {},
+    "axiom_free_names": [
+      "UEOTQM.Adaptive.Protocol.word_injective",
+      "UEOTQM.Exact.MatrixData.ext"
+    ],
+    "sorted_target_names_newline_sha256": "cecf22507e8a8731d834ce59403d4761701098ed9623f95cf40e166e7bb0e8ce",
+    "report_lines": [
+      961,
+      1205
+    ],
+    "checker_result": [
+      {
+        "line": 1206,
+        "text": "PASS: 213 actual Lean axiom reports use only the reviewed standard foundation"
+      }
+    ]
+  },
+  "generated_instances": {
+    "positive_names": [
+      "z",
+      "hz",
+      "hsz",
+      "ragged",
+      "d1",
+      "d4"
+    ],
+    "negative_pair_names": [
+      "negative_weight",
+      "negative_basis",
+      "negative_pullback",
+      "negative_word"
+    ],
+    "summary_start_line": 1221,
+    "console_result": {
+      "status": "PASS",
+      "receipt": "/home/runner/work/_temp/ueot-qm-lean-exports/verification.json",
+      "summary": {
+        "positive_passed": 6,
+        "positive_expected": 6,
+        "negative_passed": 4,
+        "negative_expected": 4,
+        "false_witness_passed": 4,
+        "positive_audit_targets_expected": 42,
+        "false_witness_audit_targets_expected": 4
+      },
+      "problems": []
+    },
+    "evidence_limit": "These two saved job logs expose the verifier summary and case names, not each generated compile log or complete generated-instance receipt."
+  },
+  "runtime": {
+    "python_identity": [
+      {
+        "line": 174,
+        "text": "Successfully set up CPython (3.12.15)"
+      }
+    ],
+    "individual_ok_count": 87,
+    "individual_unique_count": 87,
+    "result": [
+      {
+        "line": 276,
+        "text": "Ran 87 tests in 1.253s"
+      },
+      {
+        "line": 278,
+        "text": "OK"
+      }
+    ],
+    "elapsed_seconds": 1.253
+  },
+  "source_cross_match": {
+    "directly_printed_count": 17,
+    "matched_count": 17,
+    "project_module_count": 13,
+    "files": [
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Adaptive.lean",
+        "sha256": "b5b9b717324c4d04df169e57c552e976b467609eff48fabea6db676f7f7ecad8",
+        "log_line": 173,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Basic.lean",
+        "sha256": "db38c8dc2b873d5c784460146badcca889a37f2daf23c73bfaadce67eaf0d16e",
+        "log_line": 174,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Exact.lean",
+        "sha256": "1160e084a3761179cf2a2fb8df9246d263088ecb28f54d6d5fe1a86f179eb915",
+        "log_line": 175,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/ExactCertificate.lean",
+        "sha256": "f6d6be579ccd9653ba373738408dd48f9220dc26fd733521d862374e0b8a6406",
+        "log_line": 176,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean",
+        "sha256": "cd42c574bf962b10c4f796c03bcf49d4fb61184b7667512e3ec82440a9bc3705",
+        "log_line": 177,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Instrument.lean",
+        "sha256": "aa63084bec63476ffd73a54f1c8b53fab406a8fd15cc678bd2d34d30a5820b80",
+        "log_line": 178,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Observables.lean",
+        "sha256": "f3067163eff01e90e06467e3505d895979bf09ceec494046e791cd293189bd42",
+        "log_line": 179,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Operational.lean",
+        "sha256": "0bae3c96b1facca3f51fe9189a6e05efeb1b532c29cb5854d860f76878162012",
+        "log_line": 180,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Ragged.lean",
+        "sha256": "a3435d73cd766b55e6f504452de9fe3193ec2266e6cae3772f28cfb4158a718f",
+        "log_line": 181,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Selector.lean",
+        "sha256": "0aa261fcd171e8985889067bb348abe6d84e486be1b918a3cdd6d3e951fdcbca",
+        "log_line": 182,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Spectrum.lean",
+        "sha256": "1846371fda564385c799282bd5f2afcd7637ac3b3dcffb2b21e98734266c2b6d",
+        "log_line": 183,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Transport.lean",
+        "sha256": "e117c7904b6f8c755d5a35c25d2398fdbf727e4d90987096093e2b6423287f84",
+        "log_line": 184,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM/Weighted.lean",
+        "sha256": "2910a80acb1a73c32bae7898773845b7db9cad7ea74b102ad6e51a473dc86b33",
+        "log_line": 185,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/UEOTQM.lean",
+        "sha256": "75a411854c4ed2a67f91ee624342961f4b2824763745ee320e9831c93fe3d151",
+        "log_line": 186,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/lake-manifest.json",
+        "sha256": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+        "log_line": 187,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/lean-toolchain",
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+        "log_line": 188,
+        "matches_frozen_manifest": true
+      },
+      {
+        "path": "formalization/ueot-qm/scripts/install_lean.sh",
+        "sha256": "8984f32c56f4b66722c9c4f0a55a7fa5ccd79fb853359793f31d401bb36a6926",
+        "log_line": 189,
+        "matches_frozen_manifest": true
+      }
+    ],
+    "coverage_note": "Direct remote-log hash coverage is 13 module files, UEOTQM.lean, lake-manifest.json, lean-toolchain and install_lean.sh; this review does not pretend the remaining frozen-manifest file hashes were printed. The older observed checkout metadata in the frozen manifest is not the tested PR SHA."
+  }
+}

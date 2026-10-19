@@ -2,7 +2,7 @@
   "schema": "ueot_qm.lean_verification.v3",
   "version": "31.3-kernel.1.3",
   "recorded_at_utc": "2026-10-19T17:52:24.459470+00:00",
-  "status": "LOCAL_VERIFIED_CI_PENDING",
+  "status": "MAIN_VERIFIED",
   "verification_location": "LOCAL",
   "source_manifest": "source-manifest.json",
   "source_count": 53,
@@ -10,7 +10,7 @@
   "checkout": {
     "observed_commit": "c3ec8f45822fa6d77436db2651f6344263a16a43",
     "research_baseline": "c7aa925f338877d7338326f5cee8a165253f69dd",
-    "explanation": "Full authoring worktree was created from v31.2 delivery c3ec8f4; new source bytes are identified individually, not asserted equal to that checkout. The intervening main changes altered Core governance metadata, not Core Lean source or dependency revisions."
+    "explanation": "Full authoring worktree was created from v31.2 delivery c3ec8f4; tested QM bytes are identified individually, not asserted equal to that checkout. Published parent c7aa925f includes concurrent Core PR #334, which changed six Core library Lean files and one docs Lean check. An explicit import traversal found twelve Core modules used by QM; their Git blobs all match c7aa925f and none intersects those seven changes. Local proof evidence does not certify the unrelated new Core modules. The actual published tree passed separate PR and resulting-main CI; see core-import-closure.json and integration-verification.json."
   },
   "toolchain_identity": "toolchain-identity.json",
   "build": {
@@ -92,8 +92,8 @@
     ]
   },
   "prior_integration": "../v31.2/integration-verification.json",
-  "remote_ci": "PENDING",
-  "main_integration": "PENDING",
+  "remote_ci": "PASS",
+  "main_integration": "PASS",
   "scope_limits": [
     "Finite complex quantum sector is explicit input",
     "Per-instance proof products do not establish universal Python, JSON, exporter, search, elimination or tree-program refinement",
@@ -341,6 +341,16 @@
       "path": "toolchain-identity.json",
       "sha256": "28a2062c3f526714edf999f2c8ed69429ab7e0a319284c8677801e9c6a3a1280",
       "bytes": 2938
+    },
+    {
+      "path": "core-import-closure.json",
+      "bytes": 9005,
+      "sha256": "110d01dee0ecf59912c6e2bba670fd8ccb1a3558d835a2ac734257339e4da703"
+    },
+    {
+      "path": "integration-verification.json",
+      "bytes": 15481,
+      "sha256": "ecd50ac29d437c08c6b87201d53a0d33cce939618e047ff73a1b00801f023f65"
     }
   ],
   "reviews": [
@@ -356,5 +366,18 @@
       "path": "physics/qm/audits/KERNEL_REVIEW_v31.3.md",
       "role": "Domain integration, independent declaration/evidence cross-check and final verifier-source review"
     }
-  ]
+  ],
+  "local_checkpoint_status": "LOCAL_VERIFIED_CI_PENDING",
+  "metadata_updated_at_utc": "2026-10-19T18:18:36.013414+00:00",
+  "local_verification_status": "PASS",
+  "integration_receipt": "integration-verification.json",
+  "source_commit": "93906b760a2e62d312e08ee3a9b7df7487b2d380",
+  "tested_main_commit": "bad76ffbcf811e878404f860033d43885832803c",
+  "integration_followup": {
+    "recorded_at_utc": "2026-10-19T18:13:47.975910+00:00",
+    "pull_request": 335,
+    "pr_run": 39299160884,
+    "main_run": 39300120071,
+    "rule": "Original local build/audit/instance logs, timestamp and 53-source manifest remain unchanged. Current overall status and corrected baseline provenance are supplementary metadata."
+  }
 }

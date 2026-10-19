@@ -16,9 +16,9 @@
   "roadmap": "../ROADMAP.md",
   "claim_ledger": "CLAIM_LEDGER_v31.3.json",
   "previous_claim_ledger": "CLAIM_LEDGER_v31.2.json",
-  "verification_state": "LOCAL_VERIFIED_CI_PENDING",
+  "verification_state": "MAIN_VERIFIED",
   "acceptance_marker": {
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "change_class": "B",
     "authority": "User-directed continuation of the entire UEOT-QM construction and remote QM synchronization",
     "domain_memo": "../audits/KERNEL_REVIEW_v31.3.md",
@@ -40,7 +40,8 @@
     "independent_mathematical_reviews": "CLEAR",
     "source_and_verifier_review": "CLEAR",
     "local_machine_acceptance": "PASS",
-    "integration_acceptance": "PENDING_CI_AND_MAIN"
+    "integration_acceptance": "PASS_PR_AND_RESULTING_MAIN",
+    "integration_receipt": "../kernel/evidence/v31.3/integration-verification.json"
   },
   "completed_in_this_delivery": [
     "13 generic modules and 196 explicit theorems passed actual unified Lean 4.33.1 build",
@@ -49,7 +50,8 @@
     "Six regenerated exact instances passed with 42 actual named axiom reports",
     "Four post-generation true-check corruptions rejected and identical-data check=false proofs accepted",
     "Reproducible verifier matches 13 committed fixture files and binds source/olean identity",
-    "Prior v31.2 PR333 and resulting-main workflow39294335590 verified"
+    "Prior v31.2 PR333 and resulting-main workflow39294335590 verified",
+    "PR335 workflow39299160884 and resulting-main workflow39300120071 passed runtime, generic proofs and exact certificate gates"
   ],
   "proof_receipt": "../kernel/evidence/v31.3/lean-verification.json",
   "instance_receipt": "../kernel/evidence/v31.3/lean-exports/verification.json",
@@ -61,7 +63,7 @@
       "QDRR protocol/noise/statistical validation",
       "Energy-controlled CV and model-specific bounded-response QFT/RG interfaces"
     ],
-    "integration_gate": "Verify this version on PR and resulting main using the same local proof/export gates"
+    "integration_gate": "Completed for source93906b7 and tested mainbad76ff; future proof/runtime changes require their own PR and resulting-main checks"
   },
   "known_open_items": [
     "Universal Python/JSON/exporter/label-mapping/search/solver/tree refinement",
@@ -74,13 +76,13 @@
   "integration": {
     "target_branch": "main",
     "temporary_branch": "qm/upgrade-core-v3-v31",
-    "state": "PENDING_REMOTE_CI_AND_MAIN",
+    "state": "MAIN_VERIFIED",
     "scope": [
       "physics/qm/**",
       "formalization/ueot-qm/**",
       ".github/workflows/ueot-qm.yml"
     ],
-    "source_identity": "Per-file SHA256 manifest binds the local candidate; the containing source commit and native PR checks provide its published identity",
+    "source_identity": "53 per-file SHA256 entries match published source93906b7. Its tree equals tested mainbad76ff; subsequent metadata-only evidence updates do not change the tested proof/runtime inputs.",
     "previous_version": {
       "version": "31.2-kernel.1.2",
       "state": "MAIN_VERIFIED",
@@ -88,6 +90,14 @@
       "main_commit": "c7aa925f338877d7338326f5cee8a165253f69dd",
       "main_run": 39294335590,
       "receipt": "../kernel/evidence/v31.2/integration-verification.json"
-    }
+    },
+    "source_commit": "93906b760a2e62d312e08ee3a9b7df7487b2d380",
+    "source_tree": "16f0746e67ec105e1a6357d0476cb72fbbca37e8",
+    "pull_request": 335,
+    "pr_run": 39299160884,
+    "tested_main_commit": "bad76ffbcf811e878404f860033d43885832803c",
+    "main_run": 39300120071,
+    "receipt": "../kernel/evidence/v31.3/integration-verification.json",
+    "baseline_import_review": "../kernel/evidence/v31.3/core-import-closure.json"
   }
 }
