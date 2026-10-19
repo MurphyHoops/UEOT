@@ -126,11 +126,12 @@ theorem ancillaKrausMap_entry (K : κ → Operator ι) (X : Operator (ι × ν))
     ancillaKrausMap K X (i, u) (j, v) =
       krausMap K (Matrix.of fun x y => X (x, u) (y, v)) i j := by
   classical
-  simp only [ancillaKrausMap, krausMap, Finset.sum_apply]
+  simp only [ancillaKrausMap, krausMap, Matrix.sum_apply]
   apply Finset.sum_congr rfl
   intro k _
   simp [Matrix.mul_apply, Matrix.conjTranspose_apply,
-    Matrix.kronecker_apply, Fintype.sum_prod_type, Matrix.one_apply, mul_assoc]
+    Matrix.kronecker_apply, Matrix.of_apply, Fintype.sum_prod_type, Matrix.one_apply,
+    mul_assoc]
 
 end Ancilla
 
