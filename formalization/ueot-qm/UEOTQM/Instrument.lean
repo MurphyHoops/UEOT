@@ -132,6 +132,13 @@ theorem ancillaKrausMap_entry (K : κ → Operator ι) (X : Operator (ι × ν))
   simp [Matrix.mul_apply, Matrix.conjTranspose_apply,
     Matrix.kronecker_apply, Matrix.of_apply, Fintype.sum_prod_type, Matrix.one_apply,
     mul_assoc]
+  apply Finset.sum_congr rfl
+  intro x _
+  rw [Finset.sum_eq_single v]
+  · simp
+  · intro b _ hb
+    simp [Ne.symm hb]
+  · simp
 
 end Ancilla
 

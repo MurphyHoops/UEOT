@@ -4,21 +4,35 @@ on:
   push:
     branches: [main]
     paths:
-      - "formalization/ueot-qm/**"
+      - "formalization/ueot-qm/UEOTQM.lean"
+      - "formalization/ueot-qm/UEOTQM/**"
+      - "formalization/ueot-qm/lakefile.lean"
+      - "formalization/ueot-qm/lake-manifest.json"
+      - "formalization/ueot-qm/lean-toolchain"
+      - "formalization/ueot-qm/scripts/**"
       - "formalization/ueot-core/UEOT/**"
       - "formalization/ueot-core/lakefile.lean"
       - "formalization/ueot-core/lake-manifest.json"
       - "formalization/ueot-core/lean-toolchain"
-      - "physics/qm/kernel/**"
+      - "physics/qm/kernel/*.py"
+      - "physics/qm/kernel/ueot_qm/**"
+      - "physics/qm/kernel/tests/**"
       - ".github/workflows/ueot-qm.yml"
   pull_request:
     paths:
-      - "formalization/ueot-qm/**"
+      - "formalization/ueot-qm/UEOTQM.lean"
+      - "formalization/ueot-qm/UEOTQM/**"
+      - "formalization/ueot-qm/lakefile.lean"
+      - "formalization/ueot-qm/lake-manifest.json"
+      - "formalization/ueot-qm/lean-toolchain"
+      - "formalization/ueot-qm/scripts/**"
       - "formalization/ueot-core/UEOT/**"
       - "formalization/ueot-core/lakefile.lean"
       - "formalization/ueot-core/lake-manifest.json"
       - "formalization/ueot-core/lean-toolchain"
-      - "physics/qm/kernel/**"
+      - "physics/qm/kernel/*.py"
+      - "physics/qm/kernel/ueot_qm/**"
+      - "physics/qm/kernel/tests/**"
       - ".github/workflows/ueot-qm.yml"
   workflow_dispatch:
 
