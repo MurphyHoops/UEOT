@@ -4,7 +4,9 @@
 
 ## Problem and non-duplication design
 
-The current UEOT source tree has 633 first-party Lean modules. The existing UMC V4 source DAG contains *module imports*, not proof-level dependencies; Core 106 elaboration audit covers the frozen 106 rather than all new declarations. SISC already has deterministic finite-probe bound, RLSR already has true program-reconstruction theorems, and P-CTL-01 already has history-dependent causal optimality. New workers must query them rather than re-prove them.
+The finite-horizon-risk source census contains **641 bundled Lean modules: 630 UEOT-maintained and 11 adapted upstream modules**. The immutable 2026-10-10 audit remains 633 = 622 + 11; later source changes are preserved as additive pinned overlays in the [proof reuse navigator](reuse/README.md). The existing UMC V4 source DAG records *module imports*. Compiled direct theorem dependencies are a distinct evidence layer, and the Core 106 elaboration audit covers its frozen endpoint scope. SISC already has deterministic finite-probe bounds, RLSR has true program-reconstruction theorems, and P-CTL-01 has history-dependent causal optimality. Query these before proposing a missing theorem.
+
+The [44-file reading guide](CANONICAL_READING_GUIDE_V1.md) links the existing foundations, compression generators, same-source control/viability bridges, Objecthood/TC and scientific boundaries. It retains all dependencies and includes the new calibration-to-actual-path finite-risk chain; it is a reading itinerary rather than a replacement 44-module library.
 
 FKRG is a **disposable source-derived search cache + enforced task reuse preflight**. It borrows the existing UMC `no_lean_comments` tokenizer; it never replaces the Core ledger, Compression ledger, P12 boundaries, main Git status or any existing Issue.
 
@@ -26,13 +28,15 @@ Default cache: `/tmp/ueot-fkrg-index.sqlite3` (override via `--db` or `UEOT_FKRG
 
 ## Explicit epistemic limits
 
-- The 5,339+ records are *lexical source declaration candidates* (theorem/lemma/def/class/structure/inductive), not 5,339 elaborated and independently audited theorems.
+- The current 5,646 cache records are *lexical source declaration candidates* (theorem/lemma/def/class/structure/inductive), not 5,646 independently audited theorems. Rebuild and consult `status` for the exact current source fingerprint.
 - `name_candidate` is assembled using source namespace nesting; Lean `lean-check` must confirm it resolves. A syntax parser cannot establish kernel identity/typed semantic match by itself.
 - `header_excerpt` is raw source context, NOT elaborated Lean type. `#check` output is the typed kernel resolution for one symbol; no equivalence inference from search scores.
 - `impact` reports reverse **module import** dependencies, NOT actual per-theorem proof dependencies. Do not count module imports as proof dependence. Frozen Core 106 elaborated declaration DAG remains separate.
 - Search/FTS5 similarity never proves equivalence. Preflight with all symbols found means `CANDIDATES_FOUND_KERNEL_CHECK_REQUIRED`, NOT proof complete and NOT a scientific closure claim.
 - `status` is offline; its origin/main reference is cached, NOT a remote CI check. New chat must still run `git fetch` and consult live GitHub Issue/PR/CI for authoritative remote state.
 - FKRG V1 does not automatically infer new mathematics or prove a theorem was absent. Human/Lean scientific review must still discharge typed hypotheses and no-go contradictions.
+
+The scoped UMC full audit now enumerates theorem constants by the compiler's physical `source_module` and rejects nonstandard transitive axioms with `Lean.collectAxioms`. Its native scope includes private and generated theorem constants; it reports lexical public candidates separately. This improves that audit's authority without claiming a complete source-declaration parser or replacing the disposable search cache.
 
 ## Required startup/recovery protocol (every new chat/agent)
 
@@ -48,10 +52,12 @@ Default cache: `/tmp/ueot-fkrg-index.sqlite3` (override via `--db` or `UEOT_FKRG
 
 `FKRG_TASKS.json` is a **small, human-reviewed snapshot of proposed open UMC tasks**, not a live authoritative ledger. Its IDs remain subordinate to existing GitHub Issue #302. Fields: status, precise scope, `reuse_symbols`, new obligations, known boundaries, next action. The mission/Issue is always consulted before task creation, update or promotion.
 
-`test_fkrg.py` includes positive source-reuse checks, mandatory task-reuse references and negative tests for stale source fingerprint and unknown symbols.
+`test_fkrg.py` includes source-reuse checks, mandatory task-reuse references, current-DAG freshness, native JSON scope checks and adversarial cases. A complete fast-audit integration test runs the real `audit(False)` and independently checks that historical receipts keep the same paths and bytes. Receipt-writer tests also exercise the write boundary directly. The separate current-DAG integration test retains negative fixtures for new/deleted modules, source-byte drift, incorrect counts and an import graph that is not closed.
 
 ## CI rules
 
-For routine research PRs: run `python3 .../test_fkrg.py`. A separate base-authorized governance PR can make this mandatory in existing Compression Guard. The guard must run from repository-root after checkout, with no need for Lean compilation or generated SQLite artifacts committed to Git.
+For routine research PRs, run `python3 .../test_fkrg.py` and the existing reuse/preflight tests. These offline checks run from repository root, without committing SQLite artifacts. The existing Compression Guard runs its configured mandatory tests; the native full audit additionally requires the pinned Lean toolchain and a successful current-source build.
 
-**Completion claim:** FKRG search/preflight/recovery foundation operational; mathematical-source semantic completeness, general Lean declaration dependency graph, remote CI enforcement and formal anti-duplication equivalence checking are distinct higher-level gates.
+`audit_umc_local.py` requires a fetched `origin/main` and pins its resolved commit for the immutable-base scope comparison. That commit must be an ancestor of the candidate HEAD; if local `main` exists, it must be an ancestor of the selected remote commit. Missing or inconsistent refs are rejected, without falling back to local `main` or HEAD. These offline checks establish consistency of the available refs, not that the remote has not advanced since the last fetch; fetch and align the candidate before auditing. The audit never updates either branch. Its default and fast runs do not rewrite historical receipts. Use `--full --output /path/to/new-receipt.json` to request a new complete receipt; the historical receipt path is rejected. Full verification builds `UEOT` before inspecting compiled source modules, so a stale `.olean` cannot silently stand in for changed source.
+
+**Completion claim:** search/preflight/recovery, pinned proof reuse and scoped native UMC axiom checks each retain their declared scope. Scientific completeness, empirical calibration coverage and mathematical independence are separate obligations; none is inferred from a source count, a clean build or the 44-file reading route.

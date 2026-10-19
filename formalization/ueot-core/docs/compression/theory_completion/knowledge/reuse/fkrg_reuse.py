@@ -25,21 +25,25 @@ OVERLAY_PATHS = [
     HERE / "MINCORE_REUSE_OVERLAY_V1.json",
     HERE / "CALIBRATED_DEFECT_REUSE_OVERLAY_V1.json",
     HERE / "DEFECT_GAUGE_REUSE_OVERLAY_V1.json",
+    HERE / "FINITE_HORIZON_RISK_REUSE_OVERLAY_V1.json",
 ]
 OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
     HERE / "VERIFY_CALIBRATED_DEFECT_OVERLAY_TYPES.lean",
     HERE / "VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean",
+    HERE / "VERIFY_FINITE_HORIZON_RISK_OVERLAY_TYPES.lean",
 ]
 OVERLAY_SHA256S = [
     "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
     "b48607f7b68bfcd8aef0d2417d0111d66e374001114fd38048602b4557f8adc2",
     "182efa3fc030cac3ba2082fc13df461a8e165411b58582b5a85cb05343c263b9",
+    "c7e4f561e438f6f3eef3112ecf7ceeea59e1cb98c10b5b20c65490eb7919d480",
 ]
 OVERLAY_TYPE_CHECK_SHA256S = [
     "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
     "c75a3af6508d2ec1ba0214d833ae17783d7f2e410c6f0226534e278fb83cecc2",
     "058a7a228d13a8063408053e4b9006ab30309324a03ccffbbd89e9982246f061",
+    "8624de79f7bde2b2af5b1cafc65342d925b3ea4a753ba3f62f86207dcd5e37de",
 ]
 
 # Independent immutable digests calculated from main after merged PR #314.
@@ -90,6 +94,21 @@ BUILD_ENVIRONMENT_SHA256 = {
 def read_csv(path: Path) -> list[dict]:
     with path.open(newline="", encoding="utf-8") as stream:
         return list(csv.DictReader(stream))
+
+
+def source_area(path: str) -> str:
+    """Derive the physical source area; logical namespaces need not match it."""
+    prefix = Path("formalization/ueot-core/UEOT")
+    candidate = Path(path)
+    if candidate.is_absolute() or ".." in candidate.parts:
+        raise RuntimeError("INVALID_OVERLAY_SOURCE_PATH")
+    try:
+        relative = candidate.relative_to(prefix)
+    except ValueError as exc:
+        raise RuntimeError("INVALID_OVERLAY_SOURCE_PATH") from exc
+    if relative.suffix != ".lean":
+        raise RuntimeError("INVALID_OVERLAY_SOURCE_PATH")
+    return relative.parent.as_posix()
 
 
 def load_overlays() -> list[dict]:
@@ -147,11 +166,12 @@ def _parse_data() -> dict:
                 "name": item["name"],
                 "path": item["path"],
                 "line": str(item["line"]),
-                "area": "V3/Compression/TheoryCompletion/MinCore",
+                "area": source_area(item["path"]),
                 "all_direct_project_scoped_constants": "",
                 "direct_existing_source_theorem_deps": str(len(deps)),
                 "source_theorem_deps_json": json.dumps(deps),
                 "source_origin": item.get("source_origin", "UEOT_MAINTAINED"),
+                "overlay_scientific_role": overlay.get("scientific_role"),
             })
     graph = {}
     incoming: dict[str, list[str]] = {}
@@ -186,6 +206,17 @@ def verify_evidence_files():
     for path, expected in zip(OVERLAY_TYPE_CHECKS, OVERLAY_TYPE_CHECK_SHA256S):
         if sha256(path.read_bytes()).hexdigest() != expected:
             raise RuntimeError("REUSE_OVERLAY_TYPE_CHECK_DRIFT")
+    # A pinned overlay may retain its structured native export as supporting
+    # evidence. This supplements the registered public-source graph; it does
+    # not redefine the historical snapshot or become another counted ledger.
+    for path in OVERLAY_PATHS:
+        native = json.loads(path.read_text()).get("native_export_evidence")
+        if native:
+            artifact = REPO / native["path"]
+            if not artifact.resolve().is_relative_to(HERE.resolve()):
+                raise RuntimeError("INVALID_NATIVE_OVERLAY_EVIDENCE_PATH")
+            if sha256(artifact.read_bytes()).hexdigest() != native["sha256"]:
+                raise RuntimeError("NATIVE_OVERLAY_EVIDENCE_DRIFT")
     for name, pinned_hash in BUILD_ENVIRONMENT_SHA256.items():
         path = REPO / "formalization/ueot-core" / name
         actual = sha256(path.read_bytes()).hexdigest()
@@ -274,8 +305,9 @@ def explain(data: dict, name: str) -> dict:
     near = [x for x in data["near"] if name in (x["a"], x["b"])]
     return {
         "symbol": name, "origin": row["source_origin"],
-        "file": row["path"], "line": int(row["line"]),
-        "role": role(name),
+        "file": row["path"], "line": int(row["line"]), "area": row["area"],
+        "role": (row.get("overlay_scientific_role") or role(name))
+                if role(name) == "NO_TRIAGE_CLASSIFICATION" else role(name),
         "direct_existing_source_theorem_uses": json.loads(row["source_theorem_deps_json"]),
         "direct_source_theorem_user_count": len(dependents),
         "direct_source_theorem_users": sorted(dependents)[:50],
@@ -306,7 +338,9 @@ def search(data: dict, query: str, limit: int):
             scores.append((score, name))
     scores.sort(key=lambda item: (-item[0], item[1]))
     return [{"score": score, "symbol": n, "file": data["graph"][n]["path"],
-             "role": role(n), "has_equal_type_peers": n in data["duplicates"]}
+             "role": (data["graph"][n].get("overlay_scientific_role") or role(n))
+                     if role(n) == "NO_TRIAGE_CLASSIFICATION" else role(n),
+             "has_equal_type_peers": n in data["duplicates"]}
             for score, n in scores[:limit]]
 
 
@@ -347,7 +381,7 @@ def status(data: dict):
             x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
             for x in overlays),
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, and defect-gauge overlays, Lean kernel, and canonical Core/Compression ledgers",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge and finite-horizon-risk overlays, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 

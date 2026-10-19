@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Reproduce the 68 cross-module source snippets from the verified live census.
 
-The live census is 636 modules: immutable 633-module base snapshot plus the
-governed relation/defect MINCORE, calibrated-defect, and defect-gauge overlays.
+The live census is 641 modules: immutable 633-module base snapshot plus the
+governed relation/defect MINCORE, calibrated-defect, defect-gauge and five-module
+finite-horizon-risk overlays. All 68 historical rows remain reproducible.
 
 Read-only: compares a freshly computed 8-line window scan to the immutable
 CLONE_CANDIDATES_68.json and raises on drift. Does not overwrite evidence.

@@ -110,6 +110,11 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeCont
 import UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo
 import UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison
 import UEOT.V3.Compression.TheoryCompletion.MinCore.DefectGaugeCovariance
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonPathAdapter
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedRiskRows
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk
 /-!
 # UEOT Theory Completion public root
 

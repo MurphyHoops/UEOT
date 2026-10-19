@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Fast read-only regression for FKRG pinned proof reuse and clone evidence."""
 import sys
+import json
 from pathlib import Path
 import unittest
 from unittest import mock
@@ -19,22 +20,22 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 636)
-        self.assertEqual(res["ueot_maintained_modules"], 625)
+        self.assertEqual(res["module_source_hashes_verified"], 641)
+        self.assertEqual(res["ueot_maintained_modules"], 630)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3817)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3865)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 24)
+        self.assertEqual(res["overlay_public_theorems"], 72)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 1)
-        self.assertEqual(res["overlay_count"], 3)
-        self.assertEqual(res["overlay_registered_direct_edges"], 9)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 16)
+        self.assertEqual(res["overlay_count"], 4)
+        self.assertEqual(res["overlay_registered_direct_edges"], 82)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 3)
+        self.assertEqual(len(self.data["overlays"]), 4)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -119,6 +120,69 @@ class ProofReuseTests(unittest.TestCase):
                       item["direct_existing_source_theorem_uses"])
         self.assertTrue(any(p["name"] == "UEOT.V3.ProcessInterface.p_api_01_approx"
                             for p in item["definitionally_equal_type_peers"]))
+
+    def test_finite_risk_overlay_reuses_real_source_endpoints(self):
+        current = self.data["overlays"][3]
+        self.assertEqual(current["base_snapshot_modules"], 636)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[2])
+        self.assertEqual(len(current["added_modules"]), 5)
+        self.assertEqual(len(current["public_theorems"]), 48)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 3817)
+        self.assertEqual(distinct["cross_isDefEq_comparisons"], 183216)
+        self.assertEqual(distinct["internal_isDefEq_comparisons"], 1128)
+        self.assertEqual(current["proof_dependency_certification"]["registered_direct_edges"], 73)
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        coordinate = reuse.explain(self.data, prefix + "pmf_tv_le_clipped_coordinate_budget")
+        self.assertEqual(set(coordinate["direct_existing_source_theorem_uses"]), {
+            "UEOT.V3.TotalVariation.tvDist_le_one",
+            "UEOT.V3.FiniteRecurrentDecompositionStability.pmf_tv_eq_half_sum_abs",
+        })
+        finite_path = reuse.explain(self.data, prefix + "finite_horizon_path_error")
+        self.assertIn("UEOT.V3.PathError.p_dyn_03_finite_path_error",
+                      finite_path["direct_existing_source_theorem_uses"])
+        calibrated = reuse.explain(self.data, prefix + "calibrated_representative_path_error")
+        self.assertEqual(set(calibrated["direct_existing_source_theorem_uses"]), {
+            prefix + "same_policy_projected_path_error",
+            prefix + "calibrated_observable_partition_tv_budget",
+        })
+        self.assertEqual(calibrated["role"], "UNCOUNTED_FINITE_HORIZON_RISK_AND_CALIBRATION_BRIDGES")
+        self.assertEqual(current["counted_core_impact"], "NONE")
+
+    def test_overlay_areas_follow_physical_sources(self):
+        prefix = "formalization/ueot-core/UEOT/"
+        self.assertEqual(reuse.source_area(prefix + "V3/Compression/TheoryCompletion/MinCore/X.lean"),
+                         "V3/Compression/TheoryCompletion/MinCore")
+        symbol = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.row_tv_le"
+        item = reuse.explain(self.data, symbol)
+        self.assertEqual(item["area"], "V3/Compression/TheoryCompletion/UnifiedClosure")
+        for bad in ("/tmp/X.lean", prefix + "../../Outside.lean", "UEOT/V3/Fake.lean", prefix + "X.json"):
+            with self.subTest(path=bad):
+                with self.assertRaisesRegex(RuntimeError, "INVALID_OVERLAY_SOURCE_PATH"):
+                    reuse.source_area(bad)
+
+    def test_native_risk_scope_is_larger_than_public_source_graph(self):
+        current = self.data["overlays"][3]
+        evidence = current["native_export_evidence"]
+        native = json.loads((reuse.REPO / evidence["path"]).read_text())
+        self.assertEqual(len(native["public_source_theorems"]), 48)
+        scope = native["all_native_theorem_constants"]
+        self.assertEqual(len(scope), 75)
+        self.assertEqual(sum(row["is_private"] for row in scope), 8)
+        names = {row["name"] for row in native["public_source_theorems"]}
+        others = [row for row in scope if not row["is_private"] and row["name"] not in names]
+        self.assertEqual(len(others), 19)
+        owners = {row["module"] for row in current["added_modules"]}
+        self.assertTrue(all(row["source_module"] in owners for row in scope))
+        self.assertTrue(all(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"}
+                            for row in scope))
+        artifact = reuse.REPO / evidence["path"]
+        original = Path.read_bytes
+        def drift(path):
+            return b"deliberate native evidence drift" if path == artifact else original(path)
+        with mock.patch.object(Path, "read_bytes", drift):
+            with self.assertRaisesRegex(RuntimeError, "NATIVE_OVERLAY_EVIDENCE_DRIFT"):
+                reuse.verify_evidence_files()
 
     def test_mincore_overlay_is_searchable_and_uncounted(self):
         symbol = (
@@ -240,7 +304,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 636)
+        self.assertEqual(len(live), 641)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):
