@@ -128,7 +128,7 @@ jobs:
         run: |
           set -o pipefail
           lake env lean scripts/AxiomAudit.lean 2>&1 | tee axiom-audit.log
-          if grep -E 'sorryAx|Lean.ofReduceBool|admit' axiom-audit.log; then
+          if grep -E '\b(sorryAx|Lean\.ofReduceBool|admit)\b' axiom-audit.log; then
             exit 1
           fi
           python3 scripts/check_axioms.py
