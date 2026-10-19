@@ -143,9 +143,10 @@ theorem operatorCoordinates_branch (e : A × O) (X : Operator ι) :
 
 /-- Chronological unnormalized record evaluation, entirely in finite
 coordinates. Mass is retained until conditioning is explicitly requested. -/
-def recordCoordinates : List (A × O) → (β → ℝ) → (β → ℝ)
+def recordCoordinates (C : FiniteObservablePresentation I β) :
+    List (A × O) → (β → ℝ) → (β → ℝ)
   | [], x => x
-  | e :: w, x => C.recordCoordinates w (C.applyBranch e x)
+  | e :: w, x => recordCoordinates C w (C.applyBranch e x)
 
 theorem operatorCoordinates_record (w : List (A × O)) (X : Operator ι) :
     C.operatorCoordinates (recordOperator I w X) =

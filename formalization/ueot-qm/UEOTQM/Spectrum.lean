@@ -89,7 +89,7 @@ theorem leptonCount_eq_length_of_homogeneous
       have ht : ∀ g ∈ fs, g.lepton = .direct := by
         intro g hg
         exact h g (by simp [hg])
-      simp [leptonCount, hf, Orientation.directCount, ih ht]
+      simp [leptonCount, hf, Orientation.directCount, ih ht, Nat.add_comm]
 
 inductive MatterKind where
   | weyl

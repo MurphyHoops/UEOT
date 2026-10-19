@@ -19,7 +19,7 @@ index adapters have their own refinement obligations.
 namespace UEOTQM.Adaptive
 
 open Matrix Function
-open scoped BigOperators
+open scoped BigOperators ComplexOrder
 
 noncomputable section
 
@@ -83,7 +83,9 @@ def leafWeight (I : A → Instrument ι O κ) (π : Protocol A O)
 theorem sum_leafWeight (I : A → Instrument ι O κ) (π : Protocol A O)
     (X : Operator ι) : (∑ l : π.Leaf, leafWeight I π X l) = mass X := by
   induction π generalizing X with
-  | stop => simp [leafWeight, Protocol.Leaf, Protocol.word, recordOperator]
+  | stop =>
+    change (∑ _ : PUnit, mass X) = mass X
+    simp
   | node a next ih =>
     change (∑ l : (o : O) × (next o).Leaf,
       mass (recordOperator I ((next l.1).word l.2) ((I a).branch l.1 X))) = mass X
