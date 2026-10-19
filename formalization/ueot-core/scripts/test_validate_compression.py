@@ -117,8 +117,10 @@ def expect_index_rejected(
 
 def run_lean_witness_controls(repo: Path) -> None:
     """Exercise the production emitter against real kernel axiom dependencies."""
-    from validate_compression import render_lean_witness_audit
+    from validate_compression import compression_source_modules, render_lean_witness_audit
 
+    core = repo / "formalization/ueot-core"
+    expected_source_modules = compression_source_modules(core)
     good = "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound"
     missing = "UEOT.MissingWitnessForAuditControl"
     leak = "AuditControl.leak"
@@ -138,7 +140,8 @@ def run_lean_witness_controls(repo: Path) -> None:
     }
     with tempfile.TemporaryDirectory(prefix="ueot-ledger-axiom-controls-") as tmp:
         for label, (name, prelude, should_pass, marker) in fixtures.items():
-            source = render_lean_witness_audit({name})
+            source = render_lean_witness_audit(
+                {name}, expected_source_modules=expected_source_modules)
             source = source.replace(f"#check {name}", prelude + f"#check {name}", 1)
             path = Path(tmp) / (label + ".lean")
             path.write_text(source, encoding="utf-8")
@@ -155,7 +158,6 @@ def run_lean_witness_controls(repo: Path) -> None:
         # An imported private theorem can be outside the logical namespace
         # while still belonging to a Compression source module. The compiler's
         # module provenance, not an FQN string prefix, defines this coverage.
-        core = repo / "formalization/ueot-core"
         lean_path = subprocess.check_output(
             ["lake", "env", "printenv", "LEAN_PATH"], cwd=core, text=True).strip()
         command = ["lake", "env", "env", f"LEAN_PATH={tmp}:{lean_path}", "lean"]
@@ -181,7 +183,8 @@ def run_lean_witness_controls(repo: Path) -> None:
                                      compiled.stdout + compiled.stderr)
             # Isolate the imported module to avoid shadowing the real UEOT
             # package root with this temporary UEOT fixture directory.
-            source = render_lean_witness_audit({"AuditOutsideCompression.anchor"})
+            source = render_lean_witness_audit(
+                {"AuditOutsideCompression.anchor"}, expected_source_modules={module})
             source = source.replace("import UEOT.V3.Compression\n",
                                     f"import {module}\n", 1)
             path = Path(tmp) / (label + ".lean")
@@ -193,6 +196,66 @@ def run_lean_witness_controls(repo: Path) -> None:
                       else "COMPRESSION_NONSTANDARD_AXIOM")
             if (result.returncode == 0) != should_pass or marker not in output:
                 raise AssertionError(f"{label}: unexpected source-module audit result\n{output}")
+            print(f"ledger-axiom-control-{label}: PASS")
+
+        # A compilable source can exist outside the umbrella's import closure.
+        # Use the production filesystem census, not a manually invented name.
+        fixture_core = Path(tmp) / "source-census"
+        fixture_command = [
+            "lake", "env", "env", f"LEAN_PATH={fixture_core}:{lean_path}", "lean"]
+
+        def compile_module(module: str, source: str) -> None:
+            path = fixture_core.joinpath(*module.split(".")).with_suffix(".lean")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(source, encoding="utf-8")
+            result = subprocess.run(
+                fixture_command + ["-R", str(fixture_core), "-o",
+                                   str(path.with_suffix(".olean")), str(path)],
+                cwd=core, text=True, capture_output=True, check=False)
+            if result.returncode != 0:
+                raise AssertionError(f"source-census fixture {module} failed\n" +
+                                     result.stdout + result.stderr)
+
+        anchor = "AuditSourceCensus.anchor"
+        imported = "UEOT.V3.Compression.AuditSourceImported"
+        orphan = "UEOT.V3.Compression.AuditSourceOrphan"
+        compile_module(
+            imported, "namespace AuditSourceCensus\n"
+            "theorem anchor : True := True.intro\nend AuditSourceCensus\n")
+        compile_module("UEOT.V3.Compression", f"import {imported}\n")
+        before = compression_source_modules(fixture_core)
+        if before != {"UEOT.V3.Compression", imported}:
+            raise AssertionError(f"unexpected initial source census: {before}")
+        stale_audit = render_lean_witness_audit(
+            {anchor}, expected_source_modules=before)
+
+        # The nonstandard axiom is outside Compression; the unimported private
+        # theorem is inside it. Neither is visible through the umbrella alone.
+        compile_module(
+            "AuditSourceExternal", "namespace AuditSourceExternal\n"
+            "axiom external : False\nend AuditSourceExternal\n")
+        compile_module(
+            orphan, "import AuditSourceExternal\nnamespace AuditSourceCensus\n"
+            "private theorem orphan : False := AuditSourceExternal.external\n"
+            "end AuditSourceCensus\n")
+        after = compression_source_modules(fixture_core)
+        if after != before | {orphan}:
+            raise AssertionError(f"unimported physical source was not inventoried: {after}")
+        for label, source, should_pass, marker in (
+            ("umbrella-does-not-see-orphan", stale_audit, True,
+             "COMPRESSION_NATIVE_AXIOM_PASS"),
+            ("unimported-source-module", render_lean_witness_audit(
+                {anchor}, expected_source_modules=after), False,
+             f"COMPRESSION_SOURCE_MODULE_NOT_IMPORTED {orphan}"),
+        ):
+            path = fixture_core / (label + ".lean")
+            path.write_text(source, encoding="utf-8")
+            result = subprocess.run(
+                fixture_command + [str(path)], cwd=core,
+                text=True, capture_output=True, check=False)
+            output = result.stdout + result.stderr
+            if (result.returncode == 0) != should_pass or marker not in output:
+                raise AssertionError(f"{label}: unexpected census audit result\n{output}")
             print(f"ledger-axiom-control-{label}: PASS")
 
 
