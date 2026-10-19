@@ -60,6 +60,8 @@ jobs:
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example
         run: python physics/qm/kernel/demo.py > /tmp/ueot-qm-demo.json
+      - name: Run representation and spectrum witnesses
+        run: python physics/qm/kernel/demo_v312.py > /tmp/ueot-qm-demo-v312.json
       - name: Archive runtime evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -68,6 +70,7 @@ jobs:
           path: |
             /tmp/ueot-qm-runtime-verification.json
             /tmp/ueot-qm-demo.json
+            /tmp/ueot-qm-demo-v312.json
           retention-days: 30
 
   lean:
