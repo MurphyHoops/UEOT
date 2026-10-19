@@ -1,0 +1,214 @@
+{
+  "schema": "ueot_qm.core_import_closure_review.v1",
+  "entrypoint": "UEOTQM",
+  "source_checkout": "c3ec8f45822fa6d77436db2651f6344263a16a43",
+  "comparison_main": "c7aa925f338877d7338326f5cee8a165253f69dd",
+  "method": "Lexical import traversal through all reachable UEOTQM and UEOT modules, stripping nested Lean comments and string bodies; external pinned packages terminate this repository-local Core graph.",
+  "qm_modules": [
+    "UEOTQM",
+    "UEOTQM.Adaptive",
+    "UEOTQM.Basic",
+    "UEOTQM.Exact",
+    "UEOTQM.ExactCertificate",
+    "UEOTQM.FiniteCoordinates",
+    "UEOTQM.Instrument",
+    "UEOTQM.Observables",
+    "UEOTQM.Operational",
+    "UEOTQM.Ragged",
+    "UEOTQM.Selector",
+    "UEOTQM.Spectrum",
+    "UEOTQM.Transport",
+    "UEOTQM.Weighted"
+  ],
+  "direct_core_imports": [
+    "UEOT.V3.Compression.QuotientDescent",
+    "UEOT.V3.Compression.RecursiveSufficientState",
+    "UEOT.V3.Compression.TransportCertificate"
+  ],
+  "core_module_count": 12,
+  "core_modules": [
+    {
+      "module": "UEOT.V3.Compression.QuotientDescent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+      "bytes": 15340,
+      "sha256": "1cb1e6f46e36f989cfdd8f4b300084245efa090c5a4f6140960049bfcd476dcd",
+      "git_blob_sha1": "bf1393064748cd1fd09144c5c2623b2b39999679",
+      "core_imports": [
+        "UEOT.V3.DynamicsKernel",
+        "UEOT.V3.PredictionDependent",
+        "UEOT.V3.StructuredQuotient"
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.RecursiveSufficientState",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/RecursiveSufficientState.lean",
+      "bytes": 7796,
+      "sha256": "076e3cd74eb490bf221b6b73e7e7a16eb60dd2e5c1feba2b910990dd1ae434ca",
+      "git_blob_sha1": "78501e12c92d3cd21067b802474b7ae3e850c640",
+      "core_imports": [
+        "UEOT.V3.Compression.QuotientDescent",
+        "UEOT.V3.PredictionUpdate"
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TransportCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+      "bytes": 22327,
+      "sha256": "6def721f70ee273372a97faa6e15387baec83f7442eb95f9ae25c449741904c4",
+      "git_blob_sha1": "eb73551dbfed0ba4a48ec451bb08fe5a247a7762",
+      "core_imports": [
+        "UEOT.V3.ProcessInterface",
+        "UEOT.V3.TransportDefect",
+        "UEOT.V3.InformationPacking"
+      ]
+    },
+    {
+      "module": "UEOT.V3.DynamicsKernel",
+      "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "bytes": 24580,
+      "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc",
+      "git_blob_sha1": "a21649d3db903fabfbcb2a23782637e86817e97d",
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.InformationPacking",
+      "path": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+      "bytes": 5378,
+      "sha256": "f1685b70503bc9ade8c15986be5bca40847e13a6327cc020979edd75f3aa5ecc",
+      "git_blob_sha1": "9531081eec6489146ba1bc12b0abea62be08a154",
+      "core_imports": [
+        "UEOT.V3.TotalVariation"
+      ]
+    },
+    {
+      "module": "UEOT.V3.PredictionAE",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+      "bytes": 8859,
+      "sha256": "75bb919a5e1c2c7b81cc36335a95400cb7d747c12a5c85f80c38e50affffa16f",
+      "git_blob_sha1": "03b7908a9ec4a7e6904a58fd82c1fcf22f87428c",
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.PredictionDependent",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+      "bytes": 3922,
+      "sha256": "54f2569cf7323471f9f4214a78df41ab53f276231f78645a810bba44e1172e92",
+      "git_blob_sha1": "52d69b1026275f335ecd76fdac9fb3b0e4597db8",
+      "core_imports": [
+        "UEOT.V3.PredictionAE"
+      ]
+    },
+    {
+      "module": "UEOT.V3.PredictionUpdate",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+      "bytes": 14094,
+      "sha256": "1b223a41bf9cf1c3bd2db1c7a91852974571481f7ad8e5ab1b190083cf64b9d0",
+      "git_blob_sha1": "d9d9e1a6849d61c162f52f7d4c1e18b2d258faed",
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.ProcessInterface",
+      "path": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+      "bytes": 6027,
+      "sha256": "f265d57a8c1963cdd293b5c6a5af2908ae2b4babb872568442bc351eec7a098c",
+      "git_blob_sha1": "55abaac25b4d2e6c279b0abb9ee79e55d9b5f5aa",
+      "core_imports": [
+        "UEOT.V3.TotalVariation"
+      ]
+    },
+    {
+      "module": "UEOT.V3.StructuredQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean",
+      "bytes": 4268,
+      "sha256": "9ee2629f0e891cdcba727d8c4e95da61f30c07068f55f99a164b78337a827a5b",
+      "git_blob_sha1": "a1f025d01661db91cdd9f0cb2f9acd890518b8dc",
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.TotalVariation",
+      "path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+      "bytes": 4250,
+      "sha256": "f048fa2b68ca691f326395f940a29b6f8b50822910b6d0a9dda43700caf1dbe6",
+      "git_blob_sha1": "6d8b83956115d63f71d45060cd5d9155d0a113b5",
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.TransportDefect",
+      "path": "formalization/ueot-core/UEOT/V3/TransportDefect.lean",
+      "bytes": 6324,
+      "sha256": "885d717e586a6fd9d057e3d8fdfeb4ca8a07c25ddec2b51b382fca887726f7aa",
+      "git_blob_sha1": "31f9912a7ada3b09357bf36a142f92b38313ac44",
+      "core_imports": [
+        "UEOT.V3.TotalVariation"
+      ]
+    }
+  ],
+  "compared_changed_core_lean_paths": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonPathAdapter.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_FINITE_HORIZON_RISK_OVERLAY_TYPES.lean"
+  ],
+  "changed_path_source": "Parent independently compared all Core Lean tree entries between local c3ec authoring base and c7aa main; these seven differences include six library modules and one docs Lean check.",
+  "intersection": [],
+  "conclusion": "NO_CHANGED_CORE_LEAN_FILE_IN_QM_IMPORT_CLOSURE",
+  "remote_comparison": {
+    "main_commit": "c7aa925f338877d7338326f5cee8a165253f69dd",
+    "tree_sha": "8314376de5c419b0cf9ebe80cd1a8a0b57c6ef77",
+    "matched_core_modules": 12,
+    "mismatches": [],
+    "core_lean_deltas": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+        "local": "d87b1b2e3a2930e42244e84a8fcef105892e1e7f",
+        "remote": "0f5f208c670d663a184c6a6131f0925a6f8a385a"
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+        "local": null,
+        "remote": "b4a3b389739d7a4aa606f3b6880969861ac314e0"
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+        "local": null,
+        "remote": "95a685280e912e0fe82e6698161d3c09747ba988"
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonPathAdapter.lean",
+        "local": null,
+        "remote": "f21f4a8c52976f208ae0723532fc06c97c4885da"
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean",
+        "local": null,
+        "remote": "08ee20fa562e246d7037a82f58571839c59becec"
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean",
+        "local": null,
+        "remote": "881276af5a86e9b57c543c2912efde33af743024"
+      },
+      {
+        "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_FINITE_HORIZON_RISK_OVERLAY_TYPES.lean",
+        "local": null,
+        "remote": "3ff40d42accf8a08c850d04696b80c114af66ea4"
+      }
+    ],
+    "main_parents": [
+      {
+        "sha": "ff81834e793db10fa9b5b85dbf673e839db0a001",
+        "url": "https://api.github.com/repos/MurphyHoops/UEOT/git/commits/ff81834e793db10fa9b5b85dbf673e839db0a001",
+        "html_url": "https://github.com/MurphyHoops/UEOT/commit/ff81834e793db10fa9b5b85dbf673e839db0a001"
+      },
+      {
+        "sha": "016530da16ec4ba161f67de7bd07d8a43bd08674",
+        "url": "https://api.github.com/repos/MurphyHoops/UEOT/git/commits/016530da16ec4ba161f67de7bd07d8a43bd08674",
+        "html_url": "https://github.com/MurphyHoops/UEOT/commit/016530da16ec4ba161f67de7bd07d8a43bd08674"
+      }
+    ]
+  },
+  "status": "PASS"
+}

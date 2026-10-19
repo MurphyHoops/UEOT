@@ -2,9 +2,11 @@
 
 日期：2026-10-19 UTC（北京时间 2026-10-20）。承接 [Kernel 1.2](UEOT_QM_KERNEL_v31.2.md)。本轮把已实现的精确有限表示证书接入 Lean：**有限数值表 → 内核检查 → 真实复数量子仪器 → 全词响应坐标 → 闭合后验与完整有限自适应树。**
 
-当前阶段：**LOCAL_VERIFIED_CI_PENDING**。13 个通用 Lean 模块、196 个显式定理的统一构建已经通过。完整公理清单为 213 项；六个具体生成实例另有 42 个命名审计目标。实例编译、四类数值篡改及同数据的 `check = false` 证明分别记录，不把实例重用计作新的通用定理。详细状态以 [CURRENT.json](status/CURRENT.json)、[本轮台账](status/CLAIM_LEDGER_v31.3.json) 和 [证明回执](kernel/evidence/v31.3/lean-verification.json) 为准。
+当前阶段：**MAIN_VERIFIED**。13 个通用 Lean 模块、196 个显式定理的统一构建已经通过。完整公理清单为 213 项；六个具体生成实例另有 42 个命名审计目标。实例编译、四类数值篡改及同数据的 `check = false` 证明分别记录，不把实例重用计作新的通用定理。详细状态以 [CURRENT.json](status/CURRENT.json)、[本轮台账](status/CLAIM_LEDGER_v31.3.json) 和 [证明回执](kernel/evidence/v31.3/lean-verification.json) 为准。
 
 前一版已完成正常集成：[PR #333](https://github.com/MurphyHoops/UEOT/pull/333) 合入 `c7aa925f338877d7338326f5cee8a165253f69dd`，该主线提交的 [工作流 39294335590](https://github.com/MurphyHoops/UEOT/actions/runs/39294335590) 中 Lean 与 runtime 均成功。新增的 [v31.2 集成回执](kernel/evidence/v31.2/integration-verification.json) 补充旧版本的本地回执，原始证据保持其原有源码身份。
+
+本版已通过 [PR #335](https://github.com/MurphyHoops/UEOT/pull/335) 的 [工作流 39299160884](https://github.com/MurphyHoops/UEOT/actions/runs/39299160884)，并合入 `bad76ffbcf811e878404f860033d43885832803c`。该提交的 [主线工作流 39300120071](https://github.com/MurphyHoops/UEOT/actions/runs/39300120071) 再次通过运行测试、通用 Lean 构建、公理审计、六份正例和四组同数据假值见证。源码提交为 `93906b760a2e62d312e08ee3a9b7df7487b2d380`，与被验收主线的 Git tree 完全相同；实际日志和摘要见 [v31.3 集成回执](kernel/evidence/v31.3/integration-verification.json)。
 
 ## 1. 本次推进的是哪一层内核
 

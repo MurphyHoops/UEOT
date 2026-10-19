@@ -1,6 +1,8 @@
 # UEOT-QM v31.3 / Kernel 1.3
 
-当前状态：**LOCAL_VERIFIED_CI_PENDING**。本轮新增 `export_lean_representation`，将通过外部库锚定的有限表示证书导出为实际 Lean 数值表。Lean 精确 checker 独立核验数据，再构造真实仪器与全词／完整树／闭合更新定理。
+当前状态：**MAIN_VERIFIED**。本轮新增 `export_lean_representation`，将通过外部库锚定的有限表示证书导出为实际 Lean 数值表。Lean 精确 checker 独立核验数据，再构造真实仪器与全词／完整树／闭合更新定理。
+
+本版 [PR #335](https://github.com/MurphyHoops/UEOT/pull/335) 与 [主线工作流 39300120071](https://github.com/MurphyHoops/UEOT/actions/runs/39300120071) 均已通过，详见 [集成回执](evidence/v31.3/integration-verification.json)。
 
 实际本地结果：13 通用模块、196 显式定理统一构建通过，213 项真实命名公理审计 PASS；87 个运行测试方法通过。六个生成实例与四组“原通过证明失败 + 同数据假值证明成功”的负控单独核验。见 [版本报告](../UEOT_QM_KERNEL_v31.3.md)、[证明回执](evidence/v31.3/lean-verification.json) 与 [实例回执](evidence/v31.3/lean-exports/verification.json)。v31.2 已完成 [主线验收](evidence/v31.2/integration-verification.json)。
 

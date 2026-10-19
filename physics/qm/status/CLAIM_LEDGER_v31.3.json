@@ -15,7 +15,9 @@
     "exact_review": "physics/qm/audits/EXACT_CERTIFICATE_REVIEW_v31.3.md",
     "weighted_review": "physics/qm/audits/WEIGHTED_RAGGED_REVIEW_v31.3.md",
     "source_manifest": "physics/qm/kernel/evidence/v31.3/source-manifest.json",
-    "previous_main": "physics/qm/kernel/evidence/v31.2/integration-verification.json"
+    "previous_main": "physics/qm/kernel/evidence/v31.2/integration-verification.json",
+    "integration": "physics/qm/kernel/evidence/v31.3/integration-verification.json",
+    "core_import_baseline": "physics/qm/kernel/evidence/v31.3/core-import-closure.json"
   },
   "claims": [
     {
@@ -522,7 +524,7 @@
     }
   ],
   "verification": {
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "proof_receipt": "physics/qm/kernel/evidence/v31.3/lean-verification.json",
     "source_manifest": "physics/qm/kernel/evidence/v31.3/source-manifest.json",
     "lean_build_exit_code": 0,
@@ -538,10 +540,16 @@
     "false_witness_audit_targets": 4,
     "reproducible_pipeline": "PASS",
     "count_scope": "Generic explicit declarations and listed proof-bearing constructions; reused instance consequences and negative witnesses separate",
-    "remote_ci": "PENDING",
-    "main_integration": "PENDING",
+    "remote_ci": "PASS",
+    "main_integration": "PASS",
     "prior_version_main": "PASS",
-    "prior_version_integration_receipt": "physics/qm/kernel/evidence/v31.2/integration-verification.json"
+    "prior_version_integration_receipt": "physics/qm/kernel/evidence/v31.2/integration-verification.json",
+    "source_commit": "93906b760a2e62d312e08ee3a9b7df7487b2d380",
+    "tested_main_commit": "bad76ffbcf811e878404f860033d43885832803c",
+    "pull_request": 335,
+    "pr_run": 39299160884,
+    "main_run": 39300120071,
+    "integration_receipt": "physics/qm/kernel/evidence/v31.3/integration-verification.json"
   },
   "research_baseline": "c7aa925f338877d7338326f5cee8a165253f69dd"
 }

@@ -1,0 +1,493 @@
+{
+  "schema": "ueot_qm.integration_verification.v2",
+  "version": "31.3-kernel.1.3",
+  "status": "MAIN_VERIFIED",
+  "recorded_at_utc": "2026-10-19T18:13:47.975910+00:00",
+  "repository": "MurphyHoops/UEOT",
+  "pull_request": {
+    "number": 335,
+    "url": "https://github.com/MurphyHoops/UEOT/pull/335",
+    "head_sha": "93906b760a2e62d312e08ee3a9b7df7487b2d380",
+    "merge_commit": "bad76ffbcf811e878404f860033d43885832803c",
+    "merged": true,
+    "merged_at": "2026-10-19T18:09:01Z"
+  },
+  "pr_ci": {
+    "id": 39299160884,
+    "head_sha": "93906b760a2e62d312e08ee3a9b7df7487b2d380",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39299160884",
+    "created_at": "2026-10-19T18:02:02Z",
+    "updated_at": "2026-10-19T18:05:54Z",
+    "jobs": [
+      {
+        "id": 118219463957,
+        "name": "runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39299160884,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Verify exact kernel and independent negative controls",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run complete kernel example",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run representation and spectrum witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Export exact Lean certificate examples",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Archive runtime evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 118219464355,
+        "name": "lean",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39299160884,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Record source identity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Check inherited dependency lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install and verify official pinned Lean",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Restore pinned dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Restore Mathlib proof cache",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Save pinned dependency cache",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8
+          },
+          {
+            "name": "Reject proof escapes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Build all QM proofs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Audit theorem axioms",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Verify generated exact certificates and false witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Archive proof evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          }
+        ]
+      }
+    ]
+  },
+  "resulting_main": {
+    "id": 39300120071,
+    "head_sha": "bad76ffbcf811e878404f860033d43885832803c",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39300120071",
+    "created_at": "2026-10-19T18:09:04Z",
+    "updated_at": "2026-10-19T18:12:58Z",
+    "jobs": [
+      {
+        "id": 118222811553,
+        "name": "lean",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39300120071,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Record source identity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Check inherited dependency lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install and verify official pinned Lean",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Restore pinned dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Restore Mathlib proof cache",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Save pinned dependency cache",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8
+          },
+          {
+            "name": "Reject proof escapes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Build all QM proofs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Audit theorem axioms",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Verify generated exact certificates and false witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Archive proof evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          }
+        ]
+      },
+      {
+        "id": 118222811771,
+        "name": "runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39300120071,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Verify exact kernel and independent negative controls",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run complete kernel example",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run representation and spectrum witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Export exact Lean certificate examples",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Archive runtime evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      }
+    ]
+  },
+  "source_binding": {
+    "source_commit": "93906b760a2e62d312e08ee3a9b7df7487b2d380",
+    "source_tree": "16f0746e67ec105e1a6357d0476cb72fbbca37e8",
+    "resulting_main_commit": "bad76ffbcf811e878404f860033d43885832803c",
+    "resulting_main_tree": "16f0746e67ec105e1a6357d0476cb72fbbca37e8",
+    "source_and_main_tree_identical": true,
+    "source_manifest": "source-manifest.json",
+    "source_count": 53,
+    "source_set_sha256": "ced9d578f54ecb164a30c6316971b082169cee91c3cbf4c03b2766500982c14c",
+    "published_delivery_files_matched_by_git_blob": 99,
+    "changed_files_relative_to_source_parent": 89,
+    "core_files_changed_by_this_pr": [],
+    "rule": "The exact source tree passed PR and resulting-main CI. Later evidence/documentation updates retain these tested proof/runtime/fixture/workflow bytes; their new commit identity is not represented as a fresh Lean execution."
+  },
+  "baseline_provenance": {
+    "authoring_checkout": "c3ec8f45822fa6d77436db2651f6344263a16a43",
+    "published_parent": "c7aa925f338877d7338326f5cee8a165253f69dd",
+    "parallel_core_pr": 334,
+    "parallel_core_merge": "ff81834e793db10fa9b5b85dbf673e839db0a001",
+    "parallel_core_lean_changes": 7,
+    "qm_imported_core_modules": 12,
+    "changed_imported_core_modules": 0,
+    "receipt": "core-import-closure.json",
+    "correction": "PR #334 did change six Core library Lean files and one docs Lean check. All twelve Core modules actually imported by QM match the published parent by Git blob; none is one of those seven changes. The former blanket metadata-only description was inaccurate. The local proof receipt does not certify unrelated new Core modules."
+  },
+  "verified": {
+    "lean_version": "4.33.1",
+    "compiler_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+    "generic_modules": 13,
+    "explicit_theorems": 196,
+    "named_generic_axiom_reports": 213,
+    "allowed_foundation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "runtime_test_methods": 87,
+    "positive_instances": 6,
+    "positive_named_axiom_reports": 42,
+    "rejected_corrupted_true_proofs": 4,
+    "same_data_false_witnesses": 4,
+    "false_named_axiom_reports": 4,
+    "regenerated_fixture_files": 13,
+    "actual_local_instance_receipt": "lean-exports/verification.json",
+    "all_three_demos_passed": true
+  },
+  "evidence_files": [
+    {
+      "path": "remote-pr-lean.log",
+      "bytes": 114313,
+      "sha256": "ecf25c346302230b90ed3154f0994210c412ac8ff7455f377f7f246f6d1b911e"
+    },
+    {
+      "path": "remote-pr-runtime.log",
+      "bytes": 39234,
+      "sha256": "716facfc21f80230e9cbf144ecd4af102294f1f393d2a82e48cabe48921a0e92"
+    },
+    {
+      "path": "remote-pr-run.json",
+      "bytes": 14192,
+      "sha256": "c98f79a0a65152bbbbf164e34827f86dbe35dc0d5e495af8190269eafd1add81"
+    },
+    {
+      "path": "remote-main-lean.log",
+      "bytes": 111759,
+      "sha256": "553bf510427b596ac14c2acbd8727726862f8647e47874511c6ec5898259bab1"
+    },
+    {
+      "path": "remote-main-runtime.log",
+      "bytes": 39237,
+      "sha256": "c9d0956f87fa344bb245099f6b18185d2a4c4f9ff57eb599529c6a28b1089ef1"
+    },
+    {
+      "path": "remote-main-run.json",
+      "bytes": 13302,
+      "sha256": "32b23fd5d1ab2cb9ac61a1262239ea32421bead5b43e5439edd6e1dbaf78b194"
+    },
+    {
+      "path": "core-import-closure.json",
+      "bytes": 9005,
+      "sha256": "110d01dee0ecf59912c6e2bba670fd8ccb1a3558d835a2ac734257339e4da703"
+    },
+    {
+      "path": "remote-pr-log-review.json",
+      "bytes": 12334,
+      "sha256": "e1ac81375c3d1978244f94780902042bd49ddf83fc8fdf95d81ff3ec9fa728c0"
+    },
+    {
+      "path": "remote-main-log-review.json",
+      "bytes": 11022,
+      "sha256": "c6a192b4beef02fc9422002bf14bbdb490b03c04794dac3ce04cc2dfbeb3ff53"
+    }
+  ],
+  "scope": "Generic checker soundness and individually accepted numerical models. No promotion of universal Python/JSON/exporter refinement, unconditional physical G3 or empirical confirmation. Frozen Core definitions and counts are not changed by this delivery.",
+  "independent_log_reviews": {
+    "status": "CLEAR",
+    "pr": "remote-pr-log-review.json",
+    "resulting_main": "remote-main-log-review.json",
+    "directly_printed_source_hashes": 17,
+    "scope": "Actual checkout, official toolchain, build, all named generic audit reports, instance verifier summary and all runtime test identities. The remaining source hashes are bound by the verified Git tree and source manifest, not claimed to be directly printed by these logs."
+  },
+  "metadata_updated_at_utc": "2026-10-19T18:18:36.013414+00:00"
+}

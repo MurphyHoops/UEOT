@@ -1,6 +1,8 @@
 # UEOT-QM
 
-当前研发：**v31.3 / Kernel 1.3 — LOCAL_VERIFIED_CI_PENDING，2026-10-19 UTC**。
+当前研发：**v31.3 / Kernel 1.3 — MAIN_VERIFIED，2026-10-19 UTC**。
+
+本版 [PR #335](https://github.com/MurphyHoops/UEOT/pull/335) 与 [主线工作流 39300120071](https://github.com/MurphyHoops/UEOT/actions/runs/39300120071) 均已通过，详见 [集成回执](kernel/evidence/v31.3/integration-verification.json)。
 
 本轮把精确数值证书接入 Lean：**数值表 → 内核检查 → 真实复数量子仪器 → 全词响应坐标 → 闭合后验与完整有限自适应树**。官方 Lean 4.33.1 已完成统一构建：**13 个通用模块、196 个显式定理，213 项实际命名公理审计 PASS**。六个导出实例各自编译成功；四种数据篡改同时满足原通过证明失败、同数据 `check = false` 内核证明成功。运行回归为 **87 个方法 PASS**。
 

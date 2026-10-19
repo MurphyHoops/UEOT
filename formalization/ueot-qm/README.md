@@ -2,7 +2,9 @@
 
 This package implements a finite complex quantum sector and typed UEOT Core bridges. It inherits the exact Lean **4.33.1** and Mathlib revision `0df444a360eaa60ab8c11dca51a86af692955474` from `../ueot-core`.
 
-**Current status: LOCAL_VERIFIED_CI_PENDING.** The actual unified local `lake build UEOTQM` has passed: **196 explicit theorem declarations across 13 generic modules**, followed by **213 actual named axiom reports PASS**. Six generated numerical instances and four same-data false witnesses are separately compiled and audited; their reused consequences are not counted as additional generic theorems. The runtime suite has **87 passing test methods**.
+PR #335 and resulting-main workflow 39300120071 both passed on the published source. See the [integration receipt](../../physics/qm/kernel/evidence/v31.3/integration-verification.json).
+
+**Current status: MAIN_VERIFIED.** The actual unified local `lake build UEOTQM` has passed: **196 explicit theorem declarations across 13 generic modules**, followed by **213 actual named axiom reports PASS**. Six generated numerical instances and four same-data false witnesses are separately compiled and audited; their reused consequences are not counted as additional generic theorems. The runtime suite has **87 passing test methods**.
 
 See the [v31.3 proof receipt](../../physics/qm/kernel/evidence/v31.3/lean-verification.json), [instance verification](../../physics/qm/kernel/evidence/v31.3/lean-exports/verification.json), [claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.3.json), and [current integration status](../../physics/qm/status/CURRENT.json). The preceding v31.2 completed PR #333 and the successful resulting-main workflow 39294335590; its [integration receipt](../../physics/qm/kernel/evidence/v31.2/integration-verification.json) supplements the original local receipt.
 
