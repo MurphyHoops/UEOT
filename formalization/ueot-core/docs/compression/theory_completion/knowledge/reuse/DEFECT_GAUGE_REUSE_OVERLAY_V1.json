@@ -1,0 +1,129 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "DEFECT_GAUGE_REUSE_OVERLAY_V1",
+  "source_checkpoint": "3fb6c422638a6c8dbb2ea31cf9affd4e2f17b668",
+  "parent_main": "195ebb06fb8afcc592c69671dabfd2250e9d1989",
+  "base_snapshot_modules": 635,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/CALIBRATED_DEFECT_REUSE_OVERLAY_V1.json",
+    "sha256": "b48607f7b68bfcd8aef0d2417d0111d66e374001114fd38048602b4557f8adc2"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "aa7de7803a1fa8bf4f5bb991c2b7d152e39062d2be6aab2620921e693a5dbb99"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectGaugeCovariance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "content_sha256": "2a59b92a8e389c9c5ab4c6f03a84ef1439b3c6374ad9ef8a6745ae2593d0ca8f",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.triangle_quasi",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "line": 48,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.reverse_budget"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.calibrated_cross_stage_contraction",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "line": 72,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.reverse_budget"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_triangle_preserved",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "line": 95,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_contraction_transformed",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "line": 112,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_local_budget_transformed",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "line": 133,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaled_weighted_chain_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "line": 159,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_triangle_preserved",
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_contraction_transformed",
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_local_budget_transformed"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean",
+    "new_theorems": 6,
+    "registered_prior_theorems": 3811,
+    "cross_isDefEq_comparisons": 22866,
+    "internal_isDefEq_comparisons": 15,
+    "definitionally_equal_matches": 0,
+    "status": "PASS"
+  },
+  "lexical_pr_preflight": {
+    "baseline_ref": "195ebb06fb8afcc592c69671dabfd2250e9d1989",
+    "candidate_ref": "3fb6c422638a6c8dbb2ea31cf9affd4e2f17b668",
+    "registered_prior_public_source_theorem_count": 3811,
+    "candidate_public_source_theorem_count": 3817,
+    "base_public_lexical_theorem_count": 3812,
+    "candidate_public_lexical_theorem_count": 3818,
+    "new_public_source_theorem_count": 6,
+    "new_theorems_with_lexical_reuse_candidates": 1,
+    "note": "The immutable-base PR preflight found six new public theorem names. rescaled_weighted_chain_bound has three prior lexical candidates: TransportCertificate.weighted_chain_bound, MinCore.calibrated_weighted_chain_bound, and TransportCertificate.chain_bound. These are discovery hints; exact proof dependencies are certified separately. Lexical corpus counts and the registered proof graph are distinct scopes."
+  },
+  "scientific_role": "UNCOUNTED_MINCORE_GAUGE_COVARIANCE_BRIDGE",
+  "counted_core_impact": "NONE",
+  "proof_dependency_certification": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean",
+    "measure": "Lean .thmInfo.value.getUsedConstants restricted to the immutable base, both prior overlays, and defect-gauge overlay theorem nodes",
+    "registered_direct_edges": 6,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.triangle_quasi",
+        "target": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.reverse_budget"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.calibrated_cross_stage_contraction",
+        "target": "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectCalibration.reverse_budget"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaled_weighted_chain_bound",
+        "target": "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaled_weighted_chain_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_triangle_preserved"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaled_weighted_chain_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_contraction_transformed"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaled_weighted_chain_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescale_local_budget_transformed"
+      }
+    ],
+    "status": "PASS"
+  }
+}

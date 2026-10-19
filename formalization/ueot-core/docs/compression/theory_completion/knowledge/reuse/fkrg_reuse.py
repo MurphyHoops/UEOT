@@ -24,18 +24,22 @@ SOURCE_BASELINE = "48b582beabec2ebae61ab0d51081b83356fcb3e1"
 OVERLAY_PATHS = [
     HERE / "MINCORE_REUSE_OVERLAY_V1.json",
     HERE / "CALIBRATED_DEFECT_REUSE_OVERLAY_V1.json",
+    HERE / "DEFECT_GAUGE_REUSE_OVERLAY_V1.json",
 ]
 OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
     HERE / "VERIFY_CALIBRATED_DEFECT_OVERLAY_TYPES.lean",
+    HERE / "VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean",
 ]
 OVERLAY_SHA256S = [
     "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
     "b48607f7b68bfcd8aef0d2417d0111d66e374001114fd38048602b4557f8adc2",
+    "182efa3fc030cac3ba2082fc13df461a8e165411b58582b5a85cb05343c263b9",
 ]
 OVERLAY_TYPE_CHECK_SHA256S = [
     "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
     "c75a3af6508d2ec1ba0214d833ae17783d7f2e410c6f0226534e278fb83cecc2",
+    "058a7a228d13a8063408053e4b9006ab30309324a03ccffbbd89e9982246f061",
 ]
 
 # Independent immutable digests calculated from main after merged PR #314.
@@ -343,7 +347,7 @@ def status(data: dict):
             x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
             for x in overlays),
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE and calibrated-defect overlays, Lean kernel, and canonical Core/Compression ledgers",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, and defect-gauge overlays, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 

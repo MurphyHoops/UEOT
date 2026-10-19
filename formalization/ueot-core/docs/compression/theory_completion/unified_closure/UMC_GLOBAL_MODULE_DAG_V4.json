@@ -1,22 +1,22 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "938e5b30c09df1f317156ee4d91e395a8aa3f5287626f2fa505502eefe336a3d",
+  "source_tree_sha256": "cac37557409c34e12e0b950e22eba475f08d39c2978aa651d4cddac6d1224260",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 635,
-  "total_source_lines": 111967,
-  "total_theorem_lemma_tokens": 3985,
+  "total_Lean_modules": 636,
+  "total_source_lines": 112189,
+  "total_theorem_lemma_tokens": 3991,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
     "CrossTrack": 29,
     "Hierarchy": 2,
     "Objecthood": 88,
-    "P0_P12_TheoryCompletion": 56,
+    "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
     "UMC_New_Bridges": 37
   },
-  "reachable_from_UEOT_root": 635,
+  "reachable_from_UEOT_root": 636,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -251,7 +251,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "P0_P12_TheoryCompletion",
-      "edges": 37
+      "edges": 38
     },
     {
       "from": "Compression_Frozen_Bridges",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 9215,
-      "lines": 120,
+      "bytes": 9289,
+      "lines": 121,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3556,7 +3556,8 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge",
         "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo",
-        "UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison"
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison",
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectGaugeCovariance"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -3817,6 +3818,18 @@
       ],
       "theorem_lemma_count": 8,
       "decl_count": 9
+    },
+    "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectGaugeCovariance": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/DefectGaugeCovariance.lean",
+      "bytes": 7979,
+      "lines": 221,
+      "category": "P0_P12_TheoryCompletion",
+      "title": "UEOT MINCORE — defect gauge covariance",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison"
+      ],
+      "theorem_lemma_count": 6,
+      "decl_count": 6
     },
     "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/RelationDefectNoGo.lean",
