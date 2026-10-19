@@ -1,0 +1,259 @@
+{
+  "schema": "ueot_qm.claim_ledger.v31.1",
+  "date": "2026-10-19",
+  "version": "31.1-kernel.1",
+  "path_base": "repository_root",
+  "previous_ledger": "physics/qm/status/CLAIM_LEDGER_v31.json",
+  "core_baseline": "54378ff962b2a6038d9405edb83a33a3099833cb",
+  "evidence": {
+    "lean": "physics/qm/kernel/evidence/lean-verification.json",
+    "runtime": "physics/qm/kernel/evidence/runtime-verification.json",
+    "review": "physics/qm/audits/KERNEL_REVIEW_20261019.md"
+  },
+  "claims": [
+    {
+      "id": "QMK-01",
+      "claim": "Finite complex PSD density operators, complete Kraus instruments, legal probabilities and positive-branch posteriors",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.mass_eq_zero_iff",
+        "UEOTQM.Instrument.sum_probability",
+        "UEOTQM.Instrument.zero_probability_iff_zero_branch"
+      ],
+      "premises": [
+        "Finite complex matrix sector",
+        "PSD trace-one input",
+        "Kraus completeness"
+      ],
+      "verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd"
+    },
+    {
+      "id": "QMK-02",
+      "claim": "Arbitrary finite identity-ancilla Kraus amplification preserves arbitrary joint PSD input and agrees entrywise with block action",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.ancillaKrausMap_posSemidef",
+        "UEOTQM.ancillaKrausMap_entry"
+      ],
+      "limits": [
+        "Finite ancilla",
+        "No packaged infinite-dimensional or abstract CP framework"
+      ],
+      "verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd"
+    },
+    {
+      "id": "QMK-03",
+      "claim": "Actual all-word response has a unique decoder on its operational quotient",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.existsUnique_responseDecoder"
+      ],
+      "core_reuse": "UEOT.V3.Compression.QuotientDescent.existsUnique_descend",
+      "verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd"
+    },
+    {
+      "id": "QMK-04",
+      "claim": "Posterior response equality yields a closed reachable-range Option update",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.response_posterior",
+        "UEOTQM.nextReachableResponse_map_val",
+        "UEOTQM.existsUnique_closedReachableUpdate"
+      ],
+      "core_reuse": "UEOT.V3.Compression.RecursiveSufficientState.existsUnique_reachableUpdate",
+      "premises": [
+        "All finite words under the fixed instrument family",
+        "Positive branches carry posterior witnesses; zero probability returns none"
+      ],
+      "verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd"
+    },
+    {
+      "id": "QMK-05",
+      "claim": "Exact finite Hermitian observable closure and coordinate updates",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_32_TEST_METHOD_SUITE",
+      "machine_status": "WSTAR_AND_PROGRAM_REFINEMENT_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/predictive.py"
+      ],
+      "limits": [
+        "Fixed finite time-homogeneous library",
+        "All finite causal compositions",
+        "Hilbert dimensions 1..4 in runtime",
+        "Response dimension includes the constant trace coordinate",
+        "No smaller CPTP Hilbert realization theorem"
+      ]
+    },
+    {
+      "id": "QMK-06",
+      "claim": "Complete finite adaptive causal trees have exact executable record laws",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_32_TEST_METHOD_SUITE",
+      "machine_status": "FINITE_TREE_INTERPRETER_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/instrument.py"
+      ],
+      "limits": [
+        "Finite deterministic policies",
+        "Every outcome branch must be declared"
+      ]
+    },
+    {
+      "id": "QMK-07",
+      "claim": "Explicit finite preparation-pair and protocol coverage gives exact record TV comparisons",
+      "layers": [
+        "B",
+        "O"
+      ],
+      "runtime_status": "PASS_32_TEST_METHOD_SUITE",
+      "machine_status": "FINITE_PROTOCOL_CERTIFICATE_REFINEMENT_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/certificates.py"
+      ],
+      "limits": [
+        "Named preparation relation is supplied",
+        "Only listed preparations and trees",
+        "Not a uniform channel or diamond bound"
+      ]
+    },
+    {
+      "id": "QMK-08",
+      "claim": "Nonnegative scalar recurrence is covered by the recursively computed budget",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.Transport.scalar_transport_certificate"
+      ],
+      "core_reuse": "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
+      "premises": [
+        "Nonnegative initial budget, errors, L and epsilon",
+        "Initial and every local inequality",
+        "Application must independently establish its chosen metric recurrence"
+      ],
+      "verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd"
+    },
+    {
+      "id": "QMK-09",
+      "claim": "Finite positive-event postselection certificate with min(1,2*TV/min(event masses)) bound",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_32_TEST_METHOD_SUITE",
+      "machine_status": "GENERAL_CONDITIONING_BOUND_OPEN",
+      "limits": [
+        "Both event masses strictly positive",
+        "No unconditional contraction claim"
+      ]
+    },
+    {
+      "id": "QMK-10",
+      "claim": "Conditional integer selector gives Nc=3, Nf=3, k=1 without atomicity",
+      "layers": [
+        "S",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.Selector.selects_three_without_atomicity"
+      ],
+      "premises": [
+        "nc,nf,k are naturals",
+        "3 <= nc",
+        "0 < nf",
+        "k <= nf",
+        "2*nc*k + nf = nc*nf",
+        "nf*(nc+1) < 22"
+      ],
+      "limits": [
+        "Does not derive its spectrum or effective-window hypotheses",
+        "Full premise set not claimed logically minimal"
+      ],
+      "verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd"
+    },
+    {
+      "id": "QMK-11",
+      "claim": "Real-world family-count applicability and finite-spectrum adapter",
+      "layers": [
+        "P",
+        "S",
+        "B",
+        "E"
+      ],
+      "status": "OPEN_PHYSICAL_ADAPTER",
+      "limits": [
+        "Complete spectrum and homogeneous template",
+        "Nonzero representation anomaly coefficient",
+        "No uncaptured compensation in the same anomaly channel",
+        "Declared weak window, thresholds and active families",
+        "Global anomalies, vacuum, masses and phenomenology separate"
+      ]
+    },
+    {
+      "id": "QMK-12",
+      "claim": "Python implementation is proved to refine the Lean model",
+      "layers": [
+        "B"
+      ],
+      "status": "NOT_ESTABLISHED",
+      "open_items": [
+        "Q(i) data reflection",
+        "PSD principal-minor checker equivalence",
+        "Weighted Kraus realization",
+        "Ragged outcome/Kraus index padding",
+        "W* finite-span and coordinate equivalence",
+        "Gaussian elimination and finite-tree program refinement"
+      ]
+    },
+    {
+      "id": "QMK-13",
+      "claim": "Derivation of the complex quantum sector or new empirical confirmation from this kernel",
+      "layers": [
+        "P",
+        "X"
+      ],
+      "status": "NOT_CLAIMED",
+      "limits": [
+        "Complex density/Kraus/Born sector is explicit input",
+        "No new experimental dataset in this delivery"
+      ]
+    },
+    {
+      "id": "QMK-14",
+      "claim": "QMB-05 and QMB-06 long-term and survival bridges",
+      "layers": [
+        "B"
+      ],
+      "status": "PLANNED"
+    }
+  ],
+  "verification": {
+    "tested_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+    "workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39270031506",
+    "lean_theorem_declarations": 56,
+    "audited_declarations": 59,
+    "runtime_test_methods": 32
+  }
+}

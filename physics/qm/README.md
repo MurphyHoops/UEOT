@@ -1,46 +1,46 @@
 # UEOT-QM
 
-当前方案：**v31.0，2026-10-19**。  
-研究主线：已有 v23.0–v30.11 QM 成果与 Frozen Core v3 的精确桥接。  
-本次发布的范围：方案、理论/Lean 审计、新条件定理的纸面精化及精确可复算证据。
+当前成果：**v31.1 / Kernel 1，2026-10-19**。  
+主线：从已有 UEOT-QM 和 Core v3 成果，建立可执行、可机器核查的有限维操作内核。
 
 ## 从这里开始
 
-- [完整升级方案](UEOT_QM_UPGRADE_PLAN_v31.0.md)：理论定位、各阶段继承、两条主线、六个量子桥、实验出口和验收。
-- [工作路线](ROADMAP.md)：当前优先级、依赖与后续执行次序。
-- [Core 对象—协议桥](audits/CORE_OBJECT_PROTOCOL_BRIDGE_20261019.md)：核心定义、旧推论边界、可观测闭包与有限资源合同。
-- [Lean 证据与接口审计](audits/CORE_LEAN_TO_QM_AUDIT_20261019.md)：固定提交中的准确 theorem 名、真实输入和 proof 边界。
-- [三代选择定理精化](audits/G3_SELECTOR_REFINEMENT_20261019.md)：去掉 atomicity、完整谱修正、两代对照谱和独立检查。
-- [来源清单](status/SOURCE_MANIFEST_20261019.json)、[QM 主张台账](status/CLAIM_LEDGER_v31.json)、[当前状态](status/CURRENT.json)、[交叉审查回执](audits/REVIEW_20261019.md)。
+- [内核理论与本轮结论](UEOT_QM_KERNEL_v31.1.md)：量子合法性、对象表示、递归闭合、误差证书与三代选择。
+- [运行内核](kernel/README.md)：标准库 Python 入口、API、精确示例和独立测试。
+- [Lean 证明包](../../formalization/ueot-qm/README.md)：真实量子定义、Core 定理复用及构建命令。
+- [机器回执](kernel/evidence/lean-verification.json)、[测试回执](kernel/evidence/runtime-verification.json)、[主张台账](status/CLAIM_LEDGER_v31.1.json)、[验收审查](audits/KERNEL_REVIEW_20261019.md)。
+- [工作路线](ROADMAP.md)、[当前状态](status/CURRENT.json)。
 
-## 本次已经推进的内容
+## 本轮形成的闭环
 
-三代条件选择中，指定表示谱的异常方程加上弱作用窗口预算，已足以推出 `(Nc,Nf,k)=(3,3,1)`；primitive/atomicity 不再作为额外前提。任意 β 的 generalized-331 谱明确补入 exotic-lepton singlet completion，并保留一个放宽轻子表示模板后的两代局域异常反例。完整证明见专题审计。
+完整 Kraus 操作产生合法概率与记录；全部有限记录响应给出协议相对的等价类；同响应态具有相同后验响应，更新在可实现响应空间内闭合。运行时精确求出 W*、响应基和分支矩阵，使用坐标继续预测。有限协议比较及误差链都保留明确覆盖和前提。
 
-量子操作主线将 v23 已有 FFIPS/instrument/SRN 成果接到 Core v3 的响应商、递归充分态和误差运输。优先实现有限 instrument → 合法记录 → 受限协议闭包 → 可递归对象 → 误差证书；新的 QM Lean 表面尚待构建。
+三代选择器保留指定异常方程与弱预算，推出 `(Nc,Nf,k)=(3,3,1)`，没有 atomicity 前提。具体物理谱、补偿贡献与有效窗口的适用性继续独立证明，详见 [物理接入合同](audits/G3_PHYSICAL_ADAPTER_CONTRACT_20261019.md)。
 
-Core 的 106/106 是冻结数学合同的覆盖记录。当前 QM 目录不把该计数、历史数值回归或本轮纸面定理等同于“全部量子物理已在 Lean 中证明”。有关历史来源、本轮检查和未来任务的状态分别列于台账。
+```bash
+python physics/qm/kernel/demo.py
+python physics/qm/kernel/verify_kernel.py
+```
 
-## 可复跑的本轮证据
+Python 支持 Hilbert 维数 1–4、精确有理复数及加权 Kraus 项。Lean 处理一般有限复矩阵与共同有限结果/Kraus 指标。W* 算法与 Python 实现的形式化细化，以及二者的加权/索引适配，是下一优先任务；现有测试通过不等于 Python 已被 Lean 验证。
 
-从仓库根目录运行（Python 3，仅标准库；不要使用关闭断言的 `python -O`）：
+## 保留的研究与历史证据
+
+[v31.0 升级方案](UEOT_QM_UPGRADE_PLAN_v31.0.md) 保留完整继承链、六个量子桥及更大扇区规划。
+
+此前审计继续保留：
+
+- [对象—协议桥](audits/CORE_OBJECT_PROTOCOL_BRIDGE_20261019.md)
+- [Core/Lean 证据](audits/CORE_LEAN_TO_QM_AUDIT_20261019.md)
+- [G3 条件精化与宽谱对照](audits/G3_SELECTOR_REFINEMENT_20261019.md)
+- [来源清单](status/SOURCE_MANIFEST_20261019.json)、[v31.0 主张台账](status/CLAIM_LEDGER_v31.json)
+
+旧的两个精确审计程序仍可从仓库根执行：
 
 ```bash
 python physics/qm/benchmarks/qm_bridge_benchmarks.py
 python physics/qm/benchmarks/qm_frontier_exact_audit.py
 ```
 
-实际回执：
-
-- [操作桥基准](benchmarks/results/qm_bridge_benchmarks.json)：4 组通过，包括协议闭包、后选择放大、有限 CCR 障碍和 selector。
-- [异常/谱精确审计](benchmarks/results/qm_frontier_exact_audit.json)：13 项通过，包括符号恒等式、两代谱与逐前提对照。
-- [执行来源](benchmarks/results/EXECUTION_MANIFEST_20261019.json)：脚本哈希、结果哈希、执行环境和证据范围。
-
-这是新程序的精确有限/符号核对。历史 v30.11 的 27/27 只读取了其原回执，本轮未重新运行那个归档程序。
-
-## 目录与边界
-
-`physics/qm/` 是本项目已有的远端 QM 目录。量子包拟建于 `formalization/ueot-qm/`；QFT/RG 的未来专门实现继续遵循仓库既有分层，本目录保留统一入口。
-
-历史 QM 原件的字节迁移仍待完成；来源清单已记录可读正文的核对范围及两个 v28.1 文件的版本冲突。本次方案不将文本视图伪装成经过哈希核验的历史原件。
+历史原件字节迁移、两份 v28.1 身份裁决和历史 validator 重跑仍按先前来源清单办理。新的内核回执不会自动升级旧版本的证据状态。
 
