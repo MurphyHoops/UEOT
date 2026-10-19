@@ -1,6 +1,6 @@
 import UEOTQM
 
--- Every explicit theorem declaration in the nine QM modules, plus the listed proof-bearing constructions.
+-- Every explicit theorem declaration in the thirteen QM modules, plus the listed proof-bearing constructions.
 -- This is a named-declaration audit; it is not a census of all compiler-generated constants.
 
 #print axioms UEOTQM.Density.ext
@@ -142,3 +142,81 @@ import UEOTQM
 #print axioms UEOTQM.Adaptive.Protocol.leafFintype
 #print axioms UEOTQM.Spectrum.oneHiggs
 #print axioms UEOTQM.Spectrum.twentyHiggs
+
+-- Kernel 1.3: weighted/ragged indices, exact arithmetic, and checker soundness.
+#print axioms UEOTQM.sqrt_smul_gram
+#print axioms UEOTQM.sqrt_smul_krausTerm
+#print axioms UEOTQM.sqrt_smul_heisenbergTerm
+#print axioms UEOTQM.krausMap_sqrtWeightedKraus
+#print axioms UEOTQM.heisenberg_sqrtWeightedKraus
+#print axioms UEOTQM.weightedKrausMap_posSemidef
+#print axioms UEOTQM.weightedHeisenberg_posSemidef
+#print axioms UEOTQM.pairing_weightedKrausMap
+#print axioms UEOTQM.WeightedInstrument.toInstrument
+#print axioms UEOTQM.WeightedInstrument.toInstrument_kraus
+#print axioms UEOTQM.WeightedInstrument.toInstrument_branch
+#print axioms UEOTQM.WeightedInstrument.toInstrument_heisenberg
+#print axioms UEOTQM.WeightedInstrument.toInstrument_complete
+#print axioms UEOTQM.WeightedInstrument.branch_posSemidef
+#print axioms UEOTQM.WeightedInstrument.toInstrument_probability
+#print axioms UEOTQM.WeightedInstrument.sum_mass_branch
+#print axioms UEOTQM.WeightedInstrument.toInstrument_posterior_matrix
+#print axioms UEOTQM.zeroExtend_apply
+#print axioms UEOTQM.zeroExtend_of_not_mem_range
+#print axioms UEOTQM.sum_zeroExtend
+#print axioms UEOTQM.zeroExtend_nonneg
+#print axioms UEOTQM.weightedKrausMap_zeroExtend
+#print axioms UEOTQM.weightedHeisenberg_zeroExtend
+#print axioms UEOTQM.weightedGram_zeroExtend
+#print axioms UEOTQM.RaggedInstrument.toWeighted
+#print axioms UEOTQM.RaggedInstrument.toWeighted_weight_apply
+#print axioms UEOTQM.RaggedInstrument.toWeighted_kraus_apply
+#print axioms UEOTQM.RaggedInstrument.toWeighted_branch
+#print axioms UEOTQM.RaggedInstrument.toWeighted_toInstrument_branch
+#print axioms UEOTQM.RaggedInstrument.toWeighted_heisenberg
+#print axioms UEOTQM.RaggedInstrument.toWeighted_toInstrument_kraus_of_not_mem_range
+#print axioms UEOTQM.WeightedInstrument.padOutcomes
+#print axioms UEOTQM.WeightedInstrument.padOutcomes_branch_apply
+#print axioms UEOTQM.WeightedInstrument.padOutcomes_branch_of_not_mem_range
+#print axioms UEOTQM.WeightedInstrument.padOutcomes_heisenberg_apply
+#print axioms UEOTQM.WeightedInstrument.padOutcomes_heisenberg_of_not_mem_range
+#print axioms UEOTQM.WeightedInstrument.padOutcomes_probability_apply
+#print axioms UEOTQM.WeightedInstrument.padOutcomes_probability_of_not_mem_range
+#print axioms UEOTQM.Exact.MatrixData.ext
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_re
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_im
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_injective
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_eq_iff
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_zero
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_one
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_add
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_neg
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_sub
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_mul
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_adjoint
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_scale
+#print axioms UEOTQM.Exact.MatrixData.toMatrix_sum
+#print axioms UEOTQM.Exact.MatrixData.instDecidableEq
+#print axioms UEOTQM.Exact.toMatrix_weightedBranch
+#print axioms UEOTQM.Exact.toMatrix_weightedPullback
+#print axioms UEOTQM.Exact.toMatrix_weightedCompleteness
+#print axioms UEOTQM.Exact.toMatrix_weightedBranch_univ
+#print axioms UEOTQM.Exact.toMatrix_weightedPullback_univ
+#print axioms UEOTQM.Exact.Examples.imaginaryUnit_square_exact
+#print axioms UEOTQM.Exact.Examples.imaginaryUnit_adjoint_exact
+#print axioms UEOTQM.Exact.Examples.imaginaryUnit_square_complex
+#print axioms UEOTQM.Exact.Examples.hadamard_complete_exact
+#print axioms UEOTQM.Exact.Examples.hadamard_complete_complex
+#print axioms UEOTQM.ExactCertificate.check_eq_true_iff
+#print axioms UEOTQM.ExactCertificate.check_sound
+#print axioms UEOTQM.ExactCertificate.branch_eq_exact
+#print axioms UEOTQM.ExactCertificate.heisenberg_eq_exact
+#print axioms UEOTQM.ExactCertificate.exactRecordEffect_toMatrix
+#print axioms UEOTQM.ExactCertificate.basis_toMatrix
+#print axioms UEOTQM.ExactCertificate.coordinates_eq_iff_response_eq
+#print axioms UEOTQM.ExactCertificate.response_eq_recordCoordinates_unit
+#print axioms UEOTQM.ExactCertificate.adaptive_leafProbability_eq
+#print axioms UEOTQM.ExactCertificate.conditionsDecidable
+#print axioms UEOTQM.ExactCertificate.weightedInstrument
+#print axioms UEOTQM.ExactCertificate.instrumentFamily
+#print axioms UEOTQM.ExactCertificate.presentation

@@ -1,18 +1,16 @@
-# UEOT-QM Lean package — v31.2 / Kernel 1.2
+# UEOT-QM Lean package — v31.3 / Kernel 1.3
 
-This package implements the finite quantum sector and its typed UEOT Core bridges. It inherits the exact toolchain and dependency revisions of `../ueot-core`.
+This package implements a finite complex quantum sector and typed UEOT Core bridges. It inherits the exact Lean **4.33.1** and Mathlib revision `0df444a360eaa60ab8c11dca51a86af692955474` from `../ueot-core`.
 
-**Current status: LOCAL_VERIFIED_CI_PENDING.** The official Lean **4.33.1** release has completed the actual local `lake build UEOTQM` with exit code **0**. All **128 explicit theorem declarations across nine modules compile**, and **137 actual named axiom reports PASS**, using only `propext`, `Classical.choice`, and `Quot.sound`. The companion runtime has also passed **72 test methods and both demos**.
+**Current status: LOCAL_VERIFIED_CI_PENDING.** The actual unified local `lake build UEOTQM` has passed: **196 explicit theorem declarations across 13 generic modules**, followed by **213 actual named axiom reports PASS**. Six generated numerical instances and four same-data false witnesses are separately compiled and audited; their reused consequences are not counted as additional generic theorems. The runtime suite has **87 passing test methods**.
 
-These local results are bound to source commit [`323db6d1c2e5`](https://github.com/MurphyHoops/UEOT/commit/323db6d1c2e50a432bdcf6a6872212426cc826ce). See the [v31.2 local proof receipt](../../physics/qm/kernel/evidence/v31.2/lean-verification.json) and [claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.2.json). GitHub Actions remains queued; remote CI for [PR #333](https://github.com/MurphyHoops/UEOT/pull/333) and resulting-main integration have not yet been accepted. The latest version with completed main-branch acceptance remains **v31.1 / Kernel 1**.
+See the [v31.3 proof receipt](../../physics/qm/kernel/evidence/v31.3/lean-verification.json), [instance verification](../../physics/qm/kernel/evidence/v31.3/lean-exports/verification.json), [claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.3.json), and [current integration status](../../physics/qm/status/CURRENT.json). The preceding v31.2 completed PR #333 and the successful resulting-main workflow 39294335590; its [integration receipt](../../physics/qm/kernel/evidence/v31.2/integration-verification.json) supplements the original local receipt.
 
-The toolchain remains Lean **4.33.1**, with Mathlib revision `0df444a360eaa60ab8c11dca51a86af692955474`. Frozen Core definitions, sources, counted generators and the 106-item coverage ledger are not modified by this package increment.
+Frozen Core definitions, sources, the four counted generators, and the 106-item coverage ledger are not changed by this increment.
 
-Previously accepted Kernel 1 passed [workflow 39270031506](https://github.com/MurphyHoops/UEOT/actions/runs/39270031506) at commit `0791ea34f1ba108c738915921f8e7d923371d0cd`: 56 theorem declarations across five modules, the unified root import, and 59 actual axiom reports. Its exact runtime passed 32 test methods. Those receipts remain unchanged and certify their original source bytes.
+## Build and verify
 
-## Build
-
-With Elan/Lake installed, from this directory:
+From this directory, with the pinned toolchain available:
 
 ```bash
 python3 scripts/check_dependencies.py
@@ -20,26 +18,54 @@ lake exe cache get
 lake build UEOTQM
 lake env lean scripts/AxiomAudit.lean > axiom-audit.log
 python3 scripts/check_axioms.py
+python3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir /tmp/qm-lean-exports
+python3 scripts/record_source.py --output /tmp/qm-source-manifest.json
 ```
 
-The dedicated [QM workflow](../../.github/workflows/ueot-qm.yml) checks out an explicit commit, checks the Core dependency lock, records source identity, compiles the unified root import, and audits actual axiom dependencies. The accepted standard foundation is `propext`, `Classical.choice`, and `Quot.sound`. The source gate rejects proof escapes. The named audit covers every explicit theorem and the nine listed proof-bearing constructions; it is not a census of compiler-generated constants or a claim of an axiom-free foundation.
+The [QM workflow](../../.github/workflows/ueot-qm.yml) uses the same gates. Its official compiler installer verifies the archive SHA256, exact version, and compiler commit; it does not disable TLS or change the pinned toolchain. The source gate rejects proof escapes. Actual axiom reports may use only `propext`, `Classical.choice`, and `Quot.sound`.
 
-## Modules
+## Generic modules
 
 | Module | Explicit theorems | Mathematical interface |
 |---|---:|---|
-| [Basic](UEOTQM/Basic.lean) | 7 | Finite complex PSD density operators, nonnegative real trace, zero-mass characterization, positive-mass normalization |
-| [Instrument](UEOTQM/Instrument.lean) | 14 | Kraus completeness, positive branches, probability law, posterior, arbitrary finite identity-ancilla amplification |
-| [Operational](UEOTQM/Operational.lean) | 20 | Actual all-word record response, quotient decoder, positive-branch continuation, closed response-range update |
-| [Transport](UEOTQM/Transport.lean) | 4 | Explicit scalar recurrence and true Core weighted-chain reuse |
-| [Selector](UEOTQM/Selector.lean) | 11 | Conditional three-color/three-family selection without atomicity; premise and replication controls |
-| [Observables](UEOTQM/Observables.lean) | 25 | Actual Kraus trace duality, generated word effects, smallest closed real observable space, finite-dimensionality and finite word-generator existence |
-| [FiniteCoordinates](UEOTQM/FiniteCoordinates.lean) | 21 | Finite local presentation, equality with the full observable span, exact coordinate record laws, normalized and closed coordinate updates |
-| [Adaptive](UEOTQM/Adaptive.lean) | 11 | Finite complete adaptive trees, unique leaf records, normalized leaf laws, response and coordinate compatibility |
-| [Spectrum](UEOTQM/Spectrum.lean) | 15 | Actual finite spectrum sums, derived anomaly and weak-budget premises, composition with the existing selector, explicit counterexamples |
-| **Total** | **128** | All explicit declarations passed the actual local unified build; remote CI and main integration remain pending |
+| [Basic](UEOTQM/Basic.lean) | 7 | Finite complex PSD density operators, real mass, zero-mass characterization, normalization |
+| [Instrument](UEOTQM/Instrument.lean) | 14 | Complete Kraus maps, probabilities, posterior, arbitrary finite identity ancilla |
+| [Operational](UEOTQM/Operational.lean) | 20 | All-word response, quotient decoder, positive continuation, closed reachable update |
+| [Transport](UEOTQM/Transport.lean) | 4 | Actual Core weighted-chain theorem applied to a scalar recurrence |
+| [Selector](UEOTQM/Selector.lean) | 11 | Conditional three-color/three-family selection without atomicity and premise controls |
+| [Observables](UEOTQM/Observables.lean) | 25 | Actual trace duality, word effects, minimal real observable span and finite generation |
+| [FiniteCoordinates](UEOTQM/FiniteCoordinates.lean) | 21 | Local presentation, all-word iff, matrix updates and closed coordinate posteriors |
+| [Adaptive](UEOTQM/Adaptive.lean) | 11 | Complete finite adaptive trees, normalized leaf laws and coordinate composition |
+| [Spectrum](UEOTQM/Spectrum.lean) | 15 | Actual row sums to conditional anomaly/weak-budget selection, explicit counterexamples |
+| [Weighted](UEOTQM/Weighted.lean) | 16 | Nonnegative weights to ordinary square-root Kraus matrices; exact branch, pullback, probability and posterior identities |
+| [Ragged](UEOTQM/Ragged.lean) | 19 | Finite embeddings and zero padding; outcome-dependent Kraus types and zero outcome probabilities |
+| [Exact](UEOTQM/Exact.lean) | 24 | Computable Gaussian-rational matrices, injective actual complex interpretation and operation transport |
+| [ExactCertificate](UEOTQM/ExactCertificate.lean) | 9 | Decidable local conditions to actual instruments, finite presentation and all-word/adaptive consequences |
+| **Total** | **196** | Generic source declarations; positive and negative generated instances are reported separately |
 
-The nine additional audited constructions are `normalize`, `Instrument.posterior`, `nextReachableResponse`, `pairingLinear`, `heisenbergLinear`, `FiniteObservablePresentation.closedCoordinateUpdate`, `Adaptive.Protocol.leafFintype`, `Spectrum.oneHiggs`, and `Spectrum.twentyHiggs`, all under `UEOTQM`. Together with the explicit theorem declarations they give 137 named audit targets; all 137 actual local reports passed the audit against the reviewed standard foundation.
+The 213 named audit targets are all 196 explicit theorems plus 17 listed proof-bearing constructions. The previous nine constructions remain; eight new targets are `WeightedInstrument.toInstrument`, `RaggedInstrument.toWeighted`, `WeightedInstrument.padOutcomes`, `Exact.MatrixData.instDecidableEq`, and `ExactCertificate.conditionsDecidable`, `weightedInstrument`, `instrumentFamily`, `presentation`, all under `UEOTQM`. This is not a census of compiler-generated constants or a claim of an axiom-free foundation.
+
+## Exact certificate interface
+
+The computable `ExactCertificate.Data d a o k r` contains rational weight tables, Gaussian-rational Kraus and basis matrices, actual record words, an empty-word index, and rational local coefficients. Its checker verifies five conditions: nonnegativity; complete weighted Kraus sums for every action; an empty distinguished word; equality of each numeric basis matrix with its actual word effect; and every branch's full local pullback expansion.
+
+```lean
+theorem checked : UEOTQM.ExactCertificate.check data = true := by decide +kernel
+noncomputable def instruments := UEOTQM.ExactCertificate.instrumentFamily data checked
+noncomputable def presentation := UEOTQM.ExactCertificate.presentation data checked
+```
+
+The checker does not assume global sufficiency. `check_sound`, actual complex interpretation and square-root weighted realization construct a `FiniteObservablePresentation`. Existing theorems then provide equality of all finite-word responses iff finite coordinates agree, complete finite adaptive leaf laws, and the closed positive-probability update.
+
+`Exact.MatrixData.mul` implements `(A+iB)(C+iD)=(AC-BD)+i(AD+BC)` and `adjoint` implements transpose with the imaginary sign reversed. The interpretation is injective and preserves all checked operations. The generic weighted and ragged bridges preserve actual operations under their explicitly stated finite embeddings. No rational approximation of square roots is used.
+
+## Generated proof instances
+
+The runtime's `export_lean_representation` emits concrete numerical source, not an oracle proof. Six [committed fixtures](../../physics/qm/kernel/certificates/v31.3/exports.json) cover Z, HZ, HSZ, ragged instruments, a complex 1-dimensional example, and a 4-dimensional projector. Each instance independently checks the data and prints seven axiom reports for `checked`, its proof-bearing `presentation`, and five public consequences: all-word iff, finite-tree coordinates, equal leaf laws, normalization, and closed coordinate update. Thus 42 instance audit targets are separate from the 213 generic targets.
+
+The verifier regenerates and byte-compares all six sources, their complete manifests and the index. It then compiles the actual source bytes and checks the exact expected audit target set. Four post-generation corruptions must fail at the original true-check theorem; a companion containing the identical numeric definitions must also prove `check data = false`. Both compilation outcomes, source hashes, shared data-prefix hashes and actual axioms are recorded. Environment errors or failed reduction alone do not count as rejection evidence.
+
+The generator's manifest deliberately retains `LEAN_SOURCE_EXPORTED_NOT_COMPILED`; a later source-bound verification receipt records actual success. No claim is made that Python, JSON parsing, basis search, elimination, Gram independence, or the source exporter is universally verified. The theorem's object is the supplied numeric padded model. User labels remain external metadata; generated Fin indices use explicit bound proofs instead of modular numeral coercion.
 
 ## Finite representation contract
 
@@ -92,23 +118,14 @@ The finite complex density/Kraus sector is explicit input. No reconstruction of 
 
 The [executable Python kernel](../../physics/qm/kernel/README.md) uses exact Gaussian rationals, nonnegative rational Kraus weights and a finite word-effect basis. Its new `export_representation_certificate` / `verify_representation_certificate` API checks portable exact witnesses without rerunning the closure producer. This is executable evidence, not a Lean proof token.
 
-Open implementation bridges include exact-data and JSON interpretation, weighted Kraus and differing outcome/Kraus index adapters, closure-search termination and Gaussian elimination, PSD decision procedures, and the Python adaptive-tree traversal. The new finite-generator existence theorem does not establish the search program or a dedicated Lean proof of the Hermitian `d²` dimension formula. A smaller response representation also does not imply a smaller physical CPTP Hilbert realization.
+The exact Gaussian-rational interpretation, nonnegative weighted-Kraus realization, finite ragged-index embeddings, and generic exact certificate checker are now proved in Lean. Open program refinements remain: the JSON parser and exporter on all inputs, closure-search termination and Gaussian elimination, PSD decision procedures, label-to-index mapping as a program, and Python adaptive-tree traversal. The new finite-generator existence theorem does not establish the search program or a dedicated Lean proof of the Hermitian `d²` dimension formula. A smaller response representation also does not imply a smaller physical CPTP Hilbert realization.
 
-The checker supports Hilbert dimensions 1–4, at most `d²` basis effects, and word witnesses of length at most `d²−1`. These bound the evidence format rather than the language of future finite records. Integer bit lengths and the operation-library size have no uniform implementation cap. Another valid short-word basis is accepted under its own context when an expected basis fingerprint is not pinned; arbitrary linear mixtures are outside this word-witness format.
+The Python representation checker supports Hilbert dimensions 1–4, at most `d²` basis effects, and word witnesses of length at most `d²−1`. These bound the evidence format rather than the language of future finite records. That representation checker has no uniform integer-bit or operation-library cap; the separate Lean exporter imposes the explicit bounds listed below. Another valid short-word basis is accepted under its own context when an expected basis fingerprint is not pinned; arbitrary linear mixtures are outside this word-witness format.
 
 ## Runtime and evidence
 
-From the repository root:
+The [runtime manual](../../physics/qm/kernel/README.md) documents the export API, exact examples and independent tests. Each verification receipt binds the tested source bytes rather than merely naming a release. The source manifest includes generic Lean modules, locks, scripts, runtime source, fixed proof fixtures and the workflow. Reusing local dependency caches does not replace the actual proof build or axiom audit.
 
-```bash
-python physics/qm/kernel/demo.py
-python physics/qm/kernel/demo_v312.py
-python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-v312.json
-```
+The exporter additionally limits input literals to 4096 bits, padded scalar storage to 65536 entries and source size to 8 MiB. The separate representation checker retains its own contract. These bounds constrain evidence construction, not future finite-word length; no uniform compilation-time guarantee is asserted.
 
-The 72 current tests comprise 32 existing kernel tests, 18 representation-certificate tests and 22 spectrum/anomaly tests. `demo_v312.py` emits the full finite representation certificates, independently recomputed verification receipts, an adaptive record-law comparison, spectrum row receipts and local 331 anomaly sums. Runnable API examples are in the [kernel README](../../physics/qm/kernel/README.md).
-
-New evidence belongs in `physics/qm/kernel/evidence/v31.2/`. The [v31.2 local proof receipt](../../physics/qm/kernel/evidence/v31.2/lean-verification.json) records the successful local build, actual axiom audit and source identity. Its `LOCAL_VERIFIED_CI_PENDING` status keeps local verification distinct from remote CI and main-branch acceptance. The historical [Kernel 1 build receipt](../../physics/qm/kernel/evidence/lean-verification.json), [axiom reports](../../physics/qm/kernel/evidence/proof-axioms.json), and [runtime receipt](../../physics/qm/kernel/evidence/runtime-verification.json) retain their original source identity; they are not reused as new-source proof evidence.
-
-See the [v31.2 theory and coverage report](../../physics/qm/UEOT_QM_KERNEL_v31.2.md), [v31.2 claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.2.json), and [source/representation review](../../physics/qm/audits/SOURCE_AND_REPRESENTATION_REVIEW_v31.2.md). The [v31.1 report](../../physics/qm/UEOT_QM_KERNEL_v31.1.md) remains the historical first-kernel reference.
-
+The next quantum bridges are a concrete local metric/conditioning contract, CPTP Cesàro limits, and diagonal CP survival. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain separately tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).

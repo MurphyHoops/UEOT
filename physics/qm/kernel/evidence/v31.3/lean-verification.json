@@ -1,0 +1,360 @@
+{
+  "schema": "ueot_qm.lean_verification.v3",
+  "version": "31.3-kernel.1.3",
+  "recorded_at_utc": "2026-10-19T17:52:24.459470+00:00",
+  "status": "LOCAL_VERIFIED_CI_PENDING",
+  "verification_location": "LOCAL",
+  "source_manifest": "source-manifest.json",
+  "source_count": 53,
+  "source_set_sha256": "ced9d578f54ecb164a30c6316971b082169cee91c3cbf4c03b2766500982c14c",
+  "checkout": {
+    "observed_commit": "c3ec8f45822fa6d77436db2651f6344263a16a43",
+    "research_baseline": "c7aa925f338877d7338326f5cee8a165253f69dd",
+    "explanation": "Full authoring worktree was created from v31.2 delivery c3ec8f4; new source bytes are identified individually, not asserted equal to that checkout. The intervening main changes altered Core governance metadata, not Core Lean source or dependency revisions."
+  },
+  "toolchain_identity": "toolchain-identity.json",
+  "build": {
+    "command": [
+      "lake",
+      "build",
+      "UEOTQM"
+    ],
+    "package": "formalization/ueot-qm",
+    "exit_code": 0,
+    "actual_log": "lean-build.log",
+    "jobs_reported": 8733,
+    "module_count": 13,
+    "explicit_theorems": 196,
+    "module_theorems": {
+      "Adaptive": 11,
+      "Basic": 7,
+      "Exact": 24,
+      "ExactCertificate": 9,
+      "FiniteCoordinates": 21,
+      "Instrument": 14,
+      "Observables": 25,
+      "Operational": 20,
+      "Ragged": 19,
+      "Selector": 11,
+      "Spectrum": 15,
+      "Transport": 4,
+      "Weighted": 16
+    },
+    "warning_scope": "Existing Core/Observables linter warnings retained; no proof errors. Job count is not a theorem count."
+  },
+  "axiom_audit": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "scripts/AxiomAudit.lean"
+    ],
+    "exit_code": 0,
+    "actual_log": "axiom-audit.log",
+    "parsed_receipt": "proof-axioms.json",
+    "status": "PASS",
+    "named_declarations": 213,
+    "explicit_theorems": 196,
+    "listed_proof_bearing_constructions": 17,
+    "allowed_foundation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "scope": "All explicit theorem declarations and the 17 listed constructions; not all compiler-generated constants"
+  },
+  "proof_escape_gate": {
+    "status": "PASS",
+    "source_scope": "formalization/ueot-qm/UEOTQM/**/*.lean"
+  },
+  "exact_instances": {
+    "receipt": "lean-exports/verification.json",
+    "status": "PASS",
+    "positive_instances": 6,
+    "positive_named_axiom_reports": 42,
+    "post_generation_negative_controls": 4,
+    "same_data_false_witnesses": 4,
+    "false_named_axiom_reports": 4,
+    "regenerated_fixture_files": 13,
+    "strict_rule": "Original check=true proof must fail at checked; identical numerical prefix must independently prove check=false; environment failures do not count"
+  },
+  "runtime": {
+    "receipt": "runtime-verification.json",
+    "status": "PASS",
+    "test_methods": 87,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "demos": [
+      "kernel-demo.json",
+      "kernel-demo-v312.json",
+      "kernel-demo-v313.json"
+    ]
+  },
+  "prior_integration": "../v31.2/integration-verification.json",
+  "remote_ci": "PENDING",
+  "main_integration": "PENDING",
+  "scope_limits": [
+    "Finite complex quantum sector is explicit input",
+    "Per-instance proof products do not establish universal Python, JSON, exporter, search, elimination or tree-program refinement",
+    "Lean presentation allows redundant generators; Gram and minimal physical Hilbert realization not proved",
+    "No new empirical confirmation or unconditional physical generation-count claim",
+    "Frozen Core 106 items and four counted generators unchanged"
+  ],
+  "evidence_files": [
+    {
+      "path": "axiom-audit.log",
+      "sha256": "b5ada0f47e3c97b66a01f2afebb29d4695d548cd496b3fbb1834b02be7203148",
+      "bytes": 21517
+    },
+    {
+      "path": "kernel-demo-v312.json",
+      "sha256": "13c0301a1b59622f15da663b0cf0bd7c7b899d831f13f02eb8a9771122ea9726",
+      "bytes": 103548
+    },
+    {
+      "path": "kernel-demo-v313.json",
+      "sha256": "12a9434554b839833c907543157dc04a3b7fb0f7f0b63762119359ac728666ec",
+      "bytes": 6716
+    },
+    {
+      "path": "kernel-demo.json",
+      "sha256": "6415079f1979fd4d1ad30e0d290e1b4abeaaa8fce0ec38a3bdc05a7f1a4fc8a7",
+      "bytes": 2526
+    },
+    {
+      "path": "lean-build.log",
+      "sha256": "bb00b7c2cd39488421404530a06fcc7353a0900ea2861e15f10b1bd9e9c74aa3",
+      "bytes": 27322
+    },
+    {
+      "path": "lean-exports/generated/d1.lean",
+      "sha256": "47aa82621e7bb6877ca10b83888671022b7ccd89ed9452064c2ccb2630a386f6",
+      "bytes": 3403
+    },
+    {
+      "path": "lean-exports/generated/d1.manifest.json",
+      "sha256": "b11d8c408eb0cdf0c56311db2c1199981764e0e414995c8e4632f8e2199c5553",
+      "bytes": 3522
+    },
+    {
+      "path": "lean-exports/generated/d4.lean",
+      "sha256": "a0ba3143c082e2af3868e7e02b82aaf06b3d824e7a967c37974bac9573a55597",
+      "bytes": 4893
+    },
+    {
+      "path": "lean-exports/generated/d4.manifest.json",
+      "sha256": "ca624feb2dcfdf831ba5995cff4b400eb07ac41fcb9c5d0d1483ceca119602ae",
+      "bytes": 4677
+    },
+    {
+      "path": "lean-exports/generated/exports.json",
+      "sha256": "12a9434554b839833c907543157dc04a3b7fb0f7f0b63762119359ac728666ec",
+      "bytes": 6716
+    },
+    {
+      "path": "lean-exports/generated/hsz.lean",
+      "sha256": "21bf66a5f82638dfd92d2d6b2baddf7778210c6d64e2907ed173f72b842c1e75",
+      "bytes": 6000
+    },
+    {
+      "path": "lean-exports/generated/hsz.manifest.json",
+      "sha256": "028936100a3527765db60c066c219c5ebc7eb7e3757b8463fa9855cee0cee00c",
+      "bytes": 6802
+    },
+    {
+      "path": "lean-exports/generated/hz.lean",
+      "sha256": "e49193f5a39afa46e85e2fa9cb147d886475a51a95ced78bac94dad8f4c41939",
+      "bytes": 4706
+    },
+    {
+      "path": "lean-exports/generated/hz.manifest.json",
+      "sha256": "2d7111af0f88b862b3d5491a6f0a5ec487c8755fcef9483ef0bb920441a7a3cf",
+      "bytes": 5077
+    },
+    {
+      "path": "lean-exports/generated/ragged.lean",
+      "sha256": "47537f91789a9bd1604bd87fbc9ad3fb69df1d2466f02591c94ad6600c8a36a0",
+      "bytes": 6888
+    },
+    {
+      "path": "lean-exports/generated/ragged.manifest.json",
+      "sha256": "ef441741ef535130c83e71bafd0a726bf7c4482bd8f6c59bf69017cf3fed7fca",
+      "bytes": 8204
+    },
+    {
+      "path": "lean-exports/generated/z.lean",
+      "sha256": "1910afc419c2388f0c79e001a8cf91134c4c40e71c2859d7eb6adf261e1ac647",
+      "bytes": 3837
+    },
+    {
+      "path": "lean-exports/generated/z.manifest.json",
+      "sha256": "84e859a98fa96ab3b92f151b17d42d0e468579226927cabc0e1fed1d58db13a9",
+      "bytes": 3885
+    },
+    {
+      "path": "lean-exports/logs/d1.compile.log",
+      "sha256": "d15262aa79ebd31ae243bca1621db04c4698e1fc6568d180cb979c77c79ee2ff",
+      "bytes": 1240
+    },
+    {
+      "path": "lean-exports/logs/d4.compile.log",
+      "sha256": "766cab302ff3927c00e618c154b14632ddd47c01b62f867612919c0a9183b793",
+      "bytes": 1240
+    },
+    {
+      "path": "lean-exports/logs/hsz.compile.log",
+      "sha256": "be26114fdd2e951bb71a86e1e5b7fba95820bd2cf8e7507dceb145ca83808738",
+      "bytes": 1240
+    },
+    {
+      "path": "lean-exports/logs/hz.compile.log",
+      "sha256": "c8d3ca7d6d8cf5aaa5a3e3d21cdb019bf524f0b593eaccfd28000fd603e0556f",
+      "bytes": 1240
+    },
+    {
+      "path": "lean-exports/logs/negative_basis.compile.log",
+      "sha256": "8e52b7e12b27f14635ced32e147e138a49201d37fc9c9d51291cf49db971c291",
+      "bytes": 1869
+    },
+    {
+      "path": "lean-exports/logs/negative_basis_rejected.compile.log",
+      "sha256": "01e309a43c130f3edd22bd4611974db17d419305f75005d10b192a9226248349",
+      "bytes": 166
+    },
+    {
+      "path": "lean-exports/logs/negative_pullback.compile.log",
+      "sha256": "87ac071f7021b42771f7f901547c43853d0b38c09e2c4f2e947389e546c5374c",
+      "bytes": 1872
+    },
+    {
+      "path": "lean-exports/logs/negative_pullback_rejected.compile.log",
+      "sha256": "01e309a43c130f3edd22bd4611974db17d419305f75005d10b192a9226248349",
+      "bytes": 166
+    },
+    {
+      "path": "lean-exports/logs/negative_weight.compile.log",
+      "sha256": "997d96994c70d7ffb8472010171be5738a2a7a11f84c41092f8bea44ca8b3dd0",
+      "bytes": 1870
+    },
+    {
+      "path": "lean-exports/logs/negative_weight_rejected.compile.log",
+      "sha256": "01e309a43c130f3edd22bd4611974db17d419305f75005d10b192a9226248349",
+      "bytes": 166
+    },
+    {
+      "path": "lean-exports/logs/negative_word.compile.log",
+      "sha256": "1b4ca54527953471a7740ff88531e006d06d41988c379b20c0dbfc335b99840b",
+      "bytes": 1868
+    },
+    {
+      "path": "lean-exports/logs/negative_word_rejected.compile.log",
+      "sha256": "75378724060da39ab727c12eb46bba139423526c9609463f219e5418b229dc38",
+      "bytes": 166
+    },
+    {
+      "path": "lean-exports/logs/ragged.compile.log",
+      "sha256": "c472df51bec00810a90222f989e1814325a91af191b8be218465f5bdbbceda69",
+      "bytes": 1240
+    },
+    {
+      "path": "lean-exports/logs/toolchain_version.log",
+      "sha256": "63f3e16bf0258e2cc0ab3010eb1830723df9bb85097b7b72b0137b9be25a78e9",
+      "bytes": 106
+    },
+    {
+      "path": "lean-exports/logs/z.compile.log",
+      "sha256": "f4a5e29c2e22165758035565d8bf9c070768b920e7ede301d3cdbee8507bba87",
+      "bytes": 1240
+    },
+    {
+      "path": "lean-exports/negative/negative_basis.lean",
+      "sha256": "08d5775e9ba5f4632a684b2efcd9824c214b8e1420246369a33f976b0bfb4772",
+      "bytes": 3837
+    },
+    {
+      "path": "lean-exports/negative/negative_basis_rejected.lean",
+      "sha256": "baee48c587b1aef668471e447636d8881ecd68f7b5afdf0fffcb60ccfe849448",
+      "bytes": 2011
+    },
+    {
+      "path": "lean-exports/negative/negative_pullback.lean",
+      "sha256": "81015f5a9a37193423fdecc453e68d3d4a2cce27279b26a62c7b59522bae96ac",
+      "bytes": 3837
+    },
+    {
+      "path": "lean-exports/negative/negative_pullback_rejected.lean",
+      "sha256": "f4941339adc62581f5506f1b0e55b800d9d55c0356c268df9f80e4df17c25e53",
+      "bytes": 2011
+    },
+    {
+      "path": "lean-exports/negative/negative_weight.lean",
+      "sha256": "e9c45404602f73aa786e56592b73c12f46e8c37d144bac2a6272b9dbc13d4d8c",
+      "bytes": 3837
+    },
+    {
+      "path": "lean-exports/negative/negative_weight_rejected.lean",
+      "sha256": "5a9e583a0458c596305ae97033422a9db9ad049f1d93e2f68fe716b3eafa2a54",
+      "bytes": 2011
+    },
+    {
+      "path": "lean-exports/negative/negative_word.lean",
+      "sha256": "a416c5d26be5ef371187ca2bdd9a93c5f52a3f319a90728e4cd92eb52ab84f1d",
+      "bytes": 4706
+    },
+    {
+      "path": "lean-exports/negative/negative_word_rejected.lean",
+      "sha256": "604c738f50754a5a801a53d00f7e998f67a9c93151fa522ecc8985d9f1c0b6fe",
+      "bytes": 2880
+    },
+    {
+      "path": "lean-exports/verification.json",
+      "sha256": "134507aa7583498781d18269367149ba91129b68a181f0aed3f4a20ef0a08768",
+      "bytes": 69887
+    },
+    {
+      "path": "lean-exports-console.log",
+      "sha256": "b0592696cd5cc721d6f9136290409250f34d271dd548a4cc9a290e6037f1d4ca",
+      "bytes": 761
+    },
+    {
+      "path": "proof-axioms.json",
+      "sha256": "b32c9b811120f513dff5947e558c59b8f547588ee959eb138ef01e7884f9b5a9",
+      "bytes": 25158
+    },
+    {
+      "path": "runtime-test.log",
+      "sha256": "abcd195d70665ac8bef4b6f537c6ee37b03e059a58ec23dd957c4543f76be874",
+      "bytes": 13270
+    },
+    {
+      "path": "runtime-verification.json",
+      "sha256": "e0a2b5ff23f6fc6212f1393c6a0b292a16e3ea14349e3fd1d4f9506f3c53adc7",
+      "bytes": 11417
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "eab515b2529b9dcebe4ec77a82a515eff5a30909fed21ceb2d0e8fc8b8afa5d0",
+      "bytes": 9852
+    },
+    {
+      "path": "toolchain-identity.json",
+      "sha256": "28a2062c3f526714edf999f2c8ed69429ab7e0a319284c8677801e9c6a3a1280",
+      "bytes": 2938
+    }
+  ],
+  "reviews": [
+    {
+      "path": "physics/qm/audits/WEIGHTED_RAGGED_REVIEW_v31.3.md",
+      "role": "Author scope review and actual machine validation of Weighted/Ragged"
+    },
+    {
+      "path": "physics/qm/audits/EXACT_CERTIFICATE_REVIEW_v31.3.md",
+      "role": "Exact author review plus independent cross-review of ExactCertificate and exporter"
+    },
+    {
+      "path": "physics/qm/audits/KERNEL_REVIEW_v31.3.md",
+      "role": "Domain integration, independent declaration/evidence cross-check and final verifier-source review"
+    }
+  ]
+}
