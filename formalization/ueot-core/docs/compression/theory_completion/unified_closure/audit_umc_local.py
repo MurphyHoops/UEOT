@@ -54,17 +54,55 @@ def no_lean_comments(text):
     return "".join(o)
 
 def baseline_main_ref():
-    """Prefer fetched origin/main; use local main only for offline fallback.
+    """Pin fetched origin/main after checking known main-ref ancestry.
 
-    Fail closed if neither exists: diff-scope governance must not be
-    silently bypassed by comparing against HEAD itself.
+    This checks the available refs, not the live remote's absolute freshness.
+    Local main can expose a stale/divergent origin/main but cannot authorize
+    its own unmerged changes. Missing origin/main never falls back to local
+    main or HEAD. The candidate must contain that baseline. Use the resolved
+    origin commit for all subsequent scope checks.
     """
-    for candidate in ("refs/remotes/origin/main", "refs/heads/main"):
-        p=subprocess.run(["git","rev-parse","--verify","--quiet",candidate],
-                         cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL)
-        if p.returncode == 0:
-            return candidate
-    raise RuntimeError("main baseline unavailable: fetch origin main before auditing")
+    origin=subprocess.run(
+        ["git","rev-parse","--verify","--quiet","refs/remotes/origin/main^{commit}"],
+        cwd=ROOT,capture_output=True,text=True)
+    if origin.returncode != 0:
+        raise RuntimeError("main baseline unavailable: fetch origin main before auditing")
+    origin_sha=origin.stdout.strip()
+    head=subprocess.run(
+        ["git","rev-parse","--verify","--quiet","HEAD^{commit}"],
+        cwd=ROOT,capture_output=True,text=True)
+    if head.returncode != 0:
+        raise RuntimeError("candidate HEAD is not an accessible commit")
+    contained=subprocess.run(
+        ["git","merge-base","--is-ancestor",origin_sha,head.stdout.strip()],
+        cwd=ROOT,capture_output=True,text=True)
+    if contained.returncode == 1:
+        raise RuntimeError("candidate HEAD does not contain the origin/main baseline; "
+                           "consume canonical main before auditing")
+    if contained.returncode != 0:
+        raise RuntimeError("could not verify candidate baseline ancestry; "
+                           "fetch complete history before auditing")
+    local_exists=subprocess.run(
+        ["git","show-ref","--verify","--quiet","refs/heads/main"],
+        cwd=ROOT,capture_output=True,text=True)
+    if local_exists.returncode == 1:
+        return origin_sha
+    if local_exists.returncode != 0:
+        raise RuntimeError("could not inspect local main ref before auditing")
+    local=subprocess.run(
+        ["git","rev-parse","--verify","--quiet","refs/heads/main^{commit}"],
+        cwd=ROOT,capture_output=True,text=True)
+    if local.returncode != 0:
+        raise RuntimeError("local main is not an accessible commit; resolve refs before auditing")
+    ancestry=subprocess.run(
+        ["git","merge-base","--is-ancestor",local.stdout.strip(),origin_sha],
+        cwd=ROOT,capture_output=True,text=True)
+    if ancestry.returncode == 1:
+        raise RuntimeError("known main refs are inconsistent: local main is not an ancestor "
+                           "of origin/main; refresh canonical refs before auditing")
+    if ancestry.returncode != 0:
+        raise RuntimeError("could not verify main-ref ancestry; fetch complete history before auditing")
+    return origin_sha
 
 
 

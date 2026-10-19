@@ -73,32 +73,6 @@ class FkrgTests(unittest.TestCase):
             self.assertEqual(result["index_state"],"FRESH")
             self.assertEqual(result["remote_ci"],"NOT_CHECKED_OFFLINE")
 
-    def test_main_baseline_prefers_fetched_origin_main(self):
-        import audit_umc_local
-        from types import SimpleNamespace
-        seen=[]
-        def fake_run(argv,**kwargs):
-            seen.append(argv[-1])
-            return SimpleNamespace(returncode=0)
-        with mock.patch.object(audit_umc_local.subprocess,"run",side_effect=fake_run):
-            self.assertEqual(audit_umc_local.baseline_main_ref(),
-                             "refs/remotes/origin/main")
-        self.assertEqual(seen,["refs/remotes/origin/main"])
-        # Offline checkouts retain a local fallback; neither ref may fall back
-        # to HEAD because doing so would erase the immutable-base scope check.
-        seen.clear()
-        def only_local(argv,**kwargs):
-            seen.append(argv[-1])
-            return SimpleNamespace(returncode=1 if
-                argv[-1]=="refs/remotes/origin/main" else 0)
-        with mock.patch.object(audit_umc_local.subprocess,"run",side_effect=only_local):
-            self.assertEqual(audit_umc_local.baseline_main_ref(),"refs/heads/main")
-        self.assertEqual(seen,["refs/remotes/origin/main","refs/heads/main"])
-        with mock.patch.object(audit_umc_local.subprocess,"run",
-                              return_value=SimpleNamespace(returncode=1)):
-            with self.assertRaisesRegex(RuntimeError,"main baseline unavailable"):
-                audit_umc_local.baseline_main_ref()
-
     def test_umc_scope_mirrors_immutable_base_l2_exact_path_authorizations(self):
         import audit_umc_local as umc
         branch="compression/theory-completion-fkrg-review-fixes"
@@ -307,6 +281,114 @@ class FkrgTests(unittest.TestCase):
                          "UMC_CORE_106_SEMANTIC_REVIEW_V1.json").read_text())["rows"]),106)
         self.assertNotIn("FULL_MATHEMATICAL_CLOSURE",fkrg.TASKS.read_text())
         self.assertFalse((HERE/"FKRG_COUNTED_LEDGER.json").exists())
+
+
+class UMCBaselineGitTests(unittest.TestCase):
+    """Exercise fetched-main selection against real commits and ancestry."""
+
+    def setUp(self):
+        import audit_umc_local
+        self.umc=audit_umc_local
+        tmp=tempfile.TemporaryDirectory(prefix="umc-main-ancestry-")
+        self.addCleanup(tmp.cleanup)
+        self.repo=Path(tmp.name)
+        self.git("init","--quiet","--initial-branch=main")
+        (self.repo/"baseline.txt").write_text("frozen baseline\n")
+        self.git("add","baseline.txt")
+        self.git("commit","--quiet","-m","baseline")
+        self.base=self.git("rev-parse","HEAD")
+        base_tree=self.git("rev-parse",f"{self.base}^{{tree}}")
+
+        # This path is already present on newer main. Using the older fetched
+        # ref could wrongly classify its later modification as an L1 addition.
+        self.existing_path=("formalization/ueot-core/docs/compression/"
+                            "theory_completion/knowledge/AlreadyOnMain.md")
+        existing=self.repo/self.existing_path
+        existing.parent.mkdir(parents=True)
+        existing.write_text("existing on the newer main commit\n")
+        self.git("add",self.existing_path)
+        self.git("commit","--quiet","-m","main adds governed file")
+        self.ahead=self.git("rev-parse","HEAD")
+        ahead_tree=self.git("rev-parse",f"{self.ahead}^{{tree}}")
+        self.fork=self.git("commit-tree",base_tree,"-p",self.base,"-m","other main")
+        self.unrelated=self.git("commit-tree",base_tree,"-m","unrelated root")
+        self.research=self.git("commit-tree",ahead_tree,"-p",self.ahead,
+                               "-m","research tip consumes fetched main")
+        self.merge=self.git("commit-tree",ahead_tree,"-p",self.ahead,
+                            "-p",self.fork,"-m","candidate contains both histories")
+        self.git("checkout","--detach","--quiet",self.research)
+
+    def git(self,*args):
+        return subprocess.run(
+            ["git","-c","user.name=UEOT regression fixture",
+             "-c","user.email=ueot-fixture@example.invalid",
+             "-c","commit.gpgSign=false","-c","core.hooksPath=/dev/null",*args],
+            cwd=self.repo,text=True,capture_output=True,check=True).stdout.strip()
+
+    def test_only_consistent_fetched_main_is_a_pinned_baseline(self):
+        self.assertNotIn(self.existing_path,
+                         self.git("ls-tree","-r","--name-only",self.base).splitlines())
+        self.assertIn(self.existing_path,
+                      self.git("ls-tree","-r","--name-only",self.ahead).splitlines())
+        cases=[
+            ("equal refs",self.base,self.base,self.research,True),
+            ("fetched main advanced",self.ahead,self.base,self.research,True),
+            ("no local main",self.ahead,None,self.research,True),
+            ("missing fetched main",None,self.ahead,self.research,False),
+            ("fetched ref behind local governed file",self.base,self.ahead,self.research,False),
+            ("diverged main refs",self.fork,self.ahead,self.merge,False),
+            ("unrelated main histories",self.unrelated,self.ahead,self.unrelated,False),
+            ("HEAD behind fetched main",self.ahead,self.base,self.base,False),
+            ("HEAD diverged from fetched main",self.ahead,self.base,self.fork,False),
+        ]
+        # Only the fixture directory is substituted. Git resolution, ancestry,
+        # and the production baseline selector all execute without mocks.
+        with mock.patch.object(self.umc,"ROOT",self.repo):
+            for label,origin,local,head,accepted in cases:
+                with self.subTest(case=label):
+                    self.git("checkout","--detach","--quiet",head)
+                    for ref,value in (("refs/remotes/origin/main",origin),
+                                      ("refs/heads/main",local)):
+                        if value is None:
+                            self.git("update-ref","-d",ref)
+                        else:
+                            self.git("update-ref",ref,value)
+                    if accepted:
+                        self.assertEqual(self.umc.baseline_main_ref(),origin)
+                    else:
+                        with self.assertRaises(RuntimeError):
+                            self.umc.baseline_main_ref()
+
+
+class UMCFastAuditIntegrationTests(unittest.TestCase):
+    """Run the entire fast audit, separately from receipt writer unit tests."""
+
+    def test_real_fast_audit_preserves_all_historical_receipts(self):
+        import audit_umc_local as umc
+
+        def historical_bytes():
+            return {path.name:path.read_bytes() for path in
+                    sorted(umc.HERE.glob("UMC_LOCAL_EXACT_HEAD_AUDIT_V*.json"))}
+
+        before=historical_bytes()
+        self.assertIn(umc.OUT.name,before)
+        try:
+            # No atlas, import, scope, stage, DAG, baseline, or writer mock:
+            # a broken fast-audit contract must fail this integration test.
+            result=umc.audit(False)
+        finally:
+            # Assert both path-set and byte preservation even if audit raises.
+            self.assertEqual(historical_bytes(),before)
+
+        self.assertEqual(result["source_PIDs_located"],106)
+        self.assertEqual(result["research_modules"],result["public_root_imports"])
+        self.assertEqual(result["global_bundled_Lean_modules"],len(fkrg.sources()))
+        self.assertTrue(result["full_import_dag_acyclic_reachable_complete"])
+        self.assertEqual(result["full_Lean"],"NOT_RUN")
+        self.assertEqual(result["UMC_axioms"],"NOT_RUN")
+        self.assertIsNone(result["UMC_native_census"])
+        self.assertEqual(result["global_strong_unified_closure"],"NOT_ESTABLISHED")
+        self.assertEqual(result["scientific_external_evidence"],"UNVERIFIED")
 
 
 class UMCSourceFreshnessTests(unittest.TestCase):
