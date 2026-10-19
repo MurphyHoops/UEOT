@@ -1,92 +1,93 @@
 {
-  "schema": "ueot-qm-current/2",
+  "schema": "ueot-qm-current/3",
   "date": "2026-10-19",
-  "version": "31.2-kernel.1.2",
+  "version": "31.3-kernel.1.3",
   "layer": "physics/qm",
-  "objective": "Connect all-word quantum response objects to finite coordinates, adaptive laws and independently checkable spectrum/representation witnesses.",
-  "core_baseline": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
-  "entrypoint": "../UEOT_QM_KERNEL_v31.2.md",
+  "objective": "Build a reproducible proof-carrying finite quantum response kernel from actual exact numeric data",
+  "research_baseline": "c7aa925f338877d7338326f5cee8a165253f69dd",
+  "frozen_core": {
+    "modified": false,
+    "coverage_items": 106,
+    "counted_generators": 4
+  },
+  "entrypoint": "../UEOT_QM_KERNEL_v31.3.md",
   "runtime_entrypoint": "../kernel/README.md",
   "formalization": "formalization/ueot-qm",
   "roadmap": "../ROADMAP.md",
-  "claim_ledger": "CLAIM_LEDGER_v31.2.json",
-  "previous_claim_ledger": "CLAIM_LEDGER_v31.1.json",
+  "claim_ledger": "CLAIM_LEDGER_v31.3.json",
+  "previous_claim_ledger": "CLAIM_LEDGER_v31.2.json",
+  "verification_state": "LOCAL_VERIFIED_CI_PENDING",
   "acceptance_marker": {
     "state": "LOCAL_VERIFIED_CI_PENDING",
     "change_class": "B",
     "authority": "User-directed continuation of the entire UEOT-QM construction and remote QM synchronization",
-    "domain_memo": "../audits/KERNEL_REVIEW_v31.2.md",
+    "domain_memo": "../audits/KERNEL_REVIEW_v31.3.md",
     "accepted_scope": [
-      "Actual Kraus trace duality and minimal generated finite observable space",
-      "Finite local presentation iff all-word response equality and closed coordinate posterior update",
-      "Complete finite adaptive tree normalization and coordinate-computed leaf laws",
-      "Independent bounded representation certificate checks and exact runtime demonstrations",
-      "Finite spectrum sums to conditional G3; explicit anomaly and threshold counterexamples",
-      "Identity and semantic review of five supplied theory sources"
+      "Weighted-to-ordinary Kraus and finite ragged embedding mathematics",
+      "Exact Gaussian-rational to actual complex matrix interpretation",
+      "Reliable finite numeric checker constructing all-word and adaptive coordinate presentations",
+      "Six individually kernel-checked numeric certificates and four same-data false witnesses",
+      "Reproducible fixture binding, exact source identity, runtime and actual Lean audit gates"
     ],
     "does_not_promote": [
-      "Python/JSON-to-Lean refinement",
+      "Universal Python/JSON/parser/exporter/search/elimination/tree correctness",
+      "Gram checker or minimal physical Hilbert realization theorem",
       "Unconditional real-world generation count",
       "Hilbert/Born reconstruction",
-      "All historical archival byte verification",
       "New empirical confirmation",
       "Frozen Core counts"
     ],
-    "source_contract_review": "CLEAR",
+    "independent_mathematical_reviews": "CLEAR",
+    "source_and_verifier_review": "CLEAR",
     "local_machine_acceptance": "PASS",
     "integration_acceptance": "PENDING_CI_AND_MAIN"
   },
   "completed_in_this_delivery": [
-    "9 Lean modules and 128 explicit theorems compiled with official Lean 4.33.1",
-    "137 actual named axiom reports passed the reviewed-foundation audit",
-    "30 tested source/lock files match the published source tree",
-    "72 executable test methods passed locally",
-    "Independent finite representation certificate producer/checker",
-    "Finite spectrum row adapter and six local 331 anomaly calculator",
-    "Source identity and semantic review of five uploaded theory documents"
+    "13 generic modules and 196 explicit theorems passed actual unified Lean 4.33.1 build",
+    "213 named generic axiom reports passed the reviewed-foundation audit",
+    "87 executable test methods and three demos passed",
+    "Six regenerated exact instances passed with 42 actual named axiom reports",
+    "Four post-generation true-check corruptions rejected and identical-data check=false proofs accepted",
+    "Reproducible verifier matches 13 committed fixture files and binds source/olean identity",
+    "Prior v31.2 PR333 and resulting-main workflow39294335590 verified"
   ],
+  "proof_receipt": "../kernel/evidence/v31.3/lean-verification.json",
+  "instance_receipt": "../kernel/evidence/v31.3/lean-exports/verification.json",
   "next_execution": {
-    "primary": "Weighted/ragged-index and Gaussian-rational data adapters; reliable finite certificate checking in Lean",
-    "parallel": "Concrete quantum metric local bounds into existing transport; physical spectrum/window obligations",
+    "primary": "Concrete quantum one-step metric/defect and positive-event conditioning bounds, then existing M-TC composition",
+    "parallel": "CPTP Cesaro and diagonal CP survival bridges; physical spectrum/window obligations",
     "then": [
-      "QMB-05 Cesaro and QMB-06 diagonal survival bridges",
+      "Hermitian d^2 and W_n/elimination program refinement",
       "QDRR protocol/noise/statistical validation",
-      "Energy-controlled CV and bounded-response QFT/RG interfaces"
+      "Energy-controlled CV and model-specific bounded-response QFT/RG interfaces"
     ],
-    "integration_gate": "Complete PR #333 remote CI and normal main integration after the service recovers"
+    "integration_gate": "Verify this version on PR and resulting main using the same local proof/export gates"
   },
   "known_open_items": [
-    "Python/JSON/search/solver/tree refinement",
-    "Dedicated d^2 Hermitian dimension and W_n algorithm termination proofs",
+    "Universal Python/JSON/exporter/label-mapping/search/solver/tree refinement",
+    "Dedicated Hermitian d^2 dimension and W_n algorithm termination proofs",
     "Quantum metric local bounds and conditioning theorem",
     "Physical G3 representation/window/global-anomaly/vacuum/mass applicability",
-    "Historical archives beyond the verified root PDF and two v28.1 artifacts",
+    "Historical archives beyond previously verified source identities",
     "QMB-05/06, continuous-variable and QFT interfaces"
   ],
   "integration": {
     "target_branch": "main",
     "temporary_branch": "qm/upgrade-core-v3-v31",
-    "pull_request": 333,
+    "state": "PENDING_REMOTE_CI_AND_MAIN",
     "scope": [
       "physics/qm/**",
       "formalization/ueot-qm/**",
       ".github/workflows/ueot-qm.yml"
     ],
-    "parent_commit": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
-    "record": "The containing commit and PR are authoritative; proof evidence binds a specific tested ancestor and source hashes.",
-    "observed_main_after_parallel_core_merge": "4b29172c7efef9de95e8070abfd3ded9006bd462",
-    "state": "PENDING_REMOTE_CI_AND_MAIN",
-    "source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
-    "source_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39284136188",
-    "official_service_incident": "https://www.githubstatus.com/incidents/8tzbpcnl75jp"
-  },
-  "verification_state": "LOCAL_VERIFIED_CI_PENDING",
-  "verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
-  "proof_receipt": "../kernel/evidence/v31.2/lean-verification.json",
-  "verified_mathematics": [
-    "Actual trace-dual observable closure and finite word-effect generation",
-    "Finite local presentation iff all-word response equality and closed coordinate update",
-    "Complete finite adaptive tree laws and finite coordinate composition",
-    "Finite spectrum sums to conditional G3 selector"
-  ]
+    "source_identity": "Per-file SHA256 manifest binds the local candidate; the containing source commit and native PR checks provide its published identity",
+    "previous_version": {
+      "version": "31.2-kernel.1.2",
+      "state": "MAIN_VERIFIED",
+      "pull_request": 333,
+      "main_commit": "c7aa925f338877d7338326f5cee8a165253f69dd",
+      "main_run": 39294335590,
+      "receipt": "../kernel/evidence/v31.2/integration-verification.json"
+    }
+  }
 }

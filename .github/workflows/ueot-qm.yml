@@ -17,6 +17,7 @@ on:
       - "physics/qm/kernel/*.py"
       - "physics/qm/kernel/ueot_qm/**"
       - "physics/qm/kernel/tests/**"
+      - "physics/qm/kernel/certificates/**"
       - ".github/workflows/ueot-qm.yml"
   pull_request:
     paths:
@@ -33,6 +34,7 @@ on:
       - "physics/qm/kernel/*.py"
       - "physics/qm/kernel/ueot_qm/**"
       - "physics/qm/kernel/tests/**"
+      - "physics/qm/kernel/certificates/**"
       - ".github/workflows/ueot-qm.yml"
   workflow_dispatch:
 
@@ -62,6 +64,8 @@ jobs:
         run: python physics/qm/kernel/demo.py > /tmp/ueot-qm-demo.json
       - name: Run representation and spectrum witnesses
         run: python physics/qm/kernel/demo_v312.py > /tmp/ueot-qm-demo-v312.json
+      - name: Export exact Lean certificate examples
+        run: python physics/qm/kernel/demo_v313.py > /tmp/ueot-qm-demo-v313.json
       - name: Archive runtime evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -71,6 +75,7 @@ jobs:
             /tmp/ueot-qm-runtime-verification.json
             /tmp/ueot-qm-demo.json
             /tmp/ueot-qm-demo-v312.json
+            /tmp/ueot-qm-demo-v313.json
           retention-days: 30
 
   lean:
@@ -89,6 +94,7 @@ jobs:
           git rev-parse HEAD | tee source-identity.log
           sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain scripts/install_lean.sh >> source-identity.log
           cat source-identity.log
+          python3 scripts/record_source.py --output source-manifest.json
       - name: Check inherited dependency lock
         run: python3 scripts/check_dependencies.py
       - name: Install and verify official pinned Lean
@@ -131,6 +137,8 @@ jobs:
             exit 1
           fi
           python3 scripts/check_axioms.py
+      - name: Verify generated exact certificates and false witnesses
+        run: python3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir "$RUNNER_TEMP/ueot-qm-lean-exports"
       - name: Archive proof evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -138,10 +146,12 @@ jobs:
           name: ueot-qm-lean-${{ github.run_id }}
           path: |
             formalization/ueot-qm/source-identity.log
+            formalization/ueot-qm/source-manifest.json
             formalization/ueot-qm/lean-install.log
             formalization/ueot-qm/lean-build.log
             formalization/ueot-qm/axiom-audit.log
             formalization/ueot-qm/proof-axioms.json
             formalization/ueot-qm/lake-manifest.json
+            ${{ runner.temp }}/ueot-qm-lean-exports/
           retention-days: 30
 

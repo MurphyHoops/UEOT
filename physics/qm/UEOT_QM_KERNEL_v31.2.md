@@ -1,5 +1,7 @@
 # UEOT-QM v31.2 / Kernel 1.2
 
+> 集成跟进（2026-10-19 UTC）：本版已通过 PR #333，并在主线 `c7aa925f338877d7338326f5cee8a165253f69dd` 的工作流 39294335590 完成 Lean/runtime 验收。见 [集成回执](kernel/evidence/v31.2/integration-verification.json)。下文的 LOCAL_VERIFIED_CI_PENDING 描述本报告生成时的历史检查点；当前继续建设见 [v31.3](UEOT_QM_KERNEL_v31.3.md)。
+
 日期：2026-10-19。承接已合入的 [Kernel 1](UEOT_QM_KERNEL_v31.1.md)；研究基线为 `23d36e4d4b805ef138c9179c5b33c1a89a924dbe`。本轮是 QM 领域的结构增量，Core v3 的冻结定义、106 项覆盖与四个计数生成器保持不变。
 
 **当前验收：`LOCAL_VERIFIED_CI_PENDING`。9 个 Lean 模块、128 个显式定理已由官方 Lean 4.33.1 实际构建通过，137 项真实公理审计通过；72 项运行测试和两个完整演示通过。** 已验证源码对应提交 `323db6d1c2e50a432bdcf6a6872212426cc826ce`。GitHub Actions 正值官方服务故障，PR #333 与主线集成验收仍待完成。机器状态与完整输出见 [v31.2 主张台账](status/CLAIM_LEDGER_v31.2.json) 和 [源码绑定证明回执](kernel/evidence/v31.2/lean-verification.json)。

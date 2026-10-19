@@ -4,6 +4,10 @@ import UEOTQM.Operational
 import UEOTQM.Observables
 import UEOTQM.FiniteCoordinates
 import UEOTQM.Adaptive
+import UEOTQM.Weighted
+import UEOTQM.Ragged
+import UEOTQM.Exact
+import UEOTQM.ExactCertificate
 import UEOTQM.Transport
 import UEOTQM.Selector
 import UEOTQM.Spectrum

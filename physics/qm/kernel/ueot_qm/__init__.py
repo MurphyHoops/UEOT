@@ -29,6 +29,11 @@ from .representation_certificate import (
     export_representation_certificate,
     verify_representation_certificate,
 )
+from .lean_export import (
+    LeanExportError,
+    LeanRepresentationExport,
+    export_lean_representation,
+)
 from .spectrum import (
     Orientation, MatterKind, Family, ExtraMatter, CubicCompletion,
     WeakWindow, Spectrum, inspect_spectrum, SU3Representation, Weyl331,
@@ -60,6 +65,9 @@ __all__ = [
     "RepresentationVerification",
     "export_representation_certificate",
     "verify_representation_certificate",
+    "LeanExportError",
+    "LeanRepresentationExport",
+    "export_lean_representation",
     "Orientation",
     "MatterKind",
     "Family",

@@ -1,60 +1,75 @@
-# UEOT-QM v31.2 / Kernel 1.2
+# UEOT-QM v31.3 / Kernel 1.3
 
-有限维操作内核：**合法量子操作 → 完整记录律 → 协议响应坐标 → 闭合递归更新 → 可检查的表示与误差证书**。本版新增可导出的全词效应表示证书、独立精确 checker，以及从有限谱条目求和进入三代选择的接口。
+当前状态：**LOCAL_VERIFIED_CI_PENDING**。本轮新增 `export_lean_representation`，将通过外部库锚定的有限表示证书导出为实际 Lean 数值表。Lean 精确 checker 独立核验数据，再构造真实仪器与全词／完整树／闭合更新定理。
 
-**当前状态：LOCAL_VERIFIED_CI_PENDING。** 官方 Lean **4.33.1** 已在本地实际完成 `lake build UEOTQM`，退出码 **0**；九模块的 **128 个显式 theorem 全部编译通过，137 项实际公理审计 PASS**，依赖仅为 `propext`、`Classical.choice`、`Quot.sound`。**72 个运行测试方法及 `demo.py`、`demo_v312.py` 均已通过。**
-
-本地结果绑定源码提交 [`323db6d1c2e5`](https://github.com/MurphyHoops/UEOT/commit/323db6d1c2e50a432bdcf6a6872212426cc826ce)，见 [v31.2 本地证明回执](evidence/v31.2/lean-verification.json) 与 [主张台账](../status/CLAIM_LEDGER_v31.2.json)。GitHub Actions 仍在排队，[PR #333](https://github.com/MurphyHoops/UEOT/pull/333) 的远端 CI 和主线集成尚未验收；最近完成主线验收的版本仍是 v31.1。
-
-理论、组合证明及物理边界见 [v31.2 内核说明](../UEOT_QM_KERNEL_v31.2.md)。[Lean 包](../../../formalization/ueot-qm/README.md) 固定继承 Core 的 Lean 4.33.1 与 Mathlib `0df444a360eaa60ab8c11dca51a86af692955474`。
-
-已验收的 [Kernel 1 / v31.1](../UEOT_QM_KERNEL_v31.1.md) 保留原身份：[工作流 39270031506](https://github.com/MurphyHoops/UEOT/actions/runs/39270031506) 对其测试提交验收了 32 个测试、56 个 theorem 和 59 个公理报告。本版使用独立的新回执；旧回执仅认证 v31.1 的原源码字节。
+实际本地结果：13 通用模块、196 显式定理统一构建通过，213 项真实命名公理审计 PASS；87 个运行测试方法通过。六个生成实例与四组“原通过证明失败 + 同数据假值证明成功”的负控单独核验。见 [版本报告](../UEOT_QM_KERNEL_v31.3.md)、[证明回执](evidence/v31.3/lean-verification.json) 与 [实例回执](evidence/v31.3/lean-exports/verification.json)。v31.2 已完成 [主线验收](evidence/v31.2/integration-verification.json)。
 
 ## 立即运行
 
-从仓库根目录执行；Python 3.10+，只使用标准库，CI 使用 Python 3.12：
+从仓库根目录执行；运行内核使用 Python 3.10+ 标准库，CI 固定 Python 3.12：
 
 ```bash
 python physics/qm/kernel/demo.py
 python physics/qm/kernel/demo_v312.py
-python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-v312.json
+python physics/qm/kernel/demo_v313.py --output-dir /tmp/qm-exports
+python physics/qm/kernel/verify_kernel.py --output /tmp/qm-runtime-v313.json
 ```
 
-`demo.py` 保留原有干涉、有限协议差、后选择与误差链示例。`demo_v312.py` 输出 Z/HZ/HSZ 的完整表示证书及独立检查回执、一个自适应协议的密度态／坐标完整律、逐项谱选择结果与六项 331 局域异常。
+`demo.py` 保留干涉、有限协议差、后选择与误差链；`demo_v312.py` 保留 Z/HZ/HSZ 完整表示证书、自适应律与谱／331 异常；`demo_v313.py` 输出六份完整 Lean 候选及 companion manifest。仅导出源文件不会宣称 Lean 编译成功。
 
-验收命令运行当前 72 个测试方法，并将源码哈希与实际结果写入指定位置。使用显式 `--output` 可保留历史回执。本轮交付证据放在 `evidence/v31.2/`；根层 `evidence/*.json` 继续保存 v31.1 的既有回执。
-
-| 运行测试组 | 方法数 | 核查重点 |
+| 测试组 | 方法数 | 范围 |
 |---|---:|---|
-| 既有操作、协议及误差证书 | 32 | 干涉、相位、纠缠、正性、零分支、记忆与有限覆盖 |
-| 新表示证书 | 18 | 真实词生成、独立性、闭包、错顺序／转置、上下文和格式拒绝 |
-| 新谱桥与局域异常 | 22 | 行和、模板、复制、补偿、阈值、缺失 completion 和符号／权重错误 |
-| 合计 | **72** | 方法可以包含多个精确实例；方法数不作为定理数 |
+| 操作／协议／误差 | 32 | 干涉、相位、纠缠、正性、零分支、记忆与有限覆盖 |
+| 表示证书 | 18 | 真实词生成、独立性、闭包、错顺序／转置、上下文与格式 |
+| 谱桥与局域异常 | 22 | 行和、模板、复制、补偿、阈值与符号／权重 |
+| Lean 源导出 | 15 | 精确数据、可变指标、标签／上下文绑定、恶意／畸形输入拒绝 |
+| 合计 | **87** | 方法数不作为 Lean 定理数；Lean 实编译由独立入口执行 |
 
-作为模块使用时，将本目录放到 Python 路径中，例如在本目录执行：
+## 把具体证书交给 Lean
+
+在本目录的 Python 环境中：
 
 ```python
 from fractions import Fraction
+from pathlib import Path
 from ueot_qm import (
-    Matrix, diagonal, KrausTerm, Instrument,
-    InstrumentLibrary, PredictiveModel,
+    Matrix, diagonal, KrausTerm, Instrument, InstrumentLibrary,
+    PredictiveModel, export_representation_certificate,
+    export_lean_representation,
 )
 
 z = Instrument({
     "0": [KrausTerm(diagonal([1, 0]))],
     "1": [KrausTerm(diagonal([0, 1]))],
 })
-h = Instrument({
-    "ok": [KrausTerm(Matrix([[1, 1], [1, -1]]), Fraction(1, 2))]
-})
+h = Instrument({"ok": [KrausTerm(Matrix([[1, 1], [1, -1]]), Fraction(1, 2))]})
 library = InstrumentLibrary({"H": h, "Z": z})
 model = PredictiveModel(library)
-encoded = model.encode(diagonal([1, 0]))
-
-print(model.dimension)  # 3，包含恒定 trace 坐标
-print(model.word_law(encoded, ["H", "H", "Z"]))
-# {("ok", "ok", "0"): Fraction(1), ("ok", "ok", "1"): Fraction(0)}
+certificate = export_representation_certificate(model)
+exported = export_lean_representation(
+    certificate, library,
+    expected_context_fingerprint=model.context_fingerprint,
+)
+Path("/tmp/hz.lean").write_text(exported.lean_source)
+Path("/tmp/hz.manifest.json").write_text(exported.canonical_manifest + "\n")
+print(exported.source_sha256)
 ```
+
+完成 `formalization/ueot-qm` 的 `lake build UEOTQM` 后，从该目录执行 `lake env lean /tmp/hz.lean`。文件中的 `checked : ExactCertificate.check data = true := by decide +kernel` 必须被内核接受；不能用 Python 预检代替。
+
+可重复的完整验收从仓库根目录运行：
+
+```bash
+python physics/qm/kernel/verify_lean_exports.py --output-dir /tmp/qm-lean-exports
+```
+
+它重新生成 Z/HZ/HSZ/ragged/d1/d4，与 [固定 fixtures](certificates/v31.3/exports.json) 的完整源码／manifest 逐字节比较，编译并检查每例 7 项实际公理输出。另在生成后改坏四种数值数据；原 `check=true` 证明须失败，相同数据的 `check=false` 证明须成功。日志、执行状态和 SHA256 都保存到指定目录；超时或导入错误不能单独算数学拒绝。Lean 4.33.1 与固定依赖由 [专门包](../../../formalization/ueot-qm/README.md) 提供。
+
+所有用户标签只在 manifest 出现；Lean 使用摘要命名空间和有界 Fin 构造。不同项数／结果数补零的每个数值都可检查，原有不可能分支也保留。manifest 的 `LEAN_SOURCE_EXPORTED_NOT_COMPILED` 是生成事件的状态；之后的成功记录在独立源码绑定回执中。
+
+格式边界：Hilbert 维数 1–4、基数 ≤d²、见证词长 ≤d²−1；exporter 另限整数 4096 bit、补零标量 65536 项和 Lean 源 8 MiB。它们不限制定理量化的未来有限记录长度，也不提供统一编译时间上界。
+
+本轮有通用 checker 可靠性定理与逐实例证据；Python/JSON/parser/exporter/闭包搜索/消元/树程序的全输入正确性仍是独立任务。量子扇区为明确输入，未增添实验确认或无条件三代结论。
 
 ## 导出 JSON 表示证书并独立检查
 
@@ -164,19 +179,19 @@ print(local["all_six_cancel"])  # True；范围为六项局域异常
 
 量子运行时支持 Gaussian-rational 数据和 Hilbert 维数 1–4；浮点数及超出状态维数的输入明确拒绝。Hadamard 使用整数矩阵加权 1/2，结果依然精确。谱接口使用整数重数和精确 Fraction 系数，不受量子态矩阵的 Hilbert 维数限制。
 
-表示证据要求 (1\le r\le d^2)，每个词见证长度不超过 (d^2-1)。这个生成证据上限没有给预测协议设置统一时域上限。整数位长和库内动作／Kraus 总数没有统一上限，程序不承诺总体固定运行时间或完整资源配额。响应维数包含 trace 坐标，不代表一个更小 CPTP Hilbert 模型的维数。
+表示证据要求 (1\le r\le d^2)，每个词见证长度不超过 (d^2-1)。这个生成证据上限没有给预测协议设置统一时域上限。基础表示 checker 未统一限制整数位长和操作库规模；新的 Lean exporter 另施加前述 4096 bit／65536 项／8 MiB 边界。两者都不承诺总体固定运行时间。响应维数包含 trace 坐标，不代表一个更小 CPTP Hilbert 模型的维数。
 
 操作库固定且时齐。时间、资源或自动机约束需另外编码；省略相关环境时，系统态不能自动充当充分对象。没有用于任意外部坐标的物理可实现性判定器；`EncodedState` 由工厂构造，指纹只是上下文检查。
 
 有限协议证书只覆盖给出的准备配对和因果树。标量预算需要明确的逐步前提。二者不自动变成全部状态/全部协议上的 trace-distance 或 diamond-norm 保证。
 
-九个 Lean 模块覆盖旧量子操作与响应商，并新增词效应空间、有限 presentation 到全词坐标、闭合坐标更新、完整有限自适应树和谱求和桥。这些数学声明已通过本地实际统一构建和公理审计；远端 CI 与主线集成另行验收，当前仍为 `LOCAL_VERIFIED_CI_PENDING`。
+13 个通用 Lean 模块覆盖量子操作、响应商、词效应空间、有限全词坐标、闭合更新、完整树与谱桥，并新增实际数域解释、加权／可变指标数学适配和可靠的精确 checker。统一构建与 213 项命名公理审计已通过；六个具体实例的实际编译另有源绑定回执，远端 CI 与主线集成单列。
 
-Lean 的 finite presentation 允许冗余生成元；独立运行 checker 另检查基的线性独立性。Python 的数值解码、加权／不同结果指标 Kraus 适配、搜索与消元、PSD 判定和树遍历尚未完成到 Lean 的程序细化。也没有证明具体表示系数、matching 窗口、全局异常、真空或质量。范围与原件审查见 [v31.2 主报告](../UEOT_QM_KERNEL_v31.2.md)。
+Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基独立性。本轮数学数域、加权／可变指标桥与逐实例证明已经完成；Python/JSON 解码、索引映射程序、搜索／消元、PSD 判定和树遍历的全输入细化仍未完成。具体表示系数、matching 窗口、全局异常、真空或质量也继续独立。准确范围见 [v31.3 主报告](../UEOT_QM_KERNEL_v31.3.md)。
 
 ## 回执与版本身份
 
-本版以 `evidence/v31.2/` 保存新的运行、演示、Lean 构建与公理回执。[本地证明回执](evidence/v31.2/lean-verification.json) 记录本轮真实构建和公理结果，[本轮台账](../status/CLAIM_LEDGER_v31.2.json) 记录机器覆盖与开放义务。本地验证通过与远端 CI／主线验收分开登记，不用历史输出填充新状态。
+本版在 `evidence/v31.3/` 保存源码、运行、演示、通用 Lean 与实例回执。[本地证明回执](evidence/v31.3/lean-verification.json)、[实例验收](evidence/v31.3/lean-exports/verification.json) 与 [本轮台账](../status/CLAIM_LEDGER_v31.3.json) 分别记录实际结果、被测字节和开放义务。v31.2 原证据保留，并由其独立集成回执记录已经完成的主线结果。
 
 v31.1 的回执继续可读，保持其原源码身份：
 
