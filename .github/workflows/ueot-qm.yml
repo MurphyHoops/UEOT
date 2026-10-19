@@ -38,6 +38,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Record source identity
+        run: |
+          git rev-parse HEAD | tee source-identity.log
+          sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain >> source-identity.log
+          cat source-identity.log
       - name: Check inherited dependency lock
         run: python3 scripts/check_dependencies.py
       - name: Install Elan
@@ -89,6 +97,7 @@ jobs:
         with:
           name: ueot-qm-lean-${{ github.run_id }}
           path: |
+            formalization/ueot-qm/source-identity.log
             formalization/ueot-qm/lean-build.log
             formalization/ueot-qm/axiom-audit.log
             formalization/ueot-qm/lake-manifest.json
