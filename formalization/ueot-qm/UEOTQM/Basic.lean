@@ -67,9 +67,10 @@ def normalize (A : Operator ι) (hA : A.PosSemidef) (hp : 0 < mass A) : Density 
   trace_one := by
     rw [Matrix.trace_smul]
     apply Complex.ext
-    · change (mass A)⁻¹ * mass A = 1
+    · simp only [Complex.smul_re, smul_eq_mul, Complex.one_re]
+      change (mass A)⁻¹ * mass A = 1
       exact inv_mul_cancel₀ hp.ne'
-    · change (mass A)⁻¹ * A.trace.im = 0
+    · simp only [Complex.smul_im, smul_eq_mul, Complex.one_im]
       rw [trace_im_eq_zero hA, mul_zero]
 
 @[simp] theorem normalize_matrix (A : Operator ι) (hA : A.PosSemidef)

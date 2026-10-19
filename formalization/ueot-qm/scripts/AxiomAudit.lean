@@ -1,20 +1,58 @@
 import UEOTQM
 
+-- Every theorem in the five QM modules, plus proof-bearing constructors.
+
+#print axioms UEOTQM.Density.ext
 #print axioms UEOTQM.mass_nonneg
+#print axioms UEOTQM.trace_im_eq_zero
+#print axioms UEOTQM.mass_smul
+#print axioms UEOTQM.Density.mass_one
 #print axioms UEOTQM.mass_eq_zero_iff
-#print axioms UEOTQM.normalize
+#print axioms UEOTQM.normalize_matrix
 #print axioms UEOTQM.krausMap_posSemidef
+#print axioms UEOTQM.krausMap_smul
 #print axioms UEOTQM.trace_krausMap
+#print axioms UEOTQM.Instrument.branch_posSemidef
+#print axioms UEOTQM.Instrument.branch_smul
+#print axioms UEOTQM.Instrument.sum_trace_branch
+#print axioms UEOTQM.Instrument.sum_mass_branch
+#print axioms UEOTQM.Instrument.probability_nonneg
 #print axioms UEOTQM.Instrument.sum_probability
+#print axioms UEOTQM.Instrument.probability_le_one
+#print axioms UEOTQM.Instrument.posterior_matrix
 #print axioms UEOTQM.Instrument.zero_probability_iff_zero_branch
-#print axioms UEOTQM.Instrument.posterior
 #print axioms UEOTQM.ancillaKrausMap_posSemidef
 #print axioms UEOTQM.ancillaKrausMap_entry
+#print axioms UEOTQM.recordOperator_posSemidef
+#print axioms UEOTQM.recordOperator_smul
+#print axioms UEOTQM.response_nonneg
+#print axioms UEOTQM.response_nil
+#print axioms UEOTQM.response_singleton
+#print axioms UEOTQM.totalRecordMass_eq_mass
 #print axioms UEOTQM.totalRecordMass_density
+#print axioms UEOTQM.responseClass_surjective
 #print axioms UEOTQM.existsUnique_responseDecoder
+#print axioms UEOTQM.probability_eq_of_response_eq
 #print axioms UEOTQM.response_posterior
 #print axioms UEOTQM.posterior_response_eq
 #print axioms UEOTQM.nextResponse_eq_none_iff
+#print axioms UEOTQM.nextResponse_eq_of_response_eq
+#print axioms UEOTQM.nextResponse_inputFiberCompatible
 #print axioms UEOTQM.existsUnique_reachableResponseUpdate
+#print axioms UEOTQM.Selector.selector_finite_bounds
 #print axioms UEOTQM.Selector.selects_three_without_atomicity
-
+#print axioms UEOTQM.Selector.dropping_color_bound_admits_four_families
+#print axioms UEOTQM.Selector.dropping_weak_budget_admits_six_families
+#print axioms UEOTQM.Selector.dropping_cubic_equation_admits_one_family
+#print axioms UEOTQM.Selector.dropping_nonempty_family_count_admits_empty_spectrum
+#print axioms UEOTQM.Selector.homogeneous_leptons_recover_cubic_equation
+#print axioms UEOTQM.Selector.mixed_lepton_template_admits_two_families
+#print axioms UEOTQM.Selector.cubic_cancellation_replicates
+#print axioms UEOTQM.Selector.replicated_weak_screening
+#print axioms UEOTQM.Selector.two_or_more_three_family_packets_fail_weak_budget
+#print axioms UEOTQM.Transport.scalarBudget_zero
+#print axioms UEOTQM.Transport.scalarBudget_succ
+#print axioms UEOTQM.Transport.scalarBudget_nonneg
+#print axioms UEOTQM.Transport.scalar_transport_certificate
+#print axioms UEOTQM.normalize
+#print axioms UEOTQM.Instrument.posterior

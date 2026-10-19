@@ -30,6 +30,32 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Install Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Verify exact kernel and independent negative controls
+        run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
+      - name: Run complete kernel example
+        run: python physics/qm/kernel/demo.py > /tmp/ueot-qm-demo.json
+      - name: Archive runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ueot-qm-runtime-${{ github.run_id }}
+          path: |
+            /tmp/ueot-qm-runtime-verification.json
+            /tmp/ueot-qm-demo.json
+          retention-days: 30
+
   lean:
     runs-on: ubuntu-latest
     defaults:
@@ -91,6 +117,7 @@ jobs:
           if grep -E 'sorryAx|Lean.ofReduceBool|admit' axiom-audit.log; then
             exit 1
           fi
+          python3 scripts/check_axioms.py
       - name: Archive proof evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -100,6 +127,7 @@ jobs:
             formalization/ueot-qm/source-identity.log
             formalization/ueot-qm/lean-build.log
             formalization/ueot-qm/axiom-audit.log
+            formalization/ueot-qm/proof-axioms.json
             formalization/ueot-qm/lake-manifest.json
           retention-days: 30
 
