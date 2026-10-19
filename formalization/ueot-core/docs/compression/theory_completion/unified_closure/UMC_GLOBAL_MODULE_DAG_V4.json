@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "cac37557409c34e12e0b950e22eba475f08d39c2978aa651d4cddac6d1224260",
+  "source_tree_sha256": "08a1b117bd84768bb20430827a7f96ee0055902c242af7e91a9f1d6c110f0e39",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 636,
-  "total_source_lines": 112189,
-  "total_theorem_lemma_tokens": 3991,
+  "total_Lean_modules": 641,
+  "total_source_lines": 113399,
+  "total_theorem_lemma_tokens": 4041,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 37
+    "UMC_New_Bridges": 42
   },
-  "reachable_from_UEOT_root": 636,
+  "reachable_from_UEOT_root": 641,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -30,11 +30,19 @@
       "direct_dependents": 9
     },
     {
+      "module": "UEOT.V3.FiniteRecurrentDecompositionStability",
+      "direct_dependents": 9
+    },
+    {
       "module": "UEOT.V3.InformationKernelKL",
       "direct_dependents": 9
     },
     {
       "module": "UEOT.V3.InformationPacking",
+      "direct_dependents": 9
+    },
+    {
+      "module": "UEOT.V3.PathError",
       "direct_dependents": 9
     },
     {
@@ -74,19 +82,11 @@
       "direct_dependents": 7
     },
     {
-      "module": "UEOT.V3.FiniteRecurrentDecompositionStability",
-      "direct_dependents": 7
-    },
-    {
       "module": "UEOT.V3.HilbertMeanDoobStatisticBridge",
       "direct_dependents": 7
     },
     {
       "module": "UEOT.V3.InformationCore",
-      "direct_dependents": 7
-    },
-    {
-      "module": "UEOT.V3.PathError",
       "direct_dependents": 7
     },
     {
@@ -103,6 +103,10 @@
     },
     {
       "module": "UEOT.V3.Compression.TransportCertificate",
+      "direct_dependents": 6
+    },
+    {
+      "module": "UEOT.V3.FiniteDiscountedApproxQuotient",
       "direct_dependents": 6
     },
     {
@@ -186,10 +190,6 @@
       "direct_dependents": 5
     },
     {
-      "module": "UEOT.V3.FiniteDiscountedApproxQuotient",
-      "direct_dependents": 5
-    },
-    {
       "module": "UEOT.V3.FiniteDiscountedSelector",
       "direct_dependents": 5
     },
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 37
+      "edges": 42
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -331,12 +331,12 @@
     {
       "from": "UMC_New_Bridges",
       "to": "C1_C7_SISC",
-      "edges": 15
+      "edges": 17
     },
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 9
+      "edges": 14
     },
     {
       "from": "UMC_New_Bridges",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 9289,
-      "lines": 121,
+      "bytes": 9683,
+      "lines": 126,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3557,7 +3557,12 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge",
         "UEOT.V3.Compression.TheoryCompletion.MinCore.RelationDefectNoGo",
         "UEOT.V3.Compression.TheoryCompletion.MinCore.CalibratedDefectComparison",
-        "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectGaugeCovariance"
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.DefectGaugeCovariance",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonPathAdapter",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedRiskRows",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5090,6 +5095,21 @@
       "theorem_lemma_count": 18,
       "decl_count": 32
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+      "bytes": 8518,
+      "lines": 208,
+      "category": "UMC_New_Bridges",
+      "title": "Absorbing leakage: finite local risk does not imply all-times safety",
+      "imports": [
+        "UEOT.V3.FiniteDiscountedApproxQuotient",
+        "UEOT.V3.FiniteRecurrentDecompositionStability",
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.Tactic"
+      ],
+      "theorem_lemma_count": 16,
+      "decl_count": 20
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ActiveHiddenOptimalControlExample": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ActiveHiddenOptimalControlExample.lean",
       "bytes": 9381,
@@ -5118,6 +5138,21 @@
       ],
       "theorem_lemma_count": 4,
       "decl_count": 4
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedRiskRows": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+      "bytes": 13289,
+      "lines": 257,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.FiniteRecurrentDecompositionStability",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCApproximateLumpability",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCModelKernelReconciliation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticPredictiveRobustObservability"
+      ],
+      "theorem_lemma_count": 8,
+      "decl_count": 10
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreInfinitePathClosure": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreInfinitePathClosure.lean",
@@ -5260,6 +5295,45 @@
       ],
       "theorem_lemma_count": 7,
       "decl_count": 8
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonPathAdapter": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonPathAdapter.lean",
+      "bytes": 3606,
+      "lines": 99,
+      "category": "UMC_New_Bridges",
+      "title": "Finite-horizon completion of the source path-error theorem",
+      "imports": [
+        "UEOT.V3.PathError"
+      ],
+      "theorem_lemma_count": 2,
+      "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean",
+      "bytes": 19486,
+      "lines": 406,
+      "category": "UMC_New_Bridges",
+      "title": "The actual microscopic path projected under one observable-history policy",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonPathAdapter",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedRiskRows"
+      ],
+      "theorem_lemma_count": 13,
+      "decl_count": 20
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean",
+      "bytes": 8923,
+      "lines": 235,
+      "category": "UMC_New_Bridges",
+      "title": "Finite PMF projection and conditional disintegration",
+      "imports": [
+        "UEOT.V3.PathError",
+        "Mathlib.Tactic"
+      ],
+      "theorem_lemma_count": 11,
+      "decl_count": 13
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePredictiveProbeCompleteness": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePredictiveProbeCompleteness.lean",

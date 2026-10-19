@@ -78,13 +78,67 @@ hints; the compiled dependency certificate above establishes the actual reuse.
 The PR parser's lexical corpus counts (3,812 to 3,818) and the registered
 proof graph counts (3,811 to 3,817) are distinct scopes.
 
-The resulting live census is **636 modules = 625 UEOT-maintained + 11 adapted
-upstream**, with **3,817** public authored theorem proof nodes in the direct
-proof graph. All three overlay JSON files and Lean certificates are pinned by
-independent SHA-256 values. The exact live source path set and cumulative
-source-hash overrides are checked fail-closed. Any further Lean source
-addition/removal or source-byte drift requires another governed overlay or
-snapshot and may not be silently absorbed.
+That third layer's historical census is **636 modules = 625 UEOT-maintained +
+11 adapted upstream**, with **3,817** registered public source theorem nodes.
+
+### Layer 4 — calibrated finite-horizon risk of actual projected paths
+
+`FINITE_HORIZON_RISK_REUSE_OVERLAY_V1.json` retains the intact 636-module
+base and adds five physical UnifiedClosure modules:
+`FiniteHorizonPathAdapter`, `FinitePMFProjection`, `CalibratedRiskRows`,
+`AbsorbingLeakage` and `FiniteHorizonRisk`. The source checkpoint is explicitly
+identified by the frozen full-source content hash; it is not represented as a
+Git commit that already contained uncommitted source.
+
+The native export confirms **48 public source candidates**, their actual
+compiler source-module ownership and compiled proof terms. It compares their
+raw stored types with 3,817 prior registered nodes: **183,216 cross-layer** and
+**1,128 internal** `Meta.isDefEq` comparisons, with **0 matches**. Each pair
+uses a fresh `liftTermElabM` state. This inherits the historical raw-type
+protocol; universe parameter names are retained, and zero matches does not
+establish general logical inequivalence or rule out instantiated reuse.
+
+The fixed `VERIFY_FINITE_HORIZON_RISK_OVERLAY_TYPES.lean` certificate rejects
+any change to the observed **73 registered direct proof edges**: 20 target
+previously registered theorems and 53 target another new public theorem.
+The actual composition includes:
+
+- `pmf_tv_le_clipped_coordinate_budget` → the existing
+  `FiniteRecurrentDecompositionStability.pmf_tv_eq_half_sum_abs` and
+  `TotalVariation.tvDist_le_one`;
+- `finite_horizon_path_error` → the existing
+  `PathError.p_dyn_03_finite_path_error`;
+- `same_policy_coordinate_path_error` → the actual projected-path endpoint
+  and the normalized-PMF coordinate budget;
+- `calibrated_representative_path_error` → that same actual path endpoint
+  and `calibrated_observable_partition_tv_budget`;
+- `calibrated_representative_failure_risk` → the calibrated path endpoint
+  and the measurable-event transfer theorem.
+
+The supporting `FINITE_HORIZON_RISK_NATIVE_V1.json` preserves actual type
+displays, universe parameters, all direct proof constants for the 48 public
+source nodes, and an independent axiom census of **75 theorem constants**
+owned by the five compiled modules. That native census comprises 48 confirmed
+public source candidates, **8 private constants** and **19 other nonprivate
+constants** outside the lexical source candidate list. Those 19 are not
+silently counted as authored source declarations. All 75 are checked through
+`Lean.collectAxioms`; the allowlist is `propext`, `Classical.choice`, `Quot.sound`.
+The type display is `ppExpr` output, not a lossless Lean expression encoding.
+
+The existing PR-preflight parser, applied to the immutable base and the frozen
+worktree sources, finds 48 new public names and lexical hints for 15 of them.
+Its corpus grows from 3,818 to 3,866; the registered proof graph grows from
+3,817 to 3,865. These are different scopes. The committed PR gate still runs
+against actual Git objects after commit.
+
+The resulting live census is **641 modules = 630 UEOT-maintained + 11 adapted
+upstream**, with **3,865** registered public source theorem nodes and **4,968**
+direct registered edges. All four overlay JSON files, certificates and the
+new supporting native export are hash-bound. Overlay areas are derived from
+physical source paths, so the new UnifiedClosure nodes are not mislabelled
+as MinCore. No counted Core/Compression tier or scientific open port is
+promoted. The [44-file reading guide](../CANONICAL_READING_GUIDE_V1.md)
+explains the calibrated representative model and the finite-horizon boundary.
 
 ## Run from repository root
 
@@ -102,15 +156,15 @@ snapshot and may not be silently absorbed.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_FINITE_HORIZON_RISK_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  the three governed overlays extend the live census to 636 = 625 + 11.
-- 3,793 immutable-base public source theorem proofs + 24 governed overlay theorem
-  proofs = 3,817 live graph nodes, with 4,895 direct registered-source theorem
-  references after the calibrated and gauge overlays add 3 and 6 certified edges.
+  four governed overlays extend the live census to 641 = 630 + 11.
+- 3,793 immutable-base public source theorem proofs + 72 governed overlay theorem
+  proofs = 3,865 live graph nodes, with 4,968 direct registered-source theorem
+  references. The four overlays add 0, 3, 6 and 73 certified direct edges.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -125,7 +179,7 @@ the public imports with the pinned toolchain:
 - 68 cross-file source-code spans with at least 8 normalized nonblank
   lines (61 wholly nonvendored and 7 involving adapted upstream code);
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
-  a proof-equivalence decision procedure. Recomputing over all 636 modules
+  a proof-equivalence decision procedure. Recomputing over all 641 modules
   preserves all 68 historical rows exactly; no clone snapshot is overwritten.
 
 ## New exact Lean bridge despite non-identical closed types
@@ -157,7 +211,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 636-module live source census. It refuses to
+overlay-chain hashes against the exact 641-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 
