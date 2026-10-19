@@ -60,7 +60,7 @@ jobs:
           proof_required=false
           while IFS= read -r path; do
             case "$path" in
-              formalization/ueot-core/UEOT.lean|formalization/ueot-core/UEOT/*.lean|formalization/ueot-core/UEOT/**/*.lean|formalization/ueot-core/scripts/*.lean|formalization/ueot-core/lakefile.lean|formalization/ueot-core/lake-manifest.json|formalization/ueot-core/lean-toolchain)
+              formalization/ueot-core/UEOT.lean|formalization/ueot-core/UEOT/*.lean|formalization/ueot-core/UEOT/**/*.lean|formalization/ueot-core/scripts/*.lean|formalization/ueot-core/scripts/validate_compression.py|formalization/ueot-core/scripts/test_validate_compression.py|formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml|.github/workflows/ueot-core-compression.yml|formalization/ueot-core/lakefile.lean|formalization/ueot-core/lake-manifest.json|formalization/ueot-core/lean-toolchain)
                 proof_required=true
                 break
                 ;;
@@ -274,7 +274,7 @@ jobs:
       - name: Build compression meta-layer
         run: lake build UEOT.V3.Compression
 
-      - name: Verify ledger theorem witnesses resolve in Lean
+      - name: Verify ledger witnesses and transitive axiom allowlist
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -287,6 +287,7 @@ jobs:
             --verify-finalization-refs \
             --emit-lean-witness-audit /tmp/CompressionLedgerWitnessAudit.lean
           lake env lean /tmp/CompressionLedgerWitnessAudit.lean
+          python3 scripts/test_validate_compression.py --repo-root ../.. --lean-witness-controls-only
 
       - name: Print compression theorem axioms
         run: lake env lean scripts/CompressionAxiomAudit.lean

@@ -12,6 +12,7 @@ import argparse
 import json
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -114,12 +115,97 @@ def expect_index_rejected(
     index_path.write_text(original_index, encoding="utf-8")
 
 
+def run_lean_witness_controls(repo: Path) -> None:
+    """Exercise the production emitter against real kernel axiom dependencies."""
+    from validate_compression import render_lean_witness_audit
+
+    good = "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound"
+    missing = "UEOT.MissingWitnessForAuditControl"
+    leak = "AuditControl.leak"
+    fixtures = {
+        "standard-axioms": (good, "", True, "LEDGER_AXIOM_ALLOWLIST_PASS"),
+        "missing-witness": (missing, "", False, "Unknown"),
+        "custom-axiom": (
+            leak, "namespace AuditControl\naxiom external : False\n"
+            "theorem leak : False := external\nend AuditControl\n",
+            False, "LEDGER_NONSTANDARD_AXIOM AuditControl.leak: #[AuditControl.external]",
+        ),
+        "incomplete-proof": (
+            leak, "namespace AuditControl\ntheorem leak : False := by sorry\n"
+            "end AuditControl\n", False,
+            "LEDGER_NONSTANDARD_AXIOM AuditControl.leak: #[sorryAx]",
+        ),
+    }
+    with tempfile.TemporaryDirectory(prefix="ueot-ledger-axiom-controls-") as tmp:
+        for label, (name, prelude, should_pass, marker) in fixtures.items():
+            source = render_lean_witness_audit({name})
+            source = source.replace(f"#check {name}", prelude + f"#check {name}", 1)
+            path = Path(tmp) / (label + ".lean")
+            path.write_text(source, encoding="utf-8")
+            result = subprocess.run(
+                ["lake", "env", "lean", str(path)],
+                cwd=repo / "formalization/ueot-core",
+                text=True, capture_output=True, check=False,
+            )
+            output = result.stdout + result.stderr
+            if (result.returncode == 0) != should_pass or marker not in output:
+                raise AssertionError(f"{label}: unexpected Lean audit result\n{output}")
+            print(f"ledger-axiom-control-{label}: PASS")
+
+        # An imported private theorem can be outside the logical namespace
+        # while still belonging to a Compression source module. The compiler's
+        # module provenance, not an FQN string prefix, defines this coverage.
+        core = repo / "formalization/ueot-core"
+        lean_path = subprocess.check_output(
+            ["lake", "env", "printenv", "LEAN_PATH"], cwd=core, text=True).strip()
+        command = ["lake", "env", "env", f"LEAN_PATH={tmp}:{lean_path}", "lean"]
+        for label, conclusion, proof, should_pass in (
+            ("imported-private-standard", "True", "True.intro", True),
+            ("imported-private-custom-axiom", "False", "external", False),
+        ):
+            suffix = "PrivateStandard" if should_pass else "PrivateCustom"
+            module = "UEOT.V3.Compression.AuditControl" + suffix
+            fixture = Path(tmp).joinpath(*module.split(".")).with_suffix(".lean")
+            fixture.parent.mkdir(parents=True, exist_ok=True)
+            prelude = "" if should_pass else "axiom external : False\n"
+            fixture.write_text(
+                "namespace AuditOutsideCompression\n" + prelude +
+                "theorem anchor : True := True.intro\n" +
+                f"private theorem certificate : {conclusion} := {proof}\n" +
+                "end AuditOutsideCompression\n", encoding="utf-8")
+            compiled = subprocess.run(
+                command + ["-R", tmp, "-o", str(fixture.with_suffix(".olean")), str(fixture)],
+                cwd=core, text=True, capture_output=True, check=False)
+            if compiled.returncode != 0:
+                raise AssertionError(f"{label}: fixture compilation failed\n" +
+                                     compiled.stdout + compiled.stderr)
+            # Isolate the imported module to avoid shadowing the real UEOT
+            # package root with this temporary UEOT fixture directory.
+            source = render_lean_witness_audit({"AuditOutsideCompression.anchor"})
+            source = source.replace("import UEOT.V3.Compression\n",
+                                    f"import {module}\n", 1)
+            path = Path(tmp) / (label + ".lean")
+            path.write_text(source, encoding="utf-8")
+            result = subprocess.run(command + [str(path)], cwd=core,
+                                    text=True, capture_output=True, check=False)
+            output = result.stdout + result.stderr
+            marker = ("COMPRESSION_NATIVE_AXIOM_PASS" if should_pass
+                      else "COMPRESSION_NONSTANDARD_AXIOM")
+            if (result.returncode == 0) != should_pass or marker not in output:
+                raise AssertionError(f"{label}: unexpected source-module audit result\n{output}")
+            print(f"ledger-axiom-control-{label}: PASS")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
+    parser.add_argument("--lean-witness-controls-only", action="store_true")
     args = parser.parse_args()
 
     repo = Path(args.repo_root).resolve()
+    if args.lean_witness_controls_only:
+        run_lean_witness_controls(repo)
+        return
     ledger_path = (
         repo
         / "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"

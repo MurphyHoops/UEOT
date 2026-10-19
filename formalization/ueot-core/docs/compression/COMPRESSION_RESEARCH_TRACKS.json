@@ -11,30 +11,22 @@
   "cross_track_integration_gate": "open",
   "l2_existing_path_exceptions": [
     {
-      "exception_id": "TC-DEFECT-GAUGE-UMC-DAG-REFRESH-2026-10-12",
+      "exception_id": "TC-FINITE-HORIZON-RISK-EVIDENCE-2026-10-19",
       "track": "TC",
       "branch_patterns": [
-        "^compression/theory-completion-defect-gauge-covariance$"
+        "^compression/theory-completion-finite-horizon-risk$"
       ],
       "paths": [
-        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
-      ],
-      "reason": "Adding the defect-gauge covariance Lean research module changes the exact first-party Theory Completion source census and source-tree fingerprint. The existing fail-closed UMC global DAG receipt must be regenerated from source; no frozen Core theorem, counted generator, Compression ledger, or UMC scientific theorem is modified.",
-      "temporary": true
-    },
-    {
-      "exception_id": "TC-DEFECT-GAUGE-FKRG-OVERLAY-2026-10-12",
-      "track": "TC",
-      "branch_patterns": [
-        "^compression/theory-completion-defect-gauge-covariance$"
-      ],
-      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_umc_local.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
       ],
-      "reason": "The new defect-gauge covariance module makes the live FKRG source census stale at 636 modules. Preserve the immutable 2026-10-10 base plus the two existing governed overlays by adding a third additive gauge-covariance overlay/certificate and minimally extending the live navigator, regressions, operator documentation, and clone-scanner census description. No frozen Core theorem, counted generator, Compression ledger, or scientific theorem is modified.",
+      "reason": "The finite-horizon same-source risk bridge adds uncounted Lean modules, requiring a source-derived current DAG and an additive kernel-checked reuse overlay. Separate the receipt-writer unit test from the independent source-freshness integration gate, and repair the existing knowledge reading entry. Historical snapshots, receipts, frozen Core semantics, counted generators and ledger remain unchanged; these existing evidence and navigation entry points cannot be replaced honestly by parallel additive ledgers.",
       "temporary": true
     }
   ],
@@ -168,7 +160,7 @@
       "change_policy": "additive_only_by_default"
     },
     "X": {
-      "title": "Cross-Track Parent Formation × Long-Run Semantic Stability",
+      "title": "Cross-Track Parent Formation \u00d7 Long-Run Semantic Stability",
       "status": "active",
       "preferred_branch_prefix": "compression/cross-track-",
       "branch_patterns": [
