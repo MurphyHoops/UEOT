@@ -88,6 +88,77 @@ COMPRESSION_LEAN_PREFIXES = (
 LEAN_DECL_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*$")
 
 
+def compression_source_modules(core: Path) -> set[str]:
+    """Inventory physical sources independently of the public import graph."""
+    root = core / "UEOT/V3/Compression.lean"
+    if not root.is_file():
+        raise ValueError(f"Compression source root missing: {root}")
+    sources = [root, *(core / "UEOT/V3/Compression").rglob("*.lean")]
+    return {
+        ".".join(path.relative_to(core).with_suffix("").parts)
+        for path in sources if path.is_file()
+    }
+
+
+def render_lean_witness_audit(
+    witnesses: set[str], *, expected_source_modules: set[str]
+) -> str:
+    if not expected_source_modules:
+        raise ValueError("Compression source census must not be empty")
+    names = sorted(witnesses)
+    lines = [
+        "import UEOT.V3.Compression",
+        "import Lean.Util.CollectAxioms",
+        "import Lean.Elab.Command",
+        "",
+        "-- Generated from COMPRESSION_LEDGER.yaml by validate_compression.py.",
+        "-- Name resolution and transitive axiom dependencies are compiler facts.",
+    ]
+    lines.extend(f"#check {name}" for name in names)
+    lines.extend([
+        "",
+        "open Lean Elab Command in",
+        "run_cmd do",
+        "  let env ← getEnv",
+        "  let expectedSourceModules : Array Name := #[",
+        *[f"    `{name}," for name in sorted(expected_source_modules)],
+        "  ]",
+        "  for sourceModule in expectedSourceModules do",
+        "    unless env.header.moduleNames.contains sourceModule do",
+        '      throwError s!"COMPRESSION_SOURCE_MODULE_NOT_IMPORTED {sourceModule}"',
+        "  let witnesses : Array Name := #[",
+        *[f"    `{name}," for name in names],
+        "  ]",
+        "  let allowed : Array Name := #[`propext, `Classical.choice, `Quot.sound]",
+        "  for name in witnesses do",
+        "    let _ ← getConstInfo name",
+        "    let actual ← Lean.collectAxioms name",
+        "    let unexpected := actual.filter fun ax => !allowed.contains ax",
+        "    unless unexpected.isEmpty do",
+        '      throwError s!"LEDGER_NONSTANDARD_AXIOM {name}: {unexpected}"',
+        '  logInfo s!"LEDGER_AXIOM_ALLOWLIST_PASS witnesses={witnesses.size}"',
+        "  let scopeRoot := `UEOT.V3.Compression",
+        "  let mut count := 0",
+        "  let mut privateCount := 0",
+        "  for (name, info) in env.constants.toList do",
+        "    if let .thmInfo _ := info then",
+        "      if let some idx := env.getModuleIdxFor? name then",
+        "        let sourceModule := env.header.moduleNames[idx]!",
+        "        if scopeRoot.isPrefixOf sourceModule then",
+        "          let actual ← Lean.collectAxioms name",
+        "          let unexpected := actual.filter fun ax => !allowed.contains ax",
+        "          unless unexpected.isEmpty do",
+        '            throwError s!"COMPRESSION_NONSTANDARD_AXIOM {name}: {unexpected}"',
+        "          count := count + 1",
+        "          if (Lean.privateToUserName? name).isSome then",
+        "            privateCount := privateCount + 1",
+        "  unless count > 0 do",
+        '    throwError "COMPRESSION_NATIVE_SCOPE_EMPTY"',
+        '  logInfo s!"COMPRESSION_NATIVE_AXIOM_PASS theorems={count} private={privateCount}"',
+    ])
+    return "\n".join(lines) + "\n"
+
+
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
     raise SystemExit(1)
@@ -500,7 +571,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--emit-lean-witness-audit",
-        help="write a generated Lean file that #check's every ledger theorem witness",
+        help="write a Lean audit that resolves every ledger witness and rejects nonstandard axioms",
     )
     args = parser.parse_args()
 
@@ -1055,14 +1126,13 @@ def main() -> None:
     if args.emit_lean_witness_audit:
         audit_path = Path(args.emit_lean_witness_audit)
         audit_path.parent.mkdir(parents=True, exist_ok=True)
-        lines = [
-            "import UEOT.V3.Compression",
-            "",
-            "-- Generated from COMPRESSION_LEDGER.yaml by validate_compression.py.",
-            "-- CI compiles this file so stale/typo/fabricated theorem names cannot pass.",
-        ]
-        lines.extend(f"#check {name}" for name in sorted(lean_witnesses))
-        audit_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        audit_path.write_text(
+            render_lean_witness_audit(
+                lean_witnesses,
+                expected_source_modules=compression_source_modules(core),
+            ),
+            encoding="utf-8",
+        )
 
     print("Compression governance validation PASS")
     print("source_index=106 unique=106")
