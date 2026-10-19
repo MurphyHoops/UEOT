@@ -50,8 +50,9 @@ P1(u,v) <= L * P0(x,y)
 Q1(u,v) <= (b1/a0) * L * Q0(x,y).
 ```
 
-This identifies the exact target-upper/source-lower distortion of the
-cross-stage contraction coefficient.
+This gives the guaranteed target-upper/source-lower bound factor for the
+cross-stage contraction coefficient. It does not assert that this factor is
+optimal for a particular pair of presentations.
 
 ## 3. Positive scalar gauge
 
@@ -96,13 +97,14 @@ conflated.
 
 | Change of presentation | Exact zero/relation | finite budgets | exact triangle | M-TC premise class |
 |---|---:|---:|---:|---:|
-| general positive two-sided calibration | yes | yes, rescaled | only quasi-triangle bound established | not preserved in the exact registered form |
+| general positive two-sided calibration | yes | yes, rescaled | only quasi-triangle bound established | exact registered form not guaranteed by calibration alone |
 | positive stagewise scalar rescaling | yes | yes, rescaled | yes | yes, with covariant coefficients |
 
-This is a genuine strengthening of the MINCORE classification: the universal
-object is not an untyped defect value.  Quantitative presentations have a
-gauge structure, and only a restricted gauge subgroup preserves the exact
-M-TC local calculus.
+This strengthens the sufficient covariance results for quantitative defect
+presentations: positive scalar gauges preserve the exact M-TC local calculus,
+while a general two-sided calibration alone gives the displayed weaker bound.
+The scalar result is a sufficient subclass, not a necessary condition or an
+exhaustive classification of transformations preserving the local premises.
 
 ## 6. Non-claims
 
@@ -121,17 +123,30 @@ This work does not establish:
 The four counted generators remain
 `{M-QD-01, M-TC-01, M-PE-01, M-OI-01}`.
 
-## 7. Current validation
+## 7. Validation and evidence refresh
 
-Before evidence-surface refresh:
+The source was rechecked in an isolated Lean 4.33.1 / pinned-Mathlib worktree:
 
-- focused Lean compile of `DefectGaugeCovariance.lean`: PASS;
-- public `TheoryCompletion` root build: PASS, 9,102 jobs;
+- focused/public `TheoryCompletion` build: PASS, 9,102 jobs;
+- official `lake build UEOT`: PASS, 9,342 jobs;
+- exact source remains pinned by the additive
+  `DEFECT_GAUGE_REUSE_OVERLAY_V1.json` and its Lean certificate;
+- the native certificate checks the six new types against 3,811 prior
+  registered theorem types (22,866 comparisons), plus 15 internal pairs:
+  zero definitional type matches;
+- compiled proof terms certify six registered direct edges, including the
+  terminal call to the existing M-TC weighted-chain theorem;
+- the live DAG and source-hash census cover 636 bundled modules:
+  625 UEOT-maintained plus 11 adapted upstream;
+- FKRG source/index regressions: 17/17 PASS; reuse regressions: 17/17 PASS;
+- the immutable 68-row source-clone snapshot reproduces unchanged;
 - `git diff --check`: PASS.
 
-Because the new Lean module changes the live first-party module set, the
-fail-closed UMC DAG and FKRG proof-reuse evidence must be refreshed through
-temporary L2 authorization before this round can close.  Historical FKRG
-snapshots/overlays must remain immutable; the new evidence must be an additive
-layer.
-
+The refresh consumes the exact existing-path authorization merged in #328.
+The two prior overlays and the original source snapshot remain byte-identical;
+this round adds a third pinned overlay and certificate. Kernel type identity,
+registered proof dependence, source text similarity and scientific adequacy
+remain separate judgments. The source-level independent review corrected
+sufficiency/necessity and optimal-constant wording without changing any Lean
+statement. PR and resulting-main checks are recorded on #327; this source
+checkpoint does not predict their outcome.

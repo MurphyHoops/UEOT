@@ -8,7 +8,7 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-## Governed overlay chain (2026-10-11 to 2026-10-12)
+## Governed overlay chain (2026-10-11 to 2026-10-19)
 
 The 2026-10-10 633-module audit remains immutable history.
 
@@ -50,9 +50,37 @@ The last edge is the intended theorem reuse: the calibrated bridge transports
 an already-proved M-TC finite-horizon certificate rather than reproving the
 weighted recurrence.
 
-The resulting live census is **635 modules = 624 UEOT-maintained + 11 adapted
-upstream**, with **3,811** public authored theorem proof nodes in the direct
-proof graph. Both overlay JSON files and both Lean certificates are pinned by
+### Layer 3 — defect gauge covariance
+
+`DEFECT_GAUGE_REUSE_OVERLAY_V1.json` composes on the intact 635-module state,
+pinned to source checkpoint `3fb6c422638a6c8dbb2ea31cf9affd4e2f17b668`.
+It adds `DefectGaugeCovariance.lean` and 6 public theorem nodes.
+
+`VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean` compares those 6 types with all
+3,811 prior registered theorem nodes: 22,866 cross-layer `Meta.isDefEq`
+comparisons plus 15 internal comparisons, with 0 matches. The same native
+certificate checks exactly 6 registered direct proof edges:
+
+- `DefectCalibration.triangle_quasi` and
+  `calibrated_cross_stage_contraction` each use
+  `DefectCalibration.reverse_budget`;
+- `rescaled_weighted_chain_bound` uses
+  `TransportCertificate.weighted_chain_bound` and the three new scalar-gauge
+  helpers `rescale_triangle_preserved`, `rescale_contraction_transformed`, and
+  `rescale_local_budget_transformed`;
+- the three scalar-gauge helpers have no registered direct theorem edges.
+
+The immutable-base PR preflight finds six new theorem names, with prior
+lexical reuse candidates for one of them: `rescaled_weighted_chain_bound`.
+Its three hints are the registered weighted-chain bound, the earlier calibrated
+bound, and `TransportCertificate.chain_bound`. These remain name-similarity
+hints; the compiled dependency certificate above establishes the actual reuse.
+The PR parser's lexical corpus counts (3,812 to 3,818) and the registered
+proof graph counts (3,811 to 3,817) are distinct scopes.
+
+The resulting live census is **636 modules = 625 UEOT-maintained + 11 adapted
+upstream**, with **3,817** public authored theorem proof nodes in the direct
+proof graph. All three overlay JSON files and Lean certificates are pinned by
 independent SHA-256 values. The exact live source path set and cumulative
 source-hash overrides are checked fail-closed. Any further Lean source
 addition/removal or source-byte drift requires another governed overlay or
@@ -71,13 +99,18 @@ snapshot and may not be silently absorbed.
     python3 "$P/REBUILD_CLONE_CANDIDATES.py"
     python3 "$P/VERIFY_PMF_TV_BRIDGE.py"
 
+Run the new native certificate from `formalization/ueot-core` after building
+the public imports with the pinned toolchain:
+
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean
+
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  the two governed overlays extend the live census to 635 = 624 + 11.
-- 3,793 immutable-base public source theorem proofs + 18 governed overlay theorem
-  proofs = 3,811 live graph nodes, with 4,889 direct registered-source theorem
-  references after the calibrated overlay adds 3 certified edges.
+  the three governed overlays extend the live census to 636 = 625 + 11.
+- 3,793 immutable-base public source theorem proofs + 24 governed overlay theorem
+  proofs = 3,817 live graph nodes, with 4,895 direct registered-source theorem
+  references after the calibrated and gauge overlays add 3 and 6 certified edges.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -92,7 +125,8 @@ snapshot and may not be silently absorbed.
 - 68 cross-file source-code spans with at least 8 normalized nonblank
   lines (61 wholly nonvendored and 7 involving adapted upstream code);
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
-  a proof-equivalence decision procedure.
+  a proof-equivalence decision procedure. Recomputing over all 636 modules
+  preserves all 68 historical rows exactly; no clone snapshot is overwritten.
 
 ## New exact Lean bridge despite non-identical closed types
 
@@ -123,7 +157,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 635-module live source census. It refuses to
+overlay-chain hashes against the exact 636-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 
