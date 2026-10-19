@@ -1,74 +1,92 @@
 {
   "schema": "ueot-qm-current/2",
   "date": "2026-10-19",
-  "version": "31.1-kernel.1",
+  "version": "31.2-kernel.1.2",
   "layer": "physics/qm",
-  "objective": "Establish the first executable and formally checked UEOT-QM operational kernel.",
-  "core_baseline": "54378ff962b2a6038d9405edb83a33a3099833cb",
-  "entrypoint": "../UEOT_QM_KERNEL_v31.1.md",
+  "objective": "Connect all-word quantum response objects to finite coordinates, adaptive laws and independently checkable spectrum/representation witnesses.",
+  "core_baseline": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
+  "entrypoint": "../UEOT_QM_KERNEL_v31.2.md",
   "runtime_entrypoint": "../kernel/README.md",
   "formalization": "formalization/ueot-qm",
   "roadmap": "../ROADMAP.md",
-  "claim_ledger": "CLAIM_LEDGER_v31.1.json",
-  "previous_claim_ledger": "CLAIM_LEDGER_v31.json",
+  "claim_ledger": "CLAIM_LEDGER_v31.2.json",
+  "previous_claim_ledger": "CLAIM_LEDGER_v31.1.json",
   "acceptance_marker": {
-    "state": "ACCEPTED",
+    "state": "LOCAL_VERIFIED_CI_PENDING",
     "change_class": "B",
-    "authority": "User-directed continuation through formation of a QM kernel",
-    "domain_memo": "../audits/KERNEL_REVIEW_20261019.md",
+    "authority": "User-directed continuation of the entire UEOT-QM construction and remote QM synchronization",
+    "domain_memo": "../audits/KERNEL_REVIEW_v31.2.md",
     "accepted_scope": [
-      "Kernel 1 finite exact operational runtime with 32 passing independent test methods",
-      "56 Lean theorem declarations and 59 audited declarations compiled at the recorded commit",
-      "Concrete Kraus probabilities and finite-ancilla positivity",
-      "All-word response quotient and closed reachable-range Option update",
-      "Conditional scalar transport and non-atomic G3 arithmetic selector",
-      "Finite protocol certificates with explicitly limited coverage"
+      "Actual Kraus trace duality and minimal generated finite observable space",
+      "Finite local presentation iff all-word response equality and closed coordinate posterior update",
+      "Complete finite adaptive tree normalization and coordinate-computed leaf laws",
+      "Independent bounded representation certificate checks and exact runtime demonstrations",
+      "Finite spectrum sums to conditional G3; explicit anomaly and threshold counterexamples",
+      "Identity and semantic review of five supplied theory sources"
     ],
     "does_not_promote": [
-      "Python-to-Lean refinement",
+      "Python/JSON-to-Lean refinement",
       "Unconditional real-world generation count",
       "Hilbert/Born reconstruction",
-      "Historical archival byte verification",
+      "All historical archival byte verification",
       "New empirical confirmation",
       "Frozen Core counts"
     ],
-    "accepted_at_utc": "2026-10-19T14:46:35.297443+00:00",
-    "evidence": "../kernel/evidence/lean-verification.json",
-    "tested_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
-    "workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39270031506"
+    "source_contract_review": "CLEAR",
+    "local_machine_acceptance": "PASS",
+    "integration_acceptance": "PENDING_CI_AND_MAIN"
   },
   "completed_in_this_delivery": [
-    "Finite exact runtime and 32 independent test methods",
-    "Finite causal protocol laws, W* response basis and coordinate updates",
-    "Explicit finite protocol, scalar trace and postselection certificates",
-    "Five Lean modules and unified entrypoint compiled: 56 theorem declarations, 59 standard-foundation axiom reports; closed reachable-state update included"
+    "9 Lean modules and 128 explicit theorems compiled with official Lean 4.33.1",
+    "137 actual named axiom reports passed the reviewed-foundation audit",
+    "30 tested source/lock files match the published source tree",
+    "72 executable test methods passed locally",
+    "Independent finite representation certificate producer/checker",
+    "Finite spectrum row adapter and six local 331 anomaly calculator",
+    "Source identity and semantic review of five uploaded theory documents"
   ],
   "next_execution": {
-    "primary": "Prove W* span and finite-coordinate equivalence in Lean, then implement weighted/ragged-index/data adapters",
-    "parallel": "Finite-spectrum anomaly and weak-multiplicity adapter into the existing G3 selector",
+    "primary": "Weighted/ragged-index and Gaussian-rational data adapters; reliable finite certificate checking in Lean",
+    "parallel": "Concrete quantum metric local bounds into existing transport; physical spectrum/window obligations",
     "then": [
-      "Establish a concrete quantum metric recurrence for M-TC",
-      "Finite-tree Lean interpreter",
-      "QDRR protocol/noise/statistical validation"
-    ]
+      "QMB-05 Cesaro and QMB-06 diagonal survival bridges",
+      "QDRR protocol/noise/statistical validation",
+      "Energy-controlled CV and bounded-response QFT/RG interfaces"
+    ],
+    "integration_gate": "Complete PR #333 remote CI and normal main integration after the service recovers"
   },
   "known_open_items": [
-    "W* and executable program refinement",
-    "Quantum metric local bounds",
-    "Physical G3 spectrum/window applicability",
-    "Historical original bytes and two v28.1 artifacts",
+    "Python/JSON/search/solver/tree refinement",
+    "Dedicated d^2 Hermitian dimension and W_n algorithm termination proofs",
+    "Quantum metric local bounds and conditioning theorem",
+    "Physical G3 representation/window/global-anomaly/vacuum/mass applicability",
+    "Historical archives beyond the verified root PDF and two v28.1 artifacts",
     "QMB-05/06, continuous-variable and QFT interfaces"
   ],
   "integration": {
     "target_branch": "main",
     "temporary_branch": "qm/upgrade-core-v3-v31",
-    "pull_request": 331,
+    "pull_request": 333,
     "scope": [
       "physics/qm/**",
       "formalization/ueot-qm/**",
       ".github/workflows/ueot-qm.yml"
     ],
-    "parent_commit": "54378ff962b2a6038d9405edb83a33a3099833cb",
-    "record": "The containing commit and PR are authoritative; proof evidence binds a specific tested ancestor and source hashes."
-  }
+    "parent_commit": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
+    "record": "The containing commit and PR are authoritative; proof evidence binds a specific tested ancestor and source hashes.",
+    "observed_main_after_parallel_core_merge": "4b29172c7efef9de95e8070abfd3ded9006bd462",
+    "state": "PENDING_REMOTE_CI_AND_MAIN",
+    "source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+    "source_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39284136188",
+    "official_service_incident": "https://www.githubstatus.com/incidents/8tzbpcnl75jp"
+  },
+  "verification_state": "LOCAL_VERIFIED_CI_PENDING",
+  "verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+  "proof_receipt": "../kernel/evidence/v31.2/lean-verification.json",
+  "verified_mathematics": [
+    "Actual trace-dual observable closure and finite word-effect generation",
+    "Finite local presentation iff all-word response equality and closed coordinate update",
+    "Complete finite adaptive tree laws and finite coordinate composition",
+    "Finite spectrum sums to conditional G3 selector"
+  ]
 }
