@@ -184,6 +184,54 @@ theorem existsUnique_reachableResponseUpdate (I : A → Instrument ι O κ) :
   UEOT.V3.Compression.RecursiveSufficientState.existsUnique_reachableUpdate
     (response I) (nextResponse I) (nextResponse_inputFiberCompatible I)
 
+/-- The positive branch carries the actual posterior as a witness that its
+response is reachable. Thus a successful update can be used as the input of
+another update on the same reachable-state type. -/
+def nextReachableResponse (I : A → Instrument ι O κ) (ρ : Density ι)
+    (e : A × O) : Option (Set.range (response I)) :=
+  if hp : 0 < (I e.1).probability ρ e.2 then
+    some (UEOT.V3.Compression.RecursiveSufficientState.toReachable
+      (response I) ((I e.1).posterior ρ e.2 hp))
+  else none
+
+/-- Forgetting the reachability witness recovers the original response-valued
+interface, including its explicit failure on zero-probability branches. -/
+@[simp] theorem nextReachableResponse_map_val (I : A → Instrument ι O κ)
+    (ρ : Density ι) (e : A × O) :
+    Option.map Subtype.val (nextReachableResponse I ρ e) = nextResponse I ρ e := by
+  unfold nextReachableResponse nextResponse
+  split_ifs <;> rfl
+
+theorem nextReachableResponse_eq_of_response_eq (I : A → Instrument ι O κ)
+    {ρ σ : Density ι} (h : response I ρ = response I σ) (e : A × O) :
+    nextReachableResponse I ρ e = nextReachableResponse I σ e := by
+  have he := probability_eq_of_response_eq I h e
+  by_cases hρ : 0 < (I e.1).probability ρ e.2
+  · have hσ : 0 < (I e.1).probability σ e.2 := by rw [← he]; exact hρ
+    rw [nextReachableResponse, nextReachableResponse, dif_pos hρ, dif_pos hσ]
+    apply congrArg some
+    apply Subtype.ext
+    exact posterior_response_eq I h e hρ hσ
+  · have hσ : ¬ 0 < (I e.1).probability σ e.2 := by rw [← he]; exact hρ
+    rw [nextReachableResponse, nextReachableResponse, dif_neg hρ, dif_neg hσ]
+
+theorem nextReachableResponse_inputFiberCompatible (I : A → Instrument ι O κ) :
+    UEOT.V3.Compression.RecursiveSufficientState.InputFiberCompatible
+      (response I) (nextReachableResponse I) := by
+  intro ρ σ h e
+  exact nextReachableResponse_eq_of_response_eq I h e
+
+/-- Actual Core descent now yields a closed recursive interface: every
+successful output belongs to the same reachable-state type as the input.
+Fiber compatibility is proved from the quantum posterior response law. -/
+theorem existsUnique_closedReachableUpdate (I : A → Instrument ι O κ) :
+    ∃! U : Set.range (response I) → (A × O) → Option (Set.range (response I)),
+      ∀ ρ e,
+        U (UEOT.V3.Compression.RecursiveSufficientState.toReachable (response I) ρ) e =
+          nextReachableResponse I ρ e :=
+  UEOT.V3.Compression.RecursiveSufficientState.existsUnique_reachableUpdate
+    (response I) (nextReachableResponse I) (nextReachableResponse_inputFiberCompatible I)
+
 end
 
 end UEOTQM

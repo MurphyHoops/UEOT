@@ -56,3 +56,8 @@ import UEOTQM
 #print axioms UEOTQM.Transport.scalar_transport_certificate
 #print axioms UEOTQM.normalize
 #print axioms UEOTQM.Instrument.posterior
+#print axioms UEOTQM.nextReachableResponse_map_val
+#print axioms UEOTQM.nextReachableResponse_eq_of_response_eq
+#print axioms UEOTQM.nextReachableResponse_inputFiberCompatible
+#print axioms UEOTQM.existsUnique_closedReachableUpdate
+#print axioms UEOTQM.nextReachableResponse
