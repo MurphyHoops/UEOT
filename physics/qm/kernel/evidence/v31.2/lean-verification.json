@@ -1,0 +1,214 @@
+{
+  "schema": "ueot_qm.lean_verification.v2",
+  "created_at_utc": "2026-10-19T16:19:02.308331+00:00",
+  "status": "PASS",
+  "verification_scope": "LOCAL_LEAN_BUILD_AND_ACTUAL_AXIOM_AUDIT",
+  "repository": "MurphyHoops/UEOT",
+  "tested_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+  "tested_source_tree": "5e79f7e920dbe59a5988d816a8fb8648723f6ca0",
+  "core_baseline": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
+  "pull_request": 333,
+  "execution": {
+    "location": "local isolated checkout",
+    "checkout_before_source_fixes": "34aa3ec07cd2197f5906772f0ef68a4c393fbb68",
+    "patched_files": [
+      "formalization/ueot-qm/UEOTQM/Adaptive.lean",
+      "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean",
+      "formalization/ueot-qm/UEOTQM/Spectrum.lean"
+    ],
+    "identity_note": "Compilation used this checkout with the listed fixes. After publication, all 30 tested source/lock files were compared with the remote tested_source_tree and matched exactly.",
+    "compiler": "Official Lean 4.33.1 x86_64 Linux release; original configured network proxy preserved",
+    "archive_url": "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst",
+    "archive_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+    "archive_digest_matches_official_release_asset": true,
+    "dependency_check": "PASS: exact Core toolchain and dependency revisions inherited",
+    "installed_dependency_revisions_checked": 9,
+    "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "lean_compiler_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6"
+  },
+  "formal_verification": {
+    "root_build_command": "lake build UEOTQM",
+    "root_build_exit_code": 0,
+    "root_build_status": "success",
+    "module_theorem_counts": {
+      "Adaptive": 11,
+      "Basic": 7,
+      "FiniteCoordinates": 21,
+      "Instrument": 14,
+      "Observables": 25,
+      "Operational": 20,
+      "Selector": 11,
+      "Spectrum": 15,
+      "Transport": 4
+    },
+    "theorem_declaration_count": 128,
+    "audited_declaration_count": 137,
+    "additional_audited_definitions": [
+      "UEOTQM.normalize",
+      "UEOTQM.Instrument.posterior",
+      "UEOTQM.nextReachableResponse",
+      "UEOTQM.pairingLinear",
+      "UEOTQM.heisenbergLinear",
+      "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate",
+      "UEOTQM.Adaptive.Protocol.leafFintype",
+      "UEOTQM.Spectrum.oneHiggs",
+      "UEOTQM.Spectrum.twentyHiggs"
+    ],
+    "audit_commands": [
+      "lake env lean scripts/AxiomAudit.lean",
+      "python3 scripts/check_axioms.py"
+    ],
+    "audit_exit_code": 0,
+    "actual_axiom_parser_status": "PASS",
+    "allowed_foundation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axiom_report": "proof-axioms.json",
+    "source_escape_gate": "PASS",
+    "build_job_count_not_theorem_count": 8729,
+    "count_scope": "Explicit source theorem declarations and named proof-bearing constructions; not all compiler-generated constants",
+    "warnings": "Nonfatal style and unused-variable/simp warnings remain in the actual log."
+  },
+  "runtime_verification": {
+    "local_status": "PASS",
+    "local_test_methods_run": 72,
+    "local_receipt": "runtime-verification.json",
+    "local_receipt_created_at_utc": "2026-10-19T15:45:04.379344+00:00",
+    "local_source_hashes_match_tested_source_commit": true,
+    "demo_outputs": [
+      "kernel-demo.json",
+      "kernel-demo-v312.json"
+    ],
+    "program_refinement_in_Lean": "NOT_ESTABLISHED"
+  },
+  "integration_observation": {
+    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "observed_at_utc": "2026-10-19T16:19:02.308331+00:00",
+    "source_run_id": 39284136188,
+    "source_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39284136188",
+    "source_run_status": "queued",
+    "source_run_conclusion": null,
+    "official_service_incident": "https://www.githubstatus.com/incidents/8tzbpcnl75jp",
+    "pull_request_merge": "PENDING",
+    "main_ci": "NOT_YET_EXECUTED_FOR_THIS_DELIVERY",
+    "note": "This is a timestamped observation, not a GitHub CI success receipt. Later containing commits may record integration separately."
+  },
+  "identity_validation": {
+    "all_local_source_git_blobs_match_tested_remote_tree": true,
+    "source_file_count": 30,
+    "source_manifest": "source-manifest.json",
+    "authoring_and_build_sources_equal": true,
+    "inherited_core_blobs": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+        "sha256": "1cb1e6f46e36f989cfdd8f4b300084245efa090c5a4f6140960049bfcd476dcd",
+        "git_blob_sha1": "bf1393064748cd1fd09144c5c2623b2b39999679",
+        "bytes": 15340
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/RecursiveSufficientState.lean",
+        "sha256": "076e3cd74eb490bf221b6b73e7e7a16eb60dd2e5c1feba2b910990dd1ae434ca",
+        "git_blob_sha1": "78501e12c92d3cd21067b802474b7ae3e850c640",
+        "bytes": 7796
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+        "sha256": "6def721f70ee273372a97faa6e15387baec83f7442eb95f9ae25c449741904c4",
+        "git_blob_sha1": "eb73551dbfed0ba4a48ec451bb08fe5a247a7762",
+        "bytes": 22327
+      },
+      {
+        "path": "formalization/ueot-core/lake-manifest.json",
+        "sha256": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+        "git_blob_sha1": "a397f3de8bce9450e4ca38241d93f58075ff689f",
+        "bytes": 3160
+      },
+      {
+        "path": "formalization/ueot-core/lean-toolchain",
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+        "git_blob_sha1": "a8afa7d1b02d96f0671eba854a8dc4b416beb473",
+        "bytes": 25
+      }
+    ]
+  },
+  "evidence_provenance": {
+    "lean-build.log": "Unedited stdout/stderr of the final successful local lake build, including replayed warnings.",
+    "axiom-audit.log": "Unedited actual output of all 137 local Lean #print axioms requests.",
+    "proof-axioms.json": "Produced by the committed check_axioms.py from the actual local audit log.",
+    "runtime-verification.json": "Actual unified 72-method local runtime receipt, preserved byte-for-byte.",
+    "source-identity.log": "Locally generated binding of the working-tree source bytes to their subsequently published Git tree; not a CI checkout log."
+  },
+  "claim_boundaries": [
+    "The finite complex density/Kraus/Born sector is an explicit input.",
+    "Finite word-effect generation, all-word finite coordinates and complete finite adaptive tree laws are Lean checked.",
+    "Finite spectrum selection is conditional on the declared family template, anomaly and active weak-window premises.",
+    "Python/JSON/weighted/ragged-index/search/solver refinement and dedicated d^2/algorithm-termination proofs remain open.",
+    "Six local 331 anomaly examples are executable calculations, not a new general six-channel Lean theorem.",
+    "No new empirical confirmation, whole-QFT closure or change to frozen Core counts.",
+    "GitHub CI and normal main integration are separate pending gates at this observation."
+  ],
+  "durable_evidence_files": [
+    {
+      "path": "axiom-audit.log",
+      "sha256": "3bff7d37dae5dbe4662a8df9f61a025184805bdd38c7667c124abf5ddb3099ea",
+      "git_blob_sha1": "7e7791faaf4fe5d1abd98da92d2a8c4902d676fe",
+      "bytes": 13683
+    },
+    {
+      "path": "kernel-demo-v312.json",
+      "sha256": "13c0301a1b59622f15da663b0cf0bd7c7b899d831f13f02eb8a9771122ea9726",
+      "git_blob_sha1": "2f5297317d3d96e09f7d327c86f17dbc45b501ef",
+      "bytes": 103548
+    },
+    {
+      "path": "kernel-demo.json",
+      "sha256": "6415079f1979fd4d1ad30e0d290e1b4abeaaa8fce0ec38a3bdc05a7f1a4fc8a7",
+      "git_blob_sha1": "338c04b08f47cb71ba62994bd6659e28165cb510",
+      "bytes": 2526
+    },
+    {
+      "path": "lean-build.log",
+      "sha256": "73c30c0bd87f3e4ae0af4b862b7ad6c7e17c70e3b934223b8bcd06f6648edc8a",
+      "git_blob_sha1": "3a3de7c39ad1d7733ce36f83dbc6eb1bd2a7e85b",
+      "bytes": 27184
+    },
+    {
+      "path": "proof-axioms.json",
+      "sha256": "a8011c8f0ee919a5fefe93a635b19fcc55341e0d2f8607e31086b0fc19a58734",
+      "git_blob_sha1": "e04f564a9b1790e7562077c428750a4418c59753",
+      "bytes": 16078
+    },
+    {
+      "path": "runtime-verification.json",
+      "sha256": "c68b86d03a449fcf049af325c1500ee66d10f75ac3f7839a1735c28d006dd275",
+      "git_blob_sha1": "6c73dfabb6f7fe09acbc4ed060ebff4f1a3bf6d9",
+      "bytes": 9435
+    },
+    {
+      "path": "source-identity.log",
+      "sha256": "bb696135530413f059687949af899fb0f86f95371eddb0fe397194ef0b5ba09f",
+      "git_blob_sha1": "9cd4fcc9242f4dfcdbb77ada109c17dc21137095",
+      "bytes": 3603
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "bb6002ad388402d45a2ae5a641821eb658733c1a91e3fa5961ba60a9c9679696",
+      "git_blob_sha1": "35457ae38226c6a5d647584e71f6e9be07459545",
+      "bytes": 7519
+    },
+    {
+      "path": "toolchain-identity.json",
+      "sha256": "9d25348c417299a59c6384a273a0c7226eddb8a6569937c9f2064b726f17757b",
+      "git_blob_sha1": "eb004e7035e4e20a5c83676070a143e7d5ebd75f",
+      "bytes": 1305
+    },
+    {
+      "path": "toolchain-identity.log",
+      "sha256": "c65ed34bb546217b793cdfe7969f4b9599dfb5b7b5118b0e553a77566e423b8c",
+      "git_blob_sha1": "aeb3b8bc7910255077eef8a5e3d253621fcdded0",
+      "bytes": 159
+    }
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "schema": "ueot_qm.claim_ledger.v31.2",
+  "date": "2026-10-19",
+  "version": "31.2-kernel.1.2",
+  "path_base": "repository_root",
+  "previous_ledger": "physics/qm/status/CLAIM_LEDGER_v31.1.json",
+  "core_baseline": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
+  "evidence": {
+    "lean": "physics/qm/kernel/evidence/v31.2/lean-verification.json",
+    "runtime": "physics/qm/kernel/evidence/v31.2/runtime-verification.json",
+    "review": "physics/qm/audits/KERNEL_REVIEW_v31.2.md",
+    "source_alignment": "physics/qm/audits/SOURCE_AND_REPRESENTATION_REVIEW_v31.2.md",
+    "spectrum": "physics/qm/audits/SPECTRUM_BRIDGE_v31.2.md"
+  },
+  "claims": [
+    {
+      "id": "QMK-01",
+      "claim": "Finite complex PSD density operators, complete Kraus instruments, legal probabilities and positive-branch posteriors",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.mass_eq_zero_iff",
+        "UEOTQM.Instrument.sum_probability",
+        "UEOTQM.Instrument.zero_probability_iff_zero_branch"
+      ],
+      "premises": [
+        "Finite complex matrix sector",
+        "PSD trace-one input",
+        "Kraus completeness"
+      ],
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL"
+    },
+    {
+      "id": "QMK-02",
+      "claim": "Arbitrary finite identity-ancilla Kraus amplification preserves arbitrary joint PSD input and agrees entrywise with block action",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.ancillaKrausMap_posSemidef",
+        "UEOTQM.ancillaKrausMap_entry"
+      ],
+      "limits": [
+        "Finite ancilla",
+        "No packaged infinite-dimensional or abstract CP framework"
+      ],
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL"
+    },
+    {
+      "id": "QMK-03",
+      "claim": "Actual all-word response has a unique decoder on its operational quotient",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.existsUnique_responseDecoder"
+      ],
+      "core_reuse": "UEOT.V3.Compression.QuotientDescent.existsUnique_descend",
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL"
+    },
+    {
+      "id": "QMK-04",
+      "claim": "Posterior response equality yields a closed reachable-range Option update",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.response_posterior",
+        "UEOTQM.nextReachableResponse_map_val",
+        "UEOTQM.existsUnique_closedReachableUpdate"
+      ],
+      "core_reuse": "UEOT.V3.Compression.RecursiveSufficientState.existsUnique_reachableUpdate",
+      "premises": [
+        "All finite words under the fixed instrument family",
+        "Positive branches carry posterior witnesses; zero probability returns none"
+      ],
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL"
+    },
+    {
+      "id": "QMK-05",
+      "claim": "Generated real observable closure and finite local presentations classify exactly all finite-word responses; coordinate matrix and reachable posterior updates",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_72_TEST_METHOD_SUITE",
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/predictive.py",
+        "formalization/ueot-qm/UEOTQM/Observables.lean",
+        "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean"
+      ],
+      "limits": [
+        "Fixed finite time-homogeneous library",
+        "All finite causal compositions",
+        "Hilbert dimensions 1..4 in runtime",
+        "Response dimension includes the constant trace coordinate",
+        "No smaller CPTP Hilbert realization theorem",
+        "Lean finite presentation may have redundant generators",
+        "Runtime basis independence is separately checked; Hermitian d^2 dimension formula and W_n algorithm termination are not new Lean theorems",
+        "Python/JSON/search/elimination refinement remains open"
+      ],
+      "witnesses": [
+        "UEOTQM.trace_heisenberg",
+        "UEOTQM.observableSpace_pullbackClosed",
+        "UEOTQM.observableSpace_le_of_closed",
+        "UEOTQM.exists_finite_wordEffect_generators",
+        "UEOTQM.FiniteObservablePresentation.span_eq_observableSpace",
+        "UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq",
+        "UEOTQM.FiniteObservablePresentation.operatorCoordinates_record",
+        "UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range",
+        "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val"
+      ],
+      "verification_location": "LOCAL",
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce"
+    },
+    {
+      "id": "QMK-06",
+      "claim": "Complete finite adaptive mathematical protocols have normalized leaf laws computed from certified finite coordinates",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_72_TEST_METHOD_SUITE",
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/instrument.py",
+        "formalization/ueot-qm/UEOTQM/Adaptive.lean"
+      ],
+      "limits": [
+        "Finite deterministic policies",
+        "Every outcome branch must be declared",
+        "Common finite outcome index in Lean",
+        "Python variable-outcome adapter, serialized trees and traversal refinement remain open"
+      ],
+      "witnesses": [
+        "UEOTQM.Adaptive.Protocol.word_injective",
+        "UEOTQM.Adaptive.sum_leafWeight",
+        "UEOTQM.Adaptive.sum_leafProbability",
+        "UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit",
+        "UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq"
+      ],
+      "verification_location": "LOCAL",
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce"
+    },
+    {
+      "id": "QMK-07",
+      "claim": "Explicit finite preparation-pair and protocol coverage gives exact record TV comparisons",
+      "layers": [
+        "B",
+        "O"
+      ],
+      "runtime_status": "PASS_72_TEST_METHOD_SUITE",
+      "machine_status": "FINITE_PROTOCOL_CERTIFICATE_REFINEMENT_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/certificates.py"
+      ],
+      "limits": [
+        "Named preparation relation is supplied",
+        "Only listed preparations and trees",
+        "Not a uniform channel or diamond bound"
+      ]
+    },
+    {
+      "id": "QMK-08",
+      "claim": "Nonnegative scalar recurrence is covered by the recursively computed budget",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.Transport.scalar_transport_certificate"
+      ],
+      "core_reuse": "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
+      "premises": [
+        "Nonnegative initial budget, errors, L and epsilon",
+        "Initial and every local inequality",
+        "Application must independently establish its chosen metric recurrence"
+      ],
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL"
+    },
+    {
+      "id": "QMK-09",
+      "claim": "Finite positive-event postselection certificate with min(1,2*TV/min(event masses)) bound",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_72_TEST_METHOD_SUITE",
+      "machine_status": "GENERAL_CONDITIONING_BOUND_OPEN",
+      "limits": [
+        "Both event masses strictly positive",
+        "No unconditional contraction claim"
+      ]
+    },
+    {
+      "id": "QMK-10",
+      "claim": "Conditional integer selector gives Nc=3, Nf=3, k=1 without atomicity",
+      "layers": [
+        "S",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.Selector.selects_three_without_atomicity"
+      ],
+      "premises": [
+        "nc,nf,k are naturals",
+        "3 <= nc",
+        "0 < nf",
+        "k <= nf",
+        "2*nc*k + nf = nc*nf",
+        "nf*(nc+1) < 22"
+      ],
+      "limits": [
+        "Does not derive its spectrum or effective-window hypotheses",
+        "Full premise set not claimed logically minimal"
+      ],
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL"
+    },
+    {
+      "id": "QMK-11",
+      "claim": "Actual finite spectrum rows derive the integer anomaly equation and weak budget, then invoke the conditional three-family selector",
+      "layers": [
+        "P",
+        "S",
+        "B",
+        "E"
+      ],
+      "limits": [
+        "Complete spectrum and homogeneous template",
+        "Nonzero representation anomaly coefficient",
+        "No uncaptured compensation in the same anomaly channel",
+        "Declared weak window, thresholds and active families",
+        "Global anomalies, vacuum, masses and phenomenology separate",
+        "No representation-theory or one-loop Feynman-diagram derivation",
+        "No physical proof of boolean window declarations"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "runtime_status": "PASS_72_TEST_METHOD_SUITE",
+      "physical_applicability": "OPEN",
+      "witnesses": [
+        "UEOTQM.Spectrum.familyCubic_eq_counts",
+        "UEOTQM.Spectrum.selector_anomaly_of_spectrum",
+        "UEOTQM.Spectrum.selector_budget_of_spectrum",
+        "UEOTQM.Spectrum.spectrum_selects_three"
+      ],
+      "premises": [
+        "Finite paired lepton/quark template with declared representation sign and color multiplicities",
+        "nc >= 3, nonempty families, nonzero rational anomaly unit",
+        "Homogeneous lepton orientation",
+        "Combined extra cubic contribution zero and actual total cubic sum zero",
+        "All counted ordinary weak doublets active in the declared fixed SU(2) window",
+        "Nonnegative extra matter Dynkin indices and positive complete one-loop coefficient"
+      ],
+      "verification_location": "LOCAL",
+      "verified_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce"
+    },
+    {
+      "id": "QMK-12",
+      "claim": "Python implementation is proved to refine the Lean model",
+      "layers": [
+        "B"
+      ],
+      "status": "NOT_ESTABLISHED",
+      "open_items": [
+        "Q(i) data reflection",
+        "PSD principal-minor checker equivalence",
+        "Weighted Kraus realization",
+        "Ragged outcome/Kraus index padding",
+        "Reliable finite certificate checking in Lean or program refinement",
+        "Gaussian elimination and W_n search termination",
+        "Python finite-tree serialization/traversal refinement"
+      ],
+      "closed_mathematical_interfaces": [
+        "W* finite real span and finite-word generation existence",
+        "Finite local presentation sufficiency and all-word coordinate equivalence",
+        "Normalized complete finite adaptive mathematical interpreter"
+      ]
+    },
+    {
+      "id": "QMK-13",
+      "claim": "Derivation of the complex quantum sector or new empirical confirmation from this kernel",
+      "layers": [
+        "P",
+        "X"
+      ],
+      "status": "NOT_CLAIMED",
+      "limits": [
+        "Complex density/Kraus/Born sector is explicit input",
+        "No new experimental dataset in this delivery"
+      ]
+    },
+    {
+      "id": "QMK-14",
+      "claim": "QMB-05 and QMB-06 long-term and survival bridges",
+      "layers": [
+        "B"
+      ],
+      "status": "PLANNED"
+    },
+    {
+      "id": "QMK-15",
+      "claim": "Portable exact word-effect certificate checker independently recomputes generatedness, all branch closure, basis independence and context",
+      "layers": [
+        "B",
+        "O"
+      ],
+      "runtime_status": "PASS_72_TEST_METHOD_SUITE",
+      "machine_status": "PYTHON_CHECKER_REFINEMENT_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/representation_certificate.py",
+        "physics/qm/kernel/tests/test_representation_certificate.py"
+      ],
+      "premises": [
+        "Expected fixed time-homogeneous InstrumentLibrary supplied externally",
+        "Gaussian-rational matrices and real rational coefficients",
+        "Short actual-word witnesses; d in 1..4, r in 1..d^2, each witness length <= d^2-1"
+      ],
+      "limits": [
+        "No fixed prediction horizon; evidence length is bounded",
+        "No guarantee for arbitrary bit lengths or arbitrary library size",
+        "Accepts actual word-effect bases, not arbitrary linear-mixed bases",
+        "Shares exact matrix arithmetic; no claim of a Lean proof token"
+      ]
+    },
+    {
+      "id": "QMK-16",
+      "claim": "Independent six-channel local 331 anomaly sums on explicit all-left-handed fundamental/singlet rows",
+      "layers": [
+        "P",
+        "S",
+        "B"
+      ],
+      "runtime_status": "PASS_72_TEST_METHOD_SUITE",
+      "machine_status": "GENERAL_SIX_ANOMALY_LEAN_BRIDGE_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/spectrum.py",
+        "physics/qm/kernel/tests/test_spectrum.py"
+      ],
+      "limits": [
+        "Fixed SU(3) color and selected representation index conventions",
+        "Exact rational beta/sqrt(3) examples; not a new all-real-beta Lean theorem",
+        "Local anomalies only; global anomalies, vacuum, masses and physical matching remain open"
+      ]
+    },
+    {
+      "id": "QMK-17",
+      "claim": "Identity and semantic reconciliation of five uploaded theory sources",
+      "layers": [
+        "B",
+        "X"
+      ],
+      "status": "SOURCE_REVIEW_COMPLETED",
+      "sources": [
+        "physics/qm/audits/SOURCE_AND_REPRESENTATION_REVIEW_v31.2.md"
+      ],
+      "limits": [
+        "Root UEOT_v3_top.pdf exact Git blob identity established",
+        "Other historical archives and two v28.1 identities not automatically closed",
+        "Original topology-index-generation chain remains retired",
+        "Finite matrices cannot realize nonzero-hbar exact CCR on the whole space"
+      ]
+    }
+  ],
+  "verification": {
+    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+    "proof_receipt": "physics/qm/kernel/evidence/v31.2/lean-verification.json",
+    "lean_build_exit_code": 0,
+    "axiom_audit_status": "PASS",
+    "lean_theorem_declarations": 128,
+    "audited_declarations": 137,
+    "runtime_test_methods": 72,
+    "count_scope": "Explicit source theorem declarations and named axiom reports; not all compiler-generated constants",
+    "remote_ci": "PENDING",
+    "main_integration": "PENDING",
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/333",
+    "official_service_incident": "https://www.githubstatus.com/incidents/8tzbpcnl75jp"
+  }
+}

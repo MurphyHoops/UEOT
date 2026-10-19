@@ -23,6 +23,18 @@ from .algebra import (
 from .instrument import Instrument, InstrumentLibrary, KrausTerm, ProtocolNode, Record
 from .predictive import EncodedState, PredictiveModel
 
+from .representation_certificate import (
+    RepresentationCertificateError,
+    RepresentationVerification,
+    export_representation_certificate,
+    verify_representation_certificate,
+)
+from .spectrum import (
+    Orientation, MatterKind, Family, ExtraMatter, CubicCompletion,
+    WeakWindow, Spectrum, inspect_spectrum, SU3Representation, Weyl331,
+    local_331_anomalies, generalized_331_fields,
+)
+
 
 __all__ = [
     "MAX_PSD_DIMENSION",
@@ -44,4 +56,20 @@ __all__ = [
     "Record",
     "EncodedState",
     "PredictiveModel",
+    "RepresentationCertificateError",
+    "RepresentationVerification",
+    "export_representation_certificate",
+    "verify_representation_certificate",
+    "Orientation",
+    "MatterKind",
+    "Family",
+    "ExtraMatter",
+    "CubicCompletion",
+    "WeakWindow",
+    "Spectrum",
+    "inspect_spectrum",
+    "SU3Representation",
+    "Weyl331",
+    "local_331_anomalies",
+    "generalized_331_fields",
 ]

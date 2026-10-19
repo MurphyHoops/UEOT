@@ -1,6 +1,7 @@
 import UEOTQM
 
--- Every theorem in the five QM modules, plus proof-bearing constructors.
+-- Every explicit theorem declaration in the nine QM modules, plus the listed proof-bearing constructions.
+-- This is a named-declaration audit; it is not a census of all compiler-generated constants.
 
 #print axioms UEOTQM.Density.ext
 #print axioms UEOTQM.mass_nonneg
@@ -61,3 +62,83 @@ import UEOTQM
 #print axioms UEOTQM.nextReachableResponse_inputFiberCompatible
 #print axioms UEOTQM.existsUnique_closedReachableUpdate
 #print axioms UEOTQM.nextReachableResponse
+
+-- Kernel 1.2: generated observable space, finite coordinates, adaptive laws, spectrum rows.
+#print axioms UEOTQM.pairing_one
+#print axioms UEOTQM.pairing_zero_left
+#print axioms UEOTQM.pairing_add_left
+#print axioms UEOTQM.pairing_smul_left
+#print axioms UEOTQM.pairing_smul_right
+#print axioms UEOTQM.pairing_sum_left
+#print axioms UEOTQM.heisenberg_zero
+#print axioms UEOTQM.heisenberg_add
+#print axioms UEOTQM.heisenberg_smul
+#print axioms UEOTQM.trace_heisenberg
+#print axioms UEOTQM.pairing_heisenberg
+#print axioms UEOTQM.heisenberg_posSemidef
+#print axioms UEOTQM.recordEffect_posSemidef
+#print axioms UEOTQM.recordEffect_isHermitian
+#print axioms UEOTQM.mass_recordOperator_eq_pairing
+#print axioms UEOTQM.response_eq_pairing
+#print axioms UEOTQM.recordEffect_mem
+#print axioms UEOTQM.one_mem_observableSpace
+#print axioms UEOTQM.recordEffect_mem_of_closed
+#print axioms UEOTQM.observableSpace_le_of_closed
+#print axioms UEOTQM.observableSpace_pullbackClosed
+#print axioms UEOTQM.isHermitian_of_mem_observableSpace
+#print axioms UEOTQM.response_eq_iff_pairing_observableSpace
+#print axioms UEOTQM.observableSpace_finiteDimensional
+#print axioms UEOTQM.exists_finite_wordEffect_generators
+#print axioms UEOTQM.FiniteObservablePresentation.observable_mem_span
+#print axioms UEOTQM.FiniteObservablePresentation.observable_unit
+#print axioms UEOTQM.FiniteObservablePresentation.one_mem_span
+#print axioms UEOTQM.FiniteObservablePresentation.pullback_observable
+#print axioms UEOTQM.FiniteObservablePresentation.span_pullbackClosed
+#print axioms UEOTQM.FiniteObservablePresentation.span_eq_observableSpace
+#print axioms UEOTQM.FiniteObservablePresentation.recordEffect_mem_span
+#print axioms UEOTQM.FiniteObservablePresentation.operatorCoordinates_unit
+#print axioms UEOTQM.FiniteObservablePresentation.coordinates_unit
+#print axioms UEOTQM.FiniteObservablePresentation.coordinates_apply
+#print axioms UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq
+#print axioms UEOTQM.FiniteObservablePresentation.operatorCoordinates_branch
+#print axioms UEOTQM.FiniteObservablePresentation.operatorCoordinates_record
+#print axioms UEOTQM.FiniteObservablePresentation.response_eq_recordCoordinates_unit
+#print axioms UEOTQM.FiniteObservablePresentation.probability_eq_applyBranch_unit
+#print axioms UEOTQM.FiniteObservablePresentation.coordinates_posterior
+#print axioms UEOTQM.FiniteObservablePresentation.coordinates_posterior_eq_normalizedBranch
+#print axioms UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range
+#print axioms UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val
+#print axioms UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_posterior
+#print axioms UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_none_iff
+#print axioms UEOTQM.Adaptive.Protocol.word_injective
+#print axioms UEOTQM.Adaptive.sum_leafWeight
+#print axioms UEOTQM.Adaptive.leafWeight_nonneg
+#print axioms UEOTQM.Adaptive.leafProbability_eq_response
+#print axioms UEOTQM.Adaptive.leafProbability_nonneg
+#print axioms UEOTQM.Adaptive.sum_leafProbability
+#print axioms UEOTQM.Adaptive.leafProbability_le_one
+#print axioms UEOTQM.Adaptive.leafProbability_eq_of_response_eq
+#print axioms UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit
+#print axioms UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq
+#print axioms UEOTQM.Adaptive.leafProbability_posterior
+#print axioms UEOTQM.Spectrum.quarkCount_le_length
+#print axioms UEOTQM.Spectrum.familyCubic_eq_counts
+#print axioms UEOTQM.Spectrum.leptonCount_eq_length_of_homogeneous
+#print axioms UEOTQM.Spectrum.ExtraMatter.screening_nonneg
+#print axioms UEOTQM.Spectrum.extraScreening_nonneg
+#print axioms UEOTQM.Spectrum.familyScreening_eq_of_active
+#print axioms UEOTQM.Spectrum.selector_anomaly_of_spectrum
+#print axioms UEOTQM.Spectrum.selector_budget_of_spectrum
+#print axioms UEOTQM.Spectrum.spectrum_selects_three
+#print axioms UEOTQM.Spectrum.canonical_rows_and_higgs
+#print axioms UEOTQM.Spectrum.mixed_two_family_rows
+#print axioms UEOTQM.Spectrum.replicated_six_family_rows
+#print axioms UEOTQM.Spectrum.compensated_one_family_rows
+#print axioms UEOTQM.Spectrum.zero_anomaly_unit_one_family_rows
+#print axioms UEOTQM.Spectrum.extra_screening_closes_positive_window
+#print axioms UEOTQM.pairingLinear
+#print axioms UEOTQM.heisenbergLinear
+#print axioms UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate
+#print axioms UEOTQM.Adaptive.Protocol.leafFintype
+#print axioms UEOTQM.Spectrum.oneHiggs
+#print axioms UEOTQM.Spectrum.twentyHiggs

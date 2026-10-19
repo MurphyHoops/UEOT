@@ -60,6 +60,8 @@ jobs:
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example
         run: python physics/qm/kernel/demo.py > /tmp/ueot-qm-demo.json
+      - name: Run representation and spectrum witnesses
+        run: python physics/qm/kernel/demo_v312.py > /tmp/ueot-qm-demo-v312.json
       - name: Archive runtime evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -68,6 +70,7 @@ jobs:
           path: |
             /tmp/ueot-qm-runtime-verification.json
             /tmp/ueot-qm-demo.json
+            /tmp/ueot-qm-demo-v312.json
           retention-days: 30
 
   lean:
@@ -84,19 +87,15 @@ jobs:
       - name: Record source identity
         run: |
           git rev-parse HEAD | tee source-identity.log
-          sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain >> source-identity.log
+          sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain scripts/install_lean.sh >> source-identity.log
           cat source-identity.log
       - name: Check inherited dependency lock
         run: python3 scripts/check_dependencies.py
-      - name: Install Elan
+      - name: Install and verify official pinned Lean
         shell: bash
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Verify pinned Lean
-        run: |
-          lean --version
-          lake --version
+          set -o pipefail
+          bash scripts/install_lean.sh "$RUNNER_TEMP/ueot-qm-lean" 2>&1 | tee lean-install.log
       - name: Restore pinned dependencies
         id: dependencies
         uses: actions/cache/restore@v4
@@ -139,6 +138,7 @@ jobs:
           name: ueot-qm-lean-${{ github.run_id }}
           path: |
             formalization/ueot-qm/source-identity.log
+            formalization/ueot-qm/lean-install.log
             formalization/ueot-qm/lean-build.log
             formalization/ueot-qm/axiom-audit.log
             formalization/ueot-qm/proof-axioms.json
