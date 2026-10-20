@@ -1,0 +1,62 @@
+{
+  "schema": "ueot_qm.cesaro.runtime_source_review.v1",
+  "status": "CLEAR",
+  "reviewed_at_utc": "2026-10-20T01:07:46.385306+00:00",
+  "reviewer": "/root/kernel_certificates",
+  "files": [
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/physics/qm/kernel/ueot_qm/finite_dynamics.py",
+      "sha256": "5f7f78b37e67fd1dc0b1c856f474850e50e4e664b806ddd9adb54fb9cc8429a6"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/physics/qm/kernel/tests/test_finite_dynamics.py",
+      "sha256": "781e3b9267578bc32b89dc0100e88d43500d7eb7a1828db3f9aa716d384aa7ca"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/physics/qm/kernel/demo_v315.py",
+      "sha256": "0c9fd677c56a9506c37149d6494c473a73e233361a48e61e063289b79957336e"
+    }
+  ],
+  "review_mode": "read-only source review; no tests or demos rerun by this reviewer",
+  "findings": [
+    {
+      "component": "cesaro_average",
+      "status": "CLEAR",
+      "detail": "Accumulates the initial density and the next N−1 actual complete-channel iterates, then divides by N exactly. The extra final update computes rho_N without adding it to the mean."
+    },
+    {
+      "component": "iterate_state / channel_operator",
+      "status": "CLEAR",
+      "detail": "Iterations apply the sum of all declared outcome branches. General residual operators are allowed in channel_operator, while iterate_state and cesaro_average validate a normalized density input."
+    },
+    {
+      "component": "count and density guards",
+      "status": "CLEAR",
+      "detail": "Mean requires positive int N; bool, Fraction, float, zero, and negatives are rejected as appropriate. Existing exact PSD/density contract supports dimensions 1–4."
+    },
+    {
+      "component": "independent cyclic oracle",
+      "status": "CLEAR",
+      "detail": "Tests compare with the explicit parity mean diag(ceil(N/2)/N,floor(N/2)/N), actual endpoint parity, telescope identity, and the sharp P0 residual for odd N. The oracle is not another call to the averaging algorithm."
+    },
+    {
+      "component": "scope controls",
+      "status": "CLEAR",
+      "detail": "Identity channel has two distinct fixed densities; Pauli-X trajectory alternates. These distinguish existence and average behavior from uniqueness or raw-orbit convergence."
+    },
+    {
+      "component": "demo output",
+      "status": "CLEAR",
+      "detail": "all_effect_budget=1/N is labelled as an upper budget. A computed P0 residual is not treated as numerical maximization over all effects or as new empirical data. Lean/Python verification boundaries are explicit."
+    }
+  ],
+  "issues": [],
+  "blocking_issues": [],
+  "scope_not_reviewed_as_a_proof": [
+    "Python interpreter correctness",
+    "general stationary existence by finite testing",
+    "empirical physics validation",
+    "Survival/Doob Lean module, which is awaiting freeze"
+  ],
+  "repository_files_modified_by_reviewer": []
+}

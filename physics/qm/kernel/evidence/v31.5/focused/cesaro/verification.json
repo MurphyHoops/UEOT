@@ -1,0 +1,461 @@
+{
+  "schema": "ueot_qm.cesaro.focused_verification.v1",
+  "status": "PASS",
+  "recorded_at_utc": "2026-10-20T01:05:10.843901+00:00",
+  "authoring_base": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+  "source": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/UEOTQM/Cesaro.lean",
+    "bytes": 12322,
+    "sha256": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b"
+  },
+  "source_snapshot": {
+    "path": "/tmp/qm315_cesaro/Cesaro.lean",
+    "bytes": 12322,
+    "sha256": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b"
+  },
+  "toolchain": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "toolchain_log": {
+    "path": "/tmp/qm315_cesaro/toolchain-version.log",
+    "bytes": 106,
+    "sha256": "63f3e16bf0258e2cc0ab3010eb1830723df9bb85097b7b72b0137b9be25a78e9"
+  },
+  "compile": {
+    "command": "PATH=/tmp/lean-4.33.1-linux/bin:$PATH lake env lean -o .lake/build/lib/lean/UEOTQM/Cesaro.olean UEOTQM/Cesaro.lean",
+    "workdir": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm",
+    "exit_code": 0,
+    "source_sha256": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b",
+    "log": {
+      "path": "/tmp/qm315_cesaro/focused-05.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "olean": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/Cesaro.olean",
+      "bytes": 454536,
+      "sha256": "3bb2c6545a5fb1cdcba7f6447560d3b600da77312f0d4c9dae82cd59207b459b"
+    },
+    "warnings": 0
+  },
+  "axiom_audit": {
+    "command": "PATH=/tmp/lean-4.33.1-linux/bin:$PATH lake env lean /tmp/qm315_cesaro/AxiomAudit.lean",
+    "exit_code": 0,
+    "audit_source": {
+      "path": "/tmp/qm315_cesaro/AxiomAudit.lean",
+      "bytes": 1474,
+      "sha256": "acfdb530c2abccc841503deff08fb632f62337b9df576b8011b07ace97dceb44"
+    },
+    "log": {
+      "path": "/tmp/qm315_cesaro/axiom-audit.log",
+      "bytes": 2862,
+      "sha256": "1b42c72c25f9b9f05ad8a222e1d17ce16448f8258a5e491485d339611b7eacc5"
+    },
+    "theorem_count": 23,
+    "definition_count": 7,
+    "exact_unique_named_targets": 30,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "observed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unexpected_axioms": [],
+    "missing_or_duplicate_targets": [],
+    "targets": [
+      {
+        "name": "UEOTQM.Cesaro.iterateState",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.iterateState_zero",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.iterateState_succ",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.channelLinear",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.channelLinear_apply",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.orbitSum",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.orbitSum_positive",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.orbitSum_trace",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.averageState",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.averageState_matrix",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.orbitSum_telescope",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.matrix_residual",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.pairing_sub_right",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.probability_residual",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.probability_residual_le",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.effectDistance_residual_le",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.density_operatorNorm_le_one",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.densityMatrices",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.densityMatrices_closed",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.densityMatrices_compact",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.continuous_channel",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.matrix_residual_norm_le",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.averageSequence",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.matrix_residual_tendsto_zero",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.subsequence_limit_invariant",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.subsequence_limit_density",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.exists_stationary_subsequence",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.exists_stationary_of_density",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.normalizedIdentity",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.Cesaro.exists_stationary",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    ]
+  },
+  "development_logs": [
+    {
+      "path": "/tmp/qm315_cesaro/focused-01.log",
+      "bytes": 389,
+      "sha256": "4d05df2318a8e80229db952238fb8a8ffd864aa5571091dc8ac974928f50277d",
+      "exit_code_observed": 0,
+      "role": "development compilation; not final source binding"
+    },
+    {
+      "path": "/tmp/qm315_cesaro/focused-02.log",
+      "bytes": 475,
+      "sha256": "86d1155105193e857bb63b99dcb18879c83731e68d064c1b0332bfc7e0a3cb71",
+      "exit_code_observed": 1,
+      "role": "development compilation; not final source binding"
+    },
+    {
+      "path": "/tmp/qm315_cesaro/focused-03.log",
+      "bytes": 315,
+      "sha256": "da96725ed6ae89e872f65e3225922f2738d27bdd0cac5797881d5f8b8fe1b40c",
+      "exit_code_observed": 1,
+      "role": "development compilation; not final source binding"
+    },
+    {
+      "path": "/tmp/qm315_cesaro/focused-04.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code_observed": 0,
+      "role": "development compilation; not final source binding"
+    },
+    {
+      "path": "/tmp/qm315_cesaro/focused-05.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code_observed": 0,
+      "role": "final accepted source compilation"
+    }
+  ],
+  "scientific_sources": [
+    {
+      "path": "/workspace/scratch/474cf6b1f047/project_sources/02-UEOT_Core_Mathematics_v3.0_Complete.md",
+      "bytes": 183440,
+      "sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303",
+      "sections": [
+        "8.4 / P-PER-02",
+        "21.1 typed GOA",
+        "21.2 / P-GOA-01",
+        "21.3 mixing margin boundary"
+      ]
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/physics/qm/book/UEOT_PHYSICS.md",
+      "bytes": 376371,
+      "sha256": "510d1a08a2b4808e08d058628310727ec7ec48348bd21d96e47c04a450875379",
+      "sections": [
+        "1.4 / M-OI"
+      ],
+      "binding_note": "Book is maintained by root during this turn; this is its hash when this receipt was written. The reviewed M-OI subsection supplied the mathematical target."
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/physics/interfaces/CORE_PHYSICS_CONTRACT.md",
+      "bytes": 4779,
+      "sha256": "79d30b334038f97c284795c846e9a55611545448a422fb2a40b057542fb580f4",
+      "sections": [
+        "2 dependency classes",
+        "4 quantum-specific discipline"
+      ]
+    }
+  ],
+  "mathlib_dependencies": [
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Analysis/CStarAlgebra/Matrix.lean",
+      "bytes": 14220,
+      "sha256": "79518c9e51c4d0cf4083ab69a9ac7a2817305b48db1fe6f25ae1d678e12ce223",
+      "used": "L2 operator norm; instL2OpMetricSpace replaces topology/uniformity to match native matrix topology; l2_opNorm_diagonal"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Spectrum.lean",
+      "bytes": 11285,
+      "sha256": "1ad47effa0a5fbc373ebb6cf52a6b85a66b25d3c5a86394f3dd5932ffbfc3afe",
+      "used": "Hermitian spectral theorem and trace_eq_sum_eigenvalues"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Analysis/CStarAlgebra/ContinuousFunctionalCalculus/Order.lean",
+      "bytes": 27574,
+      "sha256": "ea850ab2f6b0056a92e4f4c7155a4eeaf90e61eee0371730830e0676f56e17e1",
+      "used": "CStarAlgebra.isClosed_nonneg"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Analysis/Normed/Module/FiniteDimension.lean",
+      "bytes": 37906,
+      "sha256": "2598904c7b6a33ad86537d15464c45d476dea56dd035e3d8237dab5027f47e5e",
+      "used": "finite-dimensional linear-map continuity and properness"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Topology/MetricSpace/Bounded.lean",
+      "bytes": 30525,
+      "sha256": "51d3fe2bd46c4d7e54a925c64bd70a68ee562a92c12e0271d9b4cea1ed5ed3fb",
+      "used": "Metric.isCompact_iff_isClosed_bounded"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Topology/Sequences.lean",
+      "bytes": 20404,
+      "sha256": "68f2cf45dfc7fe556f4d09a7a2e5d9408721ad6c790eac93e88b4c0c32a9fdcb",
+      "used": "IsCompact.tendsto_subseq"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Analysis/SpecificLimits/Basic.lean",
+      "bytes": 37357,
+      "sha256": "2e397149f39d3258efbbcfa3c272a5148cc622d9a4eb3cfca4ff5d5b73cd5a7d",
+      "used": "tendsto_const_div_atTop_nhds_zero_nat"
+    }
+  ],
+  "scope": {
+    "system": "one fixed complete finite Kraus channel on finite complex matrices, with outcome discarded at each step",
+    "average": "N>0; N inverse times the first N actual iterates, including the initial state",
+    "matrix_residual": "T(average_N)-average_N = N inverse times (T^N(rho)-rho)",
+    "response_residual": "for every genuine Effect, absolute Born probability residual is at most 1/N; effectDistance has the same bound",
+    "norm_residual": "at most 2/N in the explicitly scoped Euclidean operator norm, not a trace-norm identity",
+    "compactness": "PSD trace-one matrices form a proved closed bounded subset of finite-dimensional matrix space; no compactness field or premise",
+    "cluster_result": "every strictly increasing convergent Cesaro subsequence has a PSD trace-one invariant matrix limit",
+    "existence": "exists_stationary_subsequence from any actual initial Density; exists_stationary has only a nonempty finite matrix index type in addition to the declared Instrument",
+    "nonempty_condition": "[Nonempty ι] permits normalizedIdentity as a density seed; no stationary seed is assumed",
+    "not_claimed": [
+      "unique stationary density",
+      "convergence of the raw orbit",
+      "full Cesaro-sequence convergence",
+      "mixing rate or spectral gap",
+      "empirical random-trajectory frequency convergence",
+      "infinite-dimensional compactness",
+      "trace-distance or diamond-distance identification",
+      "distance-to-stationary-state bound solely from the residual",
+      "reconstruction of the quantum sector from generic UEOT",
+      "new experimental validation"
+    ]
+  },
+  "independent_read_only_review": {
+    "reviewer": "/root/finite_response",
+    "status": "CLEAR",
+    "scope": "Read-only semantics; no repeated compilation.",
+    "findings": [
+      "native entrywise matrix topology is preserved by Mathlib L2Op instance",
+      "closedness, boundedness, compactness and continuity are derived rather than structure fields",
+      "nonempty Hilbert index is explicit only for no-initial-state existence",
+      "Cesaro cluster/existence conclusions are kept distinct from uniqueness and mixing"
+    ]
+  },
+  "integration_status": "LOCAL_FOCUSED_VERIFIED; root owns combined source export, AxiomAudit integration, complete package build and remote CI",
+  "modified_authoring_files": [
+    "formalization/ueot-qm/UEOTQM/Cesaro.lean"
+  ],
+  "core_public_entrypoints_or_book_modified_by_this_agent": false
+}

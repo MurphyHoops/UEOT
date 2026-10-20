@@ -1,0 +1,88 @@
+{
+  "schema": "ueot_qm.mixture_focused_verification.v1",
+  "status": "FOCUSED_LOCAL_PASS",
+  "recorded_at_utc": "2026-10-20T01:06:01.770974+00:00",
+  "baseline_commit": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+  "source": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/UEOTQM/Mixture.lean",
+    "bytes": 14681,
+    "sha256": "520d432d9d055b3260c2f90ea8ad68f93d14d4acae51e32faa28f49bdd3d601a"
+  },
+  "toolchain": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "focus_build": {
+    "exit_code": 0,
+    "warning_count": 0,
+    "command": "PATH=/tmp/lean-4.33.1-linux/bin:$PATH lake env lean -o .lake/build/lib/lean/UEOTQM/Mixture.olean UEOTQM/Mixture.lean",
+    "working_directory": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm",
+    "log": {
+      "path": "/tmp/qm315_mixture/focused-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "declarations": {
+    "explicit_theorems": 23,
+    "definitions": 7,
+    "proof_bearing_definitions": 4,
+    "data_definitions": 3,
+    "input_structures": 2,
+    "list": {
+      "path": "/tmp/qm315_mixture/declarations.json",
+      "bytes": 2467,
+      "sha256": "d86de844bab53b56db00ab7f012b58bc9ace0078b727125497964d773e0112eb"
+    }
+  },
+  "axiom_audit": {
+    "exit_code": 0,
+    "unique_count": 30,
+    "duplicate_count": 0,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "observed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "log": {
+      "path": "/tmp/qm315_mixture/axioms.log",
+      "bytes": 2946,
+      "sha256": "e97286ad9e14f38af36f9e7c9cb4bb55522d866e17b4b6cb67ba8b4432fbc85a"
+    },
+    "source": {
+      "path": "/tmp/qm315_mixture/Audit.lean",
+      "bytes": 1555,
+      "sha256": "78ae9e02eccce6ef1bb221e607af8aca911af924c0e85c56f8f8b31037eebdcd"
+    }
+  },
+  "examples": {
+    "exit_code": 0,
+    "explicit_theorems": 5,
+    "definitions": 4,
+    "source": {
+      "path": "/tmp/qm315_mixture/Examples.lean",
+      "bytes": 3531,
+      "sha256": "39bad0998a9dd09ea2d074295bbaedd326256b35973e06b9a59d0218c4a9c946"
+    },
+    "log": {
+      "path": "/tmp/qm315_mixture/examples-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "scope": [
+      "exact rational TV one half",
+      "all-input library bound",
+      "explicit qubit effect probabilities",
+      "orthogonal-state saturation",
+      "proved failure when common state library is omitted"
+    ]
+  },
+  "scope_memo": {
+    "path": "/tmp/qm315_mixture/MIXTURE_SCOPE.md",
+    "bytes": 6981,
+    "sha256": "c25ada9e7cfda69a701908c74890111f0544c56bfe217dcb8857bf4687f43556"
+  },
+  "integration_scope": "No whole-package or CI or main verification claimed; public entrypoint and AxiomAudit are owned by root."
+}

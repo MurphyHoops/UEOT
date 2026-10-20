@@ -2,7 +2,7 @@
 title: "UEOT物理学"
 subtitle: "从对象数学到量子物理：理论推导、形式证明与研究边界"
 author: "钱德桂（Degui Qian）"
-version: "3.0"
+version: "3.1"
 date: "2026-10-20"
 language: "zh-CN"
 document_id: "UEOT-PHYSICS"
@@ -62,6 +62,9 @@ status: "正式整合版；已证结果、物理输入与开放问题分别标�
 - [48. 理论总著、状态接口与持续维护](#ch-48)
 - [49. UEOT-QM 的已验证有限量子内核](#ch-49)
 - [50. 从实际 Born 概率到量子误差传播](#ch-50)
+- [51. 随机化量子实现与可认证误差预算](#ch-51)
+- [52. 长期平均、紧性与量子平稳态](#ch-52)
+- [53. 条件生存、对角量子实现与 Core 谱桥](#ch-53)
 
 - [附录A](#appendix-a)
 - [附录B](#appendix-b)
@@ -96,7 +99,7 @@ status: "正式整合版；已证结果、物理输入与开放问题分别标�
 
 本书的 P 编号在正文有证明或推导；采用的重型 K 定理列入附录。数值检查不是机器形式化证明，也不是自然界实证。
 
-另设一条独立的**验证轴**：正文证明、机器内核证明、精确有限计算、浮点数值检查、合成数据检验、实际实验数据。一个条目可以同时是“附加物理假设下的 P”和“已经通过 Lean 内核的条件定理”；内核通过不会删除其物理假设。反过来，一项实验支持的是指定模型、装置、协议和误差范围，也不会把有限支持提升为无条件数学定理。正文的 P/K/H 分类标记论证角色；验证轴回答目前怎样核对它。另由第48章的 dependency_class 字段明确Core/桥/扇区/物理/经验依赖，三轴分别保留。[S2，§0.3、§28.2；S3，§1–2；S4，§2、§8–9]
+另设一条独立的**验证轴**：正文证明、机器内核证明、精确有限计算、浮点数值检查、合成数据检验、实际实验数据。一个条目可以同时是“附加物理假设下的 P”和“已经通过 Lean 内核的条件定理”；内核通过不会删除其物理假设。反过来，一项实验支持的是指定模型、装置、协议和误差范围，也不会把有限支持提升为无条件数学定理。正文的 P/K/H 分类标记论证角色；验证轴回答目前怎样核对它。另由第48章的 dependency_class 字段明确Core/桥/扇区/标准物理/有效模型/可观测后果/开放猜想角色，三轴分别保留。[S2，§0.3、§28.2；S3，§1–2；S4，§2、§8–9]
 
 ## 0.2 原始思想的严格落点
 
@@ -113,7 +116,7 @@ status: "正式整合版；已证结果、物理输入与开放问题分别标�
 
 ## 0.3 主文使用方式
 
-第1–9章给基础和测量，第 10–15 章给连续变量与对称性，第 16–20 章给多体、环境和控制，第 21–28 章给 QFT/RG/QED，第 29–32 章给粒子结构及研究边界，第 33–35 章给接口、应用和装配。附录内嵌验证代码与本版实际结果；全书新增模块见0.5节。
+第1–9章给基础和测量，第 10–15 章给连续变量与对称性，第 16–20 章给多体、环境和控制，第 21–28 章给 QFT/RG/QED，第 29–32 章给粒子结构及研究边界，第 33–35 章给接口、应用和装配。附录内嵌验证代码与带版本身份的实际回执；全书新增模块见0.5节。
 
 统一的逻辑方向是：**声明物理实现 → 定义可实施协议 → 计算响应 → 建立对象与预测证书 → 在附加任务下求控制 → 检验领域假设**。不能把希望得到的结论反向写入“对象必须如此”的定义，再称为推导。
 
@@ -144,7 +147,7 @@ status: "正式整合版；已证结果、物理输入与开放问题分别标�
 
 ## 0.5 统一主文的装配与本版增量
 
-第1–35章给完整基础、计算与接口；第36–42章把三代高能审计、味约束、相干见证、实际化证明和研究协议接入主线；第43–46章补全全局相位、拓扑、格点和相关试次统计；第47章给各研究方向的依赖、步骤与验收条件；第48章给总著维护与状态接口，第49–50章展开形式化内核和实际量子稳定性。附录保存符号、来源、结果索引及全部复现代码。
+第1–35章给完整基础、计算与接口；第36–42章把三代高能审计、味约束、相干见证、实际化证明和研究协议接入主线；第43–46章补全全局相位、拓扑、格点和相关试次统计；第47章给各研究方向的依赖、步骤与验收条件；第48章给总著维护与状态接口，第49–50章展开形式化内核和实际量子稳定性，第51–53章进一步给出随机化预算、长期平均与条件生存的完整推导。附录保存符号、来源、结果索引及全部复现代码。
 
 阅读第31章三代条件定理时应同时使用第36章的高低能区分；第3章的鞅条件结论由第40章在特定 SSE 内补足吸收证明；第7–8章的 SRN/层析由第38–39章发展成噪声类见证；第26章的跨尺度接口由第45章给出有限规范模型的实际载体。所有这些连接都在一个文档内。
 
@@ -196,11 +199,11 @@ S3–S5 中的日期、分支、阶段和 CI 数字是各自记录时的事实�
 
 ## 0.9 本正式整合版的结构与阅读路径
 
-本版承接《UEOT PHYSICS 统一主文2.0》的完整49章，不缩减既有量子基础、QFT/QED、世代、实际化、拓扑、格点和实验统计推导。第0–13章明确原始思想与严格Core、量子选择背景及测量/预测接口；第14–32、36–46章保留高级物理及反模型；第33–35、47–48章更新实际接口、误差、路线与总著维护；第49–50章完整展开已经验证的有限量子内核和本轮稳定性证明。
+本版承接《UEOT PHYSICS 统一主文2.0》的完整49章，不缩减既有量子基础、QFT/QED、世代、实际化、拓扑、格点和实验统计推导。第0–13章明确原始思想与严格Core、量子选择背景及测量/预测接口；第14–32、36–46章保留高级物理及反模型；第33–35、47–48章更新实际接口、误差、路线与总著维护；第49–50章展开既有有限量子内核和稳定性证明，第51–53章补齐本轮实际混合、Cesàro 与 Core 条件生存桥。
 
 理论作者为钱德桂（Degui Qian）；原始思想及项目成果的身份由附录C和源清单保留。本版是在该理论工作上进行的持续整合、推导补全与协作审查。标准物理定理仍明确归属于其原始文献，机器验证和实验身份分别记录。
 
-从理论核心入手，可依次阅读第0–5、49–50章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36–37与49.7一起阅读。附录A给出符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码与本版真实重跑结果，附录E给出编译维护合同，附录F列出实际形式化范围和完整命名公理清单。
+从理论核心入手，可依次阅读第0–5、49–53章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36–37与49.7一起阅读。附录A给出符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码及3.0版实际重跑回执，3.1版保留其未变源码身份，附录E给出编译维护合同，附录F列出实际形式化范围和完整命名公理清单。
 
 <a id="ch-1"></a>
 
@@ -284,7 +287,7 @@ Q^\uparrow_{ij}=\frac{Q_{ij}h_j}{rh_i},\qquad
 \sum_jQ^\uparrow_{ij}=1,\qquad
 \sum_iq_i h_iQ^\uparrow_{ij}=q_jh_j.
 $$
-正性、谱数据和归一化共同产生准平稳分布与条件过程。量子 CP 映射也作用于正锥，因而可以研究相应的正算子谱问题；然而不可约性、本原性、存在正特征算子、谱隙及条件化类型必须针对该映射重新建立。经典矩阵的逐项非负和量子映射的完全正不是同一个输入类型。[S2，§10.2，P-QSD-02；S4，§6.2]
+正性、谱数据和归一化共同产生准平稳分布与条件过程。量子 CP 映射也作用于正锥，因而可以研究相应的正算子谱问题；然而不可约性、本原性、存在正特征算子、谱隙及条件化类型必须针对该映射重新建立。经典矩阵的逐项非负和量子映射的完全正不是同一个输入类型。第53章已在对角测量制备模型中证明这座实际桥，直接消费 Core 谱定理；一般非交换谱义务仍须独立处理。[S2，§10.2，P-QSD-02；S4，§6.2]
 
 **M-OI：占据极限与不变闭合。** 对有限量子系统的固定 CPTP 通道 $\mathcal T$，考虑时刻态的 Cesàro 平均
 $$
@@ -297,6 +300,8 @@ $$
 \|\mathcal T(\bar\rho_N)-\bar\rho_N\|_1\le\frac2N.
 $$
 由线性映射的连续性，每个子列极限都是不变态。这说明不变结构怎样从占据平均得到；它没有证明唯一性、逐时刻混合，或者每条随机轨迹的经验极限。无限维情形的紧性也不能直接沿用。量子酉周期运动可以具有这样的平均极限，同时永远不收敛到单个态。[S2，P-PER-02、P-GOA-01；这里的有限量子版本是所声明 CPTP 模型中的直接推导]
+
+第52章已把实际密度集合紧性、Cesàro 矩阵残差、全部效应的 $1/N$ 界以及平稳子极限存在写成 Lean 定理。该机器证明使用 Euclidean 算符范数的 $2/N$ 界保证矩阵残差趋零；本节的迹范数公式保留解析责任，不因两者常数相同就被自动计入形式化。
 
 四种机制解释了内核为什么可以复用。实际量子层仍须负责复矩阵、半正定性、仪器完备性、真实迹配对和实验接口。新增一个可复用证明，不会相应增加一条自然界基本定律；保留一个专属适配，也不是核心失败。
 
@@ -1874,6 +1879,8 @@ $$
 有限时间近似通道给第 4 章误差合成；若一个闭环通道在迹距离上有统一收缩系数 $\alpha<1$，则有唯一固定态，扰动通道的固定态距离至多
 $\epsilon/(1-\alpha)$。证明与 Core 相同：插入一个共同通道输出得
 $d\le\alpha d+\epsilon$。无收缩、近简并或分岔时，不应从很小单步误差推出长期身份稳定。
+
+第52章证明无需最优控制或严格收缩前提的有限通道平稳态存在，并给出周期轨道与多平稳态反例；第53章则先指定存活结果，再证明 QSD 生存律和 Doob 的不同不变分布。这些成果为持续结构提供实际矩阵证书，仍不产生一个未经声明的评价函数。
 
 <a id="ch-21"></a>
 
@@ -4589,9 +4596,9 @@ $$
 
 代码分模型、计算、证书三层。模型层拒绝单位或基不匹配；计算层返回近似值与误差；证书层保留假设和失败状态。遇到非 CP 数据可提供有标记的拟合模型，但保留原残差。证明注册表必须区分标准先例与本项目新组合；投稿前对精确表达做先例查重和独立审稿。
 
-**已达到的阶段。** 第49章记录实际有限操作、全词响应商、有限词效应表示、闭合后验、完整有限适应树、加权/可变指标、复有理解释与证书可靠性。第50章进一步完成实际全效应概率、完整 Kraus 收缩、最坏输出缺陷、轨迹误差与正事件条件化。对应通用包本版共有15个模块、256个显式定理；完整命名公理清单287项，另有具体证书实例的独立回执。机器检查仅覆盖实际声明，不把其基础公理隐去。三套书中程序的757项检查与87项内核运行测试按各自计数规则另记。
+**已达到的阶段。** 第49–50章建立实际有限操作、全部词响应、有限表示、可靠精确证书、全效应距离和完整通道/正事件误差。第51–53章新增真实概率混合及有理 TV 预算、实际有限密度集合紧性与 Cesàro 平稳态存在，以及次随机核到量子全成功记录的 QSD/Doob 桥。当前通用包共有18个模块、334个显式定理，392项唯一命名公理审计；100项运行方法、4个演示及具体证书另按实际回执计数。三套旧主文程序的757项检查沿用3.0版本的执行身份及未变代码哈希。
 
-**下一批可验证义务。** 第一，证明 trace 距离/全效应识别与旁系统稳定的通道度量，或为声明协议构造保留经典记忆的实际 CP 装配，使第35.2节纸面合同进入更广的形式化范围。第二，给最坏通道缺陷的可计算、有证上界，防止把抽样最大值误作统一误差。第三，研究有限 CPTP 的 Cesàro 残差与平稳点，把长期行为接入对象持续性；唯一稳态和混合率单列条件。第四，将对角 CP 存活操作明确转换为次随机矩阵，以已有 Core 存活定理获得同一事件下的谱/寿命结论。第五，继续补齐闭包搜索与有理消元的通用程序正确性。
+**下一批可验证义务。** 量子选择是根本科学任务：先逐条明确独立物理原则及其经典/实量子反模型，再判定能否从 UEOT 的非量子输入证明所需原则。内核方面，优先构造保留经典记录与量子记忆的联合通道，随后使用第51章预算进入适应协议；长期方面分别推进完整 Cesàro 投影、唯一/混合条件与保留相干的 CP 存活谱，不把这些标准数学待办自动归为新的物理猜想。精确程序细化、真实 QDRR 数据、完整谱/阈值及连续变量能量桥各有独立验收门。
 
 真实硬件数据必须另标来源和原始计数，不能把合成结果重新命名为实证。只在证明脚本实际检查成功、输入身份与适用域同时明确时，才给对应声明 FORMAL 标签。
 
@@ -4610,7 +4617,7 @@ $$
 |---|---|---|---|
 | Core → 量子扇区 | 协议/响应/更新桥；外部OPT重构的明确适用包 | 量子附加原则是否由独立UEOT物理条件蕴含 | 逐前提依赖证明或满足Core而不满足量子原则的反模型 |
 | 量子扇区 → 内核 | 合法操作、全词与有限表示、证书可靠性 | 运行程序通用细化、连续域与无限协议 | 同一输入的通用细化定理及误差界 |
-| 内核 → 持续与误差 | 实际完整通道误差与正事件后验 | 长期行为、存活、记忆/旁系统合同 | 明确有限模型的残差/寿命或统一tester误差定理 |
+| 内核 → 持续与误差 | 同库 TV 预算、Cesàro 平稳存在、实际对角 QSD/Doob 与正事件后验 | 保留记录的记忆/旁系统合同、非交换存活及混合率 | 实际联合通道的可组合误差或指定谱模型的速率定理 |
 | 已知QFT → 独立物理选择 | 作用量、QED/EFT推导、异常与候选谱 | 规范群、现实谱、质量、真空和阈值 | 完整冻结模型的一条未被用于拟合的共参数预测 |
 | 候选 → 自然界 | 见证、校准与顺序统计方案 | 真实原始数据与竞争模型约束 | 可复查、可拒绝的实验结论 |
 
@@ -4622,23 +4629,25 @@ $$
 
 ## 48.1 唯一理论主源
 
-本书固定名称为《UEOT物理学》，稳定文档身份为 `UEOT-PHYSICS`，当前正式整合版为3.0。规范正文固定在仓库 `physics/qm/book/UEOT_PHYSICS.md`；同目录 PDF 由该正文生成。第0–50章、附录A–F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
+本书固定名称为《UEOT物理学》，稳定文档身份为 `UEOT-PHYSICS`，当前正式整合版为3.1。规范正文固定在仓库 `physics/qm/book/UEOT_PHYSICS.md`；同目录 PDF 由该正文生成。第0–53章、附录A–F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
 
 版本报告、PR、日志和数学模块各有自己的身份，但不再与总著争夺理论正文的权威。源文件清单、章节修订档案及证据回执记录“这句话依据什么、哪一部分被检查过”。历史文件保留沿革责任；它们的旧状态不会覆盖较新的已验证内核，新的内核也不会为历史上未形式化的物理命题追授机器证明。
 
 ## 48.2 三个独立状态轴
 
-正文论证状态仍采用 D/P/K/H/S/E/N/O：定义、手写命题/推导、外部重型定理、附加假设、解释、经验输入、否定结果、开放问题。这一轴回答“文本正在做什么”。物理依赖使用仓库合同 C/B/S/P/E/O/X：Core结果、领域桥、扇区选择、标准物理输入、经验输入、开放机制、反模型/排除。这一轴回答“结论从哪里来”。两套字母的 P 和 S 含义不同，记录时必须写明字段名。
+正文论证状态仍采用 D/P/K/H/S/E/N/O：定义、手写命题/推导、外部重型定理、附加假设、解释、经验输入、否定结果、开放问题。这一轴回答“文本正在做什么”。物理依赖使用仓库合同 C/B/S/P/E/O/X：Core结果、领域桥、扇区选择、标准物理输入、有效模型假设、可观测后果、开放科学猜想。这一轴记录结论的依赖和物理角色；可观测后果 O 本身不表示已经有实验数据。两套字母在 P、S、E、O 等位置含义不同，记录时必须写明字段名。
+
+3.1版明确修正3.0版在该字段中误用 E=经验、O=开放、X=反例的冲突，并在逐章档案保留迁移理由。经验来源继续由论证状态及数据身份记录；反例使用论证状态 N，不能迁成开放猜想 X；已经有标准数学证明而本项目尚未形式化的事项属于开发义务，也不因此成为 X。上游合同未被改写，标签修订不新增或撤销数学定理。
 
 第三轴 `verification_kind` 记录解析推导、精确算术、合成数值、Lean形式检查或真实实验。一个状态为 P 的手工定理不因此已被 Lean 检查；一个由标准物理输入 P 支持的形式化结论也不因此成为 Core 无条件定理。定理内容、适用域和检查证据必须一同提取。
 
 ~~~yaml
 document:
   id: UEOT-PHYSICS
-  edition: "3.0"
+  edition: "3.1"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
-  chapter_range: [0, 50]
+  chapter_range: [0, 53]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -4909,7 +4918,7 @@ $$
 
 **证明。** 任一输出效应通过 $\Phi^*$ 拉回后仍是输入效应，且实际 Born 配对保持，所以每个输出概率差受输入 $d_E$ 控制；取上确界得收缩。再在 $\Phi(\sigma)$ 处插入中间态，使用三角不等式、收缩和 $\Delta_E$ 的上界性质。定义中插入零，使空密度类型情况下的集合仍非空；对通常正维物理系统不改变值。∎
 
-`channelState_effectDistance_le` 和 `channelState_perturbation_bound` 证明的正是这些实际对象之间的关系。$\Delta_E$ 本身为非计算的上确界，不是一个已经实现的高效误差估计算法。任何运行时提供的数值上界 $\widehat\Delta$ 还需独立证明覆盖 $\Delta_E$；有限抽样中的最大误差只给下界，不能反过来充当安全上界。
+`channelState_effectDistance_le` 和 `channelState_perturbation_bound` 证明的正是这些实际对象之间的关系。$\Delta_E$ 本身为非计算的上确界，不是一个已经实现的高效误差估计算法。第51章进一步给出同库随机化这一具体模型中的有理上界。任何运行时提供的数值上界 $\widehat\Delta$ 还需独立证明覆盖 $\Delta_E$；有限抽样中的最大误差只给下界，不能反过来充当安全上界。
 
 ## 50.5 从量子一步定理接入 Core 的组合证书
 
@@ -4974,6 +4983,376 @@ $$
 本章的首层成果是解析命题及其 Lean 对应；第二层是锁定工具链上的实际构建、公理检查和既有证书的兼容性回归；第三层才是某个真实器件或领域模型是否满足输入的量子实现与数值误差上界。前两层已经为后续物理研究提供可复用内核，第三层必须由具体制备、控制、噪声、阈值和数据支持。
 
 QMU-04 因而登记为“有限共同载体完整 Kraus 通道及正事件后验切片完成”。全自适应含记忆过程的统一误差、旁系统稳定范数识别、可执行最坏误差上界算法、无界能量控制和连续极限仍分开列入第47章的工作包。下一步应优先从这些有明确接口的义务中选择，不通过给已有定理更强的标题来跳过它们。
+
+<a id="ch-51"></a>
+
+# 51. 随机化量子实现与可认证误差预算
+
+第50章把量子误差写成实际全部效应、全部输入态的上确界。这解决了比较对象的定义，却还没有为每种设备给出可计算上界。本章闭合一个经常出现且能严格计算的切片：实验先用经典随机数选择同一有限库中的某个完整量子操作，模型差异来自选择权重，或者来自可分别控制的库成员误差。这里的随机化是明确的操作机制；不把任意未知噪声都归入这个模型。
+
+## 51.1 从概率权重构造真实量子对象
+
+固定有限指标集 $B$、共同的有限维复 Hilbert 空间，以及概率权重
+$$
+p_b\ge0,\qquad \sum_{b\in B}p_b=1.
+$$
+每个库成员是完整仪器 $\{K^{(b)}_{ok}\}_{o,k}$，满足 $\sum_{o,k}K^{(b)\dagger}_{ok}K^{(b)}_{ok}=I$。本节在一个共同的有限结果集和 Kraus 指标集上书写；指标不齐时可先采用第49.5节已验证的补零适配。
+
+<a id="p-qmx-01"></a>
+
+**P-QMX-01（概率混合的实际实现）。** 对任意密度态库 $\rho_b$，$\rho_p=\sum_b p_b\rho_b$ 是密度态。以新指标 $(b,k)$ 定义
+$$
+L^{(p)}_{o,(b,k)}=\sqrt{p_b}\,K^{(b)}_{ok},
+$$
+得到完整量子仪器。其分支、Heisenberg 拉回与忘记结果的通道分别为
+$$
+\begin{aligned}
+\Phi^{(p)}_o(X)&=\sum_b p_b\Phi^{(b)}_o(X),\\
+\Phi^{(p)*}_o(E)&=\sum_b p_b\Phi^{(b)*}_o(E),\\
+\Phi^{(p)}(X)&=\sum_b p_b\Phi^{(b)}(X).
+\end{aligned}
+$$
+
+**证明。** 正半定锥对非负加权和封闭，迹线性及权重归一给出 $\operatorname{Tr}\rho_p=1$。新仪器满足
+$$
+\sum_{o,b,k}L^{(p)\dagger}_{o,(b,k)}L^{(p)}_{o,(b,k)}
+=\sum_b p_b\sum_{o,k}K^{(b)\dagger}_{ok}K^{(b)}_{ok}
+=\Bigl(\sum_b p_b\Bigr)I=I.
+$$
+逐项展开 $LXL^\dagger$ 或 $L^\dagger EL$ 即得三条线性公式。∎
+
+Lean 的 `Mixture.Weights` 只保存权重、非负性和归一性。`density` 与 `weightedInstrument` 按上述公式构造，完整性由已有仪器推导；`instrument` 通过已验证的加权到普通 Kraus 转换取得实际平方根。权重为零时平方根亦为零，仍是合法项，不需要删去某个结果或改变协议身份。运行内核保存有理权重与未缩放矩阵，因此 Hadamard 之类可用有理加权表示，不要求程序把 $\sqrt2$ 假装成有理数。
+
+## 51.2 总变差的一半来自归一化
+
+对同一指标集上的两个分布定义
+$$
+\operatorname{TV}(p,q)=\frac12\sum_b|p_b-q_b|.
+$$
+有 $0\le\operatorname{TV}\le1$。关键估计适用于所有取值于 $[0,1]$ 的函数 $f_b$：
+$$
+\left|\sum_b(p_b-q_b)f_b\right|
+=\left|\sum_b(p_b-q_b)(f_b-\tfrac12)\right|
+\le\frac12\sum_b|p_b-q_b|.
+$$
+第一步使用 $\sum_b(p_b-q_b)=0$；第二步使用 $|f_b-1/2|\le1/2$。如果只逐项估计 $|f_b|\le1$，会得到较松的 $\ell^1$ 界；本章实际形式化了归一化带来的一半因子。
+
+<a id="p-qmx-02"></a>
+
+**P-QMX-02（同库权重变化的全称上界）。** 对同一密度态库和同一完整通道库，分别有
+$$
+d_E\left(\sum_b p_b\rho_b,\sum_b q_b\rho_b\right)
+\le\operatorname{TV}(p,q),
+$$
+$$
+\Delta_E\left(\sum_b p_b\Phi_b,\sum_b q_b\Phi_b\right)
+\le\operatorname{TV}(p,q).
+$$
+
+**证明。** 固定任一效应 $E$，令 $f_b=P_E(\rho_b)$。第50章已证明每个 $f_b\in[0,1]$，所以中心化估计给每个效应的概率差上界。取全部效应上确界得第一式。对第二式，任取输入态 $\tau$，将第一式用于密度态库 $\Phi_b(\tau)$，再对全部输入态取上确界。∎
+
+这不是有限状态样本上的最大误差。量词次序是“每个合法输入态、每个效应均受同一预算控制”，所以才能安全取两层上确界。其 Lean 入口是 `expectation_sub_le_tv`、`density_weight_change_le_tv` 与 `channelDefect_weight_change_le_tv`。
+
+## 51.3 库成员也变化时的预算分解
+
+<a id="p-qmx-03"></a>
+
+**P-QMX-03（权重与成员误差的联合上界）。** 给定两个同载体的完整通道库 $\Phi_b,\Psi_b$，记 $\delta_b=\Delta_E(\Phi_b,\Psi_b)$。则
+$$
+\Delta_E\left(\sum_b p_b\Phi_b,\sum_b q_b\Psi_b\right)
+\le\operatorname{TV}(p,q)+\sum_b q_b\delta_b.
+$$
+固定权重 $p=q$ 时，右侧成为 $\sum_b p_b\delta_b$。两库可以有不同的结果和 Kraus 指标类型，因为本式比较的是各自忘记结果后的同载体通道。
+
+**证明。** 固定输入态、效应，在 $\sum_b q_b\Phi_b$ 插入中间通道。第一段由 P-QMX-02 控制。第二段展开为成员概率差的非负加权和，应用绝对值三角不等式，再逐项使用成员的真实全称缺陷上界。两层上确界保留这个与输入态、效应无关的右侧。∎
+
+交换两个模型也能得到权重 $p_b$ 加权的对称版本；程序或应用可择取更小的已证明预算。无论选择哪个方向，成员上界都需要真实证据。相同的权重并不证明两个不同库等价：单成员分布 $p=q=(1)$ 的 TV 为零，但恒等通道与 Pauli $X$ 通道对 $|0\rangle\langle0|$ 的输出可由 $|0\rangle\langle0|$ 效应以概率差一分开。这个反例直接说明遗漏“同库”前提会使结论错误。
+
+## 51.4 有理预算与长期误差装配
+
+<a id="p-qmx-04"></a>
+
+**P-QMX-04（精确有理预算的解释）。** 设权重为有理数，仍满足非负、归一条件。定义完全由有限有理算术计算的
+$$
+b_{\rm TV}=\frac12\sum_b|p_b-q_b|\in\mathbb Q.
+$$
+其到实数的解释恰等于实数分布的 TV。若 $b_{\rm TV}\le b$，则同库通道缺陷 $\Delta_E\le b$。更一般地，若另有每个成员的已证明有理上界 $\delta_b\le\varepsilon_b$，则
+$$
+b_{\rm joint}=b_{\rm TV}+\sum_b q_b\varepsilon_b
+$$
+也是合法的实数解释上界。
+
+**证明。** 有理到实数的嵌入保持有限和、乘法、减法、绝对值及序。逐项转换后使用 P-QMX-02 或 P-QMX-03 即得结论。∎
+
+对应 `RationalWeights.toWeights`、`tv_toWeights`、`channelDefect_weight_change_le_rational_budget` 与 `channelDefect_joint_change_le_rational_budget`。这些定理证明数学上的有限有理表达式解释；它们没有自动验证 Python 的解析器、循环、序列索引或外部文件传输。
+
+若第 $j$ 步各自具有这种预算 $b_j$，第50.5节的既有轨迹证书给出
+$$
+d_E(\rho_n,\sigma_n)\le d_E(\rho_0,\sigma_0)+\sum_{j<n}b_j.
+$$
+这为“量子实际递推—可计算局部预算—Core 组合证书”接上了一个具体入口。时间依赖的库可逐步声明；本结论仍要求每一步的两模型共享该步所声明的组件对应关系。现有 Lean 轨迹接口在每一串演化内固定有限结果与 Kraus 指标类型，左右两串可不同，并共享同一矩阵载体；各步索引改变时，有限时域须先提供明确的补零或重索引适配。
+
+## 51.5 尖锐见证、程序责任与下一步
+
+取 $\Phi_0=\mathrm{id}$、$\Phi_1(\rho)=X\rho X$，$p=(3/4,1/4)$、$q=(1/4,3/4)$。输入 $\rho=|0\rangle\langle0|$ 时，输出分别为 $\operatorname{diag}(3/4,1/4)$ 与 $\operatorname{diag}(1/4,3/4)$。测量 $E=|0\rangle\langle0|$ 得概率差 $1/2$，恰好达到 TV 界。若两个组件都改成恒等通道，同样权重仍有预算 $1/2$，而实际通道缺陷为零。因此该预算是可证上界，通常不是精确距离算法。
+
+运行入口 `MixtureWeightBudget` 将两个权重表绑定到同一组已验证完整仪器，预算由输入精确计算，不接受随意填写的更小数字。它记录实际 Kraus 表示指纹；不同但物理等价的表示仍可能有不同指纹。测试同时覆盖负权重、未归一、浮点输入、维数或结果标签失配，以及零权重组件的上下文检查。运行测试提供独立有限见证，通用量词由 Lean 定理负责。
+
+本章依赖明确的量子实现和随机化模型，属于标准物理输入 P、有效模型 E 与领域桥 B 所支持的条件结论；其中可测试的概率约束属依赖分类 O。它不选择复数量子理论，不给任意未知通道的通用计算算法，也不自动控制保留结果的仪器距离或任意旁系统上的 diamond 距离。后续优先把随机分支和控制历史作为实际经典寄存器保留下来，再对完整联合通道使用同类预算。
+
+<a id="ch-52"></a>
+
+# 52. 长期平均、紧性与量子平稳态
+
+UEOT 的“对象持续”需要一个可以核验的动力学含义。给定完整量子通道，最基本的问题是：在状态可能持续变化时，是否存在不变的平均结构？本章在实际有限复矩阵拓扑中证明答案，并把它与逐时收敛、唯一性、条件生存和目标最优性分开。
+
+## 52.1 实际迭代和平均态
+
+固定同一个完整 Kraus 通道 $\Phi$ 与初始密度态 $\rho_0$，定义
+$$
+\rho_{n+1}=\Phi(\rho_n),\qquad
+\bar\rho_N=\frac1N\sum_{n=0}^{N-1}\rho_n,\qquad N>0.
+$$
+每一步是合法密度态，平均也由正性、迹线性和 $N>0$ 得到密度态。平均包含初态，终点为 $N-1$；这使下面望远镜恒等式的端点没有歧义。
+
+<a id="p-qce-01"></a>
+
+**P-QCE-01（平均态的精确残差与全效应预算）。** 有
+$$
+\Phi(\bar\rho_N)-\bar\rho_N=\frac{\rho_N-\rho_0}{N},
+\qquad
+d_E\bigl(\Phi(\bar\rho_N),\bar\rho_N\bigr)\le\frac1N.
+$$
+
+**证明。** 由通道线性，
+$$
+\Phi\left(\sum_{n=0}^{N-1}\rho_n\right)-\sum_{n=0}^{N-1}\rho_n
+=\sum_{n=0}^{N-1}(\rho_{n+1}-\rho_n)=\rho_N-\rho_0.
+$$
+除以 $N$ 得第一式。任意效应 $E$ 的两端概率均在 $[0,1]$，因而其概率残差绝对值至多 $1/N$。取全部效应上确界即得第二式。∎
+
+这不是对某个候选平稳态的距离界；它控制的是“平均态再演化一步”与“平均态自身”的差。没有稳定性常数或谱隙时，小残差不能直接转换为到指定平稳态的距离。`matrix_residual`、`probability_residual` 与 `effectDistance_residual_le` 形式化的是这个精确合同。
+
+## 52.2 密度态集合为什么紧
+
+在 $d\times d$ 复矩阵空间的通常有限维拓扑中，令
+$$
+\mathcal D_d=\{\rho:\rho\succeq0,\ \operatorname{Tr}\rho=1\}.
+$$
+这里 $\|\cdot\|_{\rm op}$ 表示由复 Euclidean 向量范数诱导的算符范数，不是迹范数。Lean 采用 Mathlib 的 `Matrix.Norms.L2Operator` 作用域；该结构保持通常矩阵拓扑，不能为了方便而给矩阵人为换成使任意序列收敛的拓扑。
+
+<a id="p-qce-02"></a>
+
+**P-QCE-02（实际密度集合的紧性）。** $\mathcal D_d$ 是闭且有界的集合，故在有限维中紧。每个 $\rho\in\mathcal D_d$ 满足 $\|\rho\|_{\rm op}\le1$，并有
+$$
+\|\Phi(\bar\rho_N)-\bar\rho_N\|_{\rm op}\le\frac2N.
+$$
+
+**证明。** 正半定锥是闭集；等价地，对任意向量 $v$，连续函数 $\rho\mapsto v^\dagger\rho v$ 的非负条件在极限中保持。迹是连续线性函数，迹一集合也闭，两者交集为闭。有限维 Hermitian 谱定理给非负特征值 $\lambda_i$，且 $\sum_i\lambda_i=1$；所以每个 $\lambda_i\le1$，酉共轭不改变算符范数，得到范数界。有限维闭且有界蕴含紧。最后将 P-QCE-01 的矩阵残差取范数，使用 $\|\rho_N-\rho_0\|_{\rm op}\le2$ 即得。∎
+
+这条证明中的紧性、范数界和连续性都在实际矩阵对象上建立，没有把它们写成需要调用者先相信的“持续性证书字段”。Lean 对应 `density_operatorNorm_le_one`、`densityMatrices_closed`、`densityMatrices_compact`、`continuous_channel` 和 `matrix_residual_norm_le`。Mathlib 提供谱理论、C* 序与有限维拓扑的通用定理，本项目证明其输入确实由密度态和 Kraus 通道满足。
+
+## 52.3 不变子极限与平稳态存在
+
+<a id="p-qce-03"></a>
+
+**P-QCE-03（有限完整通道的平稳密度态）。** 任给初态 $\rho_0$，存在密度态 $\sigma$ 及严格递增的自然数子列 $N_k\to\infty$，使
+$$
+\bar\rho_{N_k}\longrightarrow\sigma,\qquad \Phi(\sigma)=\sigma.
+$$
+任何收敛的这种平均子列，其极限均为平稳密度态。特别地，当 $d>0$ 时，每个完整有限 Kraus 通道都至少有一个平稳密度态。
+
+**证明。** 平均态全在紧集 $\mathcal D_d$ 内，故存在收敛子列。闭性保证极限正半定且迹一。线性映射 $\Phi$ 在有限维连续，因而
+$$
+\Phi(\sigma)-\sigma
+=\lim_k\bigl(\Phi(\bar\rho_{N_k})-\bar\rho_{N_k}\bigr)=0,
+$$
+末项由 P-QCE-02 的 $2/N_k$ 界趋于零。这个论证适用于任一收敛且指标趋于无穷的子列。若只给通道而没有初态，正维条件提供 $I/d$ 作为种子，再应用上述结果。∎
+
+Lean 入口 `exists_stationary_subsequence` 同时返回密度态、平稳性和严格子列；`subsequence_limit_density` 与 `subsequence_limit_invariant` 分别承担极限的物理合法性和不变性；`exists_stationary` 用非空有限载体构造归一单位阵。该形式化结果是存在性，不是已实现的平稳态求解程序，也没有给找到足够长子列的通用计算复杂度。
+
+Core 的 P-PER-02/M-OI 与相关持续性章节提供了“平均—残差—不变结构”的通用研究接口。本章在 QM 层对密度集合和实际通道独立完成相应前提与有限矩阵证明；源码没有直接调用 Core 的占据测度定理，因此不把思想上的对应写成代码依赖。第53章的 QSD 桥则会直接消费冻结 Core 定理，两种连接方式在来源上分别记录。[S2，§7–8；S3，持续性端口]
+
+## 52.4 周期轨道与多平稳态的反例
+
+<a id="n-qce-01"></a>
+
+**N-QCE-01（平均不变不等于轨道收敛或唯一性）。** P-QCE-01 至03的前提不能推出原始态序列 $\rho_n$ 收敛，也不能推出平稳态唯一。
+
+**证明与精确见证。** 取 $\Phi(\rho)=X\rho X$、$\rho_0=|0\rangle\langle0|$。偶数步为 $\rho_0$，奇数步为 $\rho_1=|1\rangle\langle1|$，两者由 $P_0$ 效应以概率差一分开，故原始轨道不收敛。但
+$$
+\bar\rho_N=\operatorname{diag}\left(\frac{\lceil N/2\rceil}{N},
+\frac{\lfloor N/2\rfloor}{N}\right)\longrightarrow I/2.
+$$
+奇数 $N$ 时 $P_0$ 的一步残差恰为 $1/N$，偶数 $N$ 时为零。另取恒等通道，每个密度态都平稳；至少 $\rho_0$ 与 $\rho_1$ 不相同，所以唯一性不能成立。∎
+
+这两类反例有正文代数证明和有理运行见证，不能将其运行检查计入通用 Lean theorem 数量。实际代码拒绝 $N=0$ 的平均、非整数步数和非法初态；其平均的起止点与 P-QCE-01 完全一致。
+
+## 52.5 长期平均在完整物理理论中的位置
+
+通道平稳态、唯一平稳态、所有初态的逐时混合、量子轨迹的几乎处处经验收敛，是不同命题。有限维量子通道文献对遍历性与混合性有专门区分，本章使用与之相容的有限存在性范围；更强的谱结构及均值遍历结果没有由本轮的子列证明自动获得。[Burgarth等原始研究](https://arxiv.org/abs/1210.5625)
+
+本章已经给 UEOT 对象持续提供一种具体且无循环定义的证书：在已声明的物理实现内，存在平均意义不变的合法量子态。这个事实不指定什么对象应该持续，不选择一个价值函数，也不推出控制最优性。要讨论 GOD/GOA，仍须声明动作、代价、约束和评价；要讨论寿命，则需指定“仍然存活”的事件，进入下一章。
+
+下一步可选择实际有限通道，证明其平稳态唯一及额外谱条件，再推导到平稳态的速率；或先形式化整个 Cesàro 序列的投影极限。后一命题在有限维线性理论中有更强的标准工具，本版只将已经实际完成的子列和存在性登记为机器成果。若进入无限维，密度态集合通常不再具有这里使用的紧性，必须加入能量紧性、尾部控制和定义域合同。
+
+<a id="ch-53"></a>
+
+# 53. 条件生存、对角量子实现与 Core 谱桥
+
+“对象仍然存在”只有在指定事件后才能成为概率命题。一个完整量子通道总是保持总概率一，却可以同时包含“继续存活”和“已离开任务域”两个结果。前者的概率一般衰减，按它条件化得到的态也未必等于完整通道的无条件态。本章给出一个可逐项核对的有限实现，把冻结 Core 的次随机与 QSD 定理接到真实量子仪器和记录概率。
+
+## 53.1 约定、结果与失败补全
+
+固定有限状态指标 $i=1,\ldots,d$，采用行分布约定
+$$
+(pQ)_j=\sum_i p_iQ_{ij}.
+$$
+给定非负次随机矩阵
+$$
+Q_{ij}\ge0,\qquad s_i:=\sum_jQ_{ij}\le1.
+$$
+对角嵌入为 $D(p)=\operatorname{diag}(p_1,\ldots,p_d)$；非负且和为一的 $p$ 给出实际复密度态。矩阵单位 $U_{ji}=|j\rangle\langle i|$ 表示从源 $i$ 测量并制备到目的 $j$，不能将两个指标交换而继续沿用同一 $Q$。
+
+<a id="p-qsv-01"></a>
+
+**P-QSV-01（次随机核的完整量子仪器）。** 取存活 Kraus 矩阵和失败 Kraus 矩阵
+$$
+A_{ji}=\sqrt{Q_{ij}}\,|j\rangle\langle i|,
+\qquad B_i=\sqrt{1-s_i}\,|i\rangle\langle i|.
+$$
+二者构成完整仪器，其存活分支为
+$$
+\mathcal K_Q(X)=\sum_{i,j}Q_{ij}U_{ji}XU_{ji}^{\dagger}.
+$$
+
+**证明。** $U_{ji}^{\dagger}U_{ji}=|i\rangle\langle i|$，所以存活项的 Gram 和为 $\operatorname{diag}(s_i)$，失败项的 Gram 和为 $\operatorname{diag}(1-s_i)$，二者之和为 $I$。非负性及行和上界保证全部权重合法，故两个分支完全正且总通道保持迹。∎
+
+`Survival.weightedInstrument` 和 `instrument` 构造了这组实际仪器。Lean 的两个结果为 `true` 与 `false`，运行内核分别命名为 `survive` 与 `lost`。Lean 为失败分支也使用完整 $(i,j)$ 指标，仅对角权重非零；Python 省略那些为零的非对角失败项，二者的操作公式相同，表示指纹则不被要求相同。
+
+失败后仍使用同一矩阵载体只是一种完整结果编码；“已死亡”由经典结果记录标记，而不是由 Hilbert 空间中一个未声明的吸收态定义。本章的寿命任务在第一次失败时终止，因此不把失败之后再次调用存活操作解释成复活过程。
+
+## 53.2 同一个存活记录的量子与经典解释
+
+<a id="p-qsv-02"></a>
+
+**P-QSV-02（对角动力学与有限成功词的交织）。** 对任意复算符 $X$，
+$$
+\mathcal K_Q(X)=\operatorname{diag}\left(\sum_iQ_{ij}X_{ii}\right)_j.
+$$
+因此对任意实向量 $p$，任意 $n\ge0$，
+$$
+\mathcal K_Q(D(p))=D(pQ),\qquad
+\mathcal K_Q^n(D(p))=D(pQ^n).
+$$
+若 $p$ 是概率分布，则连续 $n$ 次记录为存活的概率为 $pQ^n\mathbf1$；当该质量为正时，条件态为
+$$
+D\left(\frac{pQ^n}{pQ^n\mathbf1}\right).
+$$
+
+**证明。** 直接计算 $U_{ji}XU_{ji}^{\dagger}=X_{ii}|j\rangle\langle j|$，求和得第一式。代入 $D(p)$ 得一次交织，随后按记录实际时间顺序归纳，并使用 $(pQ)Q^n=pQ^{n+1}$。对角态的迹等于分量和，给出记录概率；正质量下按实际归一公式得到条件态。∎
+
+这里的 $\mathcal K_Q^n$ 对应既有 `recordOperator` 的长度 $n$ 全成功词，`survivalMass_eq_response` 将它明确识别为同一操作库的 `response`，所以不是另造一个与量子记录无关的标量过程。Lean 对所有 $p,n$ 给出 `killedIterate_diagonal` 和 `survivalMass_diagonal`；单步归一的显式矩阵恒等式为 `success_posterior_matrix`。一般多步条件公式按同一归一构造解析推出，后面的 QSD 特例另有完整命名形式定理。
+
+第一式也显示该模型的物理限制：任意输入相干在一次存活测量制备后消失。它是合法的量子实现和经典过程的嵌入，未描述所有非交换存活通道。不能仅因仪器使用复矩阵，就声称已经证明一般量子 Perron 理论。
+
+## 53.3 QSD 的生存律与寿命
+
+给定非负归一分布 $q$、正数 $r$，并明确要求左特征关系
+$$
+qQ=rq,\qquad q_i\ge0,\quad \sum_iq_i=1,\quad r>0.
+$$
+这些谱数据是本定理输入；本章没有先证明每个 $Q$ 都具有所需正谱数据，也没有假设任意初态最终收敛到 $q$。此处 $r$ 是满足该关系的存活特征因子；其全局谱半径身份和主特征值唯一性不属于以下定理的输出。
+
+<a id="p-qsv-03"></a>
+
+**P-QSV-03（实际全成功记录的几何生存律）。** 上述前提下，$0<r\le1$，且
+$$
+\mathcal K_Q^n(D(q))=r^nD(q),\qquad
+\Pr_q(\text{前 }n\text{ 步全部存活})=r^n.
+$$
+每个有限 $n$ 的存活概率为正，按该事件条件化后的实际量子态仍为 $D(q)$。
+
+**证明。** 冻结 Core 的 `leftPerron_pow` 由左特征关系给 $qQ^n=r^nq$。将它经 P-QSV-02 的实际交织送入量子记录，即得第一式。归一化 $\sum q_i=1$ 后取迹，得到第二式，这一步实际调用 Core 的 `qsd_survival_mass_pow`。$r>0$ 保证各有限步质量正；Core 的 `qsd_all_steps` 给归一分布仍为 $q$，再经对角嵌入及密度态外延相等得到量子条件态相等。最后
+$$
+r=\sum_j(qQ)_j=\sum_iq_is_i\le\sum_iq_i=1,
+$$
+这由 Core 的 `perron_root_le_one_of_substochastic` 正式消费。∎
+
+本轮 QM 入口为 `qsd_killedIterate`、`qsd_survival_pow`、`qsd_survival_pos`、`qsd_conditionalState`、`qsd_rate_le_one`。依赖链先完成量子构造，再实际调用冻结 Core，最后回到真实记录和条件态；量子—经典相等式没有作为结构字段预先给出。
+
+一个直接的解析推论是寿命公式。令 $\tau\in\{1,2,\ldots\}\cup\{\infty\}$ 表示第一次失败的步数，永不失败时记为无穷，则 $\Pr(\tau>n)=r^n$。当 $r<1$ 时，$\tau$ 几乎处处有限，并有
+$$
+\Pr(\tau=m)=(1-r)r^{m-1},\qquad
+\mathbb E\tau=\sum_{n=0}^{\infty}\Pr(\tau>n)=\frac1{1-r}.
+$$
+若每步代表已校准时间 $\Delta t$，平均物理寿命为 $\Delta t/(1-r)$。本版的 Lean 结论止于有限记录的 $r^n$ 与条件态；无穷尾和期望及时间标定在这里分别作为解析推论和物理输入，未冒称新增机器证明。$r=1$ 的理想模型则无有限步失败。
+
+## 53.4 Doob 实现及其不同的不变分布
+
+进一步给严格正的右特征向量 $h$，满足
+$$
+Qh=rh,\qquad h_i>0,\qquad \sum_iq_ih_i=1.
+$$
+定义
+$$
+\widetilde Q_{ij}=\frac{Q_{ij}h_j}{rh_i},\qquad \pi_i=q_ih_i.
+$$
+
+<a id="p-qsv-04"></a>
+
+**P-QSV-04（Doob 核的实际完整实现与不变成功记录）。** $\widetilde Q$ 非负且每行和为一，$\pi$ 是概率分布并满足 $\pi\widetilde Q=\pi$。将 $\widetilde Q$ 按 P-QSV-01 实现，得到实际量子仪器：任一归一对角初态的一步成功概率为一；以 $D(\pi)$ 为初态，成功分支及任意有限全成功词均保持 $D(\pi)$，其记录概率为一，条件态亦为 $D(\pi)$。
+
+**证明。** 分母严格正给非负性，右特征关系给
+$$
+\sum_j\widetilde Q_{ij}=\frac{\sum_jQ_{ij}h_j}{rh_i}=1.
+$$
+归一条件保证 $\sum_i\pi_i=1$。左特征关系给
+$$
+(\pi\widetilde Q)_j
+=\sum_iq_ih_i\frac{Q_{ij}h_j}{rh_i}
+=\frac{h_j}{r}(qQ)_j=q_jh_j=\pi_j.
+$$
+对这些 Core 已证的行和、不变分布归一及平稳关系，分别通过 P-QSV-01 和02得到实际仪器、概率与成功分支恒等式；按记录长度归纳得到所有有限成功词，再对质量一归一即可。∎
+
+Lean 实际消费 `doobTransform_row_sum`、`doobInvariant_sum` 和 `doobInvariant_stationary`，对应本层 `doobInstrument`、`doobDensity`、`doob_success_probability`、`doob_success_branch`、`doob_killedIterate`、`doob_survivalMass` 与 `doob_conditionalState`。这些名称准确覆盖分支、记录和条件态；本版没有另外登记忘记结果后的 `channelState` 平稳推论为新的命名机器定理。
+
+Doob 变换常用于研究条件轨迹或稀有事件的替代动力学；一般量子版本还涉及非交换谱数据和适当的轨迹极限。[Carollo等原始研究](https://arxiv.org/abs/1711.10951) 本章只证明给定谱前提下的有限构造和上述不变关系，尚未建立“先条件存活到遥远未来再取极限”与本变换相等的过程定理。尤其不能把 $q$ 的有限时存活条件律与 $\pi=qh$ 的 Doob 平稳律直接互换。
+
+## 53.5 区分 QSD、Doob 律与初态前提的精确模型
+
+取
+$$
+Q=\begin{pmatrix}1/4&1/2\\1/8&1/4\end{pmatrix},\quad
+q=(1/3,2/3),\quad r=1/2,\quad h=(3/2,3/4).
+$$
+两行存活概率为 $3/4$ 与 $3/8$，因此损失不均匀。直接算得
+$$
+qQ=(1/6,1/3)=rq,\qquad
+Qh=(3/4,3/8)=rh,\qquad \sum_iq_ih_i=1.
+$$
+所以从 $D(q)$ 开始，第 $n$ 次全成功记录概率为 $2^{-n}$，每次条件态仍为 $D(q)$；每步无条件态则还包括失败分支的贡献。
+
+<a id="n-qsv-01"></a>
+
+**N-QSV-01（QSD、Doob 不变律与任意初态不可混同）。** 在本例中，
+$$
+\widetilde Q=\begin{pmatrix}1/2&1/2\\1/2&1/2\end{pmatrix},\qquad
+\pi=(1/2,1/2)\ne q.
+$$
+从均匀初态 $p=(1/2,1/2)$ 出发的第一次存活概率为 $9/16\ne r$；若错误地将 $Q$ 转置而保持行分布解释，从 $q$ 出发的第一次存活概率成为 $5/8\ne r$。
+
+**证明。** 逐项代入 Doob 公式得到上述两行；乘积 $q_ih_i$ 各为 $1/2$。另有 $pQ=(3/16,3/8)$，其和为 $9/16$；$qQ^T=(5/12,5/24)$，其和为 $5/8$。因此三种替换都改变了待证命题或实际概率。∎
+
+运行见证按有理矩阵逐次计算前六个成功词，得到 $1/2,1/4,\ldots,1/64$ 和相同条件态；同时检查 Doob 的 $\pi$ 固定、$q$ 不固定。该模型还给平均失败步数二的解析值，但运行的六步检查不被当作无穷期望的证明。负控包括行和超过一、负项、非方阵和不精确输入；删除失败分支会破坏完整性。取 $Q=0$ 时存活概率为零，运行入口返回后验未定义，不能人为指定 $q$。
+
+## 53.6 对 UEOT 核心追求的实际贡献
+
+本章把“持续”分成三个可以各自核验的问题：完整操作的概率守恒；指定存活事件的概率及条件态；给定左右谱数据构造的替代动力学不变结构。它让 UEOT 对象持续的抽象语言具有实际 quantum record 的可计算内容，且能指出缺少哪个前提时结论失败。
+
+分类上，冻结 QSD 代数属于 C，复密度态和 Kraus 仪器属于标准物理输入 P，选择对角测量制备和终止事件属于有效模型 E，实际交织属于桥 B，寿命与记录概率约束属于 O。一般非交换 Perron 存在性、不可约/本原条件、条件极限和谱隙在本项目仍有标准数学、领域桥或具体模型义务；“尚未形式化”本身不使它们成为科学猜想 X。只有额外提出且未证的 UEOT 机制必然性或物理选择关系，才另按 X 登记。原始双驱动哲学可指导选择哪些持续机制值得研究，却不从这些有限定理直接推出目标函数或自然最优化。[S1；S2，QSD/Perron 与 GOA 各节；S4，持续性和评价的分型]
+
+下一步应首先固定一个保留相干的有限 CP 存活映射，建立其真正正左右谱对象及非交换 Doob 实现，再分别证明存在、唯一、条件极限和收敛率。与第51章的扰动预算结合后，才讨论当制备、转移或存活判定具有误差时，寿命与条件预测能否稳定转移。这种推进能积累跨模型可复用的物理合同，同时保持“UEOT 何以选择量子结构”这一根本问题的独立研究位置。
 
 <a id="appendix-a"></a>
 
@@ -5059,7 +5438,7 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 
 # 附录 B. 编号证明结果注册表
 
-本版共88个稳定编号结果，保留全部78个继承编号，新增第49–50章的10个内核/稳定性命题。编号记录正文解析结果；它不是原创性、Lean声明数量或实验确认的计数。完整前提及证明见相应章节。
+本版共101个稳定编号结果，保留3.0版全部88个编号（其中78个来自2.0、10个来自49–50章），新增第51–53章13个命题或反例。编号记录正文解析结果；它不是原创性、Lean声明数量或实验确认的计数。完整前提及证明见相应章节。
 
 | 编号 | 章 | 结果 |
 |---|---:|---|
@@ -5151,6 +5530,19 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 | [P-QST-04](#p-qst-04) | 50 | P-QST-04（完整 Kraus 通道的一步稳定性）。 |
 | [P-QST-05](#p-qst-05) | 50 | P-QST-05（真实量子轨迹的可组合误差）。 |
 | [P-QST-06](#p-qst-06) | 50 | P-QST-06（后选择误差及正支撑保护）。 |
+| [P-QMX-01](#p-qmx-01) | 51 | P-QMX-01（概率混合的实际实现）。 |
+| [P-QMX-02](#p-qmx-02) | 51 | P-QMX-02（同库权重变化的全称上界）。 |
+| [P-QMX-03](#p-qmx-03) | 51 | P-QMX-03（权重与成员误差的联合上界）。 |
+| [P-QMX-04](#p-qmx-04) | 51 | P-QMX-04（精确有理预算的解释）。 |
+| [P-QCE-01](#p-qce-01) | 52 | P-QCE-01（平均态的精确残差与全效应预算）。 |
+| [P-QCE-02](#p-qce-02) | 52 | P-QCE-02（实际密度集合的紧性）。 |
+| [P-QCE-03](#p-qce-03) | 52 | P-QCE-03（有限完整通道的平稳密度态）。 |
+| [N-QCE-01](#n-qce-01) | 52 | N-QCE-01（平均不变不等于轨道收敛或唯一性）。 |
+| [P-QSV-01](#p-qsv-01) | 53 | P-QSV-01（次随机核的完整量子仪器）。 |
+| [P-QSV-02](#p-qsv-02) | 53 | P-QSV-02（对角动力学与有限成功词的交织）。 |
+| [P-QSV-03](#p-qsv-03) | 53 | P-QSV-03（实际全成功记录的几何生存律）。 |
+| [P-QSV-04](#p-qsv-04) | 53 | P-QSV-04（Doob 核的实际完整实现与不变成功记录）。 |
+| [N-QSV-01](#n-qsv-01) | 53 | N-QSV-01（QSD、Doob 不变律与任意初态不可混同）。 |
 
 
 <a id="appendix-c"></a>
@@ -5161,7 +5553,7 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 
 本版直接核对五份原始/Core资料：原始UEOT PDF、Core v3完整数学主文、开放端口矩阵、post-Core科学闭合说明、理论完成路线。另恢复并核对已形成的统一主文2.0 Markdown、LaTeX、PDF及完整源/验证包；Markdown和LaTeX与包内同名成员逐字节相同。独立PDF与包内PDF字节不同，分别保留各自身份，不声称二者是同一渲染产物。
 
-现行数学代码以本版55个受验证QM源输入的SHA-256清单和实际构建为准，基线主线为0c093e9fae990d6ef8d670163b84ec93bd6fb025。历史v23–v30等材料用于核对推导沿革；部分为可访问的完整文本视图，不能冒充原始上传字节。两个同名v28.1来源仍分别记录，不能按文件后缀选择“权威”。精确来源身份与使用范围见同目录SOURCE_MANIFEST.json及章节审查记录。
+现行数学与运行代码以v31.5源清单的逐文件SHA-256及实际验证为准，本轮作者工作基线为97d033ff83125822e9926f5bd36afd08dbd153ef。新增模块的源码、通用构建、具体实例、运行检查和最终远端身份分别记录；历史源码清单保持其原版本责任。历史v23–v30等材料用于核对推导沿革；部分为可访问的完整文本视图，不能冒充原始上传字节。两个同名v28.1来源仍分别记录，不能按文件后缀选择“权威”。精确来源身份与使用范围见同目录SOURCE_MANIFEST.json及章节审查记录。
 
 ## C.2 项目来源映射
 
@@ -5202,6 +5594,8 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 9. R. Foot 等，*SU(3)L⊗U(1)N and SU(4)L⊗U(1)N gauge models with right-handed neutrinos*，1994。用于331RHN类的先例定位。[原论文](https://link.aps.org/doi/10.1103/PhysRevD.50.R34)
 10. R. M. Lutchyn、J. D. Sau、S. Das Sarma，*Majorana Fermions and a Topological Phase Transition in Semiconductor-Superconductor Heterostructures*。第34章器件有效模型的理论来源，非新实验声明。[原文](https://arxiv.org/abs/1002.4033)
 11. Y. Oreg、G. Refael、F. von Oppen，*Helical liquids and Majorana bound states in quantum wires*。同一应用方向的独立理论先例。[原文](https://arxiv.org/abs/1003.1145)
+12. D. Burgarth、G. Chiribella、V. Giovannetti、P. Perinotti、K. Yuasa，*Ergodic and Mixing Quantum Channels in Finite Dimensions*。第52章的平稳、遍历和混合层次参照；本轮机器证明的实际范围单列。[原文](https://arxiv.org/abs/1210.5625)
+13. F. Carollo、J. P. Garrahan、I. Lesanovsky、C. Pérez-Espigares，*Making rare events typical in Markovian open quantum systems*。第53章之外的一般量子条件动力学背景；不作为本项目已实现无限条件极限的证明。[原文](https://arxiv.org/abs/1711.10951)
 
 ## C.4 本书新增整理与逻辑优化的身份
 
@@ -5220,21 +5614,21 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 
 ## C.6 第三版的代码与原始学术核对
 
-第49章纳入已经主线验收的Kernel1.1–1.3成果；第50章纳入Kernel1.4的实际效应和稳定性切片。代码与证据入口分别为仓库 `formalization/ueot-qm`、`physics/qm/kernel/evidence/v31.4`，正文维护入口为 `physics/qm/book`。Core冻结文档和物理接口合同决定依赖的分类，不把域内结果回填成通用公理。
+第49章纳入已经主线验收的Kernel1.1–1.3成果；第50章纳入Kernel1.4的实际效应和稳定性切片，第51–53章纳入Kernel1.5的混合预算、Cesàro与实际条件生存桥。当前代码与证据入口分别为仓库 `formalization/ueot-qm`、`physics/qm/kernel/evidence/v31.5`，正文维护入口为 `physics/qm/book`。Core冻结文档和物理接口合同决定依赖的分类，不把域内结果回填成通用公理。
 
-本版重新直接核对 Nakahira 预印本的 Theorem1 及 Appendix A.2–A.3：完整OPT背景是调用条件，结论不要求每个自然数维数都必须有物理系统。正文第2章保留外部标准定理K的身份，未将其计入本项目256个Lean声明。[原始HTML](https://arxiv.org/html/2605.23217v1)。通道与范数的标准数学可参照[Watrous作者资料](https://cs.uwaterloo.ca/~watrous/TQI/)，本版新Lean证明另从实际矩阵构造，未复制其书稿或把其全部理论标为本项目机器重证。
+3.0版修订时曾直接核对 Nakahira 预印本的 Theorem1 及 Appendix A.2–A.3：完整OPT背景是调用条件，结论不要求每个自然数维数都必须有物理系统。正文第2章保留外部标准定理K的身份，未将其计入本项目通用Lean定理。[原始HTML](https://arxiv.org/html/2605.23217v1)。通道与范数的标准数学可参照[Watrous作者资料](https://cs.uwaterloo.ca/~watrous/TQI/)，本版新Lean证明另从实际矩阵构造，未复制其书稿或把其全部理论标为本项目机器重证。
 
 原始论文第30–33页的 Fisher→不确定关系、闭作用→CCR、Betti数→指标→三代和Massey积→规范群的强推断，需要本书已经分别补出的桥、领域输入或开放义务。保留研究思想不等于恢复已撤回的推断。现代严格版本中的具体前提、反例和可复查证明承担结论责任。
 
 <a id="appendix-d"></a>
 
-# 附录 D. 全部可执行验证与本版结果
+# 附录 D. 全部继承验证代码与版本回执
 
 ## D.1 运行合同
 
-本版在2026-10-19T23:13:31.030592+00:00实际重新执行三套继承程序，共通过757项检查（237、423、97）。它们是有限精确算术、确定性数值回归和带固定种子的合成抽样，不能计作757个普遍定理或实验结果。下面保留全部代码与本次实际环境/输出；逐项结果保存在本书evidence目录。
+3.0版在2026-10-19T23:13:31.030592+00:00实际重新执行三套继承程序，共通过757项检查（237、423、97）。3.1版逐字节保留这三套程序并核对哈希，因此沿用这份版本回执，没有将它重命名为本轮执行。它们是有限精确算术、确定性数值回归和带固定种子的合成抽样，不能计作757个普遍定理或实验结果。下面保留全部代码与该次实际环境/输出；逐项结果保存在本书evidence/v3.0目录。
 
-第49–50章的Lean形式化、87项运行测试及精确证书正负控另见附录F，不与这些检查混计。下列脚本不调用网络、不读取实验数据，依赖Python3、NumPy与SciPy，可分别保存并直接运行。
+第49–53章的Lean形式化、100项运行测试、4个演示及具体证明见证另见附录F，不与这些检查混计。下列脚本不调用网络、不读取实验数据，依赖Python3、NumPy与SciPy，可分别保存并直接运行。
 
 ## D.2 verify_ueot_quantum.py
 
@@ -5605,7 +5999,7 @@ result={"summary":{"status":"all_passed","checks":len(checks),"seed":31011,
 print(json.dumps(result,ensure_ascii=False,indent=2))
 ~~~
 
-本版实际结果摘要：
+3.0版实际结果摘要（代码在3.1版保持不变）：
 
 ~~~json
 {
@@ -5909,7 +6303,7 @@ result={"summary":{"status":"all_passed","checks":len(checks),"seed":9062026,
 print(json.dumps(result,ensure_ascii=False,indent=2))
 ~~~
 
-本版实际结果摘要：
+3.0版实际结果摘要（代码在3.1版保持不变）：
 
 ~~~json
 {
@@ -6105,7 +6499,7 @@ result={"summary":{"status":"all_passed","checks":len(checks),"seed":9062048,
 print(json.dumps(result,ensure_ascii=False,indent=2))
 ~~~
 
-本版实际结果摘要：
+3.0版实际结果摘要（代码在3.1版保持不变）：
 
 ~~~json
 {
@@ -6137,7 +6531,7 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 
 ## E.1 完整语义主源与派生阅读版
 
-稳定主文件 `UEOT_PHYSICS.md` 包含全部51章和6个附录。`UEOT_PHYSICS.pdf` 是该文件实际编译的阅读版，包含数学排版、全文目录、稳定结果编号、原始推导和代码。第三版在完整第二版基础上进行有记录的实质修订，不是需要读者拼接的补丁稿。版本号属于版本身份，已解决/未解决的物理问题按正文和证据分别报告。
+稳定主文件 `UEOT_PHYSICS.md` 包含全部54章和6个附录。`UEOT_PHYSICS.pdf` 是该文件实际编译的阅读版，包含数学排版、全文目录、稳定结果编号、原始推导和代码。第三版在完整第二版基础上进行有记录的实质修订，不是需要读者拼接的补丁稿。版本号属于版本身份，已解决/未解决的物理问题按正文和证据分别报告。
 
 ## E.2 可复现构建
 
@@ -6163,9 +6557,9 @@ python3 physics/qm/book/build/build_pdf.py \
 
 ## F.1 本版检查身份与计数
 
-本版使用锁定Lean4.33.1（编译器提交819816b2e0a3bf405af45ae5c7af2491d8f5bee6）及继承的Mathlib0df444a360eaa60ab8c11dca51a86af692955474；全部九项Git依赖的实际提交与锁文件匹配。15模块统一构建成功，256个显式定理及287项完整命名公理输出得到检查。允许基础仅为 `propext`、`Classical.choice`、`Quot.sound`，不存在以此清单宣称无基础公理的含义。
+本版沿用锁定Lean4.33.1（编译器提交819816b2e0a3bf405af45ae5c7af2491d8f5bee6）及Mathlib0df444a360eaa60ab8c11dca51a86af692955474；九项Git依赖实际提交与锁文件一致。18模块统一构建成功，334个显式定理及392项唯一完整命名公理输出得到检查。允许基础仅为 `propext`、`Classical.choice`、`Quot.sound`；这不表示证明没有基础公理。
 
-新增Effects/Stability各30个定理；新增74个审计目标还包括14个公开定义，其中9个返回携带证明的Effect/Density值、5个为数据定义。连同继承的196定理及17个列举构造，得到287项。该清单覆盖明确命名目标，不冒充Lean编译器所有内部生成常量的普查。源码文件哈希与实际日志在独立回执中，缓存复用没有替代实际统一构建。
+本轮增加Mixture/Cesaro/Survival三个模块，共78个显式定理和27个公开定义，全部105个名称纳入审计。累积392项等于334个显式定理加58个列举定义/构造；数据定义与携带证明对象的构造均有明确名单，不把定义计为定理。该清单不冒充编译器所有内部生成常量的普查。源码、执行日志、具体实例及运行检查各自绑定实际输入。
 
 | 模块 | 显式定理 | 精确责任 |
 |---|---:|---|
@@ -6175,7 +6569,7 @@ python3 physics/qm/book/build/build_pdf.py \
 | Observables | 25 | 真实词效应、最小闭包和有限生成 |
 | FiniteCoordinates | 21 | 局部表示到全词坐标和闭合后验 |
 | Adaptive | 11 | 完整有限适应树、叶律与坐标 |
-| Weighted | 16 | 有理非负权重到普通复Kraus操作 |
+| Weighted | 16 | 非负权重到普通复Kraus操作 |
 | Ragged | 19 | 结果依赖有限指标及补零保持 |
 | Exact | 24 | 复有理解释的注入与代数保持 |
 | ExactCertificate | 9 | 有限可计算检查器的可靠性与实例接口 |
@@ -6184,14 +6578,19 @@ python3 physics/qm/book/build/build_pdf.py \
 | Spectrum | 15 | 实际有限谱行到异常/窗口预算 |
 | Effects | 30 | 全部实际效应、分支/通道拉回与词效应上界 |
 | Stability | 30 | 全效应伪距离、实际通道缺陷/轨迹及后验 |
+| Mixture | 23 | 实际混合、精确TV和有理预算 |
+| Cesaro | 23 | 矩阵平均残差、紧性、连续性与平稳子列 |
+| Survival | 32 | 实际对角存活记录及Core QSD/Doob消费 |
 
 ## F.2 运行与具体证明产品
 
-87项内核运行测试和三份完整示例与通用Lean数学分开计数。六份具体数值证书各有7个命名审计目标，共42项；四类坏数据必须同时满足原真值证明被拒绝和同数据假值证明成功，后者另有4项命名审计。本版在新统一内核上重新检查这些接口，保留每份实际数据的身份。源清单并不宣称Python/JSON/搜索/导出程序的所有输入已被形式化。
+100项内核运行测试和4份完整演示与通用Lean数学分开计数。六份既有具体数值证书各有7个命名审计目标，共42项；四类坏数据必须同时满足原真值证明被拒绝和同数据假值证明成功，后者另有4项命名审计。本版在新统一内核上重新执行这些验证并保留每份实际数据身份。
 
-## F.3 287项完整命名公理请求
+本轮另保存两组有限动力学Lean见证：混合尖锐例和同库前提反例，以及非均匀损失的两态QSD/Doob模型。它们的29个具体显式定理与39个命名审计由专门验证门单独计数，未加进334/392的通用统计。源清单与运行见证不宣称Python/JSON/搜索/导出程序的所有输入已被形式化。
 
-下列是实际 `AxiomAudit.lean` 请求的全名，依原审计顺序列出。每项均需有同名实际输出；缺项、越界公理或错误构建均不能算通过。对应数学范围由其源码类型及第49–50章说明共同确定。
+## F.3 392项完整命名公理请求
+
+下列为实际 `AxiomAudit.lean` 请求的全名，依审计顺序列出。每项均须有同名实际输出；缺项、重复、越界公理或构建错误都不算通过。对应数学范围由源码类型及第49–53章共同确定。
 
 ### F.3.1 请求1–60
 
@@ -6453,7 +6852,7 @@ UEOTQM.Instrument.pullbackEffects_matrix
 UEOTQM.Instrument.pairing_pullbackEffects
 ~~~
 
-### F.3.5 请求241–287
+### F.3.5 请求241–300
 
 ~~~text
 UEOTQM.Instrument.pullbackEffect
@@ -6503,8 +6902,123 @@ UEOTQM.channelTrajectory_transport_certificate
 UEOTQM.scalarBudget_one_eq_sum
 UEOTQM.channelTrajectory_effectDistance_le_sum
 UEOTQM.channelTrajectory_response_sub_le_sum
+UEOTQM.Mixture.tv
+UEOTQM.Mixture.tv_nonneg
+UEOTQM.Mixture.tv_self
+UEOTQM.Mixture.tv_comm
+UEOTQM.Mixture.tv_le_one
+UEOTQM.Mixture.expectation_sub_le_tv
+UEOTQM.Mixture.density
+UEOTQM.Mixture.density_matrix
+UEOTQM.Mixture.probability_density
+UEOTQM.Mixture.density_weight_change_le_tv
+UEOTQM.Mixture.density_fixed_weights_le_sum
+UEOTQM.Mixture.density_joint_change_le
+UEOTQM.Mixture.weightedInstrument
+~~~
+
+### F.3.6 请求301–360
+
+~~~text
+UEOTQM.Mixture.instrument
+UEOTQM.Mixture.instrument_kraus
+UEOTQM.Mixture.instrument_branch
+UEOTQM.Mixture.instrument_heisenberg
+UEOTQM.Mixture.instrument_channel
+UEOTQM.Mixture.instrument_channelState
+UEOTQM.Mixture.channelDefect_weight_change_le_tv
+UEOTQM.Mixture.channelDefect_fixed_weights_le_sum
+UEOTQM.Mixture.channelDefect_joint_change_le
+UEOTQM.Mixture.RationalWeights.toWeights
+UEOTQM.Mixture.rationalTV
+UEOTQM.Mixture.tv_toWeights
+UEOTQM.Mixture.density_weight_change_le_rational_budget
+UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget
+UEOTQM.Mixture.channelDefect_fixed_weights_le_rational_sum
+UEOTQM.Mixture.rationalJointBudget
+UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget
+UEOTQM.Cesaro.iterateState
+UEOTQM.Cesaro.iterateState_zero
+UEOTQM.Cesaro.iterateState_succ
+UEOTQM.Cesaro.channelLinear
+UEOTQM.Cesaro.channelLinear_apply
+UEOTQM.Cesaro.orbitSum
+UEOTQM.Cesaro.orbitSum_positive
+UEOTQM.Cesaro.orbitSum_trace
+UEOTQM.Cesaro.averageState
+UEOTQM.Cesaro.averageState_matrix
+UEOTQM.Cesaro.orbitSum_telescope
+UEOTQM.Cesaro.matrix_residual
+UEOTQM.Cesaro.pairing_sub_right
+UEOTQM.Cesaro.probability_residual
+UEOTQM.Cesaro.probability_residual_le
+UEOTQM.Cesaro.effectDistance_residual_le
+UEOTQM.Cesaro.density_operatorNorm_le_one
+UEOTQM.Cesaro.densityMatrices
+UEOTQM.Cesaro.densityMatrices_closed
+UEOTQM.Cesaro.densityMatrices_compact
+UEOTQM.Cesaro.continuous_channel
+UEOTQM.Cesaro.matrix_residual_norm_le
+UEOTQM.Cesaro.averageSequence
+UEOTQM.Cesaro.matrix_residual_tendsto_zero
+UEOTQM.Cesaro.subsequence_limit_invariant
+UEOTQM.Cesaro.subsequence_limit_density
+UEOTQM.Cesaro.exists_stationary_subsequence
+UEOTQM.Cesaro.exists_stationary_of_density
+UEOTQM.Cesaro.normalizedIdentity
+UEOTQM.Cesaro.exists_stationary
+UEOTQM.Survival.diagonalOperator
+UEOTQM.Survival.diagonalOperator_posSemidef
+UEOTQM.Survival.mass_diagonalOperator
+UEOTQM.Survival.diagonalOperator_injective
+UEOTQM.Survival.diagonalOperator_smul
+UEOTQM.Survival.diagonalDensity
+UEOTQM.Survival.diagonalDensity_matrix
+UEOTQM.Survival.matrixUnit
+UEOTQM.Survival.matrixUnit_gram
+UEOTQM.Survival.matrixUnit_sandwich
+UEOTQM.Survival.measurePrepare
+UEOTQM.Survival.measurePrepare_apply
+UEOTQM.Survival.measurePrepare_diagonal
+~~~
+
+### F.3.7 请求361–392
+
+~~~text
+UEOTQM.Survival.measurePrepare_gram
+UEOTQM.Survival.failureKernel
+UEOTQM.Survival.failureKernel_nonneg
+UEOTQM.Survival.outcomeKernel
+UEOTQM.Survival.outcomeKernel_complete
+UEOTQM.Survival.weightedInstrument
+UEOTQM.Survival.instrument
+UEOTQM.Survival.instrument_branch
+UEOTQM.Survival.success_branch
+UEOTQM.Survival.rowApply_nonneg
+UEOTQM.Survival.success_probability
+UEOTQM.Survival.success_posterior_matrix
+UEOTQM.Survival.killedIterate
+UEOTQM.Survival.killedIterate_posSemidef
+UEOTQM.Survival.killedIterate_diagonal
+UEOTQM.Survival.survivalMass
+UEOTQM.Survival.survivalMass_eq_response
+UEOTQM.Survival.survivalMass_diagonal
+UEOTQM.Survival.conditionalState
+UEOTQM.Survival.qsd_killedIterate
+UEOTQM.Survival.qsd_survival_pow
+UEOTQM.Survival.qsd_survival_pos
+UEOTQM.Survival.qsd_conditionalState
+UEOTQM.Survival.qsd_rate_le_one
+UEOTQM.Survival.doobTransform_nonneg
+UEOTQM.Survival.doobInstrument
+UEOTQM.Survival.doobDensity
+UEOTQM.Survival.doob_success_branch
+UEOTQM.Survival.doob_success_probability
+UEOTQM.Survival.doob_killedIterate
+UEOTQM.Survival.doob_survivalMass
+UEOTQM.Survival.doob_conditionalState
 ~~~
 
 ## F.4 不随形式化标签扩大范围
 
-外部OPT重构、无限维Stone/谱论/GKSL、完整QED或QFT、一般过程张量、现实仪器标定及真实粒子谱并未因此被全体机器重证。第50章未形式化全效应距离的trace/diamond识别，也没有产生最坏通道缺陷的数值求解算法。若以后关闭这些义务，须增加真正对应的定理、证据与主文推导。
+外部OPT重构、全部无限维理论、完整QED/QFT、一般过程张量、现实标定和真实粒子谱没有因此被全体机器重证。第51章新增的可计算上界限于实际同库随机化及另证成员预算；第52章没有形式化完整Cesàro投影、唯一性或混合率；第53章没有形式化一般非交换Perron存在或无限期条件过程。标准数学已知而本项目待形式化的事项与真正未证的科学猜想分别记账。

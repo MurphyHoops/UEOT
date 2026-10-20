@@ -1,12 +1,14 @@
-# UEOT-QM Lean package — v31.4 / Kernel 1.4
+# UEOT-QM Lean package — v31.5 / Kernel 1.5
 
 This package implements a finite complex quantum sector and typed UEOT Core bridges. It inherits the exact Lean **4.33.1** and Mathlib revision `0df444a360eaa60ab8c11dca51a86af692955474` from `../ueot-core`.
 
-The continuous companion monograph is [《UEOT物理学》正式 3.0](../../physics/qm/book/UEOT_PHYSICS.md), chapters 0–50 and appendices A–F, with its [PDF edition](../../physics/qm/book/UEOT_PHYSICS.pdf) in the same directory. Chapters 49–50 explain the executable certificate chain and the new actual quantum stability contract. The monograph's mathematical exposition and physical hypotheses have a separate scope from the declarations checked by this package.
+The continuous companion monograph is [《UEOT物理学》正式 3.1](../../physics/qm/book/UEOT_PHYSICS.md), chapters 0–53 and appendices A–F, with its [PDF edition](../../physics/qm/book/UEOT_PHYSICS.pdf) in the same directory. Chapters 49–50 explain the executable certificate chain and actual quantum stability contract; chapters 51–53 add finite-mixture budgets, Cesàro stationary-state existence, and the diagonal quantum survival/Core bridge. The monograph's mathematical exposition and physical hypotheses have a separate scope from the declarations checked by this package.
 
-**Current status: MAIN_VERIFIED.** The actual unified local `lake build UEOTQM` has passed with exit code 0: **256 explicit theorem declarations across 15 generic modules**, followed by **287 unique actual named axiom reports PASS**. The runtime suite has **87 passing test methods**, and all **three demos** passed. Six generated numerical instances were independently compiled and supplied 42 separate audit reports; four corrupted true-check proofs were rejected, and four companion proofs established `check data = false` for the identical corrupted data. These instance consequences are counted separately from the generic declarations. PR #337 (workflow 39345492165) and resulting-main workflow 39345953198 both passed on the published source. See the [integration receipt](../../physics/qm/kernel/evidence/v31.4/integration-verification.json).
+**Current status: LOCAL_VERIFIED_CI_PENDING.** The actual unified local `lake build UEOTQM` passed with exit code 0: **334 explicit theorem declarations across 18 generic modules**, followed by **392 unique actual named axiom reports PASS**. The runtime suite has **100 passing test methods**, and all **four demos** passed. The retained mathematical witnesses passed 39 separate named audits; six generated numerical instances passed 42 further audits. Four corrupted true-check proofs were rejected, and four companion proofs established `check data = false` for the identical corrupted data, with four additional audit reports. These witness and instance targets are separate from the generic totals. Remote PR and resulting-main acceptance for this increment remain pending; [CURRENT.json](../../physics/qm/status/CURRENT.json) is the authority for subsequent integration status.
 
-See the [v31.4 proof receipt](../../physics/qm/kernel/evidence/v31.4/lean-verification.json), [source manifest](../../physics/qm/kernel/evidence/v31.4/source-manifest.json), [instance verification](../../physics/qm/kernel/evidence/v31.4/lean-exports/verification.json), [claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.4.json), and [current integration status](../../physics/qm/status/CURRENT.json). The 55-entry source manifest identifies the actual tested file bytes; the authoring checkout `0c093e9fae990d6ef8d670163b84ec93bd6fb025` remains the prior authoring baseline. The published v31.4 source is `3b227e3d08e6faa8252e3dd2e3ea4e5536dae007`, its tree is `2fb88d6bace94ec9ec682dc3ea120718c692f80a`, and the verified resulting-main commit is `d6926c7a8b650280a2357b6eb0cb8d86fca3953a` with the same tree. The [integration receipt](../../physics/qm/kernel/evidence/v31.4/integration-verification.json) records PR workflow 39345492165 and main workflow 39345953198; this metadata update does not claim another Lean execution. The preceding v31.3 completed PR #335 and resulting-main workflow 39300120071, as recorded in its separate [integration receipt](../../physics/qm/kernel/evidence/v31.3/integration-verification.json).
+The current evidence includes the [build execution](../../physics/qm/kernel/evidence/v31.5/build-execution.json), [actual axiom reports](../../physics/qm/kernel/evidence/v31.5/proof-axioms.json), [axiom execution](../../physics/qm/kernel/evidence/v31.5/axiom-execution.json), [source manifest](../../physics/qm/kernel/evidence/v31.5/source-manifest.json), [instance verification](../../physics/qm/kernel/evidence/v31.5/lean-exports/verification.json), [runtime receipt](../../physics/qm/kernel/evidence/v31.5/runtime-verification.json), and [demo receipt](../../physics/qm/kernel/evidence/v31.5/demos-verification.json). The source manifest supplies the authoritative file set, count and tested byte identities. The v31.5 authoring baseline is `97d033ff83125822e9926f5bd36afd08dbd153ef`; a baseline commit alone does not identify later uncommitted proof or verification inputs.
+
+**Verified history.** v31.4 had 15 generic modules, 256 explicit theorems and 287 named audit targets, recorded in its [proof receipt](../../physics/qm/kernel/evidence/v31.4/lean-verification.json), [55-entry source manifest](../../physics/qm/kernel/evidence/v31.4/source-manifest.json), and [claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.4.json). Its authoring baseline was `0c093e9fae990d6ef8d670163b84ec93bd6fb025`. The published v31.4 source is `3b227e3d08e6faa8252e3dd2e3ea4e5536dae007`, its tree is `2fb88d6bace94ec9ec682dc3ea120718c692f80a`, and the verified resulting-main commit is `d6926c7a8b650280a2357b6eb0cb8d86fca3953a` with the same tree. Its [integration receipt](../../physics/qm/kernel/evidence/v31.4/integration-verification.json) records successful PR #337 workflow 39345492165 and resulting-main workflow 39345953198. The preceding v31.3 completed PR #335 and resulting-main workflow 39300120071, as recorded in its separate [integration receipt](../../physics/qm/kernel/evidence/v31.3/integration-verification.json). These historical acceptance records do not assert remote acceptance of v31.5.
 
 Frozen Core definitions, sources, the four counted generators, and the 106-item coverage ledger are not changed by this increment.
 
@@ -20,6 +22,7 @@ lake exe cache get
 lake build UEOTQM
 lake env lean scripts/AxiomAudit.lean > axiom-audit.log
 python3 scripts/check_axioms.py
+python3 scripts/verify_finite_witnesses.py --output-dir /tmp/qm-finite-witnesses
 python3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir /tmp/qm-lean-exports
 python3 scripts/record_source.py --output /tmp/qm-source-manifest.json
 ```
@@ -45,9 +48,12 @@ The [QM workflow](../../.github/workflows/ueot-qm.yml) uses the same gates. Its 
 | [ExactCertificate](UEOTQM/ExactCertificate.lean) | 9 | Decidable local conditions to actual instruments, finite presentation and all-word/adaptive consequences |
 | [Effects](UEOTQM/Effects.lean) | 30 | Actual PSD effects and Born bounds; complete and selected pullbacks; finite record effects |
 | [Stability](UEOTQM/Stability.lean) | 30 | All-effect response pseudodistance, actual channel contraction and defect, Core transport composition and positive-event posterior bounds |
-| **Total** | **256** | Generic source declarations; positive and negative generated instances are reported separately |
+| [Mixture](UEOTQM/Mixture.lean) | 23 | Actual finite density/instrument mixtures; all-effect and all-state total-variation bounds; rational weight and separately proved component-error budgets |
+| [Cesaro](UEOTQM/Cesaro.lean) | 23 | Actual fixed-channel averages, exact endpoint residuals, finite-dimensional density compactness, invariant subsequential limits and stationary-state existence |
+| [Survival](UEOTQM/Survival.lean) | 32 | Complete measure-prepare realization of substochastic kernels; actual all-success records, conditional QSD laws and a typed Doob realization consuming frozen Core theorems |
+| **Total** | **334** | 18 generic modules; dedicated witnesses and generated instances are reported separately |
 
-The **287** named audit targets are all **256** explicit theorems plus **31** listed constructions and definitions. The previous 17 proof-bearing targets remain. This increment adds 60 theorems and audits all 14 new public definitions: nine construct proof-bearing `Effect` or `Density` values and five define probability, channel, or supremum data. Thus the 74 newly audited names are not 74 new theorems, and the 14 definitions are not all proof-bearing constructions. The [scope review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md) gives every new name and the [focused receipt](../../physics/qm/kernel/evidence/v31.4/metric-focused-audit.json) records its actual audit. This is not a census of compiler-generated constants or a claim of an axiom-free foundation.
+The **392** generic named audit targets are all **334** explicit theorems plus **58** listed constructions and definitions. v31.5 adds **78 theorems + 27 definitions = 105 audited names**: Mixture adds 23 + 7, Cesaro adds 23 + 7, and Survival adds 32 + 13. The preceding v31.4 total was **256 + 31 = 287**; its own increment comprised 60 theorems and 14 definitions, documented in the [effect/stability review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md) and [focused receipt](../../physics/qm/kernel/evidence/v31.4/metric-focused-audit.json). Audited definitions include both proof-bearing constructions and data definitions; they are not additional theorem declarations. These counts exclude compiler-generated constants, the 39 dedicated witness targets, the 42 generated positive-instance targets, and the four generated false-check targets. All audits retain the same reviewed standard foundation; this is not a claim of an axiom-free foundation.
 
 ## Exact certificate interface
 
@@ -65,11 +71,25 @@ The checker does not assume global sufficiency. `check_sound`, actual complex in
 
 ## Generated proof instances
 
-The runtime's `export_lean_representation` emits concrete numerical source, not an oracle proof. Six [committed fixtures](../../physics/qm/kernel/certificates/v31.3/exports.json) cover Z, HZ, HSZ, ragged instruments, a complex 1-dimensional example, and a 4-dimensional projector. Each instance independently checks the data and prints seven axiom reports for `checked`, its proof-bearing `presentation`, and five public consequences: all-word iff, finite-tree coordinates, equal leaf laws, normalization, and closed coordinate update. These fixtures were regenerated and actually rechecked against the v31.4 package; their 42 instance audit targets are separate from the 287 generic targets.
+The runtime's `export_lean_representation` emits concrete numerical source, not an oracle proof. Six [committed fixtures](../../physics/qm/kernel/certificates/v31.3/exports.json) cover Z, HZ, HSZ, ragged instruments, a complex 1-dimensional example, and a 4-dimensional projector. Each instance independently checks the data and prints seven axiom reports for `checked`, its proof-bearing `presentation`, and five public consequences: all-word iff, finite-tree coordinates, equal leaf laws, normalization, and closed coordinate update. These fixtures were regenerated and actually rechecked against the v31.5 package; their 42 instance audit targets are separate from the 392 generic targets and the dedicated witnesses below.
 
 The verifier regenerates and byte-compares all six sources, their complete manifests and the index. It then compiles the actual source bytes and checks the exact expected audit target set. Four post-generation corruptions must fail at the original true-check theorem; a companion containing the identical numeric definitions must also prove `check data = false`. Both compilation outcomes, source hashes, shared data-prefix hashes and actual axioms are recorded. Environment errors or failed reduction alone do not count as rejection evidence.
 
 The generator's manifest deliberately retains `LEAN_SOURCE_EXPORTED_NOT_COMPILED`; a later source-bound verification receipt records actual success. No claim is made that Python, JSON parsing, basis search, elimination, Gram independence, or the source exporter is universally verified. The theorem's object is the supplied numeric padded model. User labels remain external metadata; generated Fin indices use explicit bound proofs instead of modular numeral coercion.
+
+## Retained mathematical witnesses
+
+Two source files preserve the new modules' exact examples and premise controls as a separate verification gate:
+
+| Witness source | Explicit theorems | Definitions | Named audits |
+|---|---:|---:|---:|
+| [MixtureExamples](scripts/witnesses/MixtureExamples.lean) | 5 | 4 | 9 |
+| [SurvivalTwoState](scripts/witnesses/SurvivalTwoState.lean) | 24 | 6 | 30 |
+| **Total** | **29** | **10** | **39** |
+
+The mixture witnesses prove the exact one-half rational budget, sharpness on orthogonal density states, and failure of a weight-only bound when the component library changes. The two-state survival witnesses instantiate the actual quantum/Core bridge for every finite record length, distinguish the QSD from the Doob invariant law, and show why the initial law, row orientation and failure completion matter. These are proof-checked mathematical examples, separate from the runtime's finite six-step checks and from the six generated representation certificates.
+
+After the ordinary package build, `python3 scripts/verify_finite_witnesses.py --output-dir /tmp/qm-finite-witnesses` recompiles both retained sources and requires every explicit theorem/definition to have exactly one matching allowed-axiom report. The gate records the actual pinned compiler invocation, witness bytes, verifier and configuration, and all repository-local general source/import artifacts before and after execution. It rejects missing or duplicate audit reports, unreviewed axioms, failed invocations and changed inputs. `--lake` can select an explicit Lake executable and `--timeout-seconds` sets the per-invocation limit. Source and artifact hashes bind the execution; the ordinary build remains the prerequisite establishing the imported artifacts.
 
 ## Finite representation contract
 
@@ -146,7 +166,74 @@ d_{\mathrm{eff}}(\rho_{\mid o},\sigma_{\mid o})
 
 The lower-bound version additionally requires `0 < η` and `η ≤ pρ(o)` and replaces the denominator by `η`. `probability_pos_of_effectDistance_lt` proves the second branch remains positive when the input error is strictly smaller than the first event probability. Conditioning may amplify error; zero-probability posteriors remain undefined.
 
-This closes the **finite common-carrier complete-channel / positive-event slice of QMU-04**. `channelDefect` is a noncomputable supremum, not an implemented algorithm for a certified numerical upper bound. Outcome-forgetting channel defects do not automatically control different instruments' labeled or adaptive histories, and finite identity-ancilla positivity does not supply a stabilized norm comparison. Those extensions need explicit models and further proofs. See the [v31.4 report](../../physics/qm/UEOT_QM_KERNEL_v31.4.md) and [mathematical review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md).
+This closes the **finite common-carrier complete-channel / positive-event slice of QMU-04**. `channelDefect` itself is a noncomputable supremum. The v31.5 mixture results below supply certified upper bounds for a declared finite-mixture model; they do not compute arbitrary channel defects exactly. Outcome-forgetting channel defects do not automatically control different instruments' labeled or adaptive histories, and finite identity-ancilla positivity does not supply a stabilized norm comparison. Those extensions need explicit models and further proofs. See the [v31.4 report](../../physics/qm/UEOT_QM_KERNEL_v31.4.md) and [mathematical review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md) for the inherited stability layer.
+
+## Actual mixtures and certified budgets
+
+`Mixture.Weights β` contains only nonnegative normalized real weights. `density` constructs the actual matrix sum, and `weightedInstrument` / `instrument` add a component Kraus index with actual matrices `sqrt(p b) • K b o k`. Density positivity, trace one and instrument completeness are proved from the component objects and the weights. Branch, Heisenberg pullback and complete-channel identities are derived by expanding these actual matrices. Zero-weight terms remain valid.
+
+For a common finite component library, the module proves
+
+\[
+\operatorname{TV}(p,q)=\tfrac12\sum_b|p_b-q_b|,\qquad
+\delta\!\left(\sum_b p_b\Phi_b,\sum_b q_b\Phi_b\right)
+\le\operatorname{TV}(p,q).
+\]
+
+The factor one half follows by centering each effect probability at one half and using equality of total weights. The bound holds for every density input and every effect, not just a tested sample. When the component channels also change, `channelDefect_joint_change_le` proves
+
+\[
+\delta\!\left(\sum_b p_b\Phi_b,\sum_b q_b\Psi_b\right)
+\le\operatorname{TV}(p,q)+\sum_b q_b\delta(\Phi_b,\Psi_b).
+\]
+
+The two libraries share the finite matrix carrier and component correspondence; their outcome/Kraus types may differ from each other. `RationalWeights.toWeights` and `tv_toWeights` transport exact finite rational expressions into these real bounds. The rational joint-budget theorem still requires a separately established upper bound for **each actual component defect**. It does not infer those bounds from finite input-state samples or from a caller's unchecked numeric guess.
+
+The same-library TV budget is computable and can be sharp, but can also overestimate the defect: equal component channels give zero defect even when the weights differ. The Python `MixtureWeightBudget` binds the weights to the actual shared component library; its correctness on all inputs is a separate program-refinement obligation. After each step's types and model correspondence are matched, these proved budgets can be supplied to the existing `channelTrajectory` / Core transport composition. This is the finite-mixture slice of usable defect certification, not an arbitrary-channel exact-distance algorithm.
+
+## Actual Cesàro averages and stationary-state existence
+
+For one fixed complete instrument, `Cesaro.iterateState` uses the actual `channelState` trajectory. `averageState I ρ N hN` constructs the PSD trace-one average for `0 < N`, including the initial state:
+
+\[
+\rho_n=\Phi^n(\rho_0),\qquad
+\bar\rho_N=\frac1N\sum_{n=0}^{N-1}\rho_n.
+\]
+
+`orbitSum_telescope` and `matrix_residual` prove the matrix identity
+
+\[
+\Phi(\bar\rho_N)-\bar\rho_N=\frac{\rho_N-\rho_0}{N}.
+\]
+
+Every effect probability residual is at most `1/N`, and `effectDistance_residual_le` gives the same all-effect bound. This controls one further channel application to the average; it is not a distance estimate to a selected stationary state.
+
+The module then proves that the actual PSD trace-one matrix set is closed and bounded, hence compact in the usual finite-dimensional complex matrix topology. `Matrix.Norms.L2Operator` supplies the Euclidean operator norm while preserving that topology. The density norm bound one gives a matrix residual bound `2/N`. These are proved properties of actual matrices, not compactness or invariance supplied as certificate fields.
+
+`averageSequence` uses averages of length `n + 1`. `subsequence_limit_invariant` and `subsequence_limit_density` show that any convergent strictly increasing subsequence has a stationary density limit. `exists_stationary_subsequence` obtains such a subsequence from compactness. Given any initial density, `exists_stationary_of_density` supplies a stationary density; `exists_stationary` requires a nonempty finite carrier and constructs `normalizedIdentity` as its initial seed.
+
+This proof uses QM matrix algebra and Mathlib finite-dimensional analysis. It does **not** directly invoke frozen Core P-PER or M-OI; their persistence language supplies motivation, whereas direct Core transport reuse is the separate stability chain above. The module proves subsequential limits and stationary-state existence. It does not prove uniqueness, convergence of the original iterates, a full Cesàro spectral-projection theorem, mixing rates, infinite-dimensional compactness, or empirical convergence of stochastic trajectories. Periodic-channel and nonunique-fixed-state examples preserve these distinctions.
+
+## Diagonal survival and the frozen Core spectral bridge
+
+`Survival.instrument` converts a nonnegative row-substochastic matrix `Q` into an actual complete instrument. The success terms have matrix `|j⟩⟨i|` and weight `Q i j`; failure terms supply each row's missing mass. `instrument_branch`, `measurePrepare_diagonal` and `killedIterate_diagonal` prove
+
+\[
+\mathcal K_Q(\operatorname{diag}p)=\operatorname{diag}(pQ),\qquad
+\mathcal K_Q^n(\operatorname{diag}p)=\operatorname{diag}(pQ^n).
+\]
+
+`killedIterate` is the existing `recordOperator` for the actual length-`n` all-success word. `survivalMass_eq_response` identifies its trace with the same library's record response. The lifetime task stops at the first failure; the completion does not add an absorbing cemetery register to the Hilbert space. The measure-prepare success map removes input off-diagonal coherence, so this realizes a classical killed kernel inside quantum operations rather than covering every noncommutative survival map.
+
+For a supplied normalized nonnegative `q`, `r > 0`, and left relation `qQ = r q`, the `qsd_*` theorems consume frozen Core results and derive the actual surviving operator `r^n • diag q`, record probability `r^n`, positive-event conditional state `diag q`, and `r ≤ 1`. The left spectral data are premises. Their existence, uniqueness and the identification of `r` with the full spectral radius are not derived here. Zero-mass conditioning is undefined.
+
+`doobInstrument` requires nonnegative `Q`, `r > 0`, strictly positive `h`, and the right relation `Qh = r h`; these prove row stochasticity of
+
+\[
+\widetilde Q_{ij}=\frac{Q_{ij}h_j}{r h_i}.
+\]
+
+The constructor itself does not require the original row-substochastic bound; interpreting `Q` as the original killed process additionally uses that bound. Given the left relation, nonnegative `q` and `sum(q_i h_i) = 1`, `doobDensity` constructs the invariant law `π_i = q_i h_i`. The actual success branch, every finite all-success record, its probability one, and the corresponding conditional state are proved to preserve `diag π`. The QSD `q` and the Doob invariant law `π` are generally different. No infinite-horizon conditioning limit or general noncommutative Perron theorem is asserted; the monograph's geometric lifetime expectation remains an analytic consequence beyond the named finite-record theorems.
 
 ## Direct Core reuse
 
@@ -155,6 +242,13 @@ This closes the **finite common-carrier complete-channel / positive-event slice 
 | `UEOT.V3.Compression.QuotientDescent.existsUnique_descend` | `UEOTQM.existsUnique_responseDecoder` |
 | `UEOT.V3.Compression.RecursiveSufficientState.existsUnique_reachableUpdate` | `UEOTQM.existsUnique_reachableResponseUpdate`, `UEOTQM.existsUnique_closedReachableUpdate` |
 | `UEOT.V3.Compression.TransportCertificate.weighted_chain_bound` | `UEOTQM.Transport.scalar_transport_certificate`, then the actual quantum `UEOTQM.channelTrajectory_transport_certificate` |
+| `UEOT.V3.QSDPerron.leftPerron_pow` | `UEOTQM.Survival.qsd_killedIterate` |
+| `UEOT.V3.QSDPerron.qsd_survival_mass_pow` | `UEOTQM.Survival.qsd_survival_pow` |
+| `UEOT.V3.QSDPerron.qsd_all_steps` | `UEOTQM.Survival.qsd_conditionalState` |
+| `UEOT.V3.QSDPerron.perron_root_le_one_of_substochastic` | `UEOTQM.Survival.qsd_rate_le_one` |
+| `UEOT.V3.QSDPerron.doobTransform_row_sum` | `UEOTQM.Survival.doobInstrument`, `UEOTQM.Survival.doob_success_probability` |
+| `UEOT.V3.QSDPerron.doobInvariant_sum` | `UEOTQM.Survival.doobDensity`, `UEOTQM.Survival.doob_survivalMass` |
+| `UEOT.V3.QSDPerron.doobInvariant_stationary` | `UEOTQM.Survival.doob_success_branch`, then its finite-record and conditional-state consequences |
 
 Quantum compatibility is proved from actual Kraus/posterior definitions and prefix-closed word responses. It is not supplied as a field assuming the desired update theorem. The closed update carries the posterior as a witness of membership in the same response range.
 
@@ -174,4 +268,4 @@ The [runtime manual](../../physics/qm/kernel/README.md) documents the export API
 
 The exporter additionally limits input literals to 4096 bits, padded scalar storage to 65536 entries and source size to 8 MiB. The separate representation checker retains its own contract. These bounds constrain evidence construction, not future finite-word length; no uniform compilation-time guarantee is asserted.
 
-The next stability work is to certify usable numerical upper bounds for the actual channel defect and to extend the model explicitly to labeled histories, adaptive instruments or auxiliary systems as needed. Density separation and norm identification remain separate mathematical obligations. CPTP Cesàro limits and diagonal CP survival remain open bridges. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain separately tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).
+The next stability work extends certified defect bounds beyond the declared finite-mixture model and adds explicit contracts for labeled histories, adaptive instruments or auxiliary systems as needed. Density separation and norm identification remain separate mathematical obligations. Further dynamics work includes full Cesàro spectral-projection results, uniqueness and mixing-rate hypotheses, noncommutative CP survival/Perron existence, and infinite-horizon conditioning limits. The actual finite Cesàro subsequence/existence and diagonal survival slices described above are now proved. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain separately tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).

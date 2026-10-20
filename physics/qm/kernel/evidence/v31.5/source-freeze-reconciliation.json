@@ -1,0 +1,19 @@
+{
+  "schema": "ueot_qm.source_freeze_reconciliation.v31.5",
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T01:32:57.477544+00:00",
+  "before_manifest": "source-manifest-before-witness-gate.json",
+  "after_manifest": "source-manifest.json",
+  "changed_existing_sources": [
+    ".github/workflows/ueot-qm.yml"
+  ],
+  "added_sources": [
+    "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+    "formalization/ueot-qm/scripts/witnesses/MixtureExamples.lean",
+    "formalization/ueot-qm/scripts/witnesses/SurvivalTwoState.lean"
+  ],
+  "generic_proof_and_runtime_inputs_unchanged_since_unified_execution": true,
+  "finite_witness_final_execution": "finite-witnesses/verification.json",
+  "finite_witness_source_and_olean_bindings_rechecked": 32,
+  "scope": "Final manifest adds the separately executed finite witness gate and its workflow steps; no changed generic theorem or runtime input is attributed to an earlier execution."
+}

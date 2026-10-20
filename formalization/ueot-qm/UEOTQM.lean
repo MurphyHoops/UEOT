@@ -13,3 +13,6 @@ import UEOTQM.Selector
 import UEOTQM.Spectrum
 import UEOTQM.Effects
 import UEOTQM.Stability
+import UEOTQM.Mixture
+import UEOTQM.Cesaro
+import UEOTQM.Survival
