@@ -124,6 +124,15 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverage
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverage
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ReachablePolicyExtension
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViabilityCheck
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRiskWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint
 /-!
 # UEOT Theory Completion public root
 

@@ -1,0 +1,137 @@
+{
+  "status": "READY_FOR_ROOT_INTEGRATION",
+  "scope": "V3 temporary candidate: only knowledge README changes bytes compared with root-installed V2; all eight other paths unchanged. No production mutation by this agent.",
+  "candidate_root": "/workspace/scratch/548ae22ee5c9/tmp/implementation/support-viability-closure/viability/consumer-preparation/candidate",
+  "source_manifest_sha256": "993bd1a5c32b9872212282fba38411caf683c088f374b4d3c178fd79cc8c923e",
+  "source_tree_sha256": "91621694fadc223f63b76298a6eaf10078e59bd87c9dbc798726a6e366b1f357",
+  "typed_review_status": "CLEAR",
+  "typed_review_json_sha256": "11f58f8a077526ad47053dc373ce9e8f3e5a6d132d8a6c5c29c5d780fc42dba6",
+  "typed_review_md_sha256": "f3dcd830569d084137a2725e151de85c285b8e1657ee69966f1e60400440fdb3",
+  "baseline_manifest_sha256": "3f43f55213a6f2cf584e836e96edfb81831e7a6fa6e7ff32fc91bc05f84ef656",
+  "existing_consumers": 6,
+  "new_native_artifacts": 3,
+  "files": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "kind": "UPDATE_EXISTING",
+      "bytes": 401950,
+      "sha256": "09c5a6043f1d81cbd4577ff13782bd0c74686b3dd066216483ac01e22a0062b1",
+      "baseline_sha256": "3f6e4f15bf5d84e05a6f866fea4a3c45bb6314754c7c8482b7de994cae0fc8a5"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "kind": "UPDATE_EXISTING",
+      "bytes": 16520,
+      "sha256": "6b485781d19fb3b489aa401d1bb5ddc828b0b3b01564f9d1d5baa7d66071b75a",
+      "baseline_sha256": "5e92fed7aa03b1576fe3800ce90b7bf4d8ca2a1ef02d00c6d7a7e2ed4ce5c392"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "kind": "UPDATE_EXISTING",
+      "bytes": 22500,
+      "sha256": "bf83850f8b4bd082a18fd70acb215ae6676ebdbeaa21cad88552ca2406573674",
+      "baseline_sha256": "25ff92d03cf5193c10d39a0c2a32f626835afe2a56c735aa86a98fe48543d933"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "kind": "UPDATE_EXISTING",
+      "bytes": 40734,
+      "sha256": "f1579578748ba703f0cdc8b2fc34461ab1866b84a9b3cf7404092cc7a8f4b072",
+      "baseline_sha256": "bb2abaf5c61458d0d96e5e939fe5356a2b7c3295ae732975a13abe08a3e4b013"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "kind": "UPDATE_EXISTING",
+      "bytes": 46230,
+      "sha256": "a97011013eb8acc1ff7e9b5efa373c3d3b407a7ac49e150c9fcd2c7df2b82d6d",
+      "baseline_sha256": "9c528f1eddf65c5ac76f4e18bf762789b2623a14fa79a242c70ad6466ff48493"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "kind": "UPDATE_EXISTING",
+      "bytes": 3621,
+      "sha256": "dad2975d8727d05dad632e0d7e4c8df76733426c54d4cb298813d478c02cb317",
+      "baseline_sha256": "98a98f93c1e5db7410ba937468dafbd8519bfd516982f90a3277cffaf72dc34a"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_NATIVE_V1.json",
+      "kind": "NEW_NATIVE_EVIDENCE",
+      "bytes": 969553,
+      "sha256": "34376e2c8564d148e5dcd4452ab0dddeb9aa20bbb1b9d0f7c88c194b9b82baca",
+      "baseline_sha256": null
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json",
+      "kind": "NEW_NATIVE_EVIDENCE",
+      "bytes": 122224,
+      "sha256": "2af284000d6a6c25f67e9356a236817b22334dbfba777ca2eaf37e8060a3a45e",
+      "baseline_sha256": null
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean",
+      "kind": "NEW_NATIVE_EVIDENCE",
+      "bytes": 76558,
+      "sha256": "26fd18e77dd6b7db550c6c5e1105376ef7f494db03bbab646e8d8fa42313a118",
+      "baseline_sha256": null
+    }
+  ],
+  "regression": {
+    "status": "PASS",
+    "tests": 28,
+    "log_sha256": "f44ea187b1768d8be378d3cd91d1313f789a4fe1d3a8b5c23587f58b81d671d1",
+    "receipt_sha256": "3110eff4df673c8f7005a16af31cb51bd00947340cfa2994549e4dbef963b793",
+    "new_tests": [
+      "test_support_viability_actual_support_checker_and_joint_routes",
+      "test_support_viability_full_native_and_retained_private_computations",
+      "test_support_viability_overlay_scope_and_source_endpoints"
+    ],
+    "unchanged_historical_test_methods": 22,
+    "existing_test_changes": "Current live totals only in three methods; all historical endpoint, native, edge and failure controls remain unchanged.",
+    "clone_scan": "All 659 actual source modules recomputed, exactly the existing immutable 68 rows.",
+    "no_lean_or_git_execution": true,
+    "v2_scope_note": "No new test or Lean execution: the only V2 delta is the README quantifier wording. The 28-test PASS belongs to the unchanged candidate Python/evidence source hashes.",
+    "v3_scope_note": "No Lean or Python test rerun. Of 25 existing test_ methods, 22 are unchanged and 3 only update live counts; 3 new tests give the previously passed total of 28."
+  },
+  "minimal_code_changes": {
+    "navigator": "Append exact seventh overlay and verifier path/SHA to four existing lists; only status description string changes inside a function.",
+    "clone_scanner": "Docstring only; every executable AST node is identical.",
+    "tests": "Three new regressions; current counts in three old methods only."
+  },
+  "preserved": {
+    "prior_six_overlay_artifacts": "UNCHANGED",
+    "immutable_3793_base": "UNCHANGED",
+    "frozen_4_11_89": "UNCHANGED",
+    "scientific_closure": "NOT_ESTABLISHED",
+    "production_consumers": "UNCHANGED",
+    "git_object_preflight": "NOT CLAIMED",
+    "remote_ci": "NOT CLAIMED"
+  },
+  "revision": "V3: disambiguate the separate registered selection experiment in knowledge README; correct the metadata count to 22 unchanged old test_ methods (3 current-count updates and 3 new tests).",
+  "predecessor_manifest_sha256": "efcb2c7ee3b36c51830fcbdc98f858763a71dcb0a7edccd548e6f772ae5d4c5a",
+  "preserved_v1_readme": {
+    "path": "/workspace/scratch/548ae22ee5c9/tmp/implementation/support-viability-closure/viability/consumer-preparation/pre-quantifier-v1/reuse_README.md",
+    "sha256": "0b9702b9340edd38953e6223e93a902999e5c5693c9b300ccf0832fb9df12495"
+  },
+  "delta_from_v2": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "before_sha256": "f18297a0096eb9b21fca8b4b112f7ea7aa3c7b341e6b42114a49f8bbf409fb5c",
+      "after_sha256": "6b485781d19fb3b489aa401d1bb5ddc828b0b3b01564f9d1d5baa7d66071b75a",
+      "change": "Its actual two-row ... becomes The separate registered two-row ..."
+    }
+  ],
+  "unchanged_paths_from_v2": [
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_NATIVE_V1.json",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean"
+  ],
+  "preserved_v2_knowledge_readme": {
+    "path": "/workspace/scratch/548ae22ee5c9/tmp/implementation/support-viability-closure/viability/consumer-preparation/pre-wording-v2/knowledge_README.md",
+    "sha256": "f18297a0096eb9b21fca8b4b112f7ea7aa3c7b341e6b42114a49f8bbf409fb5c"
+  }
+}

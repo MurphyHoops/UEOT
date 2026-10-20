@@ -1,0 +1,78 @@
+{
+  "state": "PASS",
+  "context": "Actual production worktree with frozen V3 source and consumer bytes; no immutable-candidate or canonical-main scope assertion.",
+  "results": [
+    {
+      "label": "reuse_tests",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py"
+      ],
+      "returncode": 0,
+      "seconds": 1.758,
+      "log_sha256": "21eac7a7056bc55f05046a08d4cf24fa355aa996a25e5b0b846a19e9422860c0"
+    },
+    {
+      "label": "reuse_status",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "--json",
+        "status"
+      ],
+      "returncode": 0,
+      "seconds": 0.169,
+      "log_sha256": "329c7f3edd4dc592005532e2a3af335627b7eb1af1a6f95344fc7a1daf084ec8"
+    },
+    {
+      "label": "unified_contract",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py",
+        "--repo-root",
+        "."
+      ],
+      "returncode": 0,
+      "seconds": 0.04,
+      "log_sha256": "084c44d2151e4c711dd06606abc1957a26ac9072a992fa06b7bf4791ca9fb321"
+    },
+    {
+      "label": "unified_contract_tests",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.049,
+      "log_sha256": "583b6b29252b2279c39048ca5f1171dacc17e6c89fa5945763598aaef45c619f"
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 0.011,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "canonical_main_fast_audit": "DEFERRED: new ops policy is local only; actual origin/main still has no support-viability exception.",
+  "proof_escape_scan": {
+    "status": "PASS",
+    "command": [
+      "rg",
+      "-n",
+      "^[[:space:]]*(axiom|opaque)[[:space:]]|\\b(sorry|admit|native_decide)\\b",
+      "formalization/ueot-core/UEOT/V3/Compression"
+    ],
+    "returncode": 1,
+    "meaning": "No matches",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

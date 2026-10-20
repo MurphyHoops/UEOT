@@ -1,0 +1,39 @@
+{
+  "state": "PASS",
+  "started_at_utc": "2026-10-20T09:10:14.281823+00:00",
+  "git_head_context": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+  "source_manifest_sha256": "993bd1a5c32b9872212282fba38411caf683c088f374b4d3c178fd79cc8c923e",
+  "results": [
+    {
+      "label": "nine_modules",
+      "command": [
+        "lake",
+        "build",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ReachablePolicyExtension",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViabilityCheck",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRiskWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 29.19,
+      "log_sha256": "19f8e7ea753f7a65cdaef43160c207f30b8fd68e91253366927c6686df24134d"
+    },
+    {
+      "label": "full_ueot",
+      "command": [
+        "lake",
+        "build",
+        "UEOT"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 13.423,
+      "log_sha256": "0512ab259a5cfa27d6681173b629adbf001a8cabf7c3792d6e9340ffdc9f8881"
+    }
+  ],
+  "finished_at_utc": "2026-10-20T09:10:56.913250+00:00"
+}
