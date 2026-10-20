@@ -1,6 +1,6 @@
 {
   "schema": "ueot_physics.chapter_dossier.v1",
-  "recorded_at_utc": "2026-10-20T05:41:22.394854+00:00",
+  "recorded_at_utc": "2026-10-20T06:46:28.435717+00:00",
   "document_id": "UEOT-PHYSICS",
   "edition": "3.2",
   "title": "UEOT物理学",
@@ -16,19 +16,35 @@
     "inherited_result_ids": 101,
     "new_result_ids": 16,
     "identity_scope": "INSTALLED_CANONICAL_BYTES",
-    "installation_status": "LOCAL_VERIFIED_CI_PENDING"
+    "installation_status": "MAIN_VERIFIED"
   },
   "derivatives": {
     "pdf": {
       "path": "physics/qm/book/UEOT_PHYSICS.pdf",
       "sha256": "51de239d72d1fb3659fdeb7b7d951c031a5c01913315c88bedb86ec348b5e57a",
       "pages": 186,
-      "status": "LOCAL_VERIFIED"
+      "status": "LOCAL_VERIFIED",
+      "remote_publication": {
+        "canonical_bytes_identical": true,
+        "receipt": {
+          "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+          "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+          "bytes": 5991
+        }
+      }
     },
     "latex": {
       "path": "physics/qm/book/UEOT_PHYSICS.tex",
       "sha256": "f7a3707e55787cb788f63e4a6551f5c5fa0aa776c3a5961dd56ea7ae5503913f",
-      "status": "LOCAL_VERIFIED"
+      "status": "LOCAL_VERIFIED",
+      "remote_publication": {
+        "canonical_bytes_identical": true,
+        "receipt": {
+          "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+          "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+          "bytes": 5991
+        }
+      }
     },
     "visual_review": {
       "path": "physics/qm/book/evidence/v3.2/pdf-visual-review.json",
@@ -280,7 +296,7 @@
       "retained_scope_note": "原来源及原版使用说明原样保留；其中“本版”依原历史记录解释，不作为3.2新执行回执。"
     },
     "QM316": {
-      "identity": "ACTUAL_VERSIONED_LOCALLY_VERIFIED_QM_SOURCE_INPUTS",
+      "identity": "ACTUAL_VERSIONED_SOURCE_AND_MAIN_VERIFIED_QM_INPUTS",
       "authoring_baseline": "427f512745ca70f82cba6a1388edcab904da8a42",
       "planned_source_manifest_path": "physics/qm/kernel/evidence/v31.6/source-manifest.json",
       "source_manifest_sha256": "e90925868282178908cb57abda19f392be9120edcfda4056f32d99acd074b14f",
@@ -343,9 +359,33 @@
           "count_scope": "dedicated_witness_excluded_from_generic_inventory"
         }
       ],
-      "use": "3.2三线的实际源集、统一构建/公理、运行、实例与专用见证已通过本地验收；远端源提交及主线CI仍待根回执。",
+      "use": "3.2三线的实际源集、统一构建/公理、运行、实例与专用见证已有本地及源码PR/合入后主线CI回执；70受验输入、56实际Core导入和三种正文保持相同。科学范围不随发布状态提升。",
       "source_manifest_path": "physics/qm/kernel/evidence/v31.6/source-manifest.json",
-      "local_verification_path": "physics/qm/kernel/evidence/v31.6/lean-verification.json"
+      "local_verification_path": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+      "remote_acceptance": {
+        "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+        "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+        "bytes": 5991
+      },
+      "remote_identity": {
+        "repository": "MurphyHoops/UEOT",
+        "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+        "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+        "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+        "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+        "pull_request": 345,
+        "pr_run": 39380741012,
+        "main_run": 39381585828,
+        "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
+        "source_count": 70,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/345",
+        "pr_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39380741012",
+        "main_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39381585828",
+        "source_and_main_tree_identical": true,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true
+      }
     }
   },
   "evidence_catalog": {
@@ -627,7 +667,7 @@
       "path": "physics/qm/book/evidence/v3.2/source-assembly.json",
       "role": "ACTUAL_CURRENT_EDITION_LOCAL_RECEIPT",
       "status": "PASS",
-      "sha256": "5decefca826795b448e1d174cc23c0cbd3a9c621da3729357d907c296a56c031",
+      "sha256": "994250258d5b4dfcb23e9f8072cabc9f35b9a2cf42d052b370789c09f8f4396e",
       "exists_at_dossier_assembly": false,
       "path_registration_kind": "ACTUAL_RECEIPT",
       "exists_at_finalization": true
@@ -645,7 +685,7 @@
       "path": "physics/qm/book/evidence/v3.2/dossier-review.json",
       "role": "ACTUAL_CURRENT_EDITION_LOCAL_RECEIPT",
       "status": "PASS",
-      "sha256": "97336e8edc98b6dbbe12c8b5ce9c26d61f28cdbd95ed9db1067e2d1cd96acf44",
+      "sha256": "e478091f861c0f4035f2bcc1d132cddea233fd755f7635211d8692a32e9824a5",
       "exists_at_dossier_assembly": false,
       "path_registration_kind": "ACTUAL_RECEIPT",
       "exists_at_finalization": true
@@ -715,12 +755,13 @@
     },
     "integration_v31_6": {
       "path": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
-      "role": "REMOTE_INTEGRATION_RECEIPT_PENDING_ROOT",
-      "status": "PENDING",
-      "sha256": null,
+      "role": "ACTUAL_CURRENT_EDITION_REMOTE_INTEGRATION_RECEIPT",
+      "status": "MAIN_VERIFIED",
+      "sha256": "6c8048724fd0e52f6aef93bd117036176747e0eb02b799ab09a6b4b2f0bff3d4",
       "exists_at_dossier_assembly": false,
-      "path_registration_kind": "PLANNED_ROOT_RECEIPT_LOCATION",
-      "exists_at_finalization": false
+      "path_registration_kind": "ACTUAL_RECEIPT",
+      "exists_at_finalization": true,
+      "exists_at_remote_completion": true
     },
     "pdf_build_v3_2": {
       "path": "physics/qm/book/evidence/v3.2/pdf-build.json",
@@ -778,6 +819,27 @@
       "role": "ACTUAL_CURRENT_EDITION_LOCAL_RECEIPT",
       "status": "PASS",
       "sha256": "dcaa38fdc794aa0b4aa90bad2b9a2ed77b411b5042e8ab4e4085cb1106d80834"
+    },
+    "remote_book_binding_v3_2": {
+      "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+      "bytes": 5991,
+      "role": "ACTUAL_CURRENT_EDITION_REMOTE_RECEIPT",
+      "status": "PASS"
+    },
+    "pr_ci_v31_6": {
+      "path": "physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-verification.json",
+      "sha256": "e980b9ef71d354fc519611083966f8b9a79c0e173db91a2da9bf75105ad5e6b5",
+      "bytes": 85550,
+      "role": "ACTUAL_CURRENT_EDITION_REMOTE_RECEIPT",
+      "status": "PASS"
+    },
+    "main_ci_v31_6": {
+      "path": "physics/qm/kernel/evidence/v31.6/ci/main-39381585828-verification.json",
+      "sha256": "1a76e7d89235f88be980eb4e5083f76b7bfaef2a918f3872df5e7f77e6c7886f",
+      "bytes": 85552,
+      "role": "ACTUAL_CURRENT_EDITION_REMOTE_RECEIPT",
+      "status": "PASS"
     }
   },
   "governance": {
@@ -815,9 +877,9 @@
     "four_dimensional_nonperturbative_qft_complete": false,
     "quantum_gravity_complete": false,
     "new_experiment_this_edition": false,
-    "reason": "3.2正式正文、章级来源、70项实际源集、统一数学/程序/见证、三遍排印与真实视觉回执已完成本地核对；远端提交与主线CI仍待根验收。文档完成、条件证明、运行检查与自然界有效性分别承担责任。",
+    "reason": "3.2正式正文、章级来源、70项源集、实际统一数学/程序/见证、排印和视觉回执，以及科学源PR和受验主线CI均已取得真实记录。元数据补录不改受验字节；文档完成、条件证明、程序验收与自然界有效性仍分别承担责任。",
     "formal_book_complete_scope": "57章/6附录的连续正式正文内容完备；不表示出版门或科学理论已完成。",
-    "current_release_acceptance": "LOCAL_VERIFIED_CI_PENDING"
+    "current_release_acceptance": "MAIN_VERIFIED"
   },
   "chapters": [
     {
@@ -6263,7 +6325,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "维护从量子选择、算符域、实验、长期动力学到高能/引力的依赖账本；本轮三条有限核心进展不替代重构、现实谱或经验检验，459/573已由实际本地统一构建与公理回执确认，远端验收另行登记。",
+      "core_content": "维护从量子选择、算符域、实验、长期动力学到高能/引力的依赖账本；本轮三条有限核心进展不替代重构、现实谱或经验检验，459/573已由实际本地统一构建与公理回执确认，源码PR与受验主线CI已有独立实际回执。",
       "numbered_results": [],
       "external_result_ids": [],
       "source_refs": [
@@ -6576,7 +6638,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "保持唯一理论主源、三个状态轴和高风险前提；同步当前3.2正式总著与本地已验证而远端待验收的发布责任。",
+      "core_content": "保持唯一理论主源、三个状态轴和高风险前提；同步当前3.2正式总著与本地与源码PR/受验主线CI均已验证的发布责任。",
       "numbered_results": [],
       "external_result_ids": [],
       "source_refs": [
@@ -9553,7 +9615,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "保留原始材料、缓存文本和旧版清单的独立身份；接入v31.6的70项实际源集及本地统一回执，远端验收独立待录。",
+      "core_content": "保留原始材料、缓存文本和旧版清单的独立身份；接入v31.6的70项实际源集及本地统一回执，远端源码与受验主线验收有独立实际回执。",
       "source_refs": [
         {
           "id": "S1",
@@ -9903,7 +9965,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "57章6附录正式正文、186页PDF及完整LaTeX均有实际哈希；三遍排印和真实视觉回执已完成，远端发布另行登记。",
+      "core_content": "57章6附录正式正文、186页PDF及完整LaTeX均有实际哈希；三遍排印和真实视觉回执已完成，三种正文的远端字节身份已有独立实际回执。",
       "source_refs": [
         {
           "id": "Q2",
@@ -9935,7 +9997,7 @@
         "whole_appendix_formalized": false,
         "new_experimental_data": false,
         "retained_evidence_scope_note": "既有证据引用和program/formal说明保留其原版执行范围；3.2统一验收单列release_acceptance及新增证据键，旧回执不自动构成本版执行。",
-        "current_edition_acceptance_status": "LOCAL_VERIFIED_CI_PENDING"
+        "current_edition_acceptance_status": "MAIN_VERIFIED"
       },
       "open_obligations": [
         "编译退出码不等于页面视觉验收；远端身份依真实提交/CI回执。"
@@ -10070,7 +10132,7 @@
         "whole_appendix_formalized": false,
         "new_experimental_data": false,
         "retained_evidence_scope_note": "既有证据引用和program/formal说明保留其原版执行范围；3.2统一验收单列release_acceptance及新增证据键，旧回执不自动构成本版执行。",
-        "current_edition_acceptance_status": "LOCAL_VERIFIED_CI_PENDING"
+        "current_edition_acceptance_status": "MAIN_VERIFIED"
       },
       "open_obligations": [
         "命名审计不是内部所有常量普查；未形式化的外部重定理和物理实现保持未覆盖。"
@@ -10248,10 +10310,10 @@
     "declared_source_symbols_located": 127,
     "path_policy": "仓库path为仓库根相对路径；staging_absolute_path仅指本次独立装配实际输入，不充当已发布路径。旧主文/PDF当前路径存在不等于本版内容已安装。",
     "all_required_actual_repository_paths_exist": true,
-    "all_repository_paths_exist": false,
-    "all_repository_paths_exist_note": "Only the explicitly pending remote integration receipt may be absent; every required local source/evidence path exists.",
-    "checked_repository_path_count": 83,
-    "pending_repository_path_count": 1,
+    "all_repository_paths_exist": true,
+    "all_repository_paths_exist_note": "All required actual source, local and remote receipt paths now exist; original assembly-existence fields remain historical.",
+    "checked_repository_path_count": 88,
+    "pending_repository_path_count": 0,
     "readme_local_links_exist": true,
     "derivative_hashes_checked": true,
     "external_visual_receipt_checked": true,
@@ -10262,26 +10324,43 @@
     "total_registered_section_count": 293,
     "stable_anchor_count": 180,
     "local_checkpoint_status": "LOCAL_VERIFIED_CI_PENDING",
-    "remote_status": "PENDING",
-    "remote_verified": false,
+    "remote_status": "MAIN_VERIFIED",
+    "remote_verified": true,
     "authoring_baseline": "427f512745ca70f82cba6a1388edcab904da8a42",
     "current_source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
     "current_source_count": 70,
     "whole_physics_formalized": false,
     "classification_migration_recorded": true,
     "historical_legacy_programs_reexecuted_in_3_2": false,
-    "source_commit": null,
-    "tested_main_commit": null,
-    "source_and_main_tree_identical": null,
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "source_and_main_tree_identical": true,
     "integration_receipt": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
     "all_70_execution_source_hashes_rechecked": true,
-    "new_claim_names_matched_actual_audits": true
+    "new_claim_names_matched_actual_audits": true,
+    "local_checkpoint_status_scope": "ORIGINAL_LOCAL_CHECKPOINT_PRESERVED",
+    "current_release_status": "MAIN_VERIFIED",
+    "repository": "MurphyHoops/UEOT",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "pull_request": 345,
+    "pr_run": 39380741012,
+    "main_run": 39381585828,
+    "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
+    "source_count": 70,
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/345",
+    "pr_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39380741012",
+    "main_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39381585828",
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true,
+    "integration_receipt_sha256": "6c8048724fd0e52f6aef93bd117036176747e0eb02b799ab09a6b4b2f0bff3d4",
+    "metadata_only_completion": true
   },
   "next_execution_contract": {
-    "path": "physics/qm/UEOT_QM_EXECUTION_v31.6.md",
-    "related_selection_contract_path": "physics/qm/UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md",
-    "status": "CURRENT_V31_6_LOCAL_EXECUTION_COMPLETE_REMOTE_PENDING",
-    "scope": "本轮三线与对应57章正式总著已有实际本地回执；远端由根收束。下一科学优先任务是当前非对角模型的精确有限条件态动力学及定量收敛，一般谱存在另保留为后续义务。"
+    "path": "physics/qm/UEOT_QM_EXECUTION_v31.7.md",
+    "status": "APPROVED_PLAN_NOT_FORMALIZED_NOT_COUNTED_IN_V31_6",
+    "scope": "下一阶段按已经审定的v31.7合同推进三路：A为共同操作/纯化接口及复量子正例；B为保留记录和量子记忆；C为当前模型的精确条件态动力学及收敛，完成后支援A/B。一般谱存在留待后续。章节56.7只描述C线局部优先级，不代表全局只有Doob一条线；未来工作尚未形式化，也不计入v31.6成果。"
   },
   "edition_history": [
     {
@@ -10515,15 +10594,15 @@
     "runtime_regression": "PASS",
     "dedicated_witness_integration": "PASS",
     "source_freeze": "PASS",
-    "remote_source_commit": "PENDING",
-    "merged_main_ci": "PENDING",
+    "remote_source_commit": "PASS",
+    "merged_main_ci": "PASS",
     "pdf_build": "PASS",
     "pdf_visual_review": "PASS"
   },
   "path_catalog": {
-    "policy": "Repository paths are relative to repository root. Historical receipts retain their edition; the one remote integration path is explicitly pending. Absolute staging inputs are historical, not published navigation.",
-    "actual_registered_paths": 83,
-    "pending_registered_paths": 1,
+    "policy": "All repository-relative current and historical paths exist. Current remote acceptance is bound to actual receipts; historical assembly-existence fields remain unchanged.",
+    "actual_registered_paths": 88,
+    "pending_registered_paths": 0,
     "missing_required_actual_paths": [],
     "entries": [
       {
@@ -10564,6 +10643,12 @@
       },
       {
         "path": "physics/qm/UEOT_QM_EXECUTION_v31.6.md",
+        "exists": true,
+        "status": "EXISTS",
+        "existence_does_not_imply_current_edition_execution": true
+      },
+      {
+        "path": "physics/qm/UEOT_QM_EXECUTION_v31.7.md",
         "exists": true,
         "status": "EXISTS",
         "existence_does_not_imply_current_edition_execution": true
@@ -10791,6 +10876,12 @@
         "existence_does_not_imply_current_edition_execution": true
       },
       {
+        "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+        "exists": true,
+        "status": "EXISTS",
+        "existence_does_not_imply_current_edition_execution": true
+      },
+      {
         "path": "physics/qm/book/evidence/v3.2/source-assembly.json",
         "exists": true,
         "status": "EXISTS",
@@ -10905,6 +10996,18 @@
         "existence_does_not_imply_current_edition_execution": true
       },
       {
+        "path": "physics/qm/kernel/evidence/v31.6/ci/main-39381585828-verification.json",
+        "exists": true,
+        "status": "EXISTS",
+        "existence_does_not_imply_current_edition_execution": true
+      },
+      {
+        "path": "physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-verification.json",
+        "exists": true,
+        "status": "EXISTS",
+        "existence_does_not_imply_current_edition_execution": true
+      },
+      {
         "path": "physics/qm/kernel/evidence/v31.6/core-import-closure.json",
         "exists": true,
         "status": "EXISTS",
@@ -10990,8 +11093,8 @@
       },
       {
         "path": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
-        "exists": false,
-        "status": "PENDING_REMOTE_RECEIPT",
+        "exists": true,
+        "status": "EXISTS",
         "existence_does_not_imply_current_edition_execution": true
       },
       {
@@ -11098,5 +11201,34 @@
     "witnesses_counted_separately": true,
     "origin": "Original source inventory, including3public quotient instances, now bound to the actual accepted573named reports. Dedicated witnesses remain separate.",
     "actual_acceptance_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json"
+  },
+  "remote_metadata_completion": {
+    "recorded_at_utc": "2026-10-20T06:46:28.435717+00:00",
+    "prior_release_status": "LOCAL_VERIFIED_CI_PENDING",
+    "prior_dossier_sha256": "712ba8eb5adbeff4b302e678e15bd0c4bbc69e2cb5afa296d77ec22e42a1360d",
+    "receipt": {
+      "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+      "bytes": 5991
+    },
+    "scope": "Current release fields only; chapter claims, body hashes, origin/history and original review facts are preserved."
+  },
+  "completed_v31_6_contract": {
+    "path": "physics/qm/UEOT_QM_EXECUTION_v31.6.md",
+    "related_selection_contract_path": "physics/qm/UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md",
+    "status": "MAIN_VERIFIED",
+    "completion_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
+      "sha256": "6c8048724fd0e52f6aef93bd117036176747e0eb02b799ab09a6b4b2f0bff3d4",
+      "bytes": 3160
+    },
+    "scope": "v31.6合同列明的三线有限交付已完成：同一Core过程上的经典纯化边界、实局域层析分离、给定正谱数据下的量子Doob有限条件演化。对应源码与正式总著已取得本地、科学源PR和受验主线CI回执；这里的完成仅指本轮合同范围。下一阶段的三路计划另见next_execution_contract。",
+    "local_checkpoint_snapshot_role": "HISTORICAL_LOCAL_CHECKPOINT_ONLY：下方完整保留远端验收之前的原对象。其REMOTE_PENDING状态和当时的Doob优先级描述是历史记录，不代表当前发布状态或全局下一阶段计划。",
+    "local_checkpoint_snapshot": {
+      "path": "physics/qm/UEOT_QM_EXECUTION_v31.6.md",
+      "related_selection_contract_path": "physics/qm/UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md",
+      "status": "CURRENT_V31_6_LOCAL_EXECUTION_COMPLETE_REMOTE_PENDING",
+      "scope": "本轮三线与对应57章正式总著已有实际本地回执；远端由根收束。下一科学优先任务是当前非对角模型的精确有限条件态动力学及定量收敛，一般谱存在另保留为后续义务。"
+    }
   }
 }

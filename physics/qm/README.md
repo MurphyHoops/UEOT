@@ -1,6 +1,6 @@
 # UEOT-QM
 
-当前研发：**v31.6 / Kernel 1.6 — LOCAL_VERIFIED_CI_PENDING，2026-10-20 UTC**。最新集成身份以 [CURRENT.json](status/CURRENT.json) 为准。
+当前研发：**v31.6 / Kernel 1.6 — MAIN_VERIFIED，2026-10-20 UTC**。最新集成身份以 [CURRENT.json](status/CURRENT.json) 为准。
 
 唯一连续理论总著为 [《UEOT物理学》正式 3.2](book/UEOT_PHYSICS.md)：第 0–56 章、6 个附录、117 个编号结果；[完整 PDF](book/UEOT_PHYSICS.pdf) 共 186 页。全部原有理论推导保留，新增章节与真实源码、前提、反例和开放问题逐项对应。
 

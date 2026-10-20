@@ -1,6 +1,6 @@
 {
   "schema": "ueot_physics.metadata_update_review.v3.2",
-  "status": "LOCAL_VERIFIED_CI_PENDING",
+  "status": "MAIN_VERIFIED",
   "recorded_at_utc": "2026-10-20T05:41:22.394854+00:00",
   "write_scope": "physics/qm/book/**",
   "final_source_update": {
@@ -10,9 +10,9 @@
   "installed_source_sha256": "6289bebfbd4ae0efe5ac2257f6ac15efb37fb7b95bb78612367818eb5d6e4fd4",
   "pdf_sha256": "51de239d72d1fb3659fdeb7b7d951c031a5c01913315c88bedb86ec348b5e57a",
   "tex_sha256": "f7a3707e55787cb788f63e4a6551f5c5fa0aa776c3a5961dd56ea7ae5503913f",
-  "dossier_sha256": "712ba8eb5adbeff4b302e678e15bd0c4bbc69e2cb5afa296d77ec22e42a1360d",
-  "source_manifest_sha256": "0fce0b18334061930d9840f038a76a7a17e3ba51ef7b8feb64aeaac3f338b7d7",
-  "readme_sha256": "0d4a02f8e499a176d736cfc3f53997d303e1a3780623285adb513e123978bf98",
+  "dossier_sha256": "2a53c9294430bbe8d62bd1f746cac3a12464725ade69e6e4d753b9fb1981e93d",
+  "source_manifest_sha256": "6d402b66813867f4844e72fde748cc71e00dc36b6f29a56fe1662f401104f5f8",
+  "readme_sha256": "c8d3886757678a3b72d55c3f9d78788f24526606d185f3d18e6fadb35903f25c",
   "all_body_slices_checked": 63,
   "all_original11records_preserved": true,
   "old101origins_preserved": true,
@@ -21,7 +21,88 @@
   "new_pdf_builds_by_book_finalizer": 0,
   "remote_actions_by_book_finalizer": 0,
   "all_required_local_links_exist": true,
-  "remaining": [
-    "Root remote publication and resulting-main CI receipts"
-  ]
+  "remaining": [],
+  "prior_local_metadata_identity": {
+    "status": "LOCAL_VERIFIED_CI_PENDING",
+    "recorded_at_utc": "2026-10-20T05:41:22.394854+00:00",
+    "dossier_sha256": "712ba8eb5adbeff4b302e678e15bd0c4bbc69e2cb5afa296d77ec22e42a1360d",
+    "source_manifest_sha256": "0fce0b18334061930d9840f038a76a7a17e3ba51ef7b8feb64aeaac3f338b7d7",
+    "readme_sha256": "0d4a02f8e499a176d736cfc3f53997d303e1a3780623285adb513e123978bf98",
+    "remaining": [
+      "Root remote publication and resulting-main CI receipts"
+    ]
+  },
+  "remote_metadata_completion": {
+    "recorded_at_utc": "2026-10-20T06:46:28.435717+00:00",
+    "receipt": {
+      "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+      "bytes": 5991
+    },
+    "actual_acceptance_identity": {
+      "repository": "MurphyHoops/UEOT",
+      "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+      "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+      "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+      "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+      "pull_request": 345,
+      "pr_run": 39380741012,
+      "main_run": 39381585828,
+      "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
+      "source_count": 70,
+      "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/345",
+      "pr_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39380741012",
+      "main_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39381585828",
+      "source_and_main_tree_identical": true,
+      "tested_inputs_identical": true,
+      "core_imports_identical": true,
+      "canonical_book_identical": true
+    },
+    "write_targets": [
+      "physics/qm/book/SOURCE_MANIFEST.json",
+      "physics/qm/book/CHAPTER_DOSSIER.json",
+      "physics/qm/book/README.md",
+      "physics/qm/book/evidence/v3.2/source-assembly.json",
+      "physics/qm/book/evidence/v3.2/dossier-review.json",
+      "physics/qm/book/evidence/v3.2/dossier-review.md",
+      "physics/qm/book/evidence/v3.2/local-release-gates.json",
+      "physics/qm/book/evidence/v3.2/metadata-update-review.json",
+      "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "physics/qm/book/evidence/v3.2/archive-manifest.json"
+    ],
+    "canonical_and_tested_inputs_unchanged": true,
+    "historical_archives_and_original_pdf_visual_receipts_unchanged": true,
+    "dossier_review_original_scientific_fields_preserved": true,
+    "new_lean_invocations": 0,
+    "new_pdf_builds": 0,
+    "new_remote_actions": 0,
+    "new_visual_review": false,
+    "script_sha256": "b2a039bf445797348245669abb7685c3dc44192da042cb0d5150311091d72f8e"
+  },
+  "completed_contract_metadata_clarification": {
+    "recorded_at_utc": "2026-10-20T06:49:43.738626+00:00",
+    "scope": "Pure metadata clarification of the completed v31.6 contract; no scientific, canonical, source, historical or original review bytes changed outside the four explicit current metadata targets.",
+    "prior_dossier_sha256": "350d9e3481ddf1ffe6df948daa56509745bab2fb32648ffca102a3ad12617692",
+    "clarified_dossier_sha256": "2a53c9294430bbe8d62bd1f746cac3a12464725ade69e6e4d753b9fb1981e93d",
+    "original_contract_object_preserved_at": "completed_v31_6_contract.local_checkpoint_snapshot",
+    "current_completed_contract_status": "MAIN_VERIFIED",
+    "completion_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
+      "sha256": "6c8048724fd0e52f6aef93bd117036176747e0eb02b799ab09a6b4b2f0bff3d4",
+      "bytes": 3160
+    },
+    "current_v31_7_three_line_plan_unchanged": true,
+    "canonical_markdown_pdf_tex_unchanged": true,
+    "tested_70_inputs_and_56_core_imports_unchanged": true,
+    "write_targets": [
+      "physics/qm/book/CHAPTER_DOSSIER.json",
+      "physics/qm/book/evidence/v3.2/local-release-gates.json",
+      "physics/qm/book/evidence/v3.2/metadata-update-review.json",
+      "physics/qm/book/evidence/v3.2/archive-manifest.json"
+    ],
+    "one_shot_remote_finalizer_reexecuted": false,
+    "new_lean_invocations": 0,
+    "new_pdf_builds": 0,
+    "new_remote_actions": 0
+  }
 }

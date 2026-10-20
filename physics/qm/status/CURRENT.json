@@ -17,9 +17,9 @@
   "roadmap": "../ROADMAP.md",
   "claim_ledger": "CLAIM_LEDGER_v31.6.json",
   "previous_claim_ledger": "CLAIM_LEDGER_v31.5.json",
-  "verification_state": "LOCAL_VERIFIED_CI_PENDING",
+  "verification_state": "MAIN_VERIFIED",
   "acceptance_marker": {
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "change_class": "B",
     "authority": "User-directed continued construction of the entire UEOT-QM theory, formal monograph, rigorous multi-agent work and synchronization to remote QM.",
     "domain_memo": "../audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md",
@@ -43,9 +43,9 @@
       "New experimental evidence, whole-book formalization or ultimate truth"
     ],
     "independent_mathematical_reviews": "CLEAR",
-    "source_and_verifier_review": "SOURCE_BOUND_EXECUTIONS_AND_STATIC_CI_SCOPE_PASS",
+    "source_and_verifier_review": "SOURCE_BOUND_LOCAL_AND_ACTUAL_PR_MAIN_ACCEPTANCE_PASS",
     "local_machine_acceptance": "PASS",
-    "integration_acceptance": "PENDING",
+    "integration_acceptance": "PASS",
     "integration_receipt": "../kernel/evidence/v31.6/integration-verification.json",
     "review_scope": "AI proof authors and separate AI collaborators reviewed the mathematics, runtime, persisted witness gate and new book chapters; no independent human peer review claimed."
   },
@@ -57,7 +57,8 @@
     "Six regenerated exact certificates and 42 separate audits; four corrupted true proofs rejected and four same-data false proofs accepted",
     "100 runtime methods and four demos reexecuted successfully",
     "70 tested source entries, nine pinned dependency revisions and 56 unchanged recursive Core source identities",
-    "Formal monograph 3.2 completed: 57 chapters, six appendices, 117 results, 186-page PDF and actual scoped visual inspection"
+    "Formal monograph 3.2 completed: 57 chapters, six appendices, 117 results, 186-page PDF and actual scoped visual inspection",
+    "Actual PR #345 run 39380741012 and resulting-main run 39381585828 passed; source and main identities reconciled"
   ],
   "proof_receipt": "../kernel/evidence/v31.6/lean-verification.json",
   "instance_receipt": "../kernel/evidence/v31.6/lean-exports/verification.json",
@@ -83,8 +84,8 @@
   ],
   "integration": {
     "target_branch": "main",
-    "temporary_branch": null,
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "temporary_branch": "qm/v31.6-core-selection-doob-20261020",
+    "state": "MAIN_VERIFIED",
     "scope": [
       "physics/qm/**",
       "formalization/ueot-qm/**",
@@ -179,22 +180,30 @@
       "tested_main_tree": "a674eff10e615e70ec622c987d52a9c1e01a725b",
       "source_and_main_tree_identical": true
     },
-    "source_commit": null,
-    "source_tree": null,
-    "pull_request": null,
-    "pr_run": null,
-    "tested_main_commit": null,
-    "tested_main_tree": null,
-    "main_run": null,
-    "source_and_main_tree_identical": null,
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "pull_request": 345,
+    "pr_run": 39380741012,
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "main_run": 39381585828,
+    "source_and_main_tree_identical": true,
     "receipt": "../kernel/evidence/v31.6/integration-verification.json",
     "source_manifest": "../kernel/evidence/v31.6/source-manifest.json",
     "source_count": 70,
     "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
     "observed_checkout_commit": "97d033ff83125822e9926f5bd36afd08dbd153ef",
     "published_research_baseline": "427f512745ca70f82cba6a1388edcab904da8a42",
-    "pr_status": "PENDING",
-    "main_status": "PENDING"
+    "pr_status": "PASS",
+    "main_status": "PASS",
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/345",
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true,
+    "source_reconciliation": "../kernel/evidence/v31.6/remote-source-reconciliation.json",
+    "main_reconciliation": "../kernel/evidence/v31.6/remote-main-reconciliation.json",
+    "pr_verification": "../kernel/evidence/v31.6/ci/pr-39380741012-verification.json",
+    "main_verification": "../kernel/evidence/v31.6/ci/main-39381585828-verification.json"
   },
   "source_manifest": "../kernel/evidence/v31.6/source-manifest.json",
   "path_conventions": {
@@ -271,8 +280,8 @@
     "audit_duplicates": 0,
     "audit_missing": [],
     "unreviewed_axioms": [],
-    "remote_ci": "PENDING",
-    "main_integration": "PENDING",
+    "remote_ci": "PASS_SEPARATELY_RECORDED",
+    "main_integration": "PASS_SEPARATELY_RECORDED",
     "core_source_modified": false,
     "full_scientific_theory_verified": false,
     "count_scope": "459/573 package; six-instance 42; false-witness 4; four concrete witness 62/22/84; runtime 100 are distinct evidence counts.",
@@ -283,5 +292,7 @@
     "finite_witness_receipt": "../kernel/evidence/v31.6/finite-witnesses/verification.json"
   },
   "local_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING",
-  "metadata_updated_at_utc": "2026-10-20T05:43:38.429365+00:00"
+  "metadata_updated_at_utc": "2026-10-20T06:46:14.642326+00:00",
+  "local_checkpoint_state_scope": "Historical state carried by the immutable source publication; current aggregate status is verification_state.",
+  "initial_published_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING"
 }

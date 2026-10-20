@@ -2,7 +2,7 @@
   "schema": "ueot_physics.dossier_review.v3_2",
   "recorded_at_utc": "2026-10-20T05:38:37.486564+00:00",
   "reviewer": "AI collaborator B /root/q316_real_tomography",
-  "status": "PASS_LOCAL_CONTENT_SOURCE_AND_RECEIPT_BINDING_CI_PENDING",
+  "status": "PASS_CONTENT_SOURCE_AND_REMOTE_RECEIPT_BINDING",
   "canonical_sha256": "6289bebfbd4ae0efe5ac2257f6ac15efb37fb7b95bb78612367818eb5d6e4fd4",
   "prior_dossier_sha256": "036232dcd58c8fa7ff27d92eea3a57fd3d9d55c20a4d2623617531c04ee00675",
   "counts": {
@@ -427,8 +427,8 @@
       "count_scope": "dedicated_witness_excluded_from_generic_inventory"
     }
   ],
-  "actual_paths_checked": 83,
-  "pending_paths_registered": 1,
+  "actual_paths_checked": 88,
+  "pending_paths_registered": 0,
   "missing_required_actual_paths": [],
   "candidate_inventory": {
     "status": "SOURCE_INVENTORY_CONFIRMED_BY_ACTUAL_LOCAL_BUILD_AND_AXIOM_RECEIPTS",
@@ -444,12 +444,9 @@
     "witnesses_counted_separately": true,
     "origin": "Actual unified local receipts confirm 22 modules, 459 explicit theorems and 573 public named reports, including the three public concrete quotient instances."
   },
-  "pending_root_gates": {
-    "remote_source_commit": "PENDING",
-    "merged_main_ci": "PENDING"
-  },
+  "pending_root_gates": {},
   "root_follow_up": [
-    "Root publishes the same source bytes and records the source/main/CI receipts; no local PASS is called remote verification."
+    "Scientific source and resulting-main CI are actually accepted. Any later metadata commit must retain the tested bytes and records its own publication identity separately."
   ],
   "scientific_scope_checks": {
     "classical_full_simplex_and_all_finite_ancillas": true,
@@ -478,10 +475,28 @@
   "current_source_count": 70,
   "source_binding_policy": "Final per-file hashes are taken from the actual accepted 70-source manifest; all new named claims are included in actual main or dedicated witness audit sets.",
   "all_new_claim_source_names_matched_actual_audits": true,
-  "remote_status": "PENDING",
-  "remote_verified": false,
-  "remaining_gates": [
-    "remote source publication and resulting-main CI, owned by root"
-  ],
-  "visual_review_performed_separately": "pdf-collaborator-review.json"
+  "remote_status": "MAIN_VERIFIED",
+  "remote_verified": true,
+  "remaining_gates": [],
+  "visual_review_performed_separately": "pdf-collaborator-review.json",
+  "remote_metadata_completion": {
+    "recorded_at_utc": "2026-10-20T06:46:28.435717+00:00",
+    "prior_status": "PASS_LOCAL_CONTENT_SOURCE_AND_RECEIPT_BINDING_CI_PENDING",
+    "prior_remote_status": "PENDING",
+    "prior_pending_root_gates": {
+      "remote_source_commit": "PENDING",
+      "merged_main_ci": "PENDING"
+    },
+    "prior_remaining_gates": [
+      "remote source publication and resulting-main CI, owned by root"
+    ],
+    "prior_root_follow_up": [
+      "Root publishes the same source bytes and records the source/main/CI receipts; no local PASS is called remote verification."
+    ],
+    "receipt": {
+      "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+      "bytes": 5991
+    }
+  }
 }

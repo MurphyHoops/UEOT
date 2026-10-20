@@ -1,0 +1,153 @@
+{
+  "schema": "ueot_physics.book_remote_script_review.v3.2",
+  "status": "STATIC_SOURCE_REVIEW_PASS_ACTUAL_DUAL_CI_GATES_REQUIRED",
+  "reviewed_at_utc": "2026-10-20T06:41:45.164151+00:00",
+  "reviewer": "AI collaborator C /root/q316_quantum_doob",
+  "script": {
+    "path": "/tmp/qm316_finalize_book_remote.py",
+    "sha256": "b2a039bf445797348245669abb7685c3dc44192da042cb0d5150311091d72f8e",
+    "ast_parse": "PASS",
+    "executed_by_reviewer": false
+  },
+  "compatible_root_script_sha256": "8238c5e4fe1e1b6dcdac3bdc495d20eb52ad6bc5f19d5ac64af6c73f0b2378e6",
+  "review_scope": {
+    "repository_writes": 0,
+    "remote_actions": 0,
+    "lean_invocations": 0,
+    "runtime_test_invocations": 0,
+    "pdf_builds": 0,
+    "new_visual_reviews": 0,
+    "method": "Full source read plus current metadata/hash-reference inspection; no --plan, prepare or --apply invocation."
+  },
+  "context_at_review": {
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "pr_run": 39380741012,
+    "pr_status": "PASS",
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "main_run": 39381585828,
+    "main_status": "PENDING"
+  },
+  "write_allowlist": [
+    "physics/qm/book/SOURCE_MANIFEST.json",
+    "physics/qm/book/CHAPTER_DOSSIER.json",
+    "physics/qm/book/README.md",
+    "physics/qm/book/evidence/v3.2/source-assembly.json",
+    "physics/qm/book/evidence/v3.2/dossier-review.json",
+    "physics/qm/book/evidence/v3.2/dossier-review.md",
+    "physics/qm/book/evidence/v3.2/local-release-gates.json",
+    "physics/qm/book/evidence/v3.2/metadata-update-review.json",
+    "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+    "physics/qm/book/evidence/v3.2/archive-manifest.json"
+  ],
+  "write_target_count": 10,
+  "static_mutation_site": "Only TARGETS loop in main() after --apply, successful prepare(), protected input checks and originals byte comparisons.",
+  "required_order": [
+    "Actual PR/main CI receipts and final context",
+    "Root8238c5... finalizer creates fixed integration/reconciliation",
+    "B prepare computes bounded metadata bytes and hashes",
+    "B --apply verifies every protected/original byte, writes only10 targets and reads them back",
+    "Root latest-main metadata publication and per-blob readback"
+  ],
+  "guards": [
+    "Exact repository/PR/source commit/source tree/source set and positive actual run IDs",
+    "Integration state and all identity fields exactly match context;70+56+3 flags true",
+    "PR/main receipts match exact repo-relative paths,event,run,checkout,required status flags and573/84/100/4 counts",
+    "Local70 input and56 Core source hashes plus three fixed canonical SHA256 checked",
+    "Old archive is one-shot LOCAL_VERIFIED_CI_PENDING and every old archived file hash/size checked",
+    "Original historical metadata, chapter body/result fields,11 source entries and edition histories preserved by explicit comparisons",
+    "All protected external files and non-target book files compared before/after application; concurrent modifications refuse write"
+  ],
+  "tree_identity_policy": "Actual source-tree==tested-main-tree bool is required to be correct; equality is not required to be true.",
+  "hash_dag": [
+    "Fixed root integration/CI and immutable scientific receipts -> remote-release-binding",
+    "remote-release-binding -> SOURCE_MANIFEST/source-assembly/dossier-review",
+    "source-assembly and dossier-review + fixed external refs -> CHAPTER_DOSSIER",
+    "CHAPTER_DOSSIER/SOURCE_MANIFEST/README -> local-release-gates and metadata-update-review",
+    "all37 final archive members -> archive-manifest; manifest excludes itself"
+  ],
+  "self_reference_findings": [],
+  "future_metadata_commit_is_not_claimed_tested": true,
+  "history_bindings": {
+    "dossier.edition_history": "a08cb61f718ca82dffb13c6e59db21be199839f64afe4e41f5cecbfc4500b41e",
+    "dossier.validation.local_checkpoint_status": "LOCAL_VERIFIED_CI_PENDING",
+    "dossier.integration.exists_at_dossier_assembly": false,
+    "SOURCE_MANIFEST.entries": "92c4f2dbd3d555060d53edd138af9390504fe4b6b4759ac6995670004a2c7d31",
+    "SOURCE_MANIFEST.historical_code_baselines": "a3460399ceb5bd49b34e6aa6661ecfd8fe8792a6d0553e164e8a66ec89a475da"
+  },
+  "resolved_findings": [
+    {
+      "id": "BR-01",
+      "finding": "Root integration initially omitted repository required by B.",
+      "resolution": "Root8238c5... fixes repository assertion and emitted field; interface now agrees."
+    },
+    {
+      "id": "BR-02",
+      "finding": "historical_and_original_review_files_unchanged was too broad because dossier-review files are intentionally rewritten.",
+      "resolution": "Now distinguishes historical_archives_and_original_pdf_visual_receipts_unchanged and dossier_review_original_scientific_fields_preserved, with explicit scientific-field equality assertions."
+    },
+    {
+      "id": "BR-03",
+      "finding": "Global next-execution metadata described onlyC priority and pointed tocompletedv31.6.",
+      "resolution": "Current next contract becomes approved-not-formalizedv31.7 A/B/C; prior complete object retained as completed_v31_6_contract; README synchronized; canonical chapter56.7 unchanged."
+    },
+    {
+      "id": "BR-04",
+      "finding": "Generic error text could inaccurately imply no writes after a late readback failure.",
+      "resolution": "WRITE_ATTEMPTS and WRITE_COMPLETIONS distinguish preflight refusal from partial bounded application failure."
+    }
+  ],
+  "unresolved_blocking_findings": [],
+  "original_archive_file_count": 36,
+  "expected_updated_archive_file_count": 37,
+  "archive_self_excluded": true,
+  "not_claimed": [
+    "No newscientific proof,CI,experiment,PDF build orvisualreview by this metadata script",
+    "No artifactZIPcontents independentlyverified by reviewer",
+    "No updateofoldeditionhistoryas if itcertifiednewsource",
+    "No containingfuturemetadatacommitselfhash"
+  ],
+  "current_target_bindings": [
+    {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "0fce0b18334061930d9840f038a76a7a17e3ba51ef7b8feb64aeaac3f338b7d7"
+    },
+    {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "712ba8eb5adbeff4b302e678e15bd0c4bbc69e2cb5afa296d77ec22e42a1360d"
+    },
+    {
+      "path": "physics/qm/book/README.md",
+      "sha256": "0d4a02f8e499a176d736cfc3f53997d303e1a3780623285adb513e123978bf98"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.2/source-assembly.json",
+      "sha256": "5decefca826795b448e1d174cc23c0cbd3a9c621da3729357d907c296a56c031"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.2/dossier-review.json",
+      "sha256": "97336e8edc98b6dbbe12c8b5ce9c26d61f28cdbd95ed9db1067e2d1cd96acf44"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.2/dossier-review.md",
+      "sha256": "3f42951aa597f58307250f9985ce47b8c9690d877f9f091afbd2e0a628c0950c"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.2/local-release-gates.json",
+      "sha256": "e9aca2d18157fdf53df91e93e1a0caf1bc0709bb3c458708d57ddee5f01fe2d3"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.2/metadata-update-review.json",
+      "sha256": "4dbf3b6e69f4877d6671a92f7044567f0a26cd29b64a861d6bd70101edd27d4c"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "sha256": null
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.2/archive-manifest.json",
+      "sha256": "93edc1d7193e05b3099af9068a22d45ad912ca5bd1e094e1f6b9664a415c7c8a"
+    }
+  ]
+}

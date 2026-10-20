@@ -1,6 +1,6 @@
 # UEOT-QM v31.6 / Kernel 1.6
 
-日期：2026-10-20 UTC。状态：**LOCAL_VERIFIED_CI_PENDING**。最终集成身份以 [CURRENT](status/CURRENT.json) 和 [集成回执](kernel/evidence/v31.6/integration-verification.json) 为准。
+日期：2026-10-20 UTC。状态：**MAIN_VERIFIED**。最终集成身份以 [CURRENT](status/CURRENT.json) 和 [集成回执](kernel/evidence/v31.6/integration-verification.json) 为准。
 
 ## 核心目标与本轮选择
 
@@ -85,3 +85,7 @@ F(\rho)=\frac{S\rho S^\dagger}{\operatorname{Tr}(S\rho S^\dagger)}.
 3. 先完成当前有理非对角 Doob 模型的精确迭代、唯一不变与条件态收敛，再处理一般正谱对象存在和吸引条件。
 
 验收输入、最小交付、负控与停止条件见 [下一轮合同](UEOT_QM_EXECUTION_v31.7.md)。三代仍是带完整谱、表示及有效窗口等前提的条件结果；现实质量谱、连续极限、真实实验与复量子唯一选择继续各有独立责任。本轮没有新增实验数据，亦不宣称完备物理理论或最终真理已经建立。
+
+## 远端实际闭环
+
+源码提交 `00bf88231328c09b9af58d0ff3c8eec977d73c53`，源码树 `e84f47c4caa2b3b099660d981a8deaa2851d074e`；[PR #345](https://github.com/MurphyHoops/UEOT/pull/345) 的 [实际运行](https://github.com/MurphyHoops/UEOT/actions/runs/39380741012) 通过。合入后主线 `4ba7aa412d84fa193611578374a8693be1ff3337` 的 [独立运行](https://github.com/MurphyHoops/UEOT/actions/runs/39381585828) 也通过。70项受验输入、56项实际Core导入及三份正式正文逐项相同，完整源码树是否相同按[集成回执](kernel/evidence/v31.6/integration-verification.json)的实际值记录。后续元数据补录不改变受验源码或正式正文，也不扩大科学主张。

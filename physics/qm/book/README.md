@@ -2,7 +2,7 @@
 
 《UEOT物理学》是钱德桂（Degui Qian）UEOT 理论及其量子物理工作的正式连续总著，稳定文档身份为 **UEOT-PHYSICS**，当前正式整合版为 **3.2**。本目录保存完整正文、阅读版、原始来源、逐章证明责任及实际验证记录。
 
-本版正文、数学与程序的统一本地验收、排印及实际视觉检查已完成，当前状态为 **LOCAL_VERIFIED_CI_PENDING**。本地结果由[本版发布门记录](evidence/v3.2/local-release-gates.json)及[统一证明回执](../kernel/evidence/v31.6/lean-verification.json)绑定。远端源提交与合入后主线 CI 由根代理另行登记；这里没有把本地通过写成远端通过。
+本版正文、数学与程序的统一本地验收、排印、实际视觉检查，以及科学源 PR 与合入后受验主线 CI 均已完成，当前发布状态为 **MAIN_VERIFIED**。[本版发布门记录](evidence/v3.2/local-release-gates.json)、[统一证明回执](../kernel/evidence/v31.6/lean-verification.json)和[远端绑定记录](evidence/v3.2/remote-release-binding.json)分别给出实际证据。
 
 ## 正式正文与阅读入口
 
@@ -57,6 +57,23 @@
 
 本轮实际执行绑定[70 项源清单](../kernel/evidence/v31.6/source-manifest.json)，源集 SHA-256 为 `8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115`，已发布科学基线为 `427f512745ca70f82cba6a1388edcab904da8a42`。[源冻结核对](../kernel/evidence/v31.6/source-freeze-reconciliation.json)确认执行前后输入字节一致。本地历史 HEAD、科学基线、实际源集与最终远端提交分别记录。
 
+## 实际远端验收身份
+
+科学源码经 [PR #345](https://github.com/MurphyHoops/UEOT/pull/345) 发布；[整合验收回执](../kernel/evidence/v31.6/integration-verification.json)绑定源提交、实际受验主线和对应工作流。
+
+| 身份 | 实际值 |
+|---|---|
+| 科学源提交 | `00bf88231328c09b9af58d0ff3c8eec977d73c53` |
+| 科学源整树 | `e84f47c4caa2b3b099660d981a8deaa2851d074e` |
+| PR 工作流 | [39380741012](https://github.com/MurphyHoops/UEOT/actions/runs/39380741012)，PASS |
+| 实际受验主线 | `4ba7aa412d84fa193611578374a8693be1ff3337` |
+| 受验主线整树 | `e84f47c4caa2b3b099660d981a8deaa2851d074e` |
+| 主线工作流 | [39381585828](https://github.com/MurphyHoops/UEOT/actions/runs/39381585828)，PASS |
+
+根端实际 Git blob 核对确认 70 项受验输入、56 项实际 Core 导入和 MD/PDF/TeX 三种正文逐项相同。两次整树是否相同如实登记为 `true`；其他主线工作不会被误计为本包受验输入变化。
+
+本次只补录元数据及其哈希引用，保持这三种正文和所有受验输入原字节。原始排印、视觉审查、历史程序执行与科学条件范围保持原有身份；没有把元数据补录当成新的证明、实验或工作流执行。
+
 ## 分类和历史证据责任
 
 正文和章节档案沿用冻结的 [Core–Physics 接口合同](../../interfaces/CORE_PHYSICS_CONTRACT.md)，分别登记三个状态轴：
@@ -103,6 +120,6 @@ python3 physics/qm/book/verification/verify_completion.py
 
 本轮依据用户继续推进 UEOT-QM、维护正式全面总著的既有授权。ClassB/QM 处理领域数学与软件；ClassC/BookAssembly 处理正式总著、来源、修订和阅读版。冻结 Core 的定义、证明和计数保持独立；根代理统一远端同步。
 
-[v31.6 执行合同](../UEOT_QM_EXECUTION_v31.6.md)对应的三条核心线已具备本地实际成果。下一科学优先任务是当前有理非对角模型的精确迭代、唯一不变态和真实条件态几何收敛，并以恒等 Doob 通道检验仅有正谱度量不足以保证混合；随后再推进更一般的不可约／本原谱存在。量子选择线继续明确组合、丢弃、纯化及局域层析的类型与独立物理责任。
+[v31.6 执行合同](../UEOT_QM_EXECUTION_v31.6.md)对应的三条核心线已有实际本地与源码PR/受验主线验收。下一阶段遵循已审定的 [v31.7 三路合同](../UEOT_QM_EXECUTION_v31.7.md)：A推进共同操作／纯化接口及复量子正例；B推进保留记录与量子记忆；C推进当前模型的精确条件态动力学与收敛，完成后支援A／B。一般谱存在留待后续。第56.7节只表达C线的局部优先级；这三路计划尚未形式化，也没有计入v31.6成果。
 
-新增结果应写回相应章节、编号、档案和证据，保留旧有效推导与失败路线。当前 **LOCAL_VERIFIED_CI_PENDING** 只依据本版已取得的本地回执；远端提交及主线验收补录须有真实执行记录，不改称再次运行 Lean 或再次排印。
+新增结果应写回相应章节、编号、档案和证据，保留旧有效推导与失败路线。当前 **MAIN_VERIFIED** 绑定已实际通过的科学源提交与受验主线。后续元数据补录保持受验源码和三正文原字节，不冒充再次运行 Lean、再次排印或新增视觉审查，也不把未来元数据提交计成原科学源的受验提交。

@@ -1,0 +1,135 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import hashlib,json,copy
+
+R=Path('/workspace/scratch/474cf6b1f047/qm_v316_work');Q=R/'physics/qm';E=Q/'kernel/evidence/v31.6'
+def read(p):return json.loads(Path(p).read_text())
+def write(p,j):Path(p).write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n')
+def sha(b):return hashlib.sha256(b).hexdigest()
+def blob(b):return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+c=read('/tmp/qm316_release_context.json')
+assert c['pr_status']==c['main_status']=='PASS','Actual PR/main receipts required before finalization'
+assert c['repository']=='MurphyHoops/UEOT'
+assert c['source_commit']=='00bf88231328c09b9af58d0ff3c8eec977d73c53' and c['pull_request']==345
+now=datetime.now(timezone.utc).isoformat()
+receipts={}
+for kind,commit in [('pr',c['source_commit']),('main',c['tested_main_commit'])]:
+ path=E/'ci'/f'{kind}-{c[kind+"_run"]}-verification.json';j=read(path)
+ assert j['status']=='PASS' and j['run_id']==c[kind+'_run'] and j['source_commit']==commit
+ assert j['generic_axiom_reports']==573 and j['runtime_test_methods']==100 and j['finite_witness_total_audits']==84
+ for flag in ['jobs_all_success','recorded_checkout_matches_expected','generic_axiom_names_and_foundation_equal_local','archive_steps_success']:
+  assert j[flag] is True,(kind,flag)
+ assert j['concrete_witness_audit_counts']=={'MixtureExamples':9,'SurvivalTwoState':30,'RealTomographyTwoRebit':5,'QuantumDoobExamples':40}
+ assert j['local_accepted_source_count']==70 and j['local_accepted_source_set_sha256']==c['source_set_sha256']
+ assert j['printed_source_hash_count']==26
+ assert isinstance(j['required_steps_success'],dict) and set(j['required_steps_success'])=={'runtime','lean'}
+ assert all(isinstance(s,list) and s for s in j['required_steps_success'].values())
+ receipts[kind]=j
+source=read('/tmp/qm316_source_remote_tree.json');main=read('/tmp/qm316_main_remote_tree.json')
+assert source['source_commit']==c['source_commit'] and main['commit']==c['tested_main_commit']
+assert source['sha']==c['source_tree'] and main['sha']==c['tested_main_tree']
+assert not source['truncated'] and not main['truncated']
+trees={k:{x['path']:x for x in t['tree'] if x['type']=='blob'} for k,t in [('source',source),('main',main)]}
+manifest=read(E/'source-manifest.json');core=read(E/'core-import-closure.json')
+assert manifest['source_count']==70 and manifest['source_set_sha256']==c['source_set_sha256']
+assert len(manifest['sources'])==len({s['path'] for s in manifest['sources']})==70
+matched=[]
+for s in manifest['sources']:
+ b=(R/s['path']).read_bytes();assert sha(b)==s['sha256'] and len(b)==s['bytes']
+ g=blob(b);assert all(t[s['path']]['sha']==g for t in trees.values()),s['path']
+ matched.append({'path':s['path'],'sha256':s['sha256'],'git_blob_sha':g,'source_and_main_match':True})
+cm=[]
+for s in core['modules']:
+ b=(R/s['path']).read_bytes();assert sha(b)==s['source_sha256']
+ g=blob(b);assert all(t[s['path']]['sha']==g for t in trees.values()),s['path']
+ cm.append({'path':s['path'],'sha256':sha(b),'git_blob_sha':g,'source_and_main_match':True})
+assert len(cm)==len({s['path'] for s in cm})==56
+book={};bookfiles=[]
+for name,key in [('UEOT_PHYSICS.md','markdown_sha256'),('UEOT_PHYSICS.pdf','pdf_sha256'),('UEOT_PHYSICS.tex','tex_sha256')]:
+ p=Q/'book'/name;b=p.read_bytes();g=blob(b);path=p.relative_to(R).as_posix()
+ assert all(t[path]['sha']==g for t in trees.values()),path
+ book[key]=sha(b);bookfiles.append({'path':path,'sha256':sha(b),'git_blob_sha':g,'source_and_main_match':True})
+book.update(edition='3.2',pages=186,numbered_chapters=57,numbered_results=117)
+inventory=read(E/'publication-inventory.json')
+assert inventory['file_count']==len(inventory['files'])==len({s['path'] for s in inventory['files']})==210
+for f in inventory['files']:
+ b=(R/f['path']).read_bytes()
+ assert len(b)==f['bytes'] and sha(b)==f['sha256'] and blob(b)==f['git_blob_sha'],f['path']
+ assert all(t[f['path']]['sha']==f['git_blob_sha'] for t in trees.values()),f['path']
+treeeq=source['sha']==main['sha']
+write(E/'remote-main-reconciliation.json',{'schema':'ueot_qm.remote_main_reconciliation.v31.6','status':'PASS',
+ 'checked_at_utc':now,'source_commit':c['source_commit'],'source_tree':source['sha'],
+ 'tested_main_commit':c['tested_main_commit'],'tested_main_tree':main['sha'],
+ 'source_and_main_tree_identical':treeeq,'tested_inputs_identical':True,'core_imports_identical':True,
+ 'canonical_book_identical':True,'published_210_paths_identical':True,'tested_sources':matched,'core_imports':cm,
+ 'canonical_book':bookfiles,'scope':'Actual API tree readback, compared with the frozen locally accepted input bytes. Unrelated Core research may change other paths; no source/tree equivalence is inferred from a branch label.'})
+prpath=f'physics/qm/kernel/evidence/v31.6/ci/pr-{c["pr_run"]}-verification.json'
+mainpath=f'physics/qm/kernel/evidence/v31.6/ci/main-{c["main_run"]}-verification.json'
+integration={'schema':'ueot_qm.integration_verification.v31.6','status':'MAIN_VERIFIED','checked_at_utc':now,
+ 'repository':c['repository'],
+ 'initial_source_checkpoint_state':'LOCAL_VERIFIED_CI_PENDING','source_commit':c['source_commit'],'source_tree':c['source_tree'],
+ 'published_parent_commit':c['parent_commit'],'published_parent_tree':c['parent_tree'],
+ 'published_research_baseline':'427f512745ca70f82cba6a1388edcab904da8a42',
+ 'source_branch':c['source_branch'],'pull_request':c['pull_request'],'pull_request_url':c['pull_request_url'],
+ 'pr_run':c['pr_run'],'pr_run_url':c['pr_run_url'],'pr_status':'PASS','pr_verification':prpath,
+ 'tested_main_commit':c['tested_main_commit'],'tested_main_tree':c['tested_main_tree'],
+ 'main_run':c['main_run'],'main_run_url':c['main_run_url'],'main_status':'PASS','main_verification':mainpath,
+ 'source_and_main_tree_identical':treeeq,'tested_inputs_identical':True,'core_imports_identical':True,
+ 'canonical_book_identical':True,'published_210_paths_identical':True,'published_path_count':210,
+ 'source_count':70,'source_set_sha256':c['source_set_sha256'],
+ 'source_manifest':'physics/qm/kernel/evidence/v31.6/source-manifest.json',
+ 'source_reconciliation':'physics/qm/kernel/evidence/v31.6/remote-source-reconciliation.json',
+ 'main_reconciliation':'physics/qm/kernel/evidence/v31.6/remote-main-reconciliation.json',
+ 'local_machine_acceptance':'PASS','remote_pr':'PASS','resulting_main':'PASS',
+ 'generic_modules':22,'explicit_theorems':459,'named_axiom_reports':573,
+ 'finite_witness_audit_reports':84,'runtime_test_methods':100,'demos':4,
+ 'local_build_jobs':8786,'pr_build_jobs':receipts['pr']['build_jobs'],'main_build_jobs':receipts['main']['build_jobs'],
+ 'core_import_count':56,'book':book,'scope':['physics/qm/**','formalization/ueot-qm/**','.github/workflows/ueot-qm.yml'],
+ 'metadata_update_rule':'This follow-up records already completed source-PR and resulting-main runs. It changes no tested input or canonical Markdown/PDF/TeX; historical execution files retain their original identities. Its later publication commit is not falsely called the tested source commit.',
+ 'full_scientific_theory_verified':False,'empirical_confirmation_added':False}
+write(E/'integration-verification.json',integration)
+rs=read(E/'remote-source-reconciliation.json');rs['main_status']='PASS';rs['main_reconciliation']='remote-main-reconciliation.json';rs['original_source_readback_scope_retained']=True;write(E/'remote-source-reconciliation.json',rs)
+
+current=read(Q/'status/CURRENT.json')
+assert current['version']=='31.6-kernel.1.6'
+current['verification_state']='MAIN_VERIFIED'
+current['local_checkpoint_state_scope']='Historical state carried by the immutable source publication; current aggregate status is verification_state.'
+current['initial_published_checkpoint_state']='LOCAL_VERIFIED_CI_PENDING';current['metadata_updated_at_utc']=now
+current['acceptance_marker'].update(state='MAIN_VERIFIED',integration_acceptance='PASS',
+ source_and_verifier_review='SOURCE_BOUND_LOCAL_AND_ACTUAL_PR_MAIN_ACCEPTANCE_PASS')
+ci=current['integration'];ci.update(state='MAIN_VERIFIED',temporary_branch=c['source_branch'],source_commit=c['source_commit'],source_tree=c['source_tree'],
+ pull_request=c['pull_request'],pull_request_url=c['pull_request_url'],pr_run=c['pr_run'],tested_main_commit=c['tested_main_commit'],tested_main_tree=c['tested_main_tree'],main_run=c['main_run'],
+ source_and_main_tree_identical=treeeq,tested_inputs_identical=True,core_imports_identical=True,canonical_book_identical=True,
+ pr_status='PASS',main_status='PASS',source_reconciliation='../kernel/evidence/v31.6/remote-source-reconciliation.json',main_reconciliation='../kernel/evidence/v31.6/remote-main-reconciliation.json',
+ pr_verification='../kernel/evidence/v31.6/ci/'+Path(prpath).name,main_verification='../kernel/evidence/v31.6/ci/'+Path(mainpath).name)
+current['local_verification']['remote_ci']='PASS_SEPARATELY_RECORDED'
+current['local_verification']['main_integration']='PASS_SEPARATELY_RECORDED'
+current['completed_in_this_delivery'] += [f'Actual PR #{c["pull_request"]} run {c["pr_run"]} and resulting-main run {c["main_run"]} passed; source and main identities reconciled']
+write(Q/'status/CURRENT.json',current)
+ledger=read(Q/'status/CLAIM_LEDGER_v31.6.json');ledger['metadata_updated_at_utc']=now
+ledger['verification'].update(state='MAIN_VERIFIED',remote_ci='PASS',main_integration='PASS',
+ remote_checked_at_utc=now,checked_at_scope='checked_at_utc is the original local acceptance aggregate timestamp; actual remote acceptance time is remote_checked_at_utc.',pull_request=c['pull_request'],
+ source_commit=c['source_commit'],source_tree=c['source_tree'],pr_run=c['pr_run'],
+ tested_main_commit=c['tested_main_commit'],tested_main_tree=c['tested_main_tree'],main_run=c['main_run'],
+ source_and_main_tree_identical=treeeq,tested_inputs_identical=True,core_imports_identical=True,canonical_book_identical=True)
+ledger['verification']['initial_source_checkpoint_state']='LOCAL_VERIFIED_CI_PENDING'
+ledger['evidence']['remote_source_reconciliation']='physics/qm/kernel/evidence/v31.6/remote-source-reconciliation.json'
+ledger['evidence']['remote_main_reconciliation']='physics/qm/kernel/evidence/v31.6/remote-main-reconciliation.json'
+assert ledger['claims'][12]['status']=='NOT_CLAIMED'
+write(Q/'status/CLAIM_LEDGER_v31.6.json',ledger)
+active=read(Q/'status/ACTIVE_RESEARCH_v31.6.json');active.update(state='MAIN_VERIFIED',status='MAIN_VERIFIED',updated_at_utc=now,
+ integration_receipt='physics/qm/kernel/evidence/v31.6/integration-verification.json',source_commit=c['source_commit'],tested_main_commit=c['tested_main_commit'],
+ next_execution_status='APPROVED_PLAN_NOT_FORMALIZED_NOT_COUNTED_IN_V31_6');write(Q/'status/ACTIVE_RESEARCH_v31.6.json',active)
+
+for p in [Q/'README.md',Q/'ROADMAP.md',Q/'kernel/README.md',Q/'UEOT_QM_KERNEL_v31.6.md',R/'formalization/ueot-qm/README.md']:
+ s=p.read_text();assert 'LOCAL_VERIFIED_CI_PENDING' in s,p
+ s=s.replace('LOCAL_VERIFIED_CI_PENDING','MAIN_VERIFIED')
+ if p==Q/'UEOT_QM_KERNEL_v31.6.md':
+  s+='\n## 远端实际闭环\n\n源码提交 `'+c['source_commit']+'`，源码树 `'+c['source_tree']+'`；[PR #345]('+c['pull_request_url']+') 的 [实际运行]('+c['pr_run_url']+') 通过。合入后主线 `'+c['tested_main_commit']+'` 的 [独立运行]('+c['main_run_url']+') 也通过。70项受验输入、56项实际Core导入及三份正式正文逐项相同，完整源码树是否相同按[集成回执](kernel/evidence/v31.6/integration-verification.json)的实际值记录。后续元数据补录不改变受验源码或正式正文，也不扩大科学主张。\n'
+ if p==R/'formalization/ueot-qm/README.md':
+  s=s.replace('Local acceptance and source-PR/main acceptance are separate states;',f'Actual PR #345 workflow {c["pr_run"]} and resulting-main workflow {c["main_run"]} passed independently;')
+ p.write_text(s)
+p=Q/'audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md';s=p.read_text();s=s.replace('状态：本地源码绑定验收 PASS，远端 CI 待独立确认。','状态：本地源码绑定验收、实际源码 PR CI 和合入后主线 CI 均 PASS；提交与运行身份见本版集成回执。');p.write_text(s)
+p=Q/'UEOT_QM_EXECUTION_v31.6.md';s=p.read_text();needle='**执行状态：2026-10-20 开始实施；本文件是任务合同，不是完成证书。**';assert needle in s
+s=s.replace(needle,'**执行状态：2026-10-20 本轮合同已完成，实际本地、PR 与合入后主线验收通过。** 完成证据见 [本版报告](UEOT_QM_KERNEL_v31.6.md) 与 [集成回执](kernel/evidence/v31.6/integration-verification.json)；下文保留原任务合同及其科学边界。',1);p.write_text(s)
+print(json.dumps({'status':'MAIN_VERIFIED','source_commit':c['source_commit'],'tested_main_commit':c['tested_main_commit'],'source_and_main_tree_identical':treeeq,'source_count':70,'core_import_count':56,'canonical_book_unchanged':3,'pr_run':c['pr_run'],'main_run':c['main_run']},indent=2))

@@ -1,3 +1,15 @@
+# 3.2章节档案：远端验收元数据补录
+
+当前发布状态：**MAIN_VERIFIED**。源码 PR #345 与合入后主线 CI 均有实际 PASS 回执。
+
+- 科学源提交：`00bf88231328c09b9af58d0ff3c8eec977d73c53`；PR workflow：[39380741012](https://github.com/MurphyHoops/UEOT/actions/runs/39380741012)。
+- 实际受验主线：`4ba7aa412d84fa193611578374a8693be1ff3337`；main workflow：[39381585828](https://github.com/MurphyHoops/UEOT/actions/runs/39381585828)。
+- 70项受验输入、56项实际Core导入及MD/PDF/TeX三正文均由根端实际Git blob回执确认相同；整树是否相同如实记录为 `true`。
+
+本次只补录当前元数据并刷新哈希引用。没有修改科学源码或三正文，没有重跑Lean、运行回归、排印或视觉审查。原审查事实、局部验收日期、科学边界和历史材料保持原义；具体远端绑定见同目录 `remote-release-binding.json`。
+
+## 以下保留原本地验收记录
+
 # 3.2章节档案最终本地核对
 
 本地状态为 **LOCAL_VERIFIED_CI_PENDING**。57章、6附录、117编号及全部63正文切片已绑定正式主文；旧101项origin保留，新增16项逐条保留类型、来源和科学边界。

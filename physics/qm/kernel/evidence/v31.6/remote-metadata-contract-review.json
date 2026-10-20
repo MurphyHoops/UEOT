@@ -1,0 +1,318 @@
+{
+  "schema": "ueot_qm.remote_metadata_contract_review.v31.6",
+  "status": "STATIC_SOURCE_REVIEW_PASS_RUNTIME_GATES_STILL_REQUIRED",
+  "reviewed_at_utc": "2026-10-20T06:40:35.078931+00:00",
+  "reviewer": "AI collaborator C /root/q316_quantum_doob",
+  "reviewed_script": {
+    "path": "/tmp/qm316_finalize_remote.py",
+    "sha256": "8238c5e4fe1e1b6dcdac3bdc495d20eb52ad6bc5f19d5ac64af6c73f0b2378e6",
+    "ast_parse": "PASS",
+    "executed_by_reviewer": false
+  },
+  "execution_scope": {
+    "repository_writes": 0,
+    "remote_actions": 0,
+    "lean_invocations": 0,
+    "runtime_test_invocations": 0,
+    "pdf_builds": 0,
+    "method": "Read full old and current scripts, current aggregates and navigation, exact parser fields; inspect AST, field mutations and frozen identities. No finalize/prepare/apply execution."
+  },
+  "actual_context_at_review": {
+    "repository": "MurphyHoops/UEOT",
+    "pull_request": 345,
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "pr_run": 39380741012,
+    "pr_status": "PASS",
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "main_run": 39381585828,
+    "main_status": "PENDING",
+    "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115"
+  },
+  "no_current_execution_permission_inferred": true,
+  "gate_order": "PR/main PASS, matching actual CI receipts, tree envelopes, 70+56+3 byte checks and 210 frozen publication preimages all precede the first repository write.",
+  "root_write_targets": [
+    "physics/qm/kernel/evidence/v31.6/remote-main-reconciliation.json",
+    "physics/qm/kernel/evidence/v31.6/integration-verification.json",
+    "physics/qm/kernel/evidence/v31.6/remote-source-reconciliation.json",
+    "physics/qm/status/CURRENT.json",
+    "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+    "physics/qm/status/ACTIVE_RESEARCH_v31.6.json",
+    "physics/qm/README.md",
+    "physics/qm/ROADMAP.md",
+    "physics/qm/kernel/README.md",
+    "physics/qm/UEOT_QM_KERNEL_v31.6.md",
+    "formalization/ueot-qm/README.md",
+    "physics/qm/audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md",
+    "physics/qm/UEOT_QM_EXECUTION_v31.6.md"
+  ],
+  "field_update_contract": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/remote-main-reconciliation.json",
+      "fields": [
+        "source_commit/source_tree",
+        "tested_main_commit/tested_main_tree",
+        "source_and_main_tree_identical (actual comparison)",
+        "tested_sources (70)",
+        "core_imports (56)",
+        "canonical_book (3)",
+        "published_210_paths_identical"
+      ],
+      "rule": "New source/main byte reconciliation after actual dual CI PASS; full-tree equality is not a gate."
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
+      "fields": [
+        "repository",
+        "status=MAIN_VERIFIED",
+        "checked_at_utc",
+        "source_*",
+        "published_parent_*",
+        "published_research_baseline",
+        "pull_request/pr_run/pr_status/pr_verification",
+        "tested_main_*/main_run/main_status/main_verification",
+        "source_and_main_tree_identical",
+        "published_210_paths_identical/published_path_count",
+        "local_build_jobs/pr_build_jobs/main_build_jobs",
+        "full_scientific_theory_verified=false",
+        "empirical_confirmation_added=false"
+      ],
+      "rule": "Actual identities only; source/main acceptance and later metadata commit are explicitly different."
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/remote-source-reconciliation.json",
+      "fields": [
+        "main_status",
+        "main_reconciliation",
+        "original_source_readback_scope_retained"
+      ],
+      "rule": "Only add downstream main status to original source readback; its original source scope and checked_at_utc remain the source observation."
+    },
+    {
+      "path": "physics/qm/status/CURRENT.json",
+      "fields": [
+        "verification_state",
+        "acceptance_marker.state/integration_acceptance/source_and_verifier_review",
+        "integration (current only)",
+        "local_verification.remote_ci/main_integration",
+        "local_checkpoint_state_scope",
+        "initial_published_checkpoint_state",
+        "completed_in_this_delivery",
+        "metadata_updated_at_utc"
+      ],
+      "preserve": [
+        "integration.prior_version",
+        "local_checkpoint_state",
+        "local_verification.state/checked_at_utc/observed_checkout_commit",
+        "accepted_scope/does_not_promote",
+        "next_execution status",
+        "full_scientific_theory_verified=false"
+      ]
+    },
+    {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+      "fields": [
+        "verification.state/remote_ci/main_integration",
+        "verification.remote_checked_at_utc/checked_at_scope/pull_request",
+        "verification.source_*/tested_main_*/pr_run/main_run/input-identity flags",
+        "evidence.remote_source_reconciliation/remote_main_reconciliation",
+        "metadata_updated_at_utc"
+      ],
+      "preserve": [
+        "claims (all premises, scopes, statuses and historical locations)",
+        "prior_version_verification",
+        "verification.checked_at_utc/observed_checkout_commit",
+        "core_baseline/research_baseline",
+        "next_execution_status",
+        "full_scientific_theory_verified=false"
+      ]
+    },
+    {
+      "path": "physics/qm/status/ACTIVE_RESEARCH_v31.6.json",
+      "fields": [
+        "state/status/updated_at_utc",
+        "integration_receipt",
+        "source_commit/tested_main_commit",
+        "next_execution_status=APPROVED_PLAN_NOT_FORMALIZED_NOT_COUNTED_IN_V31_6"
+      ],
+      "rule": "Current release status only; the next scientific contract is not implemented by this metadata step."
+    },
+    {
+      "paths": [
+        "physics/qm/README.md",
+        "physics/qm/ROADMAP.md",
+        "physics/qm/kernel/README.md",
+        "physics/qm/UEOT_QM_KERNEL_v31.6.md",
+        "formalization/ueot-qm/README.md"
+      ],
+      "fields": [
+        "the unique current LOCAL_VERIFIED_CI_PENDING status token",
+        "current report remote-identity section",
+        "current Lean README source/main receipt sentence"
+      ],
+      "rule": "Each target currently has exactly one current-status token. Preserve historical v31.5/v31.4 acceptance and counts; no recursive/global repository replacement."
+    },
+    {
+      "path": "physics/qm/audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md",
+      "fields": [
+        "opening current acceptance sentence"
+      ],
+      "rule": "AI mathematical review scope is unchanged."
+    },
+    {
+      "path": "physics/qm/UEOT_QM_EXECUTION_v31.6.md",
+      "fields": [
+        "opening execution-status sentence"
+      ],
+      "rule": "Retain original contract and scientific boundaries; link actual report and receipt."
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "RM-01",
+      "finding": "210 original-published paths were initially checked only against remote blobs; count/uniqueness and local preimage were not enforced.",
+      "resolution": "Final script requires 210 unique paths and local bytes/SHA256/Git blob plus both actual source/main blobs before its first write."
+    },
+    {
+      "id": "RM-02",
+      "finding": "all_published_qm_paths_identical was broader than the checked 210 publication delta.",
+      "resolution": "Renamed to published_210_paths_identical and published_path_count=210."
+    },
+    {
+      "id": "RM-03",
+      "finding": "70 inputs and 56 Core imports needed explicit unique cardinality and commit/tree-envelope binding.",
+      "resolution": "Added cardinality/uniqueness checks and source.source_commit/main.commit equality to actual context."
+    },
+    {
+      "id": "RM-04",
+      "finding": "Root integration lacked repository required by the separate book finalizer.",
+      "resolution": "Added fixed repository assertion and integration.repository."
+    },
+    {
+      "id": "RM-05",
+      "finding": "Historical local checkpoint state and timing should not be replaced by current remote state.",
+      "resolution": "Original local_checkpoint_state and checked_at_utc preserved; add scope annotation, remote_checked_at_utc and PR identity."
+    },
+    {
+      "id": "RM-06",
+      "finding": "Scientific baseline, publication parent and tested source must be distinguished.",
+      "resolution": "Integration now explicitly retains 427f... scientific baseline, a7aa... publication parent and 00bf... source identities separately."
+    },
+    {
+      "id": "RM-07",
+      "finding": "CI acceptance needed the final parser contract and precise data types.",
+      "resolution": "Actual receipt checks include exact commit/run, job/checkout/named-axiom/archive flags, 573/100/84, 9/30/5/40 witnesses, 70 local accepted sources/source set, 26 logged source hashes, and runtime/lean required-step lists."
+    }
+  ],
+  "unresolved_blocking_findings": [],
+  "history_preservation_bindings": {
+    "CURRENT.integration.prior_version": "013fe8b0c60b7929172312193bbbb730e5e1707b06a200e184b29fffb7daadd4",
+    "CURRENT.local_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING",
+    "CLAIM_LEDGER.prior_version_verification": "5274337759765197b5668ecb038ecd6b28d6f3266fb7ca8520237a9a217bfc80",
+    "CLAIM_LEDGER.claims": "4bc76fe5f3ba50b86023e1cc49a742b9e2fd565b3d1c6ab6c6bb4a6242bc92c5"
+  },
+  "scope_invariants": [
+    "No new physical theorem or empirical confirmation",
+    "full_scientific_theory_verified remains false",
+    "whole-book formalization and unconditional complex-sector derivation remain unclaimed",
+    "459/573 package,62/22/84 witnesses,6/42 certificates,4 false witnesses,100 runtime and4 demos remain distinct",
+    "31.7 remains approved plan not executed"
+  ],
+  "ci_evidence_limits": {
+    "logged_source_sha_count": 26,
+    "full_70_source_and_56_core_binding": "Actual Git tree readback plus immutable local accepted manifests; not claimed as 70 printed CI hashes.",
+    "archive_upload_success_is_not_downloaded_content_verification": true,
+    "ci_artifact_zip_contents_independently_verified_by_this_review": false,
+    "ci_79_olean_hashes_independently_compared_by_this_review": false,
+    "parser_source": "/tmp/qm316_verify_ci_logs.py"
+  },
+  "self_reference_policy": [
+    "Leave kernel/source-manifest.json and actual local execution receipts immutable.",
+    "Kernel integration binds already executed source/main commits and leaf receipts, not its own future metadata commit.",
+    "Book metadata references fixed kernel integration; book archive excludes itself.",
+    "Do not add reciprocal current-hash references from kernel integration into mutable book manifest/dossier/archive.",
+    "Record future metadata commit identity outside its own self-contained file content; do not relabel it as the tested scientific source or tested main."
+  ],
+  "old_script_disposition": {
+    "/tmp/qm315_finalize_evidence.py": "Do not execute or mechanical-version-replace: hardcodes old64/334/392/39/32, recopies old book/witness evidence and runs source/proof checks.",
+    "/tmp/qm315_prepare_metadata.py": "Use only the per-blob idea: replace all old path/tree/book identities; base publication on latest actual main, exact metadata allowlist and frozen byte invariants, not local97d Git status as scientific baseline."
+  },
+  "metadata_publication_contract": [
+    "After actual main CI PASS and final context, root executes reviewed root finalizer once; B then updates the exact10 book targets and hash DAG.",
+    "For followup publication, read latest remote main tree and compare relevant70+56+3 identities again; preserve unrelated Core paths.",
+    "Choose only reviewed metadata additions/updates, including actual CI logs/receipts; do not copy old historical status files or build caches from historical local Git state.",
+    "Postpublication compare written blobs; later metadata tree is not the scientific CI-tested tree."
+  ],
+  "input_file_bindings": [
+    {
+      "path": "physics/qm/status/CURRENT.json",
+      "sha256": "08df27add9df0f0978f00d945b0bee4cd1ffc1edbeba7ddf36338eceffd99687"
+    },
+    {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+      "sha256": "cdaddcb75f591f0b584858f8579f600d8e6e0b7320be7deec379deccaedd06c0"
+    },
+    {
+      "path": "physics/qm/status/ACTIVE_RESEARCH_v31.6.json",
+      "sha256": "105a320182a21dc0251a6d2e71e7e8aca4ddf2141147ef3b985606a93d09fd94"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
+      "sha256": "0c13fc8b398033e26e014046b8787d4d77cee9f7023d5b603b24870e9da25d4c"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+      "sha256": "0f427e7b4e34bb6983b5856c49957b364bbc4b1a2d38882c8826816e4ac3ee85"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/source-manifest.json",
+      "sha256": "e90925868282178908cb57abda19f392be9120edcfda4056f32d99acd074b14f"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/source-freeze-reconciliation.json",
+      "sha256": "826c39e4dcfc065a1391829df3a7514e0a6afb86a96cb9b4c6f68c636feeaa63"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/ci-scope-review.json",
+      "sha256": "89c70e45ef4030b7926fada702454c83691f9efe1bd9585efb7fb6778743f845"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.6/publication-inventory.json",
+      "sha256": "b54d3e541464098db12ef11655719b344e3a40b253c3aa322e3e8af30ea4cd93"
+    },
+    {
+      "path": "formalization/ueot-qm/README.md",
+      "sha256": "9796602442526b1597d370d812d2f9ec83017cb376ecde045b5ca65a45b29a55"
+    },
+    {
+      "path": "physics/qm/README.md",
+      "sha256": "7f077afb2e1201133fde52bccdb1070dd5b7bd25cfded1338035fddd34746ce2"
+    },
+    {
+      "path": "physics/qm/kernel/README.md",
+      "sha256": "a5a11ec9de4b2a544669e3d2fd87fc05b97a26299cd9bb0dc672a5d7f54b3d67"
+    },
+    {
+      "path": "physics/qm/book/README.md",
+      "sha256": "0d4a02f8e499a176d736cfc3f53997d303e1a3780623285adb513e123978bf98"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_KERNEL_v31.6.md",
+      "sha256": "9ebb4c5b9fa5b7e65fa533487e4bdf501a5125b31f1265892ecefcaa047e7e9c"
+    },
+    {
+      "path": "physics/qm/ROADMAP.md",
+      "sha256": "01d56d0f928374709bd02ec8d16a56355e0b2bf636f58a2ef557e07775faa2d0"
+    },
+    {
+      "path": "physics/qm/audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md",
+      "sha256": "45332bf2904a1c643c428e8a1cb1671c3bee5d2e58b68dbaf202e6c85ddda6cf"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_EXECUTION_v31.6.md",
+      "sha256": "fb4c241e66e85013865d7414ce110a79a933ab5617af99b3eadd8e82d3d4a102"
+    }
+  ],
+  "book_script_review": "Separate /tmp/qm316_book_remote_script_review.json; final binding awaits B revision. Root repository-interface issue has been fixed."
+}

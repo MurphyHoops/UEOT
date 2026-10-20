@@ -1,0 +1,3114 @@
+{
+  "schema": "ueot_qm.actual_ci_verification.v31.6",
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T06:45:42.904616+00:00",
+  "event": "main",
+  "run_id": 39381585828,
+  "source_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+  "verification_complete": true,
+  "verifier": {
+    "path": "/tmp/qm316_verify_ci_logs.py",
+    "sha256": "e2b71aff291a62ce5c2f706033e7854088c816553838311bf649bb651a11a243",
+    "bytes": 23407
+  },
+  "errors": [],
+  "source_identity_review": "../remote-source-reconciliation.json",
+  "scope": "Actual downloaded job metadata and decoded logs, bound to their post-checkout commit and frozen local expected names. PASS requires all mandatory gates actually completed successfully. No Lean/run execution, remote access, or artifact zip inspection is performed here.",
+  "input_files": {
+    "run": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/ci/main-39381585828-run.json",
+      "sha256": "e02599b3c6453adf3343f049ad6bcdef8c3a0277c5d6408027cc4d3458303a6a",
+      "bytes": 13348
+    },
+    "jobs": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/ci/main-39381585828-jobs.json",
+      "sha256": "ad6540e266d574ae7e465d41b440c51eea8583cb980c52c9068a9a19437cc9eb",
+      "bytes": 9396
+    },
+    "runtime_log": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/ci/main-39381585828-runtime.log",
+      "sha256": "ec0675a3e3b7ee7840bb9a3eb4dca1f2c58bc23d9dce3c3b21ca8e6865d8adc7",
+      "bytes": 42575
+    },
+    "lean_log": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/ci/main-39381585828-lean.log",
+      "sha256": "a30b24c4866f8c5edb09dd6256b32d11f793c5f72fa144499826360c0c37d5c1",
+      "bytes": 208751
+    },
+    "local_axioms": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/proof-axioms.json",
+      "sha256": "f9eb89a224ba81182229600ea8dfae7c41836fccb812518541b2ac3d7ede3e28",
+      "bytes": 66927
+    },
+    "local_runtime": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+      "sha256": "e137686c0ff9461a4ab0a730a6ef66c757ee869a8517a84fc046b482c7ee7311",
+      "bytes": 13135
+    },
+    "local_source_manifest": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/source-manifest.json",
+      "sha256": "e90925868282178908cb57abda19f392be9120edcfda4056f32d99acd074b14f",
+      "bytes": 12998
+    },
+    "local_lean_verification": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/lean-verification.json",
+      "sha256": "0f427e7b4e34bb6983b5856c49957b364bbc4b1a2d38882c8826816e4ac3ee85",
+      "bytes": 3255
+    },
+    "declaration_inventory": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/physics/qm/kernel/evidence/v31.6/focused/reviews/integration/qm316_declaration_inventory.json",
+      "sha256": "a3af66fa2bbb8d64662066a0b9c7fb91ac7d1dd18a826794eb2a3e04b3878aaf",
+      "bytes": 107352
+    },
+    "audit_input": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/scripts/AxiomAudit.lean",
+      "sha256": "5c360ffcd52ec5a71eb7cdc4bde1d6f20f0d3ce815d051644fc2d0b2ba8edf5f",
+      "bytes": 31580
+    }
+  },
+  "workflow_event": "push",
+  "workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39381585828",
+  "workflow_run_attempt": 1,
+  "job_ids": {
+    "lean": 118491682576,
+    "runtime": 118491682823
+  },
+  "job_head_sha_metadata": {
+    "lean": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "runtime": "4ba7aa412d84fa193611578374a8693be1ff3337"
+  },
+  "required_steps_success": {
+    "lean": [
+      "Checkout",
+      "Record source identity",
+      "Check inherited dependency lock",
+      "Install and verify official pinned Lean",
+      "Restore pinned dependencies",
+      "Restore Mathlib proof cache",
+      "Reject proof escapes",
+      "Build all QM proofs",
+      "Audit theorem axioms",
+      "Verify generated exact certificates and false witnesses",
+      "Verify retained finite and quantum Lean witnesses",
+      "Archive proof evidence"
+    ],
+    "runtime": [
+      "Checkout",
+      "Install Python",
+      "Verify exact kernel and independent negative controls",
+      "Run complete kernel example",
+      "Run representation and spectrum witnesses",
+      "Export exact Lean certificate examples",
+      "Run mixture and persistence witnesses",
+      "Archive runtime evidence"
+    ]
+  },
+  "jobs_all_success": true,
+  "local_accepted_source_count": 70,
+  "local_accepted_source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
+  "recorded_checkout_matches_expected": true,
+  "printed_source_hashes_equal_local": true,
+  "printed_source_hash_count": 26,
+  "toolchain": "Lean 4.33.1",
+  "compiler_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+  "build_jobs": 8786,
+  "build_jobs_policy": "Observed from the successful package-build section; not required to equal local 8786.",
+  "generic_modules": 22,
+  "explicit_theorems": 459,
+  "generic_axiom_reports": 573,
+  "non_theorem_audit_targets": 114,
+  "generic_axiom_names_and_foundation_equal_local": true,
+  "all_explicit_theorem_names_audited": true,
+  "allowed_foundation": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "actual_generic_axioms": {
+    "UEOTQM.Density.ext": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.mass_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.trace_im_eq_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.mass_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Density.mass_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.mass_eq_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.normalize_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.krausMap_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.krausMap_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.trace_krausMap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.branch_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.branch_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.sum_trace_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.sum_mass_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.probability_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.sum_probability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.probability_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.posterior_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.zero_probability_iff_zero_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ancillaKrausMap_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ancillaKrausMap_entry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordOperator_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordOperator_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_nil": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_singleton": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.totalRecordMass_eq_mass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.totalRecordMass_density": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.responseClass_surjective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.existsUnique_responseDecoder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.probability_eq_of_response_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_posterior": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.posterior_response_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.nextResponse_eq_none_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.nextResponse_eq_of_response_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.nextResponse_inputFiberCompatible": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.existsUnique_reachableResponseUpdate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.selector_finite_bounds": [
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.selects_three_without_atomicity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.dropping_color_bound_admits_four_families": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.dropping_weak_budget_admits_six_families": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.dropping_cubic_equation_admits_one_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.dropping_nonempty_family_count_admits_empty_spectrum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.homogeneous_leptons_recover_cubic_equation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.mixed_lepton_template_admits_two_families": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Selector.cubic_cancellation_replicates": [
+      "propext"
+    ],
+    "UEOTQM.Selector.replicated_weak_screening": [
+      "propext"
+    ],
+    "UEOTQM.Selector.two_or_more_three_family_packets_fail_weak_budget": [
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Transport.scalarBudget_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Transport.scalarBudget_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Transport.scalarBudget_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Transport.scalar_transport_certificate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.normalize": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.posterior": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.nextReachableResponse_map_val": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.nextReachableResponse_eq_of_response_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.nextReachableResponse_inputFiberCompatible": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.existsUnique_closedReachableUpdate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.nextReachableResponse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_zero_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_add_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_smul_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_smul_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_sum_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.heisenberg_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.heisenberg_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.heisenberg_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.trace_heisenberg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_heisenberg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.heisenberg_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordEffect_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordEffect_isHermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.mass_recordOperator_eq_pairing": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_eq_pairing": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordEffect_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.one_mem_observableSpace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordEffect_mem_of_closed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.observableSpace_le_of_closed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.observableSpace_pullbackClosed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.isHermitian_of_mem_observableSpace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_eq_iff_pairing_observableSpace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.observableSpace_finiteDimensional": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.exists_finite_wordEffect_generators": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.observable_mem_span": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.observable_unit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.one_mem_span": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.pullback_observable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.span_pullbackClosed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.span_eq_observableSpace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.recordEffect_mem_span": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.operatorCoordinates_unit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.coordinates_unit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.coordinates_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.operatorCoordinates_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.operatorCoordinates_record": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.response_eq_recordCoordinates_unit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.probability_eq_applyBranch_unit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.coordinates_posterior": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.coordinates_posterior_eq_normalizedBranch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_posterior": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_none_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.Protocol.word_injective": [],
+    "UEOTQM.Adaptive.sum_leafWeight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafWeight_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafProbability_eq_response": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafProbability_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.sum_leafProbability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafProbability_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafProbability_eq_of_response_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.leafProbability_posterior": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.quarkCount_le_length": [
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.familyCubic_eq_counts": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.leptonCount_eq_length_of_homogeneous": [
+      "propext"
+    ],
+    "UEOTQM.Spectrum.ExtraMatter.screening_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.extraScreening_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.familyScreening_eq_of_active": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.selector_anomaly_of_spectrum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.selector_budget_of_spectrum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.spectrum_selects_three": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.canonical_rows_and_higgs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.mixed_two_family_rows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.replicated_six_family_rows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.compensated_one_family_rows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.zero_anomaly_unit_one_family_rows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.extra_screening_closes_positive_window": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairingLinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.heisenbergLinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Adaptive.Protocol.leafFintype": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.oneHiggs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Spectrum.twentyHiggs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.sqrt_smul_gram": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.sqrt_smul_krausTerm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.sqrt_smul_heisenbergTerm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.krausMap_sqrtWeightedKraus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.heisenberg_sqrtWeightedKraus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.weightedKrausMap_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.weightedHeisenberg_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_weightedKrausMap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.toInstrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.toInstrument_kraus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.toInstrument_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.toInstrument_heisenberg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.toInstrument_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.branch_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.toInstrument_probability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.sum_mass_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.toInstrument_posterior_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.zeroExtend_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.zeroExtend_of_not_mem_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.sum_zeroExtend": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.zeroExtend_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.weightedKrausMap_zeroExtend": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.weightedHeisenberg_zeroExtend": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.weightedGram_zeroExtend": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RaggedInstrument.toWeighted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RaggedInstrument.toWeighted_weight_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RaggedInstrument.toWeighted_kraus_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RaggedInstrument.toWeighted_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RaggedInstrument.toWeighted_toInstrument_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RaggedInstrument.toWeighted_heisenberg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RaggedInstrument.toWeighted_toInstrument_kraus_of_not_mem_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.padOutcomes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.padOutcomes_branch_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.padOutcomes_branch_of_not_mem_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.padOutcomes_heisenberg_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.padOutcomes_heisenberg_of_not_mem_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.padOutcomes_probability_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.WeightedInstrument.padOutcomes_probability_of_not_mem_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.ext": [],
+    "UEOTQM.Exact.MatrixData.toMatrix_re": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_im": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_eq_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_neg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_sub": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_adjoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_scale": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.toMatrix_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.MatrixData.instDecidableEq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.toMatrix_weightedBranch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.toMatrix_weightedPullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.toMatrix_weightedCompleteness": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.toMatrix_weightedBranch_univ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.toMatrix_weightedPullback_univ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.Examples.imaginaryUnit_square_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.Examples.imaginaryUnit_adjoint_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.Examples.imaginaryUnit_square_complex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.Examples.hadamard_complete_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Exact.Examples.hadamard_complete_complex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.check_eq_true_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.check_sound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.branch_eq_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.heisenberg_eq_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.exactRecordEffect_toMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.basis_toMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.coordinates_eq_iff_response_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.response_eq_recordCoordinates_unit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.adaptive_leafProbability_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.conditionsDecidable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.weightedInstrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.instrumentFamily": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.ExactCertificate.presentation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_sub_left": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_add_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_sum_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.pairing_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.ext": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.complement": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.zero_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.one_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.complement_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.pairing_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.pairing_le_mass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability_complement": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.channel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.channel_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.trace_channel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.channelState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.channelState_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.pullbackEffects": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.pullbackEffects_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.pairing_pullbackEffects": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.pullbackEffect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.pairing_pullbackEffect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.probability_channelState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.branchEffect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.branchEffect_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.pairing_branchEffect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.probability_branchEffect_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.probability_posterior": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordTest": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordTest_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.recordEffect_complement_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_eq_effect_probability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectGapSet": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability_abs_sub_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectGapSet_nonempty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectGapSet_bddAbove": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Effect.probability_sub_le_effectDistance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_le_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_self": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_comm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_triangle": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_eq_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.response_sub_le_effectDistance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelDefect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelDefect_bddAbove": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelDefect_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelDefect_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.effectDistance_le_channelDefect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelDefect_self": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.channelState_effectDistance_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.probability_sub_le_effectDistance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.probability_pos_of_effectDistance_lt": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.channelState_perturbation_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.normalized_probability_difference_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.posterior_effectDistance_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Instrument.posterior_effectDistance_le_of_probability_lower_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelTrajectory": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelTrajectory_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelTrajectory_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelTrajectory_transport_certificate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.scalarBudget_one_eq_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelTrajectory_effectDistance_le_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.channelTrajectory_response_sub_le_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.tv": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.tv_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.tv_self": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.tv_comm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.tv_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.expectation_sub_le_tv": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.density": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.density_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.probability_density": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.density_weight_change_le_tv": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.density_fixed_weights_le_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.density_joint_change_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.weightedInstrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.instrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.instrument_kraus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.instrument_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.instrument_heisenberg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.instrument_channel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.instrument_channelState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.channelDefect_weight_change_le_tv": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.channelDefect_fixed_weights_le_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.channelDefect_joint_change_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.RationalWeights.toWeights": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.rationalTV": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.tv_toWeights": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.density_weight_change_le_rational_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.channelDefect_fixed_weights_le_rational_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.rationalJointBudget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.iterateState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.iterateState_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.iterateState_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.channelLinear": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.channelLinear_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.orbitSum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.orbitSum_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.orbitSum_trace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.averageState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.averageState_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.orbitSum_telescope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.matrix_residual": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.pairing_sub_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.probability_residual": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.probability_residual_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.effectDistance_residual_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.density_operatorNorm_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.densityMatrices": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.densityMatrices_closed": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.densityMatrices_compact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.continuous_channel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.matrix_residual_norm_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.averageSequence": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.matrix_residual_tendsto_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.subsequence_limit_invariant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.subsequence_limit_density": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.exists_stationary_subsequence": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.exists_stationary_of_density": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.normalizedIdentity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Cesaro.exists_stationary": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.diagonalOperator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.diagonalOperator_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.mass_diagonalOperator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.diagonalOperator_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.diagonalOperator_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.diagonalDensity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.diagonalDensity_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.matrixUnit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.matrixUnit_gram": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.matrixUnit_sandwich": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.measurePrepare": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.measurePrepare_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.measurePrepare_diagonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.measurePrepare_gram": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.failureKernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.failureKernel_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.outcomeKernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.outcomeKernel_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.weightedInstrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.instrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.instrument_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.success_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.rowApply_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.success_probability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.success_posterior_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.killedIterate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.killedIterate_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.killedIterate_diagonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.survivalMass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.survivalMass_eq_response": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.survivalMass_diagonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.conditionalState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.qsd_killedIterate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.qsd_survival_pow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.qsd_survival_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.qsd_conditionalState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.qsd_rate_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doobTransform_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doobInstrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doobDensity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doob_success_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doob_success_probability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doob_killedIterate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doob_survivalMass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Survival.doob_conditionalState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.State": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.Effect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.Effect.mk": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.state_ext": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.evaluate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.evaluate_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.evaluate_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.indicator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.evaluate_indicator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.all_effects_separate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.dirac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.dirac_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.evaluate_dirac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.mix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.mix_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.halfMix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.halfMix_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.pushforward": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.pushforward_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.pushforward_dirac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.pushforward_halfMix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.marginalLeft": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.marginalLeft_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.marginalLeft_eq_pushforward": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.marginalLeft_dirac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.marginalLeft_halfMix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.IsPure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.dirac_isPure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.dirac_ne": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.halfMix_not_pure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.halfRow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.halfRow_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.marginalLeft_halfRow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.no_pure_extension_halfMix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.attach": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.marginalLeft_attach": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.dirac_has_pure_extension": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.toPMF": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.toPMF_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.toPMF_apply_toReal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.toPMF_dirac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.toPMF_pushforward": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.rowState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.rowState_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.stepState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.stepState_dirac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.Classical.toPMF_stepState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.Micro": [],
+    "UEOTQM.CorePurificationBoundary.fullyObservedSurvivalModel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminal_eq_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.Terminal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalFintype": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalMeasurableSpace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalControl": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalGood": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalControl_source": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalControl_reward": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalControl_optimalValue": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalControl_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.terminalGood_source": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.viable_all_horizons": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.initial_support_viable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.firstRow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.firstRow_halfMix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.firstQuotientState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.quotient_support_distinct": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.firstQuotientState_halfMix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.firstQuotientState_not_pure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.firstQuotientState_no_pure_extension": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.sourcePMF": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.piStar": [],
+    "UEOTQM.CorePurificationBoundary.actualPathLaw": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.sourcePMF_toReal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.sourcePMF_firstRow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.sourcePMF_rowState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.piStar_preserves": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.actualPath_all_times_safe": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.actualPath_first_quotient_marginal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.false_action_destructive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.FiniteCoreSlice": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.finiteCoreSlice_holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.classical_purification_separation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.RestrictedTerminal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.restrictedTerminalFintype": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.restricted_support_merge": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_dirac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_pure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.IsReal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.symmetric_of_real_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.productEffect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.productEffect_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.plusProjector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.minusProjector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.plusProjector_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.minusProjector_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.plusProjector_square": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.minusProjector_square": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.plusProjector_mul_minusProjector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.one_sub_plusProjector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.plusProjector_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.minusProjector_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.involutionEffect": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.Qubit": [],
+    "UEOTQM.RealLocalTomography.TwoQubit": [],
+    "UEOTQM.RealLocalTomography.pauliY": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.parity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.pauliY_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.pauliY_square": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.parity_hermitian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.parity_square": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.pauliY_trace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.parity_trace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.parity_isReal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoPlus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoMinus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoPlus_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoMinus_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoPlus_isReal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoMinus_isReal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoPlus_symmetric": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoMinus_symmetric": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.density_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.trace_mul_pauliY_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.trace_product_density_difference_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.all_real_product_probabilities_equal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.jointTest": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.jointTest_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.jointTest_isReal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.jointTest_probability_plus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.jointTest_probability_minus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.rhoPlus_ne_rhoMinus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.real_local_tomography_fails": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.complexLocalTest": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.complexLocalTest_not_real": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.complex_product_probability_plus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.complex_product_probability_minus": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.RealLocalTomography.complex_product_distinguishes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.successOperator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.successOperator_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.successOperator_succ": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.successOperator_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.successOperator_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigen_successOperator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.successMass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.successMass_eq_response": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigen_successMass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigen_successMass_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.conditionalState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigen_conditionalState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigen_rate_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigen_rate_le_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.mk": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.unapply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.metric": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply_smul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.unapply_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply_unapply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply_posSemidef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.state": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.state_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_eq_pairing": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.InvertibleFilter.metric_conjugate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.transformed_gram": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.transformed_map": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_complete": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doobWeighted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doobInstrument": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_branch_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_branch_state": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_channelState": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_successOperator_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigenmetric_successMass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.eigenmetric_successMass_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_finite_conditioning": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_successOperator_state": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumDoob.doob_successMass_state": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "explicit_theorem_names_sha256": "a3c17791191da62954a30b8801b2c2e07b7c4d5e488b53f4575814710c601482",
+  "runtime_test_methods": 100,
+  "runtime_method_names_equal_local": true,
+  "actual_runtime_passed_methods": [
+    "test_finite_dynamics.FiniteDynamicsTests.test_budget_is_an_upper_bound_not_always_the_distance",
+    "test_finite_dynamics.FiniteDynamicsTests.test_cesaro_cycle_boundary_and_sharp_odd_residual",
+    "test_finite_dynamics.FiniteDynamicsTests.test_cesaro_rejects_undefined_zero_average_and_invalid_state",
+    "test_finite_dynamics.FiniteDynamicsTests.test_diagonal_success_word_has_geometric_mass_and_qsd_posterior",
+    "test_finite_dynamics.FiniteDynamicsTests.test_doob_stationary_law_differs_from_qsd",
+    "test_finite_dynamics.FiniteDynamicsTests.test_equal_weights_do_not_control_a_changed_component_library",
+    "test_finite_dynamics.FiniteDynamicsTests.test_exact_weights_reject_invalid_premises",
+    "test_finite_dynamics.FiniteDynamicsTests.test_mixture_validates_common_context_even_at_zero_weight",
+    "test_finite_dynamics.FiniteDynamicsTests.test_row_orientation_initial_law_and_loss_are_essential",
+    "test_finite_dynamics.FiniteDynamicsTests.test_stationary_existence_does_not_imply_uniqueness",
+    "test_finite_dynamics.FiniteDynamicsTests.test_substochastic_validation_and_zero_event",
+    "test_finite_dynamics.FiniteDynamicsTests.test_total_variation_bound_is_attained",
+    "test_finite_dynamics.FiniteDynamicsTests.test_weighted_kraus_component_needs_no_irrational_runtime",
+    "test_kernel.CertificateTests.test_deep_finite_protocol_certificate_uses_no_recursive_serialization",
+    "test_kernel.CertificateTests.test_empty_or_misaligned_certificate_scope_is_rejected",
+    "test_kernel.CertificateTests.test_finite_coverage_cannot_be_promoted_to_all_protocols",
+    "test_kernel.CertificateTests.test_postselection_amplifies_rare_record_difference",
+    "test_kernel.CertificateTests.test_postselection_positive_mass_guard_and_nontrivial_bound",
+    "test_kernel.CertificateTests.test_transport_budget_and_checked_recurrence",
+    "test_kernel.CertificateTests.test_transport_rejects_hidden_failed_local_premise",
+    "test_kernel.CertificateTests.test_tv_support_alignment_and_normalization",
+    "test_kernel.ExactQuantumTests.test_adjoint_trace_duality_with_complex_inputs",
+    "test_kernel.ExactQuantumTests.test_all_principal_minors_are_needed",
+    "test_kernel.ExactQuantumTests.test_bell_partial_transpose_is_not_positive",
+    "test_kernel.ExactQuantumTests.test_complex_phase_arithmetic",
+    "test_kernel.ExactQuantumTests.test_complex_y_phase_is_observable",
+    "test_kernel.ExactQuantumTests.test_damping_on_entangled_input",
+    "test_kernel.ExactQuantumTests.test_damping_with_multiple_weighted_kraus_terms",
+    "test_kernel.ExactQuantumTests.test_density_positive_and_negative_controls",
+    "test_kernel.ExactQuantumTests.test_dimension_and_completeness_rejections",
+    "test_kernel.ExactQuantumTests.test_hadamard_interference_has_exact_probabilities",
+    "test_kernel.ExactQuantumTests.test_inexact_inputs_rejected",
+    "test_kernel.ExactQuantumTests.test_zero_branch_has_no_posterior",
+    "test_kernel.PredictiveQuotientTests.test_all_positive_branches_are_physical",
+    "test_kernel.PredictiveQuotientTests.test_context_change_requires_reencoding",
+    "test_kernel.PredictiveQuotientTests.test_coordinate_only_record_laws_match_dense_oracle",
+    "test_kernel.PredictiveQuotientTests.test_fingerprint_is_representation_sensitive",
+    "test_kernel.PredictiveQuotientTests.test_invalid_record_is_rejected_even_after_zero_probability",
+    "test_kernel.PredictiveQuotientTests.test_observable_dimensions_and_terminal_stability",
+    "test_kernel.PredictiveQuotientTests.test_protocol_relative_equivalence",
+    "test_kernel.PredictiveQuotientTests.test_pullbacks_close_every_basis_effect",
+    "test_kernel.PredictiveQuotientTests.test_recursive_branch_matches_closed_form",
+    "test_kernel.ProtocolAndMemoryTests.test_adaptive_controller_complete_law",
+    "test_kernel.ProtocolAndMemoryTests.test_protocol_validation_includes_impossible_continuations",
+    "test_kernel.ProtocolAndMemoryTests.test_same_system_and_environment_marginals_do_not_fix_memory",
+    "test_lean_export.LeanExportTests.test_changed_contract_and_unknown_fields_are_rejected",
+    "test_lean_export.LeanExportTests.test_cycles_and_oversized_literal_are_rejected_explicitly",
+    "test_lean_export.LeanExportTests.test_data_have_exact_numeric_semantics_for_all_positive_shapes",
+    "test_lean_export.LeanExportTests.test_hand_certificate_needs_no_predictive_search",
+    "test_lean_export.LeanExportTests.test_hsz_real_imaginary_parts_and_word_direction_survive",
+    "test_lean_export.LeanExportTests.test_labels_cannot_supply_lean_tokens_or_paths",
+    "test_lean_export.LeanExportTests.test_no_mutable_alias_to_certificate_or_manifest",
+    "test_lean_export.LeanExportTests.test_noncanonical_and_non_json_numeric_inputs_are_not_coerced",
+    "test_lean_export.LeanExportTests.test_padded_resource_budget_is_enforced_without_partial_output",
+    "test_lean_export.LeanExportTests.test_ragged_and_explicit_impossible_outcomes_remain_distinct",
+    "test_lean_export.LeanExportTests.test_repeated_export_is_deterministic_and_bound_to_exact_source",
+    "test_lean_export.LeanExportTests.test_wrong_kraus_data_and_library_anchor_are_rejected",
+    "test_lean_export.LeanExportTests.test_wrong_pullback_and_missing_branch_are_rejected",
+    "test_lean_export.LeanExportTests.test_wrong_word_is_rejected_before_source_generation",
+    "test_lean_export.LeanExportTests.test_zero_weight_original_term_is_not_rewritten_as_padding",
+    "test_representation_certificate.RepresentationCertificateTests.test_alternative_valid_basis_allowed_only_under_its_own_context",
+    "test_representation_certificate.RepresentationCertificateTests.test_an_ungenerated_distinguishing_direction_is_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_checker_does_not_call_model_search_solver_or_adjoint",
+    "test_representation_certificate.RepresentationCertificateTests.test_complex_coefficient_and_nonhermitian_effect_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_context_and_serialized_library_tampering_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_dependent_actual_word_basis_is_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_dimension_one_and_four_have_exact_certificates",
+    "test_representation_certificate.RepresentationCertificateTests.test_expected_library_is_rechecked_and_not_inferred_from_the_claim",
+    "test_representation_certificate.RepresentationCertificateTests.test_generated_but_nonclosed_subspace_is_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_hand_computed_z_representation",
+    "test_representation_certificate.RepresentationCertificateTests.test_impossible_outcome_still_requires_its_zero_pullback",
+    "test_representation_certificate.RepresentationCertificateTests.test_missing_duplicate_and_unknown_branch_claims_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_noncanonical_and_inexact_scalar_payloads_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_origin_requires_identity_and_empty_word",
+    "test_representation_certificate.RepresentationCertificateTests.test_protocol_schema_dimensions_and_witness_resource_limits",
+    "test_representation_certificate.RepresentationCertificateTests.test_reversed_witness_is_rejected_even_with_correct_effect_hash",
+    "test_representation_certificate.RepresentationCertificateTests.test_wrong_pullback_orientation_and_coefficients_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_z_hz_hsz_exports_have_expected_ranks_and_chronological_words",
+    "test_spectrum.FullLocalAnomalyTests.test_arbitrary_exact_beta_samples_with_completion",
+    "test_spectrum.FullLocalAnomalyTests.test_complete_three_family_331_has_six_zero_coefficients",
+    "test_spectrum.FullLocalAnomalyTests.test_conjugation_charge_and_multiplicity_failure_controls",
+    "test_spectrum.FullLocalAnomalyTests.test_missing_exotic_lepton_completion_produces_exact_residue",
+    "test_spectrum.FullLocalAnomalyTests.test_mixed_two_family_six_anomaly_counterexample",
+    "test_spectrum.FullLocalAnomalyTests.test_neutral_rhn_special_point_does_not_hide_generic_failure",
+    "test_spectrum.FullLocalAnomalyTests.test_replicated_six_family_local_anomalies_cancel",
+    "test_spectrum.SpectrumBridgeTests.test_actual_three_family_rows_and_higgs",
+    "test_spectrum.SpectrumBridgeTests.test_compensated_one_family_does_not_pass_family_self_cancellation",
+    "test_spectrum.SpectrumBridgeTests.test_extra_screening_and_distinct_spin_weights",
+    "test_spectrum.SpectrumBridgeTests.test_extra_weyl_compensation_and_inactive_parent_anomaly",
+    "test_spectrum.SpectrumBridgeTests.test_four_families_with_nc_two_and_empty_spectrum",
+    "test_spectrum.SpectrumBridgeTests.test_integer_sign_scalar_and_weight_validation",
+    "test_spectrum.SpectrumBridgeTests.test_mixed_lepton_two_families_outside_homogeneous_contract",
+    "test_spectrum.SpectrumBridgeTests.test_nonzero_anomaly_unit_may_have_either_sign",
+    "test_spectrum.SpectrumBridgeTests.test_only_combined_extra_cubic_sum_must_vanish",
+    "test_spectrum.SpectrumBridgeTests.test_partial_threshold_activity_cannot_exclude_all_six_families",
+    "test_spectrum.SpectrumBridgeTests.test_six_family_replication_fails_full_weak_coefficient",
+    "test_spectrum.SpectrumBridgeTests.test_unique_labels_and_receipt_identity",
+    "test_spectrum.SpectrumBridgeTests.test_weak_window_declarations_are_required",
+    "test_spectrum.SpectrumBridgeTests.test_wrong_quark_sign_is_detected_in_row_sum",
+    "test_spectrum.SpectrumBridgeTests.test_zero_anomaly_unit_is_rejected_as_uninformative"
+  ],
+  "demos": 4,
+  "demo_evidence_scope": "Four actual command sections plus successful job steps; redirected demo JSON not downloaded or parsed.",
+  "positive_instances": 6,
+  "positive_instance_axiom_targets": 42,
+  "corrupted_true_rejections": 4,
+  "same_data_false_proofs": 4,
+  "false_witness_axiom_targets": 4,
+  "exact_instance_summary": {
+    "positive_passed": 6,
+    "positive_expected": 6,
+    "negative_passed": 4,
+    "negative_expected": 4,
+    "false_witness_passed": 4,
+    "positive_audit_targets_expected": 42,
+    "false_witness_audit_targets_expected": 4
+  },
+  "concrete_witness_audit_counts": {
+    "MixtureExamples": 9,
+    "SurvivalTwoState": 30,
+    "RealTomographyTwoRebit": 5,
+    "QuantumDoobExamples": 40
+  },
+  "finite_witness_total_audits": 84,
+  "witness_and_instance_evidence_scope": "Successful actual gate metadata plus emitted summaries and case progress. Detailed per-declaration artifact receipts were not downloaded or parsed by this verifier.",
+  "artifact_zip_downloaded": false,
+  "artifact_zip_contents_verified": false,
+  "archive_steps_success": true,
+  "runner_warnings": {
+    "runtime": [
+      "(node:2434) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+      "(node:2434) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.",
+      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+    ],
+    "lean": [
+      "(node:2454) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+      "(node:2454) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.",
+      "(node:14659) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+      "(node:14659) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.",
+      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache/restore@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+    ]
+  },
+  "warning_scope": "Observed runner warnings are retained verbatim; gate success does not reclassify them as mathematical failures or suppress them.",
+  "raw_decoded_log_sha256": {
+    "runtime": "ec0675a3e3b7ee7840bb9a3eb4dca1f2c58bc23d9dce3c3b21ca8e6865d8adc7",
+    "lean": "a30b24c4866f8c5edb09dd6256b32d11f793c5f72fa144499826360c0c37d5c1"
+  },
+  "input_files_unchanged_during_verification": true,
+  "finished_at_utc": "2026-10-20T06:45:42.926114+00:00"
+}

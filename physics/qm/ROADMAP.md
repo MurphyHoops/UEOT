@@ -1,6 +1,6 @@
 # UEOT-QM / Physics Roadmap
 
-状态：**v31.6 / Kernel 1.6 — LOCAL_VERIFIED_CI_PENDING**。日期：2026-10-20 UTC。集成身份见 [CURRENT](status/CURRENT.json)。
+状态：**v31.6 / Kernel 1.6 — MAIN_VERIFIED**。日期：2026-10-20 UTC。集成身份见 [CURRENT](status/CURRENT.json)。
 
 ## 核心目标与现状
 

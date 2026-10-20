@@ -1,6 +1,6 @@
 # UEOT-QM v31.6 / Kernel 1.6
 
-当前状态：**LOCAL_VERIFIED_CI_PENDING**；实际远端验收以 [CURRENT](../status/CURRENT.json) 为准。本轮新增形式化经典Core边界、实局域层析与非交换Doob；精确运行程序保留混合预算、Cesàro及对角生存API，本轮重新执行其全部回归。
+当前状态：**MAIN_VERIFIED**；实际远端验收以 [CURRENT](../status/CURRENT.json) 为准。本轮新增形式化经典Core边界、实局域层析与非交换Doob；精确运行程序保留混合预算、Cesàro及对角生存API，本轮重新执行其全部回归。
 
 实际本地结果：22 主包模块、459 显式定理、573 项实际命名公理审计；100 运行方法、4 演示 PASS。六个精确实例、四组真假配对负控重新核验；四份具体 Lean 见证另计 62 定理／22 定义／84 项审计。[版本报告](../UEOT_QM_KERNEL_v31.6.md)、[证明回执](evidence/v31.6/lean-verification.json)、[运行回执](evidence/v31.6/runtime-verification.json)。完整理论见 [《UEOT物理学》正式 3.2](../book/UEOT_PHYSICS.md) 第 49–56 章。
 
