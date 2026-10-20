@@ -1,0 +1,90 @@
+from pathlib import Path
+from collections import Counter
+import hashlib
+import json
+import re
+
+IDENT = r"[A-Za-z_][A-Za-z0-9_'.]*"
+
+def mask_lean(s):
+    # Independent source scanner. Keep newlines and erase nested comments/strings.
+    out = []
+    pos = 0
+    depth = 0
+    mode = 'code'
+    while pos < len(s):
+        pair = s[pos:pos+2]
+        ch = s[pos]
+        if mode == 'line':
+            if ch == '\n':
+                mode = 'code'
+            out.append('\n' if ch == '\n' else ' ')
+        elif mode == 'block':
+            if pair in ('/-', '-/'):
+                depth += 1 if pair == '/-' else -1
+                out.extend('  ')
+                pos += 1
+                if depth == 0:
+                    mode = 'code'
+            else:
+                out.append('\n' if ch == '\n' else ' ')
+        elif mode == 'string':
+            out.append('\n' if ch == '\n' else ' ')
+            if ch == '\\' and pos + 1 < len(s):
+                pos += 1
+                out.append('\n' if s[pos] == '\n' else ' ')
+            elif ch == '"':
+                mode = 'code'
+        elif pair == '--':
+            out.extend('  ')
+            pos += 1
+            mode = 'line'
+        elif pair == '/-':
+            out.extend('  ')
+            pos += 1
+            depth = 1
+            mode = 'block'
+        elif ch == '"':
+            out.append(' ')
+            mode = 'string'
+        else:
+            out.append(ch)
+        pos += 1
+    assert mode not in ('block', 'string'), 'Unclosed comment/string'
+    return ''.join(out)
+
+def declarations(source):
+    frames = []
+    rows = []
+    diagnostics = []
+    instances = []
+    for line_number, raw in enumerate(mask_lean(source).splitlines(), 1):
+        line = raw.strip()
+        m = re.fullmatch(r'namespace\s+(' + IDENT + ')', line)
+        if m:
+            frames.append(('namespace', m[1]))
+            continue
+        if re.fullmatch(r'(?:noncomputable\s+)?section(?:\s+' + IDENT + ')?', line):
+            frames.append(('section', ''))
+            continue
+        if re.fullmatch(r'end(?:\s+' + IDENT + ')?', line):
+            assert frames, ('Unmatched end', line_number)
+            frames.pop()
+            continue
+        line = re.sub(r'^(?:@\[[^]]*\]\s*)+', '', line)
+        m = re.match(r'(?:(?:noncomputable|private|protected)\s+)*(theorem|lemma|def|abbrev|structure|inductive|opaque|axiom|class)\s+(' + IDENT + r')(?=\s|:|\(|$)', line)
+        prefix = '.'.join(value for kind, value in frames if kind == 'namespace')
+        if m:
+            rows.append({'kind': m[1], 'name': prefix + '.' + m[2] if prefix else m[2], 'line': line_number})
+            continue
+        m = re.match(r'(local\s+)?instance(?:\s+(' + IDENT + r'))?\s*(?=:|\[|\()', line)
+        if m:
+            name = m[2]
+            instances.append({'kind': 'instance', 'name': (prefix + '.' + name if prefix else name) if name else None,
+                              'line': line_number, 'local': bool(m[1])})
+            continue
+        m = re.fullmatch(r'#print\s+axioms\s+(' + IDENT + ')', line)
+        if m:
+            diagnostics.append(m[1])
+    assert not frames, ('Unclosed frames', frames)
+    return rows, diagnostics, instances

@@ -1,0 +1,34 @@
+import UEOTQM.PurificationUniqueness
+
+#print axioms UEOTQM.QuantumPurification.outer_real_smul
+#print axioms UEOTQM.QuantumPurification.gram_eq_sum_outer
+#print axioms UEOTQM.QuantumPurification.IsPure.normalize_eq_of_positive_summand
+#print axioms UEOTQM.QuantumPurification.IsPure.exists_vector
+#print axioms UEOTQM.QuantumPurification.isPure_iff_exists_vector
+#print axioms UEOTQM.QuantumPurification.inner_matrix_image
+#print axioms UEOTQM.QuantumPurification.norm_matrix_image_eq_of_gram
+#print axioms UEOTQM.QuantumPurification.exists_unitary_of_column_gram
+#print axioms UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_gram
+#print axioms UEOTQM.QuantumPurification.auxiliary_action_apply
+#print axioms UEOTQM.QuantumPurification.auxiliary_action_vectorize
+#print axioms UEOTQM.QuantumPurification.outer_mulVec
+#print axioms UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_equal_marginal
+#print axioms UEOTQM.QuantumPurification.pure_states_unitarily_equivalent
+#print axioms UEOTQM.QuantumPurification.auxiliary_tensor_isometry
+#print axioms UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel
+#print axioms UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator
+#print axioms UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator_apply
+#print axioms UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_operator
+#print axioms UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_state
+#print axioms UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_preserves_purity
+#print axioms UEOTQM.QuantumPurification.auxiliaryInl
+#print axioms UEOTQM.QuantumPurification.auxiliaryInr
+#print axioms UEOTQM.QuantumPurification.auxiliaryInl_isometry
+#print axioms UEOTQM.QuantumPurification.auxiliaryInr_isometry
+#print axioms UEOTQM.QuantumPurification.extendAuxiliaryLeft
+#print axioms UEOTQM.QuantumPurification.extendAuxiliaryRight
+#print axioms UEOTQM.QuantumPurification.extendAuxiliaryLeft_pure
+#print axioms UEOTQM.QuantumPurification.extendAuxiliaryRight_pure
+#print axioms UEOTQM.QuantumPurification.extendAuxiliaryLeft_marginal
+#print axioms UEOTQM.QuantumPurification.extendAuxiliaryRight_marginal
+#print axioms UEOTQM.QuantumPurification.pure_states_common_extension_unitary

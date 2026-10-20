@@ -1,0 +1,40 @@
+{
+  "schema": "ueot_qm.v31_8.A.comment_only_source_update.v1",
+  "status": "COMMENT_ONLY_SOURCE_UPDATE_PENDING_UNIFIED_EXECUTION",
+  "recorded_at_utc": "2026-10-20T10:50:48.681947+00:00",
+  "reason": "The proved formula H=2rE-rI is an affine image of E and a real linear combination of E and I. Its two coefficients do not generally sum to one; the source introduction now describes the actual proved representation precisely.",
+  "prior_compiled_source": {
+    "path": "physics/qm/kernel/evidence/v31.8/A/03_QuantumSeparation.source.lean.txt",
+    "bytes": 6424,
+    "sha256": "d7ebebb27423c7cc1598941cb21abfc4dac9bac05b9ade71cfd96e33db7f81a7"
+  },
+  "current_source": {
+    "path": "formalization/ueot-qm/UEOTQM/QuantumSeparation.lean",
+    "bytes": 6450,
+    "sha256": "c554f5c886f1c3f22c5ea543e0e818548697d88532419659b5aecb5095157357"
+  },
+  "exact_only_replacement": {
+    "before": "Every Hermitian matrix is a real affine combination of two actual effects.\nThe order bounds are derived using the finite matrix operator norm. Applying",
+    "after": "Every Hermitian matrix is a real affine image of an actual effect, hence a\nreal linear combination of two effects. The order bounds use the finite matrix operator norm. Applying"
+  },
+  "all_noncomment_Lean_lines_exactly_unchanged": true,
+  "code_comparison_method": "Use the retained witness verifier nested-comment/string masker, retain every nonblank masked source line byte for byte, then compare their ordered concatenation. Exact whole-file replacement assertion additionally limits changes to the stated two comment lines.",
+  "comment_masked_nonblank_code_sha256": "5711f498c8e91839c7a8158b7cd17dc7fd260edf6c4405534cd4da86553c2889",
+  "parser_at_check": {
+    "path": "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+    "bytes": 14000,
+    "sha256": "69e7d71b41dc45dbdfbf6bbaeb8e6c9a68b96c234c50de392c7c0703835e1cbb"
+  },
+  "compiler_invocations_for_this_update": 0,
+  "prior_compile_and_axiom_receipts_preserved_unchanged": [
+    "03_QuantumSeparation.json",
+    "03_QuantumSeparation.log",
+    "10_PublicAxioms.json",
+    "10_PublicAxioms.log",
+    "verification.json",
+    "public-declarations.json",
+    "public-named-axiom-audit.json",
+    "C_source_review.json"
+  ],
+  "current_acceptance_rule": "Prior focused and C-review receipts continue to bind their original source bytes. The first root v31.8 unified gate will compile and bind this new raw source; no final unified or remote PASS is claimed by this comment-only receipt."
+}

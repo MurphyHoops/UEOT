@@ -1,0 +1,200 @@
+{
+  "schema": "ueot_qm.runtime_verification.v1",
+  "created_at_utc": "2026-10-20T11:04:51.482014+00:00",
+  "python": "3.12.14",
+  "status": "PASS",
+  "test_methods_run": 100,
+  "passed": [
+    "test_finite_dynamics.FiniteDynamicsTests.test_budget_is_an_upper_bound_not_always_the_distance",
+    "test_finite_dynamics.FiniteDynamicsTests.test_cesaro_cycle_boundary_and_sharp_odd_residual",
+    "test_finite_dynamics.FiniteDynamicsTests.test_cesaro_rejects_undefined_zero_average_and_invalid_state",
+    "test_finite_dynamics.FiniteDynamicsTests.test_diagonal_success_word_has_geometric_mass_and_qsd_posterior",
+    "test_finite_dynamics.FiniteDynamicsTests.test_doob_stationary_law_differs_from_qsd",
+    "test_finite_dynamics.FiniteDynamicsTests.test_equal_weights_do_not_control_a_changed_component_library",
+    "test_finite_dynamics.FiniteDynamicsTests.test_exact_weights_reject_invalid_premises",
+    "test_finite_dynamics.FiniteDynamicsTests.test_mixture_validates_common_context_even_at_zero_weight",
+    "test_finite_dynamics.FiniteDynamicsTests.test_row_orientation_initial_law_and_loss_are_essential",
+    "test_finite_dynamics.FiniteDynamicsTests.test_stationary_existence_does_not_imply_uniqueness",
+    "test_finite_dynamics.FiniteDynamicsTests.test_substochastic_validation_and_zero_event",
+    "test_finite_dynamics.FiniteDynamicsTests.test_total_variation_bound_is_attained",
+    "test_finite_dynamics.FiniteDynamicsTests.test_weighted_kraus_component_needs_no_irrational_runtime",
+    "test_kernel.CertificateTests.test_deep_finite_protocol_certificate_uses_no_recursive_serialization",
+    "test_kernel.CertificateTests.test_empty_or_misaligned_certificate_scope_is_rejected",
+    "test_kernel.CertificateTests.test_finite_coverage_cannot_be_promoted_to_all_protocols",
+    "test_kernel.CertificateTests.test_postselection_amplifies_rare_record_difference",
+    "test_kernel.CertificateTests.test_postselection_positive_mass_guard_and_nontrivial_bound",
+    "test_kernel.CertificateTests.test_transport_budget_and_checked_recurrence",
+    "test_kernel.CertificateTests.test_transport_rejects_hidden_failed_local_premise",
+    "test_kernel.CertificateTests.test_tv_support_alignment_and_normalization",
+    "test_kernel.ExactQuantumTests.test_adjoint_trace_duality_with_complex_inputs",
+    "test_kernel.ExactQuantumTests.test_all_principal_minors_are_needed",
+    "test_kernel.ExactQuantumTests.test_bell_partial_transpose_is_not_positive",
+    "test_kernel.ExactQuantumTests.test_complex_phase_arithmetic",
+    "test_kernel.ExactQuantumTests.test_complex_y_phase_is_observable",
+    "test_kernel.ExactQuantumTests.test_damping_on_entangled_input",
+    "test_kernel.ExactQuantumTests.test_damping_with_multiple_weighted_kraus_terms",
+    "test_kernel.ExactQuantumTests.test_density_positive_and_negative_controls",
+    "test_kernel.ExactQuantumTests.test_dimension_and_completeness_rejections",
+    "test_kernel.ExactQuantumTests.test_hadamard_interference_has_exact_probabilities",
+    "test_kernel.ExactQuantumTests.test_inexact_inputs_rejected",
+    "test_kernel.ExactQuantumTests.test_zero_branch_has_no_posterior",
+    "test_kernel.PredictiveQuotientTests.test_all_positive_branches_are_physical",
+    "test_kernel.PredictiveQuotientTests.test_context_change_requires_reencoding",
+    "test_kernel.PredictiveQuotientTests.test_coordinate_only_record_laws_match_dense_oracle",
+    "test_kernel.PredictiveQuotientTests.test_fingerprint_is_representation_sensitive",
+    "test_kernel.PredictiveQuotientTests.test_invalid_record_is_rejected_even_after_zero_probability",
+    "test_kernel.PredictiveQuotientTests.test_observable_dimensions_and_terminal_stability",
+    "test_kernel.PredictiveQuotientTests.test_protocol_relative_equivalence",
+    "test_kernel.PredictiveQuotientTests.test_pullbacks_close_every_basis_effect",
+    "test_kernel.PredictiveQuotientTests.test_recursive_branch_matches_closed_form",
+    "test_kernel.ProtocolAndMemoryTests.test_adaptive_controller_complete_law",
+    "test_kernel.ProtocolAndMemoryTests.test_protocol_validation_includes_impossible_continuations",
+    "test_kernel.ProtocolAndMemoryTests.test_same_system_and_environment_marginals_do_not_fix_memory",
+    "test_lean_export.LeanExportTests.test_changed_contract_and_unknown_fields_are_rejected",
+    "test_lean_export.LeanExportTests.test_cycles_and_oversized_literal_are_rejected_explicitly",
+    "test_lean_export.LeanExportTests.test_data_have_exact_numeric_semantics_for_all_positive_shapes",
+    "test_lean_export.LeanExportTests.test_hand_certificate_needs_no_predictive_search",
+    "test_lean_export.LeanExportTests.test_hsz_real_imaginary_parts_and_word_direction_survive",
+    "test_lean_export.LeanExportTests.test_labels_cannot_supply_lean_tokens_or_paths",
+    "test_lean_export.LeanExportTests.test_no_mutable_alias_to_certificate_or_manifest",
+    "test_lean_export.LeanExportTests.test_noncanonical_and_non_json_numeric_inputs_are_not_coerced",
+    "test_lean_export.LeanExportTests.test_padded_resource_budget_is_enforced_without_partial_output",
+    "test_lean_export.LeanExportTests.test_ragged_and_explicit_impossible_outcomes_remain_distinct",
+    "test_lean_export.LeanExportTests.test_repeated_export_is_deterministic_and_bound_to_exact_source",
+    "test_lean_export.LeanExportTests.test_wrong_kraus_data_and_library_anchor_are_rejected",
+    "test_lean_export.LeanExportTests.test_wrong_pullback_and_missing_branch_are_rejected",
+    "test_lean_export.LeanExportTests.test_wrong_word_is_rejected_before_source_generation",
+    "test_lean_export.LeanExportTests.test_zero_weight_original_term_is_not_rewritten_as_padding",
+    "test_representation_certificate.RepresentationCertificateTests.test_alternative_valid_basis_allowed_only_under_its_own_context",
+    "test_representation_certificate.RepresentationCertificateTests.test_an_ungenerated_distinguishing_direction_is_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_checker_does_not_call_model_search_solver_or_adjoint",
+    "test_representation_certificate.RepresentationCertificateTests.test_complex_coefficient_and_nonhermitian_effect_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_context_and_serialized_library_tampering_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_dependent_actual_word_basis_is_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_dimension_one_and_four_have_exact_certificates",
+    "test_representation_certificate.RepresentationCertificateTests.test_expected_library_is_rechecked_and_not_inferred_from_the_claim",
+    "test_representation_certificate.RepresentationCertificateTests.test_generated_but_nonclosed_subspace_is_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_hand_computed_z_representation",
+    "test_representation_certificate.RepresentationCertificateTests.test_impossible_outcome_still_requires_its_zero_pullback",
+    "test_representation_certificate.RepresentationCertificateTests.test_missing_duplicate_and_unknown_branch_claims_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_noncanonical_and_inexact_scalar_payloads_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_origin_requires_identity_and_empty_word",
+    "test_representation_certificate.RepresentationCertificateTests.test_protocol_schema_dimensions_and_witness_resource_limits",
+    "test_representation_certificate.RepresentationCertificateTests.test_reversed_witness_is_rejected_even_with_correct_effect_hash",
+    "test_representation_certificate.RepresentationCertificateTests.test_wrong_pullback_orientation_and_coefficients_are_rejected",
+    "test_representation_certificate.RepresentationCertificateTests.test_z_hz_hsz_exports_have_expected_ranks_and_chronological_words",
+    "test_spectrum.FullLocalAnomalyTests.test_arbitrary_exact_beta_samples_with_completion",
+    "test_spectrum.FullLocalAnomalyTests.test_complete_three_family_331_has_six_zero_coefficients",
+    "test_spectrum.FullLocalAnomalyTests.test_conjugation_charge_and_multiplicity_failure_controls",
+    "test_spectrum.FullLocalAnomalyTests.test_missing_exotic_lepton_completion_produces_exact_residue",
+    "test_spectrum.FullLocalAnomalyTests.test_mixed_two_family_six_anomaly_counterexample",
+    "test_spectrum.FullLocalAnomalyTests.test_neutral_rhn_special_point_does_not_hide_generic_failure",
+    "test_spectrum.FullLocalAnomalyTests.test_replicated_six_family_local_anomalies_cancel",
+    "test_spectrum.SpectrumBridgeTests.test_actual_three_family_rows_and_higgs",
+    "test_spectrum.SpectrumBridgeTests.test_compensated_one_family_does_not_pass_family_self_cancellation",
+    "test_spectrum.SpectrumBridgeTests.test_extra_screening_and_distinct_spin_weights",
+    "test_spectrum.SpectrumBridgeTests.test_extra_weyl_compensation_and_inactive_parent_anomaly",
+    "test_spectrum.SpectrumBridgeTests.test_four_families_with_nc_two_and_empty_spectrum",
+    "test_spectrum.SpectrumBridgeTests.test_integer_sign_scalar_and_weight_validation",
+    "test_spectrum.SpectrumBridgeTests.test_mixed_lepton_two_families_outside_homogeneous_contract",
+    "test_spectrum.SpectrumBridgeTests.test_nonzero_anomaly_unit_may_have_either_sign",
+    "test_spectrum.SpectrumBridgeTests.test_only_combined_extra_cubic_sum_must_vanish",
+    "test_spectrum.SpectrumBridgeTests.test_partial_threshold_activity_cannot_exclude_all_six_families",
+    "test_spectrum.SpectrumBridgeTests.test_six_family_replication_fails_full_weak_coefficient",
+    "test_spectrum.SpectrumBridgeTests.test_unique_labels_and_receipt_identity",
+    "test_spectrum.SpectrumBridgeTests.test_weak_window_declarations_are_required",
+    "test_spectrum.SpectrumBridgeTests.test_wrong_quark_sign_is_detected_in_row_sum",
+    "test_spectrum.SpectrumBridgeTests.test_zero_anomaly_unit_is_rejected_as_uninformative"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "sources": [
+    {
+      "path": "demo.py",
+      "sha256": "87e376df763f7ac1b4db913073ef51cdc528c904650b73afcaff9cdb763ce975"
+    },
+    {
+      "path": "demo_v312.py",
+      "sha256": "97bc5f44c82e9f0e28472d10bb7c78cca2f96594a6750aa5b73caca94afba06e"
+    },
+    {
+      "path": "demo_v313.py",
+      "sha256": "d97421a9003bf085dc5f72cd9b297afe1a93b2a2fb68797b214e405c3f85c378"
+    },
+    {
+      "path": "demo_v315.py",
+      "sha256": "0c9fd677c56a9506c37149d6494c473a73e233361a48e61e063289b79957336e"
+    },
+    {
+      "path": "tests/test_finite_dynamics.py",
+      "sha256": "781e3b9267578bc32b89dc0100e88d43500d7eb7a1828db3f9aa716d384aa7ca"
+    },
+    {
+      "path": "tests/test_kernel.py",
+      "sha256": "479e4457e19094a78ddd759a1e9016b5ee9ad05af7741bd62b1780fc0d722108"
+    },
+    {
+      "path": "tests/test_lean_export.py",
+      "sha256": "e65eecf84e2b1052c3634d4e7bb274b6cd027f397ab2c2d59c8c6943f23a3446"
+    },
+    {
+      "path": "tests/test_representation_certificate.py",
+      "sha256": "4ce3b59cec974923469db4a256fe4db212853497327c6e108fe99525f7bbaa42"
+    },
+    {
+      "path": "tests/test_spectrum.py",
+      "sha256": "686e5783a31f4b1409263e6ec941a2ccd1f07cb0615ffa62905393c5941c10d7"
+    },
+    {
+      "path": "ueot_qm/__init__.py",
+      "sha256": "df01792238c956b1567bfd0e27ecde9286e2acd9973ddd395b555bac9326eff5"
+    },
+    {
+      "path": "ueot_qm/algebra.py",
+      "sha256": "1a5ce84eb0ce42d16c3e7460dc8af88b0923d47393d681ffd821251ed9397653"
+    },
+    {
+      "path": "ueot_qm/certificates.py",
+      "sha256": "b78421e91a72fa875fa9bcb0a6939752812f1399f97e1e0665cd2d7effbacc3f"
+    },
+    {
+      "path": "ueot_qm/finite_dynamics.py",
+      "sha256": "5f7f78b37e67fd1dc0b1c856f474850e50e4e664b806ddd9adb54fb9cc8429a6"
+    },
+    {
+      "path": "ueot_qm/instrument.py",
+      "sha256": "52cdbccd01bcb7dd231f33fa48dabb3ca717fea7fdcca47982f7e8eb04692757"
+    },
+    {
+      "path": "ueot_qm/lean_export.py",
+      "sha256": "f639aa5941f89811b65e728b0c43083814fff0ac2664a009c8d48aaa517cfb4a"
+    },
+    {
+      "path": "ueot_qm/predictive.py",
+      "sha256": "5eacaae2ba7c8b2d18b86734feed8cbd73744665fbfc4059582c0d70ee10844b"
+    },
+    {
+      "path": "ueot_qm/representation_certificate.py",
+      "sha256": "2671790d364aabfbb937f44ae14dbdc82708caf44c72e704315e1c5af92d95c0"
+    },
+    {
+      "path": "ueot_qm/spectrum.py",
+      "sha256": "ae44f2a40058ef650f53810dfeab9f0de53f02c986b803561e79a7182224c2b7"
+    },
+    {
+      "path": "verify_kernel.py",
+      "sha256": "3cdc1583f914763bcead1787c6dee74f63e96787095219ddd7cad2ea2eb27c2b"
+    },
+    {
+      "path": "verify_lean_exports.py",
+      "sha256": "6d2c5504a2f625441f6fd1b2eb5adf13dc52acb8a574f862f11d85ee880564dd"
+    }
+  ],
+  "limits": [
+    "Exact executable calculations on Gaussian rational inputs, Hilbert dimensions 1..4",
+    "Test methods contain multiple examples; this count is not a theorem count",
+    "This receipt does not state that Python execution was verified by Lean",
+    "Finite protocol and scalar trace certificates retain their declared coverage"
+  ]
+}

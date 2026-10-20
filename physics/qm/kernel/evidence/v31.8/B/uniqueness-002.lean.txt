@@ -1,0 +1,167 @@
+import UEOTQM.PureStateCharacterization
+import Mathlib.Analysis.InnerProductSpace.PiL2
+import Mathlib.LinearAlgebra.Isomorphisms
+import Mathlib.Data.Matrix.ColumnRowPartitioned
+
+/-!
+# Finite purification uniqueness with explicit auxiliary action
+
+Equal Gram matrices induce an isometry on the generated support. Finite
+dimensional extension supplies an actual auxiliary unitary. The matrix acting
+on the auxiliary coordinate is recorded in the direction `U a b * ψ (i,b)`.
+Different auxiliary carriers are treated through genuine isometric embeddings
+into a common sum carrier, never by an ill-typed rectangular unitary.
+-/
+
+namespace UEOTQM.QuantumPurification
+
+open Matrix WithLp
+open scoped BigOperators ComplexOrder MatrixOrder Kronecker
+
+noncomputable section
+
+universe u v w
+variable {ι : Type u} {α : Type v} {β : Type w}
+  [Fintype ι] [DecidableEq ι] [Fintype α] [DecidableEq α]
+  [Fintype β] [DecidableEq β]
+
+/-- The Euclidean squared norm of a matrix image is its actual column Gram form. -/
+theorem inner_matrix_image (F : Matrix α ι ℂ) (x : EuclideanSpace ℂ ι) :
+    inner ℂ (Matrix.toEuclideanLin F x) (Matrix.toEuclideanLin F x) =
+      star (ofLp x) ⬝ᵥ ((Fᴴ * F) *ᵥ ofLp x) := by
+  change (F *ᵥ ofLp x) ⬝ᵥ star (F *ᵥ ofLp x) = _
+  rw [dotProduct_comm, Matrix.star_mulVec, ← Matrix.dotProduct_mulVec, Matrix.mulVec_mulVec]
+
+/-- Equal column Gram matrices give equal norms on every input, including kernels. -/
+theorem norm_matrix_image_eq_of_gram (F G : Matrix α ι ℂ) (h : Fᴴ * F = Gᴴ * G)
+    (x : EuclideanSpace ℂ ι) : ‖Matrix.toEuclideanLin F x‖ = ‖Matrix.toEuclideanLin G x‖ := by
+  apply (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _)).mp
+  rw [norm_sq_eq_re_inner (𝕜 := ℂ), norm_sq_eq_re_inner (𝕜 := ℂ),
+    inner_matrix_image, inner_matrix_image, h]
+
+/-- Equal finite column Gram matrices are connected by an actual unitary on
+their common output carrier. No full rank or unitary witness is assumed. -/
+theorem exists_unitary_of_column_gram (F G : Matrix α ι ℂ) (h : Fᴴ * F = Gᴴ * G) :
+    ∃ U : Operator α, Uᴴ * U = 1 ∧ U * Uᴴ = 1 ∧ U * F = G := by
+  let f := Matrix.toEuclideanLin F
+  let g := Matrix.toEuclideanLin G
+  have hn : ∀ x, ‖f x‖ = ‖g x‖ := norm_matrix_image_eq_of_gram F G h
+  have hker : LinearMap.ker f ≤ LinearMap.ker g := by
+    intro x hx
+    apply LinearMap.mem_ker.mpr
+    apply norm_eq_zero.mp
+    rw [← hn x, LinearMap.mem_ker.mp hx, norm_zero]
+  let q := (LinearMap.ker f).liftQ g hker
+  let l : LinearMap.range f →ₗ[ℂ] EuclideanSpace ℂ α :=
+    q.comp f.quotKerEquivRange.symm.toLinearMap
+  have hl : ∀ x, l (f.rangeRestrict x) = g x := by
+    intro x
+    change q (f.quotKerEquivRange.symm ⟨f x, LinearMap.mem_range_self f x⟩) = g x
+    rw [LinearMap.quotKerEquivRange_symm_apply_image]
+    rfl
+  let L : LinearMap.range f →ₗᵢ[ℂ] EuclideanSpace ℂ α := {
+    toLinearMap := l
+    norm_map' := by
+      rintro ⟨y, ⟨x, rfl⟩⟩
+      change ‖l (f.rangeRestrict x)‖ = ‖f x‖
+      rw [hl, hn] }
+  let W := L.extend
+  have hW : ∀ x, W (f x) = g x := by
+    intro x
+    calc
+      W (f x) = L (f.rangeRestrict x) := L.extend_apply (f.rangeRestrict x)
+      _ = g x := hl x
+  let e := LinearIsometryEquiv.ofSurjective W
+    (LinearMap.surjective_of_injective W.injective)
+  let b := EuclideanSpace.basisFun α ℂ
+  let U : Operator α := LinearMap.toMatrix b.toBasis b.toBasis e.toLinearMap
+  have hU : U ∈ Matrix.unitaryGroup α ℂ := e.toMatrix_mem_unitaryGroup b b
+  have hlin : Matrix.toEuclideanLin U = e.toLinearMap := by
+    rw [Matrix.toEuclideanLin_eq_toLin_orthonormal]
+    exact Matrix.toLin_toMatrix b.toBasis b.toBasis e.toLinearMap
+  refine ⟨U, (Matrix.mem_unitaryGroup_iff').mp hU, (Matrix.mem_unitaryGroup_iff).mp hU, ?_⟩
+  have haction : ∀ x : ι → ℂ, U *ᵥ (F *ᵥ x) = G *ᵥ x := by
+    intro x
+    have he : Matrix.toEuclideanLin U (f (toLp 2 x)) = g (toLp 2 x) := by
+      rw [hlin]
+      exact hW (toLp 2 x)
+    exact congrArg ofLp he
+  ext a i
+  have hi := congrFun (haction (Pi.single i 1)) a
+  rw [Matrix.mulVec_mulVec] at hi
+  simpa only [Matrix.mulVec_single_one, Matrix.col_apply] using hi
+
+/-- Row Gram equality determines an auxiliary unitary in the actual vector
+action direction. Transposing both Gram factors avoids an implicit adjoint swap. -/
+theorem exists_auxiliary_unitary_of_gram (A B : Matrix ι α ℂ) (h : A * Aᴴ = B * Bᴴ) :
+    ∃ U : Operator α, Uᴴ * U = 1 ∧ U * Uᴴ = 1 ∧
+      ∀ i a, B i a = ∑ b, U a b * A i b := by
+  have ht : Aᵀᴴ * Aᵀ = Bᵀᴴ * Bᵀ := by
+    simpa only [Matrix.transpose_mul, Matrix.transpose_conjTranspose,
+      Matrix.conjTranspose_transpose] using congrArg Matrix.transpose h
+  obtain ⟨U, hU₁, hU₂, hU⟩ := exists_unitary_of_column_gram Aᵀ Bᵀ ht
+  refine ⟨U, hU₁, hU₂, ?_⟩
+  intro i a
+  simpa only [Matrix.mul_apply, Matrix.transpose_apply] using (congrFun (congrFun hU a) i).symm
+
+omit [DecidableEq α] [Fintype β] [DecidableEq β] in
+/-- Actual tensor-factor action, including rectangular isometric embeddings. -/
+theorem auxiliary_action_apply (J : Matrix β α ℂ) (ψ : ι × α → ℂ) (i : ι) (a : β) :
+    (((1 : Operator ι) ⊗ₖ J) *ᵥ ψ) (i, a) = ∑ b, J a b * ψ (i, b) := by
+  simp [Matrix.mulVec, dotProduct, Fintype.sum_prod_type, Matrix.one_apply]
+
+/-- The transpose in a right matrix-factor action is explicit. -/
+theorem auxiliary_action_vectorize (J : Matrix β α ℂ) (A : Matrix ι α ℂ) :
+    ((1 : Operator ι) ⊗ₖ J) *ᵥ vectorize A = vectorize (A * Jᵀ) := by
+  ext p
+  rcases p with ⟨i, a⟩
+  rw [auxiliary_action_apply]
+  simp [vectorize, Matrix.mul_apply, Matrix.transpose_apply, mul_comm]
+
+omit [DecidableEq α] [Fintype β] [DecidableEq β] in
+/-- Congruence of an actual vector outer product under an arbitrary linear map. -/
+theorem outer_mulVec (J : Matrix β α ℂ) (v : α → ℂ) :
+    outer (J *ᵥ v) = J * outer v * Jᴴ := by
+  rw [outer, outer, Matrix.mul_vecMulVec, Matrix.vecMulVec_mul, ← Matrix.star_mulVec]
+
+/-- Any two joint vectors with the same actual system marginal are related
+by a unitary on their common auxiliary carrier, with the full tensor action. -/
+theorem exists_auxiliary_unitary_of_equal_marginal (ψ φ : ι × α → ℂ)
+    (h : (RectangularChannel.discardRight ι α).operator (outer ψ) =
+      (RectangularChannel.discardRight ι α).operator (outer φ)) :
+    ∃ U : Operator α, Uᴴ * U = 1 ∧ U * Uᴴ = 1 ∧
+      φ = ((1 : Operator ι) ⊗ₖ U) *ᵥ ψ := by
+  let A : Matrix ι α ℂ := fun i a => ψ (i, a)
+  let B : Matrix ι α ℂ := fun i a => φ (i, a)
+  have hg : A * Aᴴ = B * Bᴴ := by
+    rw [← discard_vectorize_outer, ← discard_vectorize_outer]
+    exact h
+  obtain ⟨U, hU₁, hU₂, hU⟩ := exists_auxiliary_unitary_of_gram A B hg
+  refine ⟨U, hU₁, hU₂, ?_⟩
+  ext p
+  rcases p with ⟨i, a⟩
+  rw [auxiliary_action_apply]
+  exact hU i a
+
+/-- Every pair of full convex-pure joint densities with the same marginal is
+related by an actual auxiliary unitary. This uses the converse purity theorem. -/
+theorem pure_states_unitarily_equivalent (Ψ Φ : Density (ι × α))
+    (hΨ : IsPure Ψ) (hΦ : IsPure Φ)
+    (hm : (RectangularChannel.discardRight ι α).state Ψ =
+      (RectangularChannel.discardRight ι α).state Φ) :
+    ∃ U : Operator α, Uᴴ * U = 1 ∧ U * Uᴴ = 1 ∧
+      Φ.matrix = ((1 : Operator ι) ⊗ₖ U) * Ψ.matrix * ((1 : Operator ι) ⊗ₖ U)ᴴ := by
+  obtain ⟨ψ, _, hψ⟩ := hΨ.exists_vector Ψ
+  obtain ⟨φ, _, hφ⟩ := hΦ.exists_vector Φ
+  have hm' : (RectangularChannel.discardRight ι α).operator (outer ψ) =
+      (RectangularChannel.discardRight ι α).operator (outer φ) := by
+    have h := congrArg Density.matrix hm
+    change (RectangularChannel.discardRight ι α).operator Ψ.matrix =
+      (RectangularChannel.discardRight ι α).operator Φ.matrix at h
+    rwa [hψ, hφ] at h
+  obtain ⟨U, hU₁, hU₂, hU⟩ := exists_auxiliary_unitary_of_equal_marginal ψ φ hm'
+  refine ⟨U, hU₁, hU₂, ?_⟩
+  rw [hψ, hφ, hU, outer_mulVec]
+
+end
+end UEOTQM.QuantumPurification

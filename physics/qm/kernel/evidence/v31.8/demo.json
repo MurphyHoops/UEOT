@@ -1,0 +1,109 @@
+{
+  "schema": "ueot_qm.kernel_demo.v1",
+  "arithmetic": "exact Gaussian rationals; probabilities printed as rational strings",
+  "contexts": {
+    "Z": {
+      "hilbert_dimension": 2,
+      "response_dimension_including_trace": 2,
+      "dimension_history": [
+        1,
+        2,
+        2
+      ],
+      "plus_minus_equivalent": true,
+      "context_fingerprint": "6ae78de6f0e6f8419fcdbda1f698cd35fd1cf146ea2e49c490da3b38efe8480f"
+    },
+    "H+Z": {
+      "hilbert_dimension": 2,
+      "response_dimension_including_trace": 3,
+      "dimension_history": [
+        1,
+        2,
+        3,
+        3
+      ],
+      "plus_minus_equivalent": false,
+      "context_fingerprint": "5742d1a502f02458c89b33714cff789911ebefbb0675a7ec77b126def0f548e8"
+    },
+    "H+S+Z": {
+      "hilbert_dimension": 2,
+      "response_dimension_including_trace": 4,
+      "dimension_history": [
+        1,
+        2,
+        3,
+        4,
+        4
+      ],
+      "plus_minus_equivalent": false,
+      "context_fingerprint": "62defa07d54ec136fa3ca5159e5c1aaadbe69486afa1a8cc15f464f086940514"
+    }
+  },
+  "interference": {
+    "initial_state": "|0><0|",
+    "actions": [
+      "H",
+      "H",
+      "Z"
+    ],
+    "record_law": [
+      {
+        "outcomes": [
+          "ok",
+          "ok",
+          "0"
+        ],
+        "probability": "1"
+      },
+      {
+        "outcomes": [
+          "ok",
+          "ok",
+          "1"
+        ],
+        "probability": "0"
+      }
+    ],
+    "dense_equals_coordinates": true
+  },
+  "finite_protocol_certificate": {
+    "Z_only_maximum_tv": "0",
+    "Z_and_HZ_maximum_tv": "1",
+    "scope": "declared-finite-preparation-pairs-and-causal-trees",
+    "scope_changed": true
+  },
+  "postselection": {
+    "original_tv": "1/100",
+    "left_event_mass": "1/100",
+    "right_event_mass": "1/100",
+    "minimum_event_mass": "1/100",
+    "conditional_tv": "1",
+    "conditional_upper_bound": "1"
+  },
+  "scalar_transport": {
+    "errors": [
+      "1/10",
+      "1/10",
+      "1/5"
+    ],
+    "bounds": [
+      "1/5",
+      "1/5",
+      "9/20"
+    ],
+    "steps": [
+      {
+        "lipschitz": "1/2",
+        "local_bound": "1/10",
+        "justification": "checked finite scalar example, step 0"
+      },
+      {
+        "lipschitz": "2",
+        "local_bound": "1/20",
+        "justification": "checked finite scalar example, step 1"
+      }
+    ],
+    "scope": "supplied-finite-scalar-trace"
+  },
+  "interpretation": "Executable QM operations and protocol quotients; physical sector inputs remain explicit."
+}

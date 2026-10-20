@@ -1,0 +1,520 @@
+{
+  "status": "FOCUSED_COMPILE_AND_PRECISE_NAMED_AXIOM_AUDIT_PASS",
+  "source": "formalization/ueot-qm/scripts/witnesses/ActionRecordBudgetExamples.lean",
+  "source_sha256": "169eca4505e33561d7c364267ae206c0674a36e9fe61393368b4b4d43c9d039e",
+  "receipt": "ActionRecordBudgetExamples-compile-006.json",
+  "log": "ActionRecordBudgetExamples-compile-006.log",
+  "declaration_count": 52,
+  "counts": {
+    "theorem": 36,
+    "def": 14,
+    "abbrev": 2
+  },
+  "source_order_exact": true,
+  "unique_names": true,
+  "allowed_axioms_only": true,
+  "declarations": [
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.Qubit",
+      "kind": "abbrev",
+      "line": 18,
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.Label",
+      "kind": "abbrev",
+      "line": 19,
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.certain",
+      "kind": "def",
+      "line": 21,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.certain_branch",
+      "kind": "theorem",
+      "line": 26,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.certain_probability",
+      "kind": "theorem",
+      "line": 31,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.halfK",
+      "kind": "def",
+      "line": 36,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.halfK_gram",
+      "kind": "theorem",
+      "line": 38,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.halfK_conjugation",
+      "kind": "theorem",
+      "line": 44,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.biasedKraus",
+      "kind": "def",
+      "line": 52,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.biased",
+      "kind": "def",
+      "line": 55,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.biased_branch",
+      "kind": "theorem",
+      "line": 61,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.biased_probability",
+      "kind": "theorem",
+      "line": 67,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.rhoZero",
+      "kind": "def",
+      "line": 71,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.joint_probability_certain",
+      "kind": "theorem",
+      "line": 80,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.joint_probability_biased",
+      "kind": "theorem",
+      "line": 90,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.biased_joint_distance_le_quarter",
+      "kind": "theorem",
+      "line": 100,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.biased_joint_distance_exact",
+      "kind": "theorem",
+      "line": 112,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.biased_record_defect_exact",
+      "kind": "theorem",
+      "line": 123,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.feedback",
+      "kind": "def",
+      "line": 137,
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.exactActions",
+      "kind": "def",
+      "line": 140,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.approximateActions",
+      "kind": "def",
+      "line": 144,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.feedback_word",
+      "kind": "theorem",
+      "line": 148,
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.budget",
+      "kind": "def",
+      "line": 151,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.budget_nonneg",
+      "kind": "theorem",
+      "line": 153,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.action_defects_bounded",
+      "kind": "theorem",
+      "line": 157,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.first_actionCost_exact",
+      "kind": "theorem",
+      "line": 164,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.second_actionCost_exact",
+      "kind": "theorem",
+      "line": 170,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.actionCost_sum_exact",
+      "kind": "theorem",
+      "line": 174,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.two_step_budget_bound",
+      "kind": "theorem",
+      "line": 178,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.zeroHistory",
+      "kind": "def",
+      "line": 184,
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.exact_zero_history_probability",
+      "kind": "theorem",
+      "line": 186,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.approximate_zero_history_probability",
+      "kind": "theorem",
+      "line": 191,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.two_step_record_tv_exact",
+      "kind": "theorem",
+      "line": 197,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.historyPairEquiv",
+      "kind": "def",
+      "line": 213,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.exact_terminal_memory",
+      "kind": "theorem",
+      "line": 219,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.approximate_terminal_memory",
+      "kind": "theorem",
+      "line": 232,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.flippedActions",
+      "kind": "def",
+      "line": 247,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.certain_unlabelled_channel",
+      "kind": "theorem",
+      "line": 251,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.certain_unlabelled_state",
+      "kind": "theorem",
+      "line": 255,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.negative_actions_unlabelled_same",
+      "kind": "theorem",
+      "line": 261,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.negative_unlabelled_defect_zero",
+      "kind": "theorem",
+      "line": 265,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.oneHistory",
+      "kind": "def",
+      "line": 273,
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.flipped_zero_history_probability",
+      "kind": "theorem",
+      "line": 275,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.flipped_one_history_probability",
+      "kind": "theorem",
+      "line": 280,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.negative_two_step_record_tv",
+      "kind": "theorem",
+      "line": 286,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.flipped_terminal_memory",
+      "kind": "theorem",
+      "line": 298,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.negative_terminal_memories_equal",
+      "kind": "theorem",
+      "line": 312,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.secondZeroEvent",
+      "kind": "def",
+      "line": 317,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.exact_second_record_zero",
+      "kind": "theorem",
+      "line": 319,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.flipped_second_record_zero",
+      "kind": "theorem",
+      "line": 327,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.original_protocol_record_tv_exact",
+      "kind": "theorem",
+      "line": 336,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ActionRecordBudgetExamples.original_protocol_negative_tv",
+      "kind": "theorem",
+      "line": 341,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ]
+}

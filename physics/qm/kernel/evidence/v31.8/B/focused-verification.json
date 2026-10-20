@@ -1,0 +1,654 @@
+{
+  "schema": "ueot-qm-v31.8-B-focused-verification-1",
+  "status": "FOCUSED_VERIFIED_UNIFIED_AND_REMOTE_PENDING",
+  "baseline_main": "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
+  "baseline_tree": "c527f8481878d1e0b839e93695c0d4ee5edf09f4",
+  "compiler": {
+    "configured_toolchain": "leanprover/lean4:v4.33.1",
+    "lake": "/tmp/lean-4.33.1-linux/bin/lake",
+    "shared_lock": "/tmp/qm317-lean.lock",
+    "execution": "All accepted calls used the pinned Lake via flock with require_escalated sandbox mode, authorized by root/user.",
+    "scope": "Focused direct lake env lean calls only; no full-package build performed by B."
+  },
+  "counts": {
+    "public_modules": 2,
+    "public_explicit_theorems": 27,
+    "public_definitions": 5,
+    "public_abbreviations": 0,
+    "public_named_audits": 32,
+    "witness_explicit_theorems": 28,
+    "witness_definitions": 10,
+    "witness_abbreviations": 0,
+    "witness_named_audits": 38,
+    "total_distinct_named_audits": 70
+  },
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "all_audited_axioms_allowed": true,
+  "witness_print_order_exact": true,
+  "sources": [
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
+      "bytes": 4356,
+      "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8",
+      "counts": {
+        "theorem": 5,
+        "def": 0,
+        "abbrev": 0
+      },
+      "declarations": [
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.outer_real_smul",
+          "line": 23
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.gram_eq_sum_outer",
+          "line": 31
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.IsPure.normalize_eq_of_positive_summand",
+          "line": 39
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.IsPure.exists_vector",
+          "line": 61
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.isPure_iff_exists_vector",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+      "bytes": 15266,
+      "sha256": "ff857b027598ac15cccc3c36b245e27290418fe6d4545f48984e10ebb9f8879f",
+      "counts": {
+        "theorem": 22,
+        "def": 5,
+        "abbrev": 0
+      },
+      "declarations": [
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.inner_matrix_image",
+          "line": 30
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.norm_matrix_image_eq_of_gram",
+          "line": 38
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.exists_unitary_of_column_gram",
+          "line": 46
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_gram",
+          "line": 98
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliary_action_apply",
+          "line": 111
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliary_action_vectorize",
+          "line": 117
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.outer_mulVec",
+          "line": 126
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_equal_marginal",
+          "line": 132
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.pure_states_unitarily_equivalent",
+          "line": 151
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliary_tensor_isometry",
+          "line": 172
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel",
+          "line": 178
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator",
+          "line": 183
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator_apply",
+          "line": 190
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_operator",
+          "line": 200
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_state",
+          "line": 212
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_preserves_purity",
+          "line": 221
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumPurification.auxiliaryInl",
+          "line": 234
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumPurification.auxiliaryInr",
+          "line": 238
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliaryInl_isometry",
+          "line": 242
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.auxiliaryInr_isometry",
+          "line": 248
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumPurification.extendAuxiliaryLeft",
+          "line": 254
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumPurification.extendAuxiliaryRight",
+          "line": 258
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.extendAuxiliaryLeft_pure",
+          "line": 261
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.extendAuxiliaryRight_pure",
+          "line": 265
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.extendAuxiliaryLeft_marginal",
+          "line": 269
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.extendAuxiliaryRight_marginal",
+          "line": 274
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumPurification.pure_states_common_extension_unitary",
+          "line": 282
+        }
+      ]
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/PurificationUniquenessExamples.lean",
+      "bytes": 11970,
+      "sha256": "e5b4420e310d8250b88792d7efdd6f74b68975dc287a5128f9baedf3dadede3a",
+      "counts": {
+        "theorem": 28,
+        "def": 10,
+        "abbrev": 0
+      },
+      "declarations": [
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.firstFactor",
+          "line": 18
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.secondFactor",
+          "line": 20
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary",
+          "line": 23
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.firstVector",
+          "line": 26
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.secondVector",
+          "line": 28
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.marginalMatrix",
+          "line": 30
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_adjoint_mul",
+          "line": 32
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_mul_adjoint",
+          "line": 38
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.first_gram",
+          "line": 44
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.second_gram",
+          "line": 50
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.first_normalized",
+          "line": 56
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.second_normalized",
+          "line": 60
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.firstState",
+          "line": 64
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.secondState",
+          "line": 66
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.first_isPure",
+          "line": 68
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.second_isPure",
+          "line": 70
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.same_actual_marginal",
+          "line": 72
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.exact_auxiliary_vector_action",
+          "line": 80
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.joint_vectors_differ",
+          "line": 89
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.joint_densities_differ",
+          "line": 94
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.full_purity_converse_instantiated",
+          "line": 100
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.general_uniqueness_instantiated",
+          "line": 104
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.transformed",
+          "line": 110
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.correct_0001_entry",
+          "line": 113
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.wrong_adjoint_0001_entry",
+          "line": 117
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.wrong_transpose_0001_entry",
+          "line": 124
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.correct_0010_entry",
+          "line": 131
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.wrong_conjugate_0010_entry",
+          "line": 135
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.wrong_adjoint_joint_density",
+          "line": 142
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.wrong_transpose_joint_density",
+          "line": 148
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.wrong_conjugate_joint_density",
+          "line": 154
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.PurificationUniquenessExamples.largerState",
+          "line": 162
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.auxiliary_dimensions_differ",
+          "line": 165
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.strict_embedding_isometry",
+          "line": 168
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.strict_embedding_not_coisometry",
+          "line": 172
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.larger_isPure",
+          "line": 180
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.larger_same_actual_marginal",
+          "line": 182
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.PurificationUniquenessExamples.different_auxiliary_common_unitary",
+          "line": 187
+        }
+      ]
+    }
+  ],
+  "source_olean_bindings": [
+    {
+      "source": {
+        "path": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
+        "bytes": 4356,
+        "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8"
+      },
+      "olean": {
+        "path": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/PureStateCharacterization.olean",
+        "bytes": 219472,
+        "sha256": "765935e89a34c42cf9209cd752c6dc4eb04019b6ec0d9ebf4aefa304592a95d2"
+      }
+    },
+    {
+      "source": {
+        "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+        "bytes": 15266,
+        "sha256": "ff857b027598ac15cccc3c36b245e27290418fe6d4545f48984e10ebb9f8879f"
+      },
+      "olean": {
+        "path": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/PurificationUniqueness.olean",
+        "bytes": 758944,
+        "sha256": "e7ab6956d40daf2c53c27bd8f14ebd148f6770ebe016c8a19abbe1b02e305ea7"
+      }
+    }
+  ],
+  "accepted_runs": [
+    {
+      "name": "pure-005",
+      "kind": "focused_module_compile",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/pure-005.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/pure-005.lean.txt",
+        "bytes": 4356,
+        "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8"
+      },
+      "current_source_snapshot_identical": true,
+      "invocation": "flock /tmp/qm317-lean.lock /tmp/lean-4.33.1-linux/bin/lake env lean -o .lake/build/lib/lean/UEOTQM/PureStateCharacterization.olean UEOTQM/PureStateCharacterization.lean",
+      "cwd": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm"
+    },
+    {
+      "name": "uniqueness-005",
+      "kind": "focused_module_compile",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-005.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-005.lean.txt",
+        "bytes": 15266,
+        "sha256": "ff857b027598ac15cccc3c36b245e27290418fe6d4545f48984e10ebb9f8879f"
+      },
+      "current_source_snapshot_identical": true,
+      "invocation": "flock /tmp/qm317-lean.lock /tmp/lean-4.33.1-linux/bin/lake env lean -o .lake/build/lib/lean/UEOTQM/PurificationUniqueness.olean UEOTQM/PurificationUniqueness.lean",
+      "cwd": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm"
+    },
+    {
+      "name": "witness-003",
+      "kind": "witness_and_exact_named_axiom_audit",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/witness-003.log",
+        "bytes": 4597,
+        "sha256": "55910c81704d3c086afd3603d5c1d82e25aeb198c21775cb149437ce7b030045"
+      },
+      "source_snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/witness-003.lean.txt",
+        "bytes": 11970,
+        "sha256": "e5b4420e310d8250b88792d7efdd6f74b68975dc287a5128f9baedf3dadede3a"
+      },
+      "current_source_snapshot_identical": true,
+      "invocation": "flock /tmp/qm317-lean.lock /tmp/lean-4.33.1-linux/bin/lake env lean scripts/witnesses/PurificationUniquenessExamples.lean",
+      "cwd": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm"
+    },
+    {
+      "name": "public-audit-001",
+      "kind": "public_exact_named_axiom_audit",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/public-audit-001.log",
+        "bytes": 3714,
+        "sha256": "cdec11900d925bd41272b84333f4b4e4c0a52b4c13583ebe0d29e1ac0cf57e6d"
+      },
+      "audit_input": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/PublicAxiomAudit.lean",
+        "bytes": 2232,
+        "sha256": "adf4a3504d58d7c2060b4b241bd1683ba80f28251e03e3ceae72b3ca4d4c2f14"
+      },
+      "invocation": "flock /tmp/qm317-lean.lock /tmp/lean-4.33.1-linux/bin/lake env lean /workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/B/PublicAxiomAudit.lean",
+      "cwd": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm"
+    }
+  ],
+  "historical_failures": [
+    {
+      "name": "pure-001",
+      "kind": "environment_startup_failure_before_proof",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/pure-001.log",
+        "bytes": 67,
+        "sha256": "dfce1e7d6849bcb01696e698fae3345a66f15495d7e36f99ac1293476a5bd045"
+      },
+      "accepted": false,
+      "snapshot": null
+    },
+    {
+      "name": "pure-002",
+      "kind": "environment_startup_failure_before_proof",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/pure-002.log",
+        "bytes": 67,
+        "sha256": "dfce1e7d6849bcb01696e698fae3345a66f15495d7e36f99ac1293476a5bd045"
+      },
+      "accepted": false,
+      "snapshot": null
+    },
+    {
+      "name": "pure-003",
+      "kind": "proof_elaboration_failure",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/pure-003.log",
+        "bytes": 2242,
+        "sha256": "a45ed9a58693f478c3fa1780167236e43378375b0c560c53b1af6cdb6e75416d"
+      },
+      "accepted": false,
+      "snapshot": null
+    },
+    {
+      "name": "pure-004",
+      "kind": "declaration_syntax_failure",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/pure-004.log",
+        "bytes": 1024,
+        "sha256": "4873956f2fc67cde4841cb1e5968a50490a29758db7ea7a5171f6aba85cdac1c"
+      },
+      "accepted": false,
+      "snapshot": null
+    },
+    {
+      "name": "uniqueness-001",
+      "kind": "proof_elaboration_failure",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-001.log",
+        "bytes": 4086,
+        "sha256": "fe08c3a3c4be5aa8ca2db2f9991781f984f5d9be5b2631d440bf4b340517006e"
+      },
+      "accepted": false,
+      "snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-001.lean.txt",
+        "bytes": 8227,
+        "sha256": "fcbcb57bf1c10506688c71e191a39e2886d9f868bf44e3ba7e2833e8f573d077"
+      }
+    },
+    {
+      "name": "uniqueness-003",
+      "kind": "new_extension_type_and_elaboration_failure",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-003.log",
+        "bytes": 4577,
+        "sha256": "96e1dc5b65d657aafe8e87171459ca51ae7b78e0acc1ff7b30a874e57526dc28"
+      },
+      "accepted": false,
+      "snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-003.lean.txt",
+        "bytes": 15051,
+        "sha256": "248df3e3fa81cdf5b4fb88bfdb44507edde45e102f93e43ffe0a4d780aa5d248"
+      }
+    },
+    {
+      "name": "uniqueness-004",
+      "kind": "new_extension_matrix_function_type_failure",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-004.log",
+        "bytes": 2129,
+        "sha256": "2ae2c798e1c6af2bcdb49276d18de2aa0872ba6cfbd36123b6c2e7b61289c504"
+      },
+      "accepted": false,
+      "snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-004.lean.txt",
+        "bytes": 15217,
+        "sha256": "c7ee83b0cf46c028b5c1427f5105674e542056d08cd4283be11015d05fc5f4c2"
+      }
+    },
+    {
+      "name": "witness-001",
+      "kind": "complex_conjugation_arithmetic_elaboration_failure",
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/witness-001.log",
+        "bytes": 9002,
+        "sha256": "b6aaf1fb04efbd50784580486c3598026e3bbbd797db4c77914bb80b97804adb"
+      },
+      "accepted": false,
+      "snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/witness-001.lean.txt",
+        "bytes": 9688,
+        "sha256": "dbed9b47908197c82bd897ba2fc3eb1ce47e65503282ecc51aef7e938f95de6c"
+      }
+    }
+  ],
+  "scope": {
+    "full_convex_purity": "Every extreme density on a finite complex carrier has a normalized vector outer-product representative; no supplied rank-one witness and no restricted state set.",
+    "same_auxiliary_carrier": "Every pair of full convex-pure joint densities on iota x alpha with equal actual discardRight marginal admits U:Matrix alpha alpha Complex satisfying both unitary identities and actual conjugation by I tensor U. Vector version fixes phi(i,a)=sum_b U(a,b)psi(i,b).",
+    "rectangular_embedding": "For any rectangular J:Matrix beta alpha Complex with J^dagger J=I, an actual one-Kraus CPTP map acts on the auxiliary carrier, preserves the system marginal for every complex input matrix, and preserves full convex purity of densities.",
+    "different_auxiliary_carriers": "Actual left/right isometric inclusions into alpha Sum beta preserve full purity and marginal; the embedded purifications are related by an actual unitary on that common carrier.",
+    "not_claimed": [
+      "A rectangular unitary between unequal dimensions",
+      "A direct isometry in an unspecified dimension direction",
+      "Minimal auxiliary dimension or a separately certified numerical unitary-construction algorithm",
+      "Infinite-dimensional purification uniqueness",
+      "Selection of complex quantum theory from frozen UEOT Core",
+      "Physical experimental confirmation"
+    ]
+  },
+  "negative_controls": {
+    "wrong_auxiliary_directions": [
+      "adjoint joint density differs at (00,01): 108i/625 vs 108/625",
+      "transpose joint density differs at (00,01): -108i/625 vs 108/625",
+      "entrywise conjugate joint density differs at (00,10): 144i/625 vs -144i/625"
+    ],
+    "unequal_dimensions": "Concrete 2 -> 3 auxiliary inclusion satisfies J^dagger J=I but J J^dagger is not I; actual states with auxiliary dimensions 2 and 3 admit common 5-dimensional unitary extension."
+  },
+  "evidence_limits": [
+    "This receipt is a B focused gate, not the root unified scientific acceptance and not a v31.8 remote CI receipt.",
+    "No inherited v31.7 heavy tests were rerun by B.",
+    "Earlier failed elaborations may display compiler-inserted sorryAx in diagnostics; none of those failing declarations is counted or accepted. Final source contains no sorry/admit/native_decide/new axiom.",
+    "Unexecuted InterfaceProbe.lean was preserved byte-for-byte as InterfaceProbe.lean.txt to distinguish a static API probe from actual accepted verification.",
+    "Ordinary linter warnings in historical or inherited builds are not represented as zero-warning proof results."
+  ]
+}

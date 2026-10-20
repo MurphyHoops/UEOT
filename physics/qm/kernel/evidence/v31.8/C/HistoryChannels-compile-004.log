@@ -1,0 +1,90 @@
+UEOTQM/HistoryChannels.lean:29:8: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.principal_apply`:
+  [Fintype H]
+  [DecidableEq H]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype H] [DecidableEq H] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:32:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.principal_posSemidef`:
+  [Fintype H]
+  [DecidableEq H]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype H] [DecidableEq H] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:36:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.sum_mass_principal`:
+  [DecidableEq H]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq H] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:67:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.pairing_block`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:76:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.readKraus_gram`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:84:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.readKraus_conjugation`:
+  [DecidableEq ι]
+  [Fintype ν]
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] [Fintype ν] [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:91:60: warning: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [readKraus, Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type, principal, hg, hg',
+    apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/HistoryChannels.lean:106:30: warning: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hg, Ne.symm hg, Prod.mk.injEq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/HistoryChannels.lean:216:58: error: unsolved goals
+H : Type u_1
+ι : Type u_2
+inst✝³ : Fintype H
+inst✝² : DecidableEq H
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+ρ : Density (H × ι)
+s : Finset H
+⊢ ∑ x, ∑ i, (if x ∈ s then ρ.matrix (x, i) (x, i) else 0).re = ∑ b ∈ s, ∑ i, (ρ.matrix (b, i) (b, i)).re
+UEOTQM/HistoryChannels.lean:235:46: error: unsolved goals
+ι : Type u_2
+ν : Type u_3
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype ν
+inst✝ : DecidableEq ν
+e : ι ≃ ν
+i j : ι
+⊢ (if j = i then 1 else 0) = if i = j then 1 else 0
+UEOTQM/HistoryChannels.lean:251:43: warning: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [RectangularChannel.operator, relabel, relabelKraus, Matrix.mul_apply, Matrix.conjTranspose_apply,
+    apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

@@ -1,0 +1,91 @@
+{
+  "schema": "ueot-qm-v31.8-source-review-1",
+  "reviewer": "B",
+  "scope": "Read-only scientific and interface review of C public source; no compilation performed by this reviewer.",
+  "status": "CLEAR",
+  "sources": {
+    "formalization/ueot-qm/UEOTQM/HistoryChannels.lean": "04864b526fabe51d60efd776355fa33086781f30e6956698732edacf78571b5c",
+    "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a"
+  },
+  "checks": [
+    {
+      "topic": "Actual history dephasing and selected CPTP action",
+      "result": "CLEAR",
+      "evidence": [
+        "HistoryChannels.readKraus",
+        "readKraus_gram",
+        "readKraus_conjugation",
+        "controlled.complete",
+        "controlled_operator_eq_block"
+      ],
+      "reason": "Kraus explicitly reads the same input and output history label; all off-diagonal output history blocks vanish. Arbitrary input density is permitted, but this is not coherent control."
+    },
+    {
+      "topic": "PSD weights, zero blocks and normalized positive blocks",
+      "result": "CLEAR",
+      "evidence": [
+        "principal_posSemidef",
+        "sum_mass_principal",
+        "sum_weight",
+        "zero_weight_iff_zero_principal",
+        "pairing_operator_difference_le_mass_mul_defect"
+      ],
+      "reason": "Positive principal blocks have nonnegative mass and weights sum to one. Zero mass is converted to the zero matrix before use, while normalization occurs only under strict positive mass. The estimate includes the actual mass factor."
+    },
+    {
+      "topic": "Legality of restricted effects and actual record TV",
+      "result": "CLEAR",
+      "evidence": [
+        "restrictEffect",
+        "pairing_block",
+        "controlled_state_distance_le_weighted_defect",
+        "event_probability",
+        "record_tv_le_joint_distance"
+      ],
+      "reason": "Both effect positivity and complement positivity are proved by actual principal submatrices; the trace pairing expands over genuine block outputs. Event TV bound uses inherited all-events characterization without an extra factor."
+    },
+    {
+      "topic": "Common controller and common intermediate input",
+      "result": "CLEAR",
+      "evidence": [
+        "Controller",
+        "step",
+        "actionCost",
+        "run_succ_distance_le",
+        "run_distance_le_actionCost_sum"
+      ],
+      "reason": "Both instrument families use exactly C(t,h); the recurrence inserts step_I(run_J prefix sigma). Consequently both compared actions at time t use the same actual J-prefix density and its normalized history weights. Initial rho/sigma error is separate."
+    },
+    {
+      "topic": "Time order, full quantum-memory and old Protocol connection",
+      "result": "CLEAR",
+      "evidence": [
+        "Controller.word_snoc",
+        "recordOperator_append",
+        "run_matrix",
+        "run_eq_protocol_state",
+        "terminal_memory_matrix",
+        "weight_run_leaf",
+        "protocol_record_tv_eq"
+      ],
+      "reason": "Chronological append is matched to front recursion through an actual leaf/history equivalence and full matrix equality; the connection is not confined to probabilities. Terminal quantum marginal is the original full leaf-operator sum."
+    },
+    {
+      "topic": "Finite and empty carrier scope",
+      "result": "CLEAR",
+      "evidence": [
+        "controlled_defect_le_uniform",
+        "step_defect_le_uniform",
+        "Controller.truncate",
+        "run"
+      ],
+      "reason": "All horizons and record/state/Kraus carriers in the dynamics are finite. Defect supremum includes zero, and nonnegative uniform bound is explicit where an empty density domain matters. No infinite extension of C is postulated."
+    }
+  ],
+  "exclusions": [
+    "Concrete C witnesses and their logs are still owned and being completed by C; not reviewed here.",
+    "No claim for different controllers, coherent controllers, arbitrary stopping trees, diamond norm, an unmodeled external memory or continuous time.",
+    "This review is neither the root unified gate nor remote CI, and adds no physical experimental evidence."
+  ],
+  "blocking_findings": []
+}

@@ -1,0 +1,194 @@
+scripts/witnesses/ActionRecordBudgetExamples.lean:24:28: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ActionRecordBudgetExamples.lean:29:52: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, certain, ho]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ActionRecordBudgetExamples.lean:39:14: error: unsolved goals
+case «0».«0»
+⊢ (if 0 = 3 then 0 else (1 / 2) • (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 0 +
+        ((if 1 = 3 then 0 else (1 / 2) • (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 0 +
+          ((if 2 = 3 then 0 else (1 / 2) • (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 0 +
+            (if Fin.succ 2 = 3 then 0 else (1 / 2) • (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 0)) +
+      ((if 0 = 3 then (1 / 2) • (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 0 +
+        ((if 1 = 3 then (1 / 2) • (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 0 +
+          ((if 2 = 3 then (1 / 2) • (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 0 +
+            (if Fin.succ 2 = 3 then (1 / 2) • (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 0))) =
+    1
+
+case «0».«1»
+⊢ (if 0 = 3 then 0 else (1 / 2) • (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 1 +
+        ((if 1 = 3 then 0 else (1 / 2) • (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 1 +
+          ((if 2 = 3 then 0 else (1 / 2) • (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 1 +
+            (if Fin.succ 2 = 3 then 0 else (1 / 2) • (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 0 1)) +
+      ((if 0 = 3 then (1 / 2) • (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 1 +
+        ((if 1 = 3 then (1 / 2) • (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 1 +
+          ((if 2 = 3 then (1 / 2) • (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 1 +
+            (if Fin.succ 2 = 3 then (1 / 2) • (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 0 1))) =
+    0
+
+case «1».«0»
+⊢ (if 0 = 3 then 0 else (1 / 2) • (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 0 +
+        ((if 1 = 3 then 0 else (1 / 2) • (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 0 +
+          ((if 2 = 3 then 0 else (1 / 2) • (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 0 +
+            (if Fin.succ 2 = 3 then 0 else (1 / 2) • (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 0)) +
+      ((if 0 = 3 then (1 / 2) • (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 0 +
+        ((if 1 = 3 then (1 / 2) • (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 0 +
+          ((if 2 = 3 then (1 / 2) • (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 0 +
+            (if Fin.succ 2 = 3 then (1 / 2) • (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 0))) =
+    0
+
+case «1».«1»
+⊢ (if 0 = 3 then 0 else (1 / 2) • (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 1 +
+        ((if 1 = 3 then 0 else (1 / 2) • (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 1 +
+          ((if 2 = 3 then 0 else (1 / 2) • (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 1 +
+            (if Fin.succ 2 = 3 then 0 else (1 / 2) • (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ) 1 1)) +
+      ((if 0 = 3 then (1 / 2) • (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 1 +
+        ((if 1 = 3 then (1 / 2) • (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 1 +
+          ((if 2 = 3 then (1 / 2) • (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 1 +
+            (if Fin.succ 2 = 3 then (1 / 2) • (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ else 0) 1 1))) =
+    1
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+scripts/witnesses/ActionRecordBudgetExamples.lean:46:70: error: unsolved goals
+case «0».«0».«0»
+X : Operator Qubit
+⊢ (if 0 = 3 then 0 else (1 / 2) • (X * (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 0 +
+          (if 1 = 3 then 0 else (1 / 2) • (X * (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 0 +
+        (if 2 = 3 then 0 else (1 / 2) • (X * (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 0 +
+      (if Fin.succ 2 = 3 then 0 else (1 / 2) • (X * (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 0 =
+    X 0 0 * (3 / 4)
+
+case «0».«0».«1»
+X : Operator Qubit
+⊢ (if 0 = 3 then 0 else (1 / 2) • (X * (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 1 +
+          (if 1 = 3 then 0 else (1 / 2) • (X * (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 1 +
+        (if 2 = 3 then 0 else (1 / 2) • (X * (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 1 +
+      (if Fin.succ 2 = 3 then 0 else (1 / 2) • (X * (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 0 1 =
+    X 0 1 * (3 / 4)
+
+case «0».«1».«0»
+X : Operator Qubit
+⊢ (if 0 = 3 then 0 else (1 / 2) • (X * (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 0 +
+          (if 1 = 3 then 0 else (1 / 2) • (X * (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 0 +
+        (if 2 = 3 then 0 else (1 / 2) • (X * (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 0 +
+      (if Fin.succ 2 = 3 then 0 else (1 / 2) • (X * (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 0 =
+    X 1 0 * (3 / 4)
+
+case «0».«1».«1»
+X : Operator Qubit
+⊢ (if 0 = 3 then 0 else (1 / 2) • (X * (if 0 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 1 +
+          (if 1 = 3 then 0 else (1 / 2) • (X * (if 1 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 1 +
+        (if 2 = 3 then 0 else (1 / 2) • (X * (if 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 1 +
+      (if Fin.succ 2 = 3 then 0 else (1 / 2) • (X * (if Fin.succ 2 = 3 then 0 else (1 / 2) • 1)ᴴ)) 1 1 =
+    X 1 1 * (3 / 4)
+
+case «1».«0».«0»
+X : Operator Qubit
+⊢ (if 0 = 3 then (1 / 2) • (X * (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 0 +
+          (if 1 = 3 then (1 / 2) • (X * (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 0 +
+        (if 2 = 3 then (1 / 2) • (X * (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 0 +
+      (if Fin.succ 2 = 3 then (1 / 2) • (X * (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 0 =
+    X 0 0 * (1 / 4)
+
+case «1».«0».«1»
+X : Operator Qubit
+⊢ (if 0 = 3 then (1 / 2) • (X * (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 1 +
+          (if 1 = 3 then (1 / 2) • (X * (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 1 +
+        (if 2 = 3 then (1 / 2) • (X * (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 1 +
+      (if Fin.succ 2 = 3 then (1 / 2) • (X * (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 0 1 =
+    X 0 1 * (1 / 4)
+
+case «1».«1».«0»
+X : Operator Qubit
+⊢ (if 0 = 3 then (1 / 2) • (X * (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 0 +
+          (if 1 = 3 then (1 / 2) • (X * (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 0 +
+        (if 2 = 3 then (1 / 2) • (X * (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 0 +
+      (if Fin.succ 2 = 3 then (1 / 2) • (X * (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 0 =
+    X 1 0 * (1 / 4)
+
+case «1».«1».«1»
+X : Operator Qubit
+⊢ (if 0 = 3 then (1 / 2) • (X * (if 0 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 1 +
+          (if 1 = 3 then (1 / 2) • (X * (if 1 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 1 +
+        (if 2 = 3 then (1 / 2) • (X * (if 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 1 +
+      (if Fin.succ 2 = 3 then (1 / 2) • (X * (if Fin.succ 2 = 3 then (1 / 2) • 1 else 0)ᴴ) else 0) 1 1 =
+    X 1 1 * (1 / 4)
+scripts/witnesses/ActionRecordBudgetExamples.lean:48:43: warning: declaration uses `sorry`
+scripts/witnesses/ActionRecordBudgetExamples.lean:53:63: error: unsolved goals
+o : Label
+ρ : Density Qubit
+⊢ mass (if o = 0 then (3 / 4) • ρ.matrix else 4⁻¹ • ρ.matrix) = if o = 0 then 3 / 4 else 4⁻¹
+scripts/witnesses/ActionRecordBudgetExamples.lean:62:38: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'UEOTQM.ActionRecordBudgetExamples.Qubit' does not depend on any axioms
+'UEOTQM.ActionRecordBudgetExamples.Label' does not depend on any axioms
+'UEOTQM.ActionRecordBudgetExamples.certain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.certain_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.certain_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased_branch' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased_probability' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.rhoZero' depends on axioms: [propext, Classical.choice, Quot.sound]

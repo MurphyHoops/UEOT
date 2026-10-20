@@ -1,0 +1,104 @@
+{
+  "schema": "ueot_qm.v31_8.C.focused_verification.v1",
+  "status": "FOCUSED_SOURCE_AND_AXIOMS_PASS_UNIFIED_REMOTE_PENDING",
+  "recorded_at_utc": "2026-10-20T11:04:04.977841+00:00",
+  "public_modules": 2,
+  "public_declarations": {
+    "theorem": 54,
+    "def": 20,
+    "abbrev": 1,
+    "total": 75
+  },
+  "concrete_witness": {
+    "theorem": 36,
+    "def": 14,
+    "abbrev": 2,
+    "total": 52
+  },
+  "foundations": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "all_requested_names_exact_source_order": true,
+  "sources": [
+    {
+      "source": "formalization/ueot-qm/UEOTQM/HistoryChannels.lean",
+      "source_sha256": "04864b526fabe51d60efd776355fa33086781f30e6956698732edacf78571b5c",
+      "source_bytes": 12303,
+      "focused_olean_path": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/HistoryChannels.olean",
+      "focused_olean_sha256": "4d4557301b2bc411dd962a17d18a118114c2b0c9faa2cf02750b7c7e062d5617",
+      "focused_olean_identity_scope": "Actual produced bytes at the focused receipt time; current unified build regenerates artifacts.",
+      "receipt": "physics/qm/kernel/evidence/v31.8/C/HistoryChannels-compile-005.json",
+      "receipt_sha256": "d701fa80bbfd5780e291631c0c17c78c8a36f60139a76668a0a26a079047c1a4",
+      "log": "physics/qm/kernel/evidence/v31.8/C/HistoryChannels-compile-005.log",
+      "log_sha256": "8d995ec461a81edcf2885b1a77f42d3b8b2f56359fd9721a649ab9d56bc321c5"
+    },
+    {
+      "source": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
+      "source_sha256": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a",
+      "source_bytes": 20678,
+      "focused_olean_path": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/ActionRecordBudget.olean",
+      "focused_olean_sha256": "d972bab028f2da45c8256d38d03af98e139de3d223172595bf56de38d2887d6a",
+      "focused_olean_identity_scope": "Actual produced bytes at the focused receipt time; current unified build regenerates artifacts.",
+      "receipt": "physics/qm/kernel/evidence/v31.8/C/ActionRecordBudget-compile-006.json",
+      "receipt_sha256": "bbfba5e8d697ced13a4959505979f53db0421f344c6eb68bbf6691a1711d5b45",
+      "log": "physics/qm/kernel/evidence/v31.8/C/ActionRecordBudget-compile-006.log",
+      "log_sha256": "9eb4ee920cabbc489b4ec02a8835fa467f860ae0e8551b95fe963622831cba85"
+    },
+    {
+      "source": "formalization/ueot-qm/scripts/witnesses/ActionRecordBudgetExamples.lean",
+      "source_sha256": "169eca4505e33561d7c364267ae206c0674a36e9fe61393368b4b4d43c9d039e",
+      "source_bytes": 20626,
+      "focused_olean_path": "formalization/ueot-qm/.lake/build/lib/lean/scripts/witnesses/ActionRecordBudgetExamples.olean",
+      "focused_olean_sha256": "f2cd0ec0823382e24f6b615f6276e4599345896d632fac4c2eeaf56acee9d7b8",
+      "focused_olean_identity_scope": "Actual produced bytes at the focused receipt time; current unified build regenerates artifacts.",
+      "receipt": "physics/qm/kernel/evidence/v31.8/C/ActionRecordBudgetExamples-compile-006.json",
+      "receipt_sha256": "4996bc33827e39b974220cc8f16627af7257c10cee3748ac081fa614b09bcb3f",
+      "log": "physics/qm/kernel/evidence/v31.8/C/ActionRecordBudgetExamples-compile-006.log",
+      "log_sha256": "0af318c66c848d2f2769424a8da82cce6141fe2ddaae92bae147a341c01302f5"
+    }
+  ],
+  "current_artifact_readback": {
+    "status": "PENDING_ROOT_UNIFIED_BUILD",
+    "reason": "Root confirmed first unified gate started at 2026-10-20 10:59:32 UTC and lake build is regenerating outputs. A read during regeneration found HistoryChannels.olean temporarily absent. This record does not invent a current output hash or replace original focused receipts.",
+    "followup_owner": "root records final unified artifact snapshot separately."
+  },
+  "public_audit": {
+    "request_sha256": "af0aaeeaa3a7efc41a88a3cc0282c27315d1b55f9a81b6e13976c02fa942cd5c",
+    "receipt": "physics/qm/kernel/evidence/v31.8/C/public-named-axiom-audit.json",
+    "log_sha256": "2ee4f221e7543575a955776b79cf978d72bbbe36367d275fc7d04f22674364df",
+    "declaration_receipt": "physics/qm/kernel/evidence/v31.8/C/public-declarations.json"
+  },
+  "witness_audit": "physics/qm/kernel/evidence/v31.8/C/witness-declarations-and-axioms.json",
+  "independent_reviews": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/C/B_public_source_review.json",
+      "sha256": "48dd0ff1640a663be2ea442829bd33a6cfed5bfc41edd4d3e397b68b33148cb0"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/C/B_witness_source_review.json",
+      "sha256": "d2087ae3ae57cbd639666095818cede476160dd8e95ac89ccff376ba4c87b11d"
+    }
+  ],
+  "failure_history": "All numbered failed compiler receipts/logs preserved. HistoryChannels-compile-001 is a sandbox/Lake startup-location failure; later failed elaboration logs are developmental proof failures, not accepted proofs. Final successful receipts have no sorryAx.",
+  "warnings": "Ordinary Lean linter warnings retained; not zero warnings.",
+  "scientific_scope": [
+    "Actual finite history-reading/dephasing Kraus channels; arbitrary joint inputs are read/dephased rather than coherently controlled.",
+    "PSD principal blocks, normalized trace weights, positive-mass normalization, zero-mass zero blocks, legal restricted effects.",
+    "The same causal controller on fixed finite horizon; actions need not form a finite or nonempty type. Both instrument families share outcome and quantum-memory carriers, while Kraus index carriers may differ.",
+    "Per-time costs use actual J-prefix state as the common input; no equality of the two evolving history laws is assumed.",
+    "Actual weighted action-defect recurrence and finite sum, separate initial-state error, uniform action budget, complete record TV with coefficient one.",
+    "Exact original Protocol leaf bijection, chronological recordOperator blocks, full state relabelling and terminal quantum marginal.",
+    "Exact rational two-step control: action defects 1/4 then 0, total 1/4, full-record TV 1/4.",
+    "Deleted-label counterexample: all unlabelled action maps equal and defect zero; subsequent shared feedback has event probabilities 1/0, full-record TV 1, same terminal quantum density rho."
+  ],
+  "open_boundaries": [
+    "Fixed-depth results do not automatically cover varying stopping depth.",
+    "No coherent-controller, diamond-distance, arbitrary unmodelled environment, continuous-time, or infinite-dimensional claim.",
+    "Formal mathematical controls only: no new physical experiments, empirical selection of complex quantum theory, unconditional three-generation derivation, or completion of a natural theory."
+  ],
+  "integration_owner": "root",
+  "unified_acceptance": "Not claimed here; root first unified stable-source acceptance is separate.",
+  "remote_publication": "No v31.8 remote CI/PR/source identity claimed here."
+}

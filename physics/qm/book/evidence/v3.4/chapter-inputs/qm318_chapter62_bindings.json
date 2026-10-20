@@ -1,0 +1,436 @@
+{
+  "schema": "ueot_qm.book.chapter62.bindings.v1",
+  "status": "READY_FOR_CANONICAL_INTEGRATION_PENDING_UNIFIED_ACCEPTANCE",
+  "recorded_at_utc": "2026-10-20T11:06:36.929097+00:00",
+  "chapter": 62,
+  "chapter_source": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_chapter62.md",
+    "bytes": 21795,
+    "sha256": "cc5c62dd05978691ee97d4417ac697168ed91a7c9ffc978a37147c3652cb5ba6"
+  },
+  "numbered_result_count": 6,
+  "new_result_ids": [
+    "P-ARB-01",
+    "P-ARB-02",
+    "P-ARB-03",
+    "P-ARB-04",
+    "P-ARB-05",
+    "N-ARB-01"
+  ],
+  "results": [
+    {
+      "id": "P-ARB-01",
+      "anchor": "p-arb-01",
+      "title": "历史块、归一权重与合法块效应",
+      "section": "62.2",
+      "premises": [
+        "H、ι、ν 均为有限载体，矩阵使用既有完整复矩阵、Density 与 Effect 类型。",
+        "ζ 是任意 Density(H×ι)，实际 PSD 且复迹一；不要求预先块对角。",
+        "E 是任意 Effect(H×ν)，矩阵及补矩阵均实际 PSD。"
+      ],
+      "quantified_scope": "∀ finite H ι ν, ∀ ζ:Density(H×ι), ∀ h:H, ∀ E:Effect(H×ν), ∀ block family B:H→Operator ν.",
+      "actual_conclusion": "ζ_h 是PSD；p_h=mass ζ_h≥0、Σ_h p_h=1，p_h=0 iff ζ_h=0；E_h 与 I−E_h 均PSD，故为实际 Effect ν；pairing(E,block B)=Σ_h pairing(E_h,B_h)。",
+      "public_main_declarations": [
+        "UEOTQM.HistoryChannels.principal_posSemidef",
+        "UEOTQM.HistoryChannels.weight_nonneg",
+        "UEOTQM.HistoryChannels.sum_weight",
+        "UEOTQM.HistoryChannels.zero_weight_iff_zero_principal",
+        "UEOTQM.HistoryChannels.restrictEffect",
+        "UEOTQM.HistoryChannels.pairing_block"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.HistoryChannels.principal",
+        "UEOTQM.HistoryChannels.principal_apply",
+        "UEOTQM.HistoryChannels.sum_mass_principal",
+        "UEOTQM.HistoryChannels.weight",
+        "UEOTQM.HistoryChannels.restrictEffect_matrix"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.ActionRecordBudgetExamples.joint_probability_certain",
+        "UEOTQM.ActionRecordBudgetExamples.joint_probability_biased"
+      ],
+      "concrete_witness_role": "见证使用任意合法联合效应的两个实际主块，分别算出确定/有偏记录的概率；通用零块责任由公共证明本身承担。",
+      "open_boundaries": [
+        "不向零概率历史赋任意实际后验。",
+        "主块性质可用于任意联合态；后续控制器仍实际读取/去相干历史，不是相干控制器。"
+      ],
+      "proof_outline": [
+        "主子矩阵保持PSD；积指标迹和得到权重总和1。",
+        "PSD质量零当且仅当矩阵零。",
+        "把E及I−E分别限制到单射 i↦(h,i)；单位主块等于单位。",
+        "展开有限矩阵乘法与迹得到真实块配对和。"
+      ]
+    },
+    {
+      "id": "P-ARB-02",
+      "anchor": "p-arb-02",
+      "title": "实际历史读取通道的动作加权界",
+      "section": "62.3",
+      "premises": [
+        "有限H、ι、ν和有限Kraus载体κ、η；两个族 C_h:RectangularChannel ι ν κ、D_h:RectangularChannel ι ν η均有实际完整性。",
+        "任意共同输入ζ:Density(H×ι)。",
+        "uniform状态版本只需∀h δ(C_h,D_h)≤ε；supremum历史通道版本另显式要求ε≥0以控制插入的0。"
+      ],
+      "quantified_scope": "∀ such families C,D and every same actual joint input ζ; κ and η may differ; arbitrary complex X for the exact operator formula.",
+      "actual_conclusion": "真实readKraus(h,K)的完整性给controlled通道；operator X=block(h↦C_h(principal X h))。共同输入输出距离≤Σ_h weight ζ h·δ(C_h,D_h)；统一≤ε，且ε≥0时controlled通道defect≤ε。",
+      "public_main_declarations": [
+        "UEOTQM.HistoryChannels.controlled",
+        "UEOTQM.HistoryChannels.controlled_operator_eq_block",
+        "UEOTQM.HistoryChannels.pairing_operator_difference_le_mass_mul_defect",
+        "UEOTQM.HistoryChannels.controlled_state_distance_le_weighted_defect",
+        "UEOTQM.HistoryChannels.controlled_defect_le_uniform"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.HistoryChannels.readKraus",
+        "UEOTQM.HistoryChannels.readKraus_gram",
+        "UEOTQM.HistoryChannels.readKraus_conjugation",
+        "UEOTQM.HistoryChannels.controlled_operator_apply",
+        "UEOTQM.HistoryChannels.controlled_state_distance_le_uniform"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.ActionRecordBudgetExamples.biased_joint_distance_le_quarter",
+        "UEOTQM.ActionRecordBudgetExamples.biased_joint_distance_exact",
+        "UEOTQM.ActionRecordBudgetExamples.biased_record_defect_exact"
+      ],
+      "concrete_witness_role": "实际二维仪器上计算所有输入/所有合法联合效应的上界与事件下界，证明真实supremum缺陷为1/4。",
+      "open_boundaries": [
+        "读取Kraus确实消去历史相干；不能改称任意相干控制。",
+        "双方权重来自同一个ζ，未假定两个不同运行轨迹具有相同分布。",
+        "矩形通道完全正性的继承结论不把当前缺陷换成diamond或任意环境放大后的缺陷。"
+      ],
+      "proof_outline": [
+        "显式历史δ矩阵元给Kraus Gram完整性和算符块公式。",
+        "PSD零质量块消去；正质量块normalize成实际Density。",
+        "任意块效应概率差≤mass(X_h)·通道defect。",
+        "真实联合效应限制、有限绝对值三角和与supremum得到总界；归一权重给统一版本。"
+      ]
+    },
+    {
+      "id": "P-ARB-03",
+      "anchor": "p-arb-03",
+      "title": "有限历史演化与原完整协议的矩阵一致性",
+      "section": "62.4",
+      "premises": [
+        "固定任意N:Nat，有限共同结果O和量子记忆ι；A为任意动作类型，不额外要求有限或非空。",
+        "C:∀t:Fin N,(Fin t.val→O)→A 是同一实际因果控制器。",
+        "I:A→Instrument ι O κ 有实际完整Kraus数据，ρ为任意Density ι。",
+        "协议π_C由该固定深度C完整生成，保留每个结果分支，包括零概率结果。"
+      ],
+      "quantified_scope": "∀ fixed N, all such C,I,ρ and all actual full histories; no varying-depth generalization.",
+      "actual_conclusion": "实际step读取历史、执行所选带标签仪器并经置换追加结果。run矩阵=block(h↦recordOperator I (C.word h) ρ.matrix)。原Protocol叶与History O N有真实双射并保持完整action/outcome词；重标记完整联合密度态相等，终端量子边际为原leaf operator和，leaf概率一致。",
+      "public_main_declarations": [
+        "UEOTQM.ActionRecordBudget.Controller.leafEquiv",
+        "UEOTQM.ActionRecordBudget.Controller.protocol_word_eq",
+        "UEOTQM.ActionRecordBudget.Controller.word_snoc",
+        "UEOTQM.ActionRecordBudget.step",
+        "UEOTQM.ActionRecordBudget.run_matrix",
+        "UEOTQM.ActionRecordBudget.run_eq_protocol_state",
+        "UEOTQM.ActionRecordBudget.terminal_memory_matrix",
+        "UEOTQM.ActionRecordBudget.weight_run_leaf"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.HistoryChannels.relabelKraus",
+        "UEOTQM.HistoryChannels.relabelKraus_gram",
+        "UEOTQM.HistoryChannels.relabel",
+        "UEOTQM.HistoryChannels.relabel_operator_apply",
+        "UEOTQM.HistoryChannels.relabel_state_matrix",
+        "UEOTQM.HistoryChannels.relabel_state_distance",
+        "UEOTQM.ActionRecordBudget.History",
+        "UEOTQM.ActionRecordBudget.Controller",
+        "UEOTQM.ActionRecordBudget.Controller.dropLast",
+        "UEOTQM.ActionRecordBudget.Controller.shift",
+        "UEOTQM.ActionRecordBudget.Controller.dropLast_shift",
+        "UEOTQM.ActionRecordBudget.Controller.word",
+        "UEOTQM.ActionRecordBudget.Controller.word_length",
+        "UEOTQM.ActionRecordBudget.Controller.protocol",
+        "UEOTQM.ActionRecordBudget.Controller.snoc_head",
+        "UEOTQM.ActionRecordBudget.Controller.tail_snoc",
+        "UEOTQM.ActionRecordBudget.Controller.truncate",
+        "UEOTQM.ActionRecordBudget.Controller.truncate_last",
+        "UEOTQM.ActionRecordBudget.Controller.truncate_dropLast",
+        "UEOTQM.ActionRecordBudget.initialEquiv",
+        "UEOTQM.ActionRecordBudget.extendEquiv",
+        "UEOTQM.ActionRecordBudget.step_operator_apply",
+        "UEOTQM.ActionRecordBudget.step_operator_eq_block",
+        "UEOTQM.ActionRecordBudget.run",
+        "UEOTQM.ActionRecordBudget.recordOperator_append",
+        "UEOTQM.ActionRecordBudget.weight_run"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.ActionRecordBudgetExamples.feedback",
+        "UEOTQM.ActionRecordBudgetExamples.feedback_word",
+        "UEOTQM.ActionRecordBudgetExamples.exact_terminal_memory",
+        "UEOTQM.ActionRecordBudgetExamples.approximate_terminal_memory",
+        "UEOTQM.ActionRecordBudgetExamples.flipped_terminal_memory",
+        "UEOTQM.ActionRecordBudgetExamples.original_protocol_record_tv_exact",
+        "UEOTQM.ActionRecordBudgetExamples.original_protocol_negative_tv"
+      ],
+      "concrete_witness_role": "两步有反馈实际控制器验证前读/后追加顺序、终端量子边际，并将两个实际全记录TV精确传回原Protocol。",
+      "open_boundaries": [
+        "原Protocol仍允许变长叶；此结果只量化由固定N的C构造的完整子类。",
+        "没有补齐任意停止树或处理停止后动作语义。",
+        "完整结果历史在给定C下恢复动作词，未假设动作选择可忽略历史。"
+      ],
+      "proof_outline": [
+        "空历史/结果追加均用真实载体双射和置换Kraus通道。",
+        "原叶树从首项递归，构造双向leaf/history映射。",
+        "word_snoc与recordOperator_append证明末尾执行和原前读解释器的时间顺序一致。",
+        "按N归纳得到每个真实未归一化矩阵块；真实重标记与有限和换序得到全态和两个语义接口。"
+      ]
+    },
+    {
+      "id": "P-ARB-04",
+      "anchor": "p-arb-04",
+      "title": "实际逐动作和预算与完整记录TV",
+      "section": "62.5",
+      "premises": [
+        "采用P-ARB-03的固定N、有限共同记录/记忆和同一C；I与J可有不同有限Kraus载体。",
+        "ρ、σ为任意初态，无需相等。",
+        "第t项使用实际J前缀 run J (C.truncate t) σ 的PSD历史块质量作为共同输入权重。",
+        "可选统一预算假设是∀t h δ_rec(I(C t h),J(C t h))≤ε t；ε非负只在单步通道supremum统一界另显式需要。"
+      ],
+      "quantified_scope": "∀ I,J,C,N,ρ,σ under the stated finite carrier conditions, and for the uniform corollary ∀ ε:Fin N→ℝ satisfying all selected-action bounds.",
+      "actual_conclusion": "a_t=Σ_h q^J_t(h) δ_rec(I(C_t h),J(C_t h))≥0。实际D_(t+1)≤D_t+a_t，因此最终joint distance与完整record TV均≤d_eff(ρ,σ)+Σ_t a_t，且≤d_eff(ρ,σ)+Σ_t ε_t。原Protocol完整leaf TV精确等于History TV并满足同界。",
+      "public_main_declarations": [
+        "UEOTQM.ActionRecordBudget.actionCost",
+        "UEOTQM.ActionRecordBudget.run_succ_distance_le",
+        "UEOTQM.ActionRecordBudget.run_distance_le_actionCost_sum",
+        "UEOTQM.ActionRecordBudget.run_distance_le_budget_sum",
+        "UEOTQM.ActionRecordBudget.record_tv_le_actionCost_sum",
+        "UEOTQM.ActionRecordBudget.record_tv_le_budget_sum",
+        "UEOTQM.ActionRecordBudget.protocol_record_tv_eq",
+        "UEOTQM.ActionRecordBudget.protocol_record_tv_le_budget_sum"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.ActionRecordBudget.step_defect_le_uniform",
+        "UEOTQM.ActionRecordBudget.record_defect_self",
+        "UEOTQM.ActionRecordBudget.step_state_distance_le_weighted",
+        "UEOTQM.ActionRecordBudget.step_state_distance_le_uniform",
+        "UEOTQM.ActionRecordBudget.actionCost_nonneg",
+        "UEOTQM.ActionRecordBudget.actionCost_castSucc",
+        "UEOTQM.ActionRecordBudget.actionCost_last",
+        "UEOTQM.ActionRecordBudget.actionCost_le",
+        "UEOTQM.HistoryChannels.weights",
+        "UEOTQM.HistoryChannels.weights_weight",
+        "UEOTQM.HistoryChannels.event_probability",
+        "UEOTQM.HistoryChannels.record_tv_le_joint_distance"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.ActionRecordBudgetExamples.budget",
+        "UEOTQM.ActionRecordBudgetExamples.budget_nonneg",
+        "UEOTQM.ActionRecordBudgetExamples.action_defects_bounded",
+        "UEOTQM.ActionRecordBudgetExamples.first_actionCost_exact",
+        "UEOTQM.ActionRecordBudgetExamples.second_actionCost_exact",
+        "UEOTQM.ActionRecordBudgetExamples.actionCost_sum_exact",
+        "UEOTQM.ActionRecordBudgetExamples.two_step_budget_bound",
+        "UEOTQM.ActionRecordBudgetExamples.two_step_record_tv_exact",
+        "UEOTQM.ActionRecordBudgetExamples.original_protocol_record_tv_exact"
+      ],
+      "concrete_witness_role": "严格实例化实际加权成本及uniform底层动作界，含不同初态项，并用完整记录事件达到预算下界。",
+      "open_boundaries": [
+        "没有用两种不同轨迹的权重互换；选择共同输入的J方向是显式定义。",
+        "δ_rec本身为真实supremum，不自动给任意动作库可计算的数值或实验校准。",
+        "不扩大为diamond、相干控制、变长停止树、任意未建模环境或连续时间预算。"
+      ],
+      "proof_outline": [
+        "在 S_I(ζ_J) 处作三角分解：第一项CPTP收缩，第二项用同输入历史加权动作界。",
+        "按有限N递推，零历史的真实置换给初态距离项，Fin求和得到Σ_t。",
+        "每个实际前缀权重总和1，把所有动作上界压成ε_t。",
+        "每个完整记录事件对应合法E_S；tv_le_iff_events保持常数1。",
+        "叶双射保持完整TV，接回原Protocol。"
+      ]
+    },
+    {
+      "id": "P-ARB-05",
+      "anchor": "p-arb-05",
+      "title": "精确有理逐步预算的饱和见证",
+      "section": "62.6",
+      "premises": [
+        "具体Qubit=Label=Fin2，Kraus下标Fin4。",
+        "certain b只有(o=b,k=0)单位Kraus；biased的标签0四元组为(I/2,I/2,I/2,0)，标签1为(0,0,0,I/2)。",
+        "同一个feedback在t=0选none，在t=1按首记录o选some o。",
+        "exactActions none=certain0，approximateActions none=biased；两方some o都为certain o；量词覆盖任意二维输入Density。"
+      ],
+      "quantified_scope": "Exact finite concrete instrument/controller construction, with all input densities for the action supremum upper bound and same-input TV, and arbitrary ρ,σ for the initial-error bound.",
+      "actual_conclusion": "真实第一动作记录defect=1/4（全输入全效应上界及真实事件下界）；第二对应动作defect=0；实际actionCost分别1/4与0，总和1/4。完整两步record TV=1/4；不同初态joint distance≤d_eff(ρ,σ)+1/4；同输入两终端量子态均=ρ；原Protocol TV=1/4。",
+      "public_main_declarations": [
+        "UEOTQM.ActionRecordBudget.run_distance_le_actionCost_sum",
+        "UEOTQM.ActionRecordBudget.record_tv_le_actionCost_sum",
+        "UEOTQM.ActionRecordBudget.protocol_record_tv_eq",
+        "UEOTQM.ActionRecordBudget.run_matrix"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.HistoryChannels.restrictEffect",
+        "UEOTQM.HistoryChannels.pairing_block"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.ActionRecordBudgetExamples.Qubit",
+        "UEOTQM.ActionRecordBudgetExamples.Label",
+        "UEOTQM.ActionRecordBudgetExamples.certain",
+        "UEOTQM.ActionRecordBudgetExamples.certain_branch",
+        "UEOTQM.ActionRecordBudgetExamples.certain_probability",
+        "UEOTQM.ActionRecordBudgetExamples.halfK",
+        "UEOTQM.ActionRecordBudgetExamples.halfK_gram",
+        "UEOTQM.ActionRecordBudgetExamples.halfK_conjugation",
+        "UEOTQM.ActionRecordBudgetExamples.biasedKraus",
+        "UEOTQM.ActionRecordBudgetExamples.biased",
+        "UEOTQM.ActionRecordBudgetExamples.biased_branch",
+        "UEOTQM.ActionRecordBudgetExamples.biased_probability",
+        "UEOTQM.ActionRecordBudgetExamples.rhoZero",
+        "UEOTQM.ActionRecordBudgetExamples.joint_probability_certain",
+        "UEOTQM.ActionRecordBudgetExamples.joint_probability_biased",
+        "UEOTQM.ActionRecordBudgetExamples.biased_joint_distance_le_quarter",
+        "UEOTQM.ActionRecordBudgetExamples.biased_joint_distance_exact",
+        "UEOTQM.ActionRecordBudgetExamples.biased_record_defect_exact",
+        "UEOTQM.ActionRecordBudgetExamples.feedback",
+        "UEOTQM.ActionRecordBudgetExamples.exactActions",
+        "UEOTQM.ActionRecordBudgetExamples.approximateActions",
+        "UEOTQM.ActionRecordBudgetExamples.feedback_word",
+        "UEOTQM.ActionRecordBudgetExamples.budget",
+        "UEOTQM.ActionRecordBudgetExamples.budget_nonneg",
+        "UEOTQM.ActionRecordBudgetExamples.action_defects_bounded",
+        "UEOTQM.ActionRecordBudgetExamples.first_actionCost_exact",
+        "UEOTQM.ActionRecordBudgetExamples.second_actionCost_exact",
+        "UEOTQM.ActionRecordBudgetExamples.actionCost_sum_exact",
+        "UEOTQM.ActionRecordBudgetExamples.two_step_budget_bound",
+        "UEOTQM.ActionRecordBudgetExamples.zeroHistory",
+        "UEOTQM.ActionRecordBudgetExamples.exact_zero_history_probability",
+        "UEOTQM.ActionRecordBudgetExamples.approximate_zero_history_probability",
+        "UEOTQM.ActionRecordBudgetExamples.two_step_record_tv_exact",
+        "UEOTQM.ActionRecordBudgetExamples.historyPairEquiv",
+        "UEOTQM.ActionRecordBudgetExamples.exact_terminal_memory",
+        "UEOTQM.ActionRecordBudgetExamples.approximate_terminal_memory",
+        "UEOTQM.ActionRecordBudgetExamples.original_protocol_record_tv_exact"
+      ],
+      "concrete_witness_role": "完整新增有理Kraus、全称supremum证明和真实两步预算饱和实例；不是浮点仿真或仅包装一个未经计算的整体defect。",
+      "open_boundaries": [
+        "精确有限形式见证，不是实验确证。",
+        "两方终端量子记忆同输入时相同；可区分性在实际记录。",
+        "实例不证明一般动作defect均能精确计算。"
+      ],
+      "proof_outline": [
+        "证明halfK†halfK=I/4和halfK X halfK†=X/4，得到实际Kraus完整性及分支。",
+        "任意合法E的两个主块概率x,y∈[0,1]，第一步差=|x−y|/4≤1/4；零事件概率1与3/4给匹配下界。",
+        "同一反馈动作精确相同给第二缺陷0，实际前缀权重归一给成本1/4+0。",
+        "原run真实历史00概率1与3/4给TV下界；通用预算给上界。",
+        "对四个真实历史的operator块求和给量子边际ρ；旧Protocol TV桥给相同精确值。"
+      ]
+    },
+    {
+      "id": "N-ARB-01",
+      "anchor": "n-arb-01",
+      "title": "无标签动作零缺陷仍可给出最大完整记录误差",
+      "section": "62.7",
+      "premises": [
+        "沿用P-ARB-05的二维记忆、结果类型、四Kraus certain仪器和同一feedback。",
+        "flippedActions none=certain1，some o=certain o；参考exactActions none=certain0，其后相同。",
+        "任意共同输入ρ:Density Qubit。"
+      ],
+      "quantified_scope": "For each action a and every operator X, equality of unlabelled action maps; for every same input density ρ, exact final record/event/memory claims.",
+      "actual_conclusion": "每个无标签动作channel在所有X上相等，旧channelDefect为0；完整两步record TV=1；第二结果为0的事件概率分别1和0；两方终端量子密度态均=ρ并相等；原Protocol全leaf TV同为1。",
+      "public_main_declarations": [
+        "UEOTQM.ActionRecordBudget.run_matrix",
+        "UEOTQM.ActionRecordBudget.protocol_record_tv_eq"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.HistoryChannels.weights",
+        "UEOTQM.HistoryChannels.event_probability"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.ActionRecordBudgetExamples.flippedActions",
+        "UEOTQM.ActionRecordBudgetExamples.certain_unlabelled_channel",
+        "UEOTQM.ActionRecordBudgetExamples.certain_unlabelled_state",
+        "UEOTQM.ActionRecordBudgetExamples.negative_actions_unlabelled_same",
+        "UEOTQM.ActionRecordBudgetExamples.negative_unlabelled_defect_zero",
+        "UEOTQM.ActionRecordBudgetExamples.oneHistory",
+        "UEOTQM.ActionRecordBudgetExamples.exact_zero_history_probability",
+        "UEOTQM.ActionRecordBudgetExamples.flipped_zero_history_probability",
+        "UEOTQM.ActionRecordBudgetExamples.flipped_one_history_probability",
+        "UEOTQM.ActionRecordBudgetExamples.negative_two_step_record_tv",
+        "UEOTQM.ActionRecordBudgetExamples.exact_terminal_memory",
+        "UEOTQM.ActionRecordBudgetExamples.flipped_terminal_memory",
+        "UEOTQM.ActionRecordBudgetExamples.negative_terminal_memories_equal",
+        "UEOTQM.ActionRecordBudgetExamples.secondZeroEvent",
+        "UEOTQM.ActionRecordBudgetExamples.exact_second_record_zero",
+        "UEOTQM.ActionRecordBudgetExamples.flipped_second_record_zero",
+        "UEOTQM.ActionRecordBudgetExamples.original_protocol_negative_tv"
+      ],
+      "concrete_witness_role": "第58章删除标签责任在新实际step/run和旧Protocol之间的完整回接，不把继承的物理现象宣称为首次发现。",
+      "open_boundaries": [
+        "记录不同且第二动作因共同控制器响应不同结果而分离；终端量子态保持相同。",
+        "不得把零无标签缺陷替换进本章的带记录动作预算。",
+        "此精确反例不构成新的实验数据或现实设备结论。"
+      ],
+      "proof_outline": [
+        "所有certain无标签矩阵通道均恒等，因此每个相同动作的两实现channel函数相等、旧defect0。",
+        "真实记录00与11分别概率1；事件{00}概率差1结合TV≤1得到精确TV1。",
+        "枚举四个真实历史证明第二结果0事件概率1/0。",
+        "用run_matrix求终端量子主块和，两者均为输入ρ；由原叶TV等式回接旧Protocol。"
+      ]
+    }
+  ],
+  "declaration_name_membership": {
+    "all_public_names_in_current_C_inventory": true,
+    "all_witness_names_in_actual_C_witness_inventory": true,
+    "public_inventory": {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/public-declarations.json",
+      "sha256": "35fe09ca1fe69d73aba71b5643ffcd0ad2a7be8193e478aeb434427b542382fb"
+    },
+    "witness_inventory": {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/witness-declarations-and-axioms.json",
+      "sha256": "8a32ed2c771b05b5dfa5eefb5e35cda8db830ada33735f204e4b71ff372c0431"
+    }
+  },
+  "current_scientific_sources": [
+    {
+      "path": "formalization/ueot-qm/UEOTQM/HistoryChannels.lean",
+      "bytes": 12303,
+      "sha256": "04864b526fabe51d60efd776355fa33086781f30e6956698732edacf78571b5c"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
+      "bytes": 20678,
+      "sha256": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/ActionRecordBudgetExamples.lean",
+      "bytes": 20626,
+      "sha256": "169eca4505e33561d7c364267ae206c0674a36e9fe61393368b4b4d43c9d039e"
+    }
+  ],
+  "proof_state": "All C three sources actually passed focused compilation. Complete actual source-order audits passed for 75 public declarations (54 theorem+20 def+1 abbrev) and 52 witness declarations (36 theorem+14 def+2 abbrev). Allowed foundations only. B read-only public and witness reviews CLEAR. Root first unified gate is running and independently regenerates oleans; original focused artifact hashes and receipts are retained, with current artifact snapshot explicitly pending.",
+  "evidence": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/verification.json",
+      "bytes": 6831,
+      "sha256": "b5597fd585efc9066a624d98017e245a18d421cf07460836f5c71ff9ba1a5198"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/public-named-axiom-audit.json",
+      "bytes": 836,
+      "sha256": "e9c9b25c5db3e2a0f2032dd87c11d12b8fa26dfa73cff4dbc7a999bec502d73f"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/public-declarations.json",
+      "bytes": 27202,
+      "sha256": "35fe09ca1fe69d73aba71b5643ffcd0ad2a7be8193e478aeb434427b542382fb"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/witness-declarations-and-axioms.json",
+      "bytes": 11694,
+      "sha256": "8a32ed2c771b05b5dfa5eefb5e35cda8db830ada33735f204e4b71ff372c0431"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/B_public_source_review.json",
+      "bytes": 4176,
+      "sha256": "48dd0ff1640a663be2ea442829bd33a6cfed5bfc41edd4d3e397b68b33148cb0"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/C/B_witness_source_review.json",
+      "bytes": 3067,
+      "sha256": "d2087ae3ae57cbd639666095818cede476160dd8e95ac89ccff376ba4c87b11d"
+    }
+  ],
+  "claim_scope": "Finite explicit classical-history controller mathematics, actual instrument defects and formal exact rational controls; no new experiments or enlarged coherent/variable-depth/environment claim.",
+  "canonical_integration_owner": "root; preserve inherited 131 result objects and add these six exactly once."
+}

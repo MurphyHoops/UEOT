@@ -1,0 +1,36 @@
+{
+  "reviewer": "A",
+  "verdict": "CLEAR_FOR_FIRST_UNIFIED_EXECUTION",
+  "recorded_at_utc": "2026-10-20T10:59:16.822430+00:00",
+  "reviewed_helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_accept.py",
+    "bytes": 18250,
+    "sha256": "772e09ee5f50b17fb33fbbc58724425997bdc4114c34e87710932bbc2ca91209"
+  },
+  "preserved_helper_snapshot": {
+    "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/reviewed_root_fixed_qm318_accept.py.txt",
+    "bytes": 18250,
+    "sha256": "772e09ee5f50b17fb33fbbc58724425997bdc4114c34e87710932bbc2ca91209"
+  },
+  "prior_review": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/A_root_helpers_initial_review.json",
+    "bytes": 5749,
+    "sha256": "1657d92ee3fd348511e423b18d866f8bd66677ff6070faf6e2ad88a01614ae32"
+  },
+  "method": "Read complete narrow diff and lifecycle implementation; parse Python AST without executing any helper or gate. Confirm scientific main function AST unchanged from the coverage-reviewed initial version.",
+  "resolved_findings": [
+    {
+      "id": "A-ROOT-ACCEPT-01",
+      "resolution": "Each owned command starts in an independent session. The shared-lock-held exception path captures /proc descendants including separately sessioned verifier children, sends TERM to the owned groups, checks original process start identities, sends KILL to surviving groups and reaps the direct process before failure propagates. Timeout receipts include process_tree_cleanup. No unrelated process group is deliberately included, and the harness group is explicitly excluded."
+    },
+    {
+      "id": "A-ROOT-ACCEPT-02",
+      "resolution": "Before attempt writes, protect_existing_evidence permits only the segregated A/B/C/preparation author directories and rejects any gate-owned occupied output. acceptance_started is set only after that guard, so preflight rejection does not overwrite the prior acceptance-progress file. Existing attempts remain the separate historical evidence."
+    }
+  ],
+  "all_scientific_gate_main_AST_unchanged": true,
+  "compiler_invocations": 0,
+  "runtime_gate_invocations": 0,
+  "pending": "Actual first root unified execution on the re-enumerated final raw source set. This helper review itself is not scientific acceptance or CI.",
+  "old_review_and_attempt_evidence_preserved": true
+}

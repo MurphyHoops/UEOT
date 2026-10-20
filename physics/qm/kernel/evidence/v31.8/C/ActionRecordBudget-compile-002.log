@@ -1,0 +1,75 @@
+UEOTQM/ActionRecordBudget.lean:45:4: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOTQM/ActionRecordBudget.lean:56:4: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOTQM/ActionRecordBudget.lean:68:18: error: unsolved goals
+A : Type u_1
+O : Type u_2
+N n : ℕ
+C : Controller A O (n + 1)
+o : O
+l : ((fun o => (C.shift o).protocol) o).Leaf
+⊢ ⟨Fin.cons o ((leafEquiv (C.shift o)) l) 0,
+      (leafEquiv (C.shift (Fin.cons o ((leafEquiv (C.shift o)) l) 0))).symm ((leafEquiv (C.shift o)) l)⟩ =
+    ⟨o, l⟩
+UEOTQM/ActionRecordBudget.lean:70:19: warning: This simp argument is unused:
+  Fin.cons_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.tail_cons, Equiv.symm_apply_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ActionRecordBudget.lean:70:49: warning: This simp argument is unused:
+  Equiv.symm_apply_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fin.cons_zero, Fin.tail_cons]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ActionRecordBudget.lean:87:28: error: Application type mismatch: The argument
+  h
+has type
+  History O (N + 1)
+but is expected to have type
+  (i : Fin ?m.15) → ?m.16 i.castSucc
+in the application
+  Fin.snoc_castSucc ?m.17 h
+UEOTQM/ActionRecordBudget.lean:98:9: error: unsolved goals
+case zero
+A : Type u_1
+O : Type u_2
+N : ℕ
+o : O
+C : Controller A O (0 + 1)
+⊢ Fin.snoc Fin.elim0 o 0 = o
+UEOTQM/ActionRecordBudget.lean:105:6: error: Type mismatch
+  congrArg (fun D => D.word (Fin.tail h)) (dropLast_shift C (h 0))
+has type
+  (C.shift (h 0)).dropLast.word (Fin.tail h) = (C.dropLast.shift (h 0)).word (Fin.tail h)
+but is expected to have type
+  (C.shift (h 0) 0 Fin.elim0, Fin.snoc (Fin.tail h) o 0) ::
+      ((C.shift (h 0)).shift (Fin.snoc (Fin.tail h) o 0)).word (Fin.tail (Fin.snoc (Fin.tail h) o)) =
+    (C.dropLast.shift (h 0)).word (Fin.tail h) ++ [(C (Fin.last (n + 1)) h, o)]
+UEOTQM/ActionRecordBudget.lean:106:4: error: No goals to be solved
+UEOTQM/ActionRecordBudget.lean:101:16: warning: This simp argument is unused:
+  Fin.snoc_last
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [word]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ActionRecordBudget.lean:103:43: warning: This simp argument is unused:
+  ih
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [word, snoc_head, tail_snoc, List.cons_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

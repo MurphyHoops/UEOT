@@ -1,0 +1,206 @@
+"""Actual v31.8 unified gate. Prepared now; execute only on the final frozen source set."""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, importlib.util, json, os, re, subprocess, sys, time, fcntl
+
+R = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+P = R / 'formalization/ueot-qm'
+E = R / 'physics/qm/kernel/evidence/v31.8'
+LAKE = '/tmp/lean-4.33.1-linux/bin/lake'
+BASE = '7d05d0369b6793e28f0e39efaa77c0c9887479d1'
+E.mkdir(parents=True, exist_ok=True)
+
+def now(): return datetime.now(timezone.utc).isoformat()
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def read(p): return json.loads(Path(p).read_text())
+def write(p, d): Path(p).write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+def copy(src, dst): Path(dst).parent.mkdir(parents=True, exist_ok=True); Path(dst).write_bytes(Path(src).read_bytes())
+def module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    result = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(result)
+    return result
+
+executions = []
+def run(name, command, cwd=P, timeout=1800, output=None):
+    log = Path(output) if output is not None else E / (name + '.log')
+    start = now(); clock = time.monotonic()
+    print('RUN ' + name, flush=True)
+    timed_out = False; launch_error = None; exit_code = None
+    with log.open('wb') as stream:
+        try:
+            result = subprocess.run(command, cwd=cwd, stdout=stream, stderr=subprocess.STDOUT, timeout=timeout)
+            exit_code = result.returncode
+        except subprocess.TimeoutExpired as exc:
+            timed_out = True
+            stream.write(('\nACCEPTANCE_TIMEOUT: '+repr(exc)+'\n').encode())
+        except OSError as exc:
+            launch_error = repr(exc)
+            stream.write(('\nACCEPTANCE_LAUNCH_ERROR: '+launch_error+'\n').encode())
+    receipt = {'name':name, 'command':command, 'working_directory':str(cwd),
+               'started_at_utc':start, 'completed_at_utc':now(), 'elapsed_seconds':round(time.monotonic()-clock,3),
+               'exit_code':exit_code, 'timed_out':timed_out, 'launch_error':launch_error,
+               'log_path':str(log), 'log_sha256':sha(log)}
+    executions.append(receipt)
+    write(E / 'execution-journal.json', {'schema':'ueot_qm.execution_journal.v31.8','executions':executions})
+    print(json.dumps(receipt, ensure_ascii=False), flush=True)
+    if exit_code != 0:
+        print(log.read_text(errors='replace')[-12000:], flush=True)
+        raise RuntimeError('Execution failed: ' + name)
+    return receipt
+
+def main():
+    source = module('qm318_source', P / 'scripts/record_source.py')
+    witness = module('qm318_witness', P / 'scripts/verify_finite_witnesses.py')
+    before = source.record_source()
+    assert before['source_count'] == 89, 'Expected 80 inherited source paths plus six modules and three witnesses; reject accidental helper .py files'
+    write(E / 'acceptance-harness.json', {'status':'ACTUALLY_STARTED','harness_path':str(Path(__file__).resolve()),'harness_sha256':sha(__file__),'shared_lock':'/tmp/qm317-lean.lock','source_set_sha256':before['source_set_sha256'],'started_at_utc':now()})
+    write(E / 'source-manifest-before.json', before)
+    inv = read('/workspace/scratch/f11b4261e187/handoff/qm318_declaration_inventory.json')
+    assert inv['module_count'] == 35 and inv['new_theorems'] > 0
+    assert len(inv['audit_targets']) == inv['audit_target_count']
+    expected_witnesses = {name: witness.witness_declarations(P / 'scripts/witnesses' / (name+'.lean')) for name in witness.WITNESSES}
+    assert len(expected_witnesses) == 10
+    expected_witness_theorems = sum(d['kind']=='theorem' for ds in expected_witnesses.values() for d in ds)
+    expected_witness_defs = sum(d['kind']=='def' for ds in expected_witnesses.values() for d in ds)
+    expected_witness_abbrevs = sum(d['kind']=='abbrev' for ds in expected_witnesses.values() for d in ds)
+    expected_witness_audits = sum(len(ds) for ds in expected_witnesses.values())
+    assert expected_witness_audits == expected_witness_theorems + expected_witness_defs + expected_witness_abbrevs
+    for rel, identity in inv['module_identities'].items():
+        assert sha(R / rel) == identity['sha256'] and (R / rel).stat().st_size == identity['bytes'], rel
+    copy('/workspace/scratch/f11b4261e187/handoff/qm318_declaration_inventory.json', E / 'declaration-inventory.json')
+    write(E / 'acceptance-progress.json', {'status':'RUNNING','started_at_utc':now(),
+          'source_set_sha256':before['source_set_sha256'],'source_count':before['source_count']})
+
+    run('dependency-lock', [sys.executable, 'scripts/check_dependencies.py'])
+    deps = []
+    for item in read(P/'lake-manifest.json')['packages']:
+        if item['type'] != 'git': continue
+        checkout = subprocess.check_output(['git','rev-parse','HEAD'],cwd=P/'.lake/packages'/item['name'],text=True).strip()
+        assert checkout == item['rev'], (item['name'], checkout, item['rev'])
+        deps.append({'name':item['name'],'revision':checkout,'matches_pin':True})
+    assert len(deps) == 9
+    version = run('toolchain-version', [LAKE,'env','lean','--version'])
+    version_text = (E/'toolchain-version.log').read_text()
+    assert '4.33.1' in version_text and '819816b2e0a3bf405af45ae5c7af2491d8f5bee6' in version_text
+    write(E/'dependency-identity.json', {'schema':'ueot_qm.dependency_identity.v31.8','status':'PASS',
+          'checked_at_utc':now(),'dependency_count':len(deps),'dependencies':deps,
+          'toolchain':(P/'lean-toolchain').read_text().strip(),
+          'actual_toolchain_output':version_text.strip(),
+          'mathlib_revision':'0df444a360eaa60ab8c11dca51a86af692955474'})
+
+    matches = []
+    for path in sorted((P/'UEOTQM').glob('*.lean')):
+        for match in re.finditer(r'^\s*(?:axiom|opaque)\s|\b(?:sorry|admit|native_decide)\b', witness.lean_code(path.read_text()), re.M):
+            matches.append({'path':path.relative_to(R).as_posix(),'offset':match.start(),'text':match.group()})
+    assert not matches, matches
+    write(E/'proof-escape-gate.json',{'status':'PASS','checked_at_utc':now(),'matches':matches,
+          'scope':'All QM module code after comment/string masking; elaborated named axiom reports separately required.'})
+
+    build = run('lean-build', [LAKE,'build','UEOTQM'])
+    write(E/'build-execution.json', build)
+    jobs = int(re.search(r'Build completed successfully \((\d+) jobs\)',(E/'lean-build.log').read_text())[1])
+    audit = run('axiom-audit', [LAKE,'env','lean','scripts/AxiomAudit.lean'])
+    copy(E/'axiom-audit.log', P/'axiom-audit.log')
+    checker = run('axiom-checker', [sys.executable,'scripts/check_axioms.py'])
+    copy(P/'proof-axioms.json',E/'proof-axioms.json')
+    axioms = read(E/'proof-axioms.json')
+    assert axioms['status']=='PASS' and axioms['declaration_count']==inv['audit_target_count']
+    assert set(axioms['declarations']) == set(inv['audit_targets'])
+    write(E/'axiom-execution.json', {'audit':audit,'checker':checker,'audit_exit_code':audit['exit_code'],
+          'checker_exit_code':checker['exit_code'],'completed_at_utc':now()})
+
+    run('finite-witness-gate', [sys.executable,'scripts/verify_finite_witnesses.py','--lake',LAKE,
+                             '--output-dir',str(E/'finite-witnesses')], timeout=3000)
+    finite=read(E/'finite-witnesses/verification.json')
+    assert finite['status']=='PASS' and finite['witness_theorem_count']==expected_witness_theorems
+    assert finite['witness_def_count']==expected_witness_defs and finite['witness_audit_count']==expected_witness_audits
+    assert finite['witness_abbrev_count']==expected_witness_abbrevs
+    assert finite['all_inputs_unchanged']
+    assert len(finite['inputs_after']['general_modules'])==inv['module_count']+1+56
+
+    run('exact-instance-gate', [sys.executable,str(R/'physics/qm/kernel/verify_lean_exports.py'),
+                               '--lake',LAKE,'--output-dir',str(E/'lean-exports')], timeout=5000)
+    instances=read(E/'lean-exports/verification.json')
+    assert instances['status']=='PASS'
+    run('runtime', [sys.executable,'physics/qm/kernel/verify_kernel.py','--output',str(E/'runtime-verification.json')], cwd=R)
+    runtime=read(E/'runtime-verification.json')
+    assert runtime['status']=='PASS' and runtime['test_methods_run']==100
+    demo_items=[]
+    for name in ['demo','demo_v312','demo_v313','demo_v315']:
+        path=R/'physics/qm/kernel'/(name+'.py');output=E/(name+'.json')
+        execution=run(name,[sys.executable,str(path)],cwd=R,output=output)
+        read(output)
+        demo_items.append({'program':path.relative_to(R).as_posix(),'program_sha256':sha(path),
+                          'exit_code':execution['exit_code'],'json_parsed':True,
+                          'output':output.relative_to(R).as_posix(),'output_sha256':sha(output)})
+    write(E/'demos-verification.json',{'schema':'ueot_qm.demos_verification.v31.8','status':'PASS',
+          'recorded_at_utc':now(),'demo_count':len(demo_items),'programs':demo_items,
+          'scope':'Exact finite executable examples; not empirical data or whole-program formalization.'})
+
+    closure=[]
+    baseline_tree=read('/workspace/scratch/f11b4261e187/handoff/qm318_baseline_remote_tree.json')
+    assert baseline_tree['commit']==BASE and not baseline_tree['truncated']
+    baseline_blobs={item['path']:item['sha'] for item in baseline_tree['tree'] if item['type']=='blob'}
+    previous=read(R/'physics/qm/kernel/evidence/v31.7/core-import-closure.json')
+    previous_core={item['module']:item for item in previous['modules']}
+    for name, item in sorted(finite['inputs_after']['general_modules'].items()):
+        if not name.startswith('UEOT.'): continue
+        path=Path(item['source']['path']);rel=path.relative_to(R).as_posix();raw=path.read_bytes()
+        blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+        assert blob==baseline_blobs[rel], name
+        assert sha(path)==item['source']['sha256']==previous_core[name]['source_sha256'],name
+        assert sha(item['olean']['path'])==item['olean']['sha256']
+        closure.append({'module':name,'path':rel,'source_sha256':sha(path),
+                        'baseline_match':True,'actual_remote_baseline_blob_sha1':blob,
+                        'olean_sha256':item['olean']['sha256']})
+    assert len(closure)==56 and set(previous_core)=={x['module'] for x in closure}
+    write(E/'core-import-closure.json',{'schema':'ueot_qm.core_import_closure.v31.8','status':'SOURCE_AND_BUILT_IDENTITY_PASS',
+          'baseline_commit':BASE,'baseline_tree':baseline_tree['sha'],
+          'transitive_module_count':len(closure),'new_imports_over_v31_7':0,
+          'core_sources_modified':False,'modules':closure,
+          'build_binding':'build-execution.json and finite-witnesses/verification.json',
+          'scope':'Actual recursive imports used by this QM package, not all frozen Core coverage items.'})
+
+    after=source.record_source()
+    assert before['sources']==after['sources'] and before['source_set_sha256']==after['source_set_sha256']
+    write(E/'source-manifest.json',after)
+    write(E/'source-freeze-reconciliation.json',{'schema':'ueot_qm.source_freeze_reconciliation.v31.8','status':'PASS',
+          'checked_at_utc':now(),'before':'source-manifest-before.json','after':'source-manifest.json',
+          'all_source_bytes_unchanged_during_acceptance':True,'source_count':after['source_count'],
+          'source_set_sha256':after['source_set_sha256']})
+    counts={name:sum(d['kind']=='theorem' for d in ds) for name,ds in inv['modules'].items()}
+    write(E/'lean-verification.json',{'schema':'ueot_qm.lean_verification.v31.8','status':'PASS','checked_at_utc':now(),
+          'observed_checkout_commit':after['observed_checkout_commit'],'published_research_baseline':BASE,
+          'identity_rule':'Per-file source hashes bind actual executions; historical checkout HEAD is not the published baseline or a clean-tree claim.',
+          'source_manifest':'source-manifest.json','source_count':after['source_count'],'source_set_sha256':after['source_set_sha256'],
+          'toolchain':'Lean 4.33.1','compiler_commit':'819816b2e0a3bf405af45ae5c7af2491d8f5bee6',
+          'generic_modules':inv['module_count'],'explicit_theorems':inv['explicit_theorems'],'module_theorem_counts':counts,
+          'actual_named_axiom_reports':inv['audit_target_count'],'listed_non_theorem_audit_targets':inv['audit_target_count']-inv['explicit_theorems'],
+          'new_explicit_theorems':inv['new_theorems'],'new_non_theorem_audit_targets':inv['added_audit_target_count']-inv['new_theorems'],'new_audited_targets':inv['added_audit_target_count'],
+          'audit_duplicates':0,'audit_missing':[],'unreviewed_axioms':[],
+          'allowed_foundation':axioms['allowed_foundation'],'actual_build_exit_code':0,'actual_build_jobs':jobs,
+          'actual_axiom_audit_exit_code':0,'proof_escape_gate':'PASS','core_source_modified':False,
+          'full_scientific_theory_verified':False,
+          'scope':'All-effect finite complex density separation and arbitrary-joint-state complex local tomography; complete convex purity characterization and typed auxiliary unitary purification comparison; actual classical-history channels, shared-controller action-error sums and complete-record TV, with explicit counterexamples and finite-scope boundaries.',
+          'count_scope':'Explicit package commands include general mathematics, actual finite Core/model instances and extracted prior-model infrastructure. Concrete witnesses, certificate cases and runtime methods are separate counts; none is a count of new physical laws.',
+          'instance_verification':{'status':'PASS','positive_instances':6,'positive_named_axiom_reports':42,
+            'rejected_corrupted_true_proofs':4,'same_data_false_witnesses':4,'false_named_axiom_reports':4,'receipt':'lean-exports/verification.json'},
+          'finite_witness_verification':{'status':'PASS','concrete_theorems':expected_witness_theorems,'definitions':expected_witness_defs,'abbreviations':expected_witness_abbrevs,'named_axiom_reports':expected_witness_audits,
+            'bound_modules':inv['module_count']+1+56,'receipt':'finite-witnesses/verification.json'},
+          'runtime_test_methods':100,'all_four_demos_passed':True,
+          'execution_receipts':{'build':'build-execution.json','axioms':'axiom-execution.json','runtime':'runtime-verification.json',
+            'demos':'demos-verification.json','source_freeze':'source-freeze-reconciliation.json','dependencies':'dependency-identity.json',
+            'core_imports':'core-import-closure.json'},'all_local_proof_runtime_checks_completed_at_utc':now()})
+    write(E/'acceptance-progress.json',{'status':'PASS','completed_at_utc':now(),'source_count':after['source_count'],
+          'source_set_sha256':after['source_set_sha256'],'actual_build_jobs':jobs,'audit_reports':inv['audit_target_count']})
+    print('UNIFIED_LOCAL_ACCEPTANCE_PASS', flush=True)
+
+if __name__ == '__main__':
+    try:
+        with open('/tmp/qm317-lean.lock', 'a') as lock_file:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+            main()
+    except Exception as exc:
+        write(E/'acceptance-progress.json', {'status':'FAIL','failed_at_utc':now(),'reason':repr(exc),'executions_completed':len(executions)})
+        raise

@@ -1,0 +1,27 @@
+{
+  "schema": "ueot_qm.root_ci_parser_review.v31.8",
+  "reviewer": "root",
+  "status": "PASS",
+  "recorded_at_utc": "2026-10-20T11:30:41.617479+00:00",
+  "parser_sha256": "d59fc80f373cd134fd4da0358021379aa8536d9cecb0d5ab6d77dc1f77244316",
+  "original_parser_sha256": "f4a88572620a2cfee9e8833eb8bfadb1535c2d345a0c8458fb1bc16ebc3888a9",
+  "method": "Read the complete actual publication-bridge diff; compare original function ASTs; directly execute existing local witness-reference validation against final publication source routing. No remote CI or scientific test execution.",
+  "unchanged_existing_function_count": 17,
+  "changed_existing_functions": [
+    "verify",
+    "main"
+  ],
+  "new_functions": [
+    "normalized_lean_code",
+    "check_publication_source_bridge"
+  ],
+  "findings": [
+    "Exact original and publication manifest hashes and source rows are independently verified.",
+    "The sole allowed source correction is a fixed full-file replacement with both fixed raw identities, actual archived diff and unchanged normalized code.",
+    "Actual CI printed hashes route to the final publication source while original declaration inventory remains bound to the actual initial unified source.",
+    "Run, checkout, job-step, 985-name, certificate, 269-witness and 100-runtime parsers remain unchanged.",
+    "Artifact ZIP contents and full remote source manifest are not claimed from logs."
+  ],
+  "actual_local_witness_route_check": "PASS: 193 theorem / 71 def / 5 abbrev",
+  "blocking_findings": []
+}

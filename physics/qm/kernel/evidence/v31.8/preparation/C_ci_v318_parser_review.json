@@ -1,0 +1,136 @@
+{
+  "schema": "ueot_qm.v31_8.C.actual_CI_parser_static_review.v2",
+  "status": "CLEAR",
+  "recorded_at_utc": "2026-10-20T11:26:33.796113+00:00",
+  "verifier_sha256": "d59fc80f373cd134fd4da0358021379aa8536d9cecb0d5ab6d77dc1f77244316",
+  "prior_parser_snapshot_sha256": "f4a88572620a2cfee9e8833eb8bfadb1535c2d345a0c8458fb1bc16ebc3888a9",
+  "review_scope": "Full static review of actual workflow/runner output contract and targeted actual-local validation of the strict publication bridge. No remote CI files supplied, full verify/main not called.",
+  "execution_status": "PREPARED_NOT_EXECUTED_AGAINST_REMOTE_CI",
+  "unchanged_original_function_AST": [
+    "require",
+    "digest",
+    "identity",
+    "unique",
+    "normalize_log",
+    "run_section",
+    "parse_axioms",
+    "parse_main_audit",
+    "parse_printed_sources",
+    "parse_build_jobs",
+    "parse_runtime",
+    "parse_instances",
+    "parse_witnesses",
+    "accepted_source_paths",
+    "check_source_manifest",
+    "check_local_witness_reference",
+    "check_jobs"
+  ],
+  "modified_original_function_AST": [
+    "verify",
+    "main"
+  ],
+  "added_function_AST": [
+    "normalized_lean_code",
+    "check_publication_source_bridge"
+  ],
+  "existing_gate_preservation": {
+    "run_and_jobs": "Actual repository/run/event/full checkout commit, two complete successful jobs and all mandatory successful steps remain required. No simulated status accepted.",
+    "source_identity": "The existing exact current-source manifest validator is unchanged; it now validates final publication bytes. Original 89 raw input rows are separately checked, using only the exact original B snapshot for its sole changed path.",
+    "audit": "Exact 985 named reports/foundation map and unique requests; original 747-theorem inventory binds original module raw bytes, verified equivalent for the only comment change.",
+    "runtime": "100 successful actual individual names equal local accepted names; required actual demo command sections and success steps.",
+    "instances": "Actual emitted summary6/42,4 rejected true,4 accepted false with exact progress names; artifact interiors not inferred.",
+    "witness": "Actual10 file counts269; local193/71/5 kinds explicitly distinguished from CI per-file output.",
+    "build": "Observed positive actual package job count, not forced to equal original local8799.",
+    "fail_closed": "Wrong/missing/duplicate identity, input, run, job, required gate, axiom, witness, instance, source count or source-set hash rejects. Input bytes checked unchanged before complete PASS.",
+    "old_function_AST_checks": "All existing parsing/checking functions other than top-level verify routing and main summary output remain exactly AST-equal to the saved original helper."
+  },
+  "strict_publication_bridge": {
+    "original_source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+    "publication_source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+    "source_count": 89,
+    "only_changed_path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+    "rule": "Fixed before/after SHA256 constants, exact entire-file doc-word replacement, exact regenerated diff, erased code equality and hash, all bridge file identities, exactly88 other files unchanged, raw workflow grep clear. No generic comment exception.",
+    "actual_local_bridge_function_validation": "PASS on actual89 source entries and actual before/after snapshots; no fullCI verifier call.",
+    "original_local_build_identity": "Original8799-job receipt and original a343 source hash retained; final raw source must be tested by actual future CI.",
+    "summary_exposes_both_source_sets": true
+  },
+  "artifact_limitations": {
+    "artifact_zip_downloaded": false,
+    "artifact_zip_contents_verified": false,
+    "full_CI_source_manifest_downloaded": false,
+    "remote_tree_checked_by_this_parser": false,
+    "full_CI_source_identity": "39 directly printed source hashes + final local manifest and separate remote Git tree/path reconciliation."
+  },
+  "blockers": [],
+  "input_files": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_verify_ci_logs.py",
+      "bytes": 47188,
+      "sha256": "d59fc80f373cd134fd4da0358021379aa8536d9cecb0d5ab6d77dc1f77244316"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_verify_ci_logs_before_publication_bridge.py.txt",
+      "bytes": 35210,
+      "sha256": "f4a88572620a2cfee9e8833eb8bfadb1535c2d345a0c8458fb1bc16ebc3888a9"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/.github/workflows/ueot-qm.yml",
+      "bytes": 6477,
+      "sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/record_source.py",
+      "bytes": 2516,
+      "sha256": "be184e05f63b2fec1a879f5c32f3b053fb94b5a39e4ffab5bee3a6b03e3eb14f"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+      "bytes": 14000,
+      "sha256": "69e7d71b41dc45dbdfbf6bbaeb8e6c9a68b96c234c50de392c7c0703835e1cbb"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/verify_lean_exports.py",
+      "bytes": 26267,
+      "sha256": "6d2c5504a2f625441f6fd1b2eb5adf13dc52acb8a574f862f11d85ee880564dd"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/source-manifest.json",
+      "bytes": 16700,
+      "sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+      "bytes": 16700,
+      "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+      "bytes": 3387,
+      "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/lean-verification.json",
+      "bytes": 3859,
+      "sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/declaration-inventory.json",
+      "bytes": 190452,
+      "sha256": "75058ea424fdc25fec12a40e327b4a601b04937f8a60d4fe8e4a1f8e6532c4ab"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json",
+      "bytes": 230604,
+      "sha256": "cf827d66c32260d231a3acc790c1ba65c8d9da89adb9f5b9b44cc021e21f58ec"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_publication_bridge_review.json",
+      "bytes": 4410,
+      "sha256": "bf9a9cf906cc1b6f6b5e0aa50e88b1401ca43df9c2abc374914e5fc01d1b31a0"
+    }
+  ],
+  "additional_compiler_invocations": 0,
+  "runtime_test_invocations": 0,
+  "remote_calls": 0,
+  "no_claim_of_full_scientific_theory": true
+}

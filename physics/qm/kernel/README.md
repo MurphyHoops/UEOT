@@ -1,8 +1,10 @@
-# UEOT-QM v31.7 / Kernel 1.7
+# UEOT-QM v31.8 / Kernel 1.8
 
-当前状态：**MAIN_VERIFIED**；集成身份以[CURRENT](../status/CURRENT.json)为准。本轮新增形式化完整复纯化、共同操作语言、联合有限协议与精确非交换条件动力学。运行API仍保持既有精确混合、平均与对角生存能力，全部回归已重新执行。
+当前状态：**LOCAL_VERIFIED_REMOTE_PENDING**；[CURRENT](../status/CURRENT.json)记录分层身份。新增数学成果是完整密度分离/复层析、纯性反向/有类型纯化酉比较，以及共同因果控制器的逐动作记录预算。Python运行API继续使用既有精确实现，其全输入正确性仍未由这些数学定理自动证明。
 
-实际本地结果：29主包模块、646显式定理、855命名审计；100运行方法、4演示PASS。七组具体见证另计110定理、39定义、2缩写、151审计。[版本报告](../UEOT_QM_KERNEL_v31.7.md)、[证明回执](evidence/v31.7/lean-verification.json)、[运行回执](evidence/v31.7/runtime-verification.json)。完整理论见[正式总著3.3](../book/UEOT_PHYSICS.md)第49–59章。
+35 个公共模块、747 条显式 theorem、985 个唯一命名公理审计；本轮新增 101 条 theorem、130 个审计目标。十组具体见证另计 193 条 theorem、71 个定义、5 个缩写，共 269 个审计。 100运行方法与四演示实际PASS。[本轮报告](../UEOT_QM_KERNEL_v31.8.md)、[证明回执](evidence/v31.8/lean-verification.json)、[运行回执](evidence/v31.8/runtime-verification.json)。完整理论见[总著3.4](../book/UEOT_PHYSICS.md)第49–62章。
+
+实际8799-job统一本地执行仍绑定原89源SHA256 `a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e`。发布候选的89源SHA256为 `054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1`；仅一处文档注释把英文词 admit 改为 have，数学代码不变，未重跑本地编译。两份原始源码清单及追加的发布身份桥分别保留；当前发布原字节还须接受真实远端CI。 [发布身份桥](evidence/v31.8/publication-source-reconciliation.json)保留真实执行边界。
 
 ## 立即运行
 
@@ -41,7 +43,7 @@ demo_v315 展示 TV 达界及非达界、bit-flip 周期与平均残差、恒等
 python formalization/ueot-qm/scripts/verify_finite_witnesses.py --output-dir /tmp/qm-finite-witnesses
 ~~~
 
-此门实际编译七份具体见证，审核151个声明并绑定86个QM/Core模块的源与olean。包括混合、生存、实层析、非交换Doob、完整纯化、联合记录及真实条件动力学。与六实例证书门分别统计，不加入646个主包显式定理。[实际见证回执](evidence/v31.7/finite-witnesses/verification.json)
+此门实际编译十份具体见证，审核269个声明并绑定92个QM/Core源与olean。继承混合、生存、实层析、Doob、纯化、联合记录、条件动力学见证，并新增全效应分离/复层析、完整纯性/纯化酉方向和逐动作记录预算。它们与六证书42审计和747个主包显式定理分别统计。[实际见证回执](evidence/v31.8/finite-witnesses/verification.json)
 
 ## 把具体证书交给 Lean
 
@@ -203,15 +205,15 @@ print(local["all_six_cancel"])  # True；范围为六项局域异常
 
 有限协议证书只覆盖给出的准备配对和因果树。标量预算需要明确的逐步前提。二者不自动变成全部状态/全部协议上的 trace-distance 或 diamond-norm 保证。
 
-29个主包Lean模块覆盖实际量子操作、响应商、有限坐标、完整树、精确checker、效应稳定性、混合全态TV、Cesàro、对角/非交换条件化与经典/实模型分离。646定理、855审计统一通过；数值实例与具体见证有独立源绑定回执。当前集成身份见 [CURRENT](../status/CURRENT.json)。
+35个主包Lean模块覆盖继承有限量子操作、协议、证书和动力学，并补齐实际全效应分离、普遍复层析、完整纯性、纯化酉比较与共同有限控制器逐动作记录预算。747定理、985审计实际统一通过；数值实例与具体见证有独立源绑定回执。当前集成身份见 [CURRENT](../status/CURRENT.json)。
 
-新 `channelDefect` 是全态输出伪距离的数学上确界，尚不是本 Python 运行时的可计算函数。实际量子一步界已经调用 Core M-TC 得到轨迹总误差；原有标量预算 API 仍要求输入它声明的局部合同。丢弃结果后的通道缺陷不自动控制两个不同仪器的标签或历史；后验界要求双方事件概率正。可认证的缺陷数值上界、完整经典记录扩展、旁系统稳定性和范数识别仍是独立任务。
+`channelDefect` 是实际全态输出距离的数学上确界，尚不是本Python运行时的通用可计算函数。v31.8已经在Lean中从共同有限因果控制器和真实PSD历史块导出逐动作记录预算；Python既有标量API仍只处理其声明的局部合同。无标签通道缺陷不自动控制标签/历史，后验界仍要求正概率。可认证数值缺陷上界、相干控制/额外环境、停止树补齐与范数识别仍是独立任务。
 
-Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基独立性。数学数域、加权／可变指标桥与逐实例证明已经完成；Python/JSON 解码、索引映射程序、搜索／消元、PSD 判定和树遍历的全输入细化仍未完成。具体表示系数、matching 窗口、全局异常、真空或质量也继续独立。准确范围见 [v31.7 主报告](../UEOT_QM_KERNEL_v31.7.md)。
+Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基独立性。数学数域、加权／可变指标桥与逐实例证明已经完成；Python/JSON 解码、索引映射程序、搜索／消元、PSD 判定和树遍历的全输入细化仍未完成。具体表示系数、matching 窗口、全局异常、真空或质量也继续独立。准确范围见 [v31.8 主报告](../UEOT_QM_KERNEL_v31.8.md)。
 
 ## 回执与版本身份
 
-本版在 `evidence/v31.7/` 保存源码、运行、演示、通用 Lean 与实例回执。[本地证明回执](evidence/v31.7/lean-verification.json)、[实例验收](evidence/v31.7/lean-exports/verification.json) 与 [本轮台账](../status/CLAIM_LEDGER_v31.7.json) 分别记录实际结果、被测字节和开放义务。v31.2、v31.3、v31.4 原证据保留，并由各自独立集成回执记录已经完成的主线结果。
+本版在 `evidence/v31.8/` 保存实际源码、运行、演示、Lean与实例回执。[本地证明](evidence/v31.8/lean-verification.json)、[实例验收](evidence/v31.8/lean-exports/verification.json)和[新台账](../status/CLAIM_LEDGER_v31.8.json)记录被测字节与开放义务。v31.7及更早证据保留原字节、原数学范围和各自真实集成身份。v31.8远端尚待实际PR/main闭环。
 
 v31.1 的回执继续可读，保持其原源码身份：
 

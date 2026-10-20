@@ -1,0 +1,896 @@
+#!/usr/bin/env python3
+"""Bind edition 3.4 book metadata to frozen, actually accepted local inputs.
+
+This helper never builds Lean, executes book programs, typesets, renders, or
+performs a remote operation. It is read-only unless --apply is supplied.
+The context pins final canonical hashes and a stable receipt timestamp.
+Old book evidence and the three canonical documents are immutable inputs.
+"""
+
+import argparse
+from collections import Counter, defaultdict
+from copy import deepcopy
+from hashlib import sha256
+import json
+import os
+from pathlib import Path
+import re
+import sys
+import tempfile
+
+
+BOOK = Path('physics/qm/book')
+NEW = BOOK / 'evidence/v3.4'
+KERNEL = Path('physics/qm/kernel/evidence/v31.8')
+FOUNDATION = {'propext', 'Classical.choice', 'Quot.sound'}
+BASELINE = '7d05d0369b6793e28f0e39efaa77c0c9887479d1'
+SOURCE_SET = 'a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e'
+LOCAL = 'LOCAL_VERIFIED_REMOTE_PENDING'
+BODY_RULE = ('stable chapter/appendix anchor inclusive to next chapter/appendix '
+             'anchor exclusive; final appendix through EOF; exact UTF-8 bytes')
+
+
+def require(test, message):
+    if not test:
+        raise ValueError(message)
+
+
+def digest(data):
+    return sha256(data).hexdigest()
+
+
+def json_bytes(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode()
+
+
+def identity(path, data):
+    return {'path': str(path), 'sha256': digest(data), 'bytes': len(data)}
+
+
+def parse_claims(text):
+    lines = text.split('<a id="appendix-a"></a>', 1)[0].splitlines()
+    chapter = None
+    rows = []
+    for i, line in enumerate(lines):
+        heading = re.fullmatch(r'# (\d+)\. .+', line)
+        if heading:
+            chapter = int(heading.group(1))
+        anchor = re.fullmatch(r'<a id="([a-z0-9-]+)"></a>', line)
+        if not anchor or anchor.group(1).startswith('ch-'):
+            continue
+        result_id = anchor.group(1).upper()
+        following = next((x for x in lines[i + 1:] if x.strip()), '')
+        title = re.match(r'\*\*(.+?)\*\*', following)
+        require(title and re.match(re.escape(result_id) + r'(?=$|[^A-Za-z0-9_-])',
+                                   title.group(1)), 'Invalid numbered anchor: ' + result_id)
+        rows.append({'id': result_id, 'chapter': chapter, 'title': title.group(1)})
+    return rows
+
+
+def body_slices(text):
+    marks = list(re.finditer(r'^<a id="(ch-\d+|appendix-[a-f])"></a>$', text, re.M))
+    expected = ['ch-' + str(n) for n in range(63)] + ['appendix-' + x for x in 'abcdef']
+    require([m.group(1) for m in marks] == expected, 'Chapter/appendix anchor order differs')
+    return {m.group(1): text[m.start():marks[i + 1].start() if i + 1 < len(marks) else len(text)]
+            for i, m in enumerate(marks)}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, required=True)
+    parser.add_argument('--context', type=Path, required=True)
+    parser.add_argument('--apply', action='store_true')
+    args = parser.parse_args()
+    root = args.root.resolve()
+    context_path = args.context.resolve()
+    inputs = {}
+    outputs = {}
+
+    def read_abs(path):
+        path = Path(path).resolve()
+        data = path.read_bytes()
+        if path in inputs:
+            require(inputs[path] == data, 'Input changed during assembly: ' + str(path))
+        inputs[path] = data
+        return data
+
+    context_raw = read_abs(context_path)
+    context = json.loads(context_raw)
+    require(context.get('edition') == '3.4', 'Context must explicitly pin edition 3.4')
+    when = context['recorded_at_utc']
+    require(isinstance(when, str) and re.fullmatch(r'2026-\d\d-\d\dT[^\n]+(?:Z|\+00:00)', when),
+            'An actual stable UTC receipt timestamp is required')
+    require(context.get('repository', 'MurphyHoops/UEOT') == 'MurphyHoops/UEOT', 'Repository differs')
+    prior_root = Path(context.get('prior_root', str(root.parent / 'qm_v317_work'))).resolve()
+    require(prior_root != root, 'Prior edition must be a separate read-only reference')
+
+    def relpath(path):
+        path = Path(path)
+        require(not path.is_absolute() and '..' not in path.parts, 'Unsafe repository path: ' + str(path))
+        require((root / path).resolve().is_relative_to(root), 'Path leaves repository: ' + str(path))
+        return path
+
+    def read(path):
+        return read_abs(root / relpath(path))
+
+    def obj(path):
+        return json.loads(read(path))
+
+    def rid(path):
+        return identity(relpath(path).as_posix(), read(path))
+
+    def planned(path, data):
+        path = relpath(path)
+        require(path not in outputs, 'Duplicate output: ' + str(path))
+        require(path in {BOOK / 'README.md', BOOK / 'SOURCE_MANIFEST.json', BOOK / 'CHAPTER_DOSSIER.json'}
+                or path.is_relative_to(NEW), 'Output outside A ownership: ' + str(path))
+        require(path not in {BOOK / 'UEOT_PHYSICS.md', BOOK / 'UEOT_PHYSICS.tex', BOOK / 'UEOT_PHYSICS.pdf'},
+                'Canonical documents are immutable inputs')
+        outputs[path] = data
+        return identity(path.as_posix(), data)
+
+    def planned_json(path, data):
+        return planned(path, json_bytes(data))
+
+    def external_binding(name):
+        archived = root / NEW / 'chapter-inputs' / f'qm318_chapter{name}_bindings.json'
+        value = context.get('chapter_bindings', {}).get(str(name),
+                    str(archived) if archived.is_file() else f'qm318_chapter{name}_bindings.json')
+        path = Path(value)
+        return path if path.is_absolute() else context_path.parent / path
+
+    # All old evidence is checked byte-for-byte, then retained without a write.
+    prior_metadata = {}
+    snapshots = {}
+    for name, snapshot in [('SOURCE_MANIFEST.json', 'source-manifest-prior-v3.3.json'),
+                           ('CHAPTER_DOSSIER.json', 'dossier-prior-v3.3.json'),
+                           ('README.md', 'readme-prior-v3.3.md')]:
+        prior_raw = read_abs(prior_root / BOOK / name)
+        require(read(BOOK / name) == prior_raw, 'Current metadata no longer matches the v3.3 baseline: ' + name)
+        prior_metadata[name] = prior_raw
+        snapshots[name] = planned(NEW / snapshot, prior_raw)
+    old_manifest = json.loads(prior_metadata['SOURCE_MANIFEST.json'])
+    old_dossier = json.loads(prior_metadata['CHAPTER_DOSSIER.json'])
+    require(old_dossier['edition'] == '3.3' and old_dossier['current_release_stage'] == 'MAIN_VERIFIED',
+            'Prior dossier is not the completed 3.3 edition')
+    require(len(old_manifest['entries']) == 11, 'Expected all 11 original source entries')
+    old_results = [x for ch in old_dossier['chapters'] for x in ch.get('numbered_results', [])]
+    require(len(old_results) == 131 and len({x['id'] for x in old_results}) == 131,
+            'Prior 131 numbered objects are incomplete')
+    old_evidence = []
+    for path in sorted((prior_root / BOOK / 'evidence').rglob('*')):
+        if path.is_file():
+            relative = path.relative_to(prior_root)
+            original = read_abs(path)
+            require(read(relative) == original, 'Historical evidence changed: ' + str(relative))
+            old_evidence.append(identity(relative.as_posix(), original))
+    require(old_evidence, 'No historical book evidence found')
+
+    proof = obj(KERNEL / 'lean-verification.json')
+    manifest = obj(KERNEL / 'source-manifest.json')
+    inventory = obj(KERNEL / 'declaration-inventory.json')
+    axioms = obj(KERNEL / 'proof-axioms.json')
+    witnesses = obj(KERNEL / 'finite-witnesses/verification.json')
+    require(proof['status'] == axioms['status'] == witnesses['status'] == 'PASS', 'Actual proof/audit gates not PASS')
+    require(proof['source_count'] == manifest['source_count'] == len(manifest['sources']) == 89,
+            'Actual source count differs from the accepted set')
+    require(proof['source_set_sha256'] == manifest['source_set_sha256'] == SOURCE_SET,
+            'Current source set differs from the accepted freeze')
+    calculated = digest(json.dumps(manifest['sources'], sort_keys=True, separators=(',', ':')).encode())
+    require(calculated == SOURCE_SET, 'Source-set aggregate is not derived from manifest rows')
+    source_rows = {x['path']: x for x in manifest['sources']}
+    require(len(source_rows) == 89, 'Duplicate source-manifest path')
+    # The real build remains bound to its original inputs. A separately checked,
+    # single documentation-word correction binds final raw publication bytes.
+    publication_manifest_path = KERNEL / 'publication-source-manifest.json'
+    bridge_path = KERNEL / 'publication-source-reconciliation.json'
+    publication_manifest = obj(publication_manifest_path)
+    bridge = obj(bridge_path)
+    bridge_id = rid(bridge_path)
+    require(bridge['status'] == 'PASS_COMMENT_ONLY' and bridge['additional_compiler_invocations'] == 0
+            and bridge['scientific_claims_changed'] is False and bridge['core_changed'] is False,
+            'Publication bridge does not have the authorized comment-only scope')
+    unified_identity = deepcopy(bridge['unified_source_identity'])
+    publication_identity = deepcopy(bridge['publication_source_identity'])
+    publication_set = publication_identity['source_set_sha256']
+    require(unified_identity['manifest'] == rid(KERNEL / 'source-manifest.json')
+            and unified_identity['verification'] == rid(KERNEL / 'lean-verification.json')
+            and unified_identity['source_count'] == 89 and unified_identity['source_set_sha256'] == SOURCE_SET
+            and unified_identity['actual_build_jobs'] == proof['actual_build_jobs'], 'Bridge does not bind immutable actual unified inputs')
+    require(publication_identity['manifest'] == rid(publication_manifest_path)
+            and publication_identity['source_count'] == publication_manifest['source_count'] == 89
+            and publication_set == publication_manifest['source_set_sha256'] == context['publication_source_set_sha256'],
+            'Publication manifest/bridge/caller pin differs')
+    require(digest(json.dumps(publication_manifest['sources'], sort_keys=True, separators=(',', ':')).encode()) == publication_set,
+            'Publication source aggregate is not derived from final rows')
+    published_rows = {x['path']: x for x in publication_manifest['sources']}
+    require(len(published_rows) == 89 and published_rows.keys() == source_rows.keys(), 'Publication source paths differ')
+    changed = sorted(p for p in source_rows if published_rows[p] != source_rows[p])
+    only_changed = 'formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean'
+    require(changed == bridge['changed_paths'] == [only_changed]
+            and bridge['unchanged_source_paths'] == 88 and len(bridge['changes']) == 1,
+            'Only the authorized single-file documentation correction may differ')
+    for path, row in published_rows.items():
+        require(rid(path) == row, 'Final publication source bytes changed: ' + path)
+    change = bridge['changes'][0]
+    require(change['path'] == only_changed and change['before'] == source_rows[only_changed]
+            and change['after'] == published_rows[only_changed], 'Bridge changed source identities differ')
+    for key in ['before_snapshot', 'after_snapshot', 'exact_diff']:
+        require(rid(change[key]['path']) == change[key], 'Bridge snapshot/diff identity changed')
+    before_comment = read(change['before_snapshot']['path'])
+    after_comment = read(change['after_snapshot']['path'])
+    old_word = b'/-- Different finite auxiliary carriers admit actual isometric extensions into'
+    new_word = b'/-- Different finite auxiliary carriers have actual isometric extensions into'
+    require(digest(before_comment) == source_rows[only_changed]['sha256']
+            and digest(after_comment) == published_rows[only_changed]['sha256']
+            and before_comment.count(old_word) == 1
+            and before_comment.replace(old_word, new_word) == after_comment == read(only_changed),
+            'The exact whole-file change is not the approved one-word documentation replacement')
+    require(change['erased_source_equal'] is True and change['declarations_diagnostics_and_instances_equal'] is True
+            and bridge['all_final_source_bytes_verified'] is True
+            and bridge['unified_receipts_preserved_original_bytes'] is True
+            and bridge['actual_workflow_raw_proof_escape_regex_passed'] is True,
+            'Publication bridge checks are incomplete')
+    publication_identity.update({'status': 'LOCAL_COMMENT_ONLY_BRIDGE_REMOTE_PENDING', 'reconciliation': bridge_id,
+                                 'additional_local_compiler_invocations': 0,
+                                 'scope': 'Final raw bytes differ in one documentation word. The original 8799-job build remains bound exclusively to unified_source_identity; final raw CI is still pending.'})
+
+    def bound_source_identity(path):
+        return {**published_rows[path], 'unified_input_sha256': source_rows[path]['sha256'],
+                'unified_input_bytes': source_rows[path]['bytes'],
+                'publication_identity_relation': 'DOCUMENTATION_WORD_ONLY' if path in changed else 'BYTE_IDENTICAL',
+                **({'publication_reconciliation': bridge_id} if path in changed else {})}
+    require(proof['actual_build_exit_code'] == proof['actual_axiom_audit_exit_code'] == 0,
+            'Build or audit exit code is not zero')
+    require(proof['core_source_modified'] is False and proof['proof_escape_gate'] == 'PASS',
+            'Core or proof-escape gate failed')
+    require(proof['generic_modules'] == inventory['module_count'] == 35
+            and proof['explicit_theorems'] == inventory['explicit_theorems'] == 747,
+            'Verified generic declaration counts disagree')
+    generic_names = set(axioms['declarations'])
+    require(len(generic_names) == proof['actual_named_axiom_reports'] == inventory['audit_target_count'] == 985,
+            'Actual generic named audit count disagrees')
+    require(set(inventory['audit_targets']) == generic_names and len(inventory['audit_targets']) == 985,
+            'Actual generic audit differs from complete unique inventory')
+    require(all(set(x) <= FOUNDATION for x in axioms['declarations'].values()), 'Forbidden foundation in actual generic audit')
+    declaration_source = {}
+    for module, declarations in inventory['modules'].items():
+        path = f'formalization/ueot-qm/UEOTQM/{module}.lean'
+        require(source_rows[path]['sha256'] == inventory['module_identities'][path]['sha256'],
+                'Module inventory is stale: ' + module)
+        for declaration in declarations:
+            require(declaration['name'] not in declaration_source, 'Duplicate explicit public declaration')
+            declaration_source[declaration['name']] = path
+    witness_names = set()
+    for check in witnesses['checks']:
+        require(check['status'] == check['audit']['status'] == 'PASS' and check['exit_code'] == 0,
+                'A witness execution/audit did not PASS')
+        require(check['audit']['complete_unique'] is True, 'Witness audit incomplete or non-unique')
+        names = check['audit']['actual']
+        expected = [x['name'] for x in witnesses['declarations'][check['name']]]
+        require(list(names) == expected == check['audit']['expected'], 'Witness source-order audit differs')
+        require(all(set(x) <= FOUNDATION for x in names.values()), 'Forbidden witness foundation')
+        path = f"formalization/ueot-qm/scripts/witnesses/{check['name']}.lean"
+        require(source_rows[path]['sha256'] == check['source']['sha256'], 'Witness source no longer matches execution')
+        for name in names:
+            require(name not in witness_names and name not in generic_names, 'Duplicate witness identity')
+            witness_names.add(name)
+            declaration_source[name] = path
+    require(len(witness_names) == witnesses['witness_audit_count'] == 269 and len(witnesses['checks']) == 10,
+            'Expected ten actual witness groups and 269 exact named audits')
+    require(proof['runtime_test_methods'] == 100 and proof['all_four_demos_passed'] is True,
+            'Actual runtime/demo gates differ')
+    require(proof['instance_verification']['status'] == 'PASS', 'Actual certificate gate failed')
+
+    # The caller must pin all three final canonical identities, independently of build receipts.
+    canonical = {key: rid(BOOK / name) for key, name in
+                 [('canonical', 'UEOT_PHYSICS.md'), ('pdf', 'UEOT_PHYSICS.pdf'), ('latex', 'UEOT_PHYSICS.tex')]}
+    pins = context['canonical_hashes']
+    for key, pin in [('canonical', 'markdown_sha256'), ('pdf', 'pdf_sha256'), ('latex', 'tex_sha256')]:
+        require(canonical[key]['sha256'] == pins[pin], 'Canonical identity differs from final caller pin: ' + key)
+    text = read(BOOK / 'UEOT_PHYSICS.md').decode()
+    prior_text = read_abs(prior_root / BOOK / 'UEOT_PHYSICS.md').decode()
+    require(digest(prior_text.encode()) == old_dossier['canonical']['sha256'], 'Prior canonical source changed')
+    claims = parse_claims(text)
+    require(claims[:131] == parse_claims(prior_text), 'Inherited actual numbered statements changed')
+    require(len(claims) == 147, 'Expected 131 inherited and 16 new numbered results')
+    require('version: "3.4"' in text, 'Canonical edition marker is not 3.4')
+    slices = body_slices(text)
+    by_id = {x['id']: x for x in claims}
+    require(len(by_id) == 147, 'Duplicate numbered result identity')
+
+    receipt_paths = {name: relpath(context.get('receipts', {}).get(name, str(NEW / filename)))
+                     for name, filename in [('structure', 'book-structure.json'), ('pdf_build', 'pdf-build.json'),
+                                            ('visual', 'pdf-visual-review.json'), ('render', 'pdf-render-manifest.json'),
+                                            ('integration', 'canonical-integration.json'),
+                                            ('canonical_adjustments', 'canonical-layout-adjustments.json'),
+                                            ('collaborator', 'pdf-collaborator-review.json')]}
+    receipts = {name: obj(path) for name, path in receipt_paths.items()}
+    receipt_ids = {name: rid(path) for name, path in receipt_paths.items()}
+    structure, build, visual, render, integration = (receipts[x] for x in ['structure', 'pdf_build', 'visual', 'render', 'integration'])
+    md_hash = canonical['canonical']['sha256']
+    pdf_hash = canonical['pdf']['sha256']
+    require(structure['status'] == 'PASS' and structure['source_sha256'] == md_hash
+            and structure['claims'] == claims, 'Actual structure receipt does not bind current numbered statements')
+    require(structure['chapters'] == 63 and structure['appendices'] == 6
+            and structure['numbered_results'] == 147 and structure['internal_links_valid'] is True
+            and structure['registry_rows_bound_to_actual_anchors'] is True, 'Book structure gate failed')
+    require(build['source_sha256'] == md_hash and build['pdf_sha256'] == pdf_hash
+            and build['tex_sha256'] == canonical['latex']['sha256'], 'PDF build does not bind all final canonical bytes')
+    require(len(build['compile_passes']) == 3 and all(x['exit_code'] == 0 for x in build['compile_passes'])
+            and build['layout_warnings'] == [], 'Actual three-pass layout gate is incomplete')
+    require(visual['status'] == 'PASS' and visual['pdf_sha256'] == pdf_hash
+            and visual.get('source_sha256', visual.get('canonical_sha256')) == md_hash
+            and visual['blocking_findings'] == [], 'Actual final visual receipt is not PASS')
+    actual_pages = visual['root_full_pages_actually_viewed']
+    require(isinstance(actual_pages, list) and actual_pages and visual['root_review_method'],
+            'Actual scoped full-page visual observations are missing')
+    pages = visual['page_count']
+    require(isinstance(pages, int) and pages > 0 and len(actual_pages) == len(set(actual_pages))
+            and all(isinstance(p, int) and 1 <= p <= pages for p in actual_pages), 'Visual page list is invalid')
+    require(render['pdf_sha256'] == pdf_hash and render['canonical_source_sha256'] == md_hash
+            and render['page_count'] == pages, 'Render/page-count identity differs')
+    collaborator = receipts['collaborator']
+    require(collaborator['status'] == 'PASS_SCOPED_ACTUAL_FULL_PAGE_REVIEW'
+            and collaborator['pdf']['sha256'] == pdf_hash and collaborator['canonical_source']['sha256'] == md_hash
+            and collaborator['full_document_pages'] == pages and collaborator['blocking_findings'] == [],
+            'Actual collaborator visual receipt does not bind final canonical bytes')
+    collaborator_pages = collaborator['actually_viewed_physical_pages']
+    require(collaborator_pages == [*range(168, 190), 213, 214, 229]
+            and collaborator['full_pages_viewed'] == len(collaborator_pages) == 25,
+            'Collaborator actual requested full-page coverage differs')
+    adjustments = receipts['canonical_adjustments']
+    require(adjustments['schema'] == 'ueot_physics.canonical_layout_and_publication_identity.v3.4'
+            and adjustments['initial_integrated_source_sha256'] == integration['canonical_source_sha256']
+            and adjustments['current_source_sha256'] == md_hash
+            and adjustments['all_three_new_chapter_bodies_preserved'] is True
+            and adjustments['embedded_program_count'] == 3
+            and adjustments['embedded_program_bytes_unchanged'] is True
+            and adjustments['old_programs_reexecuted'] is False,
+            'Actual additive canonical layout/publication-identity bridge does not bind final source')
+    require(integration['inherited_results_preserved'] == 131
+            and integration['new_result_ids'] == [x['id'] for x in claims[131:]]
+            and integration['source_set_sha256'] == SOURCE_SET, 'Actual canonical integration receipt differs')
+    require(integration['old_757_checks_reexecuted'] is False
+            and integration['whole_book_formalized'] is False
+            and integration['new_experimental_data'] is False, 'Canonical integration scope widened')
+
+    # Preserve original chapter binding artifacts as exact history, while current statements
+    # are freshly checked against the final actual unified public and witness audit receipts.
+    normalized = {}
+    binding_ids = {}
+    all_bound = set()
+    for chapter in [60, 61, 62]:
+        path = external_binding(chapter)
+        binding_raw = read_abs(path)
+        binding = json.loads(binding_raw)
+        require(binding['chapter'] == chapter, 'Binding chapter mismatch')
+        binding_ids[chapter] = planned(NEW / f'chapter{chapter}-bindings.json', binding_raw)
+        chapter_input = next(x for x in integration['chapter_inputs'] if x['chapter'] == chapter)
+        draft_identity = binding.get('chapter_source', binding.get('chapter_draft'))
+        require(draft_identity['sha256'] == chapter_input['sha256'], 'Binding and installed draft input differ')
+        draft_raw = read_abs(Path(chapter_input['path']))
+        require(digest(draft_raw) == chapter_input['sha256'] and len(draft_raw) == chapter_input['bytes'],
+                'Author chapter draft bytes changed after integration')
+        require(slices[f'ch-{chapter}'].strip() == draft_raw.decode().strip(),
+                'Installed chapter differs from reviewed complete draft: ' + str(chapter))
+        rows = binding.get('results', binding.get('numbered_results'))
+        require([x['id'] for x in rows] == [x['id'] for x in claims if x['chapter'] == chapter],
+                'Binding numbered results differ from actual chapter')
+        normalized[chapter] = []
+        for result in rows:
+            main_names = result.get('public_main_declarations', result.get('main_declarations', []))
+            support_names = (result.get('public_support_declarations', result.get('support_declarations', []))
+                             + result.get('inherited_declarations', []))
+            control_names = result.get('concrete_witness_declarations', result.get('witness_declarations', []))
+            names = list(dict.fromkeys(main_names + support_names + control_names))
+            require(names and set(names) <= generic_names | witness_names, 'Named claim not in actual complete audit: ' + result['id'])
+            require(set(names) <= declaration_source.keys(), 'Named claim source location missing: ' + result['id'])
+            require(result['anchor'] == result['id'].lower() and by_id[result['id']]['chapter'] == chapter,
+                    'Claim anchor/placement mismatch')
+            assumptions = result.get('premises', result.get('assumptions'))
+            quantifiers = result.get('quantified_scope', result.get('quantifiers'))
+            conclusion = result.get('actual_conclusion', result.get('conclusion'))
+            require(assumptions and quantifiers and conclusion and result['open_boundaries'] and result['proof_outline'],
+                    'Incomplete scientific responsibility: ' + result['id'])
+            grouped = defaultdict(list)
+            for name in names:
+                grouped[declaration_source[name]].append(name)
+            bound_sources = []
+            for source, declarations in sorted(grouped.items()):
+                is_witness = '/scripts/witnesses/' in source
+                bound_sources.append({**bound_source_identity(source), 'declarations': declarations,
+                                      'role': 'CONCRETE_WITNESS' if is_witness else 'GENERIC_MODULE',
+                                      'actual_named_audit_receipt': str(KERNEL / ('finite-witnesses/verification.json' if is_witness else 'proof-axioms.json')),
+                                      'all_names_present_in_actual_named_audit': True})
+            negative = result['id'].startswith('N-')
+            normalized[chapter].append({
+                'id': result['id'], 'title': by_id[result['id']]['title'], 'anchor': result['anchor'],
+                'origin': 'NEW_IN_3_4', 'argument_status': ['N' if negative else 'P'],
+                'dependency_class': ['B', 'P', 'O'], 'verification_kind': ['analytic', 'lean'] + (['exact_arithmetic'] if negative else []),
+                'type_responsibility': {'domain_assumptions': assumptions, 'quantifier_scope': quantifiers,
+                                        'proved_conclusion_scope': conclusion,
+                                        'roles': [{'class': 'B', 'responsibility': 'Explicit finite state/effect/process interfaces.'},
+                                                  {'class': 'P', 'responsibility': 'Declared finite complex mathematical model; not uniquely selected by Core.'},
+                                                  {'class': 'O', 'responsibility': 'Actually proved probability, state, marginal, or record comparison.'}]},
+                'source_refs': [{'id': 'QM318', 'locator': x['path']} for x in bound_sources],
+                'formal': {'source_bindings': bound_sources, 'main_statement_declarations': main_names,
+                           'supporting_declarations': support_names, 'supporting_control_declarations': control_names,
+                           'generic_declarations': sorted(set(names) & generic_names),
+                           'witness_declarations': sorted(set(names) & witness_names),
+                           'all_named_declarations_located_in_actual_source': True,
+                           'all_names_bound_to_actual_named_audit': True,
+                           'unified_acceptance_status': 'PASS_ACTUAL_LOCAL_VERIFICATION',
+                           'remote_acceptance_status': 'PENDING_ACTUAL_SOURCE_AND_MAIN_CI',
+                           'whole_chapter_formalized': False,
+                           'declaration_roles_come_from_actual_audits_not_field_labels': True},
+                'proof_outline': result['proof_outline'],
+                'author_source_binding': binding_ids[chapter],
+                'concrete_witness_role': result.get('concrete_witness_role', 'Exact named finite witnesses; the full quantifiers are carried by the generic proof.'),
+                'scientific_boundary': result['open_boundaries'], 'new_experimental_data': False})
+            all_bound.update(names)
+
+    preserved = planned_json(NEW / 'prior-v3.3-preservation.json', {
+        'schema': 'ueot_physics.prior_edition_preservation.v3.4', 'status': 'PASS_EXACT_PRIOR_BYTES',
+        'recorded_at_utc': when, 'prior_edition': '3.3', 'prior_status': 'MAIN_VERIFIED',
+        'prior_baseline_commit': BASELINE, 'metadata_snapshots': snapshots,
+        'prior_canonical': old_dossier['canonical'], 'prior_derivatives': old_dossier['derivatives'],
+        'historical_book_evidence_count': len(old_evidence), 'historical_book_evidence': old_evidence,
+        'all_historical_evidence_bytes_identical': True, 'old_131_result_objects_exactly_preserved': True,
+        'original_11_source_entries_exactly_preserved': True,
+        'scope': 'Exact old evidence bytes and metadata snapshots; old execution and remote statuses remain historical, not current 3.4 execution.'})
+
+    # Identity-only reuse of three old programs, with no repeat of 757 old checks.
+    def embedded_programs(source):
+        region = source.split('# 附录 D.', 1)[1].split('<a id="appendix-e">', 1)[0]
+        return re.findall(r'(?ms)^~~~python\n(.*?)^~~~\s*$', region)
+
+    old_blocks = embedded_programs(prior_text)
+    new_blocks = embedded_programs(text)
+    require(len(old_blocks) == len(new_blocks) == 3 and old_blocks == new_blocks, 'Legacy embedded program bytes changed')
+    old_legacy = obj(BOOK / 'evidence/v3.3/legacy-source-reuse.json')
+    programs = []
+    for original, block in zip(old_legacy['programs'], new_blocks):
+        require(rid(original['path'])['sha256'] == original['sha256'], 'Legacy executable changed')
+        encoded = block.encode()
+        require(digest(encoded) == original['embedded_block_sha256'], 'Legacy embedded identity differs')
+        programs.append({**rid(original['path']), 'program': original['program'],
+                         'embedded_block_sha256': digest(encoded), 'embedded_block_bytes': len(encoded),
+                         'embedded_block_identical_to_v3_3': True})
+    legacy = planned_json(NEW / 'legacy-source-reuse.json', {
+        'schema': 'ueot_physics.legacy_source_reuse.v3.4', 'status': 'UNCHANGED_SOURCE_IDENTITIES_CONFIRMED',
+        'checked_at_utc': when, 'prior_execution': rid(BOOK / 'evidence/v3.0/legacy-regression.json'),
+        'previous_identity_receipt': rid(BOOK / 'evidence/v3.3/legacy-source-reuse.json'), 'programs': programs,
+        'historical_checks': 757, 'historical_components': [237, 423, 97], 'reexecuted_this_edition': False,
+        'scope': 'Three executable files and literal embedded blocks match 3.3; historical 757 checks retain their 3.0 actual execution identity.'})
+
+    # SOURCE_MANIFEST is an input to the dossier. It references downstream reviews by path only.
+    m = deepcopy(old_manifest)
+    m.update({'recorded_at_utc': when, 'current_code_baseline': BASELINE,
+              'current_code_baseline_role': 'Published v31.7 metadata baseline for 3.4 authoring; not a v31.8 CI-tested source identity.',
+              'current_code_manifest': '../kernel/evidence/v31.8/source-manifest.json',
+              'current_publication_code_manifest': '../kernel/evidence/v31.8/publication-source-manifest.json',
+              'unified_source_identity': unified_identity, 'publication_source_identity': publication_identity,
+              'prior_v3_3_code_identity': deepcopy(old_manifest['current_code_identity']),
+              'prior_v3_3_canonical_identity': deepcopy(old_manifest['canonical_identity']),
+              'prior_v3_3_remote_metadata_completion': deepcopy(old_manifest['remote_metadata_completion']),
+              'prior_edition_snapshot': snapshots['SOURCE_MANIFEST.json'],
+              'current_code_identity': {'edition': '3.4', 'status': LOCAL, 'source_count': 89,
+                                        'manifest_sha256': rid(KERNEL / 'source-manifest.json')['sha256'],
+                                        'source_set_sha256': SOURCE_SET,
+                                        'identity_rule': 'This identity is the immutable successful unified build input, not the final publication raw set. publication_source_identity separately records the single documentation-word correction and actual bridge; final raw CI remains pending.',
+                                        'local_verification': str(KERNEL / 'lean-verification.json'),
+                                        'local_verification_sha256': rid(KERNEL / 'lean-verification.json')['sha256'],
+                                        'original_entries_unchanged': True, 'remote_verified': False, 'remote_status': 'PENDING',
+                                        'repository': 'MurphyHoops/UEOT'},
+              'canonical_identity': {'edition': '3.4', 'sha256': md_hash, 'bytes': canonical['canonical']['bytes'],
+                                     'chapters': 63, 'appendices': 6, 'numbered_results': 147},
+              'legacy_program_reuse': {'receipt': legacy['path'], 'receipt_sha256': legacy['sha256'],
+                                       'prior_execution': str(BOOK / 'evidence/v3.0/legacy-regression.json'),
+                                       'reexecuted_this_edition': False, 'scope': 'Identity-only reuse; 757 checks retain their actual 3.0 execution date.'},
+              'original_entry_preservation': {'entry_count': 11, 'all_entry_records_identical_to_v3_3': True,
+                                              'prior_manifest': snapshots['SOURCE_MANIFEST.json'],
+                                              'scope': 'Original source objects, provenance, hashes and locators are unchanged.'},
+              'remote_metadata_completion': {'status': 'PENDING', 'remote_verified': False,
+                                              'scope': 'Current edition 3.4 / v31.8 only; prior 3.3 MAIN_VERIFIED remains in explicit history.'},
+              'local_release_receipt': {'path': str(NEW / 'local-release-gates.json'),
+                                        'hash_binding_direction': 'The external release receipt binds this manifest hash; no reverse hash.'}})
+    require(m['entries'] == old_manifest['entries'], 'Original source entries were mutated')
+    manifest_id = planned_json(BOOK / 'SOURCE_MANIFEST.json', m)
+
+    d = deepcopy(old_dossier)
+    d.update({'recorded_at_utc': when, 'edition': '3.4', 'current_release_stage': LOCAL,
+              'unified_source_identity': unified_identity, 'publication_source_identity': publication_identity,
+              'prior_edition_snapshot': {**snapshots['CHAPTER_DOSSIER.json'], 'edition': '3.3',
+                                         'status': 'MAIN_VERIFIED', 'not_current_edition_acceptance': True},
+              'canonical': {**canonical['canonical'], 'chapters': 63, 'appendices': 6, 'numbered_results': 147,
+                            'inherited_result_ids': 131, 'new_result_ids': 16,
+                            'identity_scope': 'INSTALLED_CANONICAL_BYTES', 'installation_status': LOCAL},
+              'book_source_manifest': manifest_id})
+    d['edition_history'].append({'edition': '3.3', 'chapter_dossier_snapshot': snapshots['CHAPTER_DOSSIER.json'],
+                                 'source_manifest_snapshot': snapshots['SOURCE_MANIFEST.json'],
+                                 'readme_snapshot': snapshots['README.md'],
+                                 'canonical': deepcopy(old_dossier['canonical']),
+                                 'derivatives': deepcopy(old_dossier['derivatives']),
+                                 'release_acceptance': deepcopy(old_dossier['release_acceptance']),
+                                 'remote_metadata_completion': deepcopy(old_dossier['remote_metadata_completion']),
+                                 'historical_scope': 'All 3.3/v31.7 local and MAIN_VERIFIED/PR/CI identities are retained as history; none accepts 3.4/v31.8.'})
+    d['derivatives'] = {
+        'pdf': {**canonical['pdf'], 'pages': pages, 'status': 'LOCAL_VERIFIED', 'source_sha256': md_hash,
+                'actual_build_receipt': receipt_ids['pdf_build'], 'actual_visual_receipt': receipt_ids['visual'],
+                'page_count_receipt': receipt_ids['render'], 'remote_publication_status': 'PENDING'},
+        'latex': {**canonical['latex'], 'status': 'LOCAL_VERIFIED', 'source_sha256': md_hash,
+                  'actual_build_receipt': receipt_ids['pdf_build'], 'remote_publication_status': 'PENDING'},
+        'visual_review': {**receipt_ids['visual'], 'recorded_status': visual['status'], 'status': visual['status'],
+                          'status_not_inferred_from_compile': True, 'review_performed_by_metadata_helper': False,
+                          'root_full_pages_actually_viewed': actual_pages, 'root_review_method': visual['root_review_method'],
+                          'collaborator_full_page_review': receipt_ids['collaborator'],
+                          'collaborator_full_pages_actually_viewed': collaborator_pages,
+                          'actual_scope_limits': visual.get('scope_limits', [render.get('scope', '')]),
+                          'independent_human_peer_review': False}}
+    d['completion_boundary'] = {
+        'formal_book_complete': True, 'all_physics_formalized': False, 'core_unconditionally_selects_quantum_theory': False,
+        'unconditional_realistic_three_generations': False, 'four_dimensional_nonperturbative_qft_complete': False,
+        'quantum_gravity_complete': False, 'new_experiment_this_edition': False,
+        'reason': '3.4连续正文、继承131项与新增16项、89受验源、实际统一门、最终PDF及所列真实视觉范围均已本地验收；有限复模型性质不等于自然理论完成。远端源码与主线CI仍待实际执行。',
+        'formal_book_complete_scope': '第0–62章、附录A–F及147项编号完整；整本物理学、每段解释和自然界适用性未因此全部形式化或确证。',
+        'current_release_acceptance': LOCAL}
+    new_source_paths = sorted({declaration_source[name] for name in all_bound})
+    d['source_catalog']['QM318'] = {
+        'kind': 'actual_finite_quantum_source_and_named_audit',
+        'label': 'UEOT-QM v31.8：全效应与复层析、完整纯性与辅助酉、共同控制器逐动作记录预算',
+        'status': LOCAL, 'authoring_baseline_commit': BASELINE,
+        'source_manifest': rid(KERNEL / 'source-manifest.json'), 'source_count': 89, 'source_set_sha256': SOURCE_SET,
+        'source_bindings': [bound_source_identity(p) for p in new_source_paths], 'actual_local_acceptance': rid(KERNEL / 'lean-verification.json'),
+        'unified_source_identity': unified_identity, 'publication_source_identity': publication_identity,
+        'remote_verified': False, 'remote_status': 'PENDING',
+        'scope': '完整有限复矩阵和明确经典历史控制器的条件数学；不加入实验、不修改Core、不唯一选择复数，也不扩大三代结论。'}
+    catalog = d['evidence_catalog']
+    additions = {
+        'lean_v31_8': KERNEL / 'lean-verification.json', 'axioms_v31_8': KERNEL / 'proof-axioms.json',
+        'finite_witnesses_v31_8': KERNEL / 'finite-witnesses/verification.json',
+        'source_manifest_v31_8': KERNEL / 'source-manifest.json', 'declarations_v31_8': KERNEL / 'declaration-inventory.json',
+        'publication_source_manifest_v31_8': publication_manifest_path, 'publication_source_bridge_v31_8': bridge_path,
+        'runtime_v31_8': KERNEL / 'runtime-verification.json', 'instances_v31_8': KERNEL / 'lean-exports/verification.json',
+        'demos_v31_8': KERNEL / 'demos-verification.json', 'source_freeze_v31_8': KERNEL / 'source-freeze-reconciliation.json',
+        'dependency_identity_v31_8': KERNEL / 'dependency-identity.json', 'core_import_closure_v31_8': KERNEL / 'core-import-closure.json',
+        'root_scientific_review_v31_8': KERNEL / 'root-scientific-review.json',
+        'structure_v3_4': receipt_paths['structure'], 'pdf_build_v3_4': receipt_paths['pdf_build'],
+        'visual_v3_4': receipt_paths['visual'], 'pdf_render_v3_4': receipt_paths['render'],
+        'pdf_collaborator_v3_4': receipt_paths['collaborator'],
+        'canonical_integration_v3_4': receipt_paths['integration'],
+        'canonical_adjustments_v3_4': receipt_paths['canonical_adjustments']}
+    for key, path in additions.items():
+        record = obj(path)
+        catalog[key] = {**rid(path), 'status': record.get('status', 'IDENTITY_RECORD'),
+                        'role': 'ACTUAL_CURRENT_EDITION_RECEIPT', 'record_scope': '3.4 / v31.8 local',
+                        'remote_acceptance_inferred': False}
+        if key == 'declarations_v31_8':
+            catalog[key]['status_scope'] = 'Original source-enumeration checkpoint; successful later execution is separately bound by lean_v31_8 and axioms_v31_8.'
+        if key in ['canonical_integration_v3_4', 'canonical_adjustments_v3_4']:
+            catalog[key]['status_scope'] = 'Original source-integration checkpoint; the later final PDF/visual/local gates are separately bound and do not rewrite this receipt.'
+    for key, item in [('prior_preservation_v3_3', preserved), ('legacy_reuse_v3_4', legacy),
+                      ('book_source_manifest_v3_4', manifest_id)]:
+        catalog[key] = {**item, 'record_scope': '3.4 metadata/identity checks', 'remote_acceptance_inferred': False}
+    for chapter, item in binding_ids.items():
+        catalog[f'chapter{chapter}_bindings_v3_4'] = {**item,
+            'record_scope': 'Immutable author preparation snapshot; its old pending-unified status is historical. Final names and source bytes are freshly bound by this dossier to actual unified PASS.'}
+    catalog['dossier_review_v3_4'] = {'path': str(NEW / 'dossier-review.json'), 'status': 'PASS_LOCAL_CONTENT_SOURCE_AND_PUBLICATION_RECEIPTS',
+                                    'record_scope': 'External review of current 3.4 metadata',
+                                    'hash_binding_direction': 'Review hashes this dossier; no reverse hash.'}
+    d['catalog_temporal_scope'] = {
+        'retained_source_ids': list(old_dossier['source_catalog']), 'retained_evidence_ids': list(old_dossier['evidence_catalog']),
+        'rule': 'Retained catalog objects keep their exact recorded values, including words such as current and their historical statuses. Those words refer to the original edition only. Current 3.4 acceptance uses QM318 and the explicit v31_8/v3_4 keys.',
+        'exact_original_snapshot': snapshots['CHAPTER_DOSSIER.json'],
+        'mutable_path_historical_identity_resolution': {
+            str(BOOK / 'SOURCE_MANIFEST.json'): snapshots['SOURCE_MANIFEST.json'],
+            str(BOOK / 'CHAPTER_DOSSIER.json'): snapshots['CHAPTER_DOSSIER.json'],
+            str(BOOK / 'README.md'): snapshots['README.md']}}
+    body_records = []
+    for chapter in d['chapters']:
+        anchor = chapter['anchor']
+        prior_body = chapter['body_sha256']
+        current_body = slices[anchor].encode()
+        chapter.setdefault('body_revision_history', []).append({
+            'edition': '3.3', 'body_sha256': prior_body, 'body_utf8_bytes': chapter.get('body_utf8_bytes'),
+            'current_edition_action': chapter.get('current_edition_action'),
+            'exact_prior_record': {'path': snapshots['CHAPTER_DOSSIER.json']['path'], 'anchor': anchor}})
+        chapter.update({'body_sha256': digest(current_body), 'body_utf8_bytes': len(current_body),
+                        'body_slice_convention': BODY_RULE, 'current_edition_action': 'UPDATED_IN_3_4' if digest(current_body) != prior_body else 'PRESERVED_IN_3_4',
+                        'sections': [{'id': n, 'title': title} for n, title in re.findall(r'^## (\d+\.\d+)\s+(.+)$', slices[anchor], re.M)],
+                        'current_edition_verification': {'edition': '3.4', 'body_identity_checked': True,
+                            'historical_numbered_result_objects_preserved': True, 'status': LOCAL,
+                            'whole_chapter_or_appendix_formalized': False,
+                            'scope': '当前正文切片及统一聚合验收；旧编号对象、原论证与旧章内检查点保持各自原版范围。'},
+                        'historical_checkpoint_scope': {'prior_edition': '3.3', 'exact_prior_record': snapshots['CHAPTER_DOSSIER.json']['path'],
+                            'rule': 'Unchanged numbered_results and verification_responsibility fields preserve original local/remote checkpoint scope. They are not the current aggregate release state.'}})
+        chapter['revision'] = chapter.get('revision', '') + ' 3.4按实际正文重算切片；旧编号对象原样保留，当前验收另列。'
+        if chapter['number'] in [57, 58]:
+            chapter['historical_open_obligations_v3_3'] = deepcopy(chapter['open_obligations'])
+            chapter['open_obligations'] = (
+                ['Core为何选择复数、完整重构前提及物理实现须独立论证；无限维推广仍开放。',
+                 '本章旧反向纯性、有限辅助唯一性与复局部层析缺口由第60–61章实际新证明承担；旧结果对象仍保持其3.3证明范围。']
+                if chapter['number'] == 57 else
+                ['第62章已处理共同固定深度经典历史控制器；变长停止树补齐、相干控制器、额外环境和不同动作语义仍须新的明确证明。',
+                 '原整体协议缺陷并未直接改名为逐动作预算；新预算有独立真实通道、共同历史输入、零块和合法效应证明。'])
+        if chapter['number'] == 0:
+            chapter['core_content'] = '说明哲学起点、冻结数学语义、来源与责任轴；3.4连续63章6附录，区分正式著作完成、有限条件证明、实际本地验收及自然理论的开放责任。'
+        body_records.append({'anchor': anchor, 'sha256': chapter['body_sha256'], 'bytes': chapter['body_utf8_bytes']})
+    core_summaries = {
+        60: 'Hermitian双侧合法效应与实张成，全效应对完整密度态分离，四个局部测试扩张及任意复联合态的原模型局部层析；双相干对角测量负控。',
+        61: '完整凸纯态到归一向量的反向刻画，同辅助载体的实际酉关系，异型辅助等距嵌入与共同直和，转置/共轭方向及非coisometry负控。',
+        62: '真实历史主块与权重、零块、合法块效应，读取历史的实际通道，同一控制器与原Protocol叶语义，逐动作共同输入加权预算及完整记录TV。'}
+    for number in [60, 61, 62]:
+        anchor = f'ch-{number}'
+        body = slices[anchor]
+        declarations = {name for item in normalized[number] for name in
+                        item['formal']['generic_declarations'] + item['formal']['witness_declarations']}
+        sources = sorted({declaration_source[n] for n in declarations})
+        current = {'number': number, 'anchor': anchor,
+                   'title': re.search(r'^# \d+\. (.+)$', body, re.M).group(1),
+                   'edition_status': 'NEW_IN_3_4', 'current_edition_action': 'NEW_IN_3_4',
+                   'body_sha256': digest(body.encode()), 'body_utf8_bytes': len(body.encode()), 'body_slice_convention': BODY_RULE,
+                   'sections': [{'id': n, 'title': title} for n, title in re.findall(r'^## (\d+\.\d+)\s+(.+)$', body, re.M)],
+                   'argument_status': ['D', 'P', 'N', 'O'], 'dependency_class': ['B', 'P', 'O'],
+                   'verification_kind': ['analytic', 'lean', 'exact_arithmetic'], 'core_content': core_summaries[number],
+                   'numbered_results': normalized[number], 'source_refs': [{'id': 'QM318', 'locator': '第' + str(number) + '章及逐项完整命名声明'}],
+                   'open_obligations': list(dict.fromkeys(x for row in normalized[number] for x in row['scientific_boundary'])),
+                   'external_result_ids': [], 'primary_reference_urls': [],
+                   'author_source_binding': binding_ids[number],
+                   'verification_responsibility': {'evidence_refs': ['lean_v31_8', 'axioms_v31_8', 'finite_witnesses_v31_8',
+                                                                                    'source_manifest_v31_8', 'declarations_v31_8', f'chapter{number}_bindings_v3_4'],
+                       'formal': {'whole_chapter_formalized': False, 'all_referenced_names_bound_to_actual_audit': True,
+                                  'acceptance_status': 'PASS_ACTUAL_LOCAL_VERIFICATION',
+                                  'source_bindings': [bound_source_identity(p) for p in sources]},
+                       'program_scope': '通用形式量词与分开的具体见证；正文解释不额外计入Lean声明。',
+                       'new_experimental_data': False, 'current_edition_acceptance_status': LOCAL},
+                   'revision': f'3.4新增{len(normalized[number])}项编号；实际源与逐名公理日志分别绑定，未宣称整章解释文字全部形式化。'}
+        d['chapters'].append(current)
+        body_records.append({'anchor': anchor, 'sha256': current['body_sha256'], 'bytes': current['body_utf8_bytes']})
+    for appendix in d['appendices']:
+        anchor = appendix['anchor']
+        prior_body = appendix['body_sha256']
+        body = slices[anchor]
+        appendix.setdefault('body_revision_history', []).append({'edition': '3.3', 'body_sha256': prior_body,
+            'body_utf8_bytes': appendix.get('body_utf8_bytes'),
+            'exact_prior_record': {'path': snapshots['CHAPTER_DOSSIER.json']['path'], 'anchor': anchor}})
+        appendix.update({'body_sha256': digest(body.encode()), 'body_utf8_bytes': len(body.encode()),
+                         'body_slice_convention': BODY_RULE,
+                         'current_edition_action': 'UPDATED_IN_3_4' if digest(body.encode()) != prior_body else 'PRESERVED_IN_3_4',
+                         'current_edition_verification': {'edition': '3.4', 'body_identity_checked': True, 'status': LOCAL,
+                            'whole_chapter_or_appendix_formalized': False,
+                            'scope': '附录内容/来源/登记按实际正文绑定；旧757程序检查不重跑，原始科学来源不升级。'}})
+        body_records.append({'anchor': anchor, 'sha256': appendix['body_sha256'], 'bytes': appendix['body_utf8_bytes']})
+    require([x for ch in d['chapters'][:60] for x in ch.get('numbered_results', [])] == old_results,
+            'Inherited numbered result objects changed during assembly')
+    all_results = [x for ch in d['chapters'] for x in ch.get('numbered_results', [])]
+    require([x['id'] for x in all_results] == [x['id'] for x in claims], 'Dossier numbered result order differs from canonical')
+    origins = dict(Counter(x['origin'] for x in all_results))
+    inventory_record = {'status': 'SOURCE_INVENTORY_CONFIRMED_BY_ACTUAL_LOCAL_BUILD_AND_AXIOM_RECEIPTS',
+                        'module_count': 35, 'explicit_theorems': 747, 'audit_target_count': 985,
+                        'other_named_targets': proof['listed_non_theorem_audit_targets'],
+                        'new_explicit_theorems': proof['new_explicit_theorems'], 'new_audit_target_count': proof['new_audited_targets'],
+                        'new_other_named_targets': proof['new_non_theorem_audit_targets'],
+                        'new_structure_constructors': inventory['new_structure_constructors'], 'new_public_named_instances': inventory['new_named_instances'],
+                        'new_instance_projection_targets': inventory['new_instance_projection_targets'],
+                        'witnesses_counted_separately': True, 'witness_modules': 10,
+                        'witness_theorem_count': witnesses['witness_theorem_count'], 'witness_def_count': witnesses['witness_def_count'],
+                        'witness_abbrev_count': witnesses['witness_abbrev_count'], 'witness_audit_count': 269,
+                        'source_count': 89, 'source_set_sha256': SOURCE_SET, 'actual_acceptance_receipt': str(KERNEL / 'lean-verification.json'),
+                        'unified_source_identity': unified_identity, 'publication_source_identity': publication_identity,
+                        'scope': 'Machine declaration inventory; generic/witness/certificate/runtime counts remain distinct and are not counts of new physical laws.'}
+    d['verified_inventory'] = inventory_record
+    d['candidate_inventory'] = deepcopy(inventory_record)
+    d['release_acceptance'] = {name: 'PASS_ACTUAL_LOCAL' for name in
+                               ['unified_lean', 'public_axiom_audit', 'dedicated_witness_integration', 'canonical_structure',
+                                'runtime_regression', 'source_freeze', 'instance_certificates', 'finite_demos']}
+    d['release_acceptance'].update({'pdf_build': 'PASS_ACTUAL_THREE_PASS_BUILD',
+                                   'pdf_visual_review': 'PASS_ACTUAL_SCOPED_EXTERNAL_VISUAL_REVIEW',
+                                   'remote_source_commit': 'PENDING', 'source_pr_ci': 'PENDING', 'merged_main_ci': 'PENDING'})
+    d['remote_metadata_completion'] = {'status': 'PENDING', 'remote_verified': False,
+                                      'scope': '3.4/v31.8 current release; no invented commit, PR or run identities.',
+                                      'prior_v3_3_remote_receipt': rid(BOOK / 'evidence/v3.3/remote-publication.json')}
+    d['completed_v31_8_contract'] = {'path': 'physics/qm/UEOT_QM_EXECUTION_v31.8.md', 'status': LOCAL,
+                                    'actual_local_receipt': str(KERNEL / 'lean-verification.json'),
+                                    'canonical_chapters': [60, 61, 62], 'new_numbered_results': 16,
+                                    'remote_status': 'PENDING',
+                                    'scope': 'Actual finite claims and explicit conditions described in the three integrated chapters; broader physical reconstruction remains open.'}
+    d['next_execution_contract'] = {'status': 'NOT_DECLARED_BY_THIS_LOCAL_BOOK_RECEIPT',
+                                   'scope': 'The old v31.8 planning record remains in the exact 3.3 snapshot; this edition records its actual finite completion separately and invents no next version.'}
+    d['current_edition_assembly_history'] = [{'edition': '3.4', 'canonical_integration': receipt_ids['integration'],
+                                            'additive_canonical_adjustments': receipt_ids['canonical_adjustments'],
+                                            'stage_scope': 'Immutable source-integration checkpoint; PDF and final local gates are separate later receipts.'}]
+    d['archived_review_inputs'] = {f'chapter{ch}': record for ch, record in binding_ids.items()}
+    d['staging_evidence_inputs'] = []
+    d['local_assembly_status_scope'] = {
+        'status': 'EXPLICIT_PRIOR_CHECKPOINT_SCOPE', 'prior_local_dossier': snapshots['CHAPTER_DOSSIER.json'],
+        'rule': 'All old 131 numbered objects retain their original assumptions, conclusions, origins, and original local/remote checkpoint words. Current 3.4 aggregate acceptance is recorded separately; old open finite responsibilities resolved in chapters 60–62 are linked without rewriting the old proof objects.',
+        'all_131_numbered_result_objects_preserved': True, 'current_release_state_field': 'current_release_stage',
+        'current_book_metadata_hash_receipt': str(NEW / 'local-release-gates.json'),
+        'current_dossier_hash_receipt': str(NEW / 'dossier-review.json'),
+        'no_whole_chapter_or_new_scientific_proof_inferred': True}
+    d['validation'] = {
+        'status': 'PASS_CURRENT_LOCAL_DOSSIER', 'canonical_sha256_checked': True, 'chapter_numbers': list(range(63)),
+        'appendix_ids': list('ABCDEF'), 'registered_ids_unique': True, 'claims_parsed_from_actual_anchors': True,
+        'numbered_result_count': 147, 'old_new_counts': [131, 16], 'all131_prior_result_objects_exactly_preserved': True,
+        'original_result_origin_counts': origins, 'body_slice_rule': BODY_RULE, 'body_slices_rehashed': 69, 'all_body_hashes_verified': True,
+        'numbered_section_count': structure['numbered_sections'], 'stable_anchor_count': structure['stable_anchors'],
+        'actual_current_source_files_checked': 89, 'current_source_count': 89, 'current_source_set_sha256': publication_set,
+        'unified_source_set_sha256': SOURCE_SET, 'publication_source_set_sha256': publication_set,
+        'source_identity_bridge': bridge_id, 'only_authorized_documentation_word_changed': True,
+        'actual_named_generic_audit_targets': 985, 'actual_named_witness_audit_targets': 269,
+        'new_claim_unique_declarations_bound': len(all_bound), 'new_claim_generic_declarations_bound': len(all_bound & generic_names),
+        'new_claim_witness_declarations_bound': len(all_bound & witness_names),
+        'author_chapter_bindings_match_installed_content': True, 'local_checkpoint_status': LOCAL,
+        'remote_verified': False, 'remote_status': 'PENDING', 'current_pdf_and_visual_acceptance': 'PASS_ACTUAL_BUILD_AND_EXTERNAL_SCOPED_VISUAL_RECEIPTS',
+        'whole_physics_formalized': False, 'new_experimental_data': False,
+        'historical_programs_reexecuted_from_old_receipts': False, 'historical_source_origins_and_evidence_preserved': True,
+        'v31_8_counts_come_from_actual_unified_acceptance_not_planning': True,
+        'derivative_hashes_checked': True, 'external_visual_receipt_checked': True, 'book_source_manifest_checked': True,
+        'book_source_manifest_sha256': manifest_id['sha256'], 'remaining_gates': ['source PR actual CI', 'merged main actual CI', 'remote per-file reconciliation'],
+        'current_dossier_hash_receipt': str(NEW / 'dossier-review.json'),
+        'hash_direction': 'Source manifest -> dossier -> external dossier review -> terminal local release gates. Metadata points downstream only by paths.'}
+    # A scoped path catalog avoids reinterpreting immutable historical path/hash pairs
+    # for mutable canonical filenames as current bytes.
+    current_paths = set(str(p) for p in additions.values()) | set(new_source_paths)
+    current_paths.update(x['path'] for x in canonical.values())
+    current_paths.update(str(p) for p in outputs)
+    current_paths.update(str(NEW / p) for p in ['dossier-review.json', 'local-release-gates.json'])
+    d['path_catalog'] = {'policy': 'Current path identities are checked directly; all older catalogs are retained in the exact prior dossier with their temporal scope.',
+                         'actual_registered_paths': sorted(current_paths), 'pending_registered_paths': [],
+                         'missing_required_actual_paths': [], 'current_planned_owned_outputs': sorted(str(p) for p in outputs),
+                         'prior_catalog_snapshot': snapshots['CHAPTER_DOSSIER.json']}
+    for path in current_paths:
+        require((root / path).is_file() or Path(path) in outputs
+                or path in {str(NEW / 'dossier-review.json'), str(NEW / 'local-release-gates.json')},
+                'Current required path missing: ' + path)
+    dossier_id = planned_json(BOOK / 'CHAPTER_DOSSIER.json', d)
+
+    helper_id = planned(NEW / 'metadata-helper.py.txt', read_abs(Path(__file__)))
+    context_id = planned(NEW / 'metadata-context.json', context_raw)
+    counts = {'chapters': 63, 'appendices': 6, 'numbered_results': 147, 'inherited': 131, 'new': 16,
+              'stable_anchors': structure['stable_anchors'], 'numbered_sections': structure['numbered_sections'],
+              'body_slices': 69, 'pdf_pages': pages, 'new_claim_unique_audited_declarations': len(all_bound),
+              'generic_names': len(all_bound & generic_names), 'witness_names': len(all_bound & witness_names)}
+    review = {'schema': 'ueot_physics.dossier_review.v3.4', 'recorded_at_utc': when,
+              'reviewer': 'AI collaborator A; actual final input identity and named-audit membership checks. Root and A supply separate, explicitly scoped actual visual receipts; this metadata helper does not inspect images.',
+              'status': 'PASS_LOCAL_CONTENT_SOURCE_AND_PUBLICATION_RECEIPTS', 'dossier': dossier_id,
+              **canonical, 'prior_dossier': snapshots['CHAPTER_DOSSIER.json'], 'counts': counts,
+              'old131_objects_including_origins_exactly_preserved': True, 'origin_counts': origins,
+              'original11_source_entries_exactly_preserved': True, 'prior_preservation': preserved,
+              'body_slice_identity_records': body_records, 'new_claim_ids': [x['id'] for x in claims[131:]],
+              'new_claim_required_fields_complete': True, 'new_claims_match_real_named_audits': True,
+              'source_bindings': [bound_source_identity(p) for p in new_source_paths],
+              'current_source_manifest': rid(publication_manifest_path),
+              'actual_unified_source_manifest': rid(KERNEL / 'source-manifest.json'), 'current_source_count': 89,
+              'current_source_set_sha256': publication_set, 'unified_source_identity': unified_identity,
+              'publication_source_identity': publication_identity, 'actual_generic_audit': rid(KERNEL / 'proof-axioms.json'),
+              'actual_witness_audit': rid(KERNEL / 'finite-witnesses/verification.json'),
+              'book_source_manifest': manifest_id, 'pdf_build': receipt_ids['pdf_build'], 'visual_receipt': receipt_ids['visual'],
+              'collaborator_visual_receipt': receipt_ids['collaborator'],
+              'render_receipt': receipt_ids['render'], 'structure': receipt_ids['structure'], 'pdf_pages': pages,
+              'canonical_integration': receipt_ids['integration'], 'canonical_adjustments': receipt_ids['canonical_adjustments'],
+              'actual_paths_checked': len(current_paths), 'missing_required_actual_paths': [],
+              'historical_MAIN_and_CI_records_not_current_acceptance': True, 'whole_physics_formalized': False,
+              'new_experimental_data': False, 'remote_status': 'PENDING', 'remote_verified': False,
+              'scientific_scope_checks': ['Finite complex model and full legal effect hypotheses explicit.',
+                                          'Same auxiliary carrier unitary and distinct-carrier common extension separated.',
+                                          'Actual shared finite classical-history controller; no coherent/environment extension inferred.',
+                                          'Old three-generation spectral/representation/threshold/window premises retained.',
+                                          'No new empirical data or unique Core-to-complex selection.'],
+              'not_performed_by_this_metadata_helper': ['Lean rebuild', 'legacy 757 runtime checks', 'PDF typesetting', 'visual inspection', 'remote publication or CI'],
+              'generator': helper_id, 'context': context_id}
+    review_id = planned_json(NEW / 'dossier-review.json', review)
+    readme = f'''# 《UEOT物理学》正式整合版 3.4
+
+作者：**钱德桂（Degui Qian）**。
+
+当前状态：**{LOCAL}**。第0–62章、6个附录和147项稳定编号已经连贯纳入正式正文；原131项编号对象、11项原始来源记录和全部旧书证据保持原身份。本版新增16项编号：第60章4项、第61章6项、第62章6项。正文完成、有限条件证明和自然界适用性分别承担责任。
+
+## 正文与阅读路径
+
+- [UEOT_PHYSICS.md](UEOT_PHYSICS.md)：规范全文，63章、6附录、{structure['numbered_sections']}小节、{structure['stable_anchors']}个稳定锚点、147项编号。
+- [UEOT_PHYSICS.pdf](UEOT_PHYSICS.pdf)：正式排印PDF，{pages}页。
+- [UEOT_PHYSICS.tex](UEOT_PHYSICS.tex)：与当前规范正文绑定的排印源。
+- [CHAPTER_DOSSIER.json](CHAPTER_DOSSIER.json)：逐章思想、前提、量词、完整公名、具体见证、来源及开放责任。
+- [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json)：保留11项原始来源，另列本版实际受验源码身份。
+
+第60章证明完整合法效应分离任意有限复密度态，建立Hermitian算符的实线性效应张成，并证明原复操作模型对所有联合态满足局部层析；双相干负控说明对角效应库仍有盲区。第61章证明完整凸纯态必为归一向量态，同辅助载体纯化由实际酉变换联系，不同辅助载体单列等距嵌入和共同直和；具体复数见证检测酉、伴随、转置和共轭方向。第62章从真实历史块、零块和合法效应出发，对共同固定深度经典历史控制器建立逐动作误差和，接到原Protocol的真实叶路径和完整记录TV。
+
+## 实际本地验收
+
+本版实际统一验收通过35个公共模块、747条显式定理和985项唯一命名公理审计；新增6个模块、101条显式定理、130项审计目标。10组具体见证单列193条定理、71个定义、5个缩写，共269项命名审计。六个精确证书的42项审计通过，四个篡改真证明被拒绝，四个同数据假值证明被接受。100个运行测试方法和四个演示实际通过。Lean实际构建{proof['actual_build_jobs']} jobs、退出0，存在普通linter警告；允许基础仅propext、Classical.choice、Quot.sound。92项QM/Core源与olean绑定，56项实际递归Core源码未变。
+
+本次三遍实际排印均退出0，版面警告为空。视觉验收以[root实际回执](evidence/v3.4/pdf-visual-review.json)及[渲染身份](evidence/v3.4/pdf-render-manifest.json)明确列出的范围为准：root实际完整页为 {', '.join(str(x) for x in actual_pages)}。协作者A另行[实际查看25个完整页](evidence/v3.4/pdf-collaborator-review.json)：168–189页覆盖新增三章全部22页，另查213、214与229页的身份、计数和公名清单收尾。总览与指定完整页审查不表示全书{pages}页逐页完整精读；书目helper本身只绑定这些实际回执，不产生额外视觉观察。
+
+- [实际统一数学与运行验收](../kernel/evidence/v31.8/lean-verification.json)
+- [实际89项源码清单](../kernel/evidence/v31.8/source-manifest.json)
+- [结构回执](evidence/v3.4/book-structure.json)、[排印回执](evidence/v3.4/pdf-build.json)
+- [逐项档案审查](evidence/v3.4/dossier-review.json)、[本地发布门](evidence/v3.4/local-release-gates.json)
+- [旧3.3精确档案](evidence/v3.4/dossier-prior-v3.3.json)、[历史字节保护](evidence/v3.4/prior-v3.3-preservation.json)
+
+附录D三套程序和字面代码块与3.3逐字节一致；757项旧程序检查保留3.0的实际执行身份，本轮只核对源码，未重跑。详见[本版继承程序身份回执](evidence/v3.4/legacy-source-reuse.json)。旧章与旧结果对象内的检查点和未闭合责任保持其原版语境；第60–62章已经解决的有限责任由本版新证明和当前聚合验收承担。
+
+## 精确身份与远端状态
+
+| 对象 | SHA-256 |
+|---|---|
+| Markdown | `{md_hash}` |
+| PDF | `{pdf_hash}` |
+| TeX | `{canonical['latex']['sha256']}` |
+| 89项实际统一受验输入集合 | `{SOURCE_SET}` |
+| 89项当前发布字节集合 | `{publication_set}` |
+
+统一验收后，只把 `PurificationUniqueness.lean` 文档注释中的一个英文词替换为同义词，以免旧workflow的字面扫描误判；数学代码和声明均未改变。原8799 jobs只绑定统一受验输入集合。[发布源码核对桥](../kernel/evidence/v31.8/publication-source-reconciliation.json)逐字节证明这一处注释变更并绑定当前发布字节集合，没有追加本地Lean构建；远端CI仍须实际验收最终发布字节。
+
+本轮作者基线为 `{BASELINE}`，这是完成v31.7源码和远端元数据后的主线身份。本版当前远端门仍为 **PENDING**，没有填入尚不存在的v31.8源码commit、PR或CI运行号。旧v31.7的真实PR347、独立源码/主线CI与后续元数据发布，保留在[3.3远端回执](evidence/v3.3/remote-publication.json)，不计为本版CI。
+
+## 科学边界
+
+有限量子内核继续采用明示的有限复矩阵、全部合法效应和规定的过程。纯化唯一性、局部层析和逐动作预算均有具体前提与作用范围；不同辅助维数不被命名成异型酉，固定深度经典控制预算不扩大到相干控制器、变长停止树或额外环境。未从冻结Core的106项和四生成器唯一导出复量子理论，没有新增真实实验。三代结论仍依赖谱、表示、阈值和有效窗口等前提。完整自然理论、一般无限条件过程、非微扰四维QFT及量子引力继续列为开放责任。
+'''
+    readme_id = planned(BOOK / 'README.md', readme.encode())
+    gates = {'schema': 'ueot_physics.local_release.v3.4', 'status': LOCAL, 'recorded_at_utc': when,
+             **canonical, 'dossier': dossier_id, 'source_manifest': manifest_id, 'readme': readme_id,
+             'root_actual_local_acceptance': rid(KERNEL / 'lean-verification.json'),
+             'actual_source_manifest': rid(KERNEL / 'source-manifest.json'), 'source_count': 89, 'source_set_sha256': SOURCE_SET,
+             'unified_source_identity': unified_identity, 'publication_source_identity': publication_identity,
+             'publication_source_set_sha256': publication_set, 'publication_source_gate': 'PASS_COMMENT_ONLY_BRIDGE',
+             'structure': receipt_ids['structure'], 'pdf_build': receipt_ids['pdf_build'], 'visual_receipt': receipt_ids['visual'],
+             'collaborator_visual_receipt': receipt_ids['collaborator'],
+             'render_receipt': receipt_ids['render'], 'dossier_review': review_id, 'prior_preservation': preserved,
+             'legacy_source_reuse': legacy, 'counts': {**counts, 'pages': pages, 'anchors': structure['stable_anchors'],
+                                                     'sections': structure['numbered_sections']},
+             'proof_gate': 'PASS', 'structure_gate': 'PASS', 'pdf_build_gate': 'PASS', 'visual_gate': 'PASS', 'dossier_gate': 'PASS',
+             'remote_gate': 'PENDING', 'remote_status': 'PENDING', 'remote_verified': False,
+             'canonical_changed_by_this_helper': False, 'historical_evidence_changed_by_this_helper': False,
+             'scope': 'Actual local source, mathematical, program, canonical and scoped publication gates only; remote source/main CI and blob reconciliation remain pending.',
+             'hash_binding_direction': 'Terminal receipt binds final README/manifest/dossier/review hashes. None embeds a reverse hash of this receipt.',
+             'generator': helper_id, 'context': context_id}
+    gates_id = planned_json(NEW / 'local-release-gates.json', gates)
+
+    # One attempt only: no overwriting of any already-written 3.4 metadata output.
+    replacements = {BOOK / 'README.md', BOOK / 'SOURCE_MANIFEST.json', BOOK / 'CHAPTER_DOSSIER.json'}
+    for path in outputs:
+        if path not in replacements:
+            require(not (root / path).exists(), 'Refuse to overwrite an existing metadata/evidence output: ' + str(path))
+    for path, raw in inputs.items():
+        require(path.read_bytes() == raw, 'Input changed before commit: ' + str(path))
+    if args.apply:
+        for path, raw in outputs.items():
+            destination = root / path
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            with tempfile.NamedTemporaryFile(dir=destination.parent, prefix='.qm318-book-', delete=False) as staging:
+                temporary = Path(staging.name)
+                try:
+                    staging.write(raw)
+                    staging.flush()
+                    os.fsync(staging.fileno())
+                except BaseException:
+                    temporary.unlink(missing_ok=True)
+                    raise
+            os.replace(temporary, destination)
+        for path, raw in outputs.items():
+            require((root / path).read_bytes() == raw, 'Written metadata differs: ' + str(path))
+        for path, raw in inputs.items():
+            if path not in {root / x for x in replacements}:
+                require(path.read_bytes() == raw, 'Immutable input changed after metadata write: ' + str(path))
+    report = {'schema': 'ueot_physics.local_metadata_finalizer.execution.v3.4',
+              'status': 'APPLIED_LOCAL_VERIFIED_REMOTE_PENDING' if args.apply else 'DRY_RUN_READY_NO_WRITES',
+              'recorded_at_utc': when, 'applied': args.apply, 'write_count': len(outputs) if args.apply else 0,
+              'planned_output_count': len(outputs), 'outputs': [identity(str(path), raw) for path, raw in outputs.items()],
+              'input_count': len(inputs), 'counts': counts, 'source_count': 89, 'source_set_sha256': SOURCE_SET,
+              'publication_source_set_sha256': publication_set, 'source_publication_bridge': bridge_id,
+              'old_131_results_preserved': True, 'original_11_sources_preserved': True,
+              'old_book_evidence_preserved': len(old_evidence), 'local_release_gates': gates_id,
+              'lean_compiler_invocations': 0, 'typesetting_invocations': 0, 'remote_operations': 0,
+              'canonical_or_old_evidence_writes': 0}
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (ValueError, KeyError, TypeError, OSError, json.JSONDecodeError) as error:
+        print(json.dumps({'status': 'REFUSED_OR_FAILED', 'reason': str(error)}, ensure_ascii=False), file=sys.stderr)
+        raise SystemExit(1)

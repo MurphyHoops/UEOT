@@ -1,0 +1,44 @@
+"""Build a CJK-plus-Latin publication font from explicitly bound local fonts."""
+from pathlib import Path
+import hashlib
+import json
+from datetime import datetime, timezone
+from fontTools.ttLib import TTFont
+from fontTools.ttLib.scaleUpem import scale_upem
+from fontTools.merge import Merger
+from fontTools import version as fonttools_version
+
+OUT = Path('/tmp/qm318_publication_font')
+LATIN = Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+CJK = Path('/tmp/qm318-fonts/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf')
+BOOK = Path('/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book')
+def identity(p):
+    return {'path':str(p), 'bytes':p.stat().st_size, 'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
+
+OUT.mkdir(exist_ok=True)
+droid = TTFont(CJK)
+old_upem = droid['head'].unitsPerEm
+scale_upem(droid, 2048)
+scaled = OUT/'DroidSansFallbackFull-2048.ttf'
+droid.save(scaled)
+font = Merger().merge([str(LATIN),str(scaled)])
+for n in font['name'].names:
+    if n.nameID in (1,4,6):
+        n.string = ('UEOTPublication' if n.nameID == 6 else 'UEOT Publication').encode(n.getEncoding())
+target = OUT/'UEOTPublication.ttf'
+font.save(target)
+merged = TTFont(target)
+cmap = merged.getBestCmap()
+required = {ord(c) for c in (BOOK/'UEOT_PHYSICS.md').read_text() if not c.isspace()}
+missing = sorted(required - set(cmap))
+# Math-mode-only characters are typeset by the separately selected math font.
+report = {'schema':'ueot_physics.publication_font.v3.4','recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+    'method':'Scale CJK outline coordinates to the Latin font units-per-em; merge with Latin font first; rename output family.',
+    'fonttools_version':fonttools_version,'inputs':[identity(LATIN),identity(CJK)],
+    'cjk_original_units_per_em':old_upem,'output_units_per_em':merged['head'].unitsPerEm,
+    'output':identity(target),'unicode_codepoints':len(cmap),'missing_markdown_codepoints':[
+        {'codepoint':f'U+{c:04X}','character':chr(c)} for c in missing],
+    'latin_ascii_fully_covered':set(range(33,127))<=set(cmap),'old_v3_3_font_bytes_reused':False,
+    'layout_acceptance':'PENDING_ACTUAL_XELATEX_AND_VISUAL_REVIEW'}
+(OUT/'font-identity.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(report,ensure_ascii=False,indent=2))

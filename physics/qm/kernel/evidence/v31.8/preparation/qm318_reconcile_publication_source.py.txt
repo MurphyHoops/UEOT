@@ -1,0 +1,68 @@
+"""Bind the sole CI-comment correction without relabeling the actual unified build."""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, importlib.util, json, re
+
+R=Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H=Path(__file__).resolve().parent
+E=R/'physics/qm/kernel/evidence/v31.8'
+CHANGED='formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean'
+def digest(raw):return hashlib.sha256(raw).hexdigest()
+def read(p):return json.loads(p.read_bytes())
+def identity(p):return {'path':p.relative_to(R).as_posix(),'bytes':p.stat().st_size,'sha256':digest(p.read_bytes())}
+def module(name,path):
+    spec=importlib.util.spec_from_file_location(name,path)
+    m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+
+old_manifest_path=E/'source-manifest.json'
+old_proof_path=E/'lean-verification.json'
+old_manifest_bytes=old_manifest_path.read_bytes()
+old_proof_bytes=old_proof_path.read_bytes()
+old=read(old_manifest_path);proof=read(old_proof_path)
+assert proof['status']=='PASS' and proof['actual_build_jobs']==8799
+assert old['source_set_sha256']==proof['source_set_sha256']=='a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e'
+recorder=module('qm318_publication_recorder',R/'formalization/ueot-qm/scripts/record_source.py')
+parser=module('qm318_publication_parser',H/'qm318_source_parser.py')
+new=recorder.record_source()
+assert new['source_count']==old['source_count']==89
+before_by_path={s['path']:s for s in old['sources']}
+after_by_path={s['path']:s for s in new['sources']}
+assert set(before_by_path)==set(after_by_path)
+changed=[p for p in before_by_path if before_by_path[p]!=after_by_path[p]]
+assert changed==[CHANGED],changed
+saved=E/'B/comment-only/before.lean.txt'
+before=saved.read_bytes();after=(R/CHANGED).read_bytes()
+assert digest(before)==before_by_path[CHANGED]['sha256']
+assert digest(after)==after_by_path[CHANGED]['sha256']
+old_sentence=b'/-- Different finite auxiliary carriers admit actual isometric extensions into'
+new_sentence=b'/-- Different finite auxiliary carriers have actual isometric extensions into'
+assert before.count(old_sentence)==1 and before.replace(old_sentence,new_sentence,1)==after
+normalize=lambda raw:'\n'.join(line.rstrip() for line in parser.mask_lean(raw.decode()).splitlines())
+assert normalize(before)==normalize(after)
+assert parser.declarations(before.decode())==parser.declarations(after.decode())
+pattern=re.compile(r'^\s*(axiom|opaque)\s|\b(sorry|admit|native_decide)\b',re.M)
+raw_hits=[p.relative_to(R).as_posix() for p in (R/'formalization/ueot-qm/UEOTQM').rglob('*.lean') if pattern.search(p.read_text())]
+assert not raw_hits,raw_hits
+for path,item in after_by_path.items():
+    raw=(R/path).read_bytes();assert len(raw)==item['bytes'] and digest(raw)==item['sha256']
+dest=E/'publication-source-manifest.json'
+assert not dest.exists(),'Never overwrite an existing publication-source receipt'
+dest.write_text(json.dumps(new,ensure_ascii=False,indent=2)+'\n')
+report={'schema':'ueot_qm.publication_source_reconciliation.v31.8','status':'PASS_COMMENT_ONLY',
+    'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+    'unified_source_identity':{'manifest':identity(old_manifest_path),'verification':identity(old_proof_path),'source_count':89,'source_set_sha256':old['source_set_sha256'],'actual_build_jobs':8799},
+    'publication_source_identity':{'manifest':identity(dest),'source_count':89,'source_set_sha256':new['source_set_sha256']},
+    'changed_paths':changed,'unchanged_source_paths':88,
+    'changes':[{'path':CHANGED,'before':before_by_path[CHANGED],'after':after_by_path[CHANGED],
+       'before_snapshot':identity(saved),'after_snapshot':identity(E/'B/comment-only/after.lean.txt'),
+       'exact_diff':identity(E/'B/comment-only/admit-to-have.diff'),
+       'only_edit':'The single natural-language word admit was replaced with have inside a documentation comment.',
+       'normalized_comment_and_string_erased_sha256':digest(normalize(before).encode()),
+       'erased_source_equal':True,'declarations_diagnostics_and_instances_equal':True}],
+    'actual_workflow_raw_proof_escape_regex_passed':True,'all_final_source_bytes_verified':True,
+    'unified_receipts_preserved_original_bytes':True,'additional_compiler_invocations':0,
+    'identity_rule':'The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.',
+    'scientific_claims_changed':False,'core_changed':False,'remote_status':'PENDING'}
+assert old_manifest_path.read_bytes()==old_manifest_bytes and old_proof_path.read_bytes()==old_proof_bytes
+out=E/'publication-source-reconciliation.json';assert not out.exists();out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'status':report['status'],'original_source_set_sha256':old['source_set_sha256'],'publication_source_set_sha256':new['source_set_sha256'],'publication_receipt_sha256':digest(out.read_bytes()),'extra_compiler_invocations':0}))

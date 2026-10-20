@@ -1,0 +1,39 @@
+scripts/witnesses/ActionRecordBudgetExamples.lean:24:28: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ActionRecordBudgetExamples.lean:29:52: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, certain, ho]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ActionRecordBudgetExamples.lean:42:6: error: Tactic `simp` failed with a nested error:
+maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+scripts/witnesses/ActionRecordBudgetExamples.lean:49:43: warning: declaration uses `sorry`
+scripts/witnesses/ActionRecordBudgetExamples.lean:46:8: warning: declaration uses `sorry`
+scripts/witnesses/ActionRecordBudgetExamples.lean:63:38: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'UEOTQM.ActionRecordBudgetExamples.Qubit' does not depend on any axioms
+'UEOTQM.ActionRecordBudgetExamples.Label' does not depend on any axioms
+'UEOTQM.ActionRecordBudgetExamples.certain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.certain_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.certain_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased_branch' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased_probability' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.rhoZero' depends on axioms: [propext, Classical.choice, Quot.sound]

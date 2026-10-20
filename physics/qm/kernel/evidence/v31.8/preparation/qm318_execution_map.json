@@ -1,0 +1,69 @@
+{
+  "schema": "ueot_qm.v31.8.execution_preparation",
+  "status": "PREPARED_NOT_FORMALIZED",
+  "prerequisite": "v31.7 source PR and independent main CI verified; metadata publication closed",
+  "frozen_source_commit": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+  "frozen_source_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+  "contract": "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+  "ownership": [
+    {
+      "agent": "A",
+      "files": [
+        "UEOTQM/QuantumSeparation.lean",
+        "UEOTQM/ComplexLocalTomography.lean",
+        "scripts/witnesses/QuantumSeparationExamples.lean"
+      ],
+      "scope": "Full finite density equality from all effects, real linear effect span of Hermitian matrices, all-joint-state complex local tomography; diagonal-only negative control."
+    },
+    {
+      "agent": "B",
+      "files": [
+        "UEOTQM/PureStateCharacterization.lean",
+        "UEOTQM/PurificationUniqueness.lean",
+        "scripts/witnesses/PurificationUniquenessExamples.lean"
+      ],
+      "scope": "Convex extremality implies normalized vector representation; same-auxiliary-carrier unitary constructed from equal row Gram. Different dimensions have separate typed extension responsibility."
+    },
+    {
+      "agent": "C",
+      "files": [
+        "UEOTQM/HistoryChannels.lean",
+        "UEOTQM/ActionRecordBudget.lean",
+        "scripts/witnesses/ActionRecordBudgetExamples.lean"
+      ],
+      "scope": "Actual history-reading Kraus channel; PSD blocks and legal restricted effects; shared-input action budget; fixed-depth history and original protocol semantics; record TV control."
+    },
+    {
+      "agent": "root",
+      "files": [
+        "UEOTQM.lean",
+        "scripts/AxiomAudit.lean",
+        "scripts/check_axioms.py",
+        "scripts/verify_finite_witnesses.py",
+        "physics/qm/status/*",
+        "physics/qm/book/*",
+        "physics/qm/kernel/evidence/v31.8/*"
+      ],
+      "scope": "Public integration, stable declaration inventory, independent cross-review, one stable-source unified acceptance, canonical monograph, GitHub publication identities."
+    }
+  ],
+  "dependency_policy": "A/B/C can build on the frozen v31.7 without new cross-lane dependencies. Shared lemmas require root-agreed ownership; no edits to frozen Core.",
+  "compiler": "/tmp/lean-4.33.1-linux/bin/lake",
+  "shared_lean_lock": "/tmp/qm317-lean.lock",
+  "validation_policy": "Focused compilation of new files under one shared lock, retain meaningful failed and successful receipts. One unified acceptance after all new scientific inputs stabilize. Do not reexecute unchanged v31.7 gates for metadata.",
+  "cross_review": {
+    "A": "B full-state quantifiers, auxiliary dimensions and unitary direction",
+    "B": "C zero blocks, weights, same-input step comparison and normalization",
+    "C": "A valid effects, real linearity and arbitrary entangled joint states",
+    "root": "All public claims, actual theorem/axiom coverage, negative controls and monograph scope"
+  },
+  "nonclaims": [
+    "Unique complex quantum selection from frozen UEOT Core",
+    "Unconditional physical three generations",
+    "New empirical confirmation",
+    "Complete natural theory",
+    "Coherent controllers or arbitrary environment memory in C",
+    "Different auxiliary dimensions connected by an ill-typed unitary"
+  ],
+  "formalized_new_theorems": 0
+}

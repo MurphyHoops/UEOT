@@ -1,0 +1,68 @@
+UEOTQM/PurificationUniqueness.lean:32:47: warning: `Matrix.ofLp_toEuclideanLin_apply` has been deprecated: Use `Matrix.ofLp_toLpLin` instead
+
+Note: The updated constant has a different type:
+  ∀ {m : Type u_1} {n : Type u_2} {R : Type u_4} [inst : Fintype n] [inst_1 : DecidableEq n] [inst_2 : CommRing R]
+    (p q : ENNReal) (A : Matrix m n R) (x : WithLp p (n → R)), (((toLpLin p q) A) x).ofLp = (toLin' A) x.ofLp
+instead of
+  ∀ {𝕜 : Type u_3} [inst : RCLike 𝕜] {m : Type u_7} {n : Type u_8} [inst_1 : Fintype n] [inst_2 : DecidableEq n]
+    (M : Matrix m n 𝕜) (v : EuclideanSpace 𝕜 n), ((toEuclideanLin M) v).ofLp = M *ᵥ v.ofLp
+UEOTQM/PurificationUniqueness.lean:33:4: warning: `Matrix.ofLp_toEuclideanLin_apply` has been deprecated: Use `Matrix.ofLp_toLpLin` instead
+
+Note: The updated constant has a different type:
+  ∀ {m : Type u_1} {n : Type u_2} {R : Type u_4} [inst : Fintype n] [inst_1 : DecidableEq n] [inst_2 : CommRing R]
+    (p q : ENNReal) (A : Matrix m n R) (x : WithLp p (n → R)), (((toLpLin p q) A) x).ofLp = (toLin' A) x.ofLp
+instead of
+  ∀ {𝕜 : Type u_3} [inst : RCLike 𝕜] {m : Type u_7} {n : Type u_8} [inst_1 : Fintype n] [inst_2 : DecidableEq n]
+    (M : Matrix m n 𝕜) (v : EuclideanSpace 𝕜 n), ((toEuclideanLin M) v).ofLp = M *ᵥ v.ofLp
+UEOTQM/PurificationUniqueness.lean:33:4: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((toEuclideanLin ?M) ?v).ofLp
+in the target expression
+  F *ᵥ x.ofLp ⬝ᵥ star (F *ᵥ x.ofLp) = star x.ofLp ⬝ᵥ (Fᴴ * F) *ᵥ x.ofLp
+
+ι : Type u
+α : Type v
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype α
+inst✝ : DecidableEq α
+F : Matrix α ι ℂ
+x : EuclideanSpace ℂ ι
+⊢ F *ᵥ x.ofLp ⬝ᵥ star (F *ᵥ x.ofLp) = star x.ofLp ⬝ᵥ (Fᴴ * F) *ᵥ x.ofLp
+UEOTQM/PurificationUniqueness.lean:76:5: error(lean.unknownIdentifier): Unknown constant `FiniteDimensional.surjective_of_injective`
+UEOTQM/PurificationUniqueness.lean:89:22: warning: `Matrix.toEuclideanLin_apply` has been deprecated: Use `Matrix.toLpLin_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {m : Type u_1} {n : Type u_2} {R : Type u_4} [inst : Fintype n] [inst_1 : DecidableEq n] [inst_2 : CommRing R]
+    (p q : ENNReal) (M : Matrix m n R) (v : WithLp p (n → R)), ((toLpLin p q) M) v = toLp q (M *ᵥ v.ofLp)
+instead of
+  ∀ {𝕜 : Type u_3} [inst : RCLike 𝕜] {m : Type u_7} {n : Type u_8} [inst_1 : Fintype n] [inst_2 : DecidableEq n]
+    (M : Matrix m n 𝕜) (v : EuclideanSpace 𝕜 n), (toEuclideanLin M) v = toLp 2 (M *ᵥ v.ofLp)
+UEOTQM/PurificationUniqueness.lean:92:2: error: Type mismatch: After simplification, term
+  hi
+ has type
+  @Eq ℂ ((U *ᵥ F.col i) a) (G a i)
+but is expected to have type
+  @Eq ℂ ((U * F) a i) (G a i)
+UEOTQM/PurificationUniqueness.lean:108:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.auxiliary_action_apply`:
+  [DecidableEq α]
+  [Fintype β]
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] [Fintype β] [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/PurificationUniqueness.lean:110:58: warning: This simp argument is unused:
+  Matrix.kronecker_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.mulVec, dotProduct, Fintype.sum_prod_type, Matrix.one_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/PurificationUniqueness.lean:122:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.outer_mulVec`:
+  [DecidableEq α]
+  [Fintype β]
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] [Fintype β] [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

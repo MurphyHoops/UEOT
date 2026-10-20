@@ -1,0 +1,95 @@
+{
+  "reviewer": "A",
+  "verdict": "CLEAR_FINAL_B_SOURCE_SCOPE_AND_SAVED_AUDITS",
+  "recorded_at_utc": "2026-10-20T11:01:18.933248+00:00",
+  "method": "Read-only review of the final uniqueness-005 source, prior reviewed complete-purity source and final concrete witness; exact current source/snapshot hashes and existing public/witness log parsing. No Lean, runtime or old scientific gate rerun.",
+  "previous_same_carrier_review": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/A_B_v318_samecarrier_source_review.json",
+    "bytes": 6582,
+    "sha256": "ff655927e0ff3253ffeba348c001f6b1bf4607ae4051bc695384105544042df3"
+  },
+  "focused_receipt_at_review": {
+    "path": "physics/qm/kernel/evidence/v31.8/B/focused-verification.json",
+    "bytes": 23005,
+    "sha256": "d23a043effcaf3edf47e1b6dbe107c18074383dead1282ef20caffd6867e996a"
+  },
+  "sources": [
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
+      "bytes": 4356,
+      "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+      "bytes": 15266,
+      "sha256": "ff857b027598ac15cccc3c36b245e27290418fe6d4545f48984e10ebb9f8879f"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/PurificationUniquenessExamples.lean",
+      "bytes": 11970,
+      "sha256": "e5b4420e310d8250b88792d7efdd6f74b68975dc287a5128f9baedf3dadede3a"
+    }
+  ],
+  "audits": {
+    "public": {
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/public-audit-001.log",
+        "bytes": 3714,
+        "sha256": "cdec11900d925bd41272b84333f4b4e4c0a52b4c13583ebe0d29e1ac0cf57e6d"
+      },
+      "exact_unique_source_order_names": true,
+      "named_count": 32,
+      "allowed_foundation_only": true
+    },
+    "witness": {
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/witness-003.log",
+        "bytes": 4597,
+        "sha256": "55910c81704d3c086afd3603d5c1d82e25aeb198c21775cb149437ce7b030045"
+      },
+      "exact_unique_source_order_names": true,
+      "named_count": 38,
+      "allowed_foundation_only": true
+    }
+  },
+  "compiler_invocations_by_review": 0,
+  "extension_checks": [
+    {
+      "topic": "actual_rectangular_channel",
+      "finding": "J:Matrix beta alpha C requires only J†J=I_alpha. Actual single Kraus K=I_iota⊗J has K†K=I_(iota×alpha), hence the existing RectangularChannel supplies genuine CPTP amplification/state typing. No coisometry assumption is smuggled in."
+    },
+    {
+      "topic": "all_complex_input_marginal",
+      "finding": "For every system index i,j, the output auxiliary block is J X^(ij) J† for arbitrary complex X. Actual discardRight sums its diagonal, so trace cycling and J†J=I give trace(X^(ij)). This is a complex operator equality on all X, not merely equality of real traces or diagonal densities."
+    },
+    {
+      "topic": "complete_purity_after_embedding",
+      "finding": "Use the full IsPure converse to obtain a normalized vector; outer_mulVec identifies the actual channel output with the embedded vector outer product. The existing CPTP output Density provides trace one, and isPure_iff_exists_vector returns extremality in the entire enlarged density space. No selected-state purity is substituted."
+    },
+    {
+      "topic": "typed_common_sum",
+      "finding": "auxiliaryInl=[I_alpha;0] and auxiliaryInr=[0;I_beta] each have a separately proved source-typed J†J=I. Both actual extensions land in Density(iota×(alpha⊕beta)) and separately preserve complete purity and the original system marginal. Only there is the same-carrier unitary theorem applied."
+    },
+    {
+      "topic": "quantifiers_and_boundaries",
+      "finding": "The final theorem quantifies arbitrary finite alpha,beta without a relative dimension assumption. Its square two-sided U acts on alpha⊕beta. It does not claim minimal padding, a direct isometry in an unspecified dimension direction, or a rectangular unitary. Empty-state premises remain impossible where appropriate; generic isometries and zero-dimensional identities remain well typed."
+    }
+  ],
+  "concrete_witness_checks": [
+    "Actual rational complex U has both unitary identities and sends firstVector to secondVector through I⊗U. Actual Gram and discardRight equalities prove the common marginal, while joint vectors and densities are separately proved different.",
+    "Three wrong-direction controls compare outer-product density entries, hence a global phase cannot hide an error. Correct (00,01)=108/625 differs from U†=108i/625 and Uᵀ=−108i/625; correct (00,10)=−144i/625 differs from conjugate U=144i/625.",
+    "The two-to-three auxiliary enlargement is the actual left inclusion Fin2→Fin2⊕Unit. J†J=I and JJ†≠I are both proved, with the latter witnessed at the added coordinate. Complete purity/marginal preservation and a further common five-dimensional unitary are actual theorem instances."
+  ],
+  "counts": {
+    "public_theorems": 27,
+    "public_definitions": 5,
+    "public_named_audits": 32,
+    "witness_theorems": 28,
+    "witness_definitions": 10,
+    "witness_named_audits": 38
+  },
+  "limits": [
+    "This is a finite complex matrix-model theorem and exact formal witness set, not empirical evidence or unique Core-to-complex selection.",
+    "This review of saved focused evidence does not replace actual root unified acceptance or future remote CI."
+  ]
+}

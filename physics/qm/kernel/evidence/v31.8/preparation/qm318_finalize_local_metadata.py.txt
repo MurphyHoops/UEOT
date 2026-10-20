@@ -1,0 +1,850 @@
+#!/usr/bin/env python3
+"""Prepare v31.8 state/navigation only after real proof and book gates.
+
+Default execution is read-only. --apply writes exactly the nine assigned
+metadata files after complete preflight. No Git mutation, compiler, test,
+network call, remote identity invention, or book/source mutation occurs.
+"""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import fnmatch
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import sys
+import tempfile
+
+
+BASE = "7d05d0369b6793e28f0e39efaa77c0c9887479d1"
+SOURCE_SHA = "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e"
+PUBLICATION_SHA = "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+SOURCE_COUNT = 89
+STATE = "LOCAL_VERIFIED_REMOTE_PENDING"
+ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
+OWNED = (
+    "physics/qm/status/CURRENT.json",
+    "physics/qm/status/ACTIVE_RESEARCH_v31.8.json",
+    "physics/qm/status/CLAIM_LEDGER_v31.8.json",
+    "physics/qm/UEOT_QM_KERNEL_v31.8.md",
+    "physics/qm/README.md",
+    "physics/qm/ROADMAP.md",
+    "physics/qm/kernel/README.md",
+    "formalization/ueot-qm/README.md",
+    "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+)
+MODULE_DESCRIPTIONS = {
+    "QuantumSeparation": "合法效应实张成、完整密度分离及距离零的矩阵含义",
+    "ComplexLocalTomography": "所有产品效应识别任意有限复联合态，并接回原 complexModel",
+    "PureStateCharacterization": "从完整凸极点和正 Gram 列导出归一向量，构成完整纯性 iff",
+    "PurificationUniqueness": "真实同载体辅助酉、矩形等距通道和异辅助载体共同直和",
+    "HistoryChannels": "真实读取/去相干历史通道、PSD 块权重、合法块效应和同输入加权缺陷",
+    "ActionRecordBudget": "共同有限因果控制器、原协议全态回接、逐动作和及完整记录 TV",
+}
+
+
+class Refused(RuntimeError):
+    pass
+
+
+def require(ok, reason):
+    if not ok:
+        raise Refused(reason)
+
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def read(path):
+    require(path.is_file(), f"Missing required actual input: {path}")
+    return json.loads(path.read_bytes())
+
+
+def encoded(obj):
+    return (json.dumps(obj, ensure_ascii=False, indent=2) + "\n").encode()
+
+
+def repo_path(root, value):
+    p = Path(value)
+    p = p if p.is_absolute() else root / p
+    p = p.resolve()
+    require(p.is_relative_to(root), f"Repository path escapes root: {value}")
+    return p
+
+
+def external(context_dir, value):
+    p = Path(value)
+    return (p if p.is_absolute() else context_dir / p).resolve()
+
+
+def identity(root, p):
+    raw = p.read_bytes()
+    return {"path": p.relative_to(root).as_posix(), "sha256": digest(raw), "bytes": len(raw)}
+
+
+def check_identity(root, item):
+    p = repo_path(root, item["path"])
+    raw = p.read_bytes()
+    require(digest(raw) == item["sha256"], f"Receipt/file hash mismatch: {p}")
+    if "bytes" in item:
+        require(len(raw) == item["bytes"], f"Receipt/file byte count mismatch: {p}")
+    if "size" in item:
+        require(len(raw) == item["size"], f"Receipt/file size mismatch: {p}")
+    return p
+
+
+def original_bytes(context_dir, ctx, rel):
+    expected = ctx["originals"][rel]
+    require(expected is not None, f"No original content for {rel}")
+    p = external(context_dir, ctx["originals_dir"]) / rel
+    raw = p.read_bytes()
+    require(digest(raw) == expected, f"Original snapshot changed: {rel}")
+    return raw
+
+
+def source_paths(root):
+    package = root / "formalization/ueot-qm"
+    paths = set((package / "UEOTQM").rglob("*.lean"))
+    paths.update(package / n for n in ("UEOTQM.lean", "lakefile.lean", "lake-manifest.json", "lean-toolchain"))
+    paths.update(p for p in (package / "scripts").rglob("*") if p.is_file() and p.suffix in {".py", ".lean", ".sh"})
+    kernel = root / "physics/qm/kernel"
+    paths.update(kernel.rglob("*.py"))
+    paths.update(p for p in (kernel / "certificates").rglob("*") if p.is_file() and p.suffix in {".lean", ".json"})
+    paths.add(root / ".github/workflows/ueot-qm.yml")
+    return sorted(paths)
+
+
+def publication_bridge(root, e, source, proof):
+    """Check the one authorized comment correction without relabelling a build."""
+    bridge_path = e / "publication-source-reconciliation.json"
+    bridge = read(bridge_path)
+    publication = read(e / "publication-source-manifest.json")
+    require(bridge["schema"] == "ueot_qm.publication_source_reconciliation.v31.8" and
+            bridge["status"] == "PASS_COMMENT_ONLY", "No actual comment-only publication bridge")
+    unified_id = bridge["unified_source_identity"]
+    publication_id = bridge["publication_source_identity"]
+    require(unified_id["source_count"] == publication_id["source_count"] == SOURCE_COUNT,
+            "Source bridge count mismatch")
+    require(unified_id["source_set_sha256"] == SOURCE_SHA and
+            publication_id["source_set_sha256"] == PUBLICATION_SHA,
+            "Source bridge identity mismatch")
+    require(unified_id["actual_build_jobs"] == proof["actual_build_jobs"] == 8799,
+            "Source bridge does not bind the actual original build")
+    require(check_identity(root, unified_id["manifest"]) == e / "source-manifest.json" and
+            check_identity(root, unified_id["verification"]) == e / "lean-verification.json" and
+            check_identity(root, publication_id["manifest"]) == e / "publication-source-manifest.json",
+            "Source bridge references unexpected receipts")
+    for manifest, expected in ((source, SOURCE_SHA), (publication, PUBLICATION_SHA)):
+        require(manifest["source_count"] == len(manifest["sources"]) == SOURCE_COUNT and
+                manifest["source_set_sha256"] == expected and
+                digest(json.dumps(manifest["sources"], sort_keys=True, separators=(",", ":")).encode()) == expected,
+                "Recorded source manifest aggregate mismatch")
+    before = {x["path"]: x for x in source["sources"]}
+    after = {x["path"]: x for x in publication["sources"]}
+    require(len(before) == len(after) == SOURCE_COUNT and before.keys() == after.keys(),
+            "Publication changed the actual input population")
+    rel = "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean"
+    require([p for p in before if before[p] != after[p]] == bridge["changed_paths"] == [rel] and
+            bridge["unchanged_source_paths"] == 88 and len(bridge["changes"]) == 1,
+            "Publication change exceeds the one authorized documentation word")
+    change = bridge["changes"][0]
+    require(change["path"] == rel and change["before"] == before[rel] and change["after"] == after[rel],
+            "Publication change records do not match actual manifests")
+    old = check_identity(root, change["before_snapshot"]).read_bytes()
+    new = check_identity(root, change["after_snapshot"]).read_bytes()
+    check_identity(root, change["exact_diff"])
+    old_phrase = b"/-- Different finite auxiliary carriers admit actual isometric extensions into"
+    new_phrase = b"/-- Different finite auxiliary carriers have actual isometric extensions into"
+    require(old.count(old_phrase) == 1 and old.replace(old_phrase, new_phrase, 1) == new and
+            digest(old) == before[rel]["sha256"] and digest(new) == after[rel]["sha256"] and
+            repo_path(root, rel).read_bytes() == new,
+            "Source snapshots differ by more than the authorized comment-only replacement")
+    require(change["erased_source_equal"] is True and change["declarations_diagnostics_and_instances_equal"] is True and
+            bridge["scientific_claims_changed"] is False and bridge["core_changed"] is False and
+            bridge["additional_compiler_invocations"] == 0 and
+            bridge["unified_receipts_preserved_original_bytes"] is True and
+            bridge["actual_workflow_raw_proof_escape_regex_passed"] is True and
+            bridge["all_final_source_bytes_verified"] is True,
+            "Publication bridge has not preserved the original scientific scope")
+    return publication, bridge, identity(root, bridge_path)
+
+
+def protect_inputs(root, baseline, publication, core, book_files):
+    actual = [identity(root, p) for p in source_paths(root)]
+    require(actual == publication["sources"], "Actual source set differs from the reconciled publication bytes")
+    aggregate = digest(json.dumps(actual, sort_keys=True, separators=(",", ":")).encode())
+    require(aggregate == PUBLICATION_SHA and len(actual) == SOURCE_COUNT, "Frozen 89-source publication identity mismatch")
+    require(len(core["modules"]) == 56, "Expected 56 actual recursive Core imports")
+    for m in core["modules"]:
+        p = repo_path(root, m["path"])
+        require(digest(p.read_bytes()) == m["source_sha256"], f"Accepted Core source changed: {m['path']}")
+        require((baseline / m["path"]).read_bytes() == p.read_bytes(), f"Historical Core bytes changed: {m['path']}")
+    for item in book_files:
+        check_identity(root, item)
+    historical = set()
+    for prefix in ("physics/qm/kernel/evidence", "physics/qm/book/evidence", "physics/qm/status", "physics/qm/audits"):
+        historical.update(p for p in (baseline / prefix).rglob("*") if p.is_file())
+    for pattern in ("UEOT_QM_KERNEL_v*.md", "UEOT_QM_EXECUTION_v*.md"):
+        historical.update((baseline / "physics/qm").glob(pattern))
+    count = 0
+    for old in sorted(historical):
+        rel = old.relative_to(baseline).as_posix()
+        if rel in OWNED:
+            continue
+        current = root / rel
+        require(current.is_file() and current.read_bytes() == old.read_bytes(), f"Historical evidence/report changed: {rel}")
+        count += 1
+    return {"scientific_sources": len(actual), "core_sources": 56, "canonical_book_files": len(book_files), "historical_files": count}
+
+
+def normalized_binding(entry, chapter):
+    return {
+        "book_id": entry["id"], "anchor": entry["anchor"], "title": entry["title"], "chapter": chapter,
+        "premises": entry.get("premises", entry.get("assumptions")),
+        "quantifiers": entry.get("quantified_scope", entry.get("quantifiers")),
+        "conclusion": entry.get("actual_conclusion", entry.get("conclusion")),
+        "main": entry.get("public_main_declarations", entry.get("main_declarations")),
+        "support": list(dict.fromkeys(entry.get("public_support_declarations", entry.get("support_declarations", []))
+                                      + entry.get("inherited_declarations", []))),
+        "witnesses": entry.get("concrete_witness_declarations", entry.get("witness_declarations", [])),
+        "limits": entry["open_boundaries"], "proof_outline": entry.get("proof_outline", []),
+    }
+
+
+def preflight(root, context_dir, ctx):
+    require(ctx["schema"] == "ueot_qm.local_metadata_context.v31.8", "Wrong context schema")
+    require(ctx["repository"] == "MurphyHoops/UEOT" and ctx["research_baseline"] == BASE, "Wrong repository/baseline")
+    require(ctx["expected_source_count"] == SOURCE_COUNT and ctx["expected_source_set_sha256"] == SOURCE_SHA, "Wrong configured scientific identity")
+    require(ctx["publication_source_set_sha256"] == PUBLICATION_SHA, "Wrong configured publication identity")
+    require(set(ctx["originals"]) == set(OWNED), "Unexpected target ownership")
+    baseline = external(context_dir, ctx["baseline_root"])
+    require(baseline != root, "Baseline must be a separate read-only tree")
+    e = repo_path(root, ctx["proof_dir"])
+    be = repo_path(root, ctx["book_evidence_dir"])
+    proof = read(e / "lean-verification.json")
+    source = read(e / "source-manifest.json")
+    inv = read(e / "declaration-inventory.json")
+    ax = read(e / "proof-axioms.json")
+    finite = read(e / "finite-witnesses/verification.json")
+    core = read(e / "core-import-closure.json")
+    require(proof["status"] == ax["status"] == finite["status"] == "PASS", "Actual proof/axiom/witness gates have not all passed")
+    require(proof["actual_build_exit_code"] == proof["actual_axiom_audit_exit_code"] == 0, "Actual Lean execution failed")
+    require(proof["published_research_baseline"] == BASE, "Proof baseline is not closed v31.7")
+    require(proof["source_count"] == source["source_count"] == SOURCE_COUNT, "Proof source count mismatch")
+    require(proof["source_set_sha256"] == source["source_set_sha256"] == SOURCE_SHA, "Proof source identity mismatch")
+    publication, bridge, bridge_identity = publication_bridge(root, e, source, proof)
+    require(proof["generic_modules"] == inv["module_count"] == 35, "Actual module count mismatch")
+    require(proof["explicit_theorems"] == inv["explicit_theorems"], "Actual theorem count mismatch")
+    require(proof["actual_named_axiom_reports"] == ax["declaration_count"] == inv["audit_target_count"], "Actual named audit count mismatch")
+    require(set(ax["declarations"]) == set(inv["audit_targets"]), "Actual named audit target mismatch")
+    require(all(set(v) <= ALLOWED for v in ax["declarations"].values()), "Unapproved public axiom")
+    require(proof["audit_duplicates"] == 0 and not proof["audit_missing"] and not proof["unreviewed_axioms"], "Incomplete actual public audit")
+    require(proof["core_source_modified"] is False and proof["full_scientific_theory_verified"] is False, "Invalid Core/theory promotion")
+    require(core["status"] == "SOURCE_AND_BUILT_IDENTITY_PASS" and core["core_sources_modified"] is False, "Core closure gate has not passed")
+    require(proof["runtime_test_methods"] == 100 and proof["all_four_demos_passed"] is True, "Actual runtime/demo gate missing")
+    iv = proof["instance_verification"]
+    require(iv["status"] == "PASS" and (iv["positive_instances"], iv["positive_named_axiom_reports"], iv["rejected_corrupted_true_proofs"], iv["same_data_false_witnesses"]) == (6, 42, 4, 4), "Actual exact-certificate controls missing")
+    witness_names = set()
+    for check in finite["checks"]:
+        audit = check["audit"]
+        require(check["status"] == audit["status"] == "PASS" and check["exit_code"] == 0, "A concrete witness did not pass")
+        expected = [d["name"] for d in finite["declarations"][check["name"]]]
+        require(audit["expected"] == expected and set(audit["actual"]) == set(expected), "Concrete witness declaration coverage mismatch")
+        require(audit["complete_unique"] is True and not (audit["duplicate_reports"] or audit["missing_reports"] or audit["unexpected_reports"] or audit["unreviewed_axioms"]), "Concrete witness audit is incomplete")
+        require(all(set(v) <= ALLOWED for v in audit["actual"].values()), "Unapproved witness axiom")
+        require(not witness_names.intersection(expected), "Duplicate witness declaration across files")
+        witness_names.update(expected)
+    require(len(finite["checks"]) == 10 and len(witness_names) == proof["finite_witness_verification"]["named_axiom_reports"], "Actual witness set mismatch")
+    require(finite["all_inputs_unchanged"] is True and finite["errors"] == [], "Witness input freeze failed")
+    scientific_review = read(e / "root-scientific-review.json")
+    require(scientific_review["status"] == "PASS" and
+            scientific_review["scientific_source_count"] == SOURCE_COUNT and
+            scientific_review["source_set_sha256"] == SOURCE_SHA and
+            scientific_review["generic_theorems"] == proof["explicit_theorems"] and
+            scientific_review["named_audits"] == proof["actual_named_axiom_reports"] and
+            scientific_review["old_numbered_results_preserved"] == 131,
+            "Actual root scientific review is missing or mismatched")
+    check_identity(root, scientific_review["actual_unified_proof_receipt"])
+    check_identity(root, scientific_review["source_freeze_receipt"])
+    check_identity(root, scientific_review["core_import_closure"])
+    for reviewed_chapter in scientific_review["chapters"]:
+        require(reviewed_chapter["all_bound_declaration_names_actually_audited"] is True and
+                reviewed_chapter["body_integrated_exactly"] is True,
+                "A new chapter lacks actual root integration acceptance")
+        check_identity(root, reviewed_chapter["chapter_draft"])
+        check_identity(root, reviewed_chapter["chapter_bindings"])
+        accepted_by_path = {x["path"]: x for x in source["sources"]}
+        require(all(accepted_by_path[x["path"]] == x for x in reviewed_chapter["source_files"]),
+                "Root scientific review is not bound to original actual unified inputs")
+    gates = read(be / "local-release-gates.json")
+    structure = read(be / "book-structure.json")
+    pdf = read(be / "pdf-build.json")
+    review = read(be / "dossier-review.json")
+    require(gates["status"] == STATE, "Book local publication gates are not actually complete")
+    for key in ("proof_gate", "structure_gate", "pdf_build_gate", "visual_gate", "dossier_gate"):
+        require(gates[key] == "PASS", f"Book gate missing: {key}")
+    require(structure["status"] == "PASS" and str(review["status"]).startswith("PASS"), "Book structure/dossier review has not passed")
+    require(gates["source_count"] == SOURCE_COUNT and gates["source_set_sha256"] == SOURCE_SHA, "Book does not bind the actual 89 source inputs")
+    require(gates["unified_source_identity"] == bridge["unified_source_identity"] and
+            gates["publication_source_identity"]["manifest"] == bridge["publication_source_identity"]["manifest"] and
+            gates["publication_source_identity"]["source_count"] == SOURCE_COUNT and
+            gates["publication_source_identity"]["source_set_sha256"] == PUBLICATION_SHA and
+            gates["publication_source_identity"]["reconciliation"] == bridge_identity and
+            gates["publication_source_set_sha256"] == PUBLICATION_SHA and
+            gates["publication_source_gate"] == "PASS_COMMENT_ONLY_BRIDGE",
+            "Book gates confuse original unified inputs with the current comment-reconciled publication bytes")
+    require(gates["remote_gate"] == gates["remote_status"] == "PENDING" and gates["remote_verified"] is False,
+            "Local-only helper cannot assert book remote acceptance")
+    book_files = [gates[k] for k in ("canonical", "pdf", "latex")]
+    for item in book_files:
+        check_identity(root, item)
+    md_sha, pdf_sha, tex_sha = (gates[k]["sha256"] for k in ("canonical", "pdf", "latex"))
+    require(structure["source_sha256"] == pdf["source_sha256"] == md_sha, "Book source/build/structure mismatch")
+    require(pdf["pdf_sha256"] == pdf_sha and pdf["tex_sha256"] == tex_sha, "Actual PDF build identity mismatch")
+    require(len(pdf["compile_passes"]) == 3 and all(p["exit_code"] == 0 for p in pdf["compile_passes"]), "Three actual PDF passes have not succeeded")
+    for key in ("canonical", "pdf", "latex", "dossier"):
+        if key in review:
+            check_identity(root, review[key])
+    for key in ("dossier", "source_manifest", "root_actual_local_acceptance", "actual_source_manifest",
+                "structure", "pdf_build", "visual_receipt", "dossier_review", "readme"):
+        if key in gates:
+            check_identity(root, gates[key])
+    require(structure["chapters"] == 63 and structure["appendices"] == 6, "Unexpected current book scope")
+    require(structure["internal_links_valid"] is True and structure["registry_rows_bound_to_actual_anchors"] is True, "Book registry/link gate failed")
+    pages = review.get("pdf_pages", gates.get("pdf_pages", gates.get("counts", {}).get("pages")))
+    require(isinstance(pages, int) and pages > 0, "No actual final PDF page count")
+    old_ledger_path = baseline / "physics/qm/status/CLAIM_LEDGER_v31.7.json"
+    old_ledger = read(old_ledger_path)
+    require((root / "physics/qm/status/CLAIM_LEDGER_v31.7.json").read_bytes() == old_ledger_path.read_bytes(), "Historical v31.7 ledger bytes changed")
+    require(len(old_ledger["claims"]) == 54, "Expected 54 inherited claims")
+    q13 = next(c for c in old_ledger["claims"] if c["id"] == "QMK-13")
+    require(q13["status"] == "NOT_CLAIMED", "QMK-13 must remain NOT_CLAIMED")
+    bindings, binding_files = [], []
+    for value in ctx["chapter_bindings"]:
+        p = repo_path(root, value)
+        data = read(p)
+        chapter = data["chapter"]
+        require(chapter in (60, 61, 62), "Unexpected new chapter")
+        results = data.get("results", data.get("numbered_results"))
+        require(len(results) == data["numbered_result_count"], "Chapter result count mismatch")
+        for item in results:
+            b = normalized_binding(item, chapter)
+            require(b["premises"] and b["quantifiers"] and b["conclusion"] and b["main"] and b["limits"], f"Incomplete actual claim contract: {b['book_id']}")
+            names = set(b["main"] + b["support"] + b["witnesses"])
+            require(names <= (set(ax["declarations"]) | witness_names), f"Claim includes an unaudited declaration: {b['book_id']} {sorted(names - set(ax['declarations']) - witness_names)}")
+            bindings.append(b)
+        reviewed = next(x for x in scientific_review["chapters"] if x["chapter"] == chapter)
+        require(identity(root, p) == reviewed["chapter_bindings"], "Bindings differ from the actual root-reviewed archived inputs")
+        binding_files.append({**identity(root, p), "chapter": chapter})
+    require([x["chapter"] for x in binding_files] == [60, 61, 62], "Bindings must contain each chapter once in source order")
+    actual_new = [c for c in structure["claims"] if c["chapter"] in (60, 61, 62)]
+    require([b["book_id"] for b in bindings] == [c["id"] for c in actual_new], "Chapter binding IDs differ from actual canonical numbered results")
+    require(structure["numbered_results"] == 131 + len(bindings), "Inherited/new numbered result count mismatch")
+    require(scientific_review["book_numbered_results"] == structure["numbered_results"],
+            "Root review and current canonical numbered totals differ")
+    require(len({b["book_id"] for b in bindings}) == len(bindings), "Duplicate new book identifier")
+    protected = protect_inputs(root, baseline, publication, core, book_files)
+    workflow = (root / ".github/workflows/ueot-qm.yml").read_text()
+    patterns = re.findall(r'^\s+- "([^"]+)"$', workflow.split("  workflow_dispatch:", 1)[0], re.M)
+    require(patterns, "Cannot inspect actual QM workflow paths")
+    triggered = {p: pat for p in OWNED for pat in patterns if fnmatch.fnmatchcase(p, pat)}
+    require(not triggered, f"Owned metadata would trigger scientific CI: {triggered}")
+    return {"proof": proof, "source": source, "publication": publication, "bridge": bridge,
+            "bridge_identity": bridge_identity, "scientific_review": scientific_review,
+            "inventory": inv, "axioms": ax, "finite": finite,
+            "core": core, "gates": gates, "structure": structure, "pdf": pdf, "review": review,
+            "pages": pages, "old_ledger": old_ledger, "bindings": bindings, "binding_files": binding_files,
+            "protected": protected, "baseline": baseline, "book_files": book_files,
+            "proof_dir": e, "book_evidence_dir": be}
+
+
+def paragraph_replace(text, prefix, replacement):
+    require(text.count(prefix) == 1, f"Ambiguous source paragraph: {prefix}")
+    start = text.index(prefix)
+    end = text.find("\n\n", start)
+    end = len(text) if end == -1 else end
+    return text[:start] + replacement + text[end:]
+
+
+def exact_replace(text, old, new):
+    require(text.count(old) == 1, f"Ambiguous literal replacement: {old[:90]}")
+    return text.replace(old, new, 1)
+
+
+def statistics(d):
+    p, w = d["proof"], d["proof"]["finite_witness_verification"]
+    return (f"{p['generic_modules']} 个公共模块、{p['explicit_theorems']} 条显式 theorem、"
+            f"{p['actual_named_axiom_reports']} 个唯一命名公理审计；本轮新增 "
+            f"{p['new_explicit_theorems']} 条 theorem、{p['new_audited_targets']} 个审计目标。"
+            f"十组具体见证另计 {w['concrete_theorems']} 条 theorem、{w['definitions']} 个定义、"
+            f"{w['abbreviations']} 个缩写，共 {w['named_axiom_reports']} 个审计。")
+
+
+def book_summary(d):
+    s = d["structure"]
+    return f"正式3.4：{s['chapters']}章（0–62）、{s['appendices']}附录、{s['numbered_results']}个稳定编号结果、{d['pages']}页实际PDF"
+
+
+def source_identity_fields(d):
+    return {
+        "actual_unified_source_identity": copy.deepcopy(d["bridge"]["unified_source_identity"]),
+        "publication_source_identity": copy.deepcopy(d["bridge"]["publication_source_identity"]),
+        "publication_source_reconciliation": copy.deepcopy(d["bridge_identity"]),
+        "source_identity_rule": d["bridge"]["identity_rule"],
+    }
+
+
+def publication_note(d):
+    return (f"实际8799-job统一本地执行仍绑定原89源SHA256 `{SOURCE_SHA}`。"
+            f"发布候选的89源SHA256为 `{PUBLICATION_SHA}`；仅一处文档注释把英文词 admit 改为 have，"
+            "数学代码不变，未重跑本地编译。两份原始源码清单及追加的发布身份桥分别保留；"
+            "当前发布原字节还须接受真实远端CI。")
+
+
+def new_claims(d):
+    result = []
+    for number, b in enumerate(d["bindings"], 55):
+        names = b["main"] + b["support"] + b["witnesses"]
+        paths = set()
+        for module, ds in d["inventory"]["modules"].items():
+            if any(x["name"] in names for x in ds):
+                paths.add(f"formalization/ueot-qm/UEOTQM/{module}.lean")
+        for name, ds in d["finite"]["declarations"].items():
+            if any(x["name"] in names for x in ds):
+                paths.add(f"formalization/ueot-qm/scripts/witnesses/{name}.lean")
+        result.append({
+            "id": f"QMK-{number:02d}", "claim": b["conclusion"], "title": b["title"],
+            "layers": ["P", "B"],
+            "evidence_kind": "EXACT_FORMAL_NEGATIVE_CONTROL" if b["book_id"].startswith("N-") else "FORMAL_THEOREM",
+            "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT", "verification_location": "LOCAL",
+            "verification_state": STATE, "remote_status": "PENDING", "premises": b["premises"],
+            "quantified_scope": b["quantifiers"], "limits": b["limits"], "sources": sorted(paths),
+            "main_declarations": b["main"], "support_declarations": b["support"],
+            "witnesses": b["witnesses"], "proof_outline": b["proof_outline"],
+            "current_source_identity": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+            **source_identity_fields(d),
+            "source_bindings": [{"path": path,
+                "actual_unified_input": next(x for x in d["source"]["sources"] if x["path"] == path),
+                "current_publication_input": next(x for x in d["publication"]["sources"] if x["path"] == path)}
+                for path in sorted(paths)],
+            "current_proof_receipt": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
+            "concrete_witness_receipt": "physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json",
+            "book_result": {"chapter": b["chapter"], "id": b["book_id"], "anchor": b["anchor"],
+                            "path": "physics/qm/book/UEOT_PHYSICS.md", "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"},
+            "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+        })
+    return result
+
+
+def render_json(context_dir, ctx, d):
+    proof, structure = d["proof"], d["structure"]
+    stamp = d["gates"].get("recorded_at_utc", proof["checked_at_utc"])
+    date = stamp[:10]
+    old_current = json.loads(original_bytes(context_dir, ctx, OWNED[0]))
+    old_active = json.loads(original_bytes(context_dir, ctx, OWNED[1]))
+    inherited = copy.deepcopy(d["old_ledger"]["claims"])
+    added = new_claims(d)
+    idmap = {c["book_result"]["id"]: c["id"] for c in added}
+    nonclaims = {x: "NOT_CLAIMED" for x in (
+        "full_natural_theory_proved", "complex_quantum_selection_from_frozen_Core",
+        "unconditional_physical_three_generations", "new_experimental_confirmation",
+        "arbitrary_coherent_controller_budget", "unequal_dimensional_rectangular_unitary")}
+    local = {
+        "state": "PASS", "checked_at_utc": proof["checked_at_utc"],
+        "generic_modules": proof["generic_modules"], "explicit_theorems": proof["explicit_theorems"],
+        "named_axiom_reports": proof["actual_named_axiom_reports"],
+        "listed_non_theorem_audit_targets": proof["listed_non_theorem_audit_targets"],
+        "new_theorems": proof["new_explicit_theorems"], "new_audit_targets": proof["new_audited_targets"],
+        "finite_witness_theorems": proof["finite_witness_verification"]["concrete_theorems"],
+        "finite_witness_definitions": proof["finite_witness_verification"]["definitions"],
+        "finite_witness_abbreviations": proof["finite_witness_verification"]["abbreviations"],
+        "finite_witness_audit_reports": proof["finite_witness_verification"]["named_axiom_reports"],
+        "finite_witness_bound_modules": proof["finite_witness_verification"]["bound_modules"],
+        "runtime_test_methods": 100, "demos": 4, "positive_instances": 6,
+        "positive_instance_audit_reports": 42, "corrupted_true_proofs_rejected": 4,
+        "same_data_false_witnesses": 4, "core_import_count": 56,
+        "actual_build_exit_code": 0, "actual_build_jobs": proof["actual_build_jobs"],
+        "allowed_foundation": proof["allowed_foundation"], "source_count": SOURCE_COUNT,
+        "source_set_sha256": SOURCE_SHA, "proof_receipt": "../kernel/evidence/v31.8/lean-verification.json",
+        "source_manifest": "../kernel/evidence/v31.8/source-manifest.json", "remote_ci": "PENDING", "main_integration": "PENDING",
+        **source_identity_fields(d),
+    }
+    book = {
+        "title": "UEOT物理学", "edition": "3.4", "state": STATE,
+        "canonical": "../book/UEOT_PHYSICS.md", "pdf": "../book/UEOT_PHYSICS.pdf", "latex": "../book/UEOT_PHYSICS.tex",
+        "chapters": structure["chapters"], "appendices": structure["appendices"],
+        "numbered_results": structure["numbered_results"], "pdf_pages": d["pages"],
+        "dossier": "../book/CHAPTER_DOSSIER.json", "release_gates": "../book/evidence/v3.4/local-release-gates.json",
+        "whole_book_formalized": False, "remote_publication": None,
+        "current_source_hashes": {k: d["gates"][k]["sha256"] for k in ("canonical", "pdf", "latex")},
+        "previous_edition": copy.deepcopy(old_current["book"]),
+    }
+    current = {
+        "schema": "ueot-qm-current/3", "date": date, "version": "31.8-kernel.1.8", "layer": "physics/qm",
+        "objective": old_current["objective"], "research_baseline": BASE,
+        "frozen_core": {"modified": False, "coverage_items": 106, "counted_generators": 4},
+        "entrypoint": "../UEOT_QM_KERNEL_v31.8.md", "execution_contract": "../UEOT_QM_EXECUTION_v31.8.md",
+        "runtime_entrypoint": "../kernel/README.md", "formalization": "formalization/ueot-qm", "roadmap": "../ROADMAP.md",
+        "claim_ledger": "CLAIM_LEDGER_v31.8.json", "previous_claim_ledger": "CLAIM_LEDGER_v31.7.json",
+        "verification_state": STATE, "local_checkpoint_state": STATE,
+        "acceptance_marker": {
+            "state": STATE, "change_class": "B", "authority": old_current["acceptance_marker"]["authority"],
+            "accepted_scope": [MODULE_DESCRIPTIONS[n] for n in MODULE_DESCRIPTIONS],
+            "does_not_promote": list(nonclaims), "independent_mathematical_reviews": "CLEAR",
+            "review_scope": "AI authors and separate AI collaborators reviewed proofs and exact controls; no independent human peer review claimed.",
+            "local_machine_acceptance": "PASS", "book_local_acceptance": "PASS", "integration_acceptance": "PENDING",
+        },
+        "completed_in_this_delivery": [statistics(d), book_summary(d),
+            "All 89 accepted inputs stayed unchanged during the actual unified run; 56 Core imports and 92 QM/Core source/olean bindings were checked.",
+            "After that run, exactly one English documentation word changed; the additive publication source bridge preserves the original build identity and proves identical mathematical code without another compiler run.",
+            "Actual build, named audits, ten concrete witnesses, six certificates/four paired corrupt-data controls, 100 runtime methods and four demos passed."],
+        "proof_receipt": "../kernel/evidence/v31.8/lean-verification.json", "instance_receipt": "../kernel/evidence/v31.8/lean-exports/verification.json",
+        "finite_witness_receipt": "../kernel/evidence/v31.8/finite-witnesses/verification.json",
+        "source_manifest": "../kernel/evidence/v31.8/source-manifest.json",
+        "source_manifest_role": "Actual original unified input, preserved byte-for-byte; use publication_source_identity for current publishable raw bytes.",
+        **source_identity_fields(d),
+        "next_execution": {"contract": None, "status": "NO_NEW_VERSION_CONTRACT_CREATED", "current_remaining_work": "Publish the frozen v31.8 source once; verify actual PR CI, merged main CI and source reconciliation before remote metadata completion."},
+        "known_open_items": [
+            "Independent UEOT reason for quantum-selection principles and all reconstruction background; no Core-only complex uniqueness",
+            "Minimal auxiliary carrier and separately typed direct isometry under additional dimension conditions; infinite-dimensional extension",
+            "Variable stopping trees require real padding semantics; coherent controller/environment budgets need a separately justified stabilized distance",
+            "General positive spectral existence/mixing and infinite conditioning",
+            "Universal program refinement; real QDRR data; full physical spectrum, thresholds and effective windows",
+            "Continuum, energy, QFT, vacuum and masses"],
+        "integration": {
+            "target_branch": "main", "temporary_branch": old_active["working_branch"], "state": STATE,
+            "scope": ["physics/qm/**", "formalization/ueot-qm/**", ".github/workflows/ueot-qm.yml"],
+            "published_research_baseline": BASE, "source_manifest": "../kernel/evidence/v31.8/publication-source-manifest.json",
+            "source_count": SOURCE_COUNT, "source_set_sha256": PUBLICATION_SHA,
+            **source_identity_fields(d),
+            "source_identity": "The publication manifest identifies the current 89 raw inputs after one documented comment-word correction. The actual 8799-job local build remains bound only to the original unified manifest, joined by the explicit comment-only reconciliation. No current v31.8 remote source/main identity or run is recorded yet; historical v31.7 CI belongs only to the accepted baseline. Later evidence/navigation metadata is not another scientific execution.",
+            "source_commit": None, "source_tree": None, "pull_request": None, "pr_run": None,
+            "tested_main_commit": None, "tested_main_tree": None, "main_run": None,
+            "pr_status": "PENDING", "main_status": "PENDING", "receipt": None,
+            "previous_version": {"version": old_current["version"], **copy.deepcopy(old_current["integration"])},
+        },
+        "path_conventions": old_current["path_conventions"], "book": book, "local_verification": local,
+        "nonclaims": nonclaims, "metadata_updated_at_utc": stamp,
+    }
+    active = copy.deepcopy(old_active)
+    active["state"] = STATE
+    active["checkpoint_history"] = [{"scope": "Historical implementation checkpoint before actual v31.8 acceptance", "snapshot": old_active}]
+    active["checkpoint"] = {"state": STATE, "proof": "PASS", "book": "PASS_LOCAL_PUBLICATION_GATES", "remote": "PENDING",
+        "proof_receipt": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
+        "book_release_gates": "physics/qm/book/evidence/v3.4/local-release-gates.json",
+        "source_count": SOURCE_COUNT, "source_set_sha256": SOURCE_SHA, "recorded_at_utc": stamp,
+        **source_identity_fields(d)}
+    for lane in active["lanes"].values():
+        lane["state"] = STATE
+        lane["acceptance_scope"] = "Actual unified source-bound proof and current monograph gates passed; remote acceptance pending."
+    active["counting_policy"] = "Accepted v31.8 package/witness counts come from actual unified receipts; preserved historical claims and new chapter-numbered results are counted separately."
+    active["current_counts"] = {"modules": proof["generic_modules"], "explicit_theorems": proof["explicit_theorems"], "named_audits": proof["actual_named_axiom_reports"], "claims": len(inherited) + len(added)}
+    active["claim_ledger"] = "physics/qm/status/CLAIM_LEDGER_v31.8.json"
+    active["remaining_work"] = current["next_execution"]["current_remaining_work"]
+    active["nonclaims"] = list(nonclaims)
+    ledger = {
+        "schema": "ueot_qm.claim_ledger.v31.8", "date": date, "version": "31.8-kernel.1.8", "path_base": "repository_root",
+        "previous_ledger": "physics/qm/status/CLAIM_LEDGER_v31.7.json", "research_baseline": BASE,
+        "core_baseline": d["old_ledger"]["core_baseline"],
+        "core_baseline_role": "Historical frozen Core reference; all actual 56 imported source bytes remain identical to the closed v31.7 baseline. No 106-item/four-generator Core mutation.",
+        "verification": {"state": STATE, "local_status": "PASS", "remote_status": "PENDING", "remote_ci": "PENDING", "main_integration": "PENDING",
+            "main_package_theorems": proof["explicit_theorems"], "main_named_audits": proof["actual_named_axiom_reports"],
+            "concrete_witness_theorems": local["finite_witness_theorems"], "concrete_witness_definitions": local["finite_witness_definitions"],
+            "concrete_witness_abbreviations": local["finite_witness_abbreviations"], "concrete_witness_audits": local["finite_witness_audit_reports"],
+            "source_count": SOURCE_COUNT, "source_set_sha256": SOURCE_SHA,
+            **source_identity_fields(d), "full_physical_theory_verified": False},
+        "evidence": {"proof": "physics/qm/kernel/evidence/v31.8/lean-verification.json", "source": "physics/qm/kernel/evidence/v31.8/source-manifest.json",
+            "publication_source": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+            "publication_source_reconciliation": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+            "root_scientific_review": "physics/qm/kernel/evidence/v31.8/root-scientific-review.json",
+            "witnesses": "physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json", "book_gates": "physics/qm/book/evidence/v3.4/local-release-gates.json", "integration": None},
+        "canonical_monograph": {"edition": "3.4", "path": "physics/qm/book/UEOT_PHYSICS.md", "dossier": "physics/qm/book/CHAPTER_DOSSIER.json",
+            "chapters": structure["chapters"], "results": structure["numbered_results"], "pdf_pages": d["pages"]},
+        "inheritance": {"count": 54, "record_values_exactly_preserved": True,
+            "source_ledger_sha256": digest((d["baseline"] / "physics/qm/status/CLAIM_LEDGER_v31.7.json").read_bytes()),
+            "scope": "The first 54 objects preserve v31.7 mathematical statements, premises, evidence references and historical wording exactly. Their then-current/pending/not-yet wording is historical to those claims, not the current aggregate v31.8 status. New completions are separate records below.",
+            "current_reverification": "The actual v31.8 unified gates rechecked inherited package sources, witnesses, certificate fixtures and runtime; this does not convert any inherited NOT_CLAIMED or program-refinement obligation into a proved claim."},
+        "historical_gap_resolution": [
+            {"inherited_claim": "QMK-40", "historical_limit": "This real-model control did not itself prove universal complex tomography", "new_claims": [idmap["P-CLT-01"]]},
+            {"inherited_claim": "QMK-45", "historical_limit": "The v31.7 existence theorem did not include the pure-to-vector converse or uniqueness", "new_claims": [idmap[x] for x in ("P-PUC-01", "P-PUN-01", "P-PUN-02")]},
+            {"inherited_claim": "QMK-52", "historical_limit": "The whole-protocol defect was not a derived action budget", "new_claims": [c["id"] for c in added if c["book_result"]["chapter"] == 62 and c["book_result"]["id"].startswith("P-")], "scope": "Only the proved common fixed-depth causal-history controller contract is closed; coherent control and arbitrary stopping-tree padding remain open."}],
+        "new_claim_count": len(added), "claim_count": len(inherited) + len(added),
+        "new_book_result_to_claim": idmap, "nonclaims": nonclaims,
+        "prior_version_verification": copy.deepcopy(d["old_ledger"]["verification"]),
+        "metadata_updated_at_utc": stamp, "claims": inherited + added,
+    }
+    require(ledger["claims"][:54] == d["old_ledger"]["claims"], "Inherited claim content mutated")
+    require(next(c for c in ledger["claims"] if c["id"] == "QMK-13")["status"] == "NOT_CLAIMED", "QMK-13 promotion")
+    return current, active, ledger
+
+
+def render_report(d, ledger):
+    p = d["proof"]
+    rows = "\n".join(f"| `{name}` | {p['module_theorem_counts'][name]} | {desc} |" for name, desc in MODULE_DESCRIPTIONS.items())
+    details = []
+    for c in ledger["claims"][54:]:
+        b = c["book_result"]
+        details.append(f"### {c['id']} / {b['id']}：{c['title']}\n\n"
+            f"正式总著：[第{b['chapter']}章对应结果](book/UEOT_PHYSICS.md#{b['anchor']})。\n\n"
+            f"**实际量词：** {c['quantified_scope']}\n\n**结论：** {c['claim']}\n\n"
+            "**前提：**\n\n" + "\n".join("- " + x for x in c["premises"]) + "\n\n"
+            "**实际主声明：**\n\n" + "\n".join("- `" + x + "`" for x in c["main_declarations"]) + "\n\n"
+            "**适用范围与开放责任：**\n\n" + "\n".join("- " + x for x in c["limits"]))
+    return f"""# UEOT-QM v31.8 / Kernel 1.8：分离、完整纯性与逐动作记录预算
+
+状态：**{STATE}**。本地统一科学验收和正式总著出版门已实际完成；v31.8 远端源码 PR、独立 main CI 与回读尚待完成，身份以 [CURRENT](status/CURRENT.json) 为准。
+
+## 1. 目标、基线与本轮意义
+
+目标是基于 UEOT 建立完备、可解释、可检验的量子物理理论，并持续维护完整正式著作《UEOT物理学》。本轮从已闭环 v31.7 主线 `{BASE}` 接续；该旧版的源码 PR #347、PR/main CI 与元数据 PR #348 保留各自真实身份，不当作 v31.8 的 CI。
+
+在完整有限复密度模型中，本轮证明全部合法效应分离实际密度，并证明全部产品效应识别任意联合态；从完整凸极点导出向量表示，再构造真实辅助酉和有类型的异维补齐；最后把原真实协议接到共同有限因果控制器，得到按底层实际动作记录缺陷求和的误差界。三路分别补足识别、纯化比较与可组合预测责任，没有把标准复量子背景改写成 Core 已唯一选出的自然理论。
+
+## 2. 实际统一验收
+
+{statistics(d)}
+
+`lake build UEOTQM` 实际 {p['actual_build_jobs']} jobs、退出0；命名公理审计退出0，允许基础仅为 `propext`、`Classical.choice`、`Quot.sound`。六个精确证书共42项审计，四个篡改真证明拒绝及四个同数据假值证明接受；100个运行测试方法与四个实际演示均通过。普通 Lean linter 警告按原日志保留，不写成零警告。
+
+受验源共89项，SHA256 `{SOURCE_SHA}`，统一执行前后逐项相同；92项 QM/Core 源与 olean 绑定，实际递归 Core 源码56项保持与闭环基线相同。冻结 Core 的106项覆盖和四生成器没有改动。这些计数分别指包声明、具体见证、证书和运行方法，不是新物理规律数或实验数。
+
+{publication_note(d)} 对应[实际发布源清单](kernel/evidence/v31.8/publication-source-manifest.json)和[单词注释修正身份桥](kernel/evidence/v31.8/publication-source-reconciliation.json)。
+
+证据：[证明回执](kernel/evidence/v31.8/lean-verification.json)、[实际源清单](kernel/evidence/v31.8/source-manifest.json)、[命名审计](kernel/evidence/v31.8/proof-axioms.json)、[十组见证](kernel/evidence/v31.8/finite-witnesses/verification.json)、[精确证书](kernel/evidence/v31.8/lean-exports/verification.json)、[运行](kernel/evidence/v31.8/runtime-verification.json)、[演示](kernel/evidence/v31.8/demos-verification.json)。
+
+## 3. 六个新增公共模块
+
+| 模块 | 显式 theorem | 实际数学接口 |
+|---|---:|---|
+{rows}
+
+## 4. 正式总著与逐项主张
+
+《UEOT物理学》{book_summary(d)}。旧131个编号结果保留，本轮新增{len(d['bindings'])}个编号结果位于第60–62章。完整正文、推导、反例与开放责任在[规范主文](book/UEOT_PHYSICS.md)、[完整PDF](book/UEOT_PHYSICS.pdf)和[逐章档案](book/CHAPTER_DOSSIER.json)连续维护；出版证据见[实际本地书门](book/evidence/v3.4/local-release-gates.json)。视觉审查范围以实际回执为准，不宣称逐页完整精读。
+
+[v31.8主张台账](status/CLAIM_LEDGER_v31.8.json)保留旧54对象原数学和前提，新编号结果各有新条目；旧 QMK-40、45、52 的当时开放范围由新条目明确承接。QMK-13、无条件物理三代和新实验确证继续 NOT_CLAIMED。
+
+{"\n\n".join(details)}
+
+## 5. 正负控的实际含义
+
+全部对角效应仍不能识别两组不同的 X/Y 相干态；合法完整效应能区分它们。实模型层析反例原样保留，未改其局部实性。辅助酉用有理复矩阵核验两侧单位关系和精确向量作用；错用伴随、转置、逐项共轭分别导致联合密度不等，但不声称系统边际因此不同。2→3维嵌入满足 J†J=I而JJ†≠I，两不同辅助态在共同5维载体上比较。
+
+逐动作正控的第一项真实上确界缺陷为1/4，第二项为0，完整两步记录 TV 达到1/4；删除标签时各无标签动作完全相同且缺陷0，但完整记录TV为1、第二次事件概率为1/0。双方终端量子态分别等于同一个初态，不能写成终端量子态不同。这些都是精确形式化模型见证，没有新增真实实验。
+
+## 6. 未完成责任与远端闭环
+
+本轮没有从冻结 Core 唯一导出复量子理论；量子选择原则的独立物理理由、完整重建背景和其他模型排除仍开放。纯化共同直和不等于最小辅助空间或任意维数方向的直接等距定理；固定深度共同因果控制器预算不自动覆盖变长停止树、相干控制器、额外环境或 diamond 范数。一般谱存在/混合、无限条件过程、程序全输入细化、真实QDRR记录、完整谱与阈值、连续极限、QFT、真空和质量仍各有责任。
+
+三代 selector 继续要求谱、表示、异常、阈值及有效窗口等前提。当前有限内核不等于完整自然理论已证，也不构成最终真理已完成的声明。
+
+本地门之后仍须一次源码 PR、实际 PR CI、合入主线的独立 CI、受验源/Core/正文及发布文件逐项回读，再以独立元数据提交记录 MAIN_VERIFIED。没有实际回执之前不填任何 v31.8 commit、PR 或运行号。本轮仅维护当前合同与开放路线，没有创建下一版本合同。
+"""
+
+
+def render_navigation(context_dir, ctx, d):
+    p, w = d["proof"], d["proof"]["finite_witness_verification"]
+    qm = f"""# UEOT-QM：有限量子内核与物理总著
+
+当前 **v31.8 / Kernel 1.8 — {STATE}**。[CURRENT](status/CURRENT.json)区分已完成本地门与尚待完成的远端身份。
+
+目标是基于UEOT建立完备、可解释、可检验的量子物理理论。理论思想、全部推导、前提、反例与开放责任持续维护于[《UEOT物理学》{book_summary(d)}](book/UEOT_PHYSICS.md)，以及[完整PDF](book/UEOT_PHYSICS.pdf)。
+
+| 本轮关键点 | 实际成果与边界 |
+|---|---|
+| 全效应与复局部层析 | 全部合法效应分离密度，全部产品效应识别任意复联合态；固定受限仪器库仍有独立识别责任 |
+| 完整纯性与纯化比较 | 完整凸极点 iff 归一向量；真实同载体辅助酉，异载体先等距嵌入共同直和 |
+| 逐动作记录预算 | 共同固定深度因果控制器、真实历史与旧协议回接、实际动作缺陷之和控制完整记录TV |
+
+{statistics(d)} 六精确证书42审计、四真假配对控制、100运行方法、四演示均实际通过。全部89受验源与实际执行绑定；允许基础仅为propext、Classical.choice、Quot.sound。[证明回执](kernel/evidence/v31.8/lean-verification.json)与[源清单](kernel/evidence/v31.8/source-manifest.json)记录实际身份。
+
+{publication_note(d)} [发布身份桥](kernel/evidence/v31.8/publication-source-reconciliation.json)给出两者的逐项对应。
+
+## 阅读与推进入口
+
+- [本轮完整报告](UEOT_QM_KERNEL_v31.8.md)、[当前主张台账](status/CLAIM_LEDGER_v31.8.json)、[当前执行状态](status/ACTIVE_RESEARCH_v31.8.json)。
+- [总著目录和逐章证据](book/README.md)、[Lean包](../../formalization/ueot-qm/README.md)、[运行内核](kernel/README.md)。
+- [路线图](ROADMAP.md)、[本轮已完成本地科学与书门的合同](UEOT_QM_EXECUTION_v31.8.md)。
+
+v31.7 的源码PR #347、两实际CI与元数据PR #348保持独立历史身份；v31.8远端仍待真实源码发布和PR/main验证。冻结Core的106项、四生成器以及其他研究保持独立。复理论的Core唯一选择、一般谱与无限过程、真实实验、质量与连续理论仍开放；三代仍是带完整谱、表示、阈值与有效窗口前提的条件结论。
+"""
+    roadmap = f"""# UEOT-QM / Physics Roadmap
+
+状态：**v31.8 / Kernel 1.8 — {STATE}**。实际本地与远端身份分层记录于[CURRENT](status/CURRENT.json)。
+
+## 核心追求与本轮实际闭合
+
+目标是从UEOT建立完备、严格、可解释和可检验的量子物理理论，并维护连续正式总著。{statistics(d)} {book_summary(d)}。本轮恢复基线是已闭环主线 `{BASE}`；新的科学字节由89项实际源清单绑定，不借用旧CI。
+
+| 已闭合的具体责任 | 仍须独立证明的范围 |
+|---|---|
+| 全合法效应分离，复模型对任意联合态普遍局部层析 | 固定库实现与有限采样误差、范数识别、重建全部背景及Core选择依据 |
+| 完整凸纯性 iff 向量；同载体酉；异载体共同直和 | 最小辅助维数、额外维数条件下直接等距、无限维及指定重建补齐合同 |
+| 共同有限因果控制器的真实逐动作缺陷和与全记录TV | 变长停止协议的实际补齐语义、相干控制/额外环境与稳定化距离 |
+| 继承指定非交换模型的精确条件收敛和成功质量衰减 | 一般正谱存在/混合条件、无限条件过程及物理适用性 |
+
+[v31.8合同](UEOT_QM_EXECUTION_v31.8.md)三路本地科学和书门已完成，当前继续远端闭环；没有创建下一版本合同。新主张分别对应正式总著第60–62章与新台账条目，旧54主张保持原数学前提和历史范围。
+
+## 全域工作包与下一项验收
+
+| 工作包 | 已有范围 | 下一项可评审责任 |
+|---|---|---|
+| QMU-00 来源／总著 | 原件身份、历史链、连续正文、逐章档案与实际源绑定 | 保持原编号/来源责任与每次真实执行和发布身份 |
+| QMU-01 G3 | 条件selector、实际谱行和到异常式/弱预算 | 具体表示、完整母谱/补偿、阈值与有效窗口、全局一致性、真空/质量 |
+| QMU-02 有限量子包 | 实际密度/Kraus/Born、有限ancilla、全效应分离与复层析 | 精确范数与稳定化接口；量子结构的独立选择依据 |
+| QMU-03 协议递归 | 全词商、有限坐标、完整树与可靠局部checker | 搜索/消元、标签/JSON/树解释器的全输入细化 |
+| QMU-04 缺陷组合 | 真实联合通道、共同有限控制器、逐动作和与全记录TV | 变长停止补齐、外部环境/相干控制与可计算认证缺陷上界 |
+| QMU-05 QDRR | 解析协议、有限统计合同与模型证书 | 独立冻结协议/噪声、真实原始记录、注入控制、留出预测 |
+| QMU-06 长期／存活 | CPTP Cesàro存在、实际Core对角桥、指定非交换精确动力学 | 一般可验证谱/混合条件、长期条件过程 |
+| QMU-07 CV | 能量/尾部和有界测试合同 | 单一模型尾界、有限秩、Weyl响应、无界定义域 |
+| QMU-08 QFT/RG | 有界响应和表示运输合同 | 两侧响应、matching、误差与连续极限 |
+| QMU-09 HGP | 完整谱/阈值研究、六局域331异常精确程序 | 全局形式/异常、阈值、真空、质量与观测关系 |
+| QMU-10 量子选择 | 实/经典反模型；完整复纯化、纯性刻画、酉等价与局部层析 | 全部重建前提及独立UEOT物理理由，不能仅排除两模型便宣布唯一 |
+
+## 证据与发布规则
+
+本轮统一验收实际{p['actual_build_jobs']} jobs、退出0；985项公理审计与全部具体/运行门在各自实际回执中。旧重型验收不会因元数据更新而重跑。当前仍需一次冻结源码PR、实际PR CI、合入后独立main CI和字节回读；后续元数据提交不得冒充CI受验源码。
+
+{publication_note(d)} [发布身份桥](kernel/evidence/v31.8/publication-source-reconciliation.json)明确区分原受验身份与发布候选身份。
+
+没有真实记录时只检验合成流程，没有完整物理谱与适用窗口时不把三代条件selector提升为现实三代的无条件结论。冻结Core的106项与四生成器保持不变，完整自然理论和最终真理仍是追求目标。
+"""
+    kernel = original_bytes(context_dir, ctx, "physics/qm/kernel/README.md").decode()
+    prefix_end = kernel.index("## 立即运行")
+    kernel = f"""# UEOT-QM v31.8 / Kernel 1.8
+
+当前状态：**{STATE}**；[CURRENT](../status/CURRENT.json)记录分层身份。新增数学成果是完整密度分离/复层析、纯性反向/有类型纯化酉比较，以及共同因果控制器的逐动作记录预算。Python运行API继续使用既有精确实现，其全输入正确性仍未由这些数学定理自动证明。
+
+{statistics(d)} 100运行方法与四演示实际PASS。[本轮报告](../UEOT_QM_KERNEL_v31.8.md)、[证明回执](evidence/v31.8/lean-verification.json)、[运行回执](evidence/v31.8/runtime-verification.json)。完整理论见[总著3.4](../book/UEOT_PHYSICS.md)第49–62章。
+
+{publication_note(d)} [发布身份桥](evidence/v31.8/publication-source-reconciliation.json)保留真实执行边界。
+
+""" + kernel[prefix_end:]
+    kernel = paragraph_replace(kernel, "此门实际编译七份具体见证，", f"此门实际编译十份具体见证，审核{w['named_axiom_reports']}个声明并绑定{w['bound_modules']}个QM/Core源与olean。继承混合、生存、实层析、Doob、纯化、联合记录、条件动力学见证，并新增全效应分离/复层析、完整纯性/纯化酉方向和逐动作记录预算。它们与六证书42审计和{p['explicit_theorems']}个主包显式定理分别统计。[实际见证回执](evidence/v31.8/finite-witnesses/verification.json)")
+    kernel = paragraph_replace(kernel, "29个主包Lean模块覆盖", f"{p['generic_modules']}个主包Lean模块覆盖继承有限量子操作、协议、证书和动力学，并补齐实际全效应分离、普遍复层析、完整纯性、纯化酉比较与共同有限控制器逐动作记录预算。{p['explicit_theorems']}定理、{p['actual_named_axiom_reports']}审计实际统一通过；数值实例与具体见证有独立源绑定回执。当前集成身份见 [CURRENT](../status/CURRENT.json)。")
+    kernel = paragraph_replace(kernel, "新 `channelDefect` 是全态输出伪距离", "`channelDefect` 是实际全态输出距离的数学上确界，尚不是本Python运行时的通用可计算函数。v31.8已经在Lean中从共同有限因果控制器和真实PSD历史块导出逐动作记录预算；Python既有标量API仍只处理其声明的局部合同。无标签通道缺陷不自动控制标签/历史，后验界仍要求正概率。可认证数值缺陷上界、相干控制/额外环境、停止树补齐与范数识别仍是独立任务。")
+    kernel = kernel.replace("[v31.7 主报告](../UEOT_QM_KERNEL_v31.7.md)", "[v31.8 主报告](../UEOT_QM_KERNEL_v31.8.md)")
+    kernel = paragraph_replace(kernel, "本版在 `evidence/v31.7/` 保存", "本版在 `evidence/v31.8/` 保存实际源码、运行、演示、Lean与实例回执。[本地证明](evidence/v31.8/lean-verification.json)、[实例验收](evidence/v31.8/lean-exports/verification.json)和[新台账](../status/CLAIM_LEDGER_v31.8.json)记录被测字节与开放义务。v31.7及更早证据保留原字节、原数学范围和各自真实集成身份。v31.8远端尚待实际PR/main闭环。")
+    formal = original_bytes(context_dir, ctx, "formalization/ueot-qm/README.md").decode()
+    formal = exact_replace(formal, "# UEOT-QM Lean package — v31.7", "# UEOT-QM Lean package — v31.8")
+    formal = paragraph_replace(formal, "**Current status: MAIN_VERIFIED.**", f"**Current status: {STATE}.** Actual unified compilation passed: {p['generic_modules']} modules, {p['explicit_theorems']} explicit theorems and {p['actual_named_axiom_reports']} unique named axiom reports, exit 0, {p['actual_build_jobs']} jobs. Ten witness files passed {w['named_axiom_reports']} separate reports ({w['concrete_theorems']} theorems, {w['definitions']} definitions, {w['abbreviations']} abbreviations). Six exact certificates/42 audits, four paired corrupt-data controls, 100 runtime methods and four demos passed. The actual 89-input source SHA256 is {SOURCE_SHA}. [Proof receipt](../../physics/qm/kernel/evidence/v31.8/lean-verification.json), [source manifest](../../physics/qm/kernel/evidence/v31.8/source-manifest.json) and [CURRENT](../../physics/qm/status/CURRENT.json) distinguish local acceptance from pending v31.8 remote source/main verification.")
+    formal = paragraph_replace(formal, f"**Current status: {STATE}.**",
+        formal[formal.index(f"**Current status: {STATE}.**"):formal.index("\n\n", formal.index(f"**Current status: {STATE}.**"))] +
+        f" The current publication raw-input SHA256 is {PUBLICATION_SHA}: one English documentation word was corrected after the actual unified build. The [additive publication bridge](../../physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json) proves the exact comment-only difference; it does not relabel the 8799-job build or claim another local compiler execution.")
+    formal = paragraph_replace(formal, "The continuous companion [《UEOT物理学》3.3]", f"The continuous companion [《UEOT物理学》3.4](../../physics/qm/book/UEOT_PHYSICS.md) contains chapters 0–62 and appendices A–F, {d['structure']['numbered_results']} numbered results and an actual {d['pages']}-page [PDF](../../physics/qm/book/UEOT_PHYSICS.pdf). Full exposition and physical premises exceed the limited declarations formally checked here.")
+    start, end = formal.index("## v31.7 scope"), formal.index("## Build and verify")
+    formal = formal[:start] + """## v31.8 scope and remaining responsibilities
+
+QuantumSeparation represents every finite complex Hermitian matrix by legal effects over real scalars, proves all-effect density separation and adds a new density-equality theorem for zero distance without altering the inherited pseudodistance theorem. ComplexLocalTomography proves the original complex model's tomography property for arbitrary joint densities and all legal product effects; it does not assume product or separable inputs.
+
+PureStateCharacterization derives normalized vector representatives from full convex extremality using positive Gram columns. PurificationUniqueness constructs an actual same-carrier auxiliary unitary with both inverse identities and explicit action direction. Rectangular auxiliary isometries are actual CPTP maps preserving every complex input's system marginal and full density purity; different auxiliaries are embedded in a common sum before applying a genuine unitary.
+
+HistoryChannels explicitly reads/dephases classical histories, proves PSD block/zero-weight and legal restricted-effect facts, and bounds selected channels on a shared input. ActionRecordBudget implements the common finite causal controller, matches the original Protocol's entire quantum-memory state after relabelling and proves initial error plus actual per-action tagged-defect sums, including full-record TV.
+
+The prior full classical/real/complex presentations, seven laws, classical/real exclusion examples, arbitrary finite protocol channel and specified-model Doob results retain their own scope. Complex selection from Core, all reconstruction background, minimal auxiliary dimensions, coherent or arbitrary stopping controllers, general spectral existence, infinite conditioning and empirical applicability remain separate obligations.
+
+""" + formal[end:]
+    old_total = "| **Total** | **646** | 29 package modules; concrete witnesses and generated instances are reported separately |"
+    additions = "\n".join(f"| [{n}](UEOTQM/{n}.lean) | {p['module_theorem_counts'][n]} | {desc} |" for n, desc in MODULE_DESCRIPTIONS.items())
+    formal = exact_replace(formal, old_total, additions + f"\n| **Total** | **{p['explicit_theorems']}** | {p['generic_modules']} package modules; concrete witnesses and generated instances are separate |")
+    marker = "The **855** package audit targets comprise"
+    pos = formal.index(marker)
+    formal = formal[:pos] + f"The current **{p['actual_named_axiom_reports']}** package audit targets comprise **{p['explicit_theorems']}** explicit theorems and **{p['listed_non_theorem_audit_targets']}** other reviewed named targets. The v31.8 increment is **{p['new_explicit_theorems']} theorems + {p['new_non_theorem_audit_targets']} definitions/abbreviations = {p['new_audited_targets']} targets**. Actual named target sets, constructors and instances are recorded by the source inventory; no compiler-generated constant census is claimed.\n\nHistorical v31.7: " + formal[pos:]
+    formal = formal.replace("the final v31.7 package, each with", "the final v31.7 and v31.8 packages, each with")
+    formal = formal.replace("separate from the current 855 package targets", f"separate from the current {p['actual_named_axiom_reports']} package targets")
+    formal = exact_replace(formal, "The current package totals exclude the **151** dedicated witness targets",
+                           f"The current package totals exclude the **{w['named_axiom_reports']}** dedicated witness targets")
+    formal = formal.replace("Seven actual witness files pass", "Ten actual witness files pass")
+    witness_rows = []
+    for n in ("QuantumSeparationExamples", "PurificationUniquenessExamples", "ActionRecordBudgetExamples"):
+        ds = d["finite"]["declarations"][n]
+        counts = [sum(x["kind"] == k for x in ds) for k in ("theorem", "def", "abbrev")]
+        witness_rows.append(f"| {n} | {counts[0]} | {counts[1]} | {counts[2]} | {len(ds)} |")
+    formal = exact_replace(formal, "| Total | 110 | 39 | 2 | 151 |", "\n".join(witness_rows) + f"\n| Total | {w['concrete_theorems']} | {w['definitions']} | {w['abbreviations']} | {w['named_axiom_reports']} |")
+    formal = paragraph_replace(formal, "The new sources check a full-density Bell purification", "The retained witnesses check full-density Bell purification, restricted-state fake purity, deleted records and specified Doob dynamics. New controls add X/Y coherence blindness under diagonal effects and full complex/real model interfaces; exact phase-sensitive auxiliary action and 2-to-3 dimensional isometric padding; a tight 1/4+0 action budget and a deletion-of-labels TV=1 control whose two terminal quantum states are both the same initial density. These are exact formal examples, not empirical observations.")
+    formal = formal.replace("configuration and 86 recursive", f"configuration and {w['bound_modules']} recursive")
+    formal = formal.replace("[actual v31.7 witness receipt](../../physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json)", "[actual v31.8 witness receipt](../../physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json)")
+    formal = formal.replace("`effectDistance_eq_zero_iff` states equality of all effect probabilities; density-matrix separation, a `MetricSpace` instance and identification with trace or diamond norms are not proved here.", "The inherited `effectDistance_eq_zero_iff` still states equality of all effect probabilities. The new `QuantumSeparation.effectDistance_eq_zero_iff_density_eq` proves actual density equality; a registered `MetricSpace` and trace/diamond-norm identification remain separate responsibilities.")
+    formal = paragraph_replace(formal, "This closes the **finite common-carrier complete-channel / positive-event slice of QMU-04**.",
+        "The inherited v31.4 theorems close the **finite common-carrier complete-channel / positive-event slice of QMU-04**. `channelDefect` remains a noncomputable supremum, and the finite-mixture model supplies certified bounds without computing every channel defect. The later ClassicalQuantumMemory and v31.8 HistoryChannels/ActionRecordBudget results explicitly retain labels and prove common-controller history budgets; the outcome-forgetting defect alone still does not bound those records. Coherent control, arbitrary external memory and stabilized norm identification remain separate obligations. See the [v31.4 report](../../physics/qm/UEOT_QM_KERNEL_v31.4.md) and [mathematical review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md) for the exact inherited stability scope.")
+    formal = paragraph_replace(formal, "The next reconstruction work needs typed complete state, effect, composite, discard and convex-purity interfaces,",
+        "The complete finite state/effect/composite/discard models, complex purification existence, full convex-purity characterization, same-carrier auxiliary unitary comparison and universal complex local tomography now have their own explicit proofs. Actual joint classical records and quantum memory are retained, and the shared fixed-depth causal controller has a derived per-action budget. These close the stated finite responsibilities; Core-to-complex selection, minimal auxiliary dimensions, stopping-tree padding, coherent controllers, external environments and norm identification remain open. The specified rational noncommutative Doob model already has exact iterates, a unique invariant state and conditional distance-to-fixed-state rates; general spectral existence/dominance, full Cesàro projections and infinite conditioning remain separate tasks. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).")
+    contract = original_bytes(context_dir, ctx, "physics/qm/UEOT_QM_EXECUTION_v31.8.md").decode()
+    contract = paragraph_replace(contract, "状态：**执行中，尚未统一验收，未计入已验收证明数量。**", f"状态：**{STATE}：本轮合同的科学与正式总著本地门已完成，远端待验。** 实际统一验收为{p['generic_modules']}模块、{p['explicit_theorems']}显式定理、{p['actual_named_axiom_reports']}命名审计，89受验源SHA256 `{SOURCE_SHA}`。十见证{w['named_axiom_reports']}审计、精确证书/负控、100运行方法与四演示均实际通过；{book_summary(d)}的结构/PDF/视觉/档案门已齐。[本轮报告](UEOT_QM_KERNEL_v31.8.md)、[状态](status/ACTIVE_RESEARCH_v31.8.json)、[证明回执](kernel/evidence/v31.8/lean-verification.json)和[书门](book/evidence/v3.4/local-release-gates.json)给实际身份。以下保留原合同目标和停止条件作为历史验收依据；当前已完成范围由新增台账条目及第60–62章精确承担，不由计划措辞单独证明。v31.8源码PR/main身份未填，且未新建下一版本合同。")
+    contract += "\n\n## 7. 本合同实际完成范围\n\nA：完整全效应密度分离与任意联合复态局部层析已实际证明，受限对角效应负控及原实模型反例保留。B：完整凸极点反向、实际同辅助载体酉比较、矩形等距通道与不同载体共同直和已实际证明；最小维数或未指明方向的直接等距不在结论内。C：共同固定深度因果控制器的真实历史/原协议全态回接、PSD/零块/合法效应导出的动作缺陷和与全记录TV已实际证明；变长停止、相干控制和外部环境仍须新前提。\n\n" + publication_note(d) + " [实际发布身份桥](kernel/evidence/v31.8/publication-source-reconciliation.json)给出唯一改动，不覆盖原统一回执。\n\n当前剩余动作是本版本远端闭环：一次冻结源码PR、实际PR CI、合入后独立main CI、发布字节回读和后续独立元数据身份更新。各旧版CI只属于旧版，当前本地PASS不冒充远端PASS。\n"
+    return {"physics/qm/README.md": qm, "physics/qm/ROADMAP.md": roadmap,
+            "physics/qm/kernel/README.md": kernel, "formalization/ueot-qm/README.md": formal,
+            "physics/qm/UEOT_QM_EXECUTION_v31.8.md": contract}
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--root", type=Path, required=True)
+    ap.add_argument("--context", type=Path, required=True)
+    ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--describe", action="store_true", help="Describe exact ownership without reading or asserting acceptance gates")
+    args = ap.parse_args()
+    root = args.root.resolve()
+    if args.describe:
+        require(not args.apply, "--describe cannot be combined with --apply")
+        print(json.dumps({"status": "HELPER_DESCRIPTION_NOT_ACCEPTANCE", "targets": OWNED, "writes_without_apply": False, "invokes_scientific_tests": False, "invokes_git_or_network": False}, indent=2))
+        return
+    context = args.context.resolve()
+    ctx = read(context)
+    d = preflight(root, context.parent, ctx)
+    current, active, ledger = render_json(context.parent, ctx, d)
+    outputs = {OWNED[0]: encoded(current), OWNED[1]: encoded(active), OWNED[2]: encoded(ledger), OWNED[3]: render_report(d, ledger).encode()}
+    outputs.update({k: v.encode() for k, v in render_navigation(context.parent, ctx, d).items()})
+    require(set(outputs) == set(OWNED), "Output scope escaped assigned nine metadata files")
+    before = {}
+    for rel, raw in outputs.items():
+        require(repo_path(root, rel).is_relative_to(root), "Output escapes repository")
+        p = root / rel
+        before[rel] = digest(p.read_bytes()) if p.exists() else None
+        require(before[rel] in (ctx["originals"][rel], digest(raw)), f"Concurrent metadata edit detected: {rel}")
+    staged = []
+    if args.apply:
+        try:
+            for rel, raw in outputs.items():
+                p = root / rel
+                require((digest(p.read_bytes()) if p.exists() else None) == before[rel], f"Metadata changed after preflight: {rel}")
+                fd, name = tempfile.mkstemp(prefix=".qm318-meta-", dir=p.parent)
+                with os.fdopen(fd, "wb") as f:
+                    f.write(raw)
+                staged.append((Path(name), p))
+            for temp, p in staged:
+                os.replace(temp, p)
+        finally:
+            for temp, _ in staged:
+                temp.unlink(missing_ok=True)
+        require(all((root / rel).read_bytes() == raw for rel, raw in outputs.items()), "Actual metadata output mismatch")
+        after_protection = protect_inputs(root, d["baseline"], d["publication"], d["core"], d["book_files"])
+        require(after_protection == d["protected"], "Protected input population changed during metadata update")
+        _, _, after_bridge_identity = publication_bridge(root, d["proof_dir"], d["source"], d["proof"])
+        require(after_bridge_identity == d["bridge_identity"], "Publication bridge changed during metadata update")
+    print(json.dumps({
+        "schema": "ueot_qm.local_metadata_result.v31.8", "status": "APPLIED_LOCAL_VERIFIED_REMOTE_PENDING" if args.apply else "DRY_RUN_READY_NO_WRITES",
+        "root": str(root), "context_sha256": digest(context.read_bytes()), "helper_sha256": digest(Path(__file__).read_bytes()),
+        "source_count": SOURCE_COUNT, "source_set_sha256": SOURCE_SHA, "protected": d["protected"],
+        **source_identity_fields(d),
+        "proof_receipt": identity(root, d["proof_dir"] / "lean-verification.json"),
+        "book_gates": identity(root, d["book_evidence_dir"] / "local-release-gates.json"),
+        "book_results": d["structure"]["numbered_results"], "inherited_claims": 54, "new_claims": ledger["new_claim_count"],
+        "claims": ledger["claim_count"], "QMK_13": "NOT_CLAIMED", "unconditional_physical_three_generations": "NOT_CLAIMED",
+        "remote_status": "PENDING", "metadata_targets_match_scientific_workflow_paths": False,
+        "updated": [{"path": rel, "before_sha256": before[rel], "sha256": digest(raw), "bytes": len(raw)} for rel, raw in outputs.items()],
+        "chapter_binding_inputs": d["binding_files"], "compiler_invocations": 0, "git_mutations": 0,
+    }, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (Refused, KeyError, OSError, ValueError) as exc:
+        print(json.dumps({"status": "REFUSED", "reason": str(exc), "acceptance_not_promoted": True}, ensure_ascii=False), file=sys.stderr)
+        raise SystemExit(1)
