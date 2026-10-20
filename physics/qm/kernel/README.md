@@ -1,10 +1,10 @@
-# UEOT-QM v31.3 / Kernel 1.3
+# UEOT-QM v31.4 / Kernel 1.4
 
-当前状态：**MAIN_VERIFIED**。本轮新增 `export_lean_representation`，将通过外部库锚定的有限表示证书导出为实际 Lean 数值表。Lean 精确 checker 独立核验数据，再构造真实仪器与全词／完整树／闭合更新定理。
+当前状态：**LOCAL_VERIFIED_CI_PENDING**。本轮在已有精确证书与响应坐标内核上新增实际量子效应、完整 Kraus 通道稳定性和正事件后验的 Lean 数学合同。`export_lean_representation` 继续将通过外部库锚定的有限表示证书导出为实际 Lean 数值表；Lean 精确 checker 独立核验数据，再构造真实仪器与全词／完整树／闭合更新定理。
 
-本版 [PR #335](https://github.com/MurphyHoops/UEOT/pull/335) 与 [主线工作流 39300120071](https://github.com/MurphyHoops/UEOT/actions/runs/39300120071) 均已通过，详见 [集成回执](evidence/v31.3/integration-verification.json)。
+v31.4 的远端集成按 [CURRENT](../status/CURRENT.json) 独立登记。上一版 v31.3 的 [PR #335](https://github.com/MurphyHoops/UEOT/pull/335) 与 [主线工作流 39300120071](https://github.com/MurphyHoops/UEOT/actions/runs/39300120071) 均已通过，保留其原 [集成回执](evidence/v31.3/integration-verification.json)。
 
-实际本地结果：13 通用模块、196 显式定理统一构建通过，213 项真实命名公理审计 PASS；87 个运行测试方法通过。六个生成实例与四组“原通过证明失败 + 同数据假值证明成功”的负控单独核验。见 [版本报告](../UEOT_QM_KERNEL_v31.3.md)、[证明回执](evidence/v31.3/lean-verification.json) 与 [实例回执](evidence/v31.3/lean-exports/verification.json)。v31.2 已完成 [主线验收](evidence/v31.2/integration-verification.json)。
+实际本地结果：15 通用模块、256 显式定理统一构建通过，287 项真实命名公理审计 PASS；87 个运行测试方法和 3 个演示通过。六个生成实例与四组“原通过证明失败 + 同数据假值证明成功”的负控已重新单独核验。见 [版本报告](../UEOT_QM_KERNEL_v31.4.md)、[证明回执](evidence/v31.4/lean-verification.json) 与 [实例回执](evidence/v31.4/lean-exports/verification.json)。完整理论入口为 [《UEOT物理学》正式 3.0](../book/UEOT_PHYSICS.md)。
 
 ## 立即运行
 
@@ -14,7 +14,7 @@
 python physics/qm/kernel/demo.py
 python physics/qm/kernel/demo_v312.py
 python physics/qm/kernel/demo_v313.py --output-dir /tmp/qm-exports
-python physics/qm/kernel/verify_kernel.py --output /tmp/qm-runtime-v313.json
+python physics/qm/kernel/verify_kernel.py --output /tmp/qm-runtime-v314.json
 ```
 
 `demo.py` 保留干涉、有限协议差、后选择与误差链；`demo_v312.py` 保留 Z/HZ/HSZ 完整表示证书、自适应律与谱／331 异常；`demo_v313.py` 输出六份完整 Lean 候选及 companion manifest。仅导出源文件不会宣称 Lean 编译成功。
@@ -187,13 +187,15 @@ print(local["all_six_cancel"])  # True；范围为六项局域异常
 
 有限协议证书只覆盖给出的准备配对和因果树。标量预算需要明确的逐步前提。二者不自动变成全部状态/全部协议上的 trace-distance 或 diamond-norm 保证。
 
-13 个通用 Lean 模块覆盖量子操作、响应商、词效应空间、有限全词坐标、闭合更新、完整树与谱桥，并新增实际数域解释、加权／可变指标数学适配和可靠的精确 checker。统一构建与 213 项命名公理审计已通过；六个具体实例的实际编译另有源绑定回执，远端 CI 与主线集成单列。
+15 个通用 Lean 模块覆盖量子操作、响应商、词效应空间、有限全词坐标、闭合更新、完整树、谱桥、实际数域解释、加权／可变指标适配和可靠的精确 checker，并新增实际效应、全效应响应伪距离、完整通道缺陷、真实轨迹组合和正事件后验界。统一构建与 287 项命名公理审计已通过；六个具体实例的实际编译另有源绑定回执，远端 CI 与主线集成单列。
 
-Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基独立性。本轮数学数域、加权／可变指标桥与逐实例证明已经完成；Python/JSON 解码、索引映射程序、搜索／消元、PSD 判定和树遍历的全输入细化仍未完成。具体表示系数、matching 窗口、全局异常、真空或质量也继续独立。准确范围见 [v31.3 主报告](../UEOT_QM_KERNEL_v31.3.md)。
+新 `channelDefect` 是全态输出伪距离的数学上确界，尚不是本 Python 运行时的可计算函数。实际量子一步界已经调用 Core M-TC 得到轨迹总误差；原有标量预算 API 仍要求输入它声明的局部合同。丢弃结果后的通道缺陷不自动控制两个不同仪器的标签或历史；后验界要求双方事件概率正。可认证的缺陷数值上界、完整经典记录扩展、旁系统稳定性和范数识别仍是独立任务。
+
+Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基独立性。数学数域、加权／可变指标桥与逐实例证明已经完成；Python/JSON 解码、索引映射程序、搜索／消元、PSD 判定和树遍历的全输入细化仍未完成。具体表示系数、matching 窗口、全局异常、真空或质量也继续独立。准确范围见 [v31.4 主报告](../UEOT_QM_KERNEL_v31.4.md)。
 
 ## 回执与版本身份
 
-本版在 `evidence/v31.3/` 保存源码、运行、演示、通用 Lean 与实例回执。[本地证明回执](evidence/v31.3/lean-verification.json)、[实例验收](evidence/v31.3/lean-exports/verification.json) 与 [本轮台账](../status/CLAIM_LEDGER_v31.3.json) 分别记录实际结果、被测字节和开放义务。v31.2 原证据保留，并由其独立集成回执记录已经完成的主线结果。
+本版在 `evidence/v31.4/` 保存源码、运行、演示、通用 Lean 与实例回执。[本地证明回执](evidence/v31.4/lean-verification.json)、[实例验收](evidence/v31.4/lean-exports/verification.json) 与 [本轮台账](../status/CLAIM_LEDGER_v31.4.json) 分别记录实际结果、被测字节和开放义务。v31.2、v31.3 原证据保留，并由各自独立集成回执记录已经完成的主线结果。
 
 v31.1 的回执继续可读，保持其原源码身份：
 

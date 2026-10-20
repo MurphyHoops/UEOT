@@ -11,3 +11,5 @@ import UEOTQM.ExactCertificate
 import UEOTQM.Transport
 import UEOTQM.Selector
 import UEOTQM.Spectrum
+import UEOTQM.Effects
+import UEOTQM.Stability

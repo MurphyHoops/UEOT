@@ -1,0 +1,112 @@
+{
+  "schema": "ueot_physics.font_cleanup_review.v1",
+  "reviewed_at_utc": "2026-10-20T00:02:52.655759+00:00",
+  "status": "PASS",
+  "file": "/workspace/scratch/474cf6b1f047/qm_v314_work/physics/qm/book/build/build_pdf.py",
+  "file_sha256": "5f50f5f720b554d4c4f349c1575fe533279665bbd274095ac1ec66737bf8cb49",
+  "header_read": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v314_work/physics/qm/book/build/header.tex",
+    "sha256": "1b2d02c26b92dbc83c15d843cb1a3046054474b46e6949728cd93640fb7b7e27",
+    "selection_contract": "If UEOT_CJK.ttf exists in the build directory, header.tex uses it; otherwise header.tex selects Noto Sans CJK SC."
+  },
+  "defect": "Reusing the output directory after a custom-font build left UEOT_CJK.ttf selected by the header while a later no-font receipt reported null.",
+  "change": "prepare_font removes only the reserved output entry when font is None; an explicit source is copied unless already the same file, and receipt metadata is read from the actual target. Existing destination symlinks are unlinked before a different explicit source is copied.",
+  "verification_scope": "Targeted temporary-directory copy, cleanup, same-file, and metadata checks. Fixtures contain arbitrary bytes; no font parser or PDF compiler was invoked.",
+  "fixture_inputs": {
+    "A": {
+      "bytes": 28,
+      "sha256": "2a9ad5f0628e4edfaf49e874242cca8f455cb309217e33c1fa8575dc7e6d24d9",
+      "hex": "55454f5420666f6e7420636f707920666978747572652041000102ff"
+    },
+    "B": {
+      "bytes": 43,
+      "sha256": "748e660d48304c1938b728f9ea1add2c320c37eb77c37ecff0b051e37f32f241",
+      "hex": "55454f5420666f6e7420636f7079206669787475726520423a20646966666572656e742062797465730304"
+    },
+    "valid_font_claim": false
+  },
+  "checks": [
+    {
+      "id": "explicit_font_binds_actual_target",
+      "input": "custom-a.ttf with fixture A",
+      "status": "PASS",
+      "font_receipt": {
+        "sha256": "2a9ad5f0628e4edfaf49e874242cca8f455cb309217e33c1fa8575dc7e6d24d9",
+        "bytes": 28
+      },
+      "target_sha256": "2a9ad5f0628e4edfaf49e874242cca8f455cb309217e33c1fa8575dc7e6d24d9"
+    },
+    {
+      "id": "custom_then_no_argument",
+      "input_sequence": [
+        "custom-a.ttf",
+        "font=None"
+      ],
+      "status": "PASS",
+      "cached_font_present": false,
+      "font_receipt": null,
+      "original_and_unrelated_file_preserved": true
+    },
+    {
+      "id": "no_argument_already_absent",
+      "status": "PASS",
+      "font_receipt": null,
+      "cached_font_present": false
+    },
+    {
+      "id": "explicit_replacement",
+      "input_sequence": [
+        "custom-a.ttf",
+        "custom-b.otf"
+      ],
+      "status": "PASS",
+      "font_receipt": {
+        "sha256": "748e660d48304c1938b728f9ea1add2c320c37eb77c37ecff0b051e37f32f241",
+        "bytes": 43
+      },
+      "target_matches_fixture_B": true
+    },
+    {
+      "id": "source_is_cached_destination",
+      "input": "out/UEOT_CJK.ttf",
+      "status": "PASS",
+      "font_receipt": {
+        "sha256": "748e660d48304c1938b728f9ea1add2c320c37eb77c37ecff0b051e37f32f241",
+        "bytes": 43
+      },
+      "same_file_copy_error": false
+    },
+    {
+      "id": "explicit_copy_replaces_destination_symlink",
+      "status": "PASS",
+      "external_original_preserved": true,
+      "cached_entry_is_regular_file": true,
+      "font_receipt": {
+        "sha256": "748e660d48304c1938b728f9ea1add2c320c37eb77c37ecff0b051e37f32f241",
+        "bytes": 43
+      }
+    },
+    {
+      "id": "no_argument_unlinks_only_cached_symlink",
+      "status": "PASS",
+      "cached_entry_present": false,
+      "external_original_and_unrelated_file_preserved": true,
+      "font_receipt": null
+    },
+    {
+      "id": "missing_explicit_source",
+      "status": "PASS",
+      "expected_exception": "FileNotFoundError",
+      "existing_cache_unchanged": true
+    }
+  ],
+  "passed": 8,
+  "failed": 0,
+  "builder_syntax_compiles": true,
+  "pdf_compiled": false,
+  "modified_repository_files": [
+    "physics/qm/book/build/build_pdf.py"
+  ],
+  "book_markdown_pdf_tex_modified_by_this_review": false,
+  "existing_pdf_validation": "No new PDF validation claim; this builder-only fix does not modify the previously validated PDF."
+}

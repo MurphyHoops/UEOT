@@ -1,0 +1,57 @@
+{
+  "schema": "ueot_qm.metric_focused_audit.v1",
+  "modules": [
+    {
+      "module": "Effects",
+      "path": "/workspace/scratch/474cf6b1f047/qm_v314_work/formalization/ueot-qm/UEOTQM/Effects.lean",
+      "sha256": "3346f36a3d467cb7b52d346dfafa4e49828e39a3ee02e29ac12e6783473eef23",
+      "bytes": 9597,
+      "theorems": 30,
+      "definitions": 10
+    },
+    {
+      "module": "Stability",
+      "path": "/workspace/scratch/474cf6b1f047/qm_v314_work/formalization/ueot-qm/UEOTQM/Stability.lean",
+      "sha256": "de253ab45a4e45e2c8457dcbf3ad0c5cfd553e13a3a1dbc791f7d59eb2b5d389",
+      "bytes": 14431,
+      "theorems": 30,
+      "definitions": 4
+    }
+  ],
+  "explicit_theorems": 60,
+  "public_definitions": 14,
+  "requested_count": 74,
+  "actual_report_count": 74,
+  "actual_unique_count": 74,
+  "missing": [],
+  "unexpected": [],
+  "duplicates": [],
+  "unreviewed_axioms": {},
+  "allowed_foundation": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "actual_axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit_log": "/tmp/qm314_metric_stage/metric-axiom-audit.log",
+  "audit_log_sha256": "22f87da113c96ddfe3bf31ba11dcb65e6fbead95b666a99ed6c3491bcce52653",
+  "audit_source": "/tmp/qm314_metric_stage/MetricAudit.lean",
+  "audit_source_sha256": "109b54b10d79927eab54294fdb115eb6b41180feeacdbe11e8e3b13a5b8a96c0",
+  "stability_final_build_log_bytes": 0,
+  "focused_sessions": {
+    "effects_final_compile": 27527,
+    "stability_final_compile": 59793,
+    "axiom_audit": 68193
+  },
+  "exit_codes": {
+    "effects_final_compile": 0,
+    "stability_final_compile": 0,
+    "axiom_audit": 0
+  },
+  "status": "PASS",
+  "scope": "Actual focused module compilation and all explicitly listed theorem/definition axiom reports; unified build/CI/source publication have separate receipts."
+}

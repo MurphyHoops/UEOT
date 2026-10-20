@@ -1,12 +1,12 @@
-# UEOT-QM Lean package — v31.3 / Kernel 1.3
+# UEOT-QM Lean package — v31.4 / Kernel 1.4
 
 This package implements a finite complex quantum sector and typed UEOT Core bridges. It inherits the exact Lean **4.33.1** and Mathlib revision `0df444a360eaa60ab8c11dca51a86af692955474` from `../ueot-core`.
 
-PR #335 and resulting-main workflow 39300120071 both passed on the published source. See the [integration receipt](../../physics/qm/kernel/evidence/v31.3/integration-verification.json).
+The continuous companion monograph is [《UEOT物理学》正式 3.0](../../physics/qm/book/UEOT_PHYSICS.md), chapters 0–50 and appendices A–F, with its [PDF edition](../../physics/qm/book/UEOT_PHYSICS.pdf) in the same directory. Chapters 49–50 explain the executable certificate chain and the new actual quantum stability contract. The monograph's mathematical exposition and physical hypotheses have a separate scope from the declarations checked by this package.
 
-**Current status: MAIN_VERIFIED.** The actual unified local `lake build UEOTQM` has passed: **196 explicit theorem declarations across 13 generic modules**, followed by **213 actual named axiom reports PASS**. Six generated numerical instances and four same-data false witnesses are separately compiled and audited; their reused consequences are not counted as additional generic theorems. The runtime suite has **87 passing test methods**.
+**Current status: LOCAL_VERIFIED_CI_PENDING.** The actual unified local `lake build UEOTQM` has passed with exit code 0: **256 explicit theorem declarations across 15 generic modules**, followed by **287 unique actual named axiom reports PASS**. The runtime suite has **87 passing test methods**, and all **three demos** passed. Six generated numerical instances were independently compiled and supplied 42 separate audit reports; four corrupted true-check proofs were rejected, and four companion proofs established `check data = false` for the identical corrupted data. These instance consequences are counted separately from the generic declarations. The v31.4 remote CI and resulting-main checks have not yet been accepted.
 
-See the [v31.3 proof receipt](../../physics/qm/kernel/evidence/v31.3/lean-verification.json), [instance verification](../../physics/qm/kernel/evidence/v31.3/lean-exports/verification.json), [claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.3.json), and [current integration status](../../physics/qm/status/CURRENT.json). The preceding v31.2 completed PR #333 and the successful resulting-main workflow 39294335590; its [integration receipt](../../physics/qm/kernel/evidence/v31.2/integration-verification.json) supplements the original local receipt.
+See the [v31.4 proof receipt](../../physics/qm/kernel/evidence/v31.4/lean-verification.json), [source manifest](../../physics/qm/kernel/evidence/v31.4/source-manifest.json), [instance verification](../../physics/qm/kernel/evidence/v31.4/lean-exports/verification.json), [claim ledger](../../physics/qm/status/CLAIM_LEDGER_v31.4.json), and [current integration status](../../physics/qm/status/CURRENT.json). The 55-entry source manifest identifies the actual tested file bytes; the authoring checkout `0c093e9fae990d6ef8d670163b84ec93bd6fb025` is the prior accepted baseline, not a claim that the v31.4 candidate already has a published commit. The preceding v31.3 completed PR #335 and resulting-main workflow 39300120071, as recorded in its separate [integration receipt](../../physics/qm/kernel/evidence/v31.3/integration-verification.json).
 
 Frozen Core definitions, sources, the four counted generators, and the 106-item coverage ledger are not changed by this increment.
 
@@ -43,9 +43,11 @@ The [QM workflow](../../.github/workflows/ueot-qm.yml) uses the same gates. Its 
 | [Ragged](UEOTQM/Ragged.lean) | 19 | Finite embeddings and zero padding; outcome-dependent Kraus types and zero outcome probabilities |
 | [Exact](UEOTQM/Exact.lean) | 24 | Computable Gaussian-rational matrices, injective actual complex interpretation and operation transport |
 | [ExactCertificate](UEOTQM/ExactCertificate.lean) | 9 | Decidable local conditions to actual instruments, finite presentation and all-word/adaptive consequences |
-| **Total** | **196** | Generic source declarations; positive and negative generated instances are reported separately |
+| [Effects](UEOTQM/Effects.lean) | 30 | Actual PSD effects and Born bounds; complete and selected pullbacks; finite record effects |
+| [Stability](UEOTQM/Stability.lean) | 30 | All-effect response pseudodistance, actual channel contraction and defect, Core transport composition and positive-event posterior bounds |
+| **Total** | **256** | Generic source declarations; positive and negative generated instances are reported separately |
 
-The 213 named audit targets are all 196 explicit theorems plus 17 listed proof-bearing constructions. The previous nine constructions remain; eight new targets are `WeightedInstrument.toInstrument`, `RaggedInstrument.toWeighted`, `WeightedInstrument.padOutcomes`, `Exact.MatrixData.instDecidableEq`, and `ExactCertificate.conditionsDecidable`, `weightedInstrument`, `instrumentFamily`, `presentation`, all under `UEOTQM`. This is not a census of compiler-generated constants or a claim of an axiom-free foundation.
+The **287** named audit targets are all **256** explicit theorems plus **31** listed constructions and definitions. The previous 17 proof-bearing targets remain. This increment adds 60 theorems and audits all 14 new public definitions: nine construct proof-bearing `Effect` or `Density` values and five define probability, channel, or supremum data. Thus the 74 newly audited names are not 74 new theorems, and the 14 definitions are not all proof-bearing constructions. The [scope review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md) gives every new name and the [focused receipt](../../physics/qm/kernel/evidence/v31.4/metric-focused-audit.json) records its actual audit. This is not a census of compiler-generated constants or a claim of an axiom-free foundation.
 
 ## Exact certificate interface
 
@@ -63,7 +65,7 @@ The checker does not assume global sufficiency. `check_sound`, actual complex in
 
 ## Generated proof instances
 
-The runtime's `export_lean_representation` emits concrete numerical source, not an oracle proof. Six [committed fixtures](../../physics/qm/kernel/certificates/v31.3/exports.json) cover Z, HZ, HSZ, ragged instruments, a complex 1-dimensional example, and a 4-dimensional projector. Each instance independently checks the data and prints seven axiom reports for `checked`, its proof-bearing `presentation`, and five public consequences: all-word iff, finite-tree coordinates, equal leaf laws, normalization, and closed coordinate update. Thus 42 instance audit targets are separate from the 213 generic targets.
+The runtime's `export_lean_representation` emits concrete numerical source, not an oracle proof. Six [committed fixtures](../../physics/qm/kernel/certificates/v31.3/exports.json) cover Z, HZ, HSZ, ragged instruments, a complex 1-dimensional example, and a 4-dimensional projector. Each instance independently checks the data and prints seven axiom reports for `checked`, its proof-bearing `presentation`, and five public consequences: all-word iff, finite-tree coordinates, equal leaf laws, normalization, and closed coordinate update. These fixtures were regenerated and actually rechecked against the v31.4 package; their 42 instance audit targets are separate from the 287 generic targets.
 
 The verifier regenerates and byte-compares all six sources, their complete manifests and the index. It then compiles the actual source bytes and checks the exact expected audit target set. Four post-generation corruptions must fail at the original true-check theorem; a companion containing the identical numeric definitions must also prove `check data = false`. Both compilation outcomes, source hashes, shared data-prefix hashes and actual axioms are recorded. Environment errors or failed reduction alone do not count as rejection evidence.
 
@@ -104,13 +106,55 @@ The Lean presentation permits redundant generators: spanning and sufficiency do 
 
 The target family count, the final integer anomaly equation and the final weak budget are not input fields of this bridge. Representation coefficients, the allowed matter template, validity of the declared matching window, and the physical interpretation of the anomaly and one-loop rules remain sector obligations. The Python module additionally sums six local 331 anomalies; this is distinct from the Lean module's selected cubic channel and weak budget. See the [spectrum review](../../physics/qm/audits/SPECTRUM_BRIDGE_v31.2.md).
 
+## Actual effects and stability contract
+
+`Effect ι` contains an actual matrix `E`, a proof that `E` is PSD, and a proof that `1 - E` is PSD. `Effect.probability` is the existing real trace pairing with an actual density matrix. Positivity follows through a PSD factorization and trace cyclicity, without assuming the noncommuting product `E * ρ` itself is PSD. Complement positivity then proves every Born probability lies in `[0, 1]`.
+
+`Instrument.pullbackEffects` proves that a complete Kraus instrument pulls a family of outcome-dependent effects back to an effect. `channelState` sums all outcomes and constructs the actual trace-one output density. `branchEffect` instead places an effect at one outcome and zero at the others; it does not treat a selected branch as trace preserving. `recordTest_matrix` identifies the resulting recursive effect with the existing finite-word effect, so every finite record is also an allowed effect test.
+
+`effectDistance` takes the real supremum of **all** effect probability differences:
+
+\[
+d_{\mathrm{eff}}(\rho,\sigma)
+=\sup_{0\preceq E\preceq I}|P_E(\rho)-P_E(\sigma)|.
+\]
+
+The supremum is proved nonempty and bounded. The module derives nonnegativity, the upper bound 1, symmetry, the triangle inequality and control of every common finite-word response. `effectDistance_eq_zero_iff` states equality of all effect probabilities; density-matrix separation, a `MetricSpace` instance and identification with trace or diamond norms are not proved here.
+
+For complete channels on the same finite carrier, `channelState_effectDistance_le` derives contraction from the actual Heisenberg pullback. The defect is also defined from actual outputs:
+
+\[
+\delta(F,G)=\sup\bigl(\{0\}\cup
+\{d_{\mathrm{eff}}(F(\tau),G(\tau)):\tau\text{ is a Density}\}\bigr).
+\]
+
+Inserting zero handles an empty density type. The proved perturbation inequality is
+
+\[
+d_{\mathrm{eff}}(\Phi(\rho),\Psi(\sigma))
+\le d_{\mathrm{eff}}(\rho,\sigma)+\delta(\Phi,\Psi).
+\]
+
+`channelTrajectory_transport_certificate` supplies this derived quantum recurrence to the existing Core transport bridge. `channelTrajectory_effectDistance_le_sum` gives initial error plus the sum of actual step defects, and `channelTrajectory_response_sub_le_sum` bounds every word in a **common subsequent instrument library**. The two channel sequences may have different outcome and Kraus types from each other; within each sequence those types are fixed while the matrices may vary with time.
+
+For the same instrument and selected outcome, `posterior_effectDistance_le` requires **both branch probabilities to be strictly positive** and proves
+
+\[
+d_{\mathrm{eff}}(\rho_{\mid o},\sigma_{\mid o})
+\le 2d_{\mathrm{eff}}(\rho,\sigma)/p_\rho(o).
+\]
+
+The lower-bound version additionally requires `0 < η` and `η ≤ pρ(o)` and replaces the denominator by `η`. `probability_pos_of_effectDistance_lt` proves the second branch remains positive when the input error is strictly smaller than the first event probability. Conditioning may amplify error; zero-probability posteriors remain undefined.
+
+This closes the **finite common-carrier complete-channel / positive-event slice of QMU-04**. `channelDefect` is a noncomputable supremum, not an implemented algorithm for a certified numerical upper bound. Outcome-forgetting channel defects do not automatically control different instruments' labeled or adaptive histories, and finite identity-ancilla positivity does not supply a stabilized norm comparison. Those extensions need explicit models and further proofs. See the [v31.4 report](../../physics/qm/UEOT_QM_KERNEL_v31.4.md) and [mathematical review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md).
+
 ## Direct Core reuse
 
 | Existing Core theorem | Actual QM consumer |
 |---|---|
 | `UEOT.V3.Compression.QuotientDescent.existsUnique_descend` | `UEOTQM.existsUnique_responseDecoder` |
 | `UEOT.V3.Compression.RecursiveSufficientState.existsUnique_reachableUpdate` | `UEOTQM.existsUnique_reachableResponseUpdate`, `UEOTQM.existsUnique_closedReachableUpdate` |
-| `UEOT.V3.Compression.TransportCertificate.weighted_chain_bound` | `UEOTQM.Transport.scalar_transport_certificate` |
+| `UEOT.V3.Compression.TransportCertificate.weighted_chain_bound` | `UEOTQM.Transport.scalar_transport_certificate`, then the actual quantum `UEOTQM.channelTrajectory_transport_certificate` |
 
 Quantum compatibility is proved from actual Kraus/posterior definitions and prefix-closed word responses. It is not supplied as a field assuming the desired update theorem. The closed update carries the posterior as a witness of membership in the same response range.
 
@@ -130,4 +174,4 @@ The [runtime manual](../../physics/qm/kernel/README.md) documents the export API
 
 The exporter additionally limits input literals to 4096 bits, padded scalar storage to 65536 entries and source size to 8 MiB. The separate representation checker retains its own contract. These bounds constrain evidence construction, not future finite-word length; no uniform compilation-time guarantee is asserted.
 
-The next quantum bridges are a concrete local metric/conditioning contract, CPTP Cesàro limits, and diagonal CP survival. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain separately tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).
+The next stability work is to certify usable numerical upper bounds for the actual channel defect and to extend the model explicitly to labeled histories, adaptive instruments or auxiliary systems as needed. Density separation and norm identification remain separate mathematical obligations. CPTP Cesàro limits and diagonal CP survival remain open bridges. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain separately tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).
