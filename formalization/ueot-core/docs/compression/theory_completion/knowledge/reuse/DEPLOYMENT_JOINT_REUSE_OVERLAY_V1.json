@@ -1,0 +1,1109 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "DEPLOYMENT_JOINT_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:9489908b8ce8a335f7eafa57405d938ecc8bbdd343e611656fb1cb7da5384275",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "a2a6aa5e5d9f5ddabf0c9119625bd171c260f5c0",
+  "base_snapshot_modules": 646,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/STATISTICAL_RISK_REUSE_OVERLAY_V1.json",
+    "sha256": "f0d0ea91584773c24eeed59f8f1915102b92c318bf864f3b08a4c7093552c755"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "d4fd837839742cd4c2ce7d529ef189e6bbf64436910693a7d82b439e5bc08fa4"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedDeploymentJoint.lean",
+      "content_sha256": "9b3345f5132f7f952e81cc2d37801269e3e22b0d130d455ebf22cc74fd83d941",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "content_sha256": "5869824d0b059abcdf7e211d330cc944d0e5448275732bfad60f5728d1819585",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "content_sha256": "19db0904c2d856c6efa3830555bb75572d670da607b97a8dcd6e4e120397288b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "content_sha256": "7ebce1bcbc1b6a73810ce0138721daf80494e0717caee4dd46fe4002ef103b2b",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_statistical_selected_joint_failure_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedDeploymentJoint.lean",
+      "line": 35,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_empirical_registered_microscopic_failure_risk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_source_calibration",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_fixed_policy_training_deployment_witness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedDeploymentJoint.lean",
+      "line": 116,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.good_sample_exists",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 25,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.PathError.pmfCommonMass_self"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 31,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal",
+        "UEOT.V3.PathError.pmfExtend_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_kernel",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 58,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.PathError.pmfCommonMass_extend_lower_bound",
+        "UEOT.V3.PathError.pmfCommonMass_self",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_map_extend_reference",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 83,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_extend_apply",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_extension_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 112,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_map_extend_reference",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_causalLaw_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 132,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_extension_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_kernel",
+        "UEOT.V3.TotalVariation.tvDist_self_eq_zero",
+        "UEOT.V3.TransportDefect.tvDist_triangle"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expectation_map",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 168,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_rowLaw_expectation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 208,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expectation_map",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_uncovered_indicator_expectation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 222,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.PathError.pmfMeasureReal_eq_sum_finset"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expected_error_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 239,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_uncovered_indicator_expectation"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_row_tv",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 269,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_last_project",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_extend_right"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_path_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 289,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_causalLaw_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_rowLaw_expectation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_row_tv"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 315,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expected_error_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_path_error",
+        "UEOT.V3.TotalVariation.tvDist_le_one"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 343,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_event_transfer",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_microscopic_event_le_envelope"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 382,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_finite_row_calibration_bad_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pmf_event_test_mean",
+        "UEOT.V3.FiniteAlphabetConcentration.tvDist_le_of_finset_event_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_source_calibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 445,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_empirical_registered_microscopic_failure_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "line": 476,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 64,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 70,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.pmf_tv_eq_half_sum_abs"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.certified_row_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 77,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 87,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_rowLaw_expectation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_uncovered_indicator_expectation"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_one_step_failure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 157,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_two_step_failure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 169,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restrictedActionLaw_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 187,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_uncovered_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restrictedActionLaw_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 200,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_uncovered_probability"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 210,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restrictedActionLaw_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 234,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.certified_row_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_two_step_failure",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_budget",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_ever_failure_envelope"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_mean_true_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 262,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 267,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_failure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 275,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_average_does_not_bound_deployment",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 295,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_one_step_failure",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_mean_true_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_failure"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 310,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.FiniteRecurrentDecompositionStability.pmf_tv_eq_half_sum_abs"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.zero_empirical_loss_with_failed_deployment",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "line": 317,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_failure"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 39,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finite_training_selection_measurable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 46,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedDeployment_measure_measurable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 52,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_training_marginal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 59,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_path_marginal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 72,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 94,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_integral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 109,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_data_dependent_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 119,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_good_bad_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 150,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_data_dependent_bound"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 169,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_good_bad_bound"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_selected_empirical_deployment_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 245,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_empirical_reference_certificate"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.training_bad_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 315,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.good_deployment_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 320,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.bad_deployment_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 326,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.selected_deployments_are_nonconstant",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 332,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.bad_deployment_probability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.good_deployment_probability"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 345,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.bad_deployment_probability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.good_deployment_probability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_mixture_is_attained",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 355,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.wrong_conditional_law_counterexample",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "line": 363,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_DEPLOYMENT_JOINT_OVERLAY_TYPES.lean",
+    "new_theorems": 54,
+    "registered_prior_theorems": 3938,
+    "cross_isDefEq_comparisons": 212652,
+    "internal_isDefEq_comparisons": 1431,
+    "definitionally_equal_matches": 0,
+    "protocol": "Meta.isDefEq on raw stored compiled types, with each comparison in fresh liftTermElabM; universe parameters retain their stored names",
+    "status": "PASS"
+  },
+  "proof_dependency_certification": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_DEPLOYMENT_JOINT_OVERLAY_TYPES.lean",
+    "measure": "Lean .thmInfo.value.getUsedConstants restricted to immutable base, five prior overlays and this overlay's public source theorem nodes",
+    "registered_direct_edges": 98,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_statistical_selected_joint_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_empirical_registered_microscopic_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_statistical_selected_joint_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_source_calibration"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_statistical_selected_joint_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_fixed_policy_training_deployment_witness",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.good_sample_exists"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_fixed_policy_training_deployment_witness",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_fixed_policy_training_deployment_witness",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal",
+        "target": "UEOT.V3.PathError.pmfCommonMass_self"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_kernel",
+        "target": "UEOT.V3.PathError.pmfCommonMass_extend_lower_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_kernel",
+        "target": "UEOT.V3.PathError.pmfCommonMass_self"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_kernel",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_map_extend_reference",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_extend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_map_extend_reference",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_extension_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_map_extend_reference"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_extension_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_causalLaw_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_extension_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_causalLaw_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_kernel"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_causalLaw_error",
+        "target": "UEOT.V3.TotalVariation.tvDist_self_eq_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_causalLaw_error",
+        "target": "UEOT.V3.TransportDefect.tvDist_triangle"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_rowLaw_expectation",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expectation_map"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_rowLaw_expectation",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_uncovered_indicator_expectation",
+        "target": "UEOT.V3.PathError.pmfMeasureReal_eq_sum_finset"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expected_error_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expected_error_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_uncovered_indicator_expectation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_row_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_tv_extend_same_initial"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_row_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_last_project"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_row_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_extend_right"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_path_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_projected_causalLaw_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_path_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_rowLaw_expectation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_path_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_row_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_expected_error_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_path_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error",
+        "target": "UEOT.V3.TotalVariation.tvDist_le_one"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_event_transfer"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_microscopic_event_le_envelope"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_finite_row_calibration_bad_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pmf_event_test_mean"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration",
+        "target": "UEOT.V3.FiniteAlphabetConcentration.tvDist_le_of_finset_event_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_source_calibration",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_empirical_registered_microscopic_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_empirical_registered_microscopic_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error",
+        "target": "UEOT.V3.FiniteRecurrentDecompositionStability.pmf_tv_eq_half_sum_abs"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.certified_row_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_rowLaw_expectation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_uncovered_indicator_expectation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restrictedActionLaw_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_uncovered_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restrictedActionLaw_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_uncovered_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_budget",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_uncovered_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restrictedActionLaw_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.certified_row_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_two_step_failure"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_budget"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_two_step_failure_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_ever_failure_envelope"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_mean_true_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_failure",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_average_does_not_bound_deployment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_one_step_failure"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_average_does_not_bound_deployment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_mean_true_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.training_average_does_not_bound_deployment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_failure"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss",
+        "target": "UEOT.V3.FiniteRecurrentDecompositionStability.pmf_tv_eq_half_sum_abs"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.zero_empirical_loss_with_failed_deployment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.zero_empirical_loss_with_failed_deployment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.zero_empirical_loss_with_failed_deployment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_deployment_failure"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_mass",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_integral",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_data_dependent_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_good_bad_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_data_dependent_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_good_bad_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_selected_empirical_deployment_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_selected_empirical_deployment_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_empirical_reference_certificate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.training_bad_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.training_bad_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.good_deployment_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.good_deployment_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.selected_deployments_are_nonconstant",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.selected_deployments_are_nonconstant",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.selected_deployments_are_nonconstant",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.bad_deployment_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.selected_deployments_are_nonconstant",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.good_deployment_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.bad_deployment_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.good_deployment_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_mixture_is_attained",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.sharp_joint_failure_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.wrong_conditional_law_counterexample",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.wrong_conditional_law_counterexample",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.transitionMass_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentWitness.wrong_conditional_law_counterexample",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_tower"
+      }
+    ],
+    "status": "PASS"
+  },
+  "native_axiom_census": {
+    "physical_source_modules": 4,
+    "theorem_constants": 93,
+    "private_theorem_constants": 12,
+    "confirmed_public_source_candidates": 54,
+    "other_native_public_constants": 27,
+    "scope": "Every theorem constant owned by the four compiled source modules, including private and generated theorem constants; other native public names are not assumed to be source declarations",
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "status": "PASS"
+  },
+  "scientific_role": "UNCOUNTED_REGISTERED_COVERAGE_AND_TRAINING_DEPLOYMENT_BRIDGES",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED",
+  "source_tree_sha256": "9489908b8ce8a335f7eafa57405d938ecc8bbdd343e611656fb1cb7da5384275",
+  "lexical_pr_preflight": {
+    "baseline_ref": "a2a6aa5e5d9f5ddabf0c9119625bd171c260f5c0",
+    "candidate_ref": null,
+    "candidate_scope": "Current frozen worktree bytes; an immutable Git-object PR preflight is separately required after commit.",
+    "base_lean_module_count": 646,
+    "candidate_lean_module_count": 650,
+    "base_public_lexical_theorem_count": 3939,
+    "candidate_public_lexical_theorem_count": 3993,
+    "new_public_source_theorem_count": 54,
+    "new_theorems_with_lexical_reuse_candidates": 13,
+    "candidate_source_tree_sha256": "9489908b8ce8a335f7eafa57405d938ecc8bbdd343e611656fb1cb7da5384275",
+    "registered_prior_public_source_theorem_count": 3938,
+    "candidate_registered_public_source_theorem_count": 3992,
+    "note": "Existing source parser and name-hint algorithm on actual immutable-base and frozen worktree bytes. Name hints and raw stored-type isDefEq are not a semantic typed-reuse review."
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/DEPLOYMENT_JOINT_NATIVE_V1.json",
+    "sha256": "04058c199ae439fbafb0a659ed78228b3c5e5ab2a4e2444efa6e60d1df588725",
+    "scope": "Actual fixed-verifier output for all 93 theorem constants owned by the four compiled physical source modules: displayed types, stored universe parameters, all direct proof constants, direct theorem constants, ownership and transitive axiom closure. The 54 public source candidates additionally carry registered direct proof edges."
+  },
+  "native_execution": {
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "observed_builds": [
+      {
+        "label": "four_modules",
+        "exit_code": 0,
+        "log": "four_modules.log",
+        "log_sha256": "5d9cda522de479543ee6b381d1f2222a1c2f3d446a15ce1c03557df64a7e35d8",
+        "elapsed_seconds": 22.749,
+        "command": [
+          "lake",
+          "build",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint"
+        ],
+        "observed_build_jobs": 8767
+      },
+      {
+        "label": "full_ueot",
+        "exit_code": 0,
+        "log": "full_ueot.log",
+        "log_sha256": "87761016ce311a0b0b3ff0b26d16e32dbc0df0ea8163a806122770eb0cd23bcf",
+        "elapsed_seconds": 12.928,
+        "command": [
+          "lake",
+          "build",
+          "UEOT"
+        ],
+        "observed_build_jobs": 9356
+      }
+    ],
+    "build_status_sha256": "10d74fa3110193d96a4d148506e8f6dfc806c3e1b459ebf6dfb5df0e03222a84",
+    "source_manifest_sha256": "2919716f5ab97829ef51913c347a5308e7302d770e3daf8046635a8defe7268c",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "48e310eb767413092a0e02fff53bc00b22c87808b4abc838be1ec2279c35b873",
+    "fixed_export_equals_initial_native_export": true,
+    "native_log_sha256": "9d77b53bfc938c34be0d45749499ee63be41d504ad24c0841e7ea32977930ce6",
+    "fixed_verifier_log_sha256": "9d77b53bfc938c34be0d45749499ee63be41d504ad24c0841e7ea32977930ce6",
+    "pipeline_status_sha256": "fba8527138377f9ae841e300852a9094bb1cdb483d1f31dddbd160414fa37c77",
+    "source_binding": "The actual successful build receipt binds the five-file source manifest. Source bytes and real logs were checked again after native execution and at finalization; both Lean-exported complete JSON objects match exactly."
+  }
+}

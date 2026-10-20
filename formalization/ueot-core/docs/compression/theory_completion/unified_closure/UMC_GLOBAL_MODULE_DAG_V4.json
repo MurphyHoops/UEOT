@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "0f8ab9e7ccbf15f7f42305ec8018841bfd7dd92691f412aab283f9eee4067ea3",
+  "source_tree_sha256": "9489908b8ce8a335f7eafa57405d938ecc8bbdd343e611656fb1cb7da5384275",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 646,
-  "total_source_lines": 114964,
-  "total_theorem_lemma_tokens": 4121,
+  "total_Lean_modules": 650,
+  "total_source_lines": 116337,
+  "total_theorem_lemma_tokens": 4183,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 47
+    "UMC_New_Bridges": 51
   },
-  "reachable_from_UEOT_root": 646,
+  "reachable_from_UEOT_root": 650,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -62,6 +62,10 @@
       "direct_dependents": 8
     },
     {
+      "module": "UEOT.V3.TransportDefect",
+      "direct_dependents": 8
+    },
+    {
       "module": "UEOT.Core.Finite",
       "direct_dependents": 7
     },
@@ -87,10 +91,6 @@
     },
     {
       "module": "UEOT.V3.InformationCore",
-      "direct_dependents": 7
-    },
-    {
-      "module": "UEOT.V3.TransportDefect",
       "direct_dependents": 7
     },
     {
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 47
+      "edges": 51
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -336,7 +336,7 @@
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 20
+      "edges": 21
     },
     {
       "from": "UMC_New_Bridges",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 10098,
-      "lines": 131,
+      "bytes": 10429,
+      "lines": 135,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3567,7 +3567,11 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5144,6 +5148,20 @@
       "theorem_lemma_count": 4,
       "decl_count": 4
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedDeploymentJoint.lean",
+      "bytes": 6327,
+      "lines": 132,
+      "category": "UMC_New_Bridges",
+      "title": "Calibrated selection and actual joint deployment risk",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness"
+      ],
+      "theorem_lemma_count": 2,
+      "decl_count": 2
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedRiskRows": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
       "bytes": 13289,
@@ -5228,6 +5246,33 @@
       ],
       "theorem_lemma_count": 1,
       "decl_count": 1
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+      "bytes": 24737,
+      "lines": 516,
+      "category": "UMC_New_Bridges",
+      "title": "Finite deployment coverage under the actual microscopic path law",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+        "UEOT.V3.TransportDefect",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk"
+      ],
+      "theorem_lemma_count": 19,
+      "decl_count": 21
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "bytes": 14311,
+      "lines": 329,
+      "category": "UMC_New_Bridges",
+      "title": "Finite witnesses for restricted sampling and deployment coverage",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage"
+      ],
+      "theorem_lemma_count": 22,
+      "decl_count": 37
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeterministicDiracPredictiveBridge": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeterministicDiracPredictiveBridge.lean",
@@ -5683,6 +5728,19 @@
       ],
       "theorem_lemma_count": 2,
       "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",
+      "bytes": 18641,
+      "lines": 392,
+      "category": "UMC_New_Bridges",
+      "title": "Finite training selection and its actual deployment joint law",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage"
+      ],
+      "theorem_lemma_count": 19,
+      "decl_count": 25
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoStageCommonProcessExample": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TwoStageCommonProcessExample.lean",

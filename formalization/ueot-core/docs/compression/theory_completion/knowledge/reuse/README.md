@@ -8,6 +8,11 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
+The current six-layer census is **650 modules = 639 UEOT-maintained + 11
+adapted upstream**, with **3,992 registered public theorem nodes** and
+**5,157 registered direct proof edges**. The layer-by-layer counts below
+retain each historical scope.
+
 ## Governed overlay chain
 
 The 2026-10-10 633-module audit remains immutable history.
@@ -237,9 +242,9 @@ row-sampling law and a four-state, non-stable coarse partition. With two
 steps and 4,096 samples per row, one good training event has probability at
 least `3/4`; on it the actual microscopic ever-failure risk is at most
 `143/256 < 1`, using the explicitly computed reference risk `31/256` and
-path budget `7/16`. This is a common constructive witness, not a general
-joint training-and-deployment probability theorem. Such a joint theorem
-needs an appropriate measurable conditional deployment law; physical access
+path budget `7/16`. This layer supplies a common constructive witness; Layer 6
+below constructs the associated finite training-and-deployment joint law.
+That construction requires the stated conditional deployment law; physical access
 to the row experiments and validation of failure labels remain separate
 empirical obligations. Finite path error bounds do not establish all-time
 safety. These additions remain uncounted; global scientific closure remains
@@ -252,12 +257,123 @@ grows from **3,866 to 3,939**; the registered native public graph grows from
 **3,865 to 3,938**. Hints remain lexical candidates. The immutable Git-object
 PR preflight is separately required after commit.
 
-The five-layer source census is **646 = 635 UEOT-maintained + 11 adapted
+The historical five-layer source census is **646 = 635 UEOT-maintained + 11 adapted
 upstream**, with **3,938** registered public source theorem nodes and
 **5,059** registered direct edges. The overlays account for **145** of those
 public nodes and **173** of those edges.
 The philosophy feedback and continuous Core rewrite document the precise
 theorem/conditional/empirical boundaries without promoting the counted ledger.
+
+### Layer 6 — registered deployment coverage and training/deployment joint risk
+
+`DEPLOYMENT_JOINT_REUSE_OVERLAY_V1.json` preserves the intact 646-module,
+3,938-registered-theorem base and adds four physical UnifiedClosure modules:
+`DeploymentCoverage`, `DeploymentCoverageWitness`, `TrainingDeploymentJoint`
+and `CalibratedDeploymentJoint`. The frozen Lean source fingerprint is
+`9489908b8ce8a335f7eafa57405d938ecc8bbdd343e611656fb1cb7da5384275`.
+The focused four-module build, full `UEOT` build, native exporter and
+independently executed fixed verifier all passed against those exact source
+bytes with Lean 4.33.1. These are local source-bound results; they do not
+assert that a later Git commit or remote CI run has passed.
+
+The native evidence confirms **54 public source candidates**, compares them
+with **3,938 prior registered types** in **212,652 cross-layer** and **1,431
+internal** raw-stored-type comparisons, and finds **0 matches**. Each
+comparison uses a fresh `liftTermElabM` state; stored universe parameter names
+are retained. This protocol does not establish general logical inequivalence
+or rule out reuse after instantiation. Source and compiled-type review of the
+13 new declarations with 26 lexical hints separately examines their actual
+hypotheses, outputs and existing proof routes.
+
+The fixed certificate independently checks **98 registered direct proof
+edges**. Its emitted full JSON matches the initial native export in every
+field. The overlay and fixed verifier have independent registered hashes;
+the native JSON is separately hash-bound inside the overlay:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `DEPLOYMENT_JOINT_REUSE_OVERLAY_V1.json` | `72fd346f3ab3adca4cb29de1f5c19cc6742555e3003fc32efa345eabbda850f2` |
+| `VERIFY_DEPLOYMENT_JOINT_OVERLAY_TYPES.lean` | `48e310eb767413092a0e02fff53bc00b22c87808b4abc838be1ec2279c35b873` |
+| `DEPLOYMENT_JOINT_NATIVE_V1.json` | `04058c199ae439fbafb0a659ed78228b3c5e5ab2a4e2444efa6e60d1df588725` |
+
+`DEPLOYMENT_JOINT_NATIVE_V1.json` independently records **93 compiler-owned
+theorem constants: 54 confirmed public source candidates, 12 private
+constants and 27 other nonprivate constants**. Every native record retains
+`name`, physical `source_module`, `is_private`, stored `level_parameters`,
+the full `ppExpr` `type` display, all `direct_constants`,
+`direct_theorem_constants` and transitive `axioms`. All 93 satisfy the same
+standard-axiom allowlist. The 27 other nonprivate constants are not silently
+classified as authored source declarations. The 98 public graph edges omit
+private helpers and unregistered targets, which remain visible in the full
+native records; a public node with zero registered edges can still use them.
+
+The actual registered proof routes include:
+
+- `coverage_registered_row_calibration` → the existing
+  `measure_finite_row_calibration_bad_le` →
+  `BoundedLossTwoSided.measure_exists_candidate_bad_le`;
+- `coverage_projected_causalLaw_error` →
+  `coverage_tv_extend_same_kernel` → the existing
+  `PathError.pmfCommonMass_extend_lower_bound`;
+- `coverage_same_policy_microscopic_failure_risk` → the new actual-occupancy
+  path bound and the existing `risk_event_transfer` and
+  `risk_microscopic_event_le_envelope`;
+- `statistical_selected_empirical_deployment_risk` → the existing
+  `statistical_empirical_reference_certificate` and the new joint risk bound;
+- `coverage_statistical_selected_joint_failure_risk` → registered source
+  calibration, empirical microscopic failure risk and the constructed joint
+  risk bound;
+- `statistical_fixed_policy_training_deployment_witness` → the existing
+  `StatisticalRiskWitness.good_sample_exists` and
+  `microscopic_two_step_risk_on_good`, then the joint risk bound.
+
+These routes use actual proof constants. Their typed contracts also preserve
+the fixed source `P`, the specified sampling experiment and one common
+microscopic failure event. The actual state/action occupancy `nu_n` is
+constructed from the actual finite prefix law and the same observable-history
+policy. With certified rows `C` and row budget `epsilon_n`, the path budget is
+`sum_n<T (epsilon_n + (1 - epsilon_n) * nu_n(C.compl))`. Registered rows and
+sampling tests are fixed before training. Calibration of their response
+distributions does not estimate the deployment mass of unregistered rows.
+The reference risk and occupancy terms remain checked model inputs.
+
+The joint law is constructed as `pmfExtend training (deployment ∘ select)`
+on training outcomes and deployed paths. The finite tower identity is proved
+from that construction. For conditional good-event risk at most `beta` in
+`[0,1]` and bad-training mass at most `alpha`, its risk is at most
+`min 1 (alpha + (1 - alpha) * beta)`. The data-dependent theorem retains
+the actual bad-training mass plus the training-probability-weighted budget
+on the good event. The statistical adapters use `Measure.toPMF_toMeasure`
+to preserve the same training measure. Training and finite path spaces are
+finite here; the candidate index family need not be finite. Choices may
+depend on training, but feasibility of their checks is an explicit premise.
+
+The constructive coverage witness has actual two-step failure probability
+`583/1024` and invokes the generic coverage bound `11/16`. Its boundary
+example has zero empirical loss with probability `7/8` while an uncovered
+deployment fails with probability one. A separate nonconstant selection
+witness gives positive training mass to two different deployment PMFs and
+attains the sharp mixture value `5/8`, with `alpha = 1/4`, `beta = 1/2`.
+For the earlier fixed-policy statistical witness, the deployment law does
+not vary with training: existence of a good sample gives the stronger joint
+bound `143/256`, without an additional bad-training penalty. The wrong-law
+counterexample makes the conditional-law premise necessary. The construction
+does not identify an arbitrary external conditional law from fixed-candidate
+marginals, prove access to the row experiments or establish all-time safety.
+
+The lexical preflight finds **54 new public names** and **13 groups of hints**;
+the cumulative overlay group count is **40**. Its corpus grows from **3,939
+to 3,993**, while the registered graph grows from **3,938 to 3,992**. The
+historical one-name difference remains: the lexical parser also sees
+`UEOT.V3.FreeInformationValue.integrable_finset_sup'`, outside the frozen
+registered base. This layer does not rewrite that historical registry. The
+immutable Git-object PR preflight remains a separate post-commit gate.
+
+The six-layer source census is **650 = 639 UEOT-maintained + 11 adapted
+upstream**, with **3,992** registered public source theorem nodes and
+**5,157** registered direct edges. The overlays account for **199** nodes
+and **271** edges. No counted Core/Compression tier is promoted, and global
+scientific closure remains `NOT_ESTABLISHED`.
 
 ## Run from repository root
 
@@ -275,16 +391,16 @@ theorem/conditional/empirical boundaries without promoting the counted ledger.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_DEPLOYMENT_JOINT_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  five governed overlays extend the live census to 646 = 635 + 11.
-- 3,793 immutable-base public source theorem proofs + 145 governed overlay theorem
-  proofs = 3,938 live graph nodes, with 5,059 direct registered-source theorem
+  six governed overlays extend the live census to 650 = 639 + 11.
+- 3,793 immutable-base public source theorem proofs + 199 governed overlay theorem
+  proofs = 3,992 live graph nodes, with 5,157 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
-  the fifth adds 91 certified direct edges.
+  the fifth adds 91 and the sixth adds 98 certified direct edges.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -299,9 +415,11 @@ the public imports with the pinned toolchain:
 - 68 cross-file source-code spans with at least 8 normalized nonblank
   lines (61 wholly nonvendored and 7 involving adapted upstream code);
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
-  a proof-equivalence decision procedure. The final 646-module recomputation
+  a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The historical clone snapshot is unchanged.
+  The current scanner recomputes all 650 modules and rejects any difference
+  from that immutable result; its actual command result establishes whether
+  the current-source scan passes. The historical snapshot alone does not.
 
 ## New exact Lean bridge despite non-identical closed types
 
@@ -332,7 +450,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 646-module live source census. It refuses to
+overlay-chain hashes against the exact 650-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

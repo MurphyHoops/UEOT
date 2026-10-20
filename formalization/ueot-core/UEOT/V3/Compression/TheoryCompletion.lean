@@ -120,6 +120,10 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibr
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint
 /-!
 # UEOT Theory Completion public root
 
