@@ -1,0 +1,39 @@
+UEOTQM/PurificationUniqueness.lean:193:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul (Matrix β α ℂ) (α → α → ℂ) ?m.47
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOTQM/PurificationUniqueness.lean:193:68: error: unsolved goals
+ι : Type u
+α : Type v
+β : Type w
+inst✝⁵ : Fintype ι
+inst✝⁴ : DecidableEq ι
+inst✝³ : Fintype α
+inst✝² : DecidableEq α
+inst✝¹ : Fintype β
+inst✝ : DecidableEq β
+J : Matrix β α ℂ
+hJ : Jᴴ * J = 1
+X : Operator (ι × α)
+i j : ι
+a b : β
+⊢ ∑ x, (∑ x_1, J a x_1 * X (i, x_1) (j, x)) * (starRingEnd ℂ) (J b x) = sorry ()
+UEOTQM/PurificationUniqueness.lean:209:48: error(lean.invalidField): Invalid field `trace`: The environment does not contain `Function.trace`, so it is not possible to project the field `trace` from an expression
+  fun c d => X (i, c) (j, d)
+of type `α → α → ℂ`
+UEOTQM/PurificationUniqueness.lean:208:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HMul (Matrix β α ℂ) (α → α → ℂ) ?m.107
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOTQM/PurificationUniqueness.lean:241:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.auxiliaryInl_isometry`:
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/PurificationUniqueness.lean:246:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.auxiliaryInr_isometry`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

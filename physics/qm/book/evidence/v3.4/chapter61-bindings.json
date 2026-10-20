@@ -1,0 +1,344 @@
+{
+  "schema": "ueot-qm-v31.8-chapter-bindings-1",
+  "chapter": 61,
+  "chapter_title": "完整纯性与有限纯化的酉等价",
+  "chapter_draft": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_chapter61.md",
+    "sha256": "58f693773cd61a152e8b810664a8280a0265dd84cb4d5dc31f676623d9b3f474"
+  },
+  "status": "FOCUSED_VERIFIED_AWAITING_ROOT_INTEGRATION",
+  "scientific_sources": [
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
+      "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8",
+      "counts": {
+        "theorem": 5,
+        "def": 0,
+        "abbrev": 0
+      }
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+      "sha256": "ff857b027598ac15cccc3c36b245e27290418fe6d4545f48984e10ebb9f8879f",
+      "counts": {
+        "theorem": 22,
+        "def": 5,
+        "abbrev": 0
+      }
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/PurificationUniquenessExamples.lean",
+      "sha256": "e5b4420e310d8250b88792d7efdd6f74b68975dc287a5128f9baedf3dadede3a",
+      "counts": {
+        "theorem": 28,
+        "def": 10,
+        "abbrev": 0
+      }
+    }
+  ],
+  "focused_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.8/B/focused-verification.json",
+    "bytes": 23005,
+    "sha256": "d23a043effcaf3edf47e1b6dbe107c18074383dead1282ef20caffd6867e996a"
+  },
+  "declaration_inventory": {
+    "path": "physics/qm/kernel/evidence/v31.8/B/declaration_inventory.json",
+    "bytes": 24230,
+    "sha256": "e5b90d4d964e1d585e3369e8b794604eb59fbbf35236c0e8e226bfb346a80480"
+  },
+  "numbered_result_count": 6,
+  "numbered_results": [
+    {
+      "id": "P-PUC-01",
+      "anchor": "p-puc-01",
+      "title": "完整有限复密度空间的纯性刻画",
+      "section": "61.3",
+      "assumptions": [
+        "iota is a finite complex matrix carrier; equality is decidable in the Lean matrix interface.",
+        "rho : Density iota carries actual PSD and complex trace-one proofs.",
+        "IsPure means extremality in the entire Density iota convex set, not in a selected subset."
+      ],
+      "quantifiers": "For every such iota and every rho : Density iota, both directions of the stated equivalence.",
+      "conclusion": "IsPure rho iff there exists v : iota -> Complex with trace(outer v)=1 and rho.matrix=outer v.",
+      "proof_outline": [
+        "PSD-derived Gram factor",
+        "sum of actual positive column outer products has total mass one",
+        "choose an actual positive-mass column",
+        "zero-remainder case via PSD zero mass iff zero matrix; positive-remainder case via full convex extremality",
+        "normalize selected column using positive square root",
+        "reuse existing vectorState_isPure for reverse implication"
+      ],
+      "main_declarations": [
+        "UEOTQM.QuantumPurification.IsPure.exists_vector",
+        "UEOTQM.QuantumPurification.isPure_iff_exists_vector"
+      ],
+      "support_declarations": [
+        "UEOTQM.QuantumPurification.outer_real_smul",
+        "UEOTQM.QuantumPurification.gram_eq_sum_outer",
+        "UEOTQM.QuantumPurification.IsPure.normalize_eq_of_positive_summand"
+      ],
+      "inherited_declarations": [
+        "UEOTQM.QuantumPurification.exists_gram",
+        "UEOTQM.QuantumPurification.vectorState_isPure"
+      ],
+      "witness_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.first_normalized",
+        "UEOTQM.PurificationUniquenessExamples.second_normalized",
+        "UEOTQM.PurificationUniquenessExamples.first_isPure",
+        "UEOTQM.PurificationUniquenessExamples.second_isPure",
+        "UEOTQM.PurificationUniquenessExamples.full_purity_converse_instantiated"
+      ],
+      "open_boundaries": [
+        "No claim of a supplied rank-one/rank assumption; it is derived.",
+        "No independently certified numerical Gram/square-root algorithm.",
+        "Empty iota has no Density input; no additional Nonempty premise.",
+        "Finite complex model does not establish Core-to-complex selection."
+      ]
+    },
+    {
+      "id": "P-PUN-01",
+      "anchor": "p-pun-01",
+      "title": "同辅助载体的完整纯化酉等价",
+      "section": "61.6",
+      "assumptions": [
+        "iota and alpha are finite complex carriers, with decidable equality.",
+        "Psi,Phi : Density (iota x alpha) are IsPure in the full joint Density type.",
+        "The actual RectangularChannel.discardRight iota alpha state outputs are equal."
+      ],
+      "quantifiers": "For every finite system and common finite auxiliary carrier, and every pair of full convex-pure joint densities with equal actual system marginal.",
+      "conclusion": "There exists U : Matrix alpha alpha Complex satisfying U^dagger U=I, U U^dagger=I and Phi.matrix=(I tensor U) Psi.matrix (I tensor U)^dagger. The unnormalized vector helper additionally fixes phi(i,a)=sum_b U(a,b) psi(i,b) exactly.",
+      "proof_outline": [
+        "Full purity converse supplies normalized vector representatives for arbitrary pure densities",
+        "Actual marginal equals row Gram",
+        "Transpose to F=A^T,G=B^T and column Gram equality",
+        "Kernel quotient defines a support isometry Fx -> Gx",
+        "Finite same-space isometry extension gives a surjective unitary matrix",
+        "Recover U A^T=B^T and exact auxiliary vector action",
+        "Outer-product congruence yields the actual joint density relation"
+      ],
+      "main_declarations": [
+        "UEOTQM.QuantumPurification.pure_states_unitarily_equivalent"
+      ],
+      "support_declarations": [
+        "UEOTQM.QuantumPurification.inner_matrix_image",
+        "UEOTQM.QuantumPurification.norm_matrix_image_eq_of_gram",
+        "UEOTQM.QuantumPurification.exists_unitary_of_column_gram",
+        "UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_gram",
+        "UEOTQM.QuantumPurification.auxiliary_action_apply",
+        "UEOTQM.QuantumPurification.auxiliary_action_vectorize",
+        "UEOTQM.QuantumPurification.outer_mulVec",
+        "UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_equal_marginal"
+      ],
+      "inherited_declarations": [
+        "UEOTQM.QuantumPurification.discard_vectorize_outer"
+      ],
+      "witness_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_adjoint_mul",
+        "UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_mul_adjoint",
+        "UEOTQM.PurificationUniquenessExamples.first_gram",
+        "UEOTQM.PurificationUniquenessExamples.second_gram",
+        "UEOTQM.PurificationUniquenessExamples.same_actual_marginal",
+        "UEOTQM.PurificationUniquenessExamples.exact_auxiliary_vector_action",
+        "UEOTQM.PurificationUniquenessExamples.joint_vectors_differ",
+        "UEOTQM.PurificationUniquenessExamples.joint_densities_differ",
+        "UEOTQM.PurificationUniquenessExamples.general_uniqueness_instantiated"
+      ],
+      "open_boundaries": [
+        "The two original auxiliary carriers are the same type in this theorem.",
+        "U itself is not claimed unique; unused support complements and vector phase can vary.",
+        "No full-rank or pre-supplied unitary hypothesis.",
+        "No infinite-dimensional isometric-extension claim."
+      ]
+    },
+    {
+      "id": "P-AUX-01",
+      "anchor": "p-aux-01",
+      "title": "辅助等距嵌入的实际通道、边际和纯性",
+      "section": "61.7",
+      "assumptions": [
+        "iota,alpha,beta are finite complex carriers with the decidable equality instances required by the actual matrix/channel interface.",
+        "J : Matrix beta alpha Complex satisfies J^dagger J=I_alpha.",
+        "No JJ^dagger=I_beta hypothesis is used."
+      ],
+      "quantifiers": "Every actual rectangular auxiliary isometry J; marginal identity for every complex input matrix X : Operator (iota x alpha); purity preservation for every full convex-pure density Psi.",
+      "conclusion": "The actual one-Kraus RectangularChannel with Kraus I tensor J is CPTP, leaves the system discardRight marginal invariant on all complex matrices and preserves full convex purity on the enlarged density space.",
+      "proof_outline": [
+        "Tensor Kraus completeness from J^dagger J=I",
+        "Actual system-indexed block formula J X^{ij} J^dagger",
+        "Trace cycling gives tr(J X^{ij} J^dagger)=tr(X^{ij})",
+        "Full purity converse and outer_mulVec give normalized vector output; inherited trace preservation supplies normalization"
+      ],
+      "main_declarations": [
+        "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel",
+        "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_operator",
+        "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_state",
+        "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_preserves_purity"
+      ],
+      "support_declarations": [
+        "UEOTQM.QuantumPurification.auxiliary_tensor_isometry",
+        "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator",
+        "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator_apply",
+        "UEOTQM.QuantumPurification.outer_mulVec"
+      ],
+      "inherited_declarations": [
+        "UEOTQM.RectangularChannel"
+      ],
+      "witness_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.strict_embedding_isometry",
+        "UEOTQM.PurificationUniquenessExamples.largerState",
+        "UEOTQM.PurificationUniquenessExamples.larger_isPure",
+        "UEOTQM.PurificationUniquenessExamples.larger_same_actual_marginal"
+      ],
+      "open_boundaries": [
+        "Rectangular isometry is not a two-sided unitary when auxiliary dimensions differ.",
+        "Completely positive amplification is inherited through the actual RectangularChannel API; no new physical principle is inserted.",
+        "No new numerical implementation certification is claimed."
+      ]
+    },
+    {
+      "id": "P-PUN-02",
+      "anchor": "p-pun-02",
+      "title": "不同有限辅助载体的共同扩展酉等价",
+      "section": "61.8",
+      "assumptions": [
+        "iota,alpha,beta finite complex carriers, with decidable equality.",
+        "Psi : Density (iota x alpha) and Phi : Density (iota x beta) are each full convex-pure.",
+        "Their actual system discardRight marginal densities agree."
+      ],
+      "quantifiers": "All such systems and finite auxiliary carriers alpha,beta without a dimension-order or equal-cardinality assumption; all such pure densities.",
+      "conclusion": "Canonical actual left/right auxiliary isometries embed both densities into iota x (alpha Sum beta); both retain purity and marginal; there exists U on alpha Sum beta with both unitary identities that relates the embedded joint densities by I tensor U conjugation.",
+      "proof_outline": [
+        "Canonical fromRows embeddings J_alpha=[I;0],J_beta=[0;I]",
+        "Separate isometry proofs with correctly typed source identities",
+        "Actual CPTP extensions and separate purity/marginal proofs",
+        "Apply same-carrier complete purity uniqueness only after common extension"
+      ],
+      "main_declarations": [
+        "UEOTQM.QuantumPurification.pure_states_common_extension_unitary"
+      ],
+      "support_declarations": [
+        "UEOTQM.QuantumPurification.auxiliaryInl",
+        "UEOTQM.QuantumPurification.auxiliaryInr",
+        "UEOTQM.QuantumPurification.auxiliaryInl_isometry",
+        "UEOTQM.QuantumPurification.auxiliaryInr_isometry",
+        "UEOTQM.QuantumPurification.extendAuxiliaryLeft",
+        "UEOTQM.QuantumPurification.extendAuxiliaryRight",
+        "UEOTQM.QuantumPurification.extendAuxiliaryLeft_pure",
+        "UEOTQM.QuantumPurification.extendAuxiliaryRight_pure",
+        "UEOTQM.QuantumPurification.extendAuxiliaryLeft_marginal",
+        "UEOTQM.QuantumPurification.extendAuxiliaryRight_marginal"
+      ],
+      "inherited_declarations": [],
+      "witness_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.auxiliary_dimensions_differ",
+        "UEOTQM.PurificationUniquenessExamples.largerState",
+        "UEOTQM.PurificationUniquenessExamples.larger_isPure",
+        "UEOTQM.PurificationUniquenessExamples.larger_same_actual_marginal",
+        "UEOTQM.PurificationUniquenessExamples.different_auxiliary_common_unitary"
+      ],
+      "open_boundaries": [
+        "The common dimension is |alpha|+|beta|, not asserted minimal.",
+        "No rectangular two-sided unitary between the original spaces.",
+        "No direct whole-space isometry in an unspecified dimension direction.",
+        "A reconstruction principle with a prescribed padding convention requires a further explicit interface theorem."
+      ]
+    },
+    {
+      "id": "N-PUN-01",
+      "anchor": "n-pun-01",
+      "title": "伴随、转置和逐项共轭不能替代实际辅助作用",
+      "section": "61.10",
+      "assumptions": [
+        "Fixed rational complex U=[[3/5,4i/5],[4/5,-3i/5]].",
+        "Fixed psi1=3/5|00>+4/5|11> and psi2=9/25|00>+12/25|01>+16i/25|10>-12i/25|11>.",
+        "The action is exactly (I tensor T)psi1, with the second tensor index as auxiliary."
+      ],
+      "quantifiers": "Three separate exact concrete inequalities, one each for T=U^dagger,U^T,conj(U).",
+      "conclusion": "Each wrong-direction transformed joint outer-product density differs from outer psi2. Entries are respectively 108i/625 vs108/625, -108i/625 vs108/625 and144i/625 vs-144i/625.",
+      "proof_outline": [
+        "Kernel-checked exact rational complex arithmetic on selected joint entries",
+        "Take the imaginary part of a putative matrix equality to contradict the concrete entry values"
+      ],
+      "main_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.wrong_adjoint_joint_density",
+        "UEOTQM.PurificationUniquenessExamples.wrong_transpose_joint_density",
+        "UEOTQM.PurificationUniquenessExamples.wrong_conjugate_joint_density"
+      ],
+      "support_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.transformed",
+        "UEOTQM.PurificationUniquenessExamples.correct_0001_entry",
+        "UEOTQM.PurificationUniquenessExamples.wrong_adjoint_0001_entry",
+        "UEOTQM.PurificationUniquenessExamples.wrong_transpose_0001_entry",
+        "UEOTQM.PurificationUniquenessExamples.correct_0010_entry",
+        "UEOTQM.PurificationUniquenessExamples.wrong_conjugate_0010_entry"
+      ],
+      "inherited_declarations": [],
+      "witness_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary",
+        "UEOTQM.PurificationUniquenessExamples.firstVector",
+        "UEOTQM.PurificationUniquenessExamples.secondVector",
+        "UEOTQM.PurificationUniquenessExamples.exact_auxiliary_vector_action",
+        "UEOTQM.PurificationUniquenessExamples.wrong_adjoint_joint_density",
+        "UEOTQM.PurificationUniquenessExamples.wrong_transpose_joint_density",
+        "UEOTQM.PurificationUniquenessExamples.wrong_conjugate_joint_density"
+      ],
+      "open_boundaries": [
+        "These are joint-density inequalities, not claims that their system marginals differ.",
+        "A vector-only difference could be hidden by global phase; the accepted controls compare joint outer products.",
+        "Formal exact witnesses are not real experimental confirmation."
+      ]
+    },
+    {
+      "id": "N-AUX-01",
+      "anchor": "n-aux-01",
+      "title": "严格辅助扩维是等距嵌入，不是双侧酉等价",
+      "section": "61.11",
+      "assumptions": [
+        "Fixed canonical auxiliaryInl from Fin 2 to Fin 2 Sum Unit.",
+        "Actual source/output auxiliary dimensions are 2 and 3."
+      ],
+      "quantifiers": "One explicit rectangular embedding and its separate equality/inequality witnesses.",
+      "conclusion": "J^dagger J=I_2, but JJ^dagger != I_3; at the extra Sum.inr Unit coordinate the latter product has diagonal zero while I_3 has one.",
+      "proof_outline": [
+        "Invoke the proved generic canonical inclusion isometry",
+        "Compute the extra output diagonal under multiplication and derive 0!=1",
+        "Instantiate actual larger pure density and its unchanged system marginal; the separate common-extension witness uses a five-dimensional auxiliary sum"
+      ],
+      "main_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.strict_embedding_isometry",
+        "UEOTQM.PurificationUniquenessExamples.strict_embedding_not_coisometry"
+      ],
+      "support_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.auxiliary_dimensions_differ",
+        "UEOTQM.QuantumPurification.auxiliaryInl_isometry"
+      ],
+      "inherited_declarations": [],
+      "witness_declarations": [
+        "UEOTQM.PurificationUniquenessExamples.strict_embedding_isometry",
+        "UEOTQM.PurificationUniquenessExamples.strict_embedding_not_coisometry",
+        "UEOTQM.PurificationUniquenessExamples.auxiliary_dimensions_differ",
+        "UEOTQM.PurificationUniquenessExamples.largerState",
+        "UEOTQM.PurificationUniquenessExamples.larger_isPure",
+        "UEOTQM.PurificationUniquenessExamples.larger_same_actual_marginal",
+        "UEOTQM.PurificationUniquenessExamples.different_auxiliary_common_unitary"
+      ],
+      "open_boundaries": [
+        "The concrete common five-dimensional unitary is supplied by the proved general existence construction, not an independently listed numerical 5x5 matrix.",
+        "This does not negate isometric embeddings; it distinguishes them from two-sided unitary equivalence."
+      ]
+    }
+  ],
+  "global_scope": [
+    "Finite complex density model; full state/effect meanings inherited from the explicit operation model.",
+    "No changes to frozen 106 Core items or four generators.",
+    "Core-to-complex-theory selection, physical adequacy and infinite-dimensional extensions remain open.",
+    "No new real experiment; all controls are formal exact examples.",
+    "The three-generation result retains its inherited spectral/representation/threshold/effective-window premises."
+  ],
+  "integration_notes": [
+    "Root owns the canonical monograph, chapter dossier, claim ledger and unified/remote state.",
+    "This bindings file uses exactly the six new numbered identifiers in qm318_chapter61.md.",
+    "The 70 exact declaration audits are not 70 numbered scientific results.",
+    "Local focused verification is not promoted here to full-package or remote CI success."
+  ]
+}

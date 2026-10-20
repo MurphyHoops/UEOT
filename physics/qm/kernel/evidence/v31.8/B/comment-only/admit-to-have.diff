@@ -1,0 +1,11 @@
+--- a/formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean
++++ b/formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean
+@@ -276,7 +276,7 @@
+       (RectangularChannel.discardRight ι β).state Φ :=
+   auxiliaryEmbeddingChannel_discard_state auxiliaryInr auxiliaryInr_isometry Φ
+ 
+-/-- Different finite auxiliary carriers admit actual isometric extensions into
++/-- Different finite auxiliary carriers have actual isometric extensions into
+ their sum, followed by a unitary on that common carrier. This does not claim a
+ rectangular unitary or a direct isometry in an unspecified dimension direction. -/
+ theorem pure_states_common_extension_unitary (Ψ : Density (ι × α)) (Φ : Density (ι × β))

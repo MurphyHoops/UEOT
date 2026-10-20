@@ -1,0 +1,57 @@
+{
+  "schema": "ueot_qm.v31_8.C.post_unified_artifact_readback.v1",
+  "status": "SOURCE_AND_CURRENT_UNIFIED_ARTIFACTS_CLEAR",
+  "recorded_at_utc": "2026-10-20T11:21:18.182890+00:00",
+  "historical_focused_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.8/C/verification.json",
+    "sha256": "b5597fd585efc9066a624d98017e245a18d421cf07460836f5c71ff9ba1a5198",
+    "preserved_original_bytes": true,
+    "historical_pending_field_resolution": "This separate readback resolves the pending current-artifact snapshot without rewriting the historical focused receipt."
+  },
+  "unified_verification": {
+    "path": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
+    "sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8",
+    "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+    "actual_build_jobs": 8799
+  },
+  "unified_artifact_binding": {
+    "path": "physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json",
+    "sha256": "cf827d66c32260d231a3acc790c1ba65c8d9da89adb9f5b9b44cc021e21f58ec",
+    "source_olean_pairs": 92
+  },
+  "public_modules": [
+    {
+      "module": "UEOTQM.HistoryChannels",
+      "source_sha256": "04864b526fabe51d60efd776355fa33086781f30e6956698732edacf78571b5c",
+      "focused_olean_sha256": "4d4557301b2bc411dd962a17d18a118114c2b0c9faa2cf02750b7c7e062d5617",
+      "unified_olean_sha256": "c664892e758cb03f982cad0e3516b6e67951426c97de0ca7c9865a887ac49da6",
+      "unified_olean_bytes": 734496,
+      "artifact_path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/HistoryChannels.olean",
+      "current_readback_matches_actual_unified_binding": true
+    },
+    {
+      "module": "UEOTQM.ActionRecordBudget",
+      "source_sha256": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a",
+      "focused_olean_sha256": "d972bab028f2da45c8256d38d03af98e139de3d223172595bf56de38d2887d6a",
+      "unified_olean_sha256": "e72cf6e84246ed64f8ba807b32c1d4d6a208f3c9810f18467c687cd9df9ded52",
+      "unified_olean_bytes": 1058392,
+      "artifact_path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/ActionRecordBudget.olean",
+      "current_readback_matches_actual_unified_binding": true
+    }
+  ],
+  "concrete_witness": {
+    "source_sha256": "169eca4505e33561d7c364267ae206c0674a36e9fe61393368b4b4d43c9d039e",
+    "focused_olean_sha256": "f2cd0ec0823382e24f6b615f6276e4599345896d632fac4c2eeaf56acee9d7b8",
+    "unified_execution_exit_code": 0,
+    "unified_exact_named_audits": 52,
+    "unified_log_sha256": "acb80a70fdbc19fcdd18618dd674289bb4b00df3462d83c13b3da26be2e80102",
+    "artifact_scope": "The unified witness runner directly invoked Lean without -o; no newly emitted witness olean is claimed. The existing witness olean identity remains the original focused artifact."
+  },
+  "additional_compiler_invocations": 0,
+  "remote_identity_claimed": false,
+  "independent_unified_evidence_review": {
+    "path": "handoff/C_ci_v318_unified_evidence_review.json",
+    "sha256": "5f4cca212c4117270f7c718e7262a458a917bfe95d3c6c3869e6b651659d11ba"
+  },
+  "scope": "Readback of actual completed local unified artifacts. Original focused artifact hashes and the unified raw source identity are retained independently; subsequent publication documentation correction is a separate receipt."
+}

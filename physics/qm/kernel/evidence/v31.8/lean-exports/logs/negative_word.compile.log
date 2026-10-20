@@ -1,0 +1,40 @@
+/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/lean-exports/negative/negative_word.lean:46:59: error: Tactic `decide` failed for proposition
+  ExactCertificate.check data = true
+because its `Decidable` instance
+  instDecidableEqBool (ExactCertificate.check data) true
+did not reduce to `isTrue` or `isFalse`.
+
+Reduction got stuck at the `Decidable` instance
+  match ExactCertificate.check data, true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+'UEOTQM.Generated.Certificate_6d0317ee7bb3888dc9b92431e5263f4f62802a6237dedeb2831a2a57201061f8.checked' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.Generated.Certificate_6d0317ee7bb3888dc9b92431e5263f4f62802a6237dedeb2831a2a57201061f8.presentation' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.Generated.Certificate_6d0317ee7bb3888dc9b92431e5263f4f62802a6237dedeb2831a2a57201061f8.all_word_response_iff' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.Generated.Certificate_6d0317ee7bb3888dc9b92431e5263f4f62802a6237dedeb2831a2a57201061f8.finite_tree_coordinates' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.Generated.Certificate_6d0317ee7bb3888dc9b92431e5263f4f62802a6237dedeb2831a2a57201061f8.all_finite_tree_laws' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.Generated.Certificate_6d0317ee7bb3888dc9b92431e5263f4f62802a6237dedeb2831a2a57201061f8.complete_tree_normalization' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.Generated.Certificate_6d0317ee7bb3888dc9b92431e5263f4f62802a6237dedeb2831a2a57201061f8.closed_coordinate_update' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

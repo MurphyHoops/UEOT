@@ -1,0 +1,108 @@
+UEOTQM/ActionRecordBudget.lean:45:4: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOTQM/ActionRecordBudget.lean:56:4: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOTQM/ActionRecordBudget.lean:195:12: warning: This simp argument is unused:
+  hlast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hfull]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ActionRecordBudget.lean:216:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.ActionRecordBudget.recordOperator_append`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/ActionRecordBudget.lean:254:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (C.protocol.Leaf × ι)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOTQM/ActionRecordBudget.lean:266:78: error: unsolved goals
+A : Type u_1
+O : Type u_2
+ι : Type u_3
+κ : Type u_4
+inst✝⁴ : Fintype O
+inst✝³ : DecidableEq O
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq ι
+inst✝ : Fintype κ
+N : ℕ
+I : A → Instrument ι O κ
+C : Controller A O N
+ρ : Density ι
+i j : ι
+⊢ ∑ i_1, recordOperator I (C.word (C.leafEquiv i_1)) ρ.matrix i j =
+    ∑ x, recordOperator I (C.word (C.leafEquiv x)) ρ.matrix i j
+UEOTQM/ActionRecordBudget.lean:276:70: error: unsolved goals
+A : Type u_1
+O : Type u_2
+ι : Type u_3
+κ : Type u_4
+inst✝⁴ : Fintype O
+inst✝³ : DecidableEq O
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq ι
+inst✝ : Fintype κ
+N : ℕ
+I : A → Instrument ι O κ
+C : Controller A O N
+ρ : Density ι
+h : History O N
+⊢ mass
+      (submatrix (ClassicalQuantumMemory.block fun h => recordOperator I (C.word h) ρ.matrix) (fun i => (h, i)) fun i =>
+        (h, i)) =
+    mass (recordOperator I (C.word h) ρ.matrix)
+UEOTQM/ActionRecordBudget.lean:278:4: warning: This simp argument is unused:
+  ClassicalQuantumMemory.block
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [HistoryChannels.weight, HistoryChannels.principal, run_matrix, response]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ActionRecordBudget.lean:336:45: error: Type mismatch
+  add_le_add_right (ih C.dropLast) ?m.214
+has type
+  ?m.214 + effectDistance (run I C.dropLast ρ) (run J C.dropLast σ) ≤
+    ?m.214 + (effectDistance ρ σ + ∑ t, actionCost I J C.dropLast σ t)
+but is expected to have type
+  effectDistance (run I C.dropLast ρ) (run J C.dropLast σ) + actionCost I J C σ (Fin.last n) ≤
+    effectDistance ρ σ + ∑ t, actionCost I J C.dropLast σ t + actionCost I J C σ (Fin.last n)
+UEOTQM/ActionRecordBudget.lean:359:4: error: Application type mismatch: The argument
+  add_le_add_left (Finset.sum_le_sum fun t x => actionCost_le I J C σ t (ε t) (hε t)) ?m.108
+has type
+  ∑ i ∈ ?m.92, actionCost I J C σ i + ?m.108 ≤ ∑ i ∈ ?m.92, ε i + ?m.108
+but is expected to have type
+  effectDistance ρ σ + ∑ t, actionCost I J C σ t ≤ effectDistance ρ σ + ∑ t, ε t
+in the application
+  LE.le.trans (run_distance_le_actionCost_sum I J C ρ σ)
+    (add_le_add_left (Finset.sum_le_sum fun t x => actionCost_le I J C σ t (ε t) (hε t)) ?m.108)
+UEOTQM/ActionRecordBudget.lean:383:96: error: unsolved goals
+A : Type u_1
+O : Type u_2
+ι : Type u_3
+κ : Type u_4
+η : Type u_5
+inst✝⁵ : Fintype O
+inst✝⁴ : DecidableEq O
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype κ
+inst✝ : Fintype η
+N : ℕ
+I : A → Instrument ι O κ
+J : A → Instrument ι O η
+C : Controller A O N
+ρ σ : Density ι
+⊢ 1 / 2 * ∑ b, |Adaptive.leafProbability I C.protocol ρ b - Adaptive.leafProbability J C.protocol σ b| =
+    1 / 2 * ∑ x, |Adaptive.leafProbability I C.protocol ρ x - Adaptive.leafProbability J C.protocol σ x|

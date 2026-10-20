@@ -1,0 +1,76 @@
+{
+  "schema": "ueot_qm.active_research.v31.8",
+  "version": "31.8",
+  "state": "IMPLEMENTING_NOT_ACCEPTED",
+  "started_at_utc": "2026-10-20T10:20:23.340933+00:00",
+  "contract": "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+  "accepted_baseline": {
+    "schema": "ueot_qm.remote_closure.v31.7",
+    "status": "MAIN_VERIFIED_METADATA_PUBLISHED",
+    "source_pr": 347,
+    "source_commit": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+    "source_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "pr_run": 39402444333,
+    "tested_main_commit": "87091d1ad4592c4467fa3acc3ac75d67c0edac54",
+    "main_run": 39404249860,
+    "metadata_pr": 348,
+    "metadata_commit": "032e763ab87e64488e1ff2c96aadd32b5c533a82",
+    "current_main_commit": "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
+    "current_main_tree": "c527f8481878d1e0b839e93695c0d4ee5edf09f4",
+    "metadata_payload_files_verified": 60,
+    "accepted_sources_preserved": 80,
+    "core_imports_preserved": 56,
+    "canonical_book_files_preserved": 3,
+    "historical_evidence_files_preserved": 756,
+    "metadata_commit_is_not_scientific_ci_tested_commit": true,
+    "actual_remote_CURRENT": "MAIN_VERIFIED",
+    "actual_remote_book_status": "MAIN_VERIFIED",
+    "artifact_zip_contents_verified": false,
+    "new_local_scientific_execution_for_metadata": false
+  },
+  "working_branch": "qm/v31.8-separation-purity-action-budgets-20261020",
+  "file_ownership": "physics/qm/kernel/evidence/v31.8/preparation/qm318_execution_map.json",
+  "lanes": {
+    "A": {
+      "modules": [
+        "QuantumSeparation",
+        "ComplexLocalTomography"
+      ],
+      "witness": "QuantumSeparationExamples",
+      "state": "IMPLEMENTING_NOT_ACCEPTED"
+    },
+    "B": {
+      "modules": [
+        "PureStateCharacterization",
+        "PurificationUniqueness"
+      ],
+      "witness": "PurificationUniquenessExamples",
+      "state": "IMPLEMENTING_NOT_ACCEPTED"
+    },
+    "C": {
+      "modules": [
+        "HistoryChannels",
+        "ActionRecordBudget"
+      ],
+      "witness": "ActionRecordBudgetExamples",
+      "state": "IMPLEMENTING_NOT_ACCEPTED"
+    }
+  },
+  "verification_policy": "Focused compilation of new sources under one shared Lean lock; source-bound unified acceptance only after all new inputs stabilize. Inherited v31.7 acceptance is preserved, not relabelled as new execution.",
+  "counting_policy": "No v31.8 result enters accepted totals until its actual proof and audit are complete; active drafts are not accepted scientific claims.",
+  "shared_lean_lock": "/tmp/qm317-lean.lock",
+  "canonical_book": "physics/qm/book/UEOT_PHYSICS.md",
+  "book_policy": "Integrate completed results with all premises, proofs, counterexamples and open responsibilities into the continuous formal monograph; derive and visually inspect the corresponding PDF.",
+  "protected_scope": [
+    "frozen Core 106 items and four generators",
+    "other research branches and directories",
+    "all historical scientific/acceptance evidence"
+  ],
+  "nonclaims": [
+    "complete natural theory established",
+    "unconditional physical three generations",
+    "new experimental confirmation",
+    "arbitrary coherent controllers or unmodelled environment",
+    "ill-typed unitary between different auxiliary dimensions"
+  ]
+}

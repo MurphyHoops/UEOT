@@ -1,0 +1,56 @@
+{
+  "schema": "ueot-qm-v31.8-witness-review-1",
+  "reviewer": "B",
+  "status": "CLEAR",
+  "scope": "Read-only review of concrete C source and independent parsing of its reported-PASS log; no compiler invoked by B.",
+  "source": {
+    "path": "formalization/ueot-qm/scripts/witnesses/ActionRecordBudgetExamples.lean",
+    "sha256": "169eca4505e33561d7c364267ae206c0674a36e9fe61393368b4b4d43c9d039e"
+  },
+  "log": {
+    "path": "physics/qm/kernel/evidence/v31.8/C/ActionRecordBudgetExamples-compile-006.log",
+    "sha256": "0af318c66c848d2f2769424a8da82cce6141fe2ddaae92bae147a341c01302f5"
+  },
+  "counts": {
+    "theorem": 36,
+    "def": 14,
+    "abbrev": 2
+  },
+  "exact_named_audits": 52,
+  "source_print_log_order_identical": true,
+  "all_axioms_allowed": true,
+  "ordinary_linter_warnings_present": true,
+  "checks": [
+    {
+      "topic": "Exact instrument and genuine supremum",
+      "status": "CLEAR",
+      "reason": "certain and biased are actual complete Fin4 Kraus families on a qubit. The biased channel uses three 1/2 identity amplitudes under label0 and one under label1. The all-input, all-legal-effect upper bound is paired with an actual legal event effect lower bound; biased_record_defect_exact concerns the genuine supremum, not only rhoZero."
+    },
+    {
+      "topic": "Per-action nontrivial tight bound",
+      "status": "CLEAR",
+      "reason": "First action defect/actionCost is 1/4, second is 0 under the same feedback. Generic action-cost theorem supplies the two-step upper bound; the actual zeroHistory event supplies the lower bound, so TV=1/4 for every input density. Original Protocol weights are connected explicitly."
+    },
+    {
+      "topic": "Deletion of labels and second feedback output",
+      "status": "CLEAR",
+      "reason": "For every Option Label action and every complex matrix X, exactActions/flippedActions have identical unlabelled channels; the resulting unlabelled state defect is zero. Full retained records have TV=1. The actual second-zero event has probabilities1 and0, and the old Protocol retains the same TV."
+    },
+    {
+      "topic": "Quantum-memory scope",
+      "status": "CLEAR",
+      "reason": "Both negative-control terminal quantum states are individually proved equal to the same rho, then to one another. The positive-control terminal states also return rho. Thus record distinction is not described as a terminal quantum-state difference."
+    },
+    {
+      "topic": "Foundations and coverage",
+      "status": "CLEAR",
+      "reason": "Every explicit theorem/def/abbrev appears exactly once in source order in #print axioms and in the actual log. All outputs use only the allowed bases or no axioms. Linter warnings remain ordinary warnings."
+    }
+  ],
+  "blocking_findings": [],
+  "limits": [
+    "No real empirical experiment; exact rational matrix witnesses only.",
+    "Fixed two-step shared causal feedback example; no general coherent controller or arbitrary stopping horizon claim.",
+    "This independent review is not a substitute for root unified acceptance or remote CI."
+  ]
+}

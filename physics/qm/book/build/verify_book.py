@@ -61,8 +61,8 @@ def inspect_book(source):
     if set(targets)-set(anchors):
         raise ValueError('Unresolved internal targets: '+str(set(targets)-set(anchors)))
     chapters = [int(n) for n in re.findall(r'^# (\d+)\.', source, re.M)]
-    if chapters != list(range(60)):
-        raise ValueError('Expected complete chapters 0–59')
+    if chapters != list(range(63)):
+        raise ValueError('Expected complete chapters 0–62')
     sections = re.findall(r'^## (\d+\.\d+)\b', source, re.M)
     if len(sections) != len(set(sections)):
         raise ValueError('Duplicate numbered sections')
@@ -73,8 +73,8 @@ def inspect_book(source):
     if rows != expected:
         differences = [{'actual': a, 'expected': b} for a, b in zip(rows, expected) if a != b]
         raise ValueError('Result registry identity mismatch: '+repr(differences[:8]))
-    if len(claims) != 131:
-        raise ValueError('This edition requires all 117 inherited and 14 new result IDs')
+    if len(claims) != 147:
+        raise ValueError('This edition requires all 131 inherited and 16 new result IDs')
     return {'schema': 'ueot_physics.book_structure.v1', 'status': 'PASS',
             'source_sha256': hashlib.sha256(source.encode()).hexdigest(),
             'chapters': len(chapters), 'appendices': len(appendix_headers),

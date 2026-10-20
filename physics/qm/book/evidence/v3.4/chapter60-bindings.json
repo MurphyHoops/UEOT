@@ -1,0 +1,272 @@
+{
+  "schema": "ueot_qm.book.chapter60.bindings.v1",
+  "status": "READY_FOR_CANONICAL_INTEGRATION_PENDING_UNIFIED_ACCEPTANCE",
+  "recorded_at_utc": "2026-10-20T10:57:53.352618+00:00",
+  "chapter": 60,
+  "chapter_source": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_chapter60.md",
+    "bytes": 20458,
+    "sha256": "1bca36592b07dd74de3f22f70ba08c155c7c07c4b46344b98752e16f5f8590be"
+  },
+  "numbered_result_count": 4,
+  "new_result_ids": [
+    "P-SEP-01",
+    "P-SEP-02",
+    "P-CLT-01",
+    "N-SEP-01"
+  ],
+  "results": [
+    {
+      "id": "P-SEP-01",
+      "anchor": "p-sep-01",
+      "title": "Hermitian 算符的合法效应表示",
+      "premises": [
+        "ι 是任意有限载体，Lean 使用 Fintype ι 与 DecidableEq ι。",
+        "H 是全部复方阵空间中的任意 Hermitian 矩阵。",
+        "效应采用既有完整类型：E 与 I−E 均为正半定矩阵。",
+        "所用有限复欧氏算符范数/C* 次序界是已锁数学依赖；不添加物理谱、秩或分离假设。"
+      ],
+      "quantified_scope": "∀ finite ι, ∀ H : Matrix ι ι ℂ, H.IsHermitian；包括空载体。",
+      "actual_conclusion": "存在 r∈ℝ、r>0 和实际 Effect ι，使 H=(2*r)•E.matrix−r•I；因此 H∈Submodule.span ℝ(range Effect.matrix)。实现取 r=‖H‖op+1，并证明 E=(H+rI)/(2r) 与 I−E=(rI−H)/(2r) 两侧正性。",
+      "public_main_declarations": [
+        "UEOTQM.QuantumSeparation.exists_effect_affine_of_hermitian",
+        "UEOTQM.QuantumSeparation.hermitian_mem_real_span_effects"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.QuantumSeparation.boundedHermitianEffect",
+        "UEOTQM.QuantumSeparation.boundedHermitianEffect_matrix",
+        "UEOTQM.QuantumSeparation.boundedHermitianEffect_affine"
+      ],
+      "concrete_witness_declarations": [],
+      "concrete_witness_role": "没有把其他投影效应的见证假称为本 norm 构造的数值实例；本项直接由通用实际证明承担。N-SEP-01 另核查具体合法效应。",
+      "open_boundaries": [
+        "H=2rE−rI 是 affine image 与实线性组合；两个系数一般不和为一，未称二效应凸混合或归一仿射组合。",
+        "不证明指定仪器库可实现构造中的全部效应，不给数值重建算法误差或采样复杂度。",
+        "不唯一选择复数结构，不覆盖无限维。"
+      ],
+      "proof_outline": [
+        "用 Hermitian 算符范数给 −‖H‖I≤H≤‖H‖I，加入 I 得双侧严格正尺度 r。",
+        "构造 E 并分别证明 PSD 与补 PSD。",
+        "实数移项得到 H=2rE−rI；E 与 I 都在全部效应集合中，因此得到实张成。"
+      ]
+    },
+    {
+      "id": "P-SEP-02",
+      "anchor": "p-sep-02",
+      "title": "全效应分离与距离零的矩阵含义",
+      "premises": [
+        "任意同一有限复载体上的两份实际 Density，均 PSD 且迹一。",
+        "假设对每个合法 Effect 的实际实值迹概率都相等，量词不能改成固定受限测试库。",
+        "effectDistance 保持原定义：全部效应概率差绝对值的实际上确界。"
+      ],
+      "quantified_scope": "∀ finite ι, ∀ ρ σ : Density ι；无纯性、对角性、秩或实验样本前提。",
+      "actual_conclusion": "ρ=σ ↔ ∀ E:Effect ι, E.probability ρ=E.probability σ；并有 effectDistance ρ σ=0 ↔ ρ=σ。",
+      "public_main_declarations": [
+        "UEOTQM.QuantumSeparation.density_eq_of_all_effect_probabilities_eq",
+        "UEOTQM.QuantumSeparation.density_eq_iff_all_effect_probabilities_eq",
+        "UEOTQM.QuantumSeparation.effectDistance_eq_zero_iff_density_eq"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.QuantumSeparation.pairing_eq_of_all_effect_pairings_eq",
+        "UEOTQM.QuantumSeparation.pairing_sub_right",
+        "UEOTQM.effectDistance_eq_zero_iff"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.QuantumSeparationExamples.empty_carrier_has_no_density",
+        "UEOTQM.QuantumSeparationExamples.singleton_densities_equal",
+        "UEOTQM.QuantumSeparationExamples.xTest_probability_plus",
+        "UEOTQM.QuantumSeparationExamples.xTest_probability_minus",
+        "UEOTQM.QuantumSeparationExamples.yTest_probability_plus",
+        "UEOTQM.QuantumSeparationExamples.yTest_probability_minus",
+        "UEOTQM.QuantumSeparationExamples.xPlus_ne_xMinus",
+        "UEOTQM.QuantumSeparationExamples.yPlus_ne_yMinus",
+        "UEOTQM.QuantumSeparationExamples.x_effectDistance_exact",
+        "UEOTQM.QuantumSeparationExamples.y_effectDistance_exact"
+      ],
+      "concrete_witness_role": "空/单载体边界和实际概率1/0、距离1控制；x/y 不等性的证明直接来自合法效应概率差，不循环依赖待证分离。",
+      "open_boundaries": [
+        "旧 UEOTQM.effectDistance_eq_zero_iff 仍保持“所有效应同概率”的原语义；新增矩阵等价另设名称。",
+        "不声明 Lean MetricSpace 注册、迹范数或 diamond 范数同一性。",
+        "不把受限仪器库的词响应商等同于完整密度矩阵。"
+      ],
+      "proof_outline": [
+        "由 P-SEP-01 和实线性，把全效应同概率扩张到所有 Hermitian 测试。",
+        "取 D=ρ−σ，得到 Re Tr(D†D)=0；PSD 保证虚部为零。",
+        "使用 trace_conjTranspose_mul_self_eq_zero_iff 得 D=0，再接既有距离零 iff。"
+      ]
+    },
+    {
+      "id": "P-CLT-01",
+      "anchor": "p-clt-01",
+      "title": "完整有限复模型的普遍局部层析",
+      "premises": [
+        "ι、ν 是分别任意的有限复载体，联合类型真实为 ι×ν。",
+        "ρ、σ 是全部 Density(ι×ν) 中任意联合态。",
+        "对全部合法 E:Effect ι 与 F:Effect ν 的真实 productEffect 概率相等。",
+        "使用原 OperationalSystems.complexModel 的完整状态、效应和张量产品呈现。"
+      ],
+      "quantified_scope": "∀ finite ι ν, ∀ ρ σ : Density (ι×ν), [∀ E F, pρ(E⊗F)=pσ(E⊗F)]；无产品态、可分离态、纯态或相同局部维数前提。",
+      "actual_conclusion": "所有局部产品效应同概率蕴含实际联合 Density 相等；OperationalSystems.LocalTomography OperationalSystems.complexModel 成立。",
+      "public_main_declarations": [
+        "UEOTQM.ComplexLocalTomography.density_eq_of_all_product_effect_probabilities_eq",
+        "UEOTQM.ComplexLocalTomography.complex_localTomography"
+      ],
+      "public_support_declarations": [
+        "UEOTQM.ComplexLocalTomography.symmetricUnit",
+        "UEOTQM.ComplexLocalTomography.imaginaryUnit",
+        "UEOTQM.ComplexLocalTomography.symmetricUnit_hermitian",
+        "UEOTQM.ComplexLocalTomography.imaginaryUnit_hermitian",
+        "UEOTQM.ComplexLocalTomography.sub_kronecker",
+        "UEOTQM.ComplexLocalTomography.kronecker_sub",
+        "UEOTQM.ComplexLocalTomography.pairing_symmetricUnit",
+        "UEOTQM.ComplexLocalTomography.pairing_imaginaryUnit",
+        "UEOTQM.ComplexLocalTomography.symmetricUnit_product",
+        "UEOTQM.ComplexLocalTomography.imaginaryUnit_product",
+        "UEOTQM.ComplexLocalTomography.hermitian_product_pairing_eq",
+        "UEOTQM.RealLocalTomography.productEffect"
+      ],
+      "concrete_witness_declarations": [
+        "UEOTQM.QuantumSeparationExamples.unequal_local_dimensions_tomography",
+        "UEOTQM.QuantumSeparationExamples.full_complex_model_localTomography",
+        "UEOTQM.QuantumSeparationExamples.full_real_model_not_localTomography"
+      ],
+      "concrete_witness_role": "真实 Fin 2×Fin 3 实例、原复模型原则回接、未变实模型反例；后两项明确是模型定理的见证包装。",
+      "open_boundaries": [
+        "联合产品统计包含相关性；只给两侧边际不是本定理的前提。",
+        "实效应模型的局部实性限制保留，未扩大其允许测量。",
+        "不把局部层析升级为复理论对所有操作模型的唯一重建，也未从 Core 推导其物理必然性。",
+        "无有限样本误差、最少测试设置数、设备校准或无限维结论。"
+      ],
+      "proof_outline": [
+        "分别把 H,K 写成实际效应与单位的实线性组合；用四个合法产品测试 (E,F),(E,I),(I,F),(I,I) 扩张概率相等。",
+        "用 S=eij+eji、T=i(eij−eji) 的 Hermitian 性和配对恢复 2ReXij、2ImXij，虚部为正号。",
+        "联合 S=(S⊗S−T⊗T)/2、联合 T=(T⊗S+S⊗T)/2，包括重复指标；逐项恢复任意联合矩阵两部分。",
+        "将全称矩阵结论代入未改的 complexModel LocalTomography 字段。"
+      ]
+    },
+    {
+      "id": "N-SEP-01",
+      "anchor": "n-sep-01",
+      "title": "全部对角效应仍不能识别相干态",
+      "premises": [
+        "二维复载体 Qubit=Fin 2；标准 X=[[0,1],[1,0]]、Y=[[0,−i],[i,0]]。",
+        "四态 ρx±=(I±X)/2、ρy±=(I±Y)/2，PSD 与迹一实际证明。",
+        "受限测试量词仍涵盖全部合法 Effect，但额外要求所有非对角元为零。"
+      ],
+      "quantified_scope": "一个确切二维实例；对每个满足 IsDiagonal 的实际 Effect，全称同统计分别适用于两对相干态。",
+      "actual_conclusion": "全部合法对角效应分别不能区分 ρx+ 与 ρx−、ρy+ 与 ρy−；实际合法测试 Ex=(I+X)/2、Ey=(I+Y)/2 各自给出1/0，两对态均不同且全效应距离都精确为1。",
+      "public_main_declarations": [
+        "UEOTQM.effectDistance_le_one",
+        "UEOTQM.Effect.probability_sub_le_effectDistance",
+        "UEOTQM.RealLocalTomography.plusProjector_posSemidef",
+        "UEOTQM.RealLocalTomography.minusProjector_posSemidef",
+        "UEOTQM.RealLocalTomography.involutionEffect"
+      ],
+      "public_main_declaration_role": "这里列的是继承的通用证明基础；本项新增的完整反例声明仅位于下列具体见证模块，须对照见证公理日志，不能伪增通用审计数量。",
+      "public_support_declarations": [],
+      "concrete_witness_declarations": [
+        "UEOTQM.QuantumSeparationExamples.Qubit",
+        "UEOTQM.QuantumSeparationExamples.pauliX",
+        "UEOTQM.QuantumSeparationExamples.pauliX_hermitian",
+        "UEOTQM.QuantumSeparationExamples.pauliX_square",
+        "UEOTQM.QuantumSeparationExamples.pauliX_trace",
+        "UEOTQM.QuantumSeparationExamples.xPlus",
+        "UEOTQM.QuantumSeparationExamples.xMinus",
+        "UEOTQM.QuantumSeparationExamples.yPlus",
+        "UEOTQM.QuantumSeparationExamples.yMinus",
+        "UEOTQM.QuantumSeparationExamples.xTest",
+        "UEOTQM.QuantumSeparationExamples.yTest",
+        "UEOTQM.QuantumSeparationExamples.IsDiagonal",
+        "UEOTQM.QuantumSeparationExamples.diagonal_effect_pairing_eq",
+        "UEOTQM.QuantumSeparationExamples.all_diagonal_effects_agree_x",
+        "UEOTQM.QuantumSeparationExamples.all_diagonal_effects_agree_y",
+        "UEOTQM.QuantumSeparationExamples.xTest_probability_plus",
+        "UEOTQM.QuantumSeparationExamples.xTest_probability_minus",
+        "UEOTQM.QuantumSeparationExamples.yTest_probability_plus",
+        "UEOTQM.QuantumSeparationExamples.yTest_probability_minus",
+        "UEOTQM.QuantumSeparationExamples.xPlus_ne_xMinus",
+        "UEOTQM.QuantumSeparationExamples.yPlus_ne_yMinus",
+        "UEOTQM.QuantumSeparationExamples.x_effectDistance_exact",
+        "UEOTQM.QuantumSeparationExamples.y_effectDistance_exact"
+      ],
+      "concrete_witness_role": "完整负控证明与构造本身，全部声明源序列逐名审计；继承两rebit实模型障碍在正文另作交叉核对，不新编号或重复计成新的研究发现。",
+      "open_boundaries": [
+        "不否定这些对角效应的合法性；只证明其不完备。",
+        "全效应定理要求更多允许效应，未从受限库同统计推出两矩阵相等。",
+        "是精确有限形式见证，不是实验、采样模拟或经验确证。"
+      ],
+      "proof_outline": [
+        "X,Y 为 Hermitian 对合，P±=(I±A)/2 的正交投影性质给出完整合法态和效应。",
+        "所有四态对角元为1/2；对角 E 的迹配对只含对角元，所以每对的概率相同。",
+        "P+²=P+ 与 P+P−=0 给出合法区分效应概率1/0，从而态不等。",
+        "该差值提供距离下界1，继承的全效应距离上界1给出精确等式。"
+      ]
+    }
+  ],
+  "declaration_name_membership": {
+    "all_public_names_in_current_inventory": true,
+    "all_witness_names_in_actual_A_witness_inventory": true,
+    "generic_inventory": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_declaration_inventory.json",
+      "bytes": 190452,
+      "sha256": "75058ea424fdc25fec12a40e327b4a601b04937f8a60d4fe8e4a1f8e6532c4ab"
+    },
+    "witness_inventory": {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/witness-declarations.json",
+      "bytes": 3322,
+      "sha256": "09020d46cd1318e26b65f0acfd26cd2865a5fa8a554f1f0410845a6fbc3d7004"
+    }
+  },
+  "current_scientific_sources": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/QuantumSeparation.lean",
+      "bytes": 6450,
+      "sha256": "c554f5c886f1c3f22c5ea543e0e818548697d88532419659b5aecb5095157357"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/ComplexLocalTomography.lean",
+      "bytes": 7285,
+      "sha256": "48b9867d67635ca9a33d8cb89a43f38c8bec1369111c1a00960675dad8e91d4d"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/QuantumSeparationExamples.lean",
+      "bytes": 9209,
+      "sha256": "43a4cfc3116e9444defc90f7ee65be2d7e8e31a7d24d5423edd63b894a234b08"
+    }
+  ],
+  "proof_state": "All 20 public theorems/3 definitions and 19 witness theorems/8 definitions/1 abbreviation actually passed focused Lean and complete named foundation audits. A later two-line comment-only clarification changed QuantumSeparation raw hash; executable masked code is identical and preserved old focused receipts remain bound to their exact original bytes. Root first unified gate must bind the final raw source; no unified/remote PASS is claimed here.",
+  "evidence": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/verification.json",
+      "bytes": 7655,
+      "sha256": "4f6058aad63cb9c9f1a0a8efaef9b4ea1107ed7b1243d6d269599a1f317c0448"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/public-named-axiom-audit.json",
+      "bytes": 4890,
+      "sha256": "019d4a900920a9acb86d8bd1f49817f4ce54add6abe461e6dfa818a5412de194"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/witness-named-axiom-audit.json",
+      "bytes": 5635,
+      "sha256": "5c0d4cba665aad8f17e24fea30cfffd89c15cb11002819cb9432f2c8e0f03cee"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/C_source_review.json",
+      "bytes": 2954,
+      "sha256": "6c24d5a17efe4e60e669b5c3ac91512b3c32a3436cf735eb6a46eac37cf9b027"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/comment-only-source-update.json",
+      "bytes": 2517,
+      "sha256": "8847541a4b4ed2efac0e56723fa41fdce9a6db44bf0c48a1b4e81ce1847cd259"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/C_comment_supplement.json",
+      "bytes": 987,
+      "sha256": "a68c8d6b3068982df5523c405d221a503fec891e9c0f2c944b0fb2c2aae26c7d"
+    }
+  ],
+  "claim_scope": "Finite complex matrix-model mathematics and actual legal finite controls; no new empirical data, unique Core reconstruction or unconditional natural-theory completion.",
+  "canonical_integration_owner": "root; preserve the inherited 131 result objects and add these four exactly once"
+}

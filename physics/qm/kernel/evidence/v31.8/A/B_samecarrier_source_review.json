@@ -1,0 +1,123 @@
+{
+  "reviewer": "A",
+  "verdict": "CLEAR_FOR_EXACT_PURITY_AND_SAME_CARRIER_SNAPSHOTS",
+  "recorded_at_utc": "2026-10-20T10:43:20.431783+00:00",
+  "method": "Read-only review of actual compiled source snapshots and relevant locked Mathlib definitions; no Lean/compiler/full scientific gate rerun.",
+  "sources": [
+    {
+      "module": {
+        "path": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
+        "bytes": 4356,
+        "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8"
+      },
+      "reviewed_snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/pure-005.lean.txt",
+        "bytes": 4356,
+        "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8"
+      },
+      "same_bytes_at_review": true,
+      "theorems": [
+        "outer_real_smul",
+        "gram_eq_sum_outer",
+        "IsPure.normalize_eq_of_positive_summand",
+        "IsPure.exists_vector",
+        "isPure_iff_exists_vector"
+      ]
+    },
+    {
+      "current_module_at_review": {
+        "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+        "bytes": 15051,
+        "sha256": "248df3e3fa81cdf5b4fb88bfdb44507edde45e102f93e43ffe0a4d780aa5d248"
+      },
+      "reviewed_snapshot": {
+        "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-002.lean.txt",
+        "bytes": 8181,
+        "sha256": "eb43fe8f42fd33d1a6b2ca55e9a60b6a69182318f2c5a6bfe8e5dd34dcea6738"
+      },
+      "reviewed_statements_and_proofs_unchanged_after_ignoring_standalone_omit_commands": true,
+      "current_prefix_changes": "Two omit lines remove unused section instances; exact compiled snapshot remains the reviewed acceptance scope.",
+      "later_appended_different_carrier_section_excluded": true,
+      "theorems": [
+        "inner_matrix_image",
+        "norm_matrix_image_eq_of_gram",
+        "exists_unitary_of_column_gram",
+        "exists_auxiliary_unitary_of_gram",
+        "auxiliary_action_apply",
+        "auxiliary_action_vectorize",
+        "outer_mulVec",
+        "exists_auxiliary_unitary_of_equal_marginal",
+        "pure_states_unitarily_equivalent"
+      ]
+    }
+  ],
+  "exact_explicit_theorem_counts": {
+    "PureStateCharacterization": 5,
+    "PurificationUniqueness_same_carrier_snapshot": 9
+  },
+  "count_note": "The uniqueness-002 snapshot contains nine explicit theorem commands, distinct from any evolving module total. The earlier message saying ten is not used as an inventory.",
+  "focused_evidence": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/B/pure-005-source.json",
+      "bytes": 324,
+      "sha256": "4626a25b70d3a9e2ca4e15e39c2e2766993aca2df06f2463d5b30108aebbc3fd"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/B/pure-005.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-002-source.sha256",
+      "bytes": 205,
+      "sha256": "6a4bfad5b98f6186c69f8843ab85dcdd8a6b3a47c0b4b67c839babcd769d750c"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/B/uniqueness-002.log",
+      "bytes": 909,
+      "sha256": "290ee66f4cbea2b901c4bf105d0a826f5a4366761dbc5b0ebc196b7c4b73ddbd"
+    }
+  ],
+  "compiler_status_scope": "B reported these exact snapshots passed focused compilation. This review read their saved logs and binding snapshots; it does not independently repeat or replace B/root final named-axiom and invocation acceptance.",
+  "checks": [
+    {
+      "topic": "complete_purity",
+      "finding": "IsPure is unchanged extremality over every actual Density, not a rank-one or selected-state definition. exists_gram supplies the PSD-derived factor. Positive Gram summands have masses summing to one, so some summand has positive mass. Its PSD remainder either has zero mass and is the zero matrix, or admits valid positive-mass normalization and a nontrivial convex decomposition. Extremality identifies the normalized summand with rho; inverse positive square-root scaling supplies the normalized outer vector. No zero posterior is invented."
+    },
+    {
+      "topic": "Gram_support_isometry",
+      "finding": "Equal F†F and G†G give norm equality for every vector and the kernel inclusion needed for a well-defined quotient-to-range map. The constructed map sends Fx to Gx and preserves norms. Mathlib LinearIsometry.extend extends it on the same finite dimensional complex output space without full rank. Injectivity implies surjectivity on that same space, giving both U†U=I and UU†=I."
+    },
+    {
+      "topic": "transpose_and_actual_action",
+      "finding": "Transposing AA†=BB† gives (Aᵀ)†Aᵀ=(Bᵀ)†Bᵀ. The column Gram theorem yields U Aᵀ=Bᵀ, hence B(i,a)=sum_b U(a,b) A(i,b). This is exactly (I⊗U)vec(A), equivalently vec(A Uᵀ). U, Uᵀ, U† and conjugate U are not silently interchanged."
+    },
+    {
+      "topic": "full_pure_density_reconnection",
+      "finding": "Equality of actual discardRight state marginals becomes equality of discardRight operators on vector outer products obtained by the complete-purity converse. The vector action and outer_mulVec yield Phi.matrix=(I⊗U)Psi.matrix(I⊗U)† for arbitrary complete-convex-pure joint densities on the same auxiliary carrier."
+    },
+    {
+      "topic": "boundary",
+      "finding": "Generic Gram equalities permit zero maps and empty finite carriers; support extension remains well typed. A normalized density on an empty joint carrier cannot exist, so no hidden Nonempty premise is needed. The same-carrier square-unitary conclusion is not attributed to unequal auxiliary carriers."
+    }
+  ],
+  "locked_mathlib_dependencies": [
+    {
+      "path": "formalization/ueot-qm/.lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/PiL2.lean",
+      "bytes": 61065,
+      "sha256": "1f9827b2db67213c725a2dcc3fec52a87772966d1fbd3fc6857a019dbd7a6053"
+    },
+    {
+      "path": "formalization/ueot-qm/.lake/packages/mathlib/Mathlib/LinearAlgebra/FiniteDimensional/Basic.lean",
+      "bytes": 27871,
+      "sha256": "22d6fd2539324c197448a98e561c6892a3e842da38cdc86e7979aa860945e104"
+    }
+  ],
+  "pending_scope": [
+    "different auxiliary carriers/common-sum extension not reviewed here",
+    "concrete rational complex-unitary orientation witness not reviewed here",
+    "B final complete named-axiom audit and root unified acceptance"
+  ],
+  "blocked": false,
+  "scientific_scope": "Finite complex matrix model results; no unique Core selection, infinite dimensional theorem or empirical confirmation."
+}

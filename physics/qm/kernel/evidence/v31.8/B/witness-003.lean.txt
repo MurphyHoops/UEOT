@@ -1,0 +1,236 @@
+import UEOTQM.PurificationUniqueness
+
+/-!
+# Exact complex controls for purity and purification uniqueness
+
+The auxiliary matrix is not equivalent up to global phase to its adjoint,
+transpose or entrywise conjugate. The negative controls compare joint density
+entries, so an unnoticed global phase cannot conceal a wrong action direction.
+-/
+
+namespace UEOTQM.PurificationUniquenessExamples
+
+open Matrix QuantumPurification
+open scoped BigOperators ComplexOrder MatrixOrder Kronecker
+
+noncomputable section
+
+def firstFactor : Operator (Fin 2) := !![(3 / 5 : ℂ), 0; 0, (4 / 5 : ℂ)]
+
+def secondFactor : Operator (Fin 2) :=
+  !![(9 / 25 : ℂ), (12 / 25 : ℂ); 16 * Complex.I / 25, -12 * Complex.I / 25]
+
+def auxiliaryUnitary : Operator (Fin 2) :=
+  !![(3 / 5 : ℂ), 4 * Complex.I / 5; (4 / 5 : ℂ), -3 * Complex.I / 5]
+
+def firstVector : Fin 2 × Fin 2 → ℂ := vectorize firstFactor
+
+def secondVector : Fin 2 × Fin 2 → ℂ := vectorize secondFactor
+
+def marginalMatrix : Operator (Fin 2) := !![(9 / 25 : ℂ), 0; 0, (16 / 25 : ℂ)]
+
+theorem auxiliaryUnitary_adjoint_mul : auxiliaryUnitaryᴴ * auxiliaryUnitary = 1 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> apply Complex.ext <;>
+    norm_num [auxiliaryUnitary, Matrix.mul_apply, Matrix.conjTranspose_apply, map_ofNat,
+      Fin.sum_univ_succ, Matrix.one_apply, Complex.mul_re, Complex.mul_im]
+
+theorem auxiliaryUnitary_mul_adjoint : auxiliaryUnitary * auxiliaryUnitaryᴴ = 1 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> apply Complex.ext <;>
+    norm_num [auxiliaryUnitary, Matrix.mul_apply, Matrix.conjTranspose_apply, map_ofNat,
+      Fin.sum_univ_succ, Matrix.one_apply, Complex.mul_re, Complex.mul_im]
+
+theorem first_gram : firstFactor * firstFactorᴴ = marginalMatrix := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> apply Complex.ext <;>
+    norm_num [firstFactor, marginalMatrix, Matrix.mul_apply, Matrix.conjTranspose_apply, map_ofNat,
+      Fin.sum_univ_succ, Complex.mul_re, Complex.mul_im]
+
+theorem second_gram : secondFactor * secondFactorᴴ = marginalMatrix := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> apply Complex.ext <;>
+    norm_num [secondFactor, marginalMatrix, Matrix.mul_apply, Matrix.conjTranspose_apply, map_ofNat,
+      Fin.sum_univ_succ, Complex.mul_re, Complex.mul_im]
+
+theorem first_normalized : (outer firstVector).trace = 1 := by
+  rw [firstVector, vectorize_outer_trace, first_gram]
+  norm_num [marginalMatrix, Matrix.trace, Fin.sum_univ_succ]
+
+theorem second_normalized : (outer secondVector).trace = 1 := by
+  rw [secondVector, vectorize_outer_trace, second_gram]
+  norm_num [marginalMatrix, Matrix.trace, Fin.sum_univ_succ]
+
+def firstState : Density (Fin 2 × Fin 2) := vectorState firstVector first_normalized
+
+def secondState : Density (Fin 2 × Fin 2) := vectorState secondVector second_normalized
+
+theorem first_isPure : IsPure firstState := vectorState_isPure firstVector first_normalized
+
+theorem second_isPure : IsPure secondState := vectorState_isPure secondVector second_normalized
+
+theorem same_actual_marginal :
+    (RectangularChannel.discardRight (Fin 2) (Fin 2)).state firstState =
+      (RectangularChannel.discardRight (Fin 2) (Fin 2)).state secondState := by
+  apply Density.ext
+  change (RectangularChannel.discardRight (Fin 2) (Fin 2)).operator (outer (vectorize firstFactor)) =
+    (RectangularChannel.discardRight (Fin 2) (Fin 2)).operator (outer (vectorize secondFactor))
+  rw [discard_vectorize_outer, discard_vectorize_outer, first_gram, second_gram]
+
+theorem exact_auxiliary_vector_action :
+    ((1 : Operator (Fin 2)) ⊗ₖ auxiliaryUnitary) *ᵥ firstVector = secondVector := by
+  ext p
+  rcases p with ⟨i, a⟩
+  rw [auxiliary_action_apply]
+  fin_cases i <;> fin_cases a <;> apply Complex.ext <;>
+    norm_num [firstVector, secondVector, vectorize, firstFactor, secondFactor,
+      auxiliaryUnitary, Fin.sum_univ_succ, Complex.mul_re, Complex.mul_im]
+
+theorem joint_vectors_differ : firstVector ≠ secondVector := by
+  intro h
+  have he := congrArg (fun v => (v (0, 0)).re) h
+  norm_num [firstVector, secondVector, vectorize, firstFactor, secondFactor] at he
+
+theorem joint_densities_differ : firstState ≠ secondState := by
+  intro h
+  have he := congrArg (fun ρ : Density (Fin 2 × Fin 2) => (ρ.matrix (0, 0) (0, 0)).re) h
+  norm_num [firstState, secondState, vectorState_matrix, outer_apply,
+    firstVector, secondVector, vectorize, firstFactor, secondFactor, Complex.mul_re] at he
+
+theorem full_purity_converse_instantiated :
+    ∃ v : Fin 2 × Fin 2 → ℂ, (outer v).trace = 1 ∧ firstState.matrix = outer v :=
+  (isPure_iff_exists_vector firstState).mp first_isPure
+
+theorem general_uniqueness_instantiated :
+    ∃ U : Operator (Fin 2), Uᴴ * U = 1 ∧ U * Uᴴ = 1 ∧
+      secondState.matrix = ((1 : Operator (Fin 2)) ⊗ₖ U) * firstState.matrix *
+        ((1 : Operator (Fin 2)) ⊗ₖ U)ᴴ :=
+  pure_states_unitarily_equivalent firstState secondState first_isPure second_isPure same_actual_marginal
+
+def transformed (T : Operator (Fin 2)) : Fin 2 × Fin 2 → ℂ :=
+  ((1 : Operator (Fin 2)) ⊗ₖ T) *ᵥ firstVector
+
+theorem correct_0001_entry : outer secondVector (0, 0) (0, 1) = (108 / 625 : ℂ) := by
+  apply Complex.ext <;>
+    norm_num [outer_apply, secondVector, vectorize, secondFactor, Complex.mul_re, Complex.mul_im]
+
+theorem wrong_adjoint_0001_entry :
+    outer (transformed auxiliaryUnitaryᴴ) (0, 0) (0, 1) = 108 * Complex.I / 625 := by
+  apply Complex.ext <;>
+    norm_num [outer_apply, transformed, auxiliary_action_apply, firstVector, vectorize,
+      firstFactor, auxiliaryUnitary, Matrix.conjTranspose_apply, map_ofNat, Fin.sum_univ_succ,
+      Complex.mul_re, Complex.mul_im]
+
+theorem wrong_transpose_0001_entry :
+    outer (transformed auxiliaryUnitaryᵀ) (0, 0) (0, 1) = -108 * Complex.I / 625 := by
+  apply Complex.ext <;>
+    norm_num [outer_apply, transformed, auxiliary_action_apply, firstVector, vectorize,
+      firstFactor, auxiliaryUnitary, Matrix.transpose_apply, Fin.sum_univ_succ,
+      Complex.mul_re, Complex.mul_im]
+
+theorem correct_0010_entry : outer secondVector (0, 0) (1, 0) = -144 * Complex.I / 625 := by
+  apply Complex.ext <;>
+    norm_num [outer_apply, secondVector, vectorize, secondFactor, Complex.mul_re, Complex.mul_im]
+
+theorem wrong_conjugate_0010_entry :
+    outer (transformed (auxiliaryUnitary.map star)) (0, 0) (1, 0) = 144 * Complex.I / 625 := by
+  apply Complex.ext <;>
+    norm_num [outer_apply, transformed, auxiliary_action_apply, firstVector, vectorize,
+      firstFactor, auxiliaryUnitary, Matrix.map_apply, map_ofNat, Fin.sum_univ_succ,
+      Complex.mul_re, Complex.mul_im]
+
+theorem wrong_adjoint_joint_density : outer (transformed auxiliaryUnitaryᴴ) ≠ outer secondVector := by
+  intro h
+  have he := congrArg (fun M : Operator (Fin 2 × Fin 2) => (M (0, 0) (0, 1)).im) h
+  rw [wrong_adjoint_0001_entry, correct_0001_entry] at he
+  norm_num at he
+
+theorem wrong_transpose_joint_density : outer (transformed auxiliaryUnitaryᵀ) ≠ outer secondVector := by
+  intro h
+  have he := congrArg (fun M : Operator (Fin 2 × Fin 2) => (M (0, 0) (0, 1)).im) h
+  rw [wrong_transpose_0001_entry, correct_0001_entry] at he
+  norm_num at he
+
+theorem wrong_conjugate_joint_density :
+    outer (transformed (auxiliaryUnitary.map star)) ≠ outer secondVector := by
+  intro h
+  have he := congrArg (fun M : Operator (Fin 2 × Fin 2) => (M (0, 0) (1, 0)).im) h
+  rw [wrong_conjugate_0010_entry, correct_0010_entry] at he
+  norm_num at he
+
+/-- A genuine auxiliary enlargement from two dimensions to three. -/
+def largerState : Density (Fin 2 × (Fin 2 ⊕ Unit)) :=
+  extendAuxiliaryLeft (β := Unit) secondState
+
+theorem auxiliary_dimensions_differ : Fintype.card (Fin 2) ≠ Fintype.card (Fin 2 ⊕ Unit) := by
+  decide
+
+theorem strict_embedding_isometry :
+    (auxiliaryInl (α := Fin 2) (β := Unit))ᴴ * auxiliaryInl (α := Fin 2) (β := Unit) = 1 :=
+  auxiliaryInl_isometry
+
+theorem strict_embedding_not_coisometry :
+    auxiliaryInl (α := Fin 2) (β := Unit) * (auxiliaryInl (α := Fin 2) (β := Unit))ᴴ ≠
+      (1 : Operator (Fin 2 ⊕ Unit)) := by
+  intro h
+  have he := congrFun (congrFun h (Sum.inr ())) (Sum.inr ())
+  norm_num [auxiliaryInl, Matrix.mul_apply, Matrix.conjTranspose_apply,
+    Fin.sum_univ_succ, Matrix.one_apply] at he
+
+theorem larger_isPure : IsPure largerState := extendAuxiliaryLeft_pure secondState second_isPure
+
+theorem larger_same_actual_marginal :
+    (RectangularChannel.discardRight (Fin 2) (Fin 2 ⊕ Unit)).state largerState =
+      (RectangularChannel.discardRight (Fin 2) (Fin 2)).state firstState :=
+  (extendAuxiliaryLeft_marginal secondState).trans same_actual_marginal.symm
+
+theorem different_auxiliary_common_unitary :
+    ∃ U : Operator (Fin 2 ⊕ (Fin 2 ⊕ Unit)), Uᴴ * U = 1 ∧ U * Uᴴ = 1 ∧
+      (extendAuxiliaryRight (α := Fin 2) largerState).matrix =
+        ((1 : Operator (Fin 2)) ⊗ₖ U) *
+          (extendAuxiliaryLeft (β := Fin 2 ⊕ Unit) firstState).matrix *
+          ((1 : Operator (Fin 2)) ⊗ₖ U)ᴴ :=
+  pure_states_common_extension_unitary firstState largerState first_isPure larger_isPure
+    larger_same_actual_marginal.symm
+
+end
+end UEOTQM.PurificationUniquenessExamples
+
+#print axioms UEOTQM.PurificationUniquenessExamples.firstFactor
+#print axioms UEOTQM.PurificationUniquenessExamples.secondFactor
+#print axioms UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary
+#print axioms UEOTQM.PurificationUniquenessExamples.firstVector
+#print axioms UEOTQM.PurificationUniquenessExamples.secondVector
+#print axioms UEOTQM.PurificationUniquenessExamples.marginalMatrix
+#print axioms UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_adjoint_mul
+#print axioms UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_mul_adjoint
+#print axioms UEOTQM.PurificationUniquenessExamples.first_gram
+#print axioms UEOTQM.PurificationUniquenessExamples.second_gram
+#print axioms UEOTQM.PurificationUniquenessExamples.first_normalized
+#print axioms UEOTQM.PurificationUniquenessExamples.second_normalized
+#print axioms UEOTQM.PurificationUniquenessExamples.firstState
+#print axioms UEOTQM.PurificationUniquenessExamples.secondState
+#print axioms UEOTQM.PurificationUniquenessExamples.first_isPure
+#print axioms UEOTQM.PurificationUniquenessExamples.second_isPure
+#print axioms UEOTQM.PurificationUniquenessExamples.same_actual_marginal
+#print axioms UEOTQM.PurificationUniquenessExamples.exact_auxiliary_vector_action
+#print axioms UEOTQM.PurificationUniquenessExamples.joint_vectors_differ
+#print axioms UEOTQM.PurificationUniquenessExamples.joint_densities_differ
+#print axioms UEOTQM.PurificationUniquenessExamples.full_purity_converse_instantiated
+#print axioms UEOTQM.PurificationUniquenessExamples.general_uniqueness_instantiated
+#print axioms UEOTQM.PurificationUniquenessExamples.transformed
+#print axioms UEOTQM.PurificationUniquenessExamples.correct_0001_entry
+#print axioms UEOTQM.PurificationUniquenessExamples.wrong_adjoint_0001_entry
+#print axioms UEOTQM.PurificationUniquenessExamples.wrong_transpose_0001_entry
+#print axioms UEOTQM.PurificationUniquenessExamples.correct_0010_entry
+#print axioms UEOTQM.PurificationUniquenessExamples.wrong_conjugate_0010_entry
+#print axioms UEOTQM.PurificationUniquenessExamples.wrong_adjoint_joint_density
+#print axioms UEOTQM.PurificationUniquenessExamples.wrong_transpose_joint_density
+#print axioms UEOTQM.PurificationUniquenessExamples.wrong_conjugate_joint_density
+#print axioms UEOTQM.PurificationUniquenessExamples.largerState
+#print axioms UEOTQM.PurificationUniquenessExamples.auxiliary_dimensions_differ
+#print axioms UEOTQM.PurificationUniquenessExamples.strict_embedding_isometry
+#print axioms UEOTQM.PurificationUniquenessExamples.strict_embedding_not_coisometry
+#print axioms UEOTQM.PurificationUniquenessExamples.larger_isPure
+#print axioms UEOTQM.PurificationUniquenessExamples.larger_same_actual_marginal
+#print axioms UEOTQM.PurificationUniquenessExamples.different_auxiliary_common_unitary

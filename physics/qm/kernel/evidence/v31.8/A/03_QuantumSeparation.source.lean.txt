@@ -1,0 +1,143 @@
+import UEOTQM.Stability
+import Mathlib.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Order
+
+/-!
+# All effects separate the full finite complex density space
+
+Every Hermitian matrix is a real affine combination of two actual effects.
+The order bounds are derived using the finite matrix operator norm. Applying
+the resulting real trace separation to a Hermitian difference proves density
+equality. No restricted measurement library, trace-norm identification,
+empirical confirmation, or selection of complex quantum theory is inferred.
+-/
+
+namespace UEOTQM.QuantumSeparation
+
+open Matrix
+open scoped BigOperators ComplexOrder MatrixOrder
+
+noncomputable section
+
+variable {ι : Type*} [Fintype ι] [DecidableEq ι]
+
+/-- A Hermitian order interval gives an actual effect, including its upper bound. -/
+def boundedHermitianEffect (H : Operator ι) (r : ℝ) (hr : 0 < r)
+    (hlo : (-r) • (1 : Operator ι) ≤ H)
+    (hhi : H ≤ r • (1 : Operator ι)) : Effect ι where
+  matrix := (2 * r)⁻¹ • (H + r • 1)
+  positive := by
+    have hp : (H + r • 1).PosSemidef := by
+      simpa only [Matrix.le_iff, neg_smul, sub_neg_eq_add] using hlo
+    exact hp.smul (inv_nonneg.mpr (by positivity))
+  complement_positive := by
+    have hne : 2 * r ≠ 0 := mul_ne_zero (by norm_num) hr.ne'
+    have heq : (1 : Operator ι) - (2 * r)⁻¹ • (H + r • 1) =
+        (2 * r)⁻¹ • (r • 1 - H) := by
+      calc
+        1 - (2 * r)⁻¹ • (H + r • 1) =
+            (2 * r)⁻¹ • ((2 * r) • (1 : Operator ι) - (H + r • 1)) := by
+          rw [smul_sub, smul_smul, inv_mul_cancel₀ hne, one_smul]
+        _ = (2 * r)⁻¹ • (r • 1 - H) := by congr 1; module
+    rw [heq]
+    exact (Matrix.le_iff.mp hhi).smul (inv_nonneg.mpr (by positivity))
+
+@[simp] theorem boundedHermitianEffect_matrix (H : Operator ι) (r : ℝ) (hr : 0 < r)
+    (hlo : (-r) • (1 : Operator ι) ≤ H)
+    (hhi : H ≤ r • (1 : Operator ι)) :
+    (boundedHermitianEffect H r hr hlo hhi).matrix = (2 * r)⁻¹ • (H + r • 1) := rfl
+
+theorem boundedHermitianEffect_affine (H : Operator ι) (r : ℝ) (hr : 0 < r)
+    (hlo : (-r) • (1 : Operator ι) ≤ H)
+    (hhi : H ≤ r • (1 : Operator ι)) :
+    H = (2 * r) • (boundedHermitianEffect H r hr hlo hhi).matrix - r • 1 := by
+  have hne : 2 * r ≠ 0 := mul_ne_zero (by norm_num) hr.ne'
+  rw [boundedHermitianEffect_matrix, smul_smul, mul_inv_cancel₀ hne, one_smul]
+  module
+
+section OperatorNorm
+
+open scoped Matrix.Norms.L2Operator
+
+/-- The bound is obtained from the matrix, not postulated as a separation axiom. -/
+theorem exists_effect_affine_of_hermitian (H : Operator ι) (hH : H.IsHermitian) :
+    ∃ (r : ℝ) (E : Effect ι), 0 < r ∧ H = (2 * r) • E.matrix - r • 1 := by
+  let r : ℝ := ‖H‖ + 1
+  have hr : 0 < r := by dsimp [r]; positivity
+  have hi : H ≤ ‖H‖ • (1 : Operator ι) := by
+    simpa only [Algebra.algebraMap_eq_smul_one] using hH.isSelfAdjoint.le_algebraMap_norm_self
+  have lo : (-‖H‖) • (1 : Operator ι) ≤ H := by
+    simpa only [Algebra.algebraMap_eq_smul_one, neg_smul] using
+      hH.isSelfAdjoint.neg_algebraMap_norm_le_self
+  have hhi : H ≤ r • (1 : Operator ι) := by
+    apply Matrix.le_iff.mpr
+    have hp := (Matrix.le_iff.mp hi).add (Matrix.PosSemidef.one : (1 : Operator ι).PosSemidef)
+    convert hp using 1
+    dsimp [r]
+    module
+  have hlo : (-r) • (1 : Operator ι) ≤ H := by
+    apply Matrix.le_iff.mpr
+    have hp := (Matrix.le_iff.mp lo).add (Matrix.PosSemidef.one : (1 : Operator ι).PosSemidef)
+    convert hp using 1
+    dsimp [r]
+    module
+  exact ⟨r, boundedHermitianEffect H r hr hlo hhi, hr,
+    boundedHermitianEffect_affine H r hr hlo hhi⟩
+
+end OperatorNorm
+
+/-- The scalar field of the span is real; the Hermitian matrices may be complex. -/
+theorem hermitian_mem_real_span_effects (H : Operator ι) (hH : H.IsHermitian) :
+    H ∈ Submodule.span ℝ (Set.range (fun E : Effect ι => E.matrix)) := by
+  obtain ⟨r, E, _, heq⟩ := exists_effect_affine_of_hermitian H hH
+  rw [heq]
+  exact Submodule.sub_mem _
+    (Submodule.smul_mem _ _ (Submodule.subset_span ⟨E, rfl⟩))
+    (Submodule.smul_mem _ _ (Submodule.subset_span ⟨Effect.one, rfl⟩))
+
+/-- All-effect agreement extends to Hermitian tests by proved real linearity. -/
+theorem pairing_eq_of_all_effect_pairings_eq (X Y : Operator ι)
+    (h : ∀ E : Effect ι, pairing E.matrix X = pairing E.matrix Y)
+    (H : Operator ι) (hH : H.IsHermitian) : pairing H X = pairing H Y := by
+  obtain ⟨r, E, _, heq⟩ := exists_effect_affine_of_hermitian H hH
+  have h1 : pairing (1 : Operator ι) X = pairing 1 Y := h Effect.one
+  rw [heq, pairing_sub_left, pairing_sub_left, pairing_smul_left,
+    pairing_smul_left, pairing_smul_left, pairing_smul_left, h E, h1]
+
+theorem pairing_sub_right (E X Y : Operator ι) :
+    pairing E (X - Y) = pairing E X - pairing E Y := by
+  simp [pairing, mass, Matrix.mul_sub]
+
+/-- Separation of the actual full density type, without a rank or purity premise. -/
+theorem density_eq_of_all_effect_probabilities_eq (ρ σ : Density ι)
+    (h : ∀ E : Effect ι, E.probability ρ = E.probability σ) : ρ = σ := by
+  let D : Operator ι := ρ.matrix - σ.matrix
+  have hD : D.IsHermitian := ρ.positive.isHermitian.sub σ.positive.isHermitian
+  have heq : pairing D ρ.matrix = pairing D σ.matrix :=
+    pairing_eq_of_all_effect_pairings_eq ρ.matrix σ.matrix h D hD
+  have hz : pairing D D = 0 := by
+    change pairing D (ρ.matrix - σ.matrix) = 0
+    rw [pairing_sub_right, heq, sub_self]
+  have ht : (Dᴴ * D).trace = 0 := by
+    apply Complex.ext
+    · change ((Dᴴ * D).trace).re = 0
+      rw [hD.eq]
+      exact hz
+    · exact trace_im_eq_zero (Matrix.posSemidef_conjTranspose_mul_self D)
+  apply Density.ext
+  exact sub_eq_zero.mp (Matrix.trace_conjTranspose_mul_self_eq_zero_iff.mp ht)
+
+theorem density_eq_iff_all_effect_probabilities_eq (ρ σ : Density ι) :
+    ρ = σ ↔ ∀ E : Effect ι, E.probability ρ = E.probability σ := by
+  constructor
+  · rintro rfl E
+    rfl
+  · exact density_eq_of_all_effect_probabilities_eq ρ σ
+
+/-- A new matrix-equality theorem; the older all-probabilities iff is unchanged. -/
+theorem effectDistance_eq_zero_iff_density_eq (ρ σ : Density ι) :
+    effectDistance ρ σ = 0 ↔ ρ = σ := by
+  rw [UEOTQM.effectDistance_eq_zero_iff, ← density_eq_iff_all_effect_probabilities_eq]
+
+end
+
+end UEOTQM.QuantumSeparation

@@ -1,0 +1,48 @@
+{
+  "reviewer": "C",
+  "target": "A v31.8 full-effect separation / complex local tomography",
+  "verdict": "CLEAR",
+  "at_utc": "2026-10-20T10:39:59.639003+00:00",
+  "method": "Read-only review of all three frozen sources and actual focused compiler/axiom logs; no compiler or old scientific gate rerun.",
+  "sources": [
+    {
+      "source": "formalization/ueot-qm/UEOTQM/QuantumSeparation.lean",
+      "sha256": "d7ebebb27423c7cc1598941cb21abfc4dac9bac05b9ade71cfd96e33db7f81a7",
+      "receipt": "03_QuantumSeparation.json",
+      "identity_matches": true,
+      "actual_exit": 0
+    },
+    {
+      "source": "formalization/ueot-qm/UEOTQM/ComplexLocalTomography.lean",
+      "sha256": "48b9867d67635ca9a33d8cb89a43f38c8bec1369111c1a00960675dad8e91d4d",
+      "receipt": "07_ComplexLocalTomography.json",
+      "identity_matches": true,
+      "actual_exit": 0
+    },
+    {
+      "source": "formalization/ueot-qm/scripts/witnesses/QuantumSeparationExamples.lean",
+      "sha256": "43a4cfc3116e9444defc90f7ee65be2d7e8e31a7d24d5423edd63b894a234b08",
+      "receipt": "09_QuantumSeparationExamples.json",
+      "identity_matches": true,
+      "actual_exit": 0
+    }
+  ],
+  "actual_log_review": {
+    "public_named_declarations": 23,
+    "witness_named_declarations": 28,
+    "allowed_axioms_only": true
+  },
+  "scientific_checks": [
+    "Effect is a genuine matrix structure with PSD of both E and I-E. Positive r=norm(H)+1 and the L2Operator/CStar order bounds are actually proved, not taken as an extra separation axiom.",
+    "Hermitian span and affine probability extension use real scalars throughout. Density separation tests the Hermitian difference D and derives trace(D†D)=0 before matrix equality.",
+    "T=i(e_ij-e_ji) has positive pairing 2 Im(X_ij). Its S⊗S-T⊗T and T⊗S+S⊗T identities are exact, including coincident indices.",
+    "Full product-effect agreement is extended to Hermitian product tests by actual two-sided affine effects, then both parts of every arbitrary joint matrix entry are recovered. There is no product, separability, purity, rank, or hidden restricted-library input assumption.",
+    "Final complex_localTomography is the original OperationalSystems.LocalTomography applied to the unchanged complexModel full density/effect presentation.",
+    "Concrete witnesses quantify over all diagonal effects for both real and imaginary coherences, exhibit actual legal separating effects with probabilities 1/0 and distance 1, cover empty/singleton/unequal carriers, and retain the existing real-model obstruction."
+  ],
+  "limits": [
+    "Formal finite mathematical results only; no new laboratory experiment, empirical selection of complex theory, or derivation of that model uniquely from Core.",
+    "Ordinary linter warnings in actual receipts are not classified as zero warnings.",
+    "This is the independent C-to-A source/scope and saved-evidence review, not the root unified acceptance or remote CI."
+  ]
+}

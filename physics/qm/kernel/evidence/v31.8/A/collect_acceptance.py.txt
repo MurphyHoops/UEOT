@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+"""Bind already completed focused Lean invocations; never invoke Lean here."""
+from __future__ import annotations
+from collections import Counter
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import re
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+OUT = ROOT / 'physics/qm/kernel/evidence/v31.8/A'
+PKG = ROOT / 'formalization/ueot-qm'
+VERIFIER = PKG / 'scripts/verify_finite_witnesses.py'
+spec = importlib.util.spec_from_file_location('retained_witness_verifier', VERIFIER)
+verifier = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(verifier)
+
+def identity(path):
+    data = path.read_bytes()
+    try:
+        name = str(path.relative_to(ROOT))
+    except ValueError:
+        name = str(path)
+    return {'path': name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+
+def write(name, data):
+    path = OUT / name
+    if path.exists():
+        raise RuntimeError(f'refusing to overwrite an existing acceptance artifact: {path}')
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+    return identity(path)
+
+def checked_receipt(name, source, olean=None):
+    path = OUT / name
+    receipt = json.loads(path.read_text())
+    assert receipt['status'] == 'PASS' and receipt['exit_code'] == 0
+    assert receipt['source_unchanged_during_compilation'] is True
+    source_identity = identity(source)
+    assert receipt['source_sha256'] == source_identity['sha256']
+    assert receipt['source_bytes'] == source_identity['bytes']
+    log = identity(OUT / receipt['log'])
+    assert receipt['log_sha256'] == log['sha256'] and receipt['log_bytes'] == log['bytes']
+    assert receipt['shared_lock'] == '/tmp/qm317-lean.lock'
+    assert receipt['full_package_rebuild'] is False
+    result = {'receipt': identity(path), 'source': source_identity, 'log': log,
+              'exit_code': receipt['exit_code'], 'source_matches_successful_invocation': True}
+    if olean:
+        result['olean'] = identity(olean)
+        assert receipt['olean_sha256'] == result['olean']['sha256']
+    return result
+
+inventory_path = OUT / 'public-declarations.json'
+inventory = json.loads(inventory_path.read_text())
+public = inventory['declarations']
+sources = sorted({d['source'] for d in public})
+for relative in sources:
+    path = ROOT / relative
+    expected = [d for d in public if d['source'] == relative]
+    code = verifier.lean_code(path.read_text())
+    namespace = re.findall(r'^namespace\s+([^\n]+)$', code, re.M)
+    assert namespace == ['UEOTQM.' + path.stem]
+    actual = []
+    for line in code.splitlines():
+        line = line.strip()
+        if match := re.match(r'(?:@\[[^]]+\]\s*)?(?:noncomputable\s+)?(theorem|def|abbrev)\s+(' + verifier.IDENTIFIER + r')(?=\s|:|\()', line):
+            actual.append({'kind': match[1], 'name': namespace[0] + '.' + match[2]})
+        elif re.match(r'(?:private\s+|protected\s+)?(?:theorem|def|abbrev)\b', line):
+            raise ValueError(f'unsupported declaration: {line}')
+    assert actual == [{'kind': d['kind'], 'name': d['name']} for d in expected]
+    assert all(d['source_sha256'] == identity(path)['sha256'] for d in expected)
+    assert not re.search(r'\b(?:sorry|admit|native_decide|axiom)\b', code)
+
+witness_path = PKG / 'scripts/witnesses/QuantumSeparationExamples.lean'
+witness = verifier.witness_declarations(witness_path)
+assert not re.search(r'\b(?:sorry|admit|native_decide|axiom)\b', verifier.lean_code(witness_path.read_text()))
+audits = {}
+for name, logfile, declarations in (
+    ('public', '10_PublicAxioms.log', public),
+    ('witness', '09_QuantumSeparationExamples.log', witness),
+):
+    log = OUT / logfile
+    audit = verifier.audit_result(log, declarations)
+    output_names = re.findall(r"^'([^\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)", log.read_text(), re.M)
+    audit['source_order_exact'] = [name for name, _ in output_names] == [d['name'] for d in declarations]
+    assert audit['status'] == 'PASS' and audit['source_order_exact']
+    audit['log'] = identity(log)
+    audits[name] = write(f'{name}-named-axiom-audit.json', audit)
+
+auditor = Path('/workspace/scratch/f11b4261e187/handoff/qm318_A_PublicAxioms.lean')
+assert auditor.read_bytes() == (OUT / 'PublicAxioms.lean.txt').read_bytes()
+checks = [
+    checked_receipt('03_QuantumSeparation.json', PKG / 'UEOTQM/QuantumSeparation.lean', PKG / '.lake/build/lib/lean/UEOTQM/QuantumSeparation.olean'),
+    checked_receipt('07_ComplexLocalTomography.json', PKG / 'UEOTQM/ComplexLocalTomography.lean', PKG / '.lake/build/lib/lean/UEOTQM/ComplexLocalTomography.olean'),
+    checked_receipt('09_QuantumSeparationExamples.json', witness_path),
+    checked_receipt('10_PublicAxioms.json', auditor),
+]
+public_counts = dict(Counter(d['kind'] for d in public))
+witness_counts = dict(Counter(d['kind'] for d in witness))
+assert public_counts == {'def': 3, 'theorem': 20}
+assert witness_counts == {'abbrev': 1, 'def': 8, 'theorem': 19}
+write('witness-declarations.json', {'status': 'ACTUAL_COMPLETE_NAMED_AUDIT_PASS',
+    'source': identity(witness_path), 'counts': witness_counts, 'declarations': witness,
+    'source_order_print_axioms_complete': True})
+result = {
+    'schema': 'ueot_qm.v31_8.A.focused_acceptance.v1',
+    'status': 'PASS_FOCUSED_PENDING_UNIFIED_ACCEPTANCE',
+    'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+    'scope': 'Only the two new A modules and one concrete witness group; no full v31.8 or remote acceptance is asserted.',
+    'source_baseline_main_commit': '7d05d0369b6793e28f0e39efaa77c0c9887479d1',
+    'source_baseline_main_tree': 'c527f8481878d1e0b839e93695c0d4ee5edf09f4',
+    'scientific_sources': [check['source'] for check in checks[:3]],
+    'successful_invocations': checks,
+    'public_modules': 2,
+    'public_explicit_theorems': 20,
+    'public_definitions': 3,
+    'public_abbreviations': 0,
+    'public_named_audit_count': len(public),
+    'witness_explicit_theorems': 19,
+    'witness_definitions': 8,
+    'witness_abbreviations': 1,
+    'witness_named_audit_count': len(witness),
+    'allowed_axioms': sorted(verifier.ALLOWED_AXIOMS),
+    'named_axiom_audits': audits,
+    'public_source_inventory': identity(inventory_path),
+    'public_inventory_checkpoint_role': 'Earlier source enumeration retained unchanged; current actual acceptance is recorded here.',
+    'parser': identity(VERIFIER),
+    'collector': identity(Path(__file__)),
+    'compiler_invocations_during_receipt_collection': 0,
+    'ordinary_linter_warnings_present': True,
+    'historical_failures_retained': {
+        '01_02': 'Lake launch failures in restricted environment, before proof compilation.',
+        '04_05_06': 'Failed focused tomography API/normalization attempts, excluded from acceptance.',
+        '08': 'Failed witness singleton proof. Compiler error recovery reported sorryAx; not accepted evidence. Final source has no sorry/admit and successful log09 passes all 28 named audits.'
+    },
+    'scientific_scope': {
+        'finite_complex_full_density_and_effect_spaces': True,
+        'density_separation_requires_all_legal_effects': True,
+        'hermitian_span_scalar_field': 'real',
+        'joint_tomography_inputs': 'all Density (ι × ν); no purity, product-state or separability premise',
+        'original_complex_model_principle_proved': True,
+        'restricted_diagonal_effect_controls': 'Both x± and y± pairs agree on all legal diagonal effects but a legal phase-sensitive effect gives probabilities 1 and 0; effectDistance=1.',
+        'boundary_witnesses': ['empty carrier has no density', 'singleton densities equal', 'Fin 2 × Fin 3 tomography'],
+        'existing_real_model_obstruction_retained': True,
+        'new_experimental_data': False,
+        'unique_selection_of_complex_theory_from_Core': False,
+        'trace_norm_or_diamond_norm_identification': False,
+        'infinite_dimensional_extension': False
+    },
+    'pending': ['root integration into imports and AxiomAudit', 'unified acceptance', 'canonical chapter 60 integration', 'real v31.8 remote CI and publication']
+}
+artifact = write('verification.json', result)
+archive = OUT / 'collect_acceptance.py.txt'
+assert not archive.exists()
+archive.write_bytes(Path(__file__).read_bytes())
+print(json.dumps({'status': result['status'], 'public_audits': len(public), 'witness_audits': len(witness), 'verification': artifact}, ensure_ascii=False))

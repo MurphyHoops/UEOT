@@ -1,0 +1,66 @@
+{
+  "reviewer": "A",
+  "status": "BLOCK_EXECUTION_UNTIL_TWO_LIFECYCLE_FIXES",
+  "recorded_at_utc": "2026-10-20T10:55:27.521717+00:00",
+  "method": "Read-only static review of complete inventory/acceptance helpers, declaration parser, actual source enumeration, retained witness verifier, exact export verifier and axiom checker. No helper, compiler, runtime gate or heavy test executed by this review.",
+  "reviewed_helpers": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_inventory.py",
+      "bytes": 7766,
+      "sha256": "b6ff2164a52188483ca9ed1a1739336a91953d4dfc2f795561152133706cd9d1"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_accept.py",
+      "bytes": 15411,
+      "sha256": "aedaa14f26a458964b01c112a994fb91f27da2d3b7c7551e52d1da783dfbf299"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_source_parser.py",
+      "bytes": 3210,
+      "sha256": "503eff61729dff90b18bd98278903e2831ecfb35659681a53a6bd9374d52e6de"
+    }
+  ],
+  "preserved_reviewed_snapshots": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/reviewed_root_initial_qm318_inventory.py.txt",
+      "bytes": 7766,
+      "sha256": "b6ff2164a52188483ca9ed1a1739336a91953d4dfc2f795561152133706cd9d1"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/reviewed_root_initial_qm318_accept.py.txt",
+      "bytes": 15411,
+      "sha256": "aedaa14f26a458964b01c112a994fb91f27da2d3b7c7551e52d1da783dfbf299"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/A/reviewed_root_initial_qm318_source_parser.py.txt",
+      "bytes": 3210,
+      "sha256": "503eff61729dff90b18bd98278903e2831ecfb35659681a53a6bd9374d52e6de"
+    }
+  ],
+  "inventory_verdict": "CLEAR_FOR_CURRENT_SIX_MODULE_SOURCE_SYNTAX",
+  "coverage_findings": [
+    "Inherited 855 requests are reconstructed from the exact closed main commit and blob-bound to its actual untruncated tree. All 29 inherited public modules are byte-compared with remote baseline and their inherited declaration inventory.",
+    "All six new modules use supported ordinary declarations. The parser handles the nested Controller namespace, masks comments/strings, enumerates explicit declarations plus any named public instances/constructors, and current inventory has no new public instances/constructors. New local Classical.propDecidable registration is not a newly defined public object.",
+    "Public import set and unique audit request set are checked. Actual inventory currently records 35 modules, 747 explicit theorems and 985 targets, including 101 new theorems and 130 new targets; source enumeration itself remains pending execution.",
+    "Acceptance compares all 35 source hashes with the inventory before building, freezes the entire 89-path proof/runtime/workflow source manifest, and compares it again at the end. The recent A comment-only change intentionally requires root final re-enumeration before execution.",
+    "The proposed gate covers actual pinned toolchain and nine dependencies; full package build; all exact named foundation reports; all ten concrete witness groups with source/artifact before-after identity; six exact exports, four corrupted-true rejections and four same-data false proofs through the retained producer; 100 runtime methods; and four executed, JSON-parsed demos.",
+    "The exact-export verifier current source constants are six examples and seven positive names each, plus four mutation controls. Its PASS computation requires all cases and the same-data false-witness checks. Acceptance currently relies on that producer PASS before reporting 6/42/4/4; no conflicting current count was found.",
+    "Recursive Core binding checks precisely 56 actual Core imports against closed remote blobs and inherited source hashes, plus built artifact hashes. It does not misrepresent 56 imports as the entire 106-item frozen Core.",
+    "Output paths are confined to new v31.8 evidence and current package scratch audit outputs; inherited v31.7 evidence is read-only in the helper code. No canonical book, Core source or remote Git history write appears."
+  ],
+  "blocking_findings": [
+    {
+      "id": "A-ROOT-ACCEPT-01",
+      "location": "qm318_accept.py run(): subprocess.run(timeout=...), followed by exception and outer flock release",
+      "risk": "A timeout kills the direct Lake or nested verifier process but does not ensure descendant Lean processes exit. Releasing the global build lock while descendants remain can overlap heavy Lean execution on the shared memory budget.",
+      "required_resolution": "Own each subprocess group/session, terminate the group on timeout or interruption, and wait for cleanup before propagating failure or releasing the lock; reuse the retained exact-export verifier lifecycle pattern."
+    },
+    {
+      "id": "A-ROOT-ACCEPT-02",
+      "location": "qm318_accept.py run()/write()/copy() and __main__ exception writer",
+      "risk": "Re-entering the same fixed output directory opens prior logs with wb and replaces receipt JSON, erasing prior failure/success evidence. An exception guard must not itself overwrite the old acceptance-progress file after rejecting re-entry.",
+      "required_resolution": "Before any attempt-owned write, reject already occupied gate outputs or allocate a fresh explicit attempt namespace; keep old attempts unchanged and bind source/attempt identity in the current publication receipt."
+    }
+  ],
+  "pending": "Root fixes the two harness-only lifecycle issues; A can review that narrow diff without rerunning any scientific test. Initial unified execution is not yet accepted."
+}

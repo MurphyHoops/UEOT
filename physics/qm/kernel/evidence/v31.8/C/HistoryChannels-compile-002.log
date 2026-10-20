@@ -1,0 +1,111 @@
+UEOTQM/HistoryChannels.lean:29:8: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.principal_apply`:
+  [Fintype H]
+  [DecidableEq H]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype H] [DecidableEq H] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:32:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.principal_posSemidef`:
+  [Fintype H]
+  [DecidableEq H]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype H] [DecidableEq H] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:36:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.sum_mass_principal`:
+  [DecidableEq H]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq H] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:46:6: error: Failed to rewrite using equation theorems for `weight`
+UEOTQM/HistoryChannels.lean:61:4: error: Type mismatch: After simplification, term
+  hx
+ has type
+  ((submatrix 1 - submatrix E.matrix) (fun i => (h, i)) fun i => (h, i)).PosSemidef
+but is expected to have type
+  PosSemidef (1 - principal E.matrix h)
+UEOTQM/HistoryChannels.lean:68:87: error: unsolved goals
+H : Type u_1
+ι : Type u_2
+inst✝³ : Fintype H
+inst✝² : DecidableEq H
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+E : Operator (H × ι)
+B : H → Operator ι
+⊢ mass (E * ClassicalQuantumMemory.block B) = ∑ h, mass ((submatrix E (fun i => (h, i)) fun i => (h, i)) * B h)
+UEOTQM/HistoryChannels.lean:69:17: warning: This simp argument is unused:
+  Matrix.trace
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pairing, Matrix.mul_apply, ClassicalQuantumMemory.block, principal, Fintype.sum_prod_type]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/HistoryChannels.lean:69:31: warning: This simp argument is unused:
+  Matrix.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pairing, Matrix.trace, ClassicalQuantumMemory.block, principal, Fintype.sum_prod_type]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/HistoryChannels.lean:69:49: warning: This simp argument is unused:
+  ClassicalQuantumMemory.block
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pairing, Matrix.trace, Matrix.mul_apply, principal, Fintype.sum_prod_type]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/HistoryChannels.lean:70:15: warning: This simp argument is unused:
+  Fintype.sum_prod_type
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pairing, Matrix.trace, Matrix.mul_apply, ClassicalQuantumMemory.block, principal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/HistoryChannels.lean:76:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.readKraus_gram`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/HistoryChannels.lean:87:81: error: unsolved goals
+case pos
+H : Type u_1
+ι : Type u_2
+ν : Type u_3
+inst✝⁵ : Fintype H
+inst✝⁴ : DecidableEq H
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype ν
+inst✝ : DecidableEq ν
+h g g' : H
+K : Matrix ν ι ℂ
+X : Operator (H × ι)
+i j : ν
+hg : g = h
+hg' : g' = h
+⊢ ∑ x, ∑ x_1, (∑ x_2, K i x_2 * X (h, x_2) (x, x_1)) * (starRingEnd ℂ) (if x = h then K j x_1 else 0) =
+    ∑ j_1, (∑ j, K i j * X (h, j) (h, j_1)) * (starRingEnd ℂ) (K j j_1)
+UEOTQM/HistoryChannels.lean:104:8: error: Type mismatch: After simplification, term
+  congrFun (congrFun (C g).complete i) j
+ has type
+  (∑ k, ((C g).kraus k)ᴴ * (C g).kraus k) i j = 1 i j
+but is expected to have type
+  (∑ x, if True then if True then (((C g).kraus x)ᴴ * (C g).kraus x) i j else 0 else 0) = 1 (g, i) (g, j)
+UEOTQM/HistoryChannels.lean:105:30: warning: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hg, Ne.symm hg, Prod.mk.injEq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/HistoryChannels.lean:115:42: warning: declaration uses `sorry`

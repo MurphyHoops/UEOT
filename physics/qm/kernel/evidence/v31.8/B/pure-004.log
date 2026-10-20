@@ -1,0 +1,16 @@
+UEOTQM/PureStateCharacterization.lean:22:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.outer_real_smul`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/PureStateCharacterization.lean:29:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.gram_eq_sum_outer`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/PureStateCharacterization.lean:35:82: error: unexpected token 'omit'; expected 'lemma'

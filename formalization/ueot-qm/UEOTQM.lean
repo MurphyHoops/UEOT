@@ -27,3 +27,9 @@ import UEOTQM.OperationalSystems
 import UEOTQM.ClassicalQuantumMemory
 import UEOTQM.QuantumDoobModel
 import UEOTQM.QuantumDoobDynamics
+import UEOTQM.QuantumSeparation
+import UEOTQM.ComplexLocalTomography
+import UEOTQM.PureStateCharacterization
+import UEOTQM.PurificationUniqueness
+import UEOTQM.HistoryChannels
+import UEOTQM.ActionRecordBudget

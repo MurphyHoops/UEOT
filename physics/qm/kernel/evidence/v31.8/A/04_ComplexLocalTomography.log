@@ -1,0 +1,93 @@
+UEOTQM/ComplexLocalTomography.lean:33:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.ComplexLocalTomography.symmetricUnit_hermitian`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/ComplexLocalTomography.lean:36:79: error: unsolved goals
+ι : Type u_1
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+i j : ι
+⊢ single j i (-Complex.I) - single i j (-Complex.I) = single i j Complex.I - single j i Complex.I
+UEOTQM/ComplexLocalTomography.lean:43:13: warning: This simp argument is unused:
+  map_star
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, Complex.conj_re] at hre
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ComplexLocalTomography.lean:52:13: warning: This simp argument is unused:
+  map_star
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, Complex.conj_im] at him
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ComplexLocalTomography.lean:64:4: error(lean.unknownIdentifier): Unknown constant `Matrix.sub_kronecker`
+UEOTQM/ComplexLocalTomography.lean:64:26: error(lean.unknownIdentifier): Unknown constant `Matrix.kronecker_sub`
+UEOTQM/ComplexLocalTomography.lean:66:2: error: ring failed, ring expressions not equal
+ι : Type u_1
+ν : Type u_2
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype ν
+inst✝ : DecidableEq ν
+i j : ι
+a b : ν
+⊢ 1 = 1 / 2
+UEOTQM/ComplexLocalTomography.lean:65:13: warning: This simp argument is unused:
+  Complex.I_mul_I
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [symmetricUnit, imaginaryUnit, Matrix.add_kronecker, Matrix.kronecker_add, Matrix.sub_kronecker,
+    Matrix.kronecker_sub, Matrix.single_kronecker_single, one_mul, Matrix.single_neg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ComplexLocalTomography.lean:65:30: warning: This simp argument is unused:
+  Matrix.single_neg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [symmetricUnit, imaginaryUnit, Matrix.add_kronecker, Matrix.kronecker_add, Matrix.sub_kronecker,
+    Matrix.kronecker_sub, Matrix.single_kronecker_single, one_mul, Complex.I_mul_I]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ComplexLocalTomography.lean:74:4: error(lean.unknownIdentifier): Unknown constant `Matrix.sub_kronecker`
+UEOTQM/ComplexLocalTomography.lean:74:26: error(lean.unknownIdentifier): Unknown constant `Matrix.kronecker_sub`
+UEOTQM/ComplexLocalTomography.lean:76:2: error: ring failed, ring expressions not equal
+ι : Type u_1
+ν : Type u_2
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype ν
+inst✝ : DecidableEq ν
+i j : ι
+a b : ν
+⊢ 1 = 0
+UEOTQM/ComplexLocalTomography.lean:74:48: warning: This simp argument is unused:
+  Matrix.single_kronecker_single
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [symmetricUnit, imaginaryUnit, Matrix.add_kronecker, Matrix.kronecker_add, Matrix.sub_kronecker,
+    Matrix.kronecker_sub, one_mul, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ComplexLocalTomography.lean:75:4: warning: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [symmetricUnit, imaginaryUnit, Matrix.add_kronecker, Matrix.kronecker_add, Matrix.sub_kronecker,
+    Matrix.kronecker_sub, Matrix.single_kronecker_single, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ComplexLocalTomography.lean:75:13: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [symmetricUnit, imaginaryUnit, Matrix.add_kronecker, Matrix.kronecker_add, Matrix.sub_kronecker,
+    Matrix.kronecker_sub, Matrix.single_kronecker_single, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/ComplexLocalTomography.lean:98:13: error(lean.unknownIdentifier): Unknown constant `Matrix.sub_kronecker`
+UEOTQM/ComplexLocalTomography.lean:98:35: error(lean.unknownIdentifier): Unknown constant `Matrix.kronecker_sub`
+UEOTQM/ComplexLocalTomography.lean:98:2: error: `simp` made no progress

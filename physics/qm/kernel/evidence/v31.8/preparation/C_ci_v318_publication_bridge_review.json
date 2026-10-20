@@ -1,0 +1,84 @@
+{
+  "schema": "ueot_qm.v31_8.C.publication_comment_bridge_review.v1",
+  "status": "CLEAR",
+  "recorded_at_utc": "2026-10-20T11:25:34.691109+00:00",
+  "original_unified_source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+  "publication_source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+  "source_count": 89,
+  "identical_raw_files": 88,
+  "changed_paths": [
+    "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean"
+  ],
+  "only_change": "The word admit -> have within one existing documentation comment. Whole-file exact replacement, archived diff and both snapshots independently checked.",
+  "erased_executable_code_equal": true,
+  "declaration_inventory_original_binding_preserved": true,
+  "actual_workflow_raw_proof_escape_regex": {
+    "command": [
+      "grep",
+      "-RInE",
+      "^[[:space:]]*(axiom|opaque)[[:space:]]|\\b(sorry|admit|native_decide)\\b",
+      "UEOTQM"
+    ],
+    "cwd": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm",
+    "exit_code": 1,
+    "interpretation": "grep exit 1, no matches: the unchanged workflow reject step passes.",
+    "stdout": "",
+    "stderr": ""
+  },
+  "original_8799_job_receipt_raw_sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8",
+  "original_manifest_raw_sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
+  "publication_reconciliation_sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+  "additional_compiler_invocations": 0,
+  "runtime_tests_rerun": 0,
+  "CI_verifier_main_called": false,
+  "future_CI_must_test_publication_raw_bytes": true,
+  "all_reviewed_inputs_unchanged": true,
+  "input_files": {
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/source-manifest.json": {
+      "sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
+      "bytes": 16700
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/publication-source-manifest.json": {
+      "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6",
+      "bytes": 16700
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/lean-verification.json": {
+      "sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8",
+      "bytes": 3859
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json": {
+      "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+      "bytes": 3387
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/B/comment-only/correction.json": {
+      "sha256": "8b60d4d7e2a390eab423ce47b0ac35771b6bd14fef3ee5a1ef6247a3187b5474",
+      "bytes": 1128
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/B/comment-only/before.lean.txt": {
+      "sha256": "ff857b027598ac15cccc3c36b245e27290418fe6d4545f48984e10ebb9f8879f",
+      "bytes": 15266
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/B/comment-only/after.lean.txt": {
+      "sha256": "680e8e42f6a25a5540dd485cf2c00a5a4e937c1cc639aa8d5340ecc3fd483463",
+      "bytes": 15265
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/B/comment-only/admit-to-have.diff": {
+      "sha256": "b02b01538525b5655c47a8f7def917ddb4e63b1bd98daa7020a0f5f1f32c05e5",
+      "bytes": 709
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/declaration-inventory.json": {
+      "sha256": "75058ea424fdc25fec12a40e327b4a601b04937f8a60d4fe8e4a1f8e6532c4ab",
+      "bytes": 190452
+    },
+    "/workspace/scratch/f11b4261e187/handoff/qm318_reconcile_publication_source.py": {
+      "sha256": "96e7fad3e2a121146af8662c29e4cde8500354a999535a4418d39ff9b7abbe42",
+      "bytes": 5184
+    },
+    "/workspace/scratch/f11b4261e187/qm_v318_work/.github/workflows/ueot-qm.yml": {
+      "sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e",
+      "bytes": 6477
+    }
+  },
+  "blockers": [],
+  "scope": "Independent inspection of actual local snapshots, original/final manifests, raw bytes and the exact existing workflow text gate; no altered historical build identity, no remote CI claim."
+}

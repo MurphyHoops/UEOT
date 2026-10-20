@@ -1,0 +1,43 @@
+scripts/witnesses/ActionRecordBudgetExamples.lean:24:28: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ActionRecordBudgetExamples.lean:29:52: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, certain, ho]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ActionRecordBudgetExamples.lean:59:4: error: ring failed, ring expressions not equal
+⊢ 1 / 2 = 1
+scripts/witnesses/ActionRecordBudgetExamples.lean:64:43: warning: declaration uses `sorry`
+scripts/witnesses/ActionRecordBudgetExamples.lean:65:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+scripts/witnesses/ActionRecordBudgetExamples.lean:77:38: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'UEOTQM.ActionRecordBudgetExamples.Qubit' does not depend on any axioms
+'UEOTQM.ActionRecordBudgetExamples.Label' does not depend on any axioms
+'UEOTQM.ActionRecordBudgetExamples.certain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.certain_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.certain_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.halfK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.halfK_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.halfK_conjugation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biasedKraus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased_branch' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.biased_probability' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ActionRecordBudgetExamples.rhoZero' depends on axioms: [propext, Classical.choice, Quot.sound]

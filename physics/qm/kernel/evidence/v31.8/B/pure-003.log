@@ -1,0 +1,53 @@
+UEOTQM/PureStateCharacterization.lean:23:41: error: unsolved goals
+ι : Type u
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+r : ℝ
+v : ι → ℂ
+i j : ι
+⊢ ↑r * v i * (↑r * (starRingEnd ℂ) (v j)) = ↑r * ↑r * (v i * (starRingEnd ℂ) (v j))
+UEOTQM/PureStateCharacterization.lean:25:21: warning: This simp argument is unused:
+  smul_mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [outer_apply, mul_smul_comm, smul_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/PureStateCharacterization.lean:25:37: warning: This simp argument is unused:
+  mul_smul_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [outer_apply, smul_mul_assoc, smul_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/PureStateCharacterization.lean:25:52: warning: This simp argument is unused:
+  smul_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [outer_apply, smul_mul_assoc, mul_smul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/PureStateCharacterization.lean:29:44: error: unsolved goals
+ι : Type u
+α : Type v
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype α
+inst✝ : DecidableEq α
+A : Matrix ι α ℂ
+i j : ι
+⊢ ∑ j_1, A i j_1 * (starRingEnd ℂ) (A j j_1) = (∑ a, outer fun i => A i a) i j
+UEOTQM/PureStateCharacterization.lean:35:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.IsPure.normalize_eq_of_positive_summand`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/PureStateCharacterization.lean:64:4: error: Type mismatch: After simplification, term
+  Eq.symm h
+ has type
+  ∑ i, (trace (P i)).re = (trace ρ.matrix).re
+but is expected to have type
+  ∑ a, (trace (P a)).re = 1
+UEOTQM/PureStateCharacterization.lean:81:10: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `v ?a✝` is a value of type
+  ℂ

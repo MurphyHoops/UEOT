@@ -1,0 +1,21 @@
+Dropped cmap subtable from font '0':	format  6, platformID  1, platEncID  0
+Traceback (most recent call last):
+  File "/workspace/scratch/f11b4261e187/handoff/qm318_prepare_font.py", line 24, in <module>
+    font = Merger().merge([str(LATIN),str(scaled)])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/__init__.py", line 117, in merge
+    table = clazz(tag).merge(self, tables)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/base.py", line 79, in merge
+    return m.mergeObjects(self, self.mergeMap, tables)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/__init__.py", line 155, in mergeObjects
+    value = mergeLogic(getattr(table, key, NotImplemented) for table in tables)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/base.py", line 61, in mergeObjects
+    value = mergeLogic(getattr(table, key, NotImplemented) for table in lst)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/base.py", line 44, in mergeObjects
+    logic = clazz.mergeMap
+            ^^^^^^^^^^^^^^
+AttributeError: type object 'MathConstants' has no attribute 'mergeMap'

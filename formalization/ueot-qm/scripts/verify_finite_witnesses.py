@@ -24,7 +24,8 @@ import sys
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 CORE_ROOT = PACKAGE_ROOT.parent / "ueot-core"
 WITNESSES = ("MixtureExamples", "SurvivalTwoState", "RealTomographyTwoRebit", "QuantumDoobExamples",
-             "QuantumPurificationExamples", "ClassicalQuantumMemoryExamples", "QuantumDoobDynamicsExamples")
+             "QuantumPurificationExamples", "ClassicalQuantumMemoryExamples", "QuantumDoobDynamicsExamples",
+             "QuantumSeparationExamples", "PurificationUniquenessExamples", "ActionRecordBudgetExamples")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 IDENTIFIER = r"[A-Za-z_][A-Za-z0-9_'.]*"
 

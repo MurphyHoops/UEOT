@@ -1,0 +1,18 @@
+Dropped cmap subtable from font '0':	format  6, platformID  1, platEncID  0
+Traceback (most recent call last):
+  File "/workspace/scratch/f11b4261e187/handoff/qm318_prepare_font.py", line 30, in <module>
+    font = Merger().merge([str(latin_text),str(scaled)])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/__init__.py", line 117, in merge
+    table = clazz(tag).merge(self, tables)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/base.py", line 79, in merge
+    return m.mergeObjects(self, self.mergeMap, tables)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/__init__.py", line 155, in mergeObjects
+    value = mergeLogic(getattr(table, key, NotImplemented) for table in tables)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/merge/util.py", line 22, in equal
+    assert all(item == first for item in t), "Expected all items to be equal: %s" % lst
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Expected all items to be equal: [NotImplemented, 0]

@@ -1,0 +1,202 @@
+scripts/witnesses/PurificationUniquenessExamples.lean:32:83: error: unsolved goals
+case «0».«0».a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).re * (3 / 5) + ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).re * (4 / 5) = 1
+
+case «0».«0».a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).im * (3 / 5) + ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).im * (4 / 5) = 0
+
+case «0».«1».a
+⊢ -(((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).im * (4 / 5)) + ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).im * (3 / 5) = 0
+
+case «0».«1».a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).re * (4 / 5) + -(((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).re * (3 / 5)) = 0
+
+case «1».«0».a
+⊢ (-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).re * (3 / 5) +
+      ((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).re * (4 / 5) =
+    0
+
+case «1».«0».a
+⊢ (-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).im * (3 / 5) +
+      ((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).im * (4 / 5) =
+    0
+
+case «1».«1».a
+⊢ -((-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).im * (4 / 5)) +
+      ((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).im * (3 / 5) =
+    1
+
+case «1».«1».a
+⊢ (-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).re * (4 / 5) +
+      -(((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).re * (3 / 5)) =
+    0
+scripts/witnesses/PurificationUniquenessExamples.lean:38:83: error: unsolved goals
+case «0».«0».a
+⊢ 3 / 5 * ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).re +
+      -(4 / 5 * (-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).im) =
+    1
+
+case «0».«0».a
+⊢ 3 / 5 * ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).im +
+      4 / 5 * (-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).re =
+    0
+
+case «0».«1».a
+⊢ 3 / 5 * ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).re +
+      -(4 / 5 * ((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).im) =
+    0
+
+case «0».«1».a
+⊢ 3 / 5 * ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).im + 4 / 5 * ((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).re =
+    0
+
+case «1».«0».a
+⊢ 4 / 5 * ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).re +
+      3 / 5 * (-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).im =
+    0
+
+case «1».«0».a
+⊢ 4 / 5 * ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).im +
+      -(3 / 5 * (-((starRingEnd ℂ) 4 * Complex.I) / (starRingEnd ℂ) 5).re) =
+    0
+
+case «1».«1».a
+⊢ 4 / 5 * ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).re + 3 / 5 * ((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).im =
+    1
+
+case «1».«1».a
+⊢ 4 / 5 * ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).im +
+      -(3 / 5 * ((starRingEnd ℂ) 3 * Complex.I / (starRingEnd ℂ) 5).re) =
+    0
+scripts/witnesses/PurificationUniquenessExamples.lean:44:68: error: unsolved goals
+case «0».«0».a
+⊢ 3 / 5 * ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).re = 9 / 25
+
+case «0».«0».a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).im = 0
+
+case «1».«1».a
+⊢ 4 / 5 * ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).re = 16 / 25
+
+case «1».«1».a
+⊢ ((starRingEnd ℂ) 4 / (starRingEnd ℂ) 5).im = 0
+scripts/witnesses/PurificationUniquenessExamples.lean:50:71: error: unsolved goals
+case «0».«0».a
+⊢ 9 / 25 * ((starRingEnd ℂ) 9 / (starRingEnd ℂ) 25).re + 12 / 25 * ((starRingEnd ℂ) 12 / (starRingEnd ℂ) 25).re = 9 / 25
+
+case «0».«0».a
+⊢ 9 / 25 * ((starRingEnd ℂ) 9 / (starRingEnd ℂ) 25).im + 12 / 25 * ((starRingEnd ℂ) 12 / (starRingEnd ℂ) 25).im = 0
+
+case «0».«1».a
+⊢ 9 / 25 * (-((starRingEnd ℂ) 16 * Complex.I) / (starRingEnd ℂ) 25).re +
+      12 / 25 * ((starRingEnd ℂ) 12 * Complex.I / (starRingEnd ℂ) 25).re =
+    0
+
+case «0».«1».a
+⊢ 9 / 25 * (-((starRingEnd ℂ) 16 * Complex.I) / (starRingEnd ℂ) 25).im +
+      12 / 25 * ((starRingEnd ℂ) 12 * Complex.I / (starRingEnd ℂ) 25).im =
+    0
+
+case «1».«0».a
+⊢ -(16 / 25 * ((starRingEnd ℂ) 9 / (starRingEnd ℂ) 25).im) + 12 / 25 * ((starRingEnd ℂ) 12 / (starRingEnd ℂ) 25).im = 0
+
+case «1».«0».a
+⊢ 16 / 25 * ((starRingEnd ℂ) 9 / (starRingEnd ℂ) 25).re + -(12 / 25 * ((starRingEnd ℂ) 12 / (starRingEnd ℂ) 25).re) = 0
+
+case «1».«1».a
+⊢ -(16 / 25 * (-((starRingEnd ℂ) 16 * Complex.I) / (starRingEnd ℂ) 25).im) +
+      12 / 25 * ((starRingEnd ℂ) 12 * Complex.I / (starRingEnd ℂ) 25).im =
+    16 / 25
+
+case «1».«1».a
+⊢ 16 / 25 * (-((starRingEnd ℂ) 16 * Complex.I) / (starRingEnd ℂ) 25).re +
+      -(12 / 25 * ((starRingEnd ℂ) 12 * Complex.I / (starRingEnd ℂ) 25).re) =
+    0
+scripts/witnesses/PurificationUniquenessExamples.lean:118:83: error: unsolved goals
+case a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).im = 0
+
+case a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).re * (3 / 5) * (12 / 25) = 108 / 625
+scripts/witnesses/PurificationUniquenessExamples.lean:136:93: error: unsolved goals
+case a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).im = 0
+
+case a
+⊢ ((starRingEnd ℂ) 3 / (starRingEnd ℂ) 5).re * (3 / 5) * (16 / 25) = 144 / 625
+'UEOTQM.PurificationUniquenessExamples.firstFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.secondFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.firstVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.secondVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.marginalMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_adjoint_mul' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.auxiliaryUnitary_mul_adjoint' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.first_gram' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.second_gram' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.first_normalized' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.second_normalized' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.firstState' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.secondState' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.first_isPure' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.second_isPure' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.same_actual_marginal' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.exact_auxiliary_vector_action' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.joint_vectors_differ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.joint_densities_differ' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.full_purity_converse_instantiated' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.general_uniqueness_instantiated' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.transformed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.correct_0001_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.wrong_adjoint_0001_entry' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.wrong_transpose_0001_entry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.correct_0010_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.wrong_conjugate_0010_entry' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.wrong_adjoint_joint_density' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.wrong_transpose_joint_density' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.PurificationUniquenessExamples.wrong_conjugate_joint_density' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
