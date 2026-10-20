@@ -12,11 +12,16 @@ The current formal-verification ledger is tied to:
 - SHA-256:
   `ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`
 
-The exact content has **not yet been synchronized into this public repository**.
-Do not create a regenerated or edited substitute under the canonical filename.
+The exact content is now synchronized at
+[the frozen v3.0 source](../../mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md).
+The supplied original was checked against the previously recorded SHA-256 before
+copying; the version, 106 P-IDs and hash are unchanged. The path in
+`manifest.yaml` is relative to the repository root.
 
-Until byte-for-byte synchronization is complete, the source-level Lean ledger
-under `formalization/ueot-core/docs/` remains bound to the identity above.
+The separately maintained [mathematical book](../../mathematics/UEOT_MATHEMATICS.md)
+preserves this source and adds subsequent results, qualifications and Lean
+correspondences under its own version. Its additions do not retroactively change
+the frozen v3.0 inventory or turn the new manuscript into a new coverage receipt.
 
 ## Integrity rule
 

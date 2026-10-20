@@ -1,24 +1,17 @@
 # UEOT — Universal Evolutionary Object Theory
 
-UEOT is being developed as a **unified derivational research program**: a domain-neutral theory of objects and evolution, a machine-checked mathematical core, explicit bridges into physics, and empirical tests capable of falsifying the resulting claims.
+UEOT studies objects, persistence, evolution and purpose through **two independently maintained books**, a machine-checked mathematical core, and explicit scientific interfaces. The books develop different kinds of argument and can each be read on their own.
 
-The repository is no longer organized primarily as a manuscript or as a collection of parallel disciplines. Its active structure is organized by **epistemic role and dependency**:
+## The two books
 
-```text
-Constitution / canonical claims
-            ↓
-      UEOT Core specification
-            ↓
-   machine formalization (Lean)
-            ↓
- explicit bridge theorems + declared sector inputs
-            ↓
-      Physics / UEOT-QM / QFT / gravity
-            ↓
-   benchmarks, experiments, falsification
-            ↓
- applications and cross-domain extensions
-```
+| Work | Scope | Read |
+|---|---|---|
+| **客体、演化与意义 — 一种开放的统一自然哲学** | Philosophical arguments about process, relation, identity, life, purpose, meaning, freedom and a shared world; six parts and thirty chapters | [Markdown](./philosophy/UEOT_PHILOSOPHY.md) · [PDF](./philosophy/UEOT_PHILOSOPHY.pdf) · [LaTeX](./philosophy/UEOT_PHILOSOPHY.tex) |
+| **UEOT 数学著作** | Definitions, assumptions, proofs, counterexamples, algorithms and explicit Lean correspondences; the complete original Core together with later mathematical developments | [Markdown](./mathematics/UEOT_MATHEMATICS.md) · [PDF](./mathematics/UEOT_MATHEMATICS.pdf) · [LaTeX](./mathematics/UEOT_MATHEMATICS.tex) |
+
+Philosophy develops and defends concepts and normative arguments. Mathematics tests precise statements, derives their consequences and exhibits their limits. A theorem can require a philosophical claim to be revised; the interpretation of that theorem still needs an argument. Scientific applications add their own identification, measurement and empirical obligations.
+
+The historical [43-page philosophical paper](./UEOT_v3_top.pdf) is preserved, and the exact [Core Mathematics v3.0 source](./mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md) is now synchronized byte for byte. The maintained books have their own version history; neither silently replaces a frozen historical source.
 
 ## Core objective
 
@@ -35,6 +28,8 @@ This imposes four disciplines:
 
 | Path | Role |
 |---|---|
+| `philosophy/` | independent philosophical book, print edition and original-source provenance |
+| `mathematics/` | independent mathematical book, proofs and frozen Core source |
 | `constitution/` | governance, canonical invariants, claim-control and glossary |
 | `core/` | active domain-neutral UEOT theory and mathematical specifications |
 | `formalization/` | machine-checked formal libraries and proof ledgers |
@@ -45,7 +40,7 @@ This imposes four disciplines:
 | `publications/` | papers, monograph snapshots and release artifacts |
 | `archive/` | superseded or historical material retained for provenance |
 
-Existing `book/`, `domains/`, `source/`, and `council/` directories are retained during non-destructive migration. They are not deleted merely to make the repository look cleaner.
+The superseded `book/` dossiers have been consolidated into a [small historical archive](./philosophy/source/legacy/README.md). Original-paper extracts now live with the philosophy source. The former `source/paper/` links were redundant with the preserved root artifacts and have been retired. Meaningful domain, council and architectural materials remain in place.
 
 See [Project Architecture](./docs/PROJECT_ARCHITECTURE.md) for the target structure and migration rules.
 
@@ -83,7 +78,7 @@ Repository claims should use explicit maturity labels:
 - **empirical** — supported or rejected by a stated data/experiment pipeline
 - **deprecated** — retained for provenance but no longer active
 
-A green CI build certifies imported Lean code only. It does not by itself certify semantic coverage of every natural-language UEOT claim.
+A successful Lean build certifies the imported code under its stated assumptions. An automatic governance-only CI result does not report a Lean run. Neither result alone certifies semantic coverage of every natural-language UEOT claim.
 
 ## Historical manuscript
 
@@ -92,11 +87,11 @@ The original manuscript remains preserved:
 - [UEOT_v3_top.pdf](./UEOT_v3_top.pdf)
 - [LaTeX source archive](./UEOT_v3_top%5B1%5D.zip)
 
-These are historical/publication artifacts. They do not override newer canonical Core specifications, formal proof ledgers, or explicit research resolutions.
+The original LaTeX files are also available in [philosophy/source/original](./philosophy/source/original/README.md). Source hashes and the directory migration are recorded in [SOURCE_PROVENANCE.json](./philosophy/source/SOURCE_PROVENANCE.json).
 
 ## Branch policy
 
-Active development is performed on `main`. The GitHub repository setting may still display `master` as the default branch until that repository setting is changed; no independent theory-development line should be maintained on `master`.
+Active development is integrated through `main`. Complete and verify a coherent local change before submitting the necessary commits and PRs. The Core cloud build has a manual entry; the local build and evidence workflow is described in [Compression Operations](./formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md).
 
 ## License
 
