@@ -1,28 +1,13 @@
 name: UEOT Core Lean
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "formalization/ueot-core/UEOT.lean"
-      - "formalization/ueot-core/UEOT/**/*.lean"
-      - "formalization/ueot-core/lakefile.lean"
-      - "formalization/ueot-core/lake-manifest.json"
-      - "formalization/ueot-core/lean-toolchain"
-      - ".github/workflows/ueot-core-lean.yml"
-  pull_request:
-    paths:
-      - "formalization/ueot-core/UEOT.lean"
-      - "formalization/ueot-core/UEOT/**/*.lean"
-      - "formalization/ueot-core/lakefile.lean"
-      - "formalization/ueot-core/lake-manifest.json"
-      - "formalization/ueot-core/lean-toolchain"
-      - ".github/workflows/ueot-core-lean.yml"
+  # Routine Core development is built locally before publication. Cloud full
+  # builds remain an explicit operation on the selected ref.
   workflow_dispatch:
 
 concurrency:
-  group: ueot-core-lean-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ueot-core-lean-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: read

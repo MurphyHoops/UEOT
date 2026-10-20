@@ -80,6 +80,15 @@ jobs:
       - name: Fetch main for baseline protection
         run: git fetch origin main:refs/remotes/origin/main
 
+      - name: Reject proof escapes in compression namespace
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' formalization/ueot-core/UEOT/V3/Compression; then
+            echo "Forbidden proof escape found in compression namespace." >&2
+            exit 1
+          fi
+
       - name: Validate compression ledger and matrix
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -322,10 +331,29 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
+      - name: Report actual validation scope
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          LOCAL_PROOF_REQUIRED: ${{ needs.classify.outputs.proof_required }}
+        shell: bash
+        run: |
+          {
+            echo "## UEOT Core validation scope"
+            echo
+            echo "- governance and source proof-escape checks: PASS"
+            echo "- semantic changes require local proof evidence: ${LOCAL_PROOF_REQUIRED}"
+            if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+              echo "- cloud Compression proof: requested; see the separate proof job result"
+            else
+              echo "- cloud Lean builds: NOT RUN (local development mode)"
+              echo "- full cloud regression: manually dispatch UEOT Core Lean on the intended ref"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
 
   proof:
     needs: [classify, governance]
-    if: needs.classify.outputs.proof_required == 'true'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -350,15 +378,6 @@ jobs:
 
       - name: Restore Mathlib cache from lock
         run: lake exe cache get
-
-      - name: Reject proof escapes in compression namespace
-        shell: bash
-        run: |
-          set -euo pipefail
-          if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' UEOT/V3/Compression; then
-            echo "Forbidden proof escape found in compression namespace." >&2
-            exit 1
-          fi
 
       - name: Build compression meta-layer
         run: lake build UEOT.V3.Compression
@@ -387,10 +406,10 @@ jobs:
           {
             echo "## UEOT Core Compression Guard"
             echo
-            echo "- head: `${GITHUB_SHA}`"
+            echo "- head: ${GITHUB_SHA}"
             echo "- matrix integrity: PASS"
             echo "- ledger validation: PASS"
             echo "- compression build: PASS"
             echo "- proof-escape scan: PASS"
-            echo "- full UEOT regression: delegated to UEOT Core Lean"
+            echo "- full UEOT regression: NOT RUN here; separate manual UEOT Core Lean workflow"
           } >> "$GITHUB_STEP_SUMMARY"
