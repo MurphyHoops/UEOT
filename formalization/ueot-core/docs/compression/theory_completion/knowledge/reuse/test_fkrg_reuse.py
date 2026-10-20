@@ -20,24 +20,24 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 650)
-        self.assertEqual(res["ueot_maintained_modules"], 639)
+        self.assertEqual(res["module_source_hashes_verified"], 659)
+        self.assertEqual(res["ueot_maintained_modules"], 648)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3992)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4094)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 199)
+        self.assertEqual(res["overlay_public_theorems"], 301)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 40)
-        self.assertEqual(res["overlay_count"], 6)
-        self.assertEqual(res["overlay_registered_direct_edges"], 271)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 57)
+        self.assertEqual(res["overlay_count"], 7)
+        self.assertEqual(res["overlay_registered_direct_edges"], 434)
         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
-                             for row in self.data["graph"].values()), 5157)
+                             for row in self.data["graph"].values()), 5320)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 6)
+        self.assertEqual(len(self.data["overlays"]), 7)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -380,6 +380,148 @@ class ProofReuseTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "NATIVE_OVERLAY_EVIDENCE_DRIFT"):
                 reuse.verify_evidence_files()
 
+    def test_support_viability_overlay_scope_and_source_endpoints(self):
+        current = self.data["overlays"][6]
+        self.assertEqual(current["base_snapshot_modules"], 650)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[5])
+        self.assertEqual(len(current["added_modules"]), 9)
+        self.assertEqual(len(current["public_theorems"]), 102)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 3992)
+        self.assertEqual(distinct["cross_isDefEq_comparisons"], 407184)
+        self.assertEqual(distinct["internal_isDefEq_comparisons"], 5151)
+        self.assertEqual(distinct["definitionally_equal_matches"], 0)
+        self.assertEqual(current["proof_dependency_certification"]["registered_direct_edges"], 163)
+        lexical = current["lexical_pr_preflight"]
+        self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 17)
+        self.assertEqual(lexical["base_public_lexical_theorem_count"], 3993)
+        self.assertEqual(lexical["candidate_public_lexical_theorem_count"], 4095)
+        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 4094)
+        self.assertEqual(current["source_checkpoint_kind"], "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT")
+        self.assertIsNone(lexical["candidate_ref"])
+        self.assertEqual(current["counted_core_impact"], "NONE")
+        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        expected = {
+            "PolicyPrefixCongruenceCheck.actual_causalLaw_congr_before": [
+                "causalLaw_congr_before"],
+            "SupportViabilityClosure.initial_viability_iff_exists_zero_uncovered_policy": [
+                "SupportViabilityClosure.viablePolicy_zero_uncovered",
+                "SupportViabilityClosure.mem_coarseLaw_zero_support_iff",
+                "SupportViabilityClosure.supported_viable_of_zero_uncovered"],
+            "ViableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good": [
+                "RegisteredGoodJointCheck.registered_selected_joint_failure_of_cap_on_good",
+                "SupportViabilityClosure.viablePolicy_zero_uncovered"],
+        }
+        for short, uses in expected.items():
+            with self.subTest(symbol=short):
+                item = reuse.explain(self.data, prefix + short)
+                self.assertEqual(set(item["direct_existing_source_theorem_uses"]),
+                                 {prefix + name for name in uses})
+                self.assertEqual(item["role"],
+                                 "UNCOUNTED_SUPPORT_VIABILITY_AND_REGISTERED_JOINT_BRIDGES")
+                self.assertEqual(item["area"], "V3/Compression/TheoryCompletion/UnifiedClosure")
+
+    def test_support_viability_actual_support_checker_and_joint_routes(self):
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        viability = prefix + "SupportViabilityClosure."
+        joint = prefix + "RegisteredGoodJointCheck."
+        # These are registered compiled proof edges. Their shared source and
+        # policy parameters are reviewed separately in the typed contracts.
+        routes = [
+            [viability + "initial_viability_iff_exists_zero_uncovered_policy",
+             viability + "viablePolicy_zero_uncovered",
+             viability + "zero_uncovered_iff_support_certified",
+             viability + "zero_uncertified_mass_iff_support",
+             prefix + "coverage_uncovered_indicator_expectation"],
+            [viability + "initial_viability_iff_exists_zero_uncovered_policy",
+             viability + "supported_viable_of_zero_uncovered",
+             viability + "mem_coarseLaw_succ_support_iff",
+             viability + "mem_traceSupport_iff_realized"],
+            [viability + "finiteRelationViabilityCheck_correct",
+             viability + "finiteRelationViabilityCheck_eq"],
+            [viability + "finiteRelationViabilityCheck_correct",
+             viability + "finiteViabilityCheck_correct"],
+            [joint + "registered_selected_joint_failure_of_cap_on_good",
+             joint + "registered_calibration_good_bad_le",
+             prefix + "coverage_registered_source_calibration",
+             prefix + "coverage_registered_row_calibration",
+             prefix + "measure_finite_row_calibration_bad_le"],
+            [joint + "registered_selected_joint_failure_of_cap_on_good",
+             prefix + "selectedTrainingDeployment_failure_le",
+             prefix + "selectedTrainingDeployment_good_bad_bound"],
+            [prefix + "RegisteredSelectionWitness.actual_joint_failure_exact",
+             prefix + "selectedTrainingDeployment_failure_tower",
+             prefix + "selectedTrainingDeployment_mass",
+             "UEOT.V3.PathError.pmfExtend_apply"],
+        ]
+        for route in routes:
+            for source, target in zip(route, route[1:]):
+                with self.subTest(source=source, target=target):
+                    self.assertIn(target, reuse.explain(self.data, source)[
+                        "direct_existing_source_theorem_uses"])
+
+    def test_support_viability_full_native_and_retained_private_computations(self):
+        current = self.data["overlays"][6]
+        evidence = current["native_export_evidence"]
+        self.assertEqual(evidence["sha256"],
+                         "34376e2c8564d148e5dcd4452ab0dddeb9aa20bbb1b9d0f7c88c194b9b82baca")
+        native = json.loads((reuse.REPO / evidence["path"]).read_text())
+        scope = native["all_native_theorem_constants"]
+        public = native["public_source_theorems"]
+        self.assertEqual(len(scope), 219)
+        self.assertEqual(len(public), 102)
+        self.assertEqual(sum(row["is_private"] for row in scope), 22)
+        by_name = {row["name"]: row for row in scope}
+        public_names = {row["name"] for row in public}
+        self.assertEqual(len(by_name), 219)
+        self.assertEqual(len(public_names), 102)
+        self.assertEqual(public_names, {row["name"] for row in current["public_theorems"]})
+        self.assertEqual(sum(not row["is_private"] and row["name"] not in public_names
+                             for row in scope), 95)
+        self.assertEqual({row["source_module"] for row in scope},
+                         {row["module"] for row in current["added_modules"]})
+        expected_fields = {"name", "source_module", "is_private", "level_parameters",
+                           "type", "direct_constants", "direct_theorem_constants", "axioms"}
+        for row in scope:
+            with self.subTest(native_symbol=row["name"]):
+                self.assertEqual(set(row), expected_fields)
+                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
+                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
+        for row in public:
+            with self.subTest(public_symbol=row["name"]):
+                native_row = by_name[row["name"]]
+                self.assertFalse(native_row["is_private"])
+                for field in ("source_module", "level_parameters", "type", "direct_constants"):
+                    self.assertEqual(row[field], native_row[field])
+                self.assertTrue(set(row["source_theorem_deps"]) <=
+                                set(native_row["direct_theorem_constants"]))
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        helpers = {
+            "SupportViabilityClosure.SafePrefixDeadend.initial_checker_pass": (
+                "ControlCoverageWitness",
+                ["SupportViabilityClosure.SafePrefixDeadend.a_complete_zero_uncovered_policy_exists"]),
+            "SupportViabilityClosure.SafePrefixDeadend.good_successor_checker_pass": (
+                "ControlCoverageWitness", []),
+            "RegisteredSelectionWitness.allTrue_selects_true": (
+                "RegisteredDeploymentRiskWitness", ["RegisteredSelectionWitness.allTrue_checkedBudget"]),
+        }
+        # Three actual closed-computation collisions were fixed by a private
+        # API boundary. Their native theorem records must never disappear.
+        for short, (owner, users) in helpers.items():
+            with self.subTest(private_helper=short):
+                old_public_name = prefix + short
+                self.assertNotIn(old_public_name, public_names)
+                records = [row for row in scope
+                           if row["name"].endswith("." + old_public_name)]
+                self.assertEqual(len(records), 1)
+                helper = records[0]
+                self.assertTrue(helper["is_private"])
+                self.assertEqual(helper["source_module"], prefix + owner)
+                actual_users = {row["name"] for row in scope
+                                if helper["name"] in row["direct_theorem_constants"]}
+                self.assertEqual(actual_users, {prefix + name for name in users})
+
     def test_overlay_areas_follow_physical_sources(self):
         prefix = "formalization/ueot-core/UEOT/"
         self.assertEqual(reuse.source_area(prefix + "V3/Compression/TheoryCompletion/MinCore/X.lean"),
@@ -535,7 +677,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 650)
+        self.assertEqual(len(live), 659)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

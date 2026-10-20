@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "9489908b8ce8a335f7eafa57405d938ecc8bbdd343e611656fb1cb7da5384275",
+  "source_tree_sha256": "91621694fadc223f63b76298a6eaf10078e59bd87c9dbc798726a6e366b1f357",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 650,
-  "total_source_lines": 116337,
-  "total_theorem_lemma_tokens": 4183,
+  "total_Lean_modules": 659,
+  "total_source_lines": 119012,
+  "total_theorem_lemma_tokens": 4293,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 51
+    "UMC_New_Bridges": 60
   },
-  "reachable_from_UEOT_root": 650,
+  "reachable_from_UEOT_root": 659,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -178,6 +178,14 @@
       "direct_dependents": 5
     },
     {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
+      "direct_dependents": 5
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "direct_dependents": 5
+    },
+    {
       "module": "UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm",
       "direct_dependents": 5
     },
@@ -191,14 +199,6 @@
     },
     {
       "module": "UEOT.V3.FiniteCesaroInvariant",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.FiniteDiscountedSelector",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.FiniteDobrushin",
       "direct_dependents": 5
     }
   ],
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 51
+      "edges": 60
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 10429,
-      "lines": 135,
+      "bytes": 11188,
+      "lines": 144,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3571,7 +3571,16 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedDeploymentJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ReachablePolicyExtension",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViabilityCheck",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRiskWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5177,6 +5186,19 @@
       "theorem_lemma_count": 8,
       "decl_count": 10
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "bytes": 24109,
+      "lines": 587,
+      "category": "UMC_New_Bridges",
+      "title": "Actual-law control and finite-support witnesses",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViabilityCheck"
+      ],
+      "theorem_lemma_count": 39,
+      "decl_count": 80
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreInfinitePathClosure": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreInfinitePathClosure.lean",
       "bytes": 3851,
@@ -5413,6 +5435,30 @@
       "theorem_lemma_count": 5,
       "decl_count": 5
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "bytes": 26520,
+      "lines": 593,
+      "category": "UMC_New_Bridges",
+      "title": "Finite actual-support viability and exact policy existence",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverage"
+      ],
+      "theorem_lemma_count": 17,
+      "decl_count": 26
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViabilityCheck": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "bytes": 8832,
+      "lines": 208,
+      "category": "UMC_New_Bridges",
+      "title": "Exact finite support-viability checking",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability"
+      ],
+      "theorem_lemma_count": 5,
+      "decl_count": 9
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurableProcessTransport": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurableProcessTransport.lean",
       "bytes": 3050,
@@ -5467,6 +5513,18 @@
       "theorem_lemma_count": 3,
       "decl_count": 7
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverage": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "bytes": 13971,
+      "lines": 298,
+      "category": "UMC_New_Bridges",
+      "title": "Observable controls and actual deployment coverage",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage"
+      ],
+      "theorem_lemma_count": 9,
+      "decl_count": 11
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalCoreAssembly": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalCoreAssembly.lean",
       "bytes": 4727,
@@ -5509,6 +5567,19 @@
       ],
       "theorem_lemma_count": 2,
       "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverage": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
+      "bytes": 7669,
+      "lines": 157,
+      "category": "UMC_New_Bridges",
+      "title": "Actual posterior support and deployment coverage",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage"
+      ],
+      "theorem_lemma_count": 3,
+      "decl_count": 4
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictiveGoalClosureBoundary": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveGoalClosureBoundary.lean",
@@ -5565,6 +5636,45 @@
       ],
       "theorem_lemma_count": 6,
       "decl_count": 8
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ReachablePolicyExtension": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+      "bytes": 7803,
+      "lines": 177,
+      "category": "UMC_New_Bridges",
+      "title": "Policy-prefix congruence and conditional reachable extension",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverage"
+      ],
+      "theorem_lemma_count": 4,
+      "decl_count": 4
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+      "bytes": 7925,
+      "lines": 150,
+      "category": "UMC_New_Bridges",
+      "title": "Registered calibration and selected deployment risk on a common good event",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverage"
+      ],
+      "theorem_lemma_count": 2,
+      "decl_count": 4
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRiskWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "bytes": 16917,
+      "lines": 392,
+      "category": "UMC_New_Bridges",
+      "title": "A registered sampling experiment with data-dependent actual deployment",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage"
+      ],
+      "theorem_lemma_count": 30,
+      "decl_count": 54
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepairProgramSafeControlBridge": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RepairProgramSafeControlBridge.lean",
@@ -5808,6 +5918,19 @@
       ],
       "theorem_lemma_count": 6,
       "decl_count": 9
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean",
+      "bytes": 5291,
+      "lines": 104,
+      "category": "UMC_New_Bridges",
+      "title": "Finite support viability closes coverage in registered joint risk",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk"
+      ],
+      "theorem_lemma_count": 1,
+      "decl_count": 2
     },
     "UEOT.V3.Compression.TopologyChangingGoaAnchoredStability": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaAnchoredStability.lean",

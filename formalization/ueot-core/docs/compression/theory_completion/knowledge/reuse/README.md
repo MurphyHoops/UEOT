@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current six-layer census is **650 modules = 639 UEOT-maintained + 11
-adapted upstream**, with **3,992 registered public theorem nodes** and
-**5,157 registered direct proof edges**. The layer-by-layer counts below
+The current seven-layer census is **659 modules = 648 UEOT-maintained + 11
+adapted upstream**, with **4,094 registered public theorem nodes** and
+**5,320 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -375,6 +375,223 @@ upstream**, with **3,992** registered public source theorem nodes and
 and **271** edges. No counted Core/Compression tier is promoted, and global
 scientific closure remains `NOT_ESTABLISHED`.
 
+### Layer 7 — finite support viability and registered Good-event joint risk
+
+This layer adds nine modules on the unchanged source baseline
+`7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8`. It records frozen worktree
+content, not a fabricated future Git object: `source_checkpoint_kind` is
+`FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT` and the lexical `candidate_ref`
+is null. The source-tree digest is
+`91621694fadc223f63b76298a6eaf10078e59bd87c9dbc798726a6e366b1f357`.
+The V3 manifest binds all nine module files and the public root import:
+`993bd1a5c32b9872212282fba38411caf683c088f374b4d3c178fd79cc8c923e`.
+A later immutable Git-object PR preflight and remote CI remain separate gates.
+
+The actual pinned-toolchain build returned 0 for the nine modules
+(8,774 jobs, 29.190 seconds) and for `lake build UEOT` (9,365 jobs,
+13.423 seconds). The original root-import placement failure and the first
+native collision failure were retained; neither is presented as a passed run.
+The two later independent native executions returned 0 and produced identical
+complete JSON objects, including private/generated constants, types, owners,
+axioms and ordered proof-constant arrays. The fixed verifier is generated from observed evidence; the pipeline then
+compares its complete actual export with the first independent export.
+
+| Artifact | SHA-256 |
+|---|---|
+| [SUPPORT_VIABILITY_NATIVE_V1.json](SUPPORT_VIABILITY_NATIVE_V1.json) | `34376e2c8564d148e5dcd4452ab0dddeb9aa20bbb1b9d0f7c88c194b9b82baca` |
+| [SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json](SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json) | `2af284000d6a6c25f67e9356a236817b22334dbfba777ca2eaf37e8060a3a45e` |
+| [VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean](VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean) | `26fd18e77dd6b7db550c6c5e1105376ef7f494db03bbab646e8d8fa42313a118` |
+
+The complete compiler scope is **219 theorem constants = 102 public source
+candidates + 22 private constants + 95 other nonprivate constants**. Every
+native record retains `name`, `source_module`, `is_private`, stored
+`level_parameters`, the displayed type, all `direct_constants`, direct theorem
+constants and the transitive axiom list. All 219 axiom lists are subsets of
+`propext`, `Classical.choice`, `Quot.sound`. The 102 public candidates are
+independently matched to those records; their registered graph adds **163
+direct edges**. Owners are physical compiled modules, not names inferred
+from the logical namespace. A type display remains a display, not a lossless
+serialization of a Lean expression.
+
+| Physical module | Public source candidates | All native theorem constants |
+|---|---:|---:|
+| `ControlCoverageWitness` | 37 | 85 |
+| `FiniteSupportViability` | 15 | 30 |
+| `FiniteSupportViabilityCheck` | 5 | 25 |
+| `ObservableActionCoverage` | 9 | 14 |
+| `PosteriorSupportCoverage` | 3 | 4 |
+| `ReachablePolicyExtension` | 4 | 4 |
+| `RegisteredDeploymentRisk` | 2 | 5 |
+| `RegisteredDeploymentRiskWitness` | 26 | 51 |
+| `ViableRegisteredJoint` | 1 | 1 |
+
+The seven overlays now add **301 public nodes and 434 registered edges** to
+the immutable base, giving **4,094 nodes and 5,320 edges**. The lexical
+corpus has **4,095 candidates**, preserving the historical one-name offset
+rather than rewriting the base registry. The new 17 name-hint groups bring
+the cumulative overlay count to 57. No Core/Compression counted tier is
+promoted; the frozen 4/11/89 classification and `NOT_ESTABLISHED` scientific
+status remain unchanged.
+
+#### Actual-law support and finite policy existence
+
+`ObservableActionCoverage` reuses the canonical deployment row law to derive
+an occupancy cap from observable action restrictions whose permitted actions
+are certified on the entire observation fiber. Its finite mask is executable
+when the observation equality and certification predicates have
+executable decision procedures. Nonempty fibers alone do not guarantee a
+common certified action. A total fallback policy handles the full-time API;
+classical policy selection under nonempty masks is not itself an algorithm.
+
+`PosteriorSupportCoverage` relaxes whole-fiber certification only to the
+support of the **actual** terminal posterior under a fixed actual policy.
+Null observation histories need no probabilistic constraint. This fixed-policy
+validation is not reused as though its posterior were unchanged after selecting
+a different policy. `ReachablePolicyExtension` first reuses the existing generic
+prefix-law congruence: the law at time `n` needs equality only before `n`,
+whereas the state/action row law also needs equality at the current time `n`.
+Its older strong Extend condition remains a sufficient nonblocking condition;
+it is not a premise of the new viability equivalence.
+
+`FiniteSupportViability` derives the trace-support update from the same
+microscopic source and recorded action/observation history. It proves the
+posterior-support correspondence and the zero-uncertified-mass equivalence;
+support correctness is not supplied as an unproved law-matching field. A
+finite remaining-horizon recursion chooses one action certified for all
+indistinguishable states and requires every nonempty **merged observation
+successor** to remain viable. Viability of every positive initial observation fiber
+is equivalent to the existence of a complete history policy whose
+actual uncertified-row occupancy is zero at every transition before the
+horizon. The theorem retains a supplied complete fallback policy, including
+the zero-horizon boundary.
+
+`FiniteSupportViabilityCheck` proves its finite Boolean checker equivalent to
+that recursion. The executable version reads a finite support relation and
+requires a proved exact correspondence to the actual PMF support. The concrete
+source proves this correspondence; it is not a substitution of an unverified
+transition relation. The same-source witness has a complete successful policy
+and another locally certified prefix that reaches a genuine dead end. Thus
+existence of a complete policy is weaker than extendibility of every already
+certified prefix. Support suffices for this zero-occupancy question; it does
+not determine arbitrary nonzero probability bounds or costs, and a finite
+horizon does not imply all-time safety.
+
+#### One calibration event and the same selected deployment
+
+`RegisteredDeploymentRisk` uses fixed registered rows and the original
+finite-row calibration bound. Source-row laws and row-wise IID samples are
+required only on that registered subtype. The empirical-fit, actual occupancy
+cap and checked numerical budget obligations are required **on the same
+measurable Good event**, after the data-dependent selection. There is no second
+confidence penalty for consuming the same event twice. The actual constructed
+training/selection/deployment PMF uses the same microscopic source, selected
+initial law, observation map and history policy as the conditional risk bound.
+The theorem invokes the original joint-risk and coverage endpoints.
+
+`ViableRegisteredJoint` directly invokes `viablePolicy_zero_uncovered` for its
+own synthesized policy. It removes the separate occupancy-cap premise on Good;
+it retains initial-fiber viability, registered calibration, empirical fit,
+the conservative microscopic-to-coarse failure envelope, and the numerical
+Good-event budget check. Neither initial viability nor an empirical estimate
+of the true source is manufactured by this adapter.
+
+The actual registered product experiment in `RegisteredDeploymentRiskWitness`
+has two registered rows and 256 samples per row. Its selector genuinely depends
+on an observed training bit; the two action probabilities are `7/8` and `1/8`,
+with actual deployment failure probabilities `1/8` and `1/4`. The canonical
+joint tower yields exact risk **`9/64`**. The common calibration and checked
+risk theorem yields the nontrivial, conservative bound **`17/32`**. A
+positive-probability all-true training record has checked budget 1, proving
+that the corresponding all-record budget at most `1/2` is false; the valid
+obligation is on Good. This is a mathematical sampling/deployment experiment,
+not external empirical validation or a proof of optimal learning. The concrete
+witness directly checks its own zero occupancy; it is not presented as an
+application of an unimplemented general learning algorithm.
+
+Zero uncertified-row occupancy removes the coverage penalty. It does not
+remove reference failure or row-calibration error and does not imply zero
+physical failure. Identifying the external transition law and observation
+map, gaining access to the registered row experiments, and validating the
+microscopic failure label/envelope remain independent obligations.
+
+#### Genuine collisions retained behind a smaller public API
+
+The first native attempt found nine real closed-type coincidences. The three
+local concrete-computation lemmas `SafePrefixDeadend.initial_checker_pass`,
+`SafePrefixDeadend.good_successor_checker_pass`, and
+`RegisteredSelectionWitness.allTrue_selects_true` each matched both old facts
+`flip_next_state_is_true` and `survival_micro_alias`, and matched one another.
+Only those three local helpers were made private. Their mathematical
+propositions and proof bodies were unchanged. The full native export still
+contains each private theorem with the same displayed type, stored universes,
+axioms, direct constants and direct theorem constants as before.
+
+The initial checker fact remains a direct dependency of
+`SafePrefixDeadend.a_complete_zero_uncovered_policy_exists`; the all-true
+selection fact remains a direct dependency of `allTrue_checkedBudget`; the
+good-successor computation has no named consumer. The new native regression
+requires these records and these actual consumers. The full native scope did
+not shrink from 219. Public terminal conclusions and the executable checker
+remain available.
+
+The unchanged public-candidate protocol compares 102 new raw stored types
+against 3,992 prior registered types (**407,184** comparisons), and all pairs
+within the new set (**5,151** comparisons). Each runs in a fresh elaborator
+comparison with its recorded stored universe names. It reports zero public
+matches. This does not claim that private coincidences disappeared, that the
+new results are logically independent, or that old generic theorems cannot
+be instantiated to prove them.
+
+#### Typed review of all 17 name-hint groups
+
+Every group below was compared against its actual old/new source contracts
+and the new compiled type and proof constants. Names without a full prefix
+are under `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure`. Name similarity
+and a zero raw stored-type match were not accepted as semantic review by
+themselves. All groups are CLEAR; direct reuse was retained wherever applicable.
+
+1. **`ObservableActionCoverageCheck.MissingFiber.representative_is_certified`**. Prior candidates: `StatisticalRiskWitness.representative_section`, `statistical_representative_risk_certificate`. A certified Bool representative sharing the same Unit observation with an uncertified actual state is not a quotient section identity, nor a simultaneous statistical calibration event. Neither hinted theorem gives whole-fiber certification.
+
+2. **`PosteriorSupportStrictWitness.initial_apply`**. Prior candidates: `UEOT.V3.FiniteRecurrentDecompositionStability.initialClassWeights_apply`. This computes the phase/side initial PMF. The old initialClassWeights_apply relates recurrent-class weights to an absorption potential for a recurrent decomposition; input spaces and output objects differ.
+
+3. **`PosteriorSupportStrictWitness.actualPrefix_apply`**. Prior candidates: `UEOT.V3.HilbertMeanPrefixFiltration.prefixFiltration_apply`. This computes actual one-step history mass, directly using pmfExtend_apply. The hinted prefixFiltration_apply is a definitional equality of sigma-fields, not a PMF product identity.
+
+4. **`PosteriorSupportStrictWitness.actual_prefix_masses`**. Prior candidates: `DeploymentCoverageWitness.actualRow_mass`, `StatisticalRiskWitness.actualRow_mass`. The new pair of masses concerns two complete histories of the four-state posterior example. The hinted row masses concern single transitions of different models. Existing local actualPrefix_apply and initial_apply are reused.
+
+5. **`PosteriorSupportStrictWitness.actual_uncovered_probability_zero`**. Prior candidates: `DeploymentCoverageWitness.uncovered_probability`, `DeploymentCoverageWitness.restricted_uncovered_probability`. The old witnesses concern a state-independent action mixture and uncovered probability 1/4. This history-sensitive posterior example proves zero actual bad occupancy by the existing posterior coverage endpoint and indicator helper; it cannot use the older model-specific formulas.
+
+6. **`SupportViabilityClosure.SafePrefixDeadend.mem_source_support_iff`**. Prior candidates: `UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.audited_source_mem_iff`. The new iff identifies deterministic PMF support with a transition value. audited_source_mem_iff instead describes a registered/authenticated intervention-response candidate filter. These predicates and source objects differ.
+
+7. **`PolicyPrefixCongruenceCheck.actual_causalLaw_congr_before`**. Prior candidates: `causalLaw_congr_before`. The old generic causalLaw_congr_before is an actual direct proof dependency. The new interface specializes it to the same q/P and two policies agreeing strictly before n. No parallel causal-law induction is introduced.
+
+8. **`RegisteredSelectionWitness.actualRow_mass`**. Prior candidates: `DeploymentCoverageWitness.actualRow_mass`, `StatisticalRiskWitness.actualRow_mass`, `DeploymentCoverageWitness.actual_row_error`. The old same-named row formulas belong to different uncovered-action/hidden-state models; actual_row_error is a TV distance, not a mass coordinate. The new 1/8-versus-1/4 row directly reuses the general AbsorbingLeakage.kernel_mass.
+
+9. **`RegisteredSelectionWitness.samples_measurable`**. Prior candidates: `StatisticalRiskWitness.sourceSample_measurable`. The new measurable sample is indexed only by the fixed registered-row subtype. It directly reuses productRowSample_measurable instead of the older all-row sourceSample wrapper, and does not invent samples for missing rows.
+
+10. **`RegisteredSelectionWitness.samples_independent`**. Prior candidates: `StatisticalRiskWitness.sourceSample_independent`, `UEOT.V3.AlignmentGlobalExactness.pathIndependent`. Row-wise IID directly reuses productRowSample_independent on the registered product experiment. sourceSample_independent wraps all rows; AlignmentGlobalExactness.pathIndependent concerns integrals of a one-form under closed periods, unrelated to probabilistic independence.
+
+11. **`RegisteredSelectionWitness.actual_failure`**. Prior candidates: `StatisticalRiskBoundary.actualFailure_eq`. The new theorem evaluates an actual one-step causal failure event with action-dependent probability 1/8 or 1/4. StatisticalRiskBoundary.actualFailure_eq evaluates a different fixed 3/4 row. The proof uses its actual one-step private helper and actualRow_mass.
+
+12. **`RegisteredSelectionWitness.empirical_fit`**. Prior candidates: `DeploymentCoverageWitness.empirical_loss`. The empirical reference is exactly the same registered empirical PMF, so TV is at most zero by registered_eq and tvDist_self_eq_zero. The old empirical_loss is a one-draw loss to a fixed safe reference. Zero empirical fit here is not asserted to be zero true error.
+
+13. **`RegisteredSelectionWitness.referenceFailure_eq`**. Prior candidates: `StatisticalRiskBoundary.actualFailure_eq`, `UEOT.V3.FiniteCTMCPathKL.fullReference_eq`, `DeploymentCoverageWitness.reference_one_step_failure`, `DeploymentCoverageWitness.reference_two_step_failure`. The new equality identifies empirical-reference path failure with a selected empirical-row mass. The hinted older objects are fixed actual risk 3/4, CTMC generator-independent counting reference measures, and always-safe one/two-step reference paths. None yields this data-dependent identity.
+
+14. **`RegisteredSelectionWitness.confidenceBudget_eq`**. Prior candidates: `StatisticalRiskWitness.concrete_confidence_budget`. The new exact value 16*exp(-8) comes from two registered rows, all finite events, N=256 and radius 1/8. The old value 64*exp(-8) comes from a different full-row sparse-test experiment. registered_card is reused; equal exponential factors do not identify the budgets.
+
+15. **`RegisteredSelectionWitness.confidenceBudget_small`**. Prior candidates: `StatisticalRiskWitness.concrete_confidence_budget`. The new 16*exp(-8) <= 1/16 bound uses confidenceBudget_eq and the existing concrete_confidence_nonvacuous inequality 64*exp(-8) <= 1/4. It scales the prior estimate rather than reproving the exponential inequality.
+
+16. **`RegisteredSelectionWitness.selection_probability`**. Prior candidates: `StatisticalRiskBoundary.selected_bad_probability`. This gives the actual action-selection probabilities 1/8 and 7/8 using selectedAction_law and actualRow_mass. The hinted selected_bad_probability is an older selected calibration-failure event of probability 7/16 under a different experiment.
+
+17. **`RegisteredSelectionWitness.actual_joint_failure_exact`**. Prior candidates: `StatisticalRiskBoundary.actualFailure_eq`. The new 9/64 joint failure uses the canonical selectedTrainingDeployment_failure_tower, actual_failure, selectedAction_pmf and coverage_expectation_map. A fixed row-risk theorem in a different model cannot replace this constructed joint-law calculation.
+
+The three new consumer regressions preserve all historical layer checks and
+verify the new registered support/checker/joint proof routes, the complete
+native field/axiom/owner scope, and the three retained private computations.
+An isolated source-mirror run passed all **28 Python tests**, including the
+unchanged clone scanner on all **659** modules: its result still exactly
+matches the immutable 68 rows. This is local consumer verification, not a
+claim about later production installation, immutable Git objects or remote CI.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -391,16 +608,16 @@ scientific closure remains `NOT_ESTABLISHED`.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_DEPLOYMENT_JOINT_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  six governed overlays extend the live census to 650 = 639 + 11.
-- 3,793 immutable-base public source theorem proofs + 199 governed overlay theorem
-  proofs = 3,992 live graph nodes, with 5,157 direct registered-source theorem
+  seven governed overlays extend the live census to 659 = 648 + 11.
+- 3,793 immutable-base public source theorem proofs + 301 governed overlay theorem
+  proofs = 4,094 live graph nodes, with 5,320 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
-  the fifth adds 91 and the sixth adds 98 certified direct edges.
+  the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -417,7 +634,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 650 modules and rejects any difference
+  The current scanner recomputes all 659 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -450,7 +667,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 650-module live source census. It refuses to
+overlay-chain hashes against the exact 659-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 
