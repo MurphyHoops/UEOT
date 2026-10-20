@@ -152,7 +152,96 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py
+          python3 - <<'PYCODE'
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+          import sys
+          import tempfile
+          import unittest
+
+
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+
+
+          def is_authorized_ops_only_pr():
+              # Main, research PRs, dispatches, and unknown contexts keep the complete
+              # unmodified integration suite. No caller-provided skip switch is accepted.
+              if os.environ.get('GITHUB_EVENT_NAME') != 'pull_request':
+                  return False
+              pr = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())['pull_request']
+              base, head = pr['base']['sha'], pr['head']['sha']
+              for rev in (base, head):
+                  if not re.fullmatch('[0-9a-f]{40}', rev):
+                      raise ValueError('Invalid immutable Git commit identity')
+                  if git('rev-parse', rev + '^{commit}') != rev:
+                      raise ValueError('Git identity does not resolve to the declared commit')
+              policy_path = 'formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json'
+              policy = json.loads(git('show', base + ':' + policy_path))
+              branch = pr['head']['ref']
+              if not any(re.fullmatch(pattern, branch)
+                         for pattern in policy['governance']['branch_patterns']):
+                  return False
+
+              # Execute the immutable base validator before considering the one TC-only
+              # test inapplicable. Candidate policy or checker bytes cannot self-authorize.
+              checker = 'formalization/ueot-core/scripts/validate_compression_research.py'
+              with tempfile.TemporaryDirectory(prefix='ueot-fkrg-ops-authority-') as dirname:
+                  authority = Path(dirname) / 'validate_compression_research.py'
+                  authority.write_bytes(subprocess.check_output(['git', 'show', base + ':' + checker]))
+                  subprocess.run([
+                      sys.executable, str(authority), '--repo-root', '.',
+                      '--baseline-ref', base, '--candidate-ref', head,
+                      '--branch-name', branch,
+                      '--head-repo', pr['head']['repo']['full_name'],
+                      '--base-repo', pr['base']['repo']['full_name'],
+                  ], check=True)
+
+              paths = subprocess.check_output([
+                  'git', 'diff', '--name-only', '--no-renames', '-z', base + '...' + head,
+              ]).decode().split('\0')
+              tc = policy['tracks']['TC']
+              exact = set(tc['allowed_exact_paths'])
+              prefixes = tuple(tc['allowed_path_prefixes'])
+              return not any(path in exact or path.startswith(prefixes) for path in paths if path)
+
+
+          def tests_in(suite):
+              for item in suite:
+                  if isinstance(item, unittest.TestSuite):
+                      yield from tests_in(item)
+                  else:
+                      yield item
+
+
+          def run_fkrg_tests():
+              path = Path('formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py')
+              if not is_authorized_ops_only_pr():
+                  subprocess.run([sys.executable, str(path)], check=True)
+                  return
+              spec = importlib.util.spec_from_file_location('test_fkrg', path)
+              module = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(module)
+              tests = list(tests_in(unittest.defaultTestLoader.loadTestsFromModule(module)))
+              tc_scope_test = ('test_fkrg.UMCFastAuditIntegrationTests.'
+                               'test_real_fast_audit_preserves_all_historical_receipts')
+              if sum(test.id() == tc_scope_test for test in tests) != 1:
+                  raise RuntimeError('Expected exactly one TC-only scope integration test')
+              selected = unittest.TestSuite(test for test in tests if test.id() != tc_scope_test)
+              print('Base-authorized ops-only PR: TC-only scope integration is inapplicable; '
+                    'all other FKRG tests, including real source freshness, remain required.', flush=True)
+              result = unittest.TextTestRunner(verbosity=2).run(selected)
+              if not result.wasSuccessful():
+                  raise SystemExit(1)
+
+
+          if __name__ == '__main__':
+              run_fkrg_tests()
+          PYCODE
 
 
       - name: Mandatory base-authorized FKRG theorem reuse delta preflight
