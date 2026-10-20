@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "candidate": "e116de9ad656baab6727dffca97e5999d973eb83",
+  "expected_base": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+  "commands": [
+    {
+      "phase": "latest-fetch",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "main:refs/remotes/origin/main"
+      ],
+      "exit_code": 0,
+      "log_sha256": "79dbbb0423d470d00466317fca6a60076af5488432d88d22426d6f019d751e31"
+    },
+    {
+      "phase": "latest-main",
+      "command": [
+        "git",
+        "rev-parse",
+        "origin/main"
+      ],
+      "exit_code": 0,
+      "log_sha256": "43ac6585c724fbc6f34bcea223e38c840f38c2a4e5bcb1c156b0bacf55584a1e"
+    },
+    {
+      "phase": "latest-core-tree",
+      "command": [
+        "git",
+        "rev-parse",
+        "97c7b29c1aec470be58ca34b552e9d56ad06c197:formalization/ueot-core"
+      ],
+      "exit_code": 0,
+      "log_sha256": "67b1d1bcda909f60e30bb0dd17ce88b659ff7092dd586d5cc0bcf62217844724"
+    },
+    {
+      "phase": "latest-base-policy",
+      "command": [
+        "python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/books-publication/latest_base_validator.py",
+        "--repo-root",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/books",
+        "--baseline-ref",
+        "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "--candidate-ref",
+        "e116de9ad656baab6727dffca97e5999d973eb83",
+        "--branch-name",
+        "pub/ueot-separate-philosophy-mathematics",
+        "--head-repo",
+        "MurphyHoops/UEOT",
+        "--base-repo",
+        "MurphyHoops/UEOT",
+        "--verify-live-state"
+      ],
+      "exit_code": 0,
+      "log_sha256": "b6405f0f3f1cdc5220df49cecfa1945337b7b4a4ed4df4a2a687d20381396e0d"
+    }
+  ],
+  "core_tree": "624c9a0d4b26d9c3e6489c45050d66e96129b3dc",
+  "base_checker_sha256": "01020dfa2f7bcda1959a945979ed5d9c138d347717f61da2e437d645d5596205"
+}

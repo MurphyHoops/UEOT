@@ -1,0 +1,125 @@
+{
+  "status": "FAIL",
+  "base": "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
+  "candidate": "0d22cf09b45ebb053c1e4426744e80787390a289",
+  "commands": [
+    {
+      "phase": "clean",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "initial-head",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log_sha256": "4b1c7a186dbb0e16e97418a5ccdd78f1f3176524e4df440103388e73a346a896"
+    },
+    {
+      "phase": "remote-before",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "ls-remote",
+        "origin",
+        "refs/heads/main",
+        "refs/heads/ops/compression-local-build-support-evidence"
+      ],
+      "exit_code": 0,
+      "log_sha256": "66bc46f48b7b2c2d18237847a5cd42c27257bf57292d710134b260fed19b0349"
+    },
+    {
+      "phase": "fetch-delta",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "fetch",
+        "--no-tags",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops-rebased.bundle",
+        "refs/heads/ops/compression-local-build-support-evidence"
+      ],
+      "exit_code": 0,
+      "log_sha256": "52c3f45c6f6c7e52e993f1e87c7bc4b3cc9a76870f9aafd7fe7e344d255b4ddf"
+    },
+    {
+      "phase": "adopt-reviewed-head",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "rebase",
+        "--onto",
+        "0d22cf09b45ebb053c1e4426744e80787390a289",
+        "3f5da21d923c4d2e1d644dd8df9c0180fa7488b4"
+      ],
+      "exit_code": 0,
+      "log_sha256": "79e3e7aebb7ee9f8d8e93ee257432518275a09115347f5fbed64d7ef3348199c"
+    },
+    {
+      "phase": "candidate-head",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log_sha256": "d8babe432d64914e71ad3ab42cdf9628d75bbd32f68eaf750ff9c798097b12a0"
+    },
+    {
+      "phase": "checkout-base",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "worktree",
+        "add",
+        "--detach",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/base-ops",
+        "7d05d0369b6793e28f0e39efaa77c0c9887479d1"
+      ],
+      "exit_code": 0,
+      "log_sha256": "5ac7e0dfb7d99d2af26ed6932ce9ee33006ed7536fd2de3924b250526a83f618"
+    },
+    {
+      "phase": "live-base-policy",
+      "command": [
+        "python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/base-ops/formalization/ueot-core/scripts/validate_compression_research.py",
+        "--repo-root",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "--baseline-ref",
+        "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
+        "--candidate-ref",
+        "0d22cf09b45ebb053c1e4426744e80787390a289",
+        "--branch-name",
+        "ops/compression-local-build-support-evidence",
+        "--head-repo",
+        "MurphyHoops/UEOT",
+        "--base-repo",
+        "MurphyHoops/UEOT",
+        "--verify-live-state"
+      ],
+      "exit_code": 1,
+      "log_sha256": "0cd5934467accb9cc943dbc0c12c845d6b5de6f34cda394d58554d5679277f83"
+    }
+  ],
+  "phase": "live-base-policy",
+  "error": "Traceback (most recent call last):\n  File \"<stdin>\", line 20, in <module>\n  File \"<stdin>\", line 10, in run\nAssertionError: /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops-live-base-policy.log\n"
+}

@@ -1,0 +1,1325 @@
+{
+  "schema": "FKRG_PR_DIFF_PREFLIGHT_V1",
+  "base_sha": "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2",
+  "candidate_sha": "395a9b23e6138803b6359527dad367f1cae7913b",
+  "source_scope": "formalization/ueot-core/UEOT.lean plus UEOT/**/*.lean",
+  "base_lean_module_count": 650,
+  "candidate_lean_module_count": 659,
+  "changed_lean_paths": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean"
+  ],
+  "base_public_lexical_theorem_count": 3993,
+  "candidate_public_lexical_theorem_count": 4095,
+  "new_public_source_theorem_count": 102,
+  "new_public_source_theorems": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.current_fiber_is_nonempty",
+      "short_name": "current_fiber_is_nonempty",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 38,
+      "header_preview": "theorem current_fiber_is_nonempty : ∃ x : Bool, observe x = () :=   ⟨false, rfl⟩  theorem each_state_has_a_certified_action :     ∀ x : Bool, ∃ a : Bool, crossedRegistration 0 x a :=   fun x => ⟨x, rfl⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.each_state_has_a_certified_action",
+      "short_name": "each_state_has_a_certified_action",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 41,
+      "header_preview": "theorem each_state_has_a_certified_action :     ∀ x : Bool, ∃ a : Bool, crossedRegistration 0 x a :=   fun x => ⟨x, rfl⟩  theorem no_common_certified_action :     ¬ ∃ a : Bool, ∀ x : Bool, crossedRegistration 0 x a := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.no_common_certified_action",
+      "short_name": "no_common_certified_action",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 45,
+      "header_preview": "theorem no_common_certified_action :     ¬ ∃ a : Bool, ∀ x : Bool, crossedRegistration 0 x a := by   rintro ⟨a, ha⟩   have hf : false = a := ha false   have ht : true = a := ha true   have hbad : false = true := hf.trans ht.symm",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.fiber_mask_is_empty",
+      "short_name": "fiber_mask_is_empty",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 53,
+      "header_preview": "theorem fiber_mask_is_empty :     fiberCertifiedActions observe crossedRegistration 0 () = ∅ := by   ext a   constructor   · intro ha     have hall := (mem_fiberCertifiedActions observe crossedRegistration 0 () a).mp ha",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.representative_is_certified",
+      "short_name": "representative_is_certified",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 95,
+      "header_preview": "theorem representative_is_certified (n : ℕ) :     observe false = observe true ∧ certified n false () := by   exact ⟨rfl, rfl⟩  theorem observable_action_leakage_is_zero     (n : ℕ) (hc : CausalHistory Unit (Unit × Unit) n) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_section",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.504,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_representative_risk_certificate",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+          "similarity": 0.483,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.observable_action_leakage_is_zero",
+      "short_name": "observable_action_leakage_is_zero",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 99,
+      "header_preview": "theorem observable_action_leakage_is_zero     (n : ℕ) (hc : CausalHistory Unit (Unit × Unit) n) :     (policy n hc).toMeasure.real {a | ¬ allowed n hc a} = 0 := by   simp [allowed]  theorem actual_initial_row_law :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.actual_initial_row_law",
+      "short_name": "actual_initial_row_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 104,
+      "header_preview": "theorem actual_initial_row_law :     coverageDeploymentRowLaw (PMF.pure true) observe source policy 0 =       PMF.pure (true, ()) := by   simp [coverageDeploymentRowLaw, causalLaw, policy, pmfExtend, riskLastState]   erw [PMF.pure_bind, PMF.pure_map, PMF.pure_map] ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.actual_uncovered_mass_is_one",
+      "short_name": "actual_uncovered_mass_is_one",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 110,
+      "header_preview": "theorem actual_uncovered_mass_is_one :     (coverageDeploymentRowLaw (PMF.pure true) observe source policy 0).toMeasure.real       {xa | ¬ certified 0 xa.1 xa.2} = 1 := by   rw [actual_initial_row_law, ← coverage_uncovered_indicator_expectation]   simp only [Fintype.sum_prod_type, Fintype.sum_bool, Fintype.sum_unique]   norm_num [certified]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.checking_one_representative_does_not_bound_actual_coverage",
+      "short_name": "checking_one_representative_does_not_bound_actual_coverage",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 117,
+      "header_preview": "theorem checking_one_representative_does_not_bound_actual_coverage :     (policy 0 ()).toMeasure.real {a | ¬ allowed 0 () a} = 0 ∧       ¬ ((coverageDeploymentRowLaw (PMF.pure true) observe source policy 0).toMeasure.real         {xa | ¬ certified 0 xa.1 xa.2} ≤ 0) := by   constructor   · exact observable_action_leakage_is_zero 0 ()",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.initial_apply",
+      "short_name": "initial_apply",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 205,
+      "header_preview": "theorem initial_apply (phase side : Bool) :     initial (phase, side) = if phase then 0 else (1 / 2 : ENNReal) := by   unfold initial   rw [PMF.map_apply, tsum_fintype]   cases phase <;> cases side <;>     norm_num [Fintype.sum_bool, PMF.uniformOfFintype_apply]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteRecurrentDecompositionStability.initialClassWeights_apply",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actualPrefix_apply",
+      "short_name": "actualPrefix_apply",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 213,
+      "header_preview": "theorem actualPrefix_apply (x : State) (a : Bool) (z : State) :     actualPrefix (x, (a, z)) =       initial x * (PMF.pure false a * PMF.pure (transition x a) z) := by   change pmfExtend initial     (fun x => pmfExtend (PMF.pure false) (fun a => PMF.pure (transition x a)))       (x, (a, z)) = _",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.HilbertMeanPrefixFiltration.prefixFiltration_apply",
+          "path": "formalization/ueot-core/UEOT/V3/HilbertMeanPrefixFiltration.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actualPrefix_support_iff",
+      "short_name": "actualPrefix_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 221,
+      "header_preview": "theorem actualPrefix_support_iff (h : MicroHistory) :     h ∈ actualPrefix.support ↔ h = leftHistory ∨ h = rightHistory := by   rcases h with ⟨⟨phase, side⟩, a, ⟨nextPhase, nextSide⟩⟩   erw [PMF.mem_support_iff, actualPrefix_apply, initial_apply]   cases phase <;> cases side <;> cases a <;> cases nextPhase <;> cases nextSide <;>     norm_num [transition, leftHistory, rightHistory,",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actual_prefix_masses",
+      "short_name": "actual_prefix_masses",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 229,
+      "header_preview": "theorem actual_prefix_masses :     actualPrefix leftHistory = (1 / 2 : ENNReal) ∧       actualPrefix rightHistory = (1 / 2 : ENNReal) := by   constructor   · change actualPrefix ((false, false), (false, (true, false))) = _     rw [actualPrefix_apply, initial_apply]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 0.483,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.483,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.left_history_supported",
+      "short_name": "left_history_supported",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 240,
+      "header_preview": "theorem left_history_supported : leftHistory ∈ actualPrefix.support :=   (actualPrefix_support_iff _).mpr (Or.inl rfl)  theorem right_history_supported : rightHistory ∈ actualPrefix.support :=   (actualPrefix_support_iff _).mpr (Or.inr rfl) ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.right_history_supported",
+      "short_name": "right_history_supported",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 243,
+      "header_preview": "theorem right_history_supported : rightHistory ∈ actualPrefix.support :=   (actualPrefix_support_iff _).mpr (Or.inr rfl)  theorem coarsePrefix_support_iff (h : CoarseHistory) :     h ∈ coarsePrefix.support ↔ h = leftCoarse ∨ h = rightCoarse := by   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.coarsePrefix_support_iff",
+      "short_name": "coarsePrefix_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 246,
+      "header_preview": "theorem coarsePrefix_support_iff (h : CoarseHistory) :     h ∈ coarsePrefix.support ↔ h = leftCoarse ∨ h = rightCoarse := by   constructor   · intro hh     obtain ⟨micro, hm, heq⟩ :=       (PMF.mem_support_map_iff historyProjection actualPrefix h).mp hh",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.left_coarse_supported",
+      "short_name": "left_coarse_supported",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 261,
+      "header_preview": "theorem left_coarse_supported : leftCoarse ∈ coarsePrefix.support :=   (coarsePrefix_support_iff _).mpr (Or.inl rfl)  theorem right_coarse_supported : rightCoarse ∈ coarsePrefix.support :=   (coarsePrefix_support_iff _).mpr (Or.inr rfl) ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.right_coarse_supported",
+      "short_name": "right_coarse_supported",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 264,
+      "header_preview": "theorem right_coarse_supported : rightCoarse ∈ coarsePrefix.support :=   (coarsePrefix_support_iff _).mpr (Or.inr rfl)                                                                                                                                                      theorem two_positive_coarse_histories :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.two_positive_coarse_histories",
+      "short_name": "two_positive_coarse_histories",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 269,
+      "header_preview": "theorem two_positive_coarse_histories :     0 < coarsePrefix leftCoarse ∧ 0 < coarsePrefix rightCoarse ∧       leftCoarse ≠ rightCoarse ∧       riskLastState 1 leftCoarse = riskLastState 1 rightCoarse := by   refine ⟨?_, ?_, ?_, rfl⟩   · exact pos_iff_ne_zero.mpr ((PMF.mem_support_iff _ _).mp left_coarse_supported)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.left_posterior_support_iff",
+      "short_name": "left_posterior_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 282,
+      "header_preview": "theorem left_posterior_support_iff     (hy : leftCoarse ∈ coarsePrefix.support) (x : State) :     x ∈ (fiberTerminalPosterior actualPrefix historyProjection       (riskLastState 1) leftCoarse hy).support ↔ x = leftState := by   erw [mem_fiberTerminalPosterior_support_iff]   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.right_posterior_support_iff",
+      "short_name": "right_posterior_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 300,
+      "header_preview": "theorem right_posterior_support_iff     (hy : rightCoarse ∈ coarsePrefix.support) (x : State) :     x ∈ (fiberTerminalPosterior actualPrefix historyProjection       (riskLastState 1) rightCoarse hy).support ↔ x = rightState := by   erw [mem_fiberTerminalPosterior_support_iff]   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.posterior_supports_are_singletons",
+      "short_name": "posterior_supports_are_singletons",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 320,
+      "header_preview": "theorem posterior_supports_are_singletons :     (fiberTerminalPosterior actualPrefix historyProjection       (riskLastState 1) leftCoarse left_coarse_supported).support = {leftState} ∧     (fiberTerminalPosterior actualPrefix historyProjection       (riskLastState 1) rightCoarse right_coarse_supported).support = {rightState} := by   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.both_terminal_states_reachable",
+      "short_name": "both_terminal_states_reachable",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 332,
+      "header_preview": "theorem both_terminal_states_reachable :     leftState ∈ (actualPrefix.map (riskLastState 1)).support ∧       rightState ∈ (actualPrefix.map (riskLastState 1)).support := by   constructor   · exact (PMF.mem_support_map_iff _ _ _).mpr       ⟨leftHistory, left_history_supported, rfl⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actual_uncovered_probability_zero",
+      "short_name": "actual_uncovered_probability_zero",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 343,
+      "header_preview": "theorem actual_uncovered_probability_zero :     (coverageDeploymentRowLaw initial observe source policy 1).toMeasure.real       {xa | ¬ certified 1 xa.1 xa.2} = 0 := by   apply le_antisymm   · apply posterior_supported_actions_bound_actual_coverage       initial observe source policy certified 1 allowed 0",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.uncovered_probability",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 0.506,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.restricted_uncovered_probability",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 0.48,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.whole_current_fiber_has_no_common_action",
+      "short_name": "whole_current_fiber_has_no_common_action",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 371,
+      "header_preview": "theorem whole_current_fiber_has_no_common_action :     ¬ ∃ a : Bool, ∀ x : State, observe x = none → certified 1 x a := by   rintro ⟨a, ha⟩   have hL := ha leftState rfl   have hR := ha rightState rfl   cases a <;> simp [certified, leftState, rightState] at hL hR",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.null_history_boundary",
+      "short_name": "null_history_boundary",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 380,
+      "header_preview": "theorem null_history_boundary :     coarsePrefix nullCoarse = 0 ∧       (policy 1 nullCoarse).toMeasure.real {a | ¬ allowed nullCoarse a} = 1 := by   constructor   · by_contra hne     have hm : nullCoarse ∈ coarsePrefix.support := (PMF.mem_support_iff _ _).mpr hne",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.mem_source_support_iff",
+      "short_name": "mem_source_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 424,
+      "header_preview": "theorem mem_source_support_iff (n : ℕ) (x a z : Bool) :     z ∈ (source n x a).support ↔ z = transition n x a := by   simp [source]                                                                          def supportTable (n : ℕ) (x a z : Bool) : Prop :=",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.audited_source_mem_iff",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCInterventionTransferAudit.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+      "short_name": "supportTable_exact",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 436,
+      "header_preview": "theorem supportTable_exact (n : ℕ) (x a z : Bool) :     supportTable n x a z ↔ z ∈ (source n x a).support :=   (mem_source_support_iff n x a z).symm                                                                                                                                                        ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_checker_rejects",
+      "short_name": "deadend_checker_rejects",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 464,
+      "header_preview": "theorem deadend_checker_rejects :     finiteRelationViabilityCheck observe supportTable certified 1 1 ({true} : Finset Bool) = false := by   decide  private theorem good_successor_checker_pass :     finiteRelationViabilityCheck observe supportTable certified 1 1 ({false} : Finset Bool) = true := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.initial_support_eq_univ",
+      "short_name": "initial_support_eq_univ",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 489,
+      "header_preview": "theorem initial_support_eq_univ (y : Unit) :     initialSupport initial observe y = Set.univ := by   cases y   ext x   simp [initialSupport, initial, observe] ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.a_complete_zero_uncovered_policy_exists",
+      "short_name": "a_complete_zero_uncovered_policy_exists",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 498,
+      "header_preview": "theorem a_complete_zero_uncovered_policy_exists :     ∃ π : ∀ n, CausalHistory Unit (Bool × Unit) n → PMF Bool,       ∀ n, n < 2 →         (coverageDeploymentRowLaw initial observe source π n).toMeasure.real           {xa | ¬ certified n xa.1 xa.2} = 0 := by   apply (initial_viability_iff_exists_zero_uncovered_policy",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_policy_first_step_covered",
+      "short_name": "deadend_policy_first_step_covered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 511,
+      "header_preview": "theorem deadend_policy_first_step_covered :     (coverageDeploymentRowLaw initial observe source deadendPolicy 0).toMeasure.real       {xa | ¬ certified 0 xa.1 xa.2} = 0 := by   apply (zero_uncovered_iff_support_certified     initial observe source deadendPolicy certified 0).mpr   intro h hh a ha x hx",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_history_actually_supported",
+      "short_name": "deadend_history_actually_supported",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 519,
+      "header_preview": "theorem deadend_history_actually_supported :     deadendHistory ∈ (coarseLaw initial observe source deadendPolicy 1).support := by   apply (mem_coarseLaw_succ_support_iff     initial observe source deadendPolicy 0 () true ()).mpr   refine ⟨?_, ?_, ?_⟩   · apply (mem_coarseLaw_zero_support_iff initial observe source deadendPolicy ()).mpr",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+      "short_name": "deadend_trace_support_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 535,
+      "header_preview": "theorem deadend_trace_support_eq :     traceSupport initial observe source 1 deadendHistory = {true} := by   change successorSupport observe source 0     (initialSupport initial observe ()) true () = {true}   rw [initial_support_eq_univ]   ext x",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_has_no_common_certified_action",
+      "short_name": "deadend_has_no_common_certified_action",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 545,
+      "header_preview": "theorem deadend_has_no_common_certified_action :     ¬ ∃ a : Bool,       ∀ x ∈ traceSupport initial observe source 1 deadendHistory,         certified 1 x a := by   rintro ⟨a, hcert⟩   have hx : true ∈ traceSupport initial observe source 1 deadendHistory := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_policy_second_step_not_covered",
+      "short_name": "deadend_policy_second_step_not_covered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 556,
+      "header_preview": "theorem deadend_policy_second_step_not_covered :     (coverageDeploymentRowLaw initial observe source deadendPolicy 1).toMeasure.real       {xa | ¬ certified 1 xa.1 xa.2} ≠ 0 := by   intro hzero   have hcert := (zero_uncovered_iff_support_certified     initial observe source deadendPolicy certified 1).mp hzero",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.viable_source_with_a_covered_deadend",
+      "short_name": "viable_source_with_a_covered_deadend",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "line": 570,
+      "header_preview": "theorem viable_source_with_a_covered_deadend :     (∃ π : ∀ n, CausalHistory Unit (Bool × Unit) n → PMF Bool,       ∀ n, n < 2 →         (coverageDeploymentRowLaw initial observe source π n).toMeasure.real           {xa | ¬ certified n xa.1 xa.2} = 0) ∧     (coverageDeploymentRowLaw initial observe source deadendPolicy 0).toMeasure.real",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_microLaw_succ_support_iff",
+      "short_name": "mem_microLaw_succ_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 74,
+      "header_preview": "theorem mem_microLaw_succ_support_iff     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (h : CausalHistory X (A × X) n) (a : A) (x : X) :     (h, (a, x)) ∈ (microLaw p₀ q P π (n + 1)).support ↔",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_coarseLaw_zero_support_iff",
+      "short_name": "mem_coarseLaw_zero_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 92,
+      "header_preview": "theorem mem_coarseLaw_zero_support_iff     {X Y A : Type u}     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A) (y : Y) :     y ∈ (coarseLaw p₀ q P π 0).support ↔ (initialSupport p₀ q y).Nonempty := by   change y ∈ (p₀.map q).support ↔ ∃ x, x ∈ p₀.support ∧ q x = y",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_traceSupport_iff_realized",
+      "short_name": "mem_traceSupport_iff_realized",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 137,
+      "header_preview": "theorem mem_traceSupport_iff_realized     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A) (n : ℕ) :     ∀ (g : CausalHistory Y (A × Y) n)       (_hg : g ∈ (coarseLaw p₀ q P π n).support) (x : X),",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_coarseLaw_succ_support_iff",
+      "short_name": "mem_coarseLaw_succ_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 191,
+      "header_preview": "theorem mem_coarseLaw_succ_support_iff     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (g : CausalHistory Y (A × Y) n) (a : A) (y : Y) :     (g, (a, y)) ∈ (coarseLaw p₀ q P π (n + 1)).support ↔",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport_eq_fiberTerminalPosterior_support",
+      "short_name": "traceSupport_eq_fiberTerminalPosterior_support",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 219,
+      "header_preview": "theorem traceSupport_eq_fiberTerminalPosterior_support     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (g : CausalHistory Y (A × Y) n)     (hg : g ∈ (coarseLaw p₀ q P π n).support) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport_eq_fiberTerminalPosterior_support",
+      "short_name": "successorSupport_eq_fiberTerminalPosterior_support",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 235,
+      "header_preview": "theorem successorSupport_eq_fiberTerminalPosterior_support     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (g : CausalHistory Y (A × Y) n) (a : A) (y : Y)     (hg : (g, (a, y)) ∈ (coarseLaw p₀ q P π (n + 1)).support) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_deploymentRowLaw_support_iff",
+      "short_name": "mem_deploymentRowLaw_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 250,
+      "header_preview": "theorem mem_deploymentRowLaw_support_iff     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (x : X) (a : A) :     (x, a) ∈ (coverageDeploymentRowLaw p₀ q P π n).support ↔",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncertified_mass_iff_support",
+      "short_name": "zero_uncertified_mass_iff_support",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 298,
+      "header_preview": "theorem zero_uncertified_mass_iff_support     {S : Type*} [Fintype S]     [MeasurableSpace S] [MeasurableSingletonClass S]     (ν : PMF S) (C : S → Prop) :     ν.toMeasure.real {s | ¬ C s} = 0 ↔ ∀ s ∈ ν.support, C s := by   classical",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncovered_iff_support_certified",
+      "short_name": "zero_uncovered_iff_support_certified",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 343,
+      "header_preview": "theorem zero_uncovered_iff_support_certified     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viableWith_step_of_lt",
+      "short_name": "viableWith_step_of_lt",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 390,
+      "header_preview": "theorem viableWith_step_of_lt     {X Y A : Type u}     (next : ℕ → Set X → A → Y → Set X)     (certified : ℕ → X → A → Prop)     {n T : ℕ} {S : Set X} (hn : n < T)     (hV : viableWith next certified n (T - n) S) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viablePolicy_support_step",
+      "short_name": "viablePolicy_support_step",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 445,
+      "header_preview": "theorem viablePolicy_support_step     {X Y A : Type u}     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop) (T : ℕ)     (πbase : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (h : CausalHistory Y (A × Y) n) (a : A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viablePolicy_supported_histories_viable",
+      "short_name": "viablePolicy_supported_histories_viable",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 476,
+      "header_preview": "theorem viablePolicy_supported_histories_viable     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop) (T : ℕ)     (πbase : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (hinit : ∀ y : Y, (initialSupport p₀ q y).Nonempty →",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viablePolicy_zero_uncovered",
+      "short_name": "viablePolicy_zero_uncovered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 508,
+      "header_preview": "theorem viablePolicy_zero_uncovered     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop) (T : ℕ)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supported_viable_of_zero_uncovered",
+      "short_name": "supported_viable_of_zero_uncovered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 533,
+      "header_preview": "theorem supported_viable_of_zero_uncovered     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop) (T : ℕ)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initial_viability_iff_exists_zero_uncovered_policy",
+      "short_name": "initial_viability_iff_exists_zero_uncovered_policy",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "line": 566,
+      "header_preview": "theorem initial_viability_iff_exists_zero_uncovered_policy     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop) (T : ℕ)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteSuccessor_coe_eq",
+      "short_name": "finiteSuccessor_coe_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "line": 30,
+      "header_preview": "theorem finiteSuccessor_coe_eq     {X Y A : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]     (q : X → Y) (P : ℕ → X → A → PMF X)     [∀ n x a z, Decidable (z ∈ (P n x a).support)]     (n : ℕ) (S : Finset X) (a : A) (y : Y) :     (↑(finiteSuccessor q P n S a y) : Set X) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteViabilityCheck_correct",
+      "short_name": "finiteViabilityCheck_correct",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "line": 62,
+      "header_preview": "theorem finiteViabilityCheck_correct     {X Y A : Type u} [Fintype X] [Fintype A]     [DecidableEq X] [DecidableEq Y]     (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop)     [∀ n x a z, Decidable (z ∈ (P n x a).support)]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_eq",
+      "short_name": "finiteRelationSuccessor_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "line": 147,
+      "header_preview": "theorem finiteRelationSuccessor_eq     {X Y A : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]     (q : X → Y) (R : ℕ → X → A → X → Prop)     (P : ℕ → X → A → PMF X)     [∀ n x a z, Decidable (R n x a z)]     [∀ n x a z, Decidable (z ∈ (P n x a).support)]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationViabilityCheck_eq",
+      "short_name": "finiteRelationViabilityCheck_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "line": 161,
+      "header_preview": "theorem finiteRelationViabilityCheck_eq     {X Y A : Type u} [Fintype X] [Fintype A]     [DecidableEq X] [DecidableEq Y]     (q : X → Y) (R : ℕ → X → A → X → Prop)     (P : ℕ → X → A → PMF X) (certified : ℕ → X → A → Prop)     [∀ n x a z, Decidable (R n x a z)]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationViabilityCheck_correct",
+      "short_name": "finiteRelationViabilityCheck_correct",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "line": 191,
+      "header_preview": "theorem finiteRelationViabilityCheck_correct     {X Y A : Type u} [Fintype X] [Fintype A]     [DecidableEq X] [DecidableEq Y]     (q : X → Y) (R : ℕ → X → A → X → Prop)     (P : ℕ → X → A → PMF X) (certified : ℕ → X → A → Prop)     [∀ n x a z, Decidable (R n x a z)]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.mem_fiberCertifiedActions",
+      "short_name": "mem_fiberCertifiedActions",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 31,
+      "header_preview": "theorem mem_fiberCertifiedActions     {X Y A : Type u} [Fintype X] [Fintype A]     [DecidableEq Y]     (q : X → Y) (certified : ℕ → X → A → Prop)     [∀ n x a, Decidable (certified n x a)]     (n : ℕ) (hc : CausalHistory Y (A × Y) n) (a : A) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.uncovered_occupancy_le_observable_action_leakage",
+      "short_name": "uncovered_occupancy_le_observable_action_leakage",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 48,
+      "header_preview": "theorem uncovered_occupancy_le_observable_action_leakage     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.observable_action_restriction_bounds_coverage",
+      "short_name": "observable_action_restriction_bounds_coverage",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 82,
+      "header_preview": "theorem observable_action_restriction_bounds_coverage     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.hard_observable_action_restriction_has_zero_uncovered_mass",
+      "short_name": "hard_observable_action_restriction_has_zero_uncovered_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 107,
+      "header_preview": "theorem hard_observable_action_restriction_has_zero_uncovered_mass     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageContinuationCheck.deployment_coverage_budget_le_of_actual_occupancy_cap",
+      "short_name": "deployment_coverage_budget_le_of_actual_occupancy_cap",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 151,
+      "header_preview": "theorem deployment_coverage_budget_le_of_actual_occupancy_cap     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageContinuationCheck.observable_action_coverage_budget_le",
+      "short_name": "observable_action_coverage_budget_le",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 174,
+      "header_preview": "theorem observable_action_coverage_budget_le     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageContinuationCheck.microscopic_failure_risk_under_observable_action_cap",
+      "short_name": "microscopic_failure_risk_under_observable_action_cap",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 201,
+      "header_preview": "theorem microscopic_failure_risk_under_observable_action_cap     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageContinuationCheck.finiteHorizonSupportedPolicy_hard_support",
+      "short_name": "finiteHorizonSupportedPolicy_hard_support",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 248,
+      "header_preview": "theorem finiteHorizonSupportedPolicy_hard_support     {Y A : Type u}     (Γ : ∀ n, CausalHistory Y (A × Y) n → Finset A)     (T : ℕ)     (hne : ∀ n, n < T → ∀ hc, (Γ n hc).Nonempty)     (fallback : PMF A) (n : ℕ) (hn : n < T)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageContinuationCheck.nonempty_fiber_masks_give_zero_uncovered_policy",
+      "short_name": "nonempty_fiber_masks_give_zero_uncovered_policy",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "line": 269,
+      "header_preview": "theorem nonempty_fiber_masks_give_zero_uncovered_policy     {X Y A : Type u} [Fintype X] [Fintype A] [DecidableEq Y]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverageCheck.mem_fiberTerminalPosterior_support_iff",
+      "short_name": "mem_fiberTerminalPosterior_support_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
+      "line": 31,
+      "header_preview": "theorem mem_fiberTerminalPosterior_support_iff     {H G X : Type u} (p : PMF H) (f : H → G) (last : H → X)     (g : G) (hg : g ∈ (p.map f).support) (x : X) :     x ∈ (fiberTerminalPosterior p f last g hg).support ↔       ∃ h ∈ p.support, f h = g ∧ last h = x := by   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverageCheck.supported_history_actions_bound_actual_coverage",
+      "short_name": "supported_history_actions_bound_actual_coverage",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
+      "line": 52,
+      "header_preview": "theorem supported_history_actions_bound_actual_coverage     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverageCheck.posterior_supported_actions_bound_actual_coverage",
+      "short_name": "posterior_supported_actions_bound_actual_coverage",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
+      "line": 117,
+      "header_preview": "theorem posterior_supported_actions_bound_actual_coverage     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PolicyPrefixCongruenceCheck.actual_causalLaw_congr_before",
+      "short_name": "actual_causalLaw_congr_before",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+      "line": 21,
+      "header_preview": "theorem actual_causalLaw_congr_before     {X Y A : Type u}     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π π' : ∀ n, CausalHistory Y (A × Y) n → PMF A) (n : ℕ)     (hπ : ∀ j, j < n → ∀ hc, π j hc = π' j hc) :     causalLaw p₀ (riskMicroControlKernel q P π) n =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.causalLaw_congr_before",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonPathAdapter.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PolicyPrefixCongruenceCheck.deployment_rowLaw_congr_through",
+      "short_name": "deployment_rowLaw_congr_through",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+      "line": 36,
+      "header_preview": "theorem deployment_rowLaw_congr_through     {X Y A : Type u}     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (π π' : ∀ n, CausalHistory Y (A × Y) n → PMF A) (n : ℕ)     (hπ : ∀ j, j ≤ n → ∀ hc, π j hc = π' j hc) :     coverageDeploymentRowLaw p₀ q P π n =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ReachablePolicyExtensionCheck.extend_policy_at_reachable_histories",
+      "short_name": "extend_policy_at_reachable_histories",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+      "line": 65,
+      "header_preview": "theorem extend_policy_at_reachable_histories     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ReachablePolicyExtensionCheck.exists_zero_uncovered_policy_of_extendability",
+      "short_name": "exists_zero_uncovered_policy_of_extendability",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+      "line": 124,
+      "header_preview": "theorem exists_zero_uncovered_policy_of_extendability     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredGoodJointCheck.registered_calibration_good_bad_le",
+      "short_name": "registered_calibration_good_bad_le",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+      "line": 45,
+      "header_preview": "theorem registered_calibration_good_bad_le     {Ω : Type uΩ} {X A : Type u}     [Fintype Ω] [Fintype X] [Fintype A]     [MeasurableSpace Ω] [MeasurableSingletonClass Ω]     [MeasurableSpace X] [MeasurableSingletonClass X]     {N : ℕ} (hN : 0 < N) (training : Measure Ω) [IsProbabilityMeasure training]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredGoodJointCheck.registered_selected_joint_failure_of_cap_on_good",
+      "short_name": "registered_selected_joint_failure_of_cap_on_good",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+      "line": 80,
+      "header_preview": "theorem registered_selected_joint_failure_of_cap_on_good     {Ω : Type uΩ} {C : Type uC} {X Y A : Type u}     [Fintype Ω] [Fintype X] [Fintype Y] [Fintype A]     [MeasurableSpace Ω] [MeasurableSingletonClass Ω] [MeasurableSpace C]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.actualRow_mass",
+      "short_name": "actualRow_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 36,
+      "header_preview": "@[simp] theorem actualRow_mass (a z : Bool) :     (actualRow a z).toReal = if z then failureChance a else 1 - failureChance a := by   cases z <;> simp [actualRow, AbsorbingLeakage.transitionMass]                                                                      def certified (n : ℕ) (x : Bool) (_a : Bool) : Prop := n = 0 ∧ x = false",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actualRow_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.actual_row_error",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.registered_eq",
+      "short_name": "registered_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 48,
+      "header_preview": "theorem registered_eq (j : Registered) : j = rowIndex j.1.2.1 := by   apply Subtype.ext   apply Prod.ext (Subsingleton.elim _ _)   change j.1.2 = (j.1.2.1, false)   exact Prod.ext rfl j.property.2 ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.registered_card",
+      "short_name": "registered_card",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 60,
+      "header_preview": "@[simp] theorem registered_card : Fintype.card Registered = 2 := by   exact (Fintype.card_congr registeredEquivBool).trans (by decide)  def registeredSource (j : Registered) : PMF Bool :=   source j.1.1 j.1.2.2 j.1.2.1 ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.samples_measurable",
+      "short_name": "samples_measurable",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 78,
+      "header_preview": "theorem samples_measurable (j : Registered) (k : Fin 256) :     Measurable (samples j k) :=   StatisticalRiskWitness.productRowSample_measurable j k  theorem samples_independent (j : Registered) :     iIndepFun (samples j) trainingLaw :=",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.526,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.samples_independent",
+      "short_name": "samples_independent",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 82,
+      "header_preview": "theorem samples_independent (j : Registered) :     iIndepFun (samples j) trainingLaw :=   StatisticalRiskWitness.productRowSample_independent registeredSource 256 j  theorem samples_law (j : Registered) (k : Fin 256) :     trainingLaw.map (samples j k) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.532,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.AlignmentGlobalExactness.pathIndependent",
+          "path": "formalization/ueot-core/UEOT/V3/AlignmentGlobalExactness.lean",
+          "similarity": 0.483,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.samples_law",
+      "short_name": "samples_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 86,
+      "header_preview": "theorem samples_law (j : Registered) (k : Fin 256) :     trainingLaw.map (samples j k) =       (source j.1.1 j.1.2.2 j.1.2.1).toMeasure :=   StatisticalRiskWitness.productRowSample_law registeredSource j k                                                                               ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.actual_failure",
+      "short_name": "actual_failure",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 146,
+      "header_preview": "theorem actual_failure (a : Bool) :     (actualByAction a).toMeasure.real failure = failureChance a := by   change (oneStepLaw actualRow a).toMeasure.real failure = _   rw [oneStep_failure, singleton_probability, actualRow_mass]   rfl ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.actual_occupancy_zero",
+      "short_name": "actual_occupancy_zero",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 153,
+      "header_preview": "theorem actual_occupancy_zero (ω : SampleSpace) :     (coverageDeploymentRowLaw (PMF.pure false) id source (policy ω) 0).toMeasure.real       {xa | ¬ certified 0 xa.1 xa.2} = 0 := by   rw [← coverage_uncovered_indicator_expectation, coverage_rowLaw_expectation]   change (∑ x : Bool, ((PMF.pure false) x).toReal *     ∑ a : Bool, ((PMF.pure (selectedAction ω)) a).toReal *",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empirical_fit",
+      "short_name": "empirical_fit",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 167,
+      "header_preview": "theorem empirical_fit (ω : SampleSpace) (n : ℕ) (hn : n < 1)     (x a : Bool) (hc : certified n x a) :     tvDist ((empiricalResponsePMF (by decide : 0 < 256)       (samples ⟨(⟨n, hn⟩, a, x), hc⟩) ω).map id).toMeasure       (reference ω n x a).toMeasure ≤ 0 := by   have hj : (⟨(⟨n, hn⟩, a, x), hc⟩ : Registered) = rowIndex a :=",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 0.481,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empirical_failure_on_good",
+      "short_name": "empirical_failure_on_good",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 179,
+      "header_preview": "theorem empirical_failure_on_good (ω : SampleSpace) (hg : Good ω) (a : Bool) :     (empiricalRow ω a).toMeasure.real {true} ≤ 3 / 8 := by   have hcal : tvDist (actualRow a).toMeasure (empiricalRow ω a).toMeasure ≤ 1 / 8 :=     hg (rowIndex a)   have hdiff := (tvEvent_le (actualRow a).toMeasure (empiricalRow ω a).toMeasure     {true} (MeasurableSet.singleton true)).trans hcal",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.referenceFailure_eq",
+      "short_name": "referenceFailure_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 196,
+      "header_preview": "theorem referenceFailure_eq (ω : SampleSpace) :     referenceFailure ω = (empiricalRow ω (selectedAction ω)).toMeasure.real {true} := by   unfold referenceFailure   rw [PMF.map_id]   exact oneStep_failure (empiricalRow ω) (selectedAction ω) ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.FiniteCTMCPathKL.fullReference_eq",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_one_step_failure",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 0.48,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.reference_two_step_failure",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "similarity": 0.48,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.checkedBudget_on_good",
+      "short_name": "checkedBudget_on_good",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 208,
+      "header_preview": "theorem checkedBudget_on_good (ω : SampleSpace) (hg : Good ω) :     checkedBudget ω ≤ 1 / 2 := by   have h := empirical_failure_on_good ω hg (selectedAction ω)   rw [← referenceFailure_eq] at h   have hsum : (∑ _n ∈ Finset.range 1, (min 1 ((1 / 8 : ℝ) + 0) +       (1 - min 1 ((1 / 8 : ℝ) + 0)) * 0)) = (1 / 8 : ℝ) := by norm_num",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.confidenceBudget_eq",
+      "short_name": "confidenceBudget_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 218,
+      "header_preview": "theorem confidenceBudget_eq :     registeredConfidenceBudget certified 1 256 (fun _ => (1 / 8 : ℝ)) =       16 * Real.exp (-8) := by   unfold registeredConfidenceBudget   norm_num [registered_card, Fintype.card_finset]   ring",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_budget",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.confidenceBudget_small",
+      "short_name": "confidenceBudget_small",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 225,
+      "header_preview": "theorem confidenceBudget_small :     registeredConfidenceBudget certified 1 256 (fun _ => (1 / 8 : ℝ)) ≤ 1 / 16 := by   rw [confidenceBudget_eq]   have h := StatisticalRiskWitness.concrete_confidence_nonvacuous   linarith ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_budget",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.registered_selected_joint_bound",
+      "short_name": "registered_selected_joint_bound",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 233,
+      "header_preview": "theorem registered_selected_joint_bound :     (selectedTrainingDeployment trainingLaw.toPMF id actualDeployment).toMeasure.real       {z | z.2 ∈ failure} ≤ 17 / 32 := by   have h := registered_selected_joint_failure_of_cap_on_good     (by decide : 0 < 256) trainingLaw source certified 1 samples (fun _ => (1 / 8 : ℝ))     samples_measurable samples_independent samples_law (by intros; norm_num)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_law",
+      "short_name": "selectedAction_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 264,
+      "header_preview": "theorem selectedAction_law :     trainingLaw.map selectedAction = (actualRow false).toMeasure :=   samples_law (rowIndex false) 0  theorem selectedAction_pmf :     trainingLaw.toPMF.map selectedAction = actualRow false := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_pmf",
+      "short_name": "selectedAction_pmf",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 268,
+      "header_preview": "theorem selectedAction_pmf :     trainingLaw.toPMF.map selectedAction = actualRow false := by   have hm : (trainingLaw.toPMF.map selectedAction).toMeasure =       (actualRow false).toMeasure := by     rw [← PMF.toMeasure_map _ _ (measurable_of_finite _), Measure.toPMF_toMeasure]     exact selectedAction_law",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selection_probability",
+      "short_name": "selection_probability",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 279,
+      "header_preview": "theorem selection_probability (a : Bool) :     trainingLaw.real {ω | selectedAction ω = a} =       if a then 1 / 8 else 7 / 8 := by   have h := congrArg (fun μ : Measure Bool => μ.real {a}) selectedAction_law   rw [measureReal_def, Measure.map_apply (measurable_of_finite _)     (MeasurableSet.singleton a)] at h",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.selected_bad_probability",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "similarity": 0.52,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.actual_deployments_distinct",
+      "short_name": "actual_deployments_distinct",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 290,
+      "header_preview": "theorem actual_deployments_distinct : actualByAction false ≠ actualByAction true := by   intro h   have hr := congrArg (fun p : PMF (CausalHistory Bool (Bool × Bool) 1) =>     p.toMeasure.real failure) h   rw [actual_failure, actual_failure] at hr   norm_num [failureChance] at hr",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.two_positive_deployment_choices",
+      "short_name": "two_positive_deployment_choices",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 299,
+      "header_preview": "theorem two_positive_deployment_choices :     trainingLaw.real {ω | selectedAction ω = false} = 7 / 8 ∧     trainingLaw.real {ω | selectedAction ω = true} = 1 / 8 ∧     actualByAction false ≠ actualByAction true := by   exact ⟨selection_probability false, selection_probability true, actual_deployments_distinct⟩ ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.actual_joint_failure_exact",
+      "short_name": "actual_joint_failure_exact",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 307,
+      "header_preview": "theorem actual_joint_failure_exact :     (selectedTrainingDeployment trainingLaw.toPMF id actualDeployment).toMeasure.real       {z | z.2 ∈ failure} = 9 / 64 := by   rw [selectedTrainingDeployment_failure_tower trainingLaw.toPMF     (id : SampleSpace → SampleSpace) actualDeployment (fun _ => failure)]   simp only [id_eq, actualDeployment, actual_failure]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "similarity": 0.484,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empiricalRow_allTrue",
+      "short_name": "empiricalRow_allTrue",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 321,
+      "header_preview": "@[simp] theorem empiricalRow_allTrue (a : Bool) : empiricalRow allTrue a = PMF.pure true := by   unfold empiricalRow empiricalResponsePMF   change (PMF.uniformOfFintype (Fin 256)).map (Function.const (Fin 256) true) = _   exact PMF.map_const _ _                                                                          ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.allTrue_checkedBudget",
+      "short_name": "allTrue_checkedBudget",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 327,
+      "header_preview": "theorem allTrue_checkedBudget : checkedBudget allTrue = 1 := by   unfold checkedBudget   rw [referenceFailure_eq, allTrue_selects_true, empiricalRow_allTrue,     singleton_probability]   norm_num ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.all_record_budget_false",
+      "short_name": "all_record_budget_false",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 333,
+      "header_preview": "theorem all_record_budget_false : ¬ (∀ ω : SampleSpace, checkedBudget ω ≤ 1 / 2) := by   intro h   have hbad := h allTrue   rw [allTrue_checkedBudget] at hbad   norm_num at hbad ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.allTrue_positive_probability",
+      "short_name": "allTrue_positive_probability",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 340,
+      "header_preview": "theorem allTrue_positive_probability : 0 < trainingLaw.real {allTrue} := by   have hset : ({allTrue} : Set SampleSpace) =       Set.pi Set.univ (fun _ : Registered × Fin 256 => ({true} : Set Bool)) := by     ext ω     simp only [Set.mem_singleton_iff, Set.mem_pi, Set.mem_univ, forall_true_left]     constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.registered_selection_joint_witness",
+      "short_name": "registered_selection_joint_witness",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "line": 374,
+      "header_preview": "theorem registered_selection_joint_witness :     (selectedTrainingDeployment trainingLaw.toPMF id actualDeployment).toMeasure.real         {z | z.2 ∈ failure} ≤ 17 / 32 ∧     (17 / 32 : ℝ) < 1 ∧     (selectedTrainingDeployment trainingLaw.toPMF id actualDeployment).toMeasure.real         {z | z.2 ∈ failure} = 9 / 64 ∧",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good",
+      "short_name": "viable_registered_selected_joint_failure_on_good",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean",
+      "line": 43,
+      "header_preview": "theorem viable_registered_selected_joint_failure_on_good     {Ω : Type uΩ} {C : Type uC} {X Y A : Type u}     [Fintype Ω] [Fintype X] [Fintype Y] [Fintype A]     [MeasurableSpace Ω] [MeasurableSingletonClass Ω] [MeasurableSpace C]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    }
+  ],
+  "counted_ledger_promotion": "NONE",
+  "fuzzy_similarity_is_a_proof": false,
+  "source_graph": "GIT_COMMIT_DIFF_LEXICAL_NOT_ELABORATED",
+  "status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+  "reason": "This gate is mandatory discovery and audit, not an automatic proof equivalence or scientific promotion detector"
+}

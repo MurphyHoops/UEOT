@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "scope": "new-research",
+      "command": [
+        "rg",
+        "-n",
+        "^\\s*(axiom|opaque)\\s|\\b(sorry|admit|native_decide)\\b",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/GoodSelectedEnvelope.lean",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/VariableRegisteredJoint.lean",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/VariableRegisteredSamples.lean",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/VariableRegisteredSamplesBoundaryTail.lean"
+      ],
+      "raw_rg_exit": 1,
+      "status": "PASS_NO_FORBIDDEN_MATCH",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "scope": "production-compression",
+      "command": [
+        "rg",
+        "-n",
+        "^\\s*(axiom|opaque)\\s|\\b(sorry|admit|native_decide)\\b",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression"
+      ],
+      "raw_rg_exit": 1,
+      "status": "PASS_NO_FORBIDDEN_MATCH",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

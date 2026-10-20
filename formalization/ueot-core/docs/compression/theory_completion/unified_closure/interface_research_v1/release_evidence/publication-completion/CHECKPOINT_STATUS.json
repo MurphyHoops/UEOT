@@ -1,0 +1,363 @@
+{
+  "status": "PASS",
+  "checkpoint": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020",
+  "started_utc": "2026-10-20T11:38:39.251495+00:00",
+  "remote_publication": "NOT_RUN",
+  "canonical_ops_merge": "NOT_RUN",
+  "commands": [
+    {
+      "label": "clone_local_objects",
+      "command": [
+        "git",
+        "clone",
+        "--bare",
+        "--local",
+        "/Users/murphyhoops/Documents/ueotlean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git"
+      ],
+      "returncode": 0,
+      "log_sha256": "058107db3dff43ad9065a3b1bfdf215037f0759151a958407d5d3dfa6f524d83"
+    },
+    {
+      "label": "verify_bundle",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "bundle",
+        "verify",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ueot-core-books.bundle"
+      ],
+      "returncode": 0,
+      "log_sha256": "2d10d5713f62db46a0560cce703594e9197507e7037cd2e57781d9bd9654fbac"
+    },
+    {
+      "label": "fetch_reviewed_refs",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "fetch",
+        "--no-tags",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ueot-core-books.bundle",
+        "refs/heads/ops/compression-local-build-support-evidence:refs/heads/ops/compression-local-build-support-evidence",
+        "refs/heads/compression/theory-completion-support-viability:refs/heads/compression/theory-completion-support-viability",
+        "refs/heads/pub/ueot-separate-philosophy-mathematics:refs/heads/pub/ueot-separate-philosophy-mathematics"
+      ],
+      "returncode": 0,
+      "log_sha256": "d94e9103b980b5d5762998643a5aac8d2cc72218b8950496479da8eaf2cc6765"
+    },
+    {
+      "label": "set_real_origin",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "config",
+        "remote.origin.url",
+        "https://github.com/MurphyHoops/UEOT.git"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "set_main_fetch_spec",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "config",
+        "remote.origin.fetch",
+        "+refs/heads/main:refs/remotes/origin/main"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "fetch_actual_remote_main",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "main:refs/remotes/origin/main"
+      ],
+      "returncode": 0,
+      "log_sha256": "68a5a7b060f4aa6646a984a3e873cd7c1a2702cf7c986a716f3533d8a2995ab7"
+    },
+    {
+      "label": "checkout_ops",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "worktree",
+        "add",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "ops/compression-local-build-support-evidence"
+      ],
+      "returncode": 0,
+      "log_sha256": "f9940b5b48b70fbe1d78a72373cfc3ae8769cef526ee44557b83fb1532c4be28"
+    },
+    {
+      "label": "diff_check_ops",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "checkout_core",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "worktree",
+        "add",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/core",
+        "compression/theory-completion-support-viability"
+      ],
+      "returncode": 0,
+      "log_sha256": "6c78eb10b38e910e2d73b1ce6313dfead6587c71d192dbf0c7ed4a17221799fe"
+    },
+    {
+      "label": "diff_check_core",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/core",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "checkout_books",
+      "command": [
+        "git",
+        "--git-dir",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+        "worktree",
+        "add",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/books",
+        "pub/ueot-separate-philosophy-mathematics"
+      ],
+      "returncode": 0,
+      "log_sha256": "1e9fed1040023b0d54e567c58523f6387597bf5805f56a2455a6c813cea787fe"
+    },
+    {
+      "label": "diff_check_books",
+      "command": [
+        "git",
+        "-C",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/books",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "bundle_sha256": "5e113f892c3bda328a8f298206e4e939cc23285e91cfb39b43ea21d01c5c4f8e",
+  "packet_sha256": "b4247ddc5a26fd4971b8cac16b6078ed259564e48fd5538f10a94a1b1d7c6286",
+  "verified_evidence_files": 24,
+  "original_worktrees_before": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-policy-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": "M .github/workflows/ueot-core-compression.yml\n M .github/workflows/ueot-core-lean.yml\n M docs/REPOSITORY_BRANCH_GOVERNANCE.md\n M formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md\n M formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json\n M formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-viability-core-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": "M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake/\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean"
+    }
+  ],
+  "phase": "complete",
+  "actual_origin_main": "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
+  "worktrees": [
+    {
+      "directory": "ops",
+      "branch": "ops/compression-local-build-support-evidence",
+      "commit": "3f5da21d923c4d2e1d644dd8df9c0180fa7488b4",
+      "tree": "2cbb236b84f94b26a9ffa2bd47851467cb84a2f1",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/ops",
+      "working_tree_status": ""
+    },
+    {
+      "directory": "core",
+      "branch": "compression/theory-completion-support-viability",
+      "commit": "3869d166a6bd7f6eda9ea7a9aa6878fb7a3b7a7b",
+      "tree": "f4ca04b5c80361d701398c9f86afeaaddc5ef199",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/core",
+      "working_tree_status": ""
+    },
+    {
+      "directory": "books",
+      "branch": "pub/ueot-separate-philosophy-mathematics",
+      "commit": "96456132f8fbfc0f371c4095fd57116af5d486a6",
+      "tree": "3170fa8080f3c1451724e78ac46ef23736437b84",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/books",
+      "working_tree_status": ""
+    }
+  ],
+  "verified_hashes": [
+    {
+      "directory": "ops",
+      "path": ".github/workflows/ueot-core-compression.yml",
+      "sha256": "d6c945bc7c3fec6b72a294e87a17789aa0812f65db24758ca62a16dd8bceaf9d",
+      "actual_sha256": "d6c945bc7c3fec6b72a294e87a17789aa0812f65db24758ca62a16dd8bceaf9d"
+    },
+    {
+      "directory": "ops",
+      "path": ".github/workflows/ueot-core-lean.yml",
+      "sha256": "df90925873044a24232040fdd6a28afdc4bdfd990c76452c669658219dfe0e5d",
+      "actual_sha256": "df90925873044a24232040fdd6a28afdc4bdfd990c76452c669658219dfe0e5d"
+    },
+    {
+      "directory": "ops",
+      "path": "docs/REPOSITORY_BRANCH_GOVERNANCE.md",
+      "sha256": "c4020b86c9e36461eba18e9c684c0c2630f4abdd1a5007aafd1ffc4da61cc4cb",
+      "actual_sha256": "c4020b86c9e36461eba18e9c684c0c2630f4abdd1a5007aafd1ffc4da61cc4cb"
+    },
+    {
+      "directory": "ops",
+      "path": "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+      "sha256": "a898479b84fc9fa8ab237fd7cbd565f5e6e3d6954bf0f5af85b8a80428ee86ef",
+      "actual_sha256": "a898479b84fc9fa8ab237fd7cbd565f5e6e3d6954bf0f5af85b8a80428ee86ef"
+    },
+    {
+      "directory": "ops",
+      "path": "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+      "sha256": "ef9828b23a3ab413d1a97f536f2b6ce821682ac42d3501abf41d9e6dcd875c8f",
+      "actual_sha256": "ef9828b23a3ab413d1a97f536f2b6ce821682ac42d3501abf41d9e6dcd875c8f"
+    },
+    {
+      "directory": "ops",
+      "path": "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+      "sha256": "cae640e8ed05f70a1b1c97033d3147faf8fa69b2178fe8d4f265db79d1cc6fa1",
+      "actual_sha256": "cae640e8ed05f70a1b1c97033d3147faf8fa69b2178fe8d4f265db79d1cc6fa1"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "sha256": "5381b1d5f9897506e8794105b423d1f1845ad8fb72bade4d22e9ef2a46e24e44",
+      "actual_sha256": "5381b1d5f9897506e8794105b423d1f1845ad8fb72bade4d22e9ef2a46e24e44"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
+      "sha256": "4d989c75b457eae24495c545026efb06892bcd002e17f2040c4e1cf9c2be3443",
+      "actual_sha256": "4d989c75b457eae24495c545026efb06892bcd002e17f2040c4e1cf9c2be3443"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+      "sha256": "9296990a6656f38dd0d522e6d17086121d064ec10d835e18a3273b2eaeafb451",
+      "actual_sha256": "9296990a6656f38dd0d522e6d17086121d064ec10d835e18a3273b2eaeafb451"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "sha256": "85ea1b193b61a1a823873e622e771776c75aee4b43e047f148c5decd252fd88c",
+      "actual_sha256": "85ea1b193b61a1a823873e622e771776c75aee4b43e047f148c5decd252fd88c"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "sha256": "7986934bd00a04864f65a5a4f010bbafe3b86b93c442ddc177c294aab7c36ecf",
+      "actual_sha256": "7986934bd00a04864f65a5a4f010bbafe3b86b93c442ddc177c294aab7c36ecf"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+      "actual_sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+      "sha256": "9f5655420a5ff33707041060e841dcddcb3630b0b967fd6373d14a4f1a208f51",
+      "actual_sha256": "9f5655420a5ff33707041060e841dcddcb3630b0b967fd6373d14a4f1a208f51"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "sha256": "451dbcb249188564ab985b57e984a4d3e05b59486384792bdf04e112c7f16ac6",
+      "actual_sha256": "451dbcb249188564ab985b57e984a4d3e05b59486384792bdf04e112c7f16ac6"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean",
+      "sha256": "2d0dbdd7a546dbe321885155524936afb9299a8457ff5b5b129ca33a9f2519d0",
+      "actual_sha256": "2d0dbdd7a546dbe321885155524936afb9299a8457ff5b5b129ca33a9f2519d0"
+    },
+    {
+      "directory": "core",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+      "sha256": "1b3ea5edf8d1bd3ad1f9b726b64d7fe88428dfcc5a470afade6a2a790651034d",
+      "actual_sha256": "1b3ea5edf8d1bd3ad1f9b726b64d7fe88428dfcc5a470afade6a2a790651034d"
+    },
+    {
+      "directory": "books",
+      "path": "philosophy/UEOT_PHILOSOPHY.md",
+      "sha256": "9b66ede4df47347443d2f66af7851557df670f6a86e3885bd6c84b795372c3ae",
+      "actual_sha256": "9b66ede4df47347443d2f66af7851557df670f6a86e3885bd6c84b795372c3ae"
+    },
+    {
+      "directory": "books",
+      "path": "philosophy/UEOT_PHILOSOPHY.tex",
+      "sha256": "47ed725666c596971dc0438aa4db8bc90f953a91f60b2c16d533f6fa132c9d5e",
+      "actual_sha256": "47ed725666c596971dc0438aa4db8bc90f953a91f60b2c16d533f6fa132c9d5e"
+    },
+    {
+      "directory": "books",
+      "path": "philosophy/UEOT_PHILOSOPHY.pdf",
+      "sha256": "9abe0df19d48ccf92ed9697b248304adecea01528eafc7a766ab6a4428986025",
+      "actual_sha256": "9abe0df19d48ccf92ed9697b248304adecea01528eafc7a766ab6a4428986025"
+    },
+    {
+      "directory": "books",
+      "path": "mathematics/UEOT_MATHEMATICS.md",
+      "sha256": "7981369dc93272afec006aa2d18486de3ffc28fe9b06e9f6f9e855c29cf9126b",
+      "actual_sha256": "7981369dc93272afec006aa2d18486de3ffc28fe9b06e9f6f9e855c29cf9126b"
+    },
+    {
+      "directory": "books",
+      "path": "mathematics/UEOT_MATHEMATICS.tex",
+      "sha256": "eda39469074739ec80aee070c82e738c6141c8a3a35e0d981331e3ce13447558",
+      "actual_sha256": "eda39469074739ec80aee070c82e738c6141c8a3a35e0d981331e3ce13447558"
+    },
+    {
+      "directory": "books",
+      "path": "mathematics/UEOT_MATHEMATICS.pdf",
+      "sha256": "907c1635f9c6a0b6a7307f6d9e965dda3e5e8bee3ae852c58db17730b08b0245",
+      "actual_sha256": "907c1635f9c6a0b6a7307f6d9e965dda3e5e8bee3ae852c58db17730b08b0245"
+    }
+  ],
+  "handoff_sha256": "31f615f1bfb420f6902807cd506c7b825876234285d6e2cae312c77209435e65",
+  "original_worktrees_after": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-policy-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": "M .github/workflows/ueot-core-compression.yml\n M .github/workflows/ueot-core-lean.yml\n M docs/REPOSITORY_BRANCH_GOVERNANCE.md\n M formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md\n M formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json\n M formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-viability-core-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": "M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake/\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean"
+    }
+  ],
+  "original_worktrees_unchanged": true,
+  "local_build_receipts": "Preserved, not rerun. See the committed Core evidence and independent reviews.",
+  "cache_scope": "Existing Mac proof caches preserved in the old worktree; no cache or runtime copied into the clean checkpoint worktrees.",
+  "finished_utc": "2026-10-20T11:38:48.614612+00:00"
+}

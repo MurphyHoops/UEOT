@@ -1,0 +1,126 @@
+{
+  "status": "COMPILED_RESEARCH_PROTOTYPES_WITH_SOURCE_REVIEW",
+  "claim_class": "ADAPTER / INTERFACE",
+  "production_integration": "NOT_IMPORTED_OR_REGISTERED_IN_PRODUCTION",
+  "baseline": "6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1",
+  "compile_project_head": "0e5f1d809636fd238c87ec6d0fa94e3d720d0489",
+  "historical_full_core_git_tree": "624c9a0d4b26d9c3e6489c45050d66e96129b3dc",
+  "production_UEOT_git_tree": "73dda901d236295245839a75f683cd7839690fa8",
+  "complete_production_source_sha256": "91621694fadc223f63b76298a6eaf10078e59bd87c9dbc798726a6e366b1f357",
+  "production_module_count": 659,
+  "toolchain": "leanprover/lean4:v4.33.1",
+  "lake_manifest_sha256": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+  "installed_dependency_binding": "research_evidence/EXECUTION_BINDING.json",
+  "sources": {
+    "GoodSelectedEnvelope.lean": {
+      "bytes": 10457,
+      "sha256": "755fd26ad926ac27489d2ab157917cda96b16d40a76d903116bab19b765e51c3"
+    },
+    "VariableRegisteredJoint.lean": {
+      "bytes": 9572,
+      "sha256": "69f82675fff64434bc939cf719b0edf2602c6770d33fa3b1594eb3932364c271"
+    },
+    "VariableRegisteredSamples.lean": {
+      "bytes": 6229,
+      "sha256": "915b4f906c43429b25c010e7ffc44f766abf4066d9a32dcd91bb69fa7ce02e5f"
+    },
+    "VariableRegisteredSamplesBoundaryTail.lean": {
+      "bytes": 3033,
+      "sha256": "df48ebb71c296f46854d4fafa07256bf3e5828aa1e11ee4114bf03d2b55f3375"
+    }
+  },
+  "focused_standalone_executions": [
+    {
+      "name": "VariableRegisteredSamples.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/interface-research/source/VariableRegisteredSamples.lean"
+      ],
+      "source_sha256": "915b4f906c43429b25c010e7ffc44f766abf4066d9a32dcd91bb69fa7ce02e5f",
+      "exit_code": 0,
+      "elapsed_seconds": 6.911,
+      "log_sha256": "17261fee36a60a1be42fd1d16ba9f6325ad25d4091a1e7e8de6db1540ac29019"
+    },
+    {
+      "name": "GoodSelectedEnvelope.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/interface-research/source/GoodSelectedEnvelope.lean"
+      ],
+      "source_sha256": "755fd26ad926ac27489d2ab157917cda96b16d40a76d903116bab19b765e51c3",
+      "exit_code": 0,
+      "elapsed_seconds": 3.511,
+      "log_sha256": "b463ac6c7e40e44c23d7279ebed845dd297b9dfbaa42beb2f3863a5634ee5256"
+    }
+  ],
+  "boundary_execution": {
+    "status": "PASS",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/interface-research/boundary-1/VariableRegisteredSamplesBoundaryCheck.lean"
+    ],
+    "prototype_sha256": "915b4f906c43429b25c010e7ffc44f766abf4066d9a32dcd91bb69fa7ce02e5f",
+    "tail_sha256": "df48ebb71c296f46854d4fafa07256bf3e5828aa1e11ee4114bf03d2b55f3375",
+    "combined_sha256": "be5479175a9e9c4f8ebf20229ebd4e3ed87f28e875e7501bc28813f93d394e1f",
+    "exit_code": 0,
+    "elapsed_seconds": 34.119,
+    "log_sha256": "3e044f4995bf87d6eb131657f9b3031956f36a0c465a30591415ef2d2129080a"
+  },
+  "joint_execution": {
+    "status": "PASS",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/interface-research/joint-1/VariableRegisteredJointCheck.lean"
+    ],
+    "joint_tail_sha256": "69f82675fff64434bc939cf719b0edf2602c6770d33fa3b1594eb3932364c271",
+    "prototype_sha256": "915b4f906c43429b25c010e7ffc44f766abf4066d9a32dcd91bb69fa7ce02e5f",
+    "combined_sha256": "f124fedb8058d75d330dbf6675c8e7e5d5af7d242b00aec2b6ff7d70879c4f29",
+    "source_project": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-core/formalization/ueot-core",
+    "exit_code": 0,
+    "elapsed_seconds": 6.422,
+    "log_sha256": "7aff9b4ea0d36a3fd562e048876ab96915c62466af7fe48840f468dab54e86eb"
+  },
+  "axiom_closure_allowed_and_observed": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "original_failure": "research_evidence/attempt-1/STATUS.json",
+  "archive": {
+    "path": "research_evidence/interface-research-evidence-v1.tar.gz",
+    "bytes": 13912,
+    "sha256": "701e91c368c253d3618bc9a11822a37d3f6a656b3a25f63e42466f7bf19f4733"
+  },
+  "source_reviews": {
+    "GOOD_ENVELOPE_REVIEW.md": "131e89f05346938bf2a812c34b46256b4f7b1dfa20bba031f219ee27010e71fd",
+    "FINAL_SOURCE_BINDING.json": "1c65f214088f89b297281e79b0429e7f37c5e9edb585b32cc34e501af57c8c77",
+    "VARIABLE_JOINT_REVIEW.md": "75cfb094703bfd75a7f3cb22f2bec886fdfe9e81f0849445fe1600018994ccf3"
+  },
+  "publication_boundary": "Current candidate Git head and actual canonical policy gates are bound in the PR record; this file does not predict a future merge.",
+  "limits": [
+    "No new native declaration or edge census.",
+    "No finite-observation risk API extension yet.",
+    "No data-dependent sample allocation or stopping theorem.",
+    "Written finite-source numerical example is not a newly formalized adaptive witness.",
+    "Existing production and book builds are reused only for unchanged complete sources and pins."
+  ],
+  "written_derivations": {
+    "FINITE_OBSERVATION_ESCAPE.md": {
+      "status": "WRITTEN_MATHEMATICAL_PROOF_NOT_NEW_LEAN_IMPLEMENTATION",
+      "sha256": "1a9cbd4f23db4bdb16503b2bc9252d81a7afb286ab0d2886c514638a9b496c73"
+    },
+    "UNIFIED_FINITE_SOURCE_EXAMPLE.md": {
+      "status": "WRITTEN_MATHEMATICAL_PROOF_NOT_NEW_LEAN_IMPLEMENTATION",
+      "sha256": "02c145d8658bf07b254f8d3033e826a2bd92d3ed138f464669befa1a7c924e01"
+    }
+  },
+  "philosophy_revision_binding": "research_evidence/PHILOSOPHY_REVISION_BINDING.json"
+}

@@ -1,0 +1,124 @@
+{
+  "schema": "ueot.core.research_prototype_source_binding.v1",
+  "status": "PASS_SOURCE_BINDING_AND_NARROW_QUANTIFIER_REVIEW",
+  "reviewer": "/root/independent_audit",
+  "written_at_utc": "2026-10-20T13:00:08.123742+00:00",
+  "purpose": "Input to the final exact-commit research-scope review; no final PR commit is asserted by this receipt.",
+  "good_selected_envelope": {
+    "source_path": "/workspace/scratch/9a8d58b21e30/tmp/interface-validation/GoodSelectedEnvelope.lean",
+    "source_sha256": "755fd26ad926ac27489d2ab157917cda96b16d40a76d903116bab19b765e51c3",
+    "previous_source_sha256": "e348a1afd6966dc26c8f239331dad89b0e1373d7cf2e58a01a57f9b9e2736bda",
+    "previous_review_path": "/workspace/scratch/9a8d58b21e30/tmp/independent-audit/GOOD_ENVELOPE_REVIEW.md",
+    "previous_review_sha256": "131e89f05346938bf2a812c34b46256b4f7b1dfa20bba031f219ee27010e71fd",
+    "previous_review_preserved": true,
+    "change_binding": {
+      "status": "EXACT_PREVIOUS_FILE_PREFIX_PLUS_EXPECTED_AXIOM_PRINT_APPENDIX",
+      "previous_source_bytes": 10083,
+      "current_source_bytes": 10457,
+      "all_previously_reviewed_definition_and_proof_bytes_identical": true,
+      "appendix_utf8": "\n-- Kernel axiom closure of the two selected-envelope terminals.\n#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.GoodSelectedEnvelopeCheck.registered_selected_joint_failure_of_cap_and_envelope_on_good\n#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.GoodSelectedEnvelopeCheck.viable_registered_selected_joint_failure_with_envelope_on_good\n",
+      "appendix_sha256": "15c9da053825d5971d0fd844a0ecae6bcf7ab002e9509596f5b1b3d805717c3e",
+      "new_declarations_or_hypotheses": false
+    },
+    "semantic_review_reused": "CLEAR_SOURCE_REVIEW_FOR_RESEARCH_PROTOTYPE",
+    "terminals": [
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.GoodSelectedEnvelopeCheck.registered_selected_joint_failure_of_cap_and_envelope_on_good",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.GoodSelectedEnvelopeCheck.viable_registered_selected_joint_failure_with_envelope_on_good"
+    ],
+    "retained_findings": [
+      "hfit, hcap where applicable, henvelope, hchecked, and viable hinit use the same RegisteredCalibrationGood event.",
+      "The occupancy cap, reference check and actual selected joint use the same policy; the viable terminal internally proves zero occupancy for its own viableFamilyPolicy.",
+      "Training measure, registered samples and row marginals P are unchanged; E is the same fixed actual failure event.",
+      "Completion changes only reference sets for candidates never selected by a Good record; no new bad event or extra budget is introduced.",
+      "Finite observation and uniform Fin N restrictions remain; this source is a research prototype outside production imports."
+    ],
+    "focused_validation_reported_by_parent": {
+      "provenance": "Direct collaboration message from /root; raw execution log was not read independently in this source-binding step.",
+      "environment": "Real Mac pinned Lean cache, as reported by /root",
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_seconds": 3.511,
+      "log_sha256": "b463ac6c7e40e44c23d7279ebed845dd297b9dfbaa42beb2f3863a5634ee5256",
+      "source_sha256": "755fd26ad926ac27489d2ab157917cda96b16d40a76d903116bab19b765e51c3",
+      "axioms_by_terminal": {
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.GoodSelectedEnvelopeCheck.registered_selected_joint_failure_of_cap_and_envelope_on_good": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.GoodSelectedEnvelopeCheck.viable_registered_selected_joint_failure_with_envelope_on_good": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  },
+  "variable_registered_samples": {
+    "source_path": "/workspace/scratch/9a8d58b21e30/tmp/interface-validation/VariableRegisteredSamples.lean",
+    "source_sha256": "915b4f906c43429b25c010e7ffc44f766abf4066d9a32dcd91bb69fa7ce02e5f",
+    "attempt_1_source_sha256": "c808949c55c3a11246bfd02d9911b536828d2772c1aaebf3e9badacf3f108696",
+    "change_since_preserved_attempt_1": {
+      "status": "EXACT_SINGLE_COORDINATE_TYPE_ANNOTATION_PLUS_EXPECTED_AXIOM_PRINT_APPENDIX",
+      "annotation_before": "measurable_pi_apply ⟨j, k⟩",
+      "annotation_after": "measurable_pi_apply (⟨j, k⟩ : SampleCoordinate N)",
+      "appendix_utf8": "\n-- Kernel axiom closure of the real experiment and joint calibration.\n#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.product_experiment_calibration\n#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.registered_row_calibration\n",
+      "declaration_statements_unchanged": true,
+      "historical_failed_attempt_not_modified": true
+    },
+    "quantifier_review": {
+      "status": "CLEAR_NARROW_SOURCE_REVIEW",
+      "registration": "J and its finite registration, row : J -> PMF X, N : J -> Nat, and rho : J -> Real are fixed inputs independent of omega. hN is forall j, 0 < N j; hrho is forall j, 0 <= rho j.",
+      "sample_type": "sample : forall j, Fin (N j) -> Omega -> X",
+      "common_experiment": "One probability measure mu is used in every measurability, row-independence and marginal-law premise; hlaw states mu.map (sample j k) = (row j).toMeasure for every j,k.",
+      "independence": "hindep requires iIndepFun (sample j) mu separately for each row. No independence between different rows is assumed by registered_row_calibration.",
+      "joint_event": "Exists one measurable good subset of Omega whose complement has probability at most confidenceBudget X N rho, and forall omega in good, forall j, the empirical row TV error is at most rho j.",
+      "budget": "Sum over j of card(Finset X) * (2 * exp(-2 * N j * (rho j)^2)); the existing single-row calibration is reused with Unit, followed only by a finite union bound. No new concentration inequality or minimum-count replacement is assumed.",
+      "real_product_experiment": "Coordinates are Sigma j, Fin (N j). productRowLaw is the product of the corresponding row PMF measures; coordinate evaluation supplies actual measurability, row independence and the same-law marginals before applying registered_row_calibration.",
+      "empty_registration": "No Nonempty J premise occurs. If J is empty, hN and all row requirements are vacuous, the intersection is univ, the sum budget is zero, and the product coordinate domain is empty, giving the probability law on its singleton function space. The theorem remains valid.",
+      "retained_limits": [
+        "Does not justify data-dependent sample counts, stopping times or data-dependent radii.",
+        "Does not yet connect row-specific radii to the production time-indexed deployment budget or prove a new adaptive selection risk endpoint.",
+        "Does not change the production uniform Fin N registration API."
+      ]
+    },
+    "focused_validation_reported_by_parent": {
+      "provenance": "Direct collaboration message from /root; raw execution log was not read independently in this source-binding step.",
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_seconds": 6.911,
+      "source_sha256": "915b4f906c43429b25c010e7ffc44f766abf4066d9a32dcd91bb69fa7ce02e5f",
+      "log_sha256": null,
+      "log_hash_note": "Full Variable log SHA was not supplied in the parent message; parent execution receipt supplies that identity.",
+      "axioms_by_terminal": {
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.product_experiment_calibration": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.registered_row_calibration": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  },
+  "scope": {
+    "directly_performed": [
+      "Cloud file reads and SHA256/exact-byte comparisons",
+      "Reuse of existing Good mathematical review",
+      "Variable theorem quantifier and experiment-identity narrow source review"
+    ],
+    "not_performed": [
+      "Mac access",
+      "Remote access",
+      "Git mutation",
+      "Lean compilation or tests",
+      "New concentration-bound proof",
+      "Final PR Git-object/head verification"
+    ],
+    "production_api_changed": false,
+    "final_commit_binding": "To be completed against the actual research PR candidate; this receipt supplies the exact source identities."
+  }
+}
