@@ -1,0 +1,671 @@
+{
+  "agent": "/root/q316_quantum_doob",
+  "status": "C SOURCES FROZEN; FOCUSED MODULE AND WITNESS PASS. Parent unified main-package axiom audit and publication remain parent-owned.",
+  "toolchain": {
+    "lake": "/tmp/lean-4.33.1-linux/bin/lake",
+    "lean_version": "4.33.1",
+    "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+    "verification": "Official compiler self-location uses supported require_escalated execution, as verified by root; no binary modification."
+  },
+  "working_directory": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm",
+  "sources": {
+    "UEOTQM/QuantumDoob.lean": {
+      "targets": [
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.successOperator"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.successOperator_zero"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.successOperator_succ"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.successOperator_smul"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.successOperator_posSemidef"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigen_successOperator"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.successMass"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.successMass_eq_response"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigen_successMass"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigen_successMass_pos"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.conditionalState"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigen_conditionalState"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigen_rate_nonneg"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigen_rate_le_one"
+        },
+        {
+          "kind": "structure",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.unapply"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.metric"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_smul"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.unapply_apply"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_unapply"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_posSemidef"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_pos"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.state"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.state_matrix"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_eq_pairing"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.metric_conjugate"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.transformed_gram"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.transformed_map"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_complete"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.doobWeighted"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoob.doobInstrument"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_branch"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_branch_apply"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_branch_state"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_channelState"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_successOperator_apply"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigenmetric_successMass"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.eigenmetric_successMass_pos"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_finite_conditioning"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_successOperator_state"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoob.doob_successMass_state"
+        }
+      ],
+      "count": 42,
+      "kinds": {
+        "theorem": 32,
+        "def": 9,
+        "structure": 1
+      },
+      "supplemental_audit_targets": [
+        {
+          "kind": "constructor",
+          "name": "UEOTQM.QuantumDoob.InvertibleFilter.mk"
+        }
+      ],
+      "public_audit_count_including_constructor": 43,
+      "absolute_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/QuantumDoob.lean",
+      "sha256": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+      "bytes": 15793,
+      "lines": 339
+    },
+    "scripts/witnesses/QuantumDoobExamples.lean": {
+      "targets": [
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.successK"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.failureK"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.success_gram"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.failure_gram"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.sourceK"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.source_complete"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.sourceInstrument"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.source_branch_formula"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.rhoMatrix"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.rhoMatrix_positive"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.rhoMatrix_trace"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.rho"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.S"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.T"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.inverse_mul"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.mul_inverse"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.filter"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.metric_exact"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.source_right_eigen"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.source_left_eigen"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.filtered_mass_exact"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.plusMatrix"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.filtered_state_exact"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.survival_exact"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.survival_positive"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.qsd_conditional_fixed"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.transformedInstrument"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.transformed_branch_formula"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.transformed_stationary"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.transformed_records"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.transformed_record_mass"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.arbitrary_initial_survival_positive"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.arbitrary_initial_finite_conditioning"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.failure_completion_necessary"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.success_kraus_noncommuting"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.input_coherence_retained"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.qsd_ne_filtered_state"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.QuantumDoobExamples.uniformDensity"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.uniform_probability_exact"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.QuantumDoobExamples.uniform_probability_ne_qsd"
+        }
+      ],
+      "count": 40,
+      "kinds": {
+        "theorem": 28,
+        "def": 12,
+        "structure": 0
+      },
+      "absolute_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/scripts/witnesses/QuantumDoobExamples.lean",
+      "sha256": "5fbe70aca27378fead77fdb52658bb048463eff3b1e7e1299a43e5f40e2d456a",
+      "bytes": 12749,
+      "lines": 285
+    }
+  },
+  "commands": [
+    {
+      "command": "/tmp/lean-4.33.1-linux/bin/lake env lean -o .lake/build/lib/lean/UEOTQM/QuantumDoob.olean UEOTQM/QuantumDoob.lean",
+      "exit_code": 1,
+      "log": {
+        "path": "/tmp/qm316_quantum_doob_round2_failed.log",
+        "sha256": "37b261bd65ba307565ee367502f48ba8705fc4b4ea1aadd6ad7312629e623a65",
+        "bytes": 1082
+      },
+      "meaning": "Intermediate compile failed only at an ambiguous mul_inv_rev in the newly added finite-conditioning proof; final source qualifies _root_.mul_inv_rev."
+    },
+    {
+      "command": "/tmp/lean-4.33.1-linux/bin/lake build +UEOTQM.QuantumDoob",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/qm316_quantum_doob_focused.log",
+        "sha256": "c323489d095454a5f3d7c096cfd26597828c7d4998c32ceca28b1de407a0f092",
+        "bytes": 12150
+      },
+      "source_sha256": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+      "meaning": "Official focused Lake build, including its ordinary dependency trace. Log reports Built UEOTQM.QuantumDoob (422s). Replayed pre-existing Observables warnings do not concern this new module."
+    },
+    {
+      "command": "/tmp/lean-4.33.1-linux/bin/lake env lean scripts/witnesses/QuantumDoobExamples.lean",
+      "exit_code": 1,
+      "log": {
+        "path": "/tmp/qm316_quantum_doob_witness_round1_failed.log",
+        "sha256": "188d663464e05ead04e7d7dd625e055eddeec8ea573caa430f60e48cffbe6ae6",
+        "bytes": 12043
+      },
+      "source_sha256": "446441ecc3235bde8a48e6e6b90eb05c46bc6bccfd035e446e23d81521baf052",
+      "meaning": "Intermediate numeral-conjugation and vector-matrix notation simplification failures. Failed elaboration printed sorryAx; this is a failed run, not an accepted certificate."
+    },
+    {
+      "command": "/tmp/lean-4.33.1-linux/bin/lake env lean scripts/witnesses/QuantumDoobExamples.lean",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/qm316_quantum_doob_witness.log",
+        "sha256": "18b22411e7f6fbc286adfa3f4943c8ad26f75f3416e71c6eb74546e271e423f1",
+        "bytes": 4233
+      },
+      "source_sha256": "5fbe70aca27378fead77fdb52658bb048463eff3b1e7e1299a43e5f40e2d456a",
+      "meaning": "Final exact rational witness and every one of its 40 named axiom targets pass, without warnings or errors."
+    }
+  ],
+  "witness_axiom_audit": {
+    "count": 40,
+    "unique_count": 40,
+    "all_expected_targets_present": true,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "sets": {
+      "UEOTQM.QuantumDoobExamples.successK": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.failureK": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.success_gram": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.failure_gram": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.sourceK": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.source_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.sourceInstrument": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.source_branch_formula": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.rhoMatrix": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.rhoMatrix_positive": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.rhoMatrix_trace": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.rho": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.S": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.T": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.inverse_mul": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.mul_inverse": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.filter": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.metric_exact": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.source_right_eigen": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.source_left_eigen": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.filtered_mass_exact": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.plusMatrix": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.filtered_state_exact": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.survival_exact": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.survival_positive": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.qsd_conditional_fixed": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.transformedInstrument": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.transformed_branch_formula": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.transformed_stationary": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.transformed_records": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.transformed_record_mass": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.arbitrary_initial_survival_positive": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.arbitrary_initial_finite_conditioning": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.failure_completion_necessary": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.success_kraus_noncommuting": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.input_coherence_retained": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.qsd_ne_filtered_state": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.uniformDensity": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.uniform_probability_exact": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "UEOTQM.QuantumDoobExamples.uniform_probability_ne_qsd": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "sorryAx": false,
+    "warnings": 0,
+    "errors": 0
+  },
+  "main_axiom_audit": {
+    "explicit_declarations": 42,
+    "supplemental_constructor": "UEOTQM.QuantumDoob.InvertibleFilter.mk",
+    "total_named_targets": 43,
+    "status": "Delegated to root unified scripts/AxiomAudit.lean by explicit resource scheduling instruction. Independent main audit not run."
+  },
+  "source_forbidden_scan": {
+    "UEOTQM/QuantumDoob.lean": [],
+    "scripts/witnesses/QuantumDoobExamples.lean": []
+  },
+  "mathematical_deliverables": [
+    "Actual recordOperator for n repeats of a selected branch; right eigenoperator powers and normalized-density QSD survival/conditioning; rate in [0,1].",
+    "Explicit two-sided inverse filter; positive filtered mass proved for every Density using PSD zero-trace and invertibility.",
+    "Left Heisenberg eigenmetric implies weighted Gram completeness, then an actual ordinary square-root Kraus Doob Instrument.",
+    "All-complex-operator one-step and finite-iterate conjugacy; real-trace eigenmetric law on every complex operator.",
+    "Every initial Density has positive finite success probability under the positive-rate left eigenmetric, and its actual finite conditional state, after normalized filtering, equals actual Doob iteration.",
+    "An additional right eigen-Density yields an actual channelState fixed point and invariant repeated Unit-outcome record operators.",
+    "Complete rational two-dimensional source with noncommuting Kraus and retained E01 coherence, verified left/right eigen-equations and exact full-matrix Doob formula.",
+    "Failure completion, QSD-versus-filtered state, and non-eigen initial survival-rate controls."
+  ],
+  "scope": [
+    "This extends the existing finite complex Kraus QM sector. It contains no direct UEOT Core theorem application selecting or deriving that quantum sector.",
+    "The Doob output type is Unit; the proved record identities concern repeats of the selected success branch, not arbitrary fine-grained monitored Kraus words or arbitrary operation libraries.",
+    "InvertibleFilter.state is generally nonlinear. The witness filtered mass 8/5 is a normalization factor, not a source probability.",
+    "The named eigenmetric_successMass theorem uses real mass = Re(trace) on arbitrary complex operators; the witness transformed_branch_formula uses the full complex trace.",
+    "Spectral-data existence, universal availability of a positive invertible eigenmetric, spectral-radius identity, uniqueness, irreducibility, mixing and infinite conditioned limits are not proved.",
+    "Generic source QSD right eigenrelation and positive rate are explicit inputs; target completeness, positive filtered normalization, conditional-state stationarity, and Doob state stationarity are proved outputs.",
+    "No frozen Core, shared exports/audit/CI, main manuscript, Git metadata, remote repository or publication path was modified by this child."
+  ],
+  "additional_reviews": {
+    "classical_cross_review": "/tmp/qm316_classical_cross_review.md and .json; final ClassicalSector fed2036... and CorePurificationBoundary 53d95715... frozen hashes bound, source review PASS.",
+    "integration_source_review": "/tmp/qm316_integration_source_review.md and .json; final source coverage PASS: 459 theorem /573 audit targets, concrete 62 theorem+22 def/84 targets; combined acceptance is root responsibility.",
+    "chapter56": "/tmp/qm316_ch56_source_review.md and .json; final chapter SHA 1ae3e25b... bound; mathematical/named-Lean scope and approved v31.7 roadmap alignment PASS."
+  },
+  "notes": "/tmp/qm316_quantum_doob_math_notes.md"
+}

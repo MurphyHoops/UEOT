@@ -1,0 +1,29 @@
+UEOTQM/QuantumDoob.lean:300:2: warning: Try `simp at hpos` instead of `simpa using hpos`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOTQM/QuantumDoob.lean:315:42: error: Ambiguous term
+  mul_inv_rev
+Possible interpretations:
+  _root_.mul_inv_rev : ∀ (a b : ?m.198), (a * b)⁻¹ = b⁻¹ * a⁻¹
+  
+  Matrix.mul_inv_rev : ∀ (A B : Matrix ?m.198 ?m.198 ?m.199), (A * B)⁻¹ = B⁻¹ * A⁻¹
+UEOTQM/QuantumDoob.lean:309:83: error: unsolved goals
+ι : Type u_1
+κ : Type u_2
+O : Type u_3
+inst✝³ : Fintype ι
+inst✝² : DecidableEq ι
+inst✝¹ : Fintype κ
+inst✝ : Fintype O
+F : InvertibleFilter ι
+I : Instrument ι O κ
+o : O
+r : ℝ
+hr : 0 < r
+hleft : heisenberg (I.kraus o) F.metric = r • F.metric
+ρ : Density ι
+n : ℕ
+hp : 0 < successMass I o ρ n
+⊢ (((successMass I o ρ n)⁻¹ * mass (F.apply (successOperator I o n ρ.matrix)))⁻¹ * (successMass I o ρ n)⁻¹) •
+      F.apply (successOperator I o n ρ.matrix) =
+    (mass (F.apply ρ.matrix))⁻¹ • r⁻¹ ^ n • F.apply (successOperator I o n ρ.matrix)

@@ -142,7 +142,7 @@ jobs:
           python3 scripts/check_axioms.py
       - name: Verify generated exact certificates and false witnesses
         run: python3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir "$RUNNER_TEMP/ueot-qm-lean-exports"
-      - name: Verify finite mixture and survival Lean witnesses
+      - name: Verify retained finite and quantum Lean witnesses
         run: python3 scripts/verify_finite_witnesses.py --output-dir "$RUNNER_TEMP/ueot-qm-finite-witnesses"
       - name: Archive proof evidence
         if: always()

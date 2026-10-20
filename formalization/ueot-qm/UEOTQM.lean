@@ -16,3 +16,7 @@ import UEOTQM.Stability
 import UEOTQM.Mixture
 import UEOTQM.Cesaro
 import UEOTQM.Survival
+import UEOTQM.ClassicalSector
+import UEOTQM.CorePurificationBoundary
+import UEOTQM.RealLocalTomography
+import UEOTQM.QuantumDoob

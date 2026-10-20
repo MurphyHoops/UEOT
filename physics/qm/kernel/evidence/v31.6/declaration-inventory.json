@@ -1,0 +1,3960 @@
+{
+  "schema": "ueot_qm.declaration_inventory.v31.6",
+  "status": "SOURCE_INVENTORY_NOT_COMPILATION_ACCEPTANCE",
+  "modules": {
+    "Adaptive": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.Adaptive.Protocol.Leaf",
+        "line": 36
+      },
+      {
+        "kind": "instance",
+        "name": "UEOTQM.Adaptive.Protocol.leafFintype",
+        "line": 41
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Adaptive.Protocol.word",
+        "line": 49
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.Protocol.word_injective",
+        "line": 54
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Adaptive.leafWeight",
+        "line": 78
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.sum_leafWeight",
+        "line": 83
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafWeight_nonneg",
+        "line": 102
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Adaptive.leafProbability",
+        "line": 107
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafProbability_eq_response",
+        "line": 110
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafProbability_nonneg",
+        "line": 114
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.sum_leafProbability",
+        "line": 119
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafProbability_le_one",
+        "line": 125
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafProbability_eq_of_response_eq",
+        "line": 135
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit",
+        "line": 143
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq",
+        "line": 152
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Adaptive.leafProbability_posterior",
+        "line": 159
+      }
+    ],
+    "Basic": [
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.Operator",
+        "line": 21
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.mass",
+        "line": 26
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Density",
+        "line": 29
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Density.ext",
+        "line": 34
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.mass_nonneg",
+        "line": 40
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.trace_im_eq_zero",
+        "line": 43
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.mass_smul",
+        "line": 46
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Density.mass_one",
+        "line": 50
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.mass_eq_zero_iff",
+        "line": 53
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.normalize",
+        "line": 64
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.normalize_matrix",
+        "line": 76
+      }
+    ],
+    "Cesaro": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.Cesaro.iterateState",
+        "line": 32
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.iterateState_zero",
+        "line": 35
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.iterateState_succ",
+        "line": 38
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Cesaro.channelLinear",
+        "line": 42
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.channelLinear_apply",
+        "line": 51
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Cesaro.orbitSum",
+        "line": 55
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.orbitSum_positive",
+        "line": 58
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.orbitSum_trace",
+        "line": 62
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Cesaro.averageState",
+        "line": 67
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.averageState_matrix",
+        "line": 78
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.orbitSum_telescope",
+        "line": 82
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.matrix_residual",
+        "line": 94
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.pairing_sub_right",
+        "line": 104
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.probability_residual",
+        "line": 108
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.probability_residual_le",
+        "line": 117
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.effectDistance_residual_le",
+        "line": 126
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.density_operatorNorm_le_one",
+        "line": 133
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Cesaro.densityMatrices",
+        "line": 155
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.densityMatrices_closed",
+        "line": 158
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.densityMatrices_compact",
+        "line": 165
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.continuous_channel",
+        "line": 171
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.matrix_residual_norm_le",
+        "line": 175
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Cesaro.averageSequence",
+        "line": 190
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.matrix_residual_tendsto_zero",
+        "line": 193
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.subsequence_limit_invariant",
+        "line": 201
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.subsequence_limit_density",
+        "line": 211
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.exists_stationary_subsequence",
+        "line": 220
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.exists_stationary_of_density",
+        "line": 233
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Cesaro.normalizedIdentity",
+        "line": 239
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Cesaro.exists_stationary",
+        "line": 246
+      }
+    ],
+    "ClassicalSector": [
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.Classical.State",
+        "line": 21
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Classical.Effect",
+        "line": 24
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.state_ext",
+        "line": 32
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.evaluate",
+        "line": 40
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.evaluate_nonneg",
+        "line": 43
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.evaluate_le_one",
+        "line": 46
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.indicator",
+        "line": 52
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.evaluate_indicator",
+        "line": 57
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.all_effects_separate",
+        "line": 61
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.dirac",
+        "line": 70
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.dirac_weight",
+        "line": 75
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.evaluate_dirac",
+        "line": 80
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.mix",
+        "line": 84
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.mix_weight",
+        "line": 93
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.halfMix",
+        "line": 97
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.halfMix_weight",
+        "line": 99
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.pushforward",
+        "line": 104
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.pushforward_weight",
+        "line": 112
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.pushforward_dirac",
+        "line": 117
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.pushforward_halfMix",
+        "line": 133
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.marginalLeft",
+        "line": 144
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.marginalLeft_weight",
+        "line": 149
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.marginalLeft_eq_pushforward",
+        "line": 152
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.marginalLeft_dirac",
+        "line": 161
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.marginalLeft_halfMix",
+        "line": 165
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.IsPure",
+        "line": 171
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.dirac_isPure",
+        "line": 175
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.dirac_ne",
+        "line": 211
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.halfMix_not_pure",
+        "line": 217
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.halfRow",
+        "line": 226
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.halfRow_weight",
+        "line": 244
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.marginalLeft_halfRow",
+        "line": 250
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.no_pure_extension_halfMix",
+        "line": 267
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.attach",
+        "line": 309
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.marginalLeft_attach",
+        "line": 312
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.dirac_has_pure_extension",
+        "line": 328
+      }
+    ],
+    "CorePurificationBoundary": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.toPMF",
+        "line": 33
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.toPMF_apply",
+        "line": 36
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.toPMF_apply_toReal",
+        "line": 39
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.toPMF_dirac",
+        "line": 43
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.toPMF_pushforward",
+        "line": 48
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.rowState",
+        "line": 68
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.rowState_weight",
+        "line": 71
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Classical.stepState",
+        "line": 75
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.stepState_dirac",
+        "line": 83
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Classical.toPMF_stepState",
+        "line": 92
+      },
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.CorePurificationBoundary.Micro",
+        "line": 122
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.fullyObservedSurvivalModel",
+        "line": 124
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.terminal_eq_iff",
+        "line": 131
+      },
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.CorePurificationBoundary.Terminal",
+        "line": 141
+      },
+      {
+        "kind": "instance",
+        "name": "UEOTQM.CorePurificationBoundary.terminalFintype",
+        "line": 144
+      },
+      {
+        "kind": "instance",
+        "name": "UEOTQM.CorePurificationBoundary.terminalMeasurableSpace",
+        "line": 145
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.terminalControl",
+        "line": 147
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.terminalGood",
+        "line": 152
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.terminalControl_source",
+        "line": 157
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.terminalControl_reward",
+        "line": 160
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.terminalControl_optimalValue",
+        "line": 168
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.terminalControl_injective",
+        "line": 173
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.terminalGood_source",
+        "line": 179
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.viable_all_horizons",
+        "line": 186
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.initial_support_viable",
+        "line": 197
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.firstRow",
+        "line": 204
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.firstRow_halfMix",
+        "line": 206
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.firstQuotientState",
+        "line": 213
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.quotient_support_distinct",
+        "line": 216
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.firstQuotientState_halfMix",
+        "line": 221
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.firstQuotientState_not_pure",
+        "line": 226
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.firstQuotientState_no_pure_extension",
+        "line": 230
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.sourcePMF",
+        "line": 235
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.piStar",
+        "line": 238
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.actualPathLaw",
+        "line": 240
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.sourcePMF_toReal",
+        "line": 243
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.sourcePMF_firstRow",
+        "line": 248
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.sourcePMF_rowState",
+        "line": 250
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.piStar_preserves",
+        "line": 253
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.actualPath_all_times_safe",
+        "line": 263
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.actualPath_first_quotient_marginal",
+        "line": 282
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.false_action_destructive",
+        "line": 298
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.FiniteCoreSlice",
+        "line": 306
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.finiteCoreSlice_holds",
+        "line": 324
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.classical_purification_separation",
+        "line": 335
+      },
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.CorePurificationBoundary.RestrictedTerminal",
+        "line": 346
+      },
+      {
+        "kind": "instance",
+        "name": "UEOTQM.CorePurificationBoundary.restrictedTerminalFintype",
+        "line": 349
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState",
+        "line": 351
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.restricted_support_merge",
+        "line": 354
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_dirac",
+        "line": 361
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_pure",
+        "line": 369
+      }
+    ],
+    "Effects": [
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_sub_left",
+        "line": 29
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_add_right",
+        "line": 34
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_sum_right",
+        "line": 39
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_nonneg",
+        "line": 45
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Effect",
+        "line": 54
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.ext",
+        "line": 61
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Effect.zero",
+        "line": 67
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Effect.one",
+        "line": 73
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Effect.complement",
+        "line": 78
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.zero_matrix",
+        "line": 83
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.one_matrix",
+        "line": 84
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.complement_matrix",
+        "line": 85
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.pairing_nonneg",
+        "line": 88
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.pairing_le_mass",
+        "line": 91
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Effect.probability",
+        "line": 98
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.probability_nonneg",
+        "line": 100
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.probability_le_one",
+        "line": 103
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.probability_zero",
+        "line": 107
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.probability_one",
+        "line": 110
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.probability_complement",
+        "line": 113
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.channel",
+        "line": 122
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.channel_posSemidef",
+        "line": 125
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.trace_channel",
+        "line": 129
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.channelState",
+        "line": 133
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.channelState_matrix",
+        "line": 138
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.pullbackEffects",
+        "line": 143
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.pullbackEffects_matrix",
+        "line": 153
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.pairing_pullbackEffects",
+        "line": 156
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.pullbackEffect",
+        "line": 164
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.pairing_pullbackEffect",
+        "line": 167
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.probability_channelState",
+        "line": 171
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.branchEffect",
+        "line": 176
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.branchEffect_matrix",
+        "line": 180
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.pairing_branchEffect",
+        "line": 190
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.probability_branchEffect_one",
+        "line": 195
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.probability_posterior",
+        "line": 200
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.recordTest",
+        "line": 211
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordTest_matrix",
+        "line": 215
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordEffect_complement_posSemidef",
+        "line": 221
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_eq_effect_probability",
+        "line": 225
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_le_one",
+        "line": 229
+      }
+    ],
+    "Exact": [
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Exact.MatrixData",
+        "line": 24
+      },
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.Exact.OperatorData",
+        "line": 29
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.ext",
+        "line": 35
+      },
+      {
+        "kind": "instance",
+        "name": "UEOTQM.Exact.MatrixData.instDecidableEq",
+        "line": 44
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.zero",
+        "line": 51
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.one",
+        "line": 53
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.add",
+        "line": 55
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.neg",
+        "line": 58
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.sub",
+        "line": 60
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.mul",
+        "line": 64
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.adjoint",
+        "line": 68
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.scale",
+        "line": 71
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.sum",
+        "line": 74
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix",
+        "line": 78
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_re",
+        "line": 81
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_im",
+        "line": 84
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_injective",
+        "line": 88
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_eq_iff",
+        "line": 98
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_zero",
+        "line": 101
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_one",
+        "line": 105
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_add",
+        "line": 111
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_neg",
+        "line": 116
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_sub",
+        "line": 121
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_mul",
+        "line": 126
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_adjoint",
+        "line": 133
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_scale",
+        "line": 138
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.MatrixData.toMatrix_sum",
+        "line": 143
+      },
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.Exact.toOperator",
+        "line": 151
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.weightedBranch",
+        "line": 157
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.weightedPullback",
+        "line": 164
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.weightedCompleteness",
+        "line": 171
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.toMatrix_weightedBranch",
+        "line": 176
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.toMatrix_weightedPullback",
+        "line": 183
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.toMatrix_weightedCompleteness",
+        "line": 190
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.toMatrix_weightedBranch_univ",
+        "line": 198
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.toMatrix_weightedPullback_univ",
+        "line": 205
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.Examples.imaginaryUnit",
+        "line": 214
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.Examples.imaginaryUnit_square_exact",
+        "line": 217
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.Examples.imaginaryUnit_adjoint_exact",
+        "line": 221
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.Examples.imaginaryUnit_square_complex",
+        "line": 225
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Exact.Examples.hadamardNumerator",
+        "line": 231
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.Examples.hadamard_complete_exact",
+        "line": 234
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Exact.Examples.hadamard_complete_complex",
+        "line": 239
+      }
+    ],
+    "ExactCertificate": [
+      {
+        "kind": "structure",
+        "name": "UEOTQM.ExactCertificate.Data",
+        "line": 28
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.exactRecordEffect",
+        "line": 38
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.exactCompleteness",
+        "line": 45
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.exactExpansion",
+        "line": 51
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.Conditions",
+        "line": 58
+      },
+      {
+        "kind": "instance",
+        "name": "UEOTQM.ExactCertificate.conditionsDecidable",
+        "line": 66
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.check",
+        "line": 71
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.check_eq_true_iff",
+        "line": 73
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.check_sound",
+        "line": 76
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.weightedInstrument",
+        "line": 83
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.instrumentFamily",
+        "line": 96
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.branch_eq_exact",
+        "line": 101
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.heisenberg_eq_exact",
+        "line": 110
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.exactRecordEffect_toMatrix",
+        "line": 121
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.basis_toMatrix",
+        "line": 131
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ExactCertificate.presentation",
+        "line": 138
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.coordinates_eq_iff_response_eq",
+        "line": 153
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.response_eq_recordCoordinates_unit",
+        "line": 159
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ExactCertificate.adaptive_leafProbability_eq",
+        "line": 167
+      }
+    ],
+    "FiniteCoordinates": [
+      {
+        "kind": "structure",
+        "name": "UEOTQM.FiniteObservablePresentation",
+        "line": 30
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.observable",
+        "line": 44
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.span",
+        "line": 46
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.observable_mem_span",
+        "line": 48
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.observable_unit",
+        "line": 51
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.one_mem_span",
+        "line": 54
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.pullback_observable",
+        "line": 58
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.span_pullbackClosed",
+        "line": 64
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.span_eq_observableSpace",
+        "line": 84
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.recordEffect_mem_span",
+        "line": 91
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.operatorCoordinates",
+        "line": 96
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinates",
+        "line": 98
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.operatorCoordinates_unit",
+        "line": 100
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinates_unit",
+        "line": 105
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinates_apply",
+        "line": 108
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq",
+        "line": 113
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.applyBranch",
+        "line": 130
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.operatorCoordinates_branch",
+        "line": 135
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.recordCoordinates",
+        "line": 146
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.operatorCoordinates_record",
+        "line": 151
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.response_eq_recordCoordinates_unit",
+        "line": 161
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.probability_eq_applyBranch_unit",
+        "line": 167
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinates_posterior",
+        "line": 173
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.normalizedBranch",
+        "line": 187
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinates_posterior_eq_normalizedBranch",
+        "line": 190
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range",
+        "line": 202
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinateUpdate",
+        "line": 213
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate",
+        "line": 219
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val",
+        "line": 225
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_posterior",
+        "line": 230
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_none_iff",
+        "line": 238
+      }
+    ],
+    "Instrument": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.krausMap",
+        "line": 24
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.krausMap_posSemidef",
+        "line": 27
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.krausMap_smul",
+        "line": 32
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.trace_krausMap",
+        "line": 36
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Instrument",
+        "line": 45
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.branch",
+        "line": 52
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.branch_posSemidef",
+        "line": 55
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.branch_smul",
+        "line": 59
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.sum_trace_branch",
+        "line": 63
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.sum_mass_branch",
+        "line": 68
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.probability",
+        "line": 73
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.probability_nonneg",
+        "line": 76
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.sum_probability",
+        "line": 80
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.probability_le_one",
+        "line": 85
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Instrument.posterior",
+        "line": 92
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.posterior_matrix",
+        "line": 96
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.zero_probability_iff_zero_branch",
+        "line": 100
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.ancillaKrausMap",
+        "line": 112
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ancillaKrausMap_posSemidef",
+        "line": 117
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.ancillaKrausMap_entry",
+        "line": 124
+      }
+    ],
+    "Mixture": [
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Mixture.Weights",
+        "line": 28
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Mixture.tv",
+        "line": 34
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.tv_nonneg",
+        "line": 36
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.tv_self",
+        "line": 39
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.tv_comm",
+        "line": 41
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.tv_le_one",
+        "line": 44
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.expectation_sub_le_tv",
+        "line": 56
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Mixture.density",
+        "line": 78
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.density_matrix",
+        "line": 87
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.probability_density",
+        "line": 90
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.density_weight_change_le_tv",
+        "line": 97
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.density_fixed_weights_le_sum",
+        "line": 106
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.density_joint_change_le",
+        "line": 123
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Mixture.weightedInstrument",
+        "line": 131
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Mixture.instrument",
+        "line": 143
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.instrument_kraus",
+        "line": 146
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.instrument_branch",
+        "line": 151
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.instrument_heisenberg",
+        "line": 161
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.instrument_channel",
+        "line": 172
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.instrument_channelState",
+        "line": 180
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.channelDefect_weight_change_le_tv",
+        "line": 188
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.channelDefect_fixed_weights_le_sum",
+        "line": 200
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.channelDefect_joint_change_le",
+        "line": 215
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Mixture.RationalWeights",
+        "line": 233
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Mixture.RationalWeights.toWeights",
+        "line": 238
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Mixture.rationalTV",
+        "line": 244
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.tv_toWeights",
+        "line": 247
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.density_weight_change_le_rational_budget",
+        "line": 255
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget",
+        "line": 264
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.channelDefect_fixed_weights_le_rational_sum",
+        "line": 272
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Mixture.rationalJointBudget",
+        "line": 288
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget",
+        "line": 291
+      }
+    ],
+    "Observables": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.pairing",
+        "line": 30
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_one",
+        "line": 32
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_zero_left",
+        "line": 35
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_add_left",
+        "line": 38
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_smul_left",
+        "line": 42
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_smul_right",
+        "line": 46
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.pairingLinear",
+        "line": 51
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_sum_left",
+        "line": 57
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.heisenberg",
+        "line": 62
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.heisenberg_zero",
+        "line": 65
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.heisenberg_add",
+        "line": 68
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.heisenberg_smul",
+        "line": 72
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.heisenbergLinear",
+        "line": 76
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.trace_heisenberg",
+        "line": 82
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_heisenberg",
+        "line": 95
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.heisenberg_posSemidef",
+        "line": 99
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.recordEffect",
+        "line": 108
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordEffect_posSemidef",
+        "line": 112
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordEffect_isHermitian",
+        "line": 118
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.mass_recordOperator_eq_pairing",
+        "line": 124
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_eq_pairing",
+        "line": 135
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.observableSpace",
+        "line": 140
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordEffect_mem",
+        "line": 143
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.one_mem_observableSpace",
+        "line": 147
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.PullbackClosed",
+        "line": 152
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordEffect_mem_of_closed",
+        "line": 155
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.observableSpace_le_of_closed",
+        "line": 162
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.observableSpace_pullbackClosed",
+        "line": 169
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.isHermitian_of_mem_observableSpace",
+        "line": 189
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_eq_iff_pairing_observableSpace",
+        "line": 202
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.observableSpace_finiteDimensional",
+        "line": 221
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.exists_finite_wordEffect_generators",
+        "line": 227
+      }
+    ],
+    "Operational": [
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.Response",
+        "line": 30
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.recordOperator",
+        "line": 33
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordOperator_posSemidef",
+        "line": 38
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.recordOperator_smul",
+        "line": 46
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.response",
+        "line": 54
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_nonneg",
+        "line": 57
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_nil",
+        "line": 61
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_singleton",
+        "line": 65
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.totalRecordMass",
+        "line": 69
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.totalRecordMass_eq_mass",
+        "line": 73
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.totalRecordMass_density",
+        "line": 82
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.responseSetoid",
+        "line": 88
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.responseClass",
+        "line": 92
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.responseClass_surjective",
+        "line": 95
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.existsUnique_responseDecoder",
+        "line": 104
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.probability_eq_of_response_eq",
+        "line": 112
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_posterior",
+        "line": 119
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.posterior_response_eq",
+        "line": 127
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.nextResponse",
+        "line": 138
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.nextResponse_eq_none_iff",
+        "line": 144
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.nextResponse_eq_of_response_eq",
+        "line": 160
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.nextResponse_inputFiberCompatible",
+        "line": 171
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.existsUnique_reachableResponseUpdate",
+        "line": 179
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.nextReachableResponse",
+        "line": 190
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.nextReachableResponse_map_val",
+        "line": 199
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.nextReachableResponse_eq_of_response_eq",
+        "line": 205
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.nextReachableResponse_inputFiberCompatible",
+        "line": 218
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.existsUnique_closedReachableUpdate",
+        "line": 227
+      }
+    ],
+    "QuantumDoob": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.successOperator",
+        "line": 25
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_zero",
+        "line": 29
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_succ",
+        "line": 32
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_smul",
+        "line": 36
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_posSemidef",
+        "line": 41
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_successOperator",
+        "line": 46
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.successMass",
+        "line": 54
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successMass_eq_response",
+        "line": 57
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_successMass",
+        "line": 62
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_successMass_pos",
+        "line": 68
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.conditionalState",
+        "line": 75
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_conditionalState",
+        "line": 80
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_rate_nonneg",
+        "line": 88
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_rate_le_one",
+        "line": 93
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter",
+        "line": 99
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply",
+        "line": 107
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.unapply",
+        "line": 110
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.metric",
+        "line": 113
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_smul",
+        "line": 115
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.unapply_apply",
+        "line": 119
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_unapply",
+        "line": 127
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_posSemidef",
+        "line": 135
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_pos",
+        "line": 140
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.state",
+        "line": 154
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.state_matrix",
+        "line": 157
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_eq_pairing",
+        "line": 160
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.metric_conjugate",
+        "line": 164
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.transformed_gram",
+        "line": 175
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.transformed_map",
+        "line": 182
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_complete",
+        "line": 189
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.doobWeighted",
+        "line": 200
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.doobInstrument",
+        "line": 210
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_branch",
+        "line": 215
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_branch_apply",
+        "line": 227
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_branch_state",
+        "line": 234
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_channelState",
+        "line": 246
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_successOperator_apply",
+        "line": 256
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigenmetric_successMass",
+        "line": 269
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigenmetric_successMass_pos",
+        "line": 287
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_finite_conditioning",
+        "line": 304
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_successOperator_state",
+        "line": 319
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_successMass_state",
+        "line": 329
+      }
+    ],
+    "Ragged": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.zeroExtend",
+        "line": 25
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.zeroExtend_apply",
+        "line": 28
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.zeroExtend_of_not_mem_range",
+        "line": 32
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.sum_zeroExtend",
+        "line": 37
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.zeroExtend_nonneg",
+        "line": 44
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.weightedKrausMap_zeroExtend",
+        "line": 56
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.weightedHeisenberg_zeroExtend",
+        "line": 67
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.weightedGram_zeroExtend",
+        "line": 78
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.RaggedInstrument",
+        "line": 91
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RaggedInstrument.branch",
+        "line": 103
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RaggedInstrument.toWeighted",
+        "line": 107
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RaggedInstrument.toWeighted_weight_apply",
+        "line": 122
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RaggedInstrument.toWeighted_kraus_apply",
+        "line": 127
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RaggedInstrument.toWeighted_branch",
+        "line": 132
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RaggedInstrument.toWeighted_toInstrument_branch",
+        "line": 137
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RaggedInstrument.toWeighted_heisenberg",
+        "line": 142
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RaggedInstrument.toWeighted_toInstrument_kraus_of_not_mem_range",
+        "line": 149
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.WeightedInstrument.padOutcomes",
+        "line": 165
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.padOutcomes_branch_apply",
+        "line": 186
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.padOutcomes_branch_of_not_mem_range",
+        "line": 191
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.padOutcomes_heisenberg_apply",
+        "line": 197
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.padOutcomes_heisenberg_of_not_mem_range",
+        "line": 203
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.padOutcomes_probability_apply",
+        "line": 209
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.padOutcomes_probability_of_not_mem_range",
+        "line": 215
+      }
+    ],
+    "RealLocalTomography": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.IsReal",
+        "line": 29
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.symmetric_of_real_hermitian",
+        "line": 32
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.productEffect",
+        "line": 40
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.productEffect_matrix",
+        "line": 55
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.plusProjector",
+        "line": 59
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.minusProjector",
+        "line": 62
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.plusProjector_hermitian",
+        "line": 65
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.minusProjector_hermitian",
+        "line": 70
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.plusProjector_square",
+        "line": 74
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.minusProjector_square",
+        "line": 81
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.plusProjector_mul_minusProjector",
+        "line": 88
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.one_sub_plusProjector",
+        "line": 96
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.plusProjector_posSemidef",
+        "line": 101
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.minusProjector_posSemidef",
+        "line": 107
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.involutionEffect",
+        "line": 114
+      },
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.RealLocalTomography.Qubit",
+        "line": 121
+      },
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.RealLocalTomography.TwoQubit",
+        "line": 122
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.pauliY",
+        "line": 124
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.parity",
+        "line": 125
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.pauliY_hermitian",
+        "line": 127
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.pauliY_square",
+        "line": 131
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.parity_hermitian",
+        "line": 135
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.parity_square",
+        "line": 138
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.pauliY_trace",
+        "line": 141
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.parity_trace",
+        "line": 144
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.parity_isReal",
+        "line": 147
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.rhoPlus",
+        "line": 154
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.rhoMinus",
+        "line": 163
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.rhoPlus_matrix",
+        "line": 171
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.rhoMinus_matrix",
+        "line": 176
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.rhoPlus_isReal",
+        "line": 181
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.rhoMinus_isReal",
+        "line": 188
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.rhoPlus_symmetric",
+        "line": 195
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.rhoMinus_symmetric",
+        "line": 199
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.density_difference",
+        "line": 203
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.trace_mul_pauliY_zero",
+        "line": 210
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.trace_product_density_difference_zero",
+        "line": 217
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.all_real_product_probabilities_equal",
+        "line": 228
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.jointTest",
+        "line": 239
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.jointTest_matrix",
+        "line": 242
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.jointTest_isReal",
+        "line": 244
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.jointTest_probability_plus",
+        "line": 251
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.jointTest_probability_minus",
+        "line": 257
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.rhoPlus_ne_rhoMinus",
+        "line": 262
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.real_local_tomography_fails",
+        "line": 269
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.RealLocalTomography.complexLocalTest",
+        "line": 281
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.complexLocalTest_not_real",
+        "line": 284
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.complex_product_probability_plus",
+        "line": 292
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.complex_product_probability_minus",
+        "line": 299
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.RealLocalTomography.complex_product_distinguishes",
+        "line": 306
+      }
+    ],
+    "Selector": [
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.selector_finite_bounds",
+        "line": 18
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.selects_three_without_atomicity",
+        "line": 39
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.dropping_color_bound_admits_four_families",
+        "line": 52
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.dropping_weak_budget_admits_six_families",
+        "line": 61
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.dropping_cubic_equation_admits_one_family",
+        "line": 70
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.dropping_nonempty_family_count_admits_empty_spectrum",
+        "line": 79
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.homogeneous_leptons_recover_cubic_equation",
+        "line": 92
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.mixed_lepton_template_admits_two_families",
+        "line": 103
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.cubic_cancellation_replicates",
+        "line": 113
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.replicated_weak_screening",
+        "line": 124
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Selector.two_or_more_three_family_packets_fail_weak_budget",
+        "line": 129
+      }
+    ],
+    "Spectrum": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.Orientation.sign",
+        "line": 26
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.Orientation.directCount",
+        "line": 30
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Spectrum.Family",
+        "line": 36
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.familyCubicTerms",
+        "line": 44
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.familyCubic",
+        "line": 47
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.leptonCount",
+        "line": 51
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.quarkCount",
+        "line": 55
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.quarkCount_le_length",
+        "line": 60
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.familyCubic_eq_counts",
+        "line": 68
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.leptonCount_eq_length_of_homogeneous",
+        "line": 82
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.MatterKind.screeningFactor",
+        "line": 100
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.Spectrum.ExtraMatter",
+        "line": 107
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.ExtraMatter.cubic",
+        "line": 115
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.ExtraMatter.screening",
+        "line": 121
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.ExtraMatter.screening_nonneg",
+        "line": 127
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.extraCubic",
+        "line": 132
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.extraScreening",
+        "line": 134
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.extraScreening_nonneg",
+        "line": 136
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.totalCubic",
+        "line": 144
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.familyWeakTerms",
+        "line": 148
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.familyScreening",
+        "line": 152
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.familyScreening_eq_of_active",
+        "line": 157
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.weakCoefficient",
+        "line": 172
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.selector_anomaly_of_spectrum",
+        "line": 176
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.selector_budget_of_spectrum",
+        "line": 194
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.spectrum_selects_three",
+        "line": 210
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.canonicalFamilies",
+        "line": 226
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.oneHiggs",
+        "line": 231
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.canonical_rows_and_higgs",
+        "line": 235
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.mixedFamilies",
+        "line": 244
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.mixed_two_family_rows",
+        "line": 249
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.replicated_six_family_rows",
+        "line": 258
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.singleFamily",
+        "line": 266
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.compensated_one_family_rows",
+        "line": 269
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.zero_anomaly_unit_one_family_rows",
+        "line": 278
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Spectrum.twentyHiggs",
+        "line": 285
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Spectrum.extra_screening_closes_positive_window",
+        "line": 289
+      }
+    ],
+    "Stability": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.effectGapSet",
+        "line": 28
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.probability_abs_sub_le_one",
+        "line": 31
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectGapSet_nonempty",
+        "line": 40
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectGapSet_bddAbove",
+        "line": 44
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.effectDistance",
+        "line": 50
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Effect.probability_sub_le_effectDistance",
+        "line": 52
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_nonneg",
+        "line": 56
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_le_iff",
+        "line": 59
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_le_one",
+        "line": 69
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_self",
+        "line": 74
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_comm",
+        "line": 78
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_triangle",
+        "line": 89
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_eq_zero_iff",
+        "line": 97
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.response_sub_le_effectDistance",
+        "line": 111
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.channelDefect",
+        "line": 119
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelDefect_bddAbove",
+        "line": 122
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelDefect_nonneg",
+        "line": 129
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelDefect_le_one",
+        "line": 132
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.effectDistance_le_channelDefect",
+        "line": 138
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelDefect_self",
+        "line": 142
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.channelState_effectDistance_le",
+        "line": 152
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.probability_sub_le_effectDistance",
+        "line": 159
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.probability_pos_of_effectDistance_lt",
+        "line": 165
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.channelState_perturbation_bound",
+        "line": 174
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.normalized_probability_difference_le",
+        "line": 186
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.posterior_effectDistance_le",
+        "line": 207
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Instrument.posterior_effectDistance_le_of_probability_lower_bound",
+        "line": 231
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.channelTrajectory",
+        "line": 244
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelTrajectory_zero",
+        "line": 248
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelTrajectory_succ",
+        "line": 251
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelTrajectory_transport_certificate",
+        "line": 256
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.scalarBudget_one_eq_sum",
+        "line": 279
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelTrajectory_effectDistance_le_sum",
+        "line": 286
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.channelTrajectory_response_sub_le_sum",
+        "line": 297
+      }
+    ],
+    "Survival": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.diagonalOperator",
+        "line": 28
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.diagonalOperator_posSemidef",
+        "line": 32
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.mass_diagonalOperator",
+        "line": 38
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.diagonalOperator_injective",
+        "line": 43
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.diagonalOperator_smul",
+        "line": 51
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.diagonalDensity",
+        "line": 58
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.diagonalDensity_matrix",
+        "line": 66
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.matrixUnit",
+        "line": 71
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.matrixUnit_gram",
+        "line": 73
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.matrixUnit_sandwich",
+        "line": 77
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.measurePrepare",
+        "line": 82
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.measurePrepare_apply",
+        "line": 86
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.measurePrepare_diagonal",
+        "line": 99
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.measurePrepare_gram",
+        "line": 108
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.failureKernel",
+        "line": 125
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.failureKernel_nonneg",
+        "line": 128
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.outcomeKernel",
+        "line": 137
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.outcomeKernel_complete",
+        "line": 140
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.weightedInstrument",
+        "line": 153
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.instrument",
+        "line": 164
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.instrument_branch",
+        "line": 168
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.success_branch",
+        "line": 174
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.rowApply_nonneg",
+        "line": 182
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.success_probability",
+        "line": 189
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.success_posterior_matrix",
+        "line": 198
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.killedIterate",
+        "line": 213
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.killedIterate_posSemidef",
+        "line": 216
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.killedIterate_diagonal",
+        "line": 221
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.survivalMass",
+        "line": 240
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.survivalMass_eq_response",
+        "line": 243
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.survivalMass_diagonal",
+        "line": 248
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.conditionalState",
+        "line": 257
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.qsd_killedIterate",
+        "line": 262
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.qsd_survival_pow",
+        "line": 276
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.qsd_survival_pos",
+        "line": 287
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.qsd_conditionalState",
+        "line": 297
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.qsd_rate_le_one",
+        "line": 319
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.doobTransform_nonneg",
+        "line": 327
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.doobInstrument",
+        "line": 336
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.Survival.doobDensity",
+        "line": 346
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.doob_success_branch",
+        "line": 353
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.doob_success_probability",
+        "line": 366
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.doob_killedIterate",
+        "line": 380
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.doob_survivalMass",
+        "line": 396
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Survival.doob_conditionalState",
+        "line": 410
+      }
+    ],
+    "Transport": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.Transport.scalarBudget",
+        "line": 27
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Transport.scalarBudget_zero",
+        "line": 31
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Transport.scalarBudget_succ",
+        "line": 34
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Transport.scalarBudget_nonneg",
+        "line": 38
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.Transport.scalar_transport_certificate",
+        "line": 51
+      }
+    ],
+    "Weighted": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.weightedKrausMap",
+        "line": 29
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.weightedHeisenberg",
+        "line": 33
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.sqrtWeightedKraus",
+        "line": 37
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.sqrt_smul_gram",
+        "line": 41
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.sqrt_smul_krausTerm",
+        "line": 47
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.sqrt_smul_heisenbergTerm",
+        "line": 53
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.krausMap_sqrtWeightedKraus",
+        "line": 60
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.heisenberg_sqrtWeightedKraus",
+        "line": 69
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.weightedKrausMap_posSemidef",
+        "line": 76
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.weightedHeisenberg_posSemidef",
+        "line": 82
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.pairing_weightedKrausMap",
+        "line": 88
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.WeightedInstrument",
+        "line": 95
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.WeightedInstrument.branch",
+        "line": 104
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.WeightedInstrument.toInstrument",
+        "line": 109
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.toInstrument_kraus",
+        "line": 124
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.toInstrument_branch",
+        "line": 127
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.toInstrument_heisenberg",
+        "line": 133
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.toInstrument_complete",
+        "line": 138
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.branch_posSemidef",
+        "line": 142
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.toInstrument_probability",
+        "line": 146
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.sum_mass_branch",
+        "line": 151
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.WeightedInstrument.toInstrument_posterior_matrix",
+        "line": 155
+      }
+    ]
+  },
+  "module_count": 22,
+  "explicit_theorems": 459,
+  "audit_targets": [
+    "UEOTQM.Density.ext",
+    "UEOTQM.mass_nonneg",
+    "UEOTQM.trace_im_eq_zero",
+    "UEOTQM.mass_smul",
+    "UEOTQM.Density.mass_one",
+    "UEOTQM.mass_eq_zero_iff",
+    "UEOTQM.normalize_matrix",
+    "UEOTQM.krausMap_posSemidef",
+    "UEOTQM.krausMap_smul",
+    "UEOTQM.trace_krausMap",
+    "UEOTQM.Instrument.branch_posSemidef",
+    "UEOTQM.Instrument.branch_smul",
+    "UEOTQM.Instrument.sum_trace_branch",
+    "UEOTQM.Instrument.sum_mass_branch",
+    "UEOTQM.Instrument.probability_nonneg",
+    "UEOTQM.Instrument.sum_probability",
+    "UEOTQM.Instrument.probability_le_one",
+    "UEOTQM.Instrument.posterior_matrix",
+    "UEOTQM.Instrument.zero_probability_iff_zero_branch",
+    "UEOTQM.ancillaKrausMap_posSemidef",
+    "UEOTQM.ancillaKrausMap_entry",
+    "UEOTQM.recordOperator_posSemidef",
+    "UEOTQM.recordOperator_smul",
+    "UEOTQM.response_nonneg",
+    "UEOTQM.response_nil",
+    "UEOTQM.response_singleton",
+    "UEOTQM.totalRecordMass_eq_mass",
+    "UEOTQM.totalRecordMass_density",
+    "UEOTQM.responseClass_surjective",
+    "UEOTQM.existsUnique_responseDecoder",
+    "UEOTQM.probability_eq_of_response_eq",
+    "UEOTQM.response_posterior",
+    "UEOTQM.posterior_response_eq",
+    "UEOTQM.nextResponse_eq_none_iff",
+    "UEOTQM.nextResponse_eq_of_response_eq",
+    "UEOTQM.nextResponse_inputFiberCompatible",
+    "UEOTQM.existsUnique_reachableResponseUpdate",
+    "UEOTQM.Selector.selector_finite_bounds",
+    "UEOTQM.Selector.selects_three_without_atomicity",
+    "UEOTQM.Selector.dropping_color_bound_admits_four_families",
+    "UEOTQM.Selector.dropping_weak_budget_admits_six_families",
+    "UEOTQM.Selector.dropping_cubic_equation_admits_one_family",
+    "UEOTQM.Selector.dropping_nonempty_family_count_admits_empty_spectrum",
+    "UEOTQM.Selector.homogeneous_leptons_recover_cubic_equation",
+    "UEOTQM.Selector.mixed_lepton_template_admits_two_families",
+    "UEOTQM.Selector.cubic_cancellation_replicates",
+    "UEOTQM.Selector.replicated_weak_screening",
+    "UEOTQM.Selector.two_or_more_three_family_packets_fail_weak_budget",
+    "UEOTQM.Transport.scalarBudget_zero",
+    "UEOTQM.Transport.scalarBudget_succ",
+    "UEOTQM.Transport.scalarBudget_nonneg",
+    "UEOTQM.Transport.scalar_transport_certificate",
+    "UEOTQM.normalize",
+    "UEOTQM.Instrument.posterior",
+    "UEOTQM.nextReachableResponse_map_val",
+    "UEOTQM.nextReachableResponse_eq_of_response_eq",
+    "UEOTQM.nextReachableResponse_inputFiberCompatible",
+    "UEOTQM.existsUnique_closedReachableUpdate",
+    "UEOTQM.nextReachableResponse",
+    "UEOTQM.pairing_one",
+    "UEOTQM.pairing_zero_left",
+    "UEOTQM.pairing_add_left",
+    "UEOTQM.pairing_smul_left",
+    "UEOTQM.pairing_smul_right",
+    "UEOTQM.pairing_sum_left",
+    "UEOTQM.heisenberg_zero",
+    "UEOTQM.heisenberg_add",
+    "UEOTQM.heisenberg_smul",
+    "UEOTQM.trace_heisenberg",
+    "UEOTQM.pairing_heisenberg",
+    "UEOTQM.heisenberg_posSemidef",
+    "UEOTQM.recordEffect_posSemidef",
+    "UEOTQM.recordEffect_isHermitian",
+    "UEOTQM.mass_recordOperator_eq_pairing",
+    "UEOTQM.response_eq_pairing",
+    "UEOTQM.recordEffect_mem",
+    "UEOTQM.one_mem_observableSpace",
+    "UEOTQM.recordEffect_mem_of_closed",
+    "UEOTQM.observableSpace_le_of_closed",
+    "UEOTQM.observableSpace_pullbackClosed",
+    "UEOTQM.isHermitian_of_mem_observableSpace",
+    "UEOTQM.response_eq_iff_pairing_observableSpace",
+    "UEOTQM.observableSpace_finiteDimensional",
+    "UEOTQM.exists_finite_wordEffect_generators",
+    "UEOTQM.FiniteObservablePresentation.observable_mem_span",
+    "UEOTQM.FiniteObservablePresentation.observable_unit",
+    "UEOTQM.FiniteObservablePresentation.one_mem_span",
+    "UEOTQM.FiniteObservablePresentation.pullback_observable",
+    "UEOTQM.FiniteObservablePresentation.span_pullbackClosed",
+    "UEOTQM.FiniteObservablePresentation.span_eq_observableSpace",
+    "UEOTQM.FiniteObservablePresentation.recordEffect_mem_span",
+    "UEOTQM.FiniteObservablePresentation.operatorCoordinates_unit",
+    "UEOTQM.FiniteObservablePresentation.coordinates_unit",
+    "UEOTQM.FiniteObservablePresentation.coordinates_apply",
+    "UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq",
+    "UEOTQM.FiniteObservablePresentation.operatorCoordinates_branch",
+    "UEOTQM.FiniteObservablePresentation.operatorCoordinates_record",
+    "UEOTQM.FiniteObservablePresentation.response_eq_recordCoordinates_unit",
+    "UEOTQM.FiniteObservablePresentation.probability_eq_applyBranch_unit",
+    "UEOTQM.FiniteObservablePresentation.coordinates_posterior",
+    "UEOTQM.FiniteObservablePresentation.coordinates_posterior_eq_normalizedBranch",
+    "UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range",
+    "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val",
+    "UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_posterior",
+    "UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_none_iff",
+    "UEOTQM.Adaptive.Protocol.word_injective",
+    "UEOTQM.Adaptive.sum_leafWeight",
+    "UEOTQM.Adaptive.leafWeight_nonneg",
+    "UEOTQM.Adaptive.leafProbability_eq_response",
+    "UEOTQM.Adaptive.leafProbability_nonneg",
+    "UEOTQM.Adaptive.sum_leafProbability",
+    "UEOTQM.Adaptive.leafProbability_le_one",
+    "UEOTQM.Adaptive.leafProbability_eq_of_response_eq",
+    "UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit",
+    "UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq",
+    "UEOTQM.Adaptive.leafProbability_posterior",
+    "UEOTQM.Spectrum.quarkCount_le_length",
+    "UEOTQM.Spectrum.familyCubic_eq_counts",
+    "UEOTQM.Spectrum.leptonCount_eq_length_of_homogeneous",
+    "UEOTQM.Spectrum.ExtraMatter.screening_nonneg",
+    "UEOTQM.Spectrum.extraScreening_nonneg",
+    "UEOTQM.Spectrum.familyScreening_eq_of_active",
+    "UEOTQM.Spectrum.selector_anomaly_of_spectrum",
+    "UEOTQM.Spectrum.selector_budget_of_spectrum",
+    "UEOTQM.Spectrum.spectrum_selects_three",
+    "UEOTQM.Spectrum.canonical_rows_and_higgs",
+    "UEOTQM.Spectrum.mixed_two_family_rows",
+    "UEOTQM.Spectrum.replicated_six_family_rows",
+    "UEOTQM.Spectrum.compensated_one_family_rows",
+    "UEOTQM.Spectrum.zero_anomaly_unit_one_family_rows",
+    "UEOTQM.Spectrum.extra_screening_closes_positive_window",
+    "UEOTQM.pairingLinear",
+    "UEOTQM.heisenbergLinear",
+    "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate",
+    "UEOTQM.Adaptive.Protocol.leafFintype",
+    "UEOTQM.Spectrum.oneHiggs",
+    "UEOTQM.Spectrum.twentyHiggs",
+    "UEOTQM.sqrt_smul_gram",
+    "UEOTQM.sqrt_smul_krausTerm",
+    "UEOTQM.sqrt_smul_heisenbergTerm",
+    "UEOTQM.krausMap_sqrtWeightedKraus",
+    "UEOTQM.heisenberg_sqrtWeightedKraus",
+    "UEOTQM.weightedKrausMap_posSemidef",
+    "UEOTQM.weightedHeisenberg_posSemidef",
+    "UEOTQM.pairing_weightedKrausMap",
+    "UEOTQM.WeightedInstrument.toInstrument",
+    "UEOTQM.WeightedInstrument.toInstrument_kraus",
+    "UEOTQM.WeightedInstrument.toInstrument_branch",
+    "UEOTQM.WeightedInstrument.toInstrument_heisenberg",
+    "UEOTQM.WeightedInstrument.toInstrument_complete",
+    "UEOTQM.WeightedInstrument.branch_posSemidef",
+    "UEOTQM.WeightedInstrument.toInstrument_probability",
+    "UEOTQM.WeightedInstrument.sum_mass_branch",
+    "UEOTQM.WeightedInstrument.toInstrument_posterior_matrix",
+    "UEOTQM.zeroExtend_apply",
+    "UEOTQM.zeroExtend_of_not_mem_range",
+    "UEOTQM.sum_zeroExtend",
+    "UEOTQM.zeroExtend_nonneg",
+    "UEOTQM.weightedKrausMap_zeroExtend",
+    "UEOTQM.weightedHeisenberg_zeroExtend",
+    "UEOTQM.weightedGram_zeroExtend",
+    "UEOTQM.RaggedInstrument.toWeighted",
+    "UEOTQM.RaggedInstrument.toWeighted_weight_apply",
+    "UEOTQM.RaggedInstrument.toWeighted_kraus_apply",
+    "UEOTQM.RaggedInstrument.toWeighted_branch",
+    "UEOTQM.RaggedInstrument.toWeighted_toInstrument_branch",
+    "UEOTQM.RaggedInstrument.toWeighted_heisenberg",
+    "UEOTQM.RaggedInstrument.toWeighted_toInstrument_kraus_of_not_mem_range",
+    "UEOTQM.WeightedInstrument.padOutcomes",
+    "UEOTQM.WeightedInstrument.padOutcomes_branch_apply",
+    "UEOTQM.WeightedInstrument.padOutcomes_branch_of_not_mem_range",
+    "UEOTQM.WeightedInstrument.padOutcomes_heisenberg_apply",
+    "UEOTQM.WeightedInstrument.padOutcomes_heisenberg_of_not_mem_range",
+    "UEOTQM.WeightedInstrument.padOutcomes_probability_apply",
+    "UEOTQM.WeightedInstrument.padOutcomes_probability_of_not_mem_range",
+    "UEOTQM.Exact.MatrixData.ext",
+    "UEOTQM.Exact.MatrixData.toMatrix_re",
+    "UEOTQM.Exact.MatrixData.toMatrix_im",
+    "UEOTQM.Exact.MatrixData.toMatrix_injective",
+    "UEOTQM.Exact.MatrixData.toMatrix_eq_iff",
+    "UEOTQM.Exact.MatrixData.toMatrix_zero",
+    "UEOTQM.Exact.MatrixData.toMatrix_one",
+    "UEOTQM.Exact.MatrixData.toMatrix_add",
+    "UEOTQM.Exact.MatrixData.toMatrix_neg",
+    "UEOTQM.Exact.MatrixData.toMatrix_sub",
+    "UEOTQM.Exact.MatrixData.toMatrix_mul",
+    "UEOTQM.Exact.MatrixData.toMatrix_adjoint",
+    "UEOTQM.Exact.MatrixData.toMatrix_scale",
+    "UEOTQM.Exact.MatrixData.toMatrix_sum",
+    "UEOTQM.Exact.MatrixData.instDecidableEq",
+    "UEOTQM.Exact.toMatrix_weightedBranch",
+    "UEOTQM.Exact.toMatrix_weightedPullback",
+    "UEOTQM.Exact.toMatrix_weightedCompleteness",
+    "UEOTQM.Exact.toMatrix_weightedBranch_univ",
+    "UEOTQM.Exact.toMatrix_weightedPullback_univ",
+    "UEOTQM.Exact.Examples.imaginaryUnit_square_exact",
+    "UEOTQM.Exact.Examples.imaginaryUnit_adjoint_exact",
+    "UEOTQM.Exact.Examples.imaginaryUnit_square_complex",
+    "UEOTQM.Exact.Examples.hadamard_complete_exact",
+    "UEOTQM.Exact.Examples.hadamard_complete_complex",
+    "UEOTQM.ExactCertificate.check_eq_true_iff",
+    "UEOTQM.ExactCertificate.check_sound",
+    "UEOTQM.ExactCertificate.branch_eq_exact",
+    "UEOTQM.ExactCertificate.heisenberg_eq_exact",
+    "UEOTQM.ExactCertificate.exactRecordEffect_toMatrix",
+    "UEOTQM.ExactCertificate.basis_toMatrix",
+    "UEOTQM.ExactCertificate.coordinates_eq_iff_response_eq",
+    "UEOTQM.ExactCertificate.response_eq_recordCoordinates_unit",
+    "UEOTQM.ExactCertificate.adaptive_leafProbability_eq",
+    "UEOTQM.ExactCertificate.conditionsDecidable",
+    "UEOTQM.ExactCertificate.weightedInstrument",
+    "UEOTQM.ExactCertificate.instrumentFamily",
+    "UEOTQM.ExactCertificate.presentation",
+    "UEOTQM.pairing_sub_left",
+    "UEOTQM.pairing_add_right",
+    "UEOTQM.pairing_sum_right",
+    "UEOTQM.pairing_nonneg",
+    "UEOTQM.Effect.ext",
+    "UEOTQM.Effect.zero",
+    "UEOTQM.Effect.one",
+    "UEOTQM.Effect.complement",
+    "UEOTQM.Effect.zero_matrix",
+    "UEOTQM.Effect.one_matrix",
+    "UEOTQM.Effect.complement_matrix",
+    "UEOTQM.Effect.pairing_nonneg",
+    "UEOTQM.Effect.pairing_le_mass",
+    "UEOTQM.Effect.probability",
+    "UEOTQM.Effect.probability_nonneg",
+    "UEOTQM.Effect.probability_le_one",
+    "UEOTQM.Effect.probability_zero",
+    "UEOTQM.Effect.probability_one",
+    "UEOTQM.Effect.probability_complement",
+    "UEOTQM.Instrument.channel",
+    "UEOTQM.Instrument.channel_posSemidef",
+    "UEOTQM.Instrument.trace_channel",
+    "UEOTQM.Instrument.channelState",
+    "UEOTQM.Instrument.channelState_matrix",
+    "UEOTQM.Instrument.pullbackEffects",
+    "UEOTQM.Instrument.pullbackEffects_matrix",
+    "UEOTQM.Instrument.pairing_pullbackEffects",
+    "UEOTQM.Instrument.pullbackEffect",
+    "UEOTQM.Instrument.pairing_pullbackEffect",
+    "UEOTQM.Instrument.probability_channelState",
+    "UEOTQM.Instrument.branchEffect",
+    "UEOTQM.Instrument.branchEffect_matrix",
+    "UEOTQM.Instrument.pairing_branchEffect",
+    "UEOTQM.Instrument.probability_branchEffect_one",
+    "UEOTQM.Instrument.probability_posterior",
+    "UEOTQM.recordTest",
+    "UEOTQM.recordTest_matrix",
+    "UEOTQM.recordEffect_complement_posSemidef",
+    "UEOTQM.response_eq_effect_probability",
+    "UEOTQM.response_le_one",
+    "UEOTQM.effectGapSet",
+    "UEOTQM.Effect.probability_abs_sub_le_one",
+    "UEOTQM.effectGapSet_nonempty",
+    "UEOTQM.effectGapSet_bddAbove",
+    "UEOTQM.effectDistance",
+    "UEOTQM.Effect.probability_sub_le_effectDistance",
+    "UEOTQM.effectDistance_nonneg",
+    "UEOTQM.effectDistance_le_iff",
+    "UEOTQM.effectDistance_le_one",
+    "UEOTQM.effectDistance_self",
+    "UEOTQM.effectDistance_comm",
+    "UEOTQM.effectDistance_triangle",
+    "UEOTQM.effectDistance_eq_zero_iff",
+    "UEOTQM.response_sub_le_effectDistance",
+    "UEOTQM.channelDefect",
+    "UEOTQM.channelDefect_bddAbove",
+    "UEOTQM.channelDefect_nonneg",
+    "UEOTQM.channelDefect_le_one",
+    "UEOTQM.effectDistance_le_channelDefect",
+    "UEOTQM.channelDefect_self",
+    "UEOTQM.Instrument.channelState_effectDistance_le",
+    "UEOTQM.Instrument.probability_sub_le_effectDistance",
+    "UEOTQM.Instrument.probability_pos_of_effectDistance_lt",
+    "UEOTQM.Instrument.channelState_perturbation_bound",
+    "UEOTQM.normalized_probability_difference_le",
+    "UEOTQM.Instrument.posterior_effectDistance_le",
+    "UEOTQM.Instrument.posterior_effectDistance_le_of_probability_lower_bound",
+    "UEOTQM.channelTrajectory",
+    "UEOTQM.channelTrajectory_zero",
+    "UEOTQM.channelTrajectory_succ",
+    "UEOTQM.channelTrajectory_transport_certificate",
+    "UEOTQM.scalarBudget_one_eq_sum",
+    "UEOTQM.channelTrajectory_effectDistance_le_sum",
+    "UEOTQM.channelTrajectory_response_sub_le_sum",
+    "UEOTQM.Mixture.tv",
+    "UEOTQM.Mixture.tv_nonneg",
+    "UEOTQM.Mixture.tv_self",
+    "UEOTQM.Mixture.tv_comm",
+    "UEOTQM.Mixture.tv_le_one",
+    "UEOTQM.Mixture.expectation_sub_le_tv",
+    "UEOTQM.Mixture.density",
+    "UEOTQM.Mixture.density_matrix",
+    "UEOTQM.Mixture.probability_density",
+    "UEOTQM.Mixture.density_weight_change_le_tv",
+    "UEOTQM.Mixture.density_fixed_weights_le_sum",
+    "UEOTQM.Mixture.density_joint_change_le",
+    "UEOTQM.Mixture.weightedInstrument",
+    "UEOTQM.Mixture.instrument",
+    "UEOTQM.Mixture.instrument_kraus",
+    "UEOTQM.Mixture.instrument_branch",
+    "UEOTQM.Mixture.instrument_heisenberg",
+    "UEOTQM.Mixture.instrument_channel",
+    "UEOTQM.Mixture.instrument_channelState",
+    "UEOTQM.Mixture.channelDefect_weight_change_le_tv",
+    "UEOTQM.Mixture.channelDefect_fixed_weights_le_sum",
+    "UEOTQM.Mixture.channelDefect_joint_change_le",
+    "UEOTQM.Mixture.RationalWeights.toWeights",
+    "UEOTQM.Mixture.rationalTV",
+    "UEOTQM.Mixture.tv_toWeights",
+    "UEOTQM.Mixture.density_weight_change_le_rational_budget",
+    "UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget",
+    "UEOTQM.Mixture.channelDefect_fixed_weights_le_rational_sum",
+    "UEOTQM.Mixture.rationalJointBudget",
+    "UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget",
+    "UEOTQM.Cesaro.iterateState",
+    "UEOTQM.Cesaro.iterateState_zero",
+    "UEOTQM.Cesaro.iterateState_succ",
+    "UEOTQM.Cesaro.channelLinear",
+    "UEOTQM.Cesaro.channelLinear_apply",
+    "UEOTQM.Cesaro.orbitSum",
+    "UEOTQM.Cesaro.orbitSum_positive",
+    "UEOTQM.Cesaro.orbitSum_trace",
+    "UEOTQM.Cesaro.averageState",
+    "UEOTQM.Cesaro.averageState_matrix",
+    "UEOTQM.Cesaro.orbitSum_telescope",
+    "UEOTQM.Cesaro.matrix_residual",
+    "UEOTQM.Cesaro.pairing_sub_right",
+    "UEOTQM.Cesaro.probability_residual",
+    "UEOTQM.Cesaro.probability_residual_le",
+    "UEOTQM.Cesaro.effectDistance_residual_le",
+    "UEOTQM.Cesaro.density_operatorNorm_le_one",
+    "UEOTQM.Cesaro.densityMatrices",
+    "UEOTQM.Cesaro.densityMatrices_closed",
+    "UEOTQM.Cesaro.densityMatrices_compact",
+    "UEOTQM.Cesaro.continuous_channel",
+    "UEOTQM.Cesaro.matrix_residual_norm_le",
+    "UEOTQM.Cesaro.averageSequence",
+    "UEOTQM.Cesaro.matrix_residual_tendsto_zero",
+    "UEOTQM.Cesaro.subsequence_limit_invariant",
+    "UEOTQM.Cesaro.subsequence_limit_density",
+    "UEOTQM.Cesaro.exists_stationary_subsequence",
+    "UEOTQM.Cesaro.exists_stationary_of_density",
+    "UEOTQM.Cesaro.normalizedIdentity",
+    "UEOTQM.Cesaro.exists_stationary",
+    "UEOTQM.Survival.diagonalOperator",
+    "UEOTQM.Survival.diagonalOperator_posSemidef",
+    "UEOTQM.Survival.mass_diagonalOperator",
+    "UEOTQM.Survival.diagonalOperator_injective",
+    "UEOTQM.Survival.diagonalOperator_smul",
+    "UEOTQM.Survival.diagonalDensity",
+    "UEOTQM.Survival.diagonalDensity_matrix",
+    "UEOTQM.Survival.matrixUnit",
+    "UEOTQM.Survival.matrixUnit_gram",
+    "UEOTQM.Survival.matrixUnit_sandwich",
+    "UEOTQM.Survival.measurePrepare",
+    "UEOTQM.Survival.measurePrepare_apply",
+    "UEOTQM.Survival.measurePrepare_diagonal",
+    "UEOTQM.Survival.measurePrepare_gram",
+    "UEOTQM.Survival.failureKernel",
+    "UEOTQM.Survival.failureKernel_nonneg",
+    "UEOTQM.Survival.outcomeKernel",
+    "UEOTQM.Survival.outcomeKernel_complete",
+    "UEOTQM.Survival.weightedInstrument",
+    "UEOTQM.Survival.instrument",
+    "UEOTQM.Survival.instrument_branch",
+    "UEOTQM.Survival.success_branch",
+    "UEOTQM.Survival.rowApply_nonneg",
+    "UEOTQM.Survival.success_probability",
+    "UEOTQM.Survival.success_posterior_matrix",
+    "UEOTQM.Survival.killedIterate",
+    "UEOTQM.Survival.killedIterate_posSemidef",
+    "UEOTQM.Survival.killedIterate_diagonal",
+    "UEOTQM.Survival.survivalMass",
+    "UEOTQM.Survival.survivalMass_eq_response",
+    "UEOTQM.Survival.survivalMass_diagonal",
+    "UEOTQM.Survival.conditionalState",
+    "UEOTQM.Survival.qsd_killedIterate",
+    "UEOTQM.Survival.qsd_survival_pow",
+    "UEOTQM.Survival.qsd_survival_pos",
+    "UEOTQM.Survival.qsd_conditionalState",
+    "UEOTQM.Survival.qsd_rate_le_one",
+    "UEOTQM.Survival.doobTransform_nonneg",
+    "UEOTQM.Survival.doobInstrument",
+    "UEOTQM.Survival.doobDensity",
+    "UEOTQM.Survival.doob_success_branch",
+    "UEOTQM.Survival.doob_success_probability",
+    "UEOTQM.Survival.doob_killedIterate",
+    "UEOTQM.Survival.doob_survivalMass",
+    "UEOTQM.Survival.doob_conditionalState",
+    "UEOTQM.Classical.State",
+    "UEOTQM.Classical.Effect",
+    "UEOTQM.Classical.Effect.mk",
+    "UEOTQM.Classical.state_ext",
+    "UEOTQM.Classical.evaluate",
+    "UEOTQM.Classical.evaluate_nonneg",
+    "UEOTQM.Classical.evaluate_le_one",
+    "UEOTQM.Classical.indicator",
+    "UEOTQM.Classical.evaluate_indicator",
+    "UEOTQM.Classical.all_effects_separate",
+    "UEOTQM.Classical.dirac",
+    "UEOTQM.Classical.dirac_weight",
+    "UEOTQM.Classical.evaluate_dirac",
+    "UEOTQM.Classical.mix",
+    "UEOTQM.Classical.mix_weight",
+    "UEOTQM.Classical.halfMix",
+    "UEOTQM.Classical.halfMix_weight",
+    "UEOTQM.Classical.pushforward",
+    "UEOTQM.Classical.pushforward_weight",
+    "UEOTQM.Classical.pushforward_dirac",
+    "UEOTQM.Classical.pushforward_halfMix",
+    "UEOTQM.Classical.marginalLeft",
+    "UEOTQM.Classical.marginalLeft_weight",
+    "UEOTQM.Classical.marginalLeft_eq_pushforward",
+    "UEOTQM.Classical.marginalLeft_dirac",
+    "UEOTQM.Classical.marginalLeft_halfMix",
+    "UEOTQM.Classical.IsPure",
+    "UEOTQM.Classical.dirac_isPure",
+    "UEOTQM.Classical.dirac_ne",
+    "UEOTQM.Classical.halfMix_not_pure",
+    "UEOTQM.Classical.halfRow",
+    "UEOTQM.Classical.halfRow_weight",
+    "UEOTQM.Classical.marginalLeft_halfRow",
+    "UEOTQM.Classical.no_pure_extension_halfMix",
+    "UEOTQM.Classical.attach",
+    "UEOTQM.Classical.marginalLeft_attach",
+    "UEOTQM.Classical.dirac_has_pure_extension",
+    "UEOTQM.Classical.toPMF",
+    "UEOTQM.Classical.toPMF_apply",
+    "UEOTQM.Classical.toPMF_apply_toReal",
+    "UEOTQM.Classical.toPMF_dirac",
+    "UEOTQM.Classical.toPMF_pushforward",
+    "UEOTQM.Classical.rowState",
+    "UEOTQM.Classical.rowState_weight",
+    "UEOTQM.Classical.stepState",
+    "UEOTQM.Classical.stepState_dirac",
+    "UEOTQM.Classical.toPMF_stepState",
+    "UEOTQM.CorePurificationBoundary.Micro",
+    "UEOTQM.CorePurificationBoundary.fullyObservedSurvivalModel",
+    "UEOTQM.CorePurificationBoundary.terminal_eq_iff",
+    "UEOTQM.CorePurificationBoundary.Terminal",
+    "UEOTQM.CorePurificationBoundary.terminalFintype",
+    "UEOTQM.CorePurificationBoundary.terminalMeasurableSpace",
+    "UEOTQM.CorePurificationBoundary.terminalControl",
+    "UEOTQM.CorePurificationBoundary.terminalGood",
+    "UEOTQM.CorePurificationBoundary.terminalControl_source",
+    "UEOTQM.CorePurificationBoundary.terminalControl_reward",
+    "UEOTQM.CorePurificationBoundary.terminalControl_optimalValue",
+    "UEOTQM.CorePurificationBoundary.terminalControl_injective",
+    "UEOTQM.CorePurificationBoundary.terminalGood_source",
+    "UEOTQM.CorePurificationBoundary.viable_all_horizons",
+    "UEOTQM.CorePurificationBoundary.initial_support_viable",
+    "UEOTQM.CorePurificationBoundary.firstRow",
+    "UEOTQM.CorePurificationBoundary.firstRow_halfMix",
+    "UEOTQM.CorePurificationBoundary.firstQuotientState",
+    "UEOTQM.CorePurificationBoundary.quotient_support_distinct",
+    "UEOTQM.CorePurificationBoundary.firstQuotientState_halfMix",
+    "UEOTQM.CorePurificationBoundary.firstQuotientState_not_pure",
+    "UEOTQM.CorePurificationBoundary.firstQuotientState_no_pure_extension",
+    "UEOTQM.CorePurificationBoundary.sourcePMF",
+    "UEOTQM.CorePurificationBoundary.piStar",
+    "UEOTQM.CorePurificationBoundary.actualPathLaw",
+    "UEOTQM.CorePurificationBoundary.sourcePMF_toReal",
+    "UEOTQM.CorePurificationBoundary.sourcePMF_firstRow",
+    "UEOTQM.CorePurificationBoundary.sourcePMF_rowState",
+    "UEOTQM.CorePurificationBoundary.piStar_preserves",
+    "UEOTQM.CorePurificationBoundary.actualPath_all_times_safe",
+    "UEOTQM.CorePurificationBoundary.actualPath_first_quotient_marginal",
+    "UEOTQM.CorePurificationBoundary.false_action_destructive",
+    "UEOTQM.CorePurificationBoundary.FiniteCoreSlice",
+    "UEOTQM.CorePurificationBoundary.finiteCoreSlice_holds",
+    "UEOTQM.CorePurificationBoundary.classical_purification_separation",
+    "UEOTQM.CorePurificationBoundary.RestrictedTerminal",
+    "UEOTQM.CorePurificationBoundary.restrictedTerminalFintype",
+    "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState",
+    "UEOTQM.CorePurificationBoundary.restricted_support_merge",
+    "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_dirac",
+    "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_pure",
+    "UEOTQM.RealLocalTomography.IsReal",
+    "UEOTQM.RealLocalTomography.symmetric_of_real_hermitian",
+    "UEOTQM.RealLocalTomography.productEffect",
+    "UEOTQM.RealLocalTomography.productEffect_matrix",
+    "UEOTQM.RealLocalTomography.plusProjector",
+    "UEOTQM.RealLocalTomography.minusProjector",
+    "UEOTQM.RealLocalTomography.plusProjector_hermitian",
+    "UEOTQM.RealLocalTomography.minusProjector_hermitian",
+    "UEOTQM.RealLocalTomography.plusProjector_square",
+    "UEOTQM.RealLocalTomography.minusProjector_square",
+    "UEOTQM.RealLocalTomography.plusProjector_mul_minusProjector",
+    "UEOTQM.RealLocalTomography.one_sub_plusProjector",
+    "UEOTQM.RealLocalTomography.plusProjector_posSemidef",
+    "UEOTQM.RealLocalTomography.minusProjector_posSemidef",
+    "UEOTQM.RealLocalTomography.involutionEffect",
+    "UEOTQM.RealLocalTomography.Qubit",
+    "UEOTQM.RealLocalTomography.TwoQubit",
+    "UEOTQM.RealLocalTomography.pauliY",
+    "UEOTQM.RealLocalTomography.parity",
+    "UEOTQM.RealLocalTomography.pauliY_hermitian",
+    "UEOTQM.RealLocalTomography.pauliY_square",
+    "UEOTQM.RealLocalTomography.parity_hermitian",
+    "UEOTQM.RealLocalTomography.parity_square",
+    "UEOTQM.RealLocalTomography.pauliY_trace",
+    "UEOTQM.RealLocalTomography.parity_trace",
+    "UEOTQM.RealLocalTomography.parity_isReal",
+    "UEOTQM.RealLocalTomography.rhoPlus",
+    "UEOTQM.RealLocalTomography.rhoMinus",
+    "UEOTQM.RealLocalTomography.rhoPlus_matrix",
+    "UEOTQM.RealLocalTomography.rhoMinus_matrix",
+    "UEOTQM.RealLocalTomography.rhoPlus_isReal",
+    "UEOTQM.RealLocalTomography.rhoMinus_isReal",
+    "UEOTQM.RealLocalTomography.rhoPlus_symmetric",
+    "UEOTQM.RealLocalTomography.rhoMinus_symmetric",
+    "UEOTQM.RealLocalTomography.density_difference",
+    "UEOTQM.RealLocalTomography.trace_mul_pauliY_zero",
+    "UEOTQM.RealLocalTomography.trace_product_density_difference_zero",
+    "UEOTQM.RealLocalTomography.all_real_product_probabilities_equal",
+    "UEOTQM.RealLocalTomography.jointTest",
+    "UEOTQM.RealLocalTomography.jointTest_matrix",
+    "UEOTQM.RealLocalTomography.jointTest_isReal",
+    "UEOTQM.RealLocalTomography.jointTest_probability_plus",
+    "UEOTQM.RealLocalTomography.jointTest_probability_minus",
+    "UEOTQM.RealLocalTomography.rhoPlus_ne_rhoMinus",
+    "UEOTQM.RealLocalTomography.real_local_tomography_fails",
+    "UEOTQM.RealLocalTomography.complexLocalTest",
+    "UEOTQM.RealLocalTomography.complexLocalTest_not_real",
+    "UEOTQM.RealLocalTomography.complex_product_probability_plus",
+    "UEOTQM.RealLocalTomography.complex_product_probability_minus",
+    "UEOTQM.RealLocalTomography.complex_product_distinguishes",
+    "UEOTQM.QuantumDoob.successOperator",
+    "UEOTQM.QuantumDoob.successOperator_zero",
+    "UEOTQM.QuantumDoob.successOperator_succ",
+    "UEOTQM.QuantumDoob.successOperator_smul",
+    "UEOTQM.QuantumDoob.successOperator_posSemidef",
+    "UEOTQM.QuantumDoob.eigen_successOperator",
+    "UEOTQM.QuantumDoob.successMass",
+    "UEOTQM.QuantumDoob.successMass_eq_response",
+    "UEOTQM.QuantumDoob.eigen_successMass",
+    "UEOTQM.QuantumDoob.eigen_successMass_pos",
+    "UEOTQM.QuantumDoob.conditionalState",
+    "UEOTQM.QuantumDoob.eigen_conditionalState",
+    "UEOTQM.QuantumDoob.eigen_rate_nonneg",
+    "UEOTQM.QuantumDoob.eigen_rate_le_one",
+    "UEOTQM.QuantumDoob.InvertibleFilter",
+    "UEOTQM.QuantumDoob.InvertibleFilter.mk",
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply",
+    "UEOTQM.QuantumDoob.InvertibleFilter.unapply",
+    "UEOTQM.QuantumDoob.InvertibleFilter.metric",
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply_smul",
+    "UEOTQM.QuantumDoob.InvertibleFilter.unapply_apply",
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply_unapply",
+    "UEOTQM.QuantumDoob.InvertibleFilter.apply_posSemidef",
+    "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_pos",
+    "UEOTQM.QuantumDoob.InvertibleFilter.state",
+    "UEOTQM.QuantumDoob.InvertibleFilter.state_matrix",
+    "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_eq_pairing",
+    "UEOTQM.QuantumDoob.InvertibleFilter.metric_conjugate",
+    "UEOTQM.QuantumDoob.transformed_gram",
+    "UEOTQM.QuantumDoob.transformed_map",
+    "UEOTQM.QuantumDoob.doob_complete",
+    "UEOTQM.QuantumDoob.doobWeighted",
+    "UEOTQM.QuantumDoob.doobInstrument",
+    "UEOTQM.QuantumDoob.doob_branch",
+    "UEOTQM.QuantumDoob.doob_branch_apply",
+    "UEOTQM.QuantumDoob.doob_branch_state",
+    "UEOTQM.QuantumDoob.doob_channelState",
+    "UEOTQM.QuantumDoob.doob_successOperator_apply",
+    "UEOTQM.QuantumDoob.eigenmetric_successMass",
+    "UEOTQM.QuantumDoob.eigenmetric_successMass_pos",
+    "UEOTQM.QuantumDoob.doob_finite_conditioning",
+    "UEOTQM.QuantumDoob.doob_successOperator_state",
+    "UEOTQM.QuantumDoob.doob_successMass_state"
+  ],
+  "audit_target_count": 573,
+  "missing_explicit_theorems": [],
+  "new_modules": [
+    "ClassicalSector",
+    "CorePurificationBoundary",
+    "RealLocalTomography",
+    "QuantumDoob"
+  ],
+  "new_counts": {
+    "ClassicalSector": {
+      "abbrev": 1,
+      "structure": 1,
+      "theorem": 24,
+      "def": 10
+    },
+    "CorePurificationBoundary": {
+      "def": 13,
+      "theorem": 32,
+      "abbrev": 3,
+      "instance": 3
+    },
+    "RealLocalTomography": {
+      "def": 11,
+      "theorem": 37,
+      "abbrev": 2
+    },
+    "QuantumDoob": {
+      "def": 9,
+      "theorem": 32,
+      "structure": 1
+    }
+  },
+  "count_scope": "Package declarations include universal mathematics and the explicit finite Core model; concrete scripts/witnesses are separate. Structures and constructor audit targets are not theorem counts."
+}

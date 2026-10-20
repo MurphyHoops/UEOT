@@ -1,0 +1,1195 @@
+{
+  "status": "PASS_FOCUSED_AUTHOR_DELIVERY",
+  "author": "/root/q316_classical_core",
+  "scientific_goal": "QSEL-A1-CLASSICAL",
+  "created_utc": "2026-10-20T05:25:20.970763+00:00",
+  "actual_source_baseline": "427f512745ca70f82cba6a1388edcab904da8a42",
+  "toolchain": {
+    "version": "Lean 4.33.1",
+    "commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+    "lake": "/tmp/lean-4.33.1-linux/bin/lake",
+    "binary_modified": false,
+    "source_escape_added": false
+  },
+  "modules": [
+    {
+      "source": "UEOTQM/ClassicalSector.lean",
+      "absolute_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+      "sha256": "fed2036fce7ca658a74b7457316f6950727924c0f8abc0931a5d5f7ffe33bbb5",
+      "bytes": 11550,
+      "lines": 334,
+      "explicit_declarations": 36,
+      "kinds": {
+        "abbrev": 1,
+        "structure": 1,
+        "theorem": 24,
+        "def": 10
+      },
+      "proof_escape_scan": {
+        "sorry_admit_native_decide": false,
+        "axiom_command": false
+      },
+      "focused_build_status": "PASS"
+    },
+    {
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "absolute_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean",
+      "sha256": "53d957159fa6cf743c4e146e7d146385af81b7ec9c5a12204f90e488d870bce4",
+      "bytes": 16021,
+      "lines": 375,
+      "explicit_declarations": 51,
+      "kinds": {
+        "def": 13,
+        "theorem": 32,
+        "abbrev": 3,
+        "instance": 3
+      },
+      "proof_escape_scan": {
+        "sorry_admit_native_decide": false,
+        "axiom_command": false
+      },
+      "focused_build_status": "PASS"
+    }
+  ],
+  "counts": {
+    "explicit_source_declarations": 87,
+    "by_kind": {
+      "abbrev": 4,
+      "structure": 1,
+      "theorem": 56,
+      "def": 23,
+      "instance": 3
+    },
+    "named_public_instances_included": 3,
+    "generated_structure_declarations_counted_separately": false
+  },
+  "declarations": [
+    {
+      "name": "UEOTQM.Classical.State",
+      "kind": "abbrev",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 21,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.Effect",
+      "kind": "structure",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 24,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.state_ext",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 32,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.evaluate",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 40,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.evaluate_nonneg",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 43,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.evaluate_le_one",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 46,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.indicator",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 52,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.evaluate_indicator",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 57,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.all_effects_separate",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 61,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.dirac",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 70,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.dirac_weight",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 75,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.evaluate_dirac",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 80,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.mix",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 84,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.mix_weight",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 93,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.halfMix",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 97,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.halfMix_weight",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 99,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.pushforward",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 104,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.pushforward_weight",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 112,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.pushforward_dirac",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 117,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.pushforward_halfMix",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 133,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.marginalLeft",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 144,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.marginalLeft_weight",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 149,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.marginalLeft_eq_pushforward",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 152,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.marginalLeft_dirac",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 161,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.marginalLeft_halfMix",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 165,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.IsPure",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 171,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.dirac_isPure",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 175,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.dirac_ne",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 211,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.halfMix_not_pure",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 217,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.halfRow",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 226,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.halfRow_weight",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 244,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.marginalLeft_halfRow",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 250,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.no_pure_extension_halfMix",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 267,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.attach",
+      "kind": "def",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 309,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.marginalLeft_attach",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 312,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.dirac_has_pure_extension",
+      "kind": "theorem",
+      "source": "UEOTQM/ClassicalSector.lean",
+      "line": 328,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.toPMF",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 33,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.toPMF_apply",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 36,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.toPMF_apply_toReal",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 39,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.toPMF_dirac",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 43,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.toPMF_pushforward",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 48,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.rowState",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 68,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.rowState_weight",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 71,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.stepState",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 75,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.stepState_dirac",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 83,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.Classical.toPMF_stepState",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 92,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.Micro",
+      "kind": "abbrev",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 122,
+      "axioms": [],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.fullyObservedSurvivalModel",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 124,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminal_eq_iff",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 131,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.Terminal",
+      "kind": "abbrev",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 141,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalFintype",
+      "kind": "instance",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 144,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalMeasurableSpace",
+      "kind": "instance",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 145,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalControl",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 147,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalGood",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 152,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalControl_source",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 157,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalControl_reward",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 160,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalControl_optimalValue",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 168,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalControl_injective",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 173,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.terminalGood_source",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 179,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.viable_all_horizons",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 186,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.initial_support_viable",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 197,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.firstRow",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 204,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.firstRow_halfMix",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 206,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.firstQuotientState",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 213,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.quotient_support_distinct",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 216,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.firstQuotientState_halfMix",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 221,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.firstQuotientState_not_pure",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 226,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.firstQuotientState_no_pure_extension",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 230,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.sourcePMF",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 235,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.piStar",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 238,
+      "axioms": [],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.actualPathLaw",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 240,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.sourcePMF_toReal",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 243,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.sourcePMF_firstRow",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 248,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.sourcePMF_rowState",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 250,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.piStar_preserves",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 253,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.actualPath_all_times_safe",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 263,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.actualPath_first_quotient_marginal",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 282,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.false_action_destructive",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 298,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.FiniteCoreSlice",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 306,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.finiteCoreSlice_holds",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 324,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.classical_purification_separation",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 335,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.RestrictedTerminal",
+      "kind": "abbrev",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 346,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.restrictedTerminalFintype",
+      "kind": "instance",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 349,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState",
+      "kind": "def",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 351,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.restricted_support_merge",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 354,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_dirac",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 361,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    },
+    {
+      "name": "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_pure",
+      "kind": "theorem",
+      "source": "UEOTQM/CorePurificationBoundary.lean",
+      "line": 369,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "axiom_status": "PASS"
+    }
+  ],
+  "axiom_audit": {
+    "status": "PASS",
+    "exit_code": 0,
+    "targets": 87,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "observed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unexpected_axioms": {},
+    "script": "/tmp/qm316_classical_axiom_audit.lean",
+    "log": "/tmp/qm316_classical_axiom_audit.log",
+    "log_sha256": "6dce95655d904835c9940fe82d22cd2c1debce859c700d8ed960355afae178d8"
+  },
+  "focused_builds": [
+    {
+      "target": "+UEOTQM.ClassicalSector",
+      "status": "PASS",
+      "exit_code": 0,
+      "compiled_module_seconds": 20,
+      "lake_jobs": 8728,
+      "log": "/tmp/qm316_classical_focused_round2.log"
+    },
+    {
+      "target": "+UEOTQM.CorePurificationBoundary",
+      "status": "PASS",
+      "exit_code": 0,
+      "compiled_module_seconds": 25,
+      "lake_jobs": 8772,
+      "log": "/tmp/qm316_core_boundary_focused_round3.log"
+    }
+  ],
+  "core_import_build": {
+    "status": "PASS",
+    "direct_closure_modules": 51,
+    "missing_targets_built_serially": 21,
+    "existing_artifact_targets": 30,
+    "fresh_serial_target_seconds": 648.023,
+    "frozen_core_sources_edited": false,
+    "master_log": "/tmp/qm316_core_serial_master.log",
+    "target_results": "/tmp/qm316_core_serial_results.json",
+    "topology": "/tmp/qm316_core_topological_targets.json",
+    "note": "The root separately audits the QM-wide recursive Core closure of 56; this 51 is the direct CoreNonvacuousAllTimesWitness closure."
+  },
+  "execution_history": {
+    "superseded_scalar_compile": "/tmp/qm316_classical_superseded_compile.json",
+    "parallel_core_stop": "/tmp/qm316_core_parallel_stop.json",
+    "reason": "Stopped only owned stale/parallel compiler processes after parent diagnosed the actual 8 GiB cgroup memory limit and severe file refault; no compiler, mathematics or frozen Core source changes.",
+    "failed_iterations_preserved": [
+      "/tmp/qm316_classical_focused.log",
+      "/tmp/qm316_core_boundary_focused.log",
+      "/tmp/qm316_core_boundary_focused_round2.log"
+    ],
+    "final_repairs": "Only proof elaboration: finite sum rewrite direction, decidable-if simplification, SISC namespace opening, explicit equality symmetry, PMF support arguments and toMeasure_map function argument. No theorem weakened."
+  },
+  "scientific_scope": {
+    "complete_classical_interpretation": "Full finite probability simplex; all interval-valued effects; trace-free scalar pairing; Cartesian composites; actual summed marginal; convex-extreme purity.",
+    "purity": "IsPure quantifies all q,r in the full State space and all real 0<t<1. Dirac purity is proved separately; a full pure-iff-Dirac classification is not claimed or required.",
+    "arbitrary_ancilla": "No pure extension of a distinct-point half mixture in State(X × B) for every finite type B, including empty types; no Nonempty B assumption.",
+    "same_source": "Existing survivalMicroKernel, registered observe=id, actual terminalSetoid, actual organizationalTerminalControl, actual transitionPMF and actual stationaryTrajMeasure.",
+    "dynamics_bridge": "stepState is normalized for every input classical state; toPMF_stepState equals the actual PMF bind for every fixed action.",
+    "path_boundary": "Actual all-discrete-times registered safety and actual first quotient-coordinate Measure.map equality; the latter same mixed state has no finite classical purification.",
+    "finite_core_slice": "14 explicit proved conjuncts grouped as H1-H6. The final classical_purification_separation joins these to the actual quotient marginal and finite classical purification obstruction.",
+    "deletion_control": "The original first-bit-only registered Core model and same kernel merge the supported points; the actual quotient state is Dirac and convex-extreme pure.",
+    "positive_controls": "Every state has ordinary attach extension if an auxiliary point is supplied; a Dirac state has an actual pure Dirac extension.",
+    "zero_reward": "Legal exact-control and value-transport example; the explicit true policy is safe, not uniquely selected by reward optimization.",
+    "not_claimed": [
+      "All 106 Core propositions in every interpretation",
+      "Universal impossibility of reconstructing QM from any richer UEOT",
+      "A derivation of complex quantum structure, Born rule, or universal purification from these Core interfaces",
+      "Empirical selection of the classical observation or composition rule",
+      "Infinite ancillary-system obstruction",
+      "A complete physical theory or final truth"
+    ]
+  },
+  "monograph_review": {
+    "path": "/tmp/qm316_ch54.md",
+    "sha256": "a7d9653f60dcf601468b5104f1c9c5088c78bf999a327ff711dd625ffa8e4155",
+    "status": "PASS_SCOPE_AND_LEAN_COVERAGE_REVIEW",
+    "details": "Read revised full chapter 54, including arbitrary-state fixed-action PMF.bind paragraph. Quantifiers, H1-H6 limits, empty ancilla, actual quotient/path, deletion witness and zero-reward caution match source. Root owns book integration."
+  },
+  "independent_reviews": {
+    "review_of_own_sources": "/tmp/qm316_classical_cross_review.md",
+    "readonly_review_of_real_tomography": "/tmp/qm316_real_tomography_cross_review_by_classical.md"
+  },
+  "integration_boundary": "Parent owns UEOTQM exports, unified AxiomAudit, full integration build, book/status/workflow integration, Git commit and remote sync. None of those completion claims are made by this author report."
+}

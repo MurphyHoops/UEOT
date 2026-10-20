@@ -1,0 +1,737 @@
+{
+  "schema": "ueot-qm-focused-evidence-archive/v1",
+  "created_utc": "2026-10-20T05:29:33.135690+00:00",
+  "archivist": "/root/q316_classical_core",
+  "archive_root": "physics/qm/kernel/evidence/v31.6/focused",
+  "status": "ARCHIVED_BYTE_IDENTICAL_FOCUSED_EVIDENCE",
+  "manifest_excludes_self": true,
+  "file_count_excluding_manifest": 68,
+  "total_bytes_excluding_manifest": 1042461,
+  "source_modules": [
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+      "original_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+      "sha256": "fed2036fce7ca658a74b7457316f6950727924c0f8abc0931a5d5f7ffe33bbb5",
+      "bytes": 11550,
+      "matches_author_freeze": true
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean",
+      "original_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean",
+      "sha256": "53d957159fa6cf743c4e146e7d146385af81b7ec9c5a12204f90e488d870bce4",
+      "bytes": 16021,
+      "matches_author_freeze": true
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/RealLocalTomography.lean",
+      "original_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/RealLocalTomography.lean",
+      "sha256": "76dfea1aa3ad7f16e699a8529bde5f22120badac9a1db60f0265eaef4eeddc9e",
+      "bytes": 13372,
+      "matches_author_freeze": true
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumDoob.lean",
+      "original_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/QuantumDoob.lean",
+      "sha256": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+      "bytes": 15793,
+      "matches_author_freeze": true
+    }
+  ],
+  "author_confirmations": {
+    "B": "Final reports, build/witness, targets, book review and Doob cross review frozen; no separately saved failed B log; prepared main audit not run.",
+    "C": "Final reports, focused/witness success and saved failed logs, targets, mathematical notes, classical cross review, integration review and chapter 56 review frozen."
+  },
+  "status_counts": {
+    "PASS_RECORDED": 34,
+    "FAILED_RECORDED": 5,
+    "ABORTED_RECORDED": 2,
+    "HISTORICAL_CANDIDATE": 2,
+    "TARGETS": 4,
+    "EXECUTED_AUDIT_INPUT": 1,
+    "NOT_RUN_PREPARED_INPUT": 2,
+    "AUTHOR_MATHEMATICAL_NOTES": 1,
+    "SOURCE_REVIEW_PASS": 7,
+    "BOOK_REVIEW_PASS": 4,
+    "SERIAL_CORE_RESULT": 3,
+    "RESOURCE_DIAGNOSTIC": 2,
+    "ARCHIVE_CATALOG": 1
+  },
+  "exclusions": [
+    {
+      "item": "*.py and *.pyc",
+      "reason": "Explicit parent restriction; no Python files copied into kernel evidence."
+    },
+    {
+      "item": "Classical/real prototype .lean files and reviewed source snapshots",
+      "reason": "Not final acceptance evidence; final four source identities are recorded without duplication."
+    },
+    {
+      "item": "qm316_next_execution_v317.md",
+      "reason": "Planning-only draft owned by root, not a proof receipt."
+    },
+    {
+      "item": "Full book, PDF, dossier and their visuals",
+      "reason": "B and root own book/archive integration outside focused."
+    },
+    {
+      "item": "Root combined build, main 573-target audit and four-witness 84-target receipt",
+      "reason": "Root-owned acceptance is running; this archive does not imply or rewrite its later result."
+    }
+  ],
+  "known_unavailable_raw_logs": [
+    "Initial intentionally terminated superseded scalar compile: termination record retained; no separate raw log in available author inventory.",
+    "Initial intentionally terminated parallel Core compile: termination/resource records retained; no separate raw log in available author inventory."
+  ],
+  "missing_requested_final_files": [],
+  "files": [
+    {
+      "original_path": "/tmp/qm316_classical_declarations_candidate.json",
+      "archive_path": "classical/history/qm316_classical_declarations_candidate.json",
+      "category": "classical/history",
+      "evidence_status": "HISTORICAL_CANDIDATE",
+      "note": "",
+      "sha256": "751cc40c12f556afb7654619a11358f488a302fd7a45bd1004a5f49088a6eac9",
+      "bytes": 14479
+    },
+    {
+      "original_path": "/tmp/qm316_classical_focused.log",
+      "archive_path": "classical/history/qm316_classical_focused.log",
+      "category": "classical/history",
+      "evidence_status": "FAILED_RECORDED",
+      "note": "",
+      "sha256": "5547809aed7778de45aa89c7d69f30004c5d766d457cbb53737751703124f253",
+      "bytes": 30465
+    },
+    {
+      "original_path": "/tmp/qm316_classical_superseded_compile.json",
+      "archive_path": "classical/history/qm316_classical_superseded_compile.json",
+      "category": "classical/history",
+      "evidence_status": "ABORTED_RECORDED",
+      "note": "",
+      "sha256": "1958c36a87031264f804e1a0413d0048fdcfb438335a5dcc21e9c397159723a5",
+      "bytes": 485
+    },
+    {
+      "original_path": "/tmp/qm316_classical_work_checkpoint.json",
+      "archive_path": "classical/history/qm316_classical_work_checkpoint.json",
+      "category": "classical/history",
+      "evidence_status": "HISTORICAL_CANDIDATE",
+      "note": "",
+      "sha256": "b91b00aab00f32d01c7a3b0c32ab904b68ffabfd7461114996b42054b1c4aaac",
+      "bytes": 1251
+    },
+    {
+      "original_path": "/tmp/qm316_core_boundary_focused.log",
+      "archive_path": "classical/history/qm316_core_boundary_focused.log",
+      "category": "classical/history",
+      "evidence_status": "FAILED_RECORDED",
+      "note": "",
+      "sha256": "5937688a91c7edc6166a77da4f6e285f433faeb1dac0fc29307320f9a3ed8b94",
+      "bytes": 74900
+    },
+    {
+      "original_path": "/tmp/qm316_core_boundary_focused_round2.log",
+      "archive_path": "classical/history/qm316_core_boundary_focused_round2.log",
+      "category": "classical/history",
+      "evidence_status": "FAILED_RECORDED",
+      "note": "",
+      "sha256": "9b4fde60b14e0b18087acd5834a2a5f2b0110494478211d7fb637e1de8effc3c",
+      "bytes": 59139
+    },
+    {
+      "original_path": "/tmp/qm316_classical_axiom_audit.lean",
+      "archive_path": "classical/qm316_classical_axiom_audit.lean",
+      "category": "classical",
+      "evidence_status": "EXECUTED_AUDIT_INPUT",
+      "note": "Actual 87-target output is archived alongside this input.",
+      "sha256": "825f97ab61b85f01de4bdb86d355860e6b6e6ee4f56f7a4270210e92ba7b81a2",
+      "bytes": 4893
+    },
+    {
+      "original_path": "/tmp/qm316_classical_axiom_audit.log",
+      "archive_path": "classical/qm316_classical_axiom_audit.log",
+      "category": "classical",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "6dce95655d904835c9940fe82d22cd2c1debce859c700d8ed960355afae178d8",
+      "bytes": 8898
+    },
+    {
+      "original_path": "/tmp/qm316_classical_declarations_final.json",
+      "archive_path": "classical/qm316_classical_declarations_final.json",
+      "category": "classical",
+      "evidence_status": "TARGETS",
+      "note": "",
+      "sha256": "033b15e81f1e1c0b17596a9623840e6d01f36d5563226b17a74e89e8c26fe9bd",
+      "bytes": 25189
+    },
+    {
+      "original_path": "/tmp/qm316_classical_focused_round2.log",
+      "archive_path": "classical/qm316_classical_focused_round2.log",
+      "category": "classical",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "ca916697992af5026e3383ee561341321e4d417da78a51b37ef79f1dab8eca9b",
+      "bytes": 27154
+    },
+    {
+      "original_path": "/tmp/qm316_classical_report.json",
+      "archive_path": "classical/qm316_classical_report.json",
+      "category": "classical",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "8eafce0b085eeb098ded199747c3f2ed4abd5326baf50b7ab3d32e053d2893cf",
+      "bytes": 32671
+    },
+    {
+      "original_path": "/tmp/qm316_classical_report.md",
+      "archive_path": "classical/qm316_classical_report.md",
+      "category": "classical",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "6fd9334d767400b5cac200d756156e3cd5d0441c072f0ef880318ad7b49012fb",
+      "bytes": 8958
+    },
+    {
+      "original_path": "/tmp/qm316_core_boundary_focused_round3.log",
+      "archive_path": "classical/qm316_core_boundary_focused_round3.log",
+      "category": "classical",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "da8ee70cb6d8e0e0a86147ab85de012a2a8fc045759df301841201ada870bdb1",
+      "bytes": 56930
+    },
+    {
+      "original_path": "/tmp/qm316_cgroup_resources.json",
+      "archive_path": "core-build/history/qm316_cgroup_resources.json",
+      "category": "core-build/history",
+      "evidence_status": "RESOURCE_DIAGNOSTIC",
+      "note": "",
+      "sha256": "b92221820e1fe197f3c4559c4fc07ad7f41143514b751140af81b41e276b05c5",
+      "bytes": 732
+    },
+    {
+      "original_path": "/tmp/qm316_core_parallel_stop.json",
+      "archive_path": "core-build/history/qm316_core_parallel_stop.json",
+      "category": "core-build/history",
+      "evidence_status": "ABORTED_RECORDED",
+      "note": "",
+      "sha256": "f05d195658f923ba54d6d8389d32d291e978a138f296499884bbf9d412e86d76",
+      "bytes": 4679
+    },
+    {
+      "original_path": "/tmp/qm316_lean_resources.json",
+      "archive_path": "core-build/history/qm316_lean_resources.json",
+      "category": "core-build/history",
+      "evidence_status": "RESOURCE_DIAGNOSTIC",
+      "note": "",
+      "sha256": "40399bc4a94f5ba41243594563e7e82e1e8f61d0a2d7b34bf9fc4f1be9578c87",
+      "bytes": 4230
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/04-UEOT_V3_FiniteStablePartitionCoarsestFixedPoint.log",
+      "archive_path": "core-build/logs/04-UEOT_V3_FiniteStablePartitionCoarsestFixedPoint.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "9a2c943115c274ca5636715c2fe1328de0d05b0b15095643b517607daab9f3c0",
+      "bytes": 5062
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/06-UEOT_V3_FiniteStablePartitionQuotientNormalization.log",
+      "archive_path": "core-build/logs/06-UEOT_V3_FiniteStablePartitionQuotientNormalization.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "506884b528e2550ae87983ca729f1adc21ce435feaf8a2ce2910ac4b1d071ee9",
+      "bytes": 3777
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/07-UEOT_V3_FiniteStablePartitionFiniteHorizon.log",
+      "archive_path": "core-build/logs/07-UEOT_V3_FiniteStablePartitionFiniteHorizon.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "242425037bd0c1f6771065ff0a52ab59f69a6fe096a34e7a3b4d461e75fc3feb",
+      "bytes": 4287
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/08-UEOT_V3_PAlg01.log",
+      "archive_path": "core-build/logs/08-UEOT_V3_PAlg01.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "a708c9b06983e486d940d886464f31b7c1b708a9862096de1a8c12d899b61fdc",
+      "bytes": 7233
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/17-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCStochasticDescent.log",
+      "archive_path": "core-build/logs/17-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCStochasticDescent.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "87044ef1723774dfe200bd507a7aeaea82ac5d4372f87f23036183f00287142f",
+      "bytes": 3166
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/18-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCModelKernelReconciliation.log",
+      "archive_path": "core-build/logs/18-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCModelKernelReconciliation.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "a086efeff10d835e112924d259f2a2dc96b2b93891f97e9659489c5d4813b243",
+      "bytes": 11773
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/22-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCStochasticBeliefBridge.log",
+      "archive_path": "core-build/logs/22-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCStochasticBeliefBridge.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "d98aa9c7426cc651fff5d2bcc0846452da77244b3d7d821dbc3e655ada976a75",
+      "bytes": 10311
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/23-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCEmissionTiming.log",
+      "archive_path": "core-build/logs/23-UEOT_V3_Compression_TheoryCompletion_ScientificClosure_SISCEmissionTiming.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "df51d89cc93dac5c98d89269896a63a14caba405e30a40b0bd0f12b2dad4abf0",
+      "bytes": 11124
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/24-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_StochasticPredictiveObservabilityBridge.log",
+      "archive_path": "core-build/logs/24-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_StochasticPredictiveObservabilityBridge.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "b62792addface78a45b94ad3029147fe43a6bdc0338d97c4c733d3e3675cdd41",
+      "bytes": 11241
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/31-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_PredictiveOptimalControlLift.log",
+      "archive_path": "core-build/logs/31-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_PredictiveOptimalControlLift.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "01a47cdb576ec669b4f8eb38a0cf848b44af2df4e4d7de7d9ff8cd55ab37d97d",
+      "bytes": 15953
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/32-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_PredictiveViabilityTransport.log",
+      "archive_path": "core-build/logs/32-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_PredictiveViabilityTransport.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "e98a6087afd84f065e2650c667500970d3ad36a42447b0faa1aeb9d7fc3c9ac3",
+      "bytes": 16466
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/33-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_ViabilityKernelIntertwining.log",
+      "archive_path": "core-build/logs/33-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_ViabilityKernelIntertwining.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "f941c631e77f624dd67b23889a976352f9105d91fa05556d7f232d2e46eb46b0",
+      "bytes": 16977
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/34-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_OrganizationalCoreAssembly.log",
+      "archive_path": "core-build/logs/34-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_OrganizationalCoreAssembly.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "9c6fa88336bc5ea100cb2b21b5e8d651d27f30ce800a9709af907ae33aebdba5",
+      "bytes": 24229
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/35-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_UnifiedCoreClosureCertificate.log",
+      "archive_path": "core-build/logs/35-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_UnifiedCoreClosureCertificate.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "80aa1051c25c3e13b8991be1f4963821cae539cd2af04ca5e250c7a29b9ab275",
+      "bytes": 24640
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/36-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_OrganizationalViabilityMaximality.log",
+      "archive_path": "core-build/logs/36-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_OrganizationalViabilityMaximality.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "f2f68ad4327e8ae5238886975257c441acbdfad56db1c30dc7ea42bfe78297cb",
+      "bytes": 25574
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/44-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CorePMFViabilityReconciliation.log",
+      "archive_path": "core-build/logs/44-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CorePMFViabilityReconciliation.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "8bcf68c3dda7dddd291b4408f2024cdcf483dc24360f840a53bd16e7241752de",
+      "bytes": 34146
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/47-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CoreInfinitePathClosure.log",
+      "archive_path": "core-build/logs/47-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CoreInfinitePathClosure.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "b797e8043795f16e3f0cdfe4a989677ccecdba85a7e4e5cc4e71dfff3d4b1208",
+      "bytes": 36079
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/48-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CoreSourceAllTimesAssembly.log",
+      "archive_path": "core-build/logs/48-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CoreSourceAllTimesAssembly.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "6c1c0bb2128f6633489a0e319009969a1e82fcd2d11d68f3c7a6fd37719e9006",
+      "bytes": 36486
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/49-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_ViabilityNonvacuityWitness.log",
+      "archive_path": "core-build/logs/49-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_ViabilityNonvacuityWitness.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "aa3acba9a122e04f0e3dfc23125723c1fa43abd7b697408281b701513f3f7337",
+      "bytes": 17081
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/50-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_OrganizationalSufficiencyWitness.log",
+      "archive_path": "core-build/logs/50-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_OrganizationalSufficiencyWitness.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "3499fb4355f6518f5d1b21c7d8ae6d7af2d47875bcb11d81330586db4cff6c42",
+      "bytes": 24750
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_logs/51-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CoreNonvacuousAllTimesWitness.log",
+      "archive_path": "core-build/logs/51-UEOT_V3_Compression_TheoryCompletion_UnifiedClosure_CoreNonvacuousAllTimesWitness.log",
+      "category": "core-build/logs",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "c4bbdc7a0fbda2393928128e3a7d74464cea7e28773bffb4a2e580b3a2a218cc",
+      "bytes": 37408
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_master.log",
+      "archive_path": "core-build/qm316_core_serial_master.log",
+      "category": "core-build",
+      "evidence_status": "SERIAL_CORE_RESULT",
+      "note": "",
+      "sha256": "5e7a68e09c0caa0f38f75ca9c40b588bdb9ff2d6ff978196f1b62574c45131c9",
+      "bytes": 8295
+    },
+    {
+      "original_path": "/tmp/qm316_core_serial_results.json",
+      "archive_path": "core-build/qm316_core_serial_results.json",
+      "category": "core-build",
+      "evidence_status": "SERIAL_CORE_RESULT",
+      "note": "",
+      "sha256": "544ad97867f9ac32c28a83775d8e52b3485427a4bee14528ddffe1a92cda0892",
+      "bytes": 10954
+    },
+    {
+      "original_path": "/tmp/qm316_core_topological_targets.json",
+      "archive_path": "core-build/qm316_core_topological_targets.json",
+      "category": "core-build",
+      "evidence_status": "SERIAL_CORE_RESULT",
+      "note": "",
+      "sha256": "686d43d42861c75bcdb6cb829a6818a6b54c716e207a85de4d4a78d75b1d7754",
+      "bytes": 5864
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_round2_failed.log",
+      "archive_path": "doob/history/qm316_quantum_doob_round2_failed.log",
+      "category": "doob/history",
+      "evidence_status": "FAILED_RECORDED",
+      "note": "",
+      "sha256": "37b261bd65ba307565ee367502f48ba8705fc4b4ea1aadd6ad7312629e623a65",
+      "bytes": 1082
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_witness_round1_failed.log",
+      "archive_path": "doob/history/qm316_quantum_doob_witness_round1_failed.log",
+      "category": "doob/history",
+      "evidence_status": "FAILED_RECORDED",
+      "note": "",
+      "sha256": "188d663464e05ead04e7d7dd625e055eddeec8ea573caa430f60e48cffbe6ae6",
+      "bytes": 12043
+    },
+    {
+      "original_path": "/tmp/qm316_QuantumDoobAudit.lean",
+      "archive_path": "doob/qm316_QuantumDoobAudit.lean",
+      "category": "doob",
+      "evidence_status": "NOT_RUN_PREPARED_INPUT",
+      "note": "Author main-module audit delegated to root unified public audit; the actual focused witness audit is separately PASS.",
+      "sha256": "b31e9655342742f14f6f4235a431c392a3725bb6e668dca1f6eda321d8050bf2",
+      "bytes": 2359
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_focused.log",
+      "archive_path": "doob/qm316_quantum_doob_focused.log",
+      "category": "doob",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "c323489d095454a5f3d7c096cfd26597828c7d4998c32ceca28b1de407a0f092",
+      "bytes": 12150
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_math_notes.md",
+      "archive_path": "doob/qm316_quantum_doob_math_notes.md",
+      "category": "doob",
+      "evidence_status": "AUTHOR_MATHEMATICAL_NOTES",
+      "note": "",
+      "sha256": "950d11655334c53a243b9be2b8f1ec5438954df4a3c7ab6d7e5471c228ffc397",
+      "bytes": 5223
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_report.json",
+      "archive_path": "doob/qm316_quantum_doob_report.json",
+      "category": "doob",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "985c622f8557c06f8eebbd325300cd32add44acac3f8beee8e3e26ec9d69daa0",
+      "bytes": 22353
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_report.md",
+      "archive_path": "doob/qm316_quantum_doob_report.md",
+      "category": "doob",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "9f733d3c5598bc5cc5fb612096e9f15e63289b3e192b58b6a94043b137253784",
+      "bytes": 6383
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_targets.json",
+      "archive_path": "doob/qm316_quantum_doob_targets.json",
+      "category": "doob",
+      "evidence_status": "TARGETS",
+      "note": "",
+      "sha256": "5db28414bb7646868aac2a8a26ba039d3bce339fd545f6c88aae51e4850d5989",
+      "bytes": 9556
+    },
+    {
+      "original_path": "/tmp/qm316_quantum_doob_witness.log",
+      "archive_path": "doob/qm316_quantum_doob_witness.log",
+      "category": "doob",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "18b22411e7f6fbc286adfa3f4943c8ad26f75f3416e71c6eb74546e271e423f1",
+      "bytes": 4233
+    },
+    {
+      "original_path": "/tmp/qm316_focused_archive_README.md",
+      "archive_path": "qm316_focused_archive_README.md",
+      "category": ".",
+      "evidence_status": "ARCHIVE_CATALOG",
+      "note": "",
+      "sha256": "27813b7d366342e2b77970bc700d6d30d999318dae83371b5418fc221dcdec0a",
+      "bytes": 2699
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_audit.lean",
+      "archive_path": "real/qm316_real_tomography_audit.lean",
+      "category": "real",
+      "evidence_status": "NOT_RUN_PREPARED_INPUT",
+      "note": "Author confirmed main 50-target audit was delegated to root unified public audit; no independent PASS claimed.",
+      "sha256": "51596e6724e2bac08107e370e0e6dc069616405ffb80b8cc30d98b40e4c2a98f",
+      "bytes": 3049
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_build.log",
+      "archive_path": "real/qm316_real_tomography_build.log",
+      "category": "real",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "ef452341efbbe4fe253d35661d2abe4c91bff43c39737e4b45cf4c2b9628cb3c",
+      "bytes": 12158
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_report.json",
+      "archive_path": "real/qm316_real_tomography_report.json",
+      "category": "real",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "d03cb4efd9f0a4d86c2105bb97db7256a3a27cdaf15f7ec2536e6635812abdb9",
+      "bytes": 15072
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_report.md",
+      "archive_path": "real/qm316_real_tomography_report.md",
+      "category": "real",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "1ea40712e2eb3048e3498566315af9efd2cd3019df3cab3311fdc688b6f534eb",
+      "bytes": 10348
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_targets.json",
+      "archive_path": "real/qm316_real_tomography_targets.json",
+      "category": "real",
+      "evidence_status": "TARGETS",
+      "note": "",
+      "sha256": "fcda0d545288e1e94b4522119c39c671e2c13e244334fac25c1b57df5aa85397",
+      "bytes": 2755
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_witness.log",
+      "archive_path": "real/qm316_real_tomography_witness.log",
+      "category": "real",
+      "evidence_status": "PASS_RECORDED",
+      "note": "",
+      "sha256": "e28bc9938a91e3e980c58778cb34d5d97af56cdfa4e5ec688762a3c896754ded",
+      "bytes": 637
+    },
+    {
+      "original_path": "/tmp/qm316_ch56_source_review.json",
+      "archive_path": "reviews/chapters/qm316_ch56_source_review.json",
+      "category": "reviews/chapters",
+      "evidence_status": "BOOK_REVIEW_PASS",
+      "note": "",
+      "sha256": "dc119c5022444069dc5c0878b2fcda20a53faddf872632e3a56b1853b7aa693f",
+      "bytes": 2324
+    },
+    {
+      "original_path": "/tmp/qm316_ch56_source_review.md",
+      "archive_path": "reviews/chapters/qm316_ch56_source_review.md",
+      "category": "reviews/chapters",
+      "evidence_status": "BOOK_REVIEW_PASS",
+      "note": "",
+      "sha256": "dcf4c854a3a297036a4fd1da74f546a950bc3b04a7db24555f5a34e981536388",
+      "bytes": 1956
+    },
+    {
+      "original_path": "/tmp/qm316_classical_book_review.json",
+      "archive_path": "reviews/chapters/qm316_classical_book_review.json",
+      "category": "reviews/chapters",
+      "evidence_status": "BOOK_REVIEW_PASS",
+      "note": "",
+      "sha256": "9bed9e482e5230f26166cf3d8fa79d5fffc5523978685eba64de9e0645be4ecc",
+      "bytes": 606
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_book_review.json",
+      "archive_path": "reviews/chapters/qm316_real_tomography_book_review.json",
+      "category": "reviews/chapters",
+      "evidence_status": "BOOK_REVIEW_PASS",
+      "note": "",
+      "sha256": "9e25a8a1aed0f75c34f061dc4e642694b4b544f76df402180aae385216611947",
+      "bytes": 1447
+    },
+    {
+      "original_path": "/tmp/qm316_classical_cross_review.json",
+      "archive_path": "reviews/cross/qm316_classical_cross_review.json",
+      "category": "reviews/cross",
+      "evidence_status": "SOURCE_REVIEW_PASS",
+      "note": "",
+      "sha256": "32e8efb26a752ab33cdfe956565d57bf2e0f6afe9bb51c23a4989150586e3486",
+      "bytes": 7090
+    },
+    {
+      "original_path": "/tmp/qm316_classical_cross_review.md",
+      "archive_path": "reviews/cross/qm316_classical_cross_review.md",
+      "category": "reviews/cross",
+      "evidence_status": "SOURCE_REVIEW_PASS",
+      "note": "",
+      "sha256": "c585cf9956bf7b82d48a0ed5a8692d4b0b06b30d3e78cbf745e2788ca3d4eae7",
+      "bytes": 6376
+    },
+    {
+      "original_path": "/tmp/qm316_doob_cross_review.json",
+      "archive_path": "reviews/cross/qm316_doob_cross_review.json",
+      "category": "reviews/cross",
+      "evidence_status": "SOURCE_REVIEW_PASS",
+      "note": "",
+      "sha256": "3ab5f2613bbd2a03e6f083e1a1739d49a35b7ad5ffd6efeaedea8775af2a6bdd",
+      "bytes": 5786
+    },
+    {
+      "original_path": "/tmp/qm316_doob_cross_review.md",
+      "archive_path": "reviews/cross/qm316_doob_cross_review.md",
+      "category": "reviews/cross",
+      "evidence_status": "SOURCE_REVIEW_PASS",
+      "note": "",
+      "sha256": "27a9aa240017676cce5c790541b26d23036b4b06d9c1009dd9dceb4d598b79a2",
+      "bytes": 5964
+    },
+    {
+      "original_path": "/tmp/qm316_real_tomography_cross_review_by_classical.md",
+      "archive_path": "reviews/cross/qm316_real_tomography_cross_review_by_classical.md",
+      "category": "reviews/cross",
+      "evidence_status": "SOURCE_REVIEW_PASS",
+      "note": "",
+      "sha256": "58660be4aba6a9ab2629b749e218a0b7cbb823d578f604be1a3e15fcf9766474",
+      "bytes": 2182
+    },
+    {
+      "original_path": "/tmp/qm316_declaration_inventory.json",
+      "archive_path": "reviews/integration/qm316_declaration_inventory.json",
+      "category": "reviews/integration",
+      "evidence_status": "TARGETS",
+      "note": "",
+      "sha256": "a3af66fa2bbb8d64662066a0b9c7fb91ac7d1dd18a826794eb2a3e04b3878aaf",
+      "bytes": 107352
+    },
+    {
+      "original_path": "/tmp/qm316_integration_source_review.json",
+      "archive_path": "reviews/integration/qm316_integration_source_review.json",
+      "category": "reviews/integration",
+      "evidence_status": "SOURCE_REVIEW_PASS",
+      "note": "Final source/coverage review only; root global acceptance remains a separate receipt.",
+      "sha256": "1315b718e7dbf6b68f21a41e7a540f823fb9587d135b6ddd3c838ca139f8575b",
+      "bytes": 14588
+    },
+    {
+      "original_path": "/tmp/qm316_integration_source_review.md",
+      "archive_path": "reviews/integration/qm316_integration_source_review.md",
+      "category": "reviews/integration",
+      "evidence_status": "SOURCE_REVIEW_PASS",
+      "note": "Final source/coverage review only; root global acceptance remains a separate receipt.",
+      "sha256": "a381fa1fa432a3b1d183d83ddabaa66d8e2460d09435c8767793576950b36a52",
+      "bytes": 6761
+    }
+  ],
+  "updated_utc": "2026-10-20T05:36:44.580556+00:00",
+  "refresh_history": [
+    {
+      "time_utc": "2026-10-20T05:36:44.580556+00:00",
+      "reason": "Author C re-reviewed root chapter 56.7 plan-alignment revision; update exactly two review and two author-report artifacts, no source change.",
+      "files": [
+        {
+          "archive_path": "doob/qm316_quantum_doob_report.json",
+          "original_path": "/tmp/qm316_quantum_doob_report.json",
+          "old_sha256": "a838a2df1421deaeca1ce41aeefc3e6ac254906de41ff622954282aefb54f489",
+          "sha256": "985c622f8557c06f8eebbd325300cd32add44acac3f8beee8e3e26ec9d69daa0",
+          "bytes": 22353
+        },
+        {
+          "archive_path": "doob/qm316_quantum_doob_report.md",
+          "original_path": "/tmp/qm316_quantum_doob_report.md",
+          "old_sha256": "d7477bad5f4143e887017824da1141cb6e201923424f9e6995e35580a4403452",
+          "sha256": "9f733d3c5598bc5cc5fb612096e9f15e63289b3e192b58b6a94043b137253784",
+          "bytes": 6383
+        },
+        {
+          "archive_path": "reviews/chapters/qm316_ch56_source_review.json",
+          "original_path": "/tmp/qm316_ch56_source_review.json",
+          "old_sha256": "76765a9f3a983b915dda1c6c3b4c85c52aa7c2ac686d12dbb933098fb201614b",
+          "sha256": "dc119c5022444069dc5c0878b2fcda20a53faddf872632e3a56b1853b7aa693f",
+          "bytes": 2324
+        },
+        {
+          "archive_path": "reviews/chapters/qm316_ch56_source_review.md",
+          "original_path": "/tmp/qm316_ch56_source_review.md",
+          "old_sha256": "344a44d0ef6fe3e548e6b165557d4489bcc1f21ef66f719eb64e9fe22ce1c28b",
+          "sha256": "dcf4c854a3a297036a4fd1da74f546a950bc3b04a7db24555f5a34e981536388",
+          "bytes": 1956
+        }
+      ]
+    }
+  ]
+}
