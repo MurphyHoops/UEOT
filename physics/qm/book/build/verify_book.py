@@ -37,6 +37,26 @@ def inspect_book(source):
     anchors = re.findall(r'<a id="([^"]+)"></a>', source)
     if len(anchors) != len(set(anchors)):
         raise ValueError('Duplicate stable anchors')
+    appendix_headers = list(re.finditer(r'^# 附录 ([^\n]*)$', source, re.M))
+    appendix_letters = []
+    for header in appendix_headers:
+        label = re.fullmatch(r'([A-Z])\. .+', header.group(1))
+        if not label:
+            raise ValueError('Malformed appendix header: '+header.group(0))
+        appendix_letters.append(label.group(1))
+    if appendix_letters != list('ABCDEF'):
+        raise ValueError('Expected ordered appendix headers A–F; got '+repr(appendix_letters))
+    appendix_anchors = [name for name in anchors if name.startswith('appendix-')]
+    expected_appendix_anchors = ['appendix-'+letter.lower() for letter in 'ABCDEF']
+    if appendix_anchors != expected_appendix_anchors:
+        raise ValueError('Expected ordered appendix anchors appendix-a through appendix-f; got '
+                         +repr(appendix_anchors))
+    for header, anchor in zip(appendix_headers, expected_appendix_anchors):
+        preceding_lines = source[:header.start()].rstrip().splitlines()
+        preceding_line = preceding_lines[-1] if preceding_lines else ''
+        if preceding_line != f'<a id="{anchor}"></a>':
+            raise ValueError(f'Appendix header {header.group(1)!r} must immediately follow '
+                             f'its matching stable anchor {anchor!r} (blank lines allowed)')
     targets = re.findall(r'\]\(#([^)]*)\)', source)
     if set(targets)-set(anchors):
         raise ValueError('Unresolved internal targets: '+str(set(targets)-set(anchors)))
@@ -57,7 +77,8 @@ def inspect_book(source):
         raise ValueError('This edition requires all 78 inherited and 10 new result IDs')
     return {'schema': 'ueot_physics.book_structure.v1', 'status': 'PASS',
             'source_sha256': hashlib.sha256(source.encode()).hexdigest(),
-            'chapters': len(chapters), 'appendices': len(re.findall(r'^# 附录 ', source, re.M)),
+            'chapters': len(chapters), 'appendices': len(appendix_headers),
+            'appendix_letters': appendix_letters, 'appendix_anchors_bound_to_headers': True,
             'numbered_sections': len(sections), 'stable_anchors': len(anchors),
             'numbered_results': len(claims), 'registry_rows_bound_to_actual_anchors': True,
             'internal_links_valid': True, 'claims': claims}

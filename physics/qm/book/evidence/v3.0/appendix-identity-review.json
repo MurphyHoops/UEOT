@@ -1,0 +1,78 @@
+{
+  "schema": "ueot_physics.appendix_identity_review.v1",
+  "status": "PASS",
+  "reviewed_at_utc": "2026-10-20T00:03:00.385428+00:00",
+  "scope": "PR337: ordered appendix labels A–F, ordered matching stable anchors, and immediate header/anchor pairing. Only verify_book.py was changed in the repository.",
+  "inputs": {
+    "source_path": "/workspace/scratch/474cf6b1f047/qm_v314_work/physics/qm/book/UEOT_PHYSICS.md",
+    "source_sha256": "510d1a08a2b4808e08d058628310727ec7ec48348bd21d96e47c04a450875379",
+    "validator_path": "/workspace/scratch/474cf6b1f047/qm_v314_work/physics/qm/book/build/verify_book.py",
+    "validator_sha256": "b4b7f67897f7a97cabc76d8995cbd94b2d2798084c51f7f802051477ac542f2d"
+  },
+  "positive": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/scratch/474cf6b1f047/qm_v314_work/physics/qm/book/build/verify_book.py",
+      "--source",
+      "/workspace/scratch/474cf6b1f047/qm_v314_work/physics/qm/book/UEOT_PHYSICS.md"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "appendix_letters": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "appendix_anchors_bound_to_headers": true,
+    "chapters": 51,
+    "appendices": 6,
+    "numbered_results": 88
+  },
+  "negative_controls": [
+    {
+      "name": "f_header_to_g",
+      "status": "PASS_REJECTED",
+      "mutation": "Only the F header letter changes to G.",
+      "mutated_source_sha256": "4a64fbd7939c8944d5047cf0f8cbeb3054a1ecec8085eba1fcce5e3f0679204a",
+      "exception_type": "ValueError",
+      "diagnostic": "Expected ordered appendix headers A–F; got ['A', 'B', 'C', 'D', 'E', 'G']"
+    },
+    {
+      "name": "swap_a_f_headers",
+      "status": "PASS_REJECTED",
+      "mutation": "Swap only the A/F header letters; retain six headings and all anchors.",
+      "mutated_source_sha256": "315edad9bba25240c31ca68b15ab5dd02e7c8c5ad878a535d73278523bbd1cb8",
+      "exception_type": "ValueError",
+      "diagnostic": "Expected ordered appendix headers A–F; got ['F', 'B', 'C', 'D', 'E', 'A']"
+    },
+    {
+      "name": "wrong_f_anchor",
+      "status": "PASS_REJECTED",
+      "mutation": "Change only appendix-f anchor to appendix-g.",
+      "mutated_source_sha256": "8618f163f915a9c4d6d779aa08a7834e9e3c4357a7e34fafe2a0445324b36d16",
+      "exception_type": "ValueError",
+      "diagnostic": "Expected ordered appendix anchors appendix-a through appendix-f; got ['appendix-a', 'appendix-b', 'appendix-c', 'appendix-d', 'appendix-e', 'appendix-g']"
+    },
+    {
+      "name": "unpaired_f_header",
+      "status": "PASS_REJECTED",
+      "mutation": "Keep ordered A–F headers and ordered a–f anchors, but break immediate header pairing.",
+      "mutated_source_sha256": "de80d5c9d247d0b31cb288b1e63d697876bc2bba4b4d0c3f0ea3d320a22e1067",
+      "exception_type": "ValueError",
+      "diagnostic": "Appendix header 'F. 实际形式化范围与完整命名审计' must immediately follow its matching stable anchor 'appendix-f' (blank lines allowed)"
+    }
+  ],
+  "protected_artifacts_unchanged": {
+    "UEOT_PHYSICS.md": "510d1a08a2b4808e08d058628310727ec7ec48348bd21d96e47c04a450875379",
+    "UEOT_PHYSICS.pdf": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
+    "UEOT_PHYSICS.tex": "4674e7cc33d0b8d04a3ef52e2f94c5e4270978ac10feed2a0fb9979ec758f9ee",
+    "README.md": "76e537c9ae43e501ff11cabb00d315a87980d82eb9cafd41086226e0e8a0743c",
+    "CHAPTER_DOSSIER.json": "65ec13374fca913dfd733e0f72f6d4969aa58b7a9e6cd5092b9a0223ebd74dd6"
+  },
+  "mutations_only_in_memory": true,
+  "no_lean_or_pdf_rebuild": true
+}

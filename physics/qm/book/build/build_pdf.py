@@ -25,6 +25,22 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def prepare_font(out, font):
+    """Manage only the reserved font selected by header.tex in this output dir."""
+    target = out / 'UEOT_CJK.ttf'
+    if font is None:
+        target.unlink(missing_ok=True)
+        return None
+    source = font.resolve(strict=True)
+    if not source.is_file():
+        raise ValueError(f'Font must be a file: {source}')
+    if not (target.exists() and source.samefile(target)):
+        # Unlink the owned entry so a previous symlink cannot redirect the copy.
+        target.unlink(missing_ok=True)
+        shutil.copy2(source, target)
+    return {'sha256': digest(target), 'bytes': target.stat().st_size}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, default=BOOK / 'UEOT_PHYSICS.md')
@@ -77,11 +93,7 @@ def main():
         chunks[i] = chunks[i].replace(r'\_', r'\_\allowbreak ')
         chunks[i] = chunks[i].replace(r'}、\texttt{', r'}、\allowbreak \texttt{')
     tex.write_text(''.join(chunks), encoding='utf-8')
-    font_info = None
-    if args.font:
-        font = args.font.resolve()
-        shutil.copy2(font, out / 'UEOT_CJK.ttf')
-        font_info = {'sha256': digest(font), 'bytes': font.stat().st_size}
+    font_info = prepare_font(out, args.font)
     logs = []
     for attempt in range(3):
         result = subprocess.run(['xelatex', '-interaction=nonstopmode', '-halt-on-error',
