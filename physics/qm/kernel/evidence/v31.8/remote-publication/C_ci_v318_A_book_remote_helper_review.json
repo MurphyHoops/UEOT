@@ -1,0 +1,198 @@
+{
+  "schema": "ueot_qm.independent_book_remote_helper_review.v31.8",
+  "status": "CLEAR",
+  "reviewed_at_utc": "2026-10-20T12:02:08.390832+00:00",
+  "reviewer": "C /root/v317_ci_finish",
+  "helper": {
+    "path": "handoff/qm318_finalize_book_remote.py",
+    "bytes": 45783,
+    "sha256": "a8cdc335d98e543a172059791613b6bae7825a4ed5d429c3e0f11fe71f01e323"
+  },
+  "execution_stage": "PREPARED_NOT_EXECUTED_WITH_ACTUAL_REMOTE_CONTEXT",
+  "method": "Read all 673 source lines and inspect AST; compare actual frozen local input schemas, B integration producer, and C CI parser output fields. Independently re-read A saved plan/missing-context preflight output bindings. No helper main/prepare execution, fake context, scientific validation, or remote action.",
+  "inputs": [
+    {
+      "path": "handoff/qm318_finalize_book_remote.py",
+      "bytes": 45783,
+      "sha256": "a8cdc335d98e543a172059791613b6bae7825a4ed5d429c3e0f11fe71f01e323"
+    },
+    {
+      "path": "handoff/qm318_finalize_remote.py",
+      "bytes": 26034,
+      "sha256": "7de8ffff6784d73aca444ac0069dd4b2eac9a56a6a5d01129b4e382e73eec807"
+    },
+    {
+      "path": "handoff/qm318_verify_ci_logs.py",
+      "bytes": 47188,
+      "sha256": "d59fc80f373cd134fd4da0358021379aa8536d9cecb0d5ab6d77dc1f77244316"
+    },
+    {
+      "path": "handoff/A_v318_book_remote_helper_preflight.json",
+      "bytes": 3425,
+      "sha256": "22a09c124a6e90c59c203269b938e92db4ac19281727e9aaaf00882de171419d"
+    },
+    {
+      "path": "handoff/qm318_publication_inventory.json",
+      "bytes": 151153,
+      "sha256": "b7fd0b660a112f6136f748f952be0773e5469cd04618c9a7b9bf8bff40c874e0"
+    },
+    {
+      "path": "handoff/C_ci_v318_payload_review.json",
+      "bytes": 120068,
+      "sha256": "1c88d0ed99ddea16f4a3ab5cd28eaae97c0208942edd3b24f2d3ea5247a16e56"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/SOURCE_MANIFEST.json",
+      "bytes": 17074,
+      "sha256": "c5f953a6f0fe64b304a11c675d236733081d2528cbe6bae28a9aaf9e6f276526"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/CHAPTER_DOSSIER.json",
+      "bytes": 906848,
+      "sha256": "fcccbbc22050b151981b95ce0b57fa264867a44f70431d35a480f2336b3eb2dc"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/README.md",
+      "bytes": 5842,
+      "sha256": "9de377d0a79bf819739818ee5b8dd3da996325c40c57888c897c8cb7296b6e65"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/UEOT_PHYSICS.md",
+      "bytes": 579172,
+      "sha256": "868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/UEOT_PHYSICS.pdf",
+      "bytes": 1181847,
+      "sha256": "24b61ee3dd8d935afd47386460b352c40d4373e8328e2b4cfcfb8d8c460c60f0"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/UEOT_PHYSICS.tex",
+      "bytes": 683527,
+      "sha256": "2ff9b64cc69a065f2a2a1b96c836c4c329bb982b25f17e41d751aefa94284599"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/evidence/v3.4/local-release-gates.json",
+      "bytes": 6300,
+      "sha256": "a555d253fc7c2a4f2e71d1fbac87de22bbc35af0c5dafe32aff3244779517f51"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/evidence/v3.4/pdf-visual-review.json",
+      "bytes": 3118,
+      "sha256": "f62749263b9c4add8e7cd831848a01bcfbd06586f0b1a17ecf5bc07b1c0455dd"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/book/evidence/v3.4/pdf-collaborator-review.json",
+      "bytes": 16514,
+      "sha256": "37d5943b0bf9cefd284ea2c3d1159453fb7395d447eeeed626e7f7f544434713"
+    },
+    {
+      "path": "qm_v318_work/physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+      "bytes": 3387,
+      "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1"
+    }
+  ],
+  "scope_checks": [
+    {
+      "check": "WRITE_ALLOWLIST_AND_READ_ONLY_DEFAULT",
+      "result": "PASS",
+      "lines": [
+        34,
+        36,
+        596,
+        664
+      ],
+      "details": "Only SOURCE_MANIFEST.json, CHAPTER_DOSSIER.json, README.md and new evidence/v3.4/remote-publication.json are prepared. Mutations occur only under --apply after preflight; path containment and exact originals/protected input readbacks bracket four atomic replacements. Existing remote receipt refuses overwrite; partial write count is explicit."
+    },
+    {
+      "check": "ACTUAL_REMOTE_GATE_AND_SCHEMA_COMPATIBILITY",
+      "result": "PASS",
+      "lines": [
+        114,
+        156,
+        208,
+        256,
+        263,
+        337
+      ],
+      "details": "Requires root MAIN_VERIFIED integration, exact repository/full source and main commit/tree identities, distinct positive PR and main run IDs and both PASS statuses, UTC context, 338-path reconciliation, 12-list metadata checkpoint. B producer shapes and all C parser names/counts match these reads. No actual v31.8 remote acceptance is inferred by this static review."
+    },
+    {
+      "check": "ORIGINAL_UNIFIED_AND_FINAL_PUBLICATION_SEPARATE",
+      "result": "PASS",
+      "lines": [
+        157,
+        205,
+        383,
+        448,
+        536,
+        546
+      ],
+      "details": "Exact original a343 source set / 8799 jobs / manifest and verification bindings remain immutable. Final 054f publication set is separately bound to actual remote acceptance; only the fixed B documentation-word replacement is allowed, with exact before/after/current raw bytes and 88 unchanged source rows. No old local build is relabelled as the final raw CI input."
+    },
+    {
+      "check": "ACTUAL_CI_SCOPE_NOT_OVERSTATED",
+      "result": "PASS",
+      "lines": [
+        208,
+        256,
+        503,
+        515,
+        565,
+        580
+      ],
+      "details": "39 directly printed source hashes, 985 actual generic names/foundations, 100 test names and exact successful gate/file totals are required. The 193/71/5 witness kind split remains local-reference evidence; remote logs only emit 10 file totals summing to 269. Actual CI build jobs must be positive and are copied, not forced to 8799. Artifact ZIP contents and redirected demo JSON are explicitly unverified."
+    },
+    {
+      "check": "FROZEN_SOURCE_CORE_CANONICAL_AND_CHECKPOINT",
+      "result": "PASS",
+      "lines": [
+        177,
+        205,
+        258,
+        339
+      ],
+      "details": "Current final 89 source byte identities, 56 actual Core sources and three fixed canonical hashes are re-read. Book local gate has exact immutable hash; old book metadata is matched to both actual source-commit checkpoint and 338-file inventory by bytes/SHA256/Git blob. Root integration is the stated per-path remote tree evidence basis; helper does not claim to independently access GitHub."
+    },
+    {
+      "check": "NUMBERED_OBJECTS_ORIGINAL_ENTRIES_HISTORY_AND_VISUAL_SCOPE",
+      "result": "PASS",
+      "lines": [
+        285,
+        306,
+        519,
+        546,
+        550,
+        583
+      ],
+      "details": "Pinned pre-remote metadata contains 147 results, 11 original source entries, 63 chapters and 6 appendices. All chapters/appendices/entries, prior edition and retained source/evidence catalog objects are deep-equal. All existing book/evidence files are protected. Original local pending checkpoints are retained as historical; visual scope is inherited from actual fixed root/A receipts, with zero new image inspection and no all-229-page close-reading claim."
+    },
+    {
+      "check": "CURRENT_STATUS_AND_HASH_DIRECTION",
+      "result": "PASS",
+      "lines": [
+        341,
+        517,
+        550,
+        591
+      ],
+      "details": "Current aggregate and final publication identities become MAIN_VERIFIED only after actual gates. Original local current_code_identity is explicitly PASS_ACTUAL_LOCAL_UNIFIED_INPUT / NOT_THE_REMOTE_CI_INPUT. Metadata remembers pre-remote source-commit Git blobs. Fixed receipts -> updated source manifest -> updated dossier -> external terminal receipt; updated metadata points to terminal receipt by path only, excluding a self-hash cycle."
+    },
+    {
+      "check": "SAVED_PREFLIGHT_SCOPE",
+      "result": "PASS",
+      "details": "A saved plan command actually exited 0; missing actual context refusal exited 2 with zero repository writes. All four stdout/stderr byte bindings were independently checked. These are syntax/plan/refusal observations, not a successful actual-context dry run or remote acceptance."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "Actual remote context, CI receipts, source/main tree snapshots and subsequent real dry-run/apply remain necessary. This review does not execute prepare/main, reconstruct metadata outputs, accept any CI run, or publish anything.",
+    "Actual frozen source payload already has separate independent CLEAR; this review does not repeat science, payload decompression, or local proof gates."
+  ],
+  "new_lean_invocations": 0,
+  "new_runtime_tests": 0,
+  "new_pdf_or_visual_executions": 0,
+  "remote_actions": 0,
+  "repository_writes": 0,
+  "review_artifact_only_written_under_handoff": true
+}

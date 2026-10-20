@@ -1,10 +1,10 @@
 # UEOT-QM v31.8 / Kernel 1.8
 
-当前状态：**LOCAL_VERIFIED_REMOTE_PENDING**；[CURRENT](../status/CURRENT.json)记录分层身份。新增数学成果是完整密度分离/复层析、纯性反向/有类型纯化酉比较，以及共同因果控制器的逐动作记录预算。Python运行API继续使用既有精确实现，其全输入正确性仍未由这些数学定理自动证明。
+当前状态：**MAIN_VERIFIED**；[CURRENT](../status/CURRENT.json)记录分层身份。新增数学成果是完整密度分离/复层析、纯性反向/有类型纯化酉比较，以及共同因果控制器的逐动作记录预算。Python运行API继续使用既有精确实现，其全输入正确性仍未由这些数学定理自动证明。
 
 35 个公共模块、747 条显式 theorem、985 个唯一命名公理审计；本轮新增 101 条 theorem、130 个审计目标。十组具体见证另计 193 条 theorem、71 个定义、5 个缩写，共 269 个审计。 100运行方法与四演示实际PASS。[本轮报告](../UEOT_QM_KERNEL_v31.8.md)、[证明回执](evidence/v31.8/lean-verification.json)、[运行回执](evidence/v31.8/runtime-verification.json)。完整理论见[总著3.4](../book/UEOT_PHYSICS.md)第49–62章。
 
-实际8799-job统一本地执行仍绑定原89源SHA256 `a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e`。发布候选的89源SHA256为 `054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1`；仅一处文档注释把英文词 admit 改为 have，数学代码不变，未重跑本地编译。两份原始源码清单及追加的发布身份桥分别保留；当前发布原字节还须接受真实远端CI。 [发布身份桥](evidence/v31.8/publication-source-reconciliation.json)保留真实执行边界。
+实际8799-job统一本地执行仍绑定原89源SHA256 `a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e`。实际远端受验发布输入的89源SHA256为 `054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1`；仅一处文档注释把英文词 admit 改为 have，数学代码不变，未重跑本地编译。两份原始源码清单及追加的发布身份桥分别保留；最终发布原字节已通过实际PR运行 39420751354 与独立main运行 39424068985。 [发布身份桥](evidence/v31.8/publication-source-reconciliation.json)保留真实执行边界。
 
 ## 立即运行
 
@@ -213,7 +213,7 @@ Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基
 
 ## 回执与版本身份
 
-本版在 `evidence/v31.8/` 保存实际源码、运行、演示、Lean与实例回执。[本地证明](evidence/v31.8/lean-verification.json)、[实例验收](evidence/v31.8/lean-exports/verification.json)和[新台账](../status/CLAIM_LEDGER_v31.8.json)记录被测字节与开放义务。v31.7及更早证据保留原字节、原数学范围和各自真实集成身份。v31.8远端尚待实际PR/main闭环。
+本版在 `evidence/v31.8/` 保存实际源码、运行、演示、Lean与实例回执。[本地证明](evidence/v31.8/lean-verification.json)、[实例验收](evidence/v31.8/lean-exports/verification.json)和[新台账](../status/CLAIM_LEDGER_v31.8.json)记录被测字节与开放义务。v31.7及更早证据保留原字节、原数学范围和各自真实集成身份。v31.8实际源码PR、独立main CI及发布字节回读均已通过。
 
 v31.1 的回执继续可读，保持其原源码身份：
 
@@ -224,3 +224,17 @@ v31.1 的回执继续可读，保持其原源码身份：
 
 运行时测试、机器证明、理论桥和物理适用性按独立状态登记。
 
+## 实际远端验收与元数据身份
+
+[PR #350](https://github.com/MurphyHoops/UEOT/pull/350)及[实际整合回执](evidence/v31.8/integration-verification.json)记录本版唯一科学源码发布、两次独立CI和逐项Git blob核对。
+
+| 实际身份 | 值 |
+|---|---|
+| 源码提交 / tree | `d9a1858c86ca82e08ae862389b51c1ea76690c24` / `6717f47ff1a062f04cb0ba54e01ebaeddac5770a` |
+| PR CI | [39420751354](https://github.com/MurphyHoops/UEOT/actions/runs/39420751354)，PASS；实际 8799 build jobs |
+| 受验主线提交 / tree | `97c7b29c1aec470be58ca34b552e9d56ad06c197` / `2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d` |
+| 独立 main push CI | [39424068985](https://github.com/MurphyHoops/UEOT/actions/runs/39424068985)，PASS；实际 8799 build jobs |
+
+最终89项发布输入、56项实际递归Core源码、三份规范正文和全部338项冻结发布载荷均与实际源码及受验主线逐项一致。原8799 jobs仍只绑定原a343…本地输入，实际CI绑定054f…发布输入；单词注释桥及原验收回执保留原字节。CI解码日志逐项核对39条源码hash、985个公共审计名、100个运行测试名，并核对证书/正反控的执行摘要及十组见证269项审计总数。见证193/71/5的种类分拆来自已绑定本地源码和回执；未下载artifact ZIP，不声称检查其内部逐名或演示JSON。
+
+当前证据与导航元数据在后续独立提交中记录这些真实身份；该元数据提交自身不冒充上述任何CI受验提交。原12份本地元数据可按整合回执内的科学源码提交及Git blob精确恢复，旧本地待远端措辞按该历史检查点理解。此次未新增科学执行、实验、前提外结论或下一版本合同。

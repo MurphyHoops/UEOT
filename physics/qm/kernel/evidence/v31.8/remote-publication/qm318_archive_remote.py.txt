@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+"""Archive actual v31.8 publication receipts without altering old evidence.
+
+This is metadata work only. It writes a new evidence directory, preserving
+every source byte under a .txt suffix for helper programs, and one external
+execution receipt. The archive deliberately precedes its own metadata commit.
+"""
+from pathlib import Path
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def encode(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode()
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, required=True)
+    parser.add_argument('--handoff', type=Path, required=True)
+    parser.add_argument('--selection', type=Path, required=True)
+    args = parser.parse_args()
+    root, handoff = args.root.resolve(), args.handoff.resolve()
+    target = root / 'physics/qm/kernel/evidence/v31.8/remote-publication'
+    execution = handoff / 'qm318_archive_remote_actual.json'
+    assert not target.exists() and not execution.exists()
+    assert not handoff.is_relative_to(root)
+    selection_raw = args.selection.read_bytes()
+    selection = json.loads(selection_raw)
+    names = selection['handoff_files']
+    assert len(names) == len(set(names)) and all(Path(n).name == n for n in names)
+    inputs = {handoff / name: (handoff / name).read_bytes() for name in names}
+    inputs[args.selection.resolve()] = selection_raw
+    inputs[Path(__file__).resolve()] = Path(__file__).resolve().read_bytes()
+    context = json.loads(inputs[handoff / 'qm318_release_context.json'])
+    root_apply = json.loads(inputs[handoff / 'qm318_root_remote_apply_001.json'])
+    assert root_apply['status'] == 'MAIN_VERIFIED_METADATA_APPLIED'
+    assert root_apply['completed_repository_writes'] == 13
+    assert root_apply['context_sha256'] == digest(inputs[handoff / 'qm318_release_context.json'])
+    for record in root_apply['updated']:
+        raw = (root / record['path']).read_bytes()
+        assert len(raw) == record['bytes'] and digest(raw) == record['sha256']
+        inputs[root / record['path']] = raw
+    book_path = root / 'physics/qm/book/evidence/v3.4/remote-publication.json'
+    book_raw = book_path.read_bytes()
+    book = json.loads(book_raw)
+    assert book['status'] == 'MAIN_VERIFIED' and book['metadata_only'] is True
+    assert book['context_sha256'] == root_apply['context_sha256']
+    inputs[book_path] = book_raw
+    for record in book['updated_metadata']:
+        raw = (root / record['path']).read_bytes()
+        assert len(raw) == record['bytes'] and digest(raw) == record['sha256']
+        inputs[root / record['path']] = raw
+    for name in ('C_ci_v318_pr_39420751354_review.json',
+                 'C_ci_v318_main_39424068985_review.json',
+                 'C_ci_v318_actual_main_tree_review.json'):
+        assert json.loads(inputs[handoff / name])['status'] == 'CLEAR'
+    records, outputs = [], {}
+    for name in names:
+        raw = inputs[handoff / name]
+        archived_name = name + '.txt' if name.endswith(('.py', '.lean', '.sh')) else name
+        assert not archived_name.endswith(('.py', '.lean', '.sh'))
+        assert archived_name not in outputs
+        outputs[archived_name] = raw
+        records.append({'original_handoff_name': name, 'archive_name': archived_name,
+                        'sha256': digest(raw), 'bytes': len(raw)})
+    readme = '''# v31.8 真实远端验收归档
+
+本目录在源码 PR #350 和独立 main CI 均实际通过后生成。
+科学源码提交是 `d9a1858c86ca82e08ae862389b51c1ea76690c24`，
+PR 运行是 `39420751354`；受验主线提交是
+`97c7b29c1aec470be58ca34b552e9d56ad06c197`，独立主线运行是
+`39424068985`。两个完整解码日志、run/jobs JSON 与核验回执位于相邻 `../ci/`。
+
+这里保留实际 Git API 回执、精确树快照、338 文件冻结清单、独立审查、
+元数据 helper 的真实修正与执行记录。创建源码时的树和受验 main 全树不同：
+main 完整保留 Core #349/#351 累计45项并发改动。受验 main 之后又出现
+哲学与数学著作 #352 的84项差异；另有实际快照记录，它没有改动两个QM目录，
+也不替代上述CI的受验提交身份。
+
+最初一次源码 merge 调用被工具目录刷新拒绝，未执行；另存的 retry 回执才是
+实际合并成功的回执。元数据 dry-run 曾因路径字符串排序与既有 Path 分量排序
+不同而安全拒绝，实际输出为零写入；原文件、诊断、仅修排序比较的补丁及后续
+真实执行分别保留。原受验清单顺序、哈希和科学源码未因此改写。
+
+89项发布源码使用054f…身份；原本地8799 jobs验收仍使用a343…身份。
+两者只有已保留证据的一处英文注释单词差异。实际PR/main日志直接核对39条源码
+hash、985个公共审计名、100个测试名，并核对六证书、正反控和十组见证269项
+审计摘要。见证193定理/71定义/5缩写的分拆来自已绑定的本地证据；未下载
+artifact ZIP，也未声称检查其内部内容或远端被重定向的演示JSON。
+
+12份当前导航/状态元数据的原始字节可通过整合回执中的源码提交及Git blob恢复。
+旧本地验收回执、正式书的三份canonical正文、旧54项主张对象和既有编号结果
+均保留。后续元数据提交只发布这些已经完成的实际验收身份，不冒充另一次
+CI受验源码提交。本目录生成时，承载本目录的元数据提交尚未创建；不会在文件
+内部猜测自身提交号、PR号或合并号，因此不产生自哈希循环。
+
+`.py.txt` 等文件是原 helper 的逐字节归档，不是kernel可执行科学输入。
+需要复现元数据检查时，应把它们复制到独立handoff目录并按实际环境调整运行
+参数；原证据中的绝对路径保留为实际执行历史。`archive-manifest.json`列出
+每份原文件身份，manifest本身不包含自身哈希。没有新增实验或前提外科学结论。
+'''
+    outputs['README.md'] = readme.encode()
+    for path, raw in inputs.items():
+        assert path.read_bytes() == raw, str(path)
+    manifest = {'schema': 'ueot_qm.remote_publication_archive.v31.8',
+                'status': 'ACTUAL_MAIN_VERIFIED_METADATA_ARCHIVE_PREPARED',
+                'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+                'actual_acceptance_identity': {k: context[k] for k in (
+                    'source_commit', 'source_tree', 'tested_main_commit',
+                    'tested_main_tree', 'pull_request', 'pr_run', 'main_run')},
+                'context_sha256': root_apply['context_sha256'],
+                'selection_sha256': digest(selection_raw),
+                'archiver_sha256': digest(inputs[Path(__file__).resolve()]),
+                'archived_original_count': len(records), 'files': records,
+                'readme': {'path': 'README.md', 'sha256': digest(outputs['README.md']),
+                           'bytes': len(outputs['README.md'])},
+                'old_evidence_rewritten': False, 'new_scientific_execution': False,
+                'metadata_commit_already_published': False,
+                'artifact_zip_downloaded': False, 'artifact_zip_contents_verified': False}
+    outputs['archive-manifest.json'] = encode(manifest)
+    target.mkdir()
+    for name, raw in outputs.items():
+        with (target / name).open('xb') as stream:
+            stream.write(raw)
+    for name, raw in outputs.items():
+        assert (target / name).read_bytes() == raw
+    result = {'schema': 'ueot_qm.remote_archive_actual_execution.v31.8',
+              'status': 'PASS_METADATA_ARCHIVED', 'new_archive_files': len(outputs),
+              'total_bytes': sum(map(len, outputs.values())),
+              'archive_manifest_sha256': digest(outputs['archive-manifest.json']),
+              'repository_targets': [str((target / n).relative_to(root)) for n in outputs],
+              'new_scientific_execution': False, 'canonical_book_rewritten': False}
+    with execution.open('xb') as stream:
+        stream.write(encode(result))
+    print(json.dumps({k: v for k, v in result.items() if k != 'repository_targets'}, indent=2))
+
+
+if __name__ == '__main__':
+    main()

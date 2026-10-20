@@ -1,0 +1,568 @@
+{
+  "schema": "ueot_qm.C_concurrent_main_union_review.v31.8",
+  "status": "EXPECTED_MAIN_UNION_READY",
+  "started_at_utc": "2026-10-20T12:42:10.393455+00:00",
+  "compiler_invocations": 0,
+  "runtime_test_invocations": 0,
+  "remote_calls": 0,
+  "payload_gate_reexecuted": false,
+  "CI_claimed": false,
+  "actual_main_checked": false,
+  "review_helper_sha256": "c6be77128e09a24a358700fa6b7e608cd6bb5a58961fc75ca9b5417cea00dc85",
+  "checks": {
+    "explicit_actual_concurrent_commit": true,
+    "main_snapshot_commit_pair": true,
+    "prior_actual_source_tree_clear": true,
+    "prior_source_review_input_baseline": true,
+    "prior_source_review_input_inventory": true,
+    "prior_source_review_input_publication_manifest": true,
+    "prior_source_review_input_core": true,
+    "prior_source_review_input_tree_algorithm": true,
+    "prior_source_review_input_actual_tree": true,
+    "actual_concurrent_commit_binding": true,
+    "base_complete_unique_tree": true,
+    "base_all_nested_tree_hashes": true,
+    "source_complete_unique_tree": true,
+    "source_all_nested_tree_hashes": true,
+    "concurrent_complete_unique_tree": true,
+    "concurrent_all_nested_tree_hashes": true,
+    "source_delta_is_exact_frozen338_inventory": true,
+    "no_unresolved_concurrent_qm_path_conflict": true,
+    "concurrent_delta_preserves89science56core3canonical": true,
+    "computed_exact_union_reconstructs": true,
+    "every_frozen_source_and_concurrent_delta_preserved": true,
+    "all_other_base_leaves_preserved": true,
+    "computed_union_final_source_core_canonical": true,
+    "all_reviewed_inputs_stable": true
+  },
+  "blockers": [],
+  "conflicting_paths": [],
+  "overlapping_paths": [],
+  "source_tree_sha1": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+  "baseline_tree_sha1": "c527f8481878d1e0b839e93695c0d4ee5edf09f4",
+  "concurrent_commit": "0e5f1d809636fd238c87ec6d0fa94e3d720d0489",
+  "concurrent_tree_sha1": "8cdf0d977ef49bb74f924ed2cecc0c030b4bbd9a",
+  "expected_main_tree_sha1": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+  "expected_main_leaves": 2457,
+  "expected_main_entries": 2652,
+  "frozen_source_delta_files": 338,
+  "concurrent_delta_files": 45,
+  "concurrent_delta": [
+    {
+      "path": ".github/workflows/ueot-core-compression.yml",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "97ee17b5295b52be891c69f624e8d0a4624c14f0"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "205e49f8f39197db621d721ad781075de8d022e4"
+      }
+    },
+    {
+      "path": ".github/workflows/ueot-core-lean.yml",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bb325213a4966f8597c722d45e85d14787d4d86d"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9f416d854569c760e31b0cc3a772d87e28f2dd12"
+      }
+    },
+    {
+      "path": "docs/REPOSITORY_BRANCH_GOVERNANCE.md",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6fc6504ed9b1e9cb04902901307fe73465f2769d"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "14e5c37b35ad479474d29c08f9762d9828ec10d3"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "257d54f81e3161a3a2b86273ff3f503819266004"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "804f223383a5759dbe3bfeaf730d7977a5afd2d9"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bbacdd3c7c9ce1259e120749edcaa1aeb530aa14"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8e4fedabeed359cb60ea093e4a585e041baf7535"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7f8e68c5bf71695b64a4cc0a345111520493a382"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f41a3a12ac54342143ebf391bb84c8b6d60a997b"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5b309b32c8f34729a6a3d8b87284972344502618"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e8b24eb44e037ecb9a7b3bead559abf51a8fbdbe"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9c9fa8c39fe1f13bb0d5976d21c57ff602d1191b"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1aabcba33747dd7215079704b089e1bf639c81ec"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2ea122047c7229e96c1b2fda43e8f9ceab66a206"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2572b932010fb196927f53846dfbc6b5910eece5"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1036cc4c9f6eafd12b9ea8bafdfd6bfe0eba8000"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "65e4604c6aa5bfa9b7c7d18feedb0cda505cc4a2"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0f493772d38302336e21f78b769d275c20040393"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "053208bad171a68b6ea7ca5de1f68f7e75c61127"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bd419a186e4fc2cef515cab911ca43d8f4b2d902"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "eb007cdb478bab2784403e24b31e618060f79f74"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0bdeada9fbcdbbb7a3d86b4eefd54946ba88e826"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1cbf2c3096d33b6d5b70b4d6f1d7d06f913f0c9b"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "81ff5e901a2a8655969070b6dd845f2faa47e79e"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f7c00f7277c0e2873a9fd31612844072da6a299d"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "48abb934e88e429a07b01ad0acb2c889fab45669"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_NATIVE_V1.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "929fc2adc5f2fb3dd6b6b4ba0bec11d8f7fda36d"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "cb855dbee7a8c1d7c4e5a02d078a6654ff5cf82c"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "93b69867f511b9394d26d224b4f916591db482ff"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a1fac1d02427015805cd73bf821589d5d31f8eaf"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "920b9188e3f9ac79093e4ea8c6f485d7cf5a2663"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "64bfa92a2ae28e1d6030d078a40102ab1af41cf3"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2a3f1c8856034bec649d361a3fd61e431afdcaca"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/SUPPORT_VIABILITY_CLOSURE_V1.md",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "27868ee8a386bc7708452eef8b58d76bf41fd743"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "base": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9c119ba5835f63ba318934e964b219326f53237d"
+      },
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ebc0b843b01d4e919f78f1cadfb343c34d405288"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/CANDIDATE_REUSE_TESTS_V2.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b1821ca63718867058510c4a18552e5db98943b7"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/CANDIDATE_REUSE_TESTS_V2.log",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "67bdd2785580b442c9409ed045983fe7db902747"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/CONSUMER_CANDIDATE_MANIFEST_V3.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "edfed60146ea378e85cba72d78f55c19684a2993"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/CONSUMER_INTEGRATION_REVIEW_V1.md",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5acc7dea3c10f08286fe622d03d585d8421e6817"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/EARLIER_BUILD_AND_NATIVE_ATTEMPTS_V1.tar.gz",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "567732f699b8589b872b52afae6271fb43e0d021"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/EVIDENCE_MANIFEST.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "323ff505381c820aee8ee7a93cf36ffb51c31d4d"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/INDEPENDENT_NATIVE_PROOF_REVIEW_V2.md",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d58473e269cd84a5e05aa96deb2009e3d57e5978"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/LOCAL_NATIVE_AND_BUILD_EVIDENCE_V2.tar.gz",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2fb4f723ac81599d0404b33ddc711f7c1b86934c"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/PRODUCTION_BUILD_V3.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f576b7af5766b86f054bbbc96cb02f11769ff92f"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/PRODUCTION_SOURCE_MANIFEST_V3.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "62fa454ff6ce15b84c8b476aaaaeb8426a27d518"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/TYPED_REUSE_REVIEW_V2.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ab180eb44eff34168ea107b54ddd110e63e2c1c1"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/TYPED_REUSE_REVIEW_V2.md",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5d2e21f540af3dab49da3f0ed8b4c76242171243"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/production-consumer-check-v1/diff.log",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/production-consumer-check-v1/proof-escape-scan.log",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/production-consumer-check-v1/reuse_status.log",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "643fc8bedf95600c76919b54a0dd7631d786f789"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/production-consumer-check-v1/reuse_tests.log",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8d75d6f1640c935fadcba15c5c93b7b148b89250"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/production-consumer-check-v1/status.json",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "87f80890e47cc9d4fb43620eb85b713e49e1cccd"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/production-consumer-check-v1/unified_contract.log",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "373048c62732eb78d37da45658985f03d1b0ff2f"
+      }
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/support_viability/production-consumer-check-v1/unified_contract_tests.log",
+      "base": null,
+      "concurrent": {
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ee352db9a3aa1f57afea18e05adb721c59830b69"
+      }
+    }
+  ],
+  "unlisted_baseline_leaves_preserved": 2074,
+  "original_source_clear": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_remote_tree_review.json",
+    "sha256": "c6f041796a57f8d29fad3df5125121aa37fa2a5d2b6bf60c0cef0dcb4d451893"
+  },
+  "final_publication_source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+  "recursive_Core_unchanged": 56,
+  "canonical_files": 3,
+  "source_and_expected_main_tree_identical": false,
+  "actual_main_acceptance_claimed": false,
+  "scope": [
+    "Prior actual source-tree CLEAR is reused, including full frozen338payload and89source/56Core/3canonical identities. No payload content decoding or scientific execution is repeated.",
+    "The supplied actual concurrent main is compared with the original release baseline. Its entire delta is merged with the frozen QM delta only when no unresolved same-path conflict exists.",
+    "Different whole-tree identity is expected when independent Core/governance work advances. Actual main acceptance requires every leaf and every nested tree to equal the computed union.",
+    "Expected-main preview is a mathematical Git-tree computation, not an actual commit, merge or CI run. Download provenance is supplied by root actual retrieval."
+  ],
+  "finished_at_utc": "2026-10-20T12:42:16.920327+00:00",
+  "inputs": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_remote_tree_review.json",
+      "sha256": "c6f041796a57f8d29fad3df5125121aa37fa2a5d2b6bf60c0cef0dcb4d451893",
+      "bytes": 23835
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_baseline_remote_tree.json",
+      "sha256": "f03d281259820e4db31ff8c6f0133b07dcb1dceaab80b0c7762d1c5f1c776d1f",
+      "bytes": 766827
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_publication_inventory.json",
+      "sha256": "b7fd0b660a112f6136f748f952be0773e5469cd04618c9a7b9bf8bff40c874e0",
+      "bytes": 151153
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+      "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6",
+      "bytes": 16700
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/core-import-closure.json",
+      "sha256": "1c84e46286db58165ec909b8b5410e502db8ba8c0f10befc37330c9969c7a826",
+      "bytes": 26953
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_payload_audit.py",
+      "sha256": "5cd3c71b921bca8b26c79d6348d9e1b2c09c11e3c87ad18654496666529d2526",
+      "bytes": 10876
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_remote_source_tree.json",
+      "sha256": "56a992b113bdd23117787e38a837de6857bbd699cc77e8599677024e6865c144",
+      "bytes": 881315
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_concurrent_main_002_tree.json",
+      "sha256": "f571e78f8e4cab7f811a2f11ee37b2e75dd2b044bc5ea70e7573ee615d921401",
+      "bytes": 779906
+    }
+  ]
+}

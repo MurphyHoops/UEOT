@@ -2,7 +2,7 @@
 
 This package implements a finite complex quantum sector and typed UEOT Core bridges with pinned Lean **4.33.1** and Mathlib **0df444a360eaa60ab8c11dca51a86af692955474**.
 
-**Current status: LOCAL_VERIFIED_REMOTE_PENDING.** Actual unified compilation passed: 35 modules, 747 explicit theorems and 985 unique named axiom reports, exit 0, 8799 jobs. Ten witness files passed 269 separate reports (193 theorems, 71 definitions, 5 abbreviations). Six exact certificates/42 audits, four paired corrupt-data controls, 100 runtime methods and four demos passed. The actual 89-input source SHA256 is a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. [Proof receipt](../../physics/qm/kernel/evidence/v31.8/lean-verification.json), [source manifest](../../physics/qm/kernel/evidence/v31.8/source-manifest.json) and [CURRENT](../../physics/qm/status/CURRENT.json) distinguish local acceptance from pending v31.8 remote source/main verification. The current publication raw-input SHA256 is 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1: one English documentation word was corrected after the actual unified build. The [additive publication bridge](../../physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json) proves the exact comment-only difference; it does not relabel the 8799-job build or claim another local compiler execution.
+**Current status: MAIN_VERIFIED.** Actual unified compilation passed: 35 modules, 747 explicit theorems and 985 unique named axiom reports, exit 0, 8799 jobs. Ten witness files passed 269 separate reports (193 theorems, 71 definitions, 5 abbreviations). Six exact certificates/42 audits, four paired corrupt-data controls, 100 runtime methods and four demos passed. The actual 89-input source SHA256 is a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. [Proof receipt](../../physics/qm/kernel/evidence/v31.8/lean-verification.json), [source manifest](../../physics/qm/kernel/evidence/v31.8/source-manifest.json) and [CURRENT](../../physics/qm/status/CURRENT.json) distinguish the original local acceptance from actual successful v31.8 source/main CI and the later metadata publication identity. The current publication raw-input SHA256 is 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1: one English documentation word was corrected after the actual unified build. The [additive publication bridge](../../physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json) proves the exact comment-only difference; it does not relabel the 8799-job build or claim another local compiler execution.
 
 The continuous companion [《UEOT物理学》3.4](../../physics/qm/book/UEOT_PHYSICS.md) contains chapters 0–62 and appendices A–F, 147 numbered results and an actual 229-page [PDF](../../physics/qm/book/UEOT_PHYSICS.pdf). Full exposition and physical premises exceed the limited declarations formally checked here.
 
@@ -396,3 +396,18 @@ The [runtime manual](../../physics/qm/kernel/README.md) documents the export API
 The exporter additionally limits input literals to 4096 bits, padded scalar storage to 65536 entries and source size to 8 MiB. The separate representation checker retains its own contract. These bounds constrain evidence construction, not future finite-word length; no uniform compilation-time guarantee is asserted.
 
 The complete finite state/effect/composite/discard models, complex purification existence, full convex-purity characterization, same-carrier auxiliary unitary comparison and universal complex local tomography now have their own explicit proofs. Actual joint classical records and quantum memory are retained, and the shared fixed-depth causal controller has a derived per-action budget. These close the stated finite responsibilities; Core-to-complex selection, minimal auxiliary dimensions, stopping-tree padding, coherent controllers, external environments and norm identification remain open. The specified rational noncommutative Doob model already has exact iterates, a unique invariant state and conditional distance-to-fixed-state rates; general spectral existence/dominance, full Cesàro projections and infinite conditioning remain separate tasks. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).
+
+## 实际远端验收与元数据身份
+
+[PR #350](https://github.com/MurphyHoops/UEOT/pull/350)及[实际整合回执](../../physics/qm/kernel/evidence/v31.8/integration-verification.json)记录本版唯一科学源码发布、两次独立CI和逐项Git blob核对。
+
+| 实际身份 | 值 |
+|---|---|
+| 源码提交 / tree | `d9a1858c86ca82e08ae862389b51c1ea76690c24` / `6717f47ff1a062f04cb0ba54e01ebaeddac5770a` |
+| PR CI | [39420751354](https://github.com/MurphyHoops/UEOT/actions/runs/39420751354)，PASS；实际 8799 build jobs |
+| 受验主线提交 / tree | `97c7b29c1aec470be58ca34b552e9d56ad06c197` / `2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d` |
+| 独立 main push CI | [39424068985](https://github.com/MurphyHoops/UEOT/actions/runs/39424068985)，PASS；实际 8799 build jobs |
+
+最终89项发布输入、56项实际递归Core源码、三份规范正文和全部338项冻结发布载荷均与实际源码及受验主线逐项一致。原8799 jobs仍只绑定原a343…本地输入，实际CI绑定054f…发布输入；单词注释桥及原验收回执保留原字节。CI解码日志逐项核对39条源码hash、985个公共审计名、100个运行测试名，并核对证书/正反控的执行摘要及十组见证269项审计总数。见证193/71/5的种类分拆来自已绑定本地源码和回执；未下载artifact ZIP，不声称检查其内部逐名或演示JSON。
+
+当前证据与导航元数据在后续独立提交中记录这些真实身份；该元数据提交自身不冒充上述任何CI受验提交。原12份本地元数据可按整合回执内的科学源码提交及Git blob精确恢复，旧本地待远端措辞按该历史检查点理解。此次未新增科学执行、实验、前提外结论或下一版本合同。

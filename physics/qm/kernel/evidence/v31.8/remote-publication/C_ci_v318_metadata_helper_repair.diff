@@ -1,0 +1,75 @@
+--- reviewed_initial91d321
++++ reviewed_repaired3ed577
+@@ -17,6 +17,7 @@
+ UNIFIED_SET = 'a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e'
+ SOURCE_TREE = '6717f47ff1a062f04cb0ba54e01ebaeddac5770a'
+ SOURCE_INVENTORY_SHA = 'b7fd0b660a112f6136f748f952be0773e5469cd04618c9a7b9bf8bff40c874e0'
++ROOT_FINALIZER_SHA = 'ae2dab641f77055a45f301f6a9d2883eeaa7c0118ab8d7f83949353cfd4c51ed'
+ CANONICAL = {
+     'UEOT_PHYSICS.md': '868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a',
+     'UEOT_PHYSICS.pdf': '24b61ee3dd8d935afd47386460b352c40d4373e8328e2b4cfcfb8d8c460c60f0',
+@@ -172,12 +173,19 @@
+         raw = read(root / p)
+         require(digest(raw) == expected and blob(raw) == base[p]['sha'] and p not in candidates,
+                 'Canonical book changed: ' + p)
+-    # Every unlisted actual-main leaf is the base of the metadata tree. This
+-    # includes the six independently reviewed concurrent Core #349 edits.
+-    concurrent = json.loads(read(handoff / 'qm318_concurrent_main_review.json'))
++    # Bind the cumulative concurrent changes to the actual first merge parent.
++    # Earlier six-path #349 evidence remains an unchanged historical checkpoint.
++    concurrent = json.loads(read(handoff / context['concurrent_review_path']))
+     require(concurrent['status'] == 'PASS_DISJOINT_CONCURRENT_CHANGES'
+-            and concurrent['changed_leaf_count'] == len(concurrent['changes']) == 6,
++            and concurrent['changed_leaf_count'] == len(concurrent['changes']) > 0
++            and concurrent['authored_baseline_commit'] == source_inventory['baseline_commit']
++            and concurrent['authored_baseline_tree'] == source_inventory['baseline_tree']
++            and concurrent['concurrent_main_commit'] == context['main_parent_commit']
++            and concurrent['concurrent_main_tree'] == context['main_parent_tree']
++            and concurrent['release_source_tree_unchanged'] == SOURCE_TREE,
+             'Missing actual concurrent-main review')
++    require(len({item['path'] for item in concurrent['changes']}) == len(concurrent['changes']),
++            'Duplicate concurrent-change paths')
+     for item in concurrent['changes']:
+         p, expected = item['path'], item['after']
+         require(expected is not None and base[p]['sha'] == expected['sha'] and base[p]['mode'] == expected['mode']
+@@ -191,6 +199,29 @@
+     book_receipt = json.loads(read(root / 'physics/qm/book/evidence/v3.4/remote-publication.json'))
+     require(integration['status'] == book_receipt['status'] == 'MAIN_VERIFIED'
+             and book_receipt['metadata_only'] is True, 'Root/book finalization not complete')
++    root_apply = json.loads(read(handoff / context['root_metadata_apply_path']))
++    require(root_apply['schema'] == 'ueot_qm.remote_metadata_result.v31.8'
++            and root_apply['status'] == 'MAIN_VERIFIED_METADATA_APPLIED'
++            and root_apply['completed_repository_writes'] == 13
++            and root_apply['context_sha256'] == digest(context_raw)
++            and root_apply['helper_sha256'] == ROOT_FINALIZER_SHA
++            and digest(read(handoff / 'qm318_finalize_remote.py')) == ROOT_FINALIZER_SHA
++            and root_apply['source_count'] == 89 and root_apply['source_set_sha256'] == PUBLICATION_SET,
++            'Missing actual root metadata application identity')
++    for key in ('source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree',
++                'pull_request', 'pr_run', 'main_run'):
++        require(root_apply['actual_acceptance_identity'][key] == context[key],
++                'Root metadata application identity mismatch: ' + key)
++    book_current = {'physics/qm/book/README.md', 'physics/qm/book/SOURCE_MANIFEST.json',
++                    'physics/qm/book/CHAPTER_DOSSIER.json'}
++    root_outputs = (existing - book_current) | (new_named - {'physics/qm/book/evidence/v3.4/remote-publication.json'})
++    require(len(root_apply['updated']) == len(root_outputs) == 13
++            and {item['path'] for item in root_apply['updated']} == root_outputs,
++            'Root metadata application output binding incomplete')
++    for item in root_apply['updated']:
++        raw = read(root / item['path'])
++        require(len(raw) == item['bytes'] and digest(raw) == item['sha256'],
++                'Root metadata changed after actual application: ' + item['path'])
+     identity = book_receipt['actual_acceptance_identity']
+     for key in ('repository', 'source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree',
+                 'pull_request', 'pr_run', 'main_run', 'pr_status', 'main_status', 'source_count', 'source_set_sha256'):
+@@ -245,7 +276,9 @@
+                  'file_count': len(records), 'modified_count': len(existing), 'added_count': len(records) - len(existing),
+                  'deletions': 0, 'total_bytes': sum(x['bytes'] for x in records), 'payload_sha256': digest(payload_bytes),
+                  'accepted_sources_unchanged': 89, 'core_imports_unchanged': 56, 'canonical_unchanged': 3,
+-                 'old_evidence_unchanged': len(old_evidence), 'concurrent_Core_files_preserved': 6,
++                 'old_evidence_unchanged': len(old_evidence),
++                 'concurrent_Core_files_preserved': concurrent['changed_leaf_count'],
++                 'root_applied_output_bindings_unchanged': len(root_outputs),
+                  'original_metadata_checkpoints': 12, 'finalized_metadata_bindings_unchanged': True,
+                  'unmodified_base_leaves': len(base) - len(existing), 'files': records,
+                  'scope': 'Only current metadata and new actual receipts, on the independently tested main tree. All unlisted main leaves and concurrent Core changes are preserved; this follow-up is not another scientific execution.'}

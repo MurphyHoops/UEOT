@@ -1,0 +1,159 @@
+{
+  "schema": "ueot_physics.actual_remote_book_metadata_review.v3.4",
+  "reviewer": "A",
+  "started_at_utc": "2026-10-20T13:06:58.918308+00:00",
+  "scope": "Actual readback of the four authorized book remote metadata outputs; no helper rerun, scientific test, PDF build, visual inspection or remote action.",
+  "repository_writes_by_review": 0,
+  "status": "CLEAR_ACTUAL_REMOTE_BOOK_METADATA_READBACK",
+  "checks": {
+    "four_actual_outputs_equal_dryrun_and_apply": true,
+    "one_way_fixed_receipts_to_manifest_to_dossier_to_terminal_receipt": true,
+    "all147_numbered_objects_and_all69_chapter_appendix_objects_unchanged": true,
+    "original11_source_entries_unchanged": true,
+    "historical_catalogs_unchanged": {
+      "source_keys": 19,
+      "evidence_keys": 93
+    },
+    "old_local_metadata_resolves_at_actual_source_commit": true,
+    "three_canonical_files_unchanged": [
+      {
+        "path": "physics/qm/book/UEOT_PHYSICS.md",
+        "sha256": "868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a",
+        "bytes": 579172
+      },
+      {
+        "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+        "sha256": "24b61ee3dd8d935afd47386460b352c40d4373e8328e2b4cfcfb8d8c460c60f0",
+        "bytes": 1181847
+      },
+      {
+        "path": "physics/qm/book/UEOT_PHYSICS.tex",
+        "sha256": "2ff9b64cc69a065f2a2a1b96c836c4c329bb982b25f17e41d751aefa94284599",
+        "bytes": 683527
+      }
+    ],
+    "all160_immutable_book_evidence_files_unchanged": true,
+    "old_local_gate_pending_status_preserved": true,
+    "original_unified_a343_8799_and_remote_publication_054f_separate": true,
+    "actual_pr350_prci39420751354_mainci39424068985_identities_match": true,
+    "whole_tree_identity_false_preserved": true,
+    "current_MAIN_VERIFIED_and_prior_local_checkpoint_separate": true,
+    "actual_visual_and_CI_scope_unchanged_no_new_execution_claims": true
+  },
+  "actual_outputs": [
+    {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "1ca1ebd1a0fe9f65849f36673bcb98e5759df7a4bbc93240e61575a7531f6ffd",
+      "bytes": 24854
+    },
+    {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "f01f6744e8e12c98804cd2efbe4b49b52b1e51927eb13778c51c00deea3738ce",
+      "bytes": 943039
+    },
+    {
+      "path": "physics/qm/book/README.md",
+      "sha256": "35fad0bd803701f70dda26956a32ea16c0c1c19b1e4256bdec5aa5123dd69779",
+      "bytes": 8039
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.4/remote-publication.json",
+      "sha256": "784b618d79ef77920bbc89048a83082d5ffcc95c914d94f47ecc45baf9da2688",
+      "bytes": 51099
+    }
+  ],
+  "actual_acceptance_identity": {
+    "repository": "MurphyHoops/UEOT",
+    "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+    "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+    "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+    "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+    "pull_request": 350,
+    "pr_run": 39420751354,
+    "main_run": 39424068985,
+    "pr_status": "PASS",
+    "main_status": "PASS",
+    "source_count": 89,
+    "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+    "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+    "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+    "source_and_main_tree_identical": false
+  },
+  "numbered_results": 147,
+  "original_source_entries": 11,
+  "immutable_book_evidence_files": 160,
+  "canonical_files": [
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.md",
+      "sha256": "868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a",
+      "bytes": 579172
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+      "sha256": "24b61ee3dd8d935afd47386460b352c40d4373e8328e2b4cfcfb8d8c460c60f0",
+      "bytes": 1181847
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.tex",
+      "sha256": "2ff9b64cc69a065f2a2a1b96c836c4c329bb982b25f17e41d751aefa94284599",
+      "bytes": 683527
+    }
+  ],
+  "current_status": "MAIN_VERIFIED",
+  "metadata_remote_commit_status": "NOT_CREATED_OR_CLAIMED_BY_A; root publishes this later metadata payload separately.",
+  "actual_execution_evidence": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_dryrun_001.json",
+      "sha256": "c664b9e5b68ee4404192361c5ff24e9fbe3f25028272fc432bcbcdec9888c58c",
+      "bytes": 2435
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_dryrun_001.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_dryrun_001.execution.json",
+      "sha256": "9e35dae8e026902538e21a5704ddf17f8507765fe65e282917063312a755d536",
+      "bytes": 1681
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_apply_001.json",
+      "sha256": "b8440ecc5de51d99ecde900adb2cf2583883e39867ed0c57d4240bb30319c242",
+      "bytes": 2447
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_apply_001.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_apply_001.execution.json",
+      "sha256": "561169986dd0467ecf089f868fdf48c87c84efcd0d7859f1351a1c9c20ede919",
+      "bytes": 1692
+    }
+  ],
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_book_remote.py",
+    "sha256": "62d33804bfce39def7f5089e3ac424ba691910b528e0ac8cb454ccaaecd44f00",
+    "bytes": 45887
+  },
+  "context": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_release_context.json",
+    "sha256": "96213b64a868b60bf68f920a55c0c4d43046993a13c83f612642a73051adef36",
+    "bytes": 1993
+  },
+  "frozen_source_payload": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_upload_payload.json",
+    "sha256": "b3b59dc0e35cc44c15b6c77e70342d6617a370ce5d51081427714d434efe14b1",
+    "bytes": 12105569
+  },
+  "readback_scope_limits": [
+    "No scientific source was recompiled or newly tested.",
+    "Actual CI receipt identities were read; independent log review remains C/root responsibility.",
+    "No artifact ZIP contents, new PDF pages or new experiments were inspected.",
+    "Old local evidence resolves its mutable metadata paths at the preserved actual source commit."
+  ],
+  "finished_at_utc": "2026-10-20T13:06:59.052611+00:00"
+}

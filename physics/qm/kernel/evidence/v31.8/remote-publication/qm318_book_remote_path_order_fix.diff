@@ -1,0 +1,12 @@
+--- qm318_finalize_book_remote_before_path_order_fix.py.txt
++++ qm318_finalize_book_remote.py
+@@ -181,7 +181,8 @@
+                 and source_set(entries) == manifest['source_set_sha256'] == identity['source_set_sha256'],
+                 f'Invalid {kind} source aggregate identity.')
+         names = [entry['path'] for entry in entries]
+-        require(names == sorted(set(names)), f'{kind} source paths are not unique and sorted.')
++        require(len(names) == len(set(names)) and names == sorted(names, key=lambda name: Path(name).parts),
++                f'{kind} source paths are not unique and sorted by Path component order.')
+         manifests[kind] = {entry['path']: entry for entry in entries}
+     require(set(manifests['unified']) == set(manifests['publication']), 'Source path sets differ.')
+     changed = [relative for relative in manifests['publication']

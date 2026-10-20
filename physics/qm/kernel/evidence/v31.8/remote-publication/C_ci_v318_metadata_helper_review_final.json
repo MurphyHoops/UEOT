@@ -1,0 +1,90 @@
+{
+  "schema": "ueot_qm.C_metadata_payload_helper_repair_review.v31.8",
+  "status": "CLEAR",
+  "checked_at_utc": "2026-10-20T12:51:30.008940+00:00",
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_prepare_metadata.py",
+    "bytes": 19187,
+    "sha256": "3ed577292a84a0891d9c08fe93a8e3107f2db2e99508ab0206ea7a35397a5c33"
+  },
+  "inputs": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_prepare_metadata.py",
+      "bytes": 19187,
+      "sha256": "3ed577292a84a0891d9c08fe93a8e3107f2db2e99508ab0206ea7a35397a5c33"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_prepare_metadata_initial.py.txt",
+      "bytes": 16691,
+      "sha256": "91d321d61976eaac50fb4ed0603103f85b8cbd722ca95d9c7d454a4f4ffa196c"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_metadata_helper_review_initial.json",
+      "bytes": 2839,
+      "sha256": "9a23839561c4757cfb0fbc4378f00b828307e49f5e3a6641e2b5bb920b4f3dd9"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_metadata_helper_repair.diff",
+      "bytes": 5794,
+      "sha256": "2acebec86763ca0ad3e5eda500437d4bb8437f3541f1a95239843d343f931975"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_remote.py",
+      "bytes": 55090,
+      "sha256": "ae2dab641f77055a45f301f6a9d2883eeaa7c0118ab8d7f83949353cfd4c51ed"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_concurrent_main_002_review.json",
+      "bytes": 30298,
+      "sha256": "0a93b28f36dd82e4c317004f0598b763a160790c69e51c518631275dc96c9ea9"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_actual_main_tree_review.json",
+      "bytes": 20794,
+      "sha256": "e96f3a5c68cd843b9d6fe0879fc05c72c1b9e30cc6bef7af843ea19b5d392965"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_main_39424068985_review.json",
+      "bytes": 10132,
+      "sha256": "4ac412db6203f4e1fa158c2a08b9c0c7d51537305788fa50702ca0d4d47ea6e1"
+    }
+  ],
+  "stage": "STATIC_REPAIRED_HELPER_NOT_EXECUTED",
+  "prior_initial_review_status": "BLOCK_NARROW_METADATA_BYTE_BINDING_GAP",
+  "closed_findings": [
+    "B_CURRENT_METADATA_NOT_BOUND_TO_ACTUAL_APPLY_OUTPUT"
+  ],
+  "checks": [
+    {
+      "check": "ACTUAL_B_APPLY_BYTES_NOW_REQUIRED",
+      "result": "PASS",
+      "details": "Requires exact actual B result schema/status/writes13, immutable complete-context SHA, reviewed ae2dab finalizer SHA and current helper raw SHA, publication89/054f, all7 actual release identity fields. Exactly13 unique expected9rootmetadata+4rootreceipt output paths are required; current size/SHA of every output is re-read and later included in input stability checks. This closes the specific post-apply16claim/otherrootmetadata byte gap without rerunning B or scientific proofs."
+    },
+    {
+      "check": "LATEST_CONCURRENT_FIRST_PARENT_SCOPE",
+      "result": "PASS",
+      "details": "Uses the context concurrent_review_path, with positive unique dynamic delta count and exact original baseline commit/tree, actual first-parent commit/tree and source6717 binding. Each preserved path must be absent from payload, equal actual-tested-main base and local blob/mode. Actual002 review fields were independently read: first-parent0e5f…/8cdf…,45changes. Old6change record remains unmodified historical evidence."
+    },
+    {
+      "check": "UNCHANGED_PROTECTION_SERIALIZATION_AND_WRITE_BOUNDARIES",
+      "result": "PASS",
+      "details": "Actual diff only adds ROOT_FINALIZER_SHA, replaces fixed6concurrent scope, adds actual13output binding and records its/dynamicconcurrent counts in inventory. Four utility function ASTs and imports unchanged; earlier12existing/5new/2prefix allowlist, oldevidence/338nonmetadata/89/56/3 protection, actualmain HEAD/base gate, UTF8serialization and final input re-read remain intact. Only two handoff payload files are written; no repository, Git, compiler or CI mutation."
+    },
+    {
+      "check": "SCHEMA_COMPATIBLE_WITH_REAL_PRODUCERS",
+      "result": "PASS",
+      "details": "All new B result field names and13updated record shapes match the frozen actual finalizer producer. All concurrent002 field names exist in its saved actual review. Root will create the immutable context before B/A real apply with root_metadata_apply_path=qm318_root_remote_apply_001.json and concurrent_review_path=qm318_concurrent_main_002_review.json. No fabricated apply result was supplied or executed for this static review."
+    }
+  ],
+  "blocking_findings": [],
+  "actual_main_ci_independent_clear_already_exists": true,
+  "new_lean_invocations": 0,
+  "new_runtime_tests": 0,
+  "root_CI_parser_reexecuted": false,
+  "remote_calls": 0,
+  "repository_writes": 0,
+  "limitations": [
+    "Actual B and A apply, immutable context and complete remote receipts are still required before executing the repaired metadata freezer. This static CLEAR does not assert that a metadata payload has already been frozen or published.",
+    "The future actual metadata payload/tree gets a separate independent C bytes/protection review; no prior scientific or CI gate is repeated."
+  ]
+}

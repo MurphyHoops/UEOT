@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+"""Tree-only review of an actually created metadata tree and its eventual merge.
+
+Reuses the completed frozen metadata payload audit. It can compute a preview
+against a later actual main, and checks the whole actual merge when provided.
+No payload decoding, science/CI execution, repository writes or remote calls.
+"""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import re
+
+W = Path('/workspace/scratch/f11b4261e187')
+H = W / 'handoff'
+R = W / 'qm_v318_work'
+E = R / 'physics/qm/kernel/evidence/v31.8'
+PUBLICATION = '054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1'
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--payload-review', type=Path, required=True)
+    parser.add_argument('--metadata-tree', type=Path, required=True)
+    parser.add_argument('--metadata-commit')
+    parser.add_argument('--concurrent-tree', type=Path)
+    parser.add_argument('--concurrent-commit')
+    parser.add_argument('--main-tree', type=Path)
+    parser.add_argument('--main-commit')
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    if not args.output.resolve().is_relative_to(H) or args.output.exists():
+        raise ValueError('Use a new handoff report; prior receipts remain unchanged.')
+    inputs, checks = {}, {}
+    report = {'schema': 'ueot_qm.C_metadata_tree_union_review.v31.8',
+              'status': 'NOT_REVIEWED', 'started_at_utc': datetime.now(timezone.utc).isoformat(),
+              'checks': checks, 'blockers': [], 'payload_gate_reexecuted': False,
+              'compiler_invocations': 0, 'runtime_test_invocations': 0,
+              'CI_parser_invocations': 0, 'repository_writes': 0, 'remote_calls': 0,
+              'new_CI_claimed': False, 'artifact_ZIP_contents_claimed': False,
+              'review_helper_sha256': sha(Path(__file__).read_bytes())}
+
+    def check(name, condition):
+        checks[name] = bool(condition)
+        if not condition:
+            raise AssertionError(name)
+
+    def take(path):
+        path = Path(path).resolve()
+        raw = path.read_bytes()
+        if path in inputs and inputs[path] != raw:
+            raise AssertionError('Input changed: ' + str(path))
+        inputs[path] = raw
+        return raw
+
+    def read(path):
+        return json.loads(take(path))
+
+    try:
+        check('paired_concurrent_snapshot_and_commit',
+              (args.concurrent_tree is None) == (args.concurrent_commit is None))
+        check('paired_final_snapshot_and_commit', (args.main_tree is None) == (args.main_commit is None))
+        check('actual_final_requires_actual_concurrent_parent',
+              args.main_tree is None or args.concurrent_tree is not None)
+        prior = read(args.payload_review)
+        check('prior_actual_payload_CLEAR', prior['status'] == 'CLEAR'
+              and prior['protected']['accepted_sources'] == 89
+              and prior['protected']['core_imports'] == 56 and prior['protected']['canonical'] == 3)
+        frozen_inputs = {item['path']: item for item in prior['inputs']}
+
+        def frozen(path):
+            path = Path(path).resolve()
+            raw = take(path)
+            binding = frozen_inputs[str(path)]
+            check('frozen_input:' + str(path), sha(raw) == binding['sha256'] and len(raw) == binding['bytes'])
+            return json.loads(raw) if path.suffix == '.json' else raw
+
+        context = frozen(H / 'qm318_release_context.json')
+        baseline = frozen(H / context['main_remote_tree_path'])
+        inventory = frozen(H / 'qm318_metadata_inventory.json')
+        publication = frozen(E / 'publication-source-manifest.json')
+        core = frozen(E / 'core-import-closure.json')
+        frozen(H / 'C_payload_audit.py')
+        check('actual_tested_main_and_payload_identity', baseline['commit'] == context['tested_main_commit']
+              == prior['tested_main_commit'] and baseline['sha'] == context['tested_main_tree'] == prior['base_tree']
+              and inventory['base_tree'] == baseline['sha'] and inventory['payload_sha256'] == prior['payload_sha256']
+              and sha(take(H / 'qm318_metadata_inventory.json')) == prior['inventory_sha256']
+              and publication['source_set_sha256'] == PUBLICATION)
+        spec = importlib.util.spec_from_file_location('c_metadata_pure_git_tree', H / 'C_payload_audit.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        def parsed(name, snapshot, commit=None):
+            entries = snapshot['tree']
+            check(name + '_complete_unique', snapshot['truncated'] is False
+                  and len(entries) == len({e['path'] for e in entries}))
+            trees, leaves = module.git_trees(entries)
+            nested = {e['path']: e['sha'] for e in entries if e['type'] == 'tree'}
+            check(name + '_all_nested_tree_entries_exact', trees[''] == snapshot['sha']
+                  and nested == {p: digest for p, digest in trees.items() if p}
+                  and len(entries) == len(leaves) + len(trees) - 1)
+            if commit is not None:
+                check(name + '_explicit_commit_binding', re.fullmatch('[0-9a-f]{40}', commit)
+                      and snapshot.get('commit') == commit)
+            return trees, leaves
+
+        _, base = parsed('tested_main', baseline, context['tested_main_commit'])
+        overlay = {e['path']: {'mode': e['mode'], 'type': 'blob', 'sha': e['git_blob_sha']}
+                   for e in inventory['files']}
+        check('metadata_population_matches_prior_CLEAR', len(overlay) == len(inventory['files'])
+              == inventory['file_count'] == prior['file_count'])
+        expected_metadata = base | overlay
+        metadata_trees, reconstructed = module.git_trees([{'path': p, **v} for p, v in expected_metadata.items()])
+        check('metadata_candidate_reconstructs_prior_CLEAR', reconstructed == expected_metadata
+              and metadata_trees[''] == prior['expected_metadata_tree_sha1'])
+        actual_metadata = read(args.metadata_tree)
+        actual_meta_trees, actual_meta = parsed('actual_metadata', actual_metadata, args.metadata_commit)
+        check('actual_metadata_equals_entire_frozen_union', actual_meta_trees == metadata_trees
+              and actual_meta == expected_metadata)
+        protected = {item['path'] for item in publication['sources']} | {item['path'] for item in core['modules']}
+        protected |= {'physics/qm/book/UEOT_PHYSICS.' + ext for ext in ('md', 'pdf', 'tex')}
+        check('all_scientific_Core_canonical_leaves_preserved',
+              not protected & set(overlay) and all(actual_meta[p] == base[p] for p in protected))
+        check('all_unlisted_tested_main_leaves_preserved',
+              all(actual_meta[p] == item for p, item in base.items() if p not in overlay)
+              and len(set(base) - set(overlay)) == prior['unchanged_main_leaves'])
+        report.update(status='CLEAR', scope='ACTUAL_METADATA_TREE',
+                      actual_metadata_tree_sha1=actual_metadata['sha'],
+                      actual_metadata_bound_commit=actual_metadata.get('commit'),
+                      actual_metadata_entries=len(actual_metadata['tree']), actual_metadata_leaves=len(actual_meta),
+                      tested_main_commit=context['tested_main_commit'], tested_main_tree=baseline['sha'],
+                      metadata_delta_files=len(overlay), unchanged_tested_main_leaves=len(set(base) - set(overlay)),
+                      prior_payload_review={'path': str(args.payload_review), 'sha256': sha(take(args.payload_review))})
+        if args.concurrent_tree is not None:
+            concurrent = read(args.concurrent_tree)
+            _, concurrent_leaves = parsed('later_main', concurrent, args.concurrent_commit)
+            delta = {p for p in set(base) | set(concurrent_leaves) if base.get(p) != concurrent_leaves.get(p)}
+            check('later_concurrent_changes_disjoint_from_metadata_and_science',
+                  not delta & (set(overlay) | protected))
+            expected_final = concurrent_leaves | overlay
+            final_trees, final_leaves = module.git_trees([{'path': p, **v} for p, v in expected_final.items()])
+            check('all_later_concurrent_updates_and_deletions_retained',
+                  final_leaves == expected_final and all(final_leaves.get(p) == concurrent_leaves.get(p) for p in delta))
+            check('all_other_tested_main_leaves_retained',
+                  all(final_leaves[p] == v for p, v in base.items() if p not in delta and p not in overlay))
+            check('frozen_QM_subtrees_unchanged_by_later_concurrent_work',
+                  not any(p.startswith(('formalization/ueot-qm/', 'physics/qm/')) for p in delta))
+            report.update(concurrent_parent_commit=args.concurrent_commit, concurrent_parent_tree=concurrent['sha'],
+                          later_concurrent_delta_files=len(delta),
+                          later_concurrent_modified=sum(p in base and p in concurrent_leaves for p in delta),
+                          later_concurrent_added=sum(p not in base for p in delta),
+                          later_concurrent_deleted=sum(p not in concurrent_leaves for p in delta),
+                          later_concurrent_delta=[{'path': p, 'tested_main': base.get(p),
+                                                   'later_main': concurrent_leaves.get(p)} for p in sorted(delta)],
+                          expected_final_main_tree_sha1=final_trees[''], expected_final_main_leaves=len(final_leaves),
+                          expected_final_main_entries=len(final_leaves) + len(final_trees) - 1,
+                          expected_final_union_is_actual_merge_claim=False)
+            if args.main_tree is not None:
+                final = read(args.main_tree)
+                actual_final_trees, actual_final_leaves = parsed('actual_final_main', final, args.main_commit)
+                check('actual_final_main_equals_whole_expected_union',
+                      actual_final_trees == final_trees and actual_final_leaves == final_leaves)
+                report.update(scope='ACTUAL_METADATA_TREE_AND_FINAL_MAIN', actual_final_main_commit=args.main_commit,
+                              actual_final_main_tree_sha1=final['sha'], actual_final_main_entries=len(final['tree']),
+                              actual_final_main_leaves=len(actual_final_leaves),
+                              expected_final_union_is_actual_merge_claim=True)
+        check('all_input_bytes_stable', all(p.read_bytes() == raw for p, raw in inputs.items()))
+        report['limits'] = ['Commit fields are bound only to the supplied actual GET snapshots; parent Git-commit readbacks establish actual parent order separately.',
+                           'Expected final union is a computed preview unless a real final-main snapshot and commit are supplied.',
+                           'Actual scientific CI remains the separately reviewed source PR and tested-main run; later metadata or concurrent commits are not relabeled CI-tested.',
+                           'Prior source, payload and CI verification is reused; no payload decode, compiler, test, CI parser or artifact ZIP inspection occurs.']
+    except Exception as error:
+        report['status'] = 'BLOCK'
+        report['blockers'].append(type(error).__name__ + ': ' + str(error))
+    report['finished_at_utc'] = datetime.now(timezone.utc).isoformat()
+    report['inputs'] = [{'path': str(p), 'sha256': sha(raw), 'bytes': len(raw)} for p, raw in inputs.items()]
+    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps({k: report[k] for k in ('status', 'scope', 'actual_metadata_tree_sha1',
+        'expected_final_main_tree_sha1', 'actual_final_main_tree_sha1', 'later_concurrent_delta_files', 'blockers') if k in report}
+        | {'report': str(args.output), 'sha256': sha(args.output.read_bytes())}))
+    return 0 if report['status'] == 'CLEAR' else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
