@@ -1,0 +1,263 @@
+{
+  "schema": "ueot_qm.v31.5.ci_scope_readonly_review.v1",
+  "reviewed_at_utc": "2026-10-20T01:33:39.515508+00:00",
+  "status": "CI_SCOPE_PASS",
+  "method": "Read-only workflow/source inspection and deterministic path/hash enumeration; no package build, Lean invocation, runtime tests, or repository mutation performed in this review.",
+  "workflow_sha256": "045fea140732d1f08d09cae722b43b9245080be79f76ce2bf5b2fa14eeaae312",
+  "record_source_script_sha256": "be184e05f63b2fec1a879f5c32f3b053fb94b5a39e4ffab5bee3a6b03e3eb14f",
+  "required_input_coverage": {
+    "formalization/ueot-qm/UEOTQM/Mixture.lean": {
+      "push_patterns": [
+        "formalization/ueot-qm/UEOTQM/**"
+      ],
+      "pull_request_patterns": [
+        "formalization/ueot-qm/UEOTQM/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "520d432d9d055b3260c2f90ea8ad68f93d14d4acae51e32faa28f49bdd3d601a"
+    },
+    "formalization/ueot-qm/UEOTQM/Cesaro.lean": {
+      "push_patterns": [
+        "formalization/ueot-qm/UEOTQM/**"
+      ],
+      "pull_request_patterns": [
+        "formalization/ueot-qm/UEOTQM/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b"
+    },
+    "formalization/ueot-qm/UEOTQM/Survival.lean": {
+      "push_patterns": [
+        "formalization/ueot-qm/UEOTQM/**"
+      ],
+      "pull_request_patterns": [
+        "formalization/ueot-qm/UEOTQM/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f"
+    },
+    "physics/qm/kernel/ueot_qm/finite_dynamics.py": {
+      "push_patterns": [
+        "physics/qm/kernel/ueot_qm/**"
+      ],
+      "pull_request_patterns": [
+        "physics/qm/kernel/ueot_qm/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "5f7f78b37e67fd1dc0b1c856f474850e50e4e664b806ddd9adb54fb9cc8429a6"
+    },
+    "physics/qm/kernel/demo_v315.py": {
+      "push_patterns": [
+        "physics/qm/kernel/*.py"
+      ],
+      "pull_request_patterns": [
+        "physics/qm/kernel/*.py"
+      ],
+      "in_current_source_set": true,
+      "sha256": "0c9fd677c56a9506c37149d6494c473a73e233361a48e61e063289b79957336e"
+    },
+    "physics/qm/kernel/tests/test_finite_dynamics.py": {
+      "push_patterns": [
+        "physics/qm/kernel/tests/**"
+      ],
+      "pull_request_patterns": [
+        "physics/qm/kernel/tests/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "781e3b9267578bc32b89dc0100e88d43500d7eb7a1828db3f9aa716d384aa7ca"
+    },
+    "formalization/ueot-qm/scripts/verify_finite_witnesses.py": {
+      "push_patterns": [
+        "formalization/ueot-qm/scripts/**"
+      ],
+      "pull_request_patterns": [
+        "formalization/ueot-qm/scripts/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "b64cc996105e4e6ff4aca57e733b84519c3e865a919c65e1e6b4108b41114925"
+    },
+    "formalization/ueot-qm/scripts/witnesses/MixtureExamples.lean": {
+      "push_patterns": [
+        "formalization/ueot-qm/scripts/**"
+      ],
+      "pull_request_patterns": [
+        "formalization/ueot-qm/scripts/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "11e2802dcda88a4a752f300664ebea4c31d95b33a05dc4538e631184b6622ffd"
+    },
+    "formalization/ueot-qm/scripts/witnesses/SurvivalTwoState.lean": {
+      "push_patterns": [
+        "formalization/ueot-qm/scripts/**"
+      ],
+      "pull_request_patterns": [
+        "formalization/ueot-qm/scripts/**"
+      ],
+      "in_current_source_set": true,
+      "sha256": "075e56765dc9c2c4cb53fc6e6411cd2e670906eed1e6f46b0e126f35e186b4c1"
+    }
+  },
+  "execution_coverage": {
+    "runtime_test_discovery": true,
+    "runtime_verify": true,
+    "demo_v315": true,
+    "generic_build": true,
+    "generic_axiom_execution": true,
+    "finite_witness_gate": true
+  },
+  "artifact_coverage": {
+    "runtime_receipt": true,
+    "demo_v315_json": true,
+    "source_manifest": true,
+    "generic_build_log": true,
+    "generic_axiom_log": true,
+    "generic_axiom_json": true,
+    "finite_witness_entire_output_dir": true,
+    "archive_steps_always": true
+  },
+  "generic_public_audit": {
+    "total_explicit_targets": 392,
+    "unique": true,
+    "new_module_targets": {
+      "Mixture": 30,
+      "Cesaro": 30,
+      "Survival": 45
+    }
+  },
+  "source_manifest": {
+    "actual_current_source_count": 64,
+    "recorded_source_count": 64,
+    "missing_current_paths": [],
+    "removed_paths": [],
+    "stale_hash_paths": [],
+    "status": "CURRENT",
+    "current_source_paths": [
+      ".github/workflows/ueot-qm.yml",
+      "formalization/ueot-qm/UEOTQM.lean",
+      "formalization/ueot-qm/UEOTQM/Adaptive.lean",
+      "formalization/ueot-qm/UEOTQM/Basic.lean",
+      "formalization/ueot-qm/UEOTQM/Cesaro.lean",
+      "formalization/ueot-qm/UEOTQM/Effects.lean",
+      "formalization/ueot-qm/UEOTQM/Exact.lean",
+      "formalization/ueot-qm/UEOTQM/ExactCertificate.lean",
+      "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean",
+      "formalization/ueot-qm/UEOTQM/Instrument.lean",
+      "formalization/ueot-qm/UEOTQM/Mixture.lean",
+      "formalization/ueot-qm/UEOTQM/Observables.lean",
+      "formalization/ueot-qm/UEOTQM/Operational.lean",
+      "formalization/ueot-qm/UEOTQM/Ragged.lean",
+      "formalization/ueot-qm/UEOTQM/Selector.lean",
+      "formalization/ueot-qm/UEOTQM/Spectrum.lean",
+      "formalization/ueot-qm/UEOTQM/Stability.lean",
+      "formalization/ueot-qm/UEOTQM/Survival.lean",
+      "formalization/ueot-qm/UEOTQM/Transport.lean",
+      "formalization/ueot-qm/UEOTQM/Weighted.lean",
+      "formalization/ueot-qm/lake-manifest.json",
+      "formalization/ueot-qm/lakefile.lean",
+      "formalization/ueot-qm/lean-toolchain",
+      "formalization/ueot-qm/scripts/AxiomAudit.lean",
+      "formalization/ueot-qm/scripts/check_axioms.py",
+      "formalization/ueot-qm/scripts/check_dependencies.py",
+      "formalization/ueot-qm/scripts/install_lean.sh",
+      "formalization/ueot-qm/scripts/record_source.py",
+      "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+      "formalization/ueot-qm/scripts/witnesses/MixtureExamples.lean",
+      "formalization/ueot-qm/scripts/witnesses/SurvivalTwoState.lean",
+      "physics/qm/kernel/certificates/v31.3/d1.lean",
+      "physics/qm/kernel/certificates/v31.3/d1.manifest.json",
+      "physics/qm/kernel/certificates/v31.3/d4.lean",
+      "physics/qm/kernel/certificates/v31.3/d4.manifest.json",
+      "physics/qm/kernel/certificates/v31.3/exports.json",
+      "physics/qm/kernel/certificates/v31.3/hsz.lean",
+      "physics/qm/kernel/certificates/v31.3/hsz.manifest.json",
+      "physics/qm/kernel/certificates/v31.3/hz.lean",
+      "physics/qm/kernel/certificates/v31.3/hz.manifest.json",
+      "physics/qm/kernel/certificates/v31.3/ragged.lean",
+      "physics/qm/kernel/certificates/v31.3/ragged.manifest.json",
+      "physics/qm/kernel/certificates/v31.3/z.lean",
+      "physics/qm/kernel/certificates/v31.3/z.manifest.json",
+      "physics/qm/kernel/demo.py",
+      "physics/qm/kernel/demo_v312.py",
+      "physics/qm/kernel/demo_v313.py",
+      "physics/qm/kernel/demo_v315.py",
+      "physics/qm/kernel/tests/test_finite_dynamics.py",
+      "physics/qm/kernel/tests/test_kernel.py",
+      "physics/qm/kernel/tests/test_lean_export.py",
+      "physics/qm/kernel/tests/test_representation_certificate.py",
+      "physics/qm/kernel/tests/test_spectrum.py",
+      "physics/qm/kernel/ueot_qm/__init__.py",
+      "physics/qm/kernel/ueot_qm/algebra.py",
+      "physics/qm/kernel/ueot_qm/certificates.py",
+      "physics/qm/kernel/ueot_qm/finite_dynamics.py",
+      "physics/qm/kernel/ueot_qm/instrument.py",
+      "physics/qm/kernel/ueot_qm/lean_export.py",
+      "physics/qm/kernel/ueot_qm/predictive.py",
+      "physics/qm/kernel/ueot_qm/representation_certificate.py",
+      "physics/qm/kernel/ueot_qm/spectrum.py",
+      "physics/qm/kernel/verify_kernel.py",
+      "physics/qm/kernel/verify_lean_exports.py"
+    ]
+  },
+  "evidence_copy_scope": {
+    "python_files_in_evidence": [],
+    "status": "PASS_NO_PYTHON_SOURCE_INFLATION",
+    "note": "record_source.py and verify_kernel.py recursively enumerate kernel *.py; current archive copying excludes Python helpers. Keep the canonical verifier under formalization scripts."
+  },
+  "core_source_coverage": {
+    "separate_receipt": "physics/qm/kernel/evidence/v31.5/core-import-closure.json",
+    "direct_imports": [
+      "UEOT.V3.Compression.QuotientDescent",
+      "UEOT.V3.Compression.RecursiveSufficientState",
+      "UEOT.V3.Compression.TransportCertificate",
+      "UEOT.V3.QSDPerron"
+    ],
+    "transitive_module_count": 13,
+    "source_hash_mismatches": [],
+    "note": "Frozen Core is identified by the separate closure receipt and finite-witness dependency snapshots, not added to QM-only source count."
+  },
+  "finite_witness_local_archive": {
+    "current_repository_matches": [
+      "physics/qm/kernel/evidence/v31.5/finite-witnesses/verification.json"
+    ],
+    "validated_external_receipt": "/tmp/qm315_finite_witnesses_final/verification.json",
+    "root_action": "No further archive action: final verification.json and all three raw logs match the validated final run byte for byte.",
+    "copy_identity_checks": [
+      {
+        "repository_directory": "physics/qm/kernel/evidence/v31.5/finite-witnesses",
+        "files": [
+          {
+            "filename": "MixtureExamples.compile.log",
+            "present": true,
+            "identical": true,
+            "sha256": "2e0588f3ec8cc4c8a7bc1b6155ca205bf4924633f18217ef8fce72eb38eabd6e"
+          },
+          {
+            "filename": "SurvivalTwoState.compile.log",
+            "present": true,
+            "identical": true,
+            "sha256": "cedb30da03579093592bfc22466bec1638f3f38df2a371aae938dede04f33a03"
+          },
+          {
+            "filename": "toolchain.log",
+            "present": true,
+            "identical": true,
+            "sha256": "63f3e16bf0258e2cc0ab3010eb1830723df9bb85097b7b72b0137b9be25a78e9"
+          },
+          {
+            "filename": "verification.json",
+            "present": true,
+            "identical": true,
+            "sha256": "c23a56cd179e5db0af26d073ebfe4f7909627daf47f84e3e2ff34930253f5076"
+          }
+        ],
+        "status": "PASS"
+      }
+    ],
+    "status": "PASS"
+  },
+  "publication_actions": [],
+  "limits": [
+    "This is static CI configuration review, not a claim that the remote workflow already ran.",
+    "Local final evidence assembly and remote CI acceptance remain Root responsibilities."
+  ]
+}

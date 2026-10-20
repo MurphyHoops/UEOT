@@ -1,80 +1,74 @@
 # UEOT-QM
 
-当前研发：**v31.4 / Kernel 1.4 — MAIN_VERIFIED，2026-10-19 UTC**。
+当前研发：**v31.5 / Kernel 1.5 — LOCAL_VERIFIED_CI_PENDING，2026-10-20 UTC**。最新集成身份以 [CURRENT.json](status/CURRENT.json) 为准。
 
-理论总入口为 [《UEOT物理学》正式 3.0](book/UEOT_PHYSICS.md)，连续正文为第 0–50 章、附录 A–F；[PDF](book/UEOT_PHYSICS.pdf) 与正文同目录。第 49 章接通精确证书、有限响应坐标和内核执行，第 50 章展开实际量子稳定性。总著保留操作语义、重构输入、物理适用条件和未完成义务；具体机器证明以 Lean 源码、命名审计及绑定源码的回执为准。
+规范理论总入口是 [《UEOT物理学》正式 3.1](book/UEOT_PHYSICS.md)：第 0–53 章、附录 A–F，54 章、101 个编号结果；[完整 PDF](book/UEOT_PHYSICS.pdf) 共 171 页。第 49–50 章给出有限内核和稳定性，第 51–53 章加入概率混合预算、Cesàro 平稳态与条件存活。完整推导、来源、细节、思想和未完成的科学义务在同一著作持续维护。
 
-本轮新增 **效应 → Born 概率界 → 全效应响应伪距离 → 完整通道收缩与实际缺陷 → Core M-TC 组合 → 正事件后验界**。统一 `lake build UEOTQM` 已实际通过：**15 个通用模块、256 个显式定理、287 项唯一命名公理审计 PASS**；允许的基础仅为 `propext`、`Classical.choice`、`Quot.sound`。**87 个运行方法和 3 个演示 PASS**。六个导出实例重新编译，产生 42 项独立审计；四种篡改的原通过证明被拒绝，同数据的四份 `check = false` 内核证明通过。详见 [本轮证明回执](kernel/evidence/v31.4/lean-verification.json)、[运行回执](kernel/evidence/v31.4/runtime-verification.json) 和 [实例验收](kernel/evidence/v31.4/lean-exports/verification.json)。
+本版新增三项严格结果：实际通道混合的全态 TV 上界及有理预算；实际有限 CPTP 通道的平均残差、紧性和平稳态存在；次随机核的量子仪器实现、实际成功记录的 Core QSD/Perron 与 Doob 桥接。其完整范围见 [v31.5 主报告](UEOT_QM_KERNEL_v31.5.md) 和 [数学审查](audits/FINITE_DYNAMICS_REVIEW_v31.5.md)。
 
-本轮本地、PR #337 工作流 39345492165 与合入后主线工作流 39345953198 均已完成实际验收，详见 [v31.4 集成回执](kernel/evidence/v31.4/integration-verification.json)。源提交 `3b227e3d08e6faa8252e3dd2e3ea4e5536dae007`、源树 `2fb88d6bace94ec9ec682dc3ea120718c692f80a` 与被验收主线 `d6926c7a8b650280a2357b6eb0cb8d86fca3953a` 的身份分别记录；源树与被验收主线树相同。上一版本 v31.3 的 [集成回执](kernel/evidence/v31.3/integration-verification.json) 保留独立历史身份。当前发布状态由 [CURRENT.json](status/CURRENT.json) 单列。
+实际本地验收为 **18 通用模块、334 显式定理、392 项命名公理审计、100 个运行方法、4 个演示 PASS**。六个既有精确实例重新验收，42 项审计另列；四个篡改真值证明被拒绝且同数据假值证明通过。新增具体见证有 29 定理／10 定义／39 项独立审计。[统一回执](kernel/evidence/v31.5/lean-verification.json)、[64 项源清单](kernel/evidence/v31.5/source-manifest.json)
 
-## 从这里开始
+## 阅读与工作入口
 
-- [正式总著](book/UEOT_PHYSICS.md) 与 [PDF](book/UEOT_PHYSICS.pdf)：完整理论正文、条件与论证，而非仅有版本报告。
-- [v31.4 内核主报告](UEOT_QM_KERNEL_v31.4.md)：实际效应、全效应上确界、完整通道误差、严格正后验及证据边界。
-- [Lean 证明包](../../formalization/ueot-qm/README.md)：15 模块、公共接口、实际 Core 定理复用及复核命令。
-- [运行内核](kernel/README.md)：精确数值证书、Python API、样例与可重复生成／验收。
-- [效应与稳定性审查](audits/EFFECT_STABILITY_REVIEW_v31.4.md)：60 个新增定理、14 个公开定义的完整名单、假设和已执行聚焦验证。
-- [精确证书审查](audits/EXACT_CERTIFICATE_REVIEW_v31.3.md)、[加权／可变指标审查](audits/WEIGHTED_RAGGED_REVIEW_v31.3.md)：继续适用的数域与有限证书合同。
-- [工作路线](ROADMAP.md)、[当前状态](status/CURRENT.json)、[v31.4 主张台账](status/CLAIM_LEDGER_v31.4.json)。
+- [正式总著](book/UEOT_PHYSICS.md)、[完整阅读版](book/UEOT_PHYSICS.pdf)、[逐章档案](book/CHAPTER_DOSSIER.json)：连续理论、推导、来源与证据责任。
+- [本版数学和实现报告](UEOT_QM_KERNEL_v31.5.md)、[执行任务](UEOT_QM_EXECUTION_v31.5.md)：为什么选择这三项工作，实际闭合什么，如何使用资源。
+- [Lean 包](../../formalization/ueot-qm/README.md)、[运行内核](kernel/README.md)：定义、接口、复验命令、具体正负见证。
+- [路线图](ROADMAP.md)、[当前台账](status/CLAIM_LEDGER_v31.5.json)：根本科学问题、下一轮任务、接受条件和未完成义务。
 
-## 当前可复用的内核
+## 已形成的有限内核
 
-固定操作库后，有限坐标相等当且仅当全部有限记录响应相等。分支在坐标上计算 `y = A x`，以单位坐标读概率，正概率后验为 `y / p`；结果仍在物理可实现坐标像中，零概率返回 `none`。完整有限自适应树的叶律由这些坐标给出。`ExactCertificate.check` 检查非负权重、完整 Kraus 和、空词、每个基矩阵的实际词效应、每个分支的全部局部闭包等式，从五项有限条件构造真实仪器及全词 presentation。[ExactCertificate](../../formalization/ueot-qm/UEOTQM/ExactCertificate.lean)
+给定明确的复密度态／Kraus／Born 量子扇区及允许操作库，有限坐标相等当且仅当全部有限记录响应相等。局部闭包证书构造真实仪器与全词 presentation；分支计算 Ax、读取单位坐标概率，并在正概率时返回 Ax/p，仍留在物理可实现坐标像中。完整有限自适应树的叶律可由同一坐标计算。
 
-`Exact` 解释真实 Gaussian-rational 复矩阵，`Weighted` 通过精确平方根把非负权重实现为普通 Kraus 矩阵，`Ragged` 证明有限嵌入补零保持操作。六份 [固定证书](kernel/certificates/v31.3/exports.json) 覆盖 Z、H+Z、H+S+Z、不同结果与项数、1 维复数样例和 4 维射影样例；本轮已经重新生成、绑定源码并实际核验。生成时的 manifest 继续保留 `NOT_COMPILED`，后续成功由独立编译回执表达。
+实际效应定义全效应响应伪距离。完整通道收缩该量；实际全态通道缺陷经量子一步推导，接入 Core M-TC 的累计误差界。正事件后验另有放大界，零概率没有后验。现在同一通道成员库的有理权重变化给出明确的可靠预算
 
-新增 `Effect` 直接要求实际矩阵满足 $E\succeq0$ 与 $I-E\succeq0$，并证明 $P_E(\rho)=\operatorname{Re}\operatorname{tr}(E\rho)\in[0,1]$。完整 Kraus 拉回保持效应，每个有限记录的实际词效应也属于此集合。由全部效应定义
+\[
+\delta(\Phi_p,\Phi_q)\le \tfrac12\sum_b|p_b-q_b|.
+\]
 
-$$
-d_{\mathrm{eff}}(\rho,\sigma)=\sup_{0\preceq E\preceq I}|P_E(\rho)-P_E(\sigma)|.
-$$
+长期部分证明
 
-已经证明非负、对称、三角不等式、上界 1、零值当且仅当全部效应概率相等，以及每个共同后续记录的响应控制。此处正式登记为伪距离；本轮尚未在 Lean 中证明密度态分离或与迹范数、diamond norm 的识别。[Effects](../../formalization/ueot-qm/UEOTQM/Effects.lean)、[Stability](../../formalization/ueot-qm/UEOTQM/Stability.lean)
+\[
+\Phi(\bar\rho_N)-\bar\rho_N=(\rho_N-\rho_0)/N,\quad
+d_{\rm eff}(\Phi(\bar\rho_N),\bar\rho_N)\le1/N
+\]
 
-对同一有限载体上的完整通道，实际证明收缩。通道缺陷 $\delta(\Phi,\Psi)$ 是全态输出伪距离的上确界，进而得到真实轨迹界
+并在实际有限矩阵拓扑中构造不变子极限及平稳密度态。条件生存部分把真实成功记录解释为 diag(pQⁿ)，给定合法 qQ=rq 后得到 rⁿ 生存律；给定右特征数据后，Doob 不变律为 qh。全部前提、实际 Core 调用与反例见 [主报告](UEOT_QM_KERNEL_v31.5.md)。
 
-$$
-d_{\mathrm{eff}}(\rho_n,\sigma_n)
-\le d_{\mathrm{eff}}(\rho_0,\sigma_0)+\sum_{j<n}\delta(\Phi_j,\Psi_j).
-$$
+## 执行与复验
 
-该量子一步递推由 Kraus 定义推导，再实际调用既有 Core M-TC。两条序列可采用不同结果／Kraus 类型，每条序列内部类型固定，矩阵可随时间改变。后续记录响应比较使用同一个操作库。对同一仪器、同一结果且两态事件概率都严格正，后验差另有 $2d_{\mathrm{eff}}/p_\rho$ 上界；若 $d_{\mathrm{eff}}<p_\rho$，则证明第二态事件仍为正。完整结论与假设见 [稳定性审查](audits/EFFECT_STABILITY_REVIEW_v31.4.md)。
+从仓库根执行：
 
-## 运行与复核
-
-从仓库根目录执行：
-
-```bash
+~~~bash
 python physics/qm/kernel/demo.py
 python physics/qm/kernel/demo_v312.py
 python physics/qm/kernel/demo_v313.py --output-dir /tmp/qm-exports
-python physics/qm/kernel/verify_kernel.py --output /tmp/qm-runtime-v314.json
-```
+python physics/qm/kernel/demo_v315.py
+python physics/qm/kernel/verify_kernel.py --output /tmp/qm-runtime-v315.json
+~~~
 
-完成 `formalization/ueot-qm` 的统一构建后，运行 `python physics/qm/kernel/verify_lean_exports.py --output-dir /tmp/qm-lean-exports`，重新生成并核验证书及假值见证。新 `channelDefect` 是数学上确界定义；这些命令没有被宣称为计算它的程序。具体命令与证据格式见 [运行内核说明](kernel/README.md)。
+完成 Lean 包的统一构建后，再分别运行精确实例门与新增具体见证门：
 
-## 本轮范围与后续建设
+~~~bash
+python physics/qm/kernel/verify_lean_exports.py --output-dir /tmp/qm-lean-exports
+python formalization/ueot-qm/scripts/verify_finite_witnesses.py --output-dir /tmp/qm-finite-witnesses
+~~~
 
-**QMU-04 完成的是有限共同载体完整 Kraus 通道与正事件后验的数学切片。** 丢弃结果后的通道误差不自动控制两个不同仪器的标签或自适应历史；需先显式加入经典记录与量子记忆。ancilla 稳定误差、密度态分离、范数识别和可执行的通道缺陷数值上界仍需独立证明。条件化可以放大误差，零概率后验继续未定义。[范围审查](audits/EFFECT_STABILITY_REVIEW_v31.4.md)
+工具链固定 Lean 4.33.1；全部实际公理报告只允许 propext、Classical.choice、Quot.sound。生成源文件与真正编译验收分别记录；JSON、Python、搜索／消元／PSD／树程序的全输入细化仍独立开放。
 
-Python 表示证书支持 Hilbert 维数 1–4、基数不超过 `d²`、见证词长不超过 `d²−1`。exporter 另限制整数为 4096 bit、补零标量存储数为 65536、源文件为 8 MiB；这些界限约束证据生成，并不限制全词定理的未来记录长度，也不保证统一编译时间。通用 Lean checker 与逐实例证明已经完成；Python/JSON/闭包搜索/消元/PSD/树程序的全输入细化继续开放。冗余 presentation 的充分性不等于最小物理 Hilbert 实现。[证书说明](UEOT_QM_KERNEL_v31.3.md)
+## 核心科学边界
 
-三代结论保持为指定谱与弱窗口条件下的 `(Nc,Nf,k)=(3,3,1)`。实际表示、完整母谱、全局异常、有效窗口、真空与质量继续具有独立物理义务。标准复密度态／Kraus／Born 量子扇区仍为明确输入，本轮没有新增经验验证。后续优先推进可认证的通道缺陷上界及记录扩展，并行开展 QMB-05/06 长期／存活和可失败的 QDRR 数据入口，详见 [路线图](ROADMAP.md)。
+已形成的是量子扇区中的有限形式化内核。通用 Core 尚未无条件选择复量子结构；三代结论仍取决于指定的完整谱与有效弱窗口、表示及一致性条件。混合上界不等于任意通道缺陷的精确求值或 diamond norm。平稳存在不意味着唯一或逐时 mixing；QSD、Doob 不变律和无限条件过程也必须分开证明。本版没有新增实验数据。
 
-## 版本与证据身份
+下一轮优先推进独立的量子选择前提／反模型审查和保留记录与记忆的联合通道模型；并行扩展非交换存活、可失败的 QDRR 数据合同及现实 G3 义务。[工作包与资源次序](ROADMAP.md)
 
-| 版本 | 对应范围与实际本地验收 | 集成身份 |
+## 历史与证据身份
+
+| 版本 | 累计通用定理／审计／运行方法 | 独立身份 |
 |---|---|---|
-| v31.1 / Kernel 1 | 五模块、56 显式定理、59 审计、32 运行测试 | [原证明回执](kernel/evidence/lean-verification.json)；已完成主线验收 |
-| v31.2 / Kernel 1.2 | 九模块、128 显式定理、137 审计、72 测试；有限坐标／完整树／谱桥 | [原本地回执](kernel/evidence/v31.2/lean-verification.json)、[主线集成补充](kernel/evidence/v31.2/integration-verification.json) |
-| v31.3 / Kernel 1.3 | 13 模块、196 显式定理、213 审计、87 测试；六实例／四假值见证另列 | [证明回执](kernel/evidence/v31.3/lean-verification.json)、[主线集成](kernel/evidence/v31.3/integration-verification.json) |
-| v31.4 / Kernel 1.4 | 15 模块、256 显式定理、287 审计、87 测试、3 演示；六实例／四假值见证重新核验 | [证明回执](kernel/evidence/v31.4/lean-verification.json)、[台账](status/CLAIM_LEDGER_v31.4.json)、[主线集成](kernel/evidence/v31.4/integration-verification.json)；MAIN_VERIFIED |
+| v31.1 | 56／59／32 | [原回执](kernel/evidence/lean-verification.json) |
+| v31.2 | 128／137／72 | [证明](kernel/evidence/v31.2/lean-verification.json)、[集成](kernel/evidence/v31.2/integration-verification.json) |
+| v31.3 | 196／213／87 | [证明](kernel/evidence/v31.3/lean-verification.json)、[集成](kernel/evidence/v31.3/integration-verification.json) |
+| v31.4 | 256／287／87 | [证明](kernel/evidence/v31.4/lean-verification.json)、[集成](kernel/evidence/v31.4/integration-verification.json) |
+| v31.5 | 334／392／100 | [证明](kernel/evidence/v31.5/lean-verification.json)、[当前状态](status/CURRENT.json)；具体见证审计分别统计 |
 
-新增 60 个定理与 14 个公开定义共列入 74 个命名审计目标，其中定义含 9 个携带证明的构造和 5 个数据定义。287 是通用命名审计数，六实例的 42 项和四个假值见证的 4 项单列。旧证据只认证原版本源码字节；新 [55 项源清单](kernel/evidence/v31.4/source-manifest.json) 绑定当前候选。Core 冻结定义、106 项覆盖和四个计数生成器保持不变。
-
-## 保留的研究与历史证据
-
-[v31.0 升级方案](UEOT_QM_UPGRADE_PLAN_v31.0.md) 保留完整继承链、六个量子桥与更大扇区规划。继续保留 [对象—协议桥](audits/CORE_OBJECT_PROTOCOL_BRIDGE_20261019.md)、[Core/Lean 证据审查](audits/CORE_LEAN_TO_QM_AUDIT_20261019.md)、[G3 条件精化](audits/G3_SELECTOR_REFINEMENT_20261019.md)、[五份原件身份及语义核对](audits/SOURCE_AND_REPRESENTATION_REVIEW_v31.2.md)。正式总著把论证组织为连续正文，历史版本和原始证据各自保留身份。
-
-旧基准仍可运行 `python physics/qm/benchmarks/qm_bridge_benchmarks.py` 和 `python physics/qm/benchmarks/qm_frontier_exact_audit.py`。其他历史原件迁移、两份 v28.1 身份裁决与历史 validator 的证据等级继续按来源清单核准。
+旧证据只认证各自源码。v23–v30.11 的继承链、操作／重构／CV／开放系统／场论／异常谱研究保留于正式总著和 [v31.0 总体规划](UEOT_QM_UPGRADE_PLAN_v31.0.md)。五份原件身份保持 [原审查](audits/SOURCE_AND_REPRESENTATION_REVIEW_v31.2.md)，冻结 Core 的 106 项与四生成器计数不变。

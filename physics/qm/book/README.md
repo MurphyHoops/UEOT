@@ -1,78 +1,88 @@
 # UEOT 物理学
 
-《UEOT物理学》是钱德桂（Degui Qian）UEOT 理论及其量子物理工作的正式连续总著，稳定文档身份为 **UEOT-PHYSICS**，当前版本 **3.0**。本目录保存完整正文、派生阅读版、来源身份、逐章修订档案和实际复核记录，作为后续建设的固定入口。
+《UEOT物理学》是钱德桂（Degui Qian）UEOT 理论及其量子物理工作的正式连续总著，稳定文档身份为 **UEOT-PHYSICS**，当前正式整合版为 **3.1**。本目录保存完整正文、阅读版、来源、逐章修订档案和实际复核记录。
+
+本版正文、PDF 与本地数学/程序验收已经完成，当前仓库集成阶段为 **LOCAL_VERIFIED_CI_PENDING**。最终远端提交、PR 与主线工作流须由本版真实回执确认；历史成功记录保留原版本责任。
 
 ## 正式正文与阅读入口
 
 | 文件 | 责任 |
 |---|---|
-| [UEOT_PHYSICS.md](UEOT_PHYSICS.md) | 唯一规范正文；第 0–50 章及附录 A–F，完整推导与稳定命题锚点 |
-| [UEOT_PHYSICS.pdf](UEOT_PHYSICS.pdf) | 从规范正文生成的正式阅读版，160 页 |
+| [UEOT_PHYSICS.md](UEOT_PHYSICS.md) | 唯一规范正文；第 0–53 章及附录 A–F，完整推导与稳定命题锚点 |
+| [UEOT_PHYSICS.pdf](UEOT_PHYSICS.pdf) | 从规范正文生成的正式阅读版，171 页 |
 | [UEOT_PHYSICS.tex](UEOT_PHYSICS.tex) | 同一构建生成的完整 LaTeX 排印源 |
-| [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) | 原始五源、旧总著及历史文本见证的实际身份和使用边界 |
-| [CHAPTER_DOSSIER.json](CHAPTER_DOSSIER.json) | 全部 51 章及 6 个附录的命题、来源、修订、验证与开放义务 |
-| [book-structure.json](evidence/v3.0/book-structure.json) | 实际章节、锚点和命题注册身份检查 |
+| [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) | 原有 11 份材料的独立字节身份、历史文本边界和本版 QM 源集 |
+| [CHAPTER_DOSSIER.json](CHAPTER_DOSSIER.json) | 54 章及 6 个附录的命题、来源、分类、修订、验证与开放义务 |
+| [结构回执](evidence/v3.1/book-structure.json) | 253 个编号小节、161 个稳定锚点、101 个编号结果的实际结构检查 |
 
-本版完整继承旧总著第 0–48 章的主题与 **78 个稳定编号结果**，补入第 49–50 章的 **10 个编号命题**，共 **88 个**。正文包含量子基础、测量、连续变量、多体、热与开放系统、QFT/QED、粒子候选、条件三代、相干见证、实际化、拓扑、格点和实验统计，新增有限量子内核与实际 Born 概率误差传播。它是一部已完成整合和校核的正式著作；后续结果继续写回所属章节和编号。
+本版继承 3.0 版全部 **88 个稳定编号结果**：其中 78 个源自 2.0，10 个在 3.0 新增；第 51–53 章另增加 **13 个编号命题或反例**，总数为 **101**。原有来源标记完整保留，新条目标为 `NEW_IN_3_1`。全书继续涵盖量子基础、测量、连续变量、多体、热与开放系统、QFT/QED、粒子候选、条件三代、相干见证、实际化、拓扑、格点和实验统计。
 
-“正式著作完成”描述文档和声明论域的交付状态。Core 无条件唯一选择量子理论、现实规范群和质量谱、三代的无附加前提解释、四维非微扰 QFT、量子引力以及真实硬件实验仍有正文列明的开放义务。第 31 章的条件三代结果必须连同第 36 章高能五色反例及第 49.7 节谱前提阅读。
+新增三章将有限内核推进到实际动力学：第 51 章构造随机混合并证明可计算的 TV 误差预算；第 52 章证明实际密度集合紧性、平均态残差与平稳子极限；第 53 章构造对角存活仪器，并真实消费冻结 Core 的 QSD/Perron/Doob 定理。相应数学前提、反例和未完成义务均写入连续正文。
+
+“正式著作完成”是文档和声明论域的交付状态。Core 无条件唯一选择量子理论、现实规范群和质量谱、三代的无附加前提解释、四维非微扰 QFT、量子引力和真实硬件实验，仍各有独立责任。第 31 章的条件三代定理须连同第 36 章高能五色反例及第 49.7 节谱前提阅读。
 
 ### 冻结产物身份
 
 | 产物 | SHA-256 |
 |---|---|
-| Markdown | `510d1a08a2b4808e08d058628310727ec7ec48348bd21d96e47c04a450875379` |
-| PDF | `20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae` |
-| LaTeX | `4674e7cc33d0b8d04a3ef52e2f94c5e4270978ac10feed2a0fb9979ec758f9ee` |
+| Markdown | `d0d495c2d31680ea12f958367eeefcffb44f6df8dd4114884d51f2e2f0da1587` |
+| PDF | `89ed7ed69f3e86ae60ea7d7dc36c1b8bc20e48c89ebdd310ab4414136afadcaa` |
+| LaTeX | `c2219ee5464c77c2a2232f989d3afd7f2a1261c9e6732049c8544b699429a5f4` |
 
-PDF 的最终视觉验收已由外部记录 [pdf-visual-review.json](evidence/v3.0/pdf-visual-review.json) 给出 **PASS**：两名协作 AI 审阅者完成全部 160 页的缩略总览，并细看记录中列明的公式、表格和修正页面；这不是对所有页面逐行高分辨率重读。该记录绑定上述正文、PDF 和 TeX。本 README 不以编译成功替代视觉验收。实际 [构建环境](evidence/v3.0/build-environment.json) 记录 Pandoc 3.1.3、TeX Live 2023、Python 及字体身份。重新渲染时，PDF 日期、字体和工具链可能使二进制不同；应重新保存本次实际源、字体、TeX、PDF 与日志哈希。
+[实际构建回执](evidence/v3.1/pdf-build.json) 绑定正文、字体、TeX、PDF 及三遍 XeLaTeX 执行。[视觉验收](evidence/v3.1/pdf-visual-review.json) 为 **PASS**：根审阅者实际查看全部 171 页总览和 4 页细图，另有[协作审阅者对 17 页的完整图像检查](evidence/v3.1/pdf-collaborator-review.json)。记录保留一条非阻断注记：附录 B 的 P-QCE-02 链接锚点落在命题标题的前一页，链接有效，阅读时需继续一页。该回执没有宣称所有页逐字高分辨率重读，也没有用编译成功代替视觉验收。
 
-## 证据如何使用
+## 分类与证据如何使用
 
-正文使用三个独立字段，定义见第 0.1、48.2 节：
+正文采用三个独立字段，定义见第 0.1、48.2 节以及冻结的 [Core–Physics 接口合同](../../interfaces/CORE_PHYSICS_CONTRACT.md)：
 
 | 字段 | 回答的问题 | 值 |
 |---|---|---|
-| `argument_status` | 文本正在做什么 | D 定义、P 推导、K 外部定理、H 附加假设、S 解释、E 经验输入、N 反例、O 开放问题 |
-| `dependency_class` | 结论从哪里来 | C Core、B 领域桥、S 扇区选择、P 标准物理输入、E 经验输入、O 开放机制、X 排除/反模型 |
+| `argument_status` | 文本正在做什么 | D 定义、P 推导、K 外部定理、H 附加假设、S 解释、E 实验/数值或经验输入、N 反例、O 开放问题 |
+| `dependency_class` | 结论的依赖与物理角色 | C Core 结果、B 领域桥、S 扇区选择、P 标准物理输入、E 有效模型假设、O 可观测后果、X UEOT 专属开放科学猜想 |
 | `verification_kind` | 怎样核对该结论 | `analytic`、`exact_arithmetic`、`synthetic`、`lean`、`experiment` |
 
-两个字段中的 P/S 含义不同，保存或引用状态时必须携带字段名。章级档案列出本章实际使用的类别；具体命题的前提与范围仍以正文和源码类型为准，不能给整章套一个 FORMAL 标签。
+3.1 版按[逐章迁移表](evidence/v3.1/classification-migration.json)和[语义说明](evidence/v3.1/CLASSIFICATION_MIGRATION.md)纠正旧版 `dependency_class` 中 E/O/X 的冲突，保留原有论证字母和数学结论。反例继续用 `argument_status=N`；标准数学待形式化或程序开发待办不自动归为 X；依赖 O 也不表示已取得真实实验数据。章级数组是所含角色集合，具体命题仍以正文前提及实际源码类型为准。附录 E 只有出版/编译合同，因此其物理依赖数组为空。
 
-| 证据入口 | 已执行范围及限制 |
+| 当前证据入口 | 已执行范围及限制 |
 |---|---|
-| [旧主文程序的本版重跑](evidence/v3.0/legacy-regression.json) | 三套程序共 757 项有限检查：237 + 423 + 97；精确算术与浮点/合成计算，未使用真实实验数据 |
-| [基础修订审查](evidence/v3.0/core_foundations_review.md) | 原始思想、冻结 Core、OPT 背景、分支商、写入等距与酉、有限闭合及反模型 |
-| [高级来源与数学审查](evidence/v3.0/repo_scope_and_advanced_review.md) | 对称/域/统计、QFT/QED、谱与实际化等高级正文及历史来源边界 |
-| [高级章节装配核对](evidence/v3.0/advanced_assembly_review.json) | 修订片段身份、顺序装配和旧章节/锚点保存 |
-| [通用 Lean 构建](../kernel/evidence/v31.4/lean-verification.json) | 15 模块、256 个显式定理；仅覆盖实际声明的条件与论域 |
-| [完整命名公理核对](../kernel/evidence/v31.4/proof-axioms.json) | 287 个命名目标；允许基础为 `propext`、`Classical.choice`、`Quot.sound` |
-| [内核运行检查](../kernel/evidence/v31.4/runtime-verification.json) | 87 个运行测试；不同于数学定理计数 |
-| [具体 Lean 证书](../kernel/evidence/v31.4/lean-exports/verification.json) | 六个正例、四种数据篡改；坏数据须同时拒绝原真值证明并通过同数据假值证明 |
+| [通用 Lean 本地验收](../kernel/evidence/v31.5/lean-verification.json) | 18 模块、334 个显式定理；实际统一构建与源集匹配 |
+| [完整命名公理审计](../kernel/evidence/v31.5/proof-axioms.json) | 392 个唯一命名目标，含 334 定理与 58 个列举定义/构造；允许基础仅 `propext`、`Classical.choice`、`Quot.sound` |
+| [内核运行检查](../kernel/evidence/v31.5/runtime-verification.json) | 100 个测试方法，与数学定理计数分开 |
+| [四份完整演示](../kernel/evidence/v31.5/demos-verification.json) | 实际有限有理计算，含本版混合、平均与生存模型；没有新增实验数据 |
+| [具体 Lean 证书](../kernel/evidence/v31.5/lean-exports/verification.json) | 六正例共 42 命名审计；四坏数据须拒绝原真值证明，并通过同数据假值证明及其 4 项审计 |
+| [新增有限动力学见证](../kernel/evidence/v31.5/finite-witnesses/verification.json) | 29 个具体定理、10 个定义、39 个命名审计；独立计数，不加进通用 334/392 |
+| [新章整合审查](evidence/v3.1/new-chapters-integration-review.json) | 第 51–53 章实际函数名、前提、公式和形式化范围 |
+| [本版旧程序源码复用](evidence/v3.1/legacy-source-reuse.json) | 三套旧程序字节未变；3.1 未重跑它们，历史 757 项检查仍由 3.0 原回执负责 |
 
-第 49 章以实际有限 Kraus、全词响应、有限生成和精确证书承载内核；第 50 章以全效应上确界证明完整通道收缩、真实输出缺陷、轨迹误差和正事件后验界。第 4、35 章的 trace/diamond 纸面理论以及一般旁系统、历史寄存器装配，不随这些有限 Lean 结果自动成为机器证明。无限维、重型重构、完整 QFT 和现实谱也不在该形式化清单内。
+本版数学/运行的 [64 项源集](../kernel/evidence/v31.5/source-manifest.json) SHA-256 为 `41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e`，作者工作基线为 `97d033ff83125822e9926f5bd36afd08dbd153ef`。基线提交不是“工作树干净”或最终远端源码提交的声明；实际执行输入由逐文件哈希和[源冻结对照](../kernel/evidence/v31.5/source-freeze-reconciliation.json)绑定。
 
-本版交叉审查由 AI 代理协作完成，包括分工阅读、相互检查、反例核对和统一实际执行。这里“独立核对”指不同计算路径、源码比对或不同代理的交叉检查；**不是独立人类同行评审、期刊审稿或实验室复现**。学术原创性、同行评议与现实物理有效性仍须各自的证据。
+第 49–50 章的实际词响应、闭合坐标、效应上确界、完整通道收缩、误差递推和正事件后验界继续保留。第 51 章的同库 TV 预算不控制任意未知通道，成员变化仍需另证全输入误差；第 52 章不声称唯一稳态、原始轨道收敛或随机单轨经验遍历；第 53 章是给定谱数据的对角测量制备桥，尚非一般非交换 Perron 理论。第 4、35 章的 trace/diamond 纸面理论、一般旁系统及历史寄存器装配也没有因此全体机器化。
+
+### 继承证据的版本责任
+
+[3.0 基础修订审查](evidence/v3.0/core_foundations_review.md)、[高级来源与数学审查](evidence/v3.0/repo_scope_and_advanced_review.md)、[高级装配核对](evidence/v3.0/advanced_assembly_review.json)以及[三套程序的 3.0 执行回执](evidence/v3.0/legacy-regression.json)保留原版本身份。后者的 757 项有限检查为 237 + 423 + 97，含精确算术、浮点及合成计算；本版的源码复用确认不等于重跑，不自动验证后来新增或修订的正文。
+
+本书审查由 AI 代理分工阅读、源码比对、不同计算路径及实际执行构成。它不是独立人类同行评审、期刊审稿或实验室复现；学术原创性与现实物理有效性仍需对应证据。
 
 ## 复现正文检查与 PDF
 
-以下命令从仓库根运行。结构检查使用 Python 标准库，以实际 HTML 命题锚点及其紧随的完整命题名核对附录 B；短编号不得通过其他长编号的后缀匹配。这一门已接入 PDF 构建器。
+以下命令从仓库根运行。结构检查将附录 B 的条目绑定到实际 HTML 锚点及紧随的完整命题名，防止短编号误匹配更长编号；此门已接入 PDF 构建器。
 
 ```bash
 python3 physics/qm/book/build/verify_book.py
 ```
 
-生成阅读版需要 Pandoc、XeLaTeX、常规 TeX 包，以及本版使用的 **Droid Sans Fallback** 中文字体文件。精确复现本版字形和换行时，向 `--font` 传入恢复源包中的字体；其 SHA-256 为 `ee38813ea00c3e32add4268fff7fff9e39417b4913cb13be2415164a47807cc2`。下面路径应替换为字体的实际本地路径。
+生成阅读版需要 Pandoc、XeLaTeX、常规 TeX 包及 CJK 字体。精确复现本版字形和换行时使用恢复源包中的 **Droid Sans Fallback**；字体 SHA-256 为 `ee38813ea00c3e32add4268fff7fff9e39417b4913cb13be2415164a47807cc2`。下面路径应替换为实际本地字体路径。
 
 ```bash
 python3 physics/qm/book/build/build_pdf.py \
-  --output-dir /tmp/ueot-physics-v3-build \
+  --output-dir /tmp/ueot-physics-v3-1-build \
   --font /path/to/DroidSansFallback.ttf
 ```
 
-构建器只读取当前完整规范正文，先检查章号、命题身份、内部链接和占位，再生成 LaTeX 并执行三遍 XeLaTeX；不开启 shell-escape。输出目录包含 `pdf-build.json`、打印源、TeX、PDF 和三次编译日志。可另用合适 CJK 字体构建新的阅读版，但必须记录新字体身份并重新检查页面，不能冒用本版 PDF 哈希或视觉回执。
+构建器只读取当前完整主文，先检查章号、命题身份、内部链接与占位，再生成 LaTeX 并执行三遍 XeLaTeX；不开启 shell-escape。重新渲染时的日期、字体与工具链可能改变二进制，应重新记录实际源、字体、TeX、PDF 与日志哈希，并重新检查页面。
 
-三套科学回归需要 NumPy/SciPy；本次实际环境和每项程序身份见 `legacy-regression.json`。重新执行可分别运行：
+三套继承科学回归需要 NumPy/SciPy。以下命令供另行复跑时使用；它们不表示已在 3.1 本轮执行：
 
 ```bash
 python3 physics/qm/book/verification/verify_ueot_quantum.py
@@ -80,10 +90,10 @@ python3 physics/qm/book/verification/verify_frontier.py
 python3 physics/qm/book/verification/verify_completion.py
 ```
 
-量子内核的 Lean 工具链、依赖、运行测试及具体证书复核遵循 [内核 README](../kernel/README.md) 和 [形式化包 README](../../../formalization/ueot-qm/README.md)。书的结构检查不代替这些验证。
+量子内核的工具链、运行检查及具体证明复核遵循[内核 README](../kernel/README.md)与[形式化包 README](../../../formalization/ueot-qm/README.md)。书的结构检查不代替这些验收。
 
 ## 持续维护与授权责任
 
-本轮工作来自用户继续推进 UEOT-QM、构建正式全面且可持续维护总著的直接授权。ClassB/QM 工作保持在量子领域扩展；ClassC/BookAssembly 对既有全书进行正式整合、纠错、增补和生成阅读版。根代理负责各分工的整合、源身份核对、统一验收与按现有授权完成仓库同步。该权限不意味着冻结 Core 的数学定义、证明和计数已被授权改写，也不等于人类学术审稿。
+本轮依据用户继续推进 UEOT-QM、维护正式全面总著的既有授权。ClassB/QM 处理领域数学/软件，ClassC/BookAssembly 处理完整正文、修订和阅读版；冻结 Core 的定义、证明与计数保持独立责任。根代理统一整合实际源身份、验证和远端同步。
 
-后续每次变更均同步更新本目录的规范正文、受影响章节档案、证据和阅读版；保留原有命题编号及失败路线。扩大结论范围时增加真正对应的前提、证明或实验记录；修改后由实际源哈希绑定结果，历史 PASS 不自动移植。远端提交和工作流的成功状态以对应真实回执为准，不能把本地构建改称远端执行。
+后续结果写回所属章节、编号、档案和证据，保留旧有效推导与失败路线。扩大结论须新增对应前提、证明或实验；历史 PASS 不自动移植。当前 **LOCAL_VERIFIED_CI_PENDING** 只描述本版本地已验收且远端集成待完成，不使用前一版本的 CI 代替本版回执。

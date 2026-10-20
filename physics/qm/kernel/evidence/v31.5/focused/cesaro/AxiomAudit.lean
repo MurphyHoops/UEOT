@@ -1,0 +1,32 @@
+import UEOTQM.Cesaro
+
+#print axioms UEOTQM.Cesaro.iterateState
+#print axioms UEOTQM.Cesaro.iterateState_zero
+#print axioms UEOTQM.Cesaro.iterateState_succ
+#print axioms UEOTQM.Cesaro.channelLinear
+#print axioms UEOTQM.Cesaro.channelLinear_apply
+#print axioms UEOTQM.Cesaro.orbitSum
+#print axioms UEOTQM.Cesaro.orbitSum_positive
+#print axioms UEOTQM.Cesaro.orbitSum_trace
+#print axioms UEOTQM.Cesaro.averageState
+#print axioms UEOTQM.Cesaro.averageState_matrix
+#print axioms UEOTQM.Cesaro.orbitSum_telescope
+#print axioms UEOTQM.Cesaro.matrix_residual
+#print axioms UEOTQM.Cesaro.pairing_sub_right
+#print axioms UEOTQM.Cesaro.probability_residual
+#print axioms UEOTQM.Cesaro.probability_residual_le
+#print axioms UEOTQM.Cesaro.effectDistance_residual_le
+#print axioms UEOTQM.Cesaro.density_operatorNorm_le_one
+#print axioms UEOTQM.Cesaro.densityMatrices
+#print axioms UEOTQM.Cesaro.densityMatrices_closed
+#print axioms UEOTQM.Cesaro.densityMatrices_compact
+#print axioms UEOTQM.Cesaro.continuous_channel
+#print axioms UEOTQM.Cesaro.matrix_residual_norm_le
+#print axioms UEOTQM.Cesaro.averageSequence
+#print axioms UEOTQM.Cesaro.matrix_residual_tendsto_zero
+#print axioms UEOTQM.Cesaro.subsequence_limit_invariant
+#print axioms UEOTQM.Cesaro.subsequence_limit_density
+#print axioms UEOTQM.Cesaro.exists_stationary_subsequence
+#print axioms UEOTQM.Cesaro.exists_stationary_of_density
+#print axioms UEOTQM.Cesaro.normalizedIdentity
+#print axioms UEOTQM.Cesaro.exists_stationary

@@ -1,0 +1,125 @@
+{
+  "schema": "ueot_qm.core_import_closure.v31.5",
+  "status": "SOURCE_CLOSURE_PASS",
+  "baseline": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+  "direct_imports": [
+    "UEOT.V3.Compression.QuotientDescent",
+    "UEOT.V3.Compression.RecursiveSufficientState",
+    "UEOT.V3.Compression.TransportCertificate",
+    "UEOT.V3.QSDPerron"
+  ],
+  "transitive_module_count": 13,
+  "modules": [
+    {
+      "module": "UEOT.V3.Compression.QuotientDescent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+      "sha256": "1cb1e6f46e36f989cfdd8f4b300084245efa090c5a4f6140960049bfcd476dcd",
+      "unchanged_from_baseline": true,
+      "core_imports": [
+        "UEOT.V3.DynamicsKernel",
+        "UEOT.V3.PredictionDependent",
+        "UEOT.V3.StructuredQuotient"
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.RecursiveSufficientState",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/RecursiveSufficientState.lean",
+      "sha256": "076e3cd74eb490bf221b6b73e7e7a16eb60dd2e5c1feba2b910990dd1ae434ca",
+      "unchanged_from_baseline": true,
+      "core_imports": [
+        "UEOT.V3.Compression.QuotientDescent",
+        "UEOT.V3.PredictionUpdate"
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TransportCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean",
+      "sha256": "6def721f70ee273372a97faa6e15387baec83f7442eb95f9ae25c449741904c4",
+      "unchanged_from_baseline": true,
+      "core_imports": [
+        "UEOT.V3.ProcessInterface",
+        "UEOT.V3.TransportDefect",
+        "UEOT.V3.InformationPacking"
+      ]
+    },
+    {
+      "module": "UEOT.V3.DynamicsKernel",
+      "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc",
+      "unchanged_from_baseline": true,
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.InformationPacking",
+      "path": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+      "sha256": "f1685b70503bc9ade8c15986be5bca40847e13a6327cc020979edd75f3aa5ecc",
+      "unchanged_from_baseline": true,
+      "core_imports": [
+        "UEOT.V3.TotalVariation"
+      ]
+    },
+    {
+      "module": "UEOT.V3.PredictionAE",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+      "sha256": "75bb919a5e1c2c7b81cc36335a95400cb7d747c12a5c85f80c38e50affffa16f",
+      "unchanged_from_baseline": true,
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.PredictionDependent",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+      "sha256": "54f2569cf7323471f9f4214a78df41ab53f276231f78645a810bba44e1172e92",
+      "unchanged_from_baseline": true,
+      "core_imports": [
+        "UEOT.V3.PredictionAE"
+      ]
+    },
+    {
+      "module": "UEOT.V3.PredictionUpdate",
+      "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+      "sha256": "1b223a41bf9cf1c3bd2db1c7a91852974571481f7ad8e5ab1b190083cf64b9d0",
+      "unchanged_from_baseline": true,
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.ProcessInterface",
+      "path": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+      "sha256": "f265d57a8c1963cdd293b5c6a5af2908ae2b4babb872568442bc351eec7a098c",
+      "unchanged_from_baseline": true,
+      "core_imports": [
+        "UEOT.V3.TotalVariation"
+      ]
+    },
+    {
+      "module": "UEOT.V3.QSDPerron",
+      "path": "formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+      "sha256": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776",
+      "unchanged_from_baseline": true,
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.StructuredQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean",
+      "sha256": "9ee2629f0e891cdcba727d8c4e95da61f30c07068f55f99a164b78337a827a5b",
+      "unchanged_from_baseline": true,
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.TotalVariation",
+      "path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+      "sha256": "f048fa2b68ca691f326395f940a29b6f8b50822910b6d0a9dda43700caf1dbe6",
+      "unchanged_from_baseline": true,
+      "core_imports": []
+    },
+    {
+      "module": "UEOT.V3.TransportDefect",
+      "path": "formalization/ueot-core/UEOT/V3/TransportDefect.lean",
+      "sha256": "885d717e586a6fd9d057e3d8fdfeb4ca8a07c25ddec2b51b382fca887726f7aa",
+      "unchanged_from_baseline": true,
+      "core_imports": [
+        "UEOT.V3.TotalVariation"
+      ]
+    }
+  ],
+  "role": "Unchanged Core dependencies actually imported by QM; counted Core claims remain frozen. Actual unified build is recorded separately."
+}

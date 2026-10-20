@@ -39,6 +39,10 @@ from .spectrum import (
     WeakWindow, Spectrum, inspect_spectrum, SU3Representation, Weyl331,
     local_331_anomalies, generalized_331_fields,
 )
+from .finite_dynamics import (
+    ProbabilityWeights, MixtureWeightBudget, mix_instruments,
+    channel_operator, iterate_state, cesaro_average, substochastic_instrument,
+)
 
 
 __all__ = [
@@ -80,4 +84,11 @@ __all__ = [
     "Weyl331",
     "local_331_anomalies",
     "generalized_331_fields",
+    "ProbabilityWeights",
+    "MixtureWeightBudget",
+    "mix_instruments",
+    "channel_operator",
+    "iterate_state",
+    "cesaro_average",
+    "substochastic_instrument",
 ]

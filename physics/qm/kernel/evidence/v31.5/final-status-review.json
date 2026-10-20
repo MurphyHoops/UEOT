@@ -1,0 +1,181 @@
+{
+  "schema": "ueot_qm.final_status_readonly_review.v31.5",
+  "status": "CLEAR",
+  "reviewed_at_utc": "2026-10-20T01:51:09.424463+00:00",
+  "reviewer": "finite_response AI collaborator",
+  "scope": "Read-only semantic/source/evidence cross-check of CURRENT, v31.5 claim ledger and QM root/kernel READMEs; no repository changes and no Lean, tests or PDF rebuild executed by this review.",
+  "reviewed_files": [
+    {
+      "path": "physics/qm/status/CURRENT.json",
+      "sha256": "e1b3ead7230ca20c9b1ed9acab7d800e1c538377be73a3ac89eea61548c9678a",
+      "bytes": 13394
+    },
+    {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.5.json",
+      "sha256": "d9fc24fbdf6c1eac5152382d703a12d6f0058b33ebb92f7542de06823ad75ca8",
+      "bytes": 57513
+    },
+    {
+      "path": "physics/qm/README.md",
+      "sha256": "2f86ee56423e4ce20201321c4ab023e08cdc0fc526be151f4ef081b174e42a2e",
+      "bytes": 5950
+    },
+    {
+      "path": "physics/qm/kernel/README.md",
+      "sha256": "cc239c76dfcf26c8ac649da17a0bd127fb255c6e214195b414e227eb3d486a22",
+      "bytes": 15597
+    }
+  ],
+  "supporting_evidence": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/lean-verification.json",
+      "sha256": "26381d2946edab8f7be3b712102c3b942b2014134ea13b12f1cc2a55b874900f"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/proof-axioms.json",
+      "sha256": "2779abd00ec8708c91cd828197e23a8ae993c00e462aff80ca54e0b9421b27ef"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/runtime-verification.json",
+      "sha256": "9d75c53e3c3185e9ff996ea09043365151c5480c938331fde8983b6cc0501ceb"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/source-manifest.json",
+      "sha256": "932e63e5082b93321011a2f0e4706b3f54ca993215b88007333e999598ee59df"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/core-import-closure.json",
+      "sha256": "fcb5cfe306400918a663b6fc9e2065f9b4e146fb56985255251d75f2c7b3069a"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/finite-witnesses/verification.json",
+      "sha256": "c23a56cd179e5db0af26d073ebfe4f7909627daf47f84e3e2ff34930253f5076"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/lean-exports/verification.json",
+      "sha256": "45ea30ff1dd0d7ba9320cb383a8175728de4900771066c39afb86066a6641d93"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/demos-verification.json",
+      "sha256": "00d2f87035fdd0a69a25f548a839bae539b481e899e672143e22e9a3b6b15112"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.1/book-structure.json",
+      "sha256": "376db18639beaec7581891e50b2635015846bb021ec56a82cd3fbca410d13c52"
+    }
+  ],
+  "actual_source_names_read": [
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Mixture.lean",
+      "sha256": "520d432d9d055b3260c2f90ea8ad68f93d14d4acae51e32faa28f49bdd3d601a"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Cesaro.lean",
+      "sha256": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Survival.lean",
+      "sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f"
+    }
+  ],
+  "count_crosscheck": {
+    "generic_modules": 18,
+    "explicit_theorems": 334,
+    "named_axiom_reports": 392,
+    "listed_non_theorem_audit_targets": 58,
+    "new_theorems": 78,
+    "new_public_definitions": 27,
+    "new_audit_targets": 105,
+    "runtime_test_methods": 100,
+    "demos": 4,
+    "positive_instances": 6,
+    "positive_instance_audit_reports": 42,
+    "corrupted_true_proofs_rejected": 4,
+    "same_data_false_witnesses": 4,
+    "false_witness_audit_reports": 4,
+    "finite_witness_theorems": 29,
+    "finite_witness_definitions": 10,
+    "finite_witness_audit_reports": 39,
+    "actual_build_exit_code": 0,
+    "actual_build_jobs": 8739,
+    "source_count": 64
+  },
+  "proof_reference_crosscheck": {
+    "references": 124,
+    "unique_names": 121,
+    "all_present_in_actual_392_report": true,
+    "missing": []
+  },
+  "local_paths_crosscheck": {
+    "references": 237,
+    "missing": [],
+    "rule": "Existence checks are read-only metadata reconciliation, not execution of referenced verification gates."
+  },
+  "resolved_findings": [
+    {
+      "id": "STATUS-01",
+      "finding": "Eight current runtime labels retained the old 87-method suite count.",
+      "resolution": "Current labels now PASS_100_TEST_METHOD_SUITE; historical prior_version_verification retains 87."
+    },
+    {
+      "id": "STATUS-02",
+      "finding": "Ledger metadata_updated_at_utc retained the prior v31.4 finalization time.",
+      "resolution": "Updated actual metadata time is at or after this local verification summary; historical times retained in their own records."
+    },
+    {
+      "id": "STATUS-03",
+      "finding": "Kernel README used the nonexistent failure outcome label loss.",
+      "resolution": "README now states survive/lost, matching actual substochastic_instrument and the formal-book description."
+    },
+    {
+      "id": "STATUS-04",
+      "finding": "QMK-35 standalone premises omitted nonnegative Q and q.",
+      "resolution": "Q_ij >= 0 and q_i >= 0 are explicitly present, matching doob_survivalMass/conditionalState; no unnecessary row-substochastic or sum-q premise was added."
+    },
+    {
+      "id": "STATUS-05",
+      "finding": "QMK-17 source-review layers retained X for source limitations/retired countermodels.",
+      "resolution": "Layers now [B]; the source/negative findings remain unchanged and are not recast as a positive UEOT scientific conjecture."
+    }
+  ],
+  "claim_scope_review": {
+    "QMK-14": "Finite stationary-existence and diagonal given-spectrum QSD/Doob slices only; generic noncommutative existence, uniqueness/mixing and infinite conditioning remain open. Core consumption is attributed to Survival, not Cesaro.",
+    "QMK-28": "Fixed-library rational mixture budget closed; broader model/history/ancilla/norm/separation obligations remain explicitly open.",
+    "QMK-29": "Real PSD density and complete Kraus mixtures; same library for weight-only TV, explicit all-state component defects for changed libraries; not diamond or exact arbitrary supremum computation.",
+    "QMK-30": "Rational-to-real TV/budget interpretation agrees with actual theorem names; the joint theorem still requires separately proved per-component all-state error bounds. Python computation/refinement is separately scoped.",
+    "QMK-31": "Actual averageState uses positive N and the same fixed complete channel; matrix telescope and all-effect residual bound are not raw-orbit convergence.",
+    "QMK-32": "Native finite matrix topology, density compactness, strict subsequences and stationary existence; supplied density or nonempty carrier is explicit; no direct Core M-OI call or uniqueness/ergodic-trajectory claim.",
+    "QMK-33": "Actual substochastic row kernel, complete success/failure instrument, unnormalized diagonal pQ^n record operator and its trace response; no invented cemetery-state dynamics.",
+    "QMK-34": "Actual finite r^n record and invariant conditional density under q>=0, sum q=1, qQ=rq, r>0 and substochastic Q; no universal eigen-data or spectral-radius result.",
+    "QMK-35": "Actual Doob complete instrument and finite success records under hQ/hq, positive h/r, left/right eigenrelations and sum qh=1; qh differs from QSD q, and no absent separately named channelState theorem or infinite conditioning limit is counted."
+  },
+  "identity_and_completion": {
+    "research_baseline": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+    "research_baseline_not_claimed_as_final_publish_parent": true,
+    "frozen_core_transitive_modules": 13,
+    "historical_core_baseline_labeled_historical": true,
+    "v31_4_and_nested_prior_main_identities_preserved": true,
+    "current_state": "LOCAL_VERIFIED_CI_PENDING",
+    "current_source_pr_main_ids_still_null": true,
+    "new_remote_success_claimed": false,
+    "monograph": {
+      "edition": "3.1",
+      "chapters": 54,
+      "appendices": 6,
+      "pages": 171,
+      "numbered_results": 101
+    },
+    "whole_physics_formalized": false,
+    "new_experimental_confirmation": false,
+    "generic_Core_unconditionally_selects_QM": false,
+    "unconditional_realistic_three_generations": false
+  },
+  "remaining_findings": [],
+  "not_performed": [
+    "Lean compilation",
+    "test execution",
+    "PDF rebuild or new visual inspection",
+    "GitHub CI or merge verification",
+    "repository editing"
+  ]
+}

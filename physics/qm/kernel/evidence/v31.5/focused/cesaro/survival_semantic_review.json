@@ -1,0 +1,85 @@
+{
+  "schema": "ueot_qm.survival.read_only_semantic_review.v1",
+  "status": "CLEAR",
+  "reviewed_at_utc": "2026-10-20T01:15:19.385075+00:00",
+  "reviewer": "/root/kernel_certificates",
+  "source": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm/UEOTQM/Survival.lean",
+    "sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f",
+    "theorem_count": 32,
+    "definition_count": 13
+  },
+  "frozen_core_source": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+    "sha256": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776"
+  },
+  "review_mode": "Independent read-only source and hypothesis review. No Lean build, audit, runtime test, or source edit was performed for this Survival review.",
+  "findings": [
+    {
+      "id": "orientation",
+      "status": "CLEAR",
+      "detail": "rowApply(p,Q)=pQ; matrixUnit j i=|j><i|. measurePrepare_apply explicitly dephases the input and prepares destination j from source diagonal X_ii. success_branch maps diag(p) to diag(pQ)."
+    },
+    {
+      "id": "complete_quantum_instrument",
+      "status": "CLEAR",
+      "detail": "For Q>=0 and row sums<=1, failureKernel is the diagonal row deficit. outcomeKernel_complete proves the sum of actual Kraus Gram terms is I, and Weighted.toInstrument constructs ordinary square-root-weight Kraus matrices. Completeness and the quantum/classical identity are not fields."
+    },
+    {
+      "id": "actual_record",
+      "status": "CLEAR",
+      "detail": "killedIterate is recordOperator on n repetitions of (Unit,true), not an abstract power sequence. Its diagonal intertwining is proved by induction, and survivalMass is identified with the corresponding real response."
+    },
+    {
+      "id": "qsd",
+      "status": "CLEAR",
+      "detail": "Given a normalized nonnegative q, qQ=rq, and positive r for conditioning, the actual all-success quantum state is r^n diag(q), its mass is r^n, and the normalized state is diag(q). Perron data existence is not proved or assumed as a hidden conclusion."
+    },
+    {
+      "id": "core_reuse",
+      "status": "CLEAR",
+      "detail": "leftPerron_pow, qsd_survival_mass_pow, qsd_all_steps, row-sum and Doob stationary algebra are actual frozen Core theorem calls. Subsingleton equality transports the caller DecidableEq to the Core local Classical.decEq for matrix powers; it does not change the underlying Q or dynamics."
+    },
+    {
+      "id": "doob_input_contract",
+      "status": "CLEAR",
+      "detail": "Q>=0, r>0, h_i>0 and Qh=rh make Q^h_ij=Q_ij h_j/(r h_i) nonnegative with row sums exactly one. doobInstrument derives completeness from this relation. The generic Doob constructor does not need original Q row-substochasticity; a killed-kernel interpretation retains that separately."
+    },
+    {
+      "id": "q_vs_qh",
+      "status": "CLEAR",
+      "detail": "doobDensity is diag(pi), pi_i=q_i h_i, with nonnegativity and sum_i q_i h_i=1 explicit. Original QSD conclusions require sum_i q_i=1; generic Doob stationarity does not falsely require that extra normalization. The two normalized laws are separate."
+    },
+    {
+      "id": "doob_quantum_consequences",
+      "status": "CLEAR",
+      "detail": "doob_success_branch and doob_killedIterate fix diag(qh). doob_survivalMass gives mass one; positive-event doob_conditionalState fixes doobDensity. No finite-time conditioning of arbitrary initial states is identified with Doob dynamics, and no infinite-horizon conditioning limit is claimed."
+    },
+    {
+      "id": "runtime_witness_cross_match",
+      "status": "CLEAR",
+      "detail": "The read-only runtime examples use Q=((1/4,1/2),(1/8,1/4)), q=(1/3,2/3), h=(3/2,3/4), r=1/2; qQ=rq, Qh=rh, sum qh=1, and pi=(1/2,1/2) differs from q. The tests separately check transpose orientation, missing failure completion, coherent-input dephasing, non-QSD initial mass, and zero-event posterior."
+    }
+  ],
+  "coverage_notes": [
+    {
+      "id": "full_channel_stationarity_entrypoint",
+      "blocking": false,
+      "detail": "This reviewed version names stationarity for the Doob success branch, all-success record, and conditional density. It does not yet export a theorem explicitly stating Instrument.channelState(doobDensity)=doobDensity. This follows from the proved true probability one and completeness via the false branch being zero, but formal documentation should name the currently available declarations or add that direct corollary."
+    },
+    {
+      "id": "lost_is_not_a_cemetery_register",
+      "blocking": false,
+      "detail": "The lost/false outcome preserves the measured source state with row-deficit weight; it is not an absorbing cemetery state. Killed evolution is realized by the all-success record or by stopping at a loss. Applying the completed instrument after loss is a different continued process."
+    },
+    {
+      "id": "no_noncommutative_perron_existence",
+      "blocking": false,
+      "detail": "The bridge is a proved diagonal measure-prepare realization and conditional reuse of supplied finite Perron data. It is not a general spectral-existence theorem for arbitrary noncommutative quantum CP maps."
+    }
+  ],
+  "issues": [],
+  "blocking_issues": [],
+  "formal_empirical_boundary": "Source-level mathematical review only. The author reports a focused build; its execution receipt is owned by spectrum_bridge/root. No empirical evidence is introduced.",
+  "repository_files_modified": []
+}

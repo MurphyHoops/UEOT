@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T01:32:57.477544+00:00",
+  "command": [
+    "rg",
+    "-n",
+    "^\\s*(axiom|opaque)\\s|\\b(sorry|admit|native_decide)\\b",
+    "formalization/ueot-qm/UEOTQM"
+  ],
+  "exit_code": 1,
+  "matches": [],
+  "scope": "Generic QM Lean sources; named axiom audit separately checks elaborated declarations."
+}

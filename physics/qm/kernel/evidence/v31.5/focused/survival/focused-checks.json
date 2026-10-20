@@ -1,0 +1,403 @@
+{
+  "schema": "UEOT-QM.v31.5.survival-focused-checks.v1",
+  "source_sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f",
+  "checks": [
+    {
+      "name": "Audit",
+      "source_path": "/tmp/qm315_survival/Audit.lean",
+      "source_sha256": "bb2af60b0ea20c78f30577f0309e02c0aaa55f4c116d16f80d3ce0d5572a11da",
+      "survival_source_sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "/tmp/qm315_survival/Audit.lean"
+      ],
+      "cwd": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm",
+      "started_utc": "2026-10-20T01:11:53.635280+00:00",
+      "finished_utc": "2026-10-20T01:11:58.665922+00:00",
+      "exit_code": 0,
+      "log_path": "/tmp/qm315_survival/Audit.compile.log",
+      "log_sha256": "89c09ea5f0c92aaa257352b885ab6fc9125531a2614417922d450a49442e37ef",
+      "audit_expected": [
+        "UEOTQM.Survival.diagonalOperator",
+        "UEOTQM.Survival.diagonalOperator_posSemidef",
+        "UEOTQM.Survival.mass_diagonalOperator",
+        "UEOTQM.Survival.diagonalOperator_injective",
+        "UEOTQM.Survival.diagonalOperator_smul",
+        "UEOTQM.Survival.diagonalDensity",
+        "UEOTQM.Survival.diagonalDensity_matrix",
+        "UEOTQM.Survival.matrixUnit",
+        "UEOTQM.Survival.matrixUnit_gram",
+        "UEOTQM.Survival.matrixUnit_sandwich",
+        "UEOTQM.Survival.measurePrepare",
+        "UEOTQM.Survival.measurePrepare_apply",
+        "UEOTQM.Survival.measurePrepare_diagonal",
+        "UEOTQM.Survival.measurePrepare_gram",
+        "UEOTQM.Survival.failureKernel",
+        "UEOTQM.Survival.failureKernel_nonneg",
+        "UEOTQM.Survival.outcomeKernel",
+        "UEOTQM.Survival.outcomeKernel_complete",
+        "UEOTQM.Survival.weightedInstrument",
+        "UEOTQM.Survival.instrument",
+        "UEOTQM.Survival.instrument_branch",
+        "UEOTQM.Survival.success_branch",
+        "UEOTQM.Survival.rowApply_nonneg",
+        "UEOTQM.Survival.success_probability",
+        "UEOTQM.Survival.success_posterior_matrix",
+        "UEOTQM.Survival.killedIterate",
+        "UEOTQM.Survival.killedIterate_posSemidef",
+        "UEOTQM.Survival.killedIterate_diagonal",
+        "UEOTQM.Survival.survivalMass",
+        "UEOTQM.Survival.survivalMass_eq_response",
+        "UEOTQM.Survival.survivalMass_diagonal",
+        "UEOTQM.Survival.conditionalState",
+        "UEOTQM.Survival.qsd_killedIterate",
+        "UEOTQM.Survival.qsd_survival_pow",
+        "UEOTQM.Survival.qsd_survival_pos",
+        "UEOTQM.Survival.qsd_conditionalState",
+        "UEOTQM.Survival.qsd_rate_le_one",
+        "UEOTQM.Survival.doobTransform_nonneg",
+        "UEOTQM.Survival.doobInstrument",
+        "UEOTQM.Survival.doobDensity",
+        "UEOTQM.Survival.doob_success_branch",
+        "UEOTQM.Survival.doob_success_probability",
+        "UEOTQM.Survival.doob_killedIterate",
+        "UEOTQM.Survival.doob_survivalMass",
+        "UEOTQM.Survival.doob_conditionalState"
+      ],
+      "audit_actual": {
+        "UEOTQM.Survival.diagonalOperator": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.diagonalOperator_posSemidef": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.mass_diagonalOperator": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.diagonalOperator_injective": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.diagonalOperator_smul": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.diagonalDensity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.diagonalDensity_matrix": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.matrixUnit": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.matrixUnit_gram": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.matrixUnit_sandwich": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.measurePrepare": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.measurePrepare_apply": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.measurePrepare_diagonal": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.measurePrepare_gram": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.failureKernel": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.failureKernel_nonneg": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.outcomeKernel": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.outcomeKernel_complete": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.weightedInstrument": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.instrument": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.instrument_branch": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.success_branch": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.rowApply_nonneg": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.success_probability": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.success_posterior_matrix": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.killedIterate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.killedIterate_posSemidef": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.killedIterate_diagonal": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.survivalMass": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.survivalMass_eq_response": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.survivalMass_diagonal": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.conditionalState": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.qsd_killedIterate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.qsd_survival_pow": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.qsd_survival_pos": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.qsd_conditionalState": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.qsd_rate_le_one": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doobTransform_nonneg": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doobInstrument": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doobDensity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doob_success_branch": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doob_success_probability": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doob_killedIterate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doob_survivalMass": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.Survival.doob_conditionalState": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "complete_unique_audit": true,
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "source_unchanged": true,
+      "status": "PASS"
+    },
+    {
+      "name": "TwoState",
+      "source_path": "/tmp/qm315_survival/TwoState.lean",
+      "source_sha256": "df78f563964fc081f98ce3c558978b0b479dc73f9fc202cbe34dfc7cc33398ec",
+      "survival_source_sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "/tmp/qm315_survival/TwoState.lean"
+      ],
+      "cwd": "/workspace/scratch/474cf6b1f047/qm_v315_work/formalization/ueot-qm",
+      "started_utc": "2026-10-20T01:11:58.666898+00:00",
+      "finished_utc": "2026-10-20T01:12:04.133929+00:00",
+      "exit_code": 0,
+      "log_path": "/tmp/qm315_survival/TwoState.compile.log",
+      "log_sha256": "1d9f5d93e2adb60f38b1d864fb796e04f7497f050ebe0578cd8f3d6da7ea4b20",
+      "audit_expected": [
+        "UEOTQM.SurvivalTwoState.survival_exact",
+        "UEOTQM.SurvivalTwoState.quantum_qsd_fixed",
+        "UEOTQM.SurvivalTwoState.doob_kernel_exact",
+        "UEOTQM.SurvivalTwoState.doob_law_exact",
+        "UEOTQM.SurvivalTwoState.qsd_ne_doob_law",
+        "UEOTQM.SurvivalTwoState.quantum_doob_survival",
+        "UEOTQM.SurvivalTwoState.uniform_probability_exact",
+        "UEOTQM.SurvivalTwoState.uniform_probability_ne_perron",
+        "UEOTQM.SurvivalTwoState.transpose_probability_exact",
+        "UEOTQM.SurvivalTwoState.transpose_probability_ne_perron",
+        "UEOTQM.SurvivalTwoState.failure_completion_necessary"
+      ],
+      "audit_actual": {
+        "UEOTQM.SurvivalTwoState.survival_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.quantum_qsd_fixed": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.doob_kernel_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.doob_law_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.qsd_ne_doob_law": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.quantum_doob_survival": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.uniform_probability_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.uniform_probability_ne_perron": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.transpose_probability_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.transpose_probability_ne_perron": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.SurvivalTwoState.failure_completion_necessary": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "complete_unique_audit": true,
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "source_unchanged": true,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

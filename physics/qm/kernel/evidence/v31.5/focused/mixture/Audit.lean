@@ -1,0 +1,32 @@
+import UEOTQM.Mixture
+
+#print axioms UEOTQM.Mixture.tv
+#print axioms UEOTQM.Mixture.tv_nonneg
+#print axioms UEOTQM.Mixture.tv_self
+#print axioms UEOTQM.Mixture.tv_comm
+#print axioms UEOTQM.Mixture.tv_le_one
+#print axioms UEOTQM.Mixture.expectation_sub_le_tv
+#print axioms UEOTQM.Mixture.density
+#print axioms UEOTQM.Mixture.density_matrix
+#print axioms UEOTQM.Mixture.probability_density
+#print axioms UEOTQM.Mixture.density_weight_change_le_tv
+#print axioms UEOTQM.Mixture.density_fixed_weights_le_sum
+#print axioms UEOTQM.Mixture.density_joint_change_le
+#print axioms UEOTQM.Mixture.weightedInstrument
+#print axioms UEOTQM.Mixture.instrument
+#print axioms UEOTQM.Mixture.instrument_kraus
+#print axioms UEOTQM.Mixture.instrument_branch
+#print axioms UEOTQM.Mixture.instrument_heisenberg
+#print axioms UEOTQM.Mixture.instrument_channel
+#print axioms UEOTQM.Mixture.instrument_channelState
+#print axioms UEOTQM.Mixture.channelDefect_weight_change_le_tv
+#print axioms UEOTQM.Mixture.channelDefect_fixed_weights_le_sum
+#print axioms UEOTQM.Mixture.channelDefect_joint_change_le
+#print axioms UEOTQM.Mixture.RationalWeights.toWeights
+#print axioms UEOTQM.Mixture.rationalTV
+#print axioms UEOTQM.Mixture.tv_toWeights
+#print axioms UEOTQM.Mixture.density_weight_change_le_rational_budget
+#print axioms UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget
+#print axioms UEOTQM.Mixture.channelDefect_fixed_weights_le_rational_sum
+#print axioms UEOTQM.Mixture.rationalJointBudget
+#print axioms UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget

@@ -1,38 +1,38 @@
 {
   "schema": "ueot_physics.chapter_dossier.v1",
-  "recorded_at_utc": "2026-10-19T23:51:12.391725+00:00",
+  "recorded_at_utc": "2026-10-20T01:42:45.033305+00:00",
   "document_id": "UEOT-PHYSICS",
-  "edition": "3.0",
+  "edition": "3.1",
   "title": "UEOT物理学",
   "author": "钱德桂（Degui Qian）",
   "editorial_status": "FORMAL_COMPLETE_INTEGRATED_EDITION",
   "canonical": {
     "path": "physics/qm/book/UEOT_PHYSICS.md",
-    "sha256": "510d1a08a2b4808e08d058628310727ec7ec48348bd21d96e47c04a450875379",
-    "bytes": 376371,
-    "chapters": 51,
+    "sha256": "d0d495c2d31680ea12f958367eeefcffb44f6df8dd4114884d51f2e2f0da1587",
+    "bytes": 411815,
+    "chapters": 54,
     "appendices": 6,
-    "numbered_results": 88,
-    "inherited_result_ids": 78,
-    "new_result_ids": 10
+    "numbered_results": 101,
+    "inherited_result_ids": 88,
+    "new_result_ids": 13
   },
   "derivatives": {
     "pdf": {
       "path": "physics/qm/book/UEOT_PHYSICS.pdf",
-      "sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae",
-      "pages": 160
+      "sha256": "89ed7ed69f3e86ae60ea7d7dc36c1b8bc20e48c89ebdd310ab4414136afadcaa",
+      "pages": 171
     },
     "latex": {
       "path": "physics/qm/book/UEOT_PHYSICS.tex",
-      "sha256": "4674e7cc33d0b8d04a3ef52e2f94c5e4270978ac10feed2a0fb9979ec758f9ee"
+      "sha256": "c2219ee5464c77c2a2232f989d3afd7f2a1261c9e6732049c8544b699429a5f4"
     },
     "visual_review": {
-      "path": "physics/qm/book/evidence/v3.0/pdf-visual-review.json",
+      "path": "physics/qm/book/evidence/v3.1/pdf-visual-review.json",
       "state_source": "EXTERNAL_ROOT_ACCEPTANCE_RECORD",
       "status_not_inferred_from_compile": true,
       "recorded_status": "PASS",
-      "receipt_sha256": "f93725195ed864dcaa4868166087a331e2fd519a3b4a128e10334d4d21ad0d95",
-      "review_identity": "two collaborating AI reviewers; all-page overview and listed detailed pages; not human peer review"
+      "receipt_sha256": "63e92299e6c70d8b8b935cfb3f95bd1ddad58e6f38302c5edcb8e430fab0924a",
+      "review_identity": "root AI: actual 171-page overview and 4 full pages; collaborator AI: 17 full pages; not human peer review; one nonblocking anchor pagination note"
     }
   },
   "status_axes": {
@@ -47,13 +47,13 @@
       "O": "开放问题"
     },
     "dependency_class": {
-      "C": "Core通用数学",
-      "B": "领域桥",
-      "S": "扇区选择",
-      "P": "标准物理输入",
-      "E": "经验输入",
-      "O": "开放机制",
-      "X": "反模型/排除"
+      "C": "Core-derived：冻结Core已有结果；声称已证时绑定实际源命题与形式定理",
+      "B": "Bridge：Core与物理对象/状态/操作/响应之间的有类型领域桥",
+      "S": "Sector-selection principle：额外的物理理论扇区选择原则",
+      "P": "Standard physical input：标准物理结构、常数、场内容或实验标定输入",
+      "E": "Effective/modeling assumption：尺度、近似或适用窗口下的有效模型假设",
+      "O": "Observable consequence：声明输入链下可测或可数值核查的后果",
+      "X": "Open conjecture：尚未通过证明/实证门的UEOT专属科学关系"
     },
     "verification_kind": [
       "analytic",
@@ -62,7 +62,7 @@
       "lean",
       "experiment"
     ],
-    "level": "章级为所含角色集合，具体命题以正文前提和真实源码类型为准；P/S必须携带字段名"
+    "level": "章级为所含角色集合，具体命题以正文前提和真实源码类型为准；argument_status与dependency_class的重复字母必须带字段名；标准数学待形式化及程序开发开放项不自动属X；纯出版流程的dependency_class可为空。逐条语义迁移见evidence/v3.1/classification-migration.json。"
   },
   "source_catalog": {
     "S1": {
@@ -242,90 +242,206 @@
     "QM314": {
       "source_manifest_path": "physics/qm/kernel/evidence/v31.4/source-manifest.json",
       "identity": "ACTUAL_VERSIONED_QM_SOURCE_INPUTS",
-      "use": "有限量子内核及实际证明/运行回执；不代表全书形式化"
+      "use": "v31.4历史来源与已验收有限内核；本版实际复核另由QM315的源集及执行回执负责，旧收据不冒充本版执行。"
     },
     "PRIMARY": {
       "locator": "UEOT_PHYSICS.md 附录C.3/C.6及各章紧邻推导的原始文献链接",
       "identity": "EXTERNAL_PRIMARY_RESULT_DEPENDENCY",
       "use": "外部标准定理及物理先例，不计为UEOT原创或本项目Lean证明"
+    },
+    "QM315": {
+      "source_manifest_path": "physics/qm/kernel/evidence/v31.5/source-manifest.json",
+      "source_manifest_sha256": "932e63e5082b93321011a2f0e4706b3f54ca993215b88007333e999598ee59df",
+      "source_set_sha256": "41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e",
+      "source_count": 64,
+      "authoring_baseline": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+      "identity": "ACTUAL_VERSIONED_QM_SOURCE_INPUTS",
+      "use": "本版有限随机混合、Cesaro紧性/平稳子列和对角存活QSD/Doob桥；18模块334定理/392命名审计、100运行方法、4演示及独立具体见证各按实际回执。LOCAL_VERIFIED_CI_PENDING，不代表全书形式化。"
     }
   },
   "evidence_catalog": {
     "structure": {
-      "path": "physics/qm/book/evidence/v3.0/book-structure.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "path": "physics/qm/book/evidence/v3.1/book-structure.json",
+      "role": "ACTUAL_V3_1_FROZEN_CANONICAL_STRUCTURE",
+      "sha256": "376db18639beaec7581891e50b2635015846bb021ec56a82cd3fbca410d13c52"
     },
     "assembly": {
-      "path": "physics/qm/book/evidence/v3.0/source-assembly.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "path": "physics/qm/book/evidence/v3.1/source-assembly.json",
+      "role": "ACTUAL_V3_1_ASSEMBLY_AND_INHERITED_RESULT_IDENTITY",
+      "sha256": "49425799c1360d2580a0a377a47e3076c4c11ad6edd43b00aab0a41da6ba8b42"
     },
     "foundations": {
       "path": "physics/qm/book/evidence/v3.0/core_foundations_review.md",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "eab22ff1cf6cfeab6233371ef6e3b266c5b5c4f7a9dfad2b58a3f4fcfa23d19e"
     },
     "foundations_checks": {
       "path": "physics/qm/book/evidence/v3.0/foundations-checks.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "e390b6802a1d08beed09ec893ed99776d6ca4c0aa22df071fb04bff54138a134"
     },
     "advanced": {
       "path": "physics/qm/book/evidence/v3.0/repo_scope_and_advanced_review.md",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "bc1ba8f417210f3d686bd237c8c62d9631ee4481dc14207a44a60e3ab4786cc1"
     },
     "advanced_assembly": {
       "path": "physics/qm/book/evidence/v3.0/advanced_assembly_review.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "890d8b29e1dd952832def8a642527b3244f9e033ca18000d624cd234151f4639"
     },
     "advanced_integrated": {
       "path": "physics/qm/book/evidence/v3.0/advanced_integrated_review.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "934cabefba99a5f1369e3bddbbeffab0312a97334c044db782f95bd38c9421ae"
     },
     "legacy": {
       "path": "physics/qm/book/evidence/v3.0/legacy-regression.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_V3_0_EXECUTION_NOT_RERUN_IN_3_1",
+      "sha256": "55ea29f98524580ba25bdf3581ae0f03034329d671b5edb2d020fa5914e46fae"
     },
     "quantum_program": {
       "path": "physics/qm/book/evidence/v3.0/verify_ueot_quantum.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_V3_0_EXECUTION_NOT_RERUN_IN_3_1",
+      "sha256": "f09b62dc7df92afba8fb687d9f809b3f8f5cd85f63b1b3d5bbda48c09e337765"
     },
     "frontier_program": {
       "path": "physics/qm/book/evidence/v3.0/verify_frontier.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_V3_0_EXECUTION_NOT_RERUN_IN_3_1",
+      "sha256": "7185acb0ca3edd4419a5c8a7f77bf4d58ded20b0d64be2c8c1c68ca80990ff3b"
     },
     "completion_program": {
       "path": "physics/qm/book/evidence/v3.0/verify_completion.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_V3_0_EXECUTION_NOT_RERUN_IN_3_1",
+      "sha256": "e443fd611b915aebc6ed0f64735ae4f208c39ef9606558956c3604ed44ce1aa5"
     },
     "lean": {
-      "path": "physics/qm/kernel/evidence/v31.4/lean-verification.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "path": "physics/qm/kernel/evidence/v31.5/lean-verification.json",
+      "role": "ACTUAL_V31_5_LOCAL_SOURCE_BOUND_PROOF_VERIFICATION",
+      "sha256": "26381d2946edab8f7be3b712102c3b942b2014134ea13b12f1cc2a55b874900f"
     },
     "axioms": {
-      "path": "physics/qm/kernel/evidence/v31.4/proof-axioms.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "path": "physics/qm/kernel/evidence/v31.5/proof-axioms.json",
+      "role": "ACTUAL_V31_5_392_UNIQUE_NAMED_AXIOM_REPORTS",
+      "sha256": "2779abd00ec8708c91cd828197e23a8ae993c00e462aff80ca54e0b9421b27ef"
     },
     "runtime": {
-      "path": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "path": "physics/qm/kernel/evidence/v31.5/runtime-verification.json",
+      "role": "ACTUAL_V31_5_100_RUNTIME_METHODS",
+      "sha256": "9d75c53e3c3185e9ff996ea09043365151c5480c938331fde8983b6cc0501ceb"
     },
     "instances": {
-      "path": "physics/qm/kernel/evidence/v31.4/lean-exports/verification.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "path": "physics/qm/kernel/evidence/v31.5/lean-exports/verification.json",
+      "role": "ACTUAL_V31_5_REEXECUTION_OF_SIX_POSITIVE_AND_FOUR_CORRUPT_DATA_FIXTURES",
+      "sha256": "45ea30ff1dd0d7ba9320cb383a8175728de4900771066c39afb86066a6641d93"
     },
     "metric": {
       "path": "physics/qm/kernel/evidence/v31.4/metric-focused-audit.json",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "67433379d3450a7d063cb69f7ecf64b3df0e0125b8ebaca9700748598b52720d"
     },
     "metric_review": {
       "path": "physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md",
-      "role": "VERSIONED_ACTUAL_EVIDENCE_OR_SOURCE_REVIEW"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "f236f5c343edc474ce46f3af33d62be9a1ca86264a5dd237b2543dd82002a22d"
     },
     "build_environment": {
       "path": "physics/qm/book/evidence/v3.0/build-environment.json",
-      "role": "ACTUAL_BUILD_TOOLCHAIN_AND_EXTERNAL_FONT_DEPENDENCY"
+      "role": "HISTORICAL_REVIEW_OR_TOOLCHAIN_RETAINED_WITH_ORIGINAL_VERSION_SCOPE",
+      "sha256": "82fdd9ec5c2a898bd70a5655402b5d71054a1b458b84dbb610bae98fd2ee4252"
     },
     "visual": {
+      "path": "physics/qm/book/evidence/v3.1/pdf-visual-review.json",
+      "role": "EXTERNAL_ROOT_AI_ACTUAL_LAYOUT_ACCEPTANCE",
+      "sha256": "63e92299e6c70d8b8b935cfb3f95bd1ddad58e6f38302c5edcb8e430fab0924a"
+    },
+    "structure_v3_0": {
+      "path": "physics/qm/book/evidence/v3.0/book-structure.json",
+      "role": "HISTORICAL_VERSION_EVIDENCE_NOT_THIS_EDITION_EXECUTION"
+    },
+    "assembly_v3_0": {
+      "path": "physics/qm/book/evidence/v3.0/source-assembly.json",
+      "role": "HISTORICAL_VERSION_EVIDENCE_NOT_THIS_EDITION_EXECUTION"
+    },
+    "lean_v31_4": {
+      "path": "physics/qm/kernel/evidence/v31.4/lean-verification.json",
+      "role": "HISTORICAL_VERSION_EVIDENCE_NOT_THIS_EDITION_EXECUTION"
+    },
+    "axioms_v31_4": {
+      "path": "physics/qm/kernel/evidence/v31.4/proof-axioms.json",
+      "role": "HISTORICAL_VERSION_EVIDENCE_NOT_THIS_EDITION_EXECUTION"
+    },
+    "runtime_v31_4": {
+      "path": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "role": "HISTORICAL_VERSION_EVIDENCE_NOT_THIS_EDITION_EXECUTION"
+    },
+    "instances_v31_4": {
+      "path": "physics/qm/kernel/evidence/v31.4/lean-exports/verification.json",
+      "role": "HISTORICAL_VERSION_EVIDENCE_NOT_THIS_EDITION_EXECUTION"
+    },
+    "visual_v3_0": {
       "path": "physics/qm/book/evidence/v3.0/pdf-visual-review.json",
-      "role": "EXTERNAL_ROOT_AI_LAYOUT_ACCEPTANCE"
+      "role": "HISTORICAL_VERSION_EVIDENCE_NOT_THIS_EDITION_EXECUTION"
+    },
+    "pdf_build": {
+      "path": "physics/qm/book/evidence/v3.1/pdf-build.json",
+      "role": "ACTUAL_V3_1_FROZEN_SOURCE_FONT_TEX_PDF_BUILD",
+      "sha256": "844d0be1a241a657ae7acb8c33841a80e3ee1890ba42d221d2443453251ae0cc"
+    },
+    "pdf_collaborator": {
+      "path": "physics/qm/book/evidence/v3.1/pdf-collaborator-review.json",
+      "role": "COLLABORATOR_AI_ACTUAL_17_FULL_PAGE_REVIEW",
+      "sha256": "c3b1ef36bdfdb1cdef5c41d23b9763c261ec78ed3cfe21010c1765c30b1d9a58"
+    },
+    "legacy_reuse": {
+      "path": "physics/qm/book/evidence/v3.1/legacy-source-reuse.json",
+      "role": "V3_1_UNCHANGED_LEGACY_SOURCE_IDENTITY_NOT_REEXECUTION",
+      "sha256": "e81ab024054f0fb1218607c246c636b1d94a439ea5de2127c35856cbfd7bfec8"
+    },
+    "new_chapters": {
+      "path": "physics/qm/book/evidence/v3.1/new-chapters-integration-review.json",
+      "role": "ACTUAL_NEW_CHAPTERS_51_53_SCOPE_AND_INTEGRATION_REVIEW",
+      "sha256": "877d41d1a78b645780dfd55947a0188bb76162705522674a126e336163c3e548"
+    },
+    "classification": {
+      "path": "physics/qm/book/evidence/v3.1/classification-migration.json",
+      "role": "PER_CHAPTER_CANONICAL_DEPENDENCY_SEMANTICS_MIGRATION_NOT_MATHEMATICAL_PROMOTION",
+      "sha256": "aae0bd594beb1c3e5c80b5245f988fa87d6af032242e5c3fac50133d4853c2a7"
+    },
+    "classification_review": {
+      "path": "physics/qm/book/evidence/v3.1/CLASSIFICATION_MIGRATION.md",
+      "role": "MIGRATION_REASONING_WITH_ORIGINAL_ARGUMENT_STATUS_PRESERVED",
+      "sha256": "935a91138dbca00399d5821db27413eb332fc01b679d0de1e9a7598eb1647bd1"
+    },
+    "finite_witnesses": {
+      "path": "physics/qm/kernel/evidence/v31.5/finite-witnesses/verification.json",
+      "role": "ACTUAL_V31_5_CONCRETE_29_THEOREMS_39_AUDITS_EXCLUDED_FROM_GENERIC_COUNTS",
+      "sha256": "c23a56cd179e5db0af26d073ebfe4f7909627daf47f84e3e2ff34930253f5076"
+    },
+    "demos": {
+      "path": "physics/qm/kernel/evidence/v31.5/demos-verification.json",
+      "role": "ACTUAL_V31_5_FOUR_EXACT_FINITE_DEMOS",
+      "sha256": "00d2f87035fdd0a69a25f548a839bae539b481e899e672143e22e9a3b6b15112"
+    },
+    "source_freeze": {
+      "path": "physics/qm/kernel/evidence/v31.5/source-freeze-reconciliation.json",
+      "role": "ACTUAL_EXECUTION_INPUT_SOURCE_FREEZE_RECONCILIATION",
+      "sha256": "2e99fafb4bf5c229e5243bfa56445e129506d15d4e7545db869d11cb1587e4f6"
+    },
+    "mixture": {
+      "path": "physics/qm/kernel/evidence/v31.5/focused/mixture/verification.json",
+      "role": "ACTUAL_FOCUSED_MIXTURE_PROOF_INPUTS",
+      "sha256": "1e5cb0376124d5cf70abc9e5be7b1a628d7b3594ac5e7eab48191470a7488625"
+    },
+    "cesaro": {
+      "path": "physics/qm/kernel/evidence/v31.5/focused/cesaro/verification.json",
+      "role": "ACTUAL_FOCUSED_CESARO_PROOF_INPUTS",
+      "sha256": "8f7060563297a5c315bbf183cbd04039ad8b8a1213f780e3c2e04f874ebd5868"
+    },
+    "survival": {
+      "path": "physics/qm/kernel/evidence/v31.5/focused/survival/focused-checks.json",
+      "role": "ACTUAL_FOCUSED_SURVIVAL_PROOF_INPUTS",
+      "sha256": "1e51d1c778995979b89b6ba81f09d8adbeb548b293a72e96aa713845003ce91c"
     }
   },
   "governance": {
@@ -363,19 +479,20 @@
     "four_dimensional_nonperturbative_qft_complete": false,
     "quantum_gravity_complete": false,
     "new_experiment_this_edition": false,
-    "reason": "著作完整性、数学条件定理、程序/机器证据和自然界有效性分别验收；开放义务随真正证据更新。"
+    "reason": "3.1正式书稿及实际本地验证已完成，当前集成阶段LOCAL_VERIFIED_CI_PENDING；文档、条件数学、通用/具体机器证据、程序回归与自然界有效性分别验收。X分类修订不把标准开发待办升级或消除。"
   },
   "chapters": [
     {
       "number": 0,
       "title": "文档定位、论域与证明责任",
       "anchor": "ch-0",
-      "body_sha256": "51bbebefd28798f924f0f36d6a1a9f0a23a9f5d6a351cc3e43c44da22dd17ca8",
+      "body_sha256": "e24469264c9228075ec7600bad9b48e427722a0680c4901af78a4c2c6ac2f004",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
         "S",
         "H",
+        "N",
         "O"
       ],
       "dependency_class": [
@@ -383,8 +500,8 @@
         "B",
         "S",
         "P",
-        "O",
-        "X"
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic"
@@ -416,13 +533,19 @@
         {
           "id": "S5",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版已验证有限内核/新增51–53章与维护状态；不代表整章形式化"
         }
       ],
-      "revision": "补入四生成器及科学端口责任；校正Q2继承至0–48章。",
+      "revision": "3.0记录：补入四生成器及科学端口责任；校正Q2继承至0–48章。 3.1：按冻结新正文刷新本章内容/章节/来源绑定。依赖分类语义修订（不改数学结论）：0.1–0.4、0.8规定Core/领域桥/扇区/标准输入的分工，概览明确包含弱耦合、截断等有效模型及可核响应，因此列E/O；治理段提及未闭合主张不等于本章提出一个正向UEOT科学关系，删除旧X。0.7实际给出稳定而H1为零、H1非零而不稳定等反例，argument_status补N；开放责任仍保留argument_status O。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "foundations"
+          "foundations",
+          "new_chapters",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -487,7 +610,7 @@
       "number": 1,
       "title": "UEOT Core 到量子物理的桥接",
       "anchor": "ch-1",
-      "body_sha256": "ac722ca1048aaa239fd2aa1adefb6721f655bdb8372193511f1b47e42b64059e",
+      "body_sha256": "6436a30f160229e6d23e9ea33d808a086a746102351ed11e812618d7edf78704",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -502,6 +625,7 @@
         "B",
         "S",
         "P",
+        "E",
         "O",
         "X"
       ],
@@ -543,24 +667,34 @@
         {
           "id": "S5",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "展开M-QD/M-TC/M-PE/M-OI范围、对象/强Ω、GOD/GOA和Π/Φ任务桥及七端口。",
+      "revision": "3.0记录：展开M-QD/M-TC/M-PE/M-OI范围、对象/强Ω、GOD/GOA和Π/Φ任务桥及七端口。 3.1：按冻结新正文刷新本章内容/章节/来源绑定。依赖分类语义修订（不改数学结论）：1.1–1.5实际使用响应商、递归充分态、误差运输等Core对象及其量子桥；控制/记忆/有限时域模型的额外适用条件属E，响应与误差预算属O。X严格限于1.6提出的所有环境共享同一二维驱动的DDH科学关系及其同点秩检验，绝不用于经典实现反模型。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "lean",
-          "axioms"
+          "axioms",
+          "source_freeze",
+          "new_chapters",
+          "finite_witnesses",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [
             "Operational",
-            "Transport"
+            "Transport",
+            "Cesaro",
+            "Survival"
           ],
-          "scope": "仅有限量子实现的响应商与标量运输；非全章Core/哲学命题"
+          "scope": "有限响应商/标量运输，以及正文明确接入的QSD实际消费和独立QM Cesaro切片；M-OI思想对应不冒充Core占据定理调用，哲学/二维驱动物理假说未形式化。"
         },
         "new_experimental_data": false
       },
@@ -638,7 +772,6 @@
         "B",
         "S",
         "P",
-        "X",
         "O"
       ],
       "verification_kind": [
@@ -682,11 +815,12 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "核对Nakahira Theorem1与Appendix A.2–A.3，明确非每个维数必须有物理系统。",
+      "revision": "3.0记录：核对Nakahira Theorem1与Appendix A.2–A.3，明确非每个维数必须有物理系统。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：固定因果OPT背景中的CIT/LE与ESP是扇区选择S，Nakahira重构及复量子实现属于声明的外部标准输入P/桥B，删除见证与可检验区别属于O。旧X来自经典/rebit反例或外部重定理待形式化，二者均不满足UEOT科学猜想定义；保留argument_status N/O。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "foundations"
+          "foundations",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -736,12 +870,14 @@
         "P",
         "K",
         "H",
+        "N",
         "O"
       ],
       "dependency_class": [
         "B",
         "S",
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -793,11 +929,12 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "展开变分与边界；区分局部复振幅、动量实现及全局相位；补随机初始信息下的条件Born概率。",
+      "revision": "3.0记录：展开变分与边界；区分局部复振幅、动量实现及全局相位；补随机初始信息下的条件Born概率。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：3.1指定局部二阶Fisher作用量、光滑无节点窗口与系数是额外扇区/物理/模型条件，3.2动量解释是显式桥，方差与Born条件概率是O。3.4证明给定鞅及one-hot极限的条件数学，未独立指定或证成UEOT自然实际化机制，故不因机制尚缺而新增X；若日后提出该具体关系，应另登记。3.2独立经典随机变量与3.3有限测试外改函数均为明确反例，补argument_status N。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "foundations"
+          "foundations",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -848,7 +985,8 @@
       ],
       "dependency_class": [
         "B",
-        "P"
+        "P",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -898,9 +1036,13 @@
         {
           "id": "ADV-v23.0",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "明确输入在前的Choi腿序、完整结果和标签保留；区分纸面范数证明与实际Lean切片。",
+      "revision": "3.0记录：明确输入在前的Choi腿序、完整结果和标签保留；区分纸面范数证明与实际Lean切片。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：有限复密度态、Born效应、Choi/Kraus和完整仪器是标准量子输入及操作桥，实际概率、无信号和误差界是O。精确有限维定义不因有限二字自动成为有效近似E；Choi、trace/diamond及旁系统的形式化待办也不是UEOT科学猜想X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
@@ -908,9 +1050,12 @@
           "legacy",
           "quantum_program",
           "lean",
-          "axioms"
+          "axioms",
+          "legacy_reuse",
+          "source_freeze",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [
@@ -967,7 +1112,7 @@
         "C",
         "B",
         "P",
-        "X",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -1012,9 +1157,13 @@
         {
           "id": "ADV-v23.0",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "修正总通道/POVM不足的原前提，保留两时标签反例；统一行展开/列坐标与实际模块名。",
+      "revision": "3.0记录：修正总通道/POVM不足的原前提，保留两时标签反例；统一行展开/列坐标与实际模块名。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：未来词响应与递归商实际消费Core，量子闭合跨度及编码像提供B；泄漏、编码误差和近似交织另带E，全部记录响应及其误差界为O。同POVM/总通道而异仪器记录律是已给反例N，闭包算法/通用Python或JSON细化是开发待办O，删除旧X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
@@ -1024,9 +1173,12 @@
           "lean",
           "axioms",
           "runtime",
-          "instances"
+          "instances",
+          "legacy_reuse",
+          "source_freeze",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [
@@ -1085,7 +1237,8 @@
       ],
       "dependency_class": [
         "B",
-        "P"
+        "P",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -1141,9 +1294,13 @@
         {
           "id": "ADV-v23.0",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "区分非交换块代数和交换记录代数；校正量子父层与Core泛对象的逻辑关系。",
+      "revision": "3.0记录：区分非交换块代数和交换记录代数；校正量子父层与Core泛对象的逻辑关系。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：相干扩张、公共交换接口和正事件条件态构成声明量子实现中的B/P；公共盲性、记录概率与后验预测为O。公共代数的精确闭合不自动覆盖反馈，亦未证明基本坍缩；本章没有提出新的UEOT专属机制，不加X，也不把精确有限构造自动列为近似E。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
@@ -1151,9 +1308,12 @@
           "legacy",
           "quantum_program",
           "lean",
-          "axioms"
+          "axioms",
+          "legacy_reuse",
+          "source_freeze",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [
@@ -1205,7 +1365,9 @@
       ],
       "dependency_class": [
         "B",
-        "P"
+        "P",
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -1256,15 +1418,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留多分支条件正性、复合和逐对衰减不足的反例。",
+      "revision": "3.0记录：保留多分支条件正性、复合和逐对衰减不足的反例。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：SRN及时间齐次连续半群是明确的动力学模型适用条件E，完整相关矩阵/生成元分类使用P/B，衰减和相干相位限制为O。标准半群分类及其尚未Lean化的责任不构成X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1307,6 +1471,7 @@
       "dependency_class": [
         "B",
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -1358,15 +1523,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "区分写入等距映射与完整酉，写明编码像及无泄漏；补m≥2、n≥1和置信范围。",
+      "revision": "3.0记录：区分写入等距映射与完整酉，写明编码像及无泄漏；补m≥2、n≥1和置信范围。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：QDRR实际写入—逆写接口为B/P；SRN、校准和独立有界试次是模型/统计适用条件E，重建参数与有限样本误差为O。没有真实计数时只是协议和合成验证，不把经验输入误称E，也不把协议待执行记为X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1411,8 +1578,9 @@
         "H"
       ],
       "dependency_class": [
+        "B",
         "P",
-        "B"
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -1460,15 +1628,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留噪声类、支撑与测量相容性责任。",
+      "revision": "3.0记录：保留噪声类、支撑与测量相容性责任。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：熵、纠错、无克隆和量子Fisher信息调用标准量子理论P，并以明确码/噪声/测量接口作B；可恢复条件、信息和计量限制是可核输出O。精确噪声类条件及重定理形式化缺口不自动成为E或X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1514,8 +1684,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "B",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -1565,15 +1736,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "明确无限Hilbert维与无限自由度区别，补强连续和域边界。",
+      "revision": "3.0记录：明确无限Hilbert维与无限自由度区别，补强连续和域边界。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：正常态、谱/Stone和自伴域属于标准分析输入P及连续量子接口B；能量截断、尾部控制和有限有效载体属E，其操作误差/响应界属O。无限维标准数学尚未形式化，不能改称UEOT科学猜想X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1619,10 +1792,11 @@
         "N"
       ],
       "dependency_class": [
-        "P",
         "B",
         "S",
-        "X"
+        "P",
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -1676,15 +1850,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "统一cocycle符号和ħ约定，保留共同稠密域及跨扇区共同尺度条件。",
+      "revision": "3.0记录：统一cocycle符号和ħ约定，保留共同稠密域及跨扇区共同尺度条件。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Weyl正则不可约表示、辛协变混合与共同作用尺度是声明的S/P及B，截断CCR和WKB适用范围带E，谱/尺度/不确定性限制为O。有限迹反例及经典闭轨不能推出CCR已是否定结果N；未从UEOT推出hbar或扇区原则不使已拒绝的跳跃重新成为X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1733,7 +1909,9 @@
         "H"
       ],
       "dependency_class": [
-        "P"
+        "P",
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -1765,15 +1943,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留边界、单位和模型条件，不将标准计算改称Core独有结果。",
+      "revision": "3.0记录：保留边界、单位和模型条件，不将标准计算改称Core独有结果。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：波包、振子、隧穿和Coulomb模型是标准物理P；有限振子边界、有限基及多电子近似各带有效条件E，谱、跃迁和传播等计算是O。不主张从Core选择这些Hamiltonian。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1818,8 +1998,10 @@
         "H"
       ],
       "dependency_class": [
+        "B",
         "P",
-        "B"
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -1860,15 +2042,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "统一辛形式、ħ和协方差归一，区分量子必要条件与所有态/操作的描述。",
+      "revision": "3.0记录：统一辛形式、ħ和协方差归一，区分量子必要条件与所有态/操作的描述。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：有限模Gaussian实现和协方差解释为B/P；Gaussian模型限制、能量/占据截断和尾部责任属E，协方差正性、噪声与传播是O。有限模不等于有限Hilbert维度，且二阶矩不决定任意非Gaussian过程；这些范围限制不构成X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "foundations",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1897,9 +2081,9 @@
         "N"
       ],
       "dependency_class": [
-        "P",
         "S",
-        "X"
+        "P",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -1925,15 +2109,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补Wigner适用域、m>0分支、质量/内部能量及反酉非CP边界。",
+      "revision": "3.0记录：补Wigner适用域、m>0分支、质量/内部能量及反酉非CP边界。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：射影对称、SU(2)、Galilei中心扩张和正则不可约粒子扇区是S/P，旋量/自旋、CHSH与运动学约束为O。非CP转置和群表示不决定质量/g因子的反例保留N；标准表示理论的未形式化不是X。此章按精确声明扇区论证，不仅因非相对论标题另加E。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -1979,9 +2165,8 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "S",
-        "X",
+        "P",
         "O"
       ],
       "verification_kind": [
@@ -2006,15 +2191,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "恢复para反模型、超选中心与交换子代数区别、质量与粒子数超选条件。",
+      "revision": "3.0记录：恢复para反模型、超选中心与交换子代数区别、质量与粒子数超选条件。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：相同粒子对称化、统计选择、维数/局域性与相对论自旋—统计背景属于S/P；允许统计扇区及其区别是O。自旋1/2 Bose与自旋0 Fermi的非相对论构造是对推导能力的反例N，不是自然界新粒子主张或X；无限Fock等形式化仍留argument_status O。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2056,8 +2243,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "B",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2084,15 +2272,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补热力学极限次序、单切割误差、N=2费米验证及预测/记忆/泄漏分项责任。",
+      "revision": "3.0记录：补热力学极限次序、单切割误差、N=2费米验证及预测/记忆/泄漏分项责任。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：局域多体Hamiltonian及Core对象的实现接口为P/B；有限体积、占据截断、MPS舍弃、Trotter和局域相互作用条件是E，相关、相、保真/存活与误差输出是O。未解决复杂多体算法或分类不自动列X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2138,8 +2328,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "B",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2166,15 +2357,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补Bohr频率、浴正谱、KMS与Lamb shift条件。",
+      "revision": "3.0记录：补Bohr频率、浴正谱、KMS与Lamb shift条件。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：GKSL与Davies使用标准开放系统P及操作桥B；Markov、弱耦合、浴平衡和时间尺度极限属于E，松弛、稳态和熵产生等为O。平稳不等于唯一/混合、unravelling不决定本体；标准证明缺口不是新的UEOT科学关系X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2223,7 +2416,7 @@
         "C",
         "B",
         "P",
-        "X",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2257,15 +2450,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留CNOT写环境/reset/回写反例，区分CP-divisibility和操作Markov。",
+      "revision": "3.0记录：保留CNOT写环境/reset/回写反例，区分CP-divisibility和操作Markov。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Core未来充分性和实际有记忆接口形成C/B，过程张量/NZ等标准结构属P；有限记忆、HEOM/pseudomode截断等模型近似属E，causal-break响应与遗漏记忆误差属O。同一系统态却不同未来的反例保持N；删除旧X，不把程序/无限过程待办当科学假说。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2306,11 +2501,13 @@
         "P",
         "K",
         "H",
+        "N",
         "O"
       ],
       "dependency_class": [
-        "P",
         "B",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2354,15 +2551,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补Lehmann/时间单位、简并块长期平均及热化条件。",
+      "revision": "3.0记录：补Lehmann/时间单位、简并块长期平均及热化条件。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Gibbs、KMS、相对熵、线性响应和开放热力学接口为P/B；线性响应、弱耦合/热划分和统计模型适用窗为E，响应、自由能及熵产生为O。ETH即便作为假设也非UEOT特有关系，不加X。19.4的cos(omega t)周期例明确区分时间平均与晚时收敛，补argument_status N。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2402,7 +2601,7 @@
       "number": 20,
       "title": "量子 GOD/GOA：任务、控制与长期结构",
       "anchor": "ch-20",
-      "body_sha256": "63a31279b8a4fa9f2958528eace4e74a91d85d425ac68ac22456f538d3442871",
+      "body_sha256": "d920fa8dd7d220f27f7761a95cf49166d0c8c2e9a09d6957e3eaea51f85a844c",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -2415,6 +2614,7 @@
         "C",
         "B",
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2446,15 +2646,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留目的桥，区分预测对象存在与任务最优。",
+      "revision": "3.0记录：保留目的桥，区分预测对象存在与任务最优。 3.1：按冻结新正文刷新本章内容/章节/来源绑定。依赖分类语义修订（不改数学结论）：给定任务后的Bellman/GOD/GOA使用已有Core控制组织及量子桥C/B/P；有界收益、折扣、脉冲/时间近似和评价资源窗口各须声明，模型限制列E，价值、梯度和长期结构指标列O。普适目的或唯一终极态没有被正向提出/证明，本章的控制数学及其开发待办不成为X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2496,11 +2698,13 @@
         "D",
         "K",
         "H",
+        "N",
         "O"
       ],
       "dependency_class": [
-        "P",
         "S",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2523,11 +2727,12 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "恢复Shale、Type III、split和Haag边界，区分自由/调节/微扰三种闭合。",
+      "revision": "3.0记录：恢复Shale、Type III、split和Haag边界，区分自由/调节/微扰三种闭合。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Poincare、谱条件、局域性、正性和所选场表示是S/P；格点/能量调节、split近似与有限分辨率属于E，局域期望/探测和无信号约束为O。非微扰QFT存在等标准问题不是UEOT科学猜想X。21.2平方可和与不可和Bogoliubov例及局域Type III限制具体反驳无条件有限维延伸，补argument_status N。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "advanced"
+          "advanced",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -2570,7 +2775,9 @@
         "H"
       ],
       "dependency_class": [
-        "P"
+        "P",
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -2607,15 +2814,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留分布与涂抹解释，区分Pauli–Jordan、Wightman和Feynman核。",
+      "revision": "3.0记录：保留分布与涂抹解释，区分Pauli–Jordan、Wightman和Feynman核。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：自由KG场及其传播/因果结构来自P，外源和探测响应是O。局域探测器二阶耦合计算、切换、涂抹和调节条件带E；自由场的标准存在性或后续交互作用开发不列X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2657,8 +2866,8 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "S",
+        "P",
         "O"
       ],
       "verification_kind": [
@@ -2692,15 +2901,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补正度量/协变规范势边界及局域自旋—统计的外部定理责任。",
+      "revision": "3.0记录：补正度量/协变规范势边界及局域自旋—统计的外部定理责任。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Dirac/CAR、Maxwell约束、所选场内容及物理自由度为S/P，传播子、极化和荷/能谱关系为O。这里按精确自由场与约束扇区论证，不能仅因自由二字强加有效近似E；IR和一般场论未完成也不是X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2743,6 +2954,7 @@
       ],
       "dependency_class": [
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2776,15 +2988,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "修正裸参数与反项双计风险，给完整Z与反项分解。",
+      "revision": "3.0记录：修正裸参数与反项双计风险，给完整Z与反项分解。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：相互作用作用量、LSZ/Wick和幺正性是P；调节、微扰阶次、稳定渐近粒子及红外适用域为E，散射幅与光学定理约束为O。标准非微扰或全阶形式化责任保留开放状态，不改为UEOT专属X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2825,7 +3039,9 @@
         "H"
       ],
       "dependency_class": [
-        "P"
+        "P",
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -2870,15 +3086,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "恢复独立Wilson/CS系数对照、无量纲圈参数与保留阶数条件。",
+      "revision": "3.0记录：恢复独立Wilson/CS系数对照、无量纲圈参数与保留阶数条件。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：重整化处方与标准场论属P；一圈、epsilon展开、阈值/方案和截断误差属于E，running、割和匹配量为O。增加E源于实际近似，不是经验字母迁移；不主张从Core推出耦合数值。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -2928,6 +3146,7 @@
         "C",
         "B",
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -2965,15 +3184,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补重介子散射、匹配、稳定性和展开余项。",
+      "revision": "3.0记录：补重介子散射、匹配、稳定性和展开余项。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Core对象粗化与物理过程/有效作用的明确受限桥是C/B，Schur补与EFT为P；低能展开、有效算符截断和实时适用条件为E，振幅/响应的可比后果为O。三种RG的名称类比不是等价证明；该已拒绝跳跃及标准形式化待办均不加X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -3016,6 +3237,7 @@
       ],
       "dependency_class": [
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -3042,15 +3264,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补回独立顶点张量缩并，区分Z2Zm与Zm，说明有限项/红外范围。",
+      "revision": "3.0记录：补回独立顶点张量缩并，区分Z2Zm与Zm，说明有限项/红外范围。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：QED、规范/BRST/Ward结构为P；指定调节、方案、微扰阶次及无相关异常条件为E，规范一致性和幅的可核恒等式为O。全局规范固定或非微扰义务不是UEOT科学猜想X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -3093,6 +3317,7 @@
       ],
       "dependency_class": [
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -3132,15 +3357,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留自旋迹、相空间、活跃味和独立参数积分责任。",
+      "revision": "3.0记录：保留自旋迹、相空间、活跃味和独立参数积分责任。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：固定电荷/质量/标定的标准QED为P；树级、一圈、阈值活跃窗和实验接受度等近似为E，截面、running与磁矩为O。数值吻合未升级独立常数预测或新实验。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -3183,10 +3410,10 @@
         "O"
       ],
       "dependency_class": [
-        "P",
-        "S",
         "B",
-        "X",
+        "S",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -3228,15 +3455,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留全部左手表示计数、determinant-line与规范轨道桥的适用域。",
+      "revision": "3.0记录：保留全部左手表示计数、determinant-line与规范轨道桥的适用域。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：规范群/表示内容是S/P，GOIT/QGOIT须保留其明确的物理桥B身份；一圈活跃谱窗等为E，异常与候选排除为O。异常解非唯一性是既有反例N，删除旧X；标准群/异常的分类待办及被拒绝的Core-holonomy同名推论不构成开放UEOT关系。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -3284,8 +3513,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "S",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -3337,15 +3567,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留重轻分离、非退化与自由参数责任。",
+      "revision": "3.0记录：保留重轻分离、非退化与自由参数责任。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Higgs/Yukawa、场内容与味参数选择为S/P；seesaw层级、超相对论振荡和EFT近似属E，质量矩阵、参数计数及振荡概率为O。文中未另给UEOT唯一选择n、epsilon、c的具体机制，不能仅因质量起源开放就新增X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "quantum_program"
+          "quantum_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -3391,11 +3623,12 @@
         "O"
       ],
       "dependency_class": [
-        "P",
-        "S",
         "B",
-        "X",
-        "O"
+        "S",
+        "P",
+        "E",
+        "O",
+        "X"
       ],
       "verification_kind": [
         "analytic",
@@ -3451,9 +3684,13 @@
         {
           "id": "QM314",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "保持完整331场表与轻子同质等谱前提；接入Selector/Spectrum；校正二十Higgs为总数。",
+      "revision": "3.0记录：保持完整331场表与轻子同质等谱前提；接入Selector/Spectrum；校正二十Higgs为总数。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：声明的HGP/表示配置及物理谱假设属B/S/P，固定高低能活跃窗和一圈/阈值近似属E，异常、整数候选及预算为O。X只保留UEOT如何独立强制选出这些前提并解释现实三代的未证物理关系；H-QG3前提下的完整整数定理、Lean Selector/Spectrum和已给删除见证都不是X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
@@ -3463,9 +3700,12 @@
           "lean",
           "axioms",
           "runtime",
-          "instances"
+          "instances",
+          "legacy_reuse",
+          "source_freeze",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [
@@ -3527,10 +3767,11 @@
       ],
       "dependency_class": [
         "B",
-        "P",
         "S",
-        "X",
-        "O"
+        "P",
+        "E",
+        "O",
+        "X"
       ],
       "verification_kind": [
         "analytic"
@@ -3575,11 +3816,12 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "明确Betti/Dirac指标、completion与未构造的自然映射不同。",
+      "revision": "3.0记录：明确Betti/Dirac指标、completion与未构造的自然映射不同。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：framing/扇区及外部拓扑结构为B/S/P，指定descent、无inflow自治实现及有效窗口须逐项说明，模型适用限制列E，chi及候选分类输出列O。X限于FAD物理必要性、指定几何载体选择世代数等UEOT关系；Betti数→世代、闭轨→CCR、有限二相位→全局Born已反驳，继续保留argument_status N，不重新包装为开放X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "advanced"
+          "advanced",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -3627,6 +3869,7 @@
       "dependency_class": [
         "B",
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -3652,9 +3895,13 @@
         {
           "id": "PRIMARY",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "新增当前精确Python与Lean入口，显式区分规格和已实现API及资源上限。",
+      "revision": "3.0记录：新增当前精确Python与Lean入口，显式区分规格和已实现API及资源上限。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：架构契约登记领域输入、输出和桥B/P，CV/QFT/多体后端各有截断、记忆与模型误差责任E，可比较概率响应及证书接口为O。接口未实现、反射或搜索尚未证明属于开发开放项；表中并无额外正向UEOT机制，因此不加X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
@@ -3662,7 +3909,9 @@
           "lean",
           "axioms",
           "runtime",
-          "instances"
+          "instances",
+          "source_freeze",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -3758,11 +4007,12 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保存SPAM、基线、留出预测和校准责任，不增加真实实验声明。",
+      "revision": "3.0记录：保存SPAM、基线、留出预测和校准责任，不增加真实实验声明。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：器件/仪器和预测桥为B/P；34.2的SRN/校准，34.5的有限体积/Trotter，34.6的BdG单带和34.7的EFT适用窗是实际E；留出响应、误差与排除条件是O。保留E有这些明确模型依据，不因旧E=经验而机械保留。对新实际化/HGP候选提出检验要求不等于本章已指定新UEOT关系，故不新增X或真实实验状态。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "assembly"
+          "assembly",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -3827,6 +4077,7 @@
         "C",
         "B",
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -3852,15 +4103,21 @@
         {
           "id": "PRIMARY",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "写明末端一致TV误差、旁系统diamond合同及正事件后验独立界。",
+      "revision": "3.0记录：写明末端一致TV误差、旁系统diamond合同及正事件后验独立界。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：单一响应装配和实际标量误差运输包含C/B/P，模型逼近、截断和近似误差须经共同目标转换，列E，记录律/TV及后选择概率界列O。35.4是完成边界汇总；不把非微扰开发、已被经典反例否定的无附加前提跳跃，或仅列出的研究目标统称X。具体科学候选的X范围由1/31/32/40/42/47登记。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "assembly",
           "lean",
-          "axioms"
+          "axioms",
+          "source_freeze",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -3912,9 +4169,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "S",
-        "X",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -3952,15 +4209,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "区分SU(2)低能与SU(3)L高能beta，保留G-01/G-02。",
+      "revision": "3.0记录：区分SU(2)低能与SU(3)L高能beta，保留G-01/G-02。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：正确高能规范群及完整场表是S/P，高低能活跃窗、一圈与阈值模型为E，异常/双候选和排除计算为O。五色反例及条件整数分类不是X；本章只报告为何选该载体仍需独立理由，并未提出新的Core必选关系，删除旧X并保留N/O论证状态。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "frontier_program"
+          "frontier_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4014,11 +4273,13 @@
         "D",
         "P",
         "H",
+        "N",
         "O"
       ],
       "dependency_class": [
-        "P",
         "S",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -4062,15 +4323,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补轻子普适性完整矩阵条件，保留F-01至F-03准确注册。",
+      "revision": "3.0记录：补轻子普适性完整矩阵条件，保留F-01至F-03准确注册。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：所选扩展规范/味结构为S/P；单一重矢量、忽略exotic混合和低能EFT属E；秩一和式、FCNC及匹配系数界属O。没有新的UEOT未证科学关系，不加X。37.6用非平凡酉共轭给出等对角元仍有非零非对角元的明确反例，补argument_status N。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "frontier_program"
+          "frontier_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4126,7 +4389,8 @@
       ],
       "dependency_class": [
         "P",
-        "X"
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -4163,15 +4427,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留Gaussian对角扩散与更宽经典跳跃的区别，修正M-01注册。",
+      "revision": "3.0记录：保留Gaussian对角扩散与更宽经典跳跃的区别，修正M-01注册。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：标准CP/相干结构为P，SRN和齐次半群模型为E，循环相位—衰减界及Poisson饱和为O。非零循环可以来自经典噪声是反例N，删除把反例误记为X的旧分类。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "frontier_program"
+          "frontier_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4224,7 +4490,7 @@
       ],
       "dependency_class": [
         "P",
-        "X",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -4280,15 +4546,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留E-02人口保持误差、严格校准和188次理想条件。",
+      "revision": "3.0记录：保留E-02人口保持误差、严格校准和188次理想条件。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：四能级Kraus/效应和CP结构为P，受检随机相位类、近似人口保持与校准模型为E，锐见证和检验概率为O。排除整个声明噪声子类仍不是新自然定律；旧X是反例/排除误义，应删去并保留N/O论证字母。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "frontier_program"
+          "frontier_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4348,10 +4616,11 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "S",
-        "X",
-        "O"
+        "P",
+        "E",
+        "O",
+        "X"
       ],
       "verification_kind": [
         "analytic",
@@ -4400,15 +4669,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "范数与gauge术语消歧；简并谱使用共同能量标签；修复旧交叉引用。",
+      "revision": "3.0记录：范数与gauge术语消歧；简并谱使用共同能量标签；修复旧交叉引用。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：指定SSE、量子态和噪声物理输入为S/P；QND、固定算符/速率、噪声及记录耦合模型属E，吸收率、有限时误差、加热/干涉约束属O。X仅指UEOT资源/自维持/记录是否必然选择A、Qr、gamma_r以及自然界是否采用该基本实际化机制；条件Itō/鞅吸收定理及远端制备反例自身不是X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "frontier_program"
+          "frontier_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4466,9 +4737,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "B",
-        "X",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -4500,15 +4771,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留相干逆演化可实施范围和候选机制的独立约束责任。",
+      "revision": "3.0记录：保留相干逆演化可实施范围和候选机制的独立约束责任。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：量子环境扩张及反演接口为P/B，环境访问/控制/校准限制构成E，可区分与不可区分的系统响应结论为O。扩张等价障碍是条件定理/否定结果N，不是未证UEOT科学关系，删除旧X；扩大模型识别能力的待办仍保留argument_status O。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "frontier_program"
+          "frontier_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4573,15 +4846,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "把未使用形式化助手限定到这组高级解析与科学回归，避免覆盖新有限Lean。",
+      "revision": "3.0记录：把未使用形式化助手限定到这组高级解析与科学回归，避免覆盖新有限Lean。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：实验合同使用标准仪器/校准P，预注册零假设、SRN/噪声、有效粒子窗和有限样本条件为E，拒绝家族与参数/响应区间为O。X严格限于42.3正在比较的UEOT-HGP独立选择或自然基本实际化等具体科学候选状态；算术回归、反例和未执行的硬件协议不属于X。argument_status E保留数值/合成证据原义，不升级为新增真实实验。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "frontier_program"
+          "frontier_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4627,8 +4902,11 @@
         "H"
       ],
       "dependency_class": [
+        "B",
+        "S",
         "P",
-        "B"
+        "E",
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -4655,15 +4933,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "补局部Madelung欠缺的全局域和边界结构。",
+      "revision": "3.0记录：补局部Madelung欠缺的全局域和边界结构。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：复Hilbert、作用尺度及环上动力学属P，边界扭转/表示扇区的选择属S，连接全局相位与响应的明确接口属B，理想环和外场模型限制属E；谱与holonomy是O。边界/尺度输入不是Core已推出的自然常数，不新增X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "completion_program"
+          "completion_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4705,8 +4985,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "B",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -4740,15 +5021,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留具体本征线、边界、对称性及受控有限模型。",
+      "revision": "3.0记录：保留具体本征线、边界、对称性及受控有限模型。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：Berry/SSH的标准量子结构与对象实现为P/B，SSH截断、边界、有限尺寸、绝热和对称保护条件为E，体隙、边态残差与存活为O。相互作用拓扑分类尚未完成不等于UEOT科学猜想；拓扑数不能无条件解释粒子世代，故不加X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "completion_program"
+          "completion_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4796,8 +5079,9 @@
         "O"
       ],
       "dependency_class": [
-        "P",
         "B",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -4831,15 +5115,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "区分有限存在、连续展开和Core实时干预桥。",
+      "revision": "3.0记录：区分有限存在、连续展开和Core实时干预桥。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：有限格点规范模型与跨尺度接口为P/B，调节格距、光滑经典展开及粗作用截断为E，Wilson环与小格点精确响应为O。有限测度存在不等于连续QCD；四维YM质量隙等标准开放数学不是UEOT专属X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "completion_program"
+          "completion_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4892,7 +5178,7 @@
       "dependency_class": [
         "P",
         "E",
-        "X"
+        "O"
       ],
       "verification_kind": [
         "analytic",
@@ -4925,15 +5211,17 @@
           "locator": "按本章正文及来源目录中的精确位置"
         }
       ],
-      "revision": "保留共享Bernoulli反例、校准事件和泄漏计数责任。",
+      "revision": "3.0记录：保留共享Bernoulli反例、校准事件和泄漏计数责任。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：实际统计效应和物理校准输入为P，逐试次条件零假设、泄漏及校准模型属E，固定样本和可选停止错误界属O。相关试次反例保持argument_status N；删除旧X，且E保留的根据是明确模型条件，不是经验字母。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
           "advanced",
           "legacy",
-          "completion_program"
+          "completion_program",
+          "legacy_reuse",
+          "classification"
         ],
-        "program_scope": "所列程序中与本章相关的有限实例；不是全部公式逐项验证或实验证据",
+        "program_scope": "历史3.0三套程序只支持其当时实际源/有限输入；3.1确认源码身份复用但未重跑，不为修订正文追授验证。如同时列v31.5内核运行/实例回执，它们仅支持各自实际数据与源码。",
         "formal": {
           "whole_chapter_formalized": false,
           "modules": [],
@@ -4969,7 +5257,7 @@
       "number": 47,
       "title": "研究总规划：从闭合模块到可区分物理",
       "anchor": "ch-47",
-      "body_sha256": "25fb3e0baba0bb9fb473d72a53b4f8b5fe9db485828474c423a284b7cf53a9e4",
+      "body_sha256": "1e71f290c8a36d1a5a6b0e55c446d8be39de5922b937714c25eb5b01fe2088b4",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -4988,7 +5276,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "给R1–R13依赖、可交付产物、否证和停止规则，连接长期统一目标。",
+      "core_content": "保留R1–R13研究依赖与否证规则；按Kernel1.5实际混合、Cesaro与条件存活闭合切片更新下一批科学/标准数学/开发义务。",
       "numbered_results": [],
       "external_result_ids": [],
       "source_refs": [
@@ -5019,13 +5307,19 @@
         {
           "id": "QM314",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版已验证有限内核/新增51–53章与维护状态；不代表整章形式化"
         }
       ],
-      "revision": "按已验证Kernel1.4更新下一批义务和科学依赖账本。",
+      "revision": "3.0记录：按已验证Kernel1.4更新下一批义务和科学依赖账本。 3.1：按冻结新正文刷新本章内容/章节/来源绑定。依赖分类语义修订（不改数学结论）：研究总规划确实并列实际Core、领域桥、扇区、标准理论、有效模型与可区分输出，保留C/B/S/P/E/O。X只用于明确待检验的UEOT量子选择、HGP/物理世代选择、实际化、几何/引力或参数选择关系；mean-ergodic、非交换Perron、程序细化等标准数学/开发开放项不得仅因待形式化而记X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "assembly"
+          "assembly",
+          "new_chapters",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -5111,7 +5405,7 @@
       "number": 48,
       "title": "理论总著、状态接口与持续维护",
       "anchor": "ch-48",
-      "body_sha256": "117b8eaf7b645f3a4690dea2d2df9f29e2f22be7aa6b58498a2f0b29508132f4",
+      "body_sha256": "6e5ae82b331840913d05296bacf01e46e29bed8819fc819c9abbf09a232ef03a",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -5128,7 +5422,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "固定唯一正文、三状态轴、修改治理及高风险结论必须携带的前提。",
+      "core_content": "固定3.1唯一连续正文及三状态轴；纠正dependency_class E/O/X与冻结接口冲突，保留argument_status及结果来源。",
       "numbered_results": [],
       "external_result_ids": [],
       "source_refs": [
@@ -5159,13 +5453,19 @@
         {
           "id": "QM314",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版已验证有限内核/新增51–53章与维护状态；不代表整章形式化"
         }
       ],
-      "revision": "新增显式字段消歧、源绑定、跨章修订和Core回馈边界。",
+      "revision": "3.0记录：新增显式字段消歧、源绑定、跨章修订和Core回馈边界。 3.1：按冻结新正文刷新本章内容/章节/来源绑定。依赖分类语义修订（不改数学结论）：维护章监督Core/桥/标准实现、有效模型及可观测后果的依赖身份，保留C/B/P/E/O；其48.2定义X字母不等于本章提出一个科学猜想。argument_status D/S/O继续表达编辑、解释和维护责任；版本/编译/远端状态不改变物理证明等级。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "assembly"
+          "assembly",
+          "new_chapters",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -5215,8 +5515,9 @@
       "dependency_class": [
         "C",
         "B",
-        "P",
         "S",
+        "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -5263,9 +5564,13 @@
         {
           "id": "PRIMARY",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "新增P-QKR-01至04；整合Kernel1.1–1.3并保留谱桥边界。",
+      "revision": "3.0记录：新增P-QKR-01至04；整合Kernel1.1–1.3并保留谱桥边界。 3.1：正文切片保持原字节，刷新版本责任。依赖分类语义修订（不改数学结论）：响应商/递归状态实际消费Core，有限词效应/坐标/证书构成B，复Hilbert/Born/Kraus属P，量子选择背景属S。49.7条件谱行与弱运行窗口带E，全部记录和候选预算为O。Python搜索/JSON反射/物理重构尚未全证是独立开发或物理责任，不把本章已证合同标为X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
@@ -5273,7 +5578,9 @@
           "lean",
           "axioms",
           "runtime",
-          "instances"
+          "instances",
+          "source_freeze",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -5336,7 +5643,7 @@
       "number": 50,
       "title": "从实际 Born 概率到量子误差传播",
       "anchor": "ch-50",
-      "body_sha256": "60f0eda72d8d24175fb733f239befbeb322deda0c725af2f75f2b8521e532884",
+      "body_sha256": "9cbdd8583bed60d908ca469743085c20a12dc24dd1c361b7ada1fff8aaed7197",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -5348,6 +5655,7 @@
         "C",
         "B",
         "P",
+        "E",
         "O"
       ],
       "verification_kind": [
@@ -5406,9 +5714,13 @@
         {
           "id": "PRIMARY",
           "locator": "按本章正文及来源目录中的精确位置"
+        },
+        {
+          "id": "QM315",
+          "locator": "本版source-manifest的同名模块及实际重新执行；原QM314来源保留版本责任"
         }
       ],
-      "revision": "新增P-QST-01至06及Kernel1.4的Effects/Stability实际定理。",
+      "revision": "3.0记录：新增P-QST-01至06及Kernel1.4的Effects/Stability实际定理。 3.1：按冻结新正文刷新本章内容/章节/来源绑定。依赖分类语义修订（不改数学结论）：实际效应、Born配对和完整Kraus通道使用P/B，真实一步缺陷递推再消费Core运输形成C；共同有限载体的近似模型和正事件适用窗列E，概率差与轨迹/后验预算为O。伪距离到trace/diamond识别、一般旁系统和自适应装配的形式化缺口不是X。",
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
@@ -5416,7 +5728,9 @@
           "lean",
           "axioms",
           "metric",
-          "metric_review"
+          "metric_review",
+          "source_freeze",
+          "classification"
         ],
         "program_scope": "按正文论证及所列源/审查负责；无通用数值覆盖宣称",
         "formal": {
@@ -5465,6 +5779,408 @@
       ],
       "primary_reference_urls": [],
       "inline_source_citations": []
+    },
+    {
+      "number": 51,
+      "title": "随机化量子实现与可认证误差预算",
+      "anchor": "ch-51",
+      "body_sha256": "8806bb6f964fcd48bed4a0865588b26b6faddc32a1e148ea3707945488c231ba",
+      "edition_status": "NEW_IN_3_1",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "lean"
+      ],
+      "core_content": "以非负归一权重构造实际密度态及完整Kraus混合，证明全输入全效应TV上界、成员误差组合和精确有理预算，并接真实轨迹运输。",
+      "numbered_results": [
+        {
+          "id": "P-QMX-01",
+          "title": "P-QMX-01（概率混合的实际实现）。",
+          "anchor": "p-qmx-01",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QMX-02",
+          "title": "P-QMX-02（同库权重变化的全称上界）。",
+          "anchor": "p-qmx-02",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QMX-03",
+          "title": "P-QMX-03（权重与成员误差的联合上界）。",
+          "anchor": "p-qmx-03",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QMX-04",
+          "title": "P-QMX-04（精确有理预算的解释）。",
+          "anchor": "p-qmx-04",
+          "origin": "NEW_IN_3_1"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "QM315",
+          "locator": "Mixture.lean、实际v31.5运行/见证；51.1–51.5"
+        },
+        {
+          "id": "S2",
+          "locator": "51.4经Stability/Transport消费既有M-TC；参第1.4、50章"
+        }
+      ],
+      "revision": "3.1新增连续正文及13项新编号的一部分；分类责任：实际归一随机混合为P/E，Weights→密度态/Kraus及TV上界为B，可认证概率/缺陷预算为O；51.4经真实轨迹接口间接实际消费M-TC，所以包含C。每串轨迹须固定结果/Kraus指标且共享矩阵载体；成员误差另需全输入证据。51.3同权异库反例属于N，不是X。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "new_chapters",
+          "lean",
+          "axioms",
+          "runtime",
+          "demos",
+          "finite_witnesses",
+          "mixture",
+          "classification",
+          "source_freeze"
+        ],
+        "program_scope": "v31.5 finite_dynamics的同库权重预算、尖锐I/X例、同权异库与重复成员反例；Examples.lean具体五定理及四定义共9命名目标，另计于29/39，不计入334/392。",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Mixture",
+            "Weighted",
+            "Effects",
+            "Stability",
+            "Transport"
+          ],
+          "scope": "同有限矩阵载体真实状态/完整通道库的混合、TV=半l1及另证成员缺陷预算；每库共用其有限结果/Kraus指标。轨迹组合间接消费Core M-TC。不是任意未知通道、完整结果仪器或diamond算法。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "改变库成员时须另证每个真实全输入通道缺陷上界，不能从采样最大值推得。",
+        "完整经典结果/自适应寄存器和任意旁系统diamond控制需明确提升；当前每串轨迹指标类型固定。",
+        "全Python/JSON/指纹等价的程序细化未完成；该标准数学/开发义务不自动是X。"
+      ],
+      "sections": [
+        {
+          "id": "51.1",
+          "title": "从概率权重构造真实量子对象"
+        },
+        {
+          "id": "51.2",
+          "title": "总变差的一半来自归一化"
+        },
+        {
+          "id": "51.3",
+          "title": "库成员也变化时的预算分解"
+        },
+        {
+          "id": "51.4",
+          "title": "有理预算与长期误差装配"
+        },
+        {
+          "id": "51.5",
+          "title": "尖锐见证、程序责任与下一步"
+        }
+      ],
+      "primary_reference_urls": [],
+      "inline_source_citations": []
+    },
+    {
+      "number": 52,
+      "title": "长期平均、紧性与量子平稳态",
+      "anchor": "ch-52",
+      "body_sha256": "b221c012d301c1ad1c77df82189ebeb6dae1540dc01057d23e7961f2b56fd7d7",
+      "edition_status": "NEW_IN_3_1",
+      "argument_status": [
+        "D",
+        "P",
+        "K",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "lean"
+      ],
+      "core_content": "证明实际Cesaro密度态、精确望远镜残差、全效应1/N与算符范数2/N、有限维密度集合紧性、不变严格子极限及正维平稳态存在。",
+      "numbered_results": [
+        {
+          "id": "P-QCE-01",
+          "title": "P-QCE-01（平均态的精确残差与全效应预算）。",
+          "anchor": "p-qce-01",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QCE-02",
+          "title": "P-QCE-02（实际密度集合的紧性）。",
+          "anchor": "p-qce-02",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QCE-03",
+          "title": "P-QCE-03（有限完整通道的平稳密度态）。",
+          "anchor": "p-qce-03",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "N-QCE-01",
+          "title": "N-QCE-01（平均不变不等于轨道收敛或唯一性）。",
+          "anchor": "n-qce-01",
+          "origin": "NEW_IN_3_1"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "QM315",
+          "locator": "Cesaro.lean与v31.5有限动力学运行检查；52.1–52.5"
+        },
+        {
+          "id": "S2",
+          "locator": "52.3中的P-PER-02/M-OI仅为研究结构对应，不是源码消费"
+        },
+        {
+          "id": "S3",
+          "locator": "52.3持续性端口研究定位"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "52.3所引Burgarth等有限维量子通道原始研究"
+        }
+      ],
+      "revision": "3.1新增连续正文及13项新编号的一部分；分类责任：固定完整有限量子通道和重复模型为P/E，真实矩阵平均、紧性与不变子极限提供B及残差/平稳输出O；源码独立证明QM版本，没有直接消费Core占据测度定理，故不列C。N-QCE-01是解析/运行反例，不冒称通用Lean；标准完整Cesaro投影或谱隙待形式化不列X。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "new_chapters",
+          "lean",
+          "axioms",
+          "runtime",
+          "demos",
+          "cesaro",
+          "classification",
+          "source_freeze"
+        ],
+        "program_scope": "v31.5运行验证实际range(N)平均、奇数长度残差、周期轨道、恒等通道的非唯一平稳态及N=0拒绝。实算有限见证不替代通用拓扑/存在证明。",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Cesaro",
+            "Basic",
+            "Instrument",
+            "Effects",
+            "Stability"
+          ],
+          "scope": "固定完整有限Kraus通道，N>0；若仅给通道而无初态需非空有限载体。源码在QM矩阵层独立构造，Core占据极限仅是研究对应。N-QCE-01的周期/多平稳态反例为解析与运行证据，不是新增通用Lean定理。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "未形式化整个Cesaro投影极限、唯一性、原始轨道混合或谱隙速率；小残差不是到指定稳态的距离界。",
+        "无限维需能量紧性、尾部和算符域；标准数学待形式化不因此列X。",
+        "本结论不是单条随机实验轨迹的经验遍历律。"
+      ],
+      "sections": [
+        {
+          "id": "52.1",
+          "title": "实际迭代和平均态"
+        },
+        {
+          "id": "52.2",
+          "title": "密度态集合为什么紧"
+        },
+        {
+          "id": "52.3",
+          "title": "不变子极限与平稳态存在"
+        },
+        {
+          "id": "52.4",
+          "title": "周期轨道与多平稳态的反例"
+        },
+        {
+          "id": "52.5",
+          "title": "长期平均在完整物理理论中的位置"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/1210.5625"
+      ],
+      "inline_source_citations": [
+        "S2，§7–8；S3，持续性端口"
+      ]
+    },
+    {
+      "number": 53,
+      "title": "条件生存、对角量子实现与 Core 谱桥",
+      "anchor": "ch-53",
+      "body_sha256": "8ca7df1aa8d40ec31ebf4f870cbda654d228a6dcce74ec3d633de3c98d1a51c1",
+      "edition_status": "NEW_IN_3_1",
+      "argument_status": [
+        "D",
+        "P",
+        "H",
+        "N",
+        "O"
+      ],
+      "dependency_class": [
+        "C",
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "lean"
+      ],
+      "core_content": "把行约定次随机矩阵实现为完整存活/失败Kraus仪器，证明实际成功记录与对角经典动力学交织，消费Core QSD/Perron/Doob得到生存律和条件态。",
+      "numbered_results": [
+        {
+          "id": "P-QSV-01",
+          "title": "P-QSV-01（次随机核的完整量子仪器）。",
+          "anchor": "p-qsv-01",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QSV-02",
+          "title": "P-QSV-02（对角动力学与有限成功词的交织）。",
+          "anchor": "p-qsv-02",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QSV-03",
+          "title": "P-QSV-03（实际全成功记录的几何生存律）。",
+          "anchor": "p-qsv-03",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "P-QSV-04",
+          "title": "P-QSV-04（Doob 核的实际完整实现与不变成功记录）。",
+          "anchor": "p-qsv-04",
+          "origin": "NEW_IN_3_1"
+        },
+        {
+          "id": "N-QSV-01",
+          "title": "N-QSV-01（QSD、Doob 不变律与任意初态不可混同）。",
+          "anchor": "n-qsv-01",
+          "origin": "NEW_IN_3_1"
+        }
+      ],
+      "external_result_ids": [],
+      "source_refs": [
+        {
+          "id": "QM315",
+          "locator": "Survival.lean及对应Core导入/具体见证；53.1–53.6"
+        },
+        {
+          "id": "S1",
+          "locator": "53.6原始对象持续/双驱动研究动机"
+        },
+        {
+          "id": "S2",
+          "locator": "QSD/Perron和GOA；53.3–53.4给出真实调用名"
+        },
+        {
+          "id": "S4",
+          "locator": "53.6持续性与评价的分型"
+        },
+        {
+          "id": "PRIMARY",
+          "locator": "53.4所引Carollo等量子Doob原始研究"
+        }
+      ],
+      "revision": "3.1新增连续正文及13项新编号的一部分；分类责任：冻结QSD/Perron/Doob定理被源码实际消费，列C；对角测量制备/终止事件模型为E，复密度态和完整Kraus为P，实际记录/对角交织为B，几何存活与条件态为O。正谱数据是显式前提，QSD≠Doob律和任意初态反例保留N。一般非交换存在、条件极限和寿命无穷尾和的项目缺口不是自动X。",
+      "verification_responsibility": {
+        "evidence_refs": [
+          "structure",
+          "assembly",
+          "new_chapters",
+          "lean",
+          "axioms",
+          "runtime",
+          "demos",
+          "finite_witnesses",
+          "survival",
+          "classification",
+          "source_freeze"
+        ],
+        "program_scope": "v31.5两态非均匀损失有理模型，QSD q与Doob pi不同、任意初态/转置方向反例和零事件拒绝；具体24定理及30命名目标与Mixture见证合计29/39，独立于334/392。",
+        "formal": {
+          "whole_chapter_formalized": false,
+          "modules": [
+            "Survival",
+            "Weighted",
+            "Instrument",
+            "Operational"
+          ],
+          "scope": "对角测量制备嵌入，给定非负次随机核、归一左谱数据r>0和Doob所需正右特征向量；实际消费冻结QSD定理。形式化的是有限成功分支、记录质量、条件态及Doob成功不变关系，未另登记遗忘结果的channelState平稳定理。"
+        },
+        "new_experimental_data": false
+      },
+      "open_obligations": [
+        "正谱数据是输入，不代表本版证明每个CP核存在唯一Perron数据、全局谱半径身份或任意初态吸引。",
+        "一般非交换Perron/Doob、长期条件过程、不可约/本原条件及谱隙尚待相应标准数学/领域桥证明，不自动属X。",
+        "首次失败无穷尾和/平均寿命在正文为解析推论，时间标定是P；有限记录机器证明不覆盖无限期物理寿命。"
+      ],
+      "sections": [
+        {
+          "id": "53.1",
+          "title": "约定、结果与失败补全"
+        },
+        {
+          "id": "53.2",
+          "title": "同一个存活记录的量子与经典解释"
+        },
+        {
+          "id": "53.3",
+          "title": "QSD 的生存律与寿命"
+        },
+        {
+          "id": "53.4",
+          "title": "Doob 实现及其不同的不变分布"
+        },
+        {
+          "id": "53.5",
+          "title": "区分 QSD、Doob 律与初态前提的精确模型"
+        },
+        {
+          "id": "53.6",
+          "title": "对 UEOT 核心追求的实际贡献"
+        }
+      ],
+      "primary_reference_urls": [
+        "https://arxiv.org/abs/1711.10951"
+      ],
+      "inline_source_citations": [
+        "S1；S2，QSD/Perron 与 GOA 各节；S4，持续性和评价的分型"
+      ]
     }
   ],
   "appendices": [
@@ -5485,7 +6201,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "单位、Choi腿序、各章重用符号及未完整重证的外部定理条件。",
+      "core_content": "保持符号、单位、Choi腿序、标准重定理适用条件及有限内核概率/误差符号；目录不替代证明责任。",
       "source_refs": [
         {
           "id": "Q2",
@@ -5503,7 +6219,8 @@
       "verification_responsibility": {
         "evidence_refs": [
           "structure",
-          "assembly"
+          "assembly",
+          "classification"
         ],
         "whole_appendix_formalized": false,
         "new_experimental_data": false
@@ -5518,7 +6235,7 @@
       "id": "B",
       "title": "编号证明结果注册表",
       "anchor": "appendix-b",
-      "body_sha256": "796e156b5239fd639b557cc03b8ec3ded6a08c302ea6eddbfaae42da9b410a29",
+      "body_sha256": "1eb0b754f9857da75ff8b278f749539884d655eed4957b698d05b0ec963315a5",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -5531,7 +6248,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "88个稳定编号与实际锚点、完整命题名、所属章绑定；保留78旧ID和10新ID。",
+      "core_content": "101个稳定结果与真实命题锚点绑定，保留78个INHERITED_ID与10个NEW_IN_3_0，另有13个NEW_IN_3_1；编号不是原创/Lean/实验计数。",
       "source_refs": [
         {
           "id": "Q2",
@@ -5540,11 +6257,16 @@
         {
           "id": "QM314",
           "locator": "附录B及对应来源登记"
+        },
+        {
+          "id": "QM315",
+          "locator": "新增51–53章的稳定结果与真实v31.5源码来源，非书目自身的Core派生"
         }
       ],
       "verification_responsibility": {
         "evidence_refs": [
-          "structure"
+          "structure",
+          "classification"
         ],
         "whole_appendix_formalized": false,
         "new_experimental_data": false
@@ -5559,7 +6281,7 @@
       "id": "C",
       "title": "来源、继承关系与研究诚实性",
       "anchor": "appendix-c",
-      "body_sha256": "0c5b700181ee3fbed458b961513f2fc05d632a689cbfebc96112009e62018e65",
+      "body_sha256": "5d29f1474c1cde145632066e16a4b8cde21fa21b5a4ec8844f270556a32b05c8",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -5572,7 +6294,7 @@
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "区分原始字节、历史可读文本见证、旧PDF不同身份与原始研究依赖。",
+      "core_content": "保留11份原材料及历史文本的独立字节身份，接入v31.5实际源清单、Mathlib/原始研究来源及新章先例；不伪称本轮重读所有历史原件。",
       "source_refs": [
         {
           "id": "S1",
@@ -5605,13 +6327,19 @@
         {
           "id": "QM314",
           "locator": "附录C及对应来源登记"
+        },
+        {
+          "id": "QM315",
+          "locator": "新增51–53章的稳定结果与真实v31.5源码来源，非书目自身的Core派生"
         }
       ],
       "verification_responsibility": {
         "evidence_refs": [
           "advanced",
           "foundations",
-          "assembly"
+          "assembly",
+          "structure",
+          "classification"
         ],
         "whole_appendix_formalized": false,
         "new_experimental_data": false
@@ -5631,15 +6359,17 @@
         "https://link.aps.org/doi/10.1103/PhysRevD.50.R34",
         "https://arxiv.org/abs/1002.4033",
         "https://arxiv.org/abs/1003.1145",
+        "https://arxiv.org/abs/1210.5625",
+        "https://arxiv.org/abs/1711.10951",
         "https://arxiv.org/html/2605.23217v1"
       ],
       "inline_source_citations": []
     },
     {
       "id": "D",
-      "title": "全部可执行验证与本版结果",
+      "title": "全部继承验证代码与版本回执",
       "anchor": "appendix-d",
-      "body_sha256": "7a88929cc123225ceb1648731438f258d704bc2dd5046a3e5e737a2c5629144f",
+      "body_sha256": "2b7a22ca06962898ea08d365adb9a10d5b310af0332987591d961576a772adc3",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -5647,13 +6377,15 @@
       ],
       "dependency_class": [
         "B",
-        "P"
+        "P",
+        "E",
+        "O"
       ],
       "verification_kind": [
         "exact_arithmetic",
         "synthetic"
       ],
-      "core_content": "完整内嵌三套继承程序及本版实际757项检查回执。",
+      "core_content": "完整保留三套继承验证程序及3.0实际757项检查；3.1只核源码未变并复用历史责任，不冒称重新执行或验证修订全文。",
       "source_refs": [
         {
           "id": "Q2",
@@ -5665,7 +6397,10 @@
           "legacy",
           "quantum_program",
           "frontier_program",
-          "completion_program"
+          "completion_program",
+          "structure",
+          "classification",
+          "legacy_reuse"
         ],
         "whole_appendix_formalized": false,
         "new_experimental_data": false
@@ -5680,20 +6415,17 @@
       "id": "E",
       "title": "正式阅读版、编译与修订合同",
       "anchor": "appendix-e",
-      "body_sha256": "6c32b401351b22ac4ed10efb315384acaaea365d4ea06dbffc937812539ed471",
+      "body_sha256": "80fbca3b29990a21f716dcf957d106d9825ae406751aa6151a7436e48f27b38d",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
         "S"
       ],
-      "dependency_class": [
-        "B",
-        "P"
-      ],
+      "dependency_class": [],
       "verification_kind": [
         "analytic"
       ],
-      "core_content": "固定完整主源、Droid Sans Fallback阅读版构建、三遍XeLaTeX、视觉与源绑定规则。",
+      "core_content": "54章6附录完整正文的PDF/LaTeX构建、字体、三遍编译、实际视觉验收和版本修订合同；纯出版流程不套物理依赖类。",
       "source_refs": [
         {
           "id": "Q2",
@@ -5709,7 +6441,10 @@
           "structure",
           "assembly",
           "build_environment",
-          "visual"
+          "visual",
+          "classification",
+          "pdf_build",
+          "pdf_collaborator"
         ],
         "whole_appendix_formalized": false,
         "new_experimental_data": false
@@ -5724,7 +6459,7 @@
       "id": "F",
       "title": "实际形式化范围与完整命名审计",
       "anchor": "appendix-f",
-      "body_sha256": "a514461bdc95a90a0d568f782141de50913bf9b35fe6ab0d26cca06e1da27c31",
+      "body_sha256": "98b6172be6eadb13966baa05e724d2ad56b350e3fc8c123d0f56dd3d98a62daa",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -5739,7 +6474,7 @@
         "analytic",
         "lean"
       ],
-      "core_content": "列15模块256显式定理、287命名目标以及六正例/四坏数据的独立实例责任。",
+      "core_content": "列18模块334显式定理与392唯一命名审计、100运行测试和4演示；六证书42审计/四坏数据4假值审计，以及独立29具体定理/39审计分别计数。",
       "source_refs": [
         {
           "id": "QM314",
@@ -5748,6 +6483,10 @@
         {
           "id": "S2",
           "locator": "附录F及对应来源登记"
+        },
+        {
+          "id": "QM315",
+          "locator": "附录F通用18模块/334/392，以及具体实例和有限动力学见证的独立当前回执"
         }
       ],
       "verification_responsibility": {
@@ -5756,7 +6495,12 @@
           "axioms",
           "runtime",
           "instances",
-          "metric"
+          "metric",
+          "structure",
+          "classification",
+          "finite_witnesses",
+          "demos",
+          "source_freeze"
         ],
         "whole_appendix_formalized": false,
         "new_experimental_data": false
@@ -5821,7 +6565,10 @@
       47,
       48,
       49,
-      50
+      50,
+      51,
+      52,
+      53
     ],
     "appendix_ids": [
       "A",
@@ -5833,17 +6580,33 @@
     ],
     "registered_ids_unique": true,
     "claims_parsed_from_actual_anchors": true,
-    "numbered_result_count": 88,
+    "numbered_result_count": 101,
     "old_new_counts": [
-      78,
-      10
+      88,
+      13
     ],
-    "path_policy": "全部path相对于仓库根；最终视觉回执由root外部验收，不能据本档案预填PASS。",
+    "path_policy": "全部path相对于仓库根；body_sha256沿用本章/附录稳定锚点至下一章/附录锚点的原样UTF-8切片；实际v3.1视觉回执独立于编译。",
     "all_repository_paths_exist": true,
-    "checked_repository_path_count": 25,
+    "checked_repository_path_count": 45,
     "readme_local_links_exist": true,
     "derivative_hashes_checked": true,
     "external_visual_receipt_checked": true,
-    "frozen_source_unchanged": true
+    "frozen_source_unchanged": true,
+    "numbered_section_count": 253,
+    "stable_anchor_count": 161,
+    "local_checkpoint_status": "LOCAL_VERIFIED_CI_PENDING",
+    "remote_status": "PENDING",
+    "remote_verified": false,
+    "authoring_baseline": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+    "current_source_set_sha256": "41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e",
+    "current_source_count": 64,
+    "whole_physics_formalized": false,
+    "classification_migration_recorded": true,
+    "historical_legacy_programs_reexecuted_in_3_1": false,
+    "original_result_origin_counts": {
+      "INHERITED_ID": 78,
+      "NEW_IN_3_0": 10,
+      "NEW_IN_3_1": 13
+    }
   }
 }
