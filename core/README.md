@@ -18,6 +18,15 @@ A theorem may use examples from physics or other domains, but a domain-specific 
 
 Machine proofs of Core statements live under `formalization/`, not here. The natural-language/mathematical source statement remains independently auditable.
 
-## Current migration state
+## Source and maintained books
 
-The current Core v3 mathematical source referenced by the Lean coverage ledger has not yet been fully synchronized into this new directory. Until synchronization is complete, the coverage ledger under `formalization/ueot-core/docs/` records the active source identity and proof status.
+The exact [Core Mathematics v3.0 source](../mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md)
+is synchronized and retains the SHA-256 and 106 P-IDs recorded in
+`specifications/manifest.yaml`. [Current state](./status/CURRENT.md) points to the
+authoritative coverage and compression records.
+
+The [mathematical book](../mathematics/UEOT_MATHEMATICS.md) develops the definitions,
+proofs and formal correspondences. The independent
+[philosophical book](../philosophy/UEOT_PHILOSOPHY.md) develops the conceptual and
+normative arguments. Their interfaces are explicit, and each book can evolve
+without rewriting the other's kind of claim.

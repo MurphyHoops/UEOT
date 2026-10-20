@@ -1,81 +1,98 @@
 # UEOT Core — Current State
 
-Date: 2026-09-12
-Active mathematical specification: UEOT Core Mathematics v3.0
-Formal package: `formalization/ueot-core/`
+Date: 2026-10-20
 
-## Role
+Frozen mathematical specification: UEOT Core Mathematics v3.0
 
-This file identifies the current domain-neutral Core route. It does not replace
-the full mathematical specification. The authoritative source-level proof
-ledger is `formalization/ueot-core/docs/V3_COVERAGE_STATUS.md`.
+Formal package: [formalization/ueot-core/](../../formalization/ueot-core/)
 
-## Formal coverage
+## Role and current reading route
 
-Current source-level Lean status:
+This file identifies the current domain-neutral Core state. The maintained
+[mathematical book](../../mathematics/README.md) develops definitions, proofs,
+counterexamples and open problems. The independently maintained
+[philosophical book](../../philosophy/README.md) develops the philosophical
+arguments and interpretations. They inform each other through explicit
+references; the mathematical specification, Lean proofs and philosophical
+arguments retain their own standards of justification.
 
-- proved: 49
-- partial: 0
-- pending: 57
-- total source P-IDs: 106
+The [source specification manifest](../specifications/manifest.yaml) records
+the frozen v3.0 identity. The authoritative source-level proof ledger is
+[V3_COVERAGE_STATUS.md](../../formalization/ueot-core/docs/V3_COVERAGE_STATUS.md).
 
-A P-ID is counted as proved only after source matching, official target
-reachability, feature CI, clean-port CI, PR CI, merge to `main`, green post-main
-CI, and ledger synchronization.
+## Formal coverage of the frozen specification
 
-## Recently promoted
+| Source P-ID status | Count |
+|---|---:|
+| Proved / FULL-GREEN | 106 |
+| Partial | 0 |
+| Pending | 0 |
+| Total unique source P-IDs | 106 |
 
-The newest completed invariant/identifiability promotions are:
+These counts record completion of the 106 frozen source proof contracts under
+their stated assumptions. Source matching, official build reachability,
+prohibited-axiom checks and the promotion history are recorded in the coverage
+ledger. The official package target is `lake build UEOT`.
 
-- P-INV-01
-- P-INV-02
-- P-INV-04
-- P-INV-03
-- P-INV-05
+The count does not establish an unconditional unified theory or empirical
+confirmation of its interpretations. A source P-ID, a Lean declaration, a
+compiler-generated constant and a book proposition are different units. New
+proofs and book chapters do not silently change the frozen 106-item registry.
 
-P-INV-05 is the newest fully promoted item. It machine-checks predictable-design
-OLS concentration from the source-time filtered stochastic assumptions through
-the exact Euclidean confidence radius
+## Compression and retained assumptions
 
-`(sigma*B/kappa) * sqrt(2*d*log(2*d/alpha)/N)`.
+The [compression ledger](../../formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml)
+classifies all 106 source P-IDs:
 
-The formal source theorem explicitly adds the standard adaptedness condition
-that `xi (n+1)` is measurable with respect to `F (n+1)`. This correction is
-needed for conditional-MGF iteration and is documented rather than hidden by a
-final-score sub-Gaussian assumption.
+| Final disposition | Count |
+|---|---:|
+| Generated through registered rederivation routes | 11 |
+| Retained adapters | 89 |
+| Retained boundaries | 6 |
+| Unresolved dispositions | 0 |
 
-Integrated main commit: `7d52e949b9788a32e3c5ce7ab9eec0f4ad85e58d`.
-Post-main CI run `34626175917`: success.
+Four generators are counted in the declared derivation system: quotient
+descent, finite quantitative transport, occupation-limit invariance and
+positive eigenstructure. The 11 generated items have registered Lean
+rederivations. The 89 adapters and 6 boundaries retain their stated roles and
+assumptions; the ledger does not claim that four generators rederive all 106
+contracts. Its minimality claim is nonredundancy within that declared
+derivation system.
 
-## Immediate priorities
+## Exact source synchronization
 
-1. complete P-STAT-06 (simultaneous RKHS embedding concentration) from the
-   already-integrated Hilbert moment and Azuma infrastructure;
-2. source-audit and open P-INFO-02/03/04 using the canonical information stack;
-3. prepare P-INT-01 after the conditional-information interface is fixed;
-4. select the next remaining inverse/identifiability source P-ID only after a
-   fresh dependency audit, reusing Fisher and predictable-OLS infrastructure;
-5. keep every promotion source-matched and preserve the 106-item completion
-   gate.
+The frozen source is now installed at
+[mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md](../../mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md).
+It contains 183440 bytes and has SHA-256:
 
-## Source synchronization
+`ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303`
 
-The exact UEOT Core Mathematics v3.0 source used by the formal coverage ledger
-must be synchronized under `core/specifications/` byte-for-byte. Until that
-migration is completed, the coverage ledger records the exact source identity
-and historical hash; no regenerated substitute should be called canonical.
+These are the exact bytes identified by the coverage ledger and the current
+manifest. The manifest records `content_sync: synced`. The ledger's earlier
+source-synchronization note remains a historical checkpoint; the artifact
+installation resolves that separate task without changing any proof contract.
 
-## Active parallel lanes
+The maintained mathematical book can develop beyond v3.0 while citing this
+immutable source. Revised prose must receive its own version and provenance.
+The original philosophical paper and its source history are retained under
+[philosophy/source/](../../philosophy/source/), with historical root artifacts
+preserved at their existing addresses.
 
-- `formal/pstat06-union-closure`: P-STAT-06 remains the main HOT probability
-  lane. Integrated infrastructure includes exact `2/N` sensitivity, Hilbert
-  second/first-moment bounds, conditional-sub-Gaussian Azuma control, and the
-  `1/N^2 -> 1/N` parameter normalization. Remaining work is the concrete Doob
-  increment bridge and exact finite-`L` source wrapper.
-- P-INFO-02/03/04: WARM source-audit packet. Reuse the current information,
-  entropy, KL and statistic modules; do not create a second information stack.
-- P-INT-01: WARM structural bridge to follow the P-INFO audit, reusing the
-  prediction/Markov-boundary/information interfaces.
-- remaining inverse/identifiability packet: WARM only; P-INV-01..05 are now
-  closed, so the next target must come from the still-pending frozen source
-  list rather than from stale feature branches.
+## Current development focus
+
+1. Strengthen the mathematical connections between source contracts,
+   compression, objecthood, control, identity and statistical deployment;
+   state the assumptions consumed at each connection.
+2. Use explicit models and counterexamples to distinguish sufficient
+   conditions, existence claims, executable constructions and empirical
+   interpretations. In particular, certified deployment occupancy and
+   physical failure are separate quantities.
+3. Maintain the two books as independent works: use mathematical findings to
+   refine philosophical arguments, and use philosophical questions to expose
+   missing definitions or mathematical obligations.
+4. Validate implementation changes locally against the pinned package and
+   existing evidence before publishing the necessary commits and PRs.
+
+The previous 49/57 checkpoint and its active-lane list are superseded. Current
+work proceeds from the completed frozen coverage record rather than reopening
+those items as pending.
