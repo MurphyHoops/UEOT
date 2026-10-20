@@ -1,0 +1,188 @@
+#!/usr/bin/env python3
+"""Clarify current remote status without rewriting local assembly snapshots.
+
+Only the current CHAPTER_DOSSIER and its external remote-publication hash
+receipt may change. Original helper/apply receipts, all old book evidence,
+canonical texts and all chapter/result objects remain unchanged. Default mode
+is read-only. No scientific build, runtime test, rendering or network call.
+"""
+from __future__ import annotations
+
+import argparse
+import copy
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+BOOK = 'physics/qm/book/'
+DOSSIER = BOOK + 'CHAPTER_DOSSIER.json'
+REMOTE = BOOK + 'evidence/v3.3/remote-publication.json'
+INTEGRATION = 'physics/qm/kernel/evidence/v31.7/integration-verification.json'
+CORRECTION_ARCHIVE = 'physics/qm/kernel/evidence/v31.7/remote-publication/qm317_book_metadata_correction.json'
+EXPECTED = {
+    'repository': 'MurphyHoops/UEOT',
+    'source_commit': 'a89bc691e698391d03ff7b705cc76def1fa3512e',
+    'source_tree': '89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d',
+    'tested_main_commit': '87091d1ad4592c4467fa3acc3ac75d67c0edac54',
+    'tested_main_tree': '89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d',
+    'pull_request': 347, 'pr_run': 39402444333, 'main_run': 39404249860,
+    'pr_status': 'PASS', 'main_status': 'PASS', 'source_count': 80,
+    'source_set_sha256': 'b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911',
+}
+WRITES = 0
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def encoded(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+
+
+def main():
+    global WRITES
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, required=True)
+    parser.add_argument('--apply-receipt', type=Path, required=True)
+    parser.add_argument('--apply', action='store_true')
+    args = parser.parse_args()
+    root = args.root.resolve()
+    inputs = {}
+
+    def take(relative):
+        p = root / relative
+        require(p.resolve().is_relative_to(root), 'Unsafe repository path: ' + relative)
+        data = p.read_bytes()
+        inputs[p] = data
+        return data
+
+    def binding(relative, data):
+        return {'path': relative, 'sha256': sha(data), 'bytes': len(data)}
+
+    dossier_bytes, remote_bytes = take(DOSSIER), take(REMOTE)
+    dossier, remote = json.loads(dossier_bytes), json.loads(remote_bytes)
+    old_dossier = copy.deepcopy(dossier)
+    integration_bytes = take(INTEGRATION)
+    integration = json.loads(integration_bytes)
+    require(integration['status'] == remote['status'] == 'MAIN_VERIFIED', 'Actual remote acceptance absent.')
+    for key, value in EXPECTED.items():
+        require(integration.get(key) == remote['actual_acceptance_identity'].get(key) == value,
+                'Actual accepted identity mismatch: ' + key)
+    require(dossier['current_release_stage'] == 'MAIN_VERIFIED', 'Wrong dossier release stage.')
+    contract = dossier['completed_v31_7_contract']
+    require(contract['status'] == 'LOCAL_VERIFIED_REMOTE_PENDING'
+            and 'prior_local_checkpoint_status' not in contract, 'Unexpected current contract or repeated correction.')
+    require('local_assembly_status_scope' not in dossier, 'Assembly clarification already exists.')
+    require(remote['actual_receipts']['integration'] == binding(INTEGRATION, integration_bytes),
+            'Integration receipt binding changed.')
+    for item in remote['updated_metadata'] + remote['canonical_book'] + remote['immutable_local_evidence']:
+        require(binding(item['path'], take(item['path'])) == item, 'Bound book bytes changed: ' + item['path'])
+    apply_bytes = args.apply_receipt.read_bytes()
+    inputs[args.apply_receipt.resolve()] = apply_bytes
+    apply_receipt = json.loads(apply_bytes)
+    require(apply_receipt['status'] == 'MAIN_VERIFIED_BOOK_METADATA_APPLIED', 'Original actual apply receipt missing.')
+    for item in apply_receipt['write_targets']:
+        data = take(item['path'])
+        require(item['after_sha256'] == sha(data) and item['bytes'] == len(data),
+                'Output no longer matches original apply checkpoint: ' + item['path'])
+
+    local_fields = []
+    result_fields = []
+    results = []
+    for collection in ('chapters', 'appendices'):
+        for index, chapter in enumerate(dossier[collection]):
+            local = chapter.get('current_edition_verification')
+            if isinstance(local, dict) and local.get('status') == 'LOCAL_VERIFIED_REMOTE_PENDING':
+                local_fields.append(f'{collection}[{index}].current_edition_verification.status')
+            for result_index, result in enumerate(chapter.get('numbered_results', [])):
+                results.append(result)
+                if result.get('formal', {}).get('remote_acceptance_status') == 'PENDING_ACTUAL_SOURCE_AND_MAIN_CI':
+                    result_fields.append(f'{collection}[{index}].numbered_results[{result_index}].formal.remote_acceptance_status')
+    require(len(results) == len({r['id'] for r in results}) == 131, 'Numbered results differ.')
+    require(sum(r.get('origin') == 'NEW_IN_3_3' for r in results) == 14, 'New-result identity differs.')
+    now = datetime.now(timezone.utc).isoformat()
+    contract.update(status='MAIN_VERIFIED', prior_local_checkpoint_status='LOCAL_VERIFIED_REMOTE_PENDING',
+                    remote_acceptance=INTEGRATION)
+    dossier['local_assembly_status_scope'] = {
+        'status': 'HISTORICAL_LOCAL_ASSEMBLY_SNAPSHOTS',
+        'prior_local_dossier': remote['prior_local_metadata']['chapter_dossier'],
+        'rule': 'Embedded chapter/appendix verification and numbered-result remote_acceptance_status fields retain their original local assembly checkpoint. They do not report the current remote release state. Current v31.7 remote acceptance is MAIN_VERIFIED, bound separately to the actual source and merged-main CI receipts.',
+        'snapshot_field_paths': local_fields + result_fields,
+        'chapter_and_appendix_checkpoints': len(local_fields),
+        'new_result_remote_checkpoints': len(result_fields),
+        'all_131_numbered_result_objects_preserved': True,
+        'current_release_state_field': 'current_release_stage',
+        'current_remote_acceptance': INTEGRATION,
+        'current_book_metadata_hash_receipt': REMOTE,
+        'no_whole_chapter_or_new_scientific_proof_inferred': True,
+    }
+    dossier['validation']['self_hash_is_external_in_dossier_assembly_receipt_scope'] = (
+        'Historical local-assembly dossier only. Its exact former bytes remain bound by the immutable local dossier-review receipt; the current metadata dossier hash is bound by remote-publication.json.')
+    dossier['validation']['current_dossier_hash_receipt'] = REMOTE
+    for key in ('chapters', 'appendices', 'canonical', 'derivatives', 'next_execution_contract',
+                'edition_history', 'prior_edition_snapshot', 'governance', 'status_axes'):
+        require(dossier[key] == old_dossier[key], 'Protected dossier content changed: ' + key)
+    new_dossier_bytes = encoded(dossier)
+    for item in remote['updated_metadata']:
+        if item['path'] == DOSSIER:
+            item.update(binding(DOSSIER, new_dossier_bytes))
+    remote['post_apply_metadata_correction'] = {
+        'kind': 'CURRENT_CONTRACT_AND_LOCAL_ASSEMBLY_STATUS_SCOPE',
+        'recorded_at_utc': now,
+        'actual_correction_receipt': {'path': CORRECTION_ARCHIVE,
+            'binding_direction': 'Path only. The correction receipt binds these final metadata bytes; no reciprocal receipt hash is embedded.'},
+        'prior_dossier': binding(DOSSIER, dossier_bytes),
+        'prior_remote_receipt': binding(REMOTE, remote_bytes),
+        'original_apply_receipt_preserved': True,
+        'correction_script_sha256': sha(Path(__file__).read_bytes()),
+        'scientific_content_changed': False,
+    }
+    new_remote_bytes = encoded(remote)
+    changed = {DOSSIER: new_dossier_bytes, REMOTE: new_remote_bytes}
+    summary = {
+        'schema': 'ueot_physics.book_metadata_correction.v3.3',
+        'status': 'READ_ONLY_CORRECTION_READY', 'recorded_at_utc': now,
+        'actual_acceptance_identity': remote['actual_acceptance_identity'],
+        'original_apply_receipt': {'path': str(args.apply_receipt.resolve()), 'sha256': sha(apply_bytes), 'bytes': len(apply_bytes)},
+        'before': [binding(DOSSIER, dossier_bytes), binding(REMOTE, remote_bytes)],
+        'after': [binding(p, b) for p, b in changed.items()],
+        'checks': {'same_actual_remote_identity': True, 'numbered_result_objects_131_unchanged': True,
+            'prior_results_117_and_new_results_14_preserved': True, 'all_chapter_appendix_objects_unchanged': True,
+            'old_book_evidence_unchanged': True, 'canonical_bytes_unchanged': True,
+            'external_single_direction_hash_binding': True},
+        'clarified_historical_checkpoint_counts': {'chapter_appendix': len(local_fields), 'new_results': len(result_fields)},
+        'new_scientific_validation': False, 'new_lean_invocations': 0, 'new_runtime_tests': 0,
+        'new_pdf_builds': 0, 'new_visual_inspections': 0,
+        'completed_repository_writes': 0,
+        'script_sha256': sha(Path(__file__).read_bytes()),
+    }
+    if args.apply:
+        for p, data in inputs.items():
+            require(p.read_bytes() == data, 'Input changed concurrently: ' + str(p))
+        for relative, data in changed.items():
+            (root / relative).write_bytes(data)
+            WRITES += 1
+        for relative, data in changed.items():
+            require((root / relative).read_bytes() == data, 'Correction readback differs: ' + relative)
+        for p, data in inputs.items():
+            if p not in {root / DOSSIER, root / REMOTE}:
+                require(p.read_bytes() == data, 'Protected bytes changed during correction: ' + str(p))
+        summary.update(status='APPLIED_CURRENT_BOOK_CONTRACT_CLARIFICATION', completed_repository_writes=WRITES)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        print(json.dumps({'status': 'REFUSED_OR_FAILED', 'error': str(exc),
+                          'completed_repository_writes': WRITES}, ensure_ascii=False), file=sys.stderr)
+        sys.exit(2)

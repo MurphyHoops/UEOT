@@ -1,0 +1,103 @@
+{
+  "schema": "ueot_qm.v31.7.ci_parser_static_review.v1",
+  "status": "CLEAR",
+  "actual_remote_ci_status": "PENDING",
+  "checked_at_utc": "2026-10-20T09:36:06.432656+00:00",
+  "reviewer": "/root/v317_ci_finish",
+  "review_kind": "Targeted source review; no Lean execution, no runtime retest, no replay of the 14 previously passed parser unit tests.",
+  "identities": {
+    "parser": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm317_verify_ci_logs.py",
+      "bytes": 35087,
+      "sha256": "d8725a2382120b6777c48f960a54c05af8bc1fdc6c8740d0226d6f71bdfa03bd"
+    },
+    "workflow": {
+      "path": "/workspace/scratch/f11b4261e187/qm_v317_work/.github/workflows/ueot-qm.yml",
+      "bytes": 6477,
+      "sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e"
+    },
+    "prior_payload_review": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_payload_audit.json",
+      "bytes": 92371,
+      "sha256": "3b3138cdf6ad70507bb037296218c89ff45775e3a3bbe203215c7ac2b074441c"
+    }
+  },
+  "actual_checks": {
+    "parser_ast_read": true,
+    "workflow_yaml_read": true,
+    "required_step_names_and_order_match": true,
+    "runtime_required_steps": [
+      "Checkout",
+      "Install Python",
+      "Verify exact kernel and independent negative controls",
+      "Run complete kernel example",
+      "Run representation and spectrum witnesses",
+      "Export exact Lean certificate examples",
+      "Run mixture and persistence witnesses",
+      "Archive runtime evidence"
+    ],
+    "lean_required_steps": [
+      "Checkout",
+      "Record source identity",
+      "Check inherited dependency lock",
+      "Install and verify official pinned Lean",
+      "Restore pinned dependencies",
+      "Restore Mathlib proof cache",
+      "Reject proof escapes",
+      "Build all QM proofs",
+      "Audit theorem axioms",
+      "Verify generated exact certificates and false witnesses",
+      "Verify retained finite and quantum Lean witnesses",
+      "Archive proof evidence"
+    ],
+    "permitted_optional_step": "Save pinned dependency cache"
+  },
+  "findings": [],
+  "verified_design": [
+    {
+      "area": "Workflow identity",
+      "source": "qm317_verify_ci_logs.py:372-388",
+      "finding": "Requires requested repository/run URL/id/head SHA, completed success, QM workflow name/path, PR or push event, and main branch for main acceptance."
+    },
+    {
+      "area": "Jobs and execution gates",
+      "source": "qm317_verify_ci_logs.py:302-338",
+      "finding": "Exactly runtime and lean, unique IDs/names, matching run ID, success, matching optional head SHA/attempt/run URL, unique completed steps; all mandatory gate names must be successful."
+    },
+    {
+      "area": "Raw log binding",
+      "source": "qm317_verify_ci_logs.py:406-420",
+      "finding": "Requires a unique named job marker, actual post-checkout full commit SHA, and completed artifact upload naming this run; preserves downloaded raw log identities."
+    },
+    {
+      "area": "Frozen sources",
+      "source": "qm317_verify_ci_logs.py:198-239,422-437",
+      "finding": "Checks exact local 80-input recorder selection and every byte against accepted manifest; actual log must print exactly the expected 33 source SHA256 values."
+    },
+    {
+      "area": "Named proofs and foundation",
+      "source": "qm317_verify_ci_logs.py:108-136,453-483",
+      "finding": "Requires exact 855-name axiom mapping against frozen actual receipt, all 646 explicit theorem names covered, and only propext/Classical.choice/Quot.sound."
+    },
+    {
+      "area": "Runtime/certificates/witnesses",
+      "source": "qm317_verify_ci_logs.py:146-196,485-520",
+      "finding": "Requires 100 exact successful test method names, four actually executed demo command sections with successful steps, six positive certificate case names and four corrupted true/false-witness case names with exact summary, seven exact witness file summaries totaling151."
+    },
+    {
+      "area": "Mutation and receipt safety",
+      "source": "qm317_verify_ci_logs.py:528-535,563-571",
+      "finding": "Checks all supplied metadata/log/local-reference bytes and accepted inputs unchanged during verification; PASS set only at successful end; atomic receipt replacement."
+    }
+  ],
+  "scope_limits": [
+    "No actual v31.7 CI run or successful PR/main run is claimed by this review; root must fetch the run, jobs, and decoded logs using actual job IDs.",
+    "The parser does not independently authenticate local files; provenance is supplied by actual GitHub fetch receipts and immutable per-file hashes.",
+    "Only 33 source hashes are printed directly in CI logs; full80 source and56 Core binding requires separate actual source/main tree reconciliation.",
+    "Detailed per-declaration remote witness and certificate artifacts, full CI source-manifest JSON, and four redirected demo JSON files are not downloaded or parsed by the parser.",
+    "The 110 theorem/39 def/2 abbrev witness split is a validated frozen local source/receipt fact; CI directly emits seven per-file audit totals.",
+    "Optional GitHub job head_sha/run_attempt/run_url fields, when present, are enforced; root should preserve complete raw API job objects.",
+    "Ordinary Lean linter warnings are not comprehensively collected by runner_warnings; do not describe this as a zero-warning build."
+  ],
+  "next_required": "After actual PR/main CI completion, independently correlate fetch provenance, checkout identities, parser receipts, and per-path source/main tree binding. Do not alter frozen scientific inputs for metadata work."
+}

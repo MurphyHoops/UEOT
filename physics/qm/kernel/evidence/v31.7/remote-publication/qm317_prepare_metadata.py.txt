@@ -1,0 +1,190 @@
+#!/usr/bin/env python3
+"""Freeze a metadata-only v31.7 follow-up against the actual tested main tree.
+
+No build, test, network, git-index mutation, or scientific file write occurs.
+The payload and inventory are written only outside the repository.
+"""
+import argparse
+import hashlib
+import json
+from pathlib import Path, PurePosixPath
+import subprocess
+
+SOURCE_SET = 'b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911'
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+def blob(data):
+    return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+def encoded(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode()
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--root', type=Path, required=True)
+    ap.add_argument('--handoff', type=Path, required=True)
+    args = ap.parse_args()
+    root, handoff = args.root.resolve(), args.handoff.resolve()
+    require(not handoff.is_relative_to(root), 'Payload output directory must be outside the repository')
+    destinations = [handoff / name for name in ('qm317_metadata_payload.json', 'qm317_metadata_inventory.json')]
+    for p in destinations:
+        require(not p.is_symlink() and p.resolve() == p, 'Payload output must not follow a symlink: ' + str(p))
+    inputs = {}
+    def read(path):
+        path = Path(path)
+        raw = path.read_bytes()
+        require(inputs.setdefault(path, raw) == raw, 'Input changed during preparation: ' + str(path))
+        return raw
+    context_raw = read(handoff / 'qm317_release_context.json')
+    context = json.loads(context_raw)
+    require(context['repository'] == 'MurphyHoops/UEOT', 'Unexpected repository')
+    require(context['main_status'] == context['pr_status'] == 'PASS', 'Actual PR and main PASS are required')
+    require(context['source_count'] == 80 and context['source_set_sha256'] == SOURCE_SET, 'Wrong accepted source set')
+    head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    require(head == context['tested_main_commit'], 'Local HEAD is not the actually tested main commit')
+    head_tree = subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], cwd=root, text=True).strip()
+    tree = json.loads(read(handoff / context['main_remote_tree_path']))
+    require(tree['commit'] == head and tree['sha'] == context['tested_main_tree'] == head_tree
+            and tree['truncated'] is False, 'Actual main tree does not match the local tested commit')
+    require(len(tree['tree']) == len({e['path'] for e in tree['tree']}), 'Duplicate actual tree paths')
+    base = {e['path']: e for e in tree['tree'] if e['type'] != 'tree'}
+    existing = {
+        'physics/qm/status/CURRENT.json', 'physics/qm/status/CLAIM_LEDGER_v31.7.json',
+        'physics/qm/status/ACTIVE_RESEARCH_v31.7.json', 'physics/qm/README.md',
+        'physics/qm/ROADMAP.md', 'physics/qm/UEOT_QM_KERNEL_v31.7.md',
+        'physics/qm/UEOT_QM_EXECUTION_v31.7.md', 'physics/qm/kernel/README.md',
+        'formalization/ueot-qm/README.md', 'physics/qm/book/README.md',
+        'physics/qm/book/SOURCE_MANIFEST.json', 'physics/qm/book/CHAPTER_DOSSIER.json',
+    }
+    new_named = {
+        'physics/qm/kernel/evidence/v31.7/publication-inventory.json',
+        'physics/qm/kernel/evidence/v31.7/remote-source-reconciliation.json',
+        'physics/qm/kernel/evidence/v31.7/remote-main-reconciliation.json',
+        'physics/qm/kernel/evidence/v31.7/integration-verification.json',
+        'physics/qm/book/evidence/v3.3/remote-publication.json',
+    }
+    new_dirs = ('physics/qm/kernel/evidence/v31.7/ci/',
+                'physics/qm/kernel/evidence/v31.7/remote-publication/')
+    def allowed(path):
+        return path in existing or path in new_named or path.startswith(new_dirs)
+    tracked = subprocess.check_output(['git', 'diff', '--name-only', '-z', 'HEAD'], cwd=root).decode().split('\0')
+    untracked = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard', '-z'], cwd=root).decode().split('\0')
+    candidates = set(filter(None, tracked + untracked))
+    for directory in new_dirs:
+        for p in (root / directory).rglob('*'):
+            if p.is_file():
+                candidates.add(p.relative_to(root).as_posix())
+    require(candidates and all(allowed(p) for p in candidates),
+            'Out-of-scope changes: ' + str(sorted(p for p in candidates if not allowed(p))))
+    require(existing <= candidates and new_named <= candidates, 'Expected completion output missing')
+    require(all(p in existing for p in candidates if p in base), 'Historical evidence modification rejected')
+    require(all(p in base for p in existing), 'Current metadata baseline missing')
+    for p in candidates:
+        rel = PurePosixPath(p)
+        require(not rel.is_absolute() and '..' not in rel.parts and str(rel) == p, 'Noncanonical path: ' + p)
+        require((root / p).is_file() and (root / p).resolve() == root / p, 'Missing or symlinked metadata file: ' + p)
+        require(not p.endswith(('.lean', '.py', '.pdf', '.tex')), 'Scientific or binary payload rejected: ' + p)
+    evidence = root / 'physics/qm/kernel/evidence/v31.7'
+    # Existing evidence is compared directly with the immutable tested tree,
+    # independently of Git's worktree reporting or ignored-directory rules.
+    old_evidence = [p for p in base if '/evidence/' in p]
+    for p in old_evidence:
+        require(base[p]['type'] == 'blob' and (root / p).resolve() == root / p
+                and blob(read(root / p)) == base[p]['sha'], 'Old evidence bytes changed: ' + p)
+    source_manifest = json.loads(read(evidence / 'source-manifest.json'))
+    sources = source_manifest['sources']
+    core = json.loads(read(evidence / 'core-import-closure.json'))['modules']
+    require(len(sources) == len({s['path'] for s in sources}) == 80
+            and len(core) == len({s['path'] for s in core}) == 56, 'Wrong accepted source or Core count')
+    require(source_manifest['source_set_sha256'] == SOURCE_SET
+            and digest(json.dumps(sources, sort_keys=True, separators=(',', ':')).encode()) == SOURCE_SET,
+            'Accepted source manifest identity differs')
+    for s in sources:
+        raw = read(root / s['path'])
+        require(len(raw) == s['bytes'] and digest(raw) == s['sha256']
+                and blob(raw) == base[s['path']]['sha'] and s['path'] not in candidates,
+                'Accepted source changed: ' + s['path'])
+    for s in core:
+        raw = read(root / s['path'])
+        require(digest(raw) == s['source_sha256'] and blob(raw) == base[s['path']]['sha']
+                and s['path'] not in candidates, 'Core import changed: ' + s['path'])
+    canonical = {
+        'UEOT_PHYSICS.md': '83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c',
+        'UEOT_PHYSICS.pdf': '9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c',
+        'UEOT_PHYSICS.tex': '364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c',
+    }
+    for name, expected in canonical.items():
+        p = 'physics/qm/book/' + name
+        raw = read(root / p)
+        require(digest(raw) == expected and blob(raw) == base[p]['sha'] and p not in candidates,
+                'Canonical book changed: ' + p)
+
+    # Bind the already-applied B/A metadata and the actual CI receipts. These
+    # are byte/status checks, not another execution or reconstruction of CI.
+    integration = json.loads(read(evidence / 'integration-verification.json'))
+    book_receipt = json.loads(read(root / 'physics/qm/book/evidence/v3.3/remote-publication.json'))
+    require(integration['status'] == book_receipt['status'] == 'MAIN_VERIFIED'
+            and book_receipt['metadata_only'] is True, 'B/A finalization is not complete')
+    identity = book_receipt['actual_acceptance_identity']
+    for key in ('repository', 'source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree',
+                'pull_request', 'pr_run', 'main_run', 'pr_status', 'main_status',
+                'source_count', 'source_set_sha256'):
+        require(integration[key] == identity[key] == context[key], 'Finalized metadata identity mismatch: ' + key)
+    require(book_receipt['context_sha256'] == digest(context_raw), 'Context changed after book metadata finalization')
+    require({r['path'] for r in book_receipt['updated_metadata']} == {
+        'physics/qm/book/README.md', 'physics/qm/book/SOURCE_MANIFEST.json', 'physics/qm/book/CHAPTER_DOSSIER.json'},
+        'Book metadata binding is incomplete')
+    for r in book_receipt['updated_metadata'] + list(book_receipt['actual_receipts'].values()):
+        raw = read(root / r['path'])
+        require(len(raw) == r['bytes'] and digest(raw) == r['sha256'], 'Finalized receipt binding changed: ' + r['path'])
+    for kind, commit in (('pr', context['source_commit']), ('main', context['tested_main_commit'])):
+        run_id = context[kind + '_run']
+        receipt_path = f'physics/qm/kernel/evidence/v31.7/ci/{kind}-{run_id}-verification.json'
+        require(integration[kind + '_verification'] == receipt_path, 'Wrong actual CI receipt path: ' + kind)
+        receipt = json.loads(read(root / receipt_path))
+        require(receipt['status'] == 'PASS' and receipt['verification_complete'] is True
+                and receipt['source_commit'] == commit and receipt['run_id'] == run_id,
+                'Wrong or incomplete actual CI receipt: ' + kind)
+    current = json.loads(read(root / 'physics/qm/status/CURRENT.json'))
+    ledger = json.loads(read(root / 'physics/qm/status/CLAIM_LEDGER_v31.7.json'))
+    active = json.loads(read(root / 'physics/qm/status/ACTIVE_RESEARCH_v31.7.json'))
+    require(current['verification_state'] == current['integration']['state'] == current['book']['state']
+            == ledger['verification']['state'] == active['status'] == active['state'] == 'MAIN_VERIFIED',
+            'Current metadata still has a pending state')
+    require(ledger['verification']['remote_status'] == 'PASS' and 'historical_checkpoint' in active,
+            'Current/historical checkpoint completion is missing')
+    elements, records = [], []
+    for path in sorted(candidates):
+        raw = read(root / path)
+        text = raw.decode('utf-8')
+        mode = base[path]['mode'] if path in base else '100644'
+        elements.append({'path': path, 'mode': mode, 'type': 'blob', 'content': text})
+        records.append({'path': path, 'mode': mode, 'bytes': len(raw), 'sha256': digest(raw),
+                        'git_blob_sha': blob(raw), 'change': 'modified' if path in base else 'added'})
+    payload = {'repository_full_name': 'MurphyHoops/UEOT', 'base_tree_sha': tree['sha'], 'tree_elements': elements}
+    payload_bytes = encoded(payload)
+    inventory = {'schema': 'ueot_qm.metadata_publication_inventory.v31.7',
+                 'status': 'FROZEN_METADATA_ONLY', 'tested_main_commit': head, 'base_tree': tree['sha'],
+                 'file_count': len(records), 'modified_count': len(existing),
+                 'added_count': len(records) - len(existing), 'deletions': 0,
+                 'total_bytes': sum(x['bytes'] for x in records), 'payload_sha256': digest(payload_bytes),
+                 'accepted_sources_unchanged': 80, 'core_imports_unchanged': 56, 'canonical_unchanged': 3,
+                 'old_evidence_unchanged': len(old_evidence), 'finalized_metadata_bindings_unchanged': True,
+                 'unmodified_base_leaves': len(base) - len(existing), 'files': records,
+                 'scope': 'Metadata and actual receipts only; source/main tested commits remain distinct from this follow-up.'}
+    for path, expected in inputs.items():
+        require(path.read_bytes() == expected, 'Input changed before payload freeze: ' + str(path))
+    for p in destinations:
+        require(not p.is_symlink() and p.resolve() == p, 'Payload output became a symlink: ' + str(p))
+    destinations[0].write_bytes(payload_bytes)
+    destinations[1].write_bytes(encoded(inventory))
+    print(json.dumps({k: v for k, v in inventory.items() if k != 'files'}, indent=2))
+
+if __name__ == '__main__':
+    main()

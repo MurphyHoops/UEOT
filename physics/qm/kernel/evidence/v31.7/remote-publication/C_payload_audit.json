@@ -1,0 +1,2481 @@
+{
+  "schema": "ueot_qm.independent_publication_payload_audit.v31.7",
+  "status": "CLEAR",
+  "checked_at_utc": "2026-10-20T08:58:39.981135+00:00",
+  "reviewer": "C /root/v317_payload_ci_audit",
+  "root": "/workspace/scratch/f11b4261e187/qm_v317_work",
+  "payload_sha256": "52f0e338e62f6749f021be8445f9aadd43af0490ffa01871854646ec3003bba4",
+  "inventory_sha256": "c9eec4640637af39768c0a36c177fb5396df5d6ef298806fde105f7fc9ec93a4",
+  "base_snapshot_sha256": "5a71b6b77a9f516c19de9beb8c31aa42578e3585c9ef999d926d6f079c74f636",
+  "baseline_commit": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+  "baseline_tree": "bae567bd5d19131f9279db59970e876a8d5c72c2",
+  "baseline_recursive_tree_entries": 1988,
+  "baseline_tree_hash_reconstructed": true,
+  "all_recorded_subtree_hashes_reconstructed": true,
+  "expected_candidate_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+  "payload_file_count": 244,
+  "changed_existing": 18,
+  "new_paths": 226,
+  "raw_file_bytes": 6982828,
+  "all_serialized_content_matches_inventory_local_and_handoff_overlay": true,
+  "all_modes_checked": true,
+  "source_count": 80,
+  "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
+  "source_paths_in_overlay": 13,
+  "source_paths_inherited": 67,
+  "protected_imported_core_sources": 56,
+  "inherited_untouched_leaf_count": 1813,
+  "canonical_book_sha256": {
+    "md": "83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c",
+    "pdf": "9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c",
+    "tex": "364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c"
+  },
+  "historical_conflicts": [],
+  "scope_conflicts": [],
+  "errors": [],
+  "ci_executed_by_this_audit": false,
+  "remote_current_ref_inspected_by_this_audit": false,
+  "limitations": "Internal baseline snapshot/tree, payload, original local and ZIP-overlay byte checks only. Root must reconcile actual current remote base, candidate tree, source PR and independent main CI. No heavy build, new theorem, physical experiment, or CI artifact ZIP inspection performed.",
+  "files": [
+    {
+      "path": "formalization/ueot-qm/README.md",
+      "bytes": 44025,
+      "sha256": "2ef48e711ed6cf1a635278eb2063453603e9f74d3fd60b665dc2475cd144aa56",
+      "git_blob_sha": "8cf8b3460b182d3954ad3c2e92ad53a5505a1f60",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "fb92c4ff97a1aecd776f2b69ffd78c32532c1dfa",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM.lean",
+      "bytes": 793,
+      "sha256": "99f77e3c45a01c20fd025673864bc804c2192d27c05bde1f7a8b3ce7868c1bbe",
+      "git_blob_sha": "819a8865b424fab08e752df3cf2ec8bd7b0778b5",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "d97c03e5efc56173dc39a02e24ea2ebfa33f23ad",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean",
+      "bytes": 21786,
+      "sha256": "200996515d4a4cfdf066b844e8d4904ed52f380f876feca162d6dc6f1f26cf80",
+      "git_blob_sha": "d63bf9bb4c2a3b42df25af92cbe579f6614f028d",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/OperationalSystems.lean",
+      "bytes": 19370,
+      "sha256": "cb764474361fa833390fbe33e3d1b363a05c78639e0819d5d5de4648c1b5b55e",
+      "git_blob_sha": "8519d513d99416abc407d22c535beb96113036e5",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean",
+      "bytes": 18035,
+      "sha256": "ee227ea4dcba6e9f2dafe33df614c382610f7468596d923489fc63e76a1556e3",
+      "git_blob_sha": "3886d88000f88023000fc4ea0edc2670db9d8057",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumDoobModel.lean",
+      "bytes": 7295,
+      "sha256": "cf5df67eb83e3c14e20699947a1c2e922af53a19c6483d40b788e234c9e8b5f3",
+      "git_blob_sha": "9b233e7d9e55d9aebecf0bbac9157159284c01b9",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumPurification.lean",
+      "bytes": 11143,
+      "sha256": "fb0692ed93c14aa7182cb09b3e205060f493f005672d16a69fc6e8da59ca5b6d",
+      "git_blob_sha": "b095715bbfff5864d66fbee87b44cf21d3581a70",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/RecordProbability.lean",
+      "bytes": 4446,
+      "sha256": "c9dca7b03588f7359fbbea934c1c9b074af489f93ca061bed8a82239960edcf2",
+      "git_blob_sha": "2f8dbbeae4acd558d8493d7cefb69630f2fbc859",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/RectangularChannels.lean",
+      "bytes": 13889,
+      "sha256": "b097d5cb5eb5b141d051d8f65c7aff31c0d3a1b2f8d688548d8edf74f6a7a9a7",
+      "git_blob_sha": "6415db68e0c12b637fbd0631480d8fbb4ed67203",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/AxiomAudit.lean",
+      "bytes": 48629,
+      "sha256": "c7234b75552393d1b3c4abf2ff75a688455512dc48ef40a8ed0bad033c321b77",
+      "git_blob_sha": "3fe7aa986edc60bb1baa0a09cccb4bbbf7ea9eea",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "47b5e5e6d736ecf0f26c6373fb794893214b82c8",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+      "bytes": 13894,
+      "sha256": "5587ffd016e17cd98ddd451add48e689affb53f8a8a7953793ddb28b03ab4922",
+      "git_blob_sha": "50494096fe608938ba37a291401584ef619c2b36",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "5cfe1eed89daa3ab765de9be095d280997617784",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "bytes": 9935,
+      "sha256": "edd43b953001002b2f2aaa44a424da0e1beb0b5a0201ff7a6fba54bb405ce8e9",
+      "git_blob_sha": "32ee7d2d7ce032e8d6333d55be551786075c45a9",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/QuantumDoobDynamicsExamples.lean",
+      "bytes": 8920,
+      "sha256": "40d1af7c59ccbca3902b84004f3d9ec7ba29f690a1789879f1c3e5fd351cf2a6",
+      "git_blob_sha": "d272a28d2edcbd1a8178562f8b64cfead9005f5c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/QuantumPurificationExamples.lean",
+      "bytes": 6655,
+      "sha256": "57b764a8d9b7787509a0f8a5e92f04a86abc5f3f4db58f3c441be2e29a1c3e34",
+      "git_blob_sha": "5b9e10b0ca6c8243abb3f3bd1248f71b2fce9937",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/README.md",
+      "bytes": 2462,
+      "sha256": "1c6330c505885dedcf22ad1991c36b294b08d93a246694c00838608dcc632f5d",
+      "git_blob_sha": "48e235ebb69eb1970a2721619246672878598b99",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "f7dd4b7d58c22f8c3099bc3ec18876934cb1a3b7",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/ROADMAP.md",
+      "bytes": 5782,
+      "sha256": "990790753d194df478ec2ed3fb4300b2c7408462840722f32ce180f7cc55a6b5",
+      "git_blob_sha": "9244f29d74f146ec71d407d5a504536d2ffdad81",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "c8bc43963943715ae76d4b7558bc37d53efa6f7a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_EXECUTION_v31.7.md",
+      "bytes": 22494,
+      "sha256": "69dee374e5d6ff2bd2e34b1fcb50ab9a53d8f04bad7663d6bc40a8b80463931f",
+      "git_blob_sha": "7ffefd712c68613f47ddd7a9ba9e31ccf0f25a94",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "e5e9ec652c3efad2d6dbd0d4ab78ed93ad08bceb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+      "bytes": 9908,
+      "sha256": "280fdb652561fee8a278654df21445ee862071999281cb3a1ddeae201dacc67c",
+      "git_blob_sha": "d243fbc08736d6e7581c7670ceb44630c0923571",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_KERNEL_v31.7.md",
+      "bytes": 7950,
+      "sha256": "d247973712beaf5d73ba01dc1870bfe0eace14b796835afd2dd62c158a0d9f61",
+      "git_blob_sha": "1c8cffd124a2e4f09654c3975c6eb99a28d5e1fc",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md",
+      "bytes": 6832,
+      "sha256": "dd04f27f23eb0f1bb72884dad58412dc5c1dfe3d389b714ee50fc091cc0ce136",
+      "git_blob_sha": "1a26717139fc134569a638da6103a6e279e1fa8b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "bytes": 651213,
+      "sha256": "3c2d5d9a8cb44d8de07d0214ca8b37df22079e4817b45199f9a3dcb38707a8ff",
+      "git_blob_sha": "d4d4b62864cba043c9970dc8e6d35c6ca3878529",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "5e560e70eeacdd5cd28d5a54b5fb2d646e6e2ed1",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/README.md",
+      "bytes": 6701,
+      "sha256": "963efa5cebbfa5828f4a04d734684ef1e026e96cbb8d3dc852c961b9004b53e8",
+      "git_blob_sha": "74580633ca22657cb2e8751e126be3f72251307d",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "516e628eec621fe2e3267664de2d49eeee112ada",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "bytes": 10697,
+      "sha256": "5027ade4130001e73f9dd06442cd64e59426f73663c8dae1074e02234a9101ed",
+      "git_blob_sha": "54f905a1aefa2bdb8cc4d011febc05de09620ab8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "7ef4ca155772bf45abbc6e77e6631fad1d5774cb",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.md",
+      "bytes": 504658,
+      "sha256": "83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c",
+      "git_blob_sha": "0bef070ecbb62b5f180ce61796ec25cf6ba556f4",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "c5c81046da068c0b39cc8cf0bd068f1bbd371dd5",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+      "bytes": 968044,
+      "sha256": "9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c",
+      "git_blob_sha": "5b604db8ff732a728362534759f84a8f976d9ea0",
+      "mode": "100644",
+      "binary": true,
+      "previous_blob": "5818f66ffd4255345c0806d939af1644d6079ea1",
+      "encoding": "base64"
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.tex",
+      "bytes": 588773,
+      "sha256": "364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c",
+      "git_blob_sha": "237ca3ecc862deceeddea941f8f1f5797664de25",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "00e265b09ccd1c9e0f04c2dd23816d5800d6c21a",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/build/build_pdf.py",
+      "bytes": 6393,
+      "sha256": "4744aef1970127da1f040668590ba6d8adbcfac4c03070a9c6a311acceddc88e",
+      "git_blob_sha": "8fcb25e84a56e798ae087e81b8091da8c3121b1c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "c4985aa9f99dc06bba73ab7896ba4a5fe5804743",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/build/header.tex",
+      "bytes": 1905,
+      "sha256": "1d13b34eaf30e7faedcc7057ad69940a0f9db943171fe850ce36652d73179e3c",
+      "git_blob_sha": "651d9746bf99be4437e963b783c3f38f07c92f97",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "309013811d2cd6a3996418f0c18ec8c5f9873195",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/build/verify_book.py",
+      "bytes": 4987,
+      "sha256": "feedc4bc2f2d4d8c512baaf3075a5676b5825bf852dff9edb2da3ffee9912a65",
+      "git_blob_sha": "86602e2c2903a1323054f6e67e968089cd6c3bc0",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "e7e16f7e93f8cb19c2a84f7274751e28e36198be",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/book-structure.json",
+      "bytes": 15453,
+      "sha256": "d55b33cddc4c18bc4f6c931ac2af0f76b108ca1a0406c20cee87fe1ec20e8b20",
+      "git_blob_sha": "a8454efde5f883d1c55ff841e146f158b36938ad",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/canonical-integration.json",
+      "bytes": 4925,
+      "sha256": "c04174aeb7a66e7ffe93c580864b339e656fde0c38a3d65b18227839d784fe4f",
+      "git_blob_sha": "bfdb83a9e6c5a48c1dba593f5d9db2290832adb9",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-assembly-first-layout.json",
+      "bytes": 2701,
+      "sha256": "d58b9227c8044daace494626bc2029566e17dcf7c9fa9bee1801bf711e6c8e1c",
+      "git_blob_sha": "0df473eb421f60248b49bce2330b88a99d190a65",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-assembly-first-layout.md",
+      "bytes": 1435,
+      "sha256": "7facfea149e2bd4f1e04f92c1e64d2c6d354a9a3fa7716f13227f7cacf20dea9",
+      "git_blob_sha": "46f48539d37a35982246f555632e6954292ed09d",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-assembly-previsual.json",
+      "bytes": 2701,
+      "sha256": "468430b377b938606e0559e25d606d8011ef2b1078a647f97621935aee25e599",
+      "git_blob_sha": "6ef86783fbbff1adffe1e537f79cd5e0987cdbd7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-assembly.json",
+      "bytes": 3767,
+      "sha256": "c57fa9d32b6b5a44de3365998fd6a4ddb4f0436a7e4a709faadfc413e8c62339",
+      "git_blob_sha": "e909d599da2d5d95a58b42166260d5b862aa4457",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-assembly.md",
+      "bytes": 1024,
+      "sha256": "61853c573ed9f5522fcdb99bb000fb69492f61450216dbe9e7342650458e90ea",
+      "git_blob_sha": "8e1c16d957410d12f43c2463ac04f3e30c008d61",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-first-layout-history.json",
+      "bytes": 1412,
+      "sha256": "e7f6c9bcbd36b8cce04d37061e7706cb1d96f72e068d3077f9626722b031e218",
+      "git_blob_sha": "3db75feb40fb698b9ea37426b5b1439f192c6696",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-intermediate-first-layout.json",
+      "bytes": 645855,
+      "sha256": "0cf261cf43669660c4f77e8ede295dc352221882bdf9aadd520ad3f4fbfac3d2",
+      "git_blob_sha": "b857603d8b7515e288091957c35df69f70720d82",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-prior-v3.2.json",
+      "bytes": 445303,
+      "sha256": "2a53c9294430bbe8d62bd1f746cac3a12464725ade69e6e4d753b9fb1981e93d",
+      "git_blob_sha": "5e560e70eeacdd5cd28d5a54b5fb2d646e6e2ed1",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-review.json",
+      "bytes": 16093,
+      "sha256": "6c723637fd9aee025973e322a933a66af9f9164e880da1e88ac8918d5ae9593b",
+      "git_blob_sha": "6a5f39a879db547c6b3d33a7ba5999445832f707",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/dossier-review.md",
+      "bytes": 1024,
+      "sha256": "61853c573ed9f5522fcdb99bb000fb69492f61450216dbe9e7342650458e90ea",
+      "git_blob_sha": "8e1c16d957410d12f43c2463ac04f3e30c008d61",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/legacy-source-reuse.json",
+      "bytes": 2014,
+      "sha256": "d29ec99805a41ccac6d97bf13f7525c29e85082f3a8e39db1039eb83c1fd7a93",
+      "git_blob_sha": "922074ed1cde9d6d76c924503f3941d77a93a5d8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/local-release-gates.json",
+      "bytes": 1840,
+      "sha256": "51262531b9ffd571e269268841f755dd526baf822eea94e2df5dddc5b8666c50",
+      "git_blob_sha": "dfbbe07507b0ecfd8306555bb2c96cf5d0b21d15",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-build.json",
+      "bytes": 1136,
+      "sha256": "88bd981905bb7601365dc716c28bee2f0d2ee64be4329d2b1a431cff5e1493aa",
+      "git_blob_sha": "1b44a99edfbb6661f12c6180477d395438c5d7b4",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-collaborator-render.json",
+      "bytes": 13387,
+      "sha256": "bd861431480a7934573d9bbdbe5cca10e0bf0f7f65e2138d328409c2078ad46c",
+      "git_blob_sha": "d916203d9449b7df64397cc1114739dceb5c4c9e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-collaborator-review.json",
+      "bytes": 14482,
+      "sha256": "0647180da6a03d14c79f556146738993861e8a06f46b0ba765aa28f39ad5c36e",
+      "git_blob_sha": "a83d70d6040e44baf40ed7d0ba98abb6ded16e25",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-collaborator-review.md",
+      "bytes": 4097,
+      "sha256": "19cdcf8f6e49933735ef49bda9269e6ca05120a8b06c787523ef970a426f1a96",
+      "git_blob_sha": "210b05d713d4de89a1e29a681dd9a7057c430f4a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-initial-build.json",
+      "bytes": 1219,
+      "sha256": "e23778df34c2424302bcd151c9338cd4f06aa218a23dea76297e8ce65fffafc6",
+      "git_blob_sha": "fc0a40c639fb8e85c2743850237a797f5464fc3d",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-page-identity.json",
+      "bytes": 2419,
+      "sha256": "6ee79e2d6877d94e55956b185b47d5737f32da033cf2a4a6632a2654a7f89da4",
+      "git_blob_sha": "2306b4c9270bbd83f01a71129721b1f200959df7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-previsual-build.json",
+      "bytes": 1136,
+      "sha256": "4034e0fcb81ae565d63649cf0dd39a30eb7272a15c5dc6067426c7b66253ba0c",
+      "git_blob_sha": "1eb5be3b20bbca5467d5e551c3438d8e896a7b36",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-previsual-render-manifest.json",
+      "bytes": 6659,
+      "sha256": "4fd91817c1ee8f9654e6d54471018fb8093cf76b4a7fd26da8083841ecada72b",
+      "git_blob_sha": "0bc43880daebe5d7d77df93f323db024c03f2166",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-render-manifest.json",
+      "bytes": 10456,
+      "sha256": "c29a9ef42d3f2a1b73d0bf30694c3af17b11c668dba30cecb97beab3256fa035",
+      "git_blob_sha": "8348023496dc7e02d41b8f330b5b42158d0914af",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/pdf-visual-review.json",
+      "bytes": 2433,
+      "sha256": "d15ac663ce2409c034950860b5e0a56c7e8c2234942b016e8bf4ab261dffdf4b",
+      "git_blob_sha": "193806cd477cff6a9ea5f9c96e89c7b01c09c226",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/typography-fix.json",
+      "bytes": 2160,
+      "sha256": "80b2f7fafeb0716203f6ce6f13c0e5b805a618a59a39d13d2f31b65c6216707e",
+      "git_blob_sha": "ce52dec0ca192427950e3303d8d09f0469b1b227",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/xelatex-pass-1.log",
+      "bytes": 13675,
+      "sha256": "98c5c9db0d98baec1fb5e5d5263cac8a6221601240ac9b2fbb928b69fb79e3af",
+      "git_blob_sha": "69bcc67d78ab927b2c510dd40879dfa015eec1f7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/xelatex-pass-2.log",
+      "bytes": 13675,
+      "sha256": "98c5c9db0d98baec1fb5e5d5263cac8a6221601240ac9b2fbb928b69fb79e3af",
+      "git_blob_sha": "69bcc67d78ab927b2c510dd40879dfa015eec1f7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/xelatex-pass-3.log",
+      "bytes": 13675,
+      "sha256": "98c5c9db0d98baec1fb5e5d5263cac8a6221601240ac9b2fbb928b69fb79e3af",
+      "git_blob_sha": "69bcc67d78ab927b2c510dd40879dfa015eec1f7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/README.md",
+      "bytes": 15704,
+      "sha256": "64ba5bd617c53a8e7a54e407fa47b7eb183efee86f1789a085219614caf3c850",
+      "git_blob_sha": "8dfb9f4c0e99a56ab5ad16b2843fb85fdf413191",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "2b28240ef31940357f23b7e4ecc63dbf830d0447",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/acceptance-progress.json",
+      "bytes": 247,
+      "sha256": "4d4da280d7425014eef5c8ffacd3970e38e1cb81a2f0c7776122bd1a66fcbe30",
+      "git_blob_sha": "09610be4f3cfeb7d63cbeab56ae3e0395887bc81",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/axiom-audit.log",
+      "bytes": 87548,
+      "sha256": "63fd653495815060a1d5efde98695dcdc1800964d992e8a52512a199de8e92fd",
+      "git_blob_sha": "a945c542f15388144ff08d33588ebe04c62f6c1a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/axiom-checker.log",
+      "bytes": 78,
+      "sha256": "3e4c69f56824dd7358280c2aae63fd97f6f48e036fa1574801b0292f23e571bb",
+      "git_blob_sha": "c97f0a18015f5f2132859c1013f4f76f1e969d31",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/axiom-execution.json",
+      "bytes": 1493,
+      "sha256": "99345c994be687622b4347d208f257320727f3bb0fbd2cc838d96fdcfa064de5",
+      "git_blob_sha": "21551c7db8cc274a107c22e7e3002cd6152fe423",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/build-execution.json",
+      "bytes": 606,
+      "sha256": "6358713b073e5c5533d1eaea3d19154f0f3d92e72fcf64f3568ec5755e8e0a83",
+      "git_blob_sha": "f39ea441b38328fa9d418a277634befd6571dd5b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/ci-scope-review.json",
+      "bytes": 22347,
+      "sha256": "9bac2636cac5d03a06e1c8292793bb5586a1de8e1052221702bcc45da8576a83",
+      "git_blob_sha": "fc66a4ba9fd1821c6403d974d17aeefb97cae756",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/core-import-closure.json",
+      "bytes": 26953,
+      "sha256": "b14be478f5e6a296ed8f632cfd5775b3606be4c61a3c4543e09df524d5d97f21",
+      "git_blob_sha": "54ad5b7f5d2317aa9e4a5a412c647ab62bd76986",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/declaration-inventory.json",
+      "bytes": 165541,
+      "sha256": "b2223a7fd71df574393a5a392b2c97c838cc008e4c15dd5f5e5ba312ccc5127b",
+      "git_blob_sha": "d19233507358ddffa4ccb77348c646ec5d3f4b9c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/demo.json",
+      "bytes": 2526,
+      "sha256": "6415079f1979fd4d1ad30e0d290e1b4abeaaa8fce0ec38a3bdc05a7f1a4fc8a7",
+      "git_blob_sha": "338c04b08f47cb71ba62994bd6659e28165cb510",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/demo_v312.json",
+      "bytes": 103548,
+      "sha256": "13c0301a1b59622f15da663b0cf0bd7c7b899d831f13f02eb8a9771122ea9726",
+      "git_blob_sha": "2f5297317d3d96e09f7d327c86f17dbc45b501ef",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/demo_v313.json",
+      "bytes": 6716,
+      "sha256": "12a9434554b839833c907543157dc04a3b7fb0f7f0b63762119359ac728666ec",
+      "git_blob_sha": "6de6238279ede5733b749ae566b6325f6010965f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/demo_v315.json",
+      "bytes": 2717,
+      "sha256": "827a1e98c32a4d6b6dfffc987ffbccb0252d8e39011a0e18df48a7e233f2fb4b",
+      "git_blob_sha": "61079b95c31cf1054e301d31b7baba6dd9b2f4dd",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/demos-verification.json",
+      "bytes": 1704,
+      "sha256": "d21cc5713db1afa5bf115166867a0371d3258f0422157a6894f4242c43f3ddd2",
+      "git_blob_sha": "b4a7bbff3189bdb8ac7162515cced3d29678e099",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/dependency-identity.json",
+      "bytes": 1569,
+      "sha256": "0e440c067ac01dc5e0baebaa2a3ab763d5134dbd103adf8f321bc5411fe12a68",
+      "git_blob_sha": "35f6fc079e3e596c0c5a21911ecaede07e1b28a4",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/dependency-lock.log",
+      "bytes": 62,
+      "sha256": "13b2789bac066054afc6c40049fbe3f815a83927cd6bfcc1d3331946153d96cf",
+      "git_blob_sha": "4421507fc8969bdcfb3f52f31c1566b259f15e55",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/exact-instance-gate.log",
+      "bytes": 761,
+      "sha256": "c40436ba44d7986783499bfec89767ec7f528ce01ca3fb6226ee7692de331bfe",
+      "git_blob_sha": "41781fc9e63672e8391a35a2c805562b71f55f8f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/execution-journal.json",
+      "bytes": 9336,
+      "sha256": "e4bead92813172e9d8b631f05727bdee87317f261c166f0438312dd5c88a8f1c",
+      "git_blob_sha": "cba5e15e33db0a2852a36dce6f98e912324c3f45",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witness-gate.log",
+      "bytes": 553,
+      "sha256": "934ffa0b8ed7800aa44c61182fa6e7b65494687fc327c9e8ecb2b1cb703a4b73",
+      "git_blob_sha": "81d9c4c53fc39b14d012d6d4a53e3ac130bfe639",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/ClassicalQuantumMemoryExamples.compile.log",
+      "bytes": 3761,
+      "sha256": "d185de49e97d065cc7e0c711d3bf2e73ef9587d1ab2f6023fd86abc1d6dd773a",
+      "git_blob_sha": "7cad907368ef7b29c287fee1b7e54c4bbfea5893",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/MixtureExamples.compile.log",
+      "bytes": 937,
+      "sha256": "2e0588f3ec8cc4c8a7bc1b6155ca205bf4924633f18217ef8fce72eb38eabd6e",
+      "git_blob_sha": "2daf00560e18a20ae161b5e870ced810cbb84deb",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/QuantumDoobDynamicsExamples.compile.log",
+      "bytes": 3272,
+      "sha256": "db9bdb11cce7e94efe3aaac7dd2d9e6ac150f304001b8f55611fcca4051cebf1",
+      "git_blob_sha": "8d475ff8e70e01a66958d1d01ce93deca3e5a922",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/QuantumDoobExamples.compile.log",
+      "bytes": 4233,
+      "sha256": "18b22411e7f6fbc286adfa3f4943c8ad26f75f3416e71c6eb74546e271e423f1",
+      "git_blob_sha": "c3d2e04f974e9b965553661674b2b3859641a763",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/QuantumPurificationExamples.compile.log",
+      "bytes": 2352,
+      "sha256": "71fdd5d83ab576834ec10a92da980a877fdfe351509a0d3cbb9ecd31f0d5c3bf",
+      "git_blob_sha": "8a941f746352769805288133e03541c69c638928",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/RealTomographyTwoRebit.compile.log",
+      "bytes": 637,
+      "sha256": "e28bc9938a91e3e980c58778cb34d5d97af56cdfa4e5ec688762a3c896754ded",
+      "git_blob_sha": "c04a3cad0f6f56c0e2785724a1415f8ec1bb6587",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/SurvivalTwoState.compile.log",
+      "bytes": 2945,
+      "sha256": "cedb30da03579093592bfc22466bec1638f3f38df2a371aae938dede04f33a03",
+      "git_blob_sha": "caf1ba8242be8918a005bcac74377c00e2032548",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/toolchain.log",
+      "bytes": 106,
+      "sha256": "63f3e16bf0258e2cc0ab3010eb1830723df9bb85097b7b72b0137b9be25a78e9",
+      "git_blob_sha": "ea79e261ed3063846d89875f31c1b81a5cb9de71",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json",
+      "bytes": 176582,
+      "sha256": "c880469ba9ce10644ea50bf6afde0182de5cdba5bb691e3ff5204b030e24cac6",
+      "git_blob_sha": "6a35fdf5c3d6d920662c3b24d6a2d0c8d3c0e711",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/files-manifest.json",
+      "bytes": 17860,
+      "sha256": "561ade40e51194cc11314f825fde6650ac16464abbbf1738ad1b32338ca702ef",
+      "git_blob_sha": "75b7a5828349642a503a617832542507fcf3457b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_ch57_review.json",
+      "bytes": 6421,
+      "sha256": "e6029a04439f6e19f447866e7eab903212e8f3d8d7d82e56a948af96cdc9aabb",
+      "git_blob_sha": "34a618123d15bb5a0b3cc86228355c008ddd547b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_ch57_review.md",
+      "bytes": 4677,
+      "sha256": "e951484b4aeadae4e0536e77398f3cac96545dcf7f0e083897c140bf2daae3ca",
+      "git_blob_sha": "eaa9617b6f75c028524af7881454372e02be5c30",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_finalize_dossier.py.txt",
+      "bytes": 16466,
+      "sha256": "dc04ff45e738e30a28529cd6aed28b1b981624a05b39ba28582a74226c6ce4b7",
+      "git_blob_sha": "87ec826cb48bc048140fc216e3e6fc83d38722f3",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_memory_cross_review.json",
+      "bytes": 6252,
+      "sha256": "fdebd29191805d2c7fedb4fd4fa749efa338f6c1aac0fcb7f73f9ab879180c44",
+      "git_blob_sha": "3826072a0e878aa536d4682ad5113605878f1aef",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_memory_cross_review.md",
+      "bytes": 4639,
+      "sha256": "d1f69ef37302fcfb944802b5cca90aa29cdc985a6e5fa80a266aa234f0a4e209",
+      "git_blob_sha": "72a3f9eb6017348bd4fce809edd90cbcbd8c1695",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_operational_round1.log",
+      "bytes": 64777,
+      "sha256": "409615823be441fdddee4579d9f95da4cb9de93a2e5ebf873d7ea0f244789a73",
+      "git_blob_sha": "a285721dc030fcd8ec0ed37130630d488150c8ac",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_operational_round2.log",
+      "bytes": 60108,
+      "sha256": "e3596b1e1572ce985f3dd580c2d6a8e6d2cdd383ef255e5d87ff1bf220efa110",
+      "git_blob_sha": "6b6444bf3a564173a9d0c5e6dd6464cabdb836d8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_operational_round3.log",
+      "bytes": 58183,
+      "sha256": "a5d814272bca35630cd9d68dfc3eaf9e1a0d98ec11be8c2d9d5359f2e2c277ef",
+      "git_blob_sha": "819e89f9e3b8f8d87375654d727906e8907cfd14",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_purification_round1.log",
+      "bytes": 31319,
+      "sha256": "019d89da5eb78bb43e03e125045e428a420606b330499fd00b2dd4f25951c9ab",
+      "git_blob_sha": "2e8d1b8ea9f36fd1d138806d174b8c8c188a0a80",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_purification_round2.log",
+      "bytes": 28417,
+      "sha256": "5700e0be177f65ddb6065c07e7a30d53b1d1d44b931cff842ace3ffab65a5b12",
+      "git_blob_sha": "19ca81a5f2559cef0c6479706646a430ebc7d08c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_purity_round1.log",
+      "bytes": 17242,
+      "sha256": "251cbde60a003f528fd59d68c33aa5911df6315ce6cc53e80f2626fc2e573bfb",
+      "git_blob_sha": "259b996685b731203603610f2d5fa98a339ecadc",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_purity_round2.log",
+      "bytes": 13804,
+      "sha256": "a214c09ee323526335bfda8d8bdd1ea42d1e5f3e32ac5a1290c344560768be71",
+      "git_blob_sha": "a2de49e7df8f11df106a84321d6213573466aaec",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_report.json",
+      "bytes": 27899,
+      "sha256": "f689644daab097782fc220de6fe02609321f760a6e6c6b788a3c0cd92fc2c224",
+      "git_blob_sha": "f195a3e403f31abdedb77efdee75e41f1dcab5a7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_report.md",
+      "bytes": 5088,
+      "sha256": "4d9183614069d38ad0e9545f995547af372d4379e755678a82dda1959288ec59",
+      "git_blob_sha": "b81a4784859c7e2f135e79abcbe44f0e5d0afe24",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_targets.json",
+      "bytes": 18675,
+      "sha256": "535864bf10f79cb8c811d557267a8a016de66f736afdac745d53b33c049551e5",
+      "git_blob_sha": "1975da34ec95ac5b15e6149d4df0e9bf6423eb8f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_update_dossier.py.txt",
+      "bytes": 50638,
+      "sha256": "44bc9df931f321a51c109a2aba912d4b21f7c2b2c2891804101a19aebaa9c390",
+      "git_blob_sha": "1b232bffbae926d1f4e00b27e189b9431ce6741f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_v318_review.json",
+      "bytes": 4166,
+      "sha256": "1a5eeab265da8e5c3d3a0a4deee9330e363a20c4ac8e1ed23b00ecd915f021bb",
+      "git_blob_sha": "af51c6095e4c7bd222069d6e75f3b0c5ca9e06f8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_v318_review.md",
+      "bytes": 3157,
+      "sha256": "ffc6af34446a0821d4eb4cefa569d3ccd1ba0e90751571634ed2524f9579236a",
+      "git_blob_sha": "ce3c0db933a41042bf1c73255ab51610f3456afe",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_witness_result.json",
+      "bytes": 3077,
+      "sha256": "8bed8dc9cdf4b43914dc2c1fa3f9ce49b22238f5894ad245f6e276a7bd915b01",
+      "git_blob_sha": "17d92d34bedb489c4253384aeefc4ed2d540d700",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_witness_round1.log",
+      "bytes": 4255,
+      "sha256": "50189d796e5275e4b7a6c69713919617d7e68b7fcb59b4ef351992aa3a86c927",
+      "git_blob_sha": "18f99664c977d0dfb14ac2beb1c26901ab46e27c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_witness_round2.log",
+      "bytes": 2826,
+      "sha256": "8b4a3bd312d54eb3295621851725c449b252c2d711dc018acd396b828eded73e",
+      "git_blob_sha": "49894583fec57c8bfd92a5f0e4a29f1e0a20215a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_A_witness_round3.log",
+      "bytes": 2352,
+      "sha256": "71fdd5d83ab576834ec10a92da980a877fdfe351509a0d3cbb9ecd31f0d5c3bf",
+      "git_blob_sha": "8a941f746352769805288133e03541c69c638928",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_B_doob_cross_review.json",
+      "bytes": 9891,
+      "sha256": "41d382a3e194ce7b9ad4863c08f0ddf65265c91f903c03fb111bb710786a4238",
+      "git_blob_sha": "2b6b0f397f2a385e7065cc16978e050626247d0b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_B_doob_cross_review.md",
+      "bytes": 6771,
+      "sha256": "178d92525e6a6f277d87afcc1910c88bc82fd2184dca4ad6edf464394ea3c413",
+      "git_blob_sha": "44aafa981c993d9f4e1adbdf7a8c5b9077deedbd",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_B_generated_release_review.json",
+      "bytes": 4140,
+      "sha256": "05959019a8b5d875b04447202592e463149c2b648f813bfe989691c207cd655b",
+      "git_blob_sha": "662a2a0dbcda27e7d4480f8c2ea82c23664937c3",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_B_generated_release_review.py.txt",
+      "bytes": 8945,
+      "sha256": "4f2ec3426f51b93e14d5c41d49aabe4e43f421a7fefe65fafe78f392888bec33",
+      "git_blob_sha": "a5070cf27628e27d3c281ceb0d33e6ebec7566bf",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_B_release_script_review.json",
+      "bytes": 9138,
+      "sha256": "68dca749b9255ccc2df8a8ea55f8ab354f6feae66a6d92b45975318e18395641",
+      "git_blob_sha": "739668e9702b1042441556503df361cee3ff7372",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_B_release_script_review.md",
+      "bytes": 6828,
+      "sha256": "118362b15bd2eab2dc63393e74ba13ab1d4e3fdcd94b03bad15ad551f1a6daa9",
+      "git_blob_sha": "5f07759b79930a16b7378c2c6468307c63620e7e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_accept_final_bindings.json",
+      "bytes": 907,
+      "sha256": "6ff745db42af883ae86236f2e166332cd5ff90be992a42415eba4b81e8531f36",
+      "git_blob_sha": "52788dce1506d50445ffd7433a0d1b8036f57728",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_accept_review_observations.json",
+      "bytes": 547,
+      "sha256": "b3c357a0baf3ba299dc3fb5d8f63084b90a7e00eef3e5966fd297b19b8180afa",
+      "git_blob_sha": "b17bda0944fa2b2ad8d4876cff080395774f22ed",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_acceptance_script_review.json",
+      "bytes": 4030,
+      "sha256": "a131f7b1b5502dc04bb7027f20ea8c06c38129a12dcaf66b6d2150d4ecda55b5",
+      "git_blob_sha": "a3e760317e3242adf899b4f29b4013b237622f2e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_acceptance_script_review.md",
+      "bytes": 3917,
+      "sha256": "b6bdce7455043ce24053889961689484298a44e694f4a4bd09e156d7f0c4bae2",
+      "git_blob_sha": "769d0d98a8b06471dc603cb639b8aede153e37a0",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_ch59_review.json",
+      "bytes": 5376,
+      "sha256": "7434c0bb68db4c5576f43a7f34254e419cd541bd8e4617a79dbe13fea96b5363",
+      "git_blob_sha": "a0cc348c64f357f91d61b7755d858dcf4c449f23",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_ch59_review.md",
+      "bytes": 4460,
+      "sha256": "7b31bd6dc3c6a93c972172703b79e79e5b8ec8230a8a60c2d6692d8e76cbdcbc",
+      "git_blob_sha": "9fd5eb201e977ae4ef33b9c1aa37152b73b38f0b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_declarations_candidate.json",
+      "bytes": 12738,
+      "sha256": "64046cd90a744529273d93f4686cd80cbf130e0985b24f4eca016449a0a7c7dc",
+      "git_blob_sha": "afa97ad2cee125727a7496f8359701bcb3418ae8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_dossier_script_review.json",
+      "bytes": 2647,
+      "sha256": "e5407b039c2d40fb0f588ca6d0f402942ec2c43c50bf5cdb6d77b9f95c60109d",
+      "git_blob_sha": "c171fdf8723ef06fcc2a872433131df2bb00b4c5",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_dossier_script_review.md",
+      "bytes": 2097,
+      "sha256": "fbe2d5ef66dbafd6fee0f6cfbb4221960fd053a45a68bfe91de182f97617e5ab",
+      "git_blob_sha": "d2d7306fafb5bf627ee396dce35f010d903a45dd",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_memory_cross_review.json",
+      "bytes": 8092,
+      "sha256": "1d9dd3c4e85a21f6a7a54cd4c4fe1e6e081af874a613943f3a21c92d23cf1be9",
+      "git_blob_sha": "fd61484223ef9181fba9fcbaaab4e607830922d8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_memory_cross_review.md",
+      "bytes": 4381,
+      "sha256": "deef7bf188201a8250fff4d24f5ef70096a6dc46eda8192ac10bb2c8e5a54c40",
+      "git_blob_sha": "a0d7537c005ac8c3f8582468ff40ad07b3701135",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_pdf_review.json",
+      "bytes": 14482,
+      "sha256": "0647180da6a03d14c79f556146738993861e8a06f46b0ba765aa28f39ad5c36e",
+      "git_blob_sha": "a83d70d6040e44baf40ed7d0ba98abb6ded16e25",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_pdf_review.md",
+      "bytes": 4097,
+      "sha256": "19cdcf8f6e49933735ef49bda9269e6ca05120a8b06c787523ef970a426f1a96",
+      "git_blob_sha": "210b05d713d4de89a1e29a681dd9a7057c430f4a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_public_axioms.json",
+      "bytes": 13956,
+      "sha256": "64ae8498c77bf2727352634452a350ad6ee35d1a067685df43f57bf7da467287",
+      "git_blob_sha": "2237666f8bd5ab5f12f1ad33859c39d920511a8a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_public_axioms.log",
+      "bytes": 8115,
+      "sha256": "6ceac5636875bb4b560d32dd2e52fcdeb330dbbcda7d00e4646b180ae54706bb",
+      "git_blob_sha": "74d63a54a77a607cab072f41d9f5f15b004efa18",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_public_targets.json",
+      "bytes": 9257,
+      "sha256": "29d5960bc5407ffb064264dd94779b13537135d60718cb0b81ab09e73d3e73a4",
+      "git_blob_sha": "118fb8d69f12fcad86edfbf66a0f615188856076",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_quantum_purification_review.json",
+      "bytes": 3083,
+      "sha256": "050059ee379e92da6caf1622af9cc855c4fb75f592c602cf695dcf88a21d9e09",
+      "git_blob_sha": "c5098f2c4988e7f0456c9efcb25784b84cdad991",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_C_quantum_purification_review.md",
+      "bytes": 3679,
+      "sha256": "dfe03d0d4b853cd56883d7819811d6f4027900a12b1f72b33aa68968d488677f",
+      "git_blob_sha": "30cbeb95e183a1034ddf8ab24b9a78a6f029c91d",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_accept.py.txt",
+      "bytes": 14698,
+      "sha256": "f22992a1e7983ee8064e506f3fe44a2d479664d4b77eaa41ed919dea540d10c9",
+      "git_blob_sha": "1fc61ddb3a6af2db6bcc64d9374479f1287c6e02",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_archive_local.py.txt",
+      "bytes": 3112,
+      "sha256": "c55ac621ad7c8ac5d99a361f4b297213ca2b0e4e31f56bc0b836773b76007b25",
+      "git_blob_sha": "3751adf4f6661c5e1325f7d653fc5e3a6931d19c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_book_release.py.txt",
+      "bytes": 8628,
+      "sha256": "cb7163e87af99c9c9063441d555fa37c6ef7791b1f83a11e501a1df19f52d495",
+      "git_blob_sha": "97953a2c0c3cf1476158f840a113b39fd535c7ca",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_ci_parser_legacy_rejection.json",
+      "bytes": 6805,
+      "sha256": "9a7839062abd3c2f4af00f62790b7e03fb2d0a5f80237bb43786e8ef385cd869",
+      "git_blob_sha": "3d2622947dacacbc8870ef58d0d99b03bd1f4be4",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_ci_parser_legacy_rejection.log",
+      "bytes": 335,
+      "sha256": "2437d15aa70d221d65cda90602a337fc67af8627b23ea82120e3357622a18e3a",
+      "git_blob_sha": "df4107da463f4ca67b7efd38dd776747efac090a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_ci_parser_review.json",
+      "bytes": 7951,
+      "sha256": "1343e85553b7e6d7e65c344b4448b9fe27a5f9bee7cef92e7666874ef9de3a28",
+      "git_blob_sha": "409d6f4aab1a478183ef069efb5d44e1660be74a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_ci_parser_review.md",
+      "bytes": 6142,
+      "sha256": "9255d6195b48d24b6ab18ce08d8782c7b7f450cfb90b0e94893bba1a4e9fa309",
+      "git_blob_sha": "9b313191fe1489701e0bab86ac2e322fa2214ed4",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_ci_parser_tests.json",
+      "bytes": 8077,
+      "sha256": "40b5a53309beab6d397b6a5c2a384d18405f60e66f00bb89939a47ed4f02825b",
+      "git_blob_sha": "e0ad5ba6ba2b92a5cb1160748a31f35f442f941d",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round1.json",
+      "bytes": 449,
+      "sha256": "56a0b24d88cb56f3bc6172b43cff9127899d88805ad6875ef8bdfbbde14b7aae",
+      "git_blob_sha": "0b037ead8cb1e8ff934aa54c2a9e5780cbd2220b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round1.log",
+      "bytes": 30247,
+      "sha256": "5249199db582670267efc0483cd67ae718909aa05de3044471023b5362537212",
+      "git_blob_sha": "7b8e174bcbc9ac25f9beac5777f1419c89b4db85",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round2.json",
+      "bytes": 374,
+      "sha256": "08f453f93eff4e78f33376b40dd898681545abf7bd078ae977ba0cee35227dee",
+      "git_blob_sha": "15f392fb3e603c943dd474fad2d00ec6289ad8a2",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round2.log",
+      "bytes": 29821,
+      "sha256": "bf25c19f9e5a70d3e7f308325c5c1898136217231dc75bd0bea0881e5c808646",
+      "git_blob_sha": "51b89ccd0b8c084c08c3074b3bcb28075b593ba0",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round3.json",
+      "bytes": 373,
+      "sha256": "59ba40558c57b7897b7df81aa5f5872dd8b2cb70a82c915a140e73ea41c9355c",
+      "git_blob_sha": "09a49d793a6eb8c8672590f2f0646467abcb45f2",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round3.log",
+      "bytes": 29370,
+      "sha256": "0ceb14f1b31851a136d49a75fb99aec617ab38254ead6558ae036746b836f3fe",
+      "git_blob_sha": "3c26243190da2eb745124eeffc449f8b0889d2e1",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round4.json",
+      "bytes": 373,
+      "sha256": "91743d1867f9c1dbcf2e0a5d0b288ca8a8a91de5910cabb2c3c8c986382dda1e",
+      "git_blob_sha": "6c01dbfbaa3c5e302f531f3fcd8b8d8480626dc0",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_dynamics_round4.log",
+      "bytes": 27349,
+      "sha256": "ab0f75fa727d07d1ce02fb0d6370df8181813ffc3681cfc288cb6283e6681702",
+      "git_blob_sha": "5a306133be0fb066cf1b254241b2cd29006f4139",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_model_focused.json",
+      "bytes": 443,
+      "sha256": "c530abbf08346e8aa9e4b965303c5ce0542dc6bcd30e8b03ac02e6dd86867119",
+      "git_blob_sha": "8b9939edf17b7d82c4f117662d809180ed8acd29",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_model_focused.log",
+      "bytes": 12154,
+      "sha256": "5a042c80161e9c86b136b6073e68ef0199cbd4c62d4ca5ef07a8cfb273aeac52",
+      "git_blob_sha": "1bcb06100df8e8394bfa4d7afa2840924f53e764",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_model_provenance.json",
+      "bytes": 1234,
+      "sha256": "5e7cb39b7bceddc9b17a265956ebe133e5a5af88b7acbcd889aa2253dda7ccff",
+      "git_blob_sha": "7dfce191982d3b5c656132997a0b83c21c463df0",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_witness_round1.json",
+      "bytes": 405,
+      "sha256": "c1409f05b493aa310aca1c1319343d1369864a8786b4635d8b045ea0d6421922",
+      "git_blob_sha": "f0ee30069cf5fba0e47270db8c785c8d84f69c94",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_witness_round1.log",
+      "bytes": 7475,
+      "sha256": "b01bf20e4fd272a2a7e8ac3c88a38561e587961161dd13997a2bc6aff6f135bc",
+      "git_blob_sha": "5f5e27b6d6be7526f658f5702ae8c29df028eb5a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_witness_round2.json",
+      "bytes": 404,
+      "sha256": "a0cac692e62f9b2b75171ba243b6bc21431c2e03f47d5bde6ff67af2fe23976f",
+      "git_blob_sha": "e11ea199354c5fbfaa970249e649f3709860b5ee",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_witness_round2.log",
+      "bytes": 3614,
+      "sha256": "a5fa6eb437fa45f832e01789a1aa88bdcbb99e9ef25e164435c91abfa462c99c",
+      "git_blob_sha": "06fa09ab3ad325b11af3b4b317ae462e290e2de9",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_witness_round3.json",
+      "bytes": 5349,
+      "sha256": "e64746569d43e8fe9f66dabed332aa92c9faf513f2f2ee99d4bb49b7f0ba9ad4",
+      "git_blob_sha": "88a5d6bb83e2f70ebb9d93321ef3d0a1ba507614",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_doob_witness_round3.log",
+      "bytes": 3205,
+      "sha256": "af88ca995c59e76f18bd53198f21522a6cb965a57d9aca0e7442bebef4396fc8",
+      "git_blob_sha": "e57518fe6fdb1b15bc5b8294254c402fa7a670a8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_finalize_visual.py.txt",
+      "bytes": 6615,
+      "sha256": "149e4475bb07502f5e19b18d6d1541d104c2de32542ea0cff0ee25da0df04beb",
+      "git_blob_sha": "4cb1a1f13428e3bde922fe6085388922f8376c0f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_inventory.py.txt",
+      "bytes": 6398,
+      "sha256": "b99427a6438fc90efc86baf0b67fa5649f1f9ff0a8a0e3b47c407b24b486089c",
+      "git_blob_sha": "6c4d75fcb117adeb8ac1cdde687dbcf971bc148f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_book_review.json",
+      "bytes": 27451,
+      "sha256": "03d8ae6811a161e11fa9b0578c756ec0843e1562ce22cd3b110fd6928fad5a9e",
+      "git_blob_sha": "433779ae2d325d4d35561412ee42ad92ae2dc45e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_book_review.md",
+      "bytes": 14688,
+      "sha256": "ad2628745bb6316b9a045401ed71b0f9c12d02142ae9751a8c6121057f071965",
+      "git_blob_sha": "c0dded3dee4c5355e7d2ec878b611ffeaba3c29f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_build_1.log",
+      "bytes": 42566,
+      "sha256": "251a8500b6da0400806a292d73cfc788146d4d38f7bb24220b87d071a432bb73",
+      "git_blob_sha": "78f4339805c2e0ed702ccb131848b5cbcbce70a7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_build_2.log",
+      "bytes": 37933,
+      "sha256": "6c301ac7ddaaa263e8d6c3209d703126a97a39eab29ea4397146f718fa2ba640",
+      "git_blob_sha": "13df984da5d4296a126e35a8120b77b1a4a05d0e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_build_3.log",
+      "bytes": 37320,
+      "sha256": "b80b556a95e12de3d95715c45e1d206605227f3642cc17cb20faabdb60bad011",
+      "git_blob_sha": "d0b90db2483ad2e6e9692f50852bb85570a516eb",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_build_4.log",
+      "bytes": 36247,
+      "sha256": "e73c00d0e3bb1f1093ad05cc825c8866c14bc8e594e0a001f7822caaf24aa235",
+      "git_blob_sha": "92b734c3069cd345197b7280231d235b2d64a9da",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_build_5.log",
+      "bytes": 40283,
+      "sha256": "5849e6553a8667294463263fff13a29160a838e89bf33f14cafbf10ff53b51ba",
+      "git_blob_sha": "ef47d4de041fb53d8bebea7227ed7c4526832bbb",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_build_6.log",
+      "bytes": 36247,
+      "sha256": "f2444c3deccf42aca6d0faa581fd2e5e8e76343fd30ca140a6bb261f0164da3e",
+      "git_blob_sha": "bb95672070d0aae10c674a977b96cf7e7b4daeb8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_focused.json",
+      "bytes": 996,
+      "sha256": "bbf56e0e819b6e0294508c530bd9d3fafddfab30334ac51f86956030800d531c",
+      "git_blob_sha": "94361c4cbe25a2a8cc7b63de39bac4ac551eedb3",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_report.json",
+      "bytes": 48948,
+      "sha256": "0092c920c38ef8cd8c37b16594b054dbbcfeedac73177f013cc4ab2d643df8a9",
+      "git_blob_sha": "fe184434ee6ce7f371fae5348eda6a4bd0aba7a4",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_report.md",
+      "bytes": 6234,
+      "sha256": "769429eb5c235733b0d6669616d8ee94f2454a007635f4565db89f1a2974ed3f",
+      "git_blob_sha": "d76ed1e85b62ee7122ee00ab5301ddbd39280ab6",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_root_audit_reconciliation.json",
+      "bytes": 1243,
+      "sha256": "35879c4aa4ec301e3ebf56fbeb85ee20ca9225cb63eb810d5ad3e5cb3ed9eb13",
+      "git_blob_sha": "9dd54afcda7f2aa09bac591dec280d35660a3772",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_targets.json",
+      "bytes": 32296,
+      "sha256": "3651b916c1c2ca96f7fafc9c5c3bb156f1f681fe09bb96efcd02903b86d7a6fb",
+      "git_blob_sha": "019c266bb7982c15c784c0941f8df53956aa8f96",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_witness_1.log",
+      "bytes": 5588,
+      "sha256": "6620629bbbee1bd759f556b9575365922f18fe19556406097eac26b78c0e6886",
+      "git_blob_sha": "5b0fec1b4b1f6aafae946eb6f6f0c6b4c10c99bf",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_witness_2.log",
+      "bytes": 4369,
+      "sha256": "445e3b4768fd614ec04e4b74d528e192f452ccd6847040fb8c247c1a5ffa213a",
+      "git_blob_sha": "8ee3176e438c38a6b475e7fd43ab130ccbea7c0e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_witness_3.log",
+      "bytes": 6480,
+      "sha256": "69c5698e2dfe429d6f4ba0f711ff398edd15a11f02a4a536d82107f99e9cd2de",
+      "git_blob_sha": "761ae9745fc9075e68d48c8eca6e26299ba6b0f1",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_witness_4.log",
+      "bytes": 5536,
+      "sha256": "d930e10f36c47a0d57636314ac4ab33e8abff316b6b639272fcb60714f7f4318",
+      "git_blob_sha": "ece021bfb5920b45ad9f3d88fb61e41c40d70e7c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_witness_5.json",
+      "bytes": 4973,
+      "sha256": "ba0676be5662adc0b68016789260e51d043acbffd5090b0a617c5192cce1b230",
+      "git_blob_sha": "bedc87d63b86ea5863733d545b6d1182bb49ee47",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_memory_witness_5.log",
+      "bytes": 3560,
+      "sha256": "44e166ac1f1e02c9f993e6e08c4a59142f4ca92f7bfbbc49a33e15c8e9279619",
+      "git_blob_sha": "a6783b4ead052db15716ce2c73dbcbe6b1138bd5",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_prepare_book.py.txt",
+      "bytes": 18230,
+      "sha256": "ec84868e2f5d5a3553633b3b90a820c57a1bf27619be3f8269315ff1cf2ceca7",
+      "git_blob_sha": "e3a8501900edf0b89c1b2e2a85706f6690968904",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_prepare_release.py.txt",
+      "bytes": 45740,
+      "sha256": "717ac7e3b8fa71d86098338e77f34817ca9d1989d28617e5d6a9e1c6ae75e474",
+      "git_blob_sha": "1ef85f94a883315f6d0db2228823d864f95fbad2",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_prepare_upload.py.txt",
+      "bytes": 5450,
+      "sha256": "3f9932402ed030f90fbdf05417b8bbd84dc889e9f96c896e492ac45dd8400465",
+      "git_blob_sha": "77fa6c46fbfff4435e42eb3ebc0bf2a918636d88",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_quantum_doob_report.json",
+      "bytes": 14819,
+      "sha256": "c823ebe26974586506b2624b340bc928fce20274448d63de8eec0af414aba3a0",
+      "git_blob_sha": "ffad562ad98485bd7aa40480e9df763a42e924e8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_quantum_doob_report.md",
+      "bytes": 5526,
+      "sha256": "40ba4df9d0a8c644a5800f6fa9bc6c08c0ab3eb783ad3e2a6c327df8530cdd45",
+      "git_blob_sha": "26b7bae4197fcdbdda207d26c34139ec41505e24",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_record_probability_build.log",
+      "bytes": 31453,
+      "sha256": "7c178a120ce90ea701c8710e42de482b5842f93c451c6e464bd3222ca183554e",
+      "git_blob_sha": "961f0613fe1c36deec28925d491f268c4ad92952",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_record_probability_receipt.json",
+      "bytes": 790,
+      "sha256": "91f0ceb74b9496a6e48d9e0b493e6c4ded9c42112a1e1f6e33dda7fd10741228",
+      "git_blob_sha": "2df9c6e9bb11d5c8aff66bf956c1e8d84d37baef",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_record_probability_round2.log",
+      "bytes": 29233,
+      "sha256": "79b8da9d3c183abb8d2a3fbb43a9538e098be3210e03e79c76d854bd793a41bf",
+      "git_blob_sha": "b24e49d3a7e20303c9634d5064d5a3e44805fb60",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_rectangular_build_1.log",
+      "bytes": 35319,
+      "sha256": "b4b6aa4a4cb10d438f908b649447f9d632ae0f3e5a84af7c8bba6389f5fce3bc",
+      "git_blob_sha": "4c411bf08315c21e859d248bf1ab86cba962cf2b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_rectangular_build_2.log",
+      "bytes": 33192,
+      "sha256": "6aacd2d068f81ba1aa76a3b39e3b54daf78251cd36630cfcbfe50d2de8907c6f",
+      "git_blob_sha": "26d5cb6008c52519529f9095f0531833cfd533f8",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_rectangular_build_3.log",
+      "bytes": 28365,
+      "sha256": "a0885ab0c5cf2fc3a4172ef6d2c05ca04fe4b6de501f064434aa236f49a8fe6b",
+      "git_blob_sha": "164a375e50c52f885cc6989034d0361991fe5d0c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_rectangular_focused.json",
+      "bytes": 995,
+      "sha256": "9039e77fc1ed225e4183153f11ffd848a8d45f929a5b69b18b0483eaeaab93a4",
+      "git_blob_sha": "a286984868003076cb772246ac6c7c58c8e2b085",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_source_parser.py.txt",
+      "bytes": 3210,
+      "sha256": "503eff61729dff90b18bd98278903e2831ecfb35659681a53a6bd9374d52e6de",
+      "git_blob_sha": "ab3e9d9bdddffebe5205af421e8605f1a1ef3e3b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/focused/qm317_verify_ci_logs.py.txt",
+      "bytes": 35087,
+      "sha256": "d8725a2382120b6777c48f960a54c05af8bc1fdc6c8740d0226d6f71bdfa03bd",
+      "git_blob_sha": "8725f7a25139215fdfdb1460b3a725f695027dbc",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-build.log",
+      "bytes": 66289,
+      "sha256": "0fd3b64166c7fbac251eb4f466555e9391ff439c1839ac79386236a20f9cae88",
+      "git_blob_sha": "761c04ead07fb5bdd50d6ae2a3b2c29c02ac59e6",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/d1.lean",
+      "bytes": 3403,
+      "sha256": "47aa82621e7bb6877ca10b83888671022b7ccd89ed9452064c2ccb2630a386f6",
+      "git_blob_sha": "f1cf0fda557cda26f0ef8db87de84db05a2c14a2",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/d1.manifest.json",
+      "bytes": 3522,
+      "sha256": "b11d8c408eb0cdf0c56311db2c1199981764e0e414995c8e4632f8e2199c5553",
+      "git_blob_sha": "677cdeb80ca71a05c94b36da366f564ffc4e4eaa",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/d4.lean",
+      "bytes": 4893,
+      "sha256": "a0ba3143c082e2af3868e7e02b82aaf06b3d824e7a967c37974bac9573a55597",
+      "git_blob_sha": "224f1cfc455d40bd60be5c0a1bb530565032700b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/d4.manifest.json",
+      "bytes": 4677,
+      "sha256": "ca624feb2dcfdf831ba5995cff4b400eb07ac41fcb9c5d0d1483ceca119602ae",
+      "git_blob_sha": "75d7e156b6faef50aac3a1205f92f929706c4788",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/exports.json",
+      "bytes": 6716,
+      "sha256": "12a9434554b839833c907543157dc04a3b7fb0f7f0b63762119359ac728666ec",
+      "git_blob_sha": "6de6238279ede5733b749ae566b6325f6010965f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/hsz.lean",
+      "bytes": 6000,
+      "sha256": "21bf66a5f82638dfd92d2d6b2baddf7778210c6d64e2907ed173f72b842c1e75",
+      "git_blob_sha": "89e89d6c748c79e5b102fef99edb3f2f138c30ae",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/hsz.manifest.json",
+      "bytes": 6802,
+      "sha256": "028936100a3527765db60c066c219c5ebc7eb7e3757b8463fa9855cee0cee00c",
+      "git_blob_sha": "3b27cdf67d12c2212b6bd1accba3f871fa68218c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/hz.lean",
+      "bytes": 4706,
+      "sha256": "e49193f5a39afa46e85e2fa9cb147d886475a51a95ced78bac94dad8f4c41939",
+      "git_blob_sha": "075defef88cb69ff753836b0af5dda3c000aebe1",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/hz.manifest.json",
+      "bytes": 5077,
+      "sha256": "2d7111af0f88b862b3d5491a6f0a5ec487c8755fcef9483ef0bb920441a7a3cf",
+      "git_blob_sha": "92975e856152336af24c167187768c289be91a4b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/ragged.lean",
+      "bytes": 6888,
+      "sha256": "47537f91789a9bd1604bd87fbc9ad3fb69df1d2466f02591c94ad6600c8a36a0",
+      "git_blob_sha": "acd3b20be1496099051cb65eb4490267d8a415f7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/ragged.manifest.json",
+      "bytes": 8204,
+      "sha256": "ef441741ef535130c83e71bafd0a726bf7c4482bd8f6c59bf69017cf3fed7fca",
+      "git_blob_sha": "d08cb446e5c87c43b4a1bf81da57b4d0dcd38fad",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/z.lean",
+      "bytes": 3837,
+      "sha256": "1910afc419c2388f0c79e001a8cf91134c4c40e71c2859d7eb6adf261e1ac647",
+      "git_blob_sha": "9abb114f1e7fcfea569163a4c2c8209ad6aa3373",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/generated/z.manifest.json",
+      "bytes": 3885,
+      "sha256": "84e859a98fa96ab3b92f151b17d42d0e468579226927cabc0e1fed1d58db13a9",
+      "git_blob_sha": "22fb1eae32d9fc9cdbfd4a0b0038071002b87f20",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/d1.compile.log",
+      "bytes": 1240,
+      "sha256": "d15262aa79ebd31ae243bca1621db04c4698e1fc6568d180cb979c77c79ee2ff",
+      "git_blob_sha": "e4479632559d375fb56771f21c5e334fed620719",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/d4.compile.log",
+      "bytes": 1240,
+      "sha256": "766cab302ff3927c00e618c154b14632ddd47c01b62f867612919c0a9183b793",
+      "git_blob_sha": "35aae499157b4852345ee5b3963372221168f9c0",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/hsz.compile.log",
+      "bytes": 1240,
+      "sha256": "be26114fdd2e951bb71a86e1e5b7fba95820bd2cf8e7507dceb145ca83808738",
+      "git_blob_sha": "fc25f476a5c9c32ef66e22f1f3762a1ad26d1cb2",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/hz.compile.log",
+      "bytes": 1240,
+      "sha256": "c8d3ca7d6d8cf5aaa5a3e3d21cdb019bf524f0b593eaccfd28000fd603e0556f",
+      "git_blob_sha": "ead03d24e1ad8f406d68e9d6994676f4e70de9b6",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_basis.compile.log",
+      "bytes": 1869,
+      "sha256": "a72dc18def8a480539e67d2135f3118c9bdddd72b8d2fbf14d6250bbd3feb71a",
+      "git_blob_sha": "f43cfe581983aedbea69afe85513dd47cab6264e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_basis_rejected.compile.log",
+      "bytes": 166,
+      "sha256": "01e309a43c130f3edd22bd4611974db17d419305f75005d10b192a9226248349",
+      "git_blob_sha": "229f4e0f82e87a3e5ed3fa8d4efc3baf3ee1ad10",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_pullback.compile.log",
+      "bytes": 1872,
+      "sha256": "a604f15102805398677d333f6a835f9ba0cee5ba0233ea3fd4e86d0968916ccd",
+      "git_blob_sha": "ce1d96a1bb14a4aa0679bc0d3bbcfca16b2c4536",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_pullback_rejected.compile.log",
+      "bytes": 166,
+      "sha256": "01e309a43c130f3edd22bd4611974db17d419305f75005d10b192a9226248349",
+      "git_blob_sha": "229f4e0f82e87a3e5ed3fa8d4efc3baf3ee1ad10",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_weight.compile.log",
+      "bytes": 1870,
+      "sha256": "618343445d8f2cfec33ad99ad8760ab52b82515e88636af4dc42f45bf5ab0852",
+      "git_blob_sha": "32ae27fb942fa2e3da541031f0eab425a91e60b4",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_weight_rejected.compile.log",
+      "bytes": 166,
+      "sha256": "01e309a43c130f3edd22bd4611974db17d419305f75005d10b192a9226248349",
+      "git_blob_sha": "229f4e0f82e87a3e5ed3fa8d4efc3baf3ee1ad10",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_word.compile.log",
+      "bytes": 1868,
+      "sha256": "12bfd4c943235135bc7beb8999f0812ec672432e6390231aaace457f142749b4",
+      "git_blob_sha": "9d25afeb9cf26e2f7fe67fd37360bc50f7f8d184",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/negative_word_rejected.compile.log",
+      "bytes": 166,
+      "sha256": "75378724060da39ab727c12eb46bba139423526c9609463f219e5418b229dc38",
+      "git_blob_sha": "81606ea083b68f570fab9b492223e03e19e52acf",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/ragged.compile.log",
+      "bytes": 1240,
+      "sha256": "c472df51bec00810a90222f989e1814325a91af191b8be218465f5bdbbceda69",
+      "git_blob_sha": "7632679d30fb61d96ed0cd4fed5f28d269925b00",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/toolchain_version.log",
+      "bytes": 106,
+      "sha256": "63f3e16bf0258e2cc0ab3010eb1830723df9bb85097b7b72b0137b9be25a78e9",
+      "git_blob_sha": "ea79e261ed3063846d89875f31c1b81a5cb9de71",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/logs/z.compile.log",
+      "bytes": 1240,
+      "sha256": "f4a5e29c2e22165758035565d8bf9c070768b920e7ede301d3cdbee8507bba87",
+      "git_blob_sha": "e30e7d7c5720005fbd76f7be20b5b8e8a0a06345",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_basis.lean",
+      "bytes": 3837,
+      "sha256": "08d5775e9ba5f4632a684b2efcd9824c214b8e1420246369a33f976b0bfb4772",
+      "git_blob_sha": "83325c98c7f5cacfe7757ebddb75db6f56e184f6",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_basis_rejected.lean",
+      "bytes": 2011,
+      "sha256": "baee48c587b1aef668471e447636d8881ecd68f7b5afdf0fffcb60ccfe849448",
+      "git_blob_sha": "2f19cd3985bace0a67c3d20eaf8bd7b16857a2c2",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_pullback.lean",
+      "bytes": 3837,
+      "sha256": "81015f5a9a37193423fdecc453e68d3d4a2cce27279b26a62c7b59522bae96ac",
+      "git_blob_sha": "c35c24271330c4b8715b4bfe4fb40df338d92b93",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_pullback_rejected.lean",
+      "bytes": 2011,
+      "sha256": "f4941339adc62581f5506f1b0e55b800d9d55c0356c268df9f80e4df17c25e53",
+      "git_blob_sha": "a3ebd06072f78c578a033cb28929e682f89def57",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_weight.lean",
+      "bytes": 3837,
+      "sha256": "e9c45404602f73aa786e56592b73c12f46e8c37d144bac2a6272b9dbc13d4d8c",
+      "git_blob_sha": "0352473a85568bbc6b8a8589944f9d6b0781651c",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_weight_rejected.lean",
+      "bytes": 2011,
+      "sha256": "5a9e583a0458c596305ae97033422a9db9ad049f1d93e2f68fe716b3eafa2a54",
+      "git_blob_sha": "e74348bdaa56d6a883bcf72395219eba0af104a5",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_word.lean",
+      "bytes": 4706,
+      "sha256": "a416c5d26be5ef371187ca2bdd9a93c5f52a3f319a90728e4cd92eb52ab84f1d",
+      "git_blob_sha": "bacdd603d93e7a346b3597170c5997a802a22e84",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/negative/negative_word_rejected.lean",
+      "bytes": 2880,
+      "sha256": "604c738f50754a5a801a53d00f7e998f67a9c93151fa522ecc8985d9f1c0b6fe",
+      "git_blob_sha": "918c75a2cf302c1c924f143bbae899f8ebb0916e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-exports/verification.json",
+      "bytes": 81467,
+      "sha256": "4cebb602f2fd9e17e3e3634da952db460cf08ea005baa54093699f712ebe4d9b",
+      "git_blob_sha": "e709efdde9ea2794574be5a4aae56aa88406814e",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "bytes": 3625,
+      "sha256": "55380165301503f392328e5f0a1c10c7d8ff16cccc7bfb2f5c783ec73b3a039b",
+      "git_blob_sha": "3e7dd5c276dbc4691a197f74278a4ac78840b06d",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/proof-axioms.json",
+      "bytes": 101807,
+      "sha256": "06deaee904cf30ab097edfc7aaf4a642117176360bb4fa6a68094a36ac573cc5",
+      "git_blob_sha": "68e5c1b8c1105ffa36d42334735f953b573e3d37",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/proof-escape-gate.json",
+      "bytes": 211,
+      "sha256": "afa2d9328cab23b92bb48208364ca4e9578ec45307f8e35241cb70e29eb45927",
+      "git_blob_sha": "d871f4a1a8bb5b65d9ae3ef6812d96e73d696667",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/recovery.json",
+      "bytes": 3087,
+      "sha256": "9fc6281517bbc5b9f68acf604b7e33b6c142e3630f0753891a0285fa664df32c",
+      "git_blob_sha": "3c68cd0040bf15c08c801ddda7bd5ca007fe904b",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "bytes": 13135,
+      "sha256": "3094a93fd531c4ad8108c7ec47327de281f445cf5b3a6a8aedfbd0100f7c5618",
+      "git_blob_sha": "a6dd6d7f846b5f6d45f5c4dd24aa6e8d14344647",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/runtime.log",
+      "bytes": 15289,
+      "sha256": "7ce6e0d836c7739bcf80291ef5764c1075e1dd85ce0fedd4a80968e6bfc9d7d8",
+      "git_blob_sha": "e8eefdc49406f14decad745aa21cc9e54d5489f0",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/source-freeze-reconciliation.json",
+      "bytes": 384,
+      "sha256": "ebd96cf7e46c94c6096ef363c03875632810dfab2411855b7031b684f72c6e5a",
+      "git_blob_sha": "70e7a4e6b24e05101bac210c0951c62bd341fc8a",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/source-manifest-before.json",
+      "bytes": 14940,
+      "sha256": "c51f4d3ed9b756e062eeb56a5db3b5a3d70a8c5c1cc9d6802fd34cfa487c6b36",
+      "git_blob_sha": "7b4e0d2123331996669e5dbaef3c11b7208716d7",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "bytes": 14940,
+      "sha256": "cd04b64ddbb5879e1c5af67dea1d70a07d323f590aa0c1434e544e4b1d41dde0",
+      "git_blob_sha": "5bd1c923bbb5757d5f451113226a92680300cb9f",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/toolchain-version.log",
+      "bytes": 106,
+      "sha256": "63f3e16bf0258e2cc0ab3010eb1830723df9bb85097b7b72b0137b9be25a78e9",
+      "git_blob_sha": "ea79e261ed3063846d89875f31c1b81a5cb9de71",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.7/witness-parser-contract.json",
+      "bytes": 1303,
+      "sha256": "8c2ddd78d33dca64e1a1e5d7f20f12a432ec3422b0aefae7d850243cb3ad8c1b",
+      "git_blob_sha": "990674570bb2050834022de6477dc414a0262960",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/status/ACTIVE_RESEARCH_v31.7.json",
+      "bytes": 2288,
+      "sha256": "1d4a0aee772f7c64a09a3780e3ad6e1f13db3c60748ca14dd77cc608a109674e",
+      "git_blob_sha": "febf2b60b7a9b2252113e8911dbf54c9d6b1d007",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.7.json",
+      "bytes": 115250,
+      "sha256": "815e765419cf3d1dc1b9a947d622b626d33898159337c2f7e1297dab12c35fe5",
+      "git_blob_sha": "6f54a0133966de8e159370bcf0345df1dfad3604",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": null,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "physics/qm/status/CURRENT.json",
+      "bytes": 15035,
+      "sha256": "c541af8112fb9d71ab234c93113040c092e2c2411a14f68213beb2727ced919f",
+      "git_blob_sha": "d27090b1d947211cb09edb2e9e5214a3c12709fe",
+      "mode": "100644",
+      "binary": false,
+      "previous_blob": "4f921e49b7a0854f96c502d207f3d4b66dc66e3c",
+      "encoding": "utf-8"
+    }
+  ]
+}

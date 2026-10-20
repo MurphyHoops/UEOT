@@ -1,0 +1,392 @@
+#!/usr/bin/env python3
+"""Plan or apply v31.7 remote acceptance metadata after actual PR/main CI.
+
+Default is read-only. No compiler, test runner, network request, Git mutation,
+canonical book rewrite, or historical acceptance rewrite is performed here.
+Every input and every proposed output is checked before any repo write.
+"""
+from __future__ import annotations
+
+import argparse
+import copy
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import re
+import sys
+import tempfile
+
+BASELINE = '7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8'
+SOURCE_SET = 'b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911'
+INVENTORY_SHA = 'c9eec4640637af39768c0a36c177fb5396df5d6ef298806fde105f7fc9ec93a4'
+CI_VERIFIER_SHA = 'd8725a2382120b6777c48f960a54c05af8bc1fdc6c8740d0226d6f71bdfa03bd'
+CANONICAL = {
+    'UEOT_PHYSICS.md': '83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c',
+    'UEOT_PHYSICS.pdf': '9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c',
+    'UEOT_PHYSICS.tex': '364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c',
+}
+EXPECTED_WITNESS = {'MixtureExamples': 9, 'SurvivalTwoState': 30,
+    'RealTomographyTwoRebit': 5, 'QuantumDoobExamples': 40,
+    'QuantumPurificationExamples': 20, 'ClassicalQuantumMemoryExamples': 22,
+    'QuantumDoobDynamicsExamples': 25}
+REPOSITORY = 'MurphyHoops/UEOT'
+
+
+class FinalizationError(Exception):
+    pass
+
+
+def require(condition, message):
+    if not condition:
+        raise FinalizationError(message)
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def blob(data):
+    return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+
+def encoded(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+
+
+class Plan:
+    def __init__(self, root):
+        self.root = root
+        self.inputs = {}
+        self.outputs = {}
+
+    def raw(self, path):
+        path = Path(path).resolve()
+        data = path.read_bytes()
+        previous = self.inputs.setdefault(path, data)
+        require(previous == data, 'Input changed during planning: ' + str(path))
+        return data
+
+    def read(self, path):
+        return json.loads(self.raw(path))
+
+    def stage(self, path, value):
+        path = Path(path).resolve()
+        require(path.is_relative_to(self.root), 'Output outside requested root: ' + str(path))
+        if path not in self.inputs:
+            self.inputs[path] = path.read_bytes() if path.exists() else None
+        self.outputs[path] = value if isinstance(value, bytes) else encoded(value)
+
+    def verify_unchanged(self):
+        for path, expected in self.inputs.items():
+            actual = path.read_bytes() if path.exists() else None
+            require(actual == expected, 'Input or output destination changed: ' + str(path))
+
+
+def context_path(context_file, context, key, default):
+    path = Path(context.get(key, default))
+    return path if path.is_absolute() else context_file.parent / path
+
+
+def build_plan(root, context_file):
+    plan = Plan(root)
+    q = root / 'physics/qm'
+    evidence = q / 'kernel/evidence/v31.7'
+    context = plan.read(context_file)
+    c = context
+    require(c['repository'] == REPOSITORY, 'Unexpected repository')
+    require(c['pr_status'] == c['main_status'] == 'PASS', 'Actual PR/main PASS context is required')
+    require(c['source_count'] == 80 and c['source_set_sha256'] == SOURCE_SET, 'Wrong accepted v31.7 source identity')
+    for key in ['source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree', 'parent_commit', 'parent_tree']:
+        require(bool(re.fullmatch('[0-9a-f]{40}', c[key])), 'Expected full Git SHA for ' + key)
+    for key in ['pull_request', 'pr_run', 'main_run']:
+        require(type(c[key]) is int and c[key] > 0, 'Expected actual positive integer for ' + key)
+    require(c['pr_run'] != c['main_run'], 'PR and resulting-main runs must be independent')
+    require(c['source_branch'].startswith('qm/'), 'Unexpected scientific source branch')
+    expected_urls = {'pull_request_url': f'https://github.com/{REPOSITORY}/pull/{c["pull_request"]}',
+        'pr_run_url': f'https://github.com/{REPOSITORY}/actions/runs/{c["pr_run"]}',
+        'main_run_url': f'https://github.com/{REPOSITORY}/actions/runs/{c["main_run"]}'}
+    for key, expected in expected_urls.items():
+        require(c[key] == expected, 'Mismatched actual URL: ' + key)
+    now = datetime.now(timezone.utc).isoformat()
+    receipts = {}
+    for kind, commit in [('pr', c['source_commit']), ('main', c['tested_main_commit'])]:
+        path = evidence / 'ci' / f'{kind}-{c[kind + "_run"]}-verification.json'
+        j = plan.read(path)
+        require(j['schema'] == 'ueot_qm.actual_ci_verification.v31.7' and j['status'] == 'PASS'
+            and j['verification_complete'] is True and j['repository'] == REPOSITORY
+            and j['event'] == kind and j['run_id'] == c[kind + '_run'] and j['source_commit'] == commit,
+            kind + ': wrong or incomplete actual CI receipt')
+        require(j['generic_axiom_reports'] == 855 and j['runtime_test_methods'] == 100
+            and j['finite_witness_total_audits'] == 151 and j['printed_source_hash_count'] == 33,
+            kind + ': incorrect accepted gate counts')
+        require(j['concrete_witness_audit_counts'] == EXPECTED_WITNESS
+            and j['local_accepted_source_count'] == 80 and j['local_accepted_source_set_sha256'] == SOURCE_SET,
+            kind + ': incorrect witness or source identity')
+        for flag in ['jobs_all_success', 'recorded_checkout_matches_expected',
+            'generic_axiom_names_and_foundation_equal_local', 'archive_steps_success',
+            'input_files_unchanged_during_verification', 'local_accepted_sources_unchanged_during_verification']:
+            require(j[flag] is True, kind + ': required gate not successful: ' + flag)
+        require(set(j['required_steps_success']) == {'runtime', 'lean'}
+            and all(j['required_steps_success'].values()), kind + ': missing successful required steps')
+        require(j['verifier']['sha256'] == CI_VERIFIER_SHA, kind + ': unexpected CI verifier identity')
+        for key, bound in j['input_files'].items():
+            data = plan.raw(Path(bound['path']))
+            require(sha(data) == bound['sha256'] and len(data) == bound['bytes'],
+                kind + ': supplied CI or reference bytes changed: ' + key)
+        actual_run = plan.read(evidence / 'ci' / f'{kind}-{c[kind + "_run"]}-run.json')
+        require(actual_run['id'] == c[kind + '_run'] and actual_run['head_sha'] == commit
+            and actual_run['status'] == 'completed' and actual_run['conclusion'] == 'success'
+            and actual_run['event'] == ('pull_request' if kind == 'pr' else 'push'),
+            kind + ': run metadata not the requested actual successful event')
+        require(kind != 'main' or actual_run['head_branch'] == 'main', 'Main receipt is not a main push')
+        receipts[kind] = j
+
+    tree_files = {
+        'source': context_path(context_file, c, 'source_remote_tree_path', 'qm317_source_remote_tree.json'),
+        'main': context_path(context_file, c, 'main_remote_tree_path', 'qm317_main_remote_tree.json'),
+    }
+    remote = {kind: plan.read(path) for kind, path in tree_files.items()}
+    for kind, commit, tree_sha in [('source', c['source_commit'], c['source_tree']),
+        ('main', c['tested_main_commit'], c['tested_main_tree'])]:
+        t = remote[kind]
+        require(t['commit'] == commit and t['sha'] == tree_sha and t['truncated'] is False,
+            kind + ': incomplete or wrongly bound actual recursive tree')
+        require(len(t['tree']) == len({entry['path'] for entry in t['tree']}), kind + ': duplicate tree paths')
+    trees = {kind: {entry['path']: entry for entry in t['tree'] if entry['type'] == 'blob'}
+        for kind, t in remote.items()}
+
+    manifest = plan.read(evidence / 'source-manifest.json')
+    proof = plan.read(evidence / 'lean-verification.json')
+    core = plan.read(evidence / 'core-import-closure.json')
+    require(proof['status'] == 'PASS' and proof['source_set_sha256'] == manifest['source_set_sha256'] == SOURCE_SET,
+        'Local accepted proof/source identity mismatch')
+    require(manifest['source_count'] == len(manifest['sources']) == len({s['path'] for s in manifest['sources']}) == 80,
+        'Wrong accepted source count')
+    require(sha(json.dumps(manifest['sources'], sort_keys=True, separators=(',', ':')).encode()) == SOURCE_SET,
+        'Source list digest mismatch')
+    matched = []
+    for s in manifest['sources']:
+        data = plan.raw(root / s['path'])
+        git_blob = blob(data)
+        require(sha(data) == s['sha256'] and len(data) == s['bytes']
+            and all(t[s['path']]['sha'] == git_blob for t in trees.values()), 'Accepted source mismatch: ' + s['path'])
+        matched.append({'path': s['path'], 'sha256': s['sha256'], 'git_blob_sha': git_blob, 'source_and_main_match': True})
+    core_matches = []
+    for s in core['modules']:
+        data = plan.raw(root / s['path'])
+        git_blob = blob(data)
+        require(sha(data) == s['source_sha256'] and all(t[s['path']]['sha'] == git_blob for t in trees.values()),
+            'Core import mismatch: ' + s['path'])
+        core_matches.append({'path': s['path'], 'sha256': sha(data), 'git_blob_sha': git_blob, 'source_and_main_match': True})
+    require(len(core_matches) == len({s['path'] for s in core_matches}) == 56, 'Wrong Core import count')
+    book = {}
+    bookfiles = []
+    for name, key in [('UEOT_PHYSICS.md', 'markdown_sha256'), ('UEOT_PHYSICS.pdf', 'pdf_sha256'), ('UEOT_PHYSICS.tex', 'tex_sha256')]:
+        path = q / 'book' / name
+        data = plan.raw(path)
+        relative = path.relative_to(root).as_posix()
+        git_blob = blob(data)
+        require(sha(data) == CANONICAL[name] and all(t[relative]['sha'] == git_blob for t in trees.values()),
+            'Canonical book mismatch: ' + relative)
+        book[key] = sha(data)
+        bookfiles.append({'path': relative, 'sha256': sha(data), 'git_blob_sha': git_blob, 'source_and_main_match': True})
+    book.update(edition='3.3', pages=203, numbered_chapters=60, numbered_results=131)
+    inventory_path = context_path(context_file, c, 'publication_inventory_path', 'qm317_publication_inventory.json')
+    require(sha(plan.raw(inventory_path)) == INVENTORY_SHA, 'Frozen publication inventory bytes changed')
+    inventory = plan.read(inventory_path)
+    require(inventory['file_count'] == len(inventory['files']) == len({s['path'] for s in inventory['files']}) == 244,
+        'Wrong frozen publication path count')
+    for entry in inventory['files']:
+        path = entry['path']
+        require(path.startswith(('physics/qm/', 'formalization/ueot-qm/')) or path == '.github/workflows/ueot-qm.yml',
+            'Publication scope violation: ' + path)
+        data = plan.raw(root / path)
+        require(len(data) == entry['bytes'] and sha(data) == entry['sha256'] and blob(data) == entry['git_blob_sha'],
+            'Frozen publication bytes differ: ' + path)
+        require(all(t[path]['sha'] == entry['git_blob_sha'] and t[path]['mode'] == entry['mode'] for t in trees.values()),
+            'Published path or mode differs: ' + path)
+    count = 244
+    tree_equal = remote['source']['sha'] == remote['main']['sha']
+    plan.stage(evidence / 'publication-inventory.json', plan.raw(inventory_path))
+    source_reconciliation = evidence / 'remote-source-reconciliation.json'
+    if source_reconciliation.exists():
+        old = plan.read(source_reconciliation)
+        require(old.get('status') == 'PASS' and old.get('source_commit') == c['source_commit']
+            and old.get('source_tree') == c['source_tree'], 'Existing source reconciliation belongs to another release')
+    else:
+        plan.stage(source_reconciliation, {
+            'schema': 'ueot_qm.remote_source_reconciliation.v31.7', 'status': 'PASS', 'checked_at_utc': now,
+            'source_commit': c['source_commit'], 'source_tree': c['source_tree'], 'source_count': 80,
+            'source_set_sha256': SOURCE_SET, 'published_path_count': count,
+            'tested_sources': matched, 'core_imports': core_matches, 'canonical_book': bookfiles,
+            'published_paths_identical': True,
+            'scope': 'Actual recursive source-tree readback reconciled with all 244 frozen published paths, 80 accepted inputs, 56 imported Core sources and 3 canonical artifacts. Recorded after the source and main checks; source_and_main_match fields include that separate reconciliation.'})
+    plan.stage(evidence / 'remote-main-reconciliation.json', {
+        'schema': 'ueot_qm.remote_main_reconciliation.v31.7', 'status': 'PASS', 'checked_at_utc': now,
+        'source_commit': c['source_commit'], 'source_tree': c['source_tree'],
+        'tested_main_commit': c['tested_main_commit'], 'tested_main_tree': c['tested_main_tree'],
+        'source_and_main_tree_identical': tree_equal, 'tested_inputs_identical': True,
+        'core_imports_identical': True, 'canonical_book_identical': True, 'published_paths_identical': True,
+        'published_path_count': count, 'tested_sources': matched, 'core_imports': core_matches, 'canonical_book': bookfiles,
+        'scope': 'Actual API recursive tree readbacks reconciled with frozen accepted bytes. A later metadata commit is not the CI-tested source commit.'})
+    prpath = f'physics/qm/kernel/evidence/v31.7/ci/pr-{c["pr_run"]}-verification.json'
+    mainpath = f'physics/qm/kernel/evidence/v31.7/ci/main-{c["main_run"]}-verification.json'
+    integration = {
+        'schema': 'ueot_qm.integration_verification.v31.7', 'status': 'MAIN_VERIFIED', 'checked_at_utc': now,
+        'repository': REPOSITORY, 'initial_source_checkpoint_state': 'LOCAL_VERIFIED_REMOTE_PENDING',
+        'source_commit': c['source_commit'], 'source_tree': c['source_tree'],
+        'published_parent_commit': c['parent_commit'], 'published_parent_tree': c['parent_tree'],
+        'published_research_baseline': BASELINE, 'source_branch': c['source_branch'],
+        'pull_request': c['pull_request'], 'pull_request_url': c['pull_request_url'],
+        'pr_run': c['pr_run'], 'pr_run_url': c['pr_run_url'], 'pr_status': 'PASS', 'pr_verification': prpath,
+        'tested_main_commit': c['tested_main_commit'], 'tested_main_tree': c['tested_main_tree'],
+        'main_run': c['main_run'], 'main_run_url': c['main_run_url'], 'main_status': 'PASS', 'main_verification': mainpath,
+        'source_and_main_tree_identical': tree_equal, 'tested_inputs_identical': True,
+        'core_imports_identical': True, 'canonical_book_identical': True, 'published_paths_identical': True,
+        'published_244_paths_identical': True, 'published_path_count': count, 'source_count': 80, 'source_set_sha256': SOURCE_SET,
+        'source_manifest': 'physics/qm/kernel/evidence/v31.7/source-manifest.json',
+        'source_reconciliation': 'physics/qm/kernel/evidence/v31.7/remote-source-reconciliation.json',
+        'main_reconciliation': 'physics/qm/kernel/evidence/v31.7/remote-main-reconciliation.json',
+        'local_machine_acceptance': 'PASS', 'remote_pr': 'PASS', 'resulting_main': 'PASS',
+        'generic_modules': 29, 'explicit_theorems': 646, 'named_axiom_reports': 855,
+        'finite_witness_audit_reports': 151, 'finite_witness_theorems': 110,
+        'finite_witness_definitions': 39, 'finite_witness_abbreviations': 2,
+        'runtime_test_methods': 100, 'demos': 4, 'local_build_jobs': proof['actual_build_jobs'],
+        'pr_build_jobs': receipts['pr']['build_jobs'], 'main_build_jobs': receipts['main']['build_jobs'],
+        'core_import_count': 56, 'book': book,
+        'scope': ['physics/qm/**', 'formalization/ueot-qm/**', '.github/workflows/ueot-qm.yml'],
+        'metadata_update_rule': 'Records already completed PR/source and resulting-main runs. No accepted scientific input or canonical Markdown/PDF/TeX is changed. Historical records keep their actual identities. The later metadata publication commit is not the CI-tested source commit.',
+        'artifact_zip_downloaded': False, 'artifact_zip_contents_verified': False,
+        'full_scientific_theory_verified': False, 'empirical_confirmation_added': False}
+    plan.stage(evidence / 'integration-verification.json', integration)
+    current = plan.read(q / 'status/CURRENT.json')
+    require(current['version'] == '31.7-kernel.1.7', 'CURRENT belongs to another active version')
+    prior_integration = copy.deepcopy(current['integration']['previous_version'])
+    current.update(verification_state='MAIN_VERIFIED', metadata_updated_at_utc=now,
+        initial_published_checkpoint_state='LOCAL_VERIFIED_REMOTE_PENDING',
+        local_checkpoint_state_scope='Historical local state in the immutable scientific source commit; the current aggregate state is verification_state.')
+    current['acceptance_marker'].update(state='MAIN_VERIFIED', integration_acceptance='PASS',
+        source_and_verifier_review='SOURCE_BOUND_LOCAL_AND_ACTUAL_PR_MAIN_ACCEPTANCE_PASS')
+    current['integration'].update(state='MAIN_VERIFIED', temporary_branch=c['source_branch'],
+        source_commit=c['source_commit'], source_tree=c['source_tree'], pull_request=c['pull_request'],
+        pull_request_url=c['pull_request_url'], pr_run=c['pr_run'], pr_run_url=c['pr_run_url'],
+        tested_main_commit=c['tested_main_commit'], tested_main_tree=c['tested_main_tree'],
+        main_run=c['main_run'], main_run_url=c['main_run_url'], source_and_main_tree_identical=tree_equal,
+        tested_inputs_identical=True, core_imports_identical=True, canonical_book_identical=True,
+        source_identity=f'All 80 accepted input hashes and all 244 frozen publication paths match source {c["source_commit"]} and tested main {c["tested_main_commit"]}; actual PR run {c["pr_run"]} and independent main run {c["main_run"]} passed. The later evidence/navigation metadata commit is not another scientific execution or the tested source commit.',
+        pr_status='PASS', main_status='PASS', receipt='../kernel/evidence/v31.7/integration-verification.json',
+        source_reconciliation='../kernel/evidence/v31.7/remote-source-reconciliation.json',
+        main_reconciliation='../kernel/evidence/v31.7/remote-main-reconciliation.json',
+        pr_verification='../kernel/evidence/v31.7/ci/' + Path(prpath).name,
+        main_verification='../kernel/evidence/v31.7/ci/' + Path(mainpath).name)
+    current['local_verification'].update(remote_ci='PASS_SEPARATELY_RECORDED', main_integration='PASS_SEPARATELY_RECORDED')
+    current['book'].update(state='MAIN_VERIFIED', remote_publication='../book/evidence/v3.3/remote-publication.json',
+        initial_source_checkpoint_state='LOCAL_VERIFIED_REMOTE_PENDING',
+        release_gates_scope='Original local publication gates; the separate remote_publication receipt records completed source/main identity checks.')
+    current['completed_in_this_delivery'].append(f'Actual PR #{c["pull_request"]} run {c["pr_run"]} and resulting-main run {c["main_run"]} passed; exact input and canonical book identities reconciled.')
+    require(current['integration']['previous_version'] == prior_integration, 'Previous integration history was changed')
+    plan.stage(q / 'status/CURRENT.json', current)
+    ledger = plan.read(q / 'status/CLAIM_LEDGER_v31.7.json')
+    old_claims = copy.deepcopy(ledger['claims'])
+    ledger['metadata_updated_at_utc'] = now
+    ledger['verification'].update(state='MAIN_VERIFIED', remote_status='PASS', remote_ci='PASS', main_integration='PASS',
+        remote_checked_at_utc=now, checked_at_scope='Original local timestamps remain historical; actual remote completion is remote_checked_at_utc.',
+        initial_source_checkpoint_state='LOCAL_VERIFIED_REMOTE_PENDING', pull_request=c['pull_request'],
+        source_commit=c['source_commit'], source_tree=c['source_tree'], pr_run=c['pr_run'],
+        tested_main_commit=c['tested_main_commit'], tested_main_tree=c['tested_main_tree'], main_run=c['main_run'],
+        source_and_main_tree_identical=tree_equal, tested_inputs_identical=True, core_imports_identical=True, canonical_book_identical=True)
+    ledger['evidence'].update(remote_source_reconciliation='physics/qm/kernel/evidence/v31.7/remote-source-reconciliation.json',
+        remote_main_reconciliation='physics/qm/kernel/evidence/v31.7/remote-main-reconciliation.json',
+        integration='physics/qm/kernel/evidence/v31.7/integration-verification.json')
+    ledger['core_baseline_role_historical'] = ledger['core_baseline_role']
+    ledger['core_baseline_role'] = f'Frozen historical Core reference retained. Current 56 imported Core source bytes match the frozen v31.7 acceptance and actual source {c["source_commit"]}/tested main {c["tested_main_commit"]}. The published research baseline is {BASELINE}. No frozen Core mutation by this increment.'
+    require(ledger['claims'] == old_claims and len(old_claims) == 54
+        and next(x for x in old_claims if x['id'] == 'QMK-13')['status'] == 'NOT_CLAIMED', 'Scientific claims changed')
+    plan.stage(q / 'status/CLAIM_LEDGER_v31.7.json', ledger)
+    active = plan.read(q / 'status/ACTIVE_RESEARCH_v31.7.json')
+    require('historical_checkpoint' not in active, 'ACTIVE already has a historical checkpoint; reconcile before rerunning')
+    active['historical_checkpoint'] = {'scope': 'Exact prior checkpoint preserved as historical development progress, not the current acceptance state.',
+        'record_updated_at_utc': active.get('updated_at_utc'), 'checkpoint': copy.deepcopy(active['checkpoint'])}
+    active['checkpoint'] = {
+        'new_main_sources': 'All seven v31.7 modules are in the source-bound accepted package: 29 modules, 646 explicit theorems, 855 named audits.',
+        'new_witnesses': 'All seven witnesses passed the local and actual PR/main gates: 151 audits; local source bindings separately identify 110 theorems, 39 definitions and 2 abbreviations.',
+        'book': 'Formal monograph 3.3 local release is complete: 203 pages, 60 chapters, 6 appendices, 291 sections and 131 results. Its unchanged three canonical artifacts match the actual source and tested main; book remote metadata is recorded separately.',
+        'execution': f'Local acceptance remains its original receipt. Actual PR run {c["pr_run"]} and resulting-main run {c["main_run"]} passed; metadata finalization runs no scientific gate.',
+        'next_plan': 'UEOT_QM_EXECUTION_v31.8.md remains unformalized planning, not part of the v31.7 proof counts.'}
+    active.update(status='MAIN_VERIFIED', state='MAIN_VERIFIED', updated_at_utc=now,
+        integration_receipt='physics/qm/kernel/evidence/v31.7/integration-verification.json',
+        source_commit=c['source_commit'], tested_main_commit=c['tested_main_commit'],
+        current_book_receipt='physics/qm/book/evidence/v3.3/remote-publication.json',
+        local_book_receipt='physics/qm/book/evidence/v3.3/local-release-gates.json')
+    plan.stage(q / 'status/ACTIVE_RESEARCH_v31.7.json', active)
+    documentation = [q / 'README.md', q / 'ROADMAP.md', q / 'kernel/README.md',
+        q / 'UEOT_QM_KERNEL_v31.7.md', q / 'UEOT_QM_EXECUTION_v31.7.md', root / 'formalization/ueot-qm/README.md']
+    for path in documentation:
+        text = plan.raw(path).decode('utf-8')
+        require(text.count('LOCAL_VERIFIED_REMOTE_PENDING') == 1, 'Expected one current status marker: ' + str(path))
+        text = text.replace('LOCAL_VERIFIED_REMOTE_PENDING', 'MAIN_VERIFIED', 1)
+        if path == q / 'UEOT_QM_KERNEL_v31.7.md':
+            text += ('\n## 远端实际验收\n\n源码提交 `' + c['source_commit'] + '`，源码树 `' + c['source_tree']
+                + '`；[PR #' + str(c['pull_request']) + '](' + c['pull_request_url'] + ') 的 [实际工作流]('
+                + c['pr_run_url'] + ') 通过。合入后主线 `' + c['tested_main_commit'] + '` 的 [独立工作流]('
+                + c['main_run_url'] + ') 通过。80项受验输入、56项实际Core导入、三份正式正文与244项发布路径逐项相同。'
+                + '完整源树相同性见[集成回执](kernel/evidence/v31.7/integration-verification.json)的实际值。'
+                + '后续状态与证据提交记录已经完成的验收，其提交身份不同于实际受验源码；没有新增科学测试或扩大科学结论。\n')
+        plan.stage(path, text.encode('utf-8'))
+
+    allowed = {p.resolve() for p in documentation}
+    allowed.update((q / 'status' / name).resolve() for name in ['CURRENT.json', 'CLAIM_LEDGER_v31.7.json', 'ACTIVE_RESEARCH_v31.7.json'])
+    allowed.update((evidence / name).resolve() for name in ['publication-inventory.json', 'remote-source-reconciliation.json',
+        'remote-main-reconciliation.json', 'integration-verification.json'])
+    require(set(plan.outputs) <= allowed, 'Unexpected metadata output')
+    protected = {str((root / s['path']).resolve()) for s in manifest['sources'] + core['modules']}
+    protected.update(str((q / 'book' / name).resolve()) for name in CANONICAL)
+    require(not protected.intersection(str(p) for p in plan.outputs), 'Proposed output would change scientific or canonical bytes')
+    plan.verify_unchanged()
+    summary = {'status': 'READY_TO_APPLY', 'source_commit': c['source_commit'], 'tested_main_commit': c['tested_main_commit'],
+        'source_count': 80, 'core_imports': 56, 'publication_paths': count, 'canonical_artifacts': 3,
+        'tree_equal': tree_equal, 'no_scientific_execution': True,
+        'outputs': [{'path': p.relative_to(root).as_posix(), 'bytes': len(data), 'sha256': sha(data)} for p, data in plan.outputs.items()]}
+    return plan, summary
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=Path('/workspace/scratch/f11b4261e187/qm_v317_work'))
+    parser.add_argument('--context', type=Path, default=Path(__file__).resolve().parent / 'qm317_release_context.json')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--apply', action='store_true')
+    modes.add_argument('--dry-run', action='store_true', help='Explicit read-only mode (the default)')
+    args = parser.parse_args()
+    try:
+        plan, summary = build_plan(args.root.resolve(), args.context.resolve())
+        if args.apply:
+            # All bytes and destinations were validated above; recheck immediately before writes.
+            plan.verify_unchanged()
+            temporary = []
+            try:
+                for path, data in plan.outputs.items():
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    with tempfile.NamedTemporaryFile(dir=path.parent, prefix='.' + path.name + '.', delete=False) as f:
+                        f.write(data)
+                        staged = Path(f.name)
+                    staged.chmod(path.stat().st_mode & 0o777 if path.exists() else 0o644)
+                    temporary.append((staged, path))
+                plan.verify_unchanged()
+                for staged, path in temporary:
+                    staged.replace(path)
+                summary['status'] = 'MAIN_VERIFIED_METADATA_APPLIED'
+            finally:
+                for staged, _ in temporary:
+                    staged.unlink(missing_ok=True)
+        print(json.dumps(summary, ensure_ascii=False))
+        return 0
+    except (FinalizationError, OSError, ValueError, KeyError, TypeError, StopIteration) as error:
+        print(json.dumps({'status': 'BLOCKED', 'error': type(error).__name__ + ': ' + str(error),
+            'scientific_execution_performed': False}, ensure_ascii=False))
+        return 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

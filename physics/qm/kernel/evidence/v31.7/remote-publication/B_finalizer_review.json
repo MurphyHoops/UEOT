@@ -1,0 +1,44 @@
+{
+  "schema": "ueot_qm.metadata_finalizer_review.v31.7",
+  "status": "CLEAR_STATIC_AND_TARGETED_REFUSAL_CHECK",
+  "helper": "/workspace/scratch/f11b4261e187/handoff/qm317_finalize_remote.py",
+  "helper_sha256": "cd06dd13c78ff7d98814845652b44bfbd9ca8db9b70666e1e44e7922d16f4105",
+  "original_helper_sha256": "ec61e1ded9811a3d73e011a6d77302b560556b0f64f941f64a0dde60a0849c2a",
+  "syntax_compile": "PASS",
+  "missing_actual_context_refusal": {
+    "status": "BLOCKED",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/f11b4261e187/handoff/B_explicitly_missing_context.json'",
+    "scientific_execution_performed": false
+  },
+  "missing_context_exit_code": 1,
+  "repository_status_unchanged": true,
+  "actual_pr_main_ci_checked": false,
+  "actual_apply_performed": false,
+  "scientific_tests_rerun": false,
+  "fixes": [
+    "CURRENT.integration.source_identity uses actual source/main commits and actual CI IDs after PASS",
+    "CLAIM_LEDGER.verification.remote_status set PASS only after actual CI verification",
+    "CURRENT.book.state changes to MAIN_VERIFIED, with original local gates kept as historical evidence",
+    "ACTIVE prior checkpoint retained exactly under historical_checkpoint; current book checkpoint records completed local release and remote byte identity",
+    "No changes to 54 scientific claim objects",
+    "Stale ledger core_baseline_role wording retained as historical and current source/main bindings added"
+  ],
+  "output_scope": [
+    "Six current navigation/research Markdown files",
+    "CURRENT.json",
+    "CLAIM_LEDGER_v31.7.json",
+    "ACTIVE_RESEARCH_v31.7.json",
+    "New publication-inventory and remote reconciliation/integration receipts"
+  ],
+  "limits": [
+    "Full positive finalization deliberately requires actual completed PR/main evidence; none fabricated",
+    "Per-file replacements follow complete validation and all-file staging; this is not a transactional filesystem across multiple replacements",
+    "Current book metadata links become complete when A finalizer is subsequently applied before metadata publication"
+  ],
+  "independent_review": {
+    "reviewer": "v317_book_finish",
+    "status": "CLEAR",
+    "scope": "Context/CI binding; source/main tree identities for 80/56/3/244; metadata scope; known state fixes; historical checkpoint preservation; separate later metadata identity",
+    "adjustment": "Removed unnecessary source_commit != tested_main_commit constraint. Separate PR/push main runs remain mandatory even if a legitimate fast-forward shares a commit SHA."
+  }
+}

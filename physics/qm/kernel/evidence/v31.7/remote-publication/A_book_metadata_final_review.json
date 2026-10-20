@@ -1,0 +1,83 @@
+{
+  "schema": "ueot_physics.final_current_book_metadata_review.v3.3",
+  "status": "CLEAR",
+  "reviewed_at_utc": "2026-10-20T10:10:09.319705+00:00",
+  "reviewer": "A / v317_book_finish",
+  "scope": "Targeted final read-only metadata review after the authorized two-file status clarification. No helper rerun, scientific test, Lean build, PDF build or new visual review.",
+  "actual_acceptance_identity": {
+    "repository": "MurphyHoops/UEOT",
+    "source_commit": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+    "source_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "tested_main_commit": "87091d1ad4592c4467fa3acc3ac75d67c0edac54",
+    "tested_main_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "pull_request": 347,
+    "pr_run": 39402444333,
+    "main_run": 39404249860,
+    "pr_status": "PASS",
+    "main_status": "PASS",
+    "source_count": 80,
+    "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/347",
+    "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39402444333",
+    "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39404249860",
+    "source_and_main_tree_identical": true
+  },
+  "final_outputs": [
+    {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "cea806e2af3a8d45878aec004ba685448298acce4c58ad69b2306dfea8b016e6",
+      "bytes": 13776
+    },
+    {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "11015ff5c459f9986d532c5a1115673f9f4d3f1adc1cc4fae8d591de273704b7",
+      "bytes": 668310
+    },
+    {
+      "path": "physics/qm/book/README.md",
+      "sha256": "70c605d4c0c21ffe4d106fef2686493ffbc134fdd6cc582441fed72258f6c41c",
+      "bytes": 8401
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.3/remote-publication.json",
+      "sha256": "d7fce879ea7fc673df57f7d95f8c244a5434261792cd9d2ef55eb3ea9a887767",
+      "bytes": 29141
+    }
+  ],
+  "checks": {
+    "actual_correction_applied_two_targets": true,
+    "final_bytes_match_actual_correction_receipt": true,
+    "unchanged_manifest_readme_match_original_apply": true,
+    "three_current_metadata_hashes_bound_by_remote_receipt": true,
+    "current_identity_matches_context_integration_and_receipt": true,
+    "actual_pr_main_receipts_match_identity": true,
+    "current_book_states_MAIN_VERIFIED": true,
+    "contract_prior_local_state_explicit": true,
+    "embedded_local_statuses_explicitly_historical": true,
+    "all_chapter_appendix_objects_identical_to_frozen_v317": true,
+    "131_results_117_old_14_new_exactly_preserved": true,
+    "original_source_entries_and_canonical_identity_preserved": true,
+    "three_canonical_hashes_exactly_frozen": true,
+    "all_106_old_book_evidence_files_unchanged": true,
+    "local_checkpoint_receipts_remain_original_states": true,
+    "canonical_counts_not_upgraded": true,
+    "no_current_self_hash_or_reciprocal_hash_cycle": true,
+    "receipt_dossier_manifest_link_current": true,
+    "visual_scope_inherited_no_new_inspection": true,
+    "README_current_identity_and_boundary_present": true
+  },
+  "blockers": [],
+  "resolved_findings": [
+    "Current completed_v31_7_contract status now MAIN_VERIFIED; previous local status explicitly retained.",
+    "All 131 result and 66 chapter/appendix objects remain exactly frozen; their embedded local statuses are explicitly scoped as assembly history.",
+    "Current dossier hash is bound by remote-publication; old dossier-assembly hash is explicitly historical."
+  ],
+  "correction_receipt": {
+    "path": "handoff/qm317_book_metadata_correction.json",
+    "sha256": "9298b3467e6d312524f692e37ec0fd0fd15b435e191aa9c2c594945c926134ef",
+    "bytes": 2756
+  },
+  "historical_helper_apply_receipt_unchanged": true,
+  "source_or_canonical_modified": false,
+  "new_scientific_validation": false
+}

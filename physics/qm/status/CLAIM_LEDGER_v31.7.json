@@ -9,7 +9,10 @@
     "proof": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
     "source": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
     "witnesses": "physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json",
-    "review": "physics/qm/audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md"
+    "review": "physics/qm/audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md",
+    "remote_source_reconciliation": "physics/qm/kernel/evidence/v31.7/remote-source-reconciliation.json",
+    "remote_main_reconciliation": "physics/qm/kernel/evidence/v31.7/remote-main-reconciliation.json",
+    "integration": "physics/qm/kernel/evidence/v31.7/integration-verification.json"
   },
   "claims": [
     {
@@ -2198,7 +2201,7 @@
     }
   ],
   "verification": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MAIN_VERIFIED",
     "main_package_theorems": 646,
     "main_named_audits": 855,
     "concrete_witness_theorems": 110,
@@ -2208,11 +2211,27 @@
     "source_count": 80,
     "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
     "local_status": "PASS",
-    "remote_status": "PENDING",
-    "full_physical_theory_verified": false
+    "remote_status": "PASS",
+    "full_physical_theory_verified": false,
+    "remote_ci": "PASS",
+    "main_integration": "PASS",
+    "remote_checked_at_utc": "2026-10-20T10:03:41.429717+00:00",
+    "checked_at_scope": "Original local timestamps remain historical; actual remote completion is remote_checked_at_utc.",
+    "initial_source_checkpoint_state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "pull_request": 347,
+    "source_commit": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+    "source_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "pr_run": 39402444333,
+    "tested_main_commit": "87091d1ad4592c4467fa3acc3ac75d67c0edac54",
+    "tested_main_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "main_run": 39404249860,
+    "source_and_main_tree_identical": true,
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true
   },
   "research_baseline": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
-  "core_baseline_role": "Frozen historical Core reference retained; current imported Core sources separately match published research baseline 427f512745ca70f82cba6a1388edcab904da8a42. No frozen Core mutation by this increment.",
+  "core_baseline_role": "Frozen historical Core reference retained. Current 56 imported Core source bytes match the frozen v31.7 acceptance and actual source a89bc691e698391d03ff7b705cc76def1fa3512e/tested main 87091d1ad4592c4467fa3acc3ac75d67c0edac54. The published research baseline is 7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8. No frozen Core mutation by this increment.",
   "canonical_monograph": {
     "edition": "3.3",
     "path": "physics/qm/book/UEOT_PHYSICS.md",
@@ -2289,7 +2308,8 @@
     "canonical_book_identical": true,
     "initial_source_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING"
   },
-  "metadata_updated_at_utc": "2026-10-20T08:25:25.469747+00:00",
+  "metadata_updated_at_utc": "2026-10-20T10:03:41.429717+00:00",
   "next_execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
-  "next_execution_status": "PLANNED_NOT_FORMALIZED"
+  "next_execution_status": "PLANNED_NOT_FORMALIZED",
+  "core_baseline_role_historical": "Frozen historical Core reference retained; current imported Core sources separately match published research baseline 427f512745ca70f82cba6a1388edcab904da8a42. No frozen Core mutation by this increment."
 }

@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+"""Read-only independent audit of frozen v31.7 publication bytes and tree composition."""
+import argparse
+import base64
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path, PurePosixPath
+import re
+import zipfile
+
+
+def sha256(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def object_sha(kind, data):
+    return hashlib.sha1(kind.encode() + b' ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+
+def git_trees(entries):
+    leaves = {e['path']: {'mode': e['mode'], 'type': e['type'], 'sha': e['sha']}
+              for e in entries if e['type'] != 'tree'}
+    directories = {''}
+    for e in entries:
+        if e['type'] == 'tree':
+            directories.add(e['path'])
+        directories.update(str(p) for p in PurePosixPath(e['path']).parents if str(p) != '.')
+    trees = {}
+    for directory in sorted(directories, key=lambda p: len(PurePosixPath(p).parts), reverse=True):
+        children = {}
+        for path, entry in leaves.items():
+            parent = str(PurePosixPath(path).parent)
+            if ('' if parent == '.' else parent) == directory:
+                children[PurePosixPath(path).name] = entry
+        for path, value in trees.items():
+            parent = str(PurePosixPath(path).parent)
+            if ('' if parent == '.' else parent) == directory:
+                children[PurePosixPath(path).name] = {'mode': '040000', 'type': 'tree', 'sha': value}
+        ordered = sorted(children, key=lambda n: (n + ('/' if children[n]['type'] == 'tree' else '')).encode())
+        body = b''.join((('40000' if children[n]['type'] == 'tree' else children[n]['mode']) + ' ' + n).encode()
+                        + b'\0' + bytes.fromhex(children[n]['sha']) for n in ordered)
+        trees[directory] = object_sha('tree', body)
+    return trees, leaves
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('--root', type=Path, default=Path('/workspace/scratch/474cf6b1f047/qm_v317_work'))
+    p.add_argument('--output', type=Path, default=Path('/workspace/scratch/f11b4261e187/handoff/C_payload_audit.json'))
+    a = p.parse_args()
+    root = a.root.resolve()
+    raw = Path('/tmp/qm317_upload_payload.json').read_bytes()
+    assert sha256(raw) == '52f0e338e62f6749f021be8445f9aadd43af0490ffa01871854646ec3003bba4'
+    assert len(raw.decode()) == 6922884
+    payload = json.loads(raw)
+    inventory_raw = Path('/tmp/qm317_publication_inventory.json').read_bytes()
+    inventory = json.loads(inventory_raw)
+    baseline_raw = Path('/tmp/qm317_release_base_tree.json').read_bytes()
+    baseline = json.loads(baseline_raw)
+    assert baseline['truncated'] is False and len(baseline['tree']) == 1988
+    assert baseline['commit'] == inventory['baseline_commit'] == '7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8'
+    assert baseline['sha'] == inventory['baseline_tree'] == 'bae567bd5d19131f9279db59970e876a8d5c72c2'
+    assert len({e['path'] for e in baseline['tree']}) == len(baseline['tree'])
+    assert len(payload) == inventory['file_count'] == len(inventory['files']) == 244
+    assert len({e['path'] for e in payload}) == 244
+    assert [{k:v for k,v in e.items() if k != 'content'} for e in payload] == inventory['files']
+    base_trees, base_leaves = git_trees(baseline['tree'])
+    assert base_trees[''] == baseline['sha'], 'Recursive baseline root tree hash mismatch'
+    assert all(base_trees[e['path']] == e['sha'] for e in baseline['tree'] if e['type'] == 'tree')
+    archive = Path('/workspace/scratch/474cf6b1f047/output/ueot_qm_v317_handoff/UEOT_QM_v31.7_handoff_20261020.zip')
+    published = {}
+    file_rows = []
+    historical = re.compile(r'/evidence/v31\.[0-6]/|/book/evidence/v3\.[012]/|(?:^|/)[^/]*_v31\.[0-6](?:[._/]|$)')
+    with zipfile.ZipFile(archive) as z:
+        overlay = [n for n in z.namelist() if n.startswith('repo_overlay/') and not n.endswith('/')]
+        assert len(overlay) == len(set(overlay)) == 244
+        assert {n.removeprefix('repo_overlay/') for n in overlay} == {e['path'] for e in payload}
+        for e in payload:
+            name = e['path']
+            path = PurePosixPath(name)
+            assert not path.is_absolute() and '..' not in path.parts and str(path) == name
+            assert name.startswith(('physics/qm/', 'formalization/ueot-qm/')) or name == '.github/workflows/ueot-qm.yml'
+            assert not historical.search(name), name
+            assert not any(x in path.parts for x in ('.lake','__pycache__'))
+            assert path.suffix not in ('.pyc','.olean','.ilean')
+            assert (root/name).is_file() and not (root/name).is_symlink()
+            assert e['mode'] in ('100644', '100755')
+            content = base64.b64decode(e['content'], validate=True) if e['binary'] else e['content'].encode('utf-8')
+            assert e['encoding'] == ('base64' if e['binary'] else 'utf-8')
+            if e['binary']:
+                assert name == 'physics/qm/book/UEOT_PHYSICS.pdf'
+            assert len(content) == e['bytes'] and sha256(content) == e['sha256']
+            assert object_sha('blob', content) == e['git_blob_sha']
+            assert content == (root/name).read_bytes() == z.read('repo_overlay/'+name), name
+            previous = base_leaves.get(name)
+            assert e['previous_blob'] == (previous['sha'] if previous else None)
+            if previous:
+                assert previous['mode'] == e['mode'] and previous['type'] == 'blob'
+                assert previous['sha'] != e['git_blob_sha']
+            published[name] = content
+            file_rows.append({k:v for k,v in e.items() if k != 'content'})
+    assert sum(e['bytes'] for e in payload) == inventory['bytes'] == 6982828
+    assert sum(e['previous_blob'] is not None for e in payload) == inventory['changed_existing'] == 18
+    assert sum(e['previous_blob'] is None for e in payload) == inventory['new_paths'] == 226
+    candidate = {e['path']: dict(e) for e in baseline['tree']}
+    for e in payload:
+        candidate[e['path']] = {'path':e['path'], 'type':'blob','mode':e['mode'],'sha':e['git_blob_sha']}
+    candidate_trees, candidate_leaves = git_trees(candidate.values())
+    inherited = sorted(set(base_leaves) - set(published))
+    assert all(candidate_leaves[p] == base_leaves[p] for p in inherited)
+    source_manifest_path = root/'physics/qm/kernel/evidence/v31.7/source-manifest.json'
+    M = json.loads(source_manifest_path.read_text())
+    V = json.loads((root/'physics/qm/kernel/evidence/v31.7/lean-verification.json').read_text())
+    assert V['status'] == 'PASS' and V['actual_named_axiom_reports'] == 855
+    sources = M['sources']
+    expected_set_sha = 'b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911'
+    assert len(sources) == len({s['path'] for s in sources}) == M['source_count'] == V['source_count'] == 80
+    assert sha256(json.dumps(sources,sort_keys=True,separators=(',',':')).encode()) == M['source_set_sha256'] == V['source_set_sha256'] == expected_set_sha
+    package = root/'formalization/ueot-qm'
+    selection = set((package/'UEOTQM').rglob('*.lean'))
+    selection.update(package/n for n in ('UEOTQM.lean','lakefile.lean','lake-manifest.json','lean-toolchain'))
+    selection.update(f for f in (package/'scripts').rglob('*') if f.is_file() and f.suffix in ('.py','.lean','.sh'))
+    kernel = root/'physics/qm/kernel'
+    selection.update(kernel.rglob('*.py'))
+    selection.update(f for f in (kernel/'certificates').rglob('*') if f.is_file() and f.suffix in ('.lean','.json'))
+    selection.add(root/'.github/workflows/ueot-qm.yml')
+    assert [str(f.relative_to(root)) for f in sorted(selection)] == [s['path'] for s in sources]
+    source_overlay_count = 0
+    for s in sources:
+        b = (root/s['path']).read_bytes()
+        assert len(b) == s['bytes'] and sha256(b) == s['sha256']
+        assert candidate_leaves[s['path']]['sha'] == object_sha('blob', b)
+        if s['path'] in published:
+            assert published[s['path']] == b
+            source_overlay_count += 1
+        else:
+            assert base_leaves[s['path']]['sha'] == object_sha('blob',b)
+    C = json.loads((root/'physics/qm/kernel/evidence/v31.7/core-import-closure.json').read_text())
+    assert len(C['modules']) == len({m['path'] for m in C['modules']}) == C['transitive_module_count'] == 56
+    for m in C['modules']:
+        name=m['path']; b=(root/name).read_bytes()
+        assert name not in published and sha256(b) == m['source_sha256']
+        assert base_leaves[name]['sha'] == candidate_leaves[name]['sha'] == object_sha('blob',b) == m['actual_remote_baseline_blob_sha1']
+    book_sha = {'md':'83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c',
+                'pdf':'9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c',
+                'tex':'364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c'}
+    for ext, expected in book_sha.items():
+        assert sha256(published['physics/qm/book/UEOT_PHYSICS.'+ext]) == expected
+    report = {'schema':'ueot_qm.independent_publication_payload_audit.v31.7','status':'CLEAR',
+        'checked_at_utc':datetime.now(timezone.utc).isoformat(),'reviewer':'C /root/v317_payload_ci_audit',
+        'root':str(root),'payload_sha256':sha256(raw),'inventory_sha256':sha256(inventory_raw),'base_snapshot_sha256':sha256(baseline_raw),
+        'baseline_commit':baseline['commit'],'baseline_tree':baseline['sha'],'baseline_recursive_tree_entries':len(baseline['tree']),
+        'baseline_tree_hash_reconstructed':True,'all_recorded_subtree_hashes_reconstructed':True,
+        'expected_candidate_tree':candidate_trees[''],'payload_file_count':244,'changed_existing':18,'new_paths':226,'raw_file_bytes':6982828,
+        'all_serialized_content_matches_inventory_local_and_handoff_overlay':True,'all_modes_checked':True,
+        'source_count':80,'source_set_sha256':expected_set_sha,'source_paths_in_overlay':source_overlay_count,'source_paths_inherited':80-source_overlay_count,
+        'protected_imported_core_sources':56,'inherited_untouched_leaf_count':len(inherited),
+        'canonical_book_sha256':book_sha,'historical_conflicts':[],'scope_conflicts':[],'errors':[],
+        'ci_executed_by_this_audit':False,'remote_current_ref_inspected_by_this_audit':False,
+        'limitations':'Internal baseline snapshot/tree, payload, original local and ZIP-overlay byte checks only. Root must reconcile actual current remote base, candidate tree, source PR and independent main CI. No heavy build, new theorem, physical experiment, or CI artifact ZIP inspection performed.',
+        'files':file_rows}
+    a.output.parent.mkdir(parents=True,exist_ok=True)
+    a.output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+    print(json.dumps({k:v for k,v in report.items() if k not in ('files','canonical_book_sha256')},ensure_ascii=False,indent=2))
+
+
+if __name__ == '__main__':
+    main()

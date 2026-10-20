@@ -104,14 +104,45 @@
   "historical_text_witness_catalog": "evidence/v3.0/advanced-source-catalog.json",
   "current_code_identity": {
     "edition": "3.3",
-    "status": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "status": "MAIN_VERIFIED",
     "source_count": 80,
     "manifest_sha256": "cd04b64ddbb5879e1c5af67dea1d70a07d323f590aa0c1434e544e4b1d41dde0",
     "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
-    "identity_rule": "Actual local source-bound execution; source/main remote acceptance is a later separately observed gate.",
+    "identity_rule": "The actual source PR and independently tested merged main are bound by root Git-blob reconciliation to the unchanged 80 tested inputs, 56 imported Core sources and canonical MD/PDF/TeX. This later metadata commit is not the CI-tested scientific source commit.",
     "local_verification": "../kernel/evidence/v31.7/lean-verification.json",
     "local_verification_sha256": "55380165301503f392328e5f0a1c10c7d8ff16cccc7bfb2f5c783ec73b3a039b",
-    "original_entries_unchanged": true
+    "original_entries_unchanged": true,
+    "remote_verified": true,
+    "repository": "MurphyHoops/UEOT",
+    "source_commit": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+    "source_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "tested_main_commit": "87091d1ad4592c4467fa3acc3ac75d67c0edac54",
+    "tested_main_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "pull_request": 347,
+    "pr_run": 39402444333,
+    "main_run": 39404249860,
+    "pr_status": "PASS",
+    "main_status": "PASS",
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/347",
+    "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39402444333",
+    "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39404249860",
+    "source_and_main_tree_identical": true,
+    "integration_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.7/integration-verification.json",
+      "sha256": "7611f8e2e64e808cc2db7f67e477dc2414542d3413ca410c354f45b056ae96a0",
+      "bytes": 3380
+    },
+    "pr_verification": {
+      "path": "physics/qm/kernel/evidence/v31.7/ci/pr-39402444333-verification.json",
+      "sha256": "8a0fea4ba8f5d26dc379cef7d86e724fad3343675164954ee1553a6488b1fb2f",
+      "bytes": 123103
+    },
+    "main_verification": {
+      "path": "physics/qm/kernel/evidence/v31.7/ci/main-39404249860-verification.json",
+      "sha256": "428d5b5ba83d38fbc54a7d849e64f4891d0c7248a6a86b094325c15bf79256f1",
+      "bytes": 123105
+    },
+    "metadata_only_followup": true
   },
   "canonical_identity": {
     "edition": "3.3",
@@ -224,7 +255,34 @@
     }
   },
   "remote_metadata_completion": {
-    "status": "PENDING",
-    "remote_verified": false
-  }
+    "status": "MAIN_VERIFIED",
+    "remote_verified": true,
+    "recorded_at_utc": "2026-10-20T10:03:49.964306+00:00",
+    "receipt": {
+      "path": "physics/qm/book/evidence/v3.3/remote-publication.json",
+      "status": "MAIN_VERIFIED",
+      "hash_binding_direction": "This external receipt binds updated metadata hashes; no receipt hash is embedded here."
+    },
+    "prior_metadata": {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "5027ade4130001e73f9dd06442cd64e59426f73663c8dae1074e02234a9101ed",
+      "bytes": 10697
+    },
+    "prior_current_code_identity": {
+      "edition": "3.3",
+      "status": "LOCAL_VERIFIED_REMOTE_PENDING",
+      "source_count": 80,
+      "manifest_sha256": "cd04b64ddbb5879e1c5af67dea1d70a07d323f590aa0c1434e544e4b1d41dde0",
+      "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
+      "identity_rule": "Actual local source-bound execution; source/main remote acceptance is a later separately observed gate.",
+      "local_verification": "../kernel/evidence/v31.7/lean-verification.json",
+      "local_verification_sha256": "55380165301503f392328e5f0a1c10c7d8ff16cccc7bfb2f5c783ec73b3a039b",
+      "original_entries_unchanged": true
+    },
+    "prior_remote_metadata_completion": {
+      "status": "PENDING",
+      "remote_verified": false
+    }
+  },
+  "current_code_baseline_role": "Authoring baseline retained as a historical fact; actual CI-tested source_commit and tested_main_commit are separately recorded in current_code_identity."
 }
