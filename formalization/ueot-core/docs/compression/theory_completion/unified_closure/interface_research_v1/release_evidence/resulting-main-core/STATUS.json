@@ -1,0 +1,446 @@
+{
+  "status": "PASS",
+  "requested_merge": "0e5f1d809636fd238c87ec6d0fa94e3d720d0489",
+  "reviewed_candidate": "395a9b23e6138803b6359527dad367f1cae7913b",
+  "started_utc": "2026-10-20T12:32:47.878884+00:00",
+  "commands": [
+    {
+      "phase": "fetch-main",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "main:refs/remotes/origin/main"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 2.138,
+      "log_sha256": "7d7ead1169632f0694d7702e73001cd9b2eab9d1b4d9d09e348a33c57475a6a7"
+    },
+    {
+      "phase": "actual-main",
+      "command": [
+        "git",
+        "rev-parse",
+        "origin/main"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.015,
+      "log_sha256": "bbd322471093ad14c1bb07fc3b7ecc1272ff19b187c4df00403159ae7026ea7b"
+    },
+    {
+      "phase": "merge-is-ancestor",
+      "command": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "0e5f1d809636fd238c87ec6d0fa94e3d720d0489",
+        "0e5f1d809636fd238c87ec6d0fa94e3d720d0489"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.016,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "actual-core-tree",
+      "command": [
+        "git",
+        "rev-parse",
+        "0e5f1d809636fd238c87ec6d0fa94e3d720d0489:formalization/ueot-core"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.011,
+      "log_sha256": "67b1d1bcda909f60e30bb0dd17ce88b659ff7092dd586d5cc0bcf62217844724"
+    },
+    {
+      "phase": "checkout-main",
+      "command": [
+        "git",
+        "worktree",
+        "add",
+        "--detach",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-core",
+        "0e5f1d809636fd238c87ec6d0fa94e3d720d0489"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.271,
+      "log_sha256": "5c59aea40cd840bd77b508cca16db9a64545d19766c5152421ee27d133f286d1"
+    },
+    {
+      "phase": "package-mathlib-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/mathlib",
+      "exit_code": 0,
+      "elapsed_seconds": 0.014,
+      "log_sha256": "7cf32a824e26133738b30903ed97bc24def8e93db8039483d6bdf7fce7a0efee"
+    },
+    {
+      "phase": "package-mathlib-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/mathlib",
+      "exit_code": 0,
+      "elapsed_seconds": 0.067,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-plausible-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/plausible",
+      "exit_code": 0,
+      "elapsed_seconds": 0.029,
+      "log_sha256": "805ea619fc405904b6e9ac21504fad9d1b144b97838b0ea93a6c5bacf0f9d917"
+    },
+    {
+      "phase": "package-plausible-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/plausible",
+      "exit_code": 0,
+      "elapsed_seconds": 0.011,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-LeanSearchClient-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/LeanSearchClient",
+      "exit_code": 0,
+      "elapsed_seconds": 0.009,
+      "log_sha256": "4d0336c7ba0fcd5eb2f72acfcbc62d27a785c823fdd5e7e21a77ed3f529ba9b8"
+    },
+    {
+      "phase": "package-LeanSearchClient-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/LeanSearchClient",
+      "exit_code": 0,
+      "elapsed_seconds": 0.01,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-importGraph-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/importGraph",
+      "exit_code": 0,
+      "elapsed_seconds": 0.008,
+      "log_sha256": "1c21dc61032d91e32449c4295a2a30bf8c68c4b8d984bf0f46a73d53d180ce2e"
+    },
+    {
+      "phase": "package-importGraph-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/importGraph",
+      "exit_code": 0,
+      "elapsed_seconds": 0.011,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-proofwidgets-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/proofwidgets",
+      "exit_code": 0,
+      "elapsed_seconds": 0.008,
+      "log_sha256": "d9c675d1d0b71316cbd8bced943dd9983f09a32dc9a229039acc3afdfe2375b6"
+    },
+    {
+      "phase": "package-proofwidgets-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/proofwidgets",
+      "exit_code": 0,
+      "elapsed_seconds": 0.011,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-aesop-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/aesop",
+      "exit_code": 0,
+      "elapsed_seconds": 0.008,
+      "log_sha256": "4c072408d27377ff5b35ed2858b23f6f83466a241898fe2c4c4a215ba2128652"
+    },
+    {
+      "phase": "package-aesop-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/aesop",
+      "exit_code": 0,
+      "elapsed_seconds": 0.027,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-Qq-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/Qq",
+      "exit_code": 0,
+      "elapsed_seconds": 0.008,
+      "log_sha256": "2d7411c117d0e100d30993222f71939f4200b1982179b5c8651c332382e48655"
+    },
+    {
+      "phase": "package-Qq-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/Qq",
+      "exit_code": 0,
+      "elapsed_seconds": 0.01,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-batteries-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/batteries",
+      "exit_code": 0,
+      "elapsed_seconds": 0.009,
+      "log_sha256": "f11675294ae9a5b8bd697f96d60b337c9aa0ffa5ed7cc89b8acfd5103044b82d"
+    },
+    {
+      "phase": "package-batteries-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/batteries",
+      "exit_code": 0,
+      "elapsed_seconds": 0.019,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "package-Cli-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/Cli",
+      "exit_code": 0,
+      "elapsed_seconds": 0.008,
+      "log_sha256": "300616b42565e3af8371bcac27ec8e33232d8bd511b3abc74ce438ace7a7ed4b"
+    },
+    {
+      "phase": "package-Cli-tracked-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache/packages/Cli",
+      "exit_code": 0,
+      "elapsed_seconds": 0.009,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "lean-version",
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-core/formalization/ueot-core",
+      "exit_code": 0,
+      "elapsed_seconds": 0.272,
+      "log_sha256": "4762d596346ad354e28668de62b7eeae7de5d531b9a7b1c182ca59cfacd81bdd"
+    },
+    {
+      "phase": "source-before",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-core",
+      "exit_code": 0,
+      "elapsed_seconds": 0.095,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "lake-build-UEOT",
+      "command": [
+        "lake",
+        "build",
+        "UEOT"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-core/formalization/ueot-core",
+      "exit_code": 0,
+      "elapsed_seconds": 6.267,
+      "log_sha256": "79bb30b76ceeb61b8c2d5179db3efe2836676c35fefb7a6010e0f8b9c12c3e93"
+    },
+    {
+      "phase": "main-full-fkrg",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-core",
+      "exit_code": 0,
+      "elapsed_seconds": 1.931,
+      "log_sha256": "2e4394df258b577d34e9d6e38eae6bc2e70120e832eaefe61518533b6923eb04"
+    },
+    {
+      "phase": "source-after",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-core",
+      "exit_code": 0,
+      "elapsed_seconds": 0.012,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "old_worktrees_before": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-policy-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": " M .github/workflows/ueot-core-compression.yml\n M .github/workflows/ueot-core-lean.yml\n M docs/REPOSITORY_BRANCH_GOVERNANCE.md\n M formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md\n M formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json\n M formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md\n"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-viability-core-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": " M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake/\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean\n"
+    }
+  ],
+  "phase": "complete",
+  "actual_main": "0e5f1d809636fd238c87ec6d0fa94e3d720d0489",
+  "complete_core_tree_equal_reviewed_candidate": true,
+  "cache": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache",
+    "method": "isolated APFS clone of existing reviewed cache"
+  },
+  "installed_packages": [
+    {
+      "name": "mathlib",
+      "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "tracked_clean": true
+    },
+    {
+      "name": "plausible",
+      "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_clean": true
+    },
+    {
+      "name": "importGraph",
+      "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_clean": true
+    },
+    {
+      "name": "aesop",
+      "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_clean": true
+    },
+    {
+      "name": "Qq",
+      "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_clean": true
+    },
+    {
+      "name": "batteries",
+      "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_clean": true
+    },
+    {
+      "name": "Cli",
+      "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_clean": true
+    }
+  ],
+  "toolchain_file": "leanprover/lean4:v4.33.1",
+  "lean_version": "Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "tracked_source_status_before": "",
+  "tracked_source_status_after": "",
+  "old_worktrees_after": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-policy-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": " M .github/workflows/ueot-core-compression.yml\n M .github/workflows/ueot-core-lean.yml\n M docs/REPOSITORY_BRANCH_GOVERNANCE.md\n M formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md\n M formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json\n M formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md\n"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-viability-core-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+      "status": " M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake/\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean\n"
+    }
+  ],
+  "old_worktrees_unchanged": true,
+  "native_export": "Existing exact-source evidence reused; not rerun.",
+  "finished_utc": "2026-10-20T12:32:59.319984+00:00"
+}

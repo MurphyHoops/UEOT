@@ -1,0 +1,74 @@
+{
+  "status": "PASS_RETIRED_ONLY_OWN_THREE_BRANCHES",
+  "scope": {
+    "349": [
+      "ops/compression-local-build-support-evidence",
+      "0d22cf09b45ebb053c1e4426744e80787390a289"
+    ],
+    "351": [
+      "compression/theory-completion-support-viability",
+      "395a9b23e6138803b6359527dad367f1cae7913b"
+    ],
+    "352": [
+      "pub/ueot-separate-philosophy-mathematics",
+      "e116de9ad656baab6727dffca97e5999d973eb83"
+    ]
+  },
+  "checks": [
+    {
+      "headRefName": "ops/compression-local-build-support-evidence",
+      "headRefOid": "0d22cf09b45ebb053c1e4426744e80787390a289",
+      "mergeCommit": {
+        "oid": "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2"
+      },
+      "mergedAt": "2026-10-20T12:10:00Z",
+      "state": "MERGED"
+    },
+    {
+      "headRefName": "compression/theory-completion-support-viability",
+      "headRefOid": "395a9b23e6138803b6359527dad367f1cae7913b",
+      "mergeCommit": {
+        "oid": "0e5f1d809636fd238c87ec6d0fa94e3d720d0489"
+      },
+      "mergedAt": "2026-10-20T12:32:19Z",
+      "state": "MERGED"
+    },
+    {
+      "headRefName": "pub/ueot-separate-philosophy-mathematics",
+      "headRefOid": "e116de9ad656baab6727dffca97e5999d973eb83",
+      "mergeCommit": {
+        "oid": "fccd2005c7ba1bc1765f88f90c268c195e62dd8a"
+      },
+      "mergedAt": "2026-10-20T12:45:10Z",
+      "state": "MERGED"
+    }
+  ],
+  "main": "fccd2005c7ba1bc1765f88f90c268c195e62dd8a",
+  "open_prs": [],
+  "command": [
+    "git",
+    "-c",
+    "credential.helper=!/opt/homebrew/bin/gh auth git-credential",
+    "push",
+    "--atomic",
+    "--force-with-lease=refs/heads/ops/compression-local-build-support-evidence:0d22cf09b45ebb053c1e4426744e80787390a289",
+    "--force-with-lease=refs/heads/compression/theory-completion-support-viability:395a9b23e6138803b6359527dad367f1cae7913b",
+    "--force-with-lease=refs/heads/pub/ueot-separate-philosophy-mathematics:e116de9ad656baab6727dffca97e5999d973eb83",
+    "origin",
+    ":refs/heads/ops/compression-local-build-support-evidence",
+    ":refs/heads/compression/theory-completion-support-viability",
+    ":refs/heads/pub/ueot-separate-philosophy-mathematics"
+  ],
+  "exit_code": 0,
+  "log_sha256": "7bac41208eea2f8ca69bb2b85b27b24c34991af4443971b26f2671b59e738316",
+  "other_remote_refs_preserved": true,
+  "remaining_refs": {
+    "refs/heads/main": "fccd2005c7ba1bc1765f88f90c268c195e62dd8a",
+    "refs/heads/qm/upgrade-core-v3-v31": "bc2557228e2c545084a2473300e85eae447069ce",
+    "refs/heads/qm/v31.6-core-selection-doob-20261020": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "refs/heads/qm/v31.6-main-evidence-20261020": "fed60e02abe296cb6962451fa91ca68b72aa60b1",
+    "refs/heads/qm/v31.7-purification-record-dynamics-20261020": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+    "refs/heads/qm/v31.7-remote-acceptance-20261020": "032e763ab87e64488e1ff2c96aadd32b5c533a82",
+    "refs/heads/qm/v31.8-separation-purity-action-budgets-20261020": "d9a1858c86ca82e08ae862389b51c1ea76690c24"
+  }
+}

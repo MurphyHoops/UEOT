@@ -1,0 +1,129 @@
+{
+  "status": "PASS",
+  "books_merge": "fccd2005c7ba1bc1765f88f90c268c195e62dd8a",
+  "commands": [
+    {
+      "phase": "books-main-fetch",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "main:refs/remotes/origin/main"
+      ],
+      "exit_code": 0,
+      "log_sha256": "90b2c38337ebe2ea5b3bf387bf821eb6463a3f8248780b2e6751015aee242523"
+    },
+    {
+      "phase": "books-main-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "origin/main"
+      ],
+      "exit_code": 0,
+      "log_sha256": "0bbc829785008b328f5f0322190d41b37b0eceda62c22635d19faea06d78cbc9"
+    },
+    {
+      "phase": "books-merge-ancestor",
+      "command": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "fccd2005c7ba1bc1765f88f90c268c195e62dd8a",
+        "fccd2005c7ba1bc1765f88f90c268c195e62dd8a"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "books-main-core-tree",
+      "command": [
+        "git",
+        "rev-parse",
+        "fccd2005c7ba1bc1765f88f90c268c195e62dd8a:formalization/ueot-core"
+      ],
+      "exit_code": 0,
+      "log_sha256": "67b1d1bcda909f60e30bb0dd17ce88b659ff7092dd586d5cc0bcf62217844724"
+    },
+    {
+      "phase": "books-main-checkout",
+      "command": [
+        "git",
+        "worktree",
+        "add",
+        "--detach",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-books",
+        "fccd2005c7ba1bc1765f88f90c268c195e62dd8a"
+      ],
+      "exit_code": 0,
+      "log_sha256": "39d04103a68d3e0fa47b624b766c8c3c6c523b5c3723b36968453b68fec2f717"
+    },
+    {
+      "phase": "preserved-formalization-ueot-qm",
+      "command": [
+        "git",
+        "rev-parse",
+        "fccd2005c7ba1bc1765f88f90c268c195e62dd8a:formalization/ueot-qm"
+      ],
+      "exit_code": 0,
+      "log_sha256": "ae6fc78df193cec83ac9e7ca517ad8268831f79b3f561680ec88ceb93d8042ce"
+    },
+    {
+      "phase": "preserved-physics-qm",
+      "command": [
+        "git",
+        "rev-parse",
+        "fccd2005c7ba1bc1765f88f90c268c195e62dd8a:physics/qm"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e8f7364a755a7a086caa0a6fd3642c0f998ead0237a6c3f5067069d09650da6e"
+    },
+    {
+      "phase": "books-main-clean",
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "actual_main": "fccd2005c7ba1bc1765f88f90c268c195e62dd8a",
+  "core_tree": "624c9a0d4b26d9c3e6489c45050d66e96129b3dc",
+  "artifacts": [
+    {
+      "path": "philosophy/UEOT_PHILOSOPHY.md",
+      "sha256": "9b66ede4df47347443d2f66af7851557df670f6a86e3885bd6c84b795372c3ae",
+      "equal_reviewed_candidate": true
+    },
+    {
+      "path": "philosophy/UEOT_PHILOSOPHY.tex",
+      "sha256": "47ed725666c596971dc0438aa4db8bc90f953a91f60b2c16d533f6fa132c9d5e",
+      "equal_reviewed_candidate": true
+    },
+    {
+      "path": "philosophy/UEOT_PHILOSOPHY.pdf",
+      "sha256": "9abe0df19d48ccf92ed9697b248304adecea01528eafc7a766ab6a4428986025",
+      "equal_reviewed_candidate": true
+    },
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.md",
+      "sha256": "7981369dc93272afec006aa2d18486de3ffc28fe9b06e9f6f9e855c29cf9126b",
+      "equal_reviewed_candidate": true
+    },
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.tex",
+      "sha256": "eda39469074739ec80aee070c82e738c6141c8a3a35e0d981331e3ce13447558",
+      "equal_reviewed_candidate": true
+    },
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.pdf",
+      "sha256": "907c1635f9c6a0b6a7307f6d9e965dda3e5e8bee3ae852c58db17730b08b0245",
+      "equal_reviewed_candidate": true
+    }
+  ],
+  "build_reuse": "Full Core tree and all pins unchanged since actual 0e5f1d8 lake build; six reviewed publication artifacts unchanged; no redundant Lean or PDF rerun.",
+  "physics_and_qm_latest_work_preserved": true
+}

@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "base": "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2",
+  "commands": [
+    {
+      "phase": "clean",
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "old-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log_sha256": "76670fd52a51b77f9107c6c075e693eb092dfbcdf82cfbe2e7d32f0f4b8195d6"
+    },
+    {
+      "phase": "fetch-canonical-main",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "main:refs/remotes/origin/main"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c9c3d84d2a9a8149e6ded6d7fdb562da93d7a6c4a2b0b96d49ac82aa12aa21f8"
+    },
+    {
+      "phase": "canonical-main",
+      "command": [
+        "git",
+        "rev-parse",
+        "origin/main"
+      ],
+      "exit_code": 0,
+      "log_sha256": "67f30ffa38cfec9feb4dcad5d2794b7e01ee03dc5c897a5dbe342915ab842520"
+    },
+    {
+      "phase": "replay-core-only",
+      "command": [
+        "git",
+        "rebase",
+        "--onto",
+        "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2",
+        "3f5da21d923c4d2e1d644dd8df9c0180fa7488b4"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c252c8f34311e9c7f4aab5ee67a1d8a60d3ce69336be28d6487bd905fe362933"
+    },
+    {
+      "phase": "candidate-head",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log_sha256": "ee1a34d723f3eba349c461d85b1f87d0c4f500ded2990250568aaf5e57706a68"
+    },
+    {
+      "phase": "candidate-object",
+      "command": [
+        "git",
+        "cat-file",
+        "commit",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log_sha256": "561d0cd95449c340c708d1daa2ba70c9bfe71b0dc0321e6db5ad99886f6a251f"
+    },
+    {
+      "phase": "checkout-authoritative-base",
+      "command": [
+        "git",
+        "worktree",
+        "add",
+        "--detach",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/base-core",
+        "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "64bf45548eed932590c092a063a3255aca52e1a26f0e92df38bb8fe7e9ed1fb2"
+    },
+    {
+      "phase": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2",
+        "395a9b23e6138803b6359527dad367f1cae7913b"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "phase": "base-parser-tests",
+      "command": [
+        "python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/base-core/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "fc3d7dfb619598bb5c1a3cd2f394d1717b5ac2e06df897a965a18ab3c4c1432b"
+    },
+    {
+      "phase": "base-policy-live",
+      "command": [
+        "python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/base-core/formalization/ueot-core/scripts/validate_compression_research.py",
+        "--repo-root",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/core",
+        "--baseline-ref",
+        "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2",
+        "--candidate-ref",
+        "395a9b23e6138803b6359527dad367f1cae7913b",
+        "--branch-name",
+        "compression/theory-completion-support-viability",
+        "--head-repo",
+        "MurphyHoops/UEOT",
+        "--base-repo",
+        "MurphyHoops/UEOT",
+        "--verify-live-state"
+      ],
+      "exit_code": 0,
+      "log_sha256": "929ff9f641148596270169888666a8bbba7f4543b5847a8732244616b3567b49"
+    },
+    {
+      "phase": "git-object-preflight",
+      "command": [
+        "python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/base-core/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "--repo-root",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/core",
+        "--baseline-ref",
+        "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2",
+        "--candidate-ref",
+        "395a9b23e6138803b6359527dad367f1cae7913b",
+        "--report",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/core-canonical-gates/PR_PREFLIGHT.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "30a45c586d3592779cff0dfd2ca390e28c313191610da3275ad6f5ff0d7766be"
+    },
+    {
+      "phase": "full-fkrg",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e314fd0079ba2c05da17e05f808ca1a4c22c4e2c02ce673f46503cf2c82d4988"
+    }
+  ],
+  "phase": "complete",
+  "candidate": "395a9b23e6138803b6359527dad367f1cae7913b",
+  "candidate_commit_object": "tree 8cdf0d977ef49bb74f924ed2cecc0c030b4bbd9a\nparent 87cc3a3ce0bc1682d431d1479db0164d48e0f8d2\nauthor Codex <codex@openai.com> 1792490068 +0900\ncommitter Murphy Hoops <murphyhoops@MurphydeMacBook-Pro.local> 1792498256 +0800\n\nfeat(core): close finite support viability and registered joint risk\n\nDerive zero actual uncertified-row occupancy from finite support viability\nand prove the converse. Add an executable support checker, reachable\ndead-end counterexamples, Good-only registered sampling bounds, and a\nsame-policy viability-to-joint adapter with an adaptive finite witness.\n\nRegister observed native types, axioms and proof dependencies without\nchanging the frozen counted Core. Preserve failed attempts and independent\nreviews. Nine-module and full UEOT local builds, native recheck, and all\n28 production evidence-consumer tests passed for the frozen source bytes.\n\nPublication still requires the separate ops policy to enter canonical main."
+}

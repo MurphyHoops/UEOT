@@ -1,0 +1,17 @@
+{
+  "initial": {
+    "command": "git fetch --no-tags --prune origin main:refs/remotes/origin/main",
+    "exit_code": 1,
+    "output": "From https://github.com/MurphyHoops/UEOT\n - [deleted]         (none)     -> origin/main\n   fccd200..6b3ba80  main       -> origin/main\nerror: fetching ref refs/remotes/origin/main failed: reference does not exist",
+    "readback": "origin/main absent; other stale tracking refs unchanged"
+  },
+  "recovery": {
+    "command": "git fetch --no-tags origin refs/heads/main:refs/remotes/origin/main",
+    "chunk_id": "a93034",
+    "wall_time_seconds": 0.592682053,
+    "exit_code": 0,
+    "original_token_count": 22,
+    "output": "From https://github.com/MurphyHoops/UEOT\n * [new branch]      main       -> origin/main\n"
+  },
+  "note": "A real fetch is used; no manual ref forgery or policy self-authorization."
+}
