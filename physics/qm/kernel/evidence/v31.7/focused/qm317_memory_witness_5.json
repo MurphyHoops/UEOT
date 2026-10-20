@@ -1,0 +1,191 @@
+{
+  "status": "PASS",
+  "command": [
+    "flock",
+    "/tmp/qm317-lean.lock",
+    "/tmp/lean-4.33.1-linux/bin/lake",
+    "env",
+    "lean",
+    "scripts/witnesses/ClassicalQuantumMemoryExamples.lean"
+  ],
+  "cwd": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm",
+  "tool_session_id": 69930,
+  "exit_code": 0,
+  "exit_code_observation": "Actual exec session completion returned exit_code=0; no inferred status from log alone.",
+  "observed_exit_at_utc": "2026-10-20T08:02:31.607742+00:00",
+  "log": "/tmp/qm317_memory_witness_5.log",
+  "log_sha256": "44e166ac1f1e02c9f993e6e08c4a59142f4ca92f7bfbbc49a33e15c8e9279619",
+  "source_path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+  "source_sha256": "edd43b953001002b2f2aaa44a424da0e1beb0b5a0201ff7a6fba54bb405ce8e9",
+  "expected_explicit_targets": 22,
+  "actual_printed_targets": 22,
+  "exact_names_match": true,
+  "standard_axioms_only": true,
+  "declarations": [
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.Qubit",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.Label",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_branch",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channel",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channelState",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.rhoZero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_channelDefect_zero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_tv_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.retained_joint_distance_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_defect_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_is_not_a_record_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackFamily",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackProtocol",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero_iff",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_zero_model",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_one_model",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_event_gap_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_effect_gap_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_record_tv_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "timing_note": "Start and elapsed timing were not instrumented; log modification time is not represented as process start."
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "ueot_physics.pdf_visual_review.v3.3",
+  "status": "PASS",
+  "recorded_at_utc": "2026-10-20T08:25:25.381654+00:00",
+  "pdf_sha256": "9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c",
+  "source_sha256": "83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c",
+  "page_count": 203,
+  "root_full_pages_actually_viewed": [
+    1,
+    4,
+    155,
+    159,
+    163,
+    167,
+    191,
+    203
+  ],
+  "root_review_method": "tools.view_image forwarded images to the root model; all six overview sheets of preceding PDF viewed; final eight full-page images viewed after corrections.",
+  "root_observations": [
+    "Cover now correctly states edition 3.3, 60 chapters, Kernel 1.7.",
+    "Physical page 155 shows the complete convex purity quantifiers in two aligned rows within the text width.",
+    "Contents correctly include chapters 57–59 and appendices; physical versus printed page offset is four.",
+    "New rectangular-channel, record-memory, and model-dynamics equations remain legible and within margins.",
+    "Appendix F long source hash wraps within margins; 646/855 and 110/39/2/151 counts and final audit entries are visible."
+  ],
+  "all_page_overview_inheritance": {
+    "preceding_pdf_sha256": "b727a0e6bd0bb0de6cde7ca538a88076c5d0010301ba2629ce8bb83997b77b39",
+    "unchanged_current_pages": 201,
+    "changed_pages_freshly_viewed": [
+      1,
+      155
+    ],
+    "receipt": "pdf-page-identity.json"
+  },
+  "collaborator_review": {
+    "path": "pdf-collaborator-review.json",
+    "sha256": "0647180da6a03d14c79f556146738993861e8a06f46b0ba765aa28f39ad5c36e",
+    "actual_full_pages": [
+      1,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      190,
+      191,
+      192,
+      203
+    ],
+    "status": "PASS_SPECIFIED_18_FULL_PAGES_ACTUALLY_VIEWED"
+  },
+  "blocking_findings": [],
+  "nonblocking_observations": [
+    "Physical page 167 contains the final two lines of chapter 59 and substantial chapter-end whitespace; all text is present and readable."
+  ],
+  "scope_limits": [
+    "This is scoped visual QA, not a full 203-page close reading or independent human peer review.",
+    "Typography review does not replace Lean verification, empirical validation, or remote CI.",
+    "The mathematical source set is unchanged; chapter 57 alignment changes only display layout."
+  ]
+}

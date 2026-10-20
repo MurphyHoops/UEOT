@@ -1,0 +1,459 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import copy, hashlib, importlib.util, json, re
+
+R=Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+OLD=Path('/workspace/scratch/474cf6b1f047/qm_v316_work')
+E=R/'physics/qm/kernel/evidence/v31.7'
+B=R/'physics/qm/book'
+BE=B/'evidence/v3.3'
+BASE='7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8'
+STATE='LOCAL_VERIFIED_REMOTE_PENDING'
+def read(p): return json.loads(Path(p).read_text())
+def write(p,d): Path(p).parent.mkdir(parents=True,exist_ok=True);Path(p).write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def now(): return datetime.now(timezone.utc).isoformat()
+def bind(p):
+    p=Path(p)
+    return {'path':p.relative_to(R).as_posix(),'sha256':sha(p),'bytes':p.stat().st_size}
+
+def main():
+    proof=read(E/'lean-verification.json'); inv=read(E/'declaration-inventory.json')
+    finite=read(E/'finite-witnesses/verification.json')
+    book=read(BE/'book-structure.json'); pdf=read(BE/'pdf-build.json')
+    visual=read(BE/'pdf-visual-review.json')
+    assert proof['status']==finite['status']==book['status']=='PASS'
+    assert visual['status']=='PASS' and visual['pdf_sha256']==sha(B/'UEOT_PHYSICS.pdf')
+    assert pdf['source_sha256']==sha(B/'UEOT_PHYSICS.md') and pdf['pdf_sha256']==sha(B/'UEOT_PHYSICS.pdf')
+    assert all(x['exit_code']==0 for x in pdf['compile_passes']) and not pdf['layout_warnings']
+    assert proof['explicit_theorems']==646 and proof['actual_named_axiom_reports']==855
+    pages=visual['page_count']; count=proof['source_count']; source_sha=proof['source_set_sha256']
+    report=f"""# UEOT-QM v31.7 / Kernel 1.7
+
+日期：2026-10-20 UTC。状态：**{STATE}**。当前集成身份以 [CURRENT](status/CURRENT.json) 及实际远端回执为准；本地验收与后续远端工作流分别记录。
+
+## 核心追求与恢复基线
+
+目标是基于 UEOT 建立完备、可解释且可检验的量子物理理论。本轮从已发布主线 {BASE} 恢复，逐项核对上一版70项受验输入、56项实际Core导入与正式正文，并保留同时存在的Core研究。本地历史HEAD只作环境元数据，实际科学字节由[本版源清单](kernel/evidence/v31.7/source-manifest.json)确定。
+
+本轮集中完成三个衔接现有内核的缺口：在完整状态空间中构造复量子纯化；把经典记录与量子记忆放进真实联合协议；从既有非交换模型求出实际条件动力学。root新增有限事件TV刻画，统一接口、交叉审查、源冻结和验收。冻结Core的106项与四生成器未由本轮改写。
+
+## 一、完整状态空间中的纯化与同一操作语言
+
+QuantumPurification以全部有限复PSD迹一矩阵为态空间，以整个态空间的凸极点定义纯态。它从PSD证明Gram因子存在，再将因子矩阵A向量化为实际联合向量，证明该向量归一、外积是凸极点，且实际偏迹等于AA†。因此对每一个有限复密度态ρ，都实际构造一个纯联合态Ψ满足Tr_aux Ψ=ρ；Gram因子、纯性及边际等式都不是预先装入的结论字段。空载体没有密度态，另有明确边界定理。
+
+OperationalSystems给出有限系统、完整状态、效应、混合、组合、丢弃和过程的类型接口。经典完整单纯形、完整有限复密度空间、复矩阵中全部实密度与实效应都得到实际呈现，并分别证明七项基本操作规律。纯化存在与局部层析作为独立候选性质保留：复量子模型满足已证明的纯化存在；经典模型在任意有限辅助系统上违反它；实模型违反局部层析。实际Core第一商边际的经典障碍在同一接口中仍成立。
+
+具体见证证明Bell向量外积是完整态空间中的纯态，实际边际为I/2；同时证明若故意把允许态空间缩成只含一个混态，该态就成为这个受限集合的极点。这个删除控制约束完整状态空间的量词。向量纯态的反向刻画、纯化本质唯一性、复模型完整局部层析及UEOT为何必须满足选择原则仍是下一步责任。
+
+## 二、联合记录与量子记忆的真实有限内核
+
+RectangularChannels允许输入、输出载体不同，从实际Kraus矩阵及完备性导出完整复迹保持、任意有限辅助系统上的完全正性、Heisenberg效应拉回、实际偏迹、通道复合及全效应距离收缩。辅助放大作用于任意联合PSD输入，未把输入限制为产品态。
+
+ClassicalQuantumMemory将一个仪器构造成真实联合态
+
+Ω_I(ρ)=Σ_o |o⟩⟨o|⊗Φ_o(ρ)。
+
+分别对记录或记忆取实际偏迹，得到原无条件量子通道或对角记录概率；正块归一与真实后验一致，零概率与零块等价。随后沿既有Adaptive.Protocol有限树构造每条真实叶词的Kraus路径。得到任意有限协议的实际联合记录与终端记忆通道，全部叶块等于原recordOperator，块迹等于原leafProbability；不存在另造相似标签而跳过原协议的情况。
+
+root证明有限记录TV由全部事件刻画，并由正差事件达到。记录事件写成合法联合效应，因此记录TV≤联合全效应距离。两个实际联合通道满足输入距离加其真实全态缺陷的扰动界。此处已经比较整体协议；尚未把整体缺陷压成每一步或每个动作的误差和，不能提前称为可检查的逐动作预算。
+
+删除控制给出两套丢记录后完全相同的恒等量子通道，但记录TV和联合距离均为1。实际两步反馈协议据第一标签选择第二动作，第二次零结果事件概率分别为1和0，完整记录TV仍为1。这个见证的量子记忆保持相同；变化发生在真实记录和后续选择，未夸大为终端量子态差异。
+
+## 三、同一个非交换模型的真实条件收敛
+
+QuantumDoobModel把上一版具体见证中27个声明按相同数学正文提取为公共模型，另补公共态；来源提取与新增动力学分开登记。QuantumDoobDynamics始终使用这个模型的原成功分支、原完整仪器和真实条件态。
+
+令r=3/16，H=diag(4,1)，ρ*=1/5[[1,2],[2,4]]，σ+=1/2[[1,1],[1,1]]，a_n=3^(-n)。实际Doob通道对所有复矩阵的迭代为
+
+D^n(X)=a_n X+(1-a_n)Tr(X)σ+。
+
+由此证明σ+是唯一Doob不变态，全效应距离恰按a_n缩放，矩阵轨道也收敛。对任意原始密度态τ，令c=Tr(Hτ)、b=5c/8、z_n=a_n+(1-a_n)b，则1≤c≤4且5/8≤z_n≤5/2，并证明
+
+Φ^n(τ)=r^n[a_n τ+(1-a_n)bρ*]，
+m_n=r^n z_n，
+τ_|n=(a_n/z_n)τ+((1-a_n)b/z_n)ρ*。
+
+这些等式绑定实际successOperator、successMass及conditionalState。因而条件态与ρ*的全效应距离恰为(a_n/z_n)d_eff(τ,ρ*)，且不超过(8/5)3^(-n)d_eff(τ,ρ*)；真实成功质量同时趋于0。这只涉及每一步均为指定成功结果的有限记录，不能外推为无条件永续。
+
+新见证核对均匀初态的一步质量33/128及含相干的真实条件矩阵，并构造合法严格损失源K=I/2，其Doob通道为恒等。后者具有正谱数据，却有全部态固定、没有共同吸引极限，说明谱前提本身不足以推出混合。一般正谱存在、本原条件、一般准平稳唯一性和无限条件过程仍未由一个可解模型覆盖。
+
+## 实际统一验收
+
+| 对象 | 实际通过范围 |
+|---|---|
+| 主包 | 29模块、646显式定理；统一构建退出0，{proof['actual_build_jobs']} jobs |
+| 主审计 | 855个唯一全名报告＝646定理＋209个列举非定理目标 |
+| 新公共模块 | 7模块、187显式定理、282新增审计；含前版模型提取，不全是新数学 |
+| 持久具体见证 | 7文件，110定理＋39定义＋2缩写＝151独立审计 |
+| 输入绑定 | {count}项受验源；86个QM/Core源及olean绑定；56项Core源码与恢复主线一致 |
+| 精确证书 | 6正例、42审计；4篡改真值证明被拒，4同数据假值证明通过 |
+| 运行程序 | 100测试方法、4演示重新实际执行 |
+| 总著 | 正式3.3：60章、6附录、{book['numbered_sections']}章内小节、131编号结果，PDF {pages}页 |
+
+源集SHA-256：{source_sha}。实际公理仅允许propext、Classical.choice、Quot.sound。定义、实例、具体见证、数值证书、运行测试和实验各有不同范围，不累加成新的物理定律数量。[统一证明回执](kernel/evidence/v31.7/lean-verification.json)记录实际执行，不以作者报告代替统一验收。
+
+## 正式总著与下一批任务
+
+[《UEOT物理学》3.3](book/UEOT_PHYSICS.md)是连续完整正文，[PDF](book/UEOT_PHYSICS.pdf)由同一正文实际构建。第57–59章包含本轮完整推导、具体正例、删除控制及开放责任；保留旧117个稳定结果并新增14个。章级档案绑定实际源码、声明和科学范围，正式出版完成不表示全书已被Lean形式化。
+
+[下一轮合同v31.8](UEOT_QM_EXECUTION_v31.8.md)将三路收紧为：A证明全效应分离和复模型局部层析；B先完成凸极点与向量态的双向刻画，再在明确辅助空间条件下证明纯化酉唯一性；C构造共同历史控制器的逐步误差和及底层动作预算。该合同仅为规划，不计入当前证明。
+
+三代仍是带完整谱、表示、阈值和有效窗口前提的条件结果；现实质量谱、真空、连续与QFT接口、真实QDRR数据及复量子唯一选择继续保留独立责任。本轮推进一个可复用且逐项可审计的有限量子内核，没有宣称完备物理理论或最终真理已经得到证明。
+"""
+    (R/'physics/qm/UEOT_QM_KERNEL_v31.7.md').write_text(report)
+    contract=(OLD/'physics/qm/UEOT_QM_EXECUTION_v31.7.md').read_text()
+    contract_header=f'''# UEOT-QM v31.7：执行合同与完成记录
+
+当前状态：**{STATE}**。原始合同下列三路已按实际源与独立统一验收推进完成：A给出完整态凸纯性、任意有限复态纯化及三模型实际呈现；B给出任意有限树真实联合记录记忆与整体协议缺陷界；C给出原非交换模型的精确动力学、唯一Doob不变态、到源固定态的条件距离衰减及成功质量极限。root完成有限事件TV刻画、全局审计与正式总著3.3。
+
+本轮29模块、646显式定理、855主审计与七组151具体见证审计通过；证书及运行结果见[实际统一回执](kernel/evidence/v31.7/lean-verification.json)。[当前报告](UEOT_QM_KERNEL_v31.7.md)和[主张台账](status/CLAIM_LEDGER_v31.7.json)限定完成范围。后续逐动作误差预算、复层析和纯化本质唯一性进入[v31.8合同](UEOT_QM_EXECUTION_v31.8.md)，不借用本合同的通过状态。
+
+## 原始审定合同（历史原文）
+
+以下保留执行前的任务措辞与停止条件；其中“待执行”“下一轮”属于原始规划时点，当前完成与未完成范围以前述实际回执为准。
+
+'''
+    (R/'physics/qm/UEOT_QM_EXECUTION_v31.7.md').write_text(contract_header+contract)
+
+    previous=read(OLD/'physics/qm/status/CURRENT.json')
+    cur=copy.deepcopy(previous)
+    cur.update({'date':'2026-10-20','version':'31.7-kernel.1.7','research_baseline':BASE,
+      'entrypoint':'../UEOT_QM_KERNEL_v31.7.md','execution_contract':'../UEOT_QM_EXECUTION_v31.7.md',
+      'claim_ledger':'CLAIM_LEDGER_v31.7.json','previous_claim_ledger':'CLAIM_LEDGER_v31.6.json',
+      'verification_state':STATE,'proof_receipt':'../kernel/evidence/v31.7/lean-verification.json',
+      'instance_receipt':'../kernel/evidence/v31.7/lean-exports/verification.json',
+      'finite_witness_receipt':'../kernel/evidence/v31.7/finite-witnesses/verification.json',
+      'source_manifest':'../kernel/evidence/v31.7/source-manifest.json',
+      'metadata_updated_at_utc':now(),'local_checkpoint_state':STATE,
+      'initial_published_checkpoint_state':STATE,
+      'local_checkpoint_state_scope':'Current v31.7 actual local proof and publication gates; future source/main workflows are separately pending.'})
+    cur['acceptance_marker']={
+      'state':STATE,'change_class':'B','authority':previous['acceptance_marker']['authority'],
+      'domain_memo':'../audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md',
+      'accepted_scope':[
+        'Full finite density convex purity and actual Gram purification with actual partial trace',
+        'Actual complete classical/real/complex operational presentations and seven independently proved elementary laws',
+        'Rectangular finite CPTP, arbitrary finite ancilla and actual joint finite adaptive record-memory channels',
+        'All finite record-event total variation and full joint-channel perturbation bounds',
+        'Same noncommuting model exact true conditional dynamics, convergence, success-mass decay and identity-Doob control',
+        'Source-frozen local unified build, 855 named audits, 151 witness audits and inherited certificate/runtime gates',
+        f'Formal monograph 3.3: 60 chapters, 131 results and actual {pages}-page PDF with scoped visual review'],
+      'does_not_promote':[
+        'Complex-quantum uniqueness from frozen Core or complete reconstruction axioms',
+        'Convex-pure implies vector, purification essential uniqueness or complex local tomography not yet proved here',
+        'Stepwise action-level adaptive record budgets from whole-protocol defect',
+        'General positive eigenmetric existence, spectral mixing or infinite conditioned process',
+        'Universal Python/parser/exporter correctness, unconditional physical three generations or empirical confirmation',
+        'Whole-book formalization or ultimate truth'],
+      'independent_mathematical_reviews':'CLEAR','review_scope':previous['acceptance_marker']['review_scope'],
+      'local_machine_acceptance':'PASS','integration_acceptance':'PENDING','source_and_verifier_review':'SOURCE_BOUND_LOCAL_ACCEPTANCE_PASS'}
+    cur['completed_in_this_delivery']=[
+      f'29 modules and 646 explicit theorems, actual unified Lean 4.33.1 build exit 0, {proof["actual_build_jobs"]} jobs',
+      '855 unique actual named audit reports; 187 new explicit theorems and 282 added targets',
+      'Seven witnesses: 110 theorems, 39 definitions, two abbreviations and 151 audits',
+      'Six exact certificates /42 audits; four corrupted true proofs rejected and four same-data false proofs accepted',
+      '100 runtime test methods and four demos reexecuted successfully',
+      f'{count} source inputs; nine pinned Git dependencies; 56 unchanged recursive Core imports',
+      f'Formal monograph 3.3: 60 chapters, six appendices, 131 results, actual {pages}-page PDF']
+    cur['known_open_items']=[
+      'Independent physical derivation of quantum-selection principles and complete reconstruction background',
+      'All-effect density separation and LocalTomography complexModel',
+      'Convex-pure/vector converse and essential purification uniqueness with explicit ancillary dimensions',
+      'Common causal-history controller stepwise budgets reduced to action-level record defects',
+      'General spectral existence/mixing and infinite conditioned dynamics',
+      'Exact program refinement; real QDRR observations; complete physical spectrum/G3 applicability',
+      'Continuum, energy, QFT, vacuum and masses']
+    cur['next_execution']={'contract':'../UEOT_QM_EXECUTION_v31.8.md','status':'PLANNED_NOT_FORMALIZED',
+      'primary':'Actual all-effect density separation and complex joint-state local tomography',
+      'parallel':['Full convex-pure/vector characterization and same-auxiliary unitary purification equivalence',
+                  'Common finite-depth causal-history channels and stepwise/action-level record budgets'],
+      'integration_gate':'New mathematical source requires its own actual source-bound local and remote acceptance.'}
+    cur['integration']={'target_branch':'main','state':STATE,'scope':previous['integration']['scope'],
+      'published_research_baseline':BASE,'source_manifest':'../kernel/evidence/v31.7/source-manifest.json',
+      'source_count':count,'source_set_sha256':source_sha,
+      'source_identity':'Actual per-file local source hashes bind completed execution. A future remote commit or workflow is not yet claimed.',
+      'previous_version':dict(previous['integration'],version=previous['version']),
+      'pr_status':'PENDING','main_status':'PENDING'}
+    cur['local_verification']={'state':'PASS','checked_at_utc':proof['checked_at_utc'],
+      'generic_modules':29,'explicit_theorems':646,'named_axiom_reports':855,
+      'listed_non_theorem_audit_targets':209,'new_theorems':187,'new_audit_targets':282,
+      'finite_witness_theorems':110,'finite_witness_definitions':39,'finite_witness_abbreviations':2,
+      'finite_witness_audit_reports':151,'finite_witness_bound_modules':86,
+      'runtime_test_methods':100,'demos':4,'positive_instances':6,'positive_instance_audit_reports':42,
+      'corrupted_true_proofs_rejected':4,'same_data_false_witnesses':4,
+      'core_import_count':56,'actual_build_exit_code':0,'actual_build_jobs':proof['actual_build_jobs'],
+      'allowed_foundation':proof['allowed_foundation'],'source_count':count,'source_set_sha256':source_sha,
+      'proof_receipt':'../kernel/evidence/v31.7/lean-verification.json',
+      'source_manifest':'../kernel/evidence/v31.7/source-manifest.json','remote_ci':'PENDING'}
+    cur['book']={'title':'UEOT物理学','edition':'3.3','state':STATE,
+      'canonical':'../book/UEOT_PHYSICS.md','pdf':'../book/UEOT_PHYSICS.pdf','latex':'../book/UEOT_PHYSICS.tex',
+      'chapters':60,'appendices':6,'numbered_results':131,'pdf_pages':pages,
+      'dossier':'../book/CHAPTER_DOSSIER.json','release_gates':'../book/evidence/v3.3/local-release-gates.json',
+      'whole_book_formalized':False}
+    write(R/'physics/qm/status/CURRENT.json',cur)
+
+    ledger=copy.deepcopy(read(OLD/'physics/qm/status/CLAIM_LEDGER_v31.6.json'))
+    ledger['prior_version_verification']=copy.deepcopy(ledger['verification'])
+    ledger['schema']='ueot_qm.claim_ledger.v31.7'
+    ledger.update({'date':'2026-10-20','version':'31.7-kernel.1.7',
+       'previous_ledger':'physics/qm/status/CLAIM_LEDGER_v31.6.json','research_baseline':BASE,
+       'metadata_updated_at_utc':now(),'next_execution_contract':'physics/qm/UEOT_QM_EXECUTION_v31.8.md',
+       'next_execution_status':'PLANNED_NOT_FORMALIZED'})
+    for claim in ledger['claims']:
+        claim['inherited_from']={'ledger':'physics/qm/status/CLAIM_LEDGER_v31.6.json','claim_id':claim['id']}
+        claim['current_source_identity']='physics/qm/kernel/evidence/v31.7/source-manifest.json'
+        claim['prior_v31_6_evidence']={k:copy.deepcopy(claim[k]) for k in ['current_proof_receipt','runtime_receipt','instance_receipt','evidence','verification_scope','limits','open_items'] if k in claim}
+        claim['prior_verification_scope']=claim.get('verification_scope')
+        for field in ['runtime_receipt','instance_receipt','evidence']:
+            if isinstance(claim.get(field),str) and '/v31.6/' in claim[field]:
+                claim[field]=claim[field].replace('/v31.6/','/v31.7/')
+        if claim.get('machine_status')=='VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT':
+            claim['current_proof_receipt']='physics/qm/kernel/evidence/v31.7/lean-verification.json'
+            claim['verification_scope']='Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.'
+            if claim['id']=='QMK-21':claim['current_proof_receipt']='physics/qm/kernel/evidence/v31.7/lean-exports/verification.json'
+            if claim['id'] in ['QMK-40','QMK-44']:claim['current_proof_receipt']='physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json'
+        else:
+            claim.pop('current_proof_receipt',None)
+            claim['verification_scope']='Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified.'
+        if claim['id']=='QMK-28':
+            claim['open_items']=['Reduce actual whole-protocol joint record-memory defects to useful stepwise and action-level budgets under a common causal controller', 'Establish any separately claimed auxiliary-stabilized distance comparison', 'Prove density separation and any needed norm identification; exact arbitrary supremum computation is not established']
+        if claim['id']=='QMK-39':
+            claim['limits']=['This inherited two-rebit separation theorem is supplemented by the actual full-state real operational presentation in QMK-46/47; a complete reconstruction background or full Core real model remains unproved', 'No unique-complex-quantum reconstruction theorem']
+        if claim['id']=='QMK-40':
+            claim['limits']=['Dedicated five-theorem span witness is now included in 151 concrete audits, separately from 646 package explicit theorems', 'Does not prove universal complex local tomography']
+        if claim['id']=='QMK-43':
+            claim['limits']=['The generic theorem retains supplied left/right eigen-data and does not imply generic uniqueness or attraction', 'QMK-53/54 establish additional uniqueness/convergence only in the specified rational model; automatic spectral existence remains open']
+        if claim['id']=='QMK-44':
+            claim['limits']=['Original 28 concrete theorems plus 12 definitions are part of the current separate 151 witness audits', '8/5 is a normalization factor, not a success probability', 'Additional specified-model Doob uniqueness and true source conditional convergence are separately proved by QMK-53/54; no general mixing theorem follows']
+    additions=[
+      ('Full finite complex Gram purification with full-state convex purity',
+       ['UEOTQM.QuantumPurification.exists_gram','UEOTQM.QuantumPurification.vectorState_isPure','UEOTQM.QuantumPurification.exists_purification'],
+       ['Finite complex PSD trace-one density; actual product carrier and partial trace'],
+       ['No pure-to-vector converse or essential uniqueness yet']),
+      ('Three actual complete operational presentations, seven laws and independent candidate principles',
+       ['UEOTQM.OperationalSystems.classical_laws','UEOTQM.OperationalSystems.complex_laws','UEOTQM.OperationalSystems.real_laws','UEOTQM.OperationalSystems.complex_purification'],
+       ['Complete specified classical/real/complex state and effect sets; actual operations'],
+       ['Elementary laws are not all OPT reconstruction axioms']),
+      ('Classical purification and real local-tomography separation survive common actual interfaces',
+       ['UEOTQM.OperationalSystems.classical_not_purification','UEOTQM.OperationalSystems.core_first_marginal_no_purifies','UEOTQM.OperationalSystems.real_not_localTomography'],
+       ['Specified model interpretation and explicit finite systems'],
+       ['No complete exclusion of all alternative theories or Core-only quantum derivation']),
+      ('Rectangular finite CPTP maps, actual partial trace and all-effect contraction',
+       ['UEOTQM.RectangularChannel.trace_operator','UEOTQM.RectangularChannel.amplify_posSemidef','UEOTQM.RectangularChannel.amplify_operator_apply','UEOTQM.RectangularChannel.state_effectDistance_le'],
+       ['Finite input/output/Kraus/ancilla carriers and actual Kraus completeness'],
+       ['No infinite-dimensional or diamond-norm identification']),
+      ('Finite event total variation is attained and equivalent to control of all events',
+       ['UEOTQM.RecordProbability.positiveEvent_sub_eq_tv','UEOTQM.RecordProbability.tv_le_iff_events'],
+       ['Finite nonnegative normalized real distributions'],
+       ['Classical finite event theorem, not arbitrary measure-space extension']),
+      ('Actual one-step joint record-memory channel, marginals and positive posterior',
+       ['UEOTQM.ClassicalQuantumMemory.channel_operator_eq_block','UEOTQM.ClassicalQuantumMemory.discard_record_state','UEOTQM.ClassicalQuantumMemory.discard_memory_state_matrix','UEOTQM.ClassicalQuantumMemory.positive_block_posterior'],
+       ['Complete finite instrument; positive outcome probability for normalized posterior'],
+       ['Record and memory differ from unconditional output alone']),
+      ('Arbitrary finite actual adaptive protocol has complete joint leaf-record and terminal-memory channel',
+       ['UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete','UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator','UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_eq_block','UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_block_mass'],
+       ['Existing actual finite Adaptive.Protocol; all outcome continuations; finite Kraus path sums'],
+       ['No infinite protocol or unmodeled environment']),
+      ('Record TV bounded by actual joint distance and whole-protocol defect',
+       ['UEOTQM.ClassicalQuantumMemory.record_tv_le_joint_distance','UEOTQM.ClassicalQuantumMemory.record_tv_perturbation_bound','UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_perturbation_bound'],
+       ['Common record type; actual full-state joint-channel defect'],
+       ['Not yet reduced to stepwise action defects']),
+      ('Same noncommuting Doob model exact iterates and unique stationary state',
+       ['UEOTQM.QuantumDoobDynamics.doob_successOperator_formula','UEOTQM.QuantumDoobDynamics.doob_stationary_unique','UEOTQM.QuantumDoobDynamics.doob_effectDistance_exact','UEOTQM.QuantumDoobDynamics.doob_matrix_tendsto'],
+       ['Specific prior rational two-dimensional model; all complex matrices for operator formula'],
+       ['Model extraction is not an independent new physical model; no general PF theorem']),
+      ('True source conditional-state exact distance scaling to the fixed state and actual success-mass decay',
+       ['UEOTQM.QuantumDoobDynamics.source_successMass_formula','UEOTQM.QuantumDoobDynamics.source_conditionalState_matrix','UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_exact','UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_le','UEOTQM.QuantumDoobDynamics.source_successMass_tendsto_zero'],
+       ['Same actual source success branch; every initial density; finite n'],
+       ['Conditioned success sequence, not all records or unconditional perpetual survival', 'Exact source distance is to the fixed rho-star with an initial-state-dependent denominator; no arbitrary two-source-state contraction is claimed'])]
+    targets=set(inv['audit_targets'])
+    target_sources={item['name']:'formalization/ueot-qm/UEOTQM/'+name+'.lean' for name,items in inv['modules'].items() for item in items}
+    for num,(claim,witnesses,premises,limits) in enumerate(additions,45):
+        assert set(witnesses)<=targets
+        ledger['claims'].append({'id':f'QMK-{num:02d}','claim':claim,'layers':['P','B'],
+           'machine_status':'VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT','witnesses':witnesses,
+           'premises':premises,'limits':limits,'verification_location':'LOCAL',
+           'sources':sorted({target_sources[w] for w in witnesses}),
+           'current_source_identity':'physics/qm/kernel/evidence/v31.7/source-manifest.json',
+           'current_proof_receipt':'physics/qm/kernel/evidence/v31.7/lean-verification.json',
+           'verification_scope':'Actual unified v31.7 source-bound build and exact named axiom set.'})
+    ledger['evidence']={'proof':'physics/qm/kernel/evidence/v31.7/lean-verification.json',
+      'source':'physics/qm/kernel/evidence/v31.7/source-manifest.json',
+      'witnesses':'physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json',
+      'review':'physics/qm/audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md'}
+    ledger['verification']={'state':STATE,'main_package_theorems':646,'main_named_audits':855,
+      'concrete_witness_theorems':110,'concrete_witness_definitions':39,'concrete_witness_abbreviations':2,
+      'concrete_witness_audits':151,'source_count':count,'source_set_sha256':source_sha,
+      'local_status':'PASS','remote_status':'PENDING','full_physical_theory_verified':False}
+    ledger['canonical_monograph']={'edition':'3.3','path':'physics/qm/book/UEOT_PHYSICS.md',
+      'dossier':'physics/qm/book/CHAPTER_DOSSIER.json','chapters':60,'results':131}
+    write(R/'physics/qm/status/CLAIM_LEDGER_v31.7.json',ledger)
+
+    (R/'physics/qm/README.md').write_text(f"""# UEOT-QM：有限量子内核与物理总著
+
+当前 **v31.7 / Kernel 1.7 — {STATE}**。日期：2026-10-20 UTC。[CURRENT](status/CURRENT.json)记录实际发布身份。
+
+目标是基于UEOT形成完备、可检验的量子物理理论。已有有限量子内核持续扩展，理论推导、思想、具体例子和责任范围统一维护于[《UEOT物理学》正式3.3](book/UEOT_PHYSICS.md)，及其[完整PDF](book/UEOT_PHYSICS.pdf)：60章、6附录、131稳定编号结果、{pages}页。
+
+| 本轮关键点 | 实际成果 |
+|---|---|
+| 完整状态与选择原则 | 任意有限复态的实际纯化；经典、实、复三个完整操作呈现及七项规律；保留经典/实分离 |
+| 联合记录与记忆 | 异型CPTP、真实偏迹、任意有限自适应树联合通道、记录事件TV及整体协议缺陷；两步反馈删除控制 |
+| 真实条件动力学 | 同一非交换模型精确全算符迭代、唯一Doob不变态、条件态定量收敛和成功质量趋零；恒等Doob反例 |
+
+本轮实际统一验收为29模块、646显式定理、855个唯一命名公理报告。七组具体见证另计110定理、39定义、2缩写、151审计；六精确证书42审计、四组真假配对负控、100运行方法、四演示分别记录。允许基础仅为propext、Classical.choice、Quot.sound。[证明回执](kernel/evidence/v31.7/lean-verification.json)与[{count}项源清单](kernel/evidence/v31.7/source-manifest.json)绑定实际执行。
+
+## 阅读与推进入口
+
+- [本轮完整报告](UEOT_QM_KERNEL_v31.7.md)、[独立数学审查](audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md)、[当前主张台账](status/CLAIM_LEDGER_v31.7.json)。
+- [总著目录与逐章证据](book/README.md)、[Lean包](../../formalization/ueot-qm/README.md)、[运行内核](kernel/README.md)。
+- [路线图](ROADMAP.md)、[本轮合同](UEOT_QM_EXECUTION_v31.7.md)、[下一轮合同](UEOT_QM_EXECUTION_v31.8.md)。
+
+下一轮三路分别处理全效应分离与复局部层析、完整纯性刻画及辅助酉唯一性、共同历史控制器逐步误差预算。规划未计入已证明成果。冻结Core的106项、四生成器及原始材料身份保持独立。三代仍为带完整谱、表示与有效窗口条件的结果；复量子唯一选择、现实质量谱及实验检验继续承担独立责任。历史版本证据只证明各自输入，本轮不宣称完整物理理论或最终真理已完成。
+""")
+    oldroad=(OLD/'physics/qm/ROADMAP.md').read_text()
+    tail=oldroad[oldroad.index('## 全域工作包与下一项验收'):]
+    tail=tail.replace('显式经典记录和量子记忆的联合载体；不同含记录仪器及自适应误差','已有真实任意有限协议联合通道；下一步共同控制器逐步预算与动作缺陷')
+    tail=tail.replace('已给正可逆本征度量的非交换有限条件化；下一步当前实例定量动力学，再一般谱存在','当前非交换实例定量动力学已完成；下一步一般可验证谱/混合条件与无限条件过程')
+    tail=tail.replace('共同操作/复合/丢弃/纯性接口，有限复量子正例与候选选择原则的排除责任','实际三模型与任意有限复纯化已完成；下一步复层析、纯化本质唯一性及独立选择依据')
+    (R/'physics/qm/ROADMAP.md').write_text(f"""# UEOT-QM / Physics Roadmap
+
+状态：**v31.7 / Kernel 1.7 — {STATE}**。日期：2026-10-20 UTC。实际集成身份见[CURRENT](status/CURRENT.json)。
+
+## 核心追求与本轮实际闭合
+
+目标是从UEOT建立完备、严格、可解释和可检验的量子物理理论。当前形成的有限内核已经覆盖真实量子操作、响应与有限坐标、完整有限协议、精确证书、稳定性、完整复纯化、联合记录记忆及指定非交换条件动力学。Core为何选择复量子结构仍须独立证明。
+
+本轮科学恢复基线为{BASE}；统一实际结果为29模块、646显式定理、855命名审计。具体见证151、数值证书42与四配对负控、100运行方法分别登记。正式总著3.3包含60章、6附录、131结果与{pages}页PDF。
+
+| 已闭合 | 下一项必须补足 |
+|---|---|
+| 完整复状态凸纯性正向及任意有限态实际纯化 | 全效应分离、复联合态局部层析、凸纯性反向及本质唯一性 |
+| 三个完整模型的共同呈现和七项操作规律 | 全部重建背景、候选原则的UEOT物理依据及其他模型排除 |
+| 任意有限协议联合记录记忆和整体协议缺陷 | 真实共同控制器逐步预算与底层动作误差 |
+| 指定非交换模型精确条件收敛与成功质量衰减 | 一般谱存在/混合条件、无限条件过程及物理适用性 |
+
+## 下一轮三路并行合同
+
+| 方向 | 核心交付 | 必须保留的审计边界 |
+|---|---|---|
+| A 分离与复层析 | 合法效应分离实际密度；全部产品效应识别任意联合态 | Hermitian实线性、真实合法效应；固定仪器库不能被替换为全部效应 |
+| B 纯性与纯化唯一性 | 全凸极点⇒归一向量；同辅助载体上两向量纯化的实际辅助酉 | 余项PSD、维数、转置与作用方向；不同维数另有等距扩张责任 |
+| C 可组合记录预算 | 共同历史控制器真实通道、逐步缺陷和、动作缺陷控制 | 保留记录及零块，不把丢标签通道缺陷用于反馈 |
+
+[详细v31.8合同](UEOT_QM_EXECUTION_v31.8.md)包括输入、负控、停止条件和完整总著责任。该计划尚未形式化，也不计入v31.7成果。
+
+"""+tail)
+
+    kp=R/'physics/qm/kernel/README.md';ks=(OLD/'physics/qm/kernel/README.md').read_text()
+    ks=f"""# UEOT-QM v31.7 / Kernel 1.7
+
+当前状态：**{STATE}**；集成身份以[CURRENT](../status/CURRENT.json)为准。本轮新增形式化完整复纯化、共同操作语言、联合有限协议与精确非交换条件动力学。运行API仍保持既有精确混合、平均与对角生存能力，全部回归已重新执行。
+
+实际本地结果：29主包模块、646显式定理、855命名审计；100运行方法、4演示PASS。七组具体见证另计110定理、39定义、2缩写、151审计。[版本报告](../UEOT_QM_KERNEL_v31.7.md)、[证明回执](evidence/v31.7/lean-verification.json)、[运行回执](evidence/v31.7/runtime-verification.json)。完整理论见[正式总著3.3](../book/UEOT_PHYSICS.md)第49–59章。
+
+"""+ks[ks.index('## 立即运行'):]
+    ks=ks.replace('此门实际编译四份固定具体见证，审核全部84个声明并绑定79个QM/Core模块的源与olean。包含原混合/生存，以及新增实层析/非交换Doob见证；与六实例证书门分别统计，具体证明不增加459个主包定理的计数。',
+      '此门实际编译七份具体见证，审核151个声明并绑定86个QM/Core模块的源与olean。包括混合、生存、实层析、非交换Doob、完整纯化、联合记录及真实条件动力学。与六实例证书门分别统计，不加入646个主包显式定理。')
+    ks=ks.replace('22个主包Lean模块覆盖','29个主包Lean模块覆盖').replace('459定理、573审计统一通过','646定理、855审计统一通过')
+    ks=ks.replace('v31.6','v31.7')
+    kp.write_text(ks)
+
+    formal=(OLD/'formalization/ueot-qm/README.md').read_text()
+    start=formal.index('## Build and verify')
+    body=formal[start:]
+    marker='## Local certificate to actual quantum model'
+    # Add the new module rows at the end of the existing module table.
+    table_start=body.index('## Package modules')
+    next_heading=body.index('\n## ',table_start+4)
+    new_rows=[]
+    descriptions={
+       'RecordProbability':'All finite record events; attained TV and event characterization',
+       'RectangularChannels':'Actual rectangular CPTP, arbitrary finite ancilla, partial traces and contraction',
+       'QuantumPurification':'Full-state convex purity and actual arbitrary finite Gram purification',
+       'OperationalSystems':'Complete classical/real/complex presentations, seven laws and independent candidate principles',
+       'ClassicalQuantumMemory':'Actual joint record-memory channels for arbitrary finite adaptive trees',
+       'QuantumDoobModel':'Precisely extracted prior noncommuting model and common states',
+       'QuantumDoobDynamics':'Same model exact iterates, unique Doob stationarity and true source conditioning'}
+    pos=body.index('\n| **Total**',table_start,next_heading)
+    for name,desc in descriptions.items():
+        new_rows.append(f'| [{name}](UEOTQM/{name}.lean) | {proof["module_theorem_counts"][name]} | {desc} |')
+    body=body[:pos]+'\n'+'\n'.join(new_rows)+body[pos:]
+    body=body.replace('| **Total** | **459** | 22 package modules;', '| **Total** | **646** | 29 package modules;')
+    body=body.replace('The **573** package audit targets comprise all **459** explicit theorems plus **114** other reviewed named targets. The v31.6 increment is', 'The **855** package audit targets comprise all **646** explicit theorems plus **209** other reviewed named targets. The v31.7 increment has 187 explicit theorems and 95 other targets, totaling 282 audits; all new explicit declarations, two named instances, two registered instance projections and six structure constructors are covered. The historical v31.6 increment was')
+    body=body.replace('The current package totals exclude the **84** dedicated witness targets', 'The current package totals exclude the **151** dedicated witness targets')
+    a=body.index('## Retained mathematical witnesses');b=body.index('\n## ',a+4)
+    witness_text="""## Retained mathematical witnesses
+
+Seven actual witness files pass a separate compiler-and-axiom gate.
+
+| Source | Theorems | Definitions | Abbreviations | Named reports |
+|---|---:|---:|---:|---:|
+| MixtureExamples | 5 | 4 | 0 | 9 |
+| SurvivalTwoState | 24 | 6 | 0 | 30 |
+| RealTomographyTwoRebit | 5 | 0 | 0 | 5 |
+| QuantumDoobExamples | 28 | 12 | 0 | 40 |
+| QuantumPurificationExamples | 13 | 7 | 0 | 20 |
+| ClassicalQuantumMemoryExamples | 15 | 5 | 2 | 22 |
+| QuantumDoobDynamicsExamples | 20 | 5 | 0 | 25 |
+| Total | 110 | 39 | 2 | 151 |
+
+The new sources check a full-density Bell purification and restricted-state fake purity; deleted-record identity channels with record TV one and an actual two-step feedback event; and the same noncommuting true conditional model plus a legal identity-Doob non-mixing control. Source-level abbreviations are explicitly audited rather than silently omitted.
+
+The verifier requires each explicit theorem, definition and abbreviation to have exactly one actual matching allowed-axiom report. It binds all witness source bytes, the verifier, configuration and 86 recursive QM/Core source-and-olean inputs before and after execution. Missing/duplicate reports, unsupported declarations, changed inputs, unreviewed axioms and failed invocations are rejected. The ordinary package build establishes the imported artifacts. See the [actual v31.7 witness receipt](../../physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json). Runtime method counts and six numerical certificate instances remain separate.
+
+"""
+    body=body[:a]+witness_text+body[b:]
+    body=body.replace('current 573 package targets','current 855 package targets')
+    body=body.replace('against both the historical v31.5 package and the final v31.6 package','against the historical v31.5/v31.6 packages and the final v31.7 package')
+    new_contract="""## v31.7 scope and remaining responsibilities
+
+QuantumPurification constructs a Gram factor from PSD, proves normalized vector states are extreme in the complete density space, and proves an actual pure joint state has the original density as its actual partial trace. It does not assume a supplied purification or prove the converse pure-state characterization.
+
+OperationalSystems models complete classical, complex and real state/effect sets, proves seven elementary laws, and keeps candidate purification and tomography properties independent. Purification existence holds for the complex presentation; classical purification and real local tomography fail. The seven laws are not a complete list of reconstruction axioms.
+
+RectangularChannels gives actual different-input/output Kraus channels, arbitrary finite ancillary amplification and partial traces. ClassicalQuantumMemory connects each arbitrary finite protocol leaf to its original Kraus record operator and true probability, retaining the record and terminal state. Its current perturbation estimate uses an actual whole-channel defect; reducing it to stepwise action budgets remains open.
+
+QuantumDoobDynamics proves exact all-complex-matrix iterates and unique Doob stationarity only for the published rational model. For every initial density it derives the true source success mass, the actual conditioned state, exact all-effect distance scaling to the source fixed state and geometric convergence bounds. Success mass tends to zero. The legal identity-Doob witness demonstrates that positive spectral data alone do not imply mixing. General spectral existence, essential purification uniqueness, complex local tomography, infinite conditioning and empirical applicability require separate work.
+
+"""
+    header=f"""# UEOT-QM Lean package — v31.7
+
+This package implements a finite complex quantum sector and typed UEOT Core bridges with pinned Lean **4.33.1** and Mathlib **0df444a360eaa60ab8c11dca51a86af692955474**.
+
+**Current status: {STATE}.** Actual unified compilation passed: 29 modules, 646 explicit theorems and 855 unique named axiom reports, exit 0, {proof['actual_build_jobs']} jobs. Seven persistent witness files passed 151 separate reports (110 theorems, 39 definitions, two abbreviations). Six exact certificates /42 audits, four paired corrupt-data controls, 100 runtime methods and four demos passed. The actual {count}-input source manifest has SHA256 {source_sha}. [Proof receipt](../../physics/qm/kernel/evidence/v31.7/lean-verification.json), [source manifest](../../physics/qm/kernel/evidence/v31.7/source-manifest.json) and [CURRENT](../../physics/qm/status/CURRENT.json) separate local execution from remote acceptance.
+
+The continuous companion [《UEOT物理学》3.3](../../physics/qm/book/UEOT_PHYSICS.md) contains chapters 0–59 and appendices A–F, 131 numbered results and an actual {pages}-page [PDF](../../physics/qm/book/UEOT_PHYSICS.pdf). Its full mathematical exposition and physical hypotheses exceed the limited declarations formally checked here.
+
+Historical [v31.6](../../physics/qm/kernel/evidence/v31.6/integration-verification.json) had 22 modules, 459 explicit theorems and 573 audits, with PR #345 and resulting-main CI accepted. Earlier version evidence retains its own source identities. Frozen Core definitions, its four counted generators and the 106-item coverage ledger are not modified by this increment.
+
+"""
+    (R/'formalization/ueot-qm/README.md').write_text(header+new_contract+body)
+
+    manifest=copy.deepcopy(read(OLD/'physics/qm/book/SOURCE_MANIFEST.json'))
+    manifest['prior_v3_2_code_identity']=copy.deepcopy(manifest.get('current_code_identity'))
+    manifest['prior_v3_2_canonical_identity']=copy.deepcopy(manifest.get('canonical_identity'))
+    manifest['prior_v3_2_remote_metadata_completion']=manifest.pop('remote_metadata_completion',None)
+    manifest['canonical_identity']={'edition':'3.3','sha256':sha(B/'UEOT_PHYSICS.md'),
+      'bytes':(B/'UEOT_PHYSICS.md').stat().st_size,'chapters':60,'appendices':6,'numbered_results':131}
+    manifest['remote_metadata_completion']={'status':'PENDING','remote_verified':False}
+    manifest['original_entry_preservation']={'entry_count':len(manifest['entries']),
+      'all_entry_records_identical_to_v3_2':True,'prior_manifest_sha256':sha(OLD/'physics/qm/book/SOURCE_MANIFEST.json'),
+      'scope':'Original catalog identities preserved; current five raw/Core files separately checked during recovery, not a claim that all historical attachments were reread.'}
+    manifest.update({'recorded_at_utc':now(),'current_code_baseline':BASE,
+      'current_code_manifest':'../kernel/evidence/v31.7/source-manifest.json'})
+    manifest['current_code_identity']={'edition':'3.3','status':STATE,'source_count':count,
+      'manifest_sha256':sha(E/'source-manifest.json'),'source_set_sha256':source_sha,
+      'identity_rule':'Actual local source-bound execution; source/main remote acceptance is a later separately observed gate.',
+      'local_verification':'../kernel/evidence/v31.7/lean-verification.json',
+      'local_verification_sha256':sha(E/'lean-verification.json'),'original_entries_unchanged':True}
+    manifest['legacy_program_reuse']={'receipt':'evidence/v3.3/legacy-source-reuse.json',
+      'receipt_sha256':sha(BE/'legacy-source-reuse.json'),'prior_execution':'evidence/v3.0/legacy-regression.json',
+      'reexecuted_this_edition':False,'scope':'Actual source and literal embedded-block equality to v3.2; historical 757 checks remain v3.0 execution.'}
+    write(B/'SOURCE_MANIFEST.json',manifest)
+    print(json.dumps({'status':'LOCAL_RELEASE_DOCS_WRITTEN','claims':len(ledger['claims']),
+                      'source_count':count,'pdf_pages':pages,'remote':'PENDING'},ensure_ascii=False))
+
+if __name__=='__main__': main()
+

@@ -1,0 +1,98 @@
+{
+  "status": "PASS_ACTUAL_GENERATED_LOCAL_RELEASE_METADATA_REMOTE_PENDING",
+  "reviewer": "AI subagent B /root/q316_real_tomography",
+  "reviewed_at_utc": "2026-10-20T08:27:40.060904+00:00",
+  "method": "Read-only checks of actual generated JSON and text; all54claim identities/statuses and source mappings reconciled; all80 tested input SHA256 values rechecked; no helper execution or Lean rerun.",
+  "bindings": [
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/status/CURRENT.json",
+      "sha256": "c541af8112fb9d71ab234c93113040c092e2c2411a14f68213beb2727ced919f",
+      "bytes": 15035
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/status/CLAIM_LEDGER_v31.7.json",
+      "sha256": "815e765419cf3d1dc1b9a947d622b626d33898159337c2f7e1297dab12c35fe5",
+      "bytes": 115250
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/README.md",
+      "sha256": "1c6330c505885dedcf22ad1991c36b294b08d93a246694c00838608dcc632f5d",
+      "bytes": 2462
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/README.md",
+      "sha256": "64ba5bd617c53a8e7a54e407fa47b7eb183efee86f1789a085219614caf3c850",
+      "bytes": 15704
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/README.md",
+      "sha256": "2ef48e711ed6cf1a635278eb2063453603e9f74d3fd60b665dc2475cd144aa56",
+      "bytes": 44025
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/UEOT_QM_KERNEL_v31.7.md",
+      "sha256": "d247973712beaf5d73ba01dc1870bfe0eace14b796835afd2dd62c158a0d9f61",
+      "bytes": 7950
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/UEOT_QM_EXECUTION_v31.7.md",
+      "sha256": "69dee374e5d6ff2bd2e34b1fcb50ab9a53d8f04bad7663d6bc40a8b80463931f",
+      "bytes": 22494
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/ROADMAP.md",
+      "sha256": "990790753d194df478ec2ed3fb4300b2c7408462840722f32ce180f7cc55a6b5",
+      "bytes": 5782
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/book/README.md",
+      "sha256": "963efa5cebbfa5828f4a04d734684ef1e026e96cbb8d3dc852c961b9004b53e8",
+      "bytes": 6701
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "5027ade4130001e73f9dd06442cd64e59426f73663c8dae1074e02234a9101ed",
+      "bytes": 10697
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/book/evidence/v3.3/local-release-gates.json",
+      "sha256": "51262531b9ffd571e269268841f755dd526baf822eea94e2df5dddc5b8666c50",
+      "bytes": 1840
+    }
+  ],
+  "proof": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/lean-verification.json",
+    "sha256": "55380165301503f392328e5f0a1c10c7d8ff16cccc7bfb2f5c783ec73b3a039b",
+    "bytes": 3625
+  },
+  "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
+  "source_count": 80,
+  "counts": {
+    "claims": 54,
+    "inherited_claims": 44,
+    "new_claims": 10,
+    "package_theorems": 646,
+    "package_audits": 855,
+    "witness_audits": 151,
+    "book_chapters": 60,
+    "book_results": 131,
+    "pdf_pages": 203
+  },
+  "checks": {
+    "all_tested_source_bytes_unchanged": true,
+    "prior_claim_statements_and_statuses_retained": true,
+    "open_source_runtime_claims_do_not_borrow_lean_proof": true,
+    "new_claims_names_and_modules_match_actual_audit_inventory": true,
+    "source_conditional_distance_to_fixed_state_explicit": true,
+    "old11source_records_identical": true,
+    "previous_remote_receipts_historical_only": true,
+    "current_remote_all_pending": true,
+    "canonical_book_and_visual_bindings_match": true,
+    "historical757_not_reexecuted": true
+  },
+  "blocking_findings": [],
+  "limitations": [
+    "This validates the local publication metadata; no PR or main workflow is claimed.",
+    "Author and AI collaborator reviews do not constitute independent human peer review."
+  ]
+}

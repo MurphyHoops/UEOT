@@ -1,0 +1,228 @@
+#!/usr/bin/env python3
+"""Bind only actually completed edition3.3 book receipts to the dossier.
+
+Run only after root explicitly releases final render/visual/source-manifest
+inputs. No proof, canonical book, PDF, global metadata or remote writes.
+"""
+from pathlib import Path
+import collections
+import copy
+import datetime
+import hashlib
+import json
+import re
+
+ROOT=Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+B='physics/qm/book/'
+E=B+'evidence/v3.3/'
+K='physics/qm/kernel/evidence/v31.7/'
+
+def digest(data): return hashlib.sha256(data).hexdigest()
+def read(p): return json.loads((ROOT/p).read_text())
+def encode(d): return (json.dumps(d,ensure_ascii=False,indent=2)+'\n').encode()
+def identity(p):
+    f=ROOT/p; b=f.read_bytes()
+    return {'path':p,'sha256':digest(b),'bytes':len(b)}
+def receipt_entry(p,role='ACTUAL_CURRENT_EDITION_LOCAL_RECEIPT'):
+    d=read(p)
+    return {**identity(p),'role':role,'status':d.get('status','ACTUAL_IDENTITY_RECEIPT'),
+      'record_scope':'3.3 / v31.7 local','path_registration_kind':'ACTUAL_RECEIPT',
+      'exists_at_dossier_assembly':True,'remote_acceptance_inferred':False}
+
+
+def main():
+    dossier_path=B+'CHAPTER_DOSSIER.json'; d=read(dossier_path)
+    assert d['edition']=='3.3' and d['current_release_stage']=='LOCAL_VERIFIED_REMOTE_PENDING'
+    before=identity(dossier_path)
+    canonical=identity(B+'UEOT_PHYSICS.md');pdf=identity(B+'UEOT_PHYSICS.pdf');tex=identity(B+'UEOT_PHYSICS.tex')
+    assert canonical['sha256']==d['canonical']['sha256']
+    build=read(E+'pdf-build.json');visual=read(E+'pdf-visual-review.json');render=read(E+'pdf-render-manifest.json')
+    assert build['source_sha256']==canonical['sha256'] and build['pdf_sha256']==pdf['sha256'] and build['tex_sha256']==tex['sha256']
+    assert len(build['compile_passes'])==3 and all(x['exit_code']==0 for x in build['compile_passes']) and not build['layout_warnings']
+    assert visual['status']=='PASS' and visual['pdf_sha256']==pdf['sha256']
+    visual_source=visual.get('canonical_sha256',visual.get('source_sha256'))
+    assert visual_source==canonical['sha256']
+    assert visual['root_full_pages_actually_viewed'] and visual['root_review_method']
+    assert not visual['blocking_findings']
+    assert render['pdf_sha256']==pdf['sha256'] and render['page_count']==visual['page_count']
+    assert render['canonical_source_sha256']==canonical['sha256']
+    assert visual['page_count']>0
+    collaborator=read(E+'pdf-collaborator-review.json')
+    assert collaborator['status'].startswith('PASS') and not collaborator['blocking_findings']
+    assert collaborator['pdf']['sha256']==pdf['sha256']
+    assert collaborator['canonical_source']['sha256']==canonical['sha256']
+    assert collaborator['full_pages_viewed']==len(collaborator['actually_viewed_physical_pages'])==18
+    assert collaborator['full_document_pages']==visual['page_count']
+    typography=read(E+'typography-fix.json')
+    assert typography['status']=='ACTUAL_REBUILD_AND_VISUAL_PASS'
+    assert typography['final_pdf_sha256']==pdf['sha256'] and typography['final_md_sha256']==canonical['sha256']
+    assert typography['mathematical_source_changed'] is False and typography['canonical_formula_semantics_changed'] is False
+    manifest=read(B+'SOURCE_MANIFEST.json');km=read(K+'source-manifest.json')
+    ci=manifest['canonical_identity'];code=manifest['current_code_identity']
+    assert ci['edition']=='3.3' and ci['sha256']==canonical['sha256'] and ci['bytes']==canonical['bytes']
+    assert ci['chapters']==60 and ci['appendices']==6 and ci['numbered_results']==131
+    assert code['edition']=='3.3' and code['source_count']==km['source_count']==80
+    assert code['source_set_sha256']==km['source_set_sha256']
+    assert code.get('remote_verified') is not True
+    assert d['source_catalog']['QM317']['source_set_sha256']==km['source_set_sha256']
+    for s in km['sources']:
+        actual=identity(s['path']);assert actual['sha256']==s['sha256'] and actual['bytes']==s['bytes']
+
+    prior=read(E+'dossier-prior-v3.2.json')
+    inherited=[x for c in d['chapters'][:57] for x in c['numbered_results']]
+    assert inherited==[x for c in prior['chapters'] for x in c['numbered_results']]
+    assert len(inherited)==117
+    source=(ROOT/(B+'UEOT_PHYSICS.md')).read_text()
+    anchors=list(re.finditer(r'^<a id="(ch-\d+|appendix-[a-f])"></a>$',source,re.M))
+    assert [m.group(1) for m in anchors]==['ch-'+str(i) for i in range(60)]+['appendix-'+x for x in 'abcdef']
+    slices={m.group(1):source[m.start():anchors[i+1].start() if i+1<len(anchors) else len(source)].encode() for i,m in enumerate(anchors)}
+    body_records=[]
+    for part in d['chapters']+d['appendices']:
+        raw=slices[part['anchor']]
+        assert digest(raw)==part['body_sha256'] and len(raw)==part['body_utf8_bytes']
+        body_records.append({'anchor':part['anchor'],'sha256':digest(raw),'utf8_bytes':len(raw)})
+    ax=read(K+'proof-axioms.json');fw=read(K+'finite-witnesses/verification.json')
+    assert ax['status']==fw['status']=='PASS'
+    generic=ax['declarations'];witness={n:a for c in fw['checks'] for n,a in c['audit']['actual'].items()}
+    assert len(generic)==855 and len(witness)==151
+    used=set();source_bindings={}
+    newclaims=[x for c in d['chapters'][57:] for x in c['numbered_results']]
+    assert len(newclaims)==14
+    for claim in newclaims:
+        assert claim['origin']=='NEW_IN_3_3' and claim['scientific_boundary']
+        assert all(claim['type_responsibility'].get(k) for k in ['domain_assumptions','quantifier_scope','proved_conclusion_scope'])
+        for bind in claim['formal']['source_bindings']:
+            actual=identity(bind['path']);assert actual['sha256']==bind['sha256']
+            source_bindings[bind['path']]=actual
+            for n in bind['declarations']:
+                assert n in generic or n in witness
+                used.add(n)
+    assert len(used)==182 and len(used & set(generic))==136 and len(used & set(witness))==46
+    assert not d['validation']['remote_verified']
+    assert d['next_execution_contract']['status']=='APPROVED_PLAN_NOT_FORMALIZED_NOT_COUNTED_IN_V31_7'
+    assert identity(d['next_execution_contract']['path'])['sha256']==d['next_execution_contract']['sha256']
+
+    now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    d['recorded_at_utc']=now
+    d['derivatives']['pdf']={**pdf,'pages':visual['page_count'],'status':'LOCAL_VERIFIED',
+       'source_sha256':canonical['sha256'],'actual_build_receipt':identity(E+'pdf-build.json'),
+       'actual_visual_receipt':identity(E+'pdf-visual-review.json'),
+       'page_count_receipt':identity(E+'pdf-render-manifest.json'),'remote_publication_status':'PENDING'}
+    d['derivatives']['latex']={**tex,'status':'LOCAL_VERIFIED',
+       'source_sha256':canonical['sha256'],'actual_build_receipt':identity(E+'pdf-build.json'),
+       'remote_publication_status':'PENDING'}
+    d['derivatives']['visual_review']={**identity(E+'pdf-visual-review.json'),
+       'recorded_status':'PASS','status':'PASS','status_not_inferred_from_compile':True,
+       'review_identity':'Root AI and collaborator C actual image inspection, with the exact viewed and inherited raster scopes in the external receipt; not human peer review.',
+       'independent_human_peer_review':False,
+       'receipt_is_external_actual_visual_review':True,'review_performed_by_dossier_assembler':False}
+    d['book_source_manifest']=identity(B+'SOURCE_MANIFEST.json')
+    evidence={
+       'book_source_manifest_v3_3':B+'SOURCE_MANIFEST.json',
+       'pdf_build_v3_3':E+'pdf-build.json','pdf_render_v3_3':E+'pdf-render-manifest.json',
+       'visual_v3_3':E+'pdf-visual-review.json',
+    }
+    for key,p in [('pdf_collaborator_v3_3',E+'pdf-collaborator-review.json'),
+                  ('pdf_geometry_v3_3',E+'pdf-geometry.json'),
+                  ('pdf_typography_v3_3',E+'typography-fix.json'),
+                  ('dossier_script_review_v3_3',K+'focused/qm317_C_dossier_script_review.json')]:
+        if (ROOT/p).exists():evidence[key]=p
+    for key,p in evidence.items():d['evidence_catalog'][key]=receipt_entry(p)
+    if 'focused_catalog_v31_7' in d['evidence_catalog']:
+        d['evidence_catalog']['focused_catalog_v31_7']={
+          'path':K+'focused/files-manifest.json','role':'DYNAMIC_NAVIGATION_ONLY',
+          'status':'NOT_A_PROOF_OR_FIXED_ACCEPTANCE_BINDING',
+          'scope':'Root may refresh the focused archive catalog before publication. Individual author/review files retain their fixed SHA bindings; this navigation index has no fixed hash here.'}
+    d['evidence_catalog']['dossier_review_v3_3']={
+       'path':E+'dossier-review.json','role':'EXTERNAL_CURRENT_DOSSIER_REVIEW',
+       'status':'PASS_LOCAL_CONTENT_SOURCE_AND_PUBLICATION_RECEIPTS',
+       'hash_binding_direction':'External review binds this dossier hash; no circular self-hash is embedded.',
+       'record_scope':'3.3 local; remote remains pending','remote_acceptance_inferred':False}
+    d['release_acceptance']['pdf_build']='PASS_ACTUAL_BUILD'
+    d['release_acceptance']['pdf_visual_review']='PASS_ACTUAL_EXTERNAL_VISUAL_REVIEW'
+    d['completion_boundary']['reason']='3.3规范正文、117继承编号与14新增编号、80受验源、实际统一数学/见证/程序、最终203页PDF及真实AI视觉回执已经绑定；科学源发布和受验主线CI仍待真实远端回执。文档完成、条件证明、程序验收与自然界有效性分别承担责任。'
+    assert visual['page_count']==203
+    d['validation'].update({
+       'derivative_hashes_checked':True,'external_visual_receipt_checked':True,
+       'current_pdf_and_visual_acceptance':'PASS_ACTUAL_BUILD_AND_EXTERNAL_VISUAL_RECEIPTS',
+       'book_source_manifest_checked':True,'book_source_manifest_sha256':identity(B+'SOURCE_MANIFEST.json')['sha256'],
+       'current_source_count':80,'current_source_set_sha256':km['source_set_sha256'],
+       'remaining_gates':['actual_remote_source_publication','actual_source_CI','actual_merged_main_CI']})
+    planned=set();paths=set()
+    def collect(x):
+        if isinstance(x,dict):
+            for k,v in x.items():
+                if k=='path' and isinstance(v,str) and v.startswith(('physics/','formalization/','.github/')):paths.add(v)
+                elif k!='path_catalog':collect(v)
+        elif isinstance(x,list):
+            for v in x:collect(v)
+    collect(d)
+    review_path=E+'dossier-review.json'
+    missing=[p for p in paths if not (ROOT/p).exists() and p!=review_path]
+    assert not missing,missing
+    d['path_catalog']={'policy':'All registered actual paths exist; the external dossier review is written by this same finalization. Existence alone is not execution or remote acceptance.',
+       'actual_registered_paths':len(paths),'pending_registered_paths':0,
+       'missing_required_actual_paths':[],
+       'entries':[{'path':p,'exists':True,'status':'EXISTS' if p!=review_path else 'WRITTEN_WITH_FINALIZATION',
+         'existence_does_not_imply_current_edition_execution':True} for p in sorted(paths)]}
+    assert [x for c in d['chapters'][:57] for x in c['numbered_results']]==inherited
+    db=encode(d);after={'path':dossier_path,'sha256':digest(db),'bytes':len(db)}
+    review={
+       'schema':'ueot_physics.dossier_review.v3.3','recorded_at_utc':now,
+       'reviewer':'AI collaborator A; actual read-only input checks and owned metadata integration; visual inspection was performed separately by root/C.',
+       'status':'PASS_LOCAL_CONTENT_SOURCE_AND_PUBLICATION_RECEIPTS',
+       'dossier':after,'previous_local_dossier':before,'canonical':canonical,'pdf':pdf,'latex':tex,
+       'prior_dossier':identity(E+'dossier-prior-v3.2.json'),
+       'counts':{'chapters':60,'appendices':6,'numbered_results':131,'inherited':117,'new':14,
+          'stable_anchors':197,'numbered_sections':291,'body_slices':66,
+          'new_claim_unique_audited_declarations':182,'generic_names':136,'witness_names':46},
+       'old117_objects_including_origins_exactly_preserved':True,
+       'origin_counts':dict(collections.Counter(x['origin'] for c in d['chapters'] for x in c['numbered_results'])),
+       'body_slice_identity_records':body_records,
+       'new_claim_ids':[c['id'] for c in newclaims],'new_claim_required_fields_complete':True,
+       'new_claims_match_real_named_audits':True,'source_bindings':list(source_bindings.values()),
+       'current_source_manifest':identity(K+'source-manifest.json'),
+       'current_source_count':80,'current_source_set_sha256':km['source_set_sha256'],
+       'book_source_manifest':identity(B+'SOURCE_MANIFEST.json'),
+       'pdf_build':identity(E+'pdf-build.json'),'visual_receipt':identity(E+'pdf-visual-review.json'),
+       'render_receipt':identity(E+'pdf-render-manifest.json'),'pdf_pages':203,
+       'actual_paths_checked':len(paths),'missing_required_actual_paths':[],
+       'historical_MAIN_and_CI_records_not_current_acceptance':True,
+       'future_v31_8_is_unformalized_and_not_counted':True,
+       'whole_physics_formalized':False,'new_experimental_data':False,
+       'scientific_scope_checks':['Full state and ancilla quantifiers preserved.','Gram obtained from PSD; candidate principles not constructor fields.',
+          'Actual records/partial traces/conditioned matrices retained.','Conditional matrices tend to rho*, their distance to rho* tends to0.',
+          'Pure converse/uniqueness, complex local tomography, primitive-action budgets remain future work.'],
+       'remote_status':'PENDING','remote_verified':False,
+       'remaining_gates':d['validation']['remaining_gates'],
+       'not_performed_by_this_review':['No Lean execution.','No scientific/canonical/PDF source edits.','No remote actions.','No new visual inspection claimed.'],
+       'generator':{'path':str(Path(__file__)),'sha256':digest(Path(__file__).read_bytes())}}
+    # Preserve the actual previsual stage before current acceptance is amended.
+    prior_assembly=ROOT/(E+'dossier-assembly.json')
+    archived=ROOT/(E+'dossier-assembly-previsual.json')
+    if not archived.exists():archived.write_bytes(prior_assembly.read_bytes())
+    assembly=json.loads(prior_assembly.read_text())
+    assembly.update({'status':'PASS_FINAL_LOCAL_DOSSIER_AND_PUBLICATION_RECEIPTS',
+       'completed_at_utc':now,'dossier':after,'canonical':canonical,
+       'current_pdf_status':'PASS_ACTUAL_BUILD_AND_EXTERNAL_VISUAL_RECEIPTS',
+       'current_remote_status':'PENDING','final_pdf':pdf,'final_latex':tex,
+       'actual_visual_receipt':identity(E+'pdf-visual-review.json'),
+       'book_source_manifest':identity(B+'SOURCE_MANIFEST.json'),
+       'prior_previsual_assembly_receipt':identity(E+'dossier-assembly-previsual.json')})
+    # Fixed identities are checked once more immediately before owned writes.
+    assert identity(dossier_path)==before and identity(B+'UEOT_PHYSICS.md')==canonical
+    assert identity(B+'UEOT_PHYSICS.pdf')==pdf and identity(B+'UEOT_PHYSICS.tex')==tex
+    (ROOT/dossier_path).write_bytes(db)
+    (ROOT/(E+'dossier-review.json')).write_bytes(encode(review))
+    (ROOT/(E+'dossier-assembly.json')).write_bytes(encode(assembly))
+    md=('## Edition3.3 dossier final local review\n\nStatus: **PASS_LOCAL_CONTENT_SOURCE_AND_PUBLICATION_RECEIPTS**.\n\n'
+        'The exact117 old result objects and origins are preserved. The60chapters and6appendices have66 verified original-byte body hashes,131result IDs, and14new entries bound to182different actually audited names (136generic and46witness names). All80current input files match their accepted source manifest.\n\n'
+        'The final canonical source,203page PDF, LaTeX source, actual three-pass build, external root/C visual review and updated book source manifest agree by SHA256. PDF inspection is an actual separate review, not inferred from compilation, and was not newly performed by this metadata reviewer.\n\n'
+        'Current source publication and source/mainCI remain pending. Prior3.2 MAIN_VERIFIED/CI/PDF records are historical; v31.8 remains unexecuted planning. Complete physics, universal quantum reconstruction, and new experiment are not claimed.\n\n'
+        'Dossier SHA256: `'+after['sha256']+'`.\n')
+    (ROOT/(E+'dossier-review.md')).write_text(md)
+    (ROOT/(E+'dossier-assembly.md')).write_text(md)
+    assert identity(dossier_path)==after
+    print(json.dumps({'status':review['status'],'dossier':after,'review':identity(E+'dossier-review.json'),'remote':'PENDING'},ensure_ascii=False,indent=2))
+
+if __name__=='__main__':main()

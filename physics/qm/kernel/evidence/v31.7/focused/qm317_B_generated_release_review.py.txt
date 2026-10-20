@@ -1,0 +1,91 @@
+from pathlib import Path
+import json,hashlib,datetime,re
+R=Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+OLD=Path('/workspace/scratch/474cf6b1f047/qm_v316_work')
+S='LOCAL_VERIFIED_REMOTE_PENDING'
+def read(p):return json.loads(Path(p).read_text())
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def bind(p):return {'path':str(p),'sha256':sha(p),'bytes':Path(p).stat().st_size}
+def main():
+ proof=read(R/'physics/qm/kernel/evidence/v31.7/lean-verification.json')
+ progress=read(R/'physics/qm/kernel/evidence/v31.7/acceptance-progress.json')
+ inv=read(R/'physics/qm/kernel/evidence/v31.7/declaration-inventory.json')
+ source=read(R/'physics/qm/kernel/evidence/v31.7/source-manifest.json')
+ assert proof['status']==progress['status']=='PASS'
+ assert proof['source_set_sha256']==source['source_set_sha256']==progress['source_set_sha256']
+ assert len(source['sources'])==source['source_count']==proof['source_count']==80
+ for item in source['sources']:
+  p=R/item['path'];assert p.stat().st_size==item['bytes'] and sha(p)==item['sha256'],item['path']
+ cur=read(R/'physics/qm/status/CURRENT.json');ledger=read(R/'physics/qm/status/CLAIM_LEDGER_v31.7.json')
+ oldcur=read(OLD/'physics/qm/status/CURRENT.json');oldledger=read(OLD/'physics/qm/status/CLAIM_LEDGER_v31.6.json')
+ assert cur['version']==ledger['version']=='31.7-kernel.1.7'
+ assert cur['verification_state']==cur['integration']['state']==ledger['verification']['state']==S
+ assert cur['integration']['pr_status']==cur['integration']['main_status']==ledger['verification']['remote_status']=='PENDING'
+ assert cur['integration']['previous_version']['source_commit']==oldcur['integration']['source_commit']
+ assert cur['integration']['previous_version']['main_run']==oldcur['integration']['main_run']
+ assert not set(['source_commit','tested_main_commit','pr_run','main_run','tested_inputs_identical'])&cur['integration'].keys()
+ assert cur['acceptance_marker']['local_machine_acceptance']=='PASS' and cur['acceptance_marker']['integration_acceptance']=='PENDING'
+ assert cur['local_verification']['explicit_theorems']==proof['explicit_theorems']==646
+ assert cur['local_verification']['named_axiom_reports']==proof['actual_named_axiom_reports']==855
+ assert cur['local_verification']['finite_witness_audit_reports']==151
+ assert cur['local_verification']['remote_ci']=='PENDING'
+ assert ledger['schema']=='ueot_qm.claim_ledger.v31.7'
+ assert len(ledger['claims'])==54 and [x['id'] for x in ledger['claims']]==[f'QMK-{i:02d}' for i in range(1,55)]
+ assert ledger['prior_version_verification']==oldledger['verification']
+ oldclaims={c['id']:c for c in oldledger['claims']};newclaims={c['id']:c for c in ledger['claims']}
+ for cid,c in oldclaims.items():
+  n=newclaims[cid]
+  assert n['claim']==c['claim'],cid
+  for key in ['machine_status','status']:
+   assert n.get(key)==c.get(key),(cid,key)
+  assert n['inherited_from']['claim_id']==cid
+  if c.get('machine_status')!='VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT':
+   assert 'current_proof_receipt' not in n,cid
+   assert 'does not prove' in n['verification_scope'],cid
+  for key in ['runtime_receipt','instance_receipt','evidence']:
+   if isinstance(c.get(key),str) and '/v31.6/' in c[key]:
+    assert n[key]==c[key].replace('/v31.6/','/v31.7/'),(cid,key)
+    assert n['prior_v31_6_evidence'][key]==c[key],(cid,key)
+    assert (R/n[key]).exists(),(cid,key)
+ name_to_file={item['name']:'formalization/ueot-qm/UEOTQM/'+module+'.lean' for module,items in inv['modules'].items() for item in items}
+ targets=set(inv['audit_targets'])
+ for num in range(45,55):
+  c=newclaims[f'QMK-{num:02d}'];assert set(c['witnesses'])<=targets
+  assert c['sources']==sorted({name_to_file[w] for w in c['witnesses']})
+  assert c['machine_status']=='VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT'
+ assert 'fixed state' in newclaims['QMK-54']['claim']
+ assert any('initial-state-dependent denominator' in s for s in newclaims['QMK-54']['limits'])
+ assert newclaims['QMK-12']['status']=='NOT_ESTABLISHED' and newclaims['QMK-13']['status']=='NOT_CLAIMED'
+ manifest=read(R/'physics/qm/book/SOURCE_MANIFEST.json');oldman=read(OLD/'physics/qm/book/SOURCE_MANIFEST.json')
+ assert manifest['entries']==oldman['entries'] and len(manifest['entries'])==11
+ assert manifest['prior_v3_2_code_identity']==oldman['current_code_identity']
+ assert manifest['prior_v3_2_canonical_identity']==oldman['canonical_identity']
+ assert manifest['prior_v3_2_remote_metadata_completion']==oldman['remote_metadata_completion']
+ assert manifest['canonical_identity']['edition']=='3.3' and manifest['canonical_identity']['sha256']==sha(R/'physics/qm/book/UEOT_PHYSICS.md')
+ assert manifest['canonical_identity']['chapters']==60 and manifest['canonical_identity']['numbered_results']==131
+ assert manifest['current_code_identity']['status']==S and manifest['current_code_identity']['source_set_sha256']==source['source_set_sha256']
+ assert manifest['remote_metadata_completion']=={'status':'PENDING','remote_verified':False}
+ assert manifest['legacy_program_reuse']['reexecuted_this_edition'] is False
+ assert manifest['legacy_program_reuse']['receipt']=='evidence/v3.3/legacy-source-reuse.json'
+ assert manifest['legacy_program_reuse']['receipt_sha256']==sha(R/'physics/qm/book/evidence/v3.3/legacy-source-reuse.json')
+ formal=(R/'formalization/ueot-qm/README.md').read_text()
+ assert '| **Total** | **646** | 29 package modules;' in formal and '| **Total** | **459**' not in formal
+ assert 'The **855** package audit targets comprise all **646** explicit theorems plus **209**' in formal
+ assert 'current package totals exclude the **151**' in formal
+ assert 'exact all-effect distance scaling to the source fixed state' in formal
+ assert all((R/p).read_text().find(S)>=0 for p in ['physics/qm/README.md','physics/qm/kernel/README.md','formalization/ueot-qm/README.md','physics/qm/book/README.md'])
+ bookrel=read(R/'physics/qm/book/evidence/v3.3/local-release-gates.json')
+ visual=read(R/'physics/qm/book/evidence/v3.3/pdf-visual-review.json')
+ pdf=read(R/'physics/qm/book/evidence/v3.3/pdf-build.json')
+ struct=read(R/'physics/qm/book/evidence/v3.3/book-structure.json')
+ assert bookrel['status']==S and bookrel['remote_gate']=='PENDING' and bookrel['remote_verified'] is False
+ assert visual['status']==struct['status']=='PASS'
+ assert pdf['source_sha256']==struct['source_sha256']==sha(R/'physics/qm/book/UEOT_PHYSICS.md')
+ assert pdf['pdf_sha256']==visual['pdf_sha256']==sha(R/'physics/qm/book/UEOT_PHYSICS.pdf')
+ assert not pdf['layout_warnings'] and len(pdf['compile_passes'])==3 and all(x['exit_code']==0 for x in pdf['compile_passes'])
+ for key,filename in [('canonical','UEOT_PHYSICS.md'),('pdf','UEOT_PHYSICS.pdf'),('latex','UEOT_PHYSICS.tex')]:assert bookrel[key]['sha256']==sha(R/'physics/qm/book'/filename)
+ paths=['physics/qm/status/CURRENT.json','physics/qm/status/CLAIM_LEDGER_v31.7.json','physics/qm/README.md','physics/qm/kernel/README.md','formalization/ueot-qm/README.md','physics/qm/UEOT_QM_KERNEL_v31.7.md','physics/qm/UEOT_QM_EXECUTION_v31.7.md','physics/qm/ROADMAP.md','physics/qm/book/README.md','physics/qm/book/SOURCE_MANIFEST.json','physics/qm/book/evidence/v3.3/local-release-gates.json']
+ obj={'status':'PASS_ACTUAL_GENERATED_LOCAL_RELEASE_METADATA_REMOTE_PENDING','reviewer':'AI subagent B /root/q316_real_tomography','reviewed_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'method':'Read-only checks of actual generated JSON and text; all54claim identities/statuses and source mappings reconciled; all80 tested input SHA256 values rechecked; no helper execution or Lean rerun.','bindings':[bind(R/p) for p in paths],'proof':bind(R/'physics/qm/kernel/evidence/v31.7/lean-verification.json'),'source_set_sha256':source['source_set_sha256'],'source_count':80,'counts':{'claims':54,'inherited_claims':44,'new_claims':10,'package_theorems':646,'package_audits':855,'witness_audits':151,'book_chapters':60,'book_results':131,'pdf_pages':visual['page_count']},'checks':{'all_tested_source_bytes_unchanged':True,'prior_claim_statements_and_statuses_retained':True,'open_source_runtime_claims_do_not_borrow_lean_proof':True,'new_claims_names_and_modules_match_actual_audit_inventory':True,'source_conditional_distance_to_fixed_state_explicit':True,'old11source_records_identical':True,'previous_remote_receipts_historical_only':True,'current_remote_all_pending':True,'canonical_book_and_visual_bindings_match':True,'historical757_not_reexecuted':True},'blocking_findings':[],'limitations':['This validates the local publication metadata; no PR or main workflow is claimed.','Author and AI collaborator reviews do not constitute independent human peer review.']}
+ out=Path('/tmp/qm317_B_generated_release_review.json');out.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
+ print(json.dumps({'status':obj['status'],'report_sha256':sha(out),'files':len(paths),'counts':obj['counts']},ensure_ascii=False))
+if __name__=='__main__':main()

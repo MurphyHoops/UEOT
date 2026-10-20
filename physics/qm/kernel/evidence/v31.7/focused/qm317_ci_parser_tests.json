@@ -1,0 +1,179 @@
+{
+  "schema": "ueot_qm.ci_parser_test.v31.7",
+  "status": "PARSER_TESTS_PASS",
+  "checked_at_utc": "2026-10-20T08:17:29.084803+00:00",
+  "scope": "Parser component and rejection tests only, using unmodified actual v31.6 CI logs, clearly labelled in-memory invalid mutations, and actual local v31.7 axiom output. No new remote CI logs or successful new CI receipt were generated.",
+  "new_ci_acceptance_executed": false,
+  "new_ci_status": "NOT_VERIFIED",
+  "parser": {
+    "path": "/tmp/qm317_verify_ci_logs.py",
+    "sha256": "d8725a2382120b6777c48f960a54c05af8bc1fdc6c8740d0226d6f71bdfa03bd"
+  },
+  "inputs": {
+    "run": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-run.json",
+      "sha256": "48d24d8079e4cb7a3ec7c625df1831f259c3ae169a9b92877361fb535ff54c66"
+    },
+    "jobs": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-jobs.json",
+      "sha256": "fa24f96478d4502916e7a7872e5a4438c9ce80cc28ef260eca2820197e6a128b"
+    },
+    "lean": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-lean.log",
+      "sha256": "dc5575ed90358fef7500e2e7488a7dd1cb2d7460fa0ef878a405ed16a8cce2dc"
+    },
+    "runtime": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-runtime.log",
+      "sha256": "873fe674b777f93acfbb807386e135ff77efe383e5d43b57a12402ebb6463358"
+    },
+    "local_855_reference_0": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/axiom-audit.log",
+      "sha256": "63fd653495815060a1d5efde98695dcdc1800964d992e8a52512a199de8e92fd"
+    },
+    "local_855_reference_1": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/axiom-checker.log",
+      "sha256": "3e4c69f56824dd7358280c2aae63fd97f6f48e036fa1574801b0292f23e571bb"
+    },
+    "local_855_reference_2": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/proof-axioms.json",
+      "sha256": "06deaee904cf30ab097edfc7aaf4a642117176360bb4fa6a68094a36ac573cc5"
+    },
+    "final_local_manifest": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "sha256": "cd04b64ddbb5879e1c5af67dea1d70a07d323f590aa0c1434e544e4b1d41dde0"
+    },
+    "final_local_lean": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sha256": "55380165301503f392328e5f0a1c10c7d8ff16cccc7bfb2f5c783ec73b3a039b"
+    },
+    "final_local_finite": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json",
+      "sha256": "c880469ba9ce10644ea50bf6afde0182de5cdba5bb691e3ff5204b030e24cac6"
+    }
+  },
+  "inputs_unchanged": true,
+  "tests": [
+    {
+      "name": "actual_v316_job_step_format",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Unchanged actual legacy job schema/required steps only; this does not accept the legacy scientific counts as v31.7.",
+      "observation": [
+        "lean",
+        "runtime"
+      ]
+    },
+    {
+      "name": "actual_v316_runtime_100_format",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Actual legacy runtime section; not a new test execution.",
+      "observation": 100
+    },
+    {
+      "name": "actual_v316_six_certificate_summary",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Actual legacy unchanged 6/42 and 4+4 certificate summary format only.",
+      "observation": {
+        "positive_passed": 6,
+        "positive_expected": 6,
+        "negative_passed": 4,
+        "negative_expected": 4,
+        "false_witness_passed": 4,
+        "positive_audit_targets_expected": 42,
+        "false_witness_audit_targets_expected": 4
+      }
+    },
+    {
+      "name": "actual_v316_build_observed_count",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Actual legacy job count is observed, not forced to a new local count.",
+      "observation": 8786
+    },
+    {
+      "name": "actual_v316_four_demo_commands",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Actual legacy successful command sections only; redirected demo JSON contents are not inspected.",
+      "observation": 4
+    },
+    {
+      "name": "legacy_573_main_audits_cannot_pass_855",
+      "status": "EXPECTED_REJECTION",
+      "scope": "Unmodified actual old main-audit section; the count fails before any target-map comparison.",
+      "error": "Expected 855 actual named main audit reports, got 573"
+    },
+    {
+      "name": "legacy_four_witnesses_cannot_pass_seven",
+      "status": "EXPECTED_REJECTION",
+      "scope": "Unmodified actual four-witness legacy section; no fabricated new records.",
+      "error": "Retained witness summaries differ: {'MixtureExamples': 9, 'SurvivalTwoState': 30, 'RealTomographyTwoRebit': 5, 'QuantumDoobExamples': 40}"
+    },
+    {
+      "name": "legacy_26_printed_sources_cannot_pass_33",
+      "status": "EXPECTED_REJECTION",
+      "scope": "Unmodified actual legacy source-identity section; count fails before any expected-hash comparison.",
+      "error": "Expected 33 actual printed source hashes, got 26"
+    },
+    {
+      "name": "removed_required_step_counterfactual",
+      "status": "EXPECTED_REJECTION",
+      "scope": "Deliberately invalid in-memory mutation of the actual old metadata; not written as an actual remote record.",
+      "error": "lean: required gate missing, skipped, or unsuccessful: Audit theorem axioms"
+    },
+    {
+      "name": "duplicate_actual_axiom_name_counterfactual",
+      "status": "EXPECTED_REJECTION",
+      "scope": "Deliberately duplicated real line in memory; checks duplicate-name rejection, not a remote log.",
+      "error": "actual Lean axiom reports: duplicate entries: ['UEOTQM.Density.ext']"
+    },
+    {
+      "name": "actual_local_855_main_report_parser",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Actual local Lean/checker output only; no remote CI receipt is created or inferred.",
+      "observation": 855
+    },
+    {
+      "name": "final_actual_local_manifest_binding",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Final actual v31.7 local acceptance reference only; no remote source manifest or tree is asserted.",
+      "observation": {
+        "source_count": 80,
+        "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911"
+      }
+    },
+    {
+      "name": "final_actual_local_witness_kind_binding",
+      "status": "EXPECTED_ACCEPTANCE_OF_COMPONENT",
+      "scope": "Final actual local 110 theorem/39 def/2 abbrev receipt bound to manifest source bytes; not detailed remote artifact inspection.",
+      "observation": {
+        "def": 39,
+        "theorem": 110,
+        "abbrev": 2
+      }
+    },
+    {
+      "name": "legacy_full_cli_not_new_acceptance",
+      "status": "EXPECTED_REJECTION",
+      "scope": "The full CLI received the real old PR run/log files under an explicitly named parser-negative-test output. It must never produce a v31.7 acceptance PASS.",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/tmp/qm317_verify_ci_logs.py",
+        "--repo-root",
+        "/workspace/scratch/474cf6b1f047/qm_v317_work",
+        "--ci-dir",
+        "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.6/ci",
+        "--kind",
+        "pr",
+        "--run",
+        "39380741012",
+        "--commit",
+        "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+        "--output",
+        "/tmp/qm317_ci_parser_legacy_rejection.json"
+      ],
+      "exit_code": 1,
+      "receipt": "/tmp/qm317_ci_parser_legacy_rejection.json",
+      "error": [
+        "VerificationError: Expected 33 actual printed source hashes, got 26"
+      ]
+    }
+  ]
+}

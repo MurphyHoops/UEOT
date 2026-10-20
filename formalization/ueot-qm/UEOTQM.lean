@@ -20,3 +20,10 @@ import UEOTQM.ClassicalSector
 import UEOTQM.CorePurificationBoundary
 import UEOTQM.RealLocalTomography
 import UEOTQM.QuantumDoob
+import UEOTQM.RecordProbability
+import UEOTQM.RectangularChannels
+import UEOTQM.QuantumPurification
+import UEOTQM.OperationalSystems
+import UEOTQM.ClassicalQuantumMemory
+import UEOTQM.QuantumDoobModel
+import UEOTQM.QuantumDoobDynamics

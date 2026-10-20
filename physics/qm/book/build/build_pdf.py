@@ -59,8 +59,8 @@ def main():
     if set(targets) - set(anchors):
         raise ValueError(f'Unresolved internal targets: {set(targets)-set(anchors)}')
     chapters = re.findall(r'^# (\d+)\. (.+)$', raw, re.M)
-    if [int(n) for n, _ in chapters] != list(range(57)):
-        raise ValueError('Expected the complete consecutive chapters 0–56')
+    if [int(n) for n, _ in chapters] != list(range(60)):
+        raise ValueError('Expected the complete consecutive chapters 0–59')
     if re.search(r'\b(TODO|PLACEHOLDER)\b', re.sub(r'(?ms)^~~~.*?^~~~\s*$', '', raw)):
         raise ValueError('Unresolved authoring placeholder')
 
@@ -92,6 +92,11 @@ def main():
     for i in range(0, len(chunks), 2):
         chunks[i] = chunks[i].replace(r'\_', r'\_\allowbreak ')
         chunks[i] = chunks[i].replace(r'}、\texttt{', r'}、\allowbreak \texttt{')
+        # Permit line breaks in long exact hashes without altering canonical text.
+        chunks[i] = re.sub(r'\\texttt\{([0-9a-f]{64})\}',
+                           lambda m: r'\texttt{' + r'\allowbreak '.join(
+                               m.group(1)[j:j+16] for j in range(0, 64, 16)) + '}',
+                           chunks[i])
     tex.write_text(''.join(chunks), encoding='utf-8')
     font_info = prepare_font(out, args.font)
     logs = []

@@ -1,0 +1,880 @@
+{
+  "status": "FOCUSED_MAIN_AND_WITNESS_PASS_FROZEN_PUBLIC_AXIOM_GATE_PENDING_ROOT_UNIFIED",
+  "sources": [
+    {
+      "path": "UEOTQM/RectangularChannels.lean",
+      "sha256": "b097d5cb5eb5b141d051d8f65c7aff31c0d3a1b2f8d688548d8edf74f6a7a9a7",
+      "theorems": 29,
+      "audit_targets": 43,
+      "declaration_kinds": {
+        "structure": 1,
+        "def": 13,
+        "theorem": 29
+      }
+    },
+    {
+      "path": "UEOTQM/ClassicalQuantumMemory.lean",
+      "sha256": "200996515d4a4cfdf066b844e8d4904ed52f380f876feca162d6dc6f1f26cf80",
+      "theorems": 39,
+      "audit_targets": 54,
+      "declaration_kinds": {
+        "def": 13,
+        "theorem": 39,
+        "abbrev": 1,
+        "instance": 1
+      }
+    },
+    {
+      "path": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "sha256": "edd43b953001002b2f2aaa44a424da0e1beb0b5a0201ff7a6fba54bb405ce8e9",
+      "theorems": 15,
+      "audit_targets": 22,
+      "declaration_kinds": {
+        "abbrev": 2,
+        "def": 5,
+        "theorem": 15
+      }
+    }
+  ],
+  "targets": [
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 21,
+      "kind": "structure",
+      "declaration": "UEOTQM.RectangularChannel",
+      "audit_target": "UEOTQM.RectangularChannel.mk"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 33,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.operator",
+      "audit_target": "UEOTQM.RectangularChannel.operator"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 36,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.operator_posSemidef",
+      "audit_target": "UEOTQM.RectangularChannel.operator_posSemidef"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 41,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.operator_zero",
+      "audit_target": "UEOTQM.RectangularChannel.operator_zero"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 44,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.operator_add",
+      "audit_target": "UEOTQM.RectangularChannel.operator_add"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 48,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.operator_smul",
+      "audit_target": "UEOTQM.RectangularChannel.operator_smul"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 52,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.operator_real_smul",
+      "audit_target": "UEOTQM.RectangularChannel.operator_real_smul"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 56,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.operatorLinear",
+      "audit_target": "UEOTQM.RectangularChannel.operatorLinear"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 61,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.operator_sum",
+      "audit_target": "UEOTQM.RectangularChannel.operator_sum"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 66,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.trace_operator",
+      "audit_target": "UEOTQM.RectangularChannel.trace_operator"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 76,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.mass_operator",
+      "audit_target": "UEOTQM.RectangularChannel.mass_operator"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 79,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.state",
+      "audit_target": "UEOTQM.RectangularChannel.state"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 84,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.state_matrix",
+      "audit_target": "UEOTQM.RectangularChannel.state_matrix"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 88,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.adjoint",
+      "audit_target": "UEOTQM.RectangularChannel.adjoint"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 91,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.adjoint_posSemidef",
+      "audit_target": "UEOTQM.RectangularChannel.adjoint_posSemidef"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 96,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.adjoint_one",
+      "audit_target": "UEOTQM.RectangularChannel.adjoint_one"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 99,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.adjoint_sub",
+      "audit_target": "UEOTQM.RectangularChannel.adjoint_sub"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 103,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.trace_adjoint",
+      "audit_target": "UEOTQM.RectangularChannel.trace_adjoint"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 115,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.pullbackEffect",
+      "audit_target": "UEOTQM.RectangularChannel.pullbackEffect"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 122,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.pullbackEffect_matrix",
+      "audit_target": "UEOTQM.RectangularChannel.pullbackEffect_matrix"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 125,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.probability_state",
+      "audit_target": "UEOTQM.RectangularChannel.probability_state"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 129,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.state_effectDistance_le",
+      "audit_target": "UEOTQM.RectangularChannel.state_effectDistance_le"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 141,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.identity",
+      "audit_target": "UEOTQM.RectangularChannel.identity"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 145,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.identity_operator",
+      "audit_target": "UEOTQM.RectangularChannel.identity_operator"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 148,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.identity_state",
+      "audit_target": "UEOTQM.RectangularChannel.identity_state"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 153,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.comp",
+      "audit_target": "UEOTQM.RectangularChannel.comp"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 165,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.comp_operator",
+      "audit_target": "UEOTQM.RectangularChannel.comp_operator"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 170,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.comp_state",
+      "audit_target": "UEOTQM.RectangularChannel.comp_state"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 182,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.amplify",
+      "audit_target": "UEOTQM.RectangularChannel.amplify"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 196,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.amplify_posSemidef",
+      "audit_target": "UEOTQM.RectangularChannel.amplify_posSemidef"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 203,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.amplify_operator_apply",
+      "audit_target": "UEOTQM.RectangularChannel.amplify_operator_apply"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 230,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.discardRightKraus",
+      "audit_target": "UEOTQM.RectangularChannel.discardRightKraus"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 233,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.discardRight",
+      "audit_target": "UEOTQM.RectangularChannel.discardRight"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 254,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.discardRight_operator_apply",
+      "audit_target": "UEOTQM.RectangularChannel.discardRight_operator_apply"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 263,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.discardLeftKraus",
+      "audit_target": "UEOTQM.RectangularChannel.discardLeftKraus"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 266,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.discardLeft",
+      "audit_target": "UEOTQM.RectangularChannel.discardLeft"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 287,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.discardLeft_operator_apply",
+      "audit_target": "UEOTQM.RectangularChannel.discardLeft_operator_apply"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 303,
+      "kind": "def",
+      "declaration": "UEOTQM.RectangularChannel.defect",
+      "audit_target": "UEOTQM.RectangularChannel.defect"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 306,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.defect_bddAbove",
+      "audit_target": "UEOTQM.RectangularChannel.defect_bddAbove"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 313,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.defect_nonneg",
+      "audit_target": "UEOTQM.RectangularChannel.defect_nonneg"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 316,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.defect_le_one",
+      "audit_target": "UEOTQM.RectangularChannel.defect_le_one"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 323,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.state_distance_le_defect",
+      "audit_target": "UEOTQM.RectangularChannel.state_distance_le_defect"
+    },
+    {
+      "file": "UEOTQM/RectangularChannels.lean",
+      "line": 328,
+      "kind": "theorem",
+      "declaration": "UEOTQM.RectangularChannel.perturbation_bound",
+      "audit_target": "UEOTQM.RectangularChannel.perturbation_bound"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 25,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.taggedKraus",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.taggedKraus"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 28,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.taggedKraus_gram",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.taggedKraus_gram"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 35,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.taggedKraus_conjugation",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.taggedKraus_conjugation"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 44,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.block",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.block"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 47,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.block_apply_same",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.block_apply_same"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 50,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.block_apply_ne",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.block_apply_ne"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 53,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.trace_block",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.trace_block"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 58,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.channel",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.channel"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 66,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.channel_operator_apply",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.channel_operator_apply"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 84,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.channel_amplify_operator_apply",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.channel_amplify_operator_apply"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 92,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.channel_operator_eq_block",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.channel_operator_eq_block"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 98,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.state",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.state"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 101,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.state_matrix",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.state_matrix"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 106,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.discard_record_operator",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.discard_record_operator"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 113,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.discard_record_state",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.discard_record_state"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 119,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.discard_memory_operator",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.discard_memory_operator"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 131,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.discard_memory_state_matrix",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.discard_memory_state_matrix"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 144,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.state_block_mass",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.state_block_mass"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 148,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.positive_block_posterior",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.positive_block_posterior"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 160,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.zero_probability_iff_zero_block",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.zero_probability_iff_zero_block"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 169,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.eventEffect",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.eventEffect"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 182,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.eventEffect_matrix",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.eventEffect_matrix"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 186,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.eventEffect_pairing_block",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.eventEffect_pairing_block"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 192,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.weights",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.weights"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 197,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.weights_weight",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.weights_weight"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 200,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.event_probability",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.event_probability"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 208,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.record_tv_le_joint_distance",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.record_tv_le_joint_distance"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 217,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.defect",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.defect"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 220,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.perturbation_bound",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.perturbation_bound"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 225,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.record_tv_perturbation_bound",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.record_tv_perturbation_bound"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 241,
+      "kind": "abbrev",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.Leaf",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.Leaf"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 248,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.KrausPath",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.KrausPath"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 252,
+      "kind": "instance",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.krausPathFintype",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.krausPathFintype"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 264,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.pathKraus",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.pathKraus"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 270,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 305,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 330,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 337,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_apply",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_apply"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 356,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_amplify_operator_apply",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_amplify_operator_apply"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 365,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_eq_block",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_eq_block"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 371,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 374,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_matrix",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_matrix"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 380,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_record_operator",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_record_operator"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 389,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_operator",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_operator"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 401,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_state_matrix",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_state_matrix"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 415,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_block_mass",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_block_mass"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 422,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.zero_probability_iff_zero_block",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.zero_probability_iff_zero_block"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 433,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 439,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights_weight",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights_weight"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 443,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.event_probability",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.event_probability"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 451,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_le_joint_distance",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_le_joint_distance"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 463,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.defect",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.defect"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 467,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.perturbation_bound",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.perturbation_bound"
+    },
+    {
+      "file": "UEOTQM/ClassicalQuantumMemory.lean",
+      "line": 474,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_perturbation_bound",
+      "audit_target": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_perturbation_bound"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 19,
+      "kind": "abbrev",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.Qubit",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.Qubit"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 20,
+      "kind": "abbrev",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.Label",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.Label"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 23,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.certain",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.certain"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 28,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.certain_branch",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.certain_branch"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 33,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channel",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channel"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 37,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channelState",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channelState"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 42,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.certain_probability",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.certain_probability"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 48,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.rhoZero",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.rhoZero"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 57,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_channelDefect_zero",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_channelDefect_zero"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 63,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_tv_one",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_tv_one"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 67,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.retained_joint_distance_one",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.retained_joint_distance_one"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 74,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_defect_one",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_defect_one"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 84,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_is_not_a_record_bound",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_is_not_a_record_bound"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 92,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackFamily",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackFamily"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 97,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackProtocol",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackProtocol"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 103,
+      "kind": "def",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 106,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero_iff",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero_iff"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 121,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_zero_model",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_zero_model"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 136,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_one_model",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_one_model"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 153,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_event_gap_one",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_event_gap_one"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 162,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_effect_gap_one",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_effect_gap_one"
+    },
+    {
+      "file": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "line": 171,
+      "kind": "theorem",
+      "declaration": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_record_tv_one",
+      "audit_target": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_record_tv_one"
+    }
+  ],
+  "counts": {
+    "theorems": 83,
+    "audit_targets": 119
+  },
+  "policy": "All explicit declarations; new structure constructor is audited instead of the type name; named finite-path instance included. Generated helpers excluded.",
+  "witness_receipt": "/tmp/qm317_memory_witness_5.json"
+}

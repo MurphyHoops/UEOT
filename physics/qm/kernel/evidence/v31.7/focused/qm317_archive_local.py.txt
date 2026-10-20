@@ -1,0 +1,47 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, json, shutil
+
+R=Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+E=R/'physics/qm/kernel/evidence/v31.7'; F=E/'focused'; F.mkdir(exist_ok=True)
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def read(p): return json.loads(Path(p).read_text())
+def write(p,d): Path(p).write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+excluded={'qm317_baseline_remote_tree.json','qm317_release_base_tree.json',
+          'qm317_publication_inventory.json','qm317_upload_payload.json',
+          'qm317_declaration_inventory.json','qm317_book_ch57.md',
+          'qm317_book_ch58.md','qm317_book_ch59.md'}
+copied=[]
+for p in sorted(Path('/tmp').glob('qm317_*')):
+    if not p.is_file() or p.suffix not in {'.json','.md','.log'} or p.name in excluded:
+        continue
+    if 'remote_tree' in p.name or 'release_context' in p.name or 'metadata_' in p.name:
+        continue
+    shutil.copy2(p,F/p.name); copied.append(p.name)
+scripts=['qm317_accept.py','qm317_inventory.py','qm317_source_parser.py',
+         'qm317_prepare_book.py','qm317_prepare_release.py','qm317_book_release.py',
+         'qm317_finalize_visual.py','qm317_A_update_dossier.py','qm317_A_finalize_dossier.py',
+         'qm317_B_generated_release_review.py','qm317_verify_ci_logs.py',
+         'qm317_prepare_upload.py','qm317_archive_local.py']
+for name in scripts:
+    p=Path('/tmp')/name
+    assert p.is_file(),name
+    shutil.copy2(p,F/(name+'.txt')); copied.append(name+'.txt')
+files=[{'name':p.name,'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(F.iterdir()) if p.is_file() and p.name!='files-manifest.json']
+write(F/'files-manifest.json',{
+ 'schema':'ueot_qm.focused_archive.v31.7',
+ 'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+ 'scope':'Actual focused author and cross-review inputs, receipts, success and failure logs. Development failures remain failures; audit-target input files alone do not certify execution. Helper .py.txt files are archived evidence, not additional accepted runtime inputs. Current final proof source is identified by the separate 80-entry source manifest.',
+ 'file_count':len(files),'files':files})
+active=read(R/'physics/qm/status/ACTIVE_RESEARCH_v31.7.json')
+active.update(status='LOCAL_VERIFIED_REMOTE_PENDING',updated_at_utc=datetime.now(timezone.utc).isoformat(),
+ current_entrypoint='physics/qm/UEOT_QM_KERNEL_v31.7.md',
+ current_proof_receipt='physics/qm/kernel/evidence/v31.7/lean-verification.json',
+ current_book_receipt='physics/qm/book/evidence/v3.3/local-release-gates.json',
+ next_execution_contract='physics/qm/UEOT_QM_EXECUTION_v31.8.md',
+ next_execution_status='PLANNED_NOT_FORMALIZED_NOT_COUNTED_IN_V31_7')
+write(R/'physics/qm/status/ACTIVE_RESEARCH_v31.7.json',active)
+M=read(E/'source-manifest.json')
+for s in M['sources']:
+    p=R/s['path'];assert sha(p)==s['sha256'] and p.stat().st_size==s['bytes'],s['path']
+print(json.dumps({'focused_files':len(files),'copied_now':len(copied),'tested_sources_unchanged':len(M['sources']),'state':'LOCAL_VERIFIED_REMOTE_PENDING'}))

@@ -1,0 +1,92 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, json, shutil
+import fitz
+
+R = Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+B = R / 'physics/qm/book'
+E = B / 'evidence/v3.3'
+O = Path('/workspace/scratch/474cf6b1f047/output/pdf/ueot_physics_v33')
+
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def read(p): return json.loads(Path(p).read_text())
+def write(p, d): Path(p).write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+def bound(p):
+    p = Path(p)
+    return {'path': str(p), 'sha256': sha(p), 'bytes': p.stat().st_size}
+
+pdf = B / 'UEOT_PHYSICS.pdf'
+# The actual build receipt is the authoritative full digest; the assertion below
+# also binds the independent collaborator review and canonical/source identities.
+build = read(E / 'pdf-build.json')
+identity = read(E / 'pdf-page-identity.json')
+cross = read('/tmp/qm317_C_pdf_review.json')
+assert sha(pdf) == build['pdf_sha256'] == cross['pdf']['sha256'] == identity['after_pdf_sha256']
+assert sha(B / 'UEOT_PHYSICS.md') == build['source_sha256'] == cross['canonical_source']['sha256']
+assert cross['status'] == 'PASS_SPECIFIED_18_FULL_PAGES_ACTUALLY_VIEWED'
+assert cross['full_pages_viewed'] == 18 and not cross['blocking_findings']
+assert identity['changed_pages'] == [1, 155] and len(identity['unchanged_pages']) == 201
+doc = fitz.open(pdf)
+assert len(doc) == cross['pdf']['page_count'] == 203
+root_pages = [1, 4, 155, 159, 163, 167, 191, 203]
+root_images = [dict(physical_page=n, **bound(O / 'review-final' / f'page-{n:03}.png')) for n in root_pages]
+overview_images = [bound(p) for p in sorted((O / 'review').glob('overview-*.png'))]
+assert len(overview_images) == 6
+old = read(E / 'pdf-render-manifest.json')
+assert old['pdf_sha256'] == identity['before_pdf_sha256']
+shutil.copy2(E / 'pdf-render-manifest.json', E / 'pdf-previsual-render-manifest.json')
+for ext in ['json', 'md']:
+    shutil.copy2(f'/tmp/qm317_C_pdf_review.{ext}', E / f'pdf-collaborator-review.{ext}')
+shutil.copy2('/tmp/qm317_C_pdf_review/render-receipt.json', E / 'pdf-collaborator-render.json')
+now = datetime.now(timezone.utc).isoformat()
+write(E / 'pdf-render-manifest.json', {
+    'schema': 'ueot_physics.pdf_render.v3.3', 'pdf_sha256': sha(pdf),
+    'canonical_source_sha256': sha(B / 'UEOT_PHYSICS.md'), 'page_count': len(doc),
+    'recorded_at_utc': now, 'visual_review': 'PASS_SCOPED_ACTUAL_REVIEW',
+    'root_final_full_pages': root_images,
+    'collaborator_current_pdf_render': 'pdf-collaborator-render.json',
+    'collaborator_full_pages': cross['actually_viewed_physical_pages'],
+    'all_page_overview': {
+        'pdf_sha256': identity['before_pdf_sha256'], 'actually_viewed': True,
+        'files': overview_images,
+        'current_pdf_inheritance': '201/203 physical page RGB rasters exactly unchanged at 72dpi; changed pages 1 and 155 actually re-viewed full-page by root and collaborator.',
+        'exact_comparison_receipt': 'pdf-page-identity.json'
+    },
+    'toc': doc.get_toc(),
+    'scope': 'All-page overview of the immediately preceding PDF plus exact 201-page raster identity and fresh full-page review of both changed pages; no claim of 203-page full-resolution close reading.'
+})
+write(E / 'pdf-visual-review.json', {
+    'schema': 'ueot_physics.pdf_visual_review.v3.3', 'status': 'PASS',
+    'recorded_at_utc': now, 'pdf_sha256': sha(pdf), 'source_sha256': sha(B / 'UEOT_PHYSICS.md'),
+    'page_count': len(doc), 'root_full_pages_actually_viewed': root_pages,
+    'root_review_method': 'tools.view_image forwarded images to the root model; all six overview sheets of preceding PDF viewed; final eight full-page images viewed after corrections.',
+    'root_observations': [
+        'Cover now correctly states edition 3.3, 60 chapters, Kernel 1.7.',
+        'Physical page 155 shows the complete convex purity quantifiers in two aligned rows within the text width.',
+        'Contents correctly include chapters 57–59 and appendices; physical versus printed page offset is four.',
+        'New rectangular-channel, record-memory, and model-dynamics equations remain legible and within margins.',
+        'Appendix F long source hash wraps within margins; 646/855 and 110/39/2/151 counts and final audit entries are visible.'
+    ],
+    'all_page_overview_inheritance': {'preceding_pdf_sha256': identity['before_pdf_sha256'], 'unchanged_current_pages': 201, 'changed_pages_freshly_viewed': [1, 155], 'receipt': 'pdf-page-identity.json'},
+    'collaborator_review': {'path': 'pdf-collaborator-review.json', 'sha256': sha(E / 'pdf-collaborator-review.json'), 'actual_full_pages': cross['actually_viewed_physical_pages'], 'status': cross['status']},
+    'blocking_findings': [],
+    'nonblocking_observations': ['Physical page 167 contains the final two lines of chapter 59 and substantial chapter-end whitespace; all text is present and readable.'],
+    'scope_limits': ['This is scoped visual QA, not a full 203-page close reading or independent human peer review.', 'Typography review does not replace Lean verification, empirical validation, or remote CI.', 'The mathematical source set is unchanged; chapter 57 alignment changes only display layout.']
+})
+previous = read(E / 'typography-fix.json')
+write(E / 'typography-fix.json', {
+    'schema': 'ueot_physics.typography_fix.v3.3', 'status': 'ACTUAL_REBUILD_AND_VISUAL_PASS',
+    'recorded_at_utc': now, 'initial_hash_wrap_correction': previous,
+    'subsequent_actual_visual_findings': [
+        {'finding': 'Cover retained old 3.2 / 57-chapter / Kernel1.6 labels', 'fix': 'Update header.tex cover to 3.3 / 60 / 1.7.'},
+        {'finding': 'Chapter57.1 full convex-purity formula exceeded the page margin', 'fix': 'Use two aligned display rows; author checked inverse formatting recovers the exact prior mathematical formula.'}
+    ],
+    'previsual_pdf_sha256': identity['before_pdf_sha256'],
+    'final_md_sha256': sha(B / 'UEOT_PHYSICS.md'), 'final_pdf_sha256': sha(pdf),
+    'final_tex_sha256': sha(B / 'UEOT_PHYSICS.tex'), 'final_build_receipt': 'pdf-build.json',
+    'actual_compile_passes_exit_codes': [p['exit_code'] for p in build['compile_passes']],
+    'final_layout_warnings': build['layout_warnings'], 'final_visual_receipt': 'pdf-visual-review.json',
+    'mathematical_source_changed': False, 'canonical_formula_semantics_changed': False,
+    'previous_pdf_retained_locally': '/workspace/scratch/474cf6b1f047/output/pdf/ueot_physics_v33_previsual/UEOT_PHYSICS.pdf'
+})
+print(json.dumps({'status': 'PASS', 'pdf_sha256': sha(pdf), 'pages': len(doc), 'root_full_pages': root_pages, 'collaborator_full_pages': 18}))

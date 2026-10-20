@@ -1,36 +1,21 @@
-# UEOT-QM
+# UEOT-QM：有限量子内核与物理总著
 
-当前研发：**v31.6 / Kernel 1.6 — MAIN_VERIFIED，2026-10-20 UTC**。最新集成身份以 [CURRENT.json](status/CURRENT.json) 为准。
+当前 **v31.7 / Kernel 1.7 — LOCAL_VERIFIED_REMOTE_PENDING**。日期：2026-10-20 UTC。[CURRENT](status/CURRENT.json)记录实际发布身份。
 
-唯一连续理论总著为 [《UEOT物理学》正式 3.2](book/UEOT_PHYSICS.md)：第 0–56 章、6 个附录、117 个编号结果；[完整 PDF](book/UEOT_PHYSICS.pdf) 共 186 页。全部原有理论推导保留，新增章节与真实源码、前提、反例和开放问题逐项对应。
+目标是基于UEOT形成完备、可检验的量子物理理论。已有有限量子内核持续扩展，理论推导、思想、具体例子和责任范围统一维护于[《UEOT物理学》正式3.3](book/UEOT_PHYSICS.md)，及其[完整PDF](book/UEOT_PHYSICS.pdf)：60章、6附录、131稳定编号结果、203页。
 
-## 本轮三个关键结果
+| 本轮关键点 | 实际成果 |
+|---|---|
+| 完整状态与选择原则 | 任意有限复态的实际纯化；经典、实、复三个完整操作呈现及七项规律；保留经典/实分离 |
+| 联合记录与记忆 | 异型CPTP、真实偏迹、任意有限自适应树联合通道、记录事件TV及整体协议缺陷；两步反馈删除控制 |
+| 真实条件动力学 | 同一非交换模型精确全算符迭代、唯一Doob不变态、条件态定量收敛和成功质量趋零；恒等Doob反例 |
 
-| 方向 | 实际闭合 | 科学边界 |
-|---|---|---|
-| 经典 Core 边界 | 同一真实核、终端商、控制商及安全路径的实际混合商边际，在任意有限经典辅助系统上无纯化；受限读出下该反例消失 | 只覆盖列明 H1–H6 接口和公开经典解释，不表示全部 UEOT 不可重构 |
-| 实局域层析 | 两个真实实联合密度态对全部实局域乘积效应同概率，合法联合实测试给 1/0；允许复局域效应后给 1/2/0 | 实张量模型的精确排除责任，不是唯一复量子重构 |
-| 非交换 Doob | 给定正可逆本征度量，构造实际完整仪器；任意初态真实有限条件态与其迭代相连；右本征态另给平稳结果 | 谱对象存在、唯一性、吸引和无限条件过程分开处理 |
+本轮实际统一验收为29模块、646显式定理、855个唯一命名公理报告。七组具体见证另计110定理、39定义、2缩写、151审计；六精确证书42审计、四组真假配对负控、100运行方法、四演示分别记录。允许基础仅为propext、Classical.choice、Quot.sound。[证明回执](kernel/evidence/v31.7/lean-verification.json)与[80项源清单](kernel/evidence/v31.7/source-manifest.json)绑定实际执行。
 
-完整数学、实际例子和验收见 [本版报告](UEOT_QM_KERNEL_v31.6.md)、[数学审查](audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md)。
+## 阅读与推进入口
 
-## 实际内核与证据
+- [本轮完整报告](UEOT_QM_KERNEL_v31.7.md)、[独立数学审查](audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md)、[当前主张台账](status/CLAIM_LEDGER_v31.7.json)。
+- [总著目录与逐章证据](book/README.md)、[Lean包](../../formalization/ueot-qm/README.md)、[运行内核](kernel/README.md)。
+- [路线图](ROADMAP.md)、[本轮合同](UEOT_QM_EXECUTION_v31.7.md)、[下一轮合同](UEOT_QM_EXECUTION_v31.8.md)。
 
-本地统一验收：**22 模块、459 显式定理、573 个实际命名公理报告**。四份具体见证另有 62 定理、22 定义、84 审计。六个精确证书的 42 项审计、四组坏数据真证明拒绝/同数据假证明接受、100 运行方法、四份演示分别记录。允许的基础仅为 propext、Classical.choice、Quot.sound。
-
-[统一证明回执](kernel/evidence/v31.6/lean-verification.json) · [70 项受验源清单](kernel/evidence/v31.6/source-manifest.json) · [远端集成状态](kernel/evidence/v31.6/integration-verification.json)
-
-已经形成的有限内核包括：实际复密度/Kraus/Born 操作、全部有限记录的响应商、有限坐标分类、Ax/p 正事件更新、完整有限自适应树、可靠局部证书、真实效应伪距离与 Core 误差运输、同库混合 TV 预算、Cesàro 平稳存在、对角及非交换有限条件化。本轮进一步给出量子选择的两个明确反模型边界。
-
-## 阅读与工作入口
-
-- [正式总著](book/UEOT_PHYSICS.md)、[PDF](book/UEOT_PHYSICS.pdf)、[逐章档案](book/CHAPTER_DOSSIER.json)。
-- [Lean 包](../../formalization/ueot-qm/README.md)、[运行内核](kernel/README.md)、[当前主张台账](status/CLAIM_LEDGER_v31.6.json)。
-- [本轮执行合同](UEOT_QM_EXECUTION_v31.6.md)、[路线图](ROADMAP.md)。
-- [下一轮已审定合同](UEOT_QM_EXECUTION_v31.7.md)：共同操作/纯化接口；经典记录与量子记忆；当前非对角模型的精确条件态动力学。该合同尚未作为已证明成果计数。
-
-## 科学责任
-
-当前有一个明确、可构建和可审计的有限量子内核；通用 Core 唯一选择复量子结构仍是核心开放问题。现实三代仍依赖完整谱、表示、有效窗口及一致性条件。没有新增实验数据，标准量子定理的形式化数量也不代表完备物理理论已经建立。
-
-历史 [v31.5](kernel/evidence/v31.5/integration-verification.json)、[v31.4](kernel/evidence/v31.4/integration-verification.json)、[v31.3](kernel/evidence/v31.3/integration-verification.json) 保留各自提交和执行身份。冻结 Core 的 106 项、四生成器及五份原始材料身份不由本轮改写。
+下一轮三路分别处理全效应分离与复局部层析、完整纯性刻画及辅助酉唯一性、共同历史控制器逐步误差预算。规划未计入已证明成果。冻结Core的106项、四生成器及原始材料身份保持独立。三代仍为带完整谱、表示与有效窗口条件的结果；复量子唯一选择、现实质量谱及实验检验继续承担独立责任。历史版本证据只证明各自输入，本轮不宣称完整物理理论或最终真理已完成。

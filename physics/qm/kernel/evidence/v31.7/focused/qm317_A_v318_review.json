@@ -1,0 +1,88 @@
+{
+  "status": "PASS_FINAL_PLAN_SCIENTIFIC_SCOPE",
+  "reviewer": "A",
+  "plan": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+    "sha256": "dfed37f3245fd2e4e48ac6b7e51d3df953b8294a96505b1f54884ce50e36147d",
+    "bytes": 9284
+  },
+  "checks": [
+    {
+      "id": "priority",
+      "status": "PASS",
+      "finding": "A separation/tomography, B full purity then precise uniqueness, C composable history budgets target actual remaining gaps; solved Doob example is not used to replace them."
+    },
+    {
+      "id": "effect_distance",
+      "status": "PASS",
+      "finding": "Existing effectDistance_eq_zero_iff means equality of all effect probabilities, not equality of matrices; the proposed new separation theorem supplies the missing step."
+    },
+    {
+      "id": "legal_effects",
+      "status": "PASS",
+      "finding": "All index probes must be legal effects. General product-effect tomography ranges over all joint densities and does not assume separability."
+    },
+    {
+      "id": "gram_columns",
+      "status": "PASS",
+      "finding": "Gram factors are PSD-derived; positive column weights sum to one. Residual positivity must be derived from the sum of the other columns; square-root normalization and zero cases are explicit proof obligations."
+    },
+    {
+      "id": "pure_scope",
+      "status": "PASS",
+      "finding": "Vector-to-extreme is inherited, reverse extreme-to-vector is a new theorem. Arbitrary-purification uniqueness cannot be claimed before connecting this reverse direction."
+    },
+    {
+      "id": "unitary_scope",
+      "status": "PASS",
+      "finding": "Same actual finite auxiliary carrier first; different dimensions separately typed. No existence of the needed unitary or desired result is supplied as a field."
+    },
+    {
+      "id": "history_scope",
+      "status": "PASS",
+      "finding": "Actual finite history carrier, explicit dephasing if extended to coherent history inputs, real block normalization and zero-block treatment, all-event TV and primitive defects remain distinct stages."
+    },
+    {
+      "id": "claims",
+      "status": "PASS",
+      "finding": "Plan is unproved, not part of v31.7 totals, and makes no full-Core, universal complex-selection, physical-generation or infinite-system claim."
+    }
+  ],
+  "blocking_findings": [],
+  "precision_notes": [
+    {
+      "id": "N1",
+      "severity": "precision_before_execution",
+      "recommendation": "Keep the old effectDistance_eq_zero_iff meaning; separately name the new equality-to-density theorem."
+    },
+    {
+      "id": "N2",
+      "severity": "precision_before_execution",
+      "recommendation": "State auxiliary action as psi2(i,a)=sum_b U(a,b)*psi1(i,b), U†U=UU†=I, with actual I tensor U action. For vectorize A(i,a)=A_i_a, factor equality B=A*V corresponds to auxiliary unitary U=transpose V; do not silently identify these orientations."
+    },
+    {
+      "id": "N3",
+      "severity": "precision_before_execution",
+      "recommendation": "Specify real-linear spanning of Hermitian spaces, since the probability pairing is real-linear."
+    },
+    {
+      "id": "N4",
+      "severity": "optional_design",
+      "recommendation": "For action budgets define the worst case over finite histories/used actions, or explicitly assume finite actions; avoid an undeclared maximum over an arbitrary action type."
+    }
+  ],
+  "formalization_status": "PLANNING_ONLY_UNEXECUTED",
+  "repo_modified": false,
+  "final_revised_plan_identity": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+    "sha256": "280fdb652561fee8a278654df21445ee862071999281cb3a1ddeae201dacc67c",
+    "bytes": 9908
+  },
+  "revision_followup": {
+    "three_requested_precision_items": "ALL_APPLIED_AND_READ_BACK",
+    "future_results_formalized": false,
+    "v31_7_counts_changed": false,
+    "remaining_scientific_blockers": [],
+    "optional_history_budget_note": "Implementation should define worst case over the actually used finite histories/actions or add explicit finite action assumption; no new result is claimed by this planning review."
+  }
+}

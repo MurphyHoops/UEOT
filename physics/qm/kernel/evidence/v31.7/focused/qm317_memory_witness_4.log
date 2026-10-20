@@ -1,0 +1,107 @@
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:26:28: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:54:38: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:130:7: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ x ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩}, ?m.60 x
+in the target expression
+  ∑ b ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩},
+      (ProtocolMemory.weights (feedbackFamily 0) feedbackProtocol ρ).weight b =
+    1
+
+ρ : Density Qubit
+hne : ⟨0, ⟨0, PUnit.unit⟩⟩ ≠ ⟨1, ⟨0, PUnit.unit⟩⟩
+⊢ ∑ b ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩},
+      (ProtocolMemory.weights (feedbackFamily 0) feedbackProtocol ρ).weight b =
+    1
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    PUnit.unit
+  has type
+    PUnit.{1}
+  but is expected to have type
+    ((fun x => Adaptive.Protocol.stop) 0).Leaf
+  in the application
+    ⟨0, PUnit.unit⟩
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:144:7: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ x ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩}, ?m.60 x
+in the target expression
+  ∑ b ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩},
+      (ProtocolMemory.weights (feedbackFamily 1) feedbackProtocol ρ).weight b =
+    0
+
+ρ : Density Qubit
+hne : ⟨0, ⟨0, PUnit.unit⟩⟩ ≠ ⟨1, ⟨0, PUnit.unit⟩⟩
+⊢ ∑ b ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩},
+      (ProtocolMemory.weights (feedbackFamily 1) feedbackProtocol ρ).weight b =
+    0
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    PUnit.unit
+  has type
+    PUnit.{1}
+  but is expected to have type
+    ((fun x => Adaptive.Protocol.stop) 0).Leaf
+  in the application
+    ⟨0, PUnit.unit⟩
+'UEOTQM.ClassicalQuantumMemoryExamples.Qubit' does not depend on any axioms
+'UEOTQM.ClassicalQuantumMemoryExamples.Label' does not depend on any axioms
+'UEOTQM.ClassicalQuantumMemoryExamples.certain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_channel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_channelState' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.rhoZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_channelDefect_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.retained_record_tv_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.retained_joint_distance_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.retained_record_defect_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_is_not_a_record_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackProtocol' does not depend on any axioms
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_zero_model' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_one_model' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_event_gap_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_effect_gap_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.adaptive_record_tv_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

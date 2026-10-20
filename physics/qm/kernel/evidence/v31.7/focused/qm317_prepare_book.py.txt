@@ -1,0 +1,155 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+import re
+
+ROOT=Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+BASE=Path('/workspace/scratch/474cf6b1f047/qm_v316_work')
+BOOK=ROOT/'physics/qm/book'
+E=ROOT/'physics/qm/kernel/evidence/v31.7'
+BE=BOOK/'evidence/v3.3'
+
+def read(p): return json.loads(Path(p).read_text())
+def sha(data): return hashlib.sha256(data).hexdigest()
+def write(p,d): Path(p).write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+
+def main():
+    proof=read(E/'lean-verification.json')
+    assert proof['status']=='PASS' and proof['actual_build_exit_code']==0
+    assert proof['actual_axiom_audit_exit_code']==0
+    inv=read(E/'declaration-inventory.json')
+    finite=read(E/'finite-witnesses/verification.json')
+    assert finite['status']=='PASS' and len(finite['checks'])==7
+    n=inv['explicit_theorems']; audits=inv['audit_target_count']; mods=inv['module_count']
+    raw=(BASE/'physics/qm/book/UEOT_PHYSICS.md').read_bytes()
+    assert sha(raw)=='6289bebfbd4ae0efe5ac2257f6ac15efb37fb7b95bb78612367818eb5d6e4fd4'
+    text=raw.decode()
+    changes=[]
+    def replace(old,new):
+        nonlocal text
+        assert text.count(old)==1, (old[:120],text.count(old))
+        text=text.replace(old,new,1);changes.append(old[:100])
+    def paragraph(start,new):
+        nonlocal text
+        assert text.count(start)==1, start
+        pos=text.index(start); end=text.index('\n\n',pos)
+        old=text[pos:end];replace(old,new)
+
+    replace('version: "3.2"','version: "3.3"')
+    replace('- [56. 保留相干的量子条件演化与 Doob 通道](#ch-56)',
+        '- [56. 保留相干的量子条件演化与 Doob 通道](#ch-56)\n'
+        '- [57. 完整状态空间中的纯化与操作原则](#ch-57)\n'
+        '- [58. 联合记录、量子记忆与有限自适应协议](#ch-58)\n'
+        '- [59. 非交换条件持续的精确动力学](#ch-59)')
+    additions='\n\n'.join(Path('/tmp/qm317_book_ch'+str(i)+'.md').read_text().rstrip() for i in [57,58,59])
+    replace('<a id="appendix-a"></a>',additions+'\n\n<a id="appendix-a"></a>')
+    paragraph('第1–35章给完整基础、计算与接口；',
+        '第1–35章给完整基础、计算与接口；第36–42章把三代高能审计、味约束、相干见证、实际化证明和研究协议接入主线；第43–46章补全全局相位、拓扑、格点和相关试次统计；第47章给研究验收合同，第48章给总著维护。第49–53章展开有限形式化内核、实际稳定性、随机化预算、长期平均与条件生存；第54–56章给出经典纯化边界、实局域层析分离与一般有限量子 Doob 构造；第57–59章进一步完成完整状态空间中的有限复纯化、保留记录与记忆的有限协议，以及指定非交换模型的精确条件动力学。附录保存符号、来源、全部稳定编号、复现代码和命名审计范围。')
+    paragraph('从理论核心入手，可依次阅读第0–5、49–56章，',
+        '从理论核心入手，可依次阅读第0–5、49–59章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36–37与49.7一起阅读。附录A给符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码及3.0版实际重跑回执；3.1、3.2及3.3版保留其未变源码身份。附录E给编译维护合同，附录F列出实际形式化范围和完整命名公理清单。')
+    paragraph('**已达到的阶段。** 第49–50章建立实际有限操作、',
+        f'**已达到的阶段。** 第49–56章已经建立有限操作、全词响应、有限表示、精确证书、实际量子误差、混合预算、Cesàro平稳态、Core条件生存桥及两类量子选择分离。第57章进一步从PSD导出任意有限复密度态的完整凸极点纯化，并在同一操作语言中连接经典、实、复三个实际模型；第58章构造任意有限自适应树的联合记录与量子记忆通道；第59章在原非对角模型上证明真实条件态到源固定态的精确距离衰减和成功质量衰减。当前主包共有{mods}个模块、{n}个显式定理，{audits}项唯一命名公理审计。计数包括通用数学、有限模型及先前见证提取的公共基础，不表示{n}条新的物理规律。100项运行方法、4个演示和具体证书分别按实际回执计数。三套旧主文程序的757项检查仍沿用3.0版执行身份及未变源码哈希。')
+    paragraph('**下一批可验证义务。** 第54章已经把经典反例',
+        '**下一批可验证义务。** 量子选择线先在当前实际矩阵与操作接口中证明复局部层析、核对纯化本质唯一性，再逐条审查所调用重建定理的全部背景；这些性质为何必须由UEOT物理实现满足，继续作为独立桥接责任。记录线将整个协议缺陷推进为共同历史控制器的逐步误差预算，并核对零块、条件权重与底层动作缺陷。动力学线从明确的可验证收缩或本原条件入手，证明一般条件态长期结论，不从单个可解模型外推。精确程序细化、真实QDRR数据、完整谱/阈值及连续变量能量桥分别保留验收门。')
+    replace('| Core → 量子扇区 | 协议／响应桥；所列有限 Core 接口的经典纯化分离；实局域层析反例 | 独立物理原则能否排除已固定反例，以及完整重构背景 | 有类型组合／纯化接口及正量子实例；逐前提独立性检查 |',
+        '| Core → 量子扇区 | 三个完整状态模型、经典纯化分离、实层析反例、有限复纯化构造 | 独立原则来源与全部重构背景；未穷尽其他模型 | 复局部层析与纯化本质唯一性的实际矩阵证明；逐前提独立性账本 |')
+    replace('| 内核 → 持续与误差 | TV预算、Cesàro平稳存在、对角Core桥及一般有限量子Doob条件化 | 记录／记忆合同、正谱存在与条件混合率 | 实际联合通道误差或指定非对角模型的定量条件收敛 |',
+        '| 内核 → 持续与误差 | 任意有限树的真实记录与记忆、事件TV界、指定非交换条件态精确收敛 | 逐动作可组合预算、一般正谱存在与混合条件 | 历史控制通道的逐步预算；可独立核验的一般动力学充分条件 |')
+    replace('当前正式整合版为3.2。','当前正式整合版为3.3。')
+    replace('第0–56章、附录A–F构成连续完整文档','第0–59章、附录A–F构成连续完整文档')
+    replace('  edition: "3.2"','  edition: "3.3"')
+    paragraph('下一步应把候选纯化原则的系统类型、',
+        '第57章现在把候选原则的系统类型、完整状态集合、复合和丢弃写成实际接口，并证明经典反例经适配后仍违反纯化存在。复量子模型的任意有限态纯化也在完整密度空间中得到证明。第55章实扇区的排除责任则仍属于局部层析；纯化存在与本质唯一性分别维护。继续推进时，不能把预先装入的复Hilbert、Born或Kraus结构误称为已经从Core推出的起源。')
+    paragraph('Lean 使用复矩阵中的实条目子空间表示本例，',
+        '本章的机器证明使用复矩阵中的实条目子空间表示这个全称分离。第57章进一步给出全部有限实态、实效应、实Kraus过程、复合和偏迹的实际操作呈现，并证明七项基本规律；这仍不等于所有OPT重建背景、范畴相干性或纯化本质唯一性已形式化。本例也没有被改写为第54章H1–H6的另一个完整Core证书。')
+    paragraph('下一步先对本章已有的有理非对角模型证明精确迭代、',
+        '第59章已对本章同一个有理非对角模型证明实际精确迭代、唯一Doob不变态和真实条件态的几何收敛率，并以合法恒等Doob通道证明正谱度量不足以保证混合。接下来应固定可验证的有限不可约、本原或收缩条件，研究一般正谱对象及长期条件过程。原始双驱动思想可提示哪些持续机制值得研究，但成功事件、初态、控制代价与真实观测仍须分别定义。[S1、S2、S4；QM316；QM317]')
+    paragraph('本版共117个稳定编号结果，',
+        '本版共131个稳定编号结果，保留3.2版全部117个编号，新增第57–59章14个命题或反例。继承编号包括2.0的78个、49–50章10个、51–53章13个及54–56章16个。编号记录正文解析结果；它不是原创性、Lean声明数量或实验确认的计数。完整前提及证明见相应章节。')
+    paragraph('现行数学与运行代码以v31.6源清单',
+        '现行数学与运行代码以v31.7源清单的逐文件SHA-256及实际验证为准。本轮恢复基线为已发布主线7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8；本地历史HEAD只作环境元数据，不代替逐文件源身份。新模块、统一构建、具体见证、运行检查和最终远端提交分别记录。五份原始/Core材料再次核对字节身份，并检查原始论文与严格Core中的持续、评价及量子选择责任；历史v23–v30材料仍按原有可访问范围使用。两个同名v28.1来源各有身份，不按后缀挑选权威。SOURCE_MANIFEST.json保留原始来源登记，新版本的实际责任另由本版证据和章节档案说明。')
+    old='13. F. Carollo、J. P. Garrahan、I. Lesanovsky、C. Pérez-Espigares，*Making rare events typical in Markovian open quantum systems*。第53章之外的一般量子条件动力学背景；不作为本项目已实现无限条件极限的证明。[原文](https://arxiv.org/abs/1711.10951)'
+    replace(old,old+'\n14. [CDP2010] G. Chiribella、G. M. D’Ariano、P. Perinotti，*Probabilistic theories with purification*，Physical Review A 81, 062348 (2010)。第57章用于区分纯化存在与含本质唯一性的完整原则。[原文](https://arxiv.org/abs/0908.1583)\n15. [CDP2011] 同上作者，*Informational derivation of Quantum Theory*，Physical Review A 84, 012311 (2011)。其完整重建使用明示背景公理，未由本书有限纯化存在结果替代。[原文](https://arxiv.org/abs/1011.6451)')
+    paragraph('第49章纳入已经主线验收的Kernel1.1–1.3成果；',
+        '第49章纳入Kernel1.1–1.3；第50章纳入Kernel1.4的实际稳定性，第51–53章纳入Kernel1.5的混合、平均与条件生存，第54–56章纳入Kernel1.6的两类选择分离与有限量子Doob构造。第57–59章纳入Kernel1.7的完整有限复纯化、同一操作语言、任意有限协议联合记录与指定模型条件动力学。当前代码与证据入口为 `formalization/ueot-qm` 和 `physics/qm/kernel/evidence/v31.7`，正文入口为 `physics/qm/book`；历史版本证据仍只承担各自输入责任。冻结Core与领域接口决定分类，不把量子域内性质回填成通用公理。')
+    paragraph('本轮来源标签 QM316 指向',
+        '来源标签 QM316 指向 `ClassicalSector`、`CorePurificationBoundary`、`RealLocalTomography`、`QuantumDoob` 及v31.6实际回执；本版继续复验其未变数学源。QM317 指向 `RecordProbability`、`RectangularChannels`、`QuantumPurification`、`OperationalSystems`、`ClassicalQuantumMemory`、`QuantumDoobModel`、`QuantumDoobDynamics` 及三份新具体见证和v31.7统一回执。C. M. Caves、C. A. Fuchs、P. Rungta 的 *Entanglement of Formation of an Arbitrary State of Two Rebits* 仍只作为实组合背景，不把整篇纠缠定理计入机器证明。[原文](https://arxiv.org/abs/quant-ph/0009063)')
+    replace('3.1与3.2版逐字节保留这三套程序并核对哈希','3.1、3.2与3.3版逐字节保留这三套程序并核对哈希')
+    text=text.replace('代码在3.1及3.2版保持不变','代码在3.1、3.2及3.3版保持不变')
+    replace('包含全部57章和6个附录','包含全部60章和6个附录')
+
+    # Rebuild only the derived registry from the actual numbered anchors.
+    spec=importlib.util.spec_from_file_location('book_verify',BOOK/'build/verify_book.py')
+    verifier=importlib.util.module_from_spec(spec);spec.loader.exec_module(verifier)
+    claims=verifier.actual_claims(text)
+    assert len(claims)==131
+    old_claims=verifier.actual_claims(raw.decode())
+    assert claims[:117]==old_claims
+    a=text.index('| [',text.index('# 附录 B.'));b=text.index('<a id="appendix-c"></a>',a)
+    text=text[:a]+'\n'.join(f"| [{c['id']}](#{c['id'].lower()}) | {c['chapter']} | {c['title']} |" for c in claims)+'\n\n'+text[b:]
+
+    old_f=text[text.index('## F.1 '):]
+    old_table=re.search(r'\| 模块 \| 显式定理 \| 精确责任 \|\n\|---\|---:\|---\|\n([\s\S]*?)\n\n## F.2',old_f)[1]
+    descriptors={m[1]:m[3] for line in old_table.splitlines() if (m:=re.fullmatch(r'\| (\w+) \| (\d+) \| (.+) \|',line))}
+    descriptors.update({
+      'RecordProbability':'实际有限记录事件达到TV及全事件等价',
+      'RectangularChannels':'异型Kraus通道、真实任意辅助放大、偏迹与效应收缩',
+      'QuantumPurification':'完整凸极点、PSD导出Gram与任意有限密度态纯化',
+      'OperationalSystems':'三种完整状态呈现、七项规律和独立候选原则',
+      'ClassicalQuantumMemory':'实际联合记录、任意有限树记忆、全事件TV与标签缺陷',
+      'QuantumDoobModel':'先前非对角模型提取及明确公共态；非新增独立物理',
+      'QuantumDoobDynamics':'指定成功记录闭式、真实条件态到固定态的精确距离衰减与概率极限'})
+    counts=proof['module_theorem_counts']
+    order=[line.split()[-1].split('.')[-1] for line in (ROOT/'formalization/ueot-qm/UEOTQM.lean').read_text().splitlines() if line.startswith('import ')]
+    f=f'''## F.1 本版检查身份与计数
+
+本版沿用锁定Lean4.33.1（编译器提交819816b2e0a3bf405af45ae5c7af2491d8f5bee6）及Mathlib0df444a360eaa60ab8c11dca51a86af692955474；九项Git依赖的实际提交与锁文件一致。{mods}模块统一构建成功，{n}个显式定理及{audits}项唯一完整命名公理输出得到检查。允许基础仅为 `propext`、`Classical.choice`、`Quot.sound`；这不表示证明没有基础公理。
+
+本轮增加七个公共模块，含{inv['new_theorems']}个显式定理和{inv['added_audit_target_count']}项新审计目标。全部新增显式声明、命名实例、被注册为实例的两个投影及结构构造器均有明确请求；累积{audits}项等于{n}个显式定理与{audits-n}个列举非定理目标。QuantumDoobModel中的27个声明来自上一版具体见证，另补两个公共态声明；来源提取与新增动力学分别登记。该清单不冒充所有编译器内部常量的普查，也不把定义或模型实例计为新的物理定律。
+
+| 模块 | 显式定理 | 精确责任 |
+|---|---:|---|
+'''
+    f+='\n'.join(f'| {m} | {counts[m]} | {descriptors[m]} |' for m in order)
+    f+=f'''
+
+## F.2 运行与具体证明产品
+
+100项内核运行测试和4份完整演示与通用Lean数学分别计数。六份精确数值证书共42项命名审计；四类坏数据同时满足原真值证明被拒绝和同数据假值证明成功，后者另有4项审计。本版在新统一内核上实际重新执行这些门并绑定输入身份。
+
+持久化有限见证门共七组：原有混合、两态存活、实双rebit与非对角Doob见证，以及新Bell/完整态量词、联合记录/两步控制、条件动力学/恒等Doob见证。七组共{finite['witness_theorem_count']}个具体显式定理、{finite['witness_def_count']}个定义、{finite['witness_abbrev_count']}个缩写与{finite['witness_audit_count']}个独立审计，未计入主包{n}/{audits}。源清单仍不宣称Python/JSON/搜索/导出程序的全部输入已经形式化。
+
+本轮实际输入共{proof['source_count']}项，源集SHA-256为 `{proof['source_set_sha256']}`；实际递归Core导入仍为56项，逐项与恢复主线及上一版源码相符。科学源、构建、审计、具体见证与后续远端身份分别见对应回执。
+
+## F.3 {audits}项完整命名公理请求
+
+下列为实际 `AxiomAudit.lean` 请求的全名，依审计顺序列出。每项均须有唯一同名实际输出；缺项、重复、越界公理或构建错误都不算通过。对应范围由实际源码类型及第49–59章共同确定。
+'''
+    targets=inv['audit_targets']
+    for i in range(0,len(targets),60):
+        f+=f'\n### F.3.{i//60+1} 请求{i+1}–{min(i+60,len(targets))}\n\n~~~text\n'+'\n'.join(targets[i:i+60])+'\n~~~\n'
+    text=text[:text.index('## F.1 ')]+f
+
+    # These checks are edition-specific and require all inherited IDs, not just
+    # a contiguous arbitrary chapter list.
+    vp=BOOK/'build/verify_book.py';vs=vp.read_text()
+    vs=vs.replace('list(range(57))','list(range(60))').replace('complete chapters 0–56','complete chapters 0–59')
+    vs=vs.replace('len(claims) != 117','len(claims) != 131').replace('all 101 inherited and 16 new result IDs','all 117 inherited and 14 new result IDs')
+    vp.write_text(vs)
+    bp=BOOK/'build/build_pdf.py';bs=bp.read_text()
+    bs=bs.replace('list(range(57))','list(range(60))').replace('consecutive chapters 0–56','consecutive chapters 0–59')
+    bp.write_text(bs)
+    (BOOK/'UEOT_PHYSICS.md').write_text(text)
+    BE.mkdir(parents=True,exist_ok=True)
+    write(BE/'canonical-integration.json',{
+      'schema':'ueot_physics.canonical_integration.v3.3','status':'SOURCE_INTEGRATED_PENDING_PDF_AND_FINAL_REVIEW',
+      'recorded_at_utc':datetime.now(timezone.utc).isoformat(),'inherited_source_sha256':sha(raw),
+      'canonical_source_sha256':sha(text.encode()),'inherited_result_ids_preserved':117,
+      'new_result_ids':[c['id'] for c in claims[117:]],'new_results':14,'chapters':60,
+      'targeted_paragraph_revisions':changes,'proof_receipt':'physics/qm/kernel/evidence/v31.7/lean-verification.json',
+      'whole_book_formalized':False,'new_experimental_data':False})
+    print(json.dumps({'status':'SOURCE_INTEGRATED','sha256':sha(text.encode()),'chapters':60,'results':131,'audits':audits},ensure_ascii=False))
+
+if __name__=='__main__':main()

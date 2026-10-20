@@ -1,0 +1,65 @@
+{
+  "status": "PASS_READ_ONLY_ACCEPTANCE_SCRIPT_REVIEW",
+  "reviewer": "C",
+  "script_bindings": {
+    "/tmp/qm317_accept.py": "f22992a1e7983ee8064e506f3fe44a2d479664d4b77eaa41ed919dea540d10c9",
+    "/tmp/qm317_inventory.py": "b99427a6438fc90efc86baf0b67fa5649f1f9ff0a8a0e3b47c407b24b486089c",
+    "/tmp/qm317_source_parser.py": "503eff61729dff90b18bd98278903e2831ecfb35659681a53a6bd9374d52e6de",
+    "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/verify_finite_witnesses.py": "5587ffd016e17cd98ddd451add48e689affb53f8a8a7953793ddb28b03ab4922",
+    "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/check_axioms.py": "5ee27622fdf8200f34945abf8354ad5ba3598b0adfba4b206d9e9368cf9aec4a"
+  },
+  "inventory_counts": {
+    "module_count": 29,
+    "explicit_theorems": 646,
+    "audit_target_count": 855,
+    "new_theorems": 187,
+    "added_audit_target_count": 282
+  },
+  "actual_observations": {
+    "inventory_targets_equal_current_AxiomAudit": true,
+    "all_current_module_bytes_match_inventory": true,
+    "inherited_573_audit_git_blob_matches_actual_remote_7b1": "47b5e5e6d736ecf0f26c6373fb794893214b82c8",
+    "seven_witness_parser_counts": {
+      "theorem": 110,
+      "def": 39,
+      "abbrev": 2,
+      "audit": 151
+    },
+    "seven_witness_request_order_matches_full_names": true
+  },
+  "resolved_findings": [
+    {
+      "id": "WITNESS_ABBREV",
+      "problem": "Two real B witness abbreviations were printed but not counted by the old theorem/def-only parser",
+      "fix": "Parser accepts/requests abbrev; distinct abbrev count; audit expectation uses all declaration lengths"
+    },
+    {
+      "id": "AXIOM_NAME_SET",
+      "problem": "Acceptance originally compared only total audit count",
+      "fix": "Actual axiom-map keys must equal frozen inventory target names exactly"
+    },
+    {
+      "id": "FAILURE_RECEIPT",
+      "problem": "Timeout and process-launch failure skipped the run execution receipt",
+      "fix": "run catches TimeoutExpired/OSError, records exit_code null plus diagnostic flags and log SHA, journals it, then raises into outer FAIL"
+    },
+    {
+      "id": "BASELINE_AUDIT_IDENTITY",
+      "problem": "Inherited573 came from a local historical workspace",
+      "fix": "Inventory now requires the old audit Gitblob to equal the actual recovered remote 7b1 tree entry"
+    }
+  ],
+  "verified_contracts": [
+    "Inventory masks nested comments/strings and checks source frames, explicit declaration kinds, unique audit targets and complete module exports",
+    "All seven new modules have explicit declarations, named nonlocal instances, structure types plus constructors and the two explicitly registered projection instances covered",
+    "Whole acceptance source set captured before and after, module identities checked against frozen inventory, exact witness input/olean identities checked before/after each actual run",
+    "56 Core imports are compared by actual Gitblob to the recovered 7b1 remote tree and by SHA256 to the retained v31.6 closure",
+    "Nonzero exits, timeout or launch error cannot lead to final acceptance PASS",
+    "All public axiom reports require exact full names and only reviewed foundation; witness/certificate/runtime counts stay separate",
+    "Result records full_scientific_theory_verified=false and scoped finite mathematical outcomes",
+    "Historical local checkout HEAD is recorded as observation only, not a release baseline or clean-tree claim"
+  ],
+  "execution_requirement": "Root confirmed actual command is flock /tmp/qm317-lean.lock python3 /tmp/qm317_accept.py under require_escalated; script itself assumes this outer serialization",
+  "scope": "Read-only source review and pure Python parsing/hash checks only; did not run acceptance or Lean, modify shared source, operate remote Git or assert actual unified PASS",
+  "remaining_precondition": "Root starts unified acceptance only after final A/B witness bytes are frozen; the actual run and receipts remain the acceptance evidence"
+}

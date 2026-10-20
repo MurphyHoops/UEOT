@@ -1,0 +1,72 @@
+{
+  "schema": "ueot_qm.recovery.v31.7",
+  "checked_at_utc": "2026-10-20T07:29:54.215411+00:00",
+  "status": "BASELINE_RECOVERED_NEW_RESEARCH_IN_PROGRESS",
+  "published_baseline_commit": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+  "published_baseline_tree": "bae567bd5d19131f9279db59970e876a8d5c72c2",
+  "remote_main_observed": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+  "completed_source_pr": 345,
+  "completed_metadata_pr": 346,
+  "actual_previous_pr_ci": 39380741012,
+  "actual_previous_main_ci": 39381585828,
+  "local_historical_git_head": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+  "local_head_is_scientific_identity": false,
+  "baseline_checked_sources": 70,
+  "baseline_checked_imported_core_sources": 56,
+  "canonical_book_artifacts_checked": 3,
+  "original_materials": [
+    {
+      "name": "01-UEOT_v3_top.pdf",
+      "bytes": 333671,
+      "sha256": "6c2acdf8d8232377066c3363ce3f0b0a14b3b60608c485ce70f2089c8a2263c3"
+    },
+    {
+      "name": "02-UEOT_Core_Mathematics_v3.0_Complete.md",
+      "bytes": 183440,
+      "sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303"
+    },
+    {
+      "name": "03-CORE_V3_OPEN_PORT_MATRIX.md",
+      "bytes": 28951,
+      "sha256": "f71ba345602ee750116b0481dce7d78cf212a0fb02bccac79d482703ada0b20a"
+    },
+    {
+      "name": "04-CORE_V3_POST_CORE_SCIENTIFIC_CLOSURE.md",
+      "bytes": 21843,
+      "sha256": "669ec5667575c9dbe75645fa2c00501e4cfbec68ca8a3420825f4b6d08f41569"
+    },
+    {
+      "name": "05-THEORY_COMPLETION_ROADMAP_V2.md",
+      "bytes": 16453,
+      "sha256": "64ab8d688f7ddfc7c739dd4af3b7760eba362190cd8897a605644b0fbd95cd07"
+    }
+  ],
+  "new_v317_proofs_verified": false,
+  "notes": [
+    "v31.6 source, completed CI receipts and formal book are historical inputs, not rerun or newly counted by recovery.",
+    "New development uses an isolated workspace. Shared locked Mathlib packages are unchanged.",
+    "Official Lean startup failed in the restricted process environment and succeeded with approved normal-process execution; compiler bytes were not modified.",
+    "Concurrent Core work is preserved remotely and excluded from QM publication scope."
+  ],
+  "resume_checks": [
+    {
+      "checked_at_utc": "2026-10-20T08:14:16.773378+00:00",
+      "reason": "User reported interrupted message stream; continued existing execution rather than restarting",
+      "active_execution_session": 22486,
+      "acceptance_progress": {
+        "status": "RUNNING",
+        "started_at_utc": "2026-10-20T08:03:10.263300+00:00",
+        "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
+        "source_count": 80
+      },
+      "confirmed_gates": [
+        "unified Lean build exit0",
+        "855 exact named reports passed",
+        "7 concrete witness files/151 audits passed"
+      ],
+      "remaining_gate": "exact certificates and paired corrupted-data controls currently running; runtime and final source-freeze reconciliation follow",
+      "source_edits_after_freeze": false,
+      "original_uploads_match_recovery_hashes": true
+    }
+  ]
+}

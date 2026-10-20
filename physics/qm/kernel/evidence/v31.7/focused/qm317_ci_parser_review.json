@@ -1,0 +1,131 @@
+{
+  "schema": "ueot_qm.ci_parser_review.v31.7",
+  "status": "PARSER_REVIEW_PASS_NEW_CI_PENDING",
+  "reviewed_at_utc": "2026-10-20T08:18:29.574161+00:00",
+  "script": {
+    "path": "/tmp/qm317_verify_ci_logs.py",
+    "sha256": "d8725a2382120b6777c48f960a54c05af8bc1fdc6c8740d0226d6f71bdfa03bd",
+    "bytes": 35087
+  },
+  "adapted_from": {
+    "path": "/tmp/qm316_verify_ci_logs.py",
+    "sha256": "e2b71aff291a62ce5c2f706033e7854088c816553838311bf649bb651a11a243",
+    "bytes": 23407
+  },
+  "reviewed_files": {
+    "workflow": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/.github/workflows/ueot-qm.yml",
+      "sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e",
+      "bytes": 6477
+    },
+    "axiom_checker": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/check_axioms.py",
+      "sha256": "5ee27622fdf8200f34945abf8354ad5ba3598b0adfba4b206d9e9368cf9aec4a",
+      "bytes": 1552
+    },
+    "witness_verifier": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+      "sha256": "5587ffd016e17cd98ddd451add48e689affb53f8a8a7953793ddb28b03ab4922",
+      "bytes": 13894
+    },
+    "source_recorder": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/record_source.py",
+      "sha256": "be184e05f63b2fec1a879f5c32f3b053fb94b5a39e4ffab5bee3a6b03e3eb14f",
+      "bytes": 2516
+    },
+    "main_audit_input": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/AxiomAudit.lean",
+      "sha256": "c7234b75552393d1b3c4abf2ff75a688455512dc48ef40a8ed0bad033c321b77",
+      "bytes": 48629
+    },
+    "final_manifest": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "sha256": "cd04b64ddbb5879e1c5af67dea1d70a07d323f590aa0c1434e544e4b1d41dde0",
+      "bytes": 14940
+    },
+    "final_lean": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sha256": "55380165301503f392328e5f0a1c10c7d8ff16cccc7bfb2f5c783ec73b3a039b",
+      "bytes": 3625
+    },
+    "final_inventory": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/declaration-inventory.json",
+      "sha256": "b2223a7fd71df574393a5a392b2c97c838cc008e4c15dd5f5e5ba312ccc5127b",
+      "bytes": 165541
+    },
+    "final_witness": {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json",
+      "sha256": "c880469ba9ce10644ea50bf6afde0182de5cdba5bb691e3ff5204b030e24cac6",
+      "bytes": 176582
+    }
+  },
+  "expected_contract": {
+    "modules": 29,
+    "explicit_theorems": 646,
+    "main_audits": 855,
+    "other_main_targets": 209,
+    "witness_files": 7,
+    "witness_theorems": 110,
+    "witness_defs": 39,
+    "witness_abbrevs": 2,
+    "witness_audits": 151,
+    "witness_file_audits": {
+      "MixtureExamples": 9,
+      "SurvivalTwoState": 30,
+      "RealTomographyTwoRebit": 5,
+      "QuantumDoobExamples": 40,
+      "QuantumPurificationExamples": 20,
+      "ClassicalQuantumMemoryExamples": 22,
+      "QuantumDoobDynamicsExamples": 25
+    },
+    "positive_instances": 6,
+    "positive_audits": 42,
+    "corrupt_true_rejections": 4,
+    "same_data_false_witnesses": 4,
+    "runtime_methods": 100,
+    "demo_commands": 4,
+    "source_count_rule": "Read dynamically from final source-manifest.json; current actual accepted value80",
+    "current_actual_source_count": 80,
+    "current_actual_source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
+    "printed_source_sha256_count": 33
+  },
+  "review_checks": [
+    "Actual repository/run/event/attempt and requested commit; exactly two successful jobs; every required gate step actually successful; actual checkout HEAD in both decoded logs.",
+    "Final dynamic v31.7 source manifest: exact source-recorder path selection, unique safe paths, all SHA256 and byte lengths, canonical source-set digest, local PASS reference agreement, before/after source immutability.",
+    "33 actual printed CI SHA256 values (29 modules and four selected entry/configuration paths) exactly equal their accepted source entries; no claim that the full remote source manifest or 56 Core files were directly printed.",
+    "Official Lean 4.33.1 and full compiler commit; inherited dependency lock emitted PASS; actual positive Lake job count observed, not hard-coded to local 8793.",
+    "29-module/646-explicit-theorem inventory bound to manifest source identities; exact 855 audit names and axiom lists equal accepted local map; duplicate names and nonstandard axioms rejected; successful check_axioms.py summary required.",
+    "Actual 100 successful runtime full method names equal accepted local names, exactly one OK and test total; all four demo command sections plus actual successful steps, with redirected JSON content explicitly outside inspection.",
+    "Actual exact-certificate progress and complete 6-positive/42-audit plus 4-corrupt-true rejections and 4-same-data-false witnesses summary; no detailed CI certificate artifact inspection implied.",
+    "Actual seven witness file summaries are exactly 9/30/5/40/20/22/25, total151; accepted local detailed receipt separately proves source-bound 110 theorem/39 def/2 abbrev breakdown. The CI log does not itself print the 151 names or kind split.",
+    "Actual artifact-finalization output and successful archive steps for both run-specific ZIP names; artifact IDs preserved. Artifact download/contents and remote-tree verification remain false.",
+    "Failures preserve verification_complete=false and return exit1 with an atomic error receipt; success can only occur at the end of full actual-input validation. No compiler, network or CI launching capability is used."
+  ],
+  "blocking_findings": [],
+  "tests": {
+    "receipt": {
+      "path": "/tmp/qm317_ci_parser_tests.json",
+      "sha256": "40b5a53309beab6d397b6a5c2a384d18405f60e66f00bb89939a47ed4f02825b",
+      "bytes": 8077
+    },
+    "test_count": 14,
+    "status": "PARSER_TESTS_PASS",
+    "legacy_negative_cli_receipt": {
+      "path": "/tmp/qm317_ci_parser_legacy_rejection.json",
+      "sha256": "9a7839062abd3c2f4af00f62790b7e03fb2d0a5f80237bb43786e8ef385cd869",
+      "bytes": 6805
+    },
+    "legacy_negative_cli_status": "FAIL_AS_REQUIRED",
+    "new_ci_status": "NOT_VERIFIED"
+  },
+  "new_ci_acceptance_executed": false,
+  "scope_limits": [
+    "No v31.7 remote CI logs have been supplied to this review; no new successful CI acceptance receipt exists or is inferred from these parser tests.",
+    "An actual prior v31.6 successful run was deliberately presented to the new parser; it is rejected for26 rather than33 printed source hashes after all current local references are checked. Component tests additionally reject573 rather than855 main reports and four rather than seven witness summaries.",
+    "CI artifact ZIP files, redirected demo JSON, detailed witness/certificate receipts, and CI source-manifest JSON are not downloaded or parsed. Local detailed receipts are inspected only as local accepted references.",
+    "The separate remote-source-reconciliation must bind all80 scientific sources, the56 Core import sources and publication bytes by actual remote Git blobs. This parser does not assert entire-tree equality or remote Core source equality.",
+    "Counts are declarations/audits/executable checks, not a count of physical laws. full_scientific_theory_verified remains false on every receipt.",
+    "All new files are under/tmp. No repo source, Lean input, README, CI workflow, PDF or Markdown monograph was modified by this parser task. Archive Python source as.py.txt under kernel evidence to avoid changing the source-recorder selection."
+  ],
+  "write_scope": "/tmp only"
+}

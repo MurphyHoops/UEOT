@@ -23,7 +23,8 @@ import sys
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 CORE_ROOT = PACKAGE_ROOT.parent / "ueot-core"
-WITNESSES = ("MixtureExamples", "SurvivalTwoState", "RealTomographyTwoRebit", "QuantumDoobExamples")
+WITNESSES = ("MixtureExamples", "SurvivalTwoState", "RealTomographyTwoRebit", "QuantumDoobExamples",
+             "QuantumPurificationExamples", "ClassicalQuantumMemoryExamples", "QuantumDoobDynamicsExamples")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 IDENTIFIER = r"[A-Za-z_][A-Za-z0-9_'.]*"
 
@@ -104,13 +105,13 @@ def witness_declarations(path: Path) -> list[dict]:
                 raise ValueError(f"Unmatched end in {path.name}")
             blocks.pop()
         elif match := re.match(r"(?:@\[[^]]+\]\s*)?(?:noncomputable\s+)?"
-                               r"(theorem|def)\s+(" + IDENTIFIER + r")(?=\s|:|\()", line):
+                               r"(theorem|def|abbrev)\s+(" + IDENTIFIER + r")(?=\s|:|\()", line):
             prefix = ".".join(name for kind, name in blocks if kind == "namespace")
             name = f"{prefix}.{match[2]}" if prefix else match[2]
             declarations.append({"kind": match[1], "name": name})
         elif match := re.fullmatch(r"#print\s+axioms\s+(" + IDENTIFIER + r")", line):
             requested.append(match[1])
-        elif re.match(r"(?:private\s+|protected\s+)?(?:theorem|def)\b", line):
+        elif re.match(r"(?:private\s+|protected\s+)?(?:theorem|def|abbrev)\b", line):
             raise ValueError(f"Unsupported explicit declaration syntax in {path.name}: {line}")
         elif line.startswith("#"):
             raise ValueError(f"Unexpected diagnostic command in {path.name}: {line}")
@@ -120,7 +121,7 @@ def witness_declarations(path: Path) -> list[dict]:
     if not names or len(set(names)) != len(names):
         raise ValueError(f"Missing or duplicate explicit declarations in {path.name}")
     if requested != names:
-        raise ValueError(f"{path.name}: #print axioms must list every explicit theorem/def once, in source order")
+        raise ValueError(f"{path.name}: #print axioms must list every explicit theorem/def/abbrev once, in source order")
     return declarations
 
 
@@ -227,6 +228,7 @@ def main() -> int:
         all_declarations = [d for ds in declarations.values() for d in ds]
         receipt["witness_theorem_count"] = sum(d["kind"] == "theorem" for d in all_declarations)
         receipt["witness_def_count"] = sum(d["kind"] == "def" for d in all_declarations)
+        receipt["witness_abbrev_count"] = sum(d["kind"] == "abbrev" for d in all_declarations)
         receipt["witness_audit_count"] = len(all_declarations)
         pin = (PACKAGE_ROOT / "lean-toolchain").read_text().strip()
         match = re.fullmatch(r"leanprover/lean4:v(\d+\.\d+\.\d+)", pin)
