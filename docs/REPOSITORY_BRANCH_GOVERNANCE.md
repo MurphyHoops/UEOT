@@ -141,6 +141,12 @@ objective without an explicit exception.
 
 ## 11. CI efficiency rules
 
+- UEOT Core's automatic cloud full builds are suspended in local development mode.
+  Its full Lean workflow and Compression proof job require explicit manual dispatch;
+  automatic ownership/governance/source checks continue. Their summaries distinguish
+  a successful governance check from a Lean build that was not run.
+- Complete local proof validation before publishing Core changes, and verify merged
+  Core sources locally. The existing counted FINAL event requirements remain intact.
 - Prefer one canonical owner for each expensive regression.
 - PR workflows should cancel superseded runs when safe.
 - Feature-branch push + PR synchronize should not both perform the same expensive build.

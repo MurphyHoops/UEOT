@@ -25,7 +25,7 @@ When records disagree:
 2. `V3_COVERAGE_STATUS.md` on `main` controls the 106/106 proof baseline;
 3. `COMPRESSION_MISSION.md` controls the scientific Definition of Done;
 4. `COMPRESSION_LEDGER.yaml` on `main` controls counted compression claims;
-5. canonical `main` source + PR/CI state controls integrated implementation facts;
+5. canonical `main` source + PR state and actual local/CI receipts control integrated implementation facts;
 6. `COMPRESSION_RESEARCH_TRACKS.json` controls machine path/track policy;
 7. Issue #146 controls only the current recovery index/intent;
 8. task trackers control detailed active scientific plans;
@@ -92,9 +92,9 @@ Normal post-FINAL research:
 5. at a meaningful milestone, run the Compression namespace checks;
 6. before first/final push, run the relevant local regression once;
 7. open one PR to `main`;
-8. obtain required CI and one exact-head independent review;
+8. obtain lightweight CI and one exact-head independent review against the local validation evidence;
 9. merge;
-10. require resulting-main full regression when Lean source changed;
+10. run the resulting-main regression locally when Lean source changed;
 11. close/update the task tracker and Issue #146 current block;
 12. delete the merged branch.
 
@@ -113,23 +113,34 @@ Required when applicable:
 - base-policy ownership validation;
 - research-governance regression tests;
 - proof-escape scan;
-- `lake build UEOT.V3.Compression` for Compression Lean changes;
+- local `lake build UEOT.V3.Compression` for Compression Lean changes at the PR milestone;
 - ledger witness/axiom checks when the changed surface reaches them;
-- UEOT Core Lean full build once on the PR for Lean-source changes;
+- local full `lake build UEOT` once before publication for Lean-source changes;
 - exact-head independent review once at PR boundary.
 
 Documentation/registry-only changes do not run a Lean proof build solely because they live
-under `formalization/ueot-core/`.
+under `formalization/ueot-core/`. Automatic PR/`main` checks retain ownership, governance,
+source proof-escape scanning and evidence regressions. They explicitly report cloud Lean
+builds as **NOT RUN**, with local proof evidence supplied by the research PR.
+
+`UEOT Core Lean` is manual-only (`workflow_dispatch`). A manual `Compression Guard`
+dispatch additionally runs its Compression build, ledger Lean witnesses and axiom audit.
+Select the intended branch/ref explicitly; ordinary pushes do not launch either build.
 
 ### Resulting main
 
-For Lean-source changes, `UEOT Core Lean` is the canonical owner of the full
-`lake build UEOT` regression. `Compression Guard` does not duplicate it.
+For Lean-source changes, verify the resulting `main` with the cached local
+`lake build UEOT` regression and record the actual source identity and outcome.
+The manual `UEOT Core Lean` workflow remains available for an independently requested
+cloud run. `Compression Guard` does not duplicate the full UEOT target.
 
 ### L2/L3
 
-Run full exact-head regression and the additional governance/promotion checks defined by
-the relevant exception/Mission Contract.
+Run full exact-head regression locally and the additional governance/promotion checks
+defined by the relevant exception/Mission Contract. L3's existing FINAL verifier requires
+actual `push` evidence; before any future counted re-finalization, restore the required
+event-producing workflows in a separate governance change. Neither manual dispatch nor
+local evidence substitutes for the historical protocol's required event type.
 
 ## 7. Local validation cadence
 

@@ -155,7 +155,7 @@ L3 must follow `COMPRESSION_MISSION.md` and the promotion/re-finalization sectio
 
 The ordinary lifecycle is now:
 
-`SCIENTIFIC PREFLIGHT → ONE RESEARCH BRANCH → LOCAL ITERATION → ONE PR → REQUIRED CI/REVIEW → MERGE → RESULTING-MAIN FULL REGRESSION → TRACKER CLOSE → BRANCH DELETE`.
+`SCIENTIFIC PREFLIGHT → ONE RESEARCH BRANCH → LOCAL ITERATION AND VALIDATION → ONE PR → LIGHTWEIGHT CI/REVIEW → MERGE → LOCAL RESULTING-MAIN VALIDATION → TRACKER CLOSE → BRANCH DELETE`.
 
 There is no separate authorization PR and no separate final-governance PR for L1.
 
@@ -169,21 +169,29 @@ separate governance events. During iteration, each stage normally needs only:
 At meaningful milestones or before the PR, run the namespace/Compression checks. The
 full repository regression is not repeated after every theorem stage.
 
-## 8. CI ownership
+## 8. Local builds and explicit cloud validation
 
-To avoid duplicate proof work:
+Routine Core development uses local Lean validation before the first/final push.
+Automatic cloud full builds are suspended from 2026-10-20 at the project owner's request.
 
-- **UEOT Core Lean** is the sole workflow that owns `lake build UEOT`;
-- feature-branch pushes do not run another full build merely because a PR exists;
-- PR runs supersede stale PR runs (`cancel-in-progress: true`);
-- **Compression Guard** owns governance validation, proof-escape scanning, Compression
-  namespace build, ledger witness checks and axiom audit;
-- Compression Guard does not repeat the full UEOT build;
-- documentation/registry-only governance changes skip the Lean proof job;
-- resulting `main` receives the canonical full regression for theorem-source changes.
+- **UEOT Core Lean** runs `lake build UEOT` only through `workflow_dispatch` on the selected ref.
+- **Compression Guard** keeps automatic governance, source proof-escape scanning and
+  evidence-consumer regressions on PRs and `main`.
+- Its expensive Compression build, ledger Lean witnesses and axiom audit run only on
+  explicit `workflow_dispatch`; dispatch always requests that proof job, regardless of
+  the previous commit's changed-path classification.
+- Automatic summaries state that cloud Lean builds were **NOT RUN**. A green governance
+  job is not a Lean compilation receipt.
+- Local proof evidence identifies the source/commit, pinned toolchain and dependency lock,
+  actual commands, exit codes and relevant axiom checks. L2 full UEOT regression and
+  independent review remain required locally; L1 follows the milestone cadence above.
+- After merging Lean changes, validate the resulting `main` locally. Use the existing
+  cached build; do not start a redundant cloud run merely to duplicate local evidence.
 
-A green targeted check is not a substitute for the resulting-main regression when Lean
-source changed; it only avoids repeating the same full build at every intermediate step.
+The counted L3/FINAL protocol and immutable historical Actions receipts are unchanged.
+Its current verifier requires genuine `push` event evidence. A future L3 re-finalization
+must first restore the required event-producing workflows through a separate governance
+change; a manual run or local receipt cannot be relabelled as that evidence.
 
 ## 9. Review discipline
 
