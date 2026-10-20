@@ -92,7 +92,7 @@ Mac 继续使用 Desktop Commander Local Mac 的短 start_process 读状态，�
 | 逐行采样校准 | 仍使用统一 Fin N | VariableRegisteredSamples 单独编译 PASS：6.911 秒；显式 Sigma 类型修复后的源码获窄量词审查 |
 | 异样本数与空注册边界 | 未增加生产接口 | N=1、2 与空 J 的合并研究文件编译 PASS：34.119 秒；原首轮失败保留 |
 | 逐行注册联合风险 | 生产注册风险接口仍是统一 Fin N | VariableRegisteredJoint tail 首次实际编译 PASS：6.422 秒；联合风险新独立审查 CLEAR，收据为 research_evidence/VARIABLE_JOINT_REVIEW.md |
-| 观察类型 | 路径 TV/风险仍需 [Fintype Y] | 有限共同载体与保留 escape 越界质量的证明路线已形成；一般参考核扩展仍待证明与实现 |
+| 观察类型 | 路径 TV/风险仍需 [Fintype Y] | 一侧有限支撑的精确 TV 编码与保留原参考事件的路径比较已有完整书面证明；任意观察类型的 Lean 实现仍待完成 |
 
 本轮研究源码的 SHA-256：Good 为 755fd26ad926ac27489d2ab157917cda96b16d40a76d903116bab19b765e51c3；Variable 为 915b4f906c43429b25c010e7ffc44f766abf4066d9a32dcd91bb69fa7ce02e5f。
 异 N/空 J 的实际组合为 be5479175a9e9c4f8ebf20229ebd4e3ed87f28e875e7501bc28813f93d394e1f；联合 tail 为 69f82675fff64434bc939cf719b0edf2602c6770d33fa3b1594eb3932364c271，实际组合为 f124fedb8058d75d330dbf6675c8e7e5d5af7d242b00aec2b6ff7d70879c4f29。
@@ -103,5 +103,5 @@ N_j 及采样注册在数据前固定，行内独立、行分布等于同一个�
 科学正文使用 INTERFACE_RESEARCH.md、FINITE_OBSERVATION_ESCAPE.md、GOOD_SELECTED_ENVELOPE.md、VARIABLE_REGISTERED_JOINT_SPEC.md 及对应研究原型；前期“尚未编译/尚未连接”的收据保留为历史，当前状态由本节及后续档案表达。
 数学与哲学反馈已有 UNIFIED_FINITE_SOURCE_EXAMPLE.md、UNIFIED_FINITE_SOURCE_LEAN_MAP.md、UNIFIED_FINITE_SOURCE_PHILOSOPHY.md：从实际 survivalMicroKernel/conflictRewardControl 连接商、受限最优、修复、支持与风险。此例没有因为另几个接口原型编译而自动形式化。
 该新书面例的值 0/2、两步实际风险 15/64 与覆盖界 1/4 尚无专门生产 Lean 端点；它与已形式化训练实验的 9/64、现行数学 §35.4 另一模型的 8/5 分属不同源，不能混用。
-哲学片段《可以被保持的组织》发展任务内准确客体、活动中的持续、恢复未来能力与历史责任、承诺的实行条件与价值理由。新审读要求在 15/64 之前明示逐历史条件动作概率，并把保持/修复定位为持续履行的实现条件；具体修订建议见 UNIFIED_FINITE_SOURCE_REVIEW_FINAL_2026-10-20.md。
-下一步由主智能体完成联合风险独审与实际候选提交绑定，按真实科研结果决定接口集成；统一有限实例随后补同源 PMF、策略/路径律和两个参考的具体声明，再据成熟度修订独立著作。沿用 #146 / #302，#344 不重做，#342 / #343 保持关闭；已完成的三 PR 发布闭环不重复。
+哲学片段《可以被保持的组织》发展任务内准确客体、活动中的持续、恢复未来能力与历史责任、承诺的实行条件与价值理由。逐历史条件动作概率、保持/修复的适用范围和随机更新措辞三项收紧均已采用；原始修订建议见[已归档的书稿语义审读](research_evidence/BOOKS_RESEARCH_REVIEW.md)，修订后文本身份见[哲学修订绑定收据](research_evidence/PHILOSOPHY_REVISION_BINDING.json)。
+联合风险独审已完成，见[联合接口独立审查](research_evidence/VARIABLE_JOINT_REVIEW.md)；研究候选的最终提交绑定和发布验收由 [#354](https://github.com/MurphyHoops/UEOT/pull/354) 维护。下一步按真实科研结果推进生产接口集成；统一有限实例随后补同源 PMF、策略/路径律和两个参考的具体声明，再据成熟度修订独立著作。沿用 #146 / #302，#344 不重做，#342 / #343 保持关闭；已完成的三 PR 发布闭环不重复。
