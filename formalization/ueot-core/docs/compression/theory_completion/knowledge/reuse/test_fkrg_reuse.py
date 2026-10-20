@@ -20,22 +20,24 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 641)
-        self.assertEqual(res["ueot_maintained_modules"], 630)
+        self.assertEqual(res["module_source_hashes_verified"], 646)
+        self.assertEqual(res["ueot_maintained_modules"], 635)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3865)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3938)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 72)
+        self.assertEqual(res["overlay_public_theorems"], 145)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 16)
-        self.assertEqual(res["overlay_count"], 4)
-        self.assertEqual(res["overlay_registered_direct_edges"], 82)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 27)
+        self.assertEqual(res["overlay_count"], 5)
+        self.assertEqual(res["overlay_registered_direct_edges"], 173)
+        self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
+                             for row in self.data["graph"].values()), 5059)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 4)
+        self.assertEqual(len(self.data["overlays"]), 5)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -148,6 +150,100 @@ class ProofReuseTests(unittest.TestCase):
         })
         self.assertEqual(calibrated["role"], "UNCOUNTED_FINITE_HORIZON_RISK_AND_CALIBRATION_BRIDGES")
         self.assertEqual(current["counted_core_impact"], "NONE")
+
+    def test_statistical_risk_overlay_chain_and_source_endpoints(self):
+        current = self.data["overlays"][4]
+        self.assertEqual(current["base_snapshot_modules"], 641)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[3])
+        self.assertEqual(len(current["added_modules"]), 5)
+        self.assertEqual(len(current["public_theorems"]), 73)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 3865)
+        self.assertEqual(distinct["cross_isDefEq_comparisons"], 282145)
+        self.assertEqual(distinct["internal_isDefEq_comparisons"], 2628)
+        self.assertEqual(current["proof_dependency_certification"]["registered_direct_edges"],
+                         91)
+        lexical = current["lexical_pr_preflight"]
+        self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 11)
+        self.assertEqual(lexical["base_public_lexical_theorem_count"], 3866)
+        self.assertEqual(lexical["candidate_public_lexical_theorem_count"], 3939)
+        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 3938)
+        self.assertEqual(current["counted_core_impact"], "NONE")
+        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        # Exact sets observed in the separately executed fixed native verifier.
+        # Source tactic tokens are not evidence of compiled direct dependencies.
+        expected_edges = {
+            "measure_finite_row_calibration_bad_le": [
+                'UEOT.V3.BoundedLossTwoSided.measure_exists_candidate_bad_le',
+            ],
+            "statistical_representative_risk_certificate": [
+                prefix + 'empirical_representative_risk_of_calibrated',
+                prefix + 'measurableSet_empirical_transition_calibrated',
+                prefix + 'measure_empirical_transition_uncalibrated_le',
+            ],
+            "statistical_empirical_reference_certificate": [
+                prefix + 'empirical_reference_risk_of_calibrated',
+                prefix + 'measurableSet_empirical_transition_calibrated',
+                prefix + 'measure_empirical_transition_uncalibrated_le',
+            ],
+            "same_policy_microscopic_failure_risk": [
+                prefix + 'risk_microscopic_event_le_envelope',
+                prefix + 'same_policy_projected_failure_risk',
+            ],
+        }
+        for short_name, expected in expected_edges.items():
+            with self.subTest(symbol=short_name):
+                item = reuse.explain(self.data, prefix + short_name)
+                self.assertEqual(set(item["direct_existing_source_theorem_uses"]), set(expected))
+                self.assertEqual(item["role"],
+                                 "UNCOUNTED_STATISTICAL_RISK_CALIBRATION_AND_FAILURE_BRIDGES")
+                self.assertEqual(item["area"], "V3/Compression/TheoryCompletion/UnifiedClosure")
+
+    def test_native_statistical_scope_and_evidence_binding(self):
+        current = self.data["overlays"][4]
+        evidence = current["native_export_evidence"]
+        artifact = reuse.REPO / evidence["path"]
+        native = json.loads(artifact.read_text())
+        public = native["public_source_theorems"]
+        scope = native["all_native_theorem_constants"]
+        self.assertEqual(evidence["sha256"],
+                         "9a87e5f99d48cfc7fa95df595d7884837f0dd24253205858f5c27ae22545a63d")
+        self.assertEqual(len(public), 73)
+        self.assertEqual(len(scope), 126)
+        self.assertEqual(sum(row["is_private"] for row in scope), 11)
+        native_by_name = {row["name"]: row for row in scope}
+        self.assertEqual(len(native_by_name), 126)
+        expected_fields = {"name", "source_module", "is_private", "level_parameters",
+                           "type", "direct_constants", "direct_theorem_constants", "axioms"}
+        for row in scope:
+            with self.subTest(native_symbol=row["name"]):
+                self.assertEqual(set(row), expected_fields)
+                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
+        for row in public:
+            with self.subTest(public_symbol=row["name"]):
+                native_row = native_by_name[row["name"]]
+                for field in ("source_module", "level_parameters", "type", "direct_constants"):
+                    self.assertEqual(row[field], native_row[field])
+                self.assertTrue(set(row["source_theorem_deps"]) <=
+                                set(native_row["direct_theorem_constants"]))
+        names = {row["name"] for row in public}
+        self.assertEqual(len(names), len(public))
+        self.assertEqual(names, {row["name"] for row in current["public_theorems"]})
+        self.assertTrue(names <= {row["name"] for row in scope if not row["is_private"]})
+        others = [row for row in scope if not row["is_private"] and row["name"] not in names]
+        self.assertEqual(len(others), 42)
+        owners = {row["module"] for row in current["added_modules"]}
+        self.assertEqual({row["source_module"] for row in scope}, owners)
+        self.assertTrue(all(row["source_module"] in owners for row in public))
+        self.assertTrue(all(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"}
+                            for row in scope))
+        original = Path.read_bytes
+        def drift(path):
+            return b"deliberate statistical native evidence drift" if path == artifact else original(path)
+        with mock.patch.object(Path, "read_bytes", drift):
+            with self.assertRaisesRegex(RuntimeError, "NATIVE_OVERLAY_EVIDENCE_DRIFT"):
+                reuse.verify_evidence_files()
 
     def test_overlay_areas_follow_physical_sources(self):
         prefix = "formalization/ueot-core/UEOT/"
@@ -304,7 +400,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 641)
+        self.assertEqual(len(live), 646)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

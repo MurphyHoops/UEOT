@@ -26,24 +26,28 @@ OVERLAY_PATHS = [
     HERE / "CALIBRATED_DEFECT_REUSE_OVERLAY_V1.json",
     HERE / "DEFECT_GAUGE_REUSE_OVERLAY_V1.json",
     HERE / "FINITE_HORIZON_RISK_REUSE_OVERLAY_V1.json",
+    HERE / "STATISTICAL_RISK_REUSE_OVERLAY_V1.json",
 ]
 OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
     HERE / "VERIFY_CALIBRATED_DEFECT_OVERLAY_TYPES.lean",
     HERE / "VERIFY_DEFECT_GAUGE_OVERLAY_TYPES.lean",
     HERE / "VERIFY_FINITE_HORIZON_RISK_OVERLAY_TYPES.lean",
+    HERE / "VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean",
 ]
 OVERLAY_SHA256S = [
     "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
     "b48607f7b68bfcd8aef0d2417d0111d66e374001114fd38048602b4557f8adc2",
     "182efa3fc030cac3ba2082fc13df461a8e165411b58582b5a85cb05343c263b9",
     "c7e4f561e438f6f3eef3112ecf7ceeea59e1cb98c10b5b20c65490eb7919d480",
+    "f0d0ea91584773c24eeed59f8f1915102b92c318bf864f3b08a4c7093552c755",
 ]
 OVERLAY_TYPE_CHECK_SHA256S = [
     "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
     "c75a3af6508d2ec1ba0214d833ae17783d7f2e410c6f0226534e278fb83cecc2",
     "058a7a228d13a8063408053e4b9006ab30309324a03ccffbbd89e9982246f061",
     "8624de79f7bde2b2af5b1cafc65342d925b3ea4a753ba3f62f86207dcd5e37de",
+    "5615a23f94b3ba53f9faec51b72d021f204e539fc73448f793752cc78727438d",
 ]
 
 # Independent immutable digests calculated from main after merged PR #314.
@@ -381,7 +385,7 @@ def status(data: dict):
             x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
             for x in overlays),
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge and finite-horizon-risk overlays, Lean kernel, and canonical Core/Compression ledgers",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk and statistical-risk overlays, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 

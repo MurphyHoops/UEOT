@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "08a1b117bd84768bb20430827a7f96ee0055902c242af7e91a9f1d6c110f0e39",
+  "source_tree_sha256": "0f8ab9e7ccbf15f7f42305ec8018841bfd7dd92691f412aab283f9eee4067ea3",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 641,
-  "total_source_lines": 113399,
-  "total_theorem_lemma_tokens": 4041,
+  "total_Lean_modules": 646,
+  "total_source_lines": 114964,
+  "total_theorem_lemma_tokens": 4121,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 42
+    "UMC_New_Bridges": 47
   },
-  "reachable_from_UEOT_root": 641,
+  "reachable_from_UEOT_root": 646,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -24,6 +24,10 @@
     {
       "module": "UEOT.V3.TotalVariation",
       "direct_dependents": 11
+    },
+    {
+      "module": "UEOT.V3.PathError",
+      "direct_dependents": 10
     },
     {
       "module": "UEOT.V3.CoreOperationalAssembly",
@@ -39,10 +43,6 @@
     },
     {
       "module": "UEOT.V3.InformationPacking",
-      "direct_dependents": 9
-    },
-    {
-      "module": "UEOT.V3.PathError",
       "direct_dependents": 9
     },
     {
@@ -90,6 +90,10 @@
       "direct_dependents": 7
     },
     {
+      "module": "UEOT.V3.TransportDefect",
+      "direct_dependents": 7
+    },
+    {
       "module": "UEOT.V3.Compression.Objecthood.FormedParentSelfRepairSynthesis",
       "direct_dependents": 6
     },
@@ -130,15 +134,15 @@
       "direct_dependents": 6
     },
     {
-      "module": "UEOT.V3.TransportDefect",
-      "direct_dependents": 6
-    },
-    {
       "module": "UEOT.V3.ViabilityKernel",
       "direct_dependents": 6
     },
     {
       "module": "UEOT.Core.Blocker",
+      "direct_dependents": 5
+    },
+    {
+      "module": "UEOT.V3.BoundedLossTwoSided",
       "direct_dependents": 5
     },
     {
@@ -196,10 +200,6 @@
     {
       "module": "UEOT.V3.FiniteDobrushin",
       "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.HilbertMeanAzuma",
-      "direct_dependents": 5
     }
   ],
   "cross_category_direct_edges": [
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 42
+      "edges": 47
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -336,7 +336,7 @@
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 14
+      "edges": 20
     },
     {
       "from": "UMC_New_Bridges",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 9683,
-      "lines": 126,
+      "bytes": 10098,
+      "lines": 131,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3562,7 +3562,12 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedRiskRows",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5267,6 +5272,20 @@
       "theorem_lemma_count": 3,
       "decl_count": 4
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "bytes": 11403,
+      "lines": 226,
+      "category": "UMC_New_Bridges",
+      "title": "A data-built reference model for actual finite-time risk",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+        "UEOT.V3.FiniteAlphabetSampling",
+        "UEOT.V3.TransportDefect"
+      ],
+      "theorem_lemma_count": 7,
+      "decl_count": 10
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteCommonProcessWitness": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteCommonProcessWitness.lean",
       "bytes": 4668,
@@ -5363,6 +5382,18 @@
       ],
       "theorem_lemma_count": 3,
       "decl_count": 3
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "bytes": 6714,
+      "lines": 149,
+      "category": "UMC_New_Bridges",
+      "title": "Physical failure events and observable conservative envelopes",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk"
+      ],
+      "theorem_lemma_count": 7,
+      "decl_count": 9
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MultiScaleExactControlComposition": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MultiScaleExactControlComposition.lean",
@@ -5545,6 +5576,47 @@
       ],
       "theorem_lemma_count": 3,
       "decl_count": 5
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "bytes": 7151,
+      "lines": 162,
+      "category": "UMC_New_Bridges",
+      "title": "Pointwise calibration does not survive optimistic action selection",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
+        "UEOT.V3.PathError"
+      ],
+      "theorem_lemma_count": 11,
+      "decl_count": 20
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "bytes": 15722,
+      "lines": 310,
+      "category": "UMC_New_Bridges",
+      "title": "Finite-sample calibration of the actual controlled source",
+      "imports": [
+        "UEOT.V3.BoundedLossTwoSided",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk"
+      ],
+      "theorem_lemma_count": 6,
+      "decl_count": 11
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "bytes": 32136,
+      "lines": 713,
+      "category": "UMC_New_Bridges",
+      "title": "Constructed sampling experiments and a nontrivial controlled witness",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+        "UEOT.V3.HilbertMeanProductBlockIndependence",
+        "UEOT.V3.RepresentationCovariance"
+      ],
+      "theorem_lemma_count": 49,
+      "decl_count": 83
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StochasticHiddenAliasExample": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticHiddenAliasExample.lean",
