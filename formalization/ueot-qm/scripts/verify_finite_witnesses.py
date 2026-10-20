@@ -23,7 +23,7 @@ import sys
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 CORE_ROOT = PACKAGE_ROOT.parent / "ueot-core"
-WITNESSES = ("MixtureExamples", "SurvivalTwoState")
+WITNESSES = ("MixtureExamples", "SurvivalTwoState", "RealTomographyTwoRebit", "QuantumDoobExamples")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 IDENTIFIER = r"[A-Za-z_][A-Za-z0-9_'.]*"
 
@@ -200,7 +200,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, default=PACKAGE_ROOT / "evidence/finite-witnesses")
     parser.add_argument("--lake", default="lake", help="Lake executable name or filesystem path")
-    parser.add_argument("--timeout-seconds", type=int, default=180)
+    parser.add_argument("--timeout-seconds", type=int, default=600)
     args = parser.parse_args()
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)

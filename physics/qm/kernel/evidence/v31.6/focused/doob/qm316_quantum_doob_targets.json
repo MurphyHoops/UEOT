@@ -1,0 +1,365 @@
+{
+  "UEOTQM/QuantumDoob.lean": {
+    "targets": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.successOperator"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_zero"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_succ"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_smul"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successOperator_posSemidef"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_successOperator"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.successMass"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.successMass_eq_response"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_successMass"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_successMass_pos"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.conditionalState"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_conditionalState"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_rate_nonneg"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigen_rate_le_one"
+      },
+      {
+        "kind": "structure",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.unapply"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.metric"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_smul"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.unapply_apply"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_unapply"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.apply_posSemidef"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_pos"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.state"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.state_matrix"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_eq_pairing"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.metric_conjugate"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.transformed_gram"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.transformed_map"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_complete"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.doobWeighted"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoob.doobInstrument"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_branch"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_branch_apply"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_branch_state"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_channelState"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_successOperator_apply"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigenmetric_successMass"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.eigenmetric_successMass_pos"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_finite_conditioning"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_successOperator_state"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoob.doob_successMass_state"
+      }
+    ],
+    "count": 42,
+    "kinds": {
+      "theorem": 32,
+      "def": 9,
+      "structure": 1
+    },
+    "supplemental_audit_targets": [
+      {
+        "kind": "constructor",
+        "name": "UEOTQM.QuantumDoob.InvertibleFilter.mk"
+      }
+    ],
+    "public_audit_count_including_constructor": 43,
+    "absolute_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/QuantumDoob.lean",
+    "sha256": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+    "bytes": 15793,
+    "lines": 339
+  },
+  "scripts/witnesses/QuantumDoobExamples.lean": {
+    "targets": [
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.successK"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.failureK"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.success_gram"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.failure_gram"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.sourceK"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.source_complete"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.sourceInstrument"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.source_branch_formula"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.rhoMatrix"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.rhoMatrix_positive"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.rhoMatrix_trace"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.rho"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.S"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.T"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.inverse_mul"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.mul_inverse"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.filter"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.metric_exact"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.source_right_eigen"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.source_left_eigen"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.filtered_mass_exact"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.plusMatrix"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.filtered_state_exact"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.survival_exact"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.survival_positive"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.qsd_conditional_fixed"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.transformedInstrument"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.transformed_branch_formula"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.transformed_stationary"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.transformed_records"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.transformed_record_mass"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.arbitrary_initial_survival_positive"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.arbitrary_initial_finite_conditioning"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.failure_completion_necessary"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.success_kraus_noncommuting"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.input_coherence_retained"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.qsd_ne_filtered_state"
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumDoobExamples.uniformDensity"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.uniform_probability_exact"
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumDoobExamples.uniform_probability_ne_qsd"
+      }
+    ],
+    "count": 40,
+    "kinds": {
+      "theorem": 28,
+      "def": 12,
+      "structure": 0
+    },
+    "absolute_path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/scripts/witnesses/QuantumDoobExamples.lean",
+    "sha256": "5fbe70aca27378fead77fdb52658bb048463eff3b1e7e1299a43e5f40e2d456a",
+    "bytes": 12749,
+    "lines": 285
+  }
+}

@@ -1,0 +1,421 @@
+{
+  "task": "UEOT-QM v31.6 finite real quantum local tomography counterexample",
+  "status": "focused_acceptance_pass_sources_frozen",
+  "baseline_commit": "427f512745ca70f82cba6a1388edcab904da8a42",
+  "toolchain": "official Lean 4.33.1 /tmp/lean-4.33.1-linux/bin/lake",
+  "artifacts": [
+    {
+      "role": "module",
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/RealLocalTomography.lean",
+      "relative_path": "UEOTQM/RealLocalTomography.lean",
+      "sha256": "76dfea1aa3ad7f16e699a8529bde5f22120badac9a1db60f0265eaef4eeddc9e",
+      "line_count": 314,
+      "counts": {
+        "theorem": 37,
+        "def": 11,
+        "abbrev": 2
+      },
+      "declarations": [
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.IsReal"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.symmetric_of_real_hermitian"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.productEffect"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.productEffect_matrix"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.plusProjector"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.minusProjector"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.plusProjector_hermitian"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.minusProjector_hermitian"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.plusProjector_square"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.minusProjector_square"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.plusProjector_mul_minusProjector"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.one_sub_plusProjector"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.plusProjector_posSemidef"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.minusProjector_posSemidef"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.involutionEffect"
+        },
+        {
+          "kind": "abbrev",
+          "name": "UEOTQM.RealLocalTomography.Qubit"
+        },
+        {
+          "kind": "abbrev",
+          "name": "UEOTQM.RealLocalTomography.TwoQubit"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.pauliY"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.parity"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.pauliY_hermitian"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.pauliY_square"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.parity_hermitian"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.parity_square"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.pauliY_trace"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.parity_trace"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.parity_isReal"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.rhoPlus"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.rhoMinus"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.rhoPlus_matrix"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.rhoMinus_matrix"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.rhoPlus_isReal"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.rhoMinus_isReal"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.rhoPlus_symmetric"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.rhoMinus_symmetric"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.density_difference"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.trace_mul_pauliY_zero"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.trace_product_density_difference_zero"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.all_real_product_probabilities_equal"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.jointTest"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.jointTest_matrix"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.jointTest_isReal"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.jointTest_probability_plus"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.jointTest_probability_minus"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.rhoPlus_ne_rhoMinus"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.real_local_tomography_fails"
+        },
+        {
+          "kind": "def",
+          "name": "UEOTQM.RealLocalTomography.complexLocalTest"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.complexLocalTest_not_real"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.complex_product_probability_plus"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.complex_product_probability_minus"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.complex_product_distinguishes"
+        }
+      ],
+      "audit_targets": [
+        "UEOTQM.RealLocalTomography.IsReal",
+        "UEOTQM.RealLocalTomography.symmetric_of_real_hermitian",
+        "UEOTQM.RealLocalTomography.productEffect",
+        "UEOTQM.RealLocalTomography.productEffect_matrix",
+        "UEOTQM.RealLocalTomography.plusProjector",
+        "UEOTQM.RealLocalTomography.minusProjector",
+        "UEOTQM.RealLocalTomography.plusProjector_hermitian",
+        "UEOTQM.RealLocalTomography.minusProjector_hermitian",
+        "UEOTQM.RealLocalTomography.plusProjector_square",
+        "UEOTQM.RealLocalTomography.minusProjector_square",
+        "UEOTQM.RealLocalTomography.plusProjector_mul_minusProjector",
+        "UEOTQM.RealLocalTomography.one_sub_plusProjector",
+        "UEOTQM.RealLocalTomography.plusProjector_posSemidef",
+        "UEOTQM.RealLocalTomography.minusProjector_posSemidef",
+        "UEOTQM.RealLocalTomography.involutionEffect",
+        "UEOTQM.RealLocalTomography.Qubit",
+        "UEOTQM.RealLocalTomography.TwoQubit",
+        "UEOTQM.RealLocalTomography.pauliY",
+        "UEOTQM.RealLocalTomography.parity",
+        "UEOTQM.RealLocalTomography.pauliY_hermitian",
+        "UEOTQM.RealLocalTomography.pauliY_square",
+        "UEOTQM.RealLocalTomography.parity_hermitian",
+        "UEOTQM.RealLocalTomography.parity_square",
+        "UEOTQM.RealLocalTomography.pauliY_trace",
+        "UEOTQM.RealLocalTomography.parity_trace",
+        "UEOTQM.RealLocalTomography.parity_isReal",
+        "UEOTQM.RealLocalTomography.rhoPlus",
+        "UEOTQM.RealLocalTomography.rhoMinus",
+        "UEOTQM.RealLocalTomography.rhoPlus_matrix",
+        "UEOTQM.RealLocalTomography.rhoMinus_matrix",
+        "UEOTQM.RealLocalTomography.rhoPlus_isReal",
+        "UEOTQM.RealLocalTomography.rhoMinus_isReal",
+        "UEOTQM.RealLocalTomography.rhoPlus_symmetric",
+        "UEOTQM.RealLocalTomography.rhoMinus_symmetric",
+        "UEOTQM.RealLocalTomography.density_difference",
+        "UEOTQM.RealLocalTomography.trace_mul_pauliY_zero",
+        "UEOTQM.RealLocalTomography.trace_product_density_difference_zero",
+        "UEOTQM.RealLocalTomography.all_real_product_probabilities_equal",
+        "UEOTQM.RealLocalTomography.jointTest",
+        "UEOTQM.RealLocalTomography.jointTest_matrix",
+        "UEOTQM.RealLocalTomography.jointTest_isReal",
+        "UEOTQM.RealLocalTomography.jointTest_probability_plus",
+        "UEOTQM.RealLocalTomography.jointTest_probability_minus",
+        "UEOTQM.RealLocalTomography.rhoPlus_ne_rhoMinus",
+        "UEOTQM.RealLocalTomography.real_local_tomography_fails",
+        "UEOTQM.RealLocalTomography.complexLocalTest",
+        "UEOTQM.RealLocalTomography.complexLocalTest_not_real",
+        "UEOTQM.RealLocalTomography.complex_product_probability_plus",
+        "UEOTQM.RealLocalTomography.complex_product_probability_minus",
+        "UEOTQM.RealLocalTomography.complex_product_distinguishes"
+      ],
+      "frozen": true
+    },
+    {
+      "role": "witness",
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/scripts/witnesses/RealTomographyTwoRebit.lean",
+      "relative_path": "scripts/witnesses/RealTomographyTwoRebit.lean",
+      "sha256": "badfe81da1b3ddfa6c69927486d98fcf5ba48b115098de5838413dadfa0bfe15",
+      "line_count": 71,
+      "counts": {
+        "theorem": 5,
+        "def": 0,
+        "abbrev": 0
+      },
+      "declarations": [
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.Examples.hidden_coherence_exact"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.Examples.finite_real_product_span_blind"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.Examples.joint_test_not_finite_real_product_sum"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.Examples.reality_restriction_is_necessary"
+        },
+        {
+          "kind": "theorem",
+          "name": "UEOTQM.RealLocalTomography.Examples.response_gaps_exact"
+        }
+      ],
+      "audit_targets": [
+        "UEOTQM.RealLocalTomography.Examples.hidden_coherence_exact",
+        "UEOTQM.RealLocalTomography.Examples.finite_real_product_span_blind",
+        "UEOTQM.RealLocalTomography.Examples.joint_test_not_finite_real_product_sum",
+        "UEOTQM.RealLocalTomography.Examples.reality_restriction_is_necessary",
+        "UEOTQM.RealLocalTomography.Examples.response_gaps_exact"
+      ],
+      "frozen": true
+    }
+  ],
+  "primary_theorem": "UEOTQM.RealLocalTomography.real_local_tomography_fails",
+  "inputs": [
+    "Existing finite complex Operator/Density/Effect types",
+    "IsReal: every entry has zero imaginary component",
+    "Actual Kronecker composite and trace Born pairing as representation inputs"
+  ],
+  "proved": [
+    "Actual PSD trace-one distinct real density operators rhoPlus and rhoMinus",
+    "Every pair of real local effects gives equal product probabilities",
+    "Actual real joint effect gives probabilities 1 and 0",
+    "Complex local +Y product effect gives probabilities 1/2 and 0",
+    "Witness: joint effect is not any finite real linear combination of real product effects"
+  ],
+  "not_proved": [
+    "A complete real OPT system and channel category",
+    "Satisfaction of all UEOT Core / ESP premises by real quantum theory",
+    "Unconditional derivation of complex quantum theory from UEOT",
+    "General complex local tomography or purification"
+  ],
+  "verification": [
+    {
+      "kind": "module_build",
+      "command": "/tmp/lean-4.33.1-linux/bin/lake build +UEOTQM.RealLocalTomography",
+      "cwd": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm",
+      "exit_code": 0,
+      "log": "/tmp/qm316_real_tomography_build.log",
+      "source_sha256": "76dfea1aa3ad7f16e699a8529bde5f22120badac9a1db60f0265eaef4eeddc9e",
+      "result_line": "Built UEOTQM.RealLocalTomography (458s); Build completed successfully (8719 jobs).",
+      "new_module_warnings": 0,
+      "note": "Inherited Observables lint warnings are present in the dependency log; the 8719-job figure includes dependency cache replay.",
+      "log_sha256": "ef452341efbbe4fe253d35661d2abe4c91bff43c39737e4b45cf4c2b9628cb3c"
+    },
+    {
+      "kind": "focused_witness",
+      "command": "/tmp/lean-4.33.1-linux/bin/lake env lean scripts/witnesses/RealTomographyTwoRebit.lean",
+      "status": "pass",
+      "log": "/tmp/qm316_real_tomography_witness.log",
+      "exit_code": 0,
+      "source_sha256": "badfe81da1b3ddfa6c69927486d98fcf5ba48b115098de5838413dadfa0bfe15",
+      "audit_targets_checked": 5,
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "axioms_by_target": {
+        "UEOTQM.RealLocalTomography.Examples.hidden_coherence_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.RealLocalTomography.Examples.finite_real_product_span_blind": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.RealLocalTomography.Examples.joint_test_not_finite_real_product_sum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.RealLocalTomography.Examples.reality_restriction_is_necessary": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.RealLocalTomography.Examples.response_gaps_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "warnings": 0,
+      "log_sha256": "e28bc9938a91e3e980c58778cb34d5d97af56cdfa4e5ec688762a3c896754ded"
+    },
+    {
+      "kind": "module_axiom_audit",
+      "status": "delegated_to_root_public_audit",
+      "targets": 50,
+      "note": "Root explicitly requested skipping a duplicate focused import to reduce 8GB memory pressure; all 50 declarations are included in the public audit."
+    }
+  ],
+  "source_escape_scan": {
+    "forbidden_tokens": [
+      "sorry",
+      "admit",
+      "native_decide",
+      "unsafe",
+      "axiom"
+    ],
+    "matches": 0
+  },
+  "book_review": {
+    "status": "pass_after_editorial_corrections",
+    "report": "/tmp/qm316_real_tomography_book_review.json",
+    "chapter_sha256": "4629cc692db20132386497b92ed450e95811dc61d4fdaf06f01fce4976846153"
+  },
+  "cross_review": {
+    "task": "QuantumDoob",
+    "status": "pass_final_frozen_sources",
+    "markdown": "/tmp/qm316_doob_cross_review.md",
+    "json": "/tmp/qm316_doob_cross_review.json",
+    "blocking_findings": 0
+  }
+}

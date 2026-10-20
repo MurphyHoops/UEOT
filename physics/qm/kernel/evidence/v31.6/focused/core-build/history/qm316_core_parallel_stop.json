@@ -1,0 +1,83 @@
+{
+  "time_utc": "2026-10-20T05:07:34.731995+00:00",
+  "reason": "Actual 8 GiB cgroup saturated; 11+ million max events and hundreds of millions of direct reclaim/refault pages. Stop parallel Core build and resume each missing import target serially, reusing completed traces. No source or compiler-option changes.",
+  "processes": [
+    {
+      "pid": 182532,
+      "parent": 210,
+      "args": [
+        "/tmp/lean-4.33.1-linux/bin/lake",
+        "build",
+        "+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreNonvacuousAllTimesWitness"
+      ]
+    },
+    {
+      "pid": 191399,
+      "parent": 182532,
+      "args": [
+        "/tmp/lean-4.33.1-linux/bin/lean",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientNormalization.lean",
+        "-o",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/FiniteStablePartitionQuotientNormalization.olean",
+        "-i",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/FiniteStablePartitionQuotientNormalization.ilean",
+        "-c",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/FiniteStablePartitionQuotientNormalization.c",
+        "--setup",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/FiniteStablePartitionQuotientNormalization.setup.json",
+        "--json"
+      ]
+    },
+    {
+      "pid": 191403,
+      "parent": 182532,
+      "args": [
+        "/tmp/lean-4.33.1-linux/bin/lean",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.lean",
+        "-o",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.olean",
+        "-i",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.ilean",
+        "-c",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.c",
+        "--setup",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.setup.json",
+        "--json"
+      ]
+    },
+    {
+      "pid": 191409,
+      "parent": 182532,
+      "args": [
+        "/tmp/lean-4.33.1-linux/bin/lean",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.lean",
+        "-o",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.olean",
+        "-i",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.ilean",
+        "-c",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.c",
+        "--setup",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.setup.json",
+        "--json"
+      ]
+    },
+    {
+      "pid": 191517,
+      "parent": 182532,
+      "args": [
+        "/tmp/lean-4.33.1-linux/bin/lean",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticBeliefBridge.lean",
+        "-o",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticBeliefBridge.olean",
+        "-i",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticBeliefBridge.ilean",
+        "-c",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticBeliefBridge.c",
+        "--setup",
+        "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-core/.lake/build/ir/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticBeliefBridge.setup.json",
+        "--json"
+      ]
+    }
+  ]
+}

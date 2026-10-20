@@ -1,0 +1,397 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import copy, hashlib, json, re
+
+R=Path('/workspace/scratch/474cf6b1f047/qm_v316_work')
+Q=R/'physics/qm'; E=Q/'kernel/evidence/v31.6'
+OLD=Path('/workspace/scratch/474cf6b1f047/qm_v315_work')
+BASE='427f512745ca70f82cba6a1388edcab904da8a42'
+STATE='LOCAL_VERIFIED_CI_PENDING'
+def read(p): return json.loads(Path(p).read_text())
+def write(p,d): Path(p).write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+now=datetime.now(timezone.utc).isoformat()
+v=read(E/'lean-verification.json'); m=read(E/'source-manifest.json')
+assert v['status']=='PASS' and read(E/'acceptance-progress.json')['status']=='PASS'
+assert v['actual_named_axiom_reports']==573 and v['explicit_theorems']==459
+assert m['source_count']==70
+assert (Q/'book/UEOT_PHYSICS.md').read_bytes()==Path('/tmp/qm316_book_stage/UEOT_PHYSICS.md').read_bytes()
+
+report=Path('/tmp/qm316_report_template.md').read_text()
+for a,b in {'@@BUILD_JOBS@@':str(v['actual_build_jobs']),'@@SOURCE_COUNT@@':str(m['source_count']),
+            '@@SOURCE_SET@@':m['source_set_sha256']}.items(): report=report.replace(a,b)
+assert '@@' not in report and '\t' not in report
+(Q/'UEOT_QM_KERNEL_v31.6.md').write_text(report)
+contract=Path('/tmp/qm316_next_execution_v317.md').read_text()
+contract=contract.replace('# UEOT-QM v31.7：下一轮执行合同候选','# UEOT-QM v31.7：下一轮执行合同',1)
+contract=contract.replace('状态：供 root 审定；本文件提出任务与数学目标，不声称这些目标已经完成 Lean 证明。',
+ '状态：已完成根端科学审定，待执行；本文件提出任务与数学目标，不声称这些目标已经完成 Lean 证明。',1)
+(Q/'UEOT_QM_EXECUTION_v31.7.md').write_text(contract)
+
+verification={
+ 'state':STATE,'checked_at_utc':now,'all_proof_runtime_checks_completed_at_utc':v['all_local_proof_runtime_checks_completed_at_utc'],
+ 'generic_modules':22,'explicit_theorems':459,'named_axiom_reports':573,'listed_non_theorem_audit_targets':114,
+ 'new_theorems':125,'new_non_theorem_audit_targets':56,'new_audit_targets':181,
+ 'runtime_test_methods':100,'demos':4,'positive_instances':6,'positive_instance_audit_reports':42,
+ 'corrupted_true_proofs_rejected':4,'same_data_false_witnesses':4,'false_witness_audit_reports':4,
+ 'finite_witness_theorems':62,'finite_witness_definitions':22,'finite_witness_audit_reports':84,
+ 'finite_witness_bound_modules':79,'core_import_count':56,
+ 'actual_build_exit_code':0,'actual_build_jobs':v['actual_build_jobs'],'allowed_foundation':v['allowed_foundation'],
+ 'source_count':70,'source_set_sha256':m['source_set_sha256'],
+ 'proof_receipt':'physics/qm/kernel/evidence/v31.6/lean-verification.json',
+ 'source_manifest':'physics/qm/kernel/evidence/v31.6/source-manifest.json',
+ 'integration_receipt':'physics/qm/kernel/evidence/v31.6/integration-verification.json',
+ 'observed_checkout_commit':m['observed_checkout_commit'],'published_research_baseline':BASE,
+ 'lean_build_status':'PASS','axiom_audit_status':'PASS','runtime_status':'PASS','demos_status':'PASS',
+ 'audit_duplicates':0,'audit_missing':[],'unreviewed_axioms':[],
+ 'remote_ci':'PENDING','main_integration':'PENDING','core_source_modified':False,'full_scientific_theory_verified':False,
+ 'count_scope':'459/573 package; six-instance 42; false-witness 4; four concrete witness 62/22/84; runtime 100 are distinct evidence counts.'
+}
+for k,f in {'runtime':'runtime-verification.json','demos':'demos-verification.json','axiom':'proof-axioms.json',
+ 'dependency':'dependency-identity.json','finite_witness':'finite-witnesses/verification.json'}.items():
+ verification[k+'_receipt']='physics/qm/kernel/evidence/v31.6/'+f
+
+old=read(OLD/'physics/qm/status/CLAIM_LEDGER_v31.5.json')
+ledger=copy.deepcopy(old)
+ledger.update(schema='ueot_qm.claim_ledger.v31.6',date='2026-10-20',version='31.6-kernel.1.6',
+ previous_ledger='physics/qm/status/CLAIM_LEDGER_v31.5.json',research_baseline=BASE,
+ prior_version_verification=copy.deepcopy(old['verification']),verification=verification,
+ metadata_updated_at_utc=now,next_execution_contract='physics/qm/UEOT_QM_EXECUTION_v31.7.md',
+ next_execution_status='APPROVED_PLAN_NOT_FORMALIZED_NOT_COUNTED_IN_V31_6')
+ledger['core_baseline_role']='Frozen historical Core reference retained; current imported Core sources separately match published research baseline '+BASE+'. No frozen Core mutation by this increment.'
+for c in ledger['claims']:
+ c['inherited_from']={'ledger':'physics/qm/status/CLAIM_LEDGER_v31.5.json','claim_id':c['id']}
+ for k in ['current_source_identity','current_proof_receipt']:
+  if k in c:c[k]=c[k].replace('/v31.5/','/v31.6/')
+ if 'verification_scope' in c:
+  c['prior_verification_scope']=c['verification_scope']
+  c['verification_scope']=c['verification_scope'].replace('v31.5','v31.6')
+ for k in ['runtime_receipt','instance_receipt','evidence']:
+  if isinstance(c.get(k),str) and re.search(r'/v31\.[45]/',c[k]):
+   c['prior_'+k]=c[k]
+   c[k]=re.sub(r'/v31\.[45]/','/v31.6/',c[k])
+ if c['id']=='QMK-13':
+  c['status']='NOT_CLAIMED'
+  c['selection_boundary_status']='EXPLICIT_CLASSICAL_AND_REAL_SEPARATION_SLICES_VERIFIED_UNIQUE_SELECTION_OPEN'
+  c['related_proved_slices']=['QMK-36','QMK-37','QMK-38','QMK-39','QMK-40']
+ if c['id']=='QMK-14':
+  c['status']='FINITE_CESARO_DIAGONAL_AND_NONCOMMUTATIVE_CONDITIONAL_SLICES_VERIFIED'
+  c['related_new_claims']=['QMK-41','QMK-42','QMK-43','QMK-44']
+ if c['id']=='QMK-35':
+  c['later_extension']='The separately stated noncommutative construction and channelState theorem are QMK-41 through QMK-43; they require their own positive invertible eigenmetric premises.'
+for k,path in ledger['evidence'].items():
+ if isinstance(path,str) and '/v31.5/' in path:ledger['evidence'][k]=path.replace('/v31.5/','/v31.6/')
+ledger['evidence']['previous_main']='physics/qm/kernel/evidence/v31.5/integration-verification.json'
+ledger['evidence']['review']='physics/qm/audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md'
+ledger['evidence']['new_focused_audit']='physics/qm/kernel/evidence/v31.6/focused/files-manifest.json'
+ledger['evidence']['ci_scope']='physics/qm/kernel/evidence/v31.6/ci-scope-review.json'
+ledger['evidence']['core_import_baseline_scope']='56 actual recursive Core sources retain the published baseline bytes; current build and finite witness gate bind their compiled artifacts.'
+def claim(number,title,sources,witnesses,premises,limits,layers=('B','P')):
+ return {'id':f'QMK-{number:02d}','claim':title,'layers':list(layers),
+  'machine_status':'VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT','verification_location':'LOCAL',
+  'current_source_identity':'physics/qm/kernel/evidence/v31.6/source-manifest.json',
+  'current_proof_receipt':'physics/qm/kernel/evidence/v31.6/lean-verification.json',
+  'sources':sources,'witnesses':witnesses,'premises':premises,'limits':limits}
+mod=lambda n:'formalization/ueot-qm/UEOTQM/'+n+'.lean'
+wit=lambda n:'formalization/ueot-qm/scripts/witnesses/'+n+'.lean'
+cl='UEOTQM.Classical.'
+cb='UEOTQM.CorePurificationBoundary.'
+rt='UEOTQM.RealLocalTomography.'
+qd='UEOTQM.QuantumDoob.'
+qe='UEOTQM.QuantumDoobExamples.'
+ledger['claims'] += [
+ claim(36,'Full finite classical simplices, all interval effects, true stochastic action and PMF transport are implemented without quantum state fields',
+  [mod('ClassicalSector'),mod('CorePurificationBoundary')],
+  [cl+n for n in ['all_effects_separate','pushforward_halfMix','marginalLeft_eq_pushforward','toPMF_stepState']],
+  ['Finite full simplex','All interval-valued effects','Declared Cartesian composite and sum marginal','Fixed action for the generic PMF.bind identity'],
+  ['Interpretation and composition choices are declared inputs, not selected by Core','Imports containing quantum modules are software dependencies, not quantum assumptions of the scalar theorems']),
+ claim(37,'One actual fully observed Core quotient and safe trajectory has a mixed quotient marginal with no pure extension in any finite classical auxiliary space',
+  [mod('ClassicalSector'),mod('CorePurificationBoundary')],
+  [cl+'no_pure_extension_halfMix',cb+'terminal_eq_iff',cb+'actualPath_first_quotient_marginal',cb+'classical_purification_separation'],
+  ['Purity means convex-extremality in the whole simplex','Actual survivalMicroKernel and complete registered readout','Explicit constant true policy','Exactly the stated H1-H6 finite interface slice'],
+  ['Ancillary types are arbitrary finite, including empty','Not a model of all 106 Core propositions and all interpretations','No general theorem against all possible UEOT quantum reconstruction'],('C','B','P','E','O')),
+ claim(38,'The same Core kernel with the actual restricted readout quotient collapses this two-point mixture to a pure Dirac state',
+  [mod('CorePurificationBoundary')],
+  [cb+'restricted_support_merge',cb+'restrictedFirstQuotientState_dirac',cb+'restrictedFirstQuotientState_pure'],
+  ['Existing registeredSurvivalModel with only first-bit readout','Same source kernel and first-row law'],
+  ['This particular obstruction disappears; universal purification of the restricted model is not asserted'],('C','B','P','E')),
+ claim(39,'Two different real joint density matrices have equal probabilities for all real local product effects, while a legal real joint effect distinguishes them perfectly',
+  [mod('RealLocalTomography')],
+  [rt+'all_real_product_probabilities_equal',rt+'jointTest_probability_plus',rt+'jointTest_probability_minus',rt+'real_local_tomography_fails'],
+  ['Actual finite complex matrix Density and Effect with explicit real-entry restriction','Usual tensor composite for two rebits','All legal real local effects, not a finite sample'],
+  ['No complete real operational-probabilistic theory or Core model constructed','No unique-complex-quantum reconstruction theorem'],('B','P','E','O')),
+ claim(40,'The joint distinguisher lies outside every finite real span of real product effects, and allowing a complex local effect distinguishes the same pair',
+  [mod('RealLocalTomography'),wit('RealTomographyTwoRebit')],
+  [rt+'complex_product_distinguishes',rt+'Examples.finite_real_product_span_blind',rt+'Examples.joint_test_not_finite_real_product_sum'],
+  ['Real coefficients in the span obstruction','The explicit rhoPlus/rhoMinus pair','Legal complex local effect (I+Y)/2'],
+  ['Dedicated five-theorem span witness is counted in 84 concrete audits, not 459 package theorems','Does not prove universal complex local tomography'],('B','P','E','O')),
+ claim(41,'A supplied positive invertible left eigenmetric constructs a genuine complete finite quantum Doob instrument',
+  [mod('QuantumDoob')],
+  [qd+'InvertibleFilter.mass_apply_pos',qd+'doob_complete',qd+'doob_branch',qd+'doob_branch_apply'],
+  ['Source is an actual complete Instrument and one chosen branch','r > 0','Two-sided inverse filter S,T','Source pullback satisfies Phi*(S^dagger S)=r(S^dagger S)'],
+  ['No universal existence of the eigenmetric or identification of a leading eigenvalue','Normalized filter.state is generally nonlinear and not claimed to be CPTP'],('B','P','E')),
+ claim(42,'For every initial density and every finite repeated-success record, survival is positive and normalized filtering intertwines the true conditional state with Doob iteration',
+  [mod('QuantumDoob')],
+  [qd+'doob_successOperator_apply',qd+'eigenmetric_successMass_pos',qd+'doob_finite_conditioning'],
+  ['The same eigenmetric and r>0 premises as QMK-41','Actual source recordOperator/response and conditionalState','Any finite n and initial Density'],
+  ['No right QSD eigenstate needed for this theorem','mass on general complex operators means real trace','No infinite conditioned path limit or fine-grained Kraus-label record theorem'],('B','P','E','O')),
+ claim(43,'An additional right density eigenstate gives geometric source survival, fixed source conditional state and an actual invariant Doob channelState',
+  [mod('QuantumDoob')],
+  [qd+'eigen_successMass',qd+'eigen_conditionalState',qd+'eigen_rate_le_one',qd+'doob_channelState'],
+  ['Phi(rho)=r rho and r>0','An actual source Instrument','Doob channel conclusions additionally use QMK-41 premises'],
+  ['Source QSD and filtered stationary state generally differ','No uniqueness, attraction rate or automatic spectral existence'],('B','P','E','O')),
+ claim(44,'An exact rational noncommuting two-dimensional model verifies full-matrix Doob formulas, arbitrary-initial finite conditioning and premise controls',
+  [wit('QuantumDoobExamples')],
+  [qe+n for n in ['source_branch_formula','transformed_branch_formula','arbitrary_initial_finite_conditioning','failure_completion_necessary','success_kraus_noncommuting','input_coherence_retained','uniform_probability_ne_qsd']],
+  ['Explicit rational source success and failure Kraus matrices','r=3/16, H=diag(4,1), rho=(1/5)[[1,2],[2,4]]'],
+  ['28 concrete theorems plus 12 definitions are in the separate 84 witness audits','8/5 is a normalization factor, not a success probability','No current convergence or uniqueness theorem is counted'],('B','P','E','O')),
+]
+assert len(ledger['claims'])==44
+ledger['canonical_monograph']={'title':'UEOT物理学','edition':'3.2','source':'physics/qm/book/UEOT_PHYSICS.md',
+ 'pdf':'physics/qm/book/UEOT_PHYSICS.pdf','numbered_chapters':{'first':0,'last':56,'count':57},
+ 'appendices':list('ABCDEF'),'pages':186,'numbered_results':117,'kernel_chapters':list(range(49,57)),
+ 'verification_rule':'Continuous formal monograph; analytic, formal, executable and empirical responsibilities remain distinct. Whole-book machine verification and final physical truth are not claimed.'}
+write(Q/'status/CLAIM_LEDGER_v31.6.json',ledger)
+
+prior=read(OLD/'physics/qm/status/CURRENT.json')
+current=copy.deepcopy(prior)
+current.update(date='2026-10-20',version='31.6-kernel.1.6',research_baseline=BASE,
+ entrypoint='../UEOT_QM_KERNEL_v31.6.md',execution_contract='../UEOT_QM_EXECUTION_v31.6.md',
+ claim_ledger='CLAIM_LEDGER_v31.6.json',previous_claim_ledger='CLAIM_LEDGER_v31.5.json',
+ verification_state=STATE,local_checkpoint_state=STATE,metadata_updated_at_utc=now,
+ proof_receipt='../kernel/evidence/v31.6/lean-verification.json',
+ instance_receipt='../kernel/evidence/v31.6/lean-exports/verification.json',
+ finite_witness_receipt='../kernel/evidence/v31.6/finite-witnesses/verification.json',
+ source_manifest='../kernel/evidence/v31.6/source-manifest.json')
+current['acceptance_marker'].update(state=STATE,domain_memo='../audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md',
+ accepted_scope=[
+  'Whole finite classical simplex and all-effect interpretation with arbitrary finite auxiliary no-purification',
+  'One actual frozen Core stochastic/control/quotient/safe-path slice and exact mixed first quotient marginal, with restricted-readout deletion witness',
+  'All real local product-effect indistinguishability, actual real joint discrimination and complex-local deletion witness',
+  'Actual quantum Doob completeness and finite conditioning for every initial density under supplied positive invertible eigenmetric',
+  'Additional right density eigenstate gives geometric survival and actual Doob stationary channelState',
+  'Frozen source unified build, 573 actual named audits, 84 retained concrete witness audits and all inherited certificate/runtime gates',
+  'Formal monograph 3.2: 57 chapters, 117 results, actual 186-page PDF and scoped visual review'],
+ local_machine_acceptance='PASS',integration_acceptance='PENDING',
+ integration_receipt='../kernel/evidence/v31.6/integration-verification.json')
+current['acceptance_marker']['does_not_promote']=[
+ 'Unconditional unique selection of complex quantum theory from frozen Core',
+ 'A complete model of every Core proposition and every physical interpretation',
+ 'Complete real OPT construction or universal complex local tomography/purification',
+ 'General positive eigenmetric existence, leading spectrum, uniqueness/mixing or infinite conditioned process',
+ 'Labeled adaptive-memory and ancillary stabilized errors without explicit joint models',
+ 'Universal Python/JSON/parser/exporter/search correctness',
+ 'Unconditional realistic three generations, complete spectrum/window/vacuum/masses',
+ 'New experimental evidence, whole-book formalization or ultimate truth']
+current['completed_in_this_delivery']=[
+ f"22 package modules and 459 explicit theorems passed actual unified Lean 4.33.1 build, exit 0, {v['actual_build_jobs']} jobs",
+ '573 unique actual named axiom reports: 459 theorems + 114 listed non-theorem targets',
+ 'Four new modules: 125 theorems + 56 other targets = 181 added named audits',
+ 'Four retained concrete witness files: 62 theorems + 22 definitions = 84 audits; 79 QM/Core source/olean bindings',
+ 'Six regenerated exact certificates and 42 separate audits; four corrupted true proofs rejected and four same-data false proofs accepted',
+ '100 runtime methods and four demos reexecuted successfully',
+ '70 tested source entries, nine pinned dependency revisions and 56 unchanged recursive Core source identities',
+ 'Formal monograph 3.2 completed: 57 chapters, six appendices, 117 results, 186-page PDF and actual scoped visual inspection']
+current['next_execution']={'contract':'../UEOT_QM_EXECUTION_v31.7.md','status':'APPROVED_PLAN_NOT_FORMALIZED',
+ 'primary':'Typed operational systems, complete state spaces, actual composite/discard and convex-extreme purification; adapt explicit classical/real countermodels and complex positive constructions.',
+ 'parallel':['Joint classical record and quantum memory CPTP representations with true record marginals and labeled error/deletion controls',
+             'Exact dynamics and quantitative true conditional-state convergence in the existing rational non-diagonal Doob model'],
+ 'integration_gate':'Next-version mathematical sources require independent frozen-source local and remote acceptance.'}
+current['known_open_items']=[
+ 'Independent derivation of justified selection principles from UEOT and exclusion of remaining alternative theories',
+ 'Common operational-system types, actual quantum partial trace and full finite quantum purification',
+ 'Explicit joint classical-history/quantum-memory errors and useful certified budgets',
+ 'Density separation, norm identification and general program refinement',
+ 'Concrete noncommutative convergence followed by general spectral existence and infinite-time conditioning',
+ 'QDRR real observations and complete physical spectrum/G3 applicability',
+ 'Continuum/energy/QFT interfaces, vacuum and masses']
+current['integration']={'target_branch':'main','temporary_branch':None,'state':STATE,
+ 'scope':['physics/qm/**','formalization/ueot-qm/**','.github/workflows/ueot-qm.yml'],
+ 'prior_version':copy.deepcopy(prior['integration']),'source_commit':None,'source_tree':None,'pull_request':None,
+ 'pr_run':None,'tested_main_commit':None,'tested_main_tree':None,'main_run':None,'source_and_main_tree_identical':None,
+ 'receipt':'../kernel/evidence/v31.6/integration-verification.json','source_manifest':'../kernel/evidence/v31.6/source-manifest.json',
+ 'source_count':70,'source_set_sha256':m['source_set_sha256'],'observed_checkout_commit':m['observed_checkout_commit'],
+ 'published_research_baseline':BASE,'pr_status':'PENDING','main_status':'PENDING'}
+current['book']={'title':'UEOT物理学','edition':'3.2','source':'../book/UEOT_PHYSICS.md','pdf':'../book/UEOT_PHYSICS.pdf',
+ 'numbered_chapters':{'first':0,'last':56,'count':57},'appendices':list('ABCDEF'),'pages':186,'numbered_results':117,
+ 'structure_receipt':'../book/evidence/v3.2/book-structure.json','build_receipt':'../book/evidence/v3.2/pdf-build.json',
+ 'visual_receipt':'../book/evidence/v3.2/pdf-visual-review.json',
+ 'kernel_chapter_review':'../book/evidence/v3.2/new-chapters-integration-review.json',
+ 'scope':'Formal continuous book; mathematical and empirical completeness are separate from editorial completion.'}
+current['local_verification']=copy.deepcopy(verification)
+current['local_verification']['state']='PASS'
+for k,x in list(current['local_verification'].items()):
+ if isinstance(x,str) and x.startswith('physics/qm/'):current['local_verification'][k]='../'+x.removeprefix('physics/qm/')
+write(Q/'status/CURRENT.json',current)
+write(E/'integration-verification.json',{'schema':'ueot_qm.integration_verification.v31.6','status':STATE,
+ 'recorded_at_utc':now,'local_machine_acceptance':'PASS','remote_pr':'PENDING','resulting_main':'PENDING',
+ 'source_manifest':'physics/qm/kernel/evidence/v31.6/source-manifest.json','source_set_sha256':m['source_set_sha256'],
+ 'source_count':70,'published_research_baseline':BASE,'scope':current['integration']['scope'],
+ 'identity_rule':'No remote acceptance is inferred from local PASS. Source and resulting-main commits/runs will be added after actual verification.'})
+active=read(Q/'status/ACTIVE_RESEARCH_v31.6.json')
+active.update(state=STATE,status=STATE,updated_at_utc=now,
+ public_source_statistics={'generic_modules':22,'explicit_theorems':459,'named_axiom_reports':573,
+  'finite_witness_audit_reports':84,'positive_instance_audit_reports':42,'false_witness_audit_reports':4,
+  'runtime_test_methods':100,'demos':4,'tested_source_entries':70,
+  'source_set_sha256':m['source_set_sha256'],'local_machine_acceptance':'PASS'},
+ local_proof_receipt='physics/qm/kernel/evidence/v31.6/lean-verification.json',
+ next_execution_contract='physics/qm/UEOT_QM_EXECUTION_v31.7.md')
+write(Q/'status/ACTIVE_RESEARCH_v31.6.json',active)
+
+audit="""# v31.6 数学与集成审查
+
+状态：本地源码绑定验收 PASS，远端 CI 待独立确认。审查由 AI 作者与其他 AI 代理完成，不冒称独立人类同行评审。
+
+## 范围裁定
+
+经典线的纯性是整个单纯形的凸极点，辅助类型是任意有限类型。实际 Core 证书使用同一个核、注册输出、终端稳定商、控制商及路径测度；H1–H6 是列明有限接口，不表示全 106 条覆盖。受限读出删除见证不可省略。
+
+实层析线先证明实际 Density/Effect 合法，再对全部实局域效应量化；合法实联合测试确能区分。有限实线性张成的否定与允许复局域效应的正例分开计数，不把这个模型直接叫作全部实量子 OPT。
+
+Doob 线的左本征度量和 r>0 推出实际完备性；任意初态有限条件化不需要右 QSD 本征态。右条件只在相应几何生存和过滤平稳性定理中使用。mass 在一般复矩阵上取实迹；归一过滤不是一般线性物理通道。存在性、唯一性和长时吸引仍分开。
+
+## 实际检查及发现
+
+三路源码互审、主接口回读与实际 focused 编译均完成。独立入口审查发现三个公开命名 instance 缺少审计，根端补齐后，573 个目标与编译器实际 573 个唯一报告一致。22 模块的 459 个显式 theorem 全部恰好覆盖；非定理目标、具体见证、生成实例不混计。
+
+79 个 QM/Core 模块的源及 olean 在持久见证执行前后绑定。56 个真实 Core 导入保留科学基线源字节，43 个新增导入没有借用上版 13 个导入的旧 PASS。编译期间出现的环境资源瓶颈和实际修复前失败日志按原状态归档，不作为数学反例。
+
+统一构建、公理门、四见证、六证书及四真假配对、100 运行方法、四演示与九项依赖均有独立执行记录。源码在整体验收前后未变。
+
+## 证据入口
+
+- ../kernel/evidence/v31.6/lean-verification.json
+- ../kernel/evidence/v31.6/source-manifest.json
+- ../kernel/evidence/v31.6/source-freeze-reconciliation.json
+- ../kernel/evidence/v31.6/focused/files-manifest.json
+- ../kernel/evidence/v31.6/core-import-closure.json
+- ../book/evidence/v3.2/new-chapters-integration-review.json
+- ../book/evidence/v3.2/pdf-visual-review.json
+
+本轮没有新增实验数据；冻结 Core 数量不变。论文先例和标准数学来源在正式正文登记，不能将所有被形式化的标准量子结论归为新的 UEOT 物理发现。
+"""
+(Q/'audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md').write_text(audit)
+write(E/'ci-scope-review.json',{'schema':'ueot_qm.ci_scope_review.v31.6','status':'STATIC_SOURCE_REVIEW_PASS',
+ 'recorded_at_utc':now,'workflow':'.github/workflows/ueot-qm.yml','workflow_sha256':sha(R/'.github/workflows/ueot-qm.yml'),
+ 'actual_ci_executed':False,'source_gate':'scripts/record_source.py includes all four new modules and both new witness files',
+ 'gates':['pinned compiler','dependency lock','proof escape rejection','whole package build','573 named audits',
+          'six exact instances and four paired negative controls','four retained finite and quantum witnesses','100 runtime methods and four demos'],
+ 'independent_review':'focused/reviews/ (see focused/files-manifest.json for exact archived report path)',
+ 'scope':'Source/configuration review only; actual remote run receipts are separately required.'})
+
+readme="""# UEOT-QM
+
+当前研发：**v31.6 / Kernel 1.6 — LOCAL_VERIFIED_CI_PENDING，2026-10-20 UTC**。最新集成身份以 [CURRENT.json](status/CURRENT.json) 为准。
+
+唯一连续理论总著为 [《UEOT物理学》正式 3.2](book/UEOT_PHYSICS.md)：第 0–56 章、6 个附录、117 个编号结果；[完整 PDF](book/UEOT_PHYSICS.pdf) 共 186 页。全部原有理论推导保留，新增章节与真实源码、前提、反例和开放问题逐项对应。
+
+## 本轮三个关键结果
+
+| 方向 | 实际闭合 | 科学边界 |
+|---|---|---|
+| 经典 Core 边界 | 同一真实核、终端商、控制商及安全路径的实际混合商边际，在任意有限经典辅助系统上无纯化；受限读出下该反例消失 | 只覆盖列明 H1–H6 接口和公开经典解释，不表示全部 UEOT 不可重构 |
+| 实局域层析 | 两个真实实联合密度态对全部实局域乘积效应同概率，合法联合实测试给 1/0；允许复局域效应后给 1/2/0 | 实张量模型的精确排除责任，不是唯一复量子重构 |
+| 非交换 Doob | 给定正可逆本征度量，构造实际完整仪器；任意初态真实有限条件态与其迭代相连；右本征态另给平稳结果 | 谱对象存在、唯一性、吸引和无限条件过程分开处理 |
+
+完整数学、实际例子和验收见 [本版报告](UEOT_QM_KERNEL_v31.6.md)、[数学审查](audits/CORE_SELECTION_DOOB_REVIEW_v31.6.md)。
+
+## 实际内核与证据
+
+本地统一验收：**22 模块、459 显式定理、573 个实际命名公理报告**。四份具体见证另有 62 定理、22 定义、84 审计。六个精确证书的 42 项审计、四组坏数据真证明拒绝/同数据假证明接受、100 运行方法、四份演示分别记录。允许的基础仅为 propext、Classical.choice、Quot.sound。
+
+[统一证明回执](kernel/evidence/v31.6/lean-verification.json) · [70 项受验源清单](kernel/evidence/v31.6/source-manifest.json) · [远端集成状态](kernel/evidence/v31.6/integration-verification.json)
+
+已经形成的有限内核包括：实际复密度/Kraus/Born 操作、全部有限记录的响应商、有限坐标分类、Ax/p 正事件更新、完整有限自适应树、可靠局部证书、真实效应伪距离与 Core 误差运输、同库混合 TV 预算、Cesàro 平稳存在、对角及非交换有限条件化。本轮进一步给出量子选择的两个明确反模型边界。
+
+## 阅读与工作入口
+
+- [正式总著](book/UEOT_PHYSICS.md)、[PDF](book/UEOT_PHYSICS.pdf)、[逐章档案](book/CHAPTER_DOSSIER.json)。
+- [Lean 包](../../formalization/ueot-qm/README.md)、[运行内核](kernel/README.md)、[当前主张台账](status/CLAIM_LEDGER_v31.6.json)。
+- [本轮执行合同](UEOT_QM_EXECUTION_v31.6.md)、[路线图](ROADMAP.md)。
+- [下一轮已审定合同](UEOT_QM_EXECUTION_v31.7.md)：共同操作/纯化接口；经典记录与量子记忆；当前非对角模型的精确条件态动力学。该合同尚未作为已证明成果计数。
+
+## 科学责任
+
+当前有一个明确、可构建和可审计的有限量子内核；通用 Core 唯一选择复量子结构仍是核心开放问题。现实三代仍依赖完整谱、表示、有效窗口及一致性条件。没有新增实验数据，标准量子定理的形式化数量也不代表完备物理理论已经建立。
+
+历史 [v31.5](kernel/evidence/v31.5/integration-verification.json)、[v31.4](kernel/evidence/v31.4/integration-verification.json)、[v31.3](kernel/evidence/v31.3/integration-verification.json) 保留各自提交和执行身份。冻结 Core 的 106 项、四生成器及五份原始材料身份不由本轮改写。
+"""
+(Q/'README.md').write_text(readme)
+
+oldroad=(OLD/'physics/qm/ROADMAP.md').read_text()
+workpackages=oldroad.split('## 全域工作包与下一项验收',1)[1].split('## 六个量子桥的准确状态',1)[0].strip()
+workpackages=workpackages.replace('非交换 CP 左右谱数据与条件化；平稳、全平均、唯一、mixing 分项证明','已给正可逆本征度量的非交换有限条件化；下一步当前实例定量动力学，再一般谱存在')
+workpackages=workpackages.replace('总著已有经典／实量子反模型与显式重构输入','已形式化同一Core过程的经典纯化障碍与全部实乘积效应层析反例')
+workpackages=workpackages.replace('按实际 frozen Core 模型验证反模型，建立最小独立领域前提及删除见证','共同操作/复合/丢弃/纯性接口，有限复量子正例与候选选择原则的排除责任')
+road="""# UEOT-QM / Physics Roadmap
+
+状态：**v31.6 / Kernel 1.6 — LOCAL_VERIFIED_CI_PENDING**。日期：2026-10-20 UTC。集成身份见 [CURRENT](status/CURRENT.json)。
+
+## 核心目标与现状
+
+目标是从 UEOT 建立完整、可解释、严格且可否证的量子物理理论。已经有可复用有限量子内核，但“选出量子结构”与“在量子结构内部证明性质”具有不同责任。本轮优先落实了真实 Core 经典反模型、实局域层析反例以及非交换有限条件化，精确确定哪些缺口仍需独立原则。
+
+科学基线为已发布主线 427f512745ca70f82cba6a1388edcab904da8a42。当前结果为22模块、459显式定理、573实际公理报告；具体见证84、生成实例42、真假负控4、运行方法100分别登记。[本轮报告](UEOT_QM_KERNEL_v31.6.md) 与 [执行合同](UEOT_QM_EXECUTION_v31.6.md) 记录范围；[正式总著3.2](book/UEOT_PHYSICS.md) 为57章/6附录/117结果及186页阅读版。
+
+## 本轮闭合的关键点
+
+| 关键点 | 可复用结果 | 尚待证明 |
+|---|---|---|
+| Q316-CLASSICAL | 完整单纯形、凸极点、任意有限辅助无纯化；实际Core终端商/控制/安全路径与商边际；受限读出删除 | 从Core独立得到能够排除此模型的领域原则 |
+| Q316-REAL | 全部实局域乘积效应的不可区分、合法联合1/0、复局域删除及有限实张成障碍 | 完整操作系统适配及其他候选理论的选择责任 |
+| Q316-DOOB | 真正完整Doob仪器、任意初态有限条件化、额外右谱下平稳、全矩阵有理非对角见证 | 当前模型的唯一性/速率；一般正谱对象存在与无限条件过程 |
+
+## 下一轮三路并行
+
+| 优先级 | 工作 | 必须形成的检查点 |
+|---|---|---|
+| A 核心选择接口 | 系统/完整状态/复合/丢弃/凸极点/纯化；经典、实与复模型共同适配 | 真实偏迹与完整状态空间的纯性证明；Bell只是阶段正例，任意有限态纯化另有完成门 |
+| B 记录与量子记忆 | 矩形Kraus、实际联合CPTP、真实叶块及记录边际、含标签误差 | 同无条件通道但记录TV=1的负控；区分单步、固定深度及任意有限树层级 |
+| C 精确非对角动力学 | 当前有理Doob模型全算符迭代、唯一不变态、真实条件态闭式与速率 | 从实际successOperator/mass/conditionalState推出界；恒等Doob证明显式谱前提不自动给混合 |
+
+详细输入、签名、最小交付、失败见证和停止条件见 [v31.7执行合同](UEOT_QM_EXECUTION_v31.7.md)。A与B承担根本缺口，C优先完成后协助A的凸极点或B的协议组合。候选原则需要被独立解释和论证，不能放入模型定义后反称Core已经推出。
+
+## 全域工作包与下一项验收
+
+"""+workpackages+"""
+
+## 长期与物理责任
+
+QMB-05 已有实际有限矩阵紧性、Cesàro残差和不变子极限；全平均收敛、唯一性、原轨道混合与随机轨迹遍历继续分层。QMB-06 现在同时包含实际消费Core定理的对角桥及不直接调用Core的非交换量子条件构造；两条依赖链在台账中分别登记。
+
+真实实验协议与QDRR、完整物理谱/有效窗口、全局一致性、真空/质量、能量与连续极限、QFT等仍按上表推进。没有真实记录时只验合成流程；没有具体完整物理模型时不由条件selector宣布现实三代唯一推出。
+
+## 资源与验收规则
+
+主智能体加三个子智能体并行数学开发，文件所有权独立；完成后互审。重型Lean编译按实际8 GiB内存调度，公共Core依赖先按拓扑建立，每次保留官方Lake追踪，避免内存抖动和重复重编译。公共导出、审计、总著、源冻结及发布由根端统一。
+
+验收依次要求：真实对象和全部前提 → 正例与删除见证 → focused构建/交叉审查 → 同源统一包和实际公理/实例/运行门 → 正式总著与PDF → 一次集中源码PR与必要CI → 合入主线的独立验证与元数据补录。历史证据保留原身份，新字节不借用旧PASS。冻结Core的106项和四生成器不变。
+"""
+(Q/'ROADMAP.md').write_text(road)
+
+kp=Q/'kernel/README.md';ks=kp.read_text()
+ks=ks.replace('# UEOT-QM v31.5 / Kernel 1.5','# UEOT-QM v31.6 / Kernel 1.6',1)
+ks=ks.replace('当前状态：**MAIN_VERIFIED**','当前状态：**LOCAL_VERIFIED_CI_PENDING**',1)
+ks=ks.replace('本轮新增精确混合权重预算、真实 Cesàro 迭代和次随机存活仪器；已有证书与全词响应接口继续保留。',
+ '本轮新增形式化经典Core边界、实局域层析与非交换Doob；精确运行程序保留混合预算、Cesàro及对角生存API，本轮重新执行其全部回归。')
+ks=ks.replace('实际本地结果：18 通用模块、334 显式定理、392 项命名公理审计；100 运行方法、4 演示 PASS。六个精确实例、四组真假配对负控重新核验；新增具体 Lean 见证另计 29 定理／10 定义／39 项审计。',
+ '实际本地结果：22 主包模块、459 显式定理、573 项实际命名公理审计；100 运行方法、4 演示 PASS。六个精确实例、四组真假配对负控重新核验；四份具体 Lean 见证另计 62 定理／22 定义／84 项审计。')
+ks=ks.replace('此门实际编译两份固定具体见证，审核全部 39 个声明并绑定 32 个通用模块的源与 olean。它与六实例证书门分别统计；具体证明不增加 334 个通用定理的计数。',
+ '此门实际编译四份固定具体见证，审核全部84个声明并绑定79个QM/Core模块的源与olean。包含原混合/生存，以及新增实层析/非交换Doob见证；与六实例证书门分别统计，具体证明不增加459个主包定理的计数。')
+ks=ks.replace('18 个通用 Lean 模块覆盖实际量子操作、响应商、有限坐标、完整树、精确 checker、效应稳定性，并新增混合全态 TV、Cesàro 平稳存在及对角 QSD/Doob 桥。334 定理、392 审计统一通过；',
+ '22个主包Lean模块覆盖实际量子操作、响应商、有限坐标、完整树、精确checker、效应稳定性、混合全态TV、Cesàro、对角/非交换条件化与经典/实模型分离。459定理、573审计统一通过；')
+ks=ks.replace('《UEOT物理学》正式 3.1','《UEOT物理学》正式 3.2').replace('第 49–53 章','第 49–56 章')
+ks=ks.replace('UEOT_QM_KERNEL_v31.5.md','UEOT_QM_KERNEL_v31.6.md').replace('evidence/v31.5/','evidence/v31.6/')
+ks=ks.replace('[v31.5 主报告]','[v31.6 主报告]')
+ks=ks.replace('新增 [finite_dynamics.py]','自v31.5沿用的 [finite_dynamics.py]')
+ks=ks.replace('13 个新增方法同时检验删除前提的失败情形。','v31.5引入的13个方法同时检验删除前提的失败情形；本轮与其余方法一并重跑。')
+ks=ks.replace('CLAIM_LEDGER_v31.5.json','CLAIM_LEDGER_v31.6.json')
+kp.write_text(ks)
+
+oldcontract=Q/'UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md'
+oc=oldcontract.read_text()
+notice='\n本合同列明的经典证书已于 v31.6 实际完成并验收；本轮扩展为三路并行，执行安排及范围以 [v31.6执行合同](UEOT_QM_EXECUTION_v31.6.md) 与 [实际报告](UEOT_QM_KERNEL_v31.6.md) 为准。以下保留原任务提出时的合同文本，历史未来时不代表当前仍未实施。\n'
+if notice.strip() not in oc:oc=oc.split('\n',1)[0]+'\n'+notice+'\n'+oc.split('\n',1)[1]
+oldcontract.write_text(oc)
+print(json.dumps({'status':STATE,'claims':len(ledger['claims']),'source_count':70,'source_set_sha256':m['source_set_sha256'],
+ 'report':str(Q/'UEOT_QM_KERNEL_v31.6.md'),'next_contract':str(Q/'UEOT_QM_EXECUTION_v31.7.md')},ensure_ascii=False,indent=2))

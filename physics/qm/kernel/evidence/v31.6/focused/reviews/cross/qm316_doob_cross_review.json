@@ -1,0 +1,127 @@
+{
+  "reviewer": "B /root/q316_real_tomography",
+  "status": "pass_final_frozen_sources",
+  "files": [
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/UEOTQM/QuantumDoob.lean",
+      "sha256": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+      "previous_reviewed_sha256": "d030d6b34dd7034da3d860ddc1ea382618d7aa65e8b0b21214b96055b3680a34",
+      "author_frozen": true,
+      "focused_build_exit_code_reported_by_author": 0,
+      "focused_exit_code_reported_by_author": 0
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v316_work/formalization/ueot-qm/scripts/witnesses/QuantumDoobExamples.lean",
+      "sha256": "5fbe70aca27378fead77fdb52658bb048463eff3b1e7e1299a43e5f40e2d456a",
+      "previous_reviewed_sha256": "e46c40e308475bc7af01b6f6e597a439e4f3880d35a1197ef0493f82a860702f",
+      "author_frozen": true,
+      "focused_exit_code_reported_by_author": 0,
+      "witness_axiom_targets_reported_by_author": 40,
+      "witness_axioms_reported_by_author": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "blocking_findings": [],
+  "checks": [
+    {
+      "id": "left_to_completeness",
+      "status": "pass_source_review",
+      "evidence": [
+        "transformed_gram",
+        "doob_complete",
+        "doobWeighted",
+        "doobInstrument"
+      ],
+      "finding": "hleft and explicit inverse identities derive weighted Kraus completeness; toInstrument then derives ordinary Kraus completeness. Completeness is not a structure input to the new filter."
+    },
+    {
+      "id": "arbitrary_initial_finite_conditioning",
+      "status": "pass_source_review",
+      "evidence": [
+        "InvertibleFilter.mass_apply_pos",
+        "eigenmetric_successMass",
+        "eigenmetric_successMass_pos",
+        "doob_finite_conditioning"
+      ],
+      "finding": "For every Density and finite n, r>0 plus an invertible left eigenmetric prove strictly positive source survival; the filtered conditioned state equals the actual transformed n-step operator. No right eigenstate assumption occurs in this identity."
+    },
+    {
+      "id": "right_eigenstate_scope",
+      "status": "pass_source_review",
+      "evidence": [
+        "eigen_successMass",
+        "eigen_conditionalState",
+        "doob_branch_state",
+        "doob_channelState",
+        "doob_successOperator_state"
+      ],
+      "finding": "Geometric original survival and stationary transformed state explicitly require the right density eigenrelation. The uniform-state negative control disproves applying the source eigenvalue as an arbitrary-state one-step rate."
+    },
+    {
+      "id": "full_complex_matrix_formulas",
+      "status": "pass_source_review",
+      "evidence": [
+        "transformed_map",
+        "doob_branch",
+        "doob_successOperator_apply",
+        "QuantumDoobExamples.source_branch_formula",
+        "QuantumDoobExamples.transformed_branch_formula"
+      ],
+      "finding": "Theorems quantify arbitrary complex X; finite index case splits prove each entry using ring identities, not finite samples of matrices. The transformed reset formula uses complex X.trace, as required on non-Hermitian inputs."
+    },
+    {
+      "id": "concrete_source_and_filter",
+      "status": "pass_source_review",
+      "evidence": [
+        "success_gram",
+        "failure_gram",
+        "source_complete",
+        "inverse_mul",
+        "mul_inverse",
+        "source_left_eigen",
+        "source_right_eigen",
+        "filtered_state_exact"
+      ],
+      "finding": "Independently checked success Gram diag(3/8,9/64), failure complement diag(5/8,55/64), eigenvalue 3/16, filter S=diag(2,1), metric diag(4,1), rho=1/5[[1,2],[2,4]], filtered normalized rho=1/2[[1,1],[1,1]]."
+    },
+    {
+      "id": "noncommutative_witness_scope",
+      "status": "pass_source_review",
+      "evidence": [
+        "success_kraus_noncommuting",
+        "input_coherence_retained",
+        "transformed_branch_formula"
+      ],
+      "finding": "The source keeps E01/16 and two displayed source Kraus matrices do not commute. This rules out an unchanged diagonal erasure embedding in the displayed basis. It does not alone prove a basis-independent no-classical-simulation or non-entanglement-breaking theorem."
+    },
+    {
+      "id": "negative_controls",
+      "status": "pass_source_review",
+      "evidence": [
+        "failure_completion_necessary",
+        "qsd_ne_filtered_state",
+        "uniform_probability_exact",
+        "uniform_probability_ne_qsd"
+      ],
+      "finding": "Failure completion is necessary; original and filtered normalized right states differ; the uniform source success probability is 33/128, distinct from 3/16."
+    },
+    {
+      "id": "filter_normalization_is_not_a_probability",
+      "status": "pass_with_interpretation_boundary",
+      "evidence": [
+        "InvertibleFilter.apply",
+        "InvertibleFilter.state",
+        "QuantumDoobExamples.filtered_mass_exact"
+      ],
+      "finding": "F.state is normalized conjugation and is generally nonlinear. The example filtered mass is 8/5, a normalization factor rather than a Born success probability. No trace-nonincreasing property or physical unscaled filter implementation is claimed. The actual complete quantum instrument is doobInstrument."
+    }
+  ],
+  "limits": [
+    "No compiler was launched by reviewer for C files.",
+    "No existence, dominance, spectral gap, infinite-horizon conditioning limit, or Yaglom convergence was reviewed as proved, and the files do not assert them.",
+    "Both final source SHA values verified from disk after independently re-reading the finalized proof repairs. Focused machine results are reported by the author; this review launched no duplicate compiler."
+  ]
+}

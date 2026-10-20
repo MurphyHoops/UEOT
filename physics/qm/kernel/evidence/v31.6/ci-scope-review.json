@@ -1,0 +1,21 @@
+{
+  "schema": "ueot_qm.ci_scope_review.v31.6",
+  "status": "STATIC_SOURCE_REVIEW_PASS",
+  "recorded_at_utc": "2026-10-20T05:43:38.429365+00:00",
+  "workflow": ".github/workflows/ueot-qm.yml",
+  "workflow_sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e",
+  "actual_ci_executed": false,
+  "source_gate": "scripts/record_source.py includes all four new modules and both new witness files",
+  "gates": [
+    "pinned compiler",
+    "dependency lock",
+    "proof escape rejection",
+    "whole package build",
+    "573 named audits",
+    "six exact instances and four paired negative controls",
+    "four retained finite and quantum witnesses",
+    "100 runtime methods and four demos"
+  ],
+  "independent_review": "focused/reviews/ (see focused/files-manifest.json for exact archived report path)",
+  "scope": "Source/configuration review only; actual remote run receipts are separately required."
+}

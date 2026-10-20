@@ -1,8 +1,8 @@
-# UEOT-QM v31.5 / Kernel 1.5
+# UEOT-QM v31.6 / Kernel 1.6
 
-当前状态：**MAIN_VERIFIED**；实际远端验收以 [CURRENT](../status/CURRENT.json) 为准。本轮新增精确混合权重预算、真实 Cesàro 迭代和次随机存活仪器；已有证书与全词响应接口继续保留。
+当前状态：**LOCAL_VERIFIED_CI_PENDING**；实际远端验收以 [CURRENT](../status/CURRENT.json) 为准。本轮新增形式化经典Core边界、实局域层析与非交换Doob；精确运行程序保留混合预算、Cesàro及对角生存API，本轮重新执行其全部回归。
 
-实际本地结果：18 通用模块、334 显式定理、392 项命名公理审计；100 运行方法、4 演示 PASS。六个精确实例、四组真假配对负控重新核验；新增具体 Lean 见证另计 29 定理／10 定义／39 项审计。[版本报告](../UEOT_QM_KERNEL_v31.5.md)、[证明回执](evidence/v31.5/lean-verification.json)、[运行回执](evidence/v31.5/runtime-verification.json)。完整理论见 [《UEOT物理学》正式 3.1](../book/UEOT_PHYSICS.md) 第 49–53 章。
+实际本地结果：22 主包模块、459 显式定理、573 项实际命名公理审计；100 运行方法、4 演示 PASS。六个精确实例、四组真假配对负控重新核验；四份具体 Lean 见证另计 62 定理／22 定义／84 项审计。[版本报告](../UEOT_QM_KERNEL_v31.6.md)、[证明回执](evidence/v31.6/lean-verification.json)、[运行回执](evidence/v31.6/runtime-verification.json)。完整理论见 [《UEOT物理学》正式 3.2](../book/UEOT_PHYSICS.md) 第 49–56 章。
 
 ## 立即运行
 
@@ -29,11 +29,11 @@ python physics/qm/kernel/verify_kernel.py --output /tmp/qm-runtime-v315.json
 
 ## 混合、长期与存活 API
 
-新增 [finite_dynamics.py](ueot_qm/finite_dynamics.py) 的 ProbabilityWeights 只接受精确整数／Fraction 权重，检查非负和归一；MixtureWeightBudget 绑定同一个实际成员库及其表示指纹，计算精确有理 TV。零权重成员仍需满足共同载体和结果字母表。mix_instruments 通过 Kraus 权重乘法实现混合，运行端不需要近似平方根。
+自v31.5沿用的 [finite_dynamics.py](ueot_qm/finite_dynamics.py) 的 ProbabilityWeights 只接受精确整数／Fraction 权重，检查非负和归一；MixtureWeightBudget 绑定同一个实际成员库及其表示指纹，计算精确有理 TV。零权重成员仍需满足共同载体和结果字母表。mix_instruments 通过 Kraus 权重乘法实现混合，运行端不需要近似平方根。
 
 channel_operator 对任意矩阵线性作用；iterate_state 检查非负整数步数和密度态；cesaro_average 要求正整数 N，并使用第 0 至 N−1 个实际迭代态。substochastic_instrument 检查方形非负次随机 Q，按 pQ 的行方向提供 survive／lost 两结果。运行载体仍受既有精确矩阵库 1–4 维范围约束。
 
-demo_v315 展示 TV 达界及非达界、bit-flip 周期与平均残差、恒等通道非唯一、QSD 的 2⁻ⁿ 生存及 Doob 的 qh。13 个新增方法同时检验删除前提的失败情形。它们是精确合成模型验证，不是实验数据。
+demo_v315 展示 TV 达界及非达界、bit-flip 周期与平均残差、恒等通道非唯一、QSD 的 2⁻ⁿ 生存及 Doob 的 qh。v31.5引入的13个方法同时检验删除前提的失败情形；本轮与其余方法一并重跑。它们是精确合成模型验证，不是实验数据。
 
 完成通用 Lean 构建后，从仓库根执行：
 
@@ -41,7 +41,7 @@ demo_v315 展示 TV 达界及非达界、bit-flip 周期与平均残差、恒等
 python formalization/ueot-qm/scripts/verify_finite_witnesses.py --output-dir /tmp/qm-finite-witnesses
 ~~~
 
-此门实际编译两份固定具体见证，审核全部 39 个声明并绑定 32 个通用模块的源与 olean。它与六实例证书门分别统计；具体证明不增加 334 个通用定理的计数。[实际见证回执](evidence/v31.5/finite-witnesses/verification.json)
+此门实际编译四份固定具体见证，审核全部84个声明并绑定79个QM/Core模块的源与olean。包含原混合/生存，以及新增实层析/非交换Doob见证；与六实例证书门分别统计，具体证明不增加459个主包定理的计数。[实际见证回执](evidence/v31.6/finite-witnesses/verification.json)
 
 ## 把具体证书交给 Lean
 
@@ -203,15 +203,15 @@ print(local["all_six_cancel"])  # True；范围为六项局域异常
 
 有限协议证书只覆盖给出的准备配对和因果树。标量预算需要明确的逐步前提。二者不自动变成全部状态/全部协议上的 trace-distance 或 diamond-norm 保证。
 
-18 个通用 Lean 模块覆盖实际量子操作、响应商、有限坐标、完整树、精确 checker、效应稳定性，并新增混合全态 TV、Cesàro 平稳存在及对角 QSD/Doob 桥。334 定理、392 审计统一通过；数值实例与具体见证有独立源绑定回执。当前集成身份见 [CURRENT](../status/CURRENT.json)。
+22个主包Lean模块覆盖实际量子操作、响应商、有限坐标、完整树、精确checker、效应稳定性、混合全态TV、Cesàro、对角/非交换条件化与经典/实模型分离。459定理、573审计统一通过；数值实例与具体见证有独立源绑定回执。当前集成身份见 [CURRENT](../status/CURRENT.json)。
 
 新 `channelDefect` 是全态输出伪距离的数学上确界，尚不是本 Python 运行时的可计算函数。实际量子一步界已经调用 Core M-TC 得到轨迹总误差；原有标量预算 API 仍要求输入它声明的局部合同。丢弃结果后的通道缺陷不自动控制两个不同仪器的标签或历史；后验界要求双方事件概率正。可认证的缺陷数值上界、完整经典记录扩展、旁系统稳定性和范数识别仍是独立任务。
 
-Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基独立性。数学数域、加权／可变指标桥与逐实例证明已经完成；Python/JSON 解码、索引映射程序、搜索／消元、PSD 判定和树遍历的全输入细化仍未完成。具体表示系数、matching 窗口、全局异常、真空或质量也继续独立。准确范围见 [v31.5 主报告](../UEOT_QM_KERNEL_v31.5.md)。
+Lean 的 finite presentation 允许冗余生成元；Python checker 另检查基独立性。数学数域、加权／可变指标桥与逐实例证明已经完成；Python/JSON 解码、索引映射程序、搜索／消元、PSD 判定和树遍历的全输入细化仍未完成。具体表示系数、matching 窗口、全局异常、真空或质量也继续独立。准确范围见 [v31.6 主报告](../UEOT_QM_KERNEL_v31.6.md)。
 
 ## 回执与版本身份
 
-本版在 `evidence/v31.5/` 保存源码、运行、演示、通用 Lean 与实例回执。[本地证明回执](evidence/v31.5/lean-verification.json)、[实例验收](evidence/v31.5/lean-exports/verification.json) 与 [本轮台账](../status/CLAIM_LEDGER_v31.5.json) 分别记录实际结果、被测字节和开放义务。v31.2、v31.3、v31.4 原证据保留，并由各自独立集成回执记录已经完成的主线结果。
+本版在 `evidence/v31.6/` 保存源码、运行、演示、通用 Lean 与实例回执。[本地证明回执](evidence/v31.6/lean-verification.json)、[实例验收](evidence/v31.6/lean-exports/verification.json) 与 [本轮台账](../status/CLAIM_LEDGER_v31.6.json) 分别记录实际结果、被测字节和开放义务。v31.2、v31.3、v31.4 原证据保留，并由各自独立集成回执记录已经完成的主线结果。
 
 v31.1 的回执继续可读，保持其原源码身份：
 

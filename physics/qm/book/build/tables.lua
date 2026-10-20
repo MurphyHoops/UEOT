@@ -9,7 +9,8 @@ function Table(t)
   local weights
   if n == 2 then weights = {0.30, 0.70}
   elseif n == 3 then
-    if string.find(txt, "编号") then weights = {0.24, 0.07, 0.69}
+    if string.find(txt, "模块") and string.find(txt, "定理") then weights = {0.30, 0.12, 0.58}
+    elseif string.find(txt, "编号") then weights = {0.24, 0.07, 0.69}
     elseif string.find(txt, "标记") then weights = {0.10, 0.36, 0.54}
     else weights = {0.25, 0.34, 0.41} end
   elseif n == 4 then
