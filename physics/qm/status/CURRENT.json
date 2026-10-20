@@ -16,9 +16,9 @@
   "roadmap": "../ROADMAP.md",
   "claim_ledger": "CLAIM_LEDGER_v31.4.json",
   "previous_claim_ledger": "CLAIM_LEDGER_v31.3.json",
-  "verification_state": "LOCAL_VERIFIED_CI_PENDING",
+  "verification_state": "MAIN_VERIFIED",
   "acceptance_marker": {
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "change_class": "B",
     "authority": "User-directed continuation of the entire UEOT-QM construction and remote QM synchronization",
     "domain_memo": "../audits/EFFECT_STABILITY_REVIEW_v31.4.md",
@@ -44,8 +44,8 @@
     "independent_mathematical_reviews": "CLEAR",
     "source_and_verifier_review": "LOCAL_SOURCE_BINDING_AND_INSTANCE_RECHECK_PASS",
     "local_machine_acceptance": "PASS",
-    "integration_acceptance": "PENDING_PR_AND_RESULTING_MAIN",
-    "integration_receipt": null,
+    "integration_acceptance": "PASS_PR_AND_RESULTING_MAIN",
+    "integration_receipt": "../kernel/evidence/v31.4/integration-verification.json",
     "review_scope": "New-module author scope check plus separate collaborator semantic review; book chapters 49-50 have a separate interface review."
   },
   "completed_in_this_delivery": [
@@ -57,7 +57,8 @@
     "Four post-generation true-check corruptions rejected and identical-data check=false proofs accepted with 4 further audit reports",
     "55 source entries identify the tested candidate bytes; nine actual Git dependency revisions match their pins",
     "The finite common-carrier complete-Kraus and strictly-positive-event slice of QMU-04 is proved",
-    "Canonical UEOT Physics 3.0 navigation points to chapters 0-50 and appendices A-F, with separate book evidence"
+    "Canonical UEOT Physics 3.0 navigation points to chapters 0-50 and appendices A-F, with separate book evidence",
+    "PR337 workflow39345492165 and resulting-main workflow39345953198 passed on source 3b227e3d08e6faa8252e3dd2e3ea4e5536dae007 and tested main d6926c7a8b650280a2357b6eb0cb8d86fca3953a"
   ],
   "proof_receipt": "../kernel/evidence/v31.4/lean-verification.json",
   "instance_receipt": "../kernel/evidence/v31.4/lean-exports/verification.json",
@@ -70,7 +71,7 @@
       "QDRR protocol/noise/statistical validation",
       "Energy-controlled CV and model-specific bounded-response QFT/RG interfaces"
     ],
-    "integration_gate": "Current local validation is complete; the v31.4 source still needs its own PR CI and resulting-main verification before MAIN_VERIFIED."
+    "integration_gate": "Completed for PR337, source 3b227e3d08e6faa8252e3dd2e3ea4e5536dae007, and tested main d6926c7a8b650280a2357b6eb0cb8d86fca3953a; future proof/runtime changes require their own source-bound PR and resulting-main checks."
   },
   "known_open_items": [
     "Useful computable certified channel-defect bounds beyond the proved universal upper bound one",
@@ -84,13 +85,13 @@
   "integration": {
     "target_branch": "main",
     "temporary_branch": null,
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "scope": [
       "physics/qm/**",
       "formalization/ueot-qm/**",
       ".github/workflows/ueot-qm.yml"
     ],
-    "source_identity": "55 per-file SHA256 entries bind the actual locally tested v31.4 candidate. The observed checkout is the prior accepted baseline; no v31.4 remote commit or tested-main identity is claimed yet.",
+    "source_identity": "55 source entries bind published source 3b227e3d08e6faa8252e3dd2e3ea4e5536dae007; its Git tree 2fb88d6bace94ec9ec682dc3ea120718c692f80a equals the tested-main tree at d6926c7a8b650280a2357b6eb0cb8d86fca3953a. PR and resulting-main CI passed. Later navigation/evidence metadata is not represented as another Lean execution.",
     "previous_version": {
       "target_branch": "main",
       "temporary_branch": "qm/upgrade-core-v3-v31",
@@ -123,21 +124,24 @@
       "claim_ledger": "CLAIM_LEDGER_v31.3.json",
       "scope_note": "Historical v31.3 source, tree, PR and tested-main identity. Its prior v31.2 history remains nested and does not certify new v31.4 bytes."
     },
-    "source_commit": null,
-    "source_tree": null,
-    "pull_request": null,
-    "pr_run": null,
-    "tested_main_commit": null,
-    "main_run": null,
-    "receipt": null,
+    "source_commit": "3b227e3d08e6faa8252e3dd2e3ea4e5536dae007",
+    "source_tree": "2fb88d6bace94ec9ec682dc3ea120718c692f80a",
+    "pull_request": 337,
+    "pr_run": 39345492165,
+    "tested_main_commit": "d6926c7a8b650280a2357b6eb0cb8d86fca3953a",
+    "main_run": 39345953198,
+    "receipt": "../kernel/evidence/v31.4/integration-verification.json",
     "baseline_import_review": "../kernel/evidence/v31.3/core-import-closure.json",
     "source_manifest": "../kernel/evidence/v31.4/source-manifest.json",
     "source_count": 55,
     "source_set_sha256": "048a2c3c907ee639d39ec18ed2bf48791dcbd15c5c78d728dc4d6e24411ffc08",
     "observed_checkout_commit": "0c093e9fae990d6ef8d670163b84ec93bd6fb025",
-    "pr_status": "PENDING",
-    "main_status": "PENDING",
-    "baseline_import_review_scope": "Historical prior-version closure review; current dependency checkout identities have their own v31.4 receipt."
+    "pr_status": "PASS",
+    "main_status": "PASS",
+    "baseline_import_review_scope": "Historical prior-version closure review; current dependency checkout identities have their own v31.4 receipt.",
+    "tested_main_tree": "2fb88d6bace94ec9ec682dc3ea120718c692f80a",
+    "source_and_main_tree_identical": true,
+    "original_proof_source_commit": "36b38e591dc84823ce6adc09422b2613f9dac30d"
   },
   "source_manifest": "../kernel/evidence/v31.4/source-manifest.json",
   "path_conventions": {
@@ -199,5 +203,7 @@
     "axiom_receipt": "../kernel/evidence/v31.4/proof-axioms.json",
     "dependency_receipt": "../kernel/evidence/v31.4/dependency-identity.json",
     "count_scope": "287 generic targets = 256 theorems + 31 listed constructions/definitions; numeric-instance and false-witness reports are separate."
-  }
+  },
+  "local_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING",
+  "metadata_updated_at_utc": "2026-10-20T00:17:25.225697+00:00"
 }

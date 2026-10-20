@@ -1,10 +1,10 @@
 # UEOT-QM / Physics Roadmap
 
-状态：**v31.4 / Kernel 1.4 — LOCAL_VERIFIED_CI_PENDING**。日期：2026-10-19 UTC（北京时间 2026-10-20）。
+状态：**v31.4 / Kernel 1.4 — MAIN_VERIFIED**。日期：2026-10-19 UTC（北京时间 2026-10-20）。
 
 正式理论入口为 [《UEOT物理学》3.0](book/UEOT_PHYSICS.md) 与同目录 [PDF](book/UEOT_PHYSICS.pdf)，连续正文第 0–50 章及附录 A–F。理论论证、物理输入、Lean 已证切片与后续研究义务在同一著作中保持明确对应；发布和验证状态继续由 [CURRENT.json](status/CURRENT.json) 及 [v31.4 台账](status/CLAIM_LEDGER_v31.4.json) 管理。
 
-本轮基于已验收 v31.3 主线 `0c093e9fae990d6ef8d670163b84ec93bd6fb025` 开展。前版 PR #335 及主线工作流 39300120071 的 [集成回执](kernel/evidence/v31.3/integration-verification.json) 保留独立身份。v31.4 已完成实际本地统一验证，远端 CI 与主线集成尚待验收；冻结 Core 定义、106 项覆盖与四个计数生成器保持不变。
+本轮基于已验收 v31.3 主线 `0c093e9fae990d6ef8d670163b84ec93bd6fb025` 开展。前版 PR #335 及主线工作流 39300120071 的 [集成回执](kernel/evidence/v31.3/integration-verification.json) 保留独立身份。v31.4 已完成实际本地、PR #337 与合入后主线验收，详见 [本轮集成回执](kernel/evidence/v31.4/integration-verification.json)；冻结 Core 定义、106 项覆盖与四个计数生成器保持不变。
 
 ## 当前建设成果
 
@@ -44,7 +44,7 @@ v31.1 建立合法量子记录、全词响应商及闭合更新；v31.2 建立�
 
 ## 本轮交付验收
 
-本轮本地证明、命名公理、运行与逐实例重新核验均已完成；接下来按实际新源码身份完成总著导出、远端 PR CI 与合入后主线验收。当前 `LOCAL_VERIFIED_CI_PENDING` 不声称远端已经成功。后续任何数学或运行源码增量仍需自身的源绑定验证，文档发布不能替代编译。证据入口为 [v31.4 证明回执](kernel/evidence/v31.4/lean-verification.json) 和 [55 项源码清单](kernel/evidence/v31.4/source-manifest.json)。
+本轮本地证明、命名公理、运行与逐实例重新核验、PR #337 工作流 39345492165 及被验收主线 `d6926c7a8b650280a2357b6eb0cb8d86fca3953a` 的工作流 39345953198 均已完成。源提交 `3b227e3d08e6faa8252e3dd2e3ea4e5536dae007` 与该主线具有相同 Git 树 `2fb88d6bace94ec9ec682dc3ea120718c692f80a`，当前状态为 `MAIN_VERIFIED`。身份与实际作业结果见 [集成回执](kernel/evidence/v31.4/integration-verification.json)。此后任何数学或运行源码增量仍需自身的源绑定验证；本次导航与证据补录不代表重新执行数学构建。原始本地证据保留于 [证明回执](kernel/evidence/v31.4/lean-verification.json) 和 [55 项源码清单](kernel/evidence/v31.4/source-manifest.json)。
 
 ## 后续执行次序与优化依据
 
@@ -66,7 +66,7 @@ v23 的操作／QDRR，v24.4 的重构／CV，v25.2 的对称／自旋／Fock，
 | v31.1 | 56 theorem / 59 审计 / 32 测试 | 原回执保留，已完成主线验收 |
 | v31.2 | 128 theorem / 137 审计 / 72 测试 | 原本地回执 + [主线集成补充](kernel/evidence/v31.2/integration-verification.json) |
 | v31.3 | 196 theorem / 213 审计 / 87 测试；六实例／四假值见证另列 | [证明回执](kernel/evidence/v31.3/lean-verification.json)、[主线验收](kernel/evidence/v31.3/integration-verification.json) |
-| v31.4 | 256 theorem / 287 审计 / 87 测试 / 3 演示；六实例／四假值见证重新核验 | [证明回执](kernel/evidence/v31.4/lean-verification.json)、[台账](status/CLAIM_LEDGER_v31.4.json)；LOCAL_VERIFIED_CI_PENDING |
+| v31.4 | 256 theorem / 287 审计 / 87 测试 / 3 演示；六实例／四假值见证重新核验 | [证明回执](kernel/evidence/v31.4/lean-verification.json)、[台账](status/CLAIM_LEDGER_v31.4.json)、[主线集成](kernel/evidence/v31.4/integration-verification.json)；MAIN_VERIFIED |
 
 旧的 `β₁=3 → Index(D)=3 → generations` 推论继续退役。family gauge factor 与 331 的 extended weak factor 保持分型。三代结论仍是实际谱和有效窗口条件下的选择；六个局域异常数值为零不构成三代充分条件。
 

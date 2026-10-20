@@ -1,12 +1,12 @@
 # UEOT-QM
 
-当前研发：**v31.4 / Kernel 1.4 — LOCAL_VERIFIED_CI_PENDING，2026-10-19 UTC**。
+当前研发：**v31.4 / Kernel 1.4 — MAIN_VERIFIED，2026-10-19 UTC**。
 
 理论总入口为 [《UEOT物理学》正式 3.0](book/UEOT_PHYSICS.md)，连续正文为第 0–50 章、附录 A–F；[PDF](book/UEOT_PHYSICS.pdf) 与正文同目录。第 49 章接通精确证书、有限响应坐标和内核执行，第 50 章展开实际量子稳定性。总著保留操作语义、重构输入、物理适用条件和未完成义务；具体机器证明以 Lean 源码、命名审计及绑定源码的回执为准。
 
 本轮新增 **效应 → Born 概率界 → 全效应响应伪距离 → 完整通道收缩与实际缺陷 → Core M-TC 组合 → 正事件后验界**。统一 `lake build UEOTQM` 已实际通过：**15 个通用模块、256 个显式定理、287 项唯一命名公理审计 PASS**；允许的基础仅为 `propext`、`Classical.choice`、`Quot.sound`。**87 个运行方法和 3 个演示 PASS**。六个导出实例重新编译，产生 42 项独立审计；四种篡改的原通过证明被拒绝，同数据的四份 `check = false` 内核证明通过。详见 [本轮证明回执](kernel/evidence/v31.4/lean-verification.json)、[运行回执](kernel/evidence/v31.4/runtime-verification.json) 和 [实例验收](kernel/evidence/v31.4/lean-exports/verification.json)。
 
-这些是本轮实际本地验收。v31.4 的远端 CI 与主线集成尚未验收，状态由 [CURRENT.json](status/CURRENT.json) 单列。上一已完成主线版本 v31.3 的 PR #335 及主线工作流 39300120071 具有独立 [集成回执](kernel/evidence/v31.3/integration-verification.json)，不替代新源码的验收。
+本轮本地、PR #337 工作流 39345492165 与合入后主线工作流 39345953198 均已完成实际验收，详见 [v31.4 集成回执](kernel/evidence/v31.4/integration-verification.json)。源提交 `3b227e3d08e6faa8252e3dd2e3ea4e5536dae007`、源树 `2fb88d6bace94ec9ec682dc3ea120718c692f80a` 与被验收主线 `d6926c7a8b650280a2357b6eb0cb8d86fca3953a` 的身份分别记录；源树与被验收主线树相同。上一版本 v31.3 的 [集成回执](kernel/evidence/v31.3/integration-verification.json) 保留独立历史身份。当前发布状态由 [CURRENT.json](status/CURRENT.json) 单列。
 
 ## 从这里开始
 
@@ -69,7 +69,7 @@ Python 表示证书支持 Hilbert 维数 1–4、基数不超过 `d²`、见证�
 | v31.1 / Kernel 1 | 五模块、56 显式定理、59 审计、32 运行测试 | [原证明回执](kernel/evidence/lean-verification.json)；已完成主线验收 |
 | v31.2 / Kernel 1.2 | 九模块、128 显式定理、137 审计、72 测试；有限坐标／完整树／谱桥 | [原本地回执](kernel/evidence/v31.2/lean-verification.json)、[主线集成补充](kernel/evidence/v31.2/integration-verification.json) |
 | v31.3 / Kernel 1.3 | 13 模块、196 显式定理、213 审计、87 测试；六实例／四假值见证另列 | [证明回执](kernel/evidence/v31.3/lean-verification.json)、[主线集成](kernel/evidence/v31.3/integration-verification.json) |
-| v31.4 / Kernel 1.4 | 15 模块、256 显式定理、287 审计、87 测试、3 演示；六实例／四假值见证重新核验 | [证明回执](kernel/evidence/v31.4/lean-verification.json)、[台账](status/CLAIM_LEDGER_v31.4.json)；LOCAL_VERIFIED_CI_PENDING |
+| v31.4 / Kernel 1.4 | 15 模块、256 显式定理、287 审计、87 测试、3 演示；六实例／四假值见证重新核验 | [证明回执](kernel/evidence/v31.4/lean-verification.json)、[台账](status/CLAIM_LEDGER_v31.4.json)、[主线集成](kernel/evidence/v31.4/integration-verification.json)；MAIN_VERIFIED |
 
 新增 60 个定理与 14 个公开定义共列入 74 个命名审计目标，其中定义含 9 个携带证明的构造和 5 个数据定义。287 是通用命名审计数，六实例的 42 项和四个假值见证的 4 项单列。旧证据只认证原版本源码字节；新 [55 项源清单](kernel/evidence/v31.4/source-manifest.json) 绑定当前候选。Core 冻结定义、106 项覆盖和四个计数生成器保持不变。
 
