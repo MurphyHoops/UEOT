@@ -2,11 +2,11 @@
 
 ## 实际效应、量子稳定性与《UEOT物理学》正式 3.0
 
-日期：2026-10-19 UTC。状态：**LOCAL_VERIFIED_CI_PENDING**。
+日期：2026-10-19 UTC。状态：**MAIN_VERIFIED**。
 
 本轮把已有精确量子内核推进到可组合的实际误差合同：从正半定效应和真实 Born 配对，推出完整 Kraus 通道的全效应响应收缩、实际通道缺陷的一步扰动界、严格正事件的后验界，再以这些已经证明的量子前提调用 Core M-TC。**QMU-04 完成的是有限共同载体完整 Kraus 通道及正事件后验切片**；通道缺陷的数值求界、含标签／历史的自适应模型与 ancilla 稳定范数仍有独立义务。[数学范围与完整声明名单](audits/EFFECT_STABILITY_REVIEW_v31.4.md)
 
-官方 Lean 4.33.1 已实际完成统一构建：**15 个通用模块、256 个显式定理，287 项唯一命名公理审计 PASS**。87 个运行方法、3 个演示、6 份具体证书的重新生成与编译均通过；四种数据篡改同时满足原通过证明被拒绝和同数据 `check = false` 内核证明成功。本轮远端 CI 与合入后的主线验收尚未完成。[统一证明回执](kernel/evidence/v31.4/lean-verification.json)、[实例验收](kernel/evidence/v31.4/lean-exports/verification.json)
+官方 Lean 4.33.1 已实际完成统一构建：**15 个通用模块、256 个显式定理，287 项唯一命名公理审计 PASS**。87 个运行方法、3 个演示、6 份具体证书的重新生成与编译均通过；四种数据篡改同时满足原通过证明被拒绝和同数据 `check = false` 内核证明成功。本轮 PR #337 工作流 39345492165 与合入后的主线工作流 39345953198 均已通过，见 [集成回执](kernel/evidence/v31.4/integration-verification.json)。[统一证明回执](kernel/evidence/v31.4/lean-verification.json)、[实例验收](kernel/evidence/v31.4/lean-exports/verification.json)
 
 ## 1. 总著、内核与证据入口
 
@@ -186,11 +186,11 @@ $$
 | 演示 | demo、demo_v312、demo_v313 全部 PASS | [演示回执](kernel/evidence/v31.4/demos-verification.json) |
 | 正数值实例 | 6 份实际源码重新编译，42 项实例审计 | [逐实例验收](kernel/evidence/v31.4/lean-exports/verification.json) |
 | 严格负控 | 4 个坏数据的原通过证明拒绝；4 个同数据假值证明成功，另计 4 项审计 | 同上 |
-| 远端 CI／主线 | 尚待本轮实际源码身份的验收 | [CURRENT](status/CURRENT.json) |
+| 远端 CI／主线 | PR #337／39345492165 与主线 d6926c7a8b650280a2357b6eb0cb8d86fca3953a／39345953198 均 PASS | [集成回执](kernel/evidence/v31.4/integration-verification.json) |
 
 固定工具链为 `leanprover/lean4:v4.33.1`，实际编译器提交 `819816b2e0a3bf405af45ae5c7af2491d8f5bee6`；Mathlib 保持 `0df444a360eaa60ab8c11dca51a86af692955474`。新增模块最终聚焦编译无警告，整包保留旧模块已有 linter 警告；两者不混称。实际公理集合仅为 `propext`、`Classical.choice`、`Quot.sound`，并非无基础公理的逻辑体系。
 
-本轮 [source-manifest.json](kernel/evidence/v31.4/source-manifest.json) 记录 **55 项**源码及其字节散列，集合 SHA256 为 `048a2c3c907ee639d39ec18ed2bf48791dcbd15c5c78d728dc4d6e24411ffc08`。本地观察到的 checkout `0c093e9fae990d6ef8d670163b84ec93bd6fb025` 是上一已验收主线；新候选由各文件哈希标识，不声称这个旧提交已包含新数学。远端发布与集成必须记录其各自实际提交、树和运行身份。
+本轮 [source-manifest.json](kernel/evidence/v31.4/source-manifest.json) 记录 **55 项**源码及其字节散列，集合 SHA256 为 `048a2c3c907ee639d39ec18ed2bf48791dcbd15c5c78d728dc4d6e24411ffc08`。本地观察到的 checkout `0c093e9fae990d6ef8d670163b84ec93bd6fb025` 是上一已验收主线；当前已发布源提交为 `3b227e3d08e6faa8252e3dd2e3ea4e5536dae007`，被验收主线为 `d6926c7a8b650280a2357b6eb0cb8d86fca3953a`，二者 Git 树同为 `2fb88d6bace94ec9ec682dc3ea120718c692f80a`；PR 工作流 39345492165 与主线工作流 39345953198 均成功，详见 [集成回执](kernel/evidence/v31.4/integration-verification.json)。旧 checkout 身份和原始本地回执保持其原有含义。本次状态补录不声称新执行了数学编译。
 
 本轮数学修改属于 QM 侧；Core 源码、冻结定义、106 项覆盖表和四个计数生成器未改。作者范围核对与另一审阅者的独立语义复核各自记录，不把只读语义检查冒充编译。
 

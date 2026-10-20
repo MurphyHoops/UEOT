@@ -1,0 +1,661 @@
+{
+  "schema": "ueot_qm.integration_verification.v2",
+  "version": "31.4-kernel.1.4",
+  "status": "MAIN_VERIFIED",
+  "repository": "MurphyHoops/UEOT",
+  "pull_request": {
+    "number": 337,
+    "url": "https://github.com/MurphyHoops/UEOT/pull/337",
+    "head_sha": "3b227e3d08e6faa8252e3dd2e3ea4e5536dae007",
+    "merge_commit": "d6926c7a8b650280a2357b6eb0cb8d86fca3953a",
+    "merged": true,
+    "merged_at": "2026-10-20T00:09:27Z"
+  },
+  "pr_ci": {
+    "id": 39345492165,
+    "head_sha": "3b227e3d08e6faa8252e3dd2e3ea4e5536dae007",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39345492165",
+    "created_at": "2026-10-20T00:05:02Z",
+    "updated_at": "2026-10-20T00:08:19Z",
+    "jobs": [
+      {
+        "id": 118376957459,
+        "name": "runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39345492165,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Verify exact kernel and independent negative controls",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run complete kernel example",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run representation and spectrum witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Export exact Lean certificate examples",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Archive runtime evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 118376957800,
+        "name": "lean",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39345492165,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Record source identity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Check inherited dependency lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install and verify official pinned Lean",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Restore pinned dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Restore Mathlib proof cache",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Save pinned dependency cache",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8
+          },
+          {
+            "name": "Reject proof escapes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Build all QM proofs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Audit theorem axioms",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Verify generated exact certificates and false witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Archive proof evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          }
+        ]
+      }
+    ]
+  },
+  "resulting_main": {
+    "id": 39345953198,
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39345953198",
+    "head_sha": "d6926c7a8b650280a2357b6eb0cb8d86fca3953a",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-10-20T00:09:29Z",
+    "updated_at": "2026-10-20T00:13:02Z",
+    "jobs": [
+      {
+        "id": 118378471923,
+        "run_id": 39345953198,
+        "name": "lean",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Record source identity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Check inherited dependency lock",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install and verify official pinned Lean",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Restore pinned dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Restore Mathlib proof cache",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Save pinned dependency cache",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8
+          },
+          {
+            "name": "Reject proof escapes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Build all QM proofs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Audit theorem axioms",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Verify generated exact certificates and false witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Archive proof evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          }
+        ]
+      },
+      {
+        "id": 118378472508,
+        "run_id": 39345953198,
+        "name": "runtime",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Verify exact kernel and independent negative controls",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run complete kernel example",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run representation and spectrum witnesses",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Export exact Lean certificate examples",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Archive runtime evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Install Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      }
+    ]
+  },
+  "source_binding": {
+    "source_commit": "3b227e3d08e6faa8252e3dd2e3ea4e5536dae007",
+    "source_tree": "2fb88d6bace94ec9ec682dc3ea120718c692f80a",
+    "resulting_main_commit": "d6926c7a8b650280a2357b6eb0cb8d86fca3953a",
+    "resulting_main_tree": "2fb88d6bace94ec9ec682dc3ea120718c692f80a",
+    "source_and_main_tree_identical": true,
+    "source_manifest": "source-manifest.json",
+    "source_count": 55,
+    "source_set_sha256": "048a2c3c907ee639d39ec18ed2bf48791dcbd15c5c78d728dc4d6e24411ffc08",
+    "original_proof_source_commit": "36b38e591dc84823ce6adc09422b2613f9dac30d",
+    "published_delivery_files_matched_by_git_blob": 109,
+    "changed_files_relative_to_source_parent": 109,
+    "core_files_changed_by_this_pr": [],
+    "rule": "The final source tree passed PR and resulting-main CI. Later navigation/evidence metadata preserves all 55 proof, runtime, fixture and workflow source inputs and the canonical Markdown/PDF/TeX; its new commit is not represented as another Lean execution. publication-manifest.json records the source PR snapshot, before metadata promotion."
+  },
+  "baseline_provenance": {
+    "authoring_checkout": "0c093e9fae990d6ef8d670163b84ec93bd6fb025",
+    "published_parent": "0c093e9fae990d6ef8d670163b84ec93bd6fb025",
+    "qm_imported_core_modules": 12,
+    "changed_imported_core_modules": 0,
+    "receipt": "core-import-closure.json",
+    "frozen_core_rule": "No Core files or its 106-item/four-generator definitions were modified by this delivery."
+  },
+  "verified": {
+    "lean_version": "4.33.1",
+    "compiler_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+    "generic_modules": 15,
+    "explicit_theorems": 256,
+    "named_generic_axiom_reports": 287,
+    "allowed_foundation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "runtime_test_methods": 87,
+    "positive_instances": 6,
+    "positive_named_axiom_reports": 42,
+    "rejected_corrupted_true_proofs": 4,
+    "same_data_false_witnesses": 4,
+    "false_named_axiom_reports": 4,
+    "regenerated_fixture_files": 13,
+    "actual_local_instance_receipt": "lean-exports/verification.json",
+    "all_three_demos_passed": true
+  },
+  "source_review": {
+    "initial_source_commit": "36b38e591dc84823ce6adc09422b2613f9dac30d",
+    "initial_pr_run": 39344432150,
+    "final_fix_commit": "3b227e3d08e6faa8252e3dd2e3ea4e5536dae007",
+    "resolved_threads": [
+      {
+        "id": "PRRT_kwDORFmJQM6uJgl2",
+        "comment_id": 4320080085,
+        "issue": "Stale staged CJK font survived a no-font rebuild",
+        "resolution": "Owned staged font lifecycle is explicit; eight focused file-lifecycle cases passed.",
+        "receipt": "../../../book/evidence/v3.0/font-cleanup-review.json"
+      },
+      {
+        "id": "PRRT_kwDORFmJQM6uJgl-",
+        "comment_id": 4320080095,
+        "issue": "Appendix count alone did not enforce A-F identity",
+        "resolution": "Ordered A-F headers and adjacent matching anchors are required; canonical source passed and four independent mutations were rejected.",
+        "receipt": "../../../book/evidence/v3.0/appendix-identity-review.json"
+      }
+    ],
+    "unresolved_threads_observed_before_merge": 0,
+    "canonical_book_and_55_quantum_sources_changed_by_fix": false
+  },
+  "independent_log_reviews": {
+    "status": "PASS",
+    "pr": "ci/pr-log-review.json",
+    "resulting_main": "ci/main-log-review.json",
+    "initial_pr_history": "ci/initial-pr-log-review.json",
+    "directly_printed_source_hashes": 19,
+    "scope": "Root read and parsed actual logs: checkout, official compiler identity, 8735-job build, all 287 requested named reports, exact certificate/false-witness summary and all 87 runtime method identities. The other source inputs are bound by Git tree and manifest; they are not claimed to be directly printed in these logs."
+  },
+  "scope": "Finite-dimensional quantum-sector kernel with declared complex density/Kraus/Born input, exact certificate soundness and individually compiled numerical models, effects and unconditional-channel/postselection stability. No claim of unique reconstruction of quantum mechanics from frozen Core, unconditional G3, universal Python/JSON/exporter refinement, ancillary/diamond stability, adaptive-history robustness or empirical confirmation. Formal monograph is an integrated authored edition, not external human peer review.",
+  "canonical_monograph": {
+    "title": "UEOT物理学",
+    "author": "钱德桂（Degui Qian）",
+    "document_id": "UEOT-PHYSICS",
+    "edition": "3.0 正式整合版",
+    "chapters": 51,
+    "chapter_range": "0–50",
+    "appendices": 6,
+    "appendix_range": "A–F",
+    "numbered_sections": 237,
+    "unique_anchors": 145,
+    "numbered_results": 88,
+    "pdf_pages": 160,
+    "files": [
+      {
+        "path": "physics/qm/book/UEOT_PHYSICS.md",
+        "bytes": 376371,
+        "sha256": "510d1a08a2b4808e08d058628310727ec7ec48348bd21d96e47c04a450875379"
+      },
+      {
+        "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+        "bytes": 812938,
+        "sha256": "20401334130d8cfda9be33a3c654d4284c7daf9a9666033130b93e7b8f5ffdae"
+      },
+      {
+        "path": "physics/qm/book/UEOT_PHYSICS.tex",
+        "bytes": 440725,
+        "sha256": "4674e7cc33d0b8d04a3ef52e2f94c5e4270978ac10feed2a0fb9979ec758f9ee"
+      }
+    ],
+    "chapter_dossier": {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "bytes": 173572,
+      "sha256": "65ec13374fca913dfd733e0f72f6d4969aa58b7a9e6cd5092b9a0223ebd74dd6"
+    },
+    "validation": {
+      "structural_gate": "PASS",
+      "actual_local_legacy_regression_checks": 757,
+      "xelatex_passes": 3,
+      "missing_characters": 0,
+      "overfull_boxes": 0,
+      "undefined_references": 0,
+      "all_160_pages_reviewed_in_contact_sheets": true,
+      "selected_pages_reviewed_in_detail": true
+    },
+    "receipts": [
+      {
+        "path": "physics/qm/book/evidence/v3.0/book-structure.json",
+        "bytes": 9703,
+        "sha256": "669546f1e0a495910cfa5a87b1bfb2eebd9c25b4e8c8f2e22f7ab325d02291de"
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.0/editorial-acceptance.json",
+        "bytes": 1939,
+        "sha256": "bc133a4210a7976d6bc6431a518f8d5e7749a69407850c1edd8a8a5c39c46b8c"
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.0/pdf-build.json",
+        "bytes": 1136,
+        "sha256": "2a98b293313242b788765fce77427289aea1beb37b2ceef68b7d63d365e2e216"
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.0/pdf-visual-review.json",
+        "bytes": 3060,
+        "sha256": "f93725195ed864dcaa4868166087a331e2fd519a3b4a128e10334d4d21ad0d95"
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.0/pdf-advanced-visual-review.json",
+        "bytes": 15589,
+        "sha256": "3e8f160cfb379d5ef515392ddfaba24a2997dbeb069fc6d6545539f77a163f78"
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.0/legacy-regression.json",
+        "bytes": 2145,
+        "sha256": "55ea29f98524580ba25bdf3581ae0f03034329d671b5edb2d020fa5914e46fae"
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.0/font-cleanup-review.json",
+        "bytes": 4221,
+        "sha256": "12eb5a877291689fcc74702156a0e1739ea1b1d0910a61f1f6268050f5ba801f"
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.0/appendix-identity-review.json",
+        "bytes": 3636,
+        "sha256": "e9aa354aafc827806c68b5b34c506c5555770d508bd5007f81deb1698695f4ec"
+      }
+    ],
+    "scope": "Book authoring, legacy regression and PDF build/layout checks were executed locally and bind the published bytes. The QM CI performs the stated quantum Lean/runtime checks; it is not represented as rerunning PDF compilation. A formal integrated edition does not imply that every physical conjecture is proved or that external peer review occurred."
+  },
+  "evidence_files": [
+    {
+      "path": "ci/initial-pr-lean.log",
+      "bytes": 117313,
+      "sha256": "20f274ce495fa5749ac4b8848f22b7289311d5e1ec76337c6e96746f2824b086"
+    },
+    {
+      "path": "ci/initial-pr-log-review.json",
+      "bytes": 2219,
+      "sha256": "0dded4882091dca2fb79c352ae64c10044e037444d6fe7075222242fd034744f"
+    },
+    {
+      "path": "ci/initial-pr-run.json",
+      "bytes": 4813,
+      "sha256": "454012a91341e74d62a4eecdd50afb88fad17b29801b79510a404cd8ebe0aea1"
+    },
+    {
+      "path": "ci/initial-pr-runtime.log",
+      "bytes": 39262,
+      "sha256": "7d1808de67fd4bba75d7f591f616e192ccfe2d2b356cdf2b4bde7dd9d719c583"
+    },
+    {
+      "path": "ci/main-lean.log",
+      "bytes": 119990,
+      "sha256": "ee263a0c72339bf490778de1432f255e58189e9c26d57edbdffc87dadc6c40b7"
+    },
+    {
+      "path": "ci/main-log-review.json",
+      "bytes": 15649,
+      "sha256": "82668329db4e3993258a96ac055d06cecb6607dd08409dfb6d207cc21fc9a86b"
+    },
+    {
+      "path": "ci/main-run.json",
+      "bytes": 4757,
+      "sha256": "05f0bee7c027eaa2dec3e6a557b0c21a5e2070a41d5014abcc3356e9af63d0d3"
+    },
+    {
+      "path": "ci/main-runtime.log",
+      "bytes": 39244,
+      "sha256": "b17e519ece20c6bf600b1d7e313990dfe19342c632ae80682d5b5ca82be6ebf2"
+    },
+    {
+      "path": "ci/pr-lean.log",
+      "bytes": 115779,
+      "sha256": "0f7332106ba72fa87a3dded35a045c93cb4e8725f61b04764e28e5dc3af8304b"
+    },
+    {
+      "path": "ci/pr-log-review.json",
+      "bytes": 15643,
+      "sha256": "f3bf7c4c0d332e91cdcf4c5bd3843c150896db99260a362080177842643dd87c"
+    },
+    {
+      "path": "ci/pr-run.json",
+      "bytes": 4813,
+      "sha256": "82ed765c7dffd23c9973c988fb67500afd73cf9842da41fa06be122bc1ce767f"
+    },
+    {
+      "path": "ci/pr-runtime.log",
+      "bytes": 39236,
+      "sha256": "31a5b496e96d133111e7ebbcabbe37074ef4eac0d74674c437b60141e45cf509"
+    },
+    {
+      "path": "publication-manifest.json",
+      "bytes": 34339,
+      "sha256": "b02364430c225617c48c63b153ffd8a0bfd239c9656f354088440954628d7389"
+    },
+    {
+      "path": "source-manifest.json",
+      "bytes": 10207,
+      "sha256": "4bf955e11eaeda589ac35c7c781b212f5c13ccab83b05f6332dc6122ee27e1b5"
+    },
+    {
+      "path": "core-import-closure.json",
+      "bytes": 4172,
+      "sha256": "76d6d894fe0e7e138be8eb22c0510922a88e077d0f19158c5943cf74868cada6"
+    },
+    {
+      "path": "dependency-identity.json",
+      "bytes": 2171,
+      "sha256": "3257fecf5a917c3c3d5bd4fcc2097243847fa8b5f615c4191a81a46c9e88b1d4"
+    },
+    {
+      "path": "toolchain-identity.json",
+      "bytes": 850,
+      "sha256": "78a6a77943b79cb08d8864d5b4e1d0b58f75dce60603948b3a35dc1c4bd29cf8"
+    },
+    {
+      "path": "lean-verification.json",
+      "bytes": 2100,
+      "sha256": "12630b00c58476bcec592618b4e912c984828c9e33ccf453a7b42ceb0661514c"
+    },
+    {
+      "path": "lean-exports/verification.json",
+      "bytes": 66649,
+      "sha256": "805c7893688bf6c3efb677d9906a8cd15b0d855ba10224d9ea25e7d1e2b118d6"
+    },
+    {
+      "path": "runtime-verification.json",
+      "bytes": 11417,
+      "sha256": "ce277d2cfc10679bf149fc53f9f1a1b88e4313a966aaac35d0051abdf9ade016"
+    },
+    {
+      "path": "demos-verification.json",
+      "bytes": 566,
+      "sha256": "b608f2cf5be570de6eb85ccdafabb40b57740873c83f782fa7ce30d14af529a6"
+    }
+  ],
+  "recorded_at_utc": "2026-10-20T00:17:25.225697+00:00"
+}

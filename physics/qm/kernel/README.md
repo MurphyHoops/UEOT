@@ -1,6 +1,6 @@
 # UEOT-QM v31.4 / Kernel 1.4
 
-当前状态：**LOCAL_VERIFIED_CI_PENDING**。本轮在已有精确证书与响应坐标内核上新增实际量子效应、完整 Kraus 通道稳定性和正事件后验的 Lean 数学合同。`export_lean_representation` 继续将通过外部库锚定的有限表示证书导出为实际 Lean 数值表；Lean 精确 checker 独立核验数据，再构造真实仪器与全词／完整树／闭合更新定理。
+当前状态：**MAIN_VERIFIED**。本轮在已有精确证书与响应坐标内核上新增实际量子效应、完整 Kraus 通道稳定性和正事件后验的 Lean 数学合同。`export_lean_representation` 继续将通过外部库锚定的有限表示证书导出为实际 Lean 数值表；Lean 精确 checker 独立核验数据，再构造真实仪器与全词／完整树／闭合更新定理。
 
 v31.4 的远端集成按 [CURRENT](../status/CURRENT.json) 独立登记。上一版 v31.3 的 [PR #335](https://github.com/MurphyHoops/UEOT/pull/335) 与 [主线工作流 39300120071](https://github.com/MurphyHoops/UEOT/actions/runs/39300120071) 均已通过，保留其原 [集成回执](evidence/v31.3/integration-verification.json)。
 
@@ -187,7 +187,7 @@ print(local["all_six_cancel"])  # True；范围为六项局域异常
 
 有限协议证书只覆盖给出的准备配对和因果树。标量预算需要明确的逐步前提。二者不自动变成全部状态/全部协议上的 trace-distance 或 diamond-norm 保证。
 
-15 个通用 Lean 模块覆盖量子操作、响应商、词效应空间、有限全词坐标、闭合更新、完整树、谱桥、实际数域解释、加权／可变指标适配和可靠的精确 checker，并新增实际效应、全效应响应伪距离、完整通道缺陷、真实轨迹组合和正事件后验界。统一构建与 287 项命名公理审计已通过；六个具体实例的实际编译另有源绑定回执，远端 CI 与主线集成单列。
+15 个通用 Lean 模块覆盖量子操作、响应商、词效应空间、有限全词坐标、闭合更新、完整树、谱桥、实际数域解释、加权／可变指标适配和可靠的精确 checker，并新增实际效应、全效应响应伪距离、完整通道缺陷、真实轨迹组合和正事件后验界。统一构建与 287 项命名公理审计已通过；六个具体实例的实际编译另有源绑定回执。PR #337 工作流 39345492165 与主线 `d6926c7a8b650280a2357b6eb0cb8d86fca3953a` 的工作流 39345953198 均通过，详见 [集成回执](evidence/v31.4/integration-verification.json)。
 
 新 `channelDefect` 是全态输出伪距离的数学上确界，尚不是本 Python 运行时的可计算函数。实际量子一步界已经调用 Core M-TC 得到轨迹总误差；原有标量预算 API 仍要求输入它声明的局部合同。丢弃结果后的通道缺陷不自动控制两个不同仪器的标签或历史；后验界要求双方事件概率正。可认证的缺陷数值上界、完整经典记录扩展、旁系统稳定性和范数识别仍是独立任务。
 

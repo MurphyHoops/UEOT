@@ -16,7 +16,7 @@
     "weighted_review": "physics/qm/audits/WEIGHTED_RAGGED_REVIEW_v31.3.md",
     "source_manifest": "physics/qm/kernel/evidence/v31.4/source-manifest.json",
     "previous_main": "physics/qm/kernel/evidence/v31.3/integration-verification.json",
-    "integration": null,
+    "integration": "physics/qm/kernel/evidence/v31.4/integration-verification.json",
     "core_import_baseline": "physics/qm/kernel/evidence/v31.3/core-import-closure.json",
     "core_import_baseline_scope": "Historical v31.3 import-closure review; current dependency checkouts are independently recorded below.",
     "dependency_identity": "physics/qm/kernel/evidence/v31.4/dependency-identity.json",
@@ -870,7 +870,7 @@
     }
   ],
   "verification": {
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "proof_receipt": "physics/qm/kernel/evidence/v31.4/lean-verification.json",
     "source_manifest": "physics/qm/kernel/evidence/v31.4/source-manifest.json",
     "source_count": 55,
@@ -916,18 +916,22 @@
       "receipt": "physics/qm/kernel/evidence/v31.4/metric-focused-audit.json"
     },
     "count_scope": "287 generic audit targets = 256 explicit theorems + 31 listed constructions/definitions. The increment adds 60 theorems and 14 definitions (9 proof-bearing and 5 data). Six-instance consequences and same-data false witnesses are audited separately.",
-    "remote_ci": "PENDING",
-    "main_integration": "PENDING",
-    "source_commit": null,
-    "tested_main_commit": null,
-    "pull_request": null,
-    "pr_run": null,
-    "main_run": null,
-    "integration_receipt": null,
+    "remote_ci": "PASS",
+    "main_integration": "PASS",
+    "source_commit": "3b227e3d08e6faa8252e3dd2e3ea4e5536dae007",
+    "tested_main_commit": "d6926c7a8b650280a2357b6eb0cb8d86fca3953a",
+    "pull_request": 337,
+    "pr_run": 39345492165,
+    "main_run": 39345953198,
+    "integration_receipt": "physics/qm/kernel/evidence/v31.4/integration-verification.json",
     "prior_version_main": "PASS",
     "prior_version_integration_receipt": "physics/qm/kernel/evidence/v31.3/integration-verification.json",
     "core_source_modified": false,
-    "full_scientific_theory_verified": false
+    "full_scientific_theory_verified": false,
+    "source_tree": "2fb88d6bace94ec9ec682dc3ea120718c692f80a",
+    "tested_main_tree": "2fb88d6bace94ec9ec682dc3ea120718c692f80a",
+    "local_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING",
+    "original_proof_source_commit": "36b38e591dc84823ce6adc09422b2613f9dac30d"
   },
   "research_baseline": "0c093e9fae990d6ef8d670163b84ec93bd6fb025",
   "core_baseline_role": "Historical frozen Core reference inherited from the earlier QM audit; research_baseline records the current authoring checkout. Core sources are unchanged by this increment.",
@@ -983,5 +987,6 @@
     "main_run": 39300120071,
     "integration_receipt": "physics/qm/kernel/evidence/v31.3/integration-verification.json",
     "scope": "Historical v31.3 source and CI identity only; its test and integration results do not substitute for v31.4 verification."
-  }
+  },
+  "metadata_updated_at_utc": "2026-10-20T00:17:25.225697+00:00"
 }
