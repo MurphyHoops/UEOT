@@ -1,0 +1,29 @@
+{
+  "schema": "ueot_physics.remote_metadata_plan.v3.2",
+  "script": "/tmp/qm316_finalize_book_remote.py",
+  "script_sha256": "b2a039bf445797348245669abb7685c3dc44192da042cb0d5150311091d72f8e",
+  "context": "/tmp/qm316_release_context.json",
+  "repository": "/workspace/scratch/474cf6b1f047/qm_v316_work",
+  "write_targets": [
+    "physics/qm/book/SOURCE_MANIFEST.json",
+    "physics/qm/book/CHAPTER_DOSSIER.json",
+    "physics/qm/book/README.md",
+    "physics/qm/book/evidence/v3.2/source-assembly.json",
+    "physics/qm/book/evidence/v3.2/dossier-review.json",
+    "physics/qm/book/evidence/v3.2/dossier-review.md",
+    "physics/qm/book/evidence/v3.2/local-release-gates.json",
+    "physics/qm/book/evidence/v3.2/metadata-update-review.json",
+    "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+    "physics/qm/book/evidence/v3.2/archive-manifest.json"
+  ],
+  "guard": "pr_status and main_status must both be PASS, with matching actual integration and PR/main receipts. Default mode is read-only; --apply is required for writes.",
+  "identity_gate": "70 tested inputs, 56 actual Core imports, and canonical MD/PDF/TeX identical; whole-tree equality is recorded as an actual bool and is not required.",
+  "untouched": [
+    "canonical MD/PDF/TeX",
+    "all proof/runtime source inputs",
+    "all Core sources",
+    "historical/preacceptance archives",
+    "canonical scientific execution and original PDF/visual receipts, excluding explicitly updated dossier metadata",
+    "all kernel evidence and repository files outside the exact write list"
+  ]
+}

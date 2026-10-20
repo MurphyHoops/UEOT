@@ -1,0 +1,58 @@
+{
+  "schema": "ueot_qm.ci_log_verifier_contract.v31.6",
+  "status": "PREPARED_AND_PARSER_CHECKED_NOT_FINAL_CI_ACCEPTANCE",
+  "script": {
+    "path": "/tmp/qm316_verify_ci_logs.py",
+    "sha256": "e2b71aff291a62ce5c2f706033e7854088c816553838311bf649bb651a11a243",
+    "bytes": 23407
+  },
+  "old_script": "/tmp/qm315_verify_ci_logs.py",
+  "default_repository": "/workspace/scratch/474cf6b1f047/qm_v316_work",
+  "required_downloads": [
+    "<kind>-<run>-run.json",
+    "<kind>-<run>-jobs.json",
+    "<kind>-<run>-lean.log",
+    "<kind>-<run>-runtime.log"
+  ],
+  "default_ci_directory": "physics/qm/kernel/evidence/v31.6/ci",
+  "default_output": "<kind>-<run>-verification.json",
+  "preserved_finalizer_fields": [
+    "status",
+    "run_id",
+    "source_commit",
+    "generic_axiom_reports",
+    "runtime_test_methods",
+    "finite_witness_total_audits",
+    "build_jobs"
+  ],
+  "required_validation": [
+    "Actual workflow run is completed/success; correct run id, commit, workflow path and PR/main event; main receipts require main branch push.",
+    "Exactly runtime and lean jobs, unique IDs/names; completed/success; every required step completed/success. Nonrequired housekeeping steps may be skipped. Required gates never may.",
+    "Each actual decoded log identifies its job and records the exact commit immediately after git log -1 --format=%H; uploads finalized for the same run id.",
+    "Frozen local manifest contains 70 unchanged inputs and source-set SHA256 8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115. The CI record-source step prints 26 hashes, each exactly equal to the corresponding local manifest hash.",
+    "Actual installer output identifies official Lean 4.33.1 / commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6.",
+    "The actual lake build UEOTQM execution section contains one successful build summary with a positive number of jobs. Record observed jobs dynamically, with no equality requirement to local 8786.",
+    "573 unique actual Lean axiom reports equal the accepted local complete name-to-axiom map. Compare all names and sorted dependency lists, not just totals. All 459 explicit theorem names from the reviewed 22-module inventory occur in that exact audited set. Duplicate/extra/missing/changed/unreviewed axiom reports fail.",
+    "100 actual verbose unittest method successes match the 100 locally accepted method names; require Ran 100 tests and one OK result.",
+    "All four demo commands have actual Run sections and successful job-step metadata.",
+    "Exact-export gate emitted one parseable JSON PASS summary with no problems, exact 6/42 positive and 4 rejected true plus 4 accepted false/4 audits counts, and all actual named case progress lines.",
+    "Retained finite/quantum gate has the new required step name and exactly four PASS summaries 9/30/5/40 plus final gate PASS.",
+    "Both archive steps succeeded and upload-finalization log messages identify the requested run. Supplied inputs remain unchanged during this verifier execution."
+  ],
+  "evidence_boundaries": [
+    "The 573 generic axiom reports and 100 runtime method names are directly parsed in full from actual job logs.",
+    "Four witness audit totals and exact-certificate audit totals are checked from actual gate summary output and successful step metadata; per-declaration details for these gates are captured by their subprocesses into artifacts and are not printed in job logs.",
+    "artifact_zip_downloaded=false and artifact_zip_contents_verified=false are explicit. Redirected demo JSON payloads are not parsed.",
+    "The 70-input check is local accepted-source identity, while 26 CI-printed hashes are checked directly. Complete remote tree/source reconciliation remains a separate root audit.",
+    "The CI artifact detailed 79 source/olean bindings and 56 Core dependencies are not independently parsed here; do not promote local records or successful gate summaries to a downloaded-artifact audit.",
+    "Preparation/parser smoke is not final CI acceptance. No main verifier entrypoint, Lean, remote call, or repository write was performed by this author during preparation."
+  ],
+  "failure_policy": "Missing/unexecuted/failed/skipped mandatory gates or malformed/mismatched evidence cause nonzero exit and a FAIL verification receipt; never a fabricated PASS.",
+  "smoke_evidence": "/tmp/qm316_ci_parser_smoke.json",
+  "execution_command": "python3 /tmp/qm316_verify_ci_logs.py --kind pr --run 39380741012 --commit 00bf88231328c09b9af58d0ff3c8eec977d73c53",
+  "flags": [
+    "--repo-root",
+    "--ci-dir",
+    "--output"
+  ]
+}

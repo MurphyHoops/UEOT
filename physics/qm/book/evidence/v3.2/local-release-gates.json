@@ -1,6 +1,6 @@
 {
   "schema": "ueot_physics.local_release.v3.2",
-  "status": "LOCAL_VERIFIED_CI_PENDING",
+  "status": "MAIN_VERIFIED",
   "recorded_at_utc": "2026-10-20T05:41:22.394854+00:00",
   "canonical": {
     "path": "physics/qm/book/UEOT_PHYSICS.md",
@@ -19,13 +19,13 @@
   },
   "dossier": {
     "path": "physics/qm/book/CHAPTER_DOSSIER.json",
-    "sha256": "712ba8eb5adbeff4b302e678e15bd0c4bbc69e2cb5afa296d77ec22e42a1360d",
-    "bytes": 438218
+    "sha256": "2a53c9294430bbe8d62bd1f746cac3a12464725ade69e6e4d753b9fb1981e93d",
+    "bytes": 445303
   },
   "source_manifest": {
     "path": "physics/qm/book/SOURCE_MANIFEST.json",
-    "sha256": "0fce0b18334061930d9840f038a76a7a17e3ba51ef7b8feb64aeaac3f338b7d7",
-    "bytes": 7844
+    "sha256": "6d402b66813867f4844e72fde748cc71e00dc36b6f29a56fe1662f401104f5f8",
+    "bytes": 9602
   },
   "root_actual_local_acceptance": {
     "path": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
@@ -43,7 +43,64 @@
   "structure_gate": "PASS",
   "pdf_build_gate": "PASS",
   "visual_gate": "PASS",
-  "remote_gate": "PENDING",
-  "remote_verified": false,
-  "scope": "Local scientific-source, book-content and publication receipts only; no remote commit/CI is invented."
+  "remote_gate": "PASS",
+  "remote_verified": true,
+  "scope": "Original local scientific/publication gates retain their actual receipts. Remote acceptance is now bound to the actual source/main workflows and input reconciliation. This later metadata step does not alter tested scientific bytes.",
+  "prior_local_checkpoint": {
+    "status": "LOCAL_VERIFIED_CI_PENDING",
+    "recorded_at_utc": "2026-10-20T05:41:22.394854+00:00",
+    "receipt_sha256": "e9aca2d18157fdf53df91e93e1a0caf1bc0709bb3c458708d57ddee5f01fe2d3",
+    "dossier": {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "712ba8eb5adbeff4b302e678e15bd0c4bbc69e2cb5afa296d77ec22e42a1360d",
+      "bytes": 438218
+    },
+    "source_manifest": {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "0fce0b18334061930d9840f038a76a7a17e3ba51ef7b8feb64aeaac3f338b7d7",
+      "bytes": 7844
+    }
+  },
+  "remote_acceptance_recorded_at_utc": "2026-10-20T06:46:28.435717+00:00",
+  "remote_acceptance": {
+    "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+    "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+    "bytes": 5991
+  },
+  "actual_remote_receipts": {
+    "integration": {
+      "path": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
+      "sha256": "6c8048724fd0e52f6aef93bd117036176747e0eb02b799ab09a6b4b2f0bff3d4",
+      "bytes": 3160
+    },
+    "pr": {
+      "path": "physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-verification.json",
+      "sha256": "e980b9ef71d354fc519611083966f8b9a79c0e173db91a2da9bf75105ad5e6b5",
+      "bytes": 85550
+    },
+    "main": {
+      "path": "physics/qm/kernel/evidence/v31.6/ci/main-39381585828-verification.json",
+      "sha256": "1a76e7d89235f88be980eb4e5083f76b7bfaef2a918f3872df5e7f77e6c7886f",
+      "bytes": 85552
+    }
+  },
+  "actual_acceptance_identity": {
+    "repository": "MurphyHoops/UEOT",
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "pull_request": 345,
+    "pr_run": 39380741012,
+    "main_run": 39381585828,
+    "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
+    "source_count": 70,
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/345",
+    "pr_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39380741012",
+    "main_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39381585828",
+    "source_and_main_tree_identical": true,
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true
+  }
 }

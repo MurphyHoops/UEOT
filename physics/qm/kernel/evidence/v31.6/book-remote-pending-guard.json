@@ -1,0 +1,20 @@
+{
+  "schema": "ueot_physics.book_remote_pending_guard.v3.2",
+  "script_sha256": "b2a039bf445797348245669abb7685c3dc44192da042cb0d5150311091d72f8e",
+  "context_sha256": "288d87b9ed38528f716d1ead741591892cde9bc0ad8a3b279ce29649a4952b89",
+  "context_statuses": {
+    "pr_status": "PASS",
+    "main_status": "PENDING"
+  },
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/tmp/qm316_finalize_book_remote.py"
+  ],
+  "mode": "default read-only preparation; --apply not supplied",
+  "exit_code": 2,
+  "stdout": "",
+  "stderr": "{\"status\": \"REFUSED_OR_FAILED\", \"error\": \"Actual PR/main PASS is required; pending context refuses all metadata writes.\", \"repository_write_attempts\": 0, \"completed_repository_writes\": 0, \"scope\": \"Refused before repository writes.\"}\n",
+  "all_book_bytes_unchanged": true,
+  "book_file_count": 91,
+  "repository_writes": 0
+}

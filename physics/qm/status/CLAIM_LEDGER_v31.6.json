@@ -24,7 +24,9 @@
     "demos": "physics/qm/kernel/evidence/v31.6/demos-verification.json",
     "new_focused_audit": "physics/qm/kernel/evidence/v31.6/focused/files-manifest.json",
     "finite_witnesses": "physics/qm/kernel/evidence/v31.6/finite-witnesses/verification.json",
-    "ci_scope": "physics/qm/kernel/evidence/v31.6/ci-scope-review.json"
+    "ci_scope": "physics/qm/kernel/evidence/v31.6/ci-scope-review.json",
+    "remote_source_reconciliation": "physics/qm/kernel/evidence/v31.6/remote-source-reconciliation.json",
+    "remote_main_reconciliation": "physics/qm/kernel/evidence/v31.6/remote-main-reconciliation.json"
   },
   "claims": [
     {
@@ -1482,7 +1484,7 @@
     }
   ],
   "verification": {
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "checked_at_utc": "2026-10-20T05:43:38.429365+00:00",
     "all_proof_runtime_checks_completed_at_utc": "2026-10-20T05:31:46.009764+00:00",
     "generic_modules": 22,
@@ -1525,8 +1527,8 @@
     "audit_duplicates": 0,
     "audit_missing": [],
     "unreviewed_axioms": [],
-    "remote_ci": "PENDING",
-    "main_integration": "PENDING",
+    "remote_ci": "PASS",
+    "main_integration": "PASS",
     "core_source_modified": false,
     "full_scientific_theory_verified": false,
     "count_scope": "459/573 package; six-instance 42; false-witness 4; four concrete witness 62/22/84; runtime 100 are distinct evidence counts.",
@@ -1534,7 +1536,21 @@
     "demos_receipt": "physics/qm/kernel/evidence/v31.6/demos-verification.json",
     "axiom_receipt": "physics/qm/kernel/evidence/v31.6/proof-axioms.json",
     "dependency_receipt": "physics/qm/kernel/evidence/v31.6/dependency-identity.json",
-    "finite_witness_receipt": "physics/qm/kernel/evidence/v31.6/finite-witnesses/verification.json"
+    "finite_witness_receipt": "physics/qm/kernel/evidence/v31.6/finite-witnesses/verification.json",
+    "remote_checked_at_utc": "2026-10-20T06:46:14.642326+00:00",
+    "checked_at_scope": "checked_at_utc is the original local acceptance aggregate timestamp; actual remote acceptance time is remote_checked_at_utc.",
+    "pull_request": 345,
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "pr_run": 39380741012,
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "main_run": 39381585828,
+    "source_and_main_tree_identical": true,
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true,
+    "initial_source_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING"
   },
   "research_baseline": "427f512745ca70f82cba6a1388edcab904da8a42",
   "core_baseline_role": "Frozen historical Core reference retained; current imported Core sources separately match published research baseline 427f512745ca70f82cba6a1388edcab904da8a42. No frozen Core mutation by this increment.",
@@ -1632,7 +1648,7 @@
     "remote_checked_at_utc": "2026-10-20T04:03:46.052155+00:00",
     "checked_at_scope": "Local verification checkpoint; remote acceptance time is remote_checked_at_utc, with separate PR/main receipts."
   },
-  "metadata_updated_at_utc": "2026-10-20T05:43:38.429365+00:00",
+  "metadata_updated_at_utc": "2026-10-20T06:46:14.642326+00:00",
   "next_execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.7.md",
   "next_execution_status": "APPROVED_PLAN_NOT_FORMALIZED_NOT_COUNTED_IN_V31_6"
 }

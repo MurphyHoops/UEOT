@@ -1,6 +1,6 @@
 {
   "schema": "ueot_physics.source_manifest.v1",
-  "recorded_at_utc": "2026-10-20T05:41:22.394854+00:00",
+  "recorded_at_utc": "2026-10-20T06:46:28.435717+00:00",
   "book_document_id": "UEOT-PHYSICS",
   "canonical_source": "physics/qm/book/UEOT_PHYSICS.md",
   "entries": [
@@ -104,20 +104,37 @@
   "historical_text_witness_catalog": "evidence/v3.0/advanced-source-catalog.json",
   "current_code_identity": {
     "edition": "3.2",
-    "status": "LOCAL_VERIFIED_CI_PENDING",
+    "status": "MAIN_VERIFIED",
     "manifest_sha256": "e90925868282178908cb57abda19f392be9120edcfda4056f32d99acd074b14f",
     "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
     "source_count": 70,
-    "identity_rule": "Actual70source hashes bind unified local executions. Authoring baseline is not a clean-tree or remote source-commit assertion.",
+    "identity_rule": "The actual 70 tested inputs, 56 imported Core files and three canonical book files are bound to successful source/main CI and root Git-blob reconciliation. Authoring baseline and whole-tree equality remain separate recorded facts.",
     "local_verification": "../kernel/evidence/v31.6/lean-verification.json",
     "local_verification_sha256": "0f427e7b4e34bb6983b5856c49957b364bbc4b1a2d38882c8826816e4ac3ee85",
-    "remote_verified": false,
-    "source_commit": null,
-    "source_tree": null,
-    "tested_main_commit": null,
-    "tested_main_tree": null,
+    "remote_verified": true,
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
     "integration_receipt": "../kernel/evidence/v31.6/integration-verification.json",
-    "integration_receipt_status": "PENDING"
+    "integration_receipt_status": "MAIN_VERIFIED",
+    "repository": "MurphyHoops/UEOT",
+    "pull_request": 345,
+    "pr_run": 39380741012,
+    "main_run": 39381585828,
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/345",
+    "pr_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39380741012",
+    "main_workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39381585828",
+    "source_and_main_tree_identical": true,
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true,
+    "integration_receipt_sha256": "6c8048724fd0e52f6aef93bd117036176747e0eb02b799ab09a6b4b2f0bff3d4",
+    "pr_verification": "physics/qm/kernel/evidence/v31.6/ci/pr-39380741012-verification.json",
+    "pr_verification_sha256": "e980b9ef71d354fc519611083966f8b9a79c0e173db91a2da9bf75105ad5e6b5",
+    "main_verification": "physics/qm/kernel/evidence/v31.6/ci/main-39381585828-verification.json",
+    "main_verification_sha256": "1a76e7d89235f88be980eb4e5083f76b7bfaef2a918f3872df5e7f77e6c7886f",
+    "metadata_only_followup": true
   },
   "canonical_identity": {
     "edition": "3.2",
@@ -176,5 +193,15 @@
     "all_entry_records_identical_to_v3_1": true,
     "prior_manifest_sha256": "fb78dc96a077c539ad126f5630d85ddb27801d1eead5568c074c5506f8a9b2f8",
     "original_raw_materials_reread_this_finalization": false
+  },
+  "remote_metadata_completion": {
+    "recorded_at_utc": "2026-10-20T06:46:28.435717+00:00",
+    "prior_current_status": "LOCAL_VERIFIED_CI_PENDING",
+    "original_manifest_sha256": "0fce0b18334061930d9840f038a76a7a17e3ba51ef7b8feb64aeaac3f338b7d7",
+    "receipt": {
+      "path": "physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+      "bytes": 5991
+    }
   }
 }

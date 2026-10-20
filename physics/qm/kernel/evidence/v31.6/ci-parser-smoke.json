@@ -1,0 +1,47 @@
+{
+  "schema": "ueot_qm.ci_parser_preparation.v31.6",
+  "status": "PARSER_FORMAT_AND_NEGATIVE_CONTROLS_ONLY_NOT_FINAL_CI_RECEIPT",
+  "script": "/tmp/qm316_verify_ci_logs.py",
+  "script_sha256": "e2b71aff291a62ce5c2f706033e7854088c816553838311bf649bb651a11a243",
+  "actual_downloaded_logs": {
+    "runtime": {
+      "bytes": 42579,
+      "sha256": "873fe674b777f93acfbb807386e135ff77efe383e5d43b57a12402ebb6463358"
+    },
+    "lean": {
+      "bytes": 208911,
+      "sha256": "dc5575ed90358fef7500e2e7488a7dd1cb2d7460fa0ef878a405ed16a8cce2dc"
+    }
+  },
+  "actual_format_checks": {
+    "runtime_methods_parsed": 100,
+    "main_axioms_parsed": 573,
+    "observed_build_jobs": 8786,
+    "instance_counts_parsed": {
+      "positive_passed": 6,
+      "positive_expected": 6,
+      "negative_passed": 4,
+      "negative_expected": 4,
+      "false_witness_passed": 4,
+      "positive_audit_targets_expected": 42,
+      "false_witness_audit_targets_expected": 4
+    },
+    "witness_counts_parsed": {
+      "MixtureExamples": 9,
+      "SurvivalTwoState": 30,
+      "RealTomographyTwoRebit": 5,
+      "QuantumDoobExamples": 40
+    }
+  },
+  "negative_controls_rejected": [
+    "unfinished_actual_job",
+    "unexecuted_required_quantum_witness_gate",
+    "duplicate_actual_axiom_report",
+    "missing_build_success",
+    "omitted_new_real_witness"
+  ],
+  "synthetic_dynamic_count_parser_control": 9001,
+  "main_verification_entrypoint_executed": false,
+  "repo_written": false,
+  "lean_or_remote_invoked": false
+}
