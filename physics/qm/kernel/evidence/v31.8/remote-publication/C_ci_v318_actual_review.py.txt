@@ -1,0 +1,248 @@
+#!/usr/bin/env python3
+"""Independently read actual v31.8 CI metadata/logs; never execute a CI gate.
+
+Actual run/commit/tree/PR identities must be supplied after retrieval. A source
+tree CLEAR receipt is required; local original and final publication identities
+remain distinct. This is not the root CI parser and does not import it.
+"""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import re
+
+import yaml
+
+BASE = Path('/workspace/scratch/f11b4261e187')
+REPO = BASE / 'qm_v318_work'
+E = REPO / 'physics/qm/kernel/evidence/v31.8'
+UNIFIED = 'a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e'
+PUBLICATION = '054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1'
+BRIDGE = '7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1'
+VERIFIER = 'd59fc80f373cd134fd4da0358021379aa8536d9cecb0d5ab6d77dc1f77244316'
+FOUNDATION = {'propext', 'Classical.choice', 'Quot.sound'}
+
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--kind', choices=['pr', 'main'], required=True)
+    ap.add_argument('--run', type=int, required=True)
+    ap.add_argument('--commit', required=True)
+    ap.add_argument('--tree', required=True)
+    ap.add_argument('--pr', type=int)
+    ap.add_argument('--tree-review', type=Path, required=True)
+    ap.add_argument('--output', type=Path)
+    args = ap.parse_args()
+    output = args.output or BASE / 'handoff' / f'C_ci_v318_{args.kind}_{args.run}_review.json'
+    if not output.resolve().is_relative_to(BASE / 'handoff'):
+        raise ValueError('C audit output must stay in handoff.')
+    if output.exists():
+        raise ValueError('Existing actual audit receipt will not be overwritten.')
+    checked = {}
+    inputs = {}
+    report = {
+        'schema': 'ueot_qm.C_independent_actual_ci_review.v31.8',
+        'status': 'NOT_REVIEWED', 'event': args.kind, 'run_id': args.run,
+        'source_commit': args.commit, 'actual_head_tree': args.tree,
+        'started_at_utc': datetime.now(timezone.utc).isoformat(),
+        'checks': checked, 'errors': [],
+        'root_ci_parser_reexecuted': False, 'compiler_invocations': 0,
+        'runtime_test_invocations': 0, 'remote_calls': 0, 'repository_writes': 0,
+        'artifact_zip_downloaded': False, 'artifact_zip_contents_verified': False,
+        'review_helper_sha256': digest(Path(__file__).read_bytes()),
+    }
+
+    def check(label, ok):
+        checked[label] = bool(ok)
+        if not ok:
+            raise AssertionError(label)
+
+    def take(path):
+        path = Path(path).resolve()
+        raw = path.read_bytes()
+        if path in inputs and inputs[path] != raw:
+            raise AssertionError('Input changed: ' + str(path))
+        inputs[path] = raw
+        return raw
+
+    def read(path):
+        return json.loads(take(path))
+
+    try:
+        check('explicit_actual_identity_arguments', args.run > 0
+              and re.fullmatch('[0-9a-f]{40}', args.commit)
+              and re.fullmatch('[0-9a-f]{40}', args.tree)
+              and (args.kind == 'main' or isinstance(args.pr, int) and args.pr > 0))
+        stem = E / 'ci' / f'{args.kind}-{args.run}'
+        receipt = read(str(stem) + '-verification.json')
+        run = read(str(stem) + '-run.json')
+        jobs = read(str(stem) + '-jobs.json')['jobs']
+        raw_logs = {name: take(str(stem) + f'-{name}.log') for name in ('runtime', 'lean')}
+        logs = {name: re.sub(r'^\d{4}-\d\d-\d\dT\S+Z ?', '', raw.decode(), flags=re.M)
+                for name, raw in raw_logs.items()}
+        tree_review = read(args.tree_review)
+        check('prior_actual_tree_clear', tree_review['status'] == 'CLEAR'
+              and tree_review['actual_tree_sha1'] == args.tree
+              and tree_review['final_publication_source_set_sha256'] == PUBLICATION
+              and tree_review['recursive_Core_unchanged'] == 56)
+        bound_commit = tree_review.get('actual_bound_commit')
+        check('tree_commit_binding_when_present', bound_commit is None or bound_commit == args.commit)
+        check('receipt_identity', receipt['schema'] == 'ueot_qm.actual_ci_verification.v31.8'
+              and receipt['status'] == 'PASS' and receipt['errors'] == []
+              and receipt['run_id'] == args.run and receipt['source_commit'] == args.commit
+              and receipt['event'] == args.kind and receipt['verification_complete'] is True)
+        check('run_identity', run['id'] == args.run and run['head_sha'] == args.commit
+              and run['head_commit']['id'] == args.commit and run['head_commit']['tree_id'] == args.tree
+              and run['repository']['full_name'] == 'MurphyHoops/UEOT'
+              and run['name'] == 'UEOT QM Kernel' and run['path'] == '.github/workflows/ueot-qm.yml'
+              and run['status'] == 'completed' and run['conclusion'] == 'success'
+              and run['event'] == ('pull_request' if args.kind == 'pr' else 'push'))
+        if args.kind == 'pr':
+            check('actual_pr_binding', any(p['number'] == args.pr and p['head']['sha'] == args.commit
+                  and p['head']['ref'] == run['head_branch'] for p in run['pull_requests']))
+            report['pull_request'] = args.pr
+        else:
+            check('main_branch', run['head_branch'] == 'main')
+        check('reviewed_verifier_identity', receipt['verifier']['sha256'] == VERIFIER)
+        check('all_saved_verifier_input_bindings', all(
+            digest(take(v['path'])) == v['sha256'] and len(take(v['path'])) == v['bytes']
+            for v in receipt['input_files'].values()))
+        original = read(E / 'source-manifest.json')
+        publication = read(E / 'publication-source-manifest.json')
+        bridge = read(E / 'publication-source-reconciliation.json')
+        check('separate_original_and_publication_identities',
+              original['source_count'] == publication['source_count'] == 89
+              and original['source_set_sha256'] == receipt['local_accepted_source_set_sha256'] == UNIFIED
+              and publication['source_set_sha256'] == receipt['publication_source_set_sha256'] == PUBLICATION
+              and receipt['local_accepted_source_count'] == receipt['publication_source_count'] == 89
+              and receipt['publication_source_bridge_verified'] is True
+              and receipt['publication_source_bridge_sha256'] == digest(take(E / 'publication-source-reconciliation.json')) == BRIDGE
+              and bridge['status'] == 'PASS_COMMENT_ONLY')
+        workflow = yaml.safe_load(take(REPO / '.github/workflows/ueot-qm.yml').decode())
+        check('two_unique_actual_jobs', len(jobs) == 2
+              and {j['name'] for j in jobs} == {'runtime', 'lean'}
+              and len({j['id'] for j in jobs}) == 2)
+        for job in jobs:
+            name = job['name']
+            check(name + '_job_success_identity', job['status'] == 'completed'
+                  and job['conclusion'] == 'success' and job['run_id'] == args.run
+                  and job['id'] == receipt['job_ids'][name]
+                  and job.get('head_sha') in {None, args.commit}
+                  and job.get('run_attempt') in {None, run.get('run_attempt')})
+            expected_steps = [s['name'] for s in workflow['jobs'][name]['steps']]
+            observed = {s['name']: s for s in job['steps']}
+            check(name + '_unique_steps', len(observed) == len(job['steps']))
+            check(name + '_workflow_step_order',
+                  [s['name'] for s in job['steps'] if s['name'] in expected_steps] == expected_steps)
+            check(name + '_all_mandatory_steps', all(
+                s in observed and observed[s]['status'] == 'completed'
+                and observed[s]['conclusion'] in ({'success', 'skipped'} if s == 'Save pinned dependency cache' else {'success'})
+                for s in expected_steps))
+            check(name + '_actual_checkout', re.findall(
+                r'^\[command\].*git log -1 --format=%H\n([^\n]+)', logs[name], re.M) == [args.commit])
+            check(name + '_complete_job_marker',
+                  re.findall(r'^Complete job name: (\w+)$', logs[name], re.M) == [name])
+            check(name + '_actual_log_bytes', digest(raw_logs[name]) == receipt['raw_decoded_log_sha256'][name])
+            artifact = receipt['artifact_uploads_reported_by_actual_logs'][name]
+            check(name + '_actual_archive_upload_finalization',
+                  f"Artifact ueot-qm-{name}-{args.run}.zip successfully finalized. Artifact ID {artifact['artifact_id']}"
+                  in logs[name])
+        expected_axioms = read(E / 'proof-axioms.json')['declarations']
+        matches = re.findall(r"^'([^']+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",
+                             logs['lean'], re.M)
+        actual_axioms = {name: sorted(a.strip() for a in ax.split(',') if a.strip()) for name, ax in matches}
+        requested = re.findall(r'^#print axioms (\S+)\s*$',
+                               take(REPO / 'formalization/ueot-qm/scripts/AxiomAudit.lean').decode(), re.M)
+        check('985_exact_ordered_public_names_and_foundations', len(matches) == len(actual_axioms) == 985
+              and actual_axioms == expected_axioms == receipt['actual_generic_axioms']
+              and [n for n, _ in matches] == requested)
+        check('foundation_subset', all(set(v) <= FOUNDATION for v in actual_axioms.values()))
+        inventory = read(E / 'declaration-inventory.json')
+        theorems = {d['name'] for ds in inventory['modules'].values() for d in ds if d['kind'] == 'theorem'}
+        check('35_modules_747_explicit_theorems_actually_audited', len(inventory['modules']) == 35
+              and len(theorems) == 747 and theorems <= set(actual_axioms))
+        methods = re.findall(r'^test_\w+ \(([^)]+)\) \.\.\. ok$', logs['runtime'], re.M)
+        check('100_exact_unique_actual_runtime_methods', len(methods) == len(set(methods)) == 100
+              and sorted(methods) == sorted(read(E / 'runtime-verification.json')['passed'])
+              and sorted(methods) == receipt['actual_runtime_passed_methods'])
+        check('runtime_actual_summary_success',
+              re.search(r'^Ran 100 tests in [0-9.]+s\n\nOK$', logs['runtime'], re.M) is not None)
+        source_hashes = {s['path']: s['sha256'] for s in publication['sources']}
+        printed = re.findall(r'^([0-9a-f]{64})  (\S+)$', logs['lean'], re.M)
+        check('39_directly_printed_final_publication_hashes', len(printed) == len({p for _, p in printed}) == 39
+              and all(source_hashes['formalization/ueot-qm/' + p] == h for h, p in printed)
+              and receipt['printed_source_hashes_equal_publication_manifest'] is True)
+        check('pinned_actual_official_compiler',
+              'Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)' in logs['lean']
+              and 'PASS: verified official compiler at ' in logs['lean']
+              and 'PASS: exact Core toolchain and dependency revisions inherited' in logs['lean'])
+        builds = re.findall(r'^Build completed successfully \((\d+) jobs\)\.$', logs['lean'], re.M)
+        check('actual_positive_observed_build_count', len(builds) == 1
+              and int(builds[0]) > 0 and int(builds[0]) == receipt['build_jobs'])
+        check('six_exact_positive_case_progress', re.findall(r'^Verifying positive (\w+)$', logs['lean'], re.M)
+              == ['z', 'hz', 'hsz', 'ragged', 'd1', 'd4'])
+        check('four_exact_negative_case_progress',
+              re.findall(r'^Verifying negative and false witness (\w+)$', logs['lean'], re.M)
+              == ['negative_weight', 'negative_basis', 'negative_pullback', 'negative_word'])
+        start = logs['lean'].index('{\n  "status": "PASS",\n  "receipt":')
+        certificate, _ = json.JSONDecoder().raw_decode(logs['lean'][start:])
+        expected_summary = dict(positive_passed=6, positive_expected=6, negative_passed=4,
+            negative_expected=4, false_witness_passed=4, positive_audit_targets_expected=42,
+            false_witness_audit_targets_expected=4)
+        check('actual_certificate_6_42_and_negative_4_4_summary', certificate['status'] == 'PASS'
+              and certificate['problems'] == []
+              and certificate['summary'] == expected_summary == receipt['exact_instance_summary'])
+        local_witness = read(E / 'finite-witnesses/verification.json')
+        witness_lines = re.findall(r'^(\w+): PASS \((\d+) explicit declaration audits\)$', logs['lean'], re.M)
+        witness_counts = {n: int(v) for n, v in witness_lines}
+        check('ten_actual_witness_file_totals_269', len(witness_lines) == len(witness_counts) == 10
+              and sum(witness_counts.values()) == 269
+              and witness_counts == {k: len(v) for k, v in local_witness['declarations'].items()}
+              and witness_counts == receipt['concrete_witness_audit_counts'])
+        check('witness_local_kind_reference_scope', receipt['finite_witness_theorem_count'] == 193
+              and receipt['finite_witness_def_count'] == 71 and receipt['finite_witness_abbrev_count'] == 5
+              and 'local' in receipt['finite_witness_kind_count_evidence'].lower())
+        check('four_actual_demo_command_sections', all(
+              f'##[group]Run python physics/qm/kernel/{p}' in logs['runtime']
+              for p in ('demo.py', 'demo_v312.py', 'demo_v313.py', 'demo_v315.py')))
+        check('honest_scope_flags', receipt['artifact_zip_downloaded'] is False
+              and receipt['artifact_zip_contents_verified'] is False
+              and receipt['full_scientific_theory_verified'] is False
+              and receipt['remote_tree_verified_by_this_parser'] is False)
+        check('all_reviewed_input_bytes_stable', all(p.read_bytes() == b for p, b in inputs.items()))
+        report.update(status='CLEAR', workflow_url=run['html_url'],
+            workflow_run_attempt=run.get('run_attempt'), job_ids={j['name']: j['id'] for j in jobs},
+            build_jobs=int(builds[0]), explicit_theorems=747, actual_named_axioms=985,
+            directly_printed_source_hashes=39, runtime_methods=100, witness_file_totals=witness_counts,
+            witness_audit_total=269, certificate_summary=expected_summary,
+            original_unified_source_set_sha256=UNIFIED, final_publication_source_set_sha256=PUBLICATION,
+            bridge_sha256=BRIDGE,
+            scope=[
+                'Root supplies actual GitHub download provenance; this independent review binds saved raw metadata/log bytes, run/head tree and both job checkout identities.',
+                'Full 89 source / 56 Core / 338 frozen publication / 3 canonical checks are in the linked actual tree CLEAR, not inferred from the 39 directly printed CI hashes.',
+                'Actual CI public audit names/foundations and runtime method names were independently parsed. Certificate/witness detailed artifact receipts were not downloaded; successful case progress and exact emitted file totals were parsed.',
+                'The 193 theorem / 71 definition / 5 abbreviation witness split is the bound actual local reference, not a CI per-kind or per-name log census.',
+                'Artifact ZIP upload finalization was observed, but ZIP interiors and redirected demo JSON were not downloaded or parsed.',
+                'Observed successful remote build-job counts are separate from the immutable original local 8799-job execution. The one-word documentation bridge preserves that original a343 raw identity.',
+                'Ordinary linter/runner warnings are compatible with successful gates; no zero-warning claim is made.',
+                'Finite formal and runtime acceptance only; no empirical confirmation or completed natural theory claim.'
+            ])
+    except Exception as error:
+        report['status'] = 'BLOCK'
+        report['errors'].append(type(error).__name__ + ': ' + str(error))
+    report['finished_at_utc'] = datetime.now(timezone.utc).isoformat()
+    report['inputs'] = [{'path': str(p), 'bytes': len(raw), 'sha256': digest(raw)}
+                        for p, raw in inputs.items()]
+    output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps({'status': report['status'], 'checks': len(checked), 'errors': report['errors'],
+                      'report': str(output), 'sha256': digest(output.read_bytes())}))
+    return 0 if report['status'] == 'CLEAR' else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

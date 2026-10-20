@@ -1,0 +1,126 @@
+"""Serialize only the frozen QM release; preserve every unlisted baseline leaf."""
+from pathlib import Path
+import argparse,base64,hashlib,importlib.util,json,re,subprocess
+
+R=Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H=Path(__file__).resolve().parent
+E=R/'physics/qm/kernel/evidence/v31.8'
+BOOK=R/'physics/qm/book'
+def sha(raw):return hashlib.sha256(raw).hexdigest()
+def blob(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+def read(p):return json.loads(p.read_bytes())
+def allowed(p):return p.startswith(('physics/qm/','formalization/ueot-qm/'))
+CURRENT_ALLOWED={
+ 'formalization/ueot-qm/UEOTQM.lean','formalization/ueot-qm/scripts/AxiomAudit.lean',
+ 'formalization/ueot-qm/scripts/verify_finite_witnesses.py','formalization/ueot-qm/README.md',
+ 'physics/qm/UEOT_QM_EXECUTION_v31.8.md','physics/qm/status/ACTIVE_RESEARCH_v31.8.json',
+ 'physics/qm/status/CURRENT.json','physics/qm/README.md','physics/qm/ROADMAP.md',
+ 'physics/qm/kernel/README.md','physics/qm/book/UEOT_PHYSICS.md',
+ 'physics/qm/book/UEOT_PHYSICS.tex','physics/qm/book/UEOT_PHYSICS.pdf',
+ 'physics/qm/book/SOURCE_MANIFEST.json','physics/qm/book/CHAPTER_DOSSIER.json',
+ 'physics/qm/book/README.md','physics/qm/book/build/build_pdf.py',
+ 'physics/qm/book/build/verify_book.py','physics/qm/book/build/header.tex'}
+NEW_EXACT={'physics/qm/status/CLAIM_LEDGER_v31.8.json','physics/qm/status/ACTIVE_RESEARCH_v31.8.json',
+ 'physics/qm/UEOT_QM_KERNEL_v31.8.md'}
+NEW_EXACT.update('formalization/ueot-qm/UEOTQM/'+n+'.lean' for n in (
+ 'QuantumSeparation','ComplexLocalTomography','PureStateCharacterization',
+ 'PurificationUniqueness','HistoryChannels','ActionRecordBudget'))
+NEW_EXACT.update('formalization/ueot-qm/scripts/witnesses/'+n+'.lean' for n in (
+ 'QuantumSeparationExamples','PurificationUniquenessExamples','ActionRecordBudgetExamples'))
+EXCLUDE_EXACT={'formalization/ueot-qm/'+n for n in (
+ 'axiom-audit.log','proof-axioms.json','source-identity.log','source-manifest.json','lean-build.log','lean-install.log')}
+
+def main():
+ ap=argparse.ArgumentParser();ap.add_argument('--base-tree',type=Path,default=H/'qm318_baseline_remote_tree.json');ap.add_argument('--output-prefix',type=Path,default=H/'qm318');args=ap.parse_args()
+ base=read(args.base_tree);assert not base['truncated'] and re.fullmatch('[0-9a-f]{40}',base['commit']) and re.fullmatch('[0-9a-f]{40}',base['sha'])
+ assert len(base['tree'])==len({e['path'] for e in base['tree']})
+ remote={x['path']:x for x in base['tree'] if x['type']=='blob'}
+ modifications=subprocess.check_output(['git','diff','--name-only','HEAD','-z'],cwd=R,text=True).split('\0')
+ assert not [p for p in modifications if p and not allowed(p)],'Unexpected tracked edits outside QM'
+ modes={}
+ for line in subprocess.check_output(['git','ls-files','-s'],cwd=R,text=True).splitlines():
+  left,p=line.split('\t',1);modes[p]=left.split()[0]
+ paths=set(subprocess.check_output(['git','ls-files','-co','--exclude-standard','-z'],cwd=R,text=True).split('\0'))-{''}
+ out=[];excluded=[];equal=[];unexpected=[]
+ for p in sorted(paths):
+  if not allowed(p):continue
+  f=R/p
+  if any(part in {'.lake','__pycache__'} for part in f.parts) or p in EXCLUDE_EXACT or f.suffix in {'.pyc','.olean','.ilean','.c','.o','.trace','.hash'}:
+   excluded.append(p);continue
+  assert f.is_file() and not f.is_symlink(),p
+  raw=f.read_bytes();g=blob(raw);old=remote.get(p)
+  if old and g==old['sha']:equal.append(p);continue
+  if old and p not in CURRENT_ALLOWED:unexpected.append(p)
+  if not old and p not in NEW_EXACT and not p.startswith(('physics/qm/kernel/evidence/v31.8/','physics/qm/book/evidence/v3.4/')):unexpected.append(p)
+  if p.startswith('physics/qm/kernel/evidence/') and f.suffix=='.py':raise AssertionError('Executable helper pollutes scientific source set: '+p)
+  try:content=raw.decode('utf-8');binary=False
+  except UnicodeDecodeError:
+   assert f.suffix in {'.pdf','.gz'},p
+   content=base64.b64encode(raw).decode();binary=True
+  out.append({'path':p,'bytes':len(raw),'sha256':sha(raw),'git_blob_sha':g,
+   'mode':old['mode'] if old else modes.get(p,'100644'),'binary':binary,
+   'previous_blob':old['sha'] if old else None,'encoding':'base64' if binary else 'utf-8','content':content})
+ assert not unexpected,unexpected
+ assert len(out)==len({x['path'] for x in out})
+ by_path={x['path']:x for x in out}
+ proof=read(E/'lean-verification.json');original=read(E/'source-manifest.json')
+ manifest=read(E/'publication-source-manifest.json');bridge=read(E/'publication-source-reconciliation.json')
+ assert proof['status']=='PASS' and proof['actual_named_axiom_reports']==985 and proof['actual_build_jobs']==8799
+ assert bridge['status']=='PASS_COMMENT_ONLY' and bridge['changed_paths']==['formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean']
+ assert original['source_set_sha256']==proof['source_set_sha256']==bridge['unified_source_identity']['source_set_sha256']=='a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e'
+ assert manifest['source_count']==len(manifest['sources'])==len({s['path'] for s in manifest['sources']})==89
+ assert sha(json.dumps(manifest['sources'],sort_keys=True,separators=(',',':')).encode())==manifest['source_set_sha256']==bridge['publication_source_identity']['source_set_sha256']=='054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1'
+ for key,filename in [('manifest','source-manifest.json'),('verification','lean-verification.json')]:
+  assert sha((E/filename).read_bytes())==bridge['unified_source_identity'][key]['sha256']
+ assert sha((E/'publication-source-manifest.json').read_bytes())==bridge['publication_source_identity']['manifest']['sha256']
+ correction=bridge['changes'][0];before=(R/correction['before_snapshot']['path']).read_bytes();after=(R/correction['path']).read_bytes()
+ assert sha(before)==correction['before']['sha256'] and sha(after)==correction['after']['sha256']
+ assert before.count(b'/-- Different finite auxiliary carriers admit actual isometric extensions into')==1
+ assert before.replace(b'/-- Different finite auxiliary carriers admit actual isometric extensions into',b'/-- Different finite auxiliary carriers have actual isometric extensions into',1)==after
+ spec=importlib.util.spec_from_file_location('qm318_upload_recorder',R/'formalization/ueot-qm/scripts/record_source.py')
+ rec=importlib.util.module_from_spec(spec);spec.loader.exec_module(rec)
+ assert [p.relative_to(R).as_posix() for p in rec.source_paths()]==[s['path'] for s in manifest['sources']]
+ for s in manifest['sources']:
+  raw=(R/s['path']).read_bytes();assert len(raw)==s['bytes'] and sha(raw)==s['sha256'],s['path']
+  if s['path'] in by_path:
+   x=by_path[s['path']];serialized=base64.b64decode(x['content'],validate=True) if x['binary'] else x['content'].encode()
+   assert serialized==raw and x['git_blob_sha']==blob(raw),s['path']
+  else:assert remote[s['path']]['sha']==blob(raw),s['path']
+ core=read(E/'core-import-closure.json');assert len(core['modules'])==core['transitive_module_count']==56
+ for s in core['modules']:
+  raw=(R/s['path']).read_bytes();assert sha(raw)==s['source_sha256'] and remote[s['path']]['sha']==blob(raw) and s['path'] not in by_path,s['path']
+ build=read(BOOK/'evidence/v3.4/pdf-build.json');structure=read(BOOK/'evidence/v3.4/book-structure.json');visual=read(BOOK/'evidence/v3.4/pdf-visual-review.json')
+ assert build['layout_warnings']==[] and all(x['exit_code']==0 for x in build['compile_passes']) and len(build['compile_passes'])==3
+ assert structure['status']==visual['status']=='PASS' and structure['chapters']==63 and structure['numbered_results']==147
+ for filename,key in [('UEOT_PHYSICS.md','source_sha256'),('UEOT_PHYSICS.pdf','pdf_sha256'),('UEOT_PHYSICS.tex','tex_sha256')]:
+  path='physics/qm/book/'+filename;raw=(R/path).read_bytes()
+  assert sha(raw)==build[key]
+  if path in by_path:
+   item=by_path[path]
+   serialized=base64.b64decode(item['content'],validate=True) if item['binary'] else item['content'].encode()
+   assert serialized==raw and item['bytes']==len(raw) and item['sha256']==sha(raw) and item['git_blob_sha']==blob(raw),path
+  else:assert remote[path]['sha']==blob(raw),path
+ assert visual['pdf_sha256']==build['pdf_sha256'] and visual['source_sha256']==structure['source_sha256']==build['source_sha256']
+ # Re-read every payload leaf after all dependent gates; metadata/evidence is frozen too.
+ for item in out:
+  raw=(R/item['path']).read_bytes()
+  serialized=base64.b64decode(item['content'],validate=True) if item['binary'] else item['content'].encode()
+  assert serialized==raw and len(raw)==item['bytes'] and sha(raw)==item['sha256'] and blob(raw)==item['git_blob_sha'],item['path']
+ inventory={'schema':'ueot_qm.publication_inventory.v31.8','baseline_commit':base['commit'],'baseline_tree':base['sha'],
+  'source_count':89,'source_set_sha256':manifest['source_set_sha256'],'original_unified_source_set_sha256':original['source_set_sha256'],
+  'publication_identity_bridge':'physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json',
+  'files':[{k:v for k,v in x.items() if k!='content'} for x in out],'file_count':len(out),
+  'changed_existing':sum(x['previous_blob'] is not None for x in out),'new_paths':sum(x['previous_blob'] is None for x in out),
+  'bytes':sum(x['bytes'] for x in out),'equal_remote_path_count':len(equal),'excluded_local_products_count':len(excluded),
+  'excluded_local_products':excluded,'historical_conflicts':unexpected,
+  'accepted_payload_binding':'All 89 final source paths match actual serialized payload bytes or inherited Git blobs; original unified inputs retain a separate exact comment-only bridge. All 56 Core sources and every unlisted base-tree leaf remain protected.',
+  'canonical_hashes':{key:build[key] for key in ['source_sha256','pdf_sha256','tex_sha256']},
+  'scope':'Only the two QM subtrees; no workflow edits, no deletions; every modified baseline file has an explicit current-release allowlist entry.'}
+ payload=json.dumps(out,ensure_ascii=False,separators=(',',':'))
+ prefix=str(args.output_prefix)
+ Path(prefix+'_publication_inventory.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+'\n')
+ Path(prefix+'_upload_payload.json').write_text(payload)
+ print(json.dumps({k:v for k,v in inventory.items() if k not in ['files','excluded_local_products']},ensure_ascii=False))
+ print(json.dumps({'payload_characters':len(payload),'payload_sha256':sha(payload.encode()),'binary_files':[x['path'] for x in out if x['binary']]}))
+
+if __name__=='__main__':main()

@@ -1,0 +1,307 @@
+#!/usr/bin/env python3
+"""Independent byte/scope review of actual frozen v31.8 metadata payload.
+
+Reads actual prior tree/CI/apply receipts; no scientific or remote execution.
+The expected metadata Git tree is computed before a later tree-only readback.
+"""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+from pathlib import Path, PurePosixPath
+import re
+import subprocess
+
+import yaml
+
+BASE = Path('/workspace/scratch/f11b4261e187')
+H = BASE / 'handoff'
+R = BASE / 'qm_v318_work'
+E = 'physics/qm/kernel/evidence/v31.8/'
+BOOK = 'physics/qm/book/'
+UNIFIED = 'a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e'
+PUBLICATION = '054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1'
+EXISTING = {
+    'formalization/ueot-qm/README.md', 'physics/qm/README.md', 'physics/qm/ROADMAP.md',
+    'physics/qm/UEOT_QM_EXECUTION_v31.8.md', 'physics/qm/UEOT_QM_KERNEL_v31.8.md',
+    'physics/qm/kernel/README.md', 'physics/qm/status/CURRENT.json',
+    'physics/qm/status/CLAIM_LEDGER_v31.8.json', 'physics/qm/status/ACTIVE_RESEARCH_v31.8.json',
+    BOOK + 'README.md', BOOK + 'SOURCE_MANIFEST.json', BOOK + 'CHAPTER_DOSSIER.json',
+}
+NEW_NAMED = {E + n for n in ('integration-verification.json', 'publication-inventory.json',
+             'remote-source-reconciliation.json', 'remote-main-reconciliation.json')}
+NEW_NAMED.add(BOOK + 'evidence/v3.4/remote-publication.json')
+NEW_PREFIXES = (E + 'ci/', E + 'remote-publication/')
+CANONICAL = {
+    'UEOT_PHYSICS.md': '868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a',
+    'UEOT_PHYSICS.pdf': '24b61ee3dd8d935afd47386460b352c40d4373e8328e2b4cfcfb8d8c460c60f0',
+    'UEOT_PHYSICS.tex': '2ff9b64cc69a065f2a2a1b96c836c4c329bb982b25f17e41d751aefa94284599',
+}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def blob(raw):
+    return hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+
+
+def glob_regex(pattern):
+    output, i = '', 0
+    while i < len(pattern):
+        if pattern[i:i + 3] == '**/':
+            output += '(?:.*/)?'; i += 3
+        elif pattern[i:i + 2] == '**':
+            output += '.*'; i += 2
+        elif pattern[i] == '*':
+            output += '[^/]*'; i += 1
+        elif pattern[i] == '?':
+            output += '[^/]'; i += 1
+        else:
+            output += re.escape(pattern[i]); i += 1
+    return '^' + output + '$'
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--expected-payload-sha', required=True)
+    ap.add_argument('--main-review', type=Path, required=True)
+    ap.add_argument('--root-apply-receipt', type=Path, required=True)
+    ap.add_argument('--output', type=Path, default=H / 'C_ci_v318_metadata_payload_review.json')
+    args = ap.parse_args()
+    if not args.output.resolve().is_relative_to(H) or args.output.exists():
+        raise ValueError('Use a new handoff report; do not replace existing evidence.')
+    inputs, checks = {}, {}
+    report = {'schema': 'ueot_qm.C_metadata_payload_review.v31.8', 'status': 'NOT_REVIEWED',
+        'started_at_utc': datetime.now(timezone.utc).isoformat(), 'checks': checks, 'blockers': [],
+        'compiler_invocations': 0, 'runtime_test_invocations': 0, 'remote_calls': 0,
+        'repository_writes': 0, 'root_ci_parser_reexecuted': False,
+        'review_helper_sha256': sha(Path(__file__).read_bytes())}
+
+    def check(name, condition):
+        checks[name] = bool(condition)
+        if not condition:
+            raise AssertionError(name)
+
+    def take(path):
+        path = Path(path).resolve(); raw = path.read_bytes()
+        if path in inputs and inputs[path] != raw:
+            raise AssertionError('Input changed: ' + str(path))
+        inputs[path] = raw
+        return raw
+
+    def read(path):
+        return json.loads(take(path))
+
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=R)
+
+    try:
+        context = read(H / 'qm318_release_context.json')
+        main_snapshot = read(H / context['main_remote_tree_path'])
+        main_review = read(args.main_review)
+        payload_raw = take(H / 'qm318_metadata_payload.json')
+        inventory_raw = take(H / 'qm318_metadata_inventory.json')
+        payload, inventory = json.loads(payload_raw), json.loads(inventory_raw)
+        check('actual_main_context_and_prior_clear', main_review['status'] == 'CLEAR'
+              and main_snapshot['commit'] == context['tested_main_commit'] == inventory['tested_main_commit']
+              and main_review['actual_bound_commit'] == context['tested_main_commit']
+              and main_snapshot['sha'] == context['tested_main_tree'] == main_review['actual_tree_sha1']
+              and main_snapshot['truncated'] is False
+              and main_snapshot['sha'] == payload['base_tree_sha'] == inventory['base_tree'])
+        check('local_head_is_actual_tested_main', git('rev-parse', 'HEAD').decode().strip() == context['tested_main_commit']
+              and git('rev-parse', 'HEAD^{tree}').decode().strip() == main_snapshot['sha'])
+        check('frozen_payload_identity', re.fullmatch('[0-9a-f]{64}', args.expected_payload_sha)
+              and sha(payload_raw) == inventory['payload_sha256'] == args.expected_payload_sha
+              and payload['repository_full_name'] == 'MurphyHoops/UEOT'
+              and inventory['schema'] == 'ueot_qm.metadata_publication_inventory.v31.8')
+        base = {e['path']: {k: e[k] for k in ('mode', 'type', 'sha')}
+                for e in main_snapshot['tree'] if e['type'] != 'tree'}
+        elements = payload['tree_elements']; records = {e['path']: e for e in inventory['files']}
+        paths = {e['path'] for e in elements}
+        check('unique_exact_payload_inventory_population', len(elements) == len(paths) == len(records)
+              == len(inventory['files']) == inventory['file_count'] and set(records) == paths)
+        check('only12_existing_metadata_and_new_receipts', paths & set(base) == EXISTING
+              and NEW_NAMED <= paths and all(p in EXISTING or p in NEW_NAMED or p.startswith(NEW_PREFIXES) for p in paths))
+        overlay, total = {}, 0
+        for element in elements:
+            p = element['path']; rec = records[p]; raw = element['content'].encode('utf-8')
+            check('serialized_metadata:' + p, PurePosixPath(p).as_posix() == p and not p.startswith('/')
+                  and '..' not in PurePosixPath(p).parts and element['type'] == 'blob'
+                  and element['mode'] == (base[p]['mode'] if p in base else '100644')
+                  and not p.endswith(('.lean', '.py', '.pdf', '.tex', '.gz'))
+                  and (R / p).resolve() == R / p and take(R / p) == raw
+                  and len(raw) == rec['bytes'] and sha(raw) == rec['sha256']
+                  and blob(raw) == rec['git_blob_sha'] and rec['mode'] == element['mode']
+                  and rec['change'] == ('modified' if p in base else 'added'))
+            overlay[p] = {'mode': element['mode'], 'type': 'blob', 'sha': blob(raw)}
+            total += len(raw)
+        check('payload_totals', total == inventory['total_bytes'] and inventory['modified_count'] == 12
+              and inventory['added_count'] == len(paths) - 12 and inventory['deletions'] == 0)
+        publication = read(R / E / 'publication-source-manifest.json')
+        original = read(R / E / 'source-manifest.json')
+        proof = read(R / E / 'lean-verification.json')
+        bridge = read(R / E / 'publication-source-reconciliation.json')
+        sources = publication['sources']; core = read(R / E / 'core-import-closure.json')['modules']
+        check('dual89_source_identity', len(sources) == len({s['path'] for s in sources}) == 89
+              and sha(json.dumps(sources, sort_keys=True, separators=(',', ':')).encode())
+              == publication['source_set_sha256'] == PUBLICATION
+              and original['source_set_sha256'] == proof['source_set_sha256'] == UNIFIED
+              and proof['actual_build_jobs'] == 8799
+              and sha(take(R / E / 'publication-source-reconciliation.json'))
+              == '7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1'
+              and bridge['status'] == 'PASS_COMMENT_ONLY')
+        for s in sources:
+            raw = take(R / s['path'])
+            check('protected_source:' + s['path'], s['path'] not in paths and len(raw) == s['bytes']
+                  and sha(raw) == s['sha256'] and blob(raw) == base[s['path']]['sha'])
+        check('unique56_core_population', len(core) == len({s['path'] for s in core}) == 56)
+        for s in core:
+            raw = take(R / s['path'])
+            check('protected_Core:' + s['path'], s['path'] not in paths
+                  and sha(raw) == s['source_sha256'] and blob(raw) == base[s['path']]['sha'])
+        for name, expected in CANONICAL.items():
+            p = BOOK + name; raw = take(R / p)
+            check('protected_canonical:' + name, p not in paths and sha(raw) == expected and blob(raw) == base[p]['sha'])
+        old_evidence = {p for p in base if '/evidence/' in p}
+        check('all_old_evidence_protected', not old_evidence & paths
+              and all(blob(take(R / p)) == base[p]['sha'] for p in old_evidence)
+              and len(old_evidence) == inventory['old_evidence_unchanged'])
+        concurrent = main_review['concurrent_delta']
+        concurrent_count = len(concurrent)
+        check('actual_concurrent_changes_retained', concurrent_count == main_review['concurrent_delta_files']
+              and concurrent_count > 0 and all(e['path'] not in paths and (
+                  e['path'] not in base if e['concurrent'] is None else
+                  base[e['path']] == e['concurrent']
+                  and blob(take(R / e['path'])) == e['concurrent']['sha']) for e in concurrent))
+        algorithm = H / 'C_payload_audit.py'; take(algorithm)
+        spec = importlib.util.spec_from_file_location('c_pure_metadata_git_trees', algorithm)
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        base_trees, _ = module.git_trees([{'path': p, **leaf} for p, leaf in base.items()])
+        check('actual_base_tree_independently_reconstructed', base_trees[''] == main_snapshot['sha'])
+        expected_leaves = base | overlay
+        expected_trees, _ = module.git_trees([{'path': p, **leaf} for p, leaf in expected_leaves.items()])
+        check('all_unlisted_main_leaves_preserved', all(expected_leaves[p] == leaf for p, leaf in base.items() if p not in paths)
+              and len(set(base) - paths) == inventory['unmodified_base_leaves'])
+        integration = read(R / E / 'integration-verification.json')
+        book = read(R / BOOK / 'evidence/v3.4/remote-publication.json')
+        keys = ('repository', 'source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree',
+                'pull_request', 'pr_run', 'main_run', 'pr_status', 'main_status', 'source_count', 'source_set_sha256')
+        check('root_book_actual_context_agree', all(integration[k] == book['actual_acceptance_identity'][k] == context[k] for k in keys)
+              and integration['status'] == book['status'] == 'MAIN_VERIFIED'
+              and integration['source_and_main_tree_identical'] == (context['source_tree'] == context['tested_main_tree']))
+        check('no_new_physics_execution_or_artifact_claim', integration['full_scientific_theory_verified'] is False
+              and integration['empirical_confirmation_added'] is False and book['metadata_only'] is True
+              and book['new_lean_invocations'] == book['new_runtime_tests'] == book['new_pdf_builds'] == 0
+              and integration['artifact_zip_contents_verified'] is False)
+        for kind in ('pr', 'main'):
+            rid = context[kind + '_run']; review = read(H / f'C_ci_v318_{kind}_{rid}_review.json')
+            check(kind + '_independent_actual_CI_clear', review['status'] == 'CLEAR' and review['run_id'] == rid
+                  and review['source_commit'] == context['source_commit' if kind == 'pr' else 'tested_main_commit']
+                  and review['actual_head_tree'] == context['source_tree' if kind == 'pr' else 'tested_main_tree']
+                  and review['final_publication_source_set_sha256'] == PUBLICATION
+                  and review['original_unified_source_set_sha256'] == UNIFIED)
+            bound_ci = [e for e in review['inputs'] if Path(e['path']).parent == R / E / 'ci']
+            check(kind + '_complete_actual_CI_file_set', len(bound_ci) == 5)
+            for binding in bound_ci:
+                rel = Path(binding['path']).relative_to(R).as_posix()
+                check('actual_CI_bytes:' + rel, rel in paths and records[rel]['sha256'] == binding['sha256']
+                      and records[rel]['bytes'] == binding['bytes'])
+        for binding in book['updated_metadata'] + list(book['actual_receipts'].values()):
+            raw = take(R / binding['path'])
+            check('book_one_way_binding:' + binding['path'], len(raw) == binding['bytes'] and sha(raw) == binding['sha256'])
+        applied = read(args.root_apply_receipt)
+        updated = {e['path']: e for e in applied['updated']}
+        check('root_apply_actual_helper_context_identity',
+              applied['schema'] == 'ueot_qm.remote_metadata_result.v31.8'
+              and applied['context_sha256'] == sha(take(H / 'qm318_release_context.json'))
+              and applied['helper_sha256'] == sha(take(H / 'qm318_finalize_remote.py'))
+              == '631fdaf67d56916901c79827251e2e9a260b53e2e5af00e4bf85dac4f4849707'
+              and applied['source_count'] == 89 and applied['source_set_sha256'] == PUBLICATION
+              and all(applied['actual_acceptance_identity'][k] == context[k] for k in
+                      ('source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree',
+                       'pull_request', 'pr_run', 'main_run')))
+        root_targets = (EXISTING - {BOOK + n for n in ('README.md', 'SOURCE_MANIFEST.json', 'CHAPTER_DOSSIER.json')})
+        root_targets |= {p for p in NEW_NAMED if p.startswith(E)}
+        check('actual_root_apply_13_output_population', applied['status'] == 'MAIN_VERIFIED_METADATA_APPLIED'
+              and applied['completed_repository_writes'] == 13
+              and len(applied['updated']) == len(updated) == 13 and set(updated) == root_targets)
+        for p, binding in updated.items():
+            check('root_apply_binding:' + p, p in paths and records[p]['sha256'] == binding['sha256']
+                  and records[p]['bytes'] == binding['bytes'])
+        checkpoint = {e['path']: e for e in integration['local_metadata_checkpoint']['files']}
+        check('12_actual_source_commit_metadata_checkpoints', len(checkpoint) == 12 and set(checkpoint) == EXISTING)
+        originals = {}
+        for p, binding in checkpoint.items():
+            raw = git('cat-file', 'blob', binding['git_blob_sha'])
+            check('historical_local_metadata_blob:' + p, base[p]['sha'] == binding['git_blob_sha']
+                  and len(raw) == binding['bytes'] and sha(raw) == binding['sha256'])
+            if p.endswith('.json'):
+                originals[p] = json.loads(raw)
+        current = read(R / 'physics/qm/status/CURRENT.json')
+        active = read(R / 'physics/qm/status/ACTIVE_RESEARCH_v31.8.json')
+        ledger_path = 'physics/qm/status/CLAIM_LEDGER_v31.8.json'
+        ledger = read(R / ledger_path); previous = originals[ledger_path]
+        check('current_remote_states', current['verification_state'] == current['integration']['state'] == current['book']['state']
+              == active['state'] == ledger['verification']['state'] == 'MAIN_VERIFIED'
+              and ledger['verification']['remote_status'] == active['checkpoint']['remote'] == 'PASS')
+        check('54_old_claim_objects_unchanged', len(ledger['claims']) == len(previous['claims']) == 70
+              and ledger['claims'][:54] == previous['claims'][:54])
+        mutable = {'verification_location', 'verification_state', 'remote_status', 'verification_scope',
+                   'publication_source_identity', 'source_identity_rule'}
+        check('16_new_mathematical_claim_objects_unchanged', all(
+              all(now[k] == value for k, value in old.items() if k not in mutable)
+              for old, now in zip(previous['claims'][54:], ledger['claims'][54:])))
+        new_manifest = read(R / BOOK / 'SOURCE_MANIFEST.json')
+        new_dossier = read(R / BOOK / 'CHAPTER_DOSSIER.json')
+        check('147_book_objects_and11_original_sources_unchanged',
+              new_dossier['chapters'] == originals[BOOK + 'CHAPTER_DOSSIER.json']['chapters']
+              and new_dossier['appendices'] == originals[BOOK + 'CHAPTER_DOSSIER.json']['appendices']
+              and new_manifest['entries'] == originals[BOOK + 'SOURCE_MANIFEST.json']['entries']
+              and len(new_manifest['entries']) == 11)
+        workflow_records = []
+        for wf in sorted((R / '.github/workflows').glob('*.yml')):
+            value = yaml.load(take(wf).decode(), Loader=yaml.BaseLoader); event_records = {}
+            on = value.get('on', {})
+            check('supported_workflow_events:' + wf.name, isinstance(on, dict))
+            for event in ('push', 'pull_request', 'pull_request_target'):
+                if event not in on:
+                    continue
+                conf = on[event]
+                check('explicit_metadata_path_filter:' + wf.name + ':' + event,
+                      isinstance(conf, dict) and 'paths' in conf)
+                patterns = conf['paths']
+                check('supported_metadata_globs:' + wf.name + ':' + event,
+                      all(not p.startswith('!') and not any(c in p for c in '[+{') for p in patterns))
+                hits = [(p, pat) for p in paths for pat in patterns if re.fullmatch(glob_regex(pat), p)]
+                check('no_metadata_workflow_match:' + wf.name + ':' + event, not hits)
+                event_records[event] = {'patterns': patterns, 'matching_metadata_paths': []}
+            workflow_records.append({'path': wf.relative_to(R).as_posix(), 'sha256': sha(take(wf)), 'events': event_records})
+        check('all_input_bytes_stable', all(p.read_bytes() == raw for p, raw in inputs.items()))
+        report.update(status='CLEAR', tested_main_commit=context['tested_main_commit'], base_tree=main_snapshot['sha'],
+            expected_metadata_tree_sha1=expected_trees[''], payload_sha256=sha(payload_raw),
+            inventory_sha256=sha(inventory_raw), file_count=len(paths), modified=12, added=len(paths)-12,
+            deleted=0, raw_bytes=total, expected_tree_entries=len(expected_leaves)+len(expected_trees)-1,
+            expected_tree_leaves=len(expected_leaves), unchanged_main_leaves=len(set(base)-paths),
+            protected={'accepted_sources':89, 'core_imports':56, 'canonical':3,
+                       'old_evidence':len(old_evidence), 'concurrent_changes':concurrent_count,
+                       'old_claim_objects':54, 'new_mathematical_claim_objects':16, 'book_result_objects':147},
+            workflow_path_review=workflow_records,
+            scope=['Only actual frozen metadata payload and saved actual acceptance/apply inputs were read. Expected metadata Git tree is computed, not asserted remotely created or committed.',
+                   'All unlisted actual-main leaves, including the entire actually reviewed concurrent Core/governance delta, remain inherited. Source and tested-main identities may differ as explicitly recorded.',
+                   'Actual prior CI CLEAR byte bindings are reused; no CI parser, compiler, runtime/PDF/visual gate or artifact ZIP is reexecuted or inspected.',
+                   'Review report stays outside the frozen payload, preventing a receipt cycle.'])
+    except Exception as error:
+        report['status'] = 'BLOCK'; report['blockers'].append(type(error).__name__ + ': ' + str(error))
+    report['finished_at_utc'] = datetime.now(timezone.utc).isoformat()
+    report['inputs'] = [{'path':str(p), 'bytes':len(raw), 'sha256':sha(raw)} for p, raw in inputs.items()]
+    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps({k:report[k] for k in ('status','file_count','expected_metadata_tree_sha1','blockers') if k in report}
+                     | {'report':str(args.output), 'sha256':sha(args.output.read_bytes())}))
+    return 0 if report['status'] == 'CLEAR' else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

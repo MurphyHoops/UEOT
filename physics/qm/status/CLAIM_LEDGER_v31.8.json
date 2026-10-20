@@ -8,11 +8,11 @@
   "core_baseline": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
   "core_baseline_role": "Historical frozen Core reference; all actual 56 imported source bytes remain identical to the closed v31.7 baseline. No 106-item/four-generator Core mutation.",
   "verification": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MAIN_VERIFIED",
     "local_status": "PASS",
-    "remote_status": "PENDING",
-    "remote_ci": "PENDING",
-    "main_integration": "PENDING",
+    "remote_status": "PASS",
+    "remote_ci": "PASS",
+    "main_integration": "PASS",
     "main_package_theorems": 747,
     "main_named_audits": 985,
     "concrete_witness_theorems": 193,
@@ -43,15 +43,57 @@
         "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
       },
       "source_count": 89,
-      "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+      "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+      "status": "MAIN_VERIFIED",
+      "remote_verified": true,
+      "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+      "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+      "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+      "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+      "pr_run": 39420751354,
+      "main_run": 39424068985,
+      "reconciliation": {
+        "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+        "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+        "bytes": 3387
+      }
     },
     "publication_source_reconciliation": {
       "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
       "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
       "bytes": 3387
     },
-    "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
-    "full_physical_theory_verified": false
+    "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
+    "full_physical_theory_verified": false,
+    "remote_checked_at_utc": "2026-10-20T12:50:31.735764+00:00",
+    "original_local_source_manifest_role": "IMMUTABLE_ORIGINAL_LOCAL_UNIFIED_INPUT",
+    "publication_source_count": 89,
+    "publication_source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+    "actual_remote_acceptance": {
+      "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+      "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+      "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+      "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+      "pull_request": 350,
+      "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+      "pr_run": 39420751354,
+      "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+      "main_run": 39424068985,
+      "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+      "pr_status": "PASS",
+      "main_status": "PASS",
+      "source_count": 89,
+      "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+      "source_and_main_tree_identical": false,
+      "tested_inputs_identical": true,
+      "core_imports_identical": true,
+      "canonical_book_identical": true,
+      "published_paths_identical": true,
+      "published_path_count": 338,
+      "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+      "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+      "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+    }
   },
   "evidence": {
     "proof": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
@@ -61,7 +103,12 @@
     "root_scientific_review": "physics/qm/kernel/evidence/v31.8/root-scientific-review.json",
     "witnesses": "physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json",
     "book_gates": "physics/qm/book/evidence/v3.4/local-release-gates.json",
-    "integration": null
+    "integration": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+    "source_pr_ci": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+    "main_push_ci": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json",
+    "remote_source_reconciliation": "physics/qm/kernel/evidence/v31.8/remote-source-reconciliation.json",
+    "remote_main_reconciliation": "physics/qm/kernel/evidence/v31.8/remote-main-reconciliation.json",
+    "book_remote_publication": "physics/qm/book/evidence/v3.4/remote-publication.json"
   },
   "canonical_monograph": {
     "edition": "3.4",
@@ -69,7 +116,9 @@
     "dossier": "physics/qm/book/CHAPTER_DOSSIER.json",
     "chapters": 63,
     "results": 147,
-    "pdf_pages": 229
+    "pdf_pages": 229,
+    "state": "MAIN_VERIFIED",
+    "remote_publication": "physics/qm/book/evidence/v3.4/remote-publication.json"
   },
   "inheritance": {
     "count": 54,
@@ -106,6 +155,56 @@
         "QMK-69"
       ],
       "scope": "Only the proved common fixed-depth causal-history controller contract is closed; coherent control and arbitrary stopping-tree padding remain open."
+    },
+    {
+      "inherited_claim": "QMK-28",
+      "historical_limit": "The unchanged v31.7 object combines several then-open responsibilities; only the following exact subresponsibilities are closed by separate v31.8 claims.",
+      "new_claims": [
+        "QMK-55",
+        "QMK-56",
+        "QMK-65",
+        "QMK-66",
+        "QMK-67",
+        "QMK-68",
+        "QMK-69"
+      ],
+      "resolved_subresponsibilities": [
+        {
+          "responsibility": "Density separation by all legal effects, including the real-linear span of Hermitian operators by legal effects via affine rescaling and the zero-distance matrix interpretation.",
+          "new_claims": [
+            "QMK-55",
+            "QMK-56"
+          ],
+          "book_results": [
+            "P-SEP-01",
+            "P-SEP-02"
+          ]
+        },
+        {
+          "responsibility": "Whole-protocol joint-record memory defects reduced to actual step/action sums under a common fixed-depth finite causal-history controller, with same-input blocks and the actual reference-run prefix weights.",
+          "new_claims": [
+            "QMK-65",
+            "QMK-66",
+            "QMK-67",
+            "QMK-68",
+            "QMK-69"
+          ],
+          "book_results": [
+            "P-ARB-01",
+            "P-ARB-02",
+            "P-ARB-03",
+            "P-ARB-04",
+            "P-ARB-05"
+          ]
+        }
+      ],
+      "remaining_open": [
+        "General exact computation of arbitrary channel-defect suprema or a useful certified general algorithm",
+        "Any separately claimed norm identification or norm equivalence",
+        "Auxiliary-stabilized distance comparison and arbitrary coherent-controller/environment budgets",
+        "Variable stopping-tree padding and semantics beyond the proved common fixed-depth controller"
+      ],
+      "scope": "QMK-28 itself remains value-for-value unchanged. A finite sample maximum is still not a certified supremum upper bound; the newly proved density separation and action budgets do not establish the listed norm or stabilization obligations."
     }
   ],
   "new_claim_count": 16,
@@ -166,7 +265,7 @@
     "core_imports_identical": true,
     "canonical_book_identical": true
   },
-  "metadata_updated_at_utc": "2026-10-20T11:32:30.365792+00:00",
+  "metadata_updated_at_utc": "2026-10-20T12:50:31.735764+00:00",
   "claims": [
     {
       "id": "QMK-01",
@@ -2362,9 +2461,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "ι 是任意有限载体，Lean 使用 Fintype ι 与 DecidableEq ι。",
         "H 是全部复方阵空间中的任意 Hermitian 矩阵。",
@@ -2418,14 +2517,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/QuantumSeparation.lean",
@@ -2450,7 +2562,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-56",
@@ -2462,9 +2619,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "任意同一有限复载体上的两份实际 Density，均 PSD 且迹一。",
         "假设对每个合法 Effect 的实际实值迹概率都相等，量词不能改成固定受限测试库。",
@@ -2531,14 +2688,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/QuantumSeparation.lean",
@@ -2589,7 +2759,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-57",
@@ -2601,9 +2816,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "ι、ν 是分别任意的有限复载体，联合类型真实为 ι×ν。",
         "ρ、σ 是全部 Density(ι×ν) 中任意联合态。",
@@ -2674,14 +2889,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/ComplexLocalTomography.lean",
@@ -2732,7 +2960,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-58",
@@ -2744,9 +3017,9 @@
       ],
       "evidence_kind": "EXACT_FORMAL_NEGATIVE_CONTROL",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "二维复载体 Qubit=Fin 2；标准 X=[[0,1],[1,0]]、Y=[[0,−i],[i,0]]。",
         "四态 ρx±=(I±X)/2、ρy±=(I±Y)/2，PSD 与迹一实际证明。",
@@ -2825,14 +3098,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/RealLocalTomography.lean",
@@ -2883,7 +3169,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-59",
@@ -2895,9 +3226,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "iota is a finite complex matrix carrier; equality is decidable in the Lean matrix interface.",
         "rho : Density iota carries actual PSD and complex trace-one proofs.",
@@ -2964,14 +3295,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
@@ -3022,7 +3366,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-60",
@@ -3034,9 +3423,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "iota and alpha are finite complex carriers, with decidable equality.",
         "Psi,Phi : Density (iota x alpha) are IsPure in the full joint Density type.",
@@ -3111,14 +3500,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
@@ -3169,7 +3571,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-61",
@@ -3181,9 +3628,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "iota,alpha,beta are finite complex carriers with the decidable equality instances required by the actual matrix/channel interface.",
         "J : Matrix beta alpha Complex satisfies J^dagger J=I_alpha.",
@@ -3248,14 +3695,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
@@ -3306,7 +3766,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-62",
@@ -3318,9 +3823,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "iota,alpha,beta finite complex carriers, with decidable equality.",
         "Psi : Density (iota x alpha) and Phi : Density (iota x beta) are each full convex-pure.",
@@ -3388,14 +3893,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
@@ -3433,7 +3951,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-63",
@@ -3445,9 +4008,9 @@
       ],
       "evidence_kind": "EXACT_FORMAL_NEGATIVE_CONTROL",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "Fixed rational complex U=[[3/5,4i/5],[4/5,-3i/5]].",
         "Fixed psi1=3/5|00>+4/5|11> and psi2=9/25|00>+12/25|01>+16i/25|10>-12i/25|11>.",
@@ -3511,14 +4074,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/scripts/witnesses/PurificationUniquenessExamples.lean",
@@ -3543,7 +4119,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-64",
@@ -3555,9 +4176,9 @@
       ],
       "evidence_kind": "EXACT_FORMAL_NEGATIVE_CONTROL",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "Fixed canonical auxiliaryInl from Fin 2 to Fin 2 Sum Unit.",
         "Actual source/output auxiliary dimensions are 2 and 3."
@@ -3616,14 +4237,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
@@ -3661,7 +4295,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-65",
@@ -3673,9 +4352,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "H、ι、ν 均为有限载体，矩阵使用既有完整复矩阵、Density 与 Effect 类型。",
         "ζ 是任意 Density(H×ι)，实际 PSD 且复迹一；不要求预先块对角。",
@@ -3738,14 +4417,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/HistoryChannels.lean",
@@ -3783,7 +4475,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-66",
@@ -3795,9 +4532,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "有限H、ι、ν和有限Kraus载体κ、η；两个族 C_h:RectangularChannel ι ν κ、D_h:RectangularChannel ι ν η均有实际完整性。",
         "任意共同输入ζ:Density(H×ι)。",
@@ -3861,14 +4598,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/HistoryChannels.lean",
@@ -3906,7 +4656,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-67",
@@ -3918,9 +4713,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "固定任意N:Nat，有限共同结果O和量子记忆ι；A为任意动作类型，不额外要求有限或非空。",
         "C:∀t:Fin N,(Fin t.val→O)→A 是同一实际因果控制器。",
@@ -4014,14 +4809,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
@@ -4072,7 +4880,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-68",
@@ -4084,9 +4937,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "采用P-ARB-03的固定N、有限共同记录/记忆和同一C；I与J可有不同有限Kraus载体。",
         "ρ、σ为任意初态，无需相等。",
@@ -4169,14 +5022,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
@@ -4227,7 +5093,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-69",
@@ -4239,9 +5150,9 @@
       ],
       "evidence_kind": "FORMAL_THEOREM",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "具体Qubit=Label=Fin2，Kraus下标Fin4。",
         "certain b只有(o=b,k=0)单位Kraus；biased的标签0四元组为(I/2,I/2,I/2,0)，标签1为(0,0,0,I/2)。",
@@ -4338,14 +5249,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
@@ -4396,7 +5320,52 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     },
     {
       "id": "QMK-70",
@@ -4408,9 +5377,9 @@
       ],
       "evidence_kind": "EXACT_FORMAL_NEGATIVE_CONTROL",
       "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
-      "verification_location": "LOCAL",
-      "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_status": "PENDING",
+      "verification_location": "LOCAL_AND_ACTUAL_PR_MAIN_CI",
+      "verification_state": "MAIN_VERIFIED",
+      "remote_status": "PASS",
       "premises": [
         "沿用P-ARB-05的二维记忆、结果类型、四Kraus certain仪器和同一feedback。",
         "flippedActions none=certain1，some o=certain o；参考exactActions none=certain0，其后相同。",
@@ -4483,14 +5452,27 @@
           "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
         },
         "source_count": 89,
-        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "status": "MAIN_VERIFIED",
+        "remote_verified": true,
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pr_run": 39420751354,
+        "main_run": 39424068985,
+        "reconciliation": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+          "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+          "bytes": 3387
+        }
       },
       "publication_source_reconciliation": {
         "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
         "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
         "bytes": 3387
       },
-      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "source_identity_rule": "Original local 8799-job execution remains bound to raw source set a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. Final publication raw source set 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1 was actually checked by PR run 39420751354 at d9a1858c86ca82e08ae862389b51c1ea76690c24 and independent main push run 39424068985 at 97c7b29c1aec470be58ca34b552e9d56ad06c197. The earlier additive comment-only bridge is preserved, with no repeated local compilation. The containing metadata commit has its own Git identity and is not any listed CI-tested scientific commit; it is not self-embedded.",
       "source_bindings": [
         {
           "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
@@ -4541,7 +5523,110 @@
         "path": "physics/qm/book/UEOT_PHYSICS.md",
         "dossier": "physics/qm/book/CHAPTER_DOSSIER.json"
       },
-      "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred."
+      "verification_scope": "The original actual unified proof and exact local named audits retain their a343 raw source identity. The sole comment correction is separately bridged; actual PR/main CI tested final 054f publication inputs and checked 985 public names, 100 runtime methods, exact case progress and ten witness-file totals of 269. The witness kind split and per-witness names refer to the source-bound local receipts; artifact ZIP contents were not downloaded. No mathematical premise, conclusion, empirical claim or universal physical scope is added.",
+      "local_publication_checkpoint": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+        "fields": {
+          "publication_source_identity": {
+            "manifest": {
+              "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+              "bytes": 16700,
+              "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+            },
+            "source_count": 89,
+            "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+          },
+          "remote_status": "PENDING",
+          "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+          "verification_location": "LOCAL",
+          "verification_scope": "Actual v31.8 unified source-bound proof and exact named audits retain the original raw input identity. The separately verified one-word documentation correction does not relabel that build as a new execution. Concrete witnesses are separately counted. No real experimental data or current remote acceptance is inferred.",
+          "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING"
+        }
+      },
+      "actual_remote_acceptance": {
+        "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+        "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+        "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
+        "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
+        "pull_request": 350,
+        "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+        "pr_run": 39420751354,
+        "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
+        "main_run": 39424068985,
+        "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
+        "pr_status": "PASS",
+        "main_status": "PASS",
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+        "source_and_main_tree_identical": false,
+        "tested_inputs_identical": true,
+        "core_imports_identical": true,
+        "canonical_book_identical": true,
+        "published_paths_identical": true,
+        "published_path_count": 338,
+        "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
+        "pr_verification": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
+        "main_verification": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json"
+      }
     }
-  ]
+  ],
+  "local_publication_checkpoint": {
+    "scope": "Historical successful local checkpoint at the actual scientific source commit. Its pending-remote words and exact pre-remote metadata bytes retain that earlier meaning; the current remote aggregate is separately MAIN_VERIFIED.",
+    "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+    "metadata": {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.8.json",
+      "sha256": "51cfbf92b2939063b788c151b714d929a49bb6fe84f49949c6e8bb75bfed9ec0",
+      "bytes": 236551,
+      "git_blob_sha": "348be665edaa5d34d198717fd4975ce0fa91494a",
+      "mode": "100644"
+    },
+    "verification": {
+      "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+      "local_status": "PASS",
+      "remote_status": "PENDING",
+      "remote_ci": "PENDING",
+      "main_integration": "PENDING",
+      "main_package_theorems": 747,
+      "main_named_audits": 985,
+      "concrete_witness_theorems": 193,
+      "concrete_witness_definitions": 71,
+      "concrete_witness_abbreviations": 5,
+      "concrete_witness_audits": 269,
+      "source_count": 89,
+      "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+      "actual_unified_source_identity": {
+        "manifest": {
+          "path": "physics/qm/kernel/evidence/v31.8/source-manifest.json",
+          "bytes": 16700,
+          "sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc"
+        },
+        "verification": {
+          "path": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
+          "bytes": 3859,
+          "sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8"
+        },
+        "source_count": 89,
+        "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+        "actual_build_jobs": 8799
+      },
+      "publication_source_identity": {
+        "manifest": {
+          "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+          "bytes": 16700,
+          "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+        },
+        "source_count": 89,
+        "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1"
+      },
+      "publication_source_reconciliation": {
+        "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+        "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
+        "bytes": 3387
+      },
+      "source_identity_rule": "The original 8799-job build and tests remain bound to the original raw source set. This additive bridge binds only a documentation-word correction to identical mathematical code; future actual CI must test the final publication bytes. It does not claim a repeated local build of the final raw source set.",
+      "full_physical_theory_verified": false
+    }
+  },
+  "metadata_commit_is_not_ci_tested_source_commit": true
 }

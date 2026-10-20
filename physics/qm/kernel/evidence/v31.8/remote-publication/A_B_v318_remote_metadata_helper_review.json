@@ -1,0 +1,135 @@
+{
+  "schema": "ueot_qm.A_B_remote_metadata_helper_review.v31.8",
+  "status": "CLEAR_STATIC_FULL_HELPER_SCOPE",
+  "recorded_at_utc": "2026-10-20T12:12:02.744384+00:00",
+  "reviewer": "A /root/v317_book_finish",
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_remote.py",
+    "bytes": 55090,
+    "sha256": "ae2dab641f77055a45f301f6a9d2883eeaa7c0118ab8d7f83949353cfd4c51ed"
+  },
+  "reviewed_line_count": 745,
+  "method": "Read complete final helper, including actual CI/tree/source/history gates, all 9 metadata transformations and atomic apply; compare expected producer/consumer fields against A book remote helper and the actual CI parser; statically evaluate literal replacement anchors and history population using current real files. No execution of the subject helper or scientific gates.",
+  "reference_inputs": {
+    "A_book_remote_helper": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_book_remote.py",
+      "bytes": 45783,
+      "sha256": "a8cdc335d98e543a172059791613b6bae7825a4ed5d429c3e0f11fe71f01e323"
+    },
+    "actual_frozen_publication_inventory": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_publication_inventory.json",
+      "bytes": 151153,
+      "sha256": "b7fd0b660a112f6136f748f952be0773e5469cd04618c9a7b9bf8bff40c874e0"
+    },
+    "CI_parser": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_verify_ci_logs.py",
+      "bytes": 47188,
+      "sha256": "d59fc80f373cd134fd4da0358021379aa8536d9cecb0d5ab6d77dc1f77244316"
+    },
+    "local_book_gate": {
+      "path": "physics/qm/book/evidence/v3.4/local-release-gates.json",
+      "bytes": 6300,
+      "sha256": "a555d253fc7c2a4f2e71d1fbac87de22bbc35af0c5dafe32aff3244779517f51"
+    },
+    "single_comment_bridge": {
+      "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
+      "bytes": 3387,
+      "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1"
+    }
+  },
+  "actual_current_metadata_inputs": [
+    {
+      "path": "physics/qm/status/CURRENT.json",
+      "bytes": 23618,
+      "sha256": "cbdc81ddfa9724c1e2297e825fd4606c9b4c9c57b7a34026fd89986208f2598a"
+    },
+    {
+      "path": "physics/qm/status/ACTIVE_RESEARCH_v31.8.json",
+      "bytes": 9959,
+      "sha256": "363c15b58697e9cfb566e374abc43384154aeaeb766900654af268f868623799"
+    },
+    {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.8.json",
+      "bytes": 236551,
+      "sha256": "51cfbf92b2939063b788c151b714d929a49bb6fe84f49949c6e8bb75bfed9ec0"
+    },
+    {
+      "path": "physics/qm/README.md",
+      "bytes": 2958,
+      "sha256": "f1fde67c4fde962b1a57c7972d59c5bab1797906b1610032ba3891547a651e7d"
+    },
+    {
+      "path": "physics/qm/ROADMAP.md",
+      "bytes": 4712,
+      "sha256": "351272493c33e1047368054c2dd7b395c72064131e1824166dc4e32b66e3c087"
+    },
+    {
+      "path": "physics/qm/kernel/README.md",
+      "bytes": 16419,
+      "sha256": "fa22a870751945d83ce134e214e0340f5c465ae47f9cbb924a929ffb74d09d2a"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_KERNEL_v31.8.md",
+      "bytes": 28028,
+      "sha256": "4c2dc79d7c3c51cd3f275c9a827b20be1200ba12480058734fd734fa1bbf9ebb"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+      "bytes": 11978,
+      "sha256": "26433b54d56326eb3d239094c76e92454ccdd9405c4c60e91e91fc932b3962bf"
+    },
+    {
+      "path": "formalization/ueot-qm/README.md",
+      "bytes": 46296,
+      "sha256": "403e905ead29108a52214149f10e3ccf3636eff047fcc12c4d9db20d562739e7"
+    }
+  ],
+  "scope_checks": {
+    "default_read_only_and_apply_explicit": true,
+    "missing_or_pending_actual_CI_rejected_before_output_staging": true,
+    "schema_commit_tree_PR_run_events_require_actual_values": true,
+    "actual_CI_parser_and_input_bytes_pinned": true,
+    "CI_39_printed_source_hashes_985_public_names_100_runtime_names_and_269_witness_file_totals_scope_correct": true,
+    "no_artifact_ZIP_contents_claimed": true,
+    "original_a343_8799_and_final_054f_identities_separate": true,
+    "original_manifest_verification_and_one_word_bridge_preserved": true,
+    "publication_source_population_89_and_338_payload_paths_checked": true,
+    "actual_source_and_main_tree_may_differ_while_relevant_blob_paths_must_match": true,
+    "all56_Core_sources_and_3canonical_checked": true,
+    "actual_tree_readback_raw_inputs_bound": true,
+    "twelve_pre_remote_metadata_source_commit_blobs_preserved_for_history": true,
+    "current_future_PR_main_wording_updated_or_scoped_as_history": true,
+    "current_book_and_contract_states_correctly_updated": true,
+    "old54_claim_objects_and_QMK13_NOT_CLAIMED_preserved": true,
+    "new16_claim_mathematical_fields_preserved_remote_verification_metadata_separate": true,
+    "QMK28_original_object_unchanged_specific_new_finite_subresponsibilities_mapped": true,
+    "QMK28_residual_norm_supremum_stabilization_coherent_controller_limits_retained": true,
+    "six_document_replacement_anchor_counts_all_exactly_one": true,
+    "historical_protection_population_820_matches_actual_closed_prior_tree": true,
+    "thirteen_outputs_do_not_match_any_of_fifteen_actual_scientific_workflow_patterns": true,
+    "new_remote_receipts_refuse_overwrite": true,
+    "all_inputs_and_destinations_checked_before_first_atomic_replace": true,
+    "all_outputs_readback_and_protected_inputs_checked_after_apply": true,
+    "book_helper_required_integration_schema_fields_match": true,
+    "later_metadata_commit_never_self_embedded_as_CI_tested_source": true
+  },
+  "resolved_findings": [
+    {
+      "location": "new QMK-28 responsibility description",
+      "prior_wording": "real affine Hermitian span",
+      "final_wording": "real-linear span of Hermitian operators by legal effects via affine rescaling",
+      "reason": "The proved H=2rE-rI is a real-linear two-effect combination; the affine operation is the rescaling into a legal effect. Only descriptive helper text changed; no scientific source change or extra build."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "This is a static producer/consumer and actual-file compatibility review; actual successful v31.8 PR/main context and the subject helper dry-run/apply remain separately required.",
+    "The 820 historical-file population was counted here; their full byte equality is guarded by the helper and prior actual local acceptance, not re-executed as a second acceptance gate by this review.",
+    "No claim about artifact ZIP internals or all-page complete PDF close reading is made."
+  ],
+  "subject_helper_invocations": 0,
+  "new_Lean_runtime_PDF_visual_invocations": 0,
+  "remote_actions": 0,
+  "repository_writes": 0,
+  "review_artifact_only_written_under_handoff": true
+}

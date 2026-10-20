@@ -1,0 +1,43 @@
+{
+  "schema": "ueot_physics.actual_remote_book_helper_execution.v3.4",
+  "kind": "apply",
+  "args": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_book_remote.py",
+    "--root",
+    "/workspace/scratch/f11b4261e187/qm_v318_work",
+    "--context",
+    "/workspace/scratch/f11b4261e187/handoff/qm318_release_context.json",
+    "--apply"
+  ],
+  "started_at_utc": "2026-10-20T13:04:07.871001+00:00",
+  "finished_at_utc": "2026-10-20T13:04:08.156406+00:00",
+  "exit_code": 0,
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_book_remote.py",
+    "bytes": 45887,
+    "sha256": "62d33804bfce39def7f5089e3ac424ba691910b528e0ac8cb454ccaaecd44f00"
+  },
+  "context": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_release_context.json",
+    "bytes": 1993,
+    "sha256": "96213b64a868b60bf68f920a55c0c4d43046993a13c83f612642a73051adef36"
+  },
+  "root_actual_apply": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_root_remote_apply_001.json",
+    "bytes": 11200,
+    "sha256": "9be052350f6ed40960f7de552e1b76988d1338eb52c03bacaa29540478db26c3"
+  },
+  "stdout": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_apply_001.json",
+    "bytes": 2447,
+    "sha256": "b8440ecc5de51d99ecde900adb2cf2583883e39867ed0c57d4240bb30319c242"
+  },
+  "stderr": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_apply_001.stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "repo_writes_requested": true,
+  "new_scientific_validation_requested": false
+}

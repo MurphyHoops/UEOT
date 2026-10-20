@@ -1,0 +1,47 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Action completed."
+    }
+  ],
+  "structuredContent": {
+    "url": "https://github.com/MurphyHoops/UEOT/pull/350",
+    "number": 350,
+    "state": "open",
+    "merged": false,
+    "mergeable": false,
+    "draft": false,
+    "body": "## 问题与本次变化\n\nv31.7 已证明完整有限复密度态的纯化存在，但完整纯态刻画、纯化唯一性和复模型的普遍局部层析仍有明确缺口；真实联合记录的整体协议缺陷也尚未分解为底层动作预算。本次按 v31.8 合同闭合这些有限数学责任，并把证明、具体反例、前提和适用范围一并纳入《UEOT物理学》3.4。\n\n- 全效应分离与复局部层析：合法效应的实线性张成、对全部有限复密度态的分离，以及原复操作模型对任意有限联合态的局部层析。对角效应库仍有盲区的具体负控同时保留。\n- 完整纯性与纯化唯一性：完整凸纯态恰为向量态；相同有限辅助载体上的纯化由实际酉变换联系。不同辅助载体单独使用等距嵌入及共同直和。具体复数相位见证检测伴随、转置、共轭和矩阵方向。\n- 逐动作记录误差：在共同固定深度、有限经典历史控制器条件下，从实际 PSD 历史块、零块和合法效应推出联合通道误差和，接到原 Adaptive.Protocol 的真实叶路径与完整记录 TV。无标签动作通道相同而记录 TV 为 1 的负控中，终端量子记忆仍相同。\n\n新增六个公共模块、三个具体见证模块和相应审计入口；同步当前研究状态、70 项主张台账及正式总著。全书现为 229 页、63 章、6 个附录、320 小节、216 个稳定锚点、147 项编号结果；原 131 项结果对象完整保留，新增 16 项集中于第 60–62 章。\n\n## 已实际完成的本地验收\n\n统一 Lean 构建实际完成 8799 jobs、退出 0；35 个公共模块、747 条显式 theorem、985 个唯一命名公理审计。新增部分为 101 条显式 theorem、130 个审计目标。十组具体见证另计 193 条 theorem、71 个定义、5 个缩写，共 269 项审计。六个精确证书的 42 项审计、四个篡改真证明拒绝、四个同数据假值证明接受均实际完成；100 个运行测试方法通过，四个演示实际执行并解析。允许基础仅为 propext、Classical.choice、Quot.sound；构建存在普通 linter 警告。\n\n统一执行绑定 89 项原始源码集合 `a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e`。之后仅将一处文档注释中的英文词替换为同义词，以消除旧 workflow 字面扫描的误判；最终发布集合为 `054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1`。追加回执精确绑定这一个词的差异，原执行证据保持原字节，没有重跑本地重型证明，也没有给原 8799-job 执行改填新输入哈希。本 PR 的真实 CI 将核验最终发布字节。\n\n正式 PDF 最后三遍排印均退出 0，版面警告为空。已实际检查全书总览、新三章全部 22 页及明确列出的重点完整页；这不表示 229 页逐页完整精读。Markdown、PDF、TeX 的最终身份分别绑定于书的结构、排印和视觉回执。\n\n## 保护与科学边界\n\n发布仅涉及两处 QM 子树，workflow 保持原字节，全部未列入载荷的基树文件保留。89 项发布源码、56 项实际递归 Core 源码、92 项源码与 olean 绑定及三份正式正文逐项对照；冻结 Core 的 106 项和四生成器不作修改，旧证据及并发研究不作覆盖。\n\n上述结果均为有限模型内的实际形式证明。它们没有从 Core 唯一选出复量子理论，不把不同辅助维数称为异型酉，也不把固定深度经典控制预算扩大为相干控制、变长停止过程或任意外部环境结论。没有新增真实实验；三代结论仍依赖谱、表示、阈值和有效窗口等前提。完整自然理论、一般无限条件过程及物理适用性仍承担开放责任。\n\n源码 PR 与合入 main 的独立真实 CI 将分别核验 run/jobs、实际 checkout、39 条打印源码 hash、985 个精确命名审计、269 项见证、证书负控及 100 个测试名；随后用单独 metadata 提交记录真实远端身份。后续 metadata commit 不冒充 CI-tested source commit，未下载 artifact ZIP 时不声称核验其内部内容。\n\n## 并发主线保护\n\n发布过程中，Core PR #349 已合入 main `87cc3a3ce0bc1682d431d1479db0164d48e0f8d2`。已核对其全部六项工作流和治理文档修改，与本次338文件载荷、89项发布源码和56项导入Core源码均无重叠。本PR保留原作者基线并正常三方合入，完整保护并发Core修改；最终main整树可与源码整树不同，将另行精确核对其并集及独立CI，不把整树相等当作预设。\n",
+    "title": "QM v31.8：全效应分离、纯化酉唯一性与逐动作记录预算",
+    "base": "main",
+    "base_sha": "87cc3a3ce0bc1682d431d1479db0164d48e0f8d2",
+    "head": "qm/v31.8-separation-purity-action-budgets-20261020",
+    "head_sha": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+    "head_repo_id": 1146718528,
+    "head_repo_full_name": "MurphyHoops/UEOT",
+    "merge_commit_sha": null,
+    "user": {
+      "login": "MurphyHoops",
+      "name": "MurphyHoops",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/86187309?v=4",
+      "id": 86187309
+    },
+    "requested_reviewers": null,
+    "requested_team_reviewers": null,
+    "diff": null,
+    "comments": null,
+    "created_at": "2026-10-20T12:14:23Z",
+    "updated_at": "2026-10-20T12:14:23Z",
+    "closed_at": null,
+    "merged_at": null,
+    "commits": 1,
+    "changed_files": 338,
+    "additions": 146015,
+    "deletions": 3737,
+    "display_url": "https://github.com/MurphyHoops/UEOT/pull/350",
+    "display_title": "QM v31.8：全效应分离、纯化酉唯一性与逐动作记录预算"
+  },
+  "isError": false
+}

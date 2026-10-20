@@ -2,7 +2,7 @@
 
 作者：**钱德桂（Degui Qian）**。
 
-当前状态：**LOCAL_VERIFIED_REMOTE_PENDING**。第0–62章、6个附录和147项稳定编号已经连贯纳入正式正文；原131项编号对象、11项原始来源记录和全部旧书证据保持原身份。本版新增16项编号：第60章4项、第61章6项、第62章6项。正文完成、有限条件证明和自然界适用性分别承担责任。
+当前状态：**MAIN_VERIFIED**。实际源码PR、合入后独立主线CI和逐项发布字节核对已经完成；身份见[远端发布回执](evidence/v3.4/remote-publication.json)。第0–62章、6个附录和147项稳定编号已经连贯纳入正式正文；原131项编号对象、11项原始来源记录和全部旧书证据保持原身份。本版新增16项编号：第60章4项、第61章6项、第62章6项。正文完成、有限条件证明和自然界适用性分别承担责任。
 
 ## 正文与阅读路径
 
@@ -23,7 +23,7 @@
 - [实际统一数学与运行验收](../kernel/evidence/v31.8/lean-verification.json)
 - [实际89项源码清单](../kernel/evidence/v31.8/source-manifest.json)
 - [结构回执](evidence/v3.4/book-structure.json)、[排印回执](evidence/v3.4/pdf-build.json)
-- [逐项档案审查](evidence/v3.4/dossier-review.json)、[本地发布门](evidence/v3.4/local-release-gates.json)
+- [逐项档案审查](evidence/v3.4/dossier-review.json)、[原本地验收检查点](evidence/v3.4/local-release-gates.json)
 - [旧3.3精确档案](evidence/v3.4/dossier-prior-v3.3.json)、[历史字节保护](evidence/v3.4/prior-v3.3-preservation.json)
 
 附录D三套程序和字面代码块与3.3逐字节一致；757项旧程序检查保留3.0的实际执行身份，本轮只核对源码，未重跑。详见[本版继承程序身份回执](evidence/v3.4/legacy-source-reuse.json)。旧章与旧结果对象内的检查点和未闭合责任保持其原版语境；第60–62章已经解决的有限责任由本版新证明和当前聚合验收承担。
@@ -38,9 +38,28 @@
 | 89项实际统一受验输入集合 | `a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e` |
 | 89项当前发布字节集合 | `054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1` |
 
-统一验收后，只把 `PurificationUniqueness.lean` 文档注释中的一个英文词替换为同义词，以免旧workflow的字面扫描误判；数学代码和声明均未改变。原8799 jobs只绑定统一受验输入集合。[发布源码核对桥](../kernel/evidence/v31.8/publication-source-reconciliation.json)逐字节证明这一处注释变更并绑定当前发布字节集合，没有追加本地Lean构建；远端CI仍须实际验收最终发布字节。
+统一验收后，只把 `PurificationUniqueness.lean` 文档注释中的一个英文词替换为同义词，以免旧workflow的字面扫描误判；数学代码和声明均未改变。原8799 jobs只绑定统一受验输入集合。[发布源码核对桥](../kernel/evidence/v31.8/publication-source-reconciliation.json)逐字节证明这一处注释变更并绑定当前发布字节集合，没有追加本地Lean构建；最终发布字节现由下列两次独立实际CI验收，原统一构建身份未改。
 
-本轮作者基线为 `7d05d0369b6793e28f0e39efaa77c0c9887479d1`，这是完成v31.7源码和远端元数据后的主线身份。本版当前远端门仍为 **PENDING**，没有填入尚不存在的v31.8源码commit、PR或CI运行号。旧v31.7的真实PR347、独立源码/主线CI与后续元数据发布，保留在[3.3远端回执](evidence/v3.3/remote-publication.json)，不计为本版CI。
+本轮作者基线为 `7d05d0369b6793e28f0e39efaa77c0c9887479d1`，这是完成v31.7源码和远端元数据后的主线身份。本版当前远端门为 **MAIN_VERIFIED**，本次填入的v31.8源码commit、PR和两个CI运行号全部来自实际回读和已通过的验收回执。旧v31.7的真实PR347、独立源码/主线CI与后续元数据发布，保留在[3.3远端回执](evidence/v3.3/remote-publication.json)，不计为本版CI。
+
+## 实际远端验收身份
+
+科学源经[PR #350](https://github.com/MurphyHoops/UEOT/pull/350)发布；[根端整合回执](../kernel/evidence/v31.8/integration-verification.json)绑定实际源码、受验主线与逐项Git blob核对。
+
+| 身份 | 实际值 |
+|---|---|
+| 科学源提交 | `d9a1858c86ca82e08ae862389b51c1ea76690c24` |
+| 科学源整树 | `6717f47ff1a062f04cb0ba54e01ebaeddac5770a` |
+| PR工作流 | [39420751354](https://github.com/MurphyHoops/UEOT/actions/runs/39420751354)，PASS |
+| 实际受验主线 | `97c7b29c1aec470be58ca34b552e9d56ad06c197` |
+| 受验主线整树 | `2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d` |
+| 主线工作流 | [39424068985](https://github.com/MurphyHoops/UEOT/actions/runs/39424068985)，PASS |
+
+根端已逐项核对89项最终发布输入、56项实际递归Core源码、三份规范正文和338项冻结发布载荷。两次整树相等为 `false`；受验输入身份与整树身份分别记录。原8799 jobs仍只对应 `a343…` 本地统一输入；PR/main各自实际build jobs为 8799/8799，来自各自成功日志，不假定等于原本地计数。
+
+实际CI日志验收直接核对39条打印源码hash、985个公理审计公名、100个运行测试名，并核对六证书及正反控的执行摘要、10组见证的269项总审计摘要。见证193/71/5的种类分拆来自已绑定的本地源码和实际见证回执；本次未下载artifact ZIP，不能称已经核验其内部逐名回执或重定向演示JSON。
+
+本次只补录当前书元数据。原本地验收、档案审查、排印和视觉回执保留原字节及原来的待远端状态，其所指旧元数据从上述科学源提交读取；当前三份元数据由新远端回执单向绑定。147项编号对象、11项原始来源、三份规范正文和实际视觉范围均未改变，也未增加Lean、程序、排印或视觉执行。后续元数据提交与上述实际CI-tested科学源及主线提交分开。
 
 ## 科学边界
 

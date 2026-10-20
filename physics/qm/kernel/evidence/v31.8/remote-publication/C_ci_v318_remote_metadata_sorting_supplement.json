@@ -1,0 +1,92 @@
+{
+  "schema": "ueot_qm.C_remote_metadata_helpers_narrow_supplement.v31.8",
+  "status": "CLEAR",
+  "checked_at_utc": "2026-10-20T12:56:52.615747+00:00",
+  "reviewer": "C",
+  "scope": "Read-only narrow supplement for exact path-order guard corrections and bound root-finalizer identity; prior whole-helper reviews remain historical and unchanged.",
+  "helpers": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_remote.py",
+      "before_sha256": "ae2dab641f77055a45f301f6a9d2883eeaa7c0118ab8d7f83949353cfd4c51ed",
+      "sha256": "631fdaf67d56916901c79827251e2e9a260b53e2e5af00e4bf85dac4f4849707",
+      "bytes": 55096,
+      "whole_file_exact_single_authorized_replacement": true,
+      "syntax_ast": "PASS",
+      "status": "CLEAR"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_book_remote.py",
+      "before_sha256": "a8cdc335d98e543a172059791613b6bae7825a4ed5d429c3e0f11fe71f01e323",
+      "sha256": "62d33804bfce39def7f5089e3ac424ba691910b528e0ac8cb454ccaaecd44f00",
+      "bytes": 45887,
+      "whole_file_exact_single_authorized_replacement": true,
+      "syntax_ast": "PASS",
+      "status": "CLEAR"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_prepare_metadata.py",
+      "before_sha256": "3ed577292a84a0891d9c08fe93a8e3107f2db2e99508ab0206ea7a35397a5c33",
+      "sha256": "998c3ba128905afc3903a53742c9c9b83ad7a3efaf5c09f7ce59cbc104939dc7",
+      "bytes": 19187,
+      "whole_file_exact_single_authorized_replacement": true,
+      "syntax_ast": "PASS",
+      "status": "CLEAR"
+    }
+  ],
+  "actual_manifest_checks": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/source-manifest.json",
+      "sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
+      "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+      "count": 89,
+      "unique": true,
+      "actual_component_order": true,
+      "plain_string_order": false,
+      "recorded_order_preserved": true
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+      "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6",
+      "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+      "count": 89,
+      "unique": true,
+      "actual_component_order": true,
+      "plain_string_order": false,
+      "recorded_order_preserved": true
+    }
+  ],
+  "actual_scientific_population": {
+    "count": 89,
+    "exact_path_membership_equal_publication": true,
+    "corrected_sorted_comparison_passes": true
+  },
+  "prior_static_reviews_preserved": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_B_remote_finalizer_review.json",
+      "sha256": "ed20f19708974f6541c16e78c681c9818c6c3b88491088ca1fa13912f4f6df41",
+      "status": "CLEAR"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_A_book_remote_helper_review.json",
+      "sha256": "ef62d8d8815dbfea77ffd707148de4a46a24ae82cf4d52d1b461dfa0012aa49f",
+      "status": "CLEAR"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_metadata_helper_review_final.json",
+      "sha256": "7fdb94b467279442d3fd894681f0560907a4615b0ac3f31179daa617066beb2e",
+      "status": "CLEAR"
+    }
+  ],
+  "findings": [
+    "B compares the same unique 89 paths using a common string sort; frozen manifest sequence and aggregate are untouched.",
+    "A enforces unique paths and the actual existing Path-component order; the original and publication aggregate checks are untouched.",
+    "The metadata payload freezer binds the actual corrected B helper SHA; all actual 13-output, context, release identity and protection gates are unchanged."
+  ],
+  "limitations": {
+    "helpers_executed_by_this_review": false,
+    "repository_writes": 0,
+    "scientific_or_CI_reexecution": false,
+    "remote_write": false,
+    "future_actual_apply_and_payload_not_inferred": true
+  }
+}

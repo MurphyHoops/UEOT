@@ -1,0 +1,531 @@
+{
+  "schema": "ueot_qm.v31_8.C.actual_remote_tree_review.v1",
+  "status": "CLEAR",
+  "started_at_utc": "2026-10-20T12:10:50.552801+00:00",
+  "compiler_invocations": 0,
+  "runtime_test_invocations": 0,
+  "remote_calls": 0,
+  "payload_gate_reexecuted": false,
+  "CI_claimed": false,
+  "artifact_ZIP_contents_claimed": false,
+  "review_helper_sha256": "9bc0820857df978aafaf5caf129c7b3a1fff5336fbf5b496cded7cc65fd1e84d",
+  "blockers": [],
+  "inputs": {
+    "actual_tree": {
+      "path": "handoff/qm318_remote_source_tree.json",
+      "sha256": "56a992b113bdd23117787e38a837de6857bbd699cc77e8599677024e6865c144",
+      "bytes": 881315
+    },
+    "baseline": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_baseline_remote_tree.json",
+      "sha256": "f03d281259820e4db31ff8c6f0133b07dcb1dceaab80b0c7762d1c5f1c776d1f",
+      "bytes": 766827
+    },
+    "inventory": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_publication_inventory.json",
+      "sha256": "b7fd0b660a112f6136f748f952be0773e5469cd04618c9a7b9bf8bff40c874e0",
+      "bytes": 151153
+    },
+    "payload_clear": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_payload_review.json",
+      "sha256": "1c88d0ed99ddea16f4a3ab5cd28eaae97c0208942edd3b24f2d3ea5247a16e56",
+      "bytes": 120068
+    },
+    "publication_manifest": {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+      "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6",
+      "bytes": 16700
+    },
+    "core": {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/evidence/v31.8/core-import-closure.json",
+      "sha256": "1c84e46286db58165ec909b8b5410e502db8ba8c0f10befc37330c9969c7a826",
+      "bytes": 26953
+    },
+    "tree_algorithm": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_payload_audit.py",
+      "sha256": "5cd3c71b921bca8b26c79d6348d9e1b2c09c11e3c87ad18654496666529d2526",
+      "bytes": 10876
+    }
+  },
+  "actual_tree_sha1": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+  "actual_bound_commit": null,
+  "commit_binding_scope": "Only the supplied actual snapshot commit field; no CI or branch existence inferred.",
+  "actual_entries": 2618,
+  "actual_leaves": 2425,
+  "actual_delta_files": 338,
+  "modified": 18,
+  "added": 320,
+  "deleted": 0,
+  "unlisted_baseline_leaves_preserved": 2087,
+  "historical_evidence_paths_preserved": 804,
+  "actual_source_bindings": [
+    {
+      "path": ".github/workflows/ueot-qm.yml",
+      "sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e",
+      "git_blob_sha1": "862875782825e96dc3e44aa63a38b46f36f475dd"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
+      "sha256": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a",
+      "git_blob_sha1": "d8a950be02ce6a1d6c5c5bcabf956dc2dda2809b"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Adaptive.lean",
+      "sha256": "b5b9b717324c4d04df169e57c552e976b467609eff48fabea6db676f7f7ecad8",
+      "git_blob_sha1": "64ec0dc9287575322b91ed3a5794ed6220d64dc0"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Basic.lean",
+      "sha256": "db38c8dc2b873d5c784460146badcca889a37f2daf23c73bfaadce67eaf0d16e",
+      "git_blob_sha1": "53eae67f8b7eecdf414304cc8f0b26acfae8b5b3"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Cesaro.lean",
+      "sha256": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b",
+      "git_blob_sha1": "61d6ba77099ca384d7f617f16a9e05f58c56f26b"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean",
+      "sha256": "200996515d4a4cfdf066b844e8d4904ed52f380f876feca162d6dc6f1f26cf80",
+      "git_blob_sha1": "d63bf9bb4c2a3b42df25af92cbe579f6614f028d"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+      "sha256": "fed2036fce7ca658a74b7457316f6950727924c0f8abc0931a5d5f7ffe33bbb5",
+      "git_blob_sha1": "2f048581bdf377fa3b0f7156740c0dbe02de1dc0"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ComplexLocalTomography.lean",
+      "sha256": "48b9867d67635ca9a33d8cb89a43f38c8bec1369111c1a00960675dad8e91d4d",
+      "git_blob_sha1": "af93fc8bc5e74882d4a85e83b9ea5a5bcf429845"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean",
+      "sha256": "53d957159fa6cf743c4e146e7d146385af81b7ec9c5a12204f90e488d870bce4",
+      "git_blob_sha1": "8ea6a79d72f59d2b72ac77d11175cb9ad89e0127"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Effects.lean",
+      "sha256": "3346f36a3d467cb7b52d346dfafa4e49828e39a3ee02e29ac12e6783473eef23",
+      "git_blob_sha1": "aa1e193798c05bb5c282d820059127a4ea233b6a"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Exact.lean",
+      "sha256": "1160e084a3761179cf2a2fb8df9246d263088ecb28f54d6d5fe1a86f179eb915",
+      "git_blob_sha1": "f0e94f344bbbc72fad39749b882bc11c78e6a78d"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/ExactCertificate.lean",
+      "sha256": "f6d6be579ccd9653ba373738408dd48f9220dc26fd733521d862374e0b8a6406",
+      "git_blob_sha1": "eace00215a1aecf147a2720457658d17dfd56739"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean",
+      "sha256": "cd42c574bf962b10c4f796c03bcf49d4fb61184b7667512e3ec82440a9bc3705",
+      "git_blob_sha1": "a98e9568ae596aa0da9b8a809c5b447d5578004e"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/HistoryChannels.lean",
+      "sha256": "04864b526fabe51d60efd776355fa33086781f30e6956698732edacf78571b5c",
+      "git_blob_sha1": "c6814f44d799145ac7e6b7ef324d3fed900dceba"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Instrument.lean",
+      "sha256": "aa63084bec63476ffd73a54f1c8b53fab406a8fd15cc678bd2d34d30a5820b80",
+      "git_blob_sha1": "bc5b408c69a34371fac5e8fe6e43815c692c07a7"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Mixture.lean",
+      "sha256": "520d432d9d055b3260c2f90ea8ad68f93d14d4acae51e32faa28f49bdd3d601a",
+      "git_blob_sha1": "741f36f6af643ede1fa91b4fdc3c0e00d0d13b1c"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Observables.lean",
+      "sha256": "f3067163eff01e90e06467e3505d895979bf09ceec494046e791cd293189bd42",
+      "git_blob_sha1": "83511f3913d92de96f5bccc206526d987a2f9efd"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Operational.lean",
+      "sha256": "0bae3c96b1facca3f51fe9189a6e05efeb1b532c29cb5854d860f76878162012",
+      "git_blob_sha1": "0f322a5dafee3e86871656916c09e2323d9c552e"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/OperationalSystems.lean",
+      "sha256": "cb764474361fa833390fbe33e3d1b363a05c78639e0819d5d5de4648c1b5b55e",
+      "git_blob_sha1": "8519d513d99416abc407d22c535beb96113036e5"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
+      "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8",
+      "git_blob_sha1": "31539afbac73940c64cba39a271ea0babf75cc8e"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+      "sha256": "680e8e42f6a25a5540dd485cf2c00a5a4e937c1cc639aa8d5340ecc3fd483463",
+      "git_blob_sha1": "1d3cfe48c20ae0fc78eac595509a398da41aebd0"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumDoob.lean",
+      "sha256": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+      "git_blob_sha1": "c1174a338230493475548e1367c36713d2cacc90"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean",
+      "sha256": "ee227ea4dcba6e9f2dafe33df614c382610f7468596d923489fc63e76a1556e3",
+      "git_blob_sha1": "3886d88000f88023000fc4ea0edc2670db9d8057"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumDoobModel.lean",
+      "sha256": "cf5df67eb83e3c14e20699947a1c2e922af53a19c6483d40b788e234c9e8b5f3",
+      "git_blob_sha1": "9b233e7d9e55d9aebecf0bbac9157159284c01b9"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumPurification.lean",
+      "sha256": "fb0692ed93c14aa7182cb09b3e205060f493f005672d16a69fc6e8da59ca5b6d",
+      "git_blob_sha1": "b095715bbfff5864d66fbee87b44cf21d3581a70"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/QuantumSeparation.lean",
+      "sha256": "c554f5c886f1c3f22c5ea543e0e818548697d88532419659b5aecb5095157357",
+      "git_blob_sha1": "b0a5bc24f64196d418545e8ea5662778e2f73d5e"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Ragged.lean",
+      "sha256": "a3435d73cd766b55e6f504452de9fe3193ec2266e6cae3772f28cfb4158a718f",
+      "git_blob_sha1": "525db38abe435261c32c1d10b82688e27f9c248d"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/RealLocalTomography.lean",
+      "sha256": "76dfea1aa3ad7f16e699a8529bde5f22120badac9a1db60f0265eaef4eeddc9e",
+      "git_blob_sha1": "5f9db10b3249ea987e3585ae4b0a9db1d6427cc4"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/RecordProbability.lean",
+      "sha256": "c9dca7b03588f7359fbbea934c1c9b074af489f93ca061bed8a82239960edcf2",
+      "git_blob_sha1": "2f8dbbeae4acd558d8493d7cefb69630f2fbc859"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/RectangularChannels.lean",
+      "sha256": "b097d5cb5eb5b141d051d8f65c7aff31c0d3a1b2f8d688548d8edf74f6a7a9a7",
+      "git_blob_sha1": "6415db68e0c12b637fbd0631480d8fbb4ed67203"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Selector.lean",
+      "sha256": "0aa261fcd171e8985889067bb348abe6d84e486be1b918a3cdd6d3e951fdcbca",
+      "git_blob_sha1": "11218a8ddc6ca47e8f1ba4ce9d39965c9bbb08e0"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Spectrum.lean",
+      "sha256": "1846371fda564385c799282bd5f2afcd7637ac3b3dcffb2b21e98734266c2b6d",
+      "git_blob_sha1": "da802c2937e658fb2b76406f9abb8f2cf2a413cf"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Stability.lean",
+      "sha256": "de253ab45a4e45e2c8457dcbf3ad0c5cfd553e13a3a1dbc791f7d59eb2b5d389",
+      "git_blob_sha1": "ca27d471da01ee27dfdbf972682f93ff5fc3eada"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Survival.lean",
+      "sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f",
+      "git_blob_sha1": "5d272423a36cdc78b6ae3348b8cba116124f0a4d"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Transport.lean",
+      "sha256": "e117c7904b6f8c755d5a35c25d2398fdbf727e4d90987096093e2b6423287f84",
+      "git_blob_sha1": "4aa2771ac58c7370c6e8c4fcd5d753edf3f03752"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM/Weighted.lean",
+      "sha256": "2910a80acb1a73c32bae7898773845b7db9cad7ea74b102ad6e51a473dc86b33",
+      "git_blob_sha1": "84b60753f713ffd842c45997e77b5664b7cef57b"
+    },
+    {
+      "path": "formalization/ueot-qm/UEOTQM.lean",
+      "sha256": "9447e944a0dbc1f2636460d187c1d20e6c7323228448e31a4dac4d8a4c57f2a0",
+      "git_blob_sha1": "06a589a947edb8a671252f8323305bcea2ef4be1"
+    },
+    {
+      "path": "formalization/ueot-qm/lake-manifest.json",
+      "sha256": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+      "git_blob_sha1": "2820b443091f4161df2d83fa89e7564ce60e7441"
+    },
+    {
+      "path": "formalization/ueot-qm/lakefile.lean",
+      "sha256": "ad870bfd6d91841f30d37e90a2738a69b35696f43709dbf788189874b1c6b805",
+      "git_blob_sha1": "7440e5c2fcfa02b1e98cec3d2010306c39e665b8"
+    },
+    {
+      "path": "formalization/ueot-qm/lean-toolchain",
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+      "git_blob_sha1": "a8afa7d1b02d96f0671eba854a8dc4b416beb473"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/AxiomAudit.lean",
+      "sha256": "8afdb328242b4ea9ff89e8fc19f09bb988deb650297ddef48168105399184d65",
+      "git_blob_sha1": "b11e6c38d0aab0679d416eac4d323f452fcf0bc3"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/check_axioms.py",
+      "sha256": "5ee27622fdf8200f34945abf8354ad5ba3598b0adfba4b206d9e9368cf9aec4a",
+      "git_blob_sha1": "a3726750346947325476f4b3f787aa3017f7bb6c"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/check_dependencies.py",
+      "sha256": "7c44ebafdda00711137faeb1b09cdb26694a82d83f0ea1173de17a370de5f996",
+      "git_blob_sha1": "de5eefd87ecfd4c1689029d75115a608222e120a"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/install_lean.sh",
+      "sha256": "8984f32c56f4b66722c9c4f0a55a7fa5ccd79fb853359793f31d401bb36a6926",
+      "git_blob_sha1": "0431266ae76c6e66e262ce76151589e82f3c01fe"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/record_source.py",
+      "sha256": "be184e05f63b2fec1a879f5c32f3b053fb94b5a39e4ffab5bee3a6b03e3eb14f",
+      "git_blob_sha1": "565473ae14547fcaa5ceba9c175314d2818ac220"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+      "sha256": "69e7d71b41dc45dbdfbf6bbaeb8e6c9a68b96c234c50de392c7c0703835e1cbb",
+      "git_blob_sha1": "8df492f61bc52c1c3e48aced6227976d81537395"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/ActionRecordBudgetExamples.lean",
+      "sha256": "169eca4505e33561d7c364267ae206c0674a36e9fe61393368b4b4d43c9d039e",
+      "git_blob_sha1": "d707a347385c552c88599d03c5776d52b6cbbc11"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "sha256": "edd43b953001002b2f2aaa44a424da0e1beb0b5a0201ff7a6fba54bb405ce8e9",
+      "git_blob_sha1": "32ee7d2d7ce032e8d6333d55be551786075c45a9"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/MixtureExamples.lean",
+      "sha256": "11e2802dcda88a4a752f300664ebea4c31d95b33a05dc4538e631184b6622ffd",
+      "git_blob_sha1": "029ba3a85d2854faffed3a3a35b95bec4bdc9be9"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/PurificationUniquenessExamples.lean",
+      "sha256": "e5b4420e310d8250b88792d7efdd6f74b68975dc287a5128f9baedf3dadede3a",
+      "git_blob_sha1": "0d8f7743ea4ec770afa5e2f921fe8080dde46401"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/QuantumDoobDynamicsExamples.lean",
+      "sha256": "40d1af7c59ccbca3902b84004f3d9ec7ba29f690a1789879f1c3e5fd351cf2a6",
+      "git_blob_sha1": "d272a28d2edcbd1a8178562f8b64cfead9005f5c"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/QuantumDoobExamples.lean",
+      "sha256": "5fbe70aca27378fead77fdb52658bb048463eff3b1e7e1299a43e5f40e2d456a",
+      "git_blob_sha1": "b38830c14db68ce1f84a9d954e7e6793a33e23f1"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/QuantumPurificationExamples.lean",
+      "sha256": "57b764a8d9b7787509a0f8a5e92f04a86abc5f3f4db58f3c441be2e29a1c3e34",
+      "git_blob_sha1": "5b9e10b0ca6c8243abb3f3bd1248f71b2fce9937"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/QuantumSeparationExamples.lean",
+      "sha256": "43a4cfc3116e9444defc90f7ee65be2d7e8e31a7d24d5423edd63b894a234b08",
+      "git_blob_sha1": "08d09aef4b7d610f1063d6022d540173a2a7fbfa"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/RealTomographyTwoRebit.lean",
+      "sha256": "badfe81da1b3ddfa6c69927486d98fcf5ba48b115098de5838413dadfa0bfe15",
+      "git_blob_sha1": "58e6dcb1cbb9decfde352fe00580b1b7d1f1c707"
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/witnesses/SurvivalTwoState.lean",
+      "sha256": "075e56765dc9c2c4cb53fc6e6411cd2e670906eed1e6f46b0e126f35e186b4c1",
+      "git_blob_sha1": "db9788ffbd3c466814895f4ac0ecf78b132639a1"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/d1.lean",
+      "sha256": "47aa82621e7bb6877ca10b83888671022b7ccd89ed9452064c2ccb2630a386f6",
+      "git_blob_sha1": "f1cf0fda557cda26f0ef8db87de84db05a2c14a2"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/d1.manifest.json",
+      "sha256": "b11d8c408eb0cdf0c56311db2c1199981764e0e414995c8e4632f8e2199c5553",
+      "git_blob_sha1": "677cdeb80ca71a05c94b36da366f564ffc4e4eaa"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/d4.lean",
+      "sha256": "a0ba3143c082e2af3868e7e02b82aaf06b3d824e7a967c37974bac9573a55597",
+      "git_blob_sha1": "224f1cfc455d40bd60be5c0a1bb530565032700b"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/d4.manifest.json",
+      "sha256": "ca624feb2dcfdf831ba5995cff4b400eb07ac41fcb9c5d0d1483ceca119602ae",
+      "git_blob_sha1": "75d7e156b6faef50aac3a1205f92f929706c4788"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/exports.json",
+      "sha256": "12a9434554b839833c907543157dc04a3b7fb0f7f0b63762119359ac728666ec",
+      "git_blob_sha1": "6de6238279ede5733b749ae566b6325f6010965f"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/hsz.lean",
+      "sha256": "21bf66a5f82638dfd92d2d6b2baddf7778210c6d64e2907ed173f72b842c1e75",
+      "git_blob_sha1": "89e89d6c748c79e5b102fef99edb3f2f138c30ae"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/hsz.manifest.json",
+      "sha256": "028936100a3527765db60c066c219c5ebc7eb7e3757b8463fa9855cee0cee00c",
+      "git_blob_sha1": "3b27cdf67d12c2212b6bd1accba3f871fa68218c"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/hz.lean",
+      "sha256": "e49193f5a39afa46e85e2fa9cb147d886475a51a95ced78bac94dad8f4c41939",
+      "git_blob_sha1": "075defef88cb69ff753836b0af5dda3c000aebe1"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/hz.manifest.json",
+      "sha256": "2d7111af0f88b862b3d5491a6f0a5ec487c8755fcef9483ef0bb920441a7a3cf",
+      "git_blob_sha1": "92975e856152336af24c167187768c289be91a4b"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/ragged.lean",
+      "sha256": "47537f91789a9bd1604bd87fbc9ad3fb69df1d2466f02591c94ad6600c8a36a0",
+      "git_blob_sha1": "acd3b20be1496099051cb65eb4490267d8a415f7"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/ragged.manifest.json",
+      "sha256": "ef441741ef535130c83e71bafd0a726bf7c4482bd8f6c59bf69017cf3fed7fca",
+      "git_blob_sha1": "d08cb446e5c87c43b4a1bf81da57b4d0dcd38fad"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/z.lean",
+      "sha256": "1910afc419c2388f0c79e001a8cf91134c4c40e71c2859d7eb6adf261e1ac647",
+      "git_blob_sha1": "9abb114f1e7fcfea569163a4c2c8209ad6aa3373"
+    },
+    {
+      "path": "physics/qm/kernel/certificates/v31.3/z.manifest.json",
+      "sha256": "84e859a98fa96ab3b92f151b17d42d0e468579226927cabc0e1fed1d58db13a9",
+      "git_blob_sha1": "22fb1eae32d9fc9cdbfd4a0b0038071002b87f20"
+    },
+    {
+      "path": "physics/qm/kernel/demo.py",
+      "sha256": "87e376df763f7ac1b4db913073ef51cdc528c904650b73afcaff9cdb763ce975",
+      "git_blob_sha1": "da9a1e9df1a55766ef82b1ddea4bbf57cd12309b"
+    },
+    {
+      "path": "physics/qm/kernel/demo_v312.py",
+      "sha256": "97bc5f44c82e9f0e28472d10bb7c78cca2f96594a6750aa5b73caca94afba06e",
+      "git_blob_sha1": "6076b679f8bead071e488bedfa79d29ce69aaf4b"
+    },
+    {
+      "path": "physics/qm/kernel/demo_v313.py",
+      "sha256": "d97421a9003bf085dc5f72cd9b297afe1a93b2a2fb68797b214e405c3f85c378",
+      "git_blob_sha1": "65020d4d516f14eeb102ae040b09a0d47ad98f5d"
+    },
+    {
+      "path": "physics/qm/kernel/demo_v315.py",
+      "sha256": "0c9fd677c56a9506c37149d6494c473a73e233361a48e61e063289b79957336e",
+      "git_blob_sha1": "cd96498478c9d48246f108552b07f9be984b4ca5"
+    },
+    {
+      "path": "physics/qm/kernel/tests/test_finite_dynamics.py",
+      "sha256": "781e3b9267578bc32b89dc0100e88d43500d7eb7a1828db3f9aa716d384aa7ca",
+      "git_blob_sha1": "6085fcf45c09f908db57d44e5409f5b2deb9b098"
+    },
+    {
+      "path": "physics/qm/kernel/tests/test_kernel.py",
+      "sha256": "479e4457e19094a78ddd759a1e9016b5ee9ad05af7741bd62b1780fc0d722108",
+      "git_blob_sha1": "c58ff0bf0b9aff732634b0e0f2392cb4281a66a5"
+    },
+    {
+      "path": "physics/qm/kernel/tests/test_lean_export.py",
+      "sha256": "e65eecf84e2b1052c3634d4e7bb274b6cd027f397ab2c2d59c8c6943f23a3446",
+      "git_blob_sha1": "89c5fc1c07b764852b36071ad93a4dd906583998"
+    },
+    {
+      "path": "physics/qm/kernel/tests/test_representation_certificate.py",
+      "sha256": "4ce3b59cec974923469db4a256fe4db212853497327c6e108fe99525f7bbaa42",
+      "git_blob_sha1": "b847d5df9a19b3e9bfc60b6b48b97f6a73056ab0"
+    },
+    {
+      "path": "physics/qm/kernel/tests/test_spectrum.py",
+      "sha256": "686e5783a31f4b1409263e6ec941a2ccd1f07cb0615ffa62905393c5941c10d7",
+      "git_blob_sha1": "4ed3c48065b4cb31479b818f9447b56347d5f7e4"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/__init__.py",
+      "sha256": "df01792238c956b1567bfd0e27ecde9286e2acd9973ddd395b555bac9326eff5",
+      "git_blob_sha1": "cb2c7cd7087cc3472989c8b5d2f1a442e6b0622f"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/algebra.py",
+      "sha256": "1a5ce84eb0ce42d16c3e7460dc8af88b0923d47393d681ffd821251ed9397653",
+      "git_blob_sha1": "492dfb11f8c0a5418298fe4f4a44f9c88b5ccc62"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/certificates.py",
+      "sha256": "b78421e91a72fa875fa9bcb0a6939752812f1399f97e1e0665cd2d7effbacc3f",
+      "git_blob_sha1": "ae78e2fb858619e4fbc89d036a6994938cb8c2e0"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/finite_dynamics.py",
+      "sha256": "5f7f78b37e67fd1dc0b1c856f474850e50e4e664b806ddd9adb54fb9cc8429a6",
+      "git_blob_sha1": "4487b0d630c8f1a6b6f0e552439669286d56258b"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/instrument.py",
+      "sha256": "52cdbccd01bcb7dd231f33fa48dabb3ca717fea7fdcca47982f7e8eb04692757",
+      "git_blob_sha1": "c88158f4dc341e1ecdfb5031fe38137afdb1dcf6"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/lean_export.py",
+      "sha256": "f639aa5941f89811b65e728b0c43083814fff0ac2664a009c8d48aaa517cfb4a",
+      "git_blob_sha1": "77126811d12bc87b786a1bb742b85ab701c9c501"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/predictive.py",
+      "sha256": "5eacaae2ba7c8b2d18b86734feed8cbd73744665fbfc4059582c0d70ee10844b",
+      "git_blob_sha1": "da1f8a2d0bb089a6a2eca8a2130305a3017e48cc"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/representation_certificate.py",
+      "sha256": "2671790d364aabfbb937f44ae14dbdc82708caf44c72e704315e1c5af92d95c0",
+      "git_blob_sha1": "3807995f0d09fad7cffa8ee5aba21edafcddbfde"
+    },
+    {
+      "path": "physics/qm/kernel/ueot_qm/spectrum.py",
+      "sha256": "ae44f2a40058ef650f53810dfeab9f0de53f02c986b803561e79a7182224c2b7",
+      "git_blob_sha1": "88f8544f8f95c02eaa9308019eb1efeee5c1ca8f"
+    },
+    {
+      "path": "physics/qm/kernel/verify_kernel.py",
+      "sha256": "3cdc1583f914763bcead1787c6dee74f63e96787095219ddd7cad2ea2eb27c2b",
+      "git_blob_sha1": "b3c390c97326ad91364c16be0da9d8d1b9423680"
+    },
+    {
+      "path": "physics/qm/kernel/verify_lean_exports.py",
+      "sha256": "6d2c5504a2f625441f6fd1b2eb5adf13dc52acb8a574f862f11d85ee880564dd",
+      "git_blob_sha1": "d465ca8e14bd0bab81c5bb47eb56b8dcb91e932b"
+    }
+  ],
+  "final_publication_source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+  "recursive_Core_unchanged": 56,
+  "canonical": {
+    "UEOT_PHYSICS.md": {
+      "sha256": "868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a",
+      "git_blob_sha1": "5ca527a68b27df49f9c1c6119484d5064c4824a0",
+      "bytes": 579172
+    },
+    "UEOT_PHYSICS.pdf": {
+      "sha256": "24b61ee3dd8d935afd47386460b352c40d4373e8328e2b4cfcfb8d8c460c60f0",
+      "git_blob_sha1": "6a44ac4e3dfc7ada0355e4316f8cc91ee6603bd6",
+      "bytes": 1181847
+    },
+    "UEOT_PHYSICS.tex": {
+      "sha256": "2ff9b64cc69a065f2a2a1b96c836c4c329bb982b25f17e41d751aefa94284599",
+      "git_blob_sha1": "450af24896fefa6bd6bedb1b648b3435418e6e3c",
+      "bytes": 683527
+    }
+  },
+  "every_nested_tree_hash_reconstructed": true,
+  "whole_actual_tree_equals_verified_frozen_union": true,
+  "inputs_unchanged_during_review": true,
+  "finished_at_utc": "2026-10-20T12:10:53.958723+00:00"
+}

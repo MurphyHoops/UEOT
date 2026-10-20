@@ -1,0 +1,66 @@
+{
+  "schema": "ueot_qm.v31_8.C.upload_helper_static_review.v1",
+  "status": "CLEAR",
+  "recorded_at_utc": "2026-10-20T11:32:55.333489+00:00",
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_prepare_upload.py",
+    "sha256": "62894cac01e42a2c79bac0b9e665ed59b607b06936ad3544bff9de564aac4a89",
+    "bytes": 10509
+  },
+  "execution_status": "STATIC_REVIEW_ONLY_PREPARE_UPLOAD_NOT_EXECUTED_BY_C",
+  "baseline_input": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_baseline_remote_tree.json",
+    "sha256": "f03d281259820e4db31ff8c6f0133b07dcb1dceaab80b0c7762d1c5f1c776d1f",
+    "commit": "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
+    "tree": "c527f8481878d1e0b839e93695c0d4ee5edf09f4",
+    "truncated": false,
+    "tree_entries": 2272,
+    "blob_leaves": 2105
+  },
+  "checks": {
+    "write_scope": "Produces only handoff upload inventory/payload files; no repository mutation, build, remote write, commit, PR or CI.",
+    "candidate_scope": "Only formalization/ueot-qm and physics/qm paths selected. Tracked edits outside that scope fail; actual workflow remains inherited and is separately part of89 accepted source binding.",
+    "existing_paths": "Exactly19 explicit current-release existing-path allowlist entries. An existing changed path outside this set blocks; historical QM bytes cannot be silently rewritten.",
+    "new_paths": "Exactly6 public Lean modules and3 witnesses allowed by name; status ledger/active/research report by exact names; other new files only under evidence/v31.8 or book/evidence/v3.4.",
+    "local_product_exclusion": "Lake products, Python caches, package runtime logs and compiled extensions excluded. Symlink leaves rejected; executable .py helpers under kernel evidence rejected.",
+    "binary_serialization": "UTF8 bytes roundtrip as text; undecodable PDF/gzip accepted only for .pdf/.gz suffixes and encoded with standard base64. All final out entries redecoded with validate=True or UTF8 encode and compared to actual raw bytes, size, SHA256 and Git blob SHA1.",
+    "accepted_source_binding": "All89 final publication rows exactly selected by actual source recorder, fixed054f aggregate, serializedpayload or unchangedbaselineblob identity; immutable originala343/8799 receipt and singleBdocword bridge separately checked.",
+    "canonical_binding": "Resolved prior gap: MD/PDF/TeX now each matches actual PDF-build hash AND actual serialized out bytes/metadata SHA/size/Git blob or inherited baselineblob. Final all-out reread runs after all dependent gates.",
+    "core_and_history": "All56 actualCore source hashes and baselineGit blobs must match and cannot appear in delta. Unchanged/excluded base leaves are absent from delta and must remain present when root applies the exact delta to the baseline tree.",
+    "book_gate_inputs": "Actual3passesexit0, emptylayoutwarnings, structure63chapters147results and visual/MD/PDF bound hashes required; this does not invent visual inspection.",
+    "failure_behavior": "Unexpected changes, unsafe binary suffix, missingsource, brokenraw/base64 binding, Core drift, book mismatch or late mutation blocks before writing inventory/payload."
+  },
+  "current_allowed_paths": [
+    "formalization/ueot-qm/README.md",
+    "formalization/ueot-qm/UEOTQM.lean",
+    "formalization/ueot-qm/scripts/AxiomAudit.lean",
+    "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+    "physics/qm/README.md",
+    "physics/qm/ROADMAP.md",
+    "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+    "physics/qm/book/CHAPTER_DOSSIER.json",
+    "physics/qm/book/README.md",
+    "physics/qm/book/SOURCE_MANIFEST.json",
+    "physics/qm/book/UEOT_PHYSICS.md",
+    "physics/qm/book/UEOT_PHYSICS.pdf",
+    "physics/qm/book/UEOT_PHYSICS.tex",
+    "physics/qm/book/build/build_pdf.py",
+    "physics/qm/book/build/header.tex",
+    "physics/qm/book/build/verify_book.py",
+    "physics/qm/kernel/README.md",
+    "physics/qm/status/ACTIVE_RESEARCH_v31.8.json",
+    "physics/qm/status/CURRENT.json"
+  ],
+  "resolved_findings": [
+    {
+      "finding": "Canonical final build hashes were not compared to previously serialized payload bytes",
+      "resolution": "Explicit canonical serialized/current/blob comparison plus a final all-payload readback added."
+    }
+  ],
+  "followup_required": "Independent concrete frozen payload audit and actual remote-tree union/protection review. Applying entries to a remote Git tree is performed by root and is not a completed action of this helper.",
+  "blockers": [],
+  "helper_invocations": 0,
+  "compiler_invocations": 0,
+  "runtime_test_invocations": 0,
+  "remote_calls": 0
+}

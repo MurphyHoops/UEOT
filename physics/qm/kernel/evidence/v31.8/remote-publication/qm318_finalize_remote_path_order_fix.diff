@@ -1,0 +1,11 @@
+--- qm318_finalize_remote_before_path_order_fix.py.txt
++++ qm318_finalize_remote.py
+@@ -290,7 +290,7 @@
+         require(all(t[rel]["sha"] == entry["git_blob_sha"] and t[rel]["mode"] == entry["mode"] for t in trees.values()),
+                 "Actual source/main publication blob or mode mismatch: " + rel)
+         file_records[rel] = {k: entry[k] for k in ("path", "sha256", "bytes", "git_blob_sha", "mode")}
+-    require(actual_scientific_paths(plan.root) == [s["path"] for s in publication["sources"]],
++    require(actual_scientific_paths(plan.root) == sorted(s["path"] for s in publication["sources"]),
+             "Current scientific input population differs from the frozen 89 publication paths")
+     matched = []
+     for item in publication["sources"]:

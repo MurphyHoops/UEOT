@@ -1,0 +1,50 @@
+{
+  "schema": "ueot_physics.remote_helper_path_order_correction.v3.4",
+  "status": "CORRECTED_STATIC_PENDING_INDEPENDENT_REVIEW",
+  "recorded_at_utc": "2026-10-20T12:54:27.151682+00:00",
+  "scope": "Only the uniqueness/order guard and its diagnostic are corrected to match actual Path-component ordering. Frozen manifest order and source aggregates remain exact; no scientific or publication bytes change.",
+  "before_helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_book_remote_before_path_order_fix.py.txt",
+    "bytes": 45783,
+    "sha256": "a8cdc335d98e543a172059791613b6bae7825a4ed5d429c3e0f11fe71f01e323"
+  },
+  "current_helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_finalize_book_remote.py",
+    "bytes": 45887,
+    "sha256": "62d33804bfce39def7f5089e3ac424ba691910b528e0ac8cb454ccaaecd44f00"
+  },
+  "exact_diff": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_book_remote_path_order_fix.diff",
+    "bytes": 876,
+    "sha256": "32369d5c925b1a0fd43a1852ccd7a49968fb753e6623e4ccb3c657c1cbc64b18"
+  },
+  "whole_file_equals_single_authorized_guard_replacement": true,
+  "old_static_reviews_preserved": true,
+  "actual_manifest_readback": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/source-manifest.json",
+      "bytes": 16700,
+      "sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
+      "source_count": 89,
+      "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+      "unique": true,
+      "path_component_order_matches": true,
+      "plain_string_order_matches": false
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
+      "bytes": 16700,
+      "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6",
+      "source_count": 89,
+      "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
+      "unique": true,
+      "path_component_order_matches": true,
+      "plain_string_order_matches": false
+    }
+  ],
+  "ast_pass": true,
+  "new_helper_invocations": 0,
+  "repository_writes": 0,
+  "new_Lean_runtime_PDF_visual_invocations": 0,
+  "reason": "Actual source recorder orders Path components; lexicographic full-string order places UEOTQM.lean before its UEOTQM/ children and is a distinct order."
+}

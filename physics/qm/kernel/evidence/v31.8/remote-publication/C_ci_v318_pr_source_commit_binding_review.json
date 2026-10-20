@@ -1,0 +1,54 @@
+{
+  "schema": "ueot_qm.C_actual_source_commit_ci_binding.v31.8",
+  "status": "CLEAR",
+  "checked_at_utc": "2026-10-20T12:30:52.104642+00:00",
+  "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+  "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+  "parent_commit": "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
+  "pull_request": 350,
+  "run_id": 39420751354,
+  "actual_ci_review": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_pr_39420751354_review.json",
+    "sha256": "74a201450764f90089c3c52081be737c0b02d2265941bed30ec4b158caf2f249"
+  },
+  "inputs": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_source_commit_readback.json",
+      "bytes": 3926,
+      "sha256": "a2e7a81fc65542847995e0b2f6b72d0bae0d8c15d98e05876c2c4551f8994dc1"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_source_tree_commit_bound.json",
+      "bytes": 881371,
+      "sha256": "2cf8e72b7d15e480c82d875226f4e271fec8e694a7af03058d5e610d69b8fda1"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm318_remote_source_tree.json",
+      "bytes": 881315,
+      "sha256": "56a992b113bdd23117787e38a837de6857bbd699cc77e8599677024e6865c144"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_remote_tree_review.json",
+      "bytes": 23835,
+      "sha256": "c6f041796a57f8d29fad3df5125121aa37fa2a5d2b6bf60c0cef0dcb4d451893"
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_pr_39420751354_review.json",
+      "bytes": 10144,
+      "sha256": "74a201450764f90089c3c52081be737c0b02d2265941bed30ec4b158caf2f249"
+    }
+  ],
+  "checks": {
+    "actual_Git_commit_API_response_consistent": true,
+    "actual_commit_to_tree_and_parent_binding": true,
+    "bound_tree_equal_original_clear_tree_except_commit_field": true,
+    "actual_CI_run_and_both_checkout_bound_by_prior42_checks": true,
+    "inputs_stable": true
+  },
+  "scope": "Independent readback of saved actual Git commit tool response and exact commit-bound tree; no Git or network action. Combined with C actual PR CI42-check CLEAR. No signature verification or metadata commit identity is inferred.",
+  "compiler_invocations": 0,
+  "runtime_test_invocations": 0,
+  "remote_calls": 0,
+  "root_CI_parser_reexecuted": false,
+  "repository_writes": 0
+}

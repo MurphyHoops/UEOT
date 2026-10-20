@@ -1,0 +1,38 @@
+{
+  "schema": "ueot_qm.C_metadata_payload_helper_static_review.v31.8",
+  "status": "BLOCK_NARROW_METADATA_BYTE_BINDING_GAP",
+  "checked_at_utc": "2026-10-20T12:34:18.489865+00:00",
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm318_prepare_metadata.py",
+    "sha256": "91d321d61976eaac50fb4ed0603103f85b8cbd722ca95d9c7d454a4f4ffa196c",
+    "bytes": 16691
+  },
+  "snapshot": "/workspace/scratch/f11b4261e187/handoff/C_ci_v318_prepare_metadata_initial.py.txt",
+  "stage": "STATIC_NOT_EXECUTED",
+  "passed_checks": [
+    "Local HEAD and headtree must equal actual independently CI-tested main, preserving source6717 versus main8320 identity distinction.",
+    "Actual338frozeninventory and source89/Core56/canonical3 unchanged; oldevidence byte-Gitblob match required.",
+    "Only12specified existingmetadata,5named newreceipts and2specific newevidence directories allowed; science/binary extensions andsymlinks rejected.",
+    "Actual six Core#349 changes are individually checked in testedmainbase and local files, excluded from output. Other main leaves remain inherited from exact base_tree.",
+    "A3updatedbookmetadata and actualroot/CI receipt byte bindings read; sourcecommit12localmetadata checkpoints resolved by actualGitblob via read-only cat-file.",
+    "Current state/schema producer-consumer fields match A/B finalizers; exact originala343/8799 and final054f roles preserved.",
+    "SerializationsuseexactUTF8roundtrip; allreadinputs rechecked before writing payload+inventory to handoff. No build/CI/git mutation or repo output."
+  ],
+  "blocking_findings": [
+    {
+      "id": "B_CURRENT_METADATA_NOT_BOUND_TO_ACTUAL_APPLY_OUTPUT",
+      "lines": [
+        214,
+        230
+      ],
+      "observation": "B nine updated rootmetadata files are not matched to actual finalizer apply output hashes; only selected state fields and first54 historical claimobjects are checked. The16 new mathematical claimobjects can be altered between actual B apply and first helper read without this helper detecting the difference. In contrast, A updated3metadata are byte-bound through its actual terminalreceipt.",
+      "required_narrow_fix": "Read actual B apply result status MAIN_VERIFIED_METADATA_APPLIED / completed_repository_writes13 / updated13 unique records, then require current bytes/size/SHA for every recorded9metadata+4newrootreceipt. Treat this actual apply receipt as another stable input; no fake context or scientific reexecution."
+    }
+  ],
+  "new_lean_invocations": 0,
+  "new_runtime_tests": 0,
+  "root_CI_parser_reexecuted": false,
+  "remote_calls": 0,
+  "repository_writes": 0,
+  "limitation": "This is a narrow prepared-helper static finding, not a project proof failure or a failed actualCI run. Root has been told the exact byte-binding repair; actual metadata freeze remains unexecuted."
+}

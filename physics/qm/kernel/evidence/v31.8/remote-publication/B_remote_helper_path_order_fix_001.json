@@ -1,0 +1,28 @@
+{
+  "schema": "ueot_qm.B_remote_helper_path_order_fix.v31.8",
+  "status": "ACTUAL_ONE_LINE_HELPER_FIX_AST_PASS_AWAITING_INDEPENDENT_REVIEW",
+  "checked_at_utc": "2026-10-20T12:54:24.747428+00:00",
+  "authorization": "Root explicitly authorized exactly one population-comparison line after the actual dryrun_001 refusal; no scientific input or recorded manifest order is changed.",
+  "before": {
+    "path": "handoff/qm318_finalize_remote_before_path_order_fix.py.txt",
+    "sha256": "ae2dab641f77055a45f301f6a9d2883eeaa7c0118ab8d7f83949353cfd4c51ed",
+    "bytes": 55090
+  },
+  "after": {
+    "path": "handoff/qm318_finalize_remote.py",
+    "sha256": "631fdaf67d56916901c79827251e2e9a260b53e2e5af00e4bf85dac4f4849707",
+    "bytes": 55096
+  },
+  "diff": {
+    "path": "handoff/qm318_finalize_remote_path_order_fix.diff",
+    "sha256": "a99921580be00ee087e4ac820b154a11e6bccdc90130e9379d1aa5956795561f",
+    "bytes": 765
+  },
+  "actual_cause": "Both populations contain exactly the same 89 unique paths. The frozen source manifest is in pathlib.Path order while the actual population function returns string order. Canonicalize only the comparison list; original manifest order/aggregate and per-file byte bindings remain enforced.",
+  "syntax_ast": "PASS",
+  "preserved_failed_execution": "handoff/qm318_root_remote_dryrun_001.execution.json",
+  "repository_writes": 0,
+  "scientific_invocations": 0,
+  "old_actual_receipts_rewritten": false,
+  "infrastructure_note": "The first exec attempt was rejected before process creation by a transient exec-server disconnect; a read-only check confirmed unchanged helper and no backup/diff/receipt before the successful retry."
+}
