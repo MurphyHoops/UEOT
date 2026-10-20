@@ -1,0 +1,367 @@
+#!/usr/bin/env python3
+"""Bind actual v31.7 PR/main acceptance to four current book metadata files.
+
+Default execution only prepares a read-only result. --apply writes the exact
+four-file allowlist after every receipt, byte identity and concurrency check.
+No network, Git mutation, scientific test, Lean build, PDF build or new visual
+inspection is performed. Existing book evidence and canonical MD/PDF/TeX bytes
+remain immutable. The new external receipt hashes the three updated metadata
+files; those files reference its path only, avoiding a circular self-hash.
+"""
+from __future__ import annotations
+
+import argparse
+import copy
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import re
+import sys
+
+REPOSITORY = 'MurphyHoops/UEOT'
+SOURCE_SET = 'b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911'
+LOCAL_STATE = 'LOCAL_VERIFIED_REMOTE_PENDING'
+CANONICAL = {
+    'UEOT_PHYSICS.md': '83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c',
+    'UEOT_PHYSICS.pdf': '9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c',
+    'UEOT_PHYSICS.tex': '364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c',
+}
+BOOK = 'physics/qm/book/'
+EVIDENCE = BOOK + 'evidence/v3.3/'
+KERNEL = 'physics/qm/kernel/evidence/v31.7/'
+REMOTE = EVIDENCE + 'remote-publication.json'
+TARGETS = (BOOK + 'SOURCE_MANIFEST.json', BOOK + 'CHAPTER_DOSSIER.json',
+           BOOK + 'README.md', REMOTE)
+CONTEXT_KEYS = ('repository', 'source_commit', 'source_tree', 'tested_main_commit',
+                'tested_main_tree', 'pull_request', 'pr_run', 'main_run',
+                'pr_status', 'main_status', 'source_count', 'source_set_sha256')
+WRITES = 0
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def encode(obj):
+    return (json.dumps(obj, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+
+
+def prepare(root, context_path):
+    root = root.resolve()
+    context_path = context_path.resolve()
+    protected = {}
+
+    def path(relative):
+        p = root / relative
+        require(p.resolve().is_relative_to(root), f'Path escapes repository: {relative}')
+        return p
+
+    def take(p):
+        p = Path(p)
+        data = p.read_bytes()
+        protected[p] = sha(data)
+        return data
+
+    def read(relative):
+        return json.loads(take(path(relative)))
+
+    def record(relative, prepared=None):
+        data = prepared[relative] if prepared and relative in prepared else take(path(relative))
+        return {'path': relative, 'sha256': sha(data), 'bytes': len(data)}
+
+    context_bytes = take(context_path)
+    ctx = json.loads(context_bytes)
+    require(ctx.get('repository') == REPOSITORY, 'Unexpected repository.')
+    require(ctx.get('pr_status') == ctx.get('main_status') == 'PASS',
+            'Both actual PR/main CI PASS receipts are required; pending state refuses writes.')
+    require(ctx.get('source_count') == 80 and ctx.get('source_set_sha256') == SOURCE_SET,
+            'The context does not identify the frozen v31.7 source set.')
+    for key in ('source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree'):
+        require(isinstance(ctx.get(key), str) and re.fullmatch('[0-9a-f]{40}', ctx[key]),
+                f'Missing full actual commit/tree SHA: {key}')
+    for key in ('pull_request', 'pr_run', 'main_run'):
+        require(type(ctx.get(key)) is int and ctx[key] > 0, f'Missing actual numeric identity: {key}')
+    require(ctx['pr_run'] != ctx['main_run'], 'PR/main must be independently executed workflows.')
+    integration_path = KERNEL + 'integration-verification.json'
+    integration = read(integration_path)
+    require(integration.get('status') == 'MAIN_VERIFIED', 'Root integration is not MAIN_VERIFIED.')
+    for key in CONTEXT_KEYS:
+        require(integration.get(key) == ctx[key], f'Actual context/integration mismatch: {key}')
+    for key in ('tested_inputs_identical', 'core_imports_identical', 'canonical_book_identical',
+                'published_paths_identical'):
+        require(integration.get(key) is True, f'Root reconciliation is missing: {key}')
+    require(integration.get('published_path_count') == 244, 'The frozen 244-file publication is not reconciled.')
+    tree_equal = ctx['source_tree'] == ctx['tested_main_tree']
+    require(integration.get('source_and_main_tree_identical') is tree_equal,
+            'Whole-tree equality must agree with actual tree identities.')
+    require(integration.get('full_scientific_theory_verified') is False
+            and integration.get('empirical_confirmation_added') is False,
+            'Remote acceptance must retain finite formal scope and no empirical claim.')
+
+    ci_paths = {}
+    ci = {}
+    for kind, commit, event in (('pr', ctx['source_commit'], 'pull_request'),
+                                ('main', ctx['tested_main_commit'], 'push')):
+        relative = KERNEL + f'ci/{kind}-{ctx[kind + "_run"]}-verification.json'
+        require(integration.get(kind + '_verification') == relative,
+                f'Root {kind} receipt path differs from the actual run identity.')
+        receipt = read(relative)
+        require(receipt.get('schema') == 'ueot_qm.actual_ci_verification.v31.7'
+                and receipt.get('status') == 'PASS' and receipt.get('verification_complete') is True,
+                f'Actual {kind} verifier did not complete successfully.')
+        require(receipt.get('repository') == REPOSITORY and receipt.get('event') == kind
+                and receipt.get('workflow_event') == event and receipt.get('source_commit') == commit
+                and receipt.get('run_id') == ctx[kind + '_run'], f'Wrong actual {kind} workflow identity.')
+        for key in ('jobs_all_success', 'recorded_checkout_matches_expected',
+                    'generic_axiom_names_and_foundation_equal_local', 'all_explicit_theorem_names_audited',
+                    'printed_source_hashes_equal_local', 'runtime_method_names_equal_local',
+                    'input_files_unchanged_during_verification'):
+            require(receipt.get(key) is True, f'Actual {kind} verification incomplete: {key}')
+        for key, value in {'generic_modules': 29, 'explicit_theorems': 646, 'generic_axiom_reports': 855,
+                           'printed_source_hash_count': 33, 'finite_witness_total_audits': 151,
+                           'runtime_test_methods': 100, 'demos': 4, 'positive_instances': 6,
+                           'positive_instance_axiom_targets': 42, 'corrupted_true_rejections': 4,
+                           'same_data_false_proofs': 4}.items():
+            require(receipt.get(key) == value, f'Actual {kind} result mismatch: {key}')
+        require(receipt.get('allowed_foundation') == ['Classical.choice', 'Quot.sound', 'propext'],
+                f'Unexpected {kind} foundation.')
+        for bound in receipt['input_files'].values():
+            p = Path(bound['path'])
+            if not p.is_absolute():
+                p = root / p
+            data = take(p)
+            require(sha(data) == bound['sha256'] and len(data) == bound['bytes'],
+                    f'CI verifier input changed: {p}')
+        ci_paths[kind], ci[kind] = relative, receipt
+
+    sources = read(KERNEL + 'source-manifest.json')
+    require(sources.get('source_count') == len(sources['sources']) == 80
+            and sources.get('source_set_sha256') == SOURCE_SET, 'Frozen source manifest differs.')
+    for entry in sources['sources']:
+        data = take(path(entry['path']))
+        require(sha(data) == entry['sha256'] and len(data) == entry['bytes'],
+                f'Accepted scientific input changed: {entry["path"]}')
+    closure = read(KERNEL + 'core-import-closure.json')
+    require(closure.get('transitive_module_count') == len(closure['modules']) == 56,
+            'The actual recursive Core closure differs.')
+    for entry in closure['modules']:
+        require(sha(take(path(entry['path']))) == entry['source_sha256'],
+                f'Imported Core source changed: {entry["path"]}')
+    for name, digest in CANONICAL.items():
+        require(sha(take(path(BOOK + name))) == digest, f'Canonical bytes changed: {name}')
+    for key, value in {'markdown_sha256': CANONICAL['UEOT_PHYSICS.md'],
+                       'pdf_sha256': CANONICAL['UEOT_PHYSICS.pdf'],
+                       'tex_sha256': CANONICAL['UEOT_PHYSICS.tex'], 'pages': 203}.items():
+        require(integration.get('book', {}).get(key) == value, f'Root remote book binding differs: {key}')
+    local = read(EVIDENCE + 'local-release-gates.json')
+    require(local.get('status') == LOCAL_STATE and local.get('proof_gate') == 'PASS',
+            'Expected immutable local book acceptance checkpoint is absent.')
+    require(read(KERNEL + 'lean-verification.json')['status'] == 'PASS', 'Local scientific acceptance is absent.')
+    visual = read(EVIDENCE + 'pdf-visual-review.json')
+    require(visual.get('status') == 'PASS' and visual.get('pdf_sha256') == CANONICAL['UEOT_PHYSICS.pdf']
+            and visual.get('page_count') == 203, 'Final PDF visual receipt differs.')
+
+    original_bytes = {p: path(p).read_bytes() if path(p).is_file() else None for p in TARGETS}
+    require(original_bytes[REMOTE] is None, 'Remote publication receipt already exists; reconcile before rerunning.')
+    manifest = json.loads(original_bytes[TARGETS[0]])
+    dossier = json.loads(original_bytes[TARGETS[1]])
+    old_manifest, old_dossier = copy.deepcopy(manifest), copy.deepcopy(dossier)
+    require(manifest['current_code_identity']['status'] == LOCAL_STATE
+            and dossier['current_release_stage'] == LOCAL_STATE,
+            'Current metadata is no longer the frozen local checkpoint.')
+    for p in path(BOOK).rglob('*'):
+        if p.is_file() and p.relative_to(root).as_posix() not in TARGETS:
+            take(p)
+
+    now = datetime.now(timezone.utc).isoformat()
+    identity = {key: ctx[key] for key in CONTEXT_KEYS}
+    identity.update({'pull_request_url': f'https://github.com/{REPOSITORY}/pull/{ctx["pull_request"]}',
+                     'pr_run_url': f'https://github.com/{REPOSITORY}/actions/runs/{ctx["pr_run"]}',
+                     'main_run_url': f'https://github.com/{REPOSITORY}/actions/runs/{ctx["main_run"]}',
+                     'source_and_main_tree_identical': tree_equal})
+    for key in ('pull_request_url', 'pr_run_url', 'main_run_url'):
+        require(ctx.get(key, identity[key]) == identity[key], f'Context URL mismatch: {key}')
+    reference = {'path': REMOTE, 'status': 'MAIN_VERIFIED',
+                 'hash_binding_direction': 'This external receipt binds updated metadata hashes; no receipt hash is embedded here.'}
+    previous = {'source_manifest': record(TARGETS[0]), 'chapter_dossier': record(TARGETS[1]),
+                'readme': record(TARGETS[2]), 'local_release': record(EVIDENCE + 'local-release-gates.json'),
+                'dossier_review': record(EVIDENCE + 'dossier-review.json')}
+
+    manifest['remote_metadata_completion'] = {
+        'status': 'MAIN_VERIFIED', 'remote_verified': True, 'recorded_at_utc': now,
+        'receipt': reference, 'prior_metadata': previous['source_manifest'],
+        'prior_current_code_identity': copy.deepcopy(old_manifest['current_code_identity']),
+        'prior_remote_metadata_completion': copy.deepcopy(old_manifest['remote_metadata_completion'])}
+    manifest['current_code_baseline_role'] = (
+        'Authoring baseline retained as a historical fact; actual CI-tested source_commit and tested_main_commit are separately recorded in current_code_identity.')
+    manifest['current_code_identity'].update({
+        'status': 'MAIN_VERIFIED', 'remote_verified': True, **identity,
+        'integration_receipt': record(integration_path),
+        'pr_verification': record(ci_paths['pr']), 'main_verification': record(ci_paths['main']),
+        'identity_rule': 'The actual source PR and independently tested merged main are bound by root Git-blob reconciliation to the unchanged 80 tested inputs, 56 imported Core sources and canonical MD/PDF/TeX. This later metadata commit is not the CI-tested scientific source commit.',
+        'metadata_only_followup': True})
+    prepared = {TARGETS[0]: encode(manifest)}
+
+    dossier['remote_metadata_completion'] = {
+        'status': 'MAIN_VERIFIED', 'remote_verified': True, 'recorded_at_utc': now,
+        **identity, 'receipt': reference, 'prior_metadata': previous['chapter_dossier'],
+        'prior_remote_metadata_completion': copy.deepcopy(old_dossier['remote_metadata_completion']),
+        'prior_validation': copy.deepcopy(old_dossier['validation']),
+        'prior_completion_boundary': copy.deepcopy(old_dossier['completion_boundary']),
+        'prior_release_acceptance': copy.deepcopy(old_dossier['release_acceptance']),
+        'immutable_local_receipts': [previous['local_release'], previous['dossier_review']],
+        'metadata_commit_is_not_ci_tested_source_commit': True}
+    dossier['current_release_stage'] = 'MAIN_VERIFIED'
+    dossier['canonical']['installation_status'] = 'MAIN_VERIFIED'
+    for key in ('pdf', 'latex'):
+        dossier['derivatives'][key].update(remote_publication_status='MAIN_VERIFIED', remote_publication=reference)
+    dossier['source_catalog']['QM317'].update({
+        'status': 'MAIN_VERIFIED', 'remote_verified': True, **identity, 'remote_acceptance': reference,
+        'identity_rule': 'Actual source and tested-main CI receipts, together with root Git-blob reconciliation, bind the unchanged accepted input set. The authoring baseline and historical local receipts retain their separate identities.'})
+    dossier['completion_boundary'].update({
+        'current_release_acceptance': 'MAIN_VERIFIED',
+        'reason': '3.3规范正文、117继承编号与14新增编号、80受验源、实际统一数学/见证/程序、203页PDF及原实际视觉回执保持原身份；科学源码PR与合入后主线CI已有分别执行的真实PASS和逐项Git blob核对。文档完成、条件证明、程序验收与自然界有效性仍分别承担责任。'})
+    dossier['release_acceptance'].update(remote_source_commit='PASS', source_pr_ci='PASS', merged_main_ci='PASS')
+    dossier['validation'].update({
+        'status': 'PASS_CURRENT_DOSSIER_AND_ACTUAL_REMOTE_BINDING', 'remote_verified': True,
+        'remote_status': 'MAIN_VERIFIED', 'remaining_gates': [],
+        'local_checkpoint_status_scope': 'Historical local checkpoint; immutable original acceptance receipts retain this state.',
+        'book_source_manifest_sha256': sha(prepared[TARGETS[0]]),
+        'updated_metadata_hashes_external_in_remote_publication': True})
+    dossier['book_source_manifest'] = record(TARGETS[0], prepared)
+    prior_catalog = copy.deepcopy(dossier['evidence_catalog']['book_source_manifest_v3_3'])
+    dossier['evidence_catalog']['book_source_manifest_v3_3'].update({
+        **record(TARGETS[0], prepared), 'role': 'CURRENT_MANIFEST_WITH_REMOTE_METADATA_BINDING',
+        'status': 'MAIN_VERIFIED', 'record_scope': '3.3 current metadata; original local manifest identity retained below.',
+        'prior_local_record': prior_catalog})
+    dossier['evidence_catalog']['dossier_review_v3_3']['record_scope'] = (
+        'Immutable local checkpoint review of the pre-publication dossier bytes. Current metadata completion is separately bound by remote-publication.json.')
+    for key, relative in [('integration_v31_7', integration_path),
+                          ('pr_ci_v31_7', ci_paths['pr']), ('main_ci_v31_7', ci_paths['main'])]:
+        dossier['evidence_catalog'][key] = {**record(relative), 'role': 'ACTUAL_CURRENT_EDITION_REMOTE_RECEIPT',
+                                          'status': read(relative)['status'], 'exists_at_remote_completion': True}
+    dossier['evidence_catalog']['remote_publication_v3_3'] = reference
+    dossier['path_catalog']['remote_completion_addendum'] = {
+        'original_path_catalog_is_local_checkpoint': True,
+        'actual_new_receipt_paths': [integration_path, ci_paths['pr'], ci_paths['main']],
+        'receipt_created_by_this_metadata_completion': REMOTE}
+    prepared[TARGETS[1]] = encode(dossier)
+
+    readme = original_bytes[TARGETS[2]].decode('utf-8')
+    old_lead = '本版局部及统一证明、结构、排印和实际视觉验收已完成，当前发布状态为**LOCAL_VERIFIED_REMOTE_PENDING**；后续远端状态单独记录。'
+    require(readme.count(old_lead) == 1, 'README local lead changed; review before replacing.')
+    readme = readme.replace(old_lead, '本版局部及统一证明、结构、排印、原实际视觉验收，以及科学源码PR和合入后主线CI均已完成，当前发布状态为**MAIN_VERIFIED**；实际身份见[远端发布回执](evidence/v3.3/remote-publication.json)。', 1)
+    readme = readme.replace('| [发布门](evidence/v3.3/local-release-gates.json) | 实际正文、证明、排印、视觉与发布状态 |',
+                            '| [本地验收存档](evidence/v3.3/local-release-gates.json) | 原本地正文、证明、排印及视觉门，保留当时远端待验状态 |\n| [远端发布回执](evidence/v3.3/remote-publication.json) | 科学源PR、独立主线CI和本次元数据绑定 |', 1)
+    readme = readme.replace('当前源码基线是7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8。',
+                            '本轮作者基线是7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8；实际发布源码和受验主线身份分别登记如下。', 1)
+    section = (
+        '\n## 实际远端验收身份\n\n'
+        f'科学源经[PR #{ctx["pull_request"]}]({identity["pull_request_url"]})发布；[根端整合回执](../kernel/evidence/v31.7/integration-verification.json)绑定实际源码、受验主线和逐项字节核对。\n\n'
+        '| 身份 | 实际值 |\n|---|---|\n'
+        f'| 科学源提交 | `{ctx["source_commit"]}` |\n'
+        f'| 科学源整树 | `{ctx["source_tree"]}` |\n'
+        f'| PR工作流 | [{ctx["pr_run"]}]({identity["pr_run_url"]})，PASS |\n'
+        f'| 实际受验主线 | `{ctx["tested_main_commit"]}` |\n'
+        f'| 受验主线整树 | `{ctx["tested_main_tree"]}` |\n'
+        f'| 主线工作流 | [{ctx["main_run"]}]({identity["main_run_url"]})，PASS |\n\n'
+        f'80项受验输入、56项实际Core导入、三种规范正文及244项发布文件均有根端逐项Git blob核对。两次整树相等为 `{str(tree_equal).lower()}`；受验输入相同与整树相同分别记录。\n\n'
+        '本次只补录当前元数据，旧本地验收、排印、档案审查及视觉回执均保留原字节。原视觉范围是全书总览继承核对加指定完整页：root实际看最终8页，协作者实际看18页；没有把这写成203页逐页完整精读，也没有新增视觉检查。实际CI日志验收范围见两份CI回执；本步骤未下载或核验artifact ZIP内容。后续元数据提交不冒充上述CI-tested科学源或主线提交。\n')
+    require(readme.count('\n## 旧证据与分类\n') == 1, 'README insertion anchor changed.')
+    readme = readme.replace('\n## 旧证据与分类\n', section + '\n## 旧证据与分类\n', 1)
+    prepared[TARGETS[2]] = readme.encode('utf-8')
+
+    for key in ('entries', 'historical_code_baselines', 'canonical_identity', 'legacy_program_reuse'):
+        require(manifest[key] == old_manifest[key], f'Original source/history field changed: {key}')
+    for key in ('chapters', 'appendices', 'edition_history', 'next_execution_contract',
+                'prior_edition_snapshot', 'status_axes', 'governance'):
+        require(dossier[key] == old_dossier[key], f'Scientific/history dossier content changed: {key}')
+    for target in re.findall(r'\]\(([^)]+)\)', readme):
+        if target.startswith(('http:', 'https:', '#')):
+            continue
+        p = (path(BOOK) / target.split('#', 1)[0]).resolve()
+        require(p.is_relative_to(root) and (p.is_file() or p == path(REMOTE)), f'Unresolved README link: {target}')
+    receipt = {
+        'schema': 'ueot_physics.remote_publication.v3.3', 'status': 'MAIN_VERIFIED',
+        'recorded_at_utc': now, 'actual_acceptance_identity': identity,
+        'actual_receipts': {'integration': record(integration_path),
+                            'pr': record(ci_paths['pr']), 'main': record(ci_paths['main'])},
+        'context_sha256': sha(context_bytes), 'prior_local_metadata': previous,
+        'updated_metadata': [record(p, prepared) for p in TARGETS[:3]],
+        'canonical_book': [record(BOOK + name) for name in CANONICAL],
+        'immutable_local_evidence': [record(p.relative_to(root).as_posix())
+                                    for p in sorted(path(BOOK + 'evidence/').rglob('*')) if p.is_file()],
+        'source_manifest': record(KERNEL + 'source-manifest.json'),
+        'source_count': 80, 'source_set_sha256': SOURCE_SET, 'core_import_count': 56,
+        'actual_visual_scope_inherited_without_new_inspection': visual,
+        'historical_and_canonical_bytes_unchanged': True,
+        'metadata_only': True, 'new_lean_invocations': 0, 'new_runtime_tests': 0,
+        'new_pdf_builds': 0, 'new_visual_inspections': 0, 'new_remote_actions': 0,
+        'artifact_zip_contents_checked_by_this_helper': False,
+        'remote_identity_basis': 'Actual root integration receipt and immutable CI verifier receipts. This helper rechecks their local input byte bindings but does not access GitHub.',
+        'followup_scope': 'The later metadata publication commit is separate from the already tested scientific source and merged main commits. No new scientific proof, unconditional theory claim, experiment or whole-book machine verification is added.',
+        'write_targets': list(TARGETS),
+        'hash_binding_rule': 'This receipt hashes three prepared metadata files; those files refer to this receipt by path only. No self-hash or circular hash is embedded.',
+        'script_sha256': sha(Path(__file__).read_bytes())}
+    prepared[REMOTE] = encode(receipt)
+    require(set(prepared) == set(TARGETS), 'Prepared write set exceeds the four-file allowlist.')
+    for p in TARGETS:
+        protected.pop(path(p), None)
+    summary = {'status': 'READY_FOR_ACTUAL_METADATA_APPLY', 'actual_acceptance_identity': identity,
+               'write_targets': [{'path': p, 'before_sha256': sha(original_bytes[p]) if original_bytes[p] else None,
+                                  'after_sha256': sha(prepared[p]), 'bytes': len(prepared[p])} for p in TARGETS],
+               'protected_files': len(protected), 'canonical_and_old_evidence_unchanged': True,
+               'new_scientific_validation': False}
+    return prepared, original_bytes, protected, summary
+
+
+def main():
+    global WRITES
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=Path('/workspace/scratch/f11b4261e187/qm_v317_work'))
+    parser.add_argument('--context', type=Path, default=Path('/workspace/scratch/f11b4261e187/handoff/qm317_release_context.json'))
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--apply', action='store_true')
+    mode.add_argument('--plan', action='store_true')
+    mode.add_argument('--dry-run', action='store_true')
+    args = parser.parse_args()
+    if args.plan:
+        print(json.dumps({'status': 'PLAN_ONLY_NOT_EXECUTED', 'targets': list(TARGETS),
+                          'requires': 'Actual separate PR/main CI PASS and root MAIN_VERIFIED integration; all protected bytes unchanged.',
+                          'default_read_only': True, 'no_scientific_reexecution': True}, ensure_ascii=False, indent=2))
+        return
+    prepared, originals, protected, summary = prepare(args.root, args.context)
+    if args.apply:
+        root = args.root.resolve()
+        for p, digest in protected.items():
+            require(p.is_file() and sha(p.read_bytes()) == digest, f'Protected input changed before apply: {p}')
+        for relative, data in originals.items():
+            p = root / relative
+            require(p.resolve().is_relative_to(root / 'physics/qm/book'), f'Unsafe target: {relative}')
+            require((p.read_bytes() if p.is_file() else None) == data, f'Metadata changed concurrently: {relative}')
+        # All guards have completed. These are the only mutation sites.
+        for relative in TARGETS:
+            (root / relative).write_bytes(prepared[relative])
+            WRITES += 1
+        for relative in TARGETS:
+            require((root / relative).read_bytes() == prepared[relative], f'Metadata readback failed: {relative}')
+        for p, digest in protected.items():
+            require(sha(p.read_bytes()) == digest, f'Protected bytes changed during apply: {p}')
+        summary['status'] = 'MAIN_VERIFIED_BOOK_METADATA_APPLIED'
+        summary['completed_repository_writes'] = WRITES
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        print(json.dumps({'status': 'REFUSED_OR_FAILED', 'error': str(exc),
+                          'completed_repository_writes': WRITES}, ensure_ascii=False), file=sys.stderr)
+        sys.exit(2)

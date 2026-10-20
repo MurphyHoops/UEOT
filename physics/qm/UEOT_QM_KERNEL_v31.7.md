@@ -1,6 +1,6 @@
 # UEOT-QM v31.7 / Kernel 1.7
 
-日期：2026-10-20 UTC。状态：**LOCAL_VERIFIED_REMOTE_PENDING**。当前集成身份以 [CURRENT](status/CURRENT.json) 及实际远端回执为准；本地验收与后续远端工作流分别记录。
+日期：2026-10-20 UTC。状态：**MAIN_VERIFIED**。当前集成身份以 [CURRENT](status/CURRENT.json) 及实际远端回执为准；本地验收与后续远端工作流分别记录。
 
 ## 核心追求与恢复基线
 
@@ -70,3 +70,7 @@ m_n=r^n z_n，
 [下一轮合同v31.8](UEOT_QM_EXECUTION_v31.8.md)将三路收紧为：A证明全效应分离和复模型局部层析；B先完成凸极点与向量态的双向刻画，再在明确辅助空间条件下证明纯化酉唯一性；C构造共同历史控制器的逐步误差和及底层动作预算。该合同仅为规划，不计入当前证明。
 
 三代仍是带完整谱、表示、阈值和有效窗口前提的条件结果；现实质量谱、真空、连续与QFT接口、真实QDRR数据及复量子唯一选择继续保留独立责任。本轮推进一个可复用且逐项可审计的有限量子内核，没有宣称完备物理理论或最终真理已经得到证明。
+
+## 远端实际验收
+
+源码提交 `a89bc691e698391d03ff7b705cc76def1fa3512e`，源码树 `89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d`；[PR #347](https://github.com/MurphyHoops/UEOT/pull/347) 的 [实际工作流](https://github.com/MurphyHoops/UEOT/actions/runs/39402444333) 通过。合入后主线 `87091d1ad4592c4467fa3acc3ac75d67c0edac54` 的 [独立工作流](https://github.com/MurphyHoops/UEOT/actions/runs/39404249860) 通过。80项受验输入、56项实际Core导入、三份正式正文与244项发布路径逐项相同。完整源树相同性见[集成回执](kernel/evidence/v31.7/integration-verification.json)的实际值。后续状态与证据提交记录已经完成的验收，其提交身份不同于实际受验源码；没有新增科学测试或扩大科学结论。

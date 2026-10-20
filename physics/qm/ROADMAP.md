@@ -1,6 +1,6 @@
 # UEOT-QM / Physics Roadmap
 
-状态：**v31.7 / Kernel 1.7 — LOCAL_VERIFIED_REMOTE_PENDING**。日期：2026-10-20 UTC。实际集成身份见[CURRENT](status/CURRENT.json)。
+状态：**v31.7 / Kernel 1.7 — MAIN_VERIFIED**。日期：2026-10-20 UTC。实际集成身份见[CURRENT](status/CURRENT.json)。
 
 ## 核心追求与本轮实际闭合
 

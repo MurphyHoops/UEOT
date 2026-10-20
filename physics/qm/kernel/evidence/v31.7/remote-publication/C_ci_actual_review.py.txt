@@ -1,0 +1,143 @@
+"""Independent read-only review of downloaded v31.7 CI evidence; no gate execution."""
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import re
+from datetime import datetime, timezone
+import yaml
+
+p = argparse.ArgumentParser()
+p.add_argument('--kind', choices=['pr', 'main'], required=True)
+p.add_argument('--run', type=int, required=True)
+p.add_argument('--commit', required=True)
+args = p.parse_args()
+root = Path('/workspace/scratch/f11b4261e187')
+repo = root / 'qm_v317_work'
+evidence = repo / 'physics/qm/kernel/evidence/v31.7'
+stem = evidence / 'ci' / f'{args.kind}-{args.run}'
+readj = lambda path: json.loads(Path(path).read_text())
+digest = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+receipt = readj(str(stem) + '-verification.json')
+run = readj(str(stem) + '-run.json')
+jobs = readj(str(stem) + '-jobs.json')['jobs']
+logs = {j: re.sub(r'^\d{4}-\d\d-\d\dT\S+Z ?', '', Path(str(stem) + f'-{j}.log').read_text(), flags=re.M)
+        for j in ('runtime', 'lean')}
+checks = {}
+def check(name, condition):
+    checks[name] = bool(condition)
+    if not condition:
+        raise AssertionError(name)
+
+check('receipt_identity', receipt['status'] == 'PASS' and receipt['errors'] == []
+      and receipt['run_id'] == args.run and receipt['source_commit'] == args.commit
+      and receipt['event'] == args.kind and receipt['verification_complete'])
+check('run_identity', run['id'] == args.run and run['head_sha'] == args.commit
+      and run['head_commit']['id'] == args.commit
+      and run['repository']['full_name'] == 'MurphyHoops/UEOT'
+      and run['name'] == 'UEOT QM Kernel' and run['path'] == '.github/workflows/ueot-qm.yml'
+      and run['status'] == 'completed' and run['conclusion'] == 'success'
+      and run['event'] == ('pull_request' if args.kind == 'pr' else 'push'))
+if args.kind == 'pr':
+    check('pr_347_binding', any(x['number'] == 347 and x['head']['sha'] == args.commit
+          and x['head']['ref'] == 'qm/v31.7-purification-record-dynamics-20261020'
+          for x in run['pull_requests']))
+else:
+    check('main_branch', run['head_branch'] == 'main')
+check('all_receipt_input_hashes', all(Path(v['path']).stat().st_size == v['bytes']
+      and digest(v['path']) == v['sha256'] for v in receipt['input_files'].values()))
+check('reviewed_verifier_identity', receipt['verifier']['sha256'] ==
+      'd8725a2382120b6777c48f960a54c05af8bc1fdc6c8740d0226d6f71bdfa03bd')
+workflow = yaml.safe_load((repo / '.github/workflows/ueot-qm.yml').read_text())
+check('two_unique_jobs', len(jobs) == 2 and {j['name'] for j in jobs} == {'runtime', 'lean'}
+      and len({j['id'] for j in jobs}) == 2)
+for job in jobs:
+    name = job['name']
+    check(f'{name}_job_success_identity', job['status'] == 'completed'
+          and job['conclusion'] == 'success' and job['run_id'] == args.run
+          and job['id'] == receipt['job_ids'][name])
+    expected_steps = [s['name'] for s in workflow['jobs'][name]['steps']]
+    observed_steps = {s['name']: s for s in job['steps']}
+    check(f'{name}_unique_steps', len(observed_steps) == len(job['steps']))
+    check(f'{name}_workflow_step_order', [s['name'] for s in job['steps'] if s['name'] in expected_steps] == expected_steps)
+    check(f'{name}_all_mandatory_steps', all(
+        s in observed_steps and observed_steps[s]['status'] == 'completed'
+        and observed_steps[s]['conclusion'] in ({'success', 'skipped'} if s == 'Save pinned dependency cache' else {'success'})
+        for s in expected_steps))
+    check(f'{name}_checkout', re.findall(r'^\[command\].*git log -1 --format=%H\n([^\n]+)', logs[name], re.M) == [args.commit])
+    check(f'{name}_job_log_marker', re.findall(r'^Complete job name: (\w+)$', logs[name], re.M) == [name])
+    check(f'{name}_log_hash', digest(str(stem) + f'-{name}.log') == receipt['raw_decoded_log_sha256'][name])
+    artifact = receipt['artifact_uploads_reported_by_actual_logs'][name]
+    check(f'{name}_archive_actual_finalization', f"Artifact ueot-qm-{name}-{args.run}.zip successfully finalized. Artifact ID {artifact['artifact_id']}" in logs[name])
+
+local_axioms = readj(evidence / 'proof-axioms.json')['declarations']
+matches = re.findall(r"^'([^']+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)", logs['lean'], re.M)
+actual_axioms = {name: sorted(a.strip() for a in ax.split(',') if a.strip()) for name, ax in matches}
+check('855_exact_unique_axiom_names_foundations', len(matches) == len(actual_axioms) == 855
+      and actual_axioms == local_axioms == receipt['actual_generic_axioms'])
+check('allowed_foundation_only', all(set(v) <= {'propext', 'Classical.choice', 'Quot.sound'} for v in actual_axioms.values()))
+inventory = readj(evidence / 'declaration-inventory.json')
+theorems = {d['name'] for ds in inventory['modules'].values() for d in ds if d['kind'] == 'theorem'}
+check('646_explicit_theorems_audited', len(inventory['modules']) == 29 and len(theorems) == 646 and theorems <= set(actual_axioms))
+methods = re.findall(r'^test_\w+ \(([^)]+)\) \.\.\. ok$', logs['runtime'], re.M)
+check('100_exact_unique_runtime_methods', len(methods) == len(set(methods)) == 100
+      and sorted(methods) == sorted(readj(evidence / 'runtime-verification.json')['passed'])
+      and sorted(methods) == receipt['actual_runtime_passed_methods'])
+check('runtime_summary_success', re.search(r'^Ran 100 tests in [0-9.]+s\n\nOK$', logs['runtime'], re.M) is not None)
+manifest = readj(evidence / 'source-manifest.json')
+source_hashes = {s['path']: s['sha256'] for s in manifest['sources']}
+printed = re.findall(r'^([0-9a-f]{64})  (\S+)$', logs['lean'], re.M)
+check('33_printed_source_identities', len(printed) == len({path for h, path in printed}) == 33
+      and all(source_hashes['formalization/ueot-qm/' + path] == h for h, path in printed))
+check('pinned_official_compiler', 'Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)' in logs['lean']
+      and 'PASS: verified official compiler at ' in logs['lean']
+      and 'PASS: exact Core toolchain and dependency revisions inherited' in logs['lean'])
+build_counts = re.findall(r'^Build completed successfully \((\d+) jobs\)\.$', logs['lean'], re.M)
+check('successful_observed_build', len(build_counts) == 1 and int(build_counts[0]) > 0 and int(build_counts[0]) == receipt['build_jobs'])
+check('six_exact_positive_cases', re.findall(r'^Verifying positive (\w+)$', logs['lean'], re.M) == ['z', 'hz', 'hsz', 'ragged', 'd1', 'd4'])
+check('four_exact_negative_cases', re.findall(r'^Verifying negative and false witness (\w+)$', logs['lean'], re.M)
+      == ['negative_weight', 'negative_basis', 'negative_pullback', 'negative_word'])
+summary_start = logs['lean'].index('{\n  "status": "PASS",\n  "receipt":')
+summary, _ = json.JSONDecoder().raw_decode(logs['lean'][summary_start:])
+expected_summary = dict(positive_passed=6, positive_expected=6, negative_passed=4,
+                        negative_expected=4, false_witness_passed=4,
+                        positive_audit_targets_expected=42, false_witness_audit_targets_expected=4)
+check('six_certificates_42_audits_four_rejections_four_false_proofs', summary['status'] == 'PASS'
+      and summary['problems'] == [] and summary['summary'] == expected_summary == receipt['exact_instance_summary'])
+local_witness = readj(evidence / 'finite-witnesses/verification.json')
+witness_lines = re.findall(r'^(\w+): PASS \((\d+) explicit declaration audits\)$', logs['lean'], re.M)
+witness_counts = {n: int(v) for n, v in witness_lines}
+check('seven_witnesses_151_actual_audit_totals', len(witness_lines) == len(witness_counts) == 7
+      and sum(witness_counts.values()) == 151
+      and witness_counts == {k: len(v) for k, v in local_witness['declarations'].items()}
+      and witness_counts == receipt['concrete_witness_audit_counts'])
+check('four_actual_demo_command_sections', all(
+      f'##[group]Run python physics/qm/kernel/{file}' in logs['runtime']
+      for file in ('demo.py', 'demo_v312.py', 'demo_v313.py', 'demo_v315.py')))
+check('scope_flags_honest', not receipt['artifact_zip_downloaded']
+      and not receipt['artifact_zip_contents_verified'] and not receipt['full_scientific_theory_verified'])
+
+prior_tree = readj(root / 'handoff/C_ci_remote_tree_review.json')
+tree_identity = '89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d'
+check('actual_run_head_tree_equals_independently_reviewed_source_tree', run['head_commit']['tree_id'] == tree_identity)
+out = dict(schema='ueot_qm.C_independent_actual_ci_review.v31.7', status='CLEAR',
+           checked_at_utc=datetime.now(timezone.utc).isoformat(), event=args.kind,
+           run_id=args.run, source_commit=args.commit, source_tree=tree_identity,
+           workflow_url=run['html_url'], job_ids={j['name']: j['id'] for j in jobs},
+           checks=checks, build_jobs=int(build_counts[0]), exact_named_axioms=855,
+           explicit_theorems=646, runtime_methods=100, witness_audits=151,
+           certificate_summary=expected_summary,
+           evidence_files={Path(str(stem) + suffix).name: {'sha256': digest(str(stem) + suffix), 'bytes': Path(str(stem) + suffix).stat().st_size}
+                           for suffix in ('-run.json', '-jobs.json', '-runtime.log', '-lean.log', '-verification.json')},
+           prior_remote_tree_review=str(root / 'handoff/C_ci_remote_tree_review.json'),
+           independent_method='Read actual downloaded metadata/logs, independently extract names/summaries, compare frozen references and all 14 parser input digests; parser/science gates not reexecuted.',
+           scope=['GitHub download provenance is supplied by root retrieval; this review binds the saved inputs and actual run/checkout identities.',
+                  '33 direct CI source hashes; full 80/56/244/3-book/1813-unchanged checks are the separate prior remote-tree review linked by actual run head tree.',
+                  'Witness/certificate CI detailed artifact contents and redirected demo JSON not downloaded; emitted exact file/case summaries and successful workflow steps reviewed.',
+                  '110 theorem + 39 definition + 2 abbreviation witness split remains a frozen local source/receipt fact, not a CI log per-kind census.',
+                  'Artifact ZIP upload finalization observed; ZIP contents not downloaded or independently verified.',
+                  'Lean ordinary linter warnings and runner warnings exist; successful gates do not mean zero warnings.',
+                  'Finite formal/runtime verification only; no experimental confirmation or complete natural theory claim.'])
+output = root / 'handoff' / f'C_ci_{args.kind}_{args.run}_review.json'
+output.write_text(json.dumps(out, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({'status': out['status'], 'checks': len(checks), 'report': str(output)}, ensure_ascii=False))

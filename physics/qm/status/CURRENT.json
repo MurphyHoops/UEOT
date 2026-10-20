@@ -17,9 +17,9 @@
   "roadmap": "../ROADMAP.md",
   "claim_ledger": "CLAIM_LEDGER_v31.7.json",
   "previous_claim_ledger": "CLAIM_LEDGER_v31.6.json",
-  "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
+  "verification_state": "MAIN_VERIFIED",
   "acceptance_marker": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MAIN_VERIFIED",
     "change_class": "B",
     "authority": "User-directed continued construction of the entire UEOT-QM theory, formal monograph, rigorous multi-agent work and synchronization to remote QM.",
     "domain_memo": "../audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md",
@@ -43,8 +43,8 @@
     "independent_mathematical_reviews": "CLEAR",
     "review_scope": "AI proof authors and separate AI collaborators reviewed the mathematics, runtime, persisted witness gate and new book chapters; no independent human peer review claimed.",
     "local_machine_acceptance": "PASS",
-    "integration_acceptance": "PENDING",
-    "source_and_verifier_review": "SOURCE_BOUND_LOCAL_ACCEPTANCE_PASS"
+    "integration_acceptance": "PASS",
+    "source_and_verifier_review": "SOURCE_BOUND_LOCAL_AND_ACTUAL_PR_MAIN_ACCEPTANCE_PASS"
   },
   "completed_in_this_delivery": [
     "29 modules and 646 explicit theorems, actual unified Lean 4.33.1 build exit 0, 8793 jobs",
@@ -53,7 +53,8 @@
     "Six exact certificates /42 audits; four corrupted true proofs rejected and four same-data false proofs accepted",
     "100 runtime test methods and four demos reexecuted successfully",
     "80 source inputs; nine pinned Git dependencies; 56 unchanged recursive Core imports",
-    "Formal monograph 3.3: 60 chapters, six appendices, 131 results, actual 203-page PDF"
+    "Formal monograph 3.3: 60 chapters, six appendices, 131 results, actual 203-page PDF",
+    "Actual PR #347 run 39402444333 and resulting-main run 39404249860 passed; exact input and canonical book identities reconciled."
   ],
   "proof_receipt": "../kernel/evidence/v31.7/lean-verification.json",
   "instance_receipt": "../kernel/evidence/v31.7/lean-exports/verification.json",
@@ -79,7 +80,7 @@
   ],
   "integration": {
     "target_branch": "main",
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MAIN_VERIFIED",
     "scope": [
       "physics/qm/**",
       "formalization/ueot-qm/**",
@@ -89,7 +90,7 @@
     "source_manifest": "../kernel/evidence/v31.7/source-manifest.json",
     "source_count": 80,
     "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
-    "source_identity": "Actual per-file local source hashes bind completed execution. A future remote commit or workflow is not yet claimed.",
+    "source_identity": "All 80 accepted input hashes and all 244 frozen publication paths match source a89bc691e698391d03ff7b705cc76def1fa3512e and tested main 87091d1ad4592c4467fa3acc3ac75d67c0edac54; actual PR run 39402444333 and independent main run 39404249860 passed. The later evidence/navigation metadata commit is not another scientific execution or the tested source commit.",
     "previous_version": {
       "target_branch": "main",
       "temporary_branch": "qm/v31.6-core-selection-doob-20261020",
@@ -214,8 +215,28 @@
       "main_verification": "../kernel/evidence/v31.6/ci/main-39381585828-verification.json",
       "version": "31.6-kernel.1.6"
     },
-    "pr_status": "PENDING",
-    "main_status": "PENDING"
+    "pr_status": "PASS",
+    "main_status": "PASS",
+    "temporary_branch": "qm/v31.7-purification-record-dynamics-20261020",
+    "source_commit": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+    "source_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "pull_request": 347,
+    "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/347",
+    "pr_run": 39402444333,
+    "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39402444333",
+    "tested_main_commit": "87091d1ad4592c4467fa3acc3ac75d67c0edac54",
+    "tested_main_tree": "89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d",
+    "main_run": 39404249860,
+    "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39404249860",
+    "source_and_main_tree_identical": true,
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true,
+    "receipt": "../kernel/evidence/v31.7/integration-verification.json",
+    "source_reconciliation": "../kernel/evidence/v31.7/remote-source-reconciliation.json",
+    "main_reconciliation": "../kernel/evidence/v31.7/remote-main-reconciliation.json",
+    "pr_verification": "../kernel/evidence/v31.7/ci/pr-39402444333-verification.json",
+    "main_verification": "../kernel/evidence/v31.7/ci/main-39404249860-verification.json"
   },
   "source_manifest": "../kernel/evidence/v31.7/source-manifest.json",
   "path_conventions": {
@@ -225,7 +246,7 @@
   "book": {
     "title": "UEOT物理学",
     "edition": "3.3",
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MAIN_VERIFIED",
     "canonical": "../book/UEOT_PHYSICS.md",
     "pdf": "../book/UEOT_PHYSICS.pdf",
     "latex": "../book/UEOT_PHYSICS.tex",
@@ -235,7 +256,10 @@
     "pdf_pages": 203,
     "dossier": "../book/CHAPTER_DOSSIER.json",
     "release_gates": "../book/evidence/v3.3/local-release-gates.json",
-    "whole_book_formalized": false
+    "whole_book_formalized": false,
+    "remote_publication": "../book/evidence/v3.3/remote-publication.json",
+    "initial_source_checkpoint_state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "release_gates_scope": "Original local publication gates; the separate remote_publication receipt records completed source/main identity checks."
   },
   "local_verification": {
     "state": "PASS",
@@ -269,10 +293,11 @@
     "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
     "proof_receipt": "../kernel/evidence/v31.7/lean-verification.json",
     "source_manifest": "../kernel/evidence/v31.7/source-manifest.json",
-    "remote_ci": "PENDING"
+    "remote_ci": "PASS_SEPARATELY_RECORDED",
+    "main_integration": "PASS_SEPARATELY_RECORDED"
   },
   "local_checkpoint_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-  "metadata_updated_at_utc": "2026-10-20T08:25:25.467406+00:00",
-  "local_checkpoint_state_scope": "Current v31.7 actual local proof and publication gates; future source/main workflows are separately pending.",
+  "metadata_updated_at_utc": "2026-10-20T10:03:41.429717+00:00",
+  "local_checkpoint_state_scope": "Historical local state in the immutable scientific source commit; the current aggregate state is verification_state.",
   "initial_published_checkpoint_state": "LOCAL_VERIFIED_REMOTE_PENDING"
 }

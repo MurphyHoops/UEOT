@@ -1,6 +1,6 @@
 # UEOT物理学
 
-《UEOT物理学》是钱德桂（Degui Qian）的UEOT理论及量子物理研究正式连续总著，稳定身份UEOT-PHYSICS，当前正式整合版为**3.3**。正文涵盖理论思想、全部继承推导、具体例子、证明责任、反例与开放问题。本版局部及统一证明、结构、排印和实际视觉验收已完成，当前发布状态为**LOCAL_VERIFIED_REMOTE_PENDING**；后续远端状态单独记录。
+《UEOT物理学》是钱德桂（Degui Qian）的UEOT理论及量子物理研究正式连续总著，稳定身份UEOT-PHYSICS，当前正式整合版为**3.3**。正文涵盖理论思想、全部继承推导、具体例子、证明责任、反例与开放问题。本版局部及统一证明、结构、排印、原实际视觉验收，以及科学源码PR和合入后主线CI均已完成，当前发布状态为**MAIN_VERIFIED**；实际身份见[远端发布回执](evidence/v3.3/remote-publication.json)。
 
 ## 完整正文与身份
 
@@ -12,7 +12,8 @@
 | [CHAPTER_DOSSIER.json](CHAPTER_DOSSIER.json) | 60章与6附录的源、分类、逐项证明责任、实际状态和正文片段哈希 |
 | [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) | 11份原材料独立身份及本版受验源码引用 |
 | [结构回执](evidence/v3.3/book-structure.json) | 291章内小节、197稳定锚点、131编号结果 |
-| [发布门](evidence/v3.3/local-release-gates.json) | 实际正文、证明、排印、视觉与发布状态 |
+| [本地验收存档](evidence/v3.3/local-release-gates.json) | 原本地正文、证明、排印及视觉门，保留当时远端待验状态 |
+| [远端发布回执](evidence/v3.3/remote-publication.json) | 科学源PR、独立主线CI和本次元数据绑定 |
 
 本版保留3.2全部117个稳定编号和旧origin，第57–59章新增14项结果，按4/5/5分布。编号不代替原创性、Lean定理数或自然规律计数。形式化声明与全书物理推导的覆盖范围分别登记。
 
@@ -40,13 +41,30 @@
 
 全部公理仅含propext、Classical.choice、Quot.sound。本版新增7公共模块、187显式定理和282审计，其中QuantumDoobModel包括前版见证提取；不把每条语法声明宣称为新物理规律。
 
-实际80项源集SHA-256为b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911。科学源清单、构建、公理、实例、见证与远端身份分别记录；历史HEAD不代替受验源字节。当前源码基线是7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8。
+实际80项源集SHA-256为b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911。科学源清单、构建、公理、实例、见证与远端身份分别记录；历史HEAD不代替受验源字节。本轮作者基线是7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8；实际发布源码和受验主线身份分别登记如下。
 
 | 正式产物 | SHA-256 |
 |---|---|
 | Markdown | 83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c |
 | PDF | 9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c |
 | LaTeX | 364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c |
+
+## 实际远端验收身份
+
+科学源经[PR #347](https://github.com/MurphyHoops/UEOT/pull/347)发布；[根端整合回执](../kernel/evidence/v31.7/integration-verification.json)绑定实际源码、受验主线和逐项字节核对。
+
+| 身份 | 实际值 |
+|---|---|
+| 科学源提交 | `a89bc691e698391d03ff7b705cc76def1fa3512e` |
+| 科学源整树 | `89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d` |
+| PR工作流 | [39402444333](https://github.com/MurphyHoops/UEOT/actions/runs/39402444333)，PASS |
+| 实际受验主线 | `87091d1ad4592c4467fa3acc3ac75d67c0edac54` |
+| 受验主线整树 | `89fea2ddfcbc7c41a5fc1512f5ed7cf8a40e109d` |
+| 主线工作流 | [39404249860](https://github.com/MurphyHoops/UEOT/actions/runs/39404249860)，PASS |
+
+80项受验输入、56项实际Core导入、三种规范正文及244项发布文件均有根端逐项Git blob核对。两次整树相等为 `true`；受验输入相同与整树相同分别记录。
+
+本次只补录当前元数据，旧本地验收、排印、档案审查及视觉回执均保留原字节。原视觉范围是全书总览继承核对加指定完整页：root实际看最终8页，协作者实际看18页；没有把这写成203页逐页完整精读，也没有新增视觉检查。实际CI日志验收范围见两份CI回执；本步骤未下载或核验artifact ZIP内容。后续元数据提交不冒充上述CI-tested科学源或主线提交。
 
 ## 旧证据与分类
 

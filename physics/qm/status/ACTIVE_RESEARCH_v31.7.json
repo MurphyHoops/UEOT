@@ -1,6 +1,6 @@
 {
   "schema": "ueot_qm.active_research.v31.7",
-  "status": "LOCAL_VERIFIED_REMOTE_PENDING",
+  "status": "MAIN_VERIFIED",
   "contract": "../UEOT_QM_EXECUTION_v31.7.md",
   "baseline": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
   "lanes": {
@@ -12,7 +12,7 @@
   "scientific_completion_claimed": false,
   "compiled_results_are_recorded_separately": true,
   "compilation_policy": "Single shared flock /tmp/qm317-lean.lock; development and review in parallel; one final unified gate after integration.",
-  "updated_at_utc": "2026-10-20T08:30:24.678893+00:00",
+  "updated_at_utc": "2026-10-20T10:03:41.429717+00:00",
   "candidate_inventory": {
     "modules": 29,
     "explicit_theorems": 646,
@@ -20,15 +20,31 @@
     "actual_unified_acceptance": "PASS"
   },
   "checkpoint": {
-    "new_main_sources": "All seven focused compilation targets passed; author source freezes recorded separately.",
-    "new_witnesses": "A, B and C focused witnesses passed; all authors froze mathematical inputs; actual unified execution started at 2026-10-20T08:03:10 UTC.",
-    "book": "Canonical 3.3 installed and structure verified: 60 chapters, six appendices, 291 sections, 131 results. PDF and dossier final gates in progress.",
-    "execution": "Actual /tmp/qm317_accept.py completed PASS at 2026-10-20T08:14:47 UTC; all gates and source freeze passed.",
-    "next_plan": "UEOT_QM_EXECUTION_v31.8.md is unformalized planning only."
+    "new_main_sources": "All seven v31.7 modules are in the source-bound accepted package: 29 modules, 646 explicit theorems, 855 named audits.",
+    "new_witnesses": "All seven witnesses passed the local and actual PR/main gates: 151 audits; local source bindings separately identify 110 theorems, 39 definitions and 2 abbreviations.",
+    "book": "Formal monograph 3.3 local release is complete: 203 pages, 60 chapters, 6 appendices, 291 sections and 131 results. Its unchanged three canonical artifacts match the actual source and tested main; book remote metadata is recorded separately.",
+    "execution": "Local acceptance remains its original receipt. Actual PR run 39402444333 and resulting-main run 39404249860 passed; metadata finalization runs no scientific gate.",
+    "next_plan": "UEOT_QM_EXECUTION_v31.8.md remains unformalized planning, not part of the v31.7 proof counts."
   },
   "current_entrypoint": "physics/qm/UEOT_QM_KERNEL_v31.7.md",
   "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
-  "current_book_receipt": "physics/qm/book/evidence/v3.3/local-release-gates.json",
+  "current_book_receipt": "physics/qm/book/evidence/v3.3/remote-publication.json",
   "next_execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
-  "next_execution_status": "PLANNED_NOT_FORMALIZED_NOT_COUNTED_IN_V31_7"
+  "next_execution_status": "PLANNED_NOT_FORMALIZED_NOT_COUNTED_IN_V31_7",
+  "historical_checkpoint": {
+    "scope": "Exact prior checkpoint preserved as historical development progress, not the current acceptance state.",
+    "record_updated_at_utc": "2026-10-20T08:30:24.678893+00:00",
+    "checkpoint": {
+      "new_main_sources": "All seven focused compilation targets passed; author source freezes recorded separately.",
+      "new_witnesses": "A, B and C focused witnesses passed; all authors froze mathematical inputs; actual unified execution started at 2026-10-20T08:03:10 UTC.",
+      "book": "Canonical 3.3 installed and structure verified: 60 chapters, six appendices, 291 sections, 131 results. PDF and dossier final gates in progress.",
+      "execution": "Actual /tmp/qm317_accept.py completed PASS at 2026-10-20T08:14:47 UTC; all gates and source freeze passed.",
+      "next_plan": "UEOT_QM_EXECUTION_v31.8.md is unformalized planning only."
+    }
+  },
+  "state": "MAIN_VERIFIED",
+  "integration_receipt": "physics/qm/kernel/evidence/v31.7/integration-verification.json",
+  "source_commit": "a89bc691e698391d03ff7b705cc76def1fa3512e",
+  "tested_main_commit": "87091d1ad4592c4467fa3acc3ac75d67c0edac54",
+  "local_book_receipt": "physics/qm/book/evidence/v3.3/local-release-gates.json"
 }

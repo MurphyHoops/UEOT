@@ -1,0 +1,391 @@
+﻿2026-10-20T09:55:48.9956317Z Current runner version: '2.337.0'
+2026-10-20T09:55:48.9991897Z ##[group]Runner Image Provisioner
+2026-10-20T09:55:48.9993290Z Hosted Compute Agent
+2026-10-20T09:55:48.9994372Z Version: 20261012.601
+2026-10-20T09:55:48.9995382Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-20T09:55:48.9997122Z Build Date: 2026-10-12T17:48:21Z
+2026-10-20T09:55:48.9998547Z Worker ID: {5b266266-da88-4e61-92af-82b78f4bb7d4}
+2026-10-20T09:55:48.9999931Z Region: eastus
+2026-10-20T09:55:49.0000901Z Cloud: Azure
+2026-10-20T09:55:49.0001804Z ##[endgroup]
+2026-10-20T09:55:49.0004171Z ##[group]Operating System
+2026-10-20T09:55:49.0005252Z Ubuntu
+2026-10-20T09:55:49.0006205Z 24.04.5
+2026-10-20T09:55:49.0007049Z LTS
+2026-10-20T09:55:49.0008168Z ##[endgroup]
+2026-10-20T09:55:49.0009237Z ##[group]Runner Image
+2026-10-20T09:55:49.0010203Z Image: ubuntu-24.04
+2026-10-20T09:55:49.0011348Z Version: 20261012.334.1
+2026-10-20T09:55:49.0013404Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-20T09:55:49.0016196Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-20T09:55:49.0018192Z ##[endgroup]
+2026-10-20T09:55:49.0020167Z ##[group]GITHUB_TOKEN Permissions
+2026-10-20T09:55:49.0023147Z Contents: read
+2026-10-20T09:55:49.0024182Z Metadata: read
+2026-10-20T09:55:49.0025120Z ##[endgroup]
+2026-10-20T09:55:49.0028521Z Secret source: Actions
+2026-10-20T09:55:49.0030043Z Cache mode: write
+2026-10-20T09:55:49.0031546Z Prepare workflow directory
+2026-10-20T09:55:49.0511241Z Prepare all required actions
+2026-10-20T09:55:49.0582956Z Getting action download info
+2026-10-20T09:55:49.2586583Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-20T09:55:49.3868095Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-10-20T09:55:49.5048239Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-20T09:55:49.7295327Z Complete job name: runtime
+2026-10-20T09:55:49.8124269Z ##[group]Run actions/checkout@v6
+2026-10-20T09:55:49.8125175Z with:
+2026-10-20T09:55:49.8125670Z   ref: 87091d1ad4592c4467fa3acc3ac75d67c0edac54
+2026-10-20T09:55:49.8126303Z   persist-credentials: false
+2026-10-20T09:55:49.8126836Z   repository: MurphyHoops/UEOT
+2026-10-20T09:55:49.8130918Z   token: ***
+2026-10-20T09:55:49.8131373Z   ssh-strict: true
+2026-10-20T09:55:49.8131823Z   ssh-user: git
+2026-10-20T09:55:49.8132252Z   clean: true
+2026-10-20T09:55:49.8132714Z   sparse-checkout-cone-mode: true
+2026-10-20T09:55:49.8133239Z   fetch-depth: 1
+2026-10-20T09:55:49.8133673Z   fetch-tags: false
+2026-10-20T09:55:49.8134134Z   show-progress: true
+2026-10-20T09:55:49.8134583Z   lfs: false
+2026-10-20T09:55:49.8135002Z   submodules: false
+2026-10-20T09:55:49.8135462Z   set-safe-directory: true
+2026-10-20T09:55:49.8135985Z   allow-unsafe-pr-checkout: false
+2026-10-20T09:55:49.8136823Z ##[endgroup]
+2026-10-20T09:55:49.9204764Z Syncing repository: MurphyHoops/UEOT
+2026-10-20T09:55:49.9206707Z ##[group]Getting Git version info
+2026-10-20T09:55:49.9208293Z Working directory is '/home/runner/work/UEOT/UEOT'
+2026-10-20T09:55:49.9209849Z [command]/usr/bin/git version
+2026-10-20T09:55:49.9297667Z git version 2.55.0
+2026-10-20T09:55:49.9326501Z ##[endgroup]
+2026-10-20T09:55:49.9355753Z Temporarily overriding HOME='/home/runner/work/_temp/b2687ef5-5e25-485f-9a9b-42e22aaceb96' before making global git config changes
+2026-10-20T09:55:49.9358343Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T09:55:49.9360404Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UEOT/UEOT
+2026-10-20T09:55:49.9407381Z Deleting the contents of '/home/runner/work/UEOT/UEOT'
+2026-10-20T09:55:49.9412853Z ##[group]Determining repository object format
+2026-10-20T09:55:49.9415386Z ##[endgroup]
+2026-10-20T09:55:49.9416553Z ##[group]Initializing the repository
+2026-10-20T09:55:49.9420367Z [command]/usr/bin/git init /home/runner/work/UEOT/UEOT
+2026-10-20T09:55:49.9541198Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-20T09:55:49.9542972Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-20T09:55:49.9544002Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-20T09:55:49.9544777Z hint: call:
+2026-10-20T09:55:49.9545215Z hint:
+2026-10-20T09:55:49.9545760Z hint: 	git config --global init.defaultBranch <name>
+2026-10-20T09:55:49.9546429Z hint:
+2026-10-20T09:55:49.9547058Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-20T09:55:49.9548990Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-20T09:55:49.9550386Z hint:
+2026-10-20T09:55:49.9551329Z hint: 	git branch -m <name>
+2026-10-20T09:55:49.9552724Z hint:
+2026-10-20T09:55:49.9554059Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-20T09:55:49.9558693Z Initialized empty Git repository in /home/runner/work/UEOT/UEOT/.git/
+2026-10-20T09:55:49.9568376Z [command]/usr/bin/git remote add origin https://github.com/MurphyHoops/UEOT
+2026-10-20T09:55:49.9618928Z ##[endgroup]
+2026-10-20T09:55:49.9620304Z ##[group]Disabling automatic garbage collection
+2026-10-20T09:55:49.9623393Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-20T09:55:49.9661073Z ##[endgroup]
+2026-10-20T09:55:49.9662539Z ##[group]Setting up auth
+2026-10-20T09:55:49.9663689Z Removing SSH command configuration
+2026-10-20T09:55:49.9669324Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T09:55:49.9726137Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T09:55:50.0129049Z Removing HTTP extra header
+2026-10-20T09:55:50.0138340Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T09:55:50.0179065Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T09:55:50.0492297Z Removing includeIf entries pointing to credentials config files
+2026-10-20T09:55:50.0494009Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T09:55:50.0537992Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T09:55:50.0792797Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-20T09:55:50.0838431Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/UEOT/UEOT/.git.path /home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:50.0876063Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:50.0922046Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:50.0984974Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:50.1026095Z ##[endgroup]
+2026-10-20T09:55:50.1028175Z ##[group]Fetching the repository
+2026-10-20T09:55:50.1035954Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 87091d1ad4592c4467fa3acc3ac75d67c0edac54
+2026-10-20T09:55:51.2236531Z From https://github.com/MurphyHoops/UEOT
+2026-10-20T09:55:51.2238994Z  * branch            87091d1ad4592c4467fa3acc3ac75d67c0edac54 -> FETCH_HEAD
+2026-10-20T09:55:51.2253017Z [command]/usr/bin/git rev-parse --verify --quiet 87091d1ad4592c4467fa3acc3ac75d67c0edac54^{object}
+2026-10-20T09:55:51.2286171Z 87091d1ad4592c4467fa3acc3ac75d67c0edac54
+2026-10-20T09:55:51.2292604Z ##[endgroup]
+2026-10-20T09:55:51.2293890Z ##[group]Determining the checkout info
+2026-10-20T09:55:51.2295331Z ##[endgroup]
+2026-10-20T09:55:51.2302438Z [command]/usr/bin/git sparse-checkout disable
+2026-10-20T09:55:51.2367882Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-20T09:55:51.2405223Z ##[group]Checking out the ref
+2026-10-20T09:55:51.2410324Z [command]/usr/bin/git checkout --progress --force 87091d1ad4592c4467fa3acc3ac75d67c0edac54
+2026-10-20T09:55:51.4212275Z Note: switching to '87091d1ad4592c4467fa3acc3ac75d67c0edac54'.
+2026-10-20T09:55:51.4213215Z 
+2026-10-20T09:55:51.4213821Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-20T09:55:51.4215231Z changes and commit them, and you can discard any commits you make in this
+2026-10-20T09:55:51.4216576Z state without impacting any branches by switching back to a branch.
+2026-10-20T09:55:51.4217636Z 
+2026-10-20T09:55:51.4218198Z If you want to create a new branch to retain commits you create, you may
+2026-10-20T09:55:51.4219437Z do so (now or later) by using -c with the switch command. Example:
+2026-10-20T09:55:51.4220209Z 
+2026-10-20T09:55:51.4220571Z   git switch -c <new-branch-name>
+2026-10-20T09:55:51.4221181Z 
+2026-10-20T09:55:51.4221556Z Or undo this operation with:
+2026-10-20T09:55:51.4222065Z 
+2026-10-20T09:55:51.4222384Z   git switch -
+2026-10-20T09:55:51.4231449Z 
+2026-10-20T09:55:51.4232708Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-20T09:55:51.4234374Z 
+2026-10-20T09:55:51.4235696Z HEAD is now at 87091d1 Merge QM v31.7: purification, record memory, and conditional dynamics
+2026-10-20T09:55:51.4239778Z ##[endgroup]
+2026-10-20T09:55:51.4281369Z [command]/usr/bin/git log -1 --format=%H
+2026-10-20T09:55:51.4311530Z 87091d1ad4592c4467fa3acc3ac75d67c0edac54
+2026-10-20T09:55:51.4322206Z ##[group]Removing auth
+2026-10-20T09:55:51.4323673Z Removing SSH command configuration
+2026-10-20T09:55:51.4325770Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T09:55:51.4360943Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T09:55:51.4603130Z Removing HTTP extra header
+2026-10-20T09:55:51.4606733Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T09:55:51.4646774Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T09:55:51.4877001Z Removing includeIf entries pointing to credentials config files
+2026-10-20T09:55:51.4880386Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T09:55:51.4912250Z includeif.gitdir:/home/runner/work/UEOT/UEOT/.git.path
+2026-10-20T09:55:51.4915756Z includeif.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path
+2026-10-20T09:55:51.4919138Z includeif.gitdir:/github/workspace/.git.path
+2026-10-20T09:55:51.4922067Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-20T09:55:51.4929229Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/UEOT/UEOT/.git.path
+2026-10-20T09:55:51.4954145Z /home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.4966465Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/UEOT/UEOT/.git.path /home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.5004014Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path
+2026-10-20T09:55:51.5029107Z /home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.5039634Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.5077019Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-20T09:55:51.5106307Z /github/runner_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.5115643Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.5160094Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-20T09:55:51.5194736Z /github/runner_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.5202949Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config
+2026-10-20T09:55:51.5239975Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T09:55:51.5465277Z Removing credentials config '/home/runner/work/_temp/git-credentials-310ac9e0-0525-4dab-963f-ca50c1f98889.config'
+2026-10-20T09:55:51.5473832Z ##[endgroup]
+2026-10-20T09:55:51.5895432Z ##[group]Run actions/setup-python@v6
+2026-10-20T09:55:51.5896632Z with:
+2026-10-20T09:55:51.5897824Z   python-version: 3.12
+2026-10-20T09:55:51.5898824Z   check-latest: false
+2026-10-20T09:55:51.5907580Z   token: ***
+2026-10-20T09:55:51.5908526Z   update-environment: true
+2026-10-20T09:55:51.5909569Z   allow-prereleases: false
+2026-10-20T09:55:51.5910620Z   freethreaded: false
+2026-10-20T09:55:51.5911555Z ##[endgroup]
+2026-10-20T09:55:51.7291152Z ##[group]Installed versions
+2026-10-20T09:55:51.7775601Z Successfully set up CPython (3.12.15)
+2026-10-20T09:55:51.7778399Z ##[endgroup]
+2026-10-20T09:55:51.8003079Z ##[group]Run python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
+2026-10-20T09:55:51.8005706Z [36;1mpython physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json[0m
+2026-10-20T09:55:51.8346241Z shell: /usr/bin/bash -e {0}
+2026-10-20T09:55:51.8348079Z env:
+2026-10-20T09:55:51.8349649Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:51.8351948Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T09:55:51.8353929Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:51.8355742Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:51.8357684Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:51.8359563Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T09:55:51.8361130Z ##[endgroup]
+2026-10-20T09:55:53.2426229Z test_budget_is_an_upper_bound_not_always_the_distance (test_finite_dynamics.FiniteDynamicsTests.test_budget_is_an_upper_bound_not_always_the_distance) ... ok
+2026-10-20T09:55:53.3413514Z test_cesaro_cycle_boundary_and_sharp_odd_residual (test_finite_dynamics.FiniteDynamicsTests.test_cesaro_cycle_boundary_and_sharp_odd_residual) ... ok
+2026-10-20T09:55:53.3425172Z test_cesaro_rejects_undefined_zero_average_and_invalid_state (test_finite_dynamics.FiniteDynamicsTests.test_cesaro_rejects_undefined_zero_average_and_invalid_state) ... ok
+2026-10-20T09:55:53.3568041Z test_diagonal_success_word_has_geometric_mass_and_qsd_posterior (test_finite_dynamics.FiniteDynamicsTests.test_diagonal_success_word_has_geometric_mass_and_qsd_posterior) ... ok
+2026-10-20T09:55:53.3638311Z test_doob_stationary_law_differs_from_qsd (test_finite_dynamics.FiniteDynamicsTests.test_doob_stationary_law_differs_from_qsd) ... ok
+2026-10-20T09:55:53.3656031Z test_equal_weights_do_not_control_a_changed_component_library (test_finite_dynamics.FiniteDynamicsTests.test_equal_weights_do_not_control_a_changed_component_library) ... ok
+2026-10-20T09:55:53.3664747Z test_exact_weights_reject_invalid_premises (test_finite_dynamics.FiniteDynamicsTests.test_exact_weights_reject_invalid_premises) ... ok
+2026-10-20T09:55:53.3676795Z test_mixture_validates_common_context_even_at_zero_weight (test_finite_dynamics.FiniteDynamicsTests.test_mixture_validates_common_context_even_at_zero_weight) ... ok
+2026-10-20T09:55:53.3763818Z test_row_orientation_initial_law_and_loss_are_essential (test_finite_dynamics.FiniteDynamicsTests.test_row_orientation_initial_law_and_loss_are_essential) ... ok
+2026-10-20T09:55:53.3822530Z test_stationary_existence_does_not_imply_uniqueness (test_finite_dynamics.FiniteDynamicsTests.test_stationary_existence_does_not_imply_uniqueness) ... ok
+2026-10-20T09:55:53.3880839Z test_substochastic_validation_and_zero_event (test_finite_dynamics.FiniteDynamicsTests.test_substochastic_validation_and_zero_event) ... ok
+2026-10-20T09:55:53.3914862Z test_total_variation_bound_is_attained (test_finite_dynamics.FiniteDynamicsTests.test_total_variation_bound_is_attained) ... ok
+2026-10-20T09:55:53.3944250Z test_weighted_kraus_component_needs_no_irrational_runtime (test_finite_dynamics.FiniteDynamicsTests.test_weighted_kraus_component_needs_no_irrational_runtime) ... ok
+2026-10-20T09:55:53.5759950Z test_deep_finite_protocol_certificate_uses_no_recursive_serialization (test_kernel.CertificateTests.test_deep_finite_protocol_certificate_uses_no_recursive_serialization) ... ok
+2026-10-20T09:55:53.5764654Z test_empty_or_misaligned_certificate_scope_is_rejected (test_kernel.CertificateTests.test_empty_or_misaligned_certificate_scope_is_rejected) ... ok
+2026-10-20T09:55:53.5848069Z test_finite_coverage_cannot_be_promoted_to_all_protocols (test_kernel.CertificateTests.test_finite_coverage_cannot_be_promoted_to_all_protocols) ... ok
+2026-10-20T09:55:53.5850434Z test_postselection_amplifies_rare_record_difference (test_kernel.CertificateTests.test_postselection_amplifies_rare_record_difference) ... ok
+2026-10-20T09:55:53.5859924Z test_postselection_positive_mass_guard_and_nontrivial_bound (test_kernel.CertificateTests.test_postselection_positive_mass_guard_and_nontrivial_bound) ... ok
+2026-10-20T09:55:53.5862051Z test_transport_budget_and_checked_recurrence (test_kernel.CertificateTests.test_transport_budget_and_checked_recurrence) ... ok
+2026-10-20T09:55:53.5863963Z test_transport_rejects_hidden_failed_local_premise (test_kernel.CertificateTests.test_transport_rejects_hidden_failed_local_premise) ... ok
+2026-10-20T09:55:53.5865859Z test_tv_support_alignment_and_normalization (test_kernel.CertificateTests.test_tv_support_alignment_and_normalization) ... ok
+2026-10-20T09:55:53.5904210Z test_adjoint_trace_duality_with_complex_inputs (test_kernel.ExactQuantumTests.test_adjoint_trace_duality_with_complex_inputs) ... ok
+2026-10-20T09:55:53.5906836Z test_all_principal_minors_are_needed (test_kernel.ExactQuantumTests.test_all_principal_minors_are_needed) ... ok
+2026-10-20T09:55:53.5936911Z test_bell_partial_transpose_is_not_positive (test_kernel.ExactQuantumTests.test_bell_partial_transpose_is_not_positive) ... ok
+2026-10-20T09:55:53.5942827Z test_complex_phase_arithmetic (test_kernel.ExactQuantumTests.test_complex_phase_arithmetic) ... ok
+2026-10-20T09:55:53.6216352Z test_complex_y_phase_is_observable (test_kernel.ExactQuantumTests.test_complex_y_phase_is_observable) ... ok
+2026-10-20T09:55:53.6302377Z test_damping_on_entangled_input (test_kernel.ExactQuantumTests.test_damping_on_entangled_input) ... ok
+2026-10-20T09:55:53.6341459Z test_damping_with_multiple_weighted_kraus_terms (test_kernel.ExactQuantumTests.test_damping_with_multiple_weighted_kraus_terms) ... ok
+2026-10-20T09:55:53.6357127Z test_density_positive_and_negative_controls (test_kernel.ExactQuantumTests.test_density_positive_and_negative_controls) ... ok
+2026-10-20T09:55:53.6370730Z test_dimension_and_completeness_rejections (test_kernel.ExactQuantumTests.test_dimension_and_completeness_rejections) ... ok
+2026-10-20T09:55:53.6404924Z test_hadamard_interference_has_exact_probabilities (test_kernel.ExactQuantumTests.test_hadamard_interference_has_exact_probabilities) ... ok
+2026-10-20T09:55:53.6407104Z test_inexact_inputs_rejected (test_kernel.ExactQuantumTests.test_inexact_inputs_rejected) ... ok
+2026-10-20T09:55:53.6428595Z test_zero_branch_has_no_posterior (test_kernel.ExactQuantumTests.test_zero_branch_has_no_posterior) ... ok
+2026-10-20T09:55:53.7238892Z test_all_positive_branches_are_physical (test_kernel.PredictiveQuotientTests.test_all_positive_branches_are_physical) ... ok
+2026-10-20T09:55:53.7292475Z test_context_change_requires_reencoding (test_kernel.PredictiveQuotientTests.test_context_change_requires_reencoding) ... ok
+2026-10-20T09:55:53.8113248Z test_coordinate_only_record_laws_match_dense_oracle (test_kernel.PredictiveQuotientTests.test_coordinate_only_record_laws_match_dense_oracle) ... ok
+2026-10-20T09:55:53.8129274Z test_fingerprint_is_representation_sensitive (test_kernel.PredictiveQuotientTests.test_fingerprint_is_representation_sensitive) ... ok
+2026-10-20T09:55:53.8142848Z test_invalid_record_is_rejected_even_after_zero_probability (test_kernel.PredictiveQuotientTests.test_invalid_record_is_rejected_even_after_zero_probability) ... ok
+2026-10-20T09:55:53.8145424Z test_observable_dimensions_and_terminal_stability (test_kernel.PredictiveQuotientTests.test_observable_dimensions_and_terminal_stability) ... ok
+2026-10-20T09:55:53.8200633Z test_protocol_relative_equivalence (test_kernel.PredictiveQuotientTests.test_protocol_relative_equivalence) ... ok
+2026-10-20T09:55:53.8367667Z test_pullbacks_close_every_basis_effect (test_kernel.PredictiveQuotientTests.test_pullbacks_close_every_basis_effect) ... ok
+2026-10-20T09:55:53.8398047Z test_recursive_branch_matches_closed_form (test_kernel.PredictiveQuotientTests.test_recursive_branch_matches_closed_form) ... ok
+2026-10-20T09:55:53.8548404Z test_adaptive_controller_complete_law (test_kernel.ProtocolAndMemoryTests.test_adaptive_controller_complete_law) ... ok
+2026-10-20T09:55:53.8601999Z test_protocol_validation_includes_impossible_continuations (test_kernel.ProtocolAndMemoryTests.test_protocol_validation_includes_impossible_continuations) ... ok
+2026-10-20T09:55:53.9903187Z test_same_system_and_environment_marginals_do_not_fix_memory (test_kernel.ProtocolAndMemoryTests.test_same_system_and_environment_marginals_do_not_fix_memory) ... ok
+2026-10-20T09:55:53.9912912Z test_changed_contract_and_unknown_fields_are_rejected (test_lean_export.LeanExportTests.test_changed_contract_and_unknown_fields_are_rejected) ... ok
+2026-10-20T09:55:53.9928290Z test_cycles_and_oversized_literal_are_rejected_explicitly (test_lean_export.LeanExportTests.test_cycles_and_oversized_literal_are_rejected_explicitly) ... ok
+2026-10-20T09:55:54.2530752Z test_data_have_exact_numeric_semantics_for_all_positive_shapes (test_lean_export.LeanExportTests.test_data_have_exact_numeric_semantics_for_all_positive_shapes) ... ok
+2026-10-20T09:55:54.2581769Z test_hand_certificate_needs_no_predictive_search (test_lean_export.LeanExportTests.test_hand_certificate_needs_no_predictive_search) ... ok
+2026-10-20T09:55:54.3179286Z test_hsz_real_imaginary_parts_and_word_direction_survive (test_lean_export.LeanExportTests.test_hsz_real_imaginary_parts_and_word_direction_survive) ... ok
+2026-10-20T09:55:54.3211269Z test_labels_cannot_supply_lean_tokens_or_paths (test_lean_export.LeanExportTests.test_labels_cannot_supply_lean_tokens_or_paths) ... ok
+2026-10-20T09:55:54.3256032Z test_no_mutable_alias_to_certificate_or_manifest (test_lean_export.LeanExportTests.test_no_mutable_alias_to_certificate_or_manifest) ... ok
+2026-10-20T09:55:54.3292919Z test_noncanonical_and_non_json_numeric_inputs_are_not_coerced (test_lean_export.LeanExportTests.test_noncanonical_and_non_json_numeric_inputs_are_not_coerced) ... ok
+2026-10-20T09:55:54.3375586Z test_padded_resource_budget_is_enforced_without_partial_output (test_lean_export.LeanExportTests.test_padded_resource_budget_is_enforced_without_partial_output) ... ok
+2026-10-20T09:55:54.3780508Z test_ragged_and_explicit_impossible_outcomes_remain_distinct (test_lean_export.LeanExportTests.test_ragged_and_explicit_impossible_outcomes_remain_distinct) ... ok
+2026-10-20T09:55:54.3868041Z test_repeated_export_is_deterministic_and_bound_to_exact_source (test_lean_export.LeanExportTests.test_repeated_export_is_deterministic_and_bound_to_exact_source) ... ok
+2026-10-20T09:55:54.3905985Z test_wrong_kraus_data_and_library_anchor_are_rejected (test_lean_export.LeanExportTests.test_wrong_kraus_data_and_library_anchor_are_rejected) ... ok
+2026-10-20T09:55:54.3981268Z test_wrong_pullback_and_missing_branch_are_rejected (test_lean_export.LeanExportTests.test_wrong_pullback_and_missing_branch_are_rejected) ... ok
+2026-10-20T09:55:54.4188266Z test_wrong_word_is_rejected_before_source_generation (test_lean_export.LeanExportTests.test_wrong_word_is_rejected_before_source_generation) ... ok
+2026-10-20T09:55:54.4234414Z test_zero_weight_original_term_is_not_rewritten_as_padding (test_lean_export.LeanExportTests.test_zero_weight_original_term_is_not_rewritten_as_padding) ... ok
+2026-10-20T09:55:54.4507874Z test_alternative_valid_basis_allowed_only_under_its_own_context (test_representation_certificate.RepresentationCertificateTests.test_alternative_valid_basis_allowed_only_under_its_own_context) ... ok
+2026-10-20T09:55:54.4522992Z test_an_ungenerated_distinguishing_direction_is_rejected (test_representation_certificate.RepresentationCertificateTests.test_an_ungenerated_distinguishing_direction_is_rejected) ... ok
+2026-10-20T09:55:54.4571937Z test_checker_does_not_call_model_search_solver_or_adjoint (test_representation_certificate.RepresentationCertificateTests.test_checker_does_not_call_model_search_solver_or_adjoint) ... ok
+2026-10-20T09:55:54.4603926Z test_complex_coefficient_and_nonhermitian_effect_are_rejected (test_representation_certificate.RepresentationCertificateTests.test_complex_coefficient_and_nonhermitian_effect_are_rejected) ... ok
+2026-10-20T09:55:54.4652960Z test_context_and_serialized_library_tampering_are_rejected (test_representation_certificate.RepresentationCertificateTests.test_context_and_serialized_library_tampering_are_rejected) ... ok
+2026-10-20T09:55:54.4671240Z test_dependent_actual_word_basis_is_rejected (test_representation_certificate.RepresentationCertificateTests.test_dependent_actual_word_basis_is_rejected) ... ok
+2026-10-20T09:55:54.5160546Z test_dimension_one_and_four_have_exact_certificates (test_representation_certificate.RepresentationCertificateTests.test_dimension_one_and_four_have_exact_certificates) ... ok
+2026-10-20T09:55:54.5192453Z test_expected_library_is_rechecked_and_not_inferred_from_the_claim (test_representation_certificate.RepresentationCertificateTests.test_expected_library_is_rechecked_and_not_inferred_from_the_claim) ... ok
+2026-10-20T09:55:54.5209719Z test_generated_but_nonclosed_subspace_is_rejected (test_representation_certificate.RepresentationCertificateTests.test_generated_but_nonclosed_subspace_is_rejected) ... ok
+2026-10-20T09:55:54.5254124Z test_hand_computed_z_representation (test_representation_certificate.RepresentationCertificateTests.test_hand_computed_z_representation) ... ok
+2026-10-20T09:55:54.5293150Z test_impossible_outcome_still_requires_its_zero_pullback (test_representation_certificate.RepresentationCertificateTests.test_impossible_outcome_still_requires_its_zero_pullback) ... ok
+2026-10-20T09:55:54.5372381Z test_missing_duplicate_and_unknown_branch_claims_are_rejected (test_representation_certificate.RepresentationCertificateTests.test_missing_duplicate_and_unknown_branch_claims_are_rejected) ... ok
+2026-10-20T09:55:54.5420239Z test_noncanonical_and_inexact_scalar_payloads_are_rejected (test_representation_certificate.RepresentationCertificateTests.test_noncanonical_and_inexact_scalar_payloads_are_rejected) ... ok
+2026-10-20T09:55:54.5438655Z test_origin_requires_identity_and_empty_word (test_representation_certificate.RepresentationCertificateTests.test_origin_requires_identity_and_empty_word) ... ok
+2026-10-20T09:55:54.5468015Z test_protocol_schema_dimensions_and_witness_resource_limits (test_representation_certificate.RepresentationCertificateTests.test_protocol_schema_dimensions_and_witness_resource_limits) ... ok
+2026-10-20T09:55:54.5634368Z test_reversed_witness_is_rejected_even_with_correct_effect_hash (test_representation_certificate.RepresentationCertificateTests.test_reversed_witness_is_rejected_even_with_correct_effect_hash) ... ok
+2026-10-20T09:55:54.5690507Z test_wrong_pullback_orientation_and_coefficients_are_rejected (test_representation_certificate.RepresentationCertificateTests.test_wrong_pullback_orientation_and_coefficients_are_rejected) ... ok
+2026-10-20T09:55:54.6504035Z test_z_hz_hsz_exports_have_expected_ranks_and_chronological_words (test_representation_certificate.RepresentationCertificateTests.test_z_hz_hsz_exports_have_expected_ranks_and_chronological_words) ... ok
+2026-10-20T09:55:54.6552463Z test_arbitrary_exact_beta_samples_with_completion (test_spectrum.FullLocalAnomalyTests.test_arbitrary_exact_beta_samples_with_completion) ... ok
+2026-10-20T09:55:54.6563727Z test_complete_three_family_331_has_six_zero_coefficients (test_spectrum.FullLocalAnomalyTests.test_complete_three_family_331_has_six_zero_coefficients) ... ok
+2026-10-20T09:55:54.6590367Z test_conjugation_charge_and_multiplicity_failure_controls (test_spectrum.FullLocalAnomalyTests.test_conjugation_charge_and_multiplicity_failure_controls) ... ok
+2026-10-20T09:55:54.6608769Z test_missing_exotic_lepton_completion_produces_exact_residue (test_spectrum.FullLocalAnomalyTests.test_missing_exotic_lepton_completion_produces_exact_residue) ... ok
+2026-10-20T09:55:54.6618981Z test_mixed_two_family_six_anomaly_counterexample (test_spectrum.FullLocalAnomalyTests.test_mixed_two_family_six_anomaly_counterexample) ... ok
+2026-10-20T09:55:54.6628687Z test_neutral_rhn_special_point_does_not_hide_generic_failure (test_spectrum.FullLocalAnomalyTests.test_neutral_rhn_special_point_does_not_hide_generic_failure) ... ok
+2026-10-20T09:55:54.6650855Z test_replicated_six_family_local_anomalies_cancel (test_spectrum.FullLocalAnomalyTests.test_replicated_six_family_local_anomalies_cancel) ... ok
+2026-10-20T09:55:54.6655113Z test_actual_three_family_rows_and_higgs (test_spectrum.SpectrumBridgeTests.test_actual_three_family_rows_and_higgs) ... ok
+2026-10-20T09:55:54.6658414Z test_compensated_one_family_does_not_pass_family_self_cancellation (test_spectrum.SpectrumBridgeTests.test_compensated_one_family_does_not_pass_family_self_cancellation) ... ok
+2026-10-20T09:55:54.6665805Z test_extra_screening_and_distinct_spin_weights (test_spectrum.SpectrumBridgeTests.test_extra_screening_and_distinct_spin_weights) ... ok
+2026-10-20T09:55:54.6671267Z test_extra_weyl_compensation_and_inactive_parent_anomaly (test_spectrum.SpectrumBridgeTests.test_extra_weyl_compensation_and_inactive_parent_anomaly) ... ok
+2026-10-20T09:55:54.6676244Z test_four_families_with_nc_two_and_empty_spectrum (test_spectrum.SpectrumBridgeTests.test_four_families_with_nc_two_and_empty_spectrum) ... ok
+2026-10-20T09:55:54.6680657Z test_integer_sign_scalar_and_weight_validation (test_spectrum.SpectrumBridgeTests.test_integer_sign_scalar_and_weight_validation) ... ok
+2026-10-20T09:55:54.6684424Z test_mixed_lepton_two_families_outside_homogeneous_contract (test_spectrum.SpectrumBridgeTests.test_mixed_lepton_two_families_outside_homogeneous_contract) ... ok
+2026-10-20T09:55:54.6691074Z test_nonzero_anomaly_unit_may_have_either_sign (test_spectrum.SpectrumBridgeTests.test_nonzero_anomaly_unit_may_have_either_sign) ... ok
+2026-10-20T09:55:54.6695645Z test_only_combined_extra_cubic_sum_must_vanish (test_spectrum.SpectrumBridgeTests.test_only_combined_extra_cubic_sum_must_vanish) ... ok
+2026-10-20T09:55:54.6701056Z test_partial_threshold_activity_cannot_exclude_all_six_families (test_spectrum.SpectrumBridgeTests.test_partial_threshold_activity_cannot_exclude_all_six_families) ... ok
+2026-10-20T09:55:54.6706108Z test_six_family_replication_fails_full_weak_coefficient (test_spectrum.SpectrumBridgeTests.test_six_family_replication_fails_full_weak_coefficient) ... ok
+2026-10-20T09:55:54.6713422Z test_unique_labels_and_receipt_identity (test_spectrum.SpectrumBridgeTests.test_unique_labels_and_receipt_identity) ... ok
+2026-10-20T09:55:54.6723555Z test_weak_window_declarations_are_required (test_spectrum.SpectrumBridgeTests.test_weak_window_declarations_are_required) ... ok
+2026-10-20T09:55:54.6727492Z test_wrong_quark_sign_is_detected_in_row_sum (test_spectrum.SpectrumBridgeTests.test_wrong_quark_sign_is_detected_in_row_sum) ... ok
+2026-10-20T09:55:54.6730076Z test_zero_anomaly_unit_is_rejected_as_uninformative (test_spectrum.SpectrumBridgeTests.test_zero_anomaly_unit_is_rejected_as_uninformative) ... ok
+2026-10-20T09:55:54.6731156Z 
+2026-10-20T09:55:54.6731451Z ----------------------------------------------------------------------
+2026-10-20T09:55:54.6732032Z Ran 100 tests in 1.434s
+2026-10-20T09:55:54.6732276Z 
+2026-10-20T09:55:54.6732404Z OK
+2026-10-20T09:55:54.7040912Z ##[group]Run python physics/qm/kernel/demo.py > /tmp/ueot-qm-demo.json
+2026-10-20T09:55:54.7041524Z [36;1mpython physics/qm/kernel/demo.py > /tmp/ueot-qm-demo.json[0m
+2026-10-20T09:55:54.7108995Z shell: /usr/bin/bash -e {0}
+2026-10-20T09:55:54.7109315Z env:
+2026-10-20T09:55:54.7109656Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.7110225Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T09:55:54.7110787Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.7111299Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.7111808Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.7112318Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T09:55:54.7112743Z ##[endgroup]
+2026-10-20T09:55:54.8580812Z ##[group]Run python physics/qm/kernel/demo_v312.py > /tmp/ueot-qm-demo-v312.json
+2026-10-20T09:55:54.8581430Z [36;1mpython physics/qm/kernel/demo_v312.py > /tmp/ueot-qm-demo-v312.json[0m
+2026-10-20T09:55:54.8660482Z shell: /usr/bin/bash -e {0}
+2026-10-20T09:55:54.8660763Z env:
+2026-10-20T09:55:54.8661075Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.8661578Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T09:55:54.8662079Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.8662514Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.8662954Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:54.8663400Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T09:55:54.8663768Z ##[endgroup]
+2026-10-20T09:55:55.0510682Z ##[group]Run python physics/qm/kernel/demo_v313.py > /tmp/ueot-qm-demo-v313.json
+2026-10-20T09:55:55.0511304Z [36;1mpython physics/qm/kernel/demo_v313.py > /tmp/ueot-qm-demo-v313.json[0m
+2026-10-20T09:55:55.0575191Z shell: /usr/bin/bash -e {0}
+2026-10-20T09:55:55.0575483Z env:
+2026-10-20T09:55:55.0575791Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.0576320Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T09:55:55.0576853Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.0577645Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.0578117Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.0578591Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T09:55:55.0578985Z ##[endgroup]
+2026-10-20T09:55:55.3330967Z ##[group]Run python physics/qm/kernel/demo_v315.py > /tmp/ueot-qm-demo-v315.json
+2026-10-20T09:55:55.3331637Z [36;1mpython physics/qm/kernel/demo_v315.py > /tmp/ueot-qm-demo-v315.json[0m
+2026-10-20T09:55:55.3396979Z shell: /usr/bin/bash -e {0}
+2026-10-20T09:55:55.3397516Z env:
+2026-10-20T09:55:55.3397833Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.3398558Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T09:55:55.3399091Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.3399558Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.3400020Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.3400493Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T09:55:55.3400885Z ##[endgroup]
+2026-10-20T09:55:55.4606830Z ##[group]Run actions/upload-artifact@v4
+2026-10-20T09:55:55.4607461Z with:
+2026-10-20T09:55:55.4607686Z   name: ueot-qm-runtime-39404249860
+2026-10-20T09:55:55.4608387Z   path: /tmp/ueot-qm-runtime-verification.json
+/tmp/ueot-qm-demo.json
+/tmp/ueot-qm-demo-v312.json
+/tmp/ueot-qm-demo-v313.json
+/tmp/ueot-qm-demo-v315.json
+
+2026-10-20T09:55:55.4609073Z   retention-days: 30
+2026-10-20T09:55:55.4609297Z   if-no-files-found: warn
+2026-10-20T09:55:55.4609542Z   compression-level: 6
+2026-10-20T09:55:55.4609757Z   overwrite: false
+2026-10-20T09:55:55.4609973Z   include-hidden-files: false
+2026-10-20T09:55:55.4610204Z env:
+2026-10-20T09:55:55.4610451Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.4610885Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T09:55:55.4611344Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.4611739Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.4612160Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T09:55:55.4612554Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T09:55:55.4612875Z ##[endgroup]
+2026-10-20T09:55:55.6376837Z (node:2423) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T09:55:55.6378022Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T09:55:55.6455692Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-20T09:55:55.6460052Z The least common ancestor is /tmp. This will be the root directory of the artifact
+2026-10-20T09:55:55.6460981Z With the provided path, there will be 5 files uploaded
+2026-10-20T09:55:55.6467944Z Artifact name is valid!
+2026-10-20T09:55:55.6469653Z Root directory input is valid!
+2026-10-20T09:55:55.8573795Z Beginning upload of artifact content to blob storage
+2026-10-20T09:55:55.8866832Z (node:2423) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T09:55:55.9331382Z Uploaded bytes 13444
+2026-10-20T09:55:55.9508037Z Finished uploading artifact content to blob storage!
+2026-10-20T09:55:55.9509431Z SHA256 digest of uploaded artifact zip is 8de5b0e34c73d77fc943da5d657281ac1ce633c425ad7a0a0adb02b47755db1f
+2026-10-20T09:55:55.9511772Z Finalizing artifact upload
+2026-10-20T09:55:56.1977416Z Artifact ueot-qm-runtime-39404249860.zip successfully finalized. Artifact ID 12255588047
+2026-10-20T09:55:56.1979544Z Artifact ueot-qm-runtime-39404249860 has been successfully uploaded! Final size is 13444 bytes. Artifact ID is 12255588047
+2026-10-20T09:55:56.1986102Z Artifact download URL: https://github.com/MurphyHoops/UEOT/actions/runs/39404249860/artifacts/12255588047
+2026-10-20T09:55:56.2183265Z Post job cleanup.
+2026-10-20T09:55:56.3618912Z Post job cleanup.
+2026-10-20T09:55:56.4598607Z [command]/usr/bin/git version
+2026-10-20T09:55:56.4667586Z git version 2.55.0
+2026-10-20T09:55:56.4724196Z Temporarily overriding HOME='/home/runner/work/_temp/0aa46ef3-f605-458f-b27f-d03ab24e0583' before making global git config changes
+2026-10-20T09:55:56.4728939Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T09:55:56.4732341Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UEOT/UEOT
+2026-10-20T09:55:56.4783528Z Removing SSH command configuration
+2026-10-20T09:55:56.4793102Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T09:55:56.4850133Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T09:55:56.5130827Z Removing HTTP extra header
+2026-10-20T09:55:56.5139964Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T09:55:56.5182887Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T09:55:56.5456286Z Removing includeIf entries pointing to credentials config files
+2026-10-20T09:55:56.5467773Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T09:55:56.5506674Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T09:55:56.5996183Z Cleaning up orphan processes
+2026-10-20T09:55:56.6300547Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

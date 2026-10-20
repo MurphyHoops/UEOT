@@ -1,0 +1,52 @@
+{
+  "schema": "ueot_qm.book_remote_finalizer_author_review.v31.7",
+  "status": "PASS_STATIC_AND_NEGATIVE_GUARDS_ACTUAL_REMOTE_APPLY_PENDING",
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm317_finalize_book_remote.py",
+    "sha256": "772a863e12ec1a271d31771af0ad1d74b7e09055a66c25d7388ce4da9449198c",
+    "bytes": 25252
+  },
+  "actual_checks": {
+    "python_syntax": "PASS",
+    "plan_exit_code": 0,
+    "missing_context_exit_code": 2,
+    "pending_context_apply_exit_code": 2,
+    "pending_context_apply_rejection": {
+      "status": "REFUSED_OR_FAILED",
+      "error": "Both actual PR/main CI PASS receipts are required; pending state refuses writes.",
+      "completed_repository_writes": 0
+    },
+    "unchanged_existing_book_file_count": 119,
+    "readme_exact_checkpoint_anchor": "PASS"
+  },
+  "write_targets": [
+    "physics/qm/book/SOURCE_MANIFEST.json",
+    "physics/qm/book/CHAPTER_DOSSIER.json",
+    "physics/qm/book/README.md",
+    "physics/qm/book/evidence/v3.3/remote-publication.json"
+  ],
+  "protected_rules": [
+    "Actual root MAIN_VERIFIED integration matches context and actual independent PR/main IDs.",
+    "Actual v31.7 CI verifier PASS, required gates/counts/foundations and bound input bytes.",
+    "All 80 frozen scientific inputs, 56 imported Core files, 3 canonical files unchanged.",
+    "All existing book evidence files remain byte-identical; old local checkpoint fields stay explicitly historical.",
+    "Chapter/appendix content and numbered result objects, edition history, original source entries and v31.8 planned contract unchanged.",
+    "External remote-publication receipt binds three updated metadata hashes; metadata contains path-only references to receipt.",
+    "Whole-tree equality recorded as a true bool, not imposed as a stronger gate."
+  ],
+  "scope_limits": [
+    "No real current PR/main CI receipt or complete production dry-run has been inspected by this author check yet.",
+    "No actual --apply of a PASS release occurred.",
+    "No Lean, runtime regression, PDF build or visual inspection repeated.",
+    "No remote action or artifact ZIP download performed."
+  ],
+  "pending": "Root actual CI and integration, then complete production dry-run, independent review and authorized --apply.",
+  "independent_review": {
+    "reviewer": "B / v317_state_finish",
+    "status": "CLEAR_WITH_TWO_SMALL_CLARIFICATIONS_APPLIED",
+    "clarifications": [
+      "Integration evidence catalog preserves actual MAIN_VERIFIED status instead of hard-coded PASS.",
+      "SOURCE_MANIFEST adds current_code_baseline_role explicitly identifying 7b1 as authoring baseline."
+    ]
+  }
+}

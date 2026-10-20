@@ -1,0 +1,42 @@
+{
+  "schema": "ueot_qm.metadata_helper_review.v31.7",
+  "status": "PASS_STATIC_AND_TARGETED_GUARD",
+  "checked_at_utc": "2026-10-20T10:05:22.988810+00:00",
+  "reviewer": "B",
+  "helper": "handoff/qm317_prepare_metadata.py",
+  "helper_sha256": "8cf89f76d6e02ffe0f82cffd966826443b25c916d13ffd818807a19de56731bc",
+  "pre_review_sha256": "8801b17fc5ebb0c80a093e94c76e1b75eaf8609d678ea7647b8c7a43bb6ab217",
+  "pre_review_snapshot": "handoff/B_qm317_prepare_metadata_before_review.py",
+  "allowed_modified_paths": 12,
+  "required_new_receipts": 5,
+  "allowed_new_directories": [
+    "physics/qm/kernel/evidence/v31.7/ci/",
+    "physics/qm/kernel/evidence/v31.7/remote-publication/"
+  ],
+  "findings_and_fixes": [
+    "Bind the local HEAD tree through actual git rev-parse HEAD^{tree}, not context fields alone.",
+    "Require payload output outside the repository and reject symlinked output destinations and candidate paths.",
+    "Bind completed B/A status, actual source/main/CI identity, A one-way updated metadata and receipt hashes, and the unchanged release context.",
+    "Compare all existing evidence directly with tested-main Git blobs; require unique 80/56 manifests and the fixed source-list digest.",
+    "Use explicit require() checks that remain active under Python optimization; recheck captured inputs before freeze."
+  ],
+  "git_operations": [
+    "rev-parse HEAD",
+    "rev-parse HEAD^{tree}",
+    "diff --name-only -z HEAD",
+    "ls-files --others --exclude-standard -z"
+  ],
+  "git_read_only": true,
+  "science_or_canonical_output_allowed": false,
+  "historical_evidence_output_allowed": false,
+  "ci_path_review": "The 12 existing paths, five new receipts and both new directories match none of the push/PR path filters in the five current workflows. Archives named .py.txt are text receipts, not formalization/scripts inputs.",
+  "tests": {
+    "syntax_compile": "PASS",
+    "optimized_python_repo_output_refused": "PASS",
+    "repository_payload_destinations_unchanged": true,
+    "normal_positive_payload_run": "NOT_RUN_BY_REVIEWER"
+  },
+  "no_scientific_execution": true,
+  "repository_files_modified_by_reviewer": 0,
+  "remaining_scope": "This helper packages already completed evidence; it does not rerun CI, inspect artifact ZIP contents, or publish Git objects."
+}

@@ -1,6 +1,6 @@
 # UEOT-QM v31.7 / Kernel 1.7
 
-当前状态：**LOCAL_VERIFIED_REMOTE_PENDING**；集成身份以[CURRENT](../status/CURRENT.json)为准。本轮新增形式化完整复纯化、共同操作语言、联合有限协议与精确非交换条件动力学。运行API仍保持既有精确混合、平均与对角生存能力，全部回归已重新执行。
+当前状态：**MAIN_VERIFIED**；集成身份以[CURRENT](../status/CURRENT.json)为准。本轮新增形式化完整复纯化、共同操作语言、联合有限协议与精确非交换条件动力学。运行API仍保持既有精确混合、平均与对角生存能力，全部回归已重新执行。
 
 实际本地结果：29主包模块、646显式定理、855命名审计；100运行方法、4演示PASS。七组具体见证另计110定理、39定义、2缩写、151审计。[版本报告](../UEOT_QM_KERNEL_v31.7.md)、[证明回执](evidence/v31.7/lean-verification.json)、[运行回执](evidence/v31.7/runtime-verification.json)。完整理论见[正式总著3.3](../book/UEOT_PHYSICS.md)第49–59章。
 

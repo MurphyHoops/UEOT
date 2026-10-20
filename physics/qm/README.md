@@ -1,6 +1,6 @@
 # UEOT-QM：有限量子内核与物理总著
 
-当前 **v31.7 / Kernel 1.7 — LOCAL_VERIFIED_REMOTE_PENDING**。日期：2026-10-20 UTC。[CURRENT](status/CURRENT.json)记录实际发布身份。
+当前 **v31.7 / Kernel 1.7 — MAIN_VERIFIED**。日期：2026-10-20 UTC。[CURRENT](status/CURRENT.json)记录实际发布身份。
 
 目标是基于UEOT形成完备、可检验的量子物理理论。已有有限量子内核持续扩展，理论推导、思想、具体例子和责任范围统一维护于[《UEOT物理学》正式3.3](book/UEOT_PHYSICS.md)，及其[完整PDF](book/UEOT_PHYSICS.pdf)：60章、6附录、131稳定编号结果、203页。
 
