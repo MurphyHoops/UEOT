@@ -20,24 +20,24 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 646)
-        self.assertEqual(res["ueot_maintained_modules"], 635)
+        self.assertEqual(res["module_source_hashes_verified"], 650)
+        self.assertEqual(res["ueot_maintained_modules"], 639)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3938)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 3992)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 145)
+        self.assertEqual(res["overlay_public_theorems"], 199)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 27)
-        self.assertEqual(res["overlay_count"], 5)
-        self.assertEqual(res["overlay_registered_direct_edges"], 173)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 40)
+        self.assertEqual(res["overlay_count"], 6)
+        self.assertEqual(res["overlay_registered_direct_edges"], 271)
         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
-                             for row in self.data["graph"].values()), 5059)
+                             for row in self.data["graph"].values()), 5157)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 5)
+        self.assertEqual(len(self.data["overlays"]), 6)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -245,6 +245,141 @@ class ProofReuseTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "NATIVE_OVERLAY_EVIDENCE_DRIFT"):
                 reuse.verify_evidence_files()
 
+    def test_deployment_joint_overlay_chain_and_source_endpoints(self):
+        current = self.data["overlays"][5]
+        self.assertEqual(current["base_snapshot_modules"], 646)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[4])
+        self.assertEqual(len(current["added_modules"]), 4)
+        self.assertEqual(len(current["public_theorems"]), 54)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 3938)
+        self.assertEqual(distinct["cross_isDefEq_comparisons"], 212652)
+        self.assertEqual(distinct["internal_isDefEq_comparisons"], 1431)
+        self.assertEqual(current["proof_dependency_certification"]["registered_direct_edges"], 98)
+        lexical = current["lexical_pr_preflight"]
+        self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 13)
+        self.assertEqual(lexical["base_public_lexical_theorem_count"], 3939)
+        self.assertEqual(lexical["candidate_public_lexical_theorem_count"], 3993)
+        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 3992)
+        self.assertEqual(current["counted_core_impact"], "NONE")
+        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        expected_edges = {
+            "coverage_statistical_selected_joint_failure_risk": [
+                "coverage_empirical_registered_microscopic_failure_risk",
+                "coverage_registered_source_calibration",
+                "selectedTrainingDeployment_failure_le",
+            ],
+            "statistical_selected_empirical_deployment_risk": [
+                "selectedTrainingDeployment_failure_le",
+                "statistical_empirical_reference_certificate",
+            ],
+            "statistical_fixed_policy_training_deployment_witness": [
+                "StatisticalRiskWitness.good_sample_exists",
+                "StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+                "selectedTrainingDeployment_failure_le",
+            ],
+        }
+        for short_name, expected in expected_edges.items():
+            with self.subTest(symbol=short_name):
+                item = reuse.explain(self.data, prefix + short_name)
+                self.assertEqual(set(item["direct_existing_source_theorem_uses"]),
+                                 {prefix + name for name in expected})
+                self.assertEqual(item["role"],
+                                 "UNCOUNTED_REGISTERED_COVERAGE_AND_TRAINING_DEPLOYMENT_BRIDGES")
+                self.assertEqual(item["area"], "V3/Compression/TheoryCompletion/UnifiedClosure")
+
+    def test_deployment_joint_registered_calibration_path_and_joint_routes(self):
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        terminal = prefix + "coverage_statistical_selected_joint_failure_risk"
+        # These are actual proof-constant paths, not module imports. The typed
+        # source contracts separately establish the shared P, experiment and E.
+        routes = [
+            [terminal] + [prefix + name for name in (
+                "coverage_registered_source_calibration",
+                "coverage_registered_row_calibration",
+                "measure_finite_row_calibration_bad_le",
+            )] + ["UEOT.V3.BoundedLossTwoSided.measure_exists_candidate_bad_le"],
+            [terminal] + [prefix + name for name in (
+                "coverage_empirical_registered_microscopic_failure_risk",
+                "coverage_same_policy_microscopic_failure_risk",
+                "coverage_same_policy_certified_path_error",
+                "coverage_same_policy_path_error",
+                "coverage_projected_causalLaw_error",
+                "coverage_tv_extend_same_kernel",
+            )] + ["UEOT.V3.PathError.pmfCommonMass_extend_lower_bound"],
+            [terminal] + [prefix + name for name in (
+                "selectedTrainingDeployment_failure_le",
+                "selectedTrainingDeployment_good_bad_bound",
+                "selectedTrainingDeployment_data_dependent_bound",
+                "selectedTrainingDeployment_failure_tower",
+                "selectedTrainingDeployment_mass",
+            )] + ["UEOT.V3.PathError.pmfExtend_apply"],
+        ]
+        for route in routes:
+            for source, target in zip(route, route[1:]):
+                with self.subTest(source=source, target=target):
+                    self.assertIn(target, reuse.explain(self.data, source)[
+                        "direct_existing_source_theorem_uses"])
+
+    def test_native_deployment_joint_scope_law_identity_and_evidence_binding(self):
+        current = self.data["overlays"][5]
+        evidence = current["native_export_evidence"]
+        artifact = reuse.REPO / evidence["path"]
+        native = json.loads(artifact.read_text())
+        public = native["public_source_theorems"]
+        scope = native["all_native_theorem_constants"]
+        self.assertEqual(evidence["sha256"],
+                         "04058c199ae439fbafb0a659ed78228b3c5e5ab2a4e2444efa6e60d1df588725")
+        self.assertEqual(len(public), 54)
+        self.assertEqual(len(scope), 93)
+        self.assertEqual(sum(row["is_private"] for row in scope), 12)
+        native_by_name = {row["name"]: row for row in scope}
+        self.assertEqual(len(native_by_name), 93)
+        expected_fields = {"name", "source_module", "is_private", "level_parameters",
+                           "type", "direct_constants", "direct_theorem_constants", "axioms"}
+        for row in scope:
+            with self.subTest(native_symbol=row["name"]):
+                self.assertEqual(set(row), expected_fields)
+                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
+                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
+        for row in public:
+            with self.subTest(public_symbol=row["name"]):
+                native_row = native_by_name[row["name"]]
+                for field in ("source_module", "level_parameters", "type", "direct_constants"):
+                    self.assertEqual(row[field], native_row[field])
+                self.assertTrue(set(row["source_theorem_deps"]) <=
+                                set(native_row["direct_theorem_constants"]))
+        names = {row["name"] for row in public}
+        self.assertEqual(len(names), 54)
+        self.assertEqual(names, {row["name"] for row in current["public_theorems"]})
+        self.assertTrue(names <= {row["name"] for row in scope if not row["is_private"]})
+        others = [row for row in scope if not row["is_private"] and row["name"] not in names]
+        self.assertEqual(len(others), 27)
+        owners = {row["module"] for row in current["added_modules"]}
+        self.assertEqual({row["source_module"] for row in scope}, owners)
+
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        empirical = native_by_name[prefix + "statistical_selected_empirical_deployment_risk"]
+        self.assertIn("MeasureTheory.Measure.toPMF_toMeasure", empirical["direct_theorem_constants"])
+        self.assertIn(prefix + "candidateSourceDeployment", empirical["direct_constants"])
+        self.assertIn(prefix + "finiteKernelRowPMF", empirical["direct_constants"])
+        self.assertIn(prefix + "selectedTrainingDeployment", empirical["direct_constants"])
+        # This public node has no registered edges; its real private helper
+        # still reaches the actual pmfExtend theorem in the full native graph.
+        reference = native_by_name[prefix + "DeploymentCoverageWitness.reference_one_step_failure"]
+        helpers = [native_by_name[name] for name in reference["direct_theorem_constants"]
+                   if name in native_by_name and native_by_name[name]["is_private"]
+                   and name.endswith(".DeploymentCoverageWitness.referenceLaw_one_apply")]
+        self.assertEqual(len(helpers), 1)
+        self.assertIn("UEOT.V3.PathError.pmfExtend_apply", helpers[0]["direct_theorem_constants"])
+        original = Path.read_bytes
+        def drift(path):
+            return b"deliberate deployment joint native evidence drift" if path == artifact else original(path)
+        with mock.patch.object(Path, "read_bytes", drift):
+            with self.assertRaisesRegex(RuntimeError, "NATIVE_OVERLAY_EVIDENCE_DRIFT"):
+                reuse.verify_evidence_files()
+
     def test_overlay_areas_follow_physical_sources(self):
         prefix = "formalization/ueot-core/UEOT/"
         self.assertEqual(reuse.source_area(prefix + "V3/Compression/TheoryCompletion/MinCore/X.lean"),
@@ -400,7 +535,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 646)
+        self.assertEqual(len(live), 650)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):
