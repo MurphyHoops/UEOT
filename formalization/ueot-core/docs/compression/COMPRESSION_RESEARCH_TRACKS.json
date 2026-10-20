@@ -11,22 +11,20 @@
   "cross_track_integration_gate": "open",
   "l2_existing_path_exceptions": [
     {
-      "exception_id": "TC-FINITE-HORIZON-RISK-EVIDENCE-2026-10-19",
+      "exception_id": "TC-STATISTICAL-RISK-EVIDENCE-2026-10-19",
       "track": "TC",
       "branch_patterns": [
-        "^compression/theory-completion-finite-horizon-risk$"
+        "^compression/theory-completion-statistical-risk$"
       ],
       "paths": [
         "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
-        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_umc_local.py",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
         "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
       ],
-      "reason": "The finite-horizon same-source risk bridge adds uncounted Lean modules, requiring a source-derived current DAG and an additive kernel-checked reuse overlay. Separate the receipt-writer unit test from the independent source-freshness integration gate, and repair the existing knowledge reading entry. Historical snapshots, receipts, frozen Core semantics, counted generators and ledger remain unchanged; these existing evidence and navigation entry points cannot be replaced honestly by parallel additive ledgers.",
+      "reason": "The uncounted same-source finite-sample risk additions require refreshing the current source-derived UMC DAG and appending a native-certified reuse overlay to the existing consumer. Update only its targeted regression and live navigation/count descriptions. Historical snapshots, prior overlays, receipts, frozen mathematical surfaces, counted generators and ledger remain unchanged; existing audit consumers already enumerate new modules and need no new authority.",
       "temporary": true
     }
   ],
