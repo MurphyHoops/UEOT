@@ -8,7 +8,7 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-## Governed overlay chain (2026-10-11 to 2026-10-19)
+## Governed overlay chain
 
 The 2026-10-10 633-module audit remains immutable history.
 
@@ -131,7 +131,7 @@ Its corpus grows from 3,818 to 3,866; the registered proof graph grows from
 3,817 to 3,865. These are different scopes. The committed PR gate still runs
 against actual Git objects after commit.
 
-The resulting live census is **641 modules = 630 UEOT-maintained + 11 adapted
+The fourth layer records **641 modules = 630 UEOT-maintained + 11 adapted
 upstream**, with **3,865** registered public source theorem nodes and **4,968**
 direct registered edges. All four overlay JSON files, certificates and the
 new supporting native export are hash-bound. Overlay areas are derived from
@@ -139,6 +139,125 @@ physical source paths, so the new UnifiedClosure nodes are not mislabelled
 as MinCore. No counted Core/Compression tier or scientific open port is
 promoted. The [44-file reading guide](../CANONICAL_READING_GUIDE_V1.md)
 explains the calibrated representative model and the finite-horizon boundary.
+
+### Layer 5 — finite-sample calibration and empirical reference risk
+
+The pinned Lean 4.33.1 focused build, full `UEOT` build, native export and
+independently executed fixed certificate all passed against the exact source
+hashes in this layer. Its checkpoint is frozen source content
+`0f8ab9e7ccbf15f7f42305ec8018841bfd7dd92691f412aab283f9eee4067ea3`,
+not a Git commit claimed to contain then-uncommitted files. These local
+results do not assert that subsequent canonical integration or CI has passed.
+
+`STATISTICAL_RISK_REUSE_OVERLAY_V1.json` preserves the immutable 641-module,
+3,865-public-theorem state and appends five physical UnifiedClosure modules:
+`StatisticalRiskCalibration`, `MicroscopicFailureRisk`, `EmpiricalReferenceRisk`,
+`StatisticalRiskBoundary` and `StatisticalRiskWitness`. It has **73 confirmed
+public source candidates**, **282,145 comparisons** with the 3,865 prior
+registered raw stored types and **2,628 internal comparisons**, with **0
+matches**. Each comparison uses a fresh `liftTermElabM` state. Universe
+parameter names retain their stored form; this protocol does not decide
+general logical equivalence or all possible instantiated reuse.
+
+`VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean` independently checks the exact
+**91 observed registered direct proof edges**. Its emitted native JSON
+matches the initial native export in every field. The two independently
+registered digests are different artifacts; the native JSON is separately
+hash-bound by the overlay:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `STATISTICAL_RISK_REUSE_OVERLAY_V1.json` | `f0d0ea91584773c24eeed59f8f1915102b92c318bf864f3b08a4c7093552c755` |
+| `VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean` | `5615a23f94b3ba53f9faec51b72d021f204e539fc73448f793752cc78727438d` |
+| `STATISTICAL_RISK_NATIVE_V1.json` | `9a87e5f99d48cfc7fa95df595d7884837f0dd24253205858f5c27ae22545a63d` |
+
+Examples of actual registered proof dependencies are:
+
+- `measure_finite_row_calibration_bad_le` uses
+  `BoundedLossTwoSided.measure_exists_candidate_bad_le`;
+- `statistical_representative_risk_certificate` uses
+  `empirical_representative_risk_of_calibrated`,
+  `measurableSet_empirical_transition_calibrated` and
+  `measure_empirical_transition_uncalibrated_le`;
+- `statistical_empirical_reference_certificate` uses
+  `empirical_reference_risk_of_calibrated` and those same two calibration
+  event/probability lemmas;
+- `same_policy_microscopic_failure_risk` uses
+  `risk_microscopic_event_le_envelope` and `same_policy_projected_failure_risk`.
+
+These are compiled direct constant dependencies, not import edges or tactic
+token matches.
+
+`STATISTICAL_RISK_NATIVE_V1.json` independently enumerates **126 compiler-owned
+theorem constants**: 73 confirmed public source candidates, **11 private
+constants** and **42 other nonprivate constants** outside the confirmed source
+candidate list. The 42 include generated and other non-lexical theorem names;
+they are not automatically classified as handwritten source declarations.
+Every one of the 126 records retains `name`, physical `source_module`,
+`is_private`, stored `level_parameters`, the full `ppExpr` `type` display,
+all proof-body `direct_constants`, `direct_theorem_constants` and transitive
+`axioms`. The native theorem-constant lists are not restricted to lexical
+public candidates. Every theorem in this physical module scope passed
+`Lean.collectAxioms` with only `propext`, `Classical.choice` and `Quot.sound`.
+
+The 73 public records additionally carry `source_theorem_deps`, restricted
+to registered public source theorem targets. Consequently private helper
+references and their own proof dependencies remain in the 126-record native
+evidence without being counted among the 91 public graph edges. The public
+graph is a navigational subset of the compiled scope, not the authority for
+deciding which native theorems exist. The existing raw-stored-type and
+non-lossless `ppExpr` limitations remain.
+
+The scientific additions relate a fixed finite row-sampling experiment to
+one measurable simultaneous calibration event and actual finite path risk.
+Each row has IID samples with exactly its true source PMF law; distinct rows
+may be dependent in the generic theorem. The model, tests, sample size,
+horizon and concentration radii are fixed before the samples. On the one
+good event, all subsequently selected representations, coefficients and
+common observable-history policies satisfying the deterministic checks are
+covered without an additional union over those choices. This does not allow
+unrestricted data-selected tests, radii or online stopping.
+
+For `m` coarse classes, indicator approximation error `delta`, empirical
+same-fibre error `eta`, sampling radius `rho` and coefficient L1 bound `kappa`,
+the sparse-test route uses true representative rows and the per-step budget
+`min 1 ((m / 2) * (2 * delta + (eta + 2 * rho) * kappa))`.
+The full finite-event route constructs empirical reference PMFs and uses
+`min 1 (rho + eta)` from true-to-empirical TV and a checked empirical coarse
+fit. Its prototype need not be a section. The fixed full event library has
+`2^|X|` tests; its statistical cost is retained. Both routes preserve the same
+policy and projected initial law when comparing actual and reference paths.
+
+Microscopic failure risk requires an explicit failure label and a
+conservative coarse envelope. `StatisticalRiskBoundary` gives a genuine
+finite-PMF example where optimistic action selection increases calibration
+failure from `1/4` for each fixed action to `7/16`, demonstrating why the
+simultaneous event matters. `StatisticalRiskWitness` constructs the product
+row-sampling law and a four-state, non-stable coarse partition. With two
+steps and 4,096 samples per row, one good training event has probability at
+least `3/4`; on it the actual microscopic ever-failure risk is at most
+`143/256 < 1`, using the explicitly computed reference risk `31/256` and
+path budget `7/16`. This is a common constructive witness, not a general
+joint training-and-deployment probability theorem. Such a joint theorem
+needs an appropriate measurable conditional deployment law; physical access
+to the row experiments and validation of failure labels remain separate
+empirical obligations. Finite path error bounds do not establish all-time
+safety. These additions remain uncounted; global scientific closure remains
+`NOT_ESTABLISHED`.
+
+The existing PR parser, applied to the immutable base and final frozen source
+bytes, finds 73 new public names and lexical hints for **11** of them.
+The cumulative overlay hint count is **27**. Its lexical theorem corpus
+grows from **3,866 to 3,939**; the registered native public graph grows from
+**3,865 to 3,938**. Hints remain lexical candidates. The immutable Git-object
+PR preflight is separately required after commit.
+
+The five-layer source census is **646 = 635 UEOT-maintained + 11 adapted
+upstream**, with **3,938** registered public source theorem nodes and
+**5,059** registered direct edges. The overlays account for **145** of those
+public nodes and **173** of those edges.
+The philosophy feedback and continuous Core rewrite document the precise
+theorem/conditional/empirical boundaries without promoting the counted ledger.
 
 ## Run from repository root
 
@@ -156,15 +275,16 @@ explains the calibrated representative model and the finite-horizon boundary.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_FINITE_HORIZON_RISK_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  four governed overlays extend the live census to 641 = 630 + 11.
-- 3,793 immutable-base public source theorem proofs + 72 governed overlay theorem
-  proofs = 3,865 live graph nodes, with 4,968 direct registered-source theorem
-  references. The four overlays add 0, 3, 6 and 73 certified direct edges.
+  five governed overlays extend the live census to 646 = 635 + 11.
+- 3,793 immutable-base public source theorem proofs + 145 governed overlay theorem
+  proofs = 3,938 live graph nodes, with 5,059 direct registered-source theorem
+  references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
+  the fifth adds 91 certified direct edges.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -179,8 +299,9 @@ the public imports with the pinned toolchain:
 - 68 cross-file source-code spans with at least 8 normalized nonblank
   lines (61 wholly nonvendored and 7 involving adapted upstream code);
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
-  a proof-equivalence decision procedure. Recomputing over all 641 modules
-  preserves all 68 historical rows exactly; no clone snapshot is overwritten.
+  a proof-equivalence decision procedure. The final 646-module recomputation
+  preserved all 68 historical rows exactly, with no added or missing rows.
+  The historical clone snapshot is unchanged.
 
 ## New exact Lean bridge despite non-identical closed types
 
@@ -211,7 +332,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 641-module live source census. It refuses to
+overlay-chain hashes against the exact 646-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

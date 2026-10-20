@@ -1,0 +1,1200 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "STATISTICAL_RISK_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:0f8ab9e7ccbf15f7f42305ec8018841bfd7dd92691f412aab283f9eee4067ea3",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "base_snapshot_modules": 641,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/FINITE_HORIZON_RISK_REUSE_OVERLAY_V1.json",
+    "sha256": "c7e4f561e438f6f3eef3112ecf7ceeea59e1cb98c10b5b20c65490eb7919d480"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "d553ddf563217fec432028888730a3bea76436b82f3fdf8cc0893c94bbb4923e"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "content_sha256": "9b5594629e9e439282134cdece24b22786eff83a392a6a4168cc4249f9e0556d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "content_sha256": "5736eae5f9939ef0fdb4c7c520c2c0bc5766d85bf863161787568d2042842cfb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "content_sha256": "a9f2742599f190755548f9739a1c67276f6e72bf1c38769b343710e59999dc4c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "content_sha256": "20169e48a8561c6de93c6767ade68173cc80e45ffefa06c43b19d5c735cbf1ee",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "content_sha256": "9bd381fde5c6db2ae84e02363d33ed68de412b1fd9a2f827a72fe474bf82405e",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_toMeasure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "line": 41,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "line": 51,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_toMeasure",
+        "UEOT.V3.FiniteAlphabetSampling.empiricalMeasure_real_finset"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pmf_event_test_mean",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "line": 62,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_full_event_row_tv",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "line": 70,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_trueRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pmf_event_test_mean",
+        "UEOT.V3.FiniteAlphabetConcentration.tvDist_le_of_finset_event_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "line": 90,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.TotalVariation.tvDist_map_le",
+        "UEOT.V3.TransportDefect.tvDist_triangle"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "line": 137,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_full_event_row_tv",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_failure_risk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_empirical_reference_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "line": 195,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measurableSet_empirical_transition_calibrated",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_microscopic_event_le_envelope",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "line": 29,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_ever_failure_envelope",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "line": 50,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_failure_envelope_covers",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "line": 70,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_failure_envelope_minimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "line": 77,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_failure_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "line": 102,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_microscopic_event_le_envelope",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_failure_risk"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_exit_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "line": 119,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_ever_failure_envelope",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_failure_risk"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_canonical_exit_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "line": 135,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_failure_envelope_covers",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_exit_risk"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 66,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": [
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 93,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.selectedAction_empirically_minimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 97,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.badFlag_iff_calibration_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 104,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.fixed_action_bad_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 112,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.selected_bad_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 118,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.selected_bad_iff_false_risk_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 125,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.pointwise_confidence_not_selected_confidence",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 137,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.fixed_action_bad_probability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.selected_bad_probability"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.simultaneous_calibration_protects_any_selector",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "line": 147,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_trueRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "line": 36,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_finite_row_calibration_bad_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "line": 50,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+      "source_theorem_deps": [
+        "UEOT.V3.BoundedLossTwoSided.measure_exists_candidate_bad_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "line": 108,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_trueRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_finite_row_calibration_bad_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measurableSet_empirical_transition_calibrated",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "line": 159,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "line": 256,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_representative_failure_risk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_representative_path_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_microscopic_event_le_envelope"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_representative_risk_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean",
+      "line": 285,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measurableSet_empirical_transition_calibrated",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_measurable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 43,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 48,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_independent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 55,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.HilbertMeanProductBlockIndependence.coordinate_iIndep"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_before",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 93,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 99,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_measurable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_before"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 105,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_before"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 113,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_independent",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_before"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.product_experiment_risk_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 123,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_representative_risk_certificate"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.partition_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 154,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 190,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_bounded",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 198,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.indicators_spanned",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 201,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.coefficient_norm",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 209,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 214,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.fibre_test_gap",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 222,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.hidden_gap_nonzero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 232,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.action_gap_nonzero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 239,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.coarse_not_injective",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 244,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.partition_not_stable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 251,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.classBit_project",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 263,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_section",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 268,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_card",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 283,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 288,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_nonvacuous",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 295,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 333,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measurableSet_empirical_transition_calibrated"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 341,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_budget",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_nonvacuous",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_bounded",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_good_probability_ge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 356,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.good_sample_exists",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 365,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_good_probability_ge"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measured_fibre_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 377,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.fibre_test_gap"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 401,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.coefficient_norm",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.indicators_spanned",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measured_fibre_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_section",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_row_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 416,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_card"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_path_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 426,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.referenceInitialLaw_project",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 451,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_ofReal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 460,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.boolReferenceKernel_apply",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 466,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_ofReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.boolReference_two_step_failure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 527,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_history_last",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 579,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.classReferenceKernel_map",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 584,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_control_map",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 591,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.classReferenceKernel_map",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_history_last",
+        "UEOT.V3.RepresentationCovariance.pmfExtend_map_equiv"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_transport",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 613,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_control_map",
+        "UEOT.V3.RepresentationCovariance.causalLaw_transport_equiv"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_ever_failure_equiv",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 628,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_two_step_failure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 641,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.boolReference_two_step_failure",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_ever_failure_equiv",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_transport"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 668,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_card",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_two_step_failure",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_ever_failure_envelope"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.joint_statistical_microscopic_risk_witness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "line": 697,
+      "source_origin": "UEOT_MAINTAINED",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.partition_not_stable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_good_probability_ge"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean",
+    "new_theorems": 73,
+    "registered_prior_theorems": 3865,
+    "cross_isDefEq_comparisons": 282145,
+    "internal_isDefEq_comparisons": 2628,
+    "definitionally_equal_matches": 0,
+    "protocol": "Meta.isDefEq on raw stored compiled types, with each comparison in fresh liftTermElabM; universe parameters retain their stored names",
+    "status": "PASS"
+  },
+  "proof_dependency_certification": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean",
+    "measure": "Lean .thmInfo.value.getUsedConstants restricted to immutable base, four prior overlays and this overlay's public source theorem nodes",
+    "registered_direct_edges": 91,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_toMeasure"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean",
+        "target": "UEOT.V3.FiniteAlphabetSampling.empiricalMeasure_real_finset"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_full_event_row_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_full_event_row_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_trueRisk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_full_event_row_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pmf_event_test_mean"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_full_event_row_tv",
+        "target": "UEOT.V3.FiniteAlphabetConcentration.tvDist_le_of_finset_event_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv",
+        "target": "UEOT.V3.TotalVariation.tvDist_le_one"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv",
+        "target": "UEOT.V3.TotalVariation.tvDist_map_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv",
+        "target": "UEOT.V3.TransportDefect.tvDist_triangle"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_full_event_row_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_empirical_reference_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_empirical_reference_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measurableSet_empirical_transition_calibrated"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_empirical_reference_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_microscopic_event_le_envelope"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_failure_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_exit_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_ever_failure_envelope"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_exit_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_canonical_exit_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_failure_envelope_covers"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_canonical_exit_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_microscopic_exit_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.badFlag_iff_calibration_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.selected_bad_iff_false_risk_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.pointwise_confidence_not_selected_confidence",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.fixed_action_bad_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.pointwise_confidence_not_selected_confidence",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.selected_bad_probability"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.simultaneous_calibration_protects_any_selector",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_trueRisk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_finite_row_calibration_bad_le",
+        "target": "UEOT.V3.BoundedLossTwoSided.measure_exists_candidate_bad_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_trueRisk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_finite_row_calibration_bad_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_representative_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.calibrated_representative_path_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_microscopic_event_le_envelope"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_representative_risk_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_representative_risk_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measurableSet_empirical_transition_calibrated"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_representative_risk_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_independent",
+        "target": "UEOT.V3.HilbertMeanProductBlockIndependence.coordinate_iIndep"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_measurable"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_before"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_before"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_independent"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_before"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.product_experiment_risk_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.product_experiment_risk_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.product_experiment_risk_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.product_experiment_risk_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.statistical_representative_risk_certificate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.fibre_test_gap",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.hidden_gap_nonzero",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.action_gap_nonzero",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measurableSet_empirical_transition_calibrated"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_budget"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_confidence_nonvacuous"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_bounded"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.measure_empirical_transition_uncalibrated_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_good_probability_ge",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_good_probability_ge",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_bad_probability_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.good_sample_exists",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_good_probability_ge"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measured_fibre_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.fibre_test_gap"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.coefficient_norm"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.indicators_spanned"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measured_fibre_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_section"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_representative_risk_of_calibrated"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.concrete_row_budget",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_card"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_ofReal",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.boolReferenceKernel_apply",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.actualRow_ofReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_control_map",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.classReferenceKernel_map"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_control_map",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_history_last"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_control_map",
+        "target": "UEOT.V3.RepresentationCovariance.pmfExtend_map_equiv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_transport",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_control_map"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_transport",
+        "target": "UEOT.V3.RepresentationCovariance.causalLaw_transport_equiv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_two_step_failure",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.boolReference_two_step_failure"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_two_step_failure",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_ever_failure_equiv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_two_step_failure",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_transport"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_card"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_reference_two_step_failure"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_ever_failure_envelope"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.joint_statistical_microscopic_risk_witness",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.joint_statistical_microscopic_risk_witness",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.microscopic_two_step_risk_on_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.joint_statistical_microscopic_risk_witness",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.partition_not_stable"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.joint_statistical_microscopic_risk_witness",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.training_good_probability_ge"
+      }
+    ],
+    "status": "PASS"
+  },
+  "native_axiom_census": {
+    "physical_source_modules": 5,
+    "theorem_constants": 126,
+    "private_theorem_constants": 11,
+    "confirmed_public_source_candidates": 73,
+    "other_native_public_constants": 42,
+    "scope": "Every theorem constant owned by the five compiled source modules, including private and generated theorem constants; other native public names are not assumed to be source declarations",
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "status": "PASS"
+  },
+  "scientific_role": "UNCOUNTED_STATISTICAL_RISK_CALIBRATION_AND_FAILURE_BRIDGES",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED",
+  "source_tree_sha256": "0f8ab9e7ccbf15f7f42305ec8018841bfd7dd92691f412aab283f9eee4067ea3",
+  "lexical_pr_preflight": {
+    "baseline_ref": "0c093e9fae990d6ef8d670163b84ec93bd6fb025",
+    "candidate_ref": null,
+    "candidate_scope": "Current frozen worktree source bytes; the immutable Git-object PR preflight is separately required after commit.",
+    "base_lean_module_count": 641,
+    "candidate_lean_module_count": 646,
+    "base_public_lexical_theorem_count": 3866,
+    "candidate_public_lexical_theorem_count": 3939,
+    "new_public_source_theorem_count": 73,
+    "new_theorems_with_lexical_reuse_candidates": 11,
+    "candidate_source_tree_sha256": "0f8ab9e7ccbf15f7f42305ec8018841bfd7dd92691f412aab283f9eee4067ea3",
+    "registered_prior_public_source_theorem_count": 3865,
+    "candidate_registered_public_source_theorem_count": 3938,
+    "note": "Existing PR parser and name-hint algorithm on actual immutable-base and frozen worktree bytes; hints are not proof dependencies or type-equality certification."
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/STATISTICAL_RISK_NATIVE_V1.json",
+    "sha256": "9a87e5f99d48cfc7fa95df595d7884837f0dd24253205858f5c27ae22545a63d",
+    "scope": "Actual fixed-verifier output for all 126 theorem constants owned by the five compiled modules: type displays, stored universe parameters, all direct proof constants, direct theorem constants, ownership and transitive axiom closure. The 73 public source candidates additionally carry registered direct proof edges."
+  },
+  "native_execution": {
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "focused_build": "lake build UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness",
+    "focused_build_jobs": 8759,
+    "full_build": "lake build UEOT",
+    "full_build_jobs": 9352,
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "5615a23f94b3ba53f9faec51b72d021f204e539fc73448f793752cc78727438d",
+    "fixed_export_equals_initial_native_export": true,
+    "build_log_sha256": "78c401b87c135bccc12f7c015b5013be718b55b53c489cc8e902ee89b08616e0",
+    "native_log_sha256": "94034e25c5a331e77953b2b16de87a28359939ef3bfc463bbca29255d1651b91",
+    "fixed_verifier_log_sha256": "94034e25c5a331e77953b2b16de87a28359939ef3bfc463bbca29255d1651b91",
+    "source_binding": "All builds and native checks use the exact added-module and public-root SHA256 values in this overlay; fixed and initial native JSON objects match in every field."
+  }
+}

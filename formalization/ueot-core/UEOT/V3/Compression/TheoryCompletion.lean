@@ -115,6 +115,11 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CalibratedRiskRows
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteHorizonRisk
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MicroscopicFailureRisk
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskCalibration
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness
 /-!
 # UEOT Theory Completion public root
 
