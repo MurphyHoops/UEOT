@@ -1,0 +1,175 @@
+{
+  "status": "PASS_INDEPENDENT_SEMANTIC_REVIEW_FOCUSED_RECEIPTS_VERIFIED_ROOT_UNIFIED_GATE_PENDING",
+  "reviewer": "AI subagent B /root/q316_real_tomography",
+  "reviewed_at_utc": "2026-10-20T08:00:58.146450+00:00",
+  "method": "Independent read of all three C sources and chapter 59, algebra and quantified-premise audit, SHA validation against C final report, read and hash verification of actual focused execution receipts/logs. B did not rerun C Lean.",
+  "source_bindings": [
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/UEOTQM/QuantumDoobModel.lean",
+      "sha256": "cf5df67eb83e3c14e20699947a1c2e922af53a19c6483d40b788e234c9e8b5f3",
+      "theorems": 17,
+      "definitions": 12,
+      "audit_targets": 29
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean",
+      "sha256": "ee227ea4dcba6e9f2dafe33df614c382610f7468596d923489fc63e76a1556e3",
+      "theorems": 43,
+      "definitions": 5,
+      "audit_targets": 48
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/witnesses/QuantumDoobDynamicsExamples.lean",
+      "sha256": "40d1af7c59ccbca3902b84004f3d9ec7ba29f690a1789879f1c3e5fd351cf2a6",
+      "theorems": 20,
+      "definitions": 5,
+      "audit_targets": 25
+    }
+  ],
+  "chapter_binding": {
+    "path": "/tmp/qm317_book_ch59.md",
+    "sha256": "53db28c918acc5bbdb204ce487e02ef4f60a48136f60d407db68d6687bc351eb"
+  },
+  "author_report": {
+    "path": "/tmp/qm317_quantum_doob_report.json",
+    "sha256": "c823ebe26974586506b2624b340bc928fce20274448d63de8eec0af414aba3a0"
+  },
+  "receipt_review": [
+    {
+      "path": "/tmp/qm317_doob_model_focused.json",
+      "sha256": "c530abbf08346e8aa9e4b965303c5ce0542dc6bcd30e8b03ac02e6dd86867119",
+      "exit_code": 0,
+      "review_method": "Read existing execution receipt and actual log; no B rerun.",
+      "log": "/tmp/qm317_doob_model_focused.log",
+      "log_sha256": "5a042c80161e9c86b136b6073e68ef0199cbd4c62d4ca5ef07a8cfb273aeac52"
+    },
+    {
+      "path": "/tmp/qm317_doob_dynamics_round4.json",
+      "sha256": "91743d1867f9c1dbcf2e0a5d0b288ca8a8a91de5910cabb2c3c8c986382dda1e",
+      "exit_code": 0,
+      "review_method": "Read existing execution receipt and actual log; no B rerun.",
+      "log": "/tmp/qm317_doob_dynamics_round4.log",
+      "log_sha256": "ab0f75fa727d07d1ce02fb0d6370df8181813ffc3681cfc288cb6283e6681702"
+    },
+    {
+      "path": "/tmp/qm317_doob_witness_round3.json",
+      "sha256": "e64746569d43e8fe9f66dabed332aa92c9faf513f2f2ee99d4bb49b7f0ba9ad4",
+      "exit_code": 0,
+      "review_method": "Read existing execution receipt and actual log; no B rerun.",
+      "log": "/tmp/qm317_doob_witness_round3.log",
+      "log_sha256": "af88ca995c59e76f18bd53198f21522a6cb965a57d9aca0e7442bebef4396fc8",
+      "expected_explicit_targets": 25,
+      "actual_printed_targets": 25,
+      "exact_names_match": true,
+      "standard_axioms_only": true
+    },
+    {
+      "path": "/tmp/qm317_C_public_axioms.json",
+      "sha256": "64ae8498c77bf2727352634452a350ad6ee35d1a067685df43f57bf7da467287",
+      "exit_code": 0,
+      "review_method": "Read existing execution receipt and actual log; no B rerun.",
+      "log": "/tmp/qm317_C_public_axioms.log",
+      "log_sha256": "6ceac5636875bb4b560d32dd2e52fcdeb330dbbcda7d00e4646b180ae54706bb",
+      "status": "PASS",
+      "standard_axioms_only": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "MODEL_PROVENANCE_AND_ACTUAL_INSTRUMENT",
+      "result": "PASS",
+      "finding": "The fixed rational model is the promoted v31.6 noncommuting witness. Explicit success/failure Kraus grams sum to identity. The right and left eigen equations at rate 3/16 and positive metric H=diag(4,1) are proved from matrices, not supplied as conclusions. Promotion is not new physical inference.",
+      "targets": [
+        "QuantumDoobModel.source_complete",
+        "QuantumDoobModel.source_branch_formula",
+        "QuantumDoobModel.source_right_eigen",
+        "QuantumDoobModel.source_left_eigen",
+        "QuantumDoobModel.success_kraus_noncommuting"
+      ]
+    },
+    {
+      "id": "FULL_COMPLEX_OPERATOR_DYNAMICS",
+      "result": "PASS",
+      "finding": "Doob branch and every actual successOperator iterate hold for arbitrary complex matrices, retaining complex trace until specialization to a density. The real/imaginary offdiagonal directions are not discarded. D^n(X)=a_n X+(1-a_n)Tr(X) sigmaPlus, a_n=3^(-n). Actual Cesaro.iterateState is the same density trajectory, not an unconnected scalar surrogate.",
+      "targets": [
+        "QuantumDoobDynamics.doob_branch_formula",
+        "QuantumDoobDynamics.doob_successOperator_formula",
+        "QuantumDoobDynamics.doob_iterateState_matrix",
+        "QuantumDoobDynamics.source_successOperator_formula",
+        "QuantumDoobDynamicsExamples.coherent_input_two_steps"
+      ]
+    },
+    {
+      "id": "ALL_EFFECT_DISTANCE_AND_UNIQUENESS",
+      "result": "PASS",
+      "finding": "Exact distance scaling is proved directly from the supremum over all legal effects, handling a=0 separately and dividing only under a>0. It does not assume tomography/separation. Unique stationarity follows from the actual matrix equation. Entire matrix orbits, rather than only Cesaro averages, converge.",
+      "targets": [
+        "QuantumDoobDynamics.effectDistance_eq_of_matrix_sub_smul",
+        "QuantumDoobDynamics.doob_stationary_unique",
+        "QuantumDoobDynamics.doob_effectDistance_exact",
+        "QuantumDoobDynamics.doob_matrix_tendsto"
+      ]
+    },
+    {
+      "id": "ACTUAL_SOURCE_PROBABILITY_AND_STATE_DEPENDENT_DENOMINATOR",
+      "result": "PASS",
+      "finding": "For every Density tau, c=Tr(H tau) in [1,4], b=5c/8 and z_n=a_n+(1-a_n)b in [5/8,5/2] are derived from PSD and trace one. Actual source successMass and response of the repeated true word equal (3/16)^n z_n. The proof does not replace the actual success probability by the eigenrate power for arbitrary input.",
+      "targets": [
+        "QuantumDoobDynamics.filterMass_bounds",
+        "QuantumDoobDynamics.normalizer_bounds",
+        "QuantumDoobDynamics.source_successMass_formula",
+        "QuantumDoobDynamics.source_response_formula",
+        "QuantumDoobDynamics.source_successMass_pos",
+        "QuantumDoobDynamicsExamples.uniform_successMass_one_ne_rate"
+      ]
+    },
+    {
+      "id": "ACTUAL_CONDITIONAL_STATE_AND_FINITE_POSITIVITY",
+      "result": "PASS",
+      "finding": "conditioned is exactly the old conditionalState with derived finite success positivity. Its matrix equals (a_n/z_n) tau+((1-a_n)b/z_n) rhoStar, so distance to rhoStar equals (a_n/z_n)d(tau,rhoStar), bounded by (8/5)a_n d(tau,rhoStar). This is not a pairwise arbitrary-source conditional contraction claim: z depends on tau. Finite success mass stays positive but tends to zero; no infinite surviving event or infinite conditioned path law is constructed.",
+      "targets": [
+        "QuantumDoobDynamics.source_conditionalState_matrix",
+        "QuantumDoobDynamics.conditioned",
+        "QuantumDoobDynamics.conditioned_effectDistance_exact",
+        "QuantumDoobDynamics.conditioned_effectDistance_le",
+        "QuantumDoobDynamics.conditioned_matrix_tendsto",
+        "QuantumDoobDynamics.source_successMass_tendsto_zero"
+      ]
+    },
+    {
+      "id": "LEGAL_IDENTITY_DOOB_COUNTERMODEL",
+      "result": "PASS",
+      "finding": "The negative control is an actual complete Bool by Fin3 source instrument, with Phi(X)=X/4, identity positive filter, actual left eigenmetric equation, and actual Doob channel D(X)=X. Every density is stationary; rhoStar and sigmaPlus are explicitly distinct, disproving unique stationarity and any common matrix attractor. Source successMass is 4^(-n), and original conditionalState stays at its input. No required premise was silently deleted.",
+      "targets": [
+        "QuantumDoobDynamicsExamples.identitySource_complete",
+        "QuantumDoobDynamicsExamples.identitySource_left_eigen",
+        "QuantumDoobDynamicsExamples.identityDoob_branch",
+        "QuantumDoobDynamicsExamples.identityDoob_not_unique_stationary",
+        "QuantumDoobDynamicsExamples.identityDoob_not_common_limit",
+        "QuantumDoobDynamicsExamples.identitySource_conditional_fixed"
+      ]
+    },
+    {
+      "id": "CHAPTER_59_SCOPE_AND_MAPPING",
+      "result": "PASS",
+      "finding": "Five numbered results match actual source declarations: P-QDD-01 Doob exact orbit; P-QDD-02 source probability; P-QDD-03 conditional convergence; P-QDD-04 state dependence and decreasing success mass; N-QDD-01 legal identity counterexample. General spectral existence, arbitrary-record conditional mixing, infinite-path conditioning, and empirical validity remain outside the proved scope. The prose strict trace shrink of the countermodel on nonzero PSD inputs is an analytic corollary of Phi=X/4 and PSD positive mass, not an extra named Lean declaration.",
+      "targets": [
+        "P-QDD-01",
+        "P-QDD-02",
+        "P-QDD-03",
+        "P-QDD-04",
+        "N-QDD-01"
+      ]
+    }
+  ],
+  "blocking_findings": [],
+  "scientific_boundaries": [
+    "Complex Hilbert/matrix/Kraus sector is a domain assumption; not derived from Core.",
+    "Concrete exactly solvable noncommuting source model; no general Perron existence or spectral-radius theorem.",
+    "Positive conclusions concern repeated selected success, not arbitrary multi-outcome records.",
+    "Source-conditioned exact distance is to the fixed source eigenstate; denominator depends on the initial density.",
+    "Actual finite probabilities and ordinary sequence limits do not construct an infinite-path survival process.",
+    "No physical calibration, empirical truth, or complete QM reconstruction is claimed."
+  ],
+  "root_unified_acceptance": "PENDING_NOT_PERFORMED_BY_THIS_REVIEW"
+}

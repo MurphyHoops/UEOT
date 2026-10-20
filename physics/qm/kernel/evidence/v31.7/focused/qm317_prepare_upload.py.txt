@@ -1,0 +1,74 @@
+from pathlib import Path
+import base64,hashlib,importlib.util,json,re,subprocess
+
+R=Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+B=json.loads(Path('/tmp/qm317_release_base_tree.json').read_text())
+assert not B['truncated']
+assert re.fullmatch('[0-9a-f]{40}',B['commit']) and re.fullmatch('[0-9a-f]{40}',B['sha'])
+assert len(B['tree'])==len({e['path'] for e in B['tree']})
+remote={e['path']:e for e in B['tree'] if e['type']=='blob'}
+def allowed(p):
+ return p.startswith(('physics/qm/','formalization/ueot-qm/')) or p=='.github/workflows/ueot-qm.yml'
+def blob(b): return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+def sha(b): return hashlib.sha256(b).hexdigest()
+exclude_exact={'formalization/ueot-qm/axiom-audit.log','formalization/ueot-qm/proof-axioms.json',
+ 'formalization/ueot-qm/source-identity.log','formalization/ueot-qm/source-manifest.json',
+ 'formalization/ueot-qm/lean-build.log','formalization/ueot-qm/lean-install.log'}
+modes={}
+for line in subprocess.check_output(['git','ls-files','-s'],cwd=R,text=True).splitlines():
+ left,p=line.split('\t',1);modes[p]=left.split()[0]
+paths=set(subprocess.check_output(['git','ls-files','-co','--exclude-standard','-z'],cwd=R,text=True).split('\0'))-{''}
+excluded=[];equal=[];out=[];historical_conflicts=[]
+for p in sorted(paths):
+ if not allowed(p):continue
+ f=R/p
+ if any(x in f.parts for x in ['.lake','__pycache__']) or p in exclude_exact or f.suffix in ['.pyc','.olean','.ilean']:
+  excluded.append(p);continue
+ assert f.is_file() and not f.is_symlink(),p
+ b=f.read_bytes();g=blob(b);r=remote.get(p)
+ if r and r['sha']==g:equal.append(p);continue
+ if re.search(r'/evidence/v31\.[0-6]/|/book/evidence/v3\.[012]/|(?:^|/)[^/]*_v31\.[0-6](?:[._/]|$)',p):historical_conflicts.append(p)
+ binary=False
+ try:content=b.decode('utf-8')
+ except UnicodeDecodeError:binary=True;content=base64.b64encode(b).decode()
+ if binary:assert f.suffix=='.pdf',p
+ out.append({'path':p,'bytes':len(b),'sha256':sha(b),'git_blob_sha':g,'mode':r['mode'] if r else modes.get(p,'100644'),
+  'binary':binary,'previous_blob':r['sha'] if r else None,'encoding':'base64' if binary else 'utf-8','content':content})
+assert not historical_conflicts,historical_conflicts
+M=json.loads((R/'physics/qm/kernel/evidence/v31.7/source-manifest.json').read_text())
+V=json.loads((R/'physics/qm/kernel/evidence/v31.7/lean-verification.json').read_text())
+assert V['status']=='PASS' and V['actual_named_axiom_reports']==855
+assert M['source_count']==V['source_count']==len(M['sources'])==len({s['path'] for s in M['sources']})==80
+assert sha(json.dumps(M['sources'],sort_keys=True,separators=(',',':')).encode())==M['source_set_sha256']==V['source_set_sha256']=='b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911'
+spec=importlib.util.spec_from_file_location('qm317_record_source',R/'formalization/ueot-qm/scripts/record_source.py')
+recorder=importlib.util.module_from_spec(spec);spec.loader.exec_module(recorder)
+assert [p.relative_to(R).as_posix() for p in recorder.source_paths()]==[s['path'] for s in M['sources']]
+assert len(out)==len({x['path'] for x in out})
+payload_by_path={x['path']:x for x in out}
+for s in M['sources']:
+ b=(R/s['path']).read_bytes()
+ assert len(b)==s['bytes'] and sha(b)==s['sha256'],s['path']
+ if s['path'] in payload_by_path:
+  x=payload_by_path[s['path']]
+  content=base64.b64decode(x['content'],validate=True) if x['binary'] else x['content'].encode('utf-8')
+  assert content==b and x['bytes']==s['bytes'] and x['sha256']==s['sha256'] and x['git_blob_sha']==blob(b),s['path']
+ else:
+  assert s['path'] in equal and remote[s['path']]['sha']==blob(b),s['path']
+C=json.loads((R/'physics/qm/kernel/evidence/v31.7/core-import-closure.json').read_text())
+assert C['transitive_module_count']==len(C['modules'])==len({s['path'] for s in C['modules']})==56
+for s in C['modules']:
+ b=(R/s['path']).read_bytes()
+ assert sha(b)==s['source_sha256'] and remote[s['path']]['sha']==blob(b),s['path']
+ assert s['path'] not in payload_by_path,s['path']
+inventory={'schema':'ueot_qm.publication_inventory.v31.7','baseline_commit':B['commit'],'baseline_tree':B['sha'],
+ 'source_count':80,'source_set_sha256':M['source_set_sha256'],'files':[{k:v for k,v in x.items() if k!='content'} for x in out],
+ 'file_count':len(out),'changed_existing':sum(x['previous_blob'] is not None for x in out),
+ 'new_paths':sum(x['previous_blob'] is None for x in out),'bytes':sum(x['bytes'] for x in out),
+ 'equal_remote_path_count':len(equal),'excluded_local_products_count':len(excluded),'excluded_local_products':excluded,
+ 'historical_conflicts':historical_conflicts,'accepted_payload_binding':'All 80 tested paths match actual serialized payload bytes or inherited base-tree Git blobs; all 56 imported Core sources match the base tree and are outside the payload.',
+ 'scope':'Only the two QM subtrees and the QM workflow. Base-tree composition preserves all other paths; no deletions.'}
+Path('/tmp/qm317_publication_inventory.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+'\n')
+payload=json.dumps(out,ensure_ascii=False,separators=(',',':'))
+Path('/tmp/qm317_upload_payload.json').write_text(payload)
+print(json.dumps({k:v for k,v in inventory.items() if k not in ['files','excluded_local_products']},ensure_ascii=False,indent=2))
+print(json.dumps({'payload_characters':len(payload),'payload_sha256':sha(payload.encode()),'chunk_size':45000,'chunks':(len(payload)+44999)//45000}))

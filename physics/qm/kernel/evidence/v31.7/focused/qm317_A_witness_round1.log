@@ -1,0 +1,76 @@
+scripts/witnesses/QuantumPurificationExamples.lean:30:79: error: unsolved goals
+case pos
+p q : Fin 2 × Fin 2
+hp : p.1 = p.2
+hq : q.1 = q.2
+⊢ bellAmplitude * (starRingEnd ℂ) bellAmplitude = 2⁻¹
+scripts/witnesses/QuantumPurificationExamples.lean:32:43: warning: This simp argument is unused:
+  bellAmplitude_norm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [outer_apply, bellVector, hp, hq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/QuantumPurificationExamples.lean:34:58: error: unsolved goals
+⊢ bellVector (0, 0) * (starRingEnd ℂ) (bellVector (0, 0)) + bellVector (0, 1) * (starRingEnd ℂ) (bellVector (0, 1)) +
+      (bellVector (1, 0) * (starRingEnd ℂ) (bellVector (1, 0)) +
+        bellVector (1, 1) * (starRingEnd ℂ) (bellVector (1, 1))) =
+    1
+scripts/witnesses/QuantumPurificationExamples.lean:48:76: error: unsolved goals
+case «0».«0»
+⊢ bellVector (0, 0) * (starRingEnd ℂ) (bellVector (0, 0)) + bellVector (0, 1) * (starRingEnd ℂ) (bellVector (0, 1)) =
+    1 / 2
+
+case «0».«1»
+⊢ bellVector (0, 0) * (starRingEnd ℂ) (bellVector (1, 0)) + bellVector (0, 1) * (starRingEnd ℂ) (bellVector (1, 1)) = 0
+
+case «1».«0»
+⊢ bellVector (1, 0) * (starRingEnd ℂ) (bellVector (0, 0)) + bellVector (1, 1) * (starRingEnd ℂ) (bellVector (0, 1)) = 0
+
+case «1».«1»
+⊢ bellVector (1, 0) * (starRingEnd ℂ) (bellVector (1, 0)) + bellVector (1, 1) * (starRingEnd ℂ) (bellVector (1, 1)) =
+    1 / 2
+scripts/witnesses/QuantumPurificationExamples.lean:61:9: error: Application type mismatch: The argument
+  (complex_pure_iff ?m.5).mpr ?m.8
+has type
+  OperationalSystems.IsPure complexModel ?m.5
+but is expected to have type
+  OperationalSystems.IsPure complexModel bell
+in the application
+  And.intro ((complex_pure_iff ?m.5).mpr ?m.8)
+'UEOTQM.QuantumPurificationExamples.bellAmplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bellAmplitude_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bellVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bell_outer_entry' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bell_normalized' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bell' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bell_isPure' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bell_marginal' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.qubitSystem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.bell_purifies_in_complex_interface' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.QuantumPurificationExamples.mixed_has_generic_purification' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.QuantumPurificationExamples.classicalMixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.classicalMixed_not_pure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.ordinary_classical_extension_exists' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.QuantumPurificationExamples.pure_classical_extension_impossible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.QuantumPurificationExamples.RestrictedPure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.singleton_fake_pure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.QuantumPurificationExamples.singleton_full_state_negative_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.QuantumPurificationExamples.complex_local_effects_distinguish_real_pair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

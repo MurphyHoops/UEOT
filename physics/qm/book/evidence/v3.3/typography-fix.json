@@ -1,0 +1,43 @@
+{
+  "schema": "ueot_physics.typography_fix.v3.3",
+  "status": "ACTUAL_REBUILD_AND_VISUAL_PASS",
+  "recorded_at_utc": "2026-10-20T08:25:25.381654+00:00",
+  "initial_hash_wrap_correction": {
+    "schema": "ueot_physics.typography_fix.v3.3",
+    "status": "ACTUAL_REBUILD_PASS",
+    "fixed_at_utc": "2026-10-20T08:17:22.685405+00:00",
+    "initial_receipt": "pdf-initial-build.json",
+    "problem": "One 64-digit inline source SHA produced an overfull hbox in appendix F",
+    "fix": "The PDF builder inserts discretionary line-break points every 16 hexadecimal digits inside 64-digit texttt hashes; canonical Markdown remains byte-identical",
+    "canonical_md_sha256": "e7e864b0a59c18ae934727f32c730b26f6c68bbc039195a4a60c3eea5a71c7e5",
+    "final_receipt": "pdf-build.json",
+    "final_layout_warnings": [],
+    "mathematical_source_changed": false,
+    "initial_pdf_retained_locally": "/workspace/scratch/474cf6b1f047/output/pdf/ueot_physics_v33_initial/UEOT_PHYSICS.pdf"
+  },
+  "subsequent_actual_visual_findings": [
+    {
+      "finding": "Cover retained old 3.2 / 57-chapter / Kernel1.6 labels",
+      "fix": "Update header.tex cover to 3.3 / 60 / 1.7."
+    },
+    {
+      "finding": "Chapter57.1 full convex-purity formula exceeded the page margin",
+      "fix": "Use two aligned display rows; author checked inverse formatting recovers the exact prior mathematical formula."
+    }
+  ],
+  "previsual_pdf_sha256": "b727a0e6bd0bb0de6cde7ca538a88076c5d0010301ba2629ce8bb83997b77b39",
+  "final_md_sha256": "83f9f0a470816a49db9e6c3e5d6456ac83cd191612d5691b67979cf8822c7c9c",
+  "final_pdf_sha256": "9241acdebfbf132032832027cd18be4f7b8b80f351483eaecf9a0ebe8952043c",
+  "final_tex_sha256": "364545a8607c5021b1facfd6678f521b11590a1923151415ec5711527e76c57c",
+  "final_build_receipt": "pdf-build.json",
+  "actual_compile_passes_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "final_layout_warnings": [],
+  "final_visual_receipt": "pdf-visual-review.json",
+  "mathematical_source_changed": false,
+  "canonical_formula_semantics_changed": false,
+  "previous_pdf_retained_locally": "/workspace/scratch/474cf6b1f047/output/pdf/ueot_physics_v33_previsual/UEOT_PHYSICS.pdf"
+}

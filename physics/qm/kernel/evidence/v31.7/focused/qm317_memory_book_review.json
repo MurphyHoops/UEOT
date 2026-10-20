@@ -1,0 +1,670 @@
+{
+  "status": "PASS_AUTHOR_SOURCE_MAPPING_AND_FINAL_PROSE_REVIEW_UNIFIED_ACCEPTANCE_PENDING",
+  "reviewer": "AI subagent B /root/q316_real_tomography, author of the three B sources",
+  "reviewed_at_utc": "2026-10-20T08:04:46.082386+00:00",
+  "chapter": 58,
+  "chapter_path": "/tmp/qm317_book_ch58.md",
+  "chapter_sha256": "621855bc2a993a0f66ba4a9bc8adf0ede1495f26582ba1bf2eeaf92ead8e47a0",
+  "numbered_claim_count": 5,
+  "source_bindings": [
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/UEOTQM/RectangularChannels.lean",
+      "sha256": "b097d5cb5eb5b141d051d8f65c7aff31c0d3a1b2f8d688548d8edf74f6a7a9a7"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean",
+      "sha256": "200996515d4a4cfdf066b844e8d4904ed52f380f876feca162d6dc6f1f26cf80"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "sha256": "edd43b953001002b2f2aaa44a424da0e1beb0b5a0201ff7a6fba54bb405ce8e9"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/UEOTQM/RecordProbability.lean",
+      "sha256": "c9dca7b03588f7359fbbea934c1c9b074af489f93ca061bed8a82239960edcf2"
+    }
+  ],
+  "claims": [
+    {
+      "id": "P-CQ-01",
+      "title": "矩形通道的完全正性、迹保持与效应收缩",
+      "origin": "v31.7 new derived interface on the existing finite complex Operator/Density/Effect domain; Kraus completeness is the declared input, CP/TP/contraction are conclusions.",
+      "type_responsibility": "Arbitrary finite input/output/Kraus carriers; full complex input operators for trace and amplification identities; every finite auxiliary carrier and every PSD joint input for positivity; every legal output Effect for pullback and every input density pair for contraction.",
+      "scientific_boundary": "Finite complex Kraus sector is assumed rather than derived from Core. Complete positivity of amplification does not turn the later unamplified defect into a diamond norm.",
+      "declarations": [
+        {
+          "name": "UEOTQM.RectangularChannel.mk",
+          "kind": "structure",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 21
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.operator_posSemidef",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 36
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.trace_operator",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 66
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.amplify",
+          "kind": "def",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 182
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.amplify_posSemidef",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 196
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.amplify_operator_apply",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 203
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.adjoint_one",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 96
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.adjoint_posSemidef",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 91
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.trace_adjoint",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 103
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.pullbackEffect",
+          "kind": "def",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 115
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.probability_state",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 125
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.state_effectDistance_le",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 129
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.identity",
+          "kind": "def",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 141
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.comp",
+          "kind": "def",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 153
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.comp_operator",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 165
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.comp_state",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 170
+        }
+      ],
+      "status": "MATCHES_FROZEN_SOURCE_FOCUSED_PASS_UNIFIED_GATE_PENDING"
+    },
+    {
+      "id": "P-CQ-02",
+      "title": "真实仪器的联合块状态与边际",
+      "origin": "v31.7 actual tagged rectangular Kraus construction from existing Instrument, branch, probability and posterior.",
+      "type_responsibility": "Actual density on O times memory; exact block identity for every complex input; actual rectangular discard channels give both marginals; density marginal diagonal entries are existing real branch probabilities embedded in complex scalars; posterior equality requires strictly positive probability; zero probability gives zero PSD block.",
+      "scientific_boundary": "A declared instrument and its retained classical record are represented operationally. No zero-probability physical posterior and no objective collapse mechanism is introduced.",
+      "declarations": [
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.taggedKraus",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 25
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.taggedKraus_gram",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 28
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.channel",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 58
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.channel_operator_apply",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 66
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.channel_operator_eq_block",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 92
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.channel_amplify_operator_apply",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 84
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.state",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 98
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.discard_record_operator",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 106
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.discard_record_state",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 113
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.discard_memory_operator",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 119
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.discard_memory_state_matrix",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 131
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.state_block_mass",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 144
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.positive_block_posterior",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 148
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.zero_probability_iff_zero_block",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 160
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.discardRight",
+          "kind": "def",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 233
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.discardRight_operator_apply",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 254
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.discardLeft",
+          "kind": "def",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 266
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.discardLeft_operator_apply",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 287
+        }
+      ],
+      "status": "MATCHES_FROZEN_SOURCE_FOCUSED_PASS_UNIFIED_GATE_PENDING"
+    },
+    {
+      "id": "P-CQ-03",
+      "title": "全部有限协议的记录与记忆实现",
+      "origin": "v31.7 tree induction and dependent path-Kraus construction, using the existing Adaptive.Protocol and its exact chronological word, recordOperator and leafProbability.",
+      "type_responsibility": "Every finite complete adaptive tree of the existing type, including unequal depths, with common finite outcome carrier and finite Kraus carrier per instrument family. The exact same dependent Leaf carrier is retained. Completeness and full matrix equality are proved from path products, not fields supplied in a channel structure. Amplified block equality includes offdiagonal auxiliary blocks.",
+      "scientific_boundary": "This is an implementation of current finite complete protocols on an explicitly modelled quantum memory. It does not quantify over an unmodelled external environment or infinite paths.",
+      "declarations": [
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.Leaf",
+          "kind": "abbrev",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 241
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.KrausPath",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 248
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.krausPathFintype",
+          "kind": "instance",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 252
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.pathKraus",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 264
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 270
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 305
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 330
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_apply",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 337
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_eq_block",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 365
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_amplify_operator_apply",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 356
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 371
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_record_operator",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 380
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_operator",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 389
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_state_matrix",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 401
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_block_mass",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 415
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.zero_probability_iff_zero_block",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 422
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 433
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights_weight",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 439
+        }
+      ],
+      "status": "MATCHES_FROZEN_SOURCE_FOCUSED_PASS_UNIFIED_GATE_PENDING"
+    },
+    {
+      "id": "P-CQ-04",
+      "title": "记录分布的联合距离与扰动控制",
+      "origin": "v31.7 derived actual event Effect and defect bounds; scalar all-event TV characterization is the independently compiled root RecordProbability helper.",
+      "type_responsibility": "All finite record events, all legal densities, actual tagged channels and actual leaf distributions. Defect is the bounded supremum over actual inputs with zero included for empty-state edge cases. The identical theorem pattern for a whole protocol uses its whole actual channel. Positive-difference event attains TV, keeping constant one.",
+      "scientific_boundary": "The protocol defect is not a sum of primitive action defects. Fixed-depth telescoping budgets and reduction to per-action worst defects remain separate unproved work.",
+      "declarations": [
+        {
+          "name": "UEOTQM.RectangularChannel.defect",
+          "kind": "def",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 303
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.defect_bddAbove",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 306
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.defect_nonneg",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 313
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.defect_le_one",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 316
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.state_distance_le_defect",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 323
+        },
+        {
+          "name": "UEOTQM.RectangularChannel.perturbation_bound",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RectangularChannels.lean",
+          "line": 328
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.eventEffect",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 169
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.eventEffect_pairing_block",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 186
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.event_probability",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 200
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.record_tv_le_joint_distance",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 208
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.defect",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 217
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.perturbation_bound",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 220
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.record_tv_perturbation_bound",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 225
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.event_probability",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 443
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_le_joint_distance",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 451
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.defect",
+          "kind": "def",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 463
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.perturbation_bound",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 467
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_perturbation_bound",
+          "kind": "theorem",
+          "source_module": "UEOTQM/ClassicalQuantumMemory.lean",
+          "line": 474
+        },
+        {
+          "name": "UEOTQM.RecordProbability.eventProbability",
+          "kind": "def",
+          "source_module": "UEOTQM/RecordProbability.lean"
+        },
+        {
+          "name": "UEOTQM.RecordProbability.positiveEvent",
+          "kind": "def",
+          "source_module": "UEOTQM/RecordProbability.lean"
+        },
+        {
+          "name": "UEOTQM.RecordProbability.eventProbability_abs_sub_le_tv",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RecordProbability.lean"
+        },
+        {
+          "name": "UEOTQM.RecordProbability.positiveEvent_sub_eq_tv",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RecordProbability.lean"
+        },
+        {
+          "name": "UEOTQM.RecordProbability.positiveEvent_abs_sub_eq_tv",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RecordProbability.lean"
+        },
+        {
+          "name": "UEOTQM.RecordProbability.tv_le_iff_events",
+          "kind": "theorem",
+          "source_module": "UEOTQM/RecordProbability.lean"
+        }
+      ],
+      "status": "MATCHES_FROZEN_SOURCE_FOCUSED_PASS_UNIFIED_GATE_PENDING"
+    },
+    {
+      "id": "N-CQ-01",
+      "title": "相同无条件通道不控制记录误差",
+      "origin": "v31.7 actual complete two-label instruments plus an existing-type two-step feedback protocol; explicit finite countermodel.",
+      "type_responsibility": "The old unlabelled channel defect is zero for all density inputs. Retained record TV and actual joint defect are one. Both models share later action instruments; only the first operation differs. The event contains both possible first labels and restricts only the second label, with actual probabilities one and zero, actual joint event-effect gap one, and complete leaf TV one.",
+      "scientific_boundary": "Quantum memory remains identity in this example. The proved difference is in retained records, permitted feedback and later outcomes, not in an unconditioned final quantum state.",
+      "declarations": [
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain",
+          "kind": "def",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 23
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_branch",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 28
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channel",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 33
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_channelState",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 37
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.certain_probability",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 42
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.rhoZero",
+          "kind": "def",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 48
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_channelDefect_zero",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 57
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_tv_one",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 63
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.retained_joint_distance_one",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 67
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.retained_record_defect_one",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 74
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_is_not_a_record_bound",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 84
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackFamily",
+          "kind": "def",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 92
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackProtocol",
+          "kind": "def",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 97
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero",
+          "kind": "def",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 103
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero_iff",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 106
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_zero_model",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 121
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_one_model",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 136
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_event_gap_one",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 153
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_effect_gap_one",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 162
+        },
+        {
+          "name": "UEOTQM.ClassicalQuantumMemoryExamples.adaptive_record_tv_one",
+          "kind": "theorem",
+          "source_module": "scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+          "line": 171
+        }
+      ],
+      "status": "MATCHES_FROZEN_SOURCE_FOCUSED_PASS_UNIFIED_GATE_PENDING"
+    }
+  ],
+  "method": "Full chapter read before the final prose-only change; final 58.5 and scientific boundaries reread after that change, with exact SHA. All declaration names checked against the explicit frozen inventory and helper source. No source edits or Lean reruns for this review.",
+  "findings": [],
+  "final_prose_confirmation": {
+    "actual_two_step_leaf_response_and_effect": true,
+    "second_record_event_probabilities": [
+      1,
+      0
+    ],
+    "full_leaf_tv": 1,
+    "unconditional_memory_same_identity": true,
+    "whole_protocol_defect_not_stepwise_budget": true,
+    "finite_amplification_cp_not_diamond_error": true
+  },
+  "focused_evidence": [
+    "/tmp/qm317_rectangular_focused.json",
+    "/tmp/qm317_memory_focused.json",
+    "/tmp/qm317_memory_witness_5.json",
+    "/tmp/qm317_record_probability_receipt.json"
+  ],
+  "independent_review": "/tmp/qm317_A_memory_cross_review.json",
+  "scope_status": "Author source review only; final unified build, full public axiom inventory and remote receipts are root responsibilities."
+}

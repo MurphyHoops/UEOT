@@ -1,0 +1,2295 @@
+{
+  "schema": "ueot_qm.claim_ledger.v31.7",
+  "date": "2026-10-20",
+  "version": "31.7-kernel.1.7",
+  "path_base": "repository_root",
+  "previous_ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+  "core_baseline": "23d36e4d4b805ef138c9179c5b33c1a89a924dbe",
+  "evidence": {
+    "proof": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+    "source": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+    "witnesses": "physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json",
+    "review": "physics/qm/audits/PURIFICATION_RECORD_DYNAMICS_REVIEW_v31.7.md"
+  },
+  "claims": [
+    {
+      "id": "QMK-01",
+      "claim": "Finite complex PSD density operators, complete Kraus instruments, legal probabilities and positive-branch posteriors",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.mass_eq_zero_iff",
+        "UEOTQM.Instrument.sum_probability",
+        "UEOTQM.Instrument.zero_probability_iff_zero_branch"
+      ],
+      "premises": [
+        "Finite complex matrix sector",
+        "PSD trace-one input",
+        "Kraus completeness"
+      ],
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-01"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately."
+      }
+    },
+    {
+      "id": "QMK-02",
+      "claim": "Arbitrary finite identity-ancilla Kraus amplification preserves arbitrary joint PSD input and agrees entrywise with block action",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.ancillaKrausMap_posSemidef",
+        "UEOTQM.ancillaKrausMap_entry"
+      ],
+      "limits": [
+        "Finite ancilla",
+        "No packaged infinite-dimensional or abstract CP framework"
+      ],
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-02"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Finite ancilla",
+          "No packaged infinite-dimensional or abstract CP framework"
+        ]
+      }
+    },
+    {
+      "id": "QMK-03",
+      "claim": "Actual all-word response has a unique decoder on its operational quotient",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.existsUnique_responseDecoder"
+      ],
+      "core_reuse": "UEOT.V3.Compression.QuotientDescent.existsUnique_descend",
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-03"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately."
+      }
+    },
+    {
+      "id": "QMK-04",
+      "claim": "Posterior response equality yields a closed reachable-range Option update",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.response_posterior",
+        "UEOTQM.nextReachableResponse_map_val",
+        "UEOTQM.existsUnique_closedReachableUpdate"
+      ],
+      "core_reuse": "UEOT.V3.Compression.RecursiveSufficientState.existsUnique_reachableUpdate",
+      "premises": [
+        "All finite words under the fixed instrument family",
+        "Positive branches carry posterior witnesses; zero probability returns none"
+      ],
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-04"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately."
+      }
+    },
+    {
+      "id": "QMK-05",
+      "claim": "Generated real observable closure and finite local presentations classify exactly all finite-word responses; coordinate matrix and reachable posterior updates",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/predictive.py",
+        "formalization/ueot-qm/UEOTQM/Observables.lean",
+        "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean"
+      ],
+      "limits": [
+        "Fixed finite time-homogeneous library",
+        "All finite causal compositions",
+        "Hilbert dimensions 1..4 in runtime",
+        "Response dimension includes the constant trace coordinate",
+        "No smaller CPTP Hilbert realization theorem",
+        "Lean finite presentation may have redundant generators",
+        "Runtime basis independence is separately checked; Hermitian d^2 dimension formula and W_n algorithm termination are not new Lean theorems",
+        "Python/JSON/search/elimination refinement remains open"
+      ],
+      "witnesses": [
+        "UEOTQM.trace_heisenberg",
+        "UEOTQM.observableSpace_pullbackClosed",
+        "UEOTQM.observableSpace_le_of_closed",
+        "UEOTQM.exists_finite_wordEffect_generators",
+        "UEOTQM.FiniteObservablePresentation.span_eq_observableSpace",
+        "UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq",
+        "UEOTQM.FiniteObservablePresentation.operatorCoordinates_record",
+        "UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range",
+        "UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val"
+      ],
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-05"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Fixed finite time-homogeneous library",
+          "All finite causal compositions",
+          "Hilbert dimensions 1..4 in runtime",
+          "Response dimension includes the constant trace coordinate",
+          "No smaller CPTP Hilbert realization theorem",
+          "Lean finite presentation may have redundant generators",
+          "Runtime basis independence is separately checked; Hermitian d^2 dimension formula and W_n algorithm termination are not new Lean theorems",
+          "Python/JSON/search/elimination refinement remains open"
+        ]
+      }
+    },
+    {
+      "id": "QMK-06",
+      "claim": "Complete finite adaptive mathematical protocols have normalized leaf laws computed from certified finite coordinates",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/instrument.py",
+        "formalization/ueot-qm/UEOTQM/Adaptive.lean"
+      ],
+      "limits": [
+        "Finite deterministic mathematical policies",
+        "Every outcome branch is retained",
+        "Common finite outcome target; ragged embedding mathematics and six numeric padded instances are now checked",
+        "Python serialized trees and traversal refinement remain open"
+      ],
+      "witnesses": [
+        "UEOTQM.Adaptive.Protocol.word_injective",
+        "UEOTQM.Adaptive.sum_leafWeight",
+        "UEOTQM.Adaptive.sum_leafProbability",
+        "UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit",
+        "UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq"
+      ],
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-06"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Finite deterministic mathematical policies",
+          "Every outcome branch is retained",
+          "Common finite outcome target; ragged embedding mathematics and six numeric padded instances are now checked",
+          "Python serialized trees and traversal refinement remain open"
+        ]
+      }
+    },
+    {
+      "id": "QMK-07",
+      "claim": "Explicit finite preparation-pair and protocol coverage gives exact record TV comparisons",
+      "layers": [
+        "B",
+        "O"
+      ],
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "machine_status": "FINITE_PROTOCOL_CERTIFICATE_REFINEMENT_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/certificates.py"
+      ],
+      "limits": [
+        "Named preparation relation is supplied",
+        "Only listed preparations and trees",
+        "Not a uniform channel or diamond bound"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-07"
+      },
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "limits": [
+          "Named preparation relation is supplied",
+          "Only listed preparations and trees",
+          "Not a uniform channel or diamond bound"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-08",
+      "claim": "Nonnegative scalar recurrence is covered by the recursively computed budget",
+      "layers": [
+        "B",
+        "C"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.Transport.scalar_transport_certificate"
+      ],
+      "core_reuse": "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
+      "premises": [
+        "Nonnegative initial budget, errors, L and epsilon",
+        "Initial and every local inequality",
+        "Application must independently establish its chosen metric recurrence"
+      ],
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-08"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "actual_quantum_instantiation": "QMK-26 derives the required one-step recurrence from complete Kraus channels, effectDistance and the defined channelDefect; the generic scalar theorem retains its stated recurrence premises.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately."
+      }
+    },
+    {
+      "id": "QMK-09",
+      "claim": "Runtime certificate for finite listed-protocol positive-event postselection, with min(1,2*TV/min(event masses)) bound",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "machine_status": "FINITE_PROTOCOL_POSTSELECTION_PROGRAM_REFINEMENT_OPEN",
+      "limits": [
+        "Both event masses strictly positive",
+        "No unconditional contraction claim",
+        "This claim concerns the existing finite-TV runtime certificate and its unproved general program refinement.",
+        "QMK-27 separately proves an actual matrix all-effect posterior bound in Lean; the two error definitions and scopes are not interchangeable."
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-09"
+      },
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "related_quantum_lean_claim": "QMK-27",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "limits": [
+          "Both event masses strictly positive",
+          "No unconditional contraction claim",
+          "This claim concerns the existing finite-TV runtime certificate and its unproved general program refinement.",
+          "QMK-27 separately proves an actual matrix all-effect posterior bound in Lean; the two error definitions and scopes are not interchangeable."
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-10",
+      "claim": "Conditional integer selector gives Nc=3, Nf=3, k=1 without atomicity",
+      "layers": [
+        "S",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.Selector.selects_three_without_atomicity"
+      ],
+      "premises": [
+        "nc,nf,k are naturals",
+        "3 <= nc",
+        "0 < nf",
+        "k <= nf",
+        "2*nc*k + nf = nc*nf",
+        "nf*(nc+1) < 22"
+      ],
+      "limits": [
+        "Does not derive its spectrum or effective-window hypotheses",
+        "Full premise set not claimed logically minimal"
+      ],
+      "previous_verified_commit": "0791ea34f1ba108c738915921f8e7d923371d0cd",
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-10"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Does not derive its spectrum or effective-window hypotheses",
+          "Full premise set not claimed logically minimal"
+        ]
+      }
+    },
+    {
+      "id": "QMK-11",
+      "claim": "Actual finite spectrum rows derive the integer anomaly equation and weak budget, then invoke the conditional three-family selector",
+      "layers": [
+        "P",
+        "S",
+        "B",
+        "E"
+      ],
+      "limits": [
+        "Complete spectrum and homogeneous template",
+        "Nonzero representation anomaly coefficient",
+        "No uncaptured compensation in the same anomaly channel",
+        "Declared weak window, thresholds and active families",
+        "Global anomalies, vacuum, masses and phenomenology separate",
+        "No representation-theory or one-loop Feynman-diagram derivation",
+        "No physical proof of boolean window declarations"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "physical_applicability": "OPEN",
+      "witnesses": [
+        "UEOTQM.Spectrum.familyCubic_eq_counts",
+        "UEOTQM.Spectrum.selector_anomaly_of_spectrum",
+        "UEOTQM.Spectrum.selector_budget_of_spectrum",
+        "UEOTQM.Spectrum.spectrum_selects_three"
+      ],
+      "premises": [
+        "Finite paired lepton/quark template with declared representation sign and color multiplicities",
+        "nc >= 3, nonempty families, nonzero rational anomaly unit",
+        "Homogeneous lepton orientation",
+        "Combined extra cubic contribution zero and actual total cubic sum zero",
+        "All counted ordinary weak doublets active in the declared fixed SU(2) window",
+        "Nonnegative extra matter Dynkin indices and positive complete one-loop coefficient"
+      ],
+      "verification_location": "LOCAL",
+      "prior_verified_source_commit": "323db6d1c2e50a432bdcf6a6872212426cc826ce",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-11"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Complete spectrum and homogeneous template",
+          "Nonzero representation anomaly coefficient",
+          "No uncaptured compensation in the same anomaly channel",
+          "Declared weak window, thresholds and active families",
+          "Global anomalies, vacuum, masses and phenomenology separate",
+          "No representation-theory or one-loop Feynman-diagram derivation",
+          "No physical proof of boolean window declarations"
+        ]
+      }
+    },
+    {
+      "id": "QMK-12",
+      "claim": "Python implementation is proved to refine the Lean model",
+      "layers": [
+        "B"
+      ],
+      "status": "NOT_ESTABLISHED",
+      "open_items": [
+        "Universal Python/JSON parser and exporter correctness",
+        "Programmatic label-to-Fin mapping correctness for all accepted inputs",
+        "PSD principal-minor checker equivalence",
+        "Gaussian elimination, Gram checker and W_n termination",
+        "Python finite-tree serialization/traversal refinement"
+      ],
+      "closed_mathematical_interfaces": [
+        "W* finite real span and finite-word generation existence",
+        "Finite local presentation sufficiency and all-word coordinate equivalence",
+        "Normalized complete finite adaptive mathematical interpreter",
+        "Injective Q(i) matrix interpretation preserving actual complex operations",
+        "Nonnegative weighted Kraus realization via exact square-root identities",
+        "Finite ragged-index and outcome embeddings preserving actual quantum operations",
+        "Reliable computable finite certificate checker to ordinary instruments and all-word presentation",
+        "Six independently compiled numeric instance proof products; no universal producer refinement",
+        "Actual effects and Born bounds; complete and selective Kraus pullbacks and every finite record effect",
+        "All-effect response pseudodistance, complete-channel contraction and actual channel-defect recurrence composed with Core M-TC",
+        "Same-instrument strictly positive-event posterior bound and support protection"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-12"
+      },
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "open_items": [
+          "Universal Python/JSON parser and exporter correctness",
+          "Programmatic label-to-Fin mapping correctness for all accepted inputs",
+          "PSD principal-minor checker equivalence",
+          "Gaussian elimination, Gram checker and W_n termination",
+          "Python finite-tree serialization/traversal refinement"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-13",
+      "claim": "Derivation of the complex quantum sector or new empirical confirmation from this kernel",
+      "layers": [
+        "P",
+        "X"
+      ],
+      "status": "NOT_CLAIMED",
+      "limits": [
+        "Complex density/Kraus/Born sector is explicit input",
+        "No new experimental dataset in this delivery"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-13"
+      },
+      "selection_boundary_status": "EXPLICIT_CLASSICAL_AND_REAL_SEPARATION_SLICES_VERIFIED_UNIQUE_SELECTION_OPEN",
+      "related_proved_slices": [
+        "QMK-36",
+        "QMK-37",
+        "QMK-38",
+        "QMK-39",
+        "QMK-40"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "limits": [
+          "Complex density/Kraus/Born sector is explicit input",
+          "No new experimental dataset in this delivery"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-14",
+      "claim": "QMB-05 and QMB-06 long-term and survival bridges",
+      "layers": [
+        "B",
+        "C",
+        "P"
+      ],
+      "status": "FINITE_CESARO_DIAGONAL_AND_NONCOMMUTATIVE_CONDITIONAL_SLICES_VERIFIED",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-14"
+      },
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.Cesaro.exists_stationary",
+        "UEOTQM.Survival.qsd_survival_pow",
+        "UEOTQM.Survival.doob_conditionalState"
+      ],
+      "limits": [
+        "Actual finite Cesaro stationary existence; actual diagonal QSD/Doob bridge with given spectral data",
+        "No generic noncommutative spectral existence, uniqueness/mixing or infinite conditioning theorem",
+        "Cesaro uses matrix/Mathlib analysis; direct Core composition is in Survival."
+      ],
+      "related_new_claims": [
+        "QMK-41",
+        "QMK-42",
+        "QMK-43",
+        "QMK-44"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "limits": [
+          "Actual finite Cesaro stationary existence; actual diagonal QSD/Doob bridge with given spectral data",
+          "No generic noncommutative spectral existence, uniqueness/mixing or infinite conditioning theorem",
+          "Cesaro uses matrix/Mathlib analysis; direct Core composition is in Survival."
+        ]
+      },
+      "prior_verification_scope": null,
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-15",
+      "claim": "Portable exact word-effect certificate checker independently recomputes generatedness, all branch closure, basis independence and context",
+      "layers": [
+        "B"
+      ],
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "machine_status": "PYTHON_CHECKER_REFINEMENT_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/representation_certificate.py",
+        "physics/qm/kernel/tests/test_representation_certificate.py"
+      ],
+      "premises": [
+        "Expected fixed time-homogeneous InstrumentLibrary supplied externally",
+        "Gaussian-rational matrices and real rational coefficients",
+        "Short actual-word witnesses; d in 1..4, r in 1..d^2, each witness length <= d^2-1"
+      ],
+      "limits": [
+        "No fixed prediction horizon; evidence length is bounded",
+        "No guarantee for arbitrary bit lengths or arbitrary library size",
+        "Accepts actual word-effect bases, not arbitrary linear-mixed bases",
+        "Python precheck is not a Lean proof; a separate exporter plus actual kernel compilation now supplies per-instance proof products"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-15"
+      },
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "limits": [
+          "No fixed prediction horizon; evidence length is bounded",
+          "No guarantee for arbitrary bit lengths or arbitrary library size",
+          "Accepts actual word-effect bases, not arbitrary linear-mixed bases",
+          "Python precheck is not a Lean proof; a separate exporter plus actual kernel compilation now supplies per-instance proof products"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-16",
+      "claim": "Independent six-channel local 331 anomaly sums on explicit all-left-handed fundamental/singlet rows",
+      "layers": [
+        "P",
+        "S",
+        "B"
+      ],
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "machine_status": "GENERAL_SIX_ANOMALY_LEAN_BRIDGE_OPEN",
+      "sources": [
+        "physics/qm/kernel/ueot_qm/spectrum.py",
+        "physics/qm/kernel/tests/test_spectrum.py"
+      ],
+      "limits": [
+        "Fixed SU(3) color and selected representation index conventions",
+        "Exact rational beta/sqrt(3) examples; not a new all-real-beta Lean theorem",
+        "Local anomalies only; global anomalies, vacuum, masses and physical matching remain open"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-16"
+      },
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "limits": [
+          "Fixed SU(3) color and selected representation index conventions",
+          "Exact rational beta/sqrt(3) examples; not a new all-real-beta Lean theorem",
+          "Local anomalies only; global anomalies, vacuum, masses and physical matching remain open"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-17",
+      "claim": "Identity and semantic reconciliation of five uploaded theory sources",
+      "layers": [
+        "B"
+      ],
+      "status": "SOURCE_REVIEW_COMPLETED",
+      "sources": [
+        "physics/qm/audits/SOURCE_AND_REPRESENTATION_REVIEW_v31.2.md"
+      ],
+      "limits": [
+        "Root UEOT_v3_top.pdf exact Git blob identity established",
+        "Other historical archives and two v28.1 identities not automatically closed",
+        "Original topology-index-generation chain remains retired",
+        "Finite matrices cannot realize nonzero-hbar exact CCR on the whole space"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-17"
+      },
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "limits": [
+          "Root UEOT_v3_top.pdf exact Git blob identity established",
+          "Other historical archives and two v28.1 identities not automatically closed",
+          "Original topology-index-generation chain remains retired",
+          "Finite matrices cannot realize nonzero-hbar exact CCR on the whole space"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-18",
+      "claim": "Nonnegative weighted and ragged finite data preserve actual quantum operations under ordinary Kraus realization and explicit zero-padding embeddings",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "witnesses": [
+        "UEOTQM.WeightedInstrument.toInstrument",
+        "UEOTQM.WeightedInstrument.toInstrument_branch",
+        "UEOTQM.WeightedInstrument.toInstrument_posterior_matrix",
+        "UEOTQM.RaggedInstrument.toWeighted_toInstrument_branch",
+        "UEOTQM.WeightedInstrument.padOutcomes_probability_of_not_mem_range"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Weighted.lean",
+        "formalization/ueot-qm/UEOTQM/Ragged.lean"
+      ],
+      "limits": [
+        "Nonnegative real weights; explicit weighted completeness",
+        "Finite index embeddings are mathematical inputs, not a proof of all Python index conversions"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-18"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Nonnegative real weights; explicit weighted completeness",
+          "Finite index embeddings are mathematical inputs, not a proof of all Python index conversions"
+        ]
+      }
+    },
+    {
+      "id": "QMK-19",
+      "claim": "Computable Gaussian-rational matrix arithmetic has an injective interpretation in actual complex matrices preserving the certificate operations",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "witnesses": [
+        "UEOTQM.Exact.MatrixData.toMatrix_injective",
+        "UEOTQM.Exact.MatrixData.toMatrix_mul",
+        "UEOTQM.Exact.MatrixData.toMatrix_adjoint",
+        "UEOTQM.Exact.toMatrix_weightedPullback_univ",
+        "UEOTQM.Exact.Examples.imaginaryUnit_square_complex",
+        "UEOTQM.Exact.Examples.hadamard_complete_complex"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Exact.lean"
+      ],
+      "limits": [
+        "No formal JSON decoding or generic floating-point error theorem"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-19"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "No formal JSON decoding or generic floating-point error theorem"
+        ]
+      }
+    },
+    {
+      "id": "QMK-20",
+      "claim": "Five decidable local algebraic conditions construct actual complex instruments and a presentation classifying all finite-word responses",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "witnesses": [
+        "UEOTQM.ExactCertificate.check_sound",
+        "UEOTQM.ExactCertificate.exactRecordEffect_toMatrix",
+        "UEOTQM.ExactCertificate.basis_toMatrix",
+        "UEOTQM.ExactCertificate.presentation",
+        "UEOTQM.ExactCertificate.coordinates_eq_iff_response_eq",
+        "UEOTQM.ExactCertificate.adaptive_leafProbability_eq"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/ExactCertificate.lean"
+      ],
+      "limits": [
+        "Nonnegative weights, full completeness, empty word, actual generated basis and every local closure identity",
+        "No global response property is assumed as a Data or Conditions field",
+        "Redundant presentations allowed; no Lean Gram independence or minimal physical Hilbert realization conclusion"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-20"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Nonnegative weights, full completeness, empty word, actual generated basis and every local closure identity",
+          "No global response property is assumed as a Data or Conditions field",
+          "Redundant presentations allowed; no Lean Gram independence or minimal physical Hilbert realization conclusion"
+        ]
+      }
+    },
+    {
+      "id": "QMK-21",
+      "claim": "Six exported numerical certificates each receive an independent Lean kernel proof and all-word/adaptive/closed-update consequences",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "witnesses": [
+        "Per-instance checked, presentation, all_word_response_iff, finite_tree_coordinates, all_finite_tree_laws, complete_tree_normalization, closed_coordinate_update"
+      ],
+      "sources": [
+        "physics/qm/kernel/ueot_qm/lean_export.py",
+        "physics/qm/kernel/certificates/v31.3/exports.json"
+      ],
+      "limits": [
+        "Exactly six demonstrated numeric padded models; each source bound by SHA256",
+        "Label metadata and Python/JSON producer universally verified correctness not claimed",
+        "d in 1..4, r<=d^2, witness length<=d^2-1; exporter caps do not bound future words",
+        "Manifest retains source-export event status; actual compilation is recorded separately"
+      ],
+      "runtime_status": "PASS_100_TEST_METHOD_SUITE",
+      "instance_receipt": "physics/qm/kernel/evidence/v31.7/lean-exports/verification.json",
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-21"
+      },
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-exports/verification.json",
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending.",
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.7/runtime-verification.json",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_runtime_receipt": "physics/qm/kernel/evidence/v31.4/runtime-verification.json",
+      "prior_instance_receipt": "physics/qm/kernel/evidence/v31.4/lean-exports/verification.json",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+        "instance_receipt": "physics/qm/kernel/evidence/v31.6/lean-exports/verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "Exactly six demonstrated numeric padded models; each source bound by SHA256",
+          "Label metadata and Python/JSON producer universally verified correctness not claimed",
+          "d in 1..4, r<=d^2, witness length<=d^2-1; exporter caps do not bound future words",
+          "Manifest retains source-export event status; actual compilation is recorded separately"
+        ]
+      }
+    },
+    {
+      "id": "QMK-22",
+      "claim": "Reproducible regeneration, exact fixture/source binding, real compilation and strict paired negative witnesses",
+      "layers": [
+        "B"
+      ],
+      "status": "EXECUTED_PIPELINE_PASS",
+      "source": "physics/qm/kernel/verify_lean_exports.py",
+      "evidence": "physics/qm/kernel/evidence/v31.7/lean-exports/verification.json",
+      "counts": {
+        "positive_instances": 6,
+        "positive_audit_targets": 42,
+        "false_witnesses": 4,
+        "false_witness_audit_targets": 4
+      },
+      "negative_contract": "Original unchanged check=true proof fails at checked, while identical numeric definitions prove check=false; both actual source hashes and shared prefixes bound",
+      "limits": [
+        "No environmental failure or timeout counted as mathematical rejection",
+        "No universal formal verification of the verifier program"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-22"
+      },
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified.",
+      "prior_verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+      "prior_evidence": "physics/qm/kernel/evidence/v31.4/lean-exports/verification.json",
+      "prior_v31_6_evidence": {
+        "evidence": "physics/qm/kernel/evidence/v31.6/lean-exports/verification.json",
+        "verification_scope": "Rechecked against the v31.6 source-bound local package; remote CI and resulting-main acceptance are recorded separately.",
+        "limits": [
+          "No environmental failure or timeout counted as mathematical rejection",
+          "No universal formal verification of the verifier program"
+        ]
+      }
+    },
+    {
+      "id": "QMK-23",
+      "claim": "Actual PSD effects with PSD complement have Born probabilities in [0,1] for every existing finite density operator",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "witnesses": [
+        "UEOTQM.pairing_nonneg",
+        "UEOTQM.Effect.zero",
+        "UEOTQM.Effect.one",
+        "UEOTQM.Effect.complement",
+        "UEOTQM.Effect.pairing_le_mass",
+        "UEOTQM.Effect.probability_nonneg",
+        "UEOTQM.Effect.probability_le_one",
+        "UEOTQM.Effect.probability_complement"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Effects.lean"
+      ],
+      "premises": [
+        "Finite common complex matrix carrier with Fintype and DecidableEq",
+        "Effect has actual matrix E, E.PosSemidef and (1-E).PosSemidef",
+        "Density has an actual PSD matrix with trace one; probability is the existing real trace pairing"
+      ],
+      "limits": [
+        "The proof uses PSD factorization and trace cyclicity, without claiming the noncommuting product E*rho is PSD.",
+        "This establishes properties of the explicit quantum-sector input, not a reconstruction of the Born rule from Core."
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-23"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "The proof uses PSD factorization and trace cyclicity, without claiming the noncommuting product E*rho is PSD.",
+          "This establishes properties of the explicit quantum-sector input, not a reconstruction of the Born rule from Core."
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-24",
+      "claim": "Complete Kraus pullbacks preserve actual effects; selective pullbacks and all finite record effects have the correct Born response",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "witnesses": [
+        "UEOTQM.Instrument.channelState",
+        "UEOTQM.Instrument.pullbackEffects",
+        "UEOTQM.Instrument.pairing_pullbackEffects",
+        "UEOTQM.Instrument.probability_channelState",
+        "UEOTQM.Instrument.branchEffect",
+        "UEOTQM.Instrument.probability_posterior",
+        "UEOTQM.recordTest_matrix",
+        "UEOTQM.recordEffect_complement_posSemidef",
+        "UEOTQM.response_eq_effect_probability",
+        "UEOTQM.response_le_one"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Effects.lean"
+      ],
+      "premises": [
+        "Finite Kraus matrices satisfy full summed completeness",
+        "Outcome-dependent output effects are PSD with PSD complements",
+        "Words use the existing chronological composition and fixed instrument family",
+        "Posterior identities require the actual selected branch probability to be strictly positive"
+      ],
+      "limits": [
+        "Complement positivity is derived using Kraus completeness; it is not a final pullback property assumed as a field.",
+        "channelState sums all outcomes; branchEffect places zero at other outcomes and does not turn selection into a trace-preserving channel.",
+        "Every finite word is covered, without a fixed future-word length cap."
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-24"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Complement positivity is derived using Kraus completeness; it is not a final pullback property assumed as a field.",
+          "channelState sums all outcomes; branchEffect places zero at other outcomes and does not turn selection into a trace-preserving channel.",
+          "Every finite word is covered, without a fixed future-word length cap."
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-25",
+      "claim": "The actual supremum over all effect probability gaps is a bounded response pseudodistance and controls every common future finite-word response",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "witnesses": [
+        "UEOTQM.effectGapSet_nonempty",
+        "UEOTQM.effectGapSet_bddAbove",
+        "UEOTQM.effectDistance",
+        "UEOTQM.effectDistance_nonneg",
+        "UEOTQM.effectDistance_le_iff",
+        "UEOTQM.effectDistance_le_one",
+        "UEOTQM.effectDistance_self",
+        "UEOTQM.effectDistance_comm",
+        "UEOTQM.effectDistance_triangle",
+        "UEOTQM.effectDistance_eq_zero_iff",
+        "UEOTQM.response_sub_le_effectDistance"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Stability.lean"
+      ],
+      "premises": [
+        "Both inputs are densities on the same finite complex carrier",
+        "The supremum ranges over all actual effects, not an enumerated sample or a restricted protocol library",
+        "The compared word responses use one common subsequent instrument family"
+      ],
+      "limits": [
+        "Nonemptiness and boundedness of the supremum set are proved.",
+        "The zero theorem concludes agreement of all effect probabilities; density equality and a MetricSpace instance are not established in this increment.",
+        "No new identification with trace norm, trace distance or diamond norm is claimed."
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-25"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Nonemptiness and boundedness of the supremum set are proved.",
+          "The zero theorem concludes agreement of all effect probabilities; density equality and a MetricSpace instance are not established in this increment.",
+          "No new identification with trace norm, trace distance or diamond norm is claimed."
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-26",
+      "claim": "Actual complete Kraus channels contract effectDistance; their defined all-state output defect supplies a quantum recurrence and Core M-TC trajectory and common-word bounds",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "witnesses": [
+        "UEOTQM.channelDefect",
+        "UEOTQM.channelDefect_nonneg",
+        "UEOTQM.channelDefect_le_one",
+        "UEOTQM.effectDistance_le_channelDefect",
+        "UEOTQM.Instrument.channelState_effectDistance_le",
+        "UEOTQM.Instrument.channelState_perturbation_bound",
+        "UEOTQM.channelTrajectory",
+        "UEOTQM.channelTrajectory_transport_certificate",
+        "UEOTQM.scalarBudget_one_eq_sum",
+        "UEOTQM.channelTrajectory_effectDistance_le_sum",
+        "UEOTQM.channelTrajectory_response_sub_le_sum"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Stability.lean",
+        "formalization/ueot-qm/UEOTQM/Transport.lean"
+      ],
+      "premises": [
+        "All compared states and complete channels have the same finite carrier",
+        "channelDefect(F,G) is sup({0} union {effectDistance(F(rho),G(rho)) : rho is Density})",
+        "I : Nat -> Instrument iota O kappa and J : Nat -> Instrument iota Oprime kappaprime; each sequence has fixed finite index types, while matrices may vary with time",
+        "The final record comparison uses one common subsequent instrument family"
+      ],
+      "limits": [
+        "The defect and contraction are derived from actual quantum definitions; the final local inequality is not assumed as a structure field.",
+        "Inserting zero makes the defect set nonempty even when the Density type is empty.",
+        "The resulting bound is initial effectDistance plus the sum of actual complete-channel defects.",
+        "The exact channelDefect remains a noncomputable supremum; v31.5 adds an implemented exact rational upper budget for fixed-library mixtures (QMK-29/30).",
+        "Outcome-forgetting channel defects do not automatically bound differently labeled instrument histories or general adaptive processes.",
+        "Ancilla-stabilized norms, arbitrary auxiliary systems, changing physical carriers and Python trajectory refinement need separate constructions and proofs."
+      ],
+      "core_reuse": {
+        "direct_qm_bridge": "UEOTQM.Transport.scalar_transport_certificate",
+        "core_theorem": "UEOT.V3.Compression.TransportCertificate.weighted_chain_bound",
+        "actual_quantum_consumer": "UEOTQM.channelTrajectory_transport_certificate",
+        "parameters": "L_n=1; epsilon_n is the defined channelDefect of the two actual step channels; the one-step inequality is proved."
+      },
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-26"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "The defect and contraction are derived from actual quantum definitions; the final local inequality is not assumed as a structure field.",
+          "Inserting zero makes the defect set nonempty even when the Density type is empty.",
+          "The resulting bound is initial effectDistance plus the sum of actual complete-channel defects.",
+          "The exact channelDefect remains a noncomputable supremum; v31.5 adds an implemented exact rational upper budget for fixed-library mixtures (QMK-29/30).",
+          "Outcome-forgetting channel defects do not automatically bound differently labeled instrument histories or general adaptive processes.",
+          "Ancilla-stabilized norms, arbitrary auxiliary systems, changing physical carriers and Python trajectory refinement need separate constructions and proofs."
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-27",
+      "claim": "For the same instrument and event, actual strictly positive posteriors satisfy effectDistance(post_rho,post_sigma) <= 2*effectDistance(rho,sigma)/p_rho, with a proved support gate",
+      "layers": [
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "witnesses": [
+        "UEOTQM.Instrument.probability_sub_le_effectDistance",
+        "UEOTQM.Instrument.probability_pos_of_effectDistance_lt",
+        "UEOTQM.normalized_probability_difference_le",
+        "UEOTQM.Instrument.posterior_effectDistance_le",
+        "UEOTQM.Instrument.posterior_effectDistance_le_of_probability_lower_bound"
+      ],
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Effects.lean",
+        "formalization/ueot-qm/UEOTQM/Stability.lean"
+      ],
+      "premises": [
+        "The same complete finite Instrument and selected outcome are used for both states",
+        "Both actual event probabilities p_rho and p_sigma are strictly positive",
+        "The eta version additionally requires 0 < eta and eta <= p_rho",
+        "Alternatively effectDistance(rho,sigma) < p_rho proves p_sigma > 0 before using the posterior bound"
+      ],
+      "limits": [
+        "The denominator is the first state event probability; the theorem is not an unconditional conditioning contraction.",
+        "A lower bound on p_rho alone does not establish p_sigma > 0 when the input distance may exceed p_rho.",
+        "Zero-probability posteriors remain undefined; constant two is not claimed optimal.",
+        "This is an actual all-effect quantum theorem, not universal refinement of the older finite-TV Python certificate."
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-27"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "The denominator is the first state event probability; the theorem is not an unconditional conditioning contraction.",
+          "A lower bound on p_rho alone does not establish p_sigma > 0 when the input distance may exceed p_rho.",
+          "Zero-probability posteriors remain undefined; constant two is not claimed optimal.",
+          "This is an actual all-effect quantum theorem, not universal refinement of the older finite-TV Python certificate."
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-28",
+      "claim": "An executable algorithm for informative model-dependent channelDefect bounds, or a labeled/adaptive/ancilla-stabilized quantum error theory",
+      "layers": [
+        "B"
+      ],
+      "status": "FIXED_LIBRARY_MIXTURE_SLICE_VERIFIED_REMAINDER_OPEN",
+      "related_proved_slice": [
+        "QMK-26",
+        "QMK-29",
+        "QMK-30"
+      ],
+      "open_items": [
+        "Reduce actual whole-protocol joint record-memory defects to useful stepwise and action-level budgets under a common causal controller",
+        "Establish any separately claimed auxiliary-stabilized distance comparison",
+        "Prove density separation and any needed norm identification; exact arbitrary supremum computation is not established"
+      ],
+      "limits": [
+        "Finite sampled maximum output gaps are not certified supremum upper bounds.",
+        "Existing finite identity-ancilla positivity alone does not prove a stabilized distance comparison.",
+        "The universal bound one and the fixed-library TV bound are proved; expanded models and arbitrary exact supremum computation remain separate."
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-28"
+      },
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "prior_v31_6_evidence": {
+        "limits": [
+          "Finite sampled maximum output gaps are not certified supremum upper bounds.",
+          "Existing finite identity-ancilla positivity alone does not prove a stabilized distance comparison.",
+          "The universal bound one and the fixed-library TV bound are proved; expanded models and arbitrary exact supremum computation remain separate."
+        ],
+        "open_items": [
+          "Extend proved useful bounds beyond the now implemented fixed-library rational mixture TV budget, with explicit component, history or auxiliary models.",
+          "Construct explicit common classical-history and quantum-memory carriers for different instruments",
+          "Extend and verify the comparison under the chosen auxiliary quantum systems",
+          "Prove any claimed trace-norm or stabilized-norm identification and density separation"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Original open/source-review/runtime status retained. The v31.7 build does not prove this unformalized scientific or program-refinement claim. Any reexecuted runtime or instance gate is separately identified."
+    },
+    {
+      "id": "QMK-29",
+      "claim": "Actual density and complete Kraus mixtures obey all-effect and all-state total-variation and joint component bounds",
+      "layers": [
+        "B",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Mixture.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Mixture.instrument_channel",
+        "UEOTQM.Mixture.density_weight_change_le_tv",
+        "UEOTQM.Mixture.channelDefect_weight_change_le_tv",
+        "UEOTQM.Mixture.channelDefect_joint_change_le"
+      ],
+      "premises": [
+        "Finite common carrier",
+        "Nonnegative normalized p,q",
+        "Same component library for pure weight TV; component error term for changed libraries"
+      ],
+      "limits": [
+        "Not diamond norm or an exact arbitrary supremum solver"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-29"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Not diamond norm or an exact arbitrary supremum solver"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-30",
+      "claim": "Rational probability weights have an actual real interpretation and a proved finite upper-budget interface",
+      "layers": [
+        "B",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Mixture.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Mixture.tv_toWeights",
+        "UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget",
+        "UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget"
+      ],
+      "premises": [
+        "Exact rational nonnegative normalized weights",
+        "Proved rational comparison premise; runtime separately computes fixed-library TV"
+      ],
+      "limits": [
+        "Universal Python/JSON refinement not claimed",
+        "Concrete mixture witness audits are separate from generic totals"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-30"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Universal Python/JSON refinement not claimed",
+          "Concrete mixture witness audits are separate from generic totals"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-31",
+      "claim": "Actual CPTP Cesaro states have exact matrix residual and all-effect residual at most 1/N",
+      "layers": [
+        "B",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Cesaro.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Cesaro.averageState_matrix",
+        "UEOTQM.Cesaro.matrix_residual",
+        "UEOTQM.Cesaro.probability_residual_le",
+        "UEOTQM.Cesaro.effectDistance_residual_le"
+      ],
+      "premises": [
+        "Density input",
+        "Complete finite instrument",
+        "N>0"
+      ],
+      "limits": [
+        "No zero-length average",
+        "Not an individual orbit convergence assertion"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-31"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "No zero-length average",
+          "Not an individual orbit convergence assertion"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-32",
+      "claim": "Actual finite density compactness and channel continuity yield invariant Cesaro subsequences and stationary densities",
+      "layers": [
+        "B",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Cesaro.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Cesaro.densityMatrices_compact",
+        "UEOTQM.Cesaro.continuous_channel",
+        "UEOTQM.Cesaro.subsequence_limit_invariant",
+        "UEOTQM.Cesaro.exists_stationary_subsequence",
+        "UEOTQM.Cesaro.exists_stationary"
+      ],
+      "premises": [
+        "Native finite complex matrix topology",
+        "Given initial density or nonempty carrier for the unseeded theorem"
+      ],
+      "limits": [
+        "No direct Core M-OI/P-PER theorem invocation",
+        "No uniqueness, mixing, full Cesaro convergence or random-trajectory ergodic theorem"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-32"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "No direct Core M-OI/P-PER theorem invocation",
+          "No uniqueness, mixing, full Cesaro convergence or random-trajectory ergodic theorem"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-33",
+      "claim": "A substochastic row kernel has a complete quantum instrument whose actual all-success record equals diagonal pQ^n",
+      "layers": [
+        "B",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Survival.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Survival.instrument_branch",
+        "UEOTQM.Survival.success_branch",
+        "UEOTQM.Survival.killedIterate_diagonal",
+        "UEOTQM.Survival.survivalMass_eq_response",
+        "UEOTQM.Survival.survivalMass_diagonal"
+      ],
+      "premises": [
+        "Qij>=0 and each row sum<=1",
+        "Row law pQ",
+        "Explicit success plus loss outcomes"
+      ],
+      "limits": [
+        "Success alone need not be trace preserving",
+        "Failure definition is not a new absorbing cemetery state"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-33"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Success alone need not be trace preserving",
+          "Failure definition is not a new absorbing cemetery state"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-34",
+      "claim": "Explicit left spectral data composed with Core QSD/Perron imply actual quantum success probability r^n and a fixed conditional state",
+      "layers": [
+        "B",
+        "C",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Survival.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Survival.qsd_killedIterate",
+        "UEOTQM.Survival.qsd_survival_pow",
+        "UEOTQM.Survival.qsd_conditionalState",
+        "UEOTQM.Survival.qsd_rate_le_one"
+      ],
+      "premises": [
+        "Nonnegative normalized q",
+        "qQ=rq",
+        "r>0",
+        "Substochastic nonnegative Q"
+      ],
+      "limits": [
+        "No universal spectral-data existence or dominant spectral-radius identification",
+        "No posterior at probability zero"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-34"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "No universal spectral-data existence or dominant spectral-radius identification",
+          "No posterior at probability zero"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-35",
+      "claim": "Given positive right spectral data, actual Core Doob identities construct a complete quantum instrument with invariant qh success records",
+      "layers": [
+        "B",
+        "C",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/Survival.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Survival.doob_success_branch",
+        "UEOTQM.Survival.doob_success_probability",
+        "UEOTQM.Survival.doob_killedIterate",
+        "UEOTQM.Survival.doob_survivalMass",
+        "UEOTQM.Survival.doob_conditionalState"
+      ],
+      "premises": [
+        "Q_ij >= 0",
+        "q_i >= 0",
+        "Qh=rh with h_i>0",
+        "qQ=rq and sum q_i*h_i=1",
+        "r>0"
+      ],
+      "limits": [
+        "qh and QSD q generally differ",
+        "No separately named complete channelState equality or infinite conditioned process limit is counted"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-35"
+      },
+      "later_extension": "The separately stated noncommutative construction and channelState theorem are QMK-41 through QMK-43; they require their own positive invertible eigenmetric premises.",
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "qh and QSD q generally differ",
+          "No separately named complete channelState equality or infinite conditioned process limit is counted"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-36",
+      "claim": "Full finite classical simplices, all interval effects, true stochastic action and PMF transport are implemented without quantum state fields",
+      "layers": [
+        "B",
+        "P"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+        "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Classical.all_effects_separate",
+        "UEOTQM.Classical.pushforward_halfMix",
+        "UEOTQM.Classical.marginalLeft_eq_pushforward",
+        "UEOTQM.Classical.toPMF_stepState"
+      ],
+      "premises": [
+        "Finite full simplex",
+        "All interval-valued effects",
+        "Declared Cartesian composite and sum marginal",
+        "Fixed action for the generic PMF.bind identity"
+      ],
+      "limits": [
+        "Interpretation and composition choices are declared inputs, not selected by Core",
+        "Imports containing quantum modules are software dependencies, not quantum assumptions of the scalar theorems"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-36"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Interpretation and composition choices are declared inputs, not selected by Core",
+          "Imports containing quantum modules are software dependencies, not quantum assumptions of the scalar theorems"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-37",
+      "claim": "One actual fully observed Core quotient and safe trajectory has a mixed quotient marginal with no pure extension in any finite classical auxiliary space",
+      "layers": [
+        "C",
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+        "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.Classical.no_pure_extension_halfMix",
+        "UEOTQM.CorePurificationBoundary.terminal_eq_iff",
+        "UEOTQM.CorePurificationBoundary.actualPath_first_quotient_marginal",
+        "UEOTQM.CorePurificationBoundary.classical_purification_separation"
+      ],
+      "premises": [
+        "Purity means convex-extremality in the whole simplex",
+        "Actual survivalMicroKernel and complete registered readout",
+        "Explicit constant true policy",
+        "Exactly the stated H1-H6 finite interface slice"
+      ],
+      "limits": [
+        "Ancillary types are arbitrary finite, including empty",
+        "Not a model of all 106 Core propositions and all interpretations",
+        "No general theorem against all possible UEOT quantum reconstruction"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-37"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Ancillary types are arbitrary finite, including empty",
+          "Not a model of all 106 Core propositions and all interpretations",
+          "No general theorem against all possible UEOT quantum reconstruction"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-38",
+      "claim": "The same Core kernel with the actual restricted readout quotient collapses this two-point mixture to a pure Dirac state",
+      "layers": [
+        "C",
+        "B",
+        "P",
+        "E"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.CorePurificationBoundary.restricted_support_merge",
+        "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_dirac",
+        "UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_pure"
+      ],
+      "premises": [
+        "Existing registeredSurvivalModel with only first-bit readout",
+        "Same source kernel and first-row law"
+      ],
+      "limits": [
+        "This particular obstruction disappears; universal purification of the restricted model is not asserted"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-38"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "This particular obstruction disappears; universal purification of the restricted model is not asserted"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-39",
+      "claim": "Two different real joint density matrices have equal probabilities for all real local product effects, while a legal real joint effect distinguishes them perfectly",
+      "layers": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/RealLocalTomography.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.RealLocalTomography.all_real_product_probabilities_equal",
+        "UEOTQM.RealLocalTomography.jointTest_probability_plus",
+        "UEOTQM.RealLocalTomography.jointTest_probability_minus",
+        "UEOTQM.RealLocalTomography.real_local_tomography_fails"
+      ],
+      "premises": [
+        "Actual finite complex matrix Density and Effect with explicit real-entry restriction",
+        "Usual tensor composite for two rebits",
+        "All legal real local effects, not a finite sample"
+      ],
+      "limits": [
+        "This inherited two-rebit separation theorem is supplemented by the actual full-state real operational presentation in QMK-46/47; a complete reconstruction background or full Core real model remains unproved",
+        "No unique-complex-quantum reconstruction theorem"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-39"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "No complete real operational-probabilistic theory or Core model constructed",
+          "No unique-complex-quantum reconstruction theorem"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-40",
+      "claim": "The joint distinguisher lies outside every finite real span of real product effects, and allowing a complex local effect distinguishes the same pair",
+      "layers": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/RealLocalTomography.lean",
+        "formalization/ueot-qm/scripts/witnesses/RealTomographyTwoRebit.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.RealLocalTomography.complex_product_distinguishes",
+        "UEOTQM.RealLocalTomography.Examples.finite_real_product_span_blind",
+        "UEOTQM.RealLocalTomography.Examples.joint_test_not_finite_real_product_sum"
+      ],
+      "premises": [
+        "Real coefficients in the span obstruction",
+        "The explicit rhoPlus/rhoMinus pair",
+        "Legal complex local effect (I+Y)/2"
+      ],
+      "limits": [
+        "Dedicated five-theorem span witness is now included in 151 concrete audits, separately from 646 package explicit theorems",
+        "Does not prove universal complex local tomography"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-40"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Dedicated five-theorem span witness is counted in 84 concrete audits, not 459 package theorems",
+          "Does not prove universal complex local tomography"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-41",
+      "claim": "A supplied positive invertible left eigenmetric constructs a genuine complete finite quantum Doob instrument",
+      "layers": [
+        "B",
+        "P",
+        "E"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/QuantumDoob.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_pos",
+        "UEOTQM.QuantumDoob.doob_complete",
+        "UEOTQM.QuantumDoob.doob_branch",
+        "UEOTQM.QuantumDoob.doob_branch_apply"
+      ],
+      "premises": [
+        "Source is an actual complete Instrument and one chosen branch",
+        "r > 0",
+        "Two-sided inverse filter S,T",
+        "Source pullback satisfies Phi*(S^dagger S)=r(S^dagger S)"
+      ],
+      "limits": [
+        "No universal existence of the eigenmetric or identification of a leading eigenvalue",
+        "Normalized filter.state is generally nonlinear and not claimed to be CPTP"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-41"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "No universal existence of the eigenmetric or identification of a leading eigenvalue",
+          "Normalized filter.state is generally nonlinear and not claimed to be CPTP"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-42",
+      "claim": "For every initial density and every finite repeated-success record, survival is positive and normalized filtering intertwines the true conditional state with Doob iteration",
+      "layers": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/QuantumDoob.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumDoob.doob_successOperator_apply",
+        "UEOTQM.QuantumDoob.eigenmetric_successMass_pos",
+        "UEOTQM.QuantumDoob.doob_finite_conditioning"
+      ],
+      "premises": [
+        "The same eigenmetric and r>0 premises as QMK-41",
+        "Actual source recordOperator/response and conditionalState",
+        "Any finite n and initial Density"
+      ],
+      "limits": [
+        "No right QSD eigenstate needed for this theorem",
+        "mass on general complex operators means real trace",
+        "No infinite conditioned path limit or fine-grained Kraus-label record theorem"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-42"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "No right QSD eigenstate needed for this theorem",
+          "mass on general complex operators means real trace",
+          "No infinite conditioned path limit or fine-grained Kraus-label record theorem"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-43",
+      "claim": "An additional right density eigenstate gives geometric source survival, fixed source conditional state and an actual invariant Doob channelState",
+      "layers": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/QuantumDoob.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumDoob.eigen_successMass",
+        "UEOTQM.QuantumDoob.eigen_conditionalState",
+        "UEOTQM.QuantumDoob.eigen_rate_le_one",
+        "UEOTQM.QuantumDoob.doob_channelState"
+      ],
+      "premises": [
+        "Phi(rho)=r rho and r>0",
+        "An actual source Instrument",
+        "Doob channel conclusions additionally use QMK-41 premises"
+      ],
+      "limits": [
+        "The generic theorem retains supplied left/right eigen-data and does not imply generic uniqueness or attraction",
+        "QMK-53/54 establish additional uniqueness/convergence only in the specified rational model; automatic spectral existence remains open"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-43"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "Source QSD and filtered stationary state generally differ",
+          "No uniqueness, attraction rate or automatic spectral existence"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-44",
+      "claim": "An exact rational noncommuting two-dimensional model verifies full-matrix Doob formulas, arbitrary-initial finite conditioning and premise controls",
+      "layers": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "verification_location": "LOCAL",
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/finite-witnesses/verification.json",
+      "sources": [
+        "formalization/ueot-qm/scripts/witnesses/QuantumDoobExamples.lean"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumDoobExamples.source_branch_formula",
+        "UEOTQM.QuantumDoobExamples.transformed_branch_formula",
+        "UEOTQM.QuantumDoobExamples.arbitrary_initial_finite_conditioning",
+        "UEOTQM.QuantumDoobExamples.failure_completion_necessary",
+        "UEOTQM.QuantumDoobExamples.success_kraus_noncommuting",
+        "UEOTQM.QuantumDoobExamples.input_coherence_retained",
+        "UEOTQM.QuantumDoobExamples.uniform_probability_ne_qsd"
+      ],
+      "premises": [
+        "Explicit rational source success and failure Kraus matrices",
+        "r=3/16, H=diag(4,1), rho=(1/5)[[1,2],[2,4]]"
+      ],
+      "limits": [
+        "Original 28 concrete theorems plus 12 definitions are part of the current separate 151 witness audits",
+        "8/5 is a normalization factor, not a success probability",
+        "Additional specified-model Doob uniqueness and true source conditional convergence are separately proved by QMK-53/54; no general mixing theorem follows"
+      ],
+      "inherited_from": {
+        "ledger": "physics/qm/status/CLAIM_LEDGER_v31.6.json",
+        "claim_id": "QMK-44"
+      },
+      "prior_v31_6_evidence": {
+        "current_proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+        "limits": [
+          "28 concrete theorems plus 12 definitions are in the separate 84 witness audits",
+          "8/5 is a normalization factor, not a success probability",
+          "No current convergence or uniqueness theorem is counted"
+        ]
+      },
+      "prior_verification_scope": null,
+      "verification_scope": "Inherited mathematical conclusion retains its exact premises. v31.7 actually rechecks package and concrete witness sources; explicit fixture and witness claims use their separate receipts and counts. Remote acceptance remains pending."
+    },
+    {
+      "id": "QMK-45",
+      "claim": "Full finite complex Gram purification with full-state convex purity",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.QuantumPurification.exists_gram",
+        "UEOTQM.QuantumPurification.vectorState_isPure",
+        "UEOTQM.QuantumPurification.exists_purification"
+      ],
+      "premises": [
+        "Finite complex PSD trace-one density; actual product carrier and partial trace"
+      ],
+      "limits": [
+        "No pure-to-vector converse or essential uniqueness yet"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/QuantumPurification.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-46",
+      "claim": "Three actual complete operational presentations, seven laws and independent candidate principles",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.OperationalSystems.classical_laws",
+        "UEOTQM.OperationalSystems.complex_laws",
+        "UEOTQM.OperationalSystems.real_laws",
+        "UEOTQM.OperationalSystems.complex_purification"
+      ],
+      "premises": [
+        "Complete specified classical/real/complex state and effect sets; actual operations"
+      ],
+      "limits": [
+        "Elementary laws are not all OPT reconstruction axioms"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/OperationalSystems.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-47",
+      "claim": "Classical purification and real local-tomography separation survive common actual interfaces",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.OperationalSystems.classical_not_purification",
+        "UEOTQM.OperationalSystems.core_first_marginal_no_purifies",
+        "UEOTQM.OperationalSystems.real_not_localTomography"
+      ],
+      "premises": [
+        "Specified model interpretation and explicit finite systems"
+      ],
+      "limits": [
+        "No complete exclusion of all alternative theories or Core-only quantum derivation"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/OperationalSystems.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-48",
+      "claim": "Rectangular finite CPTP maps, actual partial trace and all-effect contraction",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.RectangularChannel.trace_operator",
+        "UEOTQM.RectangularChannel.amplify_posSemidef",
+        "UEOTQM.RectangularChannel.amplify_operator_apply",
+        "UEOTQM.RectangularChannel.state_effectDistance_le"
+      ],
+      "premises": [
+        "Finite input/output/Kraus/ancilla carriers and actual Kraus completeness"
+      ],
+      "limits": [
+        "No infinite-dimensional or diamond-norm identification"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/RectangularChannels.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-49",
+      "claim": "Finite event total variation is attained and equivalent to control of all events",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.RecordProbability.positiveEvent_sub_eq_tv",
+        "UEOTQM.RecordProbability.tv_le_iff_events"
+      ],
+      "premises": [
+        "Finite nonnegative normalized real distributions"
+      ],
+      "limits": [
+        "Classical finite event theorem, not arbitrary measure-space extension"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/RecordProbability.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-50",
+      "claim": "Actual one-step joint record-memory channel, marginals and positive posterior",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.ClassicalQuantumMemory.channel_operator_eq_block",
+        "UEOTQM.ClassicalQuantumMemory.discard_record_state",
+        "UEOTQM.ClassicalQuantumMemory.discard_memory_state_matrix",
+        "UEOTQM.ClassicalQuantumMemory.positive_block_posterior"
+      ],
+      "premises": [
+        "Complete finite instrument; positive outcome probability for normalized posterior"
+      ],
+      "limits": [
+        "Record and memory differ from unconditional output alone"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-51",
+      "claim": "Arbitrary finite actual adaptive protocol has complete joint leaf-record and terminal-memory channel",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete",
+        "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator",
+        "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_eq_block",
+        "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_block_mass"
+      ],
+      "premises": [
+        "Existing actual finite Adaptive.Protocol; all outcome continuations; finite Kraus path sums"
+      ],
+      "limits": [
+        "No infinite protocol or unmodeled environment"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-52",
+      "claim": "Record TV bounded by actual joint distance and whole-protocol defect",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.ClassicalQuantumMemory.record_tv_le_joint_distance",
+        "UEOTQM.ClassicalQuantumMemory.record_tv_perturbation_bound",
+        "UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_perturbation_bound"
+      ],
+      "premises": [
+        "Common record type; actual full-state joint-channel defect"
+      ],
+      "limits": [
+        "Not yet reduced to stepwise action defects"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-53",
+      "claim": "Same noncommuting Doob model exact iterates and unique stationary state",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.QuantumDoobDynamics.doob_successOperator_formula",
+        "UEOTQM.QuantumDoobDynamics.doob_stationary_unique",
+        "UEOTQM.QuantumDoobDynamics.doob_effectDistance_exact",
+        "UEOTQM.QuantumDoobDynamics.doob_matrix_tendsto"
+      ],
+      "premises": [
+        "Specific prior rational two-dimensional model; all complex matrices for operator formula"
+      ],
+      "limits": [
+        "Model extraction is not an independent new physical model; no general PF theorem"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    },
+    {
+      "id": "QMK-54",
+      "claim": "True source conditional-state exact distance scaling to the fixed state and actual success-mass decay",
+      "layers": [
+        "P",
+        "B"
+      ],
+      "machine_status": "VERIFIED_LEAN_BUILD_AND_AXIOM_AUDIT",
+      "witnesses": [
+        "UEOTQM.QuantumDoobDynamics.source_successMass_formula",
+        "UEOTQM.QuantumDoobDynamics.source_conditionalState_matrix",
+        "UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_exact",
+        "UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_le",
+        "UEOTQM.QuantumDoobDynamics.source_successMass_tendsto_zero"
+      ],
+      "premises": [
+        "Same actual source success branch; every initial density; finite n"
+      ],
+      "limits": [
+        "Conditioned success sequence, not all records or unconditional perpetual survival",
+        "Exact source distance is to the fixed rho-star with an initial-state-dependent denominator; no arbitrary two-source-state contraction is claimed"
+      ],
+      "verification_location": "LOCAL",
+      "sources": [
+        "formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean"
+      ],
+      "current_source_identity": "physics/qm/kernel/evidence/v31.7/source-manifest.json",
+      "current_proof_receipt": "physics/qm/kernel/evidence/v31.7/lean-verification.json",
+      "verification_scope": "Actual unified v31.7 source-bound build and exact named axiom set."
+    }
+  ],
+  "verification": {
+    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "main_package_theorems": 646,
+    "main_named_audits": 855,
+    "concrete_witness_theorems": 110,
+    "concrete_witness_definitions": 39,
+    "concrete_witness_abbreviations": 2,
+    "concrete_witness_audits": 151,
+    "source_count": 80,
+    "source_set_sha256": "b453ce5028eb1ef7d324326245ae5c6cc1a0bf3f40cabf691f25bb1aae7a5911",
+    "local_status": "PASS",
+    "remote_status": "PENDING",
+    "full_physical_theory_verified": false
+  },
+  "research_baseline": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8",
+  "core_baseline_role": "Frozen historical Core reference retained; current imported Core sources separately match published research baseline 427f512745ca70f82cba6a1388edcab904da8a42. No frozen Core mutation by this increment.",
+  "canonical_monograph": {
+    "edition": "3.3",
+    "path": "physics/qm/book/UEOT_PHYSICS.md",
+    "dossier": "physics/qm/book/CHAPTER_DOSSIER.json",
+    "chapters": 60,
+    "results": 131
+  },
+  "prior_version_verification": {
+    "state": "MAIN_VERIFIED",
+    "checked_at_utc": "2026-10-20T05:43:38.429365+00:00",
+    "all_proof_runtime_checks_completed_at_utc": "2026-10-20T05:31:46.009764+00:00",
+    "generic_modules": 22,
+    "explicit_theorems": 459,
+    "named_axiom_reports": 573,
+    "listed_non_theorem_audit_targets": 114,
+    "new_theorems": 125,
+    "new_non_theorem_audit_targets": 56,
+    "new_audit_targets": 181,
+    "runtime_test_methods": 100,
+    "demos": 4,
+    "positive_instances": 6,
+    "positive_instance_audit_reports": 42,
+    "corrupted_true_proofs_rejected": 4,
+    "same_data_false_witnesses": 4,
+    "false_witness_audit_reports": 4,
+    "finite_witness_theorems": 62,
+    "finite_witness_definitions": 22,
+    "finite_witness_audit_reports": 84,
+    "finite_witness_bound_modules": 79,
+    "core_import_count": 56,
+    "actual_build_exit_code": 0,
+    "actual_build_jobs": 8786,
+    "allowed_foundation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "source_count": 70,
+    "source_set_sha256": "8a2cea35e060f5341f5672534d0717c605f5c441d998a08cc7677fb50a113115",
+    "proof_receipt": "physics/qm/kernel/evidence/v31.6/lean-verification.json",
+    "source_manifest": "physics/qm/kernel/evidence/v31.6/source-manifest.json",
+    "integration_receipt": "physics/qm/kernel/evidence/v31.6/integration-verification.json",
+    "observed_checkout_commit": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+    "published_research_baseline": "427f512745ca70f82cba6a1388edcab904da8a42",
+    "lean_build_status": "PASS",
+    "axiom_audit_status": "PASS",
+    "runtime_status": "PASS",
+    "demos_status": "PASS",
+    "audit_duplicates": 0,
+    "audit_missing": [],
+    "unreviewed_axioms": [],
+    "remote_ci": "PASS",
+    "main_integration": "PASS",
+    "core_source_modified": false,
+    "full_scientific_theory_verified": false,
+    "count_scope": "459/573 package; six-instance 42; false-witness 4; four concrete witness 62/22/84; runtime 100 are distinct evidence counts.",
+    "runtime_receipt": "physics/qm/kernel/evidence/v31.6/runtime-verification.json",
+    "demos_receipt": "physics/qm/kernel/evidence/v31.6/demos-verification.json",
+    "axiom_receipt": "physics/qm/kernel/evidence/v31.6/proof-axioms.json",
+    "dependency_receipt": "physics/qm/kernel/evidence/v31.6/dependency-identity.json",
+    "finite_witness_receipt": "physics/qm/kernel/evidence/v31.6/finite-witnesses/verification.json",
+    "remote_checked_at_utc": "2026-10-20T06:46:14.642326+00:00",
+    "checked_at_scope": "checked_at_utc is the original local acceptance aggregate timestamp; actual remote acceptance time is remote_checked_at_utc.",
+    "pull_request": 345,
+    "source_commit": "00bf88231328c09b9af58d0ff3c8eec977d73c53",
+    "source_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "pr_run": 39380741012,
+    "tested_main_commit": "4ba7aa412d84fa193611578374a8693be1ff3337",
+    "tested_main_tree": "e84f47c4caa2b3b099660d981a8deaa2851d074e",
+    "main_run": 39381585828,
+    "source_and_main_tree_identical": true,
+    "tested_inputs_identical": true,
+    "core_imports_identical": true,
+    "canonical_book_identical": true,
+    "initial_source_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING"
+  },
+  "metadata_updated_at_utc": "2026-10-20T08:25:25.469747+00:00",
+  "next_execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.8.md",
+  "next_execution_status": "PLANNED_NOT_FORMALIZED"
+}

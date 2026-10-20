@@ -1,0 +1,39 @@
+{
+  "audit": {
+    "name": "axiom-audit",
+    "command": [
+      "/tmp/lean-4.33.1-linux/bin/lake",
+      "env",
+      "lean",
+      "scripts/AxiomAudit.lean"
+    ],
+    "working_directory": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm",
+    "started_at_utc": "2026-10-20T08:03:44.643863+00:00",
+    "completed_at_utc": "2026-10-20T08:04:12.943280+00:00",
+    "elapsed_seconds": 28.299,
+    "exit_code": 0,
+    "timed_out": false,
+    "launch_error": null,
+    "log_path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/axiom-audit.log",
+    "log_sha256": "63fd653495815060a1d5efde98695dcdc1800964d992e8a52512a199de8e92fd"
+  },
+  "checker": {
+    "name": "axiom-checker",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "scripts/check_axioms.py"
+    ],
+    "working_directory": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm",
+    "started_at_utc": "2026-10-20T08:04:12.944419+00:00",
+    "completed_at_utc": "2026-10-20T08:04:12.976338+00:00",
+    "elapsed_seconds": 0.032,
+    "exit_code": 0,
+    "timed_out": false,
+    "launch_error": null,
+    "log_path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/axiom-checker.log",
+    "log_sha256": "3e4c69f56824dd7358280c2aae63fd97f6f48e036fa1574801b0292f23e571bb"
+  },
+  "audit_exit_code": 0,
+  "checker_exit_code": 0,
+  "completed_at_utc": "2026-10-20T08:04:12.977509+00:00"
+}

@@ -1,0 +1,109 @@
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:26:28: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:54:38: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:79:2: error: Type mismatch: After simplification, term
+  h
+ has type
+  @LE.le ℝ Real.instLE 1 (defect (certain 0) (certain 1))
+but is expected to have type
+  @LE.le ℝ Real.partialOrder.toLE 1 ((channel (certain 0)).defect (channel (certain 1)))
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:105:41: error: unsolved goals
+case unit.«0».«0»
+⊢ ⟨0, ⟨0, PUnit.unit⟩⟩ ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩}
+
+case unit.«0».«1»
+⊢ ⟨0, ⟨1, PUnit.unit⟩⟩ ∉ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩}
+
+case unit.«1».«0»
+⊢ ⟨1, ⟨0, PUnit.unit⟩⟩ ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩}
+
+case unit.«1».«1»
+⊢ ⟨1, ⟨1, PUnit.unit⟩⟩ ∉ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩}
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:112:94: error: unsolved goals
+ρ : Density Qubit
+⊢ ∑ b ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩},
+      (trace (if b.snd.fst = b.fst then if b.fst = 0 then ρ.matrix else 0 else 0)).re =
+    1
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:115:58: warning: This simp argument is unused:
+  ρ.trace_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [RecordProbability.eventProbability, feedbackLaterZero, ProtocolMemory.weights, Adaptive.leafProbability,
+    Adaptive.leafWeight, Adaptive.Protocol.word, feedbackProtocol, recordOperator, feedbackFamily, certain_branch, mass]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:119:94: error: unsolved goals
+ρ : Density Qubit
+⊢ ∑ b ∈ {⟨0, ⟨0, PUnit.unit⟩⟩, ⟨1, ⟨0, PUnit.unit⟩⟩},
+      (trace (if b.snd.fst = b.fst then if b.fst = 1 then ρ.matrix else 0 else 0)).re =
+    0
+scripts/witnesses/ClassicalQuantumMemoryExamples.lean:122:58: warning: This simp argument is unused:
+  ρ.trace_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [RecordProbability.eventProbability, feedbackLaterZero, ProtocolMemory.weights, Adaptive.leafProbability,
+    Adaptive.leafWeight, Adaptive.Protocol.word, feedbackProtocol, recordOperator, feedbackFamily, certain_branch, mass]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'UEOTQM.ClassicalQuantumMemoryExamples.Qubit' does not depend on any axioms
+'UEOTQM.ClassicalQuantumMemoryExamples.Label' does not depend on any axioms
+'UEOTQM.ClassicalQuantumMemoryExamples.certain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_channel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_channelState' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.certain_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.rhoZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_channelDefect_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.retained_record_tv_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.retained_joint_distance_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.retained_record_defect_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.deleted_record_is_not_a_record_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackProtocol' does not depend on any axioms
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedbackLaterZero_iff' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_zero_model' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.feedback_later_zero_probability_one_model' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_event_gap_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.adaptive_later_effect_gap_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.ClassicalQuantumMemoryExamples.adaptive_record_tv_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

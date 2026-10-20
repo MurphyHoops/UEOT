@@ -1,0 +1,582 @@
+{
+  "status": "TARGETS_PREPARED_UNIFIED_AUDIT_NOT_RUN_BY_A",
+  "owner": "A",
+  "records": [
+    {
+      "path": "UEOTQM/QuantumPurification.lean",
+      "sha256": "fb0692ed93c14aa7182cb09b3e205060f493f005672d16a69fc6e8da59ca5b6d",
+      "bytes": 11143,
+      "theorem_count": 25,
+      "declaration_count": 34,
+      "audit_target_count": 34,
+      "declarations": [
+        {
+          "name": "UEOTQM.QuantumPurification.mix",
+          "kind": "def",
+          "line": 23
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.mix_matrix",
+          "kind": "theorem",
+          "line": 31
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.IsPure",
+          "kind": "def",
+          "line": 36
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.outer",
+          "kind": "def",
+          "line": 40
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.outer_apply",
+          "kind": "theorem",
+          "line": 43
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.outer_positive",
+          "kind": "theorem",
+          "line": 47
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.outer_hermitian",
+          "kind": "theorem",
+          "line": 51
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.outer_trace",
+          "kind": "theorem",
+          "line": 55
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.outer_square",
+          "kind": "theorem",
+          "line": 59
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.outer_sandwich",
+          "kind": "theorem",
+          "line": 65
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.vectorState",
+          "kind": "def",
+          "line": 74
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.vectorState_matrix",
+          "kind": "theorem",
+          "line": 80
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_gram",
+          "kind": "theorem",
+          "line": 84
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.positive_compression_zero",
+          "kind": "theorem",
+          "line": 91
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.density_eq_vector_of_compression_zero",
+          "kind": "theorem",
+          "line": 104
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.vectorState_isPure",
+          "kind": "theorem",
+          "line": 121
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.vectorize",
+          "kind": "def",
+          "line": 149
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.vectorize_outer_trace",
+          "kind": "theorem",
+          "line": 152
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.discard_vectorize_outer",
+          "kind": "theorem",
+          "line": 158
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.gram",
+          "kind": "def",
+          "line": 165
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.gram_spec",
+          "kind": "theorem",
+          "line": 167
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.purificationVector",
+          "kind": "def",
+          "line": 170
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.purificationVector_normalized",
+          "kind": "theorem",
+          "line": 172
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.purification",
+          "kind": "def",
+          "line": 177
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.purification_matrix",
+          "kind": "theorem",
+          "line": 180
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.purification_isPure",
+          "kind": "theorem",
+          "line": 183
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.purification_marginal",
+          "kind": "theorem",
+          "line": 186
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_purification",
+          "kind": "theorem",
+          "line": 196
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.density_empty_elim",
+          "kind": "theorem",
+          "line": 202
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.product",
+          "kind": "def",
+          "line": 207
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.product_matrix",
+          "kind": "theorem",
+          "line": 213
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.discard_product",
+          "kind": "theorem",
+          "line": 216
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.probability_mix",
+          "kind": "theorem",
+          "line": 227
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.state_mix",
+          "kind": "theorem",
+          "line": 234
+        }
+      ],
+      "audit_targets": [
+        "UEOTQM.QuantumPurification.mix",
+        "UEOTQM.QuantumPurification.mix_matrix",
+        "UEOTQM.QuantumPurification.IsPure",
+        "UEOTQM.QuantumPurification.outer",
+        "UEOTQM.QuantumPurification.outer_apply",
+        "UEOTQM.QuantumPurification.outer_positive",
+        "UEOTQM.QuantumPurification.outer_hermitian",
+        "UEOTQM.QuantumPurification.outer_trace",
+        "UEOTQM.QuantumPurification.outer_square",
+        "UEOTQM.QuantumPurification.outer_sandwich",
+        "UEOTQM.QuantumPurification.vectorState",
+        "UEOTQM.QuantumPurification.vectorState_matrix",
+        "UEOTQM.QuantumPurification.exists_gram",
+        "UEOTQM.QuantumPurification.positive_compression_zero",
+        "UEOTQM.QuantumPurification.density_eq_vector_of_compression_zero",
+        "UEOTQM.QuantumPurification.vectorState_isPure",
+        "UEOTQM.QuantumPurification.vectorize",
+        "UEOTQM.QuantumPurification.vectorize_outer_trace",
+        "UEOTQM.QuantumPurification.discard_vectorize_outer",
+        "UEOTQM.QuantumPurification.gram",
+        "UEOTQM.QuantumPurification.gram_spec",
+        "UEOTQM.QuantumPurification.purificationVector",
+        "UEOTQM.QuantumPurification.purificationVector_normalized",
+        "UEOTQM.QuantumPurification.purification",
+        "UEOTQM.QuantumPurification.purification_matrix",
+        "UEOTQM.QuantumPurification.purification_isPure",
+        "UEOTQM.QuantumPurification.purification_marginal",
+        "UEOTQM.QuantumPurification.exists_purification",
+        "UEOTQM.QuantumPurification.density_empty_elim",
+        "UEOTQM.QuantumPurification.product",
+        "UEOTQM.QuantumPurification.product_matrix",
+        "UEOTQM.QuantumPurification.discard_product",
+        "UEOTQM.QuantumPurification.probability_mix",
+        "UEOTQM.QuantumPurification.state_mix"
+      ],
+      "attribute_instance_projection_targets": []
+    },
+    {
+      "path": "UEOTQM/OperationalSystems.lean",
+      "sha256": "cb764474361fa833390fbe33e3d1b363a05c78639e0819d5d5de4648c1b5b55e",
+      "bytes": 19370,
+      "theorem_count": 25,
+      "declaration_count": 55,
+      "audit_target_count": 62,
+      "declarations": [
+        {
+          "name": "UEOTQM.OperationalSystems.FiniteSystem",
+          "kind": "structure",
+          "line": 24
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.finiteSystemCoeSort",
+          "kind": "instance",
+          "line": 31
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.FiniteSystem.of",
+          "kind": "def",
+          "line": 33
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.FiniteSystem.product",
+          "kind": "def",
+          "line": 36
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.Presentation",
+          "kind": "structure",
+          "line": 43
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.Presentation.discardRight",
+          "kind": "def",
+          "line": 56
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.Laws",
+          "kind": "structure",
+          "line": 60
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.IsPure",
+          "kind": "def",
+          "line": 79
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.Purifies",
+          "kind": "def",
+          "line": 83
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.PurificationExistence",
+          "kind": "def",
+          "line": 88
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.LocalTomography",
+          "kind": "def",
+          "line": 93
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.product",
+          "kind": "def",
+          "line": 103
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.productEffect",
+          "kind": "def",
+          "line": 110
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.act",
+          "kind": "def",
+          "line": 121
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.probability_mix",
+          "kind": "theorem",
+          "line": 128
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.product_probability",
+          "kind": "theorem",
+          "line": 134
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.marginal_product",
+          "kind": "theorem",
+          "line": 147
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.act_discard",
+          "kind": "theorem",
+          "line": 154
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.act_mix",
+          "kind": "theorem",
+          "line": 163
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.act_identity",
+          "kind": "theorem",
+          "line": 171
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.ClassicalModel.act_comp",
+          "kind": "theorem",
+          "line": 177
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.classicalModel",
+          "kind": "def",
+          "line": 187
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.classical_laws",
+          "kind": "theorem",
+          "line": 200
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.classical_pure_iff",
+          "kind": "theorem",
+          "line": 210
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.classical_discard_eq",
+          "kind": "theorem",
+          "line": 220
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.classical_not_purification",
+          "kind": "theorem",
+          "line": 224
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.coreSystem",
+          "kind": "def",
+          "line": 235
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.core_first_marginal_no_purifies",
+          "kind": "theorem",
+          "line": 241
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.QuantumProcess",
+          "kind": "structure",
+          "line": 250
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.QuantumModel.trace_product_im_zero",
+          "kind": "theorem",
+          "line": 258
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.QuantumModel.product_probability",
+          "kind": "theorem",
+          "line": 266
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.complexModel",
+          "kind": "def",
+          "line": 279
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.complex_laws",
+          "kind": "theorem",
+          "line": 292
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.complex_pure_iff",
+          "kind": "theorem",
+          "line": 301
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.complex_purification",
+          "kind": "theorem",
+          "line": 311
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.IsRealMatrix",
+          "kind": "def",
+          "line": 320
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.real_add",
+          "kind": "theorem",
+          "line": 322
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.real_smul",
+          "kind": "theorem",
+          "line": 327
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.real_mul",
+          "kind": "theorem",
+          "line": 332
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.real_conjTranspose",
+          "kind": "theorem",
+          "line": 338
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.real_kronecker",
+          "kind": "theorem",
+          "line": 343
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.State",
+          "kind": "abbrev",
+          "line": 348
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.Effect",
+          "kind": "abbrev",
+          "line": 349
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.mix",
+          "kind": "def",
+          "line": 351
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.product",
+          "kind": "def",
+          "line": 356
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.productEffect",
+          "kind": "def",
+          "line": 359
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.Process",
+          "kind": "structure",
+          "line": 363
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.operator_real",
+          "kind": "theorem",
+          "line": 368
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.act",
+          "kind": "def",
+          "line": 377
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.identity",
+          "kind": "def",
+          "line": 380
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.compose",
+          "kind": "def",
+          "line": 389
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.RealModel.discardProcess",
+          "kind": "def",
+          "line": 394
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.realModel",
+          "kind": "def",
+          "line": 405
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.real_laws",
+          "kind": "theorem",
+          "line": 418
+        },
+        {
+          "name": "UEOTQM.OperationalSystems.real_not_localTomography",
+          "kind": "theorem",
+          "line": 429
+        }
+      ],
+      "audit_targets": [
+        "UEOTQM.OperationalSystems.FiniteSystem",
+        "UEOTQM.OperationalSystems.FiniteSystem.mk",
+        "UEOTQM.OperationalSystems.finiteSystemCoeSort",
+        "UEOTQM.OperationalSystems.FiniteSystem.of",
+        "UEOTQM.OperationalSystems.FiniteSystem.product",
+        "UEOTQM.OperationalSystems.Presentation",
+        "UEOTQM.OperationalSystems.Presentation.mk",
+        "UEOTQM.OperationalSystems.Presentation.discardRight",
+        "UEOTQM.OperationalSystems.Laws",
+        "UEOTQM.OperationalSystems.Laws.mk",
+        "UEOTQM.OperationalSystems.IsPure",
+        "UEOTQM.OperationalSystems.Purifies",
+        "UEOTQM.OperationalSystems.PurificationExistence",
+        "UEOTQM.OperationalSystems.LocalTomography",
+        "UEOTQM.OperationalSystems.ClassicalModel.product",
+        "UEOTQM.OperationalSystems.ClassicalModel.productEffect",
+        "UEOTQM.OperationalSystems.ClassicalModel.act",
+        "UEOTQM.OperationalSystems.ClassicalModel.probability_mix",
+        "UEOTQM.OperationalSystems.ClassicalModel.product_probability",
+        "UEOTQM.OperationalSystems.ClassicalModel.marginal_product",
+        "UEOTQM.OperationalSystems.ClassicalModel.act_discard",
+        "UEOTQM.OperationalSystems.ClassicalModel.act_mix",
+        "UEOTQM.OperationalSystems.ClassicalModel.act_identity",
+        "UEOTQM.OperationalSystems.ClassicalModel.act_comp",
+        "UEOTQM.OperationalSystems.classicalModel",
+        "UEOTQM.OperationalSystems.classical_laws",
+        "UEOTQM.OperationalSystems.classical_pure_iff",
+        "UEOTQM.OperationalSystems.classical_discard_eq",
+        "UEOTQM.OperationalSystems.classical_not_purification",
+        "UEOTQM.OperationalSystems.coreSystem",
+        "UEOTQM.OperationalSystems.core_first_marginal_no_purifies",
+        "UEOTQM.OperationalSystems.QuantumProcess",
+        "UEOTQM.OperationalSystems.QuantumProcess.mk",
+        "UEOTQM.OperationalSystems.QuantumModel.trace_product_im_zero",
+        "UEOTQM.OperationalSystems.QuantumModel.product_probability",
+        "UEOTQM.OperationalSystems.complexModel",
+        "UEOTQM.OperationalSystems.complex_laws",
+        "UEOTQM.OperationalSystems.complex_pure_iff",
+        "UEOTQM.OperationalSystems.complex_purification",
+        "UEOTQM.OperationalSystems.RealModel.IsRealMatrix",
+        "UEOTQM.OperationalSystems.RealModel.real_add",
+        "UEOTQM.OperationalSystems.RealModel.real_smul",
+        "UEOTQM.OperationalSystems.RealModel.real_mul",
+        "UEOTQM.OperationalSystems.RealModel.real_conjTranspose",
+        "UEOTQM.OperationalSystems.RealModel.real_kronecker",
+        "UEOTQM.OperationalSystems.RealModel.State",
+        "UEOTQM.OperationalSystems.RealModel.Effect",
+        "UEOTQM.OperationalSystems.RealModel.mix",
+        "UEOTQM.OperationalSystems.RealModel.product",
+        "UEOTQM.OperationalSystems.RealModel.productEffect",
+        "UEOTQM.OperationalSystems.RealModel.Process",
+        "UEOTQM.OperationalSystems.RealModel.Process.mk",
+        "UEOTQM.OperationalSystems.RealModel.operator_real",
+        "UEOTQM.OperationalSystems.RealModel.act",
+        "UEOTQM.OperationalSystems.RealModel.identity",
+        "UEOTQM.OperationalSystems.RealModel.compose",
+        "UEOTQM.OperationalSystems.RealModel.discardProcess",
+        "UEOTQM.OperationalSystems.realModel",
+        "UEOTQM.OperationalSystems.real_laws",
+        "UEOTQM.OperationalSystems.real_not_localTomography",
+        "UEOTQM.OperationalSystems.FiniteSystem.finite",
+        "UEOTQM.OperationalSystems.FiniteSystem.decidableEq"
+      ],
+      "attribute_instance_projection_targets": [
+        "UEOTQM.OperationalSystems.FiniteSystem.finite",
+        "UEOTQM.OperationalSystems.FiniteSystem.decidableEq"
+      ]
+    }
+  ],
+  "total_theorems": 50,
+  "total_declarations": 89,
+  "total_audit_targets": 96,
+  "includes_structure_constructors": true,
+  "includes_attribute_instance_projections": true,
+  "main_audit_delegated_to_root": true
+}

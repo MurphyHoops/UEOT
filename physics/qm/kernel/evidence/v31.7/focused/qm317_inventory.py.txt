@@ -1,0 +1,104 @@
+from pathlib import Path
+from collections import Counter
+import argparse
+import hashlib
+import json
+import re
+from qm317_source_parser import mask_lean, declarations
+
+ROOT = Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+BASE = Path('/workspace/scratch/474cf6b1f047/qm_v316_work')
+PKG = ROOT / 'formalization/ueot-qm'
+NEW = ['RecordProbability', 'RectangularChannels', 'QuantumPurification',
+       'OperationalSystems', 'ClassicalQuantumMemory', 'QuantumDoobModel',
+       'QuantumDoobDynamics']
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('--write-audit', action='store_true')
+    args = p.parse_args()
+    old_audit = (BASE / 'formalization/ueot-qm/scripts/AxiomAudit.lean').read_text()
+    baseline_tree = json.loads(Path('/tmp/qm317_baseline_remote_tree.json').read_text())
+    assert baseline_tree['commit'] == '7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8'
+    assert not baseline_tree['truncated']
+    old_bytes = old_audit.encode()
+    old_blob = hashlib.sha1(b'blob '+str(len(old_bytes)).encode()+b'\0'+old_bytes).hexdigest()
+    remote_blob = next(x['sha'] for x in baseline_tree['tree']
+                       if x['path']=='formalization/ueot-qm/scripts/AxiomAudit.lean')
+    assert old_blob == remote_blob, 'Inherited audit differs from actual recovered remote baseline'
+    baseline = re.findall(r'^#print axioms (\S+)\s*$', mask_lean(old_audit), re.M)
+    assert len(baseline) == 573 and len(set(baseline)) == 573
+    modules, instances, identities = {}, {}, {}
+    for path in sorted((PKG / 'UEOTQM').glob('*.lean')):
+        raw = path.read_bytes()
+        rows, diagnostics, inst = declarations(raw.decode())
+        assert not diagnostics, f'Unexpected diagnostic in {path}'
+        modules[path.stem] = rows
+        instances[path.stem] = inst
+        identities[str(path.relative_to(ROOT))] = {
+            'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw)}
+    new_explicit = [r['name'] for name in NEW for r in modules[name]]
+    new_instances = [r['name'] for name in NEW for r in instances[name]
+                     if r['name'] and not r['local']]
+    anonymous_new = [dict(module=name, **r) for name in NEW for r in instances[name]
+                     if not r['name'] and not r['local']]
+    assert not anonymous_new, anonymous_new
+    constructors = [r['name'] + '.mk' for name in NEW for r in modules[name]
+                    if r['kind'] == 'structure']
+    # These two public projections are registered as instances by an explicit
+    # attribute command. They are not explicit `instance` source declarations.
+    projection_instances = ['UEOTQM.OperationalSystems.FiniteSystem.finite',
+                            'UEOTQM.OperationalSystems.FiniteSystem.decidableEq']
+    op_source = (PKG / 'UEOTQM/OperationalSystems.lean').read_text()
+    assert 'attribute [instance] FiniteSystem.finite FiniteSystem.decidableEq' in op_source
+    unexpected_kinds = [r for name in NEW for r in modules[name]
+                        if r['kind'] not in {'theorem', 'lemma', 'def', 'abbrev', 'structure'}]
+    assert not unexpected_kinds, unexpected_kinds
+    added = new_explicit + new_instances + projection_instances + constructors
+    targets = baseline + added
+    assert len(set(targets)) == len(targets), 'Duplicate requested audit target'
+    theorems = [r['name'] for rows in modules.values() for r in rows
+                if r['kind'] in {'theorem', 'lemma'}]
+    assert set(theorems) <= set(targets), sorted(set(theorems)-set(targets))
+    exports = re.findall(r'^import\s+(\S+)\s*$', (PKG / 'UEOTQM.lean').read_text(), re.M)
+    assert len(exports) == len(set(exports))
+    assert set(exports) == {'UEOTQM.'+name for name in modules}
+    record = {
+        'schema': 'ueot_qm.declaration_inventory.v31.7',
+        'status': 'SOURCE_ENUMERATED_PENDING_ACTUAL_UNIFIED_EXECUTION',
+        'method': 'Nested-comment/string-masked explicit source enumeration; inherited 573 requests preserved; all seven new modules have every explicit declaration, named nonlocal instance and structure constructor requested.',
+        'module_count': len(modules), 'explicit_theorems': len(theorems),
+        'inherited_audit_remote_blob_sha1': remote_blob,
+        'inherited_audit_remote_commit': baseline_tree['commit'],
+        'audit_target_count': len(targets), 'inherited_audit_target_count': len(baseline),
+        'new_module_names': NEW, 'new_theorems': sum(r['kind'] in {'theorem','lemma'}
+                                                  for name in NEW for r in modules[name]),
+        'new_module_counts': {name: dict(Counter(r['kind'] for r in modules[name])) for name in NEW},
+        'new_explicit_declarations': len(new_explicit),
+        'new_named_instances': new_instances, 'new_structure_constructors': constructors,
+        'new_instance_projection_targets': projection_instances,
+        'added_audit_target_count': len(added),
+        'modules': modules, 'source_instances': instances,
+        'module_identities': identities, 'audit_targets': targets,
+        'interpretation': [
+            'Counts of explicit source declarations are not a count of new physical laws.',
+            'QuantumDoobModel extracts 27 pre-existing witness declarations plus two public-state declarations; its provenance is separately verified.',
+            'Concrete witness scripts and generated numeric certificates are excluded from these package counts.',
+            'This inventory is not a census of every compiler-generated projection, recursor or internal constant.',
+            'No compilation or axiom acceptance is inferred from generating this inventory.'
+        ]
+    }
+    if args.write_audit:
+        text = old_audit.rstrip() + '\n\n-- v31.7: all explicit new public declarations, named instances and constructors.\n'
+        text += '\n'.join('#print axioms '+name for name in added)+'\n'
+        (PKG / 'scripts/AxiomAudit.lean').write_text(text)
+    Path('/tmp/qm317_declaration_inventory.json').write_text(
+        json.dumps(record, ensure_ascii=False, indent=2)+'\n')
+    print(json.dumps({k: record[k] for k in ['status','module_count','explicit_theorems',
+        'audit_target_count','new_theorems','new_module_counts','new_named_instances',
+        'new_structure_constructors','new_instance_projection_targets','added_audit_target_count']}, ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    main()

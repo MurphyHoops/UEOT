@@ -104,11 +104,11 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large 第三版\quad 3.2 正式整合版\par}
+  {\large 第三版\quad 3.3 正式整合版\par}
   \vspace{6mm}
   {钱德桂（Degui Qian）\par}
   \vspace{5mm}
-  {57章\quad 6个附录\quad UEOT-QM Kernel 1.6\par}
+  {60章\quad 6个附录\quad UEOT-QM Kernel 1.7\par}
   \vfill
   {对象与协议\quad 量子操作与场论\quad 证明与反例\par}
   \vspace{7mm}
@@ -323,7 +323,9 @@ H 的检验。
 \section{0.5
 统一主文的装配与本版增量}\label{ux7edfux4e00ux4e3bux6587ux7684ux88c5ux914dux4e0eux672cux7248ux589eux91cf}}
 
-第1--35章给完整基础、计算与接口；第36--42章把三代高能审计、味约束、相干见证、实际化证明和研究协议接入主线；第43--46章补全全局相位、拓扑、格点和相关试次统计；第47章给各研究方向的依赖、步骤与验收条件；第48章给总著维护与状态接口，第49--50章展开形式化内核和实际量子稳定性，第51--53章进一步给出随机化预算、长期平均与条件生存的完整推导。附录保存符号、来源、结果索引及全部复现代码。
+第1--35章给完整基础、计算与接口；第36--42章把三代高能审计、味约束、相干见证、实际化证明和研究协议接入主线；第43--46章补全全局相位、拓扑、格点和相关试次统计；第47章给研究验收合同，第48章给总著维护。第49--53章展开有限形式化内核、实际稳定性、随机化预算、长期平均与条件生存；第54--56章给出经典纯化边界、实局域层析分离与一般有限量子
+Doob
+构造；第57--59章进一步完成完整状态空间中的有限复纯化、保留记录与记忆的有限协议，以及指定非交换模型的精确条件动力学。附录保存符号、来源、全部稳定编号、复现代码和命名审计范围。
 
 阅读第31章三代条件定理时应同时使用第36章的高低能区分；第3章的鞅条件结论由第40章在特定
 SSE 内补足吸收证明；第7--8章的
@@ -433,7 +435,7 @@ S3--S5 中的日期、分支、阶段和 CI
 理论作者为钱德桂（Degui
 Qian）；原始思想及项目成果的身份由附录C和源清单保留。本版是在该理论工作上进行的持续整合、推导补全与协作审查。标准物理定理仍明确归属于其原始文献，机器验证和实验身份分别记录。
 
-从理论核心入手，可依次阅读第0--5、49--56章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36--37与49.7一起阅读。附录A给出符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码及3.0版实际重跑回执，3.1及3.2版保留其未变源码身份，附录E给出编译维护合同，附录F列出实际形式化范围和完整命名公理清单。
+从理论核心入手，可依次阅读第0--5、49--59章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36--37与49.7一起阅读。附录A给符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码及3.0版实际重跑回执；3.1、3.2及3.3版保留其未变源码身份。附录E给编译维护合同，附录F列出实际形式化范围和完整命名公理清单。
 
 \hypertarget{ch-1}{%
 \chapter{1. UEOT Core 到量子物理的桥接}\label{ch-1}}
@@ -6047,20 +6049,10 @@ CP
 数据可提供有标记的拟合模型，但保留原残差。证明注册表必须区分标准先例与本项目新组合；投稿前对精确表达做先例查重和独立审稿。
 
 \textbf{已达到的阶段。}
-第49--50章建立实际有限操作、全部词响应、有限表示、可靠精确证书、全效应距离和完整通道/正事件误差。第51--53章新增真实概率混合及有理
-TV 预算、实际有限密度集合紧性与 Cesàro
-平稳态存在，以及次随机核到量子全成功记录的 QSD/Doob
-桥。第54--56章进一步给出实际 Core
-同源经典纯化分离、实局域层析障碍和一般有限量子 Doob
-条件化连接。当前主包共有22个模块、459个显式定理，573项唯一命名公理审计；主包含通用数学与明确的有限模型实例，该统计不表示459条新的物理规律。100项运行方法、4个演示及具体证书另按实际回执计数。三套旧主文程序的757项检查沿用3.0版本的执行身份及未变代码哈希。
+第49--56章已经建立有限操作、全词响应、有限表示、精确证书、实际量子误差、混合预算、Cesàro平稳态、Core条件生存桥及两类量子选择分离。第57章进一步从PSD导出任意有限复密度态的完整凸极点纯化，并在同一操作语言中连接经典、实、复三个实际模型；第58章构造任意有限自适应树的联合记录与量子记忆通道；第59章在原非对角模型上证明真实条件态到源固定态的精确距离衰减和成功质量衰减。当前主包共有29个模块、646个显式定理，855项唯一命名公理审计。计数包括通用数学、有限模型及先前见证提取的公共基础，不表示646条新的物理规律。100项运行方法、4个演示和具体证书分别按实际回执计数。三套旧主文程序的757项检查仍沿用3.0版执行身份及未变源码哈希。
 
-\textbf{下一批可验证义务。} 第54章已经把经典反例接到所列实际 Core
-接口与真实轨迹，第55章给出全部实局域效应的层析分离。量子选择的下一步是给候选纯化／组合原则写出类型、构造对应的正量子模型，再判断是否能从独立
-UEOT
-物理条件证明所需原则。内核方面，优先构造保留经典记录与量子记忆的联合通道，随后使用第51章预算进入适应协议；长期方面在第56章有限条件化连接的基础上，分别推进完整
-Cesàro
-投影、谱数据存在与唯一／混合条件，不把这些标准数学待办自动归为新的物理猜想。精确程序细化、真实
-QDRR 数据、完整谱/阈值及连续变量能量桥各有独立验收门。
+\textbf{下一批可验证义务。}
+量子选择线先在当前实际矩阵与操作接口中证明复局部层析、核对纯化本质唯一性，再逐条审查所调用重建定理的全部背景；这些性质为何必须由UEOT物理实现满足，继续作为独立桥接责任。记录线将整个协议缺陷推进为共同历史控制器的逐步误差预算，并核对零块、条件权重与底层动作缺陷。动力学线从明确的可验证收缩或本原条件入手，证明一般条件态长期结论，不从单个可解模型外推。精确程序细化、真实QDRR数据、完整谱/阈值及连续变量能量桥分别保留验收门。
 
 真实硬件数据必须另标来源和原始计数，不能把合成结果重新命名为实证。只在证明脚本实际检查成功、输入身份与适用域同时明确时，才给对应声明
 FORMAL 标签。
@@ -6099,16 +6091,16 @@ FORMAL 标签。
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Core → 量子扇区 & 协议／响应桥；所列有限 Core
-接口的经典纯化分离；实局域层析反例 &
-独立物理原则能否排除已固定反例，以及完整重构背景 &
-有类型组合／纯化接口及正量子实例；逐前提独立性检查 \\
+Core → 量子扇区 &
+三个完整状态模型、经典纯化分离、实层析反例、有限复纯化构造 &
+独立原则来源与全部重构背景；未穷尽其他模型 &
+复局部层析与纯化本质唯一性的实际矩阵证明；逐前提独立性账本 \\
 量子扇区 → 内核 & 合法操作、全词与有限表示、证书可靠性 &
 运行程序通用细化、连续域与无限协议 & 同一输入的通用细化定理及误差界 \\
 内核 → 持续与误差 &
-TV预算、Cesàro平稳存在、对角Core桥及一般有限量子Doob条件化 &
-记录／记忆合同、正谱存在与条件混合率 &
-实际联合通道误差或指定非对角模型的定量条件收敛 \\
+任意有限树的真实记录与记忆、事件TV界、指定非交换条件态精确收敛 &
+逐动作可组合预算、一般正谱存在与混合条件 &
+历史控制通道的逐步预算；可独立核验的一般动力学充分条件 \\
 已知QFT → 独立物理选择 & 作用量、QED/EFT推导、异常与候选谱 &
 规范群、现实谱、质量、真空和阈值 &
 完整冻结模型的一条未被用于拟合的共参数预测 \\
@@ -6125,9 +6117,9 @@ TV预算、Cesàro平稳存在、对角Core桥及一般有限量子Doob条件化
 \section{48.1 唯一理论主源}\label{ux552fux4e00ux7406ux8bbaux4e3bux6e90}}
 
 本书固定名称为《UEOT物理学》，稳定文档身份为
-\texttt{UEOT-PHYSICS}，当前正式整合版为3.2。规范正文固定在仓库
+\texttt{UEOT-PHYSICS}，当前正式整合版为3.3。规范正文固定在仓库
 \texttt{physics/qm/book/UEOT\_\allowbreak PHYSICS.md}；同目录 PDF
-由该正文生成。第0--56章、附录A--F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
+由该正文生成。第0--59章、附录A--F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
 
 版本报告、PR、日志和数学模块各有自己的身份，但不再与总著争夺理论正文的权威。源文件清单、章节修订档案及证据回执记录``这句话依据什么、哪一部分被检查过''。历史文件保留沿革责任；它们的旧状态不会覆盖较新的已验证内核，新的内核也不会为历史上未形式化的物理命题追授机器证明。
 
@@ -6156,7 +6148,7 @@ X。上游合同未被改写，标签修订不新增或撤销数学定理。
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.2"
+  edition: "3.3"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
   chapter_range: [0, 56]
@@ -7402,9 +7394,7 @@ f_*p_* = \tfrac12\delta_{f(x_0)}+\tfrac12\delta_{f(x_0)}
 接口与公开的完整经典解释相容，而且同一可达操作混态违反纯化存在性。因此，若要从这些接口进一步得到普遍纯化，必须增加能够排除此实例的独立原则或证明额外的真实物理桥。第1章的整个重构问题没有被一个有限证书替代；本章不构成全部106条及所有物理解释的模型，也不否定更丰富的
 UEOT 理论最终重构 QM 的可能。
 
-下一步应把候选纯化原则的系统类型、完整状态集合、组合和丢弃先写成可检查的接口，要求其确实排除本例，再检查它是否仍容许第55章的实扇区。这样的顺序能区分哪项选择工作由哪个额外原则承担，避免把复
-Hilbert、Born 或 Kraus
-先装入候选模型，再把内部闭合误称为量子结构的起源。
+第57章现在把候选原则的系统类型、完整状态集合、复合和丢弃写成实际接口，并证明经典反例经适配后仍违反纯化存在。复量子模型的任意有限态纯化也在完整密度空间中得到证明。第55章实扇区的排除责任则仍属于局部层析；纯化存在与本质唯一性分别维护。继续推进时，不能把预先装入的复Hilbert、Born或Kraus结构误称为已经从Core推出的起源。
 
 \hypertarget{ch-55}{%
 \chapter{55. 实量子扇区的局域层析分离}\label{ch-55}}
@@ -7590,10 +7580,7 @@ P_+=\sum_{j\in J}c_j(E_j\otimes F_j).
 对应自然界 & 本章给出精确概率分离 & 实际制备、测量能力及经校准的数据 \\
 \end{longtable}
 
-Lean
-使用复矩阵中的实条目子空间表示本例，没有形式化整个实操作概率理论的所有系统、通道、组合相容性和纯化背景。也没有将本例实例化为第54章
-H1--H6
-的另一个完整证书。这些界限说明两个反例分别完成哪一项任务，不抹去已经证明的全称统计障碍。
+本章的机器证明使用复矩阵中的实条目子空间表示这个全称分离。第57章进一步给出全部有限实态、实效应、实Kraus过程、复合和偏迹的实际操作呈现，并证明七项基本规律；这仍不等于所有OPT重建背景、范畴相干性或纯化本质唯一性已形式化。本例也没有被改写为第54章H1--H6的另一个完整Core证书。
 
 分类上，有限态与效应的标准结构属于 P，实性限制及所选组合解释承担
 B／E，若要求物理系统必须局域层析则是额外的扇区选择原则
@@ -7864,9 +7851,726 @@ QSD／持续思想相关就把全部结果登记为
 C。尚待完成的谱存在、不可约性、唯一性和条件极限是相应标准数学或领域桥责任；额外的
 UEOT 物理必然性主张才另按 X 登记。
 
-下一步先对本章已有的有理非对角模型证明精确迭代、唯一不变态和真实条件态的几何收敛率，并以恒等
+第59章已对本章同一个有理非对角模型证明实际精确迭代、唯一Doob不变态和真实条件态的几何收敛率，并以合法恒等Doob通道证明正谱度量不足以保证混合。接下来应固定可验证的有限不可约、本原或收缩条件，研究一般正谱对象及长期条件过程。原始双驱动思想可提示哪些持续机制值得研究，但成功事件、初态、控制代价与真实观测仍须分别定义。{[}S1、S2、S4；QM316；QM317{]}
+
+\hypertarget{ch-57}{%
+\chapter{57. 完整状态空间中的纯化与操作原则}\label{ch-57}}
+
+第54章已经说明，一组真实的有限 Core
+过程接口可以有完整经典解释，而其中的混态没有任何有限经典纯扩展。这个结果提出了一个正向责任：如果把纯化作为量子选择候选，必须在同一套操作语言中说清楚系统、全部允许态、复合与丢弃，再证明复量子模型确实满足所声明的原则。本章完成有限维复密度态的纯化存在构造，并明确它与量子重建之间仍然存在的距离。
+
+\hypertarget{ux5148ux7ed9ux5b8cux6574ux64cdux4f5cux5448ux73b0ux518dux8ba8ux8bbaux9009ux62e9ux539fux5219}{%
+\section{57.1
+先给完整操作呈现，再讨论选择原则}\label{ux5148ux7ed9ux5b8cux6574ux64cdux4f5cux5448ux73b0ux518dux8ba8ux8bbaux9009ux62e9ux539fux5219}}
+
+一个系统的操作呈现至少包含状态集合、效应集合、效应在状态上的概率、凸混合、带输入输出类型的过程及其状态作用。复合系统还需要产品态、产品效应与实际丢弃映射。单独的规律包包括七项：概率界、概率对混合的仿射性、产品概率乘法、产品态的边际等式、过程的仿射性、恒等过程的状态作用及顺序复合的状态作用。它们必须在具体模型中证明，不能因为一个结构字段具有所需类型，就把模型的所有物理性质视为已证。
+
+系统类型必须真实反映复合。有限载体为 \(\iota\) 与 \(\alpha\)
+时，本章的联合矩阵载体为
+\(\iota\times\alpha\)。这避免把维数相同当作类型相同，也使偏迹的求和指标与被丢弃系统直接对应。输入、输出不同的过程采用第58章的矩形
+Kraus 通道，其 Kraus 矩阵是从输入向量空间到输出向量空间的实际线性映射。
+
+对有限复量子系统，状态空间始终是
+
+\[
+\mathcal D(\iota)=\{\rho\in M_\iota(\mathbb C):\rho\succeq0,\ \operatorname{Tr}\rho=1\}.
+\]
+
+效应是全部 \(0\preceq E\preceq I\) 的矩阵，概率为
+\(\operatorname{Re}\operatorname{Tr}(E\rho)\)。矩阵乘积 \(E\rho\)
+一般并非 Hermitian；其迹的实性由 PSD Gram
+分解、迹循环和正矩阵的实迹推出，不能以乘积仍为正来代替证明。实部约定使概率函数在类型上直接取实值。对于
+\(0\le t\le1\)，混合是实际矩阵
+\(t\rho+(1-t)\sigma\)；正性和迹一由各自的线性关系推出。
+
+纯性采用这个完整凸集的极点定义：
+
+\[
+\begin{aligned}
+\operatorname{Pure}(\rho)\iff{}&
+\forall\sigma,\tau\in\mathcal D(\iota),\ \forall 0<t<1,\\
+&\rho=t\sigma+(1-t)\tau
+\ \Longrightarrow\ \sigma=\rho\ \land\ \tau=\rho.
+\end{aligned}
+\]
+
+这是一个对所有合法密度态量化的性质。只把秩一矩阵命名为``纯态''，或者只在某个挑选后的状态子集中检查极点，都不能替代本章的证明责任。
+
+\hypertarget{ux5355ux4f4dux5411ux91cfux6001ux4e3aux4f55ux662fux5b8cux6574ux51f8ux96c6ux4e2dux7684ux6781ux70b9}{%
+\section{57.2
+单位向量态为何是完整凸集中的极点}\label{ux5355ux4f4dux5411ux91cfux6001ux4e3aux4f55ux662fux5b8cux6574ux51f8ux96c6ux4e2dux7684ux6781ux70b9}}
+
+\protect\hypertarget{p-pur-01}{}{}
+
+\textbf{P-PUR-01（完整密度态空间中的向量纯态）。} 令
+\(P=|v\rangle\langle v|\) 且 \(\operatorname{Tr}P=1\)。则 \(P\) 在全部
+\(\mathcal D(\iota)\) 中是凸极点。
+
+\textbf{证明。} 归一条件给出 \(P^2=P\)；令 \(Q=I-P\)，则 \(Q=Q^\dagger\)
+且 \(QP=0\)。假设 \(P=t\sigma+(1-t)\tau\)，其中
+\(0<t<1\)，\(\sigma,\tau\) 都是任意密度态。左右压缩得到
+
+\[
+0=QPQ=tQ\sigma Q+(1-t)Q\tau Q.
+\]
+
+右边两项均为正半定矩阵。正锥的反对称性与严格正的两个系数迫使
+\(Q\sigma Q=Q\tau Q=0\)。
+
+还需要从``正压缩为零''取得整个支撑结论。对任意正半定 \(X\)，由有限矩阵的
+\(C^*\) 正性表示取 \(X=B^\dagger B\)。若 \(QXQ=0\)，则
+
+\[
+\operatorname{Tr}\bigl((BQ)^\dagger(BQ)\bigr)=0,
+\]
+
+故 \(BQ=0\)，从而 \(XQ=B^\dagger BQ=0\)。Hermitian 性再给 \(QX=0\)。因此
+\(XP=PX=X\)。对秩一 \(P\)，直接矩阵乘法有
+
+\[
+PXP=\operatorname{Tr}(XP)P.
+\]
+
+代入 \(X=\sigma\) 并使用 \(\operatorname{Tr}\sigma=1\)，得到
+\(\sigma=P\)；对 \(\tau\) 同理。整个论证中的 \(\sigma,\tau\)
+没有被限制为秩一、对角态或有限样本。\(\square\)
+
+Lean 中的 \texttt{IsPure} 对实际 \texttt{Density}
+类型量化；\texttt{positive\_\allowbreak compression\_\allowbreak zero}、\allowbreak \texttt{density\_\allowbreak eq\_\allowbreak vector\_\allowbreak of\_\allowbreak compression\_\allowbreak zero}
+与 \texttt{vectorState\_\allowbreak isPure}
+分别承担压缩支撑、迹一识别和完整极点证明。调用的矩阵正性定理属于明确的数学依赖，不是新增物理选择原则。{[}QM317{]}
+
+\hypertarget{ux5b9eux9645ux504fux8ff9ux4e0eux4efbux610fux6709ux9650ux6001ux7684-gram-ux7eafux5316}{%
+\section{57.3 实际偏迹与任意有限态的 Gram
+纯化}\label{ux5b9eux9645ux504fux8ff9ux4e0eux4efbux610fux6709ux9650ux6001ux7684-gram-ux7eafux5316}}
+
+被丢弃的辅助系统具有载体 \(\alpha\)。对每个 \(a\in\alpha\)，定义矩形
+Kraus 矩阵
+
+\[
+L_a(i,(j,b))=\delta_{ij}\delta_{ab}.
+\]
+
+直接求和给
+\(\sum_aL_a^\dagger L_a=I_{\iota\times\alpha}\)，故这些矩阵定义一个实际通道。它对任意复矩阵的作用是
+
+\[
+\operatorname{Tr}_{\alpha}(X)_{ij}
+=\sum_aX_{(i,a),(j,a)}.
+\]
+
+因此偏迹保持正性和复迹；其任意有限辅助放大也保持所有联合正输入的正性。这里没有把检查限制为产品态。对于产品密度态，进一步由
+\(\operatorname{Tr}\sigma=1\) 得到
+\(\operatorname{Tr}_{\alpha}(\rho\otimes\sigma)=\rho\)。
+
+\protect\hypertarget{p-pur-02}{}{}
+
+\textbf{P-PUR-02（任意有限复密度态的纯化存在）。} 对任意
+\(\rho\in\mathcal D(\iota)\)，存在
+\(\Psi\in\mathcal D(\iota\times\iota)\)，使 \(\Psi\)
+在完整联合密度态空间中为纯态，且 \(\operatorname{Tr}_{2}\Psi=\rho\)。
+
+\textbf{证明。} 从 \(\rho\succeq0\) 导出一个矩阵 \(A\) 满足
+\(\rho=AA^\dagger\)，并定义联合向量 \(\psi(i,a)=A_{ia}\)。其外积
+\(\Psi=|\psi\rangle\langle\psi|\) 为正，且
+
+\[
+\operatorname{Tr}\Psi
+=\sum_{i,a}|A_{ia}|^2
+=\operatorname{Tr}(AA^\dagger)=1.
+\]
+
+P-PUR-01 证明 \(\Psi\) 对完整联合状态空间确为极点。实际偏迹逐项给出
+
+\[
+(\operatorname{Tr}_{2}\Psi)_{ij}
+=\sum_a A_{ia}\overline{A_{ja}}
+=(AA^\dagger)_{ij}=\rho_{ij}.
+\]
+
+因子 \(A\)
+的存在来自原密度态的正性，不作为调用者必须另行提供的假设。\(\square\)
+
+形式构造 \texttt{purification} 选择一个由 PSD 存在性给出的 Gram
+因子；\texttt{purification\_\allowbreak isPure} 与 \texttt{purification\_\allowbreak marginal}
+分别证明纯性和边际，\texttt{exists\_\allowbreak purification}
+组合二者。这里的选择使用已列入基础审计的
+\texttt{Classical.choice}。它证明存在并给出 Lean
+中的非计算选择，并未附带一个已经认证的数值矩阵平方根算法。对于空载体，迹一密度态根本不存在；定理不靠隐藏的非空假设制造状态。{[}QM317{]}
+
+Bell 向量 \(\psi=(|00\rangle+|11\rangle)/\sqrt2\)
+给出熟悉的二维正控，其边际为 \(I/2\)。具体 Lean 见证在两个非零位置使用
+\((1+i)/2\)，保持有理复系数；这与标准向量仅差整体相位，外积为同一个 Bell
+投影。一般定理的量词覆盖任意有限维度与任意合法初态；这个小例子用于核对索引与边际，不能代替一般证明。
+
+\hypertarget{ux4e09ux79cdux5b9eux9645ux6a21ux578bux4e0eux76f8ux4e92ux72ecux7acbux7684ux5019ux9009ux539fux5219}{%
+\section{57.4
+三种实际模型与相互独立的候选原则}\label{ux4e09ux79cdux5b9eux9645ux6a21ux578bux4e0eux76f8ux4e92ux72ecux7acbux7684ux5019ux9009ux539fux5219}}
+
+\protect\hypertarget{p-opt-01}{}{}
+
+\textbf{P-OPT-01（同一操作语言中的三个具体呈现）。}
+全经典单纯形、全实密度矩阵与全复密度矩阵分别具有实际状态、效应、凸混合、产品、丢弃和所声明过程；上述七项基本规律均已分别由具体数据证明，对应
+\texttt{classical\_\allowbreak laws}、\allowbreak \texttt{real\_\allowbreak laws}、\allowbreak \texttt{complex\_\allowbreak laws}。纯化存在和局部层析另定义为候选性质，不作为呈现的必备字段。
+
+经典模型的状态是全部有限概率分布，效应是全部 \([0,1]\)
+值函数；复合是笛卡尔积上的全部分布，丢弃是求和边际，过程采用实际随机核。实模型使用全部实对称
+PSD 迹一矩阵、实效应和实 Kraus
+过程；复模型使用上述复矩阵对象。产品概率的乘法来自经典乘积求和或矩阵迹的
+Kronecker
+乘法，过程仿射性来自实际线性作用。实矩阵嵌入复矩阵时，必须保存取值实性与所用联合载体，不能把整个复状态集合误当作实模型的状态空间。
+
+在这种语言中，纯化存在是
+
+\[
+\forall A\ \forall\rho\in\operatorname{State}(A),\
+\exists B\ \exists\Psi\in\operatorname{State}(A\otimes B),\
+\operatorname{Pure}(\Psi)\ \land\ \operatorname{discard}_{B}\Psi=\rho.
+\]
+
+局部层析则要求：若两个联合态在所有产品效应上的概率相同，它们就是同一个联合态。前者讨论状态的纯扩展，后者讨论联合状态能否被局部测试统计识别；逻辑责任不同。
+
+\hypertarget{ux53cdux6a21ux578bux5982ux4f55ux7ea6ux675fux91cfux5b50ux9009ux62e9ux800cux4e0dux9884ux8bbeux7b54ux6848}{%
+\section{57.5
+反模型如何约束量子选择，而不预设答案}\label{ux53cdux6a21ux578bux5982ux4f55ux7ea6ux675fux91cfux5b50ux9009ux62e9ux800cux4e0dux9884ux8bbeux7b54ux6848}}
+
+\protect\hypertarget{n-opt-01}{}{}
+
+\textbf{N-OPT-01（基本操作规律不自动给出量子选择）。}
+完整经典模型满足所声明基本规律，但第54章的非平凡半混合不具有任意有限纯扩展；实量子模型的第55章两态在所有实局部产品效应下同概率，却能被合法实联合效应区分。把两个证据接到同一操作呈现后，前者否定该经典模型的纯化存在候选，后者否定该实模型的局部层析候选。
+
+第54章的经典混态仍有普通扩展，例如与一个确定辅助态取产品。失败的是``扩展必须纯''这一附加要求。另一方面，若故意把允许态限制为只含某个混态的单元素集合，该态在这个缩小集合中会成为极点。这个负控表明，证明纯性时的完整状态量词本身属于科学内容，不能悄悄缩减。
+
+实量子反例也不能改写成``实量子不允许纯化''。本章使用它排除的是局部层析：第55章的两个实联合态具有相同的全部实产品测试统计。允许其具体复局部效应后，原有区分重新可见。这个删除限制的对照检验准确定位了反例所依赖的局部实性。
+
+由此可以得到一条严格的研究路径：对某组独立提出的选择原则，逐模型检查满足与失败，并追查原则是否有
+UEOT
+内部或经验上的独立理由。不能从``在三个检查过的模型中复模型表现合适''推出``所有替代理论已经排除''。本章也没有把完整106条
+Core 命题的所有解释穷尽为这三个模型。
+
+\hypertarget{ux7eafux5316ux5b58ux5728ux4e0eux5b8cux6574ux91cfux5b50ux91cdux5efaux7684ux4e0bux4e00ux5c42ux8d23ux4efb}{%
+\section{57.6
+纯化存在与完整量子重建的下一层责任}\label{ux7eafux5316ux5b58ux5728ux4e0eux5b8cux6574ux91cfux5b50ux91cdux5efaux7684ux4e0bux4e00ux5c42ux8d23ux4efb}}
+
+量子重建文献中的纯化原则通常包含辅助系统上可逆变换意义下的本质唯一性。Chiribella、D'Ariano
+与 Perinotti
+的重建还使用因果性、完美可区分性、理想压缩、局部可区分性和纯条件化等背景原则；不能只截取``纯化存在''和``局部层析''两个名称，就引用其结论为本项目的已证推论。{[}CDP2010；CDP2011{]}
+
+本章已经解决的是有限复矩阵实现中的存在构造与完整凸极点责任。当前证明了归一向量态必为极点，尚未证明每个极点必能写成归一向量态；若要对任意两个纯化讨论本质唯一性，须先补这一反向刻画，或明确从向量纯化的限定范围起步。之后需要说明共同辅助空间或等距嵌入，再证明所需的唯一性关系；还要在当前全效应定义下证明有限复量子局部层析，并核对每个被引用的重建背景公理及其允许过程。即使这些标准量子性质全部闭合，UEOT
+为何必须满足它们仍是一项独立桥接任务。
+
+对原始思想的推进在于，``父对象能支持子对象的混合描述''现在有了具体构造和明确边界：纯父态的实际偏迹给出任意有限复密度态；同一句思想在完整经典模型里并不普遍成立。只有补充原则的来源也受到证明或经验约束，才可能把这种差别继续推进为物理选择。
+
+\hypertarget{ch-58}{%
+\chapter{58. 联合记录、量子记忆与有限自适应协议}\label{ch-58}}
+
+仪器把一个输入态映到多个带结果标签的未归一化分支。把分支相加得到无条件量子通道，但这一步已经丢弃了结果信息。第49章的完整记录律和第50章的效应距离因而需要一个共同载体：把真实经典记录与每个记录对应的量子记忆保存为一个联合状态。本章从实际
+Kraus 矩阵构造这个载体，并把它推广到已有的任意有限自适应协议。
+
+\hypertarget{ux8f93ux5165ux8f93ux51faux5f02ux578bux7684-kraus-ux901aux9053}{%
+\section{58.1 输入输出异型的 Kraus
+通道}\label{ux8f93ux5165ux8f93ux51faux5f02ux578bux7684-kraus-ux901aux9053}}
+
+输入载体为 \(\iota\)，输出载体为 \(\omega\)。一个有限矩形 Kraus 通道给出
+\(K_k\in M_{\omega\times\iota}(\mathbb C)\)，并满足输入空间上的完整性
+
+\[
+\sum_kK_k^\dagger K_k=I_\iota.
+\]
+
+它的实际算符映射为
+\(\mathcal C(X)=\sum_kK_kXK_k^\dagger\)。输入与输出维数可以不同；迹恒等式仍在各自空间中有意义。
+
+\protect\hypertarget{p-cq-01}{}{}
+
+\textbf{P-CQ-01（矩形通道的完全正性、迹保持与效应收缩）。}
+上述映射对任意复矩阵保持复迹。对任意有限辅助载体 \(\nu\)，由
+\(K_k\otimes I_\nu\) 定义的实际放大保持所有 \(X\succeq0\)
+的正性。对任意输出效应 \(E\)，其拉回
+\(\mathcal C^*(E)=\sum_kK_k^\dagger E K_k\) 是合法输入效应，且
+
+\[
+\operatorname{Tr}(E\mathcal C(X))=\operatorname{Tr}(\mathcal C^*(E)X),\qquad
+d_{\rm eff}(\mathcal C(\rho),\mathcal C(\sigma))\le d_{\rm eff}(\rho,\sigma).
+\]
+
+\textbf{证明。} 每项 \(K_kXK_k^\dagger\)
+对正输入为正；迹循环与完整性给出
+
+\[
+\operatorname{Tr}\mathcal C(X)
+=\operatorname{Tr}\!\left(\left(\sum_kK_k^\dagger K_k\right)X\right)
+=\operatorname{Tr}X.
+\]
+
+放大的 Kraus 完整性为
+\(\sum_k(K_k^\dagger K_k)\otimes I=I\)，故同一正性证明对任意联合正输入成立。逐项展开还识别其作用为真正的恒等放大，而不是另一个只在产品态上相符的映射。
+
+对于效应，\(\mathcal C^*(E)\succeq0\)，并且
+\(I-\mathcal C^*(E)=\mathcal C^*(I-E)\succeq0\)。迹配对关系让每个输出测试成为一个输入测试。对所有输出效应取上确界即得收缩。恒等过程和顺序组合也由实际
+Kraus 给出：先 \(\mathcal C\) 后 \(\mathcal D\) 的 Kraus 为
+\(D_lC_k\)。\(\square\)
+
+本章的完全正性包括任意有限辅助系统上的正输入；误差度量仍是明示输入空间上的全效应距离。这个正性结论本身不把后面的缺陷上确界升级为
+diamond 距离。{[}QM317{]}
+
+\hypertarget{ux4e00ux6b65ux4eeaux5668ux7684ux8bb0ux5f55ux5bc4ux5b58ux5668ux4e0eux4e24ux4e2aux8fb9ux9645}{%
+\section{58.2
+一步仪器的记录寄存器与两个边际}\label{ux4e00ux6b65ux4eeaux5668ux7684ux8bb0ux5f55ux5bc4ux5b58ux5668ux4e0eux4e24ux4e2aux8fb9ux9645}}
+
+给定完整仪器 \(I\) 的 Kraus \(K_{o,k}\)，记录载体为结果集合 \(O\)。定义
+
+\[
+V_{o,k}((p,i),j)=\delta_{po}K_{o,k}(i,j).
+\]
+
+这些是从 \(\iota\) 到 \(O\times\iota\) 的实际矩形矩阵。对标签求和有
+\(V_{o,k}^\dagger V_{o,k}=K_{o,k}^\dagger K_{o,k}\)，因此完整性直接来自原仪器。
+
+\protect\hypertarget{p-cq-02}{}{}
+
+\textbf{P-CQ-02（真实仪器的联合块状态与边际）。} 上述 Kraus 定义通道
+
+\[
+\mathcal R_I(X)=\bigoplus_{o\in O}\Phi_{I,o}(X),\qquad
+\Phi_{I,o}(X)=\sum_kK_{o,k}XK_{o,k}^\dagger.
+\]
+
+块等式对任意复输入 \(X\) 成立。对于密度态
+\(\rho\)，\(\Omega_{I,\rho}=\mathcal R_I(\rho)\)
+是合法联合密度态，其量子边际和记录边际分别为
+
+\[
+\operatorname{Tr}_{O}\Omega_{I,\rho}=\sum_o\Phi_{I,o}(\rho),\qquad
+\operatorname{Tr}_{\iota}\Omega_{I,\rho}
+=\operatorname{diag}\bigl(p_I(o\mid\rho)\bigr).
+\]
+
+\textbf{证明。} 逐项计算输出 \((p,i),(q,j)\) 元素。两个标签约束使
+\(p\ne q\) 的块为零，\(p=q=o\) 的块恰为实际分支
+\(\Phi_{I,o}(X)\)。两个偏迹分别对标签或记忆指标求和，给出上述等式；每个记录块的迹就是已有仪器概率。\(\square\)
+
+若 \(p_I(o\mid\rho)>0\)，把该块除以其迹，得到已有的
+\texttt{posterior}，没有重新指定另一种条件更新。若该概率为零，则该正块整体为零：正半定矩阵的零迹迫使矩阵为零。因此零概率事件没有在此被赋予任意的``实际后验态''。
+
+这是一种操作上明确的测量记录表示。它证明已声明仪器与公开记录之间的一致性，没有从纯粹丢弃或块对角化推导客观坍缩机制。
+
+\hypertarget{ux4efbux610fux6709ux9650ux81eaux9002ux5e94ux6811ux4e2dux7684ux771fux5b9eux53f6ux5757}{%
+\section{58.3
+任意有限自适应树中的真实叶块}\label{ux4efbux610fux6709ux9650ux81eaux9002ux5e94ux6811ux4e2dux7684ux771fux5b9eux53f6ux5757}}
+
+已有协议类型递归为停止节点或动作节点
+\(\operatorname{node}(a,\pi_o)\)。每个叶 \(\ell\) 有既定的时间顺序词
+\(\operatorname{word}_\pi(\ell)\)；不同结果可以进入深度不同的子树。联合输出空间采用实际叶类型
+\(\operatorname{Leaf}(\pi)\times\iota\)，保留完整记录与终态记忆。
+
+对每个叶定义 Kraus 路径类型。停止叶只有一个空路径，其矩阵是 \(I\)；在叶
+\((o,\ell')\) 上，一条路径由本步 Kraus 下标 \(k\)
+与子树路径组成。路径矩阵按时间顺序为
+
+\[
+K_{\text{path}}=K_{\text{tail}}K_{a,o,k}.
+\]
+
+总 Kraus 下标是
+\(\sum_{\ell:\operatorname{Leaf}(\pi)}\operatorname{Path}(\pi,\ell)\)。将每条路径矩阵嵌入其真实叶标签块，就得到协议的矩形通道。这个依赖索引同时保存叶标签、路径长度与所选子树，不要求所有叶等深。
+
+\protect\hypertarget{p-cq-03}{}{}
+
+\textbf{P-CQ-03（全部有限协议的记录与记忆实现）。}
+对任意当前有限完整协议 \(\pi\)、实际仪器族 \(I\) 和密度态
+\(\rho\)，构造得到的联合密度态满足
+
+\[
+\Omega_{\pi,\rho}[\ell,\ell]
+=\operatorname{recordOperator}\bigl(I,\operatorname{word}_\pi(\ell),\rho\bigr),
+\qquad
+\Omega_{\pi,\rho}[\ell,m]=0\quad(\ell\ne m).
+\]
+
+因此该块的迹等于已有的
+\texttt{leafProbability}，记录边际是完整叶分布，量子边际是所有真实终端未归一化记忆的和。
+
+\textbf{证明。} 对协议树归纳。停止情形是单位 Kraus
+与原输入态。动作节点处，对每个结果先使用子树的完整性，再对本步 Kraus
+求和，得到
+
+\[
+\sum_{o,k}K_{a,o,k}^\dagger
+\left(\sum_{\ell',\text{tail}}K_{\text{tail}}^\dagger K_{\text{tail}}\right)
+K_{a,o,k}
+=\sum_{o,k}K_{a,o,k}^\dagger K_{a,o,k}=I.
+\]
+
+对固定叶，子树路径共轭和等于其记录算符；再代入本步分支，即与已有按时间顺序定义的
+\texttt{recordOperator}
+一致。标签嵌入给出联合块等式，最后取偏迹。这个叶块关系是由路径乘积和树归纳证明的结论，没有作为通道构造的输入字段。\(\square\)
+
+由于保存的是整个未归一化分支矩阵，本结果比只保存叶概率更强。后续效应可以依赖完整叶记录并作用于相应量子记忆；模型仍限定在明示的有限协议和记忆载体内，没有涵盖一个未建模的任意外部环境。
+
+\hypertarget{ux5b9eux9645ux8bb0ux5f55ux7f3aux9677ux4e8bux4ef6ux6548ux5e94ux4e0eux7cbeux786e-tv-ux5e38ux6570}{%
+\section{58.4 实际记录缺陷、事件效应与精确 TV
+常数}\label{ux5b9eux9645ux8bb0ux5f55ux7f3aux9677ux4e8bux4ef6ux6548ux5e94ux4e0eux7cbeux786e-tv-ux5e38ux6570}}
+
+对于共同输入、共同输出载体的矩形通道，定义实际缺陷
+
+\[
+\delta(\mathcal C,\mathcal D)=
+\sup\left(\{0\}\cup\{d_{\rm eff}(\mathcal C(\tau),\mathcal D(\tau)):
+\tau\in\mathcal D(\iota)\}\right).
+\]
+
+并入 \(0\) 使空输入状态集合的边界也有明确含义；所有实际距离均在
+\([0,1]\)，故上确界有界。对记录通道取
+\(\delta_{\rm rec}(I,J)=\delta(\mathcal R_I,\mathcal R_J)\)。它由实际通道定义，不把用户给定的某个容差数字命名为``缺陷''。
+
+对结果事件 \(S\subseteq O\)，联合效应为
+
+\[
+E_S=\operatorname{diag}(\mathbf1_S)\otimes I_\iota.
+\]
+
+它及其补效应都为正，其对联合块状态的概率恰为事件 \(S\) 的真实记录概率。
+
+\protect\hypertarget{p-cq-04}{}{}
+
+\textbf{P-CQ-04（记录分布的联合距离与扰动控制）。} 设 \(p_{I,\rho}\)
+为实际记录分布，则
+
+\[
+\operatorname{TV}(p_{I,\rho},p_{J,\sigma})
+\le d_{\rm eff}(\mathcal R_I(\rho),\mathcal R_J(\sigma))
+\le d_{\rm eff}(\rho,\sigma)+\delta_{\rm rec}(I,J).
+\]
+
+同样的结论适用于第58.3节构造的整个有限协议联合通道及其真实叶分布；此时缺陷指该整体协议通道的实际缺陷。
+
+\textbf{证明。} 第二个不等式先在 \(\mathcal R_I(\sigma)\)
+处分解三角不等式，再使用 P-CQ-01
+的输入距离收缩和缺陷的上确界性质。第一个不等式对每个事件使用
+\(E_S\)，得到
+
+\[
+|p(S)-q(S)|\le d_{\rm eff}(\Omega_p,\Omega_q).
+\]
+
+对有限归一化分布，令 \(S_+=\{o:p(o)\ge q(o)\}\)。由于
+\(\sum_o(p(o)-q(o))=0\)，正差与负差总量相同，故
+
+\[
+p(S_+)-q(S_+)=\frac12\sum_o|p(o)-q(o)|=\operatorname{TV}(p,q).
+\]
+
+这个实际事件达到 TV。于是``全部事件差不超过
+\(\varepsilon\)''与``完整分布 TV 不超过 \(\varepsilon\)''等价，取
+\(S_+\) 即得第一式。\(\square\)
+
+\texttt{RecordProbability}
+单独证明了上述事件等价；联合量子模块则构造实际效应并证明概率相符。这保留了界中的常数。逐单点估计再相加只能直接得到另一个可能随结果数增长的界，不能未经证明保留这里的常数。{[}QM317{]}
+
+\hypertarget{ux4e22ux5f03ux6807ux7b7eux4f1aux62b9ux53bbux771fux5b9eux53efux533aux5206ux6027}{%
+\section{58.5
+丢弃标签会抹去真实可区分性}\label{ux4e22ux5f03ux6807ux7b7eux4f1aux62b9ux53bbux771fux5b9eux53efux533aux5206ux6027}}
+
+\protect\hypertarget{n-cq-01}{}{}
+
+\textbf{N-CQ-01（相同无条件通道不控制记录误差）。}
+取相同的二维量子记忆，仪器 \(I\) 确定输出标签 \(0\) 并保持输入态，仪器
+\(J\) 确定输出标签 \(1\) 并保持输入态。两者都由完整 Kraus
+家族实现。它们丢弃标签后的通道同为恒等，旧无标签通道缺陷为零；其实际记录分布
+TV 为 \(1\)，联合记录缺陷为 \(1\)。
+
+\textbf{证明。} 对 \(I\)，标签 \(0\) 分支取单位 Kraus，标签 \(1\)
+分支取零矩阵；对 \(J\) 交换标签。完整性均为
+\(I^\dagger I=I\)，无条件作用均为输入矩阵本身。任意相同初态下，两种记录律分别是两个不同
+Dirac 分布。效应 \(E_{\{0\}}\) 的概率分别为 \(1\) 和
+\(0\)，故联合距离至少为 \(1\)；全效应距离至多为 \(1\)，因此等于
+\(1\)。再对初态取上确界给出缺陷。\(\square\)
+
+若共同控制器根据第一步的标签选择第二步动作，记录差异就会进入后续真实协议。例如读到标签
+\(o\) 后选择确定输出 \(o\)
+的动作，第二步输出再次区分两种仪器族。这个两步对照已通过实际协议叶词、后续事件效应与完整记录概率核对：第二次结果为零的事件概率分别为1和0，完整记录TV距离为1。量子记忆在这个删除控制中保持相同，已证明的差异位于实际记录及其后续选择。
+
+\hypertarget{ux5df2ux95edux5408ux7684ux63a5ux53e3ux4e0eux4e0bux4e00ux9879ux8befux5deeux8d23ux4efb}{%
+\section{58.6
+已闭合的接口与下一项误差责任}\label{ux5df2ux95edux5408ux7684ux63a5ux53e3ux4e0eux4e0bux4e00ux9879ux8befux5deeux8d23ux4efb}}
+
+本章把原有单步仪器、完整有限记录律和量子态误差接在一个实际联合系统上。已有信息足以讨论每个有限协议的整个输出与全事件误差；其实际缺陷仍可能难以计算。
+
+下一层任务是对固定深度的共同因果控制器，逐步给出``历史标签加量子记忆''的通道，并建立初态误差加各步实际缺陷之和的预算。若进一步要把历史通道缺陷压成底层动作仪器的最坏缺陷，必须处理共同历史块的权重、零块与分块凸性。整体协议缺陷的合法上确界不是这项可组合预算的证明。
+
+这也明确了 UEOT
+预测对象的一项结构要求：若允许的未来动作依赖记录，丢弃该记录通常会改变可用的未来测试和对象等价。第54章的受限读出反例与本章的标签反例从两个方向说明，选择接口的范围会改变可区分性。完整物理理论必须把允许观察和允许控制作为真实模型内容维护。
+
+\hypertarget{ch-59}{%
+\chapter{59. 非交换条件持续的精确动力学}\label{ch-59}}
+
+第56章已经从给定的正左特征度量构造实际 Doob
+通道，并证明有限次条件演化的交织关系。一般构造并不保证唯一平稳态或吸引性。本章固定第56章同一个有理、非对角且
+Kraus
+不交换的模型，证明实际迭代、实际记录概率和条件态的闭式及收敛率，再用一个合法恒等
+Doob 模型检验不能推广的结论。
+
+\hypertarget{ux56faux5b9aux6a21ux578bux4e0eux4e24ux79cdux72b6ux6001ux5750ux6807}{%
+\section{59.1
+固定模型与两种状态坐标}\label{ux56faux5b9aux6a21ux578bux4e0eux4e24ux79cdux72b6ux6001ux5750ux6807}}
+
+沿用
+
+\[
+r=\frac3{16},\qquad S=\operatorname{diag}(2,1),\qquad T=S^{-1},\qquad
+H=S^\dagger S=\operatorname{diag}(4,1),
+\]
+
+\[
+\rho_* =\frac15\begin{pmatrix}1&2\\2&4\end{pmatrix},\qquad
+\sigma_+=\frac12\begin{pmatrix}1&1\\1&1\end{pmatrix}.
+\]
+
+源的实际成功分支记为 \(\Phi\)，其已验证右特征密度为
+\(\rho_*\)，\(\Phi(\rho_*)=r\rho_*\)；左谱关系是
+\(\Phi^*(H)=rH\)。完整源仪器还具有真实失败分支。本章不改变其
+Kraus，不把这个实例替换为一个更易处理的对角经典模型。
+
+Doob 通道是
+
+\[
+D(X)=\frac13X+\frac23\operatorname{Tr}(X)\sigma_+.
+\]
+
+这个公式对所有复矩阵成立。对非 Hermitian
+输入，迹可以是复数，不能提前只保留其实部。对密度态，归一化坐标变换为
+
+\[
+F(\tau)=\frac{S\tau S^\dagger}{\operatorname{Tr}(H\tau)}.
+\]
+
+\(F\) 的分母依赖输入，所以它一般不是线性通道。\(\Phi\) 的成功概率、\(F\)
+的归一因子和 \(D\) 的迹保持各自有不同含义。
+
+公共模块 \texttt{QuantumDoobModel}
+从上一版具体见证中提取同一模型，使通用动力学源码不再依赖见证脚本。提取的原有定义与证明仍按来源登记；搬入公共模块不计为另一个新的物理结论。{[}QM317{]}
+
+\hypertarget{doob-ux5168ux8f68ux9053ux7684ux95edux5f0fux552fux4e00ux6027ux4e0eux7cbeux786eux6536ux7f29}{%
+\section{59.2 Doob
+全轨道的闭式、唯一性与精确收缩}\label{doob-ux5168ux8f68ux9053ux7684ux95edux5f0fux552fux4e00ux6027ux4e0eux7cbeux786eux6536ux7f29}}
+
+令 \(a_n=3^{-n}\)。
+
+\protect\hypertarget{p-qdd-01}{}{}
+
+\textbf{P-QDD-01（当前 Doob 通道的精确动力学）。} 对任意复矩阵 \(X\)
+与任意 \(n\ge0\)，
+
+\[
+D^n(X)=a_nX+(1-a_n)\operatorname{Tr}(X)\sigma_+.
+\]
+
+\(\sigma_+\) 是唯一不变密度态。对任意密度态 \(\tau,\upsilon\)，
+
+\[
+d_{\rm eff}(D^n\tau,D^n\upsilon)
+=a_n d_{\rm eff}(\tau,\upsilon),
+\qquad D^n\tau\longrightarrow\sigma_+.
+\]
+
+最后的极限是实际有限矩阵空间通常拓扑中的整条轨道极限。
+
+\textbf{证明。}
+由迹保持，\(\operatorname{Tr}D(X)=\operatorname{Tr}X\)。\(n=0\)
+时公式成立；把公式应用于 \(D(X)\)，用 \(a_{n+1}=a_n/3\)
+合并系数，归纳即得全复算符闭式。若 \(D(\tau)=\tau\)，则
+\(\tau=\frac13\tau+\frac23\sigma_+\)，逐矩阵元素移项得
+\(\tau=\sigma_+\)。这个唯一性证明不借用未证明的距离分离性质。
+
+两个密度态轨道相减得到
+\(D^n\tau-D^n\upsilon=a_n(\tau-\upsilon)\)。对每个效应，实际概率差的绝对值缩放
+\(a_n\)
+倍；当系数严格正时，除以该系数给出上确界反向不等式，系数为零时直接处理。因此全效应上确界也精确缩放，而不只是有一个上界。\(a_n\to0\)
+和矩阵加法、实数乘法的连续性给出整轨道极限。\(\square\)
+
+这种全效应缩放证明只使用概率配对与上确界。它没有把当前效应距离与另一种矩阵范数的同一性作为隐藏前提，也没有将
+Cesàro 子列收敛改称整轨道收敛。
+
+\hypertarget{ux4eceux4ea4ux7ec7ux5173ux7cfbux56deux5230ux771fux5b9eux6210ux529fux8bb0ux5f55}{%
+\section{59.3
+从交织关系回到真实成功记录}\label{ux4eceux4ea4ux7ec7ux5173ux7cfbux56deux5230ux771fux5b9eux6210ux529fux8bb0ux5f55}}
+
+对任意输入密度态 \(\tau\)，定义
+
+\[
+c_\tau=\operatorname{Tr}(H\tau),\qquad
+b_\tau=\frac58c_\tau,\qquad
+z_n(\tau)=a_n+(1-a_n)b_\tau.
+\]
+
+因为 \(\tau_{00},\tau_{11}\ge0\) 且 \(\tau_{00}+\tau_{11}=1\)，有
+
+\[
+c_\tau=4\tau_{00}+\tau_{11},\qquad
+1\le c_\tau\le4,\qquad
+\frac58\le b_\tau\le\frac52.
+\]
+
+又因为 \(0<a_n\le1\)，\(z_n\) 是 \(1\) 与 \(b_\tau\) 的凸组合，故
+
+\[
+\frac58\le z_n(\tau)\le\frac52.
+\]
+
+这些界来自完整密度态的正性和迹一；没有只对角态或有限样本输入作检查。\(c_\tau\)
+是滤波归一因子，可能大于 \(1\)，不是物理成功概率。
+
+\protect\hypertarget{p-qdd-02}{}{}
+
+\textbf{P-QDD-02（实际源成功算符与质量闭式）。} 对上述同一个源模型，
+
+\[
+\Phi^n(\tau)
+=r^n\left[a_n\tau+(1-a_n)b_\tau\rho_*\right],
+\]
+
+\[
+m_n(\tau)=\operatorname{Tr}\Phi^n(\tau)
+=r^nz_n(\tau).
+\]
+
+这里 \(\Phi^n\) 是已有 \texttt{successOperator}，\(m_n\) 是已有
+\texttt{successMass}，也等于实际仪器族重复成功词的 \texttt{response}。
+
+\textbf{证明。} 第56章的交织关系在任意复矩阵上给出
+
+\[
+D^n(SXS^\dagger)=r^{-n}S\Phi^n(X)S^\dagger.
+\]
+
+左右乘 \(T,T^\dagger\)，代入 P-QDD-01，并使用
+
+\[
+T\sigma_+T^\dagger=\frac58\rho_*.
+\]
+
+即得任意复 \(X\) 的回拉公式。令 \(X=\tau\)，用
+\(\operatorname{Tr}(S\tau S^\dagger)=c_\tau\)，得到密度态版本。取迹并用两态的迹一，取得实际质量等式。\(\square\)
+
+这个证明先连接实际算符迭代，再取迹；没有另行定义一个相同外观的数列并把它视为原记录概率。成功质量处处严格正，而且
+
+\[
+\frac58r^n\le m_n(\tau)\le\frac52r^n.
+\]
+
+上下界是统一控制，未声称一般初态有 \(m_n=r^n\)。
+
+\hypertarget{ux771fux5b9eux6761ux4ef6ux6001ux7684ux7cbeux786eux51e0ux4f55ux8d8bux8fd1}{%
+\section{59.4
+真实条件态的精确几何趋近}\label{ux771fux5b9eux6761ux4ef6ux6001ux7684ux7cbeux786eux51e0ux4f55ux8d8bux8fd1}}
+
+由于每个有限 \(n\) 的成功质量严格正，已有 \texttt{conditionalState}
+对全部密度输入都定义良好。
+
+\protect\hypertarget{p-qdd-03}{}{}
+
+\textbf{P-QDD-03（实际条件态及其定量收敛）。} 记
+\(\tau_{\mid n}=\Phi^n(\tau)/m_n(\tau)\)，则
+
+\[
+\tau_{\mid n}
+=\frac{a_n}{z_n(\tau)}\tau
++\frac{(1-a_n)b_\tau}{z_n(\tau)}\rho_*.
+\]
+
+两个系数非负且和为 \(1\)。进一步有
+
+\[
+d_{\rm eff}(\tau_{\mid n},\rho_*)
+=\frac{a_n}{z_n(\tau)}d_{\rm eff}(\tau,\rho_*)
+\le\frac85\,3^{-n}d_{\rm eff}(\tau,\rho_*).
+\]
+
+实际条件态矩阵收敛到 \(\rho_*\)，其全效应距离也趋于零。
+
+\textbf{证明。} 用 P-QDD-02 除以严格正的 \(r^nz_n\)，消去公共因子
+\(r^n\) 得到条件态公式。归一因子的定义使第二个系数等于
+\(1-a_n/z_n\)，因此
+
+\[
+\tau_{\mid n}-\rho_*
+=\frac{a_n}{z_n(\tau)}(\tau-\rho_*).
+\]
+
+重复 P-QDD-01 的全效应上确界缩放证明得到精确等式。\(z_n\ge5/8\)
+给出系数上界 \(a_n/z_n\le(8/5)a_n\)。由于 \(z_n\to b_\tau>0\)，系数
+\(a_n/z_n\to0\)，从而得到矩阵与效应距离的两个真实极限。\(\square\)
+
+在这个指定模型中，归一化的源条件演化具有非线性分母，Doob
+轨道则由线性迹保持通道产生。交织关系让两者可比较；这不意味着两种过程的物理概率或平稳态可以互换。
+
+\hypertarget{ux6761ux4ef6ux7a33ux6001ux4e0eux65e0ux6761ux4ef6ux6210ux529fux8d28ux91cfux7684ux4e0dux540cux6781ux9650}{%
+\section{59.5
+条件稳态与无条件成功质量的不同极限}\label{ux6761ux4ef6ux7a33ux6001ux4e0eux65e0ux6761ux4ef6ux6210ux529fux8d28ux91cfux7684ux4e0dux540cux6781ux9650}}
+
+\protect\hypertarget{p-qdd-04}{}{}
+
+\textbf{P-QDD-04（有限成功概率衰减与初态责任）。} 对任意密度态
+\(\tau\)，每个有限 \(n\) 均有 \(m_n(\tau)>0\)，但
+
+\[
+m_n(\tau)\longrightarrow0.
+\]
+
+对 \(\tau=\rho_*\)，\(c_{\rho_*}=8/5\)、\(b_{\rho_*}=1\)，故
+\(m_n(\rho_*)=r^n\)。对均匀初态 \(\tau_0=I/2\)，
+
+\[
+c_{\tau_0}=\frac52,\qquad b_{\tau_0}=\frac{25}{16},\qquad
+m_1(\tau_0)=\frac{33}{128}\ne\frac3{16}.
+\]
+
+\textbf{证明。} \(z_n(\tau)\) 收敛到有限的正数 \(b_\tau\)，而
+\(0<r<1\)，故
+\(r^nz_n\to0\)。特定初态的等式由实际矩阵元素与通用质量公式代入得到。\(\square\)
+
+因此一个条件分布可以逐渐稳定，同时满足这个条件的有限记录越来越稀少。这里严格证明的是有限事件概率序列的极限；本章未构造无限路径测度或无限时间条件事件，也没有把条件极限称为无条件永久存在。
+
+对原始 UEOT
+的持续性追求，这个区分是必要的：一个组织结构在存活样本中越来越稳定，并不独自证明总体存活概率保持正下界。要讨论何种控制能提高寿命或改变成功率，还必须声明可用动作、成功事件、约束和代价。当前无控制可解模型并未选择自然界必须优化的目标函数。{[}S1；S2；S4；QM317{]}
+
+\hypertarget{ux6b63ux8c31ux5ea6ux91cfux4e0dux80fdux4fddux8bc1ux552fux4e00ux5438ux5f15ux6001}{%
+\section{59.6
+正谱度量不能保证唯一吸引态}\label{ux6b63ux8c31ux5ea6ux91cfux4e0dux80fdux4fddux8bc1ux552fux4e00ux5438ux5f15ux6001}}
+
+\protect\hypertarget{n-qdd-01}{}{}
+
+\textbf{N-QDD-01（合法恒等 Doob 负控）。}
+存在实际完整源仪器，其成功分支对非零 PSD
+输入严格缩小迹，并具有正左特征度量，但其 Doob
+通道为恒等；所有密度态都平稳，不存在共同的唯一吸引态。归一密度输入的成功概率恒为
+\(1/4\)。
+
+\textbf{构造与证明。} 在二维空间取一个成功 Kraus \(I/2\)、三个失败 Kraus
+\(I/2\)，必要的其余下标补零。四个非零矩阵的 \(K^\dagger K\) 之和为
+\(I\)，因此这确实是完整仪器。其成功分支为 \(\Phi(X)=X/4\)。取
+\(H=I\)、\(S=T=I\) 和 \(r=1/4\)，左谱关系立即成立，按第56章实际 Doob
+构造得到 \(D(X)=X\)。
+
+于是每个密度态的整个 Doob
+轨道都保持原态。选两个不同密度态，即得两个不同平稳态；若所有初态都收敛到同一个矩阵，常值轨道极限的唯一性会迫使这两个初态相等，矛盾。源的成功质量仍为
+\((1/4)^n\)，实际有限条件态始终等于输入态。\(\square\)
+
+这个反例保留了成功分支、完整仪器、严格衰减、正特征度量和实际 Doob
+构造。它准确否定从这些条件单独推出唯一性或混合的推理。要得到一般收敛定理，还需明确的不可约性、本原性、收缩或谱条件及其证明，不能把原始
+GOA 的唯一固定点图景作为所有对象的普遍结论。
+
+\hypertarget{ux4eceux5177ux4f53ux52a8ux529bux5b66ux5185ux6838ux5230ux66f4ux4e00ux822cux7684ux7269ux7406ux6865}{%
+\section{59.7
+从具体动力学内核到更一般的物理桥}\label{ux4eceux5177ux4f53ux52a8ux529bux5b66ux5185ux6838ux5230ux66f4ux4e00ux822cux7684ux7269ux7406ux6865}}
+
+本章完成的是一个指定非交换模型重复指定成功分支的有限动力学，以及相应
 Doob
-通道检验``有正谱度量''不足以保证混合。完成这个可解模型后，再固定可验证的有限不可约／本原条件，研究一般正谱对象的存在及长时条件过程。原始双驱动思想可提示关注哪些可持续机制，但成功事件、初态、控制代价与真实观测仍须分别定义。最终的物理理论需要把这些明确接口连接到经验，而不是把每个条件定理的前提隐藏在``最终真理''这个目标中。{[}S1、S2、S4；QM316{]}
+轨道和条件态的长时极限。一般正谱对象存在、谱半径识别、一般准稳态唯一性与无限条件过程仍有独立责任；它们不能从这个可解模型的公式外推。有限模型的物理实现、成功事件对应的实验读出及参数校准也仍需单独验证。
+
+与前两章合看，当前内核获得了三种相互配合的能力：用实际纯态与偏迹表示任意有限复混态，用联合记录寄存器保存协议历史与量子记忆，用实际谱交织定量解释指定模型中的条件持续。这些都在已经声明的量子实现内成立。下一步应优先补齐选择原则之间的严格逻辑关系、可组合的记录误差预算和有明确一般条件的动力学推广，再把所得可观测量接到可实施实验。这样，UEOT
+的解释目标会不断受到模型反例、形式证明和经验责任的共同约束。
 
 \hypertarget{appendix-a}{%
 \chapter{附录 A. 符号、单位与标准定理责任表}\label{appendix-a}}
@@ -8013,7 +8717,7 @@ Lindblad 算符或线丛。所有重用符号以本章类型为准。
 \hypertarget{appendix-b}{%
 \chapter{附录 B. 编号证明结果注册表}\label{appendix-b}}
 
-本版共117个稳定编号结果，保留3.1版全部101个编号（其中78个来自2.0、10个来自49--50章、13个来自51--53章），新增第54--56章16个命题或反例。编号记录正文解析结果；它不是原创性、Lean声明数量或实验确认的计数。完整前提及证明见相应章节。
+本版共131个稳定编号结果，保留3.2版全部117个编号，新增第57--59章14个命题或反例。继承编号包括2.0的78个、49--50章10个、51--53章13个及54--56章16个。编号记录正文解析结果；它不是原创性、Lean声明数量或实验确认的计数。完整前提及证明见相应章节。
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2400}}
@@ -8222,6 +8926,34 @@ P-QQD-04（准稳态、几何存活与实际通道平稳）。 \\
 P-QQD-05（全矩阵可计算的非对角 Doob 见证）。 \\
 \protect\hyperlink{n-qqd-01}{N-QQD-01} & 56 &
 N-QQD-01（必须保留的三项区分）。 \\
+\protect\hyperlink{p-pur-01}{P-PUR-01} & 57 &
+P-PUR-01（完整密度态空间中的向量纯态）。 \\
+\protect\hyperlink{p-pur-02}{P-PUR-02} & 57 &
+P-PUR-02（任意有限复密度态的纯化存在）。 \\
+\protect\hyperlink{p-opt-01}{P-OPT-01} & 57 &
+P-OPT-01（同一操作语言中的三个具体呈现）。 \\
+\protect\hyperlink{n-opt-01}{N-OPT-01} & 57 &
+N-OPT-01（基本操作规律不自动给出量子选择）。 \\
+\protect\hyperlink{p-cq-01}{P-CQ-01} & 58 &
+P-CQ-01（矩形通道的完全正性、迹保持与效应收缩）。 \\
+\protect\hyperlink{p-cq-02}{P-CQ-02} & 58 &
+P-CQ-02（真实仪器的联合块状态与边际）。 \\
+\protect\hyperlink{p-cq-03}{P-CQ-03} & 58 &
+P-CQ-03（全部有限协议的记录与记忆实现）。 \\
+\protect\hyperlink{p-cq-04}{P-CQ-04} & 58 &
+P-CQ-04（记录分布的联合距离与扰动控制）。 \\
+\protect\hyperlink{n-cq-01}{N-CQ-01} & 58 &
+N-CQ-01（相同无条件通道不控制记录误差）。 \\
+\protect\hyperlink{p-qdd-01}{P-QDD-01} & 59 & P-QDD-01（当前 Doob
+通道的精确动力学）。 \\
+\protect\hyperlink{p-qdd-02}{P-QDD-02} & 59 &
+P-QDD-02（实际源成功算符与质量闭式）。 \\
+\protect\hyperlink{p-qdd-03}{P-QDD-03} & 59 &
+P-QDD-03（实际条件态及其定量收敛）。 \\
+\protect\hyperlink{p-qdd-04}{P-QDD-04} & 59 &
+P-QDD-04（有限成功概率衰减与初态责任）。 \\
+\protect\hyperlink{n-qdd-01}{N-QDD-01} & 59 & N-QDD-01（合法恒等 Doob
+负控）。 \\
 \end{longtable}
 
 \hypertarget{appendix-c}{%
@@ -8235,7 +8967,7 @@ N-QQD-01（必须保留的三项区分）。 \\
 v3完整数学主文、开放端口矩阵、post-Core科学闭合说明、理论完成路线。另恢复并核对已形成的统一主文2.0
 Markdown、LaTeX、PDF及完整源/验证包；Markdown和LaTeX与包内同名成员逐字节相同。独立PDF与包内PDF字节不同，分别保留各自身份，不声称二者是同一渲染产物。
 
-现行数学与运行代码以v31.6源清单的逐文件SHA-256及实际验证为准。本轮科学基线为已发布主线427f512745ca70f82cba6a1388edcab904da8a42；本地工作树的历史HEAD仅作环境元数据，不代替逐文件源身份。新增模块的源码、通用构建、具体实例、运行检查和最终远端身份分别记录；历史源码清单保持其原版本责任。历史v23--v30等材料用于核对推导沿革；部分为可访问的完整文本视图，不能冒充原始上传字节。两个同名v28.1来源仍分别记录，不能按文件后缀选择``权威''。精确来源身份与使用范围见同目录SOURCE\_\allowbreak MANIFEST.json及章节审查记录。
+现行数学与运行代码以v31.7源清单的逐文件SHA-256及实际验证为准。本轮恢复基线为已发布主线7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8；本地历史HEAD只作环境元数据，不代替逐文件源身份。新模块、统一构建、具体见证、运行检查和最终远端提交分别记录。五份原始/Core材料再次核对字节身份，并检查原始论文与严格Core中的持续、评价及量子选择责任；历史v23--v30材料仍按原有可访问范围使用。两个同名v28.1来源各有身份，不按后缀挑选权威。SOURCE\_\allowbreak MANIFEST.json保留原始来源登记，新版本的实际责任另由本版证据和章节档案说明。
 
 \hypertarget{c.2-ux9879ux76eeux6765ux6e90ux6620ux5c04}{%
 \section{C.2
@@ -8349,6 +9081,15 @@ PASS 数直接搬成本次验证结果。
   Pérez-Espigares，\emph{Making rare events typical in Markovian open
   quantum
   systems}。第53章之外的一般量子条件动力学背景；不作为本项目已实现无限条件极限的证明。\href{https://arxiv.org/abs/1711.10951}{原文}
+\item
+  {[}CDP2010{]} G. Chiribella、G. M. D'Ariano、P.
+  Perinotti，\emph{Probabilistic theories with purification}，Physical
+  Review A 81, 062348
+  (2010)。第57章用于区分纯化存在与含本质唯一性的完整原则。\href{https://arxiv.org/abs/0908.1583}{原文}
+\item
+  {[}CDP2011{]} 同上作者，\emph{Informational derivation of Quantum
+  Theory}，Physical Review A 84, 012311
+  (2011)。其完整重建使用明示背景公理，未由本书有限纯化存在结果替代。\href{https://arxiv.org/abs/1011.6451}{原文}
 \end{enumerate}
 
 \hypertarget{c.4-ux672cux4e66ux65b0ux589eux6574ux7406ux4e0eux903bux8f91ux4f18ux5316ux7684ux8eabux4efd}{%
@@ -8375,9 +9116,10 @@ Berry 1984、Su--Schrieffer--Heeger 1979、Wilson
 \section{C.6
 第三版的代码与原始学术核对}\label{c.6-ux7b2cux4e09ux7248ux7684ux4ee3ux7801ux4e0eux539fux59cbux5b66ux672fux6838ux5bf9}}
 
-第49章纳入已经主线验收的Kernel1.1--1.3成果；第50章纳入Kernel1.4的实际效应和稳定性切片，第51--53章纳入Kernel1.5的混合预算、Cesàro与实际条件生存桥，第54--56章纳入Kernel1.6的两类量子选择分离与一般有限量子Doob连接。当前代码与证据入口分别为仓库
-\texttt{formalization/ueot-qm}、\allowbreak \texttt{physics/qm/kernel/evidence/v31.6}，正文维护入口为
-\texttt{physics/qm/book}。Core冻结文档和物理接口合同决定依赖的分类，不把域内结果回填成通用公理。
+第49章纳入Kernel1.1--1.3；第50章纳入Kernel1.4的实际稳定性，第51--53章纳入Kernel1.5的混合、平均与条件生存，第54--56章纳入Kernel1.6的两类选择分离与有限量子Doob构造。第57--59章纳入Kernel1.7的完整有限复纯化、同一操作语言、任意有限协议联合记录与指定模型条件动力学。当前代码与证据入口为
+\texttt{formalization/ueot-qm} 和
+\texttt{physics/qm/kernel/evidence/v31.7}，正文入口为
+\texttt{physics/qm/book}；历史版本证据仍只承担各自输入责任。冻结Core与领域接口决定分类，不把量子域内性质回填成通用公理。
 
 3.0版修订时曾直接核对 Nakahira 预印本的 Theorem1 及 Appendix
 A.2--A.3：完整OPT背景是调用条件，结论不要求每个自然数维数都必须有物理系统。正文第2章保留外部标准定理K的身份，未将其计入本项目通用Lean定理。\href{https://arxiv.org/html/2605.23217v1}{原始HTML}。通道与范数的标准数学可参照\href{https://cs.uwaterloo.ca/~watrous/TQI/}{Watrous作者资料}，本版新Lean证明另从实际矩阵构造，未复制其书稿或把其全部理论标为本项目机器重证。
@@ -8385,11 +9127,13 @@ A.2--A.3：完整OPT背景是调用条件，结论不要求每个自然数维数
 原始论文第30--33页的
 Fisher→不确定关系、闭作用→CCR、Betti数→指标→三代和Massey积→规范群的强推断，需要本书已经分别补出的桥、领域输入或开放义务。保留研究思想不等于恢复已撤回的推断。现代严格版本中的具体前提、反例和可复查证明承担结论责任。
 
-本轮来源标签 QM316 指向
+来源标签 QM316 指向
 \texttt{ClassicalSector}、\allowbreak \texttt{CorePurificationBoundary}、\allowbreak \texttt{RealLocalTomography}、\allowbreak \texttt{QuantumDoob}
-及其实际验证回执。新增先例：C. M. Caves、C. A. Fuchs、P.
-Rungta，\emph{Entanglement of Formation of an Arbitrary State of Two
-Rebits}，原文式(1.6)--(1.12)；这里只用作实组合结构背景，不将其整篇纠缠定理纳入本项目的机器证明。\href{https://arxiv.org/abs/quant-ph/0009063}{原文}
+及v31.6实际回执；本版继续复验其未变数学源。QM317 指向
+\texttt{RecordProbability}、\allowbreak \texttt{RectangularChannels}、\allowbreak \texttt{QuantumPurification}、\allowbreak \texttt{OperationalSystems}、\allowbreak \texttt{ClassicalQuantumMemory}、\allowbreak \texttt{QuantumDoobModel}、\allowbreak \texttt{QuantumDoobDynamics}
+及三份新具体见证和v31.7统一回执。C. M. Caves、C. A. Fuchs、P. Rungta 的
+\emph{Entanglement of Formation of an Arbitrary State of Two Rebits}
+仍只作为实组合背景，不把整篇纠缠定理计入机器证明。\href{https://arxiv.org/abs/quant-ph/0009063}{原文}
 
 \hypertarget{appendix-d}{%
 \chapter{附录 D. 全部继承验证代码与版本回执}\label{appendix-d}}
@@ -8397,7 +9141,7 @@ Rebits}，原文式(1.6)--(1.12)；这里只用作实组合结构背景，不将
 \hypertarget{d.1-ux8fd0ux884cux5408ux540c}{%
 \section{D.1 运行合同}\label{d.1-ux8fd0ux884cux5408ux540c}}
 
-3.0版在2026-10-19T23:13:31.030592+00:00实际重新执行三套继承程序，共通过757项检查（237、423、97）。3.1与3.2版逐字节保留这三套程序并核对哈希，因此沿用这份版本回执，没有将它重命名为本轮执行。它们是有限精确算术、确定性数值回归和带固定种子的合成抽样，不能计作757个普遍定理或实验结果。下面保留全部代码与该次实际环境/输出；逐项结果保存在本书evidence/v3.0目录。
+3.0版在2026-10-19T23:13:31.030592+00:00实际重新执行三套继承程序，共通过757项检查（237、423、97）。3.1、3.2与3.3版逐字节保留这三套程序并核对哈希，因此沿用这份版本回执，没有将它重命名为本轮执行。它们是有限精确算术、确定性数值回归和带固定种子的合成抽样，不能计作757个普遍定理或实验结果。下面保留全部代码与该次实际环境/输出；逐项结果保存在本书evidence/v3.0目录。
 
 第49--53章的Lean形式化、100项运行测试、4个演示及具体证明见证另见附录F，不与这些检查混计。下列脚本不调用网络、不读取实验数据，依赖Python3、NumPy与SciPy，可分别保存并直接运行。
 
@@ -8772,7 +9516,7 @@ result={"summary":{"status":"all_passed","checks":len(checks),"seed":31011,
 print(json.dumps(result,ensure_ascii=False,indent=2))
 \end{Verbatim}
 
-3.0版实际结果摘要（代码在3.1及3.2版保持不变）：
+3.0版实际结果摘要（代码在3.1、3.2及3.3版保持不变）：
 
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 {
@@ -9077,7 +9821,7 @@ result={"summary":{"status":"all_passed","checks":len(checks),"seed":9062026,
 print(json.dumps(result,ensure_ascii=False,indent=2))
 \end{Verbatim}
 
-3.0版实际结果摘要（代码在3.1及3.2版保持不变）：
+3.0版实际结果摘要（代码在3.1、3.2及3.3版保持不变）：
 
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 {
@@ -9274,7 +10018,7 @@ result={"summary":{"status":"all_passed","checks":len(checks),"seed":9062048,
 print(json.dumps(result,ensure_ascii=False,indent=2))
 \end{Verbatim}
 
-3.0版实际结果摘要（代码在3.1及3.2版保持不变）：
+3.0版实际结果摘要（代码在3.1、3.2及3.3版保持不变）：
 
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 {
@@ -9308,7 +10052,7 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 完整语义主源与派生阅读版}\label{e.1-ux5b8cux6574ux8bedux4e49ux4e3bux6e90ux4e0eux6d3eux751fux9605ux8bfbux7248}}
 
 稳定主文件 \texttt{UEOT\_\allowbreak PHYSICS.md}
-包含全部57章和6个附录。\texttt{UEOT\_\allowbreak PHYSICS.pdf}
+包含全部60章和6个附录。\texttt{UEOT\_\allowbreak PHYSICS.pdf}
 是该文件实际编译的阅读版，包含数学排版、全文目录、稳定结果编号、原始推导和代码。第三版在完整第二版基础上进行有记录的实质修订，不是需要读者拼接的补丁稿。版本号属于版本身份，已解决/未解决的物理问题按正文和证据分别报告。
 
 \hypertarget{e.2-ux53efux590dux73b0ux6784ux5efa}{%
@@ -9342,10 +10086,10 @@ python3 physics/qm/book/build/build_pdf.py \
 \section{F.1
 本版检查身份与计数}\label{f.1-ux672cux7248ux68c0ux67e5ux8eabux4efdux4e0eux8ba1ux6570}}
 
-本版沿用锁定Lean4.33.1（编译器提交819816b2e0a3bf405af45ae5c7af2491d8f5bee6）及Mathlib0df444a360eaa60ab8c11dca51a86af692955474；九项Git依赖实际提交与锁文件一致。22模块统一构建成功，459个显式定理及573项唯一完整命名公理输出得到检查。允许基础仅为
+本版沿用锁定Lean4.33.1（编译器提交819816b2e0a3bf405af45ae5c7af2491d8f5bee6）及Mathlib0df444a360eaa60ab8c11dca51a86af692955474；九项Git依赖的实际提交与锁文件一致。29模块统一构建成功，646个显式定理及855项唯一完整命名公理输出得到检查。允许基础仅为
 \texttt{propext}、\allowbreak \texttt{Classical.choice}、\allowbreak \texttt{Quot.sound}；这不表示证明没有基础公理。
 
-本轮增加ClassicalSector、CorePurificationBoundary、RealLocalTomography、QuantumDoob四个模块，共125个显式定理。新增审计含公开定义、缩写、结构、构造器及三个具体商类型的命名实例，合计181项；累积573项等于459个显式定理加114个列举非定理目标。主包含通用命题和明确的Core模型实例，数据、定义与模型化选择均不被计为新的物理定律。该清单不冒充编译器所有内部生成常量的普查。源码、执行日志、具体实例及运行检查各自绑定实际输入。
+本轮增加七个公共模块，含187个显式定理和282项新审计目标。全部新增显式声明、命名实例、被注册为实例的两个投影及结构构造器均有明确请求；累积855项等于646个显式定理与209个列举非定理目标。QuantumDoobModel中的27个声明来自上一版具体见证，另补两个公共态声明；来源提取与新增动力学分别登记。该清单不冒充所有编译器内部常量的普查，也不把定义或模型实例计为新的物理定律。
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3000}}
@@ -9387,22 +10131,37 @@ CorePurificationBoundary & 32 &
 RealLocalTomography & 37 &
 全部实局域效应不可区分与联合／复局域删除见证 \\
 QuantumDoob & 32 & 实际Doob完备性、有限条件化与额外谱条件下平稳 \\
+RecordProbability & 9 & 实际有限记录事件达到TV及全事件等价 \\
+RectangularChannels & 29 &
+异型Kraus通道、真实任意辅助放大、偏迹与效应收缩 \\
+QuantumPurification & 25 &
+完整凸极点、PSD导出Gram与任意有限密度态纯化 \\
+OperationalSystems & 25 & 三种完整状态呈现、七项规律和独立候选原则 \\
+ClassicalQuantumMemory & 39 &
+实际联合记录、任意有限树记忆、全事件TV与标签缺陷 \\
+QuantumDoobModel & 17 &
+先前非对角模型提取及明确公共态；非新增独立物理 \\
+QuantumDoobDynamics & 43 &
+指定成功记录闭式、真实条件态到固定态的精确距离衰减与概率极限 \\
 \end{longtable}
 
 \hypertarget{f.2-ux8fd0ux884cux4e0eux5177ux4f53ux8bc1ux660eux4ea7ux54c1}{%
 \section{F.2
 运行与具体证明产品}\label{f.2-ux8fd0ux884cux4e0eux5177ux4f53ux8bc1ux660eux4ea7ux54c1}}
 
-100项内核运行测试和4份完整演示与通用Lean数学分开计数。六份既有具体数值证书各有7个命名审计目标，共42项；四类坏数据必须同时满足原真值证明被拒绝和同数据假值证明成功，后者另有4项命名审计。本版在新统一内核上重新执行这些验证并保留每份实际数据身份。
+100项内核运行测试和4份完整演示与通用Lean数学分别计数。六份精确数值证书共42项命名审计；四类坏数据同时满足原真值证明被拒绝和同数据假值证明成功，后者另有4项审计。本版在新统一内核上实际重新执行这些门并绑定输入身份。
 
-持久化有限见证门保留混合与两态存活见证，并加入实双rebit与有理非对角Doob见证。四组文件共62个具体显式定理、22个定义与84个独立命名审计，未加进主包统计。源清单与运行见证不宣称Python/JSON/搜索/导出程序的所有输入已被形式化。
+持久化有限见证门共七组：原有混合、两态存活、实双rebit与非对角Doob见证，以及新Bell/完整态量词、联合记录/两步控制、条件动力学/恒等Doob见证。七组共110个具体显式定理、39个定义、2个缩写与151个独立审计，未计入主包646/855。源清单仍不宣称Python/JSON/搜索/导出程序的全部输入已经形式化。
 
-\hypertarget{f.3-573ux9879ux5b8cux6574ux547dux540dux516cux7406ux8bf7ux6c42}{%
+本轮实际输入共80项，源集SHA-256为
+\texttt{b453ce5028eb1ef7\allowbreak d324326245ae5c6c\allowbreak c1a0bf3f40cabf69\allowbreak 1f25bb1aae7a5911}；实际递归Core导入仍为56项，逐项与恢复主线及上一版源码相符。科学源、构建、审计、具体见证与后续远端身份分别见对应回执。
+
+\hypertarget{f.3-855ux9879ux5b8cux6574ux547dux540dux516cux7406ux8bf7ux6c42}{%
 \section{F.3
-573项完整命名公理请求}\label{f.3-573ux9879ux5b8cux6574ux547dux540dux516cux7406ux8bf7ux6c42}}
+855项完整命名公理请求}\label{f.3-855ux9879ux5b8cux6574ux547dux540dux516cux7406ux8bf7ux6c42}}
 
 下列为实际 \texttt{AxiomAudit.lean}
-请求的全名，依审计顺序列出。每项均须有唯一同名实际输出；缺项、重复、越界公理或构建错误都不算通过。对应范围由源码类型及第49--56章共同确定。
+请求的全名，依审计顺序列出。每项均须有唯一同名实际输出；缺项、重复、越界公理或构建错误都不算通过。对应范围由实际源码类型及第49--59章共同确定。
 
 \hypertarget{f.3.1-ux8bf7ux6c42160}{%
 \subsection{F.3.1 请求1--60}\label{f.3.1-ux8bf7ux6c42160}}
@@ -9998,8 +10757,8 @@ UEOTQM.QuantumDoob.eigen_successMass
 UEOTQM.QuantumDoob.eigen_successMass_pos
 \end{Verbatim}
 
-\hypertarget{f.3.10-ux8bf7ux6c42541573}{%
-\subsection{F.3.10 请求541--573}\label{f.3.10-ux8bf7ux6c42541573}}
+\hypertarget{f.3.10-ux8bf7ux6c42541600}{%
+\subsection{F.3.10 请求541--600}\label{f.3.10-ux8bf7ux6c42541600}}
 
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 UEOTQM.QuantumDoob.conditionalState
@@ -10035,6 +10794,318 @@ UEOTQM.QuantumDoob.eigenmetric_successMass_pos
 UEOTQM.QuantumDoob.doob_finite_conditioning
 UEOTQM.QuantumDoob.doob_successOperator_state
 UEOTQM.QuantumDoob.doob_successMass_state
+UEOTQM.RecordProbability.eventProbability
+UEOTQM.RecordProbability.positiveEvent
+UEOTQM.RecordProbability.eventProbability_empty
+UEOTQM.RecordProbability.eventProbability_univ
+UEOTQM.RecordProbability.eventProbability_nonneg
+UEOTQM.RecordProbability.eventProbability_le_one
+UEOTQM.RecordProbability.eventProbability_eq_indicator
+UEOTQM.RecordProbability.eventProbability_abs_sub_le_tv
+UEOTQM.RecordProbability.positiveEvent_sub_eq_tv
+UEOTQM.RecordProbability.positiveEvent_abs_sub_eq_tv
+UEOTQM.RecordProbability.tv_le_iff_events
+UEOTQM.RectangularChannel
+UEOTQM.RectangularChannel.operator
+UEOTQM.RectangularChannel.operator_posSemidef
+UEOTQM.RectangularChannel.operator_zero
+UEOTQM.RectangularChannel.operator_add
+UEOTQM.RectangularChannel.operator_smul
+UEOTQM.RectangularChannel.operator_real_smul
+UEOTQM.RectangularChannel.operatorLinear
+UEOTQM.RectangularChannel.operator_sum
+UEOTQM.RectangularChannel.trace_operator
+UEOTQM.RectangularChannel.mass_operator
+UEOTQM.RectangularChannel.state
+UEOTQM.RectangularChannel.state_matrix
+UEOTQM.RectangularChannel.adjoint
+UEOTQM.RectangularChannel.adjoint_posSemidef
+UEOTQM.RectangularChannel.adjoint_one
+\end{Verbatim}
+
+\hypertarget{f.3.11-ux8bf7ux6c42601660}{%
+\subsection{F.3.11 请求601--660}\label{f.3.11-ux8bf7ux6c42601660}}
+
+\begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
+UEOTQM.RectangularChannel.adjoint_sub
+UEOTQM.RectangularChannel.trace_adjoint
+UEOTQM.RectangularChannel.pullbackEffect
+UEOTQM.RectangularChannel.pullbackEffect_matrix
+UEOTQM.RectangularChannel.probability_state
+UEOTQM.RectangularChannel.state_effectDistance_le
+UEOTQM.RectangularChannel.identity
+UEOTQM.RectangularChannel.identity_operator
+UEOTQM.RectangularChannel.identity_state
+UEOTQM.RectangularChannel.comp
+UEOTQM.RectangularChannel.comp_operator
+UEOTQM.RectangularChannel.comp_state
+UEOTQM.RectangularChannel.amplify
+UEOTQM.RectangularChannel.amplify_posSemidef
+UEOTQM.RectangularChannel.amplify_operator_apply
+UEOTQM.RectangularChannel.discardRightKraus
+UEOTQM.RectangularChannel.discardRight
+UEOTQM.RectangularChannel.discardRight_operator_apply
+UEOTQM.RectangularChannel.discardLeftKraus
+UEOTQM.RectangularChannel.discardLeft
+UEOTQM.RectangularChannel.discardLeft_operator_apply
+UEOTQM.RectangularChannel.defect
+UEOTQM.RectangularChannel.defect_bddAbove
+UEOTQM.RectangularChannel.defect_nonneg
+UEOTQM.RectangularChannel.defect_le_one
+UEOTQM.RectangularChannel.state_distance_le_defect
+UEOTQM.RectangularChannel.perturbation_bound
+UEOTQM.QuantumPurification.mix
+UEOTQM.QuantumPurification.mix_matrix
+UEOTQM.QuantumPurification.IsPure
+UEOTQM.QuantumPurification.outer
+UEOTQM.QuantumPurification.outer_apply
+UEOTQM.QuantumPurification.outer_positive
+UEOTQM.QuantumPurification.outer_hermitian
+UEOTQM.QuantumPurification.outer_trace
+UEOTQM.QuantumPurification.outer_square
+UEOTQM.QuantumPurification.outer_sandwich
+UEOTQM.QuantumPurification.vectorState
+UEOTQM.QuantumPurification.vectorState_matrix
+UEOTQM.QuantumPurification.exists_gram
+UEOTQM.QuantumPurification.positive_compression_zero
+UEOTQM.QuantumPurification.density_eq_vector_of_compression_zero
+UEOTQM.QuantumPurification.vectorState_isPure
+UEOTQM.QuantumPurification.vectorize
+UEOTQM.QuantumPurification.vectorize_outer_trace
+UEOTQM.QuantumPurification.discard_vectorize_outer
+UEOTQM.QuantumPurification.gram
+UEOTQM.QuantumPurification.gram_spec
+UEOTQM.QuantumPurification.purificationVector
+UEOTQM.QuantumPurification.purificationVector_normalized
+UEOTQM.QuantumPurification.purification
+UEOTQM.QuantumPurification.purification_matrix
+UEOTQM.QuantumPurification.purification_isPure
+UEOTQM.QuantumPurification.purification_marginal
+UEOTQM.QuantumPurification.exists_purification
+UEOTQM.QuantumPurification.density_empty_elim
+UEOTQM.QuantumPurification.product
+UEOTQM.QuantumPurification.product_matrix
+UEOTQM.QuantumPurification.discard_product
+UEOTQM.QuantumPurification.probability_mix
+\end{Verbatim}
+
+\hypertarget{f.3.12-ux8bf7ux6c42661720}{%
+\subsection{F.3.12 请求661--720}\label{f.3.12-ux8bf7ux6c42661720}}
+
+\begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
+UEOTQM.QuantumPurification.state_mix
+UEOTQM.OperationalSystems.FiniteSystem
+UEOTQM.OperationalSystems.FiniteSystem.of
+UEOTQM.OperationalSystems.FiniteSystem.product
+UEOTQM.OperationalSystems.Presentation
+UEOTQM.OperationalSystems.Presentation.discardRight
+UEOTQM.OperationalSystems.Laws
+UEOTQM.OperationalSystems.IsPure
+UEOTQM.OperationalSystems.Purifies
+UEOTQM.OperationalSystems.PurificationExistence
+UEOTQM.OperationalSystems.LocalTomography
+UEOTQM.OperationalSystems.ClassicalModel.product
+UEOTQM.OperationalSystems.ClassicalModel.productEffect
+UEOTQM.OperationalSystems.ClassicalModel.act
+UEOTQM.OperationalSystems.ClassicalModel.probability_mix
+UEOTQM.OperationalSystems.ClassicalModel.product_probability
+UEOTQM.OperationalSystems.ClassicalModel.marginal_product
+UEOTQM.OperationalSystems.ClassicalModel.act_discard
+UEOTQM.OperationalSystems.ClassicalModel.act_mix
+UEOTQM.OperationalSystems.ClassicalModel.act_identity
+UEOTQM.OperationalSystems.ClassicalModel.act_comp
+UEOTQM.OperationalSystems.classicalModel
+UEOTQM.OperationalSystems.classical_laws
+UEOTQM.OperationalSystems.classical_pure_iff
+UEOTQM.OperationalSystems.classical_discard_eq
+UEOTQM.OperationalSystems.classical_not_purification
+UEOTQM.OperationalSystems.coreSystem
+UEOTQM.OperationalSystems.core_first_marginal_no_purifies
+UEOTQM.OperationalSystems.QuantumProcess
+UEOTQM.OperationalSystems.QuantumModel.trace_product_im_zero
+UEOTQM.OperationalSystems.QuantumModel.product_probability
+UEOTQM.OperationalSystems.complexModel
+UEOTQM.OperationalSystems.complex_laws
+UEOTQM.OperationalSystems.complex_pure_iff
+UEOTQM.OperationalSystems.complex_purification
+UEOTQM.OperationalSystems.RealModel.IsRealMatrix
+UEOTQM.OperationalSystems.RealModel.real_add
+UEOTQM.OperationalSystems.RealModel.real_smul
+UEOTQM.OperationalSystems.RealModel.real_mul
+UEOTQM.OperationalSystems.RealModel.real_conjTranspose
+UEOTQM.OperationalSystems.RealModel.real_kronecker
+UEOTQM.OperationalSystems.RealModel.State
+UEOTQM.OperationalSystems.RealModel.Effect
+UEOTQM.OperationalSystems.RealModel.mix
+UEOTQM.OperationalSystems.RealModel.product
+UEOTQM.OperationalSystems.RealModel.productEffect
+UEOTQM.OperationalSystems.RealModel.Process
+UEOTQM.OperationalSystems.RealModel.operator_real
+UEOTQM.OperationalSystems.RealModel.act
+UEOTQM.OperationalSystems.RealModel.identity
+UEOTQM.OperationalSystems.RealModel.compose
+UEOTQM.OperationalSystems.RealModel.discardProcess
+UEOTQM.OperationalSystems.realModel
+UEOTQM.OperationalSystems.real_laws
+UEOTQM.OperationalSystems.real_not_localTomography
+UEOTQM.ClassicalQuantumMemory.taggedKraus
+UEOTQM.ClassicalQuantumMemory.taggedKraus_gram
+UEOTQM.ClassicalQuantumMemory.taggedKraus_conjugation
+UEOTQM.ClassicalQuantumMemory.block
+UEOTQM.ClassicalQuantumMemory.block_apply_same
+\end{Verbatim}
+
+\hypertarget{f.3.13-ux8bf7ux6c42721780}{%
+\subsection{F.3.13 请求721--780}\label{f.3.13-ux8bf7ux6c42721780}}
+
+\begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
+UEOTQM.ClassicalQuantumMemory.block_apply_ne
+UEOTQM.ClassicalQuantumMemory.trace_block
+UEOTQM.ClassicalQuantumMemory.channel
+UEOTQM.ClassicalQuantumMemory.channel_operator_apply
+UEOTQM.ClassicalQuantumMemory.channel_amplify_operator_apply
+UEOTQM.ClassicalQuantumMemory.channel_operator_eq_block
+UEOTQM.ClassicalQuantumMemory.state
+UEOTQM.ClassicalQuantumMemory.state_matrix
+UEOTQM.ClassicalQuantumMemory.discard_record_operator
+UEOTQM.ClassicalQuantumMemory.discard_record_state
+UEOTQM.ClassicalQuantumMemory.discard_memory_operator
+UEOTQM.ClassicalQuantumMemory.discard_memory_state_matrix
+UEOTQM.ClassicalQuantumMemory.state_block_mass
+UEOTQM.ClassicalQuantumMemory.positive_block_posterior
+UEOTQM.ClassicalQuantumMemory.zero_probability_iff_zero_block
+UEOTQM.ClassicalQuantumMemory.eventEffect
+UEOTQM.ClassicalQuantumMemory.eventEffect_matrix
+UEOTQM.ClassicalQuantumMemory.eventEffect_pairing_block
+UEOTQM.ClassicalQuantumMemory.weights
+UEOTQM.ClassicalQuantumMemory.weights_weight
+UEOTQM.ClassicalQuantumMemory.event_probability
+UEOTQM.ClassicalQuantumMemory.record_tv_le_joint_distance
+UEOTQM.ClassicalQuantumMemory.defect
+UEOTQM.ClassicalQuantumMemory.perturbation_bound
+UEOTQM.ClassicalQuantumMemory.record_tv_perturbation_bound
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.Leaf
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.KrausPath
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.pathKraus
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_apply
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_amplify_operator_apply
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_eq_block
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_matrix
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_record_operator
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_operator
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_state_matrix
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_block_mass
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.zero_probability_iff_zero_block
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights_weight
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.event_probability
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_le_joint_distance
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.defect
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.perturbation_bound
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_perturbation_bound
+UEOTQM.QuantumDoobModel.successK
+UEOTQM.QuantumDoobModel.failureK
+UEOTQM.QuantumDoobModel.success_gram
+UEOTQM.QuantumDoobModel.failure_gram
+UEOTQM.QuantumDoobModel.sourceK
+UEOTQM.QuantumDoobModel.source_complete
+UEOTQM.QuantumDoobModel.sourceInstrument
+UEOTQM.QuantumDoobModel.source_branch_formula
+UEOTQM.QuantumDoobModel.rhoMatrix
+UEOTQM.QuantumDoobModel.rhoMatrix_positive
+UEOTQM.QuantumDoobModel.rhoMatrix_trace
+UEOTQM.QuantumDoobModel.rho
+\end{Verbatim}
+
+\hypertarget{f.3.14-ux8bf7ux6c42781840}{%
+\subsection{F.3.14 请求781--840}\label{f.3.14-ux8bf7ux6c42781840}}
+
+\begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
+UEOTQM.QuantumDoobModel.S
+UEOTQM.QuantumDoobModel.T
+UEOTQM.QuantumDoobModel.inverse_mul
+UEOTQM.QuantumDoobModel.mul_inverse
+UEOTQM.QuantumDoobModel.filter
+UEOTQM.QuantumDoobModel.metric_exact
+UEOTQM.QuantumDoobModel.source_right_eigen
+UEOTQM.QuantumDoobModel.source_left_eigen
+UEOTQM.QuantumDoobModel.filtered_mass_exact
+UEOTQM.QuantumDoobModel.plusMatrix
+UEOTQM.QuantumDoobModel.filtered_state_exact
+UEOTQM.QuantumDoobModel.plus
+UEOTQM.QuantumDoobModel.plus_matrix
+UEOTQM.QuantumDoobModel.transformedInstrument
+UEOTQM.QuantumDoobModel.transformed_branch_formula
+UEOTQM.QuantumDoobModel.success_kraus_noncommuting
+UEOTQM.QuantumDoobModel.input_coherence_retained
+UEOTQM.QuantumDoobDynamics.decay
+UEOTQM.QuantumDoobDynamics.decay_zero
+UEOTQM.QuantumDoobDynamics.decay_pos
+UEOTQM.QuantumDoobDynamics.decay_le_one
+UEOTQM.QuantumDoobDynamics.decay_succ
+UEOTQM.QuantumDoobDynamics.decay_tendsto
+UEOTQM.QuantumDoobDynamics.effectDistance_eq_of_matrix_sub_smul
+UEOTQM.QuantumDoobDynamics.doob_branch_formula
+UEOTQM.QuantumDoobDynamics.doob_branch_trace
+UEOTQM.QuantumDoobDynamics.doob_successOperator_formula
+UEOTQM.QuantumDoobDynamics.doob_iterateState_matrix
+UEOTQM.QuantumDoobDynamics.doob_stationary_plus
+UEOTQM.QuantumDoobDynamics.doob_stationary_unique
+UEOTQM.QuantumDoobDynamics.doob_effectDistance_exact
+UEOTQM.QuantumDoobDynamics.doob_matrix_tendsto
+UEOTQM.QuantumDoobDynamics.filterMass
+UEOTQM.QuantumDoobDynamics.pullbackWeight
+UEOTQM.QuantumDoobDynamics.normalizer
+UEOTQM.QuantumDoobDynamics.filterMass_diag
+UEOTQM.QuantumDoobDynamics.filterMass_trace
+UEOTQM.QuantumDoobDynamics.filterMass_metric_trace
+UEOTQM.QuantumDoobDynamics.filterMass_bounds
+UEOTQM.QuantumDoobDynamics.pullbackWeight_bounds
+UEOTQM.QuantumDoobDynamics.normalizer_bounds
+UEOTQM.QuantumDoobDynamics.normalizer_pos
+UEOTQM.QuantumDoobDynamics.unapply_plus
+UEOTQM.QuantumDoobDynamics.source_successOperator_formula
+UEOTQM.QuantumDoobDynamics.source_successOperator_density
+UEOTQM.QuantumDoobDynamics.source_successMass_formula
+UEOTQM.QuantumDoobDynamics.source_response_formula
+UEOTQM.QuantumDoobDynamics.source_successMass_pos
+UEOTQM.QuantumDoobDynamics.source_successMass_bounds
+UEOTQM.QuantumDoobDynamics.source_conditionalState_matrix
+UEOTQM.QuantumDoobDynamics.conditioned
+UEOTQM.QuantumDoobDynamics.conditioned_matrix
+UEOTQM.QuantumDoobDynamics.conditioned_matrix_affine
+UEOTQM.QuantumDoobDynamics.conditioned_matrix_sub
+UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_exact
+UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_le
+UEOTQM.QuantumDoobDynamics.normalizer_tendsto
+UEOTQM.QuantumDoobDynamics.conditionalWeight_tendsto
+UEOTQM.QuantumDoobDynamics.conditioned_matrix_tendsto
+UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_tendsto
+\end{Verbatim}
+
+\hypertarget{f.3.15-ux8bf7ux6c42841855}{%
+\subsection{F.3.15 请求841--855}\label{f.3.15-ux8bf7ux6c42841855}}
+
+\begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
+UEOTQM.QuantumDoobDynamics.source_successMass_tendsto_zero
+UEOTQM.QuantumDoobDynamics.filterMass_rho
+UEOTQM.QuantumDoobDynamics.pullbackWeight_rho
+UEOTQM.QuantumDoobDynamics.normalizer_rho
+UEOTQM.QuantumDoobDynamics.source_successMass_rho
+UEOTQM.OperationalSystems.finiteSystemCoeSort
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.krausPathFintype
+UEOTQM.OperationalSystems.FiniteSystem.finite
+UEOTQM.OperationalSystems.FiniteSystem.decidableEq
+UEOTQM.RectangularChannel.mk
+UEOTQM.OperationalSystems.FiniteSystem.mk
+UEOTQM.OperationalSystems.Presentation.mk
+UEOTQM.OperationalSystems.Laws.mk
+UEOTQM.OperationalSystems.QuantumProcess.mk
+UEOTQM.OperationalSystems.RealModel.Process.mk
 \end{Verbatim}
 
 \backmatter

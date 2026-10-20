@@ -1,0 +1,578 @@
+#!/usr/bin/env python3
+"""Verify downloaded v31.7 CI job metadata and decoded logs, without CI execution.
+
+Compatible with the v31.5 --kind/--run/--commit invocation.  This verifier never
+fetches a remote, runs Lean, or infers an unexecuted gate from local acceptance.
+Only a complete, successful pair of actual jobs can produce a PASS receipt.
+Witness/certificate details are not printed by their gates: their summaries are
+checked here against the frozen accepted references. In particular the witness
+110/39/2 kind split is a local source/receipt fact, not a per-name CI-log census.
+The receipt explicitly does not claim artifact ZIP or remote-tree inspection.
+"""
+
+from __future__ import annotations
+
+import argparse
+from collections import Counter
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import re
+import sys
+
+
+DEFAULT_REPOSITORY = Path('/workspace/scratch/474cf6b1f047/qm_v317_work')
+FOUNDATION = ['Classical.choice', 'Quot.sound', 'propext']
+EXPECTED_REMOTE_REPOSITORY = 'MurphyHoops/UEOT'
+EXPECTED_MODULES = 29
+EXPECTED_THEOREMS = 646
+EXPECTED_MAIN_AUDITS = 855
+EXPECTED_WITNESS_KINDS = {'theorem': 110, 'def': 39, 'abbrev': 2}
+COMPILER_COMMIT = '819816b2e0a3bf405af45ae5c7af2491d8f5bee6'
+WITNESS_COUNTS = {'MixtureExamples': 9, 'SurvivalTwoState': 30,
+                  'RealTomographyTwoRebit': 5, 'QuantumDoobExamples': 40,
+                  'QuantumPurificationExamples': 20, 'ClassicalQuantumMemoryExamples': 22,
+                  'QuantumDoobDynamicsExamples': 25}
+INSTANCE_SUMMARY = {'positive_passed': 6, 'positive_expected': 6,
+                    'negative_passed': 4, 'negative_expected': 4,
+                    'false_witness_passed': 4,
+                    'positive_audit_targets_expected': 42,
+                    'false_witness_audit_targets_expected': 4}
+DEMO_STEPS = {
+    'Run complete kernel example': 'python physics/qm/kernel/demo.py',
+    'Run representation and spectrum witnesses': 'python physics/qm/kernel/demo_v312.py',
+    'Export exact Lean certificate examples': 'python physics/qm/kernel/demo_v313.py',
+    'Run mixture and persistence witnesses': 'python physics/qm/kernel/demo_v315.py',
+}
+REQUIRED_STEPS = {
+    'runtime': ['Checkout', 'Install Python',
+                'Verify exact kernel and independent negative controls',
+                *DEMO_STEPS, 'Archive runtime evidence'],
+    'lean': ['Checkout', 'Record source identity', 'Check inherited dependency lock',
+             'Install and verify official pinned Lean', 'Restore pinned dependencies',
+             'Restore Mathlib proof cache', 'Reject proof escapes', 'Build all QM proofs',
+             'Audit theorem axioms', 'Verify generated exact certificates and false witnesses',
+             'Verify retained finite and quantum Lean witnesses', 'Archive proof evidence'],
+}
+
+
+class VerificationError(Exception):
+    pass
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise VerificationError(message)
+
+
+def digest(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def identity(path: Path) -> dict:
+    data = path.read_bytes()
+    return {'path': str(path), 'sha256': digest(data), 'bytes': len(data)}
+
+
+def unique(items: list, label: str) -> None:
+    repeated = [name for name, count in Counter(items).items() if count != 1]
+    require(not repeated, f'{label}: duplicate entries: {repeated[:12]}')
+
+
+def normalize_log(raw: str) -> str:
+    text = raw.replace('\r\n', '\n').replace('\r', '\n')
+    text = re.sub(r'(?m)^\ufeff?\d{4}-\d\d-\d\dT[0-9:.]+Z ?', '', text)
+    text = re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]', '', text)
+    return text.lstrip('\ufeff')
+
+
+def run_section(log: str, command: str) -> str:
+    """Output of the one workflow Run group containing this actual command."""
+    starts = list(re.finditer(r'(?m)^##\[group\]Run [^\n]*\n', log))
+    selected = []
+    for i, start in enumerate(starts):
+        end = starts[i + 1].start() if i + 1 < len(starts) else len(log)
+        section = log[start.start():end]
+        preamble, separator, output = section.partition('##[endgroup]\n')
+        if separator and command in preamble:
+            selected.append(output)
+    require(len(selected) == 1,
+            f'Expected one executed Run section for {command!r}; found {len(selected)}')
+    return selected[0]
+
+
+def parse_axioms(log: str) -> dict[str, list[str]]:
+    reports = re.findall(
+        r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)[ \t]*$",
+        log,
+    )
+    unique([name for name, _ in reports], 'actual Lean axiom reports')
+    result = {name: sorted(a.strip() for a in axioms.split(',') if a.strip())
+              for name, axioms in reports}
+    for name, axioms in result.items():
+        unique(axioms, f'axioms of {name}')
+        require(set(axioms) <= set(FOUNDATION), f'Unreviewed axioms for {name}: {axioms}')
+    return result
+
+
+def parse_main_audit(log: str, expected: dict[str, list[str]]) -> dict[str, list[str]]:
+    actual = parse_axioms(log)
+    require(len(actual) == EXPECTED_MAIN_AUDITS,
+            f'Expected {EXPECTED_MAIN_AUDITS} actual named main audit reports, got {len(actual)}')
+    require(actual == expected,
+            f'Actual named axiom map differs: missing={sorted(set(expected) - set(actual))[:12]}, '
+            f'unexpected={sorted(set(actual) - set(expected))[:12]}, '
+            f'changed={[name for name in set(expected) & set(actual) if expected[name] != actual[name]][:12]}')
+    require(re.findall(r'(?m)^PASS: (\d+) actual Lean axiom reports use only the reviewed standard foundation$', log)
+            == [str(EXPECTED_MAIN_AUDITS)],
+            f'Missing successful CI check_axioms.py result for {EXPECTED_MAIN_AUDITS} reports')
+    return actual
+
+
+def parse_printed_sources(log: str, expected: dict[str, str]) -> dict[str, str]:
+    printed = re.findall(r'(?m)^([0-9a-f]{64})  (\S+)[ \t]*$', log)
+    unique([name for _, name in printed], 'printed source hashes')
+    actual = {name: sha for sha, name in printed}
+    require(len(actual) == EXPECTED_MODULES + 4,
+            f'Expected {EXPECTED_MODULES + 4} actual printed source hashes, got {len(actual)}')
+    require(len(expected) == EXPECTED_MODULES + 4 and actual == expected,
+            'Actual printed source hashes differ from the frozen v31.7 source manifest')
+    return actual
+
+
+def parse_build_jobs(log: str) -> int:
+    counts = re.findall(r'(?m)^Build completed successfully \((\d+) jobs\)\.[ \t]*$', log)
+    require(len(counts) == 1 and int(counts[0]) > 0,
+            f'Expected one actual package-build success with a positive job count, got {counts}')
+    return int(counts[0])
+
+
+def parse_runtime(log: str) -> list[str]:
+    counts = re.findall(r'(?m)^Ran (\d+) tests in [0-9.]+s[ \t]*$', log)
+    require(counts == ['100'], f'Actual runtime test total differs from 100: {counts}')
+    require(len(re.findall(r'(?m)^OK[ \t]*$', log)) == 1, 'Missing unique runtime OK result')
+    passed = re.findall(r'(?m)^test\S+ \(([^)\n]+)\) \.\.\. ok[ \t]*$', log)
+    unique(passed, 'actual runtime test methods')
+    require(len(passed) == 100, f'Expected 100 individually successful methods, got {len(passed)}')
+    return passed
+
+
+def parse_instances(log: str) -> dict:
+    decoder = json.JSONDecoder()
+    candidates = []
+    for start in re.finditer(r'(?m)^\{[ \t]*$', log):
+        try:
+            value, _ = decoder.raw_decode(log[start.start():])
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict) and {'status', 'receipt', 'summary', 'problems'} <= set(value):
+            candidates.append(value)
+    require(len(candidates) == 1, f'Expected one exact-certificate JSON summary, got {len(candidates)}')
+    result = candidates[0]
+    require(result['status'] == 'PASS' and result['problems'] == [],
+            'Exact-certificate verifier did not report PASS with no problems')
+    require(result['summary'] == INSTANCE_SUMMARY,
+            f'Exact-certificate counts differ: {result["summary"]}')
+    require(result['receipt'].endswith('/ueot-qm-lean-exports/verification.json'),
+            'Unexpected exact-certificate receipt path')
+    positives = re.findall(r'(?m)^Verifying positive (\S+)[ \t]*$', log)
+    negatives = re.findall(r'(?m)^Verifying negative and false witness (\S+)[ \t]*$', log)
+    require(positives == ['z', 'hz', 'hsz', 'ragged', 'd1', 'd4'],
+            f'Unexpected exact-positive case progress: {positives}')
+    require(negatives == ['negative_weight', 'negative_basis', 'negative_pullback', 'negative_word'],
+            f'Unexpected negative/false-witness case progress: {negatives}')
+    return result
+
+
+def parse_witnesses(log: str) -> dict[str, int]:
+    rows = re.findall(r'(?m)^(\w+): (PASS|FAIL) \((\d+) explicit declaration audits\)[ \t]*$', log)
+    unique([name for name, _, _ in rows], 'finite/quantum witness summaries')
+    require(all(status == 'PASS' for _, status, _ in rows), 'A retained witness reported FAIL')
+    actual = {name: int(count) for name, _, count in rows}
+    require(actual == WITNESS_COUNTS, f'Retained witness summaries differ: {actual}')
+    finals = re.findall(r'(?m)^(PASS|FAIL): (\S*/ueot-qm-finite-witnesses/verification\.json)[ \t]*$', log)
+    require(len(finals) == 1 and finals[0][0] == 'PASS', 'Missing unique final retained-witness PASS')
+    return actual
+
+
+def accepted_source_paths(root: Path) -> list[str]:
+    """Pure-read mirror of the reviewed record_source.py selection contract."""
+    package = root / 'formalization/ueot-qm'
+    paths = set((package / 'UEOTQM').rglob('*.lean'))
+    paths.update(package / name for name in (
+        'UEOTQM.lean', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain'))
+    paths.update(p for p in (package / 'scripts').rglob('*')
+                 if p.is_file() and p.suffix in {'.py', '.lean', '.sh'})
+    kernel = root / 'physics/qm/kernel'
+    paths.update(kernel.rglob('*.py'))
+    paths.update(p for p in (kernel / 'certificates').rglob('*')
+                 if p.is_file() and p.suffix in {'.lean', '.json'})
+    paths.add(root / '.github/workflows/ueot-qm.yml')
+    return [p.relative_to(root).as_posix() for p in sorted(paths)]
+
+
+def check_source_manifest(root: Path, manifest: dict, local: dict) -> tuple[list, dict, str]:
+    require(manifest['schema'] == 'ueot_qm.source_manifest.v2',
+            'Unexpected accepted source-manifest schema')
+    sources = manifest['sources']
+    require(isinstance(sources, list) and type(manifest['source_count']) is int
+            and len(sources) == manifest['source_count'] == local['source_count'] > 0,
+            'Accepted source_count is not the actual nonempty manifest length')
+    paths = [entry['path'] for entry in sources]
+    unique(paths, 'accepted source paths')
+    require(paths == accepted_source_paths(root),
+            'Accepted source manifest does not cover exactly the current source-recorder selection')
+    source_set = digest(json.dumps(sources, sort_keys=True, separators=(',', ':')).encode('utf-8'))
+    require(source_set == manifest['source_set_sha256'] == local['source_set_sha256'],
+            'Accepted source-set identity differs from its actual local verification reference')
+    contents = {}
+    for entry in sources:
+        relative = Path(entry['path'])
+        require(not relative.is_absolute() and '..' not in relative.parts
+                and relative.as_posix() == entry['path']
+                and (root / relative).resolve().is_relative_to(root), 'Unsafe local source path')
+        require(type(entry['bytes']) is int and entry['bytes'] >= 0
+                and re.fullmatch(r'[0-9a-f]{64}', entry['sha256']) is not None,
+                f'Invalid source identity fields: {relative}')
+        content = (root / relative).read_bytes()
+        require(len(content) == entry['bytes'] and digest(content) == entry['sha256'],
+                f'Local accepted source changed: {relative}')
+        contents[entry['path']] = content
+    return sources, contents, source_set
+
+
+def check_local_witness_reference(local: dict, verification: dict, sources: list) -> dict:
+    """Validate the accepted local kind split without claiming ZIP inspection."""
+    require(verification['schema'] == 'ueot_qm.finite_witnesses.v1'
+            and verification['status'] == 'PASS' and verification['errors'] == []
+            and verification['all_inputs_unchanged'] is True
+            and verification['lake_executable_unchanged'] is True
+            and verification['inputs_before'] == verification['inputs_after'],
+            'Local finite-witness verification is not a complete frozen PASS')
+    declarations = verification['declarations']
+    require(set(declarations) == set(WITNESS_COUNTS), 'Local witness declaration file set differs')
+    all_declarations = [row for rows in declarations.values() for row in rows]
+    kind_counts = dict(Counter(row['kind'] for row in all_declarations))
+    require(kind_counts == EXPECTED_WITNESS_KINDS,
+            f'Local explicit witness theorem/def/abbrev split differs: {kind_counts}')
+    unique([row['name'] for row in all_declarations], 'local concrete witness declaration names')
+    require(verification['witness_theorem_count'] == kind_counts['theorem']
+            and verification['witness_def_count'] == kind_counts['def']
+            and verification['witness_abbrev_count'] == kind_counts['abbrev']
+            and verification['witness_audit_count'] == len(all_declarations) == sum(WITNESS_COUNTS.values()),
+            'Local witness aggregate counters do not equal the declaration inventory')
+    aggregate = local['finite_witness_verification']
+    require(aggregate['status'] == 'PASS'
+            and aggregate['concrete_theorems'] == kind_counts['theorem']
+            and aggregate['definitions'] == kind_counts['def']
+            and aggregate['abbreviations'] == kind_counts['abbrev']
+            and aggregate['named_axiom_reports'] == len(all_declarations),
+            'Local Lean/witness aggregate references disagree')
+    checks = verification['checks']
+    unique([check['name'] for check in checks], 'local witness execution names')
+    require({check['name'] for check in checks} == set(WITNESS_COUNTS),
+            'Local witness execution set differs')
+    source_map = {entry['path']: entry for entry in sources}
+    for check in checks:
+        name = check['name']
+        expected = [row['name'] for row in declarations[name]]
+        require(len(expected) == WITNESS_COUNTS[name] == check['declaration_count']
+                and check['status'] == 'PASS' and check['exit_code'] == 0
+                and check['inputs_unchanged'] is True and check['timed_out'] is False
+                and check['launch_error'] is None,
+                f'Incomplete local concrete witness acceptance: {name}')
+        audit = check['audit']
+        require(audit['status'] == 'PASS' and audit['complete_unique'] is True
+                and audit['expected'] == expected and set(audit['actual']) == set(expected)
+                and not audit['duplicate_reports'] and not audit['missing_reports']
+                and not audit['unexpected_reports'] and not audit['unreviewed_axioms'],
+                f'Local concrete witness axiom reference differs: {name}')
+        for target, axioms in audit['actual'].items():
+            unique(axioms, f'local witness axioms of {target}')
+            require(set(axioms) <= set(FOUNDATION), f'Unreviewed local witness axioms for {target}')
+        relative = f'formalization/ueot-qm/scripts/witnesses/{name}.lean'
+        accepted = source_map[relative]
+        bound = verification['inputs_before']['witnesses'][name]
+        require(check['source'] == bound and bound['sha256'] == accepted['sha256']
+                and bound['size'] == accepted['bytes'],
+                f'Local concrete witness bytes are not bound to the accepted source set: {name}')
+    return kind_counts
+
+
+def check_jobs(payload: dict, run_id: int, commit: str, attempt: int | None = None) -> tuple[dict, dict]:
+    if 'run_id' in payload:
+        require(int(payload['run_id']) == run_id, 'Jobs snapshot run_id does not match request')
+    if 'source_commit' in payload:
+        require(payload['source_commit'] == commit, 'Jobs snapshot source_commit does not match request')
+    rows = payload['jobs']
+    require(isinstance(rows, list) and len(rows) == 2, 'Expected exactly two complete job records')
+    if 'total_count' in payload:
+        require(payload['total_count'] == 2, 'Jobs API result is incomplete or has unexpected jobs')
+    unique([job['name'] for job in rows], 'job names')
+    unique([job['id'] for job in rows], 'job IDs')
+    jobs = {job['name']: job for job in rows}
+    require(set(jobs) == {'runtime', 'lean'}, f'Unexpected job names: {sorted(jobs)}')
+    successful = {}
+    for name, job in jobs.items():
+        require(int(job['run_id']) == run_id, f'{name}: job run_id differs')
+        if 'head_sha' in job:
+            require(job['head_sha'] == commit, f'{name}: job metadata head_sha differs')
+        if attempt is not None and 'run_attempt' in job:
+            require(job['run_attempt'] == attempt, f'{name}: job/run attempt differs')
+        if 'run_url' in job:
+            require(job['run_url'] == f'https://api.github.com/repos/{EXPECTED_REMOTE_REPOSITORY}/actions/runs/{run_id}',
+                    f'{name}: job belongs to another repository/run URL')
+        require(job['status'] == 'completed' and job['conclusion'] == 'success',
+                f'{name}: actual job has not completed successfully')
+        steps = job['steps']
+        unique([step['name'] for step in steps], f'{name} step names')
+        for step in steps:
+            require(step['status'] == 'completed' and step['conclusion'] in {'success', 'skipped'},
+                    f'{name}: incomplete/failed step {step["name"]}: {step.get("conclusion")}')
+        by_name = {step['name']: step for step in steps}
+        for required in REQUIRED_STEPS[name]:
+            require(required in by_name and by_name[required]['conclusion'] == 'success',
+                    f'{name}: required gate missing, skipped, or unsuccessful: {required}')
+        successful[name] = REQUIRED_STEPS[name]
+    return jobs, successful
+
+
+def verify(args: argparse.Namespace, receipt: dict) -> None:
+    root = args.repo_root.resolve()
+    evidence = root / 'physics/qm/kernel/evidence/v31.7'
+    package = root / 'formalization/ueot-qm'
+    ci_dir = args.ci_dir or evidence / 'ci'
+    prefix = f'{args.kind}-{args.run}'
+    paths = {
+        'run': ci_dir / f'{prefix}-run.json',
+        'jobs': ci_dir / f'{prefix}-jobs.json',
+        'runtime_log': ci_dir / f'{prefix}-runtime.log',
+        'lean_log': ci_dir / f'{prefix}-lean.log',
+        'local_axioms': evidence / 'proof-axioms.json',
+        'local_runtime': evidence / 'runtime-verification.json',
+        'local_source_manifest': evidence / 'source-manifest.json',
+        'local_lean_verification': evidence / 'lean-verification.json',
+        'declaration_inventory': evidence / 'declaration-inventory.json',
+        'local_witnesses': evidence / 'finite-witnesses/verification.json',
+        'witness_verifier': package / 'scripts/verify_finite_witnesses.py',
+        'source_recorder': package / 'scripts/record_source.py',
+        'workflow': root / '.github/workflows/ueot-qm.yml',
+        'audit_input': package / 'scripts/AxiomAudit.lean',
+    }
+    contents = {name: path.read_bytes() for name, path in paths.items()}
+    receipt['input_files'] = {name: {'path': str(paths[name]), 'sha256': digest(data), 'bytes': len(data)}
+                              for name, data in contents.items()}
+    decoded = {name: data.decode('utf-8') for name, data in contents.items()}
+    data = {name: json.loads(text) for name, text in decoded.items()
+            if paths[name].suffix == '.json'}
+    run = data['run']
+    require(run['repository']['full_name'] == EXPECTED_REMOTE_REPOSITORY
+            and run['url'] == f'https://api.github.com/repos/{EXPECTED_REMOTE_REPOSITORY}/actions/runs/{args.run}',
+            'Actual workflow metadata belongs to another repository/run URL')
+    require(run['id'] == args.run and run['head_sha'] == args.commit
+            and run['status'] == 'completed' and run['conclusion'] == 'success',
+            'Actual workflow run does not match a completed successful requested commit/run')
+    require(run['name'] == 'UEOT QM Kernel' and run['path'] == '.github/workflows/ueot-qm.yml',
+            'Actual run is not the QM kernel workflow')
+    require(run['event'] == ('pull_request' if args.kind == 'pr' else 'push'),
+            'Requested PR/main label disagrees with actual workflow event')
+    require(args.kind != 'main' or run['head_branch'] == 'main',
+            'Requested main receipt is not a main branch push run')
+    receipt['workflow_event'] = run['event']
+    receipt['workflow_url'] = run.get('html_url')
+    receipt['workflow_run_attempt'] = run.get('run_attempt')
+    jobs, checked_steps = check_jobs(data['jobs'], args.run, args.commit, run.get('run_attempt'))
+    receipt['job_ids'] = {name: job['id'] for name, job in jobs.items()}
+    receipt['job_head_sha_metadata'] = {name: job.get('head_sha') for name, job in jobs.items()}
+    receipt['required_steps_success'] = checked_steps
+    receipt['jobs_all_success'] = True
+
+    local = data['local_lean_verification']
+    require(local['schema'] == 'ueot_qm.lean_verification.v31.7' and local['status'] == 'PASS'
+            and local['explicit_theorems'] == EXPECTED_THEOREMS
+            and local['actual_named_axiom_reports'] == EXPECTED_MAIN_AUDITS
+            and local['generic_modules'] == EXPECTED_MODULES
+            and local['full_scientific_theory_verified'] is False,
+            'Unexpected local v31.7 proof-reference receipt')
+    manifest = data['local_source_manifest']
+    sources, frozen_sources, source_set = check_source_manifest(root, manifest, local)
+    witness_kinds = check_local_witness_reference(local, data['local_witnesses'], sources)
+    receipt['local_accepted_source_count'] = len(sources)
+    receipt['local_accepted_source_set_sha256'] = source_set
+    receipt['local_accepted_source_count_rule'] = 'Read from the final v31.7 source-manifest.json; no v31.6 count/hash reused.'
+    receipt['local_witness_reference_validated'] = True
+
+    logs = {name: normalize_log(decoded[name + '_log']) for name in ('runtime', 'lean')}
+    artifact_uploads = {}
+    for name, log in logs.items():
+        require(re.findall(r'(?m)^Complete job name: (\S+)[ \t]*$', log) == [name],
+                f'{name}: decoded log belongs to another job or contains duplicate job logs')
+        checkout = re.findall(r'(?m)^\[command\][^\n]*\bgit log -1 --format=%H\n([0-9a-f]{40})[ \t]*$', log)
+        require(checkout == [args.commit], f'{name}: actual post-checkout HEAD differs: {checkout}')
+        finalized = re.findall(r'(?m)^Artifact (ueot-qm-' + re.escape(name) + '-' + str(args.run)
+                               + r'\.zip) successfully finalized\. Artifact ID (\d+)[ \t]*$', log)
+        require(len(finalized) == 1,
+                f'{name}: no completed artifact-upload log for this run')
+        artifact_uploads[name] = {'archive_name': finalized[0][0], 'artifact_id': int(finalized[0][1])}
+    receipt['recorded_checkout_matches_expected'] = True
+    receipt['artifact_uploads_reported_by_actual_logs'] = artifact_uploads
+
+    source_output = run_section(logs['lean'], 'python3 scripts/record_source.py')
+    prefix_path = 'formalization/ueot-qm/'
+    printed_expected = {
+        entry['path'][len(prefix_path):]: entry['sha256'] for entry in sources
+        if entry['path'].startswith(prefix_path + 'UEOTQM/')
+        or entry['path'] in {prefix_path + item for item in
+                             ['UEOTQM.lean', 'lake-manifest.json', 'lean-toolchain', 'scripts/install_lean.sh']}
+    }
+    printed = parse_printed_sources(source_output, printed_expected)
+    receipt['printed_source_hashes_equal_local'] = True
+    receipt['printed_source_hash_count'] = len(printed)
+    receipt['source_identity_scope'] = ('The actual CI logs directly print these 33 source SHA256 values. '
+        'All local accepted source entries were separately checked against the final local source manifest. '
+        'The full CI source-manifest JSON and 56 Core sources are not printed or downloaded here; '
+        'remote per-path Git-blob reconciliation and local Core/import receipts remain separate evidence.')
+    dependency = run_section(logs['lean'], 'python3 scripts/check_dependencies.py')
+    require(re.findall(r'(?m)^PASS: exact Core toolchain and dependency revisions inherited[ \t]*$', dependency)
+            == ['PASS: exact Core toolchain and dependency revisions inherited'],
+            'Missing actual inherited-dependency lock PASS')
+    receipt['dependency_lock_gate_success'] = True
+    install = run_section(logs['lean'], 'bash scripts/install_lean.sh')
+    require(re.search(r'(?m)^Lean \(version 4\.33\.1, [^\n]*commit ' + COMPILER_COMMIT + r', Release\)$', install)
+            is not None and 'PASS: verified official compiler at ' in install,
+            'Missing actual official Lean 4.33.1 compiler identity')
+    receipt['toolchain'] = 'Lean 4.33.1'
+    receipt['compiler_commit'] = COMPILER_COMMIT
+    build = run_section(logs['lean'], 'lake build UEOTQM 2>&1 | tee lean-build.log')
+    receipt['build_jobs'] = parse_build_jobs(build)
+    receipt['build_jobs_policy'] = 'Observed from the successful package-build section; not required to equal the local build job count.'
+
+    requested = re.findall(r'^#print axioms (\S+)$', decoded['audit_input'], re.M)
+    unique(requested, 'local main audit requests')
+    expected_receipt = data['local_axioms']
+    expected = expected_receipt['declarations']
+    require(expected_receipt['status'] == 'PASS' and expected_receipt['declaration_count'] == EXPECTED_MAIN_AUDITS
+            and expected_receipt['allowed_foundation'] == FOUNDATION
+            and len(expected) == len(requested) == EXPECTED_MAIN_AUDITS and set(expected) == set(requested),
+            'Local 855-target proof receipt and audit input disagree')
+    inventory = data['declaration_inventory']
+    theorem_names = [row['name'] for rows in inventory['modules'].values()
+                     for row in rows if row['kind'] == 'theorem']
+    unique(theorem_names, 'explicit theorem inventory')
+    require(inventory['module_count'] == len(inventory['modules']) == EXPECTED_MODULES
+            and inventory['explicit_theorems'] == len(theorem_names) == EXPECTED_THEOREMS
+            and inventory['audit_target_count'] == EXPECTED_MAIN_AUDITS and inventory['audit_targets'] == requested
+            and set(theorem_names) <= set(expected),
+            'Explicit 646-theorem inventory does not match all 855 actual audit targets')
+    module_paths = {f'formalization/ueot-qm/UEOTQM/{name}.lean' for name in inventory['modules']}
+    require(set(inventory['module_identities']) == module_paths,
+            'Inventory module identity paths do not match the complete 29-module inventory')
+    source_map = {entry['path']: entry for entry in sources}
+    for relative, bound in inventory['module_identities'].items():
+        require(bound['sha256'] == source_map[relative]['sha256']
+                and bound['bytes'] == source_map[relative]['bytes'],
+                f'Declaration inventory is not bound to the accepted source: {relative}')
+    audit = run_section(logs['lean'], 'lake env lean scripts/AxiomAudit.lean')
+    actual = parse_main_audit(audit, expected)
+    receipt.update({'generic_modules': EXPECTED_MODULES, 'explicit_theorems': len(theorem_names),
+                    'generic_axiom_reports': len(actual), 'non_theorem_audit_targets': EXPECTED_MAIN_AUDITS - EXPECTED_THEOREMS,
+                    'generic_axiom_names_and_foundation_equal_local': True,
+                    'all_explicit_theorem_names_audited': True, 'allowed_foundation': FOUNDATION,
+                    'actual_generic_axioms': actual,
+                    'explicit_theorem_names_sha256': digest(json.dumps(sorted(theorem_names), separators=(',', ':')).encode())})
+
+    runtime = run_section(logs['runtime'], 'python physics/qm/kernel/verify_kernel.py')
+    passed = parse_runtime(runtime)
+    local_runtime = data['local_runtime']
+    require(local_runtime['status'] == 'PASS' and local_runtime['test_methods_run'] == 100
+            and not local_runtime['failures'] and not local_runtime['errors'] and not local_runtime['skipped']
+            and len(local_runtime['passed']) == 100 and set(passed) == set(local_runtime['passed']),
+            'Actual 100 successful runtime method names differ from local accepted methods')
+    for command in DEMO_STEPS.values():
+        run_section(logs['runtime'], command)
+    receipt.update({'runtime_test_methods': len(passed), 'runtime_method_names_equal_local': True,
+                    'actual_runtime_passed_methods': passed, 'demos': 4,
+                    'demo_evidence_scope': 'Four actual command sections plus successful job steps; redirected demo JSON not downloaded or parsed.'})
+
+    instances = parse_instances(run_section(logs['lean'], 'python3 ../../physics/qm/kernel/verify_lean_exports.py'))
+    witnesses = parse_witnesses(run_section(logs['lean'], 'python3 scripts/verify_finite_witnesses.py'))
+    receipt.update({'positive_instances': 6, 'positive_instance_axiom_targets': 42,
+                    'corrupted_true_rejections': 4, 'same_data_false_proofs': 4,
+                    'false_witness_axiom_targets': 4, 'exact_instance_summary': instances['summary'],
+                    'concrete_witness_audit_counts': witnesses,
+                    'finite_witness_total_audits': sum(witnesses.values()),
+                    'finite_witness_file_count': len(witnesses),
+                    'finite_witness_theorem_count': witness_kinds['theorem'],
+                    'finite_witness_def_count': witness_kinds['def'],
+                    'finite_witness_abbrev_count': witness_kinds['abbrev'],
+                    'finite_witness_kind_count_evidence': 'Accepted local witness source/receipt bindings; the actual CI log directly confirms each file audit total, not this kind split or each witness name.',
+                    'witness_and_instance_evidence_scope': 'Successful actual gate metadata plus emitted file summaries and case progress. Detailed CI per-declaration artifact receipts were not downloaded or parsed by this verifier.',
+                    'artifact_zip_downloaded': False, 'artifact_zip_contents_verified': False,
+                    'archive_steps_success': True})
+    receipt['runner_warnings'] = {
+        name: [line for line in log.splitlines()
+               if '##[warning]' in line or 'DeprecationWarning:' in line]
+        for name, log in logs.items()
+    }
+    receipt['warning_scope'] = 'Observed runner warnings are retained verbatim; gate success does not reclassify them as mathematical failures or suppress them.'
+    receipt['raw_decoded_log_sha256'] = {name: digest(contents[name + '_log']) for name in logs}
+    require(all(path.read_bytes() == contents[name] for name, path in paths.items()),
+            'A supplied CI log/metadata or local reference changed while being checked')
+    require(accepted_source_paths(root) == list(frozen_sources)
+            and all((root / relative).read_bytes() == content for relative, content in frozen_sources.items()),
+            'An accepted local source or source-selection path changed while being checked')
+    receipt['input_files_unchanged_during_verification'] = True
+    receipt['local_accepted_sources_unchanged_during_verification'] = True
+    receipt['verification_complete'] = True
+    receipt['status'] = 'PASS'
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--kind', choices=['pr', 'main'], required=True)
+    parser.add_argument('--run', type=int, required=True)
+    parser.add_argument('--commit', required=True)
+    parser.add_argument('--repo-root', type=Path, default=DEFAULT_REPOSITORY)
+    parser.add_argument('--ci-dir', type=Path)
+    parser.add_argument('--output', type=Path)
+    args = parser.parse_args()
+    parser.error('--run must be positive') if args.run <= 0 else None
+    parser.error('--commit must be a full lowercase 40-digit Git SHA') if not re.fullmatch(r'[0-9a-f]{40}', args.commit) else None
+    ci_dir = args.ci_dir or args.repo_root / 'physics/qm/kernel/evidence/v31.7/ci'
+    output = args.output or ci_dir / f'{args.kind}-{args.run}-verification.json'
+    receipt = {
+        'schema': 'ueot_qm.actual_ci_verification.v31.7', 'status': 'NOT_VERIFIED',
+        'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'event': args.kind,
+        'run_id': args.run, 'source_commit': args.commit, 'verification_complete': False,
+        'repository': EXPECTED_REMOTE_REPOSITORY,
+        'full_scientific_theory_verified': False,
+        'artifact_zip_downloaded': False, 'artifact_zip_contents_verified': False,
+        'ci_source_manifest_json_downloaded': False,
+        'remote_tree_verified_by_this_parser': False,
+        'verifier': identity(Path(__file__).resolve()), 'errors': [],
+        'source_identity_review': '../remote-source-reconciliation.json',
+        'scope': 'Actual downloaded job metadata and decoded logs, bound to their post-checkout commit and frozen local expected names. PASS requires all mandatory gates actually completed successfully. This is finite formal/runtime CI acceptance, not physical completeness, empirical confirmation or a Core derivation of the independent operational principles. No Lean/run execution, remote access, remote-tree traversal, or artifact ZIP inspection is performed here.',
+    }
+    try:
+        verify(args, receipt)
+    except (OSError, UnicodeError, ValueError, KeyError, TypeError, VerificationError) as error:
+        receipt['status'] = 'FAIL'
+        receipt['errors'].append(type(error).__name__ + ': ' + str(error))
+    receipt['finished_at_utc'] = datetime.now(timezone.utc).isoformat()
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary = output.with_name(output.name + '.tmp')
+    temporary.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    temporary.replace(output)
+    summary_keys = ['status', 'run_id', 'source_commit', 'verification_complete', 'job_ids',
+                    'explicit_theorems', 'generic_axiom_reports', 'runtime_test_methods',
+                    'finite_witness_total_audits', 'build_jobs', 'positive_instances',
+                    'positive_instance_axiom_targets', 'corrupted_true_rejections',
+                    'same_data_false_proofs', 'false_witness_axiom_targets', 'errors']
+    print(json.dumps({**{key: receipt[key] for key in summary_keys if key in receipt},
+                      'receipt': str(output)}, ensure_ascii=False))
+    return 0 if receipt['status'] == 'PASS' else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

@@ -1,0 +1,58 @@
+{
+  "status": "PASS_READ_ONLY_FINAL_A_MAIN_AND_WITNESS_REVIEW",
+  "reviewer": "C",
+  "files": [
+    {
+      "path": "UEOTQM/QuantumPurification.lean",
+      "sha256": "fb0692ed93c14aa7182cb09b3e205060f493f005672d16a69fc6e8da59ca5b6d",
+      "focused_log": "/tmp/qm317_A_purification_round2.log",
+      "focused_log_sha256": "5700e0be177f65ddb6065c07e7a30d53b1d1d44b931cff842ace3ffab65a5b12"
+    },
+    {
+      "path": "UEOTQM/OperationalSystems.lean",
+      "sha256": "cb764474361fa833390fbe33e3d1b363a05c78639e0819d5d5de4648c1b5b55e",
+      "focused_log": "/tmp/qm317_A_operational_round3.log",
+      "focused_log_sha256": "a5d814272bca35630cd9d68dfc3eaf9e1a0d98ec11be8c2d9d5359f2e2c277ef"
+    }
+  ],
+  "review_execution": "Read final sources and author focused logs; did not rerun Lean or change source",
+  "checks": {
+    "purity_quantifies_all_existing_density_states": true,
+    "rank_one_is_proved_extreme_not_defined_pure": true,
+    "gram_derived_from_actual_psd": true,
+    "compression_zero_proved_via_positive_gram_and_trace_norm": true,
+    "purification_uses_actual_product_carrier_and_kraus_discard": true,
+    "empty_input_eliminated_by_trace_one": true,
+    "presentation_operations_and_separately_proved_laws": true,
+    "purification_and_tomography_separate_candidate_props": true,
+    "all_classical_simplex_real_psd_subtype_complex_density": true,
+    "quantum_processes_finite_kraus_not_all_positive_maps": true,
+    "complex_generic_purification_actual_theorem": true,
+    "classical_countermodel_all_finite_ancillas_preserved": true,
+    "actual_core_first_quotient_state_bridge_preserved": true,
+    "real_countermodel_is_tomography_failure_not_purification_failure": true
+  },
+  "nonclaims": [
+    "No Core derivation of purification or local tomography",
+    "No proof that these principles uniquely select complex quantum mechanics",
+    "No purification uniqueness theorem or full monoidal coherence library",
+    "No pure iff rank-one converse theorem",
+    "No real quantum purification impossibility claim"
+  ],
+  "remaining_separate_gate": "Root unified all-source acceptance and release remain separate",
+  "witness": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/formalization/ueot-qm/scripts/witnesses/QuantumPurificationExamples.lean",
+    "sha256": "57b764a8d9b7787509a0f8a5e92f04a86abc5f3f4db58f3c441be2e29a1c3e34",
+    "log_path": "/tmp/qm317_A_witness_round3.log",
+    "log_sha256": "71fdd5d83ab576834ec10a92da980a877fdfe351509a0d3cbb9ecd31f0d5c3bf",
+    "exact_printed_targets": 20,
+    "standard_axioms_only": true,
+    "semantic_checks": [
+      "Bell amplitude differs from standard by global phase; actual density/projector and trace1 checked",
+      "Bell full-Density convex extremality and actual partial trace toI/2",
+      "Classical ordinary extension exists while every finite pure extension is impossible",
+      "Singleton-restricted fake-pure predicate is separate from full-state main purity",
+      "Complex local effects distinguish the previously real-indistinguishable pair in the same interface"
+    ]
+  }
+}

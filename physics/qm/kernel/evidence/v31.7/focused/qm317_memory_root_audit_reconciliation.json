@@ -1,0 +1,27 @@
+{
+  "status": "PASS_TARGET_INVENTORY_RECONCILIATION_ONLY",
+  "observed_at_utc": "2026-10-20T08:06:13.548349+00:00",
+  "author_inventory": {
+    "path": "/tmp/qm317_memory_targets.json",
+    "sha256": "3651b916c1c2ca96f7fafc9c5c3bb156f1f681fe09bb96efcd02903b86d7a6fb",
+    "public_targets": 97,
+    "policy": "Structure constructor requested instead of the structure type; all other explicit declarations and named instances included."
+  },
+  "root_inventory": {
+    "path": "/workspace/scratch/474cf6b1f047/qm_v317_work/physics/qm/kernel/evidence/v31.7/declaration-inventory.json",
+    "sha256": "b2223a7fd71df574393a5a392b2c97c838cc008e4c15dd5f5e5ba312ccc5127b",
+    "public_B_targets": 98,
+    "policy": "Adds structure type itself as well as constructor."
+  },
+  "root_additional_targets": [
+    "UEOTQM.RectangularChannel"
+  ],
+  "author_targets_missing_from_root": [],
+  "witness_targets_unchanged": 22,
+  "counts": {
+    "author_public_plus_witness": 119,
+    "root_public_B_plus_witness": 120,
+    "theorems_unchanged": 83
+  },
+  "interpretation": "Both counts are consistent with their explicit policies. Root integration is a strict superset, not a lost or new theorem. This receipt is not the all-stage unified acceptance result."
+}

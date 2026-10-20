@@ -1,0 +1,41 @@
+{
+  "schema": "ueot_qm.witness_parser_contract.v31.7",
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T07:54:05.734891+00:00",
+  "verifier_sha256": "5587ffd016e17cd98ddd451add48e689affb53f8a8a7953793ddb28b03ab4922",
+  "checks": [
+    {
+      "name": "complete",
+      "accepted": true,
+      "expected_acceptance": true,
+      "detail": [
+        "abbrev",
+        "def",
+        "theorem"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "missing_abbrev_request",
+      "accepted": false,
+      "expected_acceptance": false,
+      "detail": "Probe.lean: #print axioms must list every explicit theorem/def/abbrev once, in source order",
+      "status": "PASS"
+    },
+    {
+      "name": "duplicate_abbrev_request",
+      "accepted": false,
+      "expected_acceptance": false,
+      "detail": "Probe.lean: #print axioms must list every explicit theorem/def/abbrev once, in source order",
+      "status": "PASS"
+    },
+    {
+      "name": "private_abbrev_unsupported",
+      "accepted": false,
+      "expected_acceptance": false,
+      "detail": "Unsupported explicit declaration syntax in Probe.lean: private abbrev Carrier := Fin 2",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Actual parser controls only; not Lean compilation, counted separately from 100 inherited runtime methods."
+}
