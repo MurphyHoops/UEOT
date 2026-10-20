@@ -1,6 +1,6 @@
 # UEOT-QM
 
-当前研发：**v31.5 / Kernel 1.5 — LOCAL_VERIFIED_CI_PENDING，2026-10-20 UTC**。最新集成身份以 [CURRENT.json](status/CURRENT.json) 为准。
+当前研发：**v31.5 / Kernel 1.5 — MAIN_VERIFIED，2026-10-20 UTC**。最新集成身份以 [CURRENT.json](status/CURRENT.json) 为准。
 
 规范理论总入口是 [《UEOT物理学》正式 3.1](book/UEOT_PHYSICS.md)：第 0–53 章、附录 A–F，54 章、101 个编号结果；[完整 PDF](book/UEOT_PHYSICS.pdf) 共 171 页。第 49–50 章给出有限内核和稳定性，第 51–53 章加入概率混合预算、Cesàro 平稳态与条件存活。完整推导、来源、细节、思想和未完成的科学义务在同一著作持续维护。
 
@@ -8,11 +8,14 @@
 
 实际本地验收为 **18 通用模块、334 显式定理、392 项命名公理审计、100 个运行方法、4 个演示 PASS**。六个既有精确实例重新验收，42 项审计另列；四个篡改真值证明被拒绝且同数据假值证明通过。新增具体见证有 29 定理／10 定义／39 项独立审计。[统一回执](kernel/evidence/v31.5/lean-verification.json)、[64 项源清单](kernel/evidence/v31.5/source-manifest.json)
 
+源码 PR #340 与主线 CI 已验收通过；源提交 57283f4efdac02584a36713ae419dc9d439b1686、被验收主线 be90695c53d337574470b454e3f74479ee934e38 具有相同 Git 树。详见 [本版集成回执](kernel/evidence/v31.5/integration-verification.json)。
+
 ## 阅读与工作入口
 
 - [正式总著](book/UEOT_PHYSICS.md)、[完整阅读版](book/UEOT_PHYSICS.pdf)、[逐章档案](book/CHAPTER_DOSSIER.json)：连续理论、推导、来源与证据责任。
 - [本版数学和实现报告](UEOT_QM_KERNEL_v31.5.md)、[执行任务](UEOT_QM_EXECUTION_v31.5.md)：为什么选择这三项工作，实际闭合什么，如何使用资源。
 - [Lean 包](../../formalization/ueot-qm/README.md)、[运行内核](kernel/README.md)：定义、接口、复验命令、具体正负见证。
+- [下一轮具体执行合同](UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md)：同一真实 Core 模型、实际操作商态、任意有限经典辅助空间的纯化否定；尚未实现或编译。
 - [路线图](ROADMAP.md)、[当前台账](status/CLAIM_LEDGER_v31.5.json)：根本科学问题、下一轮任务、接受条件和未完成义务。
 
 ## 已形成的有限内核
@@ -59,7 +62,7 @@ python formalization/ueot-qm/scripts/verify_finite_witnesses.py --output-dir /tm
 
 已形成的是量子扇区中的有限形式化内核。通用 Core 尚未无条件选择复量子结构；三代结论仍取决于指定的完整谱与有效弱窗口、表示及一致性条件。混合上界不等于任意通道缺陷的精确求值或 diamond norm。平稳存在不意味着唯一或逐时 mixing；QSD、Doob 不变律和无限条件过程也必须分开证明。本版没有新增实验数据。
 
-下一轮优先推进独立的量子选择前提／反模型审查和保留记录与记忆的联合通道模型；并行扩展非交换存活、可失败的 QDRR 数据合同及现实 G3 义务。[工作包与资源次序](ROADMAP.md)
+下一轮首先围绕一个明确的经典反模型，完成实际 Core 商态到纯化失败的同源证书；三个子智能体分别负责经典凸数学、Core 路径接合和前提／删除见证。后续再推进实量子局部层析、含记录／记忆误差、非交换存活和实证义务。[工作包与资源次序](ROADMAP.md)
 
 ## 历史与证据身份
 

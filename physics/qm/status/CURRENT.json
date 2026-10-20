@@ -17,9 +17,9 @@
   "roadmap": "../ROADMAP.md",
   "claim_ledger": "CLAIM_LEDGER_v31.5.json",
   "previous_claim_ledger": "CLAIM_LEDGER_v31.4.json",
-  "verification_state": "LOCAL_VERIFIED_CI_PENDING",
+  "verification_state": "MAIN_VERIFIED",
   "acceptance_marker": {
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "state": "MAIN_VERIFIED",
     "change_class": "B",
     "authority": "User-directed continued construction of the entire UEOT-QM theory, formal monograph, rigorous multi-agent work and synchronization to remote QM.",
     "domain_memo": "../audits/FINITE_DYNAMICS_REVIEW_v31.5.md",
@@ -44,7 +44,7 @@
     "independent_mathematical_reviews": "CLEAR",
     "source_and_verifier_review": "SOURCE_BOUND_EXECUTIONS_AND_STATIC_CI_SCOPE_PASS",
     "local_machine_acceptance": "PASS",
-    "integration_acceptance": "PENDING",
+    "integration_acceptance": "PASS_PR_AND_RESULTING_MAIN",
     "integration_receipt": "../kernel/evidence/v31.5/integration-verification.json",
     "review_scope": "AI proof authors and separate AI collaborators reviewed the mathematics, runtime, persisted witness gate and new book chapters; no independent human peer review claimed."
   },
@@ -56,21 +56,23 @@
     "Six regenerated exact instances passed with 42 separate audit reports; four corrupted true proofs rejected and four identical-data false proofs accepted",
     "Two persisted finite witness files passed: 29 concrete theorems + 10 definitions = 39 audits; 32 generic QM/Core modules bound before and after execution",
     "64 final source entries and nine dependency revisions verified; 13 imported Core modules retain baseline source bytes",
-    "54-chapter, 101-result formal monograph 3.1, full 171-page PDF and actual layout review completed"
+    "54-chapter, 101-result formal monograph 3.1, full 171-page PDF and actual layout review completed",
+    "PR340 workflow39355958755 and resulting-main workflow39366597240 passed; source and tested main share Git tree a674eff10e615e70ec622c987d52a9c1e01a725b"
   ],
   "proof_receipt": "../kernel/evidence/v31.5/lean-verification.json",
   "instance_receipt": "../kernel/evidence/v31.5/lean-exports/verification.json",
   "finite_witness_receipt": "../kernel/evidence/v31.5/finite-witnesses/verification.json",
   "next_execution": {
-    "primary": "Independently map UEOT-to-quantum selection premises and classical/real-quantum countermodels; construct explicit joint classical-record and quantum-memory channels for meaningful adaptive error bounds.",
-    "parallel": "Noncommutative CP persistence with explicit spectral premises; formal standard Cesaro convergence versus additional uniqueness/mixing assumptions.",
+    "primary": "QSEL-A1-CLASSICAL: implement one fully observed Core process, retain an actual mixed terminal-quotient state, and prove that state has no pure extension in any finite classical auxiliary space under the explicitly declared classical interpretation.",
+    "parallel": "Three agents within that one certificate: finite classical convex mathematics; actual Core quotient/control/path binding; independent premise and deletion-witness review.",
     "then": [
-      "QDRR raw data, protocol/noise and falsifiable holdout predictions",
-      "Physical spectrum/window/global consistency/vacuum/mass obligations",
-      "Hermitian d² and program refinement as required by interfaces",
-      "Energy-controlled CV and model-specific bounded-response QFT/RG bridges"
+      "Real-quantum local-tomography deletion witness and independent quantum selection principles",
+      "Joint classical record and quantum memory channels with certified mixture budgets",
+      "Noncommutative persistence and separate standard convergence/uniqueness/mixing tasks",
+      "QDRR real-data protocol and physical spectrum/window/global consistency/vacuum/mass obligations"
     ],
-    "integration_gate": "Current source must receive its own PR and resulting-main verification; historical success does not certify this increment."
+    "integration_gate": "Completed for source PR340 and tested main be90695c53d337574470b454e3f74479ee934e38. New v31.6 mathematical inputs require their own local/source/PR/main evidence.",
+    "contract": "../UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md"
   },
   "known_open_items": [
     "Independent selection of the complex quantum sector from justified UEOT domain principles",
@@ -83,14 +85,14 @@
   ],
   "integration": {
     "target_branch": "main",
-    "temporary_branch": "qm/upgrade-core-v3-v31",
-    "state": "LOCAL_VERIFIED_CI_PENDING",
+    "temporary_branch": null,
+    "state": "MAIN_VERIFIED",
     "scope": [
       "physics/qm/**",
       "formalization/ueot-qm/**",
       ".github/workflows/ueot-qm.yml"
     ],
-    "source_identity": "Final per-file manifest binds the actual candidate; source-freeze reconciliation distinguishes the separately executed witness gate from the earlier unchanged generic proof/runtime execution.",
+    "source_identity": "64 per-file source hashes match source 57283f4efdac02584a36713ae419dc9d439b1686; its Git tree equals tested main be90695c53d337574470b454e3f74479ee934e38. PR and resulting-main workflows passed. Subsequent evidence/navigation-only updates are not another Lean execution.",
     "previous_version": {
       "target_branch": "main",
       "temporary_branch": null,
@@ -153,20 +155,22 @@
       "original_proof_source_commit": "36b38e591dc84823ce6adc09422b2613f9dac30d",
       "version": "31.4-kernel.1.4"
     },
-    "source_commit": null,
-    "source_tree": null,
-    "pull_request": null,
-    "pr_run": null,
-    "tested_main_commit": null,
-    "main_run": null,
+    "source_commit": "57283f4efdac02584a36713ae419dc9d439b1686",
+    "source_tree": "a674eff10e615e70ec622c987d52a9c1e01a725b",
+    "pull_request": 340,
+    "pr_run": 39355958755,
+    "tested_main_commit": "be90695c53d337574470b454e3f74479ee934e38",
+    "main_run": 39366597240,
     "receipt": "../kernel/evidence/v31.5/integration-verification.json",
     "baseline_import_review": "../kernel/evidence/v31.5/core-import-closure.json",
     "source_manifest": "../kernel/evidence/v31.5/source-manifest.json",
     "source_count": 64,
     "source_set_sha256": "41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e",
     "observed_checkout_commit": "97d033ff83125822e9926f5bd36afd08dbd153ef",
-    "pr_status": "PENDING",
-    "main_status": "PENDING"
+    "pr_status": "PASS",
+    "main_status": "PASS",
+    "tested_main_tree": "a674eff10e615e70ec622c987d52a9c1e01a725b",
+    "source_and_main_tree_identical": true
   },
   "source_manifest": "../kernel/evidence/v31.5/source-manifest.json",
   "path_conventions": {
@@ -237,5 +241,5 @@
     "count_scope": "Generic 334/392; six-instance 42; false-witness 4; concrete finite witness 29/39; runtime 100 are distinct evidence counts."
   },
   "local_checkpoint_state": "LOCAL_VERIFIED_CI_PENDING",
-  "metadata_updated_at_utc": "2026-10-20T01:44:05.860441+00:00"
+  "metadata_updated_at_utc": "2026-10-20T04:03:56.051764+00:00"
 }

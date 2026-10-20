@@ -1,0 +1,50 @@
+{
+  "schema": "ueot_qm.actual_ci_verification.v31.5",
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T04:03:46.052155+00:00",
+  "event": "main",
+  "run_id": 39366597240,
+  "source_commit": "be90695c53d337574470b454e3f74479ee934e38",
+  "job_ids": {
+    "lean": 118444752093,
+    "runtime": 118444752244
+  },
+  "jobs_all_success": true,
+  "recorded_checkout_matches_expected": true,
+  "runtime_test_methods": 100,
+  "demos": 4,
+  "build_jobs": 8739,
+  "generic_axiom_reports": 392,
+  "generic_axiom_names_and_foundation_equal_local": true,
+  "allowed_foundation": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "positive_instances": 6,
+  "positive_instance_axiom_targets": 42,
+  "corrupted_true_rejections": 4,
+  "same_data_false_proofs": 4,
+  "false_witness_axiom_targets": 4,
+  "concrete_witness_audit_counts": {
+    "MixtureExamples": 9,
+    "SurvivalTwoState": 30
+  },
+  "finite_witness_total_audits": 39,
+  "archive_steps_success": true,
+  "raw_decoded_log_sha256": {
+    "runtime": "b977651ed7d9f31d3ccacb47d32e0ded915b5d1c1f8ba0f428008a924f1d995b",
+    "lean": "c19bb3e20bf49c0724f0c0e07a9f3356bd1ab8c247199e6e0082cd785260886e"
+  },
+  "runner_warnings": {
+    "runtime": [
+      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+    ],
+    "lean": [
+      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache/restore@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+    ]
+  },
+  "warning_scope": "Nonblocking action-runtime deprecation notices observed in successful jobs; no mathematical failure inferred.",
+  "source_identity_review": "../remote-source-reconciliation.json",
+  "scope": "Actual workflow/job metadata and downloaded decoded logs, checked against the expected checkout and locally audited generic names. Workflow artifacts were archived by successful upload steps; this receipt does not claim to download and parse the artifact zip."
+}
