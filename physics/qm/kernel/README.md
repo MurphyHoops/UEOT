@@ -1,6 +1,6 @@
 # UEOT-QM v31.5 / Kernel 1.5
 
-当前状态：**LOCAL_VERIFIED_CI_PENDING**；实际远端验收以 [CURRENT](../status/CURRENT.json) 为准。本轮新增精确混合权重预算、真实 Cesàro 迭代和次随机存活仪器；已有证书与全词响应接口继续保留。
+当前状态：**MAIN_VERIFIED**；实际远端验收以 [CURRENT](../status/CURRENT.json) 为准。本轮新增精确混合权重预算、真实 Cesàro 迭代和次随机存活仪器；已有证书与全词响应接口继续保留。
 
 实际本地结果：18 通用模块、334 显式定理、392 项命名公理审计；100 运行方法、4 演示 PASS。六个精确实例、四组真假配对负控重新核验；新增具体 Lean 见证另计 29 定理／10 定义／39 项审计。[版本报告](../UEOT_QM_KERNEL_v31.5.md)、[证明回执](evidence/v31.5/lean-verification.json)、[运行回执](evidence/v31.5/runtime-verification.json)。完整理论见 [《UEOT物理学》正式 3.1](../book/UEOT_PHYSICS.md) 第 49–53 章。
 

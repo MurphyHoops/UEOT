@@ -1,0 +1,1481 @@
+﻿2026-10-20T01:54:00.1989292Z Current runner version: '2.337.0'
+2026-10-20T01:54:00.2009567Z ##[group]Runner Image Provisioner
+2026-10-20T01:54:00.2010356Z Hosted Compute Agent
+2026-10-20T01:54:00.2010875Z Version: 20261015.610
+2026-10-20T01:54:00.2011441Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-20T01:54:00.2012106Z Build Date: 2026-10-14T17:06:54Z
+2026-10-20T01:54:00.2012925Z Worker ID: {294f08e3-a61d-4093-80f7-d615c6c1334f}
+2026-10-20T01:54:00.2013502Z Region: westus3
+2026-10-20T01:54:00.2014035Z Cloud: Azure
+2026-10-20T01:54:00.2014523Z ##[endgroup]
+2026-10-20T01:54:00.2015659Z ##[group]Operating System
+2026-10-20T01:54:00.2016218Z Ubuntu
+2026-10-20T01:54:00.2016668Z 24.04.5
+2026-10-20T01:54:00.2017185Z LTS
+2026-10-20T01:54:00.2017651Z ##[endgroup]
+2026-10-20T01:54:00.2018140Z ##[group]Runner Image
+2026-10-20T01:54:00.2018657Z Image: ubuntu-24.04
+2026-10-20T01:54:00.2019138Z Version: 20261018.339.1
+2026-10-20T01:54:00.2020204Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261018.339/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-20T01:54:00.2021534Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261018.339
+2026-10-20T01:54:00.2022519Z ##[endgroup]
+2026-10-20T01:54:00.2023465Z ##[group]GITHUB_TOKEN Permissions
+2026-10-20T01:54:00.2025036Z Contents: read
+2026-10-20T01:54:00.2025530Z Metadata: read
+2026-10-20T01:54:00.2026069Z ##[endgroup]
+2026-10-20T01:54:00.2027668Z Secret source: Actions
+2026-10-20T01:54:00.2028538Z Cache mode: write
+2026-10-20T01:54:00.2029141Z Prepare workflow directory
+2026-10-20T01:54:00.2374131Z Prepare all required actions
+2026-10-20T01:54:00.2410496Z Getting action download info
+2026-10-20T01:54:00.5315153Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-20T01:54:00.6145424Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-10-20T01:54:00.7397669Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-20T01:54:00.9632887Z Complete job name: lean
+2026-10-20T01:54:01.0255797Z ##[group]Run actions/checkout@v6
+2026-10-20T01:54:01.0256450Z with:
+2026-10-20T01:54:01.0256824Z   ref: 57283f4efdac02584a36713ae419dc9d439b1686
+2026-10-20T01:54:01.0257301Z   persist-credentials: false
+2026-10-20T01:54:01.0257710Z   repository: MurphyHoops/UEOT
+2026-10-20T01:54:01.0260692Z   token: ***
+2026-10-20T01:54:01.0261032Z   ssh-strict: true
+2026-10-20T01:54:01.0261373Z   ssh-user: git
+2026-10-20T01:54:01.0261703Z   clean: true
+2026-10-20T01:54:01.0262049Z   sparse-checkout-cone-mode: true
+2026-10-20T01:54:01.0262618Z   fetch-depth: 1
+2026-10-20T01:54:01.0262950Z   fetch-tags: false
+2026-10-20T01:54:01.0263293Z   show-progress: true
+2026-10-20T01:54:01.0263638Z   lfs: false
+2026-10-20T01:54:01.0263957Z   submodules: false
+2026-10-20T01:54:01.0264300Z   set-safe-directory: true
+2026-10-20T01:54:01.0264694Z   allow-unsafe-pr-checkout: false
+2026-10-20T01:54:01.0265262Z ##[endgroup]
+2026-10-20T01:54:01.1108836Z Syncing repository: MurphyHoops/UEOT
+2026-10-20T01:54:01.1110313Z ##[group]Getting Git version info
+2026-10-20T01:54:01.1110836Z Working directory is '/home/runner/work/UEOT/UEOT'
+2026-10-20T01:54:01.1111590Z [command]/usr/bin/git version
+2026-10-20T01:54:01.1183698Z git version 2.55.0
+2026-10-20T01:54:01.1202637Z ##[endgroup]
+2026-10-20T01:54:01.1215822Z Temporarily overriding HOME='/home/runner/work/_temp/c78d8b85-3bd0-4d8a-b416-605aba03adfa' before making global git config changes
+2026-10-20T01:54:01.1217682Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T01:54:01.1219990Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UEOT/UEOT
+2026-10-20T01:54:01.1264847Z Deleting the contents of '/home/runner/work/UEOT/UEOT'
+2026-10-20T01:54:01.1277522Z ##[group]Determining repository object format
+2026-10-20T01:54:01.1278801Z ##[endgroup]
+2026-10-20T01:54:01.1279767Z ##[group]Initializing the repository
+2026-10-20T01:54:01.1282618Z [command]/usr/bin/git init /home/runner/work/UEOT/UEOT
+2026-10-20T01:54:01.1377291Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-20T01:54:01.1378591Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-20T01:54:01.1380739Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-20T01:54:01.1381671Z hint: call:
+2026-10-20T01:54:01.1382153Z hint:
+2026-10-20T01:54:01.1382909Z hint: 	git config --global init.defaultBranch <name>
+2026-10-20T01:54:01.1383672Z hint:
+2026-10-20T01:54:01.1384379Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-20T01:54:01.1385519Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-20T01:54:01.1386424Z hint:
+2026-10-20T01:54:01.1387068Z hint: 	git branch -m <name>
+2026-10-20T01:54:01.1388014Z hint:
+2026-10-20T01:54:01.1388941Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-20T01:54:01.1390276Z Initialized empty Git repository in /home/runner/work/UEOT/UEOT/.git/
+2026-10-20T01:54:01.1392016Z [command]/usr/bin/git remote add origin https://github.com/MurphyHoops/UEOT
+2026-10-20T01:54:01.1433496Z ##[endgroup]
+2026-10-20T01:54:01.1434433Z ##[group]Disabling automatic garbage collection
+2026-10-20T01:54:01.1437454Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-20T01:54:01.1465590Z ##[endgroup]
+2026-10-20T01:54:01.1466507Z ##[group]Setting up auth
+2026-10-20T01:54:01.1467175Z Removing SSH command configuration
+2026-10-20T01:54:01.1471744Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T01:54:01.1501495Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T01:54:01.1838468Z Removing HTTP extra header
+2026-10-20T01:54:01.1924618Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T01:54:01.1930110Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T01:54:01.2096958Z Removing includeIf entries pointing to credentials config files
+2026-10-20T01:54:01.2102997Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T01:54:01.2139368Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T01:54:01.2343150Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-20T01:54:01.2383869Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/UEOT/UEOT/.git.path /home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:01.2419266Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:01.2467755Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:01.2505304Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:01.2544681Z ##[endgroup]
+2026-10-20T01:54:01.2545605Z ##[group]Fetching the repository
+2026-10-20T01:54:01.2547480Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 57283f4efdac02584a36713ae419dc9d439b1686
+2026-10-20T01:54:02.3148174Z From https://github.com/MurphyHoops/UEOT
+2026-10-20T01:54:02.3149876Z  * branch            57283f4efdac02584a36713ae419dc9d439b1686 -> FETCH_HEAD
+2026-10-20T01:54:02.3159133Z [command]/usr/bin/git rev-parse --verify --quiet 57283f4efdac02584a36713ae419dc9d439b1686^{object}
+2026-10-20T01:54:02.3187104Z 57283f4efdac02584a36713ae419dc9d439b1686
+2026-10-20T01:54:02.3191801Z ##[endgroup]
+2026-10-20T01:54:02.3193240Z ##[group]Determining the checkout info
+2026-10-20T01:54:02.3194470Z ##[endgroup]
+2026-10-20T01:54:02.3197125Z [command]/usr/bin/git sparse-checkout disable
+2026-10-20T01:54:02.3252873Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-20T01:54:02.3287871Z ##[group]Checking out the ref
+2026-10-20T01:54:02.3290457Z [command]/usr/bin/git checkout --progress --force 57283f4efdac02584a36713ae419dc9d439b1686
+2026-10-20T01:54:02.4358690Z Note: switching to '57283f4efdac02584a36713ae419dc9d439b1686'.
+2026-10-20T01:54:02.4359677Z 
+2026-10-20T01:54:02.4360367Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-20T01:54:02.4361919Z changes and commit them, and you can discard any commits you make in this
+2026-10-20T01:54:02.4363582Z state without impacting any branches by switching back to a branch.
+2026-10-20T01:54:02.4364420Z 
+2026-10-20T01:54:02.4365034Z If you want to create a new branch to retain commits you create, you may
+2026-10-20T01:54:02.4366418Z do so (now or later) by using -c with the switch command. Example:
+2026-10-20T01:54:02.4367228Z 
+2026-10-20T01:54:02.4367616Z   git switch -c <new-branch-name>
+2026-10-20T01:54:02.4368117Z 
+2026-10-20T01:54:02.4368453Z Or undo this operation with:
+2026-10-20T01:54:02.4368878Z 
+2026-10-20T01:54:02.4369152Z   git switch -
+2026-10-20T01:54:02.4369504Z 
+2026-10-20T01:54:02.4370109Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-20T01:54:02.4371157Z 
+2026-10-20T01:54:02.4371961Z HEAD is now at 57283f4 feat(qm): certify finite mixture and persistence kernel; publish Physics 3.1
+2026-10-20T01:54:02.4375149Z ##[endgroup]
+2026-10-20T01:54:02.4418916Z [command]/usr/bin/git log -1 --format=%H
+2026-10-20T01:54:02.4448468Z 57283f4efdac02584a36713ae419dc9d439b1686
+2026-10-20T01:54:02.4456842Z ##[group]Removing auth
+2026-10-20T01:54:02.4457661Z Removing SSH command configuration
+2026-10-20T01:54:02.4459673Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T01:54:02.4494201Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T01:54:02.4697858Z Removing HTTP extra header
+2026-10-20T01:54:02.4700850Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T01:54:02.4741367Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T01:54:02.4939440Z Removing includeIf entries pointing to credentials config files
+2026-10-20T01:54:02.4941861Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T01:54:02.4972171Z includeif.gitdir:/home/runner/work/UEOT/UEOT/.git.path
+2026-10-20T01:54:02.4974197Z includeif.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path
+2026-10-20T01:54:02.4975996Z includeif.gitdir:/github/workspace/.git.path
+2026-10-20T01:54:02.4977501Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-20T01:54:02.4981265Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/UEOT/UEOT/.git.path
+2026-10-20T01:54:02.5011244Z /home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5020206Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/UEOT/UEOT/.git.path /home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5057099Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path
+2026-10-20T01:54:02.5084055Z /home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5092003Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/UEOT/UEOT/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5128819Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-20T01:54:02.5162509Z /github/runner_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5168517Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5208404Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-20T01:54:02.5235311Z /github/runner_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5241066Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config
+2026-10-20T01:54:02.5276429Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T01:54:02.5475105Z Removing credentials config '/home/runner/work/_temp/git-credentials-d8035a11-74b7-45f2-b81c-aba1e3b6c1bb.config'
+2026-10-20T01:54:02.5482568Z ##[endgroup]
+2026-10-20T01:54:02.5685882Z ##[group]Run git rev-parse HEAD | tee source-identity.log
+2026-10-20T01:54:02.5687215Z [36;1mgit rev-parse HEAD | tee source-identity.log[0m
+2026-10-20T01:54:02.5689023Z [36;1msha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain scripts/install_lean.sh >> source-identity.log[0m
+2026-10-20T01:54:02.5690741Z [36;1mcat source-identity.log[0m
+2026-10-20T01:54:02.5691951Z [36;1mpython3 scripts/record_source.py --output source-manifest.json[0m
+2026-10-20T01:54:02.6169370Z shell: /usr/bin/bash -e {0}
+2026-10-20T01:54:02.6170311Z ##[endgroup]
+2026-10-20T01:54:02.6271599Z 57283f4efdac02584a36713ae419dc9d439b1686
+2026-10-20T01:54:02.6306449Z 57283f4efdac02584a36713ae419dc9d439b1686
+2026-10-20T01:54:02.6308508Z b5b9b717324c4d04df169e57c552e976b467609eff48fabea6db676f7f7ecad8  UEOTQM/Adaptive.lean
+2026-10-20T01:54:02.6310689Z db38c8dc2b873d5c784460146badcca889a37f2daf23c73bfaadce67eaf0d16e  UEOTQM/Basic.lean
+2026-10-20T01:54:02.6312808Z 64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b  UEOTQM/Cesaro.lean
+2026-10-20T01:54:02.6314581Z 3346f36a3d467cb7b52d346dfafa4e49828e39a3ee02e29ac12e6783473eef23  UEOTQM/Effects.lean
+2026-10-20T01:54:02.6316327Z 1160e084a3761179cf2a2fb8df9246d263088ecb28f54d6d5fe1a86f179eb915  UEOTQM/Exact.lean
+2026-10-20T01:54:02.6318162Z f6d6be579ccd9653ba373738408dd48f9220dc26fd733521d862374e0b8a6406  UEOTQM/ExactCertificate.lean
+2026-10-20T01:54:02.6320154Z cd42c574bf962b10c4f796c03bcf49d4fb61184b7667512e3ec82440a9bc3705  UEOTQM/FiniteCoordinates.lean
+2026-10-20T01:54:02.6322057Z aa63084bec63476ffd73a54f1c8b53fab406a8fd15cc678bd2d34d30a5820b80  UEOTQM/Instrument.lean
+2026-10-20T01:54:02.6324114Z 520d432d9d055b3260c2f90ea8ad68f93d14d4acae51e32faa28f49bdd3d601a  UEOTQM/Mixture.lean
+2026-10-20T01:54:02.6325900Z f3067163eff01e90e06467e3505d895979bf09ceec494046e791cd293189bd42  UEOTQM/Observables.lean
+2026-10-20T01:54:02.6327735Z 0bae3c96b1facca3f51fe9189a6e05efeb1b532c29cb5854d860f76878162012  UEOTQM/Operational.lean
+2026-10-20T01:54:02.6329535Z a3435d73cd766b55e6f504452de9fe3193ec2266e6cae3772f28cfb4158a718f  UEOTQM/Ragged.lean
+2026-10-20T01:54:02.6331261Z 0aa261fcd171e8985889067bb348abe6d84e486be1b918a3cdd6d3e951fdcbca  UEOTQM/Selector.lean
+2026-10-20T01:54:02.6333210Z 1846371fda564385c799282bd5f2afcd7637ac3b3dcffb2b21e98734266c2b6d  UEOTQM/Spectrum.lean
+2026-10-20T01:54:02.6334984Z de253ab45a4e45e2c8457dcbf3ad0c5cfd553e13a3a1dbc791f7d59eb2b5d389  UEOTQM/Stability.lean
+2026-10-20T01:54:02.6336972Z 60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f  UEOTQM/Survival.lean
+2026-10-20T01:54:02.6338740Z e117c7904b6f8c755d5a35c25d2398fdbf727e4d90987096093e2b6423287f84  UEOTQM/Transport.lean
+2026-10-20T01:54:02.6340502Z 2910a80acb1a73c32bae7898773845b7db9cad7ea74b102ad6e51a473dc86b33  UEOTQM/Weighted.lean
+2026-10-20T01:54:02.6342328Z 36be3b4327d5b2f565cc71546a65702718ab0259799fc521015def48c19f763c  UEOTQM.lean
+2026-10-20T01:54:02.6344086Z c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff  lake-manifest.json
+2026-10-20T01:54:02.6345810Z 3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71  lean-toolchain
+2026-10-20T01:54:02.6347531Z 8984f32c56f4b66722c9c4f0a55a7fa5ccd79fb853359793f31d401bb36a6926  scripts/install_lean.sh
+2026-10-20T01:54:02.6753108Z ##[group]Run python3 scripts/check_dependencies.py
+2026-10-20T01:54:02.6754267Z [36;1mpython3 scripts/check_dependencies.py[0m
+2026-10-20T01:54:02.6800284Z shell: /usr/bin/bash -e {0}
+2026-10-20T01:54:02.6801133Z ##[endgroup]
+2026-10-20T01:54:02.7060705Z PASS: exact Core toolchain and dependency revisions inherited
+2026-10-20T01:54:02.7204344Z ##[group]Run set -o pipefail
+2026-10-20T01:54:02.7205250Z [36;1mset -o pipefail[0m
+2026-10-20T01:54:02.7206475Z [36;1mbash scripts/install_lean.sh "$RUNNER_TEMP/ueot-qm-lean" 2>&1 | tee lean-install.log[0m
+2026-10-20T01:54:02.7251998Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-20T01:54:02.7253166Z ##[endgroup]
+2026-10-20T01:54:02.7460147Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-20T01:54:02.7462159Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-20T01:54:02.7463423Z 
+2026-10-20T01:54:02.9970099Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-20T01:54:03.1039719Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-20T01:54:03.1040119Z 
+2026-10-20T01:54:04.1041391Z   5  543M    5 31.9M    0     0  89.1M      0  0:00:06 --:--:--  0:00:06 89.1M
+2026-10-20T01:54:04.2552715Z  88  543M   88  480M    0     0   354M      0  0:00:01  0:00:01 --:--:--  448M
+2026-10-20T01:54:04.2553181Z 100  543M  100  543M    0     0   360M      0  0:00:01  0:00:01 --:--:--  444M
+2026-10-20T01:54:04.6274694Z /home/runner/work/_temp/ueot-qm-lean/lean-4.33.1-linux.tar.zst: OK
+2026-10-20T01:54:12.9974277Z Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+2026-10-20T01:54:13.0279386Z Lake version 5.0.0-src+819816b (Lean version 4.33.1)
+2026-10-20T01:54:13.0322686Z PASS: verified official compiler at /home/runner/work/_temp/ueot-qm-lean/lean-4.33.1-linux/bin
+2026-10-20T01:54:13.1472937Z ##[group]Run actions/cache/restore@v4
+2026-10-20T01:54:13.1473238Z with:
+2026-10-20T01:54:13.1473452Z   path: formalization/ueot-qm/.lake/packages
+2026-10-20T01:54:13.1473875Z   key: ueot-qm-deps-Linux-7537d0bb175e258c2680e981c9b79636fb827a25e18cfe24e3fa02da4a661b7e
+2026-10-20T01:54:13.1474291Z   enableCrossOsArchive: false
+2026-10-20T01:54:13.1474531Z   fail-on-cache-miss: false
+2026-10-20T01:54:13.1474738Z   lookup-only: false
+2026-10-20T01:54:13.1474947Z ##[endgroup]
+2026-10-20T01:54:13.2339687Z (node:2261) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T01:54:13.2340426Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T01:54:13.4339084Z Cache hit for: ueot-qm-deps-Linux-7537d0bb175e258c2680e981c9b79636fb827a25e18cfe24e3fa02da4a661b7e
+2026-10-20T01:54:13.4423083Z (node:2261) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T01:54:14.6540791Z Received 50331648 of 2549382449 (2.0%), 48.0 MBs/sec
+2026-10-20T01:54:15.6556278Z Received 197132288 of 2549382449 (7.7%), 93.9 MBs/sec
+2026-10-20T01:54:16.6568997Z Received 364904448 of 2549382449 (14.3%), 115.9 MBs/sec
+2026-10-20T01:54:17.6573280Z Received 536870912 of 2549382449 (21.1%), 127.9 MBs/sec
+2026-10-20T01:54:18.6584395Z Received 734003200 of 2549382449 (28.8%), 139.9 MBs/sec
+2026-10-20T01:54:19.6623862Z Received 910163968 of 2549382449 (35.7%), 144.5 MBs/sec
+2026-10-20T01:54:20.6605284Z Received 1073741824 of 2549382449 (42.1%), 146.1 MBs/sec
+2026-10-20T01:54:21.6611608Z Received 1245708288 of 2549382449 (48.9%), 148.4 MBs/sec
+2026-10-20T01:54:22.6643427Z Received 1413480448 of 2549382449 (55.4%), 149.6 MBs/sec
+2026-10-20T01:54:23.6653555Z Received 1602224128 of 2549382449 (62.8%), 152.7 MBs/sec
+2026-10-20T01:54:24.6634757Z Received 1744830464 of 2549382449 (68.4%), 151.1 MBs/sec
+2026-10-20T01:54:25.6652769Z Received 1941962752 of 2549382449 (76.2%), 154.2 MBs/sec
+2026-10-20T01:54:26.6649803Z Received 2143289344 of 2549382449 (84.1%), 157.1 MBs/sec
+2026-10-20T01:54:27.6668212Z Received 2290089984 of 2549382449 (89.8%), 155.9 MBs/sec
+2026-10-20T01:54:28.6674991Z Received 2483027968 of 2549382449 (97.4%), 157.7 MBs/sec
+2026-10-20T01:54:29.0491128Z Received 2549382449 of 2549382449 (100.0%), 157.9 MBs/sec
+2026-10-20T01:54:29.0492847Z Cache Size: ~2431 MB (2549382449 B)
+2026-10-20T01:54:29.0548277Z [command]/usr/bin/tar -xf /home/runner/work/_temp/9c1d0d46-843b-4ba5-b439-9134c264b347/cache.tzst -P -C /home/runner/work/UEOT/UEOT --use-compress-program unzstd
+2026-10-20T01:55:10.8208421Z Cache restored successfully
+2026-10-20T01:55:10.9418629Z Cache restored from key: ueot-qm-deps-Linux-7537d0bb175e258c2680e981c9b79636fb827a25e18cfe24e3fa02da4a661b7e
+2026-10-20T01:55:10.9708555Z ##[group]Run lake exe cache get
+2026-10-20T01:55:10.9708909Z [36;1mlake exe cache get[0m
+2026-10-20T01:55:11.0688447Z shell: /usr/bin/bash -e {0}
+2026-10-20T01:55:11.0688703Z ##[endgroup]
+2026-10-20T01:55:20.4453025Z Current branch: HEAD
+2026-10-20T01:55:20.4453369Z Using cache from origin: (some leanprover-community/mathlib4)
+2026-10-20T01:55:20.4454026Z Attempting to download 8690 file(s) from leanprover-community/mathlib4 cache at https://lakecache.blob.core.windows.net/mathlib4-master
+2026-10-20T01:55:21.4786617Z 
+2026-10-20T01:55:21.5787913Z Downloaded: 1 file(s) [attempted 1/8690 = 0%, 26 KB/s], Decompressed: 0
+2026-10-20T01:55:21.6786312Z Downloaded: 63 file(s) [attempted 63/8690 = 0%, 456 KB/s], Decompressed: 61
+2026-10-20T01:55:21.7786791Z Downloaded: 141 file(s) [attempted 141/8690 = 1%, 107 KB/s], Decompressed: 139
+2026-10-20T01:55:21.8791881Z Downloaded: 231 file(s) [attempted 231/8690 = 2%, 2232 KB/s], Decompressed: 225
+2026-10-20T01:55:21.9795152Z Downloaded: 326 file(s) [attempted 326/8690 = 3%, 459 KB/s], Decompressed: 323
+2026-10-20T01:55:22.0805858Z Downloaded: 423 file(s) [attempted 423/8690 = 4%, 1127 KB/s], Decompressed: 421
+2026-10-20T01:55:22.1816870Z Downloaded: 521 file(s) [attempted 521/8690 = 5%, 2014 KB/s], Decompressed: 518
+2026-10-20T01:55:22.2834455Z Downloaded: 616 file(s) [attempted 616/8690 = 7%, 494 KB/s], Decompressed: 615
+2026-10-20T01:55:22.3849085Z Downloaded: 717 file(s) [attempted 717/8690 = 8%, 172 KB/s], Decompressed: 714
+2026-10-20T01:55:22.4863074Z Downloaded: 817 file(s) [attempted 817/8690 = 9%, 735 KB/s], Decompressed: 815
+2026-10-20T01:55:22.5873017Z Downloaded: 919 file(s) [attempted 919/8690 = 10%, 1153 KB/s], Decompressed: 917
+2026-10-20T01:55:22.6867139Z Downloaded: 1022 file(s) [attempted 1022/8690 = 11%, 505 KB/s], Decompressed: 1020
+2026-10-20T01:55:22.7911749Z Downloaded: 1120 file(s) [attempted 1120/8690 = 12%, 1077 KB/s], Decompressed: 1115
+2026-10-20T01:55:22.8907685Z Downloaded: 1222 file(s) [attempted 1222/8690 = 14%, 315 KB/s], Decompressed: 1220
+2026-10-20T01:55:22.9924401Z Downloaded: 1321 file(s) [attempted 1321/8690 = 15%, 69 KB/s], Decompressed: 1315
+2026-10-20T01:55:23.0933763Z Downloaded: 1420 file(s) [attempted 1420/8690 = 16%, 241 KB/s], Decompressed: 1413
+2026-10-20T01:55:23.1973529Z Downloaded: 1518 file(s) [attempted 1518/8690 = 17%, 762 KB/s], Decompressed: 1516
+2026-10-20T01:55:23.2982175Z Downloaded: 1618 file(s) [attempted 1618/8690 = 18%, 1584 KB/s], Decompressed: 1616
+2026-10-20T01:55:23.3988160Z Downloaded: 1718 file(s) [attempted 1718/8690 = 19%, 161 KB/s], Decompressed: 1716
+2026-10-20T01:55:23.4991643Z Downloaded: 1818 file(s) [attempted 1818/8690 = 20%, 76 KB/s], Decompressed: 1816
+2026-10-20T01:55:23.5999742Z Downloaded: 1917 file(s) [attempted 1917/8690 = 22%, 720 KB/s], Decompressed: 1914
+2026-10-20T01:55:23.7000029Z Downloaded: 2016 file(s) [attempted 2016/8690 = 23%, 260 KB/s], Decompressed: 2014
+2026-10-20T01:55:23.8055283Z Downloaded: 2115 file(s) [attempted 2115/8690 = 24%, 236 KB/s], Decompressed: 2112
+2026-10-20T01:55:23.9068793Z Downloaded: 2214 file(s) [attempted 2214/8690 = 25%, 1512 KB/s], Decompressed: 2210
+2026-10-20T01:55:24.0071396Z Downloaded: 2317 file(s) [attempted 2317/8690 = 26%, 132 KB/s], Decompressed: 2314
+2026-10-20T01:55:24.1068574Z Downloaded: 2415 file(s) [attempted 2415/8690 = 27%, 841 KB/s], Decompressed: 2412
+2026-10-20T01:55:24.2072864Z Downloaded: 2513 file(s) [attempted 2513/8690 = 28%, 191 KB/s], Decompressed: 2510
+2026-10-20T01:55:24.3068770Z Downloaded: 2617 file(s) [attempted 2617/8690 = 30%, 489 KB/s], Decompressed: 2612
+2026-10-20T01:55:24.4064996Z Downloaded: 2719 file(s) [attempted 2719/8690 = 31%, 324 KB/s], Decompressed: 2715
+2026-10-20T01:55:24.5067866Z Downloaded: 2817 file(s) [attempted 2817/8690 = 32%, 269 KB/s], Decompressed: 2813
+2026-10-20T01:55:24.6585305Z Downloaded: 2916 file(s) [attempted 2916/8690 = 33%, 889 KB/s], Decompressed: 2910
+2026-10-20T01:55:24.7620185Z Downloaded: 2994 file(s) [attempted 2994/8690 = 34%, 571 KB/s], Decompressed: 2990
+2026-10-20T01:55:24.8684450Z Downloaded: 3097 file(s) [attempted 3097/8690 = 35%, 4131 KB/s], Decompressed: 3094
+2026-10-20T01:55:24.9686681Z Downloaded: 3201 file(s) [attempted 3201/8690 = 36%, 104 KB/s], Decompressed: 3199
+2026-10-20T01:55:25.0691538Z Downloaded: 3304 file(s) [attempted 3304/8690 = 38%, 2199 KB/s], Decompressed: 3302
+2026-10-20T01:55:25.1688888Z Downloaded: 3404 file(s) [attempted 3404/8690 = 39%, 281 KB/s], Decompressed: 3402
+2026-10-20T01:55:25.2684923Z Downloaded: 3504 file(s) [attempted 3504/8690 = 40%, 498 KB/s], Decompressed: 3502
+2026-10-20T01:55:25.3685223Z Downloaded: 3607 file(s) [attempted 3607/8690 = 41%, 973 KB/s], Decompressed: 3602
+2026-10-20T01:55:25.4700591Z Downloaded: 3707 file(s) [attempted 3707/8690 = 42%, 1466 KB/s], Decompressed: 3702
+2026-10-20T01:55:25.5706254Z Downloaded: 3807 file(s) [attempted 3807/8690 = 43%, 224 KB/s], Decompressed: 3800
+2026-10-20T01:55:25.6711840Z Downloaded: 3907 file(s) [attempted 3907/8690 = 44%, 605 KB/s], Decompressed: 3902
+2026-10-20T01:55:25.7723894Z Downloaded: 4009 file(s) [attempted 4009/8690 = 46%, 629 KB/s], Decompressed: 4007
+2026-10-20T01:55:25.8743259Z Downloaded: 4112 file(s) [attempted 4112/8690 = 47%, 399 KB/s], Decompressed: 4111
+2026-10-20T01:55:25.9740071Z Downloaded: 4214 file(s) [attempted 4214/8690 = 48%, 1643 KB/s], Decompressed: 4212
+2026-10-20T01:55:26.0753967Z Downloaded: 4313 file(s) [attempted 4313/8690 = 49%, 4660 KB/s], Decompressed: 4310
+2026-10-20T01:55:26.1760989Z Downloaded: 4417 file(s) [attempted 4417/8690 = 50%, 1818 KB/s], Decompressed: 4415
+2026-10-20T01:55:26.2772864Z Downloaded: 4510 file(s) [attempted 4510/8690 = 51%, 240 KB/s], Decompressed: 4505
+2026-10-20T01:55:26.3776304Z Downloaded: 4608 file(s) [attempted 4608/8690 = 53%, 1906 KB/s], Decompressed: 4606
+2026-10-20T01:55:26.4790327Z Downloaded: 4708 file(s) [attempted 4708/8690 = 54%, 342 KB/s], Decompressed: 4706
+2026-10-20T01:55:26.5792036Z Downloaded: 4810 file(s) [attempted 4810/8690 = 55%, 182 KB/s], Decompressed: 4806
+2026-10-20T01:55:26.6783967Z Downloaded: 4911 file(s) [attempted 4911/8690 = 56%, 381 KB/s], Decompressed: 4908
+2026-10-20T01:55:26.7794553Z Downloaded: 5008 file(s) [attempted 5008/8690 = 57%, 731 KB/s], Decompressed: 5006
+2026-10-20T01:55:26.8797554Z Downloaded: 5109 file(s) [attempted 5109/8690 = 58%, 217 KB/s], Decompressed: 5106
+2026-10-20T01:55:26.9800536Z Downloaded: 5207 file(s) [attempted 5207/8690 = 59%, 1005 KB/s], Decompressed: 5204
+2026-10-20T01:55:27.0802976Z Downloaded: 5306 file(s) [attempted 5306/8690 = 61%, 711 KB/s], Decompressed: 5302
+2026-10-20T01:55:27.1812118Z Downloaded: 5408 file(s) [attempted 5408/8690 = 62%, 4509 KB/s], Decompressed: 5404
+2026-10-20T01:55:27.2814632Z Downloaded: 5509 file(s) [attempted 5509/8690 = 63%, 1804 KB/s], Decompressed: 5507
+2026-10-20T01:55:27.3839243Z Downloaded: 5609 file(s) [attempted 5609/8690 = 64%, 385 KB/s], Decompressed: 5607
+2026-10-20T01:55:27.4849385Z Downloaded: 5709 file(s) [attempted 5709/8690 = 65%, 5342 KB/s], Decompressed: 5707
+2026-10-20T01:55:27.5890863Z Downloaded: 5807 file(s) [attempted 5807/8690 = 66%, 497 KB/s], Decompressed: 5805
+2026-10-20T01:55:27.6888260Z Downloaded: 5907 file(s) [attempted 5907/8690 = 67%, 543 KB/s], Decompressed: 5905
+2026-10-20T01:55:27.7888318Z Downloaded: 6005 file(s) [attempted 6005/8690 = 69%, 309 KB/s], Decompressed: 6000
+2026-10-20T01:55:27.8884251Z Downloaded: 6105 file(s) [attempted 6105/8690 = 70%, 1421 KB/s], Decompressed: 6100
+2026-10-20T01:55:27.9890081Z Downloaded: 6203 file(s) [attempted 6203/8690 = 71%, 370 KB/s], Decompressed: 6198
+2026-10-20T01:55:28.0885055Z Downloaded: 6304 file(s) [attempted 6304/8690 = 72%, 223 KB/s], Decompressed: 6301
+2026-10-20T01:55:28.1890187Z Downloaded: 6400 file(s) [attempted 6400/8690 = 73%, 457 KB/s], Decompressed: 6396
+2026-10-20T01:55:28.2892655Z Downloaded: 6499 file(s) [attempted 6499/8690 = 74%, 2473 KB/s], Decompressed: 6496
+2026-10-20T01:55:28.3914402Z Downloaded: 6598 file(s) [attempted 6598/8690 = 75%, 830 KB/s], Decompressed: 6589
+2026-10-20T01:55:28.4912130Z Downloaded: 6697 file(s) [attempted 6697/8690 = 77%, 222 KB/s], Decompressed: 6694
+2026-10-20T01:55:28.5904383Z Downloaded: 6797 file(s) [attempted 6797/8690 = 78%, 499 KB/s], Decompressed: 6794
+2026-10-20T01:55:28.6948851Z Downloaded: 6896 file(s) [attempted 6896/8690 = 79%, 150 KB/s], Decompressed: 6890
+2026-10-20T01:55:28.7945049Z Downloaded: 6997 file(s) [attempted 6997/8690 = 80%, 529 KB/s], Decompressed: 6995
+2026-10-20T01:55:28.8964963Z Downloaded: 7100 file(s) [attempted 7100/8690 = 81%, 1163 KB/s], Decompressed: 7097
+2026-10-20T01:55:28.9971451Z Downloaded: 7202 file(s) [attempted 7202/8690 = 82%, 299 KB/s], Decompressed: 7197
+2026-10-20T01:55:29.0973464Z Downloaded: 7301 file(s) [attempted 7301/8690 = 84%, 150 KB/s], Decompressed: 7297
+2026-10-20T01:55:29.1999637Z Downloaded: 7397 file(s) [attempted 7397/8690 = 85%, 541 KB/s], Decompressed: 7395
+2026-10-20T01:55:29.2996777Z Downloaded: 7498 file(s) [attempted 7498/8690 = 86%, 669 KB/s], Decompressed: 7495
+2026-10-20T01:55:29.3994788Z Downloaded: 7596 file(s) [attempted 7596/8690 = 87%, 463 KB/s], Decompressed: 7593
+2026-10-20T01:55:29.5004750Z Downloaded: 7701 file(s) [attempted 7701/8690 = 88%, 73 KB/s], Decompressed: 7693
+2026-10-20T01:55:29.6000786Z Downloaded: 7800 file(s) [attempted 7800/8690 = 89%, 294 KB/s], Decompressed: 7793
+2026-10-20T01:55:29.6998199Z Downloaded: 7898 file(s) [attempted 7898/8690 = 90%, 2027 KB/s], Decompressed: 7893
+2026-10-20T01:55:29.7996345Z Downloaded: 7997 file(s) [attempted 7997/8690 = 92%, 3659 KB/s], Decompressed: 7989
+2026-10-20T01:55:29.9004916Z Downloaded: 8092 file(s) [attempted 8092/8690 = 93%, 1196 KB/s], Decompressed: 8084
+2026-10-20T01:55:30.0010267Z Downloaded: 8191 file(s) [attempted 8191/8690 = 94%, 245 KB/s], Decompressed: 8185
+2026-10-20T01:55:30.1599200Z Downloaded: 8293 file(s) [attempted 8293/8690 = 95%, 780 KB/s], Decompressed: 8287
+2026-10-20T01:55:30.2604471Z Downloaded: 8332 file(s) [attempted 8332/8690 = 95%, 1652 KB/s], Decompressed: 8326
+2026-10-20T01:55:30.3604660Z Downloaded: 8431 file(s) [attempted 8431/8690 = 97%, 288 KB/s], Decompressed: 8426
+2026-10-20T01:55:30.4606338Z Downloaded: 8531 file(s) [attempted 8531/8690 = 98%, 1043 KB/s], Decompressed: 8529
+2026-10-20T01:55:30.5515604Z Downloaded: 8633 file(s) [attempted 8633/8690 = 99%, 386 KB/s], Decompressed: 8629
+2026-10-20T01:55:30.5516292Z Downloaded: 8690 file(s) [attempted 8690/8690 = 100%, 386 KB/s], Decompressed: 8687
+2026-10-20T01:55:31.1688724Z Decompressed 8690 file(s)
+2026-10-20T01:55:31.1689017Z Already decompressed 8690 file(s)
+2026-10-20T01:55:31.2328478Z ##[group]Run if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' UEOTQM; then
+2026-10-20T01:55:31.2329054Z [36;1mif grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' UEOTQM; then[0m
+2026-10-20T01:55:31.2329454Z [36;1m  echo "Forbidden proof escape in QM source." >&2[0m
+2026-10-20T01:55:31.2329712Z [36;1m  exit 1[0m
+2026-10-20T01:55:31.2329878Z [36;1mfi[0m
+2026-10-20T01:55:31.2378833Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-20T01:55:31.2379130Z ##[endgroup]
+2026-10-20T01:55:31.3052017Z ##[group]Run set -o pipefail
+2026-10-20T01:55:31.3052472Z [36;1mset -o pipefail[0m
+2026-10-20T01:55:31.3052709Z [36;1mlake build UEOTQM 2>&1 | tee lean-build.log[0m
+2026-10-20T01:55:31.3098703Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-20T01:55:31.3099006Z ##[endgroup]
+2026-10-20T01:55:35.8668964Z ⚠ [7185/7236] Built UEOT.V3.PredictionAE (3.0s)
+2026-10-20T01:55:35.8692792Z warning: UEOT/V3/PredictionAE.lean:195:6: Try this: 
+2026-10-20T01:55:35.8723413Z   letI̵
+2026-10-20T01:55:35.8752510Z 
+2026-10-20T01:55:35.8782923Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:35.8822851Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:35.8845996Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:35.8872461Z 
+2026-10-20T01:55:35.8872839Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:35.8873607Z warning: UEOT/V3/PredictionAE.lean:198:6: try 'simp' instead of 'simpa'
+2026-10-20T01:55:35.8873958Z 
+2026-10-20T01:55:35.8874233Z Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+2026-10-20T01:55:36.2716153Z ⚠ [7299/7399] Built UEOTQM.Basic (3.5s)
+2026-10-20T01:55:36.2772396Z warning: UEOTQM/Basic.lean:48:33: This simp argument is unused:
+2026-10-20T01:55:36.2802871Z   Complex.smul_re
+2026-10-20T01:55:36.2826276Z 
+2026-10-20T01:55:36.2833088Z Hint: Omit it from the simp argument list.
+2026-10-20T01:55:36.2833871Z   [apply] simp [mass, Matrix.trace_smul, smul_eq_mul]
+2026-10-20T01:55:36.2834406Z 
+2026-10-20T01:55:36.2834908Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-10-20T01:55:36.2835811Z warning: UEOTQM/Basic.lean:48:50: This simp argument is unused:
+2026-10-20T01:55:36.2836464Z   smul_eq_mul
+2026-10-20T01:55:36.2836803Z 
+2026-10-20T01:55:36.2837102Z Hint: Omit it from the simp argument list.
+2026-10-20T01:55:36.2837792Z   [apply] simp [mass, Matrix.trace_smul, Complex.smul_re]
+2026-10-20T01:55:36.2838280Z 
+2026-10-20T01:55:36.2838744Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-10-20T01:55:37.0723014Z ⚠ [8004/8180] Built UEOT.V3.DynamicsKernel (4.1s)
+2026-10-20T01:55:37.0725740Z warning: UEOT/V3/DynamicsKernel.lean:263:2: Try this: 
+2026-10-20T01:55:37.0730012Z   letI̵
+2026-10-20T01:55:37.0752514Z 
+2026-10-20T01:55:37.0756816Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0758961Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0763756Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0768137Z 
+2026-10-20T01:55:37.0768505Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0770631Z warning: UEOT/V3/DynamicsKernel.lean:278:2: Try this: 
+2026-10-20T01:55:37.0771217Z   letI̵
+2026-10-20T01:55:37.0773607Z 
+2026-10-20T01:55:37.0773956Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0780371Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0783195Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0787360Z 
+2026-10-20T01:55:37.0788017Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0792465Z warning: UEOT/V3/DynamicsKernel.lean:308:2: Try this: 
+2026-10-20T01:55:37.0794750Z   letI̵
+2026-10-20T01:55:37.0794955Z 
+2026-10-20T01:55:37.0795201Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0799581Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0800263Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0800613Z 
+2026-10-20T01:55:37.0800982Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0802346Z warning: UEOT/V3/DynamicsKernel.lean:310:2: Try this: 
+2026-10-20T01:55:37.0807939Z   letI̵
+2026-10-20T01:55:37.0808143Z 
+2026-10-20T01:55:37.0808396Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0808931Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0809531Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0809870Z 
+2026-10-20T01:55:37.0810176Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0810736Z warning: UEOT/V3/DynamicsKernel.lean:367:2: Try this: 
+2026-10-20T01:55:37.0811163Z   letI̵
+2026-10-20T01:55:37.0811343Z 
+2026-10-20T01:55:37.0811579Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0812103Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0812825Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0813161Z 
+2026-10-20T01:55:37.0813475Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0815578Z warning: UEOT/V3/DynamicsKernel.lean:402:0: automatically included section variable(s) unused in theorem `UEOT.V3.DynamicsKernel.frestrictLe_mapPath`:
+2026-10-20T01:55:37.0819080Z   [MeasurableSpace X]
+2026-10-20T01:55:37.0819418Z   [MeasurableSpace M]
+2026-10-20T01:55:37.0819991Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:55:37.0820990Z   omit [MeasurableSpace X] [MeasurableSpace M] in theorem ...
+2026-10-20T01:55:37.0821677Z 
+2026-10-20T01:55:37.0822003Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:55:37.0822866Z warning: UEOT/V3/DynamicsKernel.lean:417:2: Try this: 
+2026-10-20T01:55:37.0823318Z   letI̵
+2026-10-20T01:55:37.0823514Z 
+2026-10-20T01:55:37.0823749Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0824327Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0824881Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0825228Z 
+2026-10-20T01:55:37.0825517Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0826093Z warning: UEOT/V3/DynamicsKernel.lean:470:2: Try this: 
+2026-10-20T01:55:37.0826506Z   letI̵
+2026-10-20T01:55:37.0826691Z 
+2026-10-20T01:55:37.0826921Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0827468Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0828024Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0828374Z 
+2026-10-20T01:55:37.0828655Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0829178Z warning: UEOT/V3/DynamicsKernel.lean:472:2: Try this: 
+2026-10-20T01:55:37.0829587Z   letI̵
+2026-10-20T01:55:37.0830565Z 
+2026-10-20T01:55:37.0830815Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0831363Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0831898Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0832622Z 
+2026-10-20T01:55:37.0832922Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0833457Z warning: UEOT/V3/DynamicsKernel.lean:493:2: Try this: 
+2026-10-20T01:55:37.0833880Z   letI̵
+2026-10-20T01:55:37.0834068Z 
+2026-10-20T01:55:37.0834309Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0834829Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0835359Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0835699Z 
+2026-10-20T01:55:37.0835996Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0836703Z warning: UEOT/V3/DynamicsKernel.lean:499:2: Try this: 
+2026-10-20T01:55:37.0837111Z   letI̵
+2026-10-20T01:55:37.0837290Z 
+2026-10-20T01:55:37.0837521Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0838056Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0838781Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0839148Z 
+2026-10-20T01:55:37.0839438Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0840095Z warning: UEOT/V3/DynamicsKernel.lean:556:17: Variable name `hf` is not explicitly referenced.
+2026-10-20T01:55:37.0840542Z 
+2026-10-20T01:55:37.0841147Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-10-20T01:55:37.0841831Z   [apply] _hf
+2026-10-20T01:55:37.0842036Z 
+2026-10-20T01:55:37.0842461Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-10-20T01:55:37.0843110Z warning: UEOT/V3/DynamicsKernel.lean:569:2: Try this: 
+2026-10-20T01:55:37.0843523Z   letI̵
+2026-10-20T01:55:37.0844000Z 
+2026-10-20T01:55:37.0844226Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0844739Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0851235Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0851609Z 
+2026-10-20T01:55:37.0851937Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:37.0852687Z warning: UEOT/V3/DynamicsKernel.lean:585:2: Try this: 
+2026-10-20T01:55:37.0853142Z   letI̵
+2026-10-20T01:55:37.0853323Z 
+2026-10-20T01:55:37.0853566Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:37.0854118Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:37.0854675Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:37.0855011Z 
+2026-10-20T01:55:37.0855316Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:38.9743557Z ⚠ [8709/8735] Built UEOT.V3.PredictionDependent (3.1s)
+2026-10-20T01:55:38.9762859Z warning: UEOT/V3/PredictionDependent.lean:94:6: Try this: 
+2026-10-20T01:55:38.9772756Z   letI̵
+2026-10-20T01:55:38.9832490Z 
+2026-10-20T01:55:38.9849637Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:38.9853858Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:38.9854627Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:38.9855115Z 
+2026-10-20T01:55:38.9855521Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:38.9856304Z warning: UEOT/V3/PredictionDependent.lean:97:6: try 'simp' instead of 'simpa'
+2026-10-20T01:55:38.9856837Z 
+2026-10-20T01:55:38.9857275Z Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+2026-10-20T01:55:40.0803570Z ⚠ [8711/8739] Built UEOT.V3.PredictionUpdate (2.4s)
+2026-10-20T01:55:40.0863665Z warning: UEOT/V3/PredictionUpdate.lean:270:0: automatically included section variable(s) unused in theorem `UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_fixed`:
+2026-10-20T01:55:40.0892791Z   [MeasurableSpace A]
+2026-10-20T01:55:40.0922853Z   [MeasurableSpace O]
+2026-10-20T01:55:40.0953146Z   [Fintype A]
+2026-10-20T01:55:40.0982759Z   [Fintype O]
+2026-10-20T01:55:40.1012714Z   [MeasurableSingletonClass A]
+2026-10-20T01:55:40.1013085Z   [MeasurableSingletonClass O]
+2026-10-20T01:55:40.1013735Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:55:40.1014397Z   omit [MeasurableSpace
+2026-10-20T01:55:40.1014673Z   A] [MeasurableSpace
+2026-10-20T01:55:40.1015458Z   O] [Fintype A] [Fintype O] [MeasurableSingletonClass A] [MeasurableSingletonClass O] in theorem ...
+2026-10-20T01:55:40.1015973Z 
+2026-10-20T01:55:40.1016262Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:55:40.1813536Z ⚠ [8712/8739] Built UEOT.V3.TotalVariation (2.3s)
+2026-10-20T01:55:40.1842754Z warning: UEOT/V3/TotalVariation.lean:119:4: Try this: 
+2026-10-20T01:55:40.1902921Z   letI̵
+2026-10-20T01:55:40.1932448Z 
+2026-10-20T01:55:40.1963142Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:40.1992850Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:40.2028938Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:40.2079392Z 
+2026-10-20T01:55:40.2096060Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:40.2131496Z warning: UEOT/V3/TotalVariation.lean:121:4: Try this: 
+2026-10-20T01:55:40.2142863Z   letI̵
+2026-10-20T01:55:40.2143234Z 
+2026-10-20T01:55:40.2143490Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:40.2144078Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:40.2144655Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:40.2144987Z 
+2026-10-20T01:55:40.2145277Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:40.3815404Z ⚠ [8713/8739] Built UEOTQM.Instrument (4.1s)
+2026-10-20T01:55:40.3863441Z warning: UEOTQM/Instrument.lean:27:0: automatically included section variable(s) unused in theorem `UEOTQM.krausMap_posSemidef`:
+2026-10-20T01:55:40.3864648Z   [DecidableEq ι]
+2026-10-20T01:55:40.3873010Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:55:40.3923030Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:55:40.3923580Z 
+2026-10-20T01:55:40.3952954Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:55:40.3983046Z warning: UEOTQM/Instrument.lean:32:0: automatically included section variable(s) unused in theorem `UEOTQM.krausMap_smul`:
+2026-10-20T01:55:40.3984076Z   [DecidableEq ι]
+2026-10-20T01:55:40.4011829Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:55:40.4013173Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:55:40.4013570Z 
+2026-10-20T01:55:40.4014011Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:55:40.4015039Z warning: UEOTQM/Instrument.lean:36:0: automatically included section variable(s) unused in theorem `UEOTQM.trace_krausMap`:
+2026-10-20T01:55:40.4015947Z   [DecidableEq ι]
+2026-10-20T01:55:40.4016699Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:55:40.4017550Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:55:40.4017940Z 
+2026-10-20T01:55:40.4018386Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:55:40.4019411Z warning: UEOTQM/Instrument.lean:124:0: automatically included section variable(s) unused in theorem `UEOTQM.ancillaKrausMap_entry`:
+2026-10-20T01:55:40.4020325Z   [DecidableEq ι]
+2026-10-20T01:55:40.4667956Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:55:40.4668918Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:55:40.4669147Z 
+2026-10-20T01:55:40.4669432Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:55:40.4670054Z warning: UEOTQM/Instrument.lean:133:4: This simp argument is unused:
+2026-10-20T01:55:40.4670530Z   Matrix.kronecker_apply
+2026-10-20T01:55:40.4670714Z 
+2026-10-20T01:55:40.4670854Z Hint: Omit it from the simp argument list.
+2026-10-20T01:55:40.4671753Z   [apply] simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.of_apply, Fintype.sum_prod_type, Matrix.one_apply,
+2026-10-20T01:55:40.4672567Z     mul_assoc]
+2026-10-20T01:55:40.4672710Z 
+2026-10-20T01:55:40.4672980Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-10-20T01:55:40.4673575Z warning: UEOTQM/Instrument.lean:134:4: This simp argument is unused:
+2026-10-20T01:55:40.4674021Z   mul_assoc
+2026-10-20T01:55:40.4674159Z 
+2026-10-20T01:55:40.4674299Z Hint: Omit it from the simp argument list.
+2026-10-20T01:55:40.4674906Z   [apply] simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.kronecker_apply, Matrix.of_apply,
+2026-10-20T01:55:40.4675523Z     Fintype.sum_prod_type, Matrix.one_apply]
+2026-10-20T01:55:40.4675776Z 
+2026-10-20T01:55:40.4676035Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-10-20T01:55:42.5873706Z ⚠ [8714/8739] Built UEOT.V3.InformationPacking (2.3s)
+2026-10-20T01:55:42.5883003Z warning: UEOT/V3/InformationPacking.lean:89:2: Try this: 
+2026-10-20T01:55:42.5932639Z   letI̵
+2026-10-20T01:55:42.5962437Z 
+2026-10-20T01:55:42.5974578Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:42.6007056Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:42.6032844Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:42.6062689Z 
+2026-10-20T01:55:42.6104032Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:42.6132881Z warning: UEOT/V3/InformationPacking.lean:90:2: Try this: 
+2026-10-20T01:55:42.6133532Z   letI̵
+2026-10-20T01:55:42.6152535Z 
+2026-10-20T01:55:42.6202852Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:42.6232757Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:42.6262769Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:42.6282587Z 
+2026-10-20T01:55:42.6303354Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:42.6349160Z warning: UEOT/V3/InformationPacking.lean:91:2: Try this: 
+2026-10-20T01:55:42.6353571Z   letI̵
+2026-10-20T01:55:42.6382520Z 
+2026-10-20T01:55:42.6412956Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:42.6442773Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:42.6443452Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:42.6443783Z 
+2026-10-20T01:55:42.6444092Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:43.6883720Z ✔ [8715/8739] Built UEOT.V3.QSDPerron (3.4s)
+2026-10-20T01:55:44.3885438Z ✔ [8716/8739] Built UEOTQM.Selector (4.4s)
+2026-10-20T01:55:44.6913943Z ✔ [8717/8739] Built UEOT.V3.StructuredQuotient (5.7s)
+2026-10-20T01:55:45.0894002Z ⚠ [8718/8739] Built UEOT.V3.TransportDefect (2.5s)
+2026-10-20T01:55:45.0923278Z warning: UEOT/V3/TransportDefect.lean:89:6: Try this: 
+2026-10-20T01:55:45.0953046Z   letI̵
+2026-10-20T01:55:45.0982859Z 
+2026-10-20T01:55:45.0993169Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.0993894Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.0994640Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.0995583Z 
+2026-10-20T01:55:45.0995987Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.0996686Z warning: UEOT/V3/TransportDefect.lean:97:6: Try this: 
+2026-10-20T01:55:45.0997267Z   letI̵
+2026-10-20T01:55:45.0997551Z 
+2026-10-20T01:55:45.0997881Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.0998536Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.0999198Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.0999653Z 
+2026-10-20T01:55:45.1000046Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.1001032Z warning: UEOT/V3/TransportDefect.lean:98:6: Try this: 
+2026-10-20T01:55:45.1001574Z   letI̵
+2026-10-20T01:55:45.1001850Z 
+2026-10-20T01:55:45.1002176Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.1002980Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.1003659Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.1004140Z 
+2026-10-20T01:55:45.1004552Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.1005222Z warning: UEOT/V3/TransportDefect.lean:99:6: Try this: 
+2026-10-20T01:55:45.1005749Z   letI̵
+2026-10-20T01:55:45.1006019Z 
+2026-10-20T01:55:45.1006349Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.1007052Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.1007896Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.1008425Z 
+2026-10-20T01:55:45.1009120Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.1010017Z warning: UEOT/V3/TransportDefect.lean:112:6: Try this: 
+2026-10-20T01:55:45.1010772Z   letI̵
+2026-10-20T01:55:45.1011115Z 
+2026-10-20T01:55:45.1011543Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.1012486Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.1013496Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.1014072Z 
+2026-10-20T01:55:45.1014561Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.1015426Z warning: UEOT/V3/TransportDefect.lean:114:6: Try this: 
+2026-10-20T01:55:45.1016151Z   letI̵
+2026-10-20T01:55:45.1016458Z 
+2026-10-20T01:55:45.1030119Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.1044793Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.1077605Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.1102592Z 
+2026-10-20T01:55:45.1132902Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.1133468Z warning: UEOT/V3/TransportDefect.lean:116:6: Try this: 
+2026-10-20T01:55:45.1133963Z   letI̵
+2026-10-20T01:55:45.1134088Z 
+2026-10-20T01:55:45.1134289Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.1134809Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.1135323Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.1135620Z 
+2026-10-20T01:55:45.1135871Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.6899955Z ⚠ [8719/8739] Built UEOT.V3.ProcessInterface (2.0s)
+2026-10-20T01:55:45.6900685Z warning: UEOT/V3/ProcessInterface.lean:124:2: Try this: 
+2026-10-20T01:55:45.6901253Z   letI̵
+2026-10-20T01:55:45.6901449Z 
+2026-10-20T01:55:45.6901700Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.6902407Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.6903074Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.6903983Z 
+2026-10-20T01:55:45.6904297Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.6904864Z warning: UEOT/V3/ProcessInterface.lean:125:2: Try this: 
+2026-10-20T01:55:45.6905327Z   letI̵
+2026-10-20T01:55:45.6905530Z 
+2026-10-20T01:55:45.6905775Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.6906314Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.6906874Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.6907224Z 
+2026-10-20T01:55:45.6907727Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.6908287Z warning: UEOT/V3/ProcessInterface.lean:126:2: Try this: 
+2026-10-20T01:55:45.6908713Z   letI̵
+2026-10-20T01:55:45.6908902Z 
+2026-10-20T01:55:45.6909133Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.6909675Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.6910228Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.6910577Z 
+2026-10-20T01:55:45.6910872Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.6911411Z warning: UEOT/V3/ProcessInterface.lean:127:2: Try this: 
+2026-10-20T01:55:45.6911833Z   letI̵
+2026-10-20T01:55:45.6912021Z 
+2026-10-20T01:55:45.6912400Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.6912928Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.6913486Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.6913845Z 
+2026-10-20T01:55:45.6914154Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.6914699Z warning: UEOT/V3/ProcessInterface.lean:129:2: Try this: 
+2026-10-20T01:55:45.6915118Z   letI̵
+2026-10-20T01:55:45.6915358Z 
+2026-10-20T01:55:45.6915596Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.6916124Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.6916669Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.6917015Z 
+2026-10-20T01:55:45.6917305Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:45.6917851Z warning: UEOT/V3/ProcessInterface.lean:131:2: Try this: 
+2026-10-20T01:55:45.6918272Z   letI̵
+2026-10-20T01:55:45.6918457Z 
+2026-10-20T01:55:45.6918685Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:45.6919235Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:45.6919784Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:45.6920129Z 
+2026-10-20T01:55:45.6920413Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.2983863Z ⚠ [8720/8739] Built UEOT.V3.Compression.TransportCertificate (2.6s)
+2026-10-20T01:55:48.2985275Z warning: UEOT/V3/Compression/TransportCertificate.lean:282:2: Try this: 
+2026-10-20T01:55:48.2985935Z   letI̵
+2026-10-20T01:55:48.2986237Z 
+2026-10-20T01:55:48.2986552Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.2987164Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.2987845Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.2988272Z 
+2026-10-20T01:55:48.2988664Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.2989419Z warning: UEOT/V3/Compression/TransportCertificate.lean:283:2: Try this: 
+2026-10-20T01:55:48.2990006Z   letI̵
+2026-10-20T01:55:48.2990249Z 
+2026-10-20T01:55:48.2990613Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.2991233Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.2992138Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.2992682Z 
+2026-10-20T01:55:48.2993053Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.2993770Z warning: UEOT/V3/Compression/TransportCertificate.lean:284:2: Try this: 
+2026-10-20T01:55:48.2994376Z   letI̵
+2026-10-20T01:55:48.2994614Z 
+2026-10-20T01:55:48.2994902Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.2995519Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.2996334Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.2996764Z 
+2026-10-20T01:55:48.2997138Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.2997837Z warning: UEOT/V3/Compression/TransportCertificate.lean:285:2: Try this: 
+2026-10-20T01:55:48.2998435Z   letI̵
+2026-10-20T01:55:48.2998682Z 
+2026-10-20T01:55:48.2999057Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.2999711Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3000393Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3000819Z 
+2026-10-20T01:55:48.3001182Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3001849Z warning: UEOT/V3/Compression/TransportCertificate.lean:287:2: Try this: 
+2026-10-20T01:55:48.3002559Z   letI̵
+2026-10-20T01:55:48.3002807Z 
+2026-10-20T01:55:48.3003202Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3003823Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3004454Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3004876Z 
+2026-10-20T01:55:48.3005231Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3005920Z warning: UEOT/V3/Compression/TransportCertificate.lean:289:2: Try this: 
+2026-10-20T01:55:48.3006466Z   letI̵
+2026-10-20T01:55:48.3006705Z 
+2026-10-20T01:55:48.3006998Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3007614Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3008214Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3008621Z 
+2026-10-20T01:55:48.3008978Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3009651Z warning: UEOT/V3/Compression/TransportCertificate.lean:394:4: Try this: 
+2026-10-20T01:55:48.3010201Z   letI̵
+2026-10-20T01:55:48.3010445Z 
+2026-10-20T01:55:48.3010749Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3011414Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3012057Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3012613Z 
+2026-10-20T01:55:48.3012981Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3013663Z warning: UEOT/V3/Compression/TransportCertificate.lean:403:4: Try this: 
+2026-10-20T01:55:48.3014243Z   letI̵
+2026-10-20T01:55:48.3014497Z 
+2026-10-20T01:55:48.3014790Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3015388Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3015989Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3016395Z 
+2026-10-20T01:55:48.3016744Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3017464Z warning: UEOT/V3/Compression/TransportCertificate.lean:404:4: Try this: 
+2026-10-20T01:55:48.3018032Z   letI̵
+2026-10-20T01:55:48.3018267Z 
+2026-10-20T01:55:48.3018550Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3019387Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3020022Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3020438Z 
+2026-10-20T01:55:48.3020771Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3021476Z warning: UEOT/V3/Compression/TransportCertificate.lean:406:4: Try this: 
+2026-10-20T01:55:48.3022025Z   letI̵
+2026-10-20T01:55:48.3022382Z 
+2026-10-20T01:55:48.3022667Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3023448Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3024116Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3024550Z 
+2026-10-20T01:55:48.3024896Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3025573Z warning: UEOT/V3/Compression/TransportCertificate.lean:422:4: Try this: 
+2026-10-20T01:55:48.3026141Z   letI̵
+2026-10-20T01:55:48.3026383Z 
+2026-10-20T01:55:48.3026668Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3027343Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3028060Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3028491Z 
+2026-10-20T01:55:48.3028926Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3029603Z warning: UEOT/V3/Compression/TransportCertificate.lean:423:4: Try this: 
+2026-10-20T01:55:48.3030151Z   letI̵
+2026-10-20T01:55:48.3030397Z 
+2026-10-20T01:55:48.3030692Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3031297Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3031897Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3032418Z 
+2026-10-20T01:55:48.3032764Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3033456Z warning: UEOT/V3/Compression/TransportCertificate.lean:425:4: Try this: 
+2026-10-20T01:55:48.3034026Z   letI̵
+2026-10-20T01:55:48.3034259Z 
+2026-10-20T01:55:48.3034556Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3035164Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3035800Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3036209Z 
+2026-10-20T01:55:48.3036581Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3037303Z warning: UEOT/V3/Compression/TransportCertificate.lean:427:4: Try this: 
+2026-10-20T01:55:48.3037853Z   letI̵
+2026-10-20T01:55:48.3038076Z 
+2026-10-20T01:55:48.3038362Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3038956Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3039604Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3040022Z 
+2026-10-20T01:55:48.3040410Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3041135Z warning: UEOT/V3/Compression/TransportCertificate.lean:430:4: Try this: 
+2026-10-20T01:55:48.3041714Z   letI̵
+2026-10-20T01:55:48.3041961Z 
+2026-10-20T01:55:48.3042397Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3043014Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3043667Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3044088Z 
+2026-10-20T01:55:48.3044465Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3045172Z warning: UEOT/V3/Compression/TransportCertificate.lean:484:2: Try this: 
+2026-10-20T01:55:48.3045968Z   letI̵
+2026-10-20T01:55:48.3046222Z 
+2026-10-20T01:55:48.3046515Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3047128Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3047772Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3048205Z 
+2026-10-20T01:55:48.3048560Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3049331Z warning: UEOT/V3/Compression/TransportCertificate.lean:485:2: Try this: 
+2026-10-20T01:55:48.3049913Z   letI̵
+2026-10-20T01:55:48.3050154Z 
+2026-10-20T01:55:48.3050599Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3051184Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3051821Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3052373Z 
+2026-10-20T01:55:48.3052742Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3053444Z warning: UEOT/V3/Compression/TransportCertificate.lean:486:2: Try this: 
+2026-10-20T01:55:48.3054015Z   letI̵
+2026-10-20T01:55:48.3054252Z 
+2026-10-20T01:55:48.3054550Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3055129Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3055733Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3056139Z 
+2026-10-20T01:55:48.3056478Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3057163Z warning: UEOT/V3/Compression/TransportCertificate.lean:487:2: Try this: 
+2026-10-20T01:55:48.3057704Z   letI̵
+2026-10-20T01:55:48.3057937Z 
+2026-10-20T01:55:48.3058216Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3058800Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3059466Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3059895Z 
+2026-10-20T01:55:48.3060243Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3060949Z warning: UEOT/V3/Compression/TransportCertificate.lean:489:2: Try this: 
+2026-10-20T01:55:48.3061529Z   letI̵
+2026-10-20T01:55:48.3061777Z 
+2026-10-20T01:55:48.3062060Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3062793Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3063417Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3063832Z 
+2026-10-20T01:55:48.3064185Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3064899Z warning: UEOT/V3/Compression/TransportCertificate.lean:491:2: Try this: 
+2026-10-20T01:55:48.3065455Z   letI̵
+2026-10-20T01:55:48.3065691Z 
+2026-10-20T01:55:48.3065982Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3066583Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3067204Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3067612Z 
+2026-10-20T01:55:48.3067972Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3068674Z warning: UEOT/V3/Compression/TransportCertificate.lean:493:2: Try this: 
+2026-10-20T01:55:48.3069269Z   letI̵
+2026-10-20T01:55:48.3069565Z 
+2026-10-20T01:55:48.3069854Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-20T01:55:48.3070468Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-20T01:55:48.3071147Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-20T01:55:48.3071589Z 
+2026-10-20T01:55:48.3071947Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-20T01:55:48.3072991Z warning: UEOT/V3/Compression/TransportCertificate.lean:471:27: Variable name `hfr` is not explicitly referenced.
+2026-10-20T01:55:48.3073913Z 
+2026-10-20T01:55:48.3074493Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-10-20T01:55:48.3075292Z   [apply] _hfr
+2026-10-20T01:55:48.3075595Z 
+2026-10-20T01:55:48.3075950Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-10-20T01:55:48.3977992Z ✔ [8721/8739] Built UEOTQM.Spectrum (3.0s)
+2026-10-20T01:55:49.4000610Z ✔ [8722/8739] Built UEOT.V3.Compression.QuotientDescent (4.7s)
+2026-10-20T01:55:50.0006852Z ✔ [8723/8739] Built UEOTQM.Transport (1.7s)
+2026-10-20T01:55:53.0061070Z ✔ [8724/8739] Built UEOT.V3.Compression.RecursiveSufficientState (3.6s)
+2026-10-20T01:55:56.7151116Z ✔ [8725/8739] Built UEOTQM.Operational (3.8s)
+2026-10-20T01:56:00.8203241Z ⚠ [8726/8739] Built UEOTQM.Observables (4.1s)
+2026-10-20T01:56:00.8204296Z warning: UEOTQM/Observables.lean:42:0: automatically included section variable(s) unused in theorem `UEOTQM.pairing_smul_left`:
+2026-10-20T01:56:00.8205443Z   [DecidableEq ι]
+2026-10-20T01:56:00.8206159Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:56:00.8207097Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:56:00.8207467Z 
+2026-10-20T01:56:00.8207884Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:56:00.8208849Z warning: UEOTQM/Observables.lean:46:0: automatically included section variable(s) unused in theorem `UEOTQM.pairing_smul_right`:
+2026-10-20T01:56:00.8209729Z   [DecidableEq ι]
+2026-10-20T01:56:00.8210432Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:56:00.8211255Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:56:00.8211612Z 
+2026-10-20T01:56:00.8212021Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:56:00.8213129Z warning: UEOTQM/Observables.lean:68:0: automatically included section variable(s) unused in theorem `UEOTQM.heisenberg_add`:
+2026-10-20T01:56:00.8213949Z   [DecidableEq ι]
+2026-10-20T01:56:00.8214639Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:56:00.8215455Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:56:00.8215815Z 
+2026-10-20T01:56:00.8216230Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:56:00.8217181Z warning: UEOTQM/Observables.lean:72:0: automatically included section variable(s) unused in theorem `UEOTQM.heisenberg_smul`:
+2026-10-20T01:56:00.8218003Z   [DecidableEq ι]
+2026-10-20T01:56:00.8218670Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:56:00.8219474Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:56:00.8219842Z 
+2026-10-20T01:56:00.8220238Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:56:00.8221171Z warning: UEOTQM/Observables.lean:82:0: automatically included section variable(s) unused in theorem `UEOTQM.trace_heisenberg`:
+2026-10-20T01:56:00.8221993Z   [DecidableEq ι]
+2026-10-20T01:56:00.8222793Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:56:00.8223598Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:56:00.8223956Z 
+2026-10-20T01:56:00.8224353Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:56:00.8225338Z warning: UEOTQM/Observables.lean:99:0: automatically included section variable(s) unused in theorem `UEOTQM.heisenberg_posSemidef`:
+2026-10-20T01:56:00.8226175Z   [DecidableEq ι]
+2026-10-20T01:56:00.8226845Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-20T01:56:00.8228019Z   omit [DecidableEq ι] in theorem ...
+2026-10-20T01:56:00.8228369Z 
+2026-10-20T01:56:00.8228761Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-20T01:56:05.6343724Z ✔ [8727/8739] Built UEOTQM.Weighted (4.8s)
+2026-10-20T01:56:06.3343502Z ✔ [8728/8739] Built UEOTQM.Effects (5.5s)
+2026-10-20T01:56:06.8443509Z ✔ [8729/8739] Built UEOTQM.FiniteCoordinates (6.0s)
+2026-10-20T01:56:12.7623739Z ✔ [8730/8739] Built UEOTQM.Exact (7.1s)
+2026-10-20T01:56:12.9594886Z ✔ [8731/8739] Built UEOTQM.Ragged (6.7s)
+2026-10-20T01:56:13.2618029Z ✔ [8732/8739] Built UEOTQM.Survival (7.6s)
+2026-10-20T01:56:13.7623511Z ✔ [8733/8739] Built UEOTQM.Stability (6.9s)
+2026-10-20T01:56:17.9753675Z ✔ [8734/8739] Built UEOTQM.Adaptive (5.1s)
+2026-10-20T01:56:19.2742604Z ✔ [8735/8739] Built UEOTQM.Cesaro (5.5s)
+2026-10-20T01:56:19.8740044Z ✔ [8736/8739] Built UEOTQM.Mixture (6.1s)
+2026-10-20T01:56:22.3766440Z ✔ [8737/8739] Built UEOTQM.ExactCertificate (4.4s)
+2026-10-20T01:56:25.7799620Z ✔ [8738/8739] Built UEOTQM (3.3s)
+2026-10-20T01:56:25.8227304Z Build completed successfully (8739 jobs).
+2026-10-20T01:56:25.8648713Z ##[group]Run set -o pipefail
+2026-10-20T01:56:25.8648982Z [36;1mset -o pipefail[0m
+2026-10-20T01:56:25.8649269Z [36;1mlake env lean scripts/AxiomAudit.lean 2>&1 | tee axiom-audit.log[0m
+2026-10-20T01:56:25.8649671Z [36;1mif grep -E '\b(sorryAx|Lean\.ofReduceBool|admit)\b' axiom-audit.log; then[0m
+2026-10-20T01:56:25.8649979Z [36;1m  exit 1[0m
+2026-10-20T01:56:25.8650154Z [36;1mfi[0m
+2026-10-20T01:56:25.8650330Z [36;1mpython3 scripts/check_axioms.py[0m
+2026-10-20T01:56:25.8695931Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-20T01:56:25.8696223Z ##[endgroup]
+2026-10-20T01:56:29.7895978Z 'UEOTQM.Density.ext' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.7922800Z 'UEOTQM.mass_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.7943831Z 'UEOTQM.trace_im_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.7963010Z 'UEOTQM.mass_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.7982825Z 'UEOTQM.Density.mass_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8014455Z 'UEOTQM.mass_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8026645Z 'UEOTQM.normalize_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8050451Z 'UEOTQM.krausMap_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8080864Z 'UEOTQM.krausMap_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8083253Z 'UEOTQM.trace_krausMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8086603Z 'UEOTQM.Instrument.branch_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8121260Z 'UEOTQM.Instrument.branch_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8122145Z 'UEOTQM.Instrument.sum_trace_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8142733Z 'UEOTQM.Instrument.sum_mass_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8152851Z 'UEOTQM.Instrument.probability_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8162858Z 'UEOTQM.Instrument.sum_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8169193Z 'UEOTQM.Instrument.probability_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8176795Z 'UEOTQM.Instrument.posterior_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8195686Z 'UEOTQM.Instrument.zero_probability_iff_zero_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8202831Z 'UEOTQM.ancillaKrausMap_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8204020Z 'UEOTQM.ancillaKrausMap_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8204800Z 'UEOTQM.recordOperator_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8205565Z 'UEOTQM.recordOperator_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8206282Z 'UEOTQM.response_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8206969Z 'UEOTQM.response_nil' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8207657Z 'UEOTQM.response_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8208401Z 'UEOTQM.totalRecordMass_eq_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8209165Z 'UEOTQM.totalRecordMass_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8209952Z 'UEOTQM.responseClass_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8211059Z 'UEOTQM.existsUnique_responseDecoder' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8211895Z 'UEOTQM.probability_eq_of_response_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8212813Z 'UEOTQM.response_posterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8213533Z 'UEOTQM.posterior_response_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8214274Z 'UEOTQM.nextResponse_eq_none_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8215052Z 'UEOTQM.nextResponse_eq_of_response_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8215907Z 'UEOTQM.nextResponse_inputFiberCompatible' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8216804Z 'UEOTQM.existsUnique_reachableResponseUpdate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8217634Z 'UEOTQM.Selector.selector_finite_bounds' depends on axioms: [propext, Quot.sound]
+2026-10-20T01:56:29.8218477Z 'UEOTQM.Selector.selects_three_without_atomicity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8219449Z 'UEOTQM.Selector.dropping_color_bound_admits_four_families' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8220457Z 'UEOTQM.Selector.dropping_weak_budget_admits_six_families' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8233099Z 'UEOTQM.Selector.dropping_cubic_equation_admits_one_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8234104Z 'UEOTQM.Selector.dropping_nonempty_family_count_admits_empty_spectrum' depends on axioms: [propext,
+2026-10-20T01:56:29.8242905Z  Classical.choice,
+2026-10-20T01:56:29.8243324Z  Quot.sound]
+2026-10-20T01:56:29.8244277Z 'UEOTQM.Selector.homogeneous_leptons_recover_cubic_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8245539Z 'UEOTQM.Selector.mixed_lepton_template_admits_two_families' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8246572Z 'UEOTQM.Selector.cubic_cancellation_replicates' depends on axioms: [propext]
+2026-10-20T01:56:29.8247385Z 'UEOTQM.Selector.replicated_weak_screening' depends on axioms: [propext]
+2026-10-20T01:56:29.8248315Z 'UEOTQM.Selector.two_or_more_three_family_packets_fail_weak_budget' depends on axioms: [propext, Quot.sound]
+2026-10-20T01:56:29.8249356Z 'UEOTQM.Transport.scalarBudget_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8250330Z 'UEOTQM.Transport.scalarBudget_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8251320Z 'UEOTQM.Transport.scalarBudget_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8253012Z 'UEOTQM.Transport.scalar_transport_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8259529Z 'UEOTQM.normalize' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8260467Z 'UEOTQM.Instrument.posterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8261440Z 'UEOTQM.nextReachableResponse_map_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8262662Z 'UEOTQM.nextReachableResponse_eq_of_response_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8263810Z 'UEOTQM.nextReachableResponse_inputFiberCompatible' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8264925Z 'UEOTQM.existsUnique_closedReachableUpdate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8265921Z 'UEOTQM.nextReachableResponse' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8266817Z 'UEOTQM.pairing_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8267880Z 'UEOTQM.pairing_zero_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8268803Z 'UEOTQM.pairing_add_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8269651Z 'UEOTQM.pairing_smul_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8270504Z 'UEOTQM.pairing_smul_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8271373Z 'UEOTQM.pairing_sum_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8272360Z 'UEOTQM.heisenberg_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8273205Z 'UEOTQM.heisenberg_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8274077Z 'UEOTQM.heisenberg_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8274929Z 'UEOTQM.trace_heisenberg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8275813Z 'UEOTQM.pairing_heisenberg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8276718Z 'UEOTQM.heisenberg_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8277636Z 'UEOTQM.recordEffect_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8278572Z 'UEOTQM.recordEffect_isHermitian' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8279532Z 'UEOTQM.mass_recordOperator_eq_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8280456Z 'UEOTQM.response_eq_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8281339Z 'UEOTQM.recordEffect_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8282409Z 'UEOTQM.one_mem_observableSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8283388Z 'UEOTQM.recordEffect_mem_of_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8284373Z 'UEOTQM.observableSpace_le_of_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8285400Z 'UEOTQM.observableSpace_pullbackClosed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8286453Z 'UEOTQM.isHermitian_of_mem_observableSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8287549Z 'UEOTQM.response_eq_iff_pairing_observableSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8288614Z 'UEOTQM.observableSpace_finiteDimensional' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8289665Z 'UEOTQM.exists_finite_wordEffect_generators' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8290796Z 'UEOTQM.FiniteObservablePresentation.observable_mem_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8292416Z 'UEOTQM.FiniteObservablePresentation.observable_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8293633Z 'UEOTQM.FiniteObservablePresentation.one_mem_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8294839Z 'UEOTQM.FiniteObservablePresentation.pullback_observable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8296059Z 'UEOTQM.FiniteObservablePresentation.span_pullbackClosed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8297290Z 'UEOTQM.FiniteObservablePresentation.span_eq_observableSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8298525Z 'UEOTQM.FiniteObservablePresentation.recordEffect_mem_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8299651Z 'UEOTQM.FiniteObservablePresentation.operatorCoordinates_unit' depends on axioms: [propext,
+2026-10-20T01:56:29.8300462Z  Classical.choice,
+2026-10-20T01:56:29.8300883Z  Quot.sound]
+2026-10-20T01:56:29.8301830Z 'UEOTQM.FiniteObservablePresentation.coordinates_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8303199Z 'UEOTQM.FiniteObservablePresentation.coordinates_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8304345Z 'UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq' depends on axioms: [propext,
+2026-10-20T01:56:29.8305119Z  Classical.choice,
+2026-10-20T01:56:29.8305521Z  Quot.sound]
+2026-10-20T01:56:29.8306165Z 'UEOTQM.FiniteObservablePresentation.operatorCoordinates_branch' depends on axioms: [propext,
+2026-10-20T01:56:29.8306942Z  Classical.choice,
+2026-10-20T01:56:29.8307355Z  Quot.sound]
+2026-10-20T01:56:29.8308034Z 'UEOTQM.FiniteObservablePresentation.operatorCoordinates_record' depends on axioms: [propext,
+2026-10-20T01:56:29.8308839Z  Classical.choice,
+2026-10-20T01:56:29.8309270Z  Quot.sound]
+2026-10-20T01:56:29.8309995Z 'UEOTQM.FiniteObservablePresentation.response_eq_recordCoordinates_unit' depends on axioms: [propext,
+2026-10-20T01:56:29.8310830Z  Classical.choice,
+2026-10-20T01:56:29.8311249Z  Quot.sound]
+2026-10-20T01:56:29.8312093Z 'UEOTQM.FiniteObservablePresentation.probability_eq_applyBranch_unit' depends on axioms: [propext,
+2026-10-20T01:56:29.8313361Z  Classical.choice,
+2026-10-20T01:56:29.8313789Z  Quot.sound]
+2026-10-20T01:56:29.8314582Z 'UEOTQM.FiniteObservablePresentation.coordinates_posterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8315833Z 'UEOTQM.FiniteObservablePresentation.coordinates_posterior_eq_normalizedBranch' depends on axioms: [propext,
+2026-10-20T01:56:29.8316713Z  Classical.choice,
+2026-10-20T01:56:29.8317117Z  Quot.sound]
+2026-10-20T01:56:29.8317795Z 'UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range' depends on axioms: [propext,
+2026-10-20T01:56:29.8318561Z  Classical.choice,
+2026-10-20T01:56:29.8318979Z  Quot.sound]
+2026-10-20T01:56:29.8319680Z 'UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val' depends on axioms: [propext,
+2026-10-20T01:56:29.8320477Z  Classical.choice,
+2026-10-20T01:56:29.8320878Z  Quot.sound]
+2026-10-20T01:56:29.8321715Z 'UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_posterior' depends on axioms: [propext,
+2026-10-20T01:56:29.8322689Z  Classical.choice,
+2026-10-20T01:56:29.8323096Z  Quot.sound]
+2026-10-20T01:56:29.8323796Z 'UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_none_iff' depends on axioms: [propext,
+2026-10-20T01:56:29.8324617Z  Classical.choice,
+2026-10-20T01:56:29.8325033Z  Quot.sound]
+2026-10-20T01:56:29.8325586Z 'UEOTQM.Adaptive.Protocol.word_injective' does not depend on any axioms
+2026-10-20T01:56:29.8326450Z 'UEOTQM.Adaptive.sum_leafWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8327366Z 'UEOTQM.Adaptive.leafWeight_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8328674Z 'UEOTQM.Adaptive.leafProbability_eq_response' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8329781Z 'UEOTQM.Adaptive.leafProbability_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8330828Z 'UEOTQM.Adaptive.sum_leafProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8331848Z 'UEOTQM.Adaptive.leafProbability_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8333164Z 'UEOTQM.Adaptive.leafProbability_eq_of_response_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8334375Z 'UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8335590Z 'UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8336718Z 'UEOTQM.Adaptive.leafProbability_posterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8337884Z 'UEOTQM.Spectrum.quarkCount_le_length' depends on axioms: [propext, Quot.sound]
+2026-10-20T01:56:29.8338855Z 'UEOTQM.Spectrum.familyCubic_eq_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8339798Z 'UEOTQM.Spectrum.leptonCount_eq_length_of_homogeneous' depends on axioms: [propext]
+2026-10-20T01:56:29.8340789Z 'UEOTQM.Spectrum.ExtraMatter.screening_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8341819Z 'UEOTQM.Spectrum.extraScreening_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8343041Z 'UEOTQM.Spectrum.familyScreening_eq_of_active' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8344120Z 'UEOTQM.Spectrum.selector_anomaly_of_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8345215Z 'UEOTQM.Spectrum.selector_budget_of_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8346256Z 'UEOTQM.Spectrum.spectrum_selects_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8347253Z 'UEOTQM.Spectrum.canonical_rows_and_higgs' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8348242Z 'UEOTQM.Spectrum.mixed_two_family_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8349258Z 'UEOTQM.Spectrum.replicated_six_family_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8350317Z 'UEOTQM.Spectrum.compensated_one_family_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8351385Z 'UEOTQM.Spectrum.zero_anomaly_unit_one_family_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8352625Z 'UEOTQM.Spectrum.extra_screening_closes_positive_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8353695Z 'UEOTQM.pairingLinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8354603Z 'UEOTQM.heisenbergLinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8355732Z 'UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8356946Z 'UEOTQM.Adaptive.Protocol.leafFintype' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8357908Z 'UEOTQM.Spectrum.oneHiggs' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8358840Z 'UEOTQM.Spectrum.twentyHiggs' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8359732Z 'UEOTQM.sqrt_smul_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8360574Z 'UEOTQM.sqrt_smul_krausTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8361486Z 'UEOTQM.sqrt_smul_heisenbergTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8362901Z 'UEOTQM.krausMap_sqrtWeightedKraus' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8363902Z 'UEOTQM.heisenberg_sqrtWeightedKraus' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8364907Z 'UEOTQM.weightedKrausMap_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8365913Z 'UEOTQM.weightedHeisenberg_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8366911Z 'UEOTQM.pairing_weightedKrausMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8367918Z 'UEOTQM.WeightedInstrument.toInstrument' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8368985Z 'UEOTQM.WeightedInstrument.toInstrument_kraus' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8370112Z 'UEOTQM.WeightedInstrument.toInstrument_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8371428Z 'UEOTQM.WeightedInstrument.toInstrument_heisenberg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8372718Z 'UEOTQM.WeightedInstrument.toInstrument_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8373837Z 'UEOTQM.WeightedInstrument.branch_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8375081Z 'UEOTQM.WeightedInstrument.toInstrument_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8376265Z 'UEOTQM.WeightedInstrument.sum_mass_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8377458Z 'UEOTQM.WeightedInstrument.toInstrument_posterior_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8378535Z 'UEOTQM.zeroExtend_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8379494Z 'UEOTQM.zeroExtend_of_not_mem_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8380432Z 'UEOTQM.sum_zeroExtend' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8381309Z 'UEOTQM.zeroExtend_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8382401Z 'UEOTQM.weightedKrausMap_zeroExtend' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8383417Z 'UEOTQM.weightedHeisenberg_zeroExtend' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8384390Z 'UEOTQM.weightedGram_zeroExtend' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8385367Z 'UEOTQM.RaggedInstrument.toWeighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8386430Z 'UEOTQM.RaggedInstrument.toWeighted_weight_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8387519Z 'UEOTQM.RaggedInstrument.toWeighted_kraus_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8481839Z 'UEOTQM.RaggedInstrument.toWeighted_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8483305Z 'UEOTQM.RaggedInstrument.toWeighted_toInstrument_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8512942Z 'UEOTQM.RaggedInstrument.toWeighted_heisenberg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8521293Z 'UEOTQM.RaggedInstrument.toWeighted_toInstrument_kraus_of_not_mem_range' depends on axioms: [propext,
+2026-10-20T01:56:29.8522102Z  Classical.choice,
+2026-10-20T01:56:29.8522645Z  Quot.sound]
+2026-10-20T01:56:29.8523381Z 'UEOTQM.WeightedInstrument.padOutcomes' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8524491Z 'UEOTQM.WeightedInstrument.padOutcomes_branch_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8525543Z 'UEOTQM.WeightedInstrument.padOutcomes_branch_of_not_mem_range' depends on axioms: [propext,
+2026-10-20T01:56:29.8526589Z  Classical.choice,
+2026-10-20T01:56:29.8526981Z  Quot.sound]
+2026-10-20T01:56:29.8527711Z 'UEOTQM.WeightedInstrument.padOutcomes_heisenberg_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8528815Z 'UEOTQM.WeightedInstrument.padOutcomes_heisenberg_of_not_mem_range' depends on axioms: [propext,
+2026-10-20T01:56:29.8529577Z  Classical.choice,
+2026-10-20T01:56:29.8529963Z  Quot.sound]
+2026-10-20T01:56:29.8530698Z 'UEOTQM.WeightedInstrument.padOutcomes_probability_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8531813Z 'UEOTQM.WeightedInstrument.padOutcomes_probability_of_not_mem_range' depends on axioms: [propext,
+2026-10-20T01:56:29.8532692Z  Classical.choice,
+2026-10-20T01:56:29.8533082Z  Quot.sound]
+2026-10-20T01:56:29.8533554Z 'UEOTQM.Exact.MatrixData.ext' does not depend on any axioms
+2026-10-20T01:56:29.8534365Z 'UEOTQM.Exact.MatrixData.toMatrix_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8535568Z 'UEOTQM.Exact.MatrixData.toMatrix_im' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8536605Z 'UEOTQM.Exact.MatrixData.toMatrix_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8537656Z 'UEOTQM.Exact.MatrixData.toMatrix_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8538644Z 'UEOTQM.Exact.MatrixData.toMatrix_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8539610Z 'UEOTQM.Exact.MatrixData.toMatrix_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8540607Z 'UEOTQM.Exact.MatrixData.toMatrix_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8541583Z 'UEOTQM.Exact.MatrixData.toMatrix_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8542668Z 'UEOTQM.Exact.MatrixData.toMatrix_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8543636Z 'UEOTQM.Exact.MatrixData.toMatrix_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8544609Z 'UEOTQM.Exact.MatrixData.toMatrix_adjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8545585Z 'UEOTQM.Exact.MatrixData.toMatrix_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8546598Z 'UEOTQM.Exact.MatrixData.toMatrix_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8547598Z 'UEOTQM.Exact.MatrixData.instDecidableEq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8548592Z 'UEOTQM.Exact.toMatrix_weightedBranch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8549567Z 'UEOTQM.Exact.toMatrix_weightedPullback' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8550575Z 'UEOTQM.Exact.toMatrix_weightedCompleteness' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8551637Z 'UEOTQM.Exact.toMatrix_weightedBranch_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8552876Z 'UEOTQM.Exact.toMatrix_weightedPullback_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8553958Z 'UEOTQM.Exact.Examples.imaginaryUnit_square_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8555054Z 'UEOTQM.Exact.Examples.imaginaryUnit_adjoint_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8556157Z 'UEOTQM.Exact.Examples.imaginaryUnit_square_complex' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8557272Z 'UEOTQM.Exact.Examples.hadamard_complete_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8558339Z 'UEOTQM.Exact.Examples.hadamard_complete_complex' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8559597Z 'UEOTQM.ExactCertificate.check_eq_true_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8560606Z 'UEOTQM.ExactCertificate.check_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8561584Z 'UEOTQM.ExactCertificate.branch_eq_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8628915Z 'UEOTQM.ExactCertificate.heisenberg_eq_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8637514Z 'UEOTQM.ExactCertificate.exactRecordEffect_toMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8655243Z 'UEOTQM.ExactCertificate.basis_toMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8661712Z 'UEOTQM.ExactCertificate.coordinates_eq_iff_response_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8693078Z 'UEOTQM.ExactCertificate.response_eq_recordCoordinates_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8707125Z 'UEOTQM.ExactCertificate.adaptive_leafProbability_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8708255Z 'UEOTQM.ExactCertificate.conditionsDecidable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8732546Z 'UEOTQM.ExactCertificate.weightedInstrument' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8739975Z 'UEOTQM.ExactCertificate.instrumentFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8759451Z 'UEOTQM.ExactCertificate.presentation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8792926Z 'UEOTQM.pairing_sub_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8809650Z 'UEOTQM.pairing_add_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8812927Z 'UEOTQM.pairing_sum_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8819412Z 'UEOTQM.pairing_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8823024Z 'UEOTQM.Effect.ext' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8837339Z 'UEOTQM.Effect.zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8857639Z 'UEOTQM.Effect.one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8883996Z 'UEOTQM.Effect.complement' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8920303Z 'UEOTQM.Effect.zero_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8940179Z 'UEOTQM.Effect.one_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8952661Z 'UEOTQM.Effect.complement_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8973079Z 'UEOTQM.Effect.pairing_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.8988521Z 'UEOTQM.Effect.pairing_le_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9002828Z 'UEOTQM.Effect.probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9015651Z 'UEOTQM.Effect.probability_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9045553Z 'UEOTQM.Effect.probability_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9069611Z 'UEOTQM.Effect.probability_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9076746Z 'UEOTQM.Effect.probability_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9098891Z 'UEOTQM.Effect.probability_complement' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9103023Z 'UEOTQM.Instrument.channel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9113153Z 'UEOTQM.Instrument.channel_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9126145Z 'UEOTQM.Instrument.trace_channel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9132824Z 'UEOTQM.Instrument.channelState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9154970Z 'UEOTQM.Instrument.channelState_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9155953Z 'UEOTQM.Instrument.pullbackEffects' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9156528Z 'UEOTQM.Instrument.pullbackEffects_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9157087Z 'UEOTQM.Instrument.pairing_pullbackEffects' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9157607Z 'UEOTQM.Instrument.pullbackEffect' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9158111Z 'UEOTQM.Instrument.pairing_pullbackEffect' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9158848Z 'UEOTQM.Instrument.probability_channelState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9159368Z 'UEOTQM.Instrument.branchEffect' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9159879Z 'UEOTQM.Instrument.branchEffect_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9160388Z 'UEOTQM.Instrument.pairing_branchEffect' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9160920Z 'UEOTQM.Instrument.probability_branchEffect_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9161466Z 'UEOTQM.Instrument.probability_posterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9162032Z 'UEOTQM.recordTest' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9162785Z 'UEOTQM.recordTest_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9163535Z 'UEOTQM.recordEffect_complement_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9164282Z 'UEOTQM.response_eq_effect_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9164954Z 'UEOTQM.response_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9165573Z 'UEOTQM.effectGapSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9166275Z 'UEOTQM.Effect.probability_abs_sub_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9167011Z 'UEOTQM.effectGapSet_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9167713Z 'UEOTQM.effectGapSet_bddAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9168394Z 'UEOTQM.effectDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9169156Z 'UEOTQM.Effect.probability_sub_le_effectDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9169904Z 'UEOTQM.effectDistance_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9170672Z 'UEOTQM.effectDistance_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9171405Z 'UEOTQM.effectDistance_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9172110Z 'UEOTQM.effectDistance_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9172991Z 'UEOTQM.effectDistance_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9173700Z 'UEOTQM.effectDistance_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9174466Z 'UEOTQM.effectDistance_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9175260Z 'UEOTQM.response_sub_le_effectDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9176318Z 'UEOTQM.channelDefect' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9177040Z 'UEOTQM.channelDefect_bddAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9177793Z 'UEOTQM.channelDefect_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9178508Z 'UEOTQM.channelDefect_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9179257Z 'UEOTQM.effectDistance_le_channelDefect' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9180032Z 'UEOTQM.channelDefect_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9180847Z 'UEOTQM.Instrument.channelState_effectDistance_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9181791Z 'UEOTQM.Instrument.probability_sub_le_effectDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9223377Z 'UEOTQM.Instrument.probability_pos_of_effectDistance_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9224462Z 'UEOTQM.Instrument.channelState_perturbation_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9225474Z 'UEOTQM.normalized_probability_difference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9226452Z 'UEOTQM.Instrument.posterior_effectDistance_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9227396Z 'UEOTQM.Instrument.posterior_effectDistance_le_of_probability_lower_bound' depends on axioms: [propext,
+2026-10-20T01:56:29.9228062Z  Classical.choice,
+2026-10-20T01:56:29.9228327Z  Quot.sound]
+2026-10-20T01:56:29.9228807Z 'UEOTQM.channelTrajectory' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9229589Z 'UEOTQM.channelTrajectory_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9230407Z 'UEOTQM.channelTrajectory_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9231290Z 'UEOTQM.channelTrajectory_transport_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9232147Z 'UEOTQM.scalarBudget_one_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9233195Z 'UEOTQM.channelTrajectory_effectDistance_le_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9234143Z 'UEOTQM.channelTrajectory_response_sub_le_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9234942Z 'UEOTQM.Mixture.tv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9235631Z 'UEOTQM.Mixture.tv_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9236327Z 'UEOTQM.Mixture.tv_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9237046Z 'UEOTQM.Mixture.tv_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9237764Z 'UEOTQM.Mixture.tv_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9238525Z 'UEOTQM.Mixture.expectation_sub_le_tv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9239320Z 'UEOTQM.Mixture.density' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9240081Z 'UEOTQM.Mixture.density_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9240915Z 'UEOTQM.Mixture.probability_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9241784Z 'UEOTQM.Mixture.density_weight_change_le_tv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9242831Z 'UEOTQM.Mixture.density_fixed_weights_le_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9243717Z 'UEOTQM.Mixture.density_joint_change_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9244916Z 'UEOTQM.Mixture.weightedInstrument' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9245730Z 'UEOTQM.Mixture.instrument' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9246485Z 'UEOTQM.Mixture.instrument_kraus' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9247276Z 'UEOTQM.Mixture.instrument_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9248102Z 'UEOTQM.Mixture.instrument_heisenberg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9248889Z 'UEOTQM.Mixture.instrument_channel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9249706Z 'UEOTQM.Mixture.instrument_channelState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9250590Z 'UEOTQM.Mixture.channelDefect_weight_change_le_tv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9251737Z 'UEOTQM.Mixture.channelDefect_fixed_weights_le_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9252861Z 'UEOTQM.Mixture.channelDefect_joint_change_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9253793Z 'UEOTQM.Mixture.RationalWeights.toWeights' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9254629Z 'UEOTQM.Mixture.rationalTV' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9255442Z 'UEOTQM.Mixture.tv_toWeights' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9256330Z 'UEOTQM.Mixture.density_weight_change_le_rational_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9257258Z 'UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget' depends on axioms: [propext,
+2026-10-20T01:56:29.9257894Z  Classical.choice,
+2026-10-20T01:56:29.9258170Z  Quot.sound]
+2026-10-20T01:56:29.9258768Z 'UEOTQM.Mixture.channelDefect_fixed_weights_le_rational_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9259683Z 'UEOTQM.Mixture.rationalJointBudget' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9260499Z 'UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget' depends on axioms: [propext,
+2026-10-20T01:56:29.9261058Z  Classical.choice,
+2026-10-20T01:56:29.9261326Z  Quot.sound]
+2026-10-20T01:56:29.9261774Z 'UEOTQM.Cesaro.iterateState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9262700Z 'UEOTQM.Cesaro.iterateState_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9263486Z 'UEOTQM.Cesaro.iterateState_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9264269Z 'UEOTQM.Cesaro.channelLinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9265064Z 'UEOTQM.Cesaro.channelLinear_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9265832Z 'UEOTQM.Cesaro.orbitSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9266591Z 'UEOTQM.Cesaro.orbitSum_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9267364Z 'UEOTQM.Cesaro.orbitSum_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9268115Z 'UEOTQM.Cesaro.averageState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9268915Z 'UEOTQM.Cesaro.averageState_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9269790Z 'UEOTQM.Cesaro.orbitSum_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9270592Z 'UEOTQM.Cesaro.matrix_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9271383Z 'UEOTQM.Cesaro.pairing_sub_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9272588Z 'UEOTQM.Cesaro.probability_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9273442Z 'UEOTQM.Cesaro.probability_residual_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9274334Z 'UEOTQM.Cesaro.effectDistance_residual_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9275244Z 'UEOTQM.Cesaro.density_operatorNorm_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9276107Z 'UEOTQM.Cesaro.densityMatrices' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9276920Z 'UEOTQM.Cesaro.densityMatrices_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9277782Z 'UEOTQM.Cesaro.densityMatrices_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9278665Z 'UEOTQM.Cesaro.continuous_channel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9279683Z 'UEOTQM.Cesaro.matrix_residual_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9280496Z 'UEOTQM.Cesaro.averageSequence' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9281335Z 'UEOTQM.Cesaro.matrix_residual_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9282362Z 'UEOTQM.Cesaro.subsequence_limit_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9283260Z 'UEOTQM.Cesaro.subsequence_limit_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9284141Z 'UEOTQM.Cesaro.exists_stationary_subsequence' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9285036Z 'UEOTQM.Cesaro.exists_stationary_of_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9285903Z 'UEOTQM.Cesaro.normalizedIdentity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9286731Z 'UEOTQM.Cesaro.exists_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9287553Z 'UEOTQM.Survival.diagonalOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9288445Z 'UEOTQM.Survival.diagonalOperator_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9289332Z 'UEOTQM.Survival.mass_diagonalOperator' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9290189Z 'UEOTQM.Survival.diagonalOperator_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9291049Z 'UEOTQM.Survival.diagonalOperator_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9291894Z 'UEOTQM.Survival.diagonalDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9292906Z 'UEOTQM.Survival.diagonalDensity_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9293714Z 'UEOTQM.Survival.matrixUnit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9294483Z 'UEOTQM.Survival.matrixUnit_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9295306Z 'UEOTQM.Survival.matrixUnit_sandwich' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9296183Z 'UEOTQM.Survival.measurePrepare' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9297020Z 'UEOTQM.Survival.measurePrepare_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9297883Z 'UEOTQM.Survival.measurePrepare_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9298722Z 'UEOTQM.Survival.measurePrepare_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9299539Z 'UEOTQM.Survival.failureKernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9300612Z 'UEOTQM.Survival.failureKernel_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9301483Z 'UEOTQM.Survival.outcomeKernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9302500Z 'UEOTQM.Survival.outcomeKernel_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9303368Z 'UEOTQM.Survival.weightedInstrument' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9304176Z 'UEOTQM.Survival.instrument' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9304954Z 'UEOTQM.Survival.instrument_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9305706Z 'UEOTQM.Survival.success_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9306495Z 'UEOTQM.Survival.rowApply_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9307325Z 'UEOTQM.Survival.success_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9308397Z 'UEOTQM.Survival.success_posterior_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9309310Z 'UEOTQM.Survival.killedIterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9310319Z 'UEOTQM.Survival.killedIterate_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9311208Z 'UEOTQM.Survival.killedIterate_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9312057Z 'UEOTQM.Survival.survivalMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9313040Z 'UEOTQM.Survival.survivalMass_eq_response' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9313923Z 'UEOTQM.Survival.survivalMass_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9314779Z 'UEOTQM.Survival.conditionalState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9315594Z 'UEOTQM.Survival.qsd_killedIterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9316399Z 'UEOTQM.Survival.qsd_survival_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9317187Z 'UEOTQM.Survival.qsd_survival_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9317996Z 'UEOTQM.Survival.qsd_conditionalState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9318783Z 'UEOTQM.Survival.qsd_rate_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9319587Z 'UEOTQM.Survival.doobTransform_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9320406Z 'UEOTQM.Survival.doobInstrument' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9321182Z 'UEOTQM.Survival.doobDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9321985Z 'UEOTQM.Survival.doob_success_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9323012Z 'UEOTQM.Survival.doob_success_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9323876Z 'UEOTQM.Survival.doob_killedIterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9324704Z 'UEOTQM.Survival.doob_survivalMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:29.9325587Z 'UEOTQM.Survival.doob_conditionalState' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-20T01:56:30.2747727Z PASS: 392 actual Lean axiom reports use only the reviewed standard foundation
+2026-10-20T01:56:30.2820047Z ##[group]Run python3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir "$RUNNER_TEMP/ueot-qm-lean-exports"
+2026-10-20T01:56:30.2821056Z [36;1mpython3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir "$RUNNER_TEMP/ueot-qm-lean-exports"[0m
+2026-10-20T01:56:30.2871051Z shell: /usr/bin/bash -e {0}
+2026-10-20T01:56:30.2871375Z ##[endgroup]
+2026-10-20T01:56:31.0102600Z Verifying positive z
+2026-10-20T01:56:35.5344503Z Verifying positive hz
+2026-10-20T01:56:40.6100492Z Verifying positive hsz
+2026-10-20T01:56:46.5883845Z Verifying positive ragged
+2026-10-20T01:56:54.0703590Z Verifying positive d1
+2026-10-20T01:56:58.3462968Z Verifying positive d4
+2026-10-20T01:57:04.3243438Z Verifying negative and false witness negative_weight
+2026-10-20T01:57:12.9781584Z Verifying negative and false witness negative_basis
+2026-10-20T01:57:21.7304255Z Verifying negative and false witness negative_pullback
+2026-10-20T01:57:30.4786280Z Verifying negative and false witness negative_word
+2026-10-20T01:57:39.5407906Z {
+2026-10-20T01:57:39.5408182Z   "status": "PASS",
+2026-10-20T01:57:39.5408515Z   "receipt": "/home/runner/work/_temp/ueot-qm-lean-exports/verification.json",
+2026-10-20T01:57:39.5408839Z   "summary": {
+2026-10-20T01:57:39.5409047Z     "positive_passed": 6,
+2026-10-20T01:57:39.5409250Z     "positive_expected": 6,
+2026-10-20T01:57:39.5409446Z     "negative_passed": 4,
+2026-10-20T01:57:39.5409635Z     "negative_expected": 4,
+2026-10-20T01:57:39.5409832Z     "false_witness_passed": 4,
+2026-10-20T01:57:39.5410055Z     "positive_audit_targets_expected": 42,
+2026-10-20T01:57:39.5410318Z     "false_witness_audit_targets_expected": 4
+2026-10-20T01:57:39.5410549Z   },
+2026-10-20T01:57:39.5410704Z   "problems": []
+2026-10-20T01:57:39.5410869Z }
+2026-10-20T01:57:39.5526794Z ##[group]Run python3 scripts/verify_finite_witnesses.py --output-dir "$RUNNER_TEMP/ueot-qm-finite-witnesses"
+2026-10-20T01:57:39.5527429Z [36;1mpython3 scripts/verify_finite_witnesses.py --output-dir "$RUNNER_TEMP/ueot-qm-finite-witnesses"[0m
+2026-10-20T01:57:39.5572526Z shell: /usr/bin/bash -e {0}
+2026-10-20T01:57:39.5572751Z ##[endgroup]
+2026-10-20T01:57:45.0409257Z MixtureExamples: PASS (9 explicit declaration audits)
+2026-10-20T01:57:50.0824928Z SurvivalTwoState: PASS (30 explicit declaration audits)
+2026-10-20T01:57:50.1577414Z PASS: /home/runner/work/_temp/ueot-qm-finite-witnesses/verification.json
+2026-10-20T01:57:50.1695005Z ##[group]Run actions/upload-artifact@v4
+2026-10-20T01:57:50.1695245Z with:
+2026-10-20T01:57:50.1695419Z   name: ueot-qm-lean-39355958755
+2026-10-20T01:57:50.1696538Z   path: formalization/ueot-qm/source-identity.log
+formalization/ueot-qm/source-manifest.json
+formalization/ueot-qm/lean-install.log
+formalization/ueot-qm/lean-build.log
+formalization/ueot-qm/axiom-audit.log
+formalization/ueot-qm/proof-axioms.json
+formalization/ueot-qm/lake-manifest.json
+/home/runner/work/_temp/ueot-qm-lean-exports/
+/home/runner/work/_temp/ueot-qm-finite-witnesses/
+
+2026-10-20T01:57:50.1697661Z   retention-days: 30
+2026-10-20T01:57:50.1697846Z   if-no-files-found: warn
+2026-10-20T01:57:50.1698035Z   compression-level: 6
+2026-10-20T01:57:50.1698214Z   overwrite: false
+2026-10-20T01:57:50.1698388Z   include-hidden-files: false
+2026-10-20T01:57:50.1698607Z ##[endgroup]
+2026-10-20T01:57:50.4322638Z (node:16319) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T01:57:50.4323213Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T01:57:50.4463327Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-20T01:57:50.4466109Z The least common ancestor is /home/runner/work. This will be the root directory of the artifact
+2026-10-20T01:57:50.4466762Z With the provided path, there will be 48 files uploaded
+2026-10-20T01:57:50.4470095Z Artifact name is valid!
+2026-10-20T01:57:50.4471127Z Root directory input is valid!
+2026-10-20T01:57:50.7911464Z Beginning upload of artifact content to blob storage
+2026-10-20T01:57:51.0637740Z (node:16319) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T01:57:51.4254429Z Uploaded bytes 68637
+2026-10-20T01:57:51.4933975Z Finished uploading artifact content to blob storage!
+2026-10-20T01:57:51.4934624Z SHA256 digest of uploaded artifact zip is 4772565a3559deca01125c0c00bfff71eac545212f5b61db21843ad19bddbccd
+2026-10-20T01:57:51.4935800Z Finalizing artifact upload
+2026-10-20T01:57:51.7400988Z Artifact ueot-qm-lean-39355958755.zip successfully finalized. Artifact ID 12235167460
+2026-10-20T01:57:51.7402048Z Artifact ueot-qm-lean-39355958755 has been successfully uploaded! Final size is 68637 bytes. Artifact ID is 12235167460
+2026-10-20T01:57:51.7407616Z Artifact download URL: https://github.com/MurphyHoops/UEOT/actions/runs/39355958755/artifacts/12235167460
+2026-10-20T01:57:51.7605796Z Post job cleanup.
+2026-10-20T01:57:51.8326167Z [command]/usr/bin/git version
+2026-10-20T01:57:51.8365219Z git version 2.55.0
+2026-10-20T01:57:51.8396104Z Temporarily overriding HOME='/home/runner/work/_temp/e559cdbc-4b78-4da6-822f-437ee3b4ecdd' before making global git config changes
+2026-10-20T01:57:51.8397249Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T01:57:51.8399882Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UEOT/UEOT
+2026-10-20T01:57:51.8430473Z Removing SSH command configuration
+2026-10-20T01:57:51.8436234Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T01:57:51.8467933Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T01:57:51.8701306Z Removing HTTP extra header
+2026-10-20T01:57:51.8706298Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T01:57:51.8737463Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T01:57:51.8955830Z Removing includeIf entries pointing to credentials config files
+2026-10-20T01:57:51.8962131Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T01:57:51.8996313Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T01:57:51.9370480Z Cleaning up orphan processes
+2026-10-20T01:57:51.9624508Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache/restore@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

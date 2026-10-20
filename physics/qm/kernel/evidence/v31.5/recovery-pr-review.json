@@ -1,0 +1,71 @@
+{
+  "schema": "ueot_qm.resume_pr_review.v31.5",
+  "status": "CLEAR_NO_UNRESOLVED_REVIEW_FINDINGS",
+  "repository": "MurphyHoops/UEOT",
+  "pull_request": 340,
+  "url": "https://github.com/MurphyHoops/UEOT/pull/340",
+  "source_commit": "57283f4efdac02584a36713ae419dc9d439b1686",
+  "base_commit": "78852812650eff0a4803596bf3379d4d792122d0",
+  "pull_request_state": "open",
+  "mergeable": true,
+  "mergeable_state": "clean",
+  "review_threads": 0,
+  "submitted_reviews": 0,
+  "inline_review_comments": 0,
+  "conversation_comments": 1,
+  "code_review_summary": {
+    "comment_id": 6281489542,
+    "url": "https://github.com/MurphyHoops/UEOT/pull/340#issuecomment-6281489542",
+    "updated_at": "2026-10-20T01:57:13Z",
+    "commit_sha": "57283f4efdac02584a36713ae419dc9d439b1686",
+    "has_any_findings": false,
+    "has_unresolved_findings": false,
+    "status": "completed",
+    "human_review_claimed": false
+  },
+  "check_runs": [
+    {
+      "id": 118410659558,
+      "name": "lean",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39355958755/job/118410659558",
+      "annotations_count": 2
+    },
+    {
+      "id": 118410659373,
+      "name": "runtime",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39355958755/job/118410659373",
+      "annotations_count": 2
+    }
+  ],
+  "workflow_run": 39355958755,
+  "legacy_commit_status": {
+    "state": "pending",
+    "status_count": 0,
+    "interpretation": "No legacy status contexts are present. The aggregate pending value does not override the separately reported completed successful check runs."
+  },
+  "focused_static_review": {
+    "path": "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+    "result": "NO_BLOCKING_ISSUE_FOUND",
+    "checked": [
+      "Masks comments and strings before enumerating the controlled witness declaration syntax.",
+      "Requires every explicit theorem/def in the two retained witnesses to be audited exactly once in source order.",
+      "Checks real compilation exit status, exact expected audit set and only allowed foundational axioms.",
+      "Binds all repository-local generic QM/Core source and olean identities before, between and after actual invocations.",
+      "Preserves the lake invocation basename, checks the pinned Lean version and records the executable identity.",
+      "Workflow triggers, explicit witness step and always-run artifact upload cover the new gate."
+    ],
+    "limitation": "This controlled-source script is not claimed to verify the general Lean parser or all Python inputs."
+  },
+  "annotations_observation": {
+    "content_verified": false,
+    "reason": "The GitHub connector rejected the check-run annotations endpoint as unsupported (400 INVALID_ARGUMENT). No annotation content or cause is inferred.",
+    "remaining_action": "Root is independently reading actual job logs and should assess any warnings there."
+  },
+  "prohibited_actions_performed": [],
+  "execution_scope": "Read-only GitHub review/check-state recovery plus read-only local gate/workflow inspection. No source edits, PR comments, review resolution, commits, merges or CI reruns.",
+  "observed_at_utc": "2026-10-20T03:18:32.560290+00:00"
+}

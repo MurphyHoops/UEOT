@@ -1,0 +1,257 @@
+{
+  "schema": "ueot_qm.final_metadata_readonly_review.v31.5",
+  "status": "CLEAR",
+  "recorded_at_utc": "2026-10-20T04:08:58.174138+00:00",
+  "reviewer": "next_quantum_selection",
+  "scope": "Final read-only metadata, navigation and planned QSEL consistency review after root corrections; not a new mathematical or remote CI acceptance.",
+  "repository_worktree": "/workspace/scratch/474cf6b1f047/qm_v315_work",
+  "reviewed_artifacts": [
+    {
+      "path": "physics/qm/status/CURRENT.json",
+      "bytes": 14091,
+      "sha256": "32b1fa5e2ba63121831270d0790038f8fcb89674ca94bf439bf2f07fd1356775"
+    },
+    {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.5.json",
+      "bytes": 58252,
+      "sha256": "2eec354778ddda6ae3913c574389582217177a35194101ef0ab2c83edd5537d5"
+    },
+    {
+      "path": "physics/qm/README.md",
+      "bytes": 6509,
+      "sha256": "f08372a063bb874122f6d5042a32278aa35db0b1dca4f697f21b8dd269ca9421"
+    },
+    {
+      "path": "physics/qm/ROADMAP.md",
+      "bytes": 10219,
+      "sha256": "8e016d9482472ce196344e17394576690697fab3dadab7041d2db00af4e09ac9"
+    },
+    {
+      "path": "physics/qm/book/README.md",
+      "bytes": 10378,
+      "sha256": "c4e3c35d8b56f411c2037d3ca6bc4d10dc832f648b0f242484e60e11899c0b6e"
+    },
+    {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "bytes": 230332,
+      "sha256": "036232dcd58c8fa7ff27d92eea3a57fd3d9d55c20a4d2623617531c04ee00675"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/integration-verification.json",
+      "bytes": 3051,
+      "sha256": "7afb0876aa516c658b911514fdc5b8b644047bb899c2206fbcae7768d8646304"
+    },
+    {
+      "path": "physics/qm/UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md",
+      "bytes": 20955,
+      "sha256": "a7dda76e76779d94b87fb73a28cda9cc68188e85c9e00d53301ab6527844f847"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.5/next-execution-adoption.json",
+      "bytes": 1260,
+      "sha256": "5b59ef55ae635580e99b58152c50c08412afb046123c41ff794fbe38e31c25dc"
+    }
+  ],
+  "checks": [
+    {
+      "check": "current_v31_5_main_verified_only",
+      "status": "PASS",
+      "details": "CURRENT, claim ledger and integration receipt retain the existing v31.5 version and accepted finite scope; next execution is separately planned."
+    },
+    {
+      "check": "source_pr_main_identity_agreement",
+      "status": "PASS",
+      "details": {
+        "source_commit": [
+          "57283f4efdac02584a36713ae419dc9d439b1686",
+          "57283f4efdac02584a36713ae419dc9d439b1686",
+          "57283f4efdac02584a36713ae419dc9d439b1686"
+        ],
+        "source_tree": [
+          "a674eff10e615e70ec622c987d52a9c1e01a725b",
+          "a674eff10e615e70ec622c987d52a9c1e01a725b",
+          "a674eff10e615e70ec622c987d52a9c1e01a725b"
+        ],
+        "tested_main_commit": [
+          "be90695c53d337574470b454e3f74479ee934e38",
+          "be90695c53d337574470b454e3f74479ee934e38",
+          "be90695c53d337574470b454e3f74479ee934e38"
+        ],
+        "tested_main_tree": [
+          "a674eff10e615e70ec622c987d52a9c1e01a725b",
+          "a674eff10e615e70ec622c987d52a9c1e01a725b",
+          "a674eff10e615e70ec622c987d52a9c1e01a725b"
+        ],
+        "pull_request": [
+          340,
+          340,
+          340
+        ],
+        "pr_run": [
+          39355958755,
+          39355958755,
+          39355958755
+        ],
+        "main_run": [
+          39366597240,
+          39366597240,
+          39366597240
+        ],
+        "source_count": [
+          64,
+          64,
+          64
+        ],
+        "source_set_sha256": [
+          "41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e",
+          "41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e",
+          "41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e"
+        ],
+        "source_and_main_tree_identical": [
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "check": "current_counts_remain_v31_5",
+      "status": "PASS",
+      "details": {
+        "generic_modules": 18,
+        "theorems": 334,
+        "generic_audits": 392,
+        "runtime_methods": 100,
+        "finite_witness_audits": 39,
+        "claim_records": 35
+      }
+    },
+    {
+      "check": "next_task_not_counted_or_proved",
+      "status": "PASS",
+      "details": {
+        "ledger_status": "PLANNED_NOT_FORMALIZED_NOT_COUNTED_IN_V31_5",
+        "dossier_status": "PLANNED_NOT_FORMALIZED",
+        "adoption_status": "ADOPTED_AS_NEXT_TASK_NOT_PROVED"
+      }
+    },
+    {
+      "check": "operational_mixture_correction_preserved",
+      "status": "PASS",
+      "details": "Original registered model merges the chosen support points; the next model registers both observed bits, proves an actual terminal-quotient mixture, and defines purity on the full allowed classical state space."
+    },
+    {
+      "check": "classical_premise_and_scope_boundaries",
+      "status": "PASS",
+      "details": "The finite Core slice, explicit classical interpretation, arbitrary finite ancilla, zero reward and limited survival interpretation remain separated; no all-Core or final-physics claim is introduced."
+    },
+    {
+      "check": "resource_order_consistent",
+      "status": "PASS",
+      "details": "Three child agents focus on the single QSEL certificate; other research lanes are queued."
+    },
+    {
+      "check": "relative_markdown_navigation",
+      "status": "PASS",
+      "details": {
+        "checked": 74,
+        "missing": [],
+        "scope": "Local target existence, including next-contract and integration links; external URLs and document anchors are not revalidated."
+      }
+    },
+    {
+      "check": "json_navigation_conventions",
+      "status": "PASS",
+      "details": {
+        "checked": 267,
+        "missing": [],
+        "scope": "Repository-root path fields and scope entries; file-relative navigation per CURRENT/integration conventions. Source display names and glob scopes are not treated as file links."
+      }
+    },
+    {
+      "check": "no_stale_current_pending",
+      "status": "PASS",
+      "details": {
+        "retained_historical_fields": [
+          {
+            "source": "physics/qm/status/CURRENT.json",
+            "field": "local_checkpoint_state",
+            "value": "LOCAL_VERIFIED_CI_PENDING"
+          },
+          {
+            "source": "physics/qm/status/CLAIM_LEDGER_v31.5.json",
+            "field": "prior_version_verification.local_checkpoint_state",
+            "value": "LOCAL_VERIFIED_CI_PENDING"
+          },
+          {
+            "source": "physics/qm/book/CHAPTER_DOSSIER.json",
+            "field": "validation.local_checkpoint_status",
+            "value": "LOCAL_VERIFIED_CI_PENDING"
+          }
+        ],
+        "root_corrections_reread": [
+          "source_catalog.QM315.use",
+          "completion_boundary.reason"
+        ]
+      }
+    },
+    {
+      "check": "adoption_contract_hash_and_path",
+      "status": "PASS",
+      "details": {
+        "contract": "physics/qm/UEOT_QM_QUANTUM_SELECTION_EXECUTION_v31.6.md",
+        "sha256": "a7dda76e76779d94b87fb73a28cda9cc68188e85c9e00d53301ab6527844f847"
+      }
+    },
+    {
+      "check": "canonical_book_hashes_and_counts",
+      "status": "PASS",
+      "details": {
+        "artifacts": [
+          {
+            "path": "physics/qm/book/UEOT_PHYSICS.md",
+            "sha256": "d0d495c2d31680ea12f958367eeefcffb44f6df8dd4114884d51f2e2f0da1587",
+            "matches_record": true
+          },
+          {
+            "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+            "sha256": "89ed7ed69f3e86ae60ea7d7dc36c1b8bc20e48c89ebdd310ab4414136afadcaa",
+            "matches_record": true
+          },
+          {
+            "path": "physics/qm/book/UEOT_PHYSICS.tex",
+            "sha256": "c2219ee5464c77c2a2232f989d3afd7f2a1261c9e6732049c8544b699429a5f4",
+            "matches_record": true
+          }
+        ],
+        "chapters": 54,
+        "appendices": 6,
+        "results": 101,
+        "pages": 171,
+        "whole_physics_formalized": false
+      }
+    },
+    {
+      "check": "planned_sources_not_created",
+      "status": "PASS",
+      "details": {
+        "paths": [
+          "formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+          "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean",
+          "formalization/ueot-qm/scripts/witnesses/ClassicalPurificationExamples.lean"
+        ]
+      }
+    }
+  ],
+  "findings": [],
+  "execution_boundary": {
+    "repo_files_written": false,
+    "lean_executions": 0,
+    "ci_executions": 0,
+    "pdf_rebuilds": 0,
+    "remote_ci_logs_reaudited": false,
+    "remote_identity_basis": "Existing metadata and parent-reported completed PR340/main acceptance; no new remote acceptance claimed.",
+    "source_commit_baseline_comparison_performed_by_this_review": false,
+    "source_commit_baseline_comparison_note": "Parent separately performed the original-JSON/source comparison; this review checks current metadata, file targets and retained canonical hashes."
+  }
+}
