@@ -1,0 +1,68 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean:104:11: error: unsolved goals
+case succ
+X : Type u
+inst✝ : MeasurableSpace X
+n : ℕ
+h : CausalHistory X X (n + 1)
+⊢ (Prod.map (⇑(stateHistoryEquiv n)) id h).2 = h.2
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean:151:6: error: Type mismatch: After simplification, term
+  Eq.symm (homTrajMeasure_prefix_zero p0.toMeasure (pmfRowKernel J))
+ has type
+  @Eq (Measure (↥(Finset.Iic 0) → X)) (Measure.map (⇑(MeasurableEquiv.piUnique fun x => X).symm) p0.toMeasure)
+    (Measure.map (Preorder.frestrictLe 0) (homTrajMeasure p0.toMeasure (pmfRowKernel J)))
+but is expected to have type
+  @Eq (Measure (↥(Finset.Iic 0) → X)) (Measure.map (⇑(MeasurableEquiv.piUnique fun x => X).symm) p0.toMeasure)
+    (Measure.map (Preorder.frestrictLe 0) (homTrajMeasure p0.toMeasure (pmfRowKernel J)))
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean:154:6: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean:161:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Measure.map (appendHistory n ∘ Prod.map (⇑(stateHistoryEquiv n)) id) ?m.149
+in the target expression
+  Measure.map (appendHistory n ∘ Prod.map (⇑(stateHistoryEquiv n)) id)
+      ((causalLaw p0 (fun k h => J (currentState k h)) n).toMeasure ⊗ₘ pmfRowKernel fun h => J (currentState n h)) =
+    Measure.map (Preorder.frestrictLe (n + 1)) (homTrajMeasure p0.toMeasure (pmfRowKernel J))
+
+case succ
+X : Type u
+inst✝² : Fintype X
+inst✝¹ : MeasurableSpace X
+inst✝ : MeasurableSingletonClass X
+p0 : PMF X
+J : X → PMF X
+n : ℕ
+ih :
+  Measure.map (⇑(stateHistoryEquiv n)) (causalLaw p0 (fun k h => J (currentState k h)) n).toMeasure =
+    Measure.map (Preorder.frestrictLe n) (homTrajMeasure p0.toMeasure (pmfRowKernel J))
+this : IsMarkovKernel (homHistoryKernel (pmfRowKernel J) n) := isMarkovKernel_homHistoryKernel (pmfRowKernel J) n
+⊢ Measure.map (appendHistory n ∘ Prod.map (⇑(stateHistoryEquiv n)) id)
+      ((causalLaw p0 (fun k h => J (currentState k h)) n).toMeasure ⊗ₘ pmfRowKernel fun h => J (currentState n h)) =
+    Measure.map (Preorder.frestrictLe (n + 1)) (homTrajMeasure p0.toMeasure (pmfRowKernel J))
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    Prod.instMeasurableSpace
+  has type
+    MeasurableSpace (CausalHistory X X n × X)
+  but is expected to have type
+    MeasurableSpace (CausalHistory X X (n + 1))
+  in the application
+    @Measure.map (CausalHistory X X (n + 1)) (↥(Finset.Iic (n + 1)) → X) Prod.instMeasurableSpace
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

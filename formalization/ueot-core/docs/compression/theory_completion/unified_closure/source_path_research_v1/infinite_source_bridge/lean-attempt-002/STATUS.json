@@ -1,0 +1,85 @@
+{
+  "schema": "UEOT_PRIVATE_INFINITE_PREFIX_COMPILE_ATTEMPT_V1",
+  "attempt": 2,
+  "status": "FAIL",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean",
+    "bytes": 10029,
+    "sha256": "d9047ea5534aeab8bcfacde5f960e13ca17d1565ed06401f64a50df9de9bfa27"
+  },
+  "source_snapshot": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/SameSourceInfinitePrefix.lean",
+    "bytes": 10029,
+    "sha256": "d9047ea5534aeab8bcfacde5f960e13ca17d1565ed06401f64a50df9de9bfa27"
+  },
+  "command": [
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+    "env",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-c",
+    "import os,sys,json,hashlib; from pathlib import Path; os.environ[\"LEAN_PATH\"]=sys.argv[1]+os.pathsep+os.environ.get(\"LEAN_PATH\",\"\"); Path(sys.argv[2]).write_text(json.dumps({k:os.environ.get(k,\"\") for k in [\"LEAN_PATH\",\"LEAN_SRC_PATH\",\"LEAN_SYSROOT\",\"ELAN_TOOLCHAIN\",\"LEAN_NUM_THREADS\"]},indent=2)+\"\\n\"); os.execv(sys.argv[3],sys.argv[3:])",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/ENV_AFTER_LAKE.json",
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+    "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1",
+    "-o",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/SameSourceInfinitePrefix.olean",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean"
+  ],
+  "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+  "LEAN_NUM_THREADS": "1",
+  "timeout_seconds": 180,
+  "started_utc": "2026-10-21T11:05:25.405201+00:00",
+  "root_authorization": "Root-authorized focused G1-G3 compilation after independent static CLEAR; no tail/K1 event bridge expansion, no production, consumer, book, native or Git writes.",
+  "no_other_lean_process_at_start": true,
+  "dependency_pins": {
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/infinite-source-bridge-v1/REVIEW.json": "364b5c2c5698b575a10142a77b5277b2d176e72131e88844f09e43150e11fb3d"
+  },
+  "production_complete_source_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "production_complete_source_files_checked": 666,
+  "production_manifest": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+    "bytes": 202983,
+    "sha256": "04acfa12f4b43154cbf1701834aadd459b1647730f789cdff2eccc6436e96b7c"
+  },
+  "environment_reuse_binding": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/ENVIRONMENT_REUSE_BINDING.json",
+    "bytes": 5723,
+    "sha256": "dc82b8d603be937d3405e1ed4645ec8e44ca4c408caf98246e68e96f746d3d54"
+  },
+  "static_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/infinite-source-bridge-v1/REVIEW.json",
+    "bytes": 3088,
+    "sha256": "364b5c2c5698b575a10142a77b5277b2d176e72131e88844f09e43150e11fb3d"
+  },
+  "runner": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/compile_private.py",
+    "bytes": 6977,
+    "sha256": "f54f746237ea6b117d32f6c1fadf252db130f0b92450e89bfab614779f73fae1"
+  },
+  "production_mutated": false,
+  "lake_build_run": false,
+  "native_run": false,
+  "process_group": 73480,
+  "exit_code": 1,
+  "timed_out": false,
+  "elapsed_seconds": 6.395,
+  "finished_utc": "2026-10-21T11:05:31.800260+00:00",
+  "stdout_stderr_log": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/lean.log",
+    "bytes": 2019,
+    "sha256": "52b456285b6f825018129c181eb747b7964c6f9c20d1ae70059eef4a0f034563"
+  },
+  "source_after": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean",
+    "bytes": 10029,
+    "sha256": "d9047ea5534aeab8bcfacde5f960e13ca17d1565ed06401f64a50df9de9bfa27"
+  },
+  "actual_lake_environment": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/ENV_AFTER_LAKE.json",
+    "bytes": 4023,
+    "sha256": "f5b500624524440b5a8006966bc062261eeb92b06f3db0a45da1020ce95fcac1"
+  }
+}

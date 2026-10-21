@@ -1,0 +1,132 @@
+{
+  "schema": "UEOT_PRIVATE_PREFIX_DECLARATION_COMPARISON_V1",
+  "original": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/v1-original/SameSourceInfinitePrefix.lean",
+    "bytes": 9988,
+    "sha256": "7773377037056384b194d09e63623d3a65c127e7d9cd22681430bd89648b54e0"
+  },
+  "final": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean",
+    "bytes": 10106,
+    "sha256": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92"
+  },
+  "method": "Offset-preserving nested-comment/string masking and top-level delimiter scan. Named argument := inside parentheses/braces/brackets is not a header terminator. Equation definitions stop at their top-level equation delimiter. All full headers compared as exact source bytes.",
+  "declarations": [
+    {
+      "name": "pmfRowKernel",
+      "kind": "def",
+      "header_bytes_equal": true,
+      "header": "def pmfRowKernel\n    {H : Type u} {Z : Type v} [Fintype H]\n    [MeasurableSpace H] [MeasurableSingletonClass H] [MeasurableSpace Z]\n    (J : H → PMF Z) : Kernel H Z",
+      "delimiter": ":=",
+      "header_sha256": "2a29528003d0803253a6f4ba43ae673a04747a081b9d7be4ad743ad46be667ac",
+      "definition_or_instance_body_bytes_equal": true,
+      "body_sha256": "fa134163a930b7f11ebe5d90edffa564e1e7a28a0b0010867662208f3e2d042f"
+    },
+    {
+      "name": "pmfRowKernel_apply",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "@[simp] theorem pmfRowKernel_apply\n    {H : Type u} {Z : Type v} [Fintype H]\n    [MeasurableSpace H] [MeasurableSingletonClass H] [MeasurableSpace Z]\n    (J : H → PMF Z) (h : H) : pmfRowKernel J h = (J h).toMeasure",
+      "delimiter": ":=",
+      "header_sha256": "84303f426b0ad4c57a086b0595e3cb920c6a60c101d0c757f3120e312052a1c1"
+    },
+    {
+      "name": "pmfRowKernel_isMarkov",
+      "kind": "instance",
+      "header_bytes_equal": true,
+      "header": "instance pmfRowKernel_isMarkov\n    {H : Type u} {Z : Type v} [Fintype H]\n    [MeasurableSpace H] [MeasurableSingletonClass H] [MeasurableSpace Z]\n    (J : H → PMF Z) : IsMarkovKernel (pmfRowKernel J)",
+      "delimiter": "where",
+      "header_sha256": "289c3bdb1a477a8bb2466dcec2effdc80d162be2abfd645b261cc8ad25a5fbc4",
+      "definition_or_instance_body_bytes_equal": true,
+      "body_sha256": "e64a4e0f55142337dbb19bf7ac7414dbb60c5138d382e8265ce5359b3c958a9c"
+    },
+    {
+      "name": "pmfExtend_toMeasure_compProd",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "private theorem pmfExtend_toMeasure_compProd\n    {H : Type u} {Z : Type v} [Fintype H]\n    [MeasurableSpace H] [MeasurableSingletonClass H] [MeasurableSpace Z]\n    (p : PMF H) (J : H → PMF Z) :\n    (pmfExtend p J).toMeasure = p.toMeasure ⊗ₘ pmfRowKernel J",
+      "delimiter": ":=",
+      "header_sha256": "aed7267977aad498ad448c5fbc60d5849f0d3f6f14c8d26a0f49077c0b0ac374"
+    },
+    {
+      "name": "stateHistoryEquiv",
+      "kind": "def",
+      "header_bytes_equal": true,
+      "header": "def stateHistoryEquiv\n    {X : Type u} [MeasurableSpace X] :\n    ∀ n, CausalHistory X X n ≃ᵐ ((i : Finset.Iic n) → X)",
+      "delimiter": "equations",
+      "header_sha256": "a68f1f3da18cd1392747b1a82532c82c90c2eeafaa1d058f22ecc34c492dc81c",
+      "definition_or_instance_body_bytes_equal": true,
+      "body_sha256": "61ac0dab78a7ed299f8e3dabc3e8c2faac05087ff36217fff2feddda6229c6f8"
+    },
+    {
+      "name": "stateHistoryEquiv_zero",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "@[simp] theorem stateHistoryEquiv_zero\n    {X : Type u} [MeasurableSpace X] :\n    stateHistoryEquiv (X := X) 0 =\n      (MeasurableEquiv.piUnique (fun _ : Finset.Iic 0 => X)).symm",
+      "delimiter": ":=",
+      "header_sha256": "bc41464e3f57d54947b7dcd05d79bbc02fc571eac10e1556ac2bb0eca7be721a"
+    },
+    {
+      "name": "stateHistoryEquiv_succ",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "theorem stateHistoryEquiv_succ\n    {X : Type u} [MeasurableSpace X] (n : ℕ) :\n    (stateHistoryEquiv (X := X) (n + 1) :\n      CausalHistory X X (n + 1) → ((i : Finset.Iic (n + 1)) → X)) =\n      appendHistory n ∘ Prod.map (stateHistoryEquiv n) id",
+      "delimiter": ":=",
+      "header_sha256": "b84a75c51778bdf0370fa481d980b81537d29b56f52587f98274d6bd88a2a9e4"
+    },
+    {
+      "name": "stateHistoryEquiv_last",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "@[simp] theorem stateHistoryEquiv_last\n    {X : Type u} [MeasurableSpace X]\n    (n : ℕ) (h : CausalHistory X X n) :\n    stateHistoryEquiv n h (lastHistoryIndex n) = currentState n h",
+      "delimiter": ":=",
+      "header_sha256": "a61f969baac01afad2d8920d3be48fddadbd4530d00a0721430dd558773e52a0"
+    },
+    {
+      "name": "historyRowKernel_eq_comap",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "private theorem historyRowKernel_eq_comap\n    {X : Type u} [Fintype X]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (J : X → PMF X) (n : ℕ) :\n    pmfRowKernel (fun h : CausalHistory X X n => J (currentState n h)) =\n      Kernel.comap (homHistoryKernel (pmfRowKernel J) n)\n        (stateHistoryEquiv n) (stateHistoryEquiv n).measurable",
+      "delimiter": ":=",
+      "header_sha256": "8112b5f4ae9f7a1ecace9dd0b845a3682cfe7dba0518d6b12c6592f280b56ba9"
+    },
+    {
+      "name": "compProd_comap_map_left",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "private theorem compProd_comap_map_left\n    {H : Type u} {W : Type v} {Z : Type w}\n    [MeasurableSpace H] [MeasurableSpace W] [MeasurableSpace Z]\n    (mu : Measure H) [IsFiniteMeasure mu]\n    (R : Kernel W Z) [IsMarkovKernel R]\n    (F : H → W) (hF : Measurable F) :\n    (mu ⊗ₘ Kernel.comap R F hF).map (Prod.map F id) =\n      (mu.map F) ⊗ₘ R",
+      "delimiter": ":=",
+      "header_sha256": "5834c447e11e84906a760e99f8902b785fc020755a2c3e40cf41557b0fc51c78"
+    },
+    {
+      "name": "state_history_eq_homogeneous_prefix",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "theorem state_history_eq_homogeneous_prefix\n    {X : Type u} [Fintype X]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (p0 : PMF X) (J : X → PMF X) (n : ℕ) :\n    ((causalLaw p0 (fun k h => J (currentState k h)) n).map\n      (stateHistoryEquiv n)).toMeasure =\n      (homTrajMeasure p0.toMeasure (pmfRowKernel J)).map\n        (Preorder.frestrictLe n)",
+      "delimiter": ":=",
+      "header_sha256": "c2a087ea6ee4d60759e126f99e7c404215446e7e573d4822c22ab30e8d022e49"
+    },
+    {
+      "name": "actual_state_prefix_eq_homogeneous_prefix",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "theorem actual_state_prefix_eq_homogeneous_prefix\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) :\n    ((causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).map\n          (stateHistoryEquiv n ∘ eraseActionHistory n)).toMeasure =\n      (homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))).map\n            (Preorder.frestrictLe n)",
+      "delimiter": ":=",
+      "header_sha256": "78ac449d94015232f200368afad38b1340dcb676099378c4b3301afa120eebf3"
+    },
+    {
+      "name": "actual_state_prefix_event_mass",
+      "kind": "theorem",
+      "header_bytes_equal": true,
+      "header": "theorem actual_state_prefix_event_mass\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).toMeasure\n          ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n            ((Preorder.frestrictLe n) ⁻¹' B)",
+      "delimiter": ":=",
+      "header_sha256": "d1b16802172ccebcdc5f50e7c15f422c4e45aac1b20477d0734be17edc15c953"
+    }
+  ],
+  "all_headers_byte_identical": true,
+  "all_definition_and_instance_bodies_byte_identical": true,
+  "declaration_count": 13,
+  "definition_count": 2,
+  "instance_count": 1,
+  "kernel_type_comparison_to_uncompiled_v1_claimed": false
+}
