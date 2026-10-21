@@ -1,0 +1,47 @@
+--- v1-original/SameSourceInfinitePrefix.lean
++++ SameSourceInfinitePrefix.lean
+@@ -5,9 +5,9 @@
+ /-!
+ # The actual finite state history is a prefix of the same infinite trajectory
+ 
+-PRIVATE DRAFT — NOT COMPILED. Actual execution, when authorized, must be
+-recorded separately. No equality between independently supplied processes
+-is assumed. No existing private evidence or production source is changed.
++PRIVATE CANDIDATE — actual execution status is recorded separately.
++No equality between independently supplied processes is assumed.
++No existing private evidence or production source is changed.
+ 
+ The first endpoint treats a finite state space and an arbitrary fixed PMF
+ row family J. The initial PMF is preserved, including its time-zero state.
+@@ -102,9 +102,10 @@
+   cases n with
+   | zero => rfl
+   | succ n =>
++      rcases h with ⟨h, x⟩
+       rw [stateHistoryEquiv_succ]
+       simp [Function.comp_def, appendHistory, IicProdIoc_def,
+-        lastHistoryIndex, MeasurableEquiv.piSingleton, currentState]
++        lastHistoryIndex, MeasurableEquiv.piSingleton, currentState, Prod.map]
+ 
+ private theorem historyRowKernel_eq_comap
+     {X : Type u} [Fintype X]
+@@ -135,6 +136,7 @@
+     lintegral_map (Kernel.measurable_kernel_prodMk_left hE) hF]
+   rfl
+ 
++set_option backward.isDefEq.respectTransparency false in
+ /-- Full finite-prefix identity for the same initial PMF and the same fixed
+ PMF rows. Neither side is supplied as a certificate for the other. -/
+ theorem state_history_eq_homogeneous_prefix
+@@ -148,8 +150,9 @@
+   rw [← PMF.toMeasure_map _ _ (stateHistoryEquiv n).measurable]
+   induction n with
+   | zero =>
+-      simpa only [causalLaw, stateHistoryEquiv_zero] using
+-        (homTrajMeasure_prefix_zero p0.toMeasure (pmfRowKernel J)).symm
++      dsimp only [CausalHistory, causalLaw, causalHistoryMeasurableSpace,
++        stateHistoryEquiv]
++      exact (homTrajMeasure_prefix_zero p0.toMeasure (pmfRowKernel J)).symm
+   | succ n ih =>
+       letI : IsMarkovKernel (homHistoryKernel (pmfRowKernel J) n) :=
+         isMarkovKernel_homHistoryKernel (pmfRowKernel J) n

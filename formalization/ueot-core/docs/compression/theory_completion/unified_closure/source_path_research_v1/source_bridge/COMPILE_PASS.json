@@ -1,0 +1,107 @@
+{
+  "schema": "UEOT_PRIVATE_SOURCE_BRIDGE_COMPILE_COMPLETION_V1",
+  "created_utc": "2026-10-21T08:14:43.497609+00:00",
+  "status": "PRIVATE_FOCUSED_COMPILE_PASS_STANDARD_AXIOMS_ONLY",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+    "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "bytes": 6477
+  },
+  "original_source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge_v1.lean",
+    "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "bytes": 6477
+  },
+  "source_modified": false,
+  "statement_modified": false,
+  "proof_body_modified": false,
+  "pass_attempt": 2,
+  "elapsed_seconds": 35.495,
+  "actual_lean_exit_code": 0,
+  "timeout_seconds": 180,
+  "timed_out": false,
+  "LEAN_NUM_THREADS": "1",
+  "max_extra_lean_processes": 1,
+  "lake_build_run": false,
+  "production_mutated": false,
+  "git_mutated": false,
+  "canonical_integration_claimed": false,
+  "native_export_claimed": false,
+  "command": [
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+    "env",
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+    "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge",
+    "-o",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean"
+  ],
+  "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+  "log": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/lean.log",
+    "sha256": "0286a294da12a219320b76afa8381669bb35c25dfcaf0a31b7e3283c7aeb8b88",
+    "bytes": 359
+  },
+  "attempt_receipt": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/STATUS.json",
+    "sha256": "f1b31a97e81008a5dce37172f1380783ee480582232b11fa5a46676ff936f882",
+    "bytes": 1899
+  },
+  "olean": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean",
+    "sha256": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "bytes": 130608
+  },
+  "axioms_from_actual_print": {
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "historical_attempts_preserved": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-001/STATUS.json",
+      "sha256": "136b435277cb8b2a1bd9b278100571f10ee831317b78e83491b5d4df7c800d75",
+      "bytes": 1716
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-001/lean.log",
+      "sha256": "764ee05d870b3ca5d7828d7b09d4c1c35c955de74ff84fd5243d753972ca48a0",
+      "bytes": 235
+    }
+  ],
+  "initial_failure": "Attempt 1 failed before elaboration because the private input lay outside the package root; attempt 2 added --root=<private source directory>. No source changes.",
+  "local_repository_head_read": "c30aa219b90173ca15e0eb9878f244de363e1fc3",
+  "toolchain_file": {
+    "content": "leanprover/lean4:v4.33.1",
+    "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/lean-toolchain",
+    "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "bytes": 25
+  },
+  "lake_manifest": {
+    "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/lake-manifest.json",
+    "sha256": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+    "bytes": 3160
+  },
+  "mathlib_manifest_entry": [
+    {
+      "url": "https://github.com/leanprover-community/mathlib4.git",
+      "type": "git",
+      "subDir": null,
+      "scope": "",
+      "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "name": "mathlib",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "inherited": false,
+      "configFile": "lakefile.lean"
+    }
+  ],
+  "reuse_limit": "Focused private Lean check against the current runtime/import cache. Full production source/dependency identity and canonical integration remain separate gates."
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "UEOT_PRIVATE_K1_TARGETED_SEMANTIC_REVIEW_V1",
+  "created_utc": "2026-10-21T08:29:07.478321+00:00",
+  "reviewer": "/root/books_resume",
+  "status": "STATIC_K1_SOURCE_EVENT_SCOPE_CLEAR_EXECUTION_SEPARATE",
+  "scope": "Two final K1 endpoint signatures, source/event definitions and mathematical proof route against CONTRACT_KILLED v2; no repetition of the old source-bridge proof audit.",
+  "reviewed_source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-implementation/input-snapshot-v1/SameSourceKilledPath.lean",
+    "sha256": "383eded19936623d3745d06d0f58e193f4f2682e73123b90a8cbc7733739b7f5",
+    "bytes": 15286
+  },
+  "active_source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+    "sha256_at_receipt": "383eded19936623d3745d06d0f58e193f4f2682e73123b90a8cbc7733739b7f5",
+    "equal_reviewed_snapshot_at_receipt": true
+  },
+  "reviewed_interface": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-implementation/input-snapshot-v1/INTERFACE_AND_PROOF.md",
+    "sha256": "b8ae2b144b099f350b0396b43dcb39193c407fcebc95001485e6997d6de22b7f"
+  },
+  "contract": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/CONTRACT_KILLED.md",
+    "sha256": "e0efe3d8405060e1c03ce1d00b3e2810fcebcf4697d23669a289d9590e56283e"
+  },
+  "unchanged_passed_source_bridge": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+    "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91"
+  },
+  "terminal_signatures": {
+    "actual_survival_terminal_mass_eq_killed_pow": {
+      "sha256": "95b31646c924692fa4a192d097e452985cf0295eb4ba591a263c976cfe7bf59d",
+      "declaration_header": "theorem actual_survival_terminal_mass_eq_killed_pow\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (K : Set X) (n : ℕ) (v : K) :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =\n      rowApply (safeInitialRow p0 K)\n        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v"
+    },
+    "actual_survival_mass_eq_killed_pow_sum": {
+      "sha256": "173d105bafd9bd3a8a09f29d8ee5c703f5b1ec8c01b7ca0752ba7b462e39d8a2",
+      "declaration_header": "theorem actual_survival_mass_eq_killed_pow_sum\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (K : Set X) (n : ℕ) :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h} =\n      ∑ v : K, rowApply (safeInitialRow p0 K)\n        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v"
+    }
+  },
+  "relevant_definition_sources": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "sha256": "5736eae5f9939ef0fdb4c7c520c2c0bc5766d85bf863161787568d2042842cfb"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean",
+      "sha256": "d39f58ddbc8a41edf0221bcbb875c294def320319230a7c113cb18765ad46f08"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+      "sha256": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/PathError.lean",
+      "sha256": "d561a56db79bbd5dd9d01673c5fa7970c7d31199356bd5169a416cd930d917ba"
+    }
+  ],
+  "checks": {
+    "left_side_original_risk_action_state_causalLaw": true,
+    "same_M_p0_q_sigma_on_both_sides": true,
+    "killed_matrix_is_defined_restriction_of_same_policyMatrix": true,
+    "safe_initial_row_is_actual_unnormalized_p0_restriction": true,
+    "path_identity_called_internally_not_assumed": true,
+    "survival_includes_time_zero": true,
+    "empty_K_allowed_total_endpoint_nonvacuous": true,
+    "initial_outside_K_mass_allowed": true,
+    "exit_then_return_excluded": true,
+    "action_erasure_preserves_full_state_history": true,
+    "only_state_path_events_transferred": true,
+    "no_positive_survival_or_history_premise": true,
+    "no_Nonempty_K_or_initial_safety_premise": true,
+    "no_QSD_or_closed_safe_domain_premise": true,
+    "no_target_equality_as_caller_premise": true,
+    "interface_excludes_K2_K3_Doob_from_current_implementation": true
+  },
+  "mandatory_mathematical_corrections": [],
+  "scope_limits": [
+    "finite X and finite nonempty A",
+    "stationary current-observation sigma and time-homogeneous M",
+    "final event probabilities use X/A singleton-measurability",
+    "arbitrary Y but no assertion that observed process is Markov",
+    "general action events require a different proof or factorization"
+  ],
+  "compile_or_axiom_PASS_claimed_by_reviewer": false,
+  "future_statement_change_requires_root_notification": true,
+  "operations": {
+    "Lean_run": false,
+    "tests_run": false,
+    "Git_run": false,
+    "remote_run": false,
+    "candidate_modified": false,
+    "production_modified": false
+  },
+  "report": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-implementation/REVIEW.md",
+    "sha256": "d7d7f4c1a283eb35fbb55afb15f3cf64bf1bbfef662f6e5d420a609b4e0b32e7"
+  }
+}

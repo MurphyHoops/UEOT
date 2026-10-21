@@ -1,0 +1,37 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean:104:11: error: unsolved goals
+case succ
+X : Type u
+inst✝ : MeasurableSpace X
+n : ℕ
+h : CausalHistory X X (n + 1)
+⊢ (match h with
+      | (a, b) => ((stateHistoryEquiv n) a, b)).2 =
+    h.2
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean:152:6: error: Type mismatch: After simplification, term
+  Eq.symm (homTrajMeasure_prefix_zero p0.toMeasure (pmfRowKernel J))
+ has type
+  @Eq (Measure (↥(Finset.Iic 0) → X)) (Measure.map (⇑(MeasurableEquiv.piUnique fun x => X).symm) p0.toMeasure)
+    (Measure.map (Preorder.frestrictLe 0) (homTrajMeasure p0.toMeasure (pmfRowKernel J)))
+but is expected to have type
+  @Eq (Measure (↥(Finset.Iic 0) → X)) (Measure.map (⇑(MeasurableEquiv.piUnique fun x => X).symm) p0.toMeasure)
+    (Measure.map (Preorder.frestrictLe 0) (homTrajMeasure p0.toMeasure (pmfRowKernel J)))
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean:155:6: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

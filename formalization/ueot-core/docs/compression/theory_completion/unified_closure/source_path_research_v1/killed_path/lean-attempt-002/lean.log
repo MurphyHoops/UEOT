@@ -1,0 +1,53 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:159:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Finset.univ
+in the target expression
+  (∑ h,
+      if (stateSurvives K n h.1 ∧ h.2 ∈ K) ∧ h.2 = ↑v then
+        ((pmfExtend (causalLaw p0 (policyPathKernel M pi) n) (policyPathKernel M pi n)) h).toReal
+      else 0) =
+    ∑ h,
+      ∑ z, if (stateSurvives K n h ∧ z ∈ K) ∧ z = ↑v then (mu h).toReal * ((policyPathKernel M pi n h) z).toReal else 0
+
+X A : Type u
+inst✝² : Fintype X
+inst✝¹ : Fintype A
+inst✝ : Nonempty A
+M : Model X fun x => A
+pi : StationaryPolicy fun x => A
+p0 : PMF X
+K : Set X
+n : ℕ
+v : ↑K
+mu : PMF (CausalHistory X X n) := causalLaw p0 (policyPathKernel M pi) n
+hterminal :
+  ∀ (h : CausalHistory X X n),
+    (∑ z,
+        if (stateSurvives K n h ∧ z ∈ K) ∧ z = ↑v then (mu h).toReal * ((policyPathKernel M pi n h) z).toReal else 0) =
+      if stateSurvives K n h then (mu h).toReal * policyMatrix M pi (currentState n h) ↑v else 0
+⊢ (∑ h,
+      if (stateSurvives K n h.1 ∧ h.2 ∈ K) ∧ h.2 = ↑v then
+        ((pmfExtend (causalLaw p0 (policyPathKernel M pi) n) (policyPathKernel M pi n)) h).toReal
+      else 0) =
+    ∑ h,
+      ∑ z, if (stateSurvives K n h ∧ z ∈ K) ∧ z = ↑v then (mu h).toReal * ((policyPathKernel M pi n h) z).toReal else 0
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    h
+  has type
+    CausalHistory X X (n + 1)
+  but is expected to have type
+    CausalHistory X X n × X
+  in the application
+    h.1
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:285:36: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:327:36: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

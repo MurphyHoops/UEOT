@@ -1,0 +1,338 @@
+{
+  "schema": "UEOT_PRIVATE_SAME_SOURCE_KILLED_K1_COMPILE_PASS_V1",
+  "status": "PRIVATE_FOCUSED_LEAN_PASS_NOT_INTEGRATED",
+  "recorded_utc": "2026-10-21T08:49:36.323182+00:00",
+  "source": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+  "source_sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+  "original_source_sha256": "383eded19936623d3745d06d0f58e193f4f2682e73123b90a8cbc7733739b7f5",
+  "passed_attempt": {
+    "schema": "UEOT_PRIVATE_KILLED_SOURCE_COMPILE_ATTEMPT_V1",
+    "attempt": 10,
+    "status": "PASS",
+    "source": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+    "source_sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+    "source_snapshot": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/SameSourceKilledPath.lean",
+    "command": [
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+      "env",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-c",
+      "import os,sys; os.environ[\"LEAN_PATH\"]=sys.argv[1]+os.pathsep+os.environ.get(\"LEAN_PATH\",\"\"); os.execv(sys.argv[2],sys.argv[2:])",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+      "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization",
+      "-o",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/SameSourceKilledPath.olean",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean"
+    ],
+    "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+    "LEAN_NUM_THREADS": "1",
+    "timeout_seconds": 180,
+    "started_utc": "2026-10-21T08:48:03.835004+00:00",
+    "gate_before_start": {
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-8/STATUS.json": {
+        "state": "RUNNING",
+        "results": [
+          {
+            "label": "new_modules",
+            "exit_code": 0,
+            "elapsed_seconds": 16.762755866002408,
+            "command": [
+              "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+              "build",
+              "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+              "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+              "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+              "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+              "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+              "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+              "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary"
+            ],
+            "log_sha256": "761f039a5bb047b0a53005e73e64d59a39a78507827b943f438bab6bf3d9769d"
+          }
+        ],
+        "runtime_platform": "Linux",
+        "runtime_environment": {
+          "LEAN_NUM_THREADS": "1"
+        },
+        "scope": "Actual candidate build; not canonical authorization or resulting-main validation.",
+        "source_manifest_sha256": "47b089acd78085c3d3ba4871d981f841064943cddde4487046f65a3addd638e1",
+        "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+        "active": "full_ueot"
+      },
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-sequence-1/STATUS.json": {
+        "state": "WAITING_FOR_ACTUAL_FULL_BUILD",
+        "pid": 36860,
+        "results": [],
+        "protocol_manifest_sha256": "c0c8593ab385220d9b6551aaa1df866b62706b798801634861a25af5fa4f22cf",
+        "root_protocol_review_sha256": "695d790414507da6601b5a7a97f1de5a3f291205c1fad478a904ee3f32c23efa",
+        "scope": "Local native execution and provisional evidence only. No consumer writes, canonical authorization or publication."
+      },
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-sequence-1/STATUS.json": {
+        "state": "STOPPED_BEFORE_NATIVE",
+        "results": [],
+        "scope": "Local native execution and provisional evidence only. No consumer writes, canonical authorization or publication.",
+        "interruption": {
+          "signal": "SIGTERM",
+          "pid": 30346,
+          "reason": "Real historical public-catalog omission discovered. Native protocol is being extended to audit and register the omitted helper and its existing dependency edge without rewriting historical evidence.",
+          "native_executed": false,
+          "prior_status_sha256": "4ccbc6a94784b540e0cb9f2200f8f3cebe76cd41d0c5ae6dafdf72e5a11475e1"
+        }
+      }
+    },
+    "bridge_source_sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "bridge_olean_sha256": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "bridge_olean_directory": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+    "production_mutated": false,
+    "lake_build_run": false,
+    "native_run": false,
+    "process_group": 42948,
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 81.381,
+    "finished_utc": "2026-10-21T08:49:25.215932+00:00",
+    "stdout_stderr_log": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/lean.log",
+    "log_sha256": "cb1c77ddde8702fae626aad9b7ac6de6a079cf3e6cf71e21287c6c48430f5862",
+    "source_sha256_after": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+    "olean_sha256": "91c3d26034d72d7abeb140d057c78b55296d4e4e7450cf5b291ccc3ad748d1e5"
+  },
+  "attempt_status_sha256": "2a0edbb041f16e957c625e6f5d17db404d29b37c525588ec675b789861d448d4",
+  "actual_axiom_closures": {
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.state_terminal_mass_eq_killed_pow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "unchanged_endpoint_statements": {
+    "state_terminal_mass_eq_killed_pow": {
+      "unchanged_from_original": true,
+      "sha256": "19963d4c7632016463463b0532e596933463d00185cec96ae22f15f101cdb5fd"
+    },
+    "actual_survival_terminal_mass_eq_killed_pow": {
+      "unchanged_from_original": true,
+      "sha256": "c5b1e5cf0a250456e32a504bda3eced59d3bf881217b36074203eb9ab938107c"
+    },
+    "actual_survival_mass_eq_killed_pow_sum": {
+      "unchanged_from_original": true,
+      "sha256": "1e28dc789900b01b8965ac8c0556366db8b499ed1ac7b997d2020a1ecda7d9ee"
+    }
+  },
+  "proof_delta_sha256": "bb3d5739deb95d65bec678982cbeb48ed4e4e1b5ce1705c532bdb2757f89f9c4",
+  "all_attempts_preserved": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "source_sha256": "383eded19936623d3745d06d0f58e193f4f2682e73123b90a8cbc7733739b7f5",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 43.264,
+      "log_sha256": "669077e231a01b053a8c15c4b45916f3fe50c83af203debc912c3436b5e522a6"
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "source_sha256": "2bb468185aaaba6c33a59494a769f20579114a848bb007e4191e2d83031ff523",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 53.954,
+      "log_sha256": "9248d5abcb253dc5e9c4788717e6c78b8ac61c8572dedd2b4dfc01864bc87230"
+    },
+    {
+      "attempt": 3,
+      "status": "FAIL",
+      "source_sha256": "366796fcb57e9d35d52180d77a2992af31ba0434b6942c7d993b127c725efad8",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 41.902,
+      "log_sha256": "284684c100c275f94556c85bef69779a208b95fd644842d9449adfb7d0c9ed23"
+    },
+    {
+      "attempt": 4,
+      "status": "FAIL",
+      "source_sha256": "0e67f4c0d6f03692c496dbae64a714978abc8b7e3f7a29c1dfc755a9d95adba2",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 61.426,
+      "log_sha256": "e1d7e8ebbe04b51943633104aed54f5301b7a4640b4a83f4160c3a6d7fba850e"
+    },
+    {
+      "attempt": 5,
+      "status": "FAIL",
+      "source_sha256": "a85cc4b1c3638f0153de0d2d24fcb2c0b6fa84f1c11b3656edca9b972f5f58f0",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 68.406,
+      "log_sha256": "74aaf95509bcb91a3c500f8aa6a06cf4d9a3e41a2f4041cb68f37ce4e5b506a4"
+    },
+    {
+      "attempt": 6,
+      "status": "FAIL",
+      "source_sha256": "c7c3547b2924080d663c177f1f023c528b4132e3db5cfb9780e47c932ce44f1d",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 89.493,
+      "log_sha256": "74aaf95509bcb91a3c500f8aa6a06cf4d9a3e41a2f4041cb68f37ce4e5b506a4"
+    },
+    {
+      "attempt": 7,
+      "status": "FAIL",
+      "source_sha256": "9323534ab9fbcc0869265c399aaf529f9ec6cf7a013bb4af42d3c8c03718c31b",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 73.886,
+      "log_sha256": "453545d92642742c439332cf78e745725d2621d664ab7d5a5d309b9f55d4d681"
+    },
+    {
+      "attempt": 8,
+      "status": "FAIL",
+      "source_sha256": "41c1ac72b6af18772e5fed53735609e479934b5baffe0100ff67bd2cfdae400e",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 92.09,
+      "log_sha256": "2d9e282ec1a601f91ab6c9dfaa89168addc66f238d3b6bbed7bb43f6f442c9b9"
+    },
+    {
+      "attempt": 9,
+      "status": "FAIL",
+      "source_sha256": "a9b43c3277b629792de982446ec43843627561428a819701fe70f70c4e0e5e29",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 44.57,
+      "log_sha256": "4fce55e68489d3bb87873f87d0319fadb183ebfe28a39415a9d50bd204e52668"
+    },
+    {
+      "attempt": 10,
+      "status": "PASS",
+      "source_sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 81.381,
+      "log_sha256": "cb1c77ddde8702fae626aad9b7ac6de6a079cf3e6cf71e21287c6c48430f5862"
+    }
+  ],
+  "historical_draft_status_preserved": {
+    "schema": "UEOT_PRIVATE_KILLED_SOURCE_FORMALIZATION_DRAFT_V1",
+    "created_utc": "2026-10-21T08:25:12.496764+00:00",
+    "status": "DRAFT_NOT_COMPILED",
+    "source": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+      "sha256": "383eded19936623d3745d06d0f58e193f4f2682e73123b90a8cbc7733739b7f5",
+      "bytes": 15286
+    },
+    "interface": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/INTERFACE_AND_PROOF.md",
+      "sha256": "b8ae2b144b099f350b0396b43dcb39193c407fcebc95001485e6997d6de22b7f",
+      "bytes": 6969
+    },
+    "production_mutations": false,
+    "git_mutations": false,
+    "lean_run": false,
+    "lake_build_run": false,
+    "native_export_run": false,
+    "statement_scope": "K1 unnormalized actual finite-path joint survival/terminal and total survival mass, plus source-derived substochasticity",
+    "includes_initial_time": true,
+    "allows_initial_failure_mass": true,
+    "allows_empty_safe_subtype": true,
+    "assumed_target_identity": false,
+    "qsd_data_required": false,
+    "source_provenance_input": "Previously compiled actual_state_path_eq_stationary_path is invoked inside final theorems. Q and initial restriction are definitions.",
+    "static_placeholder_scan": {
+      "sorry_admit_axiom_occurrences": 0,
+      "is_compile_evidence": false
+    },
+    "public_declarations": [
+      "killedMatrix",
+      "safeInitialRow",
+      "stateSurvives",
+      "stateTerminalMass",
+      "killedMatrix_nonneg",
+      "killedMatrix_row_sum_le_one",
+      "state_terminal_mass_eq_killed_pow",
+      "actual_survival_terminal_mass_eq_killed_pow",
+      "actual_survival_mass_eq_killed_pow_sum"
+    ],
+    "inputs": [
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+        "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+        "bytes": 6477
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/COMPILE_PASS.json",
+        "sha256": "2c4b369be204d3c4c2697b6862fa45dc8b1531b324b6530638cda89b81294857",
+        "bytes": 4907
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/CONTRACT_KILLED.md",
+        "sha256": "e0efe3d8405060e1c03ce1d00b3e2810fcebcf4697d23669a289d9590e56283e",
+        "bytes": 16361
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-contract/REVISION_2_CLEAR.json",
+        "sha256": "3cf88acb0e7d70f94b4dcc91a88f8a3372d87c50cd40bc0071d8b973a14bdcaa",
+        "bytes": 1649
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+        "sha256": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776",
+        "bytes": 10696
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+        "sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+        "bytes": 38484
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/PathError.lean",
+        "sha256": "d561a56db79bbd5dd9d01673c5fa7970c7d31199356bd5169a416cd930d917ba",
+        "bytes": 25556
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+        "sha256": "5869824d0b059abcdf7e211d330cc944d0e5448275732bfad60f5728d1819585",
+        "bytes": 24737
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+        "sha256": "5736eae5f9939ef0fdb4c7c520c2c0bc5766d85bf863161787568d2042842cfb",
+        "bytes": 6714
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/Objecthood/StationaryCausalPathLawBridge.lean",
+        "sha256": "1447d927da7cb08e0fdb26e4d42c9fcfe070380614cd0d7387ad6937c12889a5",
+        "bytes": 7168
+      }
+    ],
+    "pending": [
+      "Focused Lean elaboration in the single compile window arranged by root.",
+      "Actual #print axioms output for the two final source endpoints.",
+      "Any subsequent independent semantic review and production integration."
+    ]
+  },
+  "scope": "K1 finite-window actual risk survival/terminal event masses and same-source killed matrix powers; no K2/K3 claim.",
+  "boundary": [
+    "n=0 includes initial failure",
+    "empty safe set allowed",
+    "arbitrary observation type",
+    "stationary current-observation randomized policy",
+    "no positive-survival or QSD hypothesis",
+    "no assumed source identity"
+  ],
+  "production_changed": false,
+  "books_changed": false,
+  "git_or_remote_changed": false,
+  "lake_build_executed_by_this_task": false,
+  "native_validation_claimed": false
+}

@@ -1,0 +1,50 @@
+--- lean-attempt-001/SameSourceKilledExitFlux.lean
++++ lean-attempt-003/SameSourceKilledExitFlux.lean
+@@ -130,9 +130,10 @@
+ /-- K1 followed by the small algebra lemma gives the actual survival drop. -/
+ theorem actual_survival_drop_eq_killedExitFlux (n : ℕ) :
+     s n - s (n + 1) = flux n := by
+-  rw [actual_survival_mass_eq_killed_pow_sum,
+-    actual_survival_mass_eq_killed_pow_sum]
+-  exact killed_pow_mass_drop eta0 Q n
++  dsimp only
++  rw [actual_survival_mass_eq_killed_pow_sum M q sigma p0 K n,
++    actual_survival_mass_eq_killed_pow_sum M q sigma p0 K (n + 1)]
++  convert killed_pow_mass_drop eta0 Q n using 1 <;> congr!
+ 
+ /-- The drop is the mass of an event in the SAME actual (n+1)-step law.
+ Prefix coherence is proved from causalLaw, not supplied as a hypothesis. -/
+@@ -140,14 +141,14 @@
+     (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A := A) K n) =
+       s n - s (n + 1) := by
+   classical
+-  let prefix : Set (CausalHistory X (A × X) (n + 1)) :=
++  let safePrefix : Set (CausalHistory X (A × X) (n + 1)) :=
+     {h | ¬ riskEverFailure (fun x => x ∉ K) n h.1}
+   let stay : Set (CausalHistory X (A × X) (n + 1)) :=
+     {h | ¬ riskEverFailure (fun x => x ∉ K) (n + 1) h}
+   let leave := riskFirstExitAfter (A := A) K n
+-  have hsplit : prefix = stay ∪ leave := by
++  have hsplit : safePrefix = stay ∪ leave := by
+     ext h
+-    simp only [prefix, stay, leave, riskFirstExitAfter,
++    simp only [safePrefix, stay, leave, riskFirstExitAfter,
+       Set.mem_ofPred_eq, Set.mem_union, riskEverFailure, not_or]
+     tauto
+   have hdisjoint : Disjoint stay leave := by
+@@ -156,13 +157,13 @@
+     change ¬ (riskEverFailure (fun x => x ∉ K) n h.1 ∨ h.2.2 ∉ K) at hs
+     change ¬ riskEverFailure (fun x => x ∉ K) n h.1 ∧ h.2.2 ∉ K at he
+     exact hs (Or.inr he.2)
+-  have hprefix : (nu (n + 1)).toMeasure.real prefix = s n := by
++  have hprefix : (nu (n + 1)).toMeasure.real safePrefix = s n := by
+     exact causalLaw_prefix_event_real p0 L n
+       {h | ¬ riskEverFailure (fun x => x ∉ K) n h}
+   have hadd : s n = s (n + 1) +
+       (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A := A) K n) := by
+     calc
+-      s n = (nu (n + 1)).toMeasure.real prefix := hprefix.symm
++      s n = (nu (n + 1)).toMeasure.real safePrefix := hprefix.symm
+       _ = (nu (n + 1)).toMeasure.real stay +
+           (nu (n + 1)).toMeasure.real leave := by
+         rw [hsplit]

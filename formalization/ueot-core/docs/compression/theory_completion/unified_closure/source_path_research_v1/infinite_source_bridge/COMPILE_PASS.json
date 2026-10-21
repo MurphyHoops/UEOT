@@ -1,0 +1,306 @@
+{
+  "schema": "UEOT_PRIVATE_SAME_SOURCE_INFINITE_PREFIX_COMPILE_PASS_V1",
+  "status": "PRIVATE_FOCUSED_LEAN_PASS_NOT_INTEGRATED",
+  "owner": "/root/math_resume",
+  "created_utc": "2026-10-21T11:08:44.172479+00:00",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean",
+    "bytes": 10106,
+    "sha256": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92"
+  },
+  "actual_execution": {
+    "attempt": 3,
+    "status": "PASS",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 6.305,
+    "started_utc": "2026-10-21T11:06:06.408497+00:00",
+    "finished_utc": "2026-10-21T11:06:12.714366+00:00",
+    "command": [
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+      "env",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-c",
+      "import os,sys,json,hashlib; from pathlib import Path; os.environ[\"LEAN_PATH\"]=sys.argv[1]+os.pathsep+os.environ.get(\"LEAN_PATH\",\"\"); Path(sys.argv[2]).write_text(json.dumps({k:os.environ.get(k,\"\") for k in [\"LEAN_PATH\",\"LEAN_SRC_PATH\",\"LEAN_SYSROOT\",\"ELAN_TOOLCHAIN\",\"LEAN_NUM_THREADS\"]},indent=2)+\"\\n\"); os.execv(sys.argv[3],sys.argv[3:])",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/ENV_AFTER_LAKE.json",
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+      "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1",
+      "-o",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/SameSourceInfinitePrefix.olean",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean"
+    ],
+    "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+    "LEAN_NUM_THREADS": "1",
+    "timeout_seconds": 180,
+    "process_group": 73609
+  },
+  "pass_evidence": {
+    "status": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/STATUS.json",
+      "bytes": 5427,
+      "sha256": "fc223cff8f398868799b4799cf49588eddb85d5407efe3dd2884c459a5fffd87"
+    },
+    "log": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/lean.log",
+      "bytes": 1409,
+      "sha256": "26521b3768620c1c35b1e66d6ce2d55f46e06ee998de1c2abf4e6b194c00d117"
+    },
+    "olean": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/SameSourceInfinitePrefix.olean",
+      "bytes": 310712,
+      "sha256": "9a5d689ba7c866f5597d4b752bd6e9ac05bd3e5e26f7da9be8c28c4659cfff1b"
+    },
+    "actual_lake_environment": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/ENV_AFTER_LAKE.json",
+      "bytes": 4023,
+      "sha256": "f5b500624524440b5a8006966bc062261eeb92b06f3db0a45da1020ce95fcac1"
+    }
+  },
+  "original_four_file_v1_snapshot": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/v1-original/SameSourceInfinitePrefix.lean",
+      "bytes": 9988,
+      "sha256": "7773377037056384b194d09e63623d3a65c127e7d9cd22681430bd89648b54e0"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/v1-original/CONTRACT.md",
+      "bytes": 12969,
+      "sha256": "153e8e85bed5caffd1e0ae3c9cab98242c1040339e70a3b6ac272dc0f31dadcc"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/v1-original/API_INPUTS.json",
+      "bytes": 6445,
+      "sha256": "c005698afa81caf206e4e41c702e6d381ee35f4665a7fe92ea24227d55aec0ec"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/v1-original/STATUS.json",
+      "bytes": 1857,
+      "sha256": "e0928a635c7447274dfce02d35801a6e98a88cc9f3f2ffec1a80c6f6c0b33875"
+    }
+  ],
+  "original_contract_status_api_files_preserved": true,
+  "original_source_byte_copy_preserved": true,
+  "inputs": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/API_INPUTS.json",
+      "bytes": 6445,
+      "sha256": "c005698afa81caf206e4e41c702e6d381ee35f4665a7fe92ea24227d55aec0ec"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/ENVIRONMENT_REUSE_BINDING.json",
+      "bytes": 5723,
+      "sha256": "dc82b8d603be937d3405e1ed4645ec8e44ca4c408caf98246e68e96f746d3d54"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/RESOLVED_DIRECT_IMPORTS.json",
+      "bytes": 3401,
+      "sha256": "998b32f55931cb65559716d7214ee9ec08003a6956ea3ee044af3ae80049b888"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/DECLARATION_COMPARISON.json",
+      "bytes": 8847,
+      "sha256": "803bd59930b587577619fef33a0c6771434fddfae8c96d04c84c26e3449d46e2"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SOURCE_DELTA.patch",
+      "bytes": 2111,
+      "sha256": "8ef590bf7057b83cdea00df8d8e2b5cc6cdce2016c9f3c17ceed9de8852578a4"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/compile_private.py",
+      "bytes": 6977,
+      "sha256": "f54f746237ea6b117d32f6c1fadf252db130f0b92450e89bfab614779f73fae1"
+    }
+  ],
+  "private_dependency_pins": {
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/infinite-source-bridge-v1/REVIEW.json": "364b5c2c5698b575a10142a77b5277b2d176e72131e88844f09e43150e11fb3d"
+  },
+  "private_dependency_pins_rechecked_after_pass": true,
+  "production_identity": {
+    "complete_source_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+    "complete_source_paths_and_each_file_hash_rechecked_every_attempt": true,
+    "source_file_count": 666,
+    "existing_build_manifest": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+      "bytes": 202983,
+      "sha256": "04acfa12f4b43154cbf1701834aadd459b1647730f789cdff2eccc6436e96b7c"
+    },
+    "environment_binding": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/ENVIRONMENT_REUSE_BINDING.json",
+      "bytes": 5723,
+      "sha256": "dc82b8d603be937d3405e1ed4645ec8e44ca4c408caf98246e68e96f746d3d54"
+    },
+    "dependency_scope": "Existing completed-build dependency and clean-state pins reused; no dependency/Git mutation or repeated build. Actual relevant API inputs, runtime/toolchain/environment and private imported olean rechecked."
+  },
+  "declaration_preservation": {
+    "all_13_complete_declaration_headers_byte_identical": true,
+    "all_2_definition_bodies_byte_identical": true,
+    "instance_body_byte_identical": true,
+    "method": "Top-level delimiter scan excluding nested named := arguments; full source diff also preserved.",
+    "kernel_type_comparison_to_uncompiled_original_claimed": false
+  },
+  "actual_printed_axiom_closures": {
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "axiom_scope": "Three actual transitive endpoint closures; not a whole-project native declaration census.",
+  "retained_actual_attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 8.298,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-001/SameSourceInfinitePrefix.lean",
+        "bytes": 9962,
+        "sha256": "1f8b83e0d52b89b463cc89ae074f6b2624f41b9300abcfceb974843ade32f8d2"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-001/lean.log",
+        "bytes": 3990,
+        "sha256": "d25a0c9ac9a832e710a1e10198a675ff5b49ba4d407224d6b0985fa52a85a657"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-001/STATUS.json",
+        "bytes": 5154,
+        "sha256": "d5611fdf4f9fe51da6fb1241060c3376e777fde99aa7e546c9616fa1410e86bf"
+      },
+      "actual_lake_environment": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-001/ENV_AFTER_LAKE.json",
+        "bytes": 4023,
+        "sha256": "f5b500624524440b5a8006966bc062261eeb92b06f3db0a45da1020ce95fcac1"
+      }
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 6.395,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/SameSourceInfinitePrefix.lean",
+        "bytes": 10029,
+        "sha256": "d9047ea5534aeab8bcfacde5f960e13ca17d1565ed06401f64a50df9de9bfa27"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/lean.log",
+        "bytes": 2019,
+        "sha256": "52b456285b6f825018129c181eb747b7964c6f9c20d1ae70059eef4a0f034563"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/STATUS.json",
+        "bytes": 5157,
+        "sha256": "27b44785abc6c70de3b786f5cd72ed5c90f59ad795c1fe55eb5fdf09c86b8d57"
+      },
+      "actual_lake_environment": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-002/ENV_AFTER_LAKE.json",
+        "bytes": 4023,
+        "sha256": "f5b500624524440b5a8006966bc062261eeb92b06f3db0a45da1020ce95fcac1"
+      }
+    },
+    {
+      "attempt": 3,
+      "status": "PASS",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 6.305,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/SameSourceInfinitePrefix.lean",
+        "bytes": 10106,
+        "sha256": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/lean.log",
+        "bytes": 1409,
+        "sha256": "26521b3768620c1c35b1e66d6ce2d55f46e06ee998de1c2abf4e6b194c00d117"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/STATUS.json",
+        "bytes": 5427,
+        "sha256": "fc223cff8f398868799b4799cf49588eddb85d5407efe3dd2884c459a5fffd87"
+      },
+      "actual_lake_environment": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/ENV_AFTER_LAKE.json",
+        "bytes": 4023,
+        "sha256": "f5b500624524440b5a8006966bc062261eeb92b06f3db0a45da1020ce95fcac1"
+      }
+    }
+  ],
+  "delta": [
+    "Preserve all original four v1 files and the independent static review; refresh only source banner to refer to separate actual execution receipts.",
+    "In stateHistoryEquiv_last, explicitly split the successor product and simplify Prod.map.",
+    "In G1, apply a theorem-local backward.isDefEq.respectTransparency=false elaboration option.",
+    "In the G1 zero branch, explicitly reduce CausalHistory, causalLaw, causalHistoryMeasurableSpace and stateHistoryEquiv, then use the existing homTrajMeasure_prefix_zero.",
+    "No declaration, definition, input identity, policy scope, source construction or event conclusion changed."
+  ],
+  "warnings": {
+    "unused_simp_argument": 1,
+    "letI_style": 1,
+    "optional_recompile_performed": false
+  },
+  "independent_review": {
+    "original_static": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/infinite-source-bridge-v1/REVIEW.json",
+      "bytes": 3088,
+      "sha256": "364b5c2c5698b575a10142a77b5277b2d176e72131e88844f09e43150e11fb3d"
+    },
+    "current_compile_delta": "PENDING_SEPARATE_INDEPENDENT_REVIEW"
+  },
+  "mathematical_scope": {
+    "G1": "For arbitrary finite X, original p0 and fixed actual PMF rows J, the entire recursive state history is measurably equivalent to the same homTrajMeasure prefix 0..n.",
+    "G2": "Invoke the passed actual action-erasure source theorem for same M/q/sigma/p0, with time-homogeneous current-observation randomized sigma.",
+    "G3": "Every state-prefix event on the original action/state record has the same infinite-cylinder probability.",
+    "not_claimed": [
+      "arbitrary history policy is state Markov",
+      "observed process is Markov",
+      "action-dependent events without state-prefix factorization",
+      "safe-event/K1 real versus ENNReal adapter",
+      "new infinite survival limit/fixed-point theorem",
+      "production integration"
+    ]
+  },
+  "non_lean_tool_events": [
+    {
+      "action": "initial ordinary-sandbox ps read",
+      "result": "fatal library error, lookup self",
+      "lean_started": false,
+      "resolution": "Runner uses read-only /proc under the already authorized escalated execution mode."
+    },
+    {
+      "action": "first attempt to apply the attempt002 proof patch",
+      "result": "exec-server transport closed before file read",
+      "lean_started": false,
+      "source_change": false,
+      "attempt002_directory_created": false,
+      "resolution": "Exact prior source hash and absence of attempt002 were observed before retry; successful patch and real attempt002 are separately recorded."
+    }
+  ],
+  "operations": {
+    "actual_focused_Lean_attempts": 3,
+    "max_concurrent_own_Lean": 1,
+    "lake_build": false,
+    "native": false,
+    "production_modified": false,
+    "consumers_modified": false,
+    "books_modified": false,
+    "Git_or_refs_modified": false,
+    "remote_operations": false
+  }
+}

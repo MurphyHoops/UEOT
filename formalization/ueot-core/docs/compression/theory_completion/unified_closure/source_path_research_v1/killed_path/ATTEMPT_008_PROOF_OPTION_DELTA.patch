@@ -1,0 +1,35 @@
+--- attempt-007/SameSourceKilledPath.lean
++++ attempt-008/SameSourceKilledPath.lean
+@@ -122,6 +122,7 @@
+     · simp
+   · simp [hh]
+ 
++set_option backward.isDefEq.respectTransparency false in
+ /-- One actual PMF extension gives the killed row recurrence. No conditional
+ probability or positive-history premise is used. -/
+ private theorem stateTerminalMass_succ
+@@ -164,13 +165,12 @@
+       intro h _
+       apply Finset.sum_congr rfl
+       intro z _
+-      split_ifs <;>
+-        first
+-        | simpa only [ENNReal.toReal_mul, mu] using
+-            congrArg ENNReal.toReal
+-              (UEOT.V3.PathError.pmfExtend_apply mu (policyPathKernel M pi n) h z)
+-        | contradiction
+-        | rfl
++      apply @if_congr
++      · rfl
++      · simpa only [ENNReal.toReal_mul, mu] using
++          congrArg ENNReal.toReal
++            (UEOT.V3.PathError.pmfExtend_apply mu (policyPathKernel M pi n) h z)
++      · rfl
+     _ = ∑ h : CausalHistory X X n,
+         if stateSurvives K n h then
+           (mu h).toReal * policyMatrix M pi (currentState n h) v.1
+@@ -365,3 +365,4 @@
+ 
+ #print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow
+ #print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.state_terminal_mass_eq_killed_pow

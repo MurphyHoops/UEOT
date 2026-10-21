@@ -1,0 +1,11 @@
+--- README_REVIEWED_V1.md
++++ README.md
+@@ -26,7 +26,7 @@
+ | [无限存活的有限支撑判据](infinite_survival/FINITE_SUPPORT_AND_INFINITE_SURVIVAL.md) | 完整数学推导与有限性反例，独立数学审查 CLEAR；尚未形式化 | 新 Lean API、已连接当前有限记录与无限轨迹 |
+ | [有限窗条件路径与 Doob 边界](finite_window_conditioning/FINITE_WINDOW_DOOB.md) | 同源三状态反例、完整时变条件核及精确有理数核对；数学审查 CLEAR | Lean 已证明完整条件路径分解或一般 Q-process 极限 |
+ 
+-QSD 草稿早期任务名中的“K2”是工作标签。按已审 [CONTRACT_KILLED v2](source_bridge/CONTRACT_KILLED.md) 的编号，它对应 K3，以及 K2 在 QSD 初态下的特化。现在一般 K2 已对任意实际初态、当前 \(s_n>0\) 证明：先过滤原实际生存事件再取终态的 PMF，等于归一化 killed 行 \(\eta_0Q^n/s_n\) 的包含映射推前。QSD 直接复用该接口，证明正存活当且仅当 \(n=0\) 或 \(\rho>0\)，并保留 \(n=0,\rho=0\) 的合法条件化情形。原未编译稿及当时的静态收据仍在 `qsd_binding_draft/` 与 `exit_flux_draft/`，不改写为后来通过的执行。
++QSD 草稿早期任务名中的“K2”是工作标签。按已审 [CONTRACT_KILLED v2](source_bridge/CONTRACT_KILLED.md) 的编号，它对应 K3，以及 K2 在 QSD 初态下的特化。现在一般 K2 已对任意实际初态、当前 \(s_n>0\) 证明：先过滤原实际生存事件再取终态的 PMF，等于归一化 killed 行 \(\eta_0Q^n/s_n\) 的包含映射推前。这一 QSD 特化要求实际初态为 `r.map Subtype.val`，且 `r` 是同一 `Q` 的归一化左特征行；不能为分析方便替换既定初态。QSD 直接复用该接口，证明正存活当且仅当 \(n=0\) 或 \(\rho>0\)，并保留 \(n=0,\rho=0\) 的合法条件化情形。原未编译稿及当时的静态收据仍在 `qsd_binding_draft/` 与 `exit_flux_draft/`，不改写为后来通过的执行。
+ 
+ 这些来源桥固定同一时间齐次当前观察随机策略。它们没有把一般因果策略或支持生存定理选择的 `viableFamilyPolicy` 自动识别为该策略；后续组合仍需实际反馈身份或适当的状态扩充。
+ 

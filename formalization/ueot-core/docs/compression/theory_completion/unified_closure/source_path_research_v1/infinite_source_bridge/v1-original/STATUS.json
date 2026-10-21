@@ -1,0 +1,44 @@
+{
+  "status": "MATHEMATICAL_CONTRACT_AND_LEAN_DRAFT_NOT_COMPILED_NOT_INTEGRATED",
+  "date_utc": "2026-10-21",
+  "author_agent": "/root/math_resume",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean",
+    "size_bytes": 9988,
+    "sha256": "7773377037056384b194d09e63623d3a65c127e7d9cd22681430bd89648b54e0"
+  },
+  "contract": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/CONTRACT.md",
+    "size_bytes": 12969,
+    "sha256": "153e8e85bed5caffd1e0ae3c9cab98242c1040339e70a3b6ac272dc0f31dadcc"
+  },
+  "api_inputs": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/API_INPUTS.json",
+    "size_bytes": 6445,
+    "sha256": "c005698afa81caf206e4e41c702e6d381ee35f4665a7fe92ea24227d55aec0ec"
+  },
+  "execution": {
+    "lean_run": false,
+    "lake_build_run": false,
+    "native_run": false,
+    "axiom_output": "NOT_RUN",
+    "independent_review": "PENDING"
+  },
+  "endpoints": [
+    "state_history_eq_homogeneous_prefix",
+    "actual_state_prefix_eq_homogeneous_prefix",
+    "actual_state_prefix_event_mass"
+  ],
+  "imports": [
+    "SourcePolicyPathBridge",
+    "UEOT.V3.DynamicsKernel",
+    "Mathlib.MeasureTheory.Integral.Lebesgue.Countable"
+  ],
+  "static_lexical_check": {
+    "not_a_lean_check": true,
+    "forbidden_tokens_outside_comments_and_strings": [],
+    "declared_target_identities_as_assumptions": false
+  },
+  "scope": "Only full finite state-prefix/source identity candidate. No new survival/killed/tail/maximum-fixed-point theorem is claimed. Existing production all-times safety remains an existing theorem.",
+  "future_compile": "Requires root-assigned focused single-thread window and actual environment validation; no process launched."
+}

@@ -1,0 +1,42 @@
+{
+  "status": "CORE_K1_K2_K3_MATHEMATICS_CLEAR_WITH_CONTRACT_CLARIFICATIONS_REQUIRED",
+  "reviewer": "/root/audit_resume",
+  "contract_original": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/CONTRACT_KILLED_v1.md",
+  "contract_original_sha256": "a4d10cd795e83190ff2fa18a9ed9a47085ea3782631caa071a1e704f32b55d25",
+  "contract_original_bytes": 15280,
+  "bridge_sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+  "K1_arbitrary_initial_empty_K_zero_horizon_clear": true,
+  "K2_requires_actual_positive_survival": true,
+  "K3_constructs_actual_QSD_initial_law": true,
+  "full_support_left_QSD_does_not_imply_arbitrary_initial_survival": true,
+  "positive_right_eigenvector_bound_requires_nonzero_safe_initial_mass": true,
+  "finite_window_conditioning_and_Doob_distinguished": true,
+  "original_findings": [
+    "All-examples absorbing-cemetery sentence conflicts with nonabsorbing return example 8.3.",
+    "Explicit global s_T>0 is needed for the finite-window conditional initial law.",
+    "Doob initial eta must be nonnegative with strictly positive pairing with h.",
+    "Four-state one-step eta is a probability row; submass m contributes a factor m."
+  ],
+  "additional_implementation_boundaries": [
+    "Zero future-survival rows require fallback or restriction if a total conditional kernel is constructed.",
+    "Observation-prefix mixtures must retain past survival, using the alive posterior or unnormalized alive mass.",
+    "BiEigenData requires left/right pairing one; example 8.4 raw h has pairing 4/3."
+  ],
+  "dependency_surface_sha256": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean": "5736eae5f9939ef0fdb4c7c520c2c0bc5766d85bf863161787568d2042842cfb",
+    "formalization/ueot-core/UEOT/V3/QSDPerron.lean": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776",
+    "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean": "746a435146c4bc20721a1429085285492ac01a040b6090e186f8141b251f257b",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/GOA.lean": "ef02e007bf3d670e5dd1aac5630ef9119325188b367a1f82d21be0465452a29a",
+    "formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/ProbabilityMassFunction/Constructions.lean": "09a7cf241524c158d4174e994e04140901630c7e0629ceee9b7ba7ec347d2cd4"
+  },
+  "arithmetic_status": "EXACT_RATIONAL_ARITHMETIC_CHECKED_NOT_LEAN",
+  "arithmetic_script_sha256": "e1cef9aba74789af783f7bc815cf7dcdd5cd34fe10035b19f960582b5f3e42b5",
+  "arithmetic_results_sha256": "41309eeea6f73bf2012c603d62e1a405dab1d343d97a5a8c8d09cd6e44d5e52a",
+  "arithmetic_example_groups": 7,
+  "Lean_compiled": false,
+  "project_tests_run": false,
+  "production_modified": false,
+  "Git_or_remote_operated": false,
+  "current_seven_module_release_scope_expanded": false,
+  "report_sha256": "e650c4df4b14e8a3ac65324c468ce968cb63408eb68c5ef46907a560de6b25bf"
+}

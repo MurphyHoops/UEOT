@@ -1,0 +1,202 @@
+{
+  "schema": "UEOT_GENERAL_SAME_SOURCE_K2_INDEPENDENT_STATIC_REVIEW_V1",
+  "reviewer": "/root/audit_resume",
+  "status": "MATHEMATICAL_AND_API_STATIC_CLEAR_NOT_COMPILED",
+  "inputs": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean",
+      "bytes": 12309,
+      "sha256": "7ab97381798440497a3a60fac5ee2dd405deb1f7100438e06b1a1b6a2e21d95c"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/CONTRACT_K2.md",
+      "bytes": 12301,
+      "sha256": "5f040a5ce6ce27e35f09c83a68a21504975540d9ac56039c6f49208410571920"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/STATUS.json",
+      "bytes": 8209,
+      "sha256": "43660f0be421d0d152deb846035687ad1d5bfcaf224890548ee95180d3a97afa"
+    }
+  ],
+  "last_contract_diff_reviewed": {
+    "from_v1_sha256": "60135d056deb58b202a8d5f5c7409bbd58addf8e4e9db9020830bcd20202cc82",
+    "changes": [
+      "Correct module versus namespace reference",
+      "Explicit same-policy stationary-feedback bridge obligation"
+    ],
+    "source_changed": false
+  },
+  "scope": {
+    "actual_p0": "arbitrary; initial unsafe mass retained",
+    "positivity": "current finite horizon only",
+    "policy": "same stationary current-observation randomized policy",
+    "observation_finite_required": false,
+    "safe_nonempty_assumed": false,
+    "qsd_assumed": false,
+    "source_identity_assumed": false,
+    "normalization_identity_assumed": false
+  },
+  "findings": {
+    "blocking_mathematical_findings": [],
+    "certain_api_signature_errors": [],
+    "unexecuted_elaboration_checkpoints": [
+      "finite sum rewrite matching in filter_map_apply_real",
+      "proof irrelevant filter witness change",
+      "subtype instances and n=0 rowApply simp"
+    ],
+    "sum_div_direction": "correct",
+    "null_event_conditioning": "no witness or arbitrary fallback supplied"
+  },
+  "passed_dependencies_read_only_binding": [
+    {
+      "role": "passed complete source path bridge",
+      "source": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+        "bytes": 6477,
+        "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91"
+      },
+      "olean": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean",
+        "bytes": 130608,
+        "sha256": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748"
+      },
+      "actual_pass_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/STATUS.json",
+        "bytes": 1899,
+        "sha256": "f1b31a97e81008a5dce37172f1380783ee480582232b11fa5a46676ff936f882"
+      }
+    },
+    {
+      "role": "passed K1 joint and total actual survival identities",
+      "source": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+        "bytes": 15902,
+        "sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826"
+      },
+      "olean": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/SameSourceKilledPath.olean",
+        "bytes": 489560,
+        "sha256": "91c3d26034d72d7abeb140d057c78b55296d4e4e7450cf5b291ccc3ad748d1e5"
+      },
+      "actual_pass_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/COMPILE_PASS.json",
+        "bytes": 16091,
+        "sha256": "2784c9b2b6eaa11c27ef485e4eb83dc8437295b3f25ef3777ed7727854c11676"
+      }
+    }
+  ],
+  "actual_dependency_receipts_logs": [
+    {
+      "receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/STATUS.json",
+        "bytes": 1899,
+        "sha256": "f1b31a97e81008a5dce37172f1380783ee480582232b11fa5a46676ff936f882"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/lean.log",
+        "bytes": 359,
+        "sha256": "0286a294da12a219320b76afa8381669bb35c25dfcaf0a31b7e3283c7aeb8b88"
+      },
+      "observed_status": "PASS",
+      "exit_code": 0,
+      "scope": "Prior actual private focused execution, read only in this review."
+    },
+    {
+      "receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/STATUS.json",
+        "bytes": 5560,
+        "sha256": "2a0edbb041f16e957c625e6f5d17db404d29b37c525588ec675b789861d448d4"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/lean.log",
+        "bytes": 948,
+        "sha256": "cb1c77ddde8702fae626aad9b7ac6de6a079cf3e6cf71e21287c6c48430f5862"
+      },
+      "observed_status": "PASS",
+      "exit_code": 0,
+      "scope": "Prior actual private focused execution, read only in this review."
+    }
+  ],
+  "api_sources_read": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/ProbabilityMassFunction/Basic.lean",
+      "bytes": 14748,
+      "sha256": "4ef376c0ae18ac15664d1d0a77c075f838bc0d65556ac3bc7e462d651fdae197"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/ProbabilityMassFunction/Constructions.lean",
+      "bytes": 11701,
+      "sha256": "09a7cf241524c158d4174e994e04140901630c7e0629ceee9b7ba7ec347d2cd4"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+      "bytes": 7801,
+      "sha256": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean",
+      "bytes": 8923,
+      "sha256": "0807f667e0473e9bc063b446add02d0d1e477e6dbbf1125f15245093acc1ccc2"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Data/ENNReal/Basic.lean",
+      "bytes": 31194,
+      "sha256": "1c25fed6fb4b1c7e819b206e6e74fcd3e886facca6ff3480871fb7ac33dcbc4a"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Data/ENNReal/Real.lean",
+      "bytes": 15960,
+      "sha256": "d0a0778e60ecadea09e8233f5a9228f0aa1b94e85745b4d86f59268ce4b863fd"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Data/ENNReal/Inv.lean",
+      "bytes": 44010,
+      "sha256": "bbc0988d1a084ec35346dc7ab70b455efe86a833c84c499ec5e4dc0b07550d72"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Field.lean",
+      "bytes": 2002,
+      "sha256": "ea6805b6e04e1a10e4f1800fbf6f645af1b3fbe7b7bc9db5c014508a4b9f528f"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Typeclasses/Finite.lean",
+      "bytes": 31316,
+      "sha256": "731d53e69288e971655bc19cdd45b70353b40d335eccf08189b0c377559b2fbd"
+    }
+  ],
+  "execution_by_reviewer": {
+    "lean": false,
+    "lake_build": false,
+    "native": false,
+    "tests": false,
+    "axiom_export": false
+  },
+  "writes": {
+    "directory": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/general-k2",
+    "production": false,
+    "author_files": false,
+    "books": false,
+    "git": false,
+    "remote": false
+  },
+  "not_claimed": [
+    "K2 compile PASS",
+    "K2 axiom closure",
+    "full transitive environment validation",
+    "canonical gate",
+    "resulting-main PASS",
+    "QSD existence",
+    "infinite survival"
+  ],
+  "next_gate": "Root-scheduled focused compilation of exact source with separate actual execution receipt",
+  "report": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/general-k2/REVIEW.md",
+    "bytes": 6364,
+    "sha256": "dfa4b49a5d4cbcc4419654442087d47bd6635dbd7005d1eb1d774060c66b35c1"
+  },
+  "pre_write_identity_guard": {
+    "first_write_attempt": "aborted before writing any report because contract changed during author revision",
+    "resolution": "Read exact final two-point diff; bind author-frozen final source/contract/status"
+  }
+}

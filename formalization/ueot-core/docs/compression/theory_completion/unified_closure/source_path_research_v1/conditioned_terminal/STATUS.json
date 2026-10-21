@@ -1,0 +1,169 @@
+{
+  "schema": "UEOT_GENERAL_SAME_SOURCE_K2_PRIVATE_DRAFT_V1",
+  "status": "DRAFT_NOT_COMPILED",
+  "recorded_utc": "2026-10-21T09:42:11.733538+00:00",
+  "owner": "/root/math_resume",
+  "candidate": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean",
+    "bytes": 12309,
+    "sha256": "7ab97381798440497a3a60fac5ee2dd405deb1f7100438e06b1a1b6a2e21d95c"
+  },
+  "mathematical_contract": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/CONTRACT_K2.md",
+    "bytes": 12301,
+    "sha256": "5f040a5ce6ce27e35f09c83a68a21504975540d9ac56039c6f49208410571920"
+  },
+  "scope": "Arbitrary actual p0, one current finite horizon with positive actual survival, same model/current-observation stationary randomized policy; no QSD/Perron inputs.",
+  "construction": "(actual history PMF.filter actual full survival event internally_derived_support_witness).map riskLastState",
+  "public_declarations": [
+    "actual_survival_pos_iff_support",
+    "actualConditionedTerminal",
+    "actual_conditioned_terminal_mass",
+    "actual_conditioned_terminal_support",
+    "actual_conditioned_terminal_eq_zero_of_notMem",
+    "normalizedKilledTerminal",
+    "normalizedKilledTerminal_apply_toReal",
+    "actual_conditioned_terminal_eq_normalized_killed_map",
+    "safe_set_nonempty_of_survival_pos",
+    "actual_zero_survival_no_filter_witness",
+    "actual_survival_mass_at_zero",
+    "actual_conditioned_terminal_mass_at_zero",
+    "actual_survival_mass_empty"
+  ],
+  "primary_endpoints": [
+    "actual_conditioned_terminal_mass",
+    "actual_conditioned_terminal_eq_normalized_killed_map",
+    "actual_zero_survival_no_filter_witness",
+    "actual_conditioned_terminal_mass_at_zero",
+    "actual_survival_mass_empty"
+  ],
+  "new_mathematical_input": "Current actual survival mass s_n > 0 only; not all-horizon positivity.",
+  "safe_set_nonempty_assumed": false,
+  "initial_support_in_safe_set_assumed": false,
+  "source_identity_assumed": false,
+  "qsd_or_perron_assumed": false,
+  "compile": {
+    "started": false,
+    "status": "NOT_RUN",
+    "stdout_stderr_log": null,
+    "exit_code": null,
+    "olean": null,
+    "actual_axiom_closures": null
+  },
+  "new_lake_build_run": false,
+  "new_native_run": false,
+  "production_files_modified_by_this_task": false,
+  "books_modified_by_this_task": false,
+  "git_refs_modified_by_this_task": false,
+  "remote_operations_by_this_task": false,
+  "dependencies": [
+    {
+      "role": "passed complete source path bridge",
+      "source": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+        "bytes": 6477,
+        "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91"
+      },
+      "olean": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean",
+        "bytes": 130608,
+        "sha256": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748"
+      },
+      "actual_pass_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/STATUS.json",
+        "bytes": 1899,
+        "sha256": "f1b31a97e81008a5dce37172f1380783ee480582232b11fa5a46676ff936f882"
+      }
+    },
+    {
+      "role": "passed K1 joint and total actual survival identities",
+      "source": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+        "bytes": 15902,
+        "sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826"
+      },
+      "olean": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/SameSourceKilledPath.olean",
+        "bytes": 489560,
+        "sha256": "91c3d26034d72d7abeb140d057c78b55296d4e4e7450cf5b291ccc3ad748d1e5"
+      },
+      "actual_pass_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/COMPILE_PASS.json",
+        "bytes": 16091,
+        "sha256": "2784c9b2b6eaa11c27ef485e4eb83dc8437295b3f25ef3777ed7727854c11676"
+      }
+    }
+  ],
+  "inspected_environment": {
+    "lean_toolchain": "leanprover/lean4:v4.33.1",
+    "lean_toolchain_file": {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/lean-toolchain",
+      "bytes": 25,
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+    },
+    "mathlib_rev_in_manifest": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "lake_manifest": {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/lake-manifest.json",
+      "bytes": 3160,
+      "sha256": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1"
+    },
+    "api_sources": [
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/ProbabilityMassFunction/Basic.lean",
+        "bytes": 14748,
+        "sha256": "4ef376c0ae18ac15664d1d0a77c075f838bc0d65556ac3bc7e462d651fdae197"
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/ProbabilityMassFunction/Constructions.lean",
+        "bytes": 11701,
+        "sha256": "09a7cf241524c158d4174e994e04140901630c7e0629ceee9b7ba7ec347d2cd4"
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+        "bytes": 7801,
+        "sha256": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6"
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean",
+        "bytes": 8923,
+        "sha256": "0807f667e0473e9bc063b446add02d0d1e477e6dbbf1125f15245093acc1ccc2"
+      }
+    ],
+    "scope": "Scoped file identity inspection, not a new complete transitive-closure or canonical resulting-main receipt."
+  },
+  "static_source_observations": {
+    "imports": [
+      "SameSourceKilledPath",
+      "Mathlib.Probability.ProbabilityMassFunction.Constructions"
+    ],
+    "declaration_axiom_tokens": [],
+    "proof_placeholder_tokens": [],
+    "filterSupport_used": false,
+    "interpretation": "Lexical observations only. These are not elaboration, mathematical review, or axiom-closure results."
+  },
+  "independent_static_review": {
+    "status": "CORE_STATIC_FINDINGS_RECEIVED_AWAITING_FILE_RECEIPT",
+    "reviewer": "/root/audit_resume",
+    "planned_directory": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/general-k2",
+    "message_summary": "Reviewer reports no quantifier/source defect and no definite wrong API signature; still no Lean run."
+  },
+  "next_required_step": "Independent static review and root-scheduled focused Lean execution; do not start Lean while root full build/native own resources.",
+  "contract_revisions": [
+    {
+      "prior_contract": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/CONTRACT_K2_V1.md",
+        "bytes": 11799,
+        "sha256": "60135d056deb58b202a8d5f5c7409bbd58addf8e4e9db9020830bcd20202cc82"
+      },
+      "change": "Correct the riskFiberPosterior source-module versus Lean-namespace citation only. No mathematical statement or Lean source change."
+    },
+    {
+      "prior_contract": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/CONTRACT_K2_V2.md",
+        "bytes": 11887,
+        "sha256": "de2d22d59bc22d7ce690e7e5d5e2f62a00bef4276cf32241b510035c79f4a5de"
+      },
+      "change": "Add explicit viableFamilyPolicy identity boundary requested by root: arbitrary causal risk APIs do not imply equality to a time-homogeneous current-observation randomized sigma. Future coupling requires actual stationary feedback equality or a new augmented-state source bridge. No Lean statement/source change."
+    }
+  ]
+}

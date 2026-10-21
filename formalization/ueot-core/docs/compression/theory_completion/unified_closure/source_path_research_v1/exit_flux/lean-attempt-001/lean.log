@@ -1,0 +1,146 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:133:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (causalLaw ?p0 (riskMicroControlKernel ?q (fun x => Model.transitionPMF ?M) (observationMarkovPolicy ?sigma))
+          ?n).toMeasure.real
+    {h | ¬riskEverFailure (fun x => x ∉ ?K) ?n h}
+in the target expression
+  (fun n =>
+          (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+                  n).toMeasure.real
+            {h | ¬riskEverFailure (fun x => x ∉ K) n h})
+        n -
+      (fun n =>
+          (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+                  n).toMeasure.real
+            {h | ¬riskEverFailure (fun x => x ∉ K) n h})
+        (n + 1) =
+    (fun n => killedExitFlux (rowApply eta0 (Q ^ n)) Q) n
+
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+n : ℕ
+⊢ (fun n =>
+          (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+                  n).toMeasure.real
+            {h | ¬riskEverFailure (fun x => x ∉ K) n h})
+        n -
+      (fun n =>
+          (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+                  n).toMeasure.real
+            {h | ¬riskEverFailure (fun x => x ∉ K) n h})
+        (n + 1) =
+    (fun n => killedExitFlux (rowApply eta0 (Q ^ n)) Q) n
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:141:25: error: unsolved goals
+case this
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+n : ℕ
+⊢ ?m.92
+
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+n : ℕ
+this : ?m.92 := ?this
+⊢ (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+            (n + 1)).toMeasure.real
+      (riskFirstExitAfter K n) =
+    (fun n =>
+          (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+                  n).toMeasure.real
+            {h | ¬riskEverFailure (fun x => x ∉ K) n h})
+        n -
+      (fun n =>
+          (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+                  n).toMeasure.real
+            {h | ¬riskEverFailure (fun x => x ∉ K) n h})
+        (n + 1)
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:139:8: error: (kernel) declaration has metavariables 'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop'
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:143:14: error: unexpected identifier; expected prec
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:148:22: error: unexpected token '='; expected ':'
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:150:21: error: unexpected token ','; expected ':'
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:159:51: error: unexpected token '='; expected ':'
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:165:46: error: unexpected token ':='; expected ':'
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:185:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_survival_zero`:
+  [Nonempty A]
+  [MeasurableSingletonClass X]
+  [MeasurableSingletonClass A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty A] [MeasurableSingletonClass X] [MeasurableSingletonClass A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean:208:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_ever_failure_mass`:
+  [Nonempty A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_prefix_event_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_killedExitFlux' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_killedExitFlux_nonneg' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_survival_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_mass_telescope' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_ever_failure_mass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_eq_initial_failure_add_first_exits' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound,
+ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop]

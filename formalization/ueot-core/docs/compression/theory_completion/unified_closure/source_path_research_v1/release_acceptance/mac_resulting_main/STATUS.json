@@ -1,0 +1,285 @@
+{
+  "state": "PASS",
+  "pid": 9202,
+  "requested_merge": "90cd0366b2120656dffbee025b5dc0c00d49b5a6",
+  "reviewed_candidate": "7fd3eb8cc3657fe9d0dd9a188ad3cfc8e7bea84c",
+  "runtime_platform": "macOS",
+  "started_utc": "2026-10-21T10:27:58.627467+00:00",
+  "commands": [
+    {
+      "label": "fetch_actual_main",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "main:refs/remotes/origin/main"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 1.9668928329999997,
+      "log_sha256": "742d35007549813a27e832a0c0352f6488e29778a328f6bdeff5e2f2a24a32de"
+    },
+    {
+      "label": "actual_main",
+      "command": [
+        "git",
+        "rev-parse",
+        "origin/main"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.03405037500000008,
+      "log_sha256": "fe8f59be5ca5caccd7537fd9bf3827e8814971f403cf57acc32526fa34fa61e4"
+    },
+    {
+      "label": "requested_merge_ancestor",
+      "command": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "90cd0366b2120656dffbee025b5dc0c00d49b5a6",
+        "90cd0366b2120656dffbee025b5dc0c00d49b5a6"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.030174333000000164,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "reviewed_candidate_ancestor",
+      "command": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "7fd3eb8cc3657fe9d0dd9a188ad3cfc8e7bea84c",
+        "90cd0366b2120656dffbee025b5dc0c00d49b5a6"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.13410604199999998,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "candidate_tree_0",
+      "command": [
+        "git",
+        "rev-parse",
+        "7fd3eb8cc3657fe9d0dd9a188ad3cfc8e7bea84c:formalization/ueot-core"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.029177624999999985,
+      "log_sha256": "0a5bf1307383888884eaf40c82938c6bc3654d3b7dbc3cd6fe422619cb4d0918"
+    },
+    {
+      "label": "main_tree_0",
+      "command": [
+        "git",
+        "rev-parse",
+        "90cd0366b2120656dffbee025b5dc0c00d49b5a6:formalization/ueot-core"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.010597541999999738,
+      "log_sha256": "0a5bf1307383888884eaf40c82938c6bc3654d3b7dbc3cd6fe422619cb4d0918"
+    },
+    {
+      "label": "candidate_tree_1",
+      "command": [
+        "git",
+        "rev-parse",
+        "7fd3eb8cc3657fe9d0dd9a188ad3cfc8e7bea84c:formalization/ueot-qm"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.010363708000000305,
+      "log_sha256": "e4e30bf87605e6f04dc1cd8927bf271a79d6414f30a69f7f8bf82c11a59577dd"
+    },
+    {
+      "label": "main_tree_1",
+      "command": [
+        "git",
+        "rev-parse",
+        "90cd0366b2120656dffbee025b5dc0c00d49b5a6:formalization/ueot-qm"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.010399708000000008,
+      "log_sha256": "e4e30bf87605e6f04dc1cd8927bf271a79d6414f30a69f7f8bf82c11a59577dd"
+    },
+    {
+      "label": "candidate_tree_2",
+      "command": [
+        "git",
+        "rev-parse",
+        "7fd3eb8cc3657fe9d0dd9a188ad3cfc8e7bea84c:physics"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.010505499999999834,
+      "log_sha256": "4d7ef52a2b9d6d96b51b0537308e79c016a53c5b828d4f8efa2f3703fea801c0"
+    },
+    {
+      "label": "main_tree_2",
+      "command": [
+        "git",
+        "rev-parse",
+        "90cd0366b2120656dffbee025b5dc0c00d49b5a6:physics"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.010435374999999691,
+      "log_sha256": "4d7ef52a2b9d6d96b51b0537308e79c016a53c5b828d4f8efa2f3703fea801c0"
+    },
+    {
+      "label": "add_fresh_worktree",
+      "command": [
+        "git",
+        "worktree",
+        "add",
+        "--detach",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021",
+        "90cd0366b2120656dffbee025b5dc0c00d49b5a6"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/repository.git",
+      "exit_code": 0,
+      "elapsed_seconds": 0.553276334,
+      "log_sha256": "9eca15f940ba37f156a81ee144d458b6be84c60e29ef795cfec60b3c568ab96a"
+    },
+    {
+      "label": "clone_existing_cache",
+      "command": [
+        "/bin/cp",
+        "-cR",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/registered-interfaces-build-cache-20261021"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020",
+      "exit_code": 0,
+      "elapsed_seconds": 0.9616793750000001,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "tracked_before",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021",
+      "exit_code": 0,
+      "elapsed_seconds": 0.276769292,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "lake_build_UEOT",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "build",
+        "UEOT"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021/formalization/ueot-core",
+      "exit_code": 0,
+      "elapsed_seconds": 58.743752458,
+      "log_sha256": "28b3f462bb9b12e188e3b76b8abeaeaa21b66f9a821b5fd7ce3d4d3c0c717c11"
+    },
+    {
+      "label": "full_fkrg_integration",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021",
+      "exit_code": 0,
+      "elapsed_seconds": 2.1026330830000006,
+      "log_sha256": "7d10e7e74cd46d1183e4218fa49d231e11ccea3b97a5d39f3f6b7a773f9622de"
+    },
+    {
+      "label": "tracked_after",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021",
+      "exit_code": 0,
+      "elapsed_seconds": 0.016667666999993003,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "runtime_environment": {
+    "LEAN_NUM_THREADS": "4"
+  },
+  "old_worktrees_before": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-policy-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8\n",
+      "status": " M .github/workflows/ueot-core-compression.yml\n M .github/workflows/ueot-core-lean.yml\n M docs/REPOSITORY_BRANCH_GOVERNANCE.md\n M formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md\n M formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json\n M formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md\n"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-viability-core-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8\n",
+      "status": " M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake/\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean\n"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/interfaces-production-20261021",
+      "head": "65db00a12d20be41cd6c8befacb9ba2e74a2a8a9\n",
+      "status": " M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean\n"
+    }
+  ],
+  "phase": "complete",
+  "actual_main": "90cd0366b2120656dffbee025b5dc0c00d49b5a6",
+  "tree_comparisons": [
+    {
+      "path": "formalization/ueot-core",
+      "candidate": "5c1a32c32d76cbea666385a304c75b0f887d5771",
+      "actual_main": "5c1a32c32d76cbea666385a304c75b0f887d5771",
+      "equal": true
+    },
+    {
+      "path": "formalization/ueot-qm",
+      "candidate": "56743009bdecdf2978452d9d7fc6e18d64e642d0",
+      "actual_main": "56743009bdecdf2978452d9d7fc6e18d64e642d0",
+      "equal": true
+    },
+    {
+      "path": "physics",
+      "candidate": "d91b0bedf6134f43fe3fadb5d2b2ef3e61eb0500",
+      "actual_main": "d91b0bedf6134f43fe3fadb5d2b2ef3e61eb0500",
+      "equal": true
+    }
+  ],
+  "cache": {
+    "source": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-build-cache",
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/registered-interfaces-build-cache-20261021",
+    "method": "new APFS copy-on-write clone; original cache is not built into"
+  },
+  "build_identity_before_sha256": "3faff09e521d91b9c4770e3be10c6391b94edec81c8087670919ba7a99878c70",
+  "build_identity_after_sha256": "3faff09e521d91b9c4770e3be10c6391b94edec81c8087670919ba7a99878c70",
+  "old_worktrees_after": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-policy-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8\n",
+      "status": " M .github/workflows/ueot-core-compression.yml\n M .github/workflows/ueot-core-lean.yml\n M docs/REPOSITORY_BRANCH_GOVERNANCE.md\n M formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md\n M formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json\n M formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md\n"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/support-viability-core-20261020",
+      "head": "7b1f7c3cf2e86cb85dcdb1b4618c247c517407f8\n",
+      "status": " M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake/\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean\n"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/interfaces-production-20261021",
+      "head": "65db00a12d20be41cd6c8befacb9ba2e74a2a8a9\n",
+      "status": " M formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean\n?? formalization/ueot-core/.lake\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean\n?? formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean\n"
+    }
+  ],
+  "old_worktrees_unchanged": true,
+  "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "native_evidence_scope": "Actual Linux native export retained under unchanged complete production source/environment/dependency identities. No Mac native execution is claimed or repeated.",
+  "complete_mac_build_identity_equal_before_after": true,
+  "finished_utc": "2026-10-21T10:29:04.655520+00:00"
+}

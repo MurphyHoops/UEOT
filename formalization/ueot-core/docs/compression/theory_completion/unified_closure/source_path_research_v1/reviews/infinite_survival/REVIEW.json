@@ -1,0 +1,304 @@
+{
+  "schema": "UEOT_FIXED_POLICY_INFINITE_SURVIVAL_INDEPENDENT_REVIEW_V1",
+  "status": "MATHEMATICAL_REVIEW_CLEAR_NOT_FORMALIZED",
+  "reviewer": "/root/math_resume",
+  "reviewed_utc": "2026-10-21T08:59:57.407448+00:00",
+  "source_path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/infinite_survival/FINITE_SUPPORT_AND_INFINITE_SURVIVAL.md",
+  "source_sha256": "8058ebfc61def92b0e679c3cc371f407b6f145097f27f53cd09acea2e00d1ec8",
+  "source_bytes": 11150,
+  "review_markdown": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/infinite-survival-fixed-policy/REVIEW.md",
+  "review_markdown_sha256": "0f9cb3b1218dbdb132dae19d7484a7efcec978617770c40d512e3e3cabca3dfb",
+  "checks": [
+    {
+      "id": "M1",
+      "claim": "h=lim Q^n 1 is the greatest fixed point in [0,1]^K",
+      "verdict": "MATHEMATICAL_CLEAR",
+      "conditions": [
+        "finite K",
+        "nonnegative substochastic Q"
+      ],
+      "proof": "Coordinate monotone convergence, finite-sum continuity, and g=Q^n g <= Q^n 1."
+    },
+    {
+      "id": "M2",
+      "claim": "D={h=1} is the largest support-closed safe set for the original full L",
+      "verdict": "MATHEMATICAL_CLEAR",
+      "proof": "Nonnegative row-loss plus weighted-defect identity; any closed C has 1_C <= Q^n 1."
+    },
+    {
+      "id": "M3",
+      "claim": "h(x)>0 iff safe positive-edge reachability to D",
+      "verdict": "MATHEMATICAL_CLEAR",
+      "proof": "Positive path product; conversely attained positive maximum on the finite safe reachable set produces a nonempty original-L-closed maximum level."
+    },
+    {
+      "id": "M4",
+      "claim": "Three-state half-survival counterexample",
+      "verdict": "ANALYTIC_CLEAR_WITH_EXACT_FRACTION_SPOT_CHECKS",
+      "evidence": [
+        {
+          "n": 0,
+          "Q_pow_one": [
+            "1",
+            "1"
+          ]
+        },
+        {
+          "n": 1,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        },
+        {
+          "n": 2,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        },
+        {
+          "n": 3,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        },
+        {
+          "n": 4,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        },
+        {
+          "n": 5,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        },
+        {
+          "n": 6,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        },
+        {
+          "n": 7,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        },
+        {
+          "n": 8,
+          "Q_pow_one": [
+            "1/2",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M5",
+      "claim": "Countable decreasing-exit counterexample",
+      "verdict": "ANALYTIC_CLEAR_WITH_EXACT_FRACTION_SPOT_CHECKS",
+      "proof": "Finite products bounded below by 1 minus the summable exit probabilities; continuity from above gives positive survival, immediate exit gives h<1 everywhere. Supremum 1 is not attained on the reachable set.",
+      "evidence": [
+        {
+          "n": 0,
+          "T": 0,
+          "product": "1",
+          "sum_exit_probabilities": "0",
+          "uniform_positive_lower_bound": "1/2"
+        },
+        {
+          "n": 0,
+          "T": 1,
+          "product": "3/4",
+          "sum_exit_probabilities": "1/4",
+          "uniform_positive_lower_bound": "1/2"
+        },
+        {
+          "n": 0,
+          "T": 2,
+          "product": "21/32",
+          "sum_exit_probabilities": "3/8",
+          "uniform_positive_lower_bound": "1/2"
+        },
+        {
+          "n": 0,
+          "T": 8,
+          "product": "10180699028325/17592186044416",
+          "sum_exit_probabilities": "255/512",
+          "uniform_positive_lower_bound": "1/2"
+        },
+        {
+          "n": 1,
+          "T": 0,
+          "product": "1",
+          "sum_exit_probabilities": "0",
+          "uniform_positive_lower_bound": "3/4"
+        },
+        {
+          "n": 1,
+          "T": 1,
+          "product": "7/8",
+          "sum_exit_probabilities": "1/8",
+          "uniform_positive_lower_bound": "3/4"
+        },
+        {
+          "n": 1,
+          "T": 2,
+          "product": "105/128",
+          "sum_exit_probabilities": "3/16",
+          "uniform_positive_lower_bound": "3/4"
+        },
+        {
+          "n": 1,
+          "T": 8,
+          "product": "3471618368658825/4503599627370496",
+          "sum_exit_probabilities": "255/1024",
+          "uniform_positive_lower_bound": "3/4"
+        },
+        {
+          "n": 5,
+          "T": 0,
+          "product": "1",
+          "sum_exit_probabilities": "0",
+          "uniform_positive_lower_bound": "63/64"
+        },
+        {
+          "n": 5,
+          "T": 1,
+          "product": "127/128",
+          "sum_exit_probabilities": "1/128",
+          "uniform_positive_lower_bound": "63/64"
+        },
+        {
+          "n": 5,
+          "T": 2,
+          "product": "32385/32768",
+          "sum_exit_probabilities": "3/256",
+          "uniform_positive_lower_bound": "63/64"
+        },
+        {
+          "n": 5,
+          "T": 8,
+          "product": "19043314559116600243716225/19342813113834066795298816",
+          "sum_exit_probabilities": "255/16384",
+          "uniform_positive_lower_bound": "63/64"
+        }
+      ],
+      "finite_checks_do_not_prove_infinite_statement": true
+    },
+    {
+      "id": "M6",
+      "claim": "D is contained in the full-state controlled viability kernel; some full-state stationary preserving feedback realizes equality",
+      "verdict": "MATHEMATICAL_CLEAR",
+      "proof": "Every positively selected action from D is safe; reuse existing controlled-invariant maximality and one globally preserving feedback."
+    },
+    {
+      "id": "M7",
+      "claim": "Observation-limited policy realization needs common safe actions on every V observation fibre",
+      "verdict": "MATHEMATICAL_CLEAR",
+      "quantifier": "exists one sigma, forall x in V",
+      "counterexample": "Two same-observation safe states need opposite actions; safety forces p=1 and p=0 for the same observed action law."
+    },
+    {
+      "id": "M8",
+      "claim": "QSD rho^n consequences and support qualifications",
+      "verdict": "MATHEMATICAL_CLEAR",
+      "conditions": [
+        "nonnegative normalized left eigenrow",
+        "same killed matrix",
+        "conditional terminal law only when survival is positive"
+      ],
+      "rho_zero": "n=0 survival remains 1; n>=1 survival is 0, so no conditional-law claim there."
+    },
+    {
+      "id": "I1",
+      "claim": "New recursive-history to homTrajMeasure complete-prefix bridge",
+      "verdict": "NOT_IMPLEMENTED_OR_VALIDATED_BY_THIS_REVIEW",
+      "note": "Finite survival event recurrence is an alternative sufficient route for this probability, but does not itself certify complete-prefix equality."
+    }
+  ],
+  "blocking_findings": [],
+  "nonblocking_implementation_notes": [
+    "For observation implementation require existence of a common safe feedback; a particular Classical.choose feedback need not already factor through q.",
+    "Use ClosedCarrier on full L; ClosedCarrier on killed Q does not exclude missing row mass. Use safety-restricted reachability, not unrestricted full-L reachability.",
+    "Existing reachable_trans_of_rowStochastic cannot directly consume a substochastic killed Q; its nonnegative-matrix proof can be reused or generalized narrowly if necessary.",
+    "Existing finite-state tail wrappers are not already a Lean formalization of the countable counterexample.",
+    "PositiveEigenstructure.BiEigenData has stronger positive-right-eigenvector/positive-scale assumptions than the QSD left-row power identities needed here."
+  ],
+  "inspected_api_files": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/Compression/Objecthood/AbsorbedRepairHittingSemantics.lean",
+      "sha256": "c2ea541792619ff6f6bf191656b00ca682b85c5680f56a09af662aad190c0ca3"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/Compression/Objecthood/FiniteStationaryHittingExpectation.lean",
+      "sha256": "51ee5ceee5e0e7104ae1d58c69cf99ea1531e7fda0e26915bef6fc880e503ba4"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/ViabilityKernel.lean",
+      "sha256": "d18d51f277cd07ce4ca3ceeeef13d3bf78ef68ca8519f44ea9e76b981015e0ef"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean",
+      "sha256": "413d882183ef6dcf6508782dc29d68ec5905ee0fd78843dc807e28265073aafd"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreSourceAllTimesAssembly.lean",
+      "sha256": "0c6c4cd9fdbac7b0c219f0e2b46e03f2add3c56cc6b5062670de255104680a56"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/Compression/RecurrentClassGaugeInvariance.lean",
+      "sha256": "3a95b2141459dcf300cb171fdd63c5131c7985b5b14e104baf8abd64870fca64"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/Compression/RecurrentSupportMargin.lean",
+      "sha256": "d44747781de037b57b39c94f6c7541c448103b0ddca6f52c9a70243d3fca8081"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+      "sha256": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-path-research/formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+      "sha256": "746a435146c4bc20721a1429085285492ac01a040b6090e186f8141b251f257b"
+    }
+  ],
+  "api_review_scope": "Targeted definitions, statements and proof segments; no exhaustive claim that every repository theorem was searched.",
+  "reused_existing_results": [
+    "complete homTrajMeasure prefix recursion and path uniqueness",
+    "finite survival event identity and first-step recurrence",
+    "initial-law mixture",
+    "survival tail limit and never-hit harmonicity",
+    "zero never-hit support closure",
+    "finite controlled-invariant greatest-set structure",
+    "globally defined stationary preserving policy",
+    "real all-times safe path law",
+    "same-source Core all-times assembly",
+    "QSD left-eigenrow powers and survival mass"
+  ],
+  "new_lean_declarations": 0,
+  "lean_or_lake_or_native_executed": false,
+  "production_modified": false,
+  "source_modified": false,
+  "books_modified": false,
+  "git_or_remote_modified": false,
+  "new_infinite_prefix_bridge_claimed_pass": false,
+  "new_h_D_reachability_lean_api_claimed_pass": false,
+  "mathematical_proof_not_conflated_with_execution_receipt": true
+}

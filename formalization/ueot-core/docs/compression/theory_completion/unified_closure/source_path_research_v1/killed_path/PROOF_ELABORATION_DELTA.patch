@@ -1,0 +1,86 @@
+--- SameSourceKilledPath_v1.lean
++++ SameSourceKilledPath.lean
+@@ -4,8 +4,8 @@
+ /-!
+ # Actual risk-path survival and the same-source killed matrix
+ 
+-PRIVATE DRAFT — NOT COMPILED. The imported private SourcePolicyPathBridge
+-has a separate actual compile PASS. This file has not been run in Lean.
++PRIVATE CANDIDATE — actual compile status is recorded in separate receipts.
++The imported private SourcePolicyPathBridge has a separate compile PASS.
+ 
+ The killed matrix is defined by restricting the existing policyMatrix of
+ the original model. The initial row is the actual initial PMF restricted
+@@ -122,6 +122,7 @@
+     · simp
+   · simp [hh]
+ 
++set_option backward.isDefEq.respectTransparency false in
+ /-- One actual PMF extension gives the killed row recurrence. No conditional
+ probability or positive-history premise is used. -/
+ private theorem stateTerminalMass_succ
+@@ -156,10 +157,20 @@
+           else 0 := by
+       unfold stateTerminalMass
+       change (∑ hz : CausalHistory X X n × X,
+-        if (stateSurvives K n hz.1 ∧ hz.2 ∈ K) ∧ hz.2 = v.1 then
+-          (pmfExtend mu (policyPathKernel M pi n) hz).toReal else 0) = _
++        if stateSurvives K (n + 1) hz ∧ currentState (n + 1) hz = v.1 then
++          (causalLaw p0 (policyPathKernel M pi) (n + 1) hz).toReal else 0) = _
++      simp only [stateSurvives, currentState, causalLaw]
+       rw [← Finset.univ_product_univ, Finset.sum_product]
+-      simp only [pmfExtend_apply, ENNReal.toReal_mul]
++      apply Finset.sum_congr rfl
++      intro h _
++      apply Finset.sum_congr rfl
++      intro z _
++      apply @if_congr
++      · rfl
++      · change (pmfExtend mu (policyPathKernel M pi n) (h, z)).toReal =
++          (mu h).toReal * (policyPathKernel M pi n h z).toReal
++        rw [UEOT.V3.PathError.pmfExtend_apply, ENNReal.toReal_mul]
++      · rfl
+     _ = ∑ h : CausalHistory X X n,
+         if stateSurvives K n h then
+           (mu h).toReal * policyMatrix M pi (currentState n h) v.1
+@@ -204,6 +215,7 @@
+       apply Finset.sum_congr rfl
+       intro x _
+       rw [ih x]
++      rfl
+ 
+ private theorem sum_stateTerminalMass
+     {X A : Type u} [Fintype X] [Fintype A] [Nonempty A]
+@@ -227,7 +239,8 @@
+   induction n with
+   | zero =>
+       intro h
+-      simp [stateSurvives, eraseActionHistory, riskHistoryMap, riskEverFailure]
++      change (h ∈ K) ↔ ¬ (h ∉ K)
++      tauto
+   | succ n ih =>
+       intro h
+       change (stateSurvives K n (eraseActionHistory n h.1) ∧ h.2.2 ∈ K) ↔
+@@ -295,9 +308,14 @@
+     _ = (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n).toMeasure.real E := by
+       rw [hpush]
+     _ = stateTerminalMass M (liftedStationaryPolicy q sigma) p0 K n v := by
+-      exact finite_event_mass
+-        (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n)
+-        (fun h => stateSurvives K n h ∧ currentState n h = v.1)
++      dsimp only [E]
++      rw [finite_event_mass]
++      unfold stateTerminalMass
++      apply Finset.sum_congr rfl
++      intro h _
++      by_cases hh : stateSurvives K n h ∧ currentState n h = v.1
++      · simp only [if_pos hh]
++      · simp only [if_neg hh]
+     _ = _ := state_terminal_mass_eq_killed_pow M (liftedStationaryPolicy q sigma) p0 K n v
+ 
+ /-- K1, total form. This includes p0 mass outside K and the empty safe set;
+@@ -347,3 +365,4 @@
+ 
+ #print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow
+ #print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.state_terminal_mass_eq_killed_pow
