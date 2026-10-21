@@ -1,0 +1,30 @@
+{
+  "schema": "UEOT_SAME_SOURCE_TAIL_COMPLETE_DECLARATION_COMPARISON_V1",
+  "original": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/v1-original/SameSourceSurvivalTail.lean",
+    "bytes": 3345,
+    "sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357"
+  },
+  "final": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/SameSourceSurvivalTail.lean",
+    "bytes": 3345,
+    "sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357"
+  },
+  "source_entirely_byte_identical": true,
+  "method": "Scan theorem header to top-level := while tracking (), [], {}; nested named-argument delimiters are not terminating delimiters.",
+  "public_theorem_count": 1,
+  "new_definitions": 0,
+  "new_instances": 0,
+  "new_options": 0,
+  "complete_headers": [
+    {
+      "name": "killed_survival_mass_tendsto_homogeneous_neverHit_real",
+      "original": "theorem killed_survival_mass_tendsto_homogeneous_neverHit_real\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X \u2192 Y) (sigma : Y \u2192 PMF A)\n    (p0 : PMF X) (K : Set X) :\n    Tendsto\n      (fun n : \u2115 => \u2211 v : K, rowApply (safeInitialRow p0 K)\n        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v)\n      atTop\n      (nhds ((homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))).real\n            (neverHitSet K\u1d9c))) ",
+      "final": "theorem killed_survival_mass_tendsto_homogeneous_neverHit_real\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X \u2192 Y) (sigma : Y \u2192 PMF A)\n    (p0 : PMF X) (K : Set X) :\n    Tendsto\n      (fun n : \u2115 => \u2211 v : K, rowApply (safeInitialRow p0 K)\n        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v)\n      atTop\n      (nhds ((homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))).real\n            (neverHitSet K\u1d9c))) ",
+      "byte_identical": true,
+      "sha256": "29d1c3454e9739d8f1419d5a9697ed2dad7f52898697d26df78f857cb627104b"
+    }
+  ],
+  "mathematical_assumptions_and_quantifiers_unchanged": true,
+  "native_type_export_claimed": false
+}
