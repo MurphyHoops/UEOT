@@ -1,0 +1,142 @@
+{
+  "schema": "UEOT_BOOKS_SOURCE_BRIDGE_IDENTITY_SCOPE_REVIEW_V1",
+  "created_utc": "2026-10-21T08:21:02.696659+00:00",
+  "reviewer": "/root/books_resume",
+  "status": "IDENTITY_MATCH_AND_TARGETED_BOOK_SEMANTICS_CLEAR",
+  "scope": "Read-only identity and scope reconciliation. Reuses the prior independent mathematical static review; no repeated full mathematical audit, Lean invocation, native export, Git or remote operation.",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+    "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "bytes": 6477
+  },
+  "source_v1_and_both_attempt_snapshots_byte_identical": true,
+  "static_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-source-bridge-review/REVIEW.json",
+    "sha256": "b07bd0028d06e28d2dc43ef97db3af251e2f267a94f763e20ab5d82605b152ba",
+    "bytes": 3224
+  },
+  "static_report": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-source-bridge-review/REVIEW.md",
+    "sha256": "013382a8401e6062691af6827a39e70d0e363e16c812e37fe500b5c3a60a51b0",
+    "bytes": 11337
+  },
+  "historical_written_not_compiled_status_preserved": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/STATUS.json",
+    "sha256": "6d18a14a12857aa6994f2e21f94bb93c7b00878e737ce9342afbca5abc3eb158",
+    "bytes": 857
+  },
+  "compile_completion": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/COMPILE_PASS.json",
+    "sha256": "2c4b369be204d3c4c2697b6862fa45dc8b1531b324b6530638cda89b81294857",
+    "bytes": 4907
+  },
+  "successful_attempt": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/STATUS.json",
+    "sha256": "f1b31a97e81008a5dce37172f1380783ee480582232b11fa5a46676ff936f882",
+    "bytes": 1899
+  },
+  "successful_log": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/lean.log",
+    "sha256": "0286a294da12a219320b76afa8381669bb35c25dfcaf0a31b7e3283c7aeb8b88",
+    "bytes": 359
+  },
+  "compiled_private_artifact": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean",
+    "sha256": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "bytes": 130608
+  },
+  "actual_lean_exit_code_in_read_receipt": 0,
+  "successful_attempt_timed_out": false,
+  "printed_axioms_for_each_of_two_endpoints": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "failed_attempt_preserved_and_hashed": true,
+  "failed_attempt_reason_read": "Private source was outside package root; second command added --root without source edits.",
+  "toolchain_and_lake_manifest_match_compile_receipt": true,
+  "static_review_dependency_surfaces_still_match": {
+    "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+    "formalization/ueot-core/UEOT/V3/PathError.lean": "d561a56db79bbd5dd9d01673c5fa7970c7d31199356bd5169a416cd930d917ba",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedPolicyResolvent.lean": "bfd2f5365131022d55ea759db4af01012ca459211f7210274e1620b3ebb8a68a",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean": "5869824d0b059abcdf7e211d330cc944d0e5448275732bfad60f5728d1819585",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean": "d39f58ddbc8a41edf0221bcbb875c294def320319230a7c113cb18765ad46f08",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean": "0807f667e0473e9bc063b446add02d0d1e477e6dbbf1125f15245093acc1ccc2"
+  },
+  "dependency_scope_limit": "These seven read interface sources and toolchain/dependency manifests match; this is not a fresh complete transitive source/build-cache or native/canonical validation.",
+  "bridge_status": "PRIVATE_FOCUSED_COMPILE_PASS_STANDARD_AXIOMS_ONLY; not imported as a production module and not a native or canonical acceptance.",
+  "bridge_exact_scope": [
+    "Finite X and finite nonempty A; arbitrary Y; one fixed time-homogeneous model M and stationary current-observation PMFs sigma.",
+    "Both sides use the same M, q, sigma and initial PMF; row identity and action-erased complete microscopic state-history identity are proved rather than assumed.",
+    "Theorem covers each finite n and retains all microscopic states. It does not Markovize arbitrary history policies, prove the observation process Markov, transfer arbitrary action events, construct an infinite path law, or prove killed/QSD identities."
+  ],
+  "killed_contract": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/CONTRACT_KILLED.md",
+    "sha256": "e0efe3d8405060e1c03ce1d00b3e2810fcebcf4697d23669a289d9590e56283e",
+    "bytes": 16361
+  },
+  "killed_independent_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-contract/REVISION_2_CLEAR.json",
+    "sha256": "3cf88acb0e7d70f94b4dcc91a88f8a3372d87c50cd40bc0071d8b973a14bdcaa",
+    "bytes": 1649
+  },
+  "killed_status": "MATHEMATICAL_CONTRACT_CLEAR_NOT_FORMALIZED",
+  "books_reviewed": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-books-next/mathematics/UEOT_MATHEMATICS.md",
+      "sha256": "7d0b5ef0d1f7b74a36f48a4697d6fdae3e466439d6a40b86e54525e811ea1dc6",
+      "bytes": 335199
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-books-next/philosophy/UEOT_PHILOSOPHY.md",
+      "sha256": "ea7f8206518eb34e3e51bcf7b6ce89f6a1a9212fe65dfef688e3c4067875e33e",
+      "bytes": 127790
+    }
+  ],
+  "publication_commit_from_parent": "0eb870c6670df46960df6ddd0c40c175704f4a99",
+  "prior_targeted_book_review_reconciled": {
+    "scope": "Mathematics chapter 21 and philosophy chapter 14: general Doob/finite-window conflation and full-support left-QSD/arbitrary-initial-survival conflation only.",
+    "result": "CLEAR_NO_BOOK_CHANGE_REQUIRED",
+    "doob": "Section 21.7.4.1 proves the actual path-conditioning identity only for Q_theta=(1-theta)H, h=1, theta<1. It explicitly excludes a general Q-process/finite-window equivalence.",
+    "qsd": "M-21.4 assumes an initial probability row supported in K and obtains s_T=rho^T>0 from this special Q and rho>0. It does not infer arbitrary-initial positivity from full support of a left QSD; T=0, theta=1 and actual initial law vs QSD law remain distinct.",
+    "philosophy": "Chapter 14 fixes the safe initial state and interruption probability 1/8, limits internal conditional fairness to after the first update, and rejects inferring original deployment safety from survivor stability.",
+    "recompile_needed_for_these_findings": false
+  },
+  "mature_source_identity": {
+    "source": {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/UnifiedCoreClosureCertificate.lean",
+      "sha256": "570084b1a96ed142e965a33e9c9aac3c1e610910fde0c6bea1a126defc932378",
+      "bytes": 5804
+    },
+    "endpoint": "unified_finite_core_control_and_viability",
+    "finding": "Existing production assembly derives exact micro transition/reward identity, exact control quotient and registered safety transport from one M; source identity is already a mature structure. The private bridge adds a missing equality between two particular path representations."
+  },
+  "finite_batch_vs_all_times": {
+    "finite_batch": "VariableRegisteredSamples has finite registration J and finite responses X, fixed positive N_j and deterministic nonnegative radii, true same-training coordinate laws and within-row independence. Joint risk fixes a finite T and common E before sampling, permits data-dependent selection, and uses the same Good; it is not adaptive sample stopping, arbitrary correlated single-trajectory concentration or an infinite-time risk guarantee.",
+    "production_all_times_source": {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreSourceAllTimesAssembly.lean",
+      "sha256": "0c6c4cd9fdbac7b0c219f0e2b46e03f2add3c56cc6b5062670de255104680a56",
+      "bytes": 4208
+    },
+    "production_all_times_endpoint": "single_source_terminal_object_viability_all_times",
+    "production_P_PER_source": {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/ViabilitySource.lean",
+      "sha256": "eb8fedf2b5edf444c0e74bd0ca2e555f141fa55f498f07bf77f2e2b9fc7d5059",
+      "bytes": 2314
+    },
+    "production_all_times": "Existing finite-state/action source theorem builds a genuine infinite trajectory measure and proves probability-one safety for all natural times, assuming the initial PMF is supported on the derived safety-preserving viability fixed point. The action type is nonempty, the model is the actual fixed source, and the viable set may be empty.",
+    "nonimplications": "Finite-horizon support viability or zero uncertified occupancy does not imply this all-times physical safety. Conversely, the fixed-T batch limit must not be described as an absence of all-times safety throughout Core. Neither result identifies the survival policy with unrestricted Bellman greedy."
+  },
+  "operations": {
+    "Lean_run": false,
+    "tests_run": false,
+    "Git_run": false,
+    "remote_run": false,
+    "books_modified": false,
+    "production_modified": false,
+    "existing_receipts_modified": false
+  },
+  "next_book_advice": "NEXT_BOOK_INTEGRATION.md",
+  "next_book_advice_sha256": "72a16768764b9ceebb7efbc84ac9c1df5821ba8b9538037c1ee9d06fe94e390b"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "READ_ONLY_BASE_CATALOG_COMPARISON_COMPLETE",
+  "base_sha": "65db00a12d20be41cd6c8befacb9ba2e74a2a8a9",
+  "actual_base_pr_parser": "/workspace/scratch/9a8d58b21e30/ueot-interface-base/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+  "actual_base_pr_parser_sha256": "6d9ee21b7c832aa238c7fd2b42cd5aa9085bc3af616df16819aa100d82f9213c",
+  "reuse_catalog_loader": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+  "reuse_catalog_loader_sha256": "bf83850f8b4bd082a18fd70acb215ae6676ebdbeaa21cad88552ca2406573674",
+  "base_modules": 659,
+  "base_public_lexical_theorems": 4095,
+  "registered_graph_theorems": 4094,
+  "lexical_only": [
+    {
+      "symbol": "UEOT.V3.FreeInformationValue.integrable_finset_sup'",
+      "short_name": "integrable_finset_sup'",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+      "line": 28,
+      "header_preview": "theorem integrable_finset_sup'     {μ : Measure Ω} {s : Finset A} (hs : s.Nonempty)     (f : A → Ω → ℝ)     (hf : ∀ a ∈ s, Integrable (f a) μ) :     Integrable (s.sup' hs f) μ := by   classical",
+      "origin": "UEOT_MAINTAINED",
+      "base_source_sha256": "e4375851def0e735d54c7d3f56ba48517040e064073fdc1283a006f1d33c1a87",
+      "context_start_line": 19,
+      "context": "open scoped BigOperators\n\nuniverse uΩ uA\n\nvariable {Ω : Type uΩ} {A : Type uA}\nvariable [mΩ : MeasurableSpace Ω] [Fintype A] [Nonempty A]\n\n/-- A finite pointwise supremum of integrable real-valued functions is\nintegrable. -/\ntheorem integrable_finset_sup'\n    {μ : Measure Ω} {s : Finset A} (hs : s.Nonempty)\n    (f : A → Ω → ℝ)\n    (hf : ∀ a ∈ s, Integrable (f a) μ) :\n    Integrable (s.sup' hs f) μ := by\n  classical\n  induction s using Finset.induction_on with\n  | empty => simp at hs\n  | @insert a s ha ih =>\n      by_cases hsn : s.Nonempty\n      · rw [Finset.sup'_insert hsn]\n        exact (hf a (Finset.mem_insert_self a s)).sup\n          (ih hsn (fun b hb => hf b (Finset.mem_insert_of_mem hb)))\n      · have hse : s = ∅ := Finset.not_nonempty_iff_eq_empty.mp hsn\n        subst s\n        simpa using hf a (Finset.mem_singleton_self a)\n\n/-- **P-REF-03.** Free, ignorable information has weakly nonnegative decision\nvalue. `mY` is an arbitrary sub-σ-algebra of the ambient measurable space, so\nno finiteness or discreteness assumption is imposed on the signal. -/\ntheorem p_ref_03\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (mY : MeasurableSpace Ω) (hmY : mY ≤ mΩ)\n    (u : A → Ω → ℝ)\n    (hu : ∀ a, Integrable (u a) μ) :"
+    }
+  ],
+  "registered_only": [],
+  "registered_only_symbols": [],
+  "read_only_git_object_commands": [
+    "ls-tree",
+    "archive"
+  ],
+  "Git_mutation_performed": false,
+  "native_or_project_tests_run": false
+}

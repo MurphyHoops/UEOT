@@ -1,0 +1,32 @@
+{
+  "state": "FAIL",
+  "results": [
+    {
+      "label": "new_modules",
+      "exit_code": 0,
+      "elapsed_seconds": 14.070032789000834,
+      "command": [
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+        "build",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary"
+      ],
+      "log_sha256": "74e6b4de1afb6dc64f2279200ed128517a42853b0e63b9cd788b8b473eb6b48c"
+    }
+  ],
+  "runtime_platform": "Linux",
+  "runtime_environment": {
+    "LEAN_NUM_THREADS": "1"
+  },
+  "scope": "Actual candidate build; not canonical authorization or resulting-main validation.",
+  "source_manifest_sha256": "47b089acd78085c3d3ba4871d981f841064943cddde4487046f65a3addd638e1",
+  "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "active": "full_ueot",
+  "error": "TimeoutExpired(['/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake', 'build', 'UEOT'], 1799.999983556001)",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/run_linux_build.py\", line 30, in <module>\n    with log.open('wb') as f:p=subprocess.run(command,cwd=CORE,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=1800)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 550, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 1209, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 2141, in _communicate\n    self.wait(timeout=self._remaining_time(endtime))\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 1264, in wait\n    return self._wait(timeout=timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 2045, in _wait\n    raise TimeoutExpired(self.args, timeout)\nsubprocess.TimeoutExpired: Command '['/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake', 'build', 'UEOT']' timed out after 1799.999983556001 seconds\n"
+}

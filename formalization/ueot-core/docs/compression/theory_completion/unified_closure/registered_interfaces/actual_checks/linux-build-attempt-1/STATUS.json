@@ -1,0 +1,8 @@
+{
+  "state": "FAIL",
+  "results": [],
+  "runtime_platform": "Linux",
+  "scope": "Actual candidate build; not canonical authorization or resulting-main validation.",
+  "error": "RuntimeError('READ_ONLY_IDENTITY_COMMAND_FAILED: [\"/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean\", \"--version\"]\\nerror: failed to locate application\\n')",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/run_linux_build.py\", line 20, in <module>\n    ident=build_identity.capture(REPO,lake=BIN/'lake',lean=BIN/'lean',expected_module_count=659+len(stems))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-tools/build_identity.py\", line 143, in capture\n    version = _run([str(path), \"--version\"], core, timeout)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-tools/build_identity.py\", line 54, in _run\n    raise RuntimeError(\"READ_ONLY_IDENTITY_COMMAND_FAILED: \" +\nRuntimeError: READ_ONLY_IDENTITY_COMMAND_FAILED: [\"/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean\", \"--version\"]\nerror: failed to locate application\n\n"
+}

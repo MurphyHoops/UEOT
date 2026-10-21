@@ -1,0 +1,109 @@
+{
+  "status": "SOURCE_AND_FROZEN_CSV_OMISSION_CONFIRMED_NATIVE_PENDING",
+  "comparison_receipt": "BASE_LEXICAL_CATALOG_DIFF.json",
+  "comparison_receipt_sha256": "0cee89b4ef1c60d21f3f89bac9e818c2d1cdde948ec9d9d5236f55286e28c8ee",
+  "source_path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+  "source_sha256": "e4375851def0e735d54c7d3f56ba48517040e064073fdc1283a006f1d33c1a87",
+  "old_registered_scope": 4094,
+  "supplement_count": 1,
+  "actual_symbol": "UEOT.V3.FreeInformationValue.integrable_finset_sup'",
+  "truncated_historical_candidate": "UEOT.V3.FreeInformationValue.integrable_finset_sup",
+  "frozen_csv_evidence": {
+    "EVERY_DECLARATION_5553_COMPACT.csv": {
+      "sha256": "8baa41ef67a8cba4560f1ed22c510e212af728dcb88c921c17345f052e4e6ac9",
+      "unchanged_relevant_rows": [
+        {
+          "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+          "line": "28",
+          "area": "V3/general",
+          "kind": "theorem",
+          "source_candidate": "UEOT.V3.FreeInformationValue.integrable_finset_sup",
+          "true_lean_symbol": "",
+          "match_status": "UNRESOLVED",
+          "true_elab_kind": "",
+          "full_type_sha": "",
+          "normalized_type_sha": "",
+          "source_origin": "UEOT_MAINTAINED"
+        },
+        {
+          "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+          "line": "48",
+          "area": "V3/general",
+          "kind": "theorem",
+          "source_candidate": "UEOT.V3.FreeInformationValue.p_ref_03",
+          "true_lean_symbol": "UEOT.V3.FreeInformationValue.p_ref_03",
+          "match_status": "EXACT_PUBLIC_FQN",
+          "true_elab_kind": "theorem",
+          "full_type_sha": "12176b83569cdb4ef46f40caae47c976d843fc04873e65d60a9af9f2f1fe4148",
+          "normalized_type_sha": "5850b55026412b1593bc98564373f24665a8ba2b74d45b148f5f2d736f30123a",
+          "source_origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    "all_3793_theorem_direct_reuse_graph.csv": {
+      "sha256": "1a52b06b9bae3efd92aea18b64ccc2c29ff314fe7571420d334bcc1b43d9d6a3",
+      "unchanged_relevant_rows": [
+        {
+          "name": "UEOT.V3.FreeInformationValue.p_ref_03",
+          "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+          "line": "48",
+          "area": "V3/general",
+          "all_direct_project_scoped_constants": "1",
+          "direct_existing_source_theorem_deps": "0",
+          "source_theorem_deps_json": "[]",
+          "source_origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    "EVERY_FILE_633_DETAILED_METRICS.csv": {
+      "sha256": "3abeba50709ab1dd06e5245e81615ecee604995976a28ae945c5430de2343162",
+      "unchanged_relevant_rows": [
+        {
+          "module": "UEOT.V3.FreeInformationValue",
+          "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+          "area": "V3/general",
+          "lines_total": "92",
+          "bytes": "3557",
+          "theorem_lemma_lexical": "2",
+          "def_lexical": "0",
+          "declarations_lexical": "2",
+          "imports_count": "1",
+          "strictly_same_normalized_theorem_type_members": "0",
+          "cross_module_same_type_members": "0",
+          "near_type_candidate_hits": "0",
+          "index_unresolved_or_private": "1",
+          "approx_alias_like_source_proofs": "0",
+          "noncomment_nonblank_lines": "67",
+          "content_sha256": "e4375851def0e735d54c7d3f56ba48517040e064073fdc1283a006f1d33c1a87",
+          "matched_public_theorems": "1",
+          "direct_proof_dependencies_to_other_source_theorems": "0",
+          "theorems_with_source_theorem_reuse": "0",
+          "proof_dependencies_incoming_to_this_module": "0",
+          "counted_core106_declarations": "1",
+          "same_type_groups_with_no_direct_internal_reuse": "0",
+          "source_origin": "UEOT_MAINTAINED"
+        }
+      ]
+    }
+  },
+  "explicit_source_references": [
+    {
+      "line": 28,
+      "role": "declaration"
+    },
+    {
+      "line": 66,
+      "role": "p_ref_03 proof use"
+    }
+  ],
+  "expected_existing_edge_repair": {
+    "source": "UEOT.V3.FreeInformationValue.p_ref_03",
+    "prior_source_theorem_deps": [],
+    "added_source_theorem_deps": [
+      "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
+    ],
+    "status": "PENDING_ACTUAL_NATIVE_DIRECT_CONSTANTS"
+  },
+  "frozen_parser_modified": false,
+  "historical_csv_modified": false
+}
