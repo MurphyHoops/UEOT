@@ -24,7 +24,6 @@
 | [同源 QSD 特化](qsd_binding/SameSourceQSDBinding.lean) | 私有 Lean 第 4 轮实际 PASS，6.526 秒；十个指定端点标准公理；独立增量审查 CLEAR | QSD/Perron 数据存在性、完整有限窗 Doob 路径恒等式 |
 | [实际首次退出](exit_flux/SameSourceKilledExitFlux.lean) | 私有 Lean 第 3 轮实际 PASS，7.091 秒；十个指定端点标准公理；独立增量审查 CLEAR | 已进入生产、无限时间或任意历史策略的齐次矩阵公式 |
 | [完整有限前缀到同一无限过程](infinite_source_bridge/SameSourceInfinitePrefix.lean) | 私有 Lean 第 3 轮实际 PASS，6.305 秒；三个关键端点标准公理；执行增量独审 CLEAR | K1 安全事件拉回、无限存活尾极限组合或生产集成 |
-| [同一无限轨迹的有限安全质量](safe_prefix_bridge/SameSourceSafePrefix.lean) | 私有 Lean 第 3 轮实际 PASS，5.935 秒；四端点标准公理且无 warning；执行增量独审 CLEAR | 新的尾极限组合、无限正存活结论或生产集成 |
 | [无限存活的有限支撑判据](infinite_survival/FINITE_SUPPORT_AND_INFINITE_SURVIVAL.md) | 完整数学推导与有限性反例，独立数学审查 CLEAR；尚未形式化 | 新 Lean API、已连接当前有限记录与无限轨迹 |
 | [有限窗条件路径与 Doob 边界](finite_window_conditioning/FINITE_WINDOW_DOOB.md) | 同源三状态反例、完整时变条件核及精确有理数核对；数学审查 CLEAR | Lean 已证明完整条件路径分解或一般 Q-process 极限 |
 
@@ -72,7 +71,7 @@ s_n-s_{n+1}
 
 该结论保留初始失败、空安全集、零时域及零存活；真实前缀一致性从 `pmfExtend` / `causalLaw` 构造推出。它不把退出后返回的终态分布当作首次退出事件。
 
-完整状态前缀与同源无限轨迹的 G1–G3 连接现已实际私有编译并独审；原行动记录上可由完整状态前缀表达的事件与同一无限圆柱事件质量相等。K1 安全事件的前缀逆像及实数/ENNReal 质量身份随后也已实际私有编译并独审。下一步接已有尾极限、原始初态混合和首次命中接口；详见 [API 映射](exit_flux_reuse_mapping/API_MAPPING.md) 与 [精确任务排序](next_steps/NEXT_MATHEMATICAL_TASKS.md)。这些无限路径理论已经存在，待补的是当前随机闭环的来源适配。不能以单个时刻边缘相等替代整段前缀身份，也不能把有限时域各自选择的策略当成一个固定无限策略。
+完整状态前缀与同源无限轨迹的 G1–G3 连接现已实际私有编译并独审；原行动记录上可由完整状态前缀表达的事件与同一无限圆柱事件质量相等。下一步对齐 K1 安全事件的前缀逆像与实数/ENNReal 表达，再接已有尾极限、初态混合和首次命中接口；详见 [API 映射](exit_flux_reuse_mapping/API_MAPPING.md) 与 [精确任务排序](next_steps/NEXT_MATHEMATICAL_TASKS.md)。这些无限路径理论已经存在，待补的是当前随机闭环的来源适配。不能以单个时刻边缘相等替代整段前缀身份，也不能把有限时域各自选择的策略当成一个固定无限策略。
 
 完整有限窗条件路径可以独立推进。其条件初态为 \(\eta_0(i)H_T(i)/s_T\)，正条件前缀上的转移为 \(Q_{ij}H_{T-t-1}(j)/H_{T-t}(i)\)，其中 \(H_m=Q^m\mathbf1\)。已审反例证明：左 QSD 和正右特征向量同时存在，仍不能推出有限窗条件路径等于齐次 Doob 路径；本例的路径 TV 精确为 \(1/4\)。行动边缘也会被未来生存条件重加权，零分母不能解释成条件概率。上述完整有限窗公式目前是数学推导。
 
@@ -93,5 +92,3 @@ s_n-s_{n+1}
 独立后续收据：[首次退出静态审查](reviews/exit_flux/REVIEW.md)、[无限存活数学审查](reviews/infinite_survival/REVIEW.md)。原始数学草稿中的待审措辞作为当时状态保留，以这些另写收据记录审查完成。无限存活审查补充了精确的观察纤维共同安全动作条件：要求存在共同反馈，不要求某个任意选出的反馈恰好因子化；闭合须对完整原核 L 检查，安全可达须限制在 killed 子类型 Q 中。
 
 后续独立记录：[Stage5](STAGE5_ARCHIVE.json) 保存实际 Core/书稿发布证据及原无限来源 v1；[Stage6](STAGE6_ARCHIVE.json) 保存随后完成的完整前缀私有证明、两轮原始失败、第三轮通过及独立执行增量审查。原 v1 的 NOT_COMPILED/PENDING 与当时静审不改写，后来的通过由 [COMPILE_PASS](infinite_source_bridge/COMPILE_PASS.md) 和 [独审](reviews/infinite_source_bridge/COMPILE_DELTA_CLEAR.md) 说明。
-
-[Stage7](STAGE7_ARCHIVE.json) 在 #359 合并之后单独保存安全事件拉回与同一无限轨迹的有限存活质量桥。它复用原始 p0、同一 sigma 与原 killed 矩阵，不要求初态安全、K 非空或存活质量为正；两轮失败、原始状态和独立执行增量审查分别保存。已完成的 #359 主分支验收见 [实际发布收据](release_acceptance/RESEARCH359_RELEASE.json)，该收据不预称本 Stage7 的未来发布状态。
