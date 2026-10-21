@@ -1,0 +1,259 @@
+{
+  "status": "EXACT_FINITE_PMF_WITNESS_PASS_NOT_GENERAL_LEAN_THEOREM",
+  "model": {
+    "states": [
+      0,
+      1
+    ],
+    "actions": [
+      0,
+      1
+    ],
+    "observations": [
+      "star"
+    ],
+    "p0": {
+      "0": "1",
+      "1": "0"
+    },
+    "transition": "M(x,a) = delta(1-x)",
+    "certification": "certified(x,a) iff a=x",
+    "time_homogeneous": true,
+    "controller_fallback_action": 0
+  },
+  "backward_belief_stages": [
+    [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ]
+  ],
+  "first_fixed_point_index": 1,
+  "winning_beliefs": [
+    [
+      0
+    ],
+    [
+      1
+    ]
+  ],
+  "exact_actual_prefixes": [
+    {
+      "time": 0,
+      "actual_state_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "selected_action_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 1,
+      "actual_state_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "selected_action_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 2,
+      "actual_state_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "selected_action_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 3,
+      "actual_state_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "selected_action_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 4,
+      "actual_state_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "selected_action_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 5,
+      "actual_state_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "selected_action_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 6,
+      "actual_state_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "selected_action_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 7,
+      "actual_state_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "selected_action_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 8,
+      "actual_state_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "selected_action_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 9,
+      "actual_state_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "selected_action_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 10,
+      "actual_state_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "selected_action_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 11,
+      "actual_state_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "selected_action_pmf": {
+        "0": "0",
+        "1": "1"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    },
+    {
+      "time": 12,
+      "actual_state_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "selected_action_pmf": {
+        "0": "1",
+        "1": "0"
+      },
+      "actual_uncertified_occupancy": "0",
+      "posterior_support_equals_controller_memory": true
+    }
+  ],
+  "stationary_original_observation_obstruction": {
+    "parameter": "p=P(action=0), 0<=p<=1",
+    "fixed_action_actual_failure_vectors_n0_n1": {
+      "0": [
+        0,
+        1
+      ],
+      "1": [
+        1,
+        0
+      ]
+    },
+    "uncertified_at_n0": "1-p",
+    "uncertified_at_n1": "p",
+    "sum_at_n0_n1": "1",
+    "joint_zero_possible": false
+  },
+  "scope": [
+    "Actual finite prefix probabilities were propagated with Fraction.",
+    "The all-time alternating-policy assertion additionally follows by induction, recorded in the mathematical review.",
+    "The finite execution alone is not a proof of an infinite-horizon theorem.",
+    "Certification is the explicit row predicate; it is not an asserted physical safety event.",
+    "This witness does not identify the policy with a Classical.choose viableFamilyPolicy."
+  ],
+  "source_sha256": "5ab0dccc811e624e15700cc7202ee69d4c0bf7a146507725a98feb8bc216859a"
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "UEOT_SAME_SOURCE_TAIL_COMPILE_ATTEMPT_V1",
+  "attempt": 1,
+  "status": "PASS",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/SameSourceSurvivalTail.lean",
+    "bytes": 3345,
+    "sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357"
+  },
+  "source_snapshot": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/lean-attempt-001/SameSourceSurvivalTail.lean",
+    "bytes": 3345,
+    "sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357"
+  },
+  "command": [
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+    "env",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-c",
+    "\nimport os, sys, json\nfrom pathlib import Path\nos.environ['LEAN_PATH'] = sys.argv[1] + os.pathsep + os.environ.get('LEAN_PATH', '')\nkeys = ['LEAN_PATH', 'LEAN_SRC_PATH', 'LEAN_SYSROOT', 'ELAN_TOOLCHAIN', 'LEAN_NUM_THREADS']\nPath(sys.argv[2]).write_text(json.dumps({k: os.environ.get(k, '') for k in keys}, indent=2) + '\\n')\nos.execv(sys.argv[3], sys.argv[3:])\n",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+    "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/lean-attempt-001/ENV_AFTER_LAKE.json",
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+    "--root=/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1",
+    "-o",
+    "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/lean-attempt-001/SameSourceSurvivalTail.olean",
+    "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/SameSourceSurvivalTail.lean"
+  ],
+  "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+  "LEAN_NUM_THREADS": "1",
+  "timeout_seconds": 180,
+  "started_utc": "2026-10-21T12:29:11.517672+00:00",
+  "authorization": "Root-authorized sole focused Lean process for the same-original-p0 survival-tail endpoint; no whole build/native, Git, production, frozen Stage1-7 or book edits.",
+  "no_other_lean_process_at_start": true,
+  "contract": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/CONTRACT.md",
+    "bytes": 6543,
+    "sha256": "a2dfbb80d0223c5ce91fe003346195eb457896366c410d1c24d0bc2935f28657"
+  },
+  "independent_static_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/independent/TAIL_CONTRACT_REVIEW.json",
+    "bytes": 10024,
+    "sha256": "5214646b1f15618f166e35df9e111856c0ac3a91b507191c2da34382353b0218"
+  },
+  "API_inputs": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/API_INPUTS.json",
+    "bytes": 7933,
+    "sha256": "21dc2c3ec7d80bde077f6fc1463a4b54556f3c0d648e26dcf2d9ab29cdaff076"
+  },
+  "API_record_count_checked": 25,
+  "private_search_paths": [
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002"
+  ],
+  "production_manifest": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+    "bytes": 202983,
+    "sha256": "04acfa12f4b43154cbf1701834aadd459b1647730f789cdff2eccc6436e96b7c"
+  },
+  "production_complete_source_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "production_complete_source_files_checked": 666,
+  "environment_reuse_binding": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/ENVIRONMENT_REUSE_BINDING.json",
+    "bytes": 4672,
+    "sha256": "7bb829eb0886f0effe29b73645dfda546b33b2bbf4818c652d0ea2308ef50153"
+  },
+  "runner": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/compile_private.py",
+    "bytes": 6863,
+    "sha256": "c401b5393341929e0219902faef978971dcb8e768670f96157e0cf1829de501b"
+  },
+  "production_mutated": false,
+  "lake_build_run": false,
+  "native_run": false,
+  "process_group": 84741,
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 8.895,
+  "finished_utc": "2026-10-21T12:29:20.413433+00:00",
+  "stdout_stderr_log": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/lean-attempt-001/lean.log",
+    "bytes": 624,
+    "sha256": "5097ae60cde95580d66608563ae1b0c6b4cfcfd2a34dc3812c9d22a2eea14b95"
+  },
+  "source_after": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/SameSourceSurvivalTail.lean",
+    "bytes": 3345,
+    "sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357"
+  },
+  "olean": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/lean-attempt-001/SameSourceSurvivalTail.olean",
+    "bytes": 60600,
+    "sha256": "418cccbf5ba8f0eb209ffae5bd620d742d66a8298cb8172db3a84d4dfa58c5d7"
+  },
+  "actual_lake_environment": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/lean-attempt-001/ENV_AFTER_LAKE.json",
+    "bytes": 4333,
+    "sha256": "77f63f6aaf107224f452ea81b18899037c53b9a784b445d8124729fda48b859e"
+  }
+}

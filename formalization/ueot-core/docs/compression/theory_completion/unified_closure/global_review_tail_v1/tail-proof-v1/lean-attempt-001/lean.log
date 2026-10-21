@@ -1,0 +1,11 @@
+/workspace/scratch/9a8d58b21e30/tmp/core-global-review-20261021/tail-proof-v1/SameSourceSurvivalTail.lean:50:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTailCheck.killed_survival_mass_tendsto_homogeneous_neverHit_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

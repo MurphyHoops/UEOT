@@ -1,0 +1,986 @@
+{
+  "source_index": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/mathematics/UEOT_MATHEMATICS_SOURCES.md",
+  "pid_count": 106,
+  "endpoint_occurrences": 163,
+  "unique_endpoint_names": 163,
+  "entries": [
+    {
+      "pid": "P-MET-01",
+      "name": "UEOT.V3.TotalVariation.tvDist_map_le",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-MET-01",
+      "name": "UEOT.V3.TVKernel.tvDist_comp_le",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/TVKernel.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-MET-01",
+      "name": "UEOT.V3.TotalVariation.tvDist_map_measurableEquiv",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-MET-02",
+      "name": "UEOT.V3.TVSpan.abs_integral_sub_le_span",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/TVSpan.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-PROC-01",
+      "name": "UEOT.V3.ConcreteHistoryMarkovization.p_proc_01_history_markovization",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ConcreteHistoryMarkovization.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-FAC-01",
+      "name": "UEOT.V3.RepresentationCovariance.p_fac_01_covariance_bundle",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-FAC-01",
+      "name": "UEOT.V3.RepresentationCovariance.homTrajMeasure_transport_covariance",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-FAC-01",
+      "name": "UEOT.V3.RepresentationCovariance.causalLaw_transport_equiv",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-FAC-01",
+      "name": "UEOT.V3.RepresentationCovariance.causalPolicyValue_transport_bundle",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-PRED-01",
+      "name": "UEOT.V3.PredictionDependent.canonical_ae_minimal",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-PRED-01",
+      "name": "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-PRED-01",
+      "name": "UEOT.V3.PredictionDependent.canonical_kernel_sufficient",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-PRED-02",
+      "name": "UEOT.V3.PredictionRefinement.pushTargetDependent_apply",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-PRED-02",
+      "name": "UEOT.V3.PredictionRefinement.protocol_refinement_sigma_le_dependent",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-PRED-02",
+      "name": "UEOT.V3.PredictionRefinement.sigmaCanonicalDependent_iUnion_of_monotone",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-PRED-03",
+      "name": "UEOT.V3.PredictionUpdate.p_pred_03_recursive_update",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-01",
+      "name": "UEOT.V3.InformationStatistic.mutualInfo_eq_statistic_add_conditional",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-01",
+      "name": "UEOT.V3.InformationStatistic.mutualInfo_statistic_ge_sub_of_conditional_le",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-01",
+      "name": "UEOT.V3.InformationMemoryBound.p_info_01_discrete_entropy",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationMemoryBound.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-02",
+      "name": "UEOT.V3.InformationPInfo02.p_info_02_finite",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPInfo02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-02",
+      "name": "UEOT.V3.InformationPInfo02.p_info_02_ennreal",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPInfo02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-03",
+      "name": "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPredictiveRateZero.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-04",
+      "name": "UEOT.V3.InformationPInfo04.p_info_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPInfo04.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-04",
+      "name": "UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationConditionalBinaryMutualEntropy.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INFO-05",
+      "name": "UEOT.V3.InformationPacking.merged_histories_decoder_lower_bound",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-INFO-05",
+      "name": "UEOT.V3.InformationPacking.packing_ncard_image",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-INFO-05",
+      "name": "UEOT.V3.InformationEntropy.p_info_05_uniform_entropy",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationEntropy.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-INT-01",
+      "name": "UEOT.V3.InformationPInt01Common.p_int_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPInt01Common.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INT-01",
+      "name": "UEOT.V3.InformationPInt01Common.p_int_01_common_decoder",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/InformationPInt01Common.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INT-02",
+      "name": "UEOT.V3.StructuredQuotient.p_int_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/StructuredQuotient.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-INT-03",
+      "name": "UEOT.V3.MarkovBoundary.p_int_03_boundary_unique",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/MarkovBoundary.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DYN-01",
+      "name": "UEOT.V3.DynamicsKernel.strongLumpability_iff_pathLaw_of_surjective",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DYN-02",
+      "name": "UEOT.V3.CTMCSemigroupNonnegative.p_dyn_02_nonnegative_semigroup_iff_blockSum",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CTMCSemigroupNonnegative.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DYN-02",
+      "name": "UEOT.V3.CTMCSemigroupNonnegative.exists_macro_ctmc_semigroup_of_blockSum_constant",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CTMCSemigroupNonnegative.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DYN-03",
+      "name": "UEOT.V3.PathError.p_dyn_03_finite_path_error",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PathError.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-DYN-04",
+      "name": "UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-DYN-04",
+      "name": "UEOT.V3.DynamicsCrossScale.p_dyn_04_exact_intertwining",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-PER-01",
+      "name": "UEOT.V3.PersistenceOmega.p_per_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PersistenceOmega.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-PER-02",
+      "name": "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PersistenceOccupation.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-PER-03",
+      "name": "UEOT.V3.ViabilitySource.p_per_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ViabilitySource.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-PER-04",
+      "name": "UEOT.V3.ViabilityTangency.p_per_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ViabilityTangency.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REC-01",
+      "name": "UEOT.V3.RecoveryProbability.p_rec_01_mean_bound",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RecoveryProbability.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REC-01",
+      "name": "UEOT.V3.RecoveryProbability.p_rec_01_tail_bound",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RecoveryProbability.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REC-02",
+      "name": "UEOT.V3.RecoveryDynkin.p_rec_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RecoveryDynkin.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REC-03",
+      "name": "UEOT.V3.RecoveryHittingPoisson.p_rec_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RecoveryHittingPoisson.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REC-04",
+      "name": "UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RecoveryHittingBound.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QSD-01",
+      "name": "UEOT.V3.QSDTVLimit.p_qsd_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QSD-02",
+      "name": "UEOT.V3.QSDPerron.p_qsd_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-QSD-02",
+      "name": "UEOT.V3.QSDPerron.p_qsd_02_killed",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-QSD-03",
+      "name": "UEOT.V3.QSDDurationWindow.p_qsd_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/QSDDurationWindow.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QSD-03",
+      "name": "UEOT.V3.QSDDurationWindow.window_nonempty_iff",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/QSDDurationWindow.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QSD-04",
+      "name": "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ReversibleKilledSpectralQSD.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-ID-01",
+      "name": "UEOT.V3.TransportDefect.FrozenTransportSystem.p_id_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/TransportDefect.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-ID-02",
+      "name": "UEOT.V3.DevelopmentTransport.development_pipeline",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DevelopmentTransport.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-OMG-01",
+      "name": "UEOT.V3.OmegaMinimalFailure.p_omg_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/OmegaMinimalFailure.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-OMG-02",
+      "name": "UEOT.V3.OmegaIntegrityMargin.p_omg_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/OmegaIntegrityMargin.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-01",
+      "name": "UEOT.V3.Access.sufficient_mono",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Access.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-01",
+      "name": "UEOT.V3.Access.contains_minimal",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Access.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-02",
+      "name": "UEOT.V3.Access.erasure_survives",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Access.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-02",
+      "name": "UEOT.V3.Access.erasure_failure",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Access.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-02",
+      "name": "UEOT.V3.Access.minimal_erasure",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Access.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-03",
+      "name": "UEOT.Blocker.blocker_involution",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/Core/Blocker.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-03",
+      "name": "UEOT.Blocker.blocker_empty",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/Core/Blocker.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-03",
+      "name": "UEOT.Blocker.blocker_singleton_empty",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/Core/Blocker.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CAR-04",
+      "name": "UEOT.V3.DecoderRadius.decoder_radius_bounds",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DecoderRadius.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-01",
+      "name": "UEOT.V3.ClosureResolution.minimal_property_coarse_graining",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-02",
+      "name": "UEOT.V3.ClosureResolution.closure_comp_of_nested",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-02",
+      "name": "UEOT.V3.ClosureResolution.resolutionMap_comp",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-03",
+      "name": "UEOT.V3.BlockerNaturality.blocker_naturality",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/BlockerNaturality.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-04",
+      "name": "UEOT.Resolution.lower_adjunction",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/Core/Resolution.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-04",
+      "name": "UEOT.Resolution.upper_adjunction",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/Core/Resolution.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-05",
+      "name": "UEOT.V3.Resolution.pushFamily_realization_interval",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Resolution.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-RES-06",
+      "name": "UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Resolution.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-01",
+      "name": "UEOT.V3.CompositionPathSource.p_comp_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionPathSource.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-02",
+      "name": "UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-02",
+      "name": "UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-02",
+      "name": "UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-03",
+      "name": "UEOT.V3.CompositionMargin.p_comp_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionMargin.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-04",
+      "name": "UEOT.V3.CompositionParentInformation.p_comp_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionParentInformation.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-05",
+      "name": "UEOT.V3.CompositionBooleanAtoms.p_comp_05",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionBooleanAtoms.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-06",
+      "name": "UEOT.V3.CompositionCarrierLift.p_comp_06",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionCarrierLift.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-COMP-07",
+      "name": "UEOT.V3.CompositionWindow.p_comp_07",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompositionWindow.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-01",
+      "name": "UEOT.V3.FiniteAlphabetPStat01.p_stat_01_tail",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteAlphabetPStat01.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-01",
+      "name": "UEOT.V3.FiniteAlphabetPStat01Radius.p_stat_01_radius",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteAlphabetPStat01Radius.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-02",
+      "name": "UEOT.V3.StatisticalDefect.p_stat_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-03",
+      "name": "UEOT.V3.Threshold.approximate_family",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Threshold.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-04",
+      "name": "UEOT.V3.Threshold.exact_family",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Threshold.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-05",
+      "name": "UEOT.V3.PredictiveClassRecovery.p_stat_05",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictiveClassRecovery.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-06",
+      "name": "UEOT.V3.HilbertMeanSourceRadius.source_meanError_tail_exact_radius",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/HilbertMeanSourceRadius.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-06",
+      "name": "UEOT.V3.HilbertMeanSourceSimultaneous.source_simultaneous_exact_radius",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/HilbertMeanSourceSimultaneous.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-07",
+      "name": "UEOT.V3.MMDTransportSource.p_stat_07_source",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/MMDTransportSource.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-07",
+      "name": "UEOT.V3.MMDTransport.p_stat_07",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/MMDTransport.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-08",
+      "name": "UEOT.V3.FiniteCandidatePStat08.p_stat_08",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteCandidatePStat08.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-STAT-09",
+      "name": "UEOT.V3.AverageErrorTransport.p_stat_09",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/AverageErrorTransport.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INV-01",
+      "name": "UEOT.V3.BinaryTesting.p_inv_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/BinaryTesting.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-INV-02",
+      "name": "UEOT.V3.FisherGauge.p_inv_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FisherGauge.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-INV-03",
+      "name": "UEOT.V3.FisherIntersection.p_inv_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FisherIntersection.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INV-04",
+      "name": "UEOT.V3.DesignIdentifiability.p_inv_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DesignIdentifiability.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-INV-05",
+      "name": "UEOT.V3.PredictableOLSSourceConfidence.measure_source_goodGram_and_euclidean_error_gt_le_alpha",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PredictableOLSSourceConfidence.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-TEL-01",
+      "name": "UEOT.V3.RewardInfinite.shaping_limit_value",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RewardInfinite.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-TEL-01",
+      "name": "UEOT.V3.RewardInfinite.policy_values_affine_from_bounded_state_potential",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/RewardInfinite.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-02",
+      "name": "UEOT.V3.CompactFellerControl.Model.p_ctl_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CTL-03",
+      "name": "UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DiffusionHJBVerification.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QUO-01",
+      "name": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QUO-02",
+      "name": "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QUO-03",
+      "name": "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QUO-04",
+      "name": "UEOT.V3.FiniteDiscountedControl.Model.p_quo_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-QUO-05",
+      "name": "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-GOA-01",
+      "name": "UEOT.V3.FiniteCesaroInvariant.p_goa_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-GOA-02",
+      "name": "UEOT.V3.FiniteDobrushin.p_goa_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-GOA-02",
+      "name": "UEOT.V3.FiniteDobrushin.tv_step_le_dobrushin",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-GOA-03",
+      "name": "UEOT.V3.FiniteRecurrentDecompositionStability.p_goa_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-GOA-04",
+      "name": "UEOT.V3.SymmetricKilledSpectralStability.p_goa_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/SymmetricKilledSpectralStability.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-01",
+      "name": "UEOT.V3.PathEventKL.p_kl_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PathEventKL.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-02",
+      "name": "UEOT.V3.PathEventIProjection.p_kl_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PathEventIProjection.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-03",
+      "name": "UEOT.V3.PathKLChain.p_kl_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-03",
+      "name": "UEOT.V3.PathKLChain.p_kl_03_general",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-04",
+      "name": "UEOT.V3.FiniteCTMCPathKL.p_kl_04_holding",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-04",
+      "name": "UEOT.V3.FiniteCTMCPathKL.p_kl_04_clock",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-04",
+      "name": "UEOT.V3.FiniteCTMCPathKL.p_kl_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-KL-05",
+      "name": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DDH-01",
+      "name": "UEOT.V3.DualDriveGauge.p_ddh_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/DualDriveGauge.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-DDH-02",
+      "name": "UEOT.V3.ExponentialFamilyCalculus.p_ddh_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ExponentialFamilyCalculus.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DDH-03",
+      "name": "UEOT.V3.ExponentialFamilyIProjection.p_ddh_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ExponentialFamilyIProjection.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DDH-04",
+      "name": "UEOT.V3.CommonBottleneckRank.p_ddh_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CommonBottleneckRank.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-DDH-05",
+      "name": "UEOT.V3.SingularValueEffectiveDimension.p_ddh_05",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/SingularValueEffectiveDimension.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-ALI-01",
+      "name": "UEOT.V3.AlignmentGlobalExactness.p_ali_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/AlignmentGlobalExactness.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-ALI-02",
+      "name": "UEOT.V3.AlignmentParentValue.p_ali_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-ALI-03",
+      "name": "UEOT.V3.AlignmentThreshold.p_ali_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/AlignmentThreshold.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-EVO-01",
+      "name": "UEOT.V3.EvolutionPrice.p_evo_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/EvolutionPrice.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-EVO-02",
+      "name": "UEOT.V3.EvolutionSharedLabel.p_evo_02",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/EvolutionSharedLabel.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-EVO-03",
+      "name": "UEOT.V3.EvolutionPerronGrowth.p_evo_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/EvolutionPerronGrowth.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-EVO-04",
+      "name": "UEOT.V3.EvolutionReproductiveMartingale.p_evo_04",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/EvolutionReproductiveMartingale.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-BRG-01",
+      "name": "UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FixedFitnessRecurrenceUniqueness.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-BRG-01",
+      "name": "UEOT.V3.FixedFitnessConcentration.p_brg_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FixedFitnessConcentration.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-BRG-02",
+      "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-BRG-02",
+      "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-BRG-02",
+      "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_positive_ratio_preserved",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+      "disposition": "保留边界"
+    },
+    {
+      "pid": "P-REF-01",
+      "name": "UEOT.V3.ReflexivePRef01.p_ref_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-01",
+      "name": "UEOT.V3.ReflexivePRef01.p_ref_01_structureModification",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-01",
+      "name": "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-01",
+      "name": "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-02",
+      "name": "UEOT.V3.PRef02.p_ref_02_general_joint",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PRef02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-02",
+      "name": "UEOT.V3.PRef02.p_ref_02_general_update",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PRef02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-02",
+      "name": "UEOT.V3.PRef02.p_ref_02_discrete_observation",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PRef02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-02",
+      "name": "UEOT.V3.PRef02.p_ref_02_discrete_posterior",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PRef02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-02",
+      "name": "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PRef02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-02",
+      "name": "UEOT.V3.PRef02.p_ref_02_discounted_step",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PRef02.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-03",
+      "name": "UEOT.V3.FreeInformationValue.p_ref_03",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-04",
+      "name": "UEOT.V3.Decision.goal_regret",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Decision.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-05",
+      "name": "UEOT.V3.Agency.feasibleValue_mono",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Agency.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-05",
+      "name": "UEOT.V3.Agency.feasibleValueReal_mono",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Agency.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-REF-05",
+      "name": "UEOT.V3.Agency.extension_optimalValue_mono",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/Agency.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-API-01",
+      "name": "UEOT.V3.ProcessInterface.p_api_01_exact",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-API-01",
+      "name": "UEOT.V3.ProcessInterface.p_api_01_approx",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+      "disposition": "生成端点"
+    },
+    {
+      "pid": "P-ALG-01",
+      "name": "UEOT.V3.PAlg01.p_alg_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/PAlg01.lean",
+      "disposition": "领域适配"
+    },
+    {
+      "pid": "P-CORE-01",
+      "name": "UEOT.V3.CoreOperationalAssembly.p_core_01",
+      "source_file": "/workspace/scratch/9a8d58b21e30/ueot-books-publication/formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "disposition": "领域适配"
+    }
+  ]
+}
