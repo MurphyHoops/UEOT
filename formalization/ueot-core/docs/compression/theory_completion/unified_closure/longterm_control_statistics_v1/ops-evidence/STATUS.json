@@ -1,0 +1,49 @@
+{
+  "base": "1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a",
+  "head": "169274e14873a27a1ef68523a5473889af0f2c2c",
+  "results": [
+    {
+      "label": "base-authorization",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        "--repo-root",
+        ".",
+        "--baseline-ref",
+        "1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a",
+        "--candidate-ref",
+        "169274e14873a27a1ef68523a5473889af0f2c2c",
+        "--branch-name",
+        "ops/compression-longterm-policy-sisc-evidence"
+      ],
+      "exit_code": 0,
+      "seconds": 0.389
+    },
+    {
+      "label": "base-parser-89",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.351
+    },
+    {
+      "label": "git-object-preflight",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "--repo-root",
+        ".",
+        "--baseline-ref",
+        "1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a",
+        "--candidate-ref",
+        "169274e14873a27a1ef68523a5473889af0f2c2c",
+        "--report",
+        "/workspace/scratch/534b0448126c/tmp/core-longterm-ops/pr-preflight.json"
+      ],
+      "exit_code": 0,
+      "seconds": 17.388
+    }
+  ]
+}

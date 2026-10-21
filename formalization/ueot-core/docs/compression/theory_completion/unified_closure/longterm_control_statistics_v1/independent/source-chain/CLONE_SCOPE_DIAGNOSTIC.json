@@ -1,0 +1,25 @@
+{
+  "status": "DIAGNOSTIC_ONLY_UNREGISTERED_CANDIDATE_SCOPE",
+  "scope_modules": 674,
+  "baseline_module_count": 666,
+  "baseline_current_bytes_reproduce_pinned": true,
+  "baseline_clone_count": 68,
+  "candidate_clone_count": 69,
+  "candidate_new_rows": 1,
+  "candidate_lost_baseline_rows": 0,
+  "new_rows": [
+    {
+      "file_a": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+      "file_b": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+      "start_line_a": 92,
+      "start_line_b": 30,
+      "end_line_a": 99,
+      "end_line_b": 37,
+      "equal_nonblank_code_lines": 8,
+      "excerpt": "private theorem map_injective_atom {S T : Type*} (f : S → T)\n(hf : Function.Injective f) (p : PMF S) (s : S) :\n(p.map f) (f s) = p s := by\nrw [PMF.map_apply]\nrefine (tsum_eq_single s ?_).trans ?_\n· intro t ht\nexact if_neg (fun h => ht (hf h).symm)\n· simp"
+    }
+  ],
+  "lost_baseline_rows": [],
+  "scope_excludes_other_current_untracked_modules": true,
+  "reason": "Existing live-source validator remains fail-closed until native-certified overlay registration. This source-only diagnostic reuses the exact clone scan algorithm on current baseline module files plus these eight named chain sources. It does not mark the governed generator PASS."
+}

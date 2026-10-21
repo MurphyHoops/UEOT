@@ -1,0 +1,87 @@
+{
+  "status": "STATIC_CHAIN_REFACTOR_CLEAR",
+  "archive_base": "1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a",
+  "governance_base": "ff71e63256c88ad2bb527fdd3004d55c77894ab7",
+  "original_public_endpoints_retained": 56,
+  "new_public_generic_helper": 1,
+  "new_total_chain_public_theorems": 57,
+  "scope": "Exact body comparison after comment/import/#print removal and the two expressly recorded shared-helper refactors; no native or build execution claim.",
+  "sources": [
+    {
+      "module": "SourcePolicyPathBridge",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+      "production_sha256": "3e12ece077ed1528cf3a3f6adb16530400b241bae384071a0c1ba616023d546e",
+      "archive_sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [],
+      "manifest_production_sha_equal": true
+    },
+    {
+      "module": "SameSourceKilledPath",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+      "production_sha256": "496f6b5de9850dda1de036da3862824dffd2f137ebd740c28bd061e566fec4d0",
+      "archive_sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [],
+      "manifest_production_sha_equal": true
+    },
+    {
+      "module": "SameSourceConditionedTerminal",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+      "production_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+      "archive_sha256": "8114278dc02e54f681bd576cf62af0dcc83df47a5b4a61bdc506a868750aea3c",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [
+        "Promote private map_injective_atom as public pmf_map_injective_atom; update its local consumers; proof unchanged."
+      ],
+      "manifest_production_sha_equal": true
+    },
+    {
+      "module": "SameSourceQSDBinding",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+      "production_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+      "archive_sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [
+        "Delete identical private map helper; reuse the imported single public helper."
+      ],
+      "manifest_production_sha_equal": true
+    },
+    {
+      "module": "SameSourceKilledExitFlux",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+      "production_sha256": "07ffce4112b50a82b4face10ce6c848f868756de739bcf1085722e887409f920",
+      "archive_sha256": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [],
+      "manifest_production_sha_equal": true
+    },
+    {
+      "module": "SameSourceInfinitePrefix",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+      "production_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+      "archive_sha256": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [],
+      "manifest_production_sha_equal": true
+    },
+    {
+      "module": "SameSourceSafePrefix",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+      "production_sha256": "574908f3524470791bdac6b4b78c03dd1eb9faef2e9eecd1ef8c6ee2238ef41f",
+      "archive_sha256": "392468a8ca8c29225f334324eb3c2b5996e2aa4eae4846dfdab371ffb2eeaddf",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [],
+      "manifest_production_sha_equal": true
+    },
+    {
+      "module": "SameSourceSurvivalTail",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSurvivalTail.lean",
+      "production_sha256": "ef216f29731d146b88e182185f7f5f7f3b87b4b1dd1ce4760c0ede89aa546719",
+      "archive_sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357",
+      "expected_code_transform_equal": true,
+      "allowed_mathematical_refactor": [],
+      "manifest_production_sha_equal": true
+    }
+  ]
+}

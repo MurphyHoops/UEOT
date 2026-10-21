@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current eight-layer census is **666 modules = 655 UEOT-maintained + 11
-adapted upstream**, with **4,147 registered public theorem nodes** and
-**5,418 registered direct proof edges**. The layer-by-layer counts below
+The current nine-layer census is **678 modules = 667 UEOT-maintained + 11
+adapted upstream**, with **4,237 registered public theorem nodes** and
+**5,567 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -369,7 +369,7 @@ historical one-name difference remains: the lexical parser also sees
 registered base. This layer does not rewrite that historical registry. The
 immutable Git-object PR preflight remains a separate post-commit gate.
 
-The six-layer source census is **650 = 639 UEOT-maintained + 11 adapted
+The historical six-layer source census is **650 = 639 UEOT-maintained + 11 adapted
 upstream**, with **3,992** registered public source theorem nodes and
 **5,157** registered direct edges. The overlays account for **199** nodes
 and **271** edges. No counted Core/Compression tier is promoted, and global
@@ -638,8 +638,8 @@ Historical CSVs and the first seven overlay artifacts remain byte-for-byte
 unchanged.
 
 The new registrations contribute **97 outgoing registered edges**; the old
-caller contributes **one separately counted repair edge**. The resulting
-graph has **4,147 nodes and 5,418 edges**. The eight overlays account for
+caller contributes **one separately counted repair edge**. The historical
+eight-layer graph has **4,147 nodes and 5,418 edges**. Those eight overlays account for
 354 nodes, 531 outgoing edges from their nodes and one repair of an old node.
 The 18 new lexical hint groups bring the cumulative count to 75. The earlier
 independent review of all 18 groups and 39 pairs is bound to the unchanged
@@ -676,6 +676,94 @@ parser tests passed separately. Final Git-object preflight, remote checks and
 resulting-main validation retain their own release receipts. No counted
 Core/Compression tier or global scientific-completeness claim is promoted.
 
+### Layer 9 — same-source long-term laws, infinite policy and rowwise SISC
+
+This layer uses the canonical authorization base
+`ff71e63256c88ad2bb527fdd3004d55c77894ab7` and extends the intact historical
+666-module source census with **12 physical UnifiedClosure modules**. Eight
+modules promote the same-source long-term chain, `InfiniteSupportViability`
+constructs one all-times causal policy, and `RowwiseProbeSampling`,
+`SISCRowwiseProbeCalibration` and `SISCRowwiseProbeWitness` implement the
+rowwise scalar experiment and its SISC consumers. The frozen production
+source fingerprint is
+`60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31`.
+It identifies the actual source bytes; it is not a claim that a future Git
+commit or resulting main has already been accepted.
+
+On those bytes, the full `lake build UEOT` passed in **39.787 seconds**.
+The native exporter and fixed-certificate replay both passed, in **59.215**
+and **58.444 seconds**, and their complete JSON objects agree. The equality
+covers physical owners, stored universes, displayed types, ordered proof
+constant arrays and axiom lists, not only summary counts. Earlier failures
+and their source snapshots remain separate historical records. Independent
+**SOURCE / EXECUTION: CLEAR** binds this source fingerprint and the raw
+execution evidence. Exact Git-object preflight, PR and resulting-main
+acceptance are separate release gates, indexed by
+[#146](https://github.com/MurphyHoops/UEOT/issues/146) and the corresponding
+PR check runs; local proof receipts do not substitute for them.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| [LONGTERM_CONTROL_STATISTICS_NATIVE_V1.json](LONGTERM_CONTROL_STATISTICS_NATIVE_V1.json) | `0b6b77967ad43da71cec3a569b361501f591a7a8b384d072dda31af1b897d02c` |
+| [VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean](VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean) | `0643f8dfca2daec2ce6b4638f712f6abcacf8f91f31669a37120f397d6c27213` |
+| [LONGTERM_CONTROL_STATISTICS_REUSE_OVERLAY_V1.json](LONGTERM_CONTROL_STATISTICS_REUSE_OVERLAY_V1.json) | `cb5792eff95b2a1386a7c0832eeeedc5a283f212b462f2c6c6d3342dd5e1bb06` |
+
+The compiler-owned scope contains **199 theorem constants**, including
+**90 confirmed public source candidates**. All 199 retain their actual
+physical `source_module`, `is_private`, stored `level_parameters`, `ppExpr`
+type display, direct proof constants, direct theorem constants and
+transitive axioms. Every axiom closure is a subset of `propext`,
+`Classical.choice`, `Quot.sound`. The public list is a navigational subset
+of that compiled scope; private and other non-candidate constants remain
+in the native evidence.
+
+The fixed certificate compares the 90 public types with all **4,147** prior
+registered types: **373,230 cross-layer** and **4,005 internal** comparisons,
+with **zero collisions**. This retains the historical raw stored-type
+`Meta.isDefEq` protocol and its stored-universe and instantiation limits.
+Zero collisions do not establish general logical independence. The native
+public proof graph adds **149 direct registered edges**. The current graph
+therefore contains **4,237 nodes and 5,567 edges**; the nine overlays account
+for **444 nodes and 680 outgoing edges**, in addition to the separately
+retained eighth-layer repair of one old-node edge. The 27 new lexical hint
+groups bring the cumulative count from the historical 75 to **102**;
+name hints are not proof-dependency or typed-equivalence certificates.
+
+The mathematical additions retain their source and quantifier boundaries:
+
+- The eight-module long-term chain keeps the original initial PMF,
+  closed-loop kernel and stationary observation feedback through complete
+  state prefixes, killed terminal masses, positive-survival conditioning,
+  QSD specialization, first-exit flux and the actual infinite survival
+  event. The exit-flux telescope directly reuses the canonical time-zero
+  survival theorem. The infinite survival limit may be zero.
+- The infinite-policy construction fixes the entire possibly nonautonomous
+  transition and certification sequence before varying the horizon. Nested
+  finite-action choices construct one complete causal policy, and its own
+  actual row law has zero uncertified occupancy at every time. The result
+  does not provide finite-memory realization or physical safety without
+  the additional corresponding premises.
+- Rowwise scalar calibration uses fixed positive `N j`, actual row laws and
+  within-row independence, with one measurable Good event. The N3 interval
+  radius is `|J|u` for the summed absolute-coordinate risk, and its
+  population means must match the same model/source/action/read. N6 keeps
+  its distinct reference-response match, full parent-type gap and external
+  authentication. Neither constructor takes the unknown correct label.
+  The failure endpoints currently provide `μ.real` outer-measure bounds;
+  they do not separately export failure-event measurability certificates.
+- The two-probe, two-candidate witness constructs an actual deterministic
+  PMF product experiment with row sizes 128 and 256. Its scalar budget is
+  `2 exp(−4) + 2 exp(−8) ≤ 28/45 < 1`. Changing only the declared kernel
+  supplies a concrete exact-Good record whose interval is not calibrated.
+  These are formal probability witnesses, not empirical observations.
+
+The [results and boundaries](../../unified_closure/longterm_control_statistics_v1/RESULTS_AND_BOUNDARIES.md)
+state the complete mathematical scope. The frozen counted generator and
+106 P-ID classifications, and the global `NOT_ESTABLISHED` status, remain
+unchanged. Historical type-group, near-type and clone evidence is retained;
+the unchanged scanner still requires an actual full-current-source match
+against its immutable 68-row table.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -692,18 +780,20 @@ Core/Compression tier or global scientific-completeness claim is promoted.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_REGISTERED_INTERFACES_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  eight governed overlays extend the live census to 666 = 655 + 11.
-- 3,793 immutable-base public source theorem proofs + 354 governed registrations
-  (including one historical public-name repair) = 4,147 live graph nodes, with
-  5,418 direct registered-source theorem
+  nine governed overlays extend the live census to 678 = 667 + 11.
+- 3,793 immutable-base public source theorem proofs + 444 governed registrations
+  (including one historical public-name repair) = 4,237 live graph nodes, with
+  5,567 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
+  The ninth adds 149 edges, giving 680 outgoing edges from overlay nodes;
+  the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -720,7 +810,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 666 modules and rejects any difference
+  The current scanner recomputes all 678 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -753,7 +843,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 666-module live source census. It refuses to
+overlay-chain hashes against the exact 678-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

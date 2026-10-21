@@ -140,6 +140,18 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEsca
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminal
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBinding
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFlux
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefix
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTail
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.InfiniteSupportViability
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeCalibration
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeWitness
 /-!
 # UEOT Theory Completion public root
 

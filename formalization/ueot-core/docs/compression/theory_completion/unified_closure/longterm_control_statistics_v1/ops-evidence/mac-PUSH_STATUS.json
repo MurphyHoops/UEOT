@@ -1,0 +1,35 @@
+[
+  {
+    "cmd": [
+      "git",
+      "bundle",
+      "verify",
+      "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-policy-sisc-evidence-20261021/ops/ops.bundle"
+    ],
+    "exit": 0,
+    "stdout": "The bundle contains this ref:\n169274e14873a27a1ef68523a5473889af0f2c2c HEAD\nThe bundle requires this ref:\n1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a \nThe bundle uses this hash algorithm: sha1\n",
+    "stderr": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-policy-sisc-evidence-20261021/ops/ops.bundle is okay\n"
+  },
+  {
+    "cmd": [
+      "git",
+      "fetch",
+      "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-policy-sisc-evidence-20261021/ops/ops.bundle",
+      "HEAD:refs/heads/ops/compression-longterm-policy-sisc-evidence"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "From /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-policy-sisc-evidence-20261021/ops/ops.bundle\n * [new ref]           HEAD       -> ops/compression-longterm-policy-sisc-evidence\n"
+  },
+  {
+    "cmd": [
+      "git",
+      "push",
+      "origin",
+      "refs/heads/ops/compression-longterm-policy-sisc-evidence:refs/heads/ops/compression-longterm-policy-sisc-evidence"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "remote: \nremote: Create a pull request for 'ops/compression-longterm-policy-sisc-evidence' on GitHub by visiting:        \nremote:      https://github.com/MurphyHoops/UEOT/pull/new/ops/compression-longterm-policy-sisc-evidence        \nremote: \nTo https://github.com/MurphyHoops/UEOT.git\n * [new branch]        ops/compression-longterm-policy-sisc-evidence -> ops/compression-longterm-policy-sisc-evidence\n"
+  }
+]

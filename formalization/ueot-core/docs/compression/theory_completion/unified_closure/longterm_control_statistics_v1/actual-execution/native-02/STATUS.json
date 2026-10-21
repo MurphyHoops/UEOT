@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "ff71e63256c88ad2bb527fdd3004d55c77894ab7",
+  "build_receipt_sha256": "61af3bc7bc9e840ed1240fed0809ec47cb027cf8ea8d1bd11491f27ca8785d02",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-policy-sisc-evidence-20261021/native-02/LONGTERM_CONTROL_STATISTICS_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 59.215,
+      "log_sha256": "017ae922d3800197b9e0fe379cc671771283df23ad21f2ac0fb96c86ad5d2a8e"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-policy-sisc-evidence-20261021/native-02/VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 58.444,
+      "log_sha256": "017ae922d3800197b9e0fe379cc671771283df23ad21f2ac0fb96c86ad5d2a8e"
+    }
+  ],
+  "summary": {
+    "modules": 12,
+    "public_source_theorems": 90,
+    "native_constants": 199,
+    "registered_edges": 149,
+    "overlay_sha256": "c04d08aac1ed70cc1dd73ee5821a196aaf8ac7d0168e4eabd5de70bd8c1c7edd",
+    "verifier_sha256": "0643f8dfca2daec2ce6b4638f712f6abcacf8f91f31669a37120f397d6c27213",
+    "native_sha256": "0b6b77967ad43da71cec3a569b361501f591a7a8b384d072dda31af1b897d02c"
+  }
+}

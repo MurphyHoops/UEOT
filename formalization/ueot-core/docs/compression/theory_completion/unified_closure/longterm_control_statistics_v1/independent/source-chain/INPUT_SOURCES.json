@@ -1,0 +1,574 @@
+{
+  "base": "1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a",
+  "sources": [
+    {
+      "module": "SourcePolicyPathBridge",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/source_bridge/SourcePolicyPathBridge.lean",
+      "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+      "public_count": 2,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+          "short_name": "actual_next_state_eq_stationary_row",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+          "line": 73,
+          "header_preview": "theorem actual_next_state_eq_stationary_row     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (n : ℕ) (h : CausalHistory X (A × X) n) :     (riskMicroControlKernel q (fun _ => M.transitionPMF)       (observationMarkovPolicy sigma) n h).map Prod.snd =",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+          "short_name": "actual_state_path_eq_stationary_path",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+          "line": 97,
+          "header_preview": "theorem actual_state_path_eq_stationary_path     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (n : ℕ) :     (causalLaw p0       (riskMicroControlKernel q (fun _ => M.transitionPMF)",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    {
+      "module": "SameSourceKilledPath",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/killed_path/SameSourceKilledPath.lean",
+      "sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+      "public_count": 5,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg",
+          "short_name": "killedMatrix_nonneg",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "line": 71,
+          "header_preview": "theorem killedMatrix_nonneg     {X A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (pi : StationaryPolicy (fun _ : X => A))     (K : Set X) (x y : K) : 0 ≤ killedMatrix M pi K x y :=   M.policyTransition_nonneg pi x.1 y.1 ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_row_sum_le_one",
+          "short_name": "killedMatrix_row_sum_le_one",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "line": 78,
+          "header_preview": "theorem killedMatrix_row_sum_le_one     {X A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (pi : StationaryPolicy (fun _ : X => A))     (K : Set X) (x : K) : ∑ y : K, killedMatrix M pi K x y ≤ 1 := by   classical   change (∑ y : K, M.policyTransition pi x.1 y.1) ≤ 1",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.state_terminal_mass_eq_killed_pow",
+          "short_name": "state_terminal_mass_eq_killed_pow",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "line": 190,
+          "header_preview": "theorem state_terminal_mass_eq_killed_pow     {X A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (pi : StationaryPolicy (fun _ : X => A))     (p0 : PMF X) (K : Set X) :     ∀ n (v : K), stateTerminalMass M pi p0 K n v =       rowApply (safeInitialRow p0 K) ((killedMatrix M pi K) ^ n) v := by",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow",
+          "short_name": "actual_survival_terminal_mass_eq_killed_pow",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "line": 280,
+          "header_preview": "theorem actual_survival_terminal_mass_eq_killed_pow     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (K : Set X) (n : ℕ) (v : K) :",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum",
+          "short_name": "actual_survival_mass_eq_killed_pow_sum",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "line": 323,
+          "header_preview": "theorem actual_survival_mass_eq_killed_pow_sum     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (K : Set X) (n : ℕ) :",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    {
+      "module": "SameSourceConditionedTerminal",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/conditioned_terminal/SameSourceConditionedTerminal.lean",
+      "sha256": "8114278dc02e54f681bd576cf62af0dcc83df47a5b4a61bdc506a868750aea3c",
+      "public_count": 11,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_pos_iff_support",
+          "short_name": "actual_survival_pos_iff_support",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 124,
+          "header_preview": "theorem actual_survival_pos_iff_support :     0 < s ↔ ∃ h ∈ S, h ∈ (nu).support :=   positive_event_mass_iff_support nu S                                                                                                                                                          ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass",
+          "short_name": "actual_conditioned_terminal_mass",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 136,
+          "header_preview": "theorem actual_conditioned_terminal_mass (hpos : 0 < s) (v : K) :     (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s := by   unfold actualConditionedTerminal   rw [filter_map_apply_real]   simp only [Set.mem_ofPred_eq]   rw [actual_survival_terminal_mass_eq_killed_pow M q sigma p0 K n v]",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_support",
+          "short_name": "actual_conditioned_terminal_support",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 144,
+          "header_preview": "theorem actual_conditioned_terminal_support (hpos : 0 < s) :     (actualConditionedTerminal M q sigma p0 K n hpos).support ⊆ K := by   intro x hx   let hs := (actual_survival_pos_iff_support M q sigma p0 K n).1 hpos   change x ∈ (((nu).filter S hs).map (riskLastState n)).support at hx   rcases (PMF.mem_support_map_iff (riskLastState n) ((nu).filter S hs) x).1 hx with",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_eq_zero_of_notMem",
+          "short_name": "actual_conditioned_terminal_eq_zero_of_notMem",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 154,
+          "header_preview": "theorem actual_conditioned_terminal_eq_zero_of_notMem     (hpos : 0 < s) (x : X) (hx : x ∉ K) :     actualConditionedTerminal M q sigma p0 K n hpos x = 0 := by   apply (PMF.apply_eq_zero_iff _ x).2   intro hmem   exact hx (actual_conditioned_terminal_support M q sigma p0 K n hpos hmem)",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.normalizedKilledTerminal_apply_toReal",
+          "short_name": "normalizedKilledTerminal_apply_toReal",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 173,
+          "header_preview": "@[simp] theorem normalizedKilledTerminal_apply_toReal     (hpos : 0 < s) (v : K) :     (normalizedKilledTerminal M q sigma p0 K n hpos v).toReal = w v / s := by   simp only [normalizedKilledTerminal, FiniteProbabilityRow.ofRealRow_apply_toReal]                                                                         ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_eq_normalized_killed_map",
+          "short_name": "actual_conditioned_terminal_eq_normalized_killed_map",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 180,
+          "header_preview": "theorem actual_conditioned_terminal_eq_normalized_killed_map (hpos : 0 < s) :     actualConditionedTerminal M q sigma p0 K n hpos =       (normalizedKilledTerminal M q sigma p0 K n hpos).map Subtype.val := by   apply PMF.ext   intro x   by_cases hx : x ∈ K",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.safe_set_nonempty_of_survival_pos",
+          "short_name": "safe_set_nonempty_of_survival_pos",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 215,
+          "header_preview": "theorem safe_set_nonempty_of_survival_pos (hpos : 0 < s) : K.Nonempty := by   rcases (actual_survival_pos_iff_support M q sigma p0 K n).1 hpos with     ⟨h, hsafe, _⟩   exact ⟨riskLastState n h, survives_last_mem K n h hsafe⟩                                                                      ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_zero_survival_no_filter_witness",
+          "short_name": "actual_zero_survival_no_filter_witness",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 222,
+          "header_preview": "theorem actual_zero_survival_no_filter_witness (hzero : s = 0) :     ¬ ∃ h ∈ S, h ∈ (nu).support := by   intro hw   have hp := (actual_survival_pos_iff_support M q sigma p0 K n).2 hw   rw [hzero] at hp   exact (lt_irrefl 0) hp",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero",
+          "short_name": "actual_survival_mass_at_zero",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 231,
+          "header_preview": "theorem actual_survival_mass_at_zero :     (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)       (observationMarkovPolicy sigma)) 0).toMeasure.real         {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h} = p0.toMeasure.real K := by   change p0.toMeasure.real {x : X | ¬ (x ∉ K)} = p0.toMeasure.real K   have hset : {x : X | ¬ (x ∉ K)} = K := by",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass_at_zero",
+          "short_name": "actual_conditioned_terminal_mass_at_zero",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 243,
+          "header_preview": "theorem actual_conditioned_terminal_mass_at_zero     (hpos : 0 < (causalLaw p0       (riskMicroControlKernel q (fun _ => M.transitionPMF)         (observationMarkovPolicy sigma)) 0).toMeasure.real           {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h}) (v : K) :     (actualConditionedTerminal M q sigma p0 K 0 hpos v.1).toReal =",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_empty",
+          "short_name": "actual_survival_mass_empty",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "line": 255,
+          "header_preview": "theorem actual_survival_mass_empty :     (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)       (observationMarkovPolicy sigma)) n).toMeasure.real         {h | ¬ riskEverFailure (fun x => x ∉ (∅ : Set X)) n h} = 0 := by   rw [actual_survival_mass_eq_killed_pow_sum M q sigma p0 (∅ : Set X) n]   exact Finset.sum_eq_zero fun v _ => False.elim v.property",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    {
+      "module": "SameSourceQSDBinding",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/qsd_binding/SameSourceQSDBinding.lean",
+      "sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed",
+      "public_count": 13,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype",
+          "short_name": "safeInitialRow_map_subtype",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 44,
+          "header_preview": "theorem safeInitialRow_map_subtype {X : Type u} (K : Set X) (r : PMF K) :     safeInitialRow (r.map Subtype.val) K = fun v => (r v).toReal := by   funext v   unfold safeInitialRow   rw [map_injective_atom Subtype.val Subtype.val_injective r v] ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_terminal_mass",
+          "short_name": "actual_qsd_survival_terminal_mass",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 66,
+          "header_preview": "theorem actual_qsd_survival_terminal_mass     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (n : ℕ) (v : K) :     (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =       rho ^ n * (r v).toReal := by",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass",
+          "short_name": "actual_qsd_survival_mass",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 76,
+          "header_preview": "theorem actual_qsd_survival_mass     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (n : ℕ) :     (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n := by   rw [actual_survival_mass_eq_killed_pow_sum, safeInitialRow_map_subtype]",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_pos",
+          "short_name": "actual_qsd_survival_pos",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 86,
+          "header_preview": "theorem actual_qsd_survival_pos     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (hrho : 0 < rho) (n : ℕ) :     0 < (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h} := by   rw [actual_qsd_survival_mass M q sigma K r rho hleft n]",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditional_terminal_ratio",
+          "short_name": "actual_qsd_conditional_terminal_ratio",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 95,
+          "header_preview": "theorem actual_qsd_conditional_terminal_ratio     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (hrho : 0 < rho) (n : ℕ) (v : K) :     (nu n).toMeasure.real         {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} /       (nu n).toMeasure.real",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_KilledQSDGOA",
+          "short_name": "sameSource_KilledQSDGOA",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 108,
+          "header_preview": "theorem sameSource_KilledQSDGOA     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (hrho : 0 < rho) :     KilledQSDGOA Q rR rho := by   exact ⟨killedMatrix_nonneg M (liftedStationaryPolicy q sigma) K,     killedMatrix_row_sum_le_one M (liftedStationaryPolicy q sigma) K,",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_rho_bounds",
+          "short_name": "sameSource_rho_bounds",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 118,
+          "header_preview": "theorem sameSource_rho_bounds     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal) :     0 ≤ rho ∧ rho ≤ 1 := by   constructor   · rw [← qsd_survival_mass Q rR rho (coverage_sum_toReal r) hleft]     apply Finset.sum_nonneg",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_pos_iff",
+          "short_name": "actual_qsd_survival_pos_iff",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 137,
+          "header_preview": "theorem actual_qsd_survival_pos_iff     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (n : ℕ) :     0 < (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h} ↔ n = 0 ∨ 0 < rho := by   rw [actual_qsd_survival_mass M q sigma K r rho hleft n]",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law_of_survival_pos",
+          "short_name": "actual_qsd_conditioned_terminal_law_of_survival_pos",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 158,
+          "header_preview": "theorem actual_qsd_conditioned_terminal_law_of_survival_pos     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (n : ℕ)     (hpos : 0 < (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h}) :     actualConditionedTerminal M q sigma p0 K n hpos = p0 := by",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_zero_root_no_filter_witness",
+          "short_name": "actual_qsd_zero_root_no_filter_witness",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 181,
+          "header_preview": "theorem actual_qsd_zero_root_no_filter_witness     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (hrho : rho = 0) (n : ℕ) (hn : n ≠ 0) :     ¬ ∃ h ∈ {h | ¬ riskEverFailure (fun x => x ∉ K) n h},       h ∈ (nu n).support := by   apply actual_zero_survival_no_filter_witness M q sigma p0 K n",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_support",
+          "short_name": "actual_qsd_survival_support",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 191,
+          "header_preview": "theorem actual_qsd_survival_support     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (hrho : 0 < rho) (n : ℕ) :     ∃ h ∈ {h | ¬ riskEverFailure (fun x => x ∉ K) n h}, h ∈ (nu n).support := by   exact (actual_survival_pos_iff_support M q sigma p0 K n).1     (actual_qsd_survival_pos M q sigma K r rho hleft hrho n)",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law",
+          "short_name": "actual_qsd_conditioned_terminal_law",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 202,
+          "header_preview": "theorem actual_qsd_conditioned_terminal_law     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (K : Set X) (r : PMF K) (rho : ℝ)",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_masses_ofRealRow",
+          "short_name": "actual_qsd_masses_ofRealRow",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "line": 227,
+          "header_preview": "theorem actual_qsd_masses_ofRealRow     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (K : Set X) (r : K → ℝ) (hr : ∀ v, 0 ≤ r v) (hsum : ∑ v, r v = 1)",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    {
+      "module": "SameSourceKilledExitFlux",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/exit_flux/SameSourceKilledExitFlux.lean",
+      "sha256": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18",
+      "public_count": 13,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst",
+          "short_name": "pmfExtend_map_fst",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 37,
+          "header_preview": "theorem pmfExtend_map_fst     {H Z : Type*} (p : PMF H) (L : H → PMF Z) :     (pmfExtend p L).map Prod.fst = p := by   unfold pmfExtend   rw [PMF.map_bind]   simp_rw [PMF.map_comp]",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix",
+          "short_name": "causalLaw_map_prefix",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 48,
+          "header_preview": "theorem causalLaw_map_prefix     {H Z : Type u} (p0 : PMF H)     (L : ∀ n, CausalHistory H Z n → PMF Z) (n : ℕ) :     (causalLaw p0 L (n + 1)).map         (fun h : CausalHistory H Z (n + 1) => h.1) = causalLaw p0 L n := by   change (pmfExtend (causalLaw p0 L n) (L n)).map Prod.fst = _",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_prefix_event_real",
+          "short_name": "causalLaw_prefix_event_real",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 58,
+          "header_preview": "theorem causalLaw_prefix_event_real     {H Z : Type u} [Fintype H] [Fintype Z]     [MeasurableSpace H] [MeasurableSingletonClass H]     [MeasurableSpace Z] [MeasurableSingletonClass Z]     (p0 : PMF H) (L : ∀ n, CausalHistory H Z n → PMF Z)     (n : ℕ) (E : Set (CausalHistory H Z n)) :",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.row_mass_sub_next_eq_killedExitFlux",
+          "short_name": "row_mass_sub_next_eq_killedExitFlux",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 83,
+          "header_preview": "theorem row_mass_sub_next_eq_killedExitFlux     {S : Type u} [Fintype S] (eta : S → ℝ) (Q : Matrix S S ℝ) :     (∑ u, eta u) - (∑ v, rowApply eta Q v) = killedExitFlux eta Q := by   have hsum : (∑ v, rowApply eta Q v) = ∑ u, eta u * (∑ v, Q u v) := by     unfold rowApply     rw [Finset.sum_comm]",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.killed_pow_mass_drop",
+          "short_name": "killed_pow_mass_drop",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 97,
+          "header_preview": "theorem killed_pow_mass_drop     {S : Type u} [Fintype S] (eta0 : S → ℝ) (Q : Matrix S S ℝ) (n : ℕ) :     (∑ u, rowApply eta0 (Q ^ n) u) -         (∑ v, rowApply eta0 (Q ^ (n + 1)) v) =       killedExitFlux (rowApply eta0 (Q ^ n)) Q := by   rw [pow_succ, rowApply_mul]",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_survival_drop_eq_killedExitFlux",
+          "short_name": "actual_survival_drop_eq_killedExitFlux",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 131,
+          "header_preview": "theorem actual_survival_drop_eq_killedExitFlux (n : ℕ) :     s n - s (n + 1) = flux n := by   dsimp only   rw [actual_survival_mass_eq_killed_pow_sum M q sigma p0 K n,     actual_survival_mass_eq_killed_pow_sum M q sigma p0 K (n + 1)]   convert killed_pow_mass_drop eta0 Q n using 1 <;> congr!",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop",
+          "short_name": "actual_first_exit_mass_eq_survival_drop",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 140,
+          "header_preview": "theorem actual_first_exit_mass_eq_survival_drop (n : ℕ) :     (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A := A) K n) =       s n - s (n + 1) := by   classical   let safePrefix : Set (CausalHistory X (A × X) (n + 1)) :=     {h | ¬ riskEverFailure (fun x => x ∉ K) n h.1}",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_killedExitFlux",
+          "short_name": "actual_first_exit_mass_eq_killedExitFlux",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 175,
+          "header_preview": "theorem actual_first_exit_mass_eq_killedExitFlux (n : ℕ) :     (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A := A) K n) = flux n := by   rw [actual_first_exit_mass_eq_survival_drop M q sigma p0 K n,     actual_survival_drop_eq_killedExitFlux M q sigma p0 K n]                                                                      ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_killedExitFlux_nonneg",
+          "short_name": "actual_killedExitFlux_nonneg",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 181,
+          "header_preview": "theorem actual_killedExitFlux_nonneg (n : ℕ) : 0 ≤ flux n := by   rw [← actual_first_exit_mass_eq_killedExitFlux M q sigma p0 K n]   exact ENNReal.toReal_nonneg                                                                             theorem actual_survival_zero : s 0 = p0.toMeasure.real K := by",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_survival_zero",
+          "short_name": "actual_survival_zero",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 186,
+          "header_preview": "theorem actual_survival_zero : s 0 = p0.toMeasure.real K := by   change p0.toMeasure.real {x | ¬ x ∉ K} = p0.toMeasure.real K   congr 1   ext x   simp ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_mass_telescope",
+          "short_name": "actual_failure_mass_telescope",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 193,
+          "header_preview": "theorem actual_failure_mass_telescope (T : ℕ) :     1 - s T = (1 - p0.toMeasure.real K) +       ∑ n ∈ Finset.range T, flux n := by   have htel : (∑ n ∈ Finset.range T, flux n) = s 0 - s T := by     calc       (∑ n ∈ Finset.range T, flux n) =",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_ever_failure_mass",
+          "short_name": "actual_ever_failure_mass",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 209,
+          "header_preview": "theorem actual_ever_failure_mass (T : ℕ) :     (nu T).toMeasure.real {h | riskEverFailure (fun x => x ∉ K) T h} =       1 - s T := by   have hevent :       {h : CausalHistory X (A × X) T | riskEverFailure (fun x => x ∉ K) T h} =         {h | ¬ riskEverFailure (fun x => x ∉ K) T h}ᶜ := by",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_eq_initial_failure_add_first_exits",
+          "short_name": "actual_failure_eq_initial_failure_add_first_exits",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+          "line": 222,
+          "header_preview": "theorem actual_failure_eq_initial_failure_add_first_exits (T : ℕ) :     (nu T).toMeasure.real {h | riskEverFailure (fun x => x ∉ K) T h} =       p0.toMeasure.real Kᶜ +         ∑ n ∈ Finset.range T,           (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A := A) K n) := by   rw [actual_ever_failure_mass M q sigma p0 K T,",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    {
+      "module": "SameSourceInfinitePrefix",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/infinite_source_bridge/SameSourceInfinitePrefix.lean",
+      "sha256": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92",
+      "public_count": 7,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.pmfRowKernel_apply",
+          "short_name": "pmfRowKernel_apply",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "line": 45,
+          "header_preview": "@[simp] theorem pmfRowKernel_apply     {H : Type u} {Z : Type v} [Fintype H]     [MeasurableSpace H] [MeasurableSingletonClass H] [MeasurableSpace Z]     (J : H → PMF Z) (h : H) : pmfRowKernel J h = (J h).toMeasure := rfl  instance pmfRowKernel_isMarkov",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_zero",
+          "short_name": "stateHistoryEquiv_zero",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "line": 87,
+          "header_preview": "@[simp] theorem stateHistoryEquiv_zero     {X : Type u} [MeasurableSpace X] :     stateHistoryEquiv (X := X) 0 =       (MeasurableEquiv.piUnique (fun _ : Finset.Iic 0 => X)).symm := rfl  theorem stateHistoryEquiv_succ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_succ",
+          "short_name": "stateHistoryEquiv_succ",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "line": 92,
+          "header_preview": "theorem stateHistoryEquiv_succ     {X : Type u} [MeasurableSpace X] (n : ℕ) :     (stateHistoryEquiv (X := X) (n + 1) :       CausalHistory X X (n + 1) → ((i : Finset.Iic (n + 1)) → X)) =       appendHistory n ∘ Prod.map (stateHistoryEquiv n) id := rfl ",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_last",
+          "short_name": "stateHistoryEquiv_last",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "line": 98,
+          "header_preview": "@[simp] theorem stateHistoryEquiv_last     {X : Type u} [MeasurableSpace X]     (n : ℕ) (h : CausalHistory X X n) :     stateHistoryEquiv n h (lastHistoryIndex n) = currentState n h := by   cases n with   | zero => rfl",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix",
+          "short_name": "state_history_eq_homogeneous_prefix",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "line": 142,
+          "header_preview": "theorem state_history_eq_homogeneous_prefix     {X : Type u} [Fintype X]     [MeasurableSpace X] [MeasurableSingletonClass X]     (p0 : PMF X) (J : X → PMF X) (n : ℕ) :     ((causalLaw p0 (fun k h => J (currentState k h)) n).map       (stateHistoryEquiv n)).toMeasure =",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix",
+          "short_name": "actual_state_prefix_eq_homogeneous_prefix",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "line": 173,
+          "header_preview": "theorem actual_state_prefix_eq_homogeneous_prefix     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (n : ℕ) :     ((causalLaw p0",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+          "short_name": "actual_state_prefix_event_mass",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "line": 194,
+          "header_preview": "theorem actual_state_prefix_event_mass     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    {
+      "module": "SameSourceSafePrefix",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/safe_prefix_bridge/SameSourceSafePrefix.lean",
+      "sha256": "392468a8ca8c29225f334324eb3c2b5996e2aa4eae4846dfdab371ffb2eeaddf",
+      "public_count": 4,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.stateHistoryEquiv_survival_iff",
+          "short_name": "stateHistoryEquiv_survival_iff",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+          "line": 44,
+          "header_preview": "theorem stateHistoryEquiv_survival_iff     {X : Type u} [MeasurableSpace X] (K : Set X) :     ∀ (n : ℕ) (h : CausalHistory X X n),       stateHistoryEquiv n h ∈ historySurvivalSet Kᶜ n ↔         stateSurvives K n h := by   intro n",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.actual_safe_prefix_pullback",
+          "short_name": "actual_safe_prefix_pullback",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+          "line": 81,
+          "header_preview": "theorem actual_safe_prefix_pullback     {X A : Type u} [MeasurableSpace X] (K : Set X) (n : ℕ) :     (stateHistoryEquiv n ∘ eraseActionHistory (X := X) (A := A) n) ⁻¹'         historySurvivalSet Kᶜ n =       {h : CausalHistory X (A × X) n |         ¬ riskEverFailure (fun x => x ∉ K) n h} := by",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_real_eq_killed_pow_sum",
+          "short_name": "homogeneous_survival_real_eq_killed_pow_sum",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+          "line": 109,
+          "header_preview": "theorem homogeneous_survival_real_eq_killed_pow_sum     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (K : Set X) (n : ℕ) :",
+          "origin": "UEOT_MAINTAINED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_mass_eq_ofReal_killed_pow_sum",
+          "short_name": "homogeneous_survival_mass_eq_ofReal_killed_pow_sum",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+          "line": 135,
+          "header_preview": "theorem homogeneous_survival_mass_eq_ofReal_killed_pow_sum     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (K : Set X) (n : ℕ) :",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    },
+    {
+      "module": "SameSourceSurvivalTail",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/global_review_tail_v1/tail-proof-v1/SameSourceSurvivalTail.lean",
+      "sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357",
+      "public_count": 1,
+      "public_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTailCheck.killed_survival_mass_tendsto_homogeneous_neverHit_real",
+          "short_name": "killed_survival_mass_tendsto_homogeneous_neverHit_real",
+          "kind": "theorem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSurvivalTail.lean",
+          "line": 34,
+          "header_preview": "theorem killed_survival_mass_tendsto_homogeneous_neverHit_real     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (K : Set X) :",
+          "origin": "UEOT_MAINTAINED"
+        }
+      ]
+    }
+  ],
+  "total_public": 56
+}

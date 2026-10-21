@@ -1,0 +1,256 @@
+{
+  "status": "STATIC_SOURCE_PROMOTION_CLEAR",
+  "base": "1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a",
+  "comparison": "Nested-comment-aware exact code-body comparison preserving whitespace other than blank/trailing whitespace; archive loaded from immutable base Git objects. Import qualification and removed #print commands checked separately. No Lean execution claim.",
+  "public_theorem_count": 56,
+  "sources": [
+    {
+      "module": "SourcePolicyPathBridge",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/source_bridge/SourcePolicyPathBridge.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+      "archive_sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+      "production_sha256": "3e12ece077ed1528cf3a3f6adb16530400b241bae384071a0c1ba616023d546e",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "UEOT.V3.CoreOperationalAssembly",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage"
+      ],
+      "production_imports": [
+        "UEOT.V3.CoreOperationalAssembly",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 2,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    },
+    {
+      "module": "SameSourceKilledPath",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/killed_path/SameSourceKilledPath.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+      "archive_sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+      "production_sha256": "496f6b5de9850dda1de036da3862824dffd2f137ebd740c28bd061e566fec4d0",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "SourcePolicyPathBridge",
+        "UEOT.V3.QSDPerron"
+      ],
+      "production_imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+        "UEOT.V3.QSDPerron"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.state_terminal_mass_eq_killed_pow"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 5,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    },
+    {
+      "module": "SameSourceConditionedTerminal",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/conditioned_terminal/SameSourceConditionedTerminal.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+      "archive_sha256": "8114278dc02e54f681bd576cf62af0dcc83df47a5b4a61bdc506a868750aea3c",
+      "production_sha256": "476b18ddfe1f933083b41ebf8c6a9d2d231e8dba20cf66e8f98149b0e08d7cdf",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "SameSourceKilledPath",
+        "Mathlib.Probability.ProbabilityMassFunction.Constructions"
+      ],
+      "production_imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+        "Mathlib.Probability.ProbabilityMassFunction.Constructions"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_eq_normalized_killed_map",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_zero_survival_no_filter_witness",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass_at_zero",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_empty"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 11,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    },
+    {
+      "module": "SameSourceQSDBinding",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/qsd_binding/SameSourceQSDBinding.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+      "archive_sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed",
+      "production_sha256": "599e39f6039bf2bf533cf62055e987a365b7cc1d88a3b969a46ee1f74e95e3aa",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "SameSourceConditionedTerminal",
+        "UEOT.V3.Compression.TheoryCompletion.GOA",
+        "UEOT.V3.FiniteDiscountedApproxQuotient"
+      ],
+      "production_imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminal",
+        "UEOT.V3.Compression.TheoryCompletion.GOA",
+        "UEOT.V3.FiniteDiscountedApproxQuotient"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_terminal_mass",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_rho_bounds",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_KilledQSDGOA",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_pos_iff",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law_of_survival_pos",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_zero_root_no_filter_witness",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_masses_ofRealRow"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 13,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    },
+    {
+      "module": "SameSourceKilledExitFlux",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/exit_flux/SameSourceKilledExitFlux.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+      "archive_sha256": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18",
+      "production_sha256": "07ffce4112b50a82b4face10ce6c848f868756de739bcf1085722e887409f920",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "SameSourceKilledPath"
+      ],
+      "production_imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_prefix_event_real",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_killedExitFlux",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_killedExitFlux_nonneg",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_survival_zero",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_mass_telescope",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_ever_failure_mass",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_eq_initial_failure_add_first_exits"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 13,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    },
+    {
+      "module": "SameSourceInfinitePrefix",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/infinite_source_bridge/SameSourceInfinitePrefix.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+      "archive_sha256": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92",
+      "production_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "SourcePolicyPathBridge",
+        "UEOT.V3.DynamicsKernel",
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Countable"
+      ],
+      "production_imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+        "UEOT.V3.DynamicsKernel",
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Countable"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 7,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    },
+    {
+      "module": "SameSourceSafePrefix",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/safe_prefix_bridge/SameSourceSafePrefix.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+      "archive_sha256": "392468a8ca8c29225f334324eb3c2b5996e2aa4eae4846dfdab371ffb2eeaddf",
+      "production_sha256": "574908f3524470791bdac6b4b78c03dd1eb9faef2e9eecd1ef8c6ee2238ef41f",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "SameSourceInfinitePrefix",
+        "SameSourceKilledPath",
+        "UEOT.V3.RecoveryHittingDrift",
+        "Mathlib.MeasureTheory.Measure.Real"
+      ],
+      "production_imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+        "UEOT.V3.RecoveryHittingDrift",
+        "Mathlib.MeasureTheory.Measure.Real"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.stateHistoryEquiv_survival_iff",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.actual_safe_prefix_pullback",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_real_eq_killed_pow_sum",
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_mass_eq_ofReal_killed_pow_sum"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 4,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    },
+    {
+      "module": "SameSourceSurvivalTail",
+      "archive_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/global_review_tail_v1/tail-proof-v1/SameSourceSurvivalTail.lean",
+      "production_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSurvivalTail.lean",
+      "archive_sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357",
+      "production_sha256": "ef216f29731d146b88e182185f7f5f7f3b87b4b1dd1ce4760c0ede89aa546719",
+      "exact_noncomment_nonimport_nonprint_body_equal": true,
+      "imports_exactly_qualified": true,
+      "archive_imports": [
+        "SameSourceSafePrefix",
+        "UEOT.V3.Compression.Objecthood.AbsorbedRepairHittingSemantics",
+        "Mathlib.Topology.Instances.ENNReal.Lemmas"
+      ],
+      "production_imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefix",
+        "UEOT.V3.Compression.Objecthood.AbsorbedRepairHittingSemantics",
+        "Mathlib.Topology.Instances.ENNReal.Lemmas"
+      ],
+      "removed_prints": [
+        "#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTailCheck.killed_survival_mass_tendsto_homogeneous_neverHit_real"
+      ],
+      "production_prints": [],
+      "public_declaration_count": 1,
+      "static_clear": true,
+      "promotion_manifest_hashes_match": true
+    }
+  ],
+  "root_import_review": {
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "noncomment_body_equal": true,
+    "added_imports": [
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminal",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBinding",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFlux",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefix",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTail"
+    ],
+    "removed_imports": [],
+    "all_eight_imported_once": true,
+    "sha256": "12e8e6c11dc6a60fd4b51e7929200efc547d531a7d9fc431fdd9e9fa850624c3"
+  },
+  "manifest_binding_status": "CLEAR"
+}
