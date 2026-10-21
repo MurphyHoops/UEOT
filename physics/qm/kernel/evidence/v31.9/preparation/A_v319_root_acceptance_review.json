@@ -1,0 +1,83 @@
+{
+  "status": "CLEAR_FOR_FROZEN_INPUT_EXECUTION",
+  "reviewer": "A / v319_distance",
+  "reviewed_at_utc": "2026-10-20T15:48:27.512511+00:00",
+  "helper_sha256": {
+    "/workspace/scratch/f11b4261e187/handoff/qm319_reuse_legacy.py": "b386c0fd7599d5c06ff0e9c5d0e22fd08f94fbe3ae8c9be819e4a068fd761fb6",
+    "/workspace/scratch/f11b4261e187/handoff/qm319_accept.py": "528b0873eca3a74af0512c802e988b7018db02f7a27730c45f2c4355c24d55ee",
+    "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/verify_finite_witnesses.py": "1916870a25c6e2af9a169798e9f60552b94812c6fc3f05214dbfa3f310cc1bbb"
+  },
+  "accept_executed_by_reviewer": false,
+  "legacy_tests_reexecuted_by_reviewer": false,
+  "checks": [
+    {
+      "files": "qm319_reuse_legacy.py:25-77,91-119",
+      "finding": "PASS",
+      "reason": "Immutable baseline commit/tree and published v31.8 manifest bind all 86 unchanged sources, actual 56 Core closure and six package context files. Each old Lean witness/certificate import closure rejects new or changed integration modules. Nine pinned upstream repositories require exact rev and tracked-source cleanliness."
+    },
+    {
+      "files": "qm319_reuse_legacy.py:48-58,109-155",
+      "finding": "PASS",
+      "reason": "Old evidence references retain actual main run 39424068985 and actual tested commit 97c7b29c1aec470be58ca34b552e9d56ad06c197. Ten witness counts (193+71+5=269), six certificate cases, four corrupted-true rejections/four false controls, 100 runtime methods and four parsed demos are explicitly REUSED; new invocation counts are zero."
+    },
+    {
+      "files": "qm319_reuse_legacy.py:79-90; verify_finite_witnesses.py:202-241",
+      "finding": "PASS",
+      "reason": "Seven compile/audit/binding functions are AST-identical to immutable prior source. The new --witness parser only accepts registered names, rejects duplicates, defaults to all, and records selected vs registered identities and completeness explicitly."
+    },
+    {
+      "files": "verify_finite_witnesses.py:233-281",
+      "finding": "PASS",
+      "reason": "Only selected witnesses are invoked; all repository general source/olean inputs remain bound. A success requires actual toolchain match, exit zero, exact unique complete named audit, allowed foundations, and unchanged inputs. Subset success cannot be confused with all-registered completeness because selection_is_complete is explicit."
+    },
+    {
+      "files": "qm319_accept.py:114-178,325-335",
+      "finding": "PASS",
+      "reason": "Whole gate holds shared flock; freezes source manifest; checks new inventory identities, dependency/toolchain, proof escapes; actually builds umbrella and executes all exact named public audits. Outer guard refuses pre-existing root acceptance evidence."
+    },
+    {
+      "files": "qm319_accept.py:180-264,298-320",
+      "finding": "PASS",
+      "reason": "The gate actually executes exactly three selected new witnesses, separately reviews immutable historical bindings before/after, and preserves original command/log/timestamp objects for ten old checks. Aggregate reports label actual-new and reused counts/modes separately. Certificates/runtime/demos retain prior receipt paths and explicit reuse labels."
+    },
+    {
+      "files": "qm319_accept.py:266-296",
+      "finding": "PASS",
+      "reason": "Actual post-build Core source/olean identities and exact original 56-module set are checked; scientific source bytes are required unchanged across acceptance."
+    }
+  ],
+  "current_cheap_identity_checks": {
+    "unchanged_published_sources": 86,
+    "core_sources": 56,
+    "old_witness_counts": {
+      "def": 71,
+      "theorem": 193,
+      "abbrev": 5
+    },
+    "runtime_test_names": 100,
+    "demo_program_and_output_hashes": 4,
+    "stable_verifier_functions": [
+      "identity",
+      "lean_code",
+      "witness_declarations",
+      "repository_modules",
+      "input_snapshot",
+      "run_command",
+      "audit_result"
+    ]
+  },
+  "blocking_findings": [],
+  "nonblocking_operational_limits": [
+    {
+      "files": "verify_finite_witnesses.py:213-214,257-283",
+      "finding": "Existing standalone behavior can overwrite an already used --output-dir. Current root acceptance is safe because protect_existing_evidence rejects occupied outputs before any gate and passes a fresh new-finite-witnesses directory. Keep the root guard; no scientific source edit requested."
+    },
+    {
+      "files": "qm319_reuse_legacy.py:48-58,120-138,155",
+      "finding": "Historical PASS is a bound prior receipt identity, not a replay of old raw CI log parsers or artifact ZIP inspection. Current metadata says this accurately; downstream book/release wording must retain that scope."
+    }
+  ],
+  "new_lean_invocations": 0,
+  "new_runtime_test_invocations": 0,
+  "scope": "Prepared helper static review plus lightweight exact current/base-source and historical receipt identities; not a claim that root unified acceptance has executed."
+}

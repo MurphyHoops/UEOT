@@ -1,0 +1,433 @@
+import UEOTQM.StoppingProtocols
+import UEOTQM.PurificationIsometry
+
+/-!
+# Per-action error budgets for the original finite stopping tree
+
+Coordinate isometries preserve the all-effect distance through actual legal
+effect extension. This identifies the absorbing completion with the original
+leaf-and-memory state, including every stopping record. The budget uses the
+actual reference J-prefix weights; idle histories contribute exactly zero.
+-/
+
+namespace UEOTQM.StoppingRecordBudget
+
+open Matrix ActionRecordBudget StoppingProtocols
+open scoped BigOperators ComplexOrder
+
+noncomputable section
+
+attribute [local instance] Classical.propDecidable
+
+section Isometries
+
+variable {α β : Type*} [Fintype α] [DecidableEq α] [Fintype β] [DecidableEq β]
+
+/-- A single actual isometry Kraus matrix defines a complete rectangular channel. -/
+def isometryChannel (J : Matrix β α ℂ) (hJ : Jᴴ * J = 1) :
+    RectangularChannel α β Unit where
+  kraus _ := J
+  complete := by simpa using hJ
+
+@[simp] theorem isometryChannel_operator (J : Matrix β α ℂ) (hJ : Jᴴ * J = 1)
+    (X : Operator α) : (isometryChannel J hJ).operator X = J * X * Jᴴ := by
+  simp [isometryChannel, RectangularChannel.operator]
+
+/-- The complement of the range projection is PSD, including empty source carriers. -/
+theorem isometry_complement_positive (J : Matrix β α ℂ) (hJ : Jᴴ * J = 1) :
+    (1 - J * Jᴴ).PosSemidef := by
+  have hp : (J * Jᴴ) * (J * Jᴴ) = J * Jᴴ := by
+    calc
+      (J * Jᴴ) * (J * Jᴴ) = J * (Jᴴ * J) * Jᴴ := by simp only [Matrix.mul_assoc]
+      _ = J * Jᴴ := by rw [hJ]; simp
+  have hq : (1 - J * Jᴴ) * (1 - J * Jᴴ)ᴴ = 1 - J * Jᴴ := by
+    rw [Matrix.conjTranspose_sub, Matrix.conjTranspose_one, Matrix.conjTranspose_mul,
+      Matrix.conjTranspose_conjTranspose]
+    simp only [Matrix.sub_mul, Matrix.mul_sub, Matrix.one_mul, Matrix.mul_one, hp]
+    abel
+  rw [← hq]
+  exact Matrix.posSemidef_self_mul_conjTranspose _
+
+/-- Zero extension of an effect remains a legal effect on the whole enlarged space. -/
+def extendEffect (J : Matrix β α ℂ) (hJ : Jᴴ * J = 1) (E : Effect α) : Effect β where
+  matrix := J * E.matrix * Jᴴ
+  positive := E.positive.mul_mul_conjTranspose_same J
+  complement_positive := by
+    have h := (isometry_complement_positive J hJ).add
+      (E.complement_positive.mul_mul_conjTranspose_same J)
+    convert h using 1 <;> simp only [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one] <;> abel
+
+theorem pullback_extendEffect (J : Matrix β α ℂ) (hJ : Jᴴ * J = 1) (E : Effect α) :
+    (isometryChannel J hJ).pullbackEffect (extendEffect J hJ E) = E := by
+  apply Effect.ext
+  change (∑ _ : Unit, Jᴴ * (J * E.matrix * Jᴴ) * J) = E.matrix
+  simp only [Fintype.sum_unique]
+  calc
+    Jᴴ * (J * E.matrix * Jᴴ) * J = (Jᴴ * J) * E.matrix * (Jᴴ * J) := by
+      simp only [Matrix.mul_assoc]
+    _ = E.matrix := by rw [hJ]; simp
+
+/-- Actual state distances are unchanged; the reverse bound uses the constructed legal effect. -/
+theorem isometry_state_distance (J : Matrix β α ℂ) (hJ : Jᴴ * J = 1)
+    (ρ σ : Density α) :
+    effectDistance ((isometryChannel J hJ).state ρ) ((isometryChannel J hJ).state σ) =
+      effectDistance ρ σ := by
+  apply le_antisymm ((isometryChannel J hJ).state_effectDistance_le ρ σ)
+  apply (effectDistance_le_iff _ _ _).mpr
+  intro E
+  have h := (extendEffect J hJ E).probability_sub_le_effectDistance
+    ((isometryChannel J hJ).state ρ) ((isometryChannel J hJ).state σ)
+  simpa only [RectangularChannel.probability_state, pullback_extendEffect] using h
+
+/-- The coordinate matrix and its Gram proof are the independently checked B-line interface. -/
+def embeddingChannel (e : α ↪ β) : RectangularChannel α β Unit :=
+  isometryChannel (QuantumPurification.coordinateIsometry e)
+    (QuantumPurification.coordinateIsometry_adjoint_mul e)
+
+theorem embedding_operator_image (e : α ↪ β) (X : Operator α) (a b : α) :
+    (embeddingChannel e).operator X (e a) (e b) = X a b := by
+  simp [embeddingChannel, isometryChannel_operator, QuantumPurification.coordinateIsometry,
+    Matrix.mul_apply, Matrix.conjTranspose_apply, e.injective.eq_iff]
+
+theorem embedding_operator_outside_left (e : α ↪ β) (X : Operator α) (y z : β)
+    (hy : y ∉ Set.range e) : (embeddingChannel e).operator X y z = 0 := by
+  have he : ∀ a, y ≠ e a := by intro a h; exact hy ⟨a, h.symm⟩
+  simp [embeddingChannel, isometryChannel_operator, QuantumPurification.coordinateIsometry,
+    Matrix.mul_apply, he]
+
+theorem embedding_operator_outside_right (e : α ↪ β) (X : Operator α) (y z : β)
+    (hz : z ∉ Set.range e) : (embeddingChannel e).operator X y z = 0 := by
+  have he : ∀ a, z ≠ e a := by intro a h; exact hz ⟨a, h.symm⟩
+  simp [embeddingChannel, isometryChannel_operator, QuantumPurification.coordinateIsometry,
+    Matrix.mul_apply, Matrix.conjTranspose_apply, he]
+
+theorem embedding_state_distance (e : α ↪ β) (ρ σ : Density α) :
+    effectDistance ((embeddingChannel e).state ρ) ((embeddingChannel e).state σ) =
+      effectDistance ρ σ :=
+  isometry_state_distance _ _ ρ σ
+
+end Isometries
+
+section ActiveActions
+
+variable {A O ι κ η : Type*} [Fintype O] [DecidableEq O]
+  [Fintype ι] [DecidableEq ι] [Fintype κ] [Fintype η]
+
+def someMemoryEmbedding : (O × ι) ↪ (Option O × ι) where
+  toFun p := (some p.1, p.2)
+  inj' := by
+    intro x y h
+    simp only [Prod.mk.injEq, Option.some.injEq] at h
+    exact Prod.ext h.1 h.2
+
+/-- Adding one zero outcome is an actual coordinate isometry of the full record-memory state. -/
+theorem active_state_eq_embedding (I : A → Instrument ι O κ) (a : A) (ρ : Density ι) :
+    ClassicalQuantumMemory.state (lift I (some a)) ρ =
+      (embeddingChannel (someMemoryEmbedding (O := O) (ι := ι))).state
+        (ClassicalQuantumMemory.state (I a) ρ) := by
+  apply Density.ext
+  ext ⟨o, i⟩ ⟨p, j⟩
+  change (ClassicalQuantumMemory.state (lift I (some a)) ρ).matrix (o, i) (p, j) =
+    (embeddingChannel someMemoryEmbedding).operator
+      (ClassicalQuantumMemory.state (I a) ρ).matrix (o, i) (p, j)
+  cases o with
+  | none =>
+    rw [embedding_operator_outside_left _ _ _ _ (by rintro ⟨⟨q, k⟩, h⟩; cases h)]
+    simp [ClassicalQuantumMemory.state_matrix, ClassicalQuantumMemory.block]
+  | some o =>
+    cases p with
+    | none =>
+      rw [embedding_operator_outside_right _ _ _ _ (by rintro ⟨⟨q, k⟩, h⟩; cases h)]
+      simp [ClassicalQuantumMemory.state_matrix, ClassicalQuantumMemory.block]
+    | some p =>
+      change _ = (embeddingChannel someMemoryEmbedding).operator _
+        (someMemoryEmbedding (o, i)) (someMemoryEmbedding (p, j))
+      rw [embedding_operator_image]
+      simp [ClassicalQuantumMemory.state_matrix, ClassicalQuantumMemory.block]
+
+theorem active_state_distance (I : A → Instrument ι O κ) (J : A → Instrument ι O η)
+    (a : A) (ρ σ : Density ι) :
+    effectDistance (ClassicalQuantumMemory.state (lift I (some a)) ρ)
+      (ClassicalQuantumMemory.state (lift J (some a)) σ) =
+        effectDistance (ClassicalQuantumMemory.state (I a) ρ)
+          (ClassicalQuantumMemory.state (J a) σ) := by
+  rw [active_state_eq_embedding, active_state_eq_embedding, embedding_state_distance]
+
+/-- The actual supremum is preserved, not merely bounded on a selected input. -/
+theorem active_defect (I : A → Instrument ι O κ) (J : A → Instrument ι O η) (a : A) :
+    ClassicalQuantumMemory.defect (lift I (some a)) (lift J (some a)) =
+      ClassicalQuantumMemory.defect (I a) (J a) := by
+  have hfun : (fun ρ : Density ι =>
+      effectDistance (ClassicalQuantumMemory.state (lift I (some a)) ρ)
+        (ClassicalQuantumMemory.state (lift J (some a)) ρ)) =
+      (fun ρ : Density ι => effectDistance (ClassicalQuantumMemory.state (I a) ρ)
+        (ClassicalQuantumMemory.state (J a) ρ)) := by
+    funext ρ
+    exact active_state_distance I J a ρ ρ
+  exact congrArg (fun f : Density ι → ℝ => sSup (Set.insert 0 (Set.range f))) hfun
+
+/-- Even different Kraus index carriers give the same actual idle operator. -/
+theorem idle_state_eq (I : A → Instrument ι O κ) (J : A → Instrument ι O η)
+    (ρ : Density ι) :
+    ClassicalQuantumMemory.state (lift I none) ρ =
+      ClassicalQuantumMemory.state (lift J none) ρ := by
+  apply Density.ext
+  rw [ClassicalQuantumMemory.state_matrix, ClassicalQuantumMemory.state_matrix]
+  congr 1
+  funext o
+  cases o <;> simp
+
+theorem idle_defect (I : A → Instrument ι O κ) (J : A → Instrument ι O η) :
+    ClassicalQuantumMemory.defect (lift I none) (lift J none) = 0 := by
+  apply le_antisymm ?_ (RectangularChannel.defect_nonneg _ _)
+  apply csSup_le (Set.insert_nonempty 0 _)
+  rintro x (rfl | ⟨ρ, rfl⟩)
+  · exact le_rfl
+  · change effectDistance (ClassicalQuantumMemory.state (lift I none) ρ)
+      (ClassicalQuantumMemory.state (lift J none) ρ) ≤ 0
+    rw [idle_state_eq I J ρ, effectDistance_self]
+
+end ActiveActions
+
+section OriginalLeaves
+
+variable {A O ι κ η : Type*} [Fintype O] [DecidableEq O]
+  [Fintype ι] [DecidableEq ι] [Fintype κ] [Fintype η]
+
+/-- The original leaf label and quantum memory are both retained by a genuine injection. -/
+def leafEmbedding (π : Adaptive.Protocol A O) (N : ℕ) (hN : height π ≤ N) :
+    (Leaf π × ι) ↪ (History (Option O) N × ι) where
+  toFun p := (encode π p.1, p.2)
+  inj' := by
+    intro x y h
+    simp only [Prod.mk.injEq] at h
+    exact Prod.ext (encode_injective π N hN h.1) h.2
+
+theorem outside_leafEmbedding (π : Adaptive.Protocol A O) {N : ℕ} (hN : height π ≤ N)
+    (h : History (Option O) N) (i : ι) (hd : decode π h = none) :
+    (h, i) ∉ Set.range (leafEmbedding π N hN (ι := ι)) := by
+  rintro ⟨⟨l, j⟩, he⟩
+  have hh : encode π l = h := congrArg Prod.fst he
+  have hs := decode_encode π l N hN
+  rw [hh, hd] at hs
+  cases hs
+
+/-- The actual completed joint state is the coordinate-isometric image of the old leaf state.
+This statement requires no chosen default leaf and no additional nonempty hypothesis. -/
+theorem run_eq_embedding (I : A → Instrument ι O κ) (π : Adaptive.Protocol A O)
+    {N : ℕ} (hN : height π ≤ N) (ρ : Density ι) :
+    ActionRecordBudget.run (lift I) (controller π N) ρ =
+      (embeddingChannel (leafEmbedding π N hN (ι := ι))).state
+        (ClassicalQuantumMemory.ProtocolMemory.state I π ρ) := by
+  apply Density.ext
+  ext ⟨h, i⟩ ⟨g, j⟩
+  change (ActionRecordBudget.run (lift I) (controller π N) ρ).matrix (h, i) (g, j) =
+    (embeddingChannel (leafEmbedding π N hN)).operator
+      (ClassicalQuantumMemory.ProtocolMemory.state I π ρ).matrix (h, i) (g, j)
+  rw [StoppingProtocols.run_matrix I π hN]
+  cases hd : decode π h with
+  | none =>
+    rw [embedding_operator_outside_left _ _ _ _ (outside_leafEmbedding π hN h i hd)]
+    simp [ClassicalQuantumMemory.block, hd]
+  | some l =>
+    cases gd : decode π g with
+    | none =>
+      rw [embedding_operator_outside_right _ _ _ _ (outside_leafEmbedding π hN g j gd)]
+      have hne : h ≠ g := by intro he; rw [← he, hd] at gd; cases gd
+      simp [ClassicalQuantumMemory.block, hne]
+    | some m =>
+      have hh := encode_of_decode π h l hd
+      have hg := encode_of_decode π g m gd
+      rw [← hh, ← hg]
+      change _ = (embeddingChannel (leafEmbedding π N hN)).operator _
+        ((leafEmbedding π N hN) (l, i)) ((leafEmbedding π N hN) (m, j))
+      rw [embedding_operator_image, ClassicalQuantumMemory.ProtocolMemory.state_matrix]
+      simp [ClassicalQuantumMemory.block, decode_encode π _ N hN,
+        (encode_injective π N hN).eq_iff]
+
+theorem original_joint_distance_eq (I : A → Instrument ι O κ)
+    (J : A → Instrument ι O η) (π : Adaptive.Protocol A O) {N : ℕ}
+    (hN : height π ≤ N) (ρ σ : Density ι) :
+    effectDistance (ClassicalQuantumMemory.ProtocolMemory.state I π ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.state J π σ) =
+        effectDistance (ActionRecordBudget.run (lift I) (controller π N) ρ)
+          (ActionRecordBudget.run (lift J) (controller π N) σ) := by
+  rw [run_eq_embedding I π hN, run_eq_embedding J π hN, embedding_state_distance]
+
+theorem weight_run_encode (I : A → Instrument ι O κ) (π : Adaptive.Protocol A O)
+    {N : ℕ} (hN : height π ≤ N) (ρ : Density ι) (l : Leaf π) :
+    HistoryChannels.weight (ActionRecordBudget.run (lift I) (controller π N) ρ) (encode π l) =
+      Adaptive.leafProbability I π ρ l := by
+  rw [ActionRecordBudget.weight_run]
+  unfold response Adaptive.leafProbability Adaptive.leafWeight
+  rw [record_encode I π hN]
+
+theorem weight_run_decode_none (I : A → Instrument ι O κ) (π : Adaptive.Protocol A O)
+    {N : ℕ} (hN : height π ≤ N) (ρ : Density ι) (h : History (Option O) N)
+    (hd : decode π h = none) :
+    HistoryChannels.weight (ActionRecordBudget.run (lift I) (controller π N) ρ) h = 0 := by
+  rw [ActionRecordBudget.weight_run]
+  unfold response
+  rw [record_eq_decode I π hN, hd]
+  simp [mass]
+
+/-- No record information is lost by completion: the full original leaf TV is identical. -/
+theorem original_record_tv_eq (I : A → Instrument ι O κ) (J : A → Instrument ι O η)
+    (π : Adaptive.Protocol A O) {N : ℕ} (hN : height π ≤ N) (ρ σ : Density ι) :
+    Mixture.tv (ClassicalQuantumMemory.ProtocolMemory.weights I π ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights J π σ) =
+        Mixture.tv (HistoryChannels.weights (ActionRecordBudget.run (lift I) (controller π N) ρ))
+          (HistoryChannels.weights (ActionRecordBudget.run (lift J) (controller π N) σ)) := by
+  unfold Mixture.tv
+  congr 1
+  apply Fintype.sum_of_injective (encode π (N := N)) (encode_injective π N hN)
+  · intro h hh
+    have hd : decode π h = none := by
+      cases hd : decode π h with
+      | none => rfl
+      | some l => exact False.elim (hh ⟨l, encode_of_decode π h l hd⟩)
+    simp [HistoryChannels.weights_weight, weight_run_decode_none I π hN ρ h hd,
+      weight_run_decode_none J π hN σ h hd]
+  · intro l
+    simp [HistoryChannels.weights_weight, weight_run_encode I π hN ρ l,
+      weight_run_encode J π hN σ l]
+
+end OriginalLeaves
+
+section Budget
+
+variable {A O ι κ η : Type*} [Fintype O] [DecidableEq O]
+  [Fintype ι] [DecidableEq ι] [Fintype κ] [Fintype η]
+
+/-- This contains only original action defects; the stopping symbol has zero cost. -/
+def activeDefect (I : A → Instrument ι O κ) (J : A → Instrument ι O η) : Option A → ℝ
+  | none => 0
+  | some a => ClassicalQuantumMemory.defect (I a) (J a)
+
+theorem lift_defect_eq (I : A → Instrument ι O κ) (J : A → Instrument ι O η) (a : Option A) :
+    ClassicalQuantumMemory.defect (lift I a) (lift J a) = activeDefect I J a := by
+  cases a with
+  | none => exact idle_defect I J
+  | some a => exact active_defect I J a
+
+/-- The prefix is the actual J evolution from σ under the same original stopping tree. -/
+def activeCost (I : A → Instrument ι O κ) (J : A → Instrument ι O η)
+    (π : Adaptive.Protocol A O) (N : ℕ) (σ : Density ι) (t : Fin N) : ℝ :=
+  ∑ h, HistoryChannels.weight
+    (ActionRecordBudget.run (lift J) ((controller π N).truncate t.val (Nat.le_of_lt t.isLt)) σ) h *
+      activeDefect I J (controller π N t h)
+
+theorem actionCost_eq_activeCost (I : A → Instrument ι O κ) (J : A → Instrument ι O η)
+    (π : Adaptive.Protocol A O) (N : ℕ) (σ : Density ι) (t : Fin N) :
+    ActionRecordBudget.actionCost (lift I) (lift J) (controller π N) σ t =
+      activeCost I J π N σ t := by
+  unfold ActionRecordBudget.actionCost activeCost
+  simp only [lift_defect_eq]
+
+/-- The sum really excludes stopped histories; this is derived from idle defect zero. -/
+theorem activeCost_eq_sum_active (I : A → Instrument ι O κ) (J : A → Instrument ι O η)
+    (π : Adaptive.Protocol A O) (N : ℕ) (σ : Density ι) (t : Fin N) :
+    activeCost I J π N σ t =
+      ∑ h ∈ Finset.univ.filter (fun h => (controller π N t h).isSome),
+        HistoryChannels.weight
+          (ActionRecordBudget.run (lift J) ((controller π N).truncate t.val (Nat.le_of_lt t.isLt)) σ) h *
+            activeDefect I J (controller π N t h) := by
+  rw [Finset.sum_filter]
+  unfold activeCost
+  apply Finset.sum_congr rfl
+  intro h _
+  cases ha : controller π N t h <;> simp [ha, activeDefect]
+
+/-- Joint original leaf-and-memory error has a genuine per-action stopped-history budget. -/
+theorem original_joint_distance_le_activeCost_sum (I : A → Instrument ι O κ)
+    (J : A → Instrument ι O η) (π : Adaptive.Protocol A O) {N : ℕ}
+    (hN : height π ≤ N) (ρ σ : Density ι) :
+    effectDistance (ClassicalQuantumMemory.ProtocolMemory.state I π ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.state J π σ) ≤
+        effectDistance ρ σ + ∑ t : Fin N, activeCost I J π N σ t := by
+  rw [original_joint_distance_eq I J π hN]
+  simpa only [actionCost_eq_activeCost] using
+    ActionRecordBudget.run_distance_le_actionCost_sum (lift I) (lift J) (controller π N) ρ σ
+
+theorem original_record_tv_le_activeCost_sum (I : A → Instrument ι O κ)
+    (J : A → Instrument ι O η) (π : Adaptive.Protocol A O) {N : ℕ}
+    (hN : height π ≤ N) (ρ σ : Density ι) :
+    Mixture.tv (ClassicalQuantumMemory.ProtocolMemory.weights I π ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights J π σ) ≤
+        effectDistance ρ σ + ∑ t : Fin N, activeCost I J π N σ t :=
+  (ClassicalQuantumMemory.ProtocolMemory.record_tv_le_joint_distance I J π ρ σ).trans
+    (original_joint_distance_le_activeCost_sum I J π hN ρ σ)
+
+theorem terminal_memory_distance_le_activeCost_sum (I : A → Instrument ι O κ)
+    (J : A → Instrument ι O η) (π : Adaptive.Protocol A O) {N : ℕ}
+    (hN : height π ≤ N) (ρ σ : Density ι) :
+    effectDistance
+      ((RectangularChannel.discardLeft ι (Leaf π)).state
+        (ClassicalQuantumMemory.ProtocolMemory.state I π ρ))
+      ((RectangularChannel.discardLeft ι (Leaf π)).state
+        (ClassicalQuantumMemory.ProtocolMemory.state J π σ)) ≤
+      effectDistance ρ σ + ∑ t : Fin N, activeCost I J π N σ t :=
+  ((RectangularChannel.discardLeft ι (Leaf π)).state_effectDistance_le _ _).trans
+    (original_joint_distance_le_activeCost_sum I J π hN ρ σ)
+
+/-- The actual probability that the common controller still executes an original action. -/
+def activeProbability (J : A → Instrument ι O η) (π : Adaptive.Protocol A O)
+    (N : ℕ) (σ : Density ι) (t : Fin N) : ℝ :=
+  ∑ h, HistoryChannels.weight
+    (ActionRecordBudget.run (lift J) ((controller π N).truncate t.val (Nat.le_of_lt t.isLt)) σ) h *
+      (if (controller π N t h).isSome then 1 else 0)
+
+theorem activeProbability_nonneg (J : A → Instrument ι O η) (π : Adaptive.Protocol A O)
+    (N : ℕ) (σ : Density ι) (t : Fin N) : 0 ≤ activeProbability J π N σ t := by
+  apply Finset.sum_nonneg
+  intro h _
+  apply mul_nonneg (HistoryChannels.weight_nonneg _ h)
+  split_ifs <;> norm_num
+
+theorem activeProbability_le_one (J : A → Instrument ι O η) (π : Adaptive.Protocol A O)
+    (N : ℕ) (σ : Density ι) (t : Fin N) : activeProbability J π N σ t ≤ 1 := by
+  unfold activeProbability
+  calc
+    _ ≤ ∑ h, HistoryChannels.weight
+        (ActionRecordBudget.run (lift J) ((controller π N).truncate t.val (Nat.le_of_lt t.isLt)) σ) h := by
+      apply Finset.sum_le_sum
+      intro h _
+      split_ifs
+      · simp
+      · simpa using HistoryChannels.weight_nonneg
+          (ActionRecordBudget.run (lift J) ((controller π N).truncate t.val (Nat.le_of_lt t.isLt)) σ) h
+    _ = 1 := HistoryChannels.sum_weight _
+
+theorem activeCost_le_probability_mul (I : A → Instrument ι O κ) (J : A → Instrument ι O η)
+    (π : Adaptive.Protocol A O) (N : ℕ) (σ : Density ι) (t : Fin N) (ε : ℝ)
+    (hε : ∀ h a, controller π N t h = some a →
+      ClassicalQuantumMemory.defect (I a) (J a) ≤ ε) :
+    activeCost I J π N σ t ≤ activeProbability J π N σ t * ε := by
+  unfold activeCost activeProbability
+  rw [Finset.sum_mul]
+  apply Finset.sum_le_sum
+  intro h _
+  cases ha : controller π N t h with
+  | none => simp [ha, activeDefect]
+  | some a =>
+    simp only [ha, activeDefect, Option.isSome_some, Bool.true_eq, ite_true, mul_one]
+    exact mul_le_mul_of_nonneg_left (hε h a ha) (HistoryChannels.weight_nonneg _ h)
+
+/-- A uniform action bound is charged only with the true remaining execution probability. -/
+theorem original_joint_distance_le_probability_budget (I : A → Instrument ι O κ)
+    (J : A → Instrument ι O η) (π : Adaptive.Protocol A O) {N : ℕ}
+    (hN : height π ≤ N) (ρ σ : Density ι) (ε : Fin N → ℝ)
+    (hε : ∀ t h a, controller π N t h = some a →
+      ClassicalQuantumMemory.defect (I a) (J a) ≤ ε t) :
+    effectDistance (ClassicalQuantumMemory.ProtocolMemory.state I π ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.state J π σ) ≤
+        effectDistance ρ σ + ∑ t : Fin N, activeProbability J π N σ t * ε t := by
+  exact (original_joint_distance_le_activeCost_sum I J π hN ρ σ).trans
+    (add_le_add (le_refl _) (Finset.sum_le_sum
+      (fun t _ => activeCost_le_probability_mul I J π N σ t (ε t) (hε t))))
+
+end Budget
+
+end
+
+end UEOTQM.StoppingRecordBudget

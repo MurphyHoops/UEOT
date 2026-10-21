@@ -1,0 +1,18 @@
+{
+  "schema": "ueot_qm.local_metadata_title_amendment.v31.9",
+  "status": "EXACT_ONE_LINE_PRESENTATION_CHANGE",
+  "before": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_finalize_local_metadata_pre_title_fix.py",
+    "sha256": "50405772acef9cbbe7921bf75f2db2eb5e37d22a00f3aceada00a42555800920",
+    "bytes": 81166
+  },
+  "after": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_finalize_local_metadata.py",
+    "sha256": "7e96a00309978ecbc19fb869bc138dbe48081c4a9fe9598165ffcfa002514d10",
+    "bytes": 81138
+  },
+  "exact_diff": "--- qm319_finalize_local_metadata_pre_title_fix.py\n+++ qm319_finalize_local_metadata.py\n@@ -585,7 +585,7 @@\n ## 3. 新增编号结果、前提与实际证明\n \"\"\"]\n     for c in ledger[\"claims\"][70:]:\n-        parts.append(f\"\\n### {c['id']} · {c['book_result']['id']} · {c['title']}\\n\\n\"\n+        parts.append(f\"\\n### {c['id']} · {c['title']}\\n\\n\"\n                      f\"**实际结论：** {c['claim']}\\n\\n\"\n                      f\"**前提与量词：** {paragraph_text(c['premises'])} {paragraph_text(c['quantified_scope'])}\\n\\n\"\n                      f\"**证明链：** {paragraph_text(c['proof_outline'])}\\n\\n\"\n",
+  "scope": "Only omit an extra separately inserted book ID in each report heading; canonical titles and all scientific claim objects retain their original values. Prior helper, dry-run and preview remain byte-for-byte unchanged.",
+  "new_Lean_invocations": 0,
+  "repository_writes": 0
+}

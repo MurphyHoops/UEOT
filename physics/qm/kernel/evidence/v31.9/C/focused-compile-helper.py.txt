@@ -1,0 +1,56 @@
+from pathlib import Path
+import argparse, datetime, hashlib, json, subprocess, sys
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+LEAN_ROOT = ROOT / 'formalization/ueot-qm'
+OUT = ROOT / 'physics/qm/kernel/evidence/v31.9/C'
+ALLOWED = {'UEOTQM/StoppingProtocols.lean', 'UEOTQM/StoppingRecordBudget.lean', 'scripts/witnesses/StoppingRecordBudgetExamples.lean'}
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+def now():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--source', choices=sorted(ALLOWED), required=True)
+parser.add_argument('--tag', required=True)
+args = parser.parse_args()
+if not args.tag.replace('-', '').isalnum():
+    raise SystemExit('invalid receipt tag')
+OUT.mkdir(parents=True, exist_ok=True)
+receipt = OUT / (args.tag + '.json')
+log_path = OUT / (args.tag + '.log')
+if receipt.exists() or log_path.exists():
+    raise SystemExit('refuse to replace historical focused receipt')
+source = LEAN_ROOT / args.source
+before = source.read_bytes()
+source_snapshot = OUT / (args.tag + '.lean.txt')
+if source_snapshot.exists():
+    raise SystemExit('refuse to replace historical source snapshot')
+source_snapshot.write_bytes(before)
+olean = LEAN_ROOT / '.lake/build/lib/lean' / Path(args.source).with_suffix('.olean')
+olean.parent.mkdir(parents=True, exist_ok=True)
+cmd = ['flock', '/tmp/qm317-lean.lock', '/tmp/lean-4.33.1-linux/bin/lake', 'env', 'lean', '-o', str(olean), args.source]
+started = now()
+with log_path.open('wb') as log:
+    result = subprocess.run(cmd, cwd=LEAN_ROOT, stdout=log, stderr=subprocess.STDOUT)
+after = source.read_bytes()
+data = {
+    'kind': 'FOCUSED_LEAN_COMPILATION',
+    'started_utc': started, 'finished_utc': now(),
+    'command': cmd, 'working_directory': str(LEAN_ROOT),
+    'source': str(source.relative_to(ROOT)),
+    'source_sha256_before': digest(before), 'source_sha256_after': digest(after),
+    'source_snapshot': str(source_snapshot.relative_to(ROOT)),
+    'source_unchanged_during_call': before == after,
+    'exit_code': result.returncode,
+    'status': 'PASS' if result.returncode == 0 and before == after else 'FAIL',
+    'log': str(log_path.relative_to(ROOT)),
+    'log_sha256': digest(log_path.read_bytes()),
+    'olean_sha256': digest(olean.read_bytes()) if result.returncode == 0 and olean.exists() else None,
+    'scope': 'Only the named new module was checked; this is not v31.9 unified acceptance and not a replay of v31.8 acceptance.'
+}
+receipt.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps(data, ensure_ascii=False))
+sys.exit(result.returncode or (0 if before == after else 1))

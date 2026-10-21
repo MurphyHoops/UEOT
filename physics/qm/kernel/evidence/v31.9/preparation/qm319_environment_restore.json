@@ -1,0 +1,550 @@
+{
+  "status": "PASS",
+  "scope": "Restore exact pinned public dependencies and compiler; no scientific build or test",
+  "started_unix": 1792509057.4960237,
+  "finished_unix": 1792509105.4128516,
+  "manifest_sha256": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+  "records": [
+    {
+      "name": "LeanSearchClient",
+      "url": "https://github.com/leanprover-community/LeanSearchClient",
+      "expected_revision": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "actual_revision": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/LeanSearchClient"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_LeanSearchClient_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/LeanSearchClient",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/LeanSearchClient"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_LeanSearchClient_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/LeanSearchClient",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_LeanSearchClient_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/LeanSearchClient",
+            "checkout",
+            "--detach",
+            "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_LeanSearchClient_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "plausible",
+      "url": "https://github.com/leanprover-community/plausible",
+      "expected_revision": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "actual_revision": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/plausible"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_plausible_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/plausible",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/plausible"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_plausible_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/plausible",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_plausible_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/plausible",
+            "checkout",
+            "--detach",
+            "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_plausible_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "importGraph",
+      "url": "https://github.com/leanprover-community/import-graph",
+      "expected_revision": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "actual_revision": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/importGraph"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_importGraph_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/importGraph",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/import-graph"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_importGraph_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/importGraph",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "16f02aa7642864af59f1ff0e384a015994db9118"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_importGraph_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/importGraph",
+            "checkout",
+            "--detach",
+            "16f02aa7642864af59f1ff0e384a015994db9118"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_importGraph_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "proofwidgets",
+      "url": "https://github.com/leanprover-community/ProofWidgets4",
+      "expected_revision": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "actual_revision": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/proofwidgets"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_proofwidgets_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/proofwidgets",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/ProofWidgets4"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_proofwidgets_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/proofwidgets",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_proofwidgets_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/proofwidgets",
+            "checkout",
+            "--detach",
+            "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_proofwidgets_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "aesop",
+      "url": "https://github.com/leanprover-community/aesop",
+      "expected_revision": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "actual_revision": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/aesop"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_aesop_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/aesop",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/aesop"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_aesop_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/aesop",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_aesop_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/aesop",
+            "checkout",
+            "--detach",
+            "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_aesop_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "Qq",
+      "url": "https://github.com/leanprover-community/quote4",
+      "expected_revision": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "actual_revision": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Qq"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Qq_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Qq",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/quote4"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Qq_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Qq",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "92c15be17b7caf78c2ad767ec40f89052d908d81"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Qq_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Qq",
+            "checkout",
+            "--detach",
+            "92c15be17b7caf78c2ad767ec40f89052d908d81"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Qq_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "batteries",
+      "url": "https://github.com/leanprover-community/batteries",
+      "expected_revision": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "actual_revision": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/batteries"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_batteries_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/batteries",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/batteries"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_batteries_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/batteries",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_batteries_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/batteries",
+            "checkout",
+            "--detach",
+            "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_batteries_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "Cli",
+      "url": "https://github.com/leanprover/lean4-cli",
+      "expected_revision": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "actual_revision": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Cli"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Cli_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Cli",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover/lean4-cli"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Cli_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Cli",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "6130a47896ce867c6a4a55373441e59e565bad0f"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Cli_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/Cli",
+            "checkout",
+            "--detach",
+            "6130a47896ce867c6a4a55373441e59e565bad0f"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_Cli_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "name": "mathlib",
+      "url": "https://github.com/leanprover-community/mathlib4.git",
+      "expected_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "actual_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "actions": [
+        {
+          "command": [
+            "git",
+            "init",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/mathlib"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_mathlib_init.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/mathlib",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/leanprover-community/mathlib4.git"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_mathlib_remote.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/mathlib",
+            "fetch",
+            "--depth=1",
+            "--no-tags",
+            "origin",
+            "0df444a360eaa60ab8c11dca51a86af692955474"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_mathlib_fetch.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "/tmp/qm312_lean_repo/formalization/ueot-qm/.lake/packages/mathlib",
+            "checkout",
+            "--detach",
+            "0df444a360eaa60ab8c11dca51a86af692955474"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_mathlib_checkout.log",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "kind": "lean_toolchain",
+      "archive_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+      "expected_sha256_from_official_release": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+      "version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+      "actions": [
+        {
+          "command": [
+            "curl",
+            "-fL",
+            "--retry",
+            "2",
+            "--connect-timeout",
+            "30",
+            "--output",
+            "/tmp/lean-4.33.1-linux.tar.zst",
+            "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_lean_download.log",
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "tar",
+            "--zstd",
+            "-xf",
+            "/tmp/lean-4.33.1-linux.tar.zst",
+            "-C",
+            "/tmp"
+          ],
+          "log": "/workspace/scratch/f11b4261e187/handoff/qm319_restore_lean_extract.log",
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "heavy_scientific_builds": 0,
+  "tracked_source_edits": 0
+}

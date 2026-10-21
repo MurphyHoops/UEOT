@@ -1,0 +1,36 @@
+from pathlib import Path
+import sys, subprocess, json, hashlib, datetime
+
+repo = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+package = repo / 'formalization/ueot-qm'
+evidence = repo / 'physics/qm/kernel/evidence/v31.9/A'
+evidence.mkdir(parents=True, exist_ok=True)
+relative = sys.argv[1]
+tag = Path(relative).stem
+number = len(list(evidence.glob(tag + '-compile-*.json'))) + 1
+prefix = evidence / f'{tag}-compile-{number:03d}'
+source = package / relative
+raw = source.read_bytes()
+snapshot = prefix.with_suffix('.lean.txt')
+snapshot.write_bytes(raw)
+output = package / '.lake/build/lib/lean' / str(Path(relative).with_suffix('.olean'))
+output.parent.mkdir(parents=True, exist_ok=True)
+cmd = ['flock', '/tmp/qm317-lean.lock', '/tmp/lean-4.33.1-linux/bin/lake', 'env', 'lean',
+       relative, '-o', str(output)]
+now = lambda: datetime.datetime.now(datetime.timezone.utc).isoformat()
+started = now()
+with prefix.with_suffix('.log').open('wb') as log:
+    process = subprocess.run(cmd, cwd=package, stdout=log, stderr=subprocess.STDOUT)
+receipt = dict(command=cmd, cwd=str(package), started_at_utc=started, finished_at_utc=now(),
+               exit_code=process.returncode, source=str(source.relative_to(repo)),
+               source_sha256=hashlib.sha256(raw).hexdigest(), source_bytes=len(raw),
+               source_unchanged=source.read_bytes()==raw,
+               source_snapshot=str(snapshot.relative_to(repo)),
+               log=str(prefix.with_suffix('.log').relative_to(repo)))
+if process.returncode==0 and output.exists():
+    receipt['olean_sha256']=hashlib.sha256(output.read_bytes()).hexdigest()
+    receipt['olean_path']=str(output.relative_to(repo))
+prefix.with_suffix('.json').write_text(json.dumps(receipt,indent=2)+'\n')
+print(json.dumps(receipt,indent=2))
+print(prefix.with_suffix('.log').read_text())
+sys.exit(process.returncode)

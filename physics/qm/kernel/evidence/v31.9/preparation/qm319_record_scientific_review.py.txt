@@ -1,0 +1,241 @@
+"""Bind the completed root/cross scientific review to actual v31.9 executions.
+
+This is a light identity/claim reconciliation, not another proof execution.
+Author claim records and historical focused receipts remain unmodified.
+"""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+import re
+import shutil
+
+R = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H = Path(__file__).resolve().parent
+E = R / 'physics/qm/kernel/evidence/v31.9'
+B = R / 'physics/qm/book'
+FOUNDATION = {'propext', 'Classical.choice', 'Quot.sound'}
+
+def read(p):
+    return json.loads(Path(p).read_bytes())
+
+def sha(p):
+    return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+def identity(p):
+    p = Path(p)
+    try:
+        name = str(p.relative_to(R))
+    except ValueError:
+        name = str(p)
+    return {'path': name, 'sha256': sha(p), 'bytes': p.stat().st_size}
+
+def write(p, d):
+    p = Path(p)
+    assert not p.exists(), 'Preserve previous actual review: ' + str(p)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+
+def main():
+    assert not (E / 'root-scientific-review.json').exists()
+    proof = read(E / 'lean-verification.json')
+    manifest = read(E / 'source-manifest.json')
+    inventory = read(E / 'declaration-inventory.json')
+    axioms = read(E / 'proof-axioms.json')
+    finite = read(E / 'finite-witnesses/verification.json')
+    book = read(B / 'evidence/v3.5/book-structure.json')
+    integration = read(B / 'evidence/v3.5/canonical-integration.json')
+    assert all(x['status'] == 'PASS' for x in [proof, axioms, finite, book])
+    assert proof['source_count'] == manifest['source_count'] == 98
+    assert proof['source_set_sha256'] == manifest['source_set_sha256'] == integration['source_set_sha256']
+    assert proof['actual_build_exit_code'] == proof['actual_axiom_audit_exit_code'] == 0
+    assert proof['generic_modules'] == inventory['module_count'] == 41
+    assert proof['explicit_theorems'] == inventory['explicit_theorems'] == 854
+    assert proof['actual_named_axiom_reports'] == len(axioms['declarations']) == 1123
+    assert set(axioms['declarations']) == set(inventory['audit_targets'])
+    assert all(set(v) <= FOUNDATION for v in axioms['declarations'].values())
+    assert finite['verification_mode'] == 'ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE'
+    assert finite['actually_executed_witness_count'] == 3 and finite['reused_witness_count'] == 10
+    assert finite['actually_executed_witness_audits'] == 147 and finite['witness_audit_count'] == 416
+    assert book['source_sha256'] == integration['canonical_source_sha256'] == sha(B / 'UEOT_PHYSICS.md')
+    assert book['chapters'] == 66 and book['numbered_results'] == 161
+    assert integration['inherited_results_preserved'] == 147
+    sources = {x['path']: x for x in manifest['sources']}
+    for path, row in sources.items():
+        current = identity(R / path)
+        assert current == row, path
+
+    spec = importlib.util.spec_from_file_location('qm319_parser', H / 'qm319_source_parser.py')
+    parser = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(parser)
+    locations = {}
+    for module, rows in inventory['modules'].items():
+        path = 'formalization/ueot-qm/UEOTQM/' + module + '.lean'
+        for row in rows:
+            if row['name'] in axioms['declarations']:
+                locations[row['name']] = {**sources[path], 'line': row['line'], 'kind': row['kind'],
+                    'execution_mode': 'EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT',
+                    'actual_named_audit_receipt': 'physics/qm/kernel/evidence/v31.9/proof-axioms.json'}
+    witness_names = set()
+    for check in finite['checks']:
+        name = check['name']
+        path = 'formalization/ueot-qm/scripts/witnesses/' + name + '.lean'
+        rows, requests, _ = parser.declarations((R / path).read_text())
+        actual = check['audit']['actual']
+        assert check['status'] == check['audit']['status'] == 'PASS' and check['exit_code'] == 0
+        assert check['audit']['complete_unique'] and set(actual) == set(check['audit']['expected'])
+        assert set(actual) == {x['name'] for x in rows} == set(requests)
+        assert all(set(v) <= FOUNDATION for v in actual.values())
+        assert sha(R / path) == check['source']['sha256'] == sources[path]['sha256']
+        for row in rows:
+            assert row['name'] not in locations and row['name'] not in witness_names
+            witness_names.add(row['name'])
+            locations[row['name']] = {**sources[path], 'line': row['line'], 'kind': row['kind'],
+                'execution_mode': check['execution_mode'],
+                'actual_named_audit_receipt': 'physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json'}
+    all_names = set(axioms['declarations']) | witness_names
+    assert len(witness_names) == 416
+    raw_claims = {
+        63: E / 'A/proposed-claims.json',
+        64: H / 'B_v319_claims.json',
+        65: H / 'C_v319_claims.json',
+    }
+    canonical = (B / 'UEOT_PHYSICS.md').read_text()
+    book_by_id = {c['id']: c for c in book['claims']}
+    library_path = R / 'formalization/ueot-qm/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Rank.lean'
+    library_text = library_path.read_text()
+    external = {}
+    for name in ['Matrix.rank_le_card_width', 'Matrix.rank_self_mul_conjTranspose']:
+        pattern = r'^theorem ' + re.escape(name.split('.')[-1]) + r'\b'
+        match = re.search(pattern, library_text, re.M)
+        assert match
+        external[name] = {
+            'name': name,
+            'package': 'mathlib',
+            'pinned_git_revision': '0df444a360eaa60ab8c11dca51a86af692955474',
+            'library_source': 'Mathlib/LinearAlgebra/Matrix/Rank.lean',
+            'source_sha256': sha(library_path),
+            'line': library_text[:match.start()].count('\n') + 1,
+            'scope': 'Locked library proof invoked by the current compiled theorem; not a separate current named-audit output or a new project theorem.',
+        }
+    chapters = []
+    bound_names = set()
+    for chapter, author_path in raw_claims.items():
+        author = read(author_path)
+        rows = author.get('results', author.get('claims'))
+        assert len(rows) == (4 if chapter == 63 else 5)
+        original = E / 'root-review-inputs' / ('chapter' + str(chapter) + '-author-claims.json')
+        assert not original.exists()
+        original.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(author_path, original)
+        draft = H / f'qm319_chapter{chapter}.md'
+        installed = next(x for x in integration['chapter_inputs'] if x['chapter'] == chapter)
+        assert str(draft) == installed['path'] and sha(draft) == installed['sha256']
+        assert draft.stat().st_size == installed['bytes']
+        start = canonical.index(f'<a id="ch-{chapter}"></a>')
+        end = canonical.index(f'<a id="ch-{chapter+1}"></a>', start) if chapter < 65 else canonical.index('<a id="appendix-a"></a>', start)
+        assert canonical[start:end].strip() == draft.read_text().strip()
+        normalized = []
+        for row in rows:
+            identifier = row.get('id', row.get('book_result'))
+            anchor = row.get('anchor', row.get('book_anchor'))
+            assert identifier in book_by_id and book_by_id[identifier]['chapter'] == chapter
+            assert anchor == identifier.lower()
+            main = list(row['main_declarations'])
+            support = list(row['support_declarations'])
+            controls = list(row['witnesses'])
+            ext = list(row.get('external_declarations', []))
+            classifications = []
+            for name in support[:]:
+                if not name.startswith('UEOTQM.'):
+                    assert name in external, 'Unreviewed external declaration ' + name
+                    support.remove(name)
+                    if name not in ext:
+                        ext.append(name)
+                    classifications.append({'name': name, 'author_field': 'support_declarations',
+                        'normalized_field': 'external_declarations', 'reason': 'Actual pinned mathematical library responsibility; not one of the project named audit requests.'})
+            names = list(dict.fromkeys(main + support + controls))
+            assert names and set(names) <= all_names and set(names) <= locations.keys()
+            assert not set(names) & set(ext)
+            for key in ['premises', 'quantified_scope', 'proof_outline', 'limits']:
+                assert row[key], (identifier, key)
+            claim = row.get('claim', row.get('actual_conclusion'))
+            assert claim
+            normalized.append({
+                'id': identifier, 'anchor': anchor, 'title': book_by_id[identifier]['title'],
+                'author_title': row['title'], 'premises': row['premises'],
+                'quantified_scope': row['quantified_scope'], 'claim': claim,
+                'main_declarations': main, 'support_declarations': support, 'witnesses': controls,
+                'proof_outline': row['proof_outline'], 'limits': row['limits'],
+                'external_declarations': ext, 'external_declaration_bindings': [external[n] for n in ext],
+                'classification_adjustments': classifications,
+                'actual_declaration_bindings': [{'name': name, **locations[name]} for name in names],
+                'actual_local_acceptance_status': 'PASS', 'remote_status': 'PENDING',
+                'new_experimental_data': False,
+            })
+            bound_names.update(names)
+        assert [x['id'] for x in normalized] == [x['id'] for x in book['claims'] if x['chapter'] == chapter]
+        out = E / f'chapter{chapter}-bindings.json'
+        write(out, {'schema': 'ueot_qm.reviewed_chapter_bindings.v31.9', 'status': 'PASS_ACTUAL_LOCAL_BINDING',
+            'chapter': chapter, 'author_claim_snapshot': identity(original),
+            'canonical_chapter_input': identity(draft), 'canonical_source': identity(B / 'UEOT_PHYSICS.md'),
+            'actual_unified_proof_receipt': identity(E / 'lean-verification.json'),
+            'actual_public_audit_receipt': identity(E / 'proof-axioms.json'),
+            'actual_witness_audit_receipt': identity(E / 'finite-witnesses/verification.json'),
+            'source_set_sha256': proof['source_set_sha256'], 'results': normalized,
+            'scope': 'Normalized current claim/evidence mapping. Original author/focused checkpoint statuses retain their historical scope in the raw snapshot.'})
+        chapters.append({'chapter': chapter, 'chapter_bindings': identity(out),
+            'all_bound_declaration_names_actually_audited': True,
+            'body_integrated_exactly': True, 'result_count': len(normalized)})
+
+    reviews = []
+    for name in ['A_B_v319_final_evidence_review.json', 'A_B_v319_witness_reference_addition_review.json',
+                 'B_C_v319_final_evidence_review.json', 'B_C_v319_claims_review.json']:
+        target = E / 'root-review-inputs' / name
+        assert not target.exists()
+        shutil.copyfile(H / name, target)
+        reviews.append(identity(target))
+    reviews.append(identity(E / 'C/independent-review-A.json'))
+    write(E / 'root-scientific-review.json', {
+        'schema': 'ueot_qm.root_scientific_review.v31.9', 'status': 'PASS',
+        'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+        'scientific_source_count': 98, 'source_set_sha256': proof['source_set_sha256'],
+        'generic_modules': 41, 'generic_theorems': 854, 'named_audits': 1123,
+        'new_public_theorems': 107, 'new_public_audits': 138,
+        'actual_unified_proof_receipt': identity(E / 'lean-verification.json'),
+        'source_manifest': identity(E / 'source-manifest.json'),
+        'actual_public_axioms': identity(E / 'proof-axioms.json'),
+        'actual_new_witness_receipt': identity(E / 'new-finite-witnesses/verification.json'),
+        'witness_execution_partition': {'actual_new_files': 3, 'actual_new_audits': 147,
+            'bound_historical_files': 10, 'bound_historical_audits': 269,
+            'receipt': identity(E / 'finite-witnesses/verification.json'),
+            'legacy_reuse': identity(E / 'legacy-reuse.json')},
+        'chapters': chapters, 'new_unique_project_names_bound': len(bound_names),
+        'book_numbered_results': 161, 'old_numbered_results_preserved': 147,
+        'new_book_results': 14, 'canonical_structure': identity(B / 'evidence/v3.5/book-structure.json'),
+        'cross_reviews': reviews,
+        'review_method': 'Root source/argument inspection during implementation, three cross-lane independent reviews, and current actual compiler/audit outputs reconciled to every new numbered claim. This finalizer only checks identities and mappings; it does not rerun Lean or make machine checking a substitute for scientific scope review.',
+        'scientific_findings': [
+            {'lane': 'A', 'finding': 'The half-trace-absolute-value identity is proved for the difference of normalized finite complex density states. The proof derives its trace-zero condition and constructs an actual legal spectral effect attaining the bound. Equal-prior optimal discrimination and supplied PSD support or unitary-data certificates are separate actual statements; optimality is not assumed as a certificate premise.',
+             'controls': 'Noncommuting rational mixed-state distance 1/2 and success 3/4; imaginary phase states separated with distance 1 while all real/diagonal effects miss them; nonzero-trace and overlapping-PSD-split counterexamples.',
+             'limits': 'No arbitrary-matrix norm hierarchy, arbitrary-prior theorem, numerical eigensolver certification, stabilized distance or diamond norm is claimed.'},
+            {'lane': 'B', 'finding': 'Full convex purity is converted by the existing actual characterization into vectors before proving the rank bound. A supported spectral Gram factor attains the bound: purification on a specified finite carrier exists iff matrix rank does not exceed its cardinality. Direct auxiliary action has the explicit source-to-target dimension order; strict embeddings are not bilateral unitaries.',
+             'controls': 'Exact complex 2-to-3 matrix, transpose/vectorization direction and equal marginals; J†J=I but JJ†≠I, reverse full isometry impossible; rank-two and rank-one examples, empty auxiliary excluded for a density state.',
+             'limits': 'No infinite-dimensional, approximate-rank or physical preparation complexity claim. Two Matrix rank library lemmas are classified externally in the normalized binding, preserving author snapshots.'},
+            {'lane': 'C', 'finding': 'The original complete finite stopping tree is embedded into an actual constructed Option-tagged instrument and a deterministic classical history controller. Full record operators agree on valid encodings for arbitrary complex matrices and vanish on invalid histories. A legal effect extension proves isometric full-effect distance preservation and original-leaf return. The budget uses actual reference-implementation prefix weights and zero idle defect.',
+             'controls': 'Reference continuation mass 1/4 times exact action defect 1/4 gives original and padded record TV=1/16. Different stopping rules have record TV=1 with identical terminal quantum memory, outside the common-rule premise.',
+             'limits': 'The uniform epsilon corollary assumes the bound at every history including zero-weight histories. No coherent controller, arbitrary external environment, unbounded stopping or infinite conditional process is inferred.'},
+        ],
+        'core_source_modified': False,
+        'core_scope': '56 actually imported recursive Core sources retain their checked baseline identities; the frozen 106 obligations and four generators are not altered or claimed newly reverified.',
+        'full_natural_theory_proved': False, 'three_generation_selector_remains_conditional': True,
+        'new_experimental_data': False, 'remote_verified': False, 'remote_status': 'PENDING',
+        'new_lean_invocations_in_this_reconciliation': 0,
+    })
+    print(json.dumps({'status': 'PASS', 'chapters': [63, 64, 65], 'results': 14,
+        'project_names_bound': len(bound_names), 'source_set_sha256': proof['source_set_sha256'],
+        'root_review': identity(E / 'root-scientific-review.json')}, ensure_ascii=False))
+
+if __name__ == '__main__':
+    main()

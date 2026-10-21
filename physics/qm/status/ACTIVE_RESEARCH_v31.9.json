@@ -1,0 +1,158 @@
+{
+  "schema": "ueot_qm.active_research.v31.9",
+  "version": "v31.9",
+  "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+  "contract": "physics/qm/UEOT_QM_EXECUTION_v31.9.md",
+  "working_branch": "qm/v31.9-trace-distance-minimal-purification-stopping-20261020",
+  "accepted_baseline": {
+    "commit": "6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1",
+    "tree": "d900109f97fd032bb3682ecbd5fdf7577b415307",
+    "version": "v31.8",
+    "state": "MAIN_VERIFIED",
+    "receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json"
+  },
+  "lanes": {
+    "A": {
+      "modules": [
+        "QuantumTraceDistance",
+        "BinaryDiscrimination"
+      ],
+      "witness": "QuantumTraceDistanceExamples",
+      "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+      "remote_status": "PENDING"
+    },
+    "B": {
+      "modules": [
+        "PurificationIsometry",
+        "PurificationDimension"
+      ],
+      "witness": "PurificationDimensionExamples",
+      "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+      "remote_status": "PENDING"
+    },
+    "C": {
+      "modules": [
+        "StoppingProtocols",
+        "StoppingRecordBudget"
+      ],
+      "witness": "StoppingRecordBudgetExamples",
+      "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+      "remote_status": "PENDING"
+    }
+  },
+  "file_ownership": {
+    "metadata_finalizer": [
+      "physics/qm/status/CURRENT.json",
+      "physics/qm/status/ACTIVE_RESEARCH_v31.9.json",
+      "physics/qm/status/CLAIM_LEDGER_v31.9.json",
+      "physics/qm/UEOT_QM_KERNEL_v31.9.md",
+      "physics/qm/README.md",
+      "physics/qm/ROADMAP.md",
+      "physics/qm/kernel/README.md",
+      "formalization/ueot-qm/README.md",
+      "physics/qm/UEOT_QM_EXECUTION_v31.9.md"
+    ],
+    "book_and_public_integration": "root with A; canonical monograph files are outside this finalizer"
+  },
+  "verification_policy": "本轮统一门实际编译全部公共模块并执行公共公理审计，实际执行三份新增见证（147 个命名审计）。十份旧见证的 269 项审计、六精确证书的 42 项审计、四个篡改真证明拒绝与四个同数据假值证明、100 个运行方法和四个演示，按未变的科学输入、依赖闭包与既往真实执行回执复用；这些旧门本轮未重新运行。",
+  "counting_policy": "Public theorems, other named targets, exact witness declarations, generated numerical certificates and runtime methods are separate populations; none counts physical laws.",
+  "shared_lean_lock": "/tmp/qm317-lean.lock",
+  "canonical_book": "physics/qm/book/UEOT_PHYSICS.md",
+  "protected_scope": {
+    "Core_106_and_four_generators": "UNCHANGED",
+    "recursive_Core_sources": 56,
+    "prior_claim_objects": 70,
+    "concurrent_other_research": "PRESERVED"
+  },
+  "nonclaims": {
+    "full_natural_theory_proved": "NOT_CLAIMED",
+    "complex_quantum_selection_from_frozen_Core": "NOT_CLAIMED",
+    "unconditional_physical_three_generations": "NOT_CLAIMED",
+    "new_experimental_confirmation": "NOT_CLAIMED",
+    "arbitrary_coherent_controller_budget": "NOT_CLAIMED",
+    "unequal_dimensional_rectangular_unitary": "NOT_CLAIMED",
+    "infinite_or_unbounded_stopping_process": "NOT_CLAIMED",
+    "general_certified_numerical_spectral_algorithm": "NOT_CLAIMED",
+    "general_diamond_norm_identification": "NOT_CLAIMED",
+    "all_input_runtime_program_correctness": "NOT_CLAIMED"
+  },
+  "checkpoint": {
+    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "proof": "PASS",
+    "book": "LOCAL_GATES_PASS",
+    "remote": "PENDING",
+    "proof_receipt": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
+    "book_release_gates": "physics/qm/book/evidence/v3.5/local-release-gates.json",
+    "source_identity": {
+      "manifest": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
+      "source_count": 98,
+      "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+      "unified_and_publication_inputs_identical": true,
+      "rule": "The same current 98 source files and raw hashes identify the actual unified local acceptance and the release candidate. No comment-only reconciliation bridge is used."
+    },
+    "recorded_at_utc": "2026-10-20T16:23:39.093802+00:00"
+  },
+  "checkpoint_history": [
+    {
+      "state": "ACTIVE_NOT_VERIFIED",
+      "scope": "The original frozen contract and author focused/failed attempts are historical preparation/execution records, not the current completed local checkpoint."
+    }
+  ],
+  "current_counts": {
+    "state": "PASS",
+    "checked_at_utc": "2026-10-20T16:09:02.393844+00:00",
+    "generic_modules": 41,
+    "explicit_theorems": 854,
+    "named_axiom_reports": 1123,
+    "listed_non_theorem_audit_targets": 269,
+    "new_theorems": 107,
+    "new_audit_targets": 138,
+    "actual_build_exit_code": 0,
+    "actual_build_jobs": 8805,
+    "actual_axiom_audit_exit_code": 0,
+    "allowed_foundation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ordinary_lean_linter_warnings_present": true,
+    "finite_witness_theorems": 298,
+    "finite_witness_definitions": 110,
+    "finite_witness_abbreviations": 8,
+    "finite_witness_audit_reports": 416,
+    "finite_witness_bound_modules": 98,
+    "finite_witness_execution_mode": "ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE",
+    "actually_executed_new_witness_files": 3,
+    "actually_executed_new_witness_audits": 147,
+    "reused_legacy_witness_files": 10,
+    "reused_legacy_witness_audits": 269,
+    "runtime_test_methods": 100,
+    "demos": 4,
+    "positive_instances": 6,
+    "positive_instance_audit_reports": 42,
+    "corrupted_true_proofs_rejected": 4,
+    "same_data_false_witnesses": 4,
+    "legacy_execution_mode": "REUSED_UNCHANGED_SCIENTIFIC_INPUTS",
+    "legacy_reuse_receipt": "physics/qm/kernel/evidence/v31.9/legacy-reuse.json",
+    "legacy_gates_receipt": "physics/qm/kernel/evidence/v31.9/legacy-gates-summary.json",
+    "new_legacy_lean_compiler_invocations": 0,
+    "new_legacy_runtime_test_invocations": 0,
+    "historical_actual_main_ci_for_reuse": 39424068985,
+    "core_import_count": 56,
+    "source_count": 98,
+    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+    "proof_receipt": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
+    "source_manifest": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
+    "current_remote_ci": "PENDING",
+    "current_main_integration": "PENDING"
+  },
+  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.9.json",
+  "remaining_work": [
+    "Publish the frozen scientific source PR",
+    "Verify the actual PR CI and merge",
+    "Verify independent main push CI and every frozen source/Core/book/payload byte",
+    "Publish separate current remote metadata with actual identities"
+  ],
+  "metadata_updated_at_utc": "2026-10-20T16:23:39.093802+00:00",
+  "metadata_commit_is_not_ci_tested_source_commit": true
+}

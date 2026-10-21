@@ -1,0 +1,68 @@
+UEOTQM/StoppingRecordBudget.lean:58:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+UEOTQM/StoppingRecordBudget.lean:58:85: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+UEOTQM/StoppingRecordBudget.lean:205:30: error: Application type mismatch: The argument
+  h
+has type
+  (fun p => (encode π p.1, p.2)) x = (fun p => (encode π p.1, p.2)) y
+but is expected to have type
+  x = y
+in the application
+  congrArg Prod.snd h
+UEOTQM/StoppingRecordBudget.lean:207:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.StoppingRecordBudget.outside_leafEmbedding`:
+  [DecidableEq O]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/StoppingRecordBudget.lean:269:89: error: unsolved goals
+A : Type u_1
+O : Type u_2
+ι : Type u_3
+κ : Type u_4
+inst✝⁴ : Fintype O
+inst✝³ : DecidableEq O
+inst✝² : Fintype ι
+inst✝¹ : DecidableEq ι
+inst✝ : Fintype κ
+I : A → Instrument ι O κ
+π : Adaptive.Protocol A O
+N : ℕ
+hN : height π ≤ N
+ρ : Density ι
+h : History (Option O) N
+hd : decode π h = none
+⊢ mass 0 = 0
+UEOTQM/StoppingRecordBudget.lean:340:42: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [activeDefect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingRecordBudget.lean:412:18: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [activeDefect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingRecordBudget.lean:414:15: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [activeDefect, Option.isSome_some, Bool.true_eq, ite_true, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingRecordBudget.lean:414:53: warning: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ha, activeDefect, Option.isSome_some, ite_true, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

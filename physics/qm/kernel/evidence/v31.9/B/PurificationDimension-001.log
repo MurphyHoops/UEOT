@@ -1,0 +1,39 @@
+UEOTQM/PurificationDimension.lean:29:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Finite (SpectralSupport ρ)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOTQM/PurificationDimension.lean:38:2: error: Type mismatch
+  Eq.symm (IsHermitian.rank_eq_card_non_zero_eigs (PosSemidef.isHermitian ρ.positive))
+has type
+  @Fintype.card { i // ⋯.eigenvalues i ≠ 0 } (Subtype.fintype fun i => ⋯.eigenvalues i ≠ 0) = rank ρ.matrix
+but is expected to have type
+  @Fintype.card (SpectralSupport ρ) (spectralSupportFintype ρ) = rank ρ.matrix
+UEOTQM/PurificationDimension.lean:62:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr_set
+  {a | (PosSemidef.isHermitian ρ.positive).eigenvalues a ≠ 0}`
+  ∑ i, ?f i =
+    ∑ i ∈ @Finset.univ (↑{a | ⋯.eigenvalues a ≠ 0}) (Subtype.fintype (Membership.mem {a | ⋯.eigenvalues a ≠ 0})), ?g i
+with the goal
+  ∑ a, ↑⋯.eigenvectorUnitary i a * ↑(⋯.eigenvalues a) * star (↑⋯.eigenvectorUnitary j a) =
+    ∑ j_1 ∈ @Finset.univ (SpectralSupport ρ) (spectralSupportFintype ρ),
+      supportedGram ρ i j_1 * (supportedGram ρ)ᴴ j_1 j
+
+Note: The full type of `Finset.sum_congr_set {a | (PosSemidef.isHermitian ρ.positive).eigenvalues a ≠ 0}` is
+  ∀ (f : ι → ?m.51) (g : ↑{a | ⋯.eigenvalues a ≠ 0} → ?m.51),
+    (∀ (x : ι) (hx : x ∈ {a | ⋯.eigenvalues a ≠ 0}), f x = g ⟨x, hx⟩) →
+      (∀ x ∉ {a | ⋯.eigenvalues a ≠ 0}, f x = 0) → ∑ i, f i = ∑ i, g i
+
+ι : Type u
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+ρ : Density ι
+i j : ι
+⊢ ∑ a, ↑⋯.eigenvectorUnitary i a * ↑(⋯.eigenvalues a) * star (↑⋯.eigenvectorUnitary j a) =
+    ∑ j_1, supportedGram ρ i j_1 * (supportedGram ρ)ᴴ j_1 j
+UEOTQM/PurificationDimension.lean:156:2: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`

@@ -1,0 +1,27 @@
+UEOTQM/PurificationDimension.lean:66:6: error(lean.unknownIdentifier): Unknown identifier `map_ofReal`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+UEOTQM/PurificationDimension.lean:64:2: error: unsolved goals
+case w
+ι : Type u
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+ρ : Density ι
+i j a : ι
+ha : a ∈ {a | ⋯.eigenvalues a ≠ 0}
+hs : ↑√(⋯.eigenvalues a) * ↑√(⋯.eigenvalues a) = ↑(⋯.eigenvalues a)
+⊢ ↑⋯.eigenvectorUnitary i a * ↑√(⋯.eigenvalues a) ^ 2 * (starRingEnd ℂ) (↑⋯.eigenvectorUnitary j a) =
+    ↑⋯.eigenvectorUnitary i a * ↑√(⋯.eigenvalues a) * (starRingEnd ℂ) (↑⋯.eigenvectorUnitary j a) *
+      (starRingEnd ℂ) ↑√(⋯.eigenvalues a)
+UEOTQM/PurificationDimension.lean:157:2: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`

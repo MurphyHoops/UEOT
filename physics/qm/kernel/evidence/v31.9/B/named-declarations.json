@@ -1,0 +1,298 @@
+{
+  "status": "PASS_SOURCE_BOUND_NAMES",
+  "files": [
+    {
+      "source": {
+        "path": "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean",
+        "bytes": 6493,
+        "sha256": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362"
+      },
+      "declarations": [
+        {
+          "name": "UEOTQM.QuantumPurification.coordinateIsometry",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.coordinateIsometry_adjoint_mul",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_matrix_isometry_of_card_le",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.card_le_of_matrix_isometry",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_matrix_isometry_iff_card_le",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.matrix_isometry_not_coisometry_of_card_lt",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.auxiliary_tensor_mul",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_auxiliary_isometry_of_equal_marginal",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_auxiliary_isometry_action",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.pure_states_isometrically_equivalent",
+          "kind": "theorem"
+        }
+      ],
+      "counts": {
+        "def": 1,
+        "theorem": 9
+      }
+    },
+    {
+      "source": {
+        "path": "formalization/ueot-qm/UEOTQM/PurificationDimension.lean",
+        "bytes": 7864,
+        "sha256": "92d030b3fb87e52e35dcf44e620a570eac626ddcc2d7d529656fc93139a98afd"
+      },
+      "declarations": [
+        {
+          "name": "UEOTQM.QuantumPurification.SpectralSupport",
+          "kind": "abbrev"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.spectralSupportFintype",
+          "kind": "instance"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.spectralSupportDecidableEq",
+          "kind": "instance"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.spectralSupport_card",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.supportedGram",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.density_spectral_expansion",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.supportedGram_spec",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.supportedGram_vector_normalized",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.supportPurification",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.supportPurification_matrix",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.supportPurification_isPure",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.supportPurification_marginal",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.rank_marginal_le_auxiliary_card",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_purification_of_rank_le",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_purification_iff_rank_le",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.exists_minimal_purification",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.no_purification_of_card_lt_rank",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.density_rank_pos",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.QuantumPurification.no_purification_empty_auxiliary",
+          "kind": "theorem"
+        }
+      ],
+      "counts": {
+        "abbrev": 1,
+        "instance": 2,
+        "theorem": 14,
+        "def": 2
+      }
+    },
+    {
+      "source": {
+        "path": "formalization/ueot-qm/scripts/witnesses/PurificationDimensionExamples.lean",
+        "bytes": 9313,
+        "sha256": "637fc97d88d982df2c27a62f5de057fb0551cb3f6c599cba4a08aded92c881a1"
+      },
+      "declarations": [
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.firstFactor",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.secondFactor",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.directIsometry",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.marginalMatrix",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.first_gram",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.second_gram",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.marginal_positive",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.marginal_trace",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.mixed",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.mixed_rank_two",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.first_normalized",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.second_normalized",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.firstState",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.secondState",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.first_pure",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.second_pure",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.first_marginal",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.second_marginal",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.mixed_has_two_dimensional_purification",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.mixed_no_one_dimensional_purification",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.mixed_exact_dimension_criterion",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.direct_adjoint_mul",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.direct_not_coisometry",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.exact_rectangular_vector_action",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.exact_rectangular_density_action",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.generic_direct_isometry_instantiated",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.reverse_full_isometry_impossible",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.pureVector",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.pureVector_normalized",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.pureState",
+          "kind": "def"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.pure_state_isPure",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.pure_rank_one",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.pure_has_unit_auxiliary",
+          "kind": "theorem"
+        },
+        {
+          "name": "UEOTQM.PurificationDimensionExamples.pure_no_empty_auxiliary",
+          "kind": "theorem"
+        }
+      ],
+      "counts": {
+        "def": 9,
+        "theorem": 25
+      }
+    }
+  ]
+}

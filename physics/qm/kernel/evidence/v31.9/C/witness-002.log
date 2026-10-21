@@ -1,0 +1,227 @@
+scripts/witnesses/StoppingRecordBudgetExamples.lean:24:28: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:29:52: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, certain, ho]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:65:69: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:77:38: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:243:11: error: unsolved goals
+case some
+ρ : Density Qubit
+k : Label
+⊢ mass (if k = 0 then (3 / 4) • ρ.matrix else 4⁻¹ • ρ.matrix) = if k = 0 then 3 / 4 else 4⁻¹
+scripts/witnesses/StoppingRecordBudgetExamples.lean:244:71: warning: This simp argument is unused:
+  mass_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [response, recordOperator, approximateActions, biased_branch, ρ.mass_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:244:82: warning: This simp argument is unused:
+  ρ.mass_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [response, recordOperator, approximateActions, biased_branch, mass_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:252:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ i, ?g i
+in the target expression
+  ∑ x,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) x *
+        activeDefect exactActions approximateActions
+          (match x 0 with
+          | none => none
+          | some o => if o = 0 then none else some 1) =
+    1 / 16
+
+ρ : Density Qubit
+⊢ ∑ x,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) x *
+        activeDefect exactActions approximateActions
+          (match x 0 with
+          | none => none
+          | some o => if o = 0 then none else some 1) =
+    1 / 16
+scripts/witnesses/StoppingRecordBudgetExamples.lean:262:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ i, ?g i
+in the target expression
+  (∑ x,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) x *
+        if
+            (match x 0 with
+                | none => none
+                | some o => if o = 0 then none else some 1).isSome =
+              true then
+          1
+        else 0) =
+    1 / 4
+
+ρ : Density Qubit
+⊢ (∑ x,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) x *
+        if
+            (match x 0 with
+                | none => none
+                | some o => if o = 0 then none else some 1).isSome =
+              true then
+          1
+        else 0) =
+    1 / 4
+scripts/witnesses/StoppingRecordBudgetExamples.lean:270:5: error: unexpected token 'attribute'; expected 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+scripts/witnesses/StoppingRecordBudgetExamples.lean:347:84: error: unsolved goals
+ρ : Density Qubit
+⊢ ↑Finset.univ.card * ρ.matrix = ρ.matrix
+scripts/witnesses/StoppingRecordBudgetExamples.lean:352:8: warning: This simp argument is unused:
+  Leaf
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ClassicalQuantumMemory.ProtocolMemory.Leaf, Adaptive.Protocol.Leaf, Adaptive.Protocol.word,
+    recordOperator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:363:27: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Fintype.sum_sigma, recordOperator, identityActions, certain_branch]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'UEOTQM.StoppingRecordBudgetExamples.Qubit' does not depend on any axioms
+'UEOTQM.StoppingRecordBudgetExamples.Label' does not depend on any axioms
+'UEOTQM.StoppingRecordBudgetExamples.certain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.certain_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.certain_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.halfK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.halfK_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.halfK_conjugation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biasedKraus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.rhoZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.joint_probability_certain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.joint_probability_biased' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_le_quarter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_record_defect_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.stoppingTree' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.earlyLeaf' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateZeroLeaf' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateOneLeaf' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.early_word' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateZero_word' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateOne_word' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.tree_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.early_stopTime' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.late_stopTime' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.early_encoded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.exactActions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximateActions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.first_defect_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.continuing_defect_quarter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.exact_early_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximate_early_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.exact_lateZero_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximate_lateZero_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.exact_lateOne_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximate_lateOne_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.oneHistoryEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.controller_first' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.controller_second' depends on axioms: [propext, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.reference_one_step_weight' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.oneStepTree' does not depend on any axioms
+'UEOTQM.StoppingRecordBudgetExamples.identityActions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.stoppedHistory' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.negative_action_defects_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.immediate_stop_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.one_step_idle_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.immediate_terminal_memory' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.one_step_terminal_memory' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

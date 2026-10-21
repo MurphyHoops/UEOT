@@ -1,0 +1,100 @@
+{
+  "kind": "INDEPENDENT_STATIC_BOOK_LOCAL_FINALIZER_REVIEW",
+  "reviewer": "/root/v319_stopping",
+  "reviewed_at_utc": "2026-10-20T16:10:05.534104+00:00",
+  "status": "STATIC_PASS",
+  "helper": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_finalize_book_local.py",
+    "sha256": "d310d32ace9c7c78335a3c36ab8b09197f02367e6093c542c244bb890125ae2c",
+    "bytes": 62666
+  },
+  "syntax_check": "Python AST and compile-only PASS; helper code not executed",
+  "helper_main_executed": false,
+  "apply_executed": false,
+  "checks": [
+    {
+      "subject": "执行边界",
+      "finding": "默认只读，只在 --apply 后写 README、SOURCE_MANIFEST、CHAPTER_DOSSIER 和新的 evidence/v3.5；不构建 Lean、不排印、不渲染、不视觉审查、不远端调用。"
+    },
+    {
+      "subject": "精确历史基线",
+      "finding": "固定完成的 3.4/v31.8 commit 与 tree；git show 每旧元数据 blob 独立对照实际基树，当前三元数据须仍等于旧基线后才允许组装；旧快照保留原字节。"
+    },
+    {
+      "subject": "147旧结果",
+      "finding": "旧 dossier 147 个唯一编号对象和旧正文147编号顺序/章/标题严格对照；完成对象保持结构完全相同。最终161对象顺序与当前正文匹配，新增14项只能在63–65章。"
+    },
+    {
+      "subject": "来源与旧证据",
+      "finding": "11项原始来源 entry 全对象逐值保留；旧书 evidence 所有基树叶逐 Git blob 保持。三套附录D字面程序和真实程序文件逐 hash 回接，757检查保持3.0执行身份。"
+    },
+    {
+      "subject": "98真实受验源",
+      "finding": "本地完整 build/audit PASS、98项科学输入及 source-set摘要一致，每个实际文件原字节/大小重读；不引用注释桥或另设发布源码集合。"
+    },
+    {
+      "subject": "公理与声明",
+      "finding": "公共审计唯一全名及允许基础核对；逐模块源码身份与所有显式声明/具名非local实例位置对应，不凭namespace猜源文件。每新结果的主/辅助/见证声明都在实际审计清单及源位置中。"
+    },
+    {
+      "subject": "执行和复用分界",
+      "finding": "本轮3个实际新见证与10个历史见证清楚区分；6证书、42审计、4篡改拒绝、4假值通过、100方法和4演示保持历史真实身份。逐见证 execution_mode 与来源绑定一致。"
+    },
+    {
+      "subject": "规范结果接口",
+      "finding": "root已明确归档 chapter-bindings 每项统一含 claim。C原交付合法使用 actual_conclusion，在归档层规范化；helper本身严格读取规范claim，字段缺失即拒绝，不能直接误传原C claims。"
+    },
+    {
+      "subject": "实际新章绑定",
+      "finding": "root科学审查须PASS并绑定同一真实统一证明回执；63、64、65章输入及其SHA/字节数回读，规范正文切片内容与输入一致；每结果前提、量词、claim、推导、边界非空。"
+    },
+    {
+      "subject": "三正文身份",
+      "finding": "context必须提供最终MD/PDF/TeX SHA；三实际文件分别读取，排印回执同时绑定三份。helper不能修改这三份canonical文件。"
+    },
+    {
+      "subject": "排印身份",
+      "finding": "要求实际三遍日志退出0、layout_warnings为空，逐日志SHA重读；当前PDF实际pdfinfo页数参与核对。"
+    },
+    {
+      "subject": "视觉范围",
+      "finding": "要求外部实际视觉PASS、无blocking、真实root页列表和方法，页数合法不重复；可选协作者同样核对真实页范围和PDF/MD身份，不推断全书逐页精读，helper自身不冒称看过图。"
+    },
+    {
+      "subject": "规范调整",
+      "finding": "若初次integrated MD与最终MD不同，必须有实际调整回执连接两SHA并保持三新章和旧程序字节；这不是科学源comment桥。"
+    },
+    {
+      "subject": "当前/历史状态",
+      "finding": "当前3.5/v31.9统一 LOCAL_VERIFIED_REMOTE_PENDING；source PR、independent main CI、remote reconciliation保持PENDING。旧3.4 MAIN_VERIFIED和旧completed contracts保留明确历史作用，不作为新CI身份。"
+    },
+    {
+      "subject": "旧开放责任",
+      "finding": "旧编号对象不升级；50、58、60、61、62章另列 resolved_by_edition_3_5，并明确指向新章独立结果及原有限前提。"
+    },
+    {
+      "subject": "科学边界",
+      "finding": "whole_book/whole_chapter形式化、Core唯一选复数、无条件三代、现实QFT/量子引力、新实验等标志保持否；有限数学内核不升格完整自然理论。"
+    },
+    {
+      "subject": "单向哈希",
+      "finding": "Source manifest→dossier→外部dossier-review→terminal local-release-gates；上游只记录下游path，不放反向hash。helper/context单独归档，三正文不受元数据改写，无自hash环。"
+    },
+    {
+      "subject": "历史目录解析",
+      "finding": "保留旧source/evidence_catalog数据并显式标注历史scope；旧mutable path/hash通过精确3.4快照解析，当前QM319和v31_9/v3_5条目单列。"
+    },
+    {
+      "subject": "写入与回读",
+      "finding": "新当前证据已存在则拒绝覆盖；apply前回读全部输入，逐文件原子替换后校对实际输出字节，并重新检查不可变输入。没有把多文件写入说成单事务。"
+    }
+  ],
+  "findings_requiring_code_change": [],
+  "contract_clarification": "Normalized root archived chapter-bindings must contain claim; A confirmed this existing root contract. Source C actual_conclusion remains immutable in original claims.",
+  "limitations": [
+    "No actual final canonical/context/PDF output acceptance is asserted by this static review.",
+    "Real metadata apply must wait for unified source PASS, final canonical bytes, actual typesetting and scoped visual receipts.",
+    "Only the exact listed helper bytes were reviewed; future changes need a diff review."
+  ],
+  "scientific_source_or_canonical_modified": false
+}

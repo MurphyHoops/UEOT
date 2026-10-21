@@ -1,0 +1,50 @@
+from pathlib import Path
+import sys, subprocess, json, hashlib, datetime, re
+sys.path.insert(0, '/workspace/scratch/f11b4261e187/handoff')
+from qm318_source_parser import declarations
+
+repo=Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+package=repo/'formalization/ueot-qm'
+evidence=repo/'physics/qm/kernel/evidence/v31.9/A'
+paths=['UEOTQM/QuantumTraceDistance.lean','UEOTQM/BinaryDiscrimination.lean']
+rows=[]
+bindings=[]
+for rel in paths:
+    p=package/rel
+    raw=p.read_bytes()
+    ds,diag,instances=declarations(raw.decode())
+    assert not instances and not diag
+    rows.extend(ds)
+    op=package/'.lake/build/lib/lean'/Path(rel).with_suffix('.olean')
+    bindings.append(dict(path=str(p.relative_to(repo)),sha256=hashlib.sha256(raw).hexdigest(),
+                         olean_path=str(op.relative_to(repo)),olean_sha256=hashlib.sha256(op.read_bytes()).hexdigest()))
+names=[r['name'] for r in rows]
+assert len(names)==len(set(names))
+query=Path('/workspace/scratch/f11b4261e187/handoff/A_v319_public_axioms.lean')
+query.write_text('import UEOTQM.BinaryDiscrimination\n\n'+''.join('#print axioms '+n+'\n' for n in names))
+number=len(list(evidence.glob('PublicAxioms-*.json')))+1
+prefix=evidence/f'PublicAxioms-{number:03d}'
+prefix.with_suffix('.lean.txt').write_bytes(query.read_bytes())
+cmd=['flock','/tmp/qm317-lean.lock','/tmp/lean-4.33.1-linux/bin/lake','env','lean',str(query)]
+now=lambda:datetime.datetime.now(datetime.timezone.utc).isoformat()
+start=now()
+with prefix.with_suffix('.log').open('wb') as log:
+    p=subprocess.run(cmd,cwd=package,stdout=log,stderr=subprocess.STDOUT)
+log=prefix.with_suffix('.log').read_text()
+found=[]
+for m in re.finditer(r"'([^']+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log):
+    found.append(dict(name=m[1],axioms=[a.strip() for a in (m[2] or '').replace('\n',' ').split(',') if a.strip()]))
+allowed={'propext','Classical.choice','Quot.sound'}
+unchanged=all(hashlib.sha256((repo/b['path']).read_bytes()).hexdigest()==b['sha256'] and
+              hashlib.sha256((repo/b['olean_path']).read_bytes()).hexdigest()==b['olean_sha256'] for b in bindings)
+ok=p.returncode==0 and [r['name'] for r in found]==names and all(set(r['axioms'])<=allowed for r in found) and unchanged
+receipt=dict(status='PASS' if ok else 'FAIL',command=cmd,cwd=str(package),started_at_utc=start,
+             finished_at_utc=now(),exit_code=p.returncode,source_bindings=bindings,
+             query_sha256=hashlib.sha256(query.read_bytes()).hexdigest(),
+             expected_count=len(names),actual_count=len(found),declarations=rows,audits=found,
+             source_and_olean_unchanged=unchanged,allowed_axioms=sorted(allowed),
+             log_sha256=hashlib.sha256(prefix.with_suffix('.log').read_bytes()).hexdigest())
+prefix.with_suffix('.json').write_text(json.dumps(receipt,indent=2)+'\n')
+print(json.dumps({k:receipt[k] for k in ['status','expected_count','actual_count','exit_code','source_and_olean_unchanged']},indent=2))
+print(log)
+sys.exit(0 if ok else 1)

@@ -1,0 +1,240 @@
+import UEOTQM.QuantumSeparation
+
+/-!
+# Exact trace absolute value and the optimal quantum effect
+
+The existing supremum over all legal effects equals half the trace of the
+standard matrix absolute value of a density difference. An actual positive
+spectral projection attains the value. Its positivity, complement positivity,
+and action on the positive and negative parts are derived from the finite
+spectral theorem, not supplied as additional physical assumptions.
+
+The spectral choice is noncomputable. These theorems do not supply a numerical
+eigensolver, all Schatten norm axioms, or a stabilized channel distance.
+-/
+
+namespace UEOTQM.QuantumTraceDistance
+
+open Matrix
+open scoped BigOperators ComplexOrder MatrixOrder
+
+noncomputable section
+
+variable {ι : Type*} [Fintype ι] [DecidableEq ι]
+
+/-- Real diagonal data transported by an actual finite unitary matrix. -/
+def unitaryDiagonal (U : Matrix.unitaryGroup ι ℂ) (d : ι → ℝ) : Operator ι :=
+  Unitary.conjStarAlgAut ℂ _ U (Matrix.diagonal (fun i => (d i : ℂ)))
+
+theorem unitaryDiagonal_add (U : Matrix.unitaryGroup ι ℂ) (d e : ι → ℝ) :
+    unitaryDiagonal U (fun i => d i + e i) = unitaryDiagonal U d + unitaryDiagonal U e := by
+  simp only [unitaryDiagonal, Complex.ofReal_add, ← Matrix.diagonal_add, map_add]
+
+theorem unitaryDiagonal_sub (U : Matrix.unitaryGroup ι ℂ) (d e : ι → ℝ) :
+    unitaryDiagonal U (fun i => d i - e i) = unitaryDiagonal U d - unitaryDiagonal U e := by
+  simp only [unitaryDiagonal, Complex.ofReal_sub, ← Matrix.diagonal_sub, map_sub]
+
+theorem unitaryDiagonal_mul (U : Matrix.unitaryGroup ι ℂ) (d e : ι → ℝ) :
+    unitaryDiagonal U d * unitaryDiagonal U e = unitaryDiagonal U (fun i => d i * e i) := by
+  simp only [unitaryDiagonal, ← map_mul, Matrix.diagonal_mul_diagonal, Complex.ofReal_mul]
+
+@[simp] theorem unitaryDiagonal_zero (U : Matrix.unitaryGroup ι ℂ) :
+    unitaryDiagonal U (fun _ => 0) = 0 := by
+  simp [unitaryDiagonal]
+
+@[simp] theorem unitaryDiagonal_one (U : Matrix.unitaryGroup ι ℂ) :
+    unitaryDiagonal U (fun _ => 1) = 1 := by
+  simp [unitaryDiagonal]
+
+theorem unitaryDiagonal_posSemidef (U : Matrix.unitaryGroup ι ℂ) (d : ι → ℝ)
+    (hd : ∀ i, 0 ≤ d i) : (unitaryDiagonal U d).PosSemidef := by
+  have hp : (Matrix.diagonal (fun i => (d i : ℂ))).PosSemidef :=
+    Matrix.PosSemidef.diagonal (fun i => by
+      change (0 : ℂ) ≤ (d i : ℂ)
+      exact_mod_cast hd i)
+  simpa only [unitaryDiagonal, Unitary.conjStarAlgAut_apply, star_eq_conjTranspose] using
+    hp.mul_mul_conjTranspose_same (U : Operator ι)
+
+theorem mass_unitaryDiagonal (U : Matrix.unitaryGroup ι ℂ) (d : ι → ℝ) :
+    mass (unitaryDiagonal U d) = ∑ i, d i := by
+  simp only [unitaryDiagonal, Unitary.conjStarAlgAut_apply, mass, Matrix.trace_mul_cycle,
+    Unitary.coe_star_mul_self, Matrix.one_mul, Matrix.trace_diagonal]
+  simp
+
+/-- The positive and negative spectral parts of any finite Hermitian matrix. -/
+def positivePart (H : Operator ι) (hH : H.IsHermitian) : Operator ι :=
+  unitaryDiagonal hH.eigenvectorUnitary (fun i => max (hH.eigenvalues i) 0)
+
+def negativePart (H : Operator ι) (hH : H.IsHermitian) : Operator ι :=
+  unitaryDiagonal hH.eigenvectorUnitary (fun i => max (-hH.eigenvalues i) 0)
+
+theorem positivePart_posSemidef (H : Operator ι) (hH : H.IsHermitian) :
+    (positivePart H hH).PosSemidef :=
+  unitaryDiagonal_posSemidef _ _ (fun _ => le_max_right _ _)
+
+theorem negativePart_posSemidef (H : Operator ι) (hH : H.IsHermitian) :
+    (negativePart H hH).PosSemidef :=
+  unitaryDiagonal_posSemidef _ _ (fun _ => le_max_right _ _)
+
+theorem positivePart_sub_negativePart (H : Operator ι) (hH : H.IsHermitian) :
+    positivePart H hH - negativePart H hH = H := by
+  rw [positivePart, negativePart, ← unitaryDiagonal_sub]
+  simpa only [max_zero_sub_max_neg_zero_eq_self, unitaryDiagonal,
+    RCLike.ofReal_eq_complex_ofReal, Function.comp_def] using hH.spectral_theorem.symm
+
+theorem max_add_max_neg (x : ℝ) : max x 0 + max (-x) 0 = |x| := by
+  by_cases hx : 0 ≤ x
+  · simp [max_eq_left hx, max_eq_right (neg_nonpos.mpr hx), abs_of_nonneg hx]
+  · have hx' := le_of_not_ge hx
+    simp [max_eq_right hx', max_eq_left (neg_nonneg.mpr hx'), abs_of_nonpos hx']
+
+/-- This is the library absolute value sqrt(H†H), not a renamed supremum. -/
+theorem abs_eq_positivePart_add_negativePart (H : Operator ι) (hH : H.IsHermitian) :
+    CFC.abs H = positivePart H hH + negativePart H hH := by
+  rw [CFC.abs_eq_cfc_norm H hH.isSelfAdjoint, hH.cfc_eq, Matrix.IsHermitian.cfc,
+    positivePart, negativePart, ← unitaryDiagonal_add]
+  simp only [unitaryDiagonal, Real.norm_eq_abs, max_add_max_neg, Function.comp_def,
+    RCLike.ofReal_eq_complex_ofReal]
+
+/-- The trace of sqrt(X†X); no full normed-space instance is asserted here. -/
+def traceAbsolute (X : Operator ι) : ℝ := mass (CFC.abs X)
+
+theorem traceAbsolute_nonneg (X : Operator ι) : 0 ≤ traceAbsolute X :=
+  mass_nonneg (Matrix.nonneg_iff_posSemidef.mp (CFC.abs_nonneg X))
+
+theorem traceAbsolute_eq_sum_abs_eigenvalues (H : Operator ι) (hH : H.IsHermitian) :
+    traceAbsolute H = ∑ i, |hH.eigenvalues i| := by
+  rw [traceAbsolute, CFC.abs_eq_cfc_norm H hH.isSelfAdjoint, hH.cfc_eq,
+    Matrix.IsHermitian.cfc]
+  simpa only [unitaryDiagonal, Function.comp_def, Real.norm_eq_abs,
+    RCLike.ofReal_eq_complex_ofReal] using
+    mass_unitaryDiagonal hH.eigenvectorUnitary (fun i => |hH.eigenvalues i|)
+
+/-- The zero eigenvalue is assigned to the complementary effect. -/
+def positiveSpectrumEffect (H : Operator ι) (hH : H.IsHermitian) : Effect ι where
+  matrix := unitaryDiagonal hH.eigenvectorUnitary (fun i => if 0 < hH.eigenvalues i then 1 else 0)
+  positive := unitaryDiagonal_posSemidef _ _ (fun i => by split_ifs <;> norm_num)
+  complement_positive := by
+    rw [← unitaryDiagonal_one hH.eigenvectorUnitary, ← unitaryDiagonal_sub]
+    exact unitaryDiagonal_posSemidef _ _ (fun i => by split_ifs <;> norm_num)
+
+@[simp] theorem positiveSpectrumEffect_matrix (H : Operator ι) (hH : H.IsHermitian) :
+    (positiveSpectrumEffect H hH).matrix =
+      unitaryDiagonal hH.eigenvectorUnitary (fun i => if 0 < hH.eigenvalues i then 1 else 0) := rfl
+
+theorem positiveSpectrumEffect_idempotent (H : Operator ι) (hH : H.IsHermitian) :
+    (positiveSpectrumEffect H hH).matrix * (positiveSpectrumEffect H hH).matrix =
+      (positiveSpectrumEffect H hH).matrix := by
+  rw [positiveSpectrumEffect_matrix, unitaryDiagonal_mul]
+  congr 1
+  funext i
+  split_ifs <;> norm_num
+
+theorem positiveSpectrumEffect_mul_positivePart (H : Operator ι) (hH : H.IsHermitian) :
+    (positiveSpectrumEffect H hH).matrix * positivePart H hH = positivePart H hH := by
+  rw [positiveSpectrumEffect_matrix, positivePart, unitaryDiagonal_mul]
+  congr 1
+  funext i
+  by_cases hi : 0 < hH.eigenvalues i
+  · simp [hi]
+  · simp [hi, max_eq_right (le_of_not_gt hi)]
+
+theorem positiveSpectrumEffect_mul_negativePart (H : Operator ι) (hH : H.IsHermitian) :
+    (positiveSpectrumEffect H hH).matrix * negativePart H hH = 0 := by
+  rw [positiveSpectrumEffect_matrix, negativePart, unitaryDiagonal_mul]
+  convert unitaryDiagonal_zero hH.eigenvectorUnitary using 1
+  congr 1
+  funext i
+  by_cases hi : 0 < hH.eigenvalues i
+  · simp [hi, max_eq_right (neg_nonpos.mpr hi.le)]
+  · simp [hi]
+
+theorem positiveSpectrumEffect_pairing (H : Operator ι) (hH : H.IsHermitian) :
+    pairing (positiveSpectrumEffect H hH).matrix H = mass (positivePart H hH) := by
+  calc
+    pairing (positiveSpectrumEffect H hH).matrix H =
+        pairing (positiveSpectrumEffect H hH).matrix (positivePart H hH - negativePart H hH) :=
+      congrArg (pairing (positiveSpectrumEffect H hH).matrix)
+        (positivePart_sub_negativePart H hH).symm
+    _ = mass (positivePart H hH) := by
+      rw [QuantumSeparation.pairing_sub_right, pairing, pairing,
+        positiveSpectrumEffect_mul_positivePart, positiveSpectrumEffect_mul_negativePart]
+      simp [mass]
+
+/-- Equal traces force equal masses in every actual PSD difference decomposition. -/
+theorem difference_parts_mass_eq (ρ σ : Density ι) (P N : Operator ι)
+    (hsplit : ρ.matrix - σ.matrix = P - N) : mass P = mass N := by
+  have hz : mass (P - N) = 0 := by rw [← hsplit]; simp [mass, ρ.trace_one, σ.trace_one]
+  simp only [mass, Matrix.trace_sub, Complex.sub_re] at hz ⊢
+  linarith
+
+/-- A PSD split gives a valid upper bound, even if it is not a spectral split. -/
+theorem effectDistance_le_mass_of_psd_split (ρ σ : Density ι) (P N : Operator ι)
+    (hP : P.PosSemidef) (hN : N.PosSemidef)
+    (hsplit : ρ.matrix - σ.matrix = P - N) : effectDistance ρ σ ≤ mass P := by
+  have hm := difference_parts_mass_eq ρ σ P N hsplit
+  apply (effectDistance_le_iff _ _ _).mpr
+  intro E
+  have hgap : E.probability ρ - E.probability σ = pairing E.matrix P - pairing E.matrix N := by
+    change pairing E.matrix ρ.matrix - pairing E.matrix σ.matrix = _
+    rw [← QuantumSeparation.pairing_sub_right E.matrix ρ.matrix σ.matrix,
+      hsplit, QuantumSeparation.pairing_sub_right]
+  rw [hgap]
+  have hp0 := E.pairing_nonneg hP
+  have hp1 := E.pairing_le_mass hP
+  have hn0 := E.pairing_nonneg hN
+  have hn1 := E.pairing_le_mass hN
+  exact abs_le.mpr ⟨by linarith, by linarith⟩
+
+theorem effectDistance_eq_positivePart_mass (ρ σ : Density ι) :
+    effectDistance ρ σ = mass (positivePart (ρ.matrix - σ.matrix)
+      (ρ.positive.isHermitian.sub σ.positive.isHermitian)) := by
+  let H := ρ.matrix - σ.matrix
+  have hH : H.IsHermitian := ρ.positive.isHermitian.sub σ.positive.isHermitian
+  have hsplit : ρ.matrix - σ.matrix = positivePart H hH - negativePart H hH :=
+    (positivePart_sub_negativePart H hH).symm
+  apply le_antisymm
+  · exact effectDistance_le_mass_of_psd_split ρ σ _ _
+      (positivePart_posSemidef H hH) (negativePart_posSemidef H hH) hsplit
+  · have hg := (positiveSpectrumEffect H hH).probability_sub_le_effectDistance ρ σ
+    have heq : (positiveSpectrumEffect H hH).probability ρ -
+        (positiveSpectrumEffect H hH).probability σ = mass (positivePart H hH) := by
+      simp only [Effect.probability]
+      rw [← QuantumSeparation.pairing_sub_right]
+      exact positiveSpectrumEffect_pairing H hH
+    rw [heq, abs_of_nonneg (mass_nonneg (positivePart_posSemidef H hH))] at hg
+    exact hg
+
+/-- The original all-effect supremum is attained by the actual positive spectral projection. -/
+theorem positiveSpectrumEffect_attains (ρ σ : Density ι) :
+    let E := positiveSpectrumEffect (ρ.matrix - σ.matrix)
+      (ρ.positive.isHermitian.sub σ.positive.isHermitian)
+    E.probability ρ - E.probability σ = effectDistance ρ σ := by
+  dsimp only
+  simp only [Effect.probability]
+  rw [← QuantumSeparation.pairing_sub_right, positiveSpectrumEffect_pairing,
+    effectDistance_eq_positivePart_mass]
+
+/-- The factor 1/2 uses the zero trace of a difference of normalized states. -/
+theorem effectDistance_eq_half_traceAbsolute (ρ σ : Density ι) :
+    effectDistance ρ σ = traceAbsolute (ρ.matrix - σ.matrix) / 2 := by
+  let H := ρ.matrix - σ.matrix
+  have hH : H.IsHermitian := ρ.positive.isHermitian.sub σ.positive.isHermitian
+  have hm := difference_parts_mass_eq ρ σ (positivePart H hH) (negativePart H hH)
+    (positivePart_sub_negativePart H hH).symm
+  have ha : traceAbsolute H = mass (positivePart H hH) + mass (negativePart H hH) := by
+    rw [traceAbsolute, abs_eq_positivePart_add_negativePart H hH]
+    simp [mass]
+  rw [effectDistance_eq_positivePart_mass]
+  change mass (positivePart H hH) = traceAbsolute H / 2
+  linarith
+
+theorem effectDistance_eq_half_sum_abs_eigenvalues (ρ σ : Density ι) :
+    effectDistance ρ σ =
+      (∑ i, |(ρ.positive.isHermitian.sub σ.positive.isHermitian).eigenvalues i|) / 2 := by
+  rw [effectDistance_eq_half_traceAbsolute,
+    traceAbsolute_eq_sum_abs_eigenvalues _ (ρ.positive.isHermitian.sub σ.positive.isHermitian)]
+
+end
+
+end UEOTQM.QuantumTraceDistance

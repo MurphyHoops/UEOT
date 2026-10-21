@@ -1,0 +1,35 @@
+{
+  "schema": "ueot_physics.publication_font.v3.5",
+  "recorded_at_utc": "2026-10-20T15:46:31.660813+00:00",
+  "method": "Scale CJK outline coordinates to the Latin font units-per-em; omit vertical-only CJK metrics for this horizontal book and Latin MATH metadata because XeLaTeX uses its separate math font; merge Latin first; rename output family.",
+  "fonttools_version": "4.61.1",
+  "inputs": [
+    {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "bytes": 759720,
+      "sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280"
+    },
+    {
+      "path": "/workspace/scratch/474cf6b1f047/output/pdf/ueot_physics_v33/UEOT_CJK.ttf",
+      "bytes": 3556308,
+      "sha256": "ee38813ea00c3e32add4268fff7fff9e39417b4913cb13be2415164a47807cc2"
+    }
+  ],
+  "cjk_original_units_per_em": 256,
+  "output_units_per_em": 2048,
+  "output": {
+    "path": "/tmp/qm319_publication_font/UEOTPublication.ttf",
+    "bytes": 4444096,
+    "sha256": "5bb40d186ac5a6c28d177bf413bc124c333288629455d5f94dd3f566f69b9bf3"
+  },
+  "unicode_codepoints": 38909,
+  "missing_markdown_codepoints": [],
+  "latin_ascii_fully_covered": true,
+  "old_v3_3_cjk_font_bytes_reused": true,
+  "same_as_v3_4_cjk_input": false,
+  "recovery_reason": "Use the available byte-bound font from the actual prior v3.3 publication; the v3.4 temporary CJK input is absent. The new merged font and full new PDF layout have separate identities and actual validation.",
+  "layout_acceptance": "PENDING_ACTUAL_XELATEX_AND_VISUAL_REVIEW",
+  "actual_preparation_exit_code": 0,
+  "pdf_marker_actually_executed_once": true,
+  "marker_exit_code": 0
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "ueot_physics.legacy_source_reuse.v3.5",
+  "status": "UNCHANGED_SOURCE_IDENTITIES_CONFIRMED",
+  "checked_at_utc": "2026-10-20T16:23:39.093802+00:00",
+  "prior_execution": {
+    "path": "physics/qm/book/evidence/v3.0/legacy-regression.json",
+    "sha256": "55ea29f98524580ba25bdf3581ae0f03034329d671b5edb2d020fa5914e46fae",
+    "bytes": 2145
+  },
+  "previous_identity_receipt": {
+    "path": "physics/qm/book/evidence/v3.4/legacy-source-reuse.json",
+    "sha256": "96e55e4be93766f7cad1c64c76dcd805c0a5d2574d7160e8a04ed3a2b4e4bf8c",
+    "bytes": 2082
+  },
+  "programs": [
+    {
+      "path": "physics/qm/book/verification/verify_ueot_quantum.py",
+      "sha256": "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
+      "bytes": 15176,
+      "program": "verify_ueot_quantum.py",
+      "embedded_block_sha256": "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
+      "embedded_block_bytes": 15176,
+      "embedded_block_identical_to_v3_4": true
+    },
+    {
+      "path": "physics/qm/book/verification/verify_frontier.py",
+      "sha256": "f0eb63e7d743bb9e807526a47708fc36b73e6762ab4fbd27510927f3876094d2",
+      "bytes": 10553,
+      "program": "verify_frontier.py",
+      "embedded_block_sha256": "6719d3340fdbfc305f3b0b1266a012c976843d1862cba8e476a151e40d160401",
+      "embedded_block_bytes": 10552,
+      "embedded_block_identical_to_v3_4": true
+    },
+    {
+      "path": "physics/qm/book/verification/verify_completion.py",
+      "sha256": "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32",
+      "bytes": 4871,
+      "program": "verify_completion.py",
+      "embedded_block_sha256": "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32",
+      "embedded_block_bytes": 4871,
+      "embedded_block_identical_to_v3_4": true
+    }
+  ],
+  "historical_checks": 757,
+  "historical_components": [
+    237,
+    423,
+    97
+  ],
+  "reexecuted_this_edition": false,
+  "scope": "Three actual files and literal program blocks retain their 3.4 bytes. The 757 checks retain their actual 3.0 execution identity; this helper only checks hashes."
+}

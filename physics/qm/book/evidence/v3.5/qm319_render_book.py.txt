@@ -1,0 +1,48 @@
+"""Render actual new-book pages for separately recorded scoped visual review."""
+from pathlib import Path
+from datetime import datetime,timezone
+import hashlib,json,re,subprocess
+import fitz
+from PIL import Image,ImageDraw,ImageFont
+R=Path('/workspace/scratch/f11b4261e187/qm_v318_work');B=R/'physics/qm/book'
+O=Path('/workspace/scratch/f11b4261e187/output/pdf/ueot_physics_v35_final')
+LOW=O/'all-pages-72dpi';FULL=O/'full-pages-110dpi';SHEETS=O/'overview'
+def ident(p):return {'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+def main():
+ out=B/'evidence/v3.5/pdf-render-manifest.json';assert not out.exists(),'Preserve existing render record'
+ for d in [LOW,FULL,SHEETS]:d.mkdir(parents=True,exist_ok=True)
+ pdf=B/'UEOT_PHYSICS.pdf';doc=fitz.open(pdf);count=len(doc);toc=doc.get_toc()
+ structure=json.loads((B/'evidence/v3.5/book-structure.json').read_text())
+ build=json.loads((B/'evidence/v3.5/pdf-build.json').read_text())
+ assert structure['status']=='PASS' and structure['chapters']==66 and structure['numbered_results']==161
+ assert build['pdf_sha256']==ident(pdf)['sha256'] and build['layout_warnings']==[]
+ chapter_starts={}
+ for level,title,page in toc:
+  m=re.match(r'^(6[3-5])\.\s',title)
+  if m:chapter_starts[int(m[1])]=page
+ assert set(chapter_starts)=={63,64,65},chapter_starts
+ appendix_starts=[page for level,title,page in toc if re.match(r'^附录\s*A\.',title)]
+ assert len(appendix_starts)==1 and chapter_starts[63]<chapter_starts[64]<chapter_starts[65]<appendix_starts[0]
+ start=chapter_starts[63];end=appendix_starts[0]-1
+ extra={1,4,40,count,appendix_starts[0]}
+ for level,title,page in toc:
+  if re.match(r'^附录\s*F\.|^F\.[123]\s',title):extra.add(page)
+ selected=sorted(extra|set(range(start,end+1)))
+ subprocess.run(['pdftoppm','-r','72','-png',str(pdf),str(LOW/'page')],check=True,capture_output=True)
+ subprocess.run(['pdftoppm','-f',str(start),'-l',str(end),'-r','110','-png',str(pdf),str(FULL/'page')],check=True,capture_output=True)
+ for page in sorted(extra-set(range(start,end+1))):
+  subprocess.run(['pdftoppm','-f',str(page),'-l',str(page),'-r','110','-png',str(pdf),str(FULL/'page')],check=True,capture_output=True)
+ width=len(str(count));all_pages=[];sheets=[]
+ font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',15)
+ for first in range(1,count+1,36):
+  last=min(first+35,count);canvas=Image.new('RGB',(1200,1800),'#d3d7d9');draw=ImageDraw.Draw(canvas)
+  for k,page in enumerate(range(first,last+1)):
+   p=LOW/f'page-{page:0{width}d}.png';im=Image.open(p).convert('RGB');im.thumbnail((188,269))
+   x=k%6*200+(200-im.width)//2;y=k//6*300+25;canvas.paste(im,(x,y));draw.text((k%6*200+8,k//6*300+5),str(page),font=font,fill='black')
+   all_pages.append({'physical_page':page,**ident(p)})
+  target=SHEETS/f'overview-{first:03d}-{last:03d}.png';canvas.save(target);sheets.append({'pages':[first,last],**ident(target)})
+ full=[{'physical_page':p,**ident(FULL/f'page-{p:0{width}d}.png')} for p in selected]
+ d={'schema':'ueot_physics.pdf_render.v3.5','status':'RENDERED_PENDING_ACTUAL_VISUAL_REVIEW','recorded_at_utc':datetime.now(timezone.utc).isoformat(),'pdf_sha256':ident(pdf)['sha256'],'canonical_source_sha256':ident(B/'UEOT_PHYSICS.md')['sha256'],'page_count':count,'render_engine':'pdftoppm','overview_dpi':72,'full_page_dpi':110,'new_chapter_starts':chapter_starts,'new_chapter_full_page_range':[start,end],'all_pages':all_pages,'all_page_overview':{'pdf_sha256':ident(pdf)['sha256'],'actually_viewed':False,'files':sheets},'rendered_full_pages':full,'toc':toc,'visual_review':'PENDING'}
+ out.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+ print(json.dumps({'status':d['status'],'page_count':count,'new_chapter_range':[start,end],'overview_sheets':len(sheets),'full_pages':selected}))
+if __name__=='__main__':main()

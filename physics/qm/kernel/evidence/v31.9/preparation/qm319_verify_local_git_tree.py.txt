@@ -1,0 +1,92 @@
+"""Construct the exact publication tree in a temporary Git index.
+
+Only content-addressed objects are appended. No commit, ref, checked-out index,
+working-tree file, or existing evidence is replaced.
+"""
+from pathlib import Path
+from datetime import datetime, timezone
+import base64
+import hashlib
+import json
+import os
+import subprocess
+import tempfile
+
+R = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H = Path(__file__).resolve().parent
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+def identity(p):
+    return {'path': str(p), 'sha256': sha(p.read_bytes()), 'bytes': p.stat().st_size}
+
+def git(*args, data=None, env=None):
+    return subprocess.check_output(['git', '-C', str(R), *args], input=data, env=env)
+
+def leaf_map(tree):
+    result = {}
+    for record in git('ls-tree', '-r', '-z', tree).split(b'\0'):
+        if not record:
+            continue
+        left, raw_path = record.split(b'\t', 1)
+        mode, kind, blob = left.decode().split(' ')
+        path = raw_path.decode()
+        assert path not in result
+        result[path] = {'mode': mode, 'type': kind, 'sha': blob}
+    return result
+
+def main():
+    out = H / 'qm319_local_git_tree_verification.json'
+    assert not out.exists(), 'Preserve previous tree verification'
+    pp = H / 'qm319_upload_payload.json'
+    ip = H / 'qm319_publication_inventory.json'
+    bp = H / 'qm319_release_base_tree.json'
+    payload, inventory, base = [json.loads(p.read_bytes()) for p in [pp, ip, bp]]
+    assert base['truncated'] is False
+    assert base['commit'] == inventory['baseline_commit']
+    assert base['sha'] == inventory['baseline_tree']
+    expected = {x['path']: {k: x[k] for k in ['mode', 'type', 'sha']} for x in base['tree'] if x['type'] != 'tree'}
+    assert leaf_map(base['sha']) == expected
+    assert len(payload) == len(inventory['files']) == inventory['file_count']
+    assert [{k: v for k, v in x.items() if k != 'content'} for x in payload] == inventory['files']
+    index_rows = []
+    for item in payload:
+        path = item['path']
+        assert path.startswith(('physics/qm/', 'formalization/ueot-qm/'))
+        assert not any(c in path for c in ['\0', '\n', '\t'])
+        assert item['mode'] in ('100644', '100755')
+        raw = base64.b64decode(item['content'], validate=True) if item['binary'] else item['content'].encode()
+        assert raw == (R / path).read_bytes()
+        assert len(raw) == item['bytes'] and sha(raw) == item['sha256']
+        old = expected.get(path)
+        assert (old['sha'] if old else None) == item['previous_blob']
+        actual_blob = git('hash-object', '-w', '--stdin', data=raw).decode().strip()
+        assert actual_blob == item['git_blob_sha']
+        expected[path] = {'mode': item['mode'], 'type': 'blob', 'sha': actual_blob}
+        index_rows.append((item['mode'] + ' ' + actual_blob + '\t' + path).encode() + b'\0')
+    with tempfile.TemporaryDirectory(prefix='qm319-publication-index-') as td:
+        env = dict(os.environ)
+        env['GIT_INDEX_FILE'] = str(Path(td) / 'index')
+        git('read-tree', base['sha'], env=env)
+        git('update-index', '-z', '--index-info', data=b''.join(index_rows), env=env)
+        tree = git('write-tree', env=env).decode().strip()
+    assert leaf_map(tree) == expected
+    for item in payload:
+        raw = (R / item['path']).read_bytes()
+        assert sha(raw) == item['sha256'] and len(raw) == item['bytes']
+    result = {'schema': 'ueot_qm.actual_local_git_tree.v31.9', 'status': 'PASS',
+        'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+        'baseline_commit': base['commit'], 'baseline_tree': base['sha'],
+        'expected_publication_tree': tree, 'complete_expected_leaf_count': len(expected),
+        'published_files': len(payload), 'unlisted_baseline_leaves_preserved': len(expected) - len(payload),
+        'payload': identity(pp), 'inventory': identity(ip), 'actual_remote_baseline_tree': identity(bp),
+        'source_count': inventory['source_count'], 'source_set_sha256': inventory['source_set_sha256'],
+        'operation_scope': 'Exact Git tree calculated from all frozen decoded bytes plus actual latest base tree. Only Git objects were appended using a temporary index. No commit/ref or checked-out file/index was modified.',
+        'git_ref_mutations': 0, 'working_tree_mutations': 0,
+        'remote_tree_created': False, 'remote_publication_verified': False}
+    out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps(result, ensure_ascii=False))
+
+if __name__ == '__main__':
+    main()

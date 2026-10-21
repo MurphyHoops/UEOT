@@ -1,0 +1,42 @@
+UEOTQM/StoppingRecordBudget.lean:58:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+UEOTQM/StoppingRecordBudget.lean:58:85: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+UEOTQM/StoppingRecordBudget.lean:206:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.StoppingRecordBudget.outside_leafEmbedding`:
+  [DecidableEq O]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/StoppingRecordBudget.lean:339:42: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [activeDefect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingRecordBudget.lean:411:18: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [activeDefect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingRecordBudget.lean:413:15: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [activeDefect, Option.isSome_some, Bool.true_eq, ite_true, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingRecordBudget.lean:413:53: warning: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ha, activeDefect, Option.isSome_some, ite_true, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

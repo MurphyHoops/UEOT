@@ -1,0 +1,241 @@
+from pathlib import Path
+import collections, datetime, hashlib, json, re
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+LEAN = ROOT / 'formalization/ueot-qm'
+H = ROOT.parent / 'handoff'
+E = ROOT / 'physics/qm/kernel/evidence/v31.9/C'
+ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
+FILES = ['UEOTQM/StoppingProtocols.lean', 'UEOTQM/StoppingRecordBudget.lean',
+         'scripts/witnesses/StoppingRecordBudgetExamples.lean']
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def names(namespace, *xs):
+    return ['UEOTQM.' + namespace + '.' + x for x in xs]
+
+def decls(p):
+    s = p.read_text()
+    ns = re.search(r'^namespace (\S+)', s, re.M).group(1)
+    return [{'kind': m[0], 'name': ns + '.' + m[1]} for m in
+            re.findall(r'^(?:@\[[^\]]+\]\s*)?(theorem|def|abbrev)\s+(\S+)', s, re.M)]
+
+def parse(p):
+    raw = p.read_text()
+    assert 'error:' not in raw and 'sorryAx' not in raw and 'declaration uses sorry' not in raw
+    result = []
+    for m in re.finditer(r"'([^']+)' (?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)", raw, re.S):
+        axs = [] if m[2] is None else [a.strip() for a in m[2].split(',') if a.strip()]
+        assert set(axs) <= ALLOWED
+        result.append({'name': m[1], 'axioms': axs})
+    assert len(result) == len({x['name'] for x in result})
+    return result
+
+bindings, ds = [], []
+for f in FILES:
+    p = LEAN / f
+    op = LEAN / '.lake/build/lib/lean' / Path(f).with_suffix('.olean')
+    candidates = []
+    for rp in E.glob('*.json'):
+        r = json.loads(rp.read_text())
+        if r.get('kind') == 'FOCUSED_LEAN_COMPILATION' and r.get('source') == str(p.relative_to(ROOT)):
+            if r.get('status') == 'PASS' and r.get('source_sha256_after') == sha(p):
+                candidates.append((r['finished_utc'], rp, r))
+    assert candidates, 'No actual focused PASS for ' + f
+    _, rp, r = sorted(candidates, key=lambda x: x[0])[-1]
+    assert r['exit_code'] == 0 and r['source_unchanged_during_call'] is True
+    assert r['source_sha256_before'] == sha(p) == sha(ROOT / r['source_snapshot'])
+    assert re.fullmatch('[0-9a-f]{64}', r['olean_sha256'])
+    assert r['log_sha256'] == sha(ROOT / r['log'])
+    assert p.read_bytes() == (ROOT / r['source_snapshot']).read_bytes()
+    ds.append(decls(p))
+    bindings.append({'source': str(p.relative_to(ROOT)), 'source_sha256': sha(p),
+                     'source_bytes': p.stat().st_size, 'source_snapshot': r['source_snapshot'],
+                     'olean': str(op.relative_to(ROOT)), 'olean_sha256': r['olean_sha256'],
+                     'olean_binding_scope': 'Actual focused compile receipt; public module identities independently re-read before/after public-axioms-001. Root unified build may regenerate current output files.',
+                     'actual_compile_receipt': str(rp.relative_to(ROOT)), 'receipt_sha256': sha(rp),
+                     'actual_log': r['log'], 'log_sha256': sha(ROOT / r['log']),
+                     'exit_code': 0, 'declaration_census': dict(collections.Counter(d['kind'] for d in ds[-1]))})
+
+public_receipt = E / 'public-axioms-001.json'
+pr = json.loads(public_receipt.read_text())
+assert pr['status'] == 'PASS' and pr['exit_code'] == 0 and all(pr['checks'].values())
+pa = parse(ROOT / pr['log'])
+assert sha(ROOT / pr['log']) == pr['log_sha256']
+assert [x['name'] for x in pa] == [x['name'] for x in ds[0] + ds[1]]
+assert len(pa) == pr['expected_count'] == pr['actual_count'] == 69
+assert pa == pr['actual']
+for b in pr['source_bindings']:
+    assert sha(ROOT / b['source']) == b['source_sha256']
+    focused = next(x for x in bindings if x['source'] == b['source'])
+    assert focused['olean'] == b['olean'] and focused['olean_sha256'] == b['olean_sha256']
+wa = parse(ROOT / bindings[2]['actual_log'])
+assert [x['name'] for x in wa] == [x['name'] for x in ds[2]]
+assert re.findall(r'^#print axioms (\S+)', (LEAN / FILES[2]).read_text(), re.M) == [x['name'] for x in ds[2]]
+assert len(wa) == 62
+
+P = 'StoppingProtocols'
+B = 'StoppingRecordBudget'
+W = 'StoppingRecordBudgetExamples'
+results = [
+  {
+    'id': 'P-STOP-01', 'anchor': 'p-stop-01', 'title': '原有限停止树的实际吸收补齐',
+    'premises': ['原 Adaptive.Protocol 的完整有限树；有限结果载体 O；所有结果后续都有定义。',
+                 '原动作族是实际完整 Kraus 仪器；量子载体及 Kraus 载体有限。',
+                 '共同补齐深度 N 满足 height π ≤ N。'],
+    'quantified_scope': '任意原协议 π、任意满足高度界的 N、任意原仪器族 I、任意全复矩阵 X、任意 Option 结果历史；不是只对密度态或迹的声明。',
+    'actual_conclusion': '活动 some 动作保留原分支、其 none 分支为零；idle 的 none 分支为恒等、some 分支为零。原叶编码为真实结果前缀加 none 后缀且单射，合法解码的历史恰为编码像。补齐 recordOperator 在原叶编码上逐矩阵等于原记录算子，在非法完整历史上为零；实际 run 全联合矩阵因此回接。',
+    'main_declarations': names(P, 'record_eq_decode', 'record_encode', 'run_matrix'),
+    'support_declarations': names(P, 'height_next_le', 'decode_encode', 'encode_of_decode',
+      'encode_injective', 'decode_eq_some_iff', 'stopTime_le', 'encode_record',
+      'lift_branch_active', 'lift_branch_active_none', 'lift_branch_idle', 'lift_branch_idle_some', 'record_zero'),
+    'witnesses': names(W, 'tree_height', 'early_stopTime', 'late_stopTime', 'early_encoded',
+                      'lateZero_encoded', 'lateOne_encoded'),
+    'proof_outline': ['用原 Kraus 完整性与唯一恒等 idle Kraus 构造实际扩展仪器。',
+                      '对剩余深度归纳证明 encode/decode 两个方向及原词长度界。',
+                      '按 stop/node 与 none/some 分支递归比较任意复矩阵，零分支经后续记录算子仍为零。',
+                      '复用实际固定深度 run 的块矩阵表达，得到全部块的显示相等。'],
+    'limits': ['统一有限高度界不可删去；不是无限停止过程。', '停止标签和原叶信息保留；没有把停止时间改名为 N。',
+               '控制器是明确经典历史的确定因果规则，不是相干控制器。']
+  },
+  {
+    'id': 'P-STOP-02', 'anchor': 'p-stop-02', 'title': '全效应距离保持与原叶联合态回接',
+    'premises': ['任意有限矩形矩阵 V 满足 Vᴴ V = I；比较完整合法效应和完整密度态。',
+                 '原叶补齐实例使用 P-STOP-01 的单射及 N ≥ height π。'],
+    'quantified_scope': '一般部分量化任意有限 α、β、实际等距矩阵 V 与两输入密度态；协议部分量化任意原有限停止树、两实际动作族及两初态。',
+    'actual_conclusion': '等距像由实际单 Kraus CPTP 通道实现。E ↦ V E Vᴴ 在整个扩张空间上仍是合法效应且实际拉回为 E，因此全效应距离精确保留。原叶联合态的坐标等距像等于补齐实际 run；原联合距离和完整原叶 TV 分别精确等于补齐值。',
+    'main_declarations': names(B, 'isometry_state_distance', 'run_eq_embedding', 'original_joint_distance_eq', 'original_record_tv_eq'),
+    'support_declarations': names(B, 'isometryChannel', 'isometry_complement_positive', 'extendEffect',
+      'pullback_extendEffect', 'embeddingChannel', 'embedding_operator_image',
+      'embedding_operator_outside_left', 'embedding_operator_outside_right',
+      'embedding_state_distance', 'leafEmbedding', 'outside_leafEmbedding',
+      'weight_run_encode', 'weight_run_decode_none'),
+    'witnesses': names(W, 'completed_record_tv_exact', 'early_encoded', 'lateZero_encoded', 'lateOne_encoded'),
+    'proof_outline': ['由 Vᴴ V = I 得 P = V Vᴴ 幂等自伴，Q = I-P 满足 Q = Q Qᴴ，故补空间投影为 PSD。',
+                      'I - V E Vᴴ = Q + V(I-E)Vᴴ，得到扩张效应的互补正性；矩阵乘法给实际拉回。',
+                      'CPTP 收缩给一个方向，全效应合法扩张逐概率保持给反向。',
+                      '用原叶编码坐标等距逐项比较联合矩阵；TV 由单射求和及像外零质量保持。'],
+    'limits': ['没有选择默认叶，也没有额外假设原叶类型非空。', '不由本结论自动获得 diamond 距离或任意辅助环境的误差预算。']
+  },
+  {
+    'id': 'P-STOP-03', 'anchor': 'p-stop-03', 'title': '共同有限停止规则的逐动作误差预算',
+    'premises': ['两套实际动作仪器共享同一个原完整有限树 π，故动作选择与停止规则相同。',
+                 'Kraus 索引载体可不同，结果与量子记忆载体相同；N ≥ height π。',
+                 'q_t(h) 是 J 从 σ 出发经过真实前缀 run 的 PSD 块质量。'],
+    'quantified_scope': '任意上述 I、J、π、N 和原完整密度态 ρ、σ；每层求和包括全部完整经典历史，费用仅在该历史实际选 some a 时计入。',
+    'actual_conclusion': '原叶联合态距离 ≤ 初态距离 + Σ_t Σ_{h: C_t(h)=some a} q_t^J(h;σ) δ_rec(I_a,J_a)。原完整叶 TV 和终端量子记忆距离分别受同一个右端控制；此主加权预算不需要统一动作上界。活动 some 的真实缺陷精确等于原缺陷，idle 的真实缺陷为零。未停止概率 s_t 属于 [0,1]；若对所有历史 h（包括零权重历史）只要 C_t(h)=some a 就有 δ_rec(I_a,J_a) ≤ ε_t，则联合界进一步为初态距离 + Σ_t s_t ε_t。',
+    'main_declarations': names(B, 'original_joint_distance_le_activeCost_sum',
+      'original_record_tv_le_activeCost_sum', 'terminal_memory_distance_le_activeCost_sum',
+      'original_joint_distance_le_probability_budget'),
+    'support_declarations': names(B, 'active_state_eq_embedding', 'active_state_distance', 'active_defect',
+      'idle_state_eq', 'idle_defect', 'activeDefect', 'lift_defect_eq', 'activeCost',
+      'actionCost_eq_activeCost', 'activeCost_eq_sum_active', 'activeProbability',
+      'activeProbability_nonneg', 'activeProbability_le_one', 'activeCost_le_probability_mul') +
+      names('ActionRecordBudget', 'run_distance_le_actionCost_sum'),
+    'witnesses': names(W, 'first_defect_zero', 'continuing_defect_quarter', 'first_activeCost_zero',
+      'reference_one_step_weight', 'second_activeCost_sixteenth', 'second_activeProbability_quarter',
+      'activeCost_sum_exact', 'completed_joint_bound'),
+    'proof_outline': ['先以实际等距像证明活动联合态和动作缺陷保持；直接比较双方 idle 状态后证明其上确界为零。',
+                      '将共同停止树映射到已有固定深度控制器，复用已证真实逐步动作预算。',
+                      '将 actionCost 精确重写为参考 J 从 σ 出发的真实历史块权重及原活动动作缺陷，消去 idle 项。',
+                      '通过 P-STOP-02 回到原叶联合态；原记录和终端记忆分别用事件效应与实际偏迹收缩。',
+                      '用非负块质量逐项乘实际活动动作的 ε_t 上界并求和。'],
+    'limits': ['参考权重明确属于 J 和 σ，不可更换成另一实现/初态而不另证。',
+               '共同停止规则不能删除，见 P-STOP-05。', '不处理相干控制器、未建模外部量子记忆、稳定化通道距离或无界停止。']
+  },
+  {
+    'id': 'P-STOP-04', 'anchor': 'p-stop-04', 'title': '停止协议的精确 1/16 记录差异',
+    'premises': ['具体 qubit 完整有理 Kraus 仪器；首步双方共同以 3/4、1/4 记录 0、1。',
+                 '原共同树在首结果 0 时早停，首结果 1 时执行第二动作后停止。',
+                 'I 第二动作确定记录 0；J 第二动作仍以 3/4、1/4 记录 0、1。'],
+    'quantified_scope': '任意共同输入密度态 ρ 的三个原叶概率、原叶 TV 与补齐记录 TV；联合态上界允许任意 ρ、σ。',
+    'actual_conclusion': '三个原叶概率为 I=(3/4,1/4,0)、J=(3/4,3/16,1/16)。第二动作实际全输入记录缺陷为 1/4，J 的第二步真实未停止质量为 1/4；总成本为 1/16，原叶 TV 和补齐 TV 均精确为 1/16。',
+    'main_declarations': names(W, 'stopping_record_tv_exact', 'completed_record_tv_exact',
+      'activeCost_sum_exact', 'completed_joint_bound'),
+    'support_declarations': names(W, 'biased', 'certain', 'biased_record_defect_exact', 'stoppingTree',
+      'exactActions', 'approximateActions', 'exact_early_probability', 'approximate_early_probability',
+      'exact_lateZero_probability', 'approximate_lateZero_probability', 'exact_lateOne_probability',
+      'approximate_lateOne_probability', 'first_activeCost_zero', 'second_activeCost_sixteenth',
+      'second_activeProbability_quarter'),
+    'witnesses': names(W, 'stopping_record_tv_exact', 'completed_record_tv_exact'),
+    'proof_outline': ['以四个幅度 1/2 的实际 Kraus 项构造偏置仪器，正性和完整性均为精确矩阵证明。',
+                      '对全部合法联合效应证明 1/4 的动作缺陷上界，并用实际事件达到下界。',
+                      '计算真实参考一步前缀分布和活动历史，得到 0 + (1/4)(1/4) = 1/16。',
+                      '主预算给 TV 上界，晚停叶 (1,1) 事件给相同下界。'],
+    'limits': ['精确有理形式化正控，不是实验确证。', 'TV 等式比较相同输入；不同输入的联合态结论保留初态距离项。']
+  },
+  {
+    'id': 'P-STOP-05', 'anchor': 'p-stop-05', 'title': '相同量子动作不控制不同停止规则的全部记录',
+    'premises': ['相同的完整原仪器族，量子操作为恒等且原记录确定为 0。',
+                 '两个原控制器分别立即停止和执行一步后停止；因此它们不满足共同停止树前提。',
+                 '用同一个 Option 结果载体及深度 1 比较保留停止标签的记录。'],
+    'quantified_scope': '任意 qubit 输入密度态 ρ；两原动作族实际缺陷均为零，但停止规则不同。',
+    'actual_conclusion': '立即停止记录确定为 none，一步后停记录确定为 some 0，补齐记录 TV 精确为 1。两原终端量子记忆均等于 ρ，因此相同。',
+    'main_declarations': names(W, 'different_stopping_rules_tv_one', 'negative_terminal_memories_equal'),
+    'support_declarations': names(W, 'identityActions', 'oneStepTree', 'negative_action_defects_zero',
+      'immediate_stop_probability', 'one_step_idle_probability', 'immediate_terminal_memory', 'one_step_terminal_memory'),
+    'witnesses': names(W, 'different_stopping_rules_tv_one', 'negative_terminal_memories_equal'),
+    'proof_outline': ['事件 none 在两完成记录中的概率分别为 1 和 0，事件下界结合 TV ≤ 1 得到等号。',
+                      '实际原叶记录算子经 discard_record_operator 求和：立即停止为恒等，单步唯一非零分支仍为恒等。'],
+    'limits': ['此例位于共同控制器条件之外，不否定 P-STOP-03。', '终端量子记忆相同，不声称终端量子态不同。',
+               '不能删除停止标签后再声称保留全部记录差异；不是经验实验。']
+  }
+]
+
+all_named = {d['name'] for group in ds for d in group}
+for result in results:
+    for field in ['main_declarations', 'support_declarations', 'witnesses']:
+        for name in result[field]:
+            assert name in all_named or name == 'UEOTQM.ActionRecordBudget.run_distance_le_actionCost_sum', name
+
+chapter = H / 'C_v319_chapter65_draft.md'
+s = chapter.read_text()
+s = s.replace('<!-- C 线章节草稿：当前等待新增源码实际编译与见证验收；不是完成回执。 -->\n\n', '')
+s = s.replace('任意复杂矩阵', '任意复矩阵')
+s = s.replace('本章拟闭合的责任是原完整有限停止树、有限经典历史控制器、真实 Option 吸收补齐、全部叶联合矩阵、合法效应搬运、实际原动作缺陷以及参考 J 未停止权重预算。统一书稿验收时须以最终源码及实际 Lean 回执逐项确定完成状态，不能由本草稿本身增加证明数量。',
+              '本章已经在实际 Lean 聚焦验收中闭合原完整有限停止树、有限经典历史控制器、真实 Option 吸收补齐、全部叶联合矩阵、合法效应搬运、实际原动作缺陷以及参考 J 未停止权重预算。两个公共模块含 50 条显式 theorem，69 个具名声明通过实际公理审计；具体见证的 45 条 theorem、15 个定义和 2 个缩写共 62 项亦已实际执行并逐名审计。允许基础仅为 propext、Classical.choice、Quot.sound，普通 linter 警告保留。以上是列明有限模型责任的本地数学验收；统一集成和远端发布身份另由对应实际回执记录。[QM319]')
+assert '拟闭合' not in s and '复杂矩阵' not in s
+assert len(re.findall(r'^## 65\.', s, re.M)) == 9
+assert re.findall(r'\*\*(P-STOP-\d+)（', s) == [r['id'] for r in results]
+chapter.write_text(s)
+
+claims = {'schema': 'ueot_qm.lane_claims.v31.9', 'lane': 'C', 'chapter': 65,
+          'status': 'LOCAL_FOCUSED_VERIFIED', 'remote_status': 'NOT_ASSERTED_BY_LANE',
+          'results': results, 'chapter_draft_sha256': sha(chapter),
+          'evidence': {'aggregate': 'physics/qm/kernel/evidence/v31.9/C/accepted-lane.json',
+                       'public_audit': str(public_receipt.relative_to(ROOT)),
+                       'witness_compile_receipt': bindings[2]['actual_compile_receipt']}}
+claim_path = H / 'C_v319_claims.json'
+assert not claim_path.exists()
+claim_path.write_text(json.dumps(claims, ensure_ascii=False, indent=2) + '\n')
+
+aggregate = {'schema': 'ueot_qm.lane_acceptance.v31.9', 'lane': 'C', 'status': 'PASS',
+             'accepted_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+             'bindings': bindings, 'public_modules': 2,
+             'public_declaration_kinds': dict(collections.Counter(d['kind'] for d in ds[0] + ds[1])),
+             'public_declarations': ds[0] + ds[1], 'public_named_axiom_count': len(pa),
+             'public_audit_receipt': str(public_receipt.relative_to(ROOT)),
+             'public_audit_receipt_sha256': sha(public_receipt), 'actual_public_axioms': pa,
+             'witness_declaration_kinds': dict(collections.Counter(d['kind'] for d in ds[2])),
+             'witness_declarations': ds[2], 'witness_named_axiom_count': len(wa), 'actual_witness_axioms': wa,
+             'allowed_axioms': sorted(ALLOWED), 'source_count': 3,
+             'claims_path': str(claim_path), 'claims_sha256': sha(claim_path),
+             'chapter_draft': str(chapter), 'chapter_sha256': sha(chapter),
+             'book_chapter': 65, 'book_sections': 9, 'book_result_ids': [r['id'] for r in results],
+             'unchanged_v318_gates_reexecuted_by_lane': False,
+             'warning_scope': 'Ordinary linter warnings remain in actual logs. No zero-warning claim.',
+             'full_scientific_theory_verified': False, 'new_empirical_experiments': False,
+             'remote_ci_verified_by_lane': False,
+             'scope': 'Actual focused Lean compilation and fully named foundation audit of the two new C public modules and new concrete witness only. Unified source/build verification, book production and remote publication are separate root responsibilities.'}
+for b in bindings:
+    assert sha(ROOT / b['source']) == b['source_sha256']
+aggregate['olean_binding_scope'] = 'Historical focused compilation and subsequent actual public audit identities, independently re-read unchanged at that audit. The root unified build started afterward and may regenerate current cache outputs; this aggregate does not assert unchanged current olean bytes across that build.'
+out = E / 'accepted-lane.json'
+assert not out.exists()
+out.write_text(json.dumps(aggregate, ensure_ascii=False, indent=2) + '\n')
+(E / 'accepted-lane-finalizer.py.txt').write_bytes(Path(__file__).read_bytes())
+(E / 'focused-compile-helper.py.txt').write_bytes((H / 'C_v319_compile.py').read_bytes())
+print(json.dumps({'status': 'PASS', 'aggregate': str(out.relative_to(ROOT)),
+                  'aggregate_sha256': sha(out), 'claims_sha256': sha(claim_path),
+                  'chapter_sha256': sha(chapter), 'public_audits': len(pa), 'witness_audits': len(wa)}, ensure_ascii=False))

@@ -1,0 +1,719 @@
+{
+  "status": "CLEAR_FOCUSED_SCIENCE_AND_EVIDENCE",
+  "reviewer": "A / v319_distance",
+  "reviewed_at_utc": "2026-10-20T15:48:27.512511+00:00",
+  "initial_public_science_review": "/workspace/scratch/f11b4261e187/handoff/A_B_v319_public_source_review.json",
+  "initial_public_science_review_sha256": "f85008c31e61460c8576c043f43718fd584e30fdf3a8d678666bf3dc8b2be9af",
+  "author_summary": {
+    "schema": "ueot_qm.v31.9.B.focused_acceptance.v1",
+    "status": "PASS",
+    "state": "FOCUSED_VERIFIED_UNIFIED_AND_REMOTE_PENDING",
+    "generated_at": "2026-10-20T15:42:41.222989+00:00",
+    "scientific_scope": [
+      "Exact purification existence iff the actual density matrix rank fits the finite auxiliary cardinality",
+      "Attained purification on Fin rank and impossibility on smaller or empty auxiliary carriers",
+      "Actual direct auxiliary isometry between arbitrary full convex-pure states under equal marginals and the stated cardinal direction"
+    ],
+    "public_module_count": 2,
+    "public_explicit_theorem_count": 23,
+    "public_named_audit_count": 29,
+    "public_other_kinds": {
+      "def": 3,
+      "abbrev": 1,
+      "named_instance": 2
+    },
+    "witness_explicit_theorem_count": 25,
+    "witness_definition_count": 9,
+    "witness_named_audit_count": 34,
+    "allowed_foundation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "source_executions": [
+      {
+        "source": {
+          "path": "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean",
+          "bytes": 6493,
+          "sha256": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362"
+        },
+        "execution": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationIsometry-002.json",
+          "bytes": 1125,
+          "sha256": "13998dfe6bed961a21d9cb4d8885c9e64d461730519ae75fc4d1dd25e9cedbf0"
+        },
+        "log": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationIsometry-002.log",
+          "bytes": 1326,
+          "sha256": "46c9ce9b1ab7fd321bfec4078114e17974134a78d63e18fa24c0130da037ae23"
+        },
+        "olean": {
+          "path": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/PurificationIsometry.olean",
+          "bytes": 261456,
+          "sha256": "06ce56a656320a2119d1d344e925d761cf9d9641e6a48978ef1259dc8f50ccb6"
+        }
+      },
+      {
+        "source": {
+          "path": "formalization/ueot-qm/UEOTQM/PurificationDimension.lean",
+          "bytes": 7864,
+          "sha256": "92d030b3fb87e52e35dcf44e620a570eac626ddcc2d7d529656fc93139a98afd"
+        },
+        "execution": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationDimension-003.json",
+          "bytes": 1391,
+          "sha256": "ebcaa0a3d2504c7b588871215b465cbbdcf4da71cdc59cc0a65fc750366a7a84"
+        },
+        "log": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationDimension-003.log",
+          "bytes": 361,
+          "sha256": "914c6e6cf3bc10d10324ef4d5a885c2d7cd1be89d31ee6b77f3d6d390ab8f8ef"
+        },
+        "olean": {
+          "path": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/PurificationDimension.olean",
+          "bytes": 254120,
+          "sha256": "2ed2b71874c8f408aaa8af5b3d86cb30c3f756b9917ef6c57a924dadf16460ff"
+        }
+      },
+      {
+        "source": {
+          "path": "formalization/ueot-qm/scripts/witnesses/PurificationDimensionExamples.lean",
+          "bytes": 9313,
+          "sha256": "637fc97d88d982df2c27a62f5de057fb0551cb3f6c599cba4a08aded92c881a1"
+        },
+        "execution": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationDimensionExamples-002.json",
+          "bytes": 1567,
+          "sha256": "67f35bc885448abff7dec33759e0b827df99cb779f26e69a0fe5ef87993f82a4"
+        },
+        "log": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationDimensionExamples-002.log",
+          "bytes": 4002,
+          "sha256": "26d61abc7fa111bc845bd43da330bcb0f8d820d16d9a40d53c54d948c24c3de1"
+        }
+      }
+    ],
+    "public_audit": {
+      "path": "physics/qm/kernel/evidence/v31.9/B/public-audit-001.json",
+      "bytes": 6046,
+      "sha256": "6e889621705cb1600b9d912803a85edc61d8b011de5c3e09514b02feb8e109a0"
+    },
+    "witness_audit": {
+      "path": "physics/qm/kernel/evidence/v31.9/B/witness-audit.json",
+      "bytes": 5458,
+      "sha256": "ff0cbf547258c7425c445182ac1571ef548bb5f399796e0e368b02d513b81fc8"
+    },
+    "named_declarations": {
+      "path": "physics/qm/kernel/evidence/v31.9/B/named-declarations.json",
+      "bytes": 8948,
+      "sha256": "82d1a17985e1ec03da5e569f6302221e77780698cfdfb36440f35168c6f1eefd"
+    },
+    "book_chapter_draft": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/B_v319_book_chapter.md",
+      "bytes": 13686,
+      "sha256": "8db2e2269cbe8e61311408b5b2f5ab2b07116e4453886c83b4795f19241e01e4"
+    },
+    "new_claim_draft": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/B_v319_claims.json",
+      "bytes": 9538,
+      "sha256": "f1c1bc21fdc50ef69ce4c2d1d8e8174a2d62921b3b2a5f6ebbea2b59f40d8a8a"
+    },
+    "book_result_ids": [
+      "P-PDM-01",
+      "P-PDM-02",
+      "P-PDM-03",
+      "P-PDM-04",
+      "N-PDM-01"
+    ],
+    "retained_failed_attempts": [
+      {
+        "receipt": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationIsometry-001.json",
+          "bytes": 1039,
+          "sha256": "6f6e76c37616d2708ae537a1c943d900949575de9f4f1305be8067a8e47d5974"
+        },
+        "reason": "Default sandbox could not locate native Lake installation; no Lean theorem checking started."
+      },
+      {
+        "receipt": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationDimension-001.json",
+          "bytes": 1305,
+          "sha256": "3937bc52ad140c9068c59dc26edc706f4f78d655b9003adf616a0758bc35677b"
+        },
+        "reason": "Spectral-support finite type instance representation required correction."
+      },
+      {
+        "receipt": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationDimension-002.json",
+          "bytes": 1305,
+          "sha256": "4388ca0310a3377f1f03b56824c04ab9baf1ee05f0a9be93631704239ef13261"
+        },
+        "reason": "Incorrect library lemma name for complex conjugation of a real scalar; fixed to existing conj_ofReal."
+      },
+      {
+        "receipt": {
+          "path": "physics/qm/kernel/evidence/v31.9/B/PurificationDimensionExamples-001.json",
+          "bytes": 1567,
+          "sha256": "cc2da71264ae13e10020e1d0636f43b99b454faf56620186a8bb5089219a4ef5"
+        },
+        "reason": "Concrete Fin3 zero-row simplification left the negative control unsolved; not accepted, repaired with explicit row-zero proof."
+      }
+    ],
+    "ordinary_linter_warnings_present": true,
+    "core_sources_modified_by_lane": false,
+    "old_evidence_overwritten": false,
+    "old_unified_acceptance_replayed": false,
+    "new_real_experiments": false,
+    "complete_natural_theory_verified": false,
+    "pending": [
+      "Root integration and global unified acceptance",
+      "Canonical monograph typesetting and visual acceptance",
+      "Actual source PR/main CI and remote publication"
+    ],
+    "helper_archive": [
+      {
+        "path": "physics/qm/kernel/evidence/v31.9/B/compile-helper.py.txt",
+        "bytes": 2591,
+        "sha256": "3a091d8b0efa6f256ec3d3da74973d88c86d3a3f5a37d69a4a6cc9e48905716f"
+      },
+      {
+        "path": "physics/qm/kernel/evidence/v31.9/B/public-audit-helper.py.txt",
+        "bytes": 2720,
+        "sha256": "5ab5f8f637edaa31b486df4e482eb69185841c139557703c86f660939e5203da"
+      },
+      {
+        "path": "physics/qm/kernel/evidence/v31.9/B/finalize-helper.py.txt",
+        "bytes": 7052,
+        "sha256": "6d7b571f194f138a567c3ffb7019667120b66ad06b8ad053d527de3aaace9f00"
+      },
+      {
+        "path": "physics/qm/kernel/evidence/v31.9/B/public-audit-input.lean.txt",
+        "bytes": 2035,
+        "sha256": "e26d7788e8fdc395ac868eaef5baf9e4767d6cfa86e4cfc17edf78207410f9c6"
+      },
+      {
+        "path": "physics/qm/kernel/evidence/v31.9/B/public-targets.json",
+        "bytes": 4225,
+        "sha256": "8db912bff595369fee8e27098920a0dd5dd4d6f69ac8dc1ba94fd78db20066fe"
+      }
+    ],
+    "finalizer_sha256": "6d7b571f194f138a567c3ffb7019667120b66ad06b8ad053d527de3aaace9f00"
+  },
+  "author_summary_sha256": "302f5d7b25b2fc50c3fe2521e3c2fd35a029119010f979f461ae9f8bba34ec6f",
+  "checks": [
+    "Both unchanged public source/olean hashes match independently reviewed mathematics and actual successful focused executions.",
+    "Public audit raw log independently parsed: exactly 29 stable source names, only three allowed foundations.",
+    "Final witness raw log independently parsed: exactly 25 theorem + 9 def, no duplicate/missing/extra/sorryAx.",
+    "Final witness source and real execution hashes match, including repaired concrete zero-row noncoisometry proof.",
+    "Finite mixed rank two, real partial traces, phase-sensitive J action, reverse full-space dimension obstruction are actual conclusions.",
+    "Pure rank one, Unit auxiliary existence and Fin 0 impossibility are present in actual source and revised section 64.7.",
+    "Five proposed book results remain within their stated full finite complex-model premises; no numerical eigensolver or empirical claim.",
+    "Failed attempts retained; focused PASS is not represented as unified or remote PASS."
+  ],
+  "public_names": [
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumPurification.coordinateIsometry",
+      "line": 28
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.coordinateIsometry_adjoint_mul",
+      "line": 32
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.exists_matrix_isometry_of_card_le",
+      "line": 40
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.card_le_of_matrix_isometry",
+      "line": 46
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.exists_matrix_isometry_iff_card_le",
+      "line": 55
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.matrix_isometry_not_coisometry_of_card_lt",
+      "line": 63
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.auxiliary_tensor_mul",
+      "line": 72
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.exists_auxiliary_isometry_of_equal_marginal",
+      "line": 79
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.exists_auxiliary_isometry_action",
+      "line": 102
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.pure_states_isometrically_equivalent",
+      "line": 116
+    },
+    {
+      "kind": "abbrev",
+      "name": "UEOTQM.QuantumPurification.SpectralSupport",
+      "line": 25
+    },
+    {
+      "kind": "instance",
+      "name": "UEOTQM.QuantumPurification.spectralSupportFintype",
+      "line": 28,
+      "local": false
+    },
+    {
+      "kind": "instance",
+      "name": "UEOTQM.QuantumPurification.spectralSupportDecidableEq",
+      "line": 32,
+      "local": false
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.spectralSupport_card",
+      "line": 36
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumPurification.supportedGram",
+      "line": 42
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.density_spectral_expansion",
+      "line": 47
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.supportedGram_spec",
+      "line": 58
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.supportedGram_vector_normalized",
+      "line": 79
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumPurification.supportPurification",
+      "line": 84
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.supportPurification_matrix",
+      "line": 87
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.supportPurification_isPure",
+      "line": 90
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.supportPurification_marginal",
+      "line": 94
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.rank_marginal_le_auxiliary_card",
+      "line": 103
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.exists_purification_of_rank_le",
+      "line": 115
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.exists_purification_iff_rank_le",
+      "line": 127
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.exists_minimal_purification",
+      "line": 138
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.no_purification_of_card_lt_rank",
+      "line": 145
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.density_rank_pos",
+      "line": 153
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumPurification.no_purification_empty_auxiliary",
+      "line": 161
+    }
+  ],
+  "witness_names": [
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.firstFactor"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.secondFactor"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.directIsometry"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.marginalMatrix"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.first_gram"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.second_gram"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.marginal_positive"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.marginal_trace"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.mixed"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.mixed_rank_two"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.first_normalized"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.second_normalized"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.firstState"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.secondState"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.first_pure"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.second_pure"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.first_marginal"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.second_marginal"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.mixed_has_two_dimensional_purification"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.mixed_no_one_dimensional_purification"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.mixed_exact_dimension_criterion"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.direct_adjoint_mul"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.direct_not_coisometry"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.exact_rectangular_vector_action"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.exact_rectangular_density_action"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.generic_direct_isometry_instantiated"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.reverse_full_isometry_impossible"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.pureVector"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.pureVector_normalized"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.PurificationDimensionExamples.pureState"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.pure_state_isPure"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.pure_rank_one"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.pure_has_unit_auxiliary"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.PurificationDimensionExamples.pure_no_empty_auxiliary"
+    }
+  ],
+  "witness_audit": {
+    "expected": [
+      "UEOTQM.PurificationDimensionExamples.firstFactor",
+      "UEOTQM.PurificationDimensionExamples.secondFactor",
+      "UEOTQM.PurificationDimensionExamples.directIsometry",
+      "UEOTQM.PurificationDimensionExamples.marginalMatrix",
+      "UEOTQM.PurificationDimensionExamples.first_gram",
+      "UEOTQM.PurificationDimensionExamples.second_gram",
+      "UEOTQM.PurificationDimensionExamples.marginal_positive",
+      "UEOTQM.PurificationDimensionExamples.marginal_trace",
+      "UEOTQM.PurificationDimensionExamples.mixed",
+      "UEOTQM.PurificationDimensionExamples.mixed_rank_two",
+      "UEOTQM.PurificationDimensionExamples.first_normalized",
+      "UEOTQM.PurificationDimensionExamples.second_normalized",
+      "UEOTQM.PurificationDimensionExamples.firstState",
+      "UEOTQM.PurificationDimensionExamples.secondState",
+      "UEOTQM.PurificationDimensionExamples.first_pure",
+      "UEOTQM.PurificationDimensionExamples.second_pure",
+      "UEOTQM.PurificationDimensionExamples.first_marginal",
+      "UEOTQM.PurificationDimensionExamples.second_marginal",
+      "UEOTQM.PurificationDimensionExamples.mixed_has_two_dimensional_purification",
+      "UEOTQM.PurificationDimensionExamples.mixed_no_one_dimensional_purification",
+      "UEOTQM.PurificationDimensionExamples.mixed_exact_dimension_criterion",
+      "UEOTQM.PurificationDimensionExamples.direct_adjoint_mul",
+      "UEOTQM.PurificationDimensionExamples.direct_not_coisometry",
+      "UEOTQM.PurificationDimensionExamples.exact_rectangular_vector_action",
+      "UEOTQM.PurificationDimensionExamples.exact_rectangular_density_action",
+      "UEOTQM.PurificationDimensionExamples.generic_direct_isometry_instantiated",
+      "UEOTQM.PurificationDimensionExamples.reverse_full_isometry_impossible",
+      "UEOTQM.PurificationDimensionExamples.pureVector",
+      "UEOTQM.PurificationDimensionExamples.pureVector_normalized",
+      "UEOTQM.PurificationDimensionExamples.pureState",
+      "UEOTQM.PurificationDimensionExamples.pure_state_isPure",
+      "UEOTQM.PurificationDimensionExamples.pure_rank_one",
+      "UEOTQM.PurificationDimensionExamples.pure_has_unit_auxiliary",
+      "UEOTQM.PurificationDimensionExamples.pure_no_empty_auxiliary"
+    ],
+    "actual": {
+      "UEOTQM.PurificationDimensionExamples.firstFactor": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.secondFactor": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.directIsometry": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.marginalMatrix": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.first_gram": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.second_gram": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.marginal_positive": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.marginal_trace": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.mixed": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.mixed_rank_two": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.first_normalized": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.second_normalized": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.firstState": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.secondState": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.first_pure": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.second_pure": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.first_marginal": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.second_marginal": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.mixed_has_two_dimensional_purification": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.mixed_no_one_dimensional_purification": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.mixed_exact_dimension_criterion": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.direct_adjoint_mul": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.direct_not_coisometry": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.exact_rectangular_vector_action": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.exact_rectangular_density_action": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.generic_direct_isometry_instantiated": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.reverse_full_isometry_impossible": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.pureVector": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.pureVector_normalized": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.pureState": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.pure_state_isPure": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.pure_rank_one": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.pure_has_unit_auxiliary": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UEOTQM.PurificationDimensionExamples.pure_no_empty_auxiliary": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "duplicate_reports": [],
+    "missing_reports": [],
+    "unexpected_reports": [],
+    "unreviewed_axioms": {},
+    "complete_unique": true,
+    "status": "PASS"
+  },
+  "blocking_findings": [],
+  "new_lean_invocations": 0,
+  "scope": "Independent static scientific review plus current file/raw-log/receipt readback. No new Lean execution; unified acceptance, typesetting, remote CI remain root responsibilities."
+}

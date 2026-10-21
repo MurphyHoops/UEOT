@@ -1,6 +1,6 @@
 {
   "schema": "ueot_physics.source_manifest.v1",
-  "recorded_at_utc": "2026-10-20T11:32:30.365792+00:00",
+  "recorded_at_utc": "2026-10-20T16:23:39.093802+00:00",
   "book_document_id": "UEOT-PHYSICS",
   "canonical_source": "physics/qm/book/UEOT_PHYSICS.md",
   "entries": [
@@ -98,31 +98,30 @@
     "latex_member_equals_standalone": true,
     "pdf_member_equals_standalone": false
   },
-  "current_code_baseline": "7d05d0369b6793e28f0e39efaa77c0c9887479d1",
-  "current_code_manifest": "../kernel/evidence/v31.8/source-manifest.json",
+  "current_code_baseline": "6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1",
+  "current_code_manifest": "../kernel/evidence/v31.9/source-manifest.json",
   "historical_text_witness_policy": "Recovered v23–v30 views are text witnesses with their own bytes; no original-upload byte identity is inferred. Two v28.1 views are retained separately.",
   "historical_text_witness_catalog": "evidence/v3.0/advanced-source-catalog.json",
   "current_code_identity": {
-    "edition": "3.4",
-    "status": "PASS_ACTUAL_LOCAL_UNIFIED_INPUT",
-    "source_count": 89,
-    "manifest_sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
-    "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
-    "identity_rule": "Immutable successful original local unified input. Its source-set and manifest hashes remain a343... and the original manifest. Final 054f... remote acceptance is recorded separately in current_remote_code_identity; no old local run is relabelled.",
-    "local_verification": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
-    "local_verification_sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8",
-    "original_entries_unchanged": true,
+    "edition": "3.5",
+    "status": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "source_count": 98,
+    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+    "manifest_sha256": "a06a42d628b7faea6f07be8a9c843fe1844bab0b296fe094bdecf2c894de321b",
+    "local_verification": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
+    "local_verification_sha256": "5cf40ac8ef5f8adff77bf2f4bc76a4913169e27b30479cd9379a49dc7128e935",
     "remote_verified": false,
-    "remote_status": "NOT_THE_REMOTE_CI_INPUT",
-    "repository": "MurphyHoops/UEOT"
+    "remote_status": "PENDING",
+    "repository": "MurphyHoops/UEOT",
+    "identity_rule": "Exact current raw sources match the actual unified input. New execution and immutable historical reuse remain separately labelled."
   },
   "canonical_identity": {
-    "edition": "3.4",
-    "sha256": "868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a",
-    "bytes": 579172,
-    "chapters": 63,
+    "edition": "3.5",
+    "sha256": "b726e3b9033d79ef949b8e83469901fe728aa28ab204b2e4d55bf36a18b412f0",
+    "bytes": 631531,
+    "chapters": 66,
     "appendices": 6,
-    "numbered_results": 147
+    "numbered_results": 161
   },
   "historical_code_baselines": [
     {
@@ -162,21 +161,19 @@
     }
   ],
   "legacy_program_reuse": {
-    "receipt": "physics/qm/book/evidence/v3.4/legacy-source-reuse.json",
-    "receipt_sha256": "96e55e4be93766f7cad1c64c76dcd805c0a5d2574d7160e8a04ed3a2b4e4bf8c",
-    "prior_execution": "physics/qm/book/evidence/v3.0/legacy-regression.json",
+    "receipt": "physics/qm/book/evidence/v3.5/legacy-source-reuse.json",
+    "receipt_sha256": "d4989efed9facced85456d0943a57ee55c478e56d9b94d16353fa031d4c1062c",
     "reexecuted_this_edition": false,
-    "scope": "Identity-only reuse; 757 checks retain their actual 3.0 execution date."
+    "historical_checks": 757
   },
   "original_entry_preservation": {
     "entry_count": 11,
-    "all_entry_records_identical_to_v3_3": true,
+    "all_entry_records_identical_to_v3_4": true,
     "prior_manifest": {
-      "path": "physics/qm/book/evidence/v3.4/source-manifest-prior-v3.3.json",
-      "sha256": "cea806e2af3a8d45878aec004ba685448298acce4c58ad69b2306dfea8b016e6",
-      "bytes": 13776
-    },
-    "scope": "Original source objects, provenance, hashes and locators are unchanged."
+      "path": "physics/qm/book/evidence/v3.5/source-manifest-prior-v3.4.json",
+      "sha256": "1ca1ebd1a0fe9f65849f36673bcb98e5759df7a4bbc93240e61575a7531f6ffd",
+      "bytes": 24854
+    }
   },
   "prior_v3_2_code_identity": {
     "edition": "3.2",
@@ -231,142 +228,91 @@
     }
   },
   "remote_metadata_completion": {
-    "status": "MAIN_VERIFIED",
-    "remote_verified": true,
-    "recorded_at_utc": "2026-10-20T12:50:31.735764+00:00",
-    "receipt": {
-      "path": "physics/qm/book/evidence/v3.4/remote-publication.json",
-      "status": "MAIN_VERIFIED",
-      "hash_binding_direction": "The external receipt binds updated metadata hashes; no receipt hash is embedded here."
-    },
-    "prior_metadata": {
-      "path": "physics/qm/book/SOURCE_MANIFEST.json",
-      "sha256": "c5f953a6f0fe64b304a11c675d236733081d2528cbe6bae28a9aaf9e6f276526",
-      "bytes": 17074,
-      "git_blob_sha": "082f58fde89d25a7f276795f22b0e2967dd9e2e5",
-      "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
-      "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
-      "historical_resolution": "Read this path at the actual source commit, not at the later metadata commit."
-    },
-    "prior_current_code_identity": {
-      "edition": "3.4",
-      "status": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "source_count": 89,
-      "manifest_sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
-      "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
-      "identity_rule": "This identity is the immutable successful unified build input, not the final publication raw set. publication_source_identity separately records the single documentation-word correction and actual bridge; final raw CI remains pending.",
-      "local_verification": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
-      "local_verification_sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8",
-      "original_entries_unchanged": true,
-      "remote_verified": false,
-      "remote_status": "PENDING",
-      "repository": "MurphyHoops/UEOT"
-    },
-    "prior_remote_metadata_completion": {
-      "status": "PENDING",
-      "remote_verified": false,
-      "scope": "Current edition 3.4 / v31.8 only; prior 3.3 MAIN_VERIFIED remains in explicit history."
-    },
-    "immutable_local_receipts": [
-      {
-        "path": "physics/qm/book/evidence/v3.4/local-release-gates.json",
-        "sha256": "a555d253fc7c2a4f2e71d1fbac87de22bbc35af0c5dafe32aff3244779517f51",
-        "bytes": 6300
-      },
-      {
-        "path": "physics/qm/book/evidence/v3.4/dossier-review.json",
-        "sha256": "4a60de4a24488e625d66cec2cb2e7d110b7fee32a904145304bd8290d31cca9a",
-        "bytes": 22914
-      }
-    ],
-    "metadata_commit_is_not_ci_tested_source_commit": true
+    "edition": "3.5",
+    "status": "PENDING",
+    "remote_verified": false,
+    "scope": "Only current 3.5/v31.9 acceptance. Source PR and independent merged-main CI must execute before remote identities are recorded."
   },
-  "current_code_baseline_role": "Historical authoring baseline. current_code_identity retains the original local unified input; current_remote_code_identity records the separately tested final publication source and merged main.",
-  "current_publication_code_manifest": "../kernel/evidence/v31.8/publication-source-manifest.json",
+  "current_code_baseline_role": "Completed v31.8/3.4 authoring baseline; not current v31.9 source or CI identity.",
+  "current_publication_code_manifest": "../kernel/evidence/v31.9/source-manifest.json",
   "unified_source_identity": {
     "manifest": {
-      "path": "physics/qm/kernel/evidence/v31.8/source-manifest.json",
-      "bytes": 16700,
-      "sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc"
+      "path": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
+      "sha256": "a06a42d628b7faea6f07be8a9c843fe1844bab0b296fe094bdecf2c894de321b",
+      "bytes": 18462
     },
     "verification": {
-      "path": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
-      "bytes": 3859,
-      "sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8"
+      "path": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
+      "sha256": "5cf40ac8ef5f8adff77bf2f4bc76a4913169e27b30479cd9379a49dc7128e935",
+      "bytes": 4604
     },
-    "source_count": 89,
-    "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
-    "actual_build_jobs": 8799
+    "source_count": 98,
+    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+    "actual_build_jobs": 8805,
+    "execution_partition": {
+      "mode": "ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE",
+      "new_witnesses": {
+        "file_count": 3,
+        "theorems": 105,
+        "definitions": 39,
+        "abbreviations": 3,
+        "audits": 147,
+        "receipt": {
+          "path": "physics/qm/kernel/evidence/v31.9/new-finite-witnesses/verification.json",
+          "sha256": "f5b5f558307d439420332e8f13b411fcaf60cbac18d035caea090686a0e1370a",
+          "bytes": 184338
+        },
+        "actually_executed_this_acceptance": true
+      },
+      "old_witnesses": {
+        "file_count": 10,
+        "theorems": 193,
+        "definitions": 71,
+        "abbreviations": 5,
+        "audits": 269,
+        "actually_executed_this_acceptance": false,
+        "prior_local_receipt": "physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json",
+        "actual_prior_main_ci": 39424068985
+      },
+      "exact_certificates": {
+        "positive_instances": 6,
+        "positive_audits": 42,
+        "corrupted_true_rejections": 4,
+        "same_data_false_proofs": 4,
+        "receipt": "physics/qm/kernel/evidence/v31.8/lean-exports/verification.json",
+        "actually_executed_this_acceptance": false
+      },
+      "runtime": {
+        "methods": 100,
+        "receipt": "physics/qm/kernel/evidence/v31.8/runtime-verification.json",
+        "actually_executed_this_acceptance": false
+      },
+      "demos": {
+        "programs": 4,
+        "receipt": "physics/qm/kernel/evidence/v31.8/demos-verification.json",
+        "actually_executed_this_acceptance": false
+      },
+      "reuse_review": {
+        "path": "physics/qm/kernel/evidence/v31.9/legacy-reuse.json",
+        "sha256": "a7fc3f0786a741649fdd4027911a1e1b76fc1895f098f8b69767d424ac37d6a1",
+        "bytes": 134681
+      },
+      "scope": "Historical successful runs retain their original identity. Only three new witnesses and the current unified public build/audit are executed in this acceptance; no old raw CI log parser or artifact ZIP inspection is inferred."
+    }
   },
   "publication_source_identity": {
     "manifest": {
-      "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
-      "bytes": 16700,
-      "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
+      "path": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
+      "sha256": "a06a42d628b7faea6f07be8a9c843fe1844bab0b296fe094bdecf2c894de321b",
+      "bytes": 18462
     },
-    "source_count": 89,
-    "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
-    "status": "MAIN_VERIFIED",
-    "reconciliation": {
-      "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
-      "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
-      "bytes": 3387
-    },
-    "additional_local_compiler_invocations": 0,
-    "scope": "The 054f... final raw publication set is bound to actual independent PR/main CI and root per-path Git-blob reconciliation. The original 8799-job local run remains bound exclusively to the unchanged a343... unified_source_identity.",
-    "remote_status": "MAIN_VERIFIED",
-    "remote_verified": true,
-    "actual_remote_identity": {
-      "edition": "3.4",
-      "status": "MAIN_VERIFIED",
-      "remote_status": "MAIN_VERIFIED",
-      "remote_verified": true,
-      "repository": "MurphyHoops/UEOT",
-      "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
-      "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
-      "tested_main_commit": "97c7b29c1aec470be58ca34b552e9d56ad06c197",
-      "tested_main_tree": "2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d",
-      "pull_request": 350,
-      "pr_run": 39420751354,
-      "main_run": 39424068985,
-      "pr_status": "PASS",
-      "main_status": "PASS",
-      "source_count": 89,
-      "source_set_sha256": "054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1",
-      "pull_request_url": "https://github.com/MurphyHoops/UEOT/pull/350",
-      "pr_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39420751354",
-      "main_run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/39424068985",
-      "source_and_main_tree_identical": false,
-      "manifest": {
-        "path": "physics/qm/kernel/evidence/v31.8/publication-source-manifest.json",
-        "bytes": 16700,
-        "sha256": "7aa0d43a22921efea0cb25df4c4cdf73dfb620b15ea483b2e86adbb4b5452eb6"
-      },
-      "actual_receipts": {
-        "integration": {
-          "path": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
-          "sha256": "2ef6088e855c386237fa4a79267b60afed4954423d1a1bcfd86243c64555c8ac",
-          "bytes": 12505
-        },
-        "pr": {
-          "path": "physics/qm/kernel/evidence/v31.8/ci/pr-39420751354-verification.json",
-          "sha256": "615df3bef413a4327942a8a3c2ed902175313461c27d4dab7e4485afdc61004a",
-          "bytes": 141226
-        },
-        "main": {
-          "path": "physics/qm/kernel/evidence/v31.8/ci/main-39424068985-verification.json",
-          "sha256": "5422fb4f5d1fe3a677fd8ed7e9f84a823bc4a53451192c321013b4b261bd2af1",
-          "bytes": 141228
-        }
-      },
-      "publication_reconciliation": {
-        "path": "physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json",
-        "sha256": "7b08a608fa2fe418bbdf65c8ebb0dbcaa25519ffeb98be0f3aa6d69fac8183b1",
-        "bytes": 3387
-      },
-      "identity_rule": "Actual source PR and independent merged-main CI test the final 89-source publication bytes. The prior a343... local build is a separate immutable input. This later metadata commit is not either CI-tested commit.",
-      "metadata_only_followup": true
-    }
+    "source_count": 98,
+    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+    "relation_to_unified_source": "EXACT_SAME_BYTES",
+    "status": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "remote_verified": false,
+    "remote_status": "PENDING",
+    "scope": "All 98 final raw input paths exactly match the actual local unified manifest. No comment bridge and no invented remote run."
   },
   "prior_v3_3_code_identity": {
     "edition": "3.3",
@@ -449,16 +395,37 @@
     }
   },
   "prior_edition_snapshot": {
-    "path": "physics/qm/book/evidence/v3.4/source-manifest-prior-v3.3.json",
-    "sha256": "cea806e2af3a8d45878aec004ba685448298acce4c58ad69b2306dfea8b016e6",
-    "bytes": 13776
+    "path": "physics/qm/book/evidence/v3.5/source-manifest-prior-v3.4.json",
+    "sha256": "1ca1ebd1a0fe9f65849f36673bcb98e5759df7a4bbc93240e61575a7531f6ffd",
+    "bytes": 24854
   },
   "local_release_receipt": {
-    "path": "physics/qm/book/evidence/v3.4/local-release-gates.json",
-    "hash_binding_direction": "The external release receipt binds this manifest hash; no reverse hash."
+    "path": "physics/qm/book/evidence/v3.5/local-release-gates.json",
+    "hash_binding_direction": "External terminal receipt binds this manifest; no reverse hash."
   },
-  "current_release_stage": "MAIN_VERIFIED",
+  "current_release_stage": "LOCAL_VERIFIED_REMOTE_PENDING",
   "current_remote_code_identity": {
+    "edition": "3.5",
+    "status": "PENDING",
+    "remote_verified": false,
+    "scope": "Only current 3.5/v31.9 acceptance. Source PR and independent merged-main CI must execute before remote identities are recorded."
+  },
+  "local_release_receipt_scope": "Current edition 3.5 local checkpoint; exact prior local/remote metadata remain in the 3.4 snapshot.",
+  "prior_v3_4_code_identity": {
+    "edition": "3.4",
+    "status": "PASS_ACTUAL_LOCAL_UNIFIED_INPUT",
+    "source_count": 89,
+    "manifest_sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
+    "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+    "identity_rule": "Immutable successful original local unified input. Its source-set and manifest hashes remain a343... and the original manifest. Final 054f... remote acceptance is recorded separately in current_remote_code_identity; no old local run is relabelled.",
+    "local_verification": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
+    "local_verification_sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8",
+    "original_entries_unchanged": true,
+    "remote_verified": false,
+    "remote_status": "NOT_THE_REMOTE_CI_INPUT",
+    "repository": "MurphyHoops/UEOT"
+  },
+  "prior_v3_4_remote_code_identity": {
     "edition": "3.4",
     "status": "MAIN_VERIFIED",
     "remote_status": "MAIN_VERIFIED",
@@ -509,5 +476,113 @@
     "identity_rule": "Actual source PR and independent merged-main CI test the final 89-source publication bytes. The prior a343... local build is a separate immutable input. This later metadata commit is not either CI-tested commit.",
     "metadata_only_followup": true
   },
-  "local_release_receipt_scope": "Immutable pre-remote checkpoint, including its original pending status and source-commit metadata bytes; current metadata hashes are bound by evidence/v3.4/remote-publication.json."
+  "prior_v3_4_canonical_identity": {
+    "edition": "3.4",
+    "sha256": "868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a",
+    "bytes": 579172,
+    "chapters": 63,
+    "appendices": 6,
+    "numbered_results": 147
+  },
+  "prior_v3_4_remote_metadata_completion": {
+    "status": "MAIN_VERIFIED",
+    "remote_verified": true,
+    "recorded_at_utc": "2026-10-20T12:50:31.735764+00:00",
+    "receipt": {
+      "path": "physics/qm/book/evidence/v3.4/remote-publication.json",
+      "status": "MAIN_VERIFIED",
+      "hash_binding_direction": "The external receipt binds updated metadata hashes; no receipt hash is embedded here."
+    },
+    "prior_metadata": {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "c5f953a6f0fe64b304a11c675d236733081d2528cbe6bae28a9aaf9e6f276526",
+      "bytes": 17074,
+      "git_blob_sha": "082f58fde89d25a7f276795f22b0e2967dd9e2e5",
+      "source_commit": "d9a1858c86ca82e08ae862389b51c1ea76690c24",
+      "source_tree": "6717f47ff1a062f04cb0ba54e01ebaeddac5770a",
+      "historical_resolution": "Read this path at the actual source commit, not at the later metadata commit."
+    },
+    "prior_current_code_identity": {
+      "edition": "3.4",
+      "status": "LOCAL_VERIFIED_REMOTE_PENDING",
+      "source_count": 89,
+      "manifest_sha256": "d5456242bff0ffb406ceb1ec4920caafff6881a676aab9ee1f25478c7dd645dc",
+      "source_set_sha256": "a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e",
+      "identity_rule": "This identity is the immutable successful unified build input, not the final publication raw set. publication_source_identity separately records the single documentation-word correction and actual bridge; final raw CI remains pending.",
+      "local_verification": "physics/qm/kernel/evidence/v31.8/lean-verification.json",
+      "local_verification_sha256": "15fbb28fc1822bb55c9e4470a02d9f2cc143ead8b27baec185922c8dd4c564d8",
+      "original_entries_unchanged": true,
+      "remote_verified": false,
+      "remote_status": "PENDING",
+      "repository": "MurphyHoops/UEOT"
+    },
+    "prior_remote_metadata_completion": {
+      "status": "PENDING",
+      "remote_verified": false,
+      "scope": "Current edition 3.4 / v31.8 only; prior 3.3 MAIN_VERIFIED remains in explicit history."
+    },
+    "immutable_local_receipts": [
+      {
+        "path": "physics/qm/book/evidence/v3.4/local-release-gates.json",
+        "sha256": "a555d253fc7c2a4f2e71d1fbac87de22bbc35af0c5dafe32aff3244779517f51",
+        "bytes": 6300
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.4/dossier-review.json",
+        "sha256": "4a60de4a24488e625d66cec2cb2e7d110b7fee32a904145304bd8290d31cca9a",
+        "bytes": 22914
+      }
+    ],
+    "metadata_commit_is_not_ci_tested_source_commit": true
+  },
+  "scientific_execution_partition": {
+    "mode": "ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE",
+    "new_witnesses": {
+      "file_count": 3,
+      "theorems": 105,
+      "definitions": 39,
+      "abbreviations": 3,
+      "audits": 147,
+      "receipt": {
+        "path": "physics/qm/kernel/evidence/v31.9/new-finite-witnesses/verification.json",
+        "sha256": "f5b5f558307d439420332e8f13b411fcaf60cbac18d035caea090686a0e1370a",
+        "bytes": 184338
+      },
+      "actually_executed_this_acceptance": true
+    },
+    "old_witnesses": {
+      "file_count": 10,
+      "theorems": 193,
+      "definitions": 71,
+      "abbreviations": 5,
+      "audits": 269,
+      "actually_executed_this_acceptance": false,
+      "prior_local_receipt": "physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json",
+      "actual_prior_main_ci": 39424068985
+    },
+    "exact_certificates": {
+      "positive_instances": 6,
+      "positive_audits": 42,
+      "corrupted_true_rejections": 4,
+      "same_data_false_proofs": 4,
+      "receipt": "physics/qm/kernel/evidence/v31.8/lean-exports/verification.json",
+      "actually_executed_this_acceptance": false
+    },
+    "runtime": {
+      "methods": 100,
+      "receipt": "physics/qm/kernel/evidence/v31.8/runtime-verification.json",
+      "actually_executed_this_acceptance": false
+    },
+    "demos": {
+      "programs": 4,
+      "receipt": "physics/qm/kernel/evidence/v31.8/demos-verification.json",
+      "actually_executed_this_acceptance": false
+    },
+    "reuse_review": {
+      "path": "physics/qm/kernel/evidence/v31.9/legacy-reuse.json",
+      "sha256": "a7fc3f0786a741649fdd4027911a1e1b76fc1895f098f8b69767d424ac37d6a1",
+      "bytes": 134681
+    },
+    "scope": "Historical successful runs retain their original identity. Only three new witnesses and the current unified public build/audit are executed in this acceptance; no old raw CI log parser or artifact ZIP inspection is inferred."
+  }
 }

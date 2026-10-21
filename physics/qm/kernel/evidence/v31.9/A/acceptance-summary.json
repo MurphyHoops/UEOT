@@ -1,0 +1,881 @@
+{
+  "schema": "ueot_qm.author_local_acceptance.v31.9.A",
+  "status": "LOCAL_FOCUSED_PROOFS_AND_NAMED_AUDITS_PASS",
+  "readback_at_utc": "2026-10-20T15:44:50.416753+00:00",
+  "unified_local_status": "PENDING_ROOT_INTEGRATION",
+  "remote_status": "PENDING",
+  "public_modules": [
+    {
+      "source": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+      "source_sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+      "source_bytes": 11940,
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/QuantumTraceDistance.olean",
+      "olean_sha256": "25b877f5c905a787dea3348fa712870a3bef8751511c1c7c3255d6ab2fdd7814",
+      "compile_receipt": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-003.json",
+      "compile_receipt_sha256": "87335cd7a7b4a28edd36ab4947f628e539783ff5f09b53e2eeb63e27b7ccd32e",
+      "compile_log": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-003.log",
+      "compile_log_sha256": "a4341e2e7c0042a88de720a8aabb44ed6851e49b1992f8c320fbe2b9018cc542",
+      "exit_code": 0
+    },
+    {
+      "source": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+      "source_sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+      "source_bytes": 7177,
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/BinaryDiscrimination.olean",
+      "olean_sha256": "2ace1fc7ef5cb9c85de699a746ec7a8e37beff22ad9687c54d403a447ce83306",
+      "compile_receipt": "physics/qm/kernel/evidence/v31.9/A/BinaryDiscrimination-compile-001.json",
+      "compile_receipt_sha256": "9e6e2cbb53ac3d923cbb524bc7262de9abbc42563e16f2a31f38448c17ba3875",
+      "compile_log": "physics/qm/kernel/evidence/v31.9/A/BinaryDiscrimination-compile-001.log",
+      "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 0
+    }
+  ],
+  "public_declaration_counts": {
+    "def": 6,
+    "theorem": 34
+  },
+  "public_audit_count": 40,
+  "public_declarations": [
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal",
+      "line": 26
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_add",
+      "line": 29
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_sub",
+      "line": 33
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_mul",
+      "line": 37
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_zero",
+      "line": 41
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_one",
+      "line": 45
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_posSemidef",
+      "line": 49
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.mass_unitaryDiagonal",
+      "line": 58
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumTraceDistance.positivePart",
+      "line": 65
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumTraceDistance.negativePart",
+      "line": 68
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positivePart_posSemidef",
+      "line": 71
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.negativePart_posSemidef",
+      "line": 75
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positivePart_sub_negativePart",
+      "line": 79
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.max_add_max_neg",
+      "line": 85
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.abs_eq_positivePart_add_negativePart",
+      "line": 92
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumTraceDistance.traceAbsolute",
+      "line": 100
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.traceAbsolute_nonneg",
+      "line": 102
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.traceAbsolute_eq_sum_abs_eigenvalues",
+      "line": 105
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect",
+      "line": 114
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_matrix",
+      "line": 121
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_idempotent",
+      "line": 125
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_positivePart",
+      "line": 133
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_negativePart",
+      "line": 142
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_pairing",
+      "line": 152
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.difference_parts_mass_eq",
+      "line": 165
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.effectDistance_le_mass_of_psd_split",
+      "line": 172
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_positivePart_mass",
+      "line": 189
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_attains",
+      "line": 209
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_traceAbsolute",
+      "line": 219
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_sum_abs_eigenvalues",
+      "line": 232
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess",
+      "line": 24
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess_eq",
+      "line": 27
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess_le",
+      "line": 32
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.positiveSpectrumEffect_success",
+      "line": 39
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.exists_optimal_equalPriorDecision",
+      "line": 46
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.optimal_equalPriorSuccess_traceAbsolute",
+      "line": 56
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_mass_of_support_certificate",
+      "line": 64
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.success_eq_optimum_of_support_certificate",
+      "line": 79
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_sum_positive_of_unitary_data",
+      "line": 94
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_half_sum_abs_of_unitary_data",
+      "line": 133
+    }
+  ],
+  "public_audit_receipt": "physics/qm/kernel/evidence/v31.9/A/PublicAxioms-001.json",
+  "public_audit_receipt_sha256": "da3fe0b85443d1481c73afe0f2e56ed7534861b4041891d7b4f71b5edc70fe70",
+  "public_audit_log_sha256": "f0b9c923562fae61a06348570e86321c79db5949e8621ca834be8cb673aca5e8",
+  "concrete_witness": {
+    "source": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+    "source_sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+    "source_bytes": 16729,
+    "olean": "formalization/ueot-qm/.lake/build/lib/lean/scripts/witnesses/QuantumTraceDistanceExamples.olean",
+    "olean_sha256": "f769aa03441e9168ce6142347dd5fdc691cf975ca54727d69010548d6d4688e9",
+    "compile_receipt": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-002.json",
+    "compile_receipt_sha256": "b0da62e544cc2848eae0afc476c1703446c88e8771c10a7ca6beb5f6f82cc23d",
+    "compile_log": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-002.log",
+    "compile_log_sha256": "507626495f83548e3c0d61fa3cfad2910fed2d4c723ef6eb852b3f1f93c32393",
+    "exit_code": 0,
+    "counts": {
+      "abbrev": 1,
+      "def": 15,
+      "theorem": 35
+    },
+    "named_audit_count": 51,
+    "declarations": [
+      {
+        "kind": "abbrev",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.Qubit",
+        "line": 20
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rho",
+        "line": 22
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.sigma",
+        "line": 36
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution",
+        "line": 48
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_hermitian",
+        "line": 50
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_square",
+        "line": 55
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalTest",
+        "line": 61
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalTest_matrix",
+        "line": 65
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalTest_square",
+        "line": 71
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalPositive",
+        "line": 74
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalNegative",
+        "line": 76
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalPositive_psd",
+        "line": 78
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalNegative_psd",
+        "line": 81
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_difference_split",
+        "line": 84
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_support_positive",
+        "line": 89
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_support_negative",
+        "line": 92
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_positive_mass",
+        "line": 96
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_effectDistance",
+        "line": 100
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_rho",
+        "line": 105
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_sigma",
+        "line": 110
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.mixed_states_noncommute",
+        "line": 115
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_traceAbsolute",
+        "line": 120
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_optimal_success",
+        "line": 125
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_all_decisions_le",
+        "line": 129
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phasePlus",
+        "line": 135
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phaseMinus",
+        "line": 143
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phaseTest",
+        "line": 151
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_support_plus",
+        "line": 153
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_support_minus",
+        "line": 156
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_effectDistance",
+        "line": 159
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_traceAbsolute",
+        "line": 164
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_optimal_success",
+        "line": 169
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_difference",
+        "line": 175
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.all_real_effects_miss_phase",
+        "line": 180
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.all_diagonal_effects_miss_phase",
+        "line": 188
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.equal_states_traceAbsolute_zero",
+        "line": 199
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.singletonState",
+        "line": 202
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.singleton_nonzero_trace",
+        "line": 207
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.nonzero_trace_half_formula_fails",
+        "line": 211
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingPart",
+        "line": 216
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingPart_psd",
+        "line": 218
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_are_a_difference_split",
+        "line": 221
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.arbitrary_psd_split_is_not_exact",
+        "line": 224
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_have_no_support_effect",
+        "line": 228
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix",
+        "line": 237
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix_adjoint_mul",
+        "line": 240
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.certificateUnitary",
+        "line": 246
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.spectralRho",
+        "line": 249
+      },
+      {
+        "kind": "def",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.spectralSigma",
+        "line": 261
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.exact_supplied_diagonalization",
+        "line": 273
+      },
+      {
+        "kind": "theorem",
+        "name": "UEOTQM.QuantumTraceDistanceExamples.exact_unitary_certificate_distance",
+        "line": 281
+      }
+    ],
+    "audit": {
+      "expected": [
+        "UEOTQM.QuantumTraceDistanceExamples.Qubit",
+        "UEOTQM.QuantumTraceDistanceExamples.rho",
+        "UEOTQM.QuantumTraceDistanceExamples.sigma",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_hermitian",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_square",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalTest",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalTest_matrix",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalTest_square",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalPositive",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalNegative",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalPositive_psd",
+        "UEOTQM.QuantumTraceDistanceExamples.rationalNegative_psd",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_difference_split",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_support_positive",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_support_negative",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_positive_mass",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_effectDistance",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_rho",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_sigma",
+        "UEOTQM.QuantumTraceDistanceExamples.mixed_states_noncommute",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_traceAbsolute",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_optimal_success",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_all_decisions_le",
+        "UEOTQM.QuantumTraceDistanceExamples.phasePlus",
+        "UEOTQM.QuantumTraceDistanceExamples.phaseMinus",
+        "UEOTQM.QuantumTraceDistanceExamples.phaseTest",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_support_plus",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_support_minus",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_effectDistance",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_traceAbsolute",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_optimal_success",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_difference",
+        "UEOTQM.QuantumTraceDistanceExamples.all_real_effects_miss_phase",
+        "UEOTQM.QuantumTraceDistanceExamples.all_diagonal_effects_miss_phase",
+        "UEOTQM.QuantumTraceDistanceExamples.equal_states_traceAbsolute_zero",
+        "UEOTQM.QuantumTraceDistanceExamples.singletonState",
+        "UEOTQM.QuantumTraceDistanceExamples.singleton_nonzero_trace",
+        "UEOTQM.QuantumTraceDistanceExamples.nonzero_trace_half_formula_fails",
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingPart",
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingPart_psd",
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_are_a_difference_split",
+        "UEOTQM.QuantumTraceDistanceExamples.arbitrary_psd_split_is_not_exact",
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_have_no_support_effect",
+        "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix",
+        "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix_adjoint_mul",
+        "UEOTQM.QuantumTraceDistanceExamples.certificateUnitary",
+        "UEOTQM.QuantumTraceDistanceExamples.spectralRho",
+        "UEOTQM.QuantumTraceDistanceExamples.spectralSigma",
+        "UEOTQM.QuantumTraceDistanceExamples.exact_supplied_diagonalization",
+        "UEOTQM.QuantumTraceDistanceExamples.exact_unitary_certificate_distance"
+      ],
+      "actual": {
+        "UEOTQM.QuantumTraceDistanceExamples.Qubit": [],
+        "UEOTQM.QuantumTraceDistanceExamples.rho": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.sigma": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_hermitian": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_square": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalTest": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalTest_matrix": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalTest_square": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalPositive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalNegative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalPositive_psd": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rationalNegative_psd": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_difference_split": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_support_positive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_support_negative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_positive_mass": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_effectDistance": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_rho": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_sigma": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.mixed_states_noncommute": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_traceAbsolute": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_optimal_success": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.rational_all_decisions_le": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phasePlus": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phaseMinus": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phaseTest": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phase_support_plus": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phase_support_minus": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phase_effectDistance": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phase_traceAbsolute": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phase_optimal_success": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.phase_difference": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.all_real_effects_miss_phase": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.all_diagonal_effects_miss_phase": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.equal_states_traceAbsolute_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.singletonState": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.singleton_nonzero_trace": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.nonzero_trace_half_formula_fails": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingPart": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingPart_psd": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_are_a_difference_split": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.arbitrary_psd_split_is_not_exact": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_have_no_support_effect": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix_adjoint_mul": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.certificateUnitary": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.spectralRho": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.spectralSigma": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.exact_supplied_diagonalization": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UEOTQM.QuantumTraceDistanceExamples.exact_unitary_certificate_distance": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "duplicate_reports": [],
+      "missing_reports": [],
+      "unexpected_reports": [],
+      "unreviewed_axioms": {},
+      "complete_unique": true,
+      "status": "PASS"
+    },
+    "reports_in_exact_source_order": true
+  },
+  "allowed_foundation": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "all_source_and_olean_bindings_match_actual_pass": true,
+  "preserved_failed_attempts": [
+    {
+      "receipt": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-001.json",
+      "receipt_sha256": "898b17312320bc57ef38f3d2c9f81d54c5b5476703abd354975b3950d4b48f1f",
+      "exit_code": 1,
+      "source_sha256": "60c03846c96dda7442c5f82b888da486f9c523696e47ae530061ec4e3d3bd6e1",
+      "snapshot": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-001.lean.txt",
+      "snapshot_sha256": "60c03846c96dda7442c5f82b888da486f9c523696e47ae530061ec4e3d3bd6e1",
+      "log": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-001.log",
+      "log_sha256": "dfce1e7d6849bcb01696e698fae3345a66f15495d7e36f99ac1293476a5bd045"
+    },
+    {
+      "receipt": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-002.json",
+      "receipt_sha256": "cfa316975b886e28fd8695fcab9a8cc4514164c2d23190c70159f4865bc6232b",
+      "exit_code": 1,
+      "source_sha256": "60c03846c96dda7442c5f82b888da486f9c523696e47ae530061ec4e3d3bd6e1",
+      "snapshot": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-002.lean.txt",
+      "snapshot_sha256": "60c03846c96dda7442c5f82b888da486f9c523696e47ae530061ec4e3d3bd6e1",
+      "log": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-002.log",
+      "log_sha256": "74070c150a12dead1f067031c3b6d6e6edc10823b63a1aaa315dee1138858e8d"
+    },
+    {
+      "receipt": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-001.json",
+      "receipt_sha256": "5594a6c3010edf1bdc94eea75f3284c64e7b26a2b7105f89f785fb9be0f97267",
+      "exit_code": 1,
+      "source_sha256": "28fa401255bc5baf9d58b2b5c485609f00bb5adabdb1211a8015e65da6054959",
+      "snapshot": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-001.lean.txt",
+      "snapshot_sha256": "28fa401255bc5baf9d58b2b5c485609f00bb5adabdb1211a8015e65da6054959",
+      "log": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-001.log",
+      "log_sha256": "dc689c6ffd2397e7805ce41817325580a4eb6ffb45d1b88361b704a25852afae"
+    }
+  ],
+  "book_draft": "/workspace/scratch/f11b4261e187/handoff/A_v319_chapter63_draft.md",
+  "book_draft_sha256": "05b1c297e37b7ece03288ae6a44727c3119428b2c4a68c7787e4476b12c920b7",
+  "book_sections": 9,
+  "proposed_book_results": 4,
+  "claim_mapping": "physics/qm/kernel/evidence/v31.9/A/proposed-claims.json",
+  "claim_mapping_sha256": "f79d601c4e39fbcb5a0e23c2724e774432034d27368db551709f07455582c006",
+  "readback_helper": "/workspace/scratch/f11b4261e187/handoff/A_v319_finalize_local.py",
+  "readback_helper_sha256": "9282c39832654abc9a4d241b510c4a277e2e65ba416727fe0d96fa0385849295",
+  "new_lean_invocations_by_this_readback": 0,
+  "scope": "Actual author-focused executions and exact named audit readback only. Counts separate general declarations and concrete witnesses. Root unified acceptance and remote CI remain pending. Standard linter warnings are retained; no zero-warning claim."
+}

@@ -1,0 +1,41 @@
+from pathlib import Path
+import datetime, hashlib, json, os, subprocess, sys
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+FORMAL = ROOT / 'formalization/ueot-qm'
+E = ROOT / 'physics/qm/kernel/evidence/v31.9/B'
+E.mkdir(parents=True, exist_ok=True)
+target = sys.argv[1]
+if target not in ['PurificationIsometry', 'PurificationDimension', 'PurificationDimensionExamples']:
+    raise SystemExit('unsupported target')
+source = FORMAL / (f'scripts/witnesses/{target}.lean' if target.endswith('Examples') else f'UEOTQM/{target}.lean')
+files = [FORMAL / 'UEOTQM/PurificationIsometry.lean', FORMAL / 'UEOTQM/PurificationDimension.lean', FORMAL / 'scripts/witnesses/PurificationDimensionExamples.lean']
+before = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.exists()}
+n = 1
+while (E / f'{target}-{n:03}.json').exists() or (E / f'{target}-{n:03}.log').exists():
+    n += 1
+log = E / f'{target}-{n:03}.log'
+cmd = ['flock', '/tmp/qm317-lean.lock', '/tmp/lean-4.33.1-linux/bin/lake', 'env', 'lean']
+if not target.endswith('Examples'):
+    cmd += ['-o', f'.lake/build/lib/lean/UEOTQM/{target}.olean']
+cmd += [str(source.relative_to(FORMAL))]
+start = datetime.datetime.now(datetime.timezone.utc).isoformat()
+env = dict(os.environ)
+env['PATH'] = '/tmp/lean-4.33.1-linux/bin:' + env.get('PATH', '')
+with log.open('wb') as out:
+    proc = subprocess.run(cmd, cwd=FORMAL, env=env, stdout=out, stderr=subprocess.STDOUT)
+after = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.exists()}
+receipt = {'target': target, 'status': 'PASS' if proc.returncode == 0 else 'FAIL', 'command': cmd,
+    'started_at': start, 'finished_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    'exit_code': proc.returncode, 'source_sha256_before': before, 'source_sha256_after': after,
+    'source_unchanged_during_execution': before == after,
+    'log': str(log.relative_to(ROOT)), 'log_sha256': hashlib.sha256(log.read_bytes()).hexdigest(),
+    'scope': 'Focused compilation of a new v31.9 B source; no v31.8 unified acceptance replay.'}
+if not target.endswith('Examples') and proc.returncode == 0:
+    olean = FORMAL / f'.lake/build/lib/lean/UEOTQM/{target}.olean'
+    receipt['olean_sha256'] = hashlib.sha256(olean.read_bytes()).hexdigest()
+out = E / f'{target}-{n:03}.json'
+out.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({'receipt': str(out), 'target': target, 'exit_code': proc.returncode}, ensure_ascii=False))
+print(log.read_text())
+raise SystemExit(proc.returncode)

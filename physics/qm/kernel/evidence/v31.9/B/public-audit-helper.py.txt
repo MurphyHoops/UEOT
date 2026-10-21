@@ -1,0 +1,41 @@
+from pathlib import Path
+from collections import Counter
+import datetime, hashlib, json, os, re, subprocess
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H = Path('/workspace/scratch/f11b4261e187/handoff')
+E = ROOT / 'physics/qm/kernel/evidence/v31.9/B'
+source = H / 'B_v319_PublicAudit.lean'
+receipt = E / 'public-audit-001.json'
+log = E / 'public-audit-001.log'
+if receipt.exists() or log.exists():
+    raise SystemExit('Refusing to overwrite an actual audit')
+inputs = [source, H / 'B_v319_named_targets.json'] + [ROOT / ('formalization/ueot-qm/UEOTQM/' + m + '.lean') for m in ['PurificationIsometry', 'PurificationDimension']]
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+before = {str(p): sha(p) for p in inputs}
+cmd = ['flock', '/tmp/qm317-lean.lock', '/tmp/lean-4.33.1-linux/bin/lake', 'env', 'lean', str(source)]
+env = dict(os.environ)
+env['PATH'] = '/tmp/lean-4.33.1-linux/bin:' + env.get('PATH', '')
+start = datetime.datetime.now(datetime.timezone.utc).isoformat()
+with log.open('wb') as f:
+    p = subprocess.run(cmd, cwd=ROOT / 'formalization/ueot-qm', env=env, stdout=f, stderr=subprocess.STDOUT)
+finish = datetime.datetime.now(datetime.timezone.utc).isoformat()
+after = {str(p): sha(p) for p in inputs}
+requested = re.findall(r'^#print axioms (\S+)$', source.read_text(), re.M)
+reports = re.findall(r"'([^']+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)", log.read_text())
+actual = {name: sorted(a.strip() for a in axioms.split(',') if a.strip()) for name, axioms in reports}
+allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+passed = p.returncode == 0 and before == after and set(actual) == set(requested)
+passed = passed and all(n == 1 for n in Counter(requested).values()) and all(n == 1 for n in Counter(n for n, _ in reports).values())
+passed = passed and all(set(a) <= allowed for a in actual.values())
+x = {'status': 'PASS' if passed else 'FAIL', 'command': cmd, 'exit_code': p.returncode,
+     'started_at': start, 'finished_at': finish, 'input_sha256_before': before,
+     'input_sha256_after': after, 'inputs_unchanged': before == after,
+     'requested_count': len(requested), 'actual_count': len(reports), 'allowed_foundation': sorted(allowed),
+     'declarations': actual, 'log': str(log.relative_to(ROOT)), 'log_sha256': sha(log),
+     'helper_sha256': sha(Path(__file__)),
+     'scope': 'Actual named axiom audit of the two new v31.9 B modules only; no old unified audit replay.'}
+receipt.write_text(json.dumps(x, indent=2) + '\n')
+print(json.dumps({'status': x['status'], 'receipt': str(receipt), 'exit_code': p.returncode, 'actual_count': len(reports)}))
+if not passed: print(log.read_text())
+raise SystemExit(0 if passed else 1)

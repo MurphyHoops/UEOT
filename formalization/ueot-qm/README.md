@@ -1,22 +1,22 @@
-# UEOT-QM Lean package — v31.8
+# UEOT-QM Lean package — v31.9
 
 This package implements a finite complex quantum sector and typed UEOT Core bridges with pinned Lean **4.33.1** and Mathlib **0df444a360eaa60ab8c11dca51a86af692955474**.
 
-**Current status: MAIN_VERIFIED.** Actual unified compilation passed: 35 modules, 747 explicit theorems and 985 unique named axiom reports, exit 0, 8799 jobs. Ten witness files passed 269 separate reports (193 theorems, 71 definitions, 5 abbreviations). Six exact certificates/42 audits, four paired corrupt-data controls, 100 runtime methods and four demos passed. The actual 89-input source SHA256 is a34337cd75cd70b0f2e1125899c4dcd09aa7b132642adaad2c17ef8a69f12f6e. [Proof receipt](../../physics/qm/kernel/evidence/v31.8/lean-verification.json), [source manifest](../../physics/qm/kernel/evidence/v31.8/source-manifest.json) and [CURRENT](../../physics/qm/status/CURRENT.json) distinguish the original local acceptance from actual successful v31.8 source/main CI and the later metadata publication identity. The current publication raw-input SHA256 is 054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1: one English documentation word was corrected after the actual unified build. The [additive publication bridge](../../physics/qm/kernel/evidence/v31.8/publication-source-reconciliation.json) proves the exact comment-only difference; it does not relabel the 8799-job build or claim another local compiler execution.
+**Current status: LOCAL_VERIFIED_REMOTE_PENDING.** Actual unified public compilation and audit passed: 41 modules, 854 explicit theorems, 1123 unique public audit reports; build exit 0 and 8805 jobs. The current **98** raw source inputs have SHA256 `bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0` for both unified local execution and the unchanged release candidate. [Proof](../../physics/qm/kernel/evidence/v31.9/lean-verification.json), [source](../../physics/qm/kernel/evidence/v31.9/source-manifest.json) and [CURRENT](../../physics/qm/status/CURRENT.json) give the exact identity. Ordinary Lean linter warnings remain; no zero-warning claim is made.
 
-The continuous companion [《UEOT物理学》3.4](../../physics/qm/book/UEOT_PHYSICS.md) contains chapters 0–62 and appendices A–F, 147 numbered results and an actual 229-page [PDF](../../physics/qm/book/UEOT_PHYSICS.pdf). Full exposition and physical premises exceed the limited declarations formally checked here.
+Three new witness files were actually executed in this local acceptance (147 named reports). Ten unchanged historical witness files (269 reports), six numerical certificates/42 reports, four paired corruption controls, 100 runtime methods and four demos are explicitly reused by [actual unchanged source/closure binding](../../physics/qm/kernel/evidence/v31.9/legacy-reuse.json). They were not rerun locally in v31.9. Current PR/main CI acceptance is pending and has no borrowed old run IDs.
 
-Historical [v31.6](../../physics/qm/kernel/evidence/v31.6/integration-verification.json) had 22 modules, 459 explicit theorems and 573 audits, with PR #345 and resulting-main CI accepted. Earlier version evidence retains its own source identities. Frozen Core definitions, its four counted generators and the 106-item coverage ledger are not modified by this increment.
+The continuous companion [《UEOT物理学》3.5](../../physics/qm/book/UEOT_PHYSICS.md) contains chapters 0–65 and appendices A–F, 161 stable numbered results and an actual 248-page [PDF](../../physics/qm/book/UEOT_PHYSICS.pdf). Its exposition, physical premises and open responsibilities are broader than the declarations formally checked here. The 147 old numbered results and 70 historical claim objects are preserved.
 
-## v31.8 scope and remaining responsibilities
+## v31.9 scope and remaining responsibilities
 
-QuantumSeparation represents every finite complex Hermitian matrix by legal effects over real scalars, proves all-effect density separation and adds a new density-equality theorem for zero distance without altering the inherited pseudodistance theorem. ComplexLocalTomography proves the original complex model's tomography property for arbitrary joint densities and all legal product effects; it does not assume product or separable inputs.
+QuantumTraceDistance constructs the actual Hermitian PSD positive/negative parts and standard matrix absolute value, proves the trace spectral formula and identifies all-effect density distance with its half trace using zero trace of the density difference. BinaryDiscrimination constructs an optimal legal effect for actual equal-prior success. Exact PSD support certificates do not contain the target distance as a premise; noncomputable spectral existence is not a certified numerical eigensolver.
 
-PureStateCharacterization derives normalized vector representatives from full convex extremality using positive Gram columns. PurificationUniqueness constructs an actual same-carrier auxiliary unitary with both inverse identities and explicit action direction. Rectangular auxiliary isometries are actual CPTP maps preserving every complex input's system marginal and full density purity; different auxiliaries are embedded in a common sum before applying a genuine unitary.
+PurificationIsometry constructs an actual rectangular isometry over ℂ under the exact auxiliary cardinal direction and transports arbitrary full convex-pure same-marginal densities. PurificationDimension compresses the actual PSD spectrum to nonzero support, derives the matrix-rank lower bound and proves the exact purification-existence iff, attained on Fin rank. Empty/smaller carriers and forbidden reverse isometries are explicitly addressed; strict expansion is not a rectangular unitary.
 
-HistoryChannels explicitly reads/dephases classical histories, proves PSD block/zero-weight and legal restricted-effect facts, and bounds selected channels on a shared input. ActionRecordBudget implements the common finite causal controller, matches the original Protocol's entire quantum-memory state after relabelling and proves initial error plus actual per-action tagged-defect sums, including full-record TV.
+StoppingProtocols derives an absorbing Option completion from one actual finite stopping tree, retaining stopping time, original leaf operators and zero invalid blocks. StoppingRecordBudget proves legal effect extension and exact distance transport, connects complete original leaf-and-memory states, and charges actual per-action defects with J/sigma reference-prefix mass only while the common controller is active. Different stopping rules, coherent controllers, external environments and unbounded stopping need their own hypotheses and proofs.
 
-The prior full classical/real/complex presentations, seven laws, classical/real exclusion examples, arbitrary finite protocol channel and specified-model Doob results retain their own scope. Complex selection from Core, all reconstruction background, minimal auxiliary dimensions, coherent or arbitrary stopping controllers, general spectral existence, infinite conditioning and empirical applicability remain separate obligations.
+Frozen Core's 106-item coverage and four counted generators are unchanged. Independent selection of the complex model from Core, complete physical reconstruction, unconditional physical three generations and empirical confirmation remain unproved by this finite increment.
 
 ## Build and verify
 
@@ -74,13 +74,17 @@ The [QM workflow](../../.github/workflows/ueot-qm.yml) uses the same gates. Its 
 | [PurificationUniqueness](UEOTQM/PurificationUniqueness.lean) | 22 | 真实同载体辅助酉、矩形等距通道和异辅助载体共同直和 |
 | [HistoryChannels](UEOTQM/HistoryChannels.lean) | 23 | 真实读取/去相干历史通道、PSD 块权重、合法块效应和同输入加权缺陷 |
 | [ActionRecordBudget](UEOTQM/ActionRecordBudget.lean) | 31 | 共同有限因果控制器、原协议全态回接、逐动作和及完整记录 TV |
-| **Total** | **747** | 35 package modules; concrete witnesses and generated instances are separate |
+| [QuantumTraceDistance](UEOTQM/QuantumTraceDistance.lean) | 25 | Actual matrix absolute value, PSD spectral parts, attained all-effect distance and noncircular support certificates |
+| [BinaryDiscrimination](UEOTQM/BinaryDiscrimination.lean) | 9 | Actual optimal equal-prior binary discrimination and exact finite certificates |
+| [PurificationIsometry](UEOTQM/PurificationIsometry.lean) | 9 | Exact auxiliary cardinal direction and direct isometry between arbitrary same-marginal full pure states |
+| [PurificationDimension](UEOTQM/PurificationDimension.lean) | 14 | Actual matrix-rank lower bound, spectral-support compression and exact attained minimal auxiliary dimension |
+| [StoppingProtocols](UEOTQM/StoppingProtocols.lean) | 21 | Actual absorbing completion of finite stopping trees, exact decoder and zero invalid history blocks |
+| [StoppingRecordBudget](UEOTQM/StoppingRecordBudget.lean) | 29 | Legal effect extension, original leaf-memory isometry and true remaining-probability action budgets |
+| **Total** | **854** | 41 package modules; witnesses and generated instances are separate |
 
-The current **985** package audit targets comprise **747** explicit theorems and **238** other reviewed named targets. The v31.8 increment is **101 theorems + 29 definitions/abbreviations = 130 targets**. Actual named target sets, constructors and instances are recorded by the source inventory; no compiler-generated constant census is claimed.
+The current **1123** public targets comprise **854** explicit theorems and **269** other reviewed named declarations. The actual v31.9 increment is **107 theorems + 31 other targets = 138 targets**. Constructors and named instances are included where the source inventory explicitly lists them; no compiler-generated constant census is claimed. The actual allowed foundations are only propext, Classical.choice and Quot.sound, not an axiom-free foundation.
 
-Historical v31.7: The **855** package audit targets comprise all **646** explicit theorems plus **209** other reviewed named targets. The v31.7 increment has 187 explicit theorems and 95 other targets, totaling 282 audits; all new explicit declarations, two named instances, two registered instance projections and six structure constructors are covered. The historical v31.6 increment was **125 theorems + 56 other targets = 181 audits**. Its module totals are ClassicalSector **37**, CorePurificationBoundary **51**, RealLocalTomography **50**, and QuantumDoob **43**. All explicit definitions, abbreviations, structures and named instances in these four new modules are included, together with `Classical.Effect.mk` and `QuantumDoob.InvertibleFilter.mk`. The three public Core quotient-type instances are intentionally retained and audited; they supply finite-carrier and discrete-measurable interfaces for imported use. No compiler-generated-constant census is claimed.
-
-The historical v31.5 count was **334 + 58 = 392**, with an increment of **78 theorems + 27 definitions = 105 audited names**: Mixture added 23 + 7, Cesaro added 23 + 7, and Survival added 32 + 13. The preceding v31.4 total was **256 + 31 = 287**; its own increment comprised 60 theorems and 14 definitions, documented in the [effect/stability review](../../physics/qm/audits/EFFECT_STABILITY_REVIEW_v31.4.md) and [focused receipt](../../physics/qm/kernel/evidence/v31.4/metric-focused-audit.json). Audited constructions and type declarations are not additional theorem declarations. The current package totals exclude the **269** dedicated witness targets, the **42** generated positive-instance targets and the **four** generated false-check targets. All audits use the same allowed standard foundation; this is not a claim of an axiom-free foundation.
+Historical v31.8 had 35 modules, 747 explicit theorems and 985 named audits; v31.7 had 29 modules, 646 theorems and 855 audits. Their original receipts and then-tested raw identities remain unchanged. Historical compiler runs are not reidentified as current executions.
 
 ## Exact certificate interface
 
@@ -98,34 +102,36 @@ The checker does not assume global sufficiency. `check_sound`, actual complex in
 
 ## Generated proof instances
 
-The runtime's `export_lean_representation` emits concrete numerical source, not an oracle proof. Six [committed fixtures](../../physics/qm/kernel/certificates/v31.3/exports.json) cover Z, HZ, HSZ, ragged instruments, a complex 1-dimensional example, and a 4-dimensional projector. Each instance independently checks the data and prints seven axiom reports for `checked`, its proof-bearing `presentation`, and five public consequences: all-word iff, finite-tree coordinates, equal leaf laws, normalization, and closed coordinate update. These fixtures were regenerated and actually rechecked against the historical v31.5/v31.6 packages and the final v31.7 and v31.8 packages, each with its own source-bound verification receipt. Their 42 instance audit targets are separate from the current 985 package targets and the dedicated witnesses below.
+The runtime's `export_lean_representation` emits concrete numerical source, not an oracle proof. Six [committed fixtures](../../physics/qm/kernel/certificates/v31.3/exports.json) cover Z, HZ, HSZ, ragged instruments, a complex 1-dimensional example and a 4-dimensional projector. Each actual fixture checks the data and prints seven named audit reports. Their 42 positive reports and four corrupt-true/identical-data-false controls have real historical source-bound execution; this local v31.9 acceptance reuses the unchanged fixture/transitive-input identities instead of replaying them. The [reuse receipt](../../physics/qm/kernel/evidence/v31.9/legacy-reuse.json) states that scope. These are separate from 1123 current package targets and 416 witness targets.
 
 The verifier regenerates and byte-compares all six sources, their complete manifests and the index. It then compiles the actual source bytes and checks the exact expected audit target set. Four post-generation corruptions must fail at the original true-check theorem; a companion containing the identical numeric definitions must also prove `check data = false`. Both compilation outcomes, source hashes, shared data-prefix hashes and actual axioms are recorded. Environment errors or failed reduction alone do not count as rejection evidence.
 
 The generator's manifest deliberately retains `LEAN_SOURCE_EXPORTED_NOT_COMPILED`; a later source-bound verification receipt records actual success. No claim is made that Python, JSON parsing, basis search, elimination, Gram independence, or the source exporter is universally verified. The theorem's object is the supplied numeric padded model. User labels remain external metadata; generated Fin indices use explicit bound proofs instead of modular numeral coercion.
 
-## Retained mathematical witnesses
+## Mathematical witnesses and actual execution scope
 
-Ten actual witness files pass a separate compiler-and-axiom gate.
+The current witness population has thirteen source files. The table distinguishes the three actual new local executions from ten source-bound historical reuses.
 
-| Source | Theorems | Definitions | Abbreviations | Named reports |
-|---|---:|---:|---:|---:|
-| MixtureExamples | 5 | 4 | 0 | 9 |
-| SurvivalTwoState | 24 | 6 | 0 | 30 |
-| RealTomographyTwoRebit | 5 | 0 | 0 | 5 |
-| QuantumDoobExamples | 28 | 12 | 0 | 40 |
-| QuantumPurificationExamples | 13 | 7 | 0 | 20 |
-| ClassicalQuantumMemoryExamples | 15 | 5 | 2 | 22 |
-| QuantumDoobDynamicsExamples | 20 | 5 | 0 | 25 |
-| QuantumSeparationExamples | 19 | 8 | 1 | 28 |
-| PurificationUniquenessExamples | 28 | 10 | 0 | 38 |
-| ActionRecordBudgetExamples | 36 | 14 | 2 | 52 |
-| Total | 193 | 71 | 5 | 269 |
+| Source | Theorems | Definitions | Abbreviations | Named reports | Local v31.9 treatment |
+|---|---:|---:|---:|---:|---|
+| [MixtureExamples](scripts/witnesses/MixtureExamples.lean) | 5 | 4 | 0 | 9 | Bound unchanged historical execution |
+| [SurvivalTwoState](scripts/witnesses/SurvivalTwoState.lean) | 24 | 6 | 0 | 30 | Bound unchanged historical execution |
+| [RealTomographyTwoRebit](scripts/witnesses/RealTomographyTwoRebit.lean) | 5 | 0 | 0 | 5 | Bound unchanged historical execution |
+| [QuantumDoobExamples](scripts/witnesses/QuantumDoobExamples.lean) | 28 | 12 | 0 | 40 | Bound unchanged historical execution |
+| [QuantumPurificationExamples](scripts/witnesses/QuantumPurificationExamples.lean) | 13 | 7 | 0 | 20 | Bound unchanged historical execution |
+| [ClassicalQuantumMemoryExamples](scripts/witnesses/ClassicalQuantumMemoryExamples.lean) | 15 | 5 | 2 | 22 | Bound unchanged historical execution |
+| [QuantumDoobDynamicsExamples](scripts/witnesses/QuantumDoobDynamicsExamples.lean) | 20 | 5 | 0 | 25 | Bound unchanged historical execution |
+| [QuantumSeparationExamples](scripts/witnesses/QuantumSeparationExamples.lean) | 19 | 8 | 1 | 28 | Bound unchanged historical execution |
+| [PurificationUniquenessExamples](scripts/witnesses/PurificationUniquenessExamples.lean) | 28 | 10 | 0 | 38 | Bound unchanged historical execution |
+| [ActionRecordBudgetExamples](scripts/witnesses/ActionRecordBudgetExamples.lean) | 36 | 14 | 2 | 52 | Bound unchanged historical execution |
+| [QuantumTraceDistanceExamples](scripts/witnesses/QuantumTraceDistanceExamples.lean) | 35 | 15 | 1 | 51 | Actual new local execution |
+| [PurificationDimensionExamples](scripts/witnesses/PurificationDimensionExamples.lean) | 25 | 9 | 0 | 34 | Actual new local execution |
+| [StoppingRecordBudgetExamples](scripts/witnesses/StoppingRecordBudgetExamples.lean) | 45 | 15 | 2 | 62 | Actual new local execution |
+| **Total** | **298** | **110** | **8** | **416** | **3 executed; 10 reused** |
 
-The retained witnesses check full-density Bell purification, restricted-state fake purity, deleted records and specified Doob dynamics. New controls add X/Y coherence blindness under diagonal effects and full complex/real model interfaces; exact phase-sensitive auxiliary action and 2-to-3 dimensional isometric padding; a tight 1/4+0 action budget and a deletion-of-labels TV=1 control whose two terminal quantum states are both the same initial density. These are exact formal examples, not empirical observations.
+New controls include noncommuting rational and complex-phase distance certificates, the density half factor and missing-premise failures; actual rank-two/rank-one purification with one/empty-carrier obstructions and phase-sensitive 2-to-3 isometry; a true continuation-weighted 1/16 stopped-record TV and a different-stopping-rule TV=1 control whose terminal quantum memories remain identical. These are exact formal examples, not experimental data.
 
-The verifier requires each explicit theorem, definition and abbreviation to have exactly one actual matching allowed-axiom report. It binds all witness source bytes, the verifier, configuration and 92 recursive QM/Core source-and-olean inputs before and after execution. Missing/duplicate reports, unsupported declarations, changed inputs, unreviewed axioms and failed invocations are rejected. The ordinary package build establishes the imported artifacts. See the [actual v31.8 witness receipt](../../physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json). Runtime method counts and six numerical certificate instances remain separate.
-
+The verifier requires exactly one matching allowed-axiom report per explicit witness theorem/definition/abbreviation and binds source/configuration and 98 recursive QM/Core source/olean pairs. The [combined receipt](../../physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json) keeps current execution and historical reuse distinct. The ordinary default verifier command runs all registered witnesses; the local v31.9 gate deliberately used the selection option for three changed/new files. Subsequent actual remote CI has its own execution scope and receipt.
 
 ## Finite representation contract
 
@@ -395,19 +401,12 @@ The [runtime manual](../../physics/qm/kernel/README.md) documents the export API
 
 The exporter additionally limits input literals to 4096 bits, padded scalar storage to 65536 entries and source size to 8 MiB. The separate representation checker retains its own contract. These bounds constrain evidence construction, not future finite-word length; no uniform compilation-time guarantee is asserted.
 
-The complete finite state/effect/composite/discard models, complex purification existence, full convex-purity characterization, same-carrier auxiliary unitary comparison and universal complex local tomography now have their own explicit proofs. Actual joint classical records and quantum memory are retained, and the shared fixed-depth causal controller has a derived per-action budget. These close the stated finite responsibilities; Core-to-complex selection, minimal auxiliary dimensions, stopping-tree padding, coherent controllers, external environments and norm identification remain open. The specified rational noncommutative Doob model already has exact iterates, a unique invariant state and conditional distance-to-fixed-state rates; general spectral existence/dominance, full Cesàro projections and infinite conditioning remain separate tasks. Physical G3 applicability, QDRR experiments, CV energy/definition-domain control, and model-specific QFT/RG remain tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).
+The complete finite state/effect/composite/discard models, full convex-purity characterization, complex purification and universal complex local tomography retain their explicit finite scope. The new results identify actual all-effect density distance with half the standard matrix-absolute-value trace, derive an attained optimal equal-prior discriminator, determine the exact minimal auxiliary dimension and prove directed direct isometries. Actual joint records and quantum memory now also connect arbitrary original finite stopping trees to a shared causal controller and true reference-weighted per-action budgets. Core-to-complex selection, general stabilized/diamond distances, coherent controllers, modelled external environments and unbounded stopping remain independent tasks. Specified-model exact Doob iterates and convergence do not establish general spectral existence/dominance or infinite conditioning. Physical G3 applicability, real QDRR data, CV energy/domain control and QFT/RG remain tracked in the [whole-QM roadmap](../../physics/qm/ROADMAP.md).
 
-## 实际远端验收与元数据身份
 
-[PR #350](https://github.com/MurphyHoops/UEOT/pull/350)及[实际整合回执](../../physics/qm/kernel/evidence/v31.8/integration-verification.json)记录本版唯一科学源码发布、两次独立CI和逐项Git blob核对。
+## v31.8 历史远端身份
 
-| 实际身份 | 值 |
-|---|---|
-| 源码提交 / tree | `d9a1858c86ca82e08ae862389b51c1ea76690c24` / `6717f47ff1a062f04cb0ba54e01ebaeddac5770a` |
-| PR CI | [39420751354](https://github.com/MurphyHoops/UEOT/actions/runs/39420751354)，PASS；实际 8799 build jobs |
-| 受验主线提交 / tree | `97c7b29c1aec470be58ca34b552e9d56ad06c197` / `2669b1fa73d37b442398d9c0fa7b2ffd3972cd9d` |
-| 独立 main push CI | [39424068985](https://github.com/MurphyHoops/UEOT/actions/runs/39424068985)，PASS；实际 8799 build jobs |
+已闭环 v31.8 的科学源码提交为 `d9a1858c86ca82e08ae862389b51c1ea76690c24`，实际受验 main 为 `97c7b29c1aec470be58ca34b552e9d56ad06c197`；[PR #350](https://github.com/MurphyHoops/UEOT/pull/350)、[PR CI 39420751354](https://github.com/MurphyHoops/UEOT/actions/runs/39420751354)及[main CI 39424068985](https://github.com/MurphyHoops/UEOT/actions/runs/39424068985)各有实际 PASS。后续元数据已随本轮基线 `6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1` 保留。
 
-最终89项发布输入、56项实际递归Core源码、三份规范正文和全部338项冻结发布载荷均与实际源码及受验主线逐项一致。原8799 jobs仍只绑定原a343…本地输入，实际CI绑定054f…发布输入；单词注释桥及原验收回执保留原字节。CI解码日志逐项核对39条源码hash、985个公共审计名、100个运行测试名，并核对证书/正反控的执行摘要及十组见证269项审计总数。见证193/71/5的种类分拆来自已绑定本地源码和回执；未下载artifact ZIP，不声称检查其内部逐名或演示JSON。
+这些历史身份及原本地/发布注释对应关系见[原整合回执](../../physics/qm/kernel/evidence/v31.8/integration-verification.json)，不作为本轮 v31.9 的 CI 运行。当前旧门复用另有逐项源码、依赖和既往实际执行闭包；本轮新证明和新见证须有各自实际执行。远端 artifact ZIP 内部内容不由这些本地元数据推断。
 
-当前证据与导航元数据在后续独立提交中记录这些真实身份；该元数据提交自身不冒充上述任何CI受验提交。原12份本地元数据可按整合回执内的科学源码提交及Git blob精确恢复，旧本地待远端措辞按该历史检查点理解。此次未新增科学执行、实验、前提外结论或下一版本合同。

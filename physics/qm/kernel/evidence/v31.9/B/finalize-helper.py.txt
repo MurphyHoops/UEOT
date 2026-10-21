@@ -1,0 +1,71 @@
+from pathlib import Path
+from collections import Counter
+import datetime, hashlib, json, re
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H = Path('/workspace/scratch/f11b4261e187/handoff')
+E = ROOT / 'physics/qm/kernel/evidence/v31.9/B'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+bind = lambda p: {'path': str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p), 'bytes': p.stat().st_size, 'sha256': sha(p)}
+receipt_path = E / 'verification.json'
+if receipt_path.exists(): raise SystemExit('Refusing to replace an actual lane closure')
+files = [ROOT / 'formalization/ueot-qm/UEOTQM/PurificationIsometry.lean', ROOT / 'formalization/ueot-qm/UEOTQM/PurificationDimension.lean', ROOT / 'formalization/ueot-qm/scripts/witnesses/PurificationDimensionExamples.lean']
+passes = ['PurificationIsometry-002.json', 'PurificationDimension-003.json', 'PurificationDimensionExamples-002.json']
+checked = []
+for path, name in zip(files, passes):
+    p = E / name
+    d = json.loads(p.read_text())
+    assert d['exit_code'] == 0 and d['status'] == 'PASS' and d['source_unchanged_during_execution']
+    assert d['source_sha256_before'][str(path.relative_to(ROOT))] == sha(path)
+    assert d['source_sha256_after'][str(path.relative_to(ROOT))] == sha(path)
+    log = ROOT / d['log']
+    assert sha(log) == d['log_sha256']
+    item = {'source': bind(path), 'execution': bind(p), 'log': bind(log)}
+    if not path.name.endswith('Examples.lean'):
+        o = ROOT / ('formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/' + path.stem + '.olean')
+        assert sha(o) == d['olean_sha256']
+        item['olean'] = bind(o)
+    checked.append(item)
+pub = json.loads((E / 'public-audit-001.json').read_text())
+assert pub['status'] == 'PASS' and pub['exit_code'] == 0 and pub['inputs_unchanged']
+assert pub['actual_count'] == pub['requested_count'] == 29
+for p, digest in pub['input_sha256_after'].items(): assert sha(Path(p)) == digest
+assert sha(ROOT / pub['log']) == pub['log_sha256']
+requested = re.findall(r'^#print axioms (\S+)$', files[-1].read_text(), re.M)
+logs = (ROOT / json.loads((E / passes[-1]).read_text())['log']).read_text()
+reports = re.findall(r"'([^']+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)", logs)
+actual = {n: sorted(a.strip() for a in a.split(',') if a.strip()) for n, a in reports}
+allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+assert set(actual) == set(requested) and len(actual) == 34
+assert all(x == 1 for x in Counter(requested).values()) and all(x == 1 for x in Counter(n for n,a in reports).values())
+assert all(set(a) <= allowed for a in actual.values())
+declarations = []
+for p in files:
+    namespace = 'UEOTQM.PurificationDimensionExamples.' if p.name.endswith('Examples.lean') else 'UEOTQM.QuantumPurification.'
+    ds = [{'name': namespace+n, 'kind': k} for k,n in re.findall(r'^(?:@\[[^\n]*\]\s*)?(def|abbrev|theorem|instance)\s+([A-Za-z_][A-Za-z0-9_\.]*)', p.read_text(), re.M)]
+    declarations.append({'source': bind(p), 'declarations': ds, 'counts': dict(Counter(d['kind'] for d in ds))})
+assert sum(d['counts'].get('theorem',0) for d in declarations[:2]) == 23
+assert declarations[-1]['counts'] == {'def':9, 'theorem':25}
+witness_receipt = {'status':'PASS','requested_count':len(requested),'actual_count':len(actual),'allowed_foundation':sorted(allowed),'declarations':actual,'source':bind(files[-1]),'execution':bind(E/passes[-1]),'log':checked[-1]['log'],'scope':'Parse the actual successful new witness compilation log; no compiler replay.'}
+(E/'witness-audit.json').write_text(json.dumps(witness_receipt,indent=2)+'\n')
+(E/'named-declarations.json').write_text(json.dumps({'status':'PASS_SOURCE_BOUND_NAMES','files':declarations},indent=2)+'\n')
+archive = []
+for name, destination in [('B_v319_compile.py','compile-helper.py.txt'),('B_v319_audit.py','public-audit-helper.py.txt'),('B_v319_finalize.py','finalize-helper.py.txt'),('B_v319_PublicAudit.lean','public-audit-input.lean.txt'),('B_v319_named_targets.json','public-targets.json')]:
+    src=H/name; dst=E/destination
+    if dst.exists(): raise SystemExit('Refusing to overwrite archived helper')
+    dst.write_bytes(src.read_bytes())
+    archive.append(bind(dst))
+claim=json.loads((H/'B_v319_claims.json').read_text())
+assert claim['status']=='FOCUSED_VERIFIED_UNIFIED_AND_REMOTE_PENDING' and len(claim['claims'])==5
+out = {'schema':'ueot_qm.v31.9.B.focused_acceptance.v1','status':'PASS','state':'FOCUSED_VERIFIED_UNIFIED_AND_REMOTE_PENDING','generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+       'scientific_scope':['Exact purification existence iff the actual density matrix rank fits the finite auxiliary cardinality','Attained purification on Fin rank and impossibility on smaller or empty auxiliary carriers','Actual direct auxiliary isometry between arbitrary full convex-pure states under equal marginals and the stated cardinal direction'],
+       'public_module_count':2,'public_explicit_theorem_count':23,'public_named_audit_count':29,'public_other_kinds':{'def':3,'abbrev':1,'named_instance':2},
+       'witness_explicit_theorem_count':25,'witness_definition_count':9,'witness_named_audit_count':34,'allowed_foundation':sorted(allowed),
+       'source_executions':checked,'public_audit':bind(E/'public-audit-001.json'),'witness_audit':bind(E/'witness-audit.json'),'named_declarations':bind(E/'named-declarations.json'),
+       'book_chapter_draft':bind(H/'B_v319_book_chapter.md'),'new_claim_draft':bind(H/'B_v319_claims.json'),'book_result_ids':['P-PDM-01','P-PDM-02','P-PDM-03','P-PDM-04','N-PDM-01'],
+       'retained_failed_attempts':[{'receipt':bind(E/'PurificationIsometry-001.json'),'reason':'Default sandbox could not locate native Lake installation; no Lean theorem checking started.'},{'receipt':bind(E/'PurificationDimension-001.json'),'reason':'Spectral-support finite type instance representation required correction.'},{'receipt':bind(E/'PurificationDimension-002.json'),'reason':'Incorrect library lemma name for complex conjugation of a real scalar; fixed to existing conj_ofReal.'},{'receipt':bind(E/'PurificationDimensionExamples-001.json'),'reason':'Concrete Fin3 zero-row simplification left the negative control unsolved; not accepted, repaired with explicit row-zero proof.'}],
+       'ordinary_linter_warnings_present':True,'core_sources_modified_by_lane':False,'old_evidence_overwritten':False,'old_unified_acceptance_replayed':False,'new_real_experiments':False,'complete_natural_theory_verified':False,
+       'pending':['Root integration and global unified acceptance','Canonical monograph typesetting and visual acceptance','Actual source PR/main CI and remote publication'],
+       'helper_archive':archive,'finalizer_sha256':sha(Path(__file__))}
+receipt_path.write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'status':out['status'],'state':out['state'],'receipt':str(receipt_path),'sha256':sha(receipt_path),'public_theorems':23,'public_audits':29,'witness_theorems':25,'witness_audits':34},indent=2))

@@ -1,0 +1,25 @@
+"""Freeze expected CI identities only after the real local acceptance exists."""
+from pathlib import Path
+from collections import Counter
+from datetime import datetime,timezone
+import hashlib,json
+R=Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+E=R/'physics/qm/kernel/evidence/v31.9'
+def read(p):return json.loads(p.read_bytes())
+def ident(p):return {'path':p.relative_to(R).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+def main():
+ out=E/'ci-reference.json';assert not out.exists()
+ proof=read(E/'lean-verification.json');inv=read(E/'declaration-inventory.json');w=read(E/'finite-witnesses/verification.json')
+ assert proof['status']==w['status']=='PASS' and proof['actual_build_exit_code']==proof['actual_axiom_audit_exit_code']==0
+ assert proof['generic_modules']==inv['module_count']==41 and proof['source_count']==98
+ assert inv['explicit_theorems']==proof['explicit_theorems']==854 and inv['audit_target_count']==proof['actual_named_axiom_reports']==1123
+ assert w['verification_mode']=='ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE'
+ assert w['actually_executed_witness_count']==3 and w['reused_witness_count']==10
+ kinds=dict(Counter(x['kind'] for rows in w['declarations'].values() for x in rows))
+ names={n:len(ds) for n,ds in w['declarations'].items()}
+ assert len(names)==13 and sum(names.values())==w['witness_audit_count']
+ refs={'local_axioms':E/'proof-axioms.json','local_runtime':R/'physics/qm/kernel/evidence/v31.8/runtime-verification.json','local_source_manifest':E/'source-manifest.json','local_lean_verification':E/'lean-verification.json','declaration_inventory':E/'declaration-inventory.json','local_witnesses':E/'finite-witnesses/verification.json','legacy_reuse':E/'legacy-reuse.json','new_witnesses':E/'new-finite-witnesses/verification.json','source_freeze':E/'source-freeze-reconciliation.json'}
+ d={'schema':'ueot_qm.ci_reference.v31.9','status':'FROZEN_FROM_ACTUAL_LOCAL_ACCEPTANCE','recorded_at_utc':datetime.now(timezone.utc).isoformat(),'source_count':98,'source_set_sha256':proof['source_set_sha256'],'generic_modules':41,'explicit_theorems':854,'audit_target_count':1123,'witness_kinds':kinds,'witness_counts':names,'bound_references':{n:ident(p) for n,p in refs.items()},'scope':'Expected source and names are the actual frozen local proof products. This file contains no remote run, PR or source commit identity, and is not itself a remote PASS.'}
+ out.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+ print(json.dumps({k:v for k,v in d.items() if k!='bound_references'},ensure_ascii=False))
+if __name__=='__main__':main()

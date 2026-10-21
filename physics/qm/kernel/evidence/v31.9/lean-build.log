@@ -1,0 +1,1513 @@
+⚠ [3228/3327] Replayed UEOTQM.Basic
+warning: UEOTQM/Basic.lean:48:33: This simp argument is unused:
+  Complex.smul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [mass, Matrix.trace_smul, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/Basic.lean:48:50: This simp argument is unused:
+  smul_eq_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [mass, Matrix.trace_smul, Complex.smul_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3229/3327] Replayed UEOTQM.Instrument
+warning: UEOTQM/Instrument.lean:27:0: automatically included section variable(s) unused in theorem `UEOTQM.krausMap_posSemidef`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Instrument.lean:32:0: automatically included section variable(s) unused in theorem `UEOTQM.krausMap_smul`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Instrument.lean:36:0: automatically included section variable(s) unused in theorem `UEOTQM.trace_krausMap`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Instrument.lean:124:0: automatically included section variable(s) unused in theorem `UEOTQM.ancillaKrausMap_entry`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Instrument.lean:133:4: This simp argument is unused:
+  Matrix.kronecker_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.of_apply, Fintype.sum_prod_type, Matrix.one_apply,
+    mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/Instrument.lean:134:4: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.kronecker_apply, Matrix.of_apply,
+    Fintype.sum_prod_type, Matrix.one_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3509/3523] Replayed UEOT.V3.PredictionAE
+warning: UEOT/V3/PredictionAE.lean:195:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/PredictionAE.lean:198:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [3510/3523] Replayed UEOT.V3.PredictionDependent
+warning: UEOT/V3/PredictionDependent.lean:94:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/PredictionDependent.lean:97:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [3522/3578] Replayed UEOT.V3.DynamicsKernel
+warning: UEOT/V3/DynamicsKernel.lean:263:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:278:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:308:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:310:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:367:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:402:0: automatically included section variable(s) unused in theorem `UEOT.V3.DynamicsKernel.frestrictLe_mapPath`:
+  [MeasurableSpace X]
+  [MeasurableSpace M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace X] [MeasurableSpace M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/DynamicsKernel.lean:417:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:470:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:472:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:493:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:499:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:556:17: Variable name `hf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: UEOT/V3/DynamicsKernel.lean:569:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/DynamicsKernel.lean:585:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8710/8723] Replayed UEOT.V3.PredictionUpdate
+warning: UEOT/V3/PredictionUpdate.lean:270:0: automatically included section variable(s) unused in theorem `UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_fixed`:
+  [MeasurableSpace A]
+  [MeasurableSpace O]
+  [Fintype A]
+  [Fintype O]
+  [MeasurableSingletonClass A]
+  [MeasurableSingletonClass O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace
+  A] [MeasurableSpace
+  O] [Fintype A] [Fintype O] [MeasurableSingletonClass A] [MeasurableSingletonClass O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8712/8805] Replayed UEOT.V3.TotalVariation
+warning: UEOT/V3/TotalVariation.lean:119:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/TotalVariation.lean:121:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8713/8805] Replayed UEOT.V3.ProcessInterface
+warning: UEOT/V3/ProcessInterface.lean:124:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/ProcessInterface.lean:125:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/ProcessInterface.lean:126:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/ProcessInterface.lean:127:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/ProcessInterface.lean:129:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/ProcessInterface.lean:131:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8714/8805] Replayed UEOT.V3.TransportDefect
+warning: UEOT/V3/TransportDefect.lean:89:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/TransportDefect.lean:97:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/TransportDefect.lean:98:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/TransportDefect.lean:99:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/TransportDefect.lean:112:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/TransportDefect.lean:114:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/TransportDefect.lean:116:6: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8715/8805] Replayed UEOT.V3.InformationPacking
+warning: UEOT/V3/InformationPacking.lean:89:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/InformationPacking.lean:90:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/InformationPacking.lean:91:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8716/8805] Replayed UEOT.V3.Compression.TransportCertificate
+warning: UEOT/V3/Compression/TransportCertificate.lean:282:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:283:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:284:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:285:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:287:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:289:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:394:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:403:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:404:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:406:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:422:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:423:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:425:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:427:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:430:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:484:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:485:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:486:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:487:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:489:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:491:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:493:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TransportCertificate.lean:471:27: Variable name `hfr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hfr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8721/8805] Replayed UEOT.V3.FiniteDiscountedControl
+warning: UEOT/V3/FiniteDiscountedControl.lean:60:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.Model.coe_discountNN`:
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteDiscountedControl.lean:63:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.Model.abs_expect_sub_le_dist`:
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8722/8805] Replayed UEOT.V3.FiniteDiscountedCausal
+warning: UEOT/V3/FiniteDiscountedCausal.lean:52:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.CausalPolicy.truncatedValue_zero`:
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteDiscountedCausal.lean:56:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.CausalPolicy.truncatedValue_succ`:
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8725/8805] Replayed UEOT.V3.FiniteDiscountedSelector
+warning: UEOT/V3/FiniteDiscountedSelector.lean:43:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.selectorPolicy_current`:
+  [Fintype X]
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteDiscountedSelector.lean:46:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.selectorPolicy_advance`:
+  [Fintype X]
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteDiscountedSelector.lean:50:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.selectorPolicy_actionProb`:
+  [Fintype X]
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteDiscountedSelector.lean:55:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.selector_truncatedValue_succ`:
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8729/8805] Replayed UEOT.V3.TVSpan
+warning: UEOT/V3/TVSpan.lean:33:0: automatically included section variable(s) unused in theorem `UEOT.V3.TVSpan.centered_norm_le_half_span`:
+  [MeasurableSpace X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/TVSpan.lean:34:27: Variable name `hab` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hab
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: UEOT/V3/TVSpan.lean:80:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8730/8805] Replayed UEOT.V3.FiniteDiscountedApproxQuotient
+warning: UEOT/V3/FiniteDiscountedApproxQuotient.lean:60:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/FiniteDiscountedApproxQuotient.lean:86:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal`:
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteDiscountedApproxQuotient.lean:93:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.fiberMass_nonneg`:
+  [Fintype Y]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Y] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteDiscountedApproxQuotient.lean:119:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteDiscountedControl.pushforwardTransitionPMF_apply_toReal`:
+  [∀ (x : X), Nonempty (A x)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (x : X), Nonempty (A x)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8731/8805] Replayed UEOT.V3.ViabilityKernel
+warning: UEOT/V3/ViabilityKernel.lean:38:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.staysIn_iff_toMeasure_eq_one`:
+  [Fintype X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:50:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.viabilityStep_subset`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:56:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.viabilityStep_mono`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:68:8: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.viabilityIter_zero`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:72:8: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.viabilityIter_succ`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:124:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.controlledInvariant_of_fixed`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:137:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.controlledInvariant_subset_iter`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:176:8: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.stationaryStateLaw_zero`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityKernel.lean:180:8: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityKernel.stationaryStateLaw_succ`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8732/8805] Replayed UEOT.V3.ViabilityStrategy
+warning: UEOT/V3/ViabilityStrategy.lean:65:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityStrategy.reachable_tail_lift`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityStrategy.lean:85:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityStrategy.winningSet_subset`:
+  [Fintype X]
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8734/8805] Replayed UEOT.V3.ViabilityTrajectory
+warning: UEOT/V3/ViabilityTrajectory.lean:36:8: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityTrajectory.stationaryKernel_apply`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityTrajectory.lean:81:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityTrajectory.homHistoryKernel_comp_eq_last_marginal`:
+  [Fintype X]
+  [MeasurableSingletonClass X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [MeasurableSingletonClass X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityTrajectory.lean:123:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: UEOT/V3/ViabilityTrajectory.lean:96:0: automatically included section variable(s) unused in theorem `UEOT.V3.ViabilityTrajectory.homTrajMeasure_time_zero`:
+  [Fintype X]
+  [MeasurableSingletonClass X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] [MeasurableSingletonClass X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/ViabilityTrajectory.lean:132:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8738/8805] Replayed UEOT.V3.FiniteStablePartition
+warning: UEOT/V3/FiniteStablePartition.lean:40:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.Refines.refl`:
+  [Fintype X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartition.lean:43:9: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.Refines.trans`:
+  [Fintype X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartition.lean:85:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.refineSetoid_refines`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartition.lean:97:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.refineSetoid_eq_iff_stable`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartition.lean:117:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.blockMass_target_eq`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8739/8805] Replayed UEOT.V3.FiniteStablePartitionTermination
+warning: UEOT/V3/FiniteStablePartitionTermination.lean:67:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.stabilizeStep_fixed`:
+  [Fintype X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartitionTermination.lean:85:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.refines_stabilizeStep_of_closed`:
+  [Fintype X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartitionTermination.lean:104:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.stabilizeStep_eq_self_of_fixed`:
+  [Fintype X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartitionTermination.lean:136:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/FiniteStablePartitionTermination.lean:157:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/FiniteStablePartitionTermination.lean:179:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8741/8805] Replayed UEOT.V3.FiniteStablePartitionCoarsestFixedPoint
+warning: UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.lean:54:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8742/8805] Replayed UEOT.V3.FiniteStablePartitionQuotientLaw
+warning: UEOT/V3/FiniteStablePartitionQuotientLaw.lean:27:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.quotientOutput_mk`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOT/V3/FiniteStablePartitionQuotientLaw.lean:40:8: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.quotientReward_mk`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8743/8805] Replayed UEOT.V3.FiniteStablePartitionQuotientNormalization
+warning: UEOT/V3/FiniteStablePartitionQuotientNormalization.lean:53:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: UEOT/V3/FiniteStablePartitionQuotientNormalization.lean:81:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.transition_sum_over_quotientClassBlocks`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8744/8805] Replayed UEOT.V3.FiniteStablePartitionFiniteHorizon
+warning: UEOT/V3/FiniteStablePartitionFiniteHorizon.lean:34:0: automatically included section variable(s) unused in theorem `UEOT.V3.FiniteStablePartition.blockMass_eq_sum_quotientBlockFinset`:
+  [Fintype A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8750/8805] Replayed UEOTQM.Observables
+warning: UEOTQM/Observables.lean:42:0: automatically included section variable(s) unused in theorem `UEOTQM.pairing_smul_left`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Observables.lean:46:0: automatically included section variable(s) unused in theorem `UEOTQM.pairing_smul_right`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Observables.lean:68:0: automatically included section variable(s) unused in theorem `UEOTQM.heisenberg_add`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Observables.lean:72:0: automatically included section variable(s) unused in theorem `UEOTQM.heisenberg_smul`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Observables.lean:82:0: automatically included section variable(s) unused in theorem `UEOTQM.trace_heisenberg`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/Observables.lean:99:0: automatically included section variable(s) unused in theorem `UEOTQM.heisenberg_posSemidef`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8763/8805] Replayed UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFiniteStochasticQuotient
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFiniteStochasticQuotient.lean:118:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFiniteStochasticQuotient.lean:120:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFiniteStochasticQuotient.lean:153:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFiniteStochasticQuotient.lean:155:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8766/8805] Replayed UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCStochasticTraceNoGo
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean:73:59: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean:96:59: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean:129:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean:134:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean:139:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean:171:28: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8768/8805] Replayed UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCEmissionTiming
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCEmissionTiming.lean:58:60: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [observationLaw, evidence, jointObservationMass, nextMass, finiteKernelToBeliefModel, pointSourceBelief,
+    mul_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCEmissionTiming.lean:59:4: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [observationLaw, evidence, jointObservationMass, nextMass, finiteKernelToBeliefModel, pointSourceBelief,
+    mul_comm, mul_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8770/8805] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictiveOptimalControlLift
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveOptimalControlLift.lean:153:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveOptimalControlLift.lean:148:32: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8771/8805] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictiveViabilityTransport
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveViabilityTransport.lean:170:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8772/8805] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViabilityKernelIntertwining
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViabilityKernelIntertwining.lean:393:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8774/8805] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.UnifiedCoreClosureCertificate
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/UnifiedCoreClosureCertificate.lean:116:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8775/8805] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalViabilityMaximality
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalViabilityMaximality.lean:51:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalViabilityMaximality.lean:114:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8778/8805] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreSourceAllTimesAssembly
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreSourceAllTimesAssembly.lean:69:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8781/8805] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreNonvacuousAllTimesWitness
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreNonvacuousAllTimesWitness.lean:55:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreNonvacuousAllTimesWitness.lean:112:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8785/8805] Replayed UEOTQM.RecordProbability
+warning: UEOTQM/RecordProbability.lean:30:8: automatically included section variable(s) unused in theorem `UEOTQM.RecordProbability.eventProbability_empty`:
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/RecordProbability.lean:33:8: automatically included section variable(s) unused in theorem `UEOTQM.RecordProbability.eventProbability_univ`:
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/RecordProbability.lean:37:0: automatically included section variable(s) unused in theorem `UEOTQM.RecordProbability.eventProbability_nonneg`:
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/RecordProbability.lean:41:0: automatically included section variable(s) unused in theorem `UEOTQM.RecordProbability.eventProbability_le_one`:
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/RecordProbability.lean:62:0: automatically included section variable(s) unused in theorem `UEOTQM.RecordProbability.positiveEvent_sub_eq_tv`:
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8786/8805] Replayed UEOTQM.RectangularChannels
+warning: UEOTQM/RectangularChannels.lean:192:32: This simp argument is unused:
+  Matrix.kronecker_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.sum_apply, Finset.sum_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/RectangularChannels.lean:211:54: This simp argument is unused:
+  Matrix.kronecker_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type, Matrix.one_apply, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/RectangularChannels.lean:212:45: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.kronecker_apply, Fintype.sum_prod_type,
+    Matrix.one_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/RectangularChannels.lean:216:10: This simp argument is unused:
+  Matrix.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8789/8805] Replayed UEOTQM.ClassicalQuantumMemory
+warning: UEOTQM/ClassicalQuantumMemory.lean:28:0: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.taggedKraus_gram`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [DecidableEq ο]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [DecidableEq ο] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:35:0: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.taggedKraus_conjugation`:
+  [DecidableEq ι]
+  [Fintype ο]
+  [DecidableEq ο]
+  [Fintype O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] [Fintype ο] [DecidableEq ο] [Fintype O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:47:8: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.block_apply_same`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [Fintype O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [Fintype O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:50:8: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.block_apply_ne`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [Fintype O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [Fintype O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:53:0: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.trace_block`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:127:39: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [channel_operator_apply, hop]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:197:8: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.weights_weight`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:275:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:276:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:270:0: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:310:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:305:0: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:398:39: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [channel_operator_apply, hlm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/ClassicalQuantumMemory.lean:439:8: automatically included section variable(s) unused in theorem `UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights_weight`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8791/8805] Replayed UEOTQM.QuantumDoobDynamics
+warning: UEOTQM/QuantumDoobDynamics.lean:157:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8792/8805] Replayed UEOTQM.QuantumSeparation
+warning: UEOTQM/QuantumSeparation.lean:106:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumSeparation.pairing_sub_right`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8793/8805] Replayed UEOTQM.ComplexLocalTomography
+warning: UEOTQM/ComplexLocalTomography.lean:33:0: automatically included section variable(s) unused in theorem `UEOTQM.ComplexLocalTomography.symmetricUnit_hermitian`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ComplexLocalTomography.lean:36:0: automatically included section variable(s) unused in theorem `UEOTQM.ComplexLocalTomography.imaginaryUnit_hermitian`:
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ComplexLocalTomography.lean:40:0: automatically included section variable(s) unused in theorem `UEOTQM.ComplexLocalTomography.sub_kronecker`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [Fintype ν]
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [Fintype ν] [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/ComplexLocalTomography.lean:46:0: automatically included section variable(s) unused in theorem `UEOTQM.ComplexLocalTomography.kronecker_sub`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [Fintype ν]
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [Fintype ν] [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8795/8805] Replayed UEOTQM.HistoryChannels
+warning: UEOTQM/HistoryChannels.lean:29:8: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.principal_apply`:
+  [Fintype H]
+  [DecidableEq H]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype H] [DecidableEq H] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/HistoryChannels.lean:32:0: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.principal_posSemidef`:
+  [Fintype H]
+  [DecidableEq H]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype H] [DecidableEq H] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/HistoryChannels.lean:36:0: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.sum_mass_principal`:
+  [DecidableEq H]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq H] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/HistoryChannels.lean:67:0: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.pairing_block`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/HistoryChannels.lean:76:0: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.readKraus_gram`:
+  [Fintype ι]
+  [DecidableEq ι]
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/HistoryChannels.lean:84:0: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.readKraus_conjugation`:
+  [DecidableEq ι]
+  [Fintype ν]
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] [Fintype ν] [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/HistoryChannels.lean:91:60: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [readKraus, Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type, principal, hg, hg',
+    apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/HistoryChannels.lean:106:30: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hg, Ne.symm hg, Prod.mk.injEq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/HistoryChannels.lean:234:0: automatically included section variable(s) unused in theorem `UEOTQM.HistoryChannels.relabelKraus_gram`:
+  [DecidableEq ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ν] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/HistoryChannels.lean:251:43: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [RectangularChannel.operator, relabel, relabelKraus, Matrix.mul_apply, Matrix.conjTranspose_apply,
+    apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8796/8805] Replayed UEOTQM.ActionRecordBudget
+warning: UEOTQM/ActionRecordBudget.lean:47:4: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: UEOTQM/ActionRecordBudget.lean:58:4: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: UEOTQM/ActionRecordBudget.lean:216:12: This simp argument is unused:
+  hlast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hfull]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/ActionRecordBudget.lean:237:0: automatically included section variable(s) unused in theorem `UEOTQM.ActionRecordBudget.recordOperator_append`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8797/8805] Built UEOTQM.QuantumTraceDistance (147s)
+warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8798/8805] Built UEOTQM.StoppingProtocols (147s)
+warning: UEOTQM/StoppingProtocols.lean:56:6: Variable name `t` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _t
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: UEOTQM/StoppingProtocols.lean:71:38: This simp argument is unused:
+  List.ofFn_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.shift, controller, follow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/StoppingProtocols.lean:91:11: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: UEOTQM/StoppingProtocols.lean:93:18: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: UEOTQM/StoppingProtocols.lean:229:8: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_active`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/StoppingProtocols.lean:233:8: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_active_none`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/StoppingProtocols.lean:235:54: This simp argument is unused:
+  Fintype.sum_option
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, lift, liftKraus]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/StoppingProtocols.lean:237:8: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_idle`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/StoppingProtocols.lean:241:8: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_idle_some`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/StoppingProtocols.lean:243:54: This simp argument is unused:
+  Fintype.sum_option
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, lift, liftKraus]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/StoppingProtocols.lean:245:0: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.record_zero`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8799/8805] Built UEOTQM.PurificationUniqueness (148s)
+⚠ [8800/8805] Built UEOTQM.PurificationIsometry (76s)
+warning: UEOTQM/PurificationIsometry.lean:32:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.coordinateIsometry_adjoint_mul`:
+  [Fintype α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/PurificationIsometry.lean:46:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.card_le_of_matrix_isometry`:
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/PurificationIsometry.lean:72:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumPurification.auxiliary_tensor_mul`:
+  [Fintype α]
+  [DecidableEq α]
+  [DecidableEq β]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] [DecidableEq α] [DecidableEq β] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8801/8805] Built UEOTQM.BinaryDiscrimination (78s)
+⚠ [8802/8805] Built UEOTQM.PurificationDimension (87s)
+warning: UEOTQM/PurificationDimension.lean:157:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8803/8805] Built UEOTQM.StoppingRecordBudget (88s)
+warning: UEOTQM/StoppingRecordBudget.lean:58:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: UEOTQM/StoppingRecordBudget.lean:58:85: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: UEOTQM/StoppingRecordBudget.lean:206:0: automatically included section variable(s) unused in theorem `UEOTQM.StoppingRecordBudget.outside_leafEmbedding`:
+  [DecidableEq O]
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: UEOTQM/StoppingRecordBudget.lean:339:42: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [activeDefect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/StoppingRecordBudget.lean:411:18: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [activeDefect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/StoppingRecordBudget.lean:413:15: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [activeDefect, Option.isSome_some, Bool.true_eq, ite_true, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UEOTQM/StoppingRecordBudget.lean:413:53: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ha, activeDefect, Option.isSome_some, ite_true, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8804/8805] Built UEOTQM (30s)
+Build completed successfully (8805 jobs).

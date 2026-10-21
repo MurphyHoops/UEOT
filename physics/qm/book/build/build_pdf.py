@@ -59,8 +59,8 @@ def main():
     if set(targets) - set(anchors):
         raise ValueError(f'Unresolved internal targets: {set(targets)-set(anchors)}')
     chapters = re.findall(r'^# (\d+)\. (.+)$', raw, re.M)
-    if [int(n) for n, _ in chapters] != list(range(63)):
-        raise ValueError('Expected the complete consecutive chapters 0–62')
+    if [int(n) for n, _ in chapters] != list(range(66)):
+        raise ValueError('Expected the complete consecutive chapters 0–65')
     if re.search(r'\b(TODO|PLACEHOLDER)\b', re.sub(r'(?ms)^~~~.*?^~~~\s*$', '', raw)):
         raise ValueError('Unresolved authoring placeholder')
 
