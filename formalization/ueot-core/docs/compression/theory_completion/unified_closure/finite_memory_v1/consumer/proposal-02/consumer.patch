@@ -1,0 +1,460 @@
+--- a/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py
++++ b/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py
+@@ -31,6 +31,7 @@
+     HERE / "SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json",
+     HERE / "REGISTERED_INTERFACES_REUSE_OVERLAY_V1.json",
+     HERE / "LONGTERM_CONTROL_STATISTICS_REUSE_OVERLAY_V1.json",
++    HERE / "FINITE_MEMORY_REUSE_OVERLAY_V1.json",
+ ]
+ OVERLAY_TYPE_CHECKS = [
+     HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
+@@ -42,6 +43,7 @@
+     HERE / "VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean",
+     HERE / "VERIFY_REGISTERED_INTERFACES_OVERLAY_TYPES.lean",
+     HERE / "VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean",
++    HERE / "VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean",
+ ]
+ OVERLAY_SHA256S = [
+     "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
+@@ -53,6 +55,7 @@
+     "2af284000d6a6c25f67e9356a236817b22334dbfba777ca2eaf37e8060a3a45e",
+     "6667bf7a908d713394e5daae5291c3a82f1ff7b3da144e2addf3da5959d0e781",
+     "cb5792eff95b2a1386a7c0832eeeedc5a283f212b462f2c6c6d3342dd5e1bb06",
++    "cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38",
+ ]
+ OVERLAY_TYPE_CHECK_SHA256S = [
+     "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
+@@ -64,6 +67,7 @@
+     "26fd18e77dd6b7db550c6c5e1105376ef7f494db03bbab646e8d8fa42313a118",
+     "0d3eb26c9471e1701a28652f308c9dd1e1ccac72c0b9ef36eec27c1bc3165d32",
+     "0643f8dfca2daec2ce6b4638f712f6abcacf8f91f31669a37120f397d6c27213",
++    "0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762",
+ ]
+ 
+ # Independent immutable digests calculated from main after merged PR #314.
+@@ -560,7 +564,7 @@
+             x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
+             for x in overlays),
+         "crossfile_exact_code_clone_candidates": len(data["clones"]),
+-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability, registered-interfaces and longterm-control-statistics overlays, Lean kernel, and canonical Core/Compression ledgers",
++        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability, registered-interfaces, longterm-control-statistics and finite-memory overlays, Lean kernel, and canonical Core/Compression ledgers",
+         "scientific_closure": "NOT_ESTABLISHED"
+     }
+ 
+--- a/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py
++++ b/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py
+@@ -20,26 +20,26 @@
+ 
+     def test_evidence_and_sources_exact_baseline(self):
+         res = reuse.status(self.data)
+-        self.assertEqual(res["module_source_hashes_verified"], 678)
+-        self.assertEqual(res["ueot_maintained_modules"], 667)
++        self.assertEqual(res["module_source_hashes_verified"], 684)
++        self.assertEqual(res["ueot_maintained_modules"], 673)
+         self.assertEqual(res["vendor_modules"], 11)
+-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4237)
++        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4272)
+         self.assertEqual(res["verified_equal_type_groups"], 37)
+         self.assertEqual(res["equal_type_statement_names"], 77)
+         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
+         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
+-        self.assertEqual(res["overlay_public_theorems"], 444)
++        self.assertEqual(res["overlay_public_theorems"], 479)
+         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
+-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 102)
+-        self.assertEqual(res["overlay_count"], 9)
+-        self.assertEqual(res["overlay_registered_direct_edges"], 680)
++        self.assertEqual(res["overlay_lexical_reuse_candidates"], 108)
++        self.assertEqual(res["overlay_count"], 10)
++        self.assertEqual(res["overlay_registered_direct_edges"], 727)
+         self.assertEqual(res["overlay_historical_public_repairs"], 1)
+         self.assertEqual(res["overlay_existing_registered_direct_edge_repairs"], 1)
+         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
+-                             for row in self.data["graph"].values()), 5567)
++                             for row in self.data["graph"].values()), 5614)
+ 
+     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
+-        self.assertEqual(len(self.data["overlays"]), 9)
++        self.assertEqual(len(self.data["overlays"]), 10)
+         prior, current = self.data["overlays"][:2]
+         self.assertEqual(prior["base_snapshot_modules"], 633)
+         self.assertEqual(current["base_snapshot_modules"], 634)
+@@ -671,6 +671,166 @@
+         self.assertIn(prefix + "SISCRowwiseProbeWitness.exact_data_good_does_not_calibrate_wrong_kernel",
+                       self.data["graph"])
+ 
++    def test_finite_memory_native_ownership_types_and_registered_edges(self):
++        current = self.data["overlays"][9]
++        self.assertEqual(current["base_snapshot_modules"], 678)
++        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[8])
++        self.assertEqual(current["baseline_ref"], "299a4e3a71914af064ccd7916bb285bac201f62a")
++        self.assertEqual(current["source_checkpoint"], "worktree-sha256:179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6")
++        self.assertEqual(current["source_checkpoint_kind"], "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT")
++        self.assertEqual(current["scientific_role"], "UNCOUNTED_FINITE_SUPPORT_MEMORY_CONTROL")
++        self.assertEqual(current["counted_core_impact"], "NONE")
++        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
++        self.assertNotIn("historical_public_repairs", current)
++        self.assertNotIn("existing_proof_dependency_repairs", current)
++        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
++        modules = {prefix + name for name in (
++            "FiniteMemoryPolicy", "FiniteSupportFixedPoint", "SupportMemoryController",
++            "SupportMemoryCheck", "FiniteMemorySeparation", "FiniteMemoryCheckWitness")}
++        self.assertEqual({row["module"] for row in current["added_modules"]}, modules)
++        self.assertEqual(len(current["added_modules"]), 6)
++        self.assertEqual(len(current["public_theorems"]), 35)
++        self.assertEqual(current["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"], 6)
++        distinct = current["type_distinctness"]
++        self.assertEqual(distinct["registered_prior_theorems"], 4237)
++        self.assertEqual(distinct["cross_isDefEq_comparisons"], 148295)
++        self.assertEqual(distinct["internal_isDefEq_comparisons"], 595)
++        self.assertEqual(distinct["definitionally_equal_matches"], 0)
++        evidence = current["native_export_evidence"]
++        artifact = reuse.REPO / evidence["path"]
++        self.assertEqual(reuse.sha256(artifact.read_bytes()).hexdigest(), "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471")
++        self.assertEqual(evidence["sha256"], "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471")
++        native = json.loads(artifact.read_text())
++        self.assertEqual(native["schema"], "FINITE_MEMORY_NATIVE_EXPORT_V1")
++        self.assertEqual(native["collisions"], [])
++        scope = native["all_native_theorem_constants"]
++        self.assertEqual(len(scope), 82)
++        self.assertEqual(sum(row["is_private"] for row in scope), 22)
++        self.assertEqual({row["source_module"] for row in scope}, modules)
++        by_name = {row["name"]: row for row in scope}
++        self.assertEqual(len(by_name), len(scope))
++        fields = {"name", "source_module", "is_private", "level_parameters", "type",
++                  "direct_constants", "direct_theorem_constants", "axioms"}
++        for row in scope:
++            with self.subTest(native_symbol=row["name"]):
++                self.assertTrue(fields <= row.keys())
++                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
++                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
++        public = {row["name"]: row for row in current["public_theorems"]}
++        native_public = {row["name"]: row for row in native["public_source_theorems"]}
++        self.assertEqual(len(native_public), 35)
++        self.assertEqual(set(public), set(native_public))
++        # This generic controller module has generated native theorem constants
++        # even though it contributes no explicit public theorem candidate.
++        policy_owner = prefix + "FiniteMemoryPolicy"
++        self.assertTrue(any(row["source_module"] == policy_owner for row in scope))
++        self.assertFalse(any(row["source_module"] == policy_owner for row in public.values()))
++        for name, row in public.items():
++            with self.subTest(public_symbol=name):
++                full = by_name[name]
++                self.assertFalse(full["is_private"])
++                self.assertEqual(row["source_module"], full["source_module"])
++                for field in ("source_module", "level_parameters", "type", "direct_constants"):
++                    self.assertEqual(native_public[name][field], full[field])
++                self.assertEqual(set(row["source_theorem_deps"]),
++                                 set(native_public[name]["source_theorem_deps"]))
++                actual = (set(full["direct_constants"]) & set(self.data["graph"])) - {name}
++                self.assertEqual(set(row["source_theorem_deps"]), actual)
++        self.assertEqual(sum(len(row["source_theorem_deps"]) for row in public.values()), 47)
++        original = Path.read_bytes
++
++        def drift(path):
++            return b"deliberate finite memory native drift" if path == artifact else original(path)
++
++        with mock.patch.object(Path, "read_bytes", drift):
++            with self.assertRaisesRegex(RuntimeError, "NATIVE_OVERLAY_EVIDENCE_DRIFT"):
++                reuse.load(verify_source=False)
++
++    def test_finite_memory_same_source_checker_and_controller_reuse(self):
++        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
++        support = prefix + "SupportViabilityClosure."
++
++        def uses(name):
++            return set(reuse.explain(self.data, name)["direct_existing_source_theorem_uses"])
++
++        self.assertIn(support + "initial_viability_iff_exists_zero_uncovered_policy",
++                      uses(support + "bounded_horizon_iff_all_times_zero_uncovered"))
++        self.assertIn(support + "supportMemoryController_zero_uncovered",
++                      uses(support + "bounded_horizon_iff_all_times_zero_uncovered"))
++        self.assertIn(support + "zero_uncovered_iff_support_certified",
++                      uses(support + "supportMemoryController_zero_uncovered"))
++        self.assertIn(support + "finiteRelationViabilityCheck_correct",
++                      uses(support + "finiteMemoryCheck_iff_initial_winning"))
++        self.assertIn(support + "supportIterate_eq_winning_of_card_le",
++                      uses(support + "finiteMemoryCheck_iff_initial_winning"))
++        self.assertIn(support + "bounded_horizon_iff_all_times_zero_uncovered",
++                      uses(support + "finiteMemoryCheck_iff_exists_all_times_policy"))
++        self.assertIn(support + "finiteMemoryCheck_iff_controller_zero_uncovered",
++                      uses(prefix + "FiniteMemoryCheckWitness.checked_support_controller_zero_uncovered"))
++        self.assertIn(support + "finiteMemoryCheck_iff_exists_all_times_policy",
++                      uses(prefix + "FiniteMemoryCheckWitness.mixed_initial_has_no_all_times_policy"))
++        self.assertIn(prefix + "FiniteMemorySeparation.stationary_uncovered_zero_add_one",
++                      uses(prefix + "FiniteMemorySeparation.stationary_feedback_cannot_certify_two_rows"))
++        checked = reuse.explain(self.data, support + "finiteMemoryCheck_iff_controller_zero_uncovered")
++        self.assertTrue(checked["file"].endswith("/UnifiedClosure/SupportMemoryCheck.lean"))
++        self.assertEqual(checked["area"], "V3/Compression/TheoryCompletion/UnifiedClosure")
++        for definition in (prefix + "FiniteMemoryController.policy",
++                           support + "supportMemoryController", support + "finiteMemoryCheck"):
++            self.assertNotIn(definition, self.data["graph"])
++
++    def test_finite_memory_registration_preserves_raw_execution_and_metadata_scope(self):
++        current = self.data["overlays"][9]
++        provenance = current["registration_provenance"]
++        additions = {"lexical_pr_preflight", "registration_provenance"}
++        self.assertEqual(provenance["schema"], "FINITE_MEMORY_REGISTRATION_PROVENANCE_V1")
++        self.assertEqual(set(provenance["metadata_additions_only"]), additions)
++        self.assertTrue(provenance["raw_evidence_bytes_preserved"])
++        self.assertFalse(provenance["consumer_registry_modified"])
++        self.assertEqual(provenance["git_object_pr_preflight"], "NOT_PERFORMED_SEPARATE_GATE")
++        self.assertEqual(provenance["source_tree_sha256"], "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6")
++        self.assertEqual(provenance["baseline_ref"], "299a4e3a71914af064ccd7916bb285bac201f62a")
++        inputs = provenance["inputs"]
++        self.assertEqual(len({(row["role"], row["path"]) for row in inputs}), len(inputs))
++        for row in inputs:
++            with self.subTest(archived_input=row["path"]):
++                path = reuse.REPO / row["path"]
++                self.assertTrue(path.resolve().is_relative_to(reuse.REPO.resolve()))
++                self.assertEqual(reuse.sha256(path.read_bytes()).hexdigest(), row["sha256"])
++        raw_rows = [row for row in inputs if row["role"] == "actual_native_output"
++                    and row["path"].endswith("/FINITE_MEMORY_REUSE_OVERLAY_V1.json")]
++        self.assertEqual(len(raw_rows), 1)
++        raw_path = reuse.REPO / raw_rows[0]["path"]
++        raw = json.loads(raw_path.read_text())
++        self.assertEqual(set(current) - set(raw), additions)
++        self.assertEqual({k: v for k, v in current.items() if k not in additions}, raw)
++        archive = raw_path.parent
++        self.assertEqual((archive / "REGISTERED_OVERLAY.json").read_bytes(),
++                         reuse.OVERLAY_PATHS[9].read_bytes())
++        receipt = json.loads((archive / "REGISTRATION_RECEIPT.json").read_text())
++        self.assertEqual(receipt["schema"], "FINITE_MEMORY_REGISTRATION_RECEIPT_V1")
++        self.assertEqual(receipt["state"], "PASS_METADATA_ONLY_CONSUMER_UNCHANGED")
++        self.assertEqual(receipt["raw_overlay_sha256"], raw_rows[0]["sha256"])
++        self.assertEqual(receipt["registered_overlay"]["sha256"], reuse.OVERLAY_SHA256S[9])
++        self.assertEqual(set(receipt["added_top_level_keys"]), additions)
++        self.assertTrue(receipt["stripped_registered_json_equals_raw"])
++        self.assertIsNone(receipt["candidate_ref"])
++        self.assertEqual(receipt["input_files"], inputs)
++        preflight = json.loads((archive / "SOURCE_PREFLIGHT.json").read_text())
++        self.assertEqual(preflight["status"], "PENDING_ACTUAL_NATIVE_EXECUTION")
++        self.assertEqual(preflight["source_tree_sha256"], "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6")
++        self.assertEqual(preflight["complete_source_modules"], 684)
++        self.assertEqual(preflight["added_modules"], current["added_modules"])
++        execution = json.loads((archive / "STATUS.json").read_text())
++        self.assertEqual(execution["state"], "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION")
++        self.assertTrue(current["native_execution"]["fixed_export_equals_initial_native_export"])
++        self.assertEqual(json.loads((archive / "observed_first_native.json").read_text()),
++                         json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text()))
++        lexical = current["lexical_pr_preflight"]
++        self.assertIsNone(lexical["candidate_ref"])
++        self.assertEqual(lexical["new_public_source_theorem_count"], 35)
++        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 4272)
++
++
+     def test_historical_apostrophe_registration_and_existing_incoming_edge(self):
+         current = self.data["overlays"][7]
+         helper = "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
+@@ -837,7 +997,7 @@
+ 
+     def test_new_lean_module_cannot_be_omitted_from_index(self):
+         live = reuse.live_source_paths()
+-        self.assertEqual(len(live), 678)
++        self.assertEqual(len(live), 684)
+         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
+         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
+             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):
+--- a/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py
++++ b/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py
+@@ -1,11 +1,12 @@
+ #!/usr/bin/env python3
+ """Reproduce the 68 cross-module source snippets from the verified live census.
+ 
+-The current census is 678 modules (667 maintained and 11 adapted upstream):
+-immutable 633-module base plus nine governed overlays: relation/defect
++The current census is 684 modules (673 maintained and 11 adapted upstream):
++immutable 633-module base plus ten governed overlays: relation/defect
+ MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk,
+ statistical-risk, deployment-joint, support-viability, registered-interfaces,
+-and long-term/control/statistics. The historical 646-module rescan reproduced
++long-term/control/statistics,
++and finite-memory. The historical 646-module rescan reproduced
+ all 68 archived rows
+ exactly. The current scan must independently match those immutable rows;
+ the historical result does not certify a later source census.
+--- a/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md
++++ b/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md
+@@ -4,9 +4,9 @@
+ 
+ ## Problem and non-duplication design
+ 
+-The current long-term/control/statistics source census contains **678 bundled Lean modules: 667 UEOT-maintained and 11 adapted upstream modules**, with nine additive overlays. The registered public proof graph contains **4,237 nodes and 5,567 direct edges**. The 12 new modules comprise eight same-source long-term modules, one infinite-policy module and three rowwise SISC modules. The actual full `lake build UEOT` passed against the frozen source fingerprint, and two actual native executions produced equal complete exports. Independent source and raw-execution reviews are **CLEAR** for that fingerprint. Canonical Git, CI, publication and resulting-main states retain their separate release receipts.
++The current finite-memory source census contains **684 bundled Lean modules: 673 UEOT-maintained and 11 adapted upstream modules**, with ten additive overlays. The registered public proof graph contains **4,272 nodes and 5,614 direct edges**. The six new modules establish finite support fixed points, complete autonomous support memory, an executable bounded decision and exact memory-separation witnesses. The actual full `lake build UEOT`, native export and fixed-certificate replay passed against the frozen source fingerprint `179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6`; the two native executions produced equal complete exports. Independent review, consumer tests, canonical Git, CI, publication and resulting-main states retain their separate actual receipts.
+ 
+-The eighth overlay retains its historical registered-interfaces census of **666 = 655 UEOT-maintained + 11 adapted upstream**, its seven new modules and its own full-build/native results. The seventh retains its historical 659-module support-viability census, the sixth its 650-module deployment-joint census and the fifth its 646-module statistical-risk census. The immutable 2026-10-10 audit remains 633 = 622 + 11; later source changes are preserved as additive pinned overlays in the [proof reuse navigator](reuse/README.md). The existing UMC V4 source DAG records *module imports*. Compiled direct theorem dependencies are a distinct evidence layer, and the Core 106 elaboration audit covers its frozen endpoint scope. SISC already has deterministic finite-probe bounds, RLSR has true program-reconstruction theorems, and P-CTL-01 has history-dependent causal optimality. Query these before proposing a missing theorem.
++The ninth overlay retains its historical 678-module long-term/control/statistics census, its 12 new modules and its own full-build/native results. The eighth overlay retains its historical registered-interfaces census of **666 = 655 UEOT-maintained + 11 adapted upstream**, its seven new modules and its own full-build/native results. The seventh retains its historical 659-module support-viability census, the sixth its 650-module deployment-joint census and the fifth its 646-module statistical-risk census. The immutable 2026-10-10 audit remains 633 = 622 + 11; later source changes are preserved as additive pinned overlays in the [proof reuse navigator](reuse/README.md). The existing UMC V4 source DAG records *module imports*. Compiled direct theorem dependencies are a distinct evidence layer, and the Core 106 elaboration audit covers its frozen endpoint scope. SISC already has deterministic finite-probe bounds, RLSR has true program-reconstruction theorems, and P-CTL-01 has history-dependent causal optimality. Query these before proposing a missing theorem.
+ 
+ The [44-file reading guide](CANONICAL_READING_GUIDE_V1.md) links the existing foundations, compression generators, same-source control/viability bridges, Objecthood/TC and scientific boundaries. It retains all dependencies and includes the new calibration-to-actual-path finite-risk chain; it is a reading itinerary rather than a replacement 44-module library.
+ 
+@@ -66,6 +66,10 @@
+ 
+ The long-term chain uses one original initial law and stationary observation feedback through action erasure, killed finite paths, conditioned terminals, QSD specialization, first exits and the actual infinite survival event. The infinite-policy theorem fixes the entire transition/certification sequence before the horizon quantifier and constructs one causal policy with its own all-times zero uncertified occupancy; it is not a finite-memory implementation or a physical-safety theorem. The SISC adapter constructs a measurable common scalar Good event, retains actual mean/kernel/source/action/read matching, uses N3 radius `|J|u`, and preserves N6's full competitor scope and external authentication. Its general failure endpoints expose outer-measure bounds rather than separate failure-event measurability certificates. The two-probe 128/256 product witness and wrong-kernel calibration counterexample are formal probability experiments. The [results and boundaries](../unified_closure/longterm_control_statistics_v1/RESULTS_AND_BOUNDARIES.md) give the exact assumptions and remaining obligations. Frozen counted classifications and `NOT_ESTABLISHED` remain unchanged.
+ 
++The tenth layer adds [FINITE_MEMORY_NATIVE_V1.json](reuse/FINITE_MEMORY_NATIVE_V1.json): **82 compiler-owned theorem constants in six physical modules**, comprising **35 public source candidates, 22 private constants and 25 other nonprivate constants**. The full native scope includes generated theorem constants from `FiniteMemoryPolicy`, which contributes no explicit public source theorem candidate. Every record retains actual physical ownership, stored universes, displayed types, complete direct proof constants and a standard-only axiom closure. The 35 new public types were compared with all 4,237 prior registrations (**148,295 cross-layer and 595 internal comparisons**) with zero raw stored-type collisions. The new graph adds **47 direct registered edges**, giving **4,272 nodes and 5,614 edges**, including 479 overlay nodes and 727 outgoing overlay edges. The eighth layer's separate old-node repair is retained, and six new lexical hint groups bring the cumulative count to 108. The [layer-ten evidence table](reuse/README.md#layer-10--finite-support-fixed-points-and-complete-finite-memory) records the exact native, verifier and metadata-registration digests.
++
++The finite support arena stabilizes by its cardinality `M`, and the complete support controller has `M + 1 ≤ 2 ^ |X|` memory states, including the empty support. Every nonwinning memory uses one fixed fallback PMF. Exact initial-support, transition-support and certification matching connect the executable finite criterion to this controller's own all-times zero uncertified occupancy. The actual numeric kernels may vary with time while their support relation stays fixed. The Boolean program uses the existing finite-horizon recursion at `2 ^ |X| - 1`; this increment does not implement support elimination, a complexity bound, or a computable winning-action table. The two-state singleton-initial witness separates autonomous memory from stationary randomized observation feedback. Its mixed-support negative witness uses a separate explicit uniform initial law. Zero uncertified occupancy does not itself prove physical safety or compress the reference process's fallback checks. The [finite-memory results and boundaries](../unified_closure/finite_memory_v1/RESULTS_AND_BOUNDARIES.md) retain these hypotheses and the unchanged frozen counted classifications and `NOT_ESTABLISHED` status.
++
+ ## Required startup/recovery protocol (every new chat/agent)
+ 
+ 1. Inspect local `git status`, HEAD, branch and upstream; fetch/compare live `origin/main`, check Issue #302 and relevant PR/Actions; never overwrite running worktrees.
+--- a/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md
++++ b/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md
+@@ -8,9 +8,9 @@
+ This supplement adds real proof-term direct dependencies, verified same-type
+ theorem peers, source copies, and a read-only scientific-role distinction.
+ 
+-The current nine-layer census is **678 modules = 667 UEOT-maintained + 11
+-adapted upstream**, with **4,237 registered public theorem nodes** and
+-**5,567 registered direct proof edges**. The layer-by-layer counts below
++The current ten-layer census is **684 modules = 673 UEOT-maintained + 11
++adapted upstream**, with **4,272 registered public theorem nodes** and
++**5,614 registered direct proof edges**. The layer-by-layer counts below
+ retain each historical scope.
+ 
+ ## Governed overlay chain
+@@ -764,6 +764,100 @@
+ the unchanged scanner still requires an actual full-current-source match
+ against its immutable 68-row table.
+ 
++### Layer 10 — finite support fixed points and complete finite memory
++
++This layer uses canonical authorization base `299a4e3a71914af064ccd7916bb285bac201f62a` and adds six physical
++UnifiedClosure modules to the intact 678-module source census:
++`FiniteMemoryPolicy`, `FiniteSupportFixedPoint`, `SupportMemoryController`,
++`SupportMemoryCheck`, `FiniteMemorySeparation` and `FiniteMemoryCheckWitness`.
++The frozen production source fingerprint is `179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6`. It identifies source
++content; Git-object, PR and resulting-main acceptance have separate receipts.
++
++The actual full `lake build UEOT` returned zero on this source. Native
++export and fixed-certificate replay also returned zero and emitted equal
++complete JSON objects. This equality covers physical owners, stored
++universes, displayed types, full ordered proof-constant arrays and axiom
++lists. The raw source preflight retains its original PENDING state; actual
++execution and metadata registration each have their own records.
++
++| Artifact | SHA-256 |
++| --- | --- |
++| [FINITE_MEMORY_NATIVE_V1.json](FINITE_MEMORY_NATIVE_V1.json) | `5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471` |
++| [VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean](VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean) | `0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762` |
++| [FINITE_MEMORY_REUSE_OVERLAY_V1.json](FINITE_MEMORY_REUSE_OVERLAY_V1.json) | `cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38` |
++
++The native census contains **82 compiler-owned theorem constants:
++35 public source candidates, 22 private constants and
++25 other nonprivate constants**. Each retains its physical owner,
++stored universe parameters, type display, complete direct proof constants,
++direct theorem constants and transitive axioms. The axiom closure of every
++record is contained in `propext`, `Classical.choice`, `Quot.sound`. This full
++scope also includes generated theorem constants from `FiniteMemoryPolicy`,
++which has no explicit public source theorem candidate.
++
++The 35 new public types were compared with all **4,237** prior registered
++types: **148,295 cross-layer** and **595 internal** raw stored-type
++`Meta.isDefEq` comparisons, with zero collisions. These checks retain the
++stored-universe and instantiation limits of the historical protocol; they
++do not establish general logical independence. The new proof graph adds
++**47 direct registered edges**. The current ten-layer graph therefore
++has **4,272 nodes and 5,614 edges**, with **479 overlay nodes
++and 727 outgoing overlay edges**. The old-node repair edge from
++layer eight remains separate. Six new name-hint groups bring the cumulative
++count to **108**; lexical similarity does not certify theorem reuse.
++
++The substantive reuse routes connect `finiteMemoryCheck` correctness to
++`finiteRelationViabilityCheck_correct`, and connect the bounded-horizon
++criterion and the actual controller's all-times occupancy to the prior
++`initial_viability_iff_exists_zero_uncovered_policy` and
++`zero_uncovered_iff_support_certified` theorems. The Boolean decision witness
++and the stationary-feedback separation use their respective actual initial
++laws and deployment row laws. The registered graph is checked against the
++native proof constants, rather than inferred from source text.
++
++The mathematical boundary is explicit:
++
++- Nonempty supports lying within an observation fiber form a finite arena
++  of size `M`. The decreasing support iteration stabilizes by `M` and yields
++  its greatest fixed point. The ambient observation type need not be finite.
++- The complete autonomous support controller's memory type has exactly
++  `M + 1` states, including the empty support, with `M + 1 ≤ 2 ^ |X|`.
++  Every nonwinning memory uses one fixed fallback PMF.
++  Under exact fixed-support and certification matching,
++  its memory equals the actual trace support on every complete history.
++  Its own deployment row law has zero uncertified occupancy at every time
++  precisely when the finite initial-support criterion holds. Numerical
++  transition probabilities may still vary with time.
++- The executable Boolean criterion uses `B = 2 ^ |X| - 1` and the existing
++  finite-horizon recursion. Exact initial support, transition support and
++  certification matching are theorem premises. The implementation does not
++  supply an elimination algorithm, a dynamic-programming complexity bound,
++  or a computable winning-action table; the general action selector retains
++  `Classical.choice`.
++- The two-state singleton-initial experiment admits an autonomous memory
++  controller, whereas every fixed randomized observation feedback satisfies
++  `U₀ + U₁ = 1`. The checker also rejects mixed initial support under a
++  different, explicitly uniform initial law. The witnesses do not identify
++  the handwritten Boolean controller with the general support controller.
++- Zero uncertified occupancy does not by itself imply physical safety.
++  Source-supported consistency does not change the reference process's
++  fallback or check budget. Fixed killed matrices still need numerical
++  homogeneity or a justified finite-phase extension.
++
++The metadata registration adds only `lexical_pr_preflight` and
++`registration_provenance` to the raw candidate and archives the original
++execution bytes. The existing nine overlays, historical receipts, 37
++equal-type groups, 77 equal-type names, 15 near-type pairs and 68-row clone
++index remain intact. Consumer regressions separately check complete native
++ownership and proof edges, the concrete reuse routes, and the metadata-only
++registration. Their actual execution is a subsequent consumer gate.
++
++The [results and boundaries](../../unified_closure/finite_memory_v1/RESULTS_AND_BOUNDARIES.md)
++state the exact hypotheses and remaining work. Frozen 106 P-ID counts remain
++11 generated / 89 adapters / 6 boundaries, the four counted generators are
++unchanged, and strong global mathematical closure remains `NOT_ESTABLISHED`.
++
++
+ ## Run from repository root
+ 
+     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
+@@ -780,19 +874,19 @@
+ Run the new native certificate from `formalization/ueot-core` after building
+ the public imports with the pinned toolchain:
+ 
+-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean
++    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean
+ 
+ ## Strongly typed and provenance-limited evidence
+ 
+ - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
+-  nine governed overlays extend the live census to 678 = 667 + 11.
+-- 3,793 immutable-base public source theorem proofs + 444 governed registrations
+-  (including one historical public-name repair) = 4,237 live graph nodes, with
+-  5,567 direct registered-source theorem
++  ten governed overlays extend the live census to 684 = 673 + 11.
++- 3,793 immutable-base public source theorem proofs + 479 governed registrations
++  (including one historical public-name repair) = 4,272 live graph nodes, with
++  5,614 direct registered-source theorem
+   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
+   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
+   The eighth adds 97 edges from new registrations and one certified old-node repair.
+-  The ninth adds 149 edges, giving 680 outgoing edges from overlay nodes;
++  The ninth adds 149 edges and the tenth adds 47, giving 727 outgoing edges from overlay nodes;
+   the old-node repair remains a separate addition.
+ - 37 equal-type groups / 77 names. The original audit checked 40/40
+   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
+@@ -810,7 +904,7 @@
+   12 spans reach 15 lines. This is a text-copy candidate index, NOT
+   a proof-equivalence decision procedure. The historical 646-module recomputation
+   preserved all 68 historical rows exactly, with no added or missing rows.
+-  The current scanner recomputes all 678 modules and rejects any difference
++  The current scanner recomputes all 684 modules and rejects any difference
+   from that immutable result; its actual command result establishes whether
+   the current-source scan passes. The historical snapshot alone does not.
+ 
+@@ -843,7 +937,7 @@
+ lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
+ the exact set of live Lean source paths (including detecting ANY newly added
+ or deleted module), and all immutable-base source hashes plus the governed
+-overlay-chain hashes against the exact 678-module live source census. It refuses to
++overlay-chain hashes against the exact 684-module live source census. It refuses to
+ answer if any source or metadata changed. A docs-only Git commit does
+ not spuriously make a valid source snapshot stale.
+ 

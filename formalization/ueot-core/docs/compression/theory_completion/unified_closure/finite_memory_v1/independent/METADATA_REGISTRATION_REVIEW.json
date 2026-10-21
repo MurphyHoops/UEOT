@@ -1,0 +1,52 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_METADATA_REGISTRATION_REVIEW_V1",
+  "state": "METADATA_REGISTRATION_CLEAR_LIVE_CONSUMER_UPDATE_PENDING",
+  "reviewer": "/root/finite_memory_review_resume",
+  "observed_at_utc": "2026-10-21T17:23:11.907772+00:00",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "registered_overlay_sha256": "cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38",
+  "raw_overlay_sha256": "672ccbe90a47e8c005653fb0ab73f912a3e009c844e103bb8615935b31768c33",
+  "registration_receipt_sha256": "5bc20b0c0cd1bc5f8d614eb066adb596bf5e985d20819513f970a8ec237a7671",
+  "actual_registration_execution_sha256": "a2d4dad37536dfb06a0320e4086d5582cbc522ec6c8acd9a0552073981356af6",
+  "registration_log_sha256": "2d6680a274ce6a3cd6e86b46673a3a82b0aad3851839bdc63e810a215c5bd1c8",
+  "prior_actual_review_sha256": "dcb51b4306e923c451257a835ec3e4aff76a29d2fbb0ca21a7084f170b03238e",
+  "provenance_input_records_verified": 39,
+  "unique_provenance_paths_verified": 38,
+  "provenance_roles": {
+    "actual_native_output": 16,
+    "actual_full_build": 8,
+    "executed_driver": 2,
+    "immutable_protocol_helper": 4,
+    "prior_overlay": 1,
+    "immutable_base_consumer": 1,
+    "registration_driver": 1,
+    "executed_registration_protocol": 6
+  },
+  "raw_proof_protocol_files_rechecked": 25,
+  "added_top_level_keys": [
+    "lexical_pr_preflight",
+    "registration_provenance"
+  ],
+  "raw_json_preserved_after_stripping_added_keys": true,
+  "original_native_pending_state_preserved": true,
+  "live_consumer_byte_identical_to_baseline_at_review": true,
+  "registration_driver_reconstructed_from_immutable_bytes": {
+    "original_sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939",
+    "executed_sha256": "cf4818731b2ef042c26a35f454eedbcebc533e3ca2c92ded03fc6367cf658c67",
+    "counted_substitutions": 11
+  },
+  "findings": [
+    "Registered overlay and its archive copy are identical. Removing exactly lexical_pr_preflight and registration_provenance reproduces the raw native candidate JSON.",
+    "All 39 provenance records resolve to their recorded bytes. The single duplicated registration-wrapper path has identical bytes; the 38 unique input paths are consistent.",
+    "Native JSON and fixed verifier copies in the live evidence directory are byte-identical to actual executed outputs. All 25 previously accepted build/native protocol files remain unchanged.",
+    "The exact registration driver is reconstructed from immutable baseline bytes by its eleven recorded substitutions; wrapper, adapter, frozen inputs and baseline consumer archive match.",
+    "Actual metadata registration exited zero after the independent native acceptance and retained the raw PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION state.",
+    "The live reuse consumer still equals the immutable baseline at this review point. Installing the separately reviewed five-file consumer update is a distinct step."
+  ],
+  "remaining": [
+    "Independent exact five-file consumer proposal review and installation tests.",
+    "Complete FKRG/canonical and immutable Git-object publication gates."
+  ],
+  "review_script_sha256": "2f737ff11d5cf9e852275273a76befd07829cba7c4b1ca4bb7ec5d2b22cd1027"
+}

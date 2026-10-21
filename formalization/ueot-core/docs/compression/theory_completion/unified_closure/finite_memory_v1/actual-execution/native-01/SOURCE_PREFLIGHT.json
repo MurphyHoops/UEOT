@@ -1,0 +1,764 @@
+{
+  "status": "PENDING_ACTUAL_NATIVE_EXECUTION",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "baseline_reuse_consumer": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "sha256": "c598f8c5aad77afbac3082dee7ceebf79471408f6646fa1567ebf09027acfc74"
+  },
+  "immutable_protocol_helpers": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+      "sha256": "6d9ee21b7c832aa238c7fd2b42cd5aa9085bc3af616df16819aa100d82f9213c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+      "sha256": "a91301a76165f542d658e924846eede169287a73da6f31f73f24979250de96ff"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+      "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+      "sha256": "e80ed3ef63b7f6a6a6cd9f3b248917b1b3dc17dbbd0428c41333febc9cdb2e73"
+    }
+  ],
+  "integration_driver_sha256": "719b7490b3b6711b36f282bec4c44c295b7750f60d562e5bfdb31a49b9a2dc18",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "complete_source_modules": 684,
+  "base_snapshot_modules": 678,
+  "registered_prior_theorems": 4237,
+  "prior_overlay_count": 9,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/LONGTERM_CONTROL_STATISTICS_REUSE_OVERLAY_V1.json",
+    "sha256": "cb5792eff95b2a1386a7c0832eeeedc5a283f212b462f2c6c6d3342dd5e1bb06"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "9fcc52bb41f41dda21040c615e03e9cc84975de8ceb764e11f1afd8eb1b2808a"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "content_sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+      "content_sha256": "244789411b085f83c3ed16547be0c1909ffad066b9fc1f21e4b99dc83d726269",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "content_sha256": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "content_sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "content_sha256": "a16ebe2b2e930623adf4f7ab40783af595387e3a1ee9726e6e7b98373454934a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "content_sha256": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_source_candidates": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.finite_decision_table",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 58,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 73,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.checked_support_controller_zero_uncovered",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 84,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.mixed_initial_has_no_all_times_policy",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 99,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.trace_support_eq_memory_singleton",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 46,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.flip_controller_zero_uncovered",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 73,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_zero",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 119,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_one",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 132,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_zero_add_one",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 154,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_feedback_cannot_certify_two_rows",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 174,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor_mem_arena",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 41,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport_mem_arena",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 50,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_coe_eq_relationSuccessor",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 58,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportPre_mono",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportIterate_subset_arena",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 95,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportIterate_succ_subset",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 104,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_supportIterate_iff_viableWith",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 115,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_fixed",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 231,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportIterate_eq_winning_of_card_le",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 240,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_subset_arena",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 252,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_step",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 260,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_greatest_of_postfixed",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 286,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_iff_all_horizons",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 295,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemory_card",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 326,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportArenaCard_add_one_le_pow",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 350,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_initial_winning",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "line": 51,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_controller_zero_uncovered",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "line": 104,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_exists_all_times_policy",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "line": 139,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport_eq_relation_of_homogeneous",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 35,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viable_iff_homogeneous_relation",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 46,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinningAction_support_step",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 75,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_memory_eq_traceSupport",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 109,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_supported_histories_winning",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 141,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_zero_uncovered",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 174,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.bounded_horizon_iff_all_times_zero_uncovered",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 200,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    }
+  ],
+  "exporter_sha256": "c66e5f5adb58244e0f3edc05493b5187691858d07cca85da6724827f7e4c5d6d",
+  "reused_export_protocol": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+    "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+  },
+  "lexical_reuse_hints": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.finite_decision_table",
+      "short_name": "finite_decision_table",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 58,
+      "header_preview": "theorem finite_decision_table :     finiteMemoryCheck observe flipRelation matchingAction         ({false} : Finset Bool) = true ∧       finiteMemoryCheck observe flipRelation matchingAction         ({true} : Finset Bool) = true ∧       finiteMemoryCheck observe flipRelation matchingAction",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+      "short_name": "source_support_exact",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 73,
+      "header_preview": "theorem source_support_exact (n : ℕ) (x a z : Bool) :     z ∈ (source n x a).support ↔ flipRelation x a z := by   simp [source, flipRelation, PMF.support_pure]  private theorem initial_support_exact (x : Bool) :     x ∈ ({false} : Finset Bool) ↔ x ∈ initial.support := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.checked_support_controller_zero_uncovered",
+      "short_name": "checked_support_controller_zero_uncovered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 84,
+      "header_preview": "theorem checked_support_controller_zero_uncovered :     ∀ n, (coverageDeploymentRowLaw initial observe source       (supportMemoryController initial observe flipRelation matchingAction         (PMF.pure false)).policy n).toMeasure.real           {xa | ¬ certified n xa.1 xa.2} = 0 := by   apply (finiteMemoryCheck_iff_controller_zero_uncovered",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.mixed_initial_has_no_all_times_policy",
+      "short_name": "mixed_initial_has_no_all_times_policy",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "line": 99,
+      "header_preview": "theorem mixed_initial_has_no_all_times_policy :     ¬ ∃ π : ∀ n, CausalHistory Unit (Bool × Unit) n → PMF Bool,       ∀ n, (coverageDeploymentRowLaw (PMF.uniformOfFintype Bool)         observe source π n).toMeasure.real           {xa | ¬ certified n xa.1 xa.2} = 0 := by   rintro ⟨π, hzero⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.trace_support_eq_memory_singleton",
+      "short_name": "trace_support_eq_memory_singleton",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 46,
+      "header_preview": "theorem trace_support_eq_memory_singleton :     ∀ n (h : CausalHistory Unit (Bool × Unit) n),       traceSupport initial observe source n h =         {flipController.memory n h} := by   intro n   induction n with",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.flip_controller_zero_uncovered",
+      "short_name": "flip_controller_zero_uncovered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 73,
+      "header_preview": "theorem flip_controller_zero_uncovered (n : ℕ) :     (coverageDeploymentRowLaw initial observe source       flipController.policy n).toMeasure.real         {xa | ¬ certified n xa.1 xa.2} = 0 := by   apply (zero_uncovered_iff_support_certified     initial observe source flipController.policy certified n).mpr",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_zero",
+      "short_name": "stationary_uncovered_zero",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 119,
+      "header_preview": "theorem stationary_uncovered_zero (ρ : PMF Bool) :     (coverageDeploymentRowLaw initial observe source       (stationaryPolicy ρ) 0).toMeasure.real         {xa | ¬ certified 0 xa.1 xa.2} = (ρ true).toReal := by   apply stationary_uncovered_of_supported_state ρ 0 false   intro h hh",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_one",
+      "short_name": "stationary_uncovered_one",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 132,
+      "header_preview": "theorem stationary_uncovered_one (ρ : PMF Bool) :     (coverageDeploymentRowLaw initial observe source       (stationaryPolicy ρ) 1).toMeasure.real         {xa | ¬ certified 1 xa.1 xa.2} = (ρ false).toReal := by   apply stationary_uncovered_of_supported_state ρ 1 true   rintro ⟨b, a, z⟩ hh",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_zero_add_one",
+      "short_name": "stationary_uncovered_zero_add_one",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 154,
+      "header_preview": "theorem stationary_uncovered_zero_add_one (ρ : PMF Bool) :     (coverageDeploymentRowLaw initial observe source       (stationaryPolicy ρ) 0).toMeasure.real         {xa | ¬ certified 0 xa.1 xa.2} +       (coverageDeploymentRowLaw initial observe source         (stationaryPolicy ρ) 1).toMeasure.real",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_feedback_cannot_certify_two_rows",
+      "short_name": "stationary_feedback_cannot_certify_two_rows",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "line": 174,
+      "header_preview": "theorem stationary_feedback_cannot_certify_two_rows     (σ : Unit → PMF Bool) :     ¬ ((coverageDeploymentRowLaw initial observe source         (SourcePolicyPathBridgeCheck.observationMarkovPolicy σ) 0).toMeasure.real           {xa | ¬ certified 0 xa.1 xa.2} = 0 ∧       (coverageDeploymentRowLaw initial observe source",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor_mem_arena",
+      "short_name": "relationSuccessor_mem_arena",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 41,
+      "header_preview": "theorem relationSuccessor_mem_arena     {X Y A : Type u} (q : X → Y) (R : X → A → X → Prop)     (S : Set X) (a : A) (y : Y)     (hne : (relationSuccessor q R S a y).Nonempty) :     relationSuccessor q R S a y ∈ supportArena q :=   ⟨hne, y, fun _ hx => hx.1⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport_mem_arena",
+      "short_name": "initialSupport_mem_arena",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 50,
+      "header_preview": "theorem initialSupport_mem_arena     {X Y : Type u} (p₀ : PMF X) (q : X → Y) (y : Y)     (hne : (initialSupport p₀ q y).Nonempty) :     initialSupport p₀ q y ∈ supportArena q :=   ⟨hne, y, fun _ hx => hx.2⟩ ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.initial_support_eq_univ",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.515,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_coe_eq_relationSuccessor",
+      "short_name": "finiteRelationSuccessor_coe_eq_relationSuccessor",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 58,
+      "header_preview": "theorem finiteRelationSuccessor_coe_eq_relationSuccessor     {X Y A : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]     (q : X → Y) (R : X → A → X → Prop)     [∀ x a z, Decidable (R x a z)]     (n : ℕ) (S : Finset X) (a : A) (y : Y) :     (↑(finiteRelationSuccessor q (fun _ => R) n S a y) : Set X) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteSuccessor_coe_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportPre_mono",
+      "short_name": "supportPre_mono",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 79,
+      "header_preview": "theorem supportPre_mono     {X Y A : Type u} (q : X → Y) (R : X → A → X → Prop)     (C : X → A → Prop) {V W : Set (Set X)} (hVW : V ⊆ W) :     supportPre q R C V ⊆ supportPre q R C W := by   rintro S ⟨hS, a, hcert, hnext⟩   exact ⟨hS, a, hcert, fun y hy => hVW (hnext y hy)⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TopologyChangingGoaSemantics.supportFace_mono",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaSemantics.lean",
+          "similarity": 0.552,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportIterate_subset_arena",
+      "short_name": "supportIterate_subset_arena",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 95,
+      "header_preview": "theorem supportIterate_subset_arena     {X Y A : Type u} (q : X → Y) (R : X → A → X → Prop)     (C : X → A → Prop) (k : ℕ) :     supportIterate q R C k ⊆ supportArena q := by   cases k with   | zero => exact fun _ h => h",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportIterate_succ_subset",
+      "short_name": "supportIterate_succ_subset",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 104,
+      "header_preview": "theorem supportIterate_succ_subset     {X Y A : Type u} (q : X → Y) (R : X → A → X → Prop)     (C : X → A → Prop) (k : ℕ) :     supportIterate q R C (k + 1) ⊆ supportIterate q R C k := by   induction k with   | zero => exact fun _ h => h.1",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_supportIterate_iff_viableWith",
+      "short_name": "mem_supportIterate_iff_viableWith",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 115,
+      "header_preview": "theorem mem_supportIterate_iff_viableWith     {X Y A : Type u} (q : X → Y) (R : X → A → X → Prop)     (C : X → A → Prop) :     ∀ k n (S : Set X), S ∈ supportArena q →       (S ∈ supportIterate q R C k ↔         viableWith (fun _ => relationSuccessor q R) (fun _ => C) n k S) := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_fixed",
+      "short_name": "supportWinning_fixed",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 231,
+      "header_preview": "theorem supportWinning_fixed     {X Y A : Type u} [Fintype X] (q : X → Y)     (R : X → A → X → Prop) (C : X → A → Prop) :     supportPre q R C (supportWinning q R C) = supportWinning q R C :=   supportIterate_at_card_fixed q R C ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportIterate_eq_winning_of_card_le",
+      "short_name": "supportIterate_eq_winning_of_card_le",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 240,
+      "header_preview": "theorem supportIterate_eq_winning_of_card_le     {X Y A : Type u} [Fintype X] (q : X → Y)     (R : X → A → X → Prop) (C : X → A → Prop)     (K : ℕ) (hK : supportArenaCard q ≤ K) :     supportIterate q R C K = supportWinning q R C := by   have hsum : supportArenaCard q + (K - supportArenaCard q) = K := by omega",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_subset_arena",
+      "short_name": "supportWinning_subset_arena",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 252,
+      "header_preview": "theorem supportWinning_subset_arena     {X Y A : Type u} [Fintype X] (q : X → Y)     (R : X → A → X → Prop) (C : X → A → Prop) :     supportWinning q R C ⊆ supportArena q :=   supportIterate_subset_arena q R C (supportArenaCard q) ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_step",
+      "short_name": "supportWinning_step",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 260,
+      "header_preview": "theorem supportWinning_step     {X Y A : Type u} [Fintype X] (q : X → Y)     (R : X → A → X → Prop) (C : X → A → Prop)     (S : Set X) (hS : S ∈ supportWinning q R C) :     ∃ a : A, (∀ x ∈ S, C x a) ∧       ∀ y : Y, (relationSuccessor q R S a y).Nonempty →",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_greatest_of_postfixed",
+      "short_name": "supportWinning_greatest_of_postfixed",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 286,
+      "header_preview": "theorem supportWinning_greatest_of_postfixed     {X Y A : Type u} [Fintype X] (q : X → Y)     (R : X → A → X → Prop) (C : X → A → Prop)     (W : Set (Set X)) (hW : W ⊆ supportPre q R C W) :     W ⊆ supportWinning q R C :=   postfixed_subset_every_supportIterate q R C W hW (supportArenaCard q)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_iff_all_horizons",
+      "short_name": "supportWinning_iff_all_horizons",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 295,
+      "header_preview": "theorem supportWinning_iff_all_horizons     {X Y A : Type u} [Fintype X] (q : X → Y)     (R : X → A → X → Prop) (C : X → A → Prop)     (n : ℕ) (S : Set X) (hS : S ∈ supportArena q) :     S ∈ supportWinning q R C ↔       ∀ k, viableWith (fun _ => relationSuccessor q R) (fun _ => C) n k S := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemory_card",
+      "short_name": "supportMemory_card",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 326,
+      "header_preview": "theorem supportMemory_card     {X Y : Type u} [Fintype X] (q : X → Y) :     Fintype.card (SupportMemory q) = supportArenaCard q + 1 := by   let T : Finset (Set X) := insert ∅ (supportArenaFinset q)   have hmem (S : Set X) : S ∈ T ↔ S = ∅ ∨ S ∈ supportArena q := by     simp [T, supportArenaFinset]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportArenaCard_add_one_le_pow",
+      "short_name": "supportArenaCard_add_one_le_pow",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "line": 350,
+      "header_preview": "theorem supportArenaCard_add_one_le_pow     {X Y : Type u} [Fintype X] (q : X → Y) :     supportArenaCard q + 1 ≤ 2 ^ Fintype.card X := by   rw [← supportMemory_card]   have hcard := Fintype.card_le_of_injective     (fun S : SupportMemory q => S.1) Subtype.val_injective",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_initial_winning",
+      "short_name": "finiteMemoryCheck_iff_initial_winning",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "line": 51,
+      "header_preview": "theorem finiteMemoryCheck_iff_initial_winning     {X Y A : Type u} [Fintype X] [Fintype A]     [DecidableEq X] [DecidableEq Y]     (q : X → Y) (R : X → A → X → Prop) (C : X → A → Prop)     [∀ x a z, Decidable (R x a z)] [∀ x a, Decidable (C x a)]     (initial : Finset X) (p₀ : PMF X) (P : ℕ → X → A → PMF X)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_controller_zero_uncovered",
+      "short_name": "finiteMemoryCheck_iff_controller_zero_uncovered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "line": 104,
+      "header_preview": "theorem finiteMemoryCheck_iff_controller_zero_uncovered     {X Y A : Type u} [Fintype X] [Fintype A]     [DecidableEq X] [DecidableEq Y]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (q : X → Y) (R : X → A → X → Prop) (C : X → A → Prop)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_exists_all_times_policy",
+      "short_name": "finiteMemoryCheck_iff_exists_all_times_policy",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "line": 139,
+      "header_preview": "theorem finiteMemoryCheck_iff_exists_all_times_policy     {X Y A : Type u} [Fintype X] [Fintype A]     [DecidableEq X] [DecidableEq Y]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (q : X → Y) (R : X → A → X → Prop) (C : X → A → Prop)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport_eq_relation_of_homogeneous",
+      "short_name": "successorSupport_eq_relation_of_homogeneous",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 35,
+      "header_preview": "theorem successorSupport_eq_relation_of_homogeneous     {X Y A : Type u} (q : X → Y) (P : ℕ → X → A → PMF X)     (R : X → A → X → Prop)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (n : ℕ) (S : Set X) (a : A) (y : Y) :     successorSupport q P n S a y = relationSuccessor q R S a y := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viable_iff_homogeneous_relation",
+      "short_name": "viable_iff_homogeneous_relation",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 46,
+      "header_preview": "theorem viable_iff_homogeneous_relation     {X Y A : Type u} (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop)     (R : X → A → X → Prop) (C : X → A → Prop)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hC : ∀ n x a, certified n x a ↔ C x a)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinningAction_support_step",
+      "short_name": "supportWinningAction_support_step",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 75,
+      "header_preview": "theorem supportWinningAction_support_step     {X Y A : Type u} [Fintype X]     (q : X → Y) (R : X → A → X → Prop) (C : X → A → Prop)     (fallback : PMF A) (S : Set X) (a : A)     (hS : S ∈ supportWinning q R C)     (ha : a ∈ (supportWinningAction q R C fallback S).support) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_memory_eq_traceSupport",
+      "short_name": "supportMemoryController_memory_eq_traceSupport",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 109,
+      "header_preview": "theorem supportMemoryController_memory_eq_traceSupport     {X Y A : Type u} [Fintype X]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (R : X → A → X → Prop) (C : X → A → Prop) (fallback : PMF A)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z) :     ∀ n (h : CausalHistory Y (A × Y) n),",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_supported_histories_winning",
+      "short_name": "supportMemoryController_supported_histories_winning",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 141,
+      "header_preview": "theorem supportMemoryController_supported_histories_winning     {X Y A : Type u} [Fintype X] [Fintype A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (R : X → A → X → Prop) (C : X → A → Prop) (fallback : PMF A)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hinit : ∀ y : Y, (initialSupport p₀ q y).Nonempty →",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_zero_uncovered",
+      "short_name": "supportMemoryController_zero_uncovered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 174,
+      "header_preview": "theorem supportMemoryController_zero_uncovered     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.bounded_horizon_iff_all_times_zero_uncovered",
+      "short_name": "bounded_horizon_iff_all_times_zero_uncovered",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "line": 200,
+      "header_preview": "theorem bounded_horizon_iff_all_times_zero_uncovered     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)     (certified : ℕ → X → A → Prop)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    }
+  ]
+}

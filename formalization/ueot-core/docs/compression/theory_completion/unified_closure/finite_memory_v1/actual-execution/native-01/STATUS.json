@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "build_receipt_sha256": "461ef30b515591ec151620c11b7497977831b504cc10f4eb6f1617f1cbd950c7",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/native-01/FINITE_MEMORY_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 59.387,
+      "log_sha256": "cab1fbbbd70da506571b174c12b12d222088137e7852fd5fc58d1ccdc3dabbd9"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/native-01/VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 57.914,
+      "log_sha256": "cab1fbbbd70da506571b174c12b12d222088137e7852fd5fc58d1ccdc3dabbd9"
+    }
+  ],
+  "summary": {
+    "modules": 6,
+    "public_source_theorems": 35,
+    "native_constants": 82,
+    "registered_edges": 47,
+    "overlay_sha256": "672ccbe90a47e8c005653fb0ab73f912a3e009c844e103bb8615935b31768c33",
+    "verifier_sha256": "0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762",
+    "native_sha256": "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471"
+  }
+}

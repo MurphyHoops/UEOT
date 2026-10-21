@@ -1,0 +1,87 @@
+{
+  "state": "OPS_PUSHED_EXACT_HEAD",
+  "head": "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+  "branch": "ops/compression-finite-memory-evidence",
+  "utc": "2026-10-21T16:31:01.466100+00:00",
+  "logs": [
+    {
+      "args": [
+        "git",
+        "bundle",
+        "verify",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/ops.bundle"
+      ],
+      "code": 0,
+      "stdout": "The bundle contains this ref:\n116b3477bfc42a626613303e82aedb1fc2d7a84c refs/heads/ops/compression-finite-memory-evidence\nThe bundle requires this ref:\na9109004959975b3d2c5a303741e117f1cd8cb9c \nThe bundle uses this hash algorithm: sha1\n",
+      "stderr": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/ops.bundle is okay\n"
+    },
+    {
+      "args": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin",
+        "refs/heads/ops/compression-finite-memory-evidence"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin",
+        "refs/heads/main"
+      ],
+      "code": 0,
+      "stdout": "a9109004959975b3d2c5a303741e117f1cd8cb9c\trefs/heads/main\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "fetch",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/ops.bundle",
+        "refs/heads/ops/compression-finite-memory-evidence:refs/heads/ops/compression-finite-memory-evidence"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "From /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/ops.bundle\n * [new branch]        ops/compression-finite-memory-evidence -> ops/compression-finite-memory-evidence\n"
+    },
+    {
+      "args": [
+        "git",
+        "rev-parse",
+        "refs/heads/ops/compression-finite-memory-evidence"
+      ],
+      "code": 0,
+      "stdout": "116b3477bfc42a626613303e82aedb1fc2d7a84c\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "push",
+        "origin",
+        "116b3477bfc42a626613303e82aedb1fc2d7a84c:refs/heads/ops/compression-finite-memory-evidence"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "remote: \nremote: Create a pull request for 'ops/compression-finite-memory-evidence' on GitHub by visiting:        \nremote:      https://github.com/MurphyHoops/UEOT/pull/new/ops/compression-finite-memory-evidence        \nremote: \nTo https://github.com/MurphyHoops/UEOT.git\n * [new branch]        116b3477bfc42a626613303e82aedb1fc2d7a84c -> ops/compression-finite-memory-evidence\n"
+    },
+    {
+      "args": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin",
+        "refs/heads/ops/compression-finite-memory-evidence"
+      ],
+      "code": 0,
+      "stdout": "116b3477bfc42a626613303e82aedb1fc2d7a84c\trefs/heads/ops/compression-finite-memory-evidence\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:54:26: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Subsingleton (CausalHistory Unit (Bool × Unit) 0)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:109:60: error: unsolved goals
+ρ : PMF Bool
+⊢ ∑ h,
+      ((PMF.pure false) h).toReal *
+        (((ρ true).toReal * if true = h then 0 else 1) + (ρ false).toReal * if false = h then 0 else 1) =
+    (ρ true).toReal
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:113:4: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [causalLaw, initial, stationaryPolicy, certified, riskLastState]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:125:2: error: 'change' tactic failed, pattern
+  ∑ h,
+      ((causalLaw initial (riskMicroControlKernel observe source (stationaryPolicy ρ)) 1) h).toReal *
+        ∑ a, (ρ a).toReal * @ite ℝ (a = h.2.2) (instDecidableEqBool a h.2.2) 0 1 =
+    (ρ false).toReal
+is not definitionally equal to target
+  ∑ h,
+      ((causalLaw initial (riskMicroControlKernel observe source (stationaryPolicy ρ)) 1) h).toReal *
+        ∑ a,
+          ((stationaryPolicy ρ 1 (riskHistoryMap observe (fun ax => (ax.1, observe ax.2)) 1 h)) a).toReal *
+            @ite ℝ (certified 1 (riskLastState 1 h, a).1 (riskLastState 1 h, a).2)
+              (Classical.propDecidable (certified 1 (riskLastState 1 h, a).1 (riskLastState 1 h, a).2)) 0 1 =
+    (ρ false).toReal
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:153:2: error: No goals to be solved

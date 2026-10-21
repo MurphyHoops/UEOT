@@ -152,6 +152,12 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.InfiniteSupportViabil
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeCalibration
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness
 /-!
 # UEOT Theory Completion public root
 

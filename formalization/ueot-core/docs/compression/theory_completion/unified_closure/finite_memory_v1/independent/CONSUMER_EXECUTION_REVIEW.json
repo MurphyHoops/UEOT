@@ -1,0 +1,49 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_INSTALLED_CONSUMER_EXECUTION_REVIEW_V1",
+  "state": "EXACT_CONSUMER_INSTALLATION_AND_ALL_50_REUSE_TESTS_CLEAR",
+  "reviewer": "/root/finite_memory_review_resume",
+  "observed_at_utc": "2026-10-21T17:28:01.695487+00:00",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "proposal_review_sha256": "f650b54f0c2e502b893bf32ad9067cce7ea8a05a1e3665b7baab7b635e581bb8",
+  "proposal_patch_sha256": "088839c289b80b8d17825c6781909de302cb5da59bddbb7ae4f4c3709ddf649a",
+  "applied_receipt_sha256": "d9bfbcaf92d15d8cd9ec70954de8cd99f78c56806aec63d11d79cf28e043f75b",
+  "actual_test_receipt_sha256": "f85203b0b37792e6dd80722f89e7d96b73bca872255492f9faa32731d39fd3b3",
+  "actual_log_sha256": "8cb123f14916191b451c8c42de673841e35d7d4ea3eb13050c90369d2eb08188",
+  "actual_runner_sha256": "5fa08422d45d357dbf0697ff5181f0a3ff69014288986b297e0a699ea5667af0",
+  "installed_consumer_sha256s": {
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py": "9c4a1e8a70c281f044f7633e7a5e9c4e19ff961bff453e76e196d12a20a11c2b",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py": "694b4796d7e650996c6c6158338d9b41fcc2eb8a27554387c6e4baa509a2de8c",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py": "a0b51bb5e6805c8e067fa9980b5a75567f2385ca03860b2fb8214af583887513",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md": "fe19fc6a542d8b6b689ac2bdb11e6d4baa6a3a8606605b1c3f9858500054f73a",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md": "6692cc8fb7acfb6871ca0dd45990a8d60670a97e07daaf197bc3adda9dd7463a"
+  },
+  "actual_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+    "-v"
+  ],
+  "actual_exit_code": 0,
+  "actual_test_count": 50,
+  "unittest_seconds": 1.818,
+  "runner_seconds": 1.928,
+  "preserved_historical_tests": 47,
+  "new_regressions": [
+    "test_finite_memory_native_ownership_types_and_registered_edges",
+    "test_finite_memory_registration_preserves_raw_execution_and_metadata_scope",
+    "test_finite_memory_same_source_checker_and_controller_reuse"
+  ],
+  "full_current_clone_regeneration": "PASS_EQUALS_ALL_68_ARCHIVED_ROWS",
+  "findings": [
+    "Every installed consumer file matches the independently reviewed proposal02 bytes. Exact baseline/proposed copies, patch, prepared receipt and applied receipt are retained in the repository packet.",
+    "The actual test log names all 50 installed test methods exactly once and marks each ok; its final summary reports Ran 50 tests and OK with exit zero.",
+    "The actual runner verifies all five installed hashes before and after execution; both maps equal the reviewed proposal. The initial RUNNING receipt and APPLIED_FIVE_CONSUMERS_TESTS_PENDING receipt remain intact as historical states.",
+    "All 47 earlier regressions and the three new native/source/metadata regressions executed. The retained clone regression actually regenerated current snippets and required exact equality to all 68 archived rows.",
+    "The installation and complete reuse-test gate are accepted. This review neither reruns Lean nor promotes downstream publication or overall mathematical closure."
+  ],
+  "remaining": [
+    "Complete 30-test FKRG, canonical UMC and parser/base-policy gates under root ownership.",
+    "Immutable Git-object preflight, PR/governance and resulting-main source/tree acceptance."
+  ],
+  "review_script_sha256": "faa897b70b8ded2561b004339a6ffd6ec82be4467d1eca7ddbcd1e267b3fd6b9"
+}

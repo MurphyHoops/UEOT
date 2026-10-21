@@ -1,0 +1,312 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_ACTUAL_BUILD_NATIVE_INDEPENDENT_REVIEW_V1",
+  "state": "ACTUAL_FULL_BUILD_AND_NATIVE_CLEAR_FOR_METADATA_REGISTRATION",
+  "reviewer": "/root/finite_memory_review_resume",
+  "observed_at_utc": "2026-10-21T17:21:17.155251+00:00",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "prior_reviews": [
+    {
+      "path": "NATIVE_PROTOCOL_REVIEW.json",
+      "sha256": "43e7ff989631789ca3d9a3c3e6ec3d3a43563808adcbf76af7dc4df82b6ce4a4"
+    },
+    {
+      "path": "TYPED_REUSE_SCOPE_REVIEW.json",
+      "sha256": "616846e90283b3cc801cd2e83ecde1f08a312f8b3c64119246cd43d67647d087"
+    },
+    {
+      "path": "FINAL_SOURCE_AND_FOCUSED_EXECUTION_REVIEW.json",
+      "sha256": "5032310f082244268c169b0c3b789e3b3b4317f65fa031423b6b7316cc5384d6"
+    }
+  ],
+  "full_build": {
+    "receipt_sha256": "461ef30b515591ec151620c11b7497977831b504cc10f4eb6f1617f1cbd950c7",
+    "command": [
+      "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+      "build",
+      "UEOT"
+    ],
+    "exit_code": 0,
+    "seconds": 38.402,
+    "log_name": "full-build.log",
+    "log_sha256": "648189fdc3e2aa52b0efa0788a9f3f059b33c3b29b49bff8747738caba75f35a",
+    "complete_source_modules": 684,
+    "source_file_records_verified": 684,
+    "environment_files_verified": 3,
+    "pinned_clean_dependencies": 9,
+    "runtime_tools": {
+      "lean": {
+        "executable": "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "sha256": "1b370cfcbf44e80d1b004ab1b1ab9a4c73951f9f7c242140bcff9bc577576554",
+        "version": "Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)"
+      },
+      "lake": {
+        "executable": "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "sha256": "58261a1a2fa1a362376c71e02ca854a093e71cc5e6ea64b287a931cb2565273d",
+        "version": "Lake version 5.0.0-src+819816b (Lean version 4.33.1)"
+      }
+    },
+    "all_six_new_modules_explicitly_built": true
+  },
+  "native": {
+    "raw_state_preserved": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+    "raw_status_sha256": "8fc673697e4672c3016ebb61e32580ad6657d48c61beb85a540db15162388399",
+    "actual_results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/native-01/FINITE_MEMORY_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 59.387,
+        "log_sha256": "cab1fbbbd70da506571b174c12b12d222088137e7852fd5fc58d1ccdc3dabbd9"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022/native-01/VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 57.914,
+        "log_sha256": "cab1fbbbd70da506571b174c12b12d222088137e7852fd5fc58d1ccdc3dabbd9"
+      }
+    ],
+    "complete_json_equal": true,
+    "compiler_owned_theorem_constants": 82,
+    "private_theorem_constants": 22,
+    "new_registered_public": 35,
+    "other_native_public_constants": 25,
+    "all_axioms_within": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "registered_prior": 4237,
+    "cross_raw_type_comparisons": 148295,
+    "internal_raw_type_comparisons": 595,
+    "definitional_collisions": [],
+    "registered_direct_edges": 47,
+    "native_sha256": "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471",
+    "raw_candidate_overlay_sha256": "672ccbe90a47e8c005653fb0ab73f912a3e009c844e103bb8615935b31768c33",
+    "fixed_verifier_sha256": "0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762",
+    "module_census": [
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+        "native_theorems": 9,
+        "private": 4,
+        "registered_public": 4,
+        "other_native_public": 1
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+        "native_theorems": 3,
+        "private": 0,
+        "registered_public": 0,
+        "other_native_public": 3
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+        "native_theorems": 22,
+        "private": 4,
+        "registered_public": 6,
+        "other_native_public": 12
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+        "native_theorems": 31,
+        "private": 12,
+        "registered_public": 15,
+        "other_native_public": 4
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+        "native_theorems": 5,
+        "private": 1,
+        "registered_public": 3,
+        "other_native_public": 1
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+        "native_theorems": 12,
+        "private": 1,
+        "registered_public": 7,
+        "other_native_public": 4
+      }
+    ]
+  },
+  "executed_protocol_archives": [
+    {
+      "kind": "full_build",
+      "immutable_sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de",
+      "executed_source_sha256": "a4d6d47aef9dd4857a8580e669fc6f61dcf73a77f95f2376e9b67b9605db34f7",
+      "wrapper_sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9",
+      "adapter_sha256": "8c05ad896d4fcf46e7592cc3b8ef25e26a565c4a9159c580d1a62ab067994dff",
+      "substitutions_verified": 1,
+      "context_sha256": "9f4c93fc52a308499d02dbe8aa5821527bc01422df1ae64ebc561d8d8923f34e"
+    },
+    {
+      "kind": "integration_native",
+      "immutable_sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924",
+      "executed_source_sha256": "8f1cc9b01b8cfe0d79582565156b07682ace957d062c054dd975907ee47ed1a8",
+      "wrapper_sha256": "719b7490b3b6711b36f282bec4c44c295b7750f60d562e5bfdb31a49b9a2dc18",
+      "adapter_sha256": "8c05ad896d4fcf46e7592cc3b8ef25e26a565c4a9159c580d1a62ab067994dff",
+      "substitutions_verified": 4,
+      "context_sha256": "01ad2ce39582f2492f82c8cd70d9e6f63b222477e5e3f2555d41bf9f97b8c9db"
+    }
+  ],
+  "evidence_inventory": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/FROZEN_INPUTS_FINAL_01.json",
+      "bytes": 7157,
+      "sha256": "7509538e8bbbf8f0d38f4c06efe0ad285a6548368aaef8ad42f060d40d1d7241"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/FROZEN_INPUTS.json",
+      "bytes": 7157,
+      "sha256": "7509538e8bbbf8f0d38f4c06efe0ad285a6548368aaef8ad42f060d40d1d7241"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/FULL_BUILD_RECEIPT.json",
+      "bytes": 207886,
+      "sha256": "461ef30b515591ec151620c11b7497977831b504cc10f4eb6f1617f1cbd950c7"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/PROTOCOL_ADAPTATION.json",
+      "bytes": 1386,
+      "sha256": "9f4c93fc52a308499d02dbe8aa5821527bc01422df1ae64ebc561d8d8923f34e"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/executed_full_build.py",
+      "bytes": 3867,
+      "sha256": "a4d6d47aef9dd4857a8580e669fc6f61dcf73a77f95f2376e9b67b9605db34f7"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/full-build.log",
+      "bytes": 403768,
+      "sha256": "648189fdc3e2aa52b0efa0788a9f3f059b33c3b29b49bff8747738caba75f35a"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/full_build.py",
+      "bytes": 853,
+      "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/immutable_full_build.py",
+      "bytes": 3862,
+      "sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/full-build-01/protocol_adapter.py",
+      "bytes": 13456,
+      "sha256": "8c05ad896d4fcf46e7592cc3b8ef25e26a565c4a9159c580d1a62ab067994dff"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/FINITE_MEMORY_NATIVE_EXPORT.lean",
+      "bytes": 63761,
+      "sha256": "c66e5f5adb58244e0f3edc05493b5187691858d07cca85da6724827f7e4c5d6d"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/FINITE_MEMORY_NATIVE_V1.json",
+      "bytes": 302347,
+      "sha256": "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/FINITE_MEMORY_REUSE_OVERLAY_V1.json",
+      "bytes": 43017,
+      "sha256": "672ccbe90a47e8c005653fb0ab73f912a3e009c844e103bb8615935b31768c33"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/FROZEN_INPUTS.json",
+      "bytes": 7157,
+      "sha256": "7509538e8bbbf8f0d38f4c06efe0ad285a6548368aaef8ad42f060d40d1d7241"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/PROTOCOL_ADAPTATION.json",
+      "bytes": 1903,
+      "sha256": "01ad2ce39582f2492f82c8cd70d9e6f63b222477e5e3f2555d41bf9f97b8c9db"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/SOURCE_PREFLIGHT.json",
+      "bytes": 49850,
+      "sha256": "9c4f4c1e0e02579495765e6703571a667b64e51be2b28d25bf8e5c09a1871299"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/STATUS.json",
+      "bytes": 1748,
+      "sha256": "8fc673697e4672c3016ebb61e32580ad6657d48c61beb85a540db15162388399"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean",
+      "bytes": 73616,
+      "sha256": "0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/development_lexical_reuse_hints.json",
+      "bytes": 28207,
+      "sha256": "01cc5155b2d1e45a937e0b069c19395c1f175ca59be025f8f94c262ad24eef69"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/executed_integration_native.py",
+      "bytes": 19897,
+      "sha256": "8f1cc9b01b8cfe0d79582565156b07682ace957d062c054dd975907ee47ed1a8"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/fixed_verifier.log",
+      "bytes": 249099,
+      "sha256": "cab1fbbbd70da506571b174c12b12d222088137e7852fd5fc58d1ccdc3dabbd9"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/immutable_integration_native.py",
+      "bytes": 19921,
+      "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/integration_native.py",
+      "bytes": 1335,
+      "sha256": "719b7490b3b6711b36f282bec4c44c295b7750f60d562e5bfdb31a49b9a2dc18"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/native_export.log",
+      "bytes": 249099,
+      "sha256": "cab1fbbbd70da506571b174c12b12d222088137e7852fd5fc58d1ccdc3dabbd9"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/observed_first_native.json",
+      "bytes": 302347,
+      "sha256": "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/protocol_adapter.py",
+      "bytes": 13456,
+      "sha256": "8c05ad896d4fcf46e7592cc3b8ef25e26a565c4a9159c580d1a62ab067994dff"
+    }
+  ],
+  "findings": [
+    "The complete 684-module local source record exactly matches the full-build receipt and final frozen manifest; each path, byte count and SHA-256 was checked individually and the source fingerprint was independently recomputed.",
+    "Pinned toolchain/environment files match the immutable baseline. The actual receipt records all nine dependency HEADs at their exact manifest revisions with clean worktrees, runtime binary hashes/versions, and empty import overrides.",
+    "The immutable build identity implementation and actual executed drivers preserve before/after source, runtime, environment and dependency equality checks. PASS is reachable only after those checks; no Mac command or rerun was performed by this reviewer.",
+    "The actual lake build UEOT exited zero in 38.402 seconds. Its exact raw log contains successful builds for all six modules and the final 9390-job success marker.",
+    "Both actual Lean native logs have exit zero, matching raw hashes, and exactly one complete native JSON object. Those objects equal each other and both saved JSON artifacts.",
+    "All 82 compiler-owned theorem constants across the six modules, including 22 private and 25 other generated/public constants, have only the allowed standard axiom closure. All 35 declared public candidates are found under their compiler-recorded owners.",
+    "Every declared new type underwent the actual complete 4237-entry prior-registry comparison and all 595 new-new comparisons; no raw stored-type definitional collision was reported.",
+    "All 47 registered direct proof dependencies were independently reconstructed as actual proof-value constants intersected with the immutable prior and new public registries.",
+    "The actual exporter was reconstructed byte-for-byte from the immutable renderer and registry. The second executed verifier was reconstructed byte-for-byte by freezing exactly the first-pass edges and 82-constant census.",
+    "Both archived actual delegated drivers reconstruct exactly from immutable Git bytes and their counted substitutions. Wrappers, adapter, frozen manifest and helper identities match the reviewed protocol and actual archives.",
+    "The unchanged raw candidate is acceptable as the input to the reviewed metadata-registration procedure. Raw status remains PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION; this separate review supplies the independent acceptance."
+  ],
+  "authorization_scope": "Proceed with the reviewed check-only registration and exact metadata registration for this raw overlay and frozen source. Registration must preserve native artifacts and add only the reviewed metadata/provenance fields. This receipt does not itself perform registration.",
+  "limits": [
+    "The raw stored-type comparison uses fresh elaboration for each Meta.isDefEq check while retaining stored universe names; it is not a decision procedure for all logical equivalence or mathematical novelty.",
+    "The 47 edges are the specified direct registered theorem constants of proof values; they are not a claim that all mathematical assumptions or all transitive dependencies have been compressed into generators.",
+    "This is a review of transferred actual compiler evidence and hash-bound checking code, not a second independent execution of the Mac toolchain.",
+    "Live consumer/DAG registration, final FKRG/parser/base-policy checks, Git-object publication and resulting-main acceptance remain later gates.",
+    "The new controller/checker retains exact-source hypotheses and noncomputable action choice; no physical-safety theorem, general-memory infinite-path identity, complexity bound, or stronger global closure is asserted."
+  ],
+  "review_script_sha256": "2daa9625763a85b9a9c3d820f41d155506d78e7f52947aa02d347e9fbc63224d"
+}

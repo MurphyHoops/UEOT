@@ -1,0 +1,31 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean:184:11: error: unsolved goals
+case zero
+X Y A : Type u
+inst✝ : Fintype X
+q : X → Y
+R : X → A → X → Prop
+C : X → A → Prop
+M : ℕ := supportArenaCard q
+B : ℕ → Finset (Set X) := supportIterateFinset q R C
+hnone : ¬∃ k ≤ supportArenaCard q, supportIterate q R C (k + 1) = supportIterate q R C k
+hdrop : ∀ k ≤ M, (B (k + 1)).card < (B k).card
+a✝ : 0 ≤ M + 1
+⊢ {S | S ∈ supportArena q}.card ≤ {S | S ∈ supportArena q}.card
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean:322:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Finite (SupportMemory q)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean:336:52: error: unsolved goals
+X Y : Type u
+inst✝ : Fintype X
+q : X → Y
+T : Finset (Set X) := insert ∅ (supportArenaFinset q)
+hmem : ∀ (S : Set X), S ∈ T ↔ S = ∅ ∨ S ∈ supportArena q
+e : SupportMemory q ≃ ↥T := { toFun := fun S => ⟨↑S, ⋯⟩, invFun := fun S => ⟨↑S, ⋯⟩, left_inv := ⋯, right_inv := ⋯ }
+⊢ ∅ ∉ {S | S.Nonempty ∧ ∃ y, ∀ x ∈ S, q x = y}
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean:339:2: error: Type mismatch: After simplification, term
+  hcard
+ has type
+  Fintype.card (SupportMemory q) = Fintype.card { S // S = ∅ ∨ S ∈ supportArenaFinset q }
+but is expected to have type
+  Fintype.card (SupportMemory q) = (supportArenaFinset q).card + 1

@@ -1,0 +1,49 @@
+{
+  "base": "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+  "head": "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+  "results": [
+    {
+      "label": "base-authorization",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        "--repo-root",
+        ".",
+        "--baseline-ref",
+        "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+        "--candidate-ref",
+        "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+        "--branch-name",
+        "ops/compression-finite-memory-evidence"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3916621730022598
+    },
+    {
+      "label": "parser89",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+      ],
+      "exit_code": 0,
+      "seconds": 3.6142341769955237
+    },
+    {
+      "label": "git-object-preflight",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "--repo-root",
+        ".",
+        "--baseline-ref",
+        "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+        "--candidate-ref",
+        "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+        "--report",
+        "/workspace/scratch/534b0448126c/tmp/core-finite-memory-ops/pr-preflight.json"
+      ],
+      "exit_code": 0,
+      "seconds": 17.477829920004297
+    }
+  ]
+}

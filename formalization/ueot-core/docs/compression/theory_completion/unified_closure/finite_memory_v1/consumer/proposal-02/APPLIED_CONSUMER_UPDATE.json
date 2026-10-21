@@ -1,0 +1,97 @@
+{
+  "schema": "FINITE_MEMORY_CONSUMER_PROPOSAL_V1",
+  "state": "APPLIED_FIVE_CONSUMERS_TESTS_PENDING",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "registration_receipt": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01/REGISTRATION_RECEIPT.json",
+    "sha256": "5bc20b0c0cd1bc5f8d614eb066adb596bf5e985d20819513f970a8ec237a7671"
+  },
+  "prior_overlay_count_preserved": 9,
+  "existing_regression_methods_preserved": 47,
+  "new_regression_methods": [
+    "test_finite_memory_native_ownership_types_and_registered_edges",
+    "test_finite_memory_registration_preserves_raw_execution_and_metadata_scope",
+    "test_finite_memory_same_source_checker_and_controller_reuse"
+  ],
+  "current_test_method_count": 50,
+  "actual_native_context": {
+    "BASE": "299a4e3a71914af064ccd7916bb285bac201f62a",
+    "SOURCE": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+    "NATIVE_SHA256": "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471",
+    "VERIFIER_SHA256": "0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762",
+    "OVERLAY_SHA256": "cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38",
+    "NATIVE_COUNT": 82,
+    "PRIVATE_COUNT": 22,
+    "OTHER_COUNT": 25,
+    "NEW_EDGES": 47,
+    "TOTAL_EDGES_FORMATTED": "5,614",
+    "OVERLAY_EDGES": 727
+  },
+  "actual_proposed_consumer_status": {
+    "schema": "FKRG_REUSE_NAVIGATOR_V2",
+    "base_snapshot_source_commit": "48b582beabec2ebae61ab0d51081b83356fcb3e1",
+    "overlay_source_checkpoints": [
+      "fb70de6fb5dd26918222bc7b0849fb38900f8604",
+      "fb16512a6b4e813ef94f2ba3db0e6f3a44500886",
+      "3fb6c422638a6c8dbb2ea31cf9affd4e2f17b668",
+      "worktree-sha256:08a1b117bd84768bb20430827a7f96ee0055902c242af7e91a9f1d6c110f0e39",
+      "worktree-sha256:0f8ab9e7ccbf15f7f42305ec8018841bfd7dd92691f412aab283f9eee4067ea3",
+      "worktree-sha256:9489908b8ce8a335f7eafa57405d938ecc8bbdd343e611656fb1cb7da5384275",
+      "worktree-sha256:91621694fadc223f63b76298a6eaf10078e59bd87c9dbc798726a6e366b1f357",
+      "worktree-sha256:29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+      "worktree-sha256:60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31",
+      "worktree-sha256:179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6"
+    ],
+    "latest_overlay_source_checkpoint": "worktree-sha256:179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+    "overlay_count": 10,
+    "module_source_hashes_verified": 684,
+    "bundled_modules": 684,
+    "ueot_maintained_modules": 673,
+    "vendor_modules": 11,
+    "public_source_theorems_with_direct_proof_graph": 4272,
+    "overlay_public_theorems": 479,
+    "overlay_registered_direct_edges": 727,
+    "overlay_historical_public_repairs": 1,
+    "overlay_existing_registered_direct_edge_repairs": 1,
+    "verified_equal_type_groups": 37,
+    "equal_type_statement_names": 77,
+    "overlay_cross_snapshot_defeq_matches": 0,
+    "near_type_not_defeq_candidate_pairs": 15,
+    "overlay_lexical_reuse_candidates": 108,
+    "crossfile_exact_code_clone_candidates": 68,
+    "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability, registered-interfaces, longterm-control-statistics and finite-memory overlays, Lean kernel, and canonical Core/Compression ledgers",
+    "scientific_closure": "NOT_ESTABLISHED"
+  },
+  "patch_sha256": "088839c289b80b8d17825c6781909de302cb5da59bddbb7ae4f4c3709ddf649a",
+  "files": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "before_sha256": "c598f8c5aad77afbac3082dee7ceebf79471408f6646fa1567ebf09027acfc74",
+      "after_sha256": "9c4a1e8a70c281f044f7633e7a5e9c4e19ff961bff453e76e196d12a20a11c2b"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "before_sha256": "692b427234dffff6915ed1297c5e1fb0c256577369605691be38cb68ae2797e7",
+      "after_sha256": "694b4796d7e650996c6c6158338d9b41fcc2eb8a27554387c6e4baa509a2de8c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "before_sha256": "75650dd952415292da28df5056be8504ae7b8468349cf0ea02fb42b85e4a4b2d",
+      "after_sha256": "a0b51bb5e6805c8e067fa9980b5a75567f2385ca03860b2fb8214af583887513"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "before_sha256": "ffcce5a5f854ea6c8d17f898608dbbdfef903d2ff3e3ee4997c240baf4f49d16",
+      "after_sha256": "fe19fc6a542d8b6b689ac2bdb11e6d4baa6a3a8606605b1c3f9858500054f73a"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "before_sha256": "91eb7bef6b7268e6c76899c35fcf0490fb21f699e3e2a8a16559d3f8e14d2120",
+      "after_sha256": "6692cc8fb7acfb6871ca0dd45990a8d60670a97e07daaf197bc3adda9dd7463a"
+    }
+  ],
+  "new_tests_executed": false,
+  "clone_rescan_executed": false,
+  "heavy_gates_executed": false
+}

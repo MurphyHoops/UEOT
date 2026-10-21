@@ -1,0 +1,83 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_EXACT_CONSUMER_PROPOSAL_REVIEW_V1",
+  "state": "EXACT_FIVE_FILE_CONSUMER_PROPOSAL_CLEAR_FOR_APPLY_TESTS_PENDING",
+  "reviewer": "/root/finite_memory_review_resume",
+  "observed_at_utc": "2026-10-21T17:25:36.503428+00:00",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "prepared_receipt_sha256": "e758c594b7858c1c2cd211041836e9fa7ff4cdfb07021382d8dca0d0f569b5e4",
+  "patch_sha256": "088839c289b80b8d17825c6781909de302cb5da59bddbb7ae4f4c3709ddf649a",
+  "proposal_version": 2,
+  "prior_proposal_preserved": {
+    "version": 1,
+    "state": "PREPARED_NOT_APPLIED",
+    "receipt_sha256": "e3afd061626c3058a6f0c2a928c20c5ea774b3e18bf9f23b3ad20aece818e8e7",
+    "changed_paths_from_prior": [
+      "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md"
+    ],
+    "reason": "Clarify that empty support is a memory value; fallback is the fixed action PMF used at every nonwinning memory, not an extra memory value."
+  },
+  "files": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "before_sha256": "c598f8c5aad77afbac3082dee7ceebf79471408f6646fa1567ebf09027acfc74",
+      "after_sha256": "9c4a1e8a70c281f044f7633e7a5e9c4e19ff961bff453e76e196d12a20a11c2b"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "before_sha256": "692b427234dffff6915ed1297c5e1fb0c256577369605691be38cb68ae2797e7",
+      "after_sha256": "694b4796d7e650996c6c6158338d9b41fcc2eb8a27554387c6e4baa509a2de8c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "before_sha256": "75650dd952415292da28df5056be8504ae7b8468349cf0ea02fb42b85e4a4b2d",
+      "after_sha256": "a0b51bb5e6805c8e067fa9980b5a75567f2385ca03860b2fb8214af583887513"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "before_sha256": "ffcce5a5f854ea6c8d17f898608dbbdfef903d2ff3e3ee4997c240baf4f49d16",
+      "after_sha256": "fe19fc6a542d8b6b689ac2bdb11e6d4baa6a3a8606605b1c3f9858500054f73a"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "before_sha256": "91eb7bef6b7268e6c76899c35fcf0490fb21f699e3e2a8a16559d3f8e14d2120",
+      "after_sha256": "6692cc8fb7acfb6871ca0dd45990a8d60670a97e07daaf197bc3adda9dd7463a"
+    }
+  ],
+  "preserved_prior_overlay_count": 9,
+  "preserved_prior_graph_rows": 4237,
+  "previous_graph_edges": 5567,
+  "current_graph_edges": 5614,
+  "current_modules": 684,
+  "current_public_nodes": 4272,
+  "current_maintained_modules": 673,
+  "unchanged_vendor_modules": 11,
+  "consumer_executable_diff": "Only append one entry to each of four pinned overlay/certificate arrays; status description adds the tenth layer. All other consumer AST is identical.",
+  "preserved_old_regression_methods": 47,
+  "old_regression_methods_with_only_live_count_changes": [
+    "test_calibrated_defect_overlay_chain_and_kernel_graph",
+    "test_evidence_and_sources_exact_baseline",
+    "test_new_lean_module_cannot_be_omitted_from_index"
+  ],
+  "new_regression_methods": [
+    "test_finite_memory_native_ownership_types_and_registered_edges",
+    "test_finite_memory_registration_preserves_raw_execution_and_metadata_scope",
+    "test_finite_memory_same_source_checker_and_controller_reuse"
+  ],
+  "current_regression_methods": 50,
+  "new_tests_executed_by_reviewer": false,
+  "independent_proposed_consumer_load": "PASS_COMPLETE_LIVE_SOURCE_AND_EVIDENCE_BINDING",
+  "clone_scanner_code_ast_unchanged": true,
+  "findings": [
+    "The exact five before files equal immutable baseline bytes and current live bytes; all five proposed files and the patch match their prepared hashes.",
+    "All validation logic in fkrg_reuse.py is preserved. Four pinned lists gain exactly the reviewed tenth overlay/certificate and their actual hashes; only a descriptive string otherwise changes.",
+    "All 47 historical test methods remain. Exactly three update only live census literals; three new tests check native ownership/type/proof edges with actual drift rejection, concrete same-source checker/controller proof reuse, and metadata-only registration with preserved raw execution states.",
+    "Read-only execution of the exact proposed consumer verifies the complete current source/evidence binding, retains all nine old overlays and all 4237 old graph rows exactly, and adds exactly 35 public rows and 47 direct edges.",
+    "REBUILD_CLONE_CANDIDATES.py changes only its documentation; its scanner AST is unchanged. The historical 68-row clone index is retained and no current rescan success is fabricated.",
+    "Both README updates agree with actual native counts/hashes and retain support versus numerical homogeneity, own-policy occupancy, explicit mixed-initial witness, noncomputable selector, physical-safety and reference-budget boundaries.",
+    "Historical overlay scopes, raw PENDING/FAIL states, frozen P-ID categories and strong global closure status are preserved."
+  ],
+  "authorization_scope": "The owner may install exactly these five proposed files and execute the complete 50-test reuse suite. A successful actual installation/test receipt, complete FKRG/canonical checks, and Git-object publication gates remain required.",
+  "review_script_sha256": "1b3dedc3b3e5334389b81662b70b2dcd2a18d8a625e8bd95cf20c7493c6e5991"
+}

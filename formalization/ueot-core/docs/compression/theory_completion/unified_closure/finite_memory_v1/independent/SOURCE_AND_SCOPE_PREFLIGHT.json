@@ -1,0 +1,68 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_SOURCE_SCOPE_PREFLIGHT_V1",
+  "state": "STATIC_PREFLIGHT_CLEAR_WITH_PUBLICATION_OBLIGATIONS",
+  "reviewer": "/root/finite_memory_audit",
+  "observed_at_utc": "2026-10-21T16:15:48.330410+00:00",
+  "base_commit": "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+  "branch": "compression/theory-completion-finite-memory",
+  "baseline_policy_equals_worktree": true,
+  "baseline_authorized_l2_existing_paths_for_new_branch": [],
+  "historical_branch_l2_paths": [
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
+  ],
+  "allowed_new_source_prefix": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/",
+  "allowed_new_evidence_prefix": "formalization/ueot-core/docs/compression/theory_completion/",
+  "root_import_exception": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+  ],
+  "live_status_exception": [
+    "formalization/ueot-core/docs/compression/theory_completion/THEORY_COMPLETION_STATUS.json"
+  ],
+  "source_sha256": {
+    "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json": "1ba448d36e23201149e510adc64cdd0bbcff7f82000432ae100cc3cbb793444f",
+    "formalization/ueot-core/scripts/validate_compression_research.py": "01020dfa2f7bcda1959a945979ed5d9c138d347717f61da2e437d645d5596205",
+    "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md": "cae640e8ed05f70a1b1c97033d3147faf8fa69b2178fe8d4f265db79d1cc6fa1",
+    "formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md": "a898479b84fc9fa8ab237fd7cbd565f5e6e3d6954bf0f5af85b8a80428ee86ef",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md": "91eb7bef6b7268e6c76899c35fcf0490fb21f699e3e2a8a16559d3f8e14d2120",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedCausal.lean": "bd523354f5447cc408389deb7b7a6a69c9965ef3bfdfac27997675768efde81c",
+    "formalization/ueot-core/UEOT/V3/ViabilityKernel.lean": "d18d51f277cd07ce4ca3ceeeef13d3bf78ef68ca8519f44ea9e76b981015e0ef",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean": "85ea1b193b61a1a823873e622e771776c75aee4b43e047f148c5decd252fd88c",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean": "7986934bd00a04864f65a5a4f010bbafe3b86b93c442ddc177c294aab7c36ecf",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/InfiniteSupportViability.lean": "57bd13aae378429d71bb3c6f9094d0f837378d7127924b51a15e7e8b65e71757",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/global_review_tail_v1/independent/FINITE_BELIEF_INFINITE_POLICY_CONTRACT.md": "33000eedf2a3bff5d52d4bbd5c4e4398a9ea969e7a3501519dda6f260226e3ed",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/global_review_tail_v1/chain-integration/CHAIN_INTEGRATION.md": "8b861a7bb3b5d0fe2966e2b124e2d27899420decf3909e5278ae3f833e0c78ea",
+    "/workspace/scratch/534b0448126c/project_sources/02-UEOT_Core_Mathematics_v3.0_Complete.md": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303"
+  },
+  "canonical_controller_search": {
+    "found_homogeneous_observation_finite_memory_record": false,
+    "existing_causal_policy": "UEOT.V3.FiniteDiscountedControl.CausalPolicy",
+    "difference": "Time-indexed state-aware memory and real action probabilities; not a homogeneous Y-observation PMF controller. Reuse CausalHistory and deployment row law for the new representation.",
+    "existing_relation_checker": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationViabilityCheck",
+    "existing_relation_successor": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor"
+  },
+  "lexical_preflight": {
+    "initial_default_index_attempt": "INDEX_MISSING (exit 2), no claim of search success",
+    "rebuilt_isolated_db": "/workspace/scratch/534b0448126c/tmp/core-finite-memory-publication/audit/fkrg.sqlite3",
+    "module_count": 678,
+    "declaration_count": 6274,
+    "source_fingerprint": "60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31",
+    "reuse_queries": [
+      "support viable",
+      "fixed"
+    ],
+    "query_status": "PASS; source hypotheses inspected, no kernel replay claimed"
+  },
+  "claims_not_yet_reviewed": [
+    "new Lean implementation",
+    "actual focused builds",
+    "native export",
+    "L2 ops renewal",
+    "consumer mutation",
+    "publication and resulting main"
+  ]
+}

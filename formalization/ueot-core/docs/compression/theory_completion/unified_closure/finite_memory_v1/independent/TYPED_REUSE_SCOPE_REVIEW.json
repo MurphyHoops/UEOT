@@ -1,0 +1,191 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_TYPED_REUSE_SCOPE_REVIEW_V1",
+  "state": "SOURCE_TYPED_HINT_REVIEW_CLEAR_NATIVE_STORED_TYPE_CHECK_PENDING",
+  "reviewer": "/root/finite_memory_review_resume",
+  "observed_at_utc": "2026-10-21T17:13:54.598885+00:00",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "complete_modules": 684,
+  "public_source_candidates": 35,
+  "hint_groups_reviewed": 6,
+  "old_hint_pairs_reviewed": 7,
+  "manifest_sha256": "7509538e8bbbf8f0d38f4c06efe0ad285a6548368aaef8ad42f060d40d1d7241",
+  "preflight_sha256": "9c4f4c1e0e02579495765e6703571a667b64e51be2b28d25bf8e5c09a1871299",
+  "new_source_sha256": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean": "244789411b085f83c3ed16547be0c1909ffad066b9fc1f21e4b99dc83d726269",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean": "a16ebe2b2e930623adf4f7ab40783af595387e3a1ee9726e6e7b98373454934a",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0"
+  },
+  "immutable_old_file_sha256": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean": "7986934bd00a04864f65a5a4f010bbafe3b86b93c442ddc177c294aab7c36ecf",
+    "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaSemantics.lean": "23faf12a53ec5663d6f03abe2c102ccd32d2ccf39a712276fad53247e44c5c37"
+  },
+  "groups": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+      "verdict": "DISTINCT_CONCRETE_SOURCE_IDENTITY_KEEP_SMALL_ADAPTER",
+      "comparison": "Both declarations identify a finite relation with an actual deterministic PMF support. The old source is pure (if n = 0 then a else x), with a time-indexed supportTable; the new source is pure (!x), with the fixed flipRelation. The iff orientation is reversible, but the source functions are different. For n=0, x=false, a=false, z=false, the old relation holds and the new one does not.",
+      "reuse_choice": "Retain the new same-source identity, proved by simplifying the existing PMF.support_pure theorem and the actual flip source/relation definitions. The old example is not a theorem parameterized by an arbitrary deterministic transition and cannot be instantiated with the new source.",
+      "scope": "A small concrete representation adapter. It is not an independent general support theorem or a claim of novel probability theory.",
+      "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "candidate_source_sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+      "candidate_declaration": {
+        "line": 73,
+        "statement": "theorem source_support_exact (n : ℕ) (x a z : Bool) :\n    z ∈ (source n x a).support ↔ flipRelation x a z"
+      },
+      "reviewed_old_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "source_sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+          "line": 436,
+          "statement": "theorem supportTable_exact (n : ℕ) (x a z : Bool) :\n    supportTable n x a z ↔ z ∈ (source n x a).support"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.trace_support_eq_memory_singleton",
+      "verdict": "DISTINCT_SOURCE_AND_ALL_RECORD_ALL_TIME_INVARIANT",
+      "comparison": "The old theorem concerns one named history at time 1, under uniform initial Bool and the action-then-stay source, concluding traceSupport = {true}. The new theorem quantifies over every n and complete observed record, under pure-false initial law and the flip source, and identifies the trace with the replayed Boolean controller memory.",
+      "reuse_choice": "Reuse traceSupport, initialSupport, successorSupport and PMF.support_pure; establish the all-time statement by induction over the existing causal record recursion. A fixed one-record theorem cannot supply this induction or change its source and initial law.",
+      "scope": "The witness is an explicit same-source separation from stationary current-observation randomized feedback. Its all-record source-trace identity is not an identity of arbitrary policies or path measures.",
+      "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "candidate_source_sha256": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+      "candidate_declaration": {
+        "line": 46,
+        "statement": "theorem trace_support_eq_memory_singleton :\n    ∀ n (h : CausalHistory Unit (Bool × Unit) n),\n      traceSupport initial observe source n h =\n        {flipController.memory n h}"
+      },
+      "reviewed_old_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "source_sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+          "line": 535,
+          "statement": "theorem deadend_trace_support_eq :\n    traceSupport initial observe source 1 deadendHistory = {true}"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport_mem_arena",
+      "verdict": "GENERAL_FIBER_MEMBERSHIP_VERSUS_ONE_EXAMPLE_EQUALITY",
+      "comparison": "The new statement has arbitrary types X/Y, initial PMF and observation, and assumes a nonempty initial observation fiber; it concludes that this fiber belongs to the newly defined nonempty observation-homogeneous arena. The old statement is the equality to Set.univ for uniform Bool and constant Unit observation.",
+      "reuse_choice": "Use the existing initialSupport definition directly: the supplied nonemptiness and the observation equality already stored in membership give the two arena fields. The old uniform example can be combined with this lemma when desired, but cannot prove the general fiber result.",
+      "scope": "An elementary interface lemma packaging existing membership data; no general mathematical novelty claim is made.",
+      "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "candidate_source_sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "candidate_declaration": {
+        "line": 50,
+        "statement": "theorem initialSupport_mem_arena\n    {X Y : Type u} (p₀ : PMF X) (q : X → Y) (y : Y)\n    (hne : (initialSupport p₀ q y).Nonempty) :\n    initialSupport p₀ q y ∈ supportArena q"
+      },
+      "reviewed_old_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.initial_support_eq_univ",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.515,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "source_sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+          "line": 489,
+          "statement": "theorem initial_support_eq_univ (y : Unit) :\n    initialSupport initial observe y = Set.univ"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_coe_eq_relationSuccessor",
+      "verdict": "REUSE_EXISTING_PROGRAM_WITH_WEAKER_RELATION_ONLY_BOUNDARY",
+      "comparison": "The new statement identifies the Set coercion of the existing finiteRelationSuccessor for a fixed decidable R with relationSuccessor, with no PMF parameter. The first old theorem identifies finite relation and PMF successor computations assuming an actual P, a support decider and exact relation/support matching. The second old theorem coerces that actual PMF successor to successorSupport. Composing them is valid only after supplying those extra source hypotheses.",
+      "reuse_choice": "Keep the existing finiteRelationSuccessor program and prove its relation-only coercion equality by extensionality and unfolding. Do not manufacture a PMF realization for arbitrary R: for a nonempty state type an empty successor relation need not be the support of a PMF. At the actual-law boundary SupportMemoryCheck explicitly reuses finiteRelationViabilityCheck_correct with hR, followed by viable_iff_homogeneous_relation and the fixed-point equivalence.",
+      "scope": "This is an adapter/generalization of the existing finite representation mechanism, not a new finite-horizon recursion, an alternative checker implementation, executable action synthesis, or a complexity theorem.",
+      "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "candidate_source_sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "candidate_declaration": {
+        "line": 58,
+        "statement": "theorem finiteRelationSuccessor_coe_eq_relationSuccessor\n    {X Y A : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]\n    (q : X → Y) (R : X → A → X → Prop)\n    [∀ x a z, Decidable (R x a z)]\n    (n : ℕ) (S : Finset X) (a : A) (y : Y) :\n    (↑(finiteRelationSuccessor q (fun _ => R) n S a y) : Set X) =\n      relationSuccessor q R (↑S : Set X) a y"
+      },
+      "reviewed_old_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "source_sha256": "7986934bd00a04864f65a5a4f010bbafe3b86b93c442ddc177c294aab7c36ecf",
+          "line": 147,
+          "statement": "theorem finiteRelationSuccessor_eq\n    {X Y A : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]\n    (q : X → Y) (R : ℕ → X → A → X → Prop)\n    (P : ℕ → X → A → PMF X)\n    [∀ n x a z, Decidable (R n x a z)]\n    [∀ n x a z, Decidable (z ∈ (P n x a).support)]\n    (hR : ∀ n x a z, R n x a z ↔ z ∈ (P n x a).support)\n    (n : ℕ) (S : Finset X) (a : A) (y : Y) :\n    finiteRelationSuccessor q R n S a y = finiteSuccessor q P n S a y"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteSuccessor_coe_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViabilityCheck.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "source_sha256": "7986934bd00a04864f65a5a4f010bbafe3b86b93c442ddc177c294aab7c36ecf",
+          "line": 30,
+          "statement": "theorem finiteSuccessor_coe_eq\n    {X Y A : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]\n    (q : X → Y) (P : ℕ → X → A → PMF X)\n    [∀ n x a z, Decidable (z ∈ (P n x a).support)]\n    (n : ℕ) (S : Finset X) (a : A) (y : Y) :\n    (↑(finiteSuccessor q P n S a y) : Set X) =\n      successorSupport q P n (↑S : Set X) a y"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportPre_mono",
+      "verdict": "DIFFERENT_OPERATOR_DOMAINS_ELEMENTARY_MONOTONICITY",
+      "comparison": "The new operator acts on families Set (Set X), retains arena supports, and requires a common certified action and membership of every nonempty observed successor in the supplied family. The old operator maps a carrier Set S to the face of the real probability simplex supported on it; its inclusion result has no action, observation successor or candidate-family quantifier.",
+      "reuse_choice": "Carry the same arena/action/certification witnesses across V subset W and apply that inclusion to each successor. The simplex-face theorem cannot provide the target quantified action witnesses or the required operator type.",
+      "scope": "The basic monotonicity mechanism is shared mathematical background. The theorem is only a typed local step for the support fixed point, and does not assert that supportPre W is a subset of W for arbitrary W.",
+      "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "candidate_source_sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "candidate_declaration": {
+        "line": 79,
+        "statement": "theorem supportPre_mono\n    {X Y A : Type u} (q : X → Y) (R : X → A → X → Prop)\n    (C : X → A → Prop) {V W : Set (Set X)} (hVW : V ⊆ W) :\n    supportPre q R C V ⊆ supportPre q R C W"
+      },
+      "reviewed_old_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TopologyChangingGoaSemantics.supportFace_mono",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaSemantics.lean",
+          "similarity": 0.552,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "source_sha256": "23faf12a53ec5663d6f03abe2c102ccd32d2ccf39a712276fad53247e44c5c37",
+          "line": 168,
+          "statement": "theorem supportFace_mono\n    {A B : Set S} (hAB : A ⊆ B) :\n    supportFace A ⊆ supportFace B"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_memory_eq_traceSupport",
+      "verdict": "GENERAL_CONTROLLER_REPLAY_SOURCE_BRIDGE",
+      "comparison": "The new theorem concerns arbitrary finite X, observations/actions, original p0, complete possibly time-varying P, fixed R/C, and fixed fallback. Its hR identifies the supports of P with R at every time/state/action/successor. It quantifies over every time and complete record and identifies the support-valued controller memory with the actual source trace. The old theorem has no memory controller or homogeneity premise and states a single concrete trace identity.",
+      "reuse_choice": "Reuse the generic memory replay recursion and existing traceSupport recursion. At each induction step apply successorSupport_eq_relation_of_homogeneous, which is derived from hR. Do not identify the resulting controller with old finite-horizon or infiniteViablePolicy selectors.",
+      "scope": "Global hR justifies equality on all records, including null records. This theorem alone does not establish physical safety, numerical kernel homogeneity, equality of reference-policy behavior, or a reduced reference check budget.",
+      "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "candidate_source_sha256": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0",
+      "candidate_declaration": {
+        "line": 109,
+        "statement": "theorem supportMemoryController_memory_eq_traceSupport\n    {X Y A : Type u} [Fintype X]\n    (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)\n    (R : X → A → X → Prop) (C : X → A → Prop) (fallback : PMF A)\n    (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z) :\n    ∀ n (h : CausalHistory Y (A × Y) n),\n      ((supportMemoryController p₀ q R C fallback).memory n h).1 =\n        traceSupport p₀ q P n h"
+      },
+      "reviewed_old_declarations": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "source_sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+          "line": 535,
+          "statement": "theorem deadend_trace_support_eq :\n    traceSupport initial observe source 1 deadendHistory = {true}"
+        }
+      ]
+    }
+  ],
+  "conclusion": "All six lexical hint groups are discharged by exact source/type/scope comparisons and explicit reuse choices. No blocker or redundant drop-in declaration was found among these seven old hint pairs. Existing checker and actual-law correctness APIs are reused at their proper boundaries.",
+  "limits": [
+    "This is an independent review of declared source types and proof bodies, not an executed Lean stored-type comparison.",
+    "The raw native complete-registry and pairwise isDefEq checks remain required. They test exact stored-type definitional equality under the exporter protocol, not arbitrary logical equivalence.",
+    "Lexical hints are only candidate selection. Clearing these six groups does not prove mathematical novelty or that no useful related result exists elsewhere.",
+    "No full-build, native axiom/census/dependency, fixed-edge replay, registration or canonical publication acceptance is asserted in this receipt.",
+    "The frozen P-ID categories, four counted generators, and NOT_ESTABLISHED strong global-closure status are unchanged."
+  ],
+  "review_script_sha256": "88be82fa31eeeef146f25f62848aa31c4052237ba455440218051164063d74dd"
+}

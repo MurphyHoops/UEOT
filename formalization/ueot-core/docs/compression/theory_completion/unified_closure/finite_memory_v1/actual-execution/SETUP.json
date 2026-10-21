@@ -1,0 +1,56 @@
+{
+  "state": "SETUP_COMPLETE",
+  "base": "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+  "worktree": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-20261022",
+  "evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-evidence-20261022",
+  "utc": "2026-10-21T16:22:27.592809+00:00",
+  "logs": [
+    {
+      "args": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "main"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "From https://github.com/MurphyHoops/UEOT\n * branch              main       -> FETCH_HEAD\n"
+    },
+    {
+      "args": [
+        "git",
+        "rev-parse",
+        "origin/main"
+      ],
+      "code": 0,
+      "stdout": "a9109004959975b3d2c5a303741e117f1cd8cb9c\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "worktree",
+        "add",
+        "-b",
+        "compression/theory-completion-finite-memory",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-20261022",
+        "a9109004959975b3d2c5a303741e117f1cd8cb9c"
+      ],
+      "code": 0,
+      "stdout": "HEAD is now at a9109004 Merge pull request #363 from MurphyHoops/compression/theory-completion-longterm-policy-sisc\n",
+      "stderr": "Preparing worktree (new branch 'compression/theory-completion-finite-memory')\n"
+    },
+    {
+      "args": [
+        "cp",
+        "-cR",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-policy-sisc-20261021/formalization/ueot-core/.lake",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/finite-memory-20261022/formalization/ueot-core/.lake"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
