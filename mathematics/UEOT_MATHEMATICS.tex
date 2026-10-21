@@ -2183,6 +2183,242 @@ D_{\rm TV}(u^2,\widehat u^2)\le\frac{2\sqrt2\,\eta}{g}.
 
 M-OI-01 统一的是``有极限且可观测残差趋零→极限不变''的核心论证；M-PE-01 统一的是给定正特征数据的归一化后果。它们不自动给出 P-GOA-02 的混合裕量、P-GOA-03 的同复归分解或 P-GOA-04 的谱隙。第 32 章据此保留 GOA 家族中的领域适配。
 
+\hypertarget{ux540cux4e00ux53d7ux63a7ux6e90ux7684ux7a33ux6001ux6761ux4ef6ux751fux5b58ux4e0eux4ef7ux503c}{%
+\section{21.7 同一受控源的稳态、条件生存与价值}\label{ux540cux4e00ux53d7ux63a7ux6e90ux7684ux7a33ux6001ux6761ux4ef6ux751fux5b58ux4e0eux4ef7ux503c}}
+
+本节把第 10、19、21 章的一般数学机制实例化到同一个实际有限受控源，并与第 35.7 节的对象划分、支持和恢复相接。源核、精确控制商与安全固定点已有 Lean 实现；以下参数化稳态、QSD 及完整受限最优闭环的显式实例给出新的书面证明，尚不声称这些新数值和实例已有专门 Lean 端点。第 35.4 节的 8/5 模型及第 38.6 节的 9/64 注册实验保持各自独立来源。
+
+\hypertarget{ux552fux4e00ux7684ux53d7ux63a7ux6e90ux4e0eux5b8cux6574ux7b56ux7565}{%
+\subsection{21.7.1 唯一的受控源与完整策略}\label{ux552fux4e00ux7684ux53d7ux63a7ux6e90ux4e0eux5b8cux6574ux7b56ux7565}}
+
+取实际定义 \[
+\begin{gathered}
+X=\mathrm{Bool}\times\mathrm{Bool},\qquad A=\mathrm{Bool},\\
+M=\mathrm{conflictRewardControl.micro},\\
+P(x,a)=M.\mathrm{transitionPMF}(x,a).
+\end{gathered}
+\]
+
+以下以 0、1 表示 false、true，写状态为 \(x=(b,u)\)。观察是 \(q(b,u)=b\)，安全域是 \(K=\{(1,0),(1,1)\}\)。初始律明确取 \(\nu_0=\delta_{(1,0)}\)。转移、奖励、折扣全部来自同一个 M： \[
+P((b,u),a)\{(b',u')\}=\tfrac12{\bf1}_{b'=a},\qquad
+r((b,u),a)=1-a,\qquad \gamma=\tfrac12.                 \tag{21.7-1}
+\]
+
+式（21.7-1）的 PMF 质量应由 M 的实数转移经已有 transitionPMF 转换定理取得，后续形式化不能另造同值表而省去相等证明。内部位按该转移重新取值，允许保持原值。
+
+对每个 \(\theta\in[0,1]\)，定义同一个完整因果策略 \(\pi_\theta\)：对每一时刻及每个可见历史，其动作 PMF 恒为 \[
+\pi_\theta(0)=\theta,\qquad \pi_\theta(1)=1-\theta.     \tag{21.7-2}
+\]
+
+这一定义也覆盖零概率历史。实际有限路径律按生产路径 API 的因果乘积／bind 递推构造。因而式（21.7-2）是在\textbf{每个历史条件下}的动作分布，不只是无条件动作频率；不需要从某个边际频率假定独立性。
+
+令 \[
+p_\theta(0)=\theta,\quad p_\theta(1)=1-\theta,\qquad
+\mu_\theta(b,u)=p_\theta(b)/2.
+\]
+
+\hypertarget{ux65e0ux6761ux4ef6ux95edux73afux6240ux6709ux53c2ux6570ux5747ux4e00ux6b65ux5230ux8fbeux552fux4e00ux4e0dux53d8ux5f8b}{%
+\subsection{21.7.2 无条件闭环：所有参数均一步到达唯一不变律}\label{ux65e0ux6761ux4ef6ux95edux73afux6240ux6709ux53c2ux6570ux5747ux4e00ux6b65ux5230ux8fbeux552fux4e00ux4e0dux53d8ux5f8b}}
+
+\textbf{M-21.1。} 对所有 \(\theta\in[0,1]\)，从（21.7-1）及（21.7-2）诱导的真实闭环转移为 \[
+L_\theta(x,y)
+=\sum_{a\in A}\pi_\theta(a)P(x,a)\{y\}
+=\mu_\theta(y).                                      \tag{21.7-3}
+\] 每个概率行 \(\eta\) 满足 \(\eta L_\theta=\mu_\theta\)。因此 \(\mu_\theta\) 是唯一不变概率行，所有初始分布在一步后即与它相等；Dobrushin 系数为零。
+
+\textbf{证明。} 固定 \(y=(b',u')\)，求和中只有 \(a=b'\) 一项可能非零，得到 \(p_\theta(b')/2\)。对 \(x\) 求和， \[
+(\eta L_\theta)(y)=\sum_x\eta(x)\mu_\theta(y)=\mu_\theta(y).
+\] 取 \(\eta=\mu_\theta\) 得不变性；若 \(\eta L_\theta=\eta\)，则同一等式给 \(\eta=\mu_\theta\)。各行相同，行间 TV 均为零。\(\blacksquare\)
+
+\textbf{M-21.2。} 记实际第 t 步边际为 \(\nu_t=\nu_0L_\theta^t\)。对正整数 \(N\)， \[
+\bar\nu_N=\frac1N\sum_{t=0}^{N-1}\nu_t
+=\frac1N\nu_0+\frac{N-1}{N}\mu_\theta.                \tag{21.7-4}
+\] 从而 \[
+D_{\rm TV}(\bar\nu_N,\mu_\theta)
+=\frac1N D_{\rm TV}(\nu_0,\mu_\theta)
+=\frac{1+\theta}{2N}\longrightarrow0,                \tag{21.7-5}
+\] \[
+\bar\nu_NL_\theta-\bar\nu_N
+=\frac{\mu_\theta-\nu_0}{N}.                         \tag{21.7-6}
+\]
+
+\textbf{证明。} M-21.1 给 \(t\ge1\) 时 \(\nu_t=\mu_\theta\)。代入平均得（21.7-4）。TV 对同一有符号差的正标量齐次，且 \(D_{\rm TV}(\delta_x,\mu)=1-\mu(x)\)，得到（21.7-5）；代入一次转移得（21.7-6）。\(\blacksquare\)
+
+（21.7-4）是概率律的 Cesàro 平均，尚未宣称某条样本轨迹的经验频率定理。生产 cesaroRow 用参数 \(n\) 表示 \(N=n+1\)，适配时必须处理这个下标偏移。
+
+在本例中，M-OI 的``残差趋零且存在极限''条件由显式计算给出，有限单纯形的子列抽取只需复用。通用 P-GOA-01 本身仍只声称子列存在及每个子列极限不变；本例更强的全序列收敛和唯一性来自（21.7-3），不能反推通用定理也有这些结论。
+
+\hypertarget{ux6740ux6b7bux6838ux6765ux81eaux540cux4e00ux4e2aux5b9eux9645ux8fc7ux7a0b}{%
+\subsection{21.7.3 杀死核来自同一个实际过程}\label{ux6740ux6b7bux6838ux6765ux81eaux540cux4e00ux4e2aux5b9eux9645ux8fc7ux7a0b}}
+
+定义首次离开安全域的时刻 \[
+\tau=\inf\{t\ge1:X_t\notin K\},
+\] 并令 \(S_T=\{X_1,\ldots,X_T\in K\}\)，\(S_0\) 为整个样本空间。
+
+把 K 通过 \(u\mapsto(1,u)\) 与 Bool 对应。取同一个闭环 \(L_\theta\) 在 K 上的限制，而不另给一个独立矩阵： \[
+Q_\theta(u,u')=L_\theta((1,u),(1,u'))=\frac{1-\theta}{2}. \tag{21.7-7}
+\]
+
+它的行和为 \(1-\theta\)，缺失质量 \(\theta\) 正是原过程这一步离开 K 的概率。若只删除 K 外状态后重新归一化，得到的是另一核，不能称作（21.7-7）的原始 killed 核。
+
+设 \[
+H(u,u')=\tfrac12,\quad \rho=1-\theta,\quad
+q_*(u)=\tfrac12,\quad h_*(u)=1.
+\] 于是 \(Q_\theta=\rho H\)，且 \(H^2=H\)。
+
+\textbf{M-21.3。} 当 \(0\le\theta<1\) 时，以上数据逐项满足现有 BiEigenData 与 KilledQSDGOA 的要求： \[
+Q_\theta\ge0,\quad Q_\theta{\bf1}=\rho{\bf1},\quad
+0<\rho\le1,\quad q_*Q_\theta=\rho q_*,
+\quad \sum_uq_*(u)=\sum_uq_*(u)h_*(u)=1.              \tag{21.7-8}
+\] 其 Doob 变换及不变权重为 \[
+Q_\theta^{h_*}(u,u')
+=\frac{Q_\theta(u,u')h_*(u')}{\rho h_*(u)}
+=\tfrac12=H(u,u'),\qquad q_*h_*=q_*.                 \tag{21.7-9}
+\]
+
+\textbf{证明。} 所有非负性来自 \(\theta\in[0,1)\)。两项求和使 \(Q_\theta{\bf1}\) 等于 \(1-\theta\)。对每个 \(u'\)， \[
+(q_*Q_\theta)(u')=2\cdot\tfrac12\cdot\tfrac{\rho}{2}
+=\rho/2=\rho q_*(u').
+\] 两项归一化直接求和。因为 \(\rho>0\)，（21.7-9）的除法合法。\(\blacksquare\)
+
+不用 Perron--Frobenius 存在定理来假设一个未知正特征向量；这个有限实例把正特征数据明确算出，然后复用正特征结构生成器的后果。
+
+\textbf{M-21.4。} 对任意 K 内初始概率行 \(\eta\)，以及任意 \(T\ge1\)， \[
+\eta Q_\theta^T=\rho^Tq_*,\qquad
+\sum_{u'}(\eta Q_\theta^T)(u')=\rho^T.                \tag{21.7-10}
+\] 当 \(\theta<1\) 时，存活到 T 条件下的终端内部位分布恰为 \(q_*\)。
+
+\textbf{证明。} \(H^2=H\) 给 \(Q_\theta^T=\rho^TH\)；任意概率行满足 \(\eta H=q_*\)。质量求和得（21.7-10），并在 \(\rho^T>0\) 时归一化。\(\blacksquare\)
+
+这一步不能直接用 survival\_mass\_pow 的 QSD 初始律代替 \(\nu_0=\delta_{(1,0)}\)：该通用定理从 q\_* 开始。式（21.7-10）是所需的任意 K 内初始律适配。对于 \(T=0\)，实际条件终端内部位仍为 \(\delta_0\)，并非 q\_\emph{。从 q\_} 出发的 all-steps QSD 命题包括零步，两者量词不同。
+
+\hypertarget{ux5b9eux9645ux6709ux9650ux98ceux9669ux4e0eux6761ux4ef6ux6837ux672cux7a7aux95f4}{%
+\subsection{21.7.4 实际有限风险与条件样本空间}\label{ux5b9eux9645ux6709ux9650ux98ceux9669ux4e0eux6761ux4ef6ux6837ux672cux7a7aux95f4}}
+
+\textbf{M-21.5。} 对 \(\theta\in[0,1]\) 和 \(T\ge0\)，同一个 \((P,\pi_\theta,\nu_0)\) 的有限路径满足 \[
+\Pr_{\pi_\theta}(S_T)=(1-\theta)^T,\qquad
+\Pr_{\pi_\theta}(\tau\le T)=1-(1-\theta)^T.           \tag{21.7-11}
+\] 对 \(T\ge1\)，其终端失效概率却是 \[
+\Pr_{\pi_\theta}(X_T\notin K)=\theta.                \tag{21.7-12}
+\]
+
+\textbf{证明。} 在任意已经存活的历史之后，下一步仍在 K 当且仅当选动作 1；其条件概率由（21.7-2）恒为 \(1-\theta\)。因此 \(s_{T+1}=(1-\theta)s_T\)，\(s_0=1\)，归纳得（21.7-11）。这也与实际 killed 核的质量（21.7-10）一致。式（21.7-12）由M-21.1 的真实边际 \(\nu_T=\mu_\theta\) 得出。\(\blacksquare\)
+
+以 \(\theta=1/8,T=2\) 为例： \[
+\Pr(\tau\le2)=15/64,\qquad \Pr(X_2\notin K)=1/8.
+\] 两者之差 \(7/64\) 正是先离开 K、后又返回 K 的概率。在这两个运行步骤内的``返回''是原物理转移的恢复，不等于已经运行了独立程序恢复协议。
+
+若认证行谓词取 \(C(y,a)\iff a=1\)，每个决策时刻的实际未认证行占据为 \(\theta\)。只有 \(\theta=0\) 时它为零；同一个 \(\pi_\theta\) 不能借用 \(\pi_0\) 的零占据。若选择全部行认证并使用精确参考核，占据虽然可为零，参考模型的真实物理失败风险仍为（21.7-11）。这是两个不同的证书设计，不能挑各自有利的项拼接。
+
+\hypertarget{ux5168ux8defux5f84ux6761ux4ef6ux5316ux7684ux7cbeux786eux7b49ux5f0f}{%
+\subsubsection{21.7.4.1 全路径条件化的精确等式}\label{ux5168ux8defux5f84ux6761ux4ef6ux5316ux7684ux7cbeux786eux7b49ux5f0f}}
+
+对 \(\theta<1\)，在任意固定 T 下，以 \(S_T\) 为条件的完整有限状态---动作路径律等于 \(\pi_0\) 的同长路径律。
+
+证明如下：每一条存活路径的动作全部为 1，故其 \(\pi_\theta\) 路径质量等于相同路径的 \(\pi_0\) 质量乘以 \((1-\theta)^T\)；非存活路径的条件质量为零；最后除以（21.7-11）。这说明条件化怎样产生（21.7-9）的公平内部核，同时也说明两种无条件部署律并不相等。这个简单常危险率实例不提供一般 Q-process 与有限时窗条件化恒等的定理。
+
+\hypertarget{ux65e0ux9650ux8defux5f84ux7684ux6570ux5b66ux89e3ux91ca}{%
+\subsubsection{21.7.4.2 无限路径的数学解释}\label{ux65e0ux9650ux8defux5f84ux7684ux6570ux5b66ux89e3ux91ca}}
+
+有限式（21.7-11）已经给出 \[
+0<\theta\le1\quad\Longrightarrow\quad
+\lim_{T\to\infty}\Pr_{\pi_\theta}(\tau\le T)=1.         \tag{21.7-13}
+\]
+
+如需把（21.7-13）表述为同一无限实验中的``几乎必然最终失效''，可以明确构造：在动作序列与内部位序列的乘积概率空间上，让各动作坐标服从（21.7-2）、内部位坐标为公平 Bool，两个坐标族独立；置 \(X_0=(1,0)\)，\(X_{n+1}=(A_n,U_{n+1})\)。其每个有限圆柱分布逐项等于上述实际因果乘积，所以它实现了同一源与同一策略。由事件 \(S_T\) 的递减连续性， \[
+\Pr(\tau=\infty)=\lim_T(1-\theta)^T=0
+\] 对 \(0<\theta\le1\) 成立。对于 \(\theta=0\)，该概率为一。
+
+这里给出的是本例明确乘积空间上的数学延伸；对应无限路径 Lean 对象及其与生产有限 PMF 的一致性尚未形式化。通用``每个有限 T 存在可行策略''的命题仍不能直接换量词成``存在一个策略无限存活''。
+
+\hypertarget{ux6700ux4f18ux6027ux53efux884cux6027ux4e0eux5168ux7a7aux95f4ux4e0dux53d8ux5f8b}{%
+\subsection{21.7.5 最优性、可行性与全空间不变律}\label{ux6700ux4f18ux6027ux53efux884cux6027ux4e0eux5168ux7a7aux95f4ux4e0dux53d8ux5f8b}}
+
+\textbf{M-21.6。} 对所有 \(\theta\in[0,1]\)， \[
+J_M(\pi_\theta;\nu_0)
+=\mathbb E\!\left[\sum_{n=0}^\infty2^{-n}(1-A_n)\right]
+=2\theta.                                          \tag{21.7-14}
+\] 原模型 M 的无限折扣最优值在每个状态均为 2，唯一 Bellman greedy 动作为 0。其闭环是 \(L_1\)，唯一不变律为 \(\mu_1\)，完全支持在 K 外。
+
+\textbf{证明。} 每步奖励非负有界，有限期望和为 \(\theta\sum_{n<T}2^{-n}\)，单调取极限得到（21.7-14）。任意因果策略的逐步奖励至多 1，所以总值至多 2；恒选 0 达到此值。常值函数 2 的两动作 Bellman 回报分别为 2 和 1，因此 greedy 唯一为 0。\(\blacksquare\)
+
+可见，所有 \(L_\theta\) 都具有唯一且一步吸引的不变律，这一性质本身不能识别哪一策略优化 M 的给定奖励。最优策略也未因此保持预先登记的安全条件。
+
+\hypertarget{ux5fc5ux987bux4fddux7559-k-ux5916ux7684ux5b9eux9645ux52a8ux4f5cux57df}{%
+\subsubsection{21.7.5.1 必须保留 K 外的实际动作域}\label{ux5fc5ux987bux4fddux7559-k-ux5916ux7684ux5b9eux9645ux52a8ux4f5cux57df}}
+
+当前生产 viableRestrictedModel 的限制为 \[
+A_K(x)=\{a:x\in K\Rightarrow \operatorname{supp}P(x,a)\subseteq K\}.
+\] 由（21.7-1）， \[
+A_K(x)=\{1\}\ \ (x\in K),\qquad A_K(x)=\{0,1\}\ \ (x\notin K). \tag{21.7-15}
+\]
+
+令 R 为这个实际受限模型，它保留 M 的转移、奖励、折扣。\textbf{不能把（21.7-15）改写为对所有 x 都只许动作 1。}
+
+\textbf{M-21.7。} R 的最优值及唯一 greedy 为 \[
+V_R(b,u)=2(1-b),\qquad g_R(b,u)=b.                   \tag{21.7-16}
+\] 其完整闭环矩阵为 \[
+D((b,u),(b',u'))=\tfrac12{\bf1}_{b'=b},              \tag{21.7-17}
+\] 全部不变概率恰好为 \[
+\{\lambda\mu_0+(1-\lambda)\mu_1:0\le\lambda\le1\}.   \tag{21.7-18}
+\] 从 \(\nu_0=\delta_{(1,0)}\) 出发，其一步后的边际与长期极限均为 \(\mu_0\)，整条实际路径与 \(\pi_0\) 相同。
+
+\textbf{证明。} K 内唯一合法动作是 1，此后保持 K，所有奖励为零。K 外恒选 0 保持 K 外且每步奖励 1，达到全局上界 2。代入候选值可直接比较：K 外动作 0 的 Bellman 回报为 2，动作 1 的回报为 0；K 内只有动作 1。得到（21.7-16）及（21.7-17）。
+
+对任意概率行 \(\eta\)，记其可见位质量为 \(\eta_b=\sum_u\eta(b,u)\)。一次作用 D 后， \[
+(\eta D)(b,u)=\eta_b/2.
+\] 所以不变性恰要求每个可见纤维内为公平内部位分布，而两个纤维的总权重任意。这给出（21.7-18）。从 K 内初始，所有实际后继仍在 K，greedy 恒选 1，因果递推逐步与 \(\pi_0\) 一致。\(\blacksquare\)
+
+故 R 的完整 GreedyInvariantGOASet \textbf{不是单点}；其支持在 K 的成员只有 \(\mu_0\)，而从指定初态所得 CesàroLimitGOA 也只有 \(\mu_0\)。完整矩阵 D 的 Dobrushin 系数为 1，因为两个可见纤维的行支撑互不相交。不能调用要求全空间严格收缩的定理来证明 D 的全局唯一不变律。
+
+若另行把状态类型限制为 K，得到的核是 H，确有唯一不变律 q\_*。这是带明确状态包含映射的限制操作，不能悄悄替换原 R 的状态类型。也不能把完整 D 与 \(L_0\) 视为相同：它们只在 K 内一致，K 外的动作与后继不同。
+
+\hypertarget{ux7aefux70b9ux4e0eux4e0dux6210ux7acbux7684ux63a8ux8bba}{%
+\subsection{21.7.6 端点与不成立的推论}\label{ux7aefux70b9ux4e0eux4e0dux6210ux7acbux7684ux63a8ux8bba}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+情形
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\theta=0\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(0<\theta<1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\theta=1\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(L_\theta\) 的唯一不变律 & \(\mu_0\)，在 K 内 & \(\mu_\theta\)，两纤维都有质量 & \(\mu_1\)，在 K 外 \\
+正 T 的曾失败概率 & 0 & \(1-(1-\theta)^T\) & 1 \\
+正 T 的终端失败概率 & 0 & \(\theta\) & 1 \\
+killed 行和 \(\rho\) & 1 & 严格介于 0、1 & 0 \\
+BiEigenData / 正生存 QSD & 可用；实际没有杀死质量 & 可用 & 不可用，scale\_pos 失败 \\
+Doob 核 & H & H & 归一化分母为零，不能定义为本定理的 Doob 核 \\
+\(J_M(\pi_\theta)\) & 0 & \(2\theta\) & 2 \\
+\end{longtable}
+
+T=0 时所有参数的存活概率为 1、曾失败概率为 0；使用约定 \(0^0=1\) 的自然数幂。实际初始内部位是 \(\delta_0\)，所以``条件终端内部位为 q\_*''严格保留 T≥1。
+
+本节反驳以下无条件推论：唯一稳态推出零失效；QSD 支持在 K 推出未条件化部署安全；从安全初态的唯一极限推出全状态空间唯一 GOA；奖励最优推出可行；同一状态类型或同一个不变律推出同一实际政策／路径来源。它没有反驳附有真实最优性、保持域、初态、收缩或条件化前提的既有定理。
+
+\hypertarget{lean-ux5bf9ux5e94ux53caux4e0dux80fdux7701ux7565ux7684ux6765ux6e90ux6865}{%
+\subsection{21.7.7 Lean 对应及不能省略的来源桥}\label{lean-ux5bf9ux5e94ux53caux4e0dux80fdux7701ux7565ux7684ux6765ux6e90ux6865}}
+
+InvariantLawGOA、CesaroLimitGOA 和 KilledQSDGOA 描述给定核的长期对象，本身没有最优性字段。GreedyInvariantGOASet 则明确使用所给控制模型的 Bellman-greedy 闭环。本节每个名称都按这个区别使用，不因一个稳定分布存在而给它附加奖励最优或规范价值。
+
+现有 \href{../formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean}{FiniteCesaroInvariant} 与 \href{../formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean}{\nolinkurl{OccupationLimitInvariance}} 可消费本节的随机矩阵、初始单纯形和 Cesàro 极限。现有 \href{../formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean}{PositiveEigenstructure} 的 BiEigenData、qsdDoob\_bundle 与 killed wrapper 可消费本节明确算出的正特征数据。一般接口已经证明；把 Lθ 与真实策略路径、Qθ 与实际 killed 源、R 的 greedy 与其真实状态相关动作域逐项对齐，是本实例仍需补的形式化。
+
+\href{../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectViableGOA.lean}{SameObjectViableGOA} 已证明：真实同对象 greedy 保持非空持续域时，存在支持在该域内的不变律。这个接口还需要完整 Objecthood parent、control spec 及其来源等式，本节没有仅凭四状态类型构造这些字段。它的结论也不要求完整状态空间只有一个不变律。更强的全局唯一与混合端点另外要求真实收缩或孤立条件，不能用于本节拥有两个闭类的 D。
+
+同源实例由此把 M-QD 的准确观察商、有限路径传播、M-OI 的无条件占据和 M-PE 的条件存活结构接在一起。它没有改变四生成机制及 106 个 P-ID 的分类，也没有由此补齐物理程序来源、父对象形成、谱系或经验双驱动的其他条件。
+
 \hypertarget{ux8defux5f84ux4fe1ux606fux4ee3ux4ef7ux53efux8fbeux4f5cux7528ux4e0eux53d8ux5206ux5b9eux73b0}{%
 \chapter{22. 路径信息代价、可达作用与变分实现}\label{ux8defux5f84ux4fe1ux606fux4ee3ux4ef7ux53efux8fbeux4f5cux7528ux4e0eux53d8ux5206ux5b9eux73b0}}
 
@@ -3255,6 +3491,8 @@ v3.0 原文记录代码通过 2371 项断言，包括三顶点全部 20 个反�
 
 这些箭头均有具体假设和定理来源。它们没有消去奖励来源、程序来源、物理实现框架或外部部署条件律的校准。第 34 章的 P0--P12/C1--C7 边界因此仍与这条更强正向链共存。统一性的进展是减少不必要的前提、把可导出的条件真正导出，并保留不可消去的条件，而非把全部条件改名为一个``客体公理''。
 
+第 21.7、35.7 节又把同一源的准确观察商、实际策略、占据极限与 killed 条件结构接到一起。结果既提供正向装配，也辨明其不同问题：同一策略可以具有唯一稳定分布而不断积累曾失败风险；安全受限最优可以从指定初态持续，却在整个状态空间拥有多个不变律。第 36.8、38.10 节分别检验有限表示是否保留全部逃逸质量、统计选择是否仍消费同一真实采样与部署。这些联系使 MINCORE 的定量责任、H0 的层级区分和具体定理在真实来源上彼此约束，并没有取消目的、形成与经验验证仍需提供的条件。
+
 \hypertarget{ux6709ux7c7bux578bux7684ux7edfux4e00ux516bux7c7bux5c42ux7ea7ux4e0eux56dbux4e2aux751fux6210ux673aux5236}{%
 \chapter{32. 有类型的统一：八类层级与四个生成机制}\label{ux6709ux7c7bux578bux7684ux7edfux4e00ux516bux7c7bux5c42ux7ea7ux4e0eux56dbux4e2aux751fux6210ux673aux5236}}
 
@@ -3779,6 +4017,34 @@ ObjectScaleMap 可复合；若某谓词在第一个映射和第二个映射下�
 
 保留的输入包括奖励与安全任务、注册组织属性的物理意义、真实源模型、初始可行性和程序底座。它们与第 34 章的来源 no-go 相容。后三章进一步研究：在不完整观察下能否实际构造控制策略，以及在有限训练后使用所选模型时怎样形成真实风险保证。
 
+\hypertarget{ux540cux4e00ux5b9eux4f8bux4e2dux7684ux5bf9ux8c61ux5212ux5206ux884cux52a8ux652fux6301ux4e0eux6062ux590d}{%
+\section{35.7 同一实例中的对象划分、行动、支持与恢复}\label{ux540cux4e00ux5b9eux4f8bux4e2dux7684ux5bf9ux8c61ux5212ux5206ux884cux52a8ux652fux6301ux4e0eux6062ux590d}}
+
+第 21.7 节固定的四状态源来自现有 \nolinkurl{conflictRewardControl.micro}：状态为 \((b,u)\in\{0,1\}^2\)，动作 \(a\) 令下一可见位等于 \(a\)，内部位公平重新取值；奖励为 \(1-a\)，折扣为 \(1/2\)。本节始终使用这个完整 M，初始律为 \(\delta_{(1,0)}\)，不使用第 35.4 节的另一转移或奖励。
+
+对注册读出 \(q(b,u)=b\)，逐个动作有 \(q_\#P(x,a)=\delta_a\)，奖励也不区分同一可见纤维中的状态。已有 \nolinkurl{survivalRead_strongLumpable} 与 conflictRewardControl 因此提供非零奖励的精确控制商。宏观类型实际是 q 的 ReachableState 子类型；它与 Bool 的对应要有显式映射。若把内部位也登记为必须保留的程序属性，原两类分割就不够；既有 \nolinkurl{hiddenProgramProtectedModel} 保留了这种区别。
+
+P-ALG 的 registeredSurvivalModel 具体见证使用同一个物理核，但奖励字段为零。它与本节完整 M 不是同一条模型记录。本节奖励与当前状态无关，所以书面上不会继续细化按 b 的初始分割；把这个非零奖励注册模型写入并证明其终端分割仍为 q 的核，是另一个具体适配。不能由已存在的精确控制商反向宣称这个 P-ALG 实例也已形式化。
+
+真实支持为
+
+\[
+\operatorname{supp}P(x,1)=K,\qquad
+\operatorname{supp}P(x,0)=K^c,\qquad K=\{b=1\}.
+\]
+
+在 K 内，保持域的动作恰为 1。按本章受限动作定义，K 外两动作均合法。M-21.7 已逐状态给出受限最优值：K 内为零、K 外为二；完整 greedy 保持当前可见位，拥有两个闭类及其所有混合不变律。从指定安全初态出发，它才与恒选 1 的策略拥有相同的实际路径。这样得到的持续与最优有真实共同来源，也有不可省略的初态和比较范围。
+
+本源的后验支持提供一个清楚的适用边界：在初始时刻，正概率观察只有 1，其真实支持是单点 \((1,0)\)；在任意正时间、正概率实际历史上，最后一步的内部位公平重新取值，所以终端支持恰为该历史的当前可见纤维。这个实例没有展示``历史严格缩小当前纤维''的记忆增益。第 37 章的独立严格后验与死路见证仍有不可替代的作用。
+
+对在每个历史下以 \(\theta\) 选择动作 0 的同一策略，若认证条件是 \(a=1\)，各步实际未认证占据均为 \(\theta\)；其 T 步曾失败风险为 \(1-(1-\theta)^T\)。若把全部真实行认证，并选真实精确参考核，则未认证占据可为零，参考风险仍为这个正数。另一证书可以只认证动作 1、使用零失败参考轨迹，但要支付本策略自己的占据预算。这些参数属于各自完整证书，不能混搭零参考风险与另一证书的零占据。
+
+恢复程序还能接回同一个 P。一个明确保存可信程序来源的恢复步骤可以先重建程序、暂时保持物理状态，下一组织步骤执行恢复出的动作 1，再由 P 进入 K。这里的程序表示是联合恢复状态中的附加内容，不等于本例每步重新取值的内部位 u；两个组织步骤也不等于两个未经改变的物理 P 步。已有 JointRecovery 与本章 M-35.3 提供相应核一致性接口，具体两时钟实例仍需自己的适配。一次恢复重新开放了未来安全运行，却没有把先前中断从实际历史中删除。
+
+这个共同实例连接了对象描述、可行行动、受限价值、支持、概率风险和恢复的来源条件。它不替代载体毁损的物理框架、父对象形成、谱系和外部实验。各条数学联系成立的范围，恰是其能为哲学的对象、持续和意义讨论提供清楚内容的原因。
+
+\textbf{来源。} \href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/UNIFIED_FINITE_SOURCE_EXAMPLE.md}{统一有限源研究及逐箭头表}、\href{../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SafeRewardConflictWitness.lean}{\nolinkurl{SafeRewardConflictWitness}}、\href{../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalSufficiencyWitness.lean}{\nolinkurl{OrganizationalSufficiencyWitness}}。新数值、参数化策略、完整 greedy 不变律与额外实例的形式化范围按第 21.7 节和附录 F 阅读。
+
 \hypertarget{ux5b9eux9645ux6709ux9650ux8defux5f84ux540eux9a8cux5206ux89e3ux4e0eux90e8ux7f72ux8986ux76d6}{%
 \chapter{36. 实际有限路径、后验分解与部署覆盖}\label{ux5b9eux9645ux6709ux9650ux8defux5f84ux540eux9a8cux5206ux89e3ux4e0eux90e8ux7f72ux8986ux76d6}}
 
@@ -3995,6 +4261,82 @@ a\in\Gamma_n(g),\quad \rho_n^g(x)>0
 \]
 
 这些是第 16 章已有分布偏移界的同型应用。响应空间上``一个源行接近它的经验行''的 TV 校准，不蕴含``部署选择哪些源行''的分布接近训练设计；两个距离的空间和数学作用不同。
+
+\hypertarget{ux6709ux9650ux5b9eux9645ux89c2ux5bdfux50cfux4e0eux5fc5ux987bux4fddux7559ux7684ux9003ux9038ux8d28ux91cf}{%
+\section{36.8 有限实际观察像与必须保留的逃逸质量}\label{ux6709ux9650ux5b9eux9645ux89c2ux5bdfux50cfux4e0eux5fc5ux987bux4fddux7559ux7684ux9003ux9038ux8d28ux91cf}}
+
+有限 X 的读出 \(q:X\to Y\) 具有有限完整像 \(S=q(X)\)，即使 Y 本身无限。参考核可能把质量送到 S 外，因此不能直接删除这些点并重新归一化。本节给出保留原参考过程、原实际策略及占据的书面扩展；完整路径适配的 Lean 状态与较基础的有限编码引理分开记录。
+
+\textbf{M-36.6：一侧有限支撑的精确 TV 编码。} 设 Y 的单点可测，S 有限，概率测度 \(\mu,\nu\) 满足 \(\mu(S^c)=0\)。把每个 S 内点独立保留，并把全部外部点送到一个额外符号 \(\bot\)，得到可测映射 \(c:Y\to S\sqcup\{\bot\}\)。则
+
+\[
+\operatorname{TV}(\mu,\nu)=\operatorname{TV}(c_\#\mu,c_\#\nu).
+\]
+
+\textbf{证明。} 可测性来自有限 S 的可测单点纤维和可测补集。数据处理给右侧不大于左侧。反向取任意可测 A，令 B 仅包含 \(A\cap S\) 对应的保留点，则
+
+\[
+\mu(A)-\nu(A)\le\mu(A\cap S)-\nu(A\cap S)
+=(c_\#\mu)(B)-(c_\#\nu)(B).
+\]
+
+以编码 TV 控制右侧，再对 \(A^c\) 使用同一不等式。两侧总质量同为一，故也控制 \(\nu(A)-\mu(A)\)。对 A 取确界。\(\blacksquare\)
+
+若 \(\mu=\delta_0,\nu=(\delta_0+\delta_1)/2,S=\{0\}\)，逃逸质量为 \(1/2\)，编码后 TV 仍为 \(1/2\)；删除 1 后重新归一化却会错误给零。若两侧都可能在 S 外，例如 \(\mu=\delta_1,\nu=\delta_2\)，合并外部点会把 TV 从一降至零。一侧集中条件不能删除。
+
+在无限环境 \(Y=\mathbb N\) 中还可同时区分源误差与两个参考的差别。取 \(S=\{0,2\}\)，
+
+\[
+\mu=\tfrac13\delta_0+\tfrac23\delta_2,\qquad
+\nu_e=\tfrac12\delta_0+\tfrac14\delta_2+\tfrac14\delta_e,
+\quad e\in\{5,7\}.
+\]
+
+两参考的逃逸质量均为 \(1/4\)，但 \(\operatorname{TV}(\mu,\nu_e)=5/12\)：有限原子上的半 \(L^1\) 差为 \(\tfrac12(1/6+5/12+1/4)\)。同时 \(\operatorname{TV}(\nu_5,\nu_7)=1/4\)，编码后两参考相等，TV 为零。源与参考的距离因而不只是逃逸概率；相对于固定有限源的精确比较，也不把编码变成所有参考之间的全局等距。这个联合边界已有 \nolinkurl{FiniteObservationEscapeBoundary} 的形式证明。
+
+\hypertarget{ux4eceux6709ux9650ux7f16ux7801ux5230ux540cux4e00ux5b9eux9645ux8defux5f84}{%
+\subsection{36.8.1 从有限编码到同一实际路径}\label{ux4eceux6709ux9650ux7f16ux7801ux5230ux540cux4e00ux5b9eux9645ux8defux5f84}}
+
+取 \(Z=S\sqcup\{\bot\}\)。用初始 PMF 的非空支持选取 \(x_\star\)，令 \(y_\star=q(x_\star)\)；解码 d 将保留点还原，\(\bot\) 送到 \(y_\star\)。对完整 Z 历史逐观察解码、保留动作后，应用原完整策略 π，得到 \(\bar\pi\)。它也在不可能历史与逃逸历史上定义，不需凭空构造动作分布。
+
+在保留点 \(s\in S\) 上令 \(\bar Q_n(s,a)=c_\#Q_n(s,a)\)，在 \(\bot\) 上令 \(\bar Q_n(\bot,a)=\delta_\bot\)。这些是归一化的真实 PMF 行。令 \(\bar q=c\circ q\)；任何实际微观历史经 \(\bar q\) 后再解码都等于它原来的 q 历史，因此 \(\bar\pi\) 在该历史上给出的动作 PMF 与 π 完全相同。原实际微观路径律和状态---动作占据均严格保持。
+
+原参考过程可能离开 S 后又返回，有限参考则在 \(\bot\) 吸收。两者并非逐坐标编码后的同一个过程；需要比较完整历史。
+
+设 \(L_n\) 为所有观察均在 S 内的完整 n 步观察---动作历史，它有限。向原 Y 历史及 Z 历史分别作保留动作的自然注入 \(i_n,j_n\)。由初始律相同及路径质量的实际乘法递推，对每个 \(\ell\in L_n\)，
+
+\[
+\bar\nu_n(j_n\ell)=\nu_n(i_n\ell).
+\]
+
+归纳步分别使用前缀质量相等、保留历史上的策略相等、参考行在保留后继点上的质量相等。它不是一个另行假设的整路径匹配条件。
+
+再把两个完整历史空间都编码到同一个 \(L_n\sqcup\{\bot\}\)：保留点各自对应同一 \(\ell\)，非保留历史统一送到 \(\bot\)。两参考在所有保留点质量相等，归一化给剩余质量也相等。实际观察路径全部落在保留历史上，分别应用 M-36.6，得到原路径 TV 与有限参考比较 TV 精确相等。这里把``曾逃逸后返回''仍视为非保留完整历史，不能只看末观察。
+
+\textbf{M-36.7：保持原来源的有限观察像路径界。} 在上述条件下，沿用原源 P、完整策略 π、初始律和原参考 Q，记实际状态---动作占据为 \(w_n\)，则
+
+\[
+\operatorname{TV}(\mu_T,\nu_T)
+\le \sum_{n<T}\sum_{x,a}w_n(x,a)
+\operatorname{TV}(q_\#P_n(x,a),Q_n(q(x),a)).
+\]
+
+\textbf{证明。} 每条实际源观察行集中于 S，M-36.6 因而逐行保持与相应参考行的 TV。将有限 Z 上的实际路径界应用于 \(\bar q,\bar Q,\bar\pi\)，然后用刚证明的路径 TV、逐行 TV 及实际占据等式改写。\(\blacksquare\)
+
+在认证行上有误差 \(\varepsilon_n\) 时，M-36.4 的同一个实际占据预算继续有效。若再以 \(\kappa_n\) 代替实际未认证占据，仍保留 \(\varepsilon_n\le1\)。给原 Y 历史上的\textbf{可测}事件 F 及同一微观 E 的包络，事件转移给
+
+\[
+\Pr_{\rm actual}(E)\le
+\min\{1,\nu_T(F)+B_T\}.
+\]
+
+其中 \(\nu_T(F)\) 是原 Q、原 π 的参考事件概率；F 的可测性替代了旧有限 Y 下自动得到的可测性。
+
+M-36.6 的基本编码结论适用于一般概率测度，可以包括非原子参考；本章路径层的源与参考仍是 PMF。允许 Y 无限也允许参考 PMF 有可数无限支撑，但不等于已经构造任意非原子连续核的路径接口。
+
+第一版取完整 \(q(X)\)，使所有源状态和全局认证行都在保留范围内。仅取某个策略的较小可达像时，还需证明实际支持归纳、改写认证域，并证明新旧占据相等；不能用``这些状态不可达''省略来源证明。
+
+\textbf{Lean 范围。} 本版生产接口包括：\nolinkurl{FiniteObservationEscapeCheck} 的精确编码，\nolinkurl{PathObservationEscapeCheck.escape_path_tv} 的同策略完整路径等式，以及 \nolinkurl{ArbitraryObservationRiskCheck} 的原空间路径、认证占据与微观事件风险端点。\nolinkurl{FiniteObservationEscapeBoundary} 同时证明上述正逃逸数值边界。原有限 Y 接口仍保留，新端点沿本节的来源等式扩展其范围。编码使用非计算定义，不新增一个已经执行的通用算法。书面证明来源见 \href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/FINITE_OBSERVATION_ESCAPE.md}{\nolinkurl{FINITE_OBSERVATION_ESCAPE}}，当前声明和验收范围见 \href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md}{接口闭环} 及 \href{LEAN_API_SCOPE.md}{LEAN\_API\_SCOPE}。
 
 \hypertarget{ux90e8ux5206ux89c2ux5bdfux4e0bux7684ux6709ux9650ux652fux6301ux751fux5b58ux53ccux5411ux5b9aux7406ux4e0eux53efux6267ux884cux68c0ux9a8c}{%
 \chapter{37. 部分观察下的有限支持生存：双向定理与可执行检验}\label{ux90e8ux5206ux89c2ux5bdfux4e0bux7684ux6709ux9650ux652fux6301ux751fux5b58ux53ccux5411ux5b9aux7406ux4e0eux53efux6267ux884cux68c0ux9a8c}}
@@ -4325,7 +4667,7 @@ G=\{\omega:\forall j\in\mathcal R,\
 
 若旧统计证书先给某个满足这些逐行性质的好事件 \(G_0\)，则 \(G_0\subseteq G\)，从而 \(\mu(G^c)\le\mu(G_0^c)\)，不需要重新收取一次失败概率。
 
-\textbf{Lean。} \nolinkurl{measure_finite_row_calibration_bad_le}、\nolinkurl{coverage_registered_source_calibration}；本轮 RegisteredGoodJointCheck 中 \nolinkurl{RegisteredCalibrationGood}、\nolinkurl{registeredConfidenceBudget}、\nolinkurl{registered_calibration_good_bad_le}。
+\textbf{Lean。} 原统一样本数版本为 \nolinkurl{measure_finite_row_calibration_bad_le}、\nolinkurl{coverage_registered_source_calibration} 及 RegisteredGoodJointCheck 的规范 Good。第 38.10 节将逐行预算与 \nolinkurl{VariableRegisteredSamples}、\nolinkurl{VariableRegisteredJointCheck} 的依赖行索引样本类型对应；任意 Y 扩展的精确接口范围见附录 F.3.1。
 
 规范 \(G\) 的定义含未知真实源 \(p_j\)。因此它是分析中的真实校准事件，不能因为写成有限合取就称为``训练后可直接观察到是否成立''。可执行选择规则应对全部记录定义；定理只在它恰好属于 \(G\) 时使用校准保证。
 
@@ -4393,7 +4735,7 @@ r(\omega)\le b(\omega):=
 
 \textbf{证明。} 逐记录应用 \nolinkurl{viablePolicy_zero_uncovered}，得到与其实际源核和策略一致的零覆盖缺口；以 \(\kappa=0\) 代入上一节 Good-only 端点。好事件始终是同一个 \(G\)，所以只计一次 \(\alpha\)。\(\blacksquare\)
 
-\textbf{Lean。} \nolinkurl{ViableRegisteredJointCheck} 中 viableFamilyPolicy、\nolinkurl{viable_registered_selected_joint_failure_on_good}。本轮具体采样例用直接的实际零覆盖证明；它不冒充该 viablePolicy 的专门实例。薄桥本身已独立证明两套结果可以按同源参数组合。
+\textbf{Lean。} 原 \nolinkurl{ViableRegisteredJointCheck} 中 viableFamilyPolicy、\nolinkurl{viable_registered_selected_joint_failure_on_good} 已生产成立。第 38.10 节的 \nolinkurl{ViableVariableRegisteredJointCheck} 复用同一个 viableFamilyPolicy，将逐行样本与选中 Good 包络相接，并在同一 Good 上内部推出自己的零占据；其具体版本范围见该节。第 38.6 节的具体采样例则用直接的实际零覆盖证明，不冒充该选择策略的专门实例。
 
 \hypertarget{ux4e00ux4e2aux5b8cux6574ux7684ux6570ux636eux9009ux62e9ux771fux5b9eux90e8ux7f72ux4e0eux8054ux5408ux98ceux9669ux89c1ux8bc1}{%
 \section{38.6 一个完整的数据选择、真实部署与联合风险见证}\label{ux4e00ux4e2aux5b8cux6574ux7684ux6570ux636eux9009ux62e9ux771fux5b9eux90e8ux7f72ux4e0eux8054ux5408ux98ceux9669ux89c1ux8bc1}}
@@ -4546,6 +4888,85 @@ check-08，完整注册选择见证第三稿 & 完整退出 0；12 项标准公�
 本书现已把下列关系逐项接通：给定实际源和注册信息，定义真实有限路径；从该路径产生条件后验与状态---动作占据；以支持递推判定部分观察下的有限可行性并构造策略；将所得实际覆盖与注册经验校准组合；对训练后选择的条件部署核构造真正联合律，最后得到共同微观失败事件的概率界。
 
 这个闭环仍以明确数学输入为起点：实际源、观察协议、精确支持或其有效表示、训练生成协议、失败事件和任务认证条件。将它用于开放世界时，必须检验这些输入。有限支持可行性不是未知转移概率的自动学习器，有限时域零占据不是无限寿命定理，通用风险证书不是目的来源的唯一识别。正因为这些边界已经进入定理而不是隐藏在解释中，后续经验和哲学研究才有明确可检验的接口。
+
+\hypertarget{ux9010ux884cux771fux5b9eux91c7ux6837ux4e0eux540cux4e00ux826fux4e8bux4ef6ux4e0aux7684ux9009ux4e2dux5305ux7edc}{%
+\section{38.10 逐行真实采样与同一良事件上的选中包络}\label{ux9010ux884cux771fux5b9eux91c7ux6837ux4e0eux540cux4e00ux826fux4e8bux4ef6ux4e0aux7684ux9009ux4e2dux5305ux7edc}}
+
+本节将前三节的数学范围与新的实际类型相接。\nolinkurl{VariableRegisteredSamples}、VariableRegisteredJoint、\nolinkurl{ViableVariableRegisteredJoint} 已在本版生产模块中形式化；联合端点允许任意 Y，并明示同一 Good 上选中事件的可测性。它们与第 36.8 节的四个模块构成本版所述的概率接口扩展。原统一 Fin N 接口、已有见证与首版有限 Y 的历史编译记录保留。
+
+\hypertarget{ux7528ux771fux5b9eux5750ux6807ux5b9eux9a8cux5b9eux73b0ux4e0dux7b49ux6837ux672cux91cf}{%
+\subsection{38.10.1 用真实坐标实验实现不等样本量}\label{ux7528ux771fux5b9eux5750ux6807ux5b9eux9a8cux5b9eux73b0ux4e0dux7b49ux6837ux672cux91cf}}
+
+固定有限注册行集 J、有限响应空间 X、真实行 \(p_j\in\mathrm{PMF}(X)\)、样本分配 \(N:J\to\mathbb N\) 和半径 \(\rho:J\to\mathbb R\)，其中每条实际行满足 \(N_j>0,\rho_j\ge0\)。这些输入在观察数据前确定。定义坐标类型及产品实验
+
+\[
+I_N=\{(j,k):j\in J,\ 0\le k<N_j\},\qquad
+\Omega_N=X^{I_N},\qquad
+\mu_N=\bigotimes_{(j,k)\in I_N}p_j.
+\]
+
+样本 \(S_{j,k}(\omega)=\omega(j,k)\) 的真实边缘恰为 \(p_j\)，每行样本独立。于是实际经验律由属于该行的 \(N_j\) 个坐标组成，不是给统一长度数组补上没有采样含义的重复项。
+
+\textbf{M-38.5：逐行真实注册校准。} 上述实验满足
+
+\[
+\mu_N(G^c)\le
+\alpha_N:=\sum_{j\in J}2\cdot2^{|X|}
+\exp(-2N_j\rho_j^2),
+\quad
+G=\{\omega:\forall j,\operatorname{TV}(p_j,\widehat p_j(\omega))\le\rho_j\}.
+\]
+
+同一结论适用于任何真实训练测度及样本族，只要逐行样本可测、独立且边缘等于相应真实行；不同注册行之间不要求独立。
+
+\textbf{证明。} 对每个 j 使用其实际 \(N_j\) 的单行校准，再取好事件交集并对补集作有限并合。该交集包含于规范 G，所以规范 G 的坏质量不超过同一个预算。产品实验的坐标投影定理分别给可测性、正确边缘及所需独立性。\(\blacksquare\)
+
+\textbf{Lean。} \nolinkurl{VariableRegisteredSamples.productRowLaw}、productRowSample\_law、\nolinkurl{productRowSample_independent}、\nolinkurl{registered_row_calibration}、\nolinkurl{product_experiment_calibration}。一般单行组合不要求训练空间有限；后续联合部署端点仍采用有限训练空间。若 J 为空，坐标实验仍良定义、预算为零、所有逐行条件为空合取；这不替部署自动提供非空可行性或零物理失败风险。
+
+\hypertarget{ux53eaux5728-good-ux4e2dux5b9eux9645ux9009ux4e2dux7684ux5019ux9009ux4e0aux4f7fux7528ux5305ux7edc}{%
+\subsection{38.10.2 只在 Good 中实际选中的候选上使用包络}\label{ux53eaux5728-good-ux4e2dux5b9eux9645ux9009ux4e2dux7684ux5019ux9009ux4e0aux4f7fux7528ux5305ux7edc}}
+
+现固定生产注册类型 \(J=\mathrm{CoverageRegisteredRow}(C,T)\)，其中每个 j 指明实际时刻 \(n_j<T\)、状态、动作与认证证明。真实源 P、注册条件 C、时域 T、N、误差半径及微观失败事件 E 都在数据前固定。候选 c 可带观察映射、初始律、参考核、因果策略及粗事件 F；选取 \(c=s(\omega)\) 可以依赖全部训练记录。
+
+联合端点目前使用对每个 \(n<T\) 非负的时间半径 \(\rho_n\)，因此其预算是 M-38.5 中取 \(\rho_j=\rho_{n_j}\) 的特例。这里不能把 Samples 层更一般的逐行半径也直接写成当前 Joint 的完整签名。
+
+在同一个规范 G 上要求所选候选的经验拟合、实际占据上界及数值预算成立。采用第 36.8 节的一般 Y 路线时，还要求该记录选中的粗事件 F 可测；事件包络只要求
+
+\[
+\forall\omega\in G,\qquad
+E\subseteq H_{q_{s(\omega)}}^{-1}(F_{s(\omega)}).
+\]
+
+这不是对所有候选 c 的包络要求，也不要求坏训练记录上的所选候选满足包络。失败事件 E 仍是同一个固定微观事件；不能在看到记录以后重定义何谓失败。
+
+\textbf{M-38.6：不等样本的选中 Good 联合风险。} 若上述共同 G 上所选策略的参考事件风险加实际路径预算经截断后至多 \(\beta\in[0,1]\)，则真实训练---选择---部署联合律满足
+
+\[
+J(E)\le \min\{1,\alpha_N+(1-\alpha_N)\beta\}.
+\]
+
+\textbf{证明。} M-38.5 给 \(\mu(G^c)\le\alpha_N\)。对每个 \(\omega\in G\)，从该记录的真实行校准与经验拟合局部导出源行误差，再用该记录选中策略自己的实际占据和包络，得到其真实条件部署失败概率至多 β。最后分解同一个联合律在 G 与补集上的质量，应用 M-38.1 的混合界。不存在第二个需要重新收费的``包络好事件''。\(\blacksquare\)
+
+\textbf{Lean。} \nolinkurl{VariableRegisteredJointCheck.RegisteredCalibrationGood}、\nolinkurl{registeredConfidenceBudget}、\nolinkurl{registered_selected_joint_failure_of_cap_on_good}。样本类型为 \(\forall j,\mathrm{Fin}(N_j)\to\Omega\to X\)；hfit、hcap、hF、henvelope、hchecked 均限定于同一个 \nolinkurl{RegisteredCalibrationGood}。该接口保留 Ω、X、A 有限，Y 具有可测空间及可测单点，hF 明示 Good 上所选粗事件的可测性。候选类型不要求有限。
+
+置信预算的来源因而十分具体：它由固定注册行、实际 \(N_j\)、源响应空间 X 与半径决定。原始行先在 X 上校准，训练后选出的 q 再通过 TV 数据处理使用同一校准；不会仅因候选类型很大，或沿第 36.8 节数学路线允许整体 Y 无限，而自动产生另一次选择失败预算。这个结论不表示任意选后模型都免费正确：经验拟合、所选事件包络、原事件的可测性以及数值风险检查仍各自承担其明确条件，并且要在同一个 G 上相接。
+
+\hypertarget{ux540cux4e00ux652fux6301ux751fux5b58ux7b56ux7565ux5185ux90e8ux6d88ux53bbux5360ux636e}{%
+\subsection{38.10.3 同一支持生存策略内部消去占据}\label{ux540cux4e00ux652fux6301ux751fux5b58ux7b56ux7565ux5185ux90e8ux6d88ux53bbux5360ux636e}}
+
+\textbf{M-38.7：可行策略接入逐行 Good 联合风险。} 若 M-38.6 所选候选的全部非空初始观察支持在同一个 G 上满足第 37 章的 Viable 条件，并以显式 fallback 构造 viableFamilyPolicy，则该策略自己的未认证占据在 G 上每步为零。其联合风险只需使用参考事件风险加
+
+\[
+\sum_{n<T}\min\{1,\rho_n+\eta_n(\omega)\},
+\]
+
+并满足同一个混合界。
+
+\textbf{证明。} 固定好记录，应用实际支持生存定理得到 viableFamilyPolicy 在各 \(n<T\) 的零占据；以 \(\kappa=0\) 代入 M-38.6。参考路径、真实部署核和内部覆盖证明全部使用该同一策略。\(\blacksquare\)
+
+\textbf{Lean。} \nolinkurl{ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good}。hinit、hfit、hF、henvelope、hchecked 共享 \nolinkurl{VariableRegisteredJointCheck.RegisteredCalibrationGood}；调用者不再提供 hcap。该接口与上一节具有相同的观察及训练空间范围。这个消去不包含零物理失败的结论，也没有为空动作类型创造完整策略；fallback 仍是明确输入。
+
+这些新连接不把相关单轨迹采样、训练后自行改变 N、额外未注册行或任意非原子参考核纳入结论。它们把已经明确的实际采样与部署条件进一步接紧，使第 31.1 节的共同证书装配少一组重复前提，而不是通过重命名输入消去真实研究问题。
 
 \hypertarget{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}{%
 \chapter{附录 A. 符号与类型索引}\label{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}}
@@ -5540,6 +5961,38 @@ M-38.4 & \nolinkurl{VIABLE-JOINT.viable_registered_selected_joint_failure_on_goo
 \end{longtable}
 
 模块归属是查阅地址，不改变已通过端点的数学假设。书稿阶段的检查事实是下一节所列固定 assembled source；最终正式模块的构建与发布收据应以发行附带的真实记录为准。
+
+\hypertarget{f.3.1-ux672cux6b21ux65b0ux589eux6b63ux6587ux7684ux7cbeux786eux5c42ux6b21}{%
+\subsection{F.3.1 本次新增正文的精确层次}\label{f.3.1-ux672cux6b21ux65b0ux589eux6b63ux6587ux7684ux7cbeux786eux5c42ux6b21}}
+
+下表补充新节，不改变前表的既有端点、106 个 P-ID 或历史证据。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+本次正文
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+形式对应
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+当前范围
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M-21.1--M-21.7 & 源 UC.conflictRewardControl；一般 TC.InvariantLawGOA、TC.CesaroLimitGOA、TC.KilledQSDGOA、TC.GreedyInvariantGOASet；\nolinkurl{CMP.PositiveEigenstructure.BiEigenData} & 新的参数化实例、显式数值、R 的完整 greedy 与混合不变律族为书面证明，尚无专门已编译端点 \\
+M-36.6 & \nolinkurl{UC.FiniteObservationEscapeCheck.tvDist_atomEncode_eq}；\nolinkurl{tvDist_embedded_eq_encoded}；\nolinkurl{tvDist_eq_of_live_reference_masses} & 本版生产接口，含一侧有限载体与完整逃逸质量，不声称对任意两参考全局等距 \\
+M-36.7 & \nolinkurl{UC.PathObservationEscapeCheck.escape_path_tv}；\nolinkurl{UC.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_path_error} 及其事件风险端点 & 本版生产接口，实际源、策略、完整占据和原 Q(F) 均保持；Y 有可测单点，F 可测 \\
+§36.8 正逃逸边界 & \nolinkurl{UC.FiniteObservationEscapeBoundaryCheck.infinite_ambient_positive_escape_boundary} & 本版生产接口：对固定有限源的 TV 为 5/12，逃逸质量及两个原参考间 TV 为 1/4，两个编码参考间 TV 为零 \\
+M-38.5 & \nolinkurl{UC.VariableRegisteredSamples.registered_row_calibration}；\nolinkurl{product_experiment_calibration} & 本版生产接口，实际逐行 N j；一般行间无需独立 \\
+M-38.6 & \nolinkurl{UC.VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good} & 本版任意 Y 接口，\nolinkurl{hfit/hcap/hF/henvelope/hchecked} 在同一个规范 Good \\
+M-38.7 & \nolinkurl{UC.ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good} & 本版任意 Y 接口，同一个 Good 内部证明同一 viableFamilyPolicy 的零占据，hF 也在该 Good 上 \\
+\end{longtable}
+
+原 \#354 研究原型与首版有限 Y 的记录作为历史保留。本版所述七个模块已纳入生产接口；历史检查记录与本版源码的对应仍须区分。完整签名与验收范围见 \href{LEAN_API_SCOPE.md}{LEAN\_API\_SCOPE} 和 \href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md}{接口闭环}。下一节的历史检查记录保持原样。
 
 \hypertarget{f.4-ux672cux8f6e-lean-ux68c0ux67e5ux7684ux53efux5b9aux4f4dux8eabux4efd}{%
 \section{F.4 本轮 Lean 检查的可定位身份}\label{f.4-ux672cux8f6e-lean-ux68c0ux67e5ux7684ux53efux5b9aux4f4dux8eabux4efd}}

@@ -146,3 +146,15 @@
 ## 5. 解释责任
 
 数学正文给出条件、陈述、关键证明与必要性反例；源码提供形式实现；编译和公理检查提供该实现的核验记录；真实实验检验世界模型。原哲学论文在概念和问题来源上有独立作用，但不作为无条件数学命题的证明。两部书的互相修订应经过这些明确接口，而不把文本完整、内核检查、发布完成与现实真理混为同一状态。
+
+## 6. 条件持续与接口扩展的本次正文增量
+
+第 21.7、35.7 节从同一 conflictRewardControl.micro 与真实 transitionPMF 推导对象划分、恒定历史随机策略的闭环、显式不变律、killed QSD、曾失败风险以及安全受限最优。新实例的数值和完整 greedy 不变律族为书面证明；一般源、控制、M-OI、M-PE 与 GOA 接口已生产。受限模型在 K 外的动作域保留原定义，因此完整 greedy 不变律并非唯一。这一具体边界不能由恒定策略的值等式替代。
+
+第 36.8 节吸收 [有限观察像与 escape 研究](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/FINITE_OBSERVATION_ESCAPE.md) 的完整事件证明和 live 历史递推。FiniteObservationEscape、PathObservationEscape、ArbitraryObservationRisk、FiniteObservationEscapeBoundary 已作为本版生产接口实现：保持原 Q、原策略、原实际占据与可测粗事件，并证明无限观察环境中 5/12、1/4 及编码后零距离的联合边界。
+
+第 38.10 节的实际不等 N j 采样、共同 Good 选中包络与同策略零占据消去，分别对应本批 VariableRegisteredSamples、VariableRegisteredJoint、ViableVariableRegisteredJoint；三个接口均已纳入本版生产范围。Joint/Viable 允许任意 Y，明示同一 Good 上选中 F 的可测性，保留有限 Ω/X/A 与时间半径。首版有限 Y 的通过记录保留为历史；Samples 一般采样层与 Joint 的条件不混同。
+
+本版引用上述七个生产模块。声明、完整源树身份与验收入口见 [REGISTERED_INTERFACES_CLOSURE_V1](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md)；接口范围见 [LEAN_API_SCOPE](LEAN_API_SCOPE.md) 与附录 F.3.1。
+
+哲学反馈进入配套书关于对象、修复、学习、稳态与意义的独立论证。其规范理由不从本数学模型自动推出；原论文第 6–7、40–41 页提出的 GOA、目的与意义问题继续作为思想来源，而非新数学命题的证明。既有 P-ID 源映射、原附件、历史代码与历史输出未因本次增补重写。
