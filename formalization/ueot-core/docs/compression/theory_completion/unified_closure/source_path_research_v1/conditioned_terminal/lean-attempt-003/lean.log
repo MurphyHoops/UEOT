@@ -1,0 +1,76 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:124:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_pos_iff_support`:
+  [Nonempty A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:140:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma)) n).toMeasure.real
+    {h | ¬riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = ↑v}
+in the target expression
+  (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma)) n).toMeasure.real
+        {h | h ∈ {h | ¬riskEverFailure (fun x => x ∉ K) n h} ∧ riskLastState n h = ↑v} /
+      (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+              n).toMeasure.real
+        {h | ¬riskEverFailure (fun x => x ∉ K) n h} =
+    w v /
+      (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+              n).toMeasure.real
+        {h | ¬riskEverFailure (fun x => x ∉ K) n h}
+
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+n : ℕ
+hpos :
+  0 <
+    (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+            n).toMeasure.real
+      {h | ¬riskEverFailure (fun x => x ∉ K) n h}
+v : ↑K
+⊢ (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma)) n).toMeasure.real
+        {h | h ∈ {h | ¬riskEverFailure (fun x => x ∉ K) n h} ∧ riskLastState n h = ↑v} /
+      (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+              n).toMeasure.real
+        {h | ¬riskEverFailure (fun x => x ∉ K) n h} =
+    w v /
+      (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+              n).toMeasure.real
+        {h | ¬riskEverFailure (fun x => x ∉ K) n h}
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:237:15: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:230:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero`:
+  [Nonempty A]
+  [MeasurableSingletonClass X]
+  [MeasurableSingletonClass A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty A] [MeasurableSingletonClass X] [MeasurableSingletonClass A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_eq_normalized_killed_map' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_zero_survival_no_filter_witness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass_at_zero' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_empty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

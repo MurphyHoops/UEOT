@@ -1,0 +1,83 @@
+--- SameSourceConditionedTerminal_v1.lean
++++ SameSourceConditionedTerminal.lean
+@@ -73,8 +73,13 @@
+     apply Finset.sum_congr rfl
+     intro h _
+     rw [PMF.filter_apply, tsum_fintype]
+-    by_cases hS : h ∈ S <;> by_cases hz : f h = z <;>
+-      simp [hS, hz, eq_comm]
++    by_cases hS : h ∈ S
++    · by_cases hz : f h = z
++      · subst z
++        simp [Set.indicator_apply, hS]
++      · have hz' : z ≠ f h := Ne.symm hz
++        simp [Set.indicator_apply, hS, hz, hz']
++    · simp [Set.indicator_apply, hS]
+   simpa only [ENNReal.toReal_div, Measure.real] using congrArg ENNReal.toReal he
+ 
+ private theorem survives_last_mem
+@@ -108,22 +113,22 @@
+ local notation "nu" => causalLaw p0
+   (riskMicroControlKernel q (fun _ => M.transitionPMF)
+     (observationMarkovPolicy sigma)) n
+-local notation "S" => ({h | ¬ riskEverFailure (fun x => x ∉ K) n h} :
+-  Set (CausalHistory X (A × X) n))
+-local notation "s" => nu.toMeasure.real S
++local notation "S" => Set.ofPred (fun h : CausalHistory X (A × X) n =>
++  ¬ riskEverFailure (fun x => x ∉ K) n h)
++local notation "s" => Measure.real (PMF.toMeasure nu) S
+ local notation "Q" => killedMatrix M (liftedStationaryPolicy q sigma) K
+ local notation "w" => rowApply (safeInitialRow p0 K) (Q ^ n)
+ 
+ /-- Positivity of the actual event is precisely the input required by
+ Mathlib's filter constructor. The support witness is not a new assumption. -/
+ theorem actual_survival_pos_iff_support :
+-    0 < s ↔ ∃ h ∈ S, h ∈ nu.support :=
++    0 < s ↔ ∃ h ∈ S, h ∈ (nu).support :=
+   positive_event_mass_iff_support nu S
+ 
+ /-- The actual complete history is conditioned first, then its final state
+ is observed. This definition is available only at a positive-mass horizon. -/
+ def actualConditionedTerminal (hpos : 0 < s) : PMF X :=
+-  (nu.filter S ((actual_survival_pos_iff_support M q sigma p0 K n).1 hpos)).map
++  ((nu).filter S ((actual_survival_pos_iff_support M q sigma p0 K n).1 hpos)).map
+     (riskLastState n)
+ 
+ /-- K2: every safe atom of the actual conditional terminal law is the
+@@ -132,6 +137,7 @@
+     (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s := by
+   unfold actualConditionedTerminal
+   rw [filter_map_apply_real]
++  simp only [Set.mem_ofPred_eq]
+   rw [actual_survival_terminal_mass_eq_killed_pow M q sigma p0 K n v]
+ 
+ /-- Conditioning on survival cannot put terminal mass outside the safe set. -/
+@@ -139,8 +145,8 @@
+     (actualConditionedTerminal M q sigma p0 K n hpos).support ⊆ K := by
+   intro x hx
+   let hs := (actual_survival_pos_iff_support M q sigma p0 K n).1 hpos
+-  change x ∈ ((nu.filter S hs).map (riskLastState n)).support at hx
+-  rcases (PMF.mem_support_map_iff (riskLastState n) (nu.filter S hs) x).1 hx with
++  change x ∈ (((nu).filter S hs).map (riskLastState n)).support at hx
++  rcases (PMF.mem_support_map_iff (riskLastState n) ((nu).filter S hs) x).1 hx with
+     ⟨h, hh, heq⟩
+   have hsafe := (PMF.mem_support_filter_iff hs).1 hh
+   exact heq ▸ survives_last_mem K n h hsafe.1
+@@ -214,7 +220,7 @@
+ /-- Zero actual survival supplies no support witness for PMF.filter.
+ No normalized conditional PMF is assigned to this null event. -/
+ theorem actual_zero_survival_no_filter_witness (hzero : s = 0) :
+-    ¬ ∃ h ∈ S, h ∈ nu.support := by
++    ¬ ∃ h ∈ S, h ∈ (nu).support := by
+   intro hw
+   have hp := (actual_survival_pos_iff_support M q sigma p0 K n).2 hw
+   rw [hzero] at hp
+@@ -229,7 +235,7 @@
+   change p0.toMeasure.real {x : X | ¬ (x ∉ K)} = p0.toMeasure.real K
+   have hset : {x : X | ¬ (x ∉ K)} = K := by
+     ext x
+-    simp only [Set.mem_setOf_eq, not_not]
++    simp only [Set.mem_ofPred_eq, not_not]
+   rw [hset]
+ 
+ /-- The n=0 conditional formula includes an initially unsafe population.

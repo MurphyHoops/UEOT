@@ -1,0 +1,263 @@
+{
+  "schema": "UEOT_FINITE_WINDOW_CONDITIONED_PATH_DOOB_INDEPENDENT_MATHEMATICAL_REVIEW_V1",
+  "reviewer": "/root/audit_resume",
+  "status": "MATHEMATICAL_FORMULAS_AND_SAME_SOURCE_RATIONAL_COUNTEREXAMPLE_CLEAR_NOT_LEAN",
+  "main_conclusion": "General K2 plus a left QSD does not identify the complete finite-window survival-conditioned path with a homogeneous positive-right Doob path; even simultaneous strictly positive left/right data do not imply it.",
+  "report": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/finite-window-doob/FINITE_WINDOW_DOOB.md",
+    "bytes": 17608,
+    "sha256": "e53cad2030991d712cca9b3ae2f615b0af1ffef88f5c93b813de26edb633bd05"
+  },
+  "rational_calculation": {
+    "script": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/finite-window-doob/check_rational_counterexample.py",
+      "bytes": 5380,
+      "sha256": "342ee5cd6de2aa5525a76eacd3a343652708d43110f8b7989614af6702d6491d"
+    },
+    "output": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/finite-window-doob/RATIONAL_COUNTEREXAMPLE.json",
+      "bytes": 3603,
+      "sha256": "5bd740f555f77635c98882ab3d3769391ed24486dd1ac61b1cf9379e46cc2323"
+    },
+    "actual_python_exit_code": 0,
+    "arithmetic": "fractions.Fraction, exact rational values",
+    "sampling": false,
+    "Lean_proof": false,
+    "core_or_regression_suite": false
+  },
+  "concrete_source": {
+    "states": [
+      "0",
+      "1",
+      "cemetery"
+    ],
+    "actions": "Unit",
+    "observation": "Constant Unit-valued observation",
+    "policy": "Fixed PMF.pure unit action at every history",
+    "reward": "Zero; reward bound 1",
+    "discount": "1/2",
+    "kernel": [
+      [
+        "3/8",
+        "3/8",
+        "1/4"
+      ],
+      [
+        "1/8",
+        "1/8",
+        "3/4"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "initial": [
+      "1/2",
+      "1/2",
+      "0"
+    ],
+    "safe_set": [
+      "0",
+      "1"
+    ],
+    "killed_matrix": "Literal safe restriction of this actual source kernel",
+    "survival_event": "Initial state and all subsequent states through T are safe",
+    "normalized_left_QSD": [
+      "1/2",
+      "1/2"
+    ],
+    "rho": "1/2",
+    "positive_right_vector": [
+      "3",
+      "1"
+    ],
+    "left_right_pairing": "2",
+    "BiEigenData_adaptation": "Use h/2=(3/2,1/2) to satisfy pairing_sum_one; the Doob kernel is unchanged."
+  },
+  "one_step_findings": {
+    "survival": "1/2",
+    "actual_conditional_path_matrix": "Exactly Q as a joint probability table, not Q as a stochastic row kernel.",
+    "conditional_initial": [
+      "3/4",
+      "1/4"
+    ],
+    "conditional_terminal": [
+      "1/2",
+      "1/2"
+    ],
+    "Doob_each_row": [
+      "3/4",
+      "1/4"
+    ],
+    "path_TV_to_Doob_r": "1/4",
+    "path_TV_to_Doob_tilted": "1/4",
+    "any_Doob_initial_law_insufficient": "Every probability initial row multiplied by this R has terminal (3/4,1/4), which differs from the actual conditional terminal r."
+  },
+  "general_mathematical_formulas": {
+    "source": "Fixed actual finite model and the same stationary current-observation policy; arbitrary actual p0; eta0 is its unnormalized safe restriction.",
+    "H": "H_0=1; H_(m+1)=Q H_m; H_m=Q^m 1.",
+    "actual_survival": "s_T=eta0 H_T; require s_T>0 for the conditional path PMF.",
+    "safe_path": "C_T(x_0,...,x_T)=eta0(x_0)*product Q(x_t,x_(t+1))/s_T.",
+    "prefix_joint": "P(actual prefix x_0...x_t and S_T)=eta0(x_0)*product_(k<t) Q(x_k,x_(k+1))*H_(T-t)(x_t).",
+    "conditional_initial": "eta^[T](i)=eta0(i)*H_T(i)/s_T.",
+    "conditional_row": "For m=T-t>=1 and positive conditional prefix ending at i: Q_ij*H_(m-1)(j)/H_m(i).",
+    "conditional_action_state_row": "sigma(q(i))(a)*M.transition(i,a,j)*H_(m-1)(j)/H_m(i), j in K.",
+    "Doob_path": "For positive right eigenvector h, rho>0 and c=<eta0,h>>0, initial eta0^h=eta0*h/c yields D_T=eta0*product Q*h(x_T)/(rho^T*c).",
+    "exact_fixed_T_tilted_initial_equality_condition": "D_T=C_T iff h(X_T)=rho^T*c/s_T almost surely under the actual C_T.",
+    "exact_row_equality_condition": "On a positive conditional prefix and each edge Q_ij>0: H_(m-1)(j)/h(j)=H_m(i)/(rho*h(i)); actual conditional initial law must also match.",
+    "constant_hazard_sufficient": "If Q1=rho1 and rho>0, choose h=1; H_m=rho^m1, all conditional state rows are Q/rho, and initial is eta0/p0(K).",
+    "not_universal_necessity": "Restricted reachable support or sparse kernels can have other equality cases; global constant hazard is not asserted necessary without additional support conditions.",
+    "strictly_positive_Q_case": "For positive horizon, nonzero actual safe initial mass and all Q entries positive, conditional terminal support is all K. Equality with the naturally tilted Doob law forces h constant on K."
+  },
+  "mathematical_derivation_scope": {
+    "prefix_formula_from_actual_pmfExtend_causalLaw": "Proof route given, not made a new assumption; no new Lean implementation claimed.",
+    "finite_product_telescoping": "Mathematically derived for finite paths, not a new Lean endpoint.",
+    "longer_counterexample_windows": "Q^2=rho Q implies all pre-final transition rows equal Doob R, but the final row is r. Exact T=1,2,3 calculations supplement the all-T written derivation.",
+    "infinite_path_claim": false
+  },
+  "boundaries": [
+    "s_T>0 does not make every H_m(i)>0; formula interpreted only on positive conditional prefixes/positive denominator rows.",
+    "No 0/0 row is treated as a PMF; any whole-state fallback must be explicit and irrelevant on conditional null rows.",
+    "T=0 has survival p0(K), conditional initial safe restriction normalized if positive, and no transition.",
+    "Empty K or initially zero safe mass gives no conditional experiment.",
+    "QSD rho=0 allows conditioning at T=0 but not positive T.",
+    "Conditioning typically changes the action marginal; same conditional state kernel does not identify original unconditioned policy.",
+    "Only an actual stationary feedback identity justifies a microstate Markov kernel; general history policy is not automatically Markovized.",
+    "QSD initial law cannot replace an independently fixed real initial law for convenience.",
+    "Distinct horizons use distinct conditioning events; their conditioned path laws need not form a projectively consistent family."
+  ],
+  "existing_core_sources": [
+    {
+      "role": "actual model stationary PMF/matrix/history source",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "bytes": 38484,
+      "sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384"
+    },
+    {
+      "role": "finite real path atom recursion",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/PathError.lean",
+      "bytes": 25556,
+      "sha256": "d561a56db79bbd5dd9d01673c5fa7970c7d31199356bd5169a416cd930d917ba"
+    },
+    {
+      "role": "finite left QSD and positive-right Doob algebra",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+      "bytes": 10696,
+      "sha256": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776"
+    },
+    {
+      "role": "positive eigenstructure and paired invariant law",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+      "bytes": 24385,
+      "sha256": "746a435146c4bc20721a1429085285492ac01a040b6090e186f8141b251f257b"
+    },
+    {
+      "role": "killed QSD semantic predicate",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/GOA.lean",
+      "bytes": 5445,
+      "sha256": "ef02e007bf3d670e5dd1aac5630ef9119325188b367a1f82d21be0465452a29a"
+    },
+    {
+      "role": "continuous-time killed conditional marginal interface",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+      "bytes": 20230,
+      "sha256": "1b6e0658bad5eca35839365c6dfcba2503d6bac615663a1e708d62e4e2a65894"
+    },
+    {
+      "role": "actual source conditional path kernel interface",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/CompositionPathSource.lean",
+      "bytes": 6257,
+      "sha256": "7d366574868ad2bad3fa43f97496c1cff34ee657e0461ac623f8e58b9e70e516"
+    },
+    {
+      "role": "convergent positive eigenstructure invariant limit",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/PositiveEigenInvariantLimit.lean",
+      "bytes": 4521,
+      "sha256": "131f8a0988b495d706d983d7cb9d1f816a3ace7754012f96a68c5e3b5b4885cf"
+    },
+    {
+      "role": "Doob conditional expectation martingale; different interface",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/HilbertMeanDoobCore.lean",
+      "bytes": 2706,
+      "sha256": "8d86120ebdd48ffc8b64f5ac57cb4646eb32a66469ad1dd557dc76577296ee14"
+    },
+    {
+      "role": "failure event includes initial state",
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "bytes": 6714,
+      "sha256": "5736eae5f9939ef0fdb4c7c520c2c0bc5766d85bf863161787568d2042842cfb"
+    }
+  ],
+  "private_passed_sources": [
+    {
+      "role": "actual state-path source bridge; private focused PASS",
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+      "bytes": 6477,
+      "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91"
+    },
+    {
+      "role": "actual killed atom/total identities K1; private focused PASS",
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+      "bytes": 15902,
+      "sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826"
+    },
+    {
+      "role": "actual general conditional terminal K2; private focused PASS independently reviewed",
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean",
+      "bytes": 12530,
+      "sha256": "8114278dc02e54f681bd576cf62af0dcc83df47a5b4a61bdc506a868750aea3c"
+    },
+    {
+      "role": "same-source QSD K3; private focused PASS independently incrementally reviewed",
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean",
+      "bytes": 12680,
+      "sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed"
+    }
+  ],
+  "existing_mathematical_scope_reused": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/CONTRACT_KILLED.md",
+      "bytes": 16361,
+      "sha256": "e0efe3d8405060e1c03ce1d00b3e2810fcebcf4697d23669a289d9590e56283e"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-contract/REVIEW_V1.md",
+      "bytes": 11202,
+      "sha256": "e650c4df4b14e8a3ac65324c468ce968cb63408eb68c5ef46907a560de6b25bf"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-contract/REVISION_2_CLEAR.md",
+      "bytes": 2336,
+      "sha256": "9d402928a21a5c5632feffe51372bc9547ceece67be48225e195c7c064c63baf"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/books-next-20261021/SAME_SOURCE_STATIONARITY_QSD_RISK.md",
+      "bytes": 21404,
+      "sha256": "2bb97cf6197a83ff90b8ff2b3c4cb37fd29ee4ec54fc8486ff1c0a6a62414019"
+    }
+  ],
+  "QSD_incremental_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/finite-window-doob/QSD_COMPILE_DELTA_CLEAR.json",
+    "bytes": 14970,
+    "sha256": "1e1b55cbf2f05c777f959d79f5bc393bb6e18f78e5ab9fe8baf1253f2ad9a7a1"
+  },
+  "minimal_future_adaptation": [
+    "Actual safe-prefix joint mass identity from existing state-path bridge and pmfExtend atom recursion.",
+    "Positive-support finite-window initial and time-varying action/state kernels.",
+    "Finite Doob product telescope and terminal-weight comparison; actual same-source equality only under verified extra conditions."
+  ],
+  "new_Lean_theorem_claims": [],
+  "operations": {
+    "Lean": false,
+    "build": false,
+    "native": false,
+    "production_writes": false,
+    "books_writes": false,
+    "Git_or_ref_writes": false,
+    "remote": false,
+    "exact_small_rational_calculation": true,
+    "private_review_files_only": true
+  }
+}

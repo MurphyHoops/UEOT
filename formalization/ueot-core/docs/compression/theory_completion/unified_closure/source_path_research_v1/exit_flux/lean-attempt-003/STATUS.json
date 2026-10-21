@@ -1,0 +1,120 @@
+{
+  "schema": "UEOT_PRIVATE_FINITE_EXIT_FLUX_COMPILE_ATTEMPT_V1",
+  "attempt": 3,
+  "status": "PASS",
+  "source": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean",
+  "source_sha256": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18",
+  "source_snapshot": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/lean-attempt-003/SameSourceKilledExitFlux.lean",
+  "command": [
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+    "env",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-c",
+    "import os,sys; os.environ[\"LEAN_PATH\"]=sys.argv[1]+os.pathsep+os.environ.get(\"LEAN_PATH\",\"\"); os.execv(sys.argv[2],sys.argv[2:])",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+    "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux",
+    "-o",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/lean-attempt-003/SameSourceKilledExitFlux.olean",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean"
+  ],
+  "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+  "LEAN_NUM_THREADS": "1",
+  "timeout_seconds": 180,
+  "started_utc": "2026-10-21T10:26:46.692650+00:00",
+  "root_authorization": "Root-authorized focused compilation of the existing finite actual first-exit flux draft, after native sequence 2 and finalizer completed; preserve same source, arbitrary p0, initial failure and empty K; no production, books, consumers, Git or native changes.",
+  "native_gate": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-sequence-2/STATUS.json",
+    "sha256": "e05f717ba6cafb6713595307c3c8aeb061f25110358f01aca1892a87cb8633a8",
+    "state": "PASS_NATIVE_AND_PROVISIONAL_EVIDENCE",
+    "results": [
+      {
+        "label": "native_pipeline",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-tools/run_native_registered_interfaces_pipeline.py",
+          "--repo",
+          "/workspace/scratch/9a8d58b21e30/ueot-integration",
+          "--build-status",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/STATUS.json",
+          "--build-manifest",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+          "--build-log-dir",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9",
+          "--focused-label",
+          "new_modules",
+          "--full-label",
+          "full_ueot",
+          "--base-ref",
+          "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+          "--output",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-observed-2",
+          "--lake",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 388.2559575609994,
+        "log_sha256": "fa59dcf15459efb57e22473be2a9a5646ca3b819a5f851b6a8fccadfb04118e6"
+      },
+      {
+        "label": "observed_finalizer",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-tools/finalize_observed_registered_interfaces_overlay.py",
+          "--repo",
+          "/workspace/scratch/9a8d58b21e30/ueot-integration",
+          "--build-status",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/STATUS.json",
+          "--build-manifest",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+          "--build-log-dir",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9",
+          "--focused-label",
+          "new_modules",
+          "--full-label",
+          "full_ueot",
+          "--base-ref",
+          "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+          "--observed",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-observed-2",
+          "--output",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-final-2"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 25.252188758000557,
+        "log_sha256": "e75ad731a0c05aff5ba81da5f84f2c8a5e402b7a500d848b4076719a2f1f54b5"
+      }
+    ]
+  },
+  "dependency_pins": {
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/SameSourceKilledPath.olean": "91c3d26034d72d7abeb140d057c78b55296d4e4e7450cf5b291ccc3ad748d1e5"
+  },
+  "lean_toolchain_sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+  "lake_manifest_sha256": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+  "full_build_status": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/STATUS.json",
+    "sha256": "7a5fb2389a4fca9633912cf978c52d8acc15b779f250b8d5bcc2c32db72f5c25"
+  },
+  "production_source_manifest": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+    "sha256": "04acfa12f4b43154cbf1701834aadd459b1647730f789cdff2eccc6436e96b7c",
+    "scope": "Existing completed build input receipt, not regenerated by this private attempt."
+  },
+  "production_mutated": false,
+  "lake_build_run": false,
+  "native_run": false,
+  "process_group": 63485,
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 7.091,
+  "finished_utc": "2026-10-21T10:26:53.783878+00:00",
+  "stdout_stderr_log": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/lean-attempt-003/lean.log",
+  "log_sha256": "dd5f21163a01a920bf459e257b40185bc5b5c14451fa1cc086cc6bafb2a7badd",
+  "source_sha256_after": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18",
+  "olean_sha256": "edcea2cf0b4bedb70c93c39ab809e1c9b70c35690053cefff1b64b8a8d672cdd"
+}

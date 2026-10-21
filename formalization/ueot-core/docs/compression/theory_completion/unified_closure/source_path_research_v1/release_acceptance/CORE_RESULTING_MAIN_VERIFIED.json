@@ -1,0 +1,56 @@
+{
+  "state": "ACTUAL_MAC_RESULTING_MAIN_PASS_AND_RECEIPTS_VERIFIED",
+  "actual_main": "90cd0366b2120656dffbee025b5dc0c00d49b5a6",
+  "packet_sha256": "3f1a377e950495f35322381bf604d3cee8a112aea988e06d2c23385167905629",
+  "source_module_count": 666,
+  "same_proof_input_fields_as_actual_linux_native": [
+    "source_scope",
+    "module_count",
+    "source_tree_sha256",
+    "source_files",
+    "toolchain",
+    "environment_files",
+    "dependencies"
+  ],
+  "mac_runtime_tools": {
+    "lake": {
+      "executable": "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+      "sha256": "58261a1a2fa1a362376c71e02ca854a093e71cc5e6ea64b287a931cb2565273d",
+      "version": "Lake version 5.0.0-src+819816b (Lean version 4.33.1)"
+    },
+    "lean": {
+      "executable": "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+      "sha256": "1b370cfcbf44e80d1b004ab1b1ab9a4c73951f9f7c242140bcff9bc577576554",
+      "version": "Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)"
+    }
+  },
+  "before_after_identity_equal": true,
+  "all_command_logs_sha_verified": true,
+  "old_worktrees_unchanged": true,
+  "results": [
+    {
+      "label": "lake_build_UEOT",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "build",
+        "UEOT"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021/formalization/ueot-core",
+      "exit_code": 0,
+      "elapsed_seconds": 58.743752458,
+      "log_sha256": "28b3f462bb9b12e188e3b76b8abeaeaa21b66f9a821b5fd7ce3d4d3c0c717c11"
+    },
+    {
+      "label": "full_fkrg_integration",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021",
+      "exit_code": 0,
+      "elapsed_seconds": 2.1026330830000006,
+      "log_sha256": "7d10e7e74cd46d1183e4218fa49d231e11ccea3b97a5d39f3f6b7a773f9622de"
+    }
+  ]
+}

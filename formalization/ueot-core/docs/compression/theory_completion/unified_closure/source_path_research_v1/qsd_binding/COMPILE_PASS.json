@@ -1,0 +1,410 @@
+{
+  "schema": "UEOT_PRIVATE_QSD_SOURCE_BINDING_COMPILE_PASS_V1",
+  "status": "PRIVATE_FOCUSED_LEAN_PASS_NOT_INTEGRATED",
+  "created_utc": "2026-10-21T10:17:27.483757+00:00",
+  "owner": "/root/math_resume",
+  "contract": "K3 QSD specialization of the already proved arbitrary-initial general K2 actual conditional terminal law.",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean",
+    "bytes": 12680,
+    "sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed"
+  },
+  "actual_execution": {
+    "attempt": 4,
+    "status": "PASS",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 6.526,
+    "started_utc": "2026-10-21T10:14:31.011977+00:00",
+    "finished_utc": "2026-10-21T10:14:37.538712+00:00",
+    "command": [
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+      "env",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-c",
+      "import os,sys; os.environ[\"LEAN_PATH\"]=sys.argv[1]+os.pathsep+os.environ.get(\"LEAN_PATH\",\"\"); os.execv(sys.argv[2],sys.argv[2:])",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/lean-attempt-004:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+      "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding",
+      "-o",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/SameSourceQSDBinding.olean",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean"
+    ],
+    "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+    "LEAN_NUM_THREADS": "1",
+    "timeout_seconds": 180,
+    "root_authorization": "Focused private QSD source-binding compilation authorized by root after actual native sequence 2 and finalizer completed; reuse passed general K2; no production, books, Git, or native changes.",
+    "process_group": 61781
+  },
+  "actual_pass_receipts": {
+    "status": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/STATUS.json",
+      "bytes": 7840,
+      "sha256": "a777b710788de5eaea4b4af40e82b90989746083891c3559b2941b2a03d23d09"
+    },
+    "log": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/lean.log",
+      "bytes": 3707,
+      "sha256": "a735c829497b4a5be6a1099dde7157d2695adfad48ca2550d814a06bab08884b"
+    },
+    "olean": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/SameSourceQSDBinding.olean",
+      "bytes": 776064,
+      "sha256": "bb6a4eca21084acc86989ebf9cd509291cd72feb7f8480eecc7a6fe41258a67d"
+    }
+  },
+  "inputs": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean",
+      "bytes": 12680,
+      "sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/BINDING_CURRENT.md",
+      "bytes": 7086,
+      "sha256": "470b071f0115c4543996466ef17872ebbb28f853c4c836f23e1f6bb28c8d8e86"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/DECLARATION_COMPARISON.json",
+      "bytes": 7595,
+      "sha256": "2084888b99b2f92404db81c4cb54aa6d65e69fa39f339987994d4889ae7fa5e2"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SOURCE_DELTA.patch",
+      "bytes": 12016,
+      "sha256": "b3f383da4735acc859f91747d8e77afa991501fc3f7abfd02129b7c631cf2690"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/COMPILE_ELABORATION_DELTA.patch",
+      "bytes": 1626,
+      "sha256": "2a2c686a86e11ed4372c1f0feb9a523a0d13ce1d19887f27ad12c1559e845080"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/ENVIRONMENT_REUSE_BINDING.json",
+      "bytes": 1175,
+      "sha256": "4a721ad4cf6b3e3b07865b158f8d3b6ae543ac1bc796e0c6533cf187f192ec1d"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/compile_private.py",
+      "bytes": 6703,
+      "sha256": "b824c34fce2a6a7eac4d275b93eb6a282ab459f019f3762b9cd23a9f205c6449"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/SameSourceQSDBinding.olean",
+      "bytes": 776064,
+      "sha256": "bb6a4eca21084acc86989ebf9cd509291cd72feb7f8480eecc7a6fe41258a67d"
+    }
+  ],
+  "preserved_originals": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding_v1.lean",
+      "bytes": 11956,
+      "sha256": "7eaf7716d0b16ee69e27d73b074b335136506deee44c27809ae2e27056d6e933"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/BINDING.md",
+      "bytes": 7492,
+      "sha256": "cc57284aed524575ff6b1fe3187fdc3fe666c235eca8d65f1ae24fc386d2f5a3"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/BINDING_MANIFEST.json",
+      "bytes": 6143,
+      "sha256": "310055bd265c47aedbdfb618c9eb813b8efc50453650481b5063b747fcb58d34"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/K1_ENDPOINT_SIGNATURES.txt",
+      "bytes": 1273,
+      "sha256": "e4c03ed4676181b46f5e684d000b3037e760e8388e574bf9d81d94b58e2054b6"
+    }
+  ],
+  "private_dependency_pins": {
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean": "8114278dc02e54f681bd576cf62af0dcc83df47a5b4a61bdc506a868750aea3c",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/lean-attempt-004/SameSourceConditionedTerminal.olean": "3882f4be785ccafeb9352042e2c95bc2978570ea0e15d7def2a12e3eaf06fbeb",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/SameSourceKilledPath.olean": "91c3d26034d72d7abeb140d057c78b55296d4e4e7450cf5b291ccc3ad748d1e5"
+  },
+  "private_dependencies_rechecked_live": true,
+  "production_build_input_receipt": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+    "sha256": "04acfa12f4b43154cbf1701834aadd459b1647730f789cdff2eccc6436e96b7c",
+    "scope": "Existing completed build input receipt, not regenerated by this private attempt."
+  },
+  "native_window_gate": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-sequence-2/STATUS.json",
+    "sha256": "e05f717ba6cafb6713595307c3c8aeb061f25110358f01aca1892a87cb8633a8",
+    "state": "PASS_NATIVE_AND_PROVISIONAL_EVIDENCE",
+    "results": [
+      {
+        "label": "native_pipeline",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-tools/run_native_registered_interfaces_pipeline.py",
+          "--repo",
+          "/workspace/scratch/9a8d58b21e30/ueot-integration",
+          "--build-status",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/STATUS.json",
+          "--build-manifest",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+          "--build-log-dir",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9",
+          "--focused-label",
+          "new_modules",
+          "--full-label",
+          "full_ueot",
+          "--base-ref",
+          "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+          "--output",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-observed-2",
+          "--lake",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 388.2559575609994,
+        "log_sha256": "fa59dcf15459efb57e22473be2a9a5646ca3b819a5f851b6a8fccadfb04118e6"
+      },
+      {
+        "label": "observed_finalizer",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-tools/finalize_observed_registered_interfaces_overlay.py",
+          "--repo",
+          "/workspace/scratch/9a8d58b21e30/ueot-integration",
+          "--build-status",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/STATUS.json",
+          "--build-manifest",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+          "--build-log-dir",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9",
+          "--focused-label",
+          "new_modules",
+          "--full-label",
+          "full_ueot",
+          "--base-ref",
+          "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+          "--observed",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-observed-2",
+          "--output",
+          "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-final-2"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 25.252188758000557,
+        "log_sha256": "e75ad731a0c05aff5ba81da5f84f2c8a5e402b7a500d848b4076719a2f1f54b5"
+      }
+    ]
+  },
+  "environment_reuse_binding": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/ENVIRONMENT_REUSE_BINDING.json",
+    "bytes": 1175,
+    "sha256": "4a721ad4cf6b3e3b07865b158f8d3b6ae543ac1bc796e0c6533cf187f192ec1d"
+  },
+  "general_k2_independent_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/general-k2/COMPILE_DELTA_CLEAR.json",
+    "bytes": 16068,
+    "sha256": "92e4403a15a04d0b0b9bb8137d2e203d605278b4267c187214e4ff2821704084"
+  },
+  "declaration_preservation": {
+    "original_public_theorems": 10,
+    "final_public_theorems": 13,
+    "original_public_headers_all_byte_identical": true,
+    "first_actual_attempt_and_final_headers_all_byte_identical": true,
+    "new_public_theorems": [
+      "actual_qsd_survival_pos_iff",
+      "actual_qsd_conditioned_terminal_law_of_survival_pos",
+      "actual_qsd_zero_root_no_filter_witness"
+    ],
+    "kernel_type_comparison_to_uncompiled_original_claimed": false
+  },
+  "actual_printed_axiom_closures": {
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_terminal_mass": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_rho_bounds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_KilledQSDGOA": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_pos_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law_of_survival_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_zero_root_no_filter_witness": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_masses_ofRealRow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "actual_axiom_scope": "Ten actual endpoint transitive closures, not a complete native census. All ten contain only the standard three axioms; no sorryAx.",
+  "retained_attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "exit_code": 1,
+      "elapsed_seconds": 6.39,
+      "timed_out": false,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-001/SameSourceQSDBinding.lean",
+        "bytes": 12560,
+        "sha256": "27460f97c82239a4f4ee8d121bff129431c626644efc2c99939aa04ef3048fa7"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-001/STATUS.json",
+        "bytes": 7753,
+        "sha256": "da59102b6f2aea14ec95a7c3fb2b0dd56806166a7d2eea4477cba8a07e7ab312"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-001/lean.log",
+        "bytes": 7151,
+        "sha256": "0e0aaa02408254172b8e7299dad2c12f9b5aed7ce2b14a51f04a0ee5aee32355"
+      }
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "exit_code": 1,
+      "elapsed_seconds": 6.436,
+      "timed_out": false,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-002/SameSourceQSDBinding.lean",
+        "bytes": 12748,
+        "sha256": "d17a358bf0fd719ffd39dfd3b7d5b3b2bcba9bd436e0c1e2d2bc62c0113d10cc"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-002/STATUS.json",
+        "bytes": 7754,
+        "sha256": "2b9c0073095e0fc922d7ad70e1f8952c51526ea44bfd79db23358615b684dbb1"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-002/lean.log",
+        "bytes": 6078,
+        "sha256": "883db4b425fef300bd7de578ee8398c6cf4c07c78db9c63304eab45cbe0cbe31"
+      }
+    },
+    {
+      "attempt": 3,
+      "status": "FAIL",
+      "exit_code": 1,
+      "elapsed_seconds": 6.132,
+      "timed_out": false,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-003/SameSourceQSDBinding.lean",
+        "bytes": 12748,
+        "sha256": "6e742f9338f10df05eeef9a208c06f2bb6283b46811ef493cd1957c9f060d630"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-003/STATUS.json",
+        "bytes": 7754,
+        "sha256": "63ac5c8bba83d3556df1a2ace077cc306bac590b8bd4ed3e3b95d50d42a44c18"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-003/lean.log",
+        "bytes": 5728,
+        "sha256": "37c9769db2ecc6a4617d357968732ea9d382ef27d18d37e56daa244f0a5c8d48"
+      }
+    },
+    {
+      "attempt": 4,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_seconds": 6.526,
+      "timed_out": false,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/SameSourceQSDBinding.lean",
+        "bytes": 12680,
+        "sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/STATUS.json",
+        "bytes": 7840,
+        "sha256": "a777b710788de5eaea4b4af40e82b90989746083891c3559b2941b2a03d23d09"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/lean-attempt-004/lean.log",
+        "bytes": 3707,
+        "sha256": "a735c829497b4a5be6a1099dde7157d2695adfad48ca2550d814a06bab08884b"
+      }
+    }
+  ],
+  "proof_changes": [
+    "Use explicit ENNReal.toReal and PMF.map in local notations; the same intended functions.",
+    "Reuse passed general K2 for actual filtering support and normalized terminal map equality; remove duplicate private filter and final-safe proofs.",
+    "Use convert and congr! in the two mass lemmas to compare matrix powers under distinct subsingleton DecidableEq instances. No extra transparency option remains.",
+    "In the new current-positive conditional law, rewrite the normalized K2 atom through the actual K1 atom identity and already proved QSD actual masses.",
+    "Keep all original ten public headers byte-for-byte; add exactly three boundary/positive-current interfaces."
+  ],
+  "actual_warnings": {
+    "unnecessarySeqFocus": 2,
+    "unusedSectionVars": 2,
+    "scope": "Nonblocking style/unchanged inherited-variable warnings; no optional recompilation performed."
+  },
+  "mathematical_scope": {
+    "fixed_source": "The same actual M, q, sigma and Q := killedMatrix M (liftedStationaryPolicy q sigma) K.",
+    "actual_initial_law": "r.map Subtype.val, with safeInitialRow identity proved.",
+    "policy": "Time-homogeneous current-observation randomized sigma; not automatically an arbitrary causal policy or viableFamilyPolicy.",
+    "left_data": "r : PMF K and explicit normalized left eigenrelation; no positive-coordinate or irreducibility assumption.",
+    "unconditioned_masses": "Actual survival joint atom rho^n r(v) and total rho^n for every n, with no rho>0 premise.",
+    "derived_root_bounds": "0 <= rho <= 1.",
+    "current_positive_conditioning": "The actual filtered/mapped terminal law equals actual r.map at any n with actual survival > 0.",
+    "positive_boundary": "Actual survival > 0 iff n=0 or rho>0.",
+    "zero_root_boundary": "rho=0 and n!=0 imply zero survival and no PMF.filter support witness.",
+    "GOA": "Construct existing KilledQSDGOA for this exact Q when rho>0; no parallel source certificate.",
+    "empty_safe_set": "r : PMF K is unavailable if K is empty; general K1/K2 remain valid without adding Nonempty K.",
+    "not_claimed": [
+      "QSD or Perron data existence",
+      "uniqueness or attraction",
+      "arbitrary p0 has rho^n survival",
+      "arbitrary causal policy is state Markov",
+      "entire finite-window conditional path is homogeneous Doob",
+      "infinite-path bridge or positive infinite survival"
+    ]
+  },
+  "independent_review_scope": "Old static review preserved. Current compiled/interface delta is sent separately to audit_resume; this author execution receipt does not certify that independent review.",
+  "operations": {
+    "Lean_focused_attempts": 4,
+    "max_concurrent_own_Lean": 1,
+    "lake_build": false,
+    "native": false,
+    "production_modified": false,
+    "books_modified": false,
+    "consumer_modified": false,
+    "Git_or_refs_modified": false,
+    "remote_operations": false
+  },
+  "integration_limit": "Private proof only; not part of frozen seven-module production/native/source-DAG scope. Future integration and canonical checks belong to root."
+}

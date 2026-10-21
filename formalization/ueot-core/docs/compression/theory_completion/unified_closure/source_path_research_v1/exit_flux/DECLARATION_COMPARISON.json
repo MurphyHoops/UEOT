@@ -1,0 +1,100 @@
+{
+  "schema": "UEOT_PRIVATE_EXIT_FLUX_DECLARATION_COMPARISON_V1",
+  "original_source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux_v1.lean",
+    "bytes": 9899,
+    "sha256": "8f88617f06f793492b04b875d38dbc097b7043bbe9ef12567b8492cb1eaf3c8c"
+  },
+  "final_source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean",
+    "bytes": 11420,
+    "sha256": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18"
+  },
+  "public_theorems": 13,
+  "public_definitions": 2,
+  "all_15_public_header_bytes_equal": true,
+  "both_public_definition_bodies_byte_identical": true,
+  "first_actual_attempt_to_final_headers_byte_identical": true,
+  "new_or_removed_public_declarations": [],
+  "headers": {
+    "pmfExtend_map_fst": {
+      "kind": "theorem",
+      "header": "theorem pmfExtend_map_fst\n    {H Z : Type*} (p : PMF H) (L : H \u2192 PMF Z) :\n    (pmfExtend p L).map Prod.fst = p",
+      "header_sha256": "f75397a9b48b2bb75fa813f33d11b9738f9108e151084516affa9c14e71d2aa2"
+    },
+    "causalLaw_map_prefix": {
+      "kind": "theorem",
+      "header": "theorem causalLaw_map_prefix\n    {H Z : Type u} (p0 : PMF H)\n    (L : \u2200 n, CausalHistory H Z n \u2192 PMF Z) (n : \u2115) :\n    (causalLaw p0 L (n + 1)).map\n        (fun h : CausalHistory H Z (n + 1) => h.1) = causalLaw p0 L n",
+      "header_sha256": "0f6c47dfb1d70ec66ea748a5062f9f8cdfb694fba8294a41bd88eaac7137444d"
+    },
+    "causalLaw_prefix_event_real": {
+      "kind": "theorem",
+      "header": "theorem causalLaw_prefix_event_real\n    {H Z : Type u} [Fintype H] [Fintype Z]\n    [MeasurableSpace H] [MeasurableSingletonClass H]\n    [MeasurableSpace Z] [MeasurableSingletonClass Z]\n    (p0 : PMF H) (L : \u2200 n, CausalHistory H Z n \u2192 PMF Z)\n    (n : \u2115) (E : Set (CausalHistory H Z n)) :\n    (causalLaw p0 L (n + 1)).toMeasure.real\n        ((fun h : CausalHistory H Z (n + 1) => h.1) \u207b\u00b9' E) =\n      (causalLaw p0 L n).toMeasure.real E",
+      "header_sha256": "e0a8b690f7d03c0feb0fa565a3ae513278b26d39b0266ef46e4c56a81ae8c19f"
+    },
+    "killedExitFlux": {
+      "kind": "def",
+      "header": "def killedExitFlux {S : Type u} [Fintype S]\n    (eta : S \u2192 \u211d) (Q : Matrix S S \u211d) : \u211d",
+      "header_sha256": "1a6e18daa2fd7e078d448f534925463aa019bd4724163a558290d97097044280"
+    },
+    "row_mass_sub_next_eq_killedExitFlux": {
+      "kind": "theorem",
+      "header": "theorem row_mass_sub_next_eq_killedExitFlux\n    {S : Type u} [Fintype S] (eta : S \u2192 \u211d) (Q : Matrix S S \u211d) :\n    (\u2211 u, eta u) - (\u2211 v, rowApply eta Q v) = killedExitFlux eta Q",
+      "header_sha256": "53893e0e0cb15143447edcac06526912db6b958ded028eec30c4c13368a19a84"
+    },
+    "killed_pow_mass_drop": {
+      "kind": "theorem",
+      "header": "theorem killed_pow_mass_drop\n    {S : Type u} [Fintype S] (eta0 : S \u2192 \u211d) (Q : Matrix S S \u211d) (n : \u2115) :\n    (\u2211 u, rowApply eta0 (Q ^ n) u) -\n        (\u2211 v, rowApply eta0 (Q ^ (n + 1)) v) =\n      killedExitFlux (rowApply eta0 (Q ^ n)) Q",
+      "header_sha256": "82a62c03e0b942d132131a5d6320b3795aa97642fac66e79ddb185258e18b6a5"
+    },
+    "riskFirstExitAfter": {
+      "kind": "def",
+      "header": "def riskFirstExitAfter {X A : Type u} (K : Set X) (n : \u2115) :\n    Set (CausalHistory X (A \u00d7 X) (n + 1))",
+      "header_sha256": "759f95a81ff42bc14fa93496b53a35ce88c75b0e0af603fa14be8c42812d64b3"
+    },
+    "actual_survival_drop_eq_killedExitFlux": {
+      "kind": "theorem",
+      "header": "theorem actual_survival_drop_eq_killedExitFlux (n : \u2115) :\n    s n - s (n + 1) = flux n",
+      "header_sha256": "03090dbc4d89ddb537358ed763995ceccc61386e9e6da33bd683139943176ce9"
+    },
+    "actual_first_exit_mass_eq_survival_drop": {
+      "kind": "theorem",
+      "header": "theorem actual_first_exit_mass_eq_survival_drop (n : \u2115) :\n    (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A",
+      "header_sha256": "31e77654da3b353bfb3e682f6cd9860f97286c90bc5638ba060cdc3ab8fb6171"
+    },
+    "actual_first_exit_mass_eq_killedExitFlux": {
+      "kind": "theorem",
+      "header": "theorem actual_first_exit_mass_eq_killedExitFlux (n : \u2115) :\n    (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A",
+      "header_sha256": "133399641c180e69065f2dcd6415d2e0b856074cde99380f584d07f6d3275523"
+    },
+    "actual_killedExitFlux_nonneg": {
+      "kind": "theorem",
+      "header": "theorem actual_killedExitFlux_nonneg (n : \u2115) : 0 \u2264 flux n",
+      "header_sha256": "17300fc39d0fe30b599ad111a37771363d91ed9d5800c68dc51ec73f85ced526"
+    },
+    "actual_survival_zero": {
+      "kind": "theorem",
+      "header": "theorem actual_survival_zero : s 0 = p0.toMeasure.real K",
+      "header_sha256": "fa7eb7cce8f836e011f7930254eb6370ae0d4b542632d0dc24daec32bbeb14da"
+    },
+    "actual_failure_mass_telescope": {
+      "kind": "theorem",
+      "header": "theorem actual_failure_mass_telescope (T : \u2115) :\n    1 - s T = (1 - p0.toMeasure.real K) +\n      \u2211 n \u2208 Finset.range T, flux n",
+      "header_sha256": "861b5b86de7787ae247253390bbfd2dab9dd6d42bd76b3ba9987f377b8b92012"
+    },
+    "actual_ever_failure_mass": {
+      "kind": "theorem",
+      "header": "theorem actual_ever_failure_mass (T : \u2115) :\n    (nu T).toMeasure.real {h | riskEverFailure (fun x => x \u2209 K) T h} =\n      1 - s T",
+      "header_sha256": "4a648298dfac660a4fedb5486601e242cedaa5166cd38a4716cce0037aa9e919"
+    },
+    "actual_failure_eq_initial_failure_add_first_exits": {
+      "kind": "theorem",
+      "header": "theorem actual_failure_eq_initial_failure_add_first_exits (T : \u2115) :\n    (nu T).toMeasure.real {h | riskEverFailure (fun x => x \u2209 K) T h} =\n      p0.toMeasure.real K\u1d9c +\n        \u2211 n \u2208 Finset.range T,\n          (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A",
+      "header_sha256": "5a379a823da66066c8a69ddaa043f19bed90316e22b6cf4c23c37d616d0aa772"
+    }
+  },
+  "notation_semantics": "s is the same real event mass written with explicit Measure.real, PMF.toMeasure, and Set.ofPred to avoid quotation-precheck failures; no event or source change.",
+  "comparison_limit": "Source-level exact declarations; no old kernel type comparison is claimed because the original draft was not compiled.",
+  "section_variables_unchanged": true,
+  "mathematical_statement_changes": false
+}

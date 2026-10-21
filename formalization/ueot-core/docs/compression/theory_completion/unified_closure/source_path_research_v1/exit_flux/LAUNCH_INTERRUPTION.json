@@ -1,0 +1,14 @@
+{
+  "schema": "UEOT_PRIVATE_EXIT_FLUX_TOOL_LAUNCH_INTERRUPTION_V1",
+  "recorded_utc": "2026-10-21T10:28:54.732236+00:00",
+  "operation": "First launch request for attempt003 before its later successful start",
+  "reported_error": "exec_command failed: CreateProcess { message: \"Rejected(\\\"Failed to create unified exec process: exec-server transport disconnected\\\")\" }",
+  "subsequent_read_only_check": {
+    "attempt003_STATUS_existed": false,
+    "source_sha256": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18"
+  },
+  "disposition": "Verified no attempt003 status had been created, then issued a fresh launch of the same private runner. It created the only actual attempt003.",
+  "not_a_Lean_result": true,
+  "not_counted_as_an_actual_Lean_attempt": true,
+  "approval_rejection_claimed": false
+}

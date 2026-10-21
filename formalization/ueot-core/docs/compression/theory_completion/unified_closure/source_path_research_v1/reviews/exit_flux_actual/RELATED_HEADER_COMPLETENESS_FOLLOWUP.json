@@ -1,0 +1,375 @@
+{
+  "schema": "UEOT_K2_QSD_NARROW_DECLARATION_DELIMITER_FOLLOWUP_V1",
+  "status": "HEADER_COMPLETENESS_CONFIRMED_NO_PRIOR_CLEAR_RETRACTION",
+  "reviewer": "/root/audit_resume",
+  "scope": "Only the specific := delimiter risk discovered in the exit-flux receipt; complete public source headers re-extracted and compared. No new mathematical review, Lean execution, native or test run.",
+  "method": "Scan top-level declaration assignment while skipping nested named arguments and top-level let assignments in theorem types; supports both := by and term proof bodies. These concrete source forms were read and the full resulting headers are included.",
+  "trigger": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/resume-killed-exit-flux/COMPILE_DELTA_EVIDENCE.json",
+    "bytes": 26989,
+    "sha256": "a2db96863767efe84ad585fd53227b4c81c3e4296c992dd4479985578e15fd56"
+  },
+  "results": [
+    {
+      "package": "general-k2",
+      "status": "COMPLETE_HEADER_COMPARISON_CONFIRMED_NO_TRUNCATED_HEADER",
+      "original": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal_v1.lean",
+        "bytes": 12309,
+        "sha256": "7ab97381798440497a3a60fac5ee2dd405deb1f7100438e06b1a1b6a2e21d95c"
+      },
+      "final": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean",
+        "bytes": 12530,
+        "sha256": "8114278dc02e54f681bd576cf62af0dcc83df47a5b4a61bdc506a868750aea3c"
+      },
+      "original_comparison_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/DECLARATION_COMPARISON.json",
+        "bytes": 11656,
+        "sha256": "33e127f6a5503eebc3089e91021436cf3ce19073fabac6fafd07c0e4e7ff31eb"
+      },
+      "prior_clear_receipt_preserved": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/general-k2/COMPILE_DELTA_CLEAR.json",
+        "bytes": 16068,
+        "sha256": "92e4403a15a04d0b0b9bb8137d2e203d605278b4267c187214e4ff2821704084"
+      },
+      "old_count": 13,
+      "final_count": 13,
+      "changed_old_headers": [
+        "actual_survival_pos_iff_support",
+        "actual_zero_survival_no_filter_witness"
+      ],
+      "new_header_names": [],
+      "headers": [
+        {
+          "name": "actual_survival_pos_iff_support",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_survival_pos_iff_support :\n    0 < s ↔ ∃ h ∈ S, h ∈ nu.support ",
+          "full_final_header": "theorem actual_survival_pos_iff_support :\n    0 < s ↔ ∃ h ∈ S, h ∈ (nu).support ",
+          "original_header_sha256": "6f8d06a1d40524f3396f4c14616da5b84a0fe2beaf1e90d7f70958e5d8065ebf",
+          "final_header_sha256": "d7022dd112bf84e4e3402832927f693804304646faf9e79c72c9af103423a6fc",
+          "raw_equal": false,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actualConditionedTerminal",
+          "kind": "def",
+          "full_original_header": "def actualConditionedTerminal (hpos : 0 < s) : PMF X ",
+          "full_final_header": "def actualConditionedTerminal (hpos : 0 < s) : PMF X ",
+          "original_header_sha256": "5d74249da4188d8dfb79bebbba79b264a5f0eb9b56626542c533d814f74655ff",
+          "final_header_sha256": "5d74249da4188d8dfb79bebbba79b264a5f0eb9b56626542c533d814f74655ff",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_conditioned_terminal_mass",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_conditioned_terminal_mass (hpos : 0 < s) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s ",
+          "full_final_header": "theorem actual_conditioned_terminal_mass (hpos : 0 < s) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s ",
+          "original_header_sha256": "538297a6d3ebc9dda6579cee6ba1b109131e17f27d2f6e3a7194efa243c3b498",
+          "final_header_sha256": "538297a6d3ebc9dda6579cee6ba1b109131e17f27d2f6e3a7194efa243c3b498",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_conditioned_terminal_support",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_conditioned_terminal_support (hpos : 0 < s) :\n    (actualConditionedTerminal M q sigma p0 K n hpos).support ⊆ K ",
+          "full_final_header": "theorem actual_conditioned_terminal_support (hpos : 0 < s) :\n    (actualConditionedTerminal M q sigma p0 K n hpos).support ⊆ K ",
+          "original_header_sha256": "f72886d9325abcf921343b36df459af859fdfb432cdfaf0d3fea949583e73530",
+          "final_header_sha256": "f72886d9325abcf921343b36df459af859fdfb432cdfaf0d3fea949583e73530",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_conditioned_terminal_eq_zero_of_notMem",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_conditioned_terminal_eq_zero_of_notMem\n    (hpos : 0 < s) (x : X) (hx : x ∉ K) :\n    actualConditionedTerminal M q sigma p0 K n hpos x = 0 ",
+          "full_final_header": "theorem actual_conditioned_terminal_eq_zero_of_notMem\n    (hpos : 0 < s) (x : X) (hx : x ∉ K) :\n    actualConditionedTerminal M q sigma p0 K n hpos x = 0 ",
+          "original_header_sha256": "e3c6a41bb09158cf9f5bd5d39c240a981a50d78a4b76ec504d85735959ee9a2b",
+          "final_header_sha256": "e3c6a41bb09158cf9f5bd5d39c240a981a50d78a4b76ec504d85735959ee9a2b",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "normalizedKilledTerminal",
+          "kind": "def",
+          "full_original_header": "def normalizedKilledTerminal (hpos : 0 < s) : PMF K ",
+          "full_final_header": "def normalizedKilledTerminal (hpos : 0 < s) : PMF K ",
+          "original_header_sha256": "4beb36773b3b47ce9125d95089c27a7e6a406e1670cb60a18b95dedf71d91578",
+          "final_header_sha256": "4beb36773b3b47ce9125d95089c27a7e6a406e1670cb60a18b95dedf71d91578",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "normalizedKilledTerminal_apply_toReal",
+          "kind": "theorem",
+          "full_original_header": "@[simp] theorem normalizedKilledTerminal_apply_toReal\n    (hpos : 0 < s) (v : K) :\n    (normalizedKilledTerminal M q sigma p0 K n hpos v).toReal = w v / s ",
+          "full_final_header": "@[simp] theorem normalizedKilledTerminal_apply_toReal\n    (hpos : 0 < s) (v : K) :\n    (normalizedKilledTerminal M q sigma p0 K n hpos v).toReal = w v / s ",
+          "original_header_sha256": "5fe2ec1aa455947686b03c577766db9e664dd0b755a8fe7d4f4243e16447df1f",
+          "final_header_sha256": "5fe2ec1aa455947686b03c577766db9e664dd0b755a8fe7d4f4243e16447df1f",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_conditioned_terminal_eq_normalized_killed_map",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_conditioned_terminal_eq_normalized_killed_map (hpos : 0 < s) :\n    actualConditionedTerminal M q sigma p0 K n hpos =\n      (normalizedKilledTerminal M q sigma p0 K n hpos).map Subtype.val ",
+          "full_final_header": "theorem actual_conditioned_terminal_eq_normalized_killed_map (hpos : 0 < s) :\n    actualConditionedTerminal M q sigma p0 K n hpos =\n      (normalizedKilledTerminal M q sigma p0 K n hpos).map Subtype.val ",
+          "original_header_sha256": "b5a5c436649ec8d7efc9e384571dac3f490a4594ffba02cd066e63e8c4475f17",
+          "final_header_sha256": "b5a5c436649ec8d7efc9e384571dac3f490a4594ffba02cd066e63e8c4475f17",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "safe_set_nonempty_of_survival_pos",
+          "kind": "theorem",
+          "full_original_header": "theorem safe_set_nonempty_of_survival_pos (hpos : 0 < s) : K.Nonempty ",
+          "full_final_header": "theorem safe_set_nonempty_of_survival_pos (hpos : 0 < s) : K.Nonempty ",
+          "original_header_sha256": "040e1ff34fbaf07168c3abd1eb33fba7e8b7766f75d5fe7e9e44e938657a9540",
+          "final_header_sha256": "040e1ff34fbaf07168c3abd1eb33fba7e8b7766f75d5fe7e9e44e938657a9540",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_zero_survival_no_filter_witness",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_zero_survival_no_filter_witness (hzero : s = 0) :\n    ¬ ∃ h ∈ S, h ∈ nu.support ",
+          "full_final_header": "theorem actual_zero_survival_no_filter_witness (hzero : s = 0) :\n    ¬ ∃ h ∈ S, h ∈ (nu).support ",
+          "original_header_sha256": "4aaf4dfabe538a2cefda4df387d22efda7f92a4f1bae2f170155110247ae50f5",
+          "final_header_sha256": "41a5b915f33429eec332b1b9e4cfa0c536724189c52c804ac78a3175c72e7f81",
+          "raw_equal": false,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_survival_mass_at_zero",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_survival_mass_at_zero :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) 0).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h} = p0.toMeasure.real K ",
+          "full_final_header": "theorem actual_survival_mass_at_zero :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) 0).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h} = p0.toMeasure.real K ",
+          "original_header_sha256": "c9911c15c89964f14d8c383468b9b5a87d6bf1c83b0db2e1b92c41b57346c79d",
+          "final_header_sha256": "c9911c15c89964f14d8c383468b9b5a87d6bf1c83b0db2e1b92c41b57346c79d",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_conditioned_terminal_mass_at_zero",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_conditioned_terminal_mass_at_zero\n    (hpos : 0 < (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) 0).toMeasure.real\n          {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h}) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K 0 hpos v.1).toReal =\n      (p0 v.1).toReal / p0.toMeasure.real K ",
+          "full_final_header": "theorem actual_conditioned_terminal_mass_at_zero\n    (hpos : 0 < (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) 0).toMeasure.real\n          {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h}) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K 0 hpos v.1).toReal =\n      (p0 v.1).toReal / p0.toMeasure.real K ",
+          "original_header_sha256": "6d680fa2b2609133217b125bcde354c1b91d950ef6e743c82d32bf30a60c0b55",
+          "final_header_sha256": "6d680fa2b2609133217b125bcde354c1b91d950ef6e743c82d32bf30a60c0b55",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_survival_mass_empty",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_survival_mass_empty :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ (∅ : Set X)) n h} = 0 ",
+          "full_final_header": "theorem actual_survival_mass_empty :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ (∅ : Set X)) n h} = 0 ",
+          "original_header_sha256": "6a8c1ba18ac22dc55b5c2a501ac3812aee8465c62ced48d03966f9a70fa0578b",
+          "final_header_sha256": "6a8c1ba18ac22dc55b5c2a501ac3812aee8465c62ced48d03966f9a70fa0578b",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        }
+      ],
+      "all_author_records_complete": true,
+      "qsd_attempt001_final_all_13_equal": null
+    },
+    {
+      "package": "resume-killed-qsd-binding",
+      "status": "COMPLETE_HEADER_COMPARISON_CONFIRMED_NO_TRUNCATED_HEADER",
+      "original": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding_v1.lean",
+        "bytes": 11956,
+        "sha256": "7eaf7716d0b16ee69e27d73b074b335136506deee44c27809ae2e27056d6e933"
+      },
+      "final": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean",
+        "bytes": 12680,
+        "sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed"
+      },
+      "original_comparison_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/DECLARATION_COMPARISON.json",
+        "bytes": 7595,
+        "sha256": "2084888b99b2f92404db81c4cb54aa6d65e69fa39f339987994d4889ae7fa5e2"
+      },
+      "prior_clear_receipt_preserved": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/finite-window-doob/QSD_COMPILE_DELTA_CLEAR.json",
+        "bytes": 14970,
+        "sha256": "1e1b55cbf2f05c777f959d79f5bc393bb6e18f78e5ab9fe8baf1253f2ad9a7a1"
+      },
+      "old_count": 10,
+      "final_count": 13,
+      "changed_old_headers": [],
+      "new_header_names": [
+        "actual_qsd_survival_pos_iff",
+        "actual_qsd_conditioned_terminal_law_of_survival_pos",
+        "actual_qsd_zero_root_no_filter_witness"
+      ],
+      "headers": [
+        {
+          "name": "safeInitialRow_map_subtype",
+          "kind": "theorem",
+          "full_original_header": "theorem safeInitialRow_map_subtype {X : Type u} (K : Set X) (r : PMF K) :\n    safeInitialRow (r.map Subtype.val) K = fun v => (r v).toReal ",
+          "full_final_header": "theorem safeInitialRow_map_subtype {X : Type u} (K : Set X) (r : PMF K) :\n    safeInitialRow (r.map Subtype.val) K = fun v => (r v).toReal ",
+          "original_header_sha256": "261c1b722ee323182f4f4c686e6e4d4d176345d2a1d50f024ade4500ceb58c40",
+          "final_header_sha256": "261c1b722ee323182f4f4c686e6e4d4d176345d2a1d50f024ade4500ceb58c40",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_survival_terminal_mass",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_qsd_survival_terminal_mass\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) (v : K) :\n    (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =\n      rho ^ n * (r v).toReal ",
+          "full_final_header": "theorem actual_qsd_survival_terminal_mass\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) (v : K) :\n    (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =\n      rho ^ n * (r v).toReal ",
+          "original_header_sha256": "ffb63b0179e740692ef60ff02d82071b3de15822928d7ad012f22f7c958aac3f",
+          "final_header_sha256": "ffb63b0179e740692ef60ff02d82071b3de15822928d7ad012f22f7c958aac3f",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_survival_mass",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_qsd_survival_mass\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) :\n    (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n ",
+          "full_final_header": "theorem actual_qsd_survival_mass\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) :\n    (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n ",
+          "original_header_sha256": "f646fac1c2db4b99d5a73b2d9a54e09cf1a17d8ab00797395a4f680835b8fe8f",
+          "final_header_sha256": "f646fac1c2db4b99d5a73b2d9a54e09cf1a17d8ab00797395a4f680835b8fe8f",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_survival_pos",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_qsd_survival_pos\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    0 < (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} ",
+          "full_final_header": "theorem actual_qsd_survival_pos\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    0 < (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} ",
+          "original_header_sha256": "7dd33ec453691b11df3bf3b15a9cf9b704129207c75663ea951a55da27c267d4",
+          "final_header_sha256": "7dd33ec453691b11df3bf3b15a9cf9b704129207c75663ea951a55da27c267d4",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_conditional_terminal_ratio",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_qsd_conditional_terminal_ratio\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) (v : K) :\n    (nu n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} /\n      (nu n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = (r v).toReal ",
+          "full_final_header": "theorem actual_qsd_conditional_terminal_ratio\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) (v : K) :\n    (nu n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} /\n      (nu n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = (r v).toReal ",
+          "original_header_sha256": "a9706b18aaf80ef26a2d9641fcf0fcf77ca99eade99323ca39b8b08eb792cc1b",
+          "final_header_sha256": "a9706b18aaf80ef26a2d9641fcf0fcf77ca99eade99323ca39b8b08eb792cc1b",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "sameSource_KilledQSDGOA",
+          "kind": "theorem",
+          "full_original_header": "theorem sameSource_KilledQSDGOA\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) :\n    KilledQSDGOA Q rR rho ",
+          "full_final_header": "theorem sameSource_KilledQSDGOA\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) :\n    KilledQSDGOA Q rR rho ",
+          "original_header_sha256": "4524547388957fe578b0a4aaa2b58ff2c7d13a50725dc359d34c59e39292a898",
+          "final_header_sha256": "4524547388957fe578b0a4aaa2b58ff2c7d13a50725dc359d34c59e39292a898",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "sameSource_rho_bounds",
+          "kind": "theorem",
+          "full_original_header": "theorem sameSource_rho_bounds\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal) :\n    0 ≤ rho ∧ rho ≤ 1 ",
+          "full_final_header": "theorem sameSource_rho_bounds\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal) :\n    0 ≤ rho ∧ rho ≤ 1 ",
+          "original_header_sha256": "d2102bffa1754838e22c7b86816936eefc4d2864fc10a92e3f3cfa64e651d1da",
+          "final_header_sha256": "d2102bffa1754838e22c7b86816936eefc4d2864fc10a92e3f3cfa64e651d1da",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_survival_pos_iff",
+          "kind": "theorem",
+          "full_original_header": null,
+          "full_final_header": "theorem actual_qsd_survival_pos_iff\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) :\n    0 < (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} ↔ n = 0 ∨ 0 < rho ",
+          "original_header_sha256": null,
+          "final_header_sha256": "9a875cfd80fa0c29adb2397bd9a99c96fb1b5b3d8e924b188e2d8f54a53e7fca",
+          "raw_equal": null,
+          "equal_after_known_nu_support_parentheses": null,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_conditioned_terminal_law_of_survival_pos",
+          "kind": "theorem",
+          "full_original_header": null,
+          "full_final_header": "theorem actual_qsd_conditioned_terminal_law_of_survival_pos\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ)\n    (hpos : 0 < (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h}) :\n    actualConditionedTerminal M q sigma p0 K n hpos = p0 ",
+          "original_header_sha256": null,
+          "final_header_sha256": "a0841c56116078764e9b5539680f8b1b87e38c5b054d74dc295ec9011d4cd619",
+          "raw_equal": null,
+          "equal_after_known_nu_support_parentheses": null,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_zero_root_no_filter_witness",
+          "kind": "theorem",
+          "full_original_header": null,
+          "full_final_header": "theorem actual_qsd_zero_root_no_filter_witness\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : rho = 0) (n : ℕ) (hn : n ≠ 0) :\n    ¬ ∃ h ∈ {h | ¬ riskEverFailure (fun x => x ∉ K) n h},\n      h ∈ (nu n).support ",
+          "original_header_sha256": null,
+          "final_header_sha256": "12cf85873ada166c3893f41e5e4541176fb1e2d921b43812efc1e420caf13d08",
+          "raw_equal": null,
+          "equal_after_known_nu_support_parentheses": null,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_survival_support",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_qsd_survival_support\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    ∃ h ∈ {h | ¬ riskEverFailure (fun x => x ∉ K) n h}, h ∈ (nu n).support ",
+          "full_final_header": "theorem actual_qsd_survival_support\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    ∃ h ∈ {h | ¬ riskEverFailure (fun x => x ∉ K) n h}, h ∈ (nu n).support ",
+          "original_header_sha256": "52a7149b76e1299ce2e07d870c0a73091edd0af43422835a8d3590aeedb08b47",
+          "final_header_sha256": "52a7149b76e1299ce2e07d870c0a73091edd0af43422835a8d3590aeedb08b47",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_conditioned_terminal_law",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_qsd_conditioned_terminal_law\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (K : Set X) (r : PMF K) (rho : ℝ)\n    (hleft : ∀ v, rowApply (fun w : K => (r w).toReal)\n      (killedMatrix M (liftedStationaryPolicy q sigma) K) v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    let nu := causalLaw (r.map Subtype.val)\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n\n    let S : Set (CausalHistory X (A × X) n) :=\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h}\n    (nu.filter S\n      (actual_qsd_survival_support M q sigma K r rho hleft hrho n)).map\n        (riskLastState n) = r.map Subtype.val ",
+          "full_final_header": "theorem actual_qsd_conditioned_terminal_law\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (K : Set X) (r : PMF K) (rho : ℝ)\n    (hleft : ∀ v, rowApply (fun w : K => (r w).toReal)\n      (killedMatrix M (liftedStationaryPolicy q sigma) K) v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    let nu := causalLaw (r.map Subtype.val)\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n\n    let S : Set (CausalHistory X (A × X) n) :=\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h}\n    (nu.filter S\n      (actual_qsd_survival_support M q sigma K r rho hleft hrho n)).map\n        (riskLastState n) = r.map Subtype.val ",
+          "original_header_sha256": "64239f975b60b7cd5146dfa3728d4fa53249492bf97003bf0f6d0d33be06aa76",
+          "final_header_sha256": "64239f975b60b7cd5146dfa3728d4fa53249492bf97003bf0f6d0d33be06aa76",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        },
+        {
+          "name": "actual_qsd_masses_ofRealRow",
+          "kind": "theorem",
+          "full_original_header": "theorem actual_qsd_masses_ofRealRow\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (K : Set X) (r : K → ℝ) (hr : ∀ v, 0 ≤ r v) (hsum : ∑ v, r v = 1)\n    (rho : ℝ)\n    (hleft : ∀ v, rowApply r\n      (killedMatrix M (liftedStationaryPolicy q sigma) K) v = rho * r v)\n    (n : ℕ) :\n    let p0 := (FiniteProbabilityRow.ofRealRow r hr hsum).map Subtype.val\n    let nu := causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n\n    nu.toMeasure.real {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n ∧\n      ∀ v : K, nu.toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =\n          rho ^ n * r v ",
+          "full_final_header": "theorem actual_qsd_masses_ofRealRow\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (K : Set X) (r : K → ℝ) (hr : ∀ v, 0 ≤ r v) (hsum : ∑ v, r v = 1)\n    (rho : ℝ)\n    (hleft : ∀ v, rowApply r\n      (killedMatrix M (liftedStationaryPolicy q sigma) K) v = rho * r v)\n    (n : ℕ) :\n    let p0 := (FiniteProbabilityRow.ofRealRow r hr hsum).map Subtype.val\n    let nu := causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n\n    nu.toMeasure.real {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n ∧\n      ∀ v : K, nu.toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =\n          rho ^ n * r v ",
+          "original_header_sha256": "4945b31a21b03394a1a946c7f7c96ea6b847f2c01a7a0f597c0d973db60b0890",
+          "final_header_sha256": "4945b31a21b03394a1a946c7f7c96ea6b847f2c01a7a0f597c0d973db60b0890",
+          "raw_equal": true,
+          "equal_after_known_nu_support_parentheses": true,
+          "author_record_complete": true
+        }
+      ],
+      "all_author_records_complete": true,
+      "qsd_attempt001_final_all_13_equal": true
+    }
+  ],
+  "exit_flux_complete_headers_reconfirmed": 15,
+  "old_clear_receipts_overwritten": false,
+  "source_or_author_receipts_modified": false,
+  "kernel_type_comparison_to_uncompiled_original_claimed": false
+}

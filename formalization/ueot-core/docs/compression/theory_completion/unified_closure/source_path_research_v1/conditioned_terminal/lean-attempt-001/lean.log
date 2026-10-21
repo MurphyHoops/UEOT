@@ -1,0 +1,121 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:70:59: error: unsolved goals
+case neg
+H Z : Type u
+inst✝² : Fintype H
+inst✝¹ : MeasurableSpace H
+inst✝ : MeasurableSingletonClass H
+p : PMF H
+S : Set H
+hs : ∃ h ∈ S, h ∈ p.support
+f : H → Z
+z : Z
+h : H
+a✝ : h ∈ Finset.univ
+hS : h ∈ S
+hz : ¬f h = z
+⊢ (if z = f h then p h * (∑ b, S.indicator (⇑p) b)⁻¹ else 0) =
+    {h | h ∈ S ∧ z = f h}.indicator (⇑p) h * (∑ b, S.indicator (⇑p) b)⁻¹
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:111:23: error: no macro or `[quot_precheck]` instance for syntax kind `Mathlib.Meta.setBuilder` found
+  {h | ¬riskEverFailure (fun x => x ∉ K) n h}
+This means we cannot eagerly check your notation/quotation for unbound identifiers; you can use `set_option quotPrecheck false` to disable this check.
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:113:22: error: Unknown identifier `nu.toMeasure.real` at quotation precheck
+
+Note: You can use `set_option quotPrecheck false` to disable this check.
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:120:8: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:120:18: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS` has not been implemented
+  S
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:120:25: error(lean.unknownIdentifier): Unknown identifier `«nu».support`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:121:34: error: unknown free variable `_fvar.10109`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:121:34: error: unknown free variable `_fvar.10100`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:121:34: error: unknown free variable `_fvar.10096`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:121:34: error: unknown free variable `_fvar.10105`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:121:34: error: unknown free variable `_fvar.10114`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:121:37: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS` has not been implemented
+  S
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:125:42: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:126:3: error(lean.unknownIdentifier): Unknown identifier `«nu».filter`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:131:53: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:132:73: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:138:56: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:141:13: error(lean.unknownIdentifier): Unknown identifier `actual_survival_pos_iff_support`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:139:69: error: unsolved goals
+X : Type u
+inst✝² : Fintype X
+inst✝¹ : MeasurableSpace X
+inst✝ : MeasurableSingletonClass X
+K : Set X
+hpos : sorry
+x : X
+hx : x ∈ sorry
+⊢ x ∈ K
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:149:16: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:157:41: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:158:56: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:168:16: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:169:70: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:174:73: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:209:54: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:210:10: error(lean.unknownIdentifier): Unknown identifier `actual_survival_pos_iff_support`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:211:4: error: Tactic `rcases` failed: `x✝ : ?m.11` is not an inductive datatype
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:216:56: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS_1` has not been implemented
+  s
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:217:12: error: elaboration function for `_private.SameSourceConditionedTerminal.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.termS` has not been implemented
+  S
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:217:19: error(lean.unknownIdentifier): Unknown identifier `«nu».support`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:219:14: error(lean.unknownIdentifier): Unknown identifier `actual_survival_pos_iff_support`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:217:33: error: unsolved goals
+hzero : sorry
+hw : ∃ h, sorry ∧ h ∈ sorry
+⊢ False
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:232:15: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:225:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero`:
+  [Nonempty A]
+  [MeasurableSingletonClass X]
+  [MeasurableSingletonClass A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty A] [MeasurableSingletonClass X] [MeasurableSingletonClass A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:243:47: error: unsolved goals
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+hpos :
+  0 <
+    (causalLaw p0 (riskMicroControlKernel q (fun x => M.transitionPMF) (observationMarkovPolicy sigma))
+            0).toMeasure.real
+      {h | ¬riskEverFailure (fun x => x ∉ K) 0 h}
+v : ↑K
+⊢ sorry = (p0 ↑v).toReal / p0.toMeasure.real K
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass' does not depend on any axioms
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:262:14: error(lean.unknownIdentifier): Unknown constant `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_eq_normalized_killed_map`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/general-k2/SameSourceConditionedTerminal.lean:263:14: error(lean.unknownIdentifier): Unknown constant `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_zero_survival_no_filter_witness`
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass_at_zero' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_empty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

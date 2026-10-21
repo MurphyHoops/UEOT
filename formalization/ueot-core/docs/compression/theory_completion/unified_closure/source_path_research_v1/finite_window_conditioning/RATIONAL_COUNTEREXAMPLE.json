@@ -1,0 +1,247 @@
+{
+  "status": "EXACT_RATIONAL_IDENTITIES_CHECKED_NOT_LEAN",
+  "scope": "One actual three-state Markov source, one unit action, fixed policy; exact finite arithmetic, no sampling or empirical claim.",
+  "states": [
+    "0",
+    "1",
+    "cemetery"
+  ],
+  "safe_states": [
+    "0",
+    "1"
+  ],
+  "source_kernel_L": [
+    [
+      "3/8",
+      "3/8",
+      "1/4"
+    ],
+    [
+      "1/8",
+      "1/8",
+      "3/4"
+    ],
+    [
+      "0",
+      "0",
+      "1"
+    ]
+  ],
+  "actual_initial_p0": [
+    "1/2",
+    "1/2",
+    "0"
+  ],
+  "killed_restriction_Q": [
+    [
+      "3/8",
+      "3/8"
+    ],
+    [
+      "1/8",
+      "1/8"
+    ]
+  ],
+  "left_law_r": [
+    "1/2",
+    "1/2"
+  ],
+  "rho": "1/2",
+  "positive_right_vector_h": [
+    "3",
+    "1"
+  ],
+  "left_eigen_row": [
+    "1/4",
+    "1/4"
+  ],
+  "right_eigen_column": [
+    "3/2",
+    "1/2"
+  ],
+  "pairing_r_h": "2",
+  "normalized_right_vector_for_BiEigenData": [
+    "3/2",
+    "1/2"
+  ],
+  "Doob_kernel_R": [
+    [
+      "3/4",
+      "1/4"
+    ],
+    [
+      "3/4",
+      "1/4"
+    ]
+  ],
+  "Doob_invariant_tilted_law": [
+    "3/4",
+    "1/4"
+  ],
+  "original_unconditional_joint_3x3": [
+    [
+      "3/16",
+      "3/16",
+      "1/8"
+    ],
+    [
+      "1/16",
+      "1/16",
+      "3/8"
+    ],
+    [
+      "0",
+      "0",
+      "0"
+    ]
+  ],
+  "safe_unconditional_joint_2x2": [
+    [
+      "3/16",
+      "3/16"
+    ],
+    [
+      "1/16",
+      "1/16"
+    ]
+  ],
+  "survival_1": "1/2",
+  "actual_survival_conditioned_joint_2x2": [
+    [
+      "3/8",
+      "3/8"
+    ],
+    [
+      "1/8",
+      "1/8"
+    ]
+  ],
+  "conditioned_initial": [
+    "3/4",
+    "1/4"
+  ],
+  "conditioned_terminal": [
+    "1/2",
+    "1/2"
+  ],
+  "Doob_joint_from_r": [
+    [
+      "3/8",
+      "1/8"
+    ],
+    [
+      "3/8",
+      "1/8"
+    ]
+  ],
+  "Doob_joint_from_tilted_initial": [
+    [
+      "9/16",
+      "3/16"
+    ],
+    [
+      "3/16",
+      "1/16"
+    ]
+  ],
+  "path_TV_to_Doob_from_r": "1/4",
+  "path_TV_to_Doob_from_tilted": "1/4",
+  "H_0_through_H_3": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "3/4",
+      "1/4"
+    ],
+    [
+      "3/8",
+      "1/8"
+    ],
+    [
+      "3/16",
+      "1/16"
+    ]
+  ],
+  "finite_kernel_by_remaining_steps": {
+    "1": [
+      [
+        "1/2",
+        "1/2"
+      ],
+      [
+        "1/2",
+        "1/2"
+      ]
+    ],
+    "2": [
+      [
+        "3/4",
+        "1/4"
+      ],
+      [
+        "3/4",
+        "1/4"
+      ]
+    ],
+    "3": [
+      [
+        "3/4",
+        "1/4"
+      ],
+      [
+        "3/4",
+        "1/4"
+      ]
+    ]
+  },
+  "small_horizon_exact_enumerations": [
+    {
+      "horizon": 1,
+      "safe_path_count": 4,
+      "survival": "1/2",
+      "conditioned_initial": [
+        "3/4",
+        "1/4"
+      ],
+      "conditioned_terminal": [
+        "1/2",
+        "1/2"
+      ],
+      "path_TV_to_tilted_Doob": "1/4"
+    },
+    {
+      "horizon": 2,
+      "safe_path_count": 8,
+      "survival": "1/4",
+      "conditioned_initial": [
+        "3/4",
+        "1/4"
+      ],
+      "conditioned_terminal": [
+        "1/2",
+        "1/2"
+      ],
+      "path_TV_to_tilted_Doob": "1/4"
+    },
+    {
+      "horizon": 3,
+      "safe_path_count": 16,
+      "survival": "1/8",
+      "conditioned_initial": [
+        "3/4",
+        "1/4"
+      ],
+      "conditioned_terminal": [
+        "1/2",
+        "1/2"
+      ],
+      "path_TV_to_tilted_Doob": "1/4"
+    }
+  ],
+  "general_all_horizon_claim": "The accompanying mathematical proof uses Q^2=rho Q; the finite enumerations are checks, not an all-horizon Lean proof.",
+  "Lean_execution": false,
+  "native_execution": false,
+  "repository_modification": false
+}

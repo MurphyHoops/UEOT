@@ -1,0 +1,33 @@
+--- lean-attempt-001/SameSourceQSDBinding.lean
++++ lean-attempt-004/SameSourceQSDBinding.lean
+@@ -70,7 +70,7 @@
+       {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =
+       rho ^ n * (r v).toReal := by
+   rw [actual_survival_terminal_mass_eq_killed_pow, safeInitialRow_map_subtype]
+-  exact leftPerron_pow Q rR rho hleft n v
++  convert leftPerron_pow Q rR rho hleft n v using 1 <;> congr!
+ 
+ /-- Actual total survival, with no positivity assumption on rho. -/
+ theorem actual_qsd_survival_mass
+@@ -79,7 +79,8 @@
+     (nu n).toMeasure.real
+       {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n := by
+   rw [actual_survival_mass_eq_killed_pow_sum, safeInitialRow_map_subtype]
+-  exact qsd_survival_mass_pow Q rR rho (coverage_sum_toReal r) hleft n
++  convert qsd_survival_mass_pow Q rR rho (coverage_sum_toReal r) hleft n using 1 <;>
++    congr!
+ 
+ /-- The actual conditioning event has positive mass when rho is positive. -/
+ theorem actual_qsd_survival_pos
+@@ -168,8 +169,9 @@
+     apply (ENNReal.toReal_eq_toReal_iff'
+       ((normalizedKilledTerminal M q sigma p0 K n hpos).apply_ne_top v)
+       (r.apply_ne_top v)).1
+-    rw [normalizedKilledTerminal_apply_toReal, safeInitialRow_map_subtype,
+-      leftPerron_pow Q rR rho hleft n v,
++    rw [normalizedKilledTerminal_apply_toReal,
++      ← actual_survival_terminal_mass_eq_killed_pow M q sigma p0 K n v,
++      actual_qsd_survival_terminal_mass M q sigma K r rho hleft n v,
+       actual_qsd_survival_mass M q sigma K r rho hleft n]
+     field_simp [hp.ne']
+   rw [actual_conditioned_terminal_eq_normalized_killed_map, hnorm]

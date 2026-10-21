@@ -1,0 +1,98 @@
+--- SameSourceKilledExitFlux_v1.lean
++++ SameSourceKilledExitFlux.lean
+@@ -1,7 +1,11 @@
+ import SameSourceKilledPath
+ 
+ /-!
+-STATIC FINITE-WINDOW PROOF DRAFT — NOT COMPILED, NOT PRODUCTION.
++PRIVATE FINITE-WINDOW SOURCE BRIDGE — NOT A PRODUCTION MODULE.
++
++The original static draft and contract are preserved separately. Actual
++focused compilation status is recorded in the attempt receipts, not certified
++by this source banner.
+ 
+ The source is the same model, initial PMF, observation map and stationary
+ current-observation policy as K1. The prefix identity is proved below
+@@ -11,7 +15,7 @@
+ keeps initial failure separately. Empty K and horizon zero are included.
+ This file contains no infinite-path assertion, Perron assumption,
+ positive-survival condition, normalization of the safe initial row,
+-or new axiom/admitted proof. Proposed proof bodies still require Lean.
++or new axiom/admitted proof.
+ -/
+ 
+ namespace UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck
+@@ -119,16 +123,17 @@
+ local notation "nu" => causalLaw p0 L
+ local notation "Q" => killedMatrix M (liftedStationaryPolicy q sigma) K
+ local notation "eta0" => safeInitialRow p0 K
+-local notation "s" => (fun n => (nu n).toMeasure.real
+-  {h | ¬ riskEverFailure (fun x => x ∉ K) n h})
++local notation "s" => (fun n => Measure.real (PMF.toMeasure (nu n))
++  (Set.ofPred (fun h => ¬ riskEverFailure (fun x => x ∉ K) n h)))
+ local notation "flux" => (fun n => killedExitFlux (rowApply eta0 (Q ^ n)) Q)
+ 
+ /-- K1 followed by the small algebra lemma gives the actual survival drop. -/
+ theorem actual_survival_drop_eq_killedExitFlux (n : ℕ) :
+     s n - s (n + 1) = flux n := by
+-  rw [actual_survival_mass_eq_killed_pow_sum,
+-    actual_survival_mass_eq_killed_pow_sum]
+-  exact killed_pow_mass_drop eta0 Q n
++  dsimp only
++  rw [actual_survival_mass_eq_killed_pow_sum M q sigma p0 K n,
++    actual_survival_mass_eq_killed_pow_sum M q sigma p0 K (n + 1)]
++  convert killed_pow_mass_drop eta0 Q n using 1 <;> congr!
+ 
+ /-- The drop is the mass of an event in the SAME actual (n+1)-step law.
+ Prefix coherence is proved from causalLaw, not supplied as a hypothesis. -/
+@@ -136,15 +141,15 @@
+     (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A := A) K n) =
+       s n - s (n + 1) := by
+   classical
+-  let prefix : Set (CausalHistory X (A × X) (n + 1)) :=
++  let safePrefix : Set (CausalHistory X (A × X) (n + 1)) :=
+     {h | ¬ riskEverFailure (fun x => x ∉ K) n h.1}
+   let stay : Set (CausalHistory X (A × X) (n + 1)) :=
+     {h | ¬ riskEverFailure (fun x => x ∉ K) (n + 1) h}
+   let leave := riskFirstExitAfter (A := A) K n
+-  have hsplit : prefix = stay ∪ leave := by
++  have hsplit : safePrefix = stay ∪ leave := by
+     ext h
+-    simp only [prefix, stay, leave, riskFirstExitAfter,
+-      Set.mem_setOf_eq, Set.mem_union, riskEverFailure, not_or]
++    simp only [safePrefix, stay, leave, riskFirstExitAfter,
++      Set.mem_ofPred_eq, Set.mem_union, riskEverFailure, not_or]
+     tauto
+   have hdisjoint : Disjoint stay leave := by
+     apply Set.disjoint_left.mpr
+@@ -152,13 +157,13 @@
+     change ¬ (riskEverFailure (fun x => x ∉ K) n h.1 ∨ h.2.2 ∉ K) at hs
+     change ¬ riskEverFailure (fun x => x ∉ K) n h.1 ∧ h.2.2 ∉ K at he
+     exact hs (Or.inr he.2)
+-  have hprefix : (nu (n + 1)).toMeasure.real prefix = s n := by
++  have hprefix : (nu (n + 1)).toMeasure.real safePrefix = s n := by
+     exact causalLaw_prefix_event_real p0 L n
+       {h | ¬ riskEverFailure (fun x => x ∉ K) n h}
+   have hadd : s n = s (n + 1) +
+       (nu (n + 1)).toMeasure.real (riskFirstExitAfter (A := A) K n) := by
+     calc
+-      s n = (nu (n + 1)).toMeasure.real prefix := hprefix.symm
++      s n = (nu (n + 1)).toMeasure.real safePrefix := hprefix.symm
+       _ = (nu (n + 1)).toMeasure.real stay +
+           (nu (n + 1)).toMeasure.real leave := by
+         rw [hsplit]
+@@ -227,3 +232,14 @@
+ end ActualSource
+ end
+ end UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck
++
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_prefix_event_real
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_survival_drop
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_first_exit_mass_eq_killedExitFlux
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_killedExitFlux_nonneg
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_survival_zero
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_mass_telescope
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_ever_failure_mass
++#print axioms UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.actual_failure_eq_initial_failure_add_first_exits

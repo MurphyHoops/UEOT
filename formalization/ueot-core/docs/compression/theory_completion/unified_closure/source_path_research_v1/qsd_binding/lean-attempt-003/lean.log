@@ -1,0 +1,107 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean:74:2: error: Type mismatch
+  leftPerron_pow Q (fun v => (r v).toReal) rho hleft n v
+has type
+  rowApply (fun v => (r v).toReal)
+      (@HPow.hPow (Matrix ↑K ↑K ℝ) ℕ (Matrix ↑K ↑K ℝ)
+        (@instHPow (Matrix ↑K ↑K ℝ) ℕ
+          (@NPow.toPow (Matrix ↑K ↑K ℝ)
+            (@Monoid.toNPow (Matrix ↑K ↑K ℝ)
+              (@Semiring.toMonoid (Matrix ↑K ↑K ℝ)
+                (@Matrix.semiring ↑K ℝ Real.semiring (Subtype.fintype (Membership.mem K)) instDecidableEq_uEOT)))))
+        Q n)
+      v =
+    rho ^ n * (r v).toReal
+but is expected to have type
+  rowApply (fun v => (r v).toReal)
+      (@HPow.hPow (Matrix ↑K ↑K ℝ) ℕ (Matrix ↑K ↑K ℝ)
+        (@instHPow (Matrix ↑K ↑K ℝ) ℕ
+          (@NPow.toPow (Matrix ↑K ↑K ℝ)
+            (@Monoid.toNPow (Matrix ↑K ↑K ℝ)
+              (@Semiring.toMonoid (Matrix ↑K ↑K ℝ)
+                (@Matrix.semiring ↑K ℝ Real.semiring (Subtype.fintype (Membership.mem K)) fun a b =>
+                  Subtype.instDecidableEq a b)))))
+        Q n)
+      v =
+    rho ^ n * (r v).toReal
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean:84:2: error: Type mismatch
+  qsd_survival_mass_pow Q (fun v => (r v).toReal) rho (coverage_sum_toReal r) hleft n
+has type
+  ∑ j,
+      rowApply (fun v => (r v).toReal)
+        (@HPow.hPow (Matrix ↑K ↑K ℝ) ℕ (Matrix ↑K ↑K ℝ)
+          (@instHPow (Matrix ↑K ↑K ℝ) ℕ
+            (@NPow.toPow (Matrix ↑K ↑K ℝ)
+              (@Monoid.toNPow (Matrix ↑K ↑K ℝ)
+                (@Semiring.toMonoid (Matrix ↑K ↑K ℝ)
+                  (@Matrix.semiring ↑K ℝ Real.semiring (Subtype.fintype (Membership.mem K)) instDecidableEq_uEOT)))))
+          Q n)
+        j =
+    rho ^ n
+but is expected to have type
+  ∑ v,
+      rowApply (fun v => (r v).toReal)
+        (@HPow.hPow (Matrix ↑K ↑K ℝ) ℕ (Matrix ↑K ↑K ℝ)
+          (@instHPow (Matrix ↑K ↑K ℝ) ℕ
+            (@NPow.toPow (Matrix ↑K ↑K ℝ)
+              (@Monoid.toNPow (Matrix ↑K ↑K ℝ)
+                (@Semiring.toMonoid (Matrix ↑K ↑K ℝ)
+                  (@Matrix.semiring ↑K ℝ Real.semiring (Subtype.fintype (Membership.mem K)) fun a b =>
+                    Subtype.instDecidableEq a b)))))
+          Q n)
+        v =
+    rho ^ n
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean:109:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_KilledQSDGOA`:
+  [MeasurableSpace X]
+  [MeasurableSingletonClass X]
+  [MeasurableSpace A]
+  [MeasurableSingletonClass A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace X] [MeasurableSingletonClass X] [MeasurableSpace A] [MeasurableSingletonClass A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-qsd-binding/SameSourceQSDBinding.lean:119:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_rho_bounds`:
+  [MeasurableSpace X]
+  [MeasurableSingletonClass X]
+  [MeasurableSpace A]
+  [MeasurableSingletonClass A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace X] [MeasurableSingletonClass X] [MeasurableSpace A] [MeasurableSingletonClass A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_terminal_mass' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_rho_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.sameSource_KilledQSDGOA' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_pos_iff' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law_of_survival_pos' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_zero_root_no_filter_witness' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_masses_ofRealRow' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
