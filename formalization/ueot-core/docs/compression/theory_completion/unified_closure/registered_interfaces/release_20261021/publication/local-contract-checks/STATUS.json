@@ -1,0 +1,58 @@
+{
+  "state": "FAIL",
+  "baseline": "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+  "results": [
+    {
+      "label": "compression_static",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/9a8d58b21e30/ueot-interface-canonical-base/formalization/ueot-core/scripts/validate_compression.py",
+        "--repo-root",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration",
+        "--baseline-ref",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.05167608700139681,
+      "log_sha256": "49430402928861d2c2348b0425f59acf147d57b8c4dcae6c3595c5f950a4a84b"
+    },
+    {
+      "label": "unified_contract",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/9a8d58b21e30/ueot-interface-canonical-base/formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py",
+        "--repo-root",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03465226600019378,
+      "log_sha256": "084c44d2151e4c711dd06606abc1957a26ac9072a992fa06b7bf4791ca9fb321"
+    },
+    {
+      "label": "unified_contract_regressions",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/9a8d58b21e30/ueot-interface-canonical-base/formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.0435679349975544,
+      "log_sha256": "583b6b29252b2279c39048ca5f1171dacc17e6c89fa5945763598aaef45c619f"
+    },
+    {
+      "label": "production_proof_escape",
+      "command": [
+        "rg",
+        "-n",
+        "^[[:space:]]*(axiom|opaque)[[:space:]]|\\b(sorry|admit|native_decide)\\b",
+        "formalization/ueot-core/UEOT/V3/Compression"
+      ],
+      "rg_exit_code": 1,
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "Actual base static/contract gates, no remote FINAL event or Lean execution claimed."
+}

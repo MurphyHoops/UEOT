@@ -1,0 +1,1024 @@
+{
+  "status": "PENDING_NATIVE_COMPILATION",
+  "baseline_ref": "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+  "base_snapshot_modules": 659,
+  "registered_prior_theorems": 4094,
+  "prior_overlay_count": 7,
+  "build_environment_sha256": {
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "lakefile.lean": "7f083f896c58e521092721637c067a9bd892c4b2d5185bdd1b99fd5391f25986",
+    "lake-manifest.json": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1"
+  },
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json",
+    "sha256": "2af284000d6a6c25f67e9356a236817b22334dbfba777ca2eaf37e8060a3a45e"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "cc36122dd6d95f2d4c03763769af43f2b6f5aad112c8509edff62d1287303c0a"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "content_sha256": "71a98f27b191c161f8a5a4b89a93ba8bde3afefc207d2d70d7277cf96527bcbb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "content_sha256": "88cfb12b7321a3892ce1d73e38caa84362507f2e61175c665726019eef4b158b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "content_sha256": "0fe9d180c44a7b35784472ecee3a8baee0b6e6464edee85e5dfaa78863c0cbc9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "content_sha256": "eb963f19ae5d0a22a7d6215f7c769becbbd688a1bb5cbc33fa09880368cfa854",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "content_sha256": "f7075995f53cb7a67c3400a4ffad5006227267384f5cc732bd47aaab8124b4b9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "content_sha256": "98972b20af6a18004c428c0905d571922296be8d79695b7201d6518b8e111ee5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean",
+      "content_sha256": "ca182fe7e2367901452451d4adc4dd97b266c190c0194f37e9873baac314a357",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "native_audit_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "content_sha256": "71a98f27b191c161f8a5a4b89a93ba8bde3afefc207d2d70d7277cf96527bcbb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "content_sha256": "88cfb12b7321a3892ce1d73e38caa84362507f2e61175c665726019eef4b158b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "content_sha256": "0fe9d180c44a7b35784472ecee3a8baee0b6e6464edee85e5dfaa78863c0cbc9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "content_sha256": "eb963f19ae5d0a22a7d6215f7c769becbbd688a1bb5cbc33fa09880368cfa854",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "content_sha256": "f7075995f53cb7a67c3400a4ffad5006227267384f5cc732bd47aaab8124b4b9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "content_sha256": "98972b20af6a18004c428c0905d571922296be8d79695b7201d6518b8e111ee5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean",
+      "content_sha256": "ca182fe7e2367901452451d4adc4dd97b266c190c0194f37e9873baac314a357",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.FreeInformationValue",
+      "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+      "content_sha256": "e4375851def0e735d54c7d3f56ba48517040e064073fdc1283a006f1d33c1a87",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "new_public_source_candidates": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.escape_transition_row_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 20,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.factorized_same_policy_path_error",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 39,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_path_error",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 70,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_certified_path_error",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 98,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_microscopic_failure_risk",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 128,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_le_of_event_sub_le",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 29,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_map_eq_of_carrier_traces",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 49,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_some_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 93,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_atom",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 111,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_none_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 116,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_measurable",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 124,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_carrier_trace",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 146,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_atomEncode_eq",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 165,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_map_some",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 179,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_escape_probability",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.pmf_eq_of_eq_except_one",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 206,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_reference_eq",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 232,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_embedded_eq_encoded",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 249,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_eq_of_live_reference_masses",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 279,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.pmfExtend_apply_general",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 296,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.causalLaw_live_history_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 328,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.live_injective",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 22,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.place_five_injective",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.atomEncode_place",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 91,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.reference_encoded",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 102,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.reference_escape_probability",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 112,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.source_reference_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 124,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.recode_seven",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 163,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.references_original_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 176,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.references_encoded_tv_zero",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.infinite_ambient_positive_escape_boundary",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 200,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_comp_general",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 18,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_injective_general",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 35,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap_comp",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 55,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap_injective",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 63,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.map_observationHistoryMap_comp",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 74,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapePolicy_live_history",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 104,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapePolicy_actual_history",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 114,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_micro_control_kernel",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 126,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_deployment_row_law",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 142,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_initial_live_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 158,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_macro_live_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 173,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_reference_live_history_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_path_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 214,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJointCheck.registered_calibration_good_bad_le",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "line": 51,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "line": 90,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_measurable",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 46,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_law",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 52,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_independent",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 59,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.registered_row_calibration",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.product_experiment_calibration",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 118,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean",
+      "line": 39,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    }
+  ],
+  "historical_public_repairs": [
+    {
+      "name": "UEOT.V3.FreeInformationValue.integrable_finset_sup'",
+      "module": "UEOT.V3.FreeInformationValue",
+      "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+      "line": 28,
+      "content_sha256": "e4375851def0e735d54c7d3f56ba48517040e064073fdc1283a006f1d33c1a87",
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "historical_public_repair",
+      "historical_reason": "Frozen lexical declaration regex truncated the trailing apostrophe at a word boundary; the CSV marked the truncated name UNRESOLVED. This is an unchanged historical public theorem, not a new mathematical result."
+    }
+  ],
+  "public_source_candidates": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.escape_transition_row_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 20,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.factorized_same_policy_path_error",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 39,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_path_error",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 70,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_certified_path_error",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 98,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_microscopic_failure_risk",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 128,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_le_of_event_sub_le",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 29,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_map_eq_of_carrier_traces",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 49,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_some_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 93,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_atom",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 111,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_none_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 116,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_measurable",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 124,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_carrier_trace",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 146,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_atomEncode_eq",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 165,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_map_some",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 179,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_escape_probability",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.pmf_eq_of_eq_except_one",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 206,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_reference_eq",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 232,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_embedded_eq_encoded",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 249,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_eq_of_live_reference_masses",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 279,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.pmfExtend_apply_general",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 296,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.causalLaw_live_history_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 328,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.live_injective",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 22,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.place_five_injective",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.atomEncode_place",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 91,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.reference_encoded",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 102,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.reference_escape_probability",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 112,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.source_reference_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 124,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.recode_seven",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 163,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.references_original_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 176,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.references_encoded_tv_zero",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.infinite_ambient_positive_escape_boundary",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 200,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_comp_general",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 18,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_injective_general",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 35,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap_comp",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 55,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap_injective",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 63,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.map_observationHistoryMap_comp",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 74,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapePolicy_live_history",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 104,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapePolicy_actual_history",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 114,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_micro_control_kernel",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 126,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_deployment_row_law",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 142,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_initial_live_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 158,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_macro_live_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 173,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_reference_live_history_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_path_tv",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 214,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJointCheck.registered_calibration_good_bad_le",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "line": 51,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "line": 90,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_measurable",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 46,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_law",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 52,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_independent",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 59,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.registered_row_calibration",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.product_experiment_calibration",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 118,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean",
+      "line": 39,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.FreeInformationValue.integrable_finset_sup'",
+      "module": "UEOT.V3.FreeInformationValue",
+      "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+      "line": 28,
+      "content_sha256": "e4375851def0e735d54c7d3f56ba48517040e064073fdc1283a006f1d33c1a87",
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "historical_public_repair",
+      "historical_reason": "Frozen lexical declaration regex truncated the trailing apostrophe at a word boundary; the CSV marked the truncated name UNRESOLVED. This is an unchanged historical public theorem, not a new mathematical result."
+    }
+  ],
+  "private_source_candidates": [
+    {
+      "name": "private@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary:26:none_ne_some_explicit",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 26,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_private_lexical"
+    },
+    {
+      "name": "private@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary:31:map_injective_atom",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 31,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_private_lexical"
+    },
+    {
+      "name": "private@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary:40:map_some_none",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 40,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_private_lexical"
+    },
+    {
+      "name": "private@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary:44:map_some_some",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 44,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_private_lexical"
+    },
+    {
+      "name": "private@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary:137:recode_injective",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 137,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_private_lexical"
+    },
+    {
+      "name": "private@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary:141:recode_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 141,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_private_lexical"
+    }
+  ],
+  "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "candidate_scope": "52 lexical new source candidates plus one explicit unchanged historical public repair. The frozen fkrg.py parser is not repaired. Native ownership, visibility, types and proof terms confirm all 53. Native axiom enumeration covers every theorem constant in seven new modules and the one historical module. The historical registered graph remains 4094 nodes until additive registration.",
+  "exporter_sha256": "7199f11a14323d68d0dc0049b0551ddd3c0a2663b5275c290779b0df65514ff5"
+}

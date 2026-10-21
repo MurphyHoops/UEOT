@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current seven-layer census is **659 modules = 648 UEOT-maintained + 11
-adapted upstream**, with **4,094 registered public theorem nodes** and
-**5,320 registered direct proof edges**. The layer-by-layer counts below
+The current eight-layer census is **666 modules = 655 UEOT-maintained + 11
+adapted upstream**, with **4,147 registered public theorem nodes** and
+**5,418 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -425,7 +425,7 @@ serialization of a Lean expression.
 | `RegisteredDeploymentRiskWitness` | 26 | 51 |
 | `ViableRegisteredJoint` | 1 | 1 |
 
-The seven overlays now add **301 public nodes and 434 registered edges** to
+The historical seven-overlay state adds **301 public nodes and 434 registered edges** to
 the immutable base, giving **4,094 nodes and 5,320 edges**. The lexical
 corpus has **4,095 candidates**, preserving the historical one-name offset
 rather than rewriting the base registry. The new 17 name-hint groups bring
@@ -592,6 +592,90 @@ unchanged clone scanner on all **659** modules: its result still exactly
 matches the immutable 68 rows. This is local consumer verification, not a
 claim about later production installation, immutable Git objects or remote CI.
 
+### Layer 8 — variable registered samples and arbitrary observation risk
+
+This layer uses the actual canonical policy base
+`86dfbec88c20a9da3c98cd222611aac55cc55f2f`, after governance PR
+[#355](https://github.com/MurphyHoops/UEOT/pull/355) merged. Seven new modules
+extend the source census from 659 to 666. The complete production source
+fingerprint is
+`29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1`.
+The actual full `lake build UEOT` completed successfully (9,372 jobs,
+107.421 seconds). The earlier focused PASS is reused only after equality of
+all 666 source files, three environment files, nine dependency checkouts,
+Lean/Lake binaries and import environment. The interrupted earlier full
+attempt remains an interrupted record.
+
+| Artifact | SHA-256 |
+|---|---|
+| [REGISTERED_INTERFACES_NATIVE_V1.json](REGISTERED_INTERFACES_NATIVE_V1.json) | `75945bbff2e0212a406f27859c68a777bc3deba75b0b8aece66c84236b5e39c1` |
+| [REGISTERED_INTERFACES_REUSE_OVERLAY_V1.json](REGISTERED_INTERFACES_REUSE_OVERLAY_V1.json) | `6667bf7a908d713394e5daae5291c3a82f1ff7b3da144e2addf3da5959d0e781` |
+| [VERIFY_REGISTERED_INTERFACES_OVERLAY_TYPES.lean](VERIFY_REGISTERED_INTERFACES_OVERLAY_TYPES.lean) | `0d3eb26c9471e1701a28652f308c9dd1e1ccac72c0b9ef36eec27c1bc3165d32` |
+
+Both actual Lean executions succeeded and their complete JSON exports agree,
+including types, universe parameters, physical ownership, all proof constants
+and transitive axioms. The native scope covers **92 theorem constants in
+eight physical modules: 53 newly registered public names, 17 private constants
+and 22 other public constants**. Those 22 include previously registered
+declarations and are not all described as generated declarations. All 92
+axiom closures are subsets of `propext`, `Classical.choice`, `Quot.sound`.
+The actual type comparisons are **216,982 across the old 4,094-node registry
+and 1,378 within the 53 registrations**, with zero collisions. Raw stored-type
+comparison retains its earlier limits; it is not semantic equivalence checking.
+
+The 53 registrations consist of **52 new public source declarations and one
+unchanged historical declaration**,
+`UEOT.V3.FreeInformationValue.integrable_finset_sup'`. Its exact trailing
+apostrophe was omitted by the historical lexical registry. This layer repairs
+that name additively with unchanged source bytes and native ownership/type
+evidence; it neither changes the frozen parser nor counts the repair as a new
+mathematical proof. An actual narrow scan of all 4,094 prior proof terms finds
+one direct caller, `UEOT.V3.FreeInformationValue.p_ref_03`. Its old edge set is
+preserved and its one actual edge to the repaired name is added in memory.
+The consumer verifies the complete observed caller set, the prior edge set,
+the native constants and `actual = prior ∪ delta` before changing any row.
+Historical CSVs and the first seven overlay artifacts remain byte-for-byte
+unchanged.
+
+The new registrations contribute **97 outgoing registered edges**; the old
+caller contributes **one separately counted repair edge**. The resulting
+graph has **4,147 nodes and 5,418 edges**. The eight overlays account for
+354 nodes, 531 outgoing edges from their nodes and one repair of an old node.
+The 18 new lexical hint groups bring the cumulative count to 75. The earlier
+independent review of all 18 groups and 39 pairs is bound to the unchanged
+25-file source scope and the actual native results in the
+[completion review](../../unified_closure/registered_interfaces/release_20261021/independent_review/NATIVE_EVIDENCE_REVIEW_2.md).
+Original `PENDING` fields remain historical outputs; the new review records
+their later resolution without rewriting them.
+
+The mathematics keeps the actual experiment and policy throughout:
+
+- Fixed positive row sizes `N j` use true sample coordinates `Σ j, Fin (N j)`.
+  Calibration needs independence within each row and the stated true row law;
+  it does not impose extra independence between rows.
+- Finite microscopic and action types permit arbitrary measurable observation
+  types with measurable singletons. A finite observation image plus one escape
+  atom preserves TV against the same actual source. It does not preserve TV
+  between arbitrary references, nor identify a reference that can exit and
+  return with an absorbing coordinatewise pushforward.
+- The selected fit, actual occupancy cap, event measurability, event envelope
+  and numerical check are all required on the same Good event. With
+  `β ∈ [0,1]`, the actual training–deployment failure is at most
+  `min(1, α_N + (1−α_N)β)`; the bad event is charged once.
+- The viability adapter proves zero uncertified occupancy for its own
+  `viableFamilyPolicy`. This does not imply zero physical failure or infinite
+  survival. Row sizes are fixed before training; no adaptive stopping theorem
+  is claimed.
+
+The [mathematical audit](../../unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md)
+states the full hypotheses, quantifiers, Nat-valued escape counterexample and
+the boundaries of these interfaces. Complete consumer verification passed
+**45 reuse tests and all 30 FKRG tests**, including the real fast audit and
+the unchanged 68-row clone scan over all 666 modules. Actual canonical-base
+parser tests passed separately. Final Git-object preflight, remote checks and
+resulting-main validation retain their own release receipts. No counted
+Core/Compression tier or global scientific-completeness claim is promoted.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -608,16 +692,18 @@ claim about later production installation, immutable Git objects or remote CI.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_REGISTERED_INTERFACES_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  seven governed overlays extend the live census to 659 = 648 + 11.
-- 3,793 immutable-base public source theorem proofs + 301 governed overlay theorem
-  proofs = 4,094 live graph nodes, with 5,320 direct registered-source theorem
+  eight governed overlays extend the live census to 666 = 655 + 11.
+- 3,793 immutable-base public source theorem proofs + 354 governed registrations
+  (including one historical public-name repair) = 4,147 live graph nodes, with
+  5,418 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
+  The eighth adds 97 edges from new registrations and one certified old-node repair.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
   the CLI identifies these as PINNED SNAPSHOT checks, not a fresh proof run.
@@ -634,7 +720,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 659 modules and rejects any difference
+  The current scanner recomputes all 666 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -667,7 +753,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 659-module live source census. It refuses to
+overlay-chain hashes against the exact 666-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

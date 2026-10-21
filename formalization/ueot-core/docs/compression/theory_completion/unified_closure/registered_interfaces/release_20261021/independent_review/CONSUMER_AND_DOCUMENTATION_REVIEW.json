@@ -1,0 +1,260 @@
+{
+  "schema": "UEOT_REGISTERED_INTERFACES_CONSUMER_DOCUMENTATION_REVIEW_V1",
+  "reviewer": "/root/audit_resume",
+  "status": "CLEAR_CONSUMER_AND_DOCUMENTATION_REMOTE_FINAL_GATE_PENDING",
+  "canonical_policy_base": "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+  "observed_candidate_HEAD_before_release_commit": "7eeccd98c84f42a55f9bac1ff71e3204a18e4652",
+  "production_source_fingerprint": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "reviewed_files": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "bytes": 32799,
+      "sha256": "856ae9fb8118cce92ab4727f4e344a82cbc0db8a88a7d23f6358d2ef5fa8ee47"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "bytes": 57864,
+      "sha256": "037f212c6a5a06511bb7daee3239667365355332f665ab8efe23a5a147696492"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "bytes": 3647,
+      "sha256": "29cb880ccdb90ece4578fc6768b595e4408e21b8583d4051c88d0b81dfae3a25"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "bytes": 19028,
+      "sha256": "9ae5e01f7c2c66d172ec3331932f3f75faf8e387bebc86af3b0d640f5c31721f"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "bytes": 51844,
+      "sha256": "07424b83da3b10903aea15c80fa43fac8a6f5d63016cb9b17a33ec47e547380e"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "bytes": 406538,
+      "sha256": "c1be49b4c7ff2f64c9d1625d4f14eb7984d02ef83f9e2f6beb52c32c2700b8ae"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md",
+      "bytes": 16678,
+      "sha256": "76fc44da379f18d16b724f77785e814e157382a0335cdf8c7518ff3b634b847a"
+    }
+  ],
+  "prior_read_only_observation": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/release-audit/CONSUMER_CODE_OBSERVATION_1.json",
+    "bytes": 4125,
+    "sha256": "3e7856b9f7417e1da077dca5c5b83b81c950b70d817766f7c49cbf0f5a4bde90"
+  },
+  "prior_native_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/release-audit/NATIVE_EVIDENCE_REVIEW_2.json",
+    "bytes": 14399,
+    "sha256": "919778dce84e198458e979513c7af2fcf8eef66bff12eba596886c6ade61af4e"
+  },
+  "prior_canonical_policy_review": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/release-audit/CANONICAL_POLICY_REVIEW.json",
+    "bytes": 21820,
+    "sha256": "55832ef16863093666ccd5fb0362fac343bc00fc33ebd401d06049af0cfe56e2"
+  },
+  "code_findings": [
+    "The applied historical-repair implementation is byte-identical to the previously reviewed external candidate; the only other live consumer changes append the eighth pinned registry entry and correct status.source_of_truth display text.",
+    "All four registry arrays retain the first seven entries unchanged. All eight overlay/verifier file digests match the registered values. The frozen EVIDENCE_SHA table and all corresponding immutable evidence bytes are unchanged.",
+    "All three installed native artifacts are byte-exact copies of actual finalizer outputs already independently reviewed. No pending field or original failed output is rewritten.",
+    "Repair validation binds actual native bytes, all required PASS evidence fields, zero type collisions, complete observed old-caller set, historical owner/path/source hash, prior edge set, nonempty disjoint delta, registered historical targets and actual = prior union delta before mutating any in-memory row.",
+    "The consumer cross-checks direct proof constants in the full native census and the narrow 4094-old-proof scan. It rejects unregistered targets, old-edge deletion, invented delta, non-old callers and non-PASS evidence. Existing provenance is retained.",
+    "The exact trailing-apostrophe name UEOT.V3.FreeInformationValue.integrable_finset_sup' is registered with historical-repair role, not counted as new mathematics. The sole actual existing incoming edge is UEOT.V3.FreeInformationValue.p_ref_03 to that name.",
+    "The frozen fkrg.py trailing-word-boundary parser defect is not modified or described as fixed. Frozen CSVs remain unchanged; old-node repair happens only in the authorized additive overlay consumer.",
+    "REBUILD_CLONE_CANDIDATES.py changes only its descriptive docstring; scanner logic is unchanged. The actual complete FKRG suite executes that scanner and preserves all 68 historical rows."
+  ],
+  "graph_arithmetic": {
+    "base_nodes": 3793,
+    "base_edges": 4886,
+    "prior_seven_overlay_nodes": 301,
+    "prior_seven_overlay_edges": 434,
+    "all_overlay_nodes": 354,
+    "all_overlay_outgoing_edges": 531,
+    "existing_old_node_added_edges": 1,
+    "total_nodes": 4147,
+    "total_edges": 5418,
+    "edge_count_equation": "4886 + 434 + 97 + 1 = 5418",
+    "all_edge_targets_registered": true,
+    "dag_added_exact_new7": true,
+    "dag_removed": [],
+    "dag_existing_changed": {
+      "UEOT.V3.Compression.TheoryCompletion": [
+        "bytes",
+        "lines",
+        "imports"
+      ]
+    },
+    "dag_aggregate_lines_correct": true,
+    "dag_aggregate_theorem_tokens_correct": true,
+    "dag_fingerprint_matches_native": true
+  },
+  "scope_counts": {
+    "bundled_modules": 666,
+    "maintained_modules": 655,
+    "adapted_upstream_modules": 11,
+    "prior_registered_public_nodes": 4094,
+    "new_source_public_declarations": 52,
+    "historical_public_name_repairs": 1,
+    "new_registrations": 53,
+    "native_physical_modules": 8,
+    "native_theorem_constants": 92,
+    "native_private_constants": 17,
+    "native_other_public_constants": 22,
+    "actual_cross_type_comparisons": 216982,
+    "actual_internal_type_comparisons": 1378,
+    "actual_type_collisions": 0,
+    "new_registration_outgoing_edges": 97,
+    "existing_old_node_added_edges": 1
+  },
+  "observed_tests": {
+    "reviewer_reran_tests": false,
+    "actual_receipt": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/consumer-checks-1/STATUS.json",
+      "bytes": 1889,
+      "sha256": "f58a541fc51a981b09e275825facb57a3fc60d4b07c0e7675b1ccf281948efc2"
+    },
+    "state": "PASS",
+    "complete_reuse_tests": 45,
+    "complete_FKRG_tests": 30,
+    "all_recorded_log_hashes_match": true,
+    "real_fast_audit_integration": "Read the executed test and actual log: it invokes umc.audit(False), preserves historical receipts byte-for-byte, and does not mock atlas/import/scope/stage/DAG/baseline/writer checks.",
+    "test_delta": "Fourteen prior synthetic repair regressions are unchanged. Three actual integration tests bind source proof routes, all 92 native declarations/97 registration edges and the apostrophe repair/caller edge. Expected counts are updated without removing old tests.",
+    "logs": [
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/consumer-checks-1/complete_reuse_suite.log",
+        "bytes": 6417,
+        "sha256": "38fc47620bcf562d7a057e864c9fd5a45c1189cf7a3f8c38460979cc6e0541ff"
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/consumer-checks-1/complete_fkrg_suite.log",
+        "bytes": 4386,
+        "sha256": "a83f896480e7db71ec5f53258fffff725fe16536bb5924022cd4ebf097a6d2a4"
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/consumer-checks-1/generate_current_dag.log",
+        "bytes": 542,
+        "sha256": "dfc443b82ce5a4ca685585c9b7fcc62524c77ba93538430ecd3a06ac3ac72a7d"
+      },
+      {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/consumer-checks-1/live_reuse_status.log",
+        "bytes": 1803,
+        "sha256": "04b9f8fd3356b6a4a7d69514af1d3efd6b1c7abeffdadeb36432bd449160d9d8"
+      }
+    ]
+  },
+  "post_test_display_delta": {
+    "receipt": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/SOURCE_OF_TRUTH_DISPLAY_DELTA.json",
+      "bytes": 640,
+      "sha256": "0131cde8a12d791fafae22da47188663bc1f0ba11982d09eb03be92221ee1181"
+    },
+    "final_actual_status": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/FINAL_LIVE_REUSE_STATUS.json",
+      "bytes": 1826,
+      "sha256": "026fdb0c666adb9dd825aca1053a2c764efb7b20112ed052a21582d2b404b1fa"
+    },
+    "exact_single_literal_reverse_recovers_tested_hash": true,
+    "final_actual_status_differs_only_in_source_of_truth": true,
+    "logic_inputs_fixtures_unchanged": true,
+    "both_original_bytes_copied_into_release_evidence": true
+  },
+  "documentation_findings": [
+    "Current eight-layer totals and historical seven-layer totals are explicitly distinguished; the final knowledge README edit only changes current to historical in the old seven-layer sentence.",
+    "The audit retains early section 8 as a historical checkpoint and records actual subsequent outcomes in section 9. Old OPEN, rejected, RUNNING and PENDING records are not retroactively converted to PASS.",
+    "All module/node/edge/native/type-comparison counts agree with independently reviewed actual evidence. The 22 other public native constants are not all labeled generated.",
+    "The seven production modules retain finite microscopic/action types, arbitrary measurable observations with measurable singletons and PMF reference rows. Finite-image escape preserves TV against the same actual source, not arbitrary reference-to-reference distinctions or an exit-and-return reference pushforward.",
+    "Fixed positive row sizes are chosen before training, with true registered sample coordinates and within-row independence. No adaptive stopping theorem is claimed.",
+    "Selected fit, actual occupancy cap, measurable event envelope and checked bound use the same Good event, source, selected candidate and deployment policy. Initial distributions may form the preconfigured candidate family initial : C -> PMF X. The original failure event remains fixed.",
+    "The actual mixture budget uses beta in [0,1] and charges the bad event once; the viable adapter proves zero uncertified occupancy for its own synthesized policy. It does not assert zero physical failure or infinite survival.",
+    "The 106 P-ID classification remains 11 generated / 89 adapters / 6 boundaries. Private source/QSD/conditioning developments are not included in these seven production modules or 92 native constants.",
+    "Actual governance merge and local source-bound execution are distinguished from the still-unfinished Core release, Git-object preflight and resulting-main verification. No empirical-world, ethical or scientific-closure claim is promoted."
+  ],
+  "additional_local_gate_evidence": {
+    "receipt": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/local-contract-checks/STATUS.json",
+      "bytes": 2112,
+      "sha256": "0e4d5d2685da5d790b90a87b112f81c2e2d1f4e18e8f30b88ae1da03cdd0f2e9"
+    },
+    "aggregate_state_preserved": "FAIL",
+    "actual_results": [
+      {
+        "label": "compression_static",
+        "command": [
+          "python3",
+          "-B",
+          "/workspace/scratch/9a8d58b21e30/ueot-interface-canonical-base/formalization/ueot-core/scripts/validate_compression.py",
+          "--repo-root",
+          "/workspace/scratch/9a8d58b21e30/ueot-integration",
+          "--baseline-ref",
+          "86dfbec88c20a9da3c98cd222611aac55cc55f2f"
+        ],
+        "exit_code": 1,
+        "elapsed_seconds": 0.05167608700139681,
+        "log_sha256": "49430402928861d2c2348b0425f59acf147d57b8c4dcae6c3595c5f950a4a84b"
+      },
+      {
+        "label": "unified_contract",
+        "command": [
+          "python3",
+          "-B",
+          "/workspace/scratch/9a8d58b21e30/ueot-interface-canonical-base/formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py",
+          "--repo-root",
+          "/workspace/scratch/9a8d58b21e30/ueot-integration"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.03465226600019378,
+        "log_sha256": "084c44d2151e4c711dd06606abc1957a26ac9072a992fa06b7bf4791ca9fb321"
+      },
+      {
+        "label": "unified_contract_regressions",
+        "command": [
+          "python3",
+          "-B",
+          "/workspace/scratch/9a8d58b21e30/ueot-interface-canonical-base/formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.0435679349975544,
+        "log_sha256": "583b6b29252b2279c39048ca5f1171dacc17e6c89fa5945763598aaef45c619f"
+      },
+      {
+        "label": "production_proof_escape",
+        "command": [
+          "rg",
+          "-n",
+          "^[[:space:]]*(axiom|opaque)[[:space:]]|\\b(sorry|admit|native_decide)\\b",
+          "formalization/ueot-core/UEOT/V3/Compression"
+        ],
+        "rg_exit_code": 1,
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "all_recorded_log_hashes_match": true,
+    "scope_receipt": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/LIVE_FINAL_GATE_SCOPE.json",
+      "bytes": 868,
+      "sha256": "894414b422531a76b4426fd224f453d8a72306ae7e2f1957e319390af1627808"
+    },
+    "interpretation": "Unified contract, its regression controls and production source-escape check have actual successful results. The historical Compression validator invocation without --verify-finalization-refs actually exited 1 with FINAL mission state requires live Git/GitHub reference verification; this FAIL is retained and is not reclassified."
+  },
+  "remaining_release_gates": [
+    "The configured canonical GitHub workflow must execute historical FINAL Git/GitHub reference verification using real credentials and return actual PASS before merge. Existing workflow invocation includes --verify-finalization-refs. No response or authorization is mocked.",
+    "Root must execute and bind final candidate Git-object preflight on the actual canonical base after committing the reviewed release contents.",
+    "Core PR remote checks, actual merge and resulting-main source/integration verification retain independent future receipts.",
+    "Root seals the release evidence manifest after copying this review; this review does not claim a final manifest hash or a resulting-main PASS."
+  ],
+  "operations": {
+    "production_writes": false,
+    "Git_or_ref_writes": false,
+    "remote_queries": false,
+    "remote_writes": false,
+    "tests": false,
+    "Lean_build": false,
+    "native_export": false,
+    "review_files_only": true
+  }
+}

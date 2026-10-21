@@ -20,24 +20,26 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 659)
-        self.assertEqual(res["ueot_maintained_modules"], 648)
+        self.assertEqual(res["module_source_hashes_verified"], 666)
+        self.assertEqual(res["ueot_maintained_modules"], 655)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4094)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4147)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 301)
+        self.assertEqual(res["overlay_public_theorems"], 354)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 57)
-        self.assertEqual(res["overlay_count"], 7)
-        self.assertEqual(res["overlay_registered_direct_edges"], 434)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 75)
+        self.assertEqual(res["overlay_count"], 8)
+        self.assertEqual(res["overlay_registered_direct_edges"], 531)
+        self.assertEqual(res["overlay_historical_public_repairs"], 1)
+        self.assertEqual(res["overlay_existing_registered_direct_edge_repairs"], 1)
         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
-                             for row in self.data["graph"].values()), 5320)
+                             for row in self.data["graph"].values()), 5418)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 7)
+        self.assertEqual(len(self.data["overlays"]), 8)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -534,6 +536,99 @@ class ProofReuseTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError, "INVALID_OVERLAY_SOURCE_PATH"):
                     reuse.source_area(bad)
 
+    def test_registered_interfaces_scope_and_same_source_proof_routes(self):
+        current = self.data["overlays"][7]
+        self.assertEqual(current["base_snapshot_modules"], 659)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[6])
+        self.assertEqual(len(current["added_modules"]), 7)
+        self.assertEqual(len(current["public_theorems"]), 53)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["new_source_public_theorem_count"], 52)
+        self.assertEqual(distinct["historical_public_repair_count"], 1)
+        self.assertEqual(distinct["registered_prior_theorems"], 4094)
+        self.assertEqual(distinct["cross_isDefEq_comparisons"], 216982)
+        self.assertEqual(distinct["internal_isDefEq_comparisons"], 1378)
+        self.assertEqual(distinct["new_source_to_historical_repair_isDefEq_comparisons"], 52)
+        self.assertEqual(current["proof_dependency_certification"]["registered_direct_edges"], 97)
+        self.assertEqual(current["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"], 18)
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        viable = reuse.explain(self.data, prefix +
+                              "ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good")
+        self.assertEqual(set(viable["direct_existing_source_theorem_uses"]), {
+            prefix + "SupportViabilityClosure.viablePolicy_zero_uncovered",
+            prefix + "VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good",
+        })
+        joint = reuse.explain(self.data, prefix +
+                             "VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good")
+        self.assertIn(prefix + "ArbitraryObservationRiskCheck.coverage_arbitrary_observation_microscopic_failure_risk",
+                      joint["direct_existing_source_theorem_uses"])
+        self.assertIn(prefix + "selectedTrainingDeployment_failure_le",
+                      joint["direct_existing_source_theorem_uses"])
+        path = reuse.explain(self.data, prefix +
+                            "ArbitraryObservationRiskCheck.factorized_same_policy_path_error")
+        self.assertIn(prefix + "coverage_same_policy_path_error",
+                      path["direct_existing_source_theorem_uses"])
+        self.assertIn(prefix + "PathObservationEscapeCheck.escape_path_tv",
+                      path["direct_existing_source_theorem_uses"])
+
+    def test_registered_interfaces_full_native_owner_axiom_and_edge_binding(self):
+        current = self.data["overlays"][7]
+        evidence = current["native_export_evidence"]
+        artifact = reuse.REPO / evidence["path"]
+        self.assertEqual(reuse.sha256(artifact.read_bytes()).hexdigest(),
+                         "75945bbff2e0212a406f27859c68a777bc3deba75b0b8aece66c84236b5e39c1")
+        self.assertEqual(evidence["sha256"], reuse.sha256(artifact.read_bytes()).hexdigest())
+        native = json.loads(artifact.read_text())
+        scope = native["all_native_theorem_constants"]
+        public = native["public_source_theorems"]
+        self.assertEqual(native["collisions"], [])
+        self.assertEqual(len(scope), 92)
+        self.assertEqual(sum(row["is_private"] for row in scope), 17)
+        self.assertEqual(len({row["source_module"] for row in scope}), 8)
+        self.assertEqual(len(public), 53)
+        fields = {"name", "source_module", "is_private", "level_parameters", "type",
+                  "direct_constants", "direct_theorem_constants", "axioms"}
+        by_name = {row["name"]: row for row in scope}
+        self.assertEqual(len(by_name), len(scope))
+        registered_names = set(self.data["graph"])
+        for row in scope:
+            with self.subTest(symbol=row["name"]):
+                self.assertTrue(fields <= row.keys())
+                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
+        overlay_public = {row["name"]: row for row in current["public_theorems"]}
+        self.assertEqual(set(overlay_public), {row["name"] for row in public})
+        for row in public:
+            with self.subTest(public_symbol=row["name"]):
+                full = by_name[row["name"]]
+                self.assertFalse(full["is_private"])
+                self.assertEqual(row["source_module"], full["source_module"])
+                actual = (set(full["direct_constants"]) & registered_names) - {row["name"]}
+                self.assertEqual(set(overlay_public[row["name"]]["source_theorem_deps"]), actual)
+        self.assertEqual(sum(len(row["source_theorem_deps"]) for row in overlay_public.values()), 97)
+
+    def test_historical_apostrophe_registration_and_existing_incoming_edge(self):
+        current = self.data["overlays"][7]
+        helper = "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
+        caller = "UEOT.V3.FreeInformationValue.p_ref_03"
+        self.assertEqual({row["name"] for row in current["historical_public_repairs"]}, {helper})
+        self.assertEqual(reuse.explain(self.data, helper)["role"],
+                         "HISTORICAL_PUBLIC_DECLARATION_REPAIR_UNCOUNTED")
+        self.assertEqual(reuse.explain(self.data, caller)["direct_existing_source_theorem_uses"], [helper])
+        self.assertIn(caller, self.data["incoming"][helper])
+        repairs = current["existing_proof_dependency_repairs"]
+        self.assertEqual(len(repairs), 1)
+        self.assertEqual(repairs[0]["name"], caller)
+        self.assertEqual(repairs[0]["prior_source_theorem_deps"], [])
+        self.assertEqual(repairs[0]["added_source_theorem_deps"], [helper])
+        self.assertEqual(repairs[0]["actual_source_theorem_deps"], [helper])
+        cert = current["existing_proof_dependency_repair_certification"]
+        self.assertEqual(cert["registered_theorems_scanned"], 4094)
+        self.assertEqual(cert["added_registered_direct_edges"], 1)
+        historical = reuse.read_csv(reuse.AUDIT / "all_3793_theorem_direct_reuse_graph.csv")
+        historical_caller = next(row for row in historical if row["name"] == caller)
+        self.assertEqual(json.loads(historical_caller["source_theorem_deps_json"]), [])
+        self.assertFalse(any(row["name"] == helper for row in historical))
+
     def test_native_risk_scope_is_larger_than_public_source_graph(self):
         current = self.data["overlays"][3]
         evidence = current["native_export_evidence"]
@@ -677,7 +772,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 659)
+        self.assertEqual(len(live), 666)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):
@@ -697,6 +792,194 @@ class ProofReuseTests(unittest.TestCase):
                 self.fail("compiler ran before source preflight")
             with self.assertRaisesRegex(RuntimeError, "STALE_ORIGINAL_SOURCE"):
                 bridge.run(compilation=fail_compiler)
+
+
+class AdditiveHistoricalRepairTests(unittest.TestCase):
+    """Synthetic structure checks; these fixtures are not Lean/native evidence."""
+
+    def setUp(self):
+        from hashlib import sha256
+        from tempfile import TemporaryDirectory
+        self.temporary = TemporaryDirectory(prefix="synthetic-repair-", dir=HERE)
+        self.addCleanup(self.temporary.cleanup)
+        self.repo = Path(self.temporary.name)
+        self.owner = "UEOT.V3.SyntheticRepairFixture"
+        self.path = "formalization/ueot-core/UEOT/V3/SyntheticRepairFixture.lean"
+        source = self.repo / self.path
+        source.parent.mkdir(parents=True)
+        source.write_text("-- SYNTHETIC UNIT FIXTURE ONLY: no Lean theorem is asserted.\n")
+        self.source_sha = sha256(source.read_bytes()).hexdigest()
+        self.old = self.owner + ".old"
+        self.prior = self.owner + ".priorDependency"
+        self.helper = self.owner + ".historicalHelper'"
+        self.fresh = "UEOT.V3.SyntheticNewFixture.fresh"
+        self.prior_names = {self.old, self.prior}
+        self.prior_modules = {self.path:{"path":self.path, "module":self.owner,
+                                        "content_sha256":self.source_sha}}
+        def graph_row(name, deps, line):
+            return {"name":name,"path":self.path,"line":str(line),
+                    "source_theorem_deps_json":json.dumps(deps),
+                    "direct_existing_source_theorem_deps":str(len(deps)),
+                    "all_direct_project_scoped_constants":"2"}
+        self.rows = [graph_row(self.old,[self.prior],2),graph_row(self.prior,[],3),
+                     graph_row(self.helper,[],4),graph_row(self.fresh,[self.old],5)]
+        self.overlay = {
+            "overlay_id":"SYNTHETIC_STRUCTURE_ONLY",
+            "source_checkpoint":"SYNTHETIC_STRUCTURE_ONLY",
+            "public_theorems":[
+                {"name":self.helper,"path":self.path,"line":4,
+                 "registration_kind":"historical_public_repair","source_theorem_deps":[]},
+                {"name":self.fresh,"path":self.path,"line":5,
+                 "registration_kind":"new_source_public","source_theorem_deps":[self.old]}],
+            "historical_public_repairs":[
+                {"name":self.helper,"path":self.path,"module":self.owner,
+                 "content_sha256":self.source_sha}],
+            "existing_proof_dependency_repairs":[
+                {"name":self.old,"path":self.path,"line":2,"source_module":self.owner,
+                 "content_sha256":self.source_sha,"prior_source_theorem_deps":[self.prior],
+                 "added_source_theorem_deps":[self.helper],
+                 "actual_source_theorem_deps":[self.prior,self.helper]}],
+            "type_distinctness":{"status":"PASS","definitionally_equal_matches":0},
+            "native_axiom_census":{"status":"PASS"},
+            "proof_dependency_certification":{"status":"PASS","registered_direct_edges":1},
+            "historical_public_repair_certification":{
+                "status":"PASS","historical_registered_base":2,
+                "historical_public_repairs":1,"new_source_public_theorems":1},
+            "existing_proof_dependency_repair_certification":{
+                "status":"PASS","registered_theorems_scanned":2,
+                "historical_public_repair_targets":[self.helper],
+                "repaired_existing_nodes":1,"added_registered_direct_edges":1},
+            "lexical_pr_preflight":{"new_theorems_with_lexical_reuse_candidates":0},
+        }
+        self.native = {
+            "schema":"REGISTERED_INTERFACES_NATIVE_EXPORT_V1","collisions":[],
+            "registered_prior_theorems":2,
+            "public_source_theorems":[
+                {"name":self.helper,"registration_kind":"historical_public_repair","source_module":self.owner},
+                {"name":self.fresh,"registration_kind":"new_source_public","source_module":self.owner}],
+            "all_native_theorem_constants":[
+                {"name":self.helper,"source_module":self.owner,"is_private":False},
+                {"name":self.old,"source_module":self.owner,"direct_constants":[self.prior,self.helper]}],
+            "historical_repair_incoming_scan":{
+                "registered_theorems_scanned":2,"historical_public_repair_targets":[self.helper],
+                "incoming_rows":[{"name":self.old,"source_module":self.owner,
+                    "direct_constants":[self.prior,self.helper],"historical_repair_deps":[self.helper],
+                    "actual_source_theorem_deps":[self.prior,self.helper]}]},
+        }
+        self.native_path = "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SYNTHETIC_STRUCTURE_ONLY.json"
+        (self.repo / self.native_path).parent.mkdir(parents=True)
+        self.bind_native()
+
+    def bind_native(self):
+        from hashlib import sha256
+        artifact = self.repo / self.native_path
+        artifact.write_text(json.dumps(self.native))
+        self.overlay["native_export_evidence"] = {
+            "path":self.native_path,"sha256":sha256(artifact.read_bytes()).hexdigest()}
+
+    def apply(self):
+        reuse.apply_existing_proof_dependency_repairs(
+            self.rows,self.overlay,self.prior_names,self.prior_modules,repo=self.repo)
+
+    def test_additive_repair_preserves_prior_edges_and_separate_counts(self):
+        self.apply()
+        self.assertEqual(set(json.loads(self.rows[0]["source_theorem_deps_json"])),
+                         {self.prior,self.helper})
+        self.assertEqual(self.rows[0]["direct_existing_source_theorem_deps"],"2")
+        self.assertEqual(self.rows[0]["all_direct_project_scoped_constants"],"2")
+        self.assertEqual(self.rows[0]["additive_dependency_repair_provenance"][0][
+            "prior_source_theorem_deps"],[self.prior])
+        data = {"overlays":[self.overlay],"modules":[],
+                "graph":{r["name"]:r for r in self.rows},"groups":[],"duplicates":{},
+                "near":[],"clones":[]}
+        summary = reuse.status(data)
+        self.assertEqual(summary["overlay_registered_direct_edges"],1)
+        self.assertEqual(summary["overlay_existing_registered_direct_edge_repairs"],1)
+        self.assertEqual(summary["overlay_historical_public_repairs"],1)
+
+    def test_repair_rejects_prior_edge_deletion(self):
+        self.overlay["existing_proof_dependency_repairs"][0]["prior_source_theorem_deps"] = []
+        with self.assertRaisesRegex(RuntimeError,"PRIOR_EDGE_MISMATCH"):
+            self.apply()
+        self.assertEqual(json.loads(self.rows[0]["source_theorem_deps_json"]),[self.prior])
+
+    def test_repair_rejects_missing_prior_edge_in_actual_proof(self):
+        self.native["historical_repair_incoming_scan"]["incoming_rows"][0]["actual_source_theorem_deps"] = [self.helper]
+        self.bind_native()
+        with self.assertRaisesRegex(RuntimeError,"ACTUAL_PROOF_EDGE_MISMATCH"):
+            self.apply()
+
+    def test_repair_rejects_fake_delta_absent_from_native_constants(self):
+        self.native["historical_repair_incoming_scan"]["incoming_rows"][0]["direct_constants"] = [self.prior]
+        self.bind_native()
+        with self.assertRaisesRegex(RuntimeError,"FALSE_OR_NONADDITIVE_DELTA"):
+            self.apply()
+
+    def test_repair_rejects_delta_outside_historical_targets(self):
+        self.overlay["existing_proof_dependency_repairs"][0]["added_source_theorem_deps"] = [self.fresh]
+        with self.assertRaisesRegex(RuntimeError,"FALSE_OR_NONADDITIVE_DELTA"):
+            self.apply()
+
+    def test_repair_rejects_nonprevious_caller(self):
+        self.overlay["existing_proof_dependency_repairs"][0]["name"] = self.fresh
+        self.native["historical_repair_incoming_scan"]["incoming_rows"][0]["name"] = self.fresh
+        self.bind_native()
+        with self.assertRaisesRegex(RuntimeError,"CALLER_NOT_PREVIOUSLY_REGISTERED"):
+            self.apply()
+
+    def test_repair_rejects_source_hash_mismatch(self):
+        self.overlay["existing_proof_dependency_repairs"][0]["content_sha256"] = "0" * 64
+        with self.assertRaisesRegex(RuntimeError,"SOURCE_HASH_MISMATCH"):
+            self.apply()
+
+    def test_repair_rejects_actual_source_byte_drift(self):
+        (self.repo / self.path).write_text("-- changed synthetic source bytes\n")
+        with self.assertRaisesRegex(RuntimeError,"SOURCE_HASH_MISMATCH"):
+            self.apply()
+
+    def test_repair_rejects_unregistered_target(self):
+        self.rows = [row for row in self.rows if row["name"] != self.helper]
+        with self.assertRaisesRegex(RuntimeError,"UNREGISTERED_TARGET"):
+            self.apply()
+
+    def test_repair_rejects_pending_proof_status(self):
+        keys = ("type_distinctness","proof_dependency_certification","native_axiom_census",
+                "historical_public_repair_certification","existing_proof_dependency_repair_certification")
+        for key in keys:
+            with self.subTest(key=key):
+                self.overlay[key]["status"] = "PENDING"
+                with self.assertRaisesRegex(RuntimeError,"REPAIR_NOT_CERTIFIED"):
+                    self.apply()
+                self.overlay[key]["status"] = "PASS"
+
+    def test_repair_rejects_changed_native_artifact_hash(self):
+        self.overlay["native_export_evidence"]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(RuntimeError,"NATIVE_EVIDENCE_DRIFT"):
+            self.apply()
+
+    def test_repair_rejects_unapplied_actual_incoming_caller(self):
+        extra = dict(self.native["historical_repair_incoming_scan"]["incoming_rows"][0])
+        extra["name"] = self.prior
+        self.native["historical_repair_incoming_scan"]["incoming_rows"].append(extra)
+        self.bind_native()
+        with self.assertRaisesRegex(RuntimeError,"INCOMING_CALLER_SET_MISMATCH"):
+            self.apply()
+
+    def test_repair_rejects_wrong_owner_and_duplicate_caller(self):
+        self.overlay["existing_proof_dependency_repairs"][0]["source_module"] = "Wrong.Owner"
+        with self.assertRaisesRegex(RuntimeError,"CALLER_OWNER_MISMATCH"):
+            self.apply()
+        self.overlay["existing_proof_dependency_repairs"][0]["source_module"] = self.owner
+        self.overlay["existing_proof_dependency_repairs"].append(
+            dict(self.overlay["existing_proof_dependency_repairs"][0]))
+        with self.assertRaisesRegex(RuntimeError,"INVALID_NAME_LIST"):
+            self.apply()
+
+    def test_legacy_overlay_without_repairs_is_unchanged(self):
+        before = json.dumps(self.rows,sort_keys=True)
+        reuse.apply_existing_proof_dependency_repairs(
+            self.rows,{},self.prior_names,self.prior_modules,repo=self.repo)
+        self.assertEqual(json.dumps(self.rows,sort_keys=True),before)
 
 
 if __name__ == "__main__":

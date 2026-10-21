@@ -4,7 +4,7 @@
 
 ## 1. 当前状态与验收对象
 
-当前七个生产候选已经写入公开 import 根，并在锁定环境中实际完成七模块聚焦构建：退出码为 0，日志记录 8775 个成功构建任务。完整 `lake build UEOT` 仍在执行；native 公理与类型检查、完整 FKRG、canonical 基线授权、PR 和 resulting-main 状态分别等待实际收据。本页的书面推导与独立静态审查不能代替那些收据。
+当前七个生产候选已经写入公开 import 根，并实际通过七模块聚焦构建、完整 `lake build UEOT`、两次完整 native 导出及其独立审查。获授权消费者已实际安装，45 项 reuse 测试与完整 FKRG 的 30 项测试通过，后者包含真实 fast-audit。治理 PR #355 已实际合并，真实 canonical `86dfbec` 的授权与 89 项 base parser tests 另有收据。最终 Git 对象、Core PR 与合并后 main 验证仍各自等待对应发布收据；本页不把本地 PASS 写成 resulting-main PASS。最新证据见第 9 节，第 8 节保留较早历史检查点。
 
 | 模块 | 实际数学责任 |
 |---|---|
@@ -119,9 +119,9 @@ MINCORE 的表示与可比较缺陷、H0 的实际动力学与评价条件、P-I
 
 源码构建身份须包括完整生产树、所有锁定依赖的实际提交及干净状态、三个环境文件、实际 Lean/Lake 版本与二进制，不能只核对新增七个文件。公理与类型导出另行绑定完整原生声明和实际执行日志；旧 PENDING 字段、原始失败日志均保留。
 
-新增消费者例外由独立治理 PR [#355](https://github.com/MurphyHoops/UEOT/pull/355) 提供；它实际进入 main 前，候选不能自行授权。完整 `knowledge/test_fkrg.py`、真实 canonical 基线授权、base parser tests、Git-object preflight、合并后 main 验证各自保留独立状态。完成其中一项不替代其余门槛。
+新增消费者例外由已实际合并的独立治理 PR [#355](https://github.com/MurphyHoops/UEOT/pull/355) 提供，真实 resulting main 为 `86dfbec88c20a9da3c98cd222611aac55cc55f2f`。候选的六个既有消费者由该实际基线代码和精确路径授权，候选没有修改自己的政策。完整 `knowledge/test_fkrg.py`、真实 canonical 基线授权、base parser tests、Git-object preflight、合并后 main 验证各自保留独立状态。完成其中一项不替代其余门槛。
 
-## 8. 2026-10-21 本地证据检查点
+## 8. 2026-10-21 早期历史检查点（后续完成状态见第 9 节）
 
 完整本地执行记录、原始失败及独立审查位于 [registered_interfaces/](registered_interfaces/)。当前可确认的门槛是：
 
@@ -144,3 +144,32 @@ MINCORE 的表示与可比较缺陷、H0 的实际动力学与评价条件、P-I
 PR #355 的 head 仍为 `6777a727c1df0618ef7d52800e3528c37e7c48d4`，仍 OPEN。一次摘要读取报告不可合并，随后直接 PR API 返回 true／clean，实际 Git 对象合并无冲突；这些读取分别保留。上次合并调用明确返回 `user rejected MCP tool call`，本检查点没有通过另一写入渠道重试该动作。
 
 统一目标、分阶段任务、假设与既有成熟桥的详细回顾见 [下一阶段计划](registered_interfaces/research/derivations/UEOT_CORE_UNIFICATION_NEXT_2026-10-21.md) 和 [Core 桥接矩阵](registered_interfaces/research/audits/CORE_BRIDGE_MATRIX_2026-10-21.md)。它们保留数学研究的优先地位；构建、目录和发布记录只用于保证所述结果与实际对象一致。
+
+## 9. 实际 canonical 基线上的构建、原生与集成完成记录
+
+用户再次明确授权合并后，#355 已实际合入 `86dfbec`。只重放原 Core 的源码与文档两项提交，得到源码提交 `d69b182` 和文档提交 `7eeccd9`；整份重放补丁与原两项提交逐字节相同。实际 main 的 QM／physics 树完整保留。
+
+第 8 轮旧 full 日志中断，没有被改成成功。第 9 轮在确认完整身份相等后复用原 focused PASS，并使用既有缓存实际执行 `lake build UEOT`：退出码 0，9,372 个任务，107.421 秒。完整生产树摘要为 `29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1`；所有 666 个源文件、三个环境文件、九个实际依赖以及 Lean/Lake 运行时在执行前后保持一致。
+
+首次原生导出与独立 fixed verifier 均实际退出 0，并比较全部 JSON 字段。实际结果为：
+
+| 范围 | 实际结果 |
+|---|---:|
+| 新增公开源声明 | 52 |
+| 既有公开名称补登 | 1 |
+| 新注册节点 | 53 |
+| 完整物理模块 | 7 新模块＋1 旧模块 |
+| 完整 native theorem constants | 92＝53 新注册公开＋17 private＋22 其余公开 |
+| 对旧 4,094 节点的类型比较 | 216,982 |
+| 53 个注册对象的内部类型比较 | 1,378 |
+| 实际类型碰撞 | 0 |
+| 新注册节点的直接注册证明边 | 97 |
+| 旧节点的增量修复边 | 1 |
+
+全部 92 项公理闭包仅为标准 `propext`、`Classical.choice`、`Quot.sound` 的子集。其余 22 个公开常量包括既有注册声明，不全部称为生成项。完整 native 摘要为 `75945bbff2e0212a406f27859c68a777bc3deba75b0b8aece66c84236b5e39c1`。
+
+对全部 4,094 个旧证明的真实窄扫描恰好找到 `p_ref_03` 引用完整尾撇号名称 `integrable_finset_sup'`。消费者先验证 native 引用集合、旧源身份及 `actual = prior ∪ delta`，再在内存图中增加这条边；没有改写冻结 CSV、旧 parser 或旧七层证据。当前图为 666 模块＝655 维护＋11 改编上游、4,147 公开节点、5,418 条注册直接边。106 P-ID 分类仍为 11 generated／89 adapters／6 boundaries。
+
+原 18 组、39 对提示和 25 个语义受审文件均保持相同，新[独立完成收据](registered_interfaces/release_20261021/independent_review/NATIVE_EVIDENCE_REVIEW_2.md) 将此前静态 CLEAR 绑定到实际原生结果。原 `PENDING`、首轮尚待 fixed 的状态及所有失败日志保持原样。
+
+完整执行证据见 [release_20261021/](registered_interfaces/release_20261021/)，其中保存真实 canonical 授权、base parser tests、两次原生日志、完整构建身份与独审，以及安装消费者后的 45 项 reuse 和 30 项完整 FKRG PASS。最新 source DAG 与全部 666 模块一致；克隆扫描仍精确复现冻结的 68 行。最终 Git-object preflight、PR 与 resulting-main 验证继续由后续发布收据记录，不将该本地检查点视为它们已完成。

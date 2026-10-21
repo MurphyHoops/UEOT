@@ -1,0 +1,53 @@
+{
+  "state": "PASS",
+  "actual_origin_main": "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+  "pid": 2,
+  "results": [
+    {
+      "label": "generate_current_dag",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/build_umc_global_map.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.2655069430002186,
+      "log_sha256": "dfc443b82ce5a4ca685585c9b7fcc62524c77ba93538430ecd3a06ac3ac72a7d"
+    },
+    {
+      "label": "complete_reuse_suite",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.8188937589984562,
+      "log_sha256": "38fc47620bcf562d7a057e864c9fd5a45c1189cf7a3f8c38460979cc6e0541ff"
+    },
+    {
+      "label": "complete_fkrg_suite",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.9369836960031535,
+      "log_sha256": "a83f896480e7db71ec5f53258fffff725fe16536bb5924022cd4ebf097a6d2a4"
+    },
+    {
+      "label": "live_reuse_status",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "--json",
+        "status"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.1668824529988342,
+      "log_sha256": "04b9f8fd3356b6a4a7d69514af1d3efd6b1c7abeffdadeb36432bd449160d9d8"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "state": "PASS_ACTUAL_CANONICAL_AUTHORIZATION",
+  "canonical_base": "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+  "branch": "compression/theory-completion-registered-interfaces",
+  "track": "TC",
+  "authorized_existing_paths": [
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
+  ],
+  "validator_code_sha256": "01020dfa2f7bcda1959a945979ed5d9c138d347717f61da2e437d645d5596205",
+  "policy_blob_sha256": "081c224ff4a9ba553297e1615cd1558bc1540524ed8241815f9470e6e98a9f70",
+  "executed_functions": [
+    "load_json_at_ref(actual_base)",
+    "validate_static(actual_base_config, actual_base_ledger)",
+    "l2_existing_path_exceptions_for_branch(actual_base_config, TC, actual_branch)"
+  ],
+  "scope": "Executed actual baseline code and policy. This permits exactly these existing consumers; it does not certify final candidate changes, native evidence or full FKRG."
+}

@@ -1,0 +1,50 @@
+{
+  "state": "PASS",
+  "pid": 55216,
+  "results": [
+    {
+      "label": "new_modules",
+      "exit_code": 0,
+      "elapsed_seconds": 16.762755866002408,
+      "command": [
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+        "build",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary"
+      ],
+      "log_sha256": "761f039a5bb047b0a53005e73e64d59a39a78507827b943f438bab6bf3d9769d"
+    },
+    {
+      "label": "full_ueot",
+      "exit_code": 0,
+      "elapsed_seconds": 107.4207416850004,
+      "command": [
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+        "build",
+        "UEOT"
+      ],
+      "log_sha256": "302aeec6d592ce0ba7cfd3c6efc36ac8205176fcef240074475aa6328805f497"
+    }
+  ],
+  "runtime_platform": "Linux",
+  "runtime_environment": {
+    "LEAN_NUM_THREADS": "1"
+  },
+  "scope": "Actual incremental full build after interrupted process. Prior focused PASS is reused only after exact complete-source, dependency and runtime identity equality. Not resulting-main validation.",
+  "reused_focused_build_evidence": {
+    "original_directory": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-8",
+    "original_status_sha256": "dd3e5b262403077fbebd378fc01e9eb2f232b5098472977fd89b035ff259ab1f",
+    "original_source_manifest_sha256": "47b089acd78085c3d3ba4871d981f841064943cddde4487046f65a3addd638e1",
+    "original_log_sha256": "761f039a5bb047b0a53005e73e64d59a39a78507827b943f438bab6bf3d9769d",
+    "complete_identity_matches_before_resume": true,
+    "note": "The focused result is the original real execution; it was not run again or relabeled as a new execution."
+  },
+  "source_manifest_sha256": "04acfa12f4b43154cbf1701834aadd459b1647730f789cdff2eccc6436e96b7c",
+  "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "complete_identity_matches_after_resume": true
+}
