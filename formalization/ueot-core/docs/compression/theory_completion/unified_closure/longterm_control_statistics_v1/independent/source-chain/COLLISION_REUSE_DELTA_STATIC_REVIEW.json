@@ -1,0 +1,26 @@
+{
+  "status": "STATIC_COLLISION_REUSE_DELTA_CLEAR",
+  "base": "ff71e63256c88ad2bb527fdd3004d55c77894ab7",
+  "previous_review": "FINAL_SOURCE_STATIC_REVIEW.json (91 candidates, preserved unchanged)",
+  "source_tree_sha256": "524043e8dc68989961ca73270f574d3cabc1e6b94c8caabd2da773fc0077a00d",
+  "matches_root_reported_new_fingerprint": true,
+  "module_count": 678,
+  "new_public_theorem_count": 90,
+  "expected_cross_type_comparisons": 373230,
+  "expected_internal_type_comparisons": 4005,
+  "changed_added_modules": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean"
+  ],
+  "unchanged_other_added_module_count": 11,
+  "new_module_sha256": "92f1dfc345003ae83d986c0a2486420700701e08ec8fa0668b67d8598ca046c9",
+  "manifest_hash_matches": true,
+  "exact_archive_code_after_declared_transform_equal": true,
+  "transformation": [
+    "Import SameSourceConditionedTerminal instead of SameSourceKilledPath (transitively retained).",
+    "Delete redundant public actual_survival_zero.",
+    "Replace its sole telescope use by the same-source canonical SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero."
+  ],
+  "mathematical_assumptions_and_remaining_theorems_unchanged": true,
+  "remaining_time_zero_identity": "SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero",
+  "scope": "Static delta only; actual full03/native02 to bind the new source. No observed native count or collision-free result is claimed."
+}

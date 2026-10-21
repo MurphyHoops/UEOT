@@ -1,0 +1,70 @@
+[
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout": "ff71e63256c88ad2bb527fdd3004d55c77894ab7\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "169274e14873a27a1ef68523a5473889af0f2c2c",
+      "ff71e63256c88ad2bb527fdd3004d55c77894ab7"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--quiet",
+      "169274e14873a27a1ef68523a5473889af0f2c2c",
+      "ff71e63256c88ad2bb527fdd3004d55c77894ab7"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/ops/compression-longterm-policy-sisc-evidence"
+    ],
+    "exit_code": 0,
+    "stdout": "169274e14873a27a1ef68523a5473889af0f2c2c\trefs/heads/ops/compression-longterm-policy-sisc-evidence\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "push",
+      "--force-with-lease=refs/heads/ops/compression-longterm-policy-sisc-evidence:169274e14873a27a1ef68523a5473889af0f2c2c",
+      "origin",
+      ":refs/heads/ops/compression-longterm-policy-sisc-evidence"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "To https://github.com/MurphyHoops/UEOT.git\n - [deleted]           ops/compression-longterm-policy-sisc-evidence\n"
+  },
+  {
+    "command": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/ops/compression-longterm-policy-sisc-evidence"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

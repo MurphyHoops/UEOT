@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "source_tree_sha256": "60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 666,
-  "total_source_lines": 120408,
-  "total_theorem_lemma_tokens": 4351,
+  "total_Lean_modules": 678,
+  "total_source_lines": 122950,
+  "total_theorem_lemma_tokens": 4458,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 67
+    "UMC_New_Bridges": 79
   },
-  "reachable_from_UEOT_root": 666,
+  "reachable_from_UEOT_root": 678,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -26,11 +26,15 @@
       "direct_dependents": 11
     },
     {
+      "module": "UEOT.V3.CoreOperationalAssembly",
+      "direct_dependents": 10
+    },
+    {
       "module": "UEOT.V3.PathError",
       "direct_dependents": 10
     },
     {
-      "module": "UEOT.V3.CoreOperationalAssembly",
+      "module": "UEOT.V3.DynamicsKernel",
       "direct_dependents": 9
     },
     {
@@ -50,7 +54,7 @@
       "direct_dependents": 8
     },
     {
-      "module": "UEOT.V3.DynamicsKernel",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
       "direct_dependents": 8
     },
     {
@@ -86,7 +90,7 @@
       "direct_dependents": 7
     },
     {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "module": "UEOT.V3.FiniteDiscountedApproxQuotient",
       "direct_dependents": 7
     },
     {
@@ -96,6 +100,10 @@
     {
       "module": "UEOT.V3.InformationCore",
       "direct_dependents": 7
+    },
+    {
+      "module": "UEOT.V3.BoundedLossTwoSided",
+      "direct_dependents": 6
     },
     {
       "module": "UEOT.V3.Compression.Objecthood.FormedParentSelfRepairSynthesis",
@@ -111,10 +119,6 @@
     },
     {
       "module": "UEOT.V3.Compression.TransportCertificate",
-      "direct_dependents": 6
-    },
-    {
-      "module": "UEOT.V3.FiniteDiscountedApproxQuotient",
       "direct_dependents": 6
     },
     {
@@ -143,10 +147,6 @@
     },
     {
       "module": "UEOT.Core.Blocker",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.BoundedLossTwoSided",
       "direct_dependents": 5
     },
     {
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 67
+      "edges": 79
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -331,22 +331,22 @@
     {
       "from": "UMC_New_Bridges",
       "to": "C1_C7_SISC",
-      "edges": 17
+      "edges": 19
     },
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 22
+      "edges": 28
     },
     {
       "from": "UMC_New_Bridges",
       "to": "Objecthood",
-      "edges": 1
+      "edges": 2
     },
     {
       "from": "UMC_New_Bridges",
       "to": "P0_P12_TheoryCompletion",
-      "edges": 2
+      "edges": 3
     }
   ],
   "entries": {
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 11784,
-      "lines": 151,
+      "bytes": 12779,
+      "lines": 163,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3587,7 +3587,19 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBinding",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFlux",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefix",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTail",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.InfiniteSupportViability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeCalibration",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5502,6 +5514,18 @@
       "theorem_lemma_count": 5,
       "decl_count": 9
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.InfiniteSupportViability": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/InfiniteSupportViability.lean",
+      "bytes": 11362,
+      "lines": 259,
+      "category": "UMC_New_Bridges",
+      "title": "One infinite policy from arbitrarily long actual-support viability",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability"
+      ],
+      "theorem_lemma_count": 8,
+      "decl_count": 10
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurableProcessTransport": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurableProcessTransport.lean",
       "bytes": 3050,
@@ -5745,6 +5769,45 @@
       "theorem_lemma_count": 3,
       "decl_count": 4
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RowwiseProbeSampling.lean",
+      "bytes": 5557,
+      "lines": 120,
+      "category": "UMC_New_Bridges",
+      "title": "Fixed-allocation rowwise scalar probe experiments",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.BoundedLossTwoSided"
+      ],
+      "theorem_lemma_count": 4,
+      "decl_count": 6
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeCalibration": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SISCRowwiseProbeCalibration.lean",
+      "bytes": 12769,
+      "lines": 248,
+      "category": "UMC_New_Bridges",
+      "title": "SISC rowwise experiments: actual intervals, identification, and source audit",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCSeparationPower",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCInterventionTransferAudit"
+      ],
+      "theorem_lemma_count": 7,
+      "decl_count": 11
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SISCRowwiseProbeWitness.lean",
+      "bytes": 8613,
+      "lines": 225,
+      "category": "UMC_New_Bridges",
+      "title": "Nonempty SISC rowwise experiment and an actual model-mismatch boundary",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeCalibration"
+      ],
+      "theorem_lemma_count": 16,
+      "decl_count": 26
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SafeCausalHistoryTransport": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SafeCausalHistoryTransport.lean",
       "bytes": 4415,
@@ -5786,6 +5849,114 @@
       ],
       "theorem_lemma_count": 3,
       "decl_count": 5
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminal": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+      "bytes": 11849,
+      "lines": 264,
+      "category": "UMC_New_Bridges",
+      "title": "General same-source positive-survival conditional terminal law",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+        "Mathlib.Probability.ProbabilityMassFunction.Constructions"
+      ],
+      "theorem_lemma_count": 15,
+      "decl_count": 17
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+      "bytes": 9628,
+      "lines": 215,
+      "category": "UMC_New_Bridges",
+      "title": "The actual finite state history is a prefix of the same infinite trajectory",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+        "UEOT.V3.DynamicsKernel",
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Countable"
+      ],
+      "theorem_lemma_count": 10,
+      "decl_count": 12
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFlux": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+      "bytes": 9823,
+      "lines": 222,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminal"
+      ],
+      "theorem_lemma_count": 12,
+      "decl_count": 14
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+      "bytes": 15408,
+      "lines": 361,
+      "category": "UMC_New_Bridges",
+      "title": "Actual risk-path survival and the same-source killed matrix",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+        "UEOT.V3.QSDPerron"
+      ],
+      "theorem_lemma_count": 13,
+      "decl_count": 17
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBinding": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+      "bytes": 11010,
+      "lines": 242,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminal",
+        "UEOT.V3.Compression.TheoryCompletion.GOA",
+        "UEOT.V3.FiniteDiscountedApproxQuotient"
+      ],
+      "theorem_lemma_count": 13,
+      "decl_count": 13
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefix": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+      "bytes": 6589,
+      "lines": 155,
+      "category": "UMC_New_Bridges",
+      "title": "Actual safe histories and finite survival of the same infinite trajectory",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+        "UEOT.V3.RecoveryHittingDrift",
+        "Mathlib.MeasureTheory.Measure.Real"
+      ],
+      "theorem_lemma_count": 4,
+      "decl_count": 4
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTail": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSurvivalTail.lean",
+      "bytes": 3239,
+      "lines": 75,
+      "category": "UMC_New_Bridges",
+      "title": "Same-source killed survival masses converge to actual infinite survival",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefix",
+        "UEOT.V3.Compression.Objecthood.AbsorbedRepairHittingSemantics",
+        "Mathlib.Topology.Instances.ENNReal.Lemmas"
+      ],
+      "theorem_lemma_count": 1,
+      "decl_count": 1
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+      "bytes": 6116,
+      "lines": 144,
+      "category": "UMC_New_Bridges",
+      "title": "One actual controlled source: action records to stationary state paths",
+      "imports": [
+        "UEOT.V3.CoreOperationalAssembly",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage"
+      ],
+      "theorem_lemma_count": 4,
+      "decl_count": 7
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",

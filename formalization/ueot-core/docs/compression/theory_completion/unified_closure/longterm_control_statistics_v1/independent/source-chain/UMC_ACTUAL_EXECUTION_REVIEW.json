@@ -1,0 +1,47 @@
+{
+  "status": "CLEAR_ACTUAL_UNCHANGED_UMC_VALIDATOR_RECEIPT",
+  "review_scope": "Original transferred raw outer log and aggregate receipt checked against unchanged validator source, actual command/status, and current source inventory. No new Lean execution by this reviewer.",
+  "baseline_ref": "ff71e63256c88ad2bb527fdd3004d55c77894ab7",
+  "source_tree_sha256": "60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31",
+  "validator_sha256": "7acc030d2607cd2afbcea00a5967a542cee34f7bb3ce897adca2c7761fd87c48",
+  "actual_seconds": 67.128,
+  "status_sha256": "9fe5f66438e2d83c5c7cf7d608ae25684eca646a62c9565cfac6368740c5d58f",
+  "log_sha256": "44bf9f93533da1105b575b24de4ae6552dbfdab3bf1465f090459bd1d533308e",
+  "receipt_sha256": "d7fa7e9d1097cdffbd6fdcb6e71b33cc23ba75f7bf0fc9a38168ba7ee856c31b",
+  "UMC_scope": {
+    "theorem_constants": 1073,
+    "private_theorem_constants": 103,
+    "confirmed_public_source_candidates": 564,
+    "other_native_public_constants": 406,
+    "source_modules": 79,
+    "scope_authority": "Lean compiled source modules, including private and generated theorem constants",
+    "other_native_public_scope": "Native nonprivate constants outside the FKRG source candidate list; typically generated, not inferred to be source declarations"
+  },
+  "new_increment_scope_is_separate": {
+    "modules": 12,
+    "public_source": 90,
+    "all_owned_theorem_constants": 199
+  },
+  "scope_limit": "The unchanged UMC validator validates all 1073 compiler-owned theorem constants internally and emits the aggregate census. This archived UMC log does not contain its internal per-theorem JSON. The separate native-02 evidence does retain complete per-constant records for all 199 constants in the 12 added modules; these records were independently reviewed in ACTUAL_EXECUTION_REVIEW.json.",
+  "global_strong_unified_closure": "NOT_ESTABLISHED",
+  "checks": [
+    "umc_transfer_three_files",
+    "umc_transfer:umc-full-01/STATUS.json",
+    "umc_transfer:umc-full-01/UMC_FULL_AUDIT.json",
+    "umc_transfer:umc-full-01/audit.log",
+    "umc_status_exit_zero",
+    "umc_status_source_binding",
+    "umc_log_sha",
+    "umc_unique_success_record_equals_receipt",
+    "umc_logged_head_is_baseline",
+    "umc_validator_unchanged_from_base",
+    "umc_actual_command",
+    "umc_current_79_modules_564_lexical",
+    "umc_current_graph_678_source",
+    "umc_receipt_scope_counts",
+    "umc_native_census_partition",
+    "umc_native_census_arithmetic",
+    "umc_native_axioms_fullbuild_report",
+    "umc_claim_boundaries_retained"
+  ]
+}

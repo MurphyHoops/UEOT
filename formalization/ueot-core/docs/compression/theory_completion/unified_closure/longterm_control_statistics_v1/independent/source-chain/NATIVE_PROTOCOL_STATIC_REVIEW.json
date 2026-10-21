@@ -1,0 +1,40 @@
+{
+  "status": "STATIC_NATIVE_PROTOCOL_CLEAR",
+  "integration_native_sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924",
+  "full_build_sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de",
+  "source_tree_sha256": "692626c6e91e1513843a6a6c8a37585c810d39ce2efd009e3a4aa347a022b8f5",
+  "base": "ff71e63256c88ad2bb527fdd3004d55c77894ab7",
+  "static_checks": {
+    "immutable_base_consumer_used_at_both_prior_graph_loads": true,
+    "helpers_checked_against_immutable_base_bytes": true,
+    "full_build_actual_subprocess_exit_log_and_pre_post_identity": true,
+    "full_receipt_schema_base_exact_command_and_log_verified": true,
+    "optimized_python_explicitly_rejected": true,
+    "all_owned_theorem_census_including_private_generated": true,
+    "transitive_collectAxioms_standard_three_only": true,
+    "raw_type_fresh_liftTermElabM_each_comparison": true,
+    "fixed_edges_generated_from_actual_first_run": true,
+    "two_actual_subprocesses_required": true,
+    "complete_native_JSON_equality_required_before_overlay_PASS": true
+  },
+  "targeted_actual_guard_check": {
+    "command": [
+      "python3",
+      "-B",
+      "-O",
+      "integration_native.py",
+      "--help"
+    ],
+    "expected": "fail before any subprocess",
+    "observed_exit_code": 1,
+    "observed_error": "OPTIMIZED_PYTHON_DISABLES_REQUIRED_ASSERTIONS",
+    "result": "EXPECTED_REJECTION"
+  },
+  "public_scope_expected": {
+    "candidates": 91,
+    "prior_public": 4147,
+    "cross_comparisons": 377377,
+    "internal_comparisons": 4095
+  },
+  "execution_limit": "No Lean/full/native execution by reviewer. These expected counts and source-level checks do not certify an actual native export. Root is retaining prior attempts and executing final driver in a new output directory."
+}

@@ -1,0 +1,89 @@
+{
+  "status": "PRODUCTION_SOURCE_FULL_BUILD_AND_NATIVE_EXECUTION_CLEAR",
+  "base": "1532f83fcfd1fc572aa714bad4d7fb1e0fa2de9a",
+  "sources": [
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/source_bridge/SourcePolicyPathBridge.lean",
+      "archive_sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+      "production_sha256": "3e12ece077ed1528cf3a3f6adb16530400b241bae384071a0c1ba616023d546e",
+      "changes": "fully qualified production imports; remove execution-only axiom print commands; update module documentation; mathematical declarations and proofs retained"
+    },
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/killed_path/SameSourceKilledPath.lean",
+      "archive_sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+      "production_sha256": "496f6b5de9850dda1de036da3862824dffd2f137ebd740c28bd061e566fec4d0",
+      "changes": "fully qualified production imports; remove execution-only axiom print commands; update module documentation; mathematical declarations and proofs retained"
+    },
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/conditioned_terminal/SameSourceConditionedTerminal.lean",
+      "archive_sha256": "8114278dc02e54f681bd576cf62af0dcc83df47a5b4a61bdc506a868750aea3c",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+      "production_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+      "changes": "qualified imports and documentation; remove execution-only prints; retain all original public statements and proofs; promote the existing private injective PMF atom proof as public pmf_map_injective_atom for genuine cross-module reuse",
+      "pre_refactor_promoted_sha256": "476b18ddfe1f933083b41ebf8c6a9d2d231e8dba20cf66e8f98149b0e08d7cdf"
+    },
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/qsd_binding/SameSourceQSDBinding.lean",
+      "archive_sha256": "be6c14557d455e8e4c6d752bb9255388a4dc5a561a85bf96112fbfba604f66ed",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+      "production_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+      "changes": "qualified imports and documentation; remove execution-only prints; remove duplicate private injective PMF atom proof and consume the shared public helper; retain all original public statements",
+      "pre_refactor_promoted_sha256": "599e39f6039bf2bf533cf62055e987a365b7cc1d88a3b969a46ee1f74e95e3aa"
+    },
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/exit_flux/SameSourceKilledExitFlux.lean",
+      "archive_sha256": "4ae9df91e5808f7294bb3c141bfe2e038f252adb2267e7e36380e0ba9b1aac18",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean",
+      "production_sha256": "886891df3e3e68e6a848e876e75b0bc3d707350c705402b31f57602d5050c08b",
+      "changes": "qualified production import consumes SameSourceConditionedTerminal; remove redundant actual_survival_zero identified by actual native Meta.isDefEq; telescope consumes canonical actual_survival_mass_at_zero through a typed local equality; other original public statements retained; full-build-03 failed rewrite application and final full-build-04 success are preserved separately",
+      "pre_refactor_promoted_sha256": "07ffce4112b50a82b4face10ce6c848f868756de739bcf1085722e887409f920",
+      "failed_first_reuse_application_sha256": "92f1dfc345003ae83d986c0a2486420700701e08ec8fa0668b67d8598ca046c9"
+    },
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/infinite_source_bridge/SameSourceInfinitePrefix.lean",
+      "archive_sha256": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+      "production_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+      "changes": "fully qualified production imports; remove execution-only axiom print commands; update module documentation; mathematical declarations and proofs retained"
+    },
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/source_path_research_v1/safe_prefix_bridge/SameSourceSafePrefix.lean",
+      "archive_sha256": "392468a8ca8c29225f334324eb3c2b5996e2aa4eae4846dfdab371ffb2eeaddf",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+      "production_sha256": "574908f3524470791bdac6b4b78c03dd1eb9faef2e9eecd1ef8c6ee2238ef41f",
+      "changes": "fully qualified production imports; remove execution-only axiom print commands; update module documentation; mathematical declarations and proofs retained"
+    },
+    {
+      "archive": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/global_review_tail_v1/tail-proof-v1/SameSourceSurvivalTail.lean",
+      "archive_sha256": "fd56b62549a68bc06caf9542c84d43e388becff304901241fa8746693c919357",
+      "production": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSurvivalTail.lean",
+      "production_sha256": "ef216f29731d146b88e182185f7f5f7f3b87b4b1dd1ce4760c0ede89aa546719",
+      "changes": "fully qualified production imports; remove execution-only axiom print commands; update module documentation; mathematical declarations and proofs retained"
+    }
+  ],
+  "authorization_base": "ff71e63256c88ad2bb527fdd3004d55c77894ab7",
+  "shared_helper_refactor": {
+    "purpose": "one actual proof replaces two identical new private proofs; no formatting-based clone suppression",
+    "public_endpoints_before": 56,
+    "historical_inputs_rewritten": false,
+    "existing_merged_sources_changed": false,
+    "public_endpoints_after_shared_helper_only": 57,
+    "public_endpoints_after_canonical_time_zero_reuse": 56
+  },
+  "native_type_reuse": {
+    "failed_actual_attempt": "native-01",
+    "duplicate": "SameSourceKilledExitFluxCheck.actual_survival_zero",
+    "canonical": "SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero",
+    "resolution": "remove redundant new theorem and use canonical theorem directly; no alias/private camouflage",
+    "all_new_public_candidates_after": 90
+  },
+  "accepted_execution": {
+    "source_tree_sha256": "60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31",
+    "full_build": "actual-execution/full-build-04/FULL_BUILD_RECEIPT.json",
+    "native": "actual-execution/native-02/STATUS.json",
+    "registration": "actual-execution/native-02/REGISTRATION_RECEIPT.json",
+    "canonical_publication": "SEPARATE_GATE"
+  }
+}
