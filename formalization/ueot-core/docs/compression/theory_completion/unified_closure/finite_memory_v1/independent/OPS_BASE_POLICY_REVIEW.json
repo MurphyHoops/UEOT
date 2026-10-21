@@ -1,0 +1,98 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_OPS_RENEWAL_REVIEW_V1",
+  "state": "CLEAR_EXACT_OPS_HEAD_LOCAL_GATES_CANONICAL_PUBLICATION_PENDING",
+  "reviewer": "/root/finite_memory_audit",
+  "observed_at_utc": "2026-10-21T16:29:42.772431+00:00",
+  "base": "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+  "candidate": "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+  "candidate_parent": "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+  "changed_paths": [
+    "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+  ],
+  "changed_json_leaf_paths": [
+    "/l2_existing_path_exceptions/0/exception_id",
+    "/l2_existing_path_exceptions/0/branch_patterns",
+    "/l2_existing_path_exceptions/0/reason"
+  ],
+  "all_other_json_values_and_bytes_preserved": true,
+  "unchanged_exact_authorized_paths": [
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+  ],
+  "new_branch": "compression/theory-completion-finite-memory",
+  "historical_branch_retired_from_exception": "compression/theory-completion-longterm-policy-sisc",
+  "base_authorized_path_count_new_branch": 0,
+  "candidate_policy_authorized_path_count_new_branch": 6,
+  "candidate_policy_authorized_path_count_historical_branch": 0,
+  "same_candidate_self_authorization_for_science": false,
+  "source_count": 678,
+  "public_lexical_theorems": 4237,
+  "lean_paths_changed": [],
+  "counted_promotion": "NONE",
+  "proof_build_claim": "NOT_RUN_AND_NOT_REQUIRED_FOR_THIS_POLICY_ONLY_DIFF",
+  "actual_root_gates": [
+    {
+      "label": "base-authorization",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/scripts/validate_compression_research.py",
+        "--repo-root",
+        ".",
+        "--baseline-ref",
+        "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+        "--candidate-ref",
+        "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+        "--branch-name",
+        "ops/compression-finite-memory-evidence"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3916621730022598
+    },
+    {
+      "label": "parser89",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+      ],
+      "exit_code": 0,
+      "seconds": 3.6142341769955237
+    },
+    {
+      "label": "git-object-preflight",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "--repo-root",
+        ".",
+        "--baseline-ref",
+        "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+        "--candidate-ref",
+        "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+        "--report",
+        "/workspace/scratch/534b0448126c/tmp/core-finite-memory-ops/pr-preflight.json"
+      ],
+      "exit_code": 0,
+      "seconds": 17.477829920004297
+    }
+  ],
+  "evidence_sha256": {
+    "STATUS.json": "70362cd334d025662ad83808f68ba70fa3c4a2c6e7c7809326812eae79d956c7",
+    "base-authorization.log": "f71e51e76bfa76753910eac41e05a374bdd1a99f45c7de3450a7d79c61cad617",
+    "git-object-preflight.log": "8c8c41c9300a2b9495bac1d2ae5ab729e0101531be01ec051791da5a0a44b0cb",
+    "parser89.log": "f123e2b2229dae8faef472587e5b47df6da30a4f2c10b338917e2c60a8812f29",
+    "pr-preflight.json": "a8aa29318bbc832ed8c3674935c5b4d35c43a517816b730cbff472c22bea8f30"
+  },
+  "policy_base_sha256": "1ba448d36e23201149e510adc64cdd0bbcff7f82000432ae100cc3cbb793444f",
+  "policy_candidate_sha256": "216dc5804cbce226fc95812eaf2e5529663b378b51a3f11fc0cc7d54b0b30527",
+  "tracked_index_clean": true,
+  "nontracked_runtime_cache_note": "Observed three untracked Python __pycache__ directories from gate execution. These are outside committed diff and not source proof artifacts; root may retain or clean its own generated caches.",
+  "remaining": [
+    "Publish and merge the exact operations candidate under canonical checks.",
+    "Rebase or fast-forward the scientific baseline to the accepted ops main before editing the six existing evidence/consumer paths.",
+    "Scientific full build/native and final review are separate, not covered by this operations receipt."
+  ]
+}

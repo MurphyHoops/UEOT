@@ -31,6 +31,7 @@ OVERLAY_PATHS = [
     HERE / "SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json",
     HERE / "REGISTERED_INTERFACES_REUSE_OVERLAY_V1.json",
     HERE / "LONGTERM_CONTROL_STATISTICS_REUSE_OVERLAY_V1.json",
+    HERE / "FINITE_MEMORY_REUSE_OVERLAY_V1.json",
 ]
 OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
@@ -42,6 +43,7 @@ OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean",
     HERE / "VERIFY_REGISTERED_INTERFACES_OVERLAY_TYPES.lean",
     HERE / "VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean",
+    HERE / "VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean",
 ]
 OVERLAY_SHA256S = [
     "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
@@ -53,6 +55,7 @@ OVERLAY_SHA256S = [
     "2af284000d6a6c25f67e9356a236817b22334dbfba777ca2eaf37e8060a3a45e",
     "6667bf7a908d713394e5daae5291c3a82f1ff7b3da144e2addf3da5959d0e781",
     "cb5792eff95b2a1386a7c0832eeeedc5a283f212b462f2c6c6d3342dd5e1bb06",
+    "cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38",
 ]
 OVERLAY_TYPE_CHECK_SHA256S = [
     "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
@@ -64,6 +67,7 @@ OVERLAY_TYPE_CHECK_SHA256S = [
     "26fd18e77dd6b7db550c6c5e1105376ef7f494db03bbab646e8d8fa42313a118",
     "0d3eb26c9471e1701a28652f308c9dd1e1ccac72c0b9ef36eec27c1bc3165d32",
     "0643f8dfca2daec2ce6b4638f712f6abcacf8f91f31669a37120f397d6c27213",
+    "0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762",
 ]
 
 # Independent immutable digests calculated from main after merged PR #314.
@@ -560,7 +564,7 @@ def status(data: dict):
             x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
             for x in overlays),
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability, registered-interfaces and longterm-control-statistics overlays, Lean kernel, and canonical Core/Compression ledgers",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability, registered-interfaces, longterm-control-statistics and finite-memory overlays, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 

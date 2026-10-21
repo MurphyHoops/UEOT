@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 678,
-  "total_source_lines": 122950,
-  "total_theorem_lemma_tokens": 4458,
+  "total_Lean_modules": 684,
+  "total_source_lines": 124065,
+  "total_theorem_lemma_tokens": 4505,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 79
+    "UMC_New_Bridges": 85
   },
-  "reachable_from_UEOT_root": 678,
+  "reachable_from_UEOT_root": 684,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -186,6 +186,10 @@
       "direct_dependents": 5
     },
     {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability",
+      "direct_dependents": 5
+    },
+    {
       "module": "UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm",
       "direct_dependents": 5
     },
@@ -195,10 +199,6 @@
     },
     {
       "module": "UEOT.V3.FiniteCandidatePStat08",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.FiniteCesaroInvariant",
       "direct_dependents": 5
     }
   ],
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 79
+      "edges": 85
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 12779,
-      "lines": 163,
+      "bytes": 13267,
+      "lines": 169,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3599,7 +3599,13 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.InfiniteSupportViability",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeCalibration",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeWitness"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SISCRowwiseProbeWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5439,6 +5445,44 @@
       "theorem_lemma_count": 13,
       "decl_count": 20
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "bytes": 5260,
+      "lines": 118,
+      "category": "UMC_New_Bridges",
+      "title": "Executable finite-memory decisions tied to the Boolean source",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck"
+      ],
+      "theorem_lemma_count": 8,
+      "decl_count": 10
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+      "bytes": 1640,
+      "lines": 42,
+      "category": "UMC_New_Bridges",
+      "title": "Complete causal policies realized by autonomous memory",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability"
+      ],
+      "theorem_lemma_count": 0,
+      "decl_count": 3
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "bytes": 8135,
+      "lines": 190,
+      "category": "UMC_New_Bridges",
+      "title": "Two states of memory strictly improve constant-observation control",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge"
+      ],
+      "theorem_lemma_count": 8,
+      "decl_count": 14
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
       "bytes": 14785,
@@ -5489,6 +5533,19 @@
       ],
       "theorem_lemma_count": 5,
       "decl_count": 5
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "bytes": 15207,
+      "lines": 360,
+      "category": "UMC_New_Bridges",
+      "title": "A bounded greatest fixed point on observed supports",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViabilityCheck",
+        "Mathlib.Data.Fintype.Powerset"
+      ],
+      "theorem_lemma_count": 19,
+      "decl_count": 28
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
@@ -6064,6 +6121,32 @@
       ],
       "theorem_lemma_count": 2,
       "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "bytes": 8211,
+      "lines": 166,
+      "category": "UMC_New_Bridges",
+      "title": "An executable finite check for all-times support certification",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController"
+      ],
+      "theorem_lemma_count": 4,
+      "decl_count": 5
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "bytes": 11424,
+      "lines": 233,
+      "category": "UMC_New_Bridges",
+      "title": "A finite support controller in its own source experiment",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.InfiniteSupportViability"
+      ],
+      "theorem_lemma_count": 8,
+      "decl_count": 10
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",

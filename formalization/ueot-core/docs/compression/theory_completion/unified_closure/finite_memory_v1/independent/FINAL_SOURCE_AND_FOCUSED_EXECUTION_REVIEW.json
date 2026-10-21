@@ -1,0 +1,725 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_FINAL_SOURCE_AND_FOCUSED_EXECUTION_REVIEW_V1",
+  "state": "FINAL_SIX_SOURCE_FOCUSED_PASS_FULL_BUILD_NATIVE_REVIEW_PENDING",
+  "reviewer": "/root/finite_memory_review_resume",
+  "observed_at_utc": "2026-10-21T17:16:31.263967+00:00",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "complete_source_modules": 684,
+  "frozen_manifest_sha256": "7509538e8bbbf8f0d38f4c06efe0ad285a6548368aaef8ad42f060d40d1d7241",
+  "prior_static_review03_sha256": "02f6867779c78579b0d6eb875fbe2bd48636368d6cac905abc8fb87ab581fe05",
+  "actual_driver_sha256": "704d32d9be17cc1a4bb7979cc0e36fff3df8177d8946f904d8b2ffea22366106",
+  "actual_driver_matches_current_protocol_copy": true,
+  "reported_actual_lean_version": "Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "attempts": [
+    {
+      "attempt": "compile-01",
+      "raw_state": "FAIL",
+      "status_sha256": "53e34a93f4acbcbd4edf5e4e0c11a2ac86d151f65ce128284ea0e01971f2c636",
+      "started": "2026-10-21T16:25:08.035002+00:00",
+      "finished": "2026-10-21T16:25:43.179997+00:00",
+      "results": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+          "source_sha256": "d8e744fe7fd2c798395534ca305c7f8a0b897b29d673b9d4c1158ce9913064c3",
+          "exit_code": 1,
+          "seconds": 29.941359000000002,
+          "log_sha256": "cf47393a533a42da586a7ac98253b4c82b88acb67fe69540e603fd2191bb5843",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 1279,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+          "source_sha256": "81b3d6e3978f20fa936da72e1149843f824312c146492cb5278142ac16ac9254",
+          "exit_code": 1,
+          "seconds": 3.7830278749999984,
+          "log_sha256": "b5554db5fd911ce1d9304d2a1e5acf0826fb417eed478c91c5f96d49b0ca0c91",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 1686,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+          "source_sha256": "6f015802ce9955a8a2afcdec497913ed54d3d5b2ab580c7a161ca89eda127d4e",
+          "exit_code": 1,
+          "seconds": 0.6064724589999955,
+          "log_sha256": "dd1e4093c2690020689c7876c03bea26b3ca1e1ac45e4c802dd2de6d4a3457ac",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 423,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+          "source_sha256": "9fb31f08791b56dd77350280b975b5b63dd70e2f3ede3bfca86b0910badf0236",
+          "exit_code": 1,
+          "seconds": 0.5767788329999988,
+          "log_sha256": "10689c71a8993d738330f12c2b18b64c8f43dd1784a0ad1ba1176938502bc7a2",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 424,
+          "source_and_log_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "attempt": "compile-02",
+      "raw_state": "FAIL",
+      "status_sha256": "fdc88859345083362c6b01c5e5071dcd977d3b186dd272ce0ebb2adc603da5d7",
+      "started": "2026-10-21T16:29:56.904891+00:00",
+      "finished": "2026-10-21T16:30:36.850874+00:00",
+      "results": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+          "source_sha256": "244789411b085f83c3ed16547be0c1909ffad066b9fc1f21e4b99dc83d726269",
+          "exit_code": 0,
+          "seconds": 29.054626,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+          "archived_source_matches_current": true,
+          "log_bytes": 0,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+          "source_sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+          "exit_code": 0,
+          "seconds": 3.6640447499999986,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+          "archived_source_matches_current": true,
+          "log_bytes": 0,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+          "source_sha256": "fcaa2cd7efb9062f1f87d8d74de4af325a9a1b7a435c1dc60249198a9b976c2b",
+          "exit_code": 1,
+          "seconds": 3.4967227499999964,
+          "log_sha256": "6e508e035ca8138f8a14b73b7199ec286a00ef64c7f2d9016e008f52c53bbfd4",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 1947,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+          "source_sha256": "bae89efa69ee64faf50f85b5dd50c9db6c8400f5d1d1483959a9b8e51b763e20",
+          "exit_code": 0,
+          "seconds": 3.5320765419999987,
+          "log_sha256": "ae00075c319f449df814937b13a8a01de63ff03ca8604667484442ab1d5a738a",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 169,
+          "source_and_log_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "attempt": "compile-03",
+      "raw_state": "FAIL",
+      "status_sha256": "8d527180d42b3105b183f3e8f5a0c1cf38dce1bf0c127d67ad21cbad48e91452",
+      "started": "2026-10-21T16:59:35.903970+00:00",
+      "finished": "2026-10-21T17:00:15.675925+00:00",
+      "results": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+          "source_sha256": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0",
+          "exit_code": 0,
+          "seconds": 31.536402041000002,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+          "archived_source_matches_current": true,
+          "log_bytes": 0,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+          "source_sha256": "f8a07915d770f058e37b7b2a82ce0bd818c4074db13866eecbb07424c9b65235",
+          "exit_code": 0,
+          "seconds": 3.718550999999998,
+          "log_sha256": "06c82047472b2c59fdd7c46001f6d549e7115de438ef44078ac13778b05be4f6",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 396,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+          "source_sha256": "9904a25670122e4087ff3735da930508f73d94799278afb845c374d1b7d643ff",
+          "exit_code": 1,
+          "seconds": 3.6085777920000055,
+          "log_sha256": "869151e4fa6c3477148dcce99c486f05dc8efc735049aeb6aaf94a93117e9807",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "archived_source_matches_current": false,
+          "log_bytes": 1928,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+          "source_sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+          "exit_code": 1,
+          "seconds": 0.6637191250000001,
+          "log_sha256": "856656a782e33bf952d6ed7f3093420e3fd4765eef9662a0090adb34f6529b79",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+          "archived_source_matches_current": true,
+          "log_bytes": 433,
+          "source_and_log_hashes_verified": true
+        }
+      ]
+    },
+    {
+      "attempt": "compile-04",
+      "raw_state": "PASS",
+      "status_sha256": "1d175b61bae05910744a52636c6607224b38723f657fc50135a57090bdfba0e6",
+      "started": "2026-10-21T17:05:17.704690+00:00",
+      "finished": "2026-10-21T17:05:56.631391+00:00",
+      "results": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+          "source_sha256": "a16ebe2b2e930623adf4f7ab40783af595387e3a1ee9726e6e7b98373454934a",
+          "exit_code": 0,
+          "seconds": 30.98933,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+          "archived_source_matches_current": true,
+          "log_bytes": 0,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+          "source_sha256": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+          "exit_code": 0,
+          "seconds": 3.7236636250000004,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "archived_source_matches_current": true,
+          "log_bytes": 0,
+          "source_and_log_hashes_verified": true
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+          "source_sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+          "exit_code": 0,
+          "seconds": 4.018680582999998,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "args": [
+            "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+            "env",
+            "lean",
+            "-o",
+            ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.olean",
+            "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean"
+          ],
+          "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+          "archived_source_matches_current": true,
+          "log_bytes": 0,
+          "source_and_log_hashes_verified": true
+        }
+      ]
+    }
+  ],
+  "final_source_success_records": [
+    {
+      "attempt": "compile-04",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness",
+      "source_sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+      "exit_code": 0,
+      "seconds": 4.018680582999998,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "args": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "lean",
+        "-o",
+        ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.olean",
+        "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean"
+      ],
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "archived_source_matches_current": true,
+      "log_bytes": 0,
+      "source_and_log_hashes_verified": true,
+      "status_sha256": "1d175b61bae05910744a52636c6607224b38723f657fc50135a57090bdfba0e6"
+    },
+    {
+      "attempt": "compile-02",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPolicy",
+      "source_sha256": "244789411b085f83c3ed16547be0c1909ffad066b9fc1f21e4b99dc83d726269",
+      "exit_code": 0,
+      "seconds": 29.054626,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "args": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "lean",
+        "-o",
+        ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.olean",
+        "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean"
+      ],
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+      "archived_source_matches_current": true,
+      "log_bytes": 0,
+      "source_and_log_hashes_verified": true,
+      "status_sha256": "fdc88859345083362c6b01c5e5071dcd977d3b186dd272ce0ebb2adc603da5d7"
+    },
+    {
+      "attempt": "compile-04",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation",
+      "source_sha256": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+      "exit_code": 0,
+      "seconds": 3.7236636250000004,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "args": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "lean",
+        "-o",
+        ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.olean",
+        "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean"
+      ],
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "archived_source_matches_current": true,
+      "log_bytes": 0,
+      "source_and_log_hashes_verified": true,
+      "status_sha256": "1d175b61bae05910744a52636c6607224b38723f657fc50135a57090bdfba0e6"
+    },
+    {
+      "attempt": "compile-02",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportFixedPoint",
+      "source_sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "exit_code": 0,
+      "seconds": 3.6640447499999986,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "args": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "lean",
+        "-o",
+        ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.olean",
+        "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean"
+      ],
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "archived_source_matches_current": true,
+      "log_bytes": 0,
+      "source_and_log_hashes_verified": true,
+      "status_sha256": "fdc88859345083362c6b01c5e5071dcd977d3b186dd272ce0ebb2adc603da5d7"
+    },
+    {
+      "attempt": "compile-04",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+      "source_sha256": "a16ebe2b2e930623adf4f7ab40783af595387e3a1ee9726e6e7b98373454934a",
+      "exit_code": 0,
+      "seconds": 30.98933,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "args": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "lean",
+        "-o",
+        ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.olean",
+        "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean"
+      ],
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "archived_source_matches_current": true,
+      "log_bytes": 0,
+      "source_and_log_hashes_verified": true,
+      "status_sha256": "1d175b61bae05910744a52636c6607224b38723f657fc50135a57090bdfba0e6"
+    },
+    {
+      "attempt": "compile-03",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryController",
+      "source_sha256": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0",
+      "exit_code": 0,
+      "seconds": 31.536402041000002,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "args": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "lean",
+        "-o",
+        ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.olean",
+        "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean"
+      ],
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "archived_source_matches_current": true,
+      "log_bytes": 0,
+      "source_and_log_hashes_verified": true,
+      "status_sha256": "8d527180d42b3105b183f3e8f5a0c1cf38dce1bf0c127d67ad21cbad48e91452"
+    }
+  ],
+  "source_changes_since_review03": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "previous_sha256": "f8a07915d770f058e37b7b2a82ce0bd818c4074db13866eecbb07424c9b65235",
+      "current_sha256": "a16ebe2b2e930623adf4f7ab40783af595387e3a1ee9726e6e7b98373454934a",
+      "diff": "--- STATIC_REVIEW_03 source\n+++ final frozen source\n@@ -59,7 +59,7 @@\n     finiteMemoryCheck q R C initial = true ↔\n       ∀ y : Y, (initialSupport p₀ q y).Nonempty →\n         initialSupport p₀ q y ∈ supportWinning q R C := by\n-  letI : ∀ n x a z, Decidable (z ∈ (P n x a).support) :=\n+  let : ∀ n x a z, Decidable (z ∈ (P n x a).support) :=\n     fun _ _ _ _ => Classical.propDecidable _\n   let B : ℕ := 2 ^ Fintype.card X - 1\n   have hB : supportArenaCard q ≤ B := by\n"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "previous_sha256": "9904a25670122e4087ff3735da930508f73d94799278afb845c374d1b7d643ff",
+      "current_sha256": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+      "diff": "--- STATIC_REVIEW_03 source\n+++ final frozen source\n@@ -106,11 +106,11 @@\n       intro h _\n       by_cases hh : h ∈ (microLaw initial observe source (stationaryPolicy ρ) n).support\n       · have hlast := hstate h hh\n-        cases x <;> simp [stationaryPolicy, certified, hlast, Fintype.sum_bool]\n+        cases x <;> simp [stationaryPolicy, certified, hlast]\n       · have hz : microLaw initial observe source (stationaryPolicy ρ) n h = 0 := by\n           by_contra hne\n           exact hh ((PMF.mem_support_iff _ _).mpr hne)\n-        simp only [hz, ENNReal.zero_toReal, zero_mul]\n+        simp only [hz, ENNReal.toReal_zero, zero_mul]\n     _ = _ := by\n       rw [← Finset.sum_mul, coverage_sum_toReal, one_mul]\n \n@@ -122,7 +122,8 @@\n         {xa | ¬ certified 0 xa.1 xa.2} = (ρ true).toReal := by\n   apply stationary_uncovered_of_supported_state ρ 0 false\n   intro h hh\n-  change h ∈ (PMF.pure false).support at hh\n+  change Bool at h\n+  change h ∈ (PMF.pure false : PMF Bool).support at hh\n   change h = false\n   simpa only [PMF.support_pure, Set.mem_singleton_iff] using hh\n \n@@ -134,10 +135,11 @@\n         {xa | ¬ certified 1 xa.1 xa.2} = (ρ false).toReal := by\n   apply stationary_uncovered_of_supported_state ρ 1 true\n   rintro ⟨b, a, z⟩ hh\n+  change Bool at b\n   have hs := (mem_microLaw_succ_support_iff\n     initial observe source (stationaryPolicy ρ) 0 b a z).mp hh\n   have hb_support := hs.1\n-  change b ∈ (PMF.pure false).support at hb_support\n+  change b ∈ (PMF.pure false : PMF Bool).support at hb_support\n   have hb : b = false := by\n     simpa only [PMF.support_pure, Set.mem_singleton_iff] using hb_support\n   have hz_support := hs.2.2\n"
+    }
+  ],
+  "complete_focused_evidence_inventory": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/OPS_BASE_SYNC.json",
+      "sha256": "f4fdeeb921c8ad406a989208912c270e306d5aae4cbcebde4144ed24ca91aad5",
+      "bytes": 991
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/OPS_PUSH.json",
+      "sha256": "804273cef9cbd941750a4557f971c442e0821c3de83fc88737befb15f0c84776",
+      "bytes": 3105
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/OPS_RETIREMENT.json",
+      "sha256": "ac11badb9a18fc90ddb160c63595eae5ccb5d4a6a8c510f7000ae0b9d1464ff9",
+      "bytes": 3810
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/RUN_FOCUSED.py",
+      "sha256": "704d32d9be17cc1a4bb7979cc0e36fff3df8177d8946f904d8b2ffea22366106",
+      "bytes": 2656
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/SETUP.json",
+      "sha256": "f90b12d49707d12c4e46e409daa33168f16fb0e899fb65f3343f0a31fb3eb3f4",
+      "bytes": 1832
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/FiniteMemoryPolicy.log",
+      "sha256": "cf47393a533a42da586a7ac98253b4c82b88acb67fe69540e603fd2191bb5843",
+      "bytes": 1279
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/FiniteMemorySeparation.log",
+      "sha256": "dd1e4093c2690020689c7876c03bea26b3ca1e1ac45e4c802dd2de6d4a3457ac",
+      "bytes": 423
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/FiniteSupportFixedPoint.log",
+      "sha256": "b5554db5fd911ce1d9304d2a1e5acf0826fb417eed478c91c5f96d49b0ca0c91",
+      "bytes": 1686
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/STATUS.json",
+      "sha256": "53e34a93f4acbcbd4edf5e4e0c11a2ac86d151f65ce128284ea0e01971f2c636",
+      "bytes": 3094
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/SupportMemoryController.log",
+      "sha256": "10689c71a8993d738330f12c2b18b64c8f43dd1784a0ad1ba1176938502bc7a2",
+      "bytes": 424
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+      "sha256": "d8e744fe7fd2c798395534ca305c7f8a0b897b29d673b9d4c1158ce9913064c3",
+      "bytes": 1634
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "sha256": "6f015802ce9955a8a2afcdec497913ed54d3d5b2ab580c7a161ca89eda127d4e",
+      "bytes": 7432
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "sha256": "81b3d6e3978f20fa936da72e1149843f824312c146492cb5278142ac16ac9254",
+      "bytes": 14952
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-01/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "sha256": "9fb31f08791b56dd77350280b975b5b63dd70e2f3ede3bfca86b0910badf0236",
+      "bytes": 11420
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/FiniteMemoryPolicy.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/FiniteMemorySeparation.log",
+      "sha256": "6e508e035ca8138f8a14b73b7199ec286a00ef64c7f2d9016e008f52c53bbfd4",
+      "bytes": 1947
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/FiniteSupportFixedPoint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/STATUS.json",
+      "sha256": "fdc88859345083362c6b01c5e5071dcd977d3b186dd272ce0ebb2adc603da5d7",
+      "bytes": 3085
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/SupportMemoryController.log",
+      "sha256": "ae00075c319f449df814937b13a8a01de63ff03ca8604667484442ab1d5a738a",
+      "bytes": 169
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+      "sha256": "244789411b085f83c3ed16547be0c1909ffad066b9fc1f21e4b99dc83d726269",
+      "bytes": 1640
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "sha256": "fcaa2cd7efb9062f1f87d8d74de4af325a9a1b7a435c1dc60249198a9b976c2b",
+      "bytes": 7435
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "bytes": 15207
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-02/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "sha256": "bae89efa69ee64faf50f85b5dd50c9db6c8400f5d1d1483959a9b8e51b763e20",
+      "bytes": 11423
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/FiniteMemoryCheckWitness.log",
+      "sha256": "856656a782e33bf952d6ed7f3093420e3fd4765eef9662a0090adb34f6529b79",
+      "bytes": 433
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/FiniteMemorySeparation.log",
+      "sha256": "869151e4fa6c3477148dcce99c486f05dc8efc735049aeb6aaf94a93117e9807",
+      "bytes": 1928
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/STATUS.json",
+      "sha256": "8d527180d42b3105b183f3e8f5a0c1cf38dce1bf0c127d67ad21cbad48e91452",
+      "bytes": 3096
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/SupportMemoryCheck.log",
+      "sha256": "06c82047472b2c59fdd7c46001f6d549e7115de438ef44078ac13778b05be4f6",
+      "bytes": 396
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/SupportMemoryController.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+      "bytes": 5260
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+      "sha256": "244789411b085f83c3ed16547be0c1909ffad066b9fc1f21e4b99dc83d726269",
+      "bytes": 1640
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "sha256": "9904a25670122e4087ff3735da930508f73d94799278afb845c374d1b7d643ff",
+      "bytes": 8093
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "bytes": 15207
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "sha256": "f8a07915d770f058e37b7b2a82ce0bd818c4074db13866eecbb07424c9b65235",
+      "bytes": 8212
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-03/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "sha256": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0",
+      "bytes": 11424
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/FiniteMemoryCheckWitness.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/FiniteMemorySeparation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/STATUS.json",
+      "sha256": "1d175b61bae05910744a52636c6607224b38723f657fc50135a57090bdfba0e6",
+      "bytes": 2382
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/SupportMemoryCheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+      "bytes": 5260
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPolicy.lean",
+      "sha256": "244789411b085f83c3ed16547be0c1909ffad066b9fc1f21e4b99dc83d726269",
+      "bytes": 1640
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "sha256": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+      "bytes": 8135
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "bytes": 15207
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryCheck.lean",
+      "sha256": "a16ebe2b2e930623adf4f7ab40783af595387e3a1ee9726e6e7b98373454934a",
+      "bytes": 8211
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "sha256": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0",
+      "bytes": 11424
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/compile-04/source/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+      "sha256": "9fcc52bb41f41dda21040c615e03e9cc84975de8ceb764e11f1afd8eb1b2808a",
+      "bytes": 13267
+    }
+  ],
+  "static_delta_findings": [
+    "SupportMemoryCheck changes only proof-local letI to let; the executable check and its h0/hR/hC correctness statements are unchanged.",
+    "FiniteMemorySeparation adds explicit Bool types at the two zero-history reductions, uses the existing ENNReal.toReal_zero name, and removes a redundant simp argument. It retains the supported-state expectation proof and all source/policy/occupancy statements.",
+    "The other four source files are byte-identical to STATIC_REVIEW_03. The final compile-04 snapshot contains all six modules plus the actual TheoryCompletion import aggregator and matches current bytes.",
+    "The operations fast-forward changes only COMPRESSION_RESEARCH_TRACKS.json between a9109004 and 299a4e3a. It does not alter the Lean corpus used by earlier focused successes."
+  ],
+  "findings": [
+    "All 15 recorded compiler invocations have exact matching archived source and raw log hashes, actual lake env lean -o command shape, nonzero measured duration, and consistent attempt states.",
+    "Every one of the six final module hashes has a real exit-0 focused compiler record. Their accepted-version logs are empty, with no compiler warnings or errors.",
+    "Compile-01, compile-02 and compile-03 remain FAIL as complete attempts. Their failed source versions, missing-import failures and warning logs have not been relabeled or replaced.",
+    "No new mathematical, source-matching, or focused-execution blocker was found for the final frozen six-source version."
+  ],
+  "not_accepted_here": [
+    "Complete lake build UEOT execution, before/after dependency/runtime identity, or canonical import acceptance.",
+    "Compiler-owned private/generated theorem census, full axiom closure, raw stored-type comparisons, proof-value dependencies, or fixed-edge native replay.",
+    "Registration, live consumer/DAG update, scientific publication or resulting-main acceptance."
+  ],
+  "evidence_limit": "This review inspects preserved actual execution records and exact source/log bytes. The focused runner does not itself freeze the full dependency/runtime environment; the separate full-build and native protocols must establish that stronger identity before integration acceptance.",
+  "review_script_sha256": "e3f5fd6a8f6460a1ab33b0ec4f41566a144c47f3381a4584b683e0949fd2a133"
+}

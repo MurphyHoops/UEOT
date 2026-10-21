@@ -1,0 +1,45 @@
+{
+  "schema": "FINITE_MEMORY_CONSUMER_PREPARATION_HISTORY_V1",
+  "scope": "Consumer preparation and exact reviewed application; no Lean source or proof artifact changed",
+  "actual_application": {
+    "proposal": "proposal-02",
+    "patch_sha256": "088839c289b80b8d17825c6781909de302cb5da59bddbb7ae4f4c3709ddf649a",
+    "applied_receipt_sha256": "d9bfbcaf92d15d8cd9ec70954de8cd99f78c56806aec63d11d79cf28e043f75b",
+    "reuse_test_receipt_sha256": "f85203b0b37792e6dd80722f89e7d96b73bca872255492f9faa32731d39fd3b3",
+    "observed_tests": 50,
+    "test_state": "PASS"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": "prepare_consumer_update.py --repo /workspace/scratch/534b0448126c/ueot-core-next --native-archive formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/actual-execution/native-01 --output /workspace/scratch/534b0448126c/tmp/core-finite-memory-publication/consumer-proposal-01",
+      "exit_code": 1,
+      "observed_error": "PUBLIC_NATIVE_EDGE_MISMATCH: UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.checked_support_controller_zero_uncovered",
+      "reason": "The preparer incorrectly required identical dependency-array ordering. Registered public dependency lists are canonically sorted, whereas the native export retains proof traversal order.",
+      "files_written": false,
+      "correction": "Compare the exact dependency sets/sorted lists between registration and native records. Full native direct-constant arrays and all archived raw execution bytes remain unchanged.",
+      "record_kind": "Observed tool result summary; the original tool result retains the traceback"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "state": "PREPARED_NOT_APPLIED",
+      "patch_sha256": "84e6bc6ec583eed109826fe9e65e8d913fc0aae0d052e2589979ed9d5448fd37",
+      "proposed_files": 5,
+      "live_consumers_changed": false,
+      "current_test_methods": 50,
+      "tests_executed": false
+    },
+    {
+      "attempt": 3,
+      "exit_code": 0,
+      "state": "PREPARED_NOT_APPLIED",
+      "proposal_directory": "consumer-proposal-02",
+      "patch_sha256": "088839c289b80b8d17825c6781909de302cb5da59bddbb7ae4f4c3709ddf649a",
+      "change_from_previous_proposal": "Two README passages now state that the M+1 memory states include the empty support, and that every nonwinning memory uses one fixed fallback PMF. The fallback is not another memory value.",
+      "runtime_test_and_clone_edits_unchanged": true,
+      "live_consumers_changed": false,
+      "tests_executed": false
+    }
+  ]
+}

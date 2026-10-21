@@ -1,0 +1,45 @@
+[
+  {
+    "args": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "code": 0,
+    "stdout": "a9109004959975b3d2c5a303741e117f1cd8cb9c\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "main"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/MurphyHoops/UEOT\n * branch              main       -> FETCH_HEAD\n   a9109004..299a4e3a  main       -> origin/main\n"
+  },
+  {
+    "args": [
+      "git",
+      "rev-parse",
+      "origin/main"
+    ],
+    "code": 0,
+    "stdout": "299a4e3a71914af064ccd7916bb285bac201f62a\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "git",
+      "merge",
+      "--ff-only",
+      "299a4e3a71914af064ccd7916bb285bac201f62a"
+    ],
+    "code": 0,
+    "stdout": "Updating a9109004..299a4e3a\nFast-forward\n .../ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json     | 6 +++---\n 1 file changed, 3 insertions(+), 3 deletions(-)\n",
+    "stderr": ""
+  }
+]

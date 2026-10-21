@@ -1,0 +1,73 @@
+{
+  "schema": "UEOT_FINITE_MEMORY_LOCAL_GATES_AND_CANONICAL_WRAPPER_REVIEW_V1",
+  "state": "ACTUAL_30_FKRG_AND_89_PARSER_CLEAR_CANONICAL_EXECUTION_PENDING",
+  "reviewer": "/root/finite_memory_review_resume",
+  "observed_at_utc": "2026-10-21T17:30:43.898577+00:00",
+  "baseline_ref": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "source_tree_sha256": "179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6",
+  "actual_local_gates": [
+    {
+      "label": "FKRG",
+      "suite_path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py",
+      "suite_immutable_baseline_sha256": "7600857c621234735be3041a9ceec9bf52978d7cbf6a2500f5282553a1ce6295",
+      "receipt_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/local-gates/FKRG_FULL_30.json",
+      "receipt_sha256": "d019e3052535c481972974068818996a97ca4abea9c7fb7f72d2af5b53d8eda2",
+      "actual_command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "exit_code": 0,
+      "seconds": 3.31777965999936,
+      "tests": 30,
+      "log_sha256": "78284180679a1b8a51ddb6b7c09a50e99b1bd988c7d4cc0a3b16f61c1026c951",
+      "all_test_names_match_installed_suite": true
+    },
+    {
+      "label": "parser",
+      "suite_path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py",
+      "suite_immutable_baseline_sha256": "cfcef95438d8f9cc16eb27d09adfa81bc155400843881b73a1222ae7396742cb",
+      "receipt_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/local-gates/PARSER_TEST_RECEIPT.json",
+      "receipt_sha256": "8ef53b99a339c99801c942ddb4a78bee26f5154bfc5c0f8ff20818af0af7f78b",
+      "actual_command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+      ],
+      "exit_code": 0,
+      "seconds": 3.687834684002155,
+      "tests": 89,
+      "log_sha256": "9b5e07f58fe79e631c840dd334d8a3b53f02b1fc98cf5600e68438cafcd323b7",
+      "all_test_names_match_installed_suite": true
+    }
+  ],
+  "real_fast_audit_integration": "PASS_UNFILTERED_UNMOCKED_WITH_HISTORICAL_RECEIPT_PRESERVATION",
+  "canonical_wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_memory_v1/publication/run_canonical_umc.py",
+    "sha256": "82c69399d970e870cd200226cb7be1f3a452cc2cab02aa0e493bae0bab4e4cf0",
+    "static_state": "CLEAR_FOR_REVIEW_OF_ACTUAL_EXECUTION",
+    "unchanged_cloud_auditor_sha256": "7acc030d2607cd2afbcea00a5967a542cee34f7bb3ce897adca2c7761fd87c48",
+    "auditor_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_umc_local.py",
+    "checks": [
+      "Actual unchanged audit --full command; no selected subset.",
+      "PATH-resolved lake and lean binaries must equal accepted runtime paths.",
+      "Exact accepted build source/runtime/dependency identity captured before and after audit.",
+      "Actual log, command, exit code, wrapper bytes and accepted-build receipt hash retained.",
+      "Intermediate audit-exit-zero/postcheck-pending state is written before postcheck; PASS requires full_Lean PASS, 684 modules and NOT_ESTABLISHED."
+    ]
+  },
+  "findings": [
+    "Both complete local suites executed with exit zero. Their raw logs contain exactly all installed test method names, each marked ok, and the correct final unittest count.",
+    "Both test suites are byte-identical to their immutable baseline versions. No test filtering or suite edits occurred.",
+    "The FKRG run includes the actual umc.audit(False) integration test with no atlas/import/scope/stage/DAG/baseline/writer mock, and preserves all historical receipts.",
+    "The 89 parser tests validate the unchanged declaration parser; they are not the later immutable Git-object candidate preflight.",
+    "The canonical wrapper is statically suitable for the intended actual audit. Its separate raw execution/output, postcheck completion and Mac unchanged-auditor provenance still require review."
+  ],
+  "not_rerun": [
+    "FKRG tests",
+    "parser tests",
+    "Lean",
+    "canonical UMC audit"
+  ],
+  "review_script_sha256": "7c5f3b4198098b525e7fa75988ca99bce300f1460096c4facaaad78835ec88df"
+}

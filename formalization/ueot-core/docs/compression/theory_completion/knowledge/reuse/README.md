@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current nine-layer census is **678 modules = 667 UEOT-maintained + 11
-adapted upstream**, with **4,237 registered public theorem nodes** and
-**5,567 registered direct proof edges**. The layer-by-layer counts below
+The current ten-layer census is **684 modules = 673 UEOT-maintained + 11
+adapted upstream**, with **4,272 registered public theorem nodes** and
+**5,614 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -764,6 +764,100 @@ unchanged. Historical type-group, near-type and clone evidence is retained;
 the unchanged scanner still requires an actual full-current-source match
 against its immutable 68-row table.
 
+### Layer 10 — finite support fixed points and complete finite memory
+
+This layer uses canonical authorization base `299a4e3a71914af064ccd7916bb285bac201f62a` and adds six physical
+UnifiedClosure modules to the intact 678-module source census:
+`FiniteMemoryPolicy`, `FiniteSupportFixedPoint`, `SupportMemoryController`,
+`SupportMemoryCheck`, `FiniteMemorySeparation` and `FiniteMemoryCheckWitness`.
+The frozen production source fingerprint is `179783b20a817affae721d2f1ad36c4fcb25763cbb91701c120b68351b103ae6`. It identifies source
+content; Git-object, PR and resulting-main acceptance have separate receipts.
+
+The actual full `lake build UEOT` returned zero on this source. Native
+export and fixed-certificate replay also returned zero and emitted equal
+complete JSON objects. This equality covers physical owners, stored
+universes, displayed types, full ordered proof-constant arrays and axiom
+lists. The raw source preflight retains its original PENDING state; actual
+execution and metadata registration each have their own records.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| [FINITE_MEMORY_NATIVE_V1.json](FINITE_MEMORY_NATIVE_V1.json) | `5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471` |
+| [VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean](VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean) | `0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762` |
+| [FINITE_MEMORY_REUSE_OVERLAY_V1.json](FINITE_MEMORY_REUSE_OVERLAY_V1.json) | `cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38` |
+
+The native census contains **82 compiler-owned theorem constants:
+35 public source candidates, 22 private constants and
+25 other nonprivate constants**. Each retains its physical owner,
+stored universe parameters, type display, complete direct proof constants,
+direct theorem constants and transitive axioms. The axiom closure of every
+record is contained in `propext`, `Classical.choice`, `Quot.sound`. This full
+scope also includes generated theorem constants from `FiniteMemoryPolicy`,
+which has no explicit public source theorem candidate.
+
+The 35 new public types were compared with all **4,237** prior registered
+types: **148,295 cross-layer** and **595 internal** raw stored-type
+`Meta.isDefEq` comparisons, with zero collisions. These checks retain the
+stored-universe and instantiation limits of the historical protocol; they
+do not establish general logical independence. The new proof graph adds
+**47 direct registered edges**. The current ten-layer graph therefore
+has **4,272 nodes and 5,614 edges**, with **479 overlay nodes
+and 727 outgoing overlay edges**. The old-node repair edge from
+layer eight remains separate. Six new name-hint groups bring the cumulative
+count to **108**; lexical similarity does not certify theorem reuse.
+
+The substantive reuse routes connect `finiteMemoryCheck` correctness to
+`finiteRelationViabilityCheck_correct`, and connect the bounded-horizon
+criterion and the actual controller's all-times occupancy to the prior
+`initial_viability_iff_exists_zero_uncovered_policy` and
+`zero_uncovered_iff_support_certified` theorems. The Boolean decision witness
+and the stationary-feedback separation use their respective actual initial
+laws and deployment row laws. The registered graph is checked against the
+native proof constants, rather than inferred from source text.
+
+The mathematical boundary is explicit:
+
+- Nonempty supports lying within an observation fiber form a finite arena
+  of size `M`. The decreasing support iteration stabilizes by `M` and yields
+  its greatest fixed point. The ambient observation type need not be finite.
+- The complete autonomous support controller's memory type has exactly
+  `M + 1` states, including the empty support, with `M + 1 ≤ 2 ^ |X|`.
+  Every nonwinning memory uses one fixed fallback PMF.
+  Under exact fixed-support and certification matching,
+  its memory equals the actual trace support on every complete history.
+  Its own deployment row law has zero uncertified occupancy at every time
+  precisely when the finite initial-support criterion holds. Numerical
+  transition probabilities may still vary with time.
+- The executable Boolean criterion uses `B = 2 ^ |X| - 1` and the existing
+  finite-horizon recursion. Exact initial support, transition support and
+  certification matching are theorem premises. The implementation does not
+  supply an elimination algorithm, a dynamic-programming complexity bound,
+  or a computable winning-action table; the general action selector retains
+  `Classical.choice`.
+- The two-state singleton-initial experiment admits an autonomous memory
+  controller, whereas every fixed randomized observation feedback satisfies
+  `U₀ + U₁ = 1`. The checker also rejects mixed initial support under a
+  different, explicitly uniform initial law. The witnesses do not identify
+  the handwritten Boolean controller with the general support controller.
+- Zero uncertified occupancy does not by itself imply physical safety.
+  Source-supported consistency does not change the reference process's
+  fallback or check budget. Fixed killed matrices still need numerical
+  homogeneity or a justified finite-phase extension.
+
+The metadata registration adds only `lexical_pr_preflight` and
+`registration_provenance` to the raw candidate and archives the original
+execution bytes. The existing nine overlays, historical receipts, 37
+equal-type groups, 77 equal-type names, 15 near-type pairs and 68-row clone
+index remain intact. Consumer regressions separately check complete native
+ownership and proof edges, the concrete reuse routes, and the metadata-only
+registration. Their actual execution is a subsequent consumer gate.
+
+The [results and boundaries](../../unified_closure/finite_memory_v1/RESULTS_AND_BOUNDARIES.md)
+state the exact hypotheses and remaining work. Frozen 106 P-ID counts remain
+11 generated / 89 adapters / 6 boundaries, the four counted generators are
+unchanged, and strong global mathematical closure remains `NOT_ESTABLISHED`.
+
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -780,19 +874,19 @@ against its immutable 68-row table.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_LONGTERM_CONTROL_STATISTICS_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  nine governed overlays extend the live census to 678 = 667 + 11.
-- 3,793 immutable-base public source theorem proofs + 444 governed registrations
-  (including one historical public-name repair) = 4,237 live graph nodes, with
-  5,567 direct registered-source theorem
+  ten governed overlays extend the live census to 684 = 673 + 11.
+- 3,793 immutable-base public source theorem proofs + 479 governed registrations
+  (including one historical public-name repair) = 4,272 live graph nodes, with
+  5,614 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
-  The ninth adds 149 edges, giving 680 outgoing edges from overlay nodes;
+  The ninth adds 149 edges and the tenth adds 47, giving 727 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -810,7 +904,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 678 modules and rejects any difference
+  The current scanner recomputes all 684 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -843,7 +937,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 678-module live source census. It refuses to
+overlay-chain hashes against the exact 684-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

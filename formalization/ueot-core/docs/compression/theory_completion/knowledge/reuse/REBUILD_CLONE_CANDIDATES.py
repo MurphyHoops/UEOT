@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Reproduce the 68 cross-module source snippets from the verified live census.
 
-The current census is 678 modules (667 maintained and 11 adapted upstream):
-immutable 633-module base plus nine governed overlays: relation/defect
+The current census is 684 modules (673 maintained and 11 adapted upstream):
+immutable 633-module base plus ten governed overlays: relation/defect
 MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk,
 statistical-risk, deployment-joint, support-viability, registered-interfaces,
-and long-term/control/statistics. The historical 646-module rescan reproduced
+long-term/control/statistics,
+and finite-memory. The historical 646-module rescan reproduced
 all 68 archived rows
 exactly. The current scan must independently match those immutable rows;
 the historical result does not certify a later source census.

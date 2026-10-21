@@ -1,0 +1,88 @@
+{
+  "state": "OPS_CANONICAL_MAIN_VERIFIED_AND_OWNED_REMOTE_RETIRED",
+  "main": "299a4e3a71914af064ccd7916bb285bac201f62a",
+  "head": "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+  "tree": "2bc57ddb0d1720b19496228d0edfa6529dc3fd9f",
+  "deleted_in_this_execution": true,
+  "utc": "2026-10-21T17:10:01.544152+00:00",
+  "logs": [
+    {
+      "args": [
+        "git",
+        "rev-parse",
+        "299a4e3a71914af064ccd7916bb285bac201f62a^{tree}"
+      ],
+      "code": 0,
+      "stdout": "2bc57ddb0d1720b19496228d0edfa6529dc3fd9f\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "rev-parse",
+        "116b3477bfc42a626613303e82aedb1fc2d7a84c^{tree}"
+      ],
+      "code": 0,
+      "stdout": "2bc57ddb0d1720b19496228d0edfa6529dc3fd9f\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "116b3477bfc42a626613303e82aedb1fc2d7a84c",
+        "299a4e3a71914af064ccd7916bb285bac201f62a"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin",
+        "refs/heads/main"
+      ],
+      "code": 0,
+      "stdout": "299a4e3a71914af064ccd7916bb285bac201f62a\trefs/heads/main\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin"
+      ],
+      "code": 0,
+      "stdout": "299a4e3a71914af064ccd7916bb285bac201f62a\trefs/heads/main\n116b3477bfc42a626613303e82aedb1fc2d7a84c\trefs/heads/ops/compression-finite-memory-evidence\nbc2557228e2c545084a2473300e85eae447069ce\trefs/heads/qm/upgrade-core-v3-v31\n00bf88231328c09b9af58d0ff3c8eec977d73c53\trefs/heads/qm/v31.6-core-selection-doob-20261020\nfed60e02abe296cb6962451fa91ca68b72aa60b1\trefs/heads/qm/v31.6-main-evidence-20261020\na89bc691e698391d03ff7b705cc76def1fa3512e\trefs/heads/qm/v31.7-purification-record-dynamics-20261020\n032e763ab87e64488e1ff2c96aadd32b5c533a82\trefs/heads/qm/v31.7-remote-acceptance-20261020\ne750d5d401e4a8087bcd62af70818b885d9a505a\trefs/heads/qm/v31.8-remote-acceptance-metadata-20261020\nd9a1858c86ca82e08ae862389b51c1ea76690c24\trefs/heads/qm/v31.8-separation-purity-action-budgets-20261020\n27f6ac776c562512451000d5957087d3ecdcd086\trefs/heads/qm/v31.9-trace-distance-minimal-purification-stopping-20261020\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "git",
+        "push",
+        "--force-with-lease=refs/heads/ops/compression-finite-memory-evidence:116b3477bfc42a626613303e82aedb1fc2d7a84c",
+        "origin",
+        ":refs/heads/ops/compression-finite-memory-evidence"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "To https://github.com/MurphyHoops/UEOT.git\n - [deleted]           ops/compression-finite-memory-evidence\n"
+    },
+    {
+      "args": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin"
+      ],
+      "code": 0,
+      "stdout": "299a4e3a71914af064ccd7916bb285bac201f62a\trefs/heads/main\nbc2557228e2c545084a2473300e85eae447069ce\trefs/heads/qm/upgrade-core-v3-v31\n00bf88231328c09b9af58d0ff3c8eec977d73c53\trefs/heads/qm/v31.6-core-selection-doob-20261020\nfed60e02abe296cb6962451fa91ca68b72aa60b1\trefs/heads/qm/v31.6-main-evidence-20261020\na89bc691e698391d03ff7b705cc76def1fa3512e\trefs/heads/qm/v31.7-purification-record-dynamics-20261020\n032e763ab87e64488e1ff2c96aadd32b5c533a82\trefs/heads/qm/v31.7-remote-acceptance-20261020\ne750d5d401e4a8087bcd62af70818b885d9a505a\trefs/heads/qm/v31.8-remote-acceptance-metadata-20261020\nd9a1858c86ca82e08ae862389b51c1ea76690c24\trefs/heads/qm/v31.8-separation-purity-action-budgets-20261020\n27f6ac776c562512451000d5957087d3ecdcd086\trefs/heads/qm/v31.9-trace-distance-minimal-purification-stopping-20261020\n",
+      "stderr": ""
+    }
+  ]
+}

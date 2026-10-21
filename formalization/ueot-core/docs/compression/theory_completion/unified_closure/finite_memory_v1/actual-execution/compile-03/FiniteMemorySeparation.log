@@ -1,0 +1,42 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:113:23: error(lean.unknownIdentifier): Unknown constant `ENNReal.zero_toReal`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:110:6: error: unsolved goals
+case neg
+ρ : PMF Bool
+n : ℕ
+x : Bool
+hstate : ∀ h ∈ (microLaw initial observe source (stationaryPolicy ρ) n).support, riskLastState n h = x
+h : CausalHistory Bool (Bool × Bool) n
+a✝ : h ∈ Finset.univ
+hh : h ∉ (microLaw initial observe source (stationaryPolicy ρ) n).support
+hz : (microLaw initial observe source (stationaryPolicy ρ) n) h = 0
+⊢ (ENNReal.toReal 0 *
+      ∑ x,
+        ((stationaryPolicy ρ n (riskHistoryMap observe (fun ax => (ax.1, observe ax.2)) n h)) x).toReal *
+          if certified n (riskLastState n h) x then 0 else 1) =
+    ENNReal.toReal 0 * (ρ !x).toReal
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:109:62: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [stationaryPolicy, certified, hlast]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:113:44: warning: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hz, ENNReal.zero_toReal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:127:2: error: Type mismatch: After simplification, term
+  hh
+ has type
+  h ∈ {false}
+but is expected to have type
+  h = false
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean:142:4: error: Type mismatch: After simplification, term
+  hb_support
+ has type
+  b ∈ {false}
+but is expected to have type
+  b = false
