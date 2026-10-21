@@ -1,0 +1,60 @@
+{
+  "schema": "ueot_qm.v31.9.independent_claim_binding_review.v1",
+  "status": "CLEAR_FOCUSED_SCIENCE_EVIDENCE_AND_CHAPTER_BINDINGS",
+  "reviewer": "B / v319_purification",
+  "reviewed_at_utc": "2026-10-20T16:05:24.553891+00:00",
+  "final_scientific_evidence_review": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/B_C_v319_final_evidence_review.json",
+    "sha256": "1e981c69263c29128c7771f4bced98815a1b884a332cc5cc44e4ddfa1fb48d2d",
+    "bytes": 42957
+  },
+  "author_lane_aggregate": {
+    "path": "physics/qm/kernel/evidence/v31.9/C/accepted-lane.json",
+    "sha256": "e8dbd29ec3474299093ff5f8a26ee4b58de3cced5bdaeecf9232819830c3efb9",
+    "bytes": 40392
+  },
+  "author_claims": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/C_v319_claims.json",
+    "sha256": "ce24c4586e5391de18eba1618cd28674af11d933d40d355964bf9819042efc00",
+    "bytes": 15649
+  },
+  "author_chapter_draft": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/C_v319_chapter65_draft.md",
+    "sha256": "18dd90af179cf78d23a41b64c04efc02dfce120da08256b47fa419eea2cca741",
+    "bytes": 13884
+  },
+  "result_ids": [
+    "P-STOP-01",
+    "P-STOP-02",
+    "P-STOP-03",
+    "P-STOP-04",
+    "P-STOP-05"
+  ],
+  "all_new_public_and_witness_names_actually_audited": true,
+  "all_claim_witness_references_in_actual_witness_log": true,
+  "inherited_support_names": [
+    "UEOTQM.ActionRecordBudget.run_distance_le_actionCost_sum"
+  ],
+  "inherited_actual_axiom_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.8/proof-axioms.json",
+    "sha256": "2912833852317ff46061d5a1f8ff3ddd68556e1a941433e53bdeecfdeaa85bd6",
+    "bytes": 117466
+  },
+  "inherited_source": {
+    "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
+    "sha256": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a",
+    "bytes": 20678
+  },
+  "scope": "The five chapter results match the full proof/witness statements, explicit prerequisites and counterexample. The one inherited fixed-depth theorem has actual historical audit/source support; root unified acceptance separately audits the entire current package. Book source integration/typesetting and remote acceptance are not inferred from this review.",
+  "explicit_scientific_boundary_checks": [
+    "P-STOP-01 quantifies arbitrary complex input matrices and retains illegal-history zero blocks.",
+    "P-STOP-02 uses an actual CPTP isometry and legal complementary effect construction without a default leaf.",
+    "P-STOP-03 uses one shared finite stopping tree and actual J/sigma prefix weights, retaining initial error; epsilon requires all controller-selected histories including zero-weight ones.",
+    "P-STOP-04 proves both original/padded TV = 1/16 and a true all-input action defect = 1/4; differing initial inputs only have the stated initial-distance upper bound.",
+    "P-STOP-05 is an explicit counterexample outside the shared-controller premise: full record TV = 1, terminal quantum memories both equal the input. Its P prefix does not alter its negative-control scientific role."
+  ],
+  "findings": [],
+  "new_compiler_invocations": 0,
+  "canonical_book_gate": "PENDING_ROOT_INTEGRATION_AND_TYPESSETTING",
+  "remote_gate": "PENDING"
+}

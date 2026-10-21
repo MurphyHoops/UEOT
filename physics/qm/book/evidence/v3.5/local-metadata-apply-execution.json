@@ -1,0 +1,1637 @@
+{
+  "schema": "ueot_physics.local_metadata_apply.execution.v3.5",
+  "status": "PASS_APPLIED_MATCHES_REVIEWED_DRY_RUN",
+  "started_at_utc": "2026-10-20T16:28:55.105182+00:00",
+  "finished_at_utc": "2026-10-20T16:28:55.873175+00:00",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/f11b4261e187/handoff/qm319_finalize_book_local.py",
+    "--root",
+    "/workspace/scratch/f11b4261e187/qm_v318_work",
+    "--context",
+    "/workspace/scratch/f11b4261e187/handoff/qm319_book_context.json",
+    "--apply"
+  ],
+  "cwd": "/workspace/scratch/f11b4261e187/qm_v318_work",
+  "exit_code": 0,
+  "actual_inputs": {
+    "helper": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm319_finalize_book_local.py",
+      "sha256": "d310d32ace9c7c78335a3c36ab8b09197f02367e6093c542c244bb890125ae2c",
+      "bytes": 62666
+    },
+    "context": {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm319_book_context.json",
+      "sha256": "1331406e5c5171bc8c9988da8057268cf04cdfd1665464a65552f34b54f674af",
+      "bytes": 1043
+    }
+  },
+  "reviewed_dry_run": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_book_local_dry_run_001.stdout.json",
+    "sha256": "cb0933c192acd3753f33b61743d6b85d731418aa6dad8a264ea435a724eda76e",
+    "bytes": 3996
+  },
+  "reviewed_dry_run_receipt": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_book_local_dry_run_001.json",
+    "sha256": "938eda32777cca8665a757ae149b94331097f011137e25e6e394daf8411e8622",
+    "bytes": 1581
+  },
+  "stdout": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_book_local_apply_001.stdout.json",
+    "sha256": "a7dbd73c77d795f725305c98d8404f763b147aea97d0ea7ffb2974c29ff7f6c6",
+    "bytes": 4010
+  },
+  "stderr": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_book_local_apply_001.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "actual_outputs": [
+    {
+      "path": "physics/qm/book/evidence/v3.5/source-manifest-prior-v3.4.json",
+      "sha256": "1ca1ebd1a0fe9f65849f36673bcb98e5759df7a4bbc93240e61575a7531f6ffd",
+      "bytes": 24854
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/dossier-prior-v3.4.json",
+      "sha256": "f01f6744e8e12c98804cd2efbe4b49b52b1e51927eb13778c51c00deea3738ce",
+      "bytes": 943039
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/readme-prior-v3.4.md",
+      "sha256": "35fad0bd803701f70dda26956a32ea16c0c1c19b1e4256bdec5aa5123dd69779",
+      "bytes": 8039
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/chapter63-bindings.json",
+      "sha256": "aaf08c6b9233abba64bc12b842b1c7798aa6823c48a65f50a411c87004a5686a",
+      "bytes": 41452
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/chapter64-bindings.json",
+      "sha256": "f7cab99420cdf96fd54ba6bd6f9949d051f6195e31a9ddca705dde68ea800884",
+      "bytes": 47290
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/chapter65-bindings.json",
+      "sha256": "747180e4d022c1261f39d8bc16e5681e5a23eed6fa48607f626a26e3d346dcab",
+      "bytes": 68585
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/legacy-source-reuse.json",
+      "sha256": "d4989efed9facced85456d0943a57ee55c478e56d9b94d16353fa031d4c1062c",
+      "bytes": 2115
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/prior-v3.4-preservation.json",
+      "sha256": "87b881816700568fc7ce6a6f41f7eca13a512079cdf438d74a682f6d6c9dc812",
+      "bytes": 32462
+    },
+    {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "c651ed0e093a835f3a3191b029bc42f64cd6274e75a39d1ad5b9750857d19e75",
+      "bytes": 27100
+    },
+    {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "77423711cf77278919efee1d8e5ec655afa47a4c88f49e0bdd935fa88dfb46ef",
+      "bytes": 1112855
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/metadata-helper.py.txt",
+      "sha256": "d310d32ace9c7c78335a3c36ab8b09197f02367e6093c542c244bb890125ae2c",
+      "bytes": 62666
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/metadata-context.json",
+      "sha256": "1331406e5c5171bc8c9988da8057268cf04cdfd1665464a65552f34b54f674af",
+      "bytes": 1043
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/dossier-review.json",
+      "sha256": "7632d793bc4c671198a64709ec3774c05bbc292b3fb640069af4146d652356ee",
+      "bytes": 23846
+    },
+    {
+      "path": "physics/qm/book/README.md",
+      "sha256": "bb72f735a82434ad68ec2cd351b496d57ccf3ca2c8ec36a6f7e913b07b44c2be",
+      "bytes": 5483
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.5/local-release-gates.json",
+      "sha256": "c704ae99e0b9bffcb9750f5a5b655614b57c1fbd72f4e688d441acd822845d90",
+      "bytes": 9927
+    }
+  ],
+  "all_output_identities_equal_reviewed_dry_run": true,
+  "protected_input_count": 285,
+  "protected_input_identities": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/z.manifest.json",
+      "sha256": "84e859a98fa96ab3b92f151b17d42d0e468579226927cabc0e1fed1d58db13a9",
+      "bytes": 3885
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean",
+      "sha256": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8",
+      "bytes": 4356
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/record_source.py",
+      "sha256": "be184e05f63b2fec1a879f5c32f3b053fb94b5a39e4ffab5bee3a6b03e3eb14f",
+      "bytes": 2516
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/book-structure.json",
+      "sha256": "669546f1e0a495910cfa5a87b1bfb2eebd9c25b4e8c8f2e22f7ab325d02291de",
+      "bytes": 9703
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/xelatex-pass-2.log",
+      "sha256": "c8855e7efbe6a009ab16435471b547165e8830913fbece689aa6ab745dcb806d",
+      "bytes": 12493
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/03-long-lines/xelatex-pass-3.log",
+      "sha256": "d5c58784255b92a70ca90675148a8cbb5ad11901841952cbf7e988e16563de64",
+      "bytes": 22636
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/new-chapters-integration-review.json",
+      "sha256": "877d41d1a78b645780dfd55947a0188bb76162705522674a126e336163c3e548",
+      "bytes": 1205
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/lakefile.lean",
+      "sha256": "ad870bfd6d91841f30d37e90a2738a69b35696f43709dbf788189874b1c6b805",
+      "bytes": 147
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/pdf-render-manifest.json",
+      "sha256": "1d905edea0e4931223aa1c1ecee286c3c1f964de7b6f39f6a84c671ab8cf1fc1",
+      "bytes": 77690
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/verify_frontier.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/04-publication-identity/xelatex-pass-2.log",
+      "sha256": "0b26069366f86946f3dc8ebd9ccfac1b932cc8666190b729521f04948bc5d97f",
+      "bytes": 17939
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/02-font-merge/font-helper-attempt01.py.txt",
+      "sha256": "826fedde7f22f36cc196996b0ad55a2f7fa83823670ae2aca4096ecf801b5117",
+      "bytes": 2318
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/spectrum.py",
+      "sha256": "ae44f2a40058ef650f53810dfeab9f0de53f02c986b803561e79a7182224c2b7",
+      "bytes": 17298
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/check_dependencies.py",
+      "sha256": "7c44ebafdda00711137faeb1b09cdb26694a82d83f0ea1173de17a370de5f996",
+      "bytes": 917
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/ClassicalQuantumMemoryExamples.lean",
+      "sha256": "edd43b953001002b2f2aaa44a424da0e1beb0b5a0201ff7a6fba54bb405ce8e9",
+      "bytes": 9935
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/demo_v315.py",
+      "sha256": "0c9fd677c56a9506c37149d6494c473a73e233361a48e61e063289b79957336e",
+      "bytes": 3803
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/hz.lean",
+      "sha256": "e49193f5a39afa46e85e2fa9cb147d886475a51a95ced78bac94dad8f4c41939",
+      "bytes": 4706
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-render-manifest.json",
+      "sha256": "c29a9ef42d3f2a1b73d0bf30694c3af17b11c668dba30cecb97beab3256fa035",
+      "bytes": 10456
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/03-long-lines/xelatex-pass-2.log",
+      "sha256": "d5c58784255b92a70ca90675148a8cbb5ad11901841952cbf7e988e16563de64",
+      "bytes": 22636
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/dossier-review.json",
+      "sha256": "4a60de4a24488e625d66cec2cb2e7d110b7fee32a904145304bd8290d31cca9a",
+      "bytes": 22914
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Operational.lean",
+      "sha256": "0bae3c96b1facca3f51fe9189a6e05efeb1b532c29cb5854d860f76878162012",
+      "bytes": 10574
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/readme-prior-v3.3.md",
+      "sha256": "70c605d4c0c21ffe4d106fef2686493ffbc134fdd6cc582441fed72258f6c41c",
+      "bytes": 8401
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/book-structure.json",
+      "sha256": "cb2d8e164087d1171fa465f91417914a4b8e083f52d8b311a483259e52a5984e",
+      "bytes": 17680
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+      "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+      "bytes": 11940
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/canonical-layout-adjustments.json",
+      "sha256": "f0c2481d98b1e4bee73fc2b0d5a748232d10bc4fd9168573d0bc2f8a13060e69",
+      "bytes": 1084
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/QuantumDoobExamples.lean",
+      "sha256": "5fbe70aca27378fead77fdb52658bb048463eff3b1e7e1299a43e5f40e2d456a",
+      "bytes": 12749
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/04-publication-identity/source-before-publication-identity.md",
+      "sha256": "9489b43f341b513c99b2fc4f85ae72bb2135602c78a65b91f45571fc63749efe",
+      "bytes": 578444
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/lean_export.py",
+      "sha256": "f639aa5941f89811b65e728b0c43083814fff0ac2664a009c8d48aaa517cfb4a",
+      "bytes": 13684
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/03-long-lines/pdf-build.json",
+      "sha256": "d491fc745830d19384ae4a92aac20879a6aff7a39e1a79ee5b72eed49520814e",
+      "bytes": 1911
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/metadata-update-review.json",
+      "sha256": "d97e4062f8f29843f4e38f1d5e52c12ae3594c687ce2b12d09559df1104c1f72",
+      "bytes": 1825
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/canonical-integration.json",
+      "sha256": "c04174aeb7a66e7ffe93c580864b339e656fde0c38a3d65b18227839d784fe4f",
+      "bytes": 4925
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter-inputs/qm318_chapter60.md",
+      "sha256": "1bca36592b07dd74de3f22f70ba08c155c7c07c4b46344b98752e16f5f8590be",
+      "bytes": 20458
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/01-font-coverage/xelatex-pass-1.log.gz",
+      "sha256": "5886d28cacae72aeaaf2b20fb46404e4428d15e2e65486f5e0de754595a1630d",
+      "bytes": 252342
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/dossier-prior-v3.3.json",
+      "sha256": "11015ff5c459f9986d532c5a1115673f9f4d3f1adc1cc4fae8d591de273704b7",
+      "bytes": 668310
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/UEOT_PHYSICS.md",
+      "sha256": "b726e3b9033d79ef949b8e83469901fe728aa28ab204b2e4d55bf36a18b412f0",
+      "bytes": 631531
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/UEOT_PHYSICS.pdf",
+      "sha256": "3668cb3094d3813c6a4657f2f2cfb187ae5f4e25d8184c3b7ab2ab1a820bc256",
+      "bytes": 1246121
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/pdf-visual-review.json",
+      "sha256": "dcebcd6d9f68c3b469090f57f7acf92b94e506d514e5387f129c57f11603af32",
+      "bytes": 9769
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/prior-3.1/README.md",
+      "sha256": "c4e3c35d8b56f411c2037d3ca6bc4d10dc832f648b0f242484e60e11899c0b6e",
+      "bytes": 10378
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/header-initial.tex.txt",
+      "sha256": "4463ca80b3ccaf2ea3f035cc8031ffdea7cfbb67cab0269cf8dd0196dfa770c1",
+      "bytes": 1905
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/pdf-collaborator-review.md",
+      "sha256": "2b201a40c06727baeb5770ee26d3957b978156b45ba1b285103d7d09c1a7adc5",
+      "bytes": 2163
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/foundations-checks.json",
+      "sha256": "e390b6802a1d08beed09ec893ed99776d6ca4c0aa22df071fb04bff54138a134",
+      "bytes": 578
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter-inputs/qm318_chapter62_bindings.json",
+      "sha256": "a98b5246b08cc9ddf0f3bb13e19d6d3e5dc86992d10b670eecd68683c7a23f97",
+      "bytes": 25889
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Stability.lean",
+      "sha256": "de253ab45a4e45e2c8457dcbf3ad0c5cfd553e13a3a1dbc791f7d59eb2b5d389",
+      "bytes": 14431
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM.lean",
+      "sha256": "c75267a8d722bf3c4e27692e187d3c28bd16dac73d06443105811b8d7ebf5490",
+      "bytes": 1210
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/book-structure.json",
+      "sha256": "d55b33cddc4c18bc4f6c931ac2af0f76b108ca1a0406c20cee87fe1ec20e8b20",
+      "bytes": 15453
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/QuantumDoobDynamicsExamples.lean",
+      "sha256": "40d1af7c59ccbca3902b84004f3d9ec7ba29f690a1789879f1c3e5fd351cf2a6",
+      "bytes": 8920
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/visual-history/review-initial.json",
+      "sha256": "abd76f2b91d893a46779468448ce028ddc987c147acdc3025b1d52d46b41f549",
+      "bytes": 16743
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Exact.lean",
+      "sha256": "1160e084a3761179cf2a2fb8df9246d263088ecb28f54d6d5fe1a86f179eb915",
+      "bytes": 9932
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/d1.lean",
+      "sha256": "47aa82621e7bb6877ca10b83888671022b7ccd89ed9452064c2ccb2630a386f6",
+      "bytes": 3403
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/archive-manifest.json",
+      "sha256": "2dc3911e22c36de30e49d57ca1e197bfc68781e298382446d8848e03e46bdaa8",
+      "bytes": 7575
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Observables.lean",
+      "sha256": "f3067163eff01e90e06467e3505d895979bf09ceec494046e791cd293189bd42",
+      "bytes": 10673
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/finite_dynamics.py",
+      "sha256": "5f7f78b37e67fd1dc0b1c856f474850e50e4e664b806ddd9adb54fb9cc8429a6",
+      "bytes": 6949
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-assembly.md",
+      "sha256": "61853c573ed9f5522fcdb99bb000fb69492f61450216dbe9e7342650458e90ea",
+      "bytes": 1024
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/01-font-coverage/xelatex-pass-3.log.gz",
+      "sha256": "807b023bbc4264959a3cb6ddb27e9a5c16610a2035d771c987db04fb9df4629e",
+      "bytes": 253482
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/preacceptance/CHAPTER_DOSSIER.json",
+      "sha256": "f67408b4ae76d187815b4998928f2d0277b0f9f2f613b91ea0631f0205b56d23",
+      "bytes": 426956
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Transport.lean",
+      "sha256": "e117c7904b6f8c755d5a35c25d2398fdbf727e4d90987096093e2b6423287f84",
+      "bytes": 3512
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/xelatex-pass-2.log",
+      "sha256": "93e94e0fa405a8d7a99ceb0c412a5dce37d4a24bd820fe55ea299e6b17f1949c",
+      "bytes": 20084
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/verify_completion.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/chapters-51-52-review.md",
+      "sha256": "d326d03643e392f9d3926248e3db25ab8b1c95bf4584507400ac67d78dec0b93",
+      "bytes": 10964
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/hz.manifest.json",
+      "sha256": "2d7111af0f88b862b3d5491a6f0a5ec487c8755fcef9483ef0bb920441a7a3cf",
+      "bytes": 5077
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter62-bindings.json",
+      "sha256": "a98b5246b08cc9ddf0f3bb13e19d6d3e5dc86992d10b670eecd68683c7a23f97",
+      "bytes": 25889
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/predictive.py",
+      "sha256": "5eacaae2ba7c8b2d18b86734feed8cbd73744665fbfc4059582c0d70ee10844b",
+      "bytes": 11395
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/metadata-context.json",
+      "sha256": "39355e28daa1fad4d5d1a754de7f0434b8be727ced76a38295882fd00b115d71",
+      "bytes": 574
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/SurvivalTwoState.lean",
+      "sha256": "075e56765dc9c2c4cb53fc6e6411cd2e670906eed1e6f46b0e126f35e186b4c1",
+      "bytes": 6331
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/preacceptance/source-assembly.json",
+      "sha256": "cccae3ee96fd800a8fce232631f83731f53159fcaaee65c395104a93159960fa",
+      "bytes": 1536
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/tests/test_lean_export.py",
+      "sha256": "e65eecf84e2b1052c3634d4e7bb274b6cd027f397ab2c2d59c8c6943f23a3446",
+      "bytes": 16801
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/editorial-acceptance.json",
+      "sha256": "bc133a4210a7976d6bc6431a518f8d5e7749a69407850c1edd8a8a5c39c46b8c",
+      "bytes": 1939
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/dossier-review.md",
+      "sha256": "f74247911840277ec8b5e3b49607f645d076b229123f654ad7b3c2ea7cfa2acc",
+      "bytes": 2009
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/UEOT_PHYSICS.tex",
+      "sha256": "c8dfe618864abade0ef5d11aa6ed607522a9c94a79e12a0a7e863d6becc0637e",
+      "bytes": 743425
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/source-assembly.json",
+      "sha256": "49425799c1360d2580a0a377a47e3076c4c11ad6edd43b00aab0a41da6ba8b42",
+      "bytes": 1052
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/xelatex-pass-1.log",
+      "sha256": "36c47b886ea53d4bcf257b3260d161fadc11fe208aea4ba7604669906a662c95",
+      "bytes": 13561
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/04-publication-identity/pdf-build.json",
+      "sha256": "beb086ea223b29f2cba43b3b43f0481c040fda03fc0b28233e26399eb8f84078",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/RealLocalTomography.lean",
+      "sha256": "76dfea1aa3ad7f16e699a8529bde5f22120badac9a1db60f0265eaef4eeddc9e",
+      "bytes": 13372
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean",
+      "sha256": "53d957159fa6cf743c4e146e7d146385af81b7ec9c5a12204f90e488d870bce4",
+      "bytes": 16021
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+      "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+      "bytes": 12648
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PurificationIsometry.lean",
+      "sha256": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362",
+      "bytes": 6493
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/remote-publication.json",
+      "sha256": "d7fce879ea7fc673df57f7d95f8c244a5434261792cd9d2ef55eb3ea9a887767",
+      "bytes": 29141
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/MixtureExamples.lean",
+      "sha256": "11e2802dcda88a4a752f300664ebea4c31d95b33a05dc4538e631184b6622ffd",
+      "bytes": 4139
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-collaborator-review.json",
+      "sha256": "0647180da6a03d14c79f556146738993861e8a06f46b0ba765aa28f39ad5c36e",
+      "bytes": 14482
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/pdf-visual-review.json",
+      "sha256": "4212d88f9b449e9c168046d025edaea019d33bf68bf0ba558eb9a44fe918e026",
+      "bytes": 10230
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/instrument.py",
+      "sha256": "52cdbccd01bcb7dd231f33fa48dabb3ca717fea7fdcca47982f7e8eb04692757",
+      "bytes": 13097
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/05-render-before-review/pdf-render-manifest.json",
+      "sha256": "d231208e36798b4cbce33483ed81d00d30bef58b0e463e3a7a0c65f6ddf60976",
+      "bytes": 74756
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/xelatex-pass-2.log",
+      "sha256": "4b4a3406ec183261dac77c74a90678e1608ee2dc4b35ad48b5ec3c9ed43446c8",
+      "bytes": 17940
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/d4.manifest.json",
+      "sha256": "ca624feb2dcfdf831ba5995cff4b400eb07ac41fcb9c5d0d1483ceca119602ae",
+      "bytes": 4677
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/ExactCertificate.lean",
+      "sha256": "f6d6be579ccd9653ba373738408dd48f9220dc26fd733521d862374e0b8a6406",
+      "bytes": 8264
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-assembly-first-layout.json",
+      "sha256": "d58b9227c8044daace494626bc2029566e17dcf7c9fa9bee1801bf711e6c8e1c",
+      "bytes": 2701
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Adaptive.lean",
+      "sha256": "b5b9b717324c4d04df169e57c552e976b467609eff48fabea6db676f7f7ecad8",
+      "bytes": 6825
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-assembly-previsual.json",
+      "sha256": "468430b377b938606e0559e25d606d8011ef2b1078a647f97621935aee25e599",
+      "bytes": 2701
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/pdf-collaborator-review.json",
+      "sha256": "7358bdb6f4dbe08ed5c1246a6e40ac4dbd1ff2133faf9aa7391e5ae6d75c4bcf",
+      "bytes": 29840
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/xelatex-pass-1.log",
+      "sha256": "032638ba1cc7770bb77fcfeaf0558f65b95810a82ee5d89e5130c8dfb88c8d9e",
+      "bytes": 20146
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/pdf-render-manifest.json",
+      "sha256": "23ac76c8749cebb0904ef9d4245ee606aaf0f66415d13703b23e7f42b3071c21",
+      "bytes": 79358
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/local-release-gates.json",
+      "sha256": "51262531b9ffd571e269268841f755dd526baf822eea94e2df5dddc5b8666c50",
+      "bytes": 1840
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/visual-issue.json",
+      "sha256": "aad608f1644aefd898485dc307e5ad9b5eec95c99cd447688f2fa8cb8c940bcf",
+      "bytes": 2295
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/xelatex-pass-3.log",
+      "sha256": "4b4a3406ec183261dac77c74a90678e1608ee2dc4b35ad48b5ec3c9ed43446c8",
+      "bytes": 17940
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/exports.json",
+      "sha256": "12a9434554b839833c907543157dc04a3b7fb0f7f0b63762119359ac728666ec",
+      "bytes": 6716
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/xelatex-pass-2.log",
+      "sha256": "23bccd7f179597c035a5cbe837b534cb78609a9d4b309c95be0d4206f6597792",
+      "bytes": 13499
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/advanced-source-catalog.json",
+      "sha256": "113be185d0d0ba2e24f34bce0810040b33516a4ac9b2b24bc820ad0806cf2701",
+      "bytes": 17705
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/02-font-merge/font-helper-diagnostic.log",
+      "sha256": "0d8680dca934834c66648a1fc479cb6024257375a8ded602e0f64a7976f9c670",
+      "bytes": 7828
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/font-cleanup-review.json",
+      "sha256": "12eb5a877291689fcc74702156a0e1739ea1b1d0910a61f1f6268050f5ba801f",
+      "bytes": 4221
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/build-environment.json",
+      "sha256": "82fdd9ec5c2a898bd70a5655402b5d71054a1b458b84dbb610bae98fd2ee4252",
+      "bytes": 721
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/04-publication-identity/xelatex-pass-1.log",
+      "sha256": "9f66f43d9f5c2ba6a833561ca7e6beaf7660beed95d6b750be23cff4f2cf3abc",
+      "bytes": 18001
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/QuantumDoob.lean",
+      "sha256": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+      "bytes": 15793
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/__init__.py",
+      "sha256": "df01792238c956b1567bfd0e27ecde9286e2acd9973ddd395b555bac9326eff5",
+      "bytes": 2462
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/check_axioms.py",
+      "sha256": "5ee27622fdf8200f34945abf8354ad5ba3598b0adfba4b206d9e9368cf9aec4a",
+      "bytes": 1552
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-initial-build.json",
+      "sha256": "e23778df34c2424302bcd151c9338cd4f06aa218a23dea76297e8ce65fffafc6",
+      "bytes": 1219
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/01-font-coverage/attempt-summary.json",
+      "sha256": "da9cd5a5f2ebcbde18a6e8dd9494c31fed9ba2ec846943891eeb3b557f047852",
+      "bytes": 7035
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/demo_v312.py",
+      "sha256": "97bc5f44c82e9f0e28472d10bb7c78cca2f96594a6750aa5b73caca94afba06e",
+      "bytes": 5153
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/verify_completion.json",
+      "sha256": "e443fd611b915aebc6ed0f64735ae4f208c39ef9606558956c3604ed44ce1aa5",
+      "bytes": 3727
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Mixture.lean",
+      "sha256": "520d432d9d055b3260c2f90ea8ad68f93d14d4acae51e32faa28f49bdd3d601a",
+      "bytes": 14681
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/new-chapters-integration-review.json",
+      "sha256": "2996b1abf9320729eb4185a4490caec0ebcffb3268a36fc8bbf5c47caab4063b",
+      "bytes": 5656
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/UEOT_PHYSICS.tex.gz",
+      "sha256": "517fa2d21b783e1f76382df39247c7ea69d7da089faaf7528b18e0b5d7c73f06",
+      "bytes": 275248
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/HistoryChannels.lean",
+      "sha256": "04864b526fabe51d60efd776355fa33086781f30e6956698732edacf78571b5c",
+      "bytes": 12303
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/book-structure.json",
+      "sha256": "1c5720f2fc72c4510bba7618c9550fc1b1bfc60a761456b493a987cc491c1ac1",
+      "bytes": 13609
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/pdf-geometry.json",
+      "sha256": "dcaa38fdc794aa0b4aa90bad2b9a2ed77b411b5042e8ab4e4085cb1106d80834",
+      "bytes": 777
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-visual-review.json",
+      "sha256": "d15ac663ce2409c034950860b5e0a56c7e8c2234942b016e8bf4ab261dffdf4b",
+      "bytes": 2433
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/ActionRecordBudgetExamples.lean",
+      "sha256": "169eca4505e33561d7c364267ae206c0674a36e9fe61393368b4b4d43c9d039e",
+      "bytes": 20626
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/appendix-identity-review.json",
+      "sha256": "e9aa354aafc827806c68b5b34c506c5555770d508bd5007f81deb1698695f4ec",
+      "bytes": 3636
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/pdf-collaborator-review.md",
+      "sha256": "8b26283ca7b843accb873a3239a10e7886362de77a677d237e8f0328a0b522a2",
+      "bytes": 2259
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/font-recovery.json",
+      "sha256": "007310a63f1138a1573fa45e818e63b3d8bb636214c386c5b19c5a68587ed06a",
+      "bytes": 1636
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/01-font-coverage/xelatex-pass-2.log.gz",
+      "sha256": "99afc24654536e95385b15118950a5461a9606b30a3c8951f0771ad423fa7d06",
+      "bytes": 253482
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-previsual-build.json",
+      "sha256": "4034e0fcb81ae565d63649cf0dd39a30eb7272a15c5dc6067426c7b66253ba0c",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/representation_certificate.py",
+      "sha256": "2671790d364aabfbb937f44ae14dbdc82708caf44c72e704315e1c5af92d95c0",
+      "bytes": 16876
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/font-identity.json",
+      "sha256": "b5477c6c08d8690b9005cac6ca1530ba197507eef8bf6343a468a3aea35d9d53",
+      "bytes": 1262
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/pdf-raster-update.json",
+      "sha256": "8afe98d4d1d348ae9423d5ae779533aef08b535f14fc1f603cb91bf6d1917e92",
+      "bytes": 59183
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/advanced_revisions.md",
+      "sha256": "9b45513021e957e328a10a3c898edeb7d811d625fe6260fb676a19b6d1b4bca4",
+      "bytes": 53611
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-intermediate-first-layout.json",
+      "sha256": "0cf261cf43669660c4f77e8ede295dc352221882bdf9aadd520ad3f4fbfac3d2",
+      "bytes": 645855
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean",
+      "sha256": "200996515d4a4cfdf066b844e8d4904ed52f380f876feca162d6dc6f1f26cf80",
+      "bytes": 21786
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/metadata-helper.py.txt",
+      "sha256": "edc4cfd8e0f65ef06c8c22d4c9a02ca11e02dc4967a91b493fcb982132f1332c",
+      "bytes": 73720
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/repo_scope_and_advanced_review.md",
+      "sha256": "bc1ba8f417210f3d686bd237c8c62d9631ee4481dc14207a44a60e3ab4786cc1",
+      "bytes": 24345
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/book-structure.json",
+      "sha256": "376db18639beaec7581891e50b2635015846bb021ec56a82cd3fbca410d13c52",
+      "bytes": 11524
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/OperationalSystems.lean",
+      "sha256": "cb764474361fa833390fbe33e3d1b363a05c78639e0819d5d5de4648c1b5b55e",
+      "bytes": 19370
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/02-font-merge/font-helper-attempt02.log",
+      "sha256": "19a0cfa123ca72f63332585cac5c912185295c1a2372e6cc15e6f9b082e6678c",
+      "bytes": 1463
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Weighted.lean",
+      "sha256": "2910a80acb1a73c32bae7898773845b7db9cad7ea74b102ad6e51a473dc86b33",
+      "bytes": 7453
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/local-release-gates.json",
+      "sha256": "4b8e12a02b99f0bf559e55eed65dcf053708c07a1289a761f3f3956e138c6b2d",
+      "bytes": 4419
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/QuantumPurification.lean",
+      "sha256": "fb0692ed93c14aa7182cb09b3e205060f493f005672d16a69fc6e8da59ca5b6d",
+      "bytes": 11143
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/01-font-coverage/UEOT_PHYSICS.tex",
+      "sha256": "9538d3ab9969cd0049fd6d1fa8728246980d5f3fb9e6b6d60d99037d49261cf3",
+      "bytes": 678312
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/QuantumDoobModel.lean",
+      "sha256": "cf5df67eb83e3c14e20699947a1c2e922af53a19c6483d40b788e234c9e8b5f3",
+      "bytes": 7295
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/final-book-consistency-review.md",
+      "sha256": "c528c6cdfccfb0eac1eccf34295b735ab36b61451383bd357afef62b00a80ca4",
+      "bytes": 5989
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/canonical-integration.json",
+      "sha256": "a84bb7167fe85019b4bcbb25f082eda36843ab26387c9e70f56b60507d3d82d4",
+      "bytes": 15537
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/demo_v313.py",
+      "sha256": "d97421a9003bf085dc5f72cd9b297afe1a93b2a2fb68797b214e405c3f85c378",
+      "bytes": 5289
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-first-layout-history.json",
+      "sha256": "e7f6c9bcbd36b8cce04d37061e7706cb1d96f72e068d3077f9626722b031e218",
+      "bytes": 1412
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/remote-release-binding.json",
+      "sha256": "ae1962d978d3f7fa46989f8fad701eb75bb864730182a7786e63c270ffd9ea9e",
+      "bytes": 5991
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter-inputs/qm318_chapter61.md",
+      "sha256": "58f693773cd61a152e8b810664a8280a0265dd84cb4d5dc31f676623d9b3f474",
+      "bytes": 22878
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/tests/test_finite_dynamics.py",
+      "sha256": "781e3b9267578bc32b89dc0100e88d43500d7eb7a1828db3f9aa716d384aa7ca",
+      "bytes": 7866
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-review.md",
+      "sha256": "61853c573ed9f5522fcdb99bb000fb69492f61450216dbe9e7342650458e90ea",
+      "bytes": 1024
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/verify_ueot_quantum.json",
+      "sha256": "f09b62dc7df92afba8fb687d9f809b3f8f5cd85f63b1b3d5bbda48c09e337765",
+      "bytes": 19157
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/RectangularChannels.lean",
+      "sha256": "b097d5cb5eb5b141d051d8f65c7aff31c0d3a1b2f8d688548d8edf74f6a7a9a7",
+      "bytes": 13889
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/QuantumPurificationExamples.lean",
+      "sha256": "57b764a8d9b7787509a0f8a5e92f04a86abc5f3f4db58f3c441be2e29a1c3e34",
+      "bytes": 6655
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/CLASSIFICATION_MIGRATION.md",
+      "sha256": "935a91138dbca00399d5821db27413eb332fc01b679d0de1e9a7598eb1647bd1",
+      "bytes": 6494
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/pdf-collaborator-review.json",
+      "sha256": "c3b1ef36bdfdb1cdef5c41d23b9763c261ec78ed3cfe21010c1765c30b1d9a58",
+      "bytes": 9039
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/xelatex-pass-2.log",
+      "sha256": "93e94e0fa405a8d7a99ceb0c412a5dce37d4a24bd820fe55ea299e6b17f1949c",
+      "bytes": 20084
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/QuantumSeparation.lean",
+      "sha256": "c554f5c886f1c3f22c5ea543e0e818548697d88532419659b5aecb5095157357",
+      "bytes": 6450
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/xelatex-pass-1.log",
+      "sha256": "98c5c9db0d98baec1fb5e5d5263cac8a6221601240ac9b2fbb928b69fb79e3af",
+      "bytes": 13675
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/02-font-merge/font-helper-attempt02.py.txt",
+      "sha256": "c365534a1fb1a8027393b4356824f23bdaf4433e9b864e343571ef682ad463c6",
+      "bytes": 2603
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/algebra.py",
+      "sha256": "1a5ce84eb0ce42d16c3e7460dc8af88b0923d47393d681ffd821251ed9397653",
+      "bytes": 12237
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-previsual-render-manifest.json",
+      "sha256": "4fd91817c1ee8f9654e6d54471018fb8093cf76b4a7fd26da8083841ecada72b",
+      "bytes": 6659
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/qm319_render_book.py.txt",
+      "sha256": "44a334c4777d4b79e2a99aacb517aa82bc79bdec6ccc70a4b9ed07ad6cf7c9ce",
+      "bytes": 3839
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/typography-fix.json",
+      "sha256": "80b2f7fafeb0716203f6ce6f13c0e5b805a618a59a39d13d2f31b65c6216707e",
+      "bytes": 2160
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/prior-3.1/SOURCE_MANIFEST.json",
+      "sha256": "fb78dc96a077c539ad126f5630d85ddb27801d1eead5568c074c5506f8a9b2f8",
+      "bytes": 6035
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
+      "sha256": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a",
+      "bytes": 20678
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/xelatex-pass-1.log",
+      "sha256": "c8855e7efbe6a009ab16435471b547165e8830913fbece689aa6ab745dcb806d",
+      "bytes": 12493
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/d1.manifest.json",
+      "sha256": "b11d8c408eb0cdf0c56311db2c1199981764e0e414995c8e4632f8e2199c5553",
+      "bytes": 3522
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/ComplexLocalTomography.lean",
+      "sha256": "48b9867d67635ca9a33d8cb89a43f38c8bec1369111c1a00960675dad8e91d4d",
+      "bytes": 7285
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter-inputs/qm318_chapter62.md",
+      "sha256": "cc5c62dd05978691ee97d4417ac697168ed91a7c9ffc978a37147c3652cb5ba6",
+      "bytes": 21795
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/.github/workflows/ueot-qm.yml",
+      "sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e",
+      "bytes": 6477
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/hsz.manifest.json",
+      "sha256": "028936100a3527765db60c066c219c5ebc7eb7e3757b8463fa9855cee0cee00c",
+      "bytes": 6802
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/source-assembly.json",
+      "sha256": "994250258d5b4dfcb23e9f8072cabc9f35b9a2cf42d052b370789c09f8f4396e",
+      "bytes": 2325
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/preacceptance/dossier_review.md",
+      "sha256": "d52e97c2acadd6878495c709b1485e4f6344ef75b44492d8329e032bc58f424c",
+      "bytes": 4025
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/legacy-source-reuse.json",
+      "sha256": "96e55e4be93766f7cad1c64c76dcd805c0a5d2574d7160e8a04ed3a2b4e4bf8c",
+      "bytes": 2082
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/z.lean",
+      "sha256": "1910afc419c2388f0c79e001a8cf91134c4c40e71c2859d7eb6adf261e1ac647",
+      "bytes": 3837
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/core_foundations_review.md",
+      "sha256": "eab22ff1cf6cfeab6233371ef6e3b266c5b5c4f7a9dfad2b58a3f4fcfa23d19e",
+      "bytes": 14151
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-review.json",
+      "sha256": "6c723637fd9aee025973e322a933a66af9f9164e880da1e88ac8918d5ae9593b",
+      "bytes": 16093
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/pdf-collaborator-review.json",
+      "sha256": "37d5943b0bf9cefd284ea2c3d1159453fb7395d447eeeed626e7f7f544434713",
+      "bytes": 16514
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-prior-v3.2.json",
+      "sha256": "2a53c9294430bbe8d62bd1f746cac3a12464725ade69e6e4d753b9fb1981e93d",
+      "bytes": 445303
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/book-structure.log",
+      "sha256": "942c7122a6922576b35aa5273c2daab3836f6bdc7e907e2e912b085258daab70",
+      "bytes": 481
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+      "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+      "bytes": 7177
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/ClassicalSector.lean",
+      "sha256": "fed2036fce7ca658a74b7457316f6950727924c0f8abc0931a5d5f7ffe33bbb5",
+      "bytes": 11550
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/visual-history/render_manifest-initial.json",
+      "sha256": "2e7adf8a55586852d57d3ff4da3a43c389065d01d7eab828efb6e23a1cbfa5bb",
+      "bytes": 13469
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/ragged.lean",
+      "sha256": "47537f91789a9bd1604bd87fbc9ad3fb69df1d2466f02591c94ad6600c8a36a0",
+      "bytes": 6888
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/metadata-update-review.json",
+      "sha256": "9166272852625a5ed0d5cb17a7419cd80a0307136c6b665c6f01618aa96e0447",
+      "bytes": 5520
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/advanced_assembly_review.json",
+      "sha256": "890d8b29e1dd952832def8a642527b3244f9e033ca18000d624cd234151f4639",
+      "bytes": 994
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/hsz.lean",
+      "sha256": "21bf66a5f82638dfd92d2d6b2baddf7778210c6d64e2907ed173f72b842c1e75",
+      "bytes": 6000
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/xelatex-pass-1.log",
+      "sha256": "4610e040e5315a1c784b35105ad1388af87352dca2e8e0e97185ac6d8ea78f99",
+      "bytes": 18002
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/source-manifest-prior-v3.3.json",
+      "sha256": "cea806e2af3a8d45878aec004ba685448298acce4c58ad69b2306dfea8b016e6",
+      "bytes": 13776
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/qm319_prepare_font.py.txt",
+      "sha256": "25c99e794f298f5eeb4ee30f77b1d8cb42fba4134fff1d017266109c1cb14c5c",
+      "bytes": 3234
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean",
+      "sha256": "ee227ea4dcba6e9f2dafe33df614c382610f7468596d923489fc63e76a1556e3",
+      "bytes": 18035
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/tests/test_kernel.py",
+      "sha256": "479e4457e19094a78ddd759a1e9016b5ee9ad05af7741bd62b1780fc0d722108",
+      "bytes": 19457
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/03-long-lines/UEOT_PHYSICS.tex",
+      "sha256": "6d132fbc2d4592e01d5c60c4876a9f412f5b7401bebd308f358dabf225e97de9",
+      "bytes": 678312
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/pdf-build.json",
+      "sha256": "3ab4f984667cbbea98bd7f2772b07030143669ca9f9c58ac426e6222f4cf0f22",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Spectrum.lean",
+      "sha256": "1846371fda564385c799282bd5f2afcd7637ac3b3dcffb2b21e98734266c2b6d",
+      "bytes": 12346
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/render-helper.py.txt",
+      "sha256": "c4584f0ba472558062c84dd029a6b012e9c604983650aee40a1ede28932394c0",
+      "bytes": 3833
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/pdf-build.json",
+      "sha256": "ffe6058181ee600a484974316b45378719c38e310817ca41bac24e7e89e8ddaa",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/d4.lean",
+      "sha256": "a0ba3143c082e2af3868e7e02b82aaf06b3d824e7a967c37974bac9573a55597",
+      "bytes": 4893
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/04-publication-identity/xelatex-pass-3.log",
+      "sha256": "0b26069366f86946f3dc8ebd9ccfac1b932cc8666190b729521f04948bc5d97f",
+      "bytes": 17939
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/demo.py",
+      "sha256": "87e376df763f7ac1b4db913073ef51cdc528c904650b73afcaff9cdb763ce975",
+      "bytes": 3522
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/03-long-lines/source-before-layout.md",
+      "sha256": "831f77632f93ebc0db87cbfdff3aeed533613131d90809d9bf30ff3037d9288c",
+      "bytes": 578393
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/advanced_replacements.json",
+      "sha256": "0b76feb7255e45f461ea8751998d936f6d362551cb01fc8a3f057ddb6c962beb",
+      "bytes": 68041
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/certificates/v31.3/ragged.manifest.json",
+      "sha256": "ef441741ef535130c83e71bafd0a726bf7c4482bd8f6c59bf69017cf3fed7fca",
+      "bytes": 8204
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/pdf-collaborator-render-manifest.json",
+      "sha256": "6fb3ba582f5bf13733acaa3bc79d20b658f5d735b3f62035afac26c8680c61a5",
+      "bytes": 25131
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/qm319_prepare_book.py.txt",
+      "sha256": "c926e25db1a2fbe9d8ae569cdb9403d6e2308d1490681513d6377172b12de616",
+      "bytes": 19886
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/xelatex-pass-3.log",
+      "sha256": "93e94e0fa405a8d7a99ceb0c412a5dce37d4a24bd820fe55ea299e6b17f1949c",
+      "bytes": 20084
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/chapter-53-review.md",
+      "sha256": "11e035636209aa2af19fe2cdf5295613b7ed92b79990e7dd297f548f2dce7671",
+      "bytes": 3880
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/lean-toolchain",
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+      "bytes": 25
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/legacy-source-reuse.json",
+      "sha256": "fbe19eacd249b3ad6713ea60476aae1c9cb2dd2587f31201ec40185675af882e",
+      "bytes": 2031
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/xelatex-pass-2.log",
+      "sha256": "98c5c9db0d98baec1fb5e5d5263cac8a6221601240ac9b2fbb928b69fb79e3af",
+      "bytes": 13675
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/pdf-visual-review.json",
+      "sha256": "f62749263b9c4add8e7cd831848a01bcfbd06586f0b1a17ecf5bc07b1c0455dd",
+      "bytes": 3118
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter-inputs/qm318_chapter60_bindings.json",
+      "sha256": "a5503d244755cab768ad430d06fbeb93a469820911f39cddb5253c63eeb166ea",
+      "bytes": 16075
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/lake-manifest.json",
+      "sha256": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+      "bytes": 3757
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/classification-migration.json",
+      "sha256": "aae0bd594beb1c3e5c80b5245f988fa87d6af032242e5c3fac50133d4853c2a7",
+      "bytes": 46868
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/dossier-review.json",
+      "sha256": "e478091f861c0f4035f2bcc1d132cddea233fd755f7635211d8692a32e9824a5",
+      "bytes": 16438
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/pdf-build.json",
+      "sha256": "fdbef4f7a2ae814874fc8b73f7bcda2d14ed6706cb3fd44cc8a13054e09c9228",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/advanced_integrated_review.json",
+      "sha256": "934cabefba99a5f1369e3bddbbeffab0312a97334c044db782f95bd38c9421ae",
+      "bytes": 2356
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean",
+      "sha256": "cd42c574bf962b10c4f796c03bcf49d4fb61184b7667512e3ec82440a9bc3705",
+      "bytes": 11206
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Ragged.lean",
+      "sha256": "a3435d73cd766b55e6f504452de9fe3193ec2266e6cae3772f28cfb4158a718f",
+      "bytes": 9570
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/source-assembly.json",
+      "sha256": "968d2fb62cb18032f57e3e7a28be76b2b9c3aa36e26741f1c4fafd79aa029060",
+      "bytes": 10178
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/PurificationUniquenessExamples.lean",
+      "sha256": "e5b4420e310d8250b88792d7efdd6f74b68975dc287a5128f9baedf3dadede3a",
+      "bytes": 11970
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/remote-publication.json",
+      "sha256": "784b618d79ef77920bbc89048a83082d5ffcc95c914d94f47ecc45baf9da2688",
+      "bytes": 51099
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+      "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+      "bytes": 16729
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/03-long-lines/book-structure-before-layout.json",
+      "sha256": "4969b52d38ae38f505eef6bed4003715c8dca098330b3af9ff5fdab34b5f3ab2",
+      "bytes": 17680
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/xelatex-pass-3.log",
+      "sha256": "c8855e7efbe6a009ab16435471b547165e8830913fbece689aa6ab745dcb806d",
+      "bytes": 12493
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Selector.lean",
+      "sha256": "0aa261fcd171e8985889067bb348abe6d84e486be1b918a3cdd6d3e951fdcbca",
+      "bytes": 4852
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/verify_kernel.py",
+      "sha256": "3cdc1583f914763bcead1787c6dee74f63e96787095219ddd7cad2ea2eb27c2b",
+      "bytes": 2358
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Effects.lean",
+      "sha256": "3346f36a3d467cb7b52d346dfafa4e49828e39a3ee02e29ac12e6783473eef23",
+      "bytes": 9597
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/verify_ueot_quantum.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/visual-history/root-visual-initial.json",
+      "sha256": "d3f704403c07979f01febc5396ac6beb1ab969de295ecb6d63bdd78527d4759f",
+      "bytes": 6685
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/PurificationDimensionExamples.lean",
+      "sha256": "637fc97d88d982df2c27a62f5de057fb0551cb3f6c599cba4a08aded92c881a1",
+      "bytes": 9313
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/xelatex-pass-3.log",
+      "sha256": "98c5c9db0d98baec1fb5e5d5263cac8a6221601240ac9b2fbb928b69fb79e3af",
+      "bytes": 13675
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/pdf-build.json",
+      "sha256": "402252d90c31a1e8bd447aa494196ea6c62b561b08e259674e42a52045a39fb2",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/prior-v3.3-preservation.json",
+      "sha256": "31f49c4f8f34aea9a8502b866ccc468ae3d5726dc73c03591a93e60e2cee96d2",
+      "bytes": 24845
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/pdf-advanced-visual-review.json",
+      "sha256": "3e8f160cfb379d5ef515392ddfaba24a2997dbeb069fc6d6545539f77a163f78",
+      "bytes": 15589
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+      "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+      "bytes": 21325
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/pdf-build.json",
+      "sha256": "844d0be1a241a657ae7acb8c33841a80e3ee1890ba42d221d2443453251ae0cc",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/xelatex-pass-1.log",
+      "sha256": "032638ba1cc7770bb77fcfeaf0558f65b95810a82ee5d89e5130c8dfb88c8d9e",
+      "bytes": 20146
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+      "sha256": "1916870a25c6e2af9a169798e9f60552b94812c6fc3f05214dbfa3f310cc1bbb",
+      "bytes": 14646
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Basic.lean",
+      "sha256": "db38c8dc2b873d5c784460146badcca889a37f2daf23c73bfaadce67eaf0d16e",
+      "bytes": 2565
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/collaborator-visual-review.json",
+      "sha256": "444b9656a74d3265e8d06847b62926cf264df255164b7c04dbd8106b81786ab4",
+      "bytes": 13655
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/RealTomographyTwoRebit.lean",
+      "sha256": "badfe81da1b3ddfa6c69927486d98fcf5ba48b115098de5838413dadfa0bfe15",
+      "bytes": 3479
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter-inputs/qm318_chapter61_bindings.json",
+      "sha256": "048ec916e00ef69cc2afdf67203e057a3d963e18a11096bd8ea10cde3cbbd90a",
+      "bytes": 18381
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/pdf-build.json",
+      "sha256": "2a98b293313242b788765fce77427289aea1beb37b2ceef68b7d63d365e2e216",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/pdf-visual-review.json",
+      "sha256": "f93725195ed864dcaa4868166087a331e2fd519a3b4a128e10334d4d21ad0d95",
+      "bytes": 3060
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/visual-history/REVIEW-initial.md",
+      "sha256": "58928d40d325169390d377cf7142f6c76a8d78996cfab3bc6b1fd403e0786bc3",
+      "bytes": 2700
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Survival.lean",
+      "sha256": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f",
+      "bytes": 20124
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean",
+      "sha256": "680e8e42f6a25a5540dd485cf2c00a5a4e937c1cc639aa8d5340ecc3fd483463",
+      "bytes": 15265
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+      "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+      "bytes": 24085
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Cesaro.lean",
+      "sha256": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b",
+      "bytes": 12322
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/03-long-lines/xelatex-pass-1.log",
+      "sha256": "71019b3f0b88fd002b085a806551d4ae746e3ba108a0f1f0cd82a66d9842f596",
+      "bytes": 22698
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/tests/test_representation_certificate.py",
+      "sha256": "4ce3b59cec974923469db4a256fe4db212853497327c6e108fe99525f7bbaa42",
+      "bytes": 15944
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/witnesses/QuantumSeparationExamples.lean",
+      "sha256": "43a4cfc3116e9444defc90f7ee65be2d7e8e31a7d24d5423edd63b894a234b08",
+      "bytes": 9209
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-assembly-first-layout.md",
+      "sha256": "7facfea149e2bd4f1e04f92c1e64d2c6d354a9a3fa7716f13227f7cacf20dea9",
+      "bytes": 1435
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PurificationDimension.lean",
+      "sha256": "92d030b3fb87e52e35dcf44e620a570eac626ddcc2d7d529656fc93139a98afd",
+      "bytes": 7864
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/prepare-publication-font.py.txt",
+      "sha256": "372b9f15fcd86316d778d90f9d8f0ccece3b26b3014685d28c4bf73a9bfb2bf4",
+      "bytes": 2796
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/dossier-assembly.json",
+      "sha256": "c57fa9d32b6b5a44de3365998fd6a4ddb4f0436a7e4a709faadfc413e8c62339",
+      "bytes": 3767
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/RecordProbability.lean",
+      "sha256": "c9dca7b03588f7359fbbea934c1c9b074af489f93ca061bed8a82239960edcf2",
+      "bytes": 4446
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/preacceptance/dossier_review.json",
+      "sha256": "92fb7dfe01b994ed021ba8078f83059339342bd7dfa1cf058d84263cb084173f",
+      "bytes": 15786
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/xelatex-pass-3.log",
+      "sha256": "23bccd7f179597c035a5cbe837b534cb78609a9d4b309c95be0d4206f6597792",
+      "bytes": 13499
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/page-geometry.json",
+      "sha256": "b9ee5ca5a216e2eb435fced968e8a0b25e5b893de350a43d0fbdd79c97465ca8",
+      "bytes": 321
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter60-bindings.json",
+      "sha256": "a5503d244755cab768ad430d06fbeb93a469820911f39cddb5253c63eeb166ea",
+      "bytes": 16075
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/Instrument.lean",
+      "sha256": "aa63084bec63476ffd73a54f1c8b53fab406a8fd15cc678bd2d34d30a5820b80",
+      "bytes": 5523
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/local-release-gates.json",
+      "sha256": "a555d253fc7c2a4f2e71d1fbac87de22bbc35af0c5dafe32aff3244779517f51",
+      "bytes": 6300
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/install_lean.sh",
+      "sha256": "8984f32c56f4b66722c9c4f0a55a7fa5ccd79fb853359793f31d401bb36a6926",
+      "bytes": 1844
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/pdf-geometry.json",
+      "sha256": "726eabdfb9c6e4316c4035583478e5ed4daa70d5ba986120ac16d3a83a2abda8",
+      "bytes": 140
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/initial-typesetting/UEOT_PHYSICS.pdf.gz",
+      "sha256": "e0310584ab7a5e9221b1c01eb9d0c65a04604c075e4c5eb6e8cbc43a2de4774e",
+      "bytes": 1228984
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.2/prior-3.1/CHAPTER_DOSSIER.json",
+      "sha256": "036232dcd58c8fa7ff27d92eea3a57fd3d9d55c20a4d2623617531c04ee00675",
+      "bytes": 230332
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-build.json",
+      "sha256": "88bd981905bb7601365dc716c28bee2f0d2ee64be4329d2b1a431cff5e1493aa",
+      "bytes": 1136
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/xelatex-pass-1.log",
+      "sha256": "f86458cc405e660ce997b6567fe93046c5e6cf06c89bb46a200099c8347c0767",
+      "bytes": 11689
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-collaborator-render.json",
+      "sha256": "bd861431480a7934573d9bbdbe5cca10e0bf0f7f65e2138d328409c2078ad46c",
+      "bytes": 13387
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/xelatex-pass-3.log",
+      "sha256": "f86458cc405e660ce997b6567fe93046c5e6cf06c89bb46a200099c8347c0767",
+      "bytes": 11689
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/ueot_qm/certificates.py",
+      "sha256": "b78421e91a72fa875fa9bcb0a6939752812f1399f97e1e0665cd2d7effbacc3f",
+      "bytes": 9239
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/xelatex-pass-3.log",
+      "sha256": "93e94e0fa405a8d7a99ceb0c412a5dce37d4a24bd820fe55ea299e6b17f1949c",
+      "bytes": 20084
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-collaborator-review.md",
+      "sha256": "19cdcf8f6e49933735ef49bda9269e6ca05120a8b06c787523ef970a426f1a96",
+      "bytes": 4097
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/legacy-regression.json",
+      "sha256": "55ea29f98524580ba25bdf3581ae0f03034329d671b5edb2d020fa5914e46fae",
+      "bytes": 2145
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/scripts/AxiomAudit.lean",
+      "sha256": "451e1dea9a9420bbe69932689f629bd7ea390c065688824f23dbb555eaabcb07",
+      "bytes": 65908
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/legacy-source-reuse.json",
+      "sha256": "e81ab024054f0fb1218607c246c636b1d94a439ea5de2127c35856cbfd7bfec8",
+      "bytes": 953
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.1/pdf-visual-review.json",
+      "sha256": "63e92299e6c70d8b8b935cfb3f95bd1ddad58e6f38302c5edcb8e430fab0924a",
+      "bytes": 4742
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/canonical-integration.json",
+      "sha256": "353afe538a1d4eb4002643082ea166712adef08f2cb2f3c1d614372cd68f4be1",
+      "bytes": 13046
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/verify_lean_exports.py",
+      "sha256": "6d2c5504a2f625441f6fd1b2eb5adf13dc52acb8a574f862f11d85ee880564dd",
+      "bytes": 26267
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.5/book-structure.json",
+      "sha256": "7f494cd66dddccb291cfafddb243890ef47416f2aa7683d512d5911da46d4244",
+      "bytes": 19618
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/xelatex-pass-2.log",
+      "sha256": "f86458cc405e660ce997b6567fe93046c5e6cf06c89bb46a200099c8347c0767",
+      "bytes": 11689
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/pdf-page-identity.json",
+      "sha256": "6ee79e2d6877d94e55956b185b47d5737f32da033cf2a4a6632a2654a7f89da4",
+      "bytes": 2419
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.3/legacy-source-reuse.json",
+      "sha256": "d29ec99805a41ccac6d97bf13f7525c29e85082f3a8e39db1039eb83c1fd7a93",
+      "bytes": 2014
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/chapter61-bindings.json",
+      "sha256": "048ec916e00ef69cc2afdf67203e057a3d963e18a11096bd8ea10cde3cbbd90a",
+      "bytes": 18381
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/pdf-render-manifest.json",
+      "sha256": "c3b7130ae92830c25b3567a6d8d1e7d178c20285ee0ba762927e18fbfdc8188d",
+      "bytes": 79540
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.0/verify_frontier.json",
+      "sha256": "7185acb0ca3edd4419a5c8a7f77bf4d58ded20b0d64be2c8c1c68ca80990ff3b",
+      "bytes": 34941
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/kernel/tests/test_spectrum.py",
+      "sha256": "686e5783a31f4b1409263e6ec941a2ccd1f07cb0615ffa62905393c5941c10d7",
+      "bytes": 13304
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/qm_v318_work/physics/qm/book/evidence/v3.4/attempts/02-font-merge/font-helper-attempt01.log",
+      "sha256": "f23e6ecd19fbf694c1796e7819b77e3e8389e20ca95bfb56d5b291c360adc339",
+      "bytes": 1690
+    }
+  ],
+  "book_readback": {
+    "status": "PASS_CURRENT_BOOK_READBACK",
+    "manifest_status": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "dossier_status": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "book_gate_status": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "remote_status": "PENDING",
+    "source_count": 98,
+    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+    "counts": {
+      "chapters": 66,
+      "appendices": 6,
+      "numbered_results": 161,
+      "inherited": 147,
+      "new": 14,
+      "numbered_sections": 346,
+      "stable_anchors": 233,
+      "body_slices": 72,
+      "pdf_pages": 248,
+      "new_claim_unique_audited_declarations": 186,
+      "generic_names": 107,
+      "witness_names": 79,
+      "pages": 248,
+      "anchors": 233,
+      "sections": 346
+    },
+    "local_execution_partition": {
+      "mode": "ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE",
+      "new_witnesses": {
+        "file_count": 3,
+        "theorems": 105,
+        "definitions": 39,
+        "abbreviations": 3,
+        "audits": 147,
+        "receipt": {
+          "path": "physics/qm/kernel/evidence/v31.9/new-finite-witnesses/verification.json",
+          "sha256": "f5b5f558307d439420332e8f13b411fcaf60cbac18d035caea090686a0e1370a",
+          "bytes": 184338
+        },
+        "actually_executed_this_acceptance": true
+      },
+      "old_witnesses": {
+        "file_count": 10,
+        "theorems": 193,
+        "definitions": 71,
+        "abbreviations": 5,
+        "audits": 269,
+        "actually_executed_this_acceptance": false,
+        "prior_local_receipt": "physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json",
+        "actual_prior_main_ci": 39424068985
+      },
+      "exact_certificates": {
+        "positive_instances": 6,
+        "positive_audits": 42,
+        "corrupted_true_rejections": 4,
+        "same_data_false_proofs": 4,
+        "receipt": "physics/qm/kernel/evidence/v31.8/lean-exports/verification.json",
+        "actually_executed_this_acceptance": false
+      },
+      "runtime": {
+        "methods": 100,
+        "receipt": "physics/qm/kernel/evidence/v31.8/runtime-verification.json",
+        "actually_executed_this_acceptance": false
+      },
+      "demos": {
+        "programs": 4,
+        "receipt": "physics/qm/kernel/evidence/v31.8/demos-verification.json",
+        "actually_executed_this_acceptance": false
+      },
+      "reuse_review": {
+        "path": "physics/qm/kernel/evidence/v31.9/legacy-reuse.json",
+        "sha256": "a7fc3f0786a741649fdd4027911a1e1b76fc1895f098f8b69767d424ac37d6a1",
+        "bytes": 134681
+      },
+      "scope": "Historical successful runs retain their original identity. Only three new witnesses and the current unified public build/audit are executed in this acceptance; no old raw CI log parser or artifact ZIP inspection is inferred."
+    },
+    "three_current_metadata_bound": true
+  },
+  "lean_invocations": 0,
+  "historical_program_invocations": 0,
+  "typesetting_invocations": 0,
+  "remote_operations": 0,
+  "problems": []
+}

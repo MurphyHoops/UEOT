@@ -33,3 +33,9 @@ import UEOTQM.PureStateCharacterization
 import UEOTQM.PurificationUniqueness
 import UEOTQM.HistoryChannels
 import UEOTQM.ActionRecordBudget
+import UEOTQM.QuantumTraceDistance
+import UEOTQM.BinaryDiscrimination
+import UEOTQM.PurificationIsometry
+import UEOTQM.PurificationDimension
+import UEOTQM.StoppingProtocols
+import UEOTQM.StoppingRecordBudget

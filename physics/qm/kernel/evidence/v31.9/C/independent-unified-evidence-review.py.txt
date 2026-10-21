@@ -1,0 +1,245 @@
+#!/usr/bin/env python3
+"""Independent read-only check of actual v31.9 acceptance, with new review output only."""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib
+import json
+import re
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+E = ROOT / 'physics/qm/kernel/evidence/v31.9'
+OUT = E / 'C/independent-unified-evidence-review.json'
+ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
+EXPECTED_SOURCE_SET = 'bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0'
+bound = {}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def blob(raw):
+    return hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+
+
+def read_bytes(path):
+    p = Path(path)
+    if not p.is_absolute():
+        p = ROOT / p
+    raw = p.read_bytes()
+    key = p.relative_to(ROOT).as_posix() if p.is_relative_to(ROOT) else str(p)
+    item = {'sha256': sha(raw), 'bytes': len(raw)}
+    assert key not in bound or bound[key] == item, 'Input drift during independent review: ' + key
+    bound[key] = item
+    return raw
+
+
+def read_json(path):
+    return json.loads(read_bytes(path))
+
+
+def check_identity(item):
+    raw = read_bytes(item['path'])
+    assert sha(raw) == item['sha256'], item['path']
+    assert len(raw) == item.get('bytes', item.get('size')), item['path']
+    return raw
+
+
+def parse_axioms(raw):
+    text = raw.decode()
+    pattern = r"'([^'\n]+)' (?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)"
+    matches = list(re.finditer(pattern, text))
+    names = [m[1] for m in matches]
+    assert len(names) == len(set(names)), 'Duplicate actual axiom output'
+    actual = {m[1]: sorted(x.strip() for x in (m[2] or '').split(',') if x.strip()) for m in matches}
+    assert all(set(v) <= ALLOWED for v in actual.values()), 'Unreviewed axiom'
+    return names, actual
+
+
+def source_paths():
+    q = ROOT / 'formalization/ueot-qm'
+    paths = set((q / 'UEOTQM').rglob('*.lean'))
+    paths.update(q / n for n in ('UEOTQM.lean', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain'))
+    paths.update(p for p in (q / 'scripts').rglob('*') if p.is_file() and p.suffix in {'.py', '.lean', '.sh'})
+    k = ROOT / 'physics/qm/kernel'
+    paths.update(k.rglob('*.py'))
+    paths.update(p for p in (k / 'certificates').rglob('*') if p.is_file() and p.suffix in {'.lean', '.json'})
+    paths.add(ROOT / '.github/workflows/ueot-qm.yml')
+    return sorted(paths)
+
+
+assert not OUT.exists(), 'Do not overwrite an independent evidence review'
+proof = read_json(E / 'lean-verification.json')
+assert proof['status'] == 'PASS' and proof['actual_build_exit_code'] == 0
+before = read_json(E / 'source-manifest-before.json')
+after = read_json(E / 'source-manifest.json')
+freeze = read_json(E / 'source-freeze-reconciliation.json')
+assert before['sources'] == after['sources']
+assert before['source_set_sha256'] == after['source_set_sha256'] == EXPECTED_SOURCE_SET
+assert freeze['status'] == 'PASS' and freeze['all_source_bytes_unchanged_during_acceptance']
+rows = []
+for p in source_paths():
+    raw = read_bytes(p)
+    rows.append({'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(raw), 'bytes': len(raw)})
+assert len(rows) == 98 and rows == after['sources']
+assert sha(json.dumps(rows, sort_keys=True, separators=(',', ':')).encode()) == EXPECTED_SOURCE_SET
+
+build = read_json(E / 'build-execution.json')
+assert build['exit_code'] == 0 and not build['timed_out'] and build['launch_error'] is None
+build_log = read_bytes(build['log_path'])
+assert sha(build_log) == build['log_sha256']
+jobs = re.findall(r'Build completed successfully \((\d+) jobs\)\.', build_log.decode())
+assert jobs == ['8805'] and proof['actual_build_jobs'] == 8805
+assert b'warning:' in build_log, 'Do not describe this actual build as zero warning'
+
+axe = read_json(E / 'axiom-execution.json')
+for key in ('audit', 'checker'):
+    x = axe[key]
+    assert x['exit_code'] == 0 and not x['timed_out'] and x['launch_error'] is None
+    assert sha(read_bytes(x['log_path'])) == x['log_sha256']
+assert axe['audit_exit_code'] == axe['checker_exit_code'] == 0
+names, actual = parse_axioms(read_bytes(axe['audit']['log_path']))
+inventory = read_json(E / 'declaration-inventory.json')
+audited = read_json(E / 'proof-axioms.json')
+request_source = read_bytes(ROOT / 'formalization/ueot-qm/scripts/AxiomAudit.lean').decode()
+requests = re.findall(r'^\s*#print\s+axioms\s+(\S+)\s*$', request_source, re.M)
+assert names == requests == inventory['audit_targets']
+assert len(names) == 1123 and actual == audited['declarations']
+assert audited['status'] == 'PASS' and audited['declaration_count'] == 1123
+assert inventory['module_count'] == len(inventory['modules']) == 41
+assert sum(x['kind'] == 'theorem' for xs in inventory['modules'].values() for x in xs) == 854
+assert inventory['explicit_theorems'] == proof['explicit_theorems'] == 854
+for path, ident in inventory['module_identities'].items():
+    check_identity({'path': path, **ident})
+
+finite = read_json(E / 'finite-witnesses/verification.json')
+new = read_json(E / 'new-finite-witnesses/verification.json')
+assert finite['status'] == new['status'] == 'PASS' and not finite['errors'] and not new['errors']
+assert finite['verification_mode'] == 'ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE'
+assert new['selected_witnesses'] == finite['actual_selected_witnesses']
+assert len(new['checks']) == finite['actually_executed_witness_count'] == 3
+assert len(finite['checks']) == len(finite['registered_witnesses']) == 13
+assert new['inputs_before'] == new['inputs_after'] and new['all_inputs_unchanged']
+assert finite['inputs_before'] == finite['inputs_after'] and finite['all_inputs_unchanged']
+fresh = []
+for c in new['checks']:
+    assert c['exit_code'] == 0 and c['status'] == 'PASS' and not c['timed_out'] and c['launch_error'] is None
+    raw_source = check_identity(c['source'])
+    ns, ac = parse_axioms(check_identity(c['log']))
+    rq = re.findall(r'^\s*#print\s+axioms\s+(\S+)\s*$', raw_source.decode(), re.M)
+    decls = new['declarations'][c['name']]
+    assert ns == rq == [d['name'] for d in decls] == c['audit']['expected']
+    assert ac == c['audit']['actual'] and c['audit']['complete_unique'] and c['audit']['status'] == 'PASS'
+    assert not any(c['audit'][k] for k in ('duplicate_reports', 'missing_reports', 'unexpected_reports', 'unreviewed_axioms'))
+    merged = next(x for x in finite['checks'] if x['name'] == c['name'])
+    assert merged['execution_mode'] == 'EXECUTED_IN_THIS_ACCEPTANCE' and merged['new_witness_compile']
+    assert all(merged[k] == v for k, v in c.items())
+    fresh.append({'name': c['name'], 'audits': len(ns), 'exit_code': 0, 'source_sha256': c['source']['sha256'], 'log_sha256': c['log']['sha256']})
+assert sum(x['audits'] for x in fresh) == new['witness_audit_count'] == 147
+assert (new['witness_theorem_count'], new['witness_def_count'], new['witness_abbrev_count']) == (105, 39, 3)
+assert (finite['witness_theorem_count'], finite['witness_def_count'], finite['witness_abbrev_count'], finite['witness_audit_count']) == (298, 110, 8, 416)
+for ident in new['inputs_after']['witnesses'].values():
+    check_identity(ident)
+current_built = new['inputs_after']['general_modules']
+assert len(current_built) == 98
+for pair in current_built.values():
+    check_identity(pair['source'])
+    check_identity(pair['olean'])
+for ident in new['inputs_after']['context'].values():
+    check_identity(ident)
+check_identity(new['lake_executable'])
+
+core = read_json(E / 'core-import-closure.json')
+tree = read_json(ROOT.parent / 'handoff/qm319_baseline_remote_tree.json')
+assert core['status'] == 'SOURCE_AND_BUILT_IDENTITY_PASS' and not core['core_sources_modified']
+assert core['transitive_module_count'] == len(core['modules']) == 56
+assert core['baseline_commit'] == tree['commit'] == '6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1'
+assert core['baseline_tree'] == tree['sha'] == 'd900109f97fd032bb3682ecbd5fdf7577b415307'
+assert not tree['truncated']
+baseline = {x['path']: x['sha'] for x in tree['tree'] if x['type'] == 'blob'}
+for c in core['modules']:
+    raw = read_bytes(c['path'])
+    assert sha(raw) == c['source_sha256'] and c['baseline_match']
+    assert blob(raw) == c['actual_remote_baseline_blob_sha1'] == baseline[c['path']]
+    assert c['olean_sha256'] == current_built[c['module']]['olean']['sha256']
+
+deps = read_json(E / 'dependency-identity.json')
+assert deps['status'] == 'PASS' and deps['dependency_count'] == len(deps['dependencies']) == 9
+lock = read_json(ROOT / 'formalization/ueot-qm/lake-manifest.json')
+pins = {x['name']: x['rev'] for x in lock['packages'] if 'rev' in x}
+assert all(x['matches_pin'] and pins[x['name']] == x['revision'] for x in deps['dependencies'])
+assert 'version 4.33.1' in deps['actual_toolchain_output'] and '819816b2e0a3bf405af45ae5c7af2491d8f5bee6' in deps['actual_toolchain_output']
+assert deps['mathlib_revision'] == '0df444a360eaa60ab8c11dca51a86af692955474'
+
+reuse = read_json(E / 'legacy-reuse.json')
+legacy = read_json(E / 'legacy-gates-summary.json')
+assert reuse['status'] == legacy['status'] == 'PASS'
+assert reuse['execution_mode'] == legacy['verification_mode'] == 'REUSED_UNCHANGED_SCIENTIFIC_INPUTS'
+assert reuse['new_legacy_lean_compiler_invocations'] == reuse['new_legacy_runtime_test_invocations'] == 0
+assert legacy['new_legacy_compiler_invocations'] == legacy['new_legacy_runtime_invocations'] == 0
+assert len(reuse['witnesses']) == finite['reused_witness_count'] == 10
+assert reuse['witness_audits'] == finite['reused_witness_audits'] == 269
+for path, ident in reuse['bound_historical_and_current_files'].items():
+    raw = check_identity({'path': path, **ident})
+    assert blob(raw) == ident['base_git_blob'] == baseline[path]
+old_finite = read_json(ROOT / 'physics/qm/kernel/evidence/v31.8/finite-witnesses/verification.json')
+changed = set(reuse['separately_changed_integration_inputs'])
+for w in reuse['witnesses']:
+    assert w['new_compiler_invocations'] == 0 and w['execution_mode'] == 'REUSED_PREVIOUS_ACTUAL_MAIN_CI'
+    assert not changed.intersection(w['closure']['repository_sources'])
+    check = next(c for c in finite['checks'] if c['name'] == w['name'])
+    old = next(c for c in old_finite['checks'] if c['name'] == w['name'])
+    assert all(check[k] == v for k, v in old.items())
+    assert check['execution_mode'] == 'REUSED_PREVIOUS_ACTUAL_MAIN_CI' and not check['new_witness_compile']
+    check_identity(old['source'])
+    check_identity(old['log'])  # Identity only: no replay of old log parsers or tests.
+old_ci = read_json(ROOT / reuse['prior_actual_main_ci_receipt'])
+assert old_ci['status'] == 'PASS' and old_ci['run_id'] == reuse['prior_actual_main_ci'] == 39424068985
+assert old_ci['source_commit'] == reuse['prior_tested_main_commit'] == '97c7b29c1aec470be58ca34b552e9d56ad06c197'
+exact = read_json(ROOT / reuse['exact_receipt'])
+runtime = read_json(ROOT / reuse['runtime_receipt'])
+demos = read_json(ROOT / reuse['demos_receipt'])
+assert exact['status'] == runtime['status'] == demos['status'] == 'PASS'
+assert exact['summary'] == reuse['exact_certificate_summary']
+assert runtime['test_methods_run'] == len(runtime['passed']) == reuse['runtime_test_methods'] == 100
+assert runtime['failures'] == runtime['errors'] == runtime['skipped'] == []
+assert demos['demo_count'] == reuse['demos'] == 4
+
+result = {
+    'kind': 'INDEPENDENT_ACTUAL_UNIFIED_EVIDENCE_REVIEW',
+    'reviewer': '/root/v319_stopping',
+    'reviewed_at_utc': datetime.now(timezone.utc).isoformat(),
+    'status': 'PASS_READ_ONLY_ACTUAL_EVIDENCE',
+    'source_count': 98, 'source_set_sha256': EXPECTED_SOURCE_SET,
+    'current_source_population_and_all_raw_bytes_match': True,
+    'actual_build_jobs': 8805, 'actual_build_exit_code': 0,
+    'ordinary_build_linter_warnings_present': True,
+    'actual_public_named_axiom_reports': 1123,
+    'exact_public_source_request_order_and_log_names_match': True,
+    'public_modules': 41, 'explicit_theorems_in_bound_inventory': 854,
+    'allowed_foundation': sorted(ALLOWED),
+    'actual_new_witnesses': fresh,
+    'actual_new_witness_counts': {'theorems': 105, 'definitions': 39, 'abbreviations': 3, 'audits': 147},
+    'historical_witness_counts': {'files': 10, 'theorems': 193, 'definitions': 71, 'abbreviations': 5, 'audits': 269},
+    'aggregate_witness_counts': {'files': 13, 'theorems': 298, 'definitions': 110, 'abbreviations': 8, 'audits': 416},
+    'actual_new_acceptance_bound_QM_Core_source_and_olean_pairs': 98,
+    'binding_population_note': '98 compiled pairs mean 41 QM modules plus umbrella and 56 Core modules; this is not the separately enumerated 98-file scientific-source population.',
+    'olean_temporal_scope': 'The current unified-acceptance before/after hashes and current cache bytes were checked at this review time. Earlier focused audit olean receipts remain historical and are not asserted equal to this later build.',
+    'core_source_baseline_blob_matches': 56,
+    'pinned_dependency_receipt_count': 9,
+    'legacy_bound_current_and_historical_files_checked': len(reuse['bound_historical_and_current_files']),
+    'historical_execution_identity': {'tested_main': old_ci['source_commit'], 'actual_main_ci_run': old_ci['run_id'], 'exact_certificates': exact['summary'], 'runtime_methods': 100, 'demos': 4},
+    'executed_by_this_review': {'lean': False, 'runtime_tests': False, 'old_ci_parser': False, 'network': False, 'git_mutation': False, 'artifact_zip_download_or_contents_check': False},
+    'scope': 'Actual local source/log/receipt readback and independent new named-audit parsing. Historical executions are identity-bound reuse only. No v31.9 remote CI or publication is asserted.',
+    'inventory_temporal_note': 'The immutable source-enumeration inventory retains its pre-execution status; actual completion is established by later bound build/audit/lean-verification receipts, not by rewriting that source-enumeration record.',
+    'full_natural_theory_proved': False,
+    'blocking_findings': [],
+    'bound_inputs': bound,
+}
+helper = Path(__file__).read_bytes()
+snapshot = E / 'C/independent-unified-evidence-review.py.txt'
+assert not snapshot.exists()
+snapshot.write_bytes(helper)
+result['review_helper'] = {'path': snapshot.relative_to(ROOT).as_posix(), 'sha256': sha(helper), 'bytes': len(helper)}
+OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({'status': result['status'], 'path': str(OUT), 'sha256': sha(OUT.read_bytes()), 'bound_files': len(bound), 'actual_public_audits': len(names), 'actual_new_witness_audits': 147}, indent=2))

@@ -1,0 +1,439 @@
+import UEOTQM.StoppingRecordBudget
+
+/-!
+# Exact rational controls for stopping-tree action-record budgets
+
+Every instrument is a complete Kraus family on a qubit memory. The biased
+record uses four rational amplitudes 1/2, three tagged 0 and one tagged 1.
+No floating-point square root or empirical data enter this witness.
+-/
+
+namespace UEOTQM.StoppingRecordBudgetExamples
+
+open Matrix ActionRecordBudget HistoryChannels StoppingProtocols StoppingRecordBudget
+open scoped BigOperators ComplexOrder
+
+noncomputable section
+
+abbrev Qubit := Fin 2
+abbrev Label := Fin 2
+
+def certain (tag : Label) : Instrument Qubit Label (Fin 4) where
+  kraus o k := if o = tag then if k = 0 then 1 else 0 else 0
+  complete := by
+    fin_cases tag <;> simp [Fin.sum_univ_succ]
+
+theorem certain_branch (tag o : Label) (X : Operator Qubit) :
+    (certain tag).branch o X = if o = tag then X else 0 := by
+  by_cases ho : o = tag <;>
+    simp [Instrument.branch, krausMap, certain, ho, Fin.sum_univ_succ]
+
+theorem certain_probability (tag o : Label) (ρ : Density Qubit) :
+    (certain tag).probability ρ o = if o = tag then 1 else 0 := by
+  by_cases ho : o = tag <;>
+    simp [Instrument.probability, certain_branch, ho, mass, ρ.trace_one]
+
+def halfK : Operator Qubit := (1 / 2 : ℂ) • (1 : Operator Qubit)
+
+theorem halfK_gram : halfKᴴ * halfK = (1 / 4 : ℝ) • (1 : Operator Qubit) := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [halfK, Matrix.mul_apply, Matrix.conjTranspose_apply,
+      Matrix.one_apply, Fin.sum_univ_two, Complex.real_smul]
+
+theorem halfK_conjugation (X : Operator Qubit) :
+    halfK * X * halfKᴴ = (1 / 4 : ℝ) • X := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [halfK, Matrix.mul_apply, Matrix.conjTranspose_apply,
+      Matrix.one_apply, Fin.sum_univ_two, Complex.real_smul] <;> ring
+
+/-- Four actual rational Kraus matrices: three report zero, one reports one. -/
+def biasedKraus (o : Label) : Fin 4 → Operator Qubit :=
+  if o = 0 then ![halfK, halfK, halfK, 0] else ![0, 0, 0, halfK]
+
+def biased : Instrument Qubit Label (Fin 4) where
+  kraus := biasedKraus
+  complete := by
+    norm_num [biasedKraus, Fin.sum_univ_succ, Matrix.cons_val_two, Matrix.cons_val_three, halfK_gram]
+    module
+
+theorem biased_branch (o : Label) (X : Operator Qubit) :
+    biased.branch o X = (if o = 0 then (3 / 4 : ℝ) else 1 / 4) • X := by
+  fin_cases o <;>
+    norm_num [Instrument.branch, krausMap, biased, biasedKraus, Fin.sum_univ_succ,
+      Matrix.cons_val_two, Matrix.cons_val_three, halfK_conjugation] <;> module
+
+theorem biased_probability (o : Label) (ρ : Density Qubit) :
+    biased.probability ρ o = if o = 0 then 3 / 4 else 1 / 4 := by
+  by_cases ho : o = 0 <;> simp [Instrument.probability, biased_branch, ho, mass_smul, ρ.mass_one]
+
+def rhoZero : Density Qubit where
+  matrix := Matrix.diagonal (fun i => if i = 0 then (1 : ℂ) else 0)
+  positive := by
+    apply Matrix.posSemidef_diagonal_iff.mpr
+    intro i
+    split_ifs <;> norm_num
+  trace_one := by simp [Matrix.trace, Fin.sum_univ_two]
+
+
+theorem joint_probability_certain (E : Effect (Label × Qubit)) (tag : Label)
+    (ρ : Density Qubit) :
+    E.probability (ClassicalQuantumMemory.state (certain tag) ρ) =
+      (HistoryChannels.restrictEffect E tag).probability ρ := by
+  change pairing E.matrix (ClassicalQuantumMemory.state (certain tag) ρ).matrix = _
+  rw [ClassicalQuantumMemory.state_matrix, HistoryChannels.pairing_block]
+  fin_cases tag <;>
+    simp [certain_branch, Fin.sum_univ_two, Effect.probability, HistoryChannels.restrictEffect,
+      pairing, mass]
+
+theorem joint_probability_biased (E : Effect (Label × Qubit)) (ρ : Density Qubit) :
+    E.probability (ClassicalQuantumMemory.state biased ρ) =
+      (3 / 4 : ℝ) * (HistoryChannels.restrictEffect E 0).probability ρ +
+      (1 / 4 : ℝ) * (HistoryChannels.restrictEffect E 1).probability ρ := by
+  change pairing E.matrix (ClassicalQuantumMemory.state biased ρ).matrix = _
+  rw [ClassicalQuantumMemory.state_matrix, HistoryChannels.pairing_block]
+  simp [biased_branch, Fin.sum_univ_two, pairing_smul_right, Effect.probability,
+    HistoryChannels.restrictEffect]
+
+/-- The upper bound quantifies over all legal joint effects and every input density. -/
+theorem biased_joint_distance_le_quarter (ρ : Density Qubit) :
+    effectDistance (ClassicalQuantumMemory.state (certain 0) ρ)
+      (ClassicalQuantumMemory.state biased ρ) ≤ 1 / 4 := by
+  apply (effectDistance_le_iff _ _ _).mpr
+  intro E
+  rw [joint_probability_certain, joint_probability_biased]
+  have h0 := (HistoryChannels.restrictEffect E 0).probability_nonneg ρ
+  have h1 := (HistoryChannels.restrictEffect E 1).probability_nonneg ρ
+  have h0' := (HistoryChannels.restrictEffect E 0).probability_le_one ρ
+  have h1' := (HistoryChannels.restrictEffect E 1).probability_le_one ρ
+  exact abs_le.mpr ⟨by linarith, by linarith⟩
+
+theorem biased_joint_distance_exact (ρ : Density Qubit) :
+    effectDistance (ClassicalQuantumMemory.state (certain 0) ρ)
+      (ClassicalQuantumMemory.state biased ρ) = 1 / 4 := by
+  apply le_antisymm (biased_joint_distance_le_quarter ρ)
+  have h := (ClassicalQuantumMemory.eventEffect Qubit ({0} : Finset Label)).probability_sub_le_effectDistance
+    (ClassicalQuantumMemory.state (certain 0) ρ) (ClassicalQuantumMemory.state biased ρ)
+  norm_num [ClassicalQuantumMemory.event_probability, RecordProbability.eventProbability,
+    ClassicalQuantumMemory.weights, certain_probability, biased_probability] at h
+  exact h
+
+/-- The exact action defect is a supremum theorem, not one tested input. -/
+theorem biased_record_defect_exact : ClassicalQuantumMemory.defect (certain 0) biased = 1 / 4 := by
+  apply le_antisymm
+  · apply csSup_le (Set.insert_nonempty 0 _)
+    rintro x (rfl | ⟨ρ, rfl⟩)
+    · norm_num
+    · exact biased_joint_distance_le_quarter ρ
+  · have h := (ClassicalQuantumMemory.channel (certain 0)).state_distance_le_defect
+      (ClassicalQuantumMemory.channel biased) rhoZero
+    change effectDistance (ClassicalQuantumMemory.state (certain 0) rhoZero)
+      (ClassicalQuantumMemory.state biased rhoZero) ≤ ClassicalQuantumMemory.defect (certain 0) biased at h
+    rw [biased_joint_distance_exact] at h
+    exact h
+
+/-- Label zero stops after one step; label one executes a second action before stopping. -/
+def stoppingTree : Adaptive.Protocol Label Label :=
+  .node 0 (fun o => if o = 0 then .stop else .node 1 (fun _ => .stop))
+
+def earlyLeaf : Leaf stoppingTree := ⟨0, PUnit.unit⟩
+def lateZeroLeaf : Leaf stoppingTree := ⟨1, ⟨0, PUnit.unit⟩⟩
+def lateOneLeaf : Leaf stoppingTree := ⟨1, ⟨1, PUnit.unit⟩⟩
+
+theorem early_word : stoppingTree.word earlyLeaf = [(0, 0)] := rfl
+theorem lateZero_word : stoppingTree.word lateZeroLeaf = [(0, 1), (1, 0)] := rfl
+theorem lateOne_word : stoppingTree.word lateOneLeaf = [(0, 1), (1, 1)] := rfl
+
+theorem tree_height : height stoppingTree = 2 := by
+  norm_num [stoppingTree, height, Finset.univ_fin2]
+
+theorem early_stopTime : stopTime stoppingTree earlyLeaf = 1 := rfl
+theorem late_stopTime : stopTime stoppingTree lateOneLeaf = 2 := rfl
+
+/-- Exact completion retains a distinct idle suffix after the early stop. -/
+theorem early_encoded : encode stoppingTree earlyLeaf (N := 2) = ![some 0, none] := by
+  funext i
+  fin_cases i <;> rfl
+theorem lateZero_encoded : encode stoppingTree lateZeroLeaf (N := 2) = ![some 1, some 0] := by
+  funext i
+  fin_cases i <;> rfl
+theorem lateOne_encoded : encode stoppingTree lateOneLeaf (N := 2) = ![some 1, some 1] := by
+  funext i
+  fin_cases i <;> rfl
+
+def exactActions (a : Label) : Instrument Qubit Label (Fin 4) :=
+  if a = 0 then biased else certain 0
+
+def approximateActions (_a : Label) : Instrument Qubit Label (Fin 4) := biased
+
+theorem first_defect_zero :
+    ClassicalQuantumMemory.defect (exactActions 0) (approximateActions 0) = 0 := by
+  simp [exactActions, approximateActions, record_defect_self]
+
+theorem continuing_defect_quarter :
+    ClassicalQuantumMemory.defect (exactActions 1) (approximateActions 1) = 1 / 4 := by
+  simp [exactActions, approximateActions, biased_record_defect_exact]
+
+theorem exact_early_probability (ρ : Density Qubit) :
+    Adaptive.leafProbability exactActions stoppingTree ρ earlyLeaf = 3 / 4 := by
+  simp [Adaptive.leafProbability_eq_response, response, early_word, recordOperator,
+    exactActions, biased_branch, mass_smul, ρ.mass_one]
+
+theorem approximate_early_probability (ρ : Density Qubit) :
+    Adaptive.leafProbability approximateActions stoppingTree ρ earlyLeaf = 3 / 4 := by
+  simp [Adaptive.leafProbability_eq_response, response, early_word, recordOperator,
+    approximateActions, biased_branch, mass_smul, ρ.mass_one]
+
+theorem exact_lateZero_probability (ρ : Density Qubit) :
+    Adaptive.leafProbability exactActions stoppingTree ρ lateZeroLeaf = 1 / 4 := by
+  simp [Adaptive.leafProbability_eq_response, response, lateZero_word, recordOperator,
+    exactActions, biased_branch, certain_branch, mass_smul, ρ.mass_one]
+
+theorem approximate_lateZero_probability (ρ : Density Qubit) :
+    Adaptive.leafProbability approximateActions stoppingTree ρ lateZeroLeaf = 3 / 16 := by
+  norm_num [Adaptive.leafProbability_eq_response, response, lateZero_word, recordOperator,
+    approximateActions, biased_branch, mass_smul, ρ.mass_one]
+
+theorem exact_lateOne_probability (ρ : Density Qubit) :
+    Adaptive.leafProbability exactActions stoppingTree ρ lateOneLeaf = 0 := by
+  simp [Adaptive.leafProbability_eq_response, response, lateOne_word, recordOperator,
+    exactActions, biased_branch, certain_branch, mass]
+
+theorem approximate_lateOne_probability (ρ : Density Qubit) :
+    Adaptive.leafProbability approximateActions stoppingTree ρ lateOneLeaf = 1 / 16 := by
+  norm_num [Adaptive.leafProbability_eq_response, response, lateOne_word, recordOperator,
+    approximateActions, biased_branch, mass_smul, ρ.mass_one]
+
+/-- The one-step history carrier is enumerated without discarding the idle symbol. -/
+def oneHistoryEquiv : Option Label ≃ History (Option Label) 1 where
+  toFun o := ![o]
+  invFun h := h 0
+  left_inv _ := rfl
+  right_inv h := by funext i; fin_cases i; rfl
+
+theorem controller_first : controller stoppingTree 2 0 Fin.elim0 = some 0 := rfl
+
+theorem controller_second (h : History (Option Label) 1) :
+    controller stoppingTree 2 1 h =
+      match h 0 with
+      | none => none
+      | some o => if o = 0 then none else some 1 := by
+  cases ho : h 0 with
+  | none => simp [controller, follow, List.ofFn_succ, advance, action, stoppingTree, ho]
+  | some o =>
+    by_cases hz : o = 0 <;>
+      simp [controller, follow, List.ofFn_succ, advance, action, stoppingTree, ho, hz]
+
+theorem first_activeCost_zero (ρ : Density Qubit) :
+    activeCost exactActions approximateActions stoppingTree 2 ρ 0 = 0 := by
+  simp [activeCost, controller, follow, stoppingTree, action, activeDefect, first_defect_zero]
+
+theorem reference_one_step_weight (ρ : Density Qubit) (o : Option Label) :
+    HistoryChannels.weight
+      (ActionRecordBudget.run (lift approximateActions) (controller stoppingTree 1) ρ)
+      (oneHistoryEquiv o) = match o with
+        | none => 0
+        | some k => if k = 0 then 3 / 4 else 1 / 4 := by
+  rw [ActionRecordBudget.weight_run]
+  change response (lift approximateActions) ρ [(some 0, o)] = _
+  cases o with
+  | none =>
+    simp [response, recordOperator, mass]
+  | some k =>
+    simp [response, recordOperator, approximateActions, biased_branch, mass_smul, ρ.mass_one]
+
+/-- The second action cost is its defect 1/4 times the true continuation probability 1/4. -/
+theorem second_activeCost_sixteenth (ρ : Density Qubit) :
+    activeCost exactActions approximateActions stoppingTree 2 ρ 1 = 1 / 16 := by
+  unfold activeCost
+  rw [controller_truncate]
+  simp only [controller_second]
+  rw [← Equiv.sum_comp oneHistoryEquiv]
+  simp only [reference_one_step_weight]
+  norm_num [Fintype.sum_option, Fin.sum_univ_two, oneHistoryEquiv, Equiv.coe_fn_mk, activeDefect,
+    continuing_defect_quarter]
+
+theorem second_activeProbability_quarter (ρ : Density Qubit) :
+    activeProbability approximateActions stoppingTree 2 ρ 1 = 1 / 4 := by
+  unfold activeProbability
+  rw [controller_truncate]
+  simp only [controller_second]
+  rw [← Equiv.sum_comp oneHistoryEquiv]
+  simp only [reference_one_step_weight]
+  norm_num [Fintype.sum_option, Fin.sum_univ_two, oneHistoryEquiv, Equiv.coe_fn_mk]
+
+theorem activeCost_sum_exact (ρ : Density Qubit) :
+    (∑ t : Fin 2, activeCost exactActions approximateActions stoppingTree 2 ρ t) = 1 / 16 := by
+  simp [Fin.sum_univ_two, first_activeCost_zero, second_activeCost_sixteenth]
+
+local attribute [instance] Classical.propDecidable
+
+/-- The original variable-length leaf law saturates the proved stopped-action budget. -/
+theorem stopping_record_tv_exact (ρ : Density Qubit) :
+    Mixture.tv (ClassicalQuantumMemory.ProtocolMemory.weights exactActions stoppingTree ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights approximateActions stoppingTree ρ) = 1 / 16 := by
+  apply le_antisymm
+  · have h := original_record_tv_le_activeCost_sum exactActions approximateActions stoppingTree
+      (N := 2) (by rw [tree_height]) ρ ρ
+    simpa only [effectDistance_self, zero_add, activeCost_sum_exact] using h
+  · have h := RecordProbability.eventProbability_abs_sub_le_tv
+      (ClassicalQuantumMemory.ProtocolMemory.weights exactActions stoppingTree ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights approximateActions stoppingTree ρ) {lateOneLeaf}
+    simp only [RecordProbability.eventProbability, Finset.sum_singleton,
+      ClassicalQuantumMemory.ProtocolMemory.weights_weight] at h
+    rw [exact_lateOne_probability, approximate_lateOne_probability] at h
+    norm_num at h
+    exact h
+
+theorem completed_record_tv_exact (ρ : Density Qubit) :
+    Mixture.tv
+      (HistoryChannels.weights (ActionRecordBudget.run (lift exactActions) (controller stoppingTree 2) ρ))
+      (HistoryChannels.weights (ActionRecordBudget.run (lift approximateActions) (controller stoppingTree 2) ρ)) = 1 / 16 := by
+  rw [← original_record_tv_eq exactActions approximateActions stoppingTree (by rw [tree_height])]
+  exact stopping_record_tv_exact ρ
+
+theorem completed_joint_bound (ρ σ : Density Qubit) :
+    effectDistance (ClassicalQuantumMemory.ProtocolMemory.state exactActions stoppingTree ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.state approximateActions stoppingTree σ) ≤
+        effectDistance ρ σ + 1 / 16 := by
+  simpa only [activeCost_sum_exact] using
+    original_joint_distance_le_activeCost_sum exactActions approximateActions stoppingTree
+      (N := 2) (by rw [tree_height]) ρ σ
+
+def oneStepTree : Adaptive.Protocol Unit Label := .node () (fun _ => .stop)
+def identityActions (_ : Unit) : Instrument Qubit Label (Fin 4) := certain 0
+def stoppedHistory : History (Option Label) 1 := ![none]
+
+/-- Every original action family is identical; the only difference below is the stopping rule. -/
+theorem negative_action_defects_zero (a : Unit) :
+    ClassicalQuantumMemory.defect (identityActions a) (identityActions a) = 0 :=
+  record_defect_self _
+
+theorem immediate_stop_probability (ρ : Density Qubit) :
+    HistoryChannels.weight
+      (ActionRecordBudget.run (lift identityActions)
+        (controller (.stop : Adaptive.Protocol Unit Label) 1) ρ) stoppedHistory = 1 := by
+  simp [ActionRecordBudget.weight_run, Controller.word, controller, follow, action,
+    stoppedHistory, response, recordOperator, ρ.mass_one]
+
+theorem one_step_idle_probability (ρ : Density Qubit) :
+    HistoryChannels.weight
+      (ActionRecordBudget.run (lift identityActions) (controller oneStepTree 1) ρ) stoppedHistory = 0 := by
+  simp [ActionRecordBudget.weight_run, Controller.word, controller, follow, action,
+    oneStepTree, stoppedHistory, response, recordOperator, mass]
+
+/-- Different stopping rules can give TV one despite identical underlying quantum actions. -/
+theorem different_stopping_rules_tv_one (ρ : Density Qubit) :
+    Mixture.tv
+      (HistoryChannels.weights (ActionRecordBudget.run (lift identityActions)
+        (controller (.stop : Adaptive.Protocol Unit Label) 1) ρ))
+      (HistoryChannels.weights (ActionRecordBudget.run (lift identityActions)
+        (controller oneStepTree 1) ρ)) = 1 := by
+  apply le_antisymm (Mixture.tv_le_one _ _)
+  have h := RecordProbability.eventProbability_abs_sub_le_tv
+    (HistoryChannels.weights (ActionRecordBudget.run (lift identityActions)
+      (controller (.stop : Adaptive.Protocol Unit Label) 1) ρ))
+    (HistoryChannels.weights (ActionRecordBudget.run (lift identityActions)
+      (controller oneStepTree 1) ρ)) {stoppedHistory}
+  simp only [RecordProbability.eventProbability, Finset.sum_singleton,
+    HistoryChannels.weights_weight] at h
+  rw [immediate_stop_probability, one_step_idle_probability] at h
+  norm_num at h
+  exact h
+
+theorem immediate_terminal_memory (ρ : Density Qubit) :
+    ((RectangularChannel.discardLeft Qubit (Leaf (.stop : Adaptive.Protocol Unit Label))).state
+      (ClassicalQuantumMemory.ProtocolMemory.state identityActions .stop ρ)) = ρ := by
+  apply Density.ext
+  change (RectangularChannel.discardLeft Qubit (Leaf (.stop : Adaptive.Protocol Unit Label))).operator
+    ((ClassicalQuantumMemory.ProtocolMemory.channel identityActions .stop).operator ρ.matrix) = ρ.matrix
+  rw [ClassicalQuantumMemory.ProtocolMemory.discard_record_operator]
+  simp [Leaf, ClassicalQuantumMemory.ProtocolMemory.Leaf, Adaptive.Protocol.Leaf,
+    Adaptive.Protocol.word, recordOperator]
+
+theorem one_step_terminal_memory (ρ : Density Qubit) :
+    ((RectangularChannel.discardLeft Qubit (Leaf oneStepTree)).state
+      (ClassicalQuantumMemory.ProtocolMemory.state identityActions oneStepTree ρ)) = ρ := by
+  apply Density.ext
+  change (RectangularChannel.discardLeft Qubit (Leaf oneStepTree)).operator
+    ((ClassicalQuantumMemory.ProtocolMemory.channel identityActions oneStepTree).operator ρ.matrix) = ρ.matrix
+  rw [ClassicalQuantumMemory.ProtocolMemory.discard_record_operator]
+  change (∑ l : (o : Label) × PUnit, recordOperator identityActions [((), l.1)] ρ.matrix) = ρ.matrix
+  simp [Fintype.sum_sigma, Fin.sum_univ_two, recordOperator, identityActions, certain_branch]
+
+/-- The negative control changes recorded stopping time while terminal quantum memory stays equal. -/
+theorem negative_terminal_memories_equal (ρ : Density Qubit) :
+    (RectangularChannel.discardLeft Qubit (Leaf (.stop : Adaptive.Protocol Unit Label))).state
+      (ClassicalQuantumMemory.ProtocolMemory.state identityActions .stop ρ) =
+    (RectangularChannel.discardLeft Qubit (Leaf oneStepTree)).state
+      (ClassicalQuantumMemory.ProtocolMemory.state identityActions oneStepTree ρ) := by
+  rw [immediate_terminal_memory, one_step_terminal_memory]
+
+end
+
+end UEOTQM.StoppingRecordBudgetExamples
+
+
+#print axioms UEOTQM.StoppingRecordBudgetExamples.Qubit
+#print axioms UEOTQM.StoppingRecordBudgetExamples.Label
+#print axioms UEOTQM.StoppingRecordBudgetExamples.certain
+#print axioms UEOTQM.StoppingRecordBudgetExamples.certain_branch
+#print axioms UEOTQM.StoppingRecordBudgetExamples.certain_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.halfK
+#print axioms UEOTQM.StoppingRecordBudgetExamples.halfK_gram
+#print axioms UEOTQM.StoppingRecordBudgetExamples.halfK_conjugation
+#print axioms UEOTQM.StoppingRecordBudgetExamples.biasedKraus
+#print axioms UEOTQM.StoppingRecordBudgetExamples.biased
+#print axioms UEOTQM.StoppingRecordBudgetExamples.biased_branch
+#print axioms UEOTQM.StoppingRecordBudgetExamples.biased_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.rhoZero
+#print axioms UEOTQM.StoppingRecordBudgetExamples.joint_probability_certain
+#print axioms UEOTQM.StoppingRecordBudgetExamples.joint_probability_biased
+#print axioms UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_le_quarter
+#print axioms UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_exact
+#print axioms UEOTQM.StoppingRecordBudgetExamples.biased_record_defect_exact
+#print axioms UEOTQM.StoppingRecordBudgetExamples.stoppingTree
+#print axioms UEOTQM.StoppingRecordBudgetExamples.earlyLeaf
+#print axioms UEOTQM.StoppingRecordBudgetExamples.lateZeroLeaf
+#print axioms UEOTQM.StoppingRecordBudgetExamples.lateOneLeaf
+#print axioms UEOTQM.StoppingRecordBudgetExamples.early_word
+#print axioms UEOTQM.StoppingRecordBudgetExamples.lateZero_word
+#print axioms UEOTQM.StoppingRecordBudgetExamples.lateOne_word
+#print axioms UEOTQM.StoppingRecordBudgetExamples.tree_height
+#print axioms UEOTQM.StoppingRecordBudgetExamples.early_stopTime
+#print axioms UEOTQM.StoppingRecordBudgetExamples.late_stopTime
+#print axioms UEOTQM.StoppingRecordBudgetExamples.early_encoded
+#print axioms UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded
+#print axioms UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded
+#print axioms UEOTQM.StoppingRecordBudgetExamples.exactActions
+#print axioms UEOTQM.StoppingRecordBudgetExamples.approximateActions
+#print axioms UEOTQM.StoppingRecordBudgetExamples.first_defect_zero
+#print axioms UEOTQM.StoppingRecordBudgetExamples.continuing_defect_quarter
+#print axioms UEOTQM.StoppingRecordBudgetExamples.exact_early_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.approximate_early_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.exact_lateZero_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.approximate_lateZero_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.exact_lateOne_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.approximate_lateOne_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.oneHistoryEquiv
+#print axioms UEOTQM.StoppingRecordBudgetExamples.controller_first
+#print axioms UEOTQM.StoppingRecordBudgetExamples.controller_second
+#print axioms UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero
+#print axioms UEOTQM.StoppingRecordBudgetExamples.reference_one_step_weight
+#print axioms UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth
+#print axioms UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter
+#print axioms UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact
+#print axioms UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact
+#print axioms UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact
+#print axioms UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound
+#print axioms UEOTQM.StoppingRecordBudgetExamples.oneStepTree
+#print axioms UEOTQM.StoppingRecordBudgetExamples.identityActions
+#print axioms UEOTQM.StoppingRecordBudgetExamples.stoppedHistory
+#print axioms UEOTQM.StoppingRecordBudgetExamples.negative_action_defects_zero
+#print axioms UEOTQM.StoppingRecordBudgetExamples.immediate_stop_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.one_step_idle_probability
+#print axioms UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one
+#print axioms UEOTQM.StoppingRecordBudgetExamples.immediate_terminal_memory
+#print axioms UEOTQM.StoppingRecordBudgetExamples.one_step_terminal_memory
+#print axioms UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal

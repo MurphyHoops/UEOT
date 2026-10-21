@@ -1,0 +1,29 @@
+{
+  "target": "PurificationDimension",
+  "status": "FAIL",
+  "command": [
+    "flock",
+    "/tmp/qm317-lean.lock",
+    "/tmp/lean-4.33.1-linux/bin/lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake/build/lib/lean/UEOTQM/PurificationDimension.olean",
+    "UEOTQM/PurificationDimension.lean"
+  ],
+  "started_at": "2026-10-20T15:25:06.118935+00:00",
+  "finished_at": "2026-10-20T15:28:04.352431+00:00",
+  "exit_code": 1,
+  "source_sha256_before": {
+    "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362",
+    "formalization/ueot-qm/UEOTQM/PurificationDimension.lean": "a90b2b1d03c42c6229bbedbf7490f26253ebb44c72b5bb9b7f3983a2cb1f0267"
+  },
+  "source_sha256_after": {
+    "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362",
+    "formalization/ueot-qm/UEOTQM/PurificationDimension.lean": "a90b2b1d03c42c6229bbedbf7490f26253ebb44c72b5bb9b7f3983a2cb1f0267"
+  },
+  "source_unchanged_during_execution": true,
+  "log": "physics/qm/kernel/evidence/v31.9/B/PurificationDimension-002.log",
+  "log_sha256": "db853968e96d41b5617c21aeb24aab12c1729eaf0b34f2fa2400c79139e00314",
+  "scope": "Focused compilation of a new v31.9 B source; no v31.8 unified acceptance replay."
+}

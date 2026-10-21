@@ -1,0 +1,75 @@
+{
+  "schema": "ueot_qm.v31.9.lane_claim_draft.v1",
+  "lane": "B",
+  "status": "FOCUSED_VERIFIED_UNIFIED_AND_REMOTE_PENDING",
+  "root_assigns_qmk_ids": true,
+  "book_chapter": 64,
+  "claims": [
+    {
+      "book_result": "P-PDM-01",
+      "anchor": "p-pdm-01",
+      "title": "矩形等距的精确维数方向",
+      "claim": "有限复载体α、β上，存在J:Matrix β α ℂ满足J†J=Iα，当且仅当|α|≤|β|；若|α|<|β|，任意这样的扩维矩阵不能同时有JJ†=Iβ。",
+      "evidence_kind": "FORMAL_FINITE_LINEAR_ALGEBRA",
+      "premises": ["α、β为任意有限载体，标量为ℂ；所用单位矩阵和乘法是实际矩形矩阵运算。"],
+      "quantified_scope": "All finite source and target carriers, including empty carriers; no density input or pre-supplied isometry is needed for existence.",
+      "main_declarations": ["UEOTQM.QuantumPurification.exists_matrix_isometry_iff_card_le", "UEOTQM.QuantumPurification.matrix_isometry_not_coisometry_of_card_lt"],
+      "support_declarations": ["UEOTQM.QuantumPurification.coordinateIsometry", "UEOTQM.QuantumPurification.coordinateIsometry_adjoint_mul", "UEOTQM.QuantumPurification.card_le_of_matrix_isometry"],
+      "proof_outline": ["有限基数界给单射；其0/1坐标矩阵逐项满足J†J=I。", "必要性由rank(I)=|α|≤rank(J)≤|β|；反向单位恒等式在严格维数差时违反同一必要界。"],
+      "limits": ["不把单侧矩形等距称为双侧酉。", "不讨论无限维载体或物理制备复杂度。"]
+    },
+    {
+      "book_result": "P-PDM-02",
+      "anchor": "p-pdm-02",
+      "title": "任意实际纯化的有方向直接等距",
+      "claim": "同一有限系统的任意两份完整凸纯态Ψ∈Density(ι×α)、Φ∈Density(ι×β)，在实际偏迹相同且|α|≤|β|时，存在J†J=Iα使Φ=(Iι⊗J)Ψ(Iι⊗J)†；向量作用为φ(i,b)=Σa J(b,a)ψ(i,a)。",
+      "evidence_kind": "FORMAL_FULL_STATE_PURIFICATION_THEOREM",
+      "premises": ["ι、α、β为有限复载体。", "IsPure仍为全部实际密度态中的凸极点。", "实际discardRight边际相同。", "明确维数方向|α|≤|β|。"],
+      "quantified_scope": "Every pair of full convex-pure joint density matrices with the stated marginal and cardinal conditions; the vector theorem also handles unnormalized vectors with equal outer-product marginals.",
+      "main_declarations": ["UEOTQM.QuantumPurification.pure_states_isometrically_equivalent", "UEOTQM.QuantumPurification.exists_auxiliary_isometry_of_equal_marginal", "UEOTQM.QuantumPurification.exists_auxiliary_isometry_action"],
+      "support_declarations": ["UEOTQM.QuantumPurification.auxiliary_tensor_mul", "UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_operator", "UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_equal_marginal", "UEOTQM.QuantumPurification.IsPure.exists_vector"],
+      "proof_outline": ["先从维数界构造J0并将第一向量等距扩展至目标辅助载体，实际偏迹不变。", "同载体Gram/酉定理给U，定义J=U J0；由真实矩阵/Kronecker乘法得到作用。", "完整纯性反向取得两向量，再用outer(Tv)=T outer(v) T†回到任意纯态密度矩阵。"],
+      "limits": ["不声称反向维数方向存在全空间等距。", "右矩阵因子为AJᵀ；不将J†、Jᵀ、逐项共轭互换。", "不从该结构事实推出Core唯一选择复模型。"]
+    },
+    {
+      "book_result": "P-PDM-03",
+      "anchor": "p-pdm-03",
+      "title": "全部凸纯扩展的实际秩下界",
+      "claim": "任意Ψ∈Density(ι×α)若在完整态空间中为凸纯态，则rankℂ(Trα Ψ)≤|α|；实际向量重排A满足Trα Ψ=AA†且rank(AA†)=rank(A)。",
+      "evidence_kind": "FORMAL_FULL_STATE_RANK_BOUND",
+      "premises": ["有限复载体与原Density/IsPure定义。", "系统边际为原实际Kraus偏迹。"],
+      "quantified_scope": "Every full convex-pure joint density, without a pre-supplied rank-one or Gram witness.",
+      "main_declarations": ["UEOTQM.QuantumPurification.rank_marginal_le_auxiliary_card"],
+      "support_declarations": ["UEOTQM.QuantumPurification.IsPure.exists_vector", "UEOTQM.QuantumPurification.discard_vectorize_outer", "Matrix.rank_self_mul_conjTranspose", "Matrix.rank_le_card_width"],
+      "proof_outline": ["完整纯性刻画给真实向量，将其重排为ι×α矩阵A。", "原偏迹逐项等于AA†；固定库的Gram秩等式与矩阵列数界给结论。"],
+      "limits": ["该下界量化所有纯化，不仅量化谱构造所得者。", "单独的下界不声称已达到最小值；达到性由P-PDM-04另证。"]
+    },
+    {
+      "book_result": "P-PDM-04",
+      "anchor": "p-pdm-04",
+      "title": "有限复纯化的精确最小辅助维数",
+      "claim": "任意ρ:Density ι与指定有限α，有实际完整凸纯扩展Ψ∈Density(ι×α)、TrαΨ=ρ，当且仅当ρ.matrix.rank≤|α|。Fin rank上真实达到最小值；任何更小辅助均不可能。密度秩严格为正，空辅助不可能。",
+      "evidence_kind": "FORMAL_EXACT_PURIFICATION_EXISTENCE_CRITERION",
+      "premises": ["ρ为完整有限复密度态，正性与迹一为实际矩阵条件。", "辅助载体有限，秩为原复矩阵的精确秩。", "只复用固定数学库的有限Hermitian谱定理；不预设谱支撑大小或所需纯化。"],
+      "quantified_scope": "All finite complex density inputs and all specified finite auxiliary carriers; attained explicitly on Fin ρ.matrix.rank.",
+      "main_declarations": ["UEOTQM.QuantumPurification.exists_purification_iff_rank_le", "UEOTQM.QuantumPurification.exists_minimal_purification", "UEOTQM.QuantumPurification.no_purification_of_card_lt_rank", "UEOTQM.QuantumPurification.density_rank_pos", "UEOTQM.QuantumPurification.no_purification_empty_auxiliary"],
+      "support_declarations": ["UEOTQM.QuantumPurification.SpectralSupport", "UEOTQM.QuantumPurification.spectralSupport_card", "UEOTQM.QuantumPurification.supportedGram", "UEOTQM.QuantumPurification.supportedGram_spec", "UEOTQM.QuantumPurification.supportPurification_isPure", "UEOTQM.QuantumPurification.supportPurification_marginal", "UEOTQM.QuantumPurification.exists_purification_of_rank_le"],
+      "proof_outline": ["必要性由任意纯化秩下界。", "PSD给真实非负特征值及谱酉；仅取非零特征值索引，平方根加权列构成压缩Gram因子。", "正性保证平方根平方回到特征值，零特征值项逐项为零，故压缩后的实际Gram仍为ρ。", "向量化获得规范纯态与实际偏迹；非零特征值个数等于实际秩，再由坐标等距嵌入任意足够大的目标。", "取Fin rank得到达到性；假设秩0则得到空载体迹一密度，矛盾。"],
+      "witnesses": ["UEOTQM.PurificationDimensionExamples.mixed_rank_two", "UEOTQM.PurificationDimensionExamples.mixed_has_two_dimensional_purification", "UEOTQM.PurificationDimensionExamples.mixed_no_one_dimensional_purification", "UEOTQM.PurificationDimensionExamples.mixed_exact_dimension_criterion", "UEOTQM.PurificationDimensionExamples.pure_rank_one", "UEOTQM.PurificationDimensionExamples.pure_has_unit_auxiliary", "UEOTQM.PurificationDimensionExamples.pure_no_empty_auxiliary"],
+      "limits": ["精确秩区别严格零与任意小的非零特征值。", "noncomputable谱选择不是有舍入误差保证的可执行谱算法。", "不覆盖近似纯化的最优资源、无限维、稳定秩或制备电路复杂度。"]
+    },
+    {
+      "book_result": "N-PDM-01",
+      "anchor": "n-pdm-01",
+      "title": "同边际不允许省略直接等距的维数方向",
+      "claim": "实际二阶满秩边际diag(9/25,16/25)有二维和三维辅助的归一纯化；显示的复相位J:Matrix (Fin3) (Fin2)满足J†J=I2并实现真实联合密度作用，但JJ†≠I3，且不存在任何3→2全辅助空间等距。",
+      "evidence_kind": "EXACT_FORMAL_POSITIVE_AND_NEGATIVE_CONTROL",
+      "premises": ["firstFactor=diag(3/5,4/5)，secondFactor=[[9/25,12/25,0],[16i/25,-12i/25,0]]。", "directIsometry=[[3/5,4i/5],[4/5,-3i/5],[0,0]]，实际系统为Fin2。", "全部算术为精确复有理表达；无新增实验数据。"],
+      "quantified_scope": "Displayed exact finite purifications and map, plus universal impossibility of every Matrix (Fin2) (Fin3) satisfying the full-space isometry identity.",
+      "main_declarations": ["UEOTQM.PurificationDimensionExamples.exact_rectangular_density_action", "UEOTQM.PurificationDimensionExamples.generic_direct_isometry_instantiated", "UEOTQM.PurificationDimensionExamples.direct_not_coisometry", "UEOTQM.PurificationDimensionExamples.reverse_full_isometry_impossible"],
+      "support_declarations": ["UEOTQM.PurificationDimensionExamples.first_gram", "UEOTQM.PurificationDimensionExamples.second_gram", "UEOTQM.PurificationDimensionExamples.first_marginal", "UEOTQM.PurificationDimensionExamples.second_marginal", "UEOTQM.PurificationDimensionExamples.direct_adjoint_mul", "UEOTQM.PurificationDimensionExamples.exact_rectangular_vector_action"],
+      "proof_outline": ["逐项计算两矩形Gram、归一和真实偏迹，得到同一满秩边际。", "逐项验证J†J=I2及向量/外积作用；第三目标坐标的JJ†对角元为0，故非coisometry。", "任意3→2等距若存在，其秩必要界将给3≤2，矛盾。"],
+      "limits": ["不否定支撑上的对应或第61章共同直和比较。", "不把含复相位的精确形式化见证当作新增物理实验。"]
+    }
+  ]
+}

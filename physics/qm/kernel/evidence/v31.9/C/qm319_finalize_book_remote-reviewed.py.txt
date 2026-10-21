@@ -1,0 +1,716 @@
+#!/usr/bin/env python3
+"""Bind actual v31.9 PR/main acceptance to four current edition-3.5 book files.
+
+Default: read-only. --apply requires the root's MAIN_VERIFIED integration,
+independent successful PR/main CI receipts, actual recursive Git-tree readbacks,
+and complete frozen-publication reconciliation. No remote identity is inferred.
+The same 98 raw scientific inputs bind local acceptance and remote publication.
+Local execution of three new witnesses remains separate from ten historically
+reused witnesses/certificates/runtime/demos, even when CI later executes them.
+No network, Git write, Lean, runtime, typesetting, or visual inspection is used.
+Three updated metadata files refer to the terminal receipt by path, not hash.
+"""
+from __future__ import annotations
+
+import argparse
+import copy
+from datetime import datetime
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import sys
+import tempfile
+
+
+REPOSITORY = 'MurphyHoops/UEOT'
+EDITION = '3.5'
+LOCAL_STATE = 'LOCAL_VERIFIED_REMOTE_PENDING'
+SOURCE_SET = 'bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0'
+SOURCE_COUNT = 98
+BOOK = 'physics/qm/book/'
+EVIDENCE = BOOK + 'evidence/v3.5/'
+KERNEL = 'physics/qm/kernel/evidence/v31.9/'
+REMOTE = EVIDENCE + 'remote-publication.json'
+INTEGRATION = KERNEL + 'integration-verification.json'
+LOCAL_GATE = EVIDENCE + 'local-release-gates.json'
+TARGETS = (BOOK + 'SOURCE_MANIFEST.json', BOOK + 'CHAPTER_DOSSIER.json',
+           BOOK + 'README.md', REMOTE)
+CANONICAL_KEYS = {'canonical': ('UEOT_PHYSICS.md', 'markdown_sha256'),
+                  'pdf': ('UEOT_PHYSICS.pdf', 'pdf_sha256'),
+                  'latex': ('UEOT_PHYSICS.tex', 'tex_sha256')}
+CONTEXT_KEYS = ('repository', 'source_commit', 'source_tree', 'tested_main_commit',
+                'tested_main_tree', 'pull_request', 'pr_run', 'main_run',
+                'pr_status', 'main_status', 'source_count', 'source_set_sha256')
+FOUNDATION = ['Classical.choice', 'Quot.sound', 'propext']
+WRITES = 0
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def blob_sha(data):
+    return hashlib.sha1(b'blob ' + str(len(data)).encode('ascii') + b'\0' + data).hexdigest()
+
+
+def encode(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+
+
+def source_set(entries):
+    return sha(json.dumps(entries, sort_keys=True, separators=(',', ':')).encode('utf-8'))
+
+
+def prepare(root, context_path):
+    root, context_path = root.resolve(), context_path.resolve()
+    protected = {}
+
+    def path(relative):
+        p = root / relative
+        require(not Path(relative).is_absolute() and p.resolve().is_relative_to(root),
+                f'Path escapes repository: {relative}')
+        return p
+
+    def take(p):
+        p = Path(p).resolve()
+        data = p.read_bytes()
+        require(p not in protected or protected[p] == sha(data),
+                f'Input changed during preparation: {p}')
+        protected[p] = sha(data)
+        return data
+
+    def read(relative):
+        return json.loads(take(path(relative)))
+
+    def record(relative, prepared=None):
+        data = prepared[relative] if prepared and relative in prepared else take(path(relative))
+        return {'path': relative, 'sha256': sha(data), 'bytes': len(data)}
+
+    def check_bound(bound, label):
+        require(isinstance(bound, dict) and isinstance(bound.get('path'), str)
+                and re.fullmatch('[0-9a-f]{64}', bound.get('sha256', ''))
+                and type(bound.get('bytes')) is int and bound['bytes'] >= 0,
+                f'Malformed byte binding: {label}')
+        p = Path(bound['path'])
+        data = take(p if p.is_absolute() else path(bound['path']))
+        require(sha(data) == bound['sha256'] and len(data) == bound['bytes'],
+                f'Actual bound input changed: {label}')
+        return data
+
+    def rows_by_path(rows, expected, label):
+        require(isinstance(rows, list) and len(rows) == expected, f'Wrong row count: {label}')
+        out = {entry['path']: entry for entry in rows}
+        require(len(out) == len(rows), f'Duplicate paths: {label}')
+        for relative in out:
+            path(relative)
+        return out
+
+    context_bytes = take(context_path)
+    ctx = json.loads(context_bytes)
+    require(all(key in ctx for key in CONTEXT_KEYS), 'Missing actual release-context fields.')
+    require(ctx['repository'] == REPOSITORY and ctx.get('edition', EDITION) == EDITION,
+            'Unexpected repository or book edition.')
+    require(ctx['pr_status'] == ctx['main_status'] == 'PASS',
+            'Both actual PR/main CI PASS receipts are required; pending context refuses writes.')
+    require(ctx['source_count'] == SOURCE_COUNT and ctx['source_set_sha256'] == SOURCE_SET,
+            'Remote acceptance must identify the exact actual 98-source unified input.')
+    for key in ('source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree'):
+        require(isinstance(ctx[key], str) and re.fullmatch('[0-9a-f]{40}', ctx[key]),
+                f'Missing full actual commit/tree SHA: {key}')
+    for key in ('pull_request', 'pr_run', 'main_run'):
+        require(type(ctx[key]) is int and ctx[key] > 0, f'Missing actual numeric identity: {key}')
+    require(ctx['pr_run'] != ctx['main_run'], 'PR/main must be independent workflow runs.')
+    now = ctx.get('recorded_at_utc')
+    require(isinstance(now, str), 'recorded_at_utc must come from the actual release context.')
+    when = datetime.fromisoformat(now.replace('Z', '+00:00'))
+    require(when.utcoffset() is not None and when.utcoffset().total_seconds() == 0,
+            'Actual metadata timestamp must include UTC.')
+
+    integration = read(INTEGRATION)
+    require(integration.get('schema') == 'ueot_qm.integration_verification.v31.9'
+            and integration.get('status') == 'MAIN_VERIFIED', 'Root integration is not MAIN_VERIFIED.')
+    for key in CONTEXT_KEYS:
+        require(integration.get(key) == ctx[key], f'Actual context/integration mismatch: {key}')
+    reconciliation_flags = ('tested_inputs_identical', 'core_imports_identical',
+                            'canonical_book_identical', 'published_paths_identical')
+    for key in reconciliation_flags:
+        require(integration.get(key) is True, f'Root final-byte reconciliation missing: {key}')
+    tree_equal = ctx['source_tree'] == ctx['tested_main_tree']
+    require(integration.get('source_and_main_tree_identical') is tree_equal,
+            'Whole-tree equality must reflect the actual tree identities.')
+    require(integration.get('original_unified_raw_set_equals_publication_raw_set') is True,
+            'This release has one exact raw source set, with no comment bridge.')
+    require(integration.get('full_scientific_theory_verified') is False
+            and integration.get('empirical_confirmation_added') is False,
+            'Remote acceptance must retain finite formal scope and no new experiment.')
+
+    local = read(LOCAL_GATE)
+    require(local.get('schema') == 'ueot_physics.local_release.v3.5'
+            and local.get('status') == LOCAL_STATE and local.get('remote_status') == 'PENDING'
+            and local.get('remote_verified') is False, 'Immutable local book checkpoint differs.')
+    for key in ('proof_gate', 'structure_gate', 'pdf_build_gate', 'visual_gate', 'dossier_gate'):
+        require(local.get(key) == 'PASS', f'Actual local book gate missing: {key}')
+    for key in ('canonical', 'pdf', 'latex', 'dossier', 'source_manifest', 'readme',
+                'root_actual_local_acceptance', 'actual_source_manifest', 'structure', 'pdf_build',
+                'visual_receipt', 'render_receipt', 'dossier_review', 'prior_preservation',
+                'legacy_source_reuse', 'root_scientific_review', 'generator', 'context'):
+        check_bound(local[key], 'immutable local book gate ' + key)
+    if local.get('collaborator_visual_receipt') is not None:
+        check_bound(local['collaborator_visual_receipt'], 'actual scoped collaborator visual receipt')
+    counts = local['counts']
+    require(local['source_count'] == SOURCE_COUNT and local['source_set_sha256'] == SOURCE_SET
+            and counts['chapters'] == 66 and counts['appendices'] == 6
+            and counts['numbered_results'] == 161 and counts['inherited'] == 147
+            and counts['new'] == 14 and type(counts['pages']) is int and counts['pages'] > 0,
+            'Current edition structure or exact source identity differs.')
+    pages = counts['pages']
+    canonical_hashes = {}
+    for key, (name, root_key) in CANONICAL_KEYS.items():
+        require(local[key] == record(BOOK + name), f'Current canonical binding changed: {name}')
+        canonical_hashes[name] = local[key]['sha256']
+        require(integration.get('book', {}).get(root_key) == canonical_hashes[name],
+                f'Root remote canonical binding differs: {root_key}')
+    for key, value in {'edition': EDITION, 'pages': pages, 'chapters': 66,
+                       'appendices': 6, 'numbered_results': 161}.items():
+        require(integration.get('book', {}).get(key) == value, f'Root remote book count differs: {key}')
+
+    unified_identity = local['unified_source_identity']
+    publication_identity = local['publication_source_identity']
+    require(unified_identity['source_count'] == publication_identity['source_count'] == SOURCE_COUNT
+            and unified_identity['source_set_sha256'] == publication_identity['source_set_sha256'] == SOURCE_SET
+            and publication_identity['relation_to_unified_source'] == 'EXACT_SAME_BYTES',
+            'Local and publication identity must bind identical raw input bytes.')
+    for key in ('manifest', 'verification', 'source_count', 'source_set_sha256', 'actual_build_jobs'):
+        require(integration['actual_unified_source_identity'].get(key) == unified_identity[key],
+                f'Root relabelled the actual local unified identity: {key}')
+    for key in ('manifest', 'source_count', 'source_set_sha256'):
+        require(integration['publication_source_identity'].get(key) == publication_identity[key],
+                f'Root publication source identity differs: {key}')
+    require(unified_identity['manifest'] == publication_identity['manifest'] == local['actual_source_manifest']
+            and unified_identity['verification'] == local['root_actual_local_acceptance'],
+            'Book local and publication manifests are different objects.')
+    proof = json.loads(check_bound(unified_identity['verification'], 'actual local unified proof'))
+    manifest = json.loads(check_bound(unified_identity['manifest'], 'actual local unified manifest'))
+    require(proof.get('schema') == 'ueot_qm.lean_verification.v31.9' and proof.get('status') == 'PASS'
+            and proof['source_count'] == SOURCE_COUNT and proof['source_set_sha256'] == SOURCE_SET
+            and proof['actual_build_exit_code'] == proof['actual_axiom_audit_exit_code'] == 0
+            and proof['actual_build_jobs'] == unified_identity['actual_build_jobs']
+            and proof['generic_modules'] == 41 and proof['explicit_theorems'] == 854
+            and proof['actual_named_axiom_reports'] == 1123
+            and proof['full_scientific_theory_verified'] is False, 'Actual unified proof identity differs.')
+    require(manifest.get('schema') == 'ueot_qm.source_manifest.v2'
+            and manifest['source_count'] == SOURCE_COUNT
+            and source_set(manifest['sources']) == manifest['source_set_sha256'] == SOURCE_SET,
+            'Source aggregate is not derived from the actual accepted input rows.')
+    sources = rows_by_path(manifest['sources'], SOURCE_COUNT, 'accepted scientific sources')
+    require(list(sources) == sorted(sources, key=lambda name: Path(name).parts),
+            'Source paths must use the actual recorder Path-component order.')
+    for relative, bound in sources.items():
+        check_bound(bound, 'current accepted source ' + relative)
+    freeze = read(KERNEL + 'source-freeze-reconciliation.json')
+    require(freeze.get('status') == 'PASS' and freeze['source_count'] == SOURCE_COUNT
+            and freeze['source_set_sha256'] == SOURCE_SET
+            and freeze['all_source_bytes_unchanged_during_acceptance'] is True,
+            'Actual source freeze is absent or changed.')
+
+    # Preserve local execution history independently of later remote executions.
+    finite = read(KERNEL + 'finite-witnesses/verification.json')
+    new_finite = read(KERNEL + 'new-finite-witnesses/verification.json')
+    reuse = read(KERNEL + 'legacy-reuse.json')
+    execution = local['execution_partition']
+    require(unified_identity['execution_partition'] == execution
+            and execution['mode'] == finite['verification_mode'] == 'ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE'
+            and finite['status'] == new_finite['status'] == reuse['status'] == 'PASS'
+            and finite['actually_executed_witness_count'] == 3 and finite['reused_witness_count'] == 10
+            and finite['witness_audit_count'] == 416 and len(finite['checks']) == 13,
+            'Local witness execution/history partition differs.')
+    for key, value in {'file_count': 3, 'theorems': 105, 'definitions': 39,
+                       'abbreviations': 3, 'audits': 147, 'actually_executed_this_acceptance': True}.items():
+        require(execution['new_witnesses'].get(key) == value, f'Actual new witness count differs: {key}')
+    require(execution['new_witnesses']['receipt'] == record(KERNEL + 'new-finite-witnesses/verification.json')
+            and new_finite['witness_audit_count'] == 147 and len(new_finite['checks']) == 3
+            and new_finite['all_inputs_unchanged'] is True, 'Actual new witness receipt differs.')
+    for key, value in {'file_count': 10, 'theorems': 193, 'definitions': 71,
+                       'abbreviations': 5, 'audits': 269, 'actually_executed_this_acceptance': False}.items():
+        require(execution['old_witnesses'].get(key) == value, f'Historical witness scope differs: {key}')
+    for key in ('old_witnesses', 'exact_certificates', 'runtime', 'demos'):
+        require(execution[key]['actually_executed_this_acceptance'] is False,
+                f'Historical gate relabelled as a new local execution: {key}')
+    require(reuse['unchanged_previous_source_count'] == 86 and reuse['core_source_count'] == 56
+            and len(reuse['dependencies']) == 9 and reuse['witness_count'] == 10
+            and reuse['new_legacy_lean_compiler_invocations'] == reuse['new_legacy_runtime_test_invocations'] == 0
+            and proof['runtime_execution_mode'] == proof['demo_execution_mode'] == 'REUSED_UNCHANGED_SCIENTIFIC_INPUTS'
+            and proof['instance_verification']['new_local_compiler_invocations'] == 0,
+            'Immutable legacy reuse mode differs.')
+    require(execution['reuse_review'] == record(KERNEL + 'legacy-reuse.json'),
+            'Local book reuse binding differs.')
+
+    # Read the real CI verifier receipts and their saved inputs. Do not reparse
+    # logs or claim that detailed witness/demo artifact ZIP data were downloaded.
+    ci_paths, ci = {}, {}
+    ci_counts = {'generic_modules': 41, 'explicit_theorems': 854, 'generic_axiom_reports': 1123,
+                 'printed_source_hash_count': 45, 'finite_witness_total_audits': 416,
+                 'finite_witness_file_count': 13, 'finite_witness_theorem_count': 298,
+                 'finite_witness_def_count': 110, 'finite_witness_abbrev_count': 8,
+                 'runtime_test_methods': 100, 'demos': 4, 'positive_instances': 6,
+                 'positive_instance_axiom_targets': 42, 'corrupted_true_rejections': 4,
+                 'same_data_false_proofs': 4, 'false_witness_axiom_targets': 4,
+                 'local_accepted_source_count': SOURCE_COUNT, 'publication_source_count': SOURCE_COUNT}
+    for kind, commit, event in (('pr', ctx['source_commit'], 'pull_request'),
+                                ('main', ctx['tested_main_commit'], 'push')):
+        relative = KERNEL + f'ci/{kind}-{ctx[kind + "_run"]}-verification.json'
+        require(integration.get(kind + '_verification') == relative,
+                f'Root {kind} CI receipt path differs from its actual run.')
+        receipt = read(relative)
+        require(receipt.get('schema') == 'ueot_qm.actual_ci_verification.v31.9'
+                and receipt.get('status') == 'PASS' and receipt.get('verification_complete') is True
+                and receipt.get('repository') == REPOSITORY and receipt.get('event') == kind
+                and receipt.get('workflow_event') == event and receipt.get('source_commit') == commit
+                and receipt.get('run_id') == ctx[kind + '_run'], f'Wrong or incomplete actual {kind} CI.')
+        for key in ('jobs_all_success', 'recorded_checkout_matches_expected',
+                    'generic_axiom_names_and_foundation_equal_local', 'all_explicit_theorem_names_audited',
+                    'printed_source_hashes_equal_local', 'printed_source_hashes_equal_publication_manifest',
+                    'runtime_method_names_equal_local', 'input_files_unchanged_during_verification',
+                    'local_accepted_sources_unchanged_during_verification',
+                    'publication_sources_unchanged_during_verification',
+                    'publication_matches_actual_local_source_bytes', 'local_witness_reference_validated',
+                    'dependency_lock_gate_success', 'archive_steps_success'):
+            require(receipt.get(key) is True, f'Actual {kind} verification incomplete: {key}')
+        for key, value in ci_counts.items():
+            require(receipt.get(key) == value, f'Actual {kind} count differs: {key}')
+        require(receipt.get('allowed_foundation') == FOUNDATION
+                and receipt.get('local_accepted_source_set_sha256') == SOURCE_SET
+                and receipt.get('publication_source_set_sha256') == SOURCE_SET
+                and receipt.get('local_reference_execution_mode') == 'THREE_NEW_WITNESSES_AND_BOUND_TEN_LEGACY_GATES'
+                and receipt.get('remote_required_execution_mode') == 'ALL_CURRENT_WORKFLOW_GATES_MUST_ACTUALLY_EXECUTE',
+                f'Actual {kind} foundation, source identity or execution separation differs.')
+        require(receipt.get('full_scientific_theory_verified') is False
+                and receipt.get('artifact_zip_downloaded') is False
+                and receipt.get('artifact_zip_contents_verified') is False,
+                f'Unexpected {kind} artifact/scope expansion requires an actual evidence review.')
+        require(type(receipt.get('build_jobs')) is int and receipt['build_jobs'] > 0,
+                f'Actual {kind} build-job count is missing.')
+        for name, bound in receipt['input_files'].items():
+            check_bound(bound, kind + ' CI verifier saved input ' + name)
+        ci_paths[kind], ci[kind] = relative, receipt
+
+    closure = read(KERNEL + 'core-import-closure.json')
+    require(closure.get('transitive_module_count') == len(closure['modules']) == 56
+            and closure.get('core_sources_modified') is False, 'Actual recursive Core closure differs.')
+    core_rows = rows_by_path(closure['modules'], 56, 'actual recursive Core sources')
+    for relative, row in core_rows.items():
+        require(sha(take(path(relative))) == row['source_sha256'], f'Core source changed: {relative}')
+
+    inventory_bound = integration['publication_inventory']
+    inventory_bytes = check_bound(inventory_bound, 'actual frozen publication inventory')
+    inventory = json.loads(inventory_bytes)
+    published_count = inventory['file_count']
+    require(inventory.get('schema') == 'ueot_qm.publication_inventory.v31.9'
+            and inventory['source_count'] == SOURCE_COUNT and inventory['source_set_sha256'] == SOURCE_SET
+            and type(published_count) is int and published_count > 0
+            and integration['published_path_count'] == published_count,
+            'Frozen publication inventory differs from the actual integration.')
+    if 'original_unified_source_set_sha256' in inventory:
+        require(inventory['original_unified_source_set_sha256'] == SOURCE_SET,
+                'Frozen publication inventory invents a second local raw source set.')
+    inventory_files = rows_by_path(inventory['files'], published_count, 'frozen publication inventory')
+    if ctx.get('publication_inventory_path'):
+        p = Path(ctx['publication_inventory_path'])
+        require(take(p if p.is_absolute() else context_path.parent / p) == inventory_bytes,
+                'Root integration and context identify different publication inventories.')
+    checkpoint = integration['local_metadata_checkpoint']
+    for key in ('source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree'):
+        require(checkpoint.get(key) == ctx[key], f'Actual local metadata checkpoint identity differs: {key}')
+    checkpoint_files = rows_by_path(checkpoint['files'], 12, 'pre-remote current metadata checkpoint')
+    require(set(TARGETS[:3]) <= set(checkpoint_files), 'Book metadata absent from source-commit checkpoint.')
+    for relative, row in checkpoint_files.items():
+        require(relative in inventory_files, f'Checkpoint path was not actually published: {relative}')
+        for key in ('sha256', 'bytes', 'git_blob_sha', 'mode'):
+            require(row[key] == inventory_files[relative][key], f'Checkpoint/inventory mismatch: {relative} {key}')
+
+    # Independently compare saved actual recursive trees with all frozen payload
+    # blobs, while permitting unrelated concurrent work to change the whole tree.
+    readback_inputs = integration['actual_recursive_tree_readback_inputs']
+    trees = {}
+    for kind, commit, tree in (('source', ctx['source_commit'], ctx['source_tree']),
+                               ('main', ctx['tested_main_commit'], ctx['tested_main_tree'])):
+        data = json.loads(check_bound(readback_inputs[kind], 'actual ' + kind + ' recursive tree readback'))
+        expected_url = f'https://api.github.com/repos/{REPOSITORY}/git/trees/{tree}'
+        require(data.get('commit') == commit and data.get('sha') == tree and data.get('truncated') is False
+                and data.get('url', expected_url) == expected_url,
+                f'Saved {kind} tree is not a complete actual commit-bound readback.')
+        trees[kind] = rows_by_path(data['tree'], len(data['tree']), kind + ' actual Git tree')
+    for relative, row in inventory_files.items():
+        for kind in ('source', 'main'):
+            actual_row = trees[kind].get(relative, {})
+            require(actual_row.get('type') == 'blob' and actual_row.get('sha') == row['git_blob_sha']
+                    and actual_row.get('mode') == row['mode'] and actual_row.get('size') == row['bytes'],
+                    f'Actual {kind} published blob differs: {relative}')
+        # Root's nine current metadata files may already have been finalized.
+        # Their original bytes are resolved at source_commit via checkpoint.
+        if relative not in checkpoint_files:
+            data = check_bound(row, 'unchanged actual published file ' + relative)
+            require(blob_sha(data) == row['git_blob_sha'], f'Published Git blob mismatch: {relative}')
+    reconcile_ids = {}
+    groups = {'tested_sources': set(sources), 'core_imports': set(core_rows),
+              'canonical_book': {BOOK + name for name in canonical_hashes}}
+    for kind in ('source', 'main'):
+        relative = integration[kind + '_reconciliation']
+        require(relative == KERNEL + f'remote-{kind}-reconciliation.json',
+                f'Unexpected {kind} reconciliation path.')
+        reconciliation = read(relative)
+        require(reconciliation.get('schema') == f'ueot_qm.remote_{kind}_reconciliation.v31.9'
+                and reconciliation.get('status') == 'PASS', f'Actual {kind} reconciliation is missing.')
+        for key in ('source_commit', 'source_tree', 'tested_main_commit', 'tested_main_tree',
+                    'source_count', 'source_set_sha256'):
+            require(reconciliation.get(key) == ctx[key], f'{kind} reconciliation identity differs: {key}')
+        for key in reconciliation_flags:
+            require(reconciliation.get(key) is True, f'{kind} reconciliation incomplete: {key}')
+        require(reconciliation.get('published_path_count') == published_count
+                and reconciliation.get('source_and_main_tree_identical') is tree_equal
+                and reconciliation.get('actual_recursive_tree_readback_inputs') == readback_inputs
+                and reconciliation.get('publication_inventory') == inventory_bound,
+                f'{kind} reconciliation input bindings differ.')
+        for label, names in groups.items():
+            actual_rows = rows_by_path(reconciliation[label], len(names), kind + ' ' + label)
+            require(set(actual_rows) == names, f'{kind} {label} path population differs.')
+            for name, row in actual_rows.items():
+                data = check_bound(row, kind + ' reconciled ' + name)
+                require(row['source_and_main_match'] is True and blob_sha(data) == row['git_blob_sha'],
+                        f'{kind} recorded source/main blob match is invalid: {name}')
+                for tree in trees.values():
+                    require(tree[name]['type'] == 'blob' and tree[name]['sha'] == row['git_blob_sha']
+                            and tree[name]['size'] == len(data), f'Actual reconciled tree blob differs: {name}')
+        reconcile_ids[kind] = record(relative)
+
+    visual = json.loads(check_bound(local['visual_receipt'], 'actual preserved root visual scope'))
+    require(visual.get('status') == 'PASS' and visual.get('page_count') == pages
+            and visual.get('pdf_sha256') == canonical_hashes['UEOT_PHYSICS.pdf']
+            and visual.get('all_page_overview', {}).get('actually_viewed') is True,
+            'Actual completed visual review does not bind this final PDF.')
+    actual_pages = visual['root_full_pages_actually_viewed']
+    require(isinstance(actual_pages, list) and actual_pages
+            and all(type(x) is int and 1 <= x <= pages for x in actual_pages)
+            and len(actual_pages) == len(set(actual_pages)), 'Invalid actual full-page review scope.')
+
+    originals = {relative: take(path(relative)) if path(relative).is_file() else None for relative in TARGETS}
+    require(originals[REMOTE] is None, 'Remote receipt already exists; reconcile without overwriting history.')
+    previous = {}
+    for relative, gate_key, previous_key in zip(TARGETS[:3], ('source_manifest', 'dossier', 'readme'),
+                                                ('source_manifest', 'chapter_dossier', 'readme')):
+        data = originals[relative]
+        require(data is not None and local[gate_key] == record(relative),
+                f'Current accepted local book metadata changed: {relative}')
+        for bound in (inventory_files[relative], checkpoint_files[relative]):
+            require(bound['sha256'] == sha(data) and bound['bytes'] == len(data)
+                    and bound['git_blob_sha'] == blob_sha(data),
+                    f'Source-commit metadata binding differs: {relative}')
+        previous[previous_key] = {**record(relative), 'git_blob_sha': blob_sha(data),
+                                 'source_commit': ctx['source_commit'], 'source_tree': ctx['source_tree'],
+                                 'historical_resolution': 'Read this path at source_commit; later metadata has a separate byte identity.'}
+    previous['local_release'] = record(LOCAL_GATE)
+    previous['dossier_review'] = record(EVIDENCE + 'dossier-review.json')
+    manifest, dossier = json.loads(originals[TARGETS[0]]), json.loads(originals[TARGETS[1]])
+    old_manifest, old_dossier = copy.deepcopy(manifest), copy.deepcopy(dossier)
+    require(manifest['current_release_stage'] == manifest['current_code_identity']['status'] == LOCAL_STATE
+            and dossier['current_release_stage'] == dossier['completed_v31_9_contract']['status'] == LOCAL_STATE
+            and dossier['edition'] == EDITION, 'Book metadata is no longer the pre-remote checkpoint.')
+    require(manifest['unified_source_identity'] == dossier['unified_source_identity'] == unified_identity
+            and manifest['scientific_execution_partition'] == dossier['verified_inventory']['execution_partition'] == execution,
+            'Book metadata relabelled local scientific execution.')
+    numbered = [item for chapter in dossier['chapters'] for item in chapter.get('numbered_results', [])]
+    require(len(numbered) == 161 and len({x['id'] for x in numbered}) == 161
+            and len(manifest['entries']) == 11, 'Actual numbered results or original sources differ.')
+    evidence_files = sorted(p for p in path(BOOK + 'evidence/').rglob('*') if p.is_file())
+    for p in path(BOOK).rglob('*'):
+        if p.is_file() and p.relative_to(root).as_posix() not in TARGETS:
+            take(p)
+
+    identity = {key: ctx[key] for key in CONTEXT_KEYS}
+    identity.update({'pull_request_url': f'https://github.com/{REPOSITORY}/pull/{ctx["pull_request"]}',
+                     'pr_run_url': f'https://github.com/{REPOSITORY}/actions/runs/{ctx["pr_run"]}',
+                     'main_run_url': f'https://github.com/{REPOSITORY}/actions/runs/{ctx["main_run"]}',
+                     'source_and_main_tree_identical': tree_equal})
+    for key in ('pull_request_url', 'pr_run_url', 'main_run_url'):
+        require(ctx.get(key, identity[key]) == identity[key]
+                and integration.get(key, identity[key]) == identity[key], f'Actual URL mismatch: {key}')
+    reference = {'path': REMOTE, 'status': 'MAIN_VERIFIED',
+                 'hash_binding_direction': 'This external terminal receipt binds updated metadata; no reverse receipt hash.'}
+    actual_receipts = {'integration': record(INTEGRATION), 'pr': record(ci_paths['pr']),
+                       'main': record(ci_paths['main']), 'source_reconciliation': reconcile_ids['source'],
+                       'main_reconciliation': reconcile_ids['main']}
+    remote_source = {'edition': EDITION, 'status': 'MAIN_VERIFIED', 'remote_status': 'MAIN_VERIFIED',
+                     'remote_verified': True, **identity, 'manifest': copy.deepcopy(unified_identity['manifest']),
+                     'actual_receipts': actual_receipts, 'relation_to_unified_source': 'EXACT_SAME_BYTES',
+                     'identity_rule': 'The actual local unified manifest and both independent remote CI runs bind the same 98 raw input bytes. Local execution/reuse modes retain their original meaning. This later metadata commit is not a listed CI-tested commit.',
+                     'metadata_only_followup': True}
+    current_publication = copy.deepcopy(publication_identity)
+    current_publication.update({'status': 'MAIN_VERIFIED', 'remote_status': 'MAIN_VERIFIED', 'remote_verified': True,
+                                'actual_remote_identity': copy.deepcopy(remote_source),
+                                'scope': 'Same actual 98 raw inputs as local acceptance, now bound to independent real PR/main CI and all frozen publication paths. Original local new/reused execution scope is unchanged.'})
+
+    manifest['remote_metadata_completion'] = {
+        'status': 'MAIN_VERIFIED', 'remote_verified': True, 'recorded_at_utc': now,
+        'receipt': reference, 'prior_metadata': previous['source_manifest'],
+        'prior_current_code_identity': copy.deepcopy(old_manifest['current_code_identity']),
+        'prior_remote_metadata_completion': copy.deepcopy(old_manifest['remote_metadata_completion']),
+        'immutable_local_receipts': [previous['local_release'], previous['dossier_review']],
+        'metadata_commit_is_not_ci_tested_source_commit': True}
+    manifest['current_release_stage'] = 'MAIN_VERIFIED'
+    manifest['current_code_baseline_role'] = 'Historical completed v31.8 authoring baseline; actual v31.9 source/main CI identities are recorded separately.'
+    manifest['current_code_identity'].update({
+        'status': 'MAIN_VERIFIED', 'remote_status': 'MAIN_VERIFIED', 'remote_verified': True,
+        'actual_remote_identity': copy.deepcopy(remote_source),
+        'identity_rule': 'One exact 98-source raw manifest binds actual local and remote acceptance. The local build and three-new/ten-reused witness checkpoint are preserved; later PR/main execution is separately recorded.'})
+    manifest['current_remote_code_identity'] = copy.deepcopy(remote_source)
+    manifest['publication_source_identity'] = copy.deepcopy(current_publication)
+    manifest['local_release_receipt_scope'] = 'Immutable pre-remote checkpoint, including its original pending status and source-commit metadata bytes. Current metadata hashes are bound by evidence/v3.5/remote-publication.json.'
+    prepared = {TARGETS[0]: encode(manifest)}
+
+    dossier['remote_metadata_completion'] = {
+        'status': 'MAIN_VERIFIED', 'remote_verified': True, 'recorded_at_utc': now, **identity,
+        'receipt': reference, 'prior_metadata': previous['chapter_dossier'],
+        'prior_remote_metadata_completion': copy.deepcopy(old_dossier['remote_metadata_completion']),
+        'prior_validation': copy.deepcopy(old_dossier['validation']),
+        'prior_completion_boundary': copy.deepcopy(old_dossier['completion_boundary']),
+        'prior_release_acceptance': copy.deepcopy(old_dossier['release_acceptance']),
+        'prior_local_assembly_status_scope': copy.deepcopy(old_dossier['local_assembly_status_scope']),
+        'immutable_local_receipts': [previous['local_release'], previous['dossier_review']],
+        'metadata_commit_is_not_ci_tested_source_commit': True}
+    dossier['current_release_stage'] = 'MAIN_VERIFIED'
+    dossier['editorial_status'] = 'FORMAL_CANONICAL_MAIN_VERIFIED'
+    dossier['canonical']['installation_status'] = 'MAIN_VERIFIED'
+    dossier['current_remote_code_identity'] = copy.deepcopy(remote_source)
+    dossier['publication_source_identity'] = copy.deepcopy(current_publication)
+    for key in ('pdf', 'latex'):
+        dossier['derivatives'][key].update(remote_publication_status='MAIN_VERIFIED', remote_publication=reference)
+    dossier['source_catalog']['QM319'].update({
+        'status': 'MAIN_VERIFIED', 'remote_verified': True, 'remote_status': 'MAIN_VERIFIED',
+        'remote_identity': copy.deepcopy(remote_source), 'remote_acceptance': reference,
+        'source_manifest_role': 'IDENTICAL_RAW_LOCAL_AND_REMOTE_INPUT_WITH_SEPARATE_EXECUTION_HISTORY',
+        'publication_source_identity': copy.deepcopy(current_publication)})
+    dossier['verified_inventory']['publication_source_identity'] = copy.deepcopy(current_publication)
+    dossier['verified_inventory']['actual_remote_acceptance'] = copy.deepcopy(remote_source)
+    dossier['completion_boundary'].update({
+        'current_release_acceptance': 'MAIN_VERIFIED',
+        'reason': f'3.5连续正文、147旧项与14新增项、{pages}页PDF及已记录实际视觉范围保留原身份。98项实际统一受验源码有独立真实PR/main CI PASS，{published_count}项冻结发布文件已逐项核对Git blob。本地三新见证实际执行与十旧见证/证书/运行程序历史复用仍分别记录；有限模型证明和自然界适用性继续承担独立责任。'})
+    dossier['release_acceptance'].update(remote_source_commit='PASS', source_pr_ci='PASS', merged_main_ci='PASS')
+    dossier['completed_v31_9_contract'].update({
+        'status': 'MAIN_VERIFIED', 'remote_status': 'MAIN_VERIFIED',
+        'prior_local_checkpoint': copy.deepcopy(old_dossier['completed_v31_9_contract']),
+        'remote_acceptance': reference, 'actual_remote_identity': copy.deepcopy(remote_source)})
+    dossier['validation'].update({
+        'status': 'PASS_CURRENT_DOSSIER_AND_ACTUAL_REMOTE_BINDING', 'remote_verified': True,
+        'remote_status': 'MAIN_VERIFIED', 'remaining_gates': [],
+        'local_checkpoint_status_scope': 'Immutable original local pending checkpoint; local execution and historical reuse remain exactly as originally recorded.',
+        'book_source_manifest_sha256': sha(prepared[TARGETS[0]]), 'current_dossier_hash_receipt': REMOTE,
+        'hash_direction': 'Fixed actual receipts -> updated source manifest -> updated dossier -> external remote publication receipt. Old local gates retain their source-commit metadata identity.',
+        'updated_metadata_hashes_external_in_remote_publication': True})
+    dossier['book_source_manifest'] = record(TARGETS[0], prepared)
+    dossier['local_assembly_status_scope'].update({
+        'all_161_pre_remote_numbered_result_objects_preserved': True,
+        'remote_phase_rule': 'All numbered results and chapter/appendix bodies preserve their local or historical checkpoint language. Current MAIN_VERIFIED acceptance is a separate aggregate; scientific quantifiers and local execution modes do not change.',
+        'pre_remote_metadata_source_commit': ctx['source_commit'],
+        'current_book_metadata_hash_receipt': REMOTE, 'current_dossier_hash_receipt': REMOTE})
+    dossier['catalog_temporal_scope']['current_remote_phase'] = {
+        'pre_remote_metadata': previous, 'local_evidence_original_bytes_preserved': True,
+        'rule': 'Current remote acceptance uses QM319/current_remote_code_identity. Local build, three new witnesses, ten reused witnesses and other reused gates retain their original execution identities.'}
+    dossier['evidence_catalog']['book_source_manifest_v3_5'] = {
+        **record(TARGETS[0], prepared), 'role': 'CURRENT_MANIFEST_WITH_ACTUAL_REMOTE_BINDING',
+        'status': 'MAIN_VERIFIED', 'prior_local_record': previous['source_manifest'],
+        'remote_acceptance_inferred': False}
+    dossier['evidence_catalog']['dossier_review_v3_5']['record_scope'] = 'Immutable review of source-commit dossier bytes, resolved through local_metadata_checkpoint. The current dossier is separately bound by remote-publication.json.'
+    for key, relative in [('integration_v31_9', INTEGRATION), ('pr_ci_v31_9', ci_paths['pr']),
+                          ('main_ci_v31_9', ci_paths['main'])]:
+        dossier['evidence_catalog'][key] = {**record(relative), 'role': 'ACTUAL_CURRENT_EDITION_REMOTE_RECEIPT',
+                                          'status': read(relative)['status'], 'exists_at_remote_completion': True}
+    dossier['evidence_catalog']['remote_publication_v3_5'] = reference
+    dossier['path_catalog']['remote_completion_addendum'] = {
+        'original_path_catalog_is_local_checkpoint': True, 'actual_new_receipt_paths': [INTEGRATION, *ci_paths.values(), *[x['path'] for x in reconcile_ids.values()]],
+        'receipt_created_by_this_metadata_completion': REMOTE, 'pre_remote_metadata_resolution': previous}
+    prepared[TARGETS[1]] = encode(dossier)
+
+    readme = originals[TARGETS[2]].decode('utf-8')
+    substitutions = [
+        ('当前状态：**LOCAL_VERIFIED_REMOTE_PENDING**。',
+         '当前状态：**MAIN_VERIFIED**。实际源码PR、合入后独立主线CI和逐项发布字节核对已完成；见[远端发布回执](evidence/v3.5/remote-publication.json)。'),
+        ('[本地发布门](evidence/v3.5/local-release-gates.json)',
+         '[原本地验收检查点](evidence/v3.5/local-release-gates.json)'),
+        ('98项实际统一受验与待发布源码集合', '98项实际统一受验与发布源码集合'),
+        ('本版 v31.9 源码 PR、独立 main CI 与逐文件远端核对仍为 **PENDING**。',
+         '本版 v31.9 源码 PR、独立 main CI 与逐文件远端核对均为 **MAIN_VERIFIED**，实际身份如下。')]
+    for old, new in substitutions:
+        require(readme.count(old) == 1, f'Accepted README substitution anchor differs: {old}')
+        readme = readme.replace(old, new, 1)
+    section = (
+        '\n## 实际远端验收身份\n\n'
+        f'科学源经[PR #{ctx["pull_request"]}]({identity["pull_request_url"]})发布；[根端整合回执](../kernel/evidence/v31.9/integration-verification.json)绑定实际源码、受验主线与逐项Git blob核对。\n\n'
+        '| 身份 | 实际值 |\n|---|---|\n'
+        f'| 科学源提交 | `{ctx["source_commit"]}` |\n'
+        f'| 科学源整树 | `{ctx["source_tree"]}` |\n'
+        f'| PR工作流 | [{ctx["pr_run"]}]({identity["pr_run_url"]})，PASS |\n'
+        f'| 实际受验主线 | `{ctx["tested_main_commit"]}` |\n'
+        f'| 受验主线整树 | `{ctx["tested_main_tree"]}` |\n'
+        f'| 主线工作流 | [{ctx["main_run"]}]({identity["main_run_url"]})，PASS |\n\n'
+        f'98项实际统一受验与发布输入保持同一原字节；56项实际递归Core源码、三份规范正文与{published_count}项冻结发布文件均已逐项核对。两次整树相等为 `{str(tree_equal).lower()}`，不会将其他并行研究的整树变化误判为QM输入变化。原本地构建为{proof["actual_build_jobs"]} jobs；PR/main实际构建为 {ci["pr"]["build_jobs"]}/{ci["main"]["build_jobs"]} jobs，各自来自成功日志。\n\n'
+        '两次实际CI按当前完整workflow执行；日志验收直接核对45条打印源码hash、1123项公理审计公名、100个运行测试名，并核对六证书及正反控摘要、13组见证416项总审计摘要。298条见证定理、110个定义与8个缩写的种类分拆来自已绑定的本地源码和实际见证回执；四个演示有实际命令段及成功步骤。本次未下载artifact ZIP，未核验其内部逐名回执或重定向演示JSON。\n\n'
+        '本地验收仍是三组新见证实际执行、十组旧见证及证书/100运行方法/四演示按原身份复用；后来的远端执行单列记录，不能改写先前执行历史。附录D的三套程序和757项历史检查未由本次CI或元数据脚本重新执行。\n\n'
+        '本次只补录当前书元数据。原本地书门、档案审查、排印和视觉回执保持原字节及原来的待远端状态，其中旧元数据从上述科学源提交读取。当前三份元数据由新远端回执单向绑定；161项编号对象、11项原始来源、三份规范正文及实际视觉范围未变。本脚本未新增Lean、运行测试、排印、视觉或远端操作；后续元数据提交与已受验科学源和主线提交分开。\n')
+    require(readme.count('\n## 科学边界\n') == 1, 'README remote-section insertion anchor differs.')
+    readme = readme.replace('\n## 科学边界\n', section + '\n## 科学边界\n', 1)
+    prepared[TARGETS[2]] = readme.encode('utf-8')
+
+    # Preserve complete scientific/source/history objects, not just their counts.
+    for key in ('entries', 'historical_code_baselines', 'canonical_identity', 'legacy_program_reuse',
+                'original_entry_preservation', 'prior_edition_snapshot', 'unified_source_identity',
+                'scientific_execution_partition'):
+        require(manifest[key] == old_manifest[key], f'Original source/history field changed: {key}')
+    for key in ('chapters', 'appendices', 'edition_history', 'next_execution_contract',
+                'prior_edition_snapshot', 'status_axes', 'governance', 'completed_v31_6_contract',
+                'completed_v31_7_contract', 'completed_v31_8_contract', 'current_edition_assembly_history',
+                'unified_source_identity', 'candidate_inventory', 'archived_review_inputs'):
+        require(dossier[key] == old_dossier[key], f'Scientific/history dossier object changed: {key}')
+    for key in old_dossier['catalog_temporal_scope']['retained_source_ids']:
+        require(dossier['source_catalog'][key] == old_dossier['source_catalog'][key],
+                f'Historical source catalog changed: {key}')
+    for key in old_dossier['catalog_temporal_scope']['retained_evidence_ids']:
+        require(dossier['evidence_catalog'][key] == old_dossier['evidence_catalog'][key],
+                f'Historical evidence catalog changed: {key}')
+    for key in ('source_set_sha256', 'manifest_sha256', 'source_count', 'local_verification',
+                'local_verification_sha256'):
+        require(manifest['current_code_identity'][key] == old_manifest['current_code_identity'][key],
+                f'Actual local unified input relabelled: {key}')
+    require(dossier['verified_inventory']['execution_partition'] == dossier['source_catalog']['QM319']['execution_partition'] == execution
+            and dossier['validation']['execution_partition'] == execution,
+            'Remote metadata changed the local execution/reuse partition.')
+    for target in re.findall(r'\]\(([^)]+)\)', readme):
+        if target.startswith(('http:', 'https:', '#')):
+            continue
+        p = (path(BOOK) / target.split('#', 1)[0]).resolve()
+        require(p.is_relative_to(root) and (p.is_file() or p == path(REMOTE)), f'Unresolved README link: {target}')
+
+    receipt = {
+        'schema': 'ueot_physics.remote_publication.v3.5', 'status': 'MAIN_VERIFIED',
+        'recorded_at_utc': now, 'actual_acceptance_identity': identity, 'actual_receipts': actual_receipts,
+        'context_sha256': sha(context_bytes), 'prior_local_metadata': previous,
+        'root_local_metadata_checkpoint': copy.deepcopy(checkpoint),
+        'updated_metadata': [record(relative, prepared) for relative in TARGETS[:3]],
+        'canonical_book': [record(BOOK + name) for name in canonical_hashes], 'counts': copy.deepcopy(counts),
+        'all161_numbered_result_objects_preserved': True, 'original11_source_entries_preserved': True,
+        'immutable_local_evidence': [record(p.relative_to(root).as_posix()) for p in evidence_files],
+        'unified_source_identity': copy.deepcopy(unified_identity),
+        'publication_source_identity': copy.deepcopy(current_publication),
+        'source_count': SOURCE_COUNT, 'source_set_sha256': SOURCE_SET,
+        'original_unified_source_set_sha256': SOURCE_SET, 'raw_local_and_publication_inputs_identical': True,
+        'local_execution_partition_preserved': copy.deepcopy(execution),
+        'core_import_count': 56, 'published_path_count': published_count,
+        'publication_inventory': copy.deepcopy(inventory_bound),
+        'all_published_paths_reconciled_by_root': True,
+        'all_published_git_blobs_rechecked_from_actual_saved_trees': True,
+        'actual_recursive_tree_readback_inputs': copy.deepcopy(readback_inputs),
+        'actual_visual_scope_inherited_without_new_inspection': copy.deepcopy(visual),
+        'actual_collaborator_visual_receipt': copy.deepcopy(local.get('collaborator_visual_receipt')),
+        'actual_ci_evidence_scope': {kind: {key: copy.deepcopy(ci[kind][key]) for key in (
+            'build_jobs', 'printed_source_hash_count', 'local_reference_execution_mode',
+            'remote_required_execution_mode', 'witness_and_instance_evidence_scope',
+            'finite_witness_kind_count_evidence', 'demo_evidence_scope',
+            'artifact_zip_downloaded', 'artifact_zip_contents_verified')} for kind in ('pr', 'main')},
+        'historical_and_canonical_bytes_unchanged': True, 'metadata_only': True,
+        'new_lean_invocations': 0, 'new_runtime_tests': 0, 'new_pdf_builds': 0,
+        'new_visual_inspections': 0, 'new_remote_actions': 0,
+        'artifact_zip_contents_checked_by_this_helper': False,
+        'remote_identity_basis': 'Actual root integration, CI verifier receipts and saved commit-bound recursive Git trees. This helper checks saved input bindings and current 98 sources/56 Core/3 canonical files/all frozen payload blobs; it does not access GitHub or independently reparse CI logs.',
+        'followup_scope': 'Later metadata publication is separate from the already CI-tested source and main commits. No proof, empirical confirmation, physical uniqueness, or generalized theorem is added.',
+        'write_targets': list(TARGETS),
+        'hash_binding_rule': 'Fixed receipts -> updated source manifest -> updated dossier -> terminal receipt binding the three metadata files. The metadata points to this receipt by path only.',
+        'script_sha256': sha(take(Path(__file__).resolve()))}
+    prepared[REMOTE] = encode(receipt)
+    require(set(prepared) == set(TARGETS), 'Prepared writes exceed the four-file allowlist.')
+    for relative in TARGETS:
+        protected.pop(path(relative).resolve(), None)
+    summary = {'status': 'DRY_RUN_READY_NO_WRITES', 'actual_acceptance_identity': identity,
+               'source_set_sha256': SOURCE_SET, 'raw_local_and_publication_inputs_identical': True,
+               'write_targets': [{'path': relative,
+                                  'before_sha256': sha(originals[relative]) if originals[relative] is not None else None,
+                                  'after_sha256': sha(prepared[relative]), 'bytes': len(prepared[relative])}
+                                 for relative in TARGETS],
+               'protected_files': len(protected), 'immutable_book_evidence_files': len(evidence_files),
+               'canonical_and_old_evidence_unchanged': True,
+               'all161_numbered_objects_and_original11_entries_unchanged': True,
+               'local_execution_partition_unchanged': True, 'new_scientific_validation': False,
+               'completed_repository_writes': 0}
+    for p, digest in protected.items():
+        require(p.is_file() and sha(p.read_bytes()) == digest, f'Protected input changed during preparation: {p}')
+    for relative, data in originals.items():
+        p = path(relative)
+        require((p.read_bytes() if p.is_file() else None) == data, f'Metadata changed concurrently: {relative}')
+    return prepared, originals, protected, summary
+
+
+def main():
+    global WRITES
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, required=True)
+    parser.add_argument('--context', type=Path, required=True)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--apply', action='store_true')
+    mode.add_argument('--plan', action='store_true')
+    mode.add_argument('--dry-run', action='store_true')
+    args = parser.parse_args()
+    if args.plan:
+        print(json.dumps({'status': 'PLAN_ONLY_NOT_EXECUTED', 'targets': list(TARGETS),
+                          'context_required': list(CONTEXT_KEYS) + ['recorded_at_utc'],
+                          'requires': 'Actual independent PR/main CI PASS, root MAIN_VERIFIED integration, actual frozen-path reconciliation, source-commit 12-file checkpoint, final immutable 3.5 local book gates.',
+                          'source_count': SOURCE_COUNT, 'source_set_sha256': SOURCE_SET,
+                          'default_read_only': True, 'no_scientific_reexecution': True,
+                          'completed_repository_writes': 0}, ensure_ascii=False, indent=2))
+        return
+    prepared, originals, protected, summary = prepare(args.root, args.context)
+    if args.apply:
+        root = args.root.resolve()
+        for p, digest in protected.items():
+            require(p.is_file() and sha(p.read_bytes()) == digest, f'Protected input changed before apply: {p}')
+        for relative, data in originals.items():
+            p = root / relative
+            require(p.resolve().is_relative_to(root / 'physics/qm/book'), f'Unsafe write target: {relative}')
+            require((p.read_bytes() if p.is_file() else None) == data, f'Metadata changed concurrently: {relative}')
+        # Only four atomic replacements. A failure reports actual completed
+        # writes and never overwrites historical evidence to simulate success.
+        for relative in TARGETS:
+            target, temporary = root / relative, None
+            try:
+                with tempfile.NamedTemporaryFile(prefix='.' + target.name + '.qm319-',
+                                                 dir=target.parent, delete=False) as stream:
+                    temporary = Path(stream.name)
+                    stream.write(prepared[relative])
+                    stream.flush()
+                    os.fsync(stream.fileno())
+                temporary.replace(target)
+                temporary = None
+                WRITES += 1
+            finally:
+                if temporary is not None:
+                    temporary.unlink(missing_ok=True)
+        for relative in TARGETS:
+            require((root / relative).read_bytes() == prepared[relative], f'Metadata readback failed: {relative}')
+        for p, digest in protected.items():
+            require(p.is_file() and sha(p.read_bytes()) == digest, f'Protected bytes changed during apply: {p}')
+        summary['status'] = 'MAIN_VERIFIED_BOOK_METADATA_APPLIED'
+        summary['completed_repository_writes'] = WRITES
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (OSError, ValueError, KeyError, TypeError, UnicodeError) as exc:
+        print(json.dumps({'status': 'REFUSED_OR_FAILED', 'error': str(exc),
+                          'completed_repository_writes': WRITES}, ensure_ascii=False), file=sys.stderr)
+        sys.exit(2)

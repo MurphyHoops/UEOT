@@ -1,0 +1,1617 @@
+{
+  "schema": "ueot_qm.lane_acceptance.v31.9",
+  "lane": "C",
+  "status": "PASS",
+  "accepted_at_utc": "2026-10-20T16:03:47.697951+00:00",
+  "bindings": [
+    {
+      "source": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+      "source_sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+      "source_bytes": 12648,
+      "source_snapshot": "physics/qm/kernel/evidence/v31.9/C/focused-006.lean.txt",
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/StoppingProtocols.olean",
+      "olean_sha256": "65ca0106c3821c99c9de6e87c3dc0d791f2eea0ddbbcbed95c766a7b8e5b493a",
+      "olean_binding_scope": "Actual focused compile receipt; public module identities independently re-read before/after public-axioms-001. Root unified build may regenerate current output files.",
+      "actual_compile_receipt": "physics/qm/kernel/evidence/v31.9/C/focused-006.json",
+      "receipt_sha256": "6a848a5c6a3817f2d3e5b7c54f01c2c56ba9c5da1c2b2b87b16ab48b7046276b",
+      "actual_log": "physics/qm/kernel/evidence/v31.9/C/focused-006.log",
+      "log_sha256": "2526f198c721cf6a04bafeb098557ffdfee3435c21c891bb2d85144f5e336ad2",
+      "exit_code": 0,
+      "declaration_census": {
+        "abbrev": 1,
+        "def": 10,
+        "theorem": 21
+      }
+    },
+    {
+      "source": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+      "source_sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+      "source_bytes": 21325,
+      "source_snapshot": "physics/qm/kernel/evidence/v31.9/C/focused-008.lean.txt",
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/StoppingRecordBudget.olean",
+      "olean_sha256": "8f0ca5476a701b90987b2f81afd68682741b2d61805c7d5294e8c356f378054d",
+      "olean_binding_scope": "Actual focused compile receipt; public module identities independently re-read before/after public-axioms-001. Root unified build may regenerate current output files.",
+      "actual_compile_receipt": "physics/qm/kernel/evidence/v31.9/C/focused-008.json",
+      "receipt_sha256": "b9d95957212b13d9456ba170cdad6ffcddec6aace8230ad8cd4ed316bc0085c4",
+      "actual_log": "physics/qm/kernel/evidence/v31.9/C/focused-008.log",
+      "log_sha256": "d54581d0763cf411cdad92d1818129a342b6a1c85aecb5452b2d5edeac0b0587",
+      "exit_code": 0,
+      "declaration_census": {
+        "def": 8,
+        "theorem": 29
+      }
+    },
+    {
+      "source": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+      "source_sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+      "source_bytes": 24085,
+      "source_snapshot": "physics/qm/kernel/evidence/v31.9/C/witness-004.lean.txt",
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/scripts/witnesses/StoppingRecordBudgetExamples.olean",
+      "olean_sha256": "2705f316434b6c047e066758af10c12714d9401dacb00a805e4070782ddea40f",
+      "olean_binding_scope": "Actual focused compile receipt; public module identities independently re-read before/after public-axioms-001. Root unified build may regenerate current output files.",
+      "actual_compile_receipt": "physics/qm/kernel/evidence/v31.9/C/witness-004.json",
+      "receipt_sha256": "08ce0a10ad24c0593a6337381b4f3761ef951c55e9524567cad4a2f0adff683b",
+      "actual_log": "physics/qm/kernel/evidence/v31.9/C/witness-004.log",
+      "log_sha256": "47175f6a8976be5a1c936e1fcc770b2c71100c40b0c98eb625059da17fe9853c",
+      "exit_code": 0,
+      "declaration_census": {
+        "abbrev": 2,
+        "def": 15,
+        "theorem": 45
+      }
+    }
+  ],
+  "public_modules": 2,
+  "public_declaration_kinds": {
+    "abbrev": 1,
+    "def": 18,
+    "theorem": 50
+  },
+  "public_declarations": [
+    {
+      "kind": "abbrev",
+      "name": "UEOTQM.StoppingProtocols.Leaf"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.height"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.height_next_le"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.action"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.advance"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.follow"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.controller"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.controller_truncate"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.controller_dropLast"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.controller_zero"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.controller_shift"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.controller_word_succ"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.encode"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.decode"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.decode_encode"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.encode_of_decode"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.encode_injective"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.decode_eq_some_iff"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.word_length_le_height"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.stopTime"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.stopTime_le"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.encode_record"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.liftKraus"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingProtocols.lift"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.lift_branch_active"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.lift_branch_active_none"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.lift_branch_idle"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.lift_branch_idle_some"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.record_zero"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.record_eq_decode"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.record_encode"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingProtocols.run_matrix"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.isometryChannel"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.isometryChannel_operator"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.isometry_complement_positive"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.extendEffect"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.pullback_extendEffect"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.isometry_state_distance"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.embeddingChannel"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.embedding_operator_image"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.embedding_operator_outside_left"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.embedding_operator_outside_right"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.embedding_state_distance"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.someMemoryEmbedding"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.active_state_eq_embedding"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.active_state_distance"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.active_defect"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.idle_state_eq"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.idle_defect"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.leafEmbedding"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.outside_leafEmbedding"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.run_eq_embedding"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_eq"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.weight_run_encode"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.weight_run_decode_none"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.original_record_tv_eq"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.activeDefect"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.lift_defect_eq"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.activeCost"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.actionCost_eq_activeCost"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.activeCost_eq_sum_active"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_activeCost_sum"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.original_record_tv_le_activeCost_sum"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.terminal_memory_distance_le_activeCost_sum"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudget.activeProbability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.activeProbability_nonneg"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.activeProbability_le_one"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.activeCost_le_probability_mul"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_probability_budget"
+    }
+  ],
+  "public_named_axiom_count": 69,
+  "public_audit_receipt": "physics/qm/kernel/evidence/v31.9/C/public-axioms-001.json",
+  "public_audit_receipt_sha256": "a5ea0f387388578c65570a368579a7eac5f2b1bc10c51da33e5b46301d33611f",
+  "actual_public_axioms": [
+    {
+      "name": "UEOTQM.StoppingProtocols.Leaf",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.height",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.height_next_le",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.action",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.advance",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.follow",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.controller",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.controller_truncate",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.controller_dropLast",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.controller_zero",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.controller_shift",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.controller_word_succ",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.encode",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.decode",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.decode_encode",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.encode_of_decode",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.encode_injective",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.decode_eq_some_iff",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.word_length_le_height",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.stopTime",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.stopTime_le",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.encode_record",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.liftKraus",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.lift",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.lift_branch_active",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.lift_branch_active_none",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.lift_branch_idle",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.lift_branch_idle_some",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.record_zero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.record_eq_decode",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.record_encode",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingProtocols.run_matrix",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.isometryChannel",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.isometryChannel_operator",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.isometry_complement_positive",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.extendEffect",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.pullback_extendEffect",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.isometry_state_distance",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.embeddingChannel",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.embedding_operator_image",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.embedding_operator_outside_left",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.embedding_operator_outside_right",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.embedding_state_distance",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.someMemoryEmbedding",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.active_state_eq_embedding",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.active_state_distance",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.active_defect",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.idle_state_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.idle_defect",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.leafEmbedding",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.outside_leafEmbedding",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.run_eq_embedding",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.weight_run_encode",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.weight_run_decode_none",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.original_record_tv_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.activeDefect",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.lift_defect_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.activeCost",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.actionCost_eq_activeCost",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.activeCost_eq_sum_active",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_activeCost_sum",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.original_record_tv_le_activeCost_sum",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.terminal_memory_distance_le_activeCost_sum",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.activeProbability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.activeProbability_nonneg",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.activeProbability_le_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.activeCost_le_probability_mul",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_probability_budget",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "witness_declaration_kinds": {
+    "abbrev": 2,
+    "def": 15,
+    "theorem": 45
+  },
+  "witness_declarations": [
+    {
+      "kind": "abbrev",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.Qubit"
+    },
+    {
+      "kind": "abbrev",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.Label"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.certain"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.certain_branch"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.certain_probability"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.halfK"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.halfK_gram"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.halfK_conjugation"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biasedKraus"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_branch"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_probability"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.rhoZero"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.joint_probability_certain"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.joint_probability_biased"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_le_quarter"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_exact"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_record_defect_exact"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.stoppingTree"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.earlyLeaf"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateZeroLeaf"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateOneLeaf"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.early_word"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateZero_word"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateOne_word"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.tree_height"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.early_stopTime"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.late_stopTime"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.early_encoded"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exactActions"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximateActions"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.first_defect_zero"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.continuing_defect_quarter"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exact_early_probability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_early_probability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exact_lateZero_probability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_lateZero_probability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exact_lateOne_probability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_lateOne_probability"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.oneHistoryEquiv"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.controller_first"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.controller_second"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.reference_one_step_weight"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.oneStepTree"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.identityActions"
+    },
+    {
+      "kind": "def",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.stoppedHistory"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.negative_action_defects_zero"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.immediate_stop_probability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.one_step_idle_probability"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.immediate_terminal_memory"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.one_step_terminal_memory"
+    },
+    {
+      "kind": "theorem",
+      "name": "UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal"
+    }
+  ],
+  "witness_named_axiom_count": 62,
+  "actual_witness_axioms": [
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.Qubit",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.Label",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.certain",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.certain_branch",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.certain_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.halfK",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.halfK_gram",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.halfK_conjugation",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biasedKraus",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_branch",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.rhoZero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.joint_probability_certain",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.joint_probability_biased",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_le_quarter",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_exact",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.biased_record_defect_exact",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.stoppingTree",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.earlyLeaf",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateZeroLeaf",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateOneLeaf",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.early_word",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateZero_word",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateOne_word",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.tree_height",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.early_stopTime",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.late_stopTime",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.early_encoded",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exactActions",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximateActions",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.first_defect_zero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.continuing_defect_quarter",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exact_early_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_early_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exact_lateZero_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_lateZero_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.exact_lateOne_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_lateOne_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.oneHistoryEquiv",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.controller_first",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.controller_second",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.reference_one_step_weight",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.oneStepTree",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.identityActions",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.stoppedHistory",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.negative_action_defects_zero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.immediate_stop_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.one_step_idle_probability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.immediate_terminal_memory",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.one_step_terminal_memory",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "source_count": 3,
+  "claims_path": "/workspace/scratch/f11b4261e187/handoff/C_v319_claims.json",
+  "claims_sha256": "ce24c4586e5391de18eba1618cd28674af11d933d40d355964bf9819042efc00",
+  "chapter_draft": "/workspace/scratch/f11b4261e187/handoff/C_v319_chapter65_draft.md",
+  "chapter_sha256": "18dd90af179cf78d23a41b64c04efc02dfce120da08256b47fa419eea2cca741",
+  "book_chapter": 65,
+  "book_sections": 9,
+  "book_result_ids": [
+    "P-STOP-01",
+    "P-STOP-02",
+    "P-STOP-03",
+    "P-STOP-04",
+    "P-STOP-05"
+  ],
+  "unchanged_v318_gates_reexecuted_by_lane": false,
+  "warning_scope": "Ordinary linter warnings remain in actual logs. No zero-warning claim.",
+  "full_scientific_theory_verified": false,
+  "new_empirical_experiments": false,
+  "remote_ci_verified_by_lane": false,
+  "scope": "Actual focused Lean compilation and fully named foundation audit of the two new C public modules and new concrete witness only. Unified source/build verification, book production and remote publication are separate root responsibilities.",
+  "olean_binding_scope": "Historical focused compilation and subsequent actual public audit identities, independently re-read unchanged at that audit. The root unified build started afterward and may regenerate current cache outputs; this aggregate does not assert unchanged current olean bytes across that build."
+}

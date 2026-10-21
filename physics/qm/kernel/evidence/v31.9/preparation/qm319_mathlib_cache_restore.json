@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "command": [
+    "flock",
+    "/tmp/qm317-lean.lock",
+    "/tmp/lean-4.33.1-linux/bin/lake",
+    "exe",
+    "cache",
+    "get"
+  ],
+  "exit_code": 0,
+  "started_unix": 1792509206.516802,
+  "finished_unix": 1792509330.7731872,
+  "source_locks_before": {
+    "formalization/ueot-qm/lake-manifest.json": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+    "formalization/ueot-qm/lakefile.lean": "ad870bfd6d91841f30d37e90a2738a69b35696f43709dbf788189874b1c6b805",
+    "formalization/ueot-qm/lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "formalization/ueot-core/lake-manifest.json": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+    "formalization/ueot-core/lakefile.lean": "7f083f896c58e521092721637c067a9bd892c4b2d5185bdd1b99fd5391f25986",
+    "formalization/ueot-core/lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+  },
+  "source_locks_after": {
+    "formalization/ueot-qm/lake-manifest.json": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+    "formalization/ueot-qm/lakefile.lean": "ad870bfd6d91841f30d37e90a2738a69b35696f43709dbf788189874b1c6b805",
+    "formalization/ueot-qm/lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "formalization/ueot-core/lake-manifest.json": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+    "formalization/ueot-core/lakefile.lean": "7f083f896c58e521092721637c067a9bd892c4b2d5185bdd1b99fd5391f25986",
+    "formalization/ueot-core/lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+  },
+  "tracked_source_locks_unchanged": true,
+  "log": "/workspace/scratch/f11b4261e187/handoff/qm319_mathlib_cache_restore.log",
+  "log_sha256": "ca0dab7103159b5cba4f0e18edb7075915d203eff1eedec391eeafc5f8eefb57",
+  "scope": "Restore pinned upstream proof cache. No QM scientific build or acceptance replay."
+}

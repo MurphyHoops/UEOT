@@ -1,0 +1,28 @@
+{
+  "target": "PurificationIsometry",
+  "status": "PASS",
+  "command": [
+    "flock",
+    "/tmp/qm317-lean.lock",
+    "/tmp/lean-4.33.1-linux/bin/lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake/build/lib/lean/UEOTQM/PurificationIsometry.olean",
+    "UEOTQM/PurificationIsometry.lean"
+  ],
+  "started_at": "2026-10-20T15:19:52.436791+00:00",
+  "finished_at": "2026-10-20T15:21:06.068756+00:00",
+  "exit_code": 0,
+  "source_sha256_before": {
+    "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362"
+  },
+  "source_sha256_after": {
+    "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362"
+  },
+  "source_unchanged_during_execution": true,
+  "log": "physics/qm/kernel/evidence/v31.9/B/PurificationIsometry-002.log",
+  "log_sha256": "46c9ce9b1ab7fd321bfec4078114e17974134a78d63e18fa24c0130da037ae23",
+  "scope": "Focused compilation of a new v31.9 B source; no v31.8 unified acceptance replay.",
+  "olean_sha256": "06ce56a656320a2119d1d344e925d761cf9d9641e6a48978ef1259dc8f50ccb6"
+}

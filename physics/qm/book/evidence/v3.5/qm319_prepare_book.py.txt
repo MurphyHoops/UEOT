@@ -1,0 +1,122 @@
+"""Append the continuous v3.5 book only after actual v31.9 acceptance."""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, importlib.util, json, re
+R=Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H=Path(__file__).resolve().parent
+B=R/'physics/qm/book'
+E=R/'physics/qm/kernel/evidence/v31.9'
+BE=B/'evidence/v3.5'
+BASE='6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1'
+OLD=H/'qm319_baseline_originals/physics/qm/book/UEOT_PHYSICS.md'
+def read(p): return json.loads(Path(p).read_bytes())
+def digest(b): return hashlib.sha256(b).hexdigest()
+def write(p,d):
+ p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+def main():
+ proof,inv,finite=[read(E/p) for p in ('lean-verification.json','declaration-inventory.json','finite-witnesses/verification.json')]
+ assert proof['status']==finite['status']=='PASS'
+ assert proof['actual_build_exit_code']==proof['actual_axiom_audit_exit_code']==0
+ assert proof['generic_modules']==inv['module_count']==41 and len(finite['checks'])==13
+ assert finite['verification_mode']=='ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE'
+ assert finite['actually_executed_witness_count']==3 and finite['reused_witness_count']==10
+ assert not (BE/'canonical-integration.json').exists(), 'Preserve previous book integration receipt'
+ raw=OLD.read_bytes();assert digest(raw)=='868a51150eb1a4cf56b86b06090e9d31b25096311689dbff6bf8da6e3210a08a'
+ assert (B/'UEOT_PHYSICS.md').read_bytes()==raw,'Concurrent canonical changes'
+ text=raw.decode();changes=[]
+ def replace(old,new):
+  nonlocal text
+  assert text.count(old)==1,(old[:120],text.count(old))
+  text=text.replace(old,new,1);changes.append({'before_prefix':old[:180],'after_prefix':new[:180]})
+ def paragraph(start,new):
+  assert text.count(start)==1,start
+  p=text.index(start);replace(text[p:text.index('\n\n',p)],new)
+ spec=importlib.util.spec_from_file_location('book_verify_319',B/'build/verify_book.py')
+ verifier=importlib.util.module_from_spec(spec);spec.loader.exec_module(verifier)
+ inherited=verifier.actual_claims(text);assert len(inherited)==147
+ chapters=[];inputs=[]
+ for n in (63,64,65):
+  path=H/f'qm319_chapter{n}.md';body=path.read_text().strip()
+  assert body.startswith(f'<a id="ch-{n}"></a>')
+  headings=re.findall(r'^# (\d+)\. (.+)$',body,re.M)
+  assert len(headings)==1 and int(headings[0][0])==n
+  assert not re.search(r'\b(?:TODO|PLACEHOLDER)\b|等待新增源码|拟闭合|本章拟|尚待验收',body)
+  chapters.append((n,headings[0][1],body));inputs.append({'chapter':n,'path':str(path),'sha256':digest(path.read_bytes()),'bytes':path.stat().st_size})
+ replace('version: "3.4"','version: "3.5"')
+ nav=re.search(r'^- \[62\. .+\]\(#ch-62\)$',text,re.M)[0]
+ replace(nav,nav+''.join(f'\n- [{n}. {title}](#ch-{n})' for n,title,_ in chapters))
+ replace('<a id="appendix-a"></a>','\n\n'.join(b for _,_,b in chapters)+'\n\n<a id="appendix-a"></a>')
+ claims=verifier.actual_claims(text);assert claims[:147]==inherited
+ assert len(claims)==161 and {c['chapter'] for c in claims[147:]}=={63,64,65}
+ total=len(claims);added=total-147
+ mods,nt,na=proof['generic_modules'],proof['explicit_theorems'],proof['actual_named_axiom_reports']
+ paragraph('第1–35章给完整基础、计算与接口；','第1–35章给完整基础、计算与接口；第36–42章把三代高能审计、味约束、相干见证、实际化证明和研究协议接入主线；第43–46章补全全局相位、拓扑、格点和相关试次统计；第47–48章给研究验收合同与总著维护。第49–56章展开有限内核、误差、随机化、长期平均、条件生存、量子选择分离和一般有限量子Doob构造；第57–59章给完整有限复纯化、真实记录记忆和指定非交换模型条件动力学；第60–62章给全效应分离、任意联合态复局部层析、完整凸纯性、辅助酉关系和共同固定深度控制器逐动作预算；第63–65章补全迹距离表达式与最优二元判别、最小辅助维数和有方向等距、原有限停止树与未停止权重预算。附录保留符号、来源、全部稳定编号、复现代码和完整命名审计。')
+ paragraph('从理论核心入手，可依次阅读第0–5、49–62章，','从理论核心入手，可依次阅读第0–5、49–65章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36–37与49.7一起阅读。附录A给符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码及3.0版实际执行回执；3.1–3.5版仅对未变程序核对身份。附录E给编译维护合同，附录F列出本版实际形式化范围和全部命名公理请求，并区分本轮执行与绑定历史回执后的复用。')
+ paragraph('**已达到的阶段。** 第49–59章的有限操作、',f'**已达到的阶段。** 第49–62章的有限操作、响应、表示、证书、误差、混合平均、条件生存、完整复纯化、真实记录记忆、指定条件动力学、复全态层析、完整纯性及共同固定深度控制器预算继续保留。第63章证明完整效应距离等于密度差的半迹绝对值，构造达到上界的谱效应、最优等先验二元判别及非循环矩阵证书。第64章证明给定辅助载体存在纯化当且仅当其维数至少为密度矩阵的复秩，并在明确维数次序下构造真实辅助等距。第65章构造有限停止树的吸收补齐，证明原叶联合态的等距回接与参考实现未停止权重下的逐动作预算。当前主包共{mods}个模块、{nt}个显式定理和{na}项唯一命名公理审计。新三组具体见证本轮实际执行；未变的十组旧见证、六证书、100运行方法与四演示按逐文件及依赖闭包身份复用真实旧门。三套主文程序的757项检查仍保留3.0的执行身份；这些计数均不表示新增物理规律或实验。')
+ paragraph('**下一批可验证义务。** 已补的有限量子性质仍以完整复矩阵、','**下一批可验证义务。** 有限量子性质仍以完整复矩阵、合法效应、有限维和所声明的控制过程为前提。量子选择须核查候选类及重建定理的全部背景，并给出UEOT物理实现满足选择原则的独立理由。迹距离表达式不等于通用有效数值算法；任意先验、稳定化或diamond距离、相干控制器、任意外部记忆及无界停止时间仍需新合同。动力学继续研究可验证的有限收缩或本原条件、一般正谱存在与无限条件过程。精确程序细化、真实QDRR数据、完整谱与阈值、连续变量能量桥各有独立验收门。')
+ replace('| Core → 量子扇区 | 三模型、经典纯化障碍、实层析反例；复全态层析、完整纯性与辅助酉关系 | 独立原则来源、全部重构背景与其他模型 | 在明确候选类内核对全部重建前提；给出可检验的UEOT物理桥 |','| Core → 量子扇区 | 三模型分离；复全态层析、完整纯性、辅助酉与最小维数、全效应迹距离 | 独立原则来源、全部重构背景与其他候选模型 | 在明确候选类内核对重建前提；给出可检验的UEOT物理桥 |')
+ replace('| 内核 → 持续与误差 | 真实记录记忆、共同固定深度控制器逐动作预算、指定非交换条件态精确收敛 | 变长停止与额外环境的预算；一般正谱与混合 | 证明明确扩张的控制语义；核验一般动力学充分条件 |','| 内核 → 持续与误差 | 真实记录记忆、共同有限停止规则的未停止权重预算、指定条件态精确收敛 | 相干或无界停止、外部环境；一般正谱与混合 | 证明扩大量词所需的控制与距离合同；核验一般动力学充分条件 |')
+ replace('当前正式整合版为3.4。','当前正式整合版为3.5。')
+ replace('第0–62章、附录A–F构成连续完整文档','第0–65章、附录A–F构成连续完整文档')
+ replace('  edition: "3.4"','  edition: "3.5"')
+ paragraph('第62章完成了这里提出的固定深度共同因果控制器任务：','第62章完成了这里提出的固定深度共同因果控制器任务：逐步构造真实历史标签加量子记忆通道，接通原Protocol的叶与词顺序，并从共同输入的PSD块、归一化权重、零块及合法效应导出动作记录预算。第65章进一步给出有限停止树的实际吸收补齐、原叶联合态回接及未停止权重预算；新增证明分别承担扩展责任，本章的整体协议缺陷没有被重新命名为逐动作结论。相干控制器、任意额外环境和无界停止时间仍开放。')
+ paragraph('本结论无需比较 $|\\alpha|$ 与 $|\\beta|$，','本结论无需比较 $|\\alpha|$ 与 $|\\beta|$，也不把它们当作同一类型。此处共同载体维数为 $|\\alpha|+|\\beta|$，本结论不声称它最小，也不从维数不同的空间直接得到双侧互逆酉矩阵。第64章在单列的新证明中补上最小辅助维数，并在 $|\\alpha|\\le|\\beta|$ 时构造从 $\\alpha$ 到 $\\beta$ 的真实等距；严格扩维仍无双侧逆，反向满空间等距仍可能不存在。这些后续结果不改变本章原命题的量词。[QM318][QM319]')
+ paragraph('变长停止树的逐动作补齐、相干控制器、','本章固定深度结果所留下的有限停止树责任由第65章补上：共同停止规则、统一有限上界、真实吸收补齐与原叶联合态均有明确证明。相干控制器、未纳入当前载体的任意环境记忆、diamond距离、无界停止和连续时间极限仍各需新定义与证明。动作缺陷的现实设备校准、建模外泄漏和经验适用条件仍有独立责任。本章没有新增实验，没有从有限内核推出完整自然理论，也没有改变三代结论所依赖的谱、表示、阈值和有效窗口条件。冻结Core的106项与四生成器保持原身份。')
+ paragraph('本版共147个稳定编号结果，',f'本版共{total}个稳定编号结果，完整保留3.4版全部147个编号，第63–65章新增{added}项命题或反例。既有147项包括2.0的78项、第49–50章10项、第51–53章13项、第54–56章16项、第57–59章14项和第60–62章16项。编号登记正文解析结果，不表示原创性、Lean声明或实验确认的计数；完整前提、证明和开放责任见相应章节。')
+ paragraph('现行数学与运行代码以v31.8源清单',f'现行数学与运行代码以v31.9源清单的逐文件SHA-256及实际验证为准。本轮精确基线为已完成v31.8源码和独立远端元数据的主线{BASE}；v31.8实际受验main为97c7b29c1aec470be58ca34b552e9d56ad06c197，实际main CI为39424068985。基线元数据提交不冒充新旧科学CI。新增数学在隔离的工作分支推进，旧正式正文、原始来源和历史证据按版本保留。两份同名v28.1来源保持独立身份；本轮未声称重新阅读所有附件或重跑未变旧程序。')
+ paragraph('第49–59章分别保留Kernel1.1–1.7的','第49–59章分别保留Kernel1.1–1.7的有限内核、稳定性、混合平均、生存、选择分离、纯化、真实协议与条件动力学；第60–62章接入Kernel1.8的全效应分离、复局部层析、完整纯性、辅助空间比较和共同控制器动作预算；第63–65章接入Kernel1.9的迹距离、最优等先验判别、最小辅助维数、有方向等距及有限停止协议。当前入口为 `formalization/ueot-qm` 和 `physics/qm/kernel/evidence/v31.9`。历史回执保留原始输入与执行范围，冻结Core与领域接口决定分类，不将量子域内性质回填为通用公理。')
+ paragraph('来源标签QM316指向','来源标签QM316指向经典扇区、Core纯化边界、实层析与一般量子Doob；QM317指向完整态纯化、三操作呈现、矩形通道、联合记录记忆和指定条件动力学；QM318指向全效应分离、复局部层析、完整纯性、辅助酉比较、历史通道和动作记录预算。QM319指向 `QuantumTraceDistance`、`BinaryDiscrimination`、`PurificationIsometry`、`PurificationDimension`、`StoppingProtocols`、`StoppingRecordBudget` 及三份新增精确见证、交审和统一门。Mathlib辅助定理按锁定源码承担库证明责任；本文逐项陈述本项目调用的条件和实际导出结论。没有把库中重定理写成本项目重新原创的物理结果。旧文献引用范围仍以原登记为准。')
+ replace('3.1、3.2、3.3与3.4版逐字节保留这三套程序并核对哈希','3.1、3.2、3.3、3.4与3.5版逐字节保留这三套程序并核对哈希')
+ text=text.replace('代码在3.1–3.4版保持不变','代码在3.1–3.5版保持不变')
+ replace('包含全部63章和6个附录','包含全部66章和6个附录')
+ a=text.index('| [',text.index('# 附录 B.'));b=text.index('<a id="appendix-c"></a>',a)
+ text=text[:a]+'\n'.join(f"| [{c['id']}](#{c['id'].lower()}) | {c['chapter']} | {c['title']} |" for c in claims)+'\n\n'+text[b:]
+ table=re.search(r'\| 模块 \| 显式定理 \| 精确责任 \|\n\|---\|---:\|---\|\n([\s\S]*?)\n\n## F.2',text)[1]
+ desc={m[1]:m[3] for line in table.splitlines() if (m:=re.fullmatch(r'\| (\w+) \| (\d+) \| (.+) \|',line))}
+ desc.update({'QuantumTraceDistance':'Hermitian正负谱分解、合法最优谱效应与半迹绝对值距离公式','BinaryDiscrimination':'等先验最优二元判别、PSD支撑矩阵证书与实际酉谱数据','PurificationIsometry':'辅助维数次序的必要充分条件、有方向等距及真实纯化映射','PurificationDimension':'正谱支撑Gram构造、矩阵秩下界与最小辅助维数完整判据','StoppingProtocols':'真实Option仪器、因果吸收控制、原叶编码与全矩阵记录恒等式','StoppingRecordBudget':'合法效应等距扩张、原叶联合态回接及未停止权重动作预算'})
+ order=[l.split()[-1].split('.')[-1] for l in (R/'formalization/ueot-qm/UEOTQM.lean').read_text().splitlines() if l.startswith('import ')]
+ assert len(order)==41 and set(order)==set(inv['modules'])
+ f=f'''## F.1 本版实际检查身份与计数
+
+本版沿用Lean4.33.1（编译器提交819816b2e0a3bf405af45ae5c7af2491d8f5bee6）及Mathlib0df444a360eaa60ab8c11dca51a86af692955474；九项Git依赖实际身份与锁文件一致。{mods}模块统一构建退出0，实际{proof['actual_build_jobs']} jobs；{nt}个显式定理与{na}项唯一完整命名公理输出得到核对。允许基础仅为 `propext`、`Classical.choice`、`Quot.sound`。实际构建保留普通linter警告，不声称零警告。
+
+新增六模块共{inv['new_theorems']}个显式定理、{inv['added_audit_target_count']}个命名审计目标；继承985个请求原样保留。新增显式声明、具名非局部实例与实际结构构造器按源码逐项登记。{na}项由{nt}个显式定理和{na-nt}个其他列举目标组成，不表示遍历编译器生成的全部内部常量，更不是新增物理规律数。
+
+| 模块 | 显式定理 | 精确责任 |
+|---|---:|---|
+'''
+ f+='\n'.join(f"| {m} | {proof['module_theorem_counts'][m]} | {desc[m]} |" for m in order)
+ f+=f'''
+
+## F.2 本轮新执行与历史证据复用
+
+本轮对冻结的98项源集实际统一编译主包、逐名核对全部{na}个公共审计，并实际编译三份新增见证。三份新增见证合计{finite['actually_executed_witness_theorems']}个具体定理、{finite['actually_executed_witness_definitions']}个定义、{finite['actually_executed_witness_abbreviations']}个缩写、{finite['actually_executed_witness_audits']}个命名审计。
+
+十份旧见证的193个定理、71个定义、5个缩写及269项审计保持其原始实际执行回执。本輪对86项未变旧科学输入、56项Core源码、九项依赖版本及旧见证和证书的真实传递导入闭包逐一核对；新增umbrella导入、公共审计清单和见证注册/选择接口均不在这些旧见证与证书的数学导入闭包内。因此六份精确证书/42审计、四类篡改真值拒绝与同数据假值通过、100运行方法和四份演示沿用已验证的v31.8真实本地及main证据，未声称本轮重新执行这些旧门。具体复用范围与身份见 `legacy-reuse.json`，旧原文程序757项检查另保持3.0执行身份。
+
+完整见证登记共十三组：{finite['witness_theorem_count']}个具体定理、{finite['witness_def_count']}个定义、{finite['witness_abbrev_count']}个缩写、{finite['witness_audit_count']}个命名目标。十旧三新分别标记，计数不并入主包{nt}/{na}。新见证覆盖非交换有理距离、最优二元决策、复相位限制负控、不同辅助维数的矩阵方向与最小秩、停止树精确1/16预算及不同停止规则的记录TV=1。它们均是形式化数学实例，没有新增真实实验。
+
+本轮实际源集SHA-256为 `{proof['source_set_sha256']}`，{proof['source_count']}项受验源在统一门前后保持原字节。当前{proof['finite_witness_verification']['bound_modules']}项QM/Core源与实际olean绑定；56项实际递归Core源码保持基线身份。这不等于重新验收全部106项Core责任。本地新执行、历史证据复用、实际PR/main CI与后续元数据提交各有独立回执；未产生远端运行之前不填入猜测身份。
+
+## F.3 {na}项完整命名公理请求
+
+下列逐项列出本轮实际 `AxiomAudit.lean` 的完整请求。每项须具有唯一同名实际输出；缺项、重复、未经审查的公理或构建错误均不算通过。科学范围由声明类型与第49–65章所列前提确定。
+'''
+ f=f.replace('本輪','本轮')
+ targets=inv['audit_targets']
+ for i in range(0,len(targets),60):
+  f+=f'\n### F.3.{i//60+1} 请求{i+1}–{min(i+60,len(targets))}\n\n~~~text\n'+'\n'.join(targets[i:i+60])+'\n~~~\n'
+ text=text[:text.index('## F.1 ')]+f
+ def embedded(s):
+  region=s.split('# 附录 D.',1)[1].split('<a id="appendix-e">',1)[0]
+  return re.findall(r'(?ms)^~~~python\n(.*?)^~~~\s*$',region)
+ assert len(embedded(text))==3 and embedded(text)==embedded(raw.decode())
+ assert verifier.actual_claims(text)[:147]==inherited
+ vp=B/'build/verify_book.py';vraw=vp.read_text();vnew=vraw.replace('list(range(63))','list(range(66))').replace('complete chapters 0–62','complete chapters 0–65').replace('len(claims) != 147',f'len(claims) != {total}').replace('all 131 inherited and 16 new result IDs',f'all 147 inherited and {added} new result IDs')
+ assert f'len(claims) != {total}' in vnew and 'list(range(66))' in vnew
+ bp=B/'build/build_pdf.py';braw=bp.read_text();bnew=braw.replace('list(range(63))','list(range(66))').replace('consecutive chapters 0–62','consecutive chapters 0–65')
+ assert 'list(range(66))' in bnew
+ vp.write_text(vnew);bp.write_text(bnew);(B/'UEOT_PHYSICS.md').write_text(text)
+ write(BE/'canonical-integration.json',{'schema':'ueot_physics.canonical_integration.v3.5','status':'SOURCE_INTEGRATED_PENDING_PDF_AND_FINAL_REVIEW','recorded_at_utc':datetime.now(timezone.utc).isoformat(),'baseline_commit':BASE,'inherited_source_sha256':digest(raw),'canonical_source_sha256':digest(text.encode()),'inherited_results_preserved':147,'new_result_ids':[c['id'] for c in claims[147:]],'numbered_results':total,'new_results':added,'chapters':66,'chapter_inputs':inputs,'targeted_paragraph_revisions':changes,'unchanged_embedded_programs':3,'old_757_checks_reexecuted':False,'old_scientific_gates_reexecuted':False,'new_witness_files_actually_executed':3,'reused_witness_files':10,'proof_receipt':'physics/qm/kernel/evidence/v31.9/lean-verification.json','source_set_sha256':proof['source_set_sha256'],'whole_book_formalized':False,'new_experimental_data':False})
+ print(json.dumps({'status':'SOURCE_INTEGRATED','chapters':66,'results':total,'new_results':added,'sha256':digest(text.encode())},ensure_ascii=False))
+if __name__=='__main__':main()

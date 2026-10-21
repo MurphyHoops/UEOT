@@ -1,0 +1,185 @@
+{
+  "status": "PASS",
+  "command": [
+    "flock",
+    "/tmp/qm317-lean.lock",
+    "/tmp/lean-4.33.1-linux/bin/lake",
+    "env",
+    "lean",
+    "/workspace/scratch/f11b4261e187/handoff/B_v319_PublicAudit.lean"
+  ],
+  "exit_code": 0,
+  "started_at": "2026-10-20T15:33:53.879065+00:00",
+  "finished_at": "2026-10-20T15:36:29.378611+00:00",
+  "input_sha256_before": {
+    "/workspace/scratch/f11b4261e187/handoff/B_v319_PublicAudit.lean": "e26d7788e8fdc395ac868eaef5baf9e4767d6cfa86e4cfc17edf78207410f9c6",
+    "/workspace/scratch/f11b4261e187/handoff/B_v319_named_targets.json": "8db912bff595369fee8e27098920a0dd5dd4d6f69ac8dc1ba94fd78db20066fe",
+    "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PurificationIsometry.lean": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362",
+    "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PurificationDimension.lean": "92d030b3fb87e52e35dcf44e620a570eac626ddcc2d7d529656fc93139a98afd"
+  },
+  "input_sha256_after": {
+    "/workspace/scratch/f11b4261e187/handoff/B_v319_PublicAudit.lean": "e26d7788e8fdc395ac868eaef5baf9e4767d6cfa86e4cfc17edf78207410f9c6",
+    "/workspace/scratch/f11b4261e187/handoff/B_v319_named_targets.json": "8db912bff595369fee8e27098920a0dd5dd4d6f69ac8dc1ba94fd78db20066fe",
+    "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PurificationIsometry.lean": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362",
+    "/workspace/scratch/f11b4261e187/qm_v318_work/formalization/ueot-qm/UEOTQM/PurificationDimension.lean": "92d030b3fb87e52e35dcf44e620a570eac626ddcc2d7d529656fc93139a98afd"
+  },
+  "inputs_unchanged": true,
+  "requested_count": 29,
+  "actual_count": 29,
+  "allowed_foundation": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "declarations": {
+    "UEOTQM.QuantumPurification.coordinateIsometry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.coordinateIsometry_adjoint_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.exists_matrix_isometry_of_card_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.card_le_of_matrix_isometry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.exists_matrix_isometry_iff_card_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.matrix_isometry_not_coisometry_of_card_lt": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.auxiliary_tensor_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.exists_auxiliary_isometry_of_equal_marginal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.exists_auxiliary_isometry_action": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.pure_states_isometrically_equivalent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.SpectralSupport": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.spectralSupportFintype": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.spectralSupportDecidableEq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.spectralSupport_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.supportedGram": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.density_spectral_expansion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.supportedGram_spec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.supportedGram_vector_normalized": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.supportPurification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.supportPurification_matrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.supportPurification_isPure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.supportPurification_marginal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.rank_marginal_le_auxiliary_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.exists_purification_of_rank_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.exists_purification_iff_rank_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.exists_minimal_purification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.no_purification_of_card_lt_rank": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.density_rank_pos": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UEOTQM.QuantumPurification.no_purification_empty_auxiliary": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "log": "physics/qm/kernel/evidence/v31.9/B/public-audit-001.log",
+  "log_sha256": "e787b716f03f3fdb826c14bf53069d01e64e247601b930a3be14e0330cb93330",
+  "helper_sha256": "5ab5f8f637edaa31b486df4e482eb69185841c139557703c86f660939e5203da",
+  "scope": "Actual named axiom audit of the two new v31.9 B modules only; no old unified audit replay."
+}

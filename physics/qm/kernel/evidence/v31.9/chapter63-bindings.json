@@ -1,0 +1,797 @@
+{
+  "schema": "ueot_qm.reviewed_chapter_bindings.v31.9",
+  "status": "PASS_ACTUAL_LOCAL_BINDING",
+  "chapter": 63,
+  "author_claim_snapshot": {
+    "path": "physics/qm/kernel/evidence/v31.9/root-review-inputs/chapter63-author-claims.json",
+    "sha256": "f79d601c4e39fbcb5a0e23c2724e774432034d27368db551709f07455582c006",
+    "bytes": 11439
+  },
+  "canonical_chapter_input": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_chapter63.md",
+    "sha256": "87b4a744eca621e45e9901eb185605697500f1b96837cf4f9cfc7911ab173b18",
+    "bytes": 14907
+  },
+  "canonical_source": {
+    "path": "physics/qm/book/UEOT_PHYSICS.md",
+    "sha256": "b726e3b9033d79ef949b8e83469901fe728aa28ab204b2e4d55bf36a18b412f0",
+    "bytes": 631531
+  },
+  "actual_unified_proof_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
+    "sha256": "5cf40ac8ef5f8adff77bf2f4bc76a4913169e27b30479cd9379a49dc7128e935",
+    "bytes": 4604
+  },
+  "actual_public_audit_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.9/proof-axioms.json",
+    "sha256": "ffcb3b0eefe2e7d8534132a1a6cbfecfb1421c8ba69205ed783ba249524cd79b",
+    "bytes": 134543
+  },
+  "actual_witness_audit_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json",
+    "sha256": "c0de4148b1f7562f046b8c3b70f36635773036f456e542181bbea87d76ae6544",
+    "bytes": 298529
+  },
+  "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+  "results": [
+    {
+      "id": "P-TDIST-01",
+      "anchor": "p-tdist-01",
+      "title": "P-TDIST-01（有限 Hermitian 正负谱分解及实际绝对值）。",
+      "author_title": "有限 Hermitian 正负谱分解及实际 CFC 绝对值",
+      "premises": [
+        "任意有限载体及 DecidableEq",
+        "实际复 Hermitian 矩阵 H"
+      ],
+      "quantified_scope": "全部该类有限 Hermitian 矩阵，包括零特征值；谱存在来自已锁定数学库。",
+      "claim": "由实际有限复 Hermitian 矩阵的酉谱分解构造 PSD 正负部分，证明 H=P-N、CFC.abs H=P+N 以及实迹等于绝对特征值有限和。",
+      "main_declarations": [
+        "UEOTQM.QuantumTraceDistance.positivePart_sub_negativePart",
+        "UEOTQM.QuantumTraceDistance.abs_eq_positivePart_add_negativePart",
+        "UEOTQM.QuantumTraceDistance.traceAbsolute_eq_sum_abs_eigenvalues"
+      ],
+      "support_declarations": [
+        "UEOTQM.QuantumTraceDistance.unitaryDiagonal_posSemidef",
+        "UEOTQM.QuantumTraceDistance.mass_unitaryDiagonal",
+        "UEOTQM.QuantumTraceDistance.positivePart_posSemidef",
+        "UEOTQM.QuantumTraceDistance.negativePart_posSemidef",
+        "UEOTQM.QuantumTraceDistance.traceAbsolute_nonneg"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumTraceDistanceExamples.rational_traceAbsolute",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_traceAbsolute",
+        "UEOTQM.QuantumTraceDistanceExamples.equal_states_traceAbsolute_zero"
+      ],
+      "proof_outline": [
+        "酉共轭运输实际加、减、乘与迹。",
+        "两个非负标量部分给 PSD 矩阵；逐特征值减法恢复 H。",
+        "标准 CFC.abs 与 Hermitian 连续函数演算绝对值一致，标量绝对值等于两部分之和；取迹。"
+      ],
+      "limits": [
+        "谱基为 noncomputable 存在选择；没有声称数值求谱算法。",
+        "未建立任意矩阵的全部范数公理或 NormedSpace 实例。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positivePart_sub_negativePart",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 79,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.abs_eq_positivePart_add_negativePart",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 92,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.traceAbsolute_eq_sum_abs_eigenvalues",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 105,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_posSemidef",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 49,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.mass_unitaryDiagonal",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 58,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positivePart_posSemidef",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 71,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.negativePart_posSemidef",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 75,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.traceAbsolute_nonneg",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 102,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_traceAbsolute",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 120,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.phase_traceAbsolute",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 164,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.equal_states_traceAbsolute_zero",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 199,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    },
+    {
+      "id": "P-TDIST-02",
+      "anchor": "p-tdist-02",
+      "title": "P-TDIST-02（全效应距离的半迹绝对值公式及最优效应）。",
+      "author_title": "完整有限复密度态的半迹绝对值距离及合法最优效应",
+      "premises": [
+        "任意有限载体及 DecidableEq",
+        "ρ、σ 为原完整 Density 类型的实际态，均 PSD 且迹为一"
+      ],
+      "quantified_scope": "全部有限复密度态对，不要求纯态、可交换或共同可对角化。",
+      "claim": "原全效应距离等于 Tr|ρ-σ|/2，等于绝对特征值和的一半；正谱投影是合法效应，且其带符号概率差实际达到该距离。",
+      "main_declarations": [
+        "UEOTQM.QuantumTraceDistance.effectDistance_eq_positivePart_mass",
+        "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_attains",
+        "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_traceAbsolute",
+        "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_sum_abs_eigenvalues"
+      ],
+      "support_declarations": [
+        "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect",
+        "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_idempotent",
+        "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_positivePart",
+        "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_negativePart",
+        "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_pairing",
+        "UEOTQM.QuantumTraceDistance.difference_parts_mass_eq",
+        "UEOTQM.QuantumTraceDistance.effectDistance_le_mass_of_psd_split"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumTraceDistanceExamples.rational_effectDistance",
+        "UEOTQM.QuantumTraceDistanceExamples.mixed_states_noncommute",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_rho",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_sigma",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_effectDistance",
+        "UEOTQM.QuantumTraceDistanceExamples.all_real_effects_miss_phase",
+        "UEOTQM.QuantumTraceDistanceExamples.all_diagonal_effects_miss_phase",
+        "UEOTQM.QuantumTraceDistanceExamples.nonzero_trace_half_formula_fails"
+      ],
+      "proof_outline": [
+        "PSD 分解对全部合法效应给配对上下界，密度差零迹使正负迹相等。",
+        "正谱指示函数及其补函数皆非负，构成真实合法效应；实际支持等式给匹配下界。",
+        "上确界上下界相等；实际绝对值等于两部分和，因此出现且仅此处使用因子 1/2。"
+      ],
+      "limits": [
+        "半迹公式使用密度差零迹；一般非零迹 Hermitian 配对不能直接套用。",
+        "未证明通道 diamond 范数或物理自然唯一性。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_positivePart_mass",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 189,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_attains",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 209,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_traceAbsolute",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 219,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_sum_abs_eigenvalues",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 232,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 114,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_idempotent",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 125,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_positivePart",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 133,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_negativePart",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 142,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_pairing",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 152,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.difference_parts_mass_eq",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 165,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.effectDistance_le_mass_of_psd_split",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 172,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_effectDistance",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 100,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.mixed_states_noncommute",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 115,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_rho",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 105,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_sigma",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 110,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.phase_effectDistance",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 159,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.all_real_effects_miss_phase",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 180,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.all_diagonal_effects_miss_phase",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 188,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.nonzero_trace_half_formula_fails",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 211,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    },
+    {
+      "id": "P-DEC-01",
+      "anchor": "p-dec-01",
+      "title": "P-DEC-01（等先验二元判别的真实最优成功率）。",
+      "author_title": "等先验二元决定的真实最优成功率",
+      "premises": [
+        "任意有限完整复密度态对",
+        "两个先验均为 1/2",
+        "效应 E 时猜第一态，互补效应时猜第二态"
+      ],
+      "quantified_scope": "全部合法二元效应决定的概率优化；包含一个实际达到上界的效应。",
+      "claim": "实际效应和互补效应产生的等先验二元成功率对所有效应不超过 (1+d)/2，所构造正谱效应达到该值；因此最优成功率为 1/2+Tr|ρ-σ|/4。",
+      "main_declarations": [
+        "UEOTQM.BinaryDiscrimination.equalPriorSuccess_le",
+        "UEOTQM.BinaryDiscrimination.positiveSpectrumEffect_success",
+        "UEOTQM.BinaryDiscrimination.exists_optimal_equalPriorDecision",
+        "UEOTQM.BinaryDiscrimination.optimal_equalPriorSuccess_traceAbsolute"
+      ],
+      "support_declarations": [
+        "UEOTQM.BinaryDiscrimination.equalPriorSuccess",
+        "UEOTQM.BinaryDiscrimination.equalPriorSuccess_eq"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumTraceDistanceExamples.rational_optimal_success",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_all_decisions_le",
+        "UEOTQM.QuantumTraceDistanceExamples.phase_optimal_success"
+      ],
+      "proof_outline": [
+        "用互补概率将成功率写成 (1+带符号概率差)/2。",
+        "实际概率差的绝对值不超过原全效应距离。",
+        "正谱效应的达到性给实际最优决定和半迹表达。"
+      ],
+      "limits": [
+        "没有一般不等先验最优式。",
+        "概率最优性不指定或唯一确定测量后仪器动力学。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess_le",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 32,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.positiveSpectrumEffect_success",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 39,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.exists_optimal_equalPriorDecision",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 46,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.optimal_equalPriorSuccess_traceAbsolute",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 56,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 24,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess_eq",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 27,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_optimal_success",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 125,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_all_decisions_le",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 129,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.phase_optimal_success",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 169,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    },
+    {
+      "id": "P-TCERT-01",
+      "anchor": "p-tcert-01",
+      "title": "P-TCERT-01（PSD 支持分解距离证书）。",
+      "author_title": "非循环 PSD 支持分解与精确给定酉数据证书",
+      "premises": [
+        "原实际密度态及合法效应",
+        "P、N 实际 PSD",
+        "实际差分解等式与两个支持等式；或实际 U 酉、d 实数及 H=Udiag(d)U†"
+      ],
+      "quantified_scope": "任意有限复模型中的满足所列输入矩阵条件的证书；不将距离、最终上界或最优性作为输入。",
+      "claim": "给实际 PSD 分解 ρ-σ=P-N、合法 E 和乘法证据 EP=P、EN=0，即精确得到距离 TrP 及最优决定；给实际有限酉对角化可独立构造这些条件并得到有限正部和/绝对值和公式。",
+      "main_declarations": [
+        "UEOTQM.BinaryDiscrimination.effectDistance_eq_mass_of_support_certificate",
+        "UEOTQM.BinaryDiscrimination.success_eq_optimum_of_support_certificate",
+        "UEOTQM.BinaryDiscrimination.effectDistance_eq_sum_positive_of_unitary_data",
+        "UEOTQM.BinaryDiscrimination.effectDistance_eq_half_sum_abs_of_unitary_data"
+      ],
+      "support_declarations": [
+        "UEOTQM.QuantumTraceDistance.effectDistance_le_mass_of_psd_split",
+        "UEOTQM.QuantumTraceDistance.unitaryDiagonal_mul",
+        "UEOTQM.QuantumTraceDistance.unitaryDiagonal_posSemidef",
+        "UEOTQM.QuantumTraceDistance.mass_unitaryDiagonal"
+      ],
+      "witnesses": [
+        "UEOTQM.QuantumTraceDistanceExamples.rational_difference_split",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_support_positive",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_support_negative",
+        "UEOTQM.QuantumTraceDistanceExamples.rational_positive_mass",
+        "UEOTQM.QuantumTraceDistanceExamples.arbitrary_psd_split_is_not_exact",
+        "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_have_no_support_effect",
+        "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix_adjoint_mul",
+        "UEOTQM.QuantumTraceDistanceExamples.exact_supplied_diagonalization",
+        "UEOTQM.QuantumTraceDistanceExamples.exact_unitary_certificate_distance"
+      ],
+      "proof_outline": [
+        "PSD 分解给全部效应上界；实际支持等式使所给 E 的概率差正好为 TrP，提供下界。",
+        "给定酉数据时以 max(d,0)、max(-d,0) 和正谱指示系数构造独立矩阵证据。",
+        "迹零再次将两个正部和联系起来，得到一半绝对值和。"
+      ],
+      "limits": [
+        "仅有任意 PSD 差分解只保证上界，不能保证精确；重叠正负部分给实际反例。",
+        "给定有限数据的精确核验不等于已实现对任意矩阵的数值求谱算法。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_mass_of_support_certificate",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 64,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.success_eq_optimum_of_support_certificate",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 79,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_sum_positive_of_unitary_data",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 94,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_half_sum_abs_of_unitary_data",
+          "path": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+          "sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+          "bytes": 7177,
+          "line": 133,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.effectDistance_le_mass_of_psd_split",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 172,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_mul",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 37,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_posSemidef",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 49,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistance.mass_unitaryDiagonal",
+          "path": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+          "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+          "bytes": 11940,
+          "line": 58,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_difference_split",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 84,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_support_positive",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 89,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_support_negative",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 92,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.rational_positive_mass",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 96,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.arbitrary_psd_split_is_not_exact",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 224,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_have_no_support_effect",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 228,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix_adjoint_mul",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 240,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.exact_supplied_diagonalization",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 273,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.QuantumTraceDistanceExamples.exact_unitary_certificate_distance",
+          "path": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+          "sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+          "bytes": 16729,
+          "line": 281,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    }
+  ],
+  "scope": "Normalized current claim/evidence mapping. Original author/focused checkpoint statuses retain their historical scope in the raw snapshot."
+}

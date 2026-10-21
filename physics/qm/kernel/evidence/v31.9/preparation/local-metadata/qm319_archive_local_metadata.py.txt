@@ -1,0 +1,130 @@
+#!/usr/bin/env python3
+"""Archive the actually reviewed/applied local metadata checkpoint, without rewriting it."""
+from pathlib import Path
+import argparse
+import hashlib
+import json
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def encode(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode()
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent / "qm_v318_work")
+    ap.add_argument("--apply-receipt", type=Path, required=True)
+    ap.add_argument("--independent-review", type=Path, required=True)
+    args = ap.parse_args()
+    root = args.root.resolve()
+    handoff = root.parent / "handoff"
+    target = root / "physics/qm/kernel/evidence/v31.9/preparation/local-metadata"
+    assert not target.exists(), "Never rewrite a prior actual metadata archive"
+    inputs = {}
+    def take(path):
+        path = Path(path).absolute()
+        assert path.resolve() == path and path.is_file()
+        raw = path.read_bytes()
+        assert inputs.setdefault(path, raw) == raw
+        return raw
+    def read(path):
+        return json.loads(take(path))
+    def identity(path):
+        path = Path(path)
+        raw = take(path)
+        return {"path": str(path), "sha256": sha(raw), "bytes": len(raw)}
+    d1 = read(handoff / "qm319_local_metadata_dry_run_001.json")
+    d2 = read(handoff / "qm319_local_metadata_dry_run_002.json")
+    applied = read(args.apply_receipt)
+    assert d1["status"] == d2["status"] == "DRY_RUN_PASS_NOT_APPLIED"
+    assert applied["status"] == "APPLIED_LOCAL_VERIFIED_REMOTE_PENDING"
+    assert applied["outputs"] == d2["outputs"]
+    assert applied["exact_output_plan_sha256"] == d2["exact_output_plan_sha256"]
+    assert applied["applied_paths"] == d2["owned_paths"]
+    assert len(applied["applied_paths"]) == len(applied["outputs"]) == 9
+    for row in applied["outputs"]:
+        raw = take(root / row["path"])
+        assert sha(raw) == row["sha256"] and len(raw) == row["bytes"]
+    source = read(root / "physics/qm/kernel/evidence/v31.9/source-manifest.json")
+    assert source["source_count"] == len(source["sources"]) == 98
+    assert source["source_set_sha256"] == "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0"
+    for row in source["sources"]:
+        raw = take(root / row["path"])
+        assert sha(raw) == row["sha256"] and len(raw) == row["bytes"]
+    gates = read(root / "physics/qm/book/evidence/v3.5/local-release-gates.json")
+    assert gates["status"] == "LOCAL_VERIFIED_REMOTE_PENDING"
+    for key in ("canonical", "pdf", "latex"):
+        row = gates[key]
+        raw = take(root / row["path"])
+        assert sha(raw) == row["sha256"] and len(raw) == row["bytes"]
+    core = read(root / "physics/qm/kernel/evidence/v31.9/core-import-closure.json")
+    for row in core["modules"]:
+        assert sha(take(root / row["path"])) == row["source_sha256"]
+    assert len(core["modules"]) == 56
+    context_path = handoff / "qm319_local_metadata_context.json"
+    context = read(context_path)
+    files = {}
+    names = [
+        "qm319_finalize_local_metadata_pre_title_fix.py", "qm319_finalize_local_metadata.py",
+        "qm319_local_metadata_title_amendment.json", "qm319_local_metadata_context.json",
+        "qm319_local_metadata_dry_run_001.json", "qm319_local_metadata_dry_run_002.json"]
+    for name in names:
+        files[handoff / name] = name + (".txt" if name.endswith(".py") else "")
+    files[args.apply_receipt.absolute()] = "qm319_local_metadata_apply_001.json"
+    files[args.independent_review.absolute()] = "independent-preview-review.json"
+    files[Path(__file__).resolve()] = "qm319_archive_local_metadata.py.txt"
+    baseline = context["baseline_tree_receipt"]
+    raw = take(Path(baseline["path"]))
+    assert sha(raw) == baseline["sha256"] and len(raw) == baseline["bytes"]
+    files[Path(baseline["path"])] = "actual-authoring-baseline-tree.json"
+    for rel, row in context["originals"].items():
+        if row["exists"]:
+            path = handoff / row["snapshot"]
+            raw = take(path)
+            assert sha(raw) == row["sha256"] and len(raw) == row["bytes"]
+            files[path] = "original-metadata/" + rel
+    prior_report = Path(d1["preview_directory"]) / "physics/qm/UEOT_QM_KERNEL_v31.9.md"
+    files[prior_report] = "prior-report-preview-001.md"
+    records = []
+    for original, relative in files.items():
+        assert not relative.endswith(".py")
+        raw = take(original)
+        records.append({"original": identity(original),
+                        "archived": {"path": (target / relative).relative_to(root).as_posix(),
+                                     "sha256": sha(raw), "bytes": len(raw)}})
+    for path, raw in inputs.items():
+        assert path.read_bytes() == raw, str(path)
+    for record in records:
+        dest = root / record["archived"]["path"]
+        assert dest.resolve() == dest and not dest.exists()
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(inputs[Path(record["original"]["path"])])
+    receipt = {"schema": "ueot_qm.local_metadata_archive.v31.9", "status": "ARCHIVED_ACTUAL_APPLIED_CHECKPOINT",
+        "actual_apply_receipt": identity(args.apply_receipt),
+        "review": identity(args.independent_review),
+        "exact_reviewed_and_applied_output_plan_sha256": d2["exact_output_plan_sha256"],
+        "actual_applied_metadata_paths": applied["outputs"], "files": records,
+        "original_helper_and_both_dry_runs_preserved": True,
+        "inherited_claim_objects_unchanged": 70, "claim_count": 84,
+        "accepted_source_count_unchanged": 98, "source_set_sha256": source["source_set_sha256"],
+        "Core_sources_unchanged": 56, "canonical_book_files_unchanged": 3,
+        "new_Lean_invocations": 0, "new_runtime_test_invocations": 0, "new_remote_actions": 0,
+        "scope": "These are exact historical copies of the real prepared, independently reviewed and applied metadata checkpoint. The first preview differs only in fourteen repeated-ID headings. Original input locations are retained and mapped to permanent repository copies; no earlier receipt bytes are edited."}
+    receipt_path = target / "archive.json"
+    assert not receipt_path.exists()
+    receipt_path.write_bytes(encode(receipt))
+    for path, raw in inputs.items():
+        assert path.read_bytes() == raw, str(path)
+    for record in records:
+        assert sha((root / record["archived"]["path"]).read_bytes()) == record["archived"]["sha256"]
+    print(json.dumps({"status": receipt["status"], "receipt": str(receipt_path),
+                      "sha256": sha(receipt_path.read_bytes()), "archived_files": len(records),
+                      "reviewed_apply_outputs_equal": 9}, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

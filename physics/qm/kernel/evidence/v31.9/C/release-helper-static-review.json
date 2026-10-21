@@ -1,0 +1,114 @@
+{
+  "kind": "INDEPENDENT_STATIC_RELEASE_HELPER_REVIEW",
+  "reviewer": "/root/v319_stopping",
+  "reviewed_at_utc": "2026-10-20T16:02:06.121030+00:00",
+  "status": "STATIC_PASS",
+  "review_method": "逐段通读两脚本及当前 workflow、源选择器和见证选择逻辑；仅作 Python AST/语法检查，没有执行被审 helper 的 main、远端调用或 Lean。",
+  "helper_execution_by_reviewer": false,
+  "ci_acceptance_or_upload_claim": false,
+  "bindings": [
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm319_verify_ci_logs.py",
+      "sha256": "63f5a1196606b41d8bde3d809f3c1900886357d09a041dfc77d5f6f48dcd40e0",
+      "bytes": 38736
+    },
+    {
+      "path": "/workspace/scratch/f11b4261e187/handoff/qm319_prepare_upload.py",
+      "sha256": "301219158d7e7007a0b9c7435299cfa385dc2255af5fcbf4674fe5aa451b934c",
+      "bytes": 9840
+    }
+  ],
+  "support_bindings": [
+    {
+      "path": ".github/workflows/ueot-qm.yml",
+      "sha256": "8563e3368f710a7933eabe269003bf803a870c54d32a73cdbcaf8edc84c2f74e",
+      "bytes": 6477
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/verify_finite_witnesses.py",
+      "sha256": "1916870a25c6e2af9a169798e9f60552b94812c6fc3f05214dbfa3f310cc1bbb",
+      "bytes": 14646
+    },
+    {
+      "path": "formalization/ueot-qm/scripts/record_source.py",
+      "sha256": "be184e05f63b2fec1a879f5c32f3b053fb94b5a39e4ffab5bee3a6b03e3eb14f",
+      "bytes": 2516
+    }
+  ],
+  "ci_checks": [
+    {
+      "subject": "实际参考冻结",
+      "finding": "要求 ci-reference 为 FROZEN_FROM_ACTUAL_LOCAL_ACCEPTANCE，逐文件 hash/字节绑定 9 份真实本地回执；证明和审计总数由该冻结参考取值，当前不填写猜测 CI 号。"
+    },
+    {
+      "subject": "98 源不变",
+      "finding": "源选择与 record_source.py 当前选择逐路径完全相同；全部 98 源实际字节、大小、规范路径和 source_set 摘要与统一验收一致，末尾再回读。旧 v31.8 comment bridge 明确保留为历史，当前无桥接放宽。"
+    },
+    {
+      "subject": "45 条日志打印",
+      "finding": "当前 workflow 打印 41 公共模块及 4 项其他输入；日志解析要求唯一、数量恰 45、逐值等于冻结源清单。scope 明确 98 项本地逐字节校对和 45 项 CI 直接打印不同。"
+    },
+    {
+      "subject": "本地复用与真实 CI",
+      "finding": "本地明确 3 个实际新见证加 10 个历史绑定；CI 不允许复用替代必需步骤，当前 workflow 未传 --witness，选择器默认全部 13 项。CI 逐文件 PASS 数量必须与全部 13 项冻结映射完全相同。"
+    },
+    {
+      "subject": "源提交与运行身份",
+      "finding": "要求实际 run 仓库、workflow 名/path、事件、full head SHA、完成成功；main 必须 main push。两实际 job 的 run/attempt、必需步骤和日志 checkout SHA 与给定 source commit 对应。"
+    },
+    {
+      "subject": "完整精确审计",
+      "finding": "公共公理日志逐实际全限定名和基础列表等于本地实际审计，并核对声明清单、源码身份和全部 theorem 已包含。重复、缺漏、额外名及未审基础均拒绝。"
+    },
+    {
+      "subject": "其余真实门",
+      "finding": "要求实际 build 成功的正 jobs 数、6 精确证书、4 篡改真证明拒绝与同数据假值接受、100 个逐名 runtime 方法，以及 4 真实 demo 命令区段。"
+    },
+    {
+      "subject": "日志与 artifact 范围",
+      "finding": "明确 witness 具体 kind 数来自本地接受的声明清单；CI 日志直接核对每文件 audit 总数，未声称逐 witness 声明已从 ZIP 回读。上传完成日志不升级为 ZIP 已下载/内部核验，重定向 demo JSON 也不声称已解析。"
+    },
+    {
+      "subject": "尝试与警告保留",
+      "finding": "失败写实际 FAIL/错误，目标已有回执时拒绝覆盖；保留观察到的运行 warning，不把成功称作零警告。"
+    }
+  ],
+  "payload_checks": [
+    {
+      "subject": "发布边界",
+      "finding": "只允许 formalization/ueot-qm 与 physics/qm 子树，已有文件修改为显式当前版本 allowlist，新文件为六模块、三见证、当前文档和本版本证据目录；没有 workflow 修改许可。"
+    },
+    {
+      "subject": "历史与并发保护",
+      "finding": "基树已有非 allowlist 文件字节变化会拒绝；未列出基树项无需重发。跟踪删除/符号链接/范围外跟踪编辑均停止准备；创建 Git tree 的调用方须沿用输出记录的精确 base_tree。"
+    },
+    {
+      "subject": "科学输入绑定",
+      "finding": "先要求实际统一 build/audit PASS 及 98 源 freeze；每一受验源的实际字节都等于序列化内容或被继承 Git blob，不用 comment-only 近似身份。"
+    },
+    {
+      "subject": "Core 身份",
+      "finding": "56 个实际递归 Core 源逐源码 SHA 和指定基树 blob 绑定，并要求全部不在 payload 中。"
+    },
+    {
+      "subject": "书的正式正文",
+      "finding": "要求真实 3 遍排印 exit 0、版面 warning 为空、结构/视觉 PASS；3 canonical 正文逐文件 hash 绑定排印回执与实际 payload 或继承 blob，结构要求 66 章和 161 结果。"
+    },
+    {
+      "subject": "额外文件与最终回读",
+      "finding": "排除缓存和局部构建产物；证据目录中的可执行 .py 拒绝，避免污染科学输入。每个发布 payload 在所有门后再次读字节并核对 SHA、Git blob 和字节数。"
+    },
+    {
+      "subject": "冻结载荷",
+      "finding": "清单和 payload 已存在时拒绝覆盖；输出只准备可审载荷，脚本本身不创建 commit、PR、merge 或任意远端 CI。"
+    }
+  ],
+  "required_before_real_use": [
+    "root 完成实际统一验收并冻结 ci-reference；该静态审查不能代替实际 PASS。",
+    "实际下载所请求 PR/main run 和 jobs JSON 及解码原日志，再运行 CI verifier。",
+    "取得精确实际基树、完成书的实际验收后生成 payload，并由 root 使用该基树保护未列项。",
+    "如果 helper 字节改变，只对实际差异复核；本回执只绑定此处列明 SHA。"
+  ],
+  "findings_requiring_fix": [],
+  "scope": "只读静态与语法审查；未调用被审发布/CI main，不计为载荷实物复核或真实远端验收。"
+}

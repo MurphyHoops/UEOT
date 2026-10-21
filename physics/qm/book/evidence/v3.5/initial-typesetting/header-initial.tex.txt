@@ -1,0 +1,62 @@
+\usepackage{fontspec}
+\IfFileExists{UEOT_CJK.ttf}{
+  \setmainfont{UEOT_CJK.ttf}[BoldFont=UEOT_CJK.ttf,BoldFeatures={FakeBold=2},ItalicFont=UEOT_CJK.ttf,ItalicFeatures={FakeSlant=.15}]
+  \setsansfont{UEOT_CJK.ttf}[BoldFont=UEOT_CJK.ttf,BoldFeatures={FakeBold=2}]
+  \setmonofont{UEOT_CJK.ttf}
+}{
+  \setmainfont{Noto Sans CJK SC}
+  \setsansfont{Noto Sans CJK SC}
+  \setmonofont{Noto Sans CJK SC}
+}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip=0pt plus 1pt
+\usepackage{mathtools}
+\usepackage{fvextra}
+\usepackage{etoolbox}
+\usepackage{newunicodechar}
+\newunicodechar{ℏ}{\ensuremath{\hbar}}
+\newunicodechar{∎}{\ensuremath{\square}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small UEOT PHYSICS}
+\fancyhead[R]{\small 物理学 · 第三版}
+\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{16pt}
+\renewcommand{\headrulewidth}{0.3pt}
+\setcounter{tocdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\emergencystretch}{8em}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.16}
+\AtBeginEnvironment{longtable}{\small}
+\allowdisplaybreaks[2]
+\renewcommand{\contentsname}{目录}
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+  \thispagestyle{empty}
+  \vspace*{30mm}
+  {\color{teal}\fontsize{46}{52}\selectfont UEOT\par}
+  \vspace{5mm}
+  {\fontsize{32}{40}\selectfont\bfseries 物理学\par}
+  \vspace{11mm}
+  {\Large 从对象数学到量子物理\par}
+  \vspace{4mm}
+  {\large 理论推导、形式证明与研究边界\par}
+  \vspace{10mm}
+  {\color{teal}\rule{\textwidth}{1pt}\par}
+  \vspace{7mm}
+  {\large 第三版\quad 3.4 正式整合版\par}
+  \vspace{6mm}
+  {钱德桂（Degui Qian）\par}
+  \vspace{5mm}
+  {63章\quad 6个附录\quad UEOT-QM Kernel 1.8\par}
+  \vfill
+  {对象与协议\quad 量子操作与场论\quad 证明与反例\par}
+  \vspace{7mm}
+  {2026年10月20日\par}
+  \end{titlepage}
+}
+\makeatother

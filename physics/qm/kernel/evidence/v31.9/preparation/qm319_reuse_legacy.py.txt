@@ -1,0 +1,164 @@
+"""Bind unchanged legacy science to its actual v31.8 execution, without replay."""
+from pathlib import Path
+from datetime import datetime, timezone
+import argparse, ast, hashlib, importlib.util, json, re, subprocess
+
+R = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H = Path(__file__).resolve().parent
+P = R / 'formalization/ueot-qm'
+OLD = 'physics/qm/kernel/evidence/v31.8/'
+BASE = '6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1'
+NEW_WITNESSES = ('QuantumTraceDistanceExamples', 'PurificationDimensionExamples',
+                 'StoppingRecordBudgetExamples')
+CHANGED_INTEGRATION_INPUTS = {
+    'formalization/ueot-qm/UEOTQM.lean',
+    'formalization/ueot-qm/scripts/AxiomAudit.lean',
+    'formalization/ueot-qm/scripts/verify_finite_witnesses.py',
+}
+
+def sha(raw): return hashlib.sha256(raw).hexdigest()
+def gitblob(raw): return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+def require(test, reason):
+    if not test: raise ValueError(reason)
+
+def review():
+    tree = json.loads((H/'qm319_baseline_remote_tree.json').read_bytes())
+    require(tree['sha']=='d900109f97fd032bb3682ecbd5fdf7577b415307' and
+            tree['commit']==BASE and not tree['truncated'], 'Wrong immutable baseline tree')
+    blobs = {x['path']:x['sha'] for x in tree['tree'] if x['type']=='blob'}
+    identities = {}
+    def bind(rel):
+        raw = (R/rel).read_bytes()
+        require(gitblob(raw)==blobs.get(rel), 'Historical/base file changed: '+rel)
+        identities[rel]={'sha256':sha(raw),'bytes':len(raw),'base_git_blob':blobs[rel]}
+        return raw
+    def receipt(rel): return json.loads(bind(rel))
+    manifest = receipt(OLD+'publication-source-manifest.json')
+    require(manifest['source_count']==89 and manifest['source_set_sha256']==
+            '054f2e01c50f25d2519a2200eeda5ccd9849c27cfc67141eeaaf552dd4d995d1',
+            'Wrong published v31.8 scientific source identity')
+    expected={x['path']:x for x in manifest['sources']}
+    unchanged=[]
+    for rel,item in expected.items():
+        if rel in CHANGED_INTEGRATION_INPUTS: continue
+        raw=bind(rel)
+        require(sha(raw)==item['sha256'] and len(raw)==item['bytes'], 'Published source mismatch: '+rel)
+        unchanged.append(rel)
+    require(len(unchanged)==86, 'Expected all 86 unchanged published scientific/context inputs')
+    ci=receipt(OLD+'ci/main-39424068985-verification.json')
+    require(ci['status']=='PASS' and ci['verification_complete'] and
+            ci['run_id']==39424068985 and ci['source_commit']=='97c7b29c1aec470be58ca34b552e9d56ad06c197',
+            'Missing actual previous main CI identity')
+    require(ci['publication_source_set_sha256']==manifest['source_set_sha256'] and
+            ci['finite_witness_file_count']==10 and ci['finite_witness_total_audits']==269,
+            'Previous CI has wrong source/witness scope')
+    prior=receipt(OLD+'finite-witnesses/verification.json')
+    require(prior['status']=='PASS' and prior['all_inputs_unchanged'] and
+            prior['witness_audit_count']==269 and len(prior['checks'])==10,
+            'Historical finite witness gate is not the accepted complete gate')
+    core=receipt(OLD+'core-import-closure.json')
+    require(core['transitive_module_count']==56, 'Unexpected historical Core import closure')
+    core_paths=set()
+    for row in core['modules']:
+        raw=bind(row['path'])
+        require(sha(raw)==row['source_sha256'], 'Core source mismatch: '+row['module'])
+        core_paths.add(row['path'])
+    for package in ('ueot-qm','ueot-core'):
+        for name in ('lean-toolchain','lake-manifest.json','lakefile.lean'):
+            bind('formalization/'+package+'/'+name)
+    dependency_rows=[]
+    for pkg in json.loads((P/'lake-manifest.json').read_bytes())['packages']:
+        if pkg['type']!='git': continue
+        checkout=P/'.lake/packages'/pkg['name']
+        actual=subprocess.check_output(['git','-C',str(checkout),'rev-parse','HEAD'],text=True).strip()
+        clean=subprocess.run(['git','-C',str(checkout),'diff','--quiet','HEAD','--']).returncode==0
+        require(actual==pkg['rev'] and clean,'Pinned dependency source changed: '+pkg['name'])
+        dependency_rows.append({'name':pkg['name'],'revision':actual,'tracked_source_clean':clean})
+    require(len(dependency_rows)==9,'Expected nine pinned dependencies')
+
+    verifier_path=P/'scripts/verify_finite_witnesses.py'
+    spec=importlib.util.spec_from_file_location('qm319_witness_reuse',verifier_path)
+    verifier=importlib.util.module_from_spec(spec); spec.loader.exec_module(verifier)
+    original=subprocess.check_output(['git','-C',str(R),'show',BASE+':formalization/ueot-qm/scripts/verify_finite_witnesses.py'])
+    require(gitblob(original)==blobs['formalization/ueot-qm/scripts/verify_finite_witnesses.py'], 'Original verifier blob mismatch')
+    old_functions={x.name:ast.dump(x,include_attributes=False) for x in ast.parse(original).body if isinstance(x,ast.FunctionDef)}
+    current_functions={x.name:ast.dump(x,include_attributes=False) for x in ast.parse(verifier_path.read_bytes()).body if isinstance(x,ast.FunctionDef)}
+    stable_functions=('identity','lean_code','witness_declarations','repository_modules','input_snapshot','run_command','audit_result')
+    require(all(old_functions[x]==current_functions[x] for x in stable_functions),
+            'Per-witness compile/audit semantics changed; reassess reuse')
+    old_names=tuple(x['name'] for x in prior['checks'])
+    require(verifier.WITNESSES==old_names+NEW_WITNESSES,'Unexpected registered witness selection')
+    def closure(source):
+        pending=[source]; seen=set(); imports=set()
+        while pending:
+            path=pending.pop();rel=path.relative_to(R).as_posix()
+            if rel in seen:continue
+            seen.add(rel)
+            require(rel in expected or rel in core_paths,'New/unbound input in legacy proof closure: '+rel)
+            require(rel not in CHANGED_INTEGRATION_INPUTS,'Legacy proof imports changed integration input: '+rel)
+            bind(rel)
+            for group in re.findall(r'^\s*import\s+([^\n]+)$',verifier.lean_code(path.read_text()),re.M):
+                for name in group.split():
+                    if name=='UEOTQM' or name.startswith('UEOTQM.'):
+                        pending.append(P/Path(*name.split('.')).with_suffix('.lean'))
+                    elif name.startswith('UEOT.'):
+                        pending.append(R/'formalization/ueot-core'/Path(*name.split('.')).with_suffix('.lean'))
+                    else:imports.add(name)
+        return {'repository_sources':sorted(seen),'upstream_imports':sorted(imports)}
+    witnesses=[]
+    for old_check in prior['checks']:
+        name=old_check['name']; path=P/'scripts/witnesses'/(name+'.lean')
+        rel=path.relative_to(R).as_posix();raw=bind(rel)
+        require(old_check['status']=='PASS' and sha(raw)==old_check['source']['sha256'], 'Witness bytes or original gate mismatch: '+name)
+        declarations=verifier.witness_declarations(path)
+        require(declarations==prior['declarations'][name], 'Witness declaration list changed: '+name)
+        witnesses.append({'name':name,'execution_mode':'REUSED_PREVIOUS_ACTUAL_MAIN_CI',
+                          'source':identities[rel],'declarations':declarations,
+                          'actual_legacy_local_receipt':OLD+'finite-witnesses/verification.json',
+                          'actual_legacy_main_ci':39424068985,'closure':closure(path),
+                          'new_compiler_invocations':0})
+    exact=receipt(OLD+'lean-exports/verification.json')
+    require(exact['status']=='PASS' and exact['summary']=={
+        'positive_passed':6,'positive_expected':6,'negative_passed':4,'negative_expected':4,
+        'false_witness_passed':4,'positive_audit_targets_expected':42,'false_witness_audit_targets_expected':4},
+        'Legacy exact certificate summary changed')
+    certificate_closures={}
+    for item in exact['regeneration']:
+        path=R/'physics/qm/kernel/certificates/v31.3'/(item['name']+'.lean')
+        require(sha(bind(path.relative_to(R).as_posix()))==item['source_sha256'],'Certificate source changed')
+        require(sha(bind('physics/qm/kernel/certificates/v31.3/'+item['name']+'.manifest.json'))==item['manifest_sha256'],
+                'Certificate manifest changed')
+        certificate_closures[item['name']]=closure(path)
+    runtime=receipt(OLD+'runtime-verification.json')
+    demos=receipt(OLD+'demos-verification.json')
+    require(runtime['status']=='PASS' and runtime['test_methods_run']==100 and
+            demos['status']=='PASS' and demos['demo_count']==4,'Legacy runtime/demo receipt mismatch')
+    require(ci['runtime_test_methods']==100 and ci['positive_instances']==6 and
+            ci['positive_instance_axiom_targets']==42 and ci['corrupted_true_rejections']==4 and
+            ci['same_data_false_proofs']==4,'Legacy main CI exact/runtime scope mismatch')
+    return {'schema':'ueot_qm.legacy_reuse.v31.9','status':'PASS',
+        'execution_mode':'REUSED_UNCHANGED_SCIENTIFIC_INPUTS','checked_at_utc':datetime.now(timezone.utc).isoformat(),
+        'base_commit':BASE,'base_tree':tree['sha'],'prior_publication_source_set_sha256':manifest['source_set_sha256'],
+        'prior_tested_main_commit':ci['source_commit'],'prior_actual_main_ci':ci['run_id'],
+        'prior_actual_main_ci_receipt':OLD+'ci/main-39424068985-verification.json',
+        'unchanged_previous_source_count':len(unchanged),'unchanged_previous_sources':sorted(unchanged),
+        'separately_changed_integration_inputs':sorted(CHANGED_INTEGRATION_INPUTS),
+        'changed_integration_inputs_absent_from_legacy_mathematical_import_closures':True,
+        'stable_per_witness_verifier_functions':list(stable_functions),'dependencies':dependency_rows,
+        'core_source_count':len(core_paths),'bound_historical_and_current_files':identities,
+        'witnesses':witnesses,'witness_count':10,'witness_theorems':193,'witness_definitions':71,
+        'witness_abbreviations':5,'witness_audits':269,'certificate_closures':certificate_closures,
+        'exact_certificate_summary':exact['summary'],'exact_receipt':OLD+'lean-exports/verification.json',
+        'runtime_test_methods':100,'runtime_receipt':OLD+'runtime-verification.json',
+        'demos':4,'demos_receipt':OLD+'demos-verification.json',
+        'new_legacy_lean_compiler_invocations':0,'new_legacy_runtime_test_invocations':0,
+        'scope':'Only current scientific-input identity and existing accepted receipt identity are checked here. New v31.9 proofs and witnesses require their own actual execution. This is not a rerun, a replay of old CI parsers, or artifact ZIP inspection.'}
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True)
+    args=parser.parse_args();result=review()
+    require(not args.output.exists(),'Refuse to overwrite an existing reuse review')
+    args.output.parent.mkdir(parents=True,exist_ok=True)
+    args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    print(json.dumps({k:result[k] for k in ['status','execution_mode','unchanged_previous_source_count','core_source_count',
+          'witness_count','witness_audits','new_legacy_lean_compiler_invocations']},indent=2))

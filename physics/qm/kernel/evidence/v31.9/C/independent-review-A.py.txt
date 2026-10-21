@@ -1,0 +1,119 @@
+from pathlib import Path
+import collections, datetime, hashlib, json, re
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+H = ROOT.parent / 'handoff'
+E = ROOT / 'physics/qm/kernel/evidence/v31.9'
+ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def declarations(p):
+    s = p.read_text()
+    ns = re.search(r'^namespace (\S+)', s, re.M).group(1)
+    return [{'kind': m[0], 'name': ns + '.' + m[1]} for m in
+            re.findall(r'^(?:@\[[^\]]+\]\s*)?(theorem|def|abbrev)\s+(\S+)', s, re.M)]
+
+def audits(p):
+    s = p.read_text()
+    result = []
+    for m in re.finditer(r"'([^']+)' (?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)", s, re.S):
+        axs = [] if m[2] is None else [x.strip() for x in m[2].split(',') if x.strip()]
+        assert set(axs) <= ALLOWED, (m[1], axs)
+        result.append({'name': m[1], 'axioms': axs})
+    assert len({x['name'] for x in result}) == len(result)
+    assert 'error:' not in s and 'sorryAx' not in s and 'declaration uses sorry' not in s
+    return result
+
+tags = ['QuantumTraceDistance-compile-003', 'BinaryDiscrimination-compile-001',
+        'QuantumTraceDistanceExamples-compile-002']
+bindings = []
+decls = []
+for tag in tags:
+    rp = E / 'A' / (tag + '.json')
+    r = json.loads(rp.read_text())
+    p, op = ROOT / r['source'], ROOT / r['olean_path']
+    sp, lp = ROOT / r['source_snapshot'], ROOT / r['log']
+    assert r['exit_code'] == 0 and r['source_unchanged'] is True
+    assert sha(p) == r['source_sha256'] == sha(sp)
+    assert sha(op) == r['olean_sha256']
+    assert p.read_bytes() == sp.read_bytes()
+    assert not re.search(r'\b(sorry|admit|axiom)\b', p.read_text().split('/- Every concrete')[0])
+    assert 'error:' not in lp.read_text() and 'declaration uses sorry' not in lp.read_text()
+    ds = declarations(p)
+    decls.append(ds)
+    bindings.append({'source': r['source'], 'source_sha256': sha(p),
+                     'source_snapshot': r['source_snapshot'], 'source_snapshot_sha256': sha(sp),
+                     'olean': r['olean_path'], 'olean_sha256': sha(op),
+                     'receipt': str(rp.relative_to(ROOT)), 'receipt_sha256': sha(rp),
+                     'log': r['log'], 'log_sha256': sha(lp), 'exit_code': r['exit_code'],
+                     'declaration_census': dict(collections.Counter(x['kind'] for x in ds))})
+
+public_receipt = E / 'A/PublicAxioms-001.json'
+pr = json.loads(public_receipt.read_text())
+pl = E / 'A/PublicAxioms-001.log'
+public_actual = audits(pl)
+public_expected = decls[0] + decls[1]
+assert pr['status'] == 'PASS' and pr['exit_code'] == 0 and pr['source_and_olean_unchanged']
+assert sha(pl) == pr['log_sha256']
+assert public_actual == pr['actual_audit'] if 'actual_audit' in pr else True
+assert [x['name'] for x in public_expected] == [x['name'] for x in public_actual]
+assert [x['name'] for x in pr['declarations']] == [x['name'] for x in public_actual]
+assert len(public_actual) == pr['expected_count'] == pr['actual_count'] == 40
+query = H / 'A_v319_public_axioms.lean'
+assert sha(query) == pr['query_sha256']
+assert re.findall(r'^#print axioms (\S+)', query.read_text(), re.M) == [x['name'] for x in public_actual]
+for b in pr['source_bindings']:
+    assert sha(ROOT / b['path']) == b['sha256']
+    assert sha(ROOT / b['olean_path']) == b['olean_sha256']
+
+wl = E / 'A/QuantumTraceDistanceExamples-compile-002.log'
+witness_actual = audits(wl)
+witness_source = ROOT / bindings[2]['source']
+assert re.findall(r'^#print axioms (\S+)', witness_source.read_text(), re.M) == [x['name'] for x in decls[2]]
+assert [x['name'] for x in decls[2]] == [x['name'] for x in witness_actual]
+assert len(witness_actual) == 51
+
+chapter = H / 'A_v319_chapter63_draft.md'
+book_ids = re.findall(r'\*\*(P-[A-Z]+-\d+)（', chapter.read_text())
+assert book_ids == ['P-TDIST-01', 'P-TDIST-02', 'P-DEC-01', 'P-TCERT-01']
+assert len(re.findall(r'^## 63\.', chapter.read_text(), re.M)) == 9
+
+result = {
+  'kind': 'INDEPENDENT_READ_ONLY_SCIENTIFIC_AND_EVIDENCE_REVIEW',
+  'reviewer': '/root/v319_stopping', 'reviewed_lane': 'A',
+  'reviewed_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+  'status': 'PASS', 'new_lean_execution_by_reviewer': False,
+  'scope': '独立通读两个公共模块、最终具体见证与完整第63章稿；回读实际编译与公理日志，逐项绑定源码、快照和当前 olean。不是新增统一验收或远端 CI。',
+  'bindings': bindings,
+  'public_audit': {'receipt': str(public_receipt.relative_to(ROOT)), 'receipt_sha256': sha(public_receipt),
+                   'log': str(pl.relative_to(ROOT)), 'log_sha256': sha(pl),
+                   'query_sha256': sha(query), 'exact_names_count': len(public_actual),
+                   'source_order_exact': True, 'actual': public_actual},
+  'witness_audit': {'exact_names_count': len(witness_actual), 'source_order_exact': True,
+                    'log_sha256': sha(wl), 'actual': witness_actual},
+  'allowed_axioms': sorted(ALLOWED),
+  'scientific_assessment': [
+    '原 Density、Effect 与 effectDistance 保持；结论量化完整有限复密度态及全部合法效应，没有以纯态、对角态或有限测试库代替。',
+    'traceAbsolute 实际定义为 mass (CFC.abs X)，CFC 绝对值与实际 Hermitian 谱分解相接；没有把待证上确界等式写入定义。',
+    '正谱效应具有正性与互补正性，支持恒等式给真实达到；零迹来源是两个密度态的归一化，因此因子 1/2 没有越过非零迹边界。',
+    '支持证书仅输入实际 PSD、矩阵差和 EP=P、EN=0；不输入最终距离、最优性或全效应最终上界。',
+    '输入酉谱数据证书核对实际酉矩阵方向与分解，并保持非计算谱存在和可检查有限证书的职责区分。',
+    '见证包含非交换混态、复相位与全实/全对角效应遗漏、同态零值、非零迹反例及重叠 PSD 分解反例，实际 51 个具名声明全部回读公理。',
+    '第63章 9 小节、4 个结果与上述 Lean 责任对应；未宣称一般先验、通用数值求谱、diamond 距离、无限维结论或新增实验。'
+  ],
+  'book': {'path': str(chapter), 'sha256': sha(chapter), 'sections': 9, 'result_ids': book_ids},
+  'warnings': '实际编译包含普通 linter 警告；本审查不称零警告。早期失败尝试原日志保留。',
+  'limitations': ['只审查列明的新 A 源码与证据身份，未重跑 Lean。', '远端发布和统一验收由 root 独立负责。']
+}
+for b in bindings:
+    assert sha(ROOT / b['source']) == b['source_sha256']
+    assert sha(ROOT / b['olean']) == b['olean_sha256']
+out = E / 'C/independent-review-A.json'
+assert not out.exists()
+out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+(E / 'C/independent-review-A.py.txt').write_bytes(Path(__file__).read_bytes())
+print(json.dumps({'status': result['status'], 'review': str(out.relative_to(ROOT)),
+                  'review_sha256': sha(out), 'public': len(public_actual),
+                  'witness': len(witness_actual)}, ensure_ascii=False))

@@ -1,0 +1,106 @@
+UEOTQM/StoppingProtocols.lean:56:6: warning: Variable name `t` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _t
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOTQM/StoppingProtocols.lean:71:38: warning: This simp argument is unused:
+  List.ofFn_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.shift, controller, follow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingProtocols.lean:91:11: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOTQM/StoppingProtocols.lean:93:18: warning: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOTQM/StoppingProtocols.lean:109:6: error: Type mismatch: After simplification, term
+  ih Adaptive.Protocol.stop PUnit.unit (of_eq_true zero_le._simp_1)
+ has type
+  @Eq (Option (Leaf Adaptive.Protocol.stop)) (decode Adaptive.Protocol.stop fun x => none) (some PUnit.unit)
+but is expected to have type
+  @Eq (Option (Leaf Adaptive.Protocol.stop)) (decode Adaptive.Protocol.stop (Fin.tail fun x => none)) (some PUnit.unit)
+UEOTQM/StoppingProtocols.lean:115:6: error: Type mismatch: After simplification, term
+  congrArg (Option.map fun l => ⟨o, l⟩) (ih (next o) l hn)
+ has type
+  decode (next o) (encode (next o) l) = some l
+but is expected to have type
+  Option.map (fun l => ⟨o, l⟩) (decode (next o) (encode (next o) l)) = some ⟨o, l⟩
+UEOTQM/StoppingProtocols.lean:134:10: error: Type mismatch: After simplification, term
+  congrFun ht j
+ has type
+  @Eq (Option O) none (Fin.tail h j)
+but is expected to have type
+  @Eq (Option O) none (h j.succ)
+UEOTQM/StoppingProtocols.lean:143:8: error: Type mismatch: After simplification, term
+  congrFun ht j
+ has type
+  @Eq (Option O) (encode (next o) k j) (Fin.tail h j)
+but is expected to have type
+  @Eq (Option O) (encode (next o) k j) (h j.succ)
+UEOTQM/StoppingProtocols.lean:189:11: error: unsolved goals
+case succ.stop
+A : Type u_1
+O : Type u_2
+inst✝ : Fintype O
+n : ℕ
+ih :
+  ∀ (π : Adaptive.Protocol A O) (l : Leaf π),
+    height π ≤ n →
+      List.ofFn (encode π l) = List.map (fun e => some e.2) (π.word l) ++ List.replicate (n - stopTime π l) none
+l : Leaf Adaptive.Protocol.stop
+hN : height Adaptive.Protocol.stop ≤ n + 1
+⊢ none :: List.replicate n none = List.replicate (n + 1) none
+UEOTQM/StoppingProtocols.lean:220:8: warning: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_active`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/StoppingProtocols.lean:224:8: warning: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_active_none`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/StoppingProtocols.lean:226:54: warning: This simp argument is unused:
+  Fintype.sum_option
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, lift, liftKraus]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingProtocols.lean:228:8: warning: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_idle`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/StoppingProtocols.lean:232:8: warning: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.lift_branch_idle_some`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOTQM/StoppingProtocols.lean:234:54: warning: This simp argument is unused:
+  Fintype.sum_option
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, lift, liftKraus]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOTQM/StoppingProtocols.lean:236:0: warning: automatically included section variable(s) unused in theorem `UEOTQM.StoppingProtocols.record_zero`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

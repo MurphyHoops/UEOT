@@ -1,0 +1,835 @@
+{
+  "kind": "INDEPENDENT_READ_ONLY_SCIENTIFIC_AND_EVIDENCE_REVIEW",
+  "reviewer": "/root/v319_stopping",
+  "reviewed_lane": "A",
+  "reviewed_at_utc": "2026-10-20T15:48:19.318305+00:00",
+  "status": "PASS",
+  "new_lean_execution_by_reviewer": false,
+  "scope": "独立通读两个公共模块、最终具体见证与完整第63章稿；回读实际编译与公理日志，逐项绑定源码、快照和当前 olean。不是新增统一验收或远端 CI。",
+  "bindings": [
+    {
+      "source": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+      "source_sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+      "source_snapshot": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-003.lean.txt",
+      "source_snapshot_sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/QuantumTraceDistance.olean",
+      "olean_sha256": "25b877f5c905a787dea3348fa712870a3bef8751511c1c7c3255d6ab2fdd7814",
+      "receipt": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-003.json",
+      "receipt_sha256": "87335cd7a7b4a28edd36ab4947f628e539783ff5f09b53e2eeb63e27b7ccd32e",
+      "log": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistance-compile-003.log",
+      "log_sha256": "a4341e2e7c0042a88de720a8aabb44ed6851e49b1992f8c320fbe2b9018cc542",
+      "exit_code": 0,
+      "declaration_census": {
+        "def": 5,
+        "theorem": 25
+      }
+    },
+    {
+      "source": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean",
+      "source_sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+      "source_snapshot": "physics/qm/kernel/evidence/v31.9/A/BinaryDiscrimination-compile-001.lean.txt",
+      "source_snapshot_sha256": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/UEOTQM/BinaryDiscrimination.olean",
+      "olean_sha256": "2ace1fc7ef5cb9c85de699a746ec7a8e37beff22ad9687c54d403a447ce83306",
+      "receipt": "physics/qm/kernel/evidence/v31.9/A/BinaryDiscrimination-compile-001.json",
+      "receipt_sha256": "9e6e2cbb53ac3d923cbb524bc7262de9abbc42563e16f2a31f38448c17ba3875",
+      "log": "physics/qm/kernel/evidence/v31.9/A/BinaryDiscrimination-compile-001.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 0,
+      "declaration_census": {
+        "def": 1,
+        "theorem": 9
+      }
+    },
+    {
+      "source": "formalization/ueot-qm/scripts/witnesses/QuantumTraceDistanceExamples.lean",
+      "source_sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+      "source_snapshot": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-002.lean.txt",
+      "source_snapshot_sha256": "46162e90006ff11d09013cc0ffa15121e2ddbb40a0d5167ae93fcc582563daec",
+      "olean": "formalization/ueot-qm/.lake/build/lib/lean/scripts/witnesses/QuantumTraceDistanceExamples.olean",
+      "olean_sha256": "f769aa03441e9168ce6142347dd5fdc691cf975ca54727d69010548d6d4688e9",
+      "receipt": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-002.json",
+      "receipt_sha256": "b0da62e544cc2848eae0afc476c1703446c88e8771c10a7ca6beb5f6f82cc23d",
+      "log": "physics/qm/kernel/evidence/v31.9/A/QuantumTraceDistanceExamples-compile-002.log",
+      "log_sha256": "507626495f83548e3c0d61fa3cfad2910fed2d4c723ef6eb852b3f1f93c32393",
+      "exit_code": 0,
+      "declaration_census": {
+        "abbrev": 1,
+        "def": 15,
+        "theorem": 35
+      }
+    }
+  ],
+  "public_audit": {
+    "receipt": "physics/qm/kernel/evidence/v31.9/A/PublicAxioms-001.json",
+    "receipt_sha256": "da3fe0b85443d1481c73afe0f2e56ed7534861b4041891d7b4f71b5edc70fe70",
+    "log": "physics/qm/kernel/evidence/v31.9/A/PublicAxioms-001.log",
+    "log_sha256": "f0b9c923562fae61a06348570e86321c79db5949e8621ca834be8cb673aca5e8",
+    "query_sha256": "15a5b681d0c271d3c524e3a96ed361dcc510877b0b209b8ec3f18f68afd9e605",
+    "exact_names_count": 40,
+    "source_order_exact": true,
+    "actual": [
+      {
+        "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_add",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_sub",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_mul",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_zero",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_one",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.unitaryDiagonal_posSemidef",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.mass_unitaryDiagonal",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positivePart",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.negativePart",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positivePart_posSemidef",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.negativePart_posSemidef",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positivePart_sub_negativePart",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.max_add_max_neg",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.abs_eq_positivePart_add_negativePart",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.traceAbsolute",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.traceAbsolute_nonneg",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.traceAbsolute_eq_sum_abs_eigenvalues",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_matrix",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_idempotent",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_positivePart",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_negativePart",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_pairing",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.difference_parts_mass_eq",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.effectDistance_le_mass_of_psd_split",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_positivePart_mass",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_attains",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_traceAbsolute",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_sum_abs_eigenvalues",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess_eq",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.equalPriorSuccess_le",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.positiveSpectrumEffect_success",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.exists_optimal_equalPriorDecision",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.optimal_equalPriorSuccess_traceAbsolute",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_mass_of_support_certificate",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.success_eq_optimum_of_support_certificate",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_sum_positive_of_unitary_data",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.BinaryDiscrimination.effectDistance_eq_half_sum_abs_of_unitary_data",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    ]
+  },
+  "witness_audit": {
+    "exact_names_count": 51,
+    "source_order_exact": true,
+    "log_sha256": "507626495f83548e3c0d61fa3cfad2910fed2d4c723ef6eb852b3f1f93c32393",
+    "actual": [
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.Qubit",
+        "axioms": []
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rho",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.sigma",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_hermitian",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalInvolution_square",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalTest",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalTest_matrix",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalTest_square",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalPositive",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalNegative",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalPositive_psd",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rationalNegative_psd",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_difference_split",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_support_positive",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_support_negative",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_positive_mass",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_effectDistance",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_rho",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_test_probability_sigma",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.mixed_states_noncommute",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_traceAbsolute",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_optimal_success",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.rational_all_decisions_le",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phasePlus",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phaseMinus",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phaseTest",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_support_plus",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_support_minus",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_effectDistance",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_traceAbsolute",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_optimal_success",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.phase_difference",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.all_real_effects_miss_phase",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.all_diagonal_effects_miss_phase",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.equal_states_traceAbsolute_zero",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.singletonState",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.singleton_nonzero_trace",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.nonzero_trace_half_formula_fails",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingPart",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingPart_psd",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_are_a_difference_split",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.arbitrary_psd_split_is_not_exact",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.overlappingParts_have_no_support_effect",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.certificateMatrix_adjoint_mul",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.certificateUnitary",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.spectralRho",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.spectralSigma",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.exact_supplied_diagonalization",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "name": "UEOTQM.QuantumTraceDistanceExamples.exact_unitary_certificate_distance",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    ]
+  },
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "scientific_assessment": [
+    "原 Density、Effect 与 effectDistance 保持；结论量化完整有限复密度态及全部合法效应，没有以纯态、对角态或有限测试库代替。",
+    "traceAbsolute 实际定义为 mass (CFC.abs X)，CFC 绝对值与实际 Hermitian 谱分解相接；没有把待证上确界等式写入定义。",
+    "正谱效应具有正性与互补正性，支持恒等式给真实达到；零迹来源是两个密度态的归一化，因此因子 1/2 没有越过非零迹边界。",
+    "支持证书仅输入实际 PSD、矩阵差和 EP=P、EN=0；不输入最终距离、最优性或全效应最终上界。",
+    "输入酉谱数据证书核对实际酉矩阵方向与分解，并保持非计算谱存在和可检查有限证书的职责区分。",
+    "见证包含非交换混态、复相位与全实/全对角效应遗漏、同态零值、非零迹反例及重叠 PSD 分解反例，实际 51 个具名声明全部回读公理。",
+    "第63章 9 小节、4 个结果与上述 Lean 责任对应；未宣称一般先验、通用数值求谱、diamond 距离、无限维结论或新增实验。"
+  ],
+  "book": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/A_v319_chapter63_draft.md",
+    "sha256": "05b1c297e37b7ece03288ae6a44727c3119428b2c4a68c7787e4476b12c920b7",
+    "sections": 9,
+    "result_ids": [
+      "P-TDIST-01",
+      "P-TDIST-02",
+      "P-DEC-01",
+      "P-TCERT-01"
+    ]
+  },
+  "warnings": "实际编译包含普通 linter 警告；本审查不称零警告。早期失败尝试原日志保留。",
+  "limitations": [
+    "只审查列明的新 A 源码与证据身份，未重跑 Lean。",
+    "远端发布和统一验收由 root 独立负责。"
+  ]
+}

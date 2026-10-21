@@ -1,0 +1,365 @@
+scripts/witnesses/StoppingRecordBudgetExamples.lean:24:28: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:29:52: warning: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Instrument.branch, krausMap, certain, ho]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:65:69: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:77:38: warning: This simp argument is unused:
+  Fin.sum_univ_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:154:0: error: Not a definitional equality: the left-hand side
+  encode stoppingTree earlyLeaf
+is not definitionally equal to the right-hand side
+  ![some 0, none]
+scripts/witnesses/StoppingRecordBudgetExamples.lean:155:84: error: Type mismatch
+  rfl
+has type
+  ?m.16 = ?m.16
+but is expected to have type
+  encode stoppingTree earlyLeaf = ![some 0, none]
+scripts/witnesses/StoppingRecordBudgetExamples.lean:156:0: error: Not a definitional equality: the left-hand side
+  encode stoppingTree lateZeroLeaf
+is not definitionally equal to the right-hand side
+  ![some 1, some 0]
+scripts/witnesses/StoppingRecordBudgetExamples.lean:156:92: error: Type mismatch
+  rfl
+has type
+  ?m.18 = ?m.18
+but is expected to have type
+  encode stoppingTree lateZeroLeaf = ![some 1, some 0]
+scripts/witnesses/StoppingRecordBudgetExamples.lean:157:0: error: Not a definitional equality: the left-hand side
+  encode stoppingTree lateOneLeaf
+is not definitionally equal to the right-hand side
+  ![some 1, some 1]
+scripts/witnesses/StoppingRecordBudgetExamples.lean:157:90: error: Type mismatch
+  rfl
+has type
+  ?m.18 = ?m.18
+but is expected to have type
+  encode stoppingTree lateOneLeaf = ![some 1, some 1]
+scripts/witnesses/StoppingRecordBudgetExamples.lean:193:76: error: unsolved goals
+ρ : Density Qubit
+⊢ mass 0 = 0
+scripts/witnesses/StoppingRecordBudgetExamples.lean:215:52: error: unsolved goals
+h : History (Option Label) 1
+⊢ (match
+      match
+        Adaptive.Protocol.node 0 fun o =>
+          if o = 0 then Adaptive.Protocol.stop else Adaptive.Protocol.node 1 fun x => Adaptive.Protocol.stop,
+        h 0 with
+      | Adaptive.Protocol.node action next, some o => next o
+      | x, x_1 => Adaptive.Protocol.stop with
+    | Adaptive.Protocol.stop => none
+    | Adaptive.Protocol.node a next => some a) =
+    match h 0 with
+    | none => none
+    | some o => if o = 0 then none else some 1
+scripts/witnesses/StoppingRecordBudgetExamples.lean:230:9: error: unsolved goals
+case none
+ρ : Density Qubit
+⊢ mass
+      ((lift approximateActions (some 0)).branch
+        ({ toFun := fun o => ![o], invFun := fun h => h 0, left_inv := oneHistoryEquiv._proof_2,
+            right_inv := oneHistoryEquiv._proof_3 }
+          none 0)
+        ρ.matrix) =
+    0
+scripts/witnesses/StoppingRecordBudgetExamples.lean:233:11: error: unsolved goals
+case some
+ρ : Density Qubit
+k : Label
+⊢ mass
+      ((lift approximateActions (some 0)).branch
+        ({ toFun := fun o => ![o], invFun := fun h => h 0, left_inv := oneHistoryEquiv._proof_2,
+            right_inv := oneHistoryEquiv._proof_3 }
+          (some k) 0)
+        ρ.matrix) =
+    if k = 0 then 3 / 4 else 4⁻¹
+scripts/witnesses/StoppingRecordBudgetExamples.lean:231:47: warning: This simp argument is unused:
+  List.ofFn_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.word, controller, follow, action, stoppingTree, oneHistoryEquiv, response, recordOperator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:234:47: warning: This simp argument is unused:
+  List.ofFn_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.word, controller, follow, action, stoppingTree, oneHistoryEquiv, response, recordOperator,
+    approximateActions, biased_branch, mass_smul, ρ.mass_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:235:49: warning: This simp argument is unused:
+  approximateActions
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.word, controller, follow, List.ofFn_succ, action, stoppingTree, oneHistoryEquiv, response,
+    recordOperator, biased_branch, mass_smul, ρ.mass_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:235:69: warning: This simp argument is unused:
+  biased_branch
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.word, controller, follow, List.ofFn_succ, action, stoppingTree, oneHistoryEquiv, response,
+    recordOperator, approximateActions, mass_smul, ρ.mass_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:236:6: warning: This simp argument is unused:
+  mass_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.word, controller, follow, List.ofFn_succ, action, stoppingTree, oneHistoryEquiv, response,
+    recordOperator, approximateActions, biased_branch, ρ.mass_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:236:17: warning: This simp argument is unused:
+  ρ.mass_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Controller.word, controller, follow, List.ofFn_succ, action, stoppingTree, oneHistoryEquiv, response,
+    recordOperator, approximateActions, biased_branch, mass_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+scripts/witnesses/StoppingRecordBudgetExamples.lean:243:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ i, ?g i
+in the target expression
+  ∑ h,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) h *
+        activeDefect exactActions approximateActions (controller stoppingTree 2 1 h) =
+    1 / 16
+
+ρ : Density Qubit
+⊢ ∑ h,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) h *
+        activeDefect exactActions approximateActions (controller stoppingTree 2 1 h) =
+    1 / 16
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  function expected
+    controller stoppingTree 2 1
+scripts/witnesses/StoppingRecordBudgetExamples.lean:252:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ i, ?g i
+in the target expression
+  (∑ h,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) h *
+        if (controller stoppingTree 2 1 h).isSome = true then 1 else 0) =
+    1 / 4
+
+ρ : Density Qubit
+⊢ (∑ h,
+      weight (run (lift approximateActions) (controller stoppingTree ↑1) ρ) h *
+        if (controller stoppingTree 2 1 h).isSome = true then 1 else 0) =
+    1 / 4
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  function expected
+    controller stoppingTree 2 1
+scripts/witnesses/StoppingRecordBudgetExamples.lean:267:4: error: Type mismatch: After simplification, term
+  h
+ has type
+  Mixture.tv (ClassicalQuantumMemory.ProtocolMemory.weights exactActions stoppingTree ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights approximateActions stoppingTree ρ) ≤
+    activeCost exactActions approximateActions stoppingTree 2 ρ 0 +
+      activeCost exactActions approximateActions stoppingTree 2 ρ 1
+but is expected to have type
+  Mixture.tv (ClassicalQuantumMemory.ProtocolMemory.weights exactActions stoppingTree ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights approximateActions stoppingTree ρ) ≤
+    16⁻¹
+scripts/witnesses/StoppingRecordBudgetExamples.lean:268:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (ClassicalQuantumMemory.ProtocolMemory.Leaf stoppingTree)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+scripts/witnesses/StoppingRecordBudgetExamples.lean:273:4: error: Type mismatch
+  h
+has type
+  |response exactActions ρ (stoppingTree.word lateOneLeaf) -
+        response approximateActions ρ (stoppingTree.word lateOneLeaf)| ≤
+    Mixture.tv (ClassicalQuantumMemory.ProtocolMemory.weights exactActions stoppingTree ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights approximateActions stoppingTree ρ)
+but is expected to have type
+  1 / 16 ≤
+    Mixture.tv (ClassicalQuantumMemory.ProtocolMemory.weights exactActions stoppingTree ρ)
+      (ClassicalQuantumMemory.ProtocolMemory.weights approximateActions stoppingTree ρ)
+scripts/witnesses/StoppingRecordBudgetExamples.lean:283:4: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (ClassicalQuantumMemory.ProtocolMemory.Leaf stoppingTree × Qubit)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+scripts/witnesses/StoppingRecordBudgetExamples.lean:308:105: error: unsolved goals
+ρ : Density Qubit
+⊢ mass 0 = 0
+scripts/witnesses/StoppingRecordBudgetExamples.lean:327:2: error: Type mismatch
+  h
+has type
+  |response (lift identityActions) ρ ((controller Adaptive.Protocol.stop 1).word stoppedHistory) -
+        response (lift identityActions) ρ ((controller oneStepTree 1).word stoppedHistory)| ≤
+    Mixture.tv (weights (run (lift identityActions) (controller Adaptive.Protocol.stop 1) ρ))
+      (weights (run (lift identityActions) (controller oneStepTree 1) ρ))
+but is expected to have type
+  1 ≤
+    Mixture.tv (weights (run (lift identityActions) (controller Adaptive.Protocol.stop 1) ρ))
+      (weights (run (lift identityActions) (controller oneStepTree 1) ρ))
+scripts/witnesses/StoppingRecordBudgetExamples.lean:330:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (Leaf Adaptive.Protocol.stop)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+scripts/witnesses/StoppingRecordBudgetExamples.lean:333:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (Leaf Adaptive.Protocol.stop)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+scripts/witnesses/StoppingRecordBudgetExamples.lean:340:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (Leaf oneStepTree)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+scripts/witnesses/StoppingRecordBudgetExamples.lean:343:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (Leaf oneStepTree)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+scripts/witnesses/StoppingRecordBudgetExamples.lean:351:5: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (Leaf Adaptive.Protocol.stop)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+scripts/witnesses/StoppingRecordBudgetExamples.lean:353:5: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq (Leaf oneStepTree)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+'UEOTQM.StoppingRecordBudgetExamples.Qubit' does not depend on any axioms
+'UEOTQM.StoppingRecordBudgetExamples.Label' does not depend on any axioms
+'UEOTQM.StoppingRecordBudgetExamples.certain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.certain_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.certain_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.halfK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.halfK_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.halfK_conjugation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biasedKraus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_branch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.rhoZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.joint_probability_certain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.joint_probability_biased' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_le_quarter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_joint_distance_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.biased_record_defect_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.stoppingTree' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.earlyLeaf' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateZeroLeaf' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateOneLeaf' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.early_word' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateZero_word' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.lateOne_word' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.tree_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.early_stopTime' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.late_stopTime' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.early_encoded' depends on axioms: [propext, sorryAx]
+'UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded' depends on axioms: [propext, sorryAx]
+'UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded' depends on axioms: [propext, sorryAx]
+'UEOTQM.StoppingRecordBudgetExamples.exactActions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximateActions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.first_defect_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.continuing_defect_quarter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.exact_early_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximate_early_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.exact_lateZero_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximate_lateZero_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.exact_lateOne_probability' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.approximate_lateOne_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.oneHistoryEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.controller_first' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.controller_second' depends on axioms: [propext, sorryAx, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.reference_one_step_weight' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.oneStepTree' does not depend on any axioms
+'UEOTQM.StoppingRecordBudgetExamples.identityActions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.stoppedHistory' depends on axioms: [propext]
+'UEOTQM.StoppingRecordBudgetExamples.negative_action_defects_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.immediate_stop_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.one_step_idle_probability' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.immediate_terminal_memory' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOTQM.StoppingRecordBudgetExamples.one_step_terminal_memory' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+scripts/witnesses/StoppingRecordBudgetExamples.lean:423:14: error(lean.unknownIdentifier): Unknown constant `UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal`

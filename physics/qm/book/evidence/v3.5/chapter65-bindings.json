@@ -1,0 +1,1296 @@
+{
+  "schema": "ueot_qm.reviewed_chapter_bindings.v31.9",
+  "status": "PASS_ACTUAL_LOCAL_BINDING",
+  "chapter": 65,
+  "author_claim_snapshot": {
+    "path": "physics/qm/kernel/evidence/v31.9/root-review-inputs/chapter65-author-claims.json",
+    "sha256": "ce24c4586e5391de18eba1618cd28674af11d933d40d355964bf9819042efc00",
+    "bytes": 15649
+  },
+  "canonical_chapter_input": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/qm319_chapter65.md",
+    "sha256": "18dd90af179cf78d23a41b64c04efc02dfce120da08256b47fa419eea2cca741",
+    "bytes": 13884
+  },
+  "canonical_source": {
+    "path": "physics/qm/book/UEOT_PHYSICS.md",
+    "sha256": "b726e3b9033d79ef949b8e83469901fe728aa28ab204b2e4d55bf36a18b412f0",
+    "bytes": 631531
+  },
+  "actual_unified_proof_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
+    "sha256": "5cf40ac8ef5f8adff77bf2f4bc76a4913169e27b30479cd9379a49dc7128e935",
+    "bytes": 4604
+  },
+  "actual_public_audit_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.9/proof-axioms.json",
+    "sha256": "ffcb3b0eefe2e7d8534132a1a6cbfecfb1421c8ba69205ed783ba249524cd79b",
+    "bytes": 134543
+  },
+  "actual_witness_audit_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json",
+    "sha256": "c0de4148b1f7562f046b8c3b70f36635773036f456e542181bbea87d76ae6544",
+    "bytes": 298529
+  },
+  "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
+  "results": [
+    {
+      "id": "P-STOP-01",
+      "anchor": "p-stop-01",
+      "title": "P-STOP-01（原有限停止树的实际吸收补齐）。",
+      "author_title": "原有限停止树的实际吸收补齐",
+      "premises": [
+        "原 Adaptive.Protocol 的完整有限树；有限结果载体 O；所有结果后续都有定义。",
+        "原动作族是实际完整 Kraus 仪器；量子载体及 Kraus 载体有限。",
+        "共同补齐深度 N 满足 height π ≤ N。"
+      ],
+      "quantified_scope": "任意原协议 π、任意满足高度界的 N、任意原仪器族 I、任意全复矩阵 X、任意 Option 结果历史；不是只对密度态或迹的声明。",
+      "claim": "活动 some 动作保留原分支、其 none 分支为零；idle 的 none 分支为恒等、some 分支为零。原叶编码为真实结果前缀加 none 后缀且单射，合法解码的历史恰为编码像。补齐 recordOperator 在原叶编码上逐矩阵等于原记录算子，在非法完整历史上为零；实际 run 全联合矩阵因此回接。",
+      "main_declarations": [
+        "UEOTQM.StoppingProtocols.record_eq_decode",
+        "UEOTQM.StoppingProtocols.record_encode",
+        "UEOTQM.StoppingProtocols.run_matrix"
+      ],
+      "support_declarations": [
+        "UEOTQM.StoppingProtocols.height_next_le",
+        "UEOTQM.StoppingProtocols.decode_encode",
+        "UEOTQM.StoppingProtocols.encode_of_decode",
+        "UEOTQM.StoppingProtocols.encode_injective",
+        "UEOTQM.StoppingProtocols.decode_eq_some_iff",
+        "UEOTQM.StoppingProtocols.stopTime_le",
+        "UEOTQM.StoppingProtocols.encode_record",
+        "UEOTQM.StoppingProtocols.lift_branch_active",
+        "UEOTQM.StoppingProtocols.lift_branch_active_none",
+        "UEOTQM.StoppingProtocols.lift_branch_idle",
+        "UEOTQM.StoppingProtocols.lift_branch_idle_some",
+        "UEOTQM.StoppingProtocols.record_zero"
+      ],
+      "witnesses": [
+        "UEOTQM.StoppingRecordBudgetExamples.tree_height",
+        "UEOTQM.StoppingRecordBudgetExamples.early_stopTime",
+        "UEOTQM.StoppingRecordBudgetExamples.late_stopTime",
+        "UEOTQM.StoppingRecordBudgetExamples.early_encoded",
+        "UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded",
+        "UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded"
+      ],
+      "proof_outline": [
+        "用原 Kraus 完整性与唯一恒等 idle Kraus 构造实际扩展仪器。",
+        "对剩余深度归纳证明 encode/decode 两个方向及原词长度界。",
+        "按 stop/node 与 none/some 分支递归比较任意复矩阵，零分支经后续记录算子仍为零。",
+        "复用实际固定深度 run 的块矩阵表达，得到全部块的显示相等。"
+      ],
+      "limits": [
+        "统一有限高度界不可删去；不是无限停止过程。",
+        "停止标签和原叶信息保留；没有把停止时间改名为 N。",
+        "控制器是明确经典历史的确定因果规则，不是相干控制器。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.StoppingProtocols.record_eq_decode",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 252,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.record_encode",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 287,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.run_matrix",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 295,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.height_next_le",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 35,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.decode_encode",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 97,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.encode_of_decode",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 128,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.encode_injective",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 154,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.decode_eq_some_iff",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 161,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.stopTime_le",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 182,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.encode_record",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 187,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.lift_branch_active",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 229,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.lift_branch_active_none",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 233,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.lift_branch_idle",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 237,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.lift_branch_idle_some",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 241,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingProtocols.record_zero",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean",
+          "sha256": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+          "bytes": 12648,
+          "line": 245,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.tree_height",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 148,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.early_stopTime",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 151,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.late_stopTime",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 152,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.early_encoded",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 155,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 158,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 161,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    },
+    {
+      "id": "P-STOP-02",
+      "anchor": "p-stop-02",
+      "title": "P-STOP-02（全效应距离保持与原叶联合态回接）。",
+      "author_title": "全效应距离保持与原叶联合态回接",
+      "premises": [
+        "任意有限矩形矩阵 V 满足 Vᴴ V = I；比较完整合法效应和完整密度态。",
+        "原叶补齐实例使用 P-STOP-01 的单射及 N ≥ height π。"
+      ],
+      "quantified_scope": "一般部分量化任意有限 α、β、实际等距矩阵 V 与两输入密度态；协议部分量化任意原有限停止树、两实际动作族及两初态。",
+      "claim": "等距像由实际单 Kraus CPTP 通道实现。E ↦ V E Vᴴ 在整个扩张空间上仍是合法效应且实际拉回为 E，因此全效应距离精确保留。原叶联合态的坐标等距像等于补齐实际 run；原联合距离和完整原叶 TV 分别精确等于补齐值。",
+      "main_declarations": [
+        "UEOTQM.StoppingRecordBudget.isometry_state_distance",
+        "UEOTQM.StoppingRecordBudget.run_eq_embedding",
+        "UEOTQM.StoppingRecordBudget.original_joint_distance_eq",
+        "UEOTQM.StoppingRecordBudget.original_record_tv_eq"
+      ],
+      "support_declarations": [
+        "UEOTQM.StoppingRecordBudget.isometryChannel",
+        "UEOTQM.StoppingRecordBudget.isometry_complement_positive",
+        "UEOTQM.StoppingRecordBudget.extendEffect",
+        "UEOTQM.StoppingRecordBudget.pullback_extendEffect",
+        "UEOTQM.StoppingRecordBudget.embeddingChannel",
+        "UEOTQM.StoppingRecordBudget.embedding_operator_image",
+        "UEOTQM.StoppingRecordBudget.embedding_operator_outside_left",
+        "UEOTQM.StoppingRecordBudget.embedding_operator_outside_right",
+        "UEOTQM.StoppingRecordBudget.embedding_state_distance",
+        "UEOTQM.StoppingRecordBudget.leafEmbedding",
+        "UEOTQM.StoppingRecordBudget.outside_leafEmbedding",
+        "UEOTQM.StoppingRecordBudget.weight_run_encode",
+        "UEOTQM.StoppingRecordBudget.weight_run_decode_none"
+      ],
+      "witnesses": [
+        "UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact",
+        "UEOTQM.StoppingRecordBudgetExamples.early_encoded",
+        "UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded",
+        "UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded"
+      ],
+      "proof_outline": [
+        "由 Vᴴ V = I 得 P = V Vᴴ 幂等自伴，Q = I-P 满足 Q = Q Qᴴ，故补空间投影为 PSD。",
+        "I - V E Vᴴ = Q + V(I-E)Vᴴ，得到扩张效应的互补正性；矩阵乘法给实际拉回。",
+        "CPTP 收缩给一个方向，全效应合法扩张逐概率保持给反向。",
+        "用原叶编码坐标等距逐项比较联合矩阵；TV 由单射求和及像外零质量保持。"
+      ],
+      "limits": [
+        "没有选择默认叶，也没有额外假设原叶类型非空。",
+        "不由本结论自动获得 diamond 距离或任意辅助环境的误差预算。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.StoppingRecordBudget.isometry_state_distance",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 71,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.run_eq_embedding",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 217,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_eq",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 248,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.original_record_tv_eq",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 275,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.isometryChannel",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 27,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.isometry_complement_positive",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 37,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.extendEffect",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 52,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.pullback_extendEffect",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 60,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.embeddingChannel",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 83,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.embedding_operator_image",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 87,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.embedding_operator_outside_left",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 92,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.embedding_operator_outside_right",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 98,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.embedding_state_distance",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 104,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.leafEmbedding",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 198,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.outside_leafEmbedding",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 206,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.weight_run_encode",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 257,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.weight_run_decode_none",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 265,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 300,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.early_encoded",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 155,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.lateZero_encoded",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 158,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.lateOne_encoded",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 161,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    },
+    {
+      "id": "P-STOP-03",
+      "anchor": "p-stop-03",
+      "title": "P-STOP-03（共同有限停止规则的逐动作误差预算）。",
+      "author_title": "共同有限停止规则的逐动作误差预算",
+      "premises": [
+        "两套实际动作仪器共享同一个原完整有限树 π，故动作选择与停止规则相同。",
+        "Kraus 索引载体可不同，结果与量子记忆载体相同；N ≥ height π。",
+        "q_t(h) 是 J 从 σ 出发经过真实前缀 run 的 PSD 块质量。"
+      ],
+      "quantified_scope": "任意上述 I、J、π、N 和原完整密度态 ρ、σ；每层求和包括全部完整经典历史，费用仅在该历史实际选 some a 时计入。",
+      "claim": "原叶联合态距离 ≤ 初态距离 + Σ_t Σ_{h: C_t(h)=some a} q_t^J(h;σ) δ_rec(I_a,J_a)。原完整叶 TV 和终端量子记忆距离分别受同一个右端控制；此主加权预算不需要统一动作上界。活动 some 的真实缺陷精确等于原缺陷，idle 的真实缺陷为零。未停止概率 s_t 属于 [0,1]；若对所有历史 h（包括零权重历史）只要 C_t(h)=some a 就有 δ_rec(I_a,J_a) ≤ ε_t，则联合界进一步为初态距离 + Σ_t s_t ε_t。",
+      "main_declarations": [
+        "UEOTQM.StoppingRecordBudget.original_joint_distance_le_activeCost_sum",
+        "UEOTQM.StoppingRecordBudget.original_record_tv_le_activeCost_sum",
+        "UEOTQM.StoppingRecordBudget.terminal_memory_distance_le_activeCost_sum",
+        "UEOTQM.StoppingRecordBudget.original_joint_distance_le_probability_budget"
+      ],
+      "support_declarations": [
+        "UEOTQM.StoppingRecordBudget.active_state_eq_embedding",
+        "UEOTQM.StoppingRecordBudget.active_state_distance",
+        "UEOTQM.StoppingRecordBudget.active_defect",
+        "UEOTQM.StoppingRecordBudget.idle_state_eq",
+        "UEOTQM.StoppingRecordBudget.idle_defect",
+        "UEOTQM.StoppingRecordBudget.activeDefect",
+        "UEOTQM.StoppingRecordBudget.lift_defect_eq",
+        "UEOTQM.StoppingRecordBudget.activeCost",
+        "UEOTQM.StoppingRecordBudget.actionCost_eq_activeCost",
+        "UEOTQM.StoppingRecordBudget.activeCost_eq_sum_active",
+        "UEOTQM.StoppingRecordBudget.activeProbability",
+        "UEOTQM.StoppingRecordBudget.activeProbability_nonneg",
+        "UEOTQM.StoppingRecordBudget.activeProbability_le_one",
+        "UEOTQM.StoppingRecordBudget.activeCost_le_probability_mul",
+        "UEOTQM.ActionRecordBudget.run_distance_le_actionCost_sum"
+      ],
+      "witnesses": [
+        "UEOTQM.StoppingRecordBudgetExamples.first_defect_zero",
+        "UEOTQM.StoppingRecordBudgetExamples.continuing_defect_quarter",
+        "UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero",
+        "UEOTQM.StoppingRecordBudgetExamples.reference_one_step_weight",
+        "UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth",
+        "UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter",
+        "UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact",
+        "UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound"
+      ],
+      "proof_outline": [
+        "先以实际等距像证明活动联合态和动作缺陷保持；直接比较双方 idle 状态后证明其上确界为零。",
+        "将共同停止树映射到已有固定深度控制器，复用已证真实逐步动作预算。",
+        "将 actionCost 精确重写为参考 J 从 σ 出发的真实历史块权重及原活动动作缺陷，消去 idle 项。",
+        "通过 P-STOP-02 回到原叶联合态；原记录和终端记忆分别用事件效应与实际偏迹收缩。",
+        "用非负块质量逐项乘实际活动动作的 ε_t 上界并求和。"
+      ],
+      "limits": [
+        "参考权重明确属于 J 和 σ，不可更换成另一实现/初态而不另证。",
+        "共同停止规则不能删除，见 P-STOP-05。",
+        "不处理相干控制器、未建模外部量子记忆、稳定化通道距离或无界停止。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_activeCost_sum",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 342,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.original_record_tv_le_activeCost_sum",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 352,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.terminal_memory_distance_le_activeCost_sum",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 361,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_probability_budget",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 417,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.active_state_eq_embedding",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 124,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.active_state_distance",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 148,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.active_defect",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 157,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.idle_state_eq",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 170,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.idle_defect",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 180,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.activeDefect",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 303,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.lift_defect_eq",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 307,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.activeCost",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 314,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.actionCost_eq_activeCost",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 320,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.activeCost_eq_sum_active",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 328,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.activeProbability",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 374,
+          "kind": "def",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.activeProbability_nonneg",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 380,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.activeProbability_le_one",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 387,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudget.activeCost_le_probability_mul",
+          "path": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+          "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+          "bytes": 21325,
+          "line": 401,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.ActionRecordBudget.run_distance_le_actionCost_sum",
+          "path": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean",
+          "sha256": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a",
+          "bytes": 20678,
+          "line": 348,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_CURRENT_UNIFIED_PUBLIC_BUILD_AND_AUDIT",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/proof-axioms.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.first_defect_zero",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 170,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.continuing_defect_quarter",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 174,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 228,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.reference_one_step_weight",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 232,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 248,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 263,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 277,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 307,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    },
+    {
+      "id": "P-STOP-04",
+      "anchor": "p-stop-04",
+      "title": "P-STOP-04（停止协议的精确 $1/16$ 记录差异）。",
+      "author_title": "停止协议的精确 1/16 记录差异",
+      "premises": [
+        "具体 qubit 完整有理 Kraus 仪器；首步双方共同以 3/4、1/4 记录 0、1。",
+        "原共同树在首结果 0 时早停，首结果 1 时执行第二动作后停止。",
+        "I 第二动作确定记录 0；J 第二动作仍以 3/4、1/4 记录 0、1。"
+      ],
+      "quantified_scope": "任意共同输入密度态 ρ 的三个原叶概率、原叶 TV 与补齐记录 TV；联合态上界允许任意 ρ、σ。",
+      "claim": "三个原叶概率为 I=(3/4,1/4,0)、J=(3/4,3/16,1/16)。第二动作实际全输入记录缺陷为 1/4，J 的第二步真实未停止质量为 1/4；总成本为 1/16，原叶 TV 和补齐 TV 均精确为 1/16。",
+      "main_declarations": [
+        "UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact",
+        "UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact",
+        "UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact",
+        "UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound"
+      ],
+      "support_declarations": [
+        "UEOTQM.StoppingRecordBudgetExamples.biased",
+        "UEOTQM.StoppingRecordBudgetExamples.certain",
+        "UEOTQM.StoppingRecordBudgetExamples.biased_record_defect_exact",
+        "UEOTQM.StoppingRecordBudgetExamples.stoppingTree",
+        "UEOTQM.StoppingRecordBudgetExamples.exactActions",
+        "UEOTQM.StoppingRecordBudgetExamples.approximateActions",
+        "UEOTQM.StoppingRecordBudgetExamples.exact_early_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.approximate_early_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.exact_lateZero_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.approximate_lateZero_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.exact_lateOne_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.approximate_lateOne_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero",
+        "UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth",
+        "UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter"
+      ],
+      "witnesses": [
+        "UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact",
+        "UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact"
+      ],
+      "proof_outline": [
+        "以四个幅度 1/2 的实际 Kraus 项构造偏置仪器，正性和完整性均为精确矩阵证明。",
+        "对全部合法联合效应证明 1/4 的动作缺陷上界，并用实际事件达到下界。",
+        "计算真实参考一步前缀分布和活动历史，得到 0 + (1/4)(1/4) = 1/16。",
+        "主预算给 TV 上界，晚停叶 (1,1) 事件给相同下界。"
+      ],
+      "limits": [
+        "精确有理形式化正控，不是实验确证。",
+        "TV 等式比较相同输入；不同输入的联合态结论保留初态距离项。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.stopping_record_tv_exact",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 284,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.completed_record_tv_exact",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 300,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.activeCost_sum_exact",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 277,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.completed_joint_bound",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 307,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.biased",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 55,
+          "kind": "def",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.certain",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 21,
+          "kind": "def",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.biased_record_defect_exact",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 123,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.stoppingTree",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 137,
+          "kind": "def",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.exactActions",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 165,
+          "kind": "def",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.approximateActions",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 168,
+          "kind": "def",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.exact_early_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 178,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_early_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 183,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.exact_lateZero_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 188,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_lateZero_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 193,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.exact_lateOne_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 198,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.approximate_lateOne_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 203,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.first_activeCost_zero",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 228,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeCost_sixteenth",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 248,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.second_activeProbability_quarter",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 263,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    },
+    {
+      "id": "P-STOP-05",
+      "anchor": "p-stop-05",
+      "title": "P-STOP-05（相同量子动作不控制不同停止规则的全部记录）。",
+      "author_title": "相同量子动作不控制不同停止规则的全部记录",
+      "premises": [
+        "相同的完整原仪器族，量子操作为恒等且原记录确定为 0。",
+        "两个原控制器分别立即停止和执行一步后停止；因此它们不满足共同停止树前提。",
+        "用同一个 Option 结果载体及深度 1 比较保留停止标签的记录。"
+      ],
+      "quantified_scope": "任意 qubit 输入密度态 ρ；两原动作族实际缺陷均为零，但停止规则不同。",
+      "claim": "立即停止记录确定为 none，一步后停记录确定为 some 0，补齐记录 TV 精确为 1。两原终端量子记忆均等于 ρ，因此相同。",
+      "main_declarations": [
+        "UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one",
+        "UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal"
+      ],
+      "support_declarations": [
+        "UEOTQM.StoppingRecordBudgetExamples.identityActions",
+        "UEOTQM.StoppingRecordBudgetExamples.oneStepTree",
+        "UEOTQM.StoppingRecordBudgetExamples.negative_action_defects_zero",
+        "UEOTQM.StoppingRecordBudgetExamples.immediate_stop_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.one_step_idle_probability",
+        "UEOTQM.StoppingRecordBudgetExamples.immediate_terminal_memory",
+        "UEOTQM.StoppingRecordBudgetExamples.one_step_terminal_memory"
+      ],
+      "witnesses": [
+        "UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one",
+        "UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal"
+      ],
+      "proof_outline": [
+        "事件 none 在两完成记录中的概率分别为 1 和 0，事件下界结合 TV ≤ 1 得到等号。",
+        "实际原叶记录算子经 discard_record_operator 求和：立即停止为恒等，单步唯一非零分支仍为恒等。"
+      ],
+      "limits": [
+        "此例位于共同控制器条件之外，不否定 P-STOP-03。",
+        "终端量子记忆相同，不声称终端量子态不同。",
+        "不能删除停止标签后再声称保留全部记录差异；不是经验实验。"
+      ],
+      "external_declarations": [],
+      "external_declaration_bindings": [],
+      "classification_adjustments": [],
+      "actual_declaration_bindings": [
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.different_stopping_rules_tv_one",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 338,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.negative_terminal_memories_equal",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 377,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.identityActions",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 316,
+          "kind": "def",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.oneStepTree",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 315,
+          "kind": "def",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.negative_action_defects_zero",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 320,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.immediate_stop_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 324,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.one_step_idle_probability",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 331,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.immediate_terminal_memory",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 356,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        },
+        {
+          "name": "UEOTQM.StoppingRecordBudgetExamples.one_step_terminal_memory",
+          "path": "formalization/ueot-qm/scripts/witnesses/StoppingRecordBudgetExamples.lean",
+          "sha256": "315eafce55cfa2eda6c05ce18a10a29bc159d22513d2f80845802eeb541d8d25",
+          "bytes": 24085,
+          "line": 366,
+          "kind": "theorem",
+          "execution_mode": "EXECUTED_IN_THIS_ACCEPTANCE",
+          "actual_named_audit_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json"
+        }
+      ],
+      "actual_local_acceptance_status": "PASS",
+      "remote_status": "PENDING",
+      "new_experimental_data": false
+    }
+  ],
+  "scope": "Normalized current claim/evidence mapping. Original author/focused checkpoint statuses retain their historical scope in the raw snapshot."
+}

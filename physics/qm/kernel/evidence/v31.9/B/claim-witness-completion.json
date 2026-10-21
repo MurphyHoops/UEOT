@@ -1,0 +1,36 @@
+{
+  "schema": "ueot_qm.v31.9.B.claim_witness_completion.v1",
+  "status": "METADATA_BINDING_COMPLETE",
+  "recorded_at_utc": "2026-10-20T15:53:42.376122+00:00",
+  "reason": "Root requested explicit actually audited witness-name lists for every numbered B claim before canonical normalization.",
+  "original_claim_draft_sha256": "f1c1bc21fdc50ef69ce4c2d1d8e8174a2d62921b3b2a5f6ebbea2b59f40d8a8a",
+  "original_claim_draft_snapshot": {
+    "path": "physics/qm/kernel/evidence/v31.9/B/claims-focused-snapshot.json",
+    "bytes": 9538,
+    "sha256": "f1c1bc21fdc50ef69ce4c2d1d8e8174a2d62921b3b2a5f6ebbea2b59f40d8a8a"
+  },
+  "completed_claim_draft": {
+    "path": "/workspace/scratch/f11b4261e187/handoff/B_v319_claims.json",
+    "bytes": 12085,
+    "sha256": "c426eabf69af7cb856a73441e312f74e90638bbed660f59f6f8d556cb26bc44b"
+  },
+  "actual_witness_audit": {
+    "path": "physics/qm/kernel/evidence/v31.9/B/witness-audit.json",
+    "bytes": 5458,
+    "sha256": "ff0cbf547258c7425c445182ac1571ef548bb5f399796e0e368b02d513b81fc8"
+  },
+  "prior_focused_acceptance": {
+    "path": "physics/qm/kernel/evidence/v31.9/B/verification.json",
+    "bytes": 7529,
+    "sha256": "302f5d7b25b2fc50c3fe2521e3c2fd35a029119010f979f461ae9f8bba34ec6f"
+  },
+  "prior_receipt_bytes_preserved": true,
+  "changed_fields": [
+    "claims[*].witnesses where previously absent",
+    "claims[*].external_declarations = []"
+  ],
+  "source_changes": 0,
+  "new_compiler_invocations": 0,
+  "book_chapter_changed": false,
+  "interpretation": "The original focused receipt retains its actual original draft hash; its original draft bytes are archived above. This append-only metadata completion gives the current draft identity without relabelling or repeating scientific execution."
+}

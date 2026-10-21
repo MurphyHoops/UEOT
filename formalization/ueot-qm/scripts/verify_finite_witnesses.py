@@ -25,7 +25,8 @@ PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 CORE_ROOT = PACKAGE_ROOT.parent / "ueot-core"
 WITNESSES = ("MixtureExamples", "SurvivalTwoState", "RealTomographyTwoRebit", "QuantumDoobExamples",
              "QuantumPurificationExamples", "ClassicalQuantumMemoryExamples", "QuantumDoobDynamicsExamples",
-             "QuantumSeparationExamples", "PurificationUniquenessExamples", "ActionRecordBudgetExamples")
+             "QuantumSeparationExamples", "PurificationUniquenessExamples", "ActionRecordBudgetExamples",
+             "QuantumTraceDistanceExamples", "PurificationDimensionExamples", "StoppingRecordBudgetExamples")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 IDENTIFIER = r"[A-Za-z_][A-Za-z0-9_'.]*"
 
@@ -203,13 +204,20 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, default=PACKAGE_ROOT / "evidence/finite-witnesses")
     parser.add_argument("--lake", default="lake", help="Lake executable name or filesystem path")
     parser.add_argument("--timeout-seconds", type=int, default=600)
+    parser.add_argument("--witness", action="append", choices=WITNESSES,
+                        help="Run a selected registered witness; repeat for multiple selections. Default: all.")
     args = parser.parse_args()
+    selected = tuple(args.witness) if args.witness else WITNESSES
+    if len(set(selected)) != len(selected):
+        parser.error("--witness must not repeat the same registered name")
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
-    paths = {name: PACKAGE_ROOT / "scripts/witnesses" / f"{name}.lean" for name in WITNESSES}
+    paths = {name: PACKAGE_ROOT / "scripts/witnesses" / f"{name}.lean" for name in selected}
     receipt = {"schema": "ueot_qm.finite_witnesses.v1", "status": "FAIL", "started_utc": utc_now(),
                "scope": "concrete witnesses, excluded from general theorem and axiom-audit totals",
                "package_root": str(PACKAGE_ROOT), "allowed_axioms": sorted(ALLOWED_AXIOMS),
+               "registered_witnesses": list(WITNESSES), "selected_witnesses": list(selected),
+               "selection_is_complete": set(selected) == set(WITNESSES),
                "checks": [], "errors": []}
     before = None
     try:
@@ -267,7 +275,7 @@ def main() -> int:
             except (OSError, ValueError) as exc:
                 receipt["all_inputs_unchanged"] = False
                 receipt["errors"].append(f"Final identity check failed: {exc}")
-        passed = (not receipt["errors"] and len(receipt["checks"]) == len(WITNESSES)
+        passed = (not receipt["errors"] and len(receipt["checks"]) == len(selected)
                   and all(check["status"] == "PASS" for check in receipt["checks"])
                   and receipt.get("all_inputs_unchanged") and receipt.get("lake_executable_unchanged"))
         receipt["status"] = "PASS" if passed else "FAIL"

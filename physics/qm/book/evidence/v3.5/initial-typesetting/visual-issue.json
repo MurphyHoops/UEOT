@@ -1,0 +1,58 @@
+{
+  "schema": "ueot_physics.actual_visual_issue.v3.5",
+  "status": "INITIAL_PDF_REJECTED_FOR_CURRENT_EDITION_LABELS",
+  "recorded_at_utc": "2026-10-20T16:18:25.203708+00:00",
+  "initial_pdf_sha256": "823f540352feee92d2cdfe59373f7fd1f7ad808f450b36becc7e6cfd88e2773c",
+  "canonical_source_sha256": "b726e3b9033d79ef949b8e83469901fe728aa28ab204b2e4d55bf36a18b412f0",
+  "actual_root_full_pages_viewed": [
+    1
+  ],
+  "actual_root_overview_ranges_viewed": [
+    [
+      1,
+      36
+    ],
+    [
+      37,
+      72
+    ],
+    [
+      73,
+      108
+    ]
+  ],
+  "actual_finding": "Cover template still printed edition 3.4, 63 chapters and Kernel 1.8 despite the actual new 66-chapter 3.5 canonical source. No successful final visual gate is asserted for this PDF.",
+  "correction": "Only two literal labels in build/header.tex updated to 3.5 / 66 chapters / Kernel 1.9. Scientific 98-source set and Markdown body unchanged.",
+  "initial_header": {
+    "path": "physics/qm/book/evidence/v3.5/initial-typesetting/header-initial.tex.txt",
+    "sha256": "4463ca80b3ccaf2ea3f035cc8031ffdea7cfbb67cab0269cf8dd0196dfa770c1",
+    "bytes": 1905
+  },
+  "corrected_header": {
+    "path": "physics/qm/book/build/header.tex",
+    "sha256": "4a456e73fe19293a9fbd96ac1cdae2f2074a3f88fd2336fe8904fb62e62e9e27",
+    "bytes": 1905
+  },
+  "initial_build_receipt": {
+    "path": "physics/qm/book/evidence/v3.5/initial-typesetting/pdf-build.json",
+    "sha256": "fdbef4f7a2ae814874fc8b73f7bcda2d14ed6706cb3fd44cc8a13054e09c9228",
+    "bytes": 1136
+  },
+  "initial_render_manifest": {
+    "path": "physics/qm/book/evidence/v3.5/initial-typesetting/pdf-render-manifest.json",
+    "sha256": "1d905edea0e4931223aa1c1ecee286c3c1f964de7b6f39f6a84c671ab8cf1fc1",
+    "bytes": 77690
+  },
+  "initial_pdf_archive": {
+    "path": "physics/qm/book/evidence/v3.5/initial-typesetting/UEOT_PHYSICS.pdf.gz",
+    "sha256": "e0310584ab7a5e9221b1c01eb9d0c65a04604c075e4c5eb6e8cbc43a2de4774e",
+    "bytes": 1228984
+  },
+  "initial_tex_archive": {
+    "path": "physics/qm/book/evidence/v3.5/initial-typesetting/UEOT_PHYSICS.tex.gz",
+    "sha256": "517fa2d21b783e1f76382df39247c7ea69d7da089faaf7528b18e0b5d7c73f06",
+    "bytes": 275248
+  },
+  "lean_reexecuted": false,
+  "final_pdf_status": "PENDING_ACTUAL_CORRECTED_BUILD_AND_VISUAL_REVIEW"
+}

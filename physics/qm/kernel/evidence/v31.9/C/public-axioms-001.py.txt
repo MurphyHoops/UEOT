@@ -1,0 +1,81 @@
+from pathlib import Path
+import argparse, datetime, hashlib, json, re, subprocess, sys
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+LEAN = ROOT / 'formalization/ueot-qm'
+H = ROOT.parent / 'handoff'
+E = ROOT / 'physics/qm/kernel/evidence/v31.9/C'
+MODULES = ['UEOTQM/StoppingProtocols.lean', 'UEOTQM/StoppingRecordBudget.lean']
+ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
+parser = argparse.ArgumentParser()
+parser.add_argument('--tag', required=True)
+args = parser.parse_args()
+assert args.tag.replace('-', '').isalnum()
+receipt = E / (args.tag + '.json')
+log = E / (args.tag + '.log')
+query = H / ('C_v319_' + args.tag + '.lean')
+snapshot = E / (args.tag + '.lean.txt')
+assert not any(p.exists() for p in [receipt, log, query, snapshot])
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def now():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+declarations, bindings = [], []
+for f in MODULES:
+    p = LEAN / f
+    s = p.read_text()
+    namespace = re.search(r'^namespace (\S+)', s, re.M).group(1)
+    for m in re.finditer(r'^(?:@\[[^\]]+\]\s*)?(theorem|def|abbrev)\s+(\S+)', s, re.M):
+        declarations.append({'kind': m[1], 'name': namespace + '.' + m[2],
+                             'line': s[:m.start()].count('\n') + 1})
+    olean = LEAN / '.lake/build/lib/lean' / Path(f).with_suffix('.olean')
+    matching = []
+    for rp in E.glob('focused-*.json'):
+        r = json.loads(rp.read_text())
+        if r.get('source') == str(p.relative_to(ROOT)) and r.get('status') == 'PASS' and r.get('exit_code') == 0:
+            if r.get('source_sha256_after') == sha(p) and r.get('olean_sha256') == sha(olean):
+                matching.append(str(rp.relative_to(ROOT)))
+    assert matching, 'No actual successful focused source/olean receipt for ' + f
+    bindings.append({'source': str(p.relative_to(ROOT)), 'source_sha256': sha(p),
+                     'olean': str(olean.relative_to(ROOT)), 'olean_sha256': sha(olean),
+                     'actual_compile_receipts': sorted(matching)})
+
+q = 'import UEOTQM.StoppingRecordBudget\n\n' + ''.join('#print axioms ' + d['name'] + '\n' for d in declarations)
+query.write_text(q)
+snapshot.write_text(q)
+cmd = ['flock', '/tmp/qm317-lean.lock', '/tmp/lean-4.33.1-linux/bin/lake', 'env', 'lean', str(query)]
+started = now()
+with log.open('wb') as output:
+    run = subprocess.run(cmd, cwd=LEAN, stdout=output, stderr=subprocess.STDOUT)
+ended = now()
+raw = log.read_text()
+actual = []
+for m in re.finditer(r"'([^']+)' (?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)", raw, re.S):
+    ax = [] if m[2] is None else [a.strip() for a in m[2].split(',') if a.strip()]
+    actual.append({'name': m[1], 'axioms': ax})
+same = all(sha(ROOT / b['source']) == b['source_sha256'] and
+           sha(ROOT / b['olean']) == b['olean_sha256'] for b in bindings)
+checks = {
+    'exit_zero': run.returncode == 0,
+    'source_and_olean_unchanged': same,
+    'exact_names_in_source_order': [x['name'] for x in actual] == [x['name'] for x in declarations],
+    'unique_names': len({x['name'] for x in actual}) == len(actual),
+    'only_allowed_foundations': all(set(x['axioms']) <= ALLOWED for x in actual),
+    'no_error_or_sorry': 'error:' not in raw and 'sorryAx' not in raw and 'declaration uses sorry' not in raw,
+}
+result = {
+    'kind': 'ACTUAL_NAMED_PUBLIC_AXIOM_AUDIT', 'status': 'PASS' if all(checks.values()) else 'FAIL',
+    'started_utc': started, 'finished_utc': ended, 'command': cmd, 'working_directory': str(LEAN),
+    'source_bindings': bindings, 'query_snapshot': str(snapshot.relative_to(ROOT)),
+    'query_sha256': sha(query), 'log': str(log.relative_to(ROOT)), 'log_sha256': sha(log),
+    'exit_code': run.returncode, 'expected_count': len(declarations), 'actual_count': len(actual),
+    'declarations': declarations, 'actual': actual, 'allowed_axioms': sorted(ALLOWED), 'checks': checks,
+    'scope': 'Only the two new C public modules were queried. This is not a replay of unchanged v31.8 acceptance or a remote CI claim.'
+}
+receipt.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+(E / (args.tag + '.py.txt')).write_bytes(Path(__file__).read_bytes())
+print(json.dumps({k: result[k] for k in ['status', 'exit_code', 'expected_count', 'actual_count', 'checks']}, ensure_ascii=False))
+sys.exit(0 if result['status'] == 'PASS' else 1)

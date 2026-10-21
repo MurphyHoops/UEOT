@@ -1,0 +1,108 @@
+"""Enumerate actual v31.9 declarations without inferring proof acceptance."""
+from pathlib import Path
+from collections import Counter
+import argparse
+import hashlib
+import json
+import re
+import subprocess
+from qm319_source_parser import mask_lean, declarations
+
+ROOT = Path('/workspace/scratch/f11b4261e187/qm_v318_work')
+PKG = ROOT / 'formalization/ueot-qm'
+HANDOFF = Path(__file__).resolve().parent
+BASE_COMMIT = '6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1'
+NEW = ['QuantumTraceDistance', 'BinaryDiscrimination', 'PurificationIsometry',
+       'PurificationDimension', 'StoppingProtocols', 'StoppingRecordBudget']
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--write-audit', action='store_true')
+    args = p.parse_args()
+    baseline_path = 'formalization/ueot-qm/scripts/AxiomAudit.lean'
+    old_bytes = subprocess.check_output(['git', 'show', BASE_COMMIT + ':' + baseline_path], cwd=ROOT)
+    old_audit = old_bytes.decode()
+    base_tree = json.loads((HANDOFF / 'qm319_baseline_remote_tree.json').read_bytes())
+    require(base_tree['sha'] == 'd900109f97fd032bb3682ecbd5fdf7577b415307'
+            and base_tree['truncated'] is False, 'Wrong closed baseline tree')
+    blobs = {x['path']: x['sha'] for x in base_tree['tree'] if x['type'] == 'blob'}
+    def blob(raw):
+        return hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+    require(blob(old_bytes) == blobs[baseline_path], 'Inherited audit not bound to actual closed main')
+    baseline = re.findall(r'^#print axioms (\S+)\s*$', mask_lean(old_audit), re.M)
+    require(len(baseline) == len(set(baseline)) == 985, 'Inherited 985 targets changed')
+    prior = json.loads((ROOT / 'physics/qm/kernel/evidence/v31.8/declaration-inventory.json').read_bytes())
+    modules, instances, identities = {}, {}, {}
+    for path in sorted((PKG / 'UEOTQM').glob('*.lean')):
+        raw = path.read_bytes()
+        rows, diagnostics, inst = declarations(raw.decode())
+        require(not diagnostics, 'Diagnostic command inside public module: ' + str(path))
+        relative = path.relative_to(ROOT).as_posix()
+        if path.stem not in NEW:
+            require(blob(raw) == blobs[relative], 'Inherited scientific module changed: ' + relative)
+            require(rows == prior['modules'][path.stem], 'Inherited declaration enumeration changed: ' + path.stem)
+        else:
+            code = mask_lean(raw.decode())
+            require(not re.search(r'^\s*(?:(?:noncomputable|protected)\s+)*private\b', code, re.M),
+                    'Private declaration requires an explicit stable audit strategy: ' + path.stem)
+            require(not re.search(r'^\s*attribute\s+\[instance\]', code, re.M),
+                    'Registered projections require separately reviewed audit targets: ' + path.stem)
+            for line in code.splitlines():
+                command = re.sub(r'^(?:@\[[^]]*\]\s*)+', '', line.strip())
+                lead = re.match(r'(?:(?:noncomputable|private|protected)\s+)*(theorem|lemma|def|abbrev|structure|inductive|opaque|axiom|class)\b', command)
+                if lead:
+                    require(bool(re.match(r'(?:(?:noncomputable|private|protected)\s+)*(theorem|lemma|def|abbrev|structure|inductive|opaque|axiom|class)\s+[A-Za-z_][A-Za-z0-9_\'.]*(?=\s|:|\(|$)', command)),
+                            'Unenumerated declaration syntax: ' + path.stem + ': ' + command)
+                require(not re.match(r'(?:noncomputable|scoped)\s+instance\b', command),
+                        'Instance syntax requires explicit parser support: ' + path.stem + ': ' + command)
+        modules[path.stem] = rows
+        instances[path.stem] = inst
+        identities[relative] = {'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw)}
+    require(set(modules) == set(prior['modules']) | set(NEW), 'Missing or unexpected public modules')
+    require(len(modules) == 41, 'Expected 35 inherited and 6 new modules')
+    new_explicit = [r['name'] for name in NEW for r in modules[name]]
+    new_instances = [r['name'] for name in NEW for r in instances[name] if r['name'] and not r['local']]
+    anonymous = [dict(module=name, **r) for name in NEW for r in instances[name] if not r['name'] and not r['local']]
+    require(not anonymous, 'Anonymous public instances: ' + repr(anonymous))
+    constructors = [r['name'] + '.mk' for name in NEW for r in modules[name] if r['kind'] == 'structure']
+    unexpected = [r for name in NEW for r in modules[name] if r['kind'] not in {'theorem', 'lemma', 'def', 'abbrev', 'structure'}]
+    require(not unexpected, 'Unreviewed declaration kinds: ' + repr(unexpected))
+    added = new_explicit + new_instances + constructors
+    targets = baseline + added
+    require(len(set(targets)) == len(targets), 'Duplicate requested axiom target')
+    theorems = [r['name'] for rows in modules.values() for r in rows if r['kind'] in {'theorem', 'lemma'}]
+    require(set(theorems) <= set(targets), 'Missing explicit theorem audit: ' + repr(sorted(set(theorems) - set(targets))))
+    exports = re.findall(r'^import\s+(\S+)\s*$', (PKG / 'UEOTQM.lean').read_text(), re.M)
+    require(len(exports) == len(set(exports)) and set(exports) == {'UEOTQM.' + name for name in modules},
+            'Public entry point does not export the exact module set')
+    record = {
+        'schema': 'ueot_qm.declaration_inventory.v31.9',
+        'status': 'SOURCE_ENUMERATED_PENDING_ACTUAL_UNIFIED_EXECUTION',
+        'method': 'Nested-comment/string-masked explicit source enumeration; inherited 985 targets and 35 modules byte-bound to the actual closed v31.8 main; all six new modules enumerate every explicit declaration, named nonlocal instance and structure constructor.',
+        'module_count': len(modules), 'explicit_theorems': len(theorems),
+        'inherited_audit_remote_blob_sha1': blobs[baseline_path], 'inherited_audit_remote_commit': BASE_COMMIT,
+        'audit_target_count': len(targets), 'inherited_audit_target_count': len(baseline),
+        'new_module_names': NEW, 'new_theorems': sum(r['kind'] in {'theorem', 'lemma'} for name in NEW for r in modules[name]),
+        'new_module_counts': {name: dict(Counter(r['kind'] for r in modules[name])) for name in NEW},
+        'new_explicit_declarations': len(new_explicit), 'new_named_instances': new_instances,
+        'new_structure_constructors': constructors, 'new_instance_projection_targets': [],
+        'added_audit_target_count': len(added), 'modules': modules, 'source_instances': instances,
+        'module_identities': identities, 'audit_targets': targets,
+        'interpretation': ['Explicit declaration counts are not counts of physical laws.',
+            'Concrete witnesses, certificate instances and runtime methods are counted separately.',
+            'Compiler-generated internal constants are not claimed as new explicit declarations.',
+            'Enumeration by itself does not establish successful compilation or permitted axiom dependencies.']}
+    if args.write_audit:
+        text = old_audit.rstrip() + '\n\n-- v31.9: all explicit new declarations, named instances and constructors.\n'
+        text += '\n'.join('#print axioms ' + name for name in added) + '\n'
+        (PKG / 'scripts/AxiomAudit.lean').write_text(text)
+    (HANDOFF / 'qm319_declaration_inventory.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps({k: record[k] for k in ['status', 'module_count', 'explicit_theorems', 'audit_target_count',
+        'new_theorems', 'new_module_counts', 'new_named_instances', 'new_structure_constructors', 'added_audit_target_count']}, indent=2))
+
+if __name__ == '__main__':
+    main()
