@@ -1,0 +1,47 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/SameSourceSafePrefix.lean:58:8: error: Type mismatch: After simplification, term
+  hh
+ has type
+  @Membership.mem X (Set X) Set.instMembership K ((stateHistoryEquiv 0) h (lastHistoryIndex 0))
+but is expected to have type
+  @Membership.mem (CausalHistory X X 0) (Set X) Set.instMembership K h
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/SameSourceSafePrefix.lean:62:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (stateHistoryEquiv ?n) ?h (lastHistoryIndex ?n)
+in the target expression
+  (stateHistoryEquiv 0) h (lastHistoryIndex 0) ∉ Kᶜ
+
+case zero.mpr
+X : Type u
+inst✝ : MeasurableSpace X
+K : Set X
+h : X
+hh : stateSurvives K 0 h
+i : ↥(Finset.Iic 0)
+hi : i = lastHistoryIndex 0
+⊢ (stateHistoryEquiv 0) h (lastHistoryIndex 0) ∉ Kᶜ
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    causalHistoryMeasurableSpace 0
+  has type
+    MeasurableSpace (CausalHistory X X 0)
+  but is expected to have type
+    MeasurableSpace X
+  in the application
+    @MeasurableEquiv X (↥(Finset.Iic 0) → X) (causalHistoryMeasurableSpace 0)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.stateHistoryEquiv_survival_iff' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.actual_safe_prefix_pullback' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_real_eq_killed_pow_sum' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_mass_eq_ofReal_killed_pow_sum' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

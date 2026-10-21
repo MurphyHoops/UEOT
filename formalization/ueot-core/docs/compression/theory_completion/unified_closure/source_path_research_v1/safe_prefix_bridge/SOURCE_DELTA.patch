@@ -1,0 +1,34 @@
+--- v1-original/SameSourceSafePrefix.lean
++++ SameSourceSafePrefix.lean
+@@ -50,16 +50,23 @@
+   induction n with
+   | zero =>
+       intro h
+-      rw [mem_historySurvivalSet_iff]
++      have h0 (i : Finset.Iic 0) : stateHistoryEquiv 0 h i = h := by
++        rw [Subsingleton.elim i (lastHistoryIndex 0)]
++        exact stateHistoryEquiv_last 0 h
+       constructor
+       · intro hs
+-        have hh := hs (lastHistoryIndex 0)
+-        simpa only [stateHistoryEquiv_last, currentState, stateSurvives,
+-          Set.mem_compl_iff, not_not] using hh
+-      · intro hh i
+-        have hi : i = lastHistoryIndex 0 := Subsingleton.elim _ _
+-        rw [hi, stateHistoryEquiv_last]
+-        simpa only [currentState, stateSurvives, Set.mem_compl_iff, not_not] using hh
++        have hh := (mem_historySurvivalSet_iff Kᶜ 0 _).mp hs (lastHistoryIndex 0)
++        rw [h0] at hh
++        change ¬ ¬ (h ∈ K) at hh
++        change h ∈ K
++        exact not_not.mp hh
++      · intro hs
++        apply (mem_historySurvivalSet_iff Kᶜ 0 _).mpr
++        intro i
++        rw [h0 i]
++        change ¬ ¬ (h ∈ K)
++        change h ∈ K at hs
++        exact not_not.mpr hs
+   | succ n ih =>
+       intro h
+       rcases h with ⟨h, x⟩

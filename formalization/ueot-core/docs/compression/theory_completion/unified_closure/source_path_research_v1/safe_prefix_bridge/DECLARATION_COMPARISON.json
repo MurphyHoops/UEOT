@@ -1,0 +1,52 @@
+{
+  "schema": "UEOT_SAFE_PREFIX_DECLARATION_COMPARISON_V1",
+  "original": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/v1-original/SameSourceSafePrefix.lean",
+    "bytes": 7072,
+    "sha256": "5c4c4d38b98e878bc825b802c0136bcea5def4b68fff0c64f61898559c9faaf4"
+  },
+  "final": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/SameSourceSafePrefix.lean",
+    "bytes": 7214,
+    "sha256": "392468a8ca8c29225f334324eb3c2b5996e2aa4eae4846dfdab371ffb2eeaddf"
+  },
+  "method": "Offset-preserving nested-comment/string masking plus top-level := scan. Named arguments (X := X)/(A := A) are inside delimiters and cannot truncate a header. Complete source diff retained.",
+  "records": [
+    {
+      "name": "stateHistoryEquiv_survival_iff",
+      "kind": "theorem",
+      "header": "theorem stateHistoryEquiv_survival_iff\n    {X : Type u} [MeasurableSpace X] (K : Set X) :\n    ∀ (n : ℕ) (h : CausalHistory X X n),\n      stateHistoryEquiv n h ∈ historySurvivalSet Kᶜ n ↔\n        stateSurvives K n h",
+      "header_sha256": "69ddb1ab968d45c0081496540e298d495dd7b72fdb90e145f703e37a5afe14bd",
+      "header_bytes_equal": true,
+      "proof_body_bytes_equal": false
+    },
+    {
+      "name": "actual_safe_prefix_pullback",
+      "kind": "theorem",
+      "header": "theorem actual_safe_prefix_pullback\n    {X A : Type u} [MeasurableSpace X] (K : Set X) (n : ℕ) :\n    (stateHistoryEquiv n ∘ eraseActionHistory (X := X) (A := A) n) ⁻¹'\n        historySurvivalSet Kᶜ n =\n      {h : CausalHistory X (A × X) n |\n        ¬ riskEverFailure (fun x => x ∉ K) n h}",
+      "header_sha256": "9513942fd930c7f14a35a13d840bde576737be01455aaf922629e21166ed9a0c",
+      "header_bytes_equal": true,
+      "proof_body_bytes_equal": true
+    },
+    {
+      "name": "homogeneous_survival_real_eq_killed_pow_sum",
+      "kind": "theorem",
+      "header": "theorem homogeneous_survival_real_eq_killed_pow_sum\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (K : Set X) (n : ℕ) :\n    (homTrajMeasure p0.toMeasure\n      (pmfRowKernel\n        (policyTransitionPMF M (liftedStationaryPolicy q sigma)))).real\n          (survivalSet Kᶜ n) =\n      ∑ v : K, rowApply (safeInitialRow p0 K)\n        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v",
+      "header_sha256": "561fd9d4316753f51642d0c7f8a702751b21da2b6648dbfaf540e24f600fd2bf",
+      "header_bytes_equal": true,
+      "proof_body_bytes_equal": true
+    },
+    {
+      "name": "homogeneous_survival_mass_eq_ofReal_killed_pow_sum",
+      "kind": "theorem",
+      "header": "theorem homogeneous_survival_mass_eq_ofReal_killed_pow_sum\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (K : Set X) (n : ℕ) :\n    homTrajMeasure p0.toMeasure\n      (pmfRowKernel\n        (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n          (survivalSet Kᶜ n) =\n      ENNReal.ofReal (∑ v : K, rowApply (safeInitialRow p0 K)\n        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v)",
+      "header_sha256": "20e31a6a9144a951e9c848e180d3dc7a353f53a10e81f5c363e09510f992ae84",
+      "header_bytes_equal": true,
+      "proof_body_bytes_equal": true
+    }
+  ],
+  "all_four_complete_headers_byte_identical": true,
+  "only_changed_proof": "stateHistoryEquiv_survival_iff (zero case only)",
+  "new_definitions": 0,
+  "kernel_type_comparison_to_uncompiled_original_claimed": false
+}

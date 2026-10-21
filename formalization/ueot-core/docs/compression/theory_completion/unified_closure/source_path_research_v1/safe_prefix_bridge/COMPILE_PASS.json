@@ -1,0 +1,301 @@
+{
+  "schema": "UEOT_PRIVATE_SAME_SOURCE_SAFE_PREFIX_COMPILE_PASS_V1",
+  "status": "PRIVATE_FOCUSED_LEAN_PASS_NOT_INTEGRATED",
+  "owner": "/root/math_resume",
+  "created_utc": "2026-10-21T11:25:24.449169+00:00",
+  "source": {
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/SameSourceSafePrefix.lean",
+    "bytes": 7214,
+    "sha256": "392468a8ca8c29225f334324eb3c2b5996e2aa4eae4846dfdab371ffb2eeaddf"
+  },
+  "actual_execution": {
+    "attempt": 3,
+    "status": "PASS",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 5.935,
+    "started_utc": "2026-10-21T11:23:35.728500+00:00",
+    "finished_utc": "2026-10-21T11:23:41.664016+00:00",
+    "command": [
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+      "env",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-c",
+      "import os,sys,json,hashlib; from pathlib import Path; os.environ[\"LEAN_PATH\"]=sys.argv[1]+os.pathsep+os.environ.get(\"LEAN_PATH\",\"\"); Path(sys.argv[2]).write_text(json.dumps({k:os.environ.get(k,\"\") for k in [\"LEAN_PATH\",\"LEAN_SRC_PATH\",\"LEAN_SYSROOT\",\"ELAN_TOOLCHAIN\",\"LEAN_NUM_THREADS\"]},indent=2)+\"\\n\"); os.execv(sys.argv[3],sys.argv[3:])",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010:/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/ENV_AFTER_LAKE.json",
+      "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+      "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1",
+      "-o",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/SameSourceSafePrefix.olean",
+      "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/SameSourceSafePrefix.lean"
+    ],
+    "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+    "LEAN_NUM_THREADS": "1",
+    "timeout_seconds": 180,
+    "process_group": 75738
+  },
+  "pass_evidence": {
+    "status": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/STATUS.json",
+      "bytes": 6424,
+      "sha256": "41009118d4a2d9188aa4d55f1828ca5c39ebdc91715104a6c614859ba9ad06a5"
+    },
+    "log": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/lean.log",
+      "bytes": 718,
+      "sha256": "2da324f010cffe133d4e0fdb763de30fb5840427c6e2e19f9de11aac1ad04e05"
+    },
+    "olean": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/SameSourceSafePrefix.olean",
+      "bytes": 127944,
+      "sha256": "c481111454b7e8df57c51757a82874cab52c3ef9f984df75253ae35966754328"
+    },
+    "actual_lake_environment": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/ENV_AFTER_LAKE.json",
+      "bytes": 4233,
+      "sha256": "66da31d311430cec533c650b502dfc8870f5efde1b47a0d1c63138acc3335800"
+    }
+  },
+  "original_source_and_contract_phase_files": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/v1-original/SameSourceSafePrefix.lean",
+      "bytes": 7072,
+      "sha256": "5c4c4d38b98e878bc825b802c0136bcea5def4b68fff0c64f61898559c9faaf4"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/v1-original/CONTRACT.md",
+      "bytes": 9373,
+      "sha256": "30efc7a40f4b04efb390440e2289f072373fa6b8f039bdcd45958315a4963488"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/v1-original/API_INPUTS.json",
+      "bytes": 7597,
+      "sha256": "d55e17e5dec33b52a7b193cd788003fc954e8a92e032325109d3b7e842c2f482"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/v1-original/STATUS.json",
+      "bytes": 1284,
+      "sha256": "1b5491a25fb09592a1454e6576008db832437cd07e62398095e8f73e01fddd7e"
+    }
+  ],
+  "original_contract_api_status_bytes_preserved": true,
+  "original_frozen_predecessor_packages_modified": false,
+  "inputs": [
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/API_INPUTS.json",
+      "bytes": 7597,
+      "sha256": "d55e17e5dec33b52a7b193cd788003fc954e8a92e032325109d3b7e842c2f482"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/ENVIRONMENT_REUSE_BINDING.json",
+      "bytes": 5704,
+      "sha256": "6c9367f1283c44660e6e1e2a330aeb01ba9bd866866cc34347cc5b9b779fb3d6"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/RESOLVED_DIRECT_IMPORTS.json",
+      "bytes": 4059,
+      "sha256": "afd8ec18b02b8e01bd72068eb0aea393bf911afda72aee877d2711eddf74859d"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/DECLARATION_COMPARISON.json",
+      "bytes": 3870,
+      "sha256": "4c3c6cc0aeaad834c1dc747cef037a5b9804edaf5b34e5b6ea2cb287baa7fe18"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/SOURCE_DELTA.patch",
+      "bytes": 1234,
+      "sha256": "568a1b6e11c67a92508503f033f059495b4923c727f48e279e70970de72e8cd8"
+    },
+    {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/compile_private.py",
+      "bytes": 7841,
+      "sha256": "ed9b3ce3362d16e3739d44cd6febfc5b8b901350871854387544dd85deb69196"
+    }
+  ],
+  "dependency_pins": {
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002/SourcePolicyPathBridge.olean": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-010/SameSourceKilledPath.olean": "91c3d26034d72d7abeb140d057c78b55296d4e4e7450cf5b291ccc3ad748d1e5",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/SameSourceInfinitePrefix.lean": "da7c984a95cfd01d0135787effb7a4d0d06e55b18270b8470585b0b2b9db9b92",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/infinite-source-bridge-v1/lean-attempt-003/SameSourceInfinitePrefix.olean": "9a5d689ba7c866f5597d4b752bd6e9ac05bd3e5e26f7da9be8c28c4659cfff1b",
+    "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/safe-prefix-bridge-v1/REVIEW.json": "b1c04040e9bf22221d29c09ba792bc0963997aa558cbfd91e9c75d44d632b978"
+  },
+  "dependency_pins_rechecked_after_pass": true,
+  "production_identity": {
+    "complete_source_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+    "source_file_count": 666,
+    "complete_source_paths_and_each_hash_checked_every_attempt": true,
+    "existing_build_manifest": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+      "bytes": 202983,
+      "sha256": "04acfa12f4b43154cbf1701834aadd459b1647730f789cdff2eccc6436e96b7c"
+    },
+    "environment_binding": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/ENVIRONMENT_REUSE_BINDING.json",
+      "bytes": 5704,
+      "sha256": "6c9367f1283c44660e6e1e2a330aeb01ba9bd866866cc34347cc5b9b779fb3d6"
+    },
+    "dependency_scope": "Existing completed-build dependency revisions and clean-state evidence reused; actual relevant API source files and all three frozen private source/olean pairs rechecked. No dependency/build/Git operation."
+  },
+  "declaration_preservation": {
+    "all_four_complete_headers_byte_identical": true,
+    "three_other_proof_bodies_byte_identical": true,
+    "no_definition_added": true,
+    "only_proof_changed": "S1 zero case",
+    "kernel_type_comparison_to_uncompiled_original_claimed": false
+  },
+  "actual_printed_axiom_closures": {
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.stateHistoryEquiv_survival_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.actual_safe_prefix_pullback": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_real_eq_killed_pow_sum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.homogeneous_survival_mass_eq_ofReal_killed_pow_sum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "axiom_scope": "Four actual endpoint transitive closures, not a whole-project native census.",
+  "retained_actual_attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 5.634,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-001/SameSourceSafePrefix.lean",
+        "bytes": 7072,
+        "sha256": "5c4c4d38b98e878bc825b802c0136bcea5def4b68fff0c64f61898559c9faaf4"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-001/lean.log",
+        "bytes": 1220,
+        "sha256": "34af442244dc4d0f015e8abcabb7afac14344839d3ad2b90bf29f072728b83f3"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-001/STATUS.json",
+        "bytes": 6163,
+        "sha256": "00a1ec8e655e675f9a6fa8a79dbfe04774dfe04b1998cf34a2110c7ede66f6ae"
+      },
+      "actual_lake_environment": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-001/ENV_AFTER_LAKE.json",
+        "bytes": 4233,
+        "sha256": "66da31d311430cec533c650b502dfc8870f5efde1b47a0d1c63138acc3335800"
+      }
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 5.783,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-002/SameSourceSafePrefix.lean",
+        "bytes": 7114,
+        "sha256": "6d33f4d39a69d30631cd7174b3a8c52a3a3ddbdc7ce03546f8474eac1d6a0306"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-002/lean.log",
+        "bytes": 2261,
+        "sha256": "a30ef5365a22b7604b0b7dbd3a51ee46571e68fda336c976bcb670828f1640b7"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-002/STATUS.json",
+        "bytes": 6163,
+        "sha256": "bffb2078c43b2d9b1ef8eb379095aa4dd9561ef197126bdc70832db97879178c"
+      },
+      "actual_lake_environment": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-002/ENV_AFTER_LAKE.json",
+        "bytes": 4233,
+        "sha256": "66da31d311430cec533c650b502dfc8870f5efde1b47a0d1c63138acc3335800"
+      }
+    },
+    {
+      "attempt": 3,
+      "status": "PASS",
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 5.935,
+      "source_snapshot": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/SameSourceSafePrefix.lean",
+        "bytes": 7214,
+        "sha256": "392468a8ca8c29225f334324eb3c2b5996e2aa4eae4846dfdab371ffb2eeaddf"
+      },
+      "log": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/lean.log",
+        "bytes": 718,
+        "sha256": "2da324f010cffe133d4e0fdb763de30fb5840427c6e2e19f9de11aac1ad04e05"
+      },
+      "status_receipt": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/STATUS.json",
+        "bytes": 6424,
+        "sha256": "41009118d4a2d9188aa4d55f1828ca5c39ebdc91715104a6c614859ba9ad06a5"
+      },
+      "actual_lake_environment": {
+        "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/safe-prefix-bridge-v1/lean-attempt-003/ENV_AFTER_LAKE.json",
+        "bytes": 4233,
+        "sha256": "66da31d311430cec533c650b502dfc8870f5efde1b47a0d1c63138acc3335800"
+      }
+    }
+  ],
+  "delta": [
+    "Replace S1 time-zero simp-based proof with the Iic 0 unique-index equality, existing stateHistoryEquiv_last, and explicit double-negation reasoning.",
+    "No final new elaboration option, definition, theorem assumption, policy identity or event conclusion.",
+    "Original S2/S3/S3E proof bodies are byte-for-byte unchanged."
+  ],
+  "warnings": 0,
+  "independent_review": {
+    "original_contract_clear": {
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/interface-next-review/safe-prefix-bridge-v1/REVIEW.json",
+      "bytes": 2770,
+      "sha256": "b1c04040e9bf22221d29c09ba792bc0963997aa558cbfd91e9c75d44d632b978"
+    },
+    "execution_delta": "PENDING_SEPARATE_INDEPENDENT_REVIEW"
+  },
+  "mathematical_scope": {
+    "S1": "General measurable X: complete state-history safety is the existing historySurvivalSet of the unsafe target K complement; no Fintype or probability premise.",
+    "S2": "Actual action-history pullback equals the recursively defined no-failure event; proved locally without private K1 API names or target equality assumptions.",
+    "S3": "Same M/q/sigma/p0, arbitrary K/n: genuine homogeneous trajectory finite-survival real mass equals the existing same-source killed power total.",
+    "S3E": "ENNReal form follows from ofReal_measureReal; finite mass derived from the actual probability measure.",
+    "p0": "Original arbitrary initial PMF; no conditioning or normalization.",
+    "boundaries": [
+      "n=0 includes initial state",
+      "empty K allowed",
+      "zero survival allowed",
+      "Y need not be finite or measurable",
+      "same time-homogeneous current-observation randomized sigma"
+    ],
+    "not_claimed": [
+      "infinite-tail limit or fixed-point implementation",
+      "QSD/Perron/Doob statement",
+      "general history-policy Markovization",
+      "production integration"
+    ]
+  },
+  "operations": {
+    "focused_Lean_attempts": 3,
+    "max_concurrent_own_Lean": 1,
+    "lake_build": false,
+    "native": false,
+    "previous_frozen_package_modified": false,
+    "production_modified": false,
+    "consumers_modified": false,
+    "books_modified": false,
+    "Git_or_refs_modified": false,
+    "remote_operations": false
+  }
+}
