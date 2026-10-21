@@ -1,0 +1,133 @@
+{
+  "state": "RESEARCH359_MERGED_ACTUAL_MAIN_ACCEPTANCE_COMPLETE_OWN_BRANCH_CONTINUES_WITH_NEXT_BOUNDED_INCREMENT",
+  "pr": 359,
+  "url": "https://github.com/MurphyHoops/UEOT/pull/359",
+  "base": "170daedcf85a12086c42954be4a5a7ba119d8565",
+  "head": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+  "merge": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+  "tree": "f2c4a04a676cc419315532c225513ab6bed33c7a",
+  "actual_cloud_fetch_and_mac_fetch_equal_merge": true,
+  "complete_tree_equals_reviewed_head": true,
+  "changed_archive_files": 294,
+  "archive_exact_inputs": 285,
+  "manifests": 6,
+  "head_checks": [
+    {
+      "name": "proof",
+      "id": 119192583939,
+      "head_sha": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39591187238/job/119192583939"
+    },
+    {
+      "name": "governance",
+      "id": 119192322250,
+      "head_sha": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39591187238/job/119192322250"
+    },
+    {
+      "name": "authorize",
+      "id": 119192255693,
+      "head_sha": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39591187187/job/119192255693"
+    },
+    {
+      "name": "classify",
+      "id": 119192254211,
+      "head_sha": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39591187238/job/119192254211"
+    }
+  ],
+  "main_checks": [
+    {
+      "name": "proof",
+      "id": 119193370963,
+      "head_sha": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39591380200/job/119193370963"
+    },
+    {
+      "name": "governance",
+      "id": 119192985534,
+      "head_sha": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39591380200/job/119192985534"
+    },
+    {
+      "name": "classify",
+      "id": 119192903972,
+      "head_sha": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39591380200/job/119192903972"
+    }
+  ],
+  "main_guard_run": 39591380200,
+  "head_governance_job": 119192322250,
+  "main_governance_job": 119192985534,
+  "actual_head_and_main_full_fkrg_tests": 30,
+  "actual_head_and_main_base_parser_tests": 89,
+  "preflight": "PASS_NO_NEW_PUBLIC_THEOREMS",
+  "production_module_count": 666,
+  "production_input_fingerprint": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+  "build_evidence_reused_from_actual_core_main": "90cd0366b2120656dffbee025b5dc0c00d49b5a6",
+  "new_full_lean_or_native_execution": false,
+  "cloud_proof_job": "SKIPPED",
+  "mac_status_observations": {
+    "RESULTING_MAIN_STATUS.json": {
+      "state": "FAIL",
+      "merge": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+      "head": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+      "new_lean_native_execution": false,
+      "error": "AssertionError()",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/research-publication-0b8e654/verify_actual_main.py\", line 22, in <module>\n    assert len(sources)==666\nAssertionError\n"
+    },
+    "RESULTING_MAIN_VERIFIED.json": {
+      "state": "FAIL",
+      "merge": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+      "head": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+      "new_lean_native_execution": false,
+      "error": "AssertionError()",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/research-publication-0b8e654/verify_actual_main_v2.py\", line 29, in <module>\n    assert cache_head==core and not cache_status\nAssertionError\n"
+    },
+    "RESULTING_MAIN_VERIFIED_V3.json": {
+      "state": "ACTUAL_MAIN_GIT_IDENTITY_VERIFIED_PRODUCTION_BUILD_EVIDENCE_REUSED",
+      "merge": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+      "head": "0b8e654c955c17b5edac2bea6a1e6173fd811de6",
+      "new_lean_native_execution": false,
+      "actual_main": "b3ad5e5f38b3cfa8491696b0ff56dfd3397f527b",
+      "tree": "f2c4a04a676cc419315532c225513ab6bed33c7a",
+      "complete_tree_equals_reviewed_head": true,
+      "changed_archive_files": 294,
+      "production_module_count": 666,
+      "production_tree": "9c7b1269a09cec34e1501a64468e8e7df59a1517",
+      "all_versioned_production_consumer_environment_pins_unchanged": true,
+      "prior_counter_failure_preserved": "RESULTING_MAIN_STATUS.json",
+      "prior_cache_status_failure_preserved": "RESULTING_MAIN_VERIFIED.json",
+      "count_scope": "665 UEOT-directory modules plus root UEOT.lean = 666",
+      "runtime_dependency_evidence": "Reused accepted actual Core main build receipt; no new build or runtime audit",
+      "books_unchanged_since_170daed": true,
+      "cached_verified_main_worktree": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/main-registered-interfaces-20261021",
+      "cached_verified_main_head": "90cd0366b2120656dffbee025b5dc0c00d49b5a6",
+      "cached_verified_main_tracked_worktree_clean": true,
+      "cached_worktree_porcelain": "?? formalization/ueot-core/.lake\n",
+      "untracked_cache_link_preserved": true,
+      "local_old_research_branch_preserved": "5d61e97e2d2636cb2ee768ab3b662c5c285468c0",
+      "completed_utc": "2026-10-21T11:29:57.527523+00:00"
+    }
+  },
+  "branch": "compression/theory-completion-interface-research",
+  "branch_status": "RETAINED_FOR_THE_SEPARATE_BOUNDED_SAFE_PREFIX_FOLLOWUP; retire only the final merged owned head",
+  "private_proofs_not_production": true,
+  "books_unchanged_since_358": true,
+  "qm_physics_untouched": true
+}
