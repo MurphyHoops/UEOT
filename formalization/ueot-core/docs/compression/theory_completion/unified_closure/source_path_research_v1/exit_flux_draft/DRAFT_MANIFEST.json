@@ -1,0 +1,153 @@
+{
+  "execution": {
+    "Lean": "NOT_RUN",
+    "lake_build": "NOT_RUN",
+    "native": "NOT_RUN",
+    "tests": "NOT_RUN"
+  },
+  "followup": "Root and C review frozen source; root alone may schedule later focused execution. Elaboration fixes must preserve actual source, event, prefix derivation and initial failure term.",
+  "independent_review": "PENDING_ROOT_AND_C",
+  "inputs": [
+    {
+      "bytes": 6999,
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-exit-flux-review/API_MAPPING.md",
+      "role": "independent_api_mapping",
+      "sha256": "4775c9a85a6f8bf646820de95033f1d68948eecc4dfcdfd07b802323f079583c"
+    },
+    {
+      "bytes": 4834,
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-exit-flux-review/RECEIPT.json",
+      "role": "independent_api_receipt",
+      "sha256": "2c202325365bf5c048fd6de9474a1875eb63eaeb7bcbfc320d341f96c4ef34ca"
+    },
+    {
+      "bytes": 15902,
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+      "role": "k1_same_source_candidate",
+      "sha256": "fa4f5ce017d6bfa4d9f3fe77805ad629f1c04f34a7ac3495c9114c432bc6c826"
+    },
+    {
+      "bytes": 6477,
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/SourcePolicyPathBridge.lean",
+      "role": "same_source_policy_path_bridge",
+      "sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91"
+    },
+    {
+      "bytes": 25556,
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/PathError.lean",
+      "role": "causal_pmf_recursion",
+      "sha256": "d561a56db79bbd5dd9d01673c5fa7970c7d31199356bd5169a416cd930d917ba"
+    },
+    {
+      "bytes": 10696,
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+      "role": "matrix_row_associativity",
+      "sha256": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776"
+    },
+    {
+      "bytes": 6714,
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean",
+      "role": "actual_failure_definition",
+      "sha256": "5736eae5f9939ef0fdb4c7c520c2c0bc5766d85bf863161787568d2042842cfb"
+    },
+    {
+      "bytes": 11701,
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/ProbabilityMassFunction/Constructions.lean",
+      "role": "mathlib_pmf_constructions",
+      "sha256": "09a7cf241524c158d4174e994e04140901630c7e0629ceee9b7ba7ec347d2cd4"
+    },
+    {
+      "bytes": 11907,
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/ProbabilityMassFunction/Monad.lean",
+      "role": "mathlib_pmf_monad",
+      "sha256": "94937919a3ff69070aae22a8c2741e1369e105a197c4c7bc0972ad32cd5523e6"
+    },
+    {
+      "bytes": 24363,
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Real.lean",
+      "role": "mathlib_measure_real",
+      "sha256": "7d06d0c77149faa765d606313411b90123606131e436acdaa4eeed1cdc9ebb59"
+    },
+    {
+      "bytes": 51600,
+      "path": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Group/Finset/Basic.lean",
+      "role": "mathlib_finite_telescoping",
+      "sha256": "1305c143ee5528281992dc083faa3c881c2e7c0f3d09b127de4f58987182d1f2"
+    }
+  ],
+  "k1_execution_claim": "NONE_USE_ROOT_ACTUAL_RECEIPT",
+  "lexical_inventory_not_native": {
+    "definitions": [
+      "killedExitFlux",
+      "riskFirstExitAfter"
+    ],
+    "theorems": [
+      "pmfExtend_map_fst",
+      "causalLaw_map_prefix",
+      "causalLaw_prefix_event_real",
+      "row_mass_sub_next_eq_killedExitFlux",
+      "killed_pow_mass_drop",
+      "actual_survival_drop_eq_killedExitFlux",
+      "actual_first_exit_mass_eq_survival_drop",
+      "actual_first_exit_mass_eq_killedExitFlux",
+      "actual_killedExitFlux_nonneg",
+      "actual_survival_zero",
+      "actual_failure_mass_telescope",
+      "actual_ever_failure_mass",
+      "actual_failure_eq_initial_failure_add_first_exits"
+    ]
+  },
+  "mathematical_scope": {
+    "empty_safe_set_allowed": true,
+    "first_exit_event_in_actual_n_plus_one_action_state_record": true,
+    "fixed_actual_source_and_initial": true,
+    "infinite_path_claim": false,
+    "initial_failure_kept": true,
+    "no_finite_observation_type_assumption": true,
+    "no_qsd_or_positive_survival_input": true,
+    "prefix_identity_derived_not_assumed": true,
+    "zero_horizon_allowed": true,
+    "zero_survival_allowed": true
+  },
+  "mutations": {
+    "books": false,
+    "git": false,
+    "k1": false,
+    "k2": false,
+    "production": false,
+    "remote": false
+  },
+  "outputs": [
+    {
+      "bytes": 9899,
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/SameSourceKilledExitFlux.lean",
+      "role": "static_lean_proof_draft",
+      "sha256": "8f88617f06f793492b04b875d38dbc097b7043bbe9ef12567b8492cb1eaf3c8c"
+    },
+    {
+      "bytes": 6336,
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/BINDING.md",
+      "role": "mathematical_and_api_binding",
+      "sha256": "1a10f3505cbd5519be0c9f075c8df06d6d3ec00adf6e490a3f4c26c6679b95ad"
+    },
+    {
+      "bytes": 621,
+      "path": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-exit-flux/K1_MASS_ENDPOINT.txt",
+      "role": "k1_mass_endpoint_signature",
+      "sha256": "3ca172e449b85ec5b66baf3bb7380b59f6987ed54c16f63eb5e59344d846680c"
+    }
+  ],
+  "owner": "/root/audit_resume",
+  "schema": "UEOT_PRIVATE_FINITE_EXIT_FLUX_DRAFT_V1",
+  "scope": "FINITE_WINDOW_PRIVATE_NEXT_MATHEMATICS_OUTSIDE_CURRENT_SEVEN_MODULE_RELEASE",
+  "static_text_checks": {
+    "actual_pmf_prefix_proof_body_present": true,
+    "existing_finite_telescoping_api_used": true,
+    "k1_only_private_import": true,
+    "k2_not_imported": true,
+    "no_admission_token": true,
+    "no_new_axiom_declaration": true,
+    "no_nonempty_safe_subtype_assumption": true
+  },
+  "status": "FROZEN_STATIC_PROOF_DRAFT_NOT_COMPILED"
+}

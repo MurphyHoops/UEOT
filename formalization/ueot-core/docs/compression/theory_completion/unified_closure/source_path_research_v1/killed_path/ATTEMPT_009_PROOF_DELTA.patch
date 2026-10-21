@@ -1,0 +1,13 @@
+--- attempt-008/SameSourceKilledPath.lean
++++ attempt-009/SameSourceKilledPath.lean
+@@ -167,9 +167,7 @@
+       intro z _
+       apply @if_congr
+       · rfl
+-      · simpa only [ENNReal.toReal_mul, mu] using
+-          congrArg ENNReal.toReal
+-            (UEOT.V3.PathError.pmfExtend_apply mu (policyPathKernel M pi n) h z)
++      · rw [UEOT.V3.PathError.pmfExtend_apply, ENNReal.toReal_mul]
+       · rfl
+     _ = ∑ h : CausalHistory X X n,
+         if stateSurvives K n h then

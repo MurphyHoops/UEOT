@@ -1,0 +1,11 @@
+theorem actual_survival_mass_eq_killed_pow_sum
+    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]
+    [MeasurableSpace X] [MeasurableSingletonClass X]
+    [MeasurableSpace A] [MeasurableSingletonClass A]
+    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)
+    (p0 : PMF X) (K : Set X) (n : ℕ) :
+    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)
+      (observationMarkovPolicy sigma)) n).toMeasure.real
+        {h | ¬ riskEverFailure (fun x => x ∉ K) n h} =
+      ∑ v : K, rowApply (safeInitialRow p0 K)
+        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v

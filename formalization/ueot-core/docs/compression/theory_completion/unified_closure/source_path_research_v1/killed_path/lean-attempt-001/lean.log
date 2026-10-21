@@ -1,0 +1,60 @@
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:158:6: error: 'change' tactic failed, pattern
+  ∑ hz,
+      @ite ℝ ((stateSurvives K n hz.1 ∧ hz.2 ∈ K) ∧ hz.2 = ↑v)
+        (@instDecidableAnd (stateSurvives K n hz.1 ∧ hz.2 ∈ K) (hz.2 = ↑v) instDecidableAnd
+          (Classical.propDecidable (hz.2 = ↑v)))
+        ((pmfExtend mu (policyPathKernel M pi n)) hz).toReal 0 =
+    ?m.256
+is not definitionally equal to target
+  ∑ h,
+      @ite ℝ (stateSurvives K (n + 1) h ∧ currentState (n + 1) h = ↑v)
+        (@instDecidableAnd (stateSurvives K (n + 1) h) (currentState (n + 1) h = ↑v)
+          (Classical.propDecidable (stateSurvives K (n + 1) h)) (Classical.propDecidable (currentState (n + 1) h = ↑v)))
+        ((causalLaw p0 (policyPathKernel M pi) (n + 1)) h).toReal 0 =
+    ∑ h,
+      ∑ z, if (stateSurvives K n h ∧ z ∈ K) ∧ z = ↑v then (mu h).toReal * ((policyPathKernel M pi n h) z).toReal else 0
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:200:14: error: unsolved goals
+case succ
+X A : Type u
+inst✝² : Fintype X
+inst✝¹ : Fintype A
+inst✝ : Nonempty A
+M : Model X fun x => A
+pi : StationaryPolicy fun x => A
+p0 : PMF X
+K : Set X
+n : ℕ
+ih : ∀ (v : ↑K), stateTerminalMass M pi p0 K n v = rowApply (safeInitialRow p0 K) (killedMatrix M pi K ^ n) v
+v x : ↑K
+a✝ : x ∈ Finset.univ
+⊢ rowApply (safeInitialRow p0 K) (killedMatrix M pi K ^ n) x * killedMatrix M pi K x v =
+    (fun k => ∑ i, safeInitialRow p0 K i * (killedMatrix M pi K ^ n) i k) x * killedMatrix M pi K x v
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:228:9: error: unsolved goals
+case zero
+X A : Type u
+K : Set X
+h : CausalHistory X (A × X) 0
+⊢ id h ∈ K ↔ h ∈ K
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:285:36: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:298:6: error: Type mismatch
+  finite_event_mass (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n) fun h =>
+    stateSurvives K n h ∧ currentState n h = ↑v
+has type
+  (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n).toMeasure.real
+      {x | stateSurvives K n x ∧ currentState n x = ↑v} =
+    ∑ x,
+      if stateSurvives K n x ∧ currentState n x = ↑v then
+        ((causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n) x).toReal
+      else 0
+but is expected to have type
+  (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n).toMeasure.real E =
+    stateTerminalMass M (liftedStationaryPolicy q sigma) p0 K n v
+/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean:322:36: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

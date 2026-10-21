@@ -1,0 +1,91 @@
+{
+  "schema": "UEOT_PRIVATE_KILLED_SOURCE_COMPILE_ATTEMPT_V1",
+  "attempt": 8,
+  "status": "FAIL",
+  "source": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean",
+  "source_sha256": "41c1ac72b6af18772e5fed53735609e479934b5baffe0100ff67bd2cfdae400e",
+  "source_snapshot": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-008/SameSourceKilledPath.lean",
+  "command": [
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+    "env",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-c",
+    "import os,sys; os.environ[\"LEAN_PATH\"]=sys.argv[1]+os.pathsep+os.environ.get(\"LEAN_PATH\",\"\"); os.execv(sys.argv[2],sys.argv[2:])",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lean",
+    "--root=/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization",
+    "-o",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-008/SameSourceKilledPath.olean",
+    "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/SameSourceKilledPath.lean"
+  ],
+  "cwd": "/workspace/scratch/9a8d58b21e30/ueot-integration/formalization/ueot-core",
+  "LEAN_NUM_THREADS": "1",
+  "timeout_seconds": 180,
+  "started_utc": "2026-10-21T08:43:48.702218+00:00",
+  "gate_before_start": {
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-8/STATUS.json": {
+      "state": "RUNNING",
+      "results": [
+        {
+          "label": "new_modules",
+          "exit_code": 0,
+          "elapsed_seconds": 16.762755866002408,
+          "command": [
+            "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+            "build",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary"
+          ],
+          "log_sha256": "761f039a5bb047b0a53005e73e64d59a39a78507827b943f438bab6bf3d9769d"
+        }
+      ],
+      "runtime_platform": "Linux",
+      "runtime_environment": {
+        "LEAN_NUM_THREADS": "1"
+      },
+      "scope": "Actual candidate build; not canonical authorization or resulting-main validation.",
+      "source_manifest_sha256": "47b089acd78085c3d3ba4871d981f841064943cddde4487046f65a3addd638e1",
+      "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
+      "active": "full_ueot"
+    },
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-sequence-1/STATUS.json": {
+      "state": "WAITING_FOR_ACTUAL_FULL_BUILD",
+      "pid": 36860,
+      "results": [],
+      "protocol_manifest_sha256": "c0c8593ab385220d9b6551aaa1df866b62706b798801634861a25af5fa4f22cf",
+      "root_protocol_review_sha256": "695d790414507da6601b5a7a97f1de5a3f291205c1fad478a904ee3f32c23efa",
+      "scope": "Local native execution and provisional evidence only. No consumer writes, canonical authorization or publication."
+    },
+    "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-sequence-1/STATUS.json": {
+      "state": "STOPPED_BEFORE_NATIVE",
+      "results": [],
+      "scope": "Local native execution and provisional evidence only. No consumer writes, canonical authorization or publication.",
+      "interruption": {
+        "signal": "SIGTERM",
+        "pid": 30346,
+        "reason": "Real historical public-catalog omission discovered. Native protocol is being extended to audit and register the omitted helper and its existing dependency edge without rewriting historical evidence.",
+        "native_executed": false,
+        "prior_status_sha256": "4ccbc6a94784b540e0cb9f2200f8f3cebe76cd41d0c5ae6dafdf72e5a11475e1"
+      }
+    }
+  },
+  "bridge_source_sha256": "108500fc13229b8faffc9829d886313167142075112bc3f6c023a086c074ae91",
+  "bridge_olean_sha256": "0ef1132fbfb24b0e571693de99e2729f9a8ede4aa41203fb4b3be67d46915748",
+  "bridge_olean_directory": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-source-bridge/lean-attempt-002",
+  "production_mutated": false,
+  "lake_build_run": false,
+  "native_run": false,
+  "process_group": 41808,
+  "exit_code": 1,
+  "timed_out": false,
+  "elapsed_seconds": 92.09,
+  "finished_utc": "2026-10-21T08:45:20.792203+00:00",
+  "stdout_stderr_log": "/workspace/scratch/9a8d58b21e30/tmp/finite-encoding-20261021/resume-killed-formalization/lean-attempt-008/lean.log",
+  "log_sha256": "2d9e282ec1a601f91ab6c9dfaa89168addc66f238d3b6bbed7bb43f6f442c9b9",
+  "source_sha256_after": "41c1ac72b6af18772e5fed53735609e479934b5baffe0100ff67bd2cfdae400e"
+}
