@@ -1,0 +1,672 @@
+{
+  "actual_merge_receipt": {
+    "check_runs_as_recorded": [
+      {
+        "conclusion": "skipped",
+        "head_sha": "6777a727c1df0618ef7d52800e3528c37e7c48d4",
+        "name": "proof",
+        "status": "completed",
+        "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39463101822/job/118769452871"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "6777a727c1df0618ef7d52800e3528c37e7c48d4",
+        "name": "governance",
+        "status": "completed",
+        "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39463101822/job/118769011716"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "6777a727c1df0618ef7d52800e3528c37e7c48d4",
+        "name": "authorize",
+        "status": "completed",
+        "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39463102275/job/118767311348"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "6777a727c1df0618ef7d52800e3528c37e7c48d4",
+        "name": "classify",
+        "status": "completed",
+        "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39463101822/job/118767309008"
+      }
+    ],
+    "independently_queried_remote": false,
+    "merge_result": {
+      "merged": true,
+      "message": "Pull Request successfully merged",
+      "sha": "86dfbec88c20a9da3c98cd222611aac55cc55f2f"
+    },
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/publication-20261021/OPS_RELEASE.json",
+    "pr_number": 355,
+    "sha256": "19b171550e2339e050e9981d321599c91ad9f668266bb2dae99767eaf94a3809",
+    "state": "MERGED"
+  },
+  "actual_parents": [
+    "e9b61ca9c35955028c4bfa425dfa278fd1864029",
+    "6777a727c1df0618ef7d52800e3528c37e7c48d4"
+  ],
+  "actual_tree": "f3758e41c77fc90ddfa0b243a2f1d7adf5a2d421",
+  "canonical_main": "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+  "delta_from_pre_main": {
+    "all_other_policy_fields_unchanged": true,
+    "all_other_tracked_paths_unchanged": true,
+    "json_fields": [
+      "/l2_existing_path_exceptions/0/branch_patterns/0",
+      "/l2_existing_path_exceptions/0/exception_id",
+      "/l2_existing_path_exceptions/0/reason"
+    ],
+    "paths": [
+      "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+    ]
+  },
+  "governance_candidate": "6777a727c1df0618ef7d52800e3528c37e7c48d4",
+  "notes": [
+    "This actual merge has both e9b61ca and 6777a727 as parents; content equality also binds the exact previously reviewed policy blob.",
+    "The exception is temporary and applies only to the exact TC branch and six existing paths. Other frozen/ledger/workflow rules remain unchanged.",
+    "Proof CI was recorded skipped in OPS_RELEASE; governance success is not Lean execution.",
+    "Previous pending or rejected records remain untouched; this is a new subsequent canonical policy receipt.",
+    "Runtime native/build queue was not polled or executed during this policy-only review."
+  ],
+  "observed_local_origin_main": "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+  "operations": {
+    "Lean": false,
+    "checkout": false,
+    "commit": false,
+    "git_object_writes": false,
+    "native": false,
+    "refs_mutated": false,
+    "remote_queries": false,
+    "remote_writes": false,
+    "tests": false
+  },
+  "policy": {
+    "allowlist_unchanged_from_pre_main": true,
+    "authorized_exact_branch": "compression/theory-completion-registered-interfaces",
+    "authorized_existing_paths": [
+      "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+    ],
+    "blob_ids": {
+      "canonical_main": "e79e889f988bbf76f85e5432d6f9787a4de4eb59",
+      "governance_candidate": "e79e889f988bbf76f85e5432d6f9787a4de4eb59",
+      "pre_main": "0f493772d38302336e21f78b769d275c20040393"
+    },
+    "content_sha256": "081c224ff4a9ba553297e1615cd1558bc1540524ed8241815f9470e6e98a9f70",
+    "exception": {
+      "branch_patterns": [
+        "^compression/theory-completion-registered-interfaces$"
+      ],
+      "exception_id": "TC-REGISTERED-INTERFACES-EVIDENCE-2026-10-21",
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "reason": "The uncounted fixed per-row sampling, same-Good selected viable deployment-risk, and finite-carrier observation additions require refreshing the current source-derived UMC DAG and appending one native-certified reuse overlay to its existing consumer. This temporary exception covers exactly the six existing live evidence, regression and navigation paths. The completed support-viability branch exception is retired after its canonical merge and remote retirement. Research Lean modules remain additive, the root changes only by imports, and all prior overlays, native artifacts, receipts, frozen mathematical surfaces and counted ledgers remain unchanged.",
+      "temporary": true,
+      "track": "TC"
+    },
+    "new_exception_is_now_present_in_actual_canonical_object": true,
+    "path": "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json",
+    "same_bytes_as_reviewed_candidate": true
+  },
+  "pre_main": "e9b61ca9c35955028c4bfa425dfa278fd1864029",
+  "prior_object_scope_review_binding": {
+    "actual_canonical_tree_equals_previously_reviewed_merge_tree": true,
+    "path": "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/new-main-e9b61ca-review/REVIEW.json",
+    "sha256": "5115adf5d5da08a1cc427e39171e7986468aad5f7c787e238b08255a8e010419"
+  },
+  "protected_identities": [
+    {
+      "canonical_main_object": "73dda901d236295245839a75f683cd7839690fa8",
+      "path": "formalization/ueot-core/UEOT",
+      "pre_main_object": "73dda901d236295245839a75f683cd7839690fa8",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "c768139c26b571c0de0cb23e1d7d05241c661af2",
+      "path": "formalization/ueot-core/UEOT.lean",
+      "pre_main_object": "c768139c26b571c0de0cb23e1d7d05241c661af2",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "a8afa7d1b02d96f0671eba854a8dc4b416beb473",
+      "path": "formalization/ueot-core/lean-toolchain",
+      "pre_main_object": "a8afa7d1b02d96f0671eba854a8dc4b416beb473",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "5cf866d9fd60b7849df7ddbbaea5e7b553848215",
+      "path": "formalization/ueot-core/lakefile.lean",
+      "pre_main_object": "5cf866d9fd60b7849df7ddbbaea5e7b553848215",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "a397f3de8bce9450e4ca38241d93f58075ff689f",
+      "path": "formalization/ueot-core/lake-manifest.json",
+      "pre_main_object": "a397f3de8bce9450e4ca38241d93f58075ff689f",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "686ddf1190a6f7d4eb3a4c5d58cd7ff8abefd49d",
+      "path": "formalization/ueot-core/scripts",
+      "pre_main_object": "686ddf1190a6f7d4eb3a4c5d58cd7ff8abefd49d",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "c60603e08d227bff053945156e93f3cf76cff136",
+      "path": ".github/workflows",
+      "pre_main_object": "c60603e08d227bff053945156e93f3cf76cff136",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "023d5dd789d2594e10cf69f06fcf0ee777aa4691",
+      "path": "formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml",
+      "pre_main_object": "023d5dd789d2594e10cf69f06fcf0ee777aa4691",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "bd419a186e4fc2cef515cab911ca43d8f4b2d902",
+      "path": "formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md",
+      "pre_main_object": "bd419a186e4fc2cef515cab911ca43d8f4b2d902",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "56743009bdecdf2978452d9d7fc6e18d64e642d0",
+      "path": "formalization/ueot-qm",
+      "pre_main_object": "56743009bdecdf2978452d9d7fc6e18d64e642d0",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "d91b0bedf6134f43fe3fadb5d2b2ef3e61eb0500",
+      "path": "physics",
+      "pre_main_object": "d91b0bedf6134f43fe3fadb5d2b2ef3e61eb0500",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "e4ba99b3970f793ef0ebc49f815db297d904ca37",
+      "path": "philosophy",
+      "pre_main_object": "e4ba99b3970f793ef0ebc49f815db297d904ca37",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "f1ab436d7cad4c53f28b78a50b2bd1cb4b8e6bc5",
+      "path": "mathematics",
+      "pre_main_object": "f1ab436d7cad4c53f28b78a50b2bd1cb4b8e6bc5",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "3fd064b158470a811bc1ae1308a8250c46780350",
+      "path": "research/handoffs",
+      "pre_main_object": "3fd064b158470a811bc1ae1308a8250c46780350",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "ebc0b843b01d4e919f78f1cadfb343c34d405288",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "pre_main_object": "ebc0b843b01d4e919f78f1cadfb343c34d405288",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "0bdeada9fbcdbbb7a3d86b4eefd54946ba88e826",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "pre_main_object": "0bdeada9fbcdbbb7a3d86b4eefd54946ba88e826",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "920b9188e3f9ac79093e4ea8c6f485d7cf5a2663",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "pre_main_object": "920b9188e3f9ac79093e4ea8c6f485d7cf5a2663",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "2a3f1c8856034bec649d361a3fd61e431afdcaca",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "pre_main_object": "2a3f1c8856034bec649d361a3fd61e431afdcaca",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "81ff5e901a2a8655969070b6dd845f2faa47e79e",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "pre_main_object": "81ff5e901a2a8655969070b6dd845f2faa47e79e",
+      "unchanged": true
+    },
+    {
+      "canonical_main_object": "48abb934e88e429a07b01ad0acb2c889fab45669",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "pre_main_object": "48abb934e88e429a07b01ad0acb2c889fab45669",
+      "unchanged": true
+    }
+  ],
+  "read_only_git_commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "refs/remotes/origin/main"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "-s",
+        "--format=%P",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f^{tree}"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--no-ext-diff",
+        "--name-only",
+        "-z",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "6777a727c1df0618ef7d52800e3528c37e7c48d4:formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "0f493772d38302336e21f78b769d275c20040393"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "e79e889f988bbf76f85e5432d6f9787a4de4eb59"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "e79e889f988bbf76f85e5432d6f9787a4de4eb59"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/UEOT"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/UEOT"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/UEOT.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/UEOT.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/lean-toolchain"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/lean-toolchain"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/lakefile.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/lakefile.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/lake-manifest.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/lake-manifest.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/scripts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/scripts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:.github/workflows"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:.github/workflows"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/COMPRESSION_LEDGER.yaml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/POST_FINAL_RESEARCH_GOVERNANCE.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-qm"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-qm"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:physics"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:physics"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:philosophy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:philosophy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:mathematics"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:mathematics"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:research/handoffs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:research/handoffs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "e9b61ca9c35955028c4bfa425dfa278fd1864029:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "reviewer": "/root/audit_resume",
+  "schema": "UEOT_CANONICAL_REGISTERED_INTERFACES_POLICY_REVIEW_V1",
+  "scope_boundaries": {
+    "Core_or_native_or_resulting_main_build_PASS_claim": false,
+    "QM_physics_contents_read": false,
+    "base_parser_tests": "NOT_RUN",
+    "canonical_policy_content_confirmed": true,
+    "consumer_or_repository_mutation": false,
+    "counted_FINAL_receipt_claim": false,
+    "git_object_preflight": "NOT_RUN_BY_THIS_REVIEW",
+    "policy_validator_execution": "NOT_RUN"
+  },
+  "status": "CANONICAL_POLICY_CONTENT_CONFIRMED_EXACT_BRANCH_SIX_PATH_SCOPE"
+}

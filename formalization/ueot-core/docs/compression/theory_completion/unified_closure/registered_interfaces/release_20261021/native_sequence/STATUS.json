@@ -1,0 +1,67 @@
+{
+  "state": "PASS_NATIVE_AND_PROVISIONAL_EVIDENCE",
+  "pid": 55612,
+  "results": [
+    {
+      "label": "native_pipeline",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-tools/run_native_registered_interfaces_pipeline.py",
+        "--repo",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration",
+        "--build-status",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/STATUS.json",
+        "--build-manifest",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+        "--build-log-dir",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9",
+        "--focused-label",
+        "new_modules",
+        "--full-label",
+        "full_ueot",
+        "--base-ref",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+        "--output",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-observed-2",
+        "--lake",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 388.2559575609994,
+      "log_sha256": "fa59dcf15459efb57e22473be2a9a5646ca3b819a5f851b6a8fccadfb04118e6"
+    },
+    {
+      "label": "observed_finalizer",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/native-repair-tools/finalize_observed_registered_interfaces_overlay.py",
+        "--repo",
+        "/workspace/scratch/9a8d58b21e30/ueot-integration",
+        "--build-status",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/STATUS.json",
+        "--build-manifest",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9/SOURCE_MANIFEST.json",
+        "--build-log-dir",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-build-attempt-9",
+        "--focused-label",
+        "new_modules",
+        "--full-label",
+        "full_ueot",
+        "--base-ref",
+        "86dfbec88c20a9da3c98cd222611aac55cc55f2f",
+        "--observed",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-observed-2",
+        "--output",
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-native-repair-final-2"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 25.252188758000557,
+      "log_sha256": "e75ad731a0c05aff5ba81da5f84f2c8a5e402b7a500d848b4076719a2f1f54b5"
+    }
+  ],
+  "protocol_manifest_sha256": "c0c8593ab385220d9b6551aaa1df866b62706b798801634861a25af5fa4f22cf",
+  "root_protocol_review_sha256": "695d790414507da6601b5a7a97f1de5a3f291205c1fad478a904ee3f32c23efa",
+  "scope": "Local native execution and provisional evidence only. No consumer writes, canonical authorization or publication."
+}

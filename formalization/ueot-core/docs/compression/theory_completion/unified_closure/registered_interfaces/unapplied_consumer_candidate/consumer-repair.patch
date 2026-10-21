@@ -1,0 +1,389 @@
+--- a/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py
++++ b/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py
+@@ -157,6 +157,150 @@
+     return overlays
+ 
+ 
++def apply_existing_proof_dependency_repairs(proof_rows, overlay, prior_names,
++                                            prior_modules, *, repo):
++    """Apply native-certified additive repairs in memory; never rewrite history.
++
++    prior_modules contains the effective source hashes before this overlay.
++    All validation completes before any existing proof row is changed.
++    """
++    if not any(key in overlay for key in
++               ("historical_public_repairs", "existing_proof_dependency_repairs")):
++        return
++
++    def names(value, label):
++        if (not isinstance(value, list) or not all(isinstance(x, str) and x for x in value)
++                or len(value) != len(set(value))):
++            raise RuntimeError("OVERLAY_REPAIR_INVALID_NAME_LIST: " + label)
++        return set(value)
++
++    for key in ("type_distinctness", "proof_dependency_certification", "native_axiom_census",
++                "historical_public_repair_certification", "existing_proof_dependency_repair_certification"):
++        if overlay.get(key, {}).get("status") != "PASS":
++            raise RuntimeError("OVERLAY_REPAIR_NOT_CERTIFIED: " + key)
++    if overlay["type_distinctness"].get("definitionally_equal_matches") != 0:
++        raise RuntimeError("OVERLAY_REPAIR_TYPE_COLLISION")
++    historical = overlay.get("historical_public_repairs", [])
++    repairs = overlay.get("existing_proof_dependency_repairs", [])
++    if not isinstance(historical, list) or not historical or not isinstance(repairs, list):
++        raise RuntimeError("OVERLAY_REPAIR_MISSING_EXPLICIT_SCOPE")
++    targets = names([row["name"] for row in historical], "historical targets")
++    by_name = {row["name"]: row for row in proof_rows}
++    if len(by_name) != len(proof_rows):
++        raise RuntimeError("OVERLAY_REPAIR_DUPLICATED_GRAPH_NAME")
++    registered = set(by_name)
++    public = {row["name"]: row for row in overlay["public_theorems"]}
++    if len(public) != len(overlay["public_theorems"]) or not targets <= set(public) & registered:
++        raise RuntimeError("OVERLAY_REPAIR_UNREGISTERED_TARGET")
++    if targets & prior_names:
++        raise RuntimeError("OVERLAY_REPAIR_TARGET_WAS_ALREADY_REGISTERED")
++    if overlay["proof_dependency_certification"].get("registered_direct_edges") != sum(
++            len(row.get("source_theorem_deps", [])) for row in public.values()):
++        raise RuntimeError("OVERLAY_REPAIR_NEW_NODE_EDGE_COUNT_MISMATCH")
++
++    evidence = overlay.get("native_export_evidence", {})
++    artifact = (repo / evidence.get("path", "")).resolve()
++    reuse_root = (repo / "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse").resolve()
++    if not artifact.is_relative_to(reuse_root) or not artifact.is_file():
++        raise RuntimeError("OVERLAY_REPAIR_INVALID_NATIVE_PATH")
++    if sha256(artifact.read_bytes()).hexdigest() != evidence.get("sha256"):
++        raise RuntimeError("OVERLAY_REPAIR_NATIVE_EVIDENCE_DRIFT")
++    native = json.loads(artifact.read_text())
++    if native.get("schema") != "REGISTERED_INTERFACES_NATIVE_EXPORT_V1" or native.get("collisions") != []:
++        raise RuntimeError("OVERLAY_REPAIR_INVALID_NATIVE_EXPORT")
++    scan = native.get("historical_repair_incoming_scan", {})
++    hcert = overlay["historical_public_repair_certification"]
++    cert = overlay["existing_proof_dependency_repair_certification"]
++    if (native.get("registered_prior_theorems") != len(prior_names) or
++            scan.get("registered_theorems_scanned") != len(prior_names) or
++            cert.get("registered_theorems_scanned") != len(prior_names) or
++            hcert.get("historical_registered_base") != len(prior_names) or
++            hcert.get("historical_public_repairs") != len(targets) or
++            hcert.get("new_source_public_theorems") != len(public) - len(targets)):
++        raise RuntimeError("OVERLAY_REPAIR_PRIOR_SCOPE_MISMATCH")
++    if (names(scan.get("historical_public_repair_targets"), "native targets") != targets or
++            names(cert.get("historical_public_repair_targets"), "certified targets") != targets):
++        raise RuntimeError("OVERLAY_REPAIR_TARGET_SCOPE_MISMATCH")
++    native_public = {row["name"]: row for row in native.get("public_source_theorems", [])}
++    native_scope = {row["name"]: row for row in native.get("all_native_theorem_constants", [])}
++    if (set(native_public) != set(public) or
++            len(native_public) != len(native.get("public_source_theorems", [])) or
++            len(native_scope) != len(native.get("all_native_theorem_constants", []))):
++        raise RuntimeError("OVERLAY_REPAIR_NATIVE_PUBLIC_SET_MISMATCH")
++
++    def source_hash(path, expected):
++        source_area(path)
++        source = (repo / path).resolve()
++        if (path not in prior_modules or not source.is_relative_to(repo.resolve()) or
++                expected != prior_modules[path]["content_sha256"] or
++                not source.is_file() or sha256(source.read_bytes()).hexdigest() != expected):
++            raise RuntimeError("OVERLAY_REPAIR_SOURCE_HASH_MISMATCH: " + path)
++
++    for row in historical:
++        name, path = row["name"], row["path"]
++        source_hash(path, row["content_sha256"])
++        owner = prior_modules[path]["module"]
++        if (row.get("module") != owner or public[name]["path"] != path or
++                public[name].get("registration_kind") != "historical_public_repair" or
++                native_public[name].get("registration_kind") != "historical_public_repair" or
++                native_public[name].get("source_module") != owner or
++                native_scope.get(name, {}).get("source_module") != owner or
++                native_scope.get(name, {}).get("is_private") is not False):
++            raise RuntimeError("OVERLAY_REPAIR_HISTORICAL_OWNER_MISMATCH")
++
++    repair_names = names([row["name"] for row in repairs], "existing callers")
++    incoming = scan.get("incoming_rows", [])
++    actual_names = names([row["name"] for row in incoming], "native callers")
++    if repair_names != actual_names or cert.get("repaired_existing_nodes") != len(repairs):
++        raise RuntimeError("OVERLAY_REPAIR_INCOMING_CALLER_SET_MISMATCH")
++    actual_by_name = {row["name"]: row for row in incoming}
++    planned = []
++    for repair in repairs:
++        name = repair["name"]
++        if name not in prior_names or name not in by_name:
++            raise RuntimeError("OVERLAY_REPAIR_CALLER_NOT_PREVIOUSLY_REGISTERED")
++        old, actual = by_name[name], actual_by_name[name]
++        path = old["path"]
++        if repair["path"] != path or int(repair["line"]) != int(old["line"]):
++            raise RuntimeError("OVERLAY_REPAIR_CALLER_LOCATION_MISMATCH")
++        source_hash(path, repair["content_sha256"])
++        owner = prior_modules[path]["module"]
++        if repair.get("source_module") != owner or actual.get("source_module") != owner:
++            raise RuntimeError("OVERLAY_REPAIR_CALLER_OWNER_MISMATCH")
++        prior = names(repair.get("prior_source_theorem_deps"), "prior edges")
++        if prior != names(json.loads(old["source_theorem_deps_json"]), "existing graph edges"):
++            raise RuntimeError("OVERLAY_REPAIR_PRIOR_EDGE_MISMATCH")
++        if not prior <= prior_names:
++            raise RuntimeError("OVERLAY_REPAIR_UNREGISTERED_PRIOR_EDGE")
++        delta = names(repair.get("added_source_theorem_deps"), "added edges")
++        constants = names(actual.get("direct_constants"), "native direct constants")
++        if (not delta or not delta <= targets or prior & delta or
++                delta != constants & targets or
++                delta != names(actual.get("historical_repair_deps"), "native repair hits")):
++            raise RuntimeError("OVERLAY_REPAIR_FALSE_OR_NONADDITIVE_DELTA")
++        expected = prior | delta
++        if (names(repair.get("actual_source_theorem_deps"), "repaired edges") != expected or
++                names(actual.get("actual_source_theorem_deps"), "native registered edges") != expected or
++                (constants & registered) - {name} != expected):
++            raise RuntimeError("OVERLAY_REPAIR_ACTUAL_PROOF_EDGE_MISMATCH")
++        if name in native_scope:
++            if (native_scope[name].get("source_module") != owner or
++                    names(native_scope[name].get("direct_constants"), "full native constants") != constants):
++                raise RuntimeError("OVERLAY_REPAIR_NARROW_AND_FULL_NATIVE_DISAGREE")
++        planned.append((old, repair, sorted(expected)))
++    if cert.get("added_registered_direct_edges") != sum(
++            len(row["added_source_theorem_deps"]) for row in repairs):
++        raise RuntimeError("OVERLAY_REPAIR_EXISTING_EDGE_COUNT_MISMATCH")
++    for old, repair, deps in planned:
++        old.setdefault("additive_dependency_repair_provenance", []).append({
++            "overlay_id": overlay["overlay_id"],
++            "prior_source_theorem_deps": repair["prior_source_theorem_deps"],
++            "added_source_theorem_deps": repair["added_source_theorem_deps"],
++        })
++        old["source_theorem_deps_json"] = json.dumps(deps)
++        old["direct_existing_source_theorem_deps"] = str(len(deps))
++
++
+ def _parse_data() -> dict:
+     modules = read_csv(AUDIT / "EVERY_FILE_633_DETAILED_METRICS.csv")
+     declarations = read_csv(AUDIT / "EVERY_DECLARATION_5553_COMPACT.csv")
+@@ -169,7 +313,11 @@
+     ):
+         raise RuntimeError("AUDIT_ROW_COUNT_MISMATCH")
+     overlays = load_overlays()
++    source_overrides = {}
+     for overlay in overlays:
++        prior_names = {row["name"] for row in proof_rows}
++        prior_modules = {row["path"]: {**row, "content_sha256": source_overrides.get(
++            row["path"], row["content_sha256"])} for row in modules}
+         for item in overlay["added_modules"]:
+             modules.append(dict(item))
+         for item in overlay["public_theorems"]:
+@@ -183,8 +331,14 @@
+                 "direct_existing_source_theorem_deps": str(len(deps)),
+                 "source_theorem_deps_json": json.dumps(deps),
+                 "source_origin": item.get("source_origin", "UEOT_MAINTAINED"),
+-                "overlay_scientific_role": overlay.get("scientific_role"),
++                "overlay_scientific_role": (
++                    "HISTORICAL_PUBLIC_DECLARATION_REPAIR_UNCOUNTED"
++                    if item.get("registration_kind") == "historical_public_repair"
++                    else overlay.get("scientific_role")),
+             })
++        apply_existing_proof_dependency_repairs(
++            proof_rows, overlay, prior_names, prior_modules, repo=REPO)
++        source_overrides.update(overlay.get("source_hash_overrides", {}))
+     graph = {}
+     incoming: dict[str, list[str]] = {}
+     for row in proof_rows:
+@@ -384,6 +538,11 @@
+         "overlay_public_theorems": sum(len(x["public_theorems"]) for x in overlays),
+         "overlay_registered_direct_edges": sum(
+             x["proof_dependency_certification"]["registered_direct_edges"] for x in overlays),
++        "overlay_historical_public_repairs": sum(
++            len(x.get("historical_public_repairs", [])) for x in overlays),
++        "overlay_existing_registered_direct_edge_repairs": sum(
++            x.get("existing_proof_dependency_repair_certification", {}).get(
++                "added_registered_direct_edges", 0) for x in overlays),
+         "verified_equal_type_groups": len(data["groups"]),
+         "equal_type_statement_names": len(data["duplicates"]),
+         "overlay_cross_snapshot_defeq_matches": sum(
+--- a/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py
++++ b/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py
+@@ -699,5 +699,193 @@
+                 bridge.run(compilation=fail_compiler)
+ 
+ 
++class AdditiveHistoricalRepairTests(unittest.TestCase):
++    """Synthetic structure checks; these fixtures are not Lean/native evidence."""
++
++    def setUp(self):
++        from hashlib import sha256
++        from tempfile import TemporaryDirectory
++        self.temporary = TemporaryDirectory(prefix="synthetic-repair-", dir=HERE)
++        self.addCleanup(self.temporary.cleanup)
++        self.repo = Path(self.temporary.name)
++        self.owner = "UEOT.V3.SyntheticRepairFixture"
++        self.path = "formalization/ueot-core/UEOT/V3/SyntheticRepairFixture.lean"
++        source = self.repo / self.path
++        source.parent.mkdir(parents=True)
++        source.write_text("-- SYNTHETIC UNIT FIXTURE ONLY: no Lean theorem is asserted.\n")
++        self.source_sha = sha256(source.read_bytes()).hexdigest()
++        self.old = self.owner + ".old"
++        self.prior = self.owner + ".priorDependency"
++        self.helper = self.owner + ".historicalHelper'"
++        self.fresh = "UEOT.V3.SyntheticNewFixture.fresh"
++        self.prior_names = {self.old, self.prior}
++        self.prior_modules = {self.path:{"path":self.path, "module":self.owner,
++                                        "content_sha256":self.source_sha}}
++        def graph_row(name, deps, line):
++            return {"name":name,"path":self.path,"line":str(line),
++                    "source_theorem_deps_json":json.dumps(deps),
++                    "direct_existing_source_theorem_deps":str(len(deps)),
++                    "all_direct_project_scoped_constants":"2"}
++        self.rows = [graph_row(self.old,[self.prior],2),graph_row(self.prior,[],3),
++                     graph_row(self.helper,[],4),graph_row(self.fresh,[self.old],5)]
++        self.overlay = {
++            "overlay_id":"SYNTHETIC_STRUCTURE_ONLY",
++            "source_checkpoint":"SYNTHETIC_STRUCTURE_ONLY",
++            "public_theorems":[
++                {"name":self.helper,"path":self.path,"line":4,
++                 "registration_kind":"historical_public_repair","source_theorem_deps":[]},
++                {"name":self.fresh,"path":self.path,"line":5,
++                 "registration_kind":"new_source_public","source_theorem_deps":[self.old]}],
++            "historical_public_repairs":[
++                {"name":self.helper,"path":self.path,"module":self.owner,
++                 "content_sha256":self.source_sha}],
++            "existing_proof_dependency_repairs":[
++                {"name":self.old,"path":self.path,"line":2,"source_module":self.owner,
++                 "content_sha256":self.source_sha,"prior_source_theorem_deps":[self.prior],
++                 "added_source_theorem_deps":[self.helper],
++                 "actual_source_theorem_deps":[self.prior,self.helper]}],
++            "type_distinctness":{"status":"PASS","definitionally_equal_matches":0},
++            "native_axiom_census":{"status":"PASS"},
++            "proof_dependency_certification":{"status":"PASS","registered_direct_edges":1},
++            "historical_public_repair_certification":{
++                "status":"PASS","historical_registered_base":2,
++                "historical_public_repairs":1,"new_source_public_theorems":1},
++            "existing_proof_dependency_repair_certification":{
++                "status":"PASS","registered_theorems_scanned":2,
++                "historical_public_repair_targets":[self.helper],
++                "repaired_existing_nodes":1,"added_registered_direct_edges":1},
++            "lexical_pr_preflight":{"new_theorems_with_lexical_reuse_candidates":0},
++        }
++        self.native = {
++            "schema":"REGISTERED_INTERFACES_NATIVE_EXPORT_V1","collisions":[],
++            "registered_prior_theorems":2,
++            "public_source_theorems":[
++                {"name":self.helper,"registration_kind":"historical_public_repair","source_module":self.owner},
++                {"name":self.fresh,"registration_kind":"new_source_public","source_module":self.owner}],
++            "all_native_theorem_constants":[
++                {"name":self.helper,"source_module":self.owner,"is_private":False},
++                {"name":self.old,"source_module":self.owner,"direct_constants":[self.prior,self.helper]}],
++            "historical_repair_incoming_scan":{
++                "registered_theorems_scanned":2,"historical_public_repair_targets":[self.helper],
++                "incoming_rows":[{"name":self.old,"source_module":self.owner,
++                    "direct_constants":[self.prior,self.helper],"historical_repair_deps":[self.helper],
++                    "actual_source_theorem_deps":[self.prior,self.helper]}]},
++        }
++        self.native_path = "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SYNTHETIC_STRUCTURE_ONLY.json"
++        (self.repo / self.native_path).parent.mkdir(parents=True)
++        self.bind_native()
++
++    def bind_native(self):
++        from hashlib import sha256
++        artifact = self.repo / self.native_path
++        artifact.write_text(json.dumps(self.native))
++        self.overlay["native_export_evidence"] = {
++            "path":self.native_path,"sha256":sha256(artifact.read_bytes()).hexdigest()}
++
++    def apply(self):
++        reuse.apply_existing_proof_dependency_repairs(
++            self.rows,self.overlay,self.prior_names,self.prior_modules,repo=self.repo)
++
++    def test_additive_repair_preserves_prior_edges_and_separate_counts(self):
++        self.apply()
++        self.assertEqual(set(json.loads(self.rows[0]["source_theorem_deps_json"])),
++                         {self.prior,self.helper})
++        self.assertEqual(self.rows[0]["direct_existing_source_theorem_deps"],"2")
++        self.assertEqual(self.rows[0]["all_direct_project_scoped_constants"],"2")
++        self.assertEqual(self.rows[0]["additive_dependency_repair_provenance"][0][
++            "prior_source_theorem_deps"],[self.prior])
++        data = {"overlays":[self.overlay],"modules":[],
++                "graph":{r["name"]:r for r in self.rows},"groups":[],"duplicates":{},
++                "near":[],"clones":[]}
++        summary = reuse.status(data)
++        self.assertEqual(summary["overlay_registered_direct_edges"],1)
++        self.assertEqual(summary["overlay_existing_registered_direct_edge_repairs"],1)
++        self.assertEqual(summary["overlay_historical_public_repairs"],1)
++
++    def test_repair_rejects_prior_edge_deletion(self):
++        self.overlay["existing_proof_dependency_repairs"][0]["prior_source_theorem_deps"] = []
++        with self.assertRaisesRegex(RuntimeError,"PRIOR_EDGE_MISMATCH"):
++            self.apply()
++        self.assertEqual(json.loads(self.rows[0]["source_theorem_deps_json"]),[self.prior])
++
++    def test_repair_rejects_missing_prior_edge_in_actual_proof(self):
++        self.native["historical_repair_incoming_scan"]["incoming_rows"][0]["actual_source_theorem_deps"] = [self.helper]
++        self.bind_native()
++        with self.assertRaisesRegex(RuntimeError,"ACTUAL_PROOF_EDGE_MISMATCH"):
++            self.apply()
++
++    def test_repair_rejects_fake_delta_absent_from_native_constants(self):
++        self.native["historical_repair_incoming_scan"]["incoming_rows"][0]["direct_constants"] = [self.prior]
++        self.bind_native()
++        with self.assertRaisesRegex(RuntimeError,"FALSE_OR_NONADDITIVE_DELTA"):
++            self.apply()
++
++    def test_repair_rejects_delta_outside_historical_targets(self):
++        self.overlay["existing_proof_dependency_repairs"][0]["added_source_theorem_deps"] = [self.fresh]
++        with self.assertRaisesRegex(RuntimeError,"FALSE_OR_NONADDITIVE_DELTA"):
++            self.apply()
++
++    def test_repair_rejects_nonprevious_caller(self):
++        self.overlay["existing_proof_dependency_repairs"][0]["name"] = self.fresh
++        self.native["historical_repair_incoming_scan"]["incoming_rows"][0]["name"] = self.fresh
++        self.bind_native()
++        with self.assertRaisesRegex(RuntimeError,"CALLER_NOT_PREVIOUSLY_REGISTERED"):
++            self.apply()
++
++    def test_repair_rejects_source_hash_mismatch(self):
++        self.overlay["existing_proof_dependency_repairs"][0]["content_sha256"] = "0" * 64
++        with self.assertRaisesRegex(RuntimeError,"SOURCE_HASH_MISMATCH"):
++            self.apply()
++
++    def test_repair_rejects_actual_source_byte_drift(self):
++        (self.repo / self.path).write_text("-- changed synthetic source bytes\n")
++        with self.assertRaisesRegex(RuntimeError,"SOURCE_HASH_MISMATCH"):
++            self.apply()
++
++    def test_repair_rejects_unregistered_target(self):
++        self.rows = [row for row in self.rows if row["name"] != self.helper]
++        with self.assertRaisesRegex(RuntimeError,"UNREGISTERED_TARGET"):
++            self.apply()
++
++    def test_repair_rejects_pending_proof_status(self):
++        keys = ("type_distinctness","proof_dependency_certification","native_axiom_census",
++                "historical_public_repair_certification","existing_proof_dependency_repair_certification")
++        for key in keys:
++            with self.subTest(key=key):
++                self.overlay[key]["status"] = "PENDING"
++                with self.assertRaisesRegex(RuntimeError,"REPAIR_NOT_CERTIFIED"):
++                    self.apply()
++                self.overlay[key]["status"] = "PASS"
++
++    def test_repair_rejects_changed_native_artifact_hash(self):
++        self.overlay["native_export_evidence"]["sha256"] = "0" * 64
++        with self.assertRaisesRegex(RuntimeError,"NATIVE_EVIDENCE_DRIFT"):
++            self.apply()
++
++    def test_repair_rejects_unapplied_actual_incoming_caller(self):
++        extra = dict(self.native["historical_repair_incoming_scan"]["incoming_rows"][0])
++        extra["name"] = self.prior
++        self.native["historical_repair_incoming_scan"]["incoming_rows"].append(extra)
++        self.bind_native()
++        with self.assertRaisesRegex(RuntimeError,"INCOMING_CALLER_SET_MISMATCH"):
++            self.apply()
++
++    def test_repair_rejects_wrong_owner_and_duplicate_caller(self):
++        self.overlay["existing_proof_dependency_repairs"][0]["source_module"] = "Wrong.Owner"
++        with self.assertRaisesRegex(RuntimeError,"CALLER_OWNER_MISMATCH"):
++            self.apply()
++        self.overlay["existing_proof_dependency_repairs"][0]["source_module"] = self.owner
++        self.overlay["existing_proof_dependency_repairs"].append(
++            dict(self.overlay["existing_proof_dependency_repairs"][0]))
++        with self.assertRaisesRegex(RuntimeError,"INVALID_NAME_LIST"):
++            self.apply()
++
++    def test_legacy_overlay_without_repairs_is_unchanged(self):
++        before = json.dumps(self.rows,sort_keys=True)
++        reuse.apply_existing_proof_dependency_repairs(
++            self.rows,{},self.prior_names,self.prior_modules,repo=self.repo)
++        self.assertEqual(json.dumps(self.rows,sort_keys=True),before)
++
++
+ if __name__ == "__main__":
+     unittest.main(verbosity=2)

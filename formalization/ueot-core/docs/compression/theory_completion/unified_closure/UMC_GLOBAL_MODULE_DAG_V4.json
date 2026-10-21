@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "91621694fadc223f63b76298a6eaf10078e59bd87c9dbc798726a6e366b1f357",
+  "source_tree_sha256": "29d2c7d10b332e0b6c39f5072a2e7af8e6609d1ba7e2c638200cebccdc8bc1f1",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 659,
-  "total_source_lines": 119012,
-  "total_theorem_lemma_tokens": 4293,
+  "total_Lean_modules": 666,
+  "total_source_lines": 120408,
+  "total_theorem_lemma_tokens": 4351,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 60
+    "UMC_New_Bridges": 67
   },
-  "reachable_from_UEOT_root": 659,
+  "reachable_from_UEOT_root": 666,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -83,6 +83,10 @@
     },
     {
       "module": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCFiniteStochasticQuotient",
+      "direct_dependents": 7
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
       "direct_dependents": 7
     },
     {
@@ -182,10 +186,6 @@
       "direct_dependents": 5
     },
     {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
-      "direct_dependents": 5
-    },
-    {
       "module": "UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm",
       "direct_dependents": 5
     },
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 60
+      "edges": 67
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -336,7 +336,7 @@
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 21
+      "edges": 22
     },
     {
       "from": "UMC_New_Bridges",
@@ -3441,8 +3441,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 11188,
-      "lines": 144,
+      "bytes": 11784,
+      "lines": 151,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3580,7 +3580,14 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRiskWitness",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5141,6 +5148,18 @@
       "theorem_lemma_count": 8,
       "decl_count": 13
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "bytes": 8193,
+      "lines": 153,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape"
+      ],
+      "theorem_lemma_count": 5,
+      "decl_count": 5
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BeliefTimingBoundary": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BeliefTimingBoundary.lean",
       "bytes": 3600,
@@ -5408,6 +5427,30 @@
       "theorem_lemma_count": 13,
       "decl_count": 20
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "bytes": 14785,
+      "lines": 353,
+      "category": "UMC_New_Bridges",
+      "title": "Exact TV through a finite carrier with an escape value",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage"
+      ],
+      "theorem_lemma_count": 16,
+      "decl_count": 17
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "bytes": 8534,
+      "lines": 215,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape"
+      ],
+      "theorem_lemma_count": 16,
+      "decl_count": 25
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean",
       "bytes": 8923,
@@ -5567,6 +5610,18 @@
       ],
       "theorem_lemma_count": 2,
       "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "bytes": 11412,
+      "lines": 249,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape"
+      ],
+      "theorem_lemma_count": 13,
+      "decl_count": 17
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportCoverage": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PosteriorSupportCoverage.lean",
@@ -5893,6 +5948,33 @@
       "theorem_lemma_count": 2,
       "decl_count": 3
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "bytes": 9704,
+      "lines": 179,
+      "category": "UMC_New_Bridges",
+      "title": "Unequal registered samples and Good-only selected deployment risk",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk"
+      ],
+      "theorem_lemma_count": 2,
+      "decl_count": 4
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "bytes": 5916,
+      "lines": 133,
+      "category": "UMC_New_Bridges",
+      "title": "Registered row sampling with fixed per-row allocations",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+        "UEOT.V3.HilbertMeanProductBlockIndependence"
+      ],
+      "theorem_lemma_count": 5,
+      "decl_count": 9
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViabilityKernelIntertwining": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViabilityKernelIntertwining.lean",
       "bytes": 16728,
@@ -5931,6 +6013,19 @@
       ],
       "theorem_lemma_count": 1,
       "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean",
+      "bytes": 5472,
+      "lines": 107,
+      "category": "UMC_New_Bridges",
+      "title": "Support viability in the unequal-allocation training/deployment experiment",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint"
+      ],
+      "theorem_lemma_count": 1,
+      "decl_count": 1
     },
     "UEOT.V3.Compression.TopologyChangingGoaAnchoredStability": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TopologyChangingGoaAnchoredStability.lean",

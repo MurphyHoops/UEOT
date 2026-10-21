@@ -1,0 +1,32 @@
+{
+  "state": "FAIL",
+  "results": [
+    {
+      "label": "new_modules",
+      "exit_code": 1,
+      "elapsed_seconds": 179.5480206079992,
+      "command": [
+        "/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/linux-runtime/lean-4.33.1-linux/bin/lake",
+        "build",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary"
+      ],
+      "log_sha256": "ef99a08dbe1bc083f3fcfe3e046b2dbd105d44cb5a30e84dd8fbf31a38295b0c"
+    }
+  ],
+  "runtime_platform": "Linux",
+  "runtime_environment": {
+    "LEAN_NUM_THREADS": "1"
+  },
+  "scope": "Actual candidate build; not canonical authorization or resulting-main validation.",
+  "source_manifest_sha256": "7af4da5b3563caf2126155fbc291780055613fea753d173614ad8031eea6b66a",
+  "source_tree_sha256": "961044e9e4cb1a8dfda5101135c5924bb992d7070ea3e0dd84bae1929bea7760",
+  "active": "new_modules",
+  "error": "RuntimeError('Actual new_modules build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/9a8d58b21e30/tmp/registered-interfaces-20261021/run_linux_build.py\", line 34, in <module>\n    if p.returncode:raise RuntimeError('Actual '+label+' build failed')\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Actual new_modules build failed\n"
+}

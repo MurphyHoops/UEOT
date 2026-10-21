@@ -1,0 +1,853 @@
+{
+  "schema": "FKRG_PR_DIFF_PREFLIGHT_V1",
+  "base_sha": "65db00a12d20be41cd6c8befacb9ba2e74a2a8a9",
+  "candidate_sha": "c30aa219b90173ca15e0eb9878f244de363e1fc3",
+  "source_scope": "formalization/ueot-core/UEOT.lean plus UEOT/**/*.lean",
+  "base_lean_module_count": 659,
+  "candidate_lean_module_count": 666,
+  "changed_lean_paths": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean"
+  ],
+  "base_public_lexical_theorem_count": 4095,
+  "candidate_public_lexical_theorem_count": 4147,
+  "new_public_source_theorem_count": 52,
+  "new_public_source_theorems": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.escape_transition_row_tv",
+      "short_name": "escape_transition_row_tv",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 20,
+      "header_preview": "theorem escape_transition_row_tv     {X I Y A : Type u} [Fintype I]     [MeasurableSpace I] [MeasurableSingletonClass I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace (Option I)] [MeasurableSingletonClass (Option I)]     (qI : X → I) (i : I → Y) (hi : Function.Injective i)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.factorized_same_policy_path_error",
+      "short_name": "factorized_same_policy_path_error",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 39,
+      "header_preview": "theorem factorized_same_policy_path_error     {X I Y A : Type u} [Fintype X] [Fintype I] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace I] [MeasurableSingletonClass I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace A] [MeasurableSingletonClass A]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.CoreOperationalAssembly.same_policy_path_error",
+          "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_path_error",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_coordinate_path_error",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+          "similarity": 0.571,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_path_error",
+      "short_name": "coverage_arbitrary_observation_path_error",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 70,
+      "header_preview": "theorem coverage_arbitrary_observation_path_error     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_certified_path_error",
+      "short_name": "coverage_arbitrary_observation_certified_path_error",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 98,
+      "header_preview": "theorem coverage_arbitrary_observation_certified_path_error     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_certified_path_error",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_microscopic_failure_risk",
+      "short_name": "coverage_arbitrary_observation_microscopic_failure_risk",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ArbitraryObservationRisk.lean",
+      "line": 128,
+      "header_preview": "theorem coverage_arbitrary_observation_microscopic_failure_risk     {X Y A : Type u} [Fintype X] [Fintype A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace A] [MeasurableSingletonClass A]     (p₀ : PMF X) (q : X → Y)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_empirical_registered_microscopic_failure_risk",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_le_of_event_sub_le",
+      "short_name": "tvDist_le_of_event_sub_le",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 29,
+      "header_preview": "theorem tvDist_le_of_event_sub_le     {Y : Type uY} [MeasurableSpace Y]     (μ ν : Measure Y) [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]     (b : ℝ)     (hgap : ∀ A : Set Y, MeasurableSet A → μ.real A - ν.real A ≤ b) :     tvDist μ ν ≤ b := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteAlphabetConcentration.tvDist_le_of_finset_event_le",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteAlphabetConcentration.lean",
+          "similarity": 0.714,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.AverageErrorTransport.expectation_le_of_tvDist_le",
+          "path": "formalization/ueot-core/UEOT/V3/AverageErrorTransport.lean",
+          "similarity": 0.571,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.StatisticalDefect.abs_tvDist_sub_tvDist_le",
+          "path": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+          "similarity": 0.571,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.TotalVariation.tvEvent_le",
+          "path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_map_eq_of_carrier_traces",
+      "short_name": "tvDist_map_eq_of_carrier_traces",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 49,
+      "header_preview": "theorem tvDist_map_eq_of_carrier_traces     {Y : Type uY} {Z : Type uZ}     [MeasurableSpace Y] [MeasurableSpace Z]     (μ ν : Measure Y) [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]     (S : Set Y) (hS : MeasurableSet S) (hμS : μ.real Sᶜ = 0)     (f : Y → Z) (hf : Measurable f)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_some_iff",
+      "short_name": "atomEncode_eq_some_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 93,
+      "header_preview": "theorem atomEncode_eq_some_iff     {I : Type uI} {Y : Type uY} (i : I → Y) (hi : Function.Injective i)     (y : Y) (s : I) : atomEncode i y = some s ↔ y = i s := by   unfold atomEncode   split_ifs with h   · constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_atom",
+      "short_name": "atomEncode_atom",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 111,
+      "header_preview": "@[simp] theorem atomEncode_atom     {I : Type uI} {Y : Type uY} (i : I → Y) (hi : Function.Injective i)     (s : I) : atomEncode i (i s) = some s :=   (atomEncode_eq_some_iff i hi (i s) s).2 rfl  theorem atomEncode_eq_none_iff",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_none_iff",
+      "short_name": "atomEncode_eq_none_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 116,
+      "header_preview": "theorem atomEncode_eq_none_iff     {I : Type uI} {Y : Type uY} (i : I → Y) (y : Y) :     atomEncode i y = none ↔ y ∉ Set.range i := by   unfold atomEncode   split_ifs with h <;> simp [Set.mem_range, h] ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_measurable",
+      "short_name": "atomEncode_measurable",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 124,
+      "header_preview": "theorem atomEncode_measurable     {I : Type uI} {Y : Type uY} [Fintype I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace (Option I)] (i : I → Y) :     Measurable (atomEncode i) := by   intro B _hB",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_carrier_trace",
+      "short_name": "atomEncode_carrier_trace",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 146,
+      "header_preview": "theorem atomEncode_carrier_trace     {I : Type uI} {Y : Type uY} [Fintype I]     [MeasurableSpace (Option I)] [MeasurableSingletonClass (Option I)]     (i : I → Y) (hi : Function.Injective i) (A : Set Y) :     ∃ B : Set (Option I), MeasurableSet B ∧       atomEncode i ⁻¹' B = A ∩ Set.range i := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_atomEncode_eq",
+      "short_name": "tvDist_atomEncode_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 165,
+      "header_preview": "theorem tvDist_atomEncode_eq     {I : Type uI} {Y : Type uY} [Fintype I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace (Option I)] [MeasurableSingletonClass (Option I)]     (i : I → Y) (hi : Function.Injective i)     (μ ν : Measure Y) [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_map_some",
+      "short_name": "atomEncode_map_some",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 179,
+      "header_preview": "theorem atomEncode_map_some     {I : Type uI} {Y : Type uY} (i : I → Y) (hi : Function.Injective i)     (ν : PMF Y) (s : I) : (ν.map (atomEncode i)) (some s) = ν (i s) := by   rw [PMF.map_apply]   refine (tsum_eq_single (i s) ?_).trans ?_   · intro y hy",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_escape_probability",
+      "short_name": "atomEncode_escape_probability",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 192,
+      "header_preview": "theorem atomEncode_escape_probability     {I : Type uI} {Y : Type uY} [Fintype I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace (Option I)] [MeasurableSingletonClass (Option I)]     (i : I → Y) (ν : Measure Y) :     (ν.map (atomEncode i)).real {none} = ν.real (Set.range i)ᶜ := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.pmf_eq_of_eq_except_one",
+      "short_name": "pmf_eq_of_eq_except_one",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 206,
+      "header_preview": "theorem pmf_eq_of_eq_except_one     {I : Type uI} [Fintype I] (p q : PMF I) (escape : I)     (h : ∀ s, s ≠ escape → p s = q s) : p = q := by   have hsum : (∑ s, ((p s).toReal - (q s).toReal)) = 0 := by     rw [Finset.sum_sub_distrib, coverage_sum_toReal, coverage_sum_toReal]     simp",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_reference_eq",
+      "short_name": "atomEncode_reference_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 232,
+      "header_preview": "theorem atomEncode_reference_eq     {I : Type uI} {Y : Type uY} {Z : Type uZ} [Fintype I]     (i : I → Y) (hi : Function.Injective i)     (j : I → Z) (hj : Function.Injective j)     (ν : PMF Y) (ξ : PMF Z) (hlive : ∀ s, ν (i s) = ξ (j s)) :     ν.map (atomEncode i) = ξ.map (atomEncode j) := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_embedded_eq_encoded",
+      "short_name": "tvDist_embedded_eq_encoded",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 249,
+      "header_preview": "theorem tvDist_embedded_eq_encoded     {I : Type uI} {Y : Type uY} [Fintype I]     [MeasurableSpace I] [MeasurableSingletonClass I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace (Option I)] [MeasurableSingletonClass (Option I)]     (i : I → Y) (hi : Function.Injective i) (p : PMF I) (ν : PMF Y) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.tvDist_eq_of_live_reference_masses",
+      "short_name": "tvDist_eq_of_live_reference_masses",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 279,
+      "header_preview": "theorem tvDist_eq_of_live_reference_masses     {I : Type uI} {Y : Type uY} {Z : Type uZ} [Fintype I]     [MeasurableSpace I] [MeasurableSingletonClass I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace Z] [MeasurableSingletonClass Z]     [MeasurableSpace (Option I)] [MeasurableSingletonClass (Option I)]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.pmfExtend_apply_general",
+      "short_name": "pmfExtend_apply_general",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 296,
+      "header_preview": "theorem pmfExtend_apply_general     {H : Type*} {Z : Type*}     (p : PMF H) (K : H → PMF Z) (h : H) (z : Z) :     pmfExtend p K (h, z) = p h * K h z := by   unfold pmfExtend   rw [PMF.bind_apply]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PathError.pmfExtend_apply",
+          "path": "formalization/ueot-core/UEOT/V3/PathError.lean",
+          "similarity": 0.75,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.causalLaw_live_history_mass",
+      "short_name": "causalLaw_live_history_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "line": 328,
+      "header_preview": "theorem causalLaw_live_history_mass     {I R Y W Z V : Type u}     (i : I → Y) (r : R → W) (j : I → Z) (s : R → V)     (p : PMF Y) (q : PMF Z)     (K : ∀ n, CausalHistory Y W n → PMF W)     (L : ∀ n, CausalHistory Z V n → PMF V)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.live_injective",
+      "short_name": "live_injective",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 22,
+      "header_preview": "theorem live_injective : Function.Injective live := by   intro b c h   cases b <;> cases c <;> simp_all [live]  private theorem none_ne_some_explicit {α : Type*} (x : α) :     (none : Option α) ≠ some x := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.CrossTrack.BindingIsolation.injective",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/DualIsolationCore.lean",
+          "similarity": 0.509,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.place_five_injective",
+      "short_name": "place_five_injective",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 79,
+      "header_preview": "theorem place_five_injective : Function.Injective (place 5) := by   intro b c h   cases b with   | none =>       cases c with       | none => rfl",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.atomEncode_place",
+      "short_name": "atomEncode_place",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 91,
+      "header_preview": "theorem atomEncode_place (escape : ℕ) (h0 : escape ≠ 0) (h2 : escape ≠ 2)     (z : Option Bool) : atomEncode live (place escape z) = z := by   cases z with   | none =>       apply (atomEncode_eq_none_iff live escape).2       rintro ⟨b, hb⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.reference_encoded",
+      "short_name": "reference_encoded",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 102,
+      "header_preview": "theorem reference_encoded (escape : ℕ) (h0 : escape ≠ 0) (h2 : escape ≠ 2) :     (reference escape).map (atomEncode live) = finiteReference := by   unfold reference   rw [PMF.map_comp]   have h : atomEncode live ∘ place escape = id := by     funext z",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.reference_escape_probability",
+      "short_name": "reference_escape_probability",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 112,
+      "header_preview": "theorem reference_escape_probability (escape : ℕ) (h0 : escape ≠ 0)     (h2 : escape ≠ 2) :     (reference escape).toMeasure.real (Set.range live)ᶜ = 1 / 4 := by   rw [← atomEncode_escape_probability live (reference escape).toMeasure,     PMF.toMeasure_map (atomEncode live) (reference escape) (atomEncode_measurable live),     reference_encoded escape h0 h2]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.source_reference_tv",
+      "short_name": "source_reference_tv",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 124,
+      "header_preview": "theorem source_reference_tv (escape : ℕ) (h0 : escape ≠ 0) (h2 : escape ≠ 2) :     tvDist source.toMeasure (reference escape).toMeasure = 5 / 12 := by   unfold source   rw [tvDist_embedded_eq_encoded live live_injective,     reference_encoded escape h0 h2, tvDist_eq_one_sub_pmfCommonMass]   simp only [pmfCommonMass, Fintype.sum_option, Fintype.sum_bool,",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.recode_seven",
+      "short_name": "recode_seven",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 163,
+      "header_preview": "theorem recode_seven (z : Option Bool) :     atomEncode (place 5) (place 7 z) = recodeSeven z := by   cases z with   | none =>       apply (atomEncode_eq_none_iff (place 5) 7).2       rintro ⟨b, hb⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.references_original_tv",
+      "short_name": "references_original_tv",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 176,
+      "header_preview": "theorem references_original_tv :     tvDist (reference 5).toMeasure (reference 7).toMeasure = 1 / 4 := by   change tvDist (finiteReference.map (place 5)).toMeasure (reference 7).toMeasure = _   rw [tvDist_embedded_eq_encoded (place 5) place_five_injective]   have hmap : (reference 7).map (atomEncode (place 5)) =       finiteReference.map recodeSeven := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.references_encoded_tv_zero",
+      "short_name": "references_encoded_tv_zero",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 192,
+      "header_preview": "theorem references_encoded_tv_zero :     tvDist ((reference 5).map (atomEncode live)).toMeasure       ((reference 7).map (atomEncode live)).toMeasure = 0 := by   rw [reference_encoded 5 (by decide) (by decide),     reference_encoded 7 (by decide) (by decide), tvDist_self_eq_zero] ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.reference_ne_zero",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpSimplex.lean",
+          "similarity": 0.484,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.infinite_ambient_positive_escape_boundary",
+      "short_name": "infinite_ambient_positive_escape_boundary",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+      "line": 200,
+      "header_preview": "theorem infinite_ambient_positive_escape_boundary :     (reference 5).toMeasure.real (Set.range live)ᶜ = 1 / 4 ∧     (reference 7).toMeasure.real (Set.range live)ᶜ = 1 / 4 ∧     tvDist source.toMeasure (reference 5).toMeasure = 5 / 12 ∧     tvDist source.toMeasure (reference 7).toMeasure = 5 / 12 ∧     tvDist (reference 5).toMeasure (reference 7).toMeasure = 1 / 4 ∧",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_comp_general",
+      "short_name": "riskHistoryMap_comp_general",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 18,
+      "header_preview": "theorem riskHistoryMap_comp_general     {X Y Z R S V : Type u}     (f : X → Y) (g : R → S) (f' : Y → Z) (g' : S → V) :     ∀ n (h : CausalHistory X R n),       riskHistoryMap f' g' n (riskHistoryMap f g n h) =         riskHistoryMap (f' ∘ f) (g' ∘ g) n h := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.DynamicsKernel.mapHistory_comp_appendHistory",
+          "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_injective_general",
+      "short_name": "riskHistoryMap_injective_general",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 35,
+      "header_preview": "theorem riskHistoryMap_injective_general     {X Y R S : Type u} (f : X → Y) (g : R → S)     (hf : Function.Injective f) (hg : Function.Injective g) :     ∀ n, Function.Injective (riskHistoryMap f g n) := by   intro n   induction n with",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap_comp",
+      "short_name": "observationHistoryMap_comp",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 55,
+      "header_preview": "theorem observationHistoryMap_comp     {X Y Z A : Type u} (f : X → Y) (g : Y → Z)     (n : ℕ) (h : CausalHistory X (A × X) n) :     observationHistoryMap g n (observationHistoryMap f n h) =       observationHistoryMap (g ∘ f) n h :=   riskHistoryMap_comp_general f (fun ax : A × X => (ax.1, f ax.2))",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.DynamicsKernel.mapHistory_comp_appendHistory",
+          "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.InformationPredictiveFactorization.compProd_map_historyGraph",
+          "path": "formalization/ueot-core/UEOT/V3/InformationPredictiveFactorization.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap_injective",
+      "short_name": "observationHistoryMap_injective",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 63,
+      "header_preview": "theorem observationHistoryMap_injective     {X Y A : Type u} (i : X → Y) (hi : Function.Injective i) (n : ℕ) :     Function.Injective (observationHistoryMap (A := A) i n) := by   refine riskHistoryMap_injective_general i     (fun ax : A × X => (ax.1, i ax.2)) hi ?_ n   intro a b heq",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.map_observationHistoryMap_comp",
+      "short_name": "map_observationHistoryMap_comp",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 74,
+      "header_preview": "theorem map_observationHistoryMap_comp     {X Y Z A : Type u} (f : X → Y) (g : Y → Z)     (n : ℕ) (p : PMF (CausalHistory X (A × X) n)) :     (p.map (observationHistoryMap f n)).map (observationHistoryMap g n) =       p.map (observationHistoryMap (g ∘ f) n) := by   rw [PMF.map_comp]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.DynamicsKernel.mapHistory_comp_appendHistory",
+          "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.InformationPredictiveFactorization.compProd_map_historyGraph",
+          "path": "formalization/ueot-core/UEOT/V3/InformationPredictiveFactorization.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapePolicy_live_history",
+      "short_name": "escapePolicy_live_history",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 104,
+      "header_preview": "theorem escapePolicy_live_history     {I Y A : Type u} (i : I → Y) (fallback : Y)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (h : CausalHistory I (A × I) n) :     escapePolicy i fallback π n (observationHistoryMap some n h) =       π n (observationHistoryMap i n h) := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapePolicy_actual_history",
+      "short_name": "escapePolicy_actual_history",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 114,
+      "header_preview": "theorem escapePolicy_actual_history     {X I Y A : Type u} (qI : X → I) (i : I → Y) (fallback : Y)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (h : CausalHistory X (A × X) n) :     escapePolicy i fallback π n         (observationHistoryMap (fun x => some (qI x)) n h) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_micro_control_kernel",
+      "short_name": "escape_micro_control_kernel",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 126,
+      "header_preview": "theorem escape_micro_control_kernel     {X I Y A : Type u} (qI : X → I) (i : I → Y) (fallback : Y)     (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A) :     riskMicroControlKernel (fun x => some (qI x)) P (escapePolicy i fallback π) =       riskMicroControlKernel (i ∘ qI) P π := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_deployment_row_law",
+      "short_name": "escape_deployment_row_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 142,
+      "header_preview": "theorem escape_deployment_row_law     {X I Y A : Type u} (p₀ : PMF X) (qI : X → I)     (i : I → Y) (fallback : Y) (P : ℕ → X → A → PMF X)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A) (n : ℕ) :     coverageDeploymentRowLaw p₀ (fun x => some (qI x)) P         (escapePolicy i fallback π) n =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PolicyPrefixCongruenceCheck.deployment_rowLaw_congr_through",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_initial_live_mass",
+      "short_name": "escape_initial_live_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 158,
+      "header_preview": "theorem escape_initial_live_mass     {X I Y : Type u} (p₀ : PMF X) (qI : X → I)     (i : I → Y) (hi : Function.Injective i) (s : I) :     (p₀.map (i ∘ qI)) (i s) =       (p₀.map (fun x => some (qI x))) (some s) := by   have hm : (p₀.map (i ∘ qI)).map (atomEncode i) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_macro_live_mass",
+      "short_name": "escape_macro_live_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 173,
+      "header_preview": "theorem escape_macro_live_mass     {I Y A : Type u} (i : I → Y) (hi : Function.Injective i)     (fallback : Y) (Q : ℕ → Y → A → PMF Y)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (h : CausalHistory I (A × I) n) (a : A) (s : I) :     riskMacroControlKernel Q π n (observationHistoryMap i n h) (a, i s) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_reference_live_history_mass",
+      "short_name": "escape_reference_live_history_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 192,
+      "header_preview": "theorem escape_reference_live_history_mass     {X I Y A : Type u} (p₀ : PMF X) (qI : X → I)     (i : I → Y) (hi : Function.Injective i) (fallback : Y)     (Q : ℕ → Y → A → PMF Y)     (π : ∀ n, CausalHistory Y (A × Y) n → PMF A)     (n : ℕ) (h : CausalHistory I (A × I) n) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_path_tv",
+      "short_name": "escape_path_tv",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "line": 214,
+      "header_preview": "theorem escape_path_tv     {X I Y A : Type u} [Fintype I] [Fintype A]     [MeasurableSpace I] [MeasurableSingletonClass I]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace A] [MeasurableSingletonClass A]     [MeasurableSpace (Option I)] [MeasurableSingletonClass (Option I)]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJointCheck.registered_calibration_good_bad_le",
+      "short_name": "registered_calibration_good_bad_le",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "line": 51,
+      "header_preview": "theorem registered_calibration_good_bad_le     {Ω : Type uΩ} {X A : Type u}     [Fintype Ω] [Fintype X] [Fintype A]     [MeasurableSpace Ω] [MeasurableSingletonClass Ω]     [MeasurableSpace X] [MeasurableSingletonClass X]     (training : Measure Ω) [IsProbabilityMeasure training]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredGoodJointCheck.registered_calibration_good_bad_le",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good",
+      "short_name": "registered_selected_joint_failure_of_cap_on_good",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredJoint.lean",
+      "line": 90,
+      "header_preview": "theorem registered_selected_joint_failure_of_cap_on_good     {Ω : Type uΩ} {C : Type uC} {X Y A : Type u}     [Fintype Ω] [Fintype X] [Fintype A]     [MeasurableSpace Ω] [MeasurableSingletonClass Ω] [MeasurableSpace C]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredGoodJointCheck.registered_selected_joint_failure_of_cap_on_good",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_measurable",
+      "short_name": "productRowSample_measurable",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 46,
+      "header_preview": "theorem productRowSample_measurable     {J : Type uJ} {X : Type uX} [MeasurableSpace X] {N : J → ℕ}     (j : J) (k : Fin (N j)) :     Measurable (productRowSample (X := X) j k) :=   measurable_pi_apply (⟨j, k⟩ : SampleCoordinate N) ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_independent",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_law",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.491,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_law",
+      "short_name": "productRowSample_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 52,
+      "header_preview": "theorem productRowSample_law     {J : Type uJ} {X : Type uX} [Fintype J] [MeasurableSpace X]     (row : J → PMF X) (N : J → ℕ) (j : J) (k : Fin (N j)) :     (productRowLaw row N).map (productRowSample j k) = (row j).toMeasure := by   exact (measurePreserving_eval     (fun jk : SampleCoordinate N => (row jk.1).toMeasure) ⟨j, k⟩).map_eq",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_law",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_independent",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.productRowSample_independent",
+      "short_name": "productRowSample_independent",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 59,
+      "header_preview": "theorem productRowSample_independent     {J : Type uJ} {X : Type uX} [Fintype J] [MeasurableSpace X]     (row : J → PMF X) (N : J → ℕ) (j : J) :     iIndepFun (productRowSample (X := X) (N := N) j) (productRowLaw row N) := by   have hall := coordinate_iIndep     (fun jk : SampleCoordinate N => (row jk.1).toMeasure)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_independent",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_law",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.productRowSample_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_independent",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.496,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.registered_row_calibration",
+      "short_name": "registered_row_calibration",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 79,
+      "header_preview": "theorem registered_row_calibration     {Ω : Type uΩ} {X : Type uX} {J : Type uJ}     [MeasurableSpace Ω] [MeasurableSpace X] [MeasurableSingletonClass X]     [Fintype X] [Fintype J]     (N : J → ℕ) (hN : ∀ j, 0 < N j)     (μ : Measure Ω) [IsProbabilityMeasure μ]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_row_calibration",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+          "similarity": 0.75,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_registered_source_calibration",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean",
+          "similarity": 0.488,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.product_experiment_calibration",
+      "short_name": "product_experiment_calibration",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/VariableRegisteredSamples.lean",
+      "line": 118,
+      "header_preview": "theorem product_experiment_calibration     {J : Type uJ} {X : Type uX}     [Fintype J] [Fintype X] [MeasurableSpace X] [MeasurableSingletonClass X]     (row : J → PMF X) (N : J → ℕ) (hN : ∀ j, 0 < N j)     (rho : J → ℝ) (hrho : ∀ j, 0 ≤ rho j) :     ∃ good : Set (SampleCoordinate N → X), MeasurableSet good ∧",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good",
+      "short_name": "viable_registered_selected_joint_failure_on_good",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableVariableRegisteredJoint.lean",
+      "line": 39,
+      "header_preview": "theorem viable_registered_selected_joint_failure_on_good     {Ω : Type uΩ} {C : Type uC} {X Y A : Type u}     [Fintype Ω] [Fintype X] [Fintype A]     [MeasurableSpace Ω] [MeasurableSingletonClass Ω] [MeasurableSpace C]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViableRegisteredJoint.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredGoodJointCheck.registered_selected_joint_failure_of_cap_on_good",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRisk.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    }
+  ],
+  "counted_ledger_promotion": "NONE",
+  "fuzzy_similarity_is_a_proof": false,
+  "source_graph": "GIT_COMMIT_DIFF_LEXICAL_NOT_ELABORATED",
+  "status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+  "reason": "This gate is mandatory discovery and audit, not an automatic proof equivalence or scientific promotion detector"
+}
+

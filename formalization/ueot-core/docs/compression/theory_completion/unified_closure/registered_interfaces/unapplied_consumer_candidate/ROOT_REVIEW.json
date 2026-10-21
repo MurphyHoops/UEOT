@@ -1,0 +1,17 @@
+{
+  "schema": "UEOT_ROOT_UNAPPLIED_CONSUMER_REPAIR_REVIEW_V1",
+  "status": "STATIC_CLEAR_UNAPPLIED_CANONICAL_AND_NATIVE_PENDING",
+  "reviewer": "/root",
+  "created_utc": "2026-10-21T08:35:50Z",
+  "candidate_manifest_sha256": "91fc6e91e4a4f7921791b7527f0c1d540ebd1ba94994610538f04d5bbbbbf24c",
+  "patch_sha256": "b90dd5a88184cf90a90e9fb421aa35d2df15074cc034ec1fba286dbb4e9a4249",
+  "reviewed": [
+    "Both candidate diffs read against actual unchanged consumer files.",
+    "Complete validation precedes mutation; source and native artifact identities, exact historical targets, all actual callers, prior-plus-delta edges and proof status checked.",
+    "Prior edges retained, original CSV untouched; repaired live rows carry provenance.",
+    "Separate new-node edge and old-node repair counts.",
+    "14 synthetic targeted regressions are actual but not a native run, full FKRG or canonical authorization."
+  ],
+  "production_consumer_patch_applied": false,
+  "future_native_values_fabricated": false
+}

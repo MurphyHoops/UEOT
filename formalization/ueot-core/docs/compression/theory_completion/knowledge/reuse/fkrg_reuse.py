@@ -29,6 +29,7 @@ OVERLAY_PATHS = [
     HERE / "STATISTICAL_RISK_REUSE_OVERLAY_V1.json",
     HERE / "DEPLOYMENT_JOINT_REUSE_OVERLAY_V1.json",
     HERE / "SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json",
+    HERE / "REGISTERED_INTERFACES_REUSE_OVERLAY_V1.json",
 ]
 OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
@@ -38,6 +39,7 @@ OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_STATISTICAL_RISK_OVERLAY_TYPES.lean",
     HERE / "VERIFY_DEPLOYMENT_JOINT_OVERLAY_TYPES.lean",
     HERE / "VERIFY_SUPPORT_VIABILITY_OVERLAY_TYPES.lean",
+    HERE / "VERIFY_REGISTERED_INTERFACES_OVERLAY_TYPES.lean",
 ]
 OVERLAY_SHA256S = [
     "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
@@ -47,6 +49,7 @@ OVERLAY_SHA256S = [
     "f0d0ea91584773c24eeed59f8f1915102b92c318bf864f3b08a4c7093552c755",
     "72fd346f3ab3adca4cb29de1f5c19cc6742555e3003fc32efa345eabbda850f2",
     "2af284000d6a6c25f67e9356a236817b22334dbfba777ca2eaf37e8060a3a45e",
+    "6667bf7a908d713394e5daae5291c3a82f1ff7b3da144e2addf3da5959d0e781",
 ]
 OVERLAY_TYPE_CHECK_SHA256S = [
     "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
@@ -56,6 +59,7 @@ OVERLAY_TYPE_CHECK_SHA256S = [
     "5615a23f94b3ba53f9faec51b72d021f204e539fc73448f793752cc78727438d",
     "48e310eb767413092a0e02fff53bc00b22c87808b4abc838be1ec2279c35b873",
     "26fd18e77dd6b7db550c6c5e1105376ef7f494db03bbab646e8d8fa42313a118",
+    "0d3eb26c9471e1701a28652f308c9dd1e1ccac72c0b9ef36eec27c1bc3165d32",
 ]
 
 # Independent immutable digests calculated from main after merged PR #314.
@@ -157,6 +161,150 @@ def load_overlays() -> list[dict]:
     return overlays
 
 
+def apply_existing_proof_dependency_repairs(proof_rows, overlay, prior_names,
+                                            prior_modules, *, repo):
+    """Apply native-certified additive repairs in memory; never rewrite history.
+
+    prior_modules contains the effective source hashes before this overlay.
+    All validation completes before any existing proof row is changed.
+    """
+    if not any(key in overlay for key in
+               ("historical_public_repairs", "existing_proof_dependency_repairs")):
+        return
+
+    def names(value, label):
+        if (not isinstance(value, list) or not all(isinstance(x, str) and x for x in value)
+                or len(value) != len(set(value))):
+            raise RuntimeError("OVERLAY_REPAIR_INVALID_NAME_LIST: " + label)
+        return set(value)
+
+    for key in ("type_distinctness", "proof_dependency_certification", "native_axiom_census",
+                "historical_public_repair_certification", "existing_proof_dependency_repair_certification"):
+        if overlay.get(key, {}).get("status") != "PASS":
+            raise RuntimeError("OVERLAY_REPAIR_NOT_CERTIFIED: " + key)
+    if overlay["type_distinctness"].get("definitionally_equal_matches") != 0:
+        raise RuntimeError("OVERLAY_REPAIR_TYPE_COLLISION")
+    historical = overlay.get("historical_public_repairs", [])
+    repairs = overlay.get("existing_proof_dependency_repairs", [])
+    if not isinstance(historical, list) or not historical or not isinstance(repairs, list):
+        raise RuntimeError("OVERLAY_REPAIR_MISSING_EXPLICIT_SCOPE")
+    targets = names([row["name"] for row in historical], "historical targets")
+    by_name = {row["name"]: row for row in proof_rows}
+    if len(by_name) != len(proof_rows):
+        raise RuntimeError("OVERLAY_REPAIR_DUPLICATED_GRAPH_NAME")
+    registered = set(by_name)
+    public = {row["name"]: row for row in overlay["public_theorems"]}
+    if len(public) != len(overlay["public_theorems"]) or not targets <= set(public) & registered:
+        raise RuntimeError("OVERLAY_REPAIR_UNREGISTERED_TARGET")
+    if targets & prior_names:
+        raise RuntimeError("OVERLAY_REPAIR_TARGET_WAS_ALREADY_REGISTERED")
+    if overlay["proof_dependency_certification"].get("registered_direct_edges") != sum(
+            len(row.get("source_theorem_deps", [])) for row in public.values()):
+        raise RuntimeError("OVERLAY_REPAIR_NEW_NODE_EDGE_COUNT_MISMATCH")
+
+    evidence = overlay.get("native_export_evidence", {})
+    artifact = (repo / evidence.get("path", "")).resolve()
+    reuse_root = (repo / "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse").resolve()
+    if not artifact.is_relative_to(reuse_root) or not artifact.is_file():
+        raise RuntimeError("OVERLAY_REPAIR_INVALID_NATIVE_PATH")
+    if sha256(artifact.read_bytes()).hexdigest() != evidence.get("sha256"):
+        raise RuntimeError("OVERLAY_REPAIR_NATIVE_EVIDENCE_DRIFT")
+    native = json.loads(artifact.read_text())
+    if native.get("schema") != "REGISTERED_INTERFACES_NATIVE_EXPORT_V1" or native.get("collisions") != []:
+        raise RuntimeError("OVERLAY_REPAIR_INVALID_NATIVE_EXPORT")
+    scan = native.get("historical_repair_incoming_scan", {})
+    hcert = overlay["historical_public_repair_certification"]
+    cert = overlay["existing_proof_dependency_repair_certification"]
+    if (native.get("registered_prior_theorems") != len(prior_names) or
+            scan.get("registered_theorems_scanned") != len(prior_names) or
+            cert.get("registered_theorems_scanned") != len(prior_names) or
+            hcert.get("historical_registered_base") != len(prior_names) or
+            hcert.get("historical_public_repairs") != len(targets) or
+            hcert.get("new_source_public_theorems") != len(public) - len(targets)):
+        raise RuntimeError("OVERLAY_REPAIR_PRIOR_SCOPE_MISMATCH")
+    if (names(scan.get("historical_public_repair_targets"), "native targets") != targets or
+            names(cert.get("historical_public_repair_targets"), "certified targets") != targets):
+        raise RuntimeError("OVERLAY_REPAIR_TARGET_SCOPE_MISMATCH")
+    native_public = {row["name"]: row for row in native.get("public_source_theorems", [])}
+    native_scope = {row["name"]: row for row in native.get("all_native_theorem_constants", [])}
+    if (set(native_public) != set(public) or
+            len(native_public) != len(native.get("public_source_theorems", [])) or
+            len(native_scope) != len(native.get("all_native_theorem_constants", []))):
+        raise RuntimeError("OVERLAY_REPAIR_NATIVE_PUBLIC_SET_MISMATCH")
+
+    def source_hash(path, expected):
+        source_area(path)
+        source = (repo / path).resolve()
+        if (path not in prior_modules or not source.is_relative_to(repo.resolve()) or
+                expected != prior_modules[path]["content_sha256"] or
+                not source.is_file() or sha256(source.read_bytes()).hexdigest() != expected):
+            raise RuntimeError("OVERLAY_REPAIR_SOURCE_HASH_MISMATCH: " + path)
+
+    for row in historical:
+        name, path = row["name"], row["path"]
+        source_hash(path, row["content_sha256"])
+        owner = prior_modules[path]["module"]
+        if (row.get("module") != owner or public[name]["path"] != path or
+                public[name].get("registration_kind") != "historical_public_repair" or
+                native_public[name].get("registration_kind") != "historical_public_repair" or
+                native_public[name].get("source_module") != owner or
+                native_scope.get(name, {}).get("source_module") != owner or
+                native_scope.get(name, {}).get("is_private") is not False):
+            raise RuntimeError("OVERLAY_REPAIR_HISTORICAL_OWNER_MISMATCH")
+
+    repair_names = names([row["name"] for row in repairs], "existing callers")
+    incoming = scan.get("incoming_rows", [])
+    actual_names = names([row["name"] for row in incoming], "native callers")
+    if repair_names != actual_names or cert.get("repaired_existing_nodes") != len(repairs):
+        raise RuntimeError("OVERLAY_REPAIR_INCOMING_CALLER_SET_MISMATCH")
+    actual_by_name = {row["name"]: row for row in incoming}
+    planned = []
+    for repair in repairs:
+        name = repair["name"]
+        if name not in prior_names or name not in by_name:
+            raise RuntimeError("OVERLAY_REPAIR_CALLER_NOT_PREVIOUSLY_REGISTERED")
+        old, actual = by_name[name], actual_by_name[name]
+        path = old["path"]
+        if repair["path"] != path or int(repair["line"]) != int(old["line"]):
+            raise RuntimeError("OVERLAY_REPAIR_CALLER_LOCATION_MISMATCH")
+        source_hash(path, repair["content_sha256"])
+        owner = prior_modules[path]["module"]
+        if repair.get("source_module") != owner or actual.get("source_module") != owner:
+            raise RuntimeError("OVERLAY_REPAIR_CALLER_OWNER_MISMATCH")
+        prior = names(repair.get("prior_source_theorem_deps"), "prior edges")
+        if prior != names(json.loads(old["source_theorem_deps_json"]), "existing graph edges"):
+            raise RuntimeError("OVERLAY_REPAIR_PRIOR_EDGE_MISMATCH")
+        if not prior <= prior_names:
+            raise RuntimeError("OVERLAY_REPAIR_UNREGISTERED_PRIOR_EDGE")
+        delta = names(repair.get("added_source_theorem_deps"), "added edges")
+        constants = names(actual.get("direct_constants"), "native direct constants")
+        if (not delta or not delta <= targets or prior & delta or
+                delta != constants & targets or
+                delta != names(actual.get("historical_repair_deps"), "native repair hits")):
+            raise RuntimeError("OVERLAY_REPAIR_FALSE_OR_NONADDITIVE_DELTA")
+        expected = prior | delta
+        if (names(repair.get("actual_source_theorem_deps"), "repaired edges") != expected or
+                names(actual.get("actual_source_theorem_deps"), "native registered edges") != expected or
+                (constants & registered) - {name} != expected):
+            raise RuntimeError("OVERLAY_REPAIR_ACTUAL_PROOF_EDGE_MISMATCH")
+        if name in native_scope:
+            if (native_scope[name].get("source_module") != owner or
+                    names(native_scope[name].get("direct_constants"), "full native constants") != constants):
+                raise RuntimeError("OVERLAY_REPAIR_NARROW_AND_FULL_NATIVE_DISAGREE")
+        planned.append((old, repair, sorted(expected)))
+    if cert.get("added_registered_direct_edges") != sum(
+            len(row["added_source_theorem_deps"]) for row in repairs):
+        raise RuntimeError("OVERLAY_REPAIR_EXISTING_EDGE_COUNT_MISMATCH")
+    for old, repair, deps in planned:
+        old.setdefault("additive_dependency_repair_provenance", []).append({
+            "overlay_id": overlay["overlay_id"],
+            "prior_source_theorem_deps": repair["prior_source_theorem_deps"],
+            "added_source_theorem_deps": repair["added_source_theorem_deps"],
+        })
+        old["source_theorem_deps_json"] = json.dumps(deps)
+        old["direct_existing_source_theorem_deps"] = str(len(deps))
+
+
 def _parse_data() -> dict:
     modules = read_csv(AUDIT / "EVERY_FILE_633_DETAILED_METRICS.csv")
     declarations = read_csv(AUDIT / "EVERY_DECLARATION_5553_COMPACT.csv")
@@ -169,7 +317,11 @@ def _parse_data() -> dict:
     ):
         raise RuntimeError("AUDIT_ROW_COUNT_MISMATCH")
     overlays = load_overlays()
+    source_overrides = {}
     for overlay in overlays:
+        prior_names = {row["name"] for row in proof_rows}
+        prior_modules = {row["path"]: {**row, "content_sha256": source_overrides.get(
+            row["path"], row["content_sha256"])} for row in modules}
         for item in overlay["added_modules"]:
             modules.append(dict(item))
         for item in overlay["public_theorems"]:
@@ -183,8 +335,14 @@ def _parse_data() -> dict:
                 "direct_existing_source_theorem_deps": str(len(deps)),
                 "source_theorem_deps_json": json.dumps(deps),
                 "source_origin": item.get("source_origin", "UEOT_MAINTAINED"),
-                "overlay_scientific_role": overlay.get("scientific_role"),
+                "overlay_scientific_role": (
+                    "HISTORICAL_PUBLIC_DECLARATION_REPAIR_UNCOUNTED"
+                    if item.get("registration_kind") == "historical_public_repair"
+                    else overlay.get("scientific_role")),
             })
+        apply_existing_proof_dependency_repairs(
+            proof_rows, overlay, prior_names, prior_modules, repo=REPO)
+        source_overrides.update(overlay.get("source_hash_overrides", {}))
     graph = {}
     incoming: dict[str, list[str]] = {}
     for row in proof_rows:
@@ -384,6 +542,11 @@ def status(data: dict):
         "overlay_public_theorems": sum(len(x["public_theorems"]) for x in overlays),
         "overlay_registered_direct_edges": sum(
             x["proof_dependency_certification"]["registered_direct_edges"] for x in overlays),
+        "overlay_historical_public_repairs": sum(
+            len(x.get("historical_public_repairs", [])) for x in overlays),
+        "overlay_existing_registered_direct_edge_repairs": sum(
+            x.get("existing_proof_dependency_repair_certification", {}).get(
+                "added_registered_direct_edges", 0) for x in overlays),
         "verified_equal_type_groups": len(data["groups"]),
         "equal_type_statement_names": len(data["duplicates"]),
         "overlay_cross_snapshot_defeq_matches": sum(
@@ -393,7 +556,7 @@ def status(data: dict):
             x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
             for x in overlays),
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint and support-viability overlays, Lean kernel, and canonical Core/Compression ledgers",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability and registered-interfaces overlays, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 
