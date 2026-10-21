@@ -4543,7 +4543,7 @@ M-36.6 的基本编码结论适用于一般概率测度，可以包括非原子�
 
 第一版取完整 $q(X)$，使所有源状态和全局认证行都在保留范围内。仅取某个策略的较小可达像时，还需证明实际支持归纳、改写认证域，并证明新旧占据相等；不能用“这些状态不可达”省略来源证明。
 
-**Lean 范围。** 当前生产候选已分别实现并实际聚焦编译通过：FiniteObservationEscapeCheck 的精确编码，PathObservationEscapeCheck.escape_path_tv 的同策略完整路径等式，以及 ArbitraryObservationRiskCheck 的原空间路径、认证占据与微观事件风险端点。FiniteObservationEscapeBoundary 同时证明上述正逃逸数值边界。原有限 Y 接口仍保留，新端点沿本节的来源等式扩展其范围；完整原生检查与 canonical 集成另行验收。编码使用非计算定义，不新增一个已经执行的通用算法。书面证明来源见 [FINITE_OBSERVATION_ESCAPE](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/FINITE_OBSERVATION_ESCAPE.md)，当前声明和验收范围见 [接口闭环](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md) 及 [LEAN_API_SCOPE](LEAN_API_SCOPE.md)。
+**Lean 范围。** 本版生产接口包括：FiniteObservationEscapeCheck 的精确编码，PathObservationEscapeCheck.escape_path_tv 的同策略完整路径等式，以及 ArbitraryObservationRiskCheck 的原空间路径、认证占据与微观事件风险端点。FiniteObservationEscapeBoundary 同时证明上述正逃逸数值边界。原有限 Y 接口仍保留，新端点沿本节的来源等式扩展其范围。编码使用非计算定义，不新增一个已经执行的通用算法。书面证明来源见 [FINITE_OBSERVATION_ESCAPE](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/FINITE_OBSERVATION_ESCAPE.md)，当前声明和验收范围见 [接口闭环](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md) 及 [LEAN_API_SCOPE](LEAN_API_SCOPE.md)。
 
 <a id="ch-37"></a>
 
@@ -4879,7 +4879,7 @@ $$
 
 若旧统计证书先给某个满足这些逐行性质的好事件 $G_0$，则 $G_0\subseteq G$，从而 $\mu(G^c)\le\mu(G_0^c)$，不需要重新收取一次失败概率。
 
-**Lean。** 原统一样本数版本为 measure_finite_row_calibration_bad_le、coverage_registered_source_calibration 及 RegisteredGoodJointCheck 的规范 Good。第 38.10 节将逐行预算与 VariableRegisteredSamples、VariableRegisteredJointCheck 的依赖行索引样本类型对应；当前任意 Y 候选已实际聚焦编译，发布范围另见附录 F.3.1。
+**Lean。** 原统一样本数版本为 measure_finite_row_calibration_bad_le、coverage_registered_source_calibration 及 RegisteredGoodJointCheck 的规范 Good。第 38.10 节将逐行预算与 VariableRegisteredSamples、VariableRegisteredJointCheck 的依赖行索引样本类型对应；任意 Y 扩展的精确接口范围见附录 F.3.1。
 
 规范 $G$ 的定义含未知真实源 $p_j$。因此它是分析中的真实校准事件，不能因为写成有限合取就称为“训练后可直接观察到是否成立”。可执行选择规则应对全部记录定义；定理只在它恰好属于 $G$ 时使用校准保证。
 
@@ -4940,7 +4940,7 @@ $$
 
 **证明。** 逐记录应用 viablePolicy_zero_uncovered，得到与其实际源核和策略一致的零覆盖缺口；以 $\kappa=0$ 代入上一节 Good-only 端点。好事件始终是同一个 $G$，所以只计一次 $\alpha$。∎
 
-**Lean。** 原 ViableRegisteredJointCheck 中 viableFamilyPolicy、viable_registered_selected_joint_failure_on_good 已生产成立。第 38.10 节的 ViableVariableRegisteredJointCheck 候选复用同一个 viableFamilyPolicy，将逐行样本与选中 Good 包络相接，并在同一 Good 上内部推出自己的零占据；其具体版本范围见该节。第 38.6 节的具体采样例则用直接的实际零覆盖证明，不冒充该选择策略的专门实例。
+**Lean。** 原 ViableRegisteredJointCheck 中 viableFamilyPolicy、viable_registered_selected_joint_failure_on_good 已生产成立。第 38.10 节的 ViableVariableRegisteredJointCheck 复用同一个 viableFamilyPolicy，将逐行样本与选中 Good 包络相接，并在同一 Good 上内部推出自己的零占据；其具体版本范围见该节。第 38.6 节的具体采样例则用直接的实际零覆盖证明，不冒充该选择策略的专门实例。
 
 ## 38.6 一个完整的数据选择、真实部署与联合风险见证
 
@@ -5073,7 +5073,7 @@ $$
 
 ## 38.10 逐行真实采样与同一良事件上的选中包络
 
-本节将前三节的数学范围与新的实际类型相接。VariableRegisteredSamples、VariableRegisteredJoint、ViableVariableRegisteredJoint 已在当前生产候选中形式化并实际聚焦编译通过；联合端点允许任意 Y，并明示同一 Good 上选中事件的可测性。它们与第 36.8 节的四个模块共同接受完整原生检查及 canonical 集成验收。原统一 Fin N 接口、已有见证与首版有限 Y 的历史编译记录保留。
+本节将前三节的数学范围与新的实际类型相接。VariableRegisteredSamples、VariableRegisteredJoint、ViableVariableRegisteredJoint 已在本版生产模块中形式化；联合端点允许任意 Y，并明示同一 Good 上选中事件的可测性。它们与第 36.8 节的四个模块构成本版所述的概率接口扩展。原统一 Fin N 接口、已有见证与首版有限 Y 的历史编译记录保留。
 
 ### 38.10.1 用真实坐标实验实现不等样本量
 
@@ -5130,7 +5130,7 @@ $$
 
 **证明。** M-38.5 给 $\mu(G^c)\le\alpha_N$。对每个 $\omega\in G$，从该记录的真实行校准与经验拟合局部导出源行误差，再用该记录选中策略自己的实际占据和包络，得到其真实条件部署失败概率至多 β。最后分解同一个联合律在 G 与补集上的质量，应用 M-38.1 的混合界。不存在第二个需要重新收费的“包络好事件”。∎
 
-**Lean。** VariableRegisteredJointCheck.RegisteredCalibrationGood、registeredConfidenceBudget、registered_selected_joint_failure_of_cap_on_good。样本类型为 $\forall j,\mathrm{Fin}(N_j)\to\Omega\to X$；hfit、hcap、hF、henvelope、hchecked 均限定于同一个 RegisteredCalibrationGood。当前已编译候选保留 Ω、X、A 有限，Y 具有可测空间及可测单点，hF 明示 Good 上所选粗事件的可测性。候选类型不要求有限。
+**Lean。** VariableRegisteredJointCheck.RegisteredCalibrationGood、registeredConfidenceBudget、registered_selected_joint_failure_of_cap_on_good。样本类型为 $\forall j,\mathrm{Fin}(N_j)\to\Omega\to X$；hfit、hcap、hF、henvelope、hchecked 均限定于同一个 RegisteredCalibrationGood。该接口保留 Ω、X、A 有限，Y 具有可测空间及可测单点，hF 明示 Good 上所选粗事件的可测性。候选类型不要求有限。
 
 置信预算的来源因而十分具体：它由固定注册行、实际 $N_j$、源响应空间 X 与半径决定。原始行先在 X 上校准，训练后选出的 q 再通过 TV 数据处理使用同一校准；不会仅因候选类型很大，或沿第 36.8 节数学路线允许整体 Y 无限，而自动产生另一次选择失败预算。这个结论不表示任意选后模型都免费正确：经验拟合、所选事件包络、原事件的可测性以及数值风险检查仍各自承担其明确条件，并且要在同一个 G 上相接。
 
@@ -5148,7 +5148,7 @@ $$
 
 **证明。** 固定好记录，应用实际支持生存定理得到 viableFamilyPolicy 在各 $n<T$ 的零占据；以 $\kappa=0$ 代入 M-38.6。参考路径、真实部署核和内部覆盖证明全部使用该同一策略。∎
 
-**Lean。** ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good。hinit、hfit、hF、henvelope、hchecked 共享 VariableRegisteredJointCheck.RegisteredCalibrationGood；调用者不再提供 hcap。当前已编译候选与上一节具有相同的观察及训练空间范围。这个消去不包含零物理失败的结论，也没有为空动作类型创造完整策略；fallback 仍是明确输入。
+**Lean。** ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good。hinit、hfit、hF、henvelope、hchecked 共享 VariableRegisteredJointCheck.RegisteredCalibrationGood；调用者不再提供 hcap。该接口与上一节具有相同的观察及训练空间范围。这个消去不包含零物理失败的结论，也没有为空动作类型创造完整策略；fallback 仍是明确输入。
 
 这些新连接不把相关单轨迹采样、训练后自行改变 N、额外未注册行或任意非原子参考核纳入结论。它们把已经明确的实际采样与部署条件进一步接紧，使第 31.1 节的共同证书装配少一组重复前提，而不是通过重命名输入消去真实研究问题。
 
@@ -6007,17 +6007,17 @@ ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
 
 下表补充新节，不改变前表的既有端点、106 个 P-ID 或历史证据。
 
-| 本次正文 | 已有或候选形式端点 | 当前范围 |
+| 本次正文 | 形式对应 | 当前范围 |
 |---|---|---|
 | M-21.1–M-21.7 | 源 UC.conflictRewardControl；一般 TC.InvariantLawGOA、TC.CesaroLimitGOA、TC.KilledQSDGOA、TC.GreedyInvariantGOASet；CMP.PositiveEigenstructure.BiEigenData | 新的参数化实例、显式数值、R 的完整 greedy 与混合不变律族为书面证明，尚无专门已编译端点 |
-| M-36.6 | UC.FiniteObservationEscapeCheck.tvDist_atomEncode_eq；tvDist_embedded_eq_encoded；tvDist_eq_of_live_reference_masses | 本批候选已编译，含一侧有限载体与完整逃逸质量，不声称对任意两参考全局等距 |
-| M-36.7 | UC.PathObservationEscapeCheck.escape_path_tv；UC.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_path_error 及其事件风险端点 | 当前候选已编译，实际源、策略、完整占据和原 Q(F) 均保持；Y 有可测单点，F 可测 |
-| §36.8 正逃逸边界 | UC.FiniteObservationEscapeBoundaryCheck.infinite_ambient_positive_escape_boundary | 当前候选已编译：对固定有限源的 TV 为 5/12，逃逸质量及两个原参考间 TV 为 1/4，两个编码参考间 TV 为零 |
-| M-38.5 | UC.VariableRegisteredSamples.registered_row_calibration；product_experiment_calibration | 本批已编译候选，实际逐行 N j；一般行间无需独立 |
-| M-38.6 | UC.VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good | 当前任意 Y 候选已编译，hfit/hcap/hF/henvelope/hchecked 在同一个规范 Good |
-| M-38.7 | UC.ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good | 当前任意 Y 候选已编译，同一个 Good 内部证明同一 viableFamilyPolicy 的零占据，hF 也在该 Good 上 |
+| M-36.6 | UC.FiniteObservationEscapeCheck.tvDist_atomEncode_eq；tvDist_embedded_eq_encoded；tvDist_eq_of_live_reference_masses | 本版生产接口，含一侧有限载体与完整逃逸质量，不声称对任意两参考全局等距 |
+| M-36.7 | UC.PathObservationEscapeCheck.escape_path_tv；UC.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_path_error 及其事件风险端点 | 本版生产接口，实际源、策略、完整占据和原 Q(F) 均保持；Y 有可测单点，F 可测 |
+| §36.8 正逃逸边界 | UC.FiniteObservationEscapeBoundaryCheck.infinite_ambient_positive_escape_boundary | 本版生产接口：对固定有限源的 TV 为 5/12，逃逸质量及两个原参考间 TV 为 1/4，两个编码参考间 TV 为零 |
+| M-38.5 | UC.VariableRegisteredSamples.registered_row_calibration；product_experiment_calibration | 本版生产接口，实际逐行 N j；一般行间无需独立 |
+| M-38.6 | UC.VariableRegisteredJointCheck.registered_selected_joint_failure_of_cap_on_good | 本版任意 Y 接口，hfit/hcap/hF/henvelope/hchecked 在同一个规范 Good |
+| M-38.7 | UC.ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good | 本版任意 Y 接口，同一个 Good 内部证明同一 viableFamilyPolicy 的零占据，hF 也在该 Good 上 |
 
-原 #354 研究原型、首版有限 Y 的历史记录、当前七模块生产候选与最终 canonical 源树分别保留其身份。当前七模块已有实际聚焦编译结果；完整原生检查、全库集成和 canonical 发布另按实际收据验收。完整签名与验收范围见 [LEAN_API_SCOPE](LEAN_API_SCOPE.md) 和 [接口闭环](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md)。下一节的历史检查记录保持原样。
+原 #354 研究原型与首版有限 Y 的记录作为历史保留。本版所述七个模块已纳入生产接口；历史检查记录与本版源码的对应仍须区分。完整签名与验收范围见 [LEAN_API_SCOPE](LEAN_API_SCOPE.md) 和 [接口闭环](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md)。下一节的历史检查记录保持原样。
 
 ## F.4 本轮 Lean 检查的可定位身份
 
