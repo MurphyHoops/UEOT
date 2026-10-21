@@ -133,6 +133,13 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitnes
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRiskWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableRegisteredJoint
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredJoint
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ViableVariableRegisteredJoint
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscape
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ArbitraryObservationRisk
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundary
 /-!
 # UEOT Theory Completion public root
 
